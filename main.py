@@ -541,6 +541,105 @@ async def push_to_github():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to push to GitHub: {str(e)}")
 
+@app.post("/github/pr-webhook")
+async def handle_pr_webhook(request: Request):
+    """Handle GitHub webhook for pull request auto-fixing."""
+    try:
+        payload = await request.json()
+        
+        # Check if this is a pull request event
+        action = payload.get("action")
+        pull_request = payload.get("pull_request")
+        
+        if not pull_request:
+            return {"status": "ignored", "reason": "Not a pull request event"}
+        
+        # Check if PR targets main branch
+        base_branch = pull_request.get("base", {}).get("ref")
+        if base_branch != "main":
+            return {
+                "status": "ignored", 
+                "reason": f"PR targets '{base_branch}', not 'main'"
+            }
+        
+        # Only process on opened or synchronize (new commits) events
+        if action not in ["opened", "synchronize"]:
+            return {
+                "status": "ignored",
+                "reason": f"Action '{action}' not handled"
+            }
+        
+        # Run auto-fix workflow
+        logger.info(f"Auto-fixing PR #{pull_request.get('number')} targeting main branch")
+        
+        # Run the standard fix workflow
+        fix_result = await auto_fix_pr_branch(pull_request)
+        
+        return {
+            "status": "success",
+            "action": action,
+            "pr_number": pull_request.get("number"),
+            "base_branch": base_branch,
+            "fix_result": fix_result,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"GitHub PR webhook failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Webhook processing failed: {str(e)}")
+
+async def auto_fix_pr_branch(pull_request: Dict[str, Any]) -> Dict[str, Any]:
+    """Auto-fix code issues in the PR branch."""
+    try:
+        pr_number = pull_request.get("number")
+        head_branch = pull_request.get("head", {}).get("ref")
+        
+        logger.info(f"Starting auto-fix for PR #{pr_number} on branch '{head_branch}'")
+        
+        # Run the existing fix workflow
+        raw_code = scan_site()
+        fixed_code = fix_code(raw_code)
+        
+        # Create a commit message specific to the PR
+        if fixed_code.get("fixes_applied"):
+            commit_message = f"Auto-fix: PR #{pr_number} - {len(fixed_code.get('fixes_applied', []))} issues resolved"
+            
+            # Update the fixes_applied to include PR context
+            enhanced_fixes = {
+                **fixed_code,
+                "pr_context": {
+                    "pr_number": pr_number,
+                    "head_branch": head_branch,
+                    "auto_fix": True
+                }
+            }
+            
+            # Commit the fixes
+            commit_result = commit_fixes(enhanced_fixes)
+            
+            return {
+                "status": "fixes_applied",
+                "pr_number": pr_number,
+                "head_branch": head_branch,
+                "fixes_count": len(fixed_code.get("fixes_applied", [])),
+                "commit_result": commit_result
+            }
+        else:
+            return {
+                "status": "no_fixes_needed",
+                "pr_number": pr_number,
+                "head_branch": head_branch,
+                "message": "No issues found to fix"
+            }
+            
+    except Exception as e:
+        logger.error(f"Auto-fix failed for PR: {str(e)}")
+        return {
+            "status": "failed",
+            "error": str(e),
+            "pr_number": pull_request.get("number")
+        }
+
 # Start enhanced learning system on import
 enhanced_learning_status = start_enhanced_learning_system(brand_intelligence)
 
