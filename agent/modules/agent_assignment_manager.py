@@ -359,10 +359,17 @@ class AgentAssignmentManager:
         # Initialize with default assignments
         self.agent_assignments = self.default_assignments.copy()
         
-        # Start 24/7 monitoring
-        asyncio.create_task(self._start_24_7_monitoring())
+        # Flag to track if monitoring has been started
+        self._monitoring_started = False
         
         logger.info("👥 Elite Agent Assignment Manager initialized with 24/7 luxury operations")
+    
+    async def start_monitoring(self):
+        """Start the 24/7 monitoring system if not already started."""
+        if not self._monitoring_started:
+            self._monitoring_started = True
+            asyncio.create_task(self._start_24_7_monitoring())
+            logger.info("🔄 24/7 monitoring system started")
     
     async def _start_24_7_monitoring(self):
         """Start the 24/7 monitoring and auto-fix system."""
