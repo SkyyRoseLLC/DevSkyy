@@ -6,32 +6,113 @@ from fastapi.exceptions import RequestValidationError
 import logging
 import sys
 import os
-from agent.modules.scanner import scan_site
+from agent.modules.scanner import scan_site, scan_agents_only
 from agent.modules.fixer import fix_code
-from agent.modules.inventory_agent import InventoryAgent
-from agent.modules.financial_agent import FinancialAgent, ChargebackReason
-from agent.modules.ecommerce_agent import EcommerceAgent, ProductCategory, OrderStatus
-from agent.modules.wordpress_agent import WordPressAgent
-from agent.modules.web_development_agent import WebDevelopmentAgent, fix_web_development_issues
-from agent.modules.site_communication_agent import SiteCommunicationAgent, communicate_with_site
-from agent.modules.brand_intelligence_agent import BrandIntelligenceAgent, initialize_brand_intelligence
-from agent.modules.enhanced_learning_scheduler import start_enhanced_learning_system
-from agent.modules.seo_marketing_agent import SEOMarketingAgent, optimize_seo_marketing
-from agent.modules.customer_service_agent import CustomerServiceAgent, optimize_customer_service
-from agent.modules.security_agent import SecurityAgent, secure_luxury_platform
-from agent.modules.performance_agent import PerformanceAgent, optimize_site_performance
-from agent.modules.task_risk_manager import TaskRiskManager, manage_tasks_and_risks
-from agent.modules.agent_assignment_manager import AgentAssignmentManager, create_agent_assignment_manager
-from agent.modules.wordpress_integration_service import WordPressIntegrationService, create_wordpress_integration_service
-from agent.modules.wordpress_direct_service import WordPressDirectService, create_wordpress_direct_service
-from agent.modules.woocommerce_integration_service import WooCommerceIntegrationService, create_woocommerce_integration_service
-from agent.modules.openai_intelligence_service import OpenAIIntelligenceService, create_openai_intelligence_service
-from agent.modules.social_media_automation_agent import SocialMediaAutomationAgent
-from agent.modules.email_sms_automation_agent import EmailSMSAutomationAgent
-from agent.modules.design_automation_agent import DesignAutomationAgent
-from agent.modules.cache_manager import cache_manager, cached, start_cache_cleanup
-from agent.modules.database_optimizer import db_connection_pool, index_optimizer, get_database_stats, optimize_query
-from agent.scheduler.cron import schedule_hourly_job
+
+# Optional imports for agents that might have missing dependencies
+try:
+    from agent.modules.inventory_agent import InventoryAgent
+except ImportError:
+    InventoryAgent = None
+
+try:
+    from agent.modules.financial_agent import FinancialAgent, ChargebackReason
+except ImportError:
+    FinancialAgent = None
+    ChargebackReason = None
+
+try:
+    from agent.modules.ecommerce_agent import EcommerceAgent, ProductCategory, OrderStatus
+except ImportError:
+    EcommerceAgent = None
+    ProductCategory = None
+    OrderStatus = None
+
+try:
+    from agent.modules.wordpress_agent import WordPressAgent
+except ImportError:
+    WordPressAgent = None
+
+try:
+    from agent.modules.web_development_agent import WebDevelopmentAgent, fix_web_development_issues
+except ImportError:
+    WebDevelopmentAgent = None
+    fix_web_development_issues = None
+
+try:
+    from agent.modules.site_communication_agent import SiteCommunicationAgent, communicate_with_site
+except ImportError:
+    SiteCommunicationAgent = None
+    communicate_with_site = None
+
+try:
+    from agent.modules.brand_intelligence_agent import BrandIntelligenceAgent, initialize_brand_intelligence
+except ImportError:
+    BrandIntelligenceAgent = None
+    initialize_brand_intelligence = None
+
+try:
+    from agent.modules.enhanced_learning_scheduler import start_enhanced_learning_system
+except ImportError:
+    start_enhanced_learning_system = None
+
+try:
+    from agent.modules.seo_marketing_agent import SEOMarketingAgent, optimize_seo_marketing
+except ImportError:
+    SEOMarketingAgent = None
+    optimize_seo_marketing = None
+
+try:
+    from agent.modules.customer_service_agent import CustomerServiceAgent, optimize_customer_service
+except ImportError:
+    CustomerServiceAgent = None
+    optimize_customer_service = None
+
+try:
+    from agent.modules.security_agent import SecurityAgent, secure_luxury_platform
+    from agent.modules.performance_agent import PerformanceAgent, optimize_site_performance
+    from agent.modules.task_risk_manager import TaskRiskManager, manage_tasks_and_risks
+    from agent.modules.agent_assignment_manager import AgentAssignmentManager, create_agent_assignment_manager
+    from agent.modules.wordpress_integration_service import WordPressIntegrationService, create_wordpress_integration_service
+    from agent.modules.wordpress_direct_service import WordPressDirectService, create_wordpress_direct_service
+    from agent.modules.woocommerce_integration_service import WooCommerceIntegrationService, create_woocommerce_integration_service
+    from agent.modules.openai_intelligence_service import OpenAIIntelligenceService, create_openai_intelligence_service
+    from agent.modules.social_media_automation_agent import SocialMediaAutomationAgent
+    from agent.modules.email_sms_automation_agent import EmailSMSAutomationAgent
+    from agent.modules.design_automation_agent import DesignAutomationAgent
+    from agent.modules.cache_manager import cache_manager, cached, start_cache_cleanup
+    from agent.modules.database_optimizer import db_connection_pool, index_optimizer, get_database_stats, optimize_query
+    from agent.scheduler.cron import schedule_hourly_job
+except ImportError as e:
+    logging.warning(f"Some optional modules could not be imported: {e}")
+    # Set defaults for missing modules
+    SecurityAgent = None
+    secure_luxury_platform = None
+    PerformanceAgent = None
+    optimize_site_performance = None
+    TaskRiskManager = None
+    manage_tasks_and_risks = None
+    AgentAssignmentManager = None
+    create_agent_assignment_manager = None
+    WordPressIntegrationService = None
+    create_wordpress_integration_service = None
+    WordPressDirectService = None
+    create_wordpress_direct_service = None
+    WooCommerceIntegrationService = None
+    create_woocommerce_integration_service = None
+    OpenAIIntelligenceService = None
+    create_openai_intelligence_service = None
+    SocialMediaAutomationAgent = None
+    EmailSMSAutomationAgent = None
+    DesignAutomationAgent = None
+    cache_manager = None
+    cached = None
+    start_cache_cleanup = None
+    db_connection_pool = None
+    index_optimizer = None
+    get_database_stats = None
+    optimize_query = None
+    schedule_hourly_job = None
 from agent.git_commit import commit_fixes, commit_all_changes  # Imported commit_all_changes
 from typing import Dict, Any, List
 import json
@@ -223,6 +304,32 @@ def run() -> dict:
         raise HTTPException(status_code=500, detail="Workflow execution failed")
 
 
+@app.post("/scan/agents")
+def scan_all_agents() -> dict:
+    """Enhanced endpoint to scan and analyze all agent modules in the system."""
+    try:
+        logger.info("Starting comprehensive agent scan")
+        result = scan_agents_only()
+        logger.info(f"Agent scan completed: {result['agent_modules']['functional_agents']}/{result['agent_modules']['total_agents']} agents functional")
+        return result
+    except Exception as e:
+        logger.error(f"Agent scan failed: {e}")
+        raise HTTPException(status_code=500, detail="Agent scan execution failed")
+
+
+@app.post("/scan/site")
+def scan_full_site() -> dict:
+    """Enhanced endpoint for comprehensive site and agent scanning."""
+    try:
+        logger.info("Starting comprehensive site and agent scan")
+        result = scan_site()
+        logger.info(f"Site scan completed: {result['files_scanned']} files, {len(result['agent_modules']['agents'])} agents analyzed")
+        return result
+    except Exception as e:
+        logger.error(f"Site scan failed: {e}")
+        raise HTTPException(status_code=500, detail="Site scan execution failed")
+
+
 @app.get("/")
 def root() -> dict:
     """Health check endpoint."""
@@ -367,10 +474,16 @@ async def scan_inventory() -> Dict[str, Any]:
 
 
 @app.get("/inventory/report")
-@cached(ttl=300)  # Cache for 5 minutes
 def get_inventory_report() -> Dict[str, Any]:
     """Get comprehensive inventory report."""
-    return get_inventory_agent().generate_report()
+    if cached:
+        # Use caching if available
+        @cached(ttl=300)  # Cache for 5 minutes
+        def _get_report():
+            return get_inventory_agent().generate_report()
+        return _get_report()
+    else:
+        return get_inventory_agent().generate_report()
 
 
 @app.post("/inventory/cleanup")
@@ -2339,15 +2452,23 @@ async def run_full_optimization(website_url: str = "https://theskyy-rose-collect
 
 # Brand Intelligence Endpoints
 @app.get("/brand/intelligence")
-def get_brand_intelligence() -> Dict[str, Any]:
+def get_brand_intelligence_analysis() -> Dict[str, Any]:
     """Get comprehensive brand intelligence analysis."""
-    return brand_intelligence.analyze_brand_assets()
+    if BrandIntelligenceAgent:
+        brand_intelligence = get_brand_intelligence()
+        return brand_intelligence.analyze_brand_assets()
+    else:
+        return {"status": "unavailable", "reason": "BrandIntelligenceAgent not available"}
 
 
 @app.get("/brand/context/{agent_type}")
 def get_brand_context(agent_type: str) -> Dict[str, Any]:
     """Get brand context for specific agent type."""
-    return brand_intelligence.get_brand_context_for_agent(agent_type)
+    if BrandIntelligenceAgent:
+        brand_intelligence = get_brand_intelligence()
+        return brand_intelligence.get_brand_context_for_agent(agent_type)
+    else:
+        return {"status": "unavailable", "reason": "BrandIntelligenceAgent not available"}
 
 
 @app.post("/brand/learning-cycle")
@@ -2407,11 +2528,22 @@ async def push_to_github():
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to push to GitHub: {str(e)}")
 
-# Start enhanced learning system on import
-enhanced_learning_status = start_enhanced_learning_system(get_brand_intelligence())
+# Start enhanced learning system on import (if available)
+try:
+    if start_enhanced_learning_system and get_brand_intelligence:
+        enhanced_learning_status = start_enhanced_learning_system(get_brand_intelligence())
+    else:
+        enhanced_learning_status = {"status": "unavailable", "reason": "learning system not available"}
+except Exception as e:
+    logger.warning(f"Failed to start enhanced learning system: {e}")
+    enhanced_learning_status = {"status": "failed", "error": str(e)}
 
-# Start cache cleanup background task
-start_cache_cleanup()
+# Start cache cleanup background task (if available)
+try:
+    if start_cache_cleanup:
+        start_cache_cleanup()
+except Exception as e:
+    logger.warning(f"Failed to start cache cleanup: {e}")
 
 
 @app.get("/learning/status")
