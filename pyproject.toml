@@ -25,14 +25,14 @@ requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.115.6",
     "uvicorn>=0.34.0",
-    "pymongo>=4.10.1",
+    "pymongo>=4.10.0",
     "python-dotenv>=1.0.1",
-    "pydantic>=2.10.4",
-    "requests>=2.32.3",
-    "python-multipart>=0.0.17",
+    "pydantic>=2.11.0",
+    "requests>=2.32.4",
+    "python-multipart>=0.0.18",
     "aiofiles>=24.1.0",
-    "motor>=3.6.0",
-    "python-jose[cryptography]>=3.3.0",
+    "motor>=3.7.1",
+    "python-jose[cryptography]>=3.4.0",
     "passlib[bcrypt]>=1.7.4",
     "openai>=1.55.3",
     "certifi>=2024.8.30",
@@ -65,9 +65,9 @@ exclude = ["tests*", "frontend*"]
 [tool.black]
 line-length = 120
 target-version = ['py311']
-include = '\.pyi?$'
+include = '\\.pyi?$'
 extend-exclude = '''
-/(
+/( 
   # directories
   \.eggs
   | \.git
@@ -87,3 +87,23 @@ warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
 ignore_missing_imports = true
+
+[tool.flake8]
+max-line-length = 120
+extend-exclude = [
+    ".venv",
+    "build",
+    "dist",
+    "frontend",
+    "wordpress-plugin",
+    ".git",
+    "_docs",
+    "docs",
+    "node_modules",
+]
+per-file-ignores = [
+    "main.py:F821,E501",
+    "github-deployment-script.py:E501,F541,E722",
+    "scripts/daily_scanner.py:E501,F541",
+    "tests/*:E501,F401",
+]

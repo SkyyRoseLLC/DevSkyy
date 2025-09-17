@@ -1,0 +1,9 @@
+[flake8]
+max-line-length = 120
+extend-exclude = .venv,build,dist,frontend,wordpress-plugin,node_modules,docs,_docs
+per-file-ignores =
+    main.py: E501, F401, F821
+    config.py: F401, E501
+    github-deployment-script.py: E501, F541, E722, F401, F841
+    scripts/daily_scanner.py: E501, F541
+    tests/*: E501, F401
