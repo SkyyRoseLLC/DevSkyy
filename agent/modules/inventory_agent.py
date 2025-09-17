@@ -352,8 +352,8 @@ class InventoryAgent:
 
         # Group by similarity (simplified)
         for i in range(0, len(image_assets), 10):
-            if len(image_assets[i : i + 3]) > 1:
-                similar_groups.append(image_assets[i : i + 3])
+            if len(image_assets[i: i + 3]) > 1:
+                similar_groups.append(image_assets[i: i + 3])
 
         return similar_groups
 
@@ -365,8 +365,8 @@ class InventoryAgent:
 
         # Group by content similarity (simplified)
         for i in range(0, len(doc_assets), 8):
-            if len(doc_assets[i : i + 2]) > 1:
-                content_groups.append(doc_assets[i : i + 2])
+            if len(doc_assets[i: i + 2]) > 1:
+                content_groups.append(doc_assets[i: i + 2])
 
         return content_groups
 

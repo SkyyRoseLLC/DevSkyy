@@ -584,7 +584,7 @@ async def example_usage():
     # Basic cache operations
     await cache_manager.aset("user:123", {"name": "John", "email": "john@example.com"}, ttl=1800)
     user_data = await cache_manager.aget("user:123")
-    print(f"Cached user data: {user_data}")
+    logger.info(f"Cached user data: {user_data}")
 
     # Using decorators
     @async_cached(ttl=600, namespace="api")
@@ -595,15 +595,15 @@ async def example_usage():
 
     # First call - will execute function and cache result
     profile1 = await get_user_profile(123)
-    print(f"First call result: {profile1}")
+    logger.info(f"First call result: {profile1}")
 
     # Second call - will return cached result
     profile2 = await get_user_profile(123)
-    print(f"Second call result (cached): {profile2}")
+    logger.info(f"Second call result (cached): {profile2}")
 
     # Get cache statistics
     stats = cache_manager.get_stats()
-    print(f"Cache statistics: {stats}")
+    logger.info(f"Cache statistics: {stats}")
 
 
 if __name__ == "__main__":

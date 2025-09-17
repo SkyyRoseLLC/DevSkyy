@@ -321,7 +321,8 @@ def scan_agents_only() -> Dict[str, Any]:
     result["agent_modules"].update(agents_analyzed)
 
     logger.info(
-        f"✅ Agent analysis completed: {result['agent_modules']['functional_agents']}/{result['agent_modules']['total_agents']} agents working"
+        f"✅ Agent analysis completed: {result['agent_modules']['functional_agents']
+                                       }/{result['agent_modules']['total_agents']} agents working"
     )
     return result
 

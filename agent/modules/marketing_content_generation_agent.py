@@ -606,7 +606,7 @@ async def main():
     }
 
     viral_campaign = await agent.create_viral_social_campaign(campaign_spec)
-    print(f"Viral campaign creation: {viral_campaign['status']}")
+    logger.info(f"Viral campaign creation: {viral_campaign['status']}")
 
     # Generate email sequence
     email_spec = {
@@ -617,7 +617,7 @@ async def main():
     }
 
     email_sequence = await agent.generate_luxury_email_sequence(email_spec)
-    print(f"Email sequence generation: {email_sequence['status']}")
+    logger.info(f"Email sequence generation: {email_sequence['status']}")
 
 
 if __name__ == "__main__":

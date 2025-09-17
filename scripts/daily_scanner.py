@@ -876,11 +876,12 @@ async def main():
 
         # Print summary
         if results.get("status") == "completed":
-            print(f"\n🎯 Daily Scan Summary:")
-            print(f"   Overall Health Score: {results.get('overall_health_score', 'N/A')}/100")
-            print(f"   Recommendations: {len(results.get('results', {}).get('recommendations', []))}")
+            logger.info(f"\n🎯 Daily Scan Summary:")
+            logger.info(f"   Overall Health Score: {results.get('overall_health_score', 'N/A')}/100")
+            logger.info(f"   Recommendations: {len(results.get('results', {}).get('recommendations', []))}")
             print(
-                f"   Competitors Analyzed: {results.get('results', {}).get('competitor_analysis', {}).get('competitors_analyzed', 0)}"
+                f"   Competitors Analyzed: {results.get('results', {}).get(
+                    'competitor_analysis', {}).get('competitors_analyzed', 0)}"
             )
 
         return results

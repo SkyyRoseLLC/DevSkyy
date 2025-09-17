@@ -550,7 +550,7 @@ async def main():
     }
 
     result = await agent.generate_fullstack_website(website_requirements)
-    print(f"Website generation result: {result['status']}")
+    logger.info(f"Website generation result: {result['status']}")
 
     # Generate a React component
     component_spec = {
@@ -561,7 +561,7 @@ async def main():
     }
 
     component_result = await agent.generate_luxury_react_component(component_spec)
-    print(f"Component generation result: {component_result['status']}")
+    logger.info(f"Component generation result: {component_result['status']}")
 
 
 if __name__ == "__main__":
