@@ -14,7 +14,7 @@ dnspython==2.7.0
 
 # HTTP & API
 requests==2.32.3
-python-multipart==0.0.17
+python-multipart==0.0.18
 aiofiles==24.1.0
 httpx==0.28.1
 
