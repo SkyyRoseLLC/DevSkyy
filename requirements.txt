@@ -27,7 +27,7 @@ certifi==2024.8.30
 # AI & ML
 openai==1.55.3
 scikit-learn==1.5.2
-numpy==2.2.1
+numpy==2.3.3
 
 # Computer Vision & Image Processing
 opencv-python==4.10.0.84
