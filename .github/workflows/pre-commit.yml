@@ -16,7 +16,7 @@ jobs:
           git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
           cache: 'pip'
