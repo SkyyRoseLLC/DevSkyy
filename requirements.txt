@@ -31,7 +31,7 @@ numpy==2.2.1
 
 # Computer Vision & Image Processing
 opencv-python==4.10.0.84
-Pillow==10.4.0
+Pillow==11.3.0
 imagehash==4.3.2
 
 # Web Scraping & Parsing
