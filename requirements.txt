@@ -33,7 +33,7 @@ torchvision==0.20.1  # Computer vision models
 diffusers==0.31.0  # Stable Diffusion and advanced image generation
 sentence-transformers==3.3.1  # Semantic search and embeddings
 scikit-learn==1.5.2
-numpy==2.2.1
+numpy==2.3.3
 pandas==2.2.3  # Data analysis and manipulation
 tensorflow==2.18.0  # TensorFlow for ML models
 xgboost==2.1.3  # Advanced gradient boosting
