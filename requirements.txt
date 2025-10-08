@@ -41,7 +41,7 @@ lightgbm==4.5.0  # Fast gradient boosting framework
 
 # Computer Vision & Image Processing
 opencv-python==4.10.0.84
-Pillow==11.0.0  # Updated to latest for security fixes
+Pillow==11.3.0  # Updated to latest for security fixes
 imagehash==4.3.2
 
 # Web Scraping & Parsing
