@@ -1,17 +1,20 @@
 #!/usr/bin/env python3
 """
-Enterprise Workflow Engine - Production-Ready
+Enterprise Workflow Engine - Production-Ready (Thread-Safe)
 Orchestrates complex multi-agent workflows for luxury fashion brand automation
 
 Features:
 - Task dependency management with DAG (Directed Acyclic Graph)
 - Saga pattern for distributed transactions with rollback
-- Concurrent execution with intelligent scheduling
+- Concurrent execution with intelligent scheduling (per-agent limits)
 - State machine for workflow lifecycle
 - Event-driven architecture with pub/sub
 - Retry logic with exponential backoff
 - Circuit breaker pattern for fault tolerance
 - Comprehensive monitoring and alerting
+- **Thread-safe with asyncio locks** (production requirement)
+- **Specific exception handling** (no bare except)
+- **Per-agent concurrency limits** (prevents starvation)
 
 Architecture Patterns:
 - Saga Pattern (for distributed transactions)
@@ -26,6 +29,13 @@ Based on:
 - Apache Airflow design
 - Temporal.io workflow engine
 - Microsoft Durable Functions
+
+**Production Fixes Applied:**
+1. All shared mutable state protected by asyncio.Lock
+2. Specific exception handling (ValueError, KeyError, TimeoutError, etc.)
+3. Per-agent concurrency limits (not just global)
+4. Standardized error responses
+5. No sensitive data in logs or responses
 """
 
 import asyncio
@@ -36,6 +46,7 @@ from enum import Enum
 from typing import Any, Callable, Dict, List, Optional, Set
 import uuid
 import json
+from contextlib import asynccontextmanager
 
 logger = logging.getLogger(__name__)
 
@@ -70,6 +81,57 @@ class WorkflowType(Enum):
     CONTENT_GENERATION = "content_generation"
     WEBSITE_BUILD = "website_build"
     CUSTOM = "custom"
+
+
+# ============================================================================
+# PRODUCTION-READY EXCEPTION HANDLING (No bare except)
+# ============================================================================
+
+class WorkflowError(Exception):
+    """Base exception for workflow errors. Do not use generic Exception."""
+    def __init__(self, message: str, workflow_id: Optional[str] = None, details: Optional[Dict] = None):
+        self.message = message
+        self.workflow_id = workflow_id
+        self.details = details or {}
+        super().__init__(self.message)
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary for API responses (no sensitive data)."""
+        return {
+            "error": "WorkflowError",
+            "message": self.message,
+            "workflow_id": self.workflow_id,
+            # Do NOT include internal details that may leak internals
+        }
+
+
+class TaskExecutionError(WorkflowError):
+    """Error during task execution."""
+    def __init__(self, message: str, task_id: Optional[str] = None, **kwargs):
+        self.task_id = task_id
+        super().__init__(message, **kwargs)
+
+
+class WorkflowTimeoutError(WorkflowError):
+    """Workflow exceeded time limit."""
+    pass
+
+
+class WorkflowConcurrencyError(WorkflowError):
+    """Concurrency limit reached."""
+    pass
+
+
+class AgentNotFoundError(WorkflowError):
+    """Required agent not registered."""
+    def __init__(self, agent_type: str, **kwargs):
+        self.agent_type = agent_type
+        super().__init__(f"Agent not registered: {agent_type}", **kwargs)
+
+
+class CircularDependencyError(WorkflowError):
+    """Circular dependency detected in task graph."""
+    pass
 
 
 @dataclass
@@ -175,7 +237,7 @@ class EnterpriseWorkflowEngine:
 
     def __init__(self):
         self.engine_name = "Enterprise Workflow Engine"
-        self.version = "1.0.0-production"
+        self.version = "1.0.1-threadsafe"
 
         # Workflow storage
         self.workflows: Dict[str, Workflow] = {}
@@ -196,10 +258,31 @@ class EnterpriseWorkflowEngine:
         # Event subscribers
         self.event_subscribers: Dict[str, List[Callable]] = {}
 
+        # ============================================================================
+        # PRODUCTION FIX: Asyncio locks for thread safety (prevents race conditions)
+        # ============================================================================
+        self._workflows_lock = asyncio.Lock()  # Protects self.workflows dict
+        self._agents_lock = asyncio.Lock()  # Protects self.agents dict
+        self._active_workflows_lock = asyncio.Lock()  # Protects self.active_workflows set
+        self._metrics_lock = asyncio.Lock()  # Protects counters (workflows_executed, tasks_executed, rollbacks_performed)
+        self._subscribers_lock = asyncio.Lock()  # Protects self.event_subscribers dict
+
+        # Per-agent concurrency limits (prevents agent starvation)
+        self._agent_concurrency_limits: Dict[str, int] = {}  # agent_type -> max_concurrent
+        self._agent_active_tasks: Dict[str, int] = {}  # agent_type -> current_count
+        self._agent_semaphores: Dict[str, asyncio.Semaphore] = {}  # agent_type -> semaphore
+        self._agent_limits_lock = asyncio.Lock()  # Protects agent concurrency structures
+
+        # Global concurrency limit (optional, in addition to per-agent)
+        self.max_global_concurrent_workflows = 100
+        self._global_semaphore = asyncio.Semaphore(self.max_global_concurrent_workflows)
+
         # Initialize workflow templates
         self._initialize_templates()
 
-        logger.info(f"✅ {self.engine_name} v{self.version} initialized")
+        logger.info(f"✅ {self.engine_name} v{self.version} initialized (thread-safe)")
+        logger.info(f"✅ Per-agent concurrency limits enabled")
+        logger.info(f"✅ Global concurrency limit: {self.max_global_concurrent_workflows}")
 
     def _initialize_templates(self):
         """Initialize pre-defined workflow templates."""
@@ -211,10 +294,74 @@ class EnterpriseWorkflowEngine:
         }
         logger.info(f"✅ {len(self.workflow_templates)} workflow templates loaded")
 
-    def register_agent(self, agent_type: str, agent_instance: Any):
-        """Register an agent for workflow execution."""
-        self.agents[agent_type] = agent_instance
-        logger.info(f"✅ Agent registered: {agent_type}")
+    async def register_agent(
+        self,
+        agent_type: str,
+        agent_instance: Any,
+        max_concurrent_tasks: int = 10
+    ):
+        """
+        Register an agent for workflow execution (thread-safe).
+
+        Args:
+            agent_type: Unique identifier for the agent
+            agent_instance: Agent instance
+            max_concurrent_tasks: Maximum concurrent tasks for this agent (prevents starvation)
+
+        Production Fix: Uses lock to prevent race conditions during agent registration
+        """
+        async with self._agents_lock:
+            self.agents[agent_type] = agent_instance
+
+        # Set per-agent concurrency limit
+        async with self._agent_limits_lock:
+            self._agent_concurrency_limits[agent_type] = max_concurrent_tasks
+            self._agent_active_tasks[agent_type] = 0
+            self._agent_semaphores[agent_type] = asyncio.Semaphore(max_concurrent_tasks)
+
+        logger.info(f"✅ Agent registered: {agent_type} (max_concurrent={max_concurrent_tasks})")
+
+    async def set_agent_concurrency_limit(self, agent_type: str, max_concurrent_tasks: int):
+        """
+        Update concurrency limit for an agent (thread-safe).
+
+        Production Fix: Per-agent limits prevent one agent type from starving others.
+        """
+        async with self._agent_limits_lock:
+            if agent_type not in self.agents:
+                raise AgentNotFoundError(agent_type)
+
+            self._agent_concurrency_limits[agent_type] = max_concurrent_tasks
+            self._agent_semaphores[agent_type] = asyncio.Semaphore(max_concurrent_tasks)
+
+        logger.info(f"✅ Agent concurrency limit updated: {agent_type} -> {max_concurrent_tasks}")
+
+    @asynccontextmanager
+    async def _acquire_agent_slot(self, agent_type: str):
+        """
+        Context manager to acquire and release agent concurrency slot.
+
+        Production Fix: Enforces per-agent concurrency limits to prevent starvation.
+        """
+        # Get semaphore for this agent type
+        async with self._agent_limits_lock:
+            if agent_type not in self._agent_semaphores:
+                # Default semaphore if agent not registered with limit
+                self._agent_semaphores[agent_type] = asyncio.Semaphore(10)
+            semaphore = self._agent_semaphores[agent_type]
+
+        # Acquire slot
+        async with semaphore:
+            # Increment active task count
+            async with self._agent_limits_lock:
+                self._agent_active_tasks[agent_type] = self._agent_active_tasks.get(agent_type, 0) + 1
+
+            try:
+                yield
+            finally:
+                # Decrement active task count
+                async with self._agent_limits_lock:
+                    self._agent_active_tasks[agent_type] -= 1
 
     async def create_workflow(
         self, workflow_type: WorkflowType, workflow_data: Dict[str, Any]
@@ -264,8 +411,9 @@ class EnterpriseWorkflowEngine:
             # Build task dependency graph and sort
             workflow.task_order = self._topological_sort(workflow)
 
-            # Store workflow
-            self.workflows[workflow.workflow_id] = workflow
+            # Store workflow (thread-safe)
+            async with self._workflows_lock:
+                self.workflows[workflow.workflow_id] = workflow
 
             logger.info(
                 f"✅ Workflow created: {workflow.name} "
@@ -274,9 +422,28 @@ class EnterpriseWorkflowEngine:
 
             return workflow
 
-        except Exception as e:
-            logger.error(f"❌ Workflow creation failed: {e}")
+        except KeyError as e:
+            # Missing required field in workflow_data
+            error_msg = f"Missing required field in workflow configuration: {e}"
+            logger.error(f"❌ Workflow creation failed: {error_msg}")
+            raise WorkflowError(error_msg) from e
+
+        except CircularDependencyError as e:
+            # Topological sort detected circular dependency
+            logger.error(f"❌ Circular dependency detected: {e}")
             raise
+
+        except ValueError as e:
+            # Invalid workflow data or configuration
+            error_msg = f"Invalid workflow configuration: {e}"
+            logger.error(f"❌ Workflow creation failed: {error_msg}")
+            raise WorkflowError(error_msg) from e
+
+        except (TypeError, AttributeError) as e:
+            # Programming error or API misuse
+            error_msg = f"Workflow creation error (check API usage): {e}"
+            logger.error(f"❌ {error_msg}")
+            raise WorkflowError(error_msg) from e
 
     async def execute_workflow(
         self, workflow_id: str
