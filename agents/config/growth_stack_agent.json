@@ -1,0 +1,205 @@
+{
+  "agent_id": "growth-stack-001",
+  "agent_name": "Growth Stack",
+  "agent_type": "growth_marketing_automation",
+  "version": "2.0.0",
+  "master_document": "/Users/coreyfoster/Desktop/CLAUDE_20-10_MASTER.md",
+  "status": "active",
+  "composition": {
+    "primary_ai": "Claude Sonnet 4.5",
+    "secondary_ai": "ChatGPT GPT-4",
+    "collaboration_mode": "parallel_consensus"
+  },
+  "capabilities": {
+    "primary_functions": [
+      "WordPress theme generation and deployment",
+      "Landing page creation and optimization",
+      "A/B testing automation",
+      "Customer experience (CX) automation",
+      "Marketing analytics integration"
+    ],
+    "technical_stack": {
+      "cms": ["WordPress 6.x", "Elementor Pro", "WooCommerce"],
+      "frontend": ["React 18", "TypeScript 5", "Tailwind CSS"],
+      "analytics": ["Google Analytics 4", "Hotjar", "Mixpanel"],
+      "testing": ["Optimizely", "Google Optimize"],
+      "deployment": ["Docker", "GitHub Actions"]
+    },
+    "output_artifacts": [
+      "Deployable WordPress themes",
+      "Analytics mapping configurations",
+      "A/B test configurations",
+      "Conversion funnel reports",
+      "Customer journey maps"
+    ]
+  },
+  "wordpress_integration": {
+    "methods": [
+      {
+        "type": "REST_API",
+        "service": "wordpress_integration_service.py",
+        "auth": "Application Passwords",
+        "use_cases": ["content", "posts", "pages", "media"],
+        "priority": 1
+      },
+      {
+        "type": "DIRECT_DATABASE",
+        "service": "wordpress_direct_service.py",
+        "connection": "SSH + Paramiko",
+        "use_cases": ["bulk_operations", "migrations", "emergency_fixes"],
+        "priority": 2
+      },
+      {
+        "type": "CUSTOM_PLUGIN",
+        "plugin_name": "Skyy Rose AI Agents",
+        "use_cases": ["webhooks", "custom_endpoints", "real_time_events"],
+        "priority": 3
+      }
+    ],
+    "theme_generation": {
+      "base_frameworks": ["Elementor", "Divi", "Astra"],
+      "customization_layers": ["colors", "typography", "layouts", "components"],
+      "brand_consistency": true,
+      "responsive_design": ["mobile", "tablet", "desktop", "4k"]
+    }
+  },
+  "ab_testing_automation": {
+    "platforms": ["Google Optimize", "Optimizely", "VWO"],
+    "test_types": ["headline", "cta", "layout", "pricing", "images"],
+    "metrics": ["conversion_rate", "bounce_rate", "time_on_page", "revenue_per_visitor"],
+    "statistical_significance": 0.95,
+    "minimum_sample_size": 1000,
+    "auto_winner_deployment": true
+  },
+  "truth_protocol_compliance": {
+    "never_guess": true,
+    "pin_versions": true,
+    "cite_standards": ["W3C Web Standards", "Google Analytics Data API", "WordPress REST API v2"],
+    "no_hardcoded_secrets": true,
+    "rbac_enforcement": true,
+    "test_coverage_minimum": 90,
+    "no_skip_rule": true,
+    "error_ledger_required": true
+  },
+  "orchestration_commands": {
+    "PLAN": {
+      "command": "PLAN(scope)",
+      "description": "Create growth campaign plan with target metrics and test scenarios",
+      "execution_mode": "synchronous",
+      "required_inputs": ["scope", "target_metrics", "budget"]
+    },
+    "BUILD": {
+      "command": "BUILD(job_id)",
+      "description": "Build WordPress themes, landing pages, and automation workflows",
+      "execution_mode": "asynchronous",
+      "validation_steps": ["responsive_check", "seo_validation", "accessibility_audit"]
+    },
+    "TEST": {
+      "command": "TEST(job_id)",
+      "description": "Run A/B tests and validate analytics tracking",
+      "execution_mode": "continuous",
+      "tools": ["lighthouse", "gtmetrix", "google_analytics"],
+      "coverage_requirement": 90
+    },
+    "DEPLOY": {
+      "command": "DEPLOY(env)",
+      "description": "Deploy WordPress theme or landing page to production",
+      "execution_mode": "canary",
+      "environments": ["staging", "production"],
+      "rollback_enabled": true
+    },
+    "MONITOR": {
+      "command": "MONITOR(campaign_id)",
+      "description": "Track conversion metrics and user behavior",
+      "execution_mode": "real_time",
+      "metrics": ["conversions", "revenue", "engagement", "retention"]
+    },
+    "LEARN": {
+      "command": "LEARN(run)",
+      "description": "Analyze test results and update strategies",
+      "execution_mode": "scheduled",
+      "frequency": "daily"
+    }
+  },
+  "landing_page_optimization": {
+    "elements": {
+      "headlines": {
+        "variants": 5,
+        "tone": ["urgent", "benefit_focused", "curiosity_driven"],
+        "length": ["short", "medium", "long"]
+      },
+      "cta_buttons": {
+        "variants": 3,
+        "copy": ["action_oriented", "value_focused", "risk_reversal"],
+        "colors": ["brand_primary", "high_contrast", "psychological_triggers"]
+      },
+      "social_proof": {
+        "types": ["testimonials", "reviews", "case_studies", "trust_badges"],
+        "placement": ["above_fold", "mid_page", "pre_cta"]
+      },
+      "media": {
+        "types": ["hero_images", "product_shots", "lifestyle_photos", "videos"],
+        "optimization": ["webp", "lazy_loading", "responsive_images"]
+      }
+    },
+    "seo_optimization": {
+      "on_page": ["meta_titles", "meta_descriptions", "h1_tags", "schema_markup"],
+      "technical": ["page_speed", "mobile_friendly", "ssl", "sitemap"],
+      "content": ["keyword_density", "readability_score", "internal_linking"]
+    }
+  },
+  "performance_slos": {
+    "page_load_time_ms": 2000,
+    "lighthouse_score": 90,
+    "conversion_rate_minimum": 2.5,
+    "bounce_rate_maximum": 40,
+    "mobile_responsiveness": 100
+  },
+  "analytics_integration": {
+    "platforms": {
+      "google_analytics_4": {
+        "tracking": ["pageviews", "events", "conversions", "ecommerce"],
+        "custom_dimensions": true,
+        "enhanced_ecommerce": true
+      },
+      "facebook_pixel": {
+        "events": ["PageView", "ViewContent", "AddToCart", "Purchase"],
+        "conversion_api": true
+      },
+      "hotjar": {
+        "heatmaps": true,
+        "recordings": true,
+        "surveys": true
+      }
+    },
+    "data_layer": {
+      "format": "GTM_compatible",
+      "custom_events": true,
+      "user_properties": ["customer_type", "ltv_segment", "engagement_score"]
+    }
+  },
+  "agent_interaction_rules": {
+    "no_cross_agent_overwrites": true,
+    "validation_required_before_merge": true,
+    "deterministic_testable_artifacts": true,
+    "reproducible_measurable_commits": true
+  },
+  "failure_policy": {
+    "never_skip": true,
+    "always_record_failures": true,
+    "uncertainty_statement": "I cannot confirm this without testing.",
+    "automatic_rollback": true,
+    "notification_channels": ["slack", "email", "pagerduty"]
+  },
+  "deliverables_per_cycle": [
+    "Deployable themes + documentation",
+    "Analytics configuration files",
+    "A/B test reports + winners",
+    "Conversion funnel analysis",
+    "Performance metrics dashboard",
+    "CHANGELOG.md"
+  ],
+  "created_at": "2025-11-04T16:00:00Z",
+  "last_updated": "2025-11-04T16:00:00Z",
+  "maintainer": "DevSkyy Platform Team"
+}

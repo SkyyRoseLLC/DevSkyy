@@ -1,0 +1,348 @@
+{
+  "agent_id": "visual-foundry-001",
+  "agent_name": "Visual Foundry",
+  "agent_type": "visual_content_generation",
+  "version": "2.0.0",
+  "master_document": "/Users/coreyfoster/Desktop/CLAUDE_20-10_MASTER.md",
+  "status": "active",
+  "composition": {
+    "primary_ai": "HuggingFace Transformers",
+    "secondary_ai": ["Claude Sonnet 4.5", "Google Gemini Pro", "ChatGPT GPT-4"],
+    "collaboration_mode": "ensemble_voting"
+  },
+  "capabilities": {
+    "primary_functions": [
+      "Image upscaling and enhancement",
+      "Brand-consistent asset generation",
+      "Video automation and editing",
+      "Product photography optimization",
+      "Visual content quality assurance"
+    ],
+    "technical_stack": {
+      "image_models": {
+        "stable_diffusion_xl": {
+          "version": "1.0",
+          "use_cases": ["product_images", "lifestyle_shots", "hero_images"],
+          "resolution": "1024x1024",
+          "styles": ["photorealistic", "artistic", "minimalist"]
+        },
+        "dall_e_3": {
+          "version": "3.0",
+          "use_cases": ["creative_concepts", "brand_assets", "marketing_visuals"],
+          "resolution": "1792x1024",
+          "quality": "hd"
+        },
+        "midjourney": {
+          "version": "6",
+          "use_cases": ["high_end_fashion", "luxury_aesthetics", "editorial"],
+          "aspect_ratios": ["16:9", "4:5", "1:1"],
+          "quality": "high"
+        }
+      },
+      "upscaling": {
+        "real_esrgan": {
+          "scale_factor": [2, 4, 8],
+          "model": "RealESRGAN_x4plus",
+          "face_enhancement": true
+        },
+        "gigapixel_ai": {
+          "scale_factor": [2, 4, 6],
+          "ai_mode": "standard",
+          "suppress_noise": true
+        }
+      },
+      "video": {
+        "runway_ml": {
+          "capabilities": ["text_to_video", "image_to_video", "video_editing"],
+          "max_duration_seconds": 120
+        },
+        "pika_labs": {
+          "capabilities": ["video_generation", "animation", "transitions"],
+          "resolution": "1080p"
+        }
+      },
+      "frameworks": ["PyTorch 2.x", "TensorFlow 2.x", "Diffusers", "OpenCV"],
+      "hardware_acceleration": ["CUDA", "MPS", "ROCm"]
+    },
+    "output_artifacts": [
+      "High-fidelity product images (4K+)",
+      "Brand asset libraries + metadata",
+      "Video content + editing timelines",
+      "Visual style guides",
+      "Quality assurance reports"
+    ]
+  },
+  "image_generation": {
+    "workflow": {
+      "prompt_engineering": {
+        "ai_assistants": ["Claude", "GPT-4"],
+        "techniques": ["keyword_optimization", "style_transfer_prompts", "negative_prompts"],
+        "validation": "aesthetic_scoring"
+      },
+      "generation": {
+        "primary_model": "stable_diffusion_xl",
+        "fallback_models": ["dall_e_3", "midjourney"],
+        "batch_size": 4,
+        "iterations": 3,
+        "seed_control": true
+      },
+      "post_processing": {
+        "upscaling": true,
+        "color_correction": true,
+        "background_removal": true,
+        "watermark_removal": false,
+        "format_conversion": ["PNG", "WEBP", "JPEG"]
+      },
+      "quality_control": {
+        "automated_scoring": {
+          "aesthetic_score": "LAION aesthetics predictor",
+          "technical_quality": "BRISQUE score",
+          "brand_consistency": "CLIP similarity"
+        },
+        "human_review": {
+          "threshold_score": 7.5,
+          "review_percentage": 20
+        }
+      }
+    },
+    "brand_consistency": {
+      "style_enforcement": {
+        "color_palette": "brand_guidelines_json",
+        "typography": "brand_fonts",
+        "composition": "rule_of_thirds",
+        "mood": ["luxury", "elegant", "sophisticated"]
+      },
+      "reference_images": {
+        "training_set": "brand_image_library",
+        "embedding_model": "CLIP ViT-L/14",
+        "similarity_threshold": 0.85
+      }
+    }
+  },
+  "image_upscaling": {
+    "models": {
+      "real_esrgan": {
+        "model_variants": ["RealESRGAN_x4plus", "RealESRNet_x4plus", "RealESRGAN_x4plus_anime_6B"],
+        "tile_size": 512,
+        "tile_padding": 10,
+        "pre_padding": 0,
+        "face_enhance": true,
+        "gpu_id": "auto"
+      },
+      "swinir": {
+        "task": "real_sr",
+        "scale": 4,
+        "large_model": true,
+        "model_path": "models/swinir"
+      }
+    },
+    "pipeline": {
+      "preprocessing": ["denoise", "sharpen", "color_enhance"],
+      "upscaling": "ensemble_average",
+      "postprocessing": ["artifact_removal", "edge_enhancement", "final_sharpen"]
+    },
+    "quality_targets": {
+      "min_resolution": "4096x4096",
+      "psnr": 35,
+      "ssim": 0.95,
+      "file_size_kb": 5000
+    }
+  },
+  "video_automation": {
+    "generation": {
+      "text_to_video": {
+        "models": ["runway_gen2", "pika_1.0"],
+        "max_duration": 120,
+        "fps": [24, 30, 60],
+        "resolution": ["1080p", "4K"]
+      },
+      "image_to_video": {
+        "animation_types": ["zoom", "pan", "parallax", "morph"],
+        "duration_seconds": [5, 10, 15],
+        "transitions": ["fade", "dissolve", "wipe"]
+      }
+    },
+    "editing": {
+      "auto_edit": {
+        "scene_detection": true,
+        "music_sync": true,
+        "caption_generation": true,
+        "color_grading": "cinematic"
+      },
+      "templates": {
+        "product_showcase": "3d_rotation",
+        "lifestyle": "cinematic_montage",
+        "tutorial": "step_by_step",
+        "testimonial": "interview_style"
+      }
+    },
+    "optimization": {
+      "compression": {
+        "codec": "H.265",
+        "bitrate": "variable",
+        "quality": "high"
+      },
+      "formats": ["MP4", "WEBM", "MOV"],
+      "social_media_presets": ["instagram_reels", "tiktok", "youtube_shorts", "facebook"]
+    }
+  },
+  "product_photography": {
+    "enhancement": {
+      "background_removal": {
+        "model": "u2net",
+        "edge_refinement": true,
+        "shadow_preservation": false
+      },
+      "background_replacement": {
+        "presets": ["white", "gradient", "lifestyle", "studio"],
+        "custom_backgrounds": true,
+        "perspective_matching": true
+      },
+      "lighting_adjustment": {
+        "techniques": ["exposure_correction", "shadow_recovery", "highlight_preservation"],
+        "style": "studio_lighting"
+      },
+      "color_correction": {
+        "white_balance": "auto",
+        "saturation": 1.1,
+        "vibrance": 1.2,
+        "contrast": "adaptive"
+      }
+    },
+    "multi_angle_generation": {
+      "3d_reconstruction": {
+        "input_images": 20,
+        "model": "nerf",
+        "novel_views": 360
+      },
+      "standard_angles": ["front", "back", "left", "right", "top", "detail_shots"]
+    }
+  },
+  "truth_protocol_compliance": {
+    "never_guess": true,
+    "pin_versions": true,
+    "cite_standards": ["JPEG 2000", "H.265/HEVC", "WebP", "PNG", "EXIF 2.32"],
+    "no_hardcoded_secrets": true,
+    "rbac_enforcement": true,
+    "test_coverage_minimum": 90,
+    "no_skip_rule": true,
+    "error_ledger_required": true
+  },
+  "orchestration_commands": {
+    "PLAN": {
+      "command": "PLAN(scope)",
+      "description": "Design visual content generation pipeline with brand guidelines",
+      "execution_mode": "synchronous",
+      "required_inputs": ["content_type", "brand_guidelines", "delivery_specs"]
+    },
+    "BUILD": {
+      "command": "BUILD(job_id)",
+      "description": "Generate visual assets with AI models and post-processing",
+      "execution_mode": "asynchronous",
+      "validation_steps": ["quality_check", "brand_consistency", "technical_specs"]
+    },
+    "TEST": {
+      "command": "TEST(job_id)",
+      "description": "Validate visual quality, brand consistency, and technical specifications",
+      "execution_mode": "synchronous",
+      "tools": ["aesthetic_scorer", "clip_similarity", "technical_validator"],
+      "coverage_requirement": 90
+    },
+    "REVIEW": {
+      "command": "REVIEW(job_id)",
+      "description": "Human review for high-value or complex visual assets",
+      "execution_mode": "synchronous",
+      "review_criteria": ["aesthetic_quality", "brand_alignment", "technical_excellence"]
+    },
+    "DEPLOY": {
+      "command": "DEPLOY(env)",
+      "description": "Deploy visual assets to CDN and asset management system",
+      "execution_mode": "batch",
+      "cdn": "cloudflare",
+      "asset_management": "dam_system"
+    }
+  },
+  "performance_slos": {
+    "generation_time_seconds": {
+      "image_single": 30,
+      "image_batch": 120,
+      "video_short": 300,
+      "video_long": 1800
+    },
+    "upscaling_time_seconds": {
+      "2x": 5,
+      "4x": 15,
+      "8x": 45
+    },
+    "quality_scores": {
+      "aesthetic_min": 7.5,
+      "technical_min": 8.0,
+      "brand_consistency_min": 0.85
+    }
+  },
+  "model_management": {
+    "model_registry": {
+      "storage": "huggingface_hub",
+      "versioning": "semantic",
+      "caching": "local_and_remote"
+    },
+    "auto_update": {
+      "enabled": true,
+      "strategy": "canary",
+      "rollback_threshold": 0.9
+    },
+    "hardware_requirements": {
+      "gpu": {
+        "minimum_vram_gb": 8,
+        "recommended_vram_gb": 24,
+        "cuda_version": "11.8+"
+      },
+      "cpu": {
+        "cores": 8,
+        "ram_gb": 32
+      }
+    }
+  },
+  "asset_management": {
+    "storage": {
+      "primary": "s3_compatible",
+      "cdn": "cloudflare_r2",
+      "backup": "glacier"
+    },
+    "metadata": {
+      "format": "EXIF + XMP",
+      "fields": ["creation_date", "model_used", "prompt", "brand_id", "asset_type", "rights"],
+      "indexing": "elasticsearch"
+    },
+    "organization": {
+      "taxonomy": ["brand", "product_line", "season", "asset_type", "usage_rights"],
+      "tagging": "auto_and_manual",
+      "search": "semantic_search"
+    }
+  },
+  "agent_interaction_rules": {
+    "no_cross_agent_overwrites": true,
+    "validation_required_before_merge": true,
+    "deterministic_testable_artifacts": false,
+    "reproducible_results": "best_effort",
+    "quality_gates": true
+  },
+  "failure_policy": {
+    "never_skip": true,
+    "always_record_failures": true,
+    "uncertainty_statement": "I cannot confirm this without testing.",
+    "automatic_fallback": true,
+    "quality_threshold_enforcement": true
+  },
+  "deliverables_per_cycle": [
+    "High-fidelity visuals (images/videos)",
+    "Asset metadata + tagging",
+    "Brand consistency reports",
+    "Quality assurance metrics",
+    "CDN deployment manifests",
+    "CHANGELOG.md"
+  ],
+  "created_at": "2025-11-04T16:00:00Z",
+  "last_updated": "2025-11-04T16:00:00Z",
+  "maintainer": "DevSkyy Platform Team"
+}

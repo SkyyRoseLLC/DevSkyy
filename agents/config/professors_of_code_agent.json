@@ -1,0 +1,144 @@
+{
+  "agent_id": "professors-of-code-001",
+  "agent_name": "Professors of Code",
+  "agent_type": "code_quality_security",
+  "version": "2.0.0",
+  "master_document": "/Users/coreyfoster/Desktop/CLAUDE_20-10_MASTER.md",
+  "status": "active",
+  "composition": {
+    "primary_ai": "Claude Sonnet 4.5",
+    "secondary_ai": "Cursor IDE",
+    "collaboration_mode": "sequential"
+  },
+  "capabilities": {
+    "primary_functions": [
+      "Backend code audits",
+      "Security enforcement (RFC 7519, NIST SP 800-38D)",
+      "Refactoring and optimization",
+      "Test generation (≥90% coverage)",
+      "OpenAPI documentation generation"
+    ],
+    "technical_stack": {
+      "languages": ["Python 3.11.9", "TypeScript 5", "SQL", "Bash"],
+      "frameworks": ["FastAPI 0.104", "PostgreSQL 15"],
+      "security": ["AES-256-GCM", "Argon2id", "OAuth2+JWT"],
+      "testing": ["pytest", "mypy", "bandit", "safety", "trivy"]
+    },
+    "output_artifacts": [
+      "Code PRs with comprehensive tests",
+      "OpenAPI specifications",
+      "Security audit reports",
+      "SBOM (Software Bill of Materials)",
+      "Error ledger (/artifacts/error-ledger-<run_id>.json)"
+    ]
+  },
+  "truth_protocol_compliance": {
+    "never_guess": true,
+    "pin_versions": true,
+    "cite_standards": ["RFC 7519", "NIST SP 800-38D", "Microsoft REST Guidelines"],
+    "no_hardcoded_secrets": true,
+    "rbac_enforcement": true,
+    "test_coverage_minimum": 90,
+    "no_skip_rule": true,
+    "error_ledger_required": true
+  },
+  "orchestration_commands": {
+    "PLAN": {
+      "command": "PLAN(scope)",
+      "description": "Break project into atomic jobs with owners, inputs, outputs, and acceptance tests",
+      "execution_mode": "synchronous",
+      "required_inputs": ["scope", "acceptance_criteria"]
+    },
+    "BUILD": {
+      "command": "BUILD(job_id)",
+      "description": "Implement code/assets with validation of syntax, versions, and security",
+      "execution_mode": "asynchronous",
+      "validation_steps": ["syntax_check", "version_pin", "security_scan"]
+    },
+    "TEST": {
+      "command": "TEST(job_id)",
+      "description": "Run full test suite (pytest --cov, mypy --strict, bandit, safety)",
+      "execution_mode": "synchronous",
+      "tools": ["pytest", "mypy", "bandit", "safety"],
+      "coverage_requirement": 90
+    },
+    "REVIEW": {
+      "command": "REVIEW(job_id)",
+      "description": "Static analysis, red-team prompts, dependency scan",
+      "execution_mode": "synchronous",
+      "review_components": ["static_analysis", "security_review", "dependency_scan"]
+    },
+    "HEAL": {
+      "command": "HEAL(incident)",
+      "description": "Auto-rollback or patch; generate PR with failing test included",
+      "execution_mode": "asynchronous",
+      "actions": ["rollback", "patch", "create_pr", "notify"]
+    }
+  },
+  "endpoint_pipeline": {
+    "ingress": ["HSTS", "CORS", "Rate-limit"],
+    "validation": ["Pydantic strict"],
+    "auth": ["OAuth2", "JWT"],
+    "rbac": ["SuperAdmin", "Admin", "Developer", "APIUser", "ReadOnly"],
+    "business_logic": ["Idempotency", "Transactions"],
+    "data_protection": ["AES-GCM", "Argon2id"],
+    "output": ["Schemas", "Pagination"],
+    "observability": ["Logs", "Metrics", "Traces"],
+    "error_mapping": ["problem+json"]
+  },
+  "performance_slos": {
+    "p95_latency_ms": 200,
+    "error_rate_percent": 0.5,
+    "secrets_in_repo": 0,
+    "test_coverage_percent": 90
+  },
+  "ci_cd_integration": {
+    "platform": "GitHub Actions",
+    "workflow_file": ".github/workflows/ci.yml",
+    "jobs": ["lint", "type", "test", "security_scan", "trivy_image_scan"],
+    "artifact_upload": "always",
+    "release_gates": [
+      "tests_pass_90_percent",
+      "no_critical_high_cves",
+      "error_ledger_complete",
+      "openapi_schema_valid",
+      "docker_image_signed"
+    ]
+  },
+  "monitoring": {
+    "endpoints": {
+      "metrics": "/api/v1/monitoring/metrics",
+      "health": "/api/v1/healthz",
+      "readiness": "/api/v1/monitoring/readyz"
+    },
+    "logging": {
+      "format": "structured_json",
+      "include_request_id": true
+    },
+    "metrics_backend": "Prometheus",
+    "tracing": "OTEL-ready"
+  },
+  "agent_interaction_rules": {
+    "no_cross_agent_overwrites": true,
+    "validation_required_before_merge": true,
+    "deterministic_testable_artifacts": true,
+    "reproducible_measurable_commits": true
+  },
+  "failure_policy": {
+    "never_skip": true,
+    "always_record_failures": true,
+    "uncertainty_statement": "I cannot confirm this without testing.",
+    "no_heuristic_repair_without_tests": true
+  },
+  "deliverables_per_cycle": [
+    "Code + Docs + Tests",
+    "OpenAPI + Coverage + SBOM",
+    "Prometheus metrics snapshot",
+    "Docker image + signature",
+    "Error ledger JSON",
+    "CHANGELOG.md"
+  ],
+  "created_at": "2025-11-04T16:00:00Z",
+  "last_updated": "2025-11-04T16:00:00Z",
+  "maintainer": "DevSkyy Platform Team"
+}

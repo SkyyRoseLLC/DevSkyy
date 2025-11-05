@@ -1,0 +1,88 @@
+{
+  "test_date": "2025-11-04T15:53:02.324947",
+  "total_servers": 6,
+  "passed": 6,
+  "failed": 0,
+  "details": {
+    "Infrastructure": {
+      "passed": true,
+      "file_exists": true,
+      "imports_present": true,
+      "tools_registered": true,
+      "port_configured": true
+    },
+    "Ecommerce": {
+      "passed": true,
+      "file_exists": true,
+      "imports_present": true,
+      "tools_registered": true,
+      "port_configured": true
+    },
+    "WordPress": {
+      "passed": true,
+      "file_exists": true,
+      "imports_present": true,
+      "tools_registered": true,
+      "port_configured": true
+    },
+    "AI/ML": {
+      "passed": true,
+      "file_exists": true,
+      "imports_present": true,
+      "tools_registered": true,
+      "port_configured": true
+    },
+    "Marketing": {
+      "passed": true,
+      "file_exists": true,
+      "imports_present": true,
+      "tools_registered": true,
+      "port_configured": true
+    },
+    "Orchestration": {
+      "passed": true,
+      "file_exists": true,
+      "imports_present": true,
+      "tools_registered": true,
+      "port_configured": true
+    }
+  },
+  "servers": [
+    {
+      "name": "Infrastructure",
+      "port": 5001,
+      "tools_count": 4,
+      "status": "passed"
+    },
+    {
+      "name": "Ecommerce",
+      "port": 5002,
+      "tools_count": 4,
+      "status": "passed"
+    },
+    {
+      "name": "WordPress",
+      "port": 5003,
+      "tools_count": 3,
+      "status": "passed"
+    },
+    {
+      "name": "AI/ML",
+      "port": 5004,
+      "tools_count": 4,
+      "status": "passed"
+    },
+    {
+      "name": "Marketing",
+      "port": 5005,
+      "tools_count": 4,
+      "status": "passed"
+    },
+    {
+      "name": "Orchestration",
+      "port": 5006,
+      "tools_count": 4,
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "agent_id": "data-reasoning-001",
+  "agent_name": "Data & Reasoning",
+  "agent_type": "data_analysis_intelligence",
+  "version": "2.0.0",
+  "master_document": "/Users/coreyfoster/Desktop/CLAUDE_20-10_MASTER.md",
+  "status": "active",
+  "composition": {
+    "primary_ai": "Claude Sonnet 4.5",
+    "secondary_ai": "Google Gemini Pro",
+    "collaboration_mode": "multi_step_reasoning"
+  },
+  "capabilities": {
+    "primary_functions": [
+      "Data retrieval and analysis",
+      "Evaluation harness development",
+      "Prompt routing and optimization",
+      "KPI analysis and reporting",
+      "Predictive analytics"
+    ],
+    "technical_stack": {
+      "data_processing": ["Pandas 2.x", "NumPy", "Polars"],
+      "ml_frameworks": ["Scikit-learn", "XGBoost", "LightGBM"],
+      "databases": ["PostgreSQL 15", "MongoDB", "Redis"],
+      "analytics": ["Apache Superset", "Metabase", "Grafana"],
+      "vector_stores": ["Pinecone", "Weaviate", "Chroma"]
+    },
+    "output_artifacts": [
+      "Evaluation reports with statistical significance",
+      "Prompt routing policies (JSON/YAML)",
+      "KPI dashboards and visualizations",
+      "Predictive model reports",
+      "Data quality assessments"
+    ]
+  },
+  "data_retrieval": {
+    "sources": {
+      "databases": {
+        "postgresql": {
+          "connection_pool": true,
+          "query_optimization": true,
+          "prepared_statements": true
+        },
+        "mongodb": {
+          "aggregation_pipelines": true,
+          "indexes": "auto_optimize",
+          "sharding_aware": true
+        },
+        "redis": {
+          "caching_layer": true,
+          "pub_sub": true,
+          "ttl_management": "automatic"
+        }
+      },
+      "apis": {
+        "rate_limiting": true,
+        "retry_logic": "exponential_backoff",
+        "cache_responses": true
+      },
+      "files": {
+        "formats": ["CSV", "JSON", "Parquet", "Excel"],
+        "compression": ["gzip", "bzip2", "zstd"],
+        "streaming": true
+      }
+    },
+    "data_quality": {
+      "validation": ["schema_check", "null_check", "range_check", "uniqueness_check"],
+      "cleaning": ["outlier_removal", "missing_value_imputation", "deduplication"],
+      "enrichment": ["feature_engineering", "data_augmentation", "external_sources"]
+    }
+  },
+  "evaluation_harness": {
+    "test_types": {
+      "model_evaluation": {
+        "metrics": ["accuracy", "precision", "recall", "f1", "auc_roc"],
+        "cross_validation": "stratified_k_fold",
+        "baseline_comparison": true
+      },
+      "prompt_evaluation": {
+        "criteria": ["relevance", "coherence", "factuality", "safety"],
+        "human_eval": true,
+        "automated_scoring": true,
+        "a_b_testing": true
+      },
+      "system_evaluation": {
+        "latency": "p50_p95_p99",
+        "throughput": "requests_per_second",
+        "error_rate": "percentage",
+        "resource_usage": ["cpu", "memory", "gpu"]
+      }
+    },
+    "reporting": {
+      "formats": ["markdown", "html", "pdf", "json"],
+      "visualizations": ["charts", "tables", "heatmaps", "confusion_matrices"],
+      "statistical_tests": ["t_test", "chi_square", "anova", "mann_whitney"]
+    }
+  },
+  "prompt_routing": {
+    "routing_strategies": {
+      "model_selection": {
+        "factors": ["task_complexity", "cost", "latency", "accuracy_requirements"],
+        "models": {
+          "claude_sonnet": {
+            "use_cases": ["reasoning", "code_generation", "complex_analysis"],
+            "cost_per_1k_tokens": 3.0,
+            "avg_latency_ms": 1200
+          },
+          "gpt4": {
+            "use_cases": ["creative_writing", "general_qa", "summarization"],
+            "cost_per_1k_tokens": 10.0,
+            "avg_latency_ms": 800
+          },
+          "gemini_pro": {
+            "use_cases": ["multimodal", "large_context", "data_analysis"],
+            "cost_per_1k_tokens": 1.25,
+            "avg_latency_ms": 900
+          }
+        }
+      },
+      "prompt_optimization": {
+        "techniques": ["few_shot", "chain_of_thought", "self_consistency", "tree_of_thoughts"],
+        "dynamic_examples": true,
+        "context_compression": true
+      },
+      "fallback_logic": {
+        "primary_failure": "route_to_secondary",
+        "all_failure": "queue_for_retry",
+        "retry_attempts": 3,
+        "backoff_strategy": "exponential"
+      }
+    },
+    "routing_policies": {
+      "format": "YAML",
+      "version_control": true,
+      "hot_reload": true,
+      "validation": "jsonschema"
+    }
+  },
+  "kpi_analysis": {
+    "business_metrics": {
+      "revenue": {
+        "calculations": ["total", "mrr", "arr", "ltv", "cac"],
+        "segments": ["product", "customer_segment", "channel", "region"],
+        "trends": ["daily", "weekly", "monthly", "yearly"]
+      },
+      "customer": {
+        "metrics": ["acquisition", "retention", "churn", "engagement", "nps"],
+        "cohort_analysis": true,
+        "segmentation": ["rfm", "behavioral", "demographic"]
+      },
+      "operational": {
+        "metrics": ["uptime", "error_rate", "response_time", "throughput"],
+        "sla_tracking": true,
+        "anomaly_detection": true
+      }
+    },
+    "visualization": {
+      "dashboards": {
+        "executive": ["revenue", "growth", "key_metrics"],
+        "operational": ["system_health", "performance", "errors"],
+        "product": ["usage", "features", "user_journeys"]
+      },
+      "tools": ["Grafana", "Superset", "Plotly", "D3.js"],
+      "refresh_rate": "real_time"
+    }
+  },
+  "predictive_analytics": {
+    "models": {
+      "time_series": {
+        "algorithms": ["ARIMA", "Prophet", "LSTM"],
+        "use_cases": ["demand_forecasting", "revenue_prediction", "capacity_planning"]
+      },
+      "classification": {
+        "algorithms": ["Random Forest", "XGBoost", "Neural Networks"],
+        "use_cases": ["churn_prediction", "lead_scoring", "fraud_detection"]
+      },
+      "clustering": {
+        "algorithms": ["K-Means", "DBSCAN", "Hierarchical"],
+        "use_cases": ["customer_segmentation", "anomaly_detection", "pattern_discovery"]
+      }
+    },
+    "model_lifecycle": {
+      "training": "automated",
+      "validation": "cross_validation",
+      "deployment": "canary",
+      "monitoring": "real_time",
+      "retraining": "performance_threshold"
+    }
+  },
+  "truth_protocol_compliance": {
+    "never_guess": true,
+    "pin_versions": true,
+    "cite_standards": ["ISO 8601", "Statistical Significance p<0.05", "SQL-92", "JSON Schema"],
+    "no_hardcoded_secrets": true,
+    "rbac_enforcement": true,
+    "test_coverage_minimum": 90,
+    "no_skip_rule": true,
+    "error_ledger_required": true
+  },
+  "orchestration_commands": {
+    "PLAN": {
+      "command": "PLAN(scope)",
+      "description": "Design data analysis pipeline with statistical validation",
+      "execution_mode": "synchronous",
+      "required_inputs": ["data_sources", "analysis_objectives", "success_criteria"]
+    },
+    "BUILD": {
+      "command": "BUILD(job_id)",
+      "description": "Build evaluation harnesses and routing policies",
+      "execution_mode": "asynchronous",
+      "validation_steps": ["schema_validation", "statistical_test", "performance_benchmark"]
+    },
+    "TEST": {
+      "command": "TEST(job_id)",
+      "description": "Validate analysis results with statistical significance",
+      "execution_mode": "synchronous",
+      "tools": ["pytest", "scipy", "statsmodels"],
+      "coverage_requirement": 90
+    },
+    "MONITOR": {
+      "command": "MONITOR(analysis_id)",
+      "description": "Track KPIs and model performance in real-time",
+      "execution_mode": "continuous",
+      "alerts": ["threshold_breach", "anomaly_detected", "data_quality_issue"]
+    },
+    "LEARN": {
+      "command": "LEARN(run)",
+      "description": "Update models and routing policies based on performance",
+      "execution_mode": "scheduled",
+      "frequency": "daily",
+      "auto_deploy": true
+    }
+  },
+  "performance_slos": {
+    "query_latency_p95_ms": 500,
+    "data_freshness_minutes": 5,
+    "model_accuracy_minimum": 85,
+    "dashboard_load_time_ms": 2000,
+    "statistical_significance": 0.95
+  },
+  "data_governance": {
+    "privacy": {
+      "gdpr_compliant": true,
+      "data_anonymization": true,
+      "right_to_erasure": true
+    },
+    "security": {
+      "encryption_at_rest": "AES-256-GCM",
+      "encryption_in_transit": "TLS 1.3",
+      "access_control": "RBAC",
+      "audit_logging": true
+    },
+    "quality": {
+      "data_validation": "automatic",
+      "lineage_tracking": true,
+      "version_control": true
+    }
+  },
+  "agent_interaction_rules": {
+    "no_cross_agent_overwrites": true,
+    "validation_required_before_merge": true,
+    "deterministic_testable_artifacts": true,
+    "reproducible_measurable_commits": true
+  },
+  "failure_policy": {
+    "never_skip": true,
+    "always_record_failures": true,
+    "uncertainty_statement": "I cannot confirm this without testing.",
+    "data_validation_required": true,
+    "statistical_validation_required": true
+  },
+  "deliverables_per_cycle": [
+    "Evaluation reports with p-values",
+    "Routing policies (YAML/JSON)",
+    "KPI dashboards + visualizations",
+    "Predictive model artifacts",
+    "Data quality reports",
+    "CHANGELOG.md"
+  ],
+  "created_at": "2025-11-04T16:00:00Z",
+  "last_updated": "2025-11-04T16:00:00Z",
+  "maintainer": "DevSkyy Platform Team"
+}

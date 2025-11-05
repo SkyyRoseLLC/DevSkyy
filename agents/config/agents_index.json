@@ -1,0 +1,222 @@
+{
+  "index_version": "2.0.0",
+  "master_document": "/Users/coreyfoster/Desktop/CLAUDE_20-10_MASTER.md",
+  "created_at": "2025-11-04T16:00:00Z",
+  "last_updated": "2025-11-04T16:00:00Z",
+  "total_agents": 4,
+  "agents": [
+    {
+      "agent_id": "professors-of-code-001",
+      "agent_name": "Professors of Code",
+      "agent_type": "code_quality_security",
+      "config_file": "/Users/coreyfoster/DevSkyy/agents/config/professors_of_code_agent.json",
+      "status": "active",
+      "priority": 1,
+      "composition": "Claude + Cursor",
+      "primary_function": "Backend audits, refactors, security enforcement",
+      "key_outputs": ["Code PRs", "Tests", "OpenAPI", "Security Reports"],
+      "orchestration_commands": ["PLAN", "BUILD", "TEST", "REVIEW", "HEAL"],
+      "dependencies": {
+        "required": ["Python 3.11.9", "FastAPI 0.104", "PostgreSQL 15"],
+        "optional": ["Redis", "Docker"]
+      }
+    },
+    {
+      "agent_id": "growth-stack-001",
+      "agent_name": "Growth Stack",
+      "agent_type": "growth_marketing_automation",
+      "config_file": "/Users/coreyfoster/DevSkyy/agents/config/growth_stack_agent.json",
+      "status": "active",
+      "priority": 2,
+      "composition": "Claude + ChatGPT",
+      "primary_function": "WordPress themes, landing pages, A/B testing, CX automation",
+      "key_outputs": ["Deployable themes", "Analytics mapping", "A/B test reports"],
+      "orchestration_commands": ["PLAN", "BUILD", "TEST", "DEPLOY", "MONITOR", "LEARN"],
+      "dependencies": {
+        "required": ["WordPress 6.x", "React 18", "TypeScript 5"],
+        "optional": ["Elementor Pro", "WooCommerce", "Google Analytics"]
+      }
+    },
+    {
+      "agent_id": "data-reasoning-001",
+      "agent_name": "Data & Reasoning",
+      "agent_type": "data_analysis_intelligence",
+      "config_file": "/Users/coreyfoster/DevSkyy/agents/config/data_reasoning_agent.json",
+      "status": "active",
+      "priority": 3,
+      "composition": "Claude + Gemini",
+      "primary_function": "Retrieval, eval harnesses, prompt routing, KPI analysis",
+      "key_outputs": ["Eval reports", "Routing policies", "KPI dashboards", "Predictions"],
+      "orchestration_commands": ["PLAN", "BUILD", "TEST", "MONITOR", "LEARN"],
+      "dependencies": {
+        "required": ["Pandas", "PostgreSQL 15", "MongoDB"],
+        "optional": ["Redis", "Pinecone", "Grafana"]
+      }
+    },
+    {
+      "agent_id": "visual-foundry-001",
+      "agent_name": "Visual Foundry",
+      "agent_type": "visual_content_generation",
+      "config_file": "/Users/coreyfoster/DevSkyy/agents/config/visual_foundry_agent.json",
+      "status": "active",
+      "priority": 4,
+      "composition": "HuggingFace + Claude + Gemini + ChatGPT",
+      "primary_function": "Image upscaling, brand-true asset generation, video automation",
+      "key_outputs": ["High-fidelity visuals", "Metadata", "Quality reports"],
+      "orchestration_commands": ["PLAN", "BUILD", "TEST", "REVIEW", "DEPLOY"],
+      "dependencies": {
+        "required": ["PyTorch 2.x", "CUDA 11.8+", "8GB+ VRAM"],
+        "optional": ["TensorFlow", "Runway ML", "Midjourney API"]
+      }
+    }
+  ],
+  "truth_protocol": {
+    "version": "2.0.0",
+    "compliance_required": true,
+    "immutable_rules": [
+      "Never guess - verify all syntax, APIs, security flows",
+      "Pin versions - explicit version numbers required",
+      "Cite standards - RFC 7519, NIST SP 800-38D, etc.",
+      "State uncertainty - use 'I cannot confirm without testing'",
+      "No hard-coded secrets - environment variables only",
+      "RBAC enforcement - roles required",
+      "Input validation - schema, sanitize, block traversal",
+      "Test coverage ≥ 90%",
+      "Document everything - auto-generate docs",
+      "No-skip rule - never skip due to error, log to error ledger",
+      "Languages verified - Python 3.11.*, TypeScript 5.*, SQL, Bash",
+      "Performance SLOs - P95 < 200ms, error rate < 0.5%",
+      "Security baseline - AES-256-GCM, Argon2id, OAuth2+JWT",
+      "Error ledger required - every run and CI cycle",
+      "No fluff - every line executes or verifies"
+    ]
+  },
+  "orchestration_loop": {
+    "steps": [
+      {
+        "step": 1,
+        "name": "PLAN",
+        "description": "Break project into atomic jobs with owners, inputs, outputs, acceptance tests",
+        "mode": "synchronous"
+      },
+      {
+        "step": 2,
+        "name": "BUILD",
+        "description": "Implement code/assets. Validate syntax, versions, security",
+        "mode": "asynchronous"
+      },
+      {
+        "step": 3,
+        "name": "TEST",
+        "description": "Run full suite (pytest --cov, mypy --strict, bandit, safety)",
+        "mode": "synchronous"
+      },
+      {
+        "step": 4,
+        "name": "REVIEW",
+        "description": "Static analysis, red-team prompts, dependency scan",
+        "mode": "synchronous"
+      },
+      {
+        "step": 5,
+        "name": "DEPLOY",
+        "description": "Docker image build, push, canary rollout",
+        "mode": "canary"
+      },
+      {
+        "step": 6,
+        "name": "MONITOR",
+        "description": "Collect Prometheus metrics, detect regressions",
+        "mode": "continuous"
+      },
+      {
+        "step": 7,
+        "name": "HEAL",
+        "description": "Auto-rollback or patch; PR with failing test",
+        "mode": "automatic"
+      },
+      {
+        "step": 8,
+        "name": "LEARN",
+        "description": "Integrate feedback and metrics into future iterations",
+        "mode": "scheduled"
+      },
+      {
+        "step": 9,
+        "name": "REPORT",
+        "description": "Publish CHANGELOG.md, coverage, SBOM, error ledger",
+        "mode": "automatic"
+      }
+    ]
+  },
+  "release_gate_checklist": [
+    "Tests ≥ 90% coverage",
+    "No HIGH/CRITICAL CVEs",
+    "Zero hard-coded secrets",
+    "Error ledger exists",
+    "OpenAPI valid",
+    "Docker signed",
+    "Latency P95 < 200 ms"
+  ],
+  "agent_interaction_rules": {
+    "no_cross_agent_overwrites_without_approval": true,
+    "claude_validates_all_outputs_before_merge": true,
+    "agents_return_deterministic_testable_artifacts": true,
+    "every_commit_reproducible_and_measurable": true
+  },
+  "monitoring": {
+    "health_endpoints": [
+      "/api/v1/healthz",
+      "/api/v1/monitoring/readyz",
+      "/api/v1/monitoring/metrics"
+    ],
+    "logging": {
+      "format": "structured_json",
+      "include_request_id": true
+    },
+    "metrics": {
+      "backend": "Prometheus",
+      "tracing": "OTEL-ready"
+    },
+    "error_ledger": {
+      "path": "/artifacts/error-ledger-<run_id>.json",
+      "required_for_every_build": true
+    }
+  },
+  "gdpr_compliance": {
+    "endpoints": {
+      "export": "/api/v1/gdpr/export",
+      "delete": "/api/v1/gdpr/delete"
+    },
+    "scopes": ["gdpr.export", "gdpr.delete"],
+    "data_retention_days": 30,
+    "anonymization_required": true
+  },
+  "ci_cd": {
+    "platform": "GitHub Actions",
+    "workflow_file": ".github/workflows/ci.yml",
+    "jobs": ["lint", "type", "test", "security_scan", "trivy_image_scan"],
+    "artifacts": "upload_even_on_failure",
+    "release_criteria": [
+      "Tests pass ≥ 90% coverage",
+      "No critical/high CVEs",
+      "Error ledger complete",
+      "OpenAPI schema valid",
+      "Docker image signed and scanned"
+    ]
+  },
+  "deliverables_per_cycle": [
+    "Code + Docs + Tests",
+    "OpenAPI + Coverage + SBOM",
+    "Prometheus metrics snapshot",
+    "Docker image + signature",
+    "Error ledger JSON",
+    "CHANGELOG.md"
+  ],
+  "quick_reference": {
+    "code_quality": "professors-of-code-001",
+    "marketing_growth": "growth-stack-001",
+    "data_analytics": "data-reasoning-001",
+    "visual_content": "visual-foundry-001"
+  }
+}
