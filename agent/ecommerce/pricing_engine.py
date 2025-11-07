@@ -11,6 +11,7 @@ ML-powered dynamic pricing optimization for fashion ecommerce
 
 logger = logging.getLogger(__name__)
 
+
 class DynamicPricingEngine:
     """
     Advanced dynamic pricing with ML
@@ -83,9 +84,7 @@ class DynamicPricingEngine:
                 adjustment *= 0.60  # 40% off for items older than 180 days
 
             # Competitive adjustments with sophisticated pricing strategy
-            competitive_ratio = (
-                base_price / competitor_avg if competitor_avg > 0 else 1.0
-            )
+            competitive_ratio = base_price / competitor_avg if competitor_avg > 0 else 1.0
 
             if competitor_avg * 0.95 < base_price < competitor_avg * 1.05:
                 # Price competitive - maintain position with slight optimization
@@ -100,8 +99,7 @@ class DynamicPricingEngine:
                     adjustment *= 1.0
 
                 logger.debug(
-                    f"💰 Competitive pricing maintained: ratio={competitive_ratio:.3f}"
-                )
+                    f"💰 Competitive pricing maintained: ratio={competitive_ratio:.3f}")
 
             elif base_price > competitor_avg * 1.1:
                 # Price too high - reduce more aggressively
@@ -113,8 +111,7 @@ class DynamicPricingEngine:
                     adjustment *= 0.95
 
                 logger.info(
-                    f"📉 Reducing high price: was {competitive_ratio:.1f}x competitor avg"
-                )
+                    f"📉 Reducing high price: was {competitive_ratio:.1f}x competitor avg")
 
             elif base_price < competitor_avg * 0.9:
                 # Price too low - increase strategically
@@ -126,8 +123,7 @@ class DynamicPricingEngine:
                     adjustment *= 1.05
 
                 logger.info(
-                    f"📈 Increasing low price: was {competitive_ratio:.1f}x competitor avg"
-                )
+                    f"📈 Increasing low price: was {competitive_ratio:.1f}x competitor avg")
 
             # Seasonal adjustments
             adjustment *= season_factor
@@ -176,8 +172,9 @@ class DynamicPricingEngine:
             return {"success": False, "error": str(e)}
 
     async def _calculate_elasticity(
-        self, product_data: Dict, market_data: Dict
-    ) -> float:
+            self,
+            product_data: Dict,
+            market_data: Dict) -> float:
         """Calculate price elasticity of demand"""
         # Simplified elasticity calculation
         # In production, this would use historical price/demand data
@@ -218,8 +215,7 @@ class DynamicPricingEngine:
 
         if product_data.get("inventory", 0) > 100:
             recommendations.append(
-                "High inventory detected - consider promotional pricing"
-            )
+                "High inventory detected - consider promotional pricing")
 
         if product_data.get("age_days", 0) > 90:
             recommendations.append("Product aging - implement clearance strategy")
@@ -334,18 +330,23 @@ class DynamicPricingEngine:
                 "test_id": test_id,
                 "product_id": product_id,
                 "variants": {
-                    "A": {"price": price_variant_a, "traffic_split": 0.5},
-                    "B": {"price": price_variant_b, "traffic_split": 0.5},
+                    "A": {
+                        "price": price_variant_a,
+                        "traffic_split": 0.5},
+                    "B": {
+                        "price": price_variant_b,
+                        "traffic_split": 0.5},
                 },
                 "start_date": datetime.utcnow().isoformat(),
                 "end_date": (
-                    datetime.utcnow() + timedelta(days=duration_days)
-                ).isoformat(),
+                    datetime.utcnow() +
+                    timedelta(
+                        days=duration_days)).isoformat(),
                 "metrics_tracked": [
-                    "conversion_rate",
-                    "revenue_per_visitor",
-                    "cart_additions",
-                    "page_views",
+                            "conversion_rate",
+                            "revenue_per_visitor",
+                            "cart_additions",
+                            "page_views",
                 ],
                 "min_sample_size": 1000,
                 "confidence_level": 0.95,

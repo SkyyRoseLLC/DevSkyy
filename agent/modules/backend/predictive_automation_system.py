@@ -20,6 +20,7 @@ This system provides:
 
 logger = logging.getLogger(__name__)
 
+
 class PredictiveAutomationSystem:
     """Enterprise Predictive Automation System with intelligent issue prevention."""
 
@@ -495,11 +496,11 @@ class PredictiveAutomationSystem:
             pred.get("risk_score", 0.5) for pred in predictions.values()
         ) / len(predictions)
         if avg_risk >= self.thresholds["high"]:
-            risk_assessment["overall_risk"] = "high"
+            risk_assessment["overall_risk"]= "high"
         elif avg_risk >= self.thresholds["medium"]:
-            risk_assessment["overall_risk"] = "medium"
+            risk_assessment["overall_risk"]= "medium"
         else:
-            risk_assessment["overall_risk"] = "low"
+            risk_assessment["overall_risk"]= "low"
 
         return risk_assessment
 
@@ -507,7 +508,7 @@ class PredictiveAutomationSystem:
         self, predictions: Dict[str, Any], risk_assessment: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Generate prevention strategies based on predictions and risk assessment."""
-        strategies = {
+        strategies= {
             "immediate_actions": [],
             "short_term_plans": [],
             "long_term_strategies": [],

@@ -1,4 +1,4 @@
-            import json
+import json
 from datetime import datetime
 
 from collections import defaultdict
@@ -21,6 +21,7 @@ Features:
 """
 
 logger = logging.getLogger(__name__)
+
 
 class EcommerceAnalytics:
     """
@@ -232,8 +233,7 @@ class EcommerceAnalytics:
                         "stage": stage_data["name"],
                         "issue": "High drop-off rate",
                         "improvement_potential": f"{(0.75 - stage_data['conversion_rate']) * 100:.1f}%",
-                    }
-                )
+                    })
 
         return funnel
 

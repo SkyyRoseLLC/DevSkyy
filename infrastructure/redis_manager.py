@@ -20,6 +20,7 @@ Target: <50ms response times, 99.9% cache hit ratio
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class CacheMetrics:
     """Cache performance metrics"""
@@ -46,9 +47,9 @@ class CacheMetrics:
             "hit_ratio": self.hit_ratio,
             "avg_response_time": self.avg_response_time,
             "last_updated": (
-                self.last_updated.isoformat() if self.last_updated else None
-            ),
+                self.last_updated.isoformat() if self.last_updated else None),
         }
+
 
 @dataclass
 class SessionData:
@@ -78,6 +79,7 @@ class SessionData:
         data["created_at"] = datetime.fromisoformat(data["created_at"])
         data["last_accessed"] = datetime.fromisoformat(data["last_accessed"])
         return cls(**data)
+
 
 class RedisManager:
     """Enterprise Redis Manager with connection pooling and advanced features"""
@@ -193,8 +195,7 @@ class RedisManager:
             self.metrics.avg_response_time = operation_time
         else:
             self.metrics.avg_response_time = (
-                self.metrics.avg_response_time * (self.metrics.total_requests - 1)
-                + operation_time
+                self.metrics.avg_response_time * (self.metrics.total_requests - 1) + operation_time
             ) / self.metrics.total_requests
 
         self.metrics.last_updated = datetime.now()
@@ -223,8 +224,7 @@ class RedisManager:
             await self._record_metrics(operation_time, False)  # Set is not a hit
 
             logger.debug(
-                f"Cache SET: {cache_key} (TTL: {ttl}s, Time: {operation_time:.2f}ms)"
-            )
+                f"Cache SET: {cache_key} (TTL: {ttl}s, Time: {operation_time:.2f}ms)")
             return True
 
         except RedisError as e:
@@ -328,15 +328,11 @@ class RedisManager:
 
             # Also store user-to-session mapping
             user_session_key = self._generate_key(
-                "user", f"{session_data.user_id}:session"
-            )
-            await self.redis_client.setex(
-                user_session_key, self.session_ttl, session_id
-            )
+                "user", f"{session_data.user_id}:session")
+            await self.redis_client.setex(user_session_key, self.session_ttl, session_id)
 
             logger.info(
-                f"Session created: {session_id} for user {session_data.user_id}"
-            )
+                f"Session created: {session_id} for user {session_data.user_id}")
             return True
 
         except RedisError as e:
@@ -378,8 +374,7 @@ class RedisManager:
 
                 # Delete user-to-session mapping
                 user_session_key = self._generate_key(
-                    "user", f"{session.user_id}:session"
-                )
+                    "user", f"{session.user_id}:session")
                 await self.redis_client.delete(user_session_key)
 
                 logger.info(f"Session deleted: {session_id}")
@@ -454,6 +449,7 @@ class RedisManager:
                 "connectivity": False,
                 "response_time_ms": (time.time() - start_time) * 1000,
             }
+
 
 # Global Redis manager instance
 redis_manager = RedisManager()

@@ -28,6 +28,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class ScannerAgentV2(BaseAgent):
     """
     Enterprise scanner agent with self-healing and orchestration.

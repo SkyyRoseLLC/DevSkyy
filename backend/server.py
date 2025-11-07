@@ -1,14 +1,22 @@
-import os
-import sys
-
-    import uvicorn
-from main import app
-
 #!/usr/bin/env python3
 """
 Backend server entry point for The Skyy Rose Collection Platform
 This file imports and runs the main FastAPI application.
 """
+
+import os
+import sys
+import logging
+
+import uvicorn
+from main import app
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 # Add the parent directory to the Python path so we can import from main.py
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

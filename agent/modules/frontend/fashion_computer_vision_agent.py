@@ -9,7 +9,7 @@ from diffusers import (
     StableVideoDiffusionPipeline,
     AnimateDiffPipeline,
     MotionAdapter,
-    EulerDiscreteScheduler
+    EulerDiscreteScheduler,
 )
 from openai import AsyncOpenAI
 from transformers import (
@@ -18,7 +18,7 @@ from transformers import (
     ViTImageProcessor,
     ViTModel,
     Blip2Processor,
-    Blip2ForConditionalGeneration
+    Blip2ForConditionalGeneration,
 )
 from typing import Any, Dict, List, Optional, Tuple, Union
 import anthropic
@@ -61,6 +61,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class FashionComputerVisionAgent:
     """
     Advanced computer vision agent specialized in luxury fashion
@@ -86,7 +87,7 @@ class FashionComputerVisionAgent:
             "sdxl": False,
             "svd": False,
             "animatediff": False,
-            "blip2": False
+            "blip2": False,
         }
 
         # Storage paths
@@ -98,14 +99,17 @@ class FashionComputerVisionAgent:
         # Load core models
         self._load_core_models()
 
-        logger.info("🎨 Fashion Computer Vision Agent initialized with video generation capabilities")
+        logger.info(
+            "🎨 Fashion Computer Vision Agent initialized with video generation capabilities"
+        )
 
     def _load_core_models(self):
         """Load core models for fashion analysis and generation."""
         # Load CLIP for fashion understanding
         try:
             self.clip_model = CLIPModel.from_pretrained("openai/clip-vit-large-patch14")
-            self.clip_processor = CLIPProcessor.from_pretrained("openai/clip-vit-large-patch14")
+            self.clip_processor = CLIPProcessor.from_pretrained(
+                "openai/clip-vit-large-patch14")
             self.clip_model.to(self.device)
             self._models_loaded["clip"] = True
             logger.info("✅ CLIP model loaded for fashion analysis")
@@ -115,7 +119,8 @@ class FashionComputerVisionAgent:
 
         # Load ViT for detailed image features
         try:
-            self.vit_processor = ViTImageProcessor.from_pretrained("google/vit-large-patch16-224")
+            self.vit_processor = ViTImageProcessor.from_pretrained(
+                "google/vit-large-patch16-224")
             self.vit_model = ViTModel.from_pretrained("google/vit-large-patch16-224")
             self.vit_model.to(self.device)
             self._models_loaded["vit"] = True
@@ -126,10 +131,11 @@ class FashionComputerVisionAgent:
 
         # Load BLIP-2 for image captioning
         try:
-            self.blip2_processor = Blip2Processor.from_pretrained("Salesforce/blip2-opt-2.7b")
+            self.blip2_processor = Blip2Processor.from_pretrained(
+                "Salesforce/blip2-opt-2.7b")
             self.blip2_model = Blip2ForConditionalGeneration.from_pretrained(
                 "Salesforce/blip2-opt-2.7b",
-                torch_dtype=torch.float16 if self.device == "cuda" else torch.float32
+                torch_dtype=torch.float16 if self.device == "cuda" else torch.float32,
             )
             self.blip2_model.to(self.device)
             self._models_loaded["blip2"] = True
@@ -164,7 +170,7 @@ class FashionComputerVisionAgent:
                 self.svd_pipeline = StableVideoDiffusionPipeline.from_pretrained(
                     "stabilityai/stable-video-diffusion-img2vid-xt",
                     torch_dtype=torch.float16 if self.device == "cuda" else torch.float32,
-                    variant="fp16" if self.device == "cuda" else None
+                    variant="fp16" if self.device == "cuda" else None,
                 )
                 self.svd_pipeline.to(self.device)
                 self._models_loaded["svd"] = True
@@ -176,15 +182,15 @@ class FashionComputerVisionAgent:
         # Load AnimateDiff
         if not self._models_loaded["animatediff"]:
             try:
-                adapter = MotionAdapter.from_pretrained("guoyww/animatediff-motion-adapter-v1-5-2")
+                adapter = MotionAdapter.from_pretrained(
+                    "guoyww/animatediff-motion-adapter-v1-5-2")
                 self.animatediff_pipeline = AnimateDiffPipeline.from_pretrained(
                     "runwayml/stable-diffusion-v1-5",
                     motion_adapter=adapter,
-                    torch_dtype=torch.float16 if self.device == "cuda" else torch.float32
+                    torch_dtype=torch.float16 if self.device == "cuda" else torch.float32,
                 )
                 self.animatediff_pipeline.scheduler = EulerDiscreteScheduler.from_config(
-                    self.animatediff_pipeline.scheduler.config
-                )
+                    self.animatediff_pipeline.scheduler.config)
                 self.animatediff_pipeline.to(self.device)
                 self._models_loaded["animatediff"] = True
                 logger.info("✅ AnimateDiff loaded for animation generation")
@@ -194,15 +200,20 @@ class FashionComputerVisionAgent:
 
     def _unload_model(self, model_name: str):
         """Unload a specific model to free GPU memory."""
-        if model_name == "sdxl" and hasattr(self, 'sdxl_pipeline') and self.sdxl_pipeline:
+        if model_name == "sdxl" and hasattr(
+                self, "sdxl_pipeline") and self.sdxl_pipeline:
             del self.sdxl_pipeline
             self.sdxl_pipeline = None
             self._models_loaded["sdxl"] = False
-        elif model_name == "svd" and hasattr(self, 'svd_pipeline') and self.svd_pipeline:
+        elif model_name == "svd" and hasattr(self, "svd_pipeline") and self.svd_pipeline:
             del self.svd_pipeline
             self.svd_pipeline = None
             self._models_loaded["svd"] = False
-        elif model_name == "animatediff" and hasattr(self, 'animatediff_pipeline') and self.animatediff_pipeline:
+        elif (
+            model_name == "animatediff"
+            and hasattr(self, "animatediff_pipeline")
+            and self.animatediff_pipeline
+        ):
             del self.animatediff_pipeline
             self.animatediff_pipeline = None
             self._models_loaded["animatediff"] = False
@@ -366,9 +377,7 @@ class FashionComputerVisionAgent:
             )
 
             return {
-                "primary_fabric": (
-                    fabric_predictions[0] if fabric_predictions else "unknown"
-                ),
+                "primary_fabric": (fabric_predictions[0] if fabric_predictions else "unknown"),
                 "fabric_confidence": fabric_predictions[1] if fabric_predictions else 0,
                 "alternative_fabrics": (
                     fabric_predictions[2:] if len(fabric_predictions) > 2 else []
@@ -393,8 +402,7 @@ class FashionComputerVisionAgent:
         gabor_kernels = []
         for theta in np.arange(0, np.pi, np.pi / 4):
             kernel = cv2.getGaborKernel(
-                (21, 21), 5.0, theta, 10.0, 0.5, 0, ktype=cv2.CV_32F
-            )
+                (21, 21), 5.0, theta, 10.0, 0.5, 0, ktype=cv2.CV_32F)
             gabor_kernels.append(kernel)
 
         features = []
@@ -482,8 +490,8 @@ class FashionComputerVisionAgent:
         Get characteristics of identified fabric.
         """
         return self.fabric_types.get(
-            fabric_type, {"characteristics": [], "visual_cues": []}
-        )
+            fabric_type, {
+                "characteristics": [], "visual_cues": []})
 
     async def _analyze_stitching(self, image: Image.Image) -> Dict[str, Any]:
         """
@@ -504,9 +512,8 @@ class FashionComputerVisionAgent:
             stitch_count = len(lines) if lines is not None else 0
 
             # Analyze stitch uniformity
-            uniformity = (
-                self._analyze_stitch_uniformity(lines) if lines is not None else 0
-            )
+            uniformity = self._analyze_stitch_uniformity(
+                lines) if lines is not None else 0
 
             # Detect stitch type
             stitch_types = self._detect_stitch_types(edges, lines)
@@ -515,10 +522,7 @@ class FashionComputerVisionAgent:
                 "stitches_detected": stitch_count,
                 "stitch_uniformity": uniformity,
                 "stitch_quality": (
-                    "excellent"
-                    if uniformity > 0.8
-                    else "good" if uniformity > 0.6 else "fair"
-                ),
+                    "excellent" if uniformity > 0.8 else "good" if uniformity > 0.6 else "fair"),
                 "detected_stitch_types": stitch_types,
                 "visible_stitching": stitch_count > 10,
             }
@@ -548,9 +552,8 @@ class FashionComputerVisionAgent:
 
         return 0.0
 
-    def _detect_stitch_types(
-        self, edges: np.ndarray, lines: Optional[np.ndarray]
-    ) -> List[str]:
+    def _detect_stitch_types(self, edges: np.ndarray,
+                             lines: Optional[np.ndarray]) -> List[str]:
         """
         Detect types of stitches present.
         """
@@ -565,8 +568,7 @@ class FashionComputerVisionAgent:
 
         # Detect zigzag patterns
         contours, _ = cv2.findContours(
-            edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
-        )
+            edges, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         for contour in contours:
             if len(contour) > 10:
                 # Approximate contour
@@ -591,8 +593,7 @@ class FashionComputerVisionAgent:
             _, binary = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY)
 
             contours, _ = cv2.findContours(
-                binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE
-            )
+                binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
             if contours:
                 # Get largest contour (garment outline)
@@ -613,13 +614,10 @@ class FashionComputerVisionAgent:
                 return {
                     "cut_type": silhouette_type,
                     "cut_description": self.garment_cuts.get(
-                        silhouette_type, "Unknown cut"
-                    ),
+                        silhouette_type,
+                        "Unknown cut"),
                     "fit_type": (
-                        "fitted"
-                        if solidity > 0.8
-                        else "flowing" if solidity < 0.5 else "semi_fitted"
-                    ),
+                        "fitted" if solidity > 0.8 else "flowing" if solidity < 0.5 else "semi_fitted"),
                     "silhouette_complexity": len(largest_contour),
                     "shape_metrics": {
                         "area": float(area),
@@ -693,15 +691,8 @@ class FashionComputerVisionAgent:
             # Overall quality score
             quality_score = (sharpness / 1000 + color_consistency) / 2
 
-            quality_level = (
-                "excellent"
-                if quality_score > 0.8
-                else (
-                    "good"
-                    if quality_score > 0.6
-                    else "fair" if quality_score > 0.4 else "poor"
-                )
-            )
+            quality_level = ("excellent" if quality_score > 0.8 else (
+                "good" if quality_score > 0.6 else "fair" if quality_score > 0.4 else "poor"))
 
             return {
                 "quality_score": float(min(1.0, quality_score)),
@@ -945,7 +936,9 @@ Provide detailed, expert fashion analysis.""",
 
             # Default negative prompt for fashion
             if not negative_prompt:
-                negative_prompt = "low quality, blurry, distorted, amateur, bad anatomy, watermark, text, logo"
+                negative_prompt = (
+                    "low quality, blurry, distorted, amateur, bad anatomy, watermark, text, logo"
+                )
 
             # Generate image
             image = self.sdxl_pipeline(
@@ -986,7 +979,7 @@ Provide detailed, expert fashion analysis.""",
         width: int = 1024,
         height: int = 576,
         style: str = "luxury fashion runway",
-        upscale: bool = True
+        upscale: bool = True,
     ) -> Dict[str, Any]:
         """
         Generate luxury fashion runway videos using Stable Video Diffusion.
@@ -1009,10 +1002,10 @@ Provide detailed, expert fashion analysis.""",
             # Load video generation models
             await self._load_video_generation_models()
 
-            if not hasattr(self, 'svd_pipeline') or not self.svd_pipeline:
+            if not hasattr(self, "svd_pipeline") or not self.svd_pipeline:
                 return {
                     "error": "Video generation not available - SVD not loaded",
-                    "status": "failed"
+                    "status": "failed",
                 }
 
             # First generate a high-quality image as the starting frame
@@ -1032,7 +1025,9 @@ Provide detailed, expert fashion analysis.""",
                     guidance_scale=7.5,
                 ).images[0]
             else:
-                return {"error": "Image generation required for video creation", "status": "failed"}
+                return {
+                    "error": "Image generation required for video creation",
+                    "status": "failed"}
 
             # Generate video from image
             num_frames = duration * fps
@@ -1042,20 +1037,17 @@ Provide detailed, expert fashion analysis.""",
                 num_frames=num_frames,
                 motion_bucket_id=127,  # Higher motion
                 fps=fps,
-                noise_aug_strength=0.1
+                noise_aug_strength=0.1,
             ).frames[0]
 
             # Save video
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             filename = f"runway_video_{timestamp}.mp4"
             output_path = self.video_storage / filename
 
             # Convert frames to video using moviepy
             await self._frames_to_video(
-                video_frames,
-                output_path,
-                fps,
-                upscale_target=(2048, 1152) if upscale else None
+                video_frames, output_path, fps, upscale_target=(2048, 1152) if upscale else None
             )
 
             # Unload video model to free memory
@@ -1081,7 +1073,7 @@ Provide detailed, expert fashion analysis.""",
         product_image_path: Union[str, Path],
         rotation_steps: int = 24,
         duration: int = 3,
-        upscale: bool = True
+        upscale: bool = True,
     ) -> Dict[str, Any]:
         """
         Generate 360° product rotation video using AnimateDiff.
@@ -1101,10 +1093,12 @@ Provide detailed, expert fashion analysis.""",
             # Load video generation models
             await self._load_video_generation_models()
 
-            if not hasattr(self, 'animatediff_pipeline') or not self.animatediff_pipeline:
+            if not hasattr(
+                    self,
+                    "animatediff_pipeline") or not self.animatediff_pipeline:
                 return {
                     "error": "Product animation not available - AnimateDiff not loaded",
-                    "status": "failed"
+                    "status": "failed",
                 }
 
             # Load and preprocess product image
@@ -1112,7 +1106,9 @@ Provide detailed, expert fashion analysis.""",
 
             # Generate rotation prompt
             rotation_prompt = f"luxury fashion product rotating 360 degrees, smooth rotation, professional product photography, studio lighting, white background, high quality, detailed texture"
-            negative_prompt = "blurry, distorted, multiple products, hands, people, low quality, amateur"
+            negative_prompt = (
+                "blurry, distorted, multiple products, hands, people, low quality, amateur"
+            )
 
             # Generate rotation video
             video_frames = self.animatediff_pipeline(
@@ -1121,11 +1117,11 @@ Provide detailed, expert fashion analysis.""",
                 num_frames=rotation_steps,
                 guidance_scale=7.5,
                 num_inference_steps=25,
-                generator=torch.Generator(device=self.device).manual_seed(42)
+                generator=torch.Generator(device=self.device).manual_seed(42),
             ).frames[0]
 
             # Save video
-            timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             filename = f"product_360_{timestamp}.mp4"
             output_path = self.video_storage / filename
 
@@ -1133,10 +1129,7 @@ Provide detailed, expert fashion analysis.""",
 
             # Convert frames to video
             await self._frames_to_video(
-                video_frames,
-                output_path,
-                fps,
-                upscale_target=(2048, 2048) if upscale else None
+                video_frames, output_path, fps, upscale_target=(2048, 2048) if upscale else None
             )
 
             # Unload animation model to free memory
@@ -1162,7 +1155,7 @@ Provide detailed, expert fashion analysis.""",
         frames: List[Image.Image],
         output_path: Path,
         fps: int,
-        upscale_target: Optional[Tuple[int, int]] = None
+        upscale_target: Optional[Tuple[int, int]] = None,
     ):
         """
         Convert frames to MP4 video with H.264 encoding.
@@ -1173,6 +1166,7 @@ Provide detailed, expert fashion analysis.""",
             fps: Frames per second
             upscale_target: Target resolution for upscaling (width, height)
         """
+
         def process_frames():
             # Convert PIL images to numpy arrays
             frame_arrays = []
@@ -1190,20 +1184,18 @@ Provide detailed, expert fashion analysis.""",
             # Write video with H.264 encoding
             clip.write_videofile(
                 str(output_path),
-                codec='libx264',
+                codec="libx264",
                 audio=False,
                 verbose=False,
                 logger=None,
                 temp_audiofile_path=None,
-                remove_temp=True
+                remove_temp=True,
             )
 
             clip.close()
 
         # Run in thread pool to avoid blocking
-        await asyncio.get_event_loop().run_in_executor(
-            self.executor, process_frames
-        )
+        await asyncio.get_event_loop().run_in_executor(self.executor, process_frames)
 
         logger.info(f"✅ Video saved: {output_path}")
 
@@ -1218,7 +1210,7 @@ Provide detailed, expert fashion analysis.""",
             Generated caption string
         """
         try:
-            if not hasattr(self, 'blip2_model') or not self.blip2_model:
+            if not hasattr(self, "blip2_model") or not self.blip2_model:
                 return "luxury fashion item"
 
             # Load image
@@ -1241,9 +1233,7 @@ Provide detailed, expert fashion analysis.""",
             return "luxury fashion item"
 
     async def upscale_video(
-        self,
-        video_path: Union[str, Path],
-        target_resolution: Tuple[int, int] = (2048, 1152)
+        self, video_path: Union[str, Path], target_resolution: Tuple[int, int] = (2048, 1152)
     ) -> Dict[str, Any]:
         """
         Upscale video to higher resolution using advanced interpolation.
@@ -1266,16 +1256,15 @@ Provide detailed, expert fashion analysis.""",
                 upscaled_clip = clip.resize(target_resolution)
 
                 # Save upscaled video
-                timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
                 upscaled_path = self.video_storage / f"upscaled_{timestamp}.mp4"
 
                 upscaled_clip.write_videofile(
                     str(upscaled_path),
-                    codec='libx264',
+                    codec="libx264",
                     audio=False,
                     verbose=False,
-                    logger=None
-                )
+                    logger=None)
 
                 clip.close()
                 upscaled_clip.close()
@@ -1292,37 +1281,47 @@ Provide detailed, expert fashion analysis.""",
                 "upscaled_video_path": str(upscaled_path),
                 "original_video_path": str(video_path),
                 "target_resolution": target_resolution,
-                "timestamp": datetime.now().isoformat()
+                "timestamp": datetime.now().isoformat(),
             }
 
         except Exception as e:
             logger.error(f"❌ Video upscaling failed: {e}")
             return {"error": str(e), "status": "failed"}
 
+
 # Factory function
 def create_fashion_vision_agent() -> FashionComputerVisionAgent:
     """Create Fashion Computer Vision Agent instance."""
     return FashionComputerVisionAgent()
 
+
 # Global instance
 fashion_vision_agent = create_fashion_vision_agent()
+
 
 # Convenience functions
 async def analyze_garment(image_path: Union[str, Path]) -> Dict[str, Any]:
     """Analyze fashion garment from image."""
     return await fashion_vision_agent.analyze_fashion_image(image_path)
 
+
 async def generate_fashion_photo(prompt: str, style: str = "luxury") -> Dict[str, Any]:
     """Generate fashion photography."""
     return await fashion_vision_agent.generate_fashion_image(prompt, style)
 
-async def generate_runway_video(prompt: str, duration: int = 4, fps: int = 8) -> Dict[str, Any]:
+
+async def generate_runway_video(
+        prompt: str, duration: int = 4, fps: int = 8) -> Dict[str, Any]:
     """Generate luxury fashion runway video."""
     return await fashion_vision_agent.generate_fashion_runway_video(prompt, duration, fps)
 
-async def generate_product_rotation(product_image_path: Union[str, Path], rotation_steps: int = 24) -> Dict[str, Any]:
+
+async def generate_product_rotation(
+    product_image_path: Union[str, Path], rotation_steps: int = 24
+) -> Dict[str, Any]:
     """Generate 360° product rotation video."""
     return await fashion_vision_agent.generate_product_360_video(product_image_path, rotation_steps)
+
 
 async def caption_image(image_path: Union[str, Path]) -> str:
     """Generate automatic caption for fashion image."""

@@ -18,6 +18,7 @@ Implements secure session management with Redis backend and fashion industry fea
 
 logger = logging.getLogger(__name__)
 
+
 class SessionMiddleware(BaseHTTPMiddleware):
     """Enterprise session middleware with Redis backend"""
 
@@ -77,8 +78,7 @@ class SessionMiddleware(BaseHTTPMiddleware):
                     request.state.fashion_preferences = session_data.fashion_preferences
 
                 logger.debug(
-                    f"Session loaded: {session_id} for user {session_data.user_id}"
-                )
+                    f"Session loaded: {session_id} for user {session_data.user_id}")
             else:
                 # Invalid session ID
                 logger.warning(f"Invalid session ID: {session_id}")
@@ -91,10 +91,8 @@ class SessionMiddleware(BaseHTTPMiddleware):
 
         # Check if session is required for this path
         path = request.url.path
-        requires_session = any(
-            path.startswith(protected_path)
-            for protected_path in self.require_session_for_paths
-        )
+        requires_session = any(path.startswith(protected_path)
+                               for protected_path in self.require_session_for_paths)
 
         if requires_session and not session_data:
             return JSONResponse(
@@ -218,6 +216,7 @@ class SessionMiddleware(BaseHTTPMiddleware):
 
         return False
 
+
 class SessionManager:
     """Session management utilities"""
 
@@ -291,10 +290,12 @@ class SessionManager:
             "fashion_tracking": self.middleware.fashion_tracking_enabled,
         }
 
+
 # Dependency for FastAPI routes
 async def get_current_session(request: Request) -> Optional[SessionData]:
     """FastAPI dependency to get current session"""
     return SessionManager.get_session_data(request)
+
 
 async def require_authentication(request: Request) -> SessionData:
     """FastAPI dependency that requires authentication"""
@@ -307,6 +308,7 @@ async def require_authentication(request: Request) -> SessionData:
 
     return session_data
 
+
 async def require_fashion_expert(request: Request) -> SessionData:
     """FastAPI dependency that requires fashion expert role"""
     session_data = await require_authentication(request)
@@ -317,6 +319,7 @@ async def require_fashion_expert(request: Request) -> SessionData:
         )
 
     return session_data
+
 
 # Global session manager instance
 session_middleware = SessionMiddleware(None)  # App will be set during initialization

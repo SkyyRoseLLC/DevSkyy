@@ -8,6 +8,7 @@ import subprocess
 
 logger = logging.getLogger(__name__)
 
+
 def commit_fixes(fixes_applied: Dict[str, Any]) -> Dict[str, Any]:
     """
     Commit code fixes to Git repository with detailed commit messages.
@@ -55,6 +56,7 @@ def commit_fixes(fixes_applied: Dict[str, Any]) -> Dict[str, Any]:
             "error": str(e),
             "timestamp": datetime.now().isoformat(),
         }
+
 
 def commit_all_changes() -> Dict[str, Any]:
     """
@@ -108,13 +110,13 @@ def commit_all_changes() -> Dict[str, Any]:
             "timestamp": datetime.now().isoformat(),
         }
 
+
 def _init_git_repo() -> Dict[str, Any]:
     """Initialize a new Git repository."""
     try:
         # Initialize repo
         result = subprocess.run(
-            ["git", "init"], capture_output=True, text=True, timeout=30
-        )
+            ["git", "init"], capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
             return {"status": "failed", "error": "Failed to initialize Git repository"}
 
@@ -178,6 +180,7 @@ backup_*/
     except Exception as e:
         return {"status": "failed", "error": str(e)}
 
+
 def _configure_git() -> None:
     """Configure Git with default settings."""
     try:
@@ -186,9 +189,8 @@ def _configure_git() -> None:
             ["git", "config", "user.name"], capture_output=True, text=True, timeout=10
         )
         if result.returncode != 0 or not result.stdout.strip():
-            subprocess.run(
-                ["git", "config", "user.name", "DevSkyy Enhanced Platform"], timeout=10
-            )
+            subprocess.run(["git", "config", "user.name",
+                           "DevSkyy Enhanced Platform"], timeout=10)
 
         # Check if user.email is configured
         result = subprocess.run(
@@ -204,6 +206,7 @@ def _configure_git() -> None:
 
     except Exception as e:
         logger.warning(f"⚠️ Git configuration warning: {str(e)}")
+
 
 def _git_status() -> Dict[str, Any]:
     """Check Git repository status."""
@@ -224,13 +227,13 @@ def _git_status() -> Dict[str, Any]:
     except Exception as e:
         return {"has_changes": False, "error": str(e)}
 
+
 def _git_add_files() -> Dict[str, Any]:
     """Add modified files to Git staging area."""
     try:
         # Add Python files
-        subprocess.run(
-            ["git", "add", "*.py"], capture_output=True, text=True, timeout=30
-        )
+        subprocess.run(["git", "add", "*.py"],
+                       capture_output=True, text=True, timeout=30)
 
         # Add other important files
         important_files = ["main.py", "README.md", ".gitignore"]
@@ -255,12 +258,12 @@ def _git_add_files() -> Dict[str, Any]:
     except Exception as e:
         return {"success": False, "error": str(e)}
 
+
 def _git_add_all() -> Dict[str, Any]:
     """Add all files to Git staging area."""
     try:
-        result = subprocess.run(
-            ["git", "add", "."], capture_output=True, text=True, timeout=30
-        )
+        result = subprocess.run(["git", "add", "."],
+                                capture_output=True, text=True, timeout=30)
         if result.returncode != 0:
             return {"success": False, "error": "Failed to add files to Git"}
 
@@ -280,6 +283,7 @@ def _git_add_all() -> Dict[str, Any]:
 
     except Exception as e:
         return {"success": False, "error": str(e)}
+
 
 def _git_commit(message: str) -> Dict[str, Any]:
     """Commit staged changes with the provided message."""
@@ -311,7 +315,8 @@ def _git_commit(message: str) -> Dict[str, Any]:
                 commit_hash = hash_result.stdout.strip()[:8]  # Short hash
                 logger.debug(f"📋 Extracted commit hash: {commit_hash}")
             else:
-                logger.warning(f"⚠️ Failed to extract commit hash: {hash_result.stderr}")
+                logger.warning(
+                    f"⚠️ Failed to extract commit hash: {hash_result.stderr}")
         except subprocess.TimeoutExpired:
             logger.warning("⏰ Timeout while extracting commit hash")
         except subprocess.CalledProcessError as e:
@@ -326,13 +331,13 @@ def _git_commit(message: str) -> Dict[str, Any]:
     except Exception as e:
         return {"success": False, "error": str(e)}
 
+
 def _git_push() -> Dict[str, Any]:
     """Push commits to remote repository."""
     try:
         # Check if remote exists
         result = subprocess.run(
-            ["git", "remote"], capture_output=True, text=True, timeout=10
-        )
+            ["git", "remote"], capture_output=True, text=True, timeout=10)
         if result.returncode != 0 or not result.stdout.strip():
             return {"success": False, "error": "No remote repository configured"}
 
@@ -368,6 +373,7 @@ def _git_push() -> Dict[str, Any]:
 
     except Exception as e:
         return {"success": False, "error": str(e)}
+
 
 def _generate_commit_message(fixes_applied: Dict[str, Any]) -> str:
     """Generate detailed commit message based on fixes applied."""

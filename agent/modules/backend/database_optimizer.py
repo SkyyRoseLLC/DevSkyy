@@ -15,6 +15,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class QueryOptimizer:
     """Database query optimization and performance monitoring."""
 
@@ -148,6 +149,7 @@ class QueryOptimizer:
             "optimization_recommendations": len(self.index_recommendations),
         }
 
+
 class DatabaseConnectionPool:
     """Optimized database connection pool with query caching."""
 
@@ -165,15 +167,15 @@ class DatabaseConnectionPool:
         }
         self.query_optimizer = QueryOptimizer(
             async def execute_query(
-                self, query: str, params: Dict = None, use_cache: bool = True
+                self, query: str, params: Dict=None, use_cache: bool=True
 ) -> Any:
         """Execute query with optimization and caching."""
-        start_time = time.time()
+        start_time=time.time()
 
         # Check cache first
         if use_cache:
-            cache_key = self._get_cache_key(query, params)
-            cached_result = self.query_optimizer.query_cache.get(cache_key)
+            cache_key=self._get_cache_key(query, params)
+            cached_result=self.query_optimizer.query_cache.get(cache_key)
             if cached_result:
                 self.query_optimizer.query_stats["cached_queries"] += 1
                 logger.debug(f"Query cache hit: {cache_key}")
@@ -181,17 +183,17 @@ class DatabaseConnectionPool:
 
         # Execute query
         try:
-            connection = await self.get_connection()
-            result = await self._execute_with_connection(connection, query, params)
+            connection=await self.get_connection()
+            result=await self._execute_with_connection(connection, query, params)
             await self.return_connection(connection)
 
             # Cache result if enabled
             if use_cache and result:
-                self.query_optimizer.query_cache[cache_key] = result
+                self.query_optimizer.query_cache[cache_key]=result
 
             # Analyze query performance
-            execution_time = time.time() - start_time
-            analysis = self.query_optimizer.analyze_query(query, execution_time, params)
+            execution_time=time.time() - start_time
+            analysis=self.query_optimizer.analyze_query(query, execution_time, params)
 
             if analysis["is_slow"]:
                 logger.warning(
@@ -205,14 +207,14 @@ class DatabaseConnectionPool:
             logger.error(f"Query execution error: {e}")
             raise
 
-    def _get_cache_key(self, query: str, params: Dict = None) -> str:
+    def _get_cache_key(self, query: str, params: Dict=None) -> str:
         """Generate cache key for query."""
-        key_data = {"query": query, "params": params or {}}
-        key_string = json.dumps(key_data, sort_keys=True)
+        key_data={"query": query, "params": params or {}}
+        key_string=json.dumps(key_data, sort_keys=True)
         return hashlib.sha256(key_string.encode()).hexdigest()
 
     async def _execute_with_connection(
-        self, connection, query: str, params: Dict = None
+        self, connection, query: str, params: Dict=None
     ) -> Any:
         """Execute query with specific connection."""
         # This would be implemented based on your database driver
@@ -223,18 +225,18 @@ class DatabaseConnectionPool:
         """Get connection from pool."""
         try:
             if not self.connections.empty():
-                connection = await asyncio.wait_for(
+                connection=await asyncio.wait_for(
                     self.connections.get(), timeout=self.connection_timeout
                 )
                 self.connection_stats["reused"] += 1
                 return connection
             elif self.active_connections < self.max_connections:
-                connection = await self._create_connection()
+                connection=await self._create_connection()
                 self.active_connections += 1
                 self.connection_stats["created"] += 1
                 return connection
             else:
-                connection = await asyncio.wait_for(
+                connection=await asyncio.wait_for(
                     self.connections.get(), timeout=self.connection_timeout
                 )
                 self.connection_stats["reused"] += 1
@@ -261,13 +263,13 @@ class DatabaseConnectionPool:
         # Mock connection - implement with actual database driver
         class MockConnection:
             def __init__(self):
-                self.is_closed_flag = False
+                self.is_closed_flag=False
 
             def is_closed(self):
                 return self.is_closed_flag
 
             async def close(self):
-                self.is_closed_flag = True
+                self.is_closed_flag=True
 
         return MockConnection()
 
@@ -285,18 +287,18 @@ class IndexOptimizer:
     """Database index optimization recommendations."""
 
     def __init__(self):
-        self.index_recommendations = []
-        self.existing_indexes = set(
+        self.index_recommendations=[]
+        self.existing_indexes=set(
             def analyze_table(
                 self, table_name: str, query_patterns: List[str]
 ) -> List[Dict[str, Any]]:
         """Analyze table and recommend indexes."""
-        recommendations = []
+        recommendations=[]
 
         # Analyze common query patterns
         for query in query_patterns:
             # Find WHERE clause columns
-            where_columns = self._extract_where_columns(query)
+            where_columns=self._extract_where_columns(query)
             for column in where_columns:
                 if f"{table_name}.{column}" not in self.existing_indexes:
                     recommendations.append(
@@ -311,7 +313,7 @@ class IndexOptimizer:
                     )
 
             # Find ORDER BY columns
-            order_columns = self._extract_order_columns(query)
+            order_columns=self._extract_order_columns(query)
             for column in order_columns:
                 if f"{table_name}.{column}" not in self.existing_indexes:
                     recommendations.append(
@@ -326,7 +328,7 @@ class IndexOptimizer:
                     )
 
             # Find JOIN columns
-            join_columns = self._extract_join_columns(query)
+            join_columns=self._extract_join_columns(query)
             for column in join_columns:
                 if f"{table_name}.{column}" not in self.existing_indexes:
                     recommendations.append(
@@ -341,10 +343,10 @@ class IndexOptimizer:
                     )
 
         # Remove duplicates
-        unique_recommendations = []
-        seen = set()
+        unique_recommendations=[]
+        seen=set()
         for rec in recommendations:
-            key = (rec["table"], rec["column"])
+            key=(rec["table"], rec["column"])
             if key not in seen:
                 seen.add(key)
                 unique_recommendations.append(rec)
@@ -354,53 +356,53 @@ class IndexOptimizer:
     def _extract_where_columns(self, query: str) -> List[str]:
         """Extract columns from WHERE clause."""
 
-        where_pattern = r"where\s+([^)]+)"
-        match = re.search(where_pattern, query.lower())
+        where_pattern=r"where\s+([^)]+)"
+        match=re.search(where_pattern, query.lower())
         if match:
-            where_clause = match.group(1)
-            columns = re.findall(r"(\w+)\s*[=<>!]", where_clause)
+            where_clause=match.group(1)
+            columns=re.findall(r"(\w+)\s*[=<>!]", where_clause)
             return columns
         return []
 
     def _extract_order_columns(self, query: str) -> List[str]:
         """Extract columns from ORDER BY clause."""
 
-        order_pattern = r"order\s+by\s+([^)]+)"
-        match = re.search(order_pattern, query.lower())
+        order_pattern=r"order\s+by\s+([^)]+)"
+        match=re.search(order_pattern, query.lower())
         if match:
-            order_clause = match.group(1)
-            columns = re.findall(r"(\w+)", order_clause)
+            order_clause=match.group(1)
+            columns=re.findall(r"(\w+)", order_clause)
             return columns
         return []
 
     def _extract_join_columns(self, query: str) -> List[str]:
         """Extract columns from JOIN clauses."""
 
-        join_pattern = r"join\s+\w+\s+on\s+([^)]+)"
-        matches = re.findall(join_pattern, query.lower())
-        columns = []
+        join_pattern=r"join\s+\w+\s+on\s+([^)]+)"
+        matches=re.findall(join_pattern, query.lower())
+        columns=[]
         for match in matches:
-            join_condition = match
-            cols = re.findall(r"(\w+)\s*[=]", join_condition)
+            join_condition=match
+            cols=re.findall(r"(\w+)\s*[=]", join_condition)
             columns.extend(cols)
         return columns
 
 # Global instances
-db_connection_pool = DatabaseConnectionPool(max_connections=20)
-index_optimizer = IndexOptimizer()
+db_connection_pool=DatabaseConnectionPool(max_connections=20)
+index_optimizer=IndexOptimizer()
 
 def optimize_query(func):
     """Decorator for query optimization."""
 
-    @wraps(func)
+    @ wraps(func)
     async def wrapper(*args, **kwargs):
-        start_time = time.time()
+        start_time=time.time()
 
         # Execute the function
-        result = await func(*args, **kwargs)
+        result=await func(*args, **kwargs)
 
         # Log performance
-        execution_time = time.time() - start_time
+        execution_time=time.time() - start_time
         if execution_time > 1.0:  # Log slow operations
             logger.warning(
                 f"Slow operation: {func.__name__} took {execution_time:.2f}s"

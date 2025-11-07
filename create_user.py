@@ -10,6 +10,7 @@ Creates new users with proper password hashing and authentication setup
 # Add the current directory to Python path
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+from security.jwt_auth import (
     create_access_token,
     create_refresh_token,
     user_manager,

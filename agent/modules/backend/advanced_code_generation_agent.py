@@ -1,16 +1,18 @@
 from ..dependencies import get_current_user
-import React, { useState, useEffect } from 'react';
+import React
+import {useState
+        import useEffect} from 'react'
 import os
 
 from fastapi import APIRouter, HTTPException, Depends
 
-    import asyncio
+import asyncio
 from ..models import {model_name}
 from typing import Any, Dict, List
 from typing import Dict, Any, List
 import logging
 import openai
-import { motion } from 'framer-motion';
+import {motion} from 'framer-motion'
 
 """
 Advanced Code Generation Agent
@@ -26,6 +28,7 @@ This agent can:
 """
 
 logger = logging.getLogger(__name__)
+
 
 class AdvancedCodeGenerationAgent:
     """
@@ -602,6 +605,8 @@ new {class_name}();
         }
 
 # Example usage
+
+
 async def main():
     """Example usage of the Advanced Code Generation Agent."""
     agent = AdvancedCodeGenerationAgent()

@@ -11,6 +11,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class ChargebackReason(Enum):
     FRAUDULENT = "fraudulent"
     AUTHORIZATION = "authorization"
@@ -21,6 +22,7 @@ class ChargebackReason(Enum):
     PRODUCT_NOT_RECEIVED = "product_not_received"
     SUBSCRIPTION_CANCELED = "subscription_canceled"
 
+
 class PaymentStatus(Enum):
     PENDING = "pending"
     AUTHORIZED = "authorized"
@@ -29,6 +31,7 @@ class PaymentStatus(Enum):
     REFUNDED = "refunded"
     DISPUTED = "disputed"
     CANCELED = "canceled"
+
 
 class FinancialAgent:
     """Production-level financial management with advanced fraud detection and compliance."""
@@ -842,16 +845,14 @@ class FinancialAgent:
         """Calculate average transaction value."""
         if not self.transactions:
             return 0
-        return sum(float(t["amount"]) for t in self.transactions.values()) / len()
-            self.transactions
-        )
+        return sum(float(t["amount"]) for t in self.transactions.values()) / len(self.transactions)
 
     def _get_transactions_by_status(self) -> Dict[str, int]:
         """Get transaction count by status."""
-        status_counts = {}
+        status_counts= {}
         for transaction in self.transactions.values():
-            status = transaction["status"]
-            status_counts[status] = status_counts.get(status, 0) + 1
+            status= transaction["status"]
+            status_counts[status]= status_counts.get(status, 0) + 1
         return status_counts
 
     def _get_processing_time_metrics(self) -> Dict[str, float]:
@@ -914,10 +915,10 @@ class FinancialAgent:
 
     def _get_chargebacks_by_reason(self) -> Dict[str, int]:
         """Get chargeback breakdown by reason."""
-        reason_counts = {}
+        reason_counts= {}
         for chargeback in self.chargebacks.values():
-            reason = chargeback["reason"]
-            reason_counts[reason] = reason_counts.get(reason, 0) + 1
+            reason= chargeback["reason"]
+            reason_counts[reason]= reason_counts.get(reason, 0) + 1
         return reason_counts
 
     def _initialize_blockchain_ledger(self) -> Dict[str, Any]:

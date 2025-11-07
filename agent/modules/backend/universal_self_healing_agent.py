@@ -31,6 +31,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class UniversalSelfHealingAgent:
     """
     Advanced self-healing agent that autonomously detects and fixes code errors
@@ -155,9 +156,7 @@ class UniversalSelfHealingAgent:
 
                             if auto_fix:
                                 # Auto-heal the file
-                                heal_result = await self._heal_file(
-                                    file_path, file_issues, lang
-                                )
+                                heal_result = await self._heal_file(file_path, file_issues, lang)
 
                                 if heal_result["success"]:
                                     files_healed += 1
@@ -194,9 +193,8 @@ class UniversalSelfHealingAgent:
             logger.error(f"❌ Scan and heal failed: {e}")
             return {"error": str(e), "status": "failed"}
 
-    async def _detect_issues(
-        self, file_path: Path, language: str
-    ) -> List[Dict[str, Any]]:
+    async def _detect_issues(self, file_path: Path,
+                             language: str) -> List[Dict[str, Any]]:
         """
         Detect code issues using multiple methods:
         1. Static analysis
@@ -231,8 +229,7 @@ class UniversalSelfHealingAgent:
             return []
 
     async def _python_static_analysis(
-        self, content: str, file_path: Path
-    ) -> List[Dict[str, Any]]:
+            self, content: str, file_path: Path) -> List[Dict[str, Any]]:
         """
         Perform Python-specific static analysis.
         """
@@ -281,9 +278,8 @@ class UniversalSelfHealingAgent:
 
         return issues
 
-    async def _run_linters(
-        self, file_path: Path, language: str
-    ) -> List[Dict[str, Any]]:
+    async def _run_linters(self, file_path: Path,
+                           language: str) -> List[Dict[str, Any]]:
         """
         Run language-specific linters and parse output.
         """
@@ -408,8 +404,7 @@ Return JSON array of issues with: line, type, severity, message"""
         return []
 
     async def _check_learned_patterns(
-        self, content: str, language: str
-    ) -> List[Dict[str, Any]]:
+            self, content: str, language: str) -> List[Dict[str, Any]]:
         """
         Check code against previously learned error patterns.
         """
@@ -425,12 +420,15 @@ Return JSON array of issues with: line, type, severity, message"""
                 issues.append(
                     {
                         "type": "learned_pattern_match",
-                        "severity": pattern_data.get("severity", "medium"),
+                        "severity": pattern_data.get(
+                            "severity",
+                            "medium"),
                         "message": f"Previously seen issue: {pattern_data.get('description')}",
                         "suggested_fix": pattern_data.get("fix"),
-                        "confidence": pattern_data.get("confidence", 0.8),
-                    }
-                )
+                        "confidence": pattern_data.get(
+                            "confidence",
+                            0.8),
+                    })
 
         return issues
 
@@ -462,11 +460,8 @@ Return JSON array of issues with: line, type, severity, message"""
             for issue in sorted_issues:
                 fix_result = await self._generate_fix(content, issue, language)
 
-                if (
-                    fix_result["success"]
-                    and fix_result["confidence"]
-                    >= self.healing_config["confidence_threshold"]
-                ):
+                if (fix_result["success"] and fix_result["confidence"]
+                        >= self.healing_config["confidence_threshold"]):
                     content = fix_result["fixed_code"]
                     fixes_applied.append(
                         {
@@ -486,8 +481,7 @@ Return JSON array of issues with: line, type, severity, message"""
                 if not validation["valid"]:
                     # Rollback if validation fails
                     logger.warning(
-                        f"⚠️ Healing validation failed, rolling back {file_path.name}"
-                    )
+                        f"⚠️ Healing validation failed, rolling back {file_path.name}")
                     file_path.write_text(original_content)
                     return {
                         "success": False,
@@ -554,8 +548,9 @@ Provide the complete fixed code. Ensure:
 
             # Extract code from response
             code_match = re.search(
-                rf"```{language}\n(.*?)```", fixed_code_text, re.DOTALL
-            )
+                rf"```{language}\n(.*?)```",
+                fixed_code_text,
+                re.DOTALL)
             if code_match:
                 fixed_code = code_match.group(1).strip()
 
@@ -709,17 +704,19 @@ Provide the complete fixed code. Ensure:
             by_language[language] += 1
         return dict(by_language)
 
+
 # Factory function
 def create_self_healing_agent() -> UniversalSelfHealingAgent:
     """Create Universal Self-Healing Agent instance."""
     return UniversalSelfHealingAgent()
 
+
 # Global instance
 self_healing_agent = create_self_healing_agent()
 
+
 # Convenience functions
 async def auto_heal_codebase(
-    path: str, languages: Optional[List[str]] = None
-) -> Dict[str, Any]:
+        path: str, languages: Optional[List[str]] = None) -> Dict[str, Any]:
     """Automatically scan and heal codebase."""
     return await self_healing_agent.scan_and_heal(path, languages)

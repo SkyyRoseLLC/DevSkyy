@@ -146,6 +146,190 @@ volumes:
   prometheus-data:
   grafana-data:
 
+  # ============================================================================
+  # MCP SERVERS - Model Context Protocol Integration
+  # ============================================================================
+
+  # Infrastructure MCP Server (Port 5001)
+  mcp-infrastructure:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+      args:
+        MCP_SERVER: infrastructure
+    container_name: devskyy-mcp-infrastructure
+    restart: unless-stopped
+    ports:
+      - "5001:5001"
+    environment:
+      - DEVSKYY_API_URL=http://api:8000
+      - DEVSKYY_API_KEY=${DEVSKYY_API_KEY}
+      - MCP_PORT=5001
+    networks:
+      - devskyy-network
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # E-commerce MCP Server (Port 5002)
+  mcp-ecommerce:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+      args:
+        MCP_SERVER: ecommerce
+    container_name: devskyy-mcp-ecommerce
+    restart: unless-stopped
+    ports:
+      - "5002:5002"
+    environment:
+      - DEVSKYY_API_URL=http://api:8000
+      - DEVSKYY_API_KEY=${DEVSKYY_API_KEY}
+      - MCP_PORT=5002
+    networks:
+      - devskyy-network
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # WordPress MCP Server (Port 5003)
+  mcp-wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+      args:
+        MCP_SERVER: wordpress
+    container_name: devskyy-mcp-wordpress
+    restart: unless-stopped
+    ports:
+      - "5003:5003"
+    environment:
+      - DEVSKYY_API_URL=http://api:8000
+      - DEVSKYY_API_KEY=${DEVSKYY_API_KEY}
+      - MCP_PORT=5003
+    networks:
+      - devskyy-network
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5003/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # AI/ML MCP Server (Port 5004)
+  mcp-aiml:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+      args:
+        MCP_SERVER: ai_ml
+    container_name: devskyy-mcp-aiml
+    restart: unless-stopped
+    ports:
+      - "5004:5004"
+    environment:
+      - DEVSKYY_API_URL=http://api:8000
+      - DEVSKYY_API_KEY=${DEVSKYY_API_KEY}
+      - MCP_PORT=5004
+    networks:
+      - devskyy-network
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5004/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+
+  # Marketing MCP Server (Port 5005)
+  mcp-marketing:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+      args:
+        MCP_SERVER: marketing
+    container_name: devskyy-mcp-marketing
+    restart: unless-stopped
+    ports:
+      - "5005:5005"
+    environment:
+      - DEVSKYY_API_URL=http://api:8000
+      - DEVSKYY_API_KEY=${DEVSKYY_API_KEY}
+      - MCP_PORT=5005
+    networks:
+      - devskyy-network
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5005/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
+  # Orchestration MCP Server (Port 5006)
+  mcp-orchestration:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+      args:
+        MCP_SERVER: orchestration
+    container_name: devskyy-mcp-orchestration
+    restart: unless-stopped
+    ports:
+      - "5006:5006"
+    environment:
+      - DEVSKYY_API_URL=http://api:8000
+      - DEVSKYY_API_KEY=${DEVSKYY_API_KEY}
+      - MCP_PORT=5006
+    networks:
+      - devskyy-network
+    depends_on:
+      - api
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5006/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+
 networks:
   devskyy-network:
     driver: bridge

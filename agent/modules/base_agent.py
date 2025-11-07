@@ -29,6 +29,7 @@ Features:
 # Configure logging
 logger = logging.getLogger(__name__)
 
+
 class AgentStatus(Enum):
     """Agent operational status"""
 
@@ -38,6 +39,7 @@ class AgentStatus(Enum):
     FAILED = "failed"
     INITIALIZING = "initializing"
 
+
 class SeverityLevel(Enum):
     """Issue severity classification"""
 
@@ -45,6 +47,7 @@ class SeverityLevel(Enum):
     MEDIUM = "medium"
     HIGH = "high"
     CRITICAL = "critical"
+
 
 @dataclass
 class HealthMetrics:
@@ -61,6 +64,7 @@ class HealthMetrics:
     memory_usage_mb: float = 0.0
     cpu_usage_percent: float = 0.0
 
+
 @dataclass
 class AgentMetrics:
     """Comprehensive agent metrics"""
@@ -74,6 +78,7 @@ class AgentMetrics:
     self_healings_performed: int = 0
     performance_score: float = 100.0
 
+
 @dataclass
 class Issue:
     """Detected issue with metadata"""
@@ -84,6 +89,7 @@ class Issue:
     resolved: bool = False
     resolution_attempted: bool = False
     resolution_strategy: Optional[str] = None
+
 
 class CircuitBreaker:
     """Circuit breaker pattern for resilient operations"""
@@ -131,6 +137,7 @@ class CircuitBreaker:
             logger.warning(
                 f"Circuit breaker opened after {self.failure_count} failures"
             )
+
 
 class BaseAgent(ABC):
     """
@@ -309,7 +316,8 @@ class BaseAgent(ABC):
                 for keyword in ["rate limit", "too many requests", "quota"]
             ):
                 logger.info("🔧 Healing strategy: Backoff and retry")
-                await asyncio.sleep(5)  # TODO: Move to config  # Longer backoff for rate limits
+                # TODO: Move to config  # Longer backoff for rate limits
+                await asyncio.sleep(5)
                 return {"healed": True, "strategy": "rate_limit_backoff"}
 
             # Strategy 4: Data validation errors
@@ -509,13 +517,7 @@ class BaseAgent(ABC):
                 "issues": {
                     "total": len(self.detected_issues),
                     "unresolved": len(unresolved_issues),
-                    "critical": len()
-                        [
-                            i
-                            for i in unresolved_issues
-                            if i.severity == SeverityLevel.CRITICAL
-                        ]
-                    ),
+                    "critical": len([i for i in unresolved_issues if i.severity == SeverityLevel.CRITICAL]),
                 },
                 "performance_prediction": self.predict_performance(),
                 "timestamp": datetime.now().isoformat(),

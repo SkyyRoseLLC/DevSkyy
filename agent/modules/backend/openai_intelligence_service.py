@@ -9,6 +9,7 @@ import openai
 
 logger = logging.getLogger(__name__)
 
+
 class OpenAIIntelligenceService:
     """OpenAI integration service for enhanced agent intelligence and decision making."""
 
@@ -19,15 +20,13 @@ class OpenAIIntelligenceService:
             openai.api_key = self.api_key
             self.client = openai.OpenAI(api_key=self.api_key)
             logger.info(
-                "🧠 OpenAI Intelligence Service initialized for luxury agent enhancement"
-            )
+                "🧠 OpenAI Intelligence Service initialized for luxury agent enhancement")
         else:
             self.client = None
             logger.warning("🧠 OpenAI Intelligence Service initialized without API key")
 
     async def enhance_product_description(
-        self, product_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, product_data: Dict[str, Any]) -> Dict[str, Any]:
         """Use OpenAI to create luxury product descriptions."""
         try:
             prompt = """
@@ -80,8 +79,7 @@ class OpenAIIntelligenceService:
             return {"error": str(e)}
 
     async def generate_luxury_content_strategy(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Generate AI-powered luxury content strategy."""
         try:
             prompt = """
@@ -136,8 +134,7 @@ class OpenAIIntelligenceService:
             return {"error": str(e)}
 
     async def optimize_page_content_for_seo(
-        self, page_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, page_data: Dict[str, Any]) -> Dict[str, Any]:
         """Use OpenAI to optimize page content for luxury SEO."""
         try:
             prompt = """
@@ -191,8 +188,7 @@ class OpenAIIntelligenceService:
             return {"error": str(e)}
 
     async def analyze_competitor_strategy(
-        self, competitor_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, competitor_data: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze competitor strategies using OpenAI."""
         try:
             prompt = """
@@ -245,8 +241,7 @@ class OpenAIIntelligenceService:
             return {"error": str(e)}
 
     async def generate_luxury_email_campaign(
-        self, campaign_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, campaign_data: Dict[str, Any]) -> Dict[str, Any]:
         """Generate luxury email campaign content."""
         try:
             prompt = """
@@ -411,8 +406,7 @@ class OpenAIIntelligenceService:
             return {"error": str(e)}
 
     async def optimize_conversion_funnel(
-        self, funnel_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, funnel_data: Dict[str, Any]) -> Dict[str, Any]:
         """Use OpenAI to optimize luxury conversion funnels."""
         try:
             prompt = """
@@ -466,7 +460,9 @@ class OpenAIIntelligenceService:
             logger.error(f"Conversion funnel optimization failed: {str(e)}")
             return {"error": str(e)}
 
+
 # Factory function
+
 
 def create_openai_intelligence_service() -> OpenAIIntelligenceService:
     """Create OpenAI intelligence service instance."""

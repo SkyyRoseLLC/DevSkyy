@@ -1,6 +1,6 @@
 from datetime import datetime
 
-        import random
+import random
 from geopy.geocoders import Nominatim
 from typing import Any, Dict, List, Optional
 import asyncio
@@ -24,6 +24,7 @@ Features:
 """
 
 logger = logging.getLogger(__name__)
+
 
 class PersonalizedWebsiteRenderer:
     """
@@ -969,11 +970,15 @@ class PersonalizedWebsiteRenderer:
             return False
 
 # Factory function
+
+
 def create_personalized_renderer() -> PersonalizedWebsiteRenderer:
     """Create Personalized Website Renderer."""
     return PersonalizedWebsiteRenderer()
 
 # Example usage
+
+
 async def main():
     """Example: Render personalized website."""
     renderer = create_personalized_renderer()
@@ -1024,7 +1029,8 @@ async def main():
         if result["status"] == "success":
             content = result["content"]
             logger.info(f"✅ Segment: {result['user_segment']}")
-            logger.info(f"📊 Personalization Score: {result['personalization_score']:.0%}")
+            logger.info(
+                f"📊 Personalization Score: {result['personalization_score']:.0%}")
             logger.info(f"\n📝 Content:")
             logger.info(f"  Headline: {content['hero']['headline']}")
             logger.info(f"  CTA: {content['hero']['cta_text']}")

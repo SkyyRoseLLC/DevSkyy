@@ -7,6 +7,7 @@ import subprocess
 
 logger = logging.getLogger(__name__)
 
+
 def setup_ssh_config() -> Dict[str, Any]:
     """
     Set up SSH configuration for secure repository access.
@@ -41,10 +42,7 @@ Host *
             logger.info("✅ SSH config created")
 
         # Add GitHub to known hosts if not present
-        if (
-            not known_hosts_path.exists()
-            or "github.com" not in known_hosts_path.read_text()
-        ):
+        if not known_hosts_path.exists() or "github.com" not in known_hosts_path.read_text():
             try:
                 result = subprocess.run(
                     ["ssh-keyscan", "-H", "github.com"],

@@ -32,6 +32,7 @@ customer analytics, and personalization APIs with fashion industry intelligence
 
 logger = logging.getLogger(__name__)
 
+
 class FashionAPIType(Enum):
     """Fashion-specific API types"""
 
@@ -43,6 +44,7 @@ class FashionAPIType(Enum):
     SUSTAINABILITY = "sustainability"
     SOCIAL_MEDIA = "social_media"
     PRICING_OPTIMIZATION = "pricing_optimization"
+
 
 @dataclass
 class FashionTrendData:
@@ -69,6 +71,7 @@ class FashionTrendData:
         data = asdict(self)
         data["created_at"] = self.created_at.isoformat()
         return data
+
 
 @dataclass
 class ProductData:
@@ -98,6 +101,7 @@ class ProductData:
         data["created_at"] = self.created_at.isoformat()
         data["updated_at"] = self.updated_at.isoformat()
         return data
+
 
 class FashionAPIIntegrator:
     """Main fashion API integration manager"""
@@ -803,9 +807,9 @@ class FashionAPIIntegrator:
             healthy_apis = sum()
                 1 for status in api_health.values() if status == "healthy"
             )
-            total_apis = len(api_health)
+            total_apis= len(api_health)
 
-            overall_status = "healthy" if healthy_apis == total_apis else "degraded"
+            overall_status= "healthy" if healthy_apis == total_apis else "degraded"
 
             return {
                 "status": overall_status,

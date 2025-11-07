@@ -15,7 +15,7 @@ Base ML Engine
 Foundational machine learning capabilities for all agents
 """
 
-logger = logging.getLogger(__name__)
+logger=logging.getLogger(__name__)
 
 class BaseMLEngine(ABC):
     """
@@ -31,26 +31,26 @@ class BaseMLEngine(ABC):
     """
 
     def __init__(self, model_name: str):
-        self.model_name = model_name
-        self.model = None
-        self.scaler = StandardScaler()
-        self.label_encoder = LabelEncoder()
-        self.is_trained = False
-        self.training_history = []
-        self.performance_metrics = {}
-        self.version = "1.0.0"
+        self.model_name=model_name
+        self.model=None
+        self.scaler=StandardScaler()
+        self.label_encoder=LabelEncoder()
+        self.is_trained=False
+        self.training_history=[]
+        self.performance_metrics={}
+        self.version="1.0.0"
 
         logger.info(f"🤖 ML Engine initialized: {model_name}")
 
-    @abstractmethod
+    @ abstractmethod
     async def train(self, X: np.ndarray, y: np.ndarray, **kwargs) -> Dict[str, Any]:
         """Train the ML model"""
 
-    @abstractmethod
+    @ abstractmethod
     async def predict(self, X: np.ndarray, **kwargs) -> Tuple[np.ndarray, np.ndarray]:
         """Make predictions with confidence scores"""
 
-    async def preprocess_data(self, data: np.ndarray, fit: bool = False) -> np.ndarray:
+    async def preprocess_data(self, data: np.ndarray, fit: bool=False) -> np.ndarray:
         """
         Preprocess and normalize data
 
@@ -74,8 +74,8 @@ class BaseMLEngine(ABC):
         self,
         X: np.ndarray,
         y: np.ndarray,
-        test_size: float = 0.2,
-        random_state: int = 42,
+        test_size: float=0.2,
+        random_state: int=42,
     ) -> Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
         """Split data into training and testing sets"""
         return train_test_split(X, y, test_size=test_size, random_state=random_state)
@@ -90,7 +90,7 @@ class BaseMLEngine(ABC):
             Dictionary of performance metrics
         """
         try:
-            predictions, confidence = await self.predict(X_test)
+            predictions, confidence=await self.predict(X_test)
 
             # Calculate metrics
                 accuracy_score,

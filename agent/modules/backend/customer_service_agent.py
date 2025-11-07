@@ -9,6 +9,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class CustomerServiceAgent:
     """Luxury customer service specialist with fashion industry expertise."""
 
@@ -72,12 +73,11 @@ class CustomerServiceAgent:
             }
 
             return {
-                "analysis_id": str(uuid.uuid4()),
+                "analysis_id": str(
+                    uuid.uuid4()),
                 "timestamp": datetime.now().isoformat(),
                 "satisfaction_analysis": analysis,
-                "improvement_recommendations": self._generate_service_recommendations(
-                    analysis
-                ),
+                "improvement_recommendations": self._generate_service_recommendations(analysis),
                 "risk_assessment": self._assess_service_risks(analysis),
             }
 
@@ -109,8 +109,7 @@ class CustomerServiceAgent:
                 ],
                 "automation_potential": "High",
                 "estimated_completion": "3 months",
-            }
-        ]
+            }]
         return recommendations
 
     def _assess_service_risks(self, analysis: Dict) -> Dict[str, Any]:
@@ -119,12 +118,14 @@ class CustomerServiceAgent:
             "reputation_risk": {
                 "risk_level": "HIGH",
                 "description": "Poor service experiences could damage luxury brand reputation",
-                "current_score": analysis.get("overall_satisfaction", 4.0),
+                "current_score": analysis.get(
+                    "overall_satisfaction",
+                    4.0),
                 "threshold": 4.5,
                 "mitigation": "Implement proactive service monitoring and immediate escalation",
                 "impact_score": 85,
-            }
-        }
+            }}
+
 
 def optimize_customer_service() -> Dict[str, Any]:
     """Main function to optimize customer service operations."""

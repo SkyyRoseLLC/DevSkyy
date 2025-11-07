@@ -32,32 +32,32 @@ router = APIRouter()
 # REQUEST/RESPONSE MODELS
 # ============================================================================
 
+
 class CodeGenerationRequest(BaseModel):
     """Request model for code generation"""
 
-    prompt: str = Field(
-        ..., description="Natural language description of what to generate"
-    )
+    prompt: str = Field(...,
+                        description="Natural language description of what to generate")
     language: str = Field(default="python", description="Programming language")
-    model: Literal["gpt-4", "gpt-3.5"] = Field(
-        default="gpt-4", description="Model to use"
-    )
+    model: Literal["gpt-4",
+                   "gpt-3.5"] = Field(default="gpt-4",
+                                      description="Model to use")
     max_tokens: Optional[int] = Field(
-        default=None, description="Maximum tokens to generate"
-    )
+        default=None, description="Maximum tokens to generate")
     temperature: Optional[float] = Field(
-        default=None, description="Sampling temperature (0.0-1.0)"
-    )
+        default=None, description="Sampling temperature (0.0-1.0)")
     context: Optional[List[str]] = Field(default=None, description="Additional context")
+
 
 class CodeCompletionRequest(BaseModel):
     """Request model for code completion"""
 
     code_prefix: str = Field(..., description="Partial code to complete")
     language: str = Field(default="python", description="Programming language")
-    model: Literal["gpt-4", "gpt-3.5"] = Field(
-        default="gpt-3.5", description="Model to use"
-    )
+    model: Literal["gpt-4",
+                   "gpt-3.5"] = Field(default="gpt-3.5",
+                                      description="Model to use")
+
 
 class CodeExplanationRequest(BaseModel):
     """Request model for code explanation"""
@@ -65,11 +65,13 @@ class CodeExplanationRequest(BaseModel):
     code: str = Field(..., description="Code to explain")
     language: str = Field(default="python", description="Programming language")
 
+
 class CodeReviewRequest(BaseModel):
     """Request model for code review"""
 
     code: str = Field(..., description="Code to review")
     language: str = Field(default="python", description="Programming language")
+
 
 class CodeDocumentationRequest(BaseModel):
     """Request model for documentation generation"""
@@ -77,15 +79,18 @@ class CodeDocumentationRequest(BaseModel):
     code: str = Field(..., description="Code to document")
     language: str = Field(default="python", description="Programming language")
 
+
 class CodeOptimizationRequest(BaseModel):
     """Request model for code optimization"""
 
     code: str = Field(..., description="Code to optimize")
     language: str = Field(default="python", description="Programming language")
 
+
 # ============================================================================
 # ENDPOINTS
 # ============================================================================
+
 
 @router.post("/codex/generate", tags=["codex"])
 async def generate_code(
@@ -130,8 +135,9 @@ async def generate_code(
     except Exception as e:
         logger.error(f"Code generation failed: {e}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e))
+
 
 @router.post("/codex/complete", tags=["codex"])
 async def complete_code(
@@ -172,8 +178,9 @@ async def complete_code(
     except Exception as e:
         logger.error(f"Code completion failed: {e}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e))
+
 
 @router.post("/codex/explain", tags=["codex"])
 async def explain_code(
@@ -209,13 +216,13 @@ async def explain_code(
     except Exception as e:
         logger.error(f"Code explanation failed: {e}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e))
+
 
 @router.post("/codex/review", tags=["codex"])
-async def review_code(
-    request: CodeReviewRequest, current_user: dict = Depends(get_current_user)
-):
+async def review_code(request: CodeReviewRequest,
+                      current_user: dict = Depends(get_current_user)):
     """
     Review code for bugs, security issues, and improvements
 
@@ -250,8 +257,9 @@ async def review_code(
     except Exception as e:
         logger.error(f"Code review failed: {e}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e))
+
 
 @router.post("/codex/document", tags=["codex"])
 async def generate_documentation(
@@ -276,9 +284,7 @@ async def generate_documentation(
     ```
     """
     try:
-        result = await codex.generate_documentation(
-            code=request.code, language=request.language
-        )
+        result = await codex.generate_documentation(code=request.code, language=request.language)
 
         if result["status"] == "error":
             raise HTTPException(
@@ -293,8 +299,9 @@ async def generate_documentation(
     except Exception as e:
         logger.error(f"Documentation generation failed: {e}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e))
+
 
 @router.post("/codex/optimize", tags=["codex"])
 async def optimize_code(
@@ -333,8 +340,9 @@ async def optimize_code(
     except Exception as e:
         logger.error(f"Code optimization failed: {e}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e))
+
 
 @router.get("/codex/models", tags=["codex"])
 async def get_available_models(current_user: dict = Depends(get_current_user)):
@@ -352,6 +360,7 @@ async def get_available_models(current_user: dict = Depends(get_current_user)):
     """
     return codex.get_available_models()
 
+
 @router.get("/codex/languages", tags=["codex"])
 async def get_supported_languages(current_user: dict = Depends(get_current_user)):
     """
@@ -368,9 +377,11 @@ async def get_supported_languages(current_user: dict = Depends(get_current_user)
     """
     return {"languages": codex.get_supported_languages()}
 
+
 # ============================================================================
 # CODE HEALING ORCHESTRATION ENDPOINTS
 # ============================================================================
+
 
 class CodeHealingRequest(BaseModel):
     """Request model for code healing orchestration"""
@@ -382,10 +393,10 @@ class CodeHealingRequest(BaseModel):
         default=False, description="Automatically apply fixes (use with caution)"
     )
 
+
 @router.post("/codex/heal", tags=["codex-orchestration"])
-async def heal_code(
-    request: CodeHealingRequest, current_user: dict = Depends(get_current_user)
-):
+async def heal_code(request: CodeHealingRequest,
+                    current_user: dict = Depends(get_current_user)):
     """
     AI-Powered Code Healing with Orchestration
 
@@ -443,8 +454,9 @@ async def heal_code(
     except Exception as e:
         logger.error(f"Code healing failed: {e}")
         raise HTTPException(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e)
-        )
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=str(e))
+
 
 @router.get("/codex/healing/stats", tags=["codex-orchestration"])
 async def get_healing_stats(current_user: dict = Depends(get_current_user)):
@@ -460,5 +472,6 @@ async def get_healing_stats(current_user: dict = Depends(get_current_user)):
     Useful for monitoring the effectiveness of AI-powered healing.
     """
     return codex_orchestrator.get_healing_stats()
+
 
 logger.info("✅ Codex API endpoints registered (including orchestration)")

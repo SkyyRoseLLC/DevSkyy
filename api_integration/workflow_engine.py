@@ -24,6 +24,7 @@ error handling with automatic retry, rollback mechanisms, and audit logging
 
 logger = logging.getLogger(__name__)
 
+
 class TriggerType(Enum):
     """Workflow trigger types"""
 
@@ -33,6 +34,7 @@ class TriggerType(Enum):
     API_RESPONSE = "api_response"
     THRESHOLD = "threshold"
     MANUAL = "manual"
+
 
 class WorkflowStatus(Enum):
     """Workflow execution status"""
@@ -45,6 +47,7 @@ class WorkflowStatus(Enum):
     PAUSED = "paused"
     ROLLED_BACK = "rolled_back"
 
+
 class StepStatus(Enum):
     """Workflow step status"""
 
@@ -54,6 +57,7 @@ class StepStatus(Enum):
     FAILED = "failed"
     SKIPPED = "skipped"
     ROLLED_BACK = "rolled_back"
+
 
 class ActionType(Enum):
     """Workflow action types"""
@@ -70,6 +74,7 @@ class ActionType(Enum):
     VIDEO_GENERATION = "video_generation"
     BRAND_MODEL_TRAINING = "brand_model_training"
     IMAGE_GENERATION = "image_generation"
+
 
 @dataclass
 class WorkflowTrigger:
@@ -89,6 +94,7 @@ class WorkflowTrigger:
         data["trigger_type"] = self.trigger_type.value
         data["created_at"] = self.created_at.isoformat()
         return data
+
 
 @dataclass
 class WorkflowStep:
@@ -120,6 +126,7 @@ class WorkflowStep:
             data["completed_at"] = self.completed_at.isoformat()
         return data
 
+
 @dataclass
 class Workflow:
     """Complete workflow definition"""
@@ -150,6 +157,7 @@ class Workflow:
             data["completed_at"] = self.completed_at.isoformat()
         return data
 
+
 class WorkflowAction(ABC):
     """Abstract base class for workflow actions"""
 
@@ -164,6 +172,7 @@ class WorkflowAction(ABC):
     async def rollback(self, step: WorkflowStep, context: Dict[str, Any]) -> bool:
         """Rollback the workflow action"""
         pass
+
 
 class APICallAction(WorkflowAction):
     """API call workflow action"""
@@ -235,6 +244,7 @@ class APICallAction(WorkflowAction):
 
         return resolved
 
+
 class NotificationAction(WorkflowAction):
     """Notification workflow action"""
 
@@ -257,6 +267,7 @@ class NotificationAction(WorkflowAction):
     async def rollback(self, step: WorkflowStep, context: Dict[str, Any]) -> bool:
         """Rollback notification (no-op for notifications)"""
         return True
+
 
 class FashionAnalysisAction(WorkflowAction):
     """Fashion analysis workflow action"""
@@ -298,6 +309,7 @@ class FashionAnalysisAction(WorkflowAction):
     async def rollback(self, step: WorkflowStep, context: Dict[str, Any]) -> bool:
         """Rollback fashion analysis (no-op for analysis)"""
         return True
+
 
 class ConditionAction(WorkflowAction):
     """Conditional logic workflow action"""
@@ -385,7 +397,8 @@ class ConditionAction(WorkflowAction):
                 node = ast.parse(expression, mode='eval')
                 return self._eval_node(node.body, allowed_operators)
             except (ValueError, SyntaxError, TypeError) as e:
-                logger.warning(f"Unsafe or invalid expression blocked: {expression} - {e}")
+                logger.warning(
+                    f"Unsafe or invalid expression blocked: {expression} - {e}")
                 return False
 
         except Exception as e:
@@ -416,7 +429,8 @@ class ConditionAction(WorkflowAction):
             if type(node.op) not in allowed_operators:
                 raise ValueError(f"Boolean operator {type(node.op)} not allowed")
             op_func = allowed_operators[type(node.op)]
-            values = [self._eval_node(value, allowed_operators) for value in node.values]
+            values = [self._eval_node(value, allowed_operators)
+                                      for value in node.values]
             if isinstance(node.op, ast.And):
                 return all(values)
             elif isinstance(node.op, ast.Or):
@@ -428,6 +442,7 @@ class ConditionAction(WorkflowAction):
             return allowed_operators[type(node.op)](operand)
         else:
             raise ValueError(f"Node type {type(node)} not allowed")
+
 
 class WorkflowEngine:
     """Main workflow automation engine"""
@@ -930,11 +945,14 @@ class VideoGenerationWorkflowEngine(WorkflowEngine):
             self._upscale_video_action
         )
 
-    async def _generate_runway_video_action(self, context: Dict[str, Any]) -> Dict[str, Any]:
+    async def _generate_runway_video_action(
+        self, context: Dict[str, Any]) -> Dict[str, Any]:
         """Workflow action for generating fashion runway videos."""
         try:
             if not self.fashion_vision_agent:
-                return {"error": "Fashion vision agent not available", "status": "failed"}
+                return {
+    "error": "Fashion vision agent not available",
+     "status": "failed"}
 
             prompt = context.get("prompt", "luxury fashion runway")
             duration = context.get("duration", 4)
@@ -947,13 +965,13 @@ class VideoGenerationWorkflowEngine(WorkflowEngine):
             logger.info(f"🎬 Workflow: Generating runway video - {prompt}")
 
             result = await self.fashion_vision_agent.generate_fashion_runway_video(
-                prompt=prompt,
-                duration=duration,
-                fps=fps,
-                width=width,
-                height=height,
-                style=style,
-                upscale=upscale
+                prompt = prompt,
+                duration = duration,
+                fps = fps,
+                width = width,
+                height = height,
+                style = style,
+                upscale = upscale
             )
 
             if result.get("success"):

@@ -1,10 +1,10 @@
-    from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse
 import os
 import sys
 
-    from fastapi import FastAPI
+from fastapi import FastAPI
 
-    from main import app
+from main import app
 
 """
 Vercel serverless function entry point for DevSkyy Platform
@@ -14,15 +14,15 @@ Vercel serverless function entry point for DevSkyy Platform
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
-    
+
     # Export the FastAPI app for Vercel
     handler = app
-    
+
 except Exception as e:
     # Fallback minimal app if main app fails to load
-    
+
     fallback_app = FastAPI(title="DevSkyy Fallback")
-    
+
     @fallback_app.get("/")
     async def fallback_root():
         return {
@@ -31,7 +31,7 @@ except Exception as e:
             "error": str(e),
             "message": "Main application failed to load, running in fallback mode"
         }
-    
+
     @fallback_app.get("/health")
     async def fallback_health():
         return {
@@ -39,5 +39,5 @@ except Exception as e:
             "mode": "fallback",
             "error": str(e)
         }
-    
+
     handler = fallback_app

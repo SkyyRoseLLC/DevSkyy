@@ -20,6 +20,7 @@ with connection pooling, indexing, migration tools, and backup automation
 
 logger = logging.getLogger(__name__)
 
+
 class DatabaseType(Enum):
     """Database types supported"""
 
@@ -27,6 +28,7 @@ class DatabaseType(Enum):
     MONGODB = "mongodb"
     CLICKHOUSE = "clickhouse"
     REDIS = "redis"
+
 
 @dataclass
 class DatabaseConfig:
@@ -50,6 +52,7 @@ class DatabaseConfig:
         data["db_type"] = self.db_type.value
         return data
 
+
 @dataclass
 class ConnectionMetrics:
     """Database connection metrics"""
@@ -71,6 +74,7 @@ class ConnectionMetrics:
             data["last_updated"] = self.last_updated.isoformat()
         return data
 
+
 class PostgreSQLManager:
     """PostgreSQL database manager with connection pooling"""
 
@@ -78,7 +82,7 @@ class PostgreSQLManager:
         self.config = config
         self.pool = None
         self.metrics = ConnectionMetrics(
-            self.is_connected = False
+            self.is_connected=False
 
         logger.info(
             f"PostgreSQL manager initialized - Host: {config.host}:{config.port}"
@@ -87,9 +91,9 @@ class PostgreSQLManager:
     async def connect(self) -> bool:
         """Establish connection pool"""
         try:
-            dsn = f"postgresql://{self.config.username}:{self.config.password}@{self.config.host}:{self.config.port}/{self.config.database}"
+            dsn=f"postgresql://{self.config.username}:{self.config.password}@{self.config.host}:{self.config.port}/{self.config.database}"
 
-            self.pool = await asyncpg.create_pool(
+            self.pool=await asyncpg.create_pool(
                 dsn,
                 min_size=1,
                 max_size=self.config.pool_size,
@@ -104,7 +108,7 @@ class PostgreSQLManager:
             async with self.pool.acquire() as conn:
                 await conn.execute("SELECT 1")
 
-            self.is_connected = True
+            self.is_connected=True
             self.metrics.total_connections += 1
             logger.info("PostgreSQL connection pool established")
             return True
@@ -115,26 +119,26 @@ class PostgreSQLManager:
             return False
 
     async def execute_query(
-        self, query: str, params: tuple = None
+        self, query: str, params: tuple=None
     ) -> List[Dict[str, Any]]:
         """Execute query and return results"""
         if not self.pool:
             raise Exception("Database not connected")
 
-        start_time = time.time()
+        start_time=time.time()
 
         try:
             async with self.pool.acquire() as conn:
                 if params:
-                    result = await conn.fetch(query, *params)
+                    result=await conn.fetch(query, *params)
                 else:
-                    result = await conn.fetch(query)
+                    result=await conn.fetch(query)
 
                 # Convert to list of dictionaries
-                rows = [dict(row) for row in result]
+                rows=[dict(row) for row in result]
 
                 # Update metrics
-                response_time = time.time() - start_time
+                response_time=time.time() - start_time
                 self.metrics.total_queries += 1
                 self.metrics.successful_queries += 1
                 self._update_response_time(response_time)
@@ -146,22 +150,22 @@ class PostgreSQLManager:
             logger.error(f"PostgreSQL query failed: {e}")
             raise e
 
-    async def execute_command(self, command: str, params: tuple = None) -> str:
+    async def execute_command(self, command: str, params: tuple=None) -> str:
         """Execute command (INSERT, UPDATE, DELETE)"""
         if not self.pool:
             raise Exception("Database not connected")
 
-        start_time = time.time()
+        start_time=time.time()
 
         try:
             async with self.pool.acquire() as conn:
                 if params:
-                    result = await conn.execute(command, *params)
+                    result=await conn.execute(command, *params)
                 else:
-                    result = await conn.execute(command)
+                    result=await conn.execute(command)
 
                 # Update metrics
-                response_time = time.time() - start_time
+                response_time=time.time() - start_time
                 self.metrics.total_queries += 1
                 self.metrics.successful_queries += 1
                 self._update_response_time(response_time)
@@ -175,7 +179,7 @@ class PostgreSQLManager:
 
     async def create_indexes(self) -> bool:
         """Create fashion e-commerce specific indexes"""
-        indexes = [
+        indexes=[
             # User indexes
             "CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_email ON users(email)",
             "CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_users_created_at ON users(created_at)",
@@ -215,15 +219,15 @@ class PostgreSQLManager:
     def _update_response_time(self, response_time: float):
         """Update average response time"""
         if self.metrics.average_response_time == 0:
-            self.metrics.average_response_time = response_time
+            self.metrics.average_response_time=response_time
         else:
             # Exponential moving average
-            alpha = 0.1
-            self.metrics.average_response_time = (
+            alpha=0.1
+            self.metrics.average_response_time=(
                 alpha * response_time + (1 - alpha) * self.metrics.average_response_time
             )
 
-        self.metrics.last_updated = datetime.now()
+        self.metrics.last_updated=datetime.now()
 
     async def get_pool_status(self) -> Dict[str, Any]:
         """Get connection pool status"""
@@ -242,27 +246,27 @@ class PostgreSQLManager:
         """Close connection pool"""
         if self.pool:
             await self.pool.close()
-            self.is_connected = False
+            self.is_connected=False
             logger.info("PostgreSQL connection pool closed")
 
 class MongoDBManager:
     """MongoDB database manager with connection pooling"""
 
     def __init__(self, config: DatabaseConfig):
-        self.config = config
-        self.client = None
-        self.database = None
-        self.metrics = ConnectionMetrics()
-        self.is_connected = False
+        self.config=config
+        self.client=None
+        self.database=None
+        self.metrics=ConnectionMetrics()
+        self.is_connected=False
 
         logger.info(f"MongoDB manager initialized - Host: {config.host}:{config.port}")
 
     async def connect(self) -> bool:
         """Establish MongoDB connection"""
         try:
-            connection_string = f"mongodb://{self.config.username}:{self.config.password}@{self.config.host}:{self.config.port}/{self.config.database}"
+            connection_string=f"mongodb://{self.config.username}:{self.config.password}@{self.config.host}:{self.config.port}/{self.config.database}"
 
-            self.client = motor.motor_asyncio.AsyncIOMotorClient(
+            self.client=motor.motor_asyncio.AsyncIOMotorClient(
                 connection_string,
                 maxPoolSize=self.config.pool_size,
                 minPoolSize=1,
@@ -271,12 +275,12 @@ class MongoDBManager:
                 appname="devskyy_fashion_platform",
             )
 
-            self.database = self.client[self.config.database]
+            self.database=self.client[self.config.database]
 
             # Test connection
             await self.client.admin.command("ping")
 
-            self.is_connected = True
+            self.is_connected=True
             self.metrics.total_connections += 1
             logger.info("MongoDB connection established")
             return True
@@ -287,26 +291,26 @@ class MongoDBManager:
             return False
 
     async def find_documents(
-        self, collection: str, query: Dict[str, Any] = None, limit: int = 100
+        self, collection: str, query: Dict[str, Any]=None, limit: int=100
     ) -> List[Dict[str, Any]]:
         """Find documents in collection"""
         if not self.database:
             raise Exception("Database not connected")
 
-        start_time = time.time()
+        start_time=time.time()
 
         try:
-            coll = self.database[collection]
-            cursor = coll.find(query or {}).limit(limit)
-            documents = await cursor.to_list(length=limit)
+            coll=self.database[collection]
+            cursor=coll.find(query or {}).limit(limit)
+            documents=await cursor.to_list(length=limit)
 
             # Convert ObjectId to string
             for doc in documents:
                 if "_id" in doc:
-                    doc["_id"] = str(doc["_id"])
+                    doc["_id"]=str(doc["_id"])
 
             # Update metrics
-            response_time = time.time() - start_time
+            response_time=time.time() - start_time
             self.metrics.total_queries += 1
             self.metrics.successful_queries += 1
             self._update_response_time(response_time)
@@ -323,14 +327,14 @@ class MongoDBManager:
         if not self.database:
             raise Exception("Database not connected")
 
-        start_time = time.time()
+        start_time=time.time()
 
         try:
-            coll = self.database[collection]
-            result = await coll.insert_one(document)
+            coll=self.database[collection]
+            result=await coll.insert_one(document)
 
             # Update metrics
-            response_time = time.time() - start_time
+            response_time=time.time() - start_time
             self.metrics.total_queries += 1
             self.metrics.successful_queries += 1
             self._update_response_time(response_time)
@@ -349,14 +353,14 @@ class MongoDBManager:
         if not self.database:
             raise Exception("Database not connected")
 
-        start_time = time.time()
+        start_time=time.time()
 
         try:
-            coll = self.database[collection]
-            result = await coll.update_many(query, {"$set": update})
+            coll=self.database[collection]
+            result=await coll.update_many(query, {"$set": update})
 
             # Update metrics
-            response_time = time.time() - start_time
+            response_time=time.time() - start_time
             self.metrics.total_queries += 1
             self.metrics.successful_queries += 1
             self._update_response_time(response_time)
@@ -370,7 +374,7 @@ class MongoDBManager:
 
     async def create_indexes(self) -> bool:
         """Create fashion e-commerce specific indexes"""
-        indexes = {
+        indexes={
             "users": [
                 [("email", 1)],
                 [("created_at", -1)],
@@ -409,7 +413,7 @@ class MongoDBManager:
 
         try:
             for collection_name, collection_indexes in indexes.items():
-                collection = self.database[collection_name]
+                collection=self.database[collection_name]
 
                 for index_spec in collection_indexes:
                     await collection.create_index(index_spec)
@@ -426,31 +430,31 @@ class MongoDBManager:
     def _update_response_time(self, response_time: float):
         """Update average response time"""
         if self.metrics.average_response_time == 0:
-            self.metrics.average_response_time = response_time
+            self.metrics.average_response_time=response_time
         else:
             # Exponential moving average
-            alpha = 0.1
-            self.metrics.average_response_time = (
+            alpha=0.1
+            self.metrics.average_response_time=(
                 alpha * response_time + (1 - alpha) * self.metrics.average_response_time
             )
 
-        self.metrics.last_updated = datetime.now()
+        self.metrics.last_updated=datetime.now()
 
     async def close(self):
         """Close MongoDB connection"""
         if self.client:
             self.client.close()
-            self.is_connected = False
+            self.is_connected=False
             logger.info("MongoDB connection closed")
 
 class ClickHouseManager:
     """ClickHouse database manager for analytics"""
 
     def __init__(self, config: DatabaseConfig):
-        self.config = config
-        self.client = None
-        self.metrics = ConnectionMetrics(
-            self.is_connected = False
+        self.config=config
+        self.client=None
+        self.metrics=ConnectionMetrics(
+            self.is_connected=False
 
         logger.info(
             f"ClickHouse manager initialized - Host: {config.host}:{config.port}"
@@ -459,7 +463,7 @@ class ClickHouseManager:
     async def connect(self) -> bool:
         """Establish ClickHouse connection"""
         try:
-            self.client = ClickHouseClient(
+            self.client=ClickHouseClient(
                 host=self.config.host,
                 port=self.config.port,
                 user=self.config.username,
@@ -472,9 +476,9 @@ class ClickHouseManager:
             )
 
             # Test connection
-            result = self.client.execute("SELECT 1")
+            result=self.client.execute("SELECT 1")
 
-            self.is_connected = True
+            self.is_connected=True
             self.metrics.total_connections += 1
             logger.info("ClickHouse connection established")
             return True
@@ -485,30 +489,30 @@ class ClickHouseManager:
             return False
 
     async def execute_query(
-        self, query: str, params: Dict[str, Any] = None
+        self, query: str, params: Dict[str, Any]=None
     ) -> List[Dict[str, Any]]:
         """Execute query and return results"""
         if not self.client:
             raise Exception("Database not connected")
 
-        start_time = time.time()
+        start_time=time.time()
 
         try:
             if params:
-                result = self.client.execute(query, params)
+                result=self.client.execute(query, params)
             else:
-                result = self.client.execute(query)
+                result=self.client.execute(query)
 
             # Convert to list of dictionaries
             if result and len(result) > 0:
                 # Get column names from the query or use generic names
-                columns = [f"col_{i}" for i in range(len(result[0]))]
-                rows = [dict(zip(columns, row)) for row in result]
+                columns=[f"col_{i}" for i in range(len(result[0]))]
+                rows=[dict(zip(columns, row)) for row in result]
             else:
-                rows = []
+                rows=[]
 
             # Update metrics
-            response_time = time.time() - start_time
+            response_time=time.time() - start_time
             self.metrics.total_queries += 1
             self.metrics.successful_queries += 1
             self._update_response_time(response_time)
@@ -522,7 +526,7 @@ class ClickHouseManager:
 
     async def create_tables(self) -> bool:
         """Create fashion analytics tables"""
-        tables = [
+        tables=[
             """
             CREATE TABLE IF NOT EXISTS user_events (
                 user_id String,
@@ -577,7 +581,7 @@ class ClickHouseManager:
         try:
             for table_sql in tables:
                 self.client.execute(table_sql)
-                table_name = table_sql.split("TABLE IF NOT EXISTS ")[1].split(" (")[0]
+                table_name=table_sql.split("TABLE IF NOT EXISTS ")[1].split(" (")[0]
                 logger.info(f"Created ClickHouse table: {table_name}")
 
             return True
@@ -589,30 +593,30 @@ class ClickHouseManager:
     def _update_response_time(self, response_time: float):
         """Update average response time"""
         if self.metrics.average_response_time == 0:
-            self.metrics.average_response_time = response_time
+            self.metrics.average_response_time=response_time
         else:
             # Exponential moving average
-            alpha = 0.1
-            self.metrics.average_response_time = (
+            alpha=0.1
+            self.metrics.average_response_time=(
                 alpha * response_time + (1 - alpha) * self.metrics.average_response_time
             )
 
-        self.metrics.last_updated = datetime.now()
+        self.metrics.last_updated=datetime.now()
 
     def close(self):
         """Close ClickHouse connection"""
         if self.client:
             self.client.disconnect()
-            self.is_connected = False
+            self.is_connected=False
             logger.info("ClickHouse connection closed")
 
 class DatabaseEcosystem:
     """Unified database ecosystem manager"""
 
     def __init__(self):
-        self.databases = {}
-        self.configs = {}
-        self.backup_configs = {}
+        self.databases={}
+        self.configs={}
+        self.backup_configs={}
 
         logger.info("Database Ecosystem initialized")
 
@@ -620,20 +624,20 @@ class DatabaseEcosystem:
         """Add database to ecosystem"""
         try:
             if config.db_type == DatabaseType.POSTGRESQL:
-                manager = PostgreSQLManager(config)
+                manager=PostgreSQLManager(config)
             elif config.db_type == DatabaseType.MONGODB:
-                manager = MongoDBManager(config)
+                manager=MongoDBManager(config)
             elif config.db_type == DatabaseType.CLICKHOUSE:
-                manager = ClickHouseManager(config)
+                manager=ClickHouseManager(config)
             else:
                 raise ValueError(f"Unsupported database type: {config.db_type}")
 
             # Connect to database
-            success = await manager.connect()
+            success=await manager.connect()
 
             if success:
-                self.databases[name] = manager
-                self.configs[name] = config
+                self.databases[name]=manager
+                self.configs[name]=config
                 logger.info(f"Added {config.db_type.value} database: {name}")
                 return True
             else:
@@ -655,32 +659,32 @@ class DatabaseEcosystem:
 
     async def initialize_all_indexes(self) -> Dict[str, bool]:
         """Initialize indexes for all databases"""
-        results = {}
+        results={}
 
         for name, manager in self.databases.items():
             try:
                 if hasattr(manager, "create_indexes"):
-                    success = await manager.create_indexes()
-                    results[name] = success
+                    success=await manager.create_indexes()
+                    results[name]=success
                 elif hasattr(manager, "create_tables"):
-                    success = await manager.create_tables()
-                    results[name] = success
+                    success=await manager.create_tables()
+                    results[name]=success
                 else:
-                    results[name] = True  # No indexes to create
+                    results[name]=True  # No indexes to create
 
             except Exception as e:
                 logger.error(f"Failed to initialize indexes for {name}: {e}")
-                results[name] = False
+                results[name]=False
 
         return results
 
     async def get_ecosystem_metrics(self) -> Dict[str, Any]:
         """Get metrics for all databases"""
-        metrics = {}
+        metrics={}
 
         for name, manager in self.databases.items():
             try:
-                db_metrics = {
+                db_metrics={
                     "type": self.configs[name].db_type.value,
                     "is_connected": manager.is_connected,
                     "connection_metrics": manager.metrics.to_dict(),
@@ -688,24 +692,24 @@ class DatabaseEcosystem:
 
                 # Add pool status if available
                 if hasattr(manager, "get_pool_status"):
-                    db_metrics["pool_status"] = await manager.get_pool_status()
+                    db_metrics["pool_status"]=await manager.get_pool_status()
 
-                metrics[name] = db_metrics
+                metrics[name]=db_metrics
 
             except Exception as e:
                 logger.error(f"Error getting metrics for {name}: {e}")
-                metrics[name] = {"error": str(e)}
+                metrics[name]={"error": str(e)}
 
         return metrics
 
     async def health_check(self) -> Dict[str, Any]:
         """Comprehensive health check for all databases"""
-        health_status = {}
-        overall_healthy = True
+        health_status={}
+        overall_healthy=True
 
         for name, manager in self.databases.items():
             try:
-                start_time = time.time()
+                start_time=time.time()
 
                 # Test basic connectivity
                 if hasattr(manager, "execute_query"):
@@ -717,9 +721,9 @@ class DatabaseEcosystem:
                     # MongoDB test
                     await manager.find_documents("test", {}, limit=1)
 
-                response_time = (time.time() - start_time) * 1000
+                response_time=(time.time() - start_time) * 1000
 
-                health_status[name] = {
+                health_status[name]={
                     "status": "healthy",
                     "response_time_ms": response_time,
                     "type": self.configs[name].db_type.value,
@@ -728,13 +732,13 @@ class DatabaseEcosystem:
                 }
 
             except Exception as e:
-                health_status[name] = {
+                health_status[name]={
                     "status": "unhealthy",
                     "error": str(e),
                     "type": self.configs[name].db_type.value,
                     "is_connected": False,
                 }
-                overall_healthy = False
+                overall_healthy=False
 
         return {
             "overall_status": "healthy" if overall_healthy else "degraded",
@@ -758,4 +762,4 @@ class DatabaseEcosystem:
                 logger.error(f"Error closing database {name}: {e}")
 
 # Global database ecosystem instance
-database_ecosystem = DatabaseEcosystem()
+database_ecosystem=DatabaseEcosystem()

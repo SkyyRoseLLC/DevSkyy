@@ -34,6 +34,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class MultiModelAIOrchestrator:
     """
     Orchestrates multiple AI models to provide best-in-class results.
@@ -135,8 +136,7 @@ class MultiModelAIOrchestrator:
         }
 
         logger.info(
-            f"🤖 Multi-Model Orchestrator initialized with {len(self.models)} AI platforms"
-        )
+            f"🤖 Multi-Model Orchestrator initialized with {len(self.models)} AI platforms")
 
     async def generate(
         self,
@@ -161,13 +161,9 @@ class MultiModelAIOrchestrator:
         """
         try:
             if use_ensemble:
-                return await self._ensemble_generate(
-                    prompt, task_type, max_tokens, temperature
-                )
+                return await self._ensemble_generate(prompt, task_type, max_tokens, temperature)
             else:
-                return await self._single_model_generate(
-                    prompt, task_type, max_tokens, temperature
-                )
+                return await self._single_model_generate(prompt, task_type, max_tokens, temperature)
 
         except Exception as e:
             logger.error(f"❌ Multi-model generation failed: {e}")
@@ -187,30 +183,18 @@ class MultiModelAIOrchestrator:
 
         # Generate with selected model
         if platform == "claude":
-            response = await self._call_claude(
-                model_name, prompt, max_tokens, temperature
-            )
+            response = await self._call_claude(model_name, prompt, max_tokens, temperature)
         elif platform == "openai":
-            response = await self._call_openai(
-                model_name, prompt, max_tokens, temperature
-            )
+            response = await self._call_openai(model_name, prompt, max_tokens, temperature)
         elif platform == "gemini":
-            response = await self._call_gemini(
-                model_name, prompt, max_tokens, temperature
-            )
+            response = await self._call_gemini(model_name, prompt, max_tokens, temperature)
         elif platform == "mistral":
-            response = await self._call_mistral(
-                model_name, prompt, max_tokens, temperature
-            )
+            response = await self._call_mistral(model_name, prompt, max_tokens, temperature)
         elif platform == "together":
-            response = await self._call_together(
-                model_name, prompt, max_tokens, temperature
-            )
+            response = await self._call_together(model_name, prompt, max_tokens, temperature)
         else:
             # Fallback to Claude Sonnet
-            response = await self._call_claude(
-                "sonnet", prompt, max_tokens, temperature
-            )
+            response = await self._call_claude("sonnet", prompt, max_tokens, temperature)
 
         return {
             "response": response,
@@ -240,16 +224,25 @@ class MultiModelAIOrchestrator:
             platform, model_name = model_id.split("_", 1)
             if platform == "claude" and "claude" in self.models:
                 tasks.append(
-                    self._call_claude(model_name, prompt, max_tokens, temperature)
-                )
+                    self._call_claude(
+                        model_name,
+                        prompt,
+                        max_tokens,
+                        temperature))
             elif platform == "openai" and "openai" in self.models:
                 tasks.append(
-                    self._call_openai(model_name, prompt, max_tokens, temperature)
-                )
+                    self._call_openai(
+                        model_name,
+                        prompt,
+                        max_tokens,
+                        temperature))
             elif platform == "gemini" and "gemini" in self.models:
                 tasks.append(
-                    self._call_gemini(model_name, prompt, max_tokens, temperature)
-                )
+                    self._call_gemini(
+                        model_name,
+                        prompt,
+                        max_tokens,
+                        temperature))
 
         responses = await asyncio.gather(*tasks, return_exceptions=True)
 
@@ -269,9 +262,7 @@ Responses:
 
 Create the optimal combined response that leverages the strengths of each."""
 
-        final_response = await self._call_claude(
-            "sonnet", synthesis_prompt, max_tokens, 0.3
-        )
+        final_response = await self._call_claude("sonnet", synthesis_prompt, max_tokens, 0.3)
 
         return {
             "response": final_response,
@@ -366,8 +357,7 @@ Create the optimal combined response that leverages the strengths of each."""
         try:
             api_key = self.models["mistral"]["api_key"]
             model = self.models["mistral"]["models"].get(
-                model_name, "mistral-large-latest"
-            )
+                model_name, "mistral-large-latest")
 
             url = "https://api.mistral.ai/v1/chat/completions"
 
@@ -472,23 +462,26 @@ Create the optimal combined response that leverages the strengths of each."""
 
         return results
 
+
 # Factory function
 def create_multi_model_orchestrator() -> MultiModelAIOrchestrator:
     """Create Multi-Model AI Orchestrator."""
     return MultiModelAIOrchestrator()
 
+
 # Global instance
 ai_orchestrator = create_multi_model_orchestrator()
 
+
 # Convenience functions
 async def ai_generate(
-    prompt: str, task_type: str = "general", use_best: bool = True
-) -> str:
+        prompt: str,
+        task_type: str = "general",
+        use_best: bool = True) -> str:
     """Generate using optimal AI model."""
-    result = await ai_orchestrator.generate(
-        prompt, task_type, use_ensemble=not use_best
-    )
+    result = await ai_orchestrator.generate(prompt, task_type, use_ensemble=not use_best)
     return result.get("response", "")
+
 
 async def ai_ensemble(prompt: str, task_type: str = "general") -> Dict[str, Any]:
     """Generate using ensemble of top models."""

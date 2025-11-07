@@ -1,16 +1,13 @@
-            from agent.modules.wordpress_direct_service import (
-                import os
-from pathlib import Path
-import sys
-
-from database import db_manager, init_db
-import logging
-
 #!/usr/bin/env python3
 """
 Enterprise Startup Handler for DevSkyy Platform
 SQLAlchemy-based database initialization with zero MongoDB dependencies
 """
+import os
+from pathlib import Path
+import sys
+from database import db_manager, init_db
+import logging
 
 # Add the project root to Python path
 project_root = Path(__file__).parent
@@ -58,7 +55,6 @@ class DevSkyStartup:
     async def initialize_wordpress_service(self):
         """Initialize WordPress service if configured."""
         try:
-
             wordpress_url = os.getenv("WORDPRESS_URL")
             if not wordpress_url:
                 logger.info(
@@ -66,6 +62,7 @@ class DevSkyStartup:
                 )
                 return False
 
+            from agent.modules.wordpress_direct_service import (
                 create_wordpress_direct_service,
             )
 

@@ -1,22 +1,3 @@
-        import re
-from datetime import datetime, timedelta
-import json
-import secrets
-import time
-
-from pydantic import BaseModel, Field
-
-from cryptography.fernet import Fernet
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
-from enum import Enum
-from typing import Any, Dict, List, Optional, Set
-import asyncio
-import base64
-import hashlib
-import hmac
-import logging
-
 """
 DevSkyy Enhanced Security Module v2.0.0
 
@@ -31,12 +12,29 @@ Author: DevSkyy Team
 Version: 2.0.0
 Python: >=3.11
 """
+import re
+from datetime import datetime, timedelta
+import json
+import secrets
+import time
+from pydantic import BaseModel, Field
+from cryptography.fernet import Fernet
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
+from enum import Enum
+from typing import Any, Dict, List, Optional, Set
+import asyncio
+import base64
+import hashlib
+import hmac
+import logging
 
 logger = logging.getLogger(__name__)
 
 # ============================================================================
 # SECURITY ENUMS AND MODELS
 # ============================================================================
+
 
 class ThreatLevel(str, Enum):
     """Security threat levels."""
@@ -45,6 +43,7 @@ class ThreatLevel(str, Enum):
     MEDIUM = "medium"
     HIGH = "high"
     CRITICAL = "critical"
+
 
 class SecurityEventType(str, Enum):
     """Types of security events."""
@@ -56,6 +55,7 @@ class SecurityEventType(str, Enum):
     RATE_LIMIT_EXCEEDED = "rate_limit_exceeded"
     MALICIOUS_REQUEST = "malicious_request"
     COMPLIANCE_VIOLATION = "compliance_violation"
+
 
 class SecurityEvent(BaseModel):
     """Security event model."""
@@ -75,6 +75,7 @@ class SecurityEvent(BaseModel):
     resolved: bool = False
     resolution_notes: Optional[str] = None
 
+
 class SecurityPolicy(BaseModel):
     """Security policy configuration."""
 
@@ -89,6 +90,7 @@ class SecurityPolicy(BaseModel):
 # ============================================================================
 # ENHANCED SECURITY MANAGER
 # ============================================================================
+
 
 class EnhancedSecurityManager:
     """
@@ -567,7 +569,7 @@ class EnhancedSecurityManager:
             **self.metrics,
             "blocked_ips_count": len(self.blocked_ips),
             "recent_events_24h": len(recent_events),
-            "active_policies": len()
+            "active_policies": len(
                 [p for p in self.security_policies.values() if p.enabled]
             ),
             "threat_level_distribution": {
@@ -576,10 +578,10 @@ class EnhancedSecurityManager:
             },
         }
 
-    async def get_security_events(self, limit: int = 100) -> List[SecurityEvent]:
+    async def get_security_events(self, limit: int=100) -> List[SecurityEvent]:
         """Get recent security events."""
         return sorted(
-            self.security_events[-limit:], key=lambda x: x.timestamp, reverse=True
+            self.security_events[-limit:], key = lambda x: x.timestamp, reverse = True
         )
 
     def update_security_policy(self, policy_id: str, policy: SecurityPolicy):

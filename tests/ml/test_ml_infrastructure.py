@@ -1,24 +1,23 @@
-        import time
+"""
+Comprehensive ML Infrastructure Tests
+Tests for model registry, caching, explainability, and API endpoints
+"""
+import time
 from datetime import datetime
 from ml.model_registry import ModelRegistry, ModelStage
 from ml.redis_cache import RedisCache
 from pathlib import Path
-
-        from fastapi.testclient import TestClient
-
-        from main import app
+from fastapi.testclient import TestClient
+from main import app
 from ml.explainability import ModelExplainer
 import numpy as np
 import pytest
 import shutil
 import tempfile
 
-"""
-Comprehensive ML Infrastructure Tests
-Tests for model registry, caching, explainability, and API endpoints
-"""
-
 # Mock model for testing
+
+
 class MockModel:
     """Simple mock model for testing"""
 
@@ -31,6 +30,7 @@ class MockModel:
 # ============================================================================
 # MODEL REGISTRY TESTS
 # ============================================================================
+
 
 class TestModelRegistry:
     """Test model registry operations"""
@@ -46,7 +46,7 @@ class TestModelRegistry:
     def test_register_model(self, temp_registry):
         """Test model registration"""
         model = MockModel(
-            metadata = temp_registry.register_model(
+            metadata=temp_registry.register_model(
                 model=model,
             model_name="test_model",
             version="1.0.0",
@@ -63,7 +63,7 @@ class TestModelRegistry:
 
     def test_load_model(self, temp_registry):
         """Test model loading"""
-        model = MockModel(
+        model=MockModel(
             temp_registry.register_model(
                 model=model,
             model_name="test_model",
@@ -72,17 +72,17 @@ class TestModelRegistry:
             metrics={"accuracy": 0.95},
 )
 
-        loaded_model = temp_registry.load_model("test_model", version="1.0.0")
+        loaded_model=temp_registry.load_model("test_model", version="1.0.0")
         assert loaded_model is not None
 
         # Test prediction
-        X = np.array([[1, 2], [3, 4]])
-        result = loaded_model.predict(X)
+        X=np.array([[1, 2], [3, 4]])
+        result=loaded_model.predict(X)
         assert len(result) == 2
 
     def test_promote_model(self, temp_registry):
         """Test model promotion"""
-        model = MockModel(
+        model=MockModel(
             temp_registry.register_model(
                 model=model,
             model_name="test_model",
@@ -93,17 +93,17 @@ class TestModelRegistry:
 
         # Promote to staging
         temp_registry.promote_model("test_model", "1.0.0", ModelStage.STAGING)
-        metadata = temp_registry.get_metadata("test_model", "1.0.0")
+        metadata=temp_registry.get_metadata("test_model", "1.0.0")
         assert metadata.stage == ModelStage.STAGING
 
         # Promote to production
         temp_registry.promote_model("test_model", "1.0.0", ModelStage.PRODUCTION)
-        metadata = temp_registry.get_metadata("test_model", "1.0.0")
+        metadata=temp_registry.get_metadata("test_model", "1.0.0")
         assert metadata.stage == ModelStage.PRODUCTION
 
     def test_list_versions(self, temp_registry):
         """Test listing model versions"""
-        model = MockModel(
+        model=MockModel(
     # Register multiple versions
         for version in ["1.0.0", "1.1.0", "2.0.0"]:
             temp_registry.register_model(
@@ -114,14 +114,14 @@ class TestModelRegistry:
                 metrics={"accuracy": 0.95},
 )
 
-        versions = temp_registry.list_versions("test_model")
+        versions=temp_registry.list_versions("test_model")
         assert len(versions) == 3
         assert "1.0.0" in versions
         assert "2.0.0" in versions
 
     def test_compare_models(self, temp_registry):
         """Test model comparison"""
-        model = MockModel(
+        model=MockModel(
             temp_registry.register_model(
                 model=model,
             model_name="test_model",
@@ -138,7 +138,7 @@ class TestModelRegistry:
             metrics={"accuracy": 0.95, "f1": 0.93},
         )
 
-        comparison = temp_registry.compare_models("test_model", "1.0.0", "2.0.0")
+        comparison=temp_registry.compare_models("test_model", "1.0.0", "2.0.0")
 
         assert comparison["model_name"] == "test_model"
         assert "metrics_comparison" in comparison
@@ -149,7 +149,7 @@ class TestModelRegistry:
 
     def test_registry_stats(self, temp_registry):
         """Test registry statistics"""
-        model = MockModel(
+        model=MockModel(
             temp_registry.register_model(
                 model=model,
             model_name="model1",
@@ -166,7 +166,7 @@ class TestModelRegistry:
             metrics={"mse": 0.05},
         )
 
-        stats = temp_registry.get_registry_stats()
+        stats=temp_registry.get_registry_stats()
 
         assert stats["total_models"] == 2
         assert stats["total_versions"] == 2
@@ -179,7 +179,7 @@ class TestModelRegistry:
 class TestRedisCache:
     """Test Redis cache with fallback"""
 
-    @pytest.fixture
+    @ pytest.fixture
     def cache(self):
         """Create cache instance"""
         return RedisCache()
@@ -187,7 +187,7 @@ class TestRedisCache:
     def test_cache_set_get(self, cache):
         """Test basic cache operations"""
         cache.set("test_key", {"data": "value"})
-        result = cache.get("test_key")
+        result=cache.get("test_key")
         assert result == {"data": "value"}
 
     def test_cache_delete(self, cache):
@@ -219,7 +219,7 @@ class TestRedisCache:
         cache.get("key1")  # Hit
         cache.get("nonexistent")  # Miss
 
-        stats = cache.stats()
+        stats=cache.stats()
         assert "mode" in stats
         assert "total_keys" in stats
 
@@ -230,7 +230,7 @@ class TestRedisCache:
 class TestModelExplainer:
     """Test SHAP-based explainability"""
 
-    @pytest.fixture
+    @ pytest.fixture
     def explainer(self):
         """Create explainer instance"""
         return ModelExplainer()
@@ -243,9 +243,9 @@ class TestModelExplainer:
     def test_create_explainer_without_shap(self, explainer):
         """Test explainer creation when SHAP not available"""
         try:
-            model = MockModel()
-            X_bg = np.random.randn(100, 5)
-            result = explainer.create_explainer(model, X_bg, "test_model")
+            model=MockModel()
+            X_bg=np.random.randn(100, 5)
+            result=explainer.create_explainer(model, X_bg, "test_model")
             # If SHAP is installed, this should work
             # If not, it should raise ImportError
         except ImportError as e:
@@ -253,7 +253,7 @@ class TestModelExplainer:
 
     def test_explain_prediction_without_explainer(self, explainer):
         """Test prediction explanation without explainer"""
-        X = np.array([[1, 2, 3]])
+        X=np.array([[1, 2, 3]])
 
         with pytest.raises(ValueError, match="No explainer found"):
             explainer.explain_prediction("nonexistent_model", X)
@@ -265,13 +265,13 @@ class TestModelExplainer:
 class TestMLIntegration:
     """Integration tests for ML infrastructure"""
 
-    @pytest.fixture
+    @ pytest.fixture
     def setup_ml(self):
         """Set up ML infrastructure"""
-        temp_dir = tempfile.mkdtemp()
-        registry = ModelRegistry(registry_path=temp_dir)
-        cache = RedisCache()
-        explainer = ModelExplainer()
+        temp_dir=tempfile.mkdtemp()
+        registry=ModelRegistry(registry_path=temp_dir)
+        cache=RedisCache()
+        explainer=ModelExplainer()
 
         yield registry, cache, explainer
 
@@ -280,15 +280,15 @@ class TestMLIntegration:
 
     def test_full_ml_workflow(self, setup_ml):
         """Test complete ML workflow"""
-        registry, cache, explainer = setup_ml
+        registry, cache, explainer=setup_ml
 
         # 1. Train and register model
-        model = MockModel()
-        X_train = np.random.randn(100, 5)
-        y_train = np.random.randint(0, 2, 100)
+        model=MockModel()
+        X_train=np.random.randn(100, 5)
+        y_train=np.random.randint(0, 2, 100)
         model.fit(X_train, y_train)
 
-        metadata = registry.register_model(
+        metadata=registry.register_model(
             model=model,
             model_name="workflow_model",
             version="1.0.0",
@@ -300,26 +300,26 @@ class TestMLIntegration:
         assert metadata.model_name == "workflow_model"
 
         # 2. Load model and cache predictions
-        loaded_model = registry.load_model("workflow_model", version="1.0.0")
-        X_test = np.array([[1, 2, 3, 4, 5]])
+        loaded_model=registry.load_model("workflow_model", version="1.0.0")
+        X_test=np.array([[1, 2, 3, 4, 5]])
 
-        cache_key = "workflow_model:1.0.0:prediction"
-        prediction = loaded_model.predict(X_test)
+        cache_key="workflow_model:1.0.0:prediction"
+        prediction=loaded_model.predict(X_test)
         cache.set(cache_key, prediction.tolist())
 
-        cached_prediction = cache.get(cache_key)
+        cached_prediction=cache.get(cache_key)
         assert cached_prediction is not None
 
         # 3. Promote model
         registry.promote_model("workflow_model", "1.0.0", ModelStage.PRODUCTION)
-        metadata = registry.get_metadata("workflow_model", "1.0.0")
+        metadata=registry.get_metadata("workflow_model", "1.0.0")
         assert metadata.stage == ModelStage.PRODUCTION
 
     def test_model_versioning_workflow(self, setup_ml):
         """Test model versioning and comparison"""
-        registry, cache, _ = setup_ml
+        registry, cache, _=setup_ml
 
-        model = MockModel(
+        model=MockModel(
     # Register v1
         registry.register_model(
             model=model,
@@ -339,7 +339,7 @@ class TestMLIntegration:
         )
 
         # Compare versions
-        comparison = registry.compare_models("versioned_model", "1.0.0", "2.0.0")
+        comparison=registry.compare_models("versioned_model", "1.0.0", "2.0.0")
 
         assert (
             comparison["metrics_comparison"]["accuracy"]["v2.0.0"]
@@ -350,7 +350,7 @@ class TestMLIntegration:
         registry.promote_model("versioned_model", "2.0.0", ModelStage.PRODUCTION)
 
         # Load production model
-        prod_model = registry.load_model("versioned_model", stage=ModelStage.PRODUCTION)
+        prod_model=registry.load_model("versioned_model", stage=ModelStage.PRODUCTION)
         assert prod_model is not None
 
 # ============================================================================
@@ -360,7 +360,7 @@ class TestMLIntegration:
 class TestMLAPI:
     """Test ML API endpoints"""
 
-    @pytest.fixture
+    @ pytest.fixture
     def client(self):
         """Create test client"""
 
@@ -368,18 +368,18 @@ class TestMLAPI:
 
     def test_ml_health_check(self, client):
         """Test ML health endpoint"""
-        response = client.get("/api/v1/ml/health")
+        response=client.get("/api/v1/ml/health")
         assert response.status_code == 200
-        data = response.json()
+        data=response.json()
         assert "registry" in data
         assert "cache_mode" in data
 
     def test_registry_stats_requires_auth(self, client):
         """Test registry stats requires authentication"""
-        response = client.get("/api/v1/ml/registry/stats")
+        response=client.get("/api/v1/ml/registry/stats")
         assert response.status_code == 401  # Unauthorized
 
     def test_cache_stats_requires_auth(self, client):
         """Test cache stats requires authentication"""
-        response = client.get("/api/v1/ml/cache/stats")
+        response=client.get("/api/v1/ml/cache/stats")
         assert response.status_code == 401  # Unauthorized

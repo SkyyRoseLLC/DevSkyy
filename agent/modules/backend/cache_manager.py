@@ -1,4 +1,4 @@
-        import redis.asyncio as redis
+import redis.asyncio as redis
 from datetime import datetime, timedelta
 import json
 
@@ -10,6 +10,7 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
 
 class CacheManager:
     """High-performance caching system with TTL and memory management."""
@@ -132,8 +133,10 @@ class CacheManager:
 
         return len(expired_keys)
 
+
 # Global cache instance
 cache_manager = CacheManager(max_size=2000, default_ttl=600)  # 10 minutes default TTL
+
 
 def cached(ttl: int = 300, key_prefix: str = ""):
     """Decorator for caching function results."""
@@ -186,6 +189,7 @@ def cached(ttl: int = 300, key_prefix: str = ""):
         return async_wrapper if asyncio.iscoroutinefunction(func) else sync_wrapper
 
     return decorator
+
 
 class ConnectionPool:
     """Connection pooling for database and external services."""
@@ -271,6 +275,8 @@ class ConnectionPool:
         }
 
 # Background task for cache cleanup
+
+
 async def cache_cleanup_task():
     """Background task to clean up expired cache entries."""
     while True:
@@ -283,6 +289,8 @@ async def cache_cleanup_task():
             logger.error(f"Cache cleanup error: {e}")
 
 # Start background cleanup task
+
+
 def start_cache_cleanup():
     """Start the background cache cleanup task."""
     try:

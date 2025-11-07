@@ -29,6 +29,7 @@ with real-world use cases and implementation patterns
 
 logger = logging.getLogger(__name__)
 
+
 class FashionAPIExamples:
     """Comprehensive examples for fashion API integrations"""
 
@@ -112,7 +113,8 @@ class FashionAPIExamples:
         logger.info(
             f"  Fashion Relevance Score: {context_analysis['fashion_relevance_score']:.2f}"
         )
-        logger.info(f"  Identified Categories: {context_analysis['identified_categories']}")
+        logger.info(
+            f"  Identified Categories: {context_analysis['identified_categories']}")
         logger.info(
             f"  Sustainability Mentions: {context_analysis['sustainability_mentions']}"
         )
@@ -133,7 +135,8 @@ class FashionAPIExamples:
             logger.info(f"  🌟 {rec['trend_name']}")
             logger.info(f"     Popularity: {rec['popularity_score']:.2f}")
             logger.info(f"     Key Colors: {', '.join(rec['key_elements']['colors'])}")
-            logger.info(f"     Materials: {', '.join(rec['key_elements']['materials'])}")
+            logger.info(
+                f"     Materials: {', '.join(rec['key_elements']['materials'])}")
 
         # Step 3: Sync trends from social media
         logger.info("\nStep 3: Syncing trends from social media...")
@@ -389,7 +392,8 @@ class FashionAPIExamples:
                 )  # Boost for preferred colors
                 personalized_recs.append(rec)
 
-        logger.info(f"✅ Generated {len(personalized_recs)} personalized recommendations")
+        logger.info(
+            f"✅ Generated {len(personalized_recs)} personalized recommendations")
 
         for rec in personalized_recs[:2]:  # Show top 2
             logger.info(f"  🌟 {rec['trend_name']}")
@@ -487,14 +491,16 @@ class FashionAPIExamples:
         discovery_health = await api_discovery_engine.health_check()
         health_results["api_discovery"] = discovery_health
         logger.info(f"  Status: {discovery_health['status']}")
-        logger.info(f"  APIs Discovered: {discovery_health.get('total_apis_discovered', 0)}")
+        logger.info(
+            f"  APIs Discovered: {discovery_health.get('total_apis_discovered', 0)}")
 
         # API Gateway
         logger.info("\nChecking API Gateway...")
         gateway_health = await api_gateway.health_check()
         health_results["api_gateway"] = gateway_health
         logger.info(f"  Status: {gateway_health['status']}")
-        logger.info(f"  Success Rate: {gateway_health.get('success_rate', 0) * 100:.1f}%")
+        logger.info(
+            f"  Success Rate: {gateway_health.get('success_rate', 0) * 100:.1f}%")
         logger.info(
             f"  Average Response Time: {gateway_health.get('average_response_time', 0):.3f}s"
         )
@@ -507,7 +513,8 @@ class FashionAPIExamples:
         logger.info(
             f"  Registered Workflows: {workflow_health.get('registered_workflows', 0)}"
         )
-        logger.info(f"  Running Workflows: {workflow_health.get('running_workflows', 0)}")
+        logger.info(
+            f"  Running Workflows: {workflow_health.get('running_workflows', 0)}")
 
         # Fashion API Integrator
         logger.info("\nChecking Fashion API Integrator...")
@@ -537,15 +544,16 @@ class FashionAPIExamples:
         healthy_components = sum()
             1 for health in health_results.values() if health.get("status") == "healthy"
         )
-        total_components = len(health_results)
+        total_components= len(health_results)
 
-        overall_health = (
+        overall_health= (
             "healthy" if healthy_components == total_components else "degraded"
         )
 
         logger.info(f"Overall Status: {overall_health.upper()}")
         logger.info(f"Healthy Components: {healthy_components}/{total_components}")
-        logger.info(f"System Readiness: {healthy_components / total_components * 100:.1f}%")
+        logger.info(
+            f"System Readiness: {healthy_components / total_components * 100:.1f}%")
 
         if overall_health == "healthy":
             logger.info("✅ All systems operational - Ready for production!")
@@ -590,7 +598,7 @@ async def main():
     """Main function to run API integration examples"""
 
     # Initialize examples
-    examples = FashionAPIExamples()
+    examples= FashionAPIExamples()
 
     # Run all examples
     await examples.run_all_examples()

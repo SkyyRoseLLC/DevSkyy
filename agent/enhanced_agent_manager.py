@@ -18,7 +18,6 @@ Advanced agent orchestration with circuit breakers, monitoring, and performance 
 """
 
 
-
 logger = logging.getLogger(__name__)
 
 
@@ -56,11 +55,8 @@ class CircuitBreaker:
         if self.state == CircuitBreakerState.CLOSED:
             return True
         elif self.state == CircuitBreakerState.OPEN:
-            if (
-                self.last_failure_time
-                and datetime.now() - self.last_failure_time
-                > timedelta(seconds=self.recovery_timeout)
-            ):
+            if self.last_failure_time and datetime.now(
+            ) - self.last_failure_time > timedelta(seconds=self.recovery_timeout):
                 self.state = CircuitBreakerState.HALF_OPEN
                 return True
             return False
@@ -80,8 +76,7 @@ class CircuitBreaker:
         if self.failure_count >= self.failure_threshold:
             self.state = CircuitBreakerState.OPEN
             logger.warning(
-                f"Circuit breaker opened after {self.failure_count} failures"
-            )
+                f"Circuit breaker opened after {self.failure_count} failures")
 
 
 class AgentMetrics:
@@ -217,9 +212,7 @@ class EnhancedAgentManager:
 
             # Execute with timeout
             try:
-                result = await asyncio.wait_for(
-                    agent.execute(task_data), timeout=timeout
-                )
+                result = await asyncio.wait_for(agent.execute(task_data), timeout=timeout)
 
                 # Record success
                 execution_time = time.time() - start_time
@@ -228,8 +221,7 @@ class EnhancedAgentManager:
                     circuit_breaker.record_success()
 
                 logger.info(
-                    f"Agent {agent_type} executed successfully in {execution_time:.2f}s"
-                )
+                    f"Agent {agent_type} executed successfully in {execution_time:.2f}s")
 
                 return {
                     "success": True,
@@ -293,14 +285,11 @@ class EnhancedAgentManager:
             "success_rate": metrics.success_rate,
             "average_execution_time": metrics.average_execution_time,
             "last_execution_time": (
-                metrics.last_execution_time.isoformat()
-                if metrics.last_execution_time
-                else None
-            ),
+                metrics.last_execution_time.isoformat() if metrics.last_execution_time else None),
             "circuit_breaker_state": (
-                circuit_breaker.state.value if circuit_breaker else None
-            ),
-            "recent_executions": len(metrics.execution_history),
+                circuit_breaker.state.value if circuit_breaker else None),
+            "recent_executions": len(
+                metrics.execution_history),
         }
 
     def get_system_health(self) -> Dict[str, Any]:
@@ -311,16 +300,11 @@ class EnhancedAgentManager:
         # Calculate overall metrics
         total_executions = sum(m.execution_count for m in self.metrics.values())
         total_successes = sum(m.success_count for m in self.metrics.values())
-        overall_success_rate = (
-            total_successes / total_executions if total_executions > 0 else 0
-        )
+        overall_success_rate = total_successes / total_executions if total_executions > 0 else 0
 
         # Check circuit breaker states
-        open_circuits = sum(
-            1
-            for cb in self.circuit_breakers.values()
-            if cb.state == CircuitBreakerState.OPEN
-        )
+        open_circuits = sum(1 for cb in self.circuit_breakers.values()
+                            if cb.state == CircuitBreakerState.OPEN)
 
         return {
             "timestamp": datetime.now().isoformat(),
@@ -330,10 +314,7 @@ class EnhancedAgentManager:
             "overall_success_rate": overall_success_rate,
             "open_circuit_breakers": open_circuits,
             "system_status": (
-                "healthy"
-                if open_circuits == 0 and overall_success_rate > 0.9
-                else "degraded"
-            ),
+                "healthy" if open_circuits == 0 and overall_success_rate > 0.9 else "degraded"),
         }
 
     def list_available_agents(self) -> List[str]:

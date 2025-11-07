@@ -17,6 +17,7 @@ Integrated into all agents for fashion-specific insights and decision making
 
 logger = logging.getLogger(__name__)
 
+
 class FashionSeason(Enum):
     """Fashion seasons"""
 
@@ -25,6 +26,7 @@ class FashionSeason(Enum):
     PRE_FALL = "pre_fall"
     RESORT = "resort"
     CRUISE = "cruise"
+
 
 class FashionCategory(Enum):
     """Fashion categories"""
@@ -38,6 +40,7 @@ class FashionCategory(Enum):
     BEAUTY = "beauty"
     HOME_DECOR = "home_decor"
 
+
 class TrendStatus(Enum):
     """Trend lifecycle status"""
 
@@ -47,6 +50,7 @@ class TrendStatus(Enum):
     DECLINING = "declining"
     REVIVAL = "revival"
 
+
 class SustainabilityLevel(Enum):
     """Sustainability levels"""
 
@@ -55,6 +59,7 @@ class SustainabilityLevel(Enum):
     ECO_FRIENDLY = "eco_friendly"
     CIRCULAR = "circular"
     REGENERATIVE = "regenerative"
+
 
 @dataclass
 class FashionTrend:
@@ -91,6 +96,7 @@ class FashionTrend:
         data["updated_at"] = self.updated_at.isoformat()
         return data
 
+
 @dataclass
 class FashionInsight:
     """Fashion industry insight"""
@@ -105,6 +111,7 @@ class FashionInsight:
     time_relevance: str
     business_impact: str
     created_at: datetime
+
 
 @dataclass
 class MarketIntelligence:
@@ -121,6 +128,7 @@ class MarketIntelligence:
     sustainability_trends: Dict[str, Any]
     technology_adoption: Dict[str, float]
     last_updated: datetime
+
 
 class FashionIntelligenceEngine:
     """Comprehensive fashion industry intelligence engine"""
@@ -745,21 +753,21 @@ class FashionIntelligenceEngine:
     ) -> Dict[str, Any]:
         """Aggregate consumer insights from market data"""
 
-        all_preferences = {}
+        all_preferences= {}
         for market in markets:
             for key, value in market.consumer_preferences.items():
                 if key not in all_preferences:
-                    all_preferences[key] = []
+                    all_preferences[key]= []
                 all_preferences[key].append(value)
 
         # Calculate averages
-        aggregated_preferences = {}
+        aggregated_preferences= {}
         for key, values in all_preferences.items():
             if isinstance(values[0], (int, float)):
-                aggregated_preferences[key] = sum(values) / len(values)
+                aggregated_preferences[key]= sum(values) / len(values)
             else:
                 # For non-numeric values, take the most common
-                aggregated_preferences[key] = Counter(values).most_common(1)[0][0]
+                aggregated_preferences[key]= Counter(values).most_common(1)[0][0]
 
         return {
             "preferences": aggregated_preferences,

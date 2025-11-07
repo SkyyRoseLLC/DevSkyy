@@ -6,11 +6,11 @@ import os
 from typing import Any, Dict, List
 from uuid import uuid4
 from web3 import Web3
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/access/Ownable.sol"
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol"
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol"
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol"
+import "@openzeppelin/contracts/utils/Counters.sol"
 import asyncio
 import hashlib
 import logging
@@ -33,6 +33,7 @@ Features:
 """
 
 logger = logging.getLogger(__name__)
+
 
 class BlockchainNFTLuxuryAssets:
     """
@@ -131,7 +132,7 @@ class BlockchainNFTLuxuryAssets:
         except Exception as e:
     logger.warning(f"Handled exception: {e}")
 
-        return networks
+    return networks
 
     def _load_luxury_nft_contract(self) -> str:
         """Load Solidity contract for luxury NFTs."""
@@ -766,18 +767,29 @@ contract SkyyRoseMembership {
         try:
             # Generate 3D model metadata
             wearable = {
-                "item_id": str(uuid4()),
+                "item_id": str(
+                    uuid4()),
                 "name": item_data["name"],
-                "category": item_data.get("category", "clothing"),
+                "category": item_data.get(
+                    "category",
+                    "clothing"),
                 "3d_model": {
                     "format": "gltf",
                     "url": f"https://assets.skyyrose.com/wearables/{item_data['model_id']}.gltf",
-                    "textures": item_data.get("textures", []),
-                    "animations": item_data.get("animations", []),
+                    "textures": item_data.get(
+                        "textures",
+                        []),
+                    "animations": item_data.get(
+                        "animations",
+                        []),
                 },
                 "platforms": {},
-                "rarity": item_data.get("rarity", "rare"),
-                "max_supply": item_data.get("max_supply", 100),
+                "rarity": item_data.get(
+                    "rarity",
+                    "rare"),
+                "max_supply": item_data.get(
+                    "max_supply",
+                    100),
             }
 
             # Platform-specific configurations
@@ -792,8 +804,12 @@ contract SkyyRoseMembership {
                 elif platform == "sandbox":
                     wearable["platforms"]["sandbox"] = {
                         "voxel_model": f"https://assets.skyyrose.com/voxels/{item_data['model_id']}.vox",
-                        "equipment_slot": item_data.get("slot", "outfit"),
-                        "attributes": item_data.get("attributes", {}),
+                        "equipment_slot": item_data.get(
+                            "slot",
+                            "outfit"),
+                        "attributes": item_data.get(
+                            "attributes",
+                            {}),
                     }
 
             logger.info(f"🎮 Created digital wearable: {item_data['name']}")
@@ -923,11 +939,15 @@ contract SkyyRoseMembership {
             return {"error": str(e), "status": "failed"}
 
 # Factory function
+
+
 def create_blockchain_nft_system() -> BlockchainNFTLuxuryAssets:
     """Create Blockchain NFT Luxury Assets system."""
     return BlockchainNFTLuxuryAssets()
 
 # Example usage
+
+
 async def main():
     """Example: Create and manage luxury NFTs."""
     blockchain = create_blockchain_nft_system()
@@ -972,7 +992,8 @@ async def main():
 
     if cert_result["status"] == "success":
         logger.info("✅ Certificate Created")
-        logger.info(f"🔐 Fingerprint: {cert_result['certificate']['fingerprint'][:16]}...")
+        logger.info(
+            f"🔐 Fingerprint: {cert_result['certificate']['fingerprint'][:16]}...")
         logger.info(f"🔗 Verify at: {cert_result['certificate']['verification_url']}")
 
     # Create membership NFT
@@ -987,9 +1008,12 @@ async def main():
     )
 
     if membership_result["status"] == "success":
-        logger.info(f"✅ {membership_result['membership']['tier_name']} Membership Created")
-        logger.info(f"🎁 Benefits: {', '.join(membership_result['membership']['benefits'])}")
-        logger.info(f"💎 Points Balance: {membership_result['membership']['points_balance']}")
+        logger.info(
+            f"✅ {membership_result['membership']['tier_name']} Membership Created")
+        logger.info(
+            f"🎁 Benefits: {', '.join(membership_result['membership']['benefits'])}")
+        logger.info(
+            f"💎 Points Balance: {membership_result['membership']['points_balance']}")
 
     # Create digital wearable
     logger.info("\n🎮 Creating Digital Wearable...")
@@ -1006,7 +1030,8 @@ async def main():
     )
 
     if wearable_result["status"] == "success":
-        logger.info(f"✅ Digital Wearable Created: {wearable_result['wearable']['name']}")
+        logger.info(
+            f"✅ Digital Wearable Created: {wearable_result['wearable']['name']}")
         logger.info(f"🎮 Available on: {', '.join(wearable_result['platforms'])}")
         logger.info(f"💎 Rarity: {wearable_result['wearable']['rarity']}")
 

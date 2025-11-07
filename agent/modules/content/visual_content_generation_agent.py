@@ -31,6 +31,7 @@ import json
 try:
     from PIL import Image
     import numpy as np
+
     PIL_AVAILABLE = True
 except ImportError:
     PIL_AVAILABLE = False
@@ -39,6 +40,7 @@ except ImportError:
 try:
     import torch
     from diffusers import StableDiffusionXLPipeline, DPMSolverMultistepScheduler
+
     TORCH_AVAILABLE = True
 except ImportError:
     TORCH_AVAILABLE = False
@@ -46,6 +48,7 @@ except ImportError:
 
 try:
     import openai
+
     OPENAI_AVAILABLE = True
 except ImportError:
     OPENAI_AVAILABLE = False
@@ -53,6 +56,7 @@ except ImportError:
 
 try:
     import anthropic
+
     ANTHROPIC_AVAILABLE = True
 except ImportError:
     ANTHROPIC_AVAILABLE = False
@@ -62,6 +66,7 @@ logger = logging.getLogger(__name__)
 
 class ContentProvider(Enum):
     """Supported visual content generation providers."""
+
     STABLE_DIFFUSION_XL = "stable_diffusion_xl"
     DALLE_3 = "dalle_3"
     MIDJOURNEY = "midjourney"
@@ -72,6 +77,7 @@ class ContentProvider(Enum):
 
 class ContentType(Enum):
     """Types of visual content to generate."""
+
     PRODUCT_PHOTO = "product_photo"
     LIFESTYLE_IMAGE = "lifestyle_image"
     FASHION_LOOKBOOK = "fashion_lookbook"
@@ -86,6 +92,7 @@ class ContentType(Enum):
 
 class StylePreset(Enum):
     """Predefined luxury fashion style presets."""
+
     HAUTE_COUTURE = "haute_couture"
     MINIMALIST_LUXURY = "minimalist_luxury"
     STREETWEAR_PREMIUM = "streetwear_premium"
@@ -99,6 +106,7 @@ class StylePreset(Enum):
 @dataclass
 class GenerationRequest:
     """Request for visual content generation."""
+
     request_id: str = field(default_factory=lambda: str(uuid.uuid4()))
     content_type: ContentType = ContentType.PRODUCT_PHOTO
     provider: Optional[ContentProvider] = None  # Auto-select if None
@@ -136,6 +144,7 @@ class GenerationRequest:
 @dataclass
 class GenerationResult:
     """Result from visual content generation."""
+
     request_id: str
     success: bool
     provider: ContentProvider
@@ -186,14 +195,14 @@ class VisualContentGenerationAgent:
     def __init__(self):
         """
         Initialize the Visual Content Generation Agent with provider configs, storage paths, performance tracking, rate limits, and quality thresholds.
-        
+
         Sets up:
         - provider registry and active provider list
         - output and cache directories
         - generation counters and per-provider performance tracking
         - per-provider rate limit settings
         - quality threshold defaults for resolution, quality score, and brand alignment
-        
+
         Logs agent initialization.
         """
         self.agent_name = "Visual Content Generation Agent"
@@ -234,9 +243,9 @@ class VisualContentGenerationAgent:
     def _initialize_providers(self) -> Dict[ContentProvider, Dict[str, Any]]:
         """
         Detect available backend providers and build their runtime configuration.
-        
+
         Checks environment variables and optional libraries to register supported content providers (DALL‑E 3 when OpenAI client and API key are present, Stable Diffusion XL when PyTorch with CUDA is available, Midjourney when its API key is present, and Claude Artifacts when the Anthropic client and API key are present) and returns a mapping of ContentProvider to provider-specific configuration used by the agent.
-        
+
         Returns:
             Dict[ContentProvider, Dict[str, Any]]: A dictionary where keys are available ContentProvider members and values are their configuration dictionaries (capabilities, availability flags, client or pipeline placeholders, cost and quality hints, etc.).
         """
@@ -311,13 +320,12 @@ class VisualContentGenerationAgent:
         return providers
 
     def _select_optimal_provider(
-        self, request: GenerationRequest
-    ) -> Optional[ContentProvider]:
+            self, request: GenerationRequest) -> Optional[ContentProvider]:
         """
         Choose the most suitable content provider for the given generation request.
-        
+
         Considers provider availability, support for the requested content type, cost, quality, and recent performance to determine the best provider. Returns None when no provider meets the request requirements.
-        
+
         Returns:
             ContentProvider or None: The selected provider for the request, or `None` if no suitable provider is available.
         """
@@ -341,14 +349,15 @@ class VisualContentGenerationAgent:
             quality_score = config.get("quality_score", 5.0)
             cost_score = 10.0 - (config.get("cost_per_image", 0.5) * 20)
             speed_score = self.provider_performance.get(
-                provider, {"avg_time": 10.0}
-            ).get("avg_time", 10.0)
+                provider, {
+                    "avg_time": 10.0}).get(
+                "avg_time", 10.0)
             speed_score = max(0, 10.0 - (speed_score / 5))
 
             total_score = (
-                quality_weight * quality_score +
-                cost_weight * cost_score +
-                speed_weight * speed_score
+                quality_weight * quality_score
+                + cost_weight * cost_score
+                + speed_weight * speed_score
             )
 
             suitable_providers.append((provider, total_score))
@@ -363,19 +372,16 @@ class VisualContentGenerationAgent:
 
         logger.info(
             f"Selected provider: {selected.value} "
-            f"(score: {suitable_providers[0][1]:.2f})"
-        )
+            f"(score: {suitable_providers[0][1]:.2f})")
         return selected
 
-    async def generate_content(
-        self, request: GenerationRequest
-    ) -> GenerationResult:
+    async def generate_content(self, request: GenerationRequest) -> GenerationResult:
         """
         Generate visual content for the given GenerationRequest by selecting an appropriate provider, executing the provider-specific generation workflow, applying quality assurance, caching successful results, and updating performance metrics.
-        
+
         Parameters:
             request (GenerationRequest): Request parameters and preferences that describe the desired content, style, sizing, quality settings, and optional provider override.
-        
+
         Returns:
             GenerationResult: Result object containing success status, selected provider, generated asset paths (images, videos, thumbnails), prompt and style used, timing and cost metadata, quality and brand alignment scores when available, and an `error` message when generation fails.
         """
@@ -404,8 +410,7 @@ class VisualContentGenerationAgent:
             # Generate content
             logger.info(
                 f"🎨 Generating {request.content_type.value} "
-                f"using {provider.value}"
-            )
+                f"using {provider.value}")
 
             if provider == ContentProvider.DALLE_3:
                 result = await self._generate_with_dalle(request)
@@ -439,8 +444,7 @@ class VisualContentGenerationAgent:
 
             logger.info(
                 f"✅ Content generated in {generation_time:.2f}s "
-                f"(success: {result.success})"
-            )
+                f"(success: {result.success})")
 
             return result
 
@@ -449,18 +453,19 @@ class VisualContentGenerationAgent:
             return GenerationResult(
                 request_id=request.request_id,
                 success=False,
-                provider=provider if 'provider' in locals() else ContentProvider.DALLE_3,
+                provider=provider if "provider" in locals() else ContentProvider.DALLE_3,
                 content_type=request.content_type,
                 error=str(e),
-                generation_time=(datetime.now() - start_time).total_seconds(),
+                generation_time=(
+                    datetime.now() -
+                    start_time).total_seconds(),
             )
 
     async def _generate_with_dalle(
-        self, request: GenerationRequest
-    ) -> GenerationResult:
+            self, request: GenerationRequest) -> GenerationResult:
         """
         Generate images for the given request using DALL-E 3 and return a GenerationResult with saved image paths and metadata.
-        
+
         Returns:
             GenerationResult: On success, contains `success=True`, `images` with local paths to downloaded images, `prompt_used`, `style_applied`, and `cost`. On failure, contains `success=False` and `error` with the failure message.
         """
@@ -469,8 +474,7 @@ class VisualContentGenerationAgent:
 
             # Enhance prompt for luxury fashion
             enhanced_prompt = self._enhance_prompt_for_luxury(
-                request.prompt, request.style_preset
-            )
+                request.prompt, request.style_preset)
 
             # Call DALL-E API
             response = await asyncio.to_thread(
@@ -486,9 +490,7 @@ class VisualContentGenerationAgent:
             images = []
             for img_data in response.data:
                 img_url = img_data.url
-                img_path = await self._download_and_save_image(
-                    img_url, request.request_id
-                )
+                img_path = await self._download_and_save_image(img_url, request.request_id)
                 images.append(str(img_path))
 
             return GenerationResult(
@@ -513,13 +515,12 @@ class VisualContentGenerationAgent:
             )
 
     async def _generate_with_stable_diffusion(
-        self, request: GenerationRequest
-    ) -> GenerationResult:
+            self, request: GenerationRequest) -> GenerationResult:
         """
         Generate images locally using the Stable Diffusion XL model for the provided GenerationRequest.
-        
+
         Images are written to the agent's output directory and the returned GenerationResult includes the saved image file paths. On success the result contains `images`, `prompt_used`, `style_applied`, `seed_used`, and `cost`. On failure the result has `success` set to `False` and `error` populated with the failure message.
-        
+
         Returns:
             GenerationResult: A result object describing success, provider, content_type, list of saved image paths in `images`, `prompt_used`, optional `style_applied`, `seed_used`, `cost`, and any error text on failure.
         """
@@ -544,8 +545,7 @@ class VisualContentGenerationAgent:
 
             # Enhance prompt
             enhanced_prompt = self._enhance_prompt_for_luxury(
-                request.prompt, request.style_preset
-            )
+                request.prompt, request.style_preset)
 
             # Generate
             generator = torch.Generator("cuda").manual_seed(
@@ -566,10 +566,7 @@ class VisualContentGenerationAgent:
             # Save images
             images = []
             for idx, img in enumerate(images_generated.images):
-                img_path = (
-                    self.output_dir /
-                    f"{request.request_id}_{idx}.png"
-                )
+                img_path = self.output_dir / f"{request.request_id}_{idx}.png"
                 img.save(img_path)
                 images.append(str(img_path))
 
@@ -596,11 +593,10 @@ class VisualContentGenerationAgent:
             )
 
     async def _generate_with_midjourney(
-        self, request: GenerationRequest
-    ) -> GenerationResult:
+            self, request: GenerationRequest) -> GenerationResult:
         """
         Attempt to generate visual content with the Midjourney provider.
-        
+
         Returns:
             GenerationResult: A result object. Currently always has `success=False`, `provider=ContentProvider.MIDJOURNEY`, and `error` set to indicate the Midjourney provider is not yet implemented.
         """
@@ -615,14 +611,13 @@ class VisualContentGenerationAgent:
         )
 
     async def _generate_with_claude(
-        self, request: GenerationRequest
-    ) -> GenerationResult:
+            self, request: GenerationRequest) -> GenerationResult:
         """
         Generate visual content using the Claude Artifacts provider for the given generation request.
-        
+
         Parameters:
             request (GenerationRequest): The generation request containing prompt, style, size, and other options.
-        
+
         Returns:
             GenerationResult: A result object representing the outcome. If Claude Artifacts generation is not implemented or fails, returns a result with `success` set to `False` and `error` populated with a descriptive message.
         """
@@ -637,17 +632,18 @@ class VisualContentGenerationAgent:
         )
 
     def _enhance_prompt_for_luxury(
-        self, prompt: str, style: Optional[StylePreset]
-    ) -> str:
+            self,
+            prompt: str,
+            style: Optional[StylePreset]) -> str:
         """
         Append luxury fashion descriptors to a prompt based on an optional style preset.
-        
+
         If a recognized style preset is provided, its style-specific modifiers are appended followed by a set of base quality modifiers; otherwise only the base quality modifiers are appended.
-        
+
         Parameters:
             prompt (str): Original text prompt to enhance.
             style (Optional[StylePreset]): Optional luxury fashion style preset that selects additional descriptive modifiers.
-        
+
         Returns:
             str: The enhanced prompt including style-specific modifiers (when applicable) and base quality descriptors.
         """
@@ -662,26 +658,26 @@ class VisualContentGenerationAgent:
             StylePreset.BOHEMIAN_LUXURY: "bohemian luxury, artistic, eclectic, sophisticated",
         }
 
-        base_quality = "professional photography, high resolution, studio lighting, 8K, ultra detailed"
+        base_quality = (
+            "professional photography, high resolution, studio lighting, 8K, ultra detailed"
+        )
 
         if style and style in style_modifiers:
             return f"{prompt}, {style_modifiers[style]}, {base_quality}"
 
         return f"{prompt}, {base_quality}"
 
-    async def _download_and_save_image(
-        self, url: str, request_id: str
-    ) -> Path:
+    async def _download_and_save_image(self, url: str, request_id: str) -> Path:
         """
         Download an image from a URL and save it to the agent's output directory using the request ID as the filename.
-        
+
         Parameters:
             url (str): The HTTP(S) URL of the image to download.
             request_id (str): Identifier used to name the saved file; the image is written as `{request_id}.png` in the agent's output directory.
-        
+
         Returns:
             Path: Path to the saved image file.
-        
+
         Raises:
             Exception: If the HTTP response status is not 200 or the download fails.
         """
@@ -691,7 +687,7 @@ class VisualContentGenerationAgent:
             async with session.get(url) as response:
                 if response.status == 200:
                     img_path = self.output_dir / f"{request_id}.png"
-                    with open(img_path, 'wb') as f:
+                    with open(img_path, "wb") as f:
                         f.write(await response.read())
                     return img_path
                 else:
@@ -702,11 +698,11 @@ class VisualContentGenerationAgent:
     ) -> GenerationResult:
         """
         Run quality assurance on a generation result and annotate it with assessment scores.
-        
+
         Parameters:
             result (GenerationResult): The generation result to evaluate and update.
             request (GenerationRequest): The original generation request providing context for assessment.
-        
+
         Returns:
             GenerationResult: The evaluated result with `quality_score` and `brand_alignment_score` populated.
         """
@@ -718,9 +714,9 @@ class VisualContentGenerationAgent:
     def _generate_cache_key(self, request: GenerationRequest) -> str:
         """
         Create a deterministic cache key for a generation request.
-        
+
         The key is derived from the request's prompt, content type, width, height, and style preset (if any); the fields are serialized with sorted keys to ensure stable ordering before hashing.
-        
+
         Returns:
             Hexadecimal SHA-256 digest string representing the cache key.
         """
@@ -737,16 +733,16 @@ class VisualContentGenerationAgent:
     async def _check_cache(self, cache_key: str) -> Optional[GenerationResult]:
         """
         Retrieve a cached GenerationResult by cache key if available and readable.
-        
+
         Attempts to read the JSON cache file named "{cache_key}.json" from the agent's cache directory and reconstruct a GenerationResult. If the file does not exist, is unreadable, or reconstruction fails, returns None; read failures are logged as warnings.
-        
+
         Returns:
             GenerationResult: The reconstructed result from cache if present and valid, `None` otherwise.
         """
         cache_file = self.cache_dir / f"{cache_key}.json"
         if cache_file.exists():
             try:
-                with open(cache_file, 'r') as f:
+                with open(cache_file, "r") as f:
                     data = json.load(f)
                 # Reconstruct result (simplified)
                 return None  # For now, return None
@@ -757,33 +753,35 @@ class VisualContentGenerationAgent:
     async def _cache_result(self, cache_key: str, result: GenerationResult):
         """
         Create a cache entry for a generation result by writing a JSON file named "{cache_key}.json" into the agent's cache directory.
-        
+
         Parameters:
             cache_key (str): The SHA-256 cache key used as the cache file name (without extension).
             result (GenerationResult): The generation result that should be cached (may be serialized or referenced by the cache entry).
-        
+
         Notes:
             If writing the cache file fails, the function logs a warning and suppresses the exception.
         """
         cache_file = self.cache_dir / f"{cache_key}.json"
         try:
             # Simplified caching
-            with open(cache_file, 'w') as f:
+            with open(cache_file, "w") as f:
                 json.dump({"cached": True}, f)
         except Exception as e:
             logger.warning(f"Cache write failed: {e}")
 
     def _update_performance_metrics(
-        self, provider: ContentProvider, time: float, success: bool
-    ):
+            self,
+            provider: ContentProvider,
+            time: float,
+            success: bool):
         """
         Update performance metrics for a provider after a generation attempt.
-        
+
         Parameters:
             provider (ContentProvider): The content provider whose metrics will be updated.
             time (float): Duration of the generation attempt in seconds.
             success (bool): True if the attempt succeeded, False otherwise.
-        
+
         Details:
             Increments total and successful request counters as appropriate, adds `time` to cumulative total time, and recomputes `avg_time` and `success_rate` in `self.provider_performance` for the given provider.
         """
@@ -804,29 +802,27 @@ class VisualContentGenerationAgent:
             metrics["successful_requests"] += 1
 
         metrics["avg_time"] = metrics["total_time"] / metrics["total_requests"]
-        metrics["success_rate"] = (
-            metrics["successful_requests"] / metrics["total_requests"]
-        )
+        metrics["success_rate"] = metrics["successful_requests"] / \
+            metrics["total_requests"]
 
     async def batch_generate(
-        self, requests: List[GenerationRequest]
-    ) -> List[GenerationResult]:
+            self,
+            requests: List[GenerationRequest]) -> List[GenerationResult]:
         """
         Generate multiple visual content requests concurrently.
-        
+
         Processes each GenerationRequest in parallel and returns a list of GenerationResult objects in the same order as the input. If an individual generation raises an exception, it is converted into a failed GenerationResult preserving the original request_id and the exception message in `error`.
-        
+
         Parameters:
             requests (List[GenerationRequest]): The generation requests to process.
-        
+
         Returns:
             List[GenerationResult]: A list of results corresponding to the provided requests, where failed entries have `success=False` and an `error` message.
         """
         logger.info(f"🎨 Batch generating {len(requests)} items")
 
         results = await asyncio.gather(
-            *[self.generate_content(req) for req in requests],
-            return_exceptions=True
+            *[self.generate_content(req) for req in requests], return_exceptions=True
         )
 
         processed_results = []
@@ -845,16 +841,14 @@ class VisualContentGenerationAgent:
                 processed_results.append(result)
 
         success_count = sum(1 for r in processed_results if r.success)
-        logger.info(
-            f"✅ Batch complete: {success_count}/{len(requests)} successful"
-        )
+        logger.info(f"✅ Batch complete: {success_count}/{len(requests)} successful")
 
         return processed_results
 
     def get_system_status(self) -> Dict[str, Any]:
         """
         Provide a snapshot of the agent's current system status.
-        
+
         Returns:
             status (Dict[str, Any]): Mapping containing runtime and configuration summaries:
                 - agent_name (str): Agent's name.
@@ -873,7 +867,8 @@ class VisualContentGenerationAgent:
             "generation_count": self.generation_count,
             "avg_generation_time": (
                 self.total_generation_time / self.generation_count
-                if self.generation_count > 0 else 0.0
+                if self.generation_count > 0
+                else 0.0
             ),
             "provider_performance": self.provider_performance,
             "output_directory": str(self.output_dir),

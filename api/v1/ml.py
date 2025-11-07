@@ -56,7 +56,7 @@ class ExplainRequest(BaseModel):
 # MODEL REGISTRY ENDPOINTS
 # ============================================================================
 
-@router.get("/registry/models")
+@ router.get("/registry/models")
 async def list_models(current_user: TokenData = Depends(get_current_active_user)):
     """List all registered models"""
     try:
@@ -66,7 +66,7 @@ async def list_models(current_user: TokenData = Depends(get_current_active_user)
         logger.error(f"Failed to list models: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.get("/registry/models/{model_name}/versions")
+@ router.get("/registry/models/{model_name}/versions")
 async def list_model_versions(
     model_name: str, current_user: TokenData = Depends(get_current_active_user)
 ):
@@ -76,7 +76,7 @@ async def list_model_versions(
         return {"model_name": model_name, "versions": versions}
     except Exception as e:
         raise HTTPException(
-            status_code=404, detail=f"Model not found: {model_name}. Error: {str(e)}"
+            status_code = 404, detail = f"Model not found: {model_name}. Error: {str(e)}"
         )
 
 @router.get("/registry/models/{model_name}/{version}")

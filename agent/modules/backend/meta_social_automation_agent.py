@@ -36,6 +36,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class MetaSocialAutomationAgent:
     """
     Advanced Meta (Facebook/Instagram) automation agent using Graph API.
@@ -900,15 +901,18 @@ Return detailed content plan."""
         """
 
 # Factory function
+
+
 def create_meta_automation_agent() -> MetaSocialAutomationAgent:
     """Create Meta Social Automation Agent."""
     return MetaSocialAutomationAgent()
+
 
 # Global instance
 meta_agent = create_meta_automation_agent(
     # Convenience functions
 async def publish_to_meta(
-    content: str, platforms: List[str] = ["instagram", "facebook"]
+    content: str, platforms: List[str]=["instagram", "facebook"]
 ) -> Dict[str, Any]:
     """Publish content to Meta platforms."""
     return await meta_agent.publish_content(content, platforms=platforms)

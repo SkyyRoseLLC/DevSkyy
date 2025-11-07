@@ -23,6 +23,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class ExecutionPriority(Enum):
     """Agent execution priority levels"""
 
@@ -30,6 +31,7 @@ class ExecutionPriority(Enum):
     HIGH = 2  # Core business logic (payments, orders)
     MEDIUM = 3  # Standard operations (content, analytics)
     LOW = 4  # Background tasks (learning, optimization)
+
 
 class TaskStatus(Enum):
     """Multi-agent task status"""
@@ -39,6 +41,7 @@ class TaskStatus(Enum):
     COMPLETED = "completed"
     FAILED = "failed"
     CANCELLED = "cancelled"
+
 
 @dataclass
 class AgentCapability:
@@ -50,6 +53,7 @@ class AgentCapability:
     priority: ExecutionPriority = ExecutionPriority.MEDIUM
     max_concurrent: int = 5  # Max concurrent executions
     rate_limit: int = 100  # Requests per minute
+
 
 @dataclass
 class AgentTask:
@@ -66,6 +70,7 @@ class AgentTask:
     created_at: datetime = field(default_factory=datetime.now)
     started_at: Optional[datetime] = None
     completed_at: Optional[datetime] = None
+
 
 class AgentOrchestrator:
     """
@@ -152,24 +157,28 @@ class AgentOrchestrator:
             enhanced_capabilities = capabilities.copy()
 
             # Add video generation capabilities if this is a fashion vision agent
-            if hasattr(agent, 'generate_fashion_runway_video'):
-                enhanced_capabilities.extend([
-                    "video_generation",
-                    "runway_video_generation",
-                    "product_360_video_generation",
-                    "video_upscaling",
-                    "fashion_image_generation"
-                ])
+            if hasattr(agent, "generate_fashion_runway_video"):
+                enhanced_capabilities.extend(
+                    [
+                        "video_generation",
+                        "runway_video_generation",
+                        "product_360_video_generation",
+                        "video_upscaling",
+                        "fashion_image_generation",
+                    ]
+                )
 
             # Add brand training capabilities if this is a brand trainer
-            if hasattr(agent, 'train_lora_model'):
-                enhanced_capabilities.extend([
-                    "brand_model_training",
-                    "dataset_preparation",
-                    "lora_fine_tuning",
-                    "brand_consistency_validation",
-                    "custom_model_generation"
-                ])
+            if hasattr(agent, "train_lora_model"):
+                enhanced_capabilities.extend(
+                    [
+                        "brand_model_training",
+                        "dataset_preparation",
+                        "lora_fine_tuning",
+                        "brand_consistency_validation",
+                        "custom_model_generation",
+                    ]
+                )
 
             # Register capabilities
             self.agent_capabilities[agent_name] = AgentCapability(
@@ -186,8 +195,7 @@ class AgentOrchestrator:
                     self.reverse_dependencies[dep].add(agent_name)
 
             logger.info(
-                f"✅ Registered agent: {agent_name} with capabilities: {capabilities}"
-            )
+                f"✅ Registered agent: {agent_name} with capabilities: {capabilities}")
             return True
 
         except Exception as e:
@@ -248,9 +256,7 @@ class AgentOrchestrator:
         # Find agents with required capabilities
         capable_agents = self._find_agents_with_capabilities(required_capabilities)
         if not capable_agents:
-            return {
-                "error": f"No agents found with capabilities: {required_capabilities}"
-            }
+            return {"error": f"No agents found with capabilities: {required_capabilities}"}
 
         # Resolve execution order based on dependencies
         execution_order = self._resolve_dependencies(capable_agents)
@@ -344,8 +350,7 @@ class AgentOrchestrator:
             return {"error": str(e), "task_id": task_id}
 
     def _find_agents_with_capabilities(
-        self, required_capabilities: List[str]
-    ) -> List[str]:
+            self, required_capabilities: List[str]) -> List[str]:
         """Find all agents that have the required capabilities"""
         capable_agents = []
 
@@ -356,8 +361,7 @@ class AgentOrchestrator:
 
         # Sort by priority
         capable_agents.sort(
-            key=lambda name: self.agent_capabilities[name].priority.value
-        )
+            key=lambda name: self.agent_capabilities[name].priority.value)
 
         return capable_agents
 
@@ -404,8 +408,10 @@ class AgentOrchestrator:
     # ============================================================================
 
     def _is_circuit_open(
-        self, agent_name: str, threshold: int = 5, timeout: int = 60
-    ) -> bool:
+            self,
+            agent_name: str,
+            threshold: int = 5,
+            timeout: int = 60) -> bool:
         """Check if circuit breaker is open for an agent"""
         breaker = self.circuit_breakers[agent_name]
 
@@ -413,10 +419,9 @@ class AgentOrchestrator:
             return False
 
         # Check if timeout has passed
-        if (
-            breaker["opened_at"]
-            and (datetime.now() - breaker["opened_at"]).seconds > timeout
-        ):
+        if breaker["opened_at"] and (
+                datetime.now() -
+                breaker["opened_at"]).seconds > timeout:
             # Try to close circuit (half-open state)
             breaker["state"] = "half-open"
             return False
@@ -551,7 +556,7 @@ class AgentOrchestrator:
         self,
         task_type: str,
         parameters: Dict[str, Any],
-        priority: ExecutionPriority = ExecutionPriority.MEDIUM
+        priority: ExecutionPriority = ExecutionPriority.MEDIUM,
     ) -> str:
         """
         Create a video generation task.
@@ -565,6 +570,7 @@ class AgentOrchestrator:
             Task ID
         """
         import uuid
+
         task_id = str(uuid.uuid4())
 
         # Determine required agents based on task type
@@ -581,7 +587,7 @@ class AgentOrchestrator:
             task_type=task_type,
             parameters=parameters,
             required_agents=required_agents,
-            priority=priority
+            priority=priority,
         )
 
         self.tasks[task_id] = task
@@ -622,7 +628,9 @@ class AgentOrchestrator:
             elif task.task_type == "video_upscaling":
                 result = await self._execute_video_upscaling_task(task)
             else:
-                result = {"error": f"Unknown task type: {task.task_type}", "status": "failed"}
+                result = {
+                    "error": f"Unknown task type: {task.task_type}",
+                    "status": "failed"}
 
             if result.get("success"):
                 task.status = TaskStatus.COMPLETED
@@ -657,7 +665,7 @@ class AgentOrchestrator:
             width=task.parameters.get("width", 1024),
             height=task.parameters.get("height", 576),
             style=task.parameters.get("style", "luxury fashion runway"),
-            upscale=task.parameters.get("upscale", True)
+            upscale=task.parameters.get("upscale", True),
         )
 
     async def _execute_product_360_task(self, task: AgentTask) -> Dict[str, Any]:
@@ -671,7 +679,7 @@ class AgentOrchestrator:
             product_image_path=task.parameters.get("product_image_path"),
             rotation_steps=task.parameters.get("rotation_steps", 24),
             duration=task.parameters.get("duration", 3),
-            upscale=task.parameters.get("upscale", True)
+            upscale=task.parameters.get("upscale", True),
         )
 
     async def _execute_brand_training_task(self, task: AgentTask) -> Dict[str, Any]:
@@ -684,10 +692,11 @@ class AgentOrchestrator:
         return await agent.train_lora_model(
             dataset_path=task.parameters.get("dataset_path"),
             model_name=task.parameters.get("model_name", "skyy_rose_v1"),
-            resume_from_checkpoint=task.parameters.get("resume_from_checkpoint")
+            resume_from_checkpoint=task.parameters.get("resume_from_checkpoint"),
         )
 
-    async def _execute_custom_model_generation_task(self, task: AgentTask) -> Dict[str, Any]:
+    async def _execute_custom_model_generation_task(
+            self, task: AgentTask) -> Dict[str, Any]:
         """Execute custom model generation task."""
         if "brand_trainer" not in self.agents:
             return {"error": "Brand trainer not available", "status": "failed"}
@@ -699,7 +708,7 @@ class AgentOrchestrator:
             model_name=task.parameters.get("model_name", "skyy_rose_v1"),
             trigger_word=task.parameters.get("trigger_word", "skyrose_collection"),
             width=task.parameters.get("width", 1024),
-            height=task.parameters.get("height", 1024)
+            height=task.parameters.get("height", 1024),
         )
 
     async def _execute_video_upscaling_task(self, task: AgentTask) -> Dict[str, Any]:
@@ -711,8 +720,9 @@ class AgentOrchestrator:
 
         return await agent.upscale_video(
             video_path=task.parameters.get("video_path"),
-            target_resolution=task.parameters.get("target_resolution", (2048, 1152))
+            target_resolution=task.parameters.get("target_resolution", (2048, 1152)),
         )
+
 
 # Global orchestrator instance with video generation capabilities
 orchestrator = AgentOrchestrator()

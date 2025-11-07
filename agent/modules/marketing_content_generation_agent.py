@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 import os
 
-    import asyncio
+import asyncio
 from dataclasses import dataclass
 from typing import Any, Dict, List
 import logging
@@ -22,6 +22,7 @@ This agent specializes in:
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class CampaignMetrics:
     reach: int
@@ -29,6 +30,7 @@ class CampaignMetrics:
     click_through_rate: float
     conversion_rate: float
     roi: float
+
 
 class MarketingContentGenerationAgent:
     """
@@ -711,6 +713,8 @@ Visual Requirements: {visual_requirements}
         )
 
 # Example usage
+
+
 async def main():
     """Example usage of the Marketing Content Generation Agent."""
     agent = MarketingContentGenerationAgent()

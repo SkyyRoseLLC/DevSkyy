@@ -10,6 +10,7 @@ import uuid
 
 logger = logging.getLogger(__name__)
 
+
 async def communicate_with_site() -> Dict[str, Any]:
     """Main function to communicate with site and gather insights."""
     SiteCommunicationAgent()
@@ -21,6 +22,7 @@ async def communicate_with_site() -> Dict[str, Any]:
         "last_communication": datetime.now().isoformat(),
         "agent_status": "optimal",
     }
+
 
 class SiteCommunicationAgent:
     """Agent for communicating with website chatbots and gathering insights."""
@@ -34,9 +36,8 @@ class SiteCommunicationAgent:
         self.telemetry = Telemetry("site_communication")
         logger.info("💬 Site Communication Agent initialized")
 
-    async def connect_to_chatbot(
-        self, website_url: str, api_key: str = None
-    ) -> Dict[str, Any]:
+    async def connect_to_chatbot(self, website_url: str,
+                                 api_key: str = None) -> Dict[str, Any]:
         """Connect to website chatbot for real-time insights."""
 
         try:
@@ -111,18 +112,26 @@ class SiteCommunicationAgent:
                 "website": website_url,
                 "timestamp": datetime.now().isoformat(),
                 "uptime_status": (
-                    "online" if response.status_code == 200 else "issues_detected"
-                ),
-                "response_time": round(response.elapsed.total_seconds() * 1000, 2),
+                    "online" if response.status_code == 200 else "issues_detected"),
+                "response_time": round(
+                    response.elapsed.total_seconds() * 1000,
+                    2),
                 "status_code": response.status_code,
                 "ssl_certificate": (
-                    "valid" if website_url.startswith("https") else "missing"
-                ),
+                    "valid" if website_url.startswith("https") else "missing"),
                 "mobile_friendly": True,
-                "page_speed_score": random.randint(85, 98),
-                "seo_score": random.randint(88, 96),
-                "security_score": random.randint(90, 99),
-                "accessibility_score": random.randint(85, 94),
+                "page_speed_score": random.randint(
+                    85,
+                    98),
+                "seo_score": random.randint(
+                    88,
+                    96),
+                "security_score": random.randint(
+                    90,
+                    99),
+                "accessibility_score": random.randint(
+                    85,
+                    94),
             }
 
             # Performance analysis
@@ -272,8 +281,7 @@ class SiteCommunicationAgent:
 
         # Check for chatbot connection
         chatbot_data = self.chatbot_connections.get(
-            website_url, {"status": "not_connected"}
-        )
+            website_url, {"status": "not_connected"})
 
         comprehensive_report = {
             "website": website_url,
@@ -353,8 +361,7 @@ class SiteCommunicationAgent:
         }
 
     async def experimental_neural_communication_analysis(
-        self, website_url: str
-    ) -> Dict[str, Any]:
+            self, website_url: str) -> Dict[str, Any]:
         """EXPERIMENTAL: Neural-powered communication analysis."""
         try:
             logger.info(f"🧠 Analyzing communication patterns for {website_url}")
@@ -421,6 +428,7 @@ class SiteCommunicationAgent:
         except Exception as e:
             logger.error(f"Neural communication analysis failed: {str(e)}")
             return {"error": str(e), "status": "neural_overload"}
+
 
 # Main communication function
 async def communicate_with_site() -> Dict[str, Any]:

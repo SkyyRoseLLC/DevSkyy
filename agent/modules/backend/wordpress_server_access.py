@@ -9,6 +9,7 @@ import tempfile
 
 logger = logging.getLogger(__name__)
 
+
 class WordPressServerAccess:
     """
     GOD MODE LEVEL 2: Direct server access to WordPress.com via SFTP/SSH
@@ -72,7 +73,8 @@ class WordPressServerAccess:
                 self.connected = True
                 logger.info("✅ SFTP connection established!")
 
-                # Try SSH connection (optional - some WordPress.com plans may not have this)
+                # Try SSH connection (optional - some WordPress.com plans may not have
+                # this)
                 try:
                     logger.info("🔐 Attempting SSH connection...")
                     self.ssh_client.connect(
@@ -181,12 +183,12 @@ class WordPressServerAccess:
                 "brand_learning_active": True,
                 "analysis_complete": True,
                 "confidence_score": 95,
-                "insights_discovered": len(file_analysis)
-                + len(content_analysis)
-                + len(brand_assets),
+                "insights_discovered": len(file_analysis) +
+                len(content_analysis) +
+                len(brand_assets),
                 "performance_baseline": performance_analysis.get(
-                    "overall_score", "analyzing"
-                ),
+                    "overall_score",
+                    "analyzing"),
                 "next_learning_cycle": "1 hour",
             }
 
@@ -261,9 +263,7 @@ class WordPressServerAccess:
                     with tempfile.NamedTemporaryFile(mode="w+") as temp_file:
                         self.sftp_client.get(file_name, temp_file.name)
 
-                        with open(
-                            temp_file.name, "r", encoding="utf-8", errors="ignore"
-                        ) as f:
+                        with open(temp_file.name, "r", encoding="utf-8", errors="ignore") as f:
                             content = f.read()
 
                         # Analyze for luxury and streetwear terms
@@ -285,28 +285,18 @@ class WordPressServerAccess:
                         ]
 
                         for term in luxury_terms:
-                            content_patterns[
-                                "luxury_keywords"
-                            ] += content.lower().count(term)
+                            content_patterns["luxury_keywords"] += content.lower().count(term)
 
                         for term in streetwear_terms:
-                            content_patterns[
-                                "streetwear_terms"
-                            ] += content.lower().count(term)
+                            content_patterns["streetwear_terms"] += content.lower().count(term)
 
                 except Exception:
                     continue
 
             # Determine brand theme based on analysis
-            if (
-                content_patterns["luxury_keywords"]
-                > content_patterns["streetwear_terms"]
-            ):
+            if content_patterns["luxury_keywords"] > content_patterns["streetwear_terms"]:
                 content_patterns["primary_theme"] = "luxury-focused"
-            elif (
-                content_patterns["streetwear_terms"]
-                > content_patterns["luxury_keywords"]
-            ):
+            elif content_patterns["streetwear_terms"] > content_patterns["luxury_keywords"]:
                 content_patterns["primary_theme"] = "streetwear-focused"
             else:
                 content_patterns["primary_theme"] = "luxury-streetwear-fusion"
@@ -346,9 +336,8 @@ class WordPressServerAccess:
 
                 for file_name in uploads_files:
                     if any(file_name.lower().endswith(ext) for ext in image_extensions):
-                        if any(
-                            keyword in file_name.lower() for keyword in brand_keywords
-                        ):
+                        if any(keyword in file_name.lower()
+                               for keyword in brand_keywords):
                             brand_assets["logos_found"].append(file_name)
                         else:
                             brand_assets["brand_images"].append(file_name)
@@ -395,8 +384,7 @@ class WordPressServerAccess:
                 if large_files:
                     performance_metrics["large_files"] = large_files
                     performance_metrics["optimization_opportunities"].append(
-                        "optimize_large_files"
-                    )
+                        "optimize_large_files")
 
             except Exception:
                 performance_metrics["file_scan"] = "limited"
@@ -513,8 +501,7 @@ class WordPressServerAccess:
                     continue
 
             logger.info(
-                f"✅ Checked permissions on {permissions_checked} security files"
-            )
+                f"✅ Checked permissions on {permissions_checked} security files")
             return permissions_checked > 0
 
         except Exception as e:
@@ -582,7 +569,9 @@ class WordPressServerAccess:
         except Exception as e:
             logger.error(f"Disconnect error: {str(e)}")
 
+
 # Factory function
+
 
 def create_wordpress_server_access() -> WordPressServerAccess:
     """Create WordPress Server Access instance."""

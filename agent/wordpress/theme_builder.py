@@ -12,6 +12,7 @@ Industry-leading automated WordPress/Elementor theme generation with ML
 
 logger = logging.getLogger(__name__)
 
+
 class ElementorThemeBuilder:
     """
     Advanced WordPress/Elementor theme builder with ML-powered design
@@ -122,8 +123,7 @@ class ElementorThemeBuilder:
         """
         try:
             logger.info(
-                f"🎨 Generating {theme_type} theme for {brand_info.get('name', 'Brand')}"
-            )
+                f"🎨 Generating {theme_type} theme for {brand_info.get('name', 'Brand')}")
 
             # Default pages for fashion ecommerce
             if pages is None:
@@ -167,9 +167,7 @@ class ElementorThemeBuilder:
                 "typography": typography,
                 "pages": page_layouts,
                 "widgets": self._get_required_widgets(page_layouts),
-                "woocommerce_settings": await self._generate_woocommerce_config(
-                    brand_info
-                ),
+                "woocommerce_settings": await self._generate_woocommerce_config(brand_info),
                 "seo_settings": await self._generate_seo_config(brand_info),
                 "performance_optimizations": self._get_performance_config(),
             }
@@ -335,9 +333,7 @@ class ElementorThemeBuilder:
         """Generate page layout with Elementor sections"""
         try:
             if page_type == "home":
-                return await self._generate_homepage(
-                    brand_info, theme_type, colors, typography
-                )
+                return await self._generate_homepage(brand_info, theme_type, colors, typography)
             elif page_type == "shop":
                 return await self._generate_shop_page(brand_info, colors, typography)
             elif page_type == "product":
@@ -363,101 +359,85 @@ class ElementorThemeBuilder:
         typography: Dict,
     ) -> Dict[str, Any]:
         """Generate homepage layout"""
-        return {
-            "sections": [
-                {
-                    "type": "hero",
-                    "layout": "full-width",
-                    "background_type": "image",
-                    "content": {
-                        "heading": f"Welcome to {brand_info.get('name', 'Our Store')}",
-                        "subheading": brand_info.get(
-                            "tagline", "Discover Luxury Fashion"
-                        ),
-                        "cta_button": {
-                            "text": "Shop Now",
-                            "link": "/shop",
-                            "style": "primary",
-                        },
-                    },
-                    "styling": {
-                        "height": "100vh",
-                        "overlay_color": colors.get("primary"),
-                        "overlay_opacity": 0.3,
-                        "text_color": "#ffffff",
-                        "animation": "fade-in",
-                    },
-                },
-                {
-                    "type": "featured_products",
-                    "layout": "grid",
-                    "columns": {"desktop": 4, "tablet": 2, "mobile": 1},
-                    "content": {
-                        "heading": "Featured Collection",
-                        "products_count": 8,
-                        "filter": "featured",
-                    },
-                    "styling": {
-                        "padding": {"top": "80px", "bottom": "80px"},
-                        "background": colors.get("background"),
-                    },
-                },
-                {
-                    "type": "brand_story",
-                    "layout": "two-column",
-                    "content": {
-                        "heading": "Our Story",
-                        "text": brand_info.get(
-                            "description", "Crafting excellence since inception"
-                        ),
-                        "image_position": "right",
-                    },
-                    "styling": {
-                        "padding": {"top": "80px", "bottom": "80px"},
-                        "background": "#f9f9f9",
-                    },
-                },
-                {
-                    "type": "testimonials",
-                    "layout": "carousel",
-                    "content": {
-                        "heading": "What Our Customers Say",
-                        "autoplay": True,
-                        "slides_to_show": 3,
-                    },
-                },
-                {
-                    "type": "instagram_feed",
-                    "layout": "grid",
-                    "columns": 6,
-                    "content": {
-                        "heading": "Follow Us @" + brand_info.get("instagram", "brand"),
-                        "posts_count": 12,
-                    },
-                },
-                {
-                    "type": "newsletter",
-                    "layout": "centered",
-                    "content": {
-                        "heading": "Join Our Community",
-                        "description": "Subscribe for exclusive offers and updates",
-                        "form_fields": ["email"],
-                        "button_text": "Subscribe",
-                    },
-                    "styling": {
-                        "background": colors.get("primary"),
-                        "text_color": "#ffffff",
-                        "padding": {"top": "60px", "bottom": "60px"},
-                    },
-                },
-            ],
-            "metadata": {
-                "template": "homepage",
-                "responsive": True,
-                "lazy_load": True,
-                "seo_optimized": True,
-            },
-        }
+        return {"sections": [{"type": "hero",
+                              "layout": "full-width",
+                              "background_type": "image",
+                              "content": {"heading": f"Welcome to {brand_info.get('name', 'Our Store')}",
+                                          "subheading": brand_info.get("tagline",
+                                                                       "Discover Luxury Fashion"),
+                                          "cta_button": {"text": "Shop Now",
+                                                         "link": "/shop",
+                                                         "style": "primary",
+                                                         },
+                                          },
+                              "styling": {"height": "100vh",
+                                          "overlay_color": colors.get("primary"),
+                                          "overlay_opacity": 0.3,
+                                          "text_color": "#ffffff",
+                                          "animation": "fade-in",
+                                          },
+                              },
+                             {"type": "featured_products",
+                              "layout": "grid",
+                              "columns": {"desktop": 4,
+                                          "tablet": 2,
+                                          "mobile": 1},
+                              "content": {"heading": "Featured Collection",
+                                          "products_count": 8,
+                                          "filter": "featured",
+                                          },
+                              "styling": {"padding": {"top": "80px",
+                                                      "bottom": "80px"},
+                                          "background": colors.get("background"),
+                                          },
+                              },
+                             {"type": "brand_story",
+                              "layout": "two-column",
+                              "content": {"heading": "Our Story",
+                                          "text": brand_info.get("description",
+                                                                 "Crafting excellence since inception"),
+                                          "image_position": "right",
+                                          },
+                              "styling": {"padding": {"top": "80px",
+                                                      "bottom": "80px"},
+                                          "background": "#f9f9f9",
+                                          },
+                              },
+                             {"type": "testimonials",
+                              "layout": "carousel",
+                              "content": {"heading": "What Our Customers Say",
+                                          "autoplay": True,
+                                          "slides_to_show": 3,
+                                          },
+                              },
+                             {"type": "instagram_feed",
+                              "layout": "grid",
+                              "columns": 6,
+                              "content": {"heading": "Follow Us @" + brand_info.get("instagram",
+                                                                                    "brand"),
+                                          "posts_count": 12,
+                                          },
+                              },
+                             {"type": "newsletter",
+                              "layout": "centered",
+                              "content": {"heading": "Join Our Community",
+                                          "description": "Subscribe for exclusive offers and updates",
+                                          "form_fields": ["email"],
+                                          "button_text": "Subscribe",
+                                          },
+                              "styling": {"background": colors.get("primary"),
+                                          "text_color": "#ffffff",
+                                          "padding": {"top": "60px",
+                                                      "bottom": "60px"},
+                                          },
+                              },
+                             ],
+                "metadata": {"template": "homepage",
+                             "responsive": True,
+                             "lazy_load": True,
+                             "seo_optimized": True,
+                             },
+                }
 
     async def _generate_shop_page(
         self, brand_info: Dict, colors: Dict, typography: Dict
@@ -776,19 +756,17 @@ class ElementorThemeBuilder:
         """Adjust color brightness by percentage"""
         try:
             hex_color = hex_color.lstrip("#")
-            rgb = tuple(int(hex_color[i : i + 2], 16) for i in (0, 2, 4))
+            rgb = tuple(int(hex_color[i: i + 2], 16) for i in (0, 2, 4))
 
-            adjusted = tuple(
-                max(0, min(255, int(c + (c * percent / 100)))) for c in rgb
-            )
+            adjusted = tuple(max(0, min(255, int(c + (c * percent / 100))))
+                             for c in rgb)
 
             return "#{:02x}{:02x}{:02x}".format(*adjusted)
         except Exception:
             return hex_color
 
     async def export_theme(
-        self, theme: Dict[str, Any], format: str = "json"
-    ) -> Dict[str, Any]:
+            self, theme: Dict[str, Any], format: str = "json") -> Dict[str, Any]:
         """
         Export theme in various formats
 
@@ -812,7 +790,9 @@ class ElementorThemeBuilder:
                 elementor_data = self._convert_to_elementor_format(theme)
                 return {
                     "success": True,
-                    "data": json.dumps(elementor_data, indent=2),
+                    "data": json.dumps(
+                        elementor_data,
+                        indent=2),
                     "filename": f"{theme['metadata']['name'].replace(' ', '_')}_elementor.json",
                 }
 

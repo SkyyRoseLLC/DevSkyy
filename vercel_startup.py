@@ -1,20 +1,20 @@
-        import redis
+import redis
 import os
 import sys
 
-        from pydantic import BaseModel, Field
-        import fastapi
-        import pydantic
-        import pydantic.networks
-        import sqlalchemy
+from pydantic import BaseModel, Field
+import fastapi
+import pydantic
+import pydantic.networks
+import sqlalchemy
 
-            import email_validator
-            import subprocess
-        from typing import Optional
-        import anthropic
-        import email_validator
-        import openai
-        import uvicorn
+import email_validator
+import subprocess
+from typing import Optional
+import anthropic
+import email_validator
+import openai
+import uvicorn
 from typing import Optional
 import logging
 
@@ -34,6 +34,7 @@ logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
 logger = logging.getLogger(__name__)
+
 
 def validate_email_dependencies() -> bool:
     """
@@ -69,6 +70,7 @@ def validate_email_dependencies() -> bool:
             logger.error(f"❌ Failed to install email validation: {e}")
             return False
 
+
 def setup_pydantic_config():
     """Configure Pydantic for Vercel environment."""
     try:
@@ -86,6 +88,7 @@ def setup_pydantic_config():
     except Exception as e:
         logger.error(f"❌ Pydantic configuration failed: {e}")
         return False
+
 
 def validate_core_dependencies() -> dict:
     """
@@ -158,6 +161,7 @@ def validate_core_dependencies() -> dict:
 
     return status
 
+
 def setup_environment_variables():
     """Setup environment variables for Vercel deployment."""
     try:
@@ -180,6 +184,7 @@ def setup_environment_variables():
     except Exception as e:
         logger.error(f"❌ Environment setup failed: {e}")
         return False
+
 
 def create_fallback_models():
     """Create fallback Pydantic models when email validation is not available."""
@@ -209,6 +214,7 @@ def create_fallback_models():
     except Exception as e:
         logger.error(f"❌ Fallback model creation failed: {e}")
         return False
+
 
 def initialize_vercel_app():
     """
@@ -253,7 +259,8 @@ def initialize_vercel_app():
 
         logger.info(f"✅ Available features: {', '.join(available_features)}")
         if unavailable_features:
-            logger.warning(f"⚠️ Unavailable features: {', '.join(unavailable_features)}")
+            logger.warning(
+                f"⚠️ Unavailable features: {', '.join(unavailable_features)}")
 
         logger.info("✅ DevSkyy Vercel initialization completed successfully")
         return True
@@ -261,6 +268,7 @@ def initialize_vercel_app():
     except Exception as e:
         logger.error(f"❌ Vercel initialization failed: {e}")
         return False
+
 
 def get_app_config() -> dict:
     """
@@ -273,12 +281,16 @@ def get_app_config() -> dict:
         "title": "DevSkyy Enterprise Platform",
         "description": "AI-Powered Enterprise Platform for E-commerce and Fashion Intelligence",
         "version": "2.0.0",
-        "environment": os.environ.get("ENVIRONMENT", "production"),
-        "debug": os.environ.get("DEBUG", "false").lower() == "true",
+        "environment": os.environ.get(
+            "ENVIRONMENT",
+            "production"),
+        "debug": os.environ.get(
+            "DEBUG",
+            "false").lower() == "true",
         "cors_origins": [
-            "https://*.vercel.app",
-            "https://devskyy.com",
-            "https://www.devskyy.com",
+                "https://*.vercel.app",
+                "https://devskyy.com",
+                "https://www.devskyy.com",
         ],
         "features": {
             "email_validation": validate_email_dependencies(),
@@ -288,6 +300,7 @@ def get_app_config() -> dict:
             "compliance": True,
         },
     }
+
 
 # Auto-initialize when imported
 if __name__ == "__main__":

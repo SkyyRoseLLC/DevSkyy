@@ -1,16 +1,3 @@
-from datetime import datetime
-from pathlib import Path
-import json
-import os
-import re
-import sys
-
-        import hashlib
-    import argparse
-from dataclasses import dataclass, asdict
-from enum import Enum
-from typing import Dict, List, Optional, Set
-
 #!/usr/bin/env python3
 """
 DevSkyy TODO Tracking System
@@ -18,6 +5,17 @@ DevSkyy TODO Tracking System
 A comprehensive system for tracking, managing, and reporting on TODO items,
 technical debt, and development tasks across the DevSkyy codebase.
 """
+from datetime import datetime
+from pathlib import Path
+import json
+import os
+import re
+import sys
+import hashlib
+import argparse
+from dataclasses import dataclass, asdict
+from enum import Enum
+from typing import Dict, List, Optional, Set
 
 class Priority(Enum):
     """Priority levels for TODO items"""
@@ -340,8 +338,8 @@ class TodoTracker:
                     if file_path.exists():
                         with open(file_path, 'r', encoding='utf-8') as f:
                             lines = f.readlines()
-                        
-                        if (todo.line_number <= len(lines) and)
+
+                        if (todo.line_number <= len(lines) and
                             todo.description not in lines[todo.line_number - 1]):
                             # TODO no longer exists, mark as completed
                             self.update_todo(todo_id, status=Status.COMPLETED)

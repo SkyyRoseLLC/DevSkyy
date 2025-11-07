@@ -11,6 +11,7 @@ ML-powered inventory management and forecasting
 
 logger = logging.getLogger(__name__)
 
+
 class InventoryOptimizer:
     """
     Advanced inventory management with ML forecasting
@@ -274,9 +275,8 @@ class InventoryOptimizer:
                 z_score = 1.65  # For 95% service level
                 std_dev = product.get("sales_std_dev", avg_sales * 0.3)
 
-                optimal_stock = (avg_sales * lead_time) + (
-                    z_score * std_dev * np.sqrt(lead_time)
-                )
+                optimal_stock = (avg_sales * lead_time) + \
+                    (z_score * std_dev * np.sqrt(lead_time))
 
                 difference = optimal_stock - current_stock
                 value_change = difference * cost
@@ -308,11 +308,16 @@ class InventoryOptimizer:
                 "products_analyzed": len(products),
                 "recommendations": recommendations,
                 "financial_impact": {
-                    "investment_needed": round(total_investment_needed, 2),
-                    "capital_release_possible": round(total_reduction_possible, 2),
+                    "investment_needed": round(
+                        total_investment_needed,
+                        2),
+                    "capital_release_possible": round(
+                        total_reduction_possible,
+                        2),
                     "net_change": round(
-                        total_investment_needed - total_reduction_possible, 2
-                    ),
+                        total_investment_needed -
+                        total_reduction_possible,
+                        2),
                 },
             }
 

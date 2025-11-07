@@ -1,17 +1,3 @@
-from datetime import datetime
-from pathlib import Path
-from sklearn.linear_model import LinearRegression, LogisticRegression
-from sklearn.neural_network import MLPRegressor
-from sklearn.preprocessing import LabelEncoder, StandardScaler
-
-from sklearn.cluster import DBSCAN, KMeans
-from sklearn.ensemble import (
-    from typing import Any, Dict, List
-import asyncio
-import joblib
-import logging
-import numpy as np
-
 """
 Advanced Machine Learning Engine
 Enterprise-grade ML capabilities with predictive analytics and self-learning systems
@@ -24,13 +10,25 @@ This engine provides:
 - Real-time adaptation and continuous learning
 - Executive-level business intelligence and decision support
 """
-
+from datetime import datetime
+from pathlib import Path
+from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.neural_network import MLPRegressor
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.cluster import DBSCAN, KMeans
+from sklearn.ensemble import (
     GradientBoostingClassifier,
     IsolationForest,
     RandomForestRegressor,
 )
+from typing import Any, Dict, List
+import asyncio
+import joblib
+import logging
+import numpy as np
 
 logger = logging.getLogger(__name__)
+
 
 class AdvancedMLEngine:
     """Enterprise Machine Learning Engine with predictive capabilities."""
@@ -795,29 +793,38 @@ class AdvancedMLEngine:
         }
 
 # Factory function for creating ML engine instances
+
+
 def create_ml_engine() -> AdvancedMLEngine:
     """Create and return an Advanced ML Engine instance."""
     return AdvancedMLEngine()
+
 
 # Global ML engine instance for the platform
 ml_engine = create_ml_engine()
 
 # Convenience functions for easy access
+
+
 async def predict_system_performance(data: Dict[str, Any]) -> Dict[str, Any]:
     """Predict system performance using ML."""
     return await ml_engine.predictive_analytics(data)
+
 
 async def auto_heal_system(system_state: Dict[str, Any]) -> Dict[str, Any]:
     """Automatically heal system issues."""
     return await ml_engine.self_healing_automation(system_state)
 
+
 async def optimize_intelligently(target: str, data: Dict[str, Any]) -> Dict[str, Any]:
     """Intelligently optimize target metrics."""
     return await ml_engine.intelligent_optimization(target, data)
 
+
 async def recognize_patterns(data_stream: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Recognize patterns in data stream."""
     return await ml_engine.pattern_recognition(data_stream)
+
 
 async def continuous_learn(feedback_data: Dict[str, Any]) -> Dict[str, Any]:
     """Execute continuous learning cycle."""

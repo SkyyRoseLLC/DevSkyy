@@ -7,6 +7,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class DesignAutomationAgent:
     """Luxury Fashion Design Automation & Frontend Beauty Specialist."""
 
@@ -302,9 +303,7 @@ class DesignAutomationAgent:
                 "migration_guide": migration_guide,
                 "updated_styles": updated_styles,
                 "rollback_plan": self._create_rollback_plan(current_analysis),
-                "testing_checklist": self._generate_testing_checklist()
-                    affected_components
-                ),
+                "testing_checklist": self._generate_testing_checklist(affected_components),
                 "estimated_impact": self._assess_update_impact(update_strategy),
                 "updated_at": datetime.now().isoformat(),
             }
@@ -318,7 +317,7 @@ class DesignAutomationAgent:
     ) -> Dict[str, Any]:
         """Optimize frontend beauty with AI-powered aesthetic enhancements."""
         try:
-            target_pages = optimization_request.get(
+            target_pages= optimization_request.get(
                 "pages", ["homepage", "product_pages"]
             )
             optimization_goals = optimization_request.get(

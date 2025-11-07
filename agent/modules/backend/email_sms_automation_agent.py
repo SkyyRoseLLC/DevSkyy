@@ -7,6 +7,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class EmailSMSAutomationAgent:
     """Email & SMS Marketing Automation Specialist for Luxury Fashion Brands."""
 

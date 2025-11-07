@@ -1,22 +1,18 @@
-        import datetime
-        import json
-        import pathlib
-from pathlib import Path
-import os
-import sys
-
-            from fastapi import FastAPI
-            from pydantic import BaseModel
-
-            import main
-        import asyncio
-        import asyncio
-import pytest
-
 """
 Basic functionality tests to ensure CI/CD pipeline works
 These tests are designed to always pass and validate basic functionality
 """
+import datetime
+import json
+import pathlib
+from pathlib import Path
+import os
+import sys
+from fastapi import FastAPI
+from pydantic import BaseModel
+import main
+import asyncio
+import pytest
 
 class TestBasicFunctionality:
     """Basic functionality tests that should always pass"""

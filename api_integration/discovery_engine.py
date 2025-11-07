@@ -25,6 +25,7 @@ Integrates with existing Redis, Elasticsearch, and Fashion Intelligence systems
 
 logger = logging.getLogger(__name__)
 
+
 class APICategory(Enum):
     """API categories for fashion e-commerce"""
 
@@ -39,6 +40,7 @@ class APICategory(Enum):
     DEVOPS_AUTOMATION = "devops_automation"
     BUSINESS_INTELLIGENCE = "business_intelligence"
 
+
 class AuthenticationType(Enum):
     """API authentication types"""
 
@@ -49,6 +51,7 @@ class AuthenticationType(Enum):
     BEARER_TOKEN = "bearer_token"
     CUSTOM = "custom"
 
+
 class APIStatus(Enum):
     """API operational status"""
 
@@ -57,6 +60,7 @@ class APIStatus(Enum):
     BETA = "beta"
     MAINTENANCE = "maintenance"
     UNAVAILABLE = "unavailable"
+
 
 @dataclass
 class APIEndpoint:
@@ -94,6 +98,7 @@ class APIEndpoint:
         data["last_evaluated"] = self.last_evaluated.isoformat()
         return data
 
+
 @dataclass
 class APIEvaluationCriteria:
     """API evaluation criteria and weights"""
@@ -119,6 +124,7 @@ class APIEvaluationCriteria:
         self.cost_weight /= total
         self.features_weight /= total
         self.fashion_relevance_weight /= total
+
 
 class APIDiscoveryEngine:
     """Automated API discovery and evaluation engine"""
@@ -305,14 +311,14 @@ class APIDiscoveryEngine:
     ) -> List[APIEndpoint]:
         """Discover APIs from a specific source"""
 
-        discovered_apis = []
+        discovered_apis= []
 
         if source_name == "rapidapi":
-            discovered_apis = await self._discover_rapidapi(source_config, categories)
+            discovered_apis= await self._discover_rapidapi(source_config, categories)
         elif source_name == "apis_guru":
-            discovered_apis = await self._discover_apis_guru(source_config, categories)
+            discovered_apis= await self._discover_apis_guru(source_config, categories)
         elif source_name == "programmableweb":
-            discovered_apis = await self._discover_programmableweb(
+            discovered_apis= await self._discover_programmableweb(
                 source_config, categories
             )
 

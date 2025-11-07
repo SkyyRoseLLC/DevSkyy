@@ -21,6 +21,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class OrderStatus(str, Enum):
     """Order status enumeration"""
 
@@ -32,6 +33,7 @@ class OrderStatus(str, Enum):
     DELIVERED = "delivered"
     CANCELLED = "cancelled"
     REFUNDED = "refunded"
+
 
 class OrderAutomation:
     """
@@ -287,10 +289,7 @@ class OrderAutomation:
             "success": all_available,
             "allocations": allocations,
             "fully_allocated": all_available,
-            "partial_shipment_available": len()
-                [a for a in allocations if a.get("allocated", 0) > 0]
-            )
-            > 0,
+            "partial_shipment_available": len([a for a in allocations if a.get("allocated", 0) > 0]) > 0,
         }
 
     async def process_payment(self, order_data: Dict[str, Any]) -> Dict[str, Any]:

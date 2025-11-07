@@ -7,6 +7,7 @@ from unittest.mock import patch
 import importlib
 import types
 
+
 def test_run_endpoint_calls_functions_in_sequence():
     """Test that the run endpoint calls functions in the correct sequence.
 
@@ -46,9 +47,7 @@ def test_run_endpoint_calls_functions_in_sequence():
         patch(
             "agent.modules.scanner.scan_site", side_effect=scan_side_effect, create=True
         ) as mock_scan,
-        patch(
-            "agent.modules.fixer.fix_code", side_effect=fix_side_effect, create=True
-        ) as mock_fix,
+        patch("agent.modules.fixer.fix_code", side_effect=fix_side_effect, create=True) as mock_fix,
         patch(
             "agent.git_commit.commit_fixes", side_effect=commit_side_effect, create=True
         ) as mock_commit,
@@ -73,7 +72,8 @@ def test_run_endpoint_calls_functions_in_sequence():
     assert "features" in response_data
 
     # Test that the mocked functions are available (they would be called if the endpoint existed)
-    # Since we're testing the root endpoint, the mocks won't be called, but they should be available
+    # Since we're testing the root endpoint, the mocks won't be called, but
+    # they should be available
     assert mock_scan is not None
     assert mock_fix is not None
     assert mock_commit is not None

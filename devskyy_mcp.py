@@ -45,30 +45,38 @@ MCP_SERVER_VERSION = "1.0.0"
 # MODELS
 # ============================================================================
 
+
 class AgentInfo(BaseModel):
     """Information about a DevSkyy agent."""
+
     name: str
     category: str
     description: str
     capabilities: List[str]
     status: str = "active"
 
+
 class ScanResult(BaseModel):
     """Code scanning results."""
+
     errors: List[Dict[str, Any]] = Field(default_factory=list)
     warnings: List[Dict[str, Any]] = Field(default_factory=list)
     suggestions: List[Dict[str, Any]] = Field(default_factory=list)
     metrics: Dict[str, Any] = Field(default_factory=dict)
 
+
 class FixResult(BaseModel):
     """Code fix results."""
+
     fixed: bool
     changes_made: List[str] = Field(default_factory=list)
     files_modified: List[str] = Field(default_factory=list)
 
+
 # ============================================================================
 # DEVSKYY API CLIENT
 # ============================================================================
+
 
 class DevSkyyClient:
     """Client for DevSkyy API."""
@@ -78,15 +86,14 @@ class DevSkyyClient:
         self.api_key = api_key
         self.headers = {
             "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json"
-        }
+            "Content-Type": "application/json"}
 
     async def request(
         self,
         method: str,
         endpoint: str,
         data: Optional[Dict[str, Any]] = None,
-        params: Optional[Dict[str, Any]] = None
+        params: Optional[Dict[str, Any]] = None,
     ) -> Dict[str, Any]:
         """Make API request."""
         url = f"{self.api_url}{endpoint}"
@@ -94,19 +101,17 @@ class DevSkyyClient:
         async with httpx.AsyncClient(timeout=REQUEST_TIMEOUT) as client:
             try:
                 response = await client.request(
-                    method=method,
-                    url=url,
-                    headers=self.headers,
-                    json=data,
-                    params=params
+                    method=method, url=url, headers=self.headers, json=data, params=params
                 )
                 response.raise_for_status()
                 return response.json()
             except httpx.HTTPError as e:
                 return {
                     "error": str(e),
-                    "status_code": getattr(e.response, "status_code", None)
-                }
+                    "status_code": getattr(
+                        e.response,
+                        "status_code",
+                        None)}
 
     async def list_agents(self) -> List[AgentInfo]:
         """List all available agents."""
@@ -118,151 +123,224 @@ class DevSkyyClient:
                 name="scanner",
                 category="Infrastructure",
                 description="Advanced code scanner for errors, security issues, and performance bottlenecks",
-                capabilities=["code_analysis", "security_scan", "performance_check", "best_practices"]
+                capabilities=[
+                    "code_analysis",
+                    "security_scan",
+                    "performance_check",
+                    "best_practices",
+                ],
             ),
             AgentInfo(
                 name="code_fixer",
                 category="Infrastructure",
                 description="Automated code fixing with ML-powered suggestions",
-                capabilities=["auto_fix", "refactoring", "optimization", "modernization"]
+                capabilities=[
+                    "auto_fix",
+                    "refactoring",
+                    "optimization",
+                    "modernization"],
             ),
             AgentInfo(
                 name="self_healing",
                 category="Infrastructure",
                 description="Self-healing system that monitors and auto-repairs issues",
-                capabilities=["health_monitoring", "auto_repair", "recovery", "diagnostics"]
+                capabilities=[
+                    "health_monitoring",
+                    "auto_repair",
+                    "recovery",
+                    "diagnostics"],
             ),
             AgentInfo(
                 name="security_manager",
                 category="Infrastructure",
                 description="Comprehensive security management and vulnerability scanning",
-                capabilities=["vulnerability_scan", "penetration_test", "compliance_check", "threat_detection"]
+                capabilities=[
+                    "vulnerability_scan",
+                    "penetration_test",
+                    "compliance_check",
+                    "threat_detection",
+                ],
             ),
-
             # AI/ML Agents (12)
             AgentInfo(
                 name="nlp_processor",
                 category="AI/ML",
                 description="Natural language processing for text analysis and understanding",
-                capabilities=["text_analysis", "entity_extraction", "intent_recognition", "language_detection"]
+                capabilities=[
+                    "text_analysis",
+                    "entity_extraction",
+                    "intent_recognition",
+                    "language_detection",
+                ],
             ),
             AgentInfo(
                 name="sentiment_analyzer",
                 category="AI/ML",
                 description="Sentiment analysis for customer feedback and social media",
-                capabilities=["sentiment_detection", "emotion_analysis", "trend_detection"]
+                capabilities=[
+                    "sentiment_detection",
+                    "emotion_analysis",
+                    "trend_detection"],
             ),
             AgentInfo(
                 name="content_generator",
                 category="AI/ML",
                 description="AI-powered content generation for various formats",
-                capabilities=["text_generation", "copywriting", "seo_optimization", "multilingual"]
+                capabilities=[
+                    "text_generation",
+                    "copywriting",
+                    "seo_optimization",
+                    "multilingual"],
             ),
             AgentInfo(
                 name="ml_predictor",
                 category="AI/ML",
                 description="Machine learning predictions for fashion trends, demand, and pricing",
-                capabilities=["trend_prediction", "demand_forecasting", "price_optimization", "customer_segmentation"]
+                capabilities=[
+                    "trend_prediction",
+                    "demand_forecasting",
+                    "price_optimization",
+                    "customer_segmentation",
+                ],
             ),
-
             # E-Commerce Agents (10)
             AgentInfo(
                 name="product_manager",
                 category="E-Commerce",
                 description="Comprehensive product management and optimization",
-                capabilities=["product_creation", "inventory_management", "variant_handling", "seo_optimization"]
+                capabilities=[
+                    "product_creation",
+                    "inventory_management",
+                    "variant_handling",
+                    "seo_optimization",
+                ],
             ),
             AgentInfo(
                 name="dynamic_pricing",
                 category="E-Commerce",
                 description="ML-powered dynamic pricing optimization",
-                capabilities=["price_optimization", "competitor_analysis", "demand_pricing", "ab_testing"]
+                capabilities=[
+                    "price_optimization",
+                    "competitor_analysis",
+                    "demand_pricing",
+                    "ab_testing",
+                ],
             ),
             AgentInfo(
                 name="inventory_optimizer",
                 category="E-Commerce",
                 description="Intelligent inventory management and forecasting",
-                capabilities=["stock_prediction", "reorder_automation", "warehouse_optimization"]
+                capabilities=[
+                    "stock_prediction",
+                    "reorder_automation",
+                    "warehouse_optimization"],
             ),
-
             # Marketing Agents (8)
             AgentInfo(
                 name="email_automation",
                 category="Marketing",
                 description="Automated email campaign management and optimization",
-                capabilities=["campaign_creation", "segmentation", "ab_testing", "analytics"]
+                capabilities=[
+                    "campaign_creation",
+                    "segmentation",
+                    "ab_testing",
+                    "analytics"],
             ),
             AgentInfo(
                 name="sms_automation",
                 category="Marketing",
                 description="SMS marketing automation with compliance",
-                capabilities=["sms_campaigns", "opt_in_management", "delivery_tracking"]
+                capabilities=[
+                    "sms_campaigns",
+                    "opt_in_management",
+                    "delivery_tracking"],
             ),
             AgentInfo(
                 name="social_media",
                 category="Marketing",
                 description="Multi-platform social media automation",
-                capabilities=["post_scheduling", "engagement_tracking", "content_curation", "analytics"]
+                capabilities=[
+                    "post_scheduling",
+                    "engagement_tracking",
+                    "content_curation",
+                    "analytics",
+                ],
             ),
-
             # Content Agents (6)
             AgentInfo(
                 name="seo_optimizer",
                 category="Content",
                 description="Advanced SEO optimization and analysis",
-                capabilities=["keyword_research", "on_page_seo", "content_optimization", "rank_tracking"]
+                capabilities=[
+                    "keyword_research",
+                    "on_page_seo",
+                    "content_optimization",
+                    "rank_tracking",
+                ],
             ),
             AgentInfo(
                 name="copywriter",
                 category="Content",
                 description="AI copywriting for various marketing materials",
-                capabilities=["product_descriptions", "ad_copy", "blog_posts", "email_content"]
+                capabilities=[
+                    "product_descriptions",
+                    "ad_copy",
+                    "blog_posts",
+                    "email_content"],
             ),
-
             # Integration Agents (4)
             AgentInfo(
                 name="wordpress_theme_generator",
                 category="Integration",
                 description="Automated WordPress theme generation and customization",
-                capabilities=["theme_generation", "elementor_integration", "responsive_design", "seo_ready"]
+                capabilities=[
+                    "theme_generation",
+                    "elementor_integration",
+                    "responsive_design",
+                    "seo_ready",
+                ],
             ),
             AgentInfo(
                 name="shopify_connector",
                 category="Integration",
                 description="Shopify platform integration and synchronization",
-                capabilities=["product_sync", "order_management", "inventory_sync"]
+                capabilities=["product_sync", "order_management", "inventory_sync"],
             ),
-
             # Advanced Agents (4)
             AgentInfo(
                 name="ml_trainer",
                 category="Advanced",
                 description="Machine learning model training and deployment",
-                capabilities=["model_training", "hyperparameter_tuning", "deployment", "monitoring"]
+                capabilities=[
+                    "model_training",
+                    "hyperparameter_tuning",
+                    "deployment",
+                    "monitoring",
+                ],
             ),
             AgentInfo(
                 name="analytics_engine",
                 category="Advanced",
                 description="Advanced analytics and business intelligence",
-                capabilities=["data_analysis", "visualization", "reporting", "insights"]
+                capabilities=[
+                    "data_analysis",
+                    "visualization",
+                    "reporting",
+                    "insights"],
             ),
         ]
 
     async def scan_code(self, directory: str, options: Dict[str, Any]) -> ScanResult:
         """Scan code for issues."""
         result = await self.request(
-            "POST",
-            "/api/v1/agents/scanner/scan",
-            data={"directory": directory, "options": options}
+            "POST", "/api/v1/agents/scanner/scan", data={"directory": directory, "options": options}
         )
         return ScanResult(**result) if "error" not in result else ScanResult()
 
     async def fix_code(self, issues: List[Dict[str, Any]]) -> FixResult:
         """Fix code issues."""
         result = await self.request(
-            "POST",
-            "/api/v1/agents/code_fixer/fix",
-            data={"issues": issues}
+            "POST", "/api/v1/agents/code_fixer/fix", data={"issues": issues}
         )
         return FixResult(**result) if "error" not in result else FixResult(fixed=False)
 
@@ -273,54 +351,54 @@ class DevSkyyClient:
     async def generate_wordpress_theme(self, config: Dict[str, Any]) -> Dict[str, Any]:
         """Generate WordPress theme."""
         return await self.request(
-            "POST",
-            "/api/v1/agents/wordpress_theme_generator/generate",
-            data=config
+            "POST", "/api/v1/agents/wordpress_theme_generator/generate", data=config
         )
 
-    async def ml_prediction(self, prediction_type: str, data: Dict[str, Any]) -> Dict[str, Any]:
+    async def ml_prediction(self, prediction_type: str,
+                            data: Dict[str, Any]) -> Dict[str, Any]:
         """Make ML prediction."""
         return await self.request(
-            "POST",
-            f"/api/v1/agents/ml_predictor/{prediction_type}",
-            data=data
+            "POST", f"/api/v1/agents/ml_predictor/{prediction_type}", data=data
         )
 
-    async def manage_product(self, action: str, product_data: Dict[str, Any]) -> Dict[str, Any]:
+    async def manage_product(
+            self, action: str, product_data: Dict[str, Any]) -> Dict[str, Any]:
         """Manage product."""
         return await self.request(
-            "POST",
-            f"/api/v1/agents/product_manager/{action}",
-            data=product_data
+            "POST", f"/api/v1/agents/product_manager/{action}", data=product_data
         )
 
-    async def dynamic_pricing(self, product_ids: List[str], strategy: str) -> Dict[str, Any]:
+    async def dynamic_pricing(
+            self, product_ids: List[str], strategy: str) -> Dict[str, Any]:
         """Optimize pricing."""
         return await self.request(
             "POST",
             "/api/v1/agents/dynamic_pricing/optimize",
-            data={"product_ids": product_ids, "strategy": strategy}
+            data={"product_ids": product_ids, "strategy": strategy},
         )
 
-    async def marketing_campaign(self, campaign_type: str, config: Dict[str, Any]) -> Dict[str, Any]:
+    async def marketing_campaign(
+        self, campaign_type: str, config: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Create marketing campaign."""
         return await self.request(
-            "POST",
-            f"/api/v1/agents/{campaign_type}_automation/campaign",
-            data=config
+            "POST", f"/api/v1/agents/{campaign_type}_automation/campaign", data=config
         )
 
-    async def multi_agent_workflow(self, workflow_name: str, params: Dict[str, Any]) -> Dict[str, Any]:
+    async def multi_agent_workflow(
+        self, workflow_name: str, params: Dict[str, Any]
+    ) -> Dict[str, Any]:
         """Execute multi-agent workflow."""
         return await self.request(
             "POST",
             "/api/v1/workflows/execute",
-            data={"workflow": workflow_name, "parameters": params}
+            data={"workflow": workflow_name, "parameters": params},
         )
 
     async def system_monitoring(self) -> Dict[str, Any]:
         """Get system monitoring data."""
         return await self.request("GET", "/api/v1/monitoring/metrics")
+
 
 # ============================================================================
 # MCP SERVER
@@ -335,6 +413,7 @@ client = DevSkyyClient(DEVSKYY_API_URL, DEVSKYY_API_KEY)
 # ============================================================================
 # MCP TOOLS
 # ============================================================================
+
 
 @mcp.tool()
 async def devskyy_list_agents() -> str:
@@ -371,12 +450,13 @@ async def devskyy_list_agents() -> str:
 
     return "\n".join(output)
 
+
 @mcp.tool()
 async def devskyy_scan_code(
     directory: str,
     include_security: bool = True,
     include_performance: bool = True,
-    include_best_practices: bool = True
+    include_best_practices: bool = True,
 ) -> str:
     """
     Scan code for errors, security issues, and performance bottlenecks.
@@ -393,7 +473,7 @@ async def devskyy_scan_code(
     options = {
         "security": include_security,
         "performance": include_performance,
-        "best_practices": include_best_practices
+        "best_practices": include_best_practices,
     }
 
     result = await client.scan_code(directory, options)
@@ -403,12 +483,15 @@ async def devskyy_scan_code(
     if result.errors:
         output.append(f"\n## Errors ({len(result.errors)})\n")
         for error in result.errors:
-            output.append(f"- **{error.get('file')}:{error.get('line')}** - {error.get('message')}")
+            output.append(
+                f"- **{error.get('file')}:{error.get('line')}** - {error.get('message')}")
 
     if result.warnings:
         output.append(f"\n## Warnings ({len(result.warnings)})\n")
         for warning in result.warnings:
-            output.append(f"- **{warning.get('file')}:{warning.get('line')}** - {warning.get('message')}")
+            output.append(
+                f"- **{warning.get('file')}:{warning.get('line')}** - {warning.get('message')}"
+            )
 
     if result.suggestions:
         output.append(f"\n## Suggestions ({len(result.suggestions)})\n")
@@ -421,6 +504,7 @@ async def devskyy_scan_code(
             output.append(f"- {key}: {value}")
 
     return "\n".join(output)
+
 
 @mcp.tool()
 async def devskyy_fix_code(issues_json: str) -> str:
@@ -451,6 +535,7 @@ async def devskyy_fix_code(issues_json: str) -> str:
 
     return "\n".join(output)
 
+
 @mcp.tool()
 async def devskyy_self_healing() -> str:
     """
@@ -474,16 +559,17 @@ async def devskyy_self_healing() -> str:
 
     if "repairs" in result:
         output.append(f"\n## Repairs Performed ({len(result['repairs'])})\n")
-        for repair in result['repairs']:
+        for repair in result["repairs"]:
             output.append(f"- {repair}")
 
     if "health_checks" in result:
         output.append(f"\n## Health Checks\n")
-        for check, status in result['health_checks'].items():
+        for check, status in result["health_checks"].items():
             emoji = "✅" if status == "healthy" else "❌"
             output.append(f"- {emoji} {check}: {status}")
 
     return "\n".join(output)
+
 
 @mcp.tool()
 async def devskyy_generate_wordpress_theme(
@@ -491,7 +577,7 @@ async def devskyy_generate_wordpress_theme(
     industry: str = "fashion",
     theme_type: str = "elementor",
     color_palette: str = "#FF5733,#3498DB,#2ECC71",
-    pages: str = "home,shop,about,contact"
+    pages: str = "home,shop,about,contact",
 ) -> str:
     """
     Generate custom WordPress theme with AI.
@@ -511,7 +597,7 @@ async def devskyy_generate_wordpress_theme(
         "industry": industry,
         "theme_type": theme_type,
         "color_palette": color_palette.split(","),
-        "pages": pages.split(",")
+        "pages": pages.split(","),
     }
 
     result = await client.generate_wordpress_theme(config)
@@ -532,11 +618,9 @@ async def devskyy_generate_wordpress_theme(
 
     return "\n".join(output)
 
+
 @mcp.tool()
-async def devskyy_ml_prediction(
-    prediction_type: str,
-    data_json: str
-) -> str:
+async def devskyy_ml_prediction(prediction_type: str, data_json: str) -> str:
     """
     Make ML predictions for fashion, pricing, demand, or customer segments.
 
@@ -556,7 +640,9 @@ async def devskyy_ml_prediction(
         output.append(f"\n## Predictions\n")
         for pred in result["predictions"]:
             conf = pred.get("confidence", 0) * 100
-            output.append(f"- **{pred.get('label')}**: {pred.get('value')} (confidence: {conf:.1f}%)")
+            output.append(
+                f"- **{pred.get('label')}**: {pred.get('value')} (confidence: {conf:.1f}%)"
+            )
 
     if "insights" in result:
         output.append(f"\n## Insights\n")
@@ -565,11 +651,9 @@ async def devskyy_ml_prediction(
 
     return "\n".join(output)
 
+
 @mcp.tool()
-async def devskyy_manage_products(
-    action: str,
-    product_data_json: str
-) -> str:
+async def devskyy_manage_products(action: str, product_data_json: str) -> str:
     """
     Manage e-commerce products (create, update, optimize).
 
@@ -599,11 +683,11 @@ async def devskyy_manage_products(
 
     return "\n".join(output)
 
+
 @mcp.tool()
 async def devskyy_dynamic_pricing(
-    product_ids: str,
-    strategy: str = "ml_optimized"
-) -> str:
+        product_ids: str,
+        strategy: str = "ml_optimized") -> str:
     """
     Optimize product pricing with ML.
 
@@ -622,21 +706,23 @@ async def devskyy_dynamic_pricing(
     if "optimized_prices" in result:
         output.append(f"\n## Optimized Prices\n")
         for price_data in result["optimized_prices"]:
-            output.append(f"- **{price_data['product_id']}**: ${price_data['old_price']} → ${price_data['new_price']} ({price_data['change_pct']:+.1f}%)")
+            output.append(
+                f"- **{price_data['product_id']}**: ${price_data['old_price']} → ${price_data['new_price']} ({price_data['change_pct']:+.1f}%)"
+            )
 
     if "projected_revenue" in result:
         output.append(f"\n## Revenue Projection\n")
         output.append(f"- Current: ${result['current_revenue']:,.2f}")
         output.append(f"- Projected: ${result['projected_revenue']:,.2f}")
-        output.append(f"- Increase: ${result['revenue_increase']:,.2f} ({result['increase_pct']:+.1f}%)")
+        output.append(
+            f"- Increase: ${result['revenue_increase']:,.2f} ({result['increase_pct']:+.1f}%)"
+        )
 
     return "\n".join(output)
 
+
 @mcp.tool()
-async def devskyy_marketing_campaign(
-    campaign_type: str,
-    config_json: str
-) -> str:
+async def devskyy_marketing_campaign(campaign_type: str, config_json: str) -> str:
     """
     Create automated marketing campaigns (email, SMS, social media).
 
@@ -668,11 +754,10 @@ async def devskyy_marketing_campaign(
 
     return "\n".join(output)
 
+
 @mcp.tool()
 async def devskyy_multi_agent_workflow(
-    workflow_name: str,
-    parameters_json: str,
-    parallel: bool = False
+    workflow_name: str, parameters_json: str, parallel: bool = False
 ) -> str:
     """
     Execute multi-agent workflow orchestration.
@@ -713,6 +798,7 @@ async def devskyy_multi_agent_workflow(
         output.append(f"\n## Summary\n{result['summary']}")
 
     return "\n".join(output)
+
 
 @mcp.tool()
 async def devskyy_system_monitoring() -> str:
@@ -759,9 +845,11 @@ async def devskyy_system_monitoring() -> str:
 
     return "\n".join(output)
 
+
 # ============================================================================
 # ENHANCED SECURITY TOOLS
 # ============================================================================
+
 
 @mcp.tool()
 async def devskyy_security_scan() -> str:
@@ -782,7 +870,7 @@ async def devskyy_security_scan() -> str:
             response = await client.post(
                 f"{DEVSKYY_API_URL}/api/v1/security/comprehensive-scan",
                 headers={"Authorization": f"Bearer {DEVSKYY_API_KEY}"},
-                json={"scan_type": "comprehensive", "include_remediation": True}
+                json={"scan_type": "comprehensive", "include_remediation": True},
             )
 
             if response.status_code == 200:
@@ -806,7 +894,8 @@ async def devskyy_security_scan() -> str:
                 if "top_issues" in result:
                     output.append(f"\n**Top Security Issues:**")
                     for issue in result["top_issues"][:5]:
-                        output.append(f"- {issue['severity'].upper()}: {issue['title']}")
+                        output.append(
+                            f"- {issue['severity'].upper()}: {issue['title']}")
                         output.append(f"  Fix: {issue['remediation']}")
 
                 # Compliance status
@@ -822,6 +911,7 @@ async def devskyy_security_scan() -> str:
 
     except Exception as e:
         return f"❌ Error during security scan: {str(e)}"
+
 
 @mcp.tool()
 async def devskyy_security_remediate(issue_ids: str) -> str:
@@ -847,7 +937,7 @@ async def devskyy_security_remediate(issue_ids: str) -> str:
             response = await client.post(
                 f"{DEVSKYY_API_URL}/api/v1/security/auto-remediate",
                 headers={"Authorization": f"Bearer {DEVSKYY_API_KEY}"},
-                json={"issue_ids": issue_list, "auto_apply": True}
+                json={"issue_ids": issue_list, "auto_apply": True},
             )
 
             if response.status_code == 200:
@@ -887,9 +977,11 @@ async def devskyy_security_remediate(issue_ids: str) -> str:
     except Exception as e:
         return f"❌ Error during remediation: {str(e)}"
 
+
 # ============================================================================
 # ENHANCED ANALYTICS TOOLS
 # ============================================================================
+
 
 @mcp.tool()
 async def devskyy_analytics_dashboard() -> str:
@@ -910,7 +1002,7 @@ async def devskyy_analytics_dashboard() -> str:
         async with httpx.AsyncClient(timeout=REQUEST_TIMEOUT) as client:
             response = await client.get(
                 f"{DEVSKYY_API_URL}/api/v1/analytics/dashboard",
-                headers={"Authorization": f"Bearer {DEVSKYY_API_KEY}"}
+                headers={"Authorization": f"Bearer {DEVSKYY_API_KEY}"},
             )
 
             if response.status_code == 200:
@@ -922,13 +1014,15 @@ async def devskyy_analytics_dashboard() -> str:
                 output.append("**📈 Key Metrics (Last 24h):**")
                 output.append(f"- Active Users: {metrics.get('active_users', 0):,}")
                 output.append(f"- API Requests: {metrics.get('api_requests', 0):,}")
-                output.append(f"- Agent Executions: {metrics.get('agent_executions', 0):,}")
+                output.append(
+                    f"- Agent Executions: {metrics.get('agent_executions', 0):,}")
                 output.append(f"- Revenue: ${metrics.get('revenue', 0):,.2f}")
 
                 # Performance
                 perf = result.get("performance", {})
                 output.append(f"\n**⚡ Performance:**")
-                output.append(f"- Avg Response Time: {perf.get('avg_response_time', 0):.2f}ms")
+                output.append(
+                    f"- Avg Response Time: {perf.get('avg_response_time', 0):.2f}ms")
                 output.append(f"- Success Rate: {perf.get('success_rate', 0):.1f}%")
                 output.append(f"- Uptime: {perf.get('uptime', 0):.2f}%")
 
@@ -936,14 +1030,16 @@ async def devskyy_analytics_dashboard() -> str:
                 if "top_agents" in result:
                     output.append(f"\n**🤖 Most Used Agents:**")
                     for agent in result["top_agents"][:5]:
-                        output.append(f"- {agent['name']}: {agent['usage_count']} executions")
+                        output.append(
+                            f"- {agent['name']}: {agent['usage_count']} executions")
 
                 # Trends
                 if "trends" in result:
                     output.append(f"\n**📈 Trends:**")
                     for trend in result["trends"]:
                         direction = "📈" if trend["direction"] == "up" else "📉"
-                        output.append(f"- {direction} {trend['metric']}: {trend['change']:+.1f}%")
+                        output.append(
+                            f"- {direction} {trend['metric']}: {trend['change']:+.1f}%")
 
                 return "\n".join(output)
             else:
@@ -952,9 +1048,11 @@ async def devskyy_analytics_dashboard() -> str:
     except Exception as e:
         return f"❌ Error fetching analytics: {str(e)}"
 
+
 # ============================================================================
 # MAIN
 # ============================================================================
+
 
 def print_banner():
     """Print startup banner."""
@@ -996,6 +1094,7 @@ def print_banner():
     print()
     print("Starting MCP server on stdio...")
     print()
+
 
 if __name__ == "__main__":
     print_banner()

@@ -9,14 +9,7 @@ Version: 1.0.0
 Python: >=3.11.0
 """
 
-import pytest
-import os
-from datetime import datetime, timedelta
-from unittest.mock import patch, MagicMock
-
-# Set test JWT secret before importing jwt_auth
-os.environ["JWT_SECRET_KEY"] = "test-secret-key-32-characters-min-length-required"
-
+from fastapi import HTTPException
 from security.jwt_auth import (
     UserRole,
     TokenType,
@@ -32,7 +25,13 @@ from security.jwt_auth import (
     TokenBlacklist,
     ROLE_HIERARCHY,
 )
-from fastapi import HTTPException
+import pytest
+import os
+from datetime import datetime, timedelta
+from unittest.mock import patch, MagicMock
+
+# Set test JWT secret before importing jwt_auth
+os.environ["JWT_SECRET_KEY"] = "test-secret-key-32-characters-min-length-required"
 
 
 class TestUserRole:
@@ -87,8 +86,7 @@ class TestTokenGeneration:
         token = create_access_token(
             "user123",
             UserRole.ADMIN,
-            email="admin@example.com"
-        )
+            email="admin@example.com")
 
         payload = verify_jwt_token(token, TokenType.ACCESS)
         assert payload["sub"] == "user123"
@@ -101,8 +99,7 @@ class TestTokenGeneration:
         token = create_access_token(
             "user123",
             UserRole.DEVELOPER,
-            permissions=permissions
-        )
+            permissions=permissions)
 
         payload = verify_jwt_token(token, TokenType.ACCESS)
         assert payload["permissions"] == permissions
@@ -168,7 +165,7 @@ class TestTokenVerification:
     def test_verify_expired_token(self):
         """Test that expired token raises error."""
         # Create token with past expiry
-        with patch('security.jwt_auth.datetime') as mock_datetime:
+        with patch("security.jwt_auth.datetime") as mock_datetime:
             # Set time to past
             past_time = datetime.utcnow() - timedelta(hours=2)
             mock_datetime.utcnow.return_value = past_time
@@ -305,6 +302,7 @@ class TestSecretKeyGeneration:
 
         # Keys should be URL-safe base64
         import string
+
         allowed_chars = string.ascii_letters + string.digits + "-_"
         assert all(c in allowed_chars for c in key1)
 
@@ -345,7 +343,7 @@ class TestRBACEnforcement:
         role_checker = require_role(UserRole.ADMIN)
 
         # Simulate the dependency execution
-        with patch('security.jwt_auth.get_current_user', return_value=mock_user):
+        with patch("security.jwt_auth.get_current_user", return_value=mock_user):
             checker_func = role_checker
             # The actual check happens inside the returned function
             # This tests the has_permission logic
@@ -390,4 +388,5 @@ class TestEdgeCases:
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v", "--cov=security.jwt_auth", "--cov-report=term-missing"])
+    pytest.main([__file__, "-v", "--cov=security.jwt_auth",
+                "--cov-report=term-missing"])

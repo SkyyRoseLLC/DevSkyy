@@ -16,6 +16,7 @@ Fashion industry specific caching patterns and strategies
 
 logger = logging.getLogger(__name__)
 
+
 class InvalidationStrategy(Enum):
     """Cache invalidation strategies"""
 
@@ -25,6 +26,7 @@ class InvalidationStrategy(Enum):
     PATTERN = "pattern"  # Invalidate by pattern
     DEPENDENCY = "dependency"  # Invalidate based on dependencies
     TTL_REFRESH = "ttl_refresh"  # Refresh TTL instead of invalidating
+
 
 @dataclass
 class InvalidationRule:
@@ -38,6 +40,7 @@ class InvalidationRule:
     dependencies: List[str] = None
     condition: Optional[Callable] = None
     fashion_context: bool = False  # Fashion industry specific rule
+
 
 class CacheInvalidationManager:
     """Manages cache invalidation strategies and execution"""
@@ -410,8 +413,8 @@ class CacheInvalidationManager:
     async def health_check(self) -> Dict[str, Any]:
         """Health check for cache invalidation system"""
         try:
-            stats = await self.get_invalidation_stats()
-            redis_health = await redis_manager.health_check()
+            stats= await self.get_invalidation_stats()
+            redis_health= await redis_manager.health_check()
 
             return {
                 "status": (

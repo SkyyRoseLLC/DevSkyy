@@ -1,5 +1,4 @@
-        import re
-        import re
+import re
 from datetime import datetime, timedelta
 
 from decimal import Decimal
@@ -14,6 +13,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class ProductCategory(Enum):
     NECKLACES = "necklaces"
     RINGS = "rings"
@@ -22,6 +22,7 @@ class ProductCategory(Enum):
     CHARMS = "charms"
     SETS = "sets"
     LIMITED_EDITION = "limited_edition"
+
 
 class OrderStatus(Enum):
     PENDING = "pending"
@@ -32,6 +33,7 @@ class OrderStatus(Enum):
     RETURNED = "returned"
     REFUNDED = "refunded"
     CANCELED = "canceled"
+
 
 class EcommerceAgent:
     """Production-level ecommerce management with advanced analytics and automation."""
@@ -495,7 +497,7 @@ class EcommerceAgent:
         """Get real-time analytics for main dashboard."""
         return {
             "total_products": len(self.products),
-            "active_orders": len()
+            "active_orders": len(
                 [
                     o
                     for o in self.orders.values()
@@ -518,7 +520,7 @@ class EcommerceAgent:
         description: str,
     ) -> Dict[str, Any]:
         """Comprehensive product data validation."""
-        errors = []
+        errors= []
 
         if not name or len(name) < 3:
             errors.append("Product name must be at least 3 characters")
@@ -987,7 +989,7 @@ class EcommerceAgent:
     # Analytics calculation methods
     def _calculate_total_revenue(self) -> float:
         """Calculate total revenue from all orders."""
-        return sum()
+        return sum(
             float(order["pricing"]["total"])
             for order in self.orders.values()
             if order["status"] not in ["canceled", "refunded"]
@@ -1007,7 +1009,7 @@ class EcommerceAgent:
     def _count_new_customers(self) -> int:
         """Count new customers in current period."""
         thirty_days_ago = datetime.now() - timedelta(days=30)
-        return len()
+        return len(
             [
                 c
                 for c in self.customers.values()

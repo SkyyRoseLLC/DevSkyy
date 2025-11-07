@@ -1,4 +1,4 @@
-    import redis
+import redis
 import json
 import os
 
@@ -19,6 +19,7 @@ try:
 except ImportError:
     REDIS_AVAILABLE = False
     logger.warning("Redis not available - using in-memory cache")
+
 
 class RedisCache:
     """Distributed Redis cache with fallback to in-memory"""
@@ -97,7 +98,8 @@ class RedisCache:
                 result = self.client.delete(hashed_key)
                 logger.debug(f"🗑️ Redis delete result for key '{key}': {result}")
             except redis.ConnectionError as e:
-                logger.warning(f"🔌 Redis connection error during delete of '{key}': {e}")
+                logger.warning(
+                    f"🔌 Redis connection error during delete of '{key}': {e}")
                 deletion_success = False
             except redis.TimeoutError as e:
                 logger.warning(f"⏰ Redis timeout during delete of '{key}': {e}")
@@ -163,5 +165,6 @@ class RedisCache:
             except Exception:
                 return {"mode": "redis", "status": "error"}
         return {"mode": "memory", "size": len(self.memory_cache)}
+
 
 redis_cache = RedisCache()

@@ -7,7 +7,7 @@
   "status": "active",
   "composition": {
     "primary_ai": "Claude Sonnet 4.5",
-    "secondary_ai": "Cursor IDE",
+    "secondary_ai": "ChatGPT-5-Codex",
     "collaboration_mode": "sequential"
   },
   "capabilities": {

@@ -26,6 +26,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class CacheConfig:
     """Cache configuration settings."""
@@ -36,6 +37,7 @@ class CacheConfig:
     enable_compression: bool = True
     enable_encryption: bool = False
     cache_prefix: str = "devskyy:"
+
 
 class AdvancedCacheManager:
     """
@@ -105,8 +107,7 @@ class AdvancedCacheManager:
                 else:
                     # Convert non-JSON types to string representation for security
                     logger.warning(
-                        f"Converting non-JSON type {type(value)} to string for security"
-                    )
+                        f"Converting non-JSON type {type(value)} to string for security")
                     return json.dumps(str(value))
             else:
                 return json.dumps(value)
@@ -181,8 +182,10 @@ class AdvancedCacheManager:
             return default
 
     async def aget(
-        self, key: str, namespace: str = "default", default: Any = None
-    ) -> Any:
+            self,
+            key: str,
+            namespace: str = "default",
+            default: Any = None) -> Any:
         """
         Get value from cache (asynchronous).
         """
@@ -227,8 +230,11 @@ class AdvancedCacheManager:
             return default
 
     def set(
-        self, key: str, value: Any, ttl: int = None, namespace: str = "default"
-    ) -> bool:
+            self,
+            key: str,
+            value: Any,
+            ttl: int = None,
+            namespace: str = "default") -> bool:
         """
         Set value in cache (synchronous).
         Stores in both memory and Redis cache.
@@ -263,8 +269,11 @@ class AdvancedCacheManager:
             return False
 
     async def aset(
-        self, key: str, value: Any, ttl: int = None, namespace: str = "default"
-    ) -> bool:
+            self,
+            key: str,
+            value: Any,
+            ttl: int = None,
+            namespace: str = "default") -> bool:
         """
         Set value in cache (asynchronous).
         """
@@ -287,9 +296,7 @@ class AdvancedCacheManager:
             if self.async_redis_client:
                 try:
                     serialized_value = self._serialize_value(value)
-                    await self.async_redis_client.setex(
-                        cache_key, ttl, serialized_value
-                    )
+                    await self.async_redis_client.setex(cache_key, ttl, serialized_value)
                 except Exception as e:
                     logger.error(f"Async Redis set error: {e}")
                     self.cache_stats["errors"] += 1
@@ -404,24 +411,22 @@ class AdvancedCacheManager:
         """
         total_requests = self.cache_stats["hits"] + self.cache_stats["misses"]
         hit_rate = (
-            (self.cache_stats["hits"] / total_requests * 100)
-            if total_requests > 0
-            else 0
-        )
+            self.cache_stats["hits"] /
+            total_requests *
+            100) if total_requests > 0 else 0
 
         return {
             "cache_stats": self.cache_stats,
             "hit_rate": f"{hit_rate:.2f}%",
-            "memory_cache_size": len(self.memory_cache),
+            "memory_cache_size": len(
+                self.memory_cache),
             "memory_cache_max_size": self.config.max_memory_cache_size,
-            "redis_connected": self.redis_client is not None
-            and self.redis_client.ping(),
+            "redis_connected": self.redis_client is not None and self.redis_client.ping(),
             "async_redis_connected": self.async_redis_client is not None,
         }
 
-    def warm_cache(
-        self, warmup_data: Dict[str, Any], namespace: str = "warmup"
-    ) -> bool:
+    def warm_cache(self, warmup_data: Dict[str, Any],
+                   namespace: str = "warmup") -> bool:
         """
         Warm the cache with frequently accessed data.
         """
@@ -435,6 +440,7 @@ class AdvancedCacheManager:
         except Exception as e:
             logger.error(f"Cache warming error: {e}")
             return False
+
 
 # Cache decorators for easy integration
 def cached(ttl: int = 3600, namespace: str = "default", key_func: Callable = None):
@@ -477,9 +483,11 @@ def cached(ttl: int = 3600, namespace: str = "default", key_func: Callable = Non
 
     return decorator
 
+
 def async_cached(
-    ttl: int = 3600, namespace: str = "default", key_func: Callable = None
-):
+        ttl: int = 3600,
+        namespace: str = "default",
+        key_func: Callable = None):
     """
     Decorator for caching async function results.
     """
@@ -513,6 +521,7 @@ def async_cached(
 
     return decorator
 
+
 # Database query caching
 class DatabaseCacheManager:
     """
@@ -524,8 +533,11 @@ class DatabaseCacheManager:
         self.namespace = "database"
 
     def cache_query_result(
-        self, query: str, params: tuple, result: Any, ttl: int = 300
-    ):
+            self,
+            query: str,
+            params: tuple,
+            result: Any,
+            ttl: int = 300):
         """
         Cache database query result.
         """
@@ -547,6 +559,7 @@ class DatabaseCacheManager:
         # For simplicity, we'll clear the entire database namespace
         self.cache_manager.clear_namespace(self.namespace)
 
+
 # API response caching
 class APICacheManager:
     """
@@ -563,18 +576,24 @@ class APICacheManager:
         """
         Cache API response.
         """
-        cache_key = f"{endpoint}:{hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()}"
+        cache_key = (
+            f"{endpoint}:{hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()}"
+        )
         self.cache_manager.set(cache_key, response, ttl, self.namespace)
 
     def get_cached_api_response(self, endpoint: str, params: Dict[str, Any]) -> Any:
         """
         Get cached API response.
         """
-        cache_key = f"{endpoint}:{hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()}"
+        cache_key = (
+            f"{endpoint}:{hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()}"
+        )
         return self.cache_manager.get(cache_key, self.namespace)
+
 
 # Global cache manager instance
 _cache_manager = None
+
 
 def get_cache_manager() -> AdvancedCacheManager:
     """
@@ -590,6 +609,7 @@ def get_cache_manager() -> AdvancedCacheManager:
         _cache_manager = AdvancedCacheManager(config)
 
     return _cache_manager
+
 
 def initialize_cache_system():
     """
@@ -611,6 +631,7 @@ def initialize_cache_system():
     cache_manager.warm_cache(warmup_data, "system")
     logger.info("✅ Cache system initialized and warmed up")
 
+
 # Example usage
 async def example_usage():
     """
@@ -620,9 +641,7 @@ async def example_usage():
     cache_manager = get_cache_manager()
 
     # Basic cache operations
-    await cache_manager.aset(
-        "user:123", {"name": "John", "email": "john@example.com"}, ttl=1800
-    )
+    await cache_manager.aset("user:123", {"name": "John", "email": "john@example.com"}, ttl=1800)
     user_data = await cache_manager.aget("user:123")
     logger.info(f"Cached user data: {user_data}")
 
@@ -644,6 +663,7 @@ async def example_usage():
     # Get cache statistics
     stats = cache_manager.get_stats()
     logger.info(f"Cache statistics: {stats}")
+
 
 if __name__ == "__main__":
     asyncio.run(example_usage())

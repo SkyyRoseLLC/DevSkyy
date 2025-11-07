@@ -1,36 +1,3 @@
-        from agent.registry import AgentRegistry
-        from fastapi.middleware.cors import CORSMiddleware
-        from fastapi.responses import JSONResponse
-        from ml.model_registry import ModelRegistry
-        from ml.recommendation_engine import RecommendationEngine
-        from sqlalchemy import create_engine
-        import secrets
-import sys
-
-        from fastapi import FastAPI, HTTPException, Request
-        from pydantic import BaseModel, EmailStr
-        from pydantic import BaseModel, Field
-        import sqlalchemy
-
-        from agent.modules.backend.fixer_v2 import FixerAgentV2
-        from agent.modules.base_agent import BaseAgent
-        from agent.modules.frontend.web_development_agent import WebDevelopmentAgent
-        from agent.orchestrator import AgentOrchestrator
-        from cryptography.fernet import Fernet
-        from fashion.intelligence_engine import FashionIntelligenceEngine
-        from typing import Optional
-        from vercel_startup import validate_email_dependencies, get_app_config
-        import anthropic
-        import email_validator
-        import hashlib
-        import main
-        import openai
-        import uvicorn
-from typing import Dict, List, Tuple
-import logging
-import traceback
-
-logger = logging.getLogger(__name__)
 #!/usr/bin/env python3
 """
 DevSkyy Vercel Deployment Test Suite v1.0.0
@@ -42,6 +9,38 @@ Author: DevSkyy Team
 Version: 1.0.0
 Python: >=3.11
 """
+from agent.registry import AgentRegistry
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from ml.model_registry import ModelRegistry
+from ml.recommendation_engine import RecommendationEngine
+from sqlalchemy import create_engine
+import secrets
+import sys
+from fastapi import FastAPI, HTTPException, Request
+from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, Field
+import sqlalchemy
+from agent.modules.backend.fixer_v2 import FixerAgentV2
+from agent.modules.base_agent import BaseAgent
+from agent.modules.frontend.web_development_agent import WebDevelopmentAgent
+from agent.orchestrator import AgentOrchestrator
+from cryptography.fernet import Fernet
+from fashion.intelligence_engine import FashionIntelligenceEngine
+from typing import Optional
+from vercel_startup import validate_email_dependencies, get_app_config
+import anthropic
+import email_validator
+import hashlib
+import main
+import openai
+import uvicorn
+from typing import Dict, List, Tuple
+import logging
+import traceback
+
+logger = logging.getLogger(__name__)
+
 
 def test_email_validation() -> Tuple[bool, str]:
     """Test email validation functionality."""
@@ -63,6 +62,7 @@ def test_email_validation() -> Tuple[bool, str]:
     except Exception as e:
         return False, f"❌ Email validation test failed: {e}"
 
+
 def test_pydantic_functionality() -> Tuple[bool, str]:
     """Test Pydantic core functionality."""
     try:
@@ -80,12 +80,13 @@ def test_pydantic_functionality() -> Tuple[bool, str]:
             TestModel(name="Test", age=-1)  # Should fail
             return False, "❌ Pydantic validation not working"
         except Exception as e:
-    logger.warning(f"Handled exception: {e}")  # Expected to fail
+            logger.warning(f"Handled exception: {e}")  # Expected to fail
 
         return True, "✅ Pydantic functionality working correctly"
 
     except Exception as e:
         return False, f"❌ Pydantic test failed: {e}"
+
 
 def test_fastapi_imports() -> Tuple[bool, str]:
     """Test FastAPI and related imports."""
@@ -99,6 +100,7 @@ def test_fastapi_imports() -> Tuple[bool, str]:
     except Exception as e:
         return False, f"❌ FastAPI import test failed: {e}"
 
+
 def test_core_modules() -> Tuple[bool, str]:
     """Test core application modules."""
     try:
@@ -110,6 +112,7 @@ def test_core_modules() -> Tuple[bool, str]:
 
     except Exception as e:
         return False, f"❌ Core modules test failed: {e}"
+
 
 def test_optional_modules() -> Tuple[bool, str]:
     """Test optional modules with graceful degradation."""
@@ -139,16 +142,14 @@ def test_optional_modules() -> Tuple[bool, str]:
     # Test AI clients
     ai_clients = []
     try:
-
         ai_clients.append("Anthropic")
     except ImportError as e:
-    logger.warning(f"Handled exception: {e}")
+        logger.warning(f"Handled exception: {e}")
 
     try:
-
         ai_clients.append("OpenAI")
     except ImportError as e:
-    logger.warning(f"Handled exception: {e}")
+        logger.warning(f"Handled exception: {e}")
 
     if ai_clients:
         results.append(f"✅ AI clients available: {', '.join(ai_clients)}")
@@ -156,6 +157,7 @@ def test_optional_modules() -> Tuple[bool, str]:
         results.append("ℹ️ No AI clients available (optional)")
 
     return True, "\n".join(results)
+
 
 def test_database_functionality() -> Tuple[bool, str]:
     """Test database functionality."""
@@ -170,6 +172,7 @@ def test_database_functionality() -> Tuple[bool, str]:
 
     except Exception as e:
         return False, f"❌ Database test failed: {e}"
+
 
 def test_security_modules() -> Tuple[bool, str]:
     """Test security and encryption modules."""
@@ -190,6 +193,7 @@ def test_security_modules() -> Tuple[bool, str]:
     except Exception as e:
         return False, f"❌ Security test failed: {e}"
 
+
 def test_vercel_startup() -> Tuple[bool, str]:
     """Test Vercel startup module."""
     try:
@@ -205,6 +209,7 @@ def test_vercel_startup() -> Tuple[bool, str]:
     except Exception as e:
         return False, f"❌ Vercel startup test failed: {e}"
 
+
 def test_main_application() -> Tuple[bool, str]:
     """Test main application import."""
     try:
@@ -214,6 +219,7 @@ def test_main_application() -> Tuple[bool, str]:
 
     except Exception as e:
         return False, f"❌ Main application test failed: {e}"
+
 
 def run_all_tests() -> Dict[str, Tuple[bool, str]]:
     """Run all deployment tests."""
@@ -248,6 +254,7 @@ def run_all_tests() -> Dict[str, Tuple[bool, str]]:
 
     return results
 
+
 def print_summary(results: Dict[str, Tuple[bool, str]]):
     """Print test summary."""
     print("\n" + "=" * 60)
@@ -275,7 +282,7 @@ def print_summary(results: Dict[str, Tuple[bool, str]]):
         "Main Application",
     ]
 
-    critical_passed = sum()
+    critical_passed = sum(
         1 for test in critical_tests if results.get(test, (False, ""))[0]
     )
 
@@ -299,7 +306,7 @@ def print_summary(results: Dict[str, Tuple[bool, str]]):
         "Security Modules",
     ]
 
-    optional_passed = sum()
+    optional_passed = sum(
         1 for test in optional_tests if results.get(test, (False, ""))[0]
     )
     print(f"\n📈 Optional Features: {optional_passed}/{len(optional_tests)} available")
@@ -318,7 +325,7 @@ if __name__ == "__main__":
         "Core Modules",
         "Main Application",
     ]
-    critical_passed = sum()
+    critical_passed = sum(
         1 for test in critical_tests if results.get(test, (False, ""))[0]
     )
 

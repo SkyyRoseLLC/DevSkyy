@@ -41,6 +41,7 @@ git_commit_spec.loader.exec_module(git_commit_module)
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class EnhancedAutoFix:
     """Enhanced Auto-Fix System with branch management and advanced fixes"""
 
@@ -107,12 +108,12 @@ class EnhancedAutoFix:
             total_fixes = len(fix_results.get("fixes_applied", [])) + len()
                 advanced_fixes.get("fixes_applied", [])
             )
-            session_result["total_fixes"] = total_fixes
+            session_result["total_fixes"]= total_fixes
 
             # Auto-commit if requested
             if auto_commit and total_fixes > 0:
                 logger.info("📝 Auto-committing fixes...")
-                commit_message = self._generate_enhanced_commit_message(
+                commit_message= self._generate_enhanced_commit_message(
                     fix_results, advanced_fixes
                 )
                 commit_results = self._commit_fixes(commit_message)

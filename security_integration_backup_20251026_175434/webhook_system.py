@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 # MODELS
 # ============================================================================
 
+
 class WebhookEvent(str, Enum):
     """Webhook event types"""
 
@@ -69,6 +70,7 @@ class WebhookEvent(str, Enum):
     # Custom Events
     CUSTOM = "custom.event"
 
+
 class WebhookStatus(str, Enum):
     """Webhook delivery status"""
 
@@ -76,6 +78,7 @@ class WebhookStatus(str, Enum):
     SENT = "sent"
     FAILED = "failed"
     RETRYING = "retrying"
+
 
 class WebhookSubscription(BaseModel):
     """Webhook subscription configuration"""
@@ -91,6 +94,7 @@ class WebhookSubscription(BaseModel):
     created_at: datetime
     metadata: Dict[str, Any] = {}
 
+
 class WebhookPayload(BaseModel):
     """Webhook payload structure"""
 
@@ -99,6 +103,7 @@ class WebhookPayload(BaseModel):
     timestamp: datetime
     data: Dict[str, Any]
     metadata: Dict[str, Any] = {}
+
 
 class WebhookDelivery(BaseModel):
     """Webhook delivery record"""
@@ -116,9 +121,11 @@ class WebhookDelivery(BaseModel):
     error_message: Optional[str] = None
     created_at: datetime
 
+
 # ============================================================================
 # WEBHOOK MANAGER
 # ============================================================================
+
 
 class WebhookManager:
     """
@@ -198,8 +205,9 @@ class WebhookManager:
         return subs
 
     def update_subscription(
-        self, subscription_id: str, **kwargs
-    ) -> Optional[WebhookSubscription]:
+            self,
+            subscription_id: str,
+            **kwargs) -> Optional[WebhookSubscription]:
         """Update subscription"""
         subscription = self.subscriptions.get(subscription_id)
 
@@ -258,11 +266,8 @@ class WebhookManager:
         logger.info(f"📤 Emitting event: {event_type.value} (ID: {event_id})")
 
         # Find subscriptions for this event
-        subscriptions = [
-            s
-            for s in self.subscriptions.values()
-            if s.active and event_type in s.events
-        ]
+        subscriptions = [s for s in self.subscriptions.values(
+        ) if s.active and event_type in s.events]
 
         if not subscriptions:
             logger.debug(f"No active subscriptions for event: {event_type.value}")
@@ -342,9 +347,7 @@ class WebhookManager:
                 # Update delivery record
                 delivery.attempts = attempt + 1
                 delivery.last_attempt = datetime.now()
-                delivery.status = (
-                    WebhookStatus.RETRYING if attempt > 0 else WebhookStatus.PENDING
-                )
+                delivery.status = WebhookStatus.RETRYING if attempt > 0 else WebhookStatus.PENDING
 
                 # Prepare request
                 payload_json = payload.model_dump_json()
@@ -386,9 +389,7 @@ class WebhookManager:
                     return
 
                 # Non-2xx response
-                delivery.error_message = (
-                    f"HTTP {response.status_code}: {response.text[:200]}"
-                )
+                delivery.error_message = f"HTTP {response.status_code}: {response.text[:200]}"
                 logger.warning(f"⚠️  Webhook delivery failed: {delivery.error_message}")
 
             except Exception as e:
@@ -397,9 +398,8 @@ class WebhookManager:
 
             # Wait before retry
             if attempt < max_retries:
-                await asyncio.sleep(
-                    subscription.retry_delay * (2**attempt)
-                )  # Exponential backoff
+                # Exponential backoff
+                await asyncio.sleep(subscription.retry_delay * (2**attempt))
 
         # All retries failed
         delivery.status = WebhookStatus.FAILED
@@ -417,8 +417,9 @@ class WebhookManager:
             HMAC signature
         """
         signature = hmac.new(
-            secret.encode(), payload.encode(), hashlib.sha256
-        ).hexdigest()
+            secret.encode(),
+            payload.encode(),
+            hashlib.sha256).hexdigest()
         return f"sha256={signature}"
 
     @staticmethod
@@ -435,8 +436,9 @@ class WebhookManager:
             True if signature is valid
         """
         expected_signature = hmac.new(
-            secret.encode(), payload.encode(), hashlib.sha256
-        ).hexdigest()
+            secret.encode(),
+            payload.encode(),
+            hashlib.sha256).hexdigest()
         expected_signature = f"sha256={expected_signature}"
 
         return hmac.compare_digest(signature, expected_signature)
@@ -522,10 +524,9 @@ class WebhookManager:
         successful = sum(1 for d in deliveries if d.status == WebhookStatus.SENT)
         failed = sum(1 for d in deliveries if d.status == WebhookStatus.FAILED)
         pending = sum(
-            1
-            for d in deliveries
-            if d.status in [WebhookStatus.PENDING, WebhookStatus.RETRYING]
-)
+            1 for d in deliveries if d.status in [
+                WebhookStatus.PENDING,
+                WebhookStatus.RETRYING])
 
         return {
             "subscriptions": {
@@ -543,6 +544,7 @@ class WebhookManager:
                 ),
             },
         }
+
 
 # ============================================================================
 # GLOBAL INSTANCE

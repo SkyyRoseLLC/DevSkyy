@@ -1,4 +1,4 @@
-        import re
+import re
 from datetime import datetime
 
 from anthropic import Anthropic
@@ -12,6 +12,7 @@ ML-powered product management for fashion ecommerce
 """
 
 logger = logging.getLogger(__name__)
+
 
 class ProductManager:
     """

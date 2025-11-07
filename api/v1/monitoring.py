@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends
 from monitoring.observability import (
     import logging
 
-"""
+    """
 Monitoring & Observability API Endpoints
 System metrics, health checks, and performance monitoring
 """
@@ -23,6 +23,7 @@ router = APIRouter(prefix="/monitoring", tags=["monitoring"])
 # HEALTH CHECKS
 # ============================================================================
 
+
 @router.get("/health")
 async def health_check():
     """
@@ -39,6 +40,7 @@ async def health_check():
         "message": message,
         "checks": {name: result.model_dump() for name, result in results.items()},
     }
+
 
 @router.get("/health/detailed", dependencies=[Depends(require_admin)])
 async def detailed_health_check(
@@ -70,6 +72,7 @@ async def detailed_health_check(
 # METRICS
 # ============================================================================
 
+
 @router.get("/metrics")
 async def get_metrics(current_user: TokenData = Depends(get_current_active_user)):
     """
@@ -81,15 +84,18 @@ async def get_metrics(current_user: TokenData = Depends(get_current_active_user)
 
     return metrics
 
+
 @router.get("/metrics/counters")
 async def get_counters(current_user: TokenData = Depends(get_current_active_user)):
     """Get all counter metrics"""
     return {"counters": dict(metrics_collector.counters)}
 
+
 @router.get("/metrics/gauges")
 async def get_gauges(current_user: TokenData = Depends(get_current_active_user)):
     """Get all gauge metrics"""
     return {"gauges": dict(metrics_collector.gauges)}
+
 
 @router.get("/metrics/histograms")
 async def get_histograms(current_user: TokenData = Depends(get_current_active_user)):
@@ -105,6 +111,7 @@ async def get_histograms(current_user: TokenData = Depends(get_current_active_us
 # PERFORMANCE
 # ============================================================================
 
+
 @router.get("/performance")
 async def get_performance_stats(
     current_user: TokenData = Depends(get_current_active_user),
@@ -117,6 +124,7 @@ async def get_performance_stats(
     stats = performance_tracker.get_all_stats()
 
     return stats
+
 
 @router.get("/performance/{endpoint:path}")
 async def get_endpoint_performance(
@@ -134,6 +142,7 @@ async def get_endpoint_performance(
 # ============================================================================
 # SYSTEM METRICS
 # ============================================================================
+
 
 @router.get("/system")
 async def get_system_metrics(

@@ -2,14 +2,15 @@ from datetime import datetime
 import threading
 import time
 
-        from ..git_commit import commit_fixes
-        from ..modules.fixer import fix_code
-        from ..modules.scanner import scan_site
+from ..git_commit import commit_fixes
+from ..modules.fixer import fix_code
+from ..modules.scanner import scan_site
 from typing import Any, Callable, Dict
 import logging
 import schedule
 
 logger = logging.getLogger(__name__)
+
 
 class CronScheduler:
     """
@@ -119,8 +120,10 @@ class CronScheduler:
             "jobs": {job_id: self.get_job_status(job_id) for job_id in self.jobs},
         }
 
+
 # Global scheduler instance
 _global_scheduler = CronScheduler()
+
 
 def schedule_hourly_job() -> Dict[str, Any]:
     """
@@ -198,6 +201,7 @@ def schedule_hourly_job() -> Dict[str, Any]:
         logger.error(f"❌ Failed to schedule hourly job: {str(e)}")
         return {"status": "failed", "error": str(e)}
 
+
 def schedule_custom_job(job_func: Callable, interval: str, **kwargs) -> Dict[str, Any]:
     """Schedule a custom job with specified interval."""
     try:
@@ -211,9 +215,11 @@ def schedule_custom_job(job_func: Callable, interval: str, **kwargs) -> Dict[str
     except Exception as e:
         return {"status": "failed", "error": str(e)}
 
+
 def get_scheduler_status() -> Dict[str, Any]:
     """Get comprehensive scheduler status."""
     return _global_scheduler.list_all_jobs()
+
 
 def stop_scheduler() -> Dict[str, Any]:
     """Stop the scheduler."""

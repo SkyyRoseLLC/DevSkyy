@@ -123,12 +123,17 @@ def setup_logging():
             format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
             handlers=[
                 logging.StreamHandler(sys.stdout),
-                logging.FileHandler("logs/devskyy.log") if logs_dir.exists() else logging.StreamHandler(),
+                (
+                    logging.FileHandler("logs/devskyy.log")
+                    if logs_dir.exists()
+                    else logging.StreamHandler()
+                ),
             ],
         )
 
         logger = logging.getLogger(__name__)
-        logger.info(f"✅ Logging configured - Level: {LOG_LEVEL}, Environment: {ENVIRONMENT}")
+        logger.info(
+            f"✅ Logging configured - Level: {LOG_LEVEL}, Environment: {ENVIRONMENT}")
         return logger
 
     except Exception as e:
@@ -146,17 +151,25 @@ logger = setup_logging()
 if PROMETHEUS_AVAILABLE:
     try:
         REQUEST_DURATION = Histogram(
-            "devskyy_request_duration_seconds", "Request duration in seconds", ["method", "endpoint"]
+            "devskyy_request_duration_seconds",
+            "Request duration in seconds",
+            ["method", "endpoint"],
         )
 
-        ACTIVE_CONNECTIONS = Counter("devskyy_active_connections", "Number of active connections")
+        ACTIVE_CONNECTIONS = Counter(
+            "devskyy_active_connections",
+            "Number of active connections")
 
         FASHION_OPERATIONS = Counter(
-            "devskyy_fashion_operations_total", "Total fashion-related operations", ["operation_type", "status"]
+            "devskyy_fashion_operations_total",
+            "Total fashion-related operations",
+            ["operation_type", "status"],
         )
 
         AI_PREDICTIONS = Counter(
-            "devskyy_ai_predictions_total", "Total AI predictions made", ["model_type", "accuracy_tier"]
+            "devskyy_ai_predictions_total",
+            "Total AI predictions made",
+            ["model_type", "accuracy_tier"],
         )
 
         logger.info("✅ Prometheus metrics initialized")
@@ -183,7 +196,9 @@ app = FastAPI(
 # ============================================================================
 
 # CORS configuration
-cors_origins = os.getenv("CORS_ORIGINS", "http://localhost:3000,http://localhost:5173").split(",")
+cors_origins = os.getenv(
+    "CORS_ORIGINS",
+    "http://localhost:3000,http://localhost:5173").split(",")
 
 trusted_hosts = os.getenv("TRUSTED_HOSTS", "localhost,127.0.0.1,testserver").split(",")
 
@@ -228,7 +243,8 @@ app.state.startup_time = datetime.now()
 async def http_exception_handler(request: Request, exc: HTTPException):
     logger.error(f"HTTP exception: {exc.detail} - {request.url}")
     return JSONResponse(
-        status_code=exc.status_code, content={"error": True, "message": exc.detail, "status_code": exc.status_code}
+        status_code=exc.status_code,
+        content={"error": True, "message": exc.detail, "status_code": exc.status_code},
     )
 
 
@@ -237,7 +253,10 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     logger.error(f"Validation error: {exc} - {request.url}")
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
-        content={"error": True, "message": "Invalid request data", "details": exc.errors()},
+        content={
+            "error": True,
+            "message": "Invalid request data",
+            "details": exc.errors()},
     )
 
 
@@ -246,7 +265,11 @@ async def general_exception_handler(request: Request, exc: Exception):
     logger.error(f"Unhandled exception: {exc}", exc_info=True)
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        content={"error": True, "message": "Internal server error", "timestamp": datetime.now().isoformat()},
+        content={
+            "error": True,
+            "message": "Internal server error",
+            "timestamp": datetime.now().isoformat(),
+        },
     )
 
 
@@ -346,7 +369,10 @@ async def startup_event():
         # Initialize ML cache
         try:
             if REDIS_URL:
-                ml_cache = RedisCache(redis_url=REDIS_URL, default_ttl=3600, mode="hybrid")
+                ml_cache = RedisCache(
+                    redis_url=REDIS_URL,
+                    default_ttl=3600,
+                    mode="hybrid")
                 app.state.ml_cache = ml_cache
                 logger.info("✅ ML cache initialized with Redis")
             else:
@@ -399,7 +425,7 @@ async def shutdown_event():
         if hasattr(app.state, "ml_cache"):
             try:
                 await app.state.ml_cache.close()
-            except:
+            except BaseException:
                 pass
 
         logger.info("✅ DevSkyy Platform shutdown complete")
@@ -442,21 +468,34 @@ if API_ROUTERS_AVAILABLE:
         # Core API routes
         app.include_router(agents_router, prefix="/api/v1/agents", tags=["v1-agents"])
         app.include_router(auth_router, prefix="/api/v1/auth", tags=["v1-auth"])
-        app.include_router(webhooks_router, prefix="/api/v1/webhooks", tags=["v1-webhooks"])
-        app.include_router(monitoring_router, prefix="/api/v1/monitoring", tags=["v1-monitoring"])
+        app.include_router(
+            webhooks_router,
+            prefix="/api/v1/webhooks",
+            tags=["v1-webhooks"])
+        app.include_router(
+            monitoring_router,
+            prefix="/api/v1/monitoring",
+            tags=["v1-monitoring"])
         app.include_router(gdpr_router, prefix="/api/v1/gdpr", tags=["v1-gdpr"])
         app.include_router(ml_router, prefix="/api/v1/ml", tags=["v1-ml"])
         app.include_router(codex_router, prefix="/api/v1/codex", tags=["v1-codex"])
-        app.include_router(dashboard_router, prefix="/api/v1/dashboard", tags=["v1-dashboard"])
-        app.include_router(orchestration_router, prefix="/api/v1/orchestration", tags=["v1-orchestration"])
+        app.include_router(
+            dashboard_router,
+            prefix="/api/v1/dashboard",
+            tags=["v1-dashboard"])
+        app.include_router(
+            orchestration_router,
+            prefix="/api/v1/orchestration",
+            tags=["v1-orchestration"])
 
         # Luxury Fashion Brand Automation Router
         try:
             from api.v1.luxury_fashion_automation import router as luxury_automation_router
+
             app.include_router(
                 luxury_automation_router,
                 prefix="/api/v1/luxury-automation",
-                tags=["v1-luxury-automation"]
+                tags=["v1-luxury-automation"],
             )
             logger.info("✅ Luxury Fashion Automation router registered")
         except ImportError as e:
@@ -464,12 +503,20 @@ if API_ROUTERS_AVAILABLE:
 
         # DevSkyy v5.1 Enterprise Security Routers
         try:
-            app.include_router(enterprise_auth_router, prefix="/api/v1/enterprise/auth", tags=["v1-enterprise-auth"])
             app.include_router(
-                enterprise_webhooks_router, prefix="/api/v1/enterprise/webhooks", tags=["v1-enterprise-webhooks"]
+                enterprise_auth_router,
+                prefix="/api/v1/enterprise/auth",
+                tags=["v1-enterprise-auth"],
             )
             app.include_router(
-                enterprise_monitoring_router, prefix="/api/v1/enterprise/monitoring", tags=["v1-enterprise-monitoring"]
+                enterprise_webhooks_router,
+                prefix="/api/v1/enterprise/webhooks",
+                tags=["v1-enterprise-webhooks"],
+            )
+            app.include_router(
+                enterprise_monitoring_router,
+                prefix="/api/v1/enterprise/monitoring",
+                tags=["v1-enterprise-monitoring"],
             )
             logger.info("✅ DevSkyy v5.1 Enterprise Security routers registered")
         except NameError:
@@ -549,14 +596,11 @@ async def system_status():
 
         # Check critical configurations
         if SECRET_KEY == "dev-secret-key-change-in-production":
-            issues.append(
-                {
-                    "type": "security",
-                    "severity": "high",
-                    "message": "SECRET_KEY environment variable not set",
-                    "recommendation": "Set a strong SECRET_KEY in environment variables",
-                }
-            )
+            issues.append({"type": "security",
+                           "severity": "high",
+                           "message": "SECRET_KEY environment variable not set",
+                           "recommendation": "Set a strong SECRET_KEY in environment variables",
+                           })
 
         if ENVIRONMENT == "production" and app.debug:
             issues.append(
@@ -588,7 +632,9 @@ async def system_status():
 
     except Exception as e:
         logger.error(f"Status check failed: {e}")
-        return JSONResponse(status_code=500, content={"error": True, "message": "Status check failed"})
+        return JSONResponse(
+            status_code=500, content={"error": True, "message": "Status check failed"}
+        )
 
 
 # ============================================================================
@@ -639,21 +685,23 @@ try:
     from config.wordpress_credentials import (
         wordpress_credentials_manager,
         get_skyy_rose_credentials,
-        validate_environment_setup
+        validate_environment_setup,
     )
 
     app.state.wordpress_credentials_manager = wordpress_credentials_manager
 
     # Validate WordPress credentials on startup
     env_validation = validate_environment_setup()
-    if env_validation['valid']:
+    if env_validation["valid"]:
         credentials = get_skyy_rose_credentials()
         if credentials:
             logger.info(f"✅ WordPress credentials loaded for: {credentials.site_url}")
         else:
             logger.warning("⚠️ WordPress credentials configured but failed to load")
     else:
-        logger.warning(f"⚠️ WordPress credentials not configured: {env_validation['missing_required']}")
+        logger.warning(
+            f"⚠️ WordPress credentials not configured: {env_validation['missing_required']}"
+        )
 
     logger.info("✅ WordPress credential system initialized")
 
@@ -678,7 +726,9 @@ async def get_agent_endpoint(agent_type: str, agent_name: str):
     try:
         agent = get_agent(agent_type, agent_name)
         if agent is None:
-            raise HTTPException(status_code=404, detail=f"Agent {agent_type}/{agent_name} not found")
+            raise HTTPException(
+                status_code=404, detail=f"Agent {agent_type}/{agent_name} not found"
+            )
 
         return {
             "agent_type": agent_type,
@@ -695,12 +745,15 @@ async def get_agent_endpoint(agent_type: str, agent_name: str):
 
 
 @app.post("/api/v1/agents/{agent_type}/{agent_name}/execute")
-async def execute_agent_task(agent_type: str, agent_name: str, task_data: Dict[str, Any]):
+async def execute_agent_task(
+        agent_type: str, agent_name: str, task_data: Dict[str, Any]):
     """Execute a task using the specified agent."""
     try:
         agent = get_agent(agent_type, agent_name)
         if agent is None:
-            raise HTTPException(status_code=404, detail=f"Agent {agent_type}/{agent_name} not found")
+            raise HTTPException(
+                status_code=404, detail=f"Agent {agent_type}/{agent_name} not found"
+            )
 
         # Execute task (this would depend on the specific agent implementation)
         result = {
@@ -724,16 +777,19 @@ async def execute_agent_task(agent_type: str, agent_name: str, task_data: Dict[s
         logger.error(f"Agent execution error: {e}")
         raise HTTPException(status_code=500, detail="Internal server error")
 
+
 # ============================================================================
 # ADVANCED FEATURE ENDPOINTS
 # ============================================================================
+
 
 @app.post("/api/v1/orchestration/multi-agent")
 async def execute_multi_agent_task(task_data: Dict[str, Any]):
     """Execute task using multi-agent orchestration."""
     try:
-        if not hasattr(app.state, 'multi_agent_orchestrator'):
-            raise HTTPException(status_code=503, detail="Multi-agent orchestrator not available")
+        if not hasattr(app.state, "multi_agent_orchestrator"):
+            raise HTTPException(status_code=503,
+                                detail="Multi-agent orchestrator not available")
 
         from intelligence.multi_agent_orchestrator import TaskRequest, TaskType
 
@@ -743,7 +799,7 @@ async def execute_multi_agent_task(task_data: Dict[str, Any]):
             task_type=TaskType(task_data.get("task_type", "security_analysis")),
             content=task_data.get("content", ""),
             metadata=task_data.get("metadata", {}),
-            priority=task_data.get("priority", 1)
+            priority=task_data.get("priority", 1),
         )
 
         # Process task
@@ -755,31 +811,29 @@ async def execute_multi_agent_task(task_data: Dict[str, Any]):
             "result": result.result,
             "processing_time": result.processing_time,
             "success": result.success,
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
 
     except Exception as e:
         logger.error(f"Multi-agent orchestration error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/api/v1/3d/models/upload")
 async def upload_3d_model(
-    file_path: str,
-    model_format: str,
-    brand_context: Optional[str] = None
-):
+        file_path: str,
+        model_format: str,
+        brand_context: Optional[str] = None):
     """Upload and process a 3D model."""
     try:
-        if not hasattr(app.state, 'skyy_rose_3d_pipeline'):
+        if not hasattr(app.state, "skyy_rose_3d_pipeline"):
             raise HTTPException(status_code=503, detail="3D pipeline not available")
 
         from fashion.skyy_rose_3d_pipeline import ModelFormat
 
         # Load and process model
         model = await app.state.skyy_rose_3d_pipeline.load_3d_model(
-            file_path=file_path,
-            model_format=ModelFormat(model_format),
-            brand_context=brand_context
+            file_path=file_path, model_format=ModelFormat(model_format), brand_context=brand_context
         )
 
         return {
@@ -789,18 +843,19 @@ async def upload_3d_model(
             "file_size": model.file_size,
             "materials_count": len(model.materials),
             "brand_tags": model.brand_tags,
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
 
     except Exception as e:
         logger.error(f"3D model upload error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/api/v1/avatars/create")
 async def create_avatar(avatar_data: Dict[str, Any]):
     """Create a new avatar."""
     try:
-        if not hasattr(app.state, 'skyy_rose_3d_pipeline'):
+        if not hasattr(app.state, "skyy_rose_3d_pipeline"):
             raise HTTPException(status_code=503, detail="3D pipeline not available")
 
         from fashion.skyy_rose_3d_pipeline import AvatarType
@@ -809,7 +864,7 @@ async def create_avatar(avatar_data: Dict[str, Any]):
         avatar = await app.state.skyy_rose_3d_pipeline.create_avatar(
             avatar_type=AvatarType(avatar_data.get("avatar_type", "ready_player_me")),
             customization_options=avatar_data.get("customization_options", {}),
-            voice_settings=avatar_data.get("voice_settings")
+            voice_settings=avatar_data.get("voice_settings"),
         )
 
         return {
@@ -818,12 +873,13 @@ async def create_avatar(avatar_data: Dict[str, Any]):
             "avatar_type": avatar.avatar_type.value,
             "model_path": avatar.model_path,
             "animations": avatar.animations,
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
 
     except Exception as e:
         logger.error(f"Avatar creation error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/v1/system/advanced-status")
 async def get_advanced_system_status():
@@ -833,16 +889,18 @@ async def get_advanced_system_status():
             "timestamp": datetime.now().isoformat(),
             "multi_agent_orchestrator": None,
             "3d_pipeline": None,
-            "advanced_features_available": False
+            "advanced_features_available": False,
         }
 
         # Multi-agent orchestrator status
-        if hasattr(app.state, 'multi_agent_orchestrator'):
-            status["multi_agent_orchestrator"] = app.state.multi_agent_orchestrator.get_system_status()
+        if hasattr(app.state, "multi_agent_orchestrator"):
+            status["multi_agent_orchestrator"] = (
+                app.state.multi_agent_orchestrator.get_system_status()
+            )
             status["advanced_features_available"] = True
 
         # 3D pipeline status
-        if hasattr(app.state, 'skyy_rose_3d_pipeline'):
+        if hasattr(app.state, "skyy_rose_3d_pipeline"):
             status["3d_pipeline"] = app.state.skyy_rose_3d_pipeline.get_pipeline_status()
             status["advanced_features_available"] = True
 
@@ -852,22 +910,27 @@ async def get_advanced_system_status():
         logger.error(f"Advanced status error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 # ============================================================================
 # ENTERPRISE MONITORING ENDPOINTS
 # ============================================================================
+
 
 @app.get("/metrics")
 async def get_prometheus_metrics():
     """Get Prometheus metrics."""
     try:
-        if hasattr(app.state, 'metrics_collector'):
+        if hasattr(app.state, "metrics_collector"):
             metrics_data = app.state.metrics_collector.get_prometheus_metrics()
             return Response(content=metrics_data, media_type="text/plain")
         else:
-            return Response(content="# Metrics collector not available\n", media_type="text/plain")
+            return Response(
+                content="# Metrics collector not available\n",
+                media_type="text/plain")
     except Exception as e:
         logger.error(f"Metrics endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/v1/monitoring/status")
 async def get_monitoring_status():
@@ -878,23 +941,23 @@ async def get_monitoring_status():
             "monitoring_available": False,
             "metrics": None,
             "incidents": None,
-            "logging": None
+            "logging": None,
         }
 
         # Metrics collector status
-        if hasattr(app.state, 'metrics_collector'):
+        if hasattr(app.state, "metrics_collector"):
             status["metrics"] = app.state.metrics_collector.get_metrics_summary()
             status["monitoring_available"] = True
 
         # Incident response status
-        if hasattr(app.state, 'incident_response_system'):
+        if hasattr(app.state, "incident_response_system"):
             status["incidents"] = app.state.incident_response_system.get_system_status()
 
         # Logging status
-        if hasattr(app.state, 'enterprise_logger'):
+        if hasattr(app.state, "enterprise_logger"):
             status["logging"] = {
                 "enterprise_logging_available": True,
-                "log_level": "INFO"  # Could be dynamic
+                "log_level": "INFO",  # Could be dynamic
             }
 
         return status
@@ -903,12 +966,14 @@ async def get_monitoring_status():
         logger.error(f"Monitoring status error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/api/v1/monitoring/incidents")
 async def get_active_incidents():
     """Get active incidents."""
     try:
-        if not hasattr(app.state, 'incident_response_system'):
-            raise HTTPException(status_code=503, detail="Incident response system not available")
+        if not hasattr(app.state, "incident_response_system"):
+            raise HTTPException(status_code=503,
+                                detail="Incident response system not available")
 
         incidents = app.state.incident_response_system.incidents
         active_incidents = [
@@ -920,7 +985,7 @@ async def get_active_incidents():
                 "created_at": incident.created_at.isoformat(),
                 "updated_at": incident.updated_at.isoformat(),
                 "alerts_count": len(incident.alerts),
-                "responses_executed": len(incident.responses_executed)
+                "responses_executed": len(incident.responses_executed),
             }
             for incident in incidents.values()
             if incident.status.value != "resolved"
@@ -929,16 +994,18 @@ async def get_active_incidents():
         return {
             "active_incidents": active_incidents,
             "total_active": len(active_incidents),
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
 
     except Exception as e:
         logger.error(f"Incidents endpoint error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 # ============================================================================
 # AUTOMATED THEME BUILDER ENDPOINTS
 # ============================================================================
+
 
 @app.post("/api/v1/themes/build-and-deploy")
 async def build_and_deploy_theme(theme_request: Dict[str, Any]):
@@ -948,17 +1015,18 @@ async def build_and_deploy_theme(theme_request: Dict[str, Any]):
             theme_builder_orchestrator,
             ThemeBuildRequest,
             ThemeType,
-            UploadMethod
+            UploadMethod,
         )
-        from config.wordpress_credentials import (
-            WordPressCredentials,
-            wordpress_credentials_manager
-        )
+        from config.wordpress_credentials import WordPressCredentials, wordpress_credentials_manager
 
         # Get credentials - either from request or use configured credentials
         site_key = theme_request.get("site_key", "skyy_rose")
 
-        if "site_url" in theme_request and "username" in theme_request and "password" in theme_request:
+        if (
+            "site_url" in theme_request
+            and "username" in theme_request
+            and "password" in theme_request
+        ):
             # Use provided credentials
             credentials = WordPressCredentials(
                 site_url=theme_request["site_url"],
@@ -967,7 +1035,7 @@ async def build_and_deploy_theme(theme_request: Dict[str, Any]):
                 application_password=theme_request.get("application_password"),
                 ftp_host=theme_request.get("ftp_host"),
                 ftp_username=theme_request.get("ftp_username"),
-                ftp_password=theme_request.get("ftp_password")
+                ftp_password=theme_request.get("ftp_password"),
             )
         else:
             # Use configured credentials
@@ -975,19 +1043,33 @@ async def build_and_deploy_theme(theme_request: Dict[str, Any]):
             if not credentials:
                 raise HTTPException(
                     status_code=400,
-                    detail=f"No credentials configured for site: {site_key}. Available sites: {wordpress_credentials_manager.list_available_sites()}"
+                    detail=f"No credentials configured for site: {site_key}. Available sites: {wordpress_credentials_manager.list_available_sites()}",
                 )
 
         build_request = ThemeBuildRequest(
             theme_name=theme_request["theme_name"],
-            theme_type=ThemeType(theme_request.get("theme_type", "luxury_fashion")),
-            brand_guidelines=theme_request.get("brand_guidelines", {}),
+            theme_type=ThemeType(
+                theme_request.get(
+                    "theme_type",
+                    "luxury_fashion")),
+            brand_guidelines=theme_request.get(
+                "brand_guidelines",
+                {}),
             target_site=theme_request["site_url"],
             deployment_credentials=credentials,
-            customizations=theme_request.get("customizations", {}),
-            auto_deploy=theme_request.get("auto_deploy", True),
-            activate_after_deploy=theme_request.get("activate_after_deploy", False),
-            upload_method=UploadMethod(theme_request.get("upload_method", "wordpress_rest_api"))
+            customizations=theme_request.get(
+                "customizations",
+                {}),
+            auto_deploy=theme_request.get(
+                "auto_deploy",
+                True),
+            activate_after_deploy=theme_request.get(
+                "activate_after_deploy",
+                False),
+            upload_method=UploadMethod(
+                theme_request.get(
+                    "upload_method",
+                    "wordpress_rest_api")),
         )
 
         # Start build process
@@ -998,17 +1080,22 @@ async def build_and_deploy_theme(theme_request: Dict[str, Any]):
             "status": result.status.value,
             "theme_name": result.request.theme_name,
             "theme_path": result.theme_path,
-            "deployment_success": result.deployment_result.success if result.deployment_result else None,
-            "deployment_id": result.deployment_result.deployment_id if result.deployment_result else None,
+            "deployment_success": (
+                result.deployment_result.success if result.deployment_result else None
+            ),
+            "deployment_id": (
+                result.deployment_result.deployment_id if result.deployment_result else None
+            ),
             "build_log": result.build_log[-5:],  # Last 5 log entries
             "created_at": result.created_at.isoformat(),
             "completed_at": result.completed_at.isoformat() if result.completed_at else None,
-            "error_message": result.error_message
+            "error_message": result.error_message,
         }
 
     except Exception as e:
         logger.error(f"Theme build error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/v1/themes/build-status/{build_id}")
 async def get_theme_build_status(build_id: str):
@@ -1028,16 +1115,24 @@ async def get_theme_build_status(build_id: str):
             "theme_type": result.request.theme_type.value,
             "target_site": result.request.target_site,
             "theme_path": result.theme_path,
-            "deployment_result": {
-                "success": result.deployment_result.success,
-                "deployment_id": result.deployment_result.deployment_id,
-                "status": result.deployment_result.status.value,
-                "deployed_at": result.deployment_result.deployed_at.isoformat() if result.deployment_result.deployed_at else None
-            } if result.deployment_result else None,
+            "deployment_result": (
+                {
+                    "success": result.deployment_result.success,
+                    "deployment_id": result.deployment_result.deployment_id,
+                    "status": result.deployment_result.status.value,
+                    "deployed_at": (
+                        result.deployment_result.deployed_at.isoformat()
+                        if result.deployment_result.deployed_at
+                        else None
+                    ),
+                }
+                if result.deployment_result
+                else None
+            ),
             "build_log": result.build_log,
             "created_at": result.created_at.isoformat(),
             "completed_at": result.completed_at.isoformat() if result.completed_at else None,
-            "error_message": result.error_message
+            "error_message": result.error_message,
         }
 
     except HTTPException:
@@ -1046,6 +1141,7 @@ async def get_theme_build_status(build_id: str):
         logger.error(f"Build status error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/api/v1/themes/upload-only")
 async def upload_theme_only(upload_request: Dict[str, Any]):
     """Upload an existing theme package without building."""
@@ -1053,7 +1149,7 @@ async def upload_theme_only(upload_request: Dict[str, Any]):
         from agent.wordpress.automated_theme_uploader import (
             automated_theme_uploader,
             WordPressCredentials,
-            UploadMethod
+            UploadMethod,
         )
 
         # Parse credentials
@@ -1061,7 +1157,7 @@ async def upload_theme_only(upload_request: Dict[str, Any]):
             site_url=upload_request["site_url"],
             username=upload_request["username"],
             password=upload_request["password"],
-            application_password=upload_request.get("application_password")
+            application_password=upload_request.get("application_password"),
         )
 
         # Create theme package
@@ -1069,12 +1165,11 @@ async def upload_theme_only(upload_request: Dict[str, Any]):
             "name": upload_request["theme_name"],
             "version": upload_request.get("version", "1.0.0"),
             "description": upload_request.get("description", ""),
-            "author": upload_request.get("author", "DevSkyy Platform")
+            "author": upload_request.get("author", "DevSkyy Platform"),
         }
 
         package = await automated_theme_uploader.create_theme_package(
-            upload_request["theme_path"],
-            theme_info
+            upload_request["theme_path"], theme_info
         )
 
         # Deploy theme
@@ -1082,7 +1177,7 @@ async def upload_theme_only(upload_request: Dict[str, Any]):
             package,
             credentials,
             UploadMethod(upload_request.get("upload_method", "wordpress_rest_api")),
-            upload_request.get("activate_theme", False)
+            upload_request.get("activate_theme", False),
         )
 
         return {
@@ -1092,12 +1187,13 @@ async def upload_theme_only(upload_request: Dict[str, Any]):
             "theme_name": result.theme_package.name,
             "deployed_at": result.deployed_at.isoformat() if result.deployed_at else None,
             "error_message": result.error_message,
-            "validation_results": result.validation_results
+            "validation_results": result.validation_results,
         }
 
     except Exception as e:
         logger.error(f"Theme upload error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.get("/api/v1/themes/system-status")
 async def get_theme_system_status():
@@ -1109,26 +1205,31 @@ async def get_theme_system_status():
             "timestamp": datetime.now().isoformat(),
             "theme_builder_orchestrator": theme_builder_orchestrator.get_system_status(),
             "available_theme_types": [
-                "luxury_fashion", "streetwear", "minimalist",
-                "ecommerce", "blog", "portfolio", "corporate"
+                "luxury_fashion",
+                "streetwear",
+                "minimalist",
+                "ecommerce",
+                "blog",
+                "portfolio",
+                "corporate",
             ],
             "supported_upload_methods": [
-                "wordpress_rest_api", "ftp", "sftp", "staging_area"
-            ]
+                "wordpress_rest_api",
+                "ftp",
+                "sftp",
+                "staging_area"],
         }
 
     except Exception as e:
         logger.error(f"Theme system status error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.post("/api/v1/themes/skyy-rose/build")
 async def build_skyy_rose_theme(theme_request: Dict[str, Any]):
     """Build and deploy a theme specifically for Skyy Rose Collection using configured credentials."""
     try:
-        from agent.wordpress.theme_builder_orchestrator import (
-            theme_builder_orchestrator,
-            ThemeType
-        )
+        from agent.wordpress.theme_builder_orchestrator import theme_builder_orchestrator, ThemeType
 
         # Use the convenience method for Skyy Rose themes
         result = await theme_builder_orchestrator.build_skyy_rose_theme(
@@ -1137,13 +1238,13 @@ async def build_skyy_rose_theme(theme_request: Dict[str, Any]):
             customizations=theme_request.get("customizations", {}),
             auto_deploy=theme_request.get("auto_deploy", True),
             activate_after_deploy=theme_request.get("activate_after_deploy", False),
-            site_key=theme_request.get("site_key", "skyy_rose")
+            site_key=theme_request.get("site_key", "skyy_rose"),
         )
 
         if not result:
             raise HTTPException(
                 status_code=400,
-                detail="Failed to create theme build request. Check credentials configuration."
+                detail="Failed to create theme build request. Check credentials configuration.",
             )
 
         return {
@@ -1154,12 +1255,16 @@ async def build_skyy_rose_theme(theme_request: Dict[str, Any]):
             "target_site": result.request.target_site,
             "auto_deploy": result.request.auto_deploy,
             "theme_path": result.theme_path,
-            "deployment_success": result.deployment_result.success if result.deployment_result else None,
-            "deployment_id": result.deployment_result.deployment_id if result.deployment_result else None,
+            "deployment_success": (
+                result.deployment_result.success if result.deployment_result else None
+            ),
+            "deployment_id": (
+                result.deployment_result.deployment_id if result.deployment_result else None
+            ),
             "build_log": result.build_log[-5:],  # Last 5 log entries
             "created_at": result.created_at.isoformat(),
             "completed_at": result.completed_at.isoformat() if result.completed_at else None,
-            "error_message": result.error_message
+            "error_message": result.error_message,
         }
 
     except HTTPException:
@@ -1168,6 +1273,7 @@ async def build_skyy_rose_theme(theme_request: Dict[str, Any]):
         logger.error(f"Skyy Rose theme build error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
 @app.get("/api/v1/themes/credentials/status")
 async def get_credentials_status():
     """Get status of configured WordPress credentials."""
@@ -1175,7 +1281,7 @@ async def get_credentials_status():
         from config.wordpress_credentials import (
             wordpress_credentials_manager,
             validate_environment_setup,
-            list_configured_sites
+            list_configured_sites,
         )
 
         # Validate environment setup
@@ -1187,7 +1293,8 @@ async def get_credentials_status():
         # Validate each site's credentials
         site_validations = {}
         for site in sites:
-            site_validations[site] = wordpress_credentials_manager.validate_credentials(site)
+            site_validations[site] = wordpress_credentials_manager.validate_credentials(
+                site)
 
         return {
             "timestamp": datetime.now().isoformat(),
@@ -1195,12 +1302,13 @@ async def get_credentials_status():
             "configured_sites": sites,
             "site_validations": site_validations,
             "default_site": "skyy_rose",
-            "has_default_credentials": "skyy_rose" in sites
+            "has_default_credentials": "skyy_rose" in sites,
         }
 
     except Exception as e:
         logger.error(f"Credentials status error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
+
 
 @app.post("/api/v1/themes/credentials/test")
 async def test_wordpress_connection(test_request: Dict[str, Any]):
@@ -1214,8 +1322,7 @@ async def test_wordpress_connection(test_request: Dict[str, Any]):
 
         if not credentials:
             raise HTTPException(
-                status_code=400,
-                detail=f"No credentials found for site: {site_key}"
+                status_code=400, detail=f"No credentials found for site: {site_key}"
             )
 
         # Test WordPress REST API connection
@@ -1228,14 +1335,14 @@ async def test_wordpress_connection(test_request: Dict[str, Any]):
             auth_test = False
             if credentials.application_password:
                 import base64
+
                 auth_header = base64.b64encode(
-                    f"{credentials.username}:{credentials.application_password}".encode()
-                ).decode()
+                    f"{credentials.username}:{credentials.application_password}".encode()).decode()
 
                 auth_response = requests.get(
                     f"{credentials.site_url}/wp-json/wp/v2/users/me",
                     headers={"Authorization": f"Basic {auth_header}"},
-                    timeout=10
+                    timeout=10,
                 )
                 auth_test = auth_response.status_code == 200
 
@@ -1248,7 +1355,7 @@ async def test_wordpress_connection(test_request: Dict[str, Any]):
                 "has_ftp_credentials": credentials.has_ftp_credentials(),
                 "has_sftp_credentials": credentials.has_sftp_credentials(),
                 "test_timestamp": datetime.now().isoformat(),
-                "status": "success" if api_accessible else "failed"
+                "status": "success" if api_accessible else "failed",
             }
 
         except requests.RequestException as e:
@@ -1259,7 +1366,7 @@ async def test_wordpress_connection(test_request: Dict[str, Any]):
                 "authentication_test": False,
                 "error": str(e),
                 "test_timestamp": datetime.now().isoformat(),
-                "status": "connection_failed"
+                "status": "connection_failed",
             }
 
     except HTTPException:
@@ -1301,7 +1408,10 @@ if ENVIRONMENT == "development":
         """Debug endpoint to clear agent cache."""
         cache_size = len(_agent_cache)
         _agent_cache.clear()
-        return {"message": f"Cache cleared - {cache_size} agents removed", "timestamp": datetime.now().isoformat()}
+        return {
+            "message": f"Cache cleared - {cache_size} agents removed",
+            "timestamp": datetime.now().isoformat(),
+        }
 
 
 # ============================================================================

@@ -3,7 +3,7 @@ from security.jwt_auth import create_access_token, UserRole
 
 from fastapi.testclient import TestClient
 
-    from security.jwt_auth import User, user_manager
+from security.jwt_auth import User, user_manager
 from main import app
 import pytest
 
@@ -12,10 +12,12 @@ Tests for GDPR Compliance API Endpoints
 Tests data export, deletion, and retention policy endpoints per GDPR requirements
 """
 
+
 @pytest.fixture
 def client():
     """Create test client"""
     return TestClient(app)
+
 
 @pytest.fixture
 def auth_headers():
@@ -43,6 +45,7 @@ def auth_headers():
     access_token = create_access_token(token_data)
     return {"Authorization": f"Bearer {access_token}"}
 
+
 @pytest.fixture
 def admin_headers():
     """Create admin authentication headers"""
@@ -54,6 +57,7 @@ def admin_headers():
     }
     access_token = create_access_token(token_data)
     return {"Authorization": f"Bearer {access_token}"}
+
 
 class TestGDPRExportEndpoint:
     """Test GDPR data export endpoint (Article 15)"""
@@ -137,6 +141,7 @@ class TestGDPRExportEndpoint:
             data = response.json()
             assert data["metadata"]["export_format"] == format_type
 
+
 class TestGDPRDeleteEndpoint:
     """Test GDPR data deletion endpoint (Article 17)"""
 
@@ -213,6 +218,7 @@ class TestGDPRDeleteEndpoint:
 
         assert response.status_code == 401  # Unauthorized
 
+
 class TestDataRetentionPolicy:
     """Test data retention policy endpoint"""
 
@@ -247,6 +253,7 @@ class TestDataRetentionPolicy:
         response = client.get("/api/v1/gdpr/retention-policy")
         assert response.status_code == 200
 
+
 class TestDataSubjectRequests:
     """Test admin endpoint for listing GDPR requests"""
 
@@ -269,6 +276,7 @@ class TestDataSubjectRequests:
         assert "export_requests" in data
         assert "deletion_requests" in data
         assert "total_requests" in data
+
 
 class TestGDPRCompliance:
     """Test overall GDPR compliance requirements"""
@@ -320,6 +328,7 @@ class TestGDPRCompliance:
             # Some records should be retained for legal compliance
             assert "deletion_audit_log" in data["retained_records"]
 
+
 @pytest.mark.integration
 class TestGDPRIntegration:
     """Integration tests for GDPR workflows"""
@@ -350,6 +359,7 @@ class TestGDPRIntegration:
         # Verify deletion occurred
         assert delete_data["status"] == "deleted"
         assert len(delete_data["deleted_records"]) > 0
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

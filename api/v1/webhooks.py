@@ -22,6 +22,7 @@ router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 # REQUEST MODELS
 # ============================================================================
 
+
 class CreateWebhookRequest(BaseModel):
     """Create webhook subscription request"""
 
@@ -29,6 +30,7 @@ class CreateWebhookRequest(BaseModel):
     events: List[WebhookEvent]
     secret: Optional[str] = None
     max_retries: int = 3
+
 
 class UpdateWebhookRequest(BaseModel):
     """Update webhook subscription request"""
@@ -38,14 +40,17 @@ class UpdateWebhookRequest(BaseModel):
     active: Optional[bool] = None
     max_retries: Optional[int] = None
 
+
 class TestWebhookRequest(BaseModel):
     """Test webhook request"""
 
     subscription_id: str
 
+
 # ============================================================================
 # WEBHOOK SUBSCRIPTION MANAGEMENT
 # ============================================================================
+
 
 @router.post(
     "/subscriptions",
@@ -76,11 +81,13 @@ async def create_webhook_subscription(
         return subscription
 
     except Exception as e:
-        logger.error(f"Failed to create webhook subscription: {sanitize_for_log(str(e))}")
+        logger.error(
+            f"Failed to create webhook subscription: {sanitize_for_log(str(e))}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail="Failed to create subscription",
         )
+
 
 @router.get("/subscriptions", response_model=List[WebhookSubscription])
 async def list_webhook_subscriptions(
@@ -95,6 +102,7 @@ async def list_webhook_subscriptions(
 
     return subscriptions
 
+
 @router.get("/subscriptions/{subscription_id}", response_model=WebhookSubscription)
 async def get_webhook_subscription(
     subscription_id: str, current_user: TokenData = Depends(get_current_active_user)
@@ -104,10 +112,11 @@ async def get_webhook_subscription(
 
     if not subscription:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Subscription not found"
-        )
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Subscription not found")
 
     return subscription
+
 
 @router.patch("/subscriptions/{subscription_id}", response_model=WebhookSubscription)
 async def update_webhook_subscription(
@@ -129,16 +138,16 @@ async def update_webhook_subscription(
 
     if not subscription:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Subscription not found"
-        )
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Subscription not found")
 
     logger.info(f"Webhook subscription updated: {sanitize_for_log(subscription_id)}")
 
     return subscription
 
-@router.delete(
-    "/subscriptions/{subscription_id}", status_code=status.HTTP_204_NO_CONTENT
-)
+
+@router.delete("/subscriptions/{subscription_id}",
+               status_code=status.HTTP_204_NO_CONTENT)
 async def delete_webhook_subscription(
     subscription_id: str, current_user: TokenData = Depends(require_developer)
 ):
@@ -151,16 +160,18 @@ async def delete_webhook_subscription(
 
     if not success:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Subscription not found"
-        )
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Subscription not found")
 
     logger.info(f"Webhook subscription deleted: {sanitize_for_log(subscription_id)}")
 
     return None
 
+
 # ============================================================================
 # WEBHOOK DELIVERIES
 # ============================================================================
+
 
 @router.get("/deliveries", response_model=List[Dict])
 async def list_webhook_deliveries(
@@ -180,6 +191,7 @@ async def list_webhook_deliveries(
 
     return [delivery.model_dump() for delivery in deliveries]
 
+
 @router.get("/deliveries/{delivery_id}")
 async def get_webhook_delivery(
     delivery_id: str, current_user: TokenData = Depends(get_current_active_user)
@@ -189,10 +201,11 @@ async def get_webhook_delivery(
 
     if not delivery:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Delivery not found"
-        )
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Delivery not found")
 
     return delivery.model_dump()
+
 
 @router.post("/deliveries/{delivery_id}/retry")
 async def retry_webhook_delivery(
@@ -214,9 +227,11 @@ async def retry_webhook_delivery(
 
     return {"message": "Delivery queued for retry", "delivery_id": delivery_id}
 
+
 # ============================================================================
 # WEBHOOK TESTING
 # ============================================================================
+
 
 @router.post("/test")
 async def test_webhook(
@@ -248,9 +263,11 @@ async def test_webhook(
             detail="Failed to send test webhook",
         )
 
+
 # ============================================================================
 # WEBHOOK STATISTICS
 # ============================================================================
+
 
 @router.get("/statistics")
 async def get_webhook_statistics(
@@ -265,16 +282,18 @@ async def get_webhook_statistics(
 
     return stats
 
+
 logger.info("✅ Webhook API endpoints registered")
+
 
 def _sanitize_log_input(self, user_input):
     """Sanitize user input for safe logging."""
     if not isinstance(user_input, str):
         user_input = str(user_input)
-    
+
     # Remove control characters and potential log injection
-    sanitized = re.sub(r'[\r\n\t]', ' ', user_input)
-    sanitized = re.sub(r'[\x00-\x1f\x7f-\x9f]', '', sanitized)
-    
+    sanitized = re.sub(r"[\r\n\t]", " ", user_input)
+    sanitized = re.sub(r"[\x00-\x1f\x7f-\x9f]", "", sanitized)
+
     # Limit length to prevent log flooding
     return sanitized[:500] + "..." if len(sanitized) > 500 else sanitized

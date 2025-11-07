@@ -19,46 +19,49 @@ from urllib.parse import urlparse, parse_qs
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class EnhancedSkyRoseProcessor:
     """
     Enhanced processor for Skyy Rose Collection with direct Google Drive access.
     """
-    
+
     def __init__(self):
         self.base_dir = Path("skyy_rose_collection")
         self.base_dir.mkdir(exist_ok=True)
-        
+
         # Updated folder URL
-        self.drive_folder_url = "https://drive.google.com/drive/folders/1F19qdkeAxleX-t28OzZk0vN6xAv52Vkt?usp=sharing"
+        self.drive_folder_url = (
+            "https://drive.google.com/drive/folders/1F19qdkeAxleX-t28OzZk0vN6xAv52Vkt?usp=sharing"
+        )
         self.folder_id = "1F19qdkeAxleX-t28OzZk0vN6xAv52Vkt"
-        
+
         # Processing stats
         self.stats = {
             "total_found": 0,
             "total_downloaded": 0,
             "total_processed": 0,
             "categories": {},
-            "errors": []
+            "errors": [],
         }
 
     def get_folder_info(self) -> Dict[str, Any]:
         """Get information about the Google Drive folder."""
         try:
             logger.info(f"📁 Analyzing Google Drive folder: {self.drive_folder_url}")
-            
+
             # Try to extract folder information from the shared link
             folder_info = {
                 "folder_id": self.folder_id,
                 "folder_url": self.drive_folder_url,
                 "access_type": "shared",
-                "status": "accessible"
+                "status": "accessible",
             }
-            
+
             # Check if we can access the folder
             response = requests.get(self.drive_folder_url, timeout=10)
             if response.status_code == 200:
                 folder_info["status"] = "accessible"
-                
+
                 # Try to extract folder name from the page
                 if "Skyy Rose Collection" in response.text:
                     folder_info["folder_name"] = "Skyy Rose Collection"
@@ -69,28 +72,27 @@ class EnhancedSkyRoseProcessor:
             else:
                 folder_info["status"] = "access_denied"
                 logger.warning("⚠️ Folder access may be restricted")
-            
+
             return folder_info
-            
+
         except Exception as e:
             logger.error(f"❌ Failed to analyze folder: {e}")
             return {
                 "folder_id": self.folder_id,
                 "folder_url": self.drive_folder_url,
                 "status": "error",
-                "error": str(e)
+                "error": str(e),
             }
 
     def generate_comprehensive_instructions(self) -> Dict[str, Any]:
         """Generate comprehensive download and processing instructions."""
-        
+
         instructions = {
             "folder_info": {
                 "url": self.drive_folder_url,
                 "folder_id": self.folder_id,
-                "status": "shared_accessible"
+                "status": "shared_accessible",
             },
-            
             "download_methods": {
                 "method_1_web_download": {
                     "title": "🌐 Web Browser Download (Recommended)",
@@ -108,11 +110,10 @@ class EnhancedSkyRoseProcessor:
                         "   • Google Drive will create a ZIP file",
                         "4. 💾 Save the ZIP file to your computer",
                         "5. 📂 Extract the ZIP file to get individual images",
-                        "6. 📁 Note the folder location for processing"
+                        "6. 📁 Note the folder location for processing",
                     ],
-                    "expected_result": "ZIP file containing all Skyy Rose Collection images"
+                    "expected_result": "ZIP file containing all Skyy Rose Collection images",
                 },
-                
                 "method_2_individual_download": {
                     "title": "🖼️ Individual Image Download",
                     "difficulty": "Medium",
@@ -122,11 +123,10 @@ class EnhancedSkyRoseProcessor:
                         "2. 🖼️ Click on each image to open it",
                         "3. 📥 Click the download button (⬇️) for each image",
                         "4. 💾 Save each image to a local folder",
-                        "5. 📁 Organize images in a single directory"
+                        "5. 📁 Organize images in a single directory",
                     ],
-                    "expected_result": "Individual image files in a local folder"
+                    "expected_result": "Individual image files in a local folder",
                 },
-                
                 "method_3_google_takeout": {
                     "title": "📦 Google Takeout (For Large Collections)",
                     "difficulty": "Medium",
@@ -138,12 +138,11 @@ class EnhancedSkyRoseProcessor:
                         "4. 🎯 Deselect all, then find and select 'Skyy Rose Collection'",
                         "5. ⬇️ Choose export format (ZIP recommended)",
                         "6. 📧 Google will email you when ready",
-                        "7. 📥 Download the archive from the email link"
+                        "7. 📥 Download the archive from the email link",
                     ],
-                    "expected_result": "Complete archive of the folder contents"
-                }
+                    "expected_result": "Complete archive of the folder contents",
+                },
             },
-            
             "processing_options": {
                 "option_1_drag_drop": {
                     "title": "🎯 Drag & Drop Interface (Easiest)",
@@ -152,20 +151,18 @@ class EnhancedSkyRoseProcessor:
                         "1. 🌐 Open: http://localhost:8001",
                         "2. 📁 Drag your downloaded images into the interface",
                         "3. ⚡ Watch automatic processing happen",
-                        "4. ✅ Images are categorized, resized, and uploaded automatically"
-                    ]
+                        "4. ✅ Images are categorized, resized, and uploaded automatically",
+                    ],
                 },
-                
                 "option_2_command_line": {
                     "title": "💻 Command Line Processing",
                     "steps": [
                         "1. 📂 Place downloaded images in a folder",
                         "2. 🚀 Run: python scripts/google_drive_processor.py --process-local /path/to/images --upload",
                         "3. ⏳ Wait for processing to complete",
-                        "4. ✅ Check results in the training interface"
-                    ]
+                        "4. ✅ Check results in the training interface",
+                    ],
                 },
-                
                 "option_3_manual_upload": {
                     "title": "📤 Manual Upload Interface",
                     "url": "http://localhost:8001/classic",
@@ -173,11 +170,10 @@ class EnhancedSkyRoseProcessor:
                         "1. 🌐 Open: http://localhost:8001/classic",
                         "2. 📋 Use the form-based interface",
                         "3. 📁 Upload single images, batches, or ZIP files",
-                        "4. ⚙️ Configure categories and processing options manually"
-                    ]
-                }
+                        "4. ⚙️ Configure categories and processing options manually",
+                    ],
+                },
             },
-            
             "expected_outcomes": {
                 "automatic_categorization": [
                     "🌹 Dresses: evening gowns, cocktail dresses, casual dresses",
@@ -185,23 +181,22 @@ class EnhancedSkyRoseProcessor:
                     "👖 Bottoms: pants, skirts, shorts, leggings",
                     "👜 Accessories: bags, jewelry, scarves, belts",
                     "👠 Shoes: heels, boots, flats, sneakers",
-                    "🧥 Outerwear: coats, jackets, cardigans"
+                    "🧥 Outerwear: coats, jackets, cardigans",
                 ],
                 "image_processing": [
                     "📏 Resized to 1024x1024 for optimal AI training",
                     "✨ Quality enhanced with professional processing",
                     "🏷️ Tagged with brand-specific trigger words",
                     "📝 Auto-generated captions for each image",
-                    "📊 Metadata created for training optimization"
+                    "📊 Metadata created for training optimization",
                 ],
                 "brand_integration": [
                     "🎯 Trigger words: skyrose_dresses, skyrose_collection, etc.",
                     "📝 Captions: 'skyrose_collection, luxury fashion item, high-end design'",
                     "🎨 Ready for custom AI model training",
-                    "🎬 Compatible with video generation system"
-                ]
+                    "🎬 Compatible with video generation system",
+                ],
             },
-            
             "troubleshooting": {
                 "access_issues": {
                     "problem": "Cannot access the Google Drive folder",
@@ -209,8 +204,8 @@ class EnhancedSkyRoseProcessor:
                         "🔗 Ensure you're using the correct link with sharing permissions",
                         "🔐 Check if you need to request access from the folder owner",
                         "🌐 Try opening the link in an incognito/private browser window",
-                        "📧 Contact the folder owner to verify sharing settings"
-                    ]
+                        "📧 Contact the folder owner to verify sharing settings",
+                    ],
                 },
                 "download_issues": {
                     "problem": "Download fails or is incomplete",
@@ -218,8 +213,8 @@ class EnhancedSkyRoseProcessor:
                         "🔄 Try downloading smaller batches of images",
                         "🌐 Use a different browser or clear browser cache",
                         "📶 Check your internet connection stability",
-                        "⏰ Try downloading during off-peak hours"
-                    ]
+                        "⏰ Try downloading during off-peak hours",
+                    ],
                 },
                 "processing_issues": {
                     "problem": "Image processing fails",
@@ -227,18 +222,18 @@ class EnhancedSkyRoseProcessor:
                         "📋 Check that images are in supported formats (JPG, PNG, WEBP, HEIC, BMP, TIFF)",
                         "📏 Ensure image files are under 50MB each",
                         "🔄 Restart the training interface: python api/training_data_interface.py",
-                        "🌐 Verify the interface is running at http://localhost:8001"
-                    ]
-                }
-            }
+                        "🌐 Verify the interface is running at http://localhost:8001",
+                    ],
+                },
+            },
         }
-        
+
         return instructions
 
     def create_download_script(self) -> str:
         """Create a comprehensive download script."""
-        
-        script_content = f'''#!/bin/bash
+
+        script_content = f"""#!/bin/bash
 # Skyy Rose Collection - Comprehensive Download Script
 # Generated: {datetime.now().isoformat()}
 
@@ -352,11 +347,11 @@ if [ $IMAGE_COUNT -gt 0 ]; then
     echo "1. 🌐 Open: http://localhost:8001/classic"
     echo "2. 📤 Use the form-based upload interface"
     echo ""
-    
+
     echo -e "${{YELLOW}}Would you like to start automatic processing now? (y/n)${{NC}}"
     read -p "" -n 1 -r
     echo ""
-    
+
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         echo -e "${{GREEN}}🚀 Starting automatic processing...${{NC}}"
         cd ..
@@ -371,30 +366,30 @@ fi
 
 echo ""
 echo -e "${{GREEN}}🌹 Skyy Rose Collection processing setup complete!${{NC}}"
-'''
-        
+"""
+
         return script_content
 
     async def create_processing_guide(self) -> Dict[str, Any]:
         """Create a comprehensive processing guide."""
-        
+
         # Get folder info
         folder_info = self.get_folder_info()
-        
+
         # Generate instructions
         instructions = self.generate_comprehensive_instructions()
-        
+
         # Create download script
         script_content = self.create_download_script()
-        
+
         # Save the script
         script_path = Path("download_skyy_rose_enhanced.sh")
-        with open(script_path, 'w') as f:
+        with open(script_path, "w") as f:
             f.write(script_content)
-        
+
         # Make script executable
         os.chmod(script_path, 0o755)
-        
+
         return {
             "success": True,
             "folder_info": folder_info,
@@ -404,30 +399,37 @@ echo -e "${{GREEN}}🌹 Skyy Rose Collection processing setup complete!${{NC}}"
             "interfaces_available": {
                 "drag_drop": "http://localhost:8001",
                 "classic_upload": "http://localhost:8001/classic",
-                "api_status": "http://localhost:8001/status/uploads"
+                "api_status": "http://localhost:8001/status/uploads",
             },
             "next_steps": [
                 "1. Run the download script: ./download_skyy_rose_enhanced.sh",
                 "2. Follow the interactive instructions",
                 "3. Use the drag & drop interface for easy processing",
-                "4. Monitor progress at http://localhost:8001/status/uploads"
+                "4. Monitor progress at http://localhost:8001/status/uploads",
             ],
-            "timestamp": datetime.now().isoformat()
+            "timestamp": datetime.now().isoformat(),
         }
 
 
 # CLI interface
 if __name__ == "__main__":
     import argparse
-    
-    parser = argparse.ArgumentParser(description="Enhanced Skyy Rose Collection Processor")
-    parser.add_argument("--create-guide", action="store_true", help="Create comprehensive processing guide")
-    parser.add_argument("--folder-info", action="store_true", help="Get folder information")
-    
+
+    parser = argparse.ArgumentParser(
+        description="Enhanced Skyy Rose Collection Processor")
+    parser.add_argument(
+        "--create-guide",
+        action="store_true",
+        help="Create comprehensive processing guide")
+    parser.add_argument(
+        "--folder-info",
+        action="store_true",
+        help="Get folder information")
+
     args = parser.parse_args()
-    
+
     processor = EnhancedSkyRoseProcessor()
-    
+
     async def main():
         if args.create_guide:
             result = await processor.create_processing_guide()
@@ -441,6 +443,7 @@ if __name__ == "__main__":
             print("🌹 Skyy Rose Collection Processing Guide Created!")
             print(f"📋 Instructions: {result['success']}")
             print(f"📜 Download script: {result['script_path']}")
-            print(f"🌐 Drag & Drop Interface: {result['interfaces_available']['drag_drop']}")
-    
+            print(
+                f"🌐 Drag & Drop Interface: {result['interfaces_available']['drag_drop']}")
+
     asyncio.run(main())

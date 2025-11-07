@@ -5,7 +5,7 @@ import json
 import os
 import sys
 
-                from collections import Counter
+from collections import Counter
 from typing import Any, Dict, List
 import asyncio
 import logging
@@ -26,6 +26,7 @@ Features:
 """
 
 logger = logging.getLogger(__name__)
+
 
 class SelfLearningSystem:
     """
@@ -286,7 +287,7 @@ class SelfLearningSystem:
         for past_error in self.error_history[-100:]:  # Check last 100 errors
             past_features = past_error.get("features")
             if past_features is not None:
-                # Calculate similarity (cosine similarity)
+             # Calculate similarity (cosine similarity)
                 similarity = np.dot(error_features, past_features) / (
                     np.linalg.norm(error_features) * np.linalg.norm(past_features)
                     + 1e-10
@@ -615,10 +616,13 @@ class SelfLearningSystem:
             f"🧠 Loaded knowledge: {len(self.error_history)} errors, {len(self.conflict_history)} conflicts"
         )
 
+
 # Global instance
 self_learning_system = SelfLearningSystem()
 
 # Integration functions
+
+
 async def learn_and_fix(error: Dict[str, Any]) -> Dict[str, Any]:
     """Learn from error and attempt auto-fix."""
     learning_result = self_learning_system.learn_from_error(error)
@@ -628,6 +632,7 @@ async def learn_and_fix(error: Dict[str, Any]) -> Dict[str, Any]:
         return fix_result
 
     return learning_result
+
 
 async def predict_and_prevent(operation: Dict[str, Any]) -> Dict[str, Any]:
     """Predict failures and prevent them."""
@@ -642,6 +647,8 @@ async def predict_and_prevent(operation: Dict[str, Any]) -> Dict[str, Any]:
     return prediction
 
 # Auto-save knowledge periodically
+
+
 async def auto_save_knowledge():
     """Automatically save learned knowledge every hour."""
     while True:

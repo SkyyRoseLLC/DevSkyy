@@ -27,6 +27,7 @@ UPGRADED FEATURES:
 
 logger = logging.getLogger(__name__)
 
+
 class ClaudeSonnetIntelligenceServiceV2(BaseAgent):
     """
     Advanced AI service using Claude Sonnet 4.5 with enterprise self-healing
@@ -469,9 +470,9 @@ Brand Voice: Sophisticated, aspirational, confident, exclusive, refined."""
 # Factory function
 def create_claude_service_v2() -> ClaudeSonnetIntelligenceServiceV2:
     """Create and return Claude Sonnet Intelligence Service V2 instance."""
-    service = ClaudeSonnetIntelligenceServiceV2()
+    service= ClaudeSonnetIntelligenceServiceV2()
     asyncio.create_task(service.initialize())
     return service
 
 # Global instance
-claude_service_v2 = create_claude_service_v2()
+claude_service_v2= create_claude_service_v2()

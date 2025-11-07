@@ -8,6 +8,11 @@
     "start": "uvicorn main:app --host 0.0.0.0 --port $PORT",
     "dev": "uvicorn main:app --host 0.0.0.0 --port $PORT --reload",
     "test": "python -m pytest tests/",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug",
+    "test:e2e:report": "playwright show-report",
     "lint": "python -m flake8 .",
     "format": "python -m black .",
     "type-check": "python -m mypy .",
@@ -42,6 +47,7 @@
     "url": "https://github.com/SkyyRoseLLC/DevSkyy/issues"
   },
   "devDependencies": {
+    "@playwright/test": "^1.48.0",
     "vercel": "^32.0.0"
   },
   "vercel": {

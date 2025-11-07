@@ -8,6 +8,7 @@ import mimetypes
 
 logger = logging.getLogger(__name__)
 
+
 class BrandAssetManager:
     """
     Brand Asset Management System for The Skyy Rose Collection.
@@ -69,11 +70,12 @@ class BrandAssetManager:
         try:
             if category not in self.categories:
                 return {
-                    "error": f"Invalid category. Available: {list(self.categories.keys())}"
-                }
+                    "error": f"Invalid category. Available: {list(self.categories.keys())}"}
 
             # Generate unique asset ID
-            asset_id = f"{category}_{len(self.metadata['assets'])}_{int(datetime.now().timestamp())}"
+            asset_id = (
+                f"{category}_{len(self.metadata['assets'])}_{int(datetime.now().timestamp())}"
+            )
 
             # Determine file extension
             mime_type, _ = mimetypes.guess_type(filename)
@@ -127,9 +129,7 @@ class BrandAssetManager:
     def get_assets_by_category(self, category: str) -> List[Dict[str, Any]]:
         """Get all assets in a specific category."""
         return [
-            asset
-            for asset in self.metadata["assets"].values()
-            if asset["category"] == category
+            asset for asset in self.metadata["assets"].values() if asset["category"] == category
         ]
 
     def get_asset_info(self, asset_id: str) -> Optional[Dict[str, Any]]:
@@ -181,9 +181,7 @@ class BrandAssetManager:
             "visual_assets": {
                 "logos": self.get_assets_by_category("logos"),
                 "product_images": self.get_assets_by_category("product_images"),
-                "marketing_materials": self.get_assets_by_category(
-                    "marketing_materials"
-                ),
+                "marketing_materials": self.get_assets_by_category("marketing_materials"),
             },
             "brand_guidelines": self.get_assets_by_category("brand_guidelines"),
             "seasonal_collections": self.get_assets_by_category("seasonal_collections"),
@@ -193,6 +191,7 @@ class BrandAssetManager:
         }
 
         return learning_data
+
 
 def initialize_brand_asset_manager() -> BrandAssetManager:
     """Initialize the brand asset management system."""

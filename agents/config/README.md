@@ -49,7 +49,7 @@ DevSkyy uses a **4-tier specialized agent system** based on the Truth Protocol:
 ### 1. Professors of Code
 **File:** `professors_of_code_agent.json`
 **Agent ID:** `professors-of-code-001`
-**Composition:** Claude Sonnet 4.5 + Cursor IDE
+**Composition:** Claude Sonnet 4.5 + ChatGPT-5-Codex
 
 **Primary Functions:**
 - Backend code audits and security enforcement

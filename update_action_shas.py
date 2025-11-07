@@ -1,14 +1,3 @@
-from pathlib import Path
-from urllib.request import Request, urlopen
-import json
-import os
-import re
-import sys
-
-    import argparse
-from typing import Dict, List, Optional, Tuple
-from urllib.error import HTTPError, URLError
-
 #!/usr/bin/env python3
 """
 GitHub Actions SHA Updater
@@ -21,9 +10,21 @@ This script:
 4. Updates workflow files with full commit SHAs
 5. Preserves comments and formatting
 """
+from pathlib import Path
+from urllib.request import Request, urlopen
+import json
+import os
+import re
+import sys
+import argparse
+from typing import Dict, List, Optional, Tuple
+from urllib.error import HTTPError, URLError
+import logging
+
+logger = logging.getLogger(__name__)
 
 # GitHub API base URL
-GITHUB_API =  "https://api.github.com"
+GITHUB_API = "https://api.github.com"
 
 # Mapping of common actions to their repositories
 ACTION_REPOS = {
@@ -61,12 +62,14 @@ KNOWN_SHAS = {
     "docker/login-action@v3": "9780b0c442fbb1117ed29e0efdff1e18412f7567",  # v3.3.0
     "docker/metadata-action@v5": "902fa4bd8bfe0e0b9ce9e2f2090c3301f72d263d",  # v5.6.1
     "docker/build-push-action@v5": "4f58ea79222b3b9dc2c8bbdd6debcef730109a75",  # v5.4.0
-    "aquasecurity/trivy-action@master": "915b19ead16fc68b9b03f2a5e8b23c1f7c0ea2bd",  # master branch latest
+    # master branch latest
+    "aquasecurity/trivy-action@master": "915b19ead16fc68b9b03f2a5e8b23c1f7c0ea2bd",
     "github/codeql-action@v3": "f779452ac5af1c261dce0346a8b332a8cab67b52",  # v3.27.5
     "trufflesecurity/trufflehog@main": "0e60e9fece871ad8fb0e104fc5f3c04a2c3b6093",  # main branch latest
     "actions/stale@v9": "28ca1036281a5e5922ead5184a1bbf96e5fc984e",  # v9.0.0
     "anthropics/claude-code-action@v1": "52e5d0a84c4b2c19d9a650ab2c5d8c03c5e39c91",  # v1 latest
 }
+
 
 class ActionSHAUpdater:
     def __init__(self, dry_run: bool = False, verbose: bool = False):
@@ -313,7 +316,7 @@ class ActionSHAUpdater:
             "total_actions": 0,
         }
 
-        workflow_files = list(workflows_dir.glob("*.yml")) + list()
+        workflow_files = list(workflows_dir.glob("*.yml")) + list(
             workflows_dir.glob("*.yaml")
         )
 

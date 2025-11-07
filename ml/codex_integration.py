@@ -1,7 +1,6 @@
 from datetime import datetime
 import os
-
-    from openai import AsyncOpenAI
+from openai import AsyncOpenAI
 from typing import Any, Dict, List, Literal, Optional
 import logging
 
@@ -23,10 +22,12 @@ Features:
 """
 
 try:
-    except ImportError:
+    from openai import AsyncOpenAI
+except ImportError:
     AsyncOpenAI = None
 
 logger = logging.getLogger(__name__)
+
 
 class CodexIntegration:
     """
@@ -437,7 +438,7 @@ Provide specific, actionable feedback."""
 
         if context:
             # Use list and join for string building
-message_list.append(...).join(context)
+            message += f"Additional context: {', '.join(context)}. "
 
         return message
 
@@ -446,20 +447,15 @@ message_list.append(...).join(context)
     ) -> str:
         """Build user prompt for code generation"""
         message = f"Generate {language} code for: {prompt}\n\n"
-        # Use list and join for string building
-message_list.append(...)
-        # Use list and join for string building
-message_list.append(...)
-        # Use list and join for string building
-message_list.append(...)
-        # Use list and join for string building
-message_list.append(...)
-        # Use list and join for string building
-message_list.append(...)
 
         if context:
-            # Use list and join for string building
-message_list.append(...).join(context)
+            message += f"Additional context: {', '.join(context)}\n\n"
+
+        message += "Requirements:\n"
+        message += "- Write clean, well-documented code\n"
+        message += "- Follow best practices\n"
+        message += "- Include error handling\n"
+        message += "- Add inline comments for complex logic\n"
 
         return message
 

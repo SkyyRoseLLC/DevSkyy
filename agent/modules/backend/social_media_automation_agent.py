@@ -8,6 +8,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class SocialMediaAutomationAgent:
     """Social Media Automation & Optimization Specialist for Luxury Fashion Brands."""
 
@@ -141,18 +142,15 @@ class SocialMediaAutomationAgent:
         self.engagement_optimizer = self._initialize_engagement_optimizer()
 
         logger.info(
-            "📱 Social Media Automation Agent initialized with Luxury Fashion Intelligence"
-        )
+            "📱 Social Media Automation Agent initialized with Luxury Fashion Intelligence")
 
     async def create_content_calendar(
-        self, calendar_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, calendar_data: Dict[str, Any]) -> Dict[str, Any]:
         """Create AI-optimized content calendar for luxury fashion brand."""
         try:
             duration_weeks = calendar_data.get("duration_weeks", 4)
             platforms = calendar_data.get(
-                "platforms", ["instagram", "facebook", "twitter"]
-            )
+                "platforms", ["instagram", "facebook", "twitter"])
             brand_focus = calendar_data.get("brand_focus", "luxury_fashion")
 
             logger.info(
@@ -224,15 +222,20 @@ class SocialMediaAutomationAgent:
                         "status": "active",
                         "posting_times": platform_config["optimal_times"],
                         "content_queue": self._generate_content_queue(
-                            platform, content_types, 30
-                        ),
+                            platform,
+                            content_types,
+                            30),
                         "hashtag_sets": self._generate_platform_hashtags(platform),
                         "engagement_automation": {
-                            "auto_like": automation_config.get("auto_like", True),
+                            "auto_like": automation_config.get(
+                                "auto_like",
+                                True),
                             "auto_comment": automation_config.get(
-                                "auto_comment", False
-                            ),
-                            "auto_follow": automation_config.get("auto_follow", False),
+                                "auto_comment",
+                                False),
+                            "auto_follow": automation_config.get(
+                                "auto_follow",
+                                False),
                             "engagement_rate_target": "3-5%",
                         },
                         "analytics_tracking": {
@@ -312,14 +315,10 @@ class SocialMediaAutomationAgent:
                         "shopping_clicks": random.randint(300, 1500),
                     },
                     "content_performance": {
-                        "top_performing_type": random.choice(
-                            ["carousel", "video", "single_image"]
-                        ),
+                        "top_performing_type": random.choice(["carousel", "video", "single_image"]),
                         "best_posting_time": random.choice(["11:00", "14:00", "17:00"]),
                         "optimal_hashtags": random.randint(8, 15),
-                        "user_generated_content_rate": round(
-                            random.uniform(12.5, 28.3), 2
-                        ),
+                        "user_generated_content_rate": round(random.uniform(12.5, 28.3), 2),
                     },
                 }
 
@@ -341,9 +340,7 @@ class SocialMediaAutomationAgent:
                 "roi_analysis": self._calculate_social_media_roi(performance_data),
                 "trend_analysis": self._analyze_content_trends(performance_data),
                 "audience_insights": self._generate_audience_insights(platforms),
-                "next_actions": self._prioritize_optimization_actions(
-                    optimization_recommendations
-                ),
+                "next_actions": self._prioritize_optimization_actions(optimization_recommendations),
                 "analysis_date": datetime.now().isoformat(),
             }
 
@@ -375,19 +372,11 @@ class SocialMediaAutomationAgent:
             if platform in self.platforms:
                 content_suggestions[platform] = {
                     "theme": theme,
-                    "content_type": random.choice(
-                        self.platforms[platform]["content_types"]
-                    ),
-                    "suggested_time": random.choice(
-                        self.platforms[platform]["optimal_times"]
-                    ),
-                    "caption_template": self._generate_caption_template(
-                        theme, platform
-                    ),
+                    "content_type": random.choice(self.platforms[platform]["content_types"]),
+                    "suggested_time": random.choice(self.platforms[platform]["optimal_times"]),
+                    "caption_template": self._generate_caption_template(theme, platform),
                     "hashtags": self._generate_platform_hashtags(platform)[:10],
-                    "visual_direction": self._suggest_visual_direction(
-                        theme, brand_focus
-                    ),
+                    "visual_direction": self._suggest_visual_direction(theme, brand_focus),
                 }
 
         return content_suggestions
@@ -519,8 +508,7 @@ class SocialMediaAutomationAgent:
         }
 
     async def create_luxury_campaign(
-        self, campaign_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, campaign_data: Dict[str, Any]) -> Dict[str, Any]:
         """Create luxury social media campaign with AI optimization."""
         try:
             campaign_type = campaign_data.get("type", "social_media_luxury")
@@ -528,19 +516,15 @@ class SocialMediaAutomationAgent:
             target_audience = campaign_data.get("target_audience", "luxury_customers")
             budget = campaign_data.get("budget", 5000)
 
-            logger.info(
-                f"📱 Creating luxury {campaign_type} campaign for {platform}..."
-            )
+            logger.info(f"📱 Creating luxury {campaign_type} campaign for {platform}...")
 
             # Generate luxury campaign content
             campaign_content = self._generate_luxury_campaign_content(
-                campaign_type, platform
-            )
+                campaign_type, platform)
 
             # Create targeting strategy
             targeting_strategy = self._create_luxury_targeting_strategy(
-                target_audience, platform
-            )
+                target_audience, platform)
 
             # Generate creative assets
             creative_assets = self._generate_creative_assets(campaign_type, platform)
@@ -616,8 +600,7 @@ class SocialMediaAutomationAgent:
         )
 
     def _create_luxury_targeting_strategy(
-        self, audience: str, platform: str
-    ) -> Dict[str, Any]:
+            self, audience: str, platform: str) -> Dict[str, Any]:
         """Create luxury targeting strategy."""
         return {
             "demographics": {
@@ -643,9 +626,8 @@ class SocialMediaAutomationAgent:
             },
         }
 
-    def _generate_creative_assets(
-        self, campaign_type: str, platform: str
-    ) -> Dict[str, Any]:
+    def _generate_creative_assets(self, campaign_type: str,
+                                  platform: str) -> Dict[str, Any]:
         """Generate creative assets for campaign."""
         return {
             "image_assets": {
@@ -685,8 +667,7 @@ class SocialMediaAutomationAgent:
         }
 
     def _setup_campaign_optimization(
-        self, platform: str, budget: int
-    ) -> Dict[str, Any]:
+            self, platform: str, budget: int) -> Dict[str, Any]:
         """Set up campaign optimization settings."""
         return {
             "bidding_strategy": "target_cost_with_luxury_focus",
@@ -707,6 +688,7 @@ class SocialMediaAutomationAgent:
                 "reporting": "comprehensive_luxury_brand_metrics",
             },
         }
+
 
 def optimize_social_media() -> Dict[str, Any]:
     """Main function to optimize social media operations."""

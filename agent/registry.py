@@ -24,6 +24,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class AgentRegistry:
     """
     Centralized registry for managing all agents in the system.
@@ -126,8 +127,7 @@ class AgentRegistry:
                 else:
                     summary["failed"] += 1
                     summary["errors"].append(
-                        f"Failed to register: {agent_info['name']}"
-                    )
+                        f"Failed to register: {agent_info['name']}")
 
         # Discover frontend agents
         frontend_path = Path(__file__).parent / "modules" / "frontend"
@@ -145,8 +145,7 @@ class AgentRegistry:
                 else:
                     summary["failed"] += 1
                     summary["errors"].append(
-                        f"Failed to register: {agent_info['name']}"
-                    )
+                        f"Failed to register: {agent_info['name']}")
 
         logger.info(
             f"✅ Discovery complete: {summary['registered']}/{summary['discovered']} agents registered"
@@ -233,8 +232,7 @@ class AgentRegistry:
             if success:
                 # Generate API key for agent
                 api_key = security_manager.generate_api_key(
-                    agent_name, SecurityRole.SERVICE
-                )
+                    agent_name, SecurityRole.SERVICE)
 
                 # Store metadata
                 self.registered_agents[agent_name] = {
@@ -254,8 +252,7 @@ class AgentRegistry:
                 }
 
                 logger.info(
-                    f"✅ Registered agent: {agent_name} v{agent_info['version']}"
-                )
+                    f"✅ Registered agent: {agent_name} v{agent_info['version']}")
                 return True
 
         except Exception as e:
@@ -279,11 +276,8 @@ class AgentRegistry:
             List of agent names
         """
         if capability:
-            return [
-                name
-                for name, caps in self.agent_capabilities.items()
-                if capability in caps
-            ]
+            return [name for name, caps in self.agent_capabilities.items()
+                    if capability in caps]
 
         return list(self.registered_agents.keys())
 
@@ -380,8 +374,7 @@ class AgentRegistry:
             return {"error": f"Unknown workflow: {workflow_name}"}
 
     async def _workflow_scan_and_fix(
-        self, parameters: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, parameters: Dict[str, Any]) -> Dict[str, Any]:
         """Workflow: Scan codebase then apply fixes"""
         # Execute scan
         scan_result = await orchestrator.execute_task(
@@ -397,9 +390,7 @@ class AgentRegistry:
         # Execute fix with scan results
         fix_result = await orchestrator.execute_task(
             task_type="fix",
-            parameters={
-                "scan_results": scan_result.get("results", {}).get("scanner", {})
-            },
+            parameters={"scan_results": scan_result.get("results", {}).get("scanner", {})},
             required_capabilities=["fix"],
             priority=ExecutionPriority.HIGH,
         )
@@ -412,8 +403,7 @@ class AgentRegistry:
         }
 
     async def _workflow_content_pipeline(
-        self, parameters: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, parameters: Dict[str, Any]) -> Dict[str, Any]:
         """Workflow: Content generation → SEO optimization → Publishing"""
         results = {}
 
@@ -439,8 +429,7 @@ class AgentRegistry:
         return {"workflow": "content_pipeline", "results": results}
 
     async def _workflow_ecommerce_order(
-        self, parameters: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, parameters: Dict[str, Any]) -> Dict[str, Any]:
         """Workflow: Order processing through multiple agents"""
         results = {}
 
@@ -474,6 +463,7 @@ class AgentRegistry:
             results["payment"] = payment
 
         return {"workflow": "ecommerce_order", "results": results}
+
 
 # Global registry instance
 registry = AgentRegistry()

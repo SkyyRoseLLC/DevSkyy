@@ -16,6 +16,7 @@ Comprehensive input validation, sanitization, and security enforcement
 # SECURITY VALIDATORS
 # ============================================================================
 
+
 class SecurityLevel(str, Enum):
     """Security level enumeration"""
 
@@ -23,6 +24,7 @@ class SecurityLevel(str, Enum):
     MEDIUM = "medium"
     HIGH = "high"
     CRITICAL = "critical"
+
 
 def validate_no_sql_injection(value: str) -> str:
     """Validate against SQL injection patterns"""
@@ -43,6 +45,7 @@ def validate_no_sql_injection(value: str) -> str:
             raise ValueError(f"Potential SQL injection detected: {pattern}")
 
     return value
+
 
 def validate_no_xss(value: str) -> str:
     """Validate against XSS patterns"""
@@ -65,6 +68,7 @@ def validate_no_xss(value: str) -> str:
 
     return value
 
+
 def sanitize_html_input(value: str) -> str:
     """Sanitize HTML input by removing dangerous tags"""
     if not isinstance(value, str):
@@ -84,9 +88,11 @@ def sanitize_html_input(value: str) -> str:
 
     return value.strip()
 
+
 # ============================================================================
 # ENHANCED USER MODELS
 # ============================================================================
+
 
 class EnhancedRegisterRequest(BaseModel):
     """Enhanced registration request with comprehensive validation"""
@@ -140,6 +146,7 @@ class EnhancedRegisterRequest(BaseModel):
             v = sanitize_html_input(v)
         return v
 
+
 class EnhancedLoginRequest(BaseModel):
     """Enhanced login request with validation"""
 
@@ -153,9 +160,11 @@ class EnhancedLoginRequest(BaseModel):
         v = validate_no_sql_injection(v)
         return v
 
+
 # ============================================================================
 # API REQUEST MODELS
 # ============================================================================
+
 
 class AgentExecutionRequest(BaseModel):
     """Enhanced agent execution request"""
@@ -169,8 +178,7 @@ class AgentExecutionRequest(BaseModel):
     )
 
     parameters: Dict[str, Any] = Field(
-        default_factory=dict, description="Task parameters"
-    )
+        default_factory=dict, description="Task parameters")
 
     priority: conint(ge=1, le=10) = Field(default=5, description="Task priority (1-10)")
 
@@ -213,12 +221,13 @@ class AgentExecutionRequest(BaseModel):
 
         return v
 
+
 class MLModelRequest(BaseModel):
     """Enhanced ML model request"""
 
-    model_name: constr(min_length=1, max_length=100) = Field(
-        ..., description="Model name"
-    )
+    model_name: constr(min_length=1,
+                       max_length=100) = Field(...,
+                                               description="Model name")
 
     version: constr(min_length=1, max_length=20) = Field(
         default="latest", description="Model version"
@@ -266,12 +275,13 @@ class MLModelRequest(BaseModel):
 
         return v
 
+
 class ContentGenerationRequest(BaseModel):
     """Enhanced content generation request"""
 
-    content_type: constr(min_length=1, max_length=50) = Field(
-        ..., description="Content type"
-    )
+    content_type: constr(min_length=1,
+                         max_length=50) = Field(...,
+                                                description="Content type")
 
     prompt: constr(min_length=1, max_length=10000) = Field(
         ..., description="Content generation prompt"
@@ -283,13 +293,14 @@ class ContentGenerationRequest(BaseModel):
 
     tone: Optional[constr(max_length=50)] = Field(None, description="Content tone")
 
-    max_length: conint(ge=1, le=50000) = Field(
-        default=1000, description="Maximum content length"
-    )
+    max_length: conint(
+        ge=1,
+        le=50000) = Field(
+        default=1000,
+        description="Maximum content length")
 
-    include_metadata: bool = Field(
-        default=True, description="Include generation metadata"
-    )
+    include_metadata: bool = Field(default=True,
+                                   description="Include generation metadata")
 
     @validator("content_type")
     def validate_content_type(cls, v):
@@ -309,9 +320,11 @@ class ContentGenerationRequest(BaseModel):
             v = sanitize_html_input(v)
         return v
 
+
 # ============================================================================
 # RESPONSE MODELS
 # ============================================================================
+
 
 class ValidationErrorResponse(BaseModel):
     """Validation error response"""
@@ -322,6 +335,7 @@ class ValidationErrorResponse(BaseModel):
     timestamp: datetime = Field(default_factory=datetime.now)
     request_id: Optional[str] = None
 
+
 class SecurityViolationResponse(BaseModel):
     """Security violation response"""
 
@@ -330,6 +344,7 @@ class SecurityViolationResponse(BaseModel):
     violation_type: str
     timestamp: datetime = Field(default_factory=datetime.now)
     request_id: Optional[str] = None
+
 
 class EnhancedSuccessResponse(BaseModel):
     """Enhanced success response"""
@@ -341,26 +356,25 @@ class EnhancedSuccessResponse(BaseModel):
     timestamp: datetime = Field(default_factory=datetime.now)
     request_id: Optional[str] = None
 
+
 # ============================================================================
 # GDPR COMPLIANCE MODELS
 # ============================================================================
 
+
 class GDPRDataRequest(BaseModel):
     """Enhanced GDPR data request"""
 
-    request_type: str = Field(
-        ..., description="Request type: export, delete, or anonymize"
-    )
+    request_type: str = Field(...,
+                              description="Request type: export, delete, or anonymize")
 
     user_email: EmailStr = Field(..., description="User email address")
 
-    include_audit_logs: bool = Field(
-        default=False, description="Include audit logs in export"
-    )
+    include_audit_logs: bool = Field(default=False,
+                                     description="Include audit logs in export")
 
     include_activity_history: bool = Field(
-        default=False, description="Include activity history"
-    )
+        default=False, description="Include activity history")
 
     anonymize_instead_of_delete: bool = Field(
         default=False, description="Anonymize data instead of deletion"

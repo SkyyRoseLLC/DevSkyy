@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 # COMPLIANCE ENUMS AND MODELS
 # ============================================================================
 
+
 class ComplianceStandard(str, Enum):
     """Supported compliance standards."""
 
@@ -35,6 +36,7 @@ class ComplianceStandard(str, Enum):
     HIPAA = "hipaa"
     ISO27001 = "iso27001"
 
+
 class ComplianceStatus(str, Enum):
     """Compliance status levels."""
 
@@ -43,6 +45,7 @@ class ComplianceStatus(str, Enum):
     PARTIALLY_COMPLIANT = "partially_compliant"
     UNKNOWN = "unknown"
 
+
 class ViolationSeverity(str, Enum):
     """Compliance violation severity levels."""
 
@@ -50,6 +53,7 @@ class ViolationSeverity(str, Enum):
     MEDIUM = "medium"
     HIGH = "high"
     CRITICAL = "critical"
+
 
 class ComplianceViolation(BaseModel):
     """Compliance violation model."""
@@ -66,6 +70,7 @@ class ComplianceViolation(BaseModel):
     resolution_date: Optional[datetime] = None
     resolution_notes: Optional[str] = None
 
+
 class ComplianceControl(BaseModel):
     """Compliance control definition."""
 
@@ -78,6 +83,7 @@ class ComplianceControl(BaseModel):
     manual_checks: List[str] = Field(default_factory=list)
     evidence_required: List[str] = Field(default_factory=list)
     frequency: str = "daily"  # daily, weekly, monthly, quarterly, annually
+
 
 class ComplianceReport(BaseModel):
     """Compliance assessment report."""
@@ -96,6 +102,7 @@ class ComplianceReport(BaseModel):
 # ============================================================================
 # COMPLIANCE MONITOR
 # ============================================================================
+
 
 class ComplianceMonitor:
     """
@@ -476,7 +483,7 @@ class ComplianceMonitor:
 
             status[standard.value] = {
                 "active_violations": len(recent_violations),
-                "critical_violations": len()
+                "critical_violations": len(
                     [
                         v
                         for v in recent_violations

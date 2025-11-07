@@ -26,6 +26,7 @@ try:
 
 logger = logging.getLogger(__name__)
 
+
 class ContentGenerator:
     """
     AI-powered WordPress content generation using Claude AI.
@@ -429,7 +430,7 @@ work together to bring you the best shopping experience.</p>
             ),
         }
 
-    async def rewrite_content(self, content: str, style: str = "professional") -> str:
+    async def rewrite_content(self, content: str, style: str="professional") -> str:
         """
         Rewrite content in different style
 
@@ -450,9 +451,9 @@ work together to bring you the best shopping experience.</p>
 Provide only the rewritten content."""
 
             message = self.client.messages.create(
-                model="claude-sonnet-4-5-20250929",
-                max_tokens=2000,
-                messages=[{"role": "user", "content": prompt}],
+                model = "claude-sonnet-4-5-20250929",
+                max_tokens = 2000,
+                messages = [{"role": "user", "content": prompt}],
             )
 
             return message.content[0].text

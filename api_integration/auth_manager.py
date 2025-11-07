@@ -25,6 +25,7 @@ Supports OAuth2, API keys, JWT, and custom authentication methods
 
 logger = logging.getLogger(__name__)
 
+
 class TokenStatus(Enum):
     """Token status enumeration"""
 
@@ -33,6 +34,7 @@ class TokenStatus(Enum):
     INVALID = "invalid"
     REVOKED = "revoked"
     PENDING = "pending"
+
 
 @dataclass
 class AuthCredentials:
@@ -72,6 +74,7 @@ class AuthCredentials:
             data["last_used"] = self.last_used.isoformat()
         return data
 
+
 @dataclass
 class RateLimitRule:
     """Rate limiting rule configuration"""
@@ -93,6 +96,7 @@ class RateLimitRule:
             "day": self.requests_per_day,
         }
         return limits.get(window_type, self.requests_per_minute)
+
 
 class AuthenticationManager:
     """Manages API authentication and credentials"""
@@ -481,6 +485,7 @@ class AuthenticationManager:
         except Exception as e:
             logger.error(f"Error refreshing OAuth2 token: {e}")
             return False
+
 
 class RateLimitManager:
     """Manages API rate limiting and quota tracking"""

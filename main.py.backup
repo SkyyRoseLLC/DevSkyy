@@ -232,7 +232,6 @@ except ImportError as e:
 # ============================================================================
 
 # Environment Configuration
-import os
 ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
 DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 VERSION = "5.2.0"
@@ -271,6 +270,7 @@ KEEPALIVE_TIMEOUT = int(os.getenv("KEEPALIVE_TIMEOUT", "5"))
 
 logger = structlog.get_logger(__name__)
 
+
 def setup_logging() -> None:
     """Setup enterprise-grade structured logging."""
     if ENTERPRISE_INFRASTRUCTURE_AVAILABLE:
@@ -297,6 +297,7 @@ def setup_logging() -> None:
 # ============================================================================
 # ENTERPRISE METRICS AND MONITORING
 # ============================================================================
+
 
 # Prometheus Metrics - with collision protection
 try:
@@ -352,6 +353,7 @@ except ValueError:
 # ============================================================================
 # ENTERPRISE APPLICATION LIFECYCLE MANAGEMENT
 # ============================================================================
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -418,12 +420,13 @@ async def lifespan(app: FastAPI):
                 legacy_agent_manager = LegacyAgentManager(
                     orchestrator=agent_orchestrator,
                     registry=agent_registry)
-                    cache=ml_cache
+                    cache = ml_cache
 
                 await legacy_agent_manager.initialize()
                 app.state.agent_manager = legacy_agent_manager
             except ImportError as e:
-                logger.info(f"Legacy AgentManager not available - using V2 system only: {e}")
+                logger.info(
+                    f"Legacy AgentManager not available - using V2 system only: {e}")
             # Fashion Intelligence Engine
             if FASHION_AI_ENABLED:
                 fashion_engine = FashionIntelligenceEngine()
@@ -436,7 +439,8 @@ async def lifespan(app: FastAPI):
                 await recommendation_engine.initialize()
                 app.state.recommendation_engine = recommendation_engine
             except ImportError:
-                logger.info("RecommendationEngine not available - using agent-based recommendations")
+                logger.info(
+                    "RecommendationEngine not available - using agent-based recommendations")
             logger.info("✅ AI and agent systems initialized")
         # Setup Monitoring
         if ENABLE_METRICS and ENTERPRISE_INFRASTRUCTURE_AVAILABLE:
@@ -444,7 +448,8 @@ async def lifespan(app: FastAPI):
             await setup_monitoring(app)
             logger.info("✅ Monitoring setup complete")
         startup_time = time.time() - startup_start
-        logger.info(f"🌟 DevSkyy Platform startup complete in {startup_time:.2f}s (v{VERSION}, {ENVIRONMENT})")
+        logger.info(
+            f"🌟 DevSkyy Platform startup complete in {startup_time:.2f}s (v{VERSION}, {ENVIRONMENT})")
         yield
 
     except Exception as e:
@@ -516,7 +521,8 @@ try:
     API_ROUTERS_AVAILABLE = True
     logger.info("✅ All API routers loaded successfully")
 except ImportError as e:
-    logger.info(f"Warning: Some API routers not available due to missing dependencies: {e}")
+    logger.info(
+        f"Warning: Some API routers not available due to missing dependencies: {e}")
     API_ROUTERS_AVAILABLE = False
     # Create minimal routers for basic functionality
     agents_router = auth_router = codex_router = dashboard_router = None
@@ -547,6 +553,7 @@ except ImportError as e:
 # LAZY AGENT LOADER - Import on demand for fast startup
 # ============================================================================
 _agent_cache = {}
+
 
 def get_agent(agent_name: str, agent_type: str = "backend"):
     """

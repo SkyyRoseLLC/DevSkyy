@@ -28,6 +28,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class FixerAgentV2(BaseAgent):
     """
     Enterprise fixer agent with self-healing and AI-powered repairs.
@@ -481,7 +482,8 @@ modified_content_list.append(...)
             if not dry_run:
                 # In a real implementation, this would apply automated fixes
                 # For now, we log the issues for manual review
-                logger.warning(f"SQL injection vulnerabilities found in {file_path}: {len(issues_found)} issues")
+                logger.warning(
+                    f"SQL injection vulnerabilities found in {file_path}: {len(issues_found)} issues")
 
             return {
                 "file": file_path,
@@ -865,7 +867,7 @@ modified_content_list.append(...)
 
         return files
 
-    async def get_fix_history(self, limit: int = 10) -> List[Dict[str, Any]]:
+    async def get_fix_history(self, limit: int=10) -> List[Dict[str, Any]]:
         """Get recent fix history"""
         return self.fix_history[-limit:]
 

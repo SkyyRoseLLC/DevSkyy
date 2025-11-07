@@ -9,16 +9,16 @@ from aiohttp import ClientError, ClientTimeout
 from api_integration.auth_manager import auth_manager, rate_limit_manager
 from api_integration.discovery_engine import (
     from contextlib import asynccontextmanager
-from dataclasses import asdict, dataclass
-from enum import Enum
-from typing import Any, Awaitable, Callable, Dict, List, Optional, Union
-import aiohttp
-import asyncio
-import hashlib
-import logging
-import uuid
+    from dataclasses import asdict, dataclass
+    from enum import Enum
+    from typing import Any, Awaitable, Callable, Dict, List, Optional, Union
+    import aiohttp
+    import asyncio
+    import hashlib
+    import logging
+    import uuid
 
-"""
+    """
 Core API Integration Engine
 Microservices architecture with API gateway pattern, event-driven communication,
 data transformation pipelines, and circuit breaker patterns for fault tolerance
@@ -31,6 +31,7 @@ data transformation pipelines, and circuit breaker patterns for fault tolerance
 
 logger = logging.getLogger(__name__)
 
+
 class RequestStatus(Enum):
     """API request status"""
 
@@ -42,12 +43,14 @@ class RequestStatus(Enum):
     RATE_LIMITED = "rate_limited"
     CIRCUIT_OPEN = "circuit_open"
 
+
 class CircuitState(Enum):
     """Circuit breaker states"""
 
     CLOSED = "closed"
     OPEN = "open"
     HALF_OPEN = "half_open"
+
 
 @dataclass
 class APIRequest:
@@ -76,6 +79,7 @@ class APIRequest:
         data["created_at"] = self.created_at.isoformat()
         return data
 
+
 @dataclass
 class CircuitBreakerConfig:
     """Circuit breaker configuration"""
@@ -84,6 +88,7 @@ class CircuitBreakerConfig:
     recovery_timeout: int = 60
     expected_exception: type = Exception
     name: str = "default"
+
 
 class CircuitBreaker:
     """Circuit breaker implementation for API fault tolerance"""
@@ -131,6 +136,7 @@ class CircuitBreaker:
 
         if self.failure_count >= self.config.failure_threshold:
             self.state = CircuitState.OPEN
+
 
 class DataTransformer:
     """Data transformation pipeline for API responses"""
@@ -292,6 +298,7 @@ class DataTransformer:
         """Default data transformation"""
 
         return {"data": data, "transformed_at": datetime.now().isoformat()}
+
 
 class APIGateway:
     """API Gateway for managing all external API communications"""
@@ -646,6 +653,7 @@ class APIGateway:
 
         except Exception as e:
             return {"status": "unhealthy", "error": str(e)}
+
 
 # Global API gateway instance
 api_gateway = APIGateway()

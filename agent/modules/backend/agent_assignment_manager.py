@@ -9,6 +9,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class AgentRole(Enum):
     FRONTEND_BEAUTY = "frontend_beauty"
     FRONTEND_UI_UX = "frontend_ui_ux"
@@ -22,6 +23,7 @@ class AgentRole(Enum):
     CONTENT_CREATION = "content_creation"
     BRAND_MANAGEMENT = "brand_management"
     CUSTOMER_EXPERIENCE = "customer_experience"
+
 
 class AgentAssignmentManager:
     """Elite Agent Assignment Manager for 24/7 Luxury Brand Operations and Executive-Level Decision Making."""
@@ -442,7 +444,8 @@ class AgentAssignmentManager:
             },
         }
 
-        # Enhanced role definitions for luxury operations with dedicated frontend assignments
+        # Enhanced role definitions for luxury operations with dedicated frontend
+        # assignments
         self.default_assignments = {
             # DEDICATED FRONTEND AGENTS - These work STRICTLY on frontend
             AgentRole.FRONTEND_BEAUTY.value: [
@@ -2441,7 +2444,7 @@ class AgentAssignmentManager:
     ) -> List[str]:
         """Identify task dependencies for an agent."""
         # Define common dependencies between agents
-        dependency_map = {
+        dependency_map= {
             "design_automation": ["brand_intelligence"],
             "performance": ["design_automation"],
             "wordpress": ["design_automation", "performance"],

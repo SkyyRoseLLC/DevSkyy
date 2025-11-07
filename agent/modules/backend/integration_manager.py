@@ -10,6 +10,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class IntegrationType(Enum):
     WEBSITE = "website"
     SOCIAL_MEDIA = "social_media"
@@ -20,12 +21,14 @@ class IntegrationType(Enum):
     ANALYTICS = "analytics"
     CRM = "crm"
 
+
 class IntegrationStatus(Enum):
     ACTIVE = "active"
     INACTIVE = "inactive"
     PENDING = "pending"
     ERROR = "error"
     SUSPENDED = "suspended"
+
 
 class IntegrationManager:
     """Universal Integration Manager for connecting external services to agents."""
@@ -378,7 +381,7 @@ class IntegrationManager:
             return {
                 "agent_type": agent_type,
                 "total_integrations": len(integrations_data),
-                "active_integrations": len()
+                "active_integrations": len(
                     [i for i in integrations_data if i["status"] == "active"]
                 ),
                 "integrations": integrations_data,
@@ -438,8 +441,8 @@ class IntegrationManager:
         self, service_type: str, service_name: str, credentials: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Validate provided credentials."""
-        service_config = self.supported_services[service_type][service_name]
-        required_fields = service_config["required_fields"]
+        service_config= self.supported_services[service_type][service_name]
+        required_fields= service_config["required_fields"]
 
         # Check required fields
         for field in required_fields:
@@ -451,22 +454,22 @@ class IntegrationManager:
 
     def _encrypt_credentials(self, credentials: Dict[str, Any]) -> str:
         """Encrypt credentials for secure storage."""
-        credentials_json = json.dumps(credentials)
+        credentials_json= json.dumps(credentials)
         # In production, use proper encryption (AES, etc.)
-        encoded = base64.b64encode(credentials_json.encode()).decode()
+        encoded= base64.b64encode(credentials_json.encode()).decode()
         return encoded
 
     def _decrypt_credentials(self, encrypted_credentials: str) -> Dict[str, Any]:
         """Decrypt stored credentials."""
         # In production, use proper decryption
-        decoded = base64.b64decode(encrypted_credentials.encode()).decode()
+        decoded= base64.b64decode(encrypted_credentials.encode()).decode()
         return json.loads(decoded)
 
     def _create_data_mapping(
         self, agent_type: str, service_type: str, service_name: str
     ) -> Dict[str, Any]:
         """Create data mapping configuration for integration."""
-        mappings = {
+        mappings= {
             "financial": {
                 "banking": {
                     "transaction_mapping": {

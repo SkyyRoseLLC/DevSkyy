@@ -37,7 +37,7 @@ class CustomerIntelligence:
         self.ltv_model = None
 
     async def segment_customers(
-        self, customer_data: Optional[List[Dict]] = None, n_segments: int = 5
+        self, customer_data: Optional[List[Dict]]=None, n_segments: int=5
     ) -> Dict[str, Any]:
         """
         Segment customers using ML clustering

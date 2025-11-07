@@ -8,17 +8,20 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class RiskLevel(Enum):
     CRITICAL = "critical"
     HIGH = "high"
     MEDIUM = "medium"
     LOW = "low"
 
+
 class TaskPriority(Enum):
     URGENT = "urgent"
     HIGH = "high"
     MEDIUM = "medium"
     LOW = "low"
+
 
 class TaskCategory(Enum):
     WEBSITE_STABILITY = "website_stability"
@@ -28,6 +31,7 @@ class TaskCategory(Enum):
     COMPLIANCE = "compliance"
     PERFORMANCE = "performance"
     BRAND_PROTECTION = "brand_protection"
+
 
 class TaskRiskManager:
     """Centralized task and risk management system for all agents."""
@@ -95,10 +99,10 @@ class TaskRiskManager:
             logger.info("📊 Generating prioritized task list...")
 
             # Apply filters
-            filtered_tasks = self._apply_task_filters(self.tasks, filters or {})
+            filtered_tasks= self._apply_task_filters(self.tasks, filters or {})
 
             # Sort by priority and risk
-            sorted_tasks = self._sort_tasks_by_priority_risk(filtered_tasks)
+            sorted_tasks= self._sort_tasks_by_priority_risk(filtered_tasks)
 
             return {
                 "total_tasks": len(sorted_tasks),
@@ -120,30 +124,30 @@ class TaskRiskManager:
         self, task_data: Dict[str, Any], agent_type: str
     ) -> Dict[str, Any]:
         """Comprehensive task risk assessment."""
-        risk_factors = []
-        impact_score = 50  # Base score
+        risk_factors= []
+        impact_score= 50  # Base score
 
         # Category-based risk assessment
-        category = task_data.get("category", "performance")
+        category= task_data.get("category", "performance")
         if category == "website_stability":
-            impact_score = 80
+            impact_score= 80
             risk_factors.extend(["site_downtime_risk", "user_experience_degradation"])
         elif category == "security":
-            impact_score = 90
+            impact_score= 90
             risk_factors.extend(["data_breach_risk", "compliance_violation"])
         elif category == "revenue_impact":
-            impact_score = 75
+            impact_score= 75
             risk_factors.extend(["sales_disruption", "customer_churn"])
 
         # Determine overall risk level
         if impact_score > 80:
-            overall_risk = RiskLevel.CRITICAL.value
+            overall_risk= RiskLevel.CRITICAL.value
         elif impact_score > 60:
-            overall_risk = RiskLevel.HIGH.value
+            overall_risk= RiskLevel.HIGH.value
         elif impact_score > 40:
-            overall_risk = RiskLevel.MEDIUM.value
+            overall_risk= RiskLevel.MEDIUM.value
         else:
-            overall_risk = RiskLevel.LOW.value
+            overall_risk= RiskLevel.LOW.value
 
         return {
             "overall_risk_level": overall_risk,
@@ -156,7 +160,7 @@ class TaskRiskManager:
         self, risk_assessment: Dict, task_data: Dict
     ) -> TaskPriority:
         """Calculate task priority based on risk and business impact."""
-        impact_score = risk_assessment["impact_score"]
+        impact_score= risk_assessment["impact_score"]
 
         if impact_score > 80:
             return TaskPriority.URGENT
@@ -169,7 +173,7 @@ class TaskRiskManager:
 
     def _apply_task_filters(self, tasks: Dict, filters: Dict) -> List[Dict]:
         """Apply filters to task list."""
-        filtered_tasks = []
+        filtered_tasks= []
 
         for task in tasks.values():
             # Filter by status
@@ -193,8 +197,8 @@ class TaskRiskManager:
 
     def _sort_tasks_by_priority_risk(self, tasks: List[Dict]) -> List[Dict]:
         """Sort tasks by priority and risk level."""
-        priority_order = {"urgent": 4, "high": 3, "medium": 2, "low": 1}
-        risk_order = {"critical": 4, "high": 3, "medium": 2, "low": 1}
+        priority_order= {"urgent": 4, "high": 3, "medium": 2, "low": 1}
+        risk_order= {"critical": 4, "high": 3, "medium": 2, "low": 1}
 
         return sorted(
             tasks,

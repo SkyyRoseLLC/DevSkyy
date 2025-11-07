@@ -12,7 +12,7 @@
       "config_file": "/Users/coreyfoster/DevSkyy/agents/config/professors_of_code_agent.json",
       "status": "active",
       "priority": 1,
-      "composition": "Claude + Cursor",
+      "composition": "Claude Sonnet 4.5 + ChatGPT-5-Codex",
       "primary_function": "Backend audits, refactors, security enforcement",
       "key_outputs": ["Code PRs", "Tests", "OpenAPI", "Security Reports"],
       "orchestration_commands": ["PLAN", "BUILD", "TEST", "REVIEW", "HEAL"],

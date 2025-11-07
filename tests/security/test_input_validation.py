@@ -134,7 +134,7 @@ class TestCommandInjectionPrevention:
     def test_safe_command_input(self):
         """
         Verifies that a benign filename is unchanged by the command sanitizer.
-        
+
         Uses a simple safe filename ("myfile.txt") and asserts sanitize_command returns the same string.
         """
         safe_input = "myfile.txt"
@@ -373,4 +373,5 @@ class TestRealWorldScenarios:
 
 
 if __name__ == "__main__":
-    pytest.main([__file__, "-v", "--cov=security.input_validation", "--cov-report=term-missing"])
+    pytest.main([__file__, "-v", "--cov=security.input_validation",
+                "--cov-report=term-missing"])

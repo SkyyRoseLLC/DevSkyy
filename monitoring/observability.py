@@ -21,6 +21,7 @@ logger = logging.getLogger(__name__)
 # MODELS
 # ============================================================================
 
+
 class MetricType(str, Enum):
     """Metric type enumeration"""
 
@@ -28,6 +29,7 @@ class MetricType(str, Enum):
     GAUGE = "gauge"
     HISTOGRAM = "histogram"
     SUMMARY = "summary"
+
 
 class Metric(BaseModel):
     """Metric data model"""
@@ -38,12 +40,14 @@ class Metric(BaseModel):
     labels: Dict[str, str] = {}
     timestamp: datetime
 
+
 class HealthStatus(str, Enum):
     """Health status enumeration"""
 
     HEALTHY = "healthy"
     DEGRADED = "degraded"
     UNHEALTHY = "unhealthy"
+
 
 class HealthCheck(BaseModel):
     """Health check result"""
@@ -58,6 +62,7 @@ class HealthCheck(BaseModel):
 # ============================================================================
 # METRICS COLLECTOR
 # ============================================================================
+
 
 class MetricsCollector:
     """
@@ -216,6 +221,7 @@ class MetricsCollector:
 # HEALTH MONITOR
 # ============================================================================
 
+
 class HealthMonitor:
     """
     Monitor system health
@@ -319,6 +325,7 @@ class HealthMonitor:
 # PERFORMANCE TRACKER
 # ============================================================================
 
+
 class PerformanceTracker:
     """
     Track API endpoint performance
@@ -382,6 +389,7 @@ class PerformanceTracker:
 # DISTRIBUTED TRACING
 # ============================================================================
 
+
 class Span:
     """Trace span"""
 
@@ -421,6 +429,7 @@ class Span:
 # ============================================================================
 # GLOBAL INSTANCES
 # ============================================================================
+
 
 metrics_collector = MetricsCollector()
 health_monitor = HealthMonitor()

@@ -1,4 +1,4 @@
-    import shap
+import shap
 from typing import Any, Dict, List, Optional
 import logging
 import numpy as np
@@ -16,6 +16,7 @@ try:
 except ImportError:
     SHAP_AVAILABLE = False
     logger.warning("SHAP not installed - explainability features disabled")
+
 
 class ModelExplainer:
     """ML model explainability using SHAP values"""
@@ -94,5 +95,6 @@ class ModelExplainer:
             "global_importance": mean_abs_shap.tolist(),
             "summary": "SHAP-based feature importance for entire dataset",
         }
+
 
 explainer = ModelExplainer()

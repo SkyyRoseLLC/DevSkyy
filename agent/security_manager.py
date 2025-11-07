@@ -23,6 +23,7 @@ Features:
 
 logger = logging.getLogger(__name__)
 
+
 class SecurityRole(Enum):
     """Security roles for agents"""
 
@@ -32,6 +33,7 @@ class SecurityRole(Enum):
     SERVICE = "service"  # Service-to-service communication
     GUEST = "guest"  # Limited access
 
+
 class PermissionLevel(Enum):
     """Permission levels"""
 
@@ -39,6 +41,7 @@ class PermissionLevel(Enum):
     WRITE = "write"
     EXECUTE = "execute"
     ADMIN = "admin"
+
 
 class SecurityManager:
     """
@@ -91,8 +94,10 @@ class SecurityManager:
     # ============================================================================
 
     def generate_api_key(
-        self, agent_name: str, role: SecurityRole, expires_days: int = 365
-    ) -> str:
+            self,
+            agent_name: str,
+            role: SecurityRole,
+            expires_days: int = 365) -> str:
         """
         Generate a secure API key for an agent.
 
@@ -127,8 +132,8 @@ class SecurityManager:
         self.agent_roles[agent_name] = role
 
         self._audit_log(
-            "api_key_created", agent_name, {"key_id": key_id, "role": role.value}
-        )
+            "api_key_created", agent_name, {
+                "key_id": key_id, "role": role.value})
 
         return f"{key_id}.{api_key}"
 
@@ -162,8 +167,8 @@ class SecurityManager:
             # Check expiration
             if datetime.now() > key_info["expires_at"]:
                 self._audit_log(
-                    "expired_api_key", key_info["agent_name"], {"key_id": key_id}
-                )
+                    "expired_api_key", key_info["agent_name"], {
+                        "key_id": key_id})
                 return None
 
             # Update usage
@@ -220,8 +225,8 @@ class SecurityManager:
         # Check if agent is blocked
         if agent_name in self.blocked_agents:
             self._audit_log(
-                "blocked_agent_access_attempt", agent_name, {"resource": resource}
-            )
+                "blocked_agent_access_attempt", agent_name, {
+                    "resource": resource})
             return False
 
         # Get agent role
@@ -330,8 +335,10 @@ class SecurityManager:
     # ============================================================================
 
     def check_rate_limit(
-        self, agent_name: str, limit: int = 100, window_seconds: int = 60
-    ) -> bool:
+            self,
+            agent_name: str,
+            limit: int = 100,
+            window_seconds: int = 60) -> bool:
         """
         Check if an agent has exceeded rate limits.
 
@@ -444,13 +451,11 @@ class SecurityManager:
 
         if agent_name:
             filtered_logs = [
-                log for log in filtered_logs if log["agent_name"] == agent_name
-            ]
+                log for log in filtered_logs if log["agent_name"] == agent_name]
 
         if event_type:
             filtered_logs = [
-                log for log in filtered_logs if log["event_type"] == event_type
-            ]
+                log for log in filtered_logs if log["event_type"] == event_type]
 
         return filtered_logs[-limit:]
 
@@ -464,6 +469,7 @@ class SecurityManager:
             "audit_log_entries": len(self.audit_log),
             "resources_protected": len(self.resource_acl),
         }
+
 
 # Global security manager instance
 security_manager = SecurityManager()

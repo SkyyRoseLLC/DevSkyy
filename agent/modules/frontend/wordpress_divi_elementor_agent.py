@@ -21,6 +21,7 @@ This agent provides:
 
 logger = logging.getLogger(__name__)
 
+
 class WordPressDiviElementorAgent:
     """Enterprise WordPress Agent with Divi 5 and Elementor Pro expertise."""
 
@@ -154,8 +155,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def create_divi5_luxury_layout(
-        self, layout_spec: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, layout_spec: Dict[str, Any]) -> Dict[str, Any]:
         """Create advanced Divi 5 luxury layout with AI optimization."""
         try:
             logger.info("🎨 Creating Divi 5 luxury layout...")
@@ -180,9 +180,7 @@ class WordPressDiviElementorAgent:
             )
 
             # Generate responsive design
-            responsive_design = await self._create_responsive_divi_design(
-                layout_structure
-            )
+            responsive_design = await self._create_responsive_divi_design(layout_structure)
 
             # Create Divi Builder JSON
             divi_json = await self._generate_divi_builder_json(
@@ -190,9 +188,7 @@ class WordPressDiviElementorAgent:
             )
 
             # Generate custom CSS
-            custom_css = await self._generate_luxury_css(
-                layout_structure, brand_context
-            )
+            custom_css = await self._generate_luxury_css(layout_structure, brand_context)
 
             return {
                 "layout_type": layout_type,
@@ -214,8 +210,7 @@ class WordPressDiviElementorAgent:
             return {"error": str(e), "status": "failed"}
 
     async def create_elementor_pro_template(
-        self, template_spec: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, template_spec: Dict[str, Any]) -> Dict[str, Any]:
         """Create advanced Elementor Pro template with custom widgets."""
         try:
             logger.info("🔧 Creating Elementor Pro template...")
@@ -230,9 +225,7 @@ class WordPressDiviElementorAgent:
             )
 
             # Create custom widgets
-            custom_widgets = await self._create_custom_elementor_widgets(
-                functionality_requirements
-            )
+            custom_widgets = await self._create_custom_elementor_widgets(functionality_requirements)
 
             # Apply professional styling
             professional_styling = await self._apply_professional_elementor_styling(
@@ -271,8 +264,7 @@ class WordPressDiviElementorAgent:
             return {"error": str(e), "status": "failed"}
 
     async def optimize_wordpress_performance(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Advanced WordPress performance optimization."""
         try:
             logger.info("⚡ Optimizing WordPress performance...")
@@ -330,8 +322,7 @@ class WordPressDiviElementorAgent:
             return {"error": str(e), "status": "failed"}
 
     async def intelligent_seo_optimization(
-        self, content_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, content_data: Dict[str, Any]) -> Dict[str, Any]:
         """AI-powered SEO optimization for WordPress."""
         try:
             logger.info("🚀 Running intelligent SEO optimization...")
@@ -348,9 +339,7 @@ class WordPressDiviElementorAgent:
             schema_markup = await self._generate_schema_markup(content_data)
 
             # Optimize meta tags
-            meta_optimization = await self._optimize_meta_tags(
-                content_data, seo_analysis
-            )
+            meta_optimization = await self._optimize_meta_tags(content_data, seo_analysis)
 
             # Internal linking optimization
             internal_linking = await self._optimize_internal_linking(content_data)
@@ -359,9 +348,7 @@ class WordPressDiviElementorAgent:
             technical_seo = await self._implement_technical_seo(content_data)
 
             # Generate SEO content suggestions
-            content_suggestions = await self._generate_seo_content_suggestions(
-                seo_analysis
-            )
+            content_suggestions = await self._generate_seo_content_suggestions(seo_analysis)
 
             return {
                 "seo_optimization_status": "completed",
@@ -395,17 +382,13 @@ class WordPressDiviElementorAgent:
             test_parameters = await self._configure_test_parameters(design_variants)
 
             # Run parallel tests
-            test_results = await self._run_parallel_design_tests(
-                design_variants, test_parameters
-            )
+            test_results = await self._run_parallel_design_tests(design_variants, test_parameters)
 
             # Analyze test performance
             performance_analysis = await self._analyze_test_performance(test_results)
 
             # Generate statistical insights
-            statistical_insights = await self._generate_statistical_insights(
-                test_results
-            )
+            statistical_insights = await self._generate_statistical_insights(test_results)
 
             # Determine winning variant
             winning_variant = await self._determine_winning_variant(
@@ -413,10 +396,8 @@ class WordPressDiviElementorAgent:
             )
 
             # Generate optimization recommendations
-            optimization_recommendations = (
-                await self._generate_optimization_recommendations(
-                    winning_variant, test_results
-                )
+            optimization_recommendations = await self._generate_optimization_recommendations(
+                winning_variant, test_results
             )
 
             return {
@@ -635,19 +616,12 @@ class WordPressDiviElementorAgent:
 
         for section in structure.get("sections", []):
             section_config = {
-                "type": section["type"],
-                "modules": section["modules"],
-                "settings": {
+                "type": section["type"], "modules": section["modules"], "settings": {
                     "background": self._generate_section_background(
-                        section, enhancements
-                    ),
-                    "spacing": self._generate_section_spacing(section, enhancements),
-                    "animation": section.get("animation", "none"),
-                    "responsive": self._generate_responsive_settings(
-                        section, responsive
-                    ),
-                },
-            }
+                        section, enhancements), "spacing": self._generate_section_spacing(
+                        section, enhancements), "animation": section.get(
+                        "animation", "none"), "responsive": self._generate_responsive_settings(
+                        section, responsive), }, }
             divi_config["sections"].append(section_config)
 
         return json.dumps(divi_config, indent=2)
@@ -944,8 +918,7 @@ class WordPressDiviElementorAgent:
     # Performance optimization helper methods
 
     async def _analyze_wordpress_performance(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze current WordPress performance."""
         return {
             "current_scores": {
@@ -968,8 +941,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _optimize_wordpress_database(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Optimize WordPress database."""
         return {
             "optimizations_applied": [
@@ -985,8 +957,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _optimize_wordpress_caching(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Optimize WordPress caching."""
         return {
             "cache_types_implemented": [
@@ -1001,8 +972,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _optimize_wordpress_images(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Optimize WordPress images."""
         return {
             "optimizations_applied": [
@@ -1017,8 +987,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _optimize_wordpress_code(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Optimize WordPress code."""
         return {
             "optimizations_applied": [
@@ -1042,8 +1011,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _harden_wordpress_security(
-        self, site_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, site_data: Dict[str, Any]) -> Dict[str, Any]:
         """Harden WordPress security."""
         return {
             "security_measures": [
@@ -1120,8 +1088,7 @@ class WordPressDiviElementorAgent:
     # SEO optimization helper methods
 
     async def _analyze_seo_opportunities(
-        self, content_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, content_data: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze SEO opportunities."""
         return {
             "keyword_opportunities": [
@@ -1159,8 +1126,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _generate_schema_markup(
-        self, content_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, content_data: Dict[str, Any]) -> Dict[str, Any]:
         """Generate schema markup."""
         return {
             "organization_schema": "implemented",
@@ -1183,8 +1149,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _optimize_internal_linking(
-        self, content_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, content_data: Dict[str, Any]) -> Dict[str, Any]:
         """Optimize internal linking structure."""
         return {
             "link_structure": "hierarchical_optimization",
@@ -1195,8 +1160,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _implement_technical_seo(
-        self, content_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, content_data: Dict[str, Any]) -> Dict[str, Any]:
         """Implement technical SEO improvements."""
         return {
             "sitemap_optimization": "xml_html_generated",
@@ -1285,8 +1249,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _analyze_test_performance(
-        self, test_results: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, test_results: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze test performance."""
         return {
             "best_performer": "test_b",
@@ -1296,8 +1259,7 @@ class WordPressDiviElementorAgent:
         }
 
     async def _generate_statistical_insights(
-        self, test_results: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, test_results: Dict[str, Any]) -> Dict[str, Any]:
         """Generate statistical insights."""
         return {
             "confidence": 99.2,
@@ -1329,32 +1291,38 @@ class WordPressDiviElementorAgent:
             "Document learnings for future tests",
         ]
 
+
 # Factory function for creating WordPress agent instances
 def create_wordpress_divi_elementor_agent() -> WordPressDiviElementorAgent:
     """Create and return a WordPress Divi Elementor Agent instance."""
     return WordPressDiviElementorAgent()
 
+
 # Global agent instance for the platform
 wordpress_agent = create_wordpress_divi_elementor_agent()
+
 
 # Convenience functions for easy access
 async def create_luxury_divi_layout(layout_spec: Dict[str, Any]) -> Dict[str, Any]:
     """Create luxury Divi 5 layout."""
     return await wordpress_agent.create_divi5_luxury_layout(layout_spec)
 
+
 async def create_professional_elementor_template(
-    template_spec: Dict[str, Any]
-) -> Dict[str, Any]:
+        template_spec: Dict[str, Any]) -> Dict[str, Any]:
     """Create professional Elementor Pro template."""
     return await wordpress_agent.create_elementor_pro_template(template_spec)
+
 
 async def optimize_wordpress_site(site_data: Dict[str, Any]) -> Dict[str, Any]:
     """Optimize WordPress site performance."""
     return await wordpress_agent.optimize_wordpress_performance(site_data)
 
+
 async def optimize_seo_intelligently(content_data: Dict[str, Any]) -> Dict[str, Any]:
     """Optimize SEO with AI."""
     return await wordpress_agent.intelligent_seo_optimization(content_data)
+
 
 async def run_automated_design_tests(variants: List[Dict[str, Any]]) -> Dict[str, Any]:
     """Run automated A/B design tests."""

@@ -9,6 +9,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class WordPressIntegrationService:
     """WordPress REST API integration service for luxury brand agent management."""
 
@@ -26,9 +27,7 @@ class WordPressIntegrationService:
         self.site_id = None
         self.site_url = None
 
-        logger.info(
-            "🌐 WordPress Integration Service initialized for luxury brand agents"
-        )
+        logger.info("🌐 WordPress Integration Service initialized for luxury brand agents")
 
     def generate_auth_url(self, state: str = None) -> str:
         """Generate WordPress OAuth authorization URL."""
@@ -69,8 +68,7 @@ class WordPressIntegrationService:
             await self._get_site_info()
 
             logger.info(
-                "✅ WordPress OAuth token exchange successful - Agents ready to work!"
-            )
+                "✅ WordPress OAuth token exchange successful - Agents ready to work!")
             return {
                 "status": "success",
                 "access_token": self.access_token,
@@ -158,9 +156,8 @@ class WordPressIntegrationService:
             ],
         }
 
-    async def get_site_posts(
-        self, limit: int = 10, post_type: str = "post"
-    ) -> Dict[str, Any]:
+    async def get_site_posts(self, limit: int = 10,
+                             post_type: str = "post") -> Dict[str, Any]:
         """Get WordPress site posts for agent analysis."""
         try:
             if not await self._ensure_valid_token():
@@ -275,9 +272,7 @@ class WordPressIntegrationService:
             return {
                 "status": "success",
                 "updated_post": updated_post,
-                "agent_improvements": self._analyze_content_improvements(
-                    content_updates
-                ),
+                "agent_improvements": self._analyze_content_improvements(content_updates),
             }
 
         except Exception as e:
@@ -301,9 +296,7 @@ class WordPressIntegrationService:
                 "status": "publish",
                 "type": "page",
                 "featured_image": collection_data.get("featured_image"),
-                "excerpt": collection_data.get(
-                    "description", "Exclusive luxury collection"
-                ),
+                "excerpt": collection_data.get("description", "Exclusive luxury collection"),
                 "metadata": [
                     {"key": "luxury_collection", "value": "true"},
                     {
@@ -336,9 +329,7 @@ class WordPressIntegrationService:
                 "page_id": created_page.get("ID"),
                 "page_url": created_page.get("URL"),
                 "luxury_features": await self._get_luxury_page_features(created_page),
-                "seo_optimization": await self._apply_seo_optimization(
-                    created_page.get("ID")
-                ),
+                "seo_optimization": await self._apply_seo_optimization(created_page.get("ID")),
                 "conversion_elements": self._get_conversion_elements(collection_data),
             }
 
@@ -366,9 +357,7 @@ class WordPressIntegrationService:
                 performance_data = stats_response.json()
 
             # Analyze performance for agent actions
-            performance_analysis = await self._analyze_performance_metrics(
-                performance_data
-            )
+            performance_analysis = await self._analyze_performance_metrics(performance_data)
 
             return {
                 "site_stats": performance_data,
@@ -427,8 +416,7 @@ class WordPressIntegrationService:
             return False
 
     async def _generate_luxury_page_content(
-        self, collection_data: Dict[str, Any]
-    ) -> str:
+            self, collection_data: Dict[str, Any]) -> str:
         """Generate luxury page content with Divi builder elements."""
         collection_type = collection_data.get("collection_type", "premium")
         title = collection_data.get("title", "Luxury Collection")
@@ -492,8 +480,7 @@ Investment pieces designed to appreciate in value and be treasured for generatio
         return content
 
     async def _analyze_luxury_opportunities(
-        self, theme_data: Dict[str, Any]
-    ) -> List[str]:
+            self, theme_data: Dict[str, Any]) -> List[str]:
         """Analyze opportunities for luxury brand improvements."""
         opportunities = []
 
@@ -522,8 +509,7 @@ Investment pieces designed to appreciate in value and be treasured for generatio
         return opportunities
 
     async def _analyze_performance_metrics(
-        self, stats_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, stats_data: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze performance metrics for agent recommendations."""
         return {
             "traffic_analysis": {
@@ -612,7 +598,9 @@ Investment pieces designed to appreciate in value and be treasured for generatio
             "Mobile-first design approach",
         ]
 
+
 # Factory function
+
 
 def create_wordpress_integration_service() -> WordPressIntegrationService:
     """Create WordPress integration service instance."""

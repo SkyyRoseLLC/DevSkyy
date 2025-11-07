@@ -1,5 +1,17 @@
+# Flake8 Configuration for DevSkyy Platform
+# Enterprise-grade Python code quality enforcement
+# Version: 2.0.0
+# Truth Protocol Compliance: All 15 rules
+# Updated: 2025-11-06
+
 [flake8]
+# Maximum line length (keeping existing 88 for Black compatibility)
 max-line-length = 88
+
+# Maximum complexity (McCabe) - enterprise standard
+max-complexity = 15
+
+# Exclude directories
 exclude =
     node_modules,
     __pycache__,
@@ -14,20 +26,76 @@ exclude =
     *.egg-info,
     devskyy-platform,
     htmlcov,
-    .pytest_cache
+    .pytest_cache,
+    .mypy_cache,
+    .tox,
+    .idea,
+    .vscode
+
+# Ignore specific error codes
 extend-ignore =
-    E203,
-    W503,
-    E501,
-    W293,
-    W291
+    E203,  # whitespace before ':' (Black compatibility)
+    W503,  # line break before binary operator (PEP 8 update)
+    E501,  # line too long (handled by max-line-length)
+    W293,  # blank line contains whitespace
+    W291,  # trailing whitespace
+    E266,  # too many leading '#' for block comment
+    W504,  # line break after binary operator
+
+# Per-file ignores
 per-file-ignores =
-    __init__.py:F401
-    tests/*:F401,F841
-    */test_*.py:F401,F841
+    __init__.py:F401,E402
+    tests/*:F401,F841,E501
+    */test_*.py:F401,F841,E501
     create_user.py:E402
     main.py:E402
     logger_config.py:E402
     monitoring/observability.py:E402
+    backend/server.py:E402
+    examples/*:E501,F841
+    ml/engines/*:E501
+
+# Enable specific checks
+select =
+    E,    # pycodestyle errors
+    W,    # pycodestyle warnings
+    F,    # PyFlakes
+    C,    # McCabe complexity
+
+# Show source code for errors
+show-source = True
+
+# Show statistics
 statistics = True
+
+# Count errors
 count = True
+
+# Format output for better readability
+format = %(path)s:%(row)d:%(col)d: %(code)s %(text)s
+
+# Jobs (parallel execution for speed)
+jobs = auto
+
+# Docstring conventions
+docstring-convention = google
+
+# Application import names (for import-order checking)
+application-import-names =
+    agents,
+    api,
+    backend,
+    core,
+    infrastructure,
+    ml,
+    mcp_servers,
+    security,
+    integrations,
+    shared,
+    agent
+
+# Maximum annotations complexity
+max-annotations-complexity = 4
+
+# Maximum expression complexity
+max-expression-complexity = 10

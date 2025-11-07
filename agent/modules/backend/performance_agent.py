@@ -11,6 +11,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class PerformanceAgent:
     """Universal Web Development Guru - Master of All Programming Languages & Web Technologies."""
 
@@ -581,7 +582,7 @@ class PerformanceAgent:
                         "fix": "Use f-strings or join() method for better performance",
                     }
                 )
-            if "range(len(" in code:)
+            if "range(len(" in code:
                 issues.append(
                     {
                         "type": "INEFFICIENT_ITERATION",

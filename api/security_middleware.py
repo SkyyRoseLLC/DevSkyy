@@ -1,4 +1,4 @@
-        import re
+import re
 from datetime import datetime, timedelta
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 # ============================================================================
 # RATE LIMITING
 # ============================================================================
+
 
 class RateLimiter:
     """Advanced rate limiter with multiple strategies"""
@@ -77,7 +78,7 @@ class RateLimiter:
         requests_per_minute = len(client_requests)
         requests_per_second = sum(
             1 for req_time in client_requests if req_time > second_ago
-)
+        )
 
         minute_limit = self.limits.get(endpoint_category, self.limits["default"])
         burst_limit = self.burst_limits.get(
@@ -110,6 +111,7 @@ class RateLimiter:
 # ============================================================================
 # SECURITY PATTERNS DETECTION
 # ============================================================================
+
 
 class ThreatDetector:
     """Advanced threat detection system"""
@@ -177,6 +179,7 @@ class ThreatDetector:
 # ============================================================================
 # SECURITY MIDDLEWARE
 # ============================================================================
+
 
 class SecurityMiddleware(BaseHTTPMiddleware):
     """Comprehensive security middleware"""

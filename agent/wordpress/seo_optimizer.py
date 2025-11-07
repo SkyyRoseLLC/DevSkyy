@@ -19,6 +19,7 @@ Reference: Based on AGENTS.md Line 921-961
 
 logger = logging.getLogger(__name__)
 
+
 class WordPressSEOOptimizer:
     """
     Comprehensive SEO optimization for WordPress sites.
@@ -272,7 +273,7 @@ class WordPressSEOOptimizer:
         )
 
         # Title score
-        title_len = analysis["title"]["length"]
+        title_len= analysis["title"]["length"]
         if (
             self.seo_best_practices["title_length"]["min"]
             <= title_len
@@ -281,7 +282,7 @@ class WordPressSEOOptimizer:
             score += self.seo_best_practices["title_length"]["weight"]
 
         # Meta description score
-        meta_len = analysis["meta_description"]["length"]
+        meta_len= analysis["meta_description"]["length"]
         if (
             self.seo_best_practices["meta_description_length"]["min"]
             <= meta_len
@@ -341,7 +342,7 @@ class WordPressSEOOptimizer:
         Returns:
             JSON-LD schema markup
         """
-        schemas = {
+        schemas= {
             "article": self._generate_article_schema,
             "product": self._generate_product_schema,
             "organization": self._generate_organization_schema,

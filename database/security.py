@@ -22,6 +22,7 @@ logger = logging.getLogger(__name__)
 # CREDENTIAL ENCRYPTION
 # ============================================================================
 
+
 class CredentialManager:
     """Secure credential management with encryption"""
 
@@ -80,6 +81,7 @@ class CredentialManager:
 # ============================================================================
 # CONNECTION POOL SECURITY
 # ============================================================================
+
 
 class SecureConnectionPool:
     """Enhanced connection pool with security monitoring"""
@@ -205,13 +207,11 @@ class SecureConnectionPool:
         return {
             **self.connection_stats,
             "query_patterns": dict(self.query_patterns),
-            "recent_connections": len()
-                [
-                    conn
-                    for conn in self.connection_history
-                    if conn["timestamp"] > datetime.now() - timedelta(minutes=5)
-                ]
-            ),
+            "recent_connections": len([
+                conn
+                for conn in self.connection_history
+                if conn["timestamp"] > datetime.now() - timedelta(minutes=5)
+            ]),
             "suspicious_ips": list(self.suspicious_ips),
         }
 
@@ -228,17 +228,17 @@ class SecureSessionManager:
         self.active_sessions = {}
         self.session_stats = defaultdict(int)
 
-    @asynccontextmanager
+    @ asynccontextmanager
     async def get_secure_session(
         self, user_id: Optional[str] = None
     ) -> AsyncGenerator[AsyncSession, None]:
         """Get a secure database session with monitoring"""
-        session_id = f"session_{int(time.time() * 1000)}"
+        session_id= f"session_{int(time.time() * 1000)}"
 
         try:
             async with self.session_factory() as session:
                 # Track session
-                self.active_sessions[session_id] = {
+                self.active_sessions[session_id]= {
                     "user_id": user_id,
                     "created_at": datetime.now(),
                     "queries_executed": 0,
@@ -382,7 +382,7 @@ class DatabaseSecurityManager:
             "threat_level": self.threat_level,
             "connection_stats": self.connection_pool.get_security_stats(),
             "session_stats": self.session_manager.get_session_stats(),
-            "recent_security_events": len()
+            "recent_security_events": len(
                 [
                     event
                     for event in self.security_events

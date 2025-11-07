@@ -23,6 +23,7 @@ logger = logging.getLogger(__name__)
 # KEY MANAGEMENT
 # ============================================================================
 
+
 class KeyManager:
     """Secure key management with key rotation support"""
 
@@ -85,9 +86,11 @@ class KeyManager:
 
         return self.active_keys[key_id]
 
+
 # ============================================================================
 # AES-256-GCM ENCRYPTION
 # ============================================================================
+
 
 class AESEncryption:
     """AES-256-GCM encryption (Authenticated Encryption with Associated Data)"""
@@ -164,8 +167,8 @@ class AESEncryption:
 
             # Create cipher
             cipher = Cipher(
-                algorithms.AES(key), modes.GCM(iv, tag), backend=default_backend()
-            )
+                algorithms.AES(key), modes.GCM(
+                    iv, tag), backend=default_backend())
             decryptor = cipher.decryptor()
 
             # Decrypt
@@ -176,12 +179,13 @@ class AESEncryption:
         except Exception as e:
             logger.error(f"Decryption failed: {e}")
             raise ValueError(
-                "Decryption failed - data may be corrupted or key is incorrect"
-            )
+                "Decryption failed - data may be corrupted or key is incorrect")
+
 
 # ============================================================================
 # FERNET ENCRYPTION (Simpler alternative)
 # ============================================================================
+
 
 class FernetEncryption:
     """Fernet encryption (simpler, built-in authentication)"""
@@ -212,9 +216,11 @@ class FernetEncryption:
         decrypted = self.cipher.decrypt(encrypted_data.encode())
         return decrypted.decode()
 
+
 # ============================================================================
 # FIELD-LEVEL ENCRYPTION
 # ============================================================================
+
 
 class FieldEncryption:
     """Field-level encryption for sensitive database fields"""
@@ -276,9 +282,11 @@ class FieldEncryption:
 
         return decrypted
 
+
 # ============================================================================
 # PASSWORD HASHING (One-way)
 # ============================================================================
+
 
 class PasswordHasher:
     """Secure password hashing using bcrypt or argon2"""
@@ -300,8 +308,12 @@ class PasswordHasher:
 
         # Hash password
         key = hashlib.pbkdf2_hmac(
-            "sha256", password.encode(), salt, 100000 + salt_rounds * 10000
-        )
+            "sha256",
+            password.encode(),
+            salt,
+            100000 +
+            salt_rounds *
+            10000)
 
         # Combine salt and hash
         storage = salt + key
@@ -337,9 +349,11 @@ class PasswordHasher:
         except Exception:
             return False
 
+
 # ============================================================================
 # SECURE RANDOM GENERATION
 # ============================================================================
+
 
 class SecureRandom:
     """Cryptographically secure random generation"""
@@ -360,6 +374,7 @@ class SecureRandom:
     def generate_secret_key(length: int = 64) -> str:
         """Generate a secret key"""
         return secrets.token_hex(length)
+
 
 # ============================================================================
 # GLOBAL INSTANCES

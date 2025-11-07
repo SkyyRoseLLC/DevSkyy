@@ -13,6 +13,7 @@ import uuid
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 class InventoryAgent:
     """Production-level inventory management with advanced analytics and AI-powered insights."""
 
@@ -137,22 +138,22 @@ class InventoryAgent:
             logger.info(f"🗑️ Starting duplicate removal with strategy: {keep_strategy}")
 
             # Create backup before removal
-            backup_id = await self._create_backup()
+            backup_id= await self._create_backup()
 
-            duplicates = await self.find_duplicates()
-            removed_assets = []
-            space_freed = 0
+            duplicates= await self.find_duplicates()
+            removed_assets= []
+            space_freed= 0
 
             for group_type, groups in duplicates["duplicate_analysis"].items():
                 for group in groups:
                     if len(group) > 1:
                         # Determine which asset to keep based on strategy
-                        keeper = self._select_keeper(group, keep_strategy)
+                        keeper= self._select_keeper(group, keep_strategy)
 
                         # Remove duplicates
                         for asset in group:
                             if asset["id"] != keeper["id"]:
-                                removal_result = await self._safely_remove_asset(asset)
+                                removal_result= await self._safely_remove_asset(asset)
                                 if removal_result["success"]:
                                     removed_assets.append(asset)
                                     space_freed += asset.get("size", 0)
@@ -179,10 +180,10 @@ class InventoryAgent:
             logger.info("📊 Generating similarity visualization...")
 
             # Create similarity matrix
-            similarity_data = self._build_similarity_matrix()
+            similarity_data= self._build_similarity_matrix()
 
             # Generate interactive visualization
-            visualization = self._create_interactive_visualization(similarity_data)
+            visualization= self._create_interactive_visualization(similarity_data)
 
             return visualization
 

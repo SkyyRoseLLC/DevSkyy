@@ -1,15 +1,3 @@
-from datetime import datetime, timedelta, timezone
-
-from fastapi.testclient import TestClient
-
-        import uuid
-        import uuid
-from main import app
-from security.encryption import AESEncryption, KeyManager
-from security.input_validation import InputSanitizer
-from security.jwt_auth import (
-    import pytest
-
 """
 Integration Tests for Enterprise Security Features
 Tests JWT authentication, RBAC, encryption, and input validation
@@ -19,7 +7,13 @@ References:
 - NIST SP 800-38D: AES-GCM encryption
 - OWASP Top 10: Security best practices
 """
-
+from datetime import datetime, timedelta, timezone
+from fastapi.testclient import TestClient
+import uuid
+from main import app
+from security.encryption import AESEncryption, KeyManager
+from security.input_validation import InputSanitizer
+from security.jwt_auth import (
     create_access_token,
     create_refresh_token,
     hash_password,
@@ -28,21 +22,26 @@ References:
     verify_password,
     verify_token,
 )
+import pytest
+
 
 @pytest.fixture
 def client():
     """Create test client"""
     return TestClient(app)
 
+
 @pytest.fixture
 def key_manager():
     """Create key manager for testing"""
     return KeyManager()
 
+
 @pytest.fixture
 def aes_encryption(key_manager):
     """Create AES encryption instance for testing"""
     return AESEncryption(key_manager)
+
 
 class TestJWTAuthentication:
     """Test JWT authentication system per RFC 7519"""
@@ -123,6 +122,7 @@ class TestJWTAuthentication:
         assert "iat" in decoded
         assert decoded["iat"].tzinfo is not None
 
+
 class TestRBAC:
     """Test Role-Based Access Control"""
 
@@ -167,6 +167,7 @@ class TestRBAC:
         # Should be forbidden (403) or unauthorized (401)
         assert response.status_code in [401, 403]
 
+
 class TestPasswordHashing:
     """Test password hashing with bcrypt"""
 
@@ -207,6 +208,7 @@ class TestPasswordHashing:
         # But both should verify correctly
         assert verify_password(password, hash1) is True
         assert verify_password(password, hash2) is True
+
 
 class TestAESEncryption:
     """Test AES-256-GCM encryption per NIST SP 800-38D"""
@@ -272,6 +274,7 @@ class TestAESEncryption:
         with pytest.raises(Exception):
             aes_encryption.decrypt(tampered)
 
+
 class TestKeyDerivation:
     """Test key derivation with PBKDF2"""
 
@@ -314,6 +317,7 @@ class TestKeyDerivation:
 
         # Keys should be different
         assert key1 != key2
+
 
 class TestInputValidation:
     """Test input validation and sanitization"""
@@ -387,6 +391,7 @@ class TestInputValidation:
         except Exception as e:
             pytest.fail(f"Safe input failed validation: {e}")
 
+
 class TestAuthenticationEndpoints:
     """Test authentication API endpoints"""
 
@@ -444,6 +449,7 @@ class TestAuthenticationEndpoints:
 
         assert response.status_code == 401  # Unauthorized
 
+
 @pytest.mark.integration
 class TestSecurityIntegration:
     """Integration tests for complete security workflows"""
@@ -475,6 +481,7 @@ class TestSecurityIntegration:
 
         protected_response = client.get("/api/v1/monitoring/health", headers=headers)
         assert protected_response.status_code == 200
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

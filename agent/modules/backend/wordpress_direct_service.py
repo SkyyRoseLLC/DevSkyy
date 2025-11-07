@@ -9,7 +9,7 @@ from typing import Any, Dict, List
 import httpx
 import logging
 
-logger = logging.getLogger(__name__)
+logger=logging.getLogger(__name__)
 
 class WordPressDirectService:
     """Direct WordPress connection using Application Password - No OAuth needed!"""
@@ -23,10 +23,10 @@ class WordPressDirectService:
         # secrets, CI secrets, or a .env file that is **never** committed).
         # ---------------------------------------------------------------------
 
-        self.site_url = os.getenv("WORDPRESS_SITE_URL")
-        self.username = os.getenv("WORDPRESS_USERNAME")
-        self.password = os.getenv("WORDPRESS_PASSWORD")
-        self.use_basic_auth = True
+        self.site_url=os.getenv("WORDPRESS_SITE_URL")
+        self.username=os.getenv("WORDPRESS_USERNAME")
+        self.password=os.getenv("WORDPRESS_PASSWORD")
+        self.use_basic_auth=True
 
         # Fail fast if any credential is missing – safer than silently falling
         # back to an insecure default or, worse, assuming connection success.
@@ -38,24 +38,24 @@ class WordPressDirectService:
             )
 
         # Clean up the password (remove any extra whitespace)
-        self.password = self.password.strip()
+        self.password=self.password.strip()
 
         # WordPress REST API base URL
-        self.api_base = f"{self.site_url.rstrip('/')}/wp-json/wp/v2"
+        self.api_base=f"{self.site_url.rstrip('/')}/wp-json/wp/v2"
 
         # Set up multiple authentication methods for bulletproof connection
-        self.auth = HTTPBasicAuth(self.username, self.password)
+        self.auth=HTTPBasicAuth(self.username, self.password)
 
         # Headers for API requests
-        self.headers = {
+        self.headers={
             "User-Agent": "Skyy Rose AI Agent Platform/3.0",
             "Accept": "application/json",
             "Content-Type": "application/json",
         }
 
         # Connection status
-        self.connected = False
-        self.site_info = {}
+        self.connected=False
+        self.site_info={}
 
         logger.info(f"🔥 WordPress Direct Service initialized for {self.site_url}")
         logger.info(f"👤 Username: {self.username}")
@@ -63,7 +63,7 @@ class WordPressDirectService:
 
     async def connect_and_verify(self) -> Dict[str, Any]:
         """BULLETPROOF WordPress connection with multiple fallback methods."""
-        connection_methods = [
+        connection_methods=[
             self._try_rest_api_connection,
             self._try_xmlrpc_connection,
             self._try_direct_login_simulation,
@@ -74,11 +74,11 @@ class WordPressDirectService:
         ):
             try:
                 logger.info(f"🔄 Attempting {method_name} connection...")
-                result = await method()
+                result=await method()
 
                 if result.get("status") == "connected":
                     logger.info(f"✅ {method_name} connection SUCCESS!")
-                    self.connected = True
+                    self.connected=True
                     return result
 
             except Exception as e:
@@ -98,7 +98,7 @@ class WordPressDirectService:
         """Try REST API connection with user credentials."""
         try:
             # First, try to get user info with basic auth
-            response = httpx.get(
+            response=httpx.get(
                 f"{self.api_base}/users/me",
                 auth=self.auth,
                 headers=self.headers,
@@ -107,18 +107,18 @@ class WordPressDirectService:
             )
 
             if response.status_code == 200:
-                user_info = response.json()
+                user_info=response.json()
 
                 # Get site information
-                site_response = httpx.get(
+                site_response=httpx.get(
                     f"{self.site_url.rstrip('/')}/wp-json",
                     headers=self.headers,
                     timeout=10,
                 )
 
-                site_info = {}
+                site_info={}
                 if site_response.status_code == 200:
-                    site_info = site_response.json()
+                    site_info=site_response.json()
 
                 return {
                     "status": "connected",
@@ -151,13 +151,13 @@ class WordPressDirectService:
         try:
 
             # WordPress XML-RPC endpoint
-            xmlrpc_url = f"{self.site_url.rstrip('/')}/xmlrpc.php"
+            xmlrpc_url=f"{self.site_url.rstrip('/')}/xmlrpc.php"
 
             # Create XML-RPC client
-            server = xmlrpc.client.ServerProxy(xmlrpc_url)
+            server=xmlrpc.client.ServerProxy(xmlrpc_url)
 
             # Test authentication
-            result = server.wp.getProfile(0, self.username, self.password)
+            result=server.wp.getProfile(0, self.username, self.password)
 
             if result:
                 return {
@@ -180,12 +180,12 @@ class WordPressDirectService:
     async def _try_direct_login_simulation(self) -> Dict[str, Any]:
         """Try simulating direct WordPress login."""
         try:
-            session = requests.Session()
+            session=requests.Session()
 
             # Get login page first
-            login_url = f"{self.site_url.rstrip('/')}/wp-login.php"
+            login_url=f"{self.site_url.rstrip('/')}/wp-login.php"
 
-            response = session.get(login_url, timeout=10)
+            response=session.get(login_url, timeout=10)
 
             if response.status_code == 200:
                 # Extract any necessary tokens or nonces from the login page

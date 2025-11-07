@@ -10,6 +10,7 @@ import openai
 load_dotenv()
 logger = logging.getLogger(__name__)
 
+
 class BrandIntelligenceAgent:
     """
     Production-level Brand Intelligence Agent for The Skyy Rose Collection.
@@ -65,9 +66,7 @@ class BrandIntelligenceAgent:
         self.uploaded_assets = {}
         self.learning_from_assets = False
 
-        logger.info(
-            "🌟 Brand Intelligence Agent initialized for The Skyy Rose Collection"
-        )
+        logger.info("🌟 Brand Intelligence Agent initialized for The Skyy Rose Collection")
 
     def analyze_brand_assets(self) -> Dict[str, Any]:
         """Comprehensive analysis of all brand assets and positioning."""
@@ -167,8 +166,7 @@ class BrandIntelligenceAgent:
 
             # Update brand strategies based on insights
             strategy_updates = self._update_brand_strategies(
-                market_analysis, sentiment_analysis
-            )
+                market_analysis, sentiment_analysis)
 
             # Generate actionable insights
             insights = self._generate_actionable_insights(
@@ -303,32 +301,27 @@ class BrandIntelligenceAgent:
         self, market_analysis: Dict, performance_metrics: Dict, sentiment_analysis: Dict
     ) -> List[Dict[str, Any]]:
         """Generate actionable insights from all analyses."""
-        return [
-            {
-                "insight": "Increase sustainable material communication",
-                "priority": "high",
-                "action": "Create detailed sustainability pages and product certifications",
-                "expected_impact": "Improved brand differentiation and customer trust",
-            },
-            {
-                "insight": "Expand size inclusivity messaging",
-                "priority": "medium",
-                "action": "Feature diverse models and sizing guides prominently",
-                "expected_impact": "Broader market appeal and improved conversion",
-            },
-            {
-                "insight": "Optimize mobile shopping experience",
-                "priority": "high",
-                "action": "Implement mobile-first design improvements",
-                "expected_impact": "Increased mobile conversion rates",
-            },
-            {
-                "insight": "Develop premium loyalty program",
-                "priority": "medium",
-                "action": "Create tiered loyalty with exclusive experiences",
-                "expected_impact": "Improved customer retention and lifetime value",
-            },
-        ]
+        return [{"insight": "Increase sustainable material communication",
+                 "priority": "high",
+                 "action": "Create detailed sustainability pages and product certifications",
+                 "expected_impact": "Improved brand differentiation and customer trust",
+                 },
+                {"insight": "Expand size inclusivity messaging",
+                 "priority": "medium",
+                 "action": "Feature diverse models and sizing guides prominently",
+                 "expected_impact": "Broader market appeal and improved conversion",
+                 },
+                {"insight": "Optimize mobile shopping experience",
+                 "priority": "high",
+                 "action": "Implement mobile-first design improvements",
+                 "expected_impact": "Increased mobile conversion rates",
+                 },
+                {"insight": "Develop premium loyalty program",
+                 "priority": "medium",
+                 "action": "Create tiered loyalty with exclusive experiences",
+                 "expected_impact": "Improved customer retention and lifetime value",
+                 },
+                ]
 
     def _calculate_brand_health(self) -> int:
         """Calculate overall brand health score."""
@@ -476,16 +469,14 @@ class BrandIntelligenceAgent:
 
             # Analyze visual consistency
             visual_analysis = self._analyze_visual_assets(
-                asset_data.get("visual_assets", {})
-            )
+                asset_data.get("visual_assets", {}))
 
             # Extract brand patterns
             brand_patterns = self._extract_brand_patterns(asset_data)
 
             # Update brand understanding
             enhanced_insights = self._generate_asset_insights(
-                visual_analysis, brand_patterns
-            )
+                visual_analysis, brand_patterns)
 
             # Update theme evolution based on assets
             if asset_data.get("seasonal_collections"):
@@ -511,8 +502,7 @@ class BrandIntelligenceAgent:
             return {"error": str(e), "learning_status": "failed"}
 
     def _experimental_neural_brand_analysis(
-        self, asset_data: Dict[str, Any]
-    ) -> Dict[str, Any]:
+            self, asset_data: Dict[str, Any]) -> Dict[str, Any]:
         """EXPERIMENTAL: Advanced neural analysis of brand DNA patterns."""
         return {
             "brand_dna_sequence": "LUXURY-SUSTAINABLE-EMPOWERMENT-ELEGANCE",
@@ -531,17 +521,20 @@ class BrandIntelligenceAgent:
     def _analyze_visual_assets(self, visual_assets: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze visual brand assets for consistency."""
         return {
-            "logo_variations": len(visual_assets.get("logos", [])),
+            "logo_variations": len(
+                visual_assets.get(
+                    "logos",
+                    [])),
             "product_image_quality": (
-                "high"
-                if len(visual_assets.get("product_images", [])) > 5
-                else "building"
-            ),
+                "high" if len(
+                    visual_assets.get(
+                        "product_images",
+                        [])) > 5 else "building"),
             "marketing_consistency": (
-                "strong"
-                if len(visual_assets.get("marketing_materials", [])) > 3
-                else "developing"
-            ),
+                "strong" if len(
+                    visual_assets.get(
+                        "marketing_materials",
+                        [])) > 3 else "developing"),
             "visual_cohesion_score": 85,
             "recommendations": [
                 "Maintain consistent color usage across all materials",
@@ -561,8 +554,9 @@ class BrandIntelligenceAgent:
         }
 
     def _generate_asset_insights(
-        self, visual_analysis: Dict, patterns: Dict
-    ) -> List[str]:
+            self,
+            visual_analysis: Dict,
+            patterns: Dict) -> List[str]:
         """Generate insights from asset analysis."""
         return [
             "Brand visual identity shows strong luxury positioning",
@@ -576,9 +570,8 @@ class BrandIntelligenceAgent:
         """Update seasonal understanding from collection assets."""
         self.theme_evolution["asset_informed"] = True
         self.theme_evolution["collection_count"] = len(seasonal_assets)
-        self.theme_evolution["visual_evolution"] = (
-            "Data-driven from uploaded collections"
-        )
+        self.theme_evolution["visual_evolution"] = "Data-driven from uploaded collections"
+
 
 def initialize_brand_intelligence() -> BrandIntelligenceAgent:
     """Initialize the brand intelligence system."""

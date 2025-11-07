@@ -4,7 +4,7 @@ import time
 
 from pydantic import BaseModel, Field
 
-        import random
+import random
 from enum import Enum
 from typing import Any, Dict, List, Optional, Tuple
 import logging
@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 # RECOMMENDATION MODELS
 # ============================================================================
 
+
 class RecommendationType(str, Enum):
     """Types of recommendations."""
 
@@ -34,6 +35,7 @@ class RecommendationType(str, Enum):
     HYBRID = "hybrid"
     TRENDING = "trending"
     PERSONALIZED = "personalized"
+
 
 class RecommendationRequest(BaseModel):
     """Recommendation request model."""
@@ -45,6 +47,7 @@ class RecommendationRequest(BaseModel):
     exclude_items: List[str] = Field(default_factory=list)
     context: Dict[str, Any] = Field(default_factory=dict)
 
+
 class RecommendationItem(BaseModel):
     """Recommended item model."""
 
@@ -55,6 +58,7 @@ class RecommendationItem(BaseModel):
     score: float = Field(ge=0.0, le=1.0)
     reason: str
     metadata: Dict[str, Any] = Field(default_factory=dict)
+
 
 class RecommendationResponse(BaseModel):
     """Recommendation response model."""
@@ -69,6 +73,7 @@ class RecommendationResponse(BaseModel):
 # ============================================================================
 # RECOMMENDATION ENGINE
 # ============================================================================
+
 
 class RecommendationEngine:
     """
@@ -389,13 +394,16 @@ class RecommendationEngine:
                         RecommendationItem(
                             item_id=item_id,
                             item_type=request.item_type,
-                            title=item_data.get("title", f"Item {item_id}"),
+                            title=item_data.get(
+                                "title",
+                                f"Item {item_id}"),
                             description=item_data.get("description"),
-                            score=min(score, 1.0),
+                            score=min(
+                                score,
+                                1.0),
                             reason="Personalized recommendation based on multiple factors",
                             metadata=item_data,
-                        )
-                    )
+                        ))
 
             return recommendations
 
@@ -444,7 +452,7 @@ class RecommendationEngine:
 
         sum_products = sum(
             user1_items[item] * user2_items[item] for item in common_items
-)
+        )
 
         n = len(common_items)
         numerator = sum_products - (sum1 * sum2 / n)
@@ -599,6 +607,7 @@ class RecommendationEngine:
 
         except Exception as e:
             logger.error(f"❌ Failed to record interaction: {e}")
+
 
 # Global recommendation engine instance
 recommendation_engine = RecommendationEngine()

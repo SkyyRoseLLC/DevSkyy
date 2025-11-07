@@ -1,21 +1,21 @@
-from datetime import datetime, timedelta, timezone
-from jose import jwt
-
-from security.jwt_auth import (
-    import pytest
-
 """
 DevSkyy Enterprise - JWT Authentication Unit Tests
 Comprehensive tests for JWT token creation, validation, and security
 """
-
+from datetime import datetime, timedelta, timezone
+from jose import jwt
+from security.jwt_auth import (
     create_access_token,
+    verify_token,
+    SECRET_KEY,
+    ALGORITHM,
     create_refresh_token,
     get_token_payload,
     JWT_ALGORITHM,
     JWT_SECRET_KEY,
-    verify_token,
 )
+import pytest
+
 
 class TestJWTTokenCreation:
     """Test JWT token creation functions"""
@@ -76,6 +76,7 @@ class TestJWTTokenCreation:
 
         # Issued time should be between before and after
         assert before_time <= iat_time <= after_time
+
 
 class TestJWTTokenVerification:
     """Test JWT token verification functions"""
@@ -138,6 +139,7 @@ class TestJWTTokenVerification:
         result = verify_token(wrong_secret_token)
         assert result is None
 
+
 class TestJWTTokenPayload:
     """Test JWT token payload extraction"""
 
@@ -168,6 +170,7 @@ class TestJWTTokenPayload:
         payload = get_token_payload(expired_token)
         assert payload is not None
         assert payload["user_id"] == test_user_data["user_id"]
+
 
 class TestJWTSecurity:
     """Test JWT security features"""
@@ -207,6 +210,7 @@ class TestJWTSecurity:
 
         # Refresh token should expire later than access token
         assert refresh_payload["exp"] > access_payload["exp"]
+
 
 class TestJWTEdgeCases:
     """Test JWT edge cases and error handling"""
@@ -260,6 +264,7 @@ class TestJWTEdgeCases:
 # ============================================================================
 # Performance Tests
 # ============================================================================
+
 
 @pytest.mark.slow
 class TestJWTPerformance:

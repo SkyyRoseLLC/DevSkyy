@@ -14,6 +14,7 @@ Comprehensive system health monitoring with metrics collection and alerting
 
 logger = logging.getLogger(__name__)
 
+
 @dataclass
 class SystemMetrics:
     """System metrics data structure"""
@@ -30,6 +31,7 @@ class SystemMetrics:
     process_count: int
     load_average: List[float]
 
+
 @dataclass
 class AlertRule:
     """Alert rule configuration"""
@@ -41,6 +43,7 @@ class AlertRule:
     duration: int  # seconds
     severity: str  # 'critical', 'warning', 'info'
     enabled: bool = True
+
 
 class MetricsCollector:
     """System metrics collector"""
@@ -87,8 +90,7 @@ class MetricsCollector:
 
                 if metrics.disk_usage_percent > 90:
                     logger.warning(
-                        f"High disk usage: {metrics.disk_usage_percent:.1f}%"
-                    )
+                        f"High disk usage: {metrics.disk_usage_percent:.1f}%")
 
                 await asyncio.sleep(self.collection_interval)
 
@@ -161,15 +163,26 @@ class MetricsCollector:
             return {}
 
         return {
-            "cpu_percent": sum(m.cpu_percent for m in history) / len(history),
-            "memory_percent": sum(m.memory_percent for m in history) / len(history),
-            "disk_usage_percent": sum(m.disk_usage_percent for m in history)
-            / len(history),
-            "active_connections": sum(m.active_connections for m in history)
-            / len(history),
-            "process_count": sum(m.process_count for m in history) / len(history),
-            "load_average_1m": sum(m.load_average[0] for m in history) / len(history),
+            "cpu_percent": sum(
+                m.cpu_percent for m in history) /
+            len(history),
+            "memory_percent": sum(
+                m.memory_percent for m in history) /
+            len(history),
+            "disk_usage_percent": sum(
+                m.disk_usage_percent for m in history) /
+            len(history),
+            "active_connections": sum(
+                m.active_connections for m in history) /
+            len(history),
+            "process_count": sum(
+                m.process_count for m in history) /
+            len(history),
+            "load_average_1m": sum(
+                m.load_average[0] for m in history) /
+            len(history),
         }
+
 
 class AlertManager:
     """System alert manager"""
@@ -186,16 +199,10 @@ class AlertManager:
         """Setup default alert rules"""
         default_rules = [
             AlertRule("High CPU Usage", "cpu_percent", 90.0, ">=", 300, "critical"),
-            AlertRule(
-                "High Memory Usage", "memory_percent", 90.0, ">=", 300, "critical"
-            ),
-            AlertRule(
-                "High Disk Usage", "disk_usage_percent", 90.0, ">=", 600, "warning"
-            ),
+            AlertRule("High Memory Usage", "memory_percent", 90.0, ">=", 300, "critical"),
+            AlertRule("High Disk Usage", "disk_usage_percent", 90.0, ">=", 600, "warning"),
             AlertRule("Low Disk Space", "disk_free_gb", 1.0, "<=", 600, "critical"),
-            AlertRule(
-                "High Load Average", "load_average_1m", 5.0, ">=", 300, "warning"
-            ),
+            AlertRule("High Load Average", "load_average_1m", 5.0, ">=", 300, "warning"),
             AlertRule("Too Many Processes", "process_count", 500, ">=", 300, "warning"),
         ]
 
@@ -226,8 +233,7 @@ class AlertManager:
 
             # Check threshold
             triggered = self._evaluate_condition(
-                metric_value, rule.operator, rule.threshold
-            )
+                metric_value, rule.operator, rule.threshold)
 
             alert_key = f"{rule.name}_{rule.metric}"
 
@@ -258,8 +264,10 @@ class AlertManager:
                     self._clear_alert(alert_key)
 
     def _evaluate_condition(
-        self, value: float, operator: str, threshold: float
-    ) -> bool:
+            self,
+            value: float,
+            operator: str,
+            threshold: float) -> bool:
         """Evaluate alert condition"""
         if operator == ">":
             return value > threshold
@@ -294,8 +302,7 @@ class AlertManager:
 
         logger.error(
             f"ALERT FIRED: {rule.name} - {rule.metric}={alert_data['current_value']:.2f} "
-            f"{rule.operator} {rule.threshold} (severity: {rule.severity})"
-        )
+            f"{rule.operator} {rule.threshold} (severity: {rule.severity})")
 
     def _clear_alert(self, alert_key: str):
         """Clear an active alert"""
@@ -343,6 +350,7 @@ class AlertManager:
             if datetime.fromisoformat(alert["timestamp"]) >= cutoff_time
         ]
 
+
 class SystemMonitor:
     """Main system monitor class"""
 
@@ -385,7 +393,8 @@ class SystemMonitor:
                 if latest_metrics:
                     self.alert_manager.check_alerts(latest_metrics)
 
-                await asyncio.sleep(10)  # TODO: Move to config  # Check alerts every 10 seconds
+                # TODO: Move to config  # Check alerts every 10 seconds
+                await asyncio.sleep(10)
 
             except Exception as e:
                 logger.error(f"Error in monitoring loop: {e}")
@@ -431,6 +440,7 @@ class SystemMonitor:
             },
             "averages_1h": self.metrics_collector.get_average_metrics(60),
         }
+
 
 # Global instance
 system_monitor = SystemMonitor()

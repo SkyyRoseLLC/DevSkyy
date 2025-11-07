@@ -24,6 +24,7 @@ Bidirectional API communication with webhook listeners and pipeline management
 
 logger = logging.getLogger(__name__)
 
+
 class CICDPlatform(Enum):
     """Supported CI/CD platforms"""
 
@@ -32,6 +33,7 @@ class CICDPlatform(Enum):
     GITHUB_ACTIONS = "github_actions"
     AZURE_DEVOPS = "azure_devops"
     BITBUCKET_PIPELINES = "bitbucket_pipelines"
+
 
 class PipelineStatus(Enum):
     """Pipeline execution status"""
@@ -43,6 +45,7 @@ class PipelineStatus(Enum):
     CANCELLED = "cancelled"
     SKIPPED = "skipped"
     TIMEOUT = "timeout"
+
 
 class WebhookEventType(Enum):
     """Webhook event types"""
@@ -56,6 +59,7 @@ class WebhookEventType(Enum):
     DEPLOYMENT_COMPLETED = "deployment_completed"
     CODE_QUALITY_UPDATED = "code_quality_updated"
     SECURITY_SCAN_COMPLETED = "security_scan_completed"
+
 
 @dataclass
 class PipelineEvent:
@@ -95,6 +99,7 @@ class PipelineEvent:
         if self.raw_payload is None:
             self.raw_payload = {}
 
+
 @dataclass
 class CICDConnection:
     """CI/CD platform connection configuration"""
@@ -110,6 +115,7 @@ class CICDConnection:
     enabled: bool = True
     rate_limit_per_hour: int = 1000
     timeout: int = 30
+
 
 class CICDIntegrationManager:
     """Manages CI/CD platform integrations and webhook processing"""

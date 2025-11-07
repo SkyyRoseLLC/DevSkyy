@@ -21,9 +21,11 @@ logger = logging.getLogger(__name__)
 
 # JWT Configuration - Enhanced Security
 JWT_SECRET_KEY = os.getenv(
-    "JWT_SECRET_KEY", os.getenv("SECRET_KEY", "INSECURE_DEFAULT_CHANGE_ME")
-)
-JWT_ALGORITHM =  "HS256"
+    "JWT_SECRET_KEY",
+    os.getenv(
+        "SECRET_KEY",
+        "INSECURE_DEFAULT_CHANGE_ME"))
+JWT_ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 15  # Reduced for security
 REFRESH_TOKEN_EXPIRE_DAYS = 7
 MAX_LOGIN_ATTEMPTS = 5  # Maximum failed login attempts
@@ -52,6 +54,7 @@ blacklisted_tokens = set()  # In production, use Redis or database
 # MODELS
 # ============================================================================
 
+
 class UserRole(str):
     """User role enumeration"""
 
@@ -60,6 +63,7 @@ class UserRole(str):
     DEVELOPER = "developer"
     API_USER = "api_user"
     READ_ONLY = "read_only"
+
 
 class User(BaseModel):
     """User model"""
@@ -74,6 +78,7 @@ class User(BaseModel):
     last_login: Optional[datetime] = None
     permissions: List[str] = Field(default_factory=list)
 
+
 class TokenData(BaseModel):
     """Token payload data"""
 
@@ -84,6 +89,7 @@ class TokenData(BaseModel):
     token_type: str = "access"  # 'access' or 'refresh'
     exp: datetime
 
+
 class TokenResponse(BaseModel):
     """Token response"""
 
@@ -92,11 +98,13 @@ class TokenResponse(BaseModel):
     token_type: str = "bearer"
     expires_in: int = ACCESS_TOKEN_EXPIRE_MINUTES * 60
 
+
 class LoginRequest(BaseModel):
     """Login request"""
 
     email: EmailStr
     password: str
+
 
 class RegisterRequest(BaseModel):
     """Registration request"""
@@ -106,21 +114,26 @@ class RegisterRequest(BaseModel):
     password: str
     role: str = UserRole.API_USER
 
+
 # ============================================================================
 # PASSWORD UTILITIES
 # ============================================================================
+
 
 def hash_password(password: str) -> str:
     """Hash a password using bcrypt"""
     return pwd_context.hash(password)
 
+
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verify a password against its hash"""
     return pwd_context.verify(plain_password, hashed_password)
 
+
 # ============================================================================
 # ENHANCED SECURITY FUNCTIONS
 # ============================================================================
+
 
 def is_account_locked(email: str) -> bool:
     """Check if account is locked due to failed login attempts"""
@@ -134,6 +147,7 @@ def is_account_locked(email: str) -> bool:
             if email in failed_login_attempts:
                 del failed_login_attempts[email]
     return False
+
 
 def record_failed_login(email: str) -> bool:
     """Record failed login attempt and lock account if necessary"""
@@ -156,6 +170,7 @@ def record_failed_login(email: str) -> bool:
 
     return False
 
+
 def clear_failed_login_attempts(email: str):
     """Clear failed login attempts for successful login"""
     if email in failed_login_attempts:
@@ -163,14 +178,17 @@ def clear_failed_login_attempts(email: str):
     if email in locked_accounts:
         del locked_accounts[email]
 
+
 def blacklist_token(token: str):
     """Add token to blacklist (logout/security breach)"""
     blacklisted_tokens.add(token)
     logger.info("🚫 Token blacklisted for security")
 
+
 def is_token_blacklisted(token: str) -> bool:
     """Check if token is blacklisted"""
     return token in blacklisted_tokens
+
 
 def validate_token_security(token: str, token_data: TokenData) -> bool:
     """Enhanced token security validation"""
@@ -180,22 +198,21 @@ def validate_token_security(token: str, token_data: TokenData) -> bool:
         return False
 
     # Check token age (additional security check)
-    token_age = (
-        datetime.now() - token_data.exp + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
+    token_age = datetime.now() - token_data.exp + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     if token_age > timedelta(hours=TOKEN_BLACKLIST_EXPIRE_HOURS):
         logger.warning(f"⚠️ Suspiciously old token used: {token_data.email}")
         return False
 
     return True
 
+
 # ============================================================================
 # JWT TOKEN UTILITIES
 # ============================================================================
 
-def create_access_token(
-    data: Dict[str, Any], expires_delta: Optional[timedelta] = None
-) -> str:
+
+def create_access_token(data: Dict[str, Any],
+                        expires_delta: Optional[timedelta] = None) -> str:
     """
     Create a new access token
 
@@ -211,9 +228,8 @@ def create_access_token(
     if expires_delta:
         expire = datetime.now(timezone.utc) + expires_delta
     else:
-        expire = datetime.now(timezone.utc) + timedelta(
-            minutes=ACCESS_TOKEN_EXPIRE_MINUTES
-        )
+        expire = datetime.now(timezone.utc) + \
+            timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
 
     to_encode.update(
         {
@@ -225,6 +241,7 @@ def create_access_token(
 
     encoded_jwt = jwt.encode(to_encode, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
     return encoded_jwt
+
 
 def create_refresh_token(data: Dict[str, Any]) -> str:
     """
@@ -250,6 +267,7 @@ def create_refresh_token(data: Dict[str, Any]) -> str:
     encoded_jwt = jwt.encode(to_encode, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
     return encoded_jwt
 
+
 def get_token_payload(token: str) -> Optional[Dict[str, Any]]:
     """
     Get token payload without validation (for testing purposes)
@@ -265,6 +283,7 @@ def get_token_payload(token: str) -> Optional[Dict[str, Any]]:
         return payload
     except Exception:
         return None
+
 
 def verify_token(token: str, token_type: str = "access") -> TokenData:
     """
@@ -332,9 +351,11 @@ def verify_token(token: str, token_type: str = "access") -> TokenData:
         logger.error(f"JWT validation error: {e}")
         raise credentials_exception
 
+
 # ============================================================================
 # AUTHENTICATION DEPENDENCIES
 # ============================================================================
+
 
 async def get_current_user(token: str = Depends(oauth2_scheme)) -> TokenData:
     """
@@ -347,6 +368,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> TokenData:
         Token data with user information
     """
     return verify_token(token, token_type="access")
+
 
 async def get_current_active_user(
     current_user: TokenData = Depends(get_current_user),
@@ -364,9 +386,11 @@ async def get_current_active_user(
     # For now, just return the user
     return current_user
 
+
 # ============================================================================
 # ROLE-BASED ACCESS CONTROL
 # ============================================================================
+
 
 class RoleChecker:
     """Role-based access control checker"""
@@ -385,12 +409,12 @@ class RoleChecker:
             )
         return user
 
+
 # Predefined role checkers
 require_super_admin = RoleChecker([UserRole.SUPER_ADMIN])
 require_admin = RoleChecker([UserRole.SUPER_ADMIN, UserRole.ADMIN])
 require_developer = RoleChecker(
-    [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.DEVELOPER]
-)
+    [UserRole.SUPER_ADMIN, UserRole.ADMIN, UserRole.DEVELOPER])
 require_authenticated = RoleChecker(
     [
         UserRole.SUPER_ADMIN,
@@ -404,6 +428,7 @@ require_authenticated = RoleChecker(
 # ============================================================================
 # API KEY AUTHENTICATION (Alternative to JWT)
 # ============================================================================
+
 
 class APIKeyAuth:
     """API Key authentication for service-to-service communication"""
@@ -446,9 +471,11 @@ class APIKeyAuth:
                 headers={"WWW-Authenticate": "Bearer"},
             )
 
+
 # ============================================================================
 # HELPER FUNCTIONS
 # ============================================================================
+
 
 def create_user_tokens(user: User) -> TokenResponse:
     """
@@ -476,9 +503,11 @@ def create_user_tokens(user: User) -> TokenResponse:
         expires_in=ACCESS_TOKEN_EXPIRE_MINUTES * 60,
     )
 
+
 # ============================================================================
 # USER MANAGEMENT (In-memory for now, move to database in production)
 # ============================================================================
+
 
 class UserManager:
     """Simple user management (replace with database in production)"""
@@ -500,8 +529,9 @@ class UserManager:
         return pwd_context.verify(plain_password, hashed_password)
 
     def authenticate_user(
-        self, username_or_email: str, password: str
-    ) -> Optional[User]:
+            self,
+            username_or_email: str,
+            password: str) -> Optional[User]:
         """Authenticate a user by username/email and password"""
         # Try to find user by email first
         user = self.get_user_by_email(username_or_email)
@@ -600,10 +630,10 @@ class UserManager:
         self.username_index[username] = user_id
 
         logger.info(
-            f"Created new user: {email} (username: {username}) with role {role}"
-        )
+            f"Created new user: {email} (username: {username}) with role {role}")
 
         return user
+
 
 # Global user manager instance
 user_manager = UserManager()

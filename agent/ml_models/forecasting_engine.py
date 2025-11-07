@@ -1,7 +1,10 @@
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 
-from sklearn.metrics import mean_squared_error, mean_absolute_error  # noqa: F401 - Reserved for Phase 3 model evaluation
+from sklearn.metrics import (
+    mean_squared_error,
+    mean_absolute_error,
+)  # noqa: F401 - Reserved for Phase 3 model evaluation
 from typing import Any, Dict, List, Tuple
 import logging
 import numpy as np
@@ -25,6 +28,7 @@ TENSORFLOW_AVAILABLE = False
 tf = None
 
 logger = logging.getLogger(__name__)
+
 
 class ForecastingEngine:
     """
@@ -73,16 +77,13 @@ class ForecastingEngine:
             forecast, lower, upper = self._linear_forecast(historical_data, periods)
         elif method == "rf":
             forecast, lower, upper = self._random_forest_forecast(
-                historical_data, periods
-            )
+                historical_data, periods)
         elif method == "seasonal":
             forecast, lower, upper = self._seasonal_forecast(
-                historical_data, periods, seasonality
-            )
+                historical_data, periods, seasonality)
         else:
             forecast, lower, upper = self._random_forest_forecast(
-                historical_data, periods
-            )
+                historical_data, periods)
         return {
             "forecast": forecast,
             "confidence_interval_lower": lower,
@@ -134,8 +135,8 @@ class ForecastingEngine:
             feature = [
                 data[i - 1],  # lag 1
                 data[i - window_size],  # lag window
-                np.mean(data[i - window_size : i]),  # rolling mean
-                np.std(data[i - window_size : i]),  # rolling std
+                np.mean(data[i - window_size: i]),  # rolling mean
+                np.std(data[i - window_size: i]),  # rolling std
                 i,  # time index
             ]
             features.append(feature)
@@ -275,9 +276,7 @@ class ForecastingEngine:
             "direction": direction,
             "slope": float(slope),
             "strength": float(r_squared),
-            "percentage_change": (
-                (data[-1] - data[0]) / data[0] * 100 if data[0] != 0 else 0
-            ),
+            "percentage_change": ((data[-1] - data[0]) / data[0] * 100 if data[0] != 0 else 0),
         }
 
     async def forecast_revenue(
@@ -299,8 +298,10 @@ class ForecastingEngine:
         """
         # Calculate AOV trend
         aov = [
-            r / o if o > 0 else 0 for r, o in zip(historical_revenue, historical_orders)
-        ]
+            r / o if o > 0 else 0 for r,
+            o in zip(
+                historical_revenue,
+                historical_orders)]
 
         # Forecast orders and AOV separately
         order_forecast = await self.forecast_demand(historical_orders, periods, "auto")
@@ -331,13 +332,12 @@ class ForecastingEngine:
                         order_forecast["confidence_interval_upper"],
                         aov_forecast["confidence_interval_upper"],
                     )
-                ]
+                ],
             },
         }
 
     async def detect_anomalies(
-        self, data: List[float], sensitivity: float = 2.0
-    ) -> Dict[str, Any]:
+            self, data: List[float], sensitivity: float = 2.0) -> Dict[str, Any]:
         """
         Detect anomalies in time series data
 
@@ -356,7 +356,7 @@ class ForecastingEngine:
         anomalies = []
 
         for i in range(window, len(data)):
-            window_data = data[i - window : i]
+            window_data = data[i - window: i]
             mean = np.mean(window_data)
             std = np.std(window_data)
 
@@ -372,6 +372,7 @@ class ForecastingEngine:
                         "deviation": abs(data[i] - mean) / std if std > 0 else 0,
                         "type": "spike" if data[i] > threshold_upper else "drop",
                     }
+                )
         return {
             "anomalies": anomalies,
             "count": len(anomalies),

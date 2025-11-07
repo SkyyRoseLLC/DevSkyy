@@ -1,23 +1,19 @@
-from datetime import datetime, timedelta
-
-from fastapi import HTTPException
-from fastapi.testclient import TestClient
-
-        from security.jwt_auth import blacklisted_tokens
-        from security.jwt_auth import failed_login_attempts, locked_accounts
-from api.validation_models import EnhancedLoginRequest, EnhancedRegisterRequest
-from main import app
-from security.jwt_auth import (
-    from unittest.mock import AsyncMock, Mock, patch
-import asyncio
-import pytest
-
 """
 Unit Tests for Authentication System
 Tests for enhanced JWT authentication, validation, and security features
 """
-
+from datetime import datetime, timedelta
+from fastapi import HTTPException
+from fastapi.testclient import TestClient
+from security.jwt_auth import blacklisted_tokens
+from security.jwt_auth import failed_login_attempts, locked_accounts
+from api.validation_models import EnhancedLoginRequest, EnhancedRegisterRequest
+from main import app
+from security.jwt_auth import (
+    create_access_token,
+    verify_token,
     blacklist_token,
+    check_rate_limit,
     clear_failed_login_attempts,
     create_user_tokens,
     hash_password,
@@ -25,8 +21,11 @@ Tests for enhanced JWT authentication, validation, and security features
     is_token_blacklisted,
     record_failed_login,
     verify_password,
-    verify_token,
 )
+from unittest.mock import AsyncMock, Mock, patch
+import asyncio
+import pytest
+
 
 class TestPasswordSecurity:
     """Test password hashing and verification"""
@@ -49,6 +48,7 @@ class TestPasswordSecurity:
         assert hash1 != hash2
         assert verify_password(password, hash1)
         assert verify_password(password, hash2)
+
 
 class TestAccountLockout:
     """Test account lockout functionality"""
@@ -89,6 +89,7 @@ class TestAccountLockout:
         # Should not be locked
         assert not is_account_locked(self.test_email)
 
+
 class TestTokenBlacklist:
     """Test token blacklisting functionality"""
 
@@ -106,6 +107,7 @@ class TestTokenBlacklist:
         blacklist_token(token)
 
         assert is_token_blacklisted(token)
+
 
 class TestEnhancedValidation:
     """Test enhanced validation models"""
@@ -186,6 +188,7 @@ class TestEnhancedValidation:
                 role="api_user",
             )
 
+
 class TestJWTTokens:
     """Test JWT token creation and verification"""
 
@@ -230,6 +233,7 @@ class TestJWTTokens:
 
         with pytest.raises(HTTPException):
             verify_token(access_token)
+
 
 class TestAuthenticationAPI:
     """Test authentication API endpoints"""
@@ -292,6 +296,7 @@ class TestAuthenticationAPI:
             assert "access_token" in data
             assert "refresh_token" in data
 
+
 @pytest.mark.asyncio
 class TestAsyncAuthentication:
     """Test asynchronous authentication functionality"""
@@ -313,6 +318,7 @@ class TestAsyncAuthentication:
         assert token_data.user_id == mock_user.id
         assert token_data.email == mock_user.email
 
+
 class TestSecurityLogging:
     """Test security event logging"""
 
@@ -329,6 +335,7 @@ class TestSecurityLogging:
             call_args = mock_log.warning.call_args[0][0]
             assert "Failed login attempt" in call_args
             assert "test@example.com" in call_args
+
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])

@@ -1,27 +1,22 @@
-        import models_sqlalchemy  # noqa: F401 - Import for side effects (model registration)
-    from datetime import datetime
-from pathlib import Path
-
-        from sqlalchemy import text
-    from models_sqlalchemy import AgentLog, Product, User
-    import models_sqlalchemy
-
-        from database import AsyncSessionLocal
-        from database import db_manager, init_db
-        from database_config import DATABASE_URL, DB_PROVIDER
-        import traceback
-    from database import AsyncSessionLocal
-from dotenv import load_dotenv
-import asyncio
-import logging
-
 """
 Initialize DevSkyy Database
 Sets up database with all required tables using SQLAlchemy models
 """
+import models_sqlalchemy  # noqa: F401 - Import for side effects (model registration)
+from datetime import datetime
+from pathlib import Path
+from sqlalchemy import text
+from models_sqlalchemy import AgentLog, Product, User
+import models_sqlalchemy
+from database import AsyncSessionLocal
+from database import db_manager, init_db
+from database_config import DATABASE_URL, DB_PROVIDER
+import traceback
+from dotenv import load_dotenv
+import asyncio
+import logging
 
 # Load environment variables FIRST before any other imports
-
 load_dotenv()
 
 # Configure logging
