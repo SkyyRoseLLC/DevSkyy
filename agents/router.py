@@ -1,520 +1,702 @@
 #!/usr/bin/env python3
 """
-Agent Task Routing System
-Routes tasks to appropriate specialized agents based on capabilities
+Agent Task Router with Confidence Scoring
+Routes tasks to appropriate agents using exact, fuzzy, and fallback strategies
 
-References: /Users/coreyfoster/Desktop/CLAUDE_20-10_MASTER.md
-Truth Protocol Compliance: Rules 1, 4, 10
+Truth Protocol Compliance: CLAUDE.md
 """
 
 import logging
-import sys
-from pathlib import Path
-from typing import Dict, List, Optional, Any, Tuple
-from enum import Enum
-from dataclasses import dataclass
 import re
+from dataclasses import dataclass, field
+from enum import Enum
+from typing import Dict, List, Optional, Any, Tuple
 
-# Add parent directory to path for standalone execution
-if __name__ == "__main__":
-    sys.path.insert(0, str(Path(__file__).parent.parent))
+from agents.loader import AgentConfigLoader, AgentConfig, AgentConfigError
 
-from agents.loader import AgentConfigLoader, AgentType, AgentConfiguration
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 class TaskType(Enum):
-    """Task type enumeration for routing"""
-    # Code Quality & Security
-    CODE_AUDIT = "code_audit"
-    CODE_REFACTOR = "code_refactor"
+    """Task type enumeration for routing (30 types)"""
+    # Security & Scanning
     SECURITY_SCAN = "security_scan"
+    VULNERABILITY_SCAN = "vulnerability_scan"
+    COMPLIANCE_CHECK = "compliance_check"
+    PENETRATION_TEST = "penetration_test"
+
+    # Code Generation & Fixing
+    CODE_GENERATION = "code_generation"
+    CODE_REFACTOR = "code_refactor"
+    CODE_FIX = "code_fix"
+    AUTO_FIX = "auto_fix"
+    CODE_REVIEW = "code_review"
+
+    # Machine Learning
+    ML_TRAINING = "ml_training"
+    ML_INFERENCE = "ml_inference"
+    MODEL_OPTIMIZATION = "model_optimization"
+    FEATURE_ENGINEERING = "feature_engineering"
+
+    # Testing
     TEST_GENERATION = "test_generation"
-    PERFORMANCE_OPTIMIZATION = "performance_optimization"
+    INTEGRATION_TEST = "integration_test"
+    PERFORMANCE_TEST = "performance_test"
 
-    # Growth & Marketing
-    WORDPRESS_THEME = "wordpress_theme"
-    LANDING_PAGE = "landing_page"
-    AB_TESTING = "ab_testing"
-    SEO_OPTIMIZATION = "seo_optimization"
-    CONVERSION_OPTIMIZATION = "conversion_optimization"
+    # Documentation
+    DOCUMENTATION_GENERATION = "documentation_generation"
+    API_DOCUMENTATION = "api_documentation"
 
-    # Data & Analytics
-    DATA_ANALYSIS = "data_analysis"
-    KPI_DASHBOARD = "kpi_dashboard"
-    PREDICTIVE_ANALYTICS = "predictive_analytics"
-    PROMPT_ROUTING = "prompt_routing"
-    EVALUATION_HARNESS = "evaluation_harness"
+    # Database
+    DATABASE_OPTIMIZATION = "database_optimization"
+    SCHEMA_MIGRATION = "schema_migration"
 
-    # Visual Content
-    IMAGE_GENERATION = "image_generation"
-    IMAGE_UPSCALING = "image_upscaling"
-    VIDEO_AUTOMATION = "video_automation"
-    PRODUCT_PHOTOGRAPHY = "product_photography"
-    BRAND_ASSETS = "brand_assets"
+    # Deployment
+    DEPLOYMENT = "deployment"
+    CONTAINER_BUILD = "container_build"
+    CI_CD_PIPELINE = "ci_cd_pipeline"
+
+    # Monitoring & Analytics
+    PERFORMANCE_MONITORING = "performance_monitoring"
+    ERROR_TRACKING = "error_tracking"
+    LOG_ANALYSIS = "log_analysis"
+
+    # API & Integration
+    API_DESIGN = "api_design"
+    INTEGRATION_DEVELOPMENT = "integration_development"
+
+    # General
+    GENERAL_TASK = "general_task"
+    CUSTOM_TASK = "custom_task"
 
 
 @dataclass
-class TaskContext:
-    """Context information for a task"""
+class TaskRequest:
+    """Task request with metadata"""
     task_type: TaskType
     description: str
-    priority: int = 1  # 1-5, 5 being highest
-    requirements: Dict[str, Any] = None
-    metadata: Dict[str, Any] = None
+    priority: int = 50
+    metadata: Optional[Dict[str, Any]] = None
 
     def __post_init__(self):
-        if self.requirements is None:
-            self.requirements = {}
         if self.metadata is None:
             self.metadata = {}
+        if not 1 <= self.priority <= 100:
+            raise ValueError(f"Priority must be between 1 and 100, got {self.priority}")
 
 
 @dataclass
-class RoutingDecision:
-    """Result of routing decision"""
-    agent_id: str
+class TaskResult:
+    """Task routing result with confidence and reasoning"""
     agent_name: str
-    agent_type: AgentType
-    confidence: float  # 0.0 - 1.0
+    confidence: float
     reasoning: str
-    orchestration_command: str
-    estimated_slo: Dict[str, Any]
+    metadata: Optional[Dict[str, Any]] = None
+
+    def __post_init__(self):
+        if self.metadata is None:
+            self.metadata = {}
+        if not 0.0 <= self.confidence <= 1.0:
+            raise ValueError(f"Confidence must be between 0.0 and 1.0, got {self.confidence}")
+
+
+@dataclass
+class ScoringWeights:
+    """Weights for agent scoring algorithm"""
+    priority_alignment: float = 0.40
+    capability_confidence: float = 0.40
+    availability: float = 0.20
+
+    def __post_init__(self):
+        total = self.priority_alignment + self.capability_confidence + self.availability
+        if abs(total - 1.0) > 0.01:
+            raise ValueError(f"Weights must sum to 1.0, got {total}")
 
 
 class AgentRouter:
     """
-    Routes tasks to appropriate specialized agents
+    Routes tasks to appropriate agents with confidence scoring
+
+    Features:
+    - Exact routing: Direct name/ID match (0.95 confidence)
+    - Fuzzy routing: Keyword similarity + NLP (0.60-0.85 confidence)
+    - Fallback routing: General agent (0.30 confidence)
+    - Batch task processing for MCP efficiency
+    - Agent scoring: Priority (40%), Capability (40%), Availability (20%)
 
     Usage:
         router = AgentRouter()
-        task = TaskContext(
-            task_type=TaskType.CODE_AUDIT,
-            description="Audit FastAPI security implementation",
-            priority=5
+        task = TaskRequest(
+            task_type=TaskType.SECURITY_SCAN,
+            description="Scan Python code for vulnerabilities",
+            priority=80
         )
-        decision = router.route_task(task)
-        print(f"Route to: {decision.agent_name}")
+        result = router.route(task)
+        print(f"Routed to: {result.agent_name} (confidence: {result.confidence})")
     """
 
-    def __init__(self, config_loader: Optional[AgentConfigLoader] = None):
+    def __init__(
+        self,
+        config_loader: Optional[AgentConfigLoader] = None,
+        scoring_weights: Optional[ScoringWeights] = None
+    ):
         """
         Initialize agent router
 
         Args:
             config_loader: AgentConfigLoader instance (creates new if None)
+            scoring_weights: Custom scoring weights (uses defaults if None)
         """
         self.loader = config_loader or AgentConfigLoader()
-        self.agents = self.loader.load_all_agents()
+        self.weights = scoring_weights or ScoringWeights()
+
+        # Load all available agents
+        self.agents: Dict[str, AgentConfig] = {}
+        try:
+            self.agents = self.loader.load_all()
+        except AgentConfigError as e:
+            logger.warning(f"Failed to load agents: {e}")
 
         # Build routing tables
-        self._task_to_agent_type = self._build_task_type_mapping()
         self._capability_keywords = self._build_capability_keywords()
+        self._task_type_mapping = self._build_task_type_mapping()
 
-        logger.info(f"AgentRouter initialized with {len(self.agents)} agents")
+        logger.info(
+            f"AgentRouter initialized with {len(self.agents)} agents, "
+            f"weights: P={self.weights.priority_alignment:.0%}, "
+            f"C={self.weights.capability_confidence:.0%}, "
+            f"A={self.weights.availability:.0%}"
+        )
 
-    def _build_task_type_mapping(self) -> Dict[TaskType, AgentType]:
+    def _build_capability_keywords(self) -> Dict[str, List[str]]:
         """
-        Build mapping from task types to agent types
+        Build keyword mapping for fuzzy matching
 
         Returns:
-            Dict mapping TaskType to AgentType
+            Dict mapping capability to list of relevant keywords
         """
         return {
-            # Code Quality & Security → Professors of Code
-            TaskType.CODE_AUDIT: AgentType.CODE_QUALITY_SECURITY,
-            TaskType.CODE_REFACTOR: AgentType.CODE_QUALITY_SECURITY,
-            TaskType.SECURITY_SCAN: AgentType.CODE_QUALITY_SECURITY,
-            TaskType.TEST_GENERATION: AgentType.CODE_QUALITY_SECURITY,
-            TaskType.PERFORMANCE_OPTIMIZATION: AgentType.CODE_QUALITY_SECURITY,
-
-            # Growth & Marketing → Growth Stack
-            TaskType.WORDPRESS_THEME: AgentType.GROWTH_MARKETING_AUTOMATION,
-            TaskType.LANDING_PAGE: AgentType.GROWTH_MARKETING_AUTOMATION,
-            TaskType.AB_TESTING: AgentType.GROWTH_MARKETING_AUTOMATION,
-            TaskType.SEO_OPTIMIZATION: AgentType.GROWTH_MARKETING_AUTOMATION,
-            TaskType.CONVERSION_OPTIMIZATION: AgentType.GROWTH_MARKETING_AUTOMATION,
-
-            # Data & Analytics → Data & Reasoning
-            TaskType.DATA_ANALYSIS: AgentType.DATA_ANALYSIS_INTELLIGENCE,
-            TaskType.KPI_DASHBOARD: AgentType.DATA_ANALYSIS_INTELLIGENCE,
-            TaskType.PREDICTIVE_ANALYTICS: AgentType.DATA_ANALYSIS_INTELLIGENCE,
-            TaskType.PROMPT_ROUTING: AgentType.DATA_ANALYSIS_INTELLIGENCE,
-            TaskType.EVALUATION_HARNESS: AgentType.DATA_ANALYSIS_INTELLIGENCE,
-
-            # Visual Content → Visual Foundry
-            TaskType.IMAGE_GENERATION: AgentType.VISUAL_CONTENT_GENERATION,
-            TaskType.IMAGE_UPSCALING: AgentType.VISUAL_CONTENT_GENERATION,
-            TaskType.VIDEO_AUTOMATION: AgentType.VISUAL_CONTENT_GENERATION,
-            TaskType.PRODUCT_PHOTOGRAPHY: AgentType.VISUAL_CONTENT_GENERATION,
-            TaskType.BRAND_ASSETS: AgentType.VISUAL_CONTENT_GENERATION,
-        }
-
-    def _build_capability_keywords(self) -> Dict[AgentType, List[str]]:
-        """
-        Build keyword lists for each agent type for fuzzy matching
-
-        Returns:
-            Dict mapping AgentType to list of keywords
-        """
-        return {
-            AgentType.CODE_QUALITY_SECURITY: [
-                'code', 'audit', 'security', 'test', 'refactor', 'performance',
-                'vulnerability', 'compliance', 'rbac', 'jwt', 'encryption',
-                'pytest', 'mypy', 'bandit', 'fix', 'scan', 'review'
+            'security_scan': [
+                'security', 'vulnerability', 'scan', 'audit', 'penetration',
+                'exploit', 'cve', 'owasp', 'injection', 'xss', 'csrf'
             ],
-            AgentType.GROWTH_MARKETING_AUTOMATION: [
-                'wordpress', 'theme', 'landing', 'page', 'marketing', 'campaign',
-                'seo', 'conversion', 'analytics', 'ab', 'test', 'elementor',
-                'woocommerce', 'social', 'media', 'email', 'funnel'
+            'code_fix': [
+                'fix', 'repair', 'patch', 'debug', 'resolve', 'correct',
+                'autofix', 'heal', 'remediate'
             ],
-            AgentType.DATA_ANALYSIS_INTELLIGENCE: [
-                'data', 'analysis', 'kpi', 'dashboard', 'metric', 'prediction',
-                'forecast', 'prompt', 'routing', 'evaluation', 'statistical',
-                'model', 'sql', 'database', 'report', 'insight'
+            'code_generation': [
+                'generate', 'create', 'build', 'scaffold', 'template',
+                'boilerplate', 'code', 'implement'
             ],
-            AgentType.VISUAL_CONTENT_GENERATION: [
-                'image', 'video', 'visual', 'upscale', 'generate', 'photo',
-                'brand', 'asset', 'design', 'graphic', 'creative', 'render',
-                'stable', 'diffusion', 'dalle', 'midjourney'
+            'ml_training': [
+                'train', 'machine learning', 'ml', 'model', 'neural',
+                'deep learning', 'ai', 'learning', 'dataset'
+            ],
+            'test_generation': [
+                'test', 'unittest', 'pytest', 'coverage', 'assertion',
+                'mock', 'integration test'
+            ],
+            'performance_optimization': [
+                'performance', 'optimize', 'speed', 'latency', 'throughput',
+                'bottleneck', 'profiling', 'benchmark'
+            ],
+            'documentation': [
+                'document', 'docs', 'readme', 'comment', 'docstring',
+                'api docs', 'guide', 'tutorial'
+            ],
+            'database': [
+                'database', 'sql', 'query', 'schema', 'migration',
+                'index', 'postgres', 'mysql'
+            ],
+            'deployment': [
+                'deploy', 'deployment', 'docker', 'kubernetes', 'container',
+                'ci/cd', 'pipeline', 'release'
+            ],
+            'monitoring': [
+                'monitor', 'metrics', 'logging', 'observability', 'tracing',
+                'alert', 'dashboard', 'prometheus'
+            ],
+            'api_design': [
+                'api', 'rest', 'graphql', 'endpoint', 'route', 'openapi',
+                'swagger', 'interface'
             ]
         }
 
-    def route_task(self, task: TaskContext) -> RoutingDecision:
+    def _build_task_type_mapping(self) -> Dict[TaskType, List[str]]:
         """
-        Route a task to the appropriate agent
-
-        Args:
-            task: TaskContext with task information
+        Build mapping from task types to required capabilities
 
         Returns:
-            RoutingDecision with routing information
+            Dict mapping TaskType to list of capabilities
         """
-        # Step 1: Direct mapping from task type
-        if task.task_type in self._task_to_agent_type:
-            agent_type = self._task_to_agent_type[task.task_type]
-            confidence = 1.0
-            reasoning = f"Direct task type mapping: {task.task_type.value} → {agent_type.value}"
-        else:
-            # Step 2: Fuzzy matching based on description keywords
-            agent_type, confidence = self._fuzzy_match_agent_type(task.description)
-            reasoning = f"Fuzzy keyword matching on description (confidence: {confidence:.2f})"
+        return {
+            # Security
+            TaskType.SECURITY_SCAN: ['security_scan', 'vulnerability_scan'],
+            TaskType.VULNERABILITY_SCAN: ['security_scan', 'vulnerability_scan'],
+            TaskType.COMPLIANCE_CHECK: ['security_scan', 'compliance'],
+            TaskType.PENETRATION_TEST: ['security_scan', 'penetration_test'],
 
-        # Step 3: Find agent of the determined type
-        agent_id = None
-        for aid, agent_config in self.agents.items():
-            if agent_config.agent_type == agent_type:
-                agent_id = aid
-                break
+            # Code
+            TaskType.CODE_GENERATION: ['code_generation', 'code_generation'],
+            TaskType.CODE_REFACTOR: ['code_refactor', 'code_generation'],
+            TaskType.CODE_FIX: ['code_fix', 'auto_fix'],
+            TaskType.AUTO_FIX: ['auto_fix', 'code_fix'],
+            TaskType.CODE_REVIEW: ['code_review', 'security_scan'],
 
-        if agent_id is None:
-            # Fallback: use first available agent
-            agent_id = list(self.agents.keys())[0]
-            agent_config = self.agents[agent_id]
-            reasoning = f"FALLBACK: No agent found for type {agent_type.value}, using {agent_id}"
-            confidence = 0.5
-            logger.warning(f"No agent found for type {agent_type.value}, falling back to {agent_id}")
-        else:
-            agent_config = self.agents[agent_id]
+            # ML
+            TaskType.ML_TRAINING: ['ml_training', 'ml_inference'],
+            TaskType.ML_INFERENCE: ['ml_inference', 'ml_training'],
+            TaskType.MODEL_OPTIMIZATION: ['model_optimization', 'ml_training'],
+            TaskType.FEATURE_ENGINEERING: ['feature_engineering', 'ml_training'],
 
-        # Step 4: Select appropriate orchestration command
-        command = self._select_orchestration_command(task, agent_config)
+            # Testing
+            TaskType.TEST_GENERATION: ['test_generation', 'code_generation'],
+            TaskType.INTEGRATION_TEST: ['integration_test', 'test_generation'],
+            TaskType.PERFORMANCE_TEST: ['performance_test', 'monitoring'],
 
-        # Step 5: Estimate SLOs
-        estimated_slo = self._estimate_slo(task, agent_config)
+            # Documentation
+            TaskType.DOCUMENTATION_GENERATION: ['documentation', 'code_generation'],
+            TaskType.API_DOCUMENTATION: ['api_documentation', 'documentation'],
 
-        decision = RoutingDecision(
-            agent_id=agent_id,
-            agent_name=agent_config.agent_name,
-            agent_type=agent_config.agent_type,
+            # Database
+            TaskType.DATABASE_OPTIMIZATION: ['database', 'performance_optimization'],
+            TaskType.SCHEMA_MIGRATION: ['database', 'migration'],
+
+            # Deployment
+            TaskType.DEPLOYMENT: ['deployment', 'ci_cd'],
+            TaskType.CONTAINER_BUILD: ['container_build', 'deployment'],
+            TaskType.CI_CD_PIPELINE: ['ci_cd', 'deployment'],
+
+            # Monitoring
+            TaskType.PERFORMANCE_MONITORING: ['monitoring', 'performance_optimization'],
+            TaskType.ERROR_TRACKING: ['error_tracking', 'monitoring'],
+            TaskType.LOG_ANALYSIS: ['log_analysis', 'monitoring'],
+
+            # API
+            TaskType.API_DESIGN: ['api_design', 'code_generation'],
+            TaskType.INTEGRATION_DEVELOPMENT: ['integration', 'api_design'],
+
+            # General
+            TaskType.GENERAL_TASK: ['general'],
+            TaskType.CUSTOM_TASK: ['general'],
+        }
+
+    def route_exact(self, agent_name_or_id: str) -> Optional[TaskResult]:
+        """
+        Route to specific agent by exact name or ID match
+
+        Args:
+            agent_name_or_id: Agent name or ID to route to
+
+        Returns:
+            TaskResult if agent found, None otherwise
+
+        Note:
+            Returns 0.95 confidence for exact matches
+        """
+        # Try by ID first
+        if agent_name_or_id in self.agents:
+            agent = self.agents[agent_name_or_id]
+            return TaskResult(
+                agent_name=agent.name,
+                confidence=0.95,
+                reasoning=f"Exact agent ID match: {agent_name_or_id}",
+                metadata={'agent_id': agent.agent_id, 'routing_method': 'exact'}
+            )
+
+        # Try by name (case-insensitive)
+        name_lower = agent_name_or_id.lower()
+        for agent_id, agent in self.agents.items():
+            if agent.name.lower() == name_lower:
+                return TaskResult(
+                    agent_name=agent.name,
+                    confidence=0.95,
+                    reasoning=f"Exact agent name match: {agent.name}",
+                    metadata={'agent_id': agent.agent_id, 'routing_method': 'exact'}
+                )
+
+        logger.debug(f"No exact match found for: {agent_name_or_id}")
+        return None
+
+    def route_fuzzy(self, task: TaskRequest) -> Optional[TaskResult]:
+        """
+        Route task using fuzzy matching with keyword similarity
+
+        Args:
+            task: TaskRequest to route
+
+        Returns:
+            TaskResult with confidence 0.60-0.85 based on match quality
+
+        Note:
+            Uses NLP-style keyword matching and agent scoring algorithm
+        """
+        if not self.agents:
+            logger.warning("No agents available for fuzzy routing")
+            return None
+
+        # Get required capabilities for task type
+        required_capabilities = self._task_type_mapping.get(task.task_type, ['general'])
+
+        # Find agents with matching capabilities
+        candidate_agents = []
+        for agent_id, agent in self.agents.items():
+            if agent.has_any_capability(required_capabilities):
+                candidate_agents.append(agent)
+
+        if not candidate_agents:
+            # Fallback: try keyword matching on description
+            candidate_agents = self._keyword_match_agents(task.description)
+
+        if not candidate_agents:
+            logger.debug(f"No candidates found for fuzzy routing: {task.task_type.value}")
+            return None
+
+        # Score candidates
+        best_agent = None
+        best_score = 0.0
+
+        for agent in candidate_agents:
+            score = self._score_agent(agent, task)
+            if score > best_score:
+                best_score = score
+                best_agent = agent
+
+        if best_agent is None:
+            return None
+
+        # Map score to confidence (0.60-0.85 range)
+        confidence = 0.60 + (best_score * 0.25)
+
+        return TaskResult(
+            agent_name=best_agent.name,
             confidence=confidence,
-            reasoning=reasoning,
-            orchestration_command=command,
-            estimated_slo=estimated_slo
+            reasoning=(
+                f"Fuzzy match for {task.task_type.value}: "
+                f"capability overlap, priority alignment, score={best_score:.2f}"
+            ),
+            metadata={
+                'agent_id': best_agent.agent_id,
+                'routing_method': 'fuzzy',
+                'raw_score': best_score
+            }
         )
 
-        logger.info(
-            f"Routed task '{task.task_type.value}' to {decision.agent_name} "
-            f"(confidence: {decision.confidence:.2f})"
+    def route_fallback(self) -> Optional[TaskResult]:
+        """
+        Fallback routing to general-purpose agent
+
+        Returns:
+            TaskResult with confidence 0.30 for fallback routing
+
+        Note:
+            Selects highest-priority available agent as fallback
+        """
+        if not self.agents:
+            logger.error("No agents available for fallback routing")
+            return None
+
+        # Get available agents
+        available = self.loader.get_available_agents(list(self.agents.values()))
+
+        if not available:
+            # No available agents, use any agent
+            available = list(self.agents.values())
+
+        # Sort by priority (descending)
+        available.sort(key=lambda a: a.priority, reverse=True)
+        fallback_agent = available[0]
+
+        return TaskResult(
+            agent_name=fallback_agent.name,
+            confidence=0.30,
+            reasoning=(
+                f"Fallback routing to highest-priority agent: "
+                f"{fallback_agent.name} (priority={fallback_agent.priority})"
+            ),
+            metadata={
+                'agent_id': fallback_agent.agent_id,
+                'routing_method': 'fallback'
+            }
         )
 
-        return decision
-
-    def _fuzzy_match_agent_type(self, description: str) -> Tuple[AgentType, float]:
+    def route(self, task: TaskRequest, prefer_exact: Optional[str] = None) -> TaskResult:
         """
-        Fuzzy match agent type based on description keywords
+        Route task using all available strategies
 
         Args:
-            description: Task description text
+            task: TaskRequest to route
+            prefer_exact: Optional agent name/ID for exact routing preference
 
         Returns:
-            Tuple of (AgentType, confidence_score)
+            TaskResult with routing decision
+
+        Note:
+            Routing order: exact -> fuzzy -> fallback
         """
-        description_lower = description.lower()
-        scores = {}
+        # Try exact routing if preferred agent specified
+        if prefer_exact:
+            exact_result = self.route_exact(prefer_exact)
+            if exact_result:
+                logger.info(
+                    f"Routed task via exact match to {exact_result.agent_name} "
+                    f"(confidence: {exact_result.confidence:.2f})"
+                )
+                return exact_result
 
-        for agent_type, keywords in self._capability_keywords.items():
-            score = 0
-            for keyword in keywords:
-                if keyword in description_lower:
-                    score += 1
+        # Try fuzzy routing
+        fuzzy_result = self.route_fuzzy(task)
+        if fuzzy_result and fuzzy_result.confidence >= 0.60:
+            logger.info(
+                f"Routed task via fuzzy match to {fuzzy_result.agent_name} "
+                f"(confidence: {fuzzy_result.confidence:.2f})"
+            )
+            return fuzzy_result
 
-            # Normalize score
-            scores[agent_type] = score / len(keywords)
+        # Fallback routing
+        fallback_result = self.route_fallback()
+        if fallback_result:
+            logger.warning(
+                f"Routed task via fallback to {fallback_result.agent_name} "
+                f"(confidence: {fallback_result.confidence:.2f})"
+            )
+            return fallback_result
 
-        if not scores:
-            # Default to code quality if no matches
-            return AgentType.CODE_QUALITY_SECURITY, 0.3
-
-        best_type = max(scores, key=scores.get)
-        confidence = scores[best_type]
-
-        # If confidence too low, use code quality as safe default
-        if confidence < 0.1:
-            return AgentType.CODE_QUALITY_SECURITY, 0.3
-
-        return best_type, confidence
-
-    def _select_orchestration_command(
-        self,
-        task: TaskContext,
-        agent: AgentConfiguration
-    ) -> str:
-        """
-        Select appropriate orchestration command for task
-
-        Args:
-            task: Task context
-            agent: Agent configuration
-
-        Returns:
-            Orchestration command name
-        """
-        # Priority-based command selection
-        if task.priority >= 4:
-            # High priority: prefer PLAN for comprehensive approach
-            if 'PLAN' in agent.orchestration_commands:
-                return 'PLAN'
-
-        # Task type specific command preferences
-        if task.task_type in [TaskType.CODE_AUDIT, TaskType.SECURITY_SCAN]:
-            if 'REVIEW' in agent.orchestration_commands:
-                return 'REVIEW'
-            if 'TEST' in agent.orchestration_commands:
-                return 'TEST'
-
-        if task.task_type in [TaskType.DATA_ANALYSIS, TaskType.KPI_DASHBOARD]:
-            if 'MONITOR' in agent.orchestration_commands:
-                return 'MONITOR'
-
-        # Default: BUILD for implementation tasks
-        if 'BUILD' in agent.orchestration_commands:
-            return 'BUILD'
-
-        # Fallback: first available command
-        if agent.orchestration_commands:
-            return list(agent.orchestration_commands.keys())[0]
-
-        return 'EXECUTE'
-
-    def _estimate_slo(
-        self,
-        task: TaskContext,
-        agent: AgentConfiguration
-    ) -> Dict[str, Any]:
-        """
-        Estimate SLO compliance for task
-
-        Args:
-            task: Task context
-            agent: Agent configuration
-
-        Returns:
-            Dict with estimated SLO values
-        """
-        slo = agent.performance_slos
-        estimated = {}
-
-        # Priority adjustments
-        priority_multiplier = 1.0 + (task.priority - 1) * 0.2
-
-        if slo.p95_latency_ms:
-            estimated['p95_latency_ms'] = int(slo.p95_latency_ms * priority_multiplier)
-
-        if slo.test_coverage_percent:
-            estimated['test_coverage_percent'] = slo.test_coverage_percent
-
-        if slo.error_rate_percent:
-            estimated['error_rate_percent'] = slo.error_rate_percent
-
-        estimated['priority'] = task.priority
-        estimated['meets_slo'] = True  # Optimistic default
-
-        return estimated
+        # Ultimate fallback: return error result
+        logger.error("All routing strategies failed")
+        raise AgentConfigError("No agents available for routing")
 
     def route_multiple_tasks(
         self,
-        tasks: List[TaskContext]
-    ) -> List[RoutingDecision]:
+        tasks: List[TaskRequest]
+    ) -> List[TaskResult]:
         """
-        Route multiple tasks to appropriate agents
+        Route multiple tasks efficiently (MCP batch operation)
 
         Args:
-            tasks: List of TaskContext objects
+            tasks: List of TaskRequest objects to route
 
         Returns:
-            List of RoutingDecision objects
+            List of TaskResult objects (same order as input)
+
+        Note:
+            This is an MCP efficiency pattern - routes multiple tasks
+            in a single operation to reduce overhead
         """
-        decisions = []
-        for task in tasks:
+        results = []
+        errors = []
+
+        for i, task in enumerate(tasks):
             try:
-                decision = self.route_task(task)
-                decisions.append(decision)
+                result = self.route(task)
+                results.append(result)
             except Exception as e:
-                logger.error(f"Failed to route task {task.task_type.value}: {e}")
-                continue
+                logger.error(f"Failed to route task {i}: {e}")
+                errors.append((i, str(e)))
 
-        return decisions
+        if errors:
+            logger.warning(f"Batch routing completed with {len(errors)} errors")
 
-    def get_agent_workload(self) -> Dict[str, int]:
+        logger.info(f"Batch routed {len(results)}/{len(tasks)} tasks")
+        return results
+
+    def _score_agent(self, agent: AgentConfig, task: TaskRequest) -> float:
         """
-        Get workload distribution across agents
-
-        Returns:
-            Dict mapping agent_id to task count
-        """
-        # This would track actual task assignments in production
-        # For now, return empty dict
-        return {agent_id: 0 for agent_id in self.agents.keys()}
-
-    def suggest_agent_for_natural_language(self, request: str) -> RoutingDecision:
-        """
-        Route based on natural language request
+        Score agent for task using weighted algorithm
 
         Args:
-            request: Natural language task description
+            agent: AgentConfig to score
+            task: TaskRequest to score against
 
         Returns:
-            RoutingDecision
+            Score between 0.0 and 1.0
+
+        Algorithm:
+            - Priority alignment: 40% (normalized priority difference)
+            - Capability confidence: 40% (capability match quality)
+            - Availability: 20% (agent availability status)
         """
-        # Analyze request and infer task type
-        request_lower = request.lower()
+        # Priority alignment (40%)
+        priority_diff = abs(agent.priority - task.priority)
+        priority_score = 1.0 - (priority_diff / 100.0)
+        priority_score = max(0.0, min(1.0, priority_score))
 
-        # Pattern matching for task type inference
-        if any(kw in request_lower for kw in ['audit', 'security', 'test', 'fix', 'refactor']):
-            task_type = TaskType.CODE_AUDIT
-        elif any(kw in request_lower for kw in ['wordpress', 'theme', 'landing', 'page']):
-            task_type = TaskType.WORDPRESS_THEME
-        elif any(kw in request_lower for kw in ['data', 'analysis', 'dashboard', 'kpi']):
-            task_type = TaskType.DATA_ANALYSIS
-        elif any(kw in request_lower for kw in ['image', 'video', 'visual', 'generate']):
-            task_type = TaskType.IMAGE_GENERATION
-        else:
-            # Default to code audit for uncertain requests
-            task_type = TaskType.CODE_AUDIT
+        # Capability confidence (40%)
+        required_caps = self._task_type_mapping.get(task.task_type, ['general'])
+        capability_score = self._calculate_capability_score(agent, required_caps, task.description)
 
-        task = TaskContext(
-            task_type=task_type,
-            description=request,
-            priority=3  # Medium priority default
+        # Availability (20%)
+        availability_score = 1.0 if agent.available else 0.3
+
+        # Weighted total
+        total_score = (
+            priority_score * self.weights.priority_alignment +
+            capability_score * self.weights.capability_confidence +
+            availability_score * self.weights.availability
         )
 
-        return self.route_task(task)
+        logger.debug(
+            f"Score for {agent.name}: total={total_score:.2f} "
+            f"(P={priority_score:.2f}, C={capability_score:.2f}, A={availability_score:.2f})"
+        )
 
+        return total_score
 
-# Example usage
-if __name__ == "__main__":
-    # Initialize router
-    router = AgentRouter()
+    def _calculate_capability_score(
+        self,
+        agent: AgentConfig,
+        required_capabilities: List[str],
+        description: str
+    ) -> float:
+        """
+        Calculate capability match score
 
-    print("\n" + "=" * 70)
-    print("Agent Task Routing Examples")
-    print("=" * 70)
+        Args:
+            agent: AgentConfig to score
+            required_capabilities: Required capabilities for task
+            description: Task description for keyword matching
 
-    # Example 1: Code audit task
-    print("\n### Example 1: Code Audit ###")
-    task1 = TaskContext(
-        task_type=TaskType.CODE_AUDIT,
-        description="Audit FastAPI security implementation for JWT vulnerabilities",
-        priority=5,
-        requirements={'coverage': 90, 'tools': ['bandit', 'safety']}
-    )
-    decision1 = router.route_task(task1)
-    print(f"Task Type: {task1.task_type.value}")
-    print(f"Routed To: {decision1.agent_name} ({decision1.agent_id})")
-    print(f"Confidence: {decision1.confidence:.2f}")
-    print(f"Reasoning: {decision1.reasoning}")
-    print(f"Command: {decision1.orchestration_command}")
-    print(f"Estimated SLO: {decision1.estimated_slo}")
+        Returns:
+            Score between 0.0 and 1.0
+        """
+        # Direct capability match (60% weight)
+        direct_matches = sum(
+            1 for cap in required_capabilities
+            if agent.matches_capability(cap)
+        )
+        direct_score = direct_matches / len(required_capabilities) if required_capabilities else 0.0
 
-    # Example 2: WordPress theme
-    print("\n### Example 2: WordPress Theme ###")
-    task2 = TaskContext(
-        task_type=TaskType.WORDPRESS_THEME,
-        description="Create luxury fashion WordPress theme with Elementor",
-        priority=3
-    )
-    decision2 = router.route_task(task2)
-    print(f"Task Type: {task2.task_type.value}")
-    print(f"Routed To: {decision2.agent_name}")
-    print(f"Command: {decision2.orchestration_command}")
+        # Keyword match in description (40% weight)
+        keyword_score = self._calculate_keyword_score(agent, description)
 
-    # Example 3: Data analysis
-    print("\n### Example 3: Data Analysis ###")
-    task3 = TaskContext(
-        task_type=TaskType.KPI_DASHBOARD,
-        description="Build revenue and conversion KPI dashboard",
-        priority=4
-    )
-    decision3 = router.route_task(task3)
-    print(f"Task Type: {task3.task_type.value}")
-    print(f"Routed To: {decision3.agent_name}")
-    print(f"Command: {decision3.orchestration_command}")
+        return (direct_score * 0.6) + (keyword_score * 0.4)
 
-    # Example 4: Image generation
-    print("\n### Example 4: Image Generation ###")
-    task4 = TaskContext(
-        task_type=TaskType.IMAGE_GENERATION,
-        description="Generate high-end product photography for luxury handbags",
-        priority=4
-    )
-    decision4 = router.route_task(task4)
-    print(f"Task Type: {task4.task_type.value}")
-    print(f"Routed To: {decision4.agent_name}")
-    print(f"Command: {decision4.orchestration_command}")
+    def _calculate_keyword_score(self, agent: AgentConfig, description: str) -> float:
+        """
+        Calculate keyword match score between agent capabilities and description
 
-    # Example 5: Natural language routing
-    print("\n### Example 5: Natural Language Routing ###")
-    nl_requests = [
-        "I need help auditing my Python code for security issues",
-        "Create a landing page for our new product launch",
-        "Analyze our customer data and create a dashboard",
-        "Generate product images for our e-commerce site"
-    ]
+        Args:
+            agent: AgentConfig to score
+            description: Task description
 
-    for request in nl_requests:
-        decision = router.suggest_agent_for_natural_language(request)
-        print(f"\nRequest: '{request}'")
-        print(f"→ {decision.agent_name} (confidence: {decision.confidence:.2f})")
+        Returns:
+            Score between 0.0 and 1.0
+        """
+        description_lower = description.lower()
 
-    # Example 6: Multiple tasks
-    print("\n### Example 6: Batch Routing ###")
-    tasks = [
-        TaskContext(TaskType.CODE_AUDIT, "Security audit", priority=5),
-        TaskContext(TaskType.LANDING_PAGE, "Create landing page", priority=3),
-        TaskContext(TaskType.DATA_ANALYSIS, "Revenue analysis", priority=4),
-    ]
+        # Get keywords for agent's capabilities
+        relevant_keywords = []
+        for capability in agent.capabilities:
+            cap_lower = capability.lower()
+            if cap_lower in self._capability_keywords:
+                relevant_keywords.extend(self._capability_keywords[cap_lower])
 
-    decisions = router.route_multiple_tasks(tasks)
-    print(f"\nRouted {len(decisions)} tasks:")
-    for i, d in enumerate(decisions, 1):
-        print(f"  {i}. {d.agent_name} - {d.orchestration_command}")
+        if not relevant_keywords:
+            return 0.0
 
-    # Show agent workload
-    print("\n### Agent Workload ###")
-    workload = router.get_agent_workload()
-    for agent_id, count in workload.items():
-        print(f"  {agent_id}: {count} tasks")
+        # Count keyword matches
+        matches = sum(1 for keyword in relevant_keywords if keyword in description_lower)
+
+        return min(1.0, matches / 5.0)  # Normalize to 1.0 with 5+ matches
+
+    def _keyword_match_agents(self, description: str) -> List[AgentConfig]:
+        """
+        Find agents matching keywords in description
+
+        Args:
+            description: Task description
+
+        Returns:
+            List of AgentConfig objects with keyword matches
+        """
+        description_lower = description.lower()
+        matching_agents = []
+
+        for agent_id, agent in self.agents.items():
+            for capability in agent.capabilities:
+                cap_lower = capability.lower()
+                if cap_lower in self._capability_keywords:
+                    keywords = self._capability_keywords[cap_lower]
+                    if any(kw in description_lower for kw in keywords):
+                        matching_agents.append(agent)
+                        break
+
+        return matching_agents
+
+    def get_routing_stats(self) -> Dict[str, Any]:
+        """
+        Get routing statistics
+
+        Returns:
+            Dictionary with routing statistics
+        """
+        available_agents = self.loader.get_available_agents(list(self.agents.values()))
+
+        return {
+            'total_agents': len(self.agents),
+            'available_agents': len(available_agents),
+            'unavailable_agents': len(self.agents) - len(available_agents),
+            'scoring_weights': {
+                'priority_alignment': self.weights.priority_alignment,
+                'capability_confidence': self.weights.capability_confidence,
+                'availability': self.weights.availability
+            },
+            'task_types_supported': len(TaskType),
+            'capability_keywords': len(self._capability_keywords)
+        }
+
+    def explain_routing(self, task: TaskRequest) -> Dict[str, Any]:
+        """
+        Explain routing decision for a task (debugging tool)
+
+        Args:
+            task: TaskRequest to explain
+
+        Returns:
+            Dictionary with detailed routing explanation
+        """
+        explanation = {
+            'task_type': task.task_type.value,
+            'task_priority': task.priority,
+            'required_capabilities': self._task_type_mapping.get(task.task_type, ['general']),
+            'candidates': []
+        }
+
+        # Score all agents
+        for agent_id, agent in self.agents.items():
+            score = self._score_agent(agent, task)
+            explanation['candidates'].append({
+                'agent_id': agent_id,
+                'agent_name': agent.name,
+                'score': score,
+                'priority': agent.priority,
+                'available': agent.available,
+                'capabilities': agent.capabilities
+            })
+
+        # Sort by score
+        explanation['candidates'].sort(key=lambda x: x['score'], reverse=True)
+
+        # Add final routing decision
+        result = self.route(task)
+        explanation['final_decision'] = {
+            'agent_name': result.agent_name,
+            'confidence': result.confidence,
+            'reasoning': result.reasoning,
+            'metadata': result.metadata
+        }
+
+        return explanation
+
+    def refresh_agents(self) -> None:
+        """
+        Refresh agent configurations from loader
+
+        Useful when agent configs are updated at runtime
+        """
+        try:
+            self.loader.refresh_configs()
+            self.agents = self.loader.load_all()
+            logger.info(f"Refreshed agents: {len(self.agents)} agents loaded")
+        except AgentConfigError as e:
+            logger.error(f"Failed to refresh agents: {e}")

@@ -45,8 +45,8 @@ anthropic==0.69.0  # Latest version
 openai==2.3.0  # Latest version
 tiktoken==0.8.0  # Token counting for OpenAI models
 transformers==4.48.0  # Updated
-torch==2.6.0  # Updated to fix PYSEC-2025-41 (RCE) vulnerability
-torchvision==0.19.0  # Compatible with torch 2.6.0
+torch==2.9.0  # Updated from 2.6.0 - latest stable (PYSEC-2025-41 RCE fixed)
+torchvision==0.24.0  # Updated from 0.19.0 - compatible with torch 2.9.0
 # SECURITY: RCE vulnerability fixed in torch 2.6.0+
 diffusers==0.31.0
 sentence-transformers==5.1.2  # Latest stable
@@ -137,7 +137,7 @@ vaderSentiment==3.3.2
 spacy==3.8.3
 nltk==3.9.1
 langchain==1.0.4  # LLM orchestration - Latest stable
-langsmith==0.2.6  # LLM monitoring
+langsmith==0.4.41  # Updated from 0.2.6 - required by langchain-core >=0.3.45
 
 # Blockchain & Web3 (Security Verified)
 web3==7.7.0  # Updated
@@ -146,7 +146,7 @@ eth-typing==5.0.1
 eth-utils==5.1.0
 
 # Data Science & Visualization
-joblib==1.4.3
+joblib==1.5.2  # Updated from 1.4.3 (version did not exist)
 scipy==1.14.1
 statsmodels==0.14.4
 seaborn==0.13.2

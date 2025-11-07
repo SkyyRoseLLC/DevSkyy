@@ -1,0 +1,27 @@
+{
+  "agent_id": "scanner_v2",
+  "agent_type": "security",
+  "name": "Scanner Agent V2",
+  "capabilities": [
+    "security_scan",
+    "vulnerability_scan",
+    "code_review",
+    "compliance_check",
+    "performance_test"
+  ],
+  "priority": 85,
+  "available": true,
+  "description": "Enterprise scanner agent with self-healing and orchestration capabilities. Performs comprehensive site scanning including code quality, security vulnerabilities, performance analysis, and dependency analysis.",
+  "metadata": {
+    "version": "2.0.0",
+    "base_class": "BaseAgent",
+    "module": "agent.modules.backend.scanner_v2",
+    "scan_extensions": [".py", ".js", ".ts", ".php", ".html", ".css"],
+    "features": [
+      "multi_threaded_scanning",
+      "orchestrator_integration",
+      "real_time_health_monitoring",
+      "automated_remediation"
+    ]
+  }
+}

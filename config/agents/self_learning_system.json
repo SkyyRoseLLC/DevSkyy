@@ -1,0 +1,34 @@
+{
+  "agent_id": "self_learning_system",
+  "agent_type": "machine_learning",
+  "name": "Self-Learning System",
+  "capabilities": [
+    "ml_training",
+    "ml_inference",
+    "error_tracking",
+    "pattern_recognition",
+    "predictive_analytics"
+  ],
+  "priority": 90,
+  "available": true,
+  "description": "ML-powered system that learns from every error, conflict, and failure to prevent future issues. Features error pattern recognition, conflict resolution learning, and automatic solution generation.",
+  "metadata": {
+    "version": "1.0.0",
+    "module": "agent.modules.backend.self_learning_system",
+    "features": [
+      "error_pattern_recognition",
+      "conflict_resolution_learning",
+      "predictive_failure_detection",
+      "automatic_solution_generation",
+      "continuous_improvement"
+    ],
+    "ml_models": [
+      "error_classifier",
+      "solution_predictor",
+      "conflict_resolver",
+      "anomaly_detector"
+    ],
+    "knowledge_base_path": "knowledge_base",
+    "anomaly_detector": "IsolationForest"
+  }
+}

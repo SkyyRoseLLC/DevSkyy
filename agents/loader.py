@@ -1,106 +1,159 @@
 #!/usr/bin/env python3
 """
-Agent Configuration Loader
-Programmatically loads and validates agent configurations from JSON files
+Agent Configuration Loader with MCP Efficiency Patterns
+Loads and validates agent configurations with 5-minute caching
 
-References: /Users/coreyfoster/Desktop/CLAUDE_20-10_MASTER.md
-Truth Protocol Compliance: Rules 1, 2, 3, 5, 10
+Truth Protocol Compliance: CLAUDE.md
 """
 
 import json
 import logging
-import sys
+import time
+from functools import lru_cache
 from pathlib import Path
-from typing import Dict, List, Optional, Any
+from typing import Dict, List, Optional, Any, Set
 from dataclasses import dataclass, field
-from datetime import datetime
-from enum import Enum
+from pydantic import BaseModel, Field, field_validator, ConfigDict
 
-# Add parent directory to path for standalone execution
-if __name__ == "__main__":
-    sys.path.insert(0, str(Path(__file__).parent.parent))
-
-# Configure logging
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-class AgentType(Enum):
-    """Agent type enumeration"""
-    CODE_QUALITY_SECURITY = "code_quality_security"
-    GROWTH_MARKETING_AUTOMATION = "growth_marketing_automation"
-    DATA_ANALYSIS_INTELLIGENCE = "data_analysis_intelligence"
-    VISUAL_CONTENT_GENERATION = "visual_content_generation"
+class AgentConfigError(Exception):
+    """Base exception for agent configuration errors"""
+    pass
 
 
-class AgentStatus(Enum):
-    """Agent status enumeration"""
-    ACTIVE = "active"
-    INACTIVE = "inactive"
-    MAINTENANCE = "maintenance"
-    DEGRADED = "degraded"
+class ConfigValidationError(AgentConfigError):
+    """Configuration validation error"""
+    pass
 
 
-@dataclass
-class OrchestrationCommand:
-    """Orchestration command configuration"""
-    command: str
-    description: str
-    execution_mode: str
-    required_inputs: List[str] = field(default_factory=list)
-    validation_steps: List[str] = field(default_factory=list)
-    tools: List[str] = field(default_factory=list)
-    coverage_requirement: Optional[int] = None
+class AgentConfigSchema(BaseModel):
+    """Pydantic schema for agent configuration validation"""
+    model_config = ConfigDict(extra='forbid', strict=True)
 
+    agent_id: str = Field(..., min_length=1, description="Unique agent identifier")
+    agent_type: str = Field(..., min_length=1, description="Agent type classification")
+    name: str = Field(..., min_length=1, description="Human-readable agent name")
+    capabilities: List[str] = Field(..., min_items=1, description="Agent capabilities")
+    priority: int = Field(..., ge=1, le=100, description="Agent priority (1-100)")
+    available: bool = Field(default=True, description="Agent availability status")
+    description: Optional[str] = Field(default=None, description="Agent description")
+    metadata: Dict[str, Any] = Field(default_factory=dict, description="Additional metadata")
 
-@dataclass
-class PerformanceSLO:
-    """Performance SLO configuration"""
-    p95_latency_ms: Optional[int] = None
-    error_rate_percent: Optional[float] = None
-    test_coverage_percent: Optional[int] = None
-    secrets_in_repo: int = 0
-    page_load_time_ms: Optional[int] = None
-    lighthouse_score: Optional[int] = None
-    conversion_rate_minimum: Optional[float] = None
+    @field_validator('capabilities')
+    @classmethod
+    def validate_capabilities(cls, value: List[str]) -> List[str]:
+        """Validate capabilities are non-empty strings"""
+        if not all(isinstance(cap, str) and cap.strip() for cap in value):
+            raise ValueError("All capabilities must be non-empty strings")
+        return value
 
 
 @dataclass
-class AgentConfiguration:
-    """Complete agent configuration"""
+class AgentConfig:
+    """Agent configuration data class"""
     agent_id: str
-    agent_name: str
-    agent_type: AgentType
-    version: str
-    master_document: str
-    status: AgentStatus
-    composition: Dict[str, str]
-    capabilities: Dict[str, Any]
-    truth_protocol_compliance: Dict[str, Any]
-    orchestration_commands: Dict[str, OrchestrationCommand]
-    performance_slos: PerformanceSLO
-    monitoring: Dict[str, Any]
-    deliverables_per_cycle: List[str]
-    created_at: datetime
-    last_updated: datetime
-    maintainer: str
+    agent_type: str
+    name: str
+    capabilities: List[str]
+    priority: int
+    available: bool
+    description: Optional[str] = None
+    metadata: Dict[str, Any] = field(default_factory=dict)
 
-    # Optional fields
-    wordpress_integration: Optional[Dict[str, Any]] = None
-    ab_testing_automation: Optional[Dict[str, Any]] = None
-    data_retrieval: Optional[Dict[str, Any]] = None
-    model_management: Optional[Dict[str, Any]] = None
-    ci_cd_integration: Optional[Dict[str, Any]] = None
+    def matches_capability(self, capability: str) -> bool:
+        """Check if agent has specific capability"""
+        return capability.lower() in [c.lower() for c in self.capabilities]
+
+    def has_any_capability(self, capabilities: List[str]) -> bool:
+        """Check if agent has any of the specified capabilities"""
+        agent_caps_lower = [c.lower() for c in self.capabilities]
+        return any(cap.lower() in agent_caps_lower for cap in capabilities)
+
+    def to_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary"""
+        return {
+            'agent_id': self.agent_id,
+            'agent_type': self.agent_type,
+            'name': self.name,
+            'capabilities': self.capabilities,
+            'priority': self.priority,
+            'available': self.available,
+            'description': self.description,
+            'metadata': self.metadata
+        }
+
+
+class AgentConfigCache:
+    """Simple time-based cache for agent configurations (5-minute TTL)"""
+
+    def __init__(self, ttl_seconds: int = 300):
+        self.ttl_seconds = ttl_seconds
+        self.cache: Dict[str, tuple[AgentConfig, float]] = {}
+        self.batch_cache: Dict[str, tuple[List[AgentConfig], float]] = {}
+
+    def get(self, key: str) -> Optional[AgentConfig]:
+        """Get cached agent config if not expired"""
+        if key not in self.cache:
+            return None
+
+        config, timestamp = self.cache[key]
+        if time.time() - timestamp > self.ttl_seconds:
+            del self.cache[key]
+            return None
+
+        return config
+
+    def set(self, key: str, config: AgentConfig) -> None:
+        """Cache agent config with current timestamp"""
+        self.cache[key] = (config, time.time())
+
+    def get_batch(self, key: str) -> Optional[List[AgentConfig]]:
+        """Get cached batch of agent configs if not expired"""
+        if key not in self.batch_cache:
+            return None
+
+        configs, timestamp = self.batch_cache[key]
+        if time.time() - timestamp > self.ttl_seconds:
+            del self.batch_cache[key]
+            return None
+
+        return configs
+
+    def set_batch(self, key: str, configs: List[AgentConfig]) -> None:
+        """Cache batch of agent configs with current timestamp"""
+        self.batch_cache[key] = (configs, time.time())
+
+    def clear(self) -> None:
+        """Clear all cached data"""
+        self.cache.clear()
+        self.batch_cache.clear()
+
+    def size(self) -> Dict[str, int]:
+        """Get cache size information"""
+        return {
+            'single_configs': len(self.cache),
+            'batch_configs': len(self.batch_cache)
+        }
 
 
 class AgentConfigLoader:
     """
-    Loads and validates agent configurations from JSON files
+    Loads and validates agent configurations with MCP efficiency patterns
+
+    Features:
+    - Pydantic validation for all configs
+    - 5-minute caching for performance
+    - Batch operations for MCP efficiency
+    - Comprehensive error handling
+    - Config filtering by capability and priority
 
     Usage:
-        loader = AgentConfigLoader()
-        agent = loader.load_agent("professors-of-code-001")
-        all_agents = loader.load_all_agents()
+        loader = AgentConfigLoader(config_dir="config/agents")
+        agent = loader.load_agent("scanner_v2")
+        agents = loader.load_batch(["scanner_v2", "fixer_v2"])
+        filtered = loader.filter_by_capability("security_scan")
     """
 
     def __init__(self, config_dir: Optional[Path] = None):
@@ -108,318 +161,410 @@ class AgentConfigLoader:
         Initialize agent configuration loader
 
         Args:
-            config_dir: Directory containing agent config files
-                       Defaults to agents/config/ relative to this file
+            config_dir: Directory containing agent JSON configs
+                       Defaults to config/agents/ relative to project root
+
+        Raises:
+            AgentConfigError: If config directory doesn't exist
         """
         if config_dir is None:
-            self.config_dir = Path(__file__).parent / "config"
+            project_root = Path(__file__).parent.parent
+            self.config_dir = project_root / "config" / "agents"
         else:
             self.config_dir = Path(config_dir)
 
         if not self.config_dir.exists():
-            raise FileNotFoundError(f"Config directory not found: {self.config_dir}")
+            raise AgentConfigError(f"Config directory not found: {self.config_dir}")
 
-        self.index_path = self.config_dir / "agents_index.json"
-        self._index = None
-        self._agents_cache: Dict[str, AgentConfiguration] = {}
+        self.cache = AgentConfigCache(ttl_seconds=300)
+        self._config_files: Dict[str, Path] = {}
+        self._discover_configs()
 
-        logger.info(f"AgentConfigLoader initialized with config_dir: {self.config_dir}")
+        logger.info(
+            f"AgentConfigLoader initialized: {len(self._config_files)} configs found "
+            f"at {self.config_dir}"
+        )
 
-    def load_index(self) -> Dict[str, Any]:
+    def _discover_configs(self) -> None:
+        """Discover all JSON config files in config directory"""
+        self._config_files.clear()
+
+        if not self.config_dir.exists():
+            logger.warning(f"Config directory does not exist: {self.config_dir}")
+            return
+
+        for json_file in self.config_dir.glob("*.json"):
+            agent_id = json_file.stem
+            self._config_files[agent_id] = json_file
+
+        logger.debug(f"Discovered {len(self._config_files)} config files")
+
+    def list_available_agents(self) -> List[str]:
         """
-        Load the agent index file
+        List all available agent IDs
 
         Returns:
-            Dict containing agent index metadata
-
-        Raises:
-            FileNotFoundError: If index file doesn't exist
-            json.JSONDecodeError: If index file is invalid JSON
+            List of agent IDs found in config directory
         """
-        if self._index is not None:
-            return self._index
+        return sorted(self._config_files.keys())
 
-        if not self.index_path.exists():
-            raise FileNotFoundError(f"Index file not found: {self.index_path}")
-
-        try:
-            with open(self.index_path, 'r') as f:
-                self._index = json.load(f)
-            logger.info(f"Loaded agent index: {self._index.get('total_agents', 0)} agents")
-            return self._index
-        except json.JSONDecodeError as e:
-            logger.error(f"Failed to parse index file: {e}")
-            raise
-
-    def get_agent_ids(self) -> List[str]:
+    def load_agent(self, agent_id: str, use_cache: bool = True) -> AgentConfig:
         """
-        Get list of all agent IDs
-
-        Returns:
-            List of agent IDs
-        """
-        index = self.load_index()
-        return [agent['agent_id'] for agent in index.get('agents', [])]
-
-    def get_agent_by_type(self, agent_type: AgentType) -> List[str]:
-        """
-        Get agent IDs by type
+        Load and validate a single agent configuration
 
         Args:
-            agent_type: Type of agents to retrieve
+            agent_id: Agent identifier (filename without .json extension)
+            use_cache: Whether to use cached config if available
 
         Returns:
-            List of agent IDs matching the type
-        """
-        index = self.load_index()
-        return [
-            agent['agent_id']
-            for agent in index.get('agents', [])
-            if agent.get('agent_type') == agent_type.value
-        ]
-
-    def load_agent(self, agent_id: str) -> AgentConfiguration:
-        """
-        Load a specific agent configuration
-
-        Args:
-            agent_id: Agent ID to load (e.g., "professors-of-code-001")
-
-        Returns:
-            AgentConfiguration object
+            AgentConfig object
 
         Raises:
-            FileNotFoundError: If agent config file doesn't exist
-            ValueError: If agent configuration is invalid
+            AgentConfigError: If agent config not found
+            ConfigValidationError: If config validation fails
         """
         # Check cache first
-        if agent_id in self._agents_cache:
-            logger.debug(f"Returning cached agent: {agent_id}")
-            return self._agents_cache[agent_id]
+        if use_cache:
+            cached = self.cache.get(agent_id)
+            if cached is not None:
+                logger.debug(f"Cache hit for agent: {agent_id}")
+                return cached
 
-        # Find config file path from index
-        index = self.load_index()
-        agent_meta = None
-        for agent in index.get('agents', []):
-            if agent['agent_id'] == agent_id:
-                agent_meta = agent
-                break
+        # Load from file
+        if agent_id not in self._config_files:
+            raise AgentConfigError(f"Agent config not found: {agent_id}")
 
-        if agent_meta is None:
-            raise ValueError(f"Agent ID not found in index: {agent_id}")
+        config_path = self._config_files[agent_id]
 
-        config_file = Path(agent_meta['config_file'])
-
-        if not config_file.exists():
-            raise FileNotFoundError(f"Agent config file not found: {config_file}")
-
-        # Load and parse configuration
         try:
-            with open(config_file, 'r') as f:
-                config_data = json.load(f)
+            with open(config_path, 'r', encoding='utf-8') as f:
+                raw_data = json.load(f)
 
-            # Parse orchestration commands
-            orchestration_commands = {}
-            for cmd_name, cmd_data in config_data.get('orchestration_commands', {}).items():
-                orchestration_commands[cmd_name] = OrchestrationCommand(
-                    command=cmd_data.get('command', ''),
-                    description=cmd_data.get('description', ''),
-                    execution_mode=cmd_data.get('execution_mode', 'synchronous'),
-                    required_inputs=cmd_data.get('required_inputs', []),
-                    validation_steps=cmd_data.get('validation_steps', []),
-                    tools=cmd_data.get('tools', []),
-                    coverage_requirement=cmd_data.get('coverage_requirement')
-                )
+            # Validate with Pydantic
+            validated = AgentConfigSchema(**raw_data)
 
-            # Parse performance SLOs
-            slo_data = config_data.get('performance_slos', {})
-            performance_slos = PerformanceSLO(
-                p95_latency_ms=slo_data.get('p95_latency_ms'),
-                error_rate_percent=slo_data.get('error_rate_percent'),
-                test_coverage_percent=slo_data.get('test_coverage_percent'),
-                secrets_in_repo=slo_data.get('secrets_in_repo', 0),
-                page_load_time_ms=slo_data.get('page_load_time_ms'),
-                lighthouse_score=slo_data.get('lighthouse_score'),
-                conversion_rate_minimum=slo_data.get('conversion_rate_minimum')
+            # Convert to AgentConfig dataclass
+            agent_config = AgentConfig(
+                agent_id=validated.agent_id,
+                agent_type=validated.agent_type,
+                name=validated.name,
+                capabilities=validated.capabilities,
+                priority=validated.priority,
+                available=validated.available,
+                description=validated.description,
+                metadata=validated.metadata
             )
 
-            # Create AgentConfiguration
-            agent_config = AgentConfiguration(
-                agent_id=config_data['agent_id'],
-                agent_name=config_data['agent_name'],
-                agent_type=AgentType(config_data['agent_type']),
-                version=config_data['version'],
-                master_document=config_data['master_document'],
-                status=AgentStatus(config_data['status']),
-                composition=config_data['composition'],
-                capabilities=config_data['capabilities'],
-                truth_protocol_compliance=config_data['truth_protocol_compliance'],
-                orchestration_commands=orchestration_commands,
-                performance_slos=performance_slos,
-                monitoring=config_data.get('monitoring', {}),
-                deliverables_per_cycle=config_data.get('deliverables_per_cycle', []),
-                created_at=datetime.fromisoformat(config_data['created_at'].replace('Z', '+00:00')),
-                last_updated=datetime.fromisoformat(config_data['last_updated'].replace('Z', '+00:00')),
-                maintainer=config_data['maintainer'],
-                wordpress_integration=config_data.get('wordpress_integration'),
-                ab_testing_automation=config_data.get('ab_testing_automation'),
-                data_retrieval=config_data.get('data_retrieval'),
-                model_management=config_data.get('model_management'),
-                ci_cd_integration=config_data.get('ci_cd_integration')
-            )
+            # Cache the result
+            self.cache.set(agent_id, agent_config)
 
-            # Cache the configuration
-            self._agents_cache[agent_id] = agent_config
-            logger.info(f"Loaded agent configuration: {agent_id}")
-
+            logger.info(f"Loaded agent config: {agent_id} ({agent_config.name})")
             return agent_config
 
-        except (json.JSONDecodeError, KeyError, ValueError) as e:
-            logger.error(f"Failed to load agent {agent_id}: {e}")
-            raise ValueError(f"Invalid agent configuration for {agent_id}: {e}")
+        except json.JSONDecodeError as e:
+            raise ConfigValidationError(f"Invalid JSON in {config_path}: {e}")
+        except Exception as e:
+            raise ConfigValidationError(f"Validation failed for {agent_id}: {e}")
 
-    def load_all_agents(self) -> Dict[str, AgentConfiguration]:
+    def load_batch(self, agent_ids: List[str], use_cache: bool = True) -> List[AgentConfig]:
         """
-        Load all agent configurations
+        Load multiple agent configurations efficiently (MCP batch operation)
+
+        Args:
+            agent_ids: List of agent identifiers to load
+            use_cache: Whether to use cached configs if available
 
         Returns:
-            Dict mapping agent_id to AgentConfiguration
+            List of AgentConfig objects (same order as input)
+
+        Raises:
+            AgentConfigError: If any agent config not found
+            ConfigValidationError: If any config validation fails
+
+        Note:
+            This is an MCP efficiency pattern - loads multiple configs
+            in a single operation to reduce round-trips
         """
-        agent_ids = self.get_agent_ids()
-        agents = {}
+        batch_key = "|".join(sorted(agent_ids))
+
+        # Check batch cache
+        if use_cache:
+            cached_batch = self.cache.get_batch(batch_key)
+            if cached_batch is not None:
+                logger.debug(f"Batch cache hit for {len(agent_ids)} agents")
+                return cached_batch
+
+        # Load all configs
+        configs = []
+        errors = []
 
         for agent_id in agent_ids:
             try:
-                agents[agent_id] = self.load_agent(agent_id)
-            except (FileNotFoundError, ValueError) as e:
-                logger.warning(f"Failed to load agent {agent_id}: {e}")
-                continue
+                config = self.load_agent(agent_id, use_cache=use_cache)
+                configs.append(config)
+            except (AgentConfigError, ConfigValidationError) as e:
+                errors.append(f"{agent_id}: {e}")
 
-        logger.info(f"Loaded {len(agents)}/{len(agent_ids)} agents")
-        return agents
+        if errors:
+            error_msg = "; ".join(errors)
+            raise AgentConfigError(f"Batch load failed for some agents: {error_msg}")
 
-    def validate_agent(self, agent_id: str) -> Dict[str, Any]:
+        # Cache the batch
+        self.cache.set_batch(batch_key, configs)
+
+        logger.info(f"Batch loaded {len(configs)} agent configs")
+        return configs
+
+    def load_all(self, use_cache: bool = True) -> Dict[str, AgentConfig]:
         """
-        Validate an agent configuration against Truth Protocol
+        Load all available agent configurations
 
         Args:
-            agent_id: Agent ID to validate
+            use_cache: Whether to use cached configs if available
 
         Returns:
-            Dict with validation results
+            Dictionary mapping agent_id to AgentConfig
         """
-        agent = self.load_agent(agent_id)
-        validation = {
+        all_ids = self.list_available_agents()
+
+        if not all_ids:
+            logger.warning("No agent configs found")
+            return {}
+
+        try:
+            configs = self.load_batch(all_ids, use_cache=use_cache)
+            return {config.agent_id: config for config in configs}
+        except (AgentConfigError, ConfigValidationError) as e:
+            # If batch fails, try loading individually
+            logger.warning(f"Batch load failed, loading individually: {e}")
+            result = {}
+            for agent_id in all_ids:
+                try:
+                    config = self.load_agent(agent_id, use_cache=use_cache)
+                    result[agent_id] = config
+                except (AgentConfigError, ConfigValidationError) as err:
+                    logger.error(f"Failed to load {agent_id}: {err}")
+            return result
+
+    def filter_by_capability(
+        self,
+        capability: str,
+        configs: Optional[List[AgentConfig]] = None
+    ) -> List[AgentConfig]:
+        """
+        Filter agents by specific capability
+
+        Args:
+            capability: Capability to filter by (case-insensitive)
+            configs: List of configs to filter (loads all if None)
+
+        Returns:
+            List of AgentConfig objects with matching capability
+        """
+        if configs is None:
+            all_configs = self.load_all()
+            configs = list(all_configs.values())
+
+        filtered = [
+            config for config in configs
+            if config.matches_capability(capability)
+        ]
+
+        logger.debug(f"Filtered {len(filtered)}/{len(configs)} agents by capability: {capability}")
+        return filtered
+
+    def filter_by_capabilities(
+        self,
+        capabilities: List[str],
+        configs: Optional[List[AgentConfig]] = None,
+        match_all: bool = False
+    ) -> List[AgentConfig]:
+        """
+        Filter agents by multiple capabilities
+
+        Args:
+            capabilities: List of capabilities to filter by
+            configs: List of configs to filter (loads all if None)
+            match_all: If True, agent must have ALL capabilities;
+                      if False, agent must have ANY capability
+
+        Returns:
+            List of AgentConfig objects matching criteria
+        """
+        if configs is None:
+            all_configs = self.load_all()
+            configs = list(all_configs.values())
+
+        if match_all:
+            filtered = [
+                config for config in configs
+                if all(config.matches_capability(cap) for cap in capabilities)
+            ]
+        else:
+            filtered = [
+                config for config in configs
+                if config.has_any_capability(capabilities)
+            ]
+
+        match_type = "ALL" if match_all else "ANY"
+        logger.debug(
+            f"Filtered {len(filtered)}/{len(configs)} agents by {match_type} "
+            f"capabilities: {capabilities}"
+        )
+        return filtered
+
+    def filter_by_priority(
+        self,
+        min_priority: int,
+        max_priority: int = 100,
+        configs: Optional[List[AgentConfig]] = None
+    ) -> List[AgentConfig]:
+        """
+        Filter agents by priority range
+
+        Args:
+            min_priority: Minimum priority (inclusive)
+            max_priority: Maximum priority (inclusive)
+            configs: List of configs to filter (loads all if None)
+
+        Returns:
+            List of AgentConfig objects within priority range
+        """
+        if configs is None:
+            all_configs = self.load_all()
+            configs = list(all_configs.values())
+
+        filtered = [
+            config for config in configs
+            if min_priority <= config.priority <= max_priority
+        ]
+
+        logger.debug(
+            f"Filtered {len(filtered)}/{len(configs)} agents by priority "
+            f"range: {min_priority}-{max_priority}"
+        )
+        return filtered
+
+    def filter_by_type(
+        self,
+        agent_type: str,
+        configs: Optional[List[AgentConfig]] = None
+    ) -> List[AgentConfig]:
+        """
+        Filter agents by type
+
+        Args:
+            agent_type: Agent type to filter by (case-insensitive)
+            configs: List of configs to filter (loads all if None)
+
+        Returns:
+            List of AgentConfig objects matching type
+        """
+        if configs is None:
+            all_configs = self.load_all()
+            configs = list(all_configs.values())
+
+        agent_type_lower = agent_type.lower()
+        filtered = [
+            config for config in configs
+            if config.agent_type.lower() == agent_type_lower
+        ]
+
+        logger.debug(f"Filtered {len(filtered)}/{len(configs)} agents by type: {agent_type}")
+        return filtered
+
+    def get_available_agents(
+        self,
+        configs: Optional[List[AgentConfig]] = None
+    ) -> List[AgentConfig]:
+        """
+        Get only available (not busy/offline) agents
+
+        Args:
+            configs: List of configs to filter (loads all if None)
+
+        Returns:
+            List of available AgentConfig objects
+        """
+        if configs is None:
+            all_configs = self.load_all()
+            configs = list(all_configs.values())
+
+        available = [config for config in configs if config.available]
+
+        logger.debug(f"Found {len(available)}/{len(configs)} available agents")
+        return available
+
+    def clear_cache(self) -> None:
+        """Clear configuration cache"""
+        self.cache.clear()
+        logger.info("Agent configuration cache cleared")
+
+    def get_cache_stats(self) -> Dict[str, Any]:
+        """
+        Get cache statistics
+
+        Returns:
+            Dictionary with cache statistics
+        """
+        return {
+            'cache_ttl_seconds': self.cache.ttl_seconds,
+            'cache_size': self.cache.size(),
+            'config_files_discovered': len(self._config_files),
+            'config_directory': str(self.config_dir)
+        }
+
+    def validate_config_file(self, agent_id: str) -> Dict[str, Any]:
+        """
+        Validate a config file and return validation results
+
+        Args:
+            agent_id: Agent identifier to validate
+
+        Returns:
+            Dictionary with validation results including errors/warnings
+        """
+        result = {
             'agent_id': agent_id,
-            'valid': True,
+            'valid': False,
             'errors': [],
             'warnings': []
         }
 
-        # Validate Truth Protocol compliance
-        tp = agent.truth_protocol_compliance
+        if agent_id not in self._config_files:
+            result['errors'].append(f"Config file not found for agent: {agent_id}")
+            return result
 
-        required_keys = [
-            'never_guess', 'pin_versions', 'cite_standards',
-            'no_hardcoded_secrets', 'rbac_enforcement',
-            'test_coverage_minimum', 'no_skip_rule', 'error_ledger_required'
-        ]
+        try:
+            # Try to load and validate
+            config = self.load_agent(agent_id, use_cache=False)
+            result['valid'] = True
 
-        for key in required_keys:
-            if key not in tp:
-                validation['errors'].append(f"Missing Truth Protocol key: {key}")
-                validation['valid'] = False
+            # Add warnings for potential issues
+            if config.priority < 10:
+                result['warnings'].append(f"Low priority value: {config.priority}")
 
-        # Validate test coverage requirement
-        if tp.get('test_coverage_minimum', 0) < 90:
-            validation['warnings'].append(
-                f"Test coverage minimum {tp.get('test_coverage_minimum')} < 90%"
-            )
+            if not config.capabilities:
+                result['warnings'].append("No capabilities defined")
 
-        # Validate performance SLOs
-        slo = agent.performance_slos
-        if slo.p95_latency_ms and slo.p95_latency_ms > 500:
-            validation['warnings'].append(
-                f"P95 latency {slo.p95_latency_ms}ms > 500ms"
-            )
+            if not config.available:
+                result['warnings'].append("Agent marked as unavailable")
 
-        if slo.secrets_in_repo > 0:
-            validation['errors'].append(
-                f"Secrets in repo: {slo.secrets_in_repo} (must be 0)"
-            )
-            validation['valid'] = False
+        except ConfigValidationError as e:
+            result['errors'].append(f"Validation error: {e}")
+        except AgentConfigError as e:
+            result['errors'].append(f"Config error: {e}")
+        except Exception as e:
+            result['errors'].append(f"Unexpected error: {e}")
 
-        # Validate orchestration commands
-        if not agent.orchestration_commands:
-            validation['warnings'].append("No orchestration commands defined")
+        return result
 
-        logger.info(f"Validation for {agent_id}: {'PASS' if validation['valid'] else 'FAIL'}")
-        return validation
-
-    def get_quick_reference(self) -> Dict[str, str]:
+    def refresh_configs(self) -> None:
         """
-        Get quick reference mapping from index
+        Refresh config file discovery and clear cache
 
-        Returns:
-            Dict mapping use case to agent ID
+        Useful when config files are added/removed at runtime
         """
-        index = self.load_index()
-        return index.get('quick_reference', {})
-
-    def clear_cache(self):
-        """Clear the agent configuration cache"""
-        self._agents_cache.clear()
-        self._index = None
-        logger.info("Agent configuration cache cleared")
-
-
-# Example usage
-if __name__ == "__main__":
-    # Initialize loader
-    loader = AgentConfigLoader()
-
-    # Load index
-    print("\n=== Agent Index ===")
-    index = loader.load_index()
-    print(f"Total agents: {index['total_agents']}")
-    print(f"Index version: {index['index_version']}")
-
-    # Get all agent IDs
-    print("\n=== Agent IDs ===")
-    agent_ids = loader.get_agent_ids()
-    for aid in agent_ids:
-        print(f"  - {aid}")
-
-    # Load specific agent
-    print("\n=== Loading Professors of Code ===")
-    agent = loader.load_agent("professors-of-code-001")
-    print(f"Agent: {agent.agent_name}")
-    print(f"Type: {agent.agent_type.value}")
-    print(f"Status: {agent.status.value}")
-    print(f"Composition: {agent.composition['primary_ai']} + {agent.composition['secondary_ai']}")
-
-    # Show orchestration commands
-    print(f"\nOrchestration Commands ({len(agent.orchestration_commands)}):")
-    for cmd_name, cmd in agent.orchestration_commands.items():
-        print(f"  - {cmd_name}: {cmd.description}")
-
-    # Show performance SLOs
-    print(f"\nPerformance SLOs:")
-    print(f"  - P95 Latency: {agent.performance_slos.p95_latency_ms}ms")
-    print(f"  - Test Coverage: {agent.performance_slos.test_coverage_percent}%")
-    print(f"  - Secrets in Repo: {agent.performance_slos.secrets_in_repo}")
-
-    # Validate agent
-    print("\n=== Validation ===")
-    validation = loader.validate_agent("professors-of-code-001")
-    print(f"Valid: {validation['valid']}")
-    if validation['errors']:
-        print(f"Errors: {validation['errors']}")
-    if validation['warnings']:
-        print(f"Warnings: {validation['warnings']}")
-
-    # Quick reference
-    print("\n=== Quick Reference ===")
-    quick_ref = loader.get_quick_reference()
-    for use_case, agent_id in quick_ref.items():
-        print(f"  {use_case}: {agent_id}")
+        self._discover_configs()
+        self.clear_cache()
+        logger.info(f"Refreshed configs: {len(self._config_files)} files discovered")

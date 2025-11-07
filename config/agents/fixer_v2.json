@@ -1,0 +1,29 @@
+{
+  "agent_id": "fixer_v2",
+  "agent_type": "code_repair",
+  "name": "Fixer Agent V2",
+  "capabilities": [
+    "code_fix",
+    "auto_fix",
+    "code_refactor",
+    "security_patch",
+    "performance_optimization"
+  ],
+  "priority": 80,
+  "available": true,
+  "description": "Enterprise fixer agent with AI-powered repairs and multi-agent coordination. Supports Python, JavaScript, TypeScript, HTML, and CSS with safe backup and rollback capabilities.",
+  "metadata": {
+    "version": "2.0.0",
+    "base_class": "BaseAgent",
+    "module": "agent.modules.backend.fixer_v2",
+    "supported_languages": ["python", "javascript", "typescript", "html", "css"],
+    "features": [
+      "ai_powered_fixes",
+      "multi_language_support",
+      "safe_backup_rollback",
+      "orchestrator_integration"
+    ],
+    "dependencies": ["autopep8", "black", "eslint"],
+    "backup_directory": ".agent_backups"
+  }
+}
