@@ -268,12 +268,12 @@ class WordPressSEOOptimizer:
     def _calculate_seo_score(self, analysis: Dict[str, Any]) -> int:
         """Calculate overall SEO score (0-100)"""
         score = 0
-        max_score = sum()
+        max_score = sum(
             bp["weight"] for bp in self.seo_best_practices.values() if "weight" in bp
         )
 
         # Title score
-        title_len= analysis["title"]["length"]
+        title_len =  analysis["title"]["length"]
         if (
             self.seo_best_practices["title_length"]["min"]
             <= title_len
@@ -282,7 +282,7 @@ class WordPressSEOOptimizer:
             score += self.seo_best_practices["title_length"]["weight"]
 
         # Meta description score
-        meta_len= analysis["meta_description"]["length"]
+        meta_len =  analysis["meta_description"]["length"]
         if (
             self.seo_best_practices["meta_description_length"]["min"]
             <= meta_len
@@ -342,7 +342,7 @@ class WordPressSEOOptimizer:
         Returns:
             JSON-LD schema markup
         """
-        schemas= {
+        schemas =  {
             "article": self._generate_article_schema,
             "product": self._generate_product_schema,
             "organization": self._generate_organization_schema,
@@ -442,7 +442,7 @@ class WordPressSEOOptimizer:
 
         sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
         # Use list and join for string building
-sitemap_list.append(...)
+
 
         for page in pages:
             url = page.get("url", "")
@@ -461,7 +461,7 @@ sitemap_list.append(...)
             sitemap += f"  </url>\n"
 
         # Use list and join for string building
-sitemap_list.append(...)
+
 
         return sitemap
 
@@ -528,11 +528,10 @@ sitemap_list.append(...)
         robots = "User-agent: *\n"
 
         if allow_all:
-            # Use list and join for string building
-robots_list.append(...)
+            robots += "Allow: /\n"
         else:
-            # Use list and join for string building
-robots_list.append(...)
+            robots += "Disallow: /\n"
+
 
         if disallow_paths:
             for path in disallow_paths:

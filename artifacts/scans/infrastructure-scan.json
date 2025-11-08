@@ -1,0 +1,42 @@
+{
+  "timestamp": "2025-11-07T16:04:29.467023",
+  "critical_missing": [
+    "module: agent.base_agent (MISSING FILE)",
+    "module: security.encryption_v2 (IMPORT ERROR: cannot import name 'PBKDF2' from 'cryptography.haz)",
+    "module: ml.model_registry (IMPORT ERROR: unindent does not match any outer indentation leve)",
+    "module: monitoring.observability (IMPORT ERROR: expected an indented block after 'except' statemen)",
+    "agent_pipeline: agent/base_agent.py"
+  ],
+  "warnings": [
+    "api: api/v1/ml.py (syntax error)",
+    "api: api/v1/gdpr.py (syntax error)"
+  ],
+  "operational": [
+    "directory: api",
+    "directory: api/v1",
+    "directory: agent",
+    "directory: ml",
+    "directory: security",
+    "directory: monitoring",
+    "directory: infrastructure",
+    "directory: logs",
+    "directory: uploads",
+    "module: agent.orchestrator",
+    "module: agent.registry",
+    "module: security.jwt_auth",
+    "api: api/__init__.py",
+    "api: api/v1/auth.py",
+    "api: api/v1/monitoring.py",
+    "api: api/v1/agents.py",
+    "security: security/jwt_auth.py",
+    "security: security/encryption_v2.py",
+    "security: security/input_validation.py",
+    "security: security/gdpr_compliance.py",
+    "security: .env"
+  ],
+  "pipelines": {
+    "ml_pipeline": "operational",
+    "monitoring": "operational",
+    "dependencies": "operational"
+  }
+}

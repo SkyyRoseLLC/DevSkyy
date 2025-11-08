@@ -1,14 +1,13 @@
-        from agent.modules.wordpress_server_access import create_wordpress_server_access
-    from .wordpress_server_access import create_wordpress_server_access
 from datetime import datetime
-
 from typing import Any, Dict, List
 import logging
 
 # Import the server access module
 try:
-    except ImportError:
+    from agent.modules.wordpress_server_access import create_wordpress_server_access
+except ImportError:
     try:
+        from .wordpress_server_access import create_wordpress_server_access
     except ImportError:
         # Fallback if module not available
         def create_wordpress_server_access():

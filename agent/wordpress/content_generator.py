@@ -1,13 +1,15 @@
+"""
+
         import re
 from datetime import datetime
-
     import anthropic
 from PIL import Image  # noqa: F401 - Reserved for Phase 3 image processing
 from typing import Any, Dict, List, Optional
 import logging
 import nltk  # noqa: F401 - Reserved for Phase 3 NLP enhancements
 
-"""
+
+
 WordPress Content Generator
 AI-powered content creation for WordPress sites
 
@@ -21,7 +23,8 @@ Reference: Based on AGENTS.md specifications
 """
 
 try:
-    except ImportError:
+    import anthropic
+except ImportError:
     anthropic = None  # Optional dependency
 
 logger = logging.getLogger(__name__)
@@ -415,7 +418,7 @@ work together to bring you the best shopping experience.</p>
             "seo_score": (
                 min(
                     100,
-                    len()
+                    len(
                         [
                             s
                             for s in keyword_density.values()
@@ -451,9 +454,9 @@ work together to bring you the best shopping experience.</p>
 Provide only the rewritten content."""
 
             message = self.client.messages.create(
-                model = "claude-sonnet-4-5-20250929",
-                max_tokens = 2000,
-                messages = [{"role": "user", "content": prompt}],
+                model="claude-sonnet-4-5-20250929",
+                max_tokens=2000,
+                messages=[{"role": "user", "content": prompt}],
             )
 
             return message.content[0].text

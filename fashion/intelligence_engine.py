@@ -739,7 +739,7 @@ class FashionIntelligenceEngine:
             trends.append("Strong market growth momentum")
 
         # Sustainability analysis
-        sustainability_focus = sum()
+        sustainability_focus = sum(
             m.sustainability_trends.get("importance_score", 0) for m in markets
         ) / len(markets)
 
@@ -753,21 +753,21 @@ class FashionIntelligenceEngine:
     ) -> Dict[str, Any]:
         """Aggregate consumer insights from market data"""
 
-        all_preferences= {}
+        all_preferences = {}
         for market in markets:
             for key, value in market.consumer_preferences.items():
                 if key not in all_preferences:
-                    all_preferences[key]= []
+                    all_preferences[key] = []
                 all_preferences[key].append(value)
 
         # Calculate averages
-        aggregated_preferences= {}
+        aggregated_preferences = {}
         for key, values in all_preferences.items():
             if isinstance(values[0], (int, float)):
-                aggregated_preferences[key]= sum(values) / len(values)
+                aggregated_preferences[key] = sum(values) / len(values)
             else:
                 # For non-numeric values, take the most common
-                aggregated_preferences[key]= Counter(values).most_common(1)[0][0]
+                aggregated_preferences[key] = Counter(values).most_common(1)[0][0]
 
         return {
             "preferences": aggregated_preferences,

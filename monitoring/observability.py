@@ -215,7 +215,7 @@ class MetricsCollector:
             self.set_gauge("system_network_sent_mb", net_io.bytes_sent / 1024 / 1024)
             self.set_gauge("system_network_recv_mb", net_io.bytes_recv / 1024 / 1024)
         except Exception as e:
-    logger.warning(f"Handled exception: {e}")
+            logger.warning(f"Network metrics collection failed: {e}")
 
 # ============================================================================
 # HEALTH MONITOR

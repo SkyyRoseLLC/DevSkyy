@@ -1,22 +1,19 @@
-import re
-from fastapi import APIRouter, Depends, HTTPException, status
-from fastapi.security import OAuth2PasswordRequestForm
-from security.log_sanitizer import sanitize_for_log, sanitize_user_identifier
-
-from api.v1.auth0_endpoints import router as auth0_router
-from api.validation_models import EnhancedRegisterRequest
-from security.jwt_auth import (
-    from typing import Dict
-    import logging
-
-    """
+"""
 Authentication API Endpoints
 JWT/OAuth2 authentication with user management
 Includes Auth0 integration for enterprise authentication
 """
 
-    # datetime not needed in this module
+import logging
+import re
+from typing import Dict
 
+from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi.security import OAuth2PasswordRequestForm
+
+from api.v1.auth0_endpoints import router as auth0_router
+from api.validation_models import EnhancedRegisterRequest
+from security.jwt_auth import (
     create_user_tokens,
     get_current_active_user,
     TokenData,
@@ -26,6 +23,7 @@ Includes Auth0 integration for enterprise authentication
     UserRole,
     verify_token,
 )
+from security.log_sanitizer import sanitize_for_log, sanitize_user_identifier
 
 logger = logging.getLogger(__name__)
 

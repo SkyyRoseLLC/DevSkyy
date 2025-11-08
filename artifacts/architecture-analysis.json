@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-11-07T15:58:17.569192",
+  "architecture": {
+    "backend": {
+      "python": [],
+      "critical": [],
+      "broken": []
+    },
+    "frontend": {
+      "react": [],
+      "templates": []
+    },
+    "contracts": {
+      "solidity": []
+    },
+    "mixed_language_errors": [],
+    "import_graph": {}
+  },
+  "critical_path": [
+    "fastapi.staticfiles",
+    "asyncio",
+    "fastapi.exceptions",
+    "starlette.middleware.base",
+    "pathlib",
+    "typing",
+    "fastapi",
+    "os",
+    "fastapi.responses",
+    "logging",
+    "fastapi.middleware.trustedhost",
+    "datetime",
+    "pydantic",
+    "sys",
+    "json",
+    "fastapi.middleware.cors",
+    "fastapi.middleware.gzip"
+  ],
+  "quarantine_candidates": [],
+  "mixed_language_errors": [
+    {
+      "file": "./agent/modules/backend/performance_agent.py",
+      "type": "javascript_in_python",
+      "size": 42452
+    },
+    {
+      "file": "./agent/modules/backend/advanced_code_generation_agent.py",
+      "type": "javascript_in_python",
+      "size": 21812
+    },
+    {
+      "file": "./agent/modules/backend/blockchain_nft_luxury_assets.py",
+      "type": "solidity_in_python",
+      "size": 36924
+    }
+  ]
+}

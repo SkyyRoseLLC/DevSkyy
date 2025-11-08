@@ -1,8 +1,9 @@
-from fastapi import FastAPI
-refactor / clean - main - py
 """
+DevSkyy API Package
 API module initialization for DevSkyy Platform.
 """
+
+from fastapi import FastAPI
 
 __version__ = "2.0.0"
 
@@ -22,9 +23,3 @@ def create_app() -> FastAPI:
     )
 
     return app
-
-
-"""DevSkyy API Package"""
-
-__VERSION__ = "1.0.0"
-main

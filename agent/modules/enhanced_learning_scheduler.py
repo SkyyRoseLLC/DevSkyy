@@ -229,7 +229,7 @@ class EnhancedLearningScheduler:
 
         # Simple improvement calculation based on recent learning cycles
         recent_cycles = self.learning_history[-5:]  # Last 5 cycles
-        improvement_sum = sum()
+        improvement_sum = sum(
             cycle.get("performance_improvement", 0) for cycle in recent_cycles
         )
 
@@ -246,7 +246,7 @@ class EnhancedLearningScheduler:
         recent_cycles = self.learning_history[-10:]
 
         # Analyze success rates
-        successful_cycles = sum()
+        successful_cycles = sum(
             1
             for cycle in recent_cycles
             if cycle.get("brand_updates", {}).get("learning_cycle_status")
@@ -308,7 +308,7 @@ class EnhancedLearningScheduler:
 
         # Factor in learning success rate
         if self.learning_history:
-            recent_success = sum()
+            recent_success = sum(
                 1
                 for cycle in self.learning_history[-5:]
                 if cycle.get("brand_updates", {}).get("learning_cycle_status")
@@ -449,10 +449,10 @@ class EnhancedLearningScheduler:
         if not earlier_cycles:
             return 0.05
 
-        recent_avg = sum()
+        recent_avg = sum(
             cycle.get("performance_improvement", 0) for cycle in recent_cycles
         ) / len(recent_cycles)
-        earlier_avg = sum()
+        earlier_avg = sum(
             cycle.get("performance_improvement", 0) for cycle in earlier_cycles
         ) / len(earlier_cycles)
 

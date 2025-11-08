@@ -1,0 +1,301 @@
+{
+  "fixed": [],
+  "manual": [
+    {
+      "file": "./agent/ecommerce/customer_intelligence.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (customer_intelligence.py, line 23)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/database_optimizer.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (database_optimizer.py, line 1)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/continuous_learning_background_agent.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (continuous_learning_background_agent.py, line 1)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/claude_sonnet_intelligence_service_v2.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (claude_sonnet_intelligence_service_v2.py, line 421)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/integration_manager.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (integration_manager.py, line 533)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/http_client.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (http_client.py, line 5)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/predictive_automation_system.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (predictive_automation_system.py, line 496)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/meta_social_automation_agent.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (meta_social_automation_agent.py, line 1)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/performance_agent.py",
+      "error": {
+        "msg": "  File \"./agent/modules/backend/performance_agent.py\", line 636\n    if \"# SECURITY FIX: exec() removed for security\n       ^\nSyntaxError: unterminated string literal (detected at line 636)\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/scanner_v2.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (scanner_v2.py, line 1)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/advanced_code_generation_agent.py",
+      "error": {
+        "msg": "  File \"./agent/modules/backend/advanced_code_generation_agent.py\", line 3\n    import {useState\n           ^\nSyntaxError: invalid syntax\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/wordpress_direct_service.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (wordpress_direct_service.py, line 6)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/blockchain_nft_luxury_assets.py",
+      "error": {
+        "msg": "  File \"./agent/modules/backend/blockchain_nft_luxury_assets.py\", line 9\n    import \"@openzeppelin/contracts/access/Ownable.sol\"\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nSyntaxError: invalid syntax\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/email_sms_automation_agent.py",
+      "error": {
+        "msg": "  File \"./agent/modules/backend/email_sms_automation_agent.py\", line 606\n    ),\n    ^\nSyntaxError: closing parenthesis ')' does not match opening parenthesis '{' on line 600\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/fixer_v2.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (fixer_v2.py, line 199)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/agent_assignment_manager.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (agent_assignment_manager.py, line 2435)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/inventory_agent.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (inventory_agent.py, line 1)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/auth_manager.py",
+      "error": {
+        "msg": "  File \"./agent/modules/backend/auth_manager.py\", line 10\n    from sqlalchemy.ext.declarative import declarative_base\n    ^^^^\nSyntaxError: invalid syntax\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/task_risk_manager.py",
+      "error": {
+        "msg": "  File \"./agent/modules/backend/task_risk_manager.py\", line 96\n    ) -> Dict[str, Any]:\n    ^\nSyntaxError: unmatched ')'\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/modules/backend/enhanced_autofix.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (enhanced_autofix.py, line 109)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./agent/ml_models/base_ml_engine.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (base_ml_engine.py, line 4)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./ml/auto_retrain.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (auto_retrain.py, line 11)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./ml/codex_orchestrator.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unindent does not match any outer indentation level (codex_orchestrator.py, line 92)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api_integration/workflow_engine.py",
+      "error": {
+        "msg": "  File \"./api_integration/workflow_engine.py\", line 876\n    ),\n    ^\nSyntaxError: closing parenthesis ')' does not match opening parenthesis '{' on line 868\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api_integration/auth_manager.py",
+      "error": {
+        "msg": "  File \"./api_integration/auth_manager.py\", line 634\n    ),\n    ^\nSyntaxError: closing parenthesis ')' does not match opening parenthesis '{' on line 624\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api_integration/discovery_engine.py",
+      "error": {
+        "msg": "  File \"./api_integration/discovery_engine.py\", line 294\n    ),\n    ^\nSyntaxError: closing parenthesis ')' does not match opening parenthesis '{' on line 291\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api_integration/fashion_apis.py",
+      "error": {
+        "msg": "  File \"./api_integration/fashion_apis.py\", line 809\n    )\n    ^\nSyntaxError: unmatched ')'\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api_integration/core_engine.py",
+      "error": {
+        "msg": "  File \"./api_integration/core_engine.py\", line 11\n    from contextlib import asynccontextmanager\n    ^^^^\nSyntaxError: invalid syntax\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./examples/api_integration_examples.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (api_integration_examples.py, line 4)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api/v1/auth0_endpoints.py",
+      "error": {
+        "msg": "  File \"./api/v1/auth0_endpoints.py\", line 11\n    from typing import Optional, Dict, Any\n    ^^^^\nSyntaxError: invalid syntax\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api/v1/gdpr.py",
+      "error": {
+        "msg": "  File \"./api/v1/gdpr.py\", line 10\n    from typing import Any, Dict, List, Optional\n    ^^^^\nSyntaxError: invalid syntax\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api/v1/agents.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (agents.py, line 1)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./api/v1/ml.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (ml.py, line 17)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./monitoring/observability.py",
+      "error": {
+        "msg": "Sorry: IndentationError: expected an indented block after 'except' statement on line 217 (observability.py, line 218)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./infrastructure/cicd_integrations.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (cicd_integrations.py, line 7)",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./infrastructure/database_ecosystem.py",
+      "error": {
+        "msg": "  File \"./infrastructure/database_ecosystem.py\", line 749\n    ),\n    ^\nSyntaxError: closing parenthesis ')' does not match opening parenthesis '{' on line 743\n",
+        "line": 0,
+        "text": ""
+      }
+    },
+    {
+      "file": "./infrastructure/cache_strategies.py",
+      "error": {
+        "msg": "Sorry: IndentationError: unexpected indent (cache_strategies.py, line 398)",
+        "line": 0,
+        "text": ""
+      }
+    }
+  ]
+}

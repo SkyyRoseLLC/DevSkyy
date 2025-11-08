@@ -1,30 +1,29 @@
-        import re
-from datetime import datetime
-
-from jinja2 import Template
-import jinja2
-from typing import Any, Dict, List, Optional, Tuple
-from uuid import uuid4
-import asyncio
-import logging
-import random
-
 """
 Autonomous Landing Page Generator with A/B Testing AI
 Generates high-converting landing pages with real-time optimization
 
 Features:
     - AI-driven copywriting with Claude Sonnet 4.5
-- Automated A/B/C/D testing with statistical significance
-- Real-time conversion tracking and optimization
-- Dynamic content personalization
-- Responsive design generation
-- SEO optimization
-- Performance monitoring
-- Heatmap analysis simulation
-- Multi-variant testing
-- Automatic winner selection
+    - Automated A/B/C/D testing with statistical significance
+    - Real-time conversion tracking and optimization
+    - Dynamic content personalization
+    - Responsive design generation
+    - SEO optimization
+    - Performance monitoring
+    - Heatmap analysis simulation
+    - Multi-variant testing
+    - Automatic winner selection
 """
+
+import asyncio
+import logging
+import random
+import re
+from datetime import datetime
+from typing import Any, Dict, List, Optional, Tuple
+from uuid import uuid4
+
+from jinja2 import Template
 
 logger = logging.getLogger(__name__)
 
@@ -223,7 +222,7 @@ class AutonomousLandingPageGenerator:
             cta_section=cta,
             footer=self._generate_footer(),
             variant_id=variant_id,
-            test_id="",  # Will be set when test starts
+            test_id = "",  # Will be set when test starts
         )
 
         return {
@@ -240,10 +239,10 @@ class AutonomousLandingPageGenerator:
     def _generate_hero_section(self, product_name: str, variant: str) -> str:
         """Generate hero section with variant-specific styling."""
         hero_style = self.luxury_elements["hero_styles"][
-            ord(variant) - 65 % len(self.luxury_elements["hero_styles"])
+            (ord(variant) - 65) % len(self.luxury_elements["hero_styles"])
         ]
         cta_text = self.luxury_elements["cta_variations"][
-            ord(variant) - 65 % len(self.luxury_elements["cta_variations"])
+            (ord(variant) - 65) % len(self.luxury_elements["cta_variations"])
         ]
 
         return f"""
@@ -347,7 +346,7 @@ class AutonomousLandingPageGenerator:
     def _generate_cta_section(self, goal: str, variant: str) -> str:
         """Generate call-to-action section based on conversion goal."""
         cta_text = self.luxury_elements["cta_variations"][
-            ord(variant) - 65 % len(self.luxury_elements["cta_variations"])
+            (ord(variant) - 65) % len(self.luxury_elements["cta_variations"])
         ]
 
         goal_specific = {
@@ -907,9 +906,9 @@ def create_landing_page_generator() -> AutonomousLandingPageGenerator:
 
 async def main():
     """Example: Generate and test landing pages."""
-    generator = create_landing_page_generator(
+    generator = create_landing_page_generator()
     # Generate landing page variants
-    result=await generator.generate_landing_page(
+    result = await generator.generate_landing_page(
         product_name="2024 Rose Gold Collection",
         target_audience="Affluent women 25-45 interested in luxury fashion",
         goal="email_signup",
@@ -920,20 +919,20 @@ async def main():
     logger.info(f"📊 Created {len(result['variants'])} variants")
 
     # Simulate some traffic and conversions
-    test_id=result["test_id"]
+    test_id = result["test_id"]
     for variant in result["variants"]:
         # Simulate views
         for _ in range(random.randint(100, 500)):
             await generator.track_event(test_id, variant["id"], "pageview")
 
         # Simulate conversions (different rates per variant)
-        conversion_rate=random.uniform(0.05, 0.25)
-        num_conversions=int(100 * conversion_rate)
+        conversion_rate = random.uniform(0.05, 0.25)
+        num_conversions = int(100 * conversion_rate)
         for _ in range(num_conversions):
             await generator.track_event(test_id, variant["id"], "conversion")
 
     # Analyze results
-    analysis=await generator.analyze_test_performance(test_id)
+    analysis = await generator.analyze_test_performance(test_id)
 
     logger.info("\n📊 Test Results:")
     for result in analysis["results"]:
@@ -945,12 +944,12 @@ async def main():
         logger.info(f"\n🏆 Winner: {analysis['winner']['variant']}")
 
     # Auto-optimize based on results
-    optimization=await generator.auto_optimize(test_id)
+    optimization = await generator.auto_optimize(test_id)
     if optimization["status"] == "optimized":
         logger.info(f"\n🚀 Created optimized test: {optimization['new_test_id']}")
 
     # Export winner
-    export=await generator.export_winner(test_id)
+    export = await generator.export_winner(test_id)
     if export["status"] == "exported":
         logger.info(f"\n✅ Exported to: {export['filename']}")
 
@@ -967,7 +966,7 @@ def create_safe_template(template_string: str) -> jinja2.Template:
     - Safe finalization of undefined variables
     """
     # Create secure environment with restricted features
-    env=jinja2.Environment(
+    env = jinja2.Environment(
         # Enable automatic escaping for HTML/XML content
         autoescape=jinja2.select_autoescape(['html', 'xml']),
         # Safely handle undefined variables
@@ -996,10 +995,10 @@ def render_safe_template(template_string: str, **kwargs) -> str:
     - Protection against template injection
     """
     try:
-        template=create_safe_template(template_string)
+        template = create_safe_template(template_string)
 
         # Sanitize all input variables
-        safe_kwargs={}
+        safe_kwargs = {}
         for key, value in kwargs.items():
             # Validate key name to prevent injection
             if not key.replace('_', '').isalnum():
@@ -1008,7 +1007,7 @@ def render_safe_template(template_string: str, **kwargs) -> str:
             if isinstance(value, str):
                 # Escape HTML characters and limit length
                 if len(value) > 10000:  # Prevent DoS via large strings
-                    value=value[:10000] + "..."
+                    value = value[:10000] + "..."
                 safe_kwargs[key]=jinja2.escape(value)
             elif isinstance(value, (int, float, bool)):
                 safe_kwargs[key]=value

@@ -4,6 +4,8 @@ import cv2  # noqa: F401 - Reserved for Phase 3 computer vision features
 from typing import Any, Dict, List, Optional
 import logging
 import numpy as np
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
 
 """
 Customer Intelligence Module
