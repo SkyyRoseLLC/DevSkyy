@@ -1,5 +1,13 @@
 {
   "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
+      },
+      "description": "GitHub repository management - issues, PRs, code search"
+    },
     "wordpress": {
       "command": "npx",
       "args": ["-y", "@instawp/mcp-wp"],
