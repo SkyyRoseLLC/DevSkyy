@@ -1,0 +1,9 @@
+Purpose: Triage missing Python dependencies (such as FastAPI) and update requirement files consistently.
+
+Typical trigger:`/agent run python-dependency-doctor` comment or manual workflow dispatch.
+
+Workflow summary:
+  1. Install project dependencies.
+  2. Reproduce the failing pytest node to capture the stack trace.
+  3. Patch the relevant requirements files with the missing dependency pin.
+  4. Re-run pytest to confirm the ModuleNotFoundError has been resolved.
