@@ -1,0 +1,563 @@
+{
+  "catalog_id": "skyyrose-premium-feature-catalog",
+  "version": "1.0.0",
+  "brand": "skyyrose",
+  "status": "governed-not-implemented",
+  "source": {
+    "artifact": "IMG_0164.jpg",
+    "description": "User-provided premium theme feature reference",
+    "rights": "UNKNOWN",
+    "authority": "reference-only"
+  },
+  "production_standard": {
+    "implementation": [
+      "typed-settings",
+      "canonical-tokens",
+      "server-truth",
+      "progressive-enhancement"
+    ],
+    "states": [
+      "loading",
+      "empty",
+      "error",
+      "success",
+      "unavailable",
+      "keyboard",
+      "reduced_motion",
+      "no_javascript"
+    ],
+    "viewports": ["390", "768", "1440"],
+    "required_handoffs": ["preview.html", "contract.json", "evidence.json"],
+    "release_verdicts": ["PASS", "FAIL", "BLOCKED"]
+  },
+  "features": [
+    {
+      "id": "fully_customizable",
+      "label": "Fully customizable",
+      "category": "settings",
+      "pages": ["all"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "typed-settings-schema",
+      "acceptance": [
+        "validated defaults and reset path",
+        "safe persistence and cache invalidation"
+      ]
+    },
+    {
+      "id": "landing_glb_object",
+      "label": "3D interactive object (GLB) on landing page",
+      "category": "immersive",
+      "pages": ["home"],
+      "owner": "fashion-frontend-engineer",
+      "contract": "capability-gated-glb",
+      "acceptance": [
+        "poster and DOM fallback remain useful",
+        "GPU, reduced-motion, keyboard, and context-loss proof"
+      ]
+    },
+    {
+      "id": "password_shipping_status",
+      "label": "Shipping status bar on password page",
+      "category": "password",
+      "pages": ["password"],
+      "owner": "woocommerce-theme-engineer",
+      "contract": "server-status-widget",
+      "acceptance": [
+        "status source and freshness are visible",
+        "unknown or provider failure never fabricates progress"
+      ]
+    },
+    {
+      "id": "landing_clickable_media",
+      "label": "Clickable image/GIF on landing page",
+      "category": "content",
+      "pages": ["home"],
+      "owner": "fashion-brand-experience",
+      "contract": "media-link-contract",
+      "acceptance": [
+        "accessible name and keyboard activation",
+        "provenance, target, and fallback are recorded"
+      ]
+    },
+    {
+      "id": "quick_add_to_cart",
+      "label": "Unique quick add to cart button",
+      "category": "commerce",
+      "pages": ["shop", "collection", "search"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "server-authoritative-quick-add",
+      "acceptance": [
+        "variation and quantity are correct",
+        "success, unavailable, retry, and cart announcement states pass"
+      ]
+    },
+    {
+      "id": "preorder_badge_status",
+      "label": "Pre-order badge and status page",
+      "category": "commerce",
+      "pages": ["collection", "product", "preorder-status"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "preorder-state-contract",
+      "acceptance": [
+        "badge derives from catalog truth",
+        "status, policy, and recovery are explicit"
+      ]
+    },
+    {
+      "id": "custom_email_collector",
+      "label": "Custom email collector",
+      "category": "lead_capture",
+      "pages": ["home", "password"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "consented-lead-capture",
+      "acceptance": [
+        "consent, validation, rate limit, and CSRF are enforced",
+        "provider failure and duplicate states are recoverable"
+      ]
+    },
+    {
+      "id": "size_chart_popup",
+      "label": "Size chart pop-up",
+      "category": "fit",
+      "pages": ["product"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "accessible-fit-modal",
+      "acceptance": [
+        "focus trap, restore, Escape, and deep-link behavior pass",
+        "chart source, units, localization, and unavailable state are explicit"
+      ]
+    },
+    {
+      "id": "expanded_social_icons",
+      "label": "More social icons",
+      "category": "content",
+      "pages": ["all"],
+      "owner": "fashion-brand-experience",
+      "contract": "approved-social-links",
+      "acceptance": [
+        "only approved destinations render",
+        "accessible labels, noopener policy, and analytics events pass"
+      ]
+    },
+    {
+      "id": "product_stock_status",
+      "label": "Stock status on product page",
+      "category": "commerce",
+      "pages": ["product"],
+      "owner": "catalog-sot-integrator",
+      "contract": "catalog-stock-contract",
+      "acceptance": [
+        "availability is server-authoritative",
+        "stale, variable, and retry states cannot invite invalid purchase"
+      ]
+    },
+    {
+      "id": "hide_sold_out_items",
+      "label": "Hide sold-out items button",
+      "category": "merchandising",
+      "pages": ["shop", "collection", "search"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "query-filter-contract",
+      "acceptance": [
+        "filter is URL-addressable and reversible",
+        "empty result and SEO canonical behavior pass"
+      ]
+    },
+    {
+      "id": "custom_fonts",
+      "label": "Custom fonts",
+      "category": "typography",
+      "pages": ["all"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "font-token-contract",
+      "acceptance": [
+        "licensed font sources and fallbacks are recorded",
+        "font loading does not regress CLS or readability"
+      ]
+    },
+    {
+      "id": "landing_enter_text",
+      "label": "Landing page with enter text",
+      "category": "landing",
+      "pages": ["home"],
+      "owner": "fashion-brand-experience",
+      "contract": "enter-gate-mode",
+      "acceptance": [
+        "semantic link/button and keyboard path exist",
+        "skip/hide mode and reduced-motion behavior preserve access"
+      ]
+    },
+    {
+      "id": "landing_menu",
+      "label": "Landing page with menu",
+      "category": "navigation",
+      "pages": ["home"],
+      "owner": "fashion-frontend-motion",
+      "contract": "landing-navigation-contract",
+      "acceptance": [
+        "navigation remains reachable without animation",
+        "focus, deep links, and mobile menu states pass"
+      ]
+    },
+    {
+      "id": "email_newsletter",
+      "label": "Email newsletter",
+      "category": "lead_capture",
+      "pages": ["all"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "newsletter-consent-contract",
+      "acceptance": [
+        "double opt-in/provider response is represented",
+        "unsubscribe, error, and privacy states pass"
+      ]
+    },
+    {
+      "id": "background_video",
+      "label": "Custom background video",
+      "category": "media",
+      "pages": ["home", "password"],
+      "owner": "fashion-frontend-motion",
+      "contract": "poster-first-video",
+      "acceptance": [
+        "muted and user-controlled playback with poster fallback",
+        "media budget, reduced motion, save-data, and failure proof"
+      ]
+    },
+    {
+      "id": "background_image_gif",
+      "label": "Custom image/GIF background",
+      "category": "media",
+      "pages": ["home", "password"],
+      "owner": "fashion-brand-experience",
+      "contract": "provenance-backed-background",
+      "acceptance": [
+        "source, rights, focal point, and alt treatment are recorded",
+        "decode failure and reduced-motion fallback pass"
+      ]
+    },
+    {
+      "id": "background_solid_color",
+      "label": "Custom solid color background",
+      "category": "settings",
+      "pages": ["all"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "validated-color-token",
+      "acceptance": [
+        "contrast and forced-color behavior pass",
+        "invalid values fall back to branded safe defaults"
+      ]
+    },
+    {
+      "id": "minimalist_look",
+      "label": "Minimalistic look",
+      "category": "art_direction",
+      "pages": ["all"],
+      "owner": "fashion-brand-experience",
+      "contract": "editorial-composition-contract",
+      "acceptance": [
+        "garment-first hierarchy is visible",
+        "density, whitespace, and content states remain usable"
+      ]
+    },
+    {
+      "id": "easy_to_use",
+      "label": "Easy to use",
+      "category": "experience",
+      "pages": ["all"],
+      "owner": "fashion-a11y-performance",
+      "contract": "task-success-contract",
+      "acceptance": [
+        "critical tasks complete by keyboard and touch",
+        "measured usability evidence replaces subjective claim"
+      ]
+    },
+    {
+      "id": "glow_text",
+      "label": "Glow text effect",
+      "category": "visual_effect",
+      "pages": ["home", "password"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "tokenized-text-effect",
+      "acceptance": [
+        "text remains readable without effect",
+        "contrast, reduced motion, and low-power fallback pass"
+      ]
+    },
+    {
+      "id": "preloader",
+      "label": "Preloader feature",
+      "category": "performance",
+      "pages": ["all"],
+      "owner": "fashion-frontend-motion",
+      "contract": "bounded-preloader",
+      "acceptance": [
+        "never blocks content beyond a measured timeout",
+        "keyboard, reduced-motion, slow-network, and failure paths pass"
+      ]
+    },
+    {
+      "id": "high_load_speed",
+      "label": "High load speed",
+      "category": "performance",
+      "pages": ["all"],
+      "owner": "fashion-a11y-performance",
+      "contract": "route-performance-budget",
+      "acceptance": [
+        "LCP CLS INP and media budgets are measured",
+        "candidate evidence includes network and device context"
+      ]
+    },
+    {
+      "id": "glow_products",
+      "label": "Glow effect on products",
+      "category": "visual_effect",
+      "pages": ["collection", "product"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "state-safe-product-effect",
+      "acceptance": [
+        "hover effect has touch/focus equivalent",
+        "effect does not hide price, stock, or CTA"
+      ]
+    },
+    {
+      "id": "eye_catching_layout",
+      "label": "Eye-catching layout",
+      "category": "art_direction",
+      "pages": ["all"],
+      "owner": "fashion-typography-layout-director",
+      "contract": "editorial-layout-contract",
+      "acceptance": [
+        "composition is SkyyRose-recognizable without logo",
+        "responsive and content-extreme captures pass"
+      ]
+    },
+    {
+      "id": "background_gradient",
+      "label": "Custom gradient color background",
+      "category": "settings",
+      "pages": ["all"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "bounded-gradient-token",
+      "acceptance": [
+        "contrast and interpolation are validated",
+        "user values cannot create unbounded CSS or unsafe URLs"
+      ]
+    },
+    {
+      "id": "previous_next_product",
+      "label": "Previous/next product buttons",
+      "category": "commerce",
+      "pages": ["product"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "catalog-navigation-contract",
+      "acceptance": [
+        "ordering follows approved query and availability",
+        "keyboard labels, history, and unavailable neighbors pass"
+      ]
+    },
+    {
+      "id": "sections_all_pages",
+      "label": "Add page sections on all pages",
+      "category": "architecture",
+      "pages": ["all"],
+      "owner": "fashion-strategy-brain",
+      "contract": "page-section-registry",
+      "acceptance": [
+        "sections have stable IDs and state contracts",
+        "template coverage and ownership are machine-verifiable"
+      ]
+    },
+    {
+      "id": "hide_landing_page",
+      "label": "Hide landing page option",
+      "category": "settings",
+      "pages": ["home"],
+      "owner": "fashion-frontend-motion",
+      "contract": "route-mode-setting",
+      "acceptance": [
+        "redirect and canonical behavior are explicit",
+        "setting cannot strand users or bypass access controls"
+      ]
+    },
+    {
+      "id": "external_countdown",
+      "label": "Countdown from external site",
+      "category": "time",
+      "pages": ["home", "password"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "allowlisted-countdown-provider",
+      "acceptance": [
+        "origin, CSP, timeout, and unavailable state are controlled",
+        "client clock cannot authorize sale or inventory"
+      ]
+    },
+    {
+      "id": "password_countdown",
+      "label": "Countdown integrated on password page",
+      "category": "time",
+      "pages": ["password"],
+      "owner": "fashion-frontend-motion",
+      "contract": "server-window-countdown",
+      "acceptance": [
+        "server time and expiry policy are authoritative",
+        "expired, paused, timezone, and reduced-motion states pass"
+      ]
+    },
+    {
+      "id": "product_border",
+      "label": "Product border",
+      "category": "visual_effect",
+      "pages": ["collection", "product"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "component-border-token",
+      "acceptance": [
+        "border is tokenized and contrast-safe",
+        "focus, hover, touch, and high-contrast states pass"
+      ]
+    },
+    {
+      "id": "time_and_date",
+      "label": "Time and date",
+      "category": "time",
+      "pages": ["home", "password", "order"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "localized-time-contract",
+      "acceptance": [
+        "timezone and locale are explicit",
+        "server/client disagreement and missing time are handled"
+      ]
+    },
+    {
+      "id": "music_player",
+      "label": "Music player",
+      "category": "media",
+      "pages": ["home"],
+      "owner": "fashion-frontend-motion",
+      "contract": "user-initiated-audio",
+      "acceptance": [
+        "no autoplay audio and a persistent pause control",
+        "focus, reduced motion, mobile, consent, and load failure pass"
+      ]
+    },
+    {
+      "id": "lookbook",
+      "label": "Lookbook",
+      "category": "editorial",
+      "pages": ["lookbook", "collection"],
+      "owner": "fashion-brand-experience",
+      "contract": "sot-lookbook-contract",
+      "acceptance": [
+        "every image maps to approved SKU/collection provenance",
+        "navigation, crop, preload, and product bridge evidence pass"
+      ]
+    },
+    {
+      "id": "high_conversion_rate",
+      "label": "High conversion rate",
+      "category": "measurement",
+      "pages": ["all"],
+      "owner": "ecommerce-growth-analytics-engineer",
+      "contract": "conversion-experiment-contract",
+      "acceptance": [
+        "metric, guardrail, sample, and rollback are defined",
+        "no uplift claim appears without candidate-bound experiment evidence"
+      ]
+    },
+    {
+      "id": "custom_cursor",
+      "label": "Custom cursor",
+      "category": "interaction",
+      "pages": ["home", "lookbook"],
+      "owner": "fashion-frontend-motion",
+      "contract": "pointer-progressive-enhancement",
+      "acceptance": [
+        "native cursor and keyboard semantics remain intact",
+        "touch, reduced motion, forced colors, and performance fallback pass"
+      ]
+    },
+    {
+      "id": "running_text_animation",
+      "label": "Site animations such as running text",
+      "category": "motion",
+      "pages": ["all"],
+      "owner": "fashion-motion-responsive-engineer",
+      "contract": "bounded-marquee-contract",
+      "acceptance": [
+        "pause/reduce controls and semantic duplicate text exist",
+        "no layout shift, motion sickness, or keyboard trap"
+      ]
+    },
+    {
+      "id": "text_highlight",
+      "label": "Text highlight effect",
+      "category": "visual_effect",
+      "pages": ["all"],
+      "owner": "fashion-design-system-engineer",
+      "contract": "semantic-highlight-token",
+      "acceptance": [
+        "meaning survives without color/effect",
+        "contrast, selection, zoom, and forced-color states pass"
+      ]
+    },
+    {
+      "id": "cart_drawer",
+      "label": "Cart drawer",
+      "category": "commerce",
+      "pages": ["all", "cart"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "accessible-cart-drawer",
+      "acceptance": [
+        "server/cart state, quantity, remove, and recovery are correct",
+        "focus trap, announcements, checkout link, and mobile behavior pass"
+      ]
+    },
+    {
+      "id": "collection_filters",
+      "label": "Collection filter section",
+      "category": "merchandising",
+      "pages": ["collection", "search"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "url-addressable-filter-contract",
+      "acceptance": [
+        "query is canonical and server-backed",
+        "keyboard, screen reader, no-results, and reset states pass"
+      ]
+    },
+    {
+      "id": "mobile_background",
+      "label": "Custom background for mobile",
+      "category": "responsive",
+      "pages": ["home", "password"],
+      "owner": "fashion-frontend-motion",
+      "contract": "mobile-media-override",
+      "acceptance": [
+        "390px asset and crop are independently proven",
+        "bytes, contrast, reduced motion, and failure fallback pass"
+      ]
+    },
+    {
+      "id": "second_background_activation",
+      "label": "Click to activate second background",
+      "category": "interaction",
+      "pages": ["home", "password"],
+      "owner": "fashion-frontend-motion",
+      "contract": "explicit-media-switch",
+      "acceptance": [
+        "button semantics, focus, preload policy, and reversible state pass",
+        "source provenance and media failure are explicit"
+      ]
+    },
+    {
+      "id": "password_waitlist",
+      "label": "Join waitlist feature on password page",
+      "category": "lead_capture",
+      "pages": ["password"],
+      "owner": "fashion-commerce-engineering",
+      "contract": "consented-waitlist-contract",
+      "acceptance": [
+        "consent, abuse controls, validation, and provider failure pass",
+        "confirmation and privacy/retention policy are visible"
+      ]
+    }
+  ]
+}

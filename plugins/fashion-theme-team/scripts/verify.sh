@@ -51,6 +51,7 @@ expected_skills=(
   fashion-visual-commerce-qa
   fashion-handoff-contracts
   fashion-release-evidence
+  fashion-premium-feature-system
 )
 
 for agent_name in "${expected_agents[@]}"; do
@@ -137,6 +138,7 @@ required_brain_files=(
   v2/team-run-commerce-repair.md
   v2/team-run-motion-repair.md
   v2/team-run-release-loop.md
+  features/premium-feature-catalog.json
   visuals/skyyrose-brain-overview.png
   visuals/skyyrose-brain-overview-mobile.png
   visuals/skyyrose-v2-page-atlas.png
@@ -169,6 +171,7 @@ for json_file in \
   "${brain_root}/v2/motion-responsive-contract.json" \
   "${brain_root}/v2/gap-closure-procedure.json" \
   "${brain_root}/interactive/feature-scaffold.json" \
+  "${brain_root}/features/premium-feature-catalog.json" \
   "${brain_root}/schemas/handoff-contract.schema.json" \
   "${brain_root}/schemas/evidence.schema.json" \
   "${brain_root}/schemas/task-packet.schema.json"; do
@@ -182,6 +185,16 @@ jq -e . "${brain_root}/examples/contract.json" >/dev/null
 jq -e . "${brain_root}/examples/evidence.json" >/dev/null
 
 jq -e '.pages | length >= 26' "${brain_root}/pages/page-blueprints.json" >/dev/null
+jq -e '
+  .catalog_id == "skyyrose-premium-feature-catalog" and
+  .brand == "skyyrose" and .status == "governed-not-implemented" and
+  (.features | length) == 44 and
+  ([.features[].id] | length) == ([.features[].id] | unique | length) and
+  (all(.features[]; (.id | length) > 2 and (.label | length) > 2 and (.owner | length) > 2 and (.contract | length) > 2 and (.acceptance | length) >= 2))
+' "${brain_root}/features/premium-feature-catalog.json" >/dev/null || {
+  printf 'FAIL: premium feature catalog must contain 44 unique executable records\n' >&2
+  exit 1
+}
 jq -e '.status == "planned-not-implemented" and .brand.id == "skyyrose" and (.pages | length) == 28' "${brain_root}/v2/v2-page-plan.json" >/dev/null
 jq -e '.status == "scaffolded-not-implemented" and .brand.id == "skyyrose" and .feature_count == 22 and (.features | length) == 22' "${brain_root}/interactive/feature-scaffold.json" >/dev/null
 jq -e '.procedure_id == "skyyrose-v2-gap-closure" and .status == "ready-to-run" and .brand.id == "skyyrose" and (.phases | length) == 8 and all(.phases[]; (.owner | length) > 2 and (.depends_on | type) == "array" and (.outputs | length) >= 2 and (.acceptance | length) >= 3 and (.evidence | length) >= 2 and (.stop_if | length) >= 1)' "${brain_root}/v2/gap-closure-procedure.json" >/dev/null

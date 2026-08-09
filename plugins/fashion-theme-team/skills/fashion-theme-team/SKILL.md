@@ -36,18 +36,19 @@ predictable while preserving capability.
 Use the narrowest execution skill for the phase, then return to this motherbase
 for scheduling and evidence integration:
 
-| Capability                                                   | Skill                          | Primary owners                                                                   |
-| ------------------------------------------------------------ | ------------------------------ | -------------------------------------------------------------------------------- |
-| Fashion Commerce Brain, page blueprints, V2 atlas            | `fashion-strategy-brain`       | commerce strategist, brand architect, merchandising architect, knowledge curator |
-| SkyyRose visual artifact system and imagery direction        | `fashion-brand-experience`     | brand architect, brand-systems researcher, typography/layout director            |
-| Tokens, components, states, design-system adoption           | `fashion-design-system`        | design-system engineer and inner pod                                             |
-| Catalog, WooCommerce, fit, returns, product discovery        | `fashion-commerce-engineering` | catalog SOT, WooCommerce, merchandising, fit/returns                             |
-| PHP/CSS/JS implementation, immersive motion, fallbacks       | `fashion-frontend-motion`      | frontend, WooCommerce, motion/responsive                                         |
-| WCAG, content states, reduced motion, performance            | `fashion-a11y-performance`     | accessibility/content engineer and independent reviewer                          |
-| Browser, visual, and purchase-journey proof                  | `fashion-visual-commerce-qa`   | visual red team, visual commerce QA, accessibility/performance reviewer          |
-| HTML/JSON/evidence parity                                    | `fashion-handoff-contracts`    | every role producing an artifact; lead integrates                                |
-| Packaging, marketplace readiness, rollback, release evidence | `fashion-release-evidence`     | release engineer and DesignOps                                                   |
-| Optional provider execution and self-healing                 | `elite-builder-runtime`        | explicitly approved runtime owner                                                |
+| Capability                                                   | Skill                            | Primary owners                                                                   |
+| ------------------------------------------------------------ | -------------------------------- | -------------------------------------------------------------------------------- |
+| Fashion Commerce Brain, page blueprints, V2 atlas            | `fashion-strategy-brain`         | commerce strategist, brand architect, merchandising architect, knowledge curator |
+| SkyyRose visual artifact system and imagery direction        | `fashion-brand-experience`       | brand architect, brand-systems researcher, typography/layout director            |
+| Tokens, components, states, design-system adoption           | `fashion-design-system`          | design-system engineer and inner pod                                             |
+| Catalog, WooCommerce, fit, returns, product discovery        | `fashion-commerce-engineering`   | catalog SOT, WooCommerce, merchandising, fit/returns                             |
+| PHP/CSS/JS implementation, immersive motion, fallbacks       | `fashion-frontend-motion`        | frontend, WooCommerce, motion/responsive                                         |
+| WCAG, content states, reduced motion, performance            | `fashion-a11y-performance`       | accessibility/content engineer and independent reviewer                          |
+| Browser, visual, and purchase-journey proof                  | `fashion-visual-commerce-qa`     | visual red team, visual commerce QA, accessibility/performance reviewer          |
+| HTML/JSON/evidence parity                                    | `fashion-handoff-contracts`      | every role producing an artifact; lead integrates                                |
+| Packaging, marketplace readiness, rollback, release evidence | `fashion-release-evidence`       | release engineer and DesignOps                                                   |
+| 44-item premium feature implementation and enterprise gates  | `fashion-premium-feature-system` | frontend, commerce, design-system, accessibility, QA, and release owners         |
+| Optional provider execution and self-healing                 | `elite-builder-runtime`          | explicitly approved runtime owner                                                |
 
 Do not load all skills by default. A role may temporarily expand its tool
 profile only under `references/tool-budget-and-loading.md`, with the expansion
@@ -132,6 +133,11 @@ optional runtime tools remain lazy-loaded.
     the garment-first Oakland visual thesis, use one rose-gold accent, and do
     not substitute fabricated product imagery for SOT-verified or
     founder-approved media.
+15. For every feature request, load
+    `brain/features/premium-feature-catalog.json` and route the selected IDs
+    through `fashion-premium-feature-system`. A screenshot match is not
+    coverage: implementation, fallback, a11y, security, performance, commerce,
+    and candidate-bound evidence are required.
 
 ## Coordination rules
 
