@@ -39,6 +39,19 @@ expected_references=(
   theme-deliverable-contract
   woocommerce-coverage
 )
+expected_skills=(
+  fashion-theme-team
+  elite-builder-runtime
+  fashion-strategy-brain
+  fashion-brand-experience
+  fashion-design-system
+  fashion-commerce-engineering
+  fashion-frontend-motion
+  fashion-a11y-performance
+  fashion-visual-commerce-qa
+  fashion-handoff-contracts
+  fashion-release-evidence
+)
 
 for agent_name in "${expected_agents[@]}"; do
   test -s "${plugin_root}/agents/${agent_name}.md" || {
@@ -53,6 +66,18 @@ for reference_name in "${expected_references[@]}"; do
     exit 1
   }
 done
+
+for skill_name in "${expected_skills[@]}"; do
+  test -s "${plugin_root}/skills/${skill_name}/SKILL.md" || {
+    printf 'FAIL: missing execution skill: %s\n' "${skill_name}" >&2
+    exit 1
+  }
+done
+
+test "$(find "${plugin_root}/skills" -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | wc -l | tr -d ' ')" -eq "${#expected_skills[@]}" || {
+  printf 'FAIL: skill inventory does not match the governed execution set\n' >&2
+  exit 1
+}
 
 test "$(find "${plugin_root}/agents" -maxdepth 1 -type f -name '*.md' | wc -l | tr -d ' ')" -eq 22 || {
   printf 'FAIL: expected exactly twenty-two agent charters\n' >&2
