@@ -69,8 +69,8 @@
     "structure": "echo 'Files:' && find skyyrose-flagship -type f -not -path '*/.*' -not -path '*/vendor/*' -not -path '*/node_modules/*' | wc -l && echo 'Dirs:' && find skyyrose-flagship -type d -not -path '*/.*' -not -path '*/vendor/*' -not -path '*/node_modules/*' | wc -l",
     "audit:deps": "npm audit --omit=dev",
     "audit:fix": "npm audit fix",
-    "designqc": "openwolf designqc --url https://skyyrose.co",
-    "designqc:local": "openwolf designqc",
+    "designqc": "npx --no-install openwolf designqc --url https://skyyrose.co",
+    "designqc:local": "npx --no-install openwolf designqc",
     "size": "echo 'CSS bundle sizes:' && find skyyrose-flagship/assets/css -name '*.min.css' -exec ls -la {} \\; | awk '{ printf \"%-12s %s\\n\", $5, $NF }' && echo '' && echo 'JS bundle sizes:' && find skyyrose-flagship/assets/js -name '*.min.js' -not -path '*/lib/*' -exec ls -la {} \\; | awk '{ printf \"%-12s %s\\n\", $5, $NF }'"
   },
   "devDependencies": {

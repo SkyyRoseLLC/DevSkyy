@@ -380,6 +380,8 @@ open-claude-code/
 .wolf/claude-mem-digest.md
 .wolf/memory-audit.json
 .wolf/designqc-captures/
+.wolf/_scan-state.json
+.wolf/anatomy-index.json
 
 # --- claude-mem per-folder context injection ---
 # → CLAUDE.local.md (FOLDER_USE_LOCAL_MD=true). Claude Code still loads it as
