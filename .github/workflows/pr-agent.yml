@@ -29,9 +29,10 @@ jobs:
     # leaving CANCELLED/failed states that aren't real code failures. Don't block merges.
     continue-on-error: true
 
-    # Skip draft PRs and bot comments (except on PR events from dependabot)
+    # This action deliberately rejects bot actors. Skip bot-authored PRs rather
+    # than producing a failed non-actionable check for every Dependabot update.
     if: |
-      (github.event_name == 'pull_request' && !github.event.pull_request.draft) ||
+      (github.event_name == 'pull_request' && !github.event.pull_request.draft && github.event.pull_request.user.type != 'Bot') ||
       (github.event_name == 'issue_comment' && github.event.issue.pull_request && !github.event.comment.user.type == 'Bot')
 
     permissions:
