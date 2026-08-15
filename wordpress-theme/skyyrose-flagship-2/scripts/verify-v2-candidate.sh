@@ -16,6 +16,9 @@ for route in \
 	front-page.php page.php home.php single.php archive.php search.php 404.php page-wishlist.php \
 	template-collection.php functions.php header.php footer.php \
 	template-parts/home/kids-capsule-reveal.php \
+	template-parts/journal-press-fallback.php \
+	template-immersive-signature.php template-immersive-black-rose.php \
+	template-immersive-love-hurts.php template-immersive-kids-capsule.php \
 	woocommerce/archive-product.php woocommerce/content-product.php woocommerce/single-product.php \
 	woocommerce/cart/cart.php woocommerce/checkout/form-checkout.php woocommerce/checkout/thankyou.php; do
 	require_file "$route"
@@ -170,10 +173,76 @@ for collection in signature black-rose love-hurts kids-capsule; do
 	fi
 done
 
+if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/functions.php"; then
+	echo "FAIL approved ornate product-card frame or verified view reel missing" >&2
+	exit 1
+fi
+
+if ! rg -q 'function skyyrose2_collection_scene_product' "$THEME_DIR/functions.php" || \
+	! rg -q 'sr2-world__product' "$THEME_DIR/template-collection.php"; then
+	echo "FAIL collection Scroll World product proof binding missing" >&2
+	exit 1
+fi
+
+if ! rg -q 'function skyyrose2_immersive_url' "$THEME_DIR/functions.php" || \
+	! rg -q 'Enter the full scene' "$THEME_DIR/template-collection.php" || \
+	! rg -q "'immersive-signature'.*template-immersive-signature.php" "$THEME_DIR/inc/presentation-registry.php"; then
+	echo "FAIL dedicated immersive collection routes are not provisioned and linked" >&2
+	exit 1
+fi
+
+if ! rg -q "template-parts/journal-press-fallback" "$THEME_DIR/home.php" || \
+	! rg -q "template-parts/journal-press-fallback" "$THEME_DIR/index.php"; then
+	echo "FAIL Journal press fallback is not shared by the production archive templates" >&2
+	exit 1
+fi
+
+if ! rg -q "privacy-policy" "$THEME_DIR/functions.php" || \
+	! rg -q "accessibility" "$THEME_DIR/functions.php"; then
+	echo "FAIL footer discoverability for legal and accessibility pages is missing" >&2
+	exit 1
+fi
+
+if ! rg -q 'sr2-scene-effect--bridge-lights' "$THEME_DIR/template-collection.php" || \
+	! rg -q 'sr2-scene-effect--petals' "$THEME_DIR/template-collection.php" || \
+	! rg -q 'sr2-cloud-roll' "$THEME_DIR/assets/css/theme.css" || \
+	! rg -q 'sr2-petal-fall' "$THEME_DIR/assets/css/theme.css"; then
+	echo "FAIL collection-specific hero atmosphere animation contract missing" >&2
+	exit 1
+fi
+
 find "$THEME_DIR" -name '*.php' -print0 | xargs -0 -n1 php -l >/dev/null
 node --check "$THEME_DIR/assets/js/theme.js"
 node --check "$THEME_DIR/assets/js/kids-capsule-reveal.js"
 jq empty "$REPO_ROOT/.fashion-theme/v2-remodel-ledger.json" "$REPO_ROOT/.fashion-theme/catalog-binding.json" "$REPO_ROOT/.fashion-theme/shot-manifest.json"
+
+transparency_manifest="$THEME_DIR/data/brand-asset-transparency.json"
+if [[ ! -f "$transparency_manifest" ]]; then
+	echo "FAIL standalone brand-asset transparency manifest missing" >&2
+	exit 1
+fi
+jq empty "$transparency_manifest"
+while IFS= read -r asset; do
+	if [[ ! -f "$THEME_DIR/$asset" ]]; then
+		echo "FAIL transparent brand asset missing: $asset" >&2
+		exit 1
+	fi
+done < <(jq -r '.transparent_assets[]' "$transparency_manifest")
+
+if command -v identify >/dev/null 2>&1; then
+	while IFS= read -r asset; do
+		alpha_report="$(identify -format '%[channels]|%[opaque]\n' "$THEME_DIR/$asset" | head -n 1)"
+		if [[ "$alpha_report" != *a* ]] || [[ "$alpha_report" != *"|False"* ]]; then
+			echo "FAIL brand asset is not transparently encoded: $asset ($alpha_report)" >&2
+			exit 1
+		fi
+	done < <(jq -r '.transparent_assets[]' "$transparency_manifest")
+else
+	echo "WARN ImageMagick identify unavailable; brand alpha bytes not re-audited" >&2
+fi
 git -C "$REPO_ROOT" diff --check -- "$THEME_DIR" "$REPO_ROOT/.fashion-theme" "$REPO_ROOT/.wolf"
 
 echo "PASS V2 candidate source gate"

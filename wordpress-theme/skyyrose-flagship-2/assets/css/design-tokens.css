@@ -8,10 +8,13 @@
 @font-face { font-family: Anton; src: url("../sot/fonts/anton-latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
 @font-face { font-family: Cinzel; src: url("../sot/fonts/cinzel-latin.woff2") format("woff2"); font-style: normal; font-weight: 400 900; font-display: swap; }
 @font-face { font-family: Inter; src: url("../sot/fonts/inter-latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
-@font-face { font-family: "Pinyon Script"; src: url("../sot/fonts/pinyon-script-latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
-@font-face { font-family: "Grand Hotel"; src: url("../sot/fonts/grand-hotel-latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
-@font-face { font-family: "SkyyRose Black Rose Script"; src: url("../sot/fonts/skyyrose-black-rose-script-latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
-@font-face { font-family: "SkyyRose Love Hurts Graffiti"; src: url("../sot/fonts/skyyrose-love-hurts-graffiti-latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+
+/*
+ * Collection lockups are artwork, not a page-font API. The corresponding
+ * files remain in the SOT for founder-approved image/artifact work, but they
+ * are intentionally not registered here. This prevents an unproven custom
+ * face from becoming a generic heading or utility dependency.
+ */
 
 :root {
 	--sr2-void: #0a0a0a;
@@ -34,6 +37,8 @@
 	--sr2-font-body: "Hanken Grotesk", "Inter", sans-serif;
 	--sr2-font-ui: "Anton", sans-serif;
 	--sr2-font-caps: "Cinzel", serif;
+	/* Text fallback for legacy artifact slots; collection lockups stay artwork. */
+	--sr2-font-script: var(--sr2-font-caps);
 	--sr2-ease: cubic-bezier(0.16, 1, 0.3, 1);
 	--sr2-ease-dramatic: cubic-bezier(0.65, 0, 0.35, 1);
 	--sr2-fast: 180ms;
@@ -63,7 +68,6 @@
 [data-collection="signature"] {
 	--sr2-accent: var(--sr2-gold);
 	--sr2-accent-rgb: 212, 175, 55;
-	--sr2-font-script: "Pinyon Script", cursive;
 }
 
 [data-collection="black-rose"] {

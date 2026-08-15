@@ -146,7 +146,7 @@ type CartMutationResult = {
 ## 2026-08-13 candidate journey update
 
 - Homepage entry opens only Signature, Black Rose, and Love Hurts; Kids Capsule is disclosed later through the three-chapter Royal Procession and exact `kids-001` / `kids-002` Woo bridge.
-- ProductCard is one collection-owned `house-portal` adapter across homepage, archives, search, and collection rails. Scenery is presentation; Woo product media, names, prices, availability, and actions remain authority.
+- ProductCard uses the approved `ornate-frame` adapter across homepage, archives, search, and collection rails. The first frame is the Woo/SOT-bound on-model product image; hover/focus reveals a short verified gallery reel (front/back/detail when supplied). Scenery and collection artifacts are presentation only; Woo product media, names, prices, availability, and actions remain authority.
 - The eight Jersey Series SKUs are a dedicated Black Rose release chapter, not a fifth collection. They remain isolated from core Black Rose ProductCards while the Town Line film and commerce rail live inside the Black Rose collection story; individual jersey truth resolves on Woo product routes.
 - Every collection statue hero is a scene-only frame. Typography, graphic artifacts, SEO heading, body copy, and navigation are not duplicated over the composed image; the semantic identity chapter follows in normal document flow.
 - Candidate evidence: source gate PASS; PHP/JS syntax PASS; all four collection routes zero-overlay/zero-Jersey checks PASS; 390/768/1440 overflow and media checks PASS; desktop local Lighthouse 100/100/100/100. Deployment and real staging purchase-state evidence remain blocked pending founder approval.

@@ -28,7 +28,7 @@ get_header();
 		</section>
 		<nav class="sr2-pagination" aria-label="<?php esc_attr_e( 'Journal pages', 'skyyrose-flagship-2' ); ?>"><?php the_posts_pagination( array( 'mid_size' => 1 ) ); ?></nav>
 	<?php else : ?>
-		<p class="sr2-empty"><?php esc_html_e( 'No stories have been published yet.', 'skyyrose-flagship-2' ); ?></p>
+		<?php get_template_part( 'template-parts/journal-press-fallback' ); ?>
 	<?php endif; ?>
 </main>
 <?php get_footer(); ?>

@@ -12,10 +12,10 @@ $theme_dir = realpath( __DIR__ . '/../wordpress-theme/skyyrose-flagship-2' );
 if ( ! $theme_dir ) { http_response_code( 500 ); exit( 'V2 theme missing.' ); }
 define( 'ABSPATH', __DIR__ . '/' );
 define( 'OBJECT', 'OBJECT' );
-$route = preg_replace( '/[^a-z-]/', '', $_GET['route'] ?? 'home' ) ?: 'home';
+$route = preg_replace( '/[^a-z0-9-]/i', '', $_GET['route'] ?? 'home' ) ?: 'home';
 $preview_state = preg_replace( '/[^a-z-]/', '', $_GET['state'] ?? '' );
 $preview_sku = strtolower( preg_replace( '/[^a-z0-9-]/i', '', $_GET['sku'] ?? 'sg-005' ) ) ?: 'sg-005';
-$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'faq', 'shipping-returns', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
+$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'faq', 'shipping-returns', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
 if ( ! in_array( $route, $preview_routes, true ) ) { $route = 'home'; }
 $preview_posts = array();
 $preview_cursor = 0;
@@ -37,6 +37,11 @@ function is_email( $value ) { return false !== filter_var( (string) $value, FILT
 function absint( $value ) { return abs( (int) $value ); }
 function add_action() {}
 function add_filter() {}
+function has_nav_menu() { return false; }
+function wp_enqueue_style() {}
+function wp_enqueue_script() {}
+function wp_generate_uuid4() { return 'preview-00000000-0000-4000-8000-000000000000'; }
+function wp_json_encode( $value, $flags = 0 ) { return json_encode( $value, $flags ); }
 function do_action( $hook ) {
 	global $product, $preview_sku;
 	if ( 'woocommerce_before_single_product_summary' === $hook && $product instanceof WC_Product ) {
@@ -75,6 +80,10 @@ function home_url( $path = '/' ) {
 		'collections/black-rose' => 'black-rose',
 		'collections/love-hurts' => 'love-hurts',
 		'collections/kids-capsule' => 'kids-capsule',
+		'worlds/signature' => 'immersive-signature',
+		'worlds/black-rose' => 'immersive-black-rose',
+		'worlds/love-hurts' => 'immersive-love-hurts',
+		'worlds/kids-capsule' => 'immersive-kids-capsule',
 	);
 	return '/tools/v2-theme-preview.php?route=' . rawurlencode( $routes[ $path ] ?? ( $path ?: 'home' ) );
 }
@@ -272,6 +281,14 @@ require $theme_dir . '/functions.php';
 
 if ( in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ) {
 	require $theme_dir . '/template-collection.php';
+} elseif ( 'immersive-signature' === $route ) {
+	require $theme_dir . '/template-immersive-signature.php';
+} elseif ( 'immersive-black-rose' === $route ) {
+	require $theme_dir . '/template-immersive-black-rose.php';
+} elseif ( 'immersive-love-hurts' === $route ) {
+	require $theme_dir . '/template-immersive-love-hurts.php';
+} elseif ( 'immersive-kids-capsule' === $route ) {
+	require $theme_dir . '/template-immersive-kids-capsule.php';
 } elseif ( 'home' === $route ) {
 	require $theme_dir . '/front-page.php';
 } elseif ( 'shop' === $route ) {

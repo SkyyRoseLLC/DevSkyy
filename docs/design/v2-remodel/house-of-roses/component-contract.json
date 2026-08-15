@@ -14,8 +14,10 @@
     {
       "id": "hor-product-portals-01",
       "surface": "product-card",
-      "contract": "One WooCommerce-authoritative portal card with collection-specific frame, artifact, verified product image, price, stock, add-to-cart, and product link.",
+      "contract": "The approved ornate collection frame: a WooCommerce-authoritative card opens on the verified on-model product image, then exposes up to two verified gallery views on hover/focus/touch. The frame crest, product media, price, stock, add-to-cart, and link remain collection-specific and SOT/Woo-owned.",
       "runtime_hook": ".sr2-c-product-portal[data-presentation]",
+      "card_direction": "ornate-frame",
+      "interaction": "primary on-model view -> hover/focus view reel; static multi-view strip for reduced-motion/coarse-pointer clients",
       "presentations": ["signature", "black-rose", "love-hurts", "kids-capsule", "jersey-series"]
     },
     {
@@ -31,6 +33,13 @@
       "contract": "Dedicated Black Rose release chapter: Skyy Rose Tour Around the Bay previsualization and eight-SKU commerce rail; the fictional house train has no transit affiliation, and jersey SKUs never inherit core Black Rose portal artifacts.",
       "runtime_hook": ".sr2-house-film[data-house-film]",
       "sku_scope": ["br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"]
+    },
+    {
+      "id": "hor-brand-mark-transparency-01",
+      "surface": "brand-assets",
+      "contract": "Every standalone SkyyRose logo, collection lockup, emblem, graphic mark, and header wordmark is served with an RGBA alpha channel and a transparent canvas. Collection hero and editorial photography remain intentionally opaque scene assets.",
+      "runtime_hook": "assets/sot/{brand,images/emblems,images/lockups,images/logos}",
+      "verification": "alpha_min=0 and visible_nonzero_pixels=true for every standalone mark; no scene or hero backdrop is classified as a logo"
     }
   ],
   "hard_fails": [

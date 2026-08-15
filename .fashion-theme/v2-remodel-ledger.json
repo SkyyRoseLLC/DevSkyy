@@ -553,6 +553,52 @@
         "explicit founder authorization before deployment"
       ],
       "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-immersive-route-journal-typography-closure",
+      "state": "LOCAL_SOURCE_EDIT_PENDING_CANDIDATE_CHECKPOINT",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-signature.php",
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-black-rose.php",
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-love-hurts.php",
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-kids-capsule.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/journal-press-fallback.php",
+        "wordpress-theme/skyyrose-flagship-2/home.php",
+        "wordpress-theme/skyyrose-flagship-2/index.php",
+        "wordpress-theme/skyyrose-flagship-2/inc/presentation-registry.php",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "wordpress-theme/skyyrose-flagship-2/data/font-provenance.json",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/OFL-1.1.txt",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/FONT-ATTRIBUTIONS.md",
+        "tools/v2-theme-preview.php",
+        "docs/design/v2-remodel/reports/typography-open-source-contract.md",
+        ".fashion-theme/workspace-ledger.json",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "outputs": [
+        "four immersive world templates provisioned as fresh-install pages under worlds/{collection}",
+        "local preview harness dispatches immersive routes and preserves numeric 404 route identifiers",
+        "Journal press fallback is shared by home.php and index.php so imported page_for_posts keeps founder-approved PR coverage",
+        "collection-specific typography uses only provenance-verified page fonts; unproven custom scripts remain blocked as artwork pending founder approval",
+        "font license and attribution bundle is shipped with hashes and provenance metadata",
+        "workspace ledger now records the active source as dirty and pending a candidate checkpoint instead of falsely reporting clean"
+      ],
+      "evidence": [
+        "2026-08-15: npm run build and npm run verify passed with 510 translation messages and 4 CSS/7 JS min-sync",
+        "2026-08-15: immersive-signature, immersive-black-rose, immersive-love-hurts, immersive-kids-capsule, 404, and journal preview routes returned HTTP 200 with expected markup and no PHP warnings",
+        "2026-08-15: all nine font hashes and the bundled OFL license hash match data/font-provenance.json",
+        "2026-08-15: verify-v2-candidate.sh passed immersive template, shared Journal fallback, and transparency checks"
+      ],
+      "blockers": [
+        "fresh independent browser visual QA at 390/768/1440",
+        "candidate-bound SOT media rights and WooCommerce variation/cart evidence",
+        "founder approval for custom SkyyRose script artwork provenance",
+        "explicit founder authorization before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
     }
   ],
   "journey_closures": [
@@ -644,6 +690,51 @@
       "blockers": [
         "founder eyes-on approval of the rendered full-color monument",
         "independent same-candidate visual QA before release",
+        "explicit founder authorization before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-ornate-product-reel-scene-motion-logo-alpha",
+      "state": "LOCAL_SOURCE_EDIT_PENDING_CANDIDATE_CHECKPOINT",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/template-collection.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/brand/",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/emblems/",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/logos/",
+        "wordpress-theme/skyyrose-flagship-2/data/brand-asset-transparency.json",
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        "docs/design/v2-remodel/house-of-roses/component-contract.json",
+        "docs/design/v2-remodel/reports/commerce-journey-gap-map.md",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "outputs": [
+        "approved ornate-frame product card with Woo/SOT on-model primary and verified gallery reel only",
+        "collection Scroll World chapters with a Woo product-proof rail item in every scene",
+        "collection-specific hero motion: bridge-light flicker and rolling clouds, falling Love Hurts petals, restrained Signature glow, and Kids throne glow",
+        "reduced-motion and Save-Data fail-closed static behavior",
+        "transparent RGBA canvas for every standalone brand mark while photography stays opaque",
+        "machine-readable transparency manifest and candidate-gate alpha verification"
+      ],
+      "evidence": [
+        "2026-08-15: npm run build generated 4 CSS and 7 JS assets; POT 506 messages",
+        "2026-08-15: verify-v2-candidate.sh passed",
+        "2026-08-15: npm run verify passed registry, POT, min-sync, and marketplace structure checks",
+        "2026-08-15: PHP lint and git diff --check passed",
+        "2026-08-15: local preview returned HTTP 200 for Signature, Black Rose, Love Hurts, Kids Capsule, and Shop; every collection route emitted scene effects and nine product-proof references",
+        "2026-08-15: standalone logo/lockup/emblem alpha audit passed with alpha_min=0 and visible_nonzero_pixels=true",
+        "2026-08-15: data/brand-asset-transparency.json records all 14 standalone marks; verify-v2-candidate.sh checks file presence and alpha bytes when ImageMagick is available"
+      ],
+      "blockers": [
+        "fresh independent browser visual QA at 390/768/1440",
+        "candidate-bound SOT media rights and WooCommerce variation/cart evidence",
+        "founder visual approval",
         "explicit founder authorization before deployment"
       ],
       "next_authority": "FOUNDER_VISUAL_REVIEW"

@@ -35,6 +35,22 @@ function skyyrose2_scroll_world_asset_uri( $path ) {
 }
 
 /**
+ * Resolve the dedicated immersive story page for a collection.
+ *
+ * @param string $collection Collection slug.
+ * @return string
+ */
+function skyyrose2_immersive_url( $collection ) {
+	$collection = sanitize_title( $collection );
+	if ( ! in_array( $collection, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ) {
+		return home_url( '/' );
+	}
+	$path = 'worlds/' . $collection;
+	$page = get_page_by_path( $path, OBJECT, 'page' );
+	return $page ? get_permalink( $page ) : home_url( '/' . $path . '/' );
+}
+
+/**
  * Resolve collection world imagery from its declared source, never from a
  * filename guess. Scroll World files and V2 SOT files have distinct roots.
  *
@@ -164,9 +180,18 @@ function skyyrose2_seo_context() {
 		$context['image']       = get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: $context['image'];
 		$context['type']        = 'article';
 	} elseif ( is_page() ) {
-		$context['title']       = get_the_title() . ' | ' . get_bloginfo( 'name' );
-		$context['description'] = wp_trim_words( wp_strip_all_tags( get_the_excerpt() ?: get_the_content() ), 30, '' ) ?: $context['description'];
-		$context['image']       = get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: $context['image'];
+		$page_slug = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
+		$worlds    = skyyrose2_collections();
+		if ( isset( $worlds[ $page_slug ] ) ) {
+			$world             = $worlds[ $page_slug ];
+			$context['title']       = $world['name'] . ' | SkyyRose';
+			$context['description'] = wp_strip_all_tags( $world['line'] . ' ' . $world['manifesto'] );
+			$context['image']       = skyyrose2_sot_asset_uri( $world['hero'] );
+		} else {
+			$context['title']       = get_the_title() . ' | ' . get_bloginfo( 'name' );
+			$context['description'] = wp_trim_words( wp_strip_all_tags( get_the_excerpt() ?: get_the_content() ), 30, '' ) ?: $context['description'];
+			$context['image']       = get_the_post_thumbnail_url( get_queried_object_id(), 'full' ) ?: $context['image'];
+		}
 	} elseif ( is_search() ) {
 		$context['title']       = sprintf( __( 'Search “%s” | SkyyRose', 'skyyrose-flagship-2' ), get_search_query() );
 		$context['description'] = __( 'Search SkyyRose products, collections, and journal stories.', 'skyyrose-flagship-2' );
@@ -675,6 +700,26 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 }
 
 /**
+ * Resolve the garment proof assigned to a Scroll World chapter.
+ *
+ * A chapter remains scenic, but it must also carry a real item from its own
+ * collection. The product image, name, price, and availability stay WooCommerce
+ * authoritative; Jersey Series remains isolated from the core Black Rose rail.
+ *
+ * @param string $collection Collection slug.
+ * @param int    $chapter Chapter index.
+ * @return WC_Product|false
+ */
+function skyyrose2_collection_scene_product( $collection, $chapter = 0 ) {
+	$products = skyyrose2_get_products( 12, $collection );
+	if ( empty( $products ) ) {
+		return false;
+	}
+	$index = absint( $chapter ) % count( $products );
+	return $products[ $index ] ?? false;
+}
+
+/**
  * Resolve a fixed product cast by exact SKU and collection membership.
  *
  * This is deliberately stricter than a product query: Royal Procession roles
@@ -769,6 +814,44 @@ function skyyrose2_product_card_reel_frames( $collection_data ) {
 		);
 	}
 	return $frames;
+}
+
+/**
+ * Return WooCommerce gallery IDs that are safe to treat as garment views.
+ *
+ * The preview harness can attach a collection scene as a secondary fixture so
+ * the editorial backdrop remains visible. It is never a product view. Live
+ * WooCommerce galleries remain authoritative; this narrow path guard only
+ * prevents known scene/branding buckets from entering the product reel.
+ *
+ * @param WC_Product $product Current WooCommerce product.
+ * @return array<int,int>
+ */
+function skyyrose2_product_view_image_ids( $product ) {
+	if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
+		return array();
+	}
+
+	$ids = array();
+	if ( method_exists( $product, 'get_image_id' ) ) {
+		$ids[] = absint( $product->get_image_id() );
+	}
+	if ( method_exists( $product, 'get_gallery_image_ids' ) ) {
+		$ids = array_merge( $ids, array_map( 'absint', (array) $product->get_gallery_image_ids() ) );
+	}
+
+	$ids = array_values( array_unique( array_filter( $ids ) ) );
+	$primary = $ids ? array_shift( $ids ) : 0;
+	$views   = $primary ? array( $primary ) : array();
+	foreach ( $ids as $id ) {
+		$url = function_exists( 'wp_get_attachment_url' ) ? (string) wp_get_attachment_url( $id ) : '';
+		if ( ! $url || preg_match( '#/(?:scene|hero|immersive|branding|scroll-world)(?:/|[-_])#i', $url ) ) {
+			continue;
+		}
+		$views[] = $id;
+	}
+
+	return array_slice( array_values( array_unique( $views ) ), 0, 3 );
 }
 
 /**
@@ -966,7 +1049,13 @@ function skyyrose2_footer() {
 	?>
 	<footer class="sr2-footer">
 		<div><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/lockups/signature-lockup.webp' ) ); ?>" alt="" width="900" height="400" loading="lazy"></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
-		<nav aria-label="<?php esc_attr_e( 'Footer navigation', 'skyyrose-flagship-2' ); ?>"><a href="<?php echo esc_url( home_url( '/journal/' ) ); ?>"><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/shipping-returns/' ) ); ?>"><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/size-guide/' ) ); ?>"><?php esc_html_e( 'Size Guide', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Support', 'skyyrose-flagship-2' ); ?></a></nav>
+		<nav aria-label="<?php esc_attr_e( 'Footer navigation', 'skyyrose-flagship-2' ); ?>">
+			<?php if ( has_nav_menu( 'footer' ) && function_exists( 'wp_nav_menu' ) ) : ?>
+				<?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'menu_class' => 'sr2-footer__menu', 'fallback_cb' => false ) ); ?>
+			<?php else : ?>
+				<a href="<?php echo esc_url( home_url( '/journal/' ) ); ?>"><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/shipping-returns/' ) ); ?>"><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/size-guide/' ) ); ?>"><?php esc_html_e( 'Size Guide', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>"><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>"><?php esc_html_e( 'Privacy', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/terms-of-service/' ) ); ?>"><?php esc_html_e( 'Terms', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/accessibility/' ) ); ?>"><?php esc_html_e( 'Accessibility', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Support', 'skyyrose-flagship-2' ); ?></a>
+			<?php endif; ?>
+		</nav>
 		<p class="sr2-footer__legal">© <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php esc_html_e( 'The Skyy Rose Collection LLC', 'skyyrose-flagship-2' ); ?></p>
 	</footer>
 	<?php

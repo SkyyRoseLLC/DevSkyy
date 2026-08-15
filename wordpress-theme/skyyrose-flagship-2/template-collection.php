@@ -28,6 +28,17 @@ get_header();
 				<img src="<?php echo esc_url( $hero_desktop ); ?>" alt="" width="1280" height="720" fetchpriority="high" decoding="sync" data-art-direction="<?php echo esc_attr( $hero_mobile ? 'responsive' : 'desktop-fallback' ); ?>">
 			</picture>
 		</div>
+		<div class="sr2-collection-hero__effects" data-scene-motion="<?php echo esc_attr( $slug ); ?>" aria-hidden="true">
+			<span class="sr2-scene-effect sr2-scene-effect--clouds"></span>
+			<span class="sr2-scene-effect sr2-scene-effect--bridge-lights"></span>
+			<span class="sr2-scene-effect sr2-scene-effect--signature-glow"></span>
+			<span class="sr2-scene-effect sr2-scene-effect--throne-glow"></span>
+			<span class="sr2-scene-effect sr2-scene-effect--petals">
+				<?php for ( $petal = 0; $petal < 12; $petal++ ) : ?>
+					<i></i>
+				<?php endfor; ?>
+			</span>
+		</div>
 		<div class="sr2-collection-hero__veil" aria-hidden="true"></div>
 	</section>
 
@@ -36,7 +47,7 @@ get_header();
 			<p class="sr2-eyebrow"><?php echo esc_html( $collection['kicker'] ); ?></p>
 			<h1 id="sr2-collection-title" class="sr2-collection-identity__title"><?php echo esc_html( $collection['name'] ); ?></h1>
 			<p class="sr2-collection-identity__line"><?php echo esc_html( $collection['line'] ); ?></p>
-			<div class="sr2-actions"><a class="sr2-button sr2-button--fill" href="<?php echo esc_url( $shop_url ); ?>"><?php echo esc_html( $collection['hero_cta'] ); ?></a><a class="sr2-button" href="#world"><?php echo esc_html( $collection['world_cta'] ); ?></a></div>
+			<div class="sr2-actions"><a class="sr2-button sr2-button--fill" href="<?php echo esc_url( $shop_url ); ?>"><?php echo esc_html( $collection['hero_cta'] ); ?></a><a class="sr2-button" href="#world"><?php echo esc_html( $collection['world_cta'] ); ?></a><a class="sr2-button" href="<?php echo esc_url( skyyrose2_immersive_url( $slug ) ); ?>"><?php esc_html_e( 'Enter the full scene', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a></div>
 		</div>
 		<p class="sr2-collection-identity__chapter" aria-hidden="true">WORLD / <?php echo esc_html( strtoupper( str_replace( '-', ' ', $slug ) ) ); ?></p>
 	</header>
@@ -53,9 +64,16 @@ get_header();
 			<div class="sr2-worlds__rail" tabindex="0" aria-label="<?php echo esc_attr( sprintf( __( '%s scroll-world chapters', 'skyyrose-flagship-2' ), $collection['name'] ) ); ?>" data-horizontal-rail>
 				<?php foreach ( $collection['world'] as $index => $scene ) : ?>
 					<?php $scene_uri = skyyrose2_collection_scene_uri( $scene ); ?>
+					<?php $scene_product = skyyrose2_collection_scene_product( $slug, $index ); ?>
 					<article class="sr2-world">
 						<img src="<?php echo esc_url( $scene_uri ); ?>" alt="" width="1920" height="1080" loading="lazy" decoding="async">
 						<div class="sr2-world__shade" aria-hidden="true"></div>
+						<?php if ( $scene_product && $scene_product->get_image_id() ) : ?>
+							<a class="sr2-world__product" href="<?php echo esc_url( $scene_product->get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Shop %s from the %s collection', 'skyyrose-flagship-2' ), $scene_product->get_name(), $collection['name'] ) ); ?>">
+								<?php echo wp_kses_post( wp_get_attachment_image( $scene_product->get_image_id(), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-world__product-image', 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?>
+								<span class="sr2-world__product-copy"><small><?php esc_html_e( 'Piece in this world', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $scene_product->get_name() ); ?></strong><em><?php esc_html_e( 'View product proof', 'skyyrose-flagship-2' ); ?> ↗</em></span>
+							</a>
+						<?php endif; ?>
 						<div class="sr2-world__copy"><small><?php echo esc_html( sprintf( __( 'Chapter %02d', 'skyyrose-flagship-2' ), $index + 1 ) ); ?></small><strong><?php echo esc_html( $scene['label'] ); ?></strong><em><?php echo esc_html( $scene['copy'] ); ?></em><a href="#shop"><?php echo esc_html( sprintf( __( 'View %s pieces', 'skyyrose-flagship-2' ), $collection['name'] ) ); ?> <span aria-hidden="true">↗</span></a></div>
 					</article>
 				<?php endforeach; ?>
