@@ -607,6 +607,26 @@
       "rights": { "status": "UNKNOWN", "record_id": null },
       "candidate_sha256": "e28deee0e8bc8ba6271fd95b1e80acdef4e5619fdcc10f1641071a72a2ae1599",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v3-jersey-series-town-line-arrival",
+      "source_record_path": "founder-approved SkyyRose Town Line arrival visual 2026-08-14",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-b1661f51-ddb0-4696-89c1-095162c35c3e.png",
+      "source_sha256": "63833250e0ddb044bbb343947eaef817f940e9b7322033b9607102bc22897cfd",
+      "manifest_status": "FOUNDER_APPROVED_FOR_V2_JERSEY_SERIES_ENTRY",
+      "kind": "fictional-house-transit-hero",
+      "collection": "jersey-series",
+      "review_path": ".fashion-theme/review-assets/jersey-series-town-line-train-v1.png",
+      "review_sha256": "63833250e0ddb044bbb343947eaef817f940e9b7322033b9607102bc22897cfd",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp",
+      "candidate_file_state": "PRESENT",
+      "dimensions": "1672x941",
+      "bytes": 138992,
+      "approved_uses_from_source": ["Jersey Series V2 entry-film poster", "Jersey Series collection chapter visual", "Jersey Series Town Line launch story"],
+      "excludes": ["BART word marks", "BART livery or route map", "transit-agency station identity", "transit affiliation or service claim"],
+      "rights": {"status": "FOUNDER_APPROVED_GENERATED_CANDIDATE", "record_id": "founder-town-line-approval-2026-08-14"},
+      "candidate_sha256": "7c444e77815a11ff9eca87c0539359b1817562c0af2acc787e838d3d1d711148",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
     }
   ],
   "visual_evidence_contract": {

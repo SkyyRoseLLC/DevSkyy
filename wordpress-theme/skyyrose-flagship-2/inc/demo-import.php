@@ -58,6 +58,16 @@ function skyyrose2_demo_upsert_page( $slug, $data, $parent_id, &$report ) {
 	$existing = get_page_by_path( $data['path'], OBJECT, 'page' );
 	if ( $existing instanceof WP_Post ) {
 		$report['reused'][] = sprintf( __( 'Page: %s', 'skyyrose-flagship-2' ), $data['title'] );
+		$expected_template = skyyrose2_demo_template( $data['template'] );
+		$current_template  = get_page_template_slug( $existing->ID );
+		if ( ! is_wp_error( $expected_template ) && 'default' !== $expected_template && $expected_template !== $current_template ) {
+			$report['warnings'][] = sprintf(
+				/* translators: 1: page title, 2: expected template filename. */
+				__( 'Existing page “%1$s” was preserved. Assign the %2$s template manually if that route should use the collection experience.', 'skyyrose-flagship-2' ),
+				$data['title'],
+				$expected_template
+			);
+		}
 		return (int) $existing->ID;
 	}
 	$template = skyyrose2_demo_template( $data['template'] );
@@ -93,8 +103,8 @@ function skyyrose2_demo_page_args( $slug, $data, $parent_id, $template ) {
 		'post_parent'  => absint( $parent_id ),
 		'post_author'  => get_current_user_id(),
 		'meta_input'   => array(
-			'_wp_page_template'       => $template,
-			'_skyyrose2_demo_owned'   => SKYYROSE2_MARKETPLACE_INSTALL_VERSION,
+			'_wp_page_template'     => $template,
+			'_skyyrose2_demo_owned' => SKYYROSE2_MARKETPLACE_INSTALL_VERSION,
 		),
 	);
 }
@@ -234,10 +244,10 @@ function skyyrose2_demo_insert_menu_item( $menu_id, $title, $page_id, $parent_it
  * @return void
  */
 function skyyrose2_demo_populate_menu( $menu_id, $items, $page_ids, &$report ) {
+	$pages = skyyrose2_marketplace_pages();
 	foreach ( $items as $item ) {
 		$parent_id = skyyrose2_demo_insert_menu_item( $menu_id, $item['title'], $page_ids[ $item['page'] ] ?? 0, 0, $report );
 		foreach ( $item['children'] ?? array() as $child_key ) {
-			$pages = skyyrose2_marketplace_pages();
 			$title = isset( $pages[ $child_key ] ) ? $pages[ $child_key ]['title'] : $child_key;
 			skyyrose2_demo_insert_menu_item( $menu_id, $title, $page_ids[ $child_key ] ?? 0, $parent_id, $report );
 		}
@@ -358,7 +368,7 @@ function skyyrose2_render_welcome_page() {
 		<h1><?php esc_html_e( 'SkyyRose Flagship 2 — Marketplace Setup', 'skyyrose-flagship-2' ); ?></h1>
 		<p><?php esc_html_e( 'Create the complete page hierarchy, collection routes, service pages, navigation, and WooCommerce classic page shells. Existing content and merchant-managed menus are never overwritten.', 'skyyrose-flagship-2' ); ?></p>
 		<?php if ( is_array( $report ) ) : ?>
-			<div class="notice notice-<?php echo empty( $report['failed'] ) ? 'success' : 'warning'; ?> inline"><p><?php esc_html_e( 'Import finished. Review the result below, then verify every storefront route before publishing.', 'skyyrose-flagship-2' ); ?></p></div>
+			<div class="notice notice-<?php echo esc_attr( empty( $report['failed'] ) ? 'success' : 'warning' ); ?> inline"><p><?php esc_html_e( 'Import finished. Review the result below, then verify every storefront route before publishing.', 'skyyrose-flagship-2' ); ?></p></div>
 			<?php skyyrose2_render_report_list( __( 'Created', 'skyyrose-flagship-2' ), $report['created'] ); ?>
 			<?php skyyrose2_render_report_list( __( 'Reused', 'skyyrose-flagship-2' ), $report['reused'] ); ?>
 			<?php skyyrose2_render_report_list( __( 'Warnings', 'skyyrose-flagship-2' ), $report['warnings'] ); ?>

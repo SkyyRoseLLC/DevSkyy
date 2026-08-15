@@ -22,7 +22,7 @@ function skyyrose2_register_marketplace_starter_content() {
 			'posts'      => array(
 				'home'        => array( 'post_type' => 'page', 'post_title' => __( 'Home', 'skyyrose-flagship-2' ), 'post_name' => 'home' ),
 				'collections' => array( 'post_type' => 'page', 'post_title' => __( 'Collections', 'skyyrose-flagship-2' ), 'post_name' => 'collections' ),
-				'pre-order'   => array( 'post_type' => 'page', 'post_title' => __( 'Pre-Order', 'skyyrose-flagship-2' ), 'post_name' => 'pre-order' ),
+				'preorder'    => array( 'post_type' => 'page', 'post_title' => __( 'Pre-Order', 'skyyrose-flagship-2' ), 'post_name' => 'pre-order' ),
 				'about'       => array( 'post_type' => 'page', 'post_title' => __( 'About', 'skyyrose-flagship-2' ), 'post_name' => 'about' ),
 				'contact'     => array( 'post_type' => 'page', 'post_title' => __( 'Contact', 'skyyrose-flagship-2' ), 'post_name' => 'contact' ),
 				'journal'     => array( 'post_type' => 'page', 'post_title' => __( 'Journal', 'skyyrose-flagship-2' ), 'post_name' => 'journal' ),
@@ -35,7 +35,7 @@ function skyyrose2_register_marketplace_starter_content() {
 			'nav_menus'  => array(
 				'primary' => array(
 					'name'  => __( 'SkyyRose Primary', 'skyyrose-flagship-2' ),
-					'items' => array( 'link_home', 'page_collections', 'page_pre-order', 'page_about', 'page_contact' ),
+					'items' => array( 'link_home', 'page_collections', 'page_preorder', 'page_about', 'page_contact' ),
 				),
 			),
 		)

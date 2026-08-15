@@ -78,7 +78,7 @@
     "id": "v2-house-of-roses-commerce-wave",
     "state": "LOCAL_VISUAL_QA_PASSED_FOUNDER_REVIEW_REQUIRED",
     "approved_at": "2026-08-10",
-    "founder_direction": "Use the annotated House of Roses hybrid as the component source: scrolling typography and graphic-statue header; collection-owned ornate product cards; structurally sound PDP hero plus purchase spread; dedicated BART journey film for the Jersey Series.",
+    "founder_direction": "Use the annotated House of Roses hybrid as the component source: scrolling typography and graphic-statue header; collection-owned ornate product cards; structurally sound PDP hero plus purchase spread; dedicated fictional SkyyRose Town Line journey film for the Jersey Series.",
     "candidate_id": "0074fc6e6b161266f9181303296941cd474208af+working-tree-20260810",
     "tool_profile": {
       "default": [
@@ -97,7 +97,7 @@
             "Visualize",
             "TemplateCreator"
           ],
-          "reason": "Founder-requested component implementation, BART film concepting, reusable reference template, and inspectable visual contract.",
+          "reason": "Founder-requested component implementation, Town Line film concepting, reusable reference template, and inspectable visual contract.",
           "revert_after": "candidate checkpoint"
         }
       ]

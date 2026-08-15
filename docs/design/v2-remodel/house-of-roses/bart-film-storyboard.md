@@ -5,7 +5,7 @@
 **Replacement:** [`skyyrose-tour-film-storyboard.md`](skyyrose-tour-film-storyboard.md)
 
 This transit-specific concept is not the active direction. The active Jersey
-Series language is the fictional, house-owned **Skyy Rose Tour Around the Bay**;
+Series language is the fictional, house-owned **SkyyRose Town Line**;
 it does not recreate, reference, or imply an affiliation with a transit
 operator. This retained document is historical context only and cannot be used
 as creative, runtime, asset, or release authority.
@@ -43,6 +43,20 @@ These bytes exist in the candidate. Their manifest use boundary still governs wh
 | Kids Capsule graphic/statue | `assets/sot/images/hero/kids-capsule-heir-throne-v3.webp` | Full-color mascot/heir throne monument; side outfit displays removed | `FOUNDER_DIRECTED`; collection hero and Royal Procession use |
 
 The combined scenes can produce a four-scene first integration. An eight-scene type/graphic alternation must not use `.fashion-theme/review-assets/*` until each intended derivative and its expanded header use are founder-approved and recorded in the shot manifest.
+
+### Superseding Town Line visual
+
+The founder-approved Town Line arrival frame is the runtime poster for the
+Jersey Series entry chapter:
+
+- Review source: `.fashion-theme/review-assets/jersey-series-town-line-train-v1.png`
+- Served derivative: `assets/sot/images/hero/jersey-series-town-line-train-v1.webp`
+- Vehicle identity: fictional SkyyRose electric metro with a `THE TOWN LINE`
+  destination board, house star/rose emblem, and SkyyRose wordmark.
+
+It deliberately contains no BART word mark, livery, route map, station mark,
+or service claim. The older `jersey-series-bart-*` experiment remains retained
+historical provenance only and is never the visual authority for new work.
 
 ### Jersey product truth
 

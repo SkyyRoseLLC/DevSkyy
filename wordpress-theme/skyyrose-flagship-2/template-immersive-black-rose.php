@@ -38,7 +38,7 @@ get_template_part(
 				'image'    => 'branding/hero/forbidden-midnight-1280w.webp',
 				'alt'      => __( 'Black Rose architecture under an Oakland midnight sky', 'skyyrose-flagship-2' ),
 				'copy'     => __( 'Concrete becomes sanctuary. Silver edges pull shape from shadow. The room is quiet because it is protected, not because it has nothing to say.', 'skyyrose-flagship-2' ),
-				'aside'    => __( 'Jersey Series pieces are deliberately reserved for their own BART reveal.', 'skyyrose-flagship-2' ),
+				'aside'    => __( 'Jersey Series pieces are deliberately reserved for their own Town Line reveal.', 'skyyrose-flagship-2' ),
 				'hotspots' => array( array( 'sku' => 'br-004', 'left' => 68, 'top' => 58 ) ),
 			),
 			array(

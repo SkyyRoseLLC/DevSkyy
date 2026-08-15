@@ -118,7 +118,7 @@ function skyyrose2_marketplace_woocommerce_pages() {
 		'cart'       => array( 'title' => __( 'Bag', 'skyyrose-flagship-2' ), 'content' => '<!-- wp:shortcode -->[woocommerce_cart]<!-- /wp:shortcode -->', 'option' => 'woocommerce_cart_page_id' ),
 		'checkout'   => array( 'title' => __( 'Checkout', 'skyyrose-flagship-2' ), 'content' => '<!-- wp:shortcode -->[woocommerce_checkout]<!-- /wp:shortcode -->', 'option' => 'woocommerce_checkout_page_id' ),
 		'my-account' => array( 'title' => __( 'My Account', 'skyyrose-flagship-2' ), 'content' => '<!-- wp:shortcode -->[woocommerce_my_account]<!-- /wp:shortcode -->', 'option' => 'woocommerce_myaccount_page_id' ),
-		'track-order'=> array( 'title' => __( 'Track Order', 'skyyrose-flagship-2' ), 'content' => '<!-- wp:shortcode -->[woocommerce_order_tracking]<!-- /wp:shortcode -->', 'option' => '' ),
+		'track-order' => array( 'title' => __( 'Track Order', 'skyyrose-flagship-2' ), 'content' => '<!-- wp:shortcode -->[woocommerce_order_tracking]<!-- /wp:shortcode -->', 'option' => '' ),
 	);
 }
 
@@ -130,7 +130,7 @@ function skyyrose2_marketplace_woocommerce_pages() {
 function skyyrose2_marketplace_menus() {
 	return array(
 		'primary' => array(
-			'name'  => __( 'SkyyRose Primary', 'skyyrose-flagship-2' ),
+			'name'  => 'SkyyRose Primary',
 			'items' => array(
 				array( 'title' => __( 'Collections', 'skyyrose-flagship-2' ), 'page' => 'collections', 'children' => array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ) ),
 				array( 'title' => __( 'Shop', 'skyyrose-flagship-2' ), 'page' => 'shop' ),
@@ -141,7 +141,7 @@ function skyyrose2_marketplace_menus() {
 			),
 		),
 		'footer'  => array(
-			'name'  => __( 'SkyyRose Footer', 'skyyrose-flagship-2' ),
+			'name'  => 'SkyyRose Footer',
 			'items' => array(
 				array( 'title' => __( 'Shipping + Returns', 'skyyrose-flagship-2' ), 'page' => 'shipping-returns' ),
 				array( 'title' => __( 'Size Guide', 'skyyrose-flagship-2' ), 'page' => 'size-guide' ),

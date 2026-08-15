@@ -9,6 +9,7 @@ STAGE_DIR="$(mktemp -d "${TMPDIR:-/tmp}/skyyrose2-package.XXXXXX")"
 trap 'rm -rf "$STAGE_DIR"' EXIT
 
 cd "$THEME_DIR"
+npm run build
 npm run verify
 mkdir -p "$DIST_DIR" "$STAGE_DIR/$THEME_NAME"
 
@@ -16,6 +17,7 @@ rsync -a ./ "$STAGE_DIR/$THEME_NAME/" \
 	--exclude '.DS_Store' \
 	--exclude 'dist/' \
 	--exclude 'node_modules/' \
+	--exclude '.gitignore' \
 	--exclude 'package-lock.json' \
 	--exclude '*.map'
 

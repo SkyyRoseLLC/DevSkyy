@@ -54,11 +54,16 @@ Production uses generated `.min.css` and `.min.js` siblings. Edit source files,
 then rebuild and verify byte parity:
 
 ```bash
-npm install
+npm ci
 npm run build
 npm run verify
 npm run package:theme
 ```
+
+`npm run package:theme` performs the build and verification again before it
+creates the distributable ZIP. `npm-shrinkwrap.json` pins the build-tool graph
+for clean-checkout reproducibility; the package itself ships the generated
+assets and does not require Node.js at runtime.
 
 `npm run verify` checks PHP syntax, JSON, presentation-registry freshness,
 minified-asset parity, required marketplace artifacts, placeholder markers,

@@ -14,7 +14,9 @@
     "build:assets": "node scripts/build-assets.mjs",
     "build:i18n": "python3 scripts/build-pot.py",
     "check:assets": "node scripts/build-assets.mjs --check",
+    "check:i18n": "python3 scripts/build-pot.py --check",
     "check:registry": "python3 scripts/build-product-presentation-registry.py --check",
+    "check:provisioning": "php scripts/test-marketplace-registry.php",
     "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
     "verify": "bash scripts/verify-marketplace.sh",
     "package:theme": "bash scripts/package-theme.sh"

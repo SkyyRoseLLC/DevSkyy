@@ -711,13 +711,13 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 	?>
 	<section class="sr2-jersey-reveal" aria-labelledby="sr2-jersey-series-title" data-presentation="jersey-series">
 		<div class="sr2-jersey-reveal__head">
-			<p class="sr2-eyebrow"><?php esc_html_e( 'Jersey Series / Skyy Rose Tour Around the Bay', 'skyyrose-flagship-2' ); ?></p>
+			<p class="sr2-eyebrow"><?php esc_html_e( 'Jersey Series / The Town Line', 'skyyrose-flagship-2' ); ?></p>
 			<h2 id="sr2-jersey-series-title"><?php esc_html_e( 'Every number carries the tour.', 'skyyrose-flagship-2' ); ?></h2>
-			<p><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on the Skyy Rose Tour. The poster-led previsualization is a house journey, never a transit affiliation; every price, size, and availability decision stays on the live product page.', 'skyyrose-flagship-2' ); ?></p>
+			<p><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey. Every price, size, and availability decision stays on the live product page.', 'skyyrose-flagship-2' ); ?></p>
 		</div>
 		<div class="sr2-house-film" data-house-film data-house-film-autoplay="once" data-media-status="founder-review-candidate">
 			<div class="sr2-house-film__media">
-				<video width="1920" height="1080" muted playsinline preload="none" poster="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay-poster.webp' ); ?>" data-house-film-video aria-label="<?php esc_attr_e( 'Skyy Rose Tour Around the Bay previsualization', 'skyyrose-flagship-2' ); ?>">
+				<video width="1672" height="941" muted playsinline preload="none" poster="<?php echo esc_url( SKYYROSE2_URI . '/assets/sot/images/hero/jersey-series-town-line-train-v1.webp' ); ?>" data-house-film-video aria-label="<?php esc_attr_e( 'The Town Line Jersey Series previsualization', 'skyyrose-flagship-2' ); ?>">
 					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm">
 					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4">
 				</video>
@@ -732,7 +732,7 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 					<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) $piece['start'] ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
 				<?php endforeach; ?>
 			</nav>
-			<p class="sr2-house-film__transcript"><?php esc_html_e( 'Visual transcript: a Skyy Rose tour board introduces the Jersey Series. Available on-model review views move through Foundation, Oakland, San Francisco, The Bay, and San Jose before the tour closes on the house line. This previsualization is not product-media approval.', 'skyyrose-flagship-2' ); ?></p>
+			<p class="sr2-house-film__transcript"><?php esc_html_e( 'Visual transcript: a fictional SkyyRose Town Line train introduces the Jersey Series. Available on-model review views move through Foundation, Oakland, San Francisco, The Bay, and San Jose before the tour closes on the house line. This previsualization is not product-media approval.', 'skyyrose-flagship-2' ); ?></p>
 		</div>
 		<?php if ( $show_product_grid ) : ?>
 		<div class="sr2-jersey-reveal__grid">
