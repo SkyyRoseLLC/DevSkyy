@@ -3,7 +3,7 @@
   "manifest_name": "skyyrose-v2-house-of-roses-composed-promotion",
   "state": "BLOCKED",
   "status": "FAIL_CLOSED",
-  "generated_at_utc": "2026-08-15T05:25:51Z",
+  "generated_at_utc": "2026-08-15T05:48:28Z",
   "generated_by": {
     "tool": "codex.local.handoff-synthesis",
     "command": "manual evidence synthesis; payload and attestation revisions verified independently",
@@ -12,14 +12,14 @@
   },
   "foundation": {
     "integration_branch": "codex/skyyrose-v2-marketplace",
-    "integration_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "integration_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "main_base_ref": "refs/heads/main",
     "main_base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
     "prototype_capture_commit": "1982efe66",
     "release_candidate_source_commit": "47b711dac45232e3be958e8722bdb25f72ed81fa",
-    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "dc7605d19e69001eb1e428544505216145990afd",
-    "snapshot_id": "skyyrose-v2-dc7605d19e69"
+    "snapshot_id": "skyyrose-v2-payload-d249a687c4dd"
   },
   "authority": {
     "catalog_csv": "5f62951acbfdcbf52687a64a5a9d58170a761727",
@@ -28,14 +28,14 @@
     "logo_registry": "7dedd9d2aa7276f3025b68a6bebe2936a0163983"
   },
   "package": {
-    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "source_tar_command": "git archive --format=tar <payload_commit> -- $(git ls-tree -r --name-only <payload_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum",
-    "source_tar_sha256": "97877bc2d5ccf47e400cb83ce67df45732a422312a152b522405b75c39ecbb12",
+    "source_tar_sha256": "2c9374e5f9b21aae108da667213f72e83e618970c84eb65302a22278a9449c35",
     "source_file_count": 201,
     "payload_path_list_sha256": "d12c185049572629ece1e3064b7f93f3414bb97f5b193dceba6dc679ad8a55c1",
     "payload_path_list_command": "git ls-tree -r --name-only <payload_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$' | sha256sum",
     "marketplace_zip_artifact": "wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
-    "marketplace_zip_sha256": "9c80520d65a34fb3692f9031a12118e406980ed16bcd9b238708c2a8b148ea3c",
+    "marketplace_zip_sha256": "f4e70896b79d02cd31fc28c76c91c4aacc4a3a25568defe8790d81e1d4d65ba2",
     "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/scripts/package-theme.sh",
     "package_verification": "clean Git extraction at payload_commit; npm ci; npm run package:theme; unzip -t"
   },
@@ -265,7 +265,7 @@
     },
     {
       "path": "wordpress-theme/skyyrose-flagship-2/scripts/package-theme.sh",
-      "sha256": "059c5fc5df6fee28eb3ea22b31ba19441eb3666de3355ecb4d8938bc9e1db707",
+      "sha256": "a4831f04f5f9ee6d44bdbd05bc9f23b4b0da8f0456b2b5003a9b591ae092c2e3",
       "size_bytes": 1252,
       "blob": "6d9ba55e215b837365f49b84c2b526c999547555"
     },
