@@ -181,6 +181,28 @@ if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/comme
 	exit 1
 fi
 
+if ! rg -q 'data-quick-view' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'sr2-quick-view' "$THEME_DIR/template-parts/commerce/quick-view.php" || \
+	! rg -q 'showModal' "$THEME_DIR/assets/js/theme.js"; then
+	echo "FAIL product-card quick-view layer missing" >&2
+	exit 1
+fi
+
+# Every served monument hero has deterministic desktop/tablet/mobile WebP
+# derivatives. Originals remain in the SOT for provenance; the storefront
+# never pays the cost of serving the multi-megabyte source PNGs.
+for hero_base in signature-golden-gate-monuments-v2 black-rose-bay-bridge-monuments-v4 love-hurts-rose-aisle-monuments-v3 kids-capsule-heir-throne-v3; do
+	for width in 1440 1024 640; do
+		variant="assets/sot/images/hero/responsive/${hero_base}-${width}w.webp"
+		require_file "$variant"
+		variant_bytes="$(stat -f '%z' "$THEME_DIR/$variant")"
+		if [ "$variant_bytes" -gt 260000 ]; then
+			echo "FAIL responsive hero exceeds 260KB: $variant ($variant_bytes)" >&2
+			exit 1
+		fi
+	done
+done
+
 if ! rg -q 'function skyyrose2_collection_scene_product' "$THEME_DIR/functions.php" || \
 	! rg -q 'sr2-world__product' "$THEME_DIR/template-collection.php"; then
 	echo "FAIL collection Scroll World product proof binding missing" >&2
@@ -191,6 +213,13 @@ if ! rg -q 'function skyyrose2_immersive_url' "$THEME_DIR/functions.php" || \
 	! rg -q 'Enter the full scene' "$THEME_DIR/template-collection.php" || \
 	! rg -q "'immersive-signature'.*template-immersive-signature.php" "$THEME_DIR/inc/presentation-registry.php"; then
 	echo "FAIL dedicated immersive collection routes are not provisioned and linked" >&2
+	exit 1
+fi
+
+if ! rg -q "'worlds'.*'path'.*'worlds'" "$THEME_DIR/inc/presentation-registry.php" || \
+	! rg -q "'immersive-signature'.*'slug'.*'signature'.*'parent'.*'worlds'" "$THEME_DIR/inc/presentation-registry.php" || \
+	! rg -Fq "sanitize_title( ! empty( \$data['slug'] ) ? \$data['slug'] : \$slug )" "$THEME_DIR/inc/demo-import.php"; then
+	echo "FAIL immersive importer path/slug contract missing" >&2
 	exit 1
 fi
 

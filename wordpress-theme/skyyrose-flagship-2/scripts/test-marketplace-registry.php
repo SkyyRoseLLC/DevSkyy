@@ -49,7 +49,7 @@ function skyyrose2_registry_assert( $condition, $message ) {
 $pages    = skyyrose2_marketplace_pages();
 $woo      = skyyrose2_marketplace_woocommerce_pages();
 $menus    = skyyrose2_marketplace_menus();
-$required = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist' );
+$required = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'worlds', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist' );
 
 foreach ( $required as $key ) {
 	skyyrose2_registry_assert( isset( $pages[ $key ] ), "Missing required page definition: {$key}" );
@@ -62,6 +62,10 @@ foreach ( $pages as $key => $page ) {
 	$paths[ $page['path'] ] = true;
 	if ( ! empty( $page['parent'] ) ) {
 		skyyrose2_registry_assert( isset( $pages[ $page['parent'] ] ), "Unknown parent for {$key}" );
+	}
+	if ( ! empty( $page['slug'] ) ) {
+		$path_parts = explode( '/', trim( $page['path'], '/' ) );
+		skyyrose2_registry_assert( $page['slug'] === end( $path_parts ), "Slug/path mismatch for {$key}" );
 	}
 	if ( 'default' !== $page['template'] ) {
 		skyyrose2_registry_assert( is_file( dirname( __DIR__ ) . '/' . $page['template'] ), "Missing page template: {$page['template']}" );

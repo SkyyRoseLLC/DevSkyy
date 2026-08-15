@@ -5,7 +5,7 @@ THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$THEME_DIR"
 
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l >/dev/null
-for document in theme.json data/product-presentation-registry.json; do
+for document in theme.json data/product-presentation-registry.json data/image-optimization.json; do
 	jq empty "$document"
 done
 
@@ -13,6 +13,18 @@ python3 scripts/build-product-presentation-registry.py --check
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check
+
+while IFS= read -r base; do
+	for width in 640 1024 1440; do
+		asset="assets/sot/images/hero/responsive/${base}-${width}w.webp"
+		test -s "$asset" || { echo "Missing optimized hero derivative: $asset" >&2; exit 1; }
+		bytes="$(stat -f '%z' "$asset")"
+		if [ "$bytes" -gt 260000 ]; then
+			echo "Optimized hero derivative exceeds 260KB: $asset" >&2
+			exit 1
+		fi
+	done
+done < <(jq -r '.hero_bases[]' data/image-optimization.json)
 
 STYLE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -n1)"
 PACKAGE_VERSION="$(jq -r '.version' package.json)"

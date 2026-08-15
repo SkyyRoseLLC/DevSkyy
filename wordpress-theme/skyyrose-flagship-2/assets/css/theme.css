@@ -879,8 +879,24 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .sr2-c-product-portal__availability-mark { width: .55rem; height: .55rem; border: 1px solid currentColor; border-radius: 50%; background: currentColor; }
 .sr2-c-product-portal__availability[data-state="unavailable"] { color: var(--sr2-crimson); }
 .sr2-c-product-portal__actions { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--sr2-space-2); }
-.sr2-c-product-portal__actions .button, .sr2-c-product-portal__details { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: var(--sr2-space-3) var(--sr2-space-4); border: 1px solid var(--sr2-portal-accent); background: transparent !important; color: var(--sr2-portal-accent) !important; font-family: var(--sr2-font-ui); font-size: .64rem; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
-.sr2-c-product-portal__actions .button:hover, .sr2-c-product-portal__actions .button:focus-visible, .sr2-c-product-portal__details:hover, .sr2-c-product-portal__details:focus-visible { background: var(--sr2-portal-accent) !important; color: var(--sr2-void) !important; }
+.sr2-c-product-portal__actions .button, .sr2-c-product-portal__quick-view, .sr2-c-product-portal__details { display: inline-flex; min-height: 46px; align-items: center; justify-content: center; padding: var(--sr2-space-3) var(--sr2-space-4); border: 1px solid var(--sr2-portal-accent); background: transparent !important; color: var(--sr2-portal-accent) !important; font-family: var(--sr2-font-ui); font-size: .64rem; letter-spacing: .1em; text-align: center; text-transform: uppercase; }
+.sr2-c-product-portal__actions .button:hover, .sr2-c-product-portal__actions .button:focus-visible, .sr2-c-product-portal__quick-view:hover, .sr2-c-product-portal__quick-view:focus-visible, .sr2-c-product-portal__details:hover, .sr2-c-product-portal__details:focus-visible { background: var(--sr2-portal-accent) !important; color: var(--sr2-void) !important; }
+
+.sr2-quick-view { width: min(58rem, calc(100% - 2rem)); max-width: none; padding: 0; border: 1px solid var(--sr2-gold); background: var(--sr2-void); color: var(--sr2-ink); box-shadow: 0 2rem 6rem rgba(0,0,0,.68); }
+.sr2-quick-view::backdrop { background: rgba(0,0,0,.78); backdrop-filter: blur(10px); }
+.sr2-quick-view__panel { display: grid; grid-template-columns: minmax(12rem, .9fr) minmax(0, 1fr); }
+.sr2-quick-view__media { min-height: 24rem; background: #111; }
+.sr2-quick-view__media img { width: 100%; height: 100%; object-fit: cover; }
+.sr2-quick-view__copy { display: grid; align-content: center; gap: var(--sr2-space-3); padding: clamp(1.5rem, 5vw, 4rem); }
+.sr2-quick-view__copy > * { margin: 0; }
+.sr2-quick-view__copy h2 { font-family: var(--sr2-font-display); font-size: clamp(2rem, 5vw, 4.8rem); letter-spacing: -.055em; line-height: .9; }
+.sr2-quick-view__price { font-family: var(--sr2-font-caps); font-size: 1.25rem; }
+.sr2-quick-view__availability { color: var(--sr2-gold); font-family: var(--sr2-font-ui); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+.sr2-quick-view__excerpt { color: var(--sr2-muted); }
+.sr2-quick-view__actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: var(--sr2-space-4); }
+.sr2-quick-view__close-form { position: absolute; z-index: 2; top: .65rem; right: .65rem; }
+.sr2-quick-view__close { display: grid; width: 2.4rem; height: 2.4rem; place-items: center; border: 1px solid var(--sr2-line); background: color-mix(in srgb, var(--sr2-void) 80%, transparent); color: var(--sr2-ink); font-size: 1.5rem; line-height: 1; cursor: pointer; }
+@media (max-width: 640px) { .sr2-quick-view__panel { grid-template-columns: 1fr; } .sr2-quick-view__media { min-height: 18rem; max-height: 52vh; } }
 
 /* House of Roses homepage — the binding full-page composition selected by the
  * founder. It exposes three opening worlds; Kids Capsule is revealed later as

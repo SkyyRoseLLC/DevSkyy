@@ -66,6 +66,8 @@ $price_html     = $card_product->get_price_html();
 $stock_html     = function_exists( 'wc_get_stock_html' ) ? wc_get_stock_html( $card_product ) : '';
 $stock_state    = $card_product->is_in_stock() ? 'available' : 'unavailable';
 $stock_label    = $card_product->is_in_stock() ? __( 'Available', 'skyyrose-flagship-2' ) : __( 'Unavailable', 'skyyrose-flagship-2' );
+$quick_view_image = $image_id && function_exists( 'wp_get_attachment_image_url' ) ? wp_get_attachment_image_url( $image_id, 'woocommerce_single' ) : '';
+$quick_view_excerpt = wp_trim_words( wp_strip_all_tags( $card_product->get_short_description() ), 26, '…' );
 $loading        = $card_index < 4 ? 'eager' : 'lazy';
 $fetchpriority  = 0 === $card_index ? 'high' : 'auto';
 $product_type   = method_exists( $card_product, 'get_type' ) ? $card_product->get_type() : 'unknown';
@@ -164,6 +166,20 @@ $image_attrs    = array(
 			<?php if ( function_exists( 'woocommerce_template_loop_add_to_cart' ) ) : ?>
 				<?php woocommerce_template_loop_add_to_cart(); ?>
 			<?php endif; ?>
+			<button
+				type="button"
+				class="sr2-c-product-portal__quick-view"
+				data-quick-view
+				data-quick-view-name="<?php echo esc_attr( $product_name ); ?>"
+				data-quick-view-collection="<?php echo esc_attr( $presentation_name ); ?>"
+				data-quick-view-price="<?php echo esc_attr( wp_strip_all_tags( $price_html ) ); ?>"
+				data-quick-view-availability="<?php echo esc_attr( $stock_label ); ?>"
+				data-quick-view-excerpt="<?php echo esc_attr( $quick_view_excerpt ); ?>"
+				data-quick-view-image="<?php echo esc_url( $quick_view_image ); ?>"
+				data-quick-view-url="<?php echo esc_url( $product_url ); ?>"
+			>
+				<?php esc_html_e( 'Quick view', 'skyyrose-flagship-2' ); ?>
+			</button>
 			<a class="sr2-c-product-portal__details" href="<?php echo esc_url( $product_url ); ?>">
 				<?php esc_html_e( 'View piece', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span>
 			</a>

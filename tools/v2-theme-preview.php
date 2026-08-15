@@ -29,6 +29,14 @@ function esc_html( $value ) { return htmlspecialchars( (string) $value, ENT_QUOT
 function esc_attr( $value ) { return htmlspecialchars( (string) $value, ENT_QUOTES, 'UTF-8' ); }
 function esc_url( $value ) { return htmlspecialchars( (string) $value, ENT_QUOTES, 'UTF-8' ); }
 function wp_kses_post( $value ) { return $value; }
+function wp_strip_all_tags( $value ) { return trim( strip_tags( (string) $value ) ); }
+function wp_trim_words( $text, $num_words = 55, $more = null ) {
+	$words = preg_split( '/\s+/', trim( wp_strip_all_tags( $text ) ) );
+	if ( count( $words ) <= (int) $num_words ) {
+		return implode( ' ', $words );
+	}
+	return implode( ' ', array_slice( $words, 0, (int) $num_words ) ) . ( null === $more ? ' …' : $more );
+}
 function sanitize_title( $value ) { return strtolower( preg_replace( '/[^a-z0-9]+/', '-', trim( (string) $value ) ) ); }
 function sanitize_key( $value ) { return sanitize_title( $value ); }
 function sanitize_html_class( $value ) { return sanitize_title( $value ); }
@@ -190,6 +198,18 @@ function wp_get_attachment_image( $id, $size = 'thumbnail', $icon = false, $attr
 	);
 	$class = ! empty( $attrs['class'] ) ? $attrs['class'] : '';
 	return '<img class="' . esc_attr( $class ) . '" src="' . esc_url( get_template_directory_uri() . '/assets/sot/' . ( $images[ $id ] ?? $images[1] ) ) . '" alt="SkyyRose published product view">';
+}
+function wp_get_attachment_image_url( $id, $size = 'thumbnail' ) {
+	$images = array(
+		1 => 'images/home/on-model/signature-sg-005.webp',
+		2 => 'images/home/on-model/black-rose-br-004.webp',
+		3 => 'images/home/on-model/love-hurts-lh-004.webp',
+		4 => 'images/products/kids-001-product-proof-400.webp',
+		7 => 'images/products/kids-002-product-proof-400.webp',
+		5 => 'images/immersive/scene-signature-golden-gate.webp',
+		6 => 'images/home/on-model/signature-sg-005.webp',
+	);
+	return get_template_directory_uri() . '/assets/sot/' . ( $images[ (int) $id ] ?? $images[1] );
 }
 function woocommerce_page_title() { return 'The House Edit'; }
 function woocommerce_product_loop() { return true; }

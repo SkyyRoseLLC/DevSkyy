@@ -348,7 +348,9 @@ function skyyrose2_collections() {
 			'invitation_title' => __( 'Make the origin yours.', 'skyyrose-flagship-2' ),
 			'invitation' => __( 'Choose the piece that carries your name with the same calm certainty.', 'skyyrose-flagship-2' ),
 			'invitation_cta' => __( 'Choose Signature', 'skyyrose-flagship-2' ),
-			'hero'       => 'images/hero/signature-golden-gate-monuments-v2.webp',
+			'hero'       => 'images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp',
+			'hero_tablet' => 'images/hero/responsive/signature-golden-gate-monuments-v2-1024w.webp',
+			'hero_mobile' => 'images/hero/responsive/signature-golden-gate-monuments-v2-640w.webp',
 			'portrait'   => 'scene-1-signature.webp',
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/signature-lockup.webp',
@@ -379,11 +381,13 @@ function skyyrose2_collections() {
 			'invitation' => __( 'Choose the piece that lets you show up fully without giving the room all of you.', 'skyyrose-flagship-2' ),
 			'invitation_cta' => __( 'Choose Black Rose', 'skyyrose-flagship-2' ),
 			// Founder-directed Bay Bridge two-monument salon. Lake Merritt remains an approved alternate.
-			'hero'       => 'images/hero/black-rose-bay-bridge-monuments-v4.webp',
+			'hero'       => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp',
+			'hero_tablet' => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp',
+			'hero_mobile' => 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp',
 			'portrait'   => 'scene-2-black-rose.webp',
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/black-rose-lockup.webp',
-			'artifact'   => 'images/lockups/black-rose-star-graphic.png',
+			'artifact'   => 'images/lockups/black-rose-star-graphic.webp',
 			'atmosphere' => 'images/logos/black-roses-cloud-cluster.webp',
 			'lookbook'   => 'images/immersive/scene-black-rose-moon-court-gpt2.webp',
 			'world'      => array(
@@ -410,11 +414,13 @@ function skyyrose2_collections() {
 			'invitation' => __( 'Choose the piece that holds the tenderness and the edge in the same hand.', 'skyyrose-flagship-2' ),
 			'invitation_cta' => __( 'Choose Love Hurts', 'skyyrose-flagship-2' ),
 			// Founder-directed cathedral monuments. V1 Beauty and the Beast remains a world chapter below.
-			'hero'       => 'images/hero/love-hurts-rose-aisle-monuments-v3.webp',
+			'hero'       => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp',
+			'hero_tablet' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp',
+			'hero_mobile' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp',
 			'portrait'   => 'scene-3-love-hurts.webp',
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/love-hurts-lockup.webp',
-			'artifact'   => 'images/lockups/love-hurts-star-heart-graphic.png',
+			'artifact'   => 'images/lockups/love-hurts-star-heart-graphic.webp',
 			'atmosphere' => 'images/logos/heart-rose-composite.webp',
 			// V1's original 960px editorial frame is the visual baseline V2 must exceed.
 			'lookbook'   => 'images/lookbook/lb-love-hurts-varsity-960w.webp',
@@ -441,7 +447,9 @@ function skyyrose2_collections() {
 			'invitation_title' => __( 'Give imagination a place at the table.', 'skyyrose-flagship-2' ),
 			'invitation' => __( 'Choose the piece that lets the next generation arrive as themselves—before anyone tells them to play small.', 'skyyrose-flagship-2' ),
 			'invitation_cta' => __( 'Choose Kids Capsule', 'skyyrose-flagship-2' ),
-			'hero'       => 'images/hero/kids-capsule-heir-throne-v3.webp',
+			'hero'       => 'images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp',
+			'hero_tablet' => 'images/hero/responsive/kids-capsule-heir-throne-v3-1024w.webp',
+			'hero_mobile' => 'images/hero/responsive/kids-capsule-heir-throne-v3-640w.webp',
 			'portrait'   => 'scene-4-kids-capsule.webp',
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/logos/sr-monogram-rose-gold.webp',
@@ -592,8 +600,9 @@ function skyyrose2_registry_reconciliation_report() {
 	}
 
 	$report = array(
-		'missing' => array(),
-		'extra'   => array(),
+		'missing'             => array(),
+		'extra'               => array(),
+		'collection_mismatch' => array(),
 	);
 	if ( ! function_exists( 'wc_get_products' ) ) {
 		return $report;
@@ -617,6 +626,11 @@ function skyyrose2_registry_reconciliation_report() {
 		$sku = sanitize_key( $product->get_sku() );
 		if ( $sku ) {
 			$live[ $sku ] = true;
+			$record       = isset( $records[ $sku ] ) && is_array( $records[ $sku ] ) ? $records[ $sku ] : array();
+			$expected     = ! empty( $record['collection'] ) ? sanitize_title( $record['collection'] ) : '';
+			if ( $expected && function_exists( 'has_term' ) && ! has_term( $expected, 'product_cat', $product->get_id() ) ) {
+				$report['collection_mismatch'][] = sprintf( '%s (registry: %s)', $sku, $expected );
+			}
 		}
 	}
 
@@ -625,6 +639,7 @@ function skyyrose2_registry_reconciliation_report() {
 	$report['extra']   = array_values( array_diff( array_keys( $registry_skus ), array_keys( $live ) ) );
 	sort( $report['missing'] );
 	sort( $report['extra'] );
+	sort( $report['collection_mismatch'] );
 	return $report;
 }
 
@@ -634,7 +649,7 @@ function skyyrose2_registry_reconciliation_notice() {
 		return;
 	}
 	$report = skyyrose2_registry_reconciliation_report();
-	if ( empty( $report['missing'] ) && empty( $report['extra'] ) ) {
+	if ( empty( $report['missing'] ) && empty( $report['extra'] ) && empty( $report['collection_mismatch'] ) ) {
 		return;
 	}
 	$parts = array();
@@ -643,6 +658,9 @@ function skyyrose2_registry_reconciliation_notice() {
 	}
 	if ( ! empty( $report['extra'] ) ) {
 		$parts[] = sprintf( __( 'registry SKUs not currently published in WooCommerce: %s', 'skyyrose-flagship-2' ), implode( ', ', $report['extra'] ) );
+	}
+	if ( ! empty( $report['collection_mismatch'] ) ) {
+		$parts[] = sprintf( __( 'products whose WooCommerce collection category disagrees with the V2 registry: %s', 'skyyrose-flagship-2' ), implode( ', ', $report['collection_mismatch'] ) );
 	}
 	printf( '<div class="notice notice-warning"><p><strong>%s</strong> %s</p></div>', esc_html__( 'SkyyRose V2 catalog drift detected.', 'skyyrose-flagship-2' ), esc_html( implode( ' ', $parts ) ) );
 }
@@ -683,6 +701,9 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 	foreach ( $products as $product ) {
 		$presentation = skyyrose2_product_presentation( $product );
 		if ( empty( $presentation ) ) {
+			continue;
+		}
+		if ( $collection && 'pre-order' !== $collection && sanitize_title( $presentation['collection'] ?? '' ) !== sanitize_title( $collection ) ) {
 			continue;
 		}
 		if ( 'pre-order' === $collection && empty( $presentation['is_preorder'] ) ) {
@@ -750,6 +771,10 @@ function skyyrose2_get_products_by_skus( $skus, $required_collection ) {
 
 		$collection_slugs = wp_get_post_terms( $product_id, 'product_cat', array( 'fields' => 'slugs' ) );
 		if ( is_wp_error( $collection_slugs ) || ! in_array( $required_collection, $collection_slugs, true ) ) {
+			continue;
+		}
+		$presentation = skyyrose2_product_presentation( $product );
+		if ( empty( $presentation ) || sanitize_title( $presentation['collection'] ?? '' ) !== $required_collection ) {
 			continue;
 		}
 
@@ -1008,7 +1033,7 @@ function skyyrose2_header() {
 		<nav id="sr2-menu" class="sr2-header__nav" aria-label="<?php esc_attr_e( 'Primary navigation', 'skyyrose-flagship-2' ); ?>" data-sr2-nav>
 			<div class="sr2-header__nav-main">
 				<a href="<?php echo esc_url( home_url( '/collections/' ) ); ?>"><span>01</span><?php esc_html_e( 'Collections', 'skyyrose-flagship-2' ); ?></a>
-				<a href="<?php echo esc_url( home_url( '/shop/' ) ); ?>"><span>02</span><?php esc_html_e( 'Shop', 'skyyrose-flagship-2' ); ?></a>
+				<a href="<?php echo esc_url( function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' ) ); ?>"><span>02</span><?php esc_html_e( 'Shop', 'skyyrose-flagship-2' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/pre-order/' ) ); ?>"><span>03</span><?php esc_html_e( 'Pre-Order', 'skyyrose-flagship-2' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/journal/' ) ); ?>"><span>04</span><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><span>05</span><?php esc_html_e( 'About', 'skyyrose-flagship-2' ); ?></a>

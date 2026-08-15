@@ -323,6 +323,50 @@
 
   document.querySelectorAll('[data-product-reel]').forEach(setupProductReel);
 
+  /* Product-card quick view is a progressive layer over the direct PDP link.
+   * All facts are copied from the live card payload; the full product page
+   * remains the canonical place for options, variation resolution, and cart. */
+  const quickView = document.querySelector('[data-quick-view-dialog], #sr2-quick-view-dialog');
+  if (quickView && typeof quickView.showModal === 'function') {
+    const fields = {
+      name: quickView.querySelector('[data-quick-view-name]'),
+      collection: quickView.querySelector('[data-quick-view-collection]'),
+      price: quickView.querySelector('[data-quick-view-price]'),
+      availability: quickView.querySelector('[data-quick-view-availability]'),
+      excerpt: quickView.querySelector('[data-quick-view-excerpt]'),
+      image: quickView.querySelector('[data-quick-view-image]'),
+      media: quickView.querySelector('[data-quick-view-media]'),
+      url: quickView.querySelector('[data-quick-view-url]')
+    };
+    let opener = null;
+    const closeQuickView = () => {
+      if (quickView.open) quickView.close();
+      opener?.focus();
+    };
+    document.querySelectorAll('[data-quick-view]').forEach((button) => {
+      button.addEventListener('click', () => {
+        opener = button;
+        Object.entries(fields).forEach(([key, field]) => {
+          if (!field || key === 'media') return;
+          const value = button.dataset[`quickView${key[0].toUpperCase()}${key.slice(1)}`] || '';
+          if (key === 'image') {
+            field.src = value;
+            field.alt = button.dataset.quickViewName || '';
+            if (fields.media) fields.media.hidden = !value;
+          } else if (key === 'url') {
+            field.href = value || '#';
+          } else {
+            field.textContent = value;
+          }
+        });
+        quickView.showModal();
+      });
+    });
+    quickView.querySelectorAll('[data-quick-view-dismiss]').forEach((button) => button.addEventListener('click', closeQuickView));
+    quickView.addEventListener('click', (event) => { if (event.target === quickView) closeQuickView(); });
+    quickView.addEventListener('close', () => opener?.focus());
+  }
+
   if (finePointer && !reducedMotion) {
     document.querySelectorAll('[data-depth-card]').forEach((card) => {
       card.addEventListener('pointermove', (event) => {

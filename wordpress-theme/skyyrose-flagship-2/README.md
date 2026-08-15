@@ -32,6 +32,7 @@ skipped with a warning and can be provisioned by running the importer again.
 - `/collections/black-rose/`
 - `/collections/love-hurts/`
 - `/collections/kids-capsule/`
+- `/worlds/signature/`, `/worlds/black-rose/`, `/worlds/love-hurts/`, `/worlds/kids-capsule/`
 - `/pre-order/`, `/about/`, `/contact/`, `/journal/`, `/wishlist/`
 - `/faq/`, `/shipping-returns/`, `/size-guide/`
 - `/privacy-policy/`, `/terms-of-service/`, `/accessibility/`

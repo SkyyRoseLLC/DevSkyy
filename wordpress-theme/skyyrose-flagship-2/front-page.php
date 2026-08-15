@@ -51,7 +51,11 @@ get_header();
 <main id="primary" class="site-main sr-house" role="main" tabindex="-1">
 	<section class="sr-house-hero" aria-labelledby="sr-house-title">
 		<div class="sr-house-hero__scene" aria-hidden="true">
-			<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/black-rose-bay-bridge-monuments-v4.webp' ) ); ?>" alt="" width="1672" height="941" fetchpriority="high" decoding="sync">
+			<picture>
+				<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp' ) ); ?>">
+				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp' ) ); ?>">
+				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" alt="" width="1440" height="810" fetchpriority="high" decoding="sync">
+			</picture>
 		</div>
 		<div class="sr-house-hero__veil" aria-hidden="true"></div>
 		<div class="sr-house-hero__copy">

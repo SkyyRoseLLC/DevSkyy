@@ -25,7 +25,7 @@ get_header();
 			<picture>
 				<?php if ( $hero_mobile ) : ?><source media="(max-width: 47.99em)" srcset="<?php echo esc_url( $hero_mobile ); ?>"><?php endif; ?>
 				<?php if ( $hero_tablet ) : ?><source media="(max-width: 74.99em)" srcset="<?php echo esc_url( $hero_tablet ); ?>"><?php endif; ?>
-				<img src="<?php echo esc_url( $hero_desktop ); ?>" alt="" width="1280" height="720" fetchpriority="high" decoding="sync" data-art-direction="<?php echo esc_attr( $hero_mobile ? 'responsive' : 'desktop-fallback' ); ?>">
+				<img src="<?php echo esc_url( $hero_desktop ); ?>" alt="" width="1440" height="810" fetchpriority="high" decoding="sync" data-art-direction="<?php echo esc_attr( $hero_mobile ? 'responsive' : 'desktop-fallback' ); ?>">
 			</picture>
 		</div>
 		<div class="sr2-collection-hero__effects" data-scene-motion="<?php echo esc_attr( $slug ); ?>" aria-hidden="true">

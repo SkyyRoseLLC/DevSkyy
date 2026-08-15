@@ -1,0 +1,21 @@
+{
+  "schema": "skyyrose.sot.image-optimization.v1",
+  "policy": {
+    "served_hero_format": "webp",
+    "responsive_widths": [640, 1024, 1440],
+    "max_served_hero_bytes": 260000,
+    "source_policy": "Original SOT pixels remain preserved; templates serve only responsive derivatives."
+  },
+  "derivative_root": "assets/sot/images/hero/responsive",
+  "hero_bases": [
+    "signature-golden-gate-monuments-v2",
+    "black-rose-bay-bridge-monuments-v4",
+    "love-hurts-rose-aisle-monuments-v3",
+    "kids-capsule-heir-throne-v3",
+    "jersey-series-town-line-train-v1",
+    "black-rose-lake-merritt-monument-v2",
+    "love-hurts-golden-gate-monument-v2",
+    "black-rose-typography-star-salon-v3"
+  ],
+  "authority": "SOT source pixels and the approved visual manifest; this file records generated delivery derivatives only."
+}

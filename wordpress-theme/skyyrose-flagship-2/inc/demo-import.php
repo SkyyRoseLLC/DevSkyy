@@ -96,7 +96,7 @@ function skyyrose2_demo_upsert_page( $slug, $data, $parent_id, &$report ) {
 function skyyrose2_demo_page_args( $slug, $data, $parent_id, $template ) {
 	return array(
 		'post_title'   => wp_strip_all_tags( $data['title'] ),
-		'post_name'    => sanitize_title( $slug ),
+		'post_name'    => sanitize_title( ! empty( $data['slug'] ) ? $data['slug'] : $slug ),
 		'post_content' => wp_kses_post( $data['content'] ),
 		'post_status'  => 'publish',
 		'post_type'    => 'page',

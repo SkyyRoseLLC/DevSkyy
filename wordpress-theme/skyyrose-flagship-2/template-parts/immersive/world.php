@@ -139,9 +139,13 @@ get_header();
 							$product_id = wc_get_product_id_by_sku( $sku );
 							$product    = $product_id ? wc_get_product( $product_id ) : false;
 						}
-						if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() ) {
-							continue;
-						}
+		if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() ) {
+			continue;
+		}
+		$hotspot_presentation = function_exists( 'skyyrose2_product_presentation' ) ? skyyrose2_product_presentation( $product ) : array();
+		if ( empty( $hotspot_presentation ) || sanitize_title( $hotspot_presentation['collection'] ?? '' ) !== $collection_slug ) {
+			continue;
+		}
 						$left = isset( $hotspot['left'] ) ? max( 8, min( 92, (float) $hotspot['left'] ) ) : 50;
 						$top  = isset( $hotspot['top'] ) ? max( 12, min( 88, (float) $hotspot['top'] ) ) : 50;
 						?>
