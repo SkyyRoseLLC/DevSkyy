@@ -29,7 +29,7 @@
     "commit": "d96a634258f4d0f6db9dbf6dc6f5dc3ea6bc7cf8f",
     "tree_hash_sha256": "ded320b71f1690a3a989bb1433c1cbffee0432214a9c67dadde926297556c15b",
     "file_count_in_archive": 245,
-    "expected_output": "2aa05f14e2e7dda11d3ba36e4da0e94476e6459ef41c55bfb89b922dc2effa93",
+    "expected_output": "81326adc6806a887985dd992ab29f8c67d393f8e4cb3b92a11e15154ed5162eb",
     "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh"
   },
   "ownership": {
