@@ -34,15 +34,36 @@ the active branch:
 
 - `ba346e596` scopes the global WooCommerce product while editorial V2 cards
   render, preventing an add-to-cart action from inheriting a neighboring loop
-  product; it also regenerates the current 490-message POT.
+  product; it also regenerates the current 490-message POT at that historical
+  source snapshot.
 - `50060893b` makes the local PDP renderer SKU-aware, so Signature, Black Rose,
   Love Hurts, Kids Capsule, and Jersey Series can each be inspected with their
   own fixture product and collection binding. This remains preview-only.
 
-The current local package was rebuilt after the source correction and verified
-with SHA-256 `49e1cdd84918caed83229fcaef1bd06725a04d7433002cb352bdc722dbbca4dd`.
-That artifact is not a promotion approval and does not replace the immutable
-payload/attestation pair below.
+That historical package was verified with SHA-256
+`49e1cdd84918caed83229fcaef1bd06725a04d7433002cb352bdc722dbbca4dd`. It is
+not a promotion approval and does not replace the immutable payload/attestation
+pair below.
+
+## Black Rose Jersey Series ownership correction
+
+The founder correction is now synchronized in source, registry, preview, and
+design contracts: Jersey Series remains a dedicated `jersey-series`
+presentation and Town Line reveal, but every Jersey SKU is owned by the
+`black-rose` collection. Its canonical discovery route is
+`/collections/black-rose/#jersey-series`; core Black Rose product cards still
+exclude the jerseys so the release remains a distinct chapter inside the
+parent collection story. The local PDP breadcrumb and `data-collection`
+binding now return to Black Rose, and the Black Rose collection template owns
+the anchored release chapter.
+
+This correction is committed at `80f068ffd4a349a956f43770aa1bbe252df4f68c`.
+The fresh build/verification reports 492 translation messages, 33 current
+presentation records, 4 CSS and 7 JS assets, and a deterministic package SHA
+of `e46f33de753f153d377c1f00aca5f247a10f39c9040583ab687e8e5d4abf1bb7`.
+`unzip -t` passes. These are source/package checks only; the promotion gate
+remains fail-closed pending the independent visual, rights, WooCommerce
+staging, and founder authorization evidence listed below.
 
 ## Evidence alignment
 
@@ -63,7 +84,7 @@ payload/attestation pair below.
 ```text
 cd wordpress-theme/skyyrose-flagship-2 && npm run verify
 Product presentation registry is current (33 SKUs).
-Translation catalog is current (490 messages).
+Translation catalog is current (492 messages).
 Marketplace registry structure passed.
 Verified 4 CSS and 7 JS assets.
 SkyyRose Flagship 2 marketplace verification passed.
