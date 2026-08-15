@@ -1,18 +1,18 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-08-15T04:32:07Z",
+  "generated_at_utc": "2026-08-15T22:09:00Z",
   "worktrees": [
     {
       "worktree": "/private/tmp/skyyrose-v2-promotion-worktree",
       "branch": "codex/skyyrose-v2-marketplace",
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-      "head_commit": "7760caae569bdf75acbabfdf4fcb448341ad3b40",
+      "head_commit": "299a9f252a5375b17a4bddfecc44d8b225207564",
       "owned_paths": [
         ".fashion-theme",
         "wordpress-theme/skyyrose-flagship-2"
       ],
       "dirty": false,
-      "status": "ACTIVE",
+      "status": "READY_FOR_HANDOFF_REVIEW",
       "promoted_to": null
     },
     {

@@ -3,7 +3,7 @@
   "manifest_name": "skyyrose-v2-house-of-roses-composed-promotion",
   "state": "BLOCKED",
   "status": "FAIL_CLOSED",
-  "generated_at_utc": "2026-08-15T04:32:07Z",
+  "generated_at_utc": "2026-08-15T22:12:00Z",
   "generated_by": {
     "tool": "codex.local.handoff-synthesis",
     "command": "skyy2-promotion-manifest --main main --integration-worktree codex/skyyrose-v2-marketplace",
@@ -12,7 +12,7 @@
   },
   "foundation": {
     "integration_branch": "codex/skyyrose-v2-marketplace",
-    "integration_commit": "015191ffc1656f25bb62ae8dd20fc9aba4944113",
+    "integration_commit": "299a9f252a5375b17a4bddfecc44d8b225207564",
     "main_base_ref": "refs/heads/main",
     "main_base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
     "prototype_capture_commit": "1982efe66",
@@ -26,11 +26,12 @@
   },
   "package": {
     "command": "git archive --format=tar HEAD -- $(git ls-tree -r --name-only HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum",
-    "commit": "015191ffc1656f25bb62ae8dd20fc9aba4944113",
+    "commit": "299a9f252a5375b17a4bddfecc44d8b225207564",
     "tree_hash_sha256": "ded320b71f1690a3a989bb1433c1cbffee0432214a9c67dadde926297556c15b",
     "file_count_in_archive": 245,
-    "expected_output": "a377eaef70bb87bf1d223e7a220463a1b2165bcea06e0c051b521c29c3e66486",
-    "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh"
+    "expected_output": "c373df1d8c9a462eed63c33ada427f1092d1633fc111a73c95e2d7473bf85bdd",
+    "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh",
+    "archive_sha256": "c373df1d8c9a462eed63c33ada427f1092d1633fc111a73c95e2d7473bf85bdd"
   },
   "ownership": {
     "house_layouts_and_collection_worlds": "prototype_capture(1982efe66) -> promotion_branch",
@@ -251,6 +252,6 @@
       ".fashion-theme/shot-manifest.json",
       "docs/design/v2-remodel/house-of-roses/evidence.json"
     ],
-    "next_step": "resolve absolute-path dependencies, refresh catalog binding freeze, and run promotion gate"
+    "next_step": "resolve absolute-path dependencies, refresh catalog binding freeze, and rerun promotion gate"
   }
 }
