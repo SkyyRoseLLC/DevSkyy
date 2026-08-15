@@ -434,6 +434,48 @@ function skyyrose2_collections() {
 }
 
 /**
+ * Return the canonical press corpus used by About and Journal fallbacks.
+ *
+ * These are source records, not invented editorial posts. A live WordPress
+ * post always takes precedence in the Journal; this fallback keeps the four
+ * founder-approved V1 articles discoverable on a fresh install.
+ *
+ * @return array<int,array<string,string>>
+ */
+function skyyrose2_press_features() {
+	return array(
+		array(
+			'source'  => 'Maxim',
+			'date'    => 'February 15, 2023',
+			'title'   => '14 Game-Changing Entrepreneurs To Watch In 2023',
+			'excerpt' => "Corey Foster is an innovative entrepreneur and artist who has created a truly unique clothing line. The Skyy Rose Collection blends fashion with streetwear, creating high quality and beautiful designs people can't help but admire.",
+			'url'     => 'https://www.maxim.com/partner/14-game-changing-entrepreneurs-to-watch-in-2023/',
+		),
+		array(
+			'source'  => 'San Francisco Post',
+			'date'    => 'August 23, 2024',
+			'title'   => "From Oakland's Streets to Fashion Heights",
+			'excerpt' => 'The Skyy Rose Collection, a trailblazing gender-neutral clothing brand, is redefining fashion in the Bay Area and beyond. Established by Corey Foster, a single father with a dream, this Oakland-based brand embodies resilience, creativity, and the power of turning adversity into a catalyst for success.',
+			'url'     => 'https://sanfranciscopost.com/the-skyy-rose-collection-from-oaklands-streets-to-fashion-heights/',
+		),
+		array(
+			'source'  => 'Best of Best Review',
+			'date'    => 'August 20, 2024',
+			'title'   => 'Best Bay Area Clothing Line Award 2024',
+			'excerpt' => "The Skyy Rose Collection has been honored with the prestigious Best Bay Area Clothing Line Award 2024 by Best of Best Review. This recognition underscores the brand's exceptional contribution to the fashion industry, particularly in the realm of high-end, gender-neutral clothing that transcends age and gender boundaries.",
+			'url'     => 'https://bestofbestreview.com/awards/the-skyy-rose-collection-best-bay-area-clothing-line-award-2024',
+		),
+		array(
+			'source'  => 'CEO Weekly',
+			'date'    => 'October 22, 2024',
+			'title'   => 'The Unyielding Journey of a Single Father and Entrepreneur',
+			'excerpt' => 'Despite facing numerous setbacks, such as failed website attempts and deceitful manufacturers that promised much yet delivered little, this indomitable spirit refused to be quenched. The Skyy Rose Collection represents hope, hard work, and the relentless spirit of never giving up.',
+			'url'     => 'https://ceoweekly.com/the-unyielding-journey-of-a-single-father-and-entrepreneur/',
+		),
+	);
+}
+
+/**
  * Build the collection monument reel shown inside the global header.
  *
  * Each founder-approved collection hero remains one continuous room containing

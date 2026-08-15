@@ -21,32 +21,7 @@ $sr2_about_assets = array(
 	'kids'       => 'images/lookbook/lb-kid-black-rose-960w.webp',
 );
 
-$sr2_press_features = array(
-	array(
-		'source' => 'Maxim',
-		'date'   => 'February 2023',
-		'title'  => '14 Game-Changing Entrepreneurs To Watch In 2023',
-		'url'    => 'https://www.maxim.com/partner/14-game-changing-entrepreneurs-to-watch-in-2023/',
-	),
-	array(
-		'source' => 'San Francisco Post',
-		'date'   => 'August 2024',
-		'title'  => "From Oakland's Streets to Fashion Heights",
-		'url'    => 'https://sanfranciscopost.com/the-skyy-rose-collection-from-oaklands-streets-to-fashion-heights/',
-	),
-	array(
-		'source' => 'Best of Best Review',
-		'date'   => 'August 2024',
-		'title'  => 'Best Bay Area Clothing Line Award 2024',
-		'url'    => 'https://bestofbestreview.com/awards/the-skyy-rose-collection-best-bay-area-clothing-line-award-2024',
-	),
-	array(
-		'source' => 'CEO Weekly',
-		'date'   => 'October 2024',
-		'title'  => 'The Unyielding Journey of a Single Father and Entrepreneur',
-		'url'    => 'https://ceoweekly.com/the-unyielding-journey-of-a-single-father-and-entrepreneur/',
-	),
-);
+$sr2_press_features = skyyrose2_press_features();
 
 $sr2_chapters = array(
 	array( 'number' => '01', 'name' => 'Signature', 'line' => 'The first mark. Oakland carried forward.', 'image' => $sr2_about_assets['signature'], 'url' => skyyrose2_collection_url( 'signature' ) ),
@@ -95,6 +70,7 @@ $sr2_chapters = array(
 			<article>
 				<p><span><?php echo esc_html( $sr2_press_feature['source'] ); ?></span><time><?php echo esc_html( $sr2_press_feature['date'] ); ?></time></p>
 				<h3><?php echo esc_html( $sr2_press_feature['title'] ); ?></h3>
+				<p><?php echo esc_html( $sr2_press_feature['excerpt'] ); ?></p>
 				<a href="<?php echo esc_url( $sr2_press_feature['url'] ); ?>" target="_blank" rel="noopener noreferrer">Read the original ↗</a>
 			</article>
 		<?php endforeach; ?>

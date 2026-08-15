@@ -15,7 +15,7 @@ define( 'OBJECT', 'OBJECT' );
 $route = preg_replace( '/[^a-z-]/', '', $_GET['route'] ?? 'home' ) ?: 'home';
 $preview_state = preg_replace( '/[^a-z-]/', '', $_GET['state'] ?? '' );
 $preview_sku = strtolower( preg_replace( '/[^a-z0-9-]/i', '', $_GET['sku'] ?? 'sg-005' ) ) ?: 'sg-005';
-$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'pre-order', 'about', 'contact', 'shop', 'product' );
+$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'faq', 'shipping-returns', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
 if ( ! in_array( $route, $preview_routes, true ) ) { $route = 'home'; }
 $preview_posts = array();
 $preview_cursor = 0;
@@ -95,6 +95,8 @@ function wp_unslash( $value ) { return $value; }
 function language_attributes() { echo 'lang="en-US"'; }
 function bloginfo( $field ) { echo 'charset' === $field ? 'UTF-8' : 'SkyyRose'; }
 function get_bloginfo( $field = '' ) { return 'name' === $field ? 'SkyyRose' : ''; }
+function is_home() { global $route; return 'journal' === $route; }
+function wp_get_document_title() { return get_the_title(); }
 function body_class() { echo 'class="sr2-preview woocommerce"'; }
 function wp_body_open() { echo '<div class="sr2-preview-banner">LOCAL V2 TEMPLATE PREVIEW · no staging writes · WooCommerce data is visual-fixture only</div>'; }
 function wp_head() {
@@ -121,7 +123,22 @@ function get_post_field( $field ) { global $route; return 'post_name' === $field
 function get_the_title() { global $route; return ucwords( str_replace( '-', ' ', $route ) ); }
 function the_title() { echo esc_html( get_the_title() ); }
 function get_the_content() { return ''; }
-function the_content() { echo '<p>Preview route content is rendered from this V2 template. WordPress supplies the live page record after staging deployment.</p>'; }
+function the_content() {
+	global $route;
+	$service_copy = array(
+		'faq'              => 'Answers on fit, pre-order timing, order support, and the path to Client Services.',
+		'shipping-returns' => 'In-stock and pre-order fulfillment guidance, tracking expectations, and return-request steps.',
+		'size-guide'       => 'Measure a piece you own flat, compare the published measurements, and contact Client Services between sizes.',
+		'privacy-policy'   => 'The store uses order, support, security, and requested communication data according to the published policy.',
+		'terms-of-service' => 'Orders remain subject to acceptance, payment confirmation, availability, and the merchant terms.',
+		'accessibility'    => 'SkyyRose works toward a WCAG 2.2 AA shopping experience with keyboard, contrast, and reduced-motion support.',
+	);
+	if ( isset( $service_copy[ $route ] ) ) {
+		echo '<p>' . esc_html( $service_copy[ $route ] ) . '</p><p>Live policy copy is supplied by the WordPress page record after import.</p>';
+		return;
+	}
+	echo '<p>Preview route content is rendered from this V2 template. WordPress supplies the live page record after staging deployment.</p>';
+}
 function have_posts() { global $preview_posts, $preview_cursor; return $preview_cursor < count( $preview_posts ); }
 function the_post() { global $preview_posts, $preview_cursor, $product; $product = $preview_posts[ $preview_cursor++ ]; }
 function is_account_page() { return false; }
@@ -134,7 +151,12 @@ function get_permalink( $item = null ) {
 	}
 	return '/tools/v2-theme-preview.php?route=' . ( $item ? 'product' : 'shop' );
 }
-function wc_get_page_permalink( $page ) { return '/tools/v2-theme-preview.php?route=' . ( 'shop' === $page ? 'shop' : 'home' ); }
+function wc_get_page_permalink( $page ) {
+	$routes = array( 'shop' => 'shop', 'cart' => 'cart', 'checkout' => 'checkout', 'myaccount' => 'account', 'order-tracking' => 'order-tracking' );
+	return '/tools/v2-theme-preview.php?route=' . ( $routes[ $page ] ?? 'home' );
+}
+function wc_get_cart_url() { return wc_get_page_permalink( 'cart' ); }
+function wc_get_checkout_url() { return wc_get_page_permalink( 'checkout' ); }
 function wc_get_product_category_list( $id ) { return 'SkyyRose · Collection'; }
 function wp_get_post_terms( $product_id = 0, $taxonomy = '', $args = array() ) {
 	global $route, $preview_product;
@@ -260,6 +282,13 @@ if ( in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-cap
 	$preview_posts = array( $preview_product );
 	$GLOBALS['preview_product'] = $preview_product;
 	require $theme_dir . '/woocommerce/single-product.php';
+} elseif ( 'journal' === $route ) {
+	$preview_posts = array();
+	require $theme_dir . '/index.php';
+} elseif ( '404' === $route ) {
+	require $theme_dir . '/404.php';
+} elseif ( in_array( $route, array( 'cart', 'checkout', 'account', 'order-tracking' ), true ) ) {
+	require $theme_dir . '/template-parts/v2-commerce-preview.php';
 } else {
 	// WordPress would populate The Loop for every Page route.  Give the real V2
 	// page template one inert fixture so local previews render page content too.
