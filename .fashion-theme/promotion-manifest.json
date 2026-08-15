@@ -3,7 +3,7 @@
   "manifest_name": "skyyrose-v2-house-of-roses-composed-promotion",
   "state": "BLOCKED",
   "status": "FAIL_CLOSED",
-  "generated_at_utc": "2026-08-15T22:12:00Z",
+  "generated_at_utc": "2026-08-15T04:47:06Z",
   "generated_by": {
     "tool": "codex.local.handoff-synthesis",
     "command": "skyy2-promotion-manifest --main main --integration-worktree codex/skyyrose-v2-marketplace",
@@ -12,7 +12,7 @@
   },
   "foundation": {
     "integration_branch": "codex/skyyrose-v2-marketplace",
-    "integration_commit": "299a9f252a5375b17a4bddfecc44d8b225207564",
+    "integration_commit": "c6ba1334828b0de7f984405f64f3b0ca6072191f",
     "main_base_ref": "refs/heads/main",
     "main_base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
     "prototype_capture_commit": "1982efe66",
@@ -26,12 +26,12 @@
   },
   "package": {
     "command": "git archive --format=tar HEAD -- $(git ls-tree -r --name-only HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum",
-    "commit": "299a9f252a5375b17a4bddfecc44d8b225207564",
-    "tree_hash_sha256": "ded320b71f1690a3a989bb1433c1cbffee0432214a9c67dadde926297556c15b",
-    "file_count_in_archive": 245,
-    "expected_output": "c373df1d8c9a462eed63c33ada427f1092d1633fc111a73c95e2d7473bf85bdd",
+    "commit": "c6ba1334828b0de7f984405f64f3b0ca6072191f",
+    "tree_hash_sha256": "40fa6ce619ad38a83cc9086bf48a7f5347ab95d0e031a97a505a0cf1ecafc48f",
+    "file_count_in_archive": 202,
+    "expected_output": "9c80520d65a34fb3692f9031a12118e406980ed16bcd9b238708c2a8b148ea3c",
     "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh",
-    "archive_sha256": "c373df1d8c9a462eed63c33ada427f1092d1633fc111a73c95e2d7473bf85bdd"
+    "archive_sha256": "9c80520d65a34fb3692f9031a12118e406980ed16bcd9b238708c2a8b148ea3c"
   },
   "ownership": {
     "house_layouts_and_collection_worlds": "prototype_capture(1982efe66) -> promotion_branch",
@@ -85,9 +85,9 @@
     },
     {
       "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
-      "sha256": "037c7347a28355b1201d7fe400601212b4ee2619eaec6ce9557cf6a3c406ee16",
-      "size_bytes": 49885,
-      "blob": "e4b5e950f8bd825a6f61992289af76dabfbaba60"
+      "sha256": "8b5d2ec763b5917fa30cf3de9740913c6262ab84ec30b2d875166612569b0f96",
+      "size_bytes": 49997,
+      "blob": "8a246fbb84853006c38ed3ab688acfbdee36c92a"
     },
     {
       "path": "wordpress-theme/skyyrose-flagship-2/front-page.php",
@@ -213,7 +213,7 @@
       "path": "wordpress-theme/skyyrose-flagship-2/scripts/package-theme.sh",
       "sha256": "059c5fc5df6fee28eb3ea22b31ba19441eb3666de3355ecb4d8938bc9e1db707",
       "size_bytes": 1252,
-      "blob": "8ee0751c5706ece6d1ec7efb2d366fcc3389664b"
+      "blob": "6d9ba55e215b837365f49b84c2b526c999547555"
     }
   ],
   "findings": {
