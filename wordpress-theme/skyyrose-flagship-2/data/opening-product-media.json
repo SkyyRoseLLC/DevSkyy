@@ -17,7 +17,6 @@
       "collection": "signature",
       "views": [
         { "role": "on_model_front", "source": "assets/images/products/sg-005-onmodel.webp", "derivative": "assets/sot/images/products/preview/sg-005-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/bridge-bay-bridge-shirt-back-model.webp", "derivative": "assets/sot/images/products/preview/sg-005-back.webp" },
         { "role": "packshot", "source": "assets/images/products/sg-005-bay-bridge-shirt.jpeg", "derivative": "assets/sot/images/products/preview/sg-005-packshot.webp" }
       ]
     },

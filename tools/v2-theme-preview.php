@@ -193,7 +193,6 @@ function preview_attachment_path( $id ) {
 		3   => 'images/products/preview/lh-004-front.webp',
 		4   => 'images/products/preview/kids-001-front.webp',
 		7   => 'images/products/preview/kids-002-front.webp',
-		101 => 'images/products/preview/sg-005-back.webp',
 		102 => 'images/products/preview/sg-005-packshot.webp',
 		201 => 'images/products/preview/br-004-back.webp',
 		202 => 'images/products/preview/br-004-packshot.webp',
@@ -258,7 +257,7 @@ class WC_Product {
 }
 function wc_get_products( $args = array() ) {
 	$fixtures = array(
-		new WC_Product( 1, 'Bay Bridge Shirt', 1, 'sg-005', array( 101, 102 ) ),
+		new WC_Product( 1, 'Bay Bridge Shirt', 1, 'sg-005', array( 102 ) ),
 		new WC_Product( 2, 'Black Rose Hoodie', 2, 'br-004', array( 201, 202 ) ),
 		new WC_Product( 3, 'Love Hurts Bomber Jacket', 3, 'lh-004', array( 301, 302 ) ),
 		new WC_Product( 4, 'Kids Colorblock Hoodie Set — Red/Black', 4, 'kids-001', array( 401, 402 ) ),
