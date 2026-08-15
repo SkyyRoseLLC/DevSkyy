@@ -5,9 +5,34 @@ THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$THEME_DIR"
 
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l >/dev/null
-for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json; do
+for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json data/font-provenance.json; do
 	jq empty "$document"
 done
+
+# Page typography is a shippable dependency; collection scripts remain artwork
+# until their provenance is independently recorded. A font filename is never
+# treated as a license grant.
+font_manifest="data/font-provenance.json"
+license_path="$(jq -r '.license_bundle.text_path' "$font_manifest")"
+license_hash="$(jq -r '.license_bundle.text_sha256' "$font_manifest")"
+test -s "$license_path" || { echo "Missing font license bundle: $license_path" >&2; exit 1; }
+if [[ "$(shasum -a 256 "$license_path" | awk '{print $1}')" != "$license_hash" ]]; then
+	echo "Font license bundle hash drift: $license_path" >&2
+	exit 1
+fi
+while IFS=$'\t' read -r font_path font_hash; do
+	test -s "$font_path" || { echo "Missing registered page font: $font_path" >&2; exit 1; }
+	if [[ "$(shasum -a 256 "$font_path" | awk '{print $1}')" != "$font_hash" ]]; then
+		echo "Page font hash drift: $font_path" >&2
+		exit 1
+	fi
+done < <(jq -r '.page_fonts[] | [.path, .sha256] | @tsv' "$font_manifest")
+while IFS= read -r artwork_face; do
+	if rg -Fq "$artwork_face" assets/css theme.json; then
+		echo "Unproven collection artwork face registered as page typography: $artwork_face" >&2
+		exit 1
+	fi
+done < <(jq -r '.artwork_only[] | .family + "|" + .path' "$font_manifest" | cut -d'|' -f1)
 
 python3 scripts/build-product-presentation-registry.py --check
 python3 scripts/build-pot.py --check
