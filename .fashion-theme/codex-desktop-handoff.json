@@ -1,44 +1,48 @@
 {
-  "schema_version": "1.0",
-  "created_at_utc": "2026-08-15T04:58:10Z",
+  "schema_version": "1.1",
+  "created_at_utc": "2026-08-15T05:25:51Z",
   "candidate": {
     "branch": "codex/skyyrose-v2-marketplace",
-    "commit": "54d595abb24e58dc07501601b1150037a2663ad9",
-    "short_commit": "54d595abb24e",
+    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "attestation_commit": "dc7605d19e69001eb1e428544505216145990afd",
     "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
     "state": "REVIEW_SNAPSHOT"
   },
   "manifests": {
-    "candidate_manifest": {
+    "candidate-manifest": {
       "path": ".fashion-theme/candidate-manifest.json",
-      "sha256": "8651033202c18ceb5b25e58f1c4df52ed6ada26119f86e59be8f4a97b25537c0"
+      "sha256": "45719279f5fbe18fc45cfa9931ac3cf458b04d31ce02bd5ecd998d40f8697728"
     },
-    "catalog_binding": {
+    "catalog-binding": {
       "path": ".fashion-theme/catalog-binding.json",
-      "sha256": "c4cb96ad8939243535c27f2c15ff6ad50319fdb7a610ebc9aefb9748b45e45ca"
+      "sha256": "a813abdd090d3e363390bcbea34f83ba255f886e15200d132fca12bdea312fe9"
     },
-    "shot_manifest": {
+    "shot-manifest": {
       "path": ".fashion-theme/shot-manifest.json",
-      "sha256": "3e3fe3fad85fff5e05ee6548ca70f391ce1175ee20254a1c8eabc02247a79718"
+      "sha256": "63c4114284ac7d7b32df005edc6edb2dc92b85b4196c0b13d9e5e165e4d43a8c"
     },
-    "promotion_manifest": {
+    "promotion-manifest": {
       "path": ".fashion-theme/promotion-manifest.json",
-      "sha256": "c8dc91fbddc4f934ceb38ebaef95b8f44604d203ee0dba307ff4c1866c0474eb"
+      "sha256": "5b56ded2cccf727349744950ec88abcd5c6597613dcaaa36b4f8e2ccbc6a8783"
     },
-    "workspace_ledger": {
+    "workspace-ledger": {
       "path": ".fashion-theme/workspace-ledger.json",
-      "sha256": "1f18772d5cbd75c34aba5f66c446985c9ab968a9decfde8914858ce33c72c2e9"
+      "sha256": "92ca2398ba44bd51d5092c813069ef5ee6a11b48ef4eb30c7eb9e60eb11a4b1f"
     }
   },
   "package": {
-    "archive_sha256": "7369f905310274fcbe566629f5afca95fd6001e4d12684ce66da7d8e8f62152f",
-    "file_count": 200,
-    "included_manifest_command": "git archive --format=tar HEAD -- $(git ls-tree -r --name-only HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v \"^\\.fashion-theme/promotion-manifest.json$\") | sha256sum"
+    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "source_tar_sha256": "97877bc2d5ccf47e400cb83ce67df45732a422312a152b522405b75c39ecbb12",
+    "marketplace_zip_sha256": "9c80520d65a34fb3692f9031a12118e406980ed16bcd9b238708c2a8b148ea3c",
+    "source_file_count": 201,
+    "source_tar_command": "git archive --format=tar <payload_commit> -- $(git ls-tree -r --name-only <payload_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum"
   },
   "handoff": {
     "target": "codex-desktop",
     "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-    "integration_commit": "54d595abb24e58dc07501601b1150037a2663ad9",
-    "notes": "integration candidate normalized and captured for Codex desktop review; promotion remains fail-closed pending media freeze, independent visual QA, and founder release authorization"
+    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "attestation_commit": "dc7605d19e69001eb1e428544505216145990afd",
+    "status": "BLOCKED_FAIL_CLOSED",
+    "notes": "Candidate payload and attestation are separated; promotion remains fail-closed pending media rights, unresolved SKU bindings, independent visual QA, and founder release authorization."
   }
 }

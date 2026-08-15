@@ -2,7 +2,7 @@
   "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
   "created_at": "2026-08-06",
   "baseline": {
-    "commit": "54d595abb24e58dc07501601b1150037a2663ad9",
+    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
     "branch": "codex/skyyrose-v2-marketplace"
   },
   "seed": {
@@ -24,6 +24,11 @@
     "external_writes": "not authorized"
   },
   "state": "FROZEN",
-  "frozen_at_utc": "2026-08-15T04:58:10Z",
-  "updated_at_utc": "2026-08-15T04:58:10Z"
+  "frozen_at_utc": "2026-08-15T05:25:51Z",
+  "updated_at_utc": "2026-08-15T04:58:10Z",
+  "attestation": {
+    "commit": "dc7605d19e69001eb1e428544505216145990afd",
+    "snapshot_id": "skyyrose-v2-dc7605d19e69",
+    "recorded_at_utc": "2026-08-15T05:25:51Z"
+  }
 }

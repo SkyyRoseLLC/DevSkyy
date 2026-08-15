@@ -1,12 +1,12 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "manifest_name": "skyyrose-v2-house-of-roses-composed-promotion",
   "state": "BLOCKED",
   "status": "FAIL_CLOSED",
-  "generated_at_utc": "2026-08-15T05:11:29Z",
+  "generated_at_utc": "2026-08-15T05:25:51Z",
   "generated_by": {
     "tool": "codex.local.handoff-synthesis",
-    "command": "skyy2-promotion-manifest --main main --integration-worktree codex/skyyrose-v2-marketplace",
+    "command": "manual evidence synthesis; payload and attestation revisions verified independently",
     "host": "local",
     "cwd": "."
   },
@@ -16,7 +16,10 @@
     "main_base_ref": "refs/heads/main",
     "main_base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
     "prototype_capture_commit": "1982efe66",
-    "release_candidate_source_commit": "47b711dac45232e3be958e8722bdb25f72ed81fa"
+    "release_candidate_source_commit": "47b711dac45232e3be958e8722bdb25f72ed81fa",
+    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "attestation_commit": "dc7605d19e69001eb1e428544505216145990afd",
+    "snapshot_id": "skyyrose-v2-dc7605d19e69"
   },
   "authority": {
     "catalog_csv": "5f62951acbfdcbf52687a64a5a9d58170a761727",
@@ -25,14 +28,16 @@
     "logo_registry": "7dedd9d2aa7276f3025b68a6bebe2936a0163983"
   },
   "package": {
-    "command": "git archive --format=tar HEAD -- $(git ls-tree -r --name-only HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum",
-    "commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
-    "tree_hash_sha256": "d12c185049572629ece1e3064b7f93f3414bb97f5b193dceba6dc679ad8a55c1",
-    "file_count_in_archive": 201,
-    "expected_output": "97877bc2d5ccf47e400cb83ce67df45732a422312a152b522405b75c39ecbb12",
-    "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh",
-    "archive_sha256": "97877bc2d5ccf47e400cb83ce67df45732a422312a152b522405b75c39ecbb12",
-    "tree_hash_command": "git ls-tree -r --name-only <commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$' | sha256sum"
+    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "source_tar_command": "git archive --format=tar <payload_commit> -- $(git ls-tree -r --name-only <payload_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum",
+    "source_tar_sha256": "97877bc2d5ccf47e400cb83ce67df45732a422312a152b522405b75c39ecbb12",
+    "source_file_count": 201,
+    "payload_path_list_sha256": "d12c185049572629ece1e3064b7f93f3414bb97f5b193dceba6dc679ad8a55c1",
+    "payload_path_list_command": "git ls-tree -r --name-only <payload_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$' | sha256sum",
+    "marketplace_zip_artifact": "wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+    "marketplace_zip_sha256": "9c80520d65a34fb3692f9031a12118e406980ed16bcd9b238708c2a8b148ea3c",
+    "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/scripts/package-theme.sh",
+    "package_verification": "clean Git extraction at payload_commit; npm ci; npm run package:theme; unzip -t"
   },
   "ownership": {
     "house_layouts_and_collection_worlds": "prototype_capture(1982efe66) -> promotion_branch",
@@ -41,7 +46,43 @@
     "creative_media_gate": ".fashion-theme/shot-manifest.json + review assets",
     "commerce_contracts": "functions.php + WooCommerce templates"
   },
-  "file_inventory": [
+  "findings": {
+    "absolute_path_blockers": {
+      "status": "PRESENT_BLOCKER",
+      "paths_detected": [
+        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/v2-page-plan.json",
+        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/v2-gap-closure.html",
+        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain",
+        "/Users/theceo/Downloads/archive",
+        "/Users/theceo/.codex/generated_images/",
+        "/Users/theceo/DevSkyy/assets/branding/"
+      ],
+      "violating_files": [
+        ".fashion-theme/candidate-manifest.json",
+        ".fashion-theme/shot-manifest.json",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "next_step": "remove workstation-only provenance paths from runtime/build inputs, resolve catalog media rights and SKU bindings, complete independent visual QA, obtain founder release authorization, and rerun the promotion gate"
+    },
+    "catalog_media_state": "FROZEN_WITH_UNRESOLVED_BINDINGS",
+    "untracked_core_paths": [],
+    "package_determinism": "package-theme.sh modified to fail on symlink and deterministic zip ordering"
+  },
+  "founder_review": {
+    "creative_approval_required": true,
+    "media_rights_blocked": true,
+    "release_authorization": "NOT_AUTHORIZED",
+    "independent_visual_qa_required": true
+  },
+  "handoff_targets": {
+    "candidate_manifests": [
+      ".fashion-theme/candidate-manifest.json",
+      ".fashion-theme/shot-manifest.json",
+      "docs/design/v2-remodel/house-of-roses/evidence.json"
+    ],
+    "next_step": "resolve absolute-path dependencies, freeze catalog media evidence, complete independent visual QA, obtain founder release authorization, and rerun the promotion gate"
+  },
+  "critical_files": [
     {
       "path": ".fashion-theme/candidate-manifest.json",
       "sha256": "3765572661eab42526ba0975dec093cd045b951f5659ec0d7aea52644404510d",
@@ -235,42 +276,5 @@
       "blob": "1c0f6a0c3e9de37e05eb1a0ffd45d508482d9034"
     }
   ],
-  "findings": {
-    "absolute_path_blockers": {
-      "status": "PRESENT_BLOCKER",
-      "paths_detected": [
-        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/v2-page-plan.json",
-        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/v2-gap-closure.html",
-        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain",
-        "/Users/theceo/Downloads/archive",
-        "/Users/theceo/.codex/generated_images/",
-        "/Users/theceo/DevSkyy/assets/branding/"
-      ],
-      "violating_files": [
-        ".fashion-theme/candidate-manifest.json",
-        ".fashion-theme/shot-manifest.json",
-        ".fashion-theme/v2-remodel-ledger.json"
-      ]
-    },
-    "catalog_media_state": "UNFROZEN_BLOCKED",
-    "untracked_core_paths": [
-      ".fashion-theme/promotion-manifest.json (required file now being generated)",
-      "No .fashion-theme tracked snapshot existed in main before this promotion branch anchor"
-    ],
-    "package_determinism": "package-theme.sh modified to fail on symlink and deterministic zip ordering"
-  },
-  "founder_review": {
-    "creative_approval_required": true,
-    "media_rights_blocked": true,
-    "release_authorization": "NOT_AUTHORIZED",
-    "independent_visual_qa_required": true
-  },
-  "handoff_targets": {
-    "candidate_manifests": [
-      ".fashion-theme/candidate-manifest.json",
-      ".fashion-theme/shot-manifest.json",
-      "docs/design/v2-remodel/house-of-roses/evidence.json"
-    ],
-    "next_step": "resolve absolute-path dependencies, freeze catalog media evidence, complete independent visual QA, obtain founder release authorization, and rerun the promotion gate"
-  }
+  "critical_file_count": 32
 }

@@ -1,17 +1,20 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-08-15T04:58:10Z",
+  "generated_at_utc": "2026-08-15T05:25:51Z",
   "worktrees": [
     {
       "worktree": "/Users/theceo/DevSkyy",
       "branch": "codex/skyyrose-v2-marketplace",
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-      "head_commit": "54d595abb24e58dc07501601b1150037a2663ad9",
+      "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+      "attestation_commit": "dc7605d19e69001eb1e428544505216145990afd",
       "owned_paths": [
         ".fashion-theme",
         "wordpress-theme/skyyrose-flagship-2"
       ],
-      "dirty": false,
+      "worktree_dirty": true,
+      "owned_paths_dirty": false,
+      "dirty_reason": "CLAUDE.md is modified outside the candidate-owned paths",
       "status": "ACTIVE",
       "promoted_to": null
     }
@@ -25,6 +28,8 @@
       "manifest-ledger parity",
       "workspace cleanliness",
       "rights records"
-    ]
+    ],
+    "payload_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "attestation_commit": "dc7605d19e69001eb1e428544505216145990afd"
   }
 }
