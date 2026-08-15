@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
 	</form>
 	<div class="sr2-quick-view__panel">
 		<div class="sr2-quick-view__media" data-quick-view-media hidden>
-			<img src="" alt="" width="900" height="1125" data-quick-view-image>
+			<img alt="" width="900" height="1125" data-quick-view-image>
 		</div>
 		<div class="sr2-quick-view__copy">
 			<p class="sr2-eyebrow" data-quick-view-collection><?php esc_html_e( 'Piece from the house', 'skyyrose-flagship-2' ); ?></p>
