@@ -58,6 +58,12 @@ if ! rg -q "woocommerce_add_to_cart_fragments" "$THEME_DIR/functions.php"; then
 	exit 1
 fi
 
+if ! rg -q "function skyyrose2_registry_reconciliation_report" "$THEME_DIR/functions.php" || \
+	! rg -q "admin_notices.*skyyrose2_registry_reconciliation_notice|add_action\( 'admin_notices', 'skyyrose2_registry_reconciliation_notice'" "$THEME_DIR/functions.php"; then
+	echo "FAIL published WooCommerce SKU to presentation-registry reconciliation missing" >&2
+	exit 1
+fi
+
 if ! rg -q "data-brand-animation" "$THEME_DIR/functions.php" || ! rg -q "data-brand-animation" "$THEME_DIR/assets/js/theme.js"; then
 	echo "FAIL optimized SkyyRose global header animation adapter missing" >&2
 	exit 1

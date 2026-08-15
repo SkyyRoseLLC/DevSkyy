@@ -550,6 +550,79 @@ function skyyrose2_product_presentation( $product ) {
 	return $sku && isset( $records[ $sku ] ) && is_array( $records[ $sku ] ) ? $records[ $sku ] : array();
 }
 
+/**
+ * Compare the published WooCommerce SKU surface with the presentation SOT.
+ *
+ * The presentation registry intentionally does not own WooCommerce facts, but
+ * a missing record must be visible to an operator instead of disappearing from
+ * an editorial rail without explanation. This report is admin-only and is
+ * cached for the current request so storefront rendering stays fail-closed.
+ *
+ * @return array{missing:array<int,string>,extra:array<int,string>}
+ */
+function skyyrose2_registry_reconciliation_report() {
+	static $report = null;
+	if ( null !== $report ) {
+		return $report;
+	}
+
+	$report = array(
+		'missing' => array(),
+		'extra'   => array(),
+	);
+	if ( ! function_exists( 'wc_get_products' ) ) {
+		return $report;
+	}
+
+	$registry = skyyrose2_presentation_registry();
+	$records  = isset( $registry['products'] ) && is_array( $registry['products'] ) ? $registry['products'] : array();
+	$live     = array();
+	$products = wc_get_products(
+		array(
+			'limit'   => -1,
+			'status'  => 'publish',
+			'orderby' => 'ID',
+			'order'   => 'ASC',
+		)
+	);
+	foreach ( $products as $product ) {
+		if ( ! is_object( $product ) || ! method_exists( $product, 'get_sku' ) ) {
+			continue;
+		}
+		$sku = sanitize_key( $product->get_sku() );
+		if ( $sku ) {
+			$live[ $sku ] = true;
+		}
+	}
+
+	$registry_skus = array_fill_keys( array_map( 'sanitize_key', array_keys( $records ) ), true );
+	$report['missing'] = array_values( array_diff( array_keys( $live ), array_keys( $registry_skus ) ) );
+	$report['extra']   = array_values( array_diff( array_keys( $registry_skus ), array_keys( $live ) ) );
+	sort( $report['missing'] );
+	sort( $report['extra'] );
+	return $report;
+}
+
+/** Surface catalog drift to administrators without changing storefront output. */
+function skyyrose2_registry_reconciliation_notice() {
+	if ( ! is_admin() || ! current_user_can( 'manage_woocommerce' ) ) {
+		return;
+	}
+	$report = skyyrose2_registry_reconciliation_report();
+	if ( empty( $report['missing'] ) && empty( $report['extra'] ) ) {
+		return;
+	}
+	$parts = array();
+	if ( ! empty( $report['missing'] ) ) {
+		$parts[] = sprintf( __( 'published WooCommerce SKUs missing from the V2 presentation registry: %s', 'skyyrose-flagship-2' ), implode( ', ', $report['missing'] ) );
+	}
+	if ( ! empty( $report['extra'] ) ) {
+		$parts[] = sprintf( __( 'registry SKUs not currently published in WooCommerce: %s', 'skyyrose-flagship-2' ), implode( ', ', $report['extra'] ) );
+	}
+	printf( '<div class="notice notice-warning"><p><strong>%s</strong> %s</p></div>', esc_html__( 'SkyyRose V2 catalog drift detected.', 'skyyrose-flagship-2' ), esc_html( implode( ' ', $parts ) ) );
+}
+add_action( 'admin_notices', 'skyyrose2_registry_reconciliation_notice' );
+
 /** @param WC_Product $product @return bool */
 function skyyrose2_is_preorder_product( $product ) {
 	$presentation = skyyrose2_product_presentation( $product );
