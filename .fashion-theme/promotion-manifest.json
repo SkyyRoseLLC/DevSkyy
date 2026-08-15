@@ -12,7 +12,7 @@
   },
   "foundation": {
     "integration_branch": "codex/skyyrose-v2-marketplace",
-    "integration_commit": "7760caae569bdf75acbabfdf4fcb448341ad3b40",
+    "integration_commit": "84aabb2535164380999bc9320c8145a8618efd76",
     "main_base_ref": "refs/heads/main",
     "main_base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
     "prototype_capture_commit": "1982efe66",
@@ -26,10 +26,10 @@
   },
   "package": {
     "command": "git archive --format=tar HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | sha256sum",
-    "commit": "7760caae569bdf75acbabfdf4fcb448341ad3b40",
-    "tree_hash_sha256": "b06e5c9e052060e9cefa73d333c6e216eec493d71259dc37708d339e2e97850b",
-    "file_count_in_archive": 201,
-    "expected_output": "ca0b51dee57e381e91b6680087e9da680fad7251adb66e942b148b003a75fea2",
+    "commit": "84aabb2535164380999bc9320c8145a8618efd76",
+    "tree_hash_sha256": "ded320b71f1690a3a989bb1433c1cbffee0432214a9c67dadde926297556c15b",
+    "file_count_in_archive": 245,
+    "expected_output": "af0633d4cca826eb5fa12ff0e1ce6f9db9c528acd617c72459894e18e63de9a4",
     "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh"
   },
   "ownership": {
