@@ -27,6 +27,23 @@ the branch above and must preserve the unrelated `CLAUDE.md` edit. The two
 documentation-only reconciliation commits after the source snapshot do not
 change the V2 payload; the branch ref is the authority for future work.
 
+## Post-reconciliation source sync
+
+After this report was first written, two focused corrections were committed on
+the active branch:
+
+- `ba346e596` scopes the global WooCommerce product while editorial V2 cards
+  render, preventing an add-to-cart action from inheriting a neighboring loop
+  product; it also regenerates the current 490-message POT.
+- `50060893b` makes the local PDP renderer SKU-aware, so Signature, Black Rose,
+  Love Hurts, Kids Capsule, and Jersey Series can each be inspected with their
+  own fixture product and collection binding. This remains preview-only.
+
+The current local package was rebuilt after the source correction and verified
+with SHA-256 `49e1cdd84918caed83229fcaef1bd06725a04d7433002cb352bdc722dbbca4dd`.
+That artifact is not a promotion approval and does not replace the immutable
+payload/attestation pair below.
+
 ## Evidence alignment
 
 - `.fashion-theme/promotion-manifest.json` remains the release gate and stays
