@@ -57,6 +57,7 @@ get_header();
 				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" alt="" width="1440" height="810" fetchpriority="high" decoding="sync">
 			</picture>
 		</div>
+		<div class="sr-house-hero__atmosphere" aria-hidden="true"><span class="sr-house-hero__clouds"></span><span class="sr-house-hero__bridge-lights"></span><span class="sr-house-hero__scanline"></span></div>
 		<div class="sr-house-hero__veil" aria-hidden="true"></div>
 		<div class="sr-house-hero__copy">
 			<p class="sr-house-hero__location"><?php esc_html_e( 'Oakland, California', 'skyyrose-flagship-2' ); ?></p>
