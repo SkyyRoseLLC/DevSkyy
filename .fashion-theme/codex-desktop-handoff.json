@@ -1,13 +1,13 @@
 {
   "schema_version": "1.1",
-  "created_at_utc": "2026-08-16T00:18:00Z",
+  "created_at_utc": "2026-08-16T00:27:00Z",
   "candidate": {
     "branch": "codex/skyyrose-v2-marketplace",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
-    "current_integration_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
-    "last_verified_source_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
+    "current_integration_commit": "a764b07cec9c4ab3035315f6af2a86c55d6cacfb",
+    "last_verified_source_commit": "a764b07cec9c4ab3035315f6af2a86c55d6cacfb",
     "state": "CURRENT_LOCAL_CANDIDATE_VERIFIED"
   },
   "manifests": {
@@ -29,21 +29,21 @@
     },
     "workspace-ledger": {
       "path": ".fashion-theme/workspace-ledger.json",
-      "sha256": "d80b6ddc28b428388fe35ef086298c40b583e7ace3edbdcfe40b51638d4e0394"
+      "sha256": "a6a12bcff98d11a9f8cf34e13abefae082ed827ae630ffa799a80f7d725f9dca"
     }
   },
   "package": {
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
-    "source_tar_sha256": "152454300e5a0b8d1d2d94b45ad94d5039ae897be06edaba1484eb571a442ee0",
-    "marketplace_zip_sha256": "34bacddaf11858de2fbbf59892a04b70b37b535ba04f5e00f62fe1872566ef47",
+    "source_tar_sha256": "a80c586d00c24d1f0f4112dd27a9c33f1f15914be7142979dd3a28a7ff05255d",
+    "marketplace_zip_sha256": "223950057be644bed5b8b833e7aecdbf9d4c96f8b9c314da32e10380f0aae6dd",
     "source_file_count": 250,
     "source_tar_command": "git archive --format=tar <current_integration_commit> -- $(git ls-tree -r --name-only <current_integration_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -Ev '^\\.fashion-theme/(codex-desktop-handoff|promotion-manifest)\\.json$') | shasum -a 256"
   },
   "handoff": {
     "target": "codex-desktop",
     "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-    "current_integration_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
-    "last_verified_source_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
+    "current_integration_commit": "a764b07cec9c4ab3035315f6af2a86c55d6cacfb",
+    "last_verified_source_commit": "a764b07cec9c4ab3035315f6af2a86c55d6cacfb",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "status": "SOURCE_TRACKED_LOCAL_REVIEW_READY",
