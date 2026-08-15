@@ -8,8 +8,8 @@
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
       "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
       "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
-      "current_integration_commit": "6f0dfb79e19b5a264a0b7b740701c439741bb0d2",
-      "last_verified_source_commit": "6f0dfb79e19b5a264a0b7b740701c439741bb0d2",
+      "current_integration_commit": "9ec5ac7e03b3f631a2ee06f4701247739d2736cc",
+      "last_verified_source_commit": "9ec5ac7e03b3f631a2ee06f4701247739d2736cc",
       "marketplace_zip_sha256": null,
       "owned_paths": [
         ".fashion-theme",
@@ -18,7 +18,7 @@
       "worktree_dirty": true,
       "owned_paths_dirty": false,
       "dirty_reason": "Unrelated edits remain outside the V2-owned paths; the V2 source and generated artifacts are synchronized at current_integration_commit",
-      "status": "ACTIVE_SOURCE_VERIFIED_REVIEW_BLOCKED",
+      "status": "ACTIVE_SOURCE_AND_LOCAL_PREVIEW_VERIFIED",
       "promoted_to": null
     }
   ],

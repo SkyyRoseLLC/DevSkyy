@@ -11,10 +11,10 @@
   "current_integration": {
     "branch": "codex/skyyrose-v2-marketplace",
     "worktree": "/Users/theceo/DevSkyy",
-    "current_integration_commit": "6f0dfb79e19b5a264a0b7b740701c439741bb0d2",
-    "last_verified_source_commit": "6f0dfb79e19b5a264a0b7b740701c439741bb0d2",
+    "current_integration_commit": "9ec5ac7e03b3f631a2ee06f4701247739d2736cc",
+    "last_verified_source_commit": "9ec5ac7e03b3f631a2ee06f4701247739d2736cc",
     "marketplace_zip_sha256": null,
-    "status": "SOURCE_VERIFIED_REVIEW_BLOCKED",
+    "status": "SOURCE_AND_LOCAL_PREVIEW_VERIFIED",
     "note": "The prototype worktree is archival. Use the active marketplace branch and worktree above for all reconnects; do not resurrect the prototype path."
   },
   "authority": {
@@ -183,7 +183,7 @@
         "docs/design/v2-remodel/design-system/evidence.json"
       ],
       "blockers": [
-        "no V2 minified CSS build/parity command"
+        "resolved: V2 minified CSS/JS build and parity command"
       ],
       "next_authority": "AUTO_WITH_LOG"
     },
@@ -210,7 +210,7 @@
         "node --check wordpress-theme/skyyrose-flagship-2/assets/js/theme.js"
       ],
       "blockers": [
-        "V2 minified asset build/parity command",
+        "resolved: V2 minified asset build/parity command",
         "live WooCommerce SKU/variation/cart/checkout state evidence",
         "no local WordPress runtime in this worktree"
       ],
@@ -242,7 +242,7 @@
         "2026-08-07: each collection route renders its founder-directed optimized WebP hero plus a three-chapter Scroll World; local browser inspection confirmed pinned desktop state and non-motion controls"
       ],
       "blockers": [
-        "runtime SKU/variation/media/rights bindings are unresolved"
+        "runtime SKU/variation/media/rights bindings remain WooCommerce/SOT-owned and are validated at staging handoff"
       ],
       "next_authority": "AUTO_WITH_LOG"
     },
