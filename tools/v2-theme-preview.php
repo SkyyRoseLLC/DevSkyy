@@ -186,30 +186,35 @@ function wp_get_post_terms( $product_id = 0, $taxonomy = '', $args = array() ) {
 	}
 	return in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ? array( $route ) : array();
 }
-function wp_get_attachment_image( $id, $size = 'thumbnail', $icon = false, $attrs = array() ) {
+function preview_attachment_path( $id ) {
 	$images = array(
-		1 => 'images/home/on-model/signature-sg-005.webp',
-		2 => 'images/home/on-model/black-rose-br-004.webp',
-		3 => 'images/home/on-model/love-hurts-lh-004.webp',
-		4 => 'images/products/kids-001-product-proof-400.webp',
-		7 => 'images/products/kids-002-product-proof-400.webp',
-		5 => 'images/immersive/scene-signature-golden-gate.webp',
-		6 => 'images/home/on-model/signature-sg-005.webp',
+		1   => 'images/products/preview/sg-005-front.webp',
+		2   => 'images/products/preview/br-004-front.webp',
+		3   => 'images/products/preview/lh-004-front.webp',
+		4   => 'images/products/preview/kids-001-front.webp',
+		7   => 'images/products/preview/kids-002-front.webp',
+		101 => 'images/products/preview/sg-005-back.webp',
+		102 => 'images/products/preview/sg-005-packshot.webp',
+		201 => 'images/products/preview/br-004-back.webp',
+		202 => 'images/products/preview/br-004-packshot.webp',
+		301 => 'images/products/preview/lh-004-back.webp',
+		302 => 'images/products/preview/lh-004-packshot.webp',
+		401 => 'images/products/preview/kids-001-back.webp',
+		402 => 'images/products/preview/kids-001-packshot.webp',
+		701 => 'images/products/preview/kids-002-back.webp',
+		702 => 'images/products/preview/kids-002-packshot.webp',
 	);
+	return $images[ (int) $id ] ?? $images[1];
+}
+function wp_get_attachment_image( $id, $size = 'thumbnail', $icon = false, $attrs = array() ) {
 	$class = ! empty( $attrs['class'] ) ? $attrs['class'] : '';
-	return '<img class="' . esc_attr( $class ) . '" src="' . esc_url( get_template_directory_uri() . '/assets/sot/' . ( $images[ $id ] ?? $images[1] ) ) . '" alt="SkyyRose published product view">';
+	return '<img class="' . esc_attr( $class ) . '" src="' . esc_url( get_template_directory_uri() . '/assets/sot/' . preview_attachment_path( $id ) ) . '" alt="SkyyRose published product view">';
 }
 function wp_get_attachment_image_url( $id, $size = 'thumbnail' ) {
-	$images = array(
-		1 => 'images/home/on-model/signature-sg-005.webp',
-		2 => 'images/home/on-model/black-rose-br-004.webp',
-		3 => 'images/home/on-model/love-hurts-lh-004.webp',
-		4 => 'images/products/kids-001-product-proof-400.webp',
-		7 => 'images/products/kids-002-product-proof-400.webp',
-		5 => 'images/immersive/scene-signature-golden-gate.webp',
-		6 => 'images/home/on-model/signature-sg-005.webp',
-	);
-	return get_template_directory_uri() . '/assets/sot/' . ( $images[ (int) $id ] ?? $images[1] );
+	return get_template_directory_uri() . '/assets/sot/' . preview_attachment_path( $id );
+}
+function wp_get_attachment_url( $id ) {
+	return get_template_directory_uri() . '/assets/sot/' . preview_attachment_path( $id );
 }
 function woocommerce_page_title() { return 'The House Edit'; }
 function woocommerce_product_loop() { return true; }
@@ -235,12 +240,12 @@ function has_term( $term, $taxonomy = '', $post = null ) {
 function _n( $single, $plural, $number ) { return 1 === (int) $number ? $single : $plural; }
 
 class WC_Product {
-	private $id; private $name; private $image; private $sku;
-	public function __construct( $id, $name, $image, $sku = '' ) { $this->id = $id; $this->name = $name; $this->image = $image; $this->sku = $sku ?: 'preview-' . $id; }
+	private $id; private $name; private $image; private $sku; private $gallery;
+	public function __construct( $id, $name, $image, $sku = '', $gallery = array() ) { $this->id = $id; $this->name = $name; $this->image = $image; $this->sku = $sku ?: 'preview-' . $id; $this->gallery = $gallery; }
 	public function get_id() { return $this->id; }
 	public function get_name() { return $this->name; }
 	public function get_image_id() { return $this->image; }
-	public function get_gallery_image_ids() { return array( 5 ); }
+	public function get_gallery_image_ids() { return $this->gallery; }
 	public function get_price_html() { return '<span class="woocommerce-Price-amount amount">$128.00</span>'; }
 	public function is_in_stock() { return true; }
 	public function is_visible() { return true; }
@@ -253,11 +258,11 @@ class WC_Product {
 }
 function wc_get_products( $args = array() ) {
 	$fixtures = array(
-		new WC_Product( 1, 'Bay Bridge Shirt', 1, 'sg-005' ),
-		new WC_Product( 2, 'Black Rose Hoodie', 2, 'br-004' ),
-		new WC_Product( 3, 'Love Hurts Bomber Jacket', 3, 'lh-004' ),
-		new WC_Product( 4, 'Kids Colorblock Hoodie Set — Red/Black', 4, 'kids-001' ),
-		new WC_Product( 5, 'Kids Colorblock Hoodie Set — Purple/Black', 7, 'kids-002' ),
+		new WC_Product( 1, 'Bay Bridge Shirt', 1, 'sg-005', array( 101, 102 ) ),
+		new WC_Product( 2, 'Black Rose Hoodie', 2, 'br-004', array( 201, 202 ) ),
+		new WC_Product( 3, 'Love Hurts Bomber Jacket', 3, 'lh-004', array( 301, 302 ) ),
+		new WC_Product( 4, 'Kids Colorblock Hoodie Set — Red/Black', 4, 'kids-001', array( 401, 402 ) ),
+		new WC_Product( 5, 'Kids Colorblock Hoodie Set — Purple/Black', 7, 'kids-002', array( 701, 702 ) ),
 	);
 	$categories = isset( $args['category'] ) ? array_map( 'sanitize_title', (array) $args['category'] ) : array();
 	if ( $categories ) {

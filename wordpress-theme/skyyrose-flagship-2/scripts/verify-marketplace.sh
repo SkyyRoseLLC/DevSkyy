@@ -5,7 +5,7 @@ THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$THEME_DIR"
 
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l >/dev/null
-for document in theme.json data/product-presentation-registry.json data/image-optimization.json; do
+for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json; do
 	jq empty "$document"
 done
 
@@ -25,6 +25,15 @@ while IFS= read -r base; do
 		fi
 	done
 done < <(jq -r '.hero_bases[]' data/image-optimization.json)
+
+while IFS= read -r derivative; do
+	test -s "$derivative" || { echo "Missing opening product-media derivative: $derivative" >&2; exit 1; }
+	bytes="$(stat -f '%z' "$derivative")"
+	if [ "$bytes" -gt 80000 ]; then
+		echo "Opening product-media derivative exceeds 80KB: $derivative" >&2
+		exit 1
+	fi
+done < <(jq -r '.products[] | .views[] | .derivative' data/opening-product-media.json)
 
 STYLE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -n1)"
 PACKAGE_VERSION="$(jq -r '.version' package.json)"
