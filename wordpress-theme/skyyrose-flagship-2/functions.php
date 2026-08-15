@@ -125,6 +125,21 @@ function skyyrose2_assets() {
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . '/assets/css/theme' . $suffix . '.css', array( 'skyyrose2-tokens' ), SKYYROSE2_VERSION );
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . '/assets/js/theme' . $suffix . '.js', array(), SKYYROSE2_VERSION, true );
 	wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . '/assets/js/house-of-roses-motion' . $house_motion_suffix . '.js', array( 'skyyrose2-theme' ), SKYYROSE2_VERSION, true );
+	// Editorial collection and reservation pages render native Woo loop actions
+	// outside WooCommerce's archive template. Load the same client runtime here
+	// so an eligible simple product gets the normal AJAX confirmation, fragments,
+	// and updated bag count; the anchor URL remains the no-JS cart fallback.
+	if (
+		function_exists( 'is_woocommerce' ) &&
+		(
+			is_page_template( 'template-collection.php' ) ||
+			is_page_template( 'template-preorder.php' ) ||
+			is_page_template( 'template-parts/v2-preorder.php' )
+		)
+	) {
+		wp_enqueue_script( 'wc-add-to-cart' );
+		wp_enqueue_script( 'wc-cart-fragments' );
+	}
 	if ( is_front_page() ) {
 		wp_enqueue_script( 'skyyrose2-kids-capsule-reveal', SKYYROSE2_URI . '/assets/js/kids-capsule-reveal' . $kids_reveal_suffix . '.js', array( 'skyyrose2-theme' ), SKYYROSE2_VERSION, true );
 	}

@@ -20,6 +20,9 @@ $hero_mobile  = ! empty( $collection['hero_mobile'] ) ? skyyrose2_sot_asset_uri(
 get_header();
 ?>
 <main id="primary" class="sr2-collection" data-collection="<?php echo esc_attr( $slug ); ?>">
+	<?php if ( function_exists( 'wc_print_notices' ) ) : ?>
+		<div class="sr2-commerce-notices" aria-live="polite"><?php wc_print_notices(); ?></div>
+	<?php endif; ?>
 	<section class="sr2-collection-hero" aria-label="<?php echo esc_attr( sprintf( __( '%s collection monument scene', 'skyyrose-flagship-2' ), $collection['name'] ) ); ?>" data-hero-depth>
 		<div class="sr2-collection-hero__media">
 			<picture>

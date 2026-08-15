@@ -23,8 +23,7 @@ if ( ! WC()->cart || WC()->cart->is_empty() ) :
 		<a class="sr2-page-action" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Shop collections', 'skyyrose-flagship-2' ); ?></a>
 	</section>
 	<?php
-	return;
-endif;
+else :
 ?>
 <section class="sr2-cart">
 	<header class="sr2-page-head"><p><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p><h1><?php esc_html_e( 'Keep your pieces close.', 'skyyrose-flagship-2' ); ?></h1></header>
@@ -107,4 +106,5 @@ else :
 		<aside class="sr2-cart__summary"><?php do_action( 'woocommerce_cart_collaterals' ); ?></aside>
 	</div>
 </section>
+<?php endif; ?>
 <?php do_action( 'woocommerce_after_cart' ); ?>
