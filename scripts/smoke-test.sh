@@ -30,7 +30,7 @@ NC='\033[0m' # No Color
 
 # Default URLs (production)
 API_URL="${API_URL:-https://api.devskyy.app}"
-FRONTEND_URL="${FRONTEND_URL:-https://app.devskyy.app}"
+FRONTEND_URL="${FRONTEND_URL:-https://www.devskyy.app}"
 WORDPRESS_URL="${WORDPRESS_URL:-https://skyyrose.com}"
 
 # Parse arguments

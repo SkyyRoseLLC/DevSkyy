@@ -71,7 +71,13 @@ export default function HubPage() {
         {/* Roundtable hero */}
         <ConsoleCard
           className="relative overflow-hidden mb-5 rounded-[10px]"
-          style={{ borderColor: 'rgba(183,110,121,.28)', background: 'linear-gradient(135deg,#100E12 0%,#0A0A0A 60%,#080808 100%)' }}
+          style={{
+            borderColor: 'rgba(183,110,121,.28)',
+            backgroundImage:
+              "linear-gradient(135deg,rgba(16,14,18,.93) 0%,rgba(10,10,10,.88) 60%,rgba(8,8,8,.93) 100%), url('/images/dashboard/atelier-control-room-reference-v1.png')",
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+          }}
         >
           <div
             className="absolute inset-0 pointer-events-none"

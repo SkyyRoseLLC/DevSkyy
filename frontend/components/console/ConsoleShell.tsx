@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '@/lib/api';
 import { CONSOLE_NAV_ITEMS } from './nav-config';
@@ -25,6 +25,7 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, status } = useSession();
+  const sessionAuthError = (session as { authError?: string } | null)?.authError;
   const userName = session?.user?.email ? session.user.email.split('@')[0] : 'Operator';
 
   // Server Component /admin pages skip their data fetch (never render real
@@ -33,14 +34,16 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
   // Components config is silently swallowed (see lib/require-admin-session.ts).
   // This is the actual navigation to /login for an unauthenticated visitor.
   useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.replace('/login');
+    if (status === 'unauthenticated' || sessionAuthError) {
+      if (sessionAuthError) void signOut({ redirect: false });
+      router.replace(`/login?callbackUrl=${encodeURIComponent(pathname)}`);
     }
-  }, [status, router]);
+  }, [pathname, sessionAuthError, status, router]);
 
   const { data: agentsData } = useQuery({
     queryKey: ['console-agents-count'],
     queryFn: () => api.agents.list(),
+    enabled: status === 'authenticated' && !sessionAuthError,
     staleTime: 60_000,
     refetchInterval: 60_000,
   });
@@ -49,6 +52,7 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
   const { data: orderCount = 0 } = useQuery({
     queryKey: ['console-orders-count'],
     queryFn: fetchOrderCount,
+    enabled: status === 'authenticated' && !sessionAuthError,
     staleTime: 60_000,
     refetchInterval: 60_000,
   });
@@ -60,6 +64,17 @@ export function ConsoleShell({ children }: ConsoleShellProps) {
     }
     return undefined;
   };
+
+  if (status !== 'authenticated' || sessionAuthError) {
+    return (
+      <main className="min-h-screen flex items-center justify-center bg-[#08080A] px-6" aria-live="polite">
+        <div className="text-center">
+          <div className="mx-auto mb-4 h-2 w-2 rounded-full bg-[#B76E79] animate-pulse" />
+          <p className="font-mono text-[10px] tracking-[0.22em] uppercase text-[#A0A0A0]">Confirming operator access</p>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <div className="dsh min-h-screen" style={{ background: 'var(--void)' }}>

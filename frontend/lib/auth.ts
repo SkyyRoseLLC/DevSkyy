@@ -12,6 +12,30 @@ import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+const ACCESS_TOKEN_LEEWAY_MS = 60_000;
+
+type BackendTokens = {
+  access_token: string;
+  refresh_token: string;
+  expires_in: number;
+};
+
+async function refreshBackendTokens(refreshToken: string): Promise<BackendTokens | null> {
+  try {
+    const response = await fetch(`${API_URL}/api/v1/auth/refresh`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ refresh_token: refreshToken }),
+    });
+    if (!response.ok) return null;
+
+    const data = (await response.json()) as Partial<BackendTokens>;
+    if (!data.access_token || !data.refresh_token || !data.expires_in) return null;
+    return data as BackendTokens;
+  } catch {
+    return null;
+  }
+}
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -56,6 +80,7 @@ export const authOptions: NextAuthOptions = {
             email: credentials.email,
             accessToken: data.access_token,
             refreshToken: data.refresh_token,
+            accessTokenExpiresAt: Date.now() + data.expires_in * 1000,
           };
         } catch {
           return null;
@@ -66,7 +91,10 @@ export const authOptions: NextAuthOptions = {
 
   session: {
     strategy: 'jwt',
-    maxAge: 15 * 60, // 15 minutes (matches backend token expiry)
+    // Backend refresh tokens expire after seven days. The cookie lifetime must
+    // never outlast that server-side credential.
+    maxAge: 7 * 24 * 60 * 60,
+    updateAge: 24 * 60 * 60,
   },
 
   callbacks: {
@@ -75,14 +103,28 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.accessToken = (user as { accessToken?: string }).accessToken;
         token.refreshToken = (user as { refreshToken?: string }).refreshToken;
+        token.accessTokenExpiresAt = (user as { accessTokenExpiresAt?: number }).accessTokenExpiresAt;
         token.email = user.email;
+        return token;
       }
+
+      if (token.accessTokenExpiresAt && Date.now() < (token.accessTokenExpiresAt as number) - ACCESS_TOKEN_LEEWAY_MS) {
+        return token;
+      }
+      if (!token.refreshToken) return { ...token, authError: 'RefreshAccessTokenError' };
+
+      const refreshed = await refreshBackendTokens(token.refreshToken as string);
+      if (!refreshed) return { ...token, authError: 'RefreshAccessTokenError' };
+
+      token.accessToken = refreshed.access_token;
+      token.refreshToken = refreshed.refresh_token;
+      token.accessTokenExpiresAt = Date.now() + refreshed.expires_in * 1000;
       return token;
     },
 
     async session({ session, token }) {
-      // Expose the backend access token to the client session
-      (session as { accessToken?: string }).accessToken = token.accessToken as string;
+      // Keep backend bearer tokens inside the encrypted NextAuth cookie.
+      (session as { authError?: string }).authError = token.authError as string | undefined;
       if (session.user) {
         session.user.email = token.email as string;
       }

@@ -9,10 +9,11 @@ declare module 'next-auth' {
   interface User extends DefaultUser {
     accessToken?: string;
     refreshToken?: string;
+    accessTokenExpiresAt?: number;
   }
 
   interface Session extends DefaultSession {
-    accessToken?: string;
+    authError?: string;
   }
 }
 
@@ -20,5 +21,9 @@ declare module 'next-auth/jwt' {
   interface JWT extends DefaultJWT {
     accessToken?: string;
     refreshToken?: string;
+    accessTokenExpiresAt?: number;
+    authError?: 'RefreshAccessTokenError';
   }
 }
+
+export {};

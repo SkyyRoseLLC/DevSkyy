@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { Suspense, useState, useCallback, useEffect } from 'react';
+import { signIn, signOut } from 'next-auth/react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,17 +14,6 @@ import { Loader2, Eye, EyeOff, Shield } from 'lucide-react';
 // =============================================================================
 // CONFIGURATION
 // =============================================================================
-
-const API_URL = (() => {
-  const url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-  try {
-    new URL(url);
-    return url;
-  } catch {
-    // Invalid URL — fall back to default
-    return 'http://localhost:8000';
-  }
-})();
 
 const LOGIN_RATE_LIMIT_MS = 1000; // Minimum time between login attempts
 const MAX_LOGIN_ATTEMPTS = 5; // Max attempts before temporary lockout
@@ -45,18 +35,9 @@ const LoginFormSchema = z.object({
     .min(1, 'Password is required')
     .min(8, 'Password must be at least 8 characters')
     .max(128, 'Password is too long'),
-  rememberMe: z.boolean().optional().default(false),
-});
-
-const LoginResponseSchema = z.object({
-  access_token: z.string().min(1),
-  refresh_token: z.string().min(1),
-  token_type: z.string().default('Bearer'),
-  expires_in: z.number().optional().default(900),
 });
 
 type LoginForm = z.infer<typeof LoginFormSchema>;
-type LoginResponse = z.infer<typeof LoginResponseSchema>;
 
 // =============================================================================
 // SECURITY UTILITIES
@@ -66,19 +47,6 @@ function generateNonce(): string {
   const array = new Uint8Array(16);
   crypto.getRandomValues(array);
   return Array.from(array, (byte) => byte.toString(16).padStart(2, '0')).join('');
-}
-
-function setSecureCookie(name: string, value: string, maxAge: number): void {
-  const secure = window.location.protocol === 'https:' ? '; Secure' : '';
-  const sameSite = '; SameSite=Strict';
-  document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}${secure}${sameSite}`;
-}
-
-function clearAuthData(): void {
-  localStorage.removeItem('access_token');
-  localStorage.removeItem('refresh_token');
-  localStorage.removeItem('token_type');
-  document.cookie = 'access_token=; path=/; max-age=0';
 }
 
 // Rate limiting state (stored in memory, resets on page reload)
@@ -122,11 +90,11 @@ function recordLoginAttempt(success: boolean): void {
 // COMPONENT
 // =============================================================================
 
-export default function LoginPage() {
+function LoginPanel() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -136,14 +104,13 @@ export default function LoginPage() {
   // Generate CSRF nonce on mount
   useEffect(() => {
     setNonce(generateNonce());
-    // Clear any stale auth data
     if (window.location.search.includes('logout=true')) {
-      clearAuthData();
+      void signOut({ redirect: false });
     }
   }, []);
 
   const validateForm = useCallback((): LoginForm | null => {
-    const result = LoginFormSchema.safeParse({ email, password, rememberMe });
+    const result = LoginFormSchema.safeParse({ email, password });
 
     if (!result.success) {
       const errors: Record<string, string> = {};
@@ -159,7 +126,7 @@ export default function LoginPage() {
 
     setFieldErrors({});
     return result.data;
-  }, [email, password, rememberMe]);
+  }, [email, password]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -181,75 +148,22 @@ export default function LoginPage() {
     setIsLoading(true);
 
     try {
-      const requestBody = new URLSearchParams();
-      requestBody.append('username', formData.email);
-      requestBody.append('password', formData.password);
-      requestBody.append('grant_type', 'password');
-
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 30000);
-
-      const response = await fetch(`${API_URL}/api/v1/auth/token`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'X-Request-ID': crypto.randomUUID(),
-          'X-CSRF-Token': nonce,
-        },
-        body: requestBody.toString(),
-        signal: controller.signal,
-        credentials: 'include',
+      const result = await signIn('credentials', {
+        email: formData.email,
+        password: formData.password,
+        redirect: false,
       });
-
-      clearTimeout(timeoutId);
-
-      if (!response.ok) {
+      if (!result?.ok) {
         recordLoginAttempt(false);
-
-        // Handle specific error codes
-        if (response.status === 401) {
-          throw new Error('Invalid email or password');
-        } else if (response.status === 429) {
-          throw new Error('Too many login attempts. Please try again later.');
-        } else if (response.status >= 500) {
-          throw new Error('Server error. Please try again later.');
-        } else {
-          // Don't expose specific error details from server
-          throw new Error('Login failed. Please check your credentials.');
-        }
+        throw new Error('Invalid email or password');
       }
-
-      const rawData = await response.json();
-      const parseResult = LoginResponseSchema.safeParse(rawData);
-
-      if (!parseResult.success) {
-        throw new Error('Invalid response from server');
-      }
-
-      const data = parseResult.data;
       recordLoginAttempt(true);
-
-      // Store tokens securely
-      const tokenExpiry = formData.rememberMe ? 2592000 : data.expires_in; // 30 days or session
-
-      localStorage.setItem('access_token', data.access_token);
-      localStorage.setItem('refresh_token', data.refresh_token);
-      localStorage.setItem('token_type', data.token_type);
-
-      // Set secure cookie for SSR
-      setSecureCookie('access_token', data.access_token, tokenExpiry);
-
-      // Regenerate nonce after successful login
       setNonce(generateNonce());
-
-      // Redirect to dashboard
-      router.push('/admin');
+      const callbackUrl = searchParams.get('callbackUrl');
+      const destination = callbackUrl && callbackUrl.startsWith('/') && !callbackUrl.startsWith('//') ? callbackUrl : '/admin/hub';
+      router.replace(destination);
     } catch (err) {
-      if (err instanceof Error && err.name === 'AbortError') {
-        setError('Login request timed out. Please try again.');
-      } else {
-        setError(err instanceof Error ? err.message : 'Login failed. Please try again.');
-      }
+      setError(err instanceof Error ? err.message : 'Login failed. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -368,20 +282,7 @@ export default function LoginPage() {
               )}
             </div>
 
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="remember"
-                name="remember"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-                className="h-4 w-4 rounded border-gray-600 bg-gray-700 text-rose-500 focus:ring-rose-500"
-                data-testid="remember-me"
-              />
-              <Label htmlFor="remember" className="text-sm text-gray-400">
-                Remember me for 30 days
-              </Label>
-            </div>
+            <p className="text-sm text-gray-400">This trusted owner device stays signed in for up to 7 days. Sign out when using a shared device.</p>
           </CardContent>
 
           <CardFooter className="flex flex-col space-y-4">
@@ -402,14 +303,15 @@ export default function LoginPage() {
             </Button>
 
             <p className="text-center text-sm text-gray-400">
-              Don&apos;t have an account?{' '}
-              <a href="/register" className="text-rose-400 hover:text-rose-300 font-medium">
-                Sign up
-              </a>
+              Need owner access? Accounts are provisioned securely by the platform owner.
             </p>
           </CardFooter>
         </form>
       </Card>
     </div>
   );
+}
+
+export default function LoginPage() {
+  return <Suspense fallback={<div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900" />}><LoginPanel /></Suspense>;
 }
