@@ -12,7 +12,7 @@
   },
   "foundation": {
     "integration_branch": "codex/skyyrose-v2-marketplace",
-    "integration_commit": "d96a634258f4d0f6db9dbf6dc6f5dc3ea6bc7cf8f",
+    "integration_commit": "015191ffc1656f25bb62ae8dd20fc9aba4944113",
     "main_base_ref": "refs/heads/main",
     "main_base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
     "prototype_capture_commit": "1982efe66",
@@ -25,11 +25,11 @@
     "logo_registry": "7dedd9d2aa7276f3025b68a6bebe2936a0163983"
   },
   "package": {
-    "command": "git archive --format=tar HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | sha256sum",
-    "commit": "d96a634258f4d0f6db9dbf6dc6f5dc3ea6bc7cf8f",
+    "command": "git archive --format=tar HEAD -- $(git ls-tree -r --name-only HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum",
+    "commit": "015191ffc1656f25bb62ae8dd20fc9aba4944113",
     "tree_hash_sha256": "ded320b71f1690a3a989bb1433c1cbffee0432214a9c67dadde926297556c15b",
     "file_count_in_archive": 245,
-    "expected_output": "81326adc6806a887985dd992ab29f8c67d393f8e4cb3b92a11e15154ed5162eb",
+    "expected_output": "a377eaef70bb87bf1d223e7a220463a1b2165bcea06e0c051b521c29c3e66486",
     "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh"
   },
   "ownership": {
