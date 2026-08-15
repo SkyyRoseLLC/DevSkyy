@@ -12,21 +12,21 @@
   root.classList.add('sr2-motion-ready');
 
   const saveData = Boolean(navigator.connection?.saveData);
-  document.querySelectorAll('[data-brand-spin]').forEach((video) => {
+  document.querySelectorAll('[data-brand-animation]').forEach((image) => {
     if (reducedMotion || saveData) {
-      video.preload = 'none';
-      video.pause();
       return;
     }
 
-    const playback = video.play();
-    if (playback) playback.catch(() => {});
+    // The still is the initial, tiny, no-layout-shift header asset. Only clients
+    // that permit motion and have not requested data saving download the animation.
+    image.src = image.dataset.brandAnimation;
   });
 
   const setMenu = (open) => {
     if (!menuButton || !menu) return;
     menu.classList.toggle('is-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close site menu' : 'Open site menu');
     body.classList.toggle('sr2-nav-open', open);
   };
 
@@ -93,12 +93,17 @@
     const stage = world.querySelector('[data-scroll-world-stage]');
     if (!stage) return false;
 
+    // Scroll World is an expanded-desktop enhancement only. The rail remains a
+    // native horizontal scroller at compact and medium widths, where a pinned
+    // scene would compromise touch and keyboard reading order.
+    const expandedPointer = window.matchMedia('(min-width: 1200px) and (hover: hover) and (pointer: fine)');
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     let start = 0;
     let distance = 1;
     let frame = 0;
-
-    world.classList.add('is-scroll-world');
-    rail.scrollLeft = 0;
+    let layoutFrame = 0;
+    let active = false;
+    let resizeObserver = null;
 
     const setPosition = (ratio) => {
       const safeRatio = Math.min(1, Math.max(0, ratio));
@@ -111,16 +116,19 @@
     };
 
     const update = () => {
-      setPosition((window.scrollY - start) / distance);
       frame = 0;
+      if (!active || document.hidden) return;
+      setPosition((window.scrollY - start) / distance);
     };
 
     const requestUpdate = () => {
-      if (frame) return;
+      if (!active || frame) return;
       frame = window.requestAnimationFrame(update);
     };
 
     const layout = () => {
+      layoutFrame = 0;
+      if (!active) return;
       const headerHeight = Number.parseFloat(getComputedStyle(root).getPropertyValue('--sr2-header')) || 0;
       const worldTop = world.getBoundingClientRect().top + window.scrollY;
       distance = Math.max(1, rail.scrollWidth - stage.clientWidth);
@@ -129,20 +137,93 @@
       requestUpdate();
     };
 
+    const requestLayout = () => {
+      if (!active || layoutFrame) return;
+      layoutFrame = window.requestAnimationFrame(layout);
+    };
+
     const goToChapter = (offset) => {
+      if (!active) {
+        const first = chapters[0];
+        const amount = first ? first.getBoundingClientRect().width + 24 : rail.clientWidth * 0.8;
+        rail.scrollBy({ left: offset * amount, behavior: 'auto' });
+        return;
+      }
       const currentRatio = Math.min(1, Math.max(0, (window.scrollY - start) / distance));
       const current = Math.round(currentRatio * (chapters.length - 1));
       const target = Math.min(chapters.length - 1, Math.max(0, current + offset));
       const top = start + (target / Math.max(1, chapters.length - 1)) * distance;
-      window.scrollTo({ top, behavior: reducedMotion ? 'auto' : 'smooth' });
+      window.scrollTo({ top, behavior: 'auto' });
+    };
+
+    const disable = () => {
+      if (!active) return;
+      active = false;
+      if (frame) window.cancelAnimationFrame(frame);
+      if (layoutFrame) window.cancelAnimationFrame(layoutFrame);
+      frame = 0;
+      layoutFrame = 0;
+      setPosition(0);
+      rail.style.transform = '';
+      world.style.height = '';
+      world.classList.remove('is-scroll-world');
+    };
+
+    const enable = () => {
+      if (active || reducedMotionQuery.matches || !expandedPointer.matches) return;
+      active = true;
+      world.classList.add('is-scroll-world');
+      rail.scrollLeft = 0;
+      requestLayout();
+    };
+
+    const syncCapability = () => {
+      if (reducedMotionQuery.matches || !expandedPointer.matches) {
+        disable();
+        return;
+      }
+      enable();
+    };
+
+    const onVisibilityChange = () => {
+      if (document.hidden) {
+        if (frame) window.cancelAnimationFrame(frame);
+        frame = 0;
+        return;
+      }
+      requestLayout();
+      requestUpdate();
+    };
+
+    const onPageHide = () => {
+      disable();
+      resizeObserver?.disconnect();
+    };
+
+    const onPageShow = () => {
+      resizeObserver?.observe(stage);
+      resizeObserver?.observe(rail);
+      syncCapability();
+      requestLayout();
     };
 
     previous?.addEventListener('click', () => goToChapter(-1));
     next?.addEventListener('click', () => goToChapter(1));
     window.addEventListener('scroll', requestUpdate, { passive: true });
-    window.addEventListener('resize', () => window.requestAnimationFrame(layout), { passive: true });
+    window.addEventListener('resize', requestLayout, { passive: true });
+    document.addEventListener('visibilitychange', onVisibilityChange, { passive: true });
+    window.addEventListener('pagehide', onPageHide, { passive: true });
+    window.addEventListener('pageshow', onPageShow, { passive: true });
+    expandedPointer.addEventListener('change', syncCapability);
+    reducedMotionQuery.addEventListener('change', syncCapability);
 
-    window.requestAnimationFrame(layout);
+    if ('ResizeObserver' in window) {
+      resizeObserver = new ResizeObserver(requestLayout);
+      resizeObserver.observe(stage);
+      resizeObserver.observe(rail);
+    }
+
+    syncCapability();
     return true;
   };
 
@@ -155,7 +236,7 @@
     const chapters = Array.from(rail.children);
     const storyProgress = rail.parentElement ? rail.parentElement.querySelector('.sr2-world-story__progress span') : null;
 
-    if (world?.classList.contains('sr2-worlds') && finePointer && !reducedMotion && window.matchMedia('(min-width: 901px)').matches) {
+    if (world?.classList.contains('sr2-worlds') && finePointer && !reducedMotion && window.matchMedia('(min-width: 1200px)').matches) {
       if (setupPinnedWorld(world, rail, chapters, previous, next, count, progress)) return;
     }
 
@@ -184,18 +265,6 @@
     next?.addEventListener('click', () => rail.scrollBy({ left: amount(), behavior: reducedMotion ? 'auto' : 'smooth' }));
     rail.addEventListener('scroll', () => window.requestAnimationFrame(updateRail), { passive: true });
 
-    if (finePointer && !reducedMotion) {
-      rail.addEventListener('wheel', (event) => {
-        if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-        const max = rail.scrollWidth - rail.clientWidth;
-        const movingForward = event.deltaY > 0;
-        const canMove = movingForward ? rail.scrollLeft < max - 2 : rail.scrollLeft > 2;
-        if (!canMove) return;
-        event.preventDefault();
-        rail.scrollLeft += event.deltaY;
-      }, { passive: false });
-    }
-
     updateRail();
   };
 
@@ -217,6 +286,39 @@
       card.addEventListener('focus', () => activate(index));
     });
   });
+
+  const setupProductReel = (card) => {
+    const frames = card.querySelectorAll('.sr2-c-product-card__reel-frame');
+    if (frames.length < 2 || reducedMotion || !finePointer) return;
+
+    let timer = 0;
+    let activeIndex = 0;
+    const setFrame = (index) => {
+      activeIndex = index % frames.length;
+      card.style.setProperty('--sr2-reel-index', String(activeIndex));
+    };
+    const stop = () => {
+      if (timer) window.clearInterval(timer);
+      timer = 0;
+      card.dataset.reelState = 'idle';
+      setFrame(0);
+    };
+    const play = () => {
+      if (timer) return;
+      card.dataset.reelState = 'playing';
+      setFrame(0);
+      timer = window.setInterval(() => setFrame(activeIndex + 1), 1500);
+    };
+
+    card.addEventListener('pointerenter', play);
+    card.addEventListener('pointerleave', stop);
+    card.addEventListener('focusin', play);
+    card.addEventListener('focusout', (event) => {
+      if (!card.contains(event.relatedTarget)) stop();
+    });
+  };
+
+  document.querySelectorAll('[data-product-reel]').forEach(setupProductReel);
 
   if (finePointer && !reducedMotion) {
     document.querySelectorAll('[data-depth-card]').forEach((card) => {
@@ -245,10 +347,12 @@
     });
   }
 
-  /* Cinematic hero video: custom fade loop, no CSS opacity transition. */
+  /* Cinematic hero video: opt-in enhancement over the poster/static hero. */
   const heroVideo = document.querySelector('[data-hero-video]');
   const heroNav = document.querySelector('.sr-home__hero-nav');
   if (heroVideo) {
+    const heroSource = heroVideo.querySelector('source[data-src]');
+    const canPlayHero = !reducedMotion && !saveData && window.matchMedia('(min-width: 48em)').matches;
     const FADE_MS = 500;
     let fadeFrame = 0;
     let fadeStart = 0;
@@ -278,13 +382,21 @@
       fadeFrame = window.requestAnimationFrame(tick);
     };
 
-    if (reducedMotion || saveData) {
+    const stopHero = () => {
+      if (fadeFrame) window.cancelAnimationFrame(fadeFrame);
+      fadeFrame = 0;
       heroVideo.pause();
       heroVideo.style.opacity = '1';
+    };
+
+    if (!canPlayHero || !heroSource) {
+      stopHero();
     } else {
+      heroSource.src = heroSource.dataset.src;
       heroVideo.addEventListener('loadeddata', () => {
         heroVideo.play().then(() => fadeTo(1)).catch(() => {});
       }, { once: true });
+      heroVideo.addEventListener('error', stopHero, { once: true });
       heroVideo.addEventListener('timeupdate', () => {
         if (Number.isFinite(heroVideo.duration) && heroVideo.duration - heroVideo.currentTime <= 0.55) fadeTo(0);
       });
@@ -294,7 +406,66 @@
         window.setTimeout(() => heroVideo.play().then(() => fadeTo(1)).catch(() => {}), 100);
       });
       heroVideo.load();
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stopHero();
+      });
+      window.addEventListener('pagehide', stopHero, { once: true });
     }
+  }
+
+  /* V2 collection model loop. CSS owns the seamless track; JavaScript adds
+     explicit user, visibility, and viewport pause states without taking over
+     scrolling or collection navigation. */
+  const heroModelLoop = document.querySelector('[data-home-model-loop]');
+  if (heroModelLoop) {
+    const loopToggle = heroModelLoop.querySelector('[data-home-model-toggle]');
+    const desktopMotion = window.matchMedia('(min-width: 781px) and (prefers-reduced-motion: no-preference)');
+    let userPaused = false;
+    let outsideViewport = false;
+
+    const motionAllowed = () => desktopMotion.matches && !saveData;
+    const syncModelLoop = () => {
+      const canMove = motionAllowed();
+      const paused = !canMove || userPaused || outsideViewport || document.hidden;
+      heroModelLoop.dataset.motion = canMove ? 'continuous' : 'static';
+      heroModelLoop.dataset.loopState = paused ? 'paused' : 'running';
+
+      if (canMove) {
+        heroModelLoop.dataset.enhanced = 'true';
+      } else {
+        delete heroModelLoop.dataset.enhanced;
+      }
+
+      if (loopToggle) {
+        loopToggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
+        loopToggle.textContent = userPaused ? 'Resume rotation' : 'Pause rotation';
+      }
+    };
+
+    loopToggle?.addEventListener('click', () => {
+      userPaused = !userPaused;
+      syncModelLoop();
+    });
+    heroModelLoop.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !userPaused) {
+        userPaused = true;
+        syncModelLoop();
+        loopToggle?.focus();
+      }
+    });
+    document.addEventListener('visibilitychange', syncModelLoop);
+    desktopMotion.addEventListener?.('change', syncModelLoop);
+
+    if ('IntersectionObserver' in window) {
+      const modelLoopObserver = new IntersectionObserver((entries) => {
+        outsideViewport = !entries[0]?.isIntersecting;
+        syncModelLoop();
+      }, { threshold: 0.05 });
+      modelLoopObserver.observe(heroModelLoop);
+      window.addEventListener('pagehide', () => modelLoopObserver.disconnect(), { once: true });
+    }
+
+    syncModelLoop();
   }
 
   if (heroNav) {
@@ -302,6 +473,55 @@
     updateHeroNav();
     window.addEventListener('scroll', updateHeroNav, { passive: true });
   }
+
+  /* WooCommerce owns variation resolution and cart writes. This adapter only
+     reflects confirmed form events as V2 state/status; it never calculates
+     price, stock, or a variation client-side. */
+  const pdpStatus = document.querySelector('[data-sr2-pdp-status]');
+  const setPdpStatus = (form, state, message = '') => {
+    if (form) form.dataset.sr2VariationState = state;
+    if (pdpStatus) {
+      pdpStatus.dataset.state = state;
+      pdpStatus.textContent = message;
+    }
+  };
+
+  if (window.jQuery) {
+    const $ = window.jQuery;
+    $('.variations_form').each(function attachVariationState() {
+      const form = this;
+      setPdpStatus(form, 'incomplete', 'Select options to see the current piece availability.');
+      $(form).on('found_variation', (_event, variation) => {
+        const available = variation?.is_in_stock !== false && variation?.is_purchasable !== false;
+        setPdpStatus(
+          form,
+          available ? 'valid' : 'unavailable',
+          available ? 'Selection confirmed. Current price and availability are shown above.' : 'This selection is unavailable. Choose another option.'
+        );
+      });
+      $(form).on('hide_variation reset_data', () => {
+        setPdpStatus(form, 'incomplete', 'Select options to see the current piece availability.');
+      });
+      $(form).on('woocommerce_variation_has_changed', () => {
+        if (form.dataset.sr2VariationState !== 'valid') setPdpStatus(form, 'resolving', 'Checking this selection.');
+      });
+    });
+  }
+
+  document.querySelectorAll('.single_add_to_cart_button, form.cart button[type="submit"]').forEach((button) => {
+    const form = button.closest('form.cart');
+    if (!form) return;
+    form.addEventListener('submit', () => {
+      if (button.disabled || button.getAttribute('aria-busy') === 'true') return;
+      button.setAttribute('aria-busy', 'true');
+      button.dataset.sr2OriginalLabel = button.textContent;
+      button.textContent = 'Adding…';
+    });
+    document.body.addEventListener('wc_fragments_refreshed', () => {
+      button.removeAttribute('aria-busy');
+      if (button.dataset.sr2OriginalLabel) button.textContent = button.dataset.sr2OriginalLabel;
+    });
+  });
 
   const heroHeadline = document.querySelector('[data-hero-headline]');
   if (heroHeadline && !reducedMotion) {

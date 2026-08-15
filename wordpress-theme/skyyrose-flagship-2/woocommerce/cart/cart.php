@@ -10,6 +10,12 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_cart' );
 
 if ( ! WC()->cart || WC()->cart->is_empty() ) :
+	/**
+	 * Keep the WooCommerce empty-cart lifecycle available to extensions.
+	 * This template supplies the branded shell; plugins may still append their
+	 * own recovery, analytics, or cleanup content through the standard hook.
+	 */
+	do_action( 'woocommerce_cart_is_empty' );
 	?>
 	<section class="sr2-cart sr2-cart--empty">
 		<p><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p>

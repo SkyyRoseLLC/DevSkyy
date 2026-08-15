@@ -1,0 +1,181 @@
+{
+  "schema_version": "1.0",
+  "kind": "skyyrose-v2-catalog-media-binding",
+  "state": "BLOCKED",
+  "candidate": {
+    "branch": "codex/skyyrose-flagship-v2-prototype",
+    "baseline_commit": "0074fc6e6b161266f9181303296941cd474208af",
+    "seed_path": "wordpress-theme/skyyrose-flagship-2",
+    "seed_snapshot_sha256": "2d8080cb9c406b5b983b641235207334b0698c2130034d3a2f60fea2a66dc0e8",
+    "state": "UNFROZEN",
+    "blocker": "No immutable candidate manifest or package hash is present."
+  },
+  "source_snapshots": {
+    "catalog_csv": {
+      "path": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+      "sha256": "ded09dd3cc62309e28b8ab6861131099601aa7898c46b632397f9488956d3ccf",
+      "product_count": 33
+    },
+    "product_images": {
+      "path": "data/sot-images.json",
+      "sha256": "829dd820fc570a7da80113ec4f68f0e5a30092e73f96bc83fb2e3d040256cb6d",
+      "product_count": 33,
+      "selection_rule": "front-first contract; resolve only by exact catalog SKU and accepted WooCommerce variation"
+    },
+    "non_product_media": {
+      "path": "wordpress-theme/skyyrose-flagship/data/visual-manifest.json",
+      "sha256": "c27517ffb06b86381481d257b15ff348466009effb56fc1ce41475e3e77e81f7",
+      "selection_rule": "filename is not identity; only a referenced manifest record may identify non-product media"
+    }
+  },
+  "runtime_authority": {
+    "woocommerce": {
+      "product_id": null,
+      "variation_id": null,
+      "price": null,
+      "availability": null,
+      "captured_at": null,
+      "state": "UNKNOWN",
+      "blocker": "No candidate-bound WooCommerce read was supplied or performed."
+    }
+  },
+  "dynamic_purchasable_surfaces": [
+    {
+      "surface_id": "v2-product-cards",
+      "source": "wordpress-theme/skyyrose-flagship-2/functions.php:skyyrose2_product_cards",
+      "candidate_scope": "all 33 catalog SKUs when rendered by a purchasable card or PDP",
+      "sku": null,
+      "product_media_authority": "data/sot-images.json",
+      "current_v2_media_source": "WooCommerce attachment image",
+      "state": "BLOCKED",
+      "blockers": [
+        "No exact SKU-to-WooCommerce product ID mapping.",
+        "No exact variation ID/attributes/availability capture.",
+        "No SOT-image selection at the V2 card/PDP boundary.",
+        "No media rights or approved-use record."
+      ]
+    },
+    {
+      "surface_id": "v2-preorder-reserve-rail",
+      "source": "wordpress-theme/skyyrose-flagship-2/page.php:#reserve",
+      "candidate_scope": "WooCommerce category pre-order, not the canonical is_preorder flag",
+      "sku": null,
+      "state": "BLOCKED",
+      "blockers": [
+        "WooCommerce category membership is UNKNOWN.",
+        "The implementation falls back to unscoped products if the category is empty.",
+        "No SKU/variation/media/rights binding exists."
+      ]
+    }
+  ],
+  "hotspot_bridges": [
+    {
+      "bridge_id": "v2-preorder-black-rose-salon-01",
+      "route": "/pre-order/",
+      "surface": "scene-hotspot",
+      "scene_media_id": "v2-preorder-black-rose-salon",
+      "hotspot": { "x": "17%", "y": "62%" },
+      "sku": "br-001",
+      "catalog_name": "BLACK Rose Crewneck",
+      "catalog_collection": "black-rose",
+      "catalog_published": true,
+      "catalog_is_preorder": false,
+      "sot_product_media": { "front": "assets/images/products/br-001-onmodel.webp", "back": "assets/images/products/black-rose-crewneck-back-model.webp", "packshot": "assets/images/products/br-001-crewneck.png" },
+      "v2_label": "Black Is Beautiful",
+      "v2_note": "The Oakland statement jersey.",
+      "woocommerce_product_id": null,
+      "variation_id": null,
+      "state": "BLOCKED",
+      "blockers": ["V2 label/type conflicts with the catalog crewneck.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+    },
+    {
+      "bridge_id": "v2-preorder-black-rose-salon-02",
+      "route": "/pre-order/",
+      "surface": "scene-hotspot",
+      "scene_media_id": "v2-preorder-black-rose-salon",
+      "hotspot": { "x": "42%", "y": "58%" },
+      "sku": "br-003",
+      "catalog_name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
+      "catalog_collection": "black-rose",
+      "catalog_published": true,
+      "catalog_is_preorder": true,
+      "sot_product_media": { "front": "assets/images/products/br-003-onmodel.webp", "back": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp", "packshot": "assets/images/products/br-003-baseball-classic.jpeg" },
+      "v2_label": "Number 30",
+      "v2_note": "A numbered piece from the house.",
+      "woocommerce_product_id": null,
+      "variation_id": null,
+      "state": "BLOCKED",
+      "blockers": ["No scene-object proof.", "No selected variation, WooCommerce, or rights evidence."]
+    },
+    {
+      "bridge_id": "v2-preorder-black-rose-salon-03",
+      "route": "/pre-order/",
+      "surface": "scene-hotspot",
+      "scene_media_id": "v2-preorder-black-rose-salon",
+      "hotspot": { "x": "53%", "y": "59%" },
+      "sku": "br-004",
+      "catalog_name": "BLACK Rose Hoodie",
+      "catalog_collection": "black-rose",
+      "catalog_published": true,
+      "catalog_is_preorder": false,
+      "sot_product_media": { "front": "assets/images/products/br-004-onmodel.webp", "back": "assets/images/products/black-rose-hoodie-back-model.webp", "packshot": "assets/images/products/br-004-black-rose-hoodie.jpeg" },
+      "v2_label": "Number 32",
+      "v2_note": "Bay Area sports memory, recut.",
+      "woocommerce_product_id": null,
+      "variation_id": null,
+      "state": "BLOCKED",
+      "blockers": ["V2 label/type conflicts with the catalog hoodie.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+    },
+    {
+      "bridge_id": "v2-preorder-black-rose-salon-04",
+      "route": "/pre-order/",
+      "surface": "scene-hotspot",
+      "scene_media_id": "v2-preorder-black-rose-salon",
+      "hotspot": { "x": "78%", "y": "58%" },
+      "sku": "br-008",
+      "catalog_name": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)",
+      "catalog_collection": "black-rose",
+      "catalog_published": true,
+      "catalog_is_preorder": true,
+      "sot_product_media": { "front": "assets/images/products/br-008-onmodel.webp", "back": "assets/images/products/jersey-sf-inspired-football-back-model.webp", "packshot": "assets/images/products/br-008-sf-inspired.jpg" },
+      "v2_label": "The Oakland Jacket",
+      "v2_note": "Black Rose armor for the night.",
+      "woocommerce_product_id": null,
+      "variation_id": null,
+      "state": "BLOCKED",
+      "blockers": ["V2 label/type conflicts with the catalog football jersey.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+    },
+    {
+      "bridge_id": "v2-preorder-black-rose-salon-05",
+      "route": "/pre-order/",
+      "surface": "scene-hotspot",
+      "scene_media_id": "v2-preorder-black-rose-salon",
+      "hotspot": { "x": "55%", "y": "83%" },
+      "sku": "br-009",
+      "catalog_name": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
+      "catalog_collection": "black-rose",
+      "catalog_published": true,
+      "catalog_is_preorder": true,
+      "sot_product_media": { "front": "assets/images/products/br-009-onmodel.webp", "back": "assets/images/products/jersey-last-oakland-football-back-model.webp", "packshot": "assets/images/products/br-009-last-oakland-football.jpg" },
+      "v2_label": "The Bay Tee",
+      "v2_note": "The rose travels across the Bay.",
+      "woocommerce_product_id": null,
+      "variation_id": null,
+      "state": "BLOCKED",
+      "blockers": ["V2 label/type conflicts with the catalog football jersey.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+    }
+  ],
+  "evidence_contract": {
+    "required_before_bound": [
+      "immutable candidate manifest/package hash",
+      "catalog snapshot hash",
+      "WooCommerce product and variation capture",
+      "exact SOT product-media selection",
+      "candidate media byte hash",
+      "rights record and approved route/surface use",
+      "static text-equivalent fallback target",
+      "scene-object evidence for every shoppable hotspot"
+    ],
+    "fail_closed": true
+  }
+}

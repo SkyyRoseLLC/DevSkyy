@@ -1,0 +1,26 @@
+{
+  "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
+  "created_at": "2026-08-06",
+  "baseline": {
+    "commit": "0074fc6e6b161266f9181303296941cd474208af",
+    "branch": "codex/skyyrose-flagship-v2-prototype"
+  },
+  "seed": {
+    "path": "wordpress-theme/skyyrose-flagship-2",
+    "snapshot_sha256": "2d8080cb9c406b5b983b641235207334b0698c2130034d3a2f60fea2a66dc0e8",
+    "source_status": "copied from the user-designated, previously untracked V2 seed"
+  },
+  "source_of_truth": [
+    "SOT.md",
+    "data/sot-images.json",
+    "assets/hub/manifest.json",
+    "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/v2-page-plan.json",
+    "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/v2-gap-closure.html"
+  ],
+  "authority": {
+    "scope": "V1-caliber V2 visual and commerce remodel",
+    "deployment": "not authorized",
+    "media_promotion": "requires founder approval",
+    "external_writes": "not authorized"
+  }
+}

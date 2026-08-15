@@ -1,0 +1,233 @@
+{
+  "generated_from": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+  "kind": "skyyrose-v2-product-presentation-registry",
+  "products": {
+    "br-001": {
+      "collection": "black-rose",
+      "is_preorder": false,
+      "presentation": "black-rose",
+      "route": "/collections/black-rose/"
+    },
+    "br-002": {
+      "collection": "black-rose",
+      "is_preorder": false,
+      "presentation": "black-rose",
+      "route": "/collections/black-rose/"
+    },
+    "br-003": {
+      "collection": "black-rose",
+      "film_start": 0,
+      "is_preorder": true,
+      "jersey_chapter": "00 / Baseball Classic (Black)",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "br-004": {
+      "collection": "black-rose",
+      "is_preorder": false,
+      "presentation": "black-rose",
+      "route": "/collections/black-rose/"
+    },
+    "br-005": {
+      "collection": "black-rose",
+      "is_preorder": false,
+      "presentation": "black-rose",
+      "route": "/collections/black-rose/"
+    },
+    "br-006": {
+      "collection": "black-rose",
+      "is_preorder": true,
+      "presentation": "black-rose",
+      "route": "/collections/black-rose/"
+    },
+    "br-007": {
+      "collection": "black-rose",
+      "is_preorder": false,
+      "presentation": "black-rose",
+      "route": "/collections/black-rose/"
+    },
+    "br-008": {
+      "collection": "black-rose",
+      "film_start": 3.2,
+      "is_preorder": true,
+      "jersey_chapter": "01 / SF Inspired",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "br-009": {
+      "collection": "black-rose",
+      "film_start": 6.4,
+      "is_preorder": true,
+      "jersey_chapter": "02 / Last Oakland",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "br-010": {
+      "collection": "black-rose",
+      "film_start": 9.6,
+      "is_preorder": true,
+      "jersey_chapter": "03 / The Bay",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "br-011": {
+      "collection": "black-rose",
+      "film_start": 12.8,
+      "is_preorder": true,
+      "jersey_chapter": "04 / The Rose",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "br-012": {
+      "collection": "black-rose",
+      "film_start": 6.4,
+      "is_preorder": true,
+      "jersey_chapter": "05 / Baseball Classic (Last Oakland)",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "br-014": {
+      "collection": "black-rose",
+      "film_start": 3.2,
+      "is_preorder": true,
+      "jersey_chapter": "00 / Baseball Classic (Giants)",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "br-015": {
+      "collection": "black-rose",
+      "film_start": 0,
+      "is_preorder": true,
+      "jersey_chapter": "00 / Baseball Classic (White)",
+      "presentation": "jersey-series",
+      "route": "/collections/jersey-series/"
+    },
+    "kids-001": {
+      "collection": "kids-capsule",
+      "is_preorder": false,
+      "presentation": "kids-capsule",
+      "route": "/collections/kids-capsule/"
+    },
+    "kids-002": {
+      "collection": "kids-capsule",
+      "is_preorder": false,
+      "presentation": "kids-capsule",
+      "route": "/collections/kids-capsule/"
+    },
+    "lh-002": {
+      "collection": "love-hurts",
+      "is_preorder": false,
+      "presentation": "love-hurts",
+      "route": "/collections/love-hurts/"
+    },
+    "lh-003": {
+      "collection": "love-hurts",
+      "is_preorder": false,
+      "presentation": "love-hurts",
+      "route": "/collections/love-hurts/"
+    },
+    "lh-004": {
+      "collection": "love-hurts",
+      "is_preorder": false,
+      "presentation": "love-hurts",
+      "route": "/collections/love-hurts/"
+    },
+    "lh-005": {
+      "collection": "love-hurts",
+      "is_preorder": true,
+      "presentation": "love-hurts",
+      "route": "/collections/love-hurts/"
+    },
+    "lh-006": {
+      "collection": "love-hurts",
+      "is_preorder": false,
+      "presentation": "love-hurts",
+      "route": "/collections/love-hurts/"
+    },
+    "sg-001": {
+      "collection": "signature",
+      "is_preorder": true,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-002": {
+      "collection": "signature",
+      "is_preorder": true,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-003": {
+      "collection": "signature",
+      "is_preorder": true,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-005": {
+      "collection": "signature",
+      "is_preorder": true,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-006": {
+      "collection": "signature",
+      "is_preorder": false,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-007": {
+      "collection": "signature",
+      "is_preorder": false,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-009": {
+      "collection": "signature",
+      "is_preorder": false,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-011": {
+      "collection": "signature",
+      "is_preorder": false,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-012": {
+      "collection": "signature",
+      "is_preorder": false,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-013": {
+      "collection": "signature",
+      "is_preorder": false,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-014": {
+      "collection": "signature",
+      "is_preorder": false,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    },
+    "sg-015": {
+      "collection": "signature",
+      "is_preorder": true,
+      "presentation": "signature",
+      "route": "/collections/signature/"
+    }
+  },
+  "schema_version": "1.0.0",
+  "supplements": {
+    "jersey_series_skus": [
+      "br-003",
+      "br-008",
+      "br-009",
+      "br-010",
+      "br-011",
+      "br-012",
+      "br-014",
+      "br-015"
+    ]
+  }
+}

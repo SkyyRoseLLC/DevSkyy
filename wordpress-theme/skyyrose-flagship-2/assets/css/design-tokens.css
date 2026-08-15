@@ -34,7 +34,6 @@
 	--sr2-font-body: "Hanken Grotesk", "Inter", sans-serif;
 	--sr2-font-ui: "Anton", sans-serif;
 	--sr2-font-caps: "Cinzel", serif;
-	--sr2-font-script: "Pinyon Script", cursive;
 	--sr2-ease: cubic-bezier(0.16, 1, 0.3, 1);
 	--sr2-ease-dramatic: cubic-bezier(0.65, 0, 0.35, 1);
 	--sr2-fast: 180ms;
@@ -70,21 +69,16 @@
 [data-collection="black-rose"] {
 	--sr2-accent: var(--sr2-silver);
 	--sr2-accent-rgb: 192, 192, 192;
-	--sr2-font-display: "Cinzel", serif;
-	--sr2-font-script: "SkyyRose Black Rose Script", cursive;
 }
 
 [data-collection="love-hurts"] {
 	--sr2-accent: var(--sr2-crimson);
 	--sr2-accent-rgb: 220, 20, 60;
-	--sr2-font-script: "SkyyRose Love Hurts Graffiti", cursive;
 }
 
 [data-collection="kids-capsule"] {
 	--sr2-accent: var(--sr2-rose);
 	--sr2-accent-rgb: 183, 110, 121;
-	--sr2-font-display: "Cinzel", serif;
-	--sr2-font-script: "Grand Hotel", cursive;
 }
 
 :focus-visible {
