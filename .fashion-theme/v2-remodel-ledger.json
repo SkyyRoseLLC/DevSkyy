@@ -8,6 +8,15 @@
     "seed_snapshot_sha256": "2d8080cb9c406b5b983b641235207334b0698c2130034d3a2f60fea2a66dc0e8",
     "state": "IMPLEMENTATION_WAVE_3_VISUAL_REBUILD"
   },
+  "current_integration": {
+    "branch": "codex/skyyrose-v2-marketplace",
+    "worktree": "/Users/theceo/DevSkyy",
+    "current_integration_commit": "f0d06e24ed9b6e38f157ae180ab5bcd563f4f372",
+    "last_verified_source_commit": "ba9e985f6c9a68c1db2fabac83f70b7976e3b761",
+    "marketplace_zip_sha256": "9accf8d3ee89178cf93319c09c83d79cdc36b3b8d130df6348450b02d8ec9fc4",
+    "status": "SOURCE_VERIFIED_REVIEW_BLOCKED",
+    "note": "The prototype worktree is archival. Use the active marketplace branch and worktree above for all reconnects; do not resurrect the prototype path."
+  },
   "authority": {
     "approved_scope": "Remodel the V2 seed to V1-caliber end-to-end visual and commerce authority. Each collection is a distinct story world with collection-specific high-fidelity product cards, PDPs, and immersive pre-order shopping scenes.",
     "excluded": [

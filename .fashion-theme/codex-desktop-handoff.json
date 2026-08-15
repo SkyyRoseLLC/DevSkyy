@@ -1,12 +1,14 @@
 {
   "schema_version": "1.1",
-  "created_at_utc": "2026-08-15T05:55:35Z",
+  "created_at_utc": "2026-08-15T19:58:24Z",
   "candidate": {
     "branch": "codex/skyyrose-v2-marketplace",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
-    "state": "REVIEW_SNAPSHOT"
+    "current_integration_commit": "f0d06e24ed9b6e38f157ae180ab5bcd563f4f372",
+    "last_verified_source_commit": "ba9e985f6c9a68c1db2fabac83f70b7976e3b761",
+    "state": "REVIEW_SNAPSHOT_SOURCE_VERIFIED"
   },
   "manifests": {
     "candidate-manifest": {
@@ -27,19 +29,21 @@
     },
     "workspace-ledger": {
       "path": ".fashion-theme/workspace-ledger.json",
-      "sha256": "c55c3e4f648540795120c6d3c02805a7853519456d2cbc3f2eb20aac89086dee"
+      "sha256": "7d6a730636bfde643ffc1566df87c41bf9af672887935e5ef151439820523b31"
     }
   },
   "package": {
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "source_tar_sha256": "2c9374e5f9b21aae108da667213f72e83e618970c84eb65302a22278a9449c35",
-    "marketplace_zip_sha256": "f4e70896b79d02cd31fc28c76c91c4aacc4a3a25568defe8790d81e1d4d65ba2",
+    "marketplace_zip_sha256": "9accf8d3ee89178cf93319c09c83d79cdc36b3b8d130df6348450b02d8ec9fc4",
     "source_file_count": 201,
     "source_tar_command": "git archive --format=tar <payload_commit> -- $(git ls-tree -r --name-only <payload_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum"
   },
   "handoff": {
     "target": "codex-desktop",
     "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
+    "current_integration_commit": "f0d06e24ed9b6e38f157ae180ab5bcd563f4f372",
+    "last_verified_source_commit": "ba9e985f6c9a68c1db2fabac83f70b7976e3b761",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "status": "BLOCKED_FAIL_CLOSED",
