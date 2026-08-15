@@ -19,6 +19,8 @@ rsync -a ./ "$STAGE_DIR/$THEME_NAME/" \
 	--exclude 'dist/' \
 	--exclude 'node_modules/' \
 	--exclude '.gitignore' \
+	--exclude 'assets/css/bundles/' \
+	--exclude 'CLAUDE.local.md' \
 	--exclude 'package-lock.json' \
 	--exclude '*.map'
 
