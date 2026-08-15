@@ -1,13 +1,13 @@
 {
   "schema_version": "1.1",
-  "created_at_utc": "2026-08-15T23:59:00Z",
+  "created_at_utc": "2026-08-16T00:18:00Z",
   "candidate": {
     "branch": "codex/skyyrose-v2-marketplace",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
-    "current_integration_commit": "a4a89d30aee3260d1caa072fbd33125b43c444fd",
-    "last_verified_source_commit": "a4a89d30aee3260d1caa072fbd33125b43c444fd",
+    "current_integration_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
+    "last_verified_source_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
     "state": "CURRENT_LOCAL_CANDIDATE_VERIFIED"
   },
   "manifests": {
@@ -21,7 +21,7 @@
     },
     "shot-manifest": {
       "path": ".fashion-theme/shot-manifest.json",
-      "sha256": "63c4114284ac7d7b32df005edc6edb2dc92b85b4196c0b13d9e5e165e4d43a8c"
+      "sha256": "63a3dc739c49a52ed134974b43fab02c4676f9f433e0f1fae84e40d1c5f43006"
     },
     "promotion-manifest": {
       "path": ".fashion-theme/promotion-manifest.json",
@@ -29,21 +29,21 @@
     },
     "workspace-ledger": {
       "path": ".fashion-theme/workspace-ledger.json",
-      "sha256": "62fa044f22382188eee4acb015d28bbd1a03264995a757fcda0c48974fbe7d2d"
+      "sha256": "d80b6ddc28b428388fe35ef086298c40b583e7ace3edbdcfe40b51638d4e0394"
     }
   },
   "package": {
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
-    "source_tar_sha256": "5199a8da45cd7dbdd23f196c6952c1d5f6d1b7cf10f9a4c98bcbb34163af62e3",
-    "marketplace_zip_sha256": "219c0ee22c1398adfe42f0d17e5da7f79fbc97f17f35c6179b2905fde893b234",
+    "source_tar_sha256": "152454300e5a0b8d1d2d94b45ad94d5039ae897be06edaba1484eb571a442ee0",
+    "marketplace_zip_sha256": "34bacddaf11858de2fbbf59892a04b70b37b535ba04f5e00f62fe1872566ef47",
     "source_file_count": 250,
     "source_tar_command": "git archive --format=tar <current_integration_commit> -- $(git ls-tree -r --name-only <current_integration_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -Ev '^\\.fashion-theme/(codex-desktop-handoff|promotion-manifest)\\.json$') | shasum -a 256"
   },
   "handoff": {
     "target": "codex-desktop",
     "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-    "current_integration_commit": "a4a89d30aee3260d1caa072fbd33125b43c444fd",
-    "last_verified_source_commit": "a4a89d30aee3260d1caa072fbd33125b43c444fd",
+    "current_integration_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
+    "last_verified_source_commit": "eb1dd75b8880c4350e3dc475441fb36eb86d9ec4",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "status": "SOURCE_TRACKED_LOCAL_REVIEW_READY",
