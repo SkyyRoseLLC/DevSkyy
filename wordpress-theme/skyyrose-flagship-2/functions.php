@@ -11,6 +11,9 @@ define( 'SKYYROSE2_VERSION', '2.4.0' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
+/* Fresh-install, demo-import, and editor integration. */
+require_once SKYYROSE2_DIR . '/inc/marketplace.php';
+
 /**
  * Resolve a theme-bundled, SOT-approved asset.
  *
