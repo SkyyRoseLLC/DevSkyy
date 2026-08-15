@@ -107,3 +107,29 @@ fresh staging transaction evidence, and founder release authorization remain
 required. The Kids Capsule full-color throne correction and the three-world
 homepage opening remain preserved in the active source; historical four-card
 captures must not be used as current evidence.
+
+## Journal and commerce-state preview completion
+
+The active candidate now includes a source-backed Journal fallback and a
+local-only state matrix for the routes that must be inspectable before staging:
+
+- `journal` renders the four founder-approved V1 press records (Maxim, San
+  Francisco Post, Best of Best Review, and CEO Weekly) when no live WordPress
+  posts are available. Live posts remain authoritative after import.
+- `wishlist`, `faq`, `shipping-returns`, `size-guide`, `privacy-policy`,
+  `terms-of-service`, and `accessibility` resolve through the real V2 page
+  template and expose reviewable fixture copy in the local harness.
+- `cart`, `checkout`, `account`, and `order-tracking` render explicit branded
+  state shells. They are not WooCommerce transaction evidence and do not
+  fabricate payment, order, stock, or customer data.
+- `404` is routed through the real V2 error template, so navigation and
+  fallback states can be inspected without staging writes.
+
+This synchronization is committed at
+`862cbafe278f380b4cbbddfd5b7b788992749010`. The fresh build reports 495
+translation messages, 33 presentation records, and 4 CSS plus 7 JS generated
+assets. The deterministic local package is
+`93876ddf4d5d15cc0e91e26e8b6d50e134b0c515a7c25eb8a7c8726b24069cf3` and
+`unzip -t` passes. This remains source/package verification only; the preview
+listener is fixture-only and does not prove live WooCommerce routing,
+variation resolution, checkout, rights, accessibility, or performance.
