@@ -133,3 +133,20 @@ assets. The deterministic local package is
 `unzip -t` passes. This remains source/package verification only; the preview
 listener is fixture-only and does not prove live WooCommerce routing,
 variation resolution, checkout, rights, accessibility, or performance.
+
+## WooCommerce registry-drift guard
+
+The active theme now surfaces, rather than silently hiding, published
+WooCommerce SKUs that are absent from the V2 presentation registry. An
+admin-only reconciliation notice reports both directions of drift (published
+SKU missing from the registry, or registry SKU not currently published) while
+the storefront remains fail-closed for unapproved presentation records. The
+candidate source gate also checks that this reconciliation hook remains
+present.
+
+This correction is committed at
+`ba9e985f6c9a68c1db2fabac83f70b7976e3b761`. The regenerated package SHA-256 is
+`9accf8d3ee89178cf93319c09c83d79cdc36b3b8d130df6348450b02d8ec9fc4` and
+`unzip -t` passes. This detects catalog drift once the theme is running inside
+WordPress; it does not substitute for real staging WooCommerce variation,
+stock, cart, checkout, or payment evidence.
