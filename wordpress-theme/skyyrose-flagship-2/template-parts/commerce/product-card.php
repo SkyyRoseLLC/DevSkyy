@@ -20,6 +20,13 @@ if ( ! $card_product || ! $card_product->is_visible() ) {
 	return;
 }
 
+// WooCommerce's loop add-to-cart renderer reads the global product. V2 cards
+// are also rendered from editorial portals outside the native loop, so scope
+// that global to this card and restore it after rendering to prevent a stale
+// or neighboring product from receiving the action.
+$previous_global_product = $product;
+$product                 = $card_product;
+
 $product_id       = $card_product->get_id();
 $product_url      = method_exists( $card_product, 'get_permalink' ) ? $card_product->get_permalink() : get_permalink( $product_id );
 $product_name     = $card_product->get_name();
@@ -144,3 +151,5 @@ $image_attrs    = array(
 		</div>
 	</div>
 </article>
+<?php
+$product = $previous_global_product;

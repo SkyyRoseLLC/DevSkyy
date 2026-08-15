@@ -144,7 +144,7 @@ msgstr ""
 msgid "At the end of the nave, the rose holds court on its own terms. Protection has become polish. Survival has become posture."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:62 template-parts/home/kids-capsule-reveal.php:39
+#: template-parts/commerce/product-card.php:69 template-parts/home/kids-capsule-reveal.php:39
 msgid "Available"
 msgstr ""
 
@@ -724,7 +724,7 @@ msgstr ""
 msgid "Intellectual property"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:37 woocommerce/single-product.php:26
+#: template-parts/commerce/product-card.php:44 woocommerce/single-product.php:26
 msgid "Jersey Series"
 msgstr ""
 
@@ -1144,7 +1144,7 @@ msgstr ""
 msgid "Previous world chapter"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:125
+#: template-parts/commerce/product-card.php:132
 msgid "Price:"
 msgstr ""
 
@@ -1460,7 +1460,7 @@ msgstr ""
 msgid "Skyy, the heir, on her throne"
 msgstr ""
 
-#: functions.php:808 template-parts/commerce/product-card.php:30 template-parts/commerce/product-hero.php:16 woocommerce/single-product.php:18
+#: functions.php:808 template-parts/commerce/product-card.php:37 template-parts/commerce/product-hero.php:16 woocommerce/single-product.php:18
 msgid "SkyyRose"
 msgstr ""
 
@@ -1844,7 +1844,7 @@ msgstr ""
 msgid "Two monuments hold the entrance: the signature that made the promise and the SR monogram that made it a house. The bridge is not scenery. It is permission to move."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:62
+#: template-parts/commerce/product-card.php:69
 msgid "Unavailable"
 msgstr ""
 
@@ -1864,7 +1864,7 @@ msgstr ""
 msgid "Verified on-model looks from the three opening SkyyRose collection worlds"
 msgstr ""
 
-#: functions.php:750 template-parts/commerce/product-card.php:91
+#: functions.php:750 template-parts/commerce/product-card.php:98
 msgid "View %s"
 msgstr ""
 
@@ -1872,7 +1872,7 @@ msgstr ""
 msgid "View %s pieces"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:142
+#: template-parts/commerce/product-card.php:149
 msgid "View piece"
 msgstr ""
 
