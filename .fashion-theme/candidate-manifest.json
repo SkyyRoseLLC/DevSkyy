@@ -24,11 +24,11 @@
     "external_writes": "not authorized"
   },
   "state": "FROZEN",
-  "frozen_at_utc": "2026-08-15T05:25:51Z",
-  "updated_at_utc": "2026-08-15T05:48:28Z",
+  "frozen_at_utc": "2026-08-15T05:55:35Z",
+  "updated_at_utc": "2026-08-15T05:55:35Z",
   "attestation": {
-    "commit": "dc7605d19e69001eb1e428544505216145990afd",
-    "snapshot_id": "skyyrose-v2-dc7605d19e69",
-    "recorded_at_utc": "2026-08-15T05:25:51Z"
+    "commit": "8b4be49d0a2642212b088974e4eca66560006f29",
+    "snapshot_id": "skyyrose-v2-8b4be49d0a26",
+    "recorded_at_utc": "2026-08-15T05:55:35Z"
   }
 }
