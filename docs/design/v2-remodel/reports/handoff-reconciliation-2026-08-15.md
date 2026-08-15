@@ -150,3 +150,17 @@ This correction is committed at
 `unzip -t` passes. This detects catalog drift once the theme is running inside
 WordPress; it does not substitute for real staging WooCommerce variation,
 stock, cart, checkout, or payment evidence.
+
+## Workspace reconnect correction
+
+The mutable handoff ledgers now distinguish the archival prototype from the
+active source. New reconnects must use
+`/Users/theceo/DevSkyy` on `codex/skyyrose-v2-marketplace`; the old
+`skyyrose-flagship-v2-prototype` and temporary promotion paths are explicitly
+archival and must not be recreated as active worktrees. The workspace ledger
+records the current integration and last verified source commits, package
+hash, owned-path cleanliness, and the preserved unrelated `CLAUDE.md` edit.
+
+The promotion manifest remains immutable and `FAIL_CLOSED`; updating the
+mutable workspace and desktop handoff ledgers does not imply deployment,
+founder approval, or live WooCommerce evidence.
