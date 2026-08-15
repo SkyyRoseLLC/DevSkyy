@@ -10,7 +10,7 @@ This note resolves the stale promotion payload that referenced
 |---|---|
 | Branch | `codex/skyyrose-v2-marketplace` |
 | Worktree | `/Users/theceo/DevSkyy` |
-| Integration head | `a620435d646d89d3f99840350d3151a25dcbec47` |
+| Integration head | `9b4bb5acb1e61f55c8a116d6937a316e16fe9595` |
 | Main base | `f97383524206825e9f0bd24042e7990be43aee27` |
 | Payload commit | `d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4` |
 | Attestation commit | `8b4be49d0a2642212b088974e4eca66560006f29` |

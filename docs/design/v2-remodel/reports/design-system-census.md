@@ -4,7 +4,7 @@
 
 **Historical candidate identity.** The discovery census examined `codex/skyyrose-flagship-v2-prototype` at baseline `0074fc6e6b161266f9181303296941cd474208af`, seeded at `wordpress-theme/skyyrose-flagship-2`. Its “untracked seed” language is retained as historical evidence only.
 
-**Active candidate identity.** The tracked V2 candidate is `codex/skyyrose-v2-marketplace` at integration head `a620435d646d89d3f99840350d3151a25dcbec47`, with payload/attestation and generated-asset parity recorded in `.fashion-theme/promotion-manifest.json`. Source/package gates pass; rights, WooCommerce runtime, fresh browser evidence, independent QA, and founder authorization remain release blockers.
+**Active candidate identity.** The tracked V2 candidate is `codex/skyyrose-v2-marketplace` at integration head `9b4bb5acb1e61f55c8a116d6937a316e16fe9595`, with payload/attestation and generated-asset parity recorded in `.fashion-theme/promotion-manifest.json`. Source/package gates pass; rights, WooCommerce runtime, fresh browser evidence, independent QA, and founder authorization remain release blockers.
 
 ## Decision
 
