@@ -3,7 +3,7 @@
   "manifest_name": "skyyrose-v2-house-of-roses-composed-promotion",
   "state": "BLOCKED",
   "status": "FAIL_CLOSED",
-  "generated_at_utc": "2026-08-15T04:58:10Z",
+  "generated_at_utc": "2026-08-15T05:11:29Z",
   "generated_by": {
     "tool": "codex.local.handoff-synthesis",
     "command": "skyy2-promotion-manifest --main main --integration-worktree codex/skyyrose-v2-marketplace",
@@ -12,7 +12,7 @@
   },
   "foundation": {
     "integration_branch": "codex/skyyrose-v2-marketplace",
-    "integration_commit": "54d595abb24e58dc07501601b1150037a2663ad9",
+    "integration_commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
     "main_base_ref": "refs/heads/main",
     "main_base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
     "prototype_capture_commit": "1982efe66",
@@ -26,12 +26,13 @@
   },
   "package": {
     "command": "git archive --format=tar HEAD -- $(git ls-tree -r --name-only HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$') | sha256sum",
-    "commit": "54d595abb24e58dc07501601b1150037a2663ad9",
-    "tree_hash_sha256": "b3a60fb15e2840f2a145fe49068deae0d7eacc68ac03f0cf398f7cce2cd700c8",
-    "file_count_in_archive": 200,
-    "expected_output": "7369f905310274fcbe566629f5afca95fd6001e4d12684ce66da7d8e8f62152f",
+    "commit": "e1ab0f04524f871b70c63a5304ce4ef1af3ef222",
+    "tree_hash_sha256": "d12c185049572629ece1e3064b7f93f3414bb97f5b193dceba6dc679ad8a55c1",
+    "file_count_in_archive": 201,
+    "expected_output": "97877bc2d5ccf47e400cb83ce67df45732a422312a152b522405b75c39ecbb12",
     "artifact_manifest_file": "wordpress-theme/skyyrose-flagship-2/package-theme.sh",
-    "archive_sha256": "7369f905310274fcbe566629f5afca95fd6001e4d12684ce66da7d8e8f62152f"
+    "archive_sha256": "97877bc2d5ccf47e400cb83ce67df45732a422312a152b522405b75c39ecbb12",
+    "tree_hash_command": "git ls-tree -r --name-only <commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v '^\\.fashion-theme/promotion-manifest.json$' | sha256sum"
   },
   "ownership": {
     "house_layouts_and_collection_worlds": "prototype_capture(1982efe66) -> promotion_branch",
@@ -43,21 +44,21 @@
   "file_inventory": [
     {
       "path": ".fashion-theme/candidate-manifest.json",
-      "sha256": "57400c41758e69f169bb15ed08f50f82e2ad40924fd0d63bef17714974ce21d3",
-      "size_bytes": 995,
-      "blob": "1dc8bbb166e3235d1fc442884c2137196bc0a7bd"
+      "sha256": "3765572661eab42526ba0975dec093cd045b951f5659ec0d7aea52644404510d",
+      "size_bytes": 1068,
+      "blob": "a4464442c010fe7106bdf0da8a2efa725929d20c"
     },
     {
       "path": ".fashion-theme/shot-manifest.json",
-      "sha256": "4f20a288da3cce6308dcd23612f789f844708d7f5dff09db799873ee219bf600",
-      "size_bytes": 37364,
-      "blob": "4f3d46c2708de01d4525a800b9b5405abfbce40d"
+      "sha256": "63c4114284ac7d7b32df005edc6edb2dc92b85b4196c0b13d9e5e165e4d43a8c",
+      "size_bytes": 38950,
+      "blob": "fc45dfb0d5768b7e804e8a9ce8fe0c3b0d6ecec1"
     },
     {
       "path": ".fashion-theme/catalog-binding.json",
-      "sha256": "254c27dfab9fab9d718dee0e72e93bf6f9562777cc14b3926a167849c2916ed5",
-      "size_bytes": 8227,
-      "blob": "9cf36ecb29362a0676fd8ffeb90a8057bbc9a6c7"
+      "sha256": "a813abdd090d3e363390bcbea34f83ba255f886e15200d132fca12bdea312fe9",
+      "size_bytes": 8599,
+      "blob": "bcee59ad98605c6e843b027471bbe3ff9f367e9e"
     },
     {
       "path": ".fashion-theme/gap-ledger.json",
@@ -82,6 +83,18 @@
       "sha256": "c35dc46c9cbbc9a768d2df977e6d0444b9f897d713dbcac2f93a1245a912923e",
       "size_bytes": 7078,
       "blob": "ddd0980c3ecd4fca507e7978d5a6dca1c50525e4"
+    },
+    {
+      "path": ".fashion-theme/workspace-ledger.json",
+      "sha256": "0d22883a364188b001e3c0a6651a8fd14fbb362f738fdb4c59a9f1e5aa286b44",
+      "size_bytes": 806,
+      "blob": "7f3bc7d47422218d1c1d69d91e655b06709ee38b"
+    },
+    {
+      "path": ".fashion-theme/codex-desktop-handoff.json",
+      "sha256": "c225b321da8fbc0ac8bb4095c93507e1a84c9115c2a05f085dc0848506da27f6",
+      "size_bytes": 1962,
+      "blob": "14509b86f6a553087f84fea77ddb214511c9ba52"
     },
     {
       "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
@@ -214,6 +227,12 @@
       "sha256": "059c5fc5df6fee28eb3ea22b31ba19441eb3666de3355ecb4d8938bc9e1db707",
       "size_bytes": 1252,
       "blob": "6d9ba55e215b837365f49b84c2b526c999547555"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/inc/marketplace.php",
+      "sha256": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3",
+      "size_bytes": 891,
+      "blob": "1c0f6a0c3e9de37e05eb1a0ffd45d508482d9034"
     }
   ],
   "findings": {
