@@ -1,8 +1,10 @@
 # V2 catalog, media, and Scroll World binding audit
 
-**Scope:** P1 discovery only. No catalog, WooCommerce, or production-theme mutation was performed.
+**Scope:** P1 discovery snapshot. No catalog, WooCommerce, or production-theme mutation was performed by this report. The original observations remain useful, but the prototype path below is archival.
 
-**Candidate boundary:** worktree `/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype`, branch `codex/skyyrose-flagship-v2-prototype`, Git baseline `0074fc6e6b161266f9181303296941cd474208af`. The V2 seed (`wordpress-theme/skyyrose-flagship-2/`) is untracked, and no candidate manifest or package hash exists. The observations below are therefore candidate-local source observations, **not** a frozen release binding.
+**Historical candidate boundary:** worktree `/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype`, branch `codex/skyyrose-flagship-v2-prototype`, Git baseline `0074fc6e6b161266f9181303296941cd474208af`. Its preserved capture is `1982efe66`; it is not an active worktree.
+
+**Active candidate boundary:** worktree `/Users/theceo/DevSkyy`, branch `codex/skyyrose-v2-marketplace`, integration head `a620435d646d89d3f99840350d3151a25dcbec47`, payload `d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4`, and attestation `8b4be49d0a2642212b088974e4eca66560006f29`. The active candidate is tracked and has package/source evidence; media rights, SKU bindings, and independent runtime review remain blocked.
 
 **P1 verdict: BLOCKED.** P1 requires a SKU -> WooCommerce product -> variation -> approved product media -> rights/policy record mapping for every purchasable CTA and scenic product link. V2 has no such artifact, V2 cards resolve WooCommerce attachments rather than `sot-images.json`, and its scenes do not carry registered provenance or object-level product association. Unknown media, rights, product identity, product availability, and variation states must fail closed.
 

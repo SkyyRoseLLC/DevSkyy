@@ -1,6 +1,8 @@
 # V1 → V2 commerce journey gap map
 
-**Candidate:** `codex/skyyrose-flagship-v2-prototype` at `0074fc6e6b161266f9181303296941cd474208af` (working tree also has untracked `.fashion-theme/` and `wordpress-theme/skyyrose-flagship-2/`).
+**Historical candidate:** `codex/skyyrose-flagship-v2-prototype` at `0074fc6e6b161266f9181303296941cd474208af` (preserved by capture `1982efe66`).
+
+**Active candidate:** `codex/skyyrose-v2-marketplace` at `a620435d646d89d3f99840350d3151a25dcbec47`, with tracked V2 paths and explicit payload/attestation evidence in `.fashion-theme/promotion-manifest.json`. The gap classifications below remain valid as release gates; they must not be read as evidence that the active candidate is untracked.
 
 **Decision rule:** `OBSERVED` means source inspection only; `RECOMMENDED` is a contract input, not implemented behavior; `UNKNOWN` has no source or live proof. A client projection is never purchase authority. Product, variation, price, stock, cart, checkout, and order ownership remain WooCommerce authority.
 

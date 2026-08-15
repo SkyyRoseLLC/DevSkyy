@@ -1,21 +1,24 @@
 {
   "schema_version": "1.0.0",
   "id": "skyyrose-v2-marketplace-promotion-handoff",
-  "generated_at": "2026-08-14",
-  "status": "BLOCKED_PENDING_CAPTURE_AND_PROMOTION",
+  "generated_at": "2026-08-15",
+  "status": "BLOCKED_PENDING_FOUNDER_AND_RUNTIME_EVIDENCE",
   "purpose": "Codex Desktop handoff for safely promoting the SkyyRose V2 marketplace candidate through Git objects only.",
   "non_negotiables": [
     "Do not deploy, publish, create paid media, promote creative assets, or claim release approval.",
     "Do not copy, rsync, or package files from a dirty live worktree.",
-    "Do not rebase the legacy prototype while its V2 theme remains untracked.",
+    "Treat the legacy prototype as an archival capture only; the tracked marketplace branch is the active V2 candidate.",
     "WooCommerce remains the authority for price, stock, variation, cart, checkout, orders, and Product schema.",
     "A missing or unapproved product/media/rights mapping must fail closed."
   ],
   "integration_target": {
-    "worktree": "/Users/theceo/DevSkyy-v2-marketplace",
+    "worktree": "/Users/theceo/DevSkyy",
     "branch": "codex/skyyrose-v2-marketplace",
     "base_ref": "main",
     "base_commit": "f97383524206",
+    "integration_head": "a620435d646d89d3f99840350d3151a25dcbec47",
+    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
+    "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "required_state_before_promotion": "clean committed integration candidate"
   },
   "capture_sources": [
@@ -23,7 +26,8 @@
       "name": "legacy-prototype",
       "worktree": "/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype",
       "branch": "codex/skyyrose-flagship-v2-prototype",
-      "state": "DIRTY_UNTRACKED_CAPTURE_REQUIRED",
+      "capture_commit": "1982efe66",
+      "state": "ARCHIVED_CAPTURE_NOT_ACTIVE",
       "owned_paths": [
         "wordpress-theme/skyyrose-flagship-2",
         ".fashion-theme",
@@ -48,7 +52,7 @@
   "source_precedence": {
     "sot_facts_and_generated_projections": "promoted-current-SOT-components",
     "v2_layouts_collection_experiences_kids_header_cards": "prototype-capture-commit",
-    "woocommerce_package_and_builder_compatibility": "selective-release-candidate-ports",
+    "woocommerce_package_and_builder_compatibility": "selective-release-candidate-ports -> tracked marketplace branch",
     "css_js_minified_outputs": "fresh-build-from-reconciled-source",
     "served_creative": "tracked-manifest-bound-approved-assets-only",
     "candidate_evidence": "generated-from-final-integration-commit-and-package"
@@ -72,10 +76,10 @@
     ]
   },
   "required_commands": [
-    "git -C /Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype status --porcelain=v1 --untracked-files=all",
-    "Create one archival prototype capture commit after reviewing its exact path inventory.",
-    "git -C /Users/theceo/DevSkyy-v2-marketplace status --porcelain=v1 --untracked-files=all",
-    "cd /Users/theceo/DevSkyy-v2-marketplace/wordpress-theme/skyyrose-flagship-2 && npm ci && npm run build && npm run verify && npm run package:theme",
+    "git -C /Users/theceo/DevSkyy status --porcelain=v1 --untracked-files=all",
+    "git -C /Users/theceo/DevSkyy show --stat 1982efe66",
+    "git -C /Users/theceo/DevSkyy status --porcelain=v1 --untracked-files=all -- .fashion-theme wordpress-theme/skyyrose-flagship-2",
+    "cd /Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship-2 && npm ci && npm run build && npm run verify && npm run package:theme",
     "Run candidate promotion verification only after every source path is committed and manifest-bound.",
     "Capture same-candidate browser, keyboard, reduced-motion, Save-Data, no-JS, WooCommerce, accessibility, performance, rights, and independent visual-QA evidence."
   ],

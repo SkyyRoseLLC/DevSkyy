@@ -1,14 +1,15 @@
 # V1 authority benchmark for the V2 remodel
 
-**Purpose.** Discovery-only comparison of the existing Flagship (V1) theme and the `skyyrose-flagship-2` seed. This is a redesign decision input, not visual approval, implementation authorization, or a conversion claim.
+**Purpose.** Historical discovery comparison of the existing Flagship (V1) theme and the original `skyyrose-flagship-2` seed. This is a redesign decision input, not visual approval, implementation authorization, or a conversion claim. The active candidate is now the tracked `codex/skyyrose-v2-marketplace` branch at `/Users/theceo/DevSkyy`; see `.fashion-theme/promotion-manifest.json` for current lineage and gates.
 
 ## Candidate identity and confidence
 
 | Field | Evidence | Status |
 |---|---|---|
-| Repository baseline | `0074fc6e6b161266f9181303296941cd474208af` (`chore(sot): add lookbook SOT watch chain and checks`) | OBSERVED |
-| V2 seed | `wordpress-theme/skyyrose-flagship-2/` is untracked in this worktree | OBSERVED |
-| Immutable candidate manifest / package hash | Not present in the V2 seed | UNKNOWN |
+| Repository baseline | `0074fc6e6b161266f9181303296941cd474208af` (`chore(sot): add lookbook SOT watch chain and checks`) | HISTORICAL |
+| V2 seed | `wordpress-theme/skyyrose-flagship-2/` was untracked in the prototype snapshot | HISTORICAL |
+| Active V2 candidate | `codex/skyyrose-v2-marketplace` at `a620435d646d89d3f99840350d3151a25dcbec47`; scoped V2 paths are tracked | OBSERVED |
+| Immutable candidate manifest / package hash | `.fashion-theme/promotion-manifest.json`; payload/package evidence is recorded and promotion remains fail-closed | OBSERVED / BLOCKED |
 | Browser, responsive, screen-reader, payment, order, and independent visual evidence | Not present in the V2 seed | UNVERIFIED |
 | SOT authority | [SOT.md](../../../../SOT.md) makes catalog/dossiers product authority, `sot-images.json` the generated product-image contract, and V1 `data/visual-manifest.json` the non-product-image authority. | OBSERVED |
 

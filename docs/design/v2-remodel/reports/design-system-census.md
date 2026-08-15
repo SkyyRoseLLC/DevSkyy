@@ -2,13 +2,15 @@
 
 **Mode:** discovery only; source audit and adoption plan. This is not visual approval, a release decision, or authorization to deploy.
 
-**Candidate identity.** `codex/skyyrose-flagship-v2-prototype` at baseline `0074fc6e6b161266f9181303296941cd474208af`, seeded at `wordpress-theme/skyyrose-flagship-2`, as recorded in `.fashion-theme/v2-remodel-ledger.json`. The seed directory is presently untracked, so the candidate must be frozen and its contents hashed before a builder begins. Audit source hashes: `design-tokens.css` `a092f048…a005d`; `theme.css` `063132b3…c1337`; `front-page.php` `40f50316…c313e`; `functions.php` `b14c3e92…b290`.
+**Historical candidate identity.** The discovery census examined `codex/skyyrose-flagship-v2-prototype` at baseline `0074fc6e6b161266f9181303296941cd474208af`, seeded at `wordpress-theme/skyyrose-flagship-2`. Its “untracked seed” language is retained as historical evidence only.
+
+**Active candidate identity.** The tracked V2 candidate is `codex/skyyrose-v2-marketplace` at integration head `a620435d646d89d3f99840350d3151a25dcbec47`, with payload/attestation and generated-asset parity recorded in `.fashion-theme/promotion-manifest.json`. Source/package gates pass; rights, WooCommerce runtime, fresh browser evidence, independent QA, and founder authorization remain release blockers.
 
 ## Decision
 
 Adopt **V1’s canon and generated-SOT architecture**, not V2’s independent `--sr2-*` token branch. Retain and elevate V2's Scroll World, cinematic video, scenery, collection lockups, and native rails as a bounded immersion layer. They are allowed only when commerce remains a direct, static, keyboard-operable control and all animation has a static/reduced-data/reduced-motion fallback.
 
-V2 has strong raw experience material but is **BLOCKED for builder handoff** until the source-of-truth bridge, page/state inventory, asset registration, and hard-fail removals below are in place. This audit makes no rendered or logo-off verdict.
+V2 has strong raw experience material and the active candidate has now passed the source/package handoff gates. It remains **BLOCKED for promotion** until the source-of-truth bridge, page/state inventory, asset registration, rights, runtime commerce, independent QA, and hard-fail removals below are evidenced. This audit makes no rendered or logo-off verdict.
 
 ## Canonical source-of-truth map
 
