@@ -84,6 +84,7 @@ defined( 'ABSPATH' ) || exit;
 							poster="<?php echo esc_url( SKYYROSE_ASSETS_URI . '/branding/tsrc-lockup-static@2x.webp' ); ?>"
 							preload="none"
 							muted
+							autoplay
 							loop
 							playsinline
 							disablepictureinpicture

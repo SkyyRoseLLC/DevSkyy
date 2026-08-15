@@ -44,6 +44,25 @@ def test_black_roses_stays_centralized(registry: LogoRegistry) -> None:
     assert entry.collection == "black_rose"
 
 
+def test_black_rose_star_is_default_for_new_graphics(registry: LogoRegistry) -> None:
+    """New Black Rose artwork must not infer or overwrite historical SKU marks."""
+    entry = registry.default_graphic_for_collection("black_rose")
+    assert entry is not None
+    assert entry.logo_id == "black-rose-star-graphic"
+    assert entry.collection == "black_rose"
+    assert entry.co_located_per_sku is False
+    assert entry.filename == "black-rose-star-graphic.png"
+    assert registry.image_path(sku="br-005", logo_id=entry.logo_id).exists()
+
+
+def test_rose_gold_rose_is_signature_default_for_new_graphics(registry: LogoRegistry) -> None:
+    entry = registry.default_graphic_for_collection("signature")
+    assert entry is not None
+    assert entry.logo_id == "rose-gold-rose"
+    assert entry.collection == "signature"
+    assert entry.co_located_per_sku is False
+
+
 def test_red_rose_is_dual_collection(registry: LogoRegistry) -> None:
     """red-roses-cloud-cluster is DUAL-collection (founder re-confirmed 2026-05-27):
     used on BOTH Signature (sg-009) AND Love Hurts (lh-003, lh-004 inside-hood).
@@ -56,6 +75,17 @@ def test_red_rose_is_dual_collection(registry: LogoRegistry) -> None:
 def test_heart_rose_is_love_hurts(registry: LogoRegistry) -> None:
     entry = registry.get_logo("heart-rose-composite")
     assert entry.collection == "love_hurts"
+
+
+def test_love_hurts_star_is_default_for_new_graphics(registry: LogoRegistry) -> None:
+    """New Love Hurts artwork keeps explicit SKU placements intact."""
+    entry = registry.default_graphic_for_collection("love_hurts")
+    assert entry is not None
+    assert entry.logo_id == "love-hurts-star-graphic"
+    assert entry.collection == "love_hurts"
+    assert entry.co_located_per_sku is False
+    assert entry.filename == "love-hurts-star-graphic.png"
+    assert registry.image_path(sku="lh-004", logo_id=entry.logo_id).exists()
 
 
 # ─── Per-SKU sport patch resolution ───────────────────────────────────

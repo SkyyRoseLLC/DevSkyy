@@ -76,6 +76,11 @@ class LogoRegistry:
         self._source = source
         self.version: int = int(raw.get("version", 0))
         self.brand_primary: str = raw.get("brand_primary", "")
+        self._collection_graphic_defaults: dict[str, str] = {
+            collection: logo_id
+            for collection, logo_id in (raw.get("collection_graphic_defaults") or {}).items()
+            if not collection.startswith("_")
+        }
         self._logos: dict[str, LogoEntry] = {
             logo_id: _entry_from_raw(logo_id, data)
             for logo_id, data in (raw.get("logos") or {}).items()
@@ -111,6 +116,16 @@ class LogoRegistry:
     def sport_patches(self) -> dict[str, LogoEntry]:
         """All per-SKU co-located sport-patch logos."""
         return {lid: e for lid, e in self._logos.items() if e.co_located_per_sku}
+
+    def default_graphic_for_collection(self, collection: str) -> LogoEntry | None:
+        """Return the founder-selected default logo for future collection graphics.
+
+        SKU placements remain explicit historical product truth. Callers creating
+        new artwork should use this default rather than infer a logo from a
+        collection name or alter existing placements.
+        """
+        logo_id = self._collection_graphic_defaults.get(collection)
+        return self.get_logo(logo_id) if logo_id else None
 
     # ─── Path resolution ─────────────────────────────────────────────────
 

@@ -1,8 +1,14 @@
 {
   "$schema": "Canonical logo registry for the SkyyRose imagery pipeline. Logos with `co_located_per_sku: true` are resolved at consumption time via `assets/images/products/<sku-folder>/<filename>` — the sku-folder is the canonical render_output_slug from skyyrose-catalog.csv. All other logos live in assets/images/logos/. Every SKU's logo placements are defined here, cross-checked with skyyrose-catalog.csv::branding_spec during pre-flight. Edit both files together when adding a logo or reassigning placements.",
-  "version": 6,
-  "updated": "2026-06-11",
+  "version": 7,
+  "updated": "2026-08-10",
   "brand_primary": "sr-monogram-rose-gold",
+  "collection_graphic_defaults": {
+    "_comment": "Default graphic identity for new collection artwork. Existing sku_logos placements are historical product truth and are not rewritten when a default changes.",
+    "black_rose": "black-rose-star-graphic",
+    "love_hurts": "love-hurts-star-graphic",
+    "signature": "rose-gold-rose"
+  },
   "logos": {
     "sr-monogram-rose-gold": {
       "file": "sr-monogram-rose-gold.jpeg",
@@ -17,12 +23,21 @@
       "primary_color": "#D4AF37",
       "recolor_allowed": false
     },
+    "black-rose-star-graphic": {
+      "file": "black-rose-star-graphic.png",
+      "description": "BLACK ROSE COLLECTION DEFAULT GRAPHIC for all new artwork. Monochrome black five-point star with a silver-edged rose, displayed above a heart-shaped black plinth. This is a centralized Black Rose graphic asset; use it for new Black Rose graphics unless a founder-approved SKU placement explicitly specifies a different logo_id.",
+      "primary_color": "#05070A",
+      "recolor_allowed": false,
+      "collection": "black_rose",
+      "default_for_new_graphics": true
+    },
     "rose-gold-rose": {
       "file": "rose-gold-rose.jpeg",
       "description": "SIGNATURE COLLECTION LOGO (paired with red-roses-cloud-cluster). Standalone stylized rose in rose-gold metallic. Used on sg-015 The Windbreaker Set (left chest on jacket, left thigh on pants). Part of Signature logo system.",
       "primary_color": "#B76E79",
       "recolor_allowed": false,
-      "collection": "signature"
+      "collection": "signature",
+      "default_for_new_graphics": true
     },
     "black-roses-cloud-cluster": {
       "file": "black-roses-cloud-cluster.jpeg",
@@ -37,6 +52,14 @@
       "primary_color": "#DC143C",
       "recolor_allowed": false,
       "collection": "shared_signature_love_hurts"
+    },
+    "love-hurts-star-graphic": {
+      "file": "love-hurts-star-graphic.png",
+      "description": "LOVE HURTS COLLECTION DEFAULT GRAPHIC for all new artwork. Red rose inside a black five-point star with red illumination, rising from a cracked thorn-wrapped heart on a black plinth. This is a centralized Love Hurts graphic asset; use it for new Love Hurts graphics unless a founder-approved SKU placement explicitly specifies a different logo_id.",
+      "primary_color": "#E10600",
+      "recolor_allowed": false,
+      "collection": "love_hurts",
+      "default_for_new_graphics": true
     },
     "heart-rose-composite": {
       "file": "heart-rose-composite.jpeg",
