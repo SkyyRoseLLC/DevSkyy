@@ -42,9 +42,10 @@ skipped with a warning and can be provisioned by running the importer again.
 - Product facts and product media resolve from WooCommerce and the authorized
   SkyyRose SOT pipeline. The theme never manufactures a product fallback.
 - `data/product-presentation-registry.json` is a generated, non-commercial
-  adapter. It may classify a verified SKU into a collection or Jersey Series
-  presentation, but contains no prices, stock, WooCommerce IDs, or product
-  media.
+  adapter. It classifies Jersey Series SKUs as the dedicated Black Rose
+  release presentation (`/collections/black-rose/#jersey-series`) while keeping
+  their Town Line art direction separate from core Black Rose cards. It contains
+  no prices, stock, WooCommerce IDs, or product media.
 - Theme-local editorial assets require candidate-bound provenance. A file path
   alone is not proof of product identity or usage rights.
 

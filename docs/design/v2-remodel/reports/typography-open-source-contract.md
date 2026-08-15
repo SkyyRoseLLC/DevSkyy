@@ -47,7 +47,7 @@ rights record exists.
 | Black Rose | Archivo / Hanken Grotesk / Anton / Cinzel | Black Rose star graphic and founder-approved Black Rose script lockup |
 | Love Hurts | Archivo / Hanken Grotesk / Anton / Cinzel | Love Hurts star graphic and founder-approved graffiti lockup |
 | Kids Capsule | Archivo / Hanken Grotesk / Anton / Cinzel | Full-color heir/mascot and throne artwork; no monochrome statue substitute |
-| Jersey Series | Archivo / Hanken Grotesk / Anton / Cinzel | Jersey-specific marks and product imagery; never inherit Black Rose artwork |
+| Jersey Series (Black Rose release) | Archivo / Hanken Grotesk / Anton / Cinzel | Jersey-specific marks and product imagery; retain the dedicated release treatment without inheriting core Black Rose artwork |
 
 The CSS and `theme.json` mappings must continue to use the page-type system.
 Collection-specific scripts and graphics belong in image/artifact slots so

@@ -201,6 +201,9 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 [data-collection="love-hurts"] .sr2-collection-identity__title, [data-collection="love-hurts"] .sr2-collection-identity__line { margin-left: auto; }
 [data-collection="love-hurts"] .sr2-collection-identity__chapter { color: var(--sr2-crimson); }
 [data-collection="kids-capsule"] .sr2-collection-identity__chapter { color: var(--sr2-gold); }
+.sr2-collection-subchapter { margin-top: clamp(4rem, 9vw, 9rem); padding: clamp(2rem, 5vw, 5rem) 0 0; border-top: 1px solid var(--sr2-line); }
+.sr2-collection-subchapter > h2 { max-width: 12ch; margin: .2em 0 .35em; color: var(--sr2-ink); font-family: var(--sr2-font-display); font-size: clamp(2.6rem, 6vw, 6rem); letter-spacing: -.06em; line-height: .86; }
+.sr2-collection-subchapter > p:not(.sr2-eyebrow) { max-width: 52ch; margin: 0 0 clamp(2rem, 4vw, 4rem); color: var(--sr2-muted); }
 
 /* Black Rose / Jersey Series: an authored chapter, not an interchangeable product row. */
 .sr2-jersey-reveal { position: relative; isolation: isolate; overflow: clip; padding: clamp(5rem, 11vw, 11rem) var(--sr2-page-pad); border-bottom: 1px solid var(--sr2-line); background: radial-gradient(circle at 78% 12%, color-mix(in srgb, var(--sr2-silver) 18%, transparent), transparent 34%), #090a0b; }

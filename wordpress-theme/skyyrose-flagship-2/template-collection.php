@@ -67,6 +67,14 @@ get_header();
 	<section id="shop" class="sr2-section sr2-section--products sr2-collection-shop">
 		<header class="sr2-section-head sr2-section-head--split"><div><p><?php echo esc_html( $collection['shop_kicker'] ); ?></p><h2><?php echo esc_html( $collection['shop_heading'] ); ?></h2><p><?php echo esc_html( $collection['shop_intro'] ); ?></p></div><span class="sr2-section-index">03 / SHOP</span></header>
 		<?php skyyrose2_product_cards( 12, $slug ); ?>
+		<?php if ( 'black-rose' === $slug ) : ?>
+			<div id="jersey-series" class="sr2-collection-subchapter" aria-labelledby="sr2-jersey-series-title">
+				<p class="sr2-eyebrow"><?php esc_html_e( 'Black Rose release / The Town Line', 'skyyrose-flagship-2' ); ?></p>
+				<h2 id="sr2-jersey-series-title"><?php esc_html_e( 'Jersey Series', 'skyyrose-flagship-2' ); ?></h2>
+				<p><?php esc_html_e( 'A numbered Black Rose release with its own SkyyRose Tour reveal. The chapter stays visually distinct while every jersey remains part of the Black Rose collection.', 'skyyrose-flagship-2' ); ?></p>
+				<?php skyyrose2_render_black_rose_jersey_series( true ); ?>
+			</div>
+		<?php endif; ?>
 	</section>
 
 	<section class="sr2-manifesto" aria-labelledby="sr2-manifesto-title">

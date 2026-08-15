@@ -16,7 +16,7 @@ msgstr ""
 msgid "%s collection on-model look"
 msgstr ""
 
-#: woocommerce/single-product.php:42
+#: woocommerce/single-product.php:41
 msgid "%s purchase details"
 msgstr ""
 
@@ -76,6 +76,10 @@ msgstr ""
 msgid "A moonlit Black Rose court of black marble and silver light"
 msgstr ""
 
+#: template-collection.php:74
+msgid "A numbered Black Rose release with its own SkyyRose Tour reveal. The chapter stays visually distinct while every jersey remains part of the Black Rose collection."
+msgstr ""
+
 #: page.php:35
 msgid "A numbered piece from the house."
 msgstr ""
@@ -96,7 +100,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: woocommerce/single-product.php:59
+#: woocommerce/single-product.php:58
 msgid "About %s"
 msgstr ""
 
@@ -144,7 +148,7 @@ msgstr ""
 msgid "At the end of the nave, the rose holds court on its own terms. Protection has become polish. Survival has become posture."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:69 template-parts/home/kids-capsule-reveal.php:39
+#: template-parts/commerce/product-card.php:67 template-parts/home/kids-capsule-reveal.php:39
 msgid "Available"
 msgstr ""
 
@@ -204,6 +208,10 @@ msgstr ""
 msgid "Black Rose defines beauty on its own terms."
 msgstr ""
 
+#: template-collection.php:72
+msgid "Black Rose release / The Town Line"
+msgstr ""
+
 #: functions.php:451
 msgid "Black Rose typography and star-and-rose monuments"
 msgstr ""
@@ -224,7 +232,7 @@ msgstr ""
 msgid "Brand names, artwork, photography, product designs, and site content remain the property of their respective owners and licensors."
 msgstr ""
 
-#: woocommerce/single-product.php:36
+#: woocommerce/single-product.php:35
 msgid "Breadcrumb"
 msgstr ""
 
@@ -344,7 +352,7 @@ msgstr ""
 msgid "Code"
 msgstr ""
 
-#: template-collection.php:74
+#: template-collection.php:82
 msgid "Collection Code"
 msgstr ""
 
@@ -388,7 +396,7 @@ msgstr ""
 msgid "Contact Client Services with the order number, item, and reason before sending anything back. Eligibility is confirmed against the policy and item condition."
 msgstr ""
 
-#: template-collection.php:86
+#: template-collection.php:94
 msgid "Continue Through the House"
 msgstr ""
 
@@ -472,7 +480,7 @@ msgstr ""
 msgid "Enter collection story and find piece carrying your code."
 msgstr ""
 
-#: woocommerce/single-product.php:60
+#: woocommerce/single-product.php:59
 msgid "Enter full collection"
 msgstr ""
 
@@ -536,7 +544,7 @@ msgstr ""
 msgid "Explore %s"
 msgstr ""
 
-#: template-collection.php:85
+#: template-collection.php:93
 msgid "Explore other collections"
 msgstr ""
 
@@ -568,11 +576,11 @@ msgstr ""
 msgid "First Runway"
 msgstr ""
 
-#: woocommerce/single-product.php:57
+#: woocommerce/single-product.php:56
 msgid "Fit guidance"
 msgstr ""
 
-#: woocommerce/single-product.php:57
+#: woocommerce/single-product.php:56
 msgid "Fit support"
 msgstr ""
 
@@ -724,7 +732,7 @@ msgstr ""
 msgid "Intellectual property"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:44 woocommerce/single-product.php:26
+#: template-collection.php:73 template-parts/commerce/product-card.php:44 woocommerce/single-product.php:26
 msgid "Jersey Series"
 msgstr ""
 
@@ -836,7 +844,7 @@ msgstr ""
 msgid "Luxury grows from concrete."
 msgstr ""
 
-#: woocommerce/single-product.php:41
+#: woocommerce/single-product.php:40
 msgid "Made for your order. Estimated fulfillment timing appears before checkout."
 msgstr ""
 
@@ -904,7 +912,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: woocommerce/single-product.php:57
+#: woocommerce/single-product.php:56
 msgid "Need help choosing your size? Use the house size guide or contact client services before checkout."
 msgstr ""
 
@@ -1012,7 +1020,7 @@ msgstr ""
 msgid "Open site menu"
 msgstr ""
 
-#: woocommerce/single-product.php:57
+#: woocommerce/single-product.php:56
 msgid "Open size guide"
 msgstr ""
 
@@ -1116,7 +1124,7 @@ msgstr ""
 msgid "Pre-Order · Limited Editions"
 msgstr ""
 
-#: woocommerce/single-product.php:41
+#: woocommerce/single-product.php:40
 msgid "Pre-order edition"
 msgstr ""
 
@@ -1144,7 +1152,7 @@ msgstr ""
 msgid "Previous world chapter"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:132
+#: template-parts/commerce/product-card.php:131
 msgid "Price:"
 msgstr ""
 
@@ -1348,7 +1356,7 @@ msgstr ""
 msgid "Shipping updates"
 msgstr ""
 
-#: functions.php:813 inc/presentation-registry.php:117 inc/presentation-registry.php:136 woocommerce/single-product.php:37
+#: functions.php:813 inc/presentation-registry.php:117 inc/presentation-registry.php:136 woocommerce/single-product.php:36
 msgid "Shop"
 msgstr ""
 
@@ -1460,7 +1468,7 @@ msgstr ""
 msgid "Skyy, the heir, on her throne"
 msgstr ""
 
-#: functions.php:808 template-parts/commerce/product-card.php:37 template-parts/commerce/product-hero.php:16 woocommerce/single-product.php:18
+#: functions.php:808 template-parts/commerce/product-card.php:36 template-parts/commerce/product-hero.php:16 woocommerce/single-product.php:18
 msgid "SkyyRose"
 msgstr ""
 
@@ -1732,7 +1740,7 @@ msgstr ""
 msgid "The house is still here. Find a collection, a piece, or a story."
 msgstr ""
 
-#: template-collection.php:79
+#: template-collection.php:87
 msgid "The meaning"
 msgstr ""
 
@@ -1844,7 +1852,7 @@ msgstr ""
 msgid "Two monuments hold the entrance: the signature that made the promise and the SR monogram that made it a house. The bridge is not scenery. It is permission to move."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:69
+#: template-parts/commerce/product-card.php:67
 msgid "Unavailable"
 msgstr ""
 
@@ -1864,7 +1872,7 @@ msgstr ""
 msgid "Verified on-model looks from the three opening SkyyRose collection worlds"
 msgstr ""
 
-#: functions.php:750 template-parts/commerce/product-card.php:98
+#: functions.php:750 template-parts/commerce/product-card.php:97
 msgid "View %s"
 msgstr ""
 
@@ -1872,7 +1880,7 @@ msgstr ""
 msgid "View %s pieces"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:149
+#: template-parts/commerce/product-card.php:148
 msgid "View piece"
 msgstr ""
 

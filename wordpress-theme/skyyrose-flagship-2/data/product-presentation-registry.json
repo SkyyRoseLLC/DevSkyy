@@ -20,7 +20,7 @@
       "is_preorder": true,
       "jersey_chapter": "00 / Baseball Classic (Black)",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "br-004": {
       "collection": "black-rose",
@@ -52,7 +52,7 @@
       "is_preorder": true,
       "jersey_chapter": "01 / SF Inspired",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "br-009": {
       "collection": "black-rose",
@@ -60,7 +60,7 @@
       "is_preorder": true,
       "jersey_chapter": "02 / Last Oakland",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "br-010": {
       "collection": "black-rose",
@@ -68,7 +68,7 @@
       "is_preorder": true,
       "jersey_chapter": "03 / The Bay",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "br-011": {
       "collection": "black-rose",
@@ -76,7 +76,7 @@
       "is_preorder": true,
       "jersey_chapter": "04 / The Rose",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "br-012": {
       "collection": "black-rose",
@@ -84,7 +84,7 @@
       "is_preorder": true,
       "jersey_chapter": "05 / Baseball Classic (Last Oakland)",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "br-014": {
       "collection": "black-rose",
@@ -92,7 +92,7 @@
       "is_preorder": true,
       "jersey_chapter": "00 / Baseball Classic (Giants)",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "br-015": {
       "collection": "black-rose",
@@ -100,7 +100,7 @@
       "is_preorder": true,
       "jersey_chapter": "00 / Baseball Classic (White)",
       "presentation": "jersey-series",
-      "route": "/collections/jersey-series/"
+      "route": "/collections/black-rose/#jersey-series"
     },
     "kids-001": {
       "collection": "kids-capsule",

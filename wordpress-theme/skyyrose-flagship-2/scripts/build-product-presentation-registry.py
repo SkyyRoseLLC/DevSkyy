@@ -44,7 +44,14 @@ def build_registry() -> dict[str, object]:
             record: dict[str, object] = {
                 "collection": collection,
                 "presentation": presentation,
-                "route": f"/collections/{presentation}/",
+                # Jersey Series is a dedicated Black Rose release chapter, not
+                # a fifth collection route. Keep its visual presentation
+                # isolated while routing discovery through the parent world.
+                "route": (
+                    "/collections/black-rose/#jersey-series"
+                    if presentation == "jersey-series"
+                    else f"/collections/{presentation}/"
+                ),
                 "is_preorder": row["is_preorder"].strip().lower() in {"1", "true", "yes"},
             }
             if sku in JERSEY_CHAPTERS:
@@ -67,7 +74,10 @@ def main() -> int:
     rendered = json.dumps(artifact, indent=2, sort_keys=True) + "\n"
     if "--check" in sys.argv:
         if not OUTPUT.is_file() or OUTPUT.read_text(encoding="utf-8") != rendered:
-            print("Product presentation registry is stale. Run this script without --check.", file=sys.stderr)
+            print(
+                "Product presentation registry is stale. Run this script without --check.",
+                file=sys.stderr,
+            )
             return 1
         print(f"Product presentation registry is current ({len(artifact['products'])} SKUs).")
         return 0

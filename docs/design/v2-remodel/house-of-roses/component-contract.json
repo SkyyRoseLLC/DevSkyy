@@ -28,14 +28,14 @@
     {
       "id": "hor-jersey-film-01",
       "surface": "jersey-series-reveal",
-      "contract": "Dedicated Skyy Rose Tour Around the Bay previsualization and eight-SKU commerce rail; the fictional house train has no transit affiliation, and jersey SKUs never inherit Black Rose portal artifacts.",
+      "contract": "Dedicated Black Rose release chapter: Skyy Rose Tour Around the Bay previsualization and eight-SKU commerce rail; the fictional house train has no transit affiliation, and jersey SKUs never inherit core Black Rose portal artifacts.",
       "runtime_hook": ".sr2-house-film[data-house-film]",
       "sku_scope": ["br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"]
     }
   ],
   "hard_fails": [
     "invented or filename-inferred product media",
-    "jersey SKU presented as a Black Rose card",
+    "jersey SKU presented as a generic Black Rose card instead of the dedicated release chapter",
     "duplicated header scene presented as a distinct approved asset",
     "scroll interception",
     "autoplay audio",

@@ -24,7 +24,6 @@ while ( have_posts() ) :
 	if ( $is_jersey ) {
 		$presentation      = 'jersey-series';
 		$presentation_name = __( 'Jersey Series', 'skyyrose-flagship-2' );
-		$active_slug       = '';
 	} elseif ( $active_slug ) {
 		$presentation      = $active_slug;
 		$presentation_name = $collections[ $active_slug ]['name'];

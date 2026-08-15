@@ -53,7 +53,7 @@ function do_action( $hook ) {
 		echo '<p class="price">' . wp_kses_post( $product->get_price_html() ) . '</p>';
 		echo '<div class="woocommerce-product-details__short-description"><p>' . esc_html( $product->get_short_description() ) . '</p></div>';
 		echo '<form class="cart variations_form"><table class="variations"><tbody><tr><th><label for="preview-size">Size</label></th><td><select id="preview-size"><option>Choose a size</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option></select></td></tr></tbody></table><div class="quantity"><label for="preview-qty">Quantity</label><input id="preview-qty" type="number" min="1" value="1"></div><button class="single_add_to_cart_button button alt" type="button">Secure this piece</button></form>';
-		$collection_labels = array( 'signature' => 'Signature', 'black-rose' => 'Black Rose', 'love-hurts' => 'Love Hurts', 'kids-capsule' => 'Kids Capsule', 'jersey-series' => 'Jersey Series' );
+		$collection_labels = array( 'signature' => 'Signature', 'black-rose' => 'Black Rose', 'love-hurts' => 'Love Hurts', 'kids-capsule' => 'Kids Capsule', 'jersey-series' => 'Jersey Series / Black Rose release' );
 		$collection_terms  = wp_get_post_terms( $product->get_id(), 'product_cat', array( 'fields' => 'slugs' ) );
 		$collection_slug   = $collection_terms[0] ?? 'signature';
 		$collection_label   = $collection_labels[ $collection_slug ] ?? 'SkyyRose';
@@ -140,11 +140,10 @@ function wp_get_post_terms( $product_id = 0, $taxonomy = '', $args = array() ) {
 	global $route, $preview_product;
 	$fixture_terms = array( 1 => 'signature', 2 => 'black-rose', 3 => 'love-hurts', 4 => 'kids-capsule', 5 => 'kids-capsule' );
 	if ( isset( $fixture_terms[ (int) $product_id ] ) ) { return array( $fixture_terms[ (int) $product_id ] ); }
-	if ( (int) $product_id >= 100 ) { return array( 'jersey-series' ); }
 	if ( 'product' === $route && $preview_product instanceof WC_Product && $preview_product->get_id() === (int) $product_id ) {
 		$sku = strtolower( $preview_product->get_sku() );
 		$jersey_ids = array( 103, 108, 109, 110, 111, 112, 114, 115 );
-		return in_array( (int) $product_id, $jersey_ids, true ) ? array( 'jersey-series' ) : ( str_starts_with( $sku, 'br-' ) ? array( 'black-rose' ) : ( str_starts_with( $sku, 'lh-' ) ? array( 'love-hurts' ) : ( str_starts_with( $sku, 'kids-' ) ? array( 'kids-capsule' ) : array( 'signature' ) ) ) );
+		return in_array( (int) $product_id, $jersey_ids, true ) || str_starts_with( $sku, 'br-' ) ? array( 'black-rose' ) : ( str_starts_with( $sku, 'lh-' ) ? array( 'love-hurts' ) : ( str_starts_with( $sku, 'kids-' ) ? array( 'kids-capsule' ) : array( 'signature' ) ) );
 	}
 	return in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ? array( $route ) : array();
 }
@@ -197,6 +196,7 @@ class WC_Product {
 	public function is_purchasable() { return true; }
 	public function get_type() { return 'variable'; }
 	public function get_sku() { return $this->sku; }
+	public function get_status() { return 'publish'; }
 	public function get_permalink() { return '/tools/v2-theme-preview.php?route=product&sku=' . rawurlencode( $this->sku ); }
 	public function get_short_description() { return 'A limited SkyyRose archive piece rooted in Oakland and built to carry the Bay with you.'; }
 }

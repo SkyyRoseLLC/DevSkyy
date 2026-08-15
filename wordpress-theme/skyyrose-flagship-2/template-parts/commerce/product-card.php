@@ -32,20 +32,18 @@ $product_url      = method_exists( $card_product, 'get_permalink' ) ? $card_prod
 $product_name     = $card_product->get_name();
 $image_id         = $card_product->get_image_id();
 $collections      = skyyrose2_collections();
-$collection_slug  = '';
 $presentation     = 'house';
 $presentation_name = __( 'SkyyRose', 'skyyrose-flagship-2' );
 $collection_data  = null;
 $presentation_record = skyyrose2_product_presentation( $card_product );
+$collection_slug  = isset( $presentation_record['collection'] ) ? sanitize_title( $presentation_record['collection'] ) : '';
 $is_jersey        = 'jersey-series' === ( $presentation_record['presentation'] ?? '' );
 
 if ( $is_jersey ) {
 	$presentation      = 'jersey-series';
 	$presentation_name = __( 'Jersey Series', 'skyyrose-flagship-2' );
 } else {
-	$collection_slug = isset( $presentation_record['collection'] ) ? sanitize_title( $presentation_record['collection'] ) : '';
-
-	if ( $collection_slug ) {
+	if ( $collection_slug && isset( $collections[ $collection_slug ] ) ) {
 		$presentation      = $collection_slug;
 		$collection_data   = $collections[ $collection_slug ];
 		$presentation_name = $collection_data['name'];
@@ -82,6 +80,7 @@ $image_attrs    = array(
 	class="sr2-c-product-portal"
 	data-card-direction="house-portal"
 	data-presentation="<?php echo esc_attr( $presentation ); ?>"
+	data-collection="<?php echo esc_attr( $collection_slug ?: $presentation ); ?>"
 	data-product-type="<?php echo esc_attr( $product_type ); ?>"
 	data-purchasable="<?php echo esc_attr( $purchasable ); ?>"
 	data-availability="<?php echo esc_attr( $stock_state ); ?>"
