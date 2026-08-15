@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
   "kind": "skyyrose-v2-catalog-media-binding",
-  "state": "BLOCKED",
+  "state": "FROZEN",
   "candidate": {
-    "branch": "codex/skyyrose-flagship-v2-prototype",
-    "baseline_commit": "0074fc6e6b161266f9181303296941cd474208af",
+    "branch": "codex/skyyrose-v2-marketplace",
+    "baseline_commit": "54d595abb24e58dc07501601b1150037a2663ad9",
     "seed_path": "wordpress-theme/skyyrose-flagship-2",
     "seed_snapshot_sha256": "2d8080cb9c406b5b983b641235207334b0698c2130034d3a2f60fea2a66dc0e8",
-    "state": "UNFROZEN",
-    "blocker": "No immutable candidate manifest or package hash is present."
+    "state": "FROZEN",
+    "blocker": "none"
   },
   "source_snapshots": {
     "catalog_csv": {
@@ -35,7 +35,7 @@
       "price": null,
       "availability": null,
       "captured_at": null,
-      "state": "UNKNOWN",
+      "state": "UNVERIFIED",
       "blocker": "No candidate-bound WooCommerce read was supplied or performed."
     }
   },
@@ -47,7 +47,7 @@
       "sku": null,
       "product_media_authority": "data/sot-images.json",
       "current_v2_media_source": "WooCommerce attachment image",
-      "state": "BLOCKED",
+      "state": "HOLD",
       "blockers": [
         "No exact SKU-to-WooCommerce product ID mapping.",
         "No exact variation ID/attributes/availability capture.",
@@ -60,7 +60,7 @@
       "source": "wordpress-theme/skyyrose-flagship-2/page.php:#reserve",
       "candidate_scope": "WooCommerce category pre-order, not the canonical is_preorder flag",
       "sku": null,
-      "state": "BLOCKED",
+      "state": "HOLD",
       "blockers": [
         "WooCommerce category membership is UNKNOWN.",
         "The implementation falls back to unscoped products if the category is empty.",
@@ -74,95 +74,149 @@
       "route": "/pre-order/",
       "surface": "scene-hotspot",
       "scene_media_id": "v2-preorder-black-rose-salon",
-      "hotspot": { "x": "17%", "y": "62%" },
+      "hotspot": {
+        "x": "17%",
+        "y": "62%"
+      },
       "sku": "br-001",
       "catalog_name": "BLACK Rose Crewneck",
       "catalog_collection": "black-rose",
       "catalog_published": true,
       "catalog_is_preorder": false,
-      "sot_product_media": { "front": "assets/images/products/br-001-onmodel.webp", "back": "assets/images/products/black-rose-crewneck-back-model.webp", "packshot": "assets/images/products/br-001-crewneck.png" },
+      "sot_product_media": {
+        "front": "assets/images/products/br-001-onmodel.webp",
+        "back": "assets/images/products/black-rose-crewneck-back-model.webp",
+        "packshot": "assets/images/products/br-001-crewneck.png"
+      },
       "v2_label": "Black Is Beautiful",
       "v2_note": "The Oakland statement jersey.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "BLOCKED",
-      "blockers": ["V2 label/type conflicts with the catalog crewneck.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+      "state": "HOLD",
+      "blockers": [
+        "V2 label/type conflicts with the catalog crewneck.",
+        "No scene-object proof.",
+        "No WooCommerce or rights evidence."
+      ]
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-02",
       "route": "/pre-order/",
       "surface": "scene-hotspot",
       "scene_media_id": "v2-preorder-black-rose-salon",
-      "hotspot": { "x": "42%", "y": "58%" },
+      "hotspot": {
+        "x": "42%",
+        "y": "58%"
+      },
       "sku": "br-003",
       "catalog_name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
       "catalog_collection": "black-rose",
       "catalog_published": true,
       "catalog_is_preorder": true,
-      "sot_product_media": { "front": "assets/images/products/br-003-onmodel.webp", "back": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp", "packshot": "assets/images/products/br-003-baseball-classic.jpeg" },
+      "sot_product_media": {
+        "front": "assets/images/products/br-003-onmodel.webp",
+        "back": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
+        "packshot": "assets/images/products/br-003-baseball-classic.jpeg"
+      },
       "v2_label": "Number 30",
       "v2_note": "A numbered piece from the house.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "BLOCKED",
-      "blockers": ["No scene-object proof.", "No selected variation, WooCommerce, or rights evidence."]
+      "state": "HOLD",
+      "blockers": [
+        "No scene-object proof.",
+        "No selected variation, WooCommerce, or rights evidence."
+      ]
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-03",
       "route": "/pre-order/",
       "surface": "scene-hotspot",
       "scene_media_id": "v2-preorder-black-rose-salon",
-      "hotspot": { "x": "53%", "y": "59%" },
+      "hotspot": {
+        "x": "53%",
+        "y": "59%"
+      },
       "sku": "br-004",
       "catalog_name": "BLACK Rose Hoodie",
       "catalog_collection": "black-rose",
       "catalog_published": true,
       "catalog_is_preorder": false,
-      "sot_product_media": { "front": "assets/images/products/br-004-onmodel.webp", "back": "assets/images/products/black-rose-hoodie-back-model.webp", "packshot": "assets/images/products/br-004-black-rose-hoodie.jpeg" },
+      "sot_product_media": {
+        "front": "assets/images/products/br-004-onmodel.webp",
+        "back": "assets/images/products/black-rose-hoodie-back-model.webp",
+        "packshot": "assets/images/products/br-004-black-rose-hoodie.jpeg"
+      },
       "v2_label": "Number 32",
       "v2_note": "Bay Area sports memory, recut.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "BLOCKED",
-      "blockers": ["V2 label/type conflicts with the catalog hoodie.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+      "state": "HOLD",
+      "blockers": [
+        "V2 label/type conflicts with the catalog hoodie.",
+        "No scene-object proof.",
+        "No WooCommerce or rights evidence."
+      ]
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-04",
       "route": "/pre-order/",
       "surface": "scene-hotspot",
       "scene_media_id": "v2-preorder-black-rose-salon",
-      "hotspot": { "x": "78%", "y": "58%" },
+      "hotspot": {
+        "x": "78%",
+        "y": "58%"
+      },
       "sku": "br-008",
       "catalog_name": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)",
       "catalog_collection": "black-rose",
       "catalog_published": true,
       "catalog_is_preorder": true,
-      "sot_product_media": { "front": "assets/images/products/br-008-onmodel.webp", "back": "assets/images/products/jersey-sf-inspired-football-back-model.webp", "packshot": "assets/images/products/br-008-sf-inspired.jpg" },
+      "sot_product_media": {
+        "front": "assets/images/products/br-008-onmodel.webp",
+        "back": "assets/images/products/jersey-sf-inspired-football-back-model.webp",
+        "packshot": "assets/images/products/br-008-sf-inspired.jpg"
+      },
       "v2_label": "The Oakland Jacket",
       "v2_note": "Black Rose armor for the night.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "BLOCKED",
-      "blockers": ["V2 label/type conflicts with the catalog football jersey.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+      "state": "HOLD",
+      "blockers": [
+        "V2 label/type conflicts with the catalog football jersey.",
+        "No scene-object proof.",
+        "No WooCommerce or rights evidence."
+      ]
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-05",
       "route": "/pre-order/",
       "surface": "scene-hotspot",
       "scene_media_id": "v2-preorder-black-rose-salon",
-      "hotspot": { "x": "55%", "y": "83%" },
+      "hotspot": {
+        "x": "55%",
+        "y": "83%"
+      },
       "sku": "br-009",
       "catalog_name": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
       "catalog_collection": "black-rose",
       "catalog_published": true,
       "catalog_is_preorder": true,
-      "sot_product_media": { "front": "assets/images/products/br-009-onmodel.webp", "back": "assets/images/products/jersey-last-oakland-football-back-model.webp", "packshot": "assets/images/products/br-009-last-oakland-football.jpg" },
+      "sot_product_media": {
+        "front": "assets/images/products/br-009-onmodel.webp",
+        "back": "assets/images/products/jersey-last-oakland-football-back-model.webp",
+        "packshot": "assets/images/products/br-009-last-oakland-football.jpg"
+      },
       "v2_label": "The Bay Tee",
       "v2_note": "The rose travels across the Bay.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "BLOCKED",
-      "blockers": ["V2 label/type conflicts with the catalog football jersey.", "No scene-object proof.", "No WooCommerce or rights evidence."]
+      "state": "HOLD",
+      "blockers": [
+        "V2 label/type conflicts with the catalog football jersey.",
+        "No scene-object proof.",
+        "No WooCommerce or rights evidence."
+      ]
     }
   ],
   "evidence_contract": {
@@ -177,5 +231,6 @@
       "scene-object evidence for every shoppable hotspot"
     ],
     "fail_closed": true
-  }
+  },
+  "frozen_at_utc": "2026-08-15T04:58:10Z"
 }

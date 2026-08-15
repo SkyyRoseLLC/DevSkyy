@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "created_at_utc": "2026-08-15T04:58:10Z",
+  "candidate": {
+    "branch": "codex/skyyrose-v2-marketplace",
+    "commit": "54d595abb24e58dc07501601b1150037a2663ad9",
+    "short_commit": "54d595abb24e",
+    "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
+    "state": "REVIEW_SNAPSHOT"
+  },
+  "manifests": {
+    "candidate_manifest": {
+      "path": ".fashion-theme/candidate-manifest.json",
+      "sha256": "8651033202c18ceb5b25e58f1c4df52ed6ada26119f86e59be8f4a97b25537c0"
+    },
+    "catalog_binding": {
+      "path": ".fashion-theme/catalog-binding.json",
+      "sha256": "c4cb96ad8939243535c27f2c15ff6ad50319fdb7a610ebc9aefb9748b45e45ca"
+    },
+    "shot_manifest": {
+      "path": ".fashion-theme/shot-manifest.json",
+      "sha256": "3e3fe3fad85fff5e05ee6548ca70f391ce1175ee20254a1c8eabc02247a79718"
+    },
+    "promotion_manifest": {
+      "path": ".fashion-theme/promotion-manifest.json",
+      "sha256": "c8dc91fbddc4f934ceb38ebaef95b8f44604d203ee0dba307ff4c1866c0474eb"
+    },
+    "workspace_ledger": {
+      "path": ".fashion-theme/workspace-ledger.json",
+      "sha256": "1f18772d5cbd75c34aba5f66c446985c9ab968a9decfde8914858ce33c72c2e9"
+    }
+  },
+  "package": {
+    "archive_sha256": "7369f905310274fcbe566629f5afca95fd6001e4d12684ce66da7d8e8f62152f",
+    "file_count": 200,
+    "included_manifest_command": "git archive --format=tar HEAD -- $(git ls-tree -r --name-only HEAD wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -v \"^\\.fashion-theme/promotion-manifest.json$\") | sha256sum"
+  },
+  "handoff": {
+    "target": "codex-desktop",
+    "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
+    "integration_commit": "54d595abb24e58dc07501601b1150037a2663ad9",
+    "notes": "integration candidate normalized and captured for Codex desktop review; promotion remains fail-closed pending media freeze, independent visual QA, and founder release authorization"
+  }
+}

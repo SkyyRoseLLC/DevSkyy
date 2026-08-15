@@ -1,33 +1,17 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-08-15T22:09:00Z",
+  "generated_at_utc": "2026-08-15T04:58:10Z",
   "worktrees": [
-  {
-      "worktree": "/private/tmp/skyyrose-v2-promotion-worktree",
+    {
+      "worktree": "/Users/theceo/DevSkyy",
       "branch": "codex/skyyrose-v2-marketplace",
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-      "head_commit": "c6ba1334828b0de7f984405f64f3b0ca6072191f",
+      "head_commit": "54d595abb24e58dc07501601b1150037a2663ad9",
       "owned_paths": [
         ".fashion-theme",
         "wordpress-theme/skyyrose-flagship-2"
       ],
       "dirty": false,
-      "status": "READY_FOR_HANDOFF_REVIEW",
-      "promoted_to": null
-    },
-    {
-      "worktree": "/Users/theceo/DevSkyy",
-      "branch": "main",
-      "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-      "head_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-      "owned_paths": [
-        "docs",
-        "scripts",
-        "src",
-        "frontend",
-        "wordpress-theme/skyyrose-flagship"
-      ],
-      "dirty": true,
       "status": "ACTIVE",
       "promoted_to": null
     }
@@ -35,7 +19,7 @@
   "handoff": {
     "source_branch": "codex/skyyrose-v2-marketplace",
     "target_branch": "main",
-    "status": "READY_FOR_HANDOFF_REVIEW",
+    "status": "BLOCKED_FAIL_CLOSED",
     "evidence_required": [
       "git archive manifest hash",
       "manifest-ledger parity",
