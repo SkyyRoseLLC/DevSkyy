@@ -160,7 +160,7 @@ Create one immutable `catalog-binding.json` and one `shot-manifest.json` for the
 
 ## Missing V2 links and blocking decisions
 
-1. **Freeze first:** V2 is untracked and lacks a candidate manifest/package hash. No final P1 binding can be candidate-bound until that immutable snapshot exists.
+1. **Historical freeze instruction:** At discovery time the prototype V2 seed was untracked and lacked a candidate manifest/package hash. The active tracked candidate now has an immutable payload/package snapshot, but no final P1 binding can close until Woo variation, media, and rights evidence is complete.
 2. **Register candidate media:** none of the five Scroll World snapshots has an observed manifest/rights/product record. Add evidence; do not infer from filenames or collection labels.
 3. **Repair missing files or remove their references:** `forbidden-midnight-1280w.webp` and `luxury-nighttime-1280w.webp` are referenced but absent from V2 `assets/sot/`. Their V1 manifest records do not make a missing V2 URL valid.
 4. **Resolve source identity for candidate-only additions:** V2’s `scene-*-gpt2.webp` files (Black Rose moon court, Signature Oakland atelier, Love Hurts cracked rose, Kids heir runway) are referenced but do not have an inspected matching V1 visual-manifest record. Rights and approved role are UNKNOWN.
