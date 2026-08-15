@@ -14,6 +14,7 @@ define( 'ABSPATH', __DIR__ . '/' );
 define( 'OBJECT', 'OBJECT' );
 $route = preg_replace( '/[^a-z-]/', '', $_GET['route'] ?? 'home' ) ?: 'home';
 $preview_state = preg_replace( '/[^a-z-]/', '', $_GET['state'] ?? '' );
+$preview_sku = strtolower( preg_replace( '/[^a-z0-9-]/i', '', $_GET['sku'] ?? 'sg-005' ) ) ?: 'sg-005';
 $preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'pre-order', 'about', 'contact', 'shop', 'product' );
 if ( ! in_array( $route, $preview_routes, true ) ) { $route = 'home'; }
 $preview_posts = array();
@@ -37,7 +38,7 @@ function absint( $value ) { return abs( (int) $value ); }
 function add_action() {}
 function add_filter() {}
 function do_action( $hook ) {
-	global $product;
+	global $product, $preview_sku;
 	if ( 'woocommerce_before_single_product_summary' === $hook && $product instanceof WC_Product ) {
 		$main_id = $product->get_image_id();
 		echo '<div class="woocommerce-product-gallery sr2-preview-gallery">';
@@ -52,7 +53,11 @@ function do_action( $hook ) {
 		echo '<p class="price">' . wp_kses_post( $product->get_price_html() ) . '</p>';
 		echo '<div class="woocommerce-product-details__short-description"><p>' . esc_html( $product->get_short_description() ) . '</p></div>';
 		echo '<form class="cart variations_form"><table class="variations"><tbody><tr><th><label for="preview-size">Size</label></th><td><select id="preview-size"><option>Choose a size</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option></select></td></tr></tbody></table><div class="quantity"><label for="preview-qty">Quantity</label><input id="preview-qty" type="number" min="1" value="1"></div><button class="single_add_to_cart_button button alt" type="button">Secure this piece</button></form>';
-		echo '<div class="product_meta"><span class="sku_wrapper">SKU: <span class="sku">' . esc_html( strtoupper( $product->get_sku() ) ) . '</span></span><span class="posted_in">Collection: Signature</span></div>';
+		$collection_labels = array( 'signature' => 'Signature', 'black-rose' => 'Black Rose', 'love-hurts' => 'Love Hurts', 'kids-capsule' => 'Kids Capsule', 'jersey-series' => 'Jersey Series' );
+		$collection_terms  = wp_get_post_terms( $product->get_id(), 'product_cat', array( 'fields' => 'slugs' ) );
+		$collection_slug   = $collection_terms[0] ?? 'signature';
+		$collection_label   = $collection_labels[ $collection_slug ] ?? 'SkyyRose';
+		echo '<div class="product_meta"><span class="sku_wrapper">SKU: <span class="sku">' . esc_html( strtoupper( $product->get_sku() ) ) . '</span></span><span class="posted_in">Collection: ' . esc_html( $collection_label ) . '</span></div>';
 		echo '<ul class="sr2-preview-promises"><li>Limited archive release</li><li>Tracked delivery</li><li>Secure checkout</li></ul>';
 	} elseif ( 'woocommerce_after_single_product_summary' === $hook ) {
 		echo '<section class="woocommerce-tabs sr2-preview-tabs"><h2>Built to carry the story</h2><p>Published construction, care, fit, shipping, and return details remain attached to the live WooCommerce product record.</p><div class="sr2-preview-tabs__grid"><article><h3>Construction</h3><p>Material and finishing details from the product SOT.</p></article><article><h3>Fit</h3><p>Size guidance and model measurements beside the purchase decision.</p></article><article><h3>Delivery</h3><p>Real fulfillment status and preorder timing—never fabricated.</p></article></div></section><section class="related products"><h2>Continue through the house</h2></section>';
@@ -107,7 +112,10 @@ function get_template_part( $slug, $name = null, $args = array() ) {
 	if ( is_file( $file ) ) { require $file; }
 }
 function get_queried_object_id() { return 1; }
-function get_the_ID() { return 1; }
+function get_the_ID() {
+	global $product;
+	return $product instanceof WC_Product ? $product->get_id() : 1;
+}
 function the_ID() { echo esc_attr( get_the_ID() ); }
 function get_post_field( $field ) { global $route; return 'post_name' === $field ? $route : ''; }
 function get_the_title() { global $route; return ucwords( str_replace( '-', ' ', $route ) ); }
@@ -120,15 +128,25 @@ function is_account_page() { return false; }
 function get_option( $name ) { return 'admin_email' === $name ? 'hello@skyyrose.com' : ''; }
 function wp_nonce_field() { echo '<input type="hidden" value="preview">'; }
 function get_page_by_path() { return null; }
-function get_permalink( $item = null ) { return '/tools/v2-theme-preview.php?route=' . ( $item ? 'product' : 'shop' ); }
+function get_permalink( $item = null ) {
+	if ( $item instanceof WC_Product ) {
+		return '/tools/v2-theme-preview.php?route=product&sku=' . rawurlencode( $item->get_sku() );
+	}
+	return '/tools/v2-theme-preview.php?route=' . ( $item ? 'product' : 'shop' );
+}
 function wc_get_page_permalink( $page ) { return '/tools/v2-theme-preview.php?route=' . ( 'shop' === $page ? 'shop' : 'home' ); }
 function wc_get_product_category_list( $id ) { return 'SkyyRose · Collection'; }
 function wp_get_post_terms( $product_id = 0, $taxonomy = '', $args = array() ) {
-	global $route;
+	global $route, $preview_product;
 	$fixture_terms = array( 1 => 'signature', 2 => 'black-rose', 3 => 'love-hurts', 4 => 'kids-capsule', 5 => 'kids-capsule' );
 	if ( isset( $fixture_terms[ (int) $product_id ] ) ) { return array( $fixture_terms[ (int) $product_id ] ); }
 	if ( (int) $product_id >= 100 ) { return array( 'jersey-series' ); }
-	return in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ? array( $route ) : ( 'product' === $route ? array( 'signature' ) : array() );
+	if ( 'product' === $route && $preview_product instanceof WC_Product && $preview_product->get_id() === (int) $product_id ) {
+		$sku = strtolower( $preview_product->get_sku() );
+		$jersey_ids = array( 103, 108, 109, 110, 111, 112, 114, 115 );
+		return in_array( (int) $product_id, $jersey_ids, true ) ? array( 'jersey-series' ) : ( str_starts_with( $sku, 'br-' ) ? array( 'black-rose' ) : ( str_starts_with( $sku, 'lh-' ) ? array( 'love-hurts' ) : ( str_starts_with( $sku, 'kids-' ) ? array( 'kids-capsule' ) : array( 'signature' ) ) ) );
+	}
+	return in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ? array( $route ) : array();
 }
 function wp_get_attachment_image( $id, $size = 'thumbnail', $icon = false, $attrs = array() ) {
 	$images = array(
@@ -151,7 +169,11 @@ function wc_get_template_part() { require get_template_directory() . '/woocommer
 function wc_product_class( $class = '', $product = null ) { echo 'class="' . esc_attr( $class ) . '"'; }
 function wc_get_loop_prop( $prop, $default = 0 ) { static $loop = 0; return 'loop' === $prop ? ++$loop : $default; }
 function wc_get_stock_html( $product ) { return '<p class="stock in-stock">Available for preorder</p>'; }
-function woocommerce_template_loop_add_to_cart() { echo '<a class="button product_type_simple add_to_cart_button" href="/tools/v2-theme-preview.php?route=product">Enter the scene</a>'; }
+function woocommerce_template_loop_add_to_cart() {
+	global $product;
+	$url = $product instanceof WC_Product ? get_permalink( $product ) : '/tools/v2-theme-preview.php?route=product&sku=sg-005';
+	echo '<a class="button product_type_simple add_to_cart_button" href="' . esc_url( $url ) . '">Enter the scene</a>';
+}
 function post_password_required() { return false; }
 function get_the_password_form() { return ''; }
 function has_term( $term, $taxonomy = '', $post = null ) {
@@ -175,7 +197,7 @@ class WC_Product {
 	public function is_purchasable() { return true; }
 	public function get_type() { return 'variable'; }
 	public function get_sku() { return $this->sku; }
-	public function get_permalink() { return '/tools/v2-theme-preview.php?route=product'; }
+	public function get_permalink() { return '/tools/v2-theme-preview.php?route=product&sku=' . rawurlencode( $this->sku ); }
 	public function get_short_description() { return 'A limited SkyyRose archive piece rooted in Oakland and built to carry the Bay with you.'; }
 }
 function wc_get_products( $args = array() ) {
@@ -212,6 +234,15 @@ function preview_jersey_products() {
 		new WC_Product( 115, 'Baseball Classic White', 0, 'br-015' )
 	);
 }
+function preview_product_for_sku( $sku ) {
+	$wanted = strtolower( (string) $sku );
+	foreach ( array_merge( wc_get_products(), preview_jersey_products() ) as $candidate ) {
+		if ( strtolower( $candidate->get_sku() ) === $wanted ) {
+			return $candidate;
+		}
+	}
+	return null;
+}
 function wc_get_product( $id ) { foreach ( array_merge( wc_get_products(), preview_jersey_products() ) as $product ) { if ( $product->get_id() === (int) $id ) { return $product; } } return null; }
 function wc_get_product_id_by_sku( $sku = '' ) { global $preview_state; if ( 'kids-missing-purple' === $preview_state && 'kids-002' === strtolower( (string) $sku ) ) { return 0; } foreach ( array_merge( wc_get_products(), preview_jersey_products() ) as $product ) { if ( strtolower( $product->get_sku() ) === strtolower( (string) $sku ) ) { return $product->get_id(); } } return 0; }
 
@@ -225,7 +256,9 @@ if ( in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-cap
 	$preview_posts = wc_get_products();
 	require $theme_dir . '/woocommerce/archive-product.php';
 } elseif ( 'product' === $route ) {
-	$preview_posts = array( new WC_Product( 1, 'Bay Bridge Shirt', 1, 'sg-005' ) );
+	$preview_product = preview_product_for_sku( $preview_sku ) ?: preview_product_for_sku( 'sg-005' );
+	$preview_posts = array( $preview_product );
+	$GLOBALS['preview_product'] = $preview_product;
 	require $theme_dir . '/woocommerce/single-product.php';
 } else {
 	// WordPress would populate The Loop for every Page route.  Give the real V2
