@@ -10,19 +10,22 @@ This note resolves the stale promotion payload that referenced
 |---|---|
 | Branch | `codex/skyyrose-v2-marketplace` |
 | Worktree | `/Users/theceo/DevSkyy` |
-| Integration head | `9b4bb5acb1e61f55c8a116d6937a316e16fe9595` |
+| Integration ref | `refs/heads/codex/skyyrose-v2-marketplace` |
+| Last verified V2 source snapshot | `a620435d646d89d3f99840350d3151a25dcbec47` |
 | Main base | `f97383524206825e9f0bd24042e7990be43aee27` |
 | Payload commit | `d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4` |
 | Attestation commit | `8b4be49d0a2642212b088974e4eca66560006f29` |
 | Prototype capture | `1982efe66` (archival; no longer an active worktree) |
 | Release candidate source | `47b711dac45232e3be958e8722bdb25f72ed81fa` |
-| Scoped V2 paths | Tracked and clean |
+| Scoped V2 paths | Tracked and clean at the source snapshot |
 | Whole worktree | Dirty only because the unrelated root `CLAUDE.md` is modified |
 | Promotion | `BLOCKED / FAIL_CLOSED` |
 
 The temporary promotion worktree and the old `/Users/theceo/DevSkyy-v2-marketplace`
 path are not valid sources. New work must start from `/Users/theceo/DevSkyy` on
-the branch above and must preserve the unrelated `CLAUDE.md` edit.
+the branch above and must preserve the unrelated `CLAUDE.md` edit. The two
+documentation-only reconciliation commits after the source snapshot do not
+change the V2 payload; the branch ref is the authority for future work.
 
 ## Evidence alignment
 

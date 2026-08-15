@@ -16,7 +16,8 @@
     "branch": "codex/skyyrose-v2-marketplace",
     "base_ref": "main",
     "base_commit": "f97383524206",
-    "integration_head": "9b4bb5acb1e61f55c8a116d6937a316e16fe9595",
+    "integration_ref": "refs/heads/codex/skyyrose-v2-marketplace",
+    "last_verified_source_commit": "a620435d646d89d3f99840350d3151a25dcbec47",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "required_state_before_promotion": "clean committed integration candidate"

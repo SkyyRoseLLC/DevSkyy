@@ -8,7 +8,7 @@
 |---|---|---|
 | Repository baseline | `0074fc6e6b161266f9181303296941cd474208af` (`chore(sot): add lookbook SOT watch chain and checks`) | HISTORICAL |
 | V2 seed | `wordpress-theme/skyyrose-flagship-2/` was untracked in the prototype snapshot | HISTORICAL |
-| Active V2 candidate | `codex/skyyrose-v2-marketplace` at `9b4bb5acb1e61f55c8a116d6937a316e16fe9595`; scoped V2 paths are tracked | OBSERVED |
+| Active V2 candidate | `refs/heads/codex/skyyrose-v2-marketplace`, source snapshot `a620435d646d89d3f99840350d3151a25dcbec47`; scoped V2 paths are tracked | OBSERVED |
 | Immutable candidate manifest / package hash | `.fashion-theme/promotion-manifest.json`; payload/package evidence is recorded and promotion remains fail-closed | OBSERVED / BLOCKED |
 | Browser, responsive, screen-reader, payment, order, and independent visual evidence | Not present in the V2 seed | UNVERIFIED |
 | SOT authority | [SOT.md](../../../../SOT.md) makes catalog/dossiers product authority, `sot-images.json` the generated product-image contract, and V1 `data/visual-manifest.json` the non-product-image authority. | OBSERVED |
