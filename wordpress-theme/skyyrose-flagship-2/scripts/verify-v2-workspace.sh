@@ -21,6 +21,18 @@ for document in \
 	jq empty "$document"
 done
 
+while IFS=$'\t' read -r manifest_path expected_hash; do
+	if [[ ! -f "$manifest_path" ]]; then
+		echo "FAIL V2 reconnect guard: handoff manifest missing: $manifest_path" >&2
+		exit 1
+	fi
+	actual_hash="$(shasum -a 256 "$manifest_path" | awk '{print $1}')"
+	if [[ "$actual_hash" != "$expected_hash" ]]; then
+		echo "FAIL V2 reconnect guard: handoff manifest hash drift: $manifest_path" >&2
+		exit 1
+	fi
+done < <(jq -r '.manifests | to_entries[] | [.value.path, .value.sha256] | @tsv' .fashion-theme/codex-desktop-handoff.json)
+
 integration="$(jq -r '.current_integration.current_integration_commit' .fashion-theme/v2-remodel-ledger.json)"
 workspace_integration="$(jq -r '.worktrees[] | select(.worktree == "/Users/theceo/DevSkyy") | .current_integration_commit' .fashion-theme/workspace-ledger.json)"
 handoff_integration="$(jq -r '.candidate.current_integration_commit' .fashion-theme/codex-desktop-handoff.json)"
