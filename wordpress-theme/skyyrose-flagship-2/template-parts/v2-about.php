@@ -15,10 +15,10 @@ defined( 'ABSPATH' ) || exit;
 $sr2_about_assets = array(
 	'founder'    => 'images/about/skyy-rose-founder-hero.webp',
 	'blox'       => 'images/about/the-blox-premiere.webp',
-	'signature'  => 'images/lookbook/lb-rose-hoodie-beanie-960w.webp',
-	'black_rose' => 'images/lookbook/lb-black-rose-football-960w.webp',
-	'love_hurts' => 'images/lookbook/lb-love-hurts-varsity-960w.webp',
-	'kids'       => 'images/lookbook/lb-kid-black-rose-960w.webp',
+	'signature'  => 'images/lookbook/lb-rose-hoodie-beanie',
+	'black_rose' => 'images/lookbook/lb-black-rose-football',
+	'love_hurts' => 'images/lookbook/lb-love-hurts-varsity',
+	'kids'       => 'images/lookbook/lb-kid-black-rose',
 );
 
 $sr2_press_features = skyyrose2_press_features();
@@ -82,7 +82,10 @@ $sr2_chapters = array(
 	<div class="sr2-about-chapters__grid">
 		<?php foreach ( $sr2_chapters as $sr2_chapter ) : ?>
 			<a class="sr2-about-chapter" href="<?php echo esc_url( $sr2_chapter['url'] ); ?>">
-				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $sr2_chapter['image'] ) ); ?>" alt="<?php echo esc_attr( $sr2_chapter['name'] ); ?> lookbook image" width="960" height="1200" loading="lazy" decoding="async">
+				<picture>
+					<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $sr2_chapter['image'] . '-480w.webp' ) ); ?>">
+					<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $sr2_chapter['image'] . '-960w.webp' ) ); ?>" alt="<?php echo esc_attr( $sr2_chapter['name'] ); ?> lookbook image" width="960" height="1200" loading="lazy" decoding="async">
+				</picture>
 				<span><?php echo esc_html( $sr2_chapter['number'] ); ?></span><strong><?php echo esc_html( $sr2_chapter['name'] ); ?></strong><em><?php echo esc_html( $sr2_chapter['line'] ); ?></em>
 			</a>
 		<?php endforeach; ?>

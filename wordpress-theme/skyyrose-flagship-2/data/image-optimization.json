@@ -16,6 +16,34 @@
       "basename": "black-rose-salon",
       "widths": [640, 1024, 1440],
       "usage": ["pre-order hero", "pre-order editorial scene"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-rose-hoodie-beanie-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-rose-hoodie-beanie",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-black-rose-football-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-black-rose-football",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-love-hurts-varsity-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-love-hurts-varsity",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
+    },
+    {
+      "source": "assets/sot/images/lookbook/lb-kid-black-rose-960w.webp",
+      "derivative_root": "assets/sot/images/lookbook",
+      "basename": "lb-kid-black-rose",
+      "widths": [480, 960],
+      "usage": ["about page lookbook chapters", "collection editorial reveal"]
     }
   ],
   "transparent_brand_assets": [
