@@ -15,7 +15,7 @@ $sr2_reserve_principles = array(
 ?>
 
 <section class="sr2-reserve-hero" aria-labelledby="sr2-page-title">
-	<div class="sr2-reserve-hero__media"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/black-rose-salon.webp' ) ); ?>" alt="Black Rose pieces displayed in the SkyyRose pre-order salon" width="1536" height="1024" fetchpriority="high"></div>
+	<div class="sr2-reserve-hero__media"><picture><source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/responsive/black-rose-salon-640w.webp' ) ); ?>"><source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/responsive/black-rose-salon-1024w.webp' ) ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/responsive/black-rose-salon-1440w.webp' ) ); ?>" alt="Black Rose pieces displayed in the SkyyRose pre-order salon" width="1440" height="960" fetchpriority="high" decoding="sync"></picture></div>
 	<div class="sr2-reserve-hero__copy">
 		<p class="sr2-eyebrow">The Reservation Room / Limited editions</p>
 		<h1 id="sr2-page-title">The piece is the invitation.</h1>
@@ -36,7 +36,7 @@ $sr2_reserve_principles = array(
 
 <section class="sr2-reserve-salon" aria-labelledby="sr2-reserve-salon-title">
 	<header class="sr2-section-head sr2-section-head--split"><div><p>Black Rose / The first room</p><h2 id="sr2-reserve-salon-title">Walk the salon before you shop it.</h2></div><p>The scene is a portal into the Black Rose world. Garment proof, price, size, and availability stay with the actual product.</p></header>
-	<div class="sr2-reserve-salon__frame"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/black-rose-salon.webp' ) ); ?>" alt="A dark Black Rose salon with garments arranged as an immersive shopping scene" width="1536" height="1024" loading="lazy" decoding="async"><a class="sr2-button" href="<?php echo esc_url( skyyrose2_collection_url( 'black-rose' ) ); ?>">Enter Black Rose</a></div>
+	<div class="sr2-reserve-salon__frame"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/responsive/black-rose-salon-1440w.webp' ) ); ?>" alt="A dark Black Rose salon with garments arranged as an immersive shopping scene" width="1440" height="960" loading="lazy" decoding="async"><a class="sr2-button" href="<?php echo esc_url( skyyrose2_collection_url( 'black-rose' ) ); ?>">Enter Black Rose</a></div>
 </section>
 
 <section id="reserve" class="sr2-section sr2-section--products sr2-reserve-products" aria-labelledby="sr2-reserve-products-title">

@@ -4,9 +4,19 @@
     "served_hero_format": "webp",
     "responsive_widths": [640, 1024, 1440],
     "max_served_hero_bytes": 260000,
+    "max_served_editorial_bytes": 260000,
     "source_policy": "Original SOT pixels remain preserved; templates serve only responsive derivatives."
   },
   "derivative_root": "assets/sot/images/hero/responsive",
+  "editorial_derivative_sets": [
+    {
+      "source": "assets/sot/images/preorder/black-rose-salon.webp",
+      "derivative_root": "assets/sot/images/preorder/responsive",
+      "basename": "black-rose-salon",
+      "widths": [640, 1024, 1440],
+      "usage": ["pre-order hero", "pre-order editorial scene"]
+    }
+  ],
   "hero_bases": [
     "signature-golden-gate-monuments-v2",
     "black-rose-bay-bridge-monuments-v4",

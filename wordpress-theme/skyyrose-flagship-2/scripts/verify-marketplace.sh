@@ -51,6 +51,22 @@ while IFS= read -r base; do
 	done
 done < <(jq -r '.hero_bases[]' data/image-optimization.json)
 
+# Editorial scenes that are configured for responsive delivery are governed by
+# the same byte budget as hero imagery. This prevents a later template change
+# from silently restoring an original multi-megabyte scene to mobile visitors.
+editorial_max_bytes="$(jq -r '.policy.max_served_editorial_bytes' data/image-optimization.json)"
+while IFS=$'\t' read -r derivative_root basename widths; do
+	while IFS= read -r width; do
+		asset="${derivative_root}/${basename}-${width}w.webp"
+		test -s "$asset" || { echo "Missing optimized editorial derivative: $asset" >&2; exit 1; }
+		bytes="$(stat -f '%z' "$asset")"
+		if [ "$bytes" -gt "$editorial_max_bytes" ]; then
+			echo "Optimized editorial derivative exceeds ${editorial_max_bytes} bytes: $asset" >&2
+			exit 1
+		fi
+	done < <(printf '%s\n' "$widths" | jq -r '.[]')
+done < <(jq -r '.editorial_derivative_sets[]? | [.derivative_root, .basename, (.widths | tojson)] | @tsv' data/image-optimization.json)
+
 while IFS= read -r derivative; do
 	test -s "$derivative" || { echo "Missing opening product-media derivative: $derivative" >&2; exit 1; }
 	bytes="$(stat -f '%z' "$derivative")"
