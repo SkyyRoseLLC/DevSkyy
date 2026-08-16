@@ -15,6 +15,7 @@ Endpoints:
 
 from __future__ import annotations
 
+import importlib.util
 import logging
 import tempfile
 from pathlib import Path
@@ -92,6 +93,14 @@ def _checker(metering: UsageMetering = Depends(_metering)) -> EntitlementChecker
 
 
 async def _service() -> RAGAnythingService:
+    if importlib.util.find_spec("raganything") is None:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail={
+                "code": "rag_parser_unavailable",
+                "message": "Document parsing is temporarily unavailable",
+            },
+        )
     return await get_rag_anything_service()
 
 

@@ -22,12 +22,15 @@ from enum import StrEnum
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, BackgroundTasks, File, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, UploadFile
 from pydantic import BaseModel, Field
+
+from security.jwt_oauth2_auth import get_current_user
+from security.media_input import MediaInputError, download_validated_image, read_validated_upload
 
 logger = logging.getLogger(__name__)
 
-visual_router = APIRouter(tags=["Visual Generation"])
+visual_router = APIRouter(tags=["Visual Generation"], dependencies=[Depends(get_current_user)])
 
 # Output directory
 OUTPUT_DIR = Path(os.getenv("VISUAL_OUTPUT_DIR", "./assets/visual-generated"))
@@ -594,8 +597,6 @@ async def enhance_from_url(
     Downloads the image, applies enhancements, and returns production-ready version.
     The actual product remains unchanged - only quality improvements applied.
     """
-    import httpx
-
     job = visual_job_store.create(
         product_name=request.product_name,
         style=ImageStyle.PRODUCT_STUDIO,
@@ -609,18 +610,13 @@ async def enhance_from_url(
 
     # Download image
     try:
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(request.image_url)
-            resp.raise_for_status()
-
-            ext = Path(request.image_url).suffix or ".png"
-            temp_path = UPLOAD_DIR / f"{job.job_id}{ext}"
-            temp_path.write_bytes(resp.content)
-
-    except Exception as e:
-        logger.warning(f"Failed to download image for job {job.job_id}: {e}")
-        visual_job_store.fail(job.job_id, f"Failed to download image: {e}")
-        raise HTTPException(status_code=400, detail="Failed to download image")
+        image = await download_validated_image(request.image_url)
+        temp_path = UPLOAD_DIR / f"{job.job_id}{image.suffix}"
+        temp_path.write_bytes(image.content)
+    except MediaInputError as exc:
+        logger.warning("Image URL rejected for job %s: %s", job.job_id, exc)
+        visual_job_store.fail(job.job_id, "Image URL rejected")
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
 
     background_tasks.add_task(
         run_image_enhancement,
@@ -651,9 +647,6 @@ async def enhance_from_upload(
     e-commerce quality version. The product itself remains identical -
     only quality improvements are applied.
     """
-    if not file.content_type or not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="File must be an image")
-
     job = visual_job_store.create(
         product_name=product_name,
         style=ImageStyle.PRODUCT_STUDIO,
@@ -665,17 +658,13 @@ async def enhance_from_upload(
         },
     )
 
-    # Save uploaded file
-    ext = Path(file.filename or "image.png").suffix or ".png"
-    upload_path = UPLOAD_DIR / f"{job.job_id}{ext}"
-
     try:
-        content = await file.read()
-        upload_path.write_bytes(content)
-    except Exception as e:
-        logger.error(f"Failed to save upload for job {job.job_id}: {e}", exc_info=True)
-        visual_job_store.fail(job.job_id, f"Failed to save upload: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        image = await read_validated_upload(file)
+        upload_path = UPLOAD_DIR / f"{job.job_id}{image.suffix}"
+        upload_path.write_bytes(image.content)
+    except MediaInputError as exc:
+        visual_job_store.fail(job.job_id, "Image upload rejected")
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
 
     background_tasks.add_task(
         run_image_enhancement,
@@ -702,43 +691,40 @@ async def batch_enhance(
 
     Enhance all your product photos at once with consistent quality settings.
     """
-    import httpx
-
     batch_id = f"enhance_batch_{uuid.uuid4().hex[:8]}"
     jobs = []
 
-    async with httpx.AsyncClient() as client:
-        for i, url in enumerate(image_urls):
-            job = visual_job_store.create(
-                product_name=f"Product {i + 1}",
-                style=ImageStyle.PRODUCT_STUDIO,
-                provider=VisualProvider.AUTO,
-                metadata={
-                    "enhancement_type": enhancement_type.value,
-                    "batch_id": batch_id,
-                    "original_url": url,
-                },
+    if len(image_urls) > 20:
+        raise HTTPException(status_code=400, detail="Batch is limited to 20 images")
+
+    for i, url in enumerate(image_urls):
+        job = visual_job_store.create(
+            product_name=f"Product {i + 1}",
+            style=ImageStyle.PRODUCT_STUDIO,
+            provider=VisualProvider.AUTO,
+            metadata={
+                "enhancement_type": enhancement_type.value,
+                "batch_id": batch_id,
+                "original_url": url,
+            },
+        )
+        jobs.append(job)
+
+        try:
+            image = await download_validated_image(url)
+            temp_path = UPLOAD_DIR / f"{job.job_id}{image.suffix}"
+            temp_path.write_bytes(image.content)
+            background_tasks.add_task(
+                run_image_enhancement,
+                job.job_id,
+                str(temp_path),
+                f"Product {i + 1}",
+                enhancement_type,
+                upscale_factor,
+                "white studio",
             )
-            jobs.append(job)
-
-            try:
-                resp = await client.get(url)
-                resp.raise_for_status()
-                ext = Path(url).suffix or ".png"
-                temp_path = UPLOAD_DIR / f"{job.job_id}{ext}"
-                temp_path.write_bytes(resp.content)
-
-                background_tasks.add_task(
-                    run_image_enhancement,
-                    job.job_id,
-                    str(temp_path),
-                    f"Product {i + 1}",
-                    enhancement_type,
-                    upscale_factor,
-                    "white studio",
-                )
-            except Exception as e:
-                visual_job_store.fail(job.job_id, f"Failed to download: {e}")
+        except MediaInputError:
+            visual_job_store.fail(job.job_id, "Image URL rejected")
 
     return BatchJobResponse(
         batch_id=batch_id,

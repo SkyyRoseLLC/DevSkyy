@@ -26,12 +26,15 @@ from enum import StrEnum
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, BackgroundTasks, File, HTTPException, UploadFile
+from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, UploadFile
 from pydantic import BaseModel, Field
+
+from security.jwt_oauth2_auth import get_current_user
+from security.media_input import MediaInputError, download_validated_image, read_validated_upload
 
 logger = logging.getLogger(__name__)
 
-three_d_router = APIRouter(tags=["3D Pipeline"])
+three_d_router = APIRouter(tags=["3D Pipeline"], dependencies=[Depends(get_current_user)])
 
 
 # =============================================================================
@@ -785,23 +788,14 @@ async def generate_from_image_url(
         },
     )
 
-    # Download image first
-    import httpx
-
     try:
-        async with httpx.AsyncClient() as client:
-            resp = await client.get(request.image_url)
-            resp.raise_for_status()
-
-            # Save to temp file
-            ext = Path(request.image_url).suffix or ".png"
-            temp_path = UPLOAD_DIR / f"{job.job_id}{ext}"
-            temp_path.write_bytes(resp.content)
-
-    except Exception as e:
-        logger.warning(f"Failed to download image for job {job.job_id}: {e}")
-        job_store.fail(job.job_id, f"Failed to download image: {e}")
-        raise HTTPException(status_code=400, detail="Failed to download image")
+        image = await download_validated_image(request.image_url)
+        temp_path = UPLOAD_DIR / f"{job.job_id}{image.suffix}"
+        temp_path.write_bytes(image.content)
+    except MediaInputError as exc:
+        logger.warning("Image URL rejected for job %s: %s", job.job_id, exc)
+        job_store.fail(job.job_id, "Image URL rejected")
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
 
     # Schedule background task based on provider
     huggingface_image_providers = [
@@ -857,10 +851,6 @@ async def generate_from_upload(
     texture_size: int = 1024,
 ) -> JobResponse:
     """Generate 3D model from uploaded image file."""
-    # Validate file type
-    if not file.content_type or not file.content_type.startswith("image/"):
-        raise HTTPException(status_code=400, detail="File must be an image")
-
     # Create job
     job = job_store.create(
         provider=provider,
@@ -872,17 +862,13 @@ async def generate_from_upload(
         },
     )
 
-    # Save uploaded file
-    ext = Path(file.filename or "image.png").suffix or ".png"
-    upload_path = UPLOAD_DIR / f"{job.job_id}{ext}"
-
     try:
-        content = await file.read()
-        upload_path.write_bytes(content)
-    except Exception as e:
-        logger.error(f"Failed to save upload for job {job.job_id}: {e}", exc_info=True)
-        job_store.fail(job.job_id, f"Failed to save upload: {e}")
-        raise HTTPException(status_code=500, detail="Internal server error")
+        image = await read_validated_upload(file)
+        upload_path = UPLOAD_DIR / f"{job.job_id}{image.suffix}"
+        upload_path.write_bytes(image.content)
+    except MediaInputError as exc:
+        job_store.fail(job.job_id, "Image upload rejected")
+        raise HTTPException(status_code=exc.status_code, detail=str(exc)) from exc
 
     # Schedule background task based on provider
     huggingface_image_providers = [

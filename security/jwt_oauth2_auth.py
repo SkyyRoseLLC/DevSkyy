@@ -35,6 +35,7 @@ from enum import StrEnum
 from functools import wraps
 from typing import Any, TypeVar
 
+import bcrypt
 import jwt
 from argon2 import PasswordHasher
 from argon2.exceptions import VerifyMismatchError
@@ -43,7 +44,6 @@ from argon2.exceptions import VerifyMismatchError
 # (used in router endpoint type annotations evaluated at module load time)
 from fastapi import Request
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
-from passlib.context import CryptContext
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 try:
@@ -155,7 +155,7 @@ class TokenType(StrEnum):
 
     ACCESS = "access"
     REFRESH = "refresh"
-    RESET_PASSWORD = "reset_password"
+    RESET_PASSWORD = "reset_password"  # nosec B105 - token type, not a credential
     VERIFY_EMAIL = "verify_email"
     API_KEY = "api_key"
 
@@ -317,18 +317,11 @@ class PasswordManager:
             salt_len=16,  # Salt length
         )
 
-        # BCrypt fallback for legacy systems
-        self.bcrypt_context = CryptContext(
-            schemes=["bcrypt"],
-            deprecated="auto",
-            bcrypt__rounds=12,
-        )
-
     def hash_password(self, password: str, use_argon2: bool = True) -> str:
         """Hash password using Argon2id (preferred) or BCrypt."""
         if use_argon2:
             return self.argon2_hasher.hash(password)
-        return self.bcrypt_context.hash(password)
+        return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt(rounds=12)).decode("ascii")
 
     def verify_password(self, password: str, hashed_password: str) -> bool:
         """Verify password against hash."""
@@ -338,7 +331,12 @@ class PasswordManager:
                 self.argon2_hasher.verify(hashed_password, password)
                 return True
             # Fall back to BCrypt
-            return self.bcrypt_context.verify(password, hashed_password)
+            if hashed_password.startswith(("$2a$", "$2b$", "$2y$")):
+                return bcrypt.checkpw(
+                    password.encode("utf-8"),
+                    hashed_password.encode("ascii"),
+                )
+            return False
         except VerifyMismatchError:
             return False
         except Exception as e:
@@ -998,7 +996,9 @@ def _create_role_checker_class():
 RoleChecker = _create_role_checker_class()
 
 
-def service_or_user_auth_dependency(service_token_env: str = "WORDPRESS_SYNC_SERVICE_TOKEN"):
+def service_or_user_auth_dependency(
+    service_token_env: str = "WORDPRESS_SYNC_SERVICE_TOKEN",  # nosec B107 - env name only
+):
     """Dependency authorizing EITHER a valid Bearer JWT (any authenticated user)
     OR a machine-to-machine service token.
 

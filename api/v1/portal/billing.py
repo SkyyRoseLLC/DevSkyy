@@ -157,7 +157,7 @@ async def create_portal_session(
 
     if not customer_id:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail=(
                 "No Stripe customer found for this tenant. "
                 "Subscribe to a plan first to access billing management."

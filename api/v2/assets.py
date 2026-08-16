@@ -222,7 +222,7 @@ async def list_assets(
     """
     if asset_type and asset_type not in _VALID_ASSET_TYPES:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail=f"asset_type must be one of {sorted(_VALID_ASSET_TYPES)}",
         )
 
