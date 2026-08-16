@@ -1,13 +1,13 @@
 {
   "schema_version": "1.1",
-  "created_at_utc": "2026-08-16T01:42:00Z",
+  "created_at_utc": "2026-08-16T01:15:28Z",
   "candidate": {
     "branch": "codex/skyyrose-v2-marketplace",
     "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
-    "current_integration_commit": "c425d395928bc814edb2b2a6a1db194ab0ec63d3",
-    "last_verified_source_commit": "c425d395928bc814edb2b2a6a1db194ab0ec63d3",
+    "current_integration_commit": "451517c673d2c34e1e1508d213a44a8b64730f41",
+    "last_verified_source_commit": "451517c673d2c34e1e1508d213a44a8b64730f41",
     "state": "CURRENT_LOCAL_CANDIDATE_VERIFIED"
   },
   "manifests": {
@@ -29,22 +29,22 @@
     },
     "workspace-ledger": {
       "path": ".fashion-theme/workspace-ledger.json",
-      "sha256": "e3fa694cdbb41d2fed4e8467dd2d7917b9110c5059e3ad3e67636840ab526ac2"
+      "sha256": "9f4ca25a37ab43467d1f93ecbef3e1c2fba735b5c3fbc626f4147494f326e9f2"
     }
   },
   "package": {
-    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
-    "source_tar_sha256": "1c63aae798192ad12560a44e4ccf0896ffb335c92d00ddfd27146408949bd150",
-    "marketplace_zip_sha256": "cabe76bd3fe468c7d8894693112b7d791c9c441e1296ef475cacddc247573be1",
-    "source_file_count": 250,
+    "payload_commit": "451517c673d2c34e1e1508d213a44a8b64730f41",
+    "source_tar_sha256": "3bad66cb88b9235a434e8d8137bffdb88ee02c99d14d6f869916a11ae79ce83c",
+    "marketplace_zip_sha256": "55fe5d32f70ccff67b2366aef0a185f8f78007091fb15ddbde34786b87af0503",
+    "source_file_count": 256,
     "source_tar_command": "git archive --format=tar <current_integration_commit> -- $(git ls-tree -r --name-only <current_integration_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -Ev '^\\.fashion-theme/(codex-desktop-handoff|promotion-manifest)\\.json$') | shasum -a 256"
   },
   "handoff": {
     "target": "codex-desktop",
     "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-    "current_integration_commit": "c425d395928bc814edb2b2a6a1db194ab0ec63d3",
-    "last_verified_source_commit": "c425d395928bc814edb2b2a6a1db194ab0ec63d3",
-    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
+    "current_integration_commit": "451517c673d2c34e1e1508d213a44a8b64730f41",
+    "last_verified_source_commit": "451517c673d2c34e1e1508d213a44a8b64730f41",
+    "payload_commit": "451517c673d2c34e1e1508d213a44a8b64730f41",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
     "status": "SOURCE_TRACKED_LOCAL_REVIEW_READY",
     "notes": "The local V2 candidate is source-tracked, package-verified, and guarded against stale reconnects. Promotion evidence remains separately governed; no deployment is implied by this handoff."
