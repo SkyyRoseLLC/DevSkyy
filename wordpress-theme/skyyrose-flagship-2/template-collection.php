@@ -106,7 +106,7 @@ get_header();
 		</div>
 		<div class="sr2-manifesto__scroll">
 			<article><span>01</span><h3><?php esc_html_e( 'The meaning', 'skyyrose-flagship-2' ); ?></h3><p><?php echo esc_html( $collection['manifesto'] ); ?></p></article>
-			<figure class="sr2-image-reveal"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['lookbook'] ) ); ?>" alt="<?php echo esc_attr( $collection['name'] . ' lookbook' ); ?>" width="480" height="600" loading="lazy" decoding="async"><figcaption><?php echo esc_html( $collection['name'] ); ?> / LOOK 01</figcaption></figure>
+			<figure class="sr2-image-reveal"><picture><?php if ( ! empty( $collection['lookbook_mobile'] ) ) : ?><source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['lookbook_mobile'] ) ); ?>"><?php endif; ?><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $collection['lookbook'] ) ); ?>" alt="<?php echo esc_attr( $collection['name'] . ' lookbook' ); ?>" width="960" height="1200" loading="lazy" decoding="async"></picture><figcaption><?php echo esc_html( $collection['name'] ); ?> / LOOK 01</figcaption></figure>
 			<article><span>02</span><h3><?php echo esc_html( $collection['invitation_title'] ); ?></h3><p><?php echo esc_html( $collection['invitation'] ); ?></p><a class="sr2-button sr2-button--fill" href="#shop"><?php echo esc_html( $collection['invitation_cta'] ); ?></a></article>
 		</div>
 	</section>

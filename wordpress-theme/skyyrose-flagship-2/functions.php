@@ -371,7 +371,8 @@ function skyyrose2_collections() {
 			'lockup'     => 'images/lockups/signature-lockup.webp',
 			'artifact'   => 'images/logos/sr-monogram-rose-gold.webp',
 			'atmosphere' => 'images/logos/rose-gold-rose.webp',
-			'lookbook'   => 'images/lookbook/lb-rose-hoodie-beanie-480w.webp',
+			'lookbook'   => 'images/lookbook/lb-rose-hoodie-beanie-960w.webp',
+			'lookbook_mobile' => 'images/lookbook/lb-rose-hoodie-beanie-480w.webp',
 			'world'      => array(
 				array( 'image' => 'images/immersive/scene-signature-golden-gate.webp', 'label' => __( 'Golden Gate Salon', 'skyyrose-flagship-2' ), 'copy' => __( 'Gold light turns the bridge into a threshold: one side holds the signature, the other holds the rose.', 'skyyrose-flagship-2' ) ),
 				array( 'image' => 'branding/hero/signature-golden-gate-yacht-1280w.webp', 'label' => __( 'Bay Atelier', 'skyyrose-flagship-2' ), 'copy' => __( 'The water is not a backdrop. It is the distance the house was built to cross.', 'skyyrose-flagship-2' ) ),
@@ -404,7 +405,8 @@ function skyyrose2_collections() {
 			'lockup'     => 'images/lockups/black-rose-lockup.webp',
 			'artifact'   => 'images/lockups/black-rose-star-graphic.webp',
 			'atmosphere' => 'images/logos/black-roses-cloud-cluster.webp',
-			'lookbook'   => 'images/immersive/scene-black-rose-moon-court-gpt2.webp',
+			'lookbook'   => 'images/lookbook/lb-black-rose-football-960w.webp',
+			'lookbook_mobile' => 'images/lookbook/lb-black-rose-football-480w.webp',
 			'world'      => array(
 				array( 'image' => 'scene-2-black-rose.webp', 'source' => 'scroll-world', 'label' => __( 'Forbidden Garden', 'skyyrose-flagship-2' ), 'copy' => __( 'The flower appears where it was never expected to. That is the point.', 'skyyrose-flagship-2' ) ),
 				array( 'image' => 'branding/hero/forbidden-midnight-1280w.webp', 'label' => __( 'Midnight House', 'skyyrose-flagship-2' ), 'copy' => __( 'Concrete, chrome, black petals: a house built for quiet strength, not quietness.', 'skyyrose-flagship-2' ) ),
@@ -439,6 +441,7 @@ function skyyrose2_collections() {
 			'atmosphere' => 'images/logos/heart-rose-composite.webp',
 			// V1's original 960px editorial frame is the visual baseline V2 must exceed.
 			'lookbook'   => 'images/lookbook/lb-love-hurts-varsity-960w.webp',
+			'lookbook_mobile' => 'images/lookbook/lb-love-hurts-varsity-480w.webp',
 			'world'      => array(
 				array( 'image' => 'images/immersive/scene-love-hurts-cathedral.webp', 'label' => __( 'Cathedral of Thorns', 'skyyrose-flagship-2' ), 'copy' => __( 'The room makes space for rage, reverence, and a red rose no one gets to touch.', 'skyyrose-flagship-2' ) ),
 				array( 'image' => 'branding/hero/beauty-and-beast-1280w.webp', 'label' => __( 'The Beast’s Chamber', 'skyyrose-flagship-2' ), 'copy' => __( 'He faces the chamber with his back to us. The rose—not a throne—holds the room.', 'skyyrose-flagship-2' ) ),
@@ -472,6 +475,7 @@ function skyyrose2_collections() {
 			'atmosphere' => 'images/logos/sr-monogram-rose-gold.webp',
 			// Preserve V1's full editorial frame for an honest Kids Capsule baseline.
 			'lookbook'   => 'images/lookbook/lb-kid-black-rose-960w.webp',
+			'lookbook_mobile' => 'images/lookbook/lb-kid-black-rose-480w.webp',
 			'world'      => array(
 				array( 'image' => 'images/immersive/scene-kids-capsule-playroom.webp', 'label' => __( 'After-Dark Playroom', 'skyyrose-flagship-2' ), 'copy' => __( 'A room where imagination is treated like an heirloom, not an interruption.', 'skyyrose-flagship-2' ) ),
 				array( 'image' => 'images/immersive/scene-kids-capsule-runway.webp', 'label' => __( 'First Runway', 'skyyrose-flagship-2' ), 'copy' => __( 'No borrowed confidence. Just the first walk into a story that already has room for them.', 'skyyrose-flagship-2' ) ),
