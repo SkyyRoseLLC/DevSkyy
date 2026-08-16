@@ -182,11 +182,15 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 .sr2-collection-hero__media picture { display: block; width: 100%; height: 100%; }
 .sr2-collection-hero__media img { width: 100%; height: 100%; object-fit: cover; }
 .sr2-collection-hero__veil { z-index: -1; background: linear-gradient(0deg, rgba(5,5,6,.45), transparent 22%); }
-.sr2-collection-hero__effects { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
-.sr2-scene-effect { position: absolute; inset: 0; opacity: 0; }
+.sr2-collection-hero__effects { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; contain: paint; }
+.sr2-scene-effect { position: absolute; inset: 0; opacity: 0; animation-play-state: paused; will-change: transform, opacity; }
+/* The scenic effects are intentionally separate from the artwork: they make the
+   approved monument scenes breathe without repainting or masking any logo/garment
+   proof. JavaScript only switches play-state while the hero is actually visible. */
+.sr2-collection-hero__effects[data-scene-state="running"] .sr2-scene-effect { animation-play-state: running; }
 .sr2-scene-effect--clouds { background: radial-gradient(ellipse at 30% 28%, rgba(186, 193, 205, .18), transparent 34%), radial-gradient(ellipse at 72% 18%, rgba(103, 113, 131, .26), transparent 38%); filter: blur(1.5rem); mix-blend-mode: screen; opacity: .24; transform: scale(1.14); animation: sr2-cloud-roll 24s linear infinite; }
 .sr2-scene-effect--bridge-lights { background: radial-gradient(circle at 29% 64%, rgba(222, 211, 179, .96) 0 .16rem, transparent .38rem), radial-gradient(circle at 35% 61%, rgba(222, 211, 179, .82) 0 .14rem, transparent .34rem), radial-gradient(circle at 43% 58%, rgba(222, 211, 179, .9) 0 .14rem, transparent .34rem), radial-gradient(circle at 53% 56%, rgba(222, 211, 179, .84) 0 .14rem, transparent .34rem), radial-gradient(circle at 63% 56%, rgba(222, 211, 179, .92) 0 .14rem, transparent .36rem), radial-gradient(circle at 73% 58%, rgba(222, 211, 179, .72) 0 .13rem, transparent .32rem); background-size: 18% 18%; background-position: 0 0, 8% 4%, 18% 1%, 32% 0, 49% 3%, 66% 0; background-repeat: no-repeat; mix-blend-mode: screen; animation: sr2-bridge-flicker 3.8s steps(5, end) infinite; }
-.sr2-scene-effect--signature-glow { background: radial-gradient(circle at 71% 58%, color-mix(in srgb, var(--sr2-gold) 60%, transparent), transparent 20%); mix-blend-mode: screen; animation: sr2-signature-glow 5.5s ease-in-out infinite; }
+.sr2-scene-effect--signature-glow { background: radial-gradient(ellipse at 74% 73%, color-mix(in srgb, var(--sr2-gold) 30%, transparent), transparent 31%), radial-gradient(circle at 71% 58%, color-mix(in srgb, var(--sr2-gold) 60%, transparent), transparent 20%); mix-blend-mode: screen; animation: sr2-signature-glow 5.5s ease-in-out infinite; }
 .sr2-scene-effect--throne-glow { background: radial-gradient(circle at 53% 57%, color-mix(in srgb, var(--sr2-rose) 42%, transparent), transparent 20%), radial-gradient(circle at 52% 64%, color-mix(in srgb, var(--sr2-gold) 28%, transparent), transparent 32%); mix-blend-mode: screen; animation: sr2-throne-glow 4.6s ease-in-out infinite; }
 .sr2-scene-effect--petals { inset: -10% 0 0; }
 .sr2-scene-effect--petals i { position: absolute; top: -8%; left: var(--petal-x); display: block; width: var(--petal-size); height: calc(var(--petal-size) * 1.45); border-radius: 72% 28% 68% 32%; background: color-mix(in srgb, var(--sr2-crimson) 82%, #6f0d1a); box-shadow: 0 .15rem .35rem rgba(0,0,0,.28); opacity: 0; transform: rotate(24deg); animation: sr2-petal-fall var(--petal-duration) linear var(--petal-delay) infinite; }
@@ -202,13 +206,18 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 .sr2-scene-effect--petals i:nth-child(10) { --petal-x: 89%; --petal-size: .62rem; --petal-duration: 10.8s; --petal-delay: -9s; --petal-drift: -14vw; }
 .sr2-scene-effect--petals i:nth-child(11) { --petal-x: 23%; --petal-size: .39rem; --petal-duration: 13s; --petal-delay: -10s; --petal-drift: 16vw; }
 .sr2-scene-effect--petals i:nth-child(12) { --petal-x: 69%; --petal-size: .58rem; --petal-duration: 11.4s; --petal-delay: -3s; --petal-drift: -10vw; }
-[data-collection="signature"] .sr2-scene-effect--clouds, [data-collection="signature"] .sr2-scene-effect--bridge-lights, [data-collection="signature"] .sr2-scene-effect--throne-glow, [data-collection="signature"] .sr2-scene-effect--petals, [data-collection="black-rose"] .sr2-scene-effect--signature-glow, [data-collection="black-rose"] .sr2-scene-effect--throne-glow, [data-collection="black-rose"] .sr2-scene-effect--petals, [data-collection="love-hurts"] .sr2-scene-effect--bridge-lights, [data-collection="love-hurts"] .sr2-scene-effect--signature-glow, [data-collection="love-hurts"] .sr2-scene-effect--throne-glow, [data-collection="kids-capsule"] .sr2-scene-effect--clouds, [data-collection="kids-capsule"] .sr2-scene-effect--bridge-lights, [data-collection="kids-capsule"] .sr2-scene-effect--signature-glow, [data-collection="kids-capsule"] .sr2-scene-effect--petals { display: none; }
+[data-collection="signature"] .sr2-scene-effect--clouds, [data-collection="signature"] .sr2-scene-effect--bridge-lights, [data-collection="signature"] .sr2-scene-effect--throne-glow, [data-collection="signature"] .sr2-scene-effect--petals, [data-collection="black-rose"] .sr2-scene-effect--signature-glow, [data-collection="black-rose"] .sr2-scene-effect--throne-glow, [data-collection="black-rose"] .sr2-scene-effect--petals, [data-collection="love-hurts"] .sr2-scene-effect--clouds, [data-collection="love-hurts"] .sr2-scene-effect--bridge-lights, [data-collection="love-hurts"] .sr2-scene-effect--signature-glow, [data-collection="love-hurts"] .sr2-scene-effect--throne-glow, [data-collection="kids-capsule"] .sr2-scene-effect--clouds, [data-collection="kids-capsule"] .sr2-scene-effect--bridge-lights, [data-collection="kids-capsule"] .sr2-scene-effect--signature-glow, [data-collection="kids-capsule"] .sr2-scene-effect--petals { display: none; }
 @keyframes sr2-cloud-roll { from { transform: translate3d(-7%, 0, 0) scale(1.14); } to { transform: translate3d(7%, 1%, 0) scale(1.14); } }
 @keyframes sr2-bridge-flicker { 0%, 100% { opacity: .28; } 16% { opacity: .86; } 23% { opacity: .42; } 48% { opacity: .94; } 63% { opacity: .38; } 82% { opacity: .72; } }
 @keyframes sr2-signature-glow { 0%, 100% { opacity: .12; transform: scale(.94); } 50% { opacity: .48; transform: scale(1.08); } }
 @keyframes sr2-throne-glow { 0%, 100% { opacity: .12; transform: scale(.96); } 50% { opacity: .5; transform: scale(1.07); } }
 @keyframes sr2-petal-fall { 0% { opacity: 0; transform: translate3d(0, -8vh, 0) rotate(0deg); } 12% { opacity: .86; } 84% { opacity: .56; } 100% { opacity: 0; transform: translate3d(var(--petal-drift), 112vh, 0) rotate(520deg); } }
 .sr2-motion-reduced .sr2-collection-hero__effects { display: none; }
+@media (max-width: 640px), (hover: none), (pointer: coarse) {
+	.sr2-scene-effect--clouds { filter: blur(1rem); opacity: .17; }
+	.sr2-scene-effect--bridge-lights { opacity: .72; }
+	.sr2-scene-effect--petals i:nth-child(2n) { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
 	.sr2-collection-hero__effects { display: none; }
 }
@@ -999,13 +1008,13 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .sr-house-confidence span { color: var(--sr2-gold); font-family: var(--sr2-font-ui); font-size: .55rem; letter-spacing: .14em; }
 .sr-house-confidence h3 { margin: .8rem 0 .4rem; font-family: var(--sr2-font-caps); font-size: .92rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; }
 .sr-house-confidence p { margin: 0; color: var(--sr2-muted); font-size: .82rem; line-height: 1.5; }
-.sr-house-legacy { display: grid; grid-template-columns: minmax(16rem, .8fr) minmax(20rem, 1.2fr); min-height: 38rem; border-block: 1px solid var(--sr2-line); background: radial-gradient(circle at 78% 40%, rgba(181,123,132,.13), transparent 34%), #080808; }
-.sr-house-legacy > img { width: 100%; height: 100%; max-height: 46rem; object-fit: cover; object-position: center 24%; }
-.sr-house-legacy > div { display: grid; max-width: 45rem; align-content: center; padding: clamp(2.5rem, 7vw, 7rem); }
-.sr-house-legacy > div > p:first-child { color: var(--sr2-gold); font-family: var(--sr2-font-ui); font-size: .57rem; letter-spacing: .14em; text-transform: uppercase; }
-.sr-house-legacy h2 { margin: .6rem 0 1.3rem; font-family: var(--sr2-font-display); font-size: clamp(3rem, 6vw, 6.7rem); font-weight: 520; letter-spacing: -.06em; line-height: .84; }
-.sr-house-legacy > div > p { max-width: 43ch; color: var(--sr2-muted); }
-.sr-house-legacy a { width: fit-content; margin-top: 1rem; color: var(--sr2-gold); font-family: var(--sr2-font-ui); font-size: .62rem; letter-spacing: .14em; text-decoration: none; text-transform: uppercase; }
+.sr-house-founder { display: grid; grid-template-columns: minmax(16rem, .8fr) minmax(20rem, 1.2fr); min-height: 38rem; border-block: 1px solid var(--sr2-line); background: radial-gradient(circle at 78% 40%, rgba(181,123,132,.13), transparent 34%), #080808; }
+.sr-house-founder > img { width: 100%; height: 100%; max-height: 46rem; object-fit: cover; object-position: center 24%; }
+.sr-house-founder > div { display: grid; max-width: 45rem; align-content: center; padding: clamp(2.5rem, 7vw, 7rem); }
+.sr-house-founder > div > p:first-child { color: var(--sr2-gold); font-family: var(--sr2-font-ui); font-size: .57rem; letter-spacing: .14em; text-transform: uppercase; }
+.sr-house-founder h2 { margin: .6rem 0 1.3rem; font-family: var(--sr2-font-display); font-size: clamp(3rem, 6vw, 6.7rem); font-weight: 520; letter-spacing: -.06em; line-height: .84; }
+.sr-house-founder > div > p { max-width: 43ch; color: var(--sr2-muted); }
+.sr-house-founder a { width: fit-content; margin-top: 1rem; color: var(--sr2-gold); font-family: var(--sr2-font-ui); font-size: .62rem; letter-spacing: .14em; text-decoration: none; text-transform: uppercase; }
 
 @media (max-width: 960px) {
 	.sr-house-featured { grid-template-columns: minmax(0, 1fr) minmax(19rem, .72fr); margin-inline: var(--sr2-page-pad); }
@@ -1035,8 +1044,8 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 	.sr-house-featured__vertical { position: absolute; z-index: 5; top: 1rem; left: 1rem; padding: 0; border: 0; font-size: 1rem; writing-mode: horizontal-tb; transform: none; }
 	.sr-house-featured__hero { grid-column: 1; min-height: 34rem; padding: 0; }
 	.sr-house-featured__summary { border-top: 1px solid var(--sr2-line); border-left: 0; }
-	.sr-house-legacy { grid-template-columns: 1fr; }
-	.sr-house-legacy > img { max-height: 34rem; }
+	.sr-house-founder { grid-template-columns: 1fr; }
+	.sr-house-founder > img { max-height: 34rem; }
 }
 @media (max-width: 520px) {
 	.sr-house-portals__grid { grid-template-columns: 1fr; }

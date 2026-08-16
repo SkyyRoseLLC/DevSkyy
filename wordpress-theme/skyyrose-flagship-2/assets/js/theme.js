@@ -92,6 +92,43 @@
     revealTargets.forEach((target) => target.classList.add('is-seen'));
   }
 
+  /* Collection monuments are one distinct scene per world. Keep the motion
+     declarative in CSS, and use this controller exclusively to prevent any
+     animation work once the scene is off-screen, the tab is hidden, or the
+     visitor explicitly asks for less data or motion. */
+  document.querySelectorAll('[data-scene-motion]').forEach((scene) => {
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let inViewport = false;
+
+    const syncScene = () => {
+      const canAnimate = !motionPreference.matches && !saveData && !document.hidden;
+      const state = canAnimate && inViewport ? 'running' : (canAnimate ? 'paused' : 'static');
+      scene.dataset.sceneState = state;
+      scene.dataset.sceneMode = motionPreference.matches ? 'reduced' : (saveData ? 'data-save' : 'cinematic');
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        inViewport = Boolean(entries[0]?.isIntersecting);
+        syncScene();
+      }, { rootMargin: '18% 0px', threshold: 0.01 });
+      observer.observe(scene);
+      window.addEventListener('pagehide', () => observer.disconnect(), { once: true });
+    } else {
+      // A static scene is the correct progressive fallback; do not start an
+      // infinite effect if visibility cannot be measured.
+      inViewport = false;
+    }
+
+    document.addEventListener('visibilitychange', syncScene);
+    if (motionPreference.addEventListener) {
+      motionPreference.addEventListener('change', syncScene);
+    } else if (motionPreference.addListener) {
+      motionPreference.addListener(syncScene);
+    }
+    syncScene();
+  });
+
   const setupPinnedWorld = (world, rail, chapters, previous, next, count, progress) => {
     const stage = world.querySelector('[data-scroll-world-stage]');
     if (!stage) return false;

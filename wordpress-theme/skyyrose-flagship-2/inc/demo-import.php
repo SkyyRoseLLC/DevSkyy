@@ -61,9 +61,15 @@ function skyyrose2_demo_upsert_page( $slug, $data, $parent_id, &$report ) {
 		$expected_template = skyyrose2_demo_template( $data['template'] );
 		$current_template  = get_page_template_slug( $existing->ID );
 		if ( ! is_wp_error( $expected_template ) && 'default' !== $expected_template && $expected_template !== $current_template ) {
-			$report['warnings'][] = sprintf(
-				/* translators: 1: page title, 2: expected template filename. */
-				__( 'Existing page “%1$s” was preserved. Assign the %2$s template manually if that route should use the collection experience.', 'skyyrose-flagship-2' ),
+			/*
+			 * This is a theme-owned route binding, not merchant page copy. Repair
+			 * the template so a prior V1/V2 assignment cannot keep an obsolete
+			 * layout live after the V2 importer is run.
+			 */
+			update_post_meta( $existing->ID, '_wp_page_template', $expected_template );
+			$report['reused'][] = sprintf(
+				/* translators: 1: page title, 2: synchronized template filename. */
+				__( 'Template synchronized: %1$s → %2$s', 'skyyrose-flagship-2' ),
 				$data['title'],
 				$expected_template
 			);

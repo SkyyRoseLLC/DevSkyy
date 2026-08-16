@@ -8,16 +8,123 @@
  */
 declare(strict_types=1);
 
+$repo_dir  = realpath( __DIR__ . '/..' );
 $theme_dir = realpath( __DIR__ . '/../wordpress-theme/skyyrose-flagship-2' );
-if ( ! $theme_dir ) { http_response_code( 500 ); exit( 'V2 theme missing.' ); }
+
+/**
+ * This renderer is deliberately narrower than WordPress. It is a local review
+ * surface for one explicit V2 theme candidate, not a compatibility layer for
+ * any old SkyyRose theme or an approximation of WooCommerce.
+ *
+ * @param int    $status HTTP response status.
+ * @param string $title Short diagnostic title.
+ * @param string $detail Human-readable local-review diagnostic.
+ * @return never
+ */
+function sr2_preview_fail_closed( $status, $title, $detail ) {
+	http_response_code( (int) $status );
+	header( 'Content-Type: text/html; charset=UTF-8' );
+	echo '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>' . htmlspecialchars( (string) $title, ENT_QUOTES, 'UTF-8' ) . '</title><style>body{margin:0;background:#100e0c;color:#f4eee8;font:16px/1.55 Georgia,serif}main{max-width:46rem;margin:12vh auto;padding:2rem;border:1px solid #8d6e43}p{max-width:65ch;color:#d8cec2}code{font:600 .82rem/1.5 ui-monospace,SFMono-Regular,monospace;color:#efc777}</style></head><body><main><p>LOCAL V2 TEMPLATE PREVIEW</p><h1>' . htmlspecialchars( (string) $title, ENT_QUOTES, 'UTF-8' ) . '</h1><p>' . htmlspecialchars( (string) $detail, ENT_QUOTES, 'UTF-8' ) . '</p></main></body></html>';
+	exit;
+}
+
+/** @return array<string,mixed> */
+function sr2_preview_read_json( $path ) {
+	if ( ! is_readable( $path ) ) {
+		return array();
+	}
+	$decoded = json_decode( (string) file_get_contents( $path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	return is_array( $decoded ) ? $decoded : array();
+}
+
+/** @return string */
+function sr2_preview_current_commit( $repo_dir ) {
+	if ( ! function_exists( 'shell_exec' ) || ! $repo_dir ) {
+		return '';
+	}
+	$commit = trim( (string) shell_exec( 'git -C ' . escapeshellarg( $repo_dir ) . ' rev-parse --verify HEAD 2>/dev/null' ) ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.system_calls_shell_exec
+	return preg_match( '/^[a-f0-9]{40}$/', $commit ) ? $commit : '';
+}
+
+/** @return array<string,string> */
+function sr2_preview_theme_metadata( $theme_dir ) {
+	$style = is_readable( $theme_dir . '/style.css' ) ? (string) file_get_contents( $theme_dir . '/style.css' ) : ''; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	preg_match( '/^Theme Name:\s*(.+)$/mi', $style, $name );
+	preg_match( '/^Version:\s*(.+)$/mi', $style, $version );
+	return array(
+		'name'    => isset( $name[1] ) ? trim( $name[1] ) : '',
+		'version' => isset( $version[1] ) ? trim( $version[1] ) : '',
+	);
+}
+
+if ( ! $repo_dir || ! $theme_dir ) {
+	sr2_preview_fail_closed( 500, 'V2 source unavailable', 'The local V2 source directory is missing. This preview will not substitute another theme.' );
+}
+
+$preview_handoff = sr2_preview_read_json( $repo_dir . '/.fashion-theme/codex-desktop-handoff.json' );
+$preview_theme   = sr2_preview_theme_metadata( $theme_dir );
+$preview_commit  = sr2_preview_current_commit( $repo_dir );
+$preview_candidate = isset( $preview_handoff['candidate'] ) && is_array( $preview_handoff['candidate'] ) ? $preview_handoff['candidate'] : array();
+
+if ( 'SkyyRose Flagship 2' !== ( $preview_theme['name'] ?? '' ) || empty( $preview_theme['version'] ) || empty( $preview_commit ) || empty( $preview_candidate['candidate_id'] ) || empty( $preview_candidate['branch'] ) ) {
+	sr2_preview_fail_closed( 503, 'V2 candidate identity cannot be proven', 'The local renderer could not bind this request to the SkyyRose Flagship 2 source and its V2 handoff record. No legacy theme fallback is available.' );
+}
+
+$preview_identity = array(
+	'candidate_id' => (string) $preview_candidate['candidate_id'],
+	'branch'       => (string) $preview_candidate['branch'],
+	'commit'       => $preview_commit,
+	'theme'        => $preview_theme['name'] . ' ' . $preview_theme['version'],
+);
+
 define( 'ABSPATH', __DIR__ . '/' );
 define( 'OBJECT', 'OBJECT' );
-$route = preg_replace( '/[^a-z0-9-]/i', '', $_GET['route'] ?? 'home' ) ?: 'home';
-$route = 'preorder' === $route ? 'pre-order' : $route;
+$requested_route = preg_replace( '/[^a-z0-9-]/i', '', $_GET['route'] ?? 'home' ) ?: 'home';
+$route = $requested_route;
+if ( 'preorder' === $route ) {
+	header( 'Location: /tools/v2-theme-preview.php?route=pre-order', true, 308 );
+	exit;
+}
 $preview_state = preg_replace( '/[^a-z-]/', '', $_GET['state'] ?? '' );
 $preview_sku = strtolower( preg_replace( '/[^a-z0-9-]/i', '', $_GET['sku'] ?? 'sg-005' ) ) ?: 'sg-005';
 $preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'faq', 'shipping-returns', 'returns-exchanges', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
-if ( ! in_array( $route, $preview_routes, true ) ) { $route = 'home'; }
+$preview_template_map = array(
+	'home'                  => 'front-page.php',
+	'collections'           => 'page.php',
+	'signature'             => 'template-collection.php',
+	'black-rose'            => 'template-collection.php',
+	'love-hurts'            => 'template-collection.php',
+	'kids-capsule'          => 'template-collection.php',
+	'immersive-signature'   => 'template-immersive-signature.php',
+	'immersive-black-rose'  => 'template-immersive-black-rose.php',
+	'immersive-love-hurts'  => 'template-immersive-love-hurts.php',
+	'immersive-kids-capsule'=> 'template-immersive-kids-capsule.php',
+	'pre-order'             => 'page.php',
+	'about'                 => 'page.php',
+	'contact'               => 'page.php',
+	'journal'               => 'index.php',
+	'wishlist'              => 'page.php',
+	'faq'                   => 'page.php',
+	'shipping-returns'      => 'page.php',
+	'returns-exchanges'     => 'page.php',
+	'size-guide'            => 'page.php',
+	'privacy-policy'        => 'page.php',
+	'terms-of-service'      => 'page.php',
+	'accessibility'         => 'page.php',
+	'cart'                  => 'template-parts/v2-commerce-preview.php',
+	'checkout'              => 'template-parts/v2-commerce-preview.php',
+	'account'               => 'template-parts/v2-commerce-preview.php',
+	'order-tracking'        => 'template-parts/v2-commerce-preview.php',
+	'shop'                  => 'woocommerce/archive-product.php',
+	'product'               => 'woocommerce/single-product.php',
+	'404'                   => '404.php',
+);
+if ( ! in_array( $route, $preview_routes, true ) || ! isset( $preview_template_map[ $route ] ) ) {
+	sr2_preview_fail_closed( 404, 'Unknown V2 preview route', sprintf( '“%s” is not a published V2 review route. The renderer does not redirect unknown URLs to the home page.', $requested_route ) );
+}
+if ( ! is_file( $theme_dir . '/' . $preview_template_map[ $route ] ) ) {
+	sr2_preview_fail_closed( 503, 'Canonical V2 template missing', sprintf( 'The route “%s” is mapped to a current V2 template that is not present. The renderer will not load a legacy substitute.', $route ) );
+}
 $preview_posts = array();
 $preview_cursor = 0;
 
@@ -115,14 +222,25 @@ function bloginfo( $field ) { echo 'charset' === $field ? 'UTF-8' : 'SkyyRose'; 
 function get_bloginfo( $field = '' ) { return 'name' === $field ? 'SkyyRose' : ''; }
 function is_home() { global $route; return 'journal' === $route; }
 function wp_get_document_title() { return get_the_title(); }
-function body_class() { echo 'class="sr2-preview woocommerce"'; }
-function wp_body_open() { echo '<div class="sr2-preview-banner">LOCAL V2 TEMPLATE PREVIEW · no staging writes · WooCommerce data is visual-fixture only</div>'; }
+function body_class() {
+	global $route, $preview_identity;
+	echo 'class="sr2-preview woocommerce" data-preview-route="' . esc_attr( $route ) . '" data-preview-theme="' . esc_attr( $preview_identity['theme'] ) . '" data-preview-candidate="' . esc_attr( $preview_identity['candidate_id'] ) . '" data-preview-commit="' . esc_attr( $preview_identity['commit'] ) . '"';
+}
+function wp_body_open() {
+	global $route, $preview_identity, $preview_template_map;
+	echo '<aside class="sr2-preview-banner" aria-label="Local preview identity"><strong>LOCAL V2 REVIEW</strong><span>' . esc_html( $preview_identity['theme'] ) . ' · ' . esc_html( substr( $preview_identity['commit'], 0, 12 ) ) . '</span><span>route: ' . esc_html( $route ) . ' · template: ' . esc_html( $preview_template_map[ $route ] ) . '</span><span>fixture-only · no staging writes</span></aside>';
+}
 function wp_head() {
-	global $route;
+	global $route, $preview_identity, $preview_template_map;
 	$title       = 'home' === $route ? 'SkyyRose — House of Roses' : 'SkyyRose — ' . ucwords( str_replace( '-', ' ', $route ) );
 	$description = 'SkyyRose is an Oakland luxury streetwear house where every collection opens a distinct story world.';
 	$immersive_css = 0 === strpos( $route, 'immersive-' ) ? '<link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/immersive.css">' : '';
-	echo '<title>' . esc_html( $title ) . '</title><meta name="description" content="' . esc_attr( $description ) . '"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css">' . $immersive_css . '<style>.sr2-preview-banner{position:fixed;z-index:1000;right:12px;bottom:12px;padding:8px 10px;background:#e2b6a7;color:#100e0c;font:600 10px/1.2 sans-serif;letter-spacing:.08em}.sr2-preview-gallery img{display:block;width:100%;height:auto}.sr2-preview-gallery__thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.sr2-preview-gallery__thumb{border:1px solid var(--sr2-line);aspect-ratio:1;object-fit:cover}.sr2-pdp-product--portal .quantity{display:grid;gap:4px;flex:0 0 7rem}.sr2-pdp-product--portal .quantity input{width:100%;min-height:48px}.sr2-pdp-product--portal .product_meta{display:grid;gap:6px;margin-top:24px;color:var(--sr2-muted);font:600 .7rem/1.4 var(--sr2-font-ui);letter-spacing:.08em;text-transform:uppercase}.sr2-preview-promises{display:grid;gap:7px;margin-top:24px;padding-left:1.2rem}.sr2-preview-tabs__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:32px}@media(max-width:640px){.sr2-preview-banner{right:8px;left:8px}.sr2-preview-tabs__grid{grid-template-columns:1fr}}</style>';
+	header( 'X-SkyyRose-Preview-Theme: ' . $preview_identity['theme'] );
+	header( 'X-SkyyRose-Preview-Candidate: ' . $preview_identity['candidate_id'] );
+	header( 'X-SkyyRose-Preview-Commit: ' . $preview_identity['commit'] );
+	header( 'X-SkyyRose-Preview-Route: ' . $route );
+	header( 'X-SkyyRose-Preview-Template: ' . $preview_template_map[ $route ] );
+	echo '<title>' . esc_html( $title ) . '</title><meta name="description" content="' . esc_attr( $description ) . '"><meta name="robots" content="noindex,nofollow"><meta name="skyyrose-preview-theme" content="' . esc_attr( $preview_identity['theme'] ) . '"><meta name="skyyrose-preview-candidate" content="' . esc_attr( $preview_identity['candidate_id'] ) . '"><meta name="skyyrose-preview-commit" content="' . esc_attr( $preview_identity['commit'] ) . '"><meta name="skyyrose-preview-route" content="' . esc_attr( $route ) . '"><meta name="skyyrose-preview-template" content="' . esc_attr( $preview_template_map[ $route ] ) . '"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css">' . $immersive_css . '<style>.sr2-preview-banner{position:fixed;z-index:1000;right:12px;bottom:12px;display:grid;gap:3px;padding:8px 10px;background:#e2b6a7;color:#100e0c;font:600 10px/1.2 sans-serif;letter-spacing:.06em;text-align:right;box-shadow:0 4px 16px rgba(0,0,0,.25)}.sr2-preview-banner strong{font-size:11px}.sr2-preview-gallery img{display:block;width:100%;height:auto}.sr2-preview-gallery__thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.sr2-preview-gallery__thumb{border:1px solid var(--sr2-line);aspect-ratio:1;object-fit:cover}.sr2-pdp-product--portal .quantity{display:grid;gap:4px;flex:0 0 7rem}.sr2-pdp-product--portal .quantity input{width:100%;min-height:48px}.sr2-pdp-product--portal .product_meta{display:grid;gap:6px;margin-top:24px;color:var(--sr2-muted);font:600 .7rem/1.4 var(--sr2-font-ui);letter-spacing:.08em;text-transform:uppercase}.sr2-preview-promises{display:grid;gap:7px;margin-top:24px;padding-left:1.2rem}.sr2-preview-tabs__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:32px}@media(max-width:640px){.sr2-preview-banner{right:8px;left:8px;text-align:left}.sr2-preview-tabs__grid{grid-template-columns:1fr}}</style>';
 }
 function wp_footer() {
 	global $route;
@@ -210,17 +328,23 @@ function preview_attachment_path( $id ) {
 		701 => 'images/products/preview/kids-002-back.webp',
 		702 => 'images/products/preview/kids-002-packshot.webp',
 	);
-	return $images[ (int) $id ] ?? $images[1];
+	return $images[ (int) $id ] ?? '';
 }
 function wp_get_attachment_image( $id, $size = 'thumbnail', $icon = false, $attrs = array() ) {
+	$path = preview_attachment_path( $id );
+	if ( ! $path ) {
+		return '';
+	}
 	$class = ! empty( $attrs['class'] ) ? $attrs['class'] : '';
-	return '<img class="' . esc_attr( $class ) . '" src="' . esc_url( get_template_directory_uri() . '/assets/sot/' . preview_attachment_path( $id ) ) . '" alt="SkyyRose published product view">';
+	return '<img class="' . esc_attr( $class ) . '" src="' . esc_url( get_template_directory_uri() . '/assets/sot/' . $path ) . '" alt="SkyyRose published product view">';
 }
 function wp_get_attachment_image_url( $id, $size = 'thumbnail' ) {
-	return get_template_directory_uri() . '/assets/sot/' . preview_attachment_path( $id );
+	$path = preview_attachment_path( $id );
+	return $path ? get_template_directory_uri() . '/assets/sot/' . $path : '';
 }
 function wp_get_attachment_url( $id ) {
-	return get_template_directory_uri() . '/assets/sot/' . preview_attachment_path( $id );
+	$path = preview_attachment_path( $id );
+	return $path ? get_template_directory_uri() . '/assets/sot/' . $path : '';
 }
 function woocommerce_page_title() { return 'The House Edit'; }
 function woocommerce_product_loop() { return true; }
@@ -305,41 +429,35 @@ function preview_product_for_sku( $sku ) {
 	}
 	return null;
 }
+function preview_product_has_fixture_media( $product ) {
+	return $product instanceof WC_Product && (bool) preview_attachment_path( $product->get_image_id() );
+}
 function wc_get_product( $id ) { foreach ( array_merge( wc_get_products(), preview_jersey_products() ) as $product ) { if ( $product->get_id() === (int) $id ) { return $product; } } return null; }
 function wc_get_product_id_by_sku( $sku = '' ) { global $preview_state; if ( 'kids-missing-purple' === $preview_state && 'kids-002' === strtolower( (string) $sku ) ) { return 0; } foreach ( array_merge( wc_get_products(), preview_jersey_products() ) as $product ) { if ( strtolower( $product->get_sku() ) === strtolower( (string) $sku ) ) { return $product->get_id(); } } return 0; }
 
 require $theme_dir . '/functions.php';
 
-if ( in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ) {
-	require $theme_dir . '/template-collection.php';
-} elseif ( 'immersive-signature' === $route ) {
-	require $theme_dir . '/template-immersive-signature.php';
-} elseif ( 'immersive-black-rose' === $route ) {
-	require $theme_dir . '/template-immersive-black-rose.php';
-} elseif ( 'immersive-love-hurts' === $route ) {
-	require $theme_dir . '/template-immersive-love-hurts.php';
-} elseif ( 'immersive-kids-capsule' === $route ) {
-	require $theme_dir . '/template-immersive-kids-capsule.php';
-} elseif ( 'home' === $route ) {
-	require $theme_dir . '/front-page.php';
-} elseif ( 'shop' === $route ) {
+if ( 'shop' === $route ) {
 	$preview_posts = wc_get_products();
-	require $theme_dir . '/woocommerce/archive-product.php';
 } elseif ( 'product' === $route ) {
-	$preview_product = preview_product_for_sku( $preview_sku ) ?: preview_product_for_sku( 'sg-005' );
+	$preview_product = preview_product_for_sku( $preview_sku );
+	if ( ! $preview_product ) {
+		sr2_preview_fail_closed( 404, 'Unknown V2 product fixture', sprintf( 'SKU “%s” has no local V2 fixture. It was not replaced with another product.', $preview_sku ) );
+	}
+	if ( ! preview_product_has_fixture_media( $preview_product ) ) {
+		sr2_preview_fail_closed( 422, 'V2 product fixture media unavailable', sprintf( 'SKU “%s” has no verified local product-media fixture, so the renderer will not show a different garment or a generic image.', $preview_sku ) );
+	}
 	$preview_posts = array( $preview_product );
 	$GLOBALS['preview_product'] = $preview_product;
-	require $theme_dir . '/woocommerce/single-product.php';
 } elseif ( 'journal' === $route ) {
 	$preview_posts = array();
-	require $theme_dir . '/index.php';
-} elseif ( '404' === $route ) {
-	require $theme_dir . '/404.php';
-} elseif ( in_array( $route, array( 'cart', 'checkout', 'account', 'order-tracking' ), true ) ) {
-	require $theme_dir . '/template-parts/v2-commerce-preview.php';
-} else {
+} elseif ( in_array( $route, array( 'collections', 'pre-order', 'about', 'contact', 'wishlist', 'faq', 'shipping-returns', 'returns-exchanges', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility' ), true ) ) {
 	// WordPress would populate The Loop for every Page route.  Give the real V2
 	// page template one inert fixture so local previews render page content too.
 	$preview_posts = array( (object) array( 'ID' => 1 ) );
-	require $theme_dir . '/page.php';
 }
+
+// Every accepted route reaches one explicit current V2 template. There is no
+// catch-all route and no legacy/V1 path: new V2 work either renders here or
+// fails closed above with the candidate identity visible to the reviewer.
+require $theme_dir . '/' . $preview_template_map[ $route ];
