@@ -204,7 +204,7 @@ msgstr ""
 msgid "Black Is Beautiful"
 msgstr ""
 
-#: front-page.php:28 functions.php:383 inc/presentation-registry.php:100 template-immersive-black-rose.php:16
+#: front-page.php:28 functions.php:383 inc/presentation-registry.php:100 template-immersive-black-rose.php:16 template-parts/commerce/search-dialog.php:31
 msgid "Black Rose"
 msgstr ""
 
@@ -386,6 +386,10 @@ msgstr ""
 
 #: template-parts/commerce/quick-view.php:16
 msgid "Close quick view"
+msgstr ""
+
+#: template-parts/commerce/search-dialog.php:16
+msgid "Close search"
 msgstr ""
 
 #: woocommerce/cart/cart.php:99
@@ -620,6 +624,10 @@ msgstr ""
 msgid "Family became foundation. Concrete became runway."
 msgstr ""
 
+#: template-parts/commerce/search-dialog.php:21
+msgid "Find a piece, collection, journal story, or service answer."
+msgstr ""
+
 #: page.php:23
 msgid "Find your chapter."
 msgstr ""
@@ -852,7 +860,7 @@ msgstr ""
 msgid "Keep your pieces close."
 msgstr ""
 
-#: functions.php:452 inc/presentation-registry.php:102 template-immersive-kids-capsule.php:16
+#: functions.php:452 inc/presentation-registry.php:102 template-immersive-kids-capsule.php:16 template-parts/commerce/search-dialog.php:33
 msgid "Kids Capsule"
 msgstr ""
 
@@ -904,7 +912,7 @@ msgstr ""
 msgid "Live price"
 msgstr ""
 
-#: front-page.php:35 functions.php:417 inc/presentation-registry.php:101 template-immersive-love-hurts.php:16
+#: front-page.php:35 functions.php:417 inc/presentation-registry.php:101 template-immersive-love-hurts.php:16 template-parts/commerce/search-dialog.php:32
 msgid "Love Hurts"
 msgstr ""
 
@@ -1424,16 +1432,28 @@ msgstr ""
 msgid "Scroll the collection monuments"
 msgstr ""
 
-#: functions.php:1060 search.php:18 search.php:18
+#: functions.php:1060 search.php:18 search.php:18 template-parts/commerce/search-dialog.php:26
 msgid "Search"
+msgstr ""
+
+#: template-parts/commerce/search-dialog.php:23
+msgid "Search SkyyRose"
 msgstr ""
 
 #: functions.php:212
 msgid "Search SkyyRose products, collections, and journal stories."
 msgstr ""
 
+#: template-parts/commerce/search-dialog.php:29
+msgid "Search shortcuts"
+msgstr ""
+
 #: search.php:18
 msgid "Search the House"
+msgstr ""
+
+#: template-parts/commerce/search-dialog.php:20
+msgid "Search the house."
 msgstr ""
 
 #: functions.php:211
@@ -1540,7 +1560,7 @@ msgstr ""
 msgid "Sign your place in the route."
 msgstr ""
 
-#: front-page.php:21 front-page.php:136 functions.php:350 inc/presentation-registry.php:99 template-immersive-signature.php:16
+#: front-page.php:21 front-page.php:136 functions.php:350 inc/presentation-registry.php:99 template-immersive-signature.php:16 template-parts/commerce/search-dialog.php:30
 msgid "Signature"
 msgstr ""
 
@@ -1792,7 +1812,7 @@ msgstr ""
 msgid "The Invitation"
 msgstr ""
 
-#: functions.php:1065
+#: functions.php:1065 template-parts/commerce/search-dialog.php:19
 msgid "The Living Archive"
 msgstr ""
 
@@ -2010,6 +2030,10 @@ msgstr ""
 
 #: woocommerce/checkout/thankyou.php:7
 msgid "Try payment again"
+msgstr ""
+
+#: template-parts/commerce/search-dialog.php:25
+msgid "Try “Black Rose”"
 msgstr ""
 
 #: functions.php:971

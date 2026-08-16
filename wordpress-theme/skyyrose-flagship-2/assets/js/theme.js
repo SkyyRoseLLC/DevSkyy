@@ -384,6 +384,27 @@
     sizeGuide.addEventListener('close', () => sizeGuideOpener?.focus());
   }
 
+  /* Global search remains a native GET form so WordPress owns the results,
+   * filters, and indexing. The dialog only removes the blank-query detour. */
+  const searchDialog = document.querySelector('#sr2-search-dialog');
+  if (searchDialog && typeof searchDialog.showModal === 'function') {
+    let searchOpener = null;
+    const closeSearch = () => {
+      if (searchDialog.open) searchDialog.close();
+      searchOpener?.focus();
+    };
+    document.querySelectorAll('[data-search-open]').forEach((button) => {
+      button.addEventListener('click', () => {
+        searchOpener = button;
+        if (menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false);
+        searchDialog.showModal();
+        window.requestAnimationFrame(() => searchDialog.querySelector('[data-search-input]')?.focus());
+      });
+    });
+    searchDialog.addEventListener('click', (event) => { if (event.target === searchDialog) closeSearch(); });
+    searchDialog.addEventListener('close', () => searchOpener?.focus());
+  }
+
   if (finePointer && !reducedMotion) {
     document.querySelectorAll('[data-depth-card]').forEach((card) => {
       card.addEventListener('pointermove', (event) => {

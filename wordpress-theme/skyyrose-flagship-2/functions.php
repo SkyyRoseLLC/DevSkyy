@@ -1057,7 +1057,7 @@ function skyyrose2_header() {
 				<a href="<?php echo esc_url( home_url( '/journal/' ) ); ?>"><span>04</span><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><span>05</span><?php esc_html_e( 'About', 'skyyrose-flagship-2' ); ?></a>
 				<a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><span>06</span><?php esc_html_e( 'Contact', 'skyyrose-flagship-2' ); ?></a>
-				<a href="<?php echo esc_url( home_url( '/?s=' ) ); ?>"><span>07</span><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></a>
+				<button type="button" data-search-open aria-haspopup="dialog" aria-controls="sr2-search-dialog"><span>07</span><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></button>
 				<?php if ( function_exists( 'wc_get_page_permalink' ) ) : ?><a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>"><span>08</span><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a><?php endif; ?>
 			</div>
 			<div class="sr2-header-worlds" data-house-header-reel data-house-header-interval="6500" data-house-header-start="0">
