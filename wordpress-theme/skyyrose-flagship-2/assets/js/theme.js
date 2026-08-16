@@ -367,6 +367,23 @@
     quickView.addEventListener('close', () => opener?.focus());
   }
 
+  const sizeGuide = document.querySelector('#sr2-size-guide-dialog');
+  if (sizeGuide && typeof sizeGuide.showModal === 'function') {
+    let sizeGuideOpener = null;
+    const closeSizeGuide = () => {
+      if (sizeGuide.open) sizeGuide.close();
+      sizeGuideOpener?.focus();
+    };
+    document.querySelectorAll('[data-size-guide-open]').forEach((button) => {
+      button.addEventListener('click', () => {
+        sizeGuideOpener = button;
+        sizeGuide.showModal();
+      });
+    });
+    sizeGuide.addEventListener('click', (event) => { if (event.target === sizeGuide) closeSizeGuide(); });
+    sizeGuide.addEventListener('close', () => sizeGuideOpener?.focus());
+  }
+
   if (finePointer && !reducedMotion) {
     document.querySelectorAll('[data-depth-card]').forEach((card) => {
       card.addEventListener('pointermove', (event) => {

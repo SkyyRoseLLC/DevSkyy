@@ -87,6 +87,10 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 			</div>
 		<?php endif; ?>
 
+		<button class="sr2-pdp-product__fit-guide" type="button" data-size-guide-open aria-haspopup="dialog" aria-controls="sr2-size-guide-dialog">
+			<?php esc_html_e( 'Fit + size guide', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span>
+		</button>
+
 		<?php
 		/**
 		 * Hook: woocommerce_single_product_summary.

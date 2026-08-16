@@ -148,6 +148,14 @@ msgstr ""
 msgid "Archive pages"
 msgstr ""
 
+#: template-parts/commerce/size-guide-dialog.php:28
+msgid "Ask Client Services"
+msgstr ""
+
+#: template-parts/commerce/size-guide-dialog.php:24
+msgid "Ask before the order"
+msgstr ""
+
 #: template-immersive-black-rose.php:49
 msgid "At the end of the nave, the rose holds court on its own terms. Protection has become polish. Survival has become posture."
 msgstr ""
@@ -348,6 +356,10 @@ msgstr ""
 msgid "Choose the piece that lets you show up fully without giving the room all of you."
 msgstr ""
 
+#: template-parts/commerce/size-guide-dialog.php:20
+msgid "Choose the silhouette you want to live in."
+msgstr ""
+
 #: page.php:42
 msgid "Choose your seat in the room."
 msgstr ""
@@ -366,6 +378,10 @@ msgstr ""
 
 #: page.php:102
 msgid "Client service links"
+msgstr ""
+
+#: template-parts/commerce/size-guide-dialog.php:16
+msgid "Close fit and size guide"
 msgstr ""
 
 #: template-parts/commerce/quick-view.php:16
@@ -612,6 +628,14 @@ msgstr ""
 msgid "First Runway"
 msgstr ""
 
+#: template-parts/commerce/product-hero.php:91
+msgid "Fit + size guide"
+msgstr ""
+
+#: template-parts/commerce/size-guide-dialog.php:19
+msgid "Fit / House Guide"
+msgstr ""
+
 #: woocommerce/single-product.php:56
 msgid "Fit guidance"
 msgstr ""
@@ -740,6 +764,10 @@ msgstr ""
 msgid "I agree that SkyyRose may use these details to respond to this request."
 msgstr ""
 
+#: template-parts/commerce/size-guide-dialog.php:24
+msgid "If you are between sizes or buying a made-to-order piece, Client Services can help before checkout."
+msgstr ""
+
 #: inc/presentation-registry.php:83
 msgid "If you encounter a barrier, contact Client Services with the page, task, device, browser, and assistive technology involved so an accessible alternative can be provided."
 msgstr ""
@@ -848,6 +876,10 @@ msgstr ""
 msgid "Kids Capsule — Full Scene"
 msgstr ""
 
+#: template-parts/commerce/size-guide-dialog.php:23
+msgid "Lay a comparable garment flat. Compare chest, length, waist, rise, and inseam without stretching it."
+msgstr ""
+
 #: inc/presentation-registry.php:62
 msgid "Lay a similar garment flat without stretching it. Compare chest, body length, waist, rise, and inseam with the measurements published for the piece."
 msgstr ""
@@ -910,6 +942,10 @@ msgstr ""
 
 #: inc/presentation-registry.php:62
 msgid "Measure a piece you own"
+msgstr ""
+
+#: template-parts/commerce/size-guide-dialog.php:23
+msgid "Measure what you own"
 msgstr ""
 
 #: template-immersive-kids-capsule.php:20
@@ -1070,6 +1106,10 @@ msgstr ""
 
 #: template-parts/commerce/product-card.php:136
 msgid "On model / front"
+msgstr ""
+
+#: template-parts/commerce/size-guide-dialog.php:27
+msgid "Open full size guide"
 msgstr ""
 
 #: functions.php:1049
@@ -1278,6 +1318,10 @@ msgstr ""
 
 #: template-parts/commerce/product-card.php:181
 msgid "Quick view"
+msgstr ""
+
+#: template-parts/commerce/size-guide-dialog.php:22
+msgid "Read its fit note and published measurements first. They are the product-specific source of truth."
 msgstr ""
 
 #: front-page.php:172
@@ -1630,6 +1674,10 @@ msgstr ""
 
 #: inc/presentation-registry.php:55
 msgid "Start with Client Services before shipping anything. The team confirms eligibility against the policy, order timing, and the condition of the piece, then provides the correct next step."
+msgstr ""
+
+#: template-parts/commerce/size-guide-dialog.php:22
+msgid "Start with the piece"
 msgstr ""
 
 #: template-immersive-kids-capsule.php:59
