@@ -7,7 +7,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYYROSE2_VERSION', '2.4.0' );
+define( 'SKYYROSE2_VERSION', '2.4.1' );
 define( 'SKYYROSE2_DIR', get_template_directory() );
 define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
@@ -15,6 +15,7 @@ define( 'SKYYROSE2_URI', get_template_directory_uri() );
 require_once SKYYROSE2_DIR . '/inc/marketplace.php';
 require_once SKYYROSE2_DIR . '/inc/performance.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
+require_once SKYYROSE2_DIR . '/inc/security.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
