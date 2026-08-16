@@ -16,7 +16,7 @@ $route = preg_replace( '/[^a-z0-9-]/i', '', $_GET['route'] ?? 'home' ) ?: 'home'
 $route = 'preorder' === $route ? 'pre-order' : $route;
 $preview_state = preg_replace( '/[^a-z-]/', '', $_GET['state'] ?? '' );
 $preview_sku = strtolower( preg_replace( '/[^a-z0-9-]/i', '', $_GET['sku'] ?? 'sg-005' ) ) ?: 'sg-005';
-$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'faq', 'shipping-returns', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
+$preview_routes = array( 'home', 'collections', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'immersive-signature', 'immersive-black-rose', 'immersive-love-hurts', 'immersive-kids-capsule', 'pre-order', 'about', 'contact', 'journal', 'wishlist', 'faq', 'shipping-returns', 'returns-exchanges', 'size-guide', 'privacy-policy', 'terms-of-service', 'accessibility', 'cart', 'checkout', 'account', 'order-tracking', 'shop', 'product', '404' );
 if ( ! in_array( $route, $preview_routes, true ) ) { $route = 'home'; }
 $preview_posts = array();
 $preview_cursor = 0;
@@ -146,6 +146,7 @@ function the_content() {
 	$service_copy = array(
 		'faq'              => 'Answers on fit, pre-order timing, order support, and the path to Client Services.',
 		'shipping-returns' => 'In-stock and pre-order fulfillment guidance, tracking expectations, and return-request steps.',
+		'returns-exchanges' => 'Start a request with Client Services before shipping anything back. Eligibility, item condition, and replacement availability are confirmed case by case.',
 		'size-guide'       => 'Measure a piece you own flat, compare the published measurements, and contact Client Services between sizes.',
 		'privacy-policy'   => 'The store uses order, support, security, and requested communication data according to the published policy.',
 		'terms-of-service' => 'Orders remain subject to acceptance, payment confirmation, availability, and the merchant terms.',

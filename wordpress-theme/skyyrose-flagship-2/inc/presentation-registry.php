@@ -50,6 +50,13 @@ function skyyrose2_marketplace_service_content() {
 				array( 'title' => __( 'Return requests', 'skyyrose-flagship-2' ), 'body' => __( 'Contact Client Services with the order number, item, and reason before sending anything back. Eligibility is confirmed against the policy and item condition.', 'skyyrose-flagship-2' ) ),
 			)
 		),
+		'returns-exchanges' => skyyrose2_marketplace_block_sections(
+			array(
+				array( 'title' => __( 'Before you send a piece back', 'skyyrose-flagship-2' ), 'body' => __( 'Start with Client Services before shipping anything. The team confirms eligibility against the policy, order timing, and the condition of the piece, then provides the correct next step.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'What to include in your request', 'skyyrose-flagship-2' ), 'body' => __( 'Send the order number, the email used at checkout, the piece and size, and a brief reason for the request. Do not email payment-card details.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'Exchanges and made-to-order pieces', 'skyyrose-flagship-2' ), 'body' => __( 'Availability, fit, and production windows are reviewed case by case. A replacement is never promised until Client Services confirms the next available option.', 'skyyrose-flagship-2' ) ),
+			)
+		),
 		'size-guide'       => skyyrose2_marketplace_block_sections(
 			array(
 				array( 'title' => __( 'Measure a piece you own', 'skyyrose-flagship-2' ), 'body' => __( 'Lay a similar garment flat without stretching it. Compare chest, body length, waist, rise, and inseam with the measurements published for the piece.', 'skyyrose-flagship-2' ) ),
@@ -105,6 +112,7 @@ function skyyrose2_marketplace_pages() {
 		'wishlist'         => array( 'title' => __( 'Wishlist', 'skyyrose-flagship-2' ), 'path' => 'wishlist', 'template' => 'page-wishlist.php', 'content' => '' ),
 		'faq'              => array( 'title' => __( 'Frequently Asked Questions', 'skyyrose-flagship-2' ), 'path' => 'faq', 'template' => 'default', 'content' => $service['faq'] ),
 		'shipping-returns' => array( 'title' => __( 'Shipping + Returns', 'skyyrose-flagship-2' ), 'path' => 'shipping-returns', 'template' => 'default', 'content' => $service['shipping-returns'] ),
+		'returns-exchanges' => array( 'title' => __( 'Returns + Exchanges', 'skyyrose-flagship-2' ), 'path' => 'returns-exchanges', 'template' => 'default', 'content' => $service['returns-exchanges'] ),
 		'size-guide'       => array( 'title' => __( 'Size Guide', 'skyyrose-flagship-2' ), 'path' => 'size-guide', 'template' => 'default', 'content' => $service['size-guide'] ),
 		'privacy-policy'   => array( 'title' => __( 'Privacy Policy', 'skyyrose-flagship-2' ), 'path' => 'privacy-policy', 'template' => 'default', 'content' => $service['privacy-policy'] ),
 		'terms-of-service' => array( 'title' => __( 'Terms of Service', 'skyyrose-flagship-2' ), 'path' => 'terms-of-service', 'template' => 'default', 'content' => $service['terms-of-service'] ),
@@ -149,6 +157,7 @@ function skyyrose2_marketplace_menus() {
 			'name'  => 'SkyyRose Footer',
 			'items' => array(
 				array( 'title' => __( 'Shipping + Returns', 'skyyrose-flagship-2' ), 'page' => 'shipping-returns' ),
+				array( 'title' => __( 'Returns + Exchanges', 'skyyrose-flagship-2' ), 'page' => 'returns-exchanges' ),
 				array( 'title' => __( 'Size Guide', 'skyyrose-flagship-2' ), 'page' => 'size-guide' ),
 				array( 'title' => __( 'FAQ', 'skyyrose-flagship-2' ), 'page' => 'faq' ),
 				array( 'title' => __( 'Privacy Policy', 'skyyrose-flagship-2' ), 'page' => 'privacy-policy' ),

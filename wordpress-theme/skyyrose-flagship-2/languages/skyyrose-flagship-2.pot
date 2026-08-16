@@ -100,7 +100,7 @@ msgstr ""
 msgid "A story from the other side of the door"
 msgstr ""
 
-#: functions.php:1058 inc/presentation-registry.php:102 inc/presentation-registry.php:144 inc/starter-content.php:26
+#: functions.php:1058 inc/presentation-registry.php:109 inc/presentation-registry.php:152 inc/starter-content.php:26
 msgid "About"
 msgstr ""
 
@@ -112,15 +112,15 @@ msgstr ""
 msgid "About SkyyRose"
 msgstr ""
 
-#: functions.php:1100 inc/presentation-registry.php:156
+#: functions.php:1100 inc/presentation-registry.php:165
 msgid "Accessibility"
 msgstr ""
 
-#: inc/presentation-registry.php:111
+#: inc/presentation-registry.php:119
 msgid "Accessibility Statement"
 msgstr ""
 
-#: inc/presentation-registry.php:76
+#: inc/presentation-registry.php:83
 msgid "Accessibility feedback"
 msgstr ""
 
@@ -152,6 +152,10 @@ msgstr ""
 msgid "At the end of the nave, the rose holds court on its own terms. Protection has become polish. Survival has become posture."
 msgstr ""
 
+#: inc/presentation-registry.php:57
+msgid "Availability, fit, and production windows are reviewed case by case. A replacement is never promised until Client Services confirms the next available option."
+msgstr ""
+
 #: template-parts/commerce/product-card.php:68 template-parts/home/kids-capsule-reveal.php:39
 msgid "Available"
 msgstr ""
@@ -164,7 +168,7 @@ msgstr ""
 msgid "Back in Oakland, the polish has a source: work, faith, and the decision to make a name mean something."
 msgstr ""
 
-#: functions.php:1051 inc/presentation-registry.php:123
+#: functions.php:1051 inc/presentation-registry.php:131
 msgid "Bag"
 msgstr ""
 
@@ -180,7 +184,11 @@ msgstr ""
 msgid "Beauty Without Permission"
 msgstr ""
 
-#: inc/presentation-registry.php:56
+#: inc/presentation-registry.php:55
+msgid "Before you send a piece back"
+msgstr ""
+
+#: inc/presentation-registry.php:63
 msgid "Between sizes"
 msgstr ""
 
@@ -188,7 +196,7 @@ msgstr ""
 msgid "Black Is Beautiful"
 msgstr ""
 
-#: front-page.php:28 functions.php:383 inc/presentation-registry.php:93 template-immersive-black-rose.php:16
+#: front-page.php:28 functions.php:383 inc/presentation-registry.php:100 template-immersive-black-rose.php:16
 msgid "Black Rose"
 msgstr ""
 
@@ -220,7 +228,7 @@ msgstr ""
 msgid "Black Rose typography and star-and-rose monuments"
 msgstr ""
 
-#: inc/presentation-registry.php:98
+#: inc/presentation-registry.php:105
 msgid "Black Rose — Full Scene"
 msgstr ""
 
@@ -236,7 +244,7 @@ msgstr ""
 msgid "Bloom under a Bay Bridge moon."
 msgstr ""
 
-#: inc/presentation-registry.php:70
+#: inc/presentation-registry.php:77
 msgid "Brand names, artwork, photography, product designs, and site content remain the property of their respective owners and licensors."
 msgstr ""
 
@@ -256,7 +264,7 @@ msgstr ""
 msgid "Built to deliver"
 msgstr ""
 
-#: inc/presentation-registry.php:68
+#: inc/presentation-registry.php:75
 msgid "By using the storefront or placing an order, customers agree to provide current information and use the store lawfully."
 msgstr ""
 
@@ -284,7 +292,7 @@ msgstr ""
 msgid "Chapter 04 · The Heir"
 msgstr ""
 
-#: inc/presentation-registry.php:124
+#: inc/presentation-registry.php:132
 msgid "Checkout"
 msgstr ""
 
@@ -316,7 +324,7 @@ msgstr ""
 msgid "Choose a piece"
 msgstr ""
 
-#: inc/presentation-registry.php:56
+#: inc/presentation-registry.php:63
 msgid "Choose based on the silhouette you want and the product-specific fit note. Client Services can help compare measurements before purchase."
 msgstr ""
 
@@ -380,7 +388,7 @@ msgstr ""
 msgid "Collection worlds. Scroll horizontally."
 msgstr ""
 
-#: functions.php:1054 inc/presentation-registry.php:91 inc/presentation-registry.php:140 inc/starter-content.php:24
+#: functions.php:1054 inc/presentation-registry.php:98 inc/presentation-registry.php:148 inc/starter-content.php:24
 msgid "Collections"
 msgstr ""
 
@@ -404,7 +412,7 @@ msgstr ""
 msgid "Confirm size, edition details, and expected fulfillment window."
 msgstr ""
 
-#: functions.php:1059 inc/presentation-registry.php:103 inc/presentation-registry.php:145 inc/starter-content.php:27 page.php:102
+#: functions.php:1059 inc/presentation-registry.php:110 inc/presentation-registry.php:153 inc/starter-content.php:27 page.php:102
 msgid "Contact"
 msgstr ""
 
@@ -448,7 +456,7 @@ msgstr ""
 msgid "Customer service resources"
 msgstr ""
 
-#: inc/presentation-registry.php:63
+#: inc/presentation-registry.php:70
 msgid "Customers may request access, correction, or deletion where applicable, and may unsubscribe from marketing at any time."
 msgstr ""
 
@@ -560,6 +568,10 @@ msgstr ""
 msgid "Every wound protects a rose."
 msgstr ""
 
+#: inc/presentation-registry.php:57
+msgid "Exchanges and made-to-order pieces"
+msgstr ""
+
 #: inc/demo-import.php:66
 msgid "Existing page “%1$s” was preserved. Assign the %2$s template manually if that route should use the collection experience."
 msgstr ""
@@ -580,7 +592,7 @@ msgstr ""
 msgid "Explore worlds"
 msgstr ""
 
-#: functions.php:1100 inc/presentation-registry.php:153 page.php:95 page.php:102
+#: functions.php:1100 inc/presentation-registry.php:162 page.php:95 page.php:102
 msgid "FAQ"
 msgstr ""
 
@@ -636,7 +648,7 @@ msgstr ""
 msgid "Four stories. One house."
 msgstr ""
 
-#: inc/presentation-registry.php:106
+#: inc/presentation-registry.php:113
 msgid "Frequently Asked Questions"
 msgstr ""
 
@@ -692,7 +704,7 @@ msgstr ""
 msgid "Hold your place"
 msgstr ""
 
-#: inc/presentation-registry.php:90 inc/starter-content.php:23
+#: inc/presentation-registry.php:97 inc/starter-content.php:23
 msgid "Home"
 msgstr ""
 
@@ -720,7 +732,7 @@ msgstr ""
 msgid "How do I get order help?"
 msgstr ""
 
-#: inc/presentation-registry.php:62
+#: inc/presentation-registry.php:69
 msgid "How information is used"
 msgstr ""
 
@@ -728,7 +740,7 @@ msgstr ""
 msgid "I agree that SkyyRose may use these details to respond to this request."
 msgstr ""
 
-#: inc/presentation-registry.php:76
+#: inc/presentation-registry.php:83
 msgid "If you encounter a barrier, contact Client Services with the page, task, device, browser, and assistive technology involved so an accessible alternative can be provided."
 msgstr ""
 
@@ -752,15 +764,15 @@ msgstr ""
 msgid "In-stock orders enter processing after payment clears. Pre-order pieces follow the fulfillment window shown before purchase."
 msgstr ""
 
-#: inc/presentation-registry.php:61
+#: inc/presentation-registry.php:68
 msgid "Information collected"
 msgstr ""
 
-#: inc/presentation-registry.php:62
+#: inc/presentation-registry.php:69
 msgid "Information is used to operate the storefront, fulfill orders, provide support, protect customers, and improve service. Marketing is sent only where permission or applicable law allows it."
 msgstr ""
 
-#: inc/presentation-registry.php:70
+#: inc/presentation-registry.php:77
 msgid "Intellectual property"
 msgstr ""
 
@@ -780,7 +792,7 @@ msgstr ""
 msgid "Jersey Series pieces are deliberately reserved for their own Town Line reveal."
 msgstr ""
 
-#: functions.php:1057 functions.php:1100 home.php:15 inc/presentation-registry.php:104 inc/presentation-registry.php:143 inc/starter-content.php:28
+#: functions.php:1057 functions.php:1100 home.php:15 inc/presentation-registry.php:111 inc/presentation-registry.php:151 inc/starter-content.php:28
 msgid "Journal"
 msgstr ""
 
@@ -808,7 +820,7 @@ msgstr ""
 msgid "Keep your pieces close."
 msgstr ""
 
-#: functions.php:452 inc/presentation-registry.php:95 template-immersive-kids-capsule.php:16
+#: functions.php:452 inc/presentation-registry.php:102 template-immersive-kids-capsule.php:16
 msgid "Kids Capsule"
 msgstr ""
 
@@ -832,11 +844,11 @@ msgstr ""
 msgid "Kids Capsule keeps future inside the house."
 msgstr ""
 
-#: inc/presentation-registry.php:100
+#: inc/presentation-registry.php:107
 msgid "Kids Capsule — Full Scene"
 msgstr ""
 
-#: inc/presentation-registry.php:55
+#: inc/presentation-registry.php:62
 msgid "Lay a similar garment flat without stretching it. Compare chest, body length, waist, rise, and inseam with the measurements published for the piece."
 msgstr ""
 
@@ -856,7 +868,7 @@ msgstr ""
 msgid "Live price"
 msgstr ""
 
-#: front-page.php:35 functions.php:417 inc/presentation-registry.php:94 template-immersive-love-hurts.php:16
+#: front-page.php:35 functions.php:417 inc/presentation-registry.php:101 template-immersive-love-hurts.php:16
 msgid "Love Hurts"
 msgstr ""
 
@@ -880,7 +892,7 @@ msgstr ""
 msgid "Love Hurts stands in scarlet script opposite the cracked-heart star. Down the aisle, the Beast faces the rose he could not forget."
 msgstr ""
 
-#: inc/presentation-registry.php:99
+#: inc/presentation-registry.php:106
 msgid "Love Hurts — Full Scene"
 msgstr ""
 
@@ -896,7 +908,7 @@ msgstr ""
 msgid "Make the origin yours."
 msgstr ""
 
-#: inc/presentation-registry.php:55
+#: inc/presentation-registry.php:62
 msgid "Measure a piece you own"
 msgstr ""
 
@@ -952,7 +964,7 @@ msgstr ""
 msgid "Move through the salon. Select a piece. Enter its world."
 msgstr ""
 
-#: inc/presentation-registry.php:125
+#: inc/presentation-registry.php:133
 msgid "My Account"
 msgstr ""
 
@@ -1092,11 +1104,11 @@ msgstr ""
 msgid "Order updates remain attached to the order and customer account."
 msgstr ""
 
-#: inc/presentation-registry.php:69
+#: inc/presentation-registry.php:76
 msgid "Orders and pricing"
 msgstr ""
 
-#: inc/presentation-registry.php:69
+#: inc/presentation-registry.php:76
 msgid "Orders remain subject to acceptance, payment confirmation, and availability. Pricing or description errors may be corrected before fulfillment, with notice and an appropriate refund where required."
 msgstr ""
 
@@ -1112,7 +1124,7 @@ msgstr ""
 msgid "Origin. Defiance. Legacy."
 msgstr ""
 
-#: inc/presentation-registry.php:75
+#: inc/presentation-registry.php:82
 msgid "Our commitment"
 msgstr ""
 
@@ -1168,7 +1180,7 @@ msgstr ""
 msgid "Post navigation"
 msgstr ""
 
-#: functions.php:1056 inc/presentation-registry.php:101 inc/presentation-registry.php:142 inc/starter-content.php:25
+#: functions.php:1056 inc/presentation-registry.php:108 inc/presentation-registry.php:150 inc/starter-content.php:25
 msgid "Pre-Order"
 msgstr ""
 
@@ -1220,7 +1232,7 @@ msgstr ""
 msgid "Privacy"
 msgstr ""
 
-#: inc/presentation-registry.php:109 inc/presentation-registry.php:154
+#: inc/presentation-registry.php:117 inc/presentation-registry.php:163
 msgid "Privacy Policy"
 msgstr ""
 
@@ -1328,6 +1340,14 @@ msgstr ""
 msgid "Return requests"
 msgstr ""
 
+#: functions.php:1100 inc/presentation-registry.php:115 inc/presentation-registry.php:160 page.php:95
+msgid "Returns + Exchanges"
+msgstr ""
+
+#: page.php:102
+msgid "Returns + exchanges"
+msgstr ""
+
 #: inc/demo-import.php:373
 msgid "Reused"
 msgstr ""
@@ -1404,11 +1424,15 @@ msgstr ""
 msgid "Send a note"
 msgstr ""
 
+#: inc/presentation-registry.php:56
+msgid "Send the order number, the email used at checkout, the piece and size, and a brief reason for the request. Do not email payment-card details."
+msgstr ""
+
 #: page.php:93
 msgid "Send to the house"
 msgstr ""
 
-#: functions.php:1100 inc/presentation-registry.php:107 inc/presentation-registry.php:151 page.php:95
+#: functions.php:1100 inc/presentation-registry.php:114 inc/presentation-registry.php:159 page.php:95
 msgid "Shipping + Returns"
 msgstr ""
 
@@ -1420,7 +1444,7 @@ msgstr ""
 msgid "Shipping updates"
 msgstr ""
 
-#: functions.php:1055 inc/presentation-registry.php:122 inc/presentation-registry.php:141 woocommerce/single-product.php:36
+#: functions.php:1055 inc/presentation-registry.php:130 inc/presentation-registry.php:149 woocommerce/single-product.php:36
 msgid "Shop"
 msgstr ""
 
@@ -1468,7 +1492,7 @@ msgstr ""
 msgid "Sign your place in the route."
 msgstr ""
 
-#: front-page.php:21 front-page.php:136 functions.php:350 inc/presentation-registry.php:92 template-immersive-signature.php:16
+#: front-page.php:21 front-page.php:136 functions.php:350 inc/presentation-registry.php:99 template-immersive-signature.php:16
 msgid "Signature"
 msgstr ""
 
@@ -1500,11 +1524,11 @@ msgstr ""
 msgid "Signature · Oakland, iconic, timeless."
 msgstr ""
 
-#: inc/presentation-registry.php:97
+#: inc/presentation-registry.php:104
 msgid "Signature — Full Scene"
 msgstr ""
 
-#: functions.php:1100 inc/presentation-registry.php:108 inc/presentation-registry.php:152 page.php:95
+#: functions.php:1100 inc/presentation-registry.php:116 inc/presentation-registry.php:161 page.php:95
 msgid "Size Guide"
 msgstr ""
 
@@ -1588,7 +1612,7 @@ msgstr ""
 msgid "SkyyRose is more than a brand—it is a promise. To my daughter. To our city. To every soul that believes in turning pain into purpose and dreams into reality."
 msgstr ""
 
-#: inc/presentation-registry.php:75
+#: inc/presentation-registry.php:82
 msgid "SkyyRose works toward an inclusive shopping experience aligned with WCAG 2.2 Level AA, including keyboard access, readable contrast, meaningful structure, and reduced-motion support."
 msgstr ""
 
@@ -1604,11 +1628,15 @@ msgstr ""
 msgid "Source archive"
 msgstr ""
 
+#: inc/presentation-registry.php:55
+msgid "Start with Client Services before shipping anything. The team confirms eligibility against the policy, order timing, and the condition of the piece, then provides the correct next step."
+msgstr ""
+
 #: template-immersive-kids-capsule.php:59
 msgid "Step into the published Kids Capsule collection where every piece is connected to current fit, size, care, and availability."
 msgstr ""
 
-#: inc/presentation-registry.php:68
+#: inc/presentation-registry.php:75
 msgid "Store terms"
 msgstr ""
 
@@ -1640,7 +1668,7 @@ msgstr ""
 msgid "Terms"
 msgstr ""
 
-#: inc/presentation-registry.php:110 inc/presentation-registry.php:155
+#: inc/presentation-registry.php:118 inc/presentation-registry.php:164
 msgid "Terms of Service"
 msgstr ""
 
@@ -1868,7 +1896,7 @@ msgstr ""
 msgid "The static story scene is ready."
 msgstr ""
 
-#: inc/presentation-registry.php:61
+#: inc/presentation-registry.php:68
 msgid "The store processes information needed for orders, accounts, support, fraud prevention, and requested communications. This may include contact, billing, shipping, order, and device information."
 msgstr ""
 
@@ -1912,7 +1940,7 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: inc/presentation-registry.php:126
+#: inc/presentation-registry.php:134
 msgid "Track Order"
 msgstr ""
 
@@ -2024,11 +2052,15 @@ msgstr ""
 msgid "What can we help with?"
 msgstr ""
 
+#: inc/presentation-registry.php:56
+msgid "What to include in your request"
+msgstr ""
+
 #: inc/presentation-registry.php:42
 msgid "When will a pre-order ship?"
 msgstr ""
 
-#: inc/presentation-registry.php:105
+#: inc/presentation-registry.php:112
 msgid "Wishlist"
 msgstr ""
 
@@ -2040,7 +2072,7 @@ msgstr ""
 msgid "WooCommerce page: %s"
 msgstr ""
 
-#: inc/presentation-registry.php:96
+#: inc/presentation-registry.php:103
 msgid "Worlds"
 msgstr ""
 
@@ -2056,7 +2088,7 @@ msgstr ""
 msgid "Your bag"
 msgstr ""
 
-#: inc/presentation-registry.php:63
+#: inc/presentation-registry.php:70
 msgid "Your choices"
 msgstr ""
 
