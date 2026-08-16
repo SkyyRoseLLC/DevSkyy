@@ -11,8 +11,8 @@
   "current_integration": {
     "branch": "codex/skyyrose-v2-marketplace",
     "worktree": "/Users/theceo/DevSkyy",
-    "current_integration_commit": "2143d7be9090e2d0658391714c12e90ea443a8f5",
-    "last_verified_source_commit": "2143d7be9090e2d0658391714c12e90ea443a8f5",
+    "current_integration_commit": "803d544206ffb48eedc49163808f75d5c6f98d1a",
+    "last_verified_source_commit": "803d544206ffb48eedc49163808f75d5c6f98d1a",
     "marketplace_zip_sha256": "0adde8ad859201623089d69ac0d9a64e095c0daaf812b8984cd342b0d3a96fc1",
     "status": "SOURCE_AND_LOCAL_PREVIEW_VERIFIED",
     "note": "The prototype worktree is archival. Use the active marketplace branch and worktree above for all reconnects; do not resurrect the prototype path."

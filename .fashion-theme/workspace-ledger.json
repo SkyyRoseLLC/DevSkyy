@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-08-16T01:36:17Z",
+  "generated_at_utc": "2026-08-16T01:48:52Z",
   "worktrees": [
     {
       "worktree": "/Users/theceo/DevSkyy",
@@ -8,8 +8,8 @@
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
       "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
       "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
-      "current_integration_commit": "2143d7be9090e2d0658391714c12e90ea443a8f5",
-      "last_verified_source_commit": "2143d7be9090e2d0658391714c12e90ea443a8f5",
+      "current_integration_commit": "803d544206ffb48eedc49163808f75d5c6f98d1a",
+      "last_verified_source_commit": "803d544206ffb48eedc49163808f75d5c6f98d1a",
       "marketplace_zip_sha256": "0adde8ad859201623089d69ac0d9a64e095c0daaf812b8984cd342b0d3a96fc1",
       "owned_paths": [
         ".fashion-theme",
