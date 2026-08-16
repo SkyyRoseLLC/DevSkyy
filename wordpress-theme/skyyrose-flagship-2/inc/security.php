@@ -28,7 +28,7 @@ function skyyrose2_security_headers() {
 		"font-src 'self' data: https://fonts.gstatic.com https://fonts-api.wp.com https://fonts.wp.com https://cdn.jsdelivr.net",
 		"img-src 'self' data: blob: https:",
 		"connect-src 'self' blob: https://cdn.jsdelivr.net https://stats.wp.com https://pixel.wp.com https://public-api.wordpress.com https://api.skyyrose.co https://devskyy.app https://www.facebook.com https://connect.facebook.net https://api.stripe.com https://js.stripe.com https://www.paypal.com https://www.paypalobjects.com",
-		"frame-src 'self' https://www.youtube.com https://player.vimeo.com https://widgets.wp.com https://jetpack.wordpress.com https://wordpress.com https://js.stripe.com https://hooks.stripe.com https://www.paypal.com",
+		"frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://player.vimeo.com https://widgets.wp.com https://jetpack.wordpress.com https://wordpress.com https://js.stripe.com https://hooks.stripe.com https://www.paypal.com",
 		"worker-src 'self' blob:",
 		"child-src 'self' blob:",
 		"object-src 'none'",
