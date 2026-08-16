@@ -1,5 +1,5 @@
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, CheckCircle2, Circle, Clock, Loader2, XCircle } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Clock, Loader2, XCircle } from 'lucide-react';
 import type { Job3D } from '@/lib/api';
 
 interface JobCardProps {

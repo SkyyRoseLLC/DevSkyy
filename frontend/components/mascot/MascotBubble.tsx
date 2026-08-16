@@ -140,7 +140,7 @@ export default function MascotBubble() {
     if (state === 'open') {
       setMessages([{ role: 'mascot', text: context.greeting }]);
     }
-  }, [collection]);
+  }, [collection, context.greeting, state]);
 
   if (isAdmin || isLogin) return null;
 

@@ -34,7 +34,6 @@ import {
   CartesianGrid,
   XAxis,
   YAxis,
-  ResponsiveContainer,
 } from 'recharts';
 
 /*--------------------------------------------------------------

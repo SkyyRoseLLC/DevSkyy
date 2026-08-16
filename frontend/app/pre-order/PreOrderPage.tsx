@@ -12,7 +12,6 @@ import {
   Star,
   Package,
   Crown,
-  Sparkles,
   ShoppingBag,
 } from 'lucide-react';
 import type { CollectionConfig } from '@/lib/collections';
@@ -24,7 +23,7 @@ interface PreOrderPageProps {
 
 export default function PreOrderPage({ collections }: PreOrderPageProps) {
   const [activeCollection, setActiveCollection] = useState<string>('all');
-  const { items: cart, addItem, removeItem: removeCartItem, subtotal, itemCount } = useCartStore();
+  const { items: cart, addItem, removeItem: removeCartItem, subtotal } = useCartStore();
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 

@@ -27,7 +27,6 @@ import {
   MediaSkeleton,
   CategoriesSkeleton,
   TagsSkeleton,
-  UsersSkeleton,
 } from '@/components/admin/wp-skeleton'
 import {
   Globe,
@@ -41,7 +40,6 @@ import {
   Plus,
   RefreshCw,
   Trash2,
-  Edit,
   CheckCircle2,
   XCircle,
   Bot,

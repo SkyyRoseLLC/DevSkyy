@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text3D, Center, Float, Environment } from '@react-three/drei';
-import type { Mesh, Group } from 'three';
+import type { Group } from 'three';
 
 interface LogoMeshProps {
   text: string;

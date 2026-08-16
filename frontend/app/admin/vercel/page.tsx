@@ -10,7 +10,6 @@ import {
   Rocket,
   Activity,
   Settings,
-  Globe,
   GitBranch,
   Clock,
   CheckCircle2,
@@ -78,7 +77,7 @@ export default function VercelAdminPage() {
     setLoading(false)
   }
 
-  const getStateColor = (state: string) => {
+  const _getStateColor = (state: string) => {
     switch (state) {
       case 'READY':
         return 'text-green-400'

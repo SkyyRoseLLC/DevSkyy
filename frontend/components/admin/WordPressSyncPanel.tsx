@@ -5,10 +5,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, CheckCircle2, XCircle, RefreshCw, Globe } from 'lucide-react';
-import { getWordPressSyncService } from '@/lib/wordpress/sync-service';
+import { getWordPressSyncService, type RoundTableResult } from '@/lib/wordpress/sync-service';
 
 interface WordPressSyncPanelProps {
-  result: any;
+  result: RoundTableResult;
   onSyncComplete?: (postId: number) => void;
 }
 

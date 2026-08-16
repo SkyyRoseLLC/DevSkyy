@@ -16,7 +16,7 @@
 //   TIMEOUT_MS default 60000  (Next dev first-compile is slow)
 
 import { chromium } from 'playwright'
-import { mkdir, writeFile } from 'node:fs/promises'
+import { mkdir } from 'node:fs/promises'
 import { dirname, resolve, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 

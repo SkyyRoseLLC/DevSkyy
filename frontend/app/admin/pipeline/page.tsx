@@ -36,7 +36,7 @@ interface QueueStats {
 }
 
 export default function PipelinePage() {
-  const [status, setStatus] = useState<PipelineStatus | null>(null);
+  const [, setStatus] = useState<PipelineStatus | null>(null);
   const [providers, setProviders] = useState<Provider3D[]>([]);
   const [jobs, setJobs] = useState<Job3D[]>([]);
   const [batchJobs, setBatchJobs] = useState<BatchJob[]>([]);
@@ -44,7 +44,7 @@ export default function PipelinePage() {
   const [selectedJob, setSelectedJob] = useState<Job3D | null>(null);
   const [expandedProviders, setExpandedProviders] = useState<Set<string>>(new Set());
 
-  const { status: wsStatus, lastMessage, isConnected } = use3DPipelineWS();
+  const { status: wsStatus, lastMessage } = use3DPipelineWS();
 
   // Calculate queue stats
   const queueStats: QueueStats = {

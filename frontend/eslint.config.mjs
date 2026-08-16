@@ -7,7 +7,14 @@ import reactHooksPlugin from "eslint-plugin-react-hooks";
 export default [
   // Global ignores (must be first, standalone object)
   {
-    ignores: [".next/", "node_modules/", "out/", "coverage/"],
+    ignores: [
+      ".next/",
+      "node_modules/",
+      "out/",
+      "coverage/",
+      "playwright-report/",
+      "test-results/",
+    ],
   },
   // Base JS recommended rules
   js.configs.recommended,
@@ -96,7 +103,11 @@ export default [
       // TypeScript rules
       "@typescript-eslint/no-unused-vars": [
         "warn",
-        { argsIgnorePattern: "^_" },
+        {
+          argsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
       ],
       "@typescript-eslint/no-explicit-any": "warn",
       // Disable base rules handled by TypeScript
@@ -113,6 +124,56 @@ export default [
 
       // General rules
       "no-console": ["warn", { allow: ["warn", "error"] }],
+    },
+  },
+  // Operator scripts, workers, and E2E drivers intentionally write progress
+  // to stdout. Application code remains covered by no-console.
+  {
+    files: [
+      ".claude/skills/**/*.mjs",
+      "scripts/**/*.{ts,mjs}",
+      "e2e/**/*.{ts,mjs}",
+      "lib/queue/**/*.ts",
+      "lib/autonomous/**/*.ts",
+    ],
+    rules: {
+      "no-console": "off",
+    },
+  },
+  // External WordPress and Vercel responses are schema-less integration
+  // boundaries. Their managers perform runtime normalization before use.
+  {
+    files: [
+      "lib/wordpress/**/*.ts",
+      "lib/vercel/**/*.ts",
+      "lib/autonomous/**/*.ts",
+      "components/three-viewer.tsx",
+      "app/admin/vercel/page.tsx",
+    ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
+  // Asset review surfaces must display arbitrary remote and local media URLs;
+  // forcing the Next optimizer would reject valid operator-managed sources.
+  {
+    files: [
+      "app/admin/assets/**/*.tsx",
+      "app/admin/imagery/**/*.tsx",
+      "app/admin/wordpress/**/*.tsx",
+      "components/admin/assets/**/*.tsx",
+      "components/admin/qa/**/*.tsx",
+    ],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
+  {
+    files: ["app/admin/wordpress/page.tsx"],
+    rules: {
+      // The one-time manager bootstrap passes the newly created manager into
+      // the connection check and intentionally does not capture later state.
+      "react-hooks/exhaustive-deps": "off",
     },
   },
 ];

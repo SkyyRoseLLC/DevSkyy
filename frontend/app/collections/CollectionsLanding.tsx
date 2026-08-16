@@ -74,6 +74,7 @@ export default function CollectionsLanding({ collections }: { collections: Colle
                     name={collection.name}
                     accentColor={collection.accentColor}
                     bgColor={collection.bgColor}
+                    priority={index === 0}
                   />
 
                   {/* Gradient overlays */}
@@ -195,11 +196,13 @@ function CollectionCardImage({
   name,
   accentColor,
   bgColor,
+  priority,
 }: {
   heroImage: string;
   name: string;
   accentColor: string;
   bgColor: string;
+  priority: boolean;
 }) {
   const [imageError, setImageError] = useState(false);
 
@@ -228,6 +231,8 @@ function CollectionCardImage({
       fill
       sizes="(max-width: 768px) 100vw, 90vw"
       className="object-cover transition-transform duration-1000 group-hover:scale-105"
+      priority={priority}
+      loading={priority || heroImage.endsWith("collection-pending.svg") ? "eager" : "lazy"}
       onError={() => setImageError(true)}
     />
   );

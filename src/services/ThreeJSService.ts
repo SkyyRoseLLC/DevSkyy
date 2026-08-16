@@ -216,7 +216,10 @@ export class ThreeJSService {
         animationCallback();
       }
 
-      this.renderer!.render(this.scene!, this.camera!);
+      if (!this.renderer || !this.scene || !this.camera) {
+        throw new Error('Three.js renderer is not initialized');
+      }
+      this.renderer.render(this.scene, this.camera);
     };
 
     animate();

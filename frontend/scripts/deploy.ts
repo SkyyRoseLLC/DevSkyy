@@ -66,7 +66,7 @@ class VercelDeployer {
     try {
       await execAsync('vercel --version')
       console.log('✓ Vercel CLI installed')
-    } catch (error) {
+    } catch (_error) {
       throw new Error('Vercel CLI not installed. Run: npm i -g vercel')
     }
 
@@ -88,7 +88,7 @@ class VercelDeployer {
         console.warn('⚠️  Project not linked to Vercel')
         console.warn('   Run: vercel link --project=devskyy')
       }
-    } catch (error) {
+    } catch (_error) {
       console.warn('⚠️  Could not verify project link')
     }
 
@@ -116,7 +116,7 @@ class VercelDeployer {
     console.log('\n🏗️  Building project...')
 
     try {
-      const { stdout, stderr } = await execAsync('pnpm build', {
+      const { stderr } = await execAsync('pnpm build', {
         cwd: this.projectRoot,
       })
 
@@ -125,8 +125,8 @@ class VercelDeployer {
       }
 
       console.log('✓ Build completed successfully')
-    } catch (error: any) {
-      throw new Error(`Build failed: ${error.message}`)
+    } catch (error: unknown) {
+      throw new Error(`Build failed: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
 
@@ -177,8 +177,8 @@ class VercelDeployer {
       console.log('✓ Deployment completed')
 
       return deploymentUrl
-    } catch (error: any) {
-      throw new Error(`Deployment failed: ${error.message}`)
+    } catch (error: unknown) {
+      throw new Error(`Deployment failed: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
 
@@ -219,7 +219,7 @@ class VercelDeployer {
           console.log('✓ Deployment is live')
           return
         }
-      } catch (error) {
+      } catch (_error) {
         // Continue waiting
       }
 
@@ -296,8 +296,8 @@ class VercelDeployer {
       // Note: Actual rollback requires promoting a previous deployment
       // This would be done via Vercel dashboard or API
       console.log('\nTo rollback, promote a previous deployment via Vercel dashboard')
-    } catch (error: any) {
-      throw new Error(`Rollback failed: ${error.message}`)
+    } catch (error: unknown) {
+      throw new Error(`Rollback failed: ${error instanceof Error ? error.message : String(error)}`)
     }
   }
 }

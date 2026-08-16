@@ -10,7 +10,7 @@
  * - Run setup: npx playwright test --project=setup
  */
 
-import { test as setup, expect } from '@playwright/test';
+import { test as setup } from '@playwright/test';
 import path from 'path';
 
 const authFile = path.join(__dirname, '../playwright/.auth/user.json');
@@ -18,11 +18,14 @@ const API_BASE = process.env.API_BASE_URL || 'http://localhost:8000';
 
 // Test credentials (dev mode allows any credentials on localhost)
 const TEST_USER = {
-  username: 'testuser@devskyy.com',
-  password: 'TestPassword123!',
+  username: process.env.E2E_USER_EMAIL ?? '',
+  password: process.env.E2E_USER_PASSWORD ?? '',
 };
 
 setup('authenticate', async ({ page, request }) => {
+  if (!TEST_USER.username || !TEST_USER.password) {
+    throw new Error('E2E_USER_EMAIL and E2E_USER_PASSWORD are required');
+  }
   console.log('Starting authentication setup...');
 
   // Navigate to home first to establish browser context
@@ -61,7 +64,7 @@ setup('authenticate', async ({ page, request }) => {
       console.log('Auth state saved to:', authFile);
       return;
     }
-  } catch (error) {
+  } catch (_error) {
     console.log('API auth failed (backend may not be running), trying UI login...');
   }
 
@@ -89,7 +92,7 @@ setup('authenticate', async ({ page, request }) => {
     } else {
       console.log('No login form found - app may not require auth');
     }
-  } catch (error) {
+  } catch (_error) {
     console.log('UI login skipped - page may not exist');
   }
 
@@ -112,9 +115,13 @@ setup('authenticate as admin', async ({ page, request }) => {
   console.log('Starting admin authentication setup...');
 
   const ADMIN_USER = {
-    username: 'admin@devskyy.com',
-    password: 'AdminPassword123!',
+    username: process.env.E2E_ADMIN_EMAIL ?? '',
+    password: process.env.E2E_ADMIN_PASSWORD ?? '',
   };
+
+  if (!ADMIN_USER.username || !ADMIN_USER.password) {
+    throw new Error('E2E_ADMIN_EMAIL and E2E_ADMIN_PASSWORD are required');
+  }
 
   try {
     const response = await request.post(`${API_BASE}/api/v1/auth/token`, {

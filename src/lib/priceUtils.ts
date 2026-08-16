@@ -63,7 +63,7 @@ export function hasValidDiscount(price: number, salePrice?: number): boolean {
  * @returns The effective price
  */
 export function getEffectivePrice(price: number, salePrice?: number): number {
-  return hasValidDiscount(price, salePrice) ? salePrice! : price;
+  return salePrice !== undefined && hasValidDiscount(price, salePrice) ? salePrice : price;
 }
 
 /**

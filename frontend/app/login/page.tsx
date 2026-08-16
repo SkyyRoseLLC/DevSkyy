@@ -56,7 +56,6 @@ const LoginResponseSchema = z.object({
 });
 
 type LoginForm = z.infer<typeof LoginFormSchema>;
-type LoginResponse = z.infer<typeof LoginResponseSchema>;
 
 // =============================================================================
 // SECURITY UTILITIES

@@ -11,7 +11,9 @@ const getEnvVar = (key: string, defaultValue?: string): string => {
   if (value === undefined && defaultValue === undefined) {
     throw new Error(`Environment variable ${key} is required but not set`);
   }
-  return value ?? defaultValue!;
+  if (value !== undefined) return value;
+  if (defaultValue !== undefined) return defaultValue;
+  throw new Error(`Environment variable ${key} is required but not set`);
 };
 
 const getOptionalEnvVar = (key: string, defaultValue: string = ''): string => {

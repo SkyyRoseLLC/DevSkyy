@@ -12,9 +12,7 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Users,
   Sparkles,
-  Eye,
   ShoppingCart,
   TrendingUp,
   Target,

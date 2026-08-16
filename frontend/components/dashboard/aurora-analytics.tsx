@@ -18,7 +18,6 @@ import {
   TrendingUp,
   Layers,
   Target,
-  ArrowDown,
   Gauge,
   Zap,
 } from 'lucide-react';

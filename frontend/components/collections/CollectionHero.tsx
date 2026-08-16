@@ -75,7 +75,7 @@ export default function CollectionHero({
       {collection.scenes.map((scene, idx) => (
         <div
           key={scene.id}
-          className="absolute inset-0 transition-opacity duration-[600ms]"
+          className="absolute inset-0 transition-opacity duration-500"
           style={{ opacity: idx === activeSceneIndex ? 1 : 0 }}
         >
           <div

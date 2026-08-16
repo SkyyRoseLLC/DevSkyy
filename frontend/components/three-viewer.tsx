@@ -22,8 +22,6 @@ import {
   Sun,
   Moon,
   Download,
-  ZoomIn,
-  ZoomOut,
   Loader2,
 } from 'lucide-react';
 

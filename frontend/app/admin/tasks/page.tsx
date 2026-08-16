@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
-import { roundTableAutoTrigger } from '@/lib/autonomous/round-table-auto-trigger'
+import { roundTableAutoTrigger, type TaskResult } from '@/lib/autonomous/round-table-auto-trigger'
 import { Loader2, Trophy, Check, X } from 'lucide-react'
 
 export default function TasksPage() {
   const [prompt, setPrompt] = useState('')
   const [processing, setProcessing] = useState(false)
-  const [result, setResult] = useState<any>(null)
+  const [result, setResult] = useState<TaskResult | null>(null)
 
   const handleSubmitTask = async () => {
     if (!prompt.trim()) return
@@ -95,7 +95,7 @@ export default function TasksPage() {
                   </p>
                   <p>
                     <strong>Score:</strong>{' '}
-                    {result.roundTableResult?.winner?.score?.toFixed(2)}
+                    {result.roundTableResult?.winner?.scores.total.toFixed(2)}
                   </p>
                   {result.wordpressPostId && (
                     <a

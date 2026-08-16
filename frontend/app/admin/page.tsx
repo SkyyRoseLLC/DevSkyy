@@ -247,3 +247,4 @@ function warning() {
 function idle() {
   return { bg: 'rgba(255,255,255,.05)', color: '#8A8A92' };
 }
+export const instant = false;

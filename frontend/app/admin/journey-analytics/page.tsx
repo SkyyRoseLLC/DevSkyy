@@ -11,7 +11,6 @@ import {
   Trophy,
   Gift,
   TrendingUp,
-  Clock,
   MousePointerClick,
   Activity,
   History,

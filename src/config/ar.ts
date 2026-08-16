@@ -159,8 +159,11 @@ export class ARApiClient {
     }
 
     const data = await response.json();
-    this.sessionId = data.session_id as string;
-    return this.sessionId!;
+    if (typeof data.session_id !== 'string' || !data.session_id) {
+      throw new Error('AR session response did not include a valid session ID');
+    }
+    this.sessionId = data.session_id;
+    return data.session_id;
   }
 
   /**

@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
+import { randomBytes } from 'node:crypto'
+
+const localNextAuthSecret = process.env.NEXTAUTH_SECRET || randomBytes(32).toString('hex')
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -32,5 +35,10 @@ export default defineConfig({
         url: 'http://localhost:3000',
         reuseExistingServer: true,
         timeout: 30_000,
+        env: {
+          ...process.env,
+          NEXTAUTH_URL: process.env.NEXTAUTH_URL || 'http://localhost:3000',
+          NEXTAUTH_SECRET: localNextAuthSecret,
+        },
       },
 })

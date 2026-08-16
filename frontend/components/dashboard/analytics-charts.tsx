@@ -10,8 +10,6 @@ import {
   Cell,
   Pie,
   PieChart,
-  RadialBar,
-  RadialBarChart,
   XAxis,
   YAxis,
 } from 'recharts';
@@ -236,7 +234,7 @@ export function AgentStatusChart({ active, idle, offline }: AgentStatusChartProp
     { name: 'Offline', value: offline, fill: '#6B7280' },
   ];
 
-  const radialData = [
+  const _radialData = [
     {
       name: 'Agents',
       active: (active / total) * 100,

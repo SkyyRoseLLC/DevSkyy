@@ -13,7 +13,7 @@ interface TaskRequest {
   metadata?: Record<string, any>
 }
 
-interface TaskResult {
+export interface TaskResult {
   success: boolean
   roundTableResult?: CompetitionResponse
   wordpressPostId?: number

@@ -5,7 +5,7 @@
 
 import { wpProxyFetch } from './proxy-client';
 
-interface RoundTableResult {
+export interface RoundTableResult {
   id: string;
   prompt_preview: string;
   created_at: string;
@@ -158,7 +158,7 @@ export class WordPressSyncService {
   /**
    * Get sync status for a result
    */
-  async getSyncStatus(resultId: string): Promise<{ synced: boolean; postId?: number; error?: string }> {
+  async getSyncStatus(_resultId: string): Promise<{ synced: boolean; postId?: number; error?: string }> {
     // This would query WordPress to check if the post exists
     // For now, return a placeholder
     return { synced: false };

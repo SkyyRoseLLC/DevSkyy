@@ -12,7 +12,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/lib/api-auth';
-import { getPlatformConnection, getPlatformToken, type PlatformId } from '@/lib/social-media/config';
+import { getPlatformConnection, getPlatformToken } from '@/lib/social-media/config';
 
 // ---------------------------------------------------------------------------
 // Types (mirrors lib/api/endpoints/social-media.ts)

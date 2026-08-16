@@ -47,18 +47,32 @@ const CANONICAL_CSV_RELATIVE = path.join(
 const DEPLOYMENT_CSV_RELATIVE = path.join('data', 'skyyrose-catalog.csv');
 
 /**
- * Resolve a repo-relative file by walking up from cwd until it is found.
+ * Resolve one of the bounded repository data roots used by the dashboard.
  * Shared by the catalog reader, the catalog writer, and the SOT-image reader
  * so every server module agrees on where the monorepo root is.
  */
 export function resolveRepoFile(relative: string): string {
-  let dir = process.cwd();
-  for (let i = 0; i < 6; i += 1) {
-    const candidate = path.join(dir, relative);
+  const cwd = process.cwd();
+  const knownPaths: Record<string, readonly string[]> = {
+    [CANONICAL_CSV_RELATIVE]: [
+      path.join(cwd, 'wordpress-theme', 'skyyrose-flagship', 'data', 'skyyrose-catalog.csv'),
+      path.join(cwd, '..', 'wordpress-theme', 'skyyrose-flagship', 'data', 'skyyrose-catalog.csv'),
+    ],
+    [path.join('renders', 'oai')]: [
+      path.join(cwd, 'renders', 'oai'),
+      path.join(cwd, '..', 'renders', 'oai'),
+    ],
+    [path.join('data', 'sot-images.json')]: [
+      path.join(cwd, 'data', 'sot-images.json'),
+      path.join(cwd, '..', 'data', 'sot-images.json'),
+    ],
+  };
+  const candidates = knownPaths[relative];
+  if (!candidates) {
+    throw new Error(`Unsupported repository data path: ${relative}`);
+  }
+  for (const candidate of candidates) {
     if (fs.existsSync(candidate)) return candidate;
-    const parent = path.dirname(dir);
-    if (parent === dir) break;
-    dir = parent;
   }
   throw new Error(
     `Repo file not found: ${relative} (searched up from ${process.cwd()}).`
@@ -129,9 +143,9 @@ export function resetCatalogCache(): void {
 
 function loadFresh(): CatalogProduct[] {
   const csvPath = resolveCsvPath();
-  const stat = fs.statSync(csvPath);
+  const stat = fs.statSync(/*turbopackIgnore: true*/ csvPath);
   if (cache && cache.mtimeMs === stat.mtimeMs) return cache.products;
-  const text = fs.readFileSync(csvPath, 'utf-8');
+  const text = fs.readFileSync(/*turbopackIgnore: true*/ csvPath, 'utf-8');
   const products = parseCsv(text);
   cache = { products, mtimeMs: stat.mtimeMs };
   return products;

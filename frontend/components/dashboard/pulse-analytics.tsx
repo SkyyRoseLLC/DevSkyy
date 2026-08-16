@@ -18,7 +18,6 @@ import {
   Trophy,
   Flame,
   Globe,
-  Users,
   ShoppingCart,
   ArrowDown,
   Zap,

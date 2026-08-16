@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Crown, ArrowRight, Gift } from 'lucide-react';
-import Link from 'next/link';
 
 const POPUP_DISMISSED_KEY = 'skyyrose-popup-dismissed';
 const POPUP_DELAY_MS = 8000;

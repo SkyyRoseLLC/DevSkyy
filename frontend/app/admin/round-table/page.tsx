@@ -10,14 +10,11 @@ import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
 import {
-  Zap,
   Trophy,
   Clock,
   DollarSign,
   Play,
   Loader2,
-  CheckCircle2,
-  XCircle,
   Sparkles,
 } from 'lucide-react';
 import { api, type CompetitionResponse } from '@/lib/api';

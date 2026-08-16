@@ -17,11 +17,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const collection = getEnrichedCollection(slug);
   if (!collection) return {};
 
-  const totalProducts = collection.scenes.reduce(
-    (sum, s) => sum + s.products.length,
-    0
-  );
-
   return {
     title: `${collection.name} Collection`,
     description: collection.description,

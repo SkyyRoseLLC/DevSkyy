@@ -55,7 +55,7 @@ export function RoundtableDiagram({ agents, accent = '#B76E79', onActiveChange }
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[276px] h-[276px] rounded-full border border-dashed border-white/[0.08] pointer-events-none" />
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[210px] h-[210px] rounded-full border border-white/[0.05] pointer-events-none" />
       <div
-        className="absolute pointer-events-none z-[2] rounded-[40px] blur-[2px] transition-transform duration-[800ms]"
+        className="absolute pointer-events-none z-[2] rounded-[40px] blur-[2px] transition-transform duration-700"
         style={{
           left: CX,
           top: CY - 24,
