@@ -67,6 +67,16 @@ while IFS=$'\t' read -r derivative_root basename widths; do
 	done < <(printf '%s\n' "$widths" | jq -r '.[]')
 done < <(jq -r '.editorial_derivative_sets[]? | [.derivative_root, .basename, (.widths | tojson)] | @tsv' data/image-optimization.json)
 
+# Logos are reusable brand graphics, not scenery. They must remain compositable
+# over the collection worlds, so alpha-channel loss is a shipping failure.
+while IFS= read -r asset; do
+	test -s "$asset" || { echo "Missing transparent brand asset: $asset" >&2; exit 1; }
+	if ! identify -format '%[channels]' "$asset" | grep -q 'a'; then
+		echo "Brand asset lost its transparent alpha channel: $asset" >&2
+		exit 1
+	fi
+done < <(jq -r '.transparent_brand_assets[]' data/image-optimization.json)
+
 while IFS= read -r derivative; do
 	test -s "$derivative" || { echo "Missing opening product-media derivative: $derivative" >&2; exit 1; }
 	bytes="$(stat -f '%z' "$derivative")"
