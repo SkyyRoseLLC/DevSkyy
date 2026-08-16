@@ -8,9 +8,9 @@
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
       "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
       "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
-      "current_integration_commit": "083132a7cbfc66300fa51a79d3670ae5827157cb",
-      "last_verified_source_commit": "083132a7cbfc66300fa51a79d3670ae5827157cb",
-      "marketplace_zip_sha256": "756bd389312a83297740d3023c3c029ce454ae4080d6d3bf7f2a1c8388c2ec46",
+      "current_integration_commit": "4596f8a30ddda2747b77600e039d8177e493f9c5",
+      "last_verified_source_commit": "4596f8a30ddda2747b77600e039d8177e493f9c5",
+      "marketplace_zip_sha256": "b7845cfddfc64b39ca586ab9ecf80f68d3238e0ab3249c8eccae075e9035856f",
       "owned_paths": [
         ".fashion-theme",
         "wordpress-theme/skyyrose-flagship-2"
