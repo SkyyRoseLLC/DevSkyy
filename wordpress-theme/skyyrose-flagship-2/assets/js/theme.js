@@ -558,21 +558,40 @@
   document.querySelectorAll('.single_add_to_cart_button, form.cart button[type="submit"]').forEach((button) => {
     const form = button.closest('form.cart');
     if (!form) return;
+    const restoreCartButton = () => {
+      button.removeAttribute('aria-busy');
+      if (button.dataset.sr2OriginalLabel) button.textContent = button.dataset.sr2OriginalLabel;
+    };
     form.addEventListener('submit', () => {
       if (button.disabled || button.getAttribute('aria-busy') === 'true') return;
       button.setAttribute('aria-busy', 'true');
       button.dataset.sr2OriginalLabel = button.textContent;
       button.textContent = 'Adding…';
     });
-    document.body.addEventListener('wc_fragments_refreshed', () => {
-      button.removeAttribute('aria-busy');
-      if (button.dataset.sr2OriginalLabel) button.textContent = button.dataset.sr2OriginalLabel;
-    });
+    // WooCommerce emits its cart lifecycle through jQuery when that runtime is
+    // present. Keep a native listener as a progressive fallback for a custom
+    // cart integration, but never assume one event transport for both cases.
+    if (window.jQuery) {
+      window.jQuery(document.body).on('added_to_cart wc_fragments_refreshed', restoreCartButton);
+    } else {
+      document.body.addEventListener('added_to_cart', restoreCartButton);
+      document.body.addEventListener('wc_fragments_refreshed', restoreCartButton);
+    }
   });
 
   const heroHeadline = document.querySelector('[data-hero-headline]');
   if (heroHeadline && !reducedMotion) {
-    heroHeadline.innerHTML = heroHeadline.textContent.trim().split(/\s+/).map((word, index) => `<span class="sr-home__hero-word" style="--word-delay:${index * 100}ms">${word}</span>`).join(' ');
+    const words = heroHeadline.textContent.trim().split(/\s+/).filter(Boolean);
+    const fragment = document.createDocumentFragment();
+    words.forEach((word, index) => {
+      const wordElement = document.createElement('span');
+      wordElement.className = 'sr-home__hero-word';
+      wordElement.style.setProperty('--word-delay', `${index * 100}ms`);
+      wordElement.textContent = word;
+      fragment.append(wordElement);
+      if (index < words.length - 1) fragment.append(document.createTextNode(' '));
+    });
+    heroHeadline.replaceChildren(fragment);
   }
 
   const bayMap = document.querySelector('[data-bay-map]');
