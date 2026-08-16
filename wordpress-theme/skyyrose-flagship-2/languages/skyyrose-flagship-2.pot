@@ -628,7 +628,7 @@ msgstr ""
 msgid "First Runway"
 msgstr ""
 
-#: template-parts/commerce/product-hero.php:91
+#: template-parts/commerce/product-hero.php:99
 msgid "Fit + size guide"
 msgstr ""
 
@@ -734,6 +734,10 @@ msgstr ""
 
 #: page.php:72
 msgid "House Codes"
+msgstr ""
+
+#: template-parts/commerce/product-hero.php:93
+msgid "House note"
 msgstr ""
 
 #: front-page.php:162
@@ -1280,7 +1284,7 @@ msgstr ""
 msgid "Privacy policy"
 msgstr ""
 
-#: template-parts/commerce/product-hero.php:49
+#: template-parts/commerce/product-hero.php:50
 msgid "Product archive"
 msgstr ""
 
@@ -1304,7 +1308,7 @@ msgstr ""
 msgid "Published and available"
 msgstr ""
 
-#: template-parts/commerce/product-hero.php:47
+#: template-parts/commerce/product-hero.php:48
 msgid "Published product views"
 msgstr ""
 

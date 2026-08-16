@@ -31,6 +31,7 @@ $gallery_count       = count( $hero_product->get_gallery_image_ids() ) + ( $hero
 $stock_html          = wc_get_stock_html( $hero_product );
 $stock_state         = $hero_product->is_in_stock() ? 'available' : 'unavailable';
 $portal_kicker       = $hero_collection_data && ! empty( $hero_collection_data['kicker'] ) ? $hero_collection_data['kicker'] : '';
+$portal_story        = $hero_collection_data && ! empty( $hero_collection_data['card_story'] ) ? $hero_collection_data['card_story'] : '';
 $portal_artifact_uri = $hero_collection_data && ! empty( $hero_collection_data['artifact'] ) ? skyyrose2_sot_asset_uri( $hero_collection_data['artifact'] ) : '';
 $product_type        = $hero_product->get_type();
 $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
@@ -85,6 +86,13 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 				<span class="sr2-pdp-product__availability-mark" aria-hidden="true"></span>
 				<?php echo wp_kses_post( $stock_html ); ?>
 			</div>
+		<?php endif; ?>
+
+		<?php if ( $portal_story ) : ?>
+			<aside class="sr2-pdp-product__house-note">
+				<span><?php esc_html_e( 'House note', 'skyyrose-flagship-2' ); ?></span>
+				<p><?php echo esc_html( $portal_story ); ?></p>
+			</aside>
 		<?php endif; ?>
 
 		<button class="sr2-pdp-product__fit-guide" type="button" data-size-guide-open aria-haspopup="dialog" aria-controls="sr2-size-guide-dialog">

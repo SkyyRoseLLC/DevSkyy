@@ -899,6 +899,9 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 @media (max-width: 640px) { .sr2-quick-view__panel { grid-template-columns: 1fr; } .sr2-quick-view__media { min-height: 18rem; max-height: 52vh; } }
 .sr2-pdp-product__fit-guide { display: inline-flex; width: fit-content; align-items: center; gap: .45rem; margin: .9rem 0 0; padding: 0; border: 0; background: transparent; color: var(--sr2-portal-accent); font-family: var(--sr2-font-ui); font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; cursor: pointer; }
 .sr2-pdp-product__fit-guide:hover, .sr2-pdp-product__fit-guide:focus-visible { color: var(--sr2-ink); text-decoration: underline; text-underline-offset: .28em; }
+.sr2-pdp-product__house-note { display: grid; gap: .5rem; margin: var(--sr2-space-4) 0 0; padding: .9rem 0 .9rem 1rem; border-left: 2px solid var(--sr2-portal-accent); }
+.sr2-pdp-product__house-note span { color: var(--sr2-portal-accent); font-family: var(--sr2-font-ui); font-size: .58rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.sr2-pdp-product__house-note p { max-width: 43ch; margin: 0; color: color-mix(in srgb, var(--sr2-ink) 82%, transparent); font-size: .94rem; line-height: 1.55; }
 .sr2-size-guide-dialog { width: min(64rem, calc(100% - 2rem)); max-width: none; padding: 0; border: 1px solid var(--sr2-gold); background: var(--sr2-void); color: var(--sr2-ink); box-shadow: 0 2rem 6rem rgba(0,0,0,.68); }
 .sr2-size-guide-dialog::backdrop { background: rgba(0,0,0,.78); backdrop-filter: blur(10px); }
 .sr2-size-guide-dialog__panel { display: grid; gap: clamp(1.4rem, 3vw, 2.5rem); padding: clamp(1.5rem, 5vw, 4rem); }
