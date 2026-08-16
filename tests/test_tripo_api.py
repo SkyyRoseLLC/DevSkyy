@@ -112,7 +112,7 @@ class TestAgentDiscovery:
                 status.HTTP_200_OK,
                 status.HTTP_401_UNAUTHORIZED,
                 status.HTTP_404_NOT_FOUND,
-                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                status.HTTP_422_UNPROCESSABLE_CONTENT,
             ]
 
     def test_filter_agents_by_3d_category(self, client: TestClient, auth_headers: dict) -> None:
@@ -203,7 +203,7 @@ class TestTextTo3DGeneration:
                 status.HTTP_202_ACCEPTED,
                 status.HTTP_401_UNAUTHORIZED,
                 status.HTTP_404_NOT_FOUND,
-                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                status.HTTP_422_UNPROCESSABLE_CONTENT,
             ]
 
     def test_generate_different_output_formats(self) -> None:
@@ -299,7 +299,7 @@ class TestImageTo3DGeneration:
                 status.HTTP_202_ACCEPTED,
                 status.HTTP_401_UNAUTHORIZED,
                 status.HTTP_404_NOT_FOUND,
-                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                status.HTTP_422_UNPROCESSABLE_CONTENT,
             ]
 
     def test_generate_from_base64_image(self) -> None:
@@ -508,7 +508,7 @@ class TestErrorHandling:
 
             # Should return 422 Unprocessable Entity or 404 if route doesn't exist
             assert response.status_code in [
-                status.HTTP_422_UNPROCESSABLE_ENTITY,
+                status.HTTP_422_UNPROCESSABLE_CONTENT,
                 status.HTTP_404_NOT_FOUND,
             ]
 

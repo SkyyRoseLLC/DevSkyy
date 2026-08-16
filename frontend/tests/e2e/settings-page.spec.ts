@@ -1,5 +1,9 @@
 import { test, expect } from '@playwright/test';
 
+const adminStorageState = process.env.E2E_ADMIN_STORAGE_STATE;
+test.skip(!adminStorageState, 'Authenticated settings E2E requires E2E_ADMIN_STORAGE_STATE');
+test.use({ storageState: adminStorageState || undefined });
+
 test.describe('Settings Page', () => {
   test.beforeEach(async ({ page }) => {
     // Navigate to settings page (relative — uses baseURL: the CI-served build, not production)

@@ -239,16 +239,12 @@ class TestUsageMeteringFallback:
         assert self.metering.get_usage("tenant-B", "product-render") == 7
 
 
-@pytest.mark.skipif(
-    not os.getenv("REDIS_URL"),
-    reason="Skipping fakeredis test — REDIS_URL not set",
-)
 class TestUsageMeteringFakeRedis:
     """Tests with fakeredis when available."""
 
     def setup_method(self):
         try:
-            import fakeredis  # type: ignore[import]
+            import fakeredis
 
             from billing.metering import UsageMetering
 

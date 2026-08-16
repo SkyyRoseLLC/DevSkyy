@@ -26,6 +26,14 @@ from security.jwt_oauth2_auth import (
 from security.rate_limiting import RATE_LIMIT_TIERS, AdvancedRateLimiter
 
 
+@pytest.fixture(autouse=True)
+def secure_test_jwt_key(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Use an RFC 7518-compliant HS512 key in every security test."""
+    secure_key = "test-only-" + "x" * 64
+    monkeypatch.setenv("JWT_SECRET_KEY", secure_key)
+    monkeypatch.setenv("JWT_REFRESH_SECRET_KEY", secure_key)
+
+
 class TestAESGCMEncryption:
     """Test AES-256-GCM encryption."""
 
@@ -256,13 +264,6 @@ class TestPasswordManager:
 
         assert pm.verify_password("wrong", hashed) is False
 
-    @pytest.mark.skip(
-        reason="INTENTIONAL SKIP: passlib/bcrypt 5.x compatibility issue. "
-        "BCrypt 5.x changed password length handling which breaks passlib integration. "
-        "Argon2id is the production default per security best practices. "
-        "BCrypt support retained for legacy password verification only. "
-        "See: https://github.com/pyca/bcrypt/issues/684"
-    )
     def test_bcrypt_fallback(self):
         """Should support BCrypt for legacy."""
         pm = PasswordManager()

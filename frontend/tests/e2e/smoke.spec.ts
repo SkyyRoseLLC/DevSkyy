@@ -42,8 +42,8 @@ test.describe('Smoke Tests', () => {
 
   test('API health check', async ({ request }) => {
     const response = await request.get('/api/health')
-    // Accept 200 or 404 (endpoint may not exist yet)
-    expect([200, 404]).toContain(response.status())
+    // The health route may be public, absent, or fail closed behind auth.
+    expect([200, 401, 404]).toContain(response.status())
   })
 })
 

@@ -282,6 +282,27 @@ describe('CheckoutManager', () => {
       expect(result.error).toBe('Payment failed');
     });
 
+    it.each([undefined, '', 'not-a-payment-intent', 'pi_bad/value'])(
+      'should fail closed for an invalid payment intent ID: %p',
+      async (paymentIntentId) => {
+        const mockConfirmPayment = jest.fn().mockResolvedValue({
+          paymentIntent: { id: paymentIntentId, status: 'succeeded' },
+        });
+        initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
+        handlePaymentResult.mockReturnValue({ success: true, paymentIntentId });
+        global.fetch = jest.fn();
+
+        const mgr = new CheckoutManager({ ...defaultConfig, enableWooCommerceSync: true });
+        const result = await mgr.processPayment({}, mockCart, mockCustomerNoBilling);
+
+        expect(result).toEqual({
+          success: false,
+          error: 'Payment provider returned an invalid intent ID',
+        });
+        expect(global.fetch).not.toHaveBeenCalled();
+      }
+    );
+
     it('should handle exception during payment', async () => {
       const mockConfirmPayment = jest.fn().mockRejectedValue(new Error('Network timeout'));
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
