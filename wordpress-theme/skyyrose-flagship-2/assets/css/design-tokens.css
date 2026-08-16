@@ -29,7 +29,8 @@
 	--sr2-rose: #b76e79;
 	--sr2-gold: #d4af37;
 	--sr2-silver: #c0c0c0;
-	--sr2-crimson: #dc143c;
+	/* Love Hurts keeps its saturated red code while meeting AA contrast on the void. */
+	--sr2-crimson: #eb4666;
 	--sr2-oxblood: #6f1821;
 	--sr2-accent: var(--sr2-rose);
 	--sr2-accent-rgb: 183, 110, 121;
@@ -77,7 +78,7 @@
 
 [data-collection="love-hurts"] {
 	--sr2-accent: var(--sr2-crimson);
-	--sr2-accent-rgb: 220, 20, 60;
+	--sr2-accent-rgb: 235, 70, 102;
 }
 
 [data-collection="kids-capsule"] {
