@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "generated_at_utc": "2026-08-16T01:24:00Z",
+  "generated_at_utc": "2026-08-16T01:42:00Z",
   "worktrees": [
     {
       "worktree": "/Users/theceo/DevSkyy",
@@ -8,9 +8,9 @@
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
       "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
       "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
-      "current_integration_commit": "4165543b659bb4043919f4ba675e17a5eb76ec3e",
-      "last_verified_source_commit": "4165543b659bb4043919f4ba675e17a5eb76ec3e",
-      "marketplace_zip_sha256": "d0f4cf6828b8224b303c9c1fee7714fd841eec72d95a7760c5cadf2c7210507f",
+      "current_integration_commit": "c425d395928bc814edb2b2a6a1db194ab0ec63d3",
+      "last_verified_source_commit": "c425d395928bc814edb2b2a6a1db194ab0ec63d3",
+      "marketplace_zip_sha256": "cabe76bd3fe468c7d8894693112b7d791c9c441e1296ef475cacddc247573be1",
       "owned_paths": [
         ".fashion-theme",
         "wordpress-theme/skyyrose-flagship-2"
