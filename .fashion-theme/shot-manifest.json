@@ -489,12 +489,13 @@
       "source_path": "/Users/theceo/DevSkyy/assets/branding/skyyrose-logo-animated.gif",
       "source_sha256": "43332f8eab43af05266cbfdc85bc40acc92412a421bb679a6facb3ee5fa16dd4",
       "manifest_status": "FOUNDER_APPROVED",
-      "kind": "global-header-brand-mark",
+      "kind": "global-brand-motion-mark",
       "collection": null,
       "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
       "candidate_file_state": "PRESENT",
       "approved_uses_from_source": [
-        "V2 global header across every route"
+        "V2 global header across every route",
+        "V2 global footer centered between House and customer-care navigation"
       ],
       "derivatives": [
         {

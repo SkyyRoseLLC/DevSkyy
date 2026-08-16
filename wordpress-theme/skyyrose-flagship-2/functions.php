@@ -13,6 +13,8 @@ define( 'SKYYROSE2_URI', get_template_directory_uri() );
 
 /* Fresh-install, demo-import, and editor integration. */
 require_once SKYYROSE2_DIR . '/inc/marketplace.php';
+require_once SKYYROSE2_DIR . '/inc/performance.php';
+require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -1298,15 +1300,21 @@ function skyyrose2_header() {
 function skyyrose2_footer() {
 	?>
 	<footer class="sr2-footer">
-		<div><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/lockups/signature-lockup.webp' ) ); ?>" alt="" width="900" height="400" loading="lazy"></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
-		<nav aria-label="<?php esc_attr_e( 'Footer navigation', 'skyyrose-flagship-2' ); ?>">
-			<?php if ( has_nav_menu( 'footer' ) && function_exists( 'wp_nav_menu' ) ) : ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'footer', 'container' => false, 'menu_class' => 'sr2-footer__menu', 'fallback_cb' => false ) ); ?>
-			<?php else : ?>
-				<a href="<?php echo esc_url( home_url( '/journal/' ) ); ?>"><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/shipping-returns/' ) ); ?>"><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/returns-exchanges/' ) ); ?>"><?php esc_html_e( 'Returns + Exchanges', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/size-guide/' ) ); ?>"><?php esc_html_e( 'Size Guide', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>"><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>"><?php esc_html_e( 'Privacy', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/terms-of-service/' ) ); ?>"><?php esc_html_e( 'Terms', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/accessibility/' ) ); ?>"><?php esc_html_e( 'Accessibility', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Support', 'skyyrose-flagship-2' ); ?></a>
-			<?php endif; ?>
+		<nav class="sr2-footer__nav sr2-footer__nav--house" aria-label="<?php esc_attr_e( 'Explore SkyyRose', 'skyyrose-flagship-2' ); ?>">
+			<a href="<?php echo esc_url( skyyrose2_shop_url() ); ?>"><?php esc_html_e( 'Shop', 'skyyrose-flagship-2' ); ?></a>
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'collections' ) ); ?>"><?php esc_html_e( 'Collections', 'skyyrose-flagship-2' ); ?></a>
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'pre-order' ) ); ?>"><?php esc_html_e( 'Pre-Order', 'skyyrose-flagship-2' ); ?></a>
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a>
 		</nav>
-		<p class="sr2-footer__legal">© <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php esc_html_e( 'The Skyy Rose Collection LLC', 'skyyrose-flagship-2' ); ?></p>
+		<div class="sr2-footer__identity"><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-384w.webp' ) ); ?>" data-brand-animation-mode="viewport" alt="" width="384" height="216" loading="lazy" decoding="async" aria-hidden="true"><span class="screen-reader-text"><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
+		<nav class="sr2-footer__nav sr2-footer__nav--service" aria-label="<?php esc_attr_e( 'Customer care', 'skyyrose-flagship-2' ); ?>">
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'faq' ) ); ?>"><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></a>
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'shipping-returns' ) ); ?>"><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></a>
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'returns-exchanges' ) ); ?>"><?php esc_html_e( 'Returns + Exchanges', 'skyyrose-flagship-2' ); ?></a>
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'size-guide' ) ); ?>"><?php esc_html_e( 'Size Guide', 'skyyrose-flagship-2' ); ?></a>
+			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Support', 'skyyrose-flagship-2' ); ?></a>
+		</nav>
+		<div class="sr2-footer__legal"><p>© <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php esc_html_e( 'The Skyy Rose Collection LLC', 'skyyrose-flagship-2' ); ?></p><nav aria-label="<?php esc_attr_e( 'Legal', 'skyyrose-flagship-2' ); ?>"><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'privacy-policy' ) ); ?>"><?php esc_html_e( 'Privacy', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'terms-of-service' ) ); ?>"><?php esc_html_e( 'Terms', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'accessibility' ) ); ?>"><?php esc_html_e( 'Accessibility', 'skyyrose-flagship-2' ); ?></a></nav></div>
 	</footer>
 	<?php
 }

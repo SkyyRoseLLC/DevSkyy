@@ -6,7 +6,7 @@
     "max_served_hero_bytes": 260000,
     "max_served_editorial_bytes": 260000,
     "source_policy": "Original SOT pixels remain preserved; templates serve only responsive derivatives.",
-    "brand_graphic_policy": "Standalone SkyyRose brand lockups, monograms, collection graphics, and animated header marks retain an alpha channel. Scene photography is intentionally excluded from this transparency rule."
+    "brand_graphic_policy": "Standalone SkyyRose brand lockups, monograms, collection graphics, and animated global brand marks retain an alpha channel. The rotating header/footer derivative starts from a 5 KB still, loads its 1 MB motion asset only for motion-enabled clients, and defers the below-fold footer request until it approaches the viewport. Scene photography is intentionally excluded from this transparency rule."
   },
   "derivative_root": "assets/sot/images/hero/responsive",
   "editorial_derivative_sets": [

@@ -163,11 +163,11 @@ get_header();
 		</div>
 	</section>
 
-	<section class="sr-house-founder" aria-labelledby="sr-house-founder-title">
+	<section class="sr-house-legacy" aria-labelledby="sr-house-legacy-title">
 		<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/about/skyy-rose-founder-hero.webp' ) ); ?>" alt="<?php esc_attr_e( 'Skyy Rose wearing an original SkyyRose look', 'skyyrose-flagship-2' ); ?>" width="726" height="1089" loading="lazy" decoding="async">
 		<div>
 			<p><?php esc_html_e( 'The architect and his why', 'skyyrose-flagship-2' ); ?></p>
-			<h2 id="sr-house-founder-title"><?php esc_html_e( 'A legacy in bloom.', 'skyyrose-flagship-2' ); ?></h2>
+			<h2 id="sr-house-legacy-title"><?php esc_html_e( 'A legacy in bloom.', 'skyyrose-flagship-2' ); ?></h2>
 			<p><?php esc_html_e( 'SkyyRose is more than a brand—it is a promise. To my daughter. To our city. To every soul that believes in turning pain into purpose and dreams into reality.', 'skyyrose-flagship-2' ); ?></p>
 			<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Read the house story', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></a>
 		</div>

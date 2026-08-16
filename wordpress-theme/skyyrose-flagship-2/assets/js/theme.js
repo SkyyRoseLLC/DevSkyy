@@ -20,9 +20,24 @@
       return;
     }
 
-    // The still is the initial, tiny, no-layout-shift header asset. Only clients
-    // that permit motion and have not requested data saving download the animation.
-    image.src = image.dataset.brandAnimation;
+    const loadAnimation = () => {
+      if (image.dataset.brandAnimationLoaded === 'true') return;
+      image.dataset.brandAnimationLoaded = 'true';
+      image.src = image.dataset.brandAnimation;
+    };
+
+    // Below-fold brand motion stays on its tiny still until it approaches the
+    // viewport. The header animation remains immediate and layout-stable.
+    if (image.dataset.brandAnimationMode === 'viewport' && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        if (!entries[0]?.isIntersecting) return;
+        loadAnimation();
+        observer.disconnect();
+      }, { rootMargin: '320px 0px' });
+      observer.observe(image);
+      return;
+    }
+    loadAnimation();
   });
 
   const setMenu = (open) => {
@@ -71,9 +86,10 @@
     }, { passive: true });
   }
 
-  const revealTargets = document.querySelectorAll(
-    '.sr2-section-head, .sr2-product, .sr2-collection-intro, .sr2-manifesto__scroll > *, .sr2-preorder-steps article, .sr2-contact-grid > *, .sr2-service-links a, .sr2-image-reveal'
-  );
+  /* Narrative photography can reveal as it enters the viewport. Structural
+     headings, commerce cards, and service content must never begin hidden: a
+     delayed observer or full-page capture must still render a complete page. */
+  const revealTargets = document.querySelectorAll('.sr2-image-reveal');
 
   if ('IntersectionObserver' in window && !reducedMotion) {
     const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -276,7 +292,7 @@
     const chapters = Array.from(rail.children);
     const storyProgress = rail.parentElement ? rail.parentElement.querySelector('.sr2-world-story__progress span') : null;
 
-    if (world?.classList.contains('sr2-worlds') && finePointer && !reducedMotion && window.matchMedia('(min-width: 1200px)').matches) {
+    if (world?.hasAttribute('data-scroll-world-pinned') && finePointer && !reducedMotion && window.matchMedia('(min-width: 1200px)').matches) {
       if (setupPinnedWorld(world, rail, chapters, previous, next, count, progress)) return;
     }
 
