@@ -62,7 +62,7 @@ dependencies = [
     "PyJWT>=2.13.0",
     "passlib[bcrypt]>=1.7",
     "argon2-cffi>=23.1",
-    "cryptography>=48.0.1",
+    "cryptography>=50.0.0",
     "bcrypt>=4.1",
 
     # HTTP
@@ -90,15 +90,9 @@ dependencies = [
     "mistralai>=1.10.1",  # Updated for security and compatibility
     "groq>=0.37.0",
     "voyageai>=0.2.4",  # Asymmetric document/query embeddings (RAG-optimized)
-    # llm/providers/litellm_provider.py universal fallback. Capped <1.81 on purpose:
-    # litellm 1.81+ requires openai>=2.8, but this codebase runs on the openai 1.x
-    # client (verified green). 1.80.0 needs only openai>=1.99.5. Lifting this cap is
-    # part of the deliberate openai 2.x migration, not a routine bump (bug-254).
-    # SECURITY: 1.80.x carries 7 GHSA advisories (fixed 1.84.0) — ALL scoped to
-    # litellm.proxy, which this repo neither installs ([proxy] extra) nor runs; usage
-    # is SDK-only (acompletion/completion_cost), so unreachable here. The 2.x migration
-    # MUST target litellm>=1.84.0 (not just >=1.81) to clear them in the same step.
-    "litellm>=1.80,<1.94",
+    # llm/providers/litellm_provider.py universal fallback. 1.84.0 is the minimum
+    # release that clears the proxy advisories reported against the prior 1.80 lock.
+    "litellm>=1.84,<1.94",
 
     # Monitoring
     "prometheus-client>=0.19",
@@ -203,7 +197,7 @@ mcp = [
     "backoff==2.2.1",
     "ratelimit==2.2.1",
     "boto3>=1.43.0",  # integrations/cloudflare_r2_manager.py — was undeclared, install -e .[all] never pulled it
-    "cryptography==49.0.0",
+    "cryptography==50.0.0",
     "pyjwt==2.13.0",
     "sqlalchemy==2.0.51",
     "aiosqlite==0.22.1",
@@ -316,8 +310,10 @@ ml = [
 ]
 
 rag = [
-    # Multimodal knowledge-graph RAG (LightRAG + any-format ingestion)
-    "raganything>=1.2.10",
+    # Graph/vector RAG remains in-process. RAGAnything/MinerU is intentionally
+    # excluded: every released dependency set conflicts with the secured core's
+    # OpenAI 2.x and Pillow 12 requirements. The API fails closed with 503 until
+    # the parser is deployed as a separately locked service.
     "lightrag-hku>=1.5.4",
 ]
 

@@ -112,6 +112,8 @@ module.exports = {
     '/.next/',
     '/.nuxt/',
     '/wordpress-theme/.*/tests/e2e/',
+    // frontend is an independent Vitest project with its own test command
+    '/frontend/',
     '/frontend/e2e/',
     '/frontend/tests/e2e/',
     '\\.spec\\.(ts|js)$',

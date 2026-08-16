@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Filter .wolf/anatomy.md to entries tracked on git main.
+"""Generate .wolf/anatomy.md from files tracked on git main.
 
-Pipeline: openwolf scan writes the full filesystem anatomy, this script
-post-filters it to only files reachable from the `main` ref (canonical branch).
-Section headers that lose all their entries are removed.
+Descriptions are retained from the previous anatomy when available. New files
+receive a deterministic token estimate without executing third-party code.
 
 Source-of-truth ref order:
   1. `origin/main`  -- preferred (remote canonical)
@@ -17,6 +16,7 @@ from __future__ import annotations
 import re
 import subprocess
 import sys
+from datetime import UTC, datetime
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
@@ -24,6 +24,7 @@ ANATOMY = REPO / ".wolf" / "anatomy.md"
 
 ENTRY_RE = re.compile(r"^- `([^`]+)`")
 SECTION_RE = re.compile(r"^## (.+?)/?\s*$")
+TOKEN_RE = re.compile(r"\(~([0-9]+(?:k)?) tok\)$")
 
 
 def _git_ls_tree(ref: str) -> set[str]:
@@ -119,17 +120,63 @@ def update_header_files_count(text: str, count: int, ref: str) -> str:
     )
 
 
+def _existing_entries(text: str) -> dict[str, str]:
+    entries: dict[str, str] = {}
+    section_dir = ""
+    for line in text.splitlines():
+        if line.startswith("## "):
+            section_dir = _section_dir(line)
+            continue
+        match = ENTRY_RE.match(line)
+        if match:
+            name = match.group(1)
+            path = f"{section_dir}/{name}" if section_dir else name
+            entries[path] = line
+    return entries
+
+
+def _token_estimate(path: str) -> int:
+    try:
+        size = (REPO / path).stat().st_size
+    except OSError:
+        return 0
+    return max(1, (size + 3) // 4)
+
+
+def generate_anatomy(files: set[str], ref: str, previous: str) -> str:
+    existing = _existing_entries(previous)
+    sections: dict[str, list[str]] = {}
+    for path in sorted(files):
+        directory, _, name = path.rpartition("/")
+        line = existing.get(path)
+        if line is None:
+            line = f"- `{name}` (~{_token_estimate(path)} tok)"
+        elif not TOKEN_RE.search(line):
+            line = f"{line} (~{_token_estimate(path)} tok)"
+        sections.setdefault(directory, []).append(line)
+
+    timestamp = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    lines = [
+        "# anatomy.md",
+        "",
+        f"> Auto-maintained locally. Last scanned: {timestamp}",
+        f"> Files: {len(files)} tracked on {ref} | Anatomy hits: 0 | Misses: 0",
+        "",
+    ]
+    for directory, entries in sections.items():
+        lines.extend((f"## {directory + '/' if directory else './'}", "", *entries, ""))
+    return "\n".join(lines).rstrip() + "\n"
+
+
 def main() -> int:
     if not ANATOMY.exists():
         print(f"anatomy missing: {ANATOMY}", file=sys.stderr)
         return 1
 
     allowed, ref = canonical_files()
-    text = ANATOMY.read_text()
-    filtered, kept, dropped = filter_anatomy(text, allowed)
-    filtered = update_header_files_count(filtered, kept, ref)
-    ANATOMY.write_text(filtered)
-    print(f"anatomy filtered to {ref}: kept={kept} dropped={dropped} canonical={len(allowed)}")
+    previous = ANATOMY.read_text()
+    ANATOMY.write_text(generate_anatomy(allowed, ref, previous))
+    print(f"anatomy generated from {ref}: canonical={len(allowed)}")
     return 0
 
 
