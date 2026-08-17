@@ -15,6 +15,7 @@ define( 'SKYYROSE_VERSION', '1.1.1' );
 define( 'SKYYROSE_ASSETS_URI', 'https://theme.test/assets' );
 
 require_once __DIR__ . '/stubs/wp-stubs.php';
+require_once __DIR__ . '/stubs/woocommerce-stubs.php';
 
 require_once SKYYROSE_DIR . '/inc/brand-colors.php';
 require_once SKYYROSE_DIR . '/inc/collections-config.php';
@@ -22,3 +23,4 @@ require_once SKYYROSE_DIR . '/inc/product-catalog.php';
 require_once SKYYROSE_DIR . '/inc/product-catalog-display.php';
 require_once SKYYROSE_DIR . '/inc/performance.php';
 require_once SKYYROSE_DIR . '/inc/performance-cli.php';
+require_once SKYYROSE_DIR . '/inc/woocommerce-preorder.php';
