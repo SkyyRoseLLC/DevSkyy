@@ -234,7 +234,7 @@ async function postHandler(request: NextRequest) {
         caption = result.caption;
         hashtags = result.hashtags;
         llm_generated = true;
-      } catch (llmError) {
+      } catch {
         // LLM failed -- fall back to templates
         const fallback = generateFromTemplate(product, body.platform, contentType);
         caption = fallback.caption;

@@ -233,7 +233,7 @@ class TestAPIGateway:
         route = gw.get_route("/api/v1/products/br-001")
         assert route.backend_url == "http://products:8001"
 
-    def test_get_health_returns_all_routes(self):
+    async def test_get_health_returns_all_routes(self):
         """get_health() includes all registered routes with circuit states."""
         gw = self._make_gateway()
         gw.register_route("/api/v1/products", "http://products:8001")

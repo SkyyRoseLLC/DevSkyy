@@ -16,7 +16,6 @@ from core.events.event_store import Event
 
 
 @pytest.mark.unit
-@pytest.mark.asyncio
 class TestCommand:
     """Test Command dataclass"""
 
@@ -39,7 +38,6 @@ class TestCommand:
 
 
 @pytest.mark.unit
-@pytest.mark.asyncio
 class TestCommandBus:
     """Test CommandBus routing, handling, and event emission"""
 
@@ -47,6 +45,7 @@ class TestCommandBus:
     def bus(self):
         return CommandBus()
 
+    @pytest.mark.asyncio
     async def test_execute_command_calls_handler(self, bus):
         """
         execute() routes the command to its registered handler.
@@ -72,6 +71,7 @@ class TestCommandBus:
             # Events returned by handler should be persisted
             assert mock_store.append.call_count == 1
 
+    @pytest.mark.asyncio
     async def test_unknown_command_raises_error(self, bus):
         """
         Executing a command with no registered handler raises ValueError.
@@ -82,6 +82,7 @@ class TestCommandBus:
         with pytest.raises(ValueError, match="No handler for UnknownCommand"):
             await bus.execute(cmd)
 
+    @pytest.mark.asyncio
     async def test_multiple_events_per_command(self, bus):
         """
         A single command can produce multiple events.
@@ -106,6 +107,7 @@ class TestCommandBus:
             # 3 events → 3 append calls
             assert mock_store.append.call_count == 3
 
+    @pytest.mark.asyncio
     async def test_handler_validation_raises_on_invalid_command(self, bus):
         """
         If a handler raises ValueError (validation failure),
@@ -131,6 +133,7 @@ class TestCommandBus:
             # No events should have been persisted
             mock_store.append.assert_not_called()
 
+    @pytest.mark.asyncio
     async def test_register_handler_overrides_previous(self, bus):
         """
         Registering a second handler for the same command type replaces the first.

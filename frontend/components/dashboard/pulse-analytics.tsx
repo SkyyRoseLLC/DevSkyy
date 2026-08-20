@@ -1,28 +1,27 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Activity,
-  Eye,
-  MousePointerClick,
-  DollarSign,
-  TrendingUp,
-  Trophy,
-  Flame,
-  Globe,
-  Users,
-  ShoppingCart,
-  ArrowDown,
-  Zap,
+Card,
+CardContent,
+CardDescription,
+CardHeader,
+CardTitle,
+} from '@/components/ui/card';
+import {
+Activity,
+ArrowDown,
+DollarSign,
+Eye,
+Flame,
+Globe,
+MousePointerClick,
+ShoppingCart,
+TrendingUp,
+Trophy,
+Zap
 } from 'lucide-react';
+import { useEffect,useRef,useState } from 'react';
 
 // SkyyRose brand colors
 const BRAND = {

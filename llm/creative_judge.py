@@ -30,7 +30,7 @@ from dataclasses import dataclass, field
 from enum import StrEnum
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 logger = logging.getLogger(__name__)
 
@@ -82,8 +82,8 @@ class JudgeOutput(BaseModel):
     summary: str = Field(..., description="Executive summary of the evaluation")
     recommendations: list[str] = Field(..., description="Actionable improvement suggestions")
 
-    class Config:
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "pillars": [
                     {
@@ -107,6 +107,7 @@ class JudgeOutput(BaseModel):
                 "recommendations": ["Add mobile requirements"],
             }
         }
+    )
 
 
 # JSON Schema for OpenAI structured output

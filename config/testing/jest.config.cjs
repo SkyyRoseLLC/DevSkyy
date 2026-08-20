@@ -112,8 +112,9 @@ module.exports = {
     '/.next/',
     '/.nuxt/',
     '/wordpress-theme/.*/tests/e2e/',
-    '/frontend/e2e/',
-    '/frontend/tests/e2e/',
+    // The dashboard owns its tests through Vitest/Playwright. Root Jest only
+    // validates the root TypeScript package and must not collect those suites.
+    '/frontend/',
     '\\.spec\\.(ts|js)$',
     // Plugin skill examples use vitest — not part of the Three.js Jest suite
     '/skyyrose-suite/',

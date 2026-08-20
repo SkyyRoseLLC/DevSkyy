@@ -49,6 +49,42 @@ interface CacheEntry {
   timestamp: number;
 }
 
+interface RawProductImage {
+  id: number;
+  src: string;
+  alt?: string;
+  name?: string;
+}
+
+interface RawProductTerm {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+interface RawProductAttribute {
+  id: number;
+  name: string;
+  options: string[];
+}
+
+interface RawProduct {
+  id: number;
+  name: string;
+  slug: string;
+  price: string;
+  regular_price: string;
+  sale_price?: string;
+  description: string;
+  short_description: string;
+  images: RawProductImage[];
+  categories: RawProductTerm[];
+  tags?: RawProductTerm[];
+  attributes?: RawProductAttribute[];
+  stock_status: string;
+  stock_quantity?: number;
+}
+
 // In-memory cache (shared across hook instances)
 const productCache = new Map<string, CacheEntry>();
 
@@ -81,43 +117,43 @@ async function fetchProductsFromAPI(categorySlug: string, perPage: number): Prom
     throw new Error(`Failed to fetch products: ${productsResponse.statusText}`);
   }
 
-  const rawProducts = await productsResponse.json();
+  const rawProducts = (await productsResponse.json()) as RawProduct[];
 
   // Transform to our Product interface
-  return rawProducts.map((raw: any) => ({
+  return rawProducts.map((raw) => ({
     id: raw.id,
     name: raw.name,
     slug: raw.slug,
     price: raw.price,
     regularPrice: raw.regular_price,
-    salePrice: raw.sale_price || undefined,
+    ...(raw.sale_price ? { salePrice: raw.sale_price } : {}),
     description: raw.description,
     shortDescription: raw.short_description,
-    images: raw.images.map((img: any) => ({
+    images: raw.images.map((img) => ({
       id: img.id,
       src: img.src,
       alt: img.alt || raw.name,
       name: img.name || raw.name,
     })),
-    categories: raw.categories.map((cat: any) => ({
+    categories: raw.categories.map((cat) => ({
       id: cat.id,
       name: cat.name,
       slug: cat.slug,
     })),
     tags:
-      raw.tags?.map((tag: any) => ({
+      raw.tags?.map((tag) => ({
         id: tag.id,
         name: tag.name,
         slug: tag.slug,
       })) || [],
     attributes:
-      raw.attributes?.map((attr: any) => ({
+      raw.attributes?.map((attr) => ({
         id: attr.id,
         name: attr.name,
         options: attr.options,
       })) || [],
     inStock: raw.stock_status === 'instock',
-    stockQuantity: raw.stock_quantity,
+    ...(raw.stock_quantity !== undefined ? { stockQuantity: raw.stock_quantity } : {}),
   }));
 }
 

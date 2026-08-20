@@ -27,7 +27,7 @@ from enum import StrEnum
 from typing import TYPE_CHECKING, Any
 
 import httpx
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from core.errors.production_errors import (
     DevSkyError,
@@ -132,10 +132,7 @@ class AlertNotification(BaseModel):
     correlation_id: str | None = None
     created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class NotificationPreferences(BaseModel):
@@ -156,10 +153,7 @@ class NotificationPreferences(BaseModel):
     phone_number: str | None = None
     slack_user_id: str | None = None
 
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class InAppNotification(BaseModel):
@@ -176,10 +170,7 @@ class InAppNotification(BaseModel):
     created_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
     read_at: datetime | None = None
 
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class NotificationResult(BaseModel):
@@ -190,10 +181,7 @@ class NotificationResult(BaseModel):
     error_message: str | None = None
     sent_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 # =============================================================================

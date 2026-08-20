@@ -579,7 +579,10 @@ class TestValidateImage:
         img.save(buffer, format="JPEG", quality=50)
         large_image_bytes = buffer.getvalue()
 
-        with pytest.raises(ImageValidationError) as exc_info:
+        with (
+            pytest.warns(Image.DecompressionBombWarning),
+            pytest.raises(ImageValidationError) as exc_info,
+        ):
             await service._validate_image(large_image_bytes)
 
         assert "Image too large" in str(exc_info.value)

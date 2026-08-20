@@ -1,24 +1,24 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Users,
-  DollarSign,
-  TrendingUp,
-  ShoppingBag,
-  ShoppingCart,
-  Eye,
-  BarChart2,
+Card,
+CardContent,
+CardDescription,
+CardHeader,
+CardTitle,
+} from '@/components/ui/card';
+import { AnimatePresence,motion } from 'framer-motion';
+import {
+BarChart2,
+DollarSign,
+Eye,
+ShoppingBag,
+ShoppingCart,
+TrendingUp,
+Users,
 } from 'lucide-react';
+import { useEffect,useRef,useState } from 'react';
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
 
@@ -385,61 +385,9 @@ export function ConversionPulse() {
     avgOrderValue: randomBetween(165, 225),
   });
 
-  // Schedule next event
-  const scheduleNext = useCallback(() => {
-    const delay = randomBetween(3000, 8000);
-    return setTimeout(() => {
-      const evt = generateEvent();
-
-      setEvents((prev) => [evt, ...prev].slice(0, MAX_EVENTS));
-
-      // Update sparkline current minute bucket
-      setSpark((prev) => {
-        const updated = [...prev];
-        updated[SPARK_MINUTES - 1] = {
-          ...updated[SPARK_MINUTES - 1],
-          conversions:
-            evt.type !== 'page-view'
-              ? updated[SPARK_MINUTES - 1].conversions + 1
-              : updated[SPARK_MINUTES - 1].conversions,
-        };
-        return updated;
-      });
-
-      // Nudge metrics
-      setMetrics((prev) => {
-        const revenueGain =
-          evt.type === 'pre-order' && evt.amount ? evt.amount : 0;
-        const newRevenue = prev.todayRevenue + revenueGain;
-        const newVisitors = Math.max(
-          80,
-          Math.min(500, prev.liveVisitors + randomBetween(-6, 9))
-        );
-        const newConvRate = parseFloat(
-          Math.max(
-            1.5,
-            Math.min(12, prev.conversionRate + (Math.random() - 0.47) * 0.15)
-          ).toFixed(1)
-        );
-        return {
-          liveVisitors: newVisitors,
-          todayRevenue: newRevenue,
-          conversionRate: newConvRate,
-          avgOrderValue: prev.avgOrderValue,
-        };
-      });
-    }, delay);
-  }, []);
-
   // Rolling event timer
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-
-    function loop() {
-      timer = scheduleNext();
-      // After a random delay, schedule the next call
-      // We chain via the setTimeout callback itself — each fired event reschedules
-    }
 
     // Self-rescheduling loop
     function fire() {
@@ -479,7 +427,7 @@ export function ConversionPulse() {
 
     timer = setTimeout(fire, randomBetween(2000, 5000));
     return () => clearTimeout(timer);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   // Advance sparkline bucket every 60 s
   useEffect(() => {

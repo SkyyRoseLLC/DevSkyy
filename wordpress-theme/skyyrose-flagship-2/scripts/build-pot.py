@@ -32,7 +32,7 @@ def decode(message: str, quote: str) -> str:
     try:
         return ast.literal_eval(f"{quote}{message}{quote}")
     except (SyntaxError, ValueError):
-        return message.replace(r"\'", "'").replace(r'\"', '"')
+        return message.replace(r"\'", "'").replace(r"\"", '"')
 
 
 def po_quote(value: str) -> str:

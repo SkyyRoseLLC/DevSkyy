@@ -145,7 +145,7 @@ async def subscribe(
     price_id = stripe.get_price_id(body.tier)
     if not price_id:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail=f"No price configured for tier '{body.tier}'. Contact support.",
         )
 
@@ -253,7 +253,7 @@ async def update_subscription(
     price_id = stripe.get_price_id(body.tier)
     if not price_id:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail=f"No price configured for tier '{body.tier}'. Contact support.",
         )
 

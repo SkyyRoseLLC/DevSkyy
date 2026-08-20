@@ -20,6 +20,7 @@
     "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
     "verify": "bash scripts/verify-marketplace.sh",
     "verify:workspace": "bash scripts/verify-v2-workspace.sh",
+    "verify:workspace:strict": "bash scripts/verify-v2-workspace.sh --strict",
     "package:theme": "bash scripts/package-theme.sh"
   },
   "devDependencies": {

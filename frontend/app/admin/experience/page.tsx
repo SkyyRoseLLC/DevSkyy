@@ -1,40 +1,39 @@
 'use client';
 
+import { StatsCard } from '@/components/dashboard/StatsCard';
+import { Badge } from '@/components/ui/badge';
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card';
+import {
+ChartContainer,
+ChartTooltip,
+ChartTooltipContent,
+type ChartConfig,
+} from '@/components/ui/chart';
+import { Switch } from '@/components/ui/switch';
+import { Textarea } from '@/components/ui/textarea';
+import {
+Activity,
+Brain,
+Cpu,
+MousePointerClick,
+Plug,
+ShieldCheck,
+Sparkles,
+Store,
+Terminal,
+TrendingUp,
+Users,
+UsersRound,
+} from 'lucide-react';
 import { useState } from 'react';
 import {
-  Activity,
-  Users,
-  Plug,
-  Cpu,
-  ShieldCheck,
-  Brain,
-  Sparkles,
-  Store,
-  MousePointerClick,
-  UsersRound,
-  Terminal,
-  TrendingUp,
-} from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Switch } from '@/components/ui/switch';
-import { Badge } from '@/components/ui/badge';
-import { Textarea } from '@/components/ui/textarea';
-import { StatsCard } from '@/components/dashboard/StatsCard';
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  type ChartConfig,
-} from '@/components/ui/chart';
-import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  ResponsiveContainer,
+Area,
+AreaChart,
+Bar,
+BarChart,
+CartesianGrid,
+XAxis,
+YAxis
 } from 'recharts';
 
 /*--------------------------------------------------------------

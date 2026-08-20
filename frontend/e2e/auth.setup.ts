@@ -10,7 +10,7 @@
  * - Run setup: npx playwright test --project=setup
  */
 
-import { test as setup, expect } from '@playwright/test';
+import { test as setup } from '@playwright/test';
 import path from 'path';
 
 const authFile = path.join(__dirname, '../playwright/.auth/user.json');
@@ -61,7 +61,7 @@ setup('authenticate', async ({ page, request }) => {
       console.log('Auth state saved to:', authFile);
       return;
     }
-  } catch (error) {
+  } catch {
     console.log('API auth failed (backend may not be running), trying UI login...');
   }
 
@@ -89,7 +89,7 @@ setup('authenticate', async ({ page, request }) => {
     } else {
       console.log('No login form found - app may not require auth');
     }
-  } catch (error) {
+  } catch {
     console.log('UI login skipped - page may not exist');
   }
 

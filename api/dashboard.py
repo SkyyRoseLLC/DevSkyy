@@ -487,12 +487,6 @@ async def health():
     }
 
 
-@dashboard_router.get("/agents", response_model=list[AgentInfo])
-async def list_agents():
-    """List all 6 SuperAgents"""
-    return agent_registry.get_all_agents()
-
-
 @dashboard_router.get("/agents/{agent_type}", response_model=AgentInfo)
 async def get_agent(agent_type: SuperAgentTypeLiteral):
     """Get single agent by type"""
@@ -629,54 +623,6 @@ async def execute_agent_task(agent_type: SuperAgentTypeLiteral, request: Execute
             latency_ms=latency_ms,
             technique_used=None,
         )
-
-
-# =============================================================================
-# Tools Endpoints
-# =============================================================================
-
-
-@dashboard_router.get("/tools", response_model=list[ToolInfo])
-async def list_tools():
-    """List all available tools across all agents"""
-    all_tools: list[ToolInfo] = []
-    seen_names: set[str] = set()
-    for agent_info in agent_registry.get_all_agents():
-        for tool in agent_info.tools:
-            if tool.name not in seen_names:
-                all_tools.append(tool)
-                seen_names.add(tool.name)
-    return all_tools
-
-
-@dashboard_router.get("/tools/category/{category}", response_model=list[ToolInfo])
-async def get_tools_by_category(category: str):
-    """Get tools filtered by category"""
-    tools: list[ToolInfo] = []
-    seen_names: set[str] = set()
-    for agent_info in agent_registry.get_all_agents():
-        for tool in agent_info.tools:
-            if tool.category == category and tool.name not in seen_names:
-                tools.append(tool)
-                seen_names.add(tool.name)
-    return tools
-
-
-@dashboard_router.post("/tools/test")
-async def test_tool(tool_name: str, parameters: dict[str, Any] | None = None):
-    """Test a tool with given parameters"""
-    if parameters is None:
-        parameters = {}
-
-    for agent_info in agent_registry.get_all_agents():
-        for tool in agent_info.tools:
-            if tool.name == tool_name:
-                return {
-                    "result": f"Tool '{tool_name}' executed successfully",
-                    "parameters": parameters,
-                    "agent": agent_info.type,
-                }
-    raise HTTPException(status_code=404, detail=f"Tool not found: {tool_name}")
 
 
 # =============================================================================

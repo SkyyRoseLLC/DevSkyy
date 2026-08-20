@@ -54,7 +54,10 @@ const DEPLOYMENT_CSV_RELATIVE = path.join('data', 'skyyrose-catalog.csv');
 export function resolveRepoFile(relative: string): string {
   let dir = process.cwd();
   for (let i = 0; i < 6; i += 1) {
-    const candidate = path.join(dir, relative);
+    // The relative path is constrained by server-only callers. Prevent
+    // Turbopack from treating this runtime lookup as a request to trace the
+    // entire repository; deployment uses the explicitly included CSV replica.
+    const candidate = path.join(/* turbopackIgnore: true */ dir, relative);
     if (fs.existsSync(candidate)) return candidate;
     const parent = path.dirname(dir);
     if (parent === dir) break;
@@ -129,9 +132,9 @@ export function resetCatalogCache(): void {
 
 function loadFresh(): CatalogProduct[] {
   const csvPath = resolveCsvPath();
-  const stat = fs.statSync(csvPath);
+  const stat = fs.statSync(/* turbopackIgnore: true */ csvPath);
   if (cache && cache.mtimeMs === stat.mtimeMs) return cache.products;
-  const text = fs.readFileSync(csvPath, 'utf-8');
+  const text = fs.readFileSync(/* turbopackIgnore: true */ csvPath, 'utf-8');
   const products = parseCsv(text);
   cache = { products, mtimeMs: stat.mtimeMs };
   return products;

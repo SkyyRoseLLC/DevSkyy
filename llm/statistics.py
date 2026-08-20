@@ -123,9 +123,16 @@ class StatisticalAnalyzer:
         mean_a = float(np.mean(scores_a))
         mean_b = float(np.mean(scores_b))
 
-        # Welch's t-test (doesn't assume equal variances)
-        t_stat, p_value = stats.ttest_ind(scores_a, scores_b, equal_var=False)
-        p_value = float(p_value)
+        # Welch's t-test (doesn't assume equal variances). SciPy warns and
+        # returns unstable values when both samples are constant, so handle
+        # that exact analytical case directly.
+        var_a = float(np.var(scores_a, ddof=1))
+        var_b = float(np.var(scores_b, ddof=1))
+        if var_a == 0.0 and var_b == 0.0:
+            p_value = 1.0 if mean_a == mean_b else 0.0
+        else:
+            _, raw_p_value = stats.ttest_ind(scores_a, scores_b, equal_var=False)
+            p_value = float(raw_p_value)
 
         # Confidence intervals
         ci_a = self.compute_confidence_interval(scores_a)

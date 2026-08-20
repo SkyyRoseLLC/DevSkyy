@@ -18,7 +18,7 @@ from enum import StrEnum
 from typing import Any, Literal
 
 import httpx
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from security.ssrf_protection import SSRFProtection
 
@@ -114,8 +114,7 @@ class ProductData(BaseModel):
     asset_id: str | None = None
     model_3d_url: str | None = None
 
-    class Config:
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class VariationData(BaseModel):

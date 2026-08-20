@@ -66,7 +66,7 @@ class VercelDeployer {
     try {
       await execAsync('vercel --version')
       console.log('✓ Vercel CLI installed')
-    } catch (error) {
+    } catch {
       throw new Error('Vercel CLI not installed. Run: npm i -g vercel')
     }
 
@@ -88,7 +88,7 @@ class VercelDeployer {
         console.warn('⚠️  Project not linked to Vercel')
         console.warn('   Run: vercel link --project=devskyy')
       }
-    } catch (error) {
+    } catch {
       console.warn('⚠️  Could not verify project link')
     }
 
@@ -116,7 +116,7 @@ class VercelDeployer {
     console.log('\n🏗️  Building project...')
 
     try {
-      const { stdout, stderr } = await execAsync('pnpm build', {
+      const { stderr } = await execAsync('pnpm build', {
         cwd: this.projectRoot,
       })
 
@@ -219,7 +219,7 @@ class VercelDeployer {
           console.log('✓ Deployment is live')
           return
         }
-      } catch (error) {
+      } catch {
         // Continue waiting
       }
 

@@ -181,7 +181,6 @@ class TestProductServicerListProducts:
 
 
 @pytest.mark.unit
-@pytest.mark.asyncio
 class TestProductServicerHelpers:
     """Tests for ProductServicer helper methods"""
 
@@ -210,6 +209,7 @@ class TestProductServicerHelpers:
 
         assert result["images"] == []
 
+    @pytest.mark.asyncio
     async def test_set_not_found_without_grpc_installed(self):
         """
         _set_not_found handles missing grpcio gracefully — no AttributeError.

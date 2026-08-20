@@ -164,8 +164,8 @@ export class ModelAssetLoader {
     const cacheKey = this.getCacheKey(url);
 
     // Return cached model if available
-    if (useCache && this.cache.has(cacheKey)) {
-      const cached = this.cache.get(cacheKey)!;
+    const cached = useCache ? this.cache.get(cacheKey) : undefined;
+    if (cached) {
       // Clone the scene to avoid sharing issues
       return {
         ...cached,
@@ -174,8 +174,9 @@ export class ModelAssetLoader {
     }
 
     // Return existing loading promise if already loading
-    if (this.loadingPromises.has(cacheKey)) {
-      return this.loadingPromises.get(cacheKey)!;
+    const pendingLoad = this.loadingPromises.get(cacheKey);
+    if (pendingLoad) {
+      return pendingLoad;
     }
 
     // Create loading promise

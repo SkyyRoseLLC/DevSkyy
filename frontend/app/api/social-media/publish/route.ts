@@ -249,9 +249,6 @@ async function publishToTwitter(
   // Uses OAuth 1.0a User Context (requires all 4 keys)
   const apiKey = process.env.TWITTER_API_KEY!;
   const apiSecret = process.env.TWITTER_API_SECRET!;
-  const accessToken = process.env.TWITTER_ACCESS_TOKEN!;
-  const accessSecret = process.env.TWITTER_ACCESS_SECRET!;
-
   try {
     // Twitter v2 tweet creation endpoint
     // Note: Full OAuth 1.0a signature generation is required in production.

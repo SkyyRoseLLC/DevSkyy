@@ -32,7 +32,7 @@ from typing import Any, Literal
 from urllib.parse import urlparse
 
 import aiohttp
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -100,7 +100,8 @@ class PreOrderMetadata(BaseModel):
         description="When pre-order was last updated",
     )
 
-    @validator("launch_date", pre=True)
+    @field_validator("launch_date", mode="before")
+    @classmethod
     def validate_launch_date(cls, v: Any) -> datetime | None:
         """Validate launch date is in the future."""
         if v is None:
@@ -135,10 +136,8 @@ class CountdownConfig(BaseModel):
     collection: str = Field(default="")
     time_remaining_seconds: int = Field(default=0, ge=0, description="Seconds until launch")
 
-    class Config:
-        """Pydantic config."""
-
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "product_id": 123,
                 "launch_date_iso": "2025-01-15T18:00:00Z",
@@ -150,6 +149,7 @@ class CountdownConfig(BaseModel):
                 "time_remaining_seconds": 86400,
             }
         }
+    )
 
 
 class PreOrderNotification(BaseModel):
@@ -161,7 +161,8 @@ class PreOrderNotification(BaseModel):
     preview_image_url: str | None = Field(default=None, max_length=2048)
     collection: str = Field(default="", max_length=50)
 
-    @validator("preview_image_url", pre=True)
+    @field_validator("preview_image_url", mode="before")
+    @classmethod
     def validate_image_url(cls, v: Any) -> str | None:
         """Validate image URL format."""
         if v is None:

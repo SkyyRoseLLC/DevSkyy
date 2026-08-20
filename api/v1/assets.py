@@ -1175,7 +1175,7 @@ async def list_hf_datasets(
     author = os.environ.get("HF_AUTHOR", "").strip()
     if not author:
         raise HTTPException(
-            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
             detail="HF_AUTHOR environment variable is not set",
         )
 

@@ -107,9 +107,11 @@ export class CartManager {
 
       if (existingItemIndex !== -1) {
         // Update quantity of existing item
-        this.items[existingItemIndex]!.quantity += item.quantity;
+        const existingItem = this.items[existingItemIndex];
+        if (!existingItem) throw new Error('Cart item disappeared during update');
+        existingItem.quantity += item.quantity;
         this.logger.info(`Updated quantity for item ${item.productId}`, {
-          newQuantity: this.items[existingItemIndex]!.quantity,
+          newQuantity: existingItem.quantity,
         });
       } else {
         // Add new item

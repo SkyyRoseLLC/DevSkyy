@@ -8,6 +8,7 @@ except ImportError:
     settings = None  # Fallback for standalone mode
 
 from mcp.server.fastmcp import FastMCP
+from mcp.server.fastmcp.server import Settings as FastMCPSettings
 from utils.logging_utils import configure_logging, get_logger
 
 # ===========================
@@ -65,4 +66,8 @@ logger = get_logger(__name__)
 # Initialize MCP Server
 # ===========================
 
+# MCP 1.28 leaves the generic lifespan annotation unresolved. Rebuild once so
+# pydantic-settings 2.15 can inspect it without emitting an incomplete-field
+# warning during every server import.
+FastMCPSettings.model_rebuild(force=True)
 mcp = FastMCP("devskyy_mcp_v2")

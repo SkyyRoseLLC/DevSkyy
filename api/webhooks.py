@@ -36,7 +36,7 @@ from typing import Any
 
 import httpx
 from fastapi import APIRouter, HTTPException
-from pydantic import BaseModel, Field, HttpUrl, validator
+from pydantic import BaseModel, Field, HttpUrl, field_validator
 
 from security.ssrf_protection import SSRFProtection
 
@@ -146,7 +146,8 @@ class WebhookEndpoint(BaseModel):
     failed_deliveries: int = 0
     last_delivery_at: datetime | None = None
 
-    @validator("events")
+    @field_validator("events")
+    @classmethod
     def validate_events(cls, v):
         valid_events = {e.value for e in WebhookEventType}
         for event in v:

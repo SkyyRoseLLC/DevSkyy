@@ -209,6 +209,10 @@ export class ThreeJSService {
       throw new Error('Scene, camera, or renderer not initialized');
     }
 
+    const renderer = this.renderer;
+    const scene = this.scene;
+    const camera = this.camera;
+
     const animate = (): void => {
       this.animationId = requestAnimationFrame(animate);
 
@@ -216,7 +220,7 @@ export class ThreeJSService {
         animationCallback();
       }
 
-      this.renderer!.render(this.scene!, this.camera!);
+      renderer.render(scene, camera);
     };
 
     animate();

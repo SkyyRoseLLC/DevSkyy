@@ -11,7 +11,7 @@ async function getSettings() {
     try {
         const data = await fs.readFile(SETTINGS_FILE, 'utf-8');
         return JSON.parse(data);
-    } catch (error) {
+    } catch {
         // Default settings if file doesn't exist.
         //
         // WordPress/WooCommerce values seed from the server environment rather
@@ -61,7 +61,7 @@ async function isAuthenticated() {
     return Boolean(session?.user?.email);
 }
 
-async function getHandler(request: NextRequest) {
+async function getHandler(_request: NextRequest) {
     if (!(await isAuthenticated())) {
         return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }

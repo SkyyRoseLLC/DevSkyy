@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { act, render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { SuccessCelebration } from '../SuccessCelebration';
 
@@ -41,7 +41,9 @@ describe('SuccessCelebration', () => {
 
   it('renders order confirmation message', () => {
     render(<SuccessCelebration {...defaultProps} />);
-    jest.advanceTimersByTime(100);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
     expect(screen.getByText('Order Confirmed!')).toBeInTheDocument();
   });
 

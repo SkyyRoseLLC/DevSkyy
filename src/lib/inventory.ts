@@ -274,10 +274,9 @@ export class InventoryManager {
    */
   public subscribe(productId: string, callback: InventoryCallback): () => void {
     // Add to subscriptions
-    if (!this.subscriptions.has(productId)) {
-      this.subscriptions.set(productId, new Set());
-    }
-    this.subscriptions.get(productId)!.add(callback);
+    const callbacks = this.subscriptions.get(productId) ?? new Set<InventoryCallback>();
+    callbacks.add(callback);
+    this.subscriptions.set(productId, callbacks);
 
     // Send subscribe message if connected
     if (this.isConnected) {

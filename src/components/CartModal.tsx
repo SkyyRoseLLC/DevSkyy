@@ -264,8 +264,7 @@ export const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose, onCheckou
     if (onCheckout) {
       onCheckout();
     } else {
-      // Default behavior: log to console
-      console.log('Checkout clicked', { items, total });
+      console.warn('Checkout callback is not configured', { items, total });
     }
   }, [onCheckout, items, total]);
 

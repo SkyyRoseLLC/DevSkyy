@@ -27,7 +27,7 @@ from datetime import UTC, datetime
 from enum import StrEnum
 from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from core.errors.production_errors import (
     DevSkyError,
@@ -104,8 +104,7 @@ class Job(BaseModel):
     completed_at: str | None = None
     correlation_id: str = ""
 
-    class Config:
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
     @property
     def is_complete(self) -> bool:

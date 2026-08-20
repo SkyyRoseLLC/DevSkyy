@@ -83,7 +83,7 @@ export default [
       '@typescript-eslint/ban-ts-comment': 'warn',
       '@typescript-eslint/no-empty-function': 'warn',
       'no-unused-vars': 'off',
-      'no-console': 'warn',
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-debugger': 'error',
       'no-eval': 'error',
       'no-implied-eval': 'error',
@@ -116,6 +116,15 @@ export default [
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-non-null-assertion': 'off',
+      'no-console': 'off',
+    },
+  },
+  // The package entry point and structured logger intentionally own terminal
+  // output. Other runtime modules remain subject to the global console rule.
+  {
+    files: ['src/index.ts', 'src/utils/Logger.ts'],
+    rules: {
+      'no-console': 'off',
     },
   },
 ];

@@ -600,7 +600,7 @@ function GalleryCard({
     failed: { icon: AlertCircle, iconClass: 'text-red-400', bg: 'bg-red-500/10', label: 'Failed' },
   };
 
-  const { icon: StatusIcon, iconClass, bg, label } = statusConfig[image.status];
+  const { icon: StatusIcon, iconClass, bg } = statusConfig[image.status];
   const provider = providers.find((p) => p.id === image.provider);
 
   const styleLabels: Record<StyleOption, string> = {

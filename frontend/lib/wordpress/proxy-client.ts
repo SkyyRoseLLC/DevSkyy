@@ -8,11 +8,11 @@
 
 const PROXY_URL = '/api/wordpress/proxy';
 
-export async function wpProxyFetch(
+export async function wpProxyFetch<T = unknown>(
   method: string,
   endpoint: string,
   body?: unknown
-): Promise<any> {
+): Promise<T> {
   const response = await fetch(PROXY_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -24,5 +24,5 @@ export async function wpProxyFetch(
     throw new Error(`WordPress API error: ${response.status} ${errorText}`);
   }
 
-  return response.json();
+  return response.json() as Promise<T>;
 }

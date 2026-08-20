@@ -6,7 +6,6 @@ function getStripe() {
   if (!key) {
     throw new Error('STRIPE_SECRET_KEY is not configured');
   }
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   const Stripe = require('stripe');
   return new Stripe(key);
 }

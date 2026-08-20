@@ -6,6 +6,7 @@ All CLIP model calls are mocked so tests run without transformers installed.
 
 from __future__ import annotations
 
+import importlib.util
 from dataclasses import FrozenInstanceError
 from unittest.mock import MagicMock, patch
 
@@ -105,6 +106,7 @@ class TestClassifierFallback:
 # ---------------------------------------------------------------------------
 
 
+@pytest.mark.skipif(importlib.util.find_spec("torch") is None, reason="torch is in the ml extra")
 class TestClassifierWithMockCLIP:
     def _mock_clip_call(self, probs: list[float], image_path: str) -> ClassifierResult:
         """Run classifier with mocked CLIP outputs."""

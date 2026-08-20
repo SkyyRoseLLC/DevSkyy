@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
-import torch
 from PIL import Image
 
+torch = pytest.importorskip("torch")
 # Skip these tests if torchvision is unavailable (transformers AutoImageProcessor requires it)
 pytest.importorskip("torchvision")
 

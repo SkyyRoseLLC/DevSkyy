@@ -43,7 +43,7 @@ async function getHandler(request: NextRequest) {
       total_platforms: platforms.length,
       platforms,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       {
         success: false,

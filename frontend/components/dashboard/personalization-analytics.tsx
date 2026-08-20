@@ -1,29 +1,27 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import { Badge } from '@/components/ui/badge';
+import {
+Card,
+CardContent,
+CardDescription,
+CardHeader,
+CardTitle,
+} from '@/components/ui/card';
+import { getCollection } from '@/lib/collections';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import {
-  Users,
-  Sparkles,
-  Eye,
-  ShoppingCart,
-  TrendingUp,
-  Target,
-  Layers,
-  Zap,
-  MousePointerClick,
-  Heart,
+Heart,
+Layers,
+MousePointerClick,
+ShoppingCart,
+Sparkles,
+Target,
+TrendingUp,
+Zap
 } from 'lucide-react';
-import { getCollection } from '@/lib/collections';
+import { useCallback,useEffect,useMemo,useRef,useState } from 'react';
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
 

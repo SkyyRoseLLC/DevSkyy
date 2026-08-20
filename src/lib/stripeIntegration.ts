@@ -16,6 +16,7 @@ const log = createLogger('Stripe');
  */
 export interface Stripe {
   elements: (options: StripeElementsOptions) => StripeElements;
+  redirectToCheckout: (options: { sessionId: string }) => Promise<{ error?: StripeError }>;
   confirmPayment: (options: ConfirmPaymentOptions) => Promise<PaymentIntentResult>;
   retrievePaymentIntent: (clientSecret: string) => Promise<PaymentIntentResult>;
 }
@@ -121,6 +122,10 @@ export interface PaymentIntentResult {
   error?: StripeError;
 }
 
+type StripeWindow = Window & {
+  Stripe?: (publicKey: string) => Stripe;
+};
+
 /**
  * SkyyRose brand theme for Stripe Elements
  */
@@ -147,13 +152,14 @@ export function initializeStripe(publicKey: string): Stripe | null {
   }
 
   // Check if Stripe.js is loaded
-  if (!(window as any).Stripe) {
+  const stripeFactory = (window as StripeWindow).Stripe;
+  if (!stripeFactory) {
     log.error('Stripe.js not loaded — ensure Stripe script tag is present');
     return null;
   }
 
   try {
-    const stripe = (window as any).Stripe(publicKey);
+    const stripe = stripeFactory(publicKey);
     return stripe;
   } catch (error) {
     log.error('Failed to initialize Stripe', error);

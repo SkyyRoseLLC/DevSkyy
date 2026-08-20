@@ -13,6 +13,7 @@ import logging
 from typing import Any
 
 from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query
+from pydantic import ConfigDict
 from services.ml.image_description_pipeline import (
     ImageDescriptionPipeline,
     VisionModelClient,
@@ -62,10 +63,8 @@ def get_pipeline(
 class QuickDescriptionRequest(DescriptionRequest):
     """Simplified request for quick description generation."""
 
-    class Config:
-        """Pydantic config."""
-
-        json_schema_extra = {
+    model_config = ConfigDict(
+        json_schema_extra={
             "example": {
                 "image_url": "https://example.com/product.jpg",
                 "product_name": "Black Rose Midi Dress",
@@ -74,6 +73,7 @@ class QuickDescriptionRequest(DescriptionRequest):
                 "target_word_count": 150,
             }
         }
+    )
 
 
 class BatchStatusResponse(BatchDescriptionOutput):
