@@ -14,6 +14,9 @@ skill_search = true
 type = "http"
 url = "https://gemini-api-docs-mcp.dev"
 
+[mcp_servers.aidesigner]
+url = "https://api.aidesigner.ai/api/v1/mcp"
+
 [shell_environment_policy]
 inherit = "core"
 
