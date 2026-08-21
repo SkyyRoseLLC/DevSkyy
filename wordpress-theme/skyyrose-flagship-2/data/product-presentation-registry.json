@@ -1,17 +1,22 @@
 {
-  "generated_from": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+  "generated_from": "data/product-sot.json",
   "kind": "skyyrose-v2-product-presentation-registry",
+  "product_sot_sha256": "d3c0249ce887520ce7f178759d9788a8fb5c8a4a71ccb376b3e05bbea8ba9bd6",
   "products": {
     "br-001": {
       "collection": "black-rose",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "black-rose",
+      "product_sot_hash": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832",
       "route": "/collections/black-rose/"
     },
     "br-002": {
       "collection": "black-rose",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "black-rose",
+      "product_sot_hash": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3",
       "route": "/collections/black-rose/"
     },
     "br-003": {
@@ -19,205 +24,267 @@
       "film_start": 0,
       "is_preorder": true,
       "jersey_chapter": "00 / Baseball Classic (Black)",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
+      "product_sot_hash": "5bd06f49fd29da436d772dcebe1c1392bfe9a98d712e0d47e7cd4ae6cab0935d",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-004": {
       "collection": "black-rose",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
+      "product_sot_hash": "d7a48b66e1e53a6d3d751e06b51bbf9a0c1b811bb439ec408cffb52488c24f7c",
       "route": "/collections/black-rose/"
     },
     "br-005": {
       "collection": "black-rose",
       "is_preorder": false,
+      "media_proof_level": "canonical_product_reference",
       "presentation": "black-rose",
+      "product_sot_hash": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763",
       "route": "/collections/black-rose/"
     },
     "br-006": {
       "collection": "black-rose",
       "is_preorder": true,
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
+      "product_sot_hash": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df",
       "route": "/collections/black-rose/"
     },
     "br-007": {
       "collection": "black-rose",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
+      "product_sot_hash": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e",
       "route": "/collections/black-rose/"
     },
     "br-008": {
       "collection": "black-rose",
-      "film_start": 3.2,
+      "film_start": 10.4,
       "is_preorder": true,
       "jersey_chapter": "01 / SF Inspired",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
+      "product_sot_hash": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-009": {
       "collection": "black-rose",
-      "film_start": 6.4,
+      "film_start": 5.2,
       "is_preorder": true,
-      "jersey_chapter": "02 / Last Oakland",
+      "jersey_chapter": "02 / Last Oakland Football",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
+      "product_sot_hash": "25e3509aeb186c7886a5df7b96866f1c493f04fa2253d8b7caac12772eaf29a8",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-010": {
       "collection": "black-rose",
-      "film_start": 9.6,
+      "film_start": 15.6,
       "is_preorder": true,
       "jersey_chapter": "03 / The Bay",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
+      "product_sot_hash": "fcadfb2a24292785e12e27498891286ac638b4b0b3992820892222248b6388e7",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-011": {
       "collection": "black-rose",
-      "film_start": 12.8,
+      "film_start": 18.2,
       "is_preorder": true,
       "jersey_chapter": "04 / The Rose",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
+      "product_sot_hash": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-012": {
       "collection": "black-rose",
-      "film_start": 6.4,
+      "film_start": 7.8,
       "is_preorder": true,
       "jersey_chapter": "05 / Baseball Classic (Last Oakland)",
+      "media_proof_level": "physical_product_photo",
       "presentation": "jersey-series",
+      "product_sot_hash": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-014": {
       "collection": "black-rose",
-      "film_start": 3.2,
+      "film_start": 13.0,
       "is_preorder": true,
       "jersey_chapter": "00 / Baseball Classic (Giants)",
+      "media_proof_level": "physical_product_photo",
       "presentation": "jersey-series",
+      "product_sot_hash": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-015": {
       "collection": "black-rose",
-      "film_start": 0,
+      "film_start": 2.6,
       "is_preorder": true,
       "jersey_chapter": "00 / Baseball Classic (White)",
+      "media_proof_level": "approved_design_reference",
       "presentation": "jersey-series",
+      "product_sot_hash": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e",
       "route": "/collections/black-rose/#jersey-series"
     },
     "kids-001": {
       "collection": "kids-capsule",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "kids-capsule",
+      "product_sot_hash": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd",
       "route": "/collections/kids-capsule/"
     },
     "kids-002": {
       "collection": "kids-capsule",
       "is_preorder": false,
+      "media_proof_level": "physical_product_photo",
       "presentation": "kids-capsule",
+      "product_sot_hash": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea",
       "route": "/collections/kids-capsule/"
     },
     "lh-002": {
       "collection": "love-hurts",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
+      "product_sot_hash": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488",
       "route": "/collections/love-hurts/"
     },
     "lh-003": {
       "collection": "love-hurts",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
+      "product_sot_hash": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21",
       "route": "/collections/love-hurts/"
     },
     "lh-004": {
       "collection": "love-hurts",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
+      "product_sot_hash": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1",
       "route": "/collections/love-hurts/"
     },
     "lh-005": {
       "collection": "love-hurts",
       "is_preorder": true,
+      "media_proof_level": "canonical_product_reference",
       "presentation": "love-hurts",
+      "product_sot_hash": "f1046d62100a446b5a0d60c05d2481e671c7fd8d57bb742ff6f319dc931bdd28",
       "route": "/collections/love-hurts/"
     },
     "lh-006": {
       "collection": "love-hurts",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
+      "product_sot_hash": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d",
       "route": "/collections/love-hurts/"
     },
     "sg-001": {
       "collection": "signature",
       "is_preorder": true,
+      "media_proof_level": "physical_product_photo",
       "presentation": "signature",
+      "product_sot_hash": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f",
       "route": "/collections/signature/"
     },
     "sg-002": {
       "collection": "signature",
       "is_preorder": true,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f",
       "route": "/collections/signature/"
     },
     "sg-003": {
       "collection": "signature",
       "is_preorder": true,
+      "media_proof_level": "canonical_product_reference",
       "presentation": "signature",
+      "product_sot_hash": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d",
       "route": "/collections/signature/"
     },
     "sg-005": {
       "collection": "signature",
       "is_preorder": true,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c",
       "route": "/collections/signature/"
     },
     "sg-006": {
       "collection": "signature",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf",
       "route": "/collections/signature/"
     },
     "sg-007": {
       "collection": "signature",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03",
       "route": "/collections/signature/"
     },
     "sg-009": {
       "collection": "signature",
       "is_preorder": false,
+      "media_proof_level": "canonical_product_reference",
       "presentation": "signature",
+      "product_sot_hash": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e",
       "route": "/collections/signature/"
     },
     "sg-011": {
       "collection": "signature",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "signature",
+      "product_sot_hash": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812",
       "route": "/collections/signature/"
     },
     "sg-012": {
       "collection": "signature",
       "is_preorder": false,
+      "media_proof_level": "catalog_media_only",
       "presentation": "signature",
+      "product_sot_hash": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1",
       "route": "/collections/signature/"
     },
     "sg-013": {
       "collection": "signature",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b",
       "route": "/collections/signature/"
     },
     "sg-014": {
       "collection": "signature",
       "is_preorder": false,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9",
       "route": "/collections/signature/"
     },
     "sg-015": {
       "collection": "signature",
       "is_preorder": true,
+      "media_proof_level": "approved_design_reference",
       "presentation": "signature",
+      "product_sot_hash": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76",
       "route": "/collections/signature/"
     }
   },
-  "schema_version": "1.0.0",
+  "schema_version": "2.0.0",
   "supplements": {
     "jersey_series_skus": [
       "br-003",

@@ -176,8 +176,26 @@ done
 if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/functions.php"; then
+	! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'return array_slice\( \$ordered, 0, 3 \);' "$THEME_DIR/functions.php" || \
+	! rg -q 'skyyrose2_render_product_loop_card\( \$piece' "$THEME_DIR/functions.php" || \
+	! rg -q 'data-reel-count' "$THEME_DIR/template-parts/commerce/product-card.php"; then
 	echo "FAIL approved ornate product-card frame or verified view reel missing" >&2
+	exit 1
+fi
+
+if ! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-hero.php" || \
+	! rg -q 'woocommerce_product_get_image_id' "$THEME_DIR/template-parts/commerce/product-hero.php" || \
+	! rg -q 'On-model product imagery is being verified' "$THEME_DIR/template-parts/commerce/product-hero.php"; then
+	echo "FAIL product page does not enforce the approved on-model media sequence" >&2
+	exit 1
+fi
+
+if ! jq -e '
+	(.products | length) == 33 and
+	all(.products[]; (.views[0].role // "") == "on_model_front")
+' "$THEME_DIR/data/opening-product-media.json" >/dev/null; then
+	echo "FAIL every product card requires an approved on-model lead" >&2
 	exit 1
 fi
 

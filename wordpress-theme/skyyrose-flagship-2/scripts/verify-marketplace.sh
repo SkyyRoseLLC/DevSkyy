@@ -35,6 +35,7 @@ while IFS= read -r artwork_face; do
 done < <(jq -r '.artwork_only[] | .family + "|" + .path' "$font_manifest" | cut -d'|' -f1)
 
 python3 scripts/build-product-presentation-registry.py --check
+python3 scripts/validate-opening-product-media.py
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check
@@ -77,14 +78,15 @@ while IFS= read -r asset; do
 	fi
 done < <(jq -r '.transparent_brand_assets[]' data/image-optimization.json)
 
+product_media_max_bytes="$(jq -r '.delivery.max_bytes' data/opening-product-media.json)"
 while IFS= read -r derivative; do
 	test -s "$derivative" || { echo "Missing opening product-media derivative: $derivative" >&2; exit 1; }
 	bytes="$(stat -f '%z' "$derivative")"
-	if [ "$bytes" -gt 80000 ]; then
-		echo "Opening product-media derivative exceeds 80KB: $derivative" >&2
+	if [ "$bytes" -gt "$product_media_max_bytes" ]; then
+		echo "Opening product-media derivative exceeds ${product_media_max_bytes} bytes: $derivative" >&2
 		exit 1
 	fi
-done < <(jq -r '.products[] | .views[] | .derivative' data/opening-product-media.json)
+done < <(jq -r '.products[] | .views[]? | .derivative // empty' data/opening-product-media.json)
 
 STYLE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -n1)"
 PACKAGE_VERSION="$(jq -r '.version' package.json)"

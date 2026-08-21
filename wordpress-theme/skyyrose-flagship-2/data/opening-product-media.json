@@ -1,56 +1,68 @@
 {
-  "schema": "skyyrose.sot.opening-product-media.v1",
-  "purpose": "Local V2 prototype product reels. These derivatives are sourced only from the canonical product-imagery SOT and do not replace WooCommerce gallery authority in production.",
-  "source_of_truth": "data/sot-images.json",
+  "schema": "skyyrose.sot.product-card-media.v2",
+  "purpose": "Full-catalog V2 product-card media projection. Every approved card opens on an eyes-on verified on-model view; flat, ghost, mannequin, and packshot media are secondary proof only.",
+  "sources_of_truth": ["data/product-sot.json", "data/sot-images.json", "assets/hub/manifest.json"],
+  "product_sot_sha256": "d3c0249ce887520ce7f178759d9788a8fb5c8a4a71ccb376b3e05bbea8ba9bd6",
+  "reviewed_at": "2026-08-20",
   "delivery": {
     "format": "webp",
-    "max_dimension": "600x800",
-    "max_bytes": 80000,
-    "card_order": [
-      "on_model_front",
-      "on_model_back",
-      "packshot"
-    ]
+    "max_dimension": "800x1200",
+    "max_bytes": 180000,
+    "card_order": ["on_model_front", "on_model_back", "mannequin_front", "mannequin_back", "packshot"]
   },
   "products": {
-    "sg-005": {
-      "collection": "signature",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/sg-005-onmodel.webp", "derivative": "assets/sot/images/products/preview/sg-005-front.webp" },
-        { "role": "packshot", "source": "assets/images/products/sg-005-bay-bridge-shirt.jpeg", "derivative": "assets/sot/images/products/preview/sg-005-packshot.webp" }
-      ]
-    },
-    "br-004": {
-      "collection": "black-rose",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/br-004-onmodel.webp", "derivative": "assets/sot/images/products/preview/br-004-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/black-rose-hoodie-back-model.webp", "derivative": "assets/sot/images/products/preview/br-004-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/br-004-black-rose-hoodie.jpeg", "derivative": "assets/sot/images/products/preview/br-004-packshot.webp" }
-      ]
-    },
-    "lh-004": {
-      "collection": "love-hurts",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/lh-004-onmodel.webp", "derivative": "assets/sot/images/products/preview/lh-004-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/lh-004-bomber-back.webp", "derivative": "assets/sot/images/products/preview/lh-004-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/lh-004-bomber.png", "derivative": "assets/sot/images/products/preview/lh-004-packshot.webp" }
-      ]
-    },
+    "br-001": {"collection": "black-rose", "views": [{"role": "on_model_front", "source": "assets/images/products/br-001-onmodel.webp"}]},
+    "br-002": {"collection": "black-rose", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "Current verified front is flat jogger media, not an on-model view.", "views": []},
+    "br-003": {"collection": "black-rose", "status": "REJECTED_AUTHENTICITY", "reason": "Current on-model front suppresses canonical patch color.", "views": []},
+    "br-004": {"collection": "black-rose", "status": "REJECTED_AUTHENTICITY", "reason": "Current on-model front does not match the corrected hoodie: no circular upper-arm patch is permitted; the small wearer-left chest mark, longitudinal wearer-left forearm artwork, light floral hood lining, and white drawstrings must remain exact.", "views": []},
+    "br-005": {"collection": "black-rose", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "Current verified front is a ghost-mannequin hoodie, not an on-model view.", "views": []},
+    "br-006": {"collection": "black-rose", "views": [{"role": "on_model_front", "source": "assets/images/products/br-006-onmodel.webp"}]},
+    "br-007": {"collection": "black-rose", "status": "REJECTED_AUTHENTICITY", "reason": "Current front has incorrect logo color and the back omits required Love Hurts placements.", "views": []},
+    "br-008": {"collection": "black-rose", "views": [{"role": "on_model_front", "source": "assets/images/products/br-008-onmodel.webp"}]},
+    "br-009": {"collection": "black-rose", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "An on-model candidate exists, but the asset-hub product-card verdict is still pending.", "views": []},
+    "br-010": {"collection": "black-rose", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "An on-model candidate exists, but the asset-hub product-card verdict is still pending.", "views": []},
+    "br-011": {"collection": "black-rose", "status": "REJECTED_AUTHENTICITY", "reason": "Current front invents a prohibited NHL shield at the collar.", "views": []},
+    "br-012": {"collection": "black-rose", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "Current front is flat green-and-gold jersey media and remains pending in the asset hub.", "views": []},
+    "br-014": {"collection": "black-rose", "views": [{"role": "on_model_front", "source": "assets/images/products/br-014-onmodel.webp"}]},
+    "br-015": {"collection": "black-rose", "views": [{"role": "on_model_front", "source": "assets/images/products/br-015-onmodel.webp"}]},
     "kids-001": {
       "collection": "kids-capsule",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/kids-001-onmodel-v2.webp", "derivative": "assets/sot/images/products/preview/kids-001-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/kids-red-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-001-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/kids-001-red-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-001-packshot.webp" }
+        {"role": "on_model_front", "source": "assets/images/products/kids-001-onmodel-v2.webp", "derivative": "assets/sot/images/products/preview/kids-001-front.webp"},
+        {"role": "mannequin_back", "source": "assets/images/products/kids-red-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-001-back.webp"},
+        {"role": "packshot", "source": "assets/images/products/kids-001-red-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-001-packshot.webp"}
       ]
     },
-    "kids-002": {
-      "collection": "kids-capsule",
+    "kids-002": {"collection": "kids-capsule", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "Current front is a ghost-mannequin set and the asset-hub product-card verdict remains pending.", "views": []},
+    "lh-002": {"collection": "love-hurts", "views": [{"role": "on_model_front", "source": "assets/images/products/lh-002-onmodel.webp"}]},
+    "lh-003": {"collection": "love-hurts", "views": [{"role": "on_model_front", "source": "assets/images/products/hub/lh-003-front.webp"}]},
+    "lh-004": {
+      "collection": "love-hurts",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/ghost/kids-002-ghost-front.webp", "derivative": "assets/sot/images/products/preview/kids-002-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-002-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/kids-002-purple-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-002-packshot.webp" }
+        {"role": "on_model_front", "source": "assets/images/products/lh-004-onmodel.webp", "derivative": "assets/sot/images/products/preview/lh-004-front.webp"},
+        {"role": "mannequin_back", "source": "assets/images/products/lh-004-bomber-back.webp", "derivative": "assets/sot/images/products/preview/lh-004-back.webp"},
+        {"role": "packshot", "source": "assets/images/products/lh-004-bomber.png", "derivative": "assets/sot/images/products/preview/lh-004-packshot.webp"}
       ]
-    }
+    },
+    "lh-005": {"collection": "love-hurts", "views": [{"role": "on_model_front", "source": "assets/images/products/lh-005-onmodel.webp"}]},
+    "lh-006": {"collection": "love-hurts", "views": [{"role": "on_model_front", "source": "assets/images/products/lh-006-onmodel.webp"}]},
+    "sg-001": {"collection": "signature", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "Current verified front is flat shorts media, not an on-model view.", "views": []},
+    "sg-002": {"collection": "signature", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "Current verified front is flat shirt media, not an on-model view.", "views": []},
+    "sg-003": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/hub/sg-003-front.webp"}]},
+    "sg-005": {
+      "collection": "signature",
+      "views": [
+        {"role": "on_model_front", "source": "assets/images/products/sg-005-onmodel.webp", "derivative": "assets/sot/images/products/preview/sg-005-front.webp"},
+        {"role": "packshot", "source": "assets/images/products/sg-005-bay-bridge-shirt.jpeg", "derivative": "assets/sot/images/products/preview/sg-005-packshot.webp"}
+      ]
+    },
+    "sg-006": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/sg-006-onmodel.webp"}]},
+    "sg-007": {"collection": "signature", "status": "MISSING_APPROVED_ON_MODEL_FRONT", "reason": "Current verified front is flat beanie media, not an on-model view.", "views": []},
+    "sg-009": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/sg-009-onmodel.webp"}]},
+    "sg-011": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/sg-011-onmodel.webp"}]},
+    "sg-012": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/sg-012-onmodel.webp"}]},
+    "sg-013": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/sg-013-onmodel.webp"}]},
+    "sg-014": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/hub/sg-014-front.webp"}]},
+    "sg-015": {"collection": "signature", "views": [{"role": "on_model_front", "source": "assets/images/products/hub/sg-015-front.webp"}]}
   }
 }

@@ -30,7 +30,6 @@ $product                 = $card_product;
 $product_id       = $card_product->get_id();
 $product_url      = method_exists( $card_product, 'get_permalink' ) ? $card_product->get_permalink() : get_permalink( $product_id );
 $product_name     = $card_product->get_name();
-$image_id         = $card_product->get_image_id();
 $collections      = skyyrose2_collections();
 $presentation     = 'house';
 $presentation_name = __( 'SkyyRose', 'skyyrose-flagship-2' );
@@ -61,22 +60,27 @@ $chapter_number = isset( $portal_order[ $presentation ] ) ? $portal_order[ $pres
 $artifact_uri   = $collection_data && ! empty( $collection_data['artifact'] ) ? skyyrose2_sot_asset_uri( $collection_data['artifact'] ) : '';
 $scene_frames   = $collection_data ? skyyrose2_product_card_reel_frames( $collection_data ) : array();
 $scene_uri      = ! empty( $scene_frames[0]['uri'] ) ? $scene_frames[0]['uri'] : '';
-$view_image_ids = skyyrose2_product_view_image_ids( $card_product );
+$verified_media  = skyyrose2_product_verified_card_media( $card_product );
+$primary_media   = ! empty( $verified_media[0] ) ? $verified_media[0] : array();
+$primary_image_id = ! empty( $primary_media['id'] ) ? (int) $primary_media['id'] : 0;
+$has_verified_media = (bool) $primary_image_id;
+$reel_count      = count( $verified_media );
 $price_html     = $card_product->get_price_html();
 $stock_html     = function_exists( 'wc_get_stock_html' ) ? wc_get_stock_html( $card_product ) : '';
 $stock_state    = $card_product->is_in_stock() ? 'available' : 'unavailable';
 $stock_label    = $card_product->is_in_stock() ? __( 'Available', 'skyyrose-flagship-2' ) : __( 'Unavailable', 'skyyrose-flagship-2' );
-$quick_view_image = $image_id && function_exists( 'wp_get_attachment_image_url' ) ? wp_get_attachment_image_url( $image_id, 'woocommerce_single' ) : '';
+$quick_view_image = $primary_image_id && function_exists( 'wp_get_attachment_image_url' ) ? wp_get_attachment_image_url( $primary_image_id, 'woocommerce_single' ) : '';
 $quick_view_excerpt = wp_trim_words( wp_strip_all_tags( $card_product->get_short_description() ), 26, '…' );
-$loading        = $card_index < 4 ? 'eager' : 'lazy';
+$loading        = 0 === $card_index ? 'eager' : 'lazy';
 $fetchpriority  = 0 === $card_index ? 'high' : 'auto';
 $product_type   = method_exists( $card_product, 'get_type' ) ? $card_product->get_type() : 'unknown';
 $purchasable    = method_exists( $card_product, 'is_purchasable' ) ? ( $card_product->is_purchasable() ? 'true' : 'false' ) : 'unknown';
 $image_attrs    = array(
 	'class'         => 'sr2-c-product-portal__product-image',
 	'loading'       => $loading,
-	'fetchpriority' => $fetchpriority,
-	'decoding'      => 'async',
+		'fetchpriority' => $fetchpriority,
+		'decoding'      => 'async',
+		'sizes'         => '(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 46vw, 25vw',
 );
 ?>
 <article
@@ -88,7 +92,7 @@ $image_attrs    = array(
 	data-product-type="<?php echo esc_attr( $product_type ); ?>"
 	data-purchasable="<?php echo esc_attr( $purchasable ); ?>"
 	data-availability="<?php echo esc_attr( $stock_state ); ?>"
-	data-media-state="<?php echo esc_attr( $image_id ? 'ready' : 'missing' ); ?>"
+	data-media-state="<?php echo esc_attr( $has_verified_media ? 'verified' : 'unverified' ); ?>"
 >
 	<header class="sr2-c-product-portal__chapter" aria-hidden="true">
 		<span><?php echo esc_html( sprintf( '%02d', $chapter_number ) ); ?></span>
@@ -100,17 +104,17 @@ $image_attrs    = array(
 		href="<?php echo esc_url( $product_url ); ?>"
 		aria-label="<?php echo esc_attr( sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>"
 	>
-		<?php if ( $scene_uri ) : ?>
+		<?php if ( $has_verified_media && $scene_uri ) : ?>
 			<img class="sr2-c-product-portal__scene" src="<?php echo esc_url( $scene_uri ); ?>" alt="" width="1280" height="720" loading="lazy" decoding="async" aria-hidden="true">
 		<?php endif; ?>
 		<span class="sr2-c-product-portal__shade" aria-hidden="true"></span>
 		<span class="sr2-c-product-portal__frame" aria-hidden="true">
-			<?php if ( $artifact_uri ) : ?>
+			<?php if ( $has_verified_media && $artifact_uri ) : ?>
 				<img class="sr2-c-product-portal__frame-crest" src="<?php echo esc_url( $artifact_uri ); ?>" alt="" width="96" height="96" loading="lazy" decoding="async">
 			<?php endif; ?>
 			<i></i><b></b>
 		</span>
-		<?php if ( $artifact_uri ) : ?>
+		<?php if ( $has_verified_media && $artifact_uri ) : ?>
 			<img
 				class="sr2-c-product-portal__artifact"
 				src="<?php echo esc_url( $artifact_uri ); ?>"
@@ -122,18 +126,32 @@ $image_attrs    = array(
 				aria-hidden="true"
 			>
 		<?php endif; ?>
-		<?php if ( $image_id ) : ?>
-			<?php echo wp_kses_post( wp_get_attachment_image( $image_id, 'woocommerce_thumbnail', false, $image_attrs ) ); ?>
-		<?php elseif ( function_exists( 'wc_placeholder_img' ) ) : ?>
-			<?php echo wp_kses_post( wc_placeholder_img( 'woocommerce_thumbnail', $image_attrs ) ); ?>
+		<?php if ( $has_verified_media ) : ?>
+			<?php echo wp_kses_post( wp_get_attachment_image( $primary_image_id, 'woocommerce_thumbnail', false, $image_attrs ) ); ?>
+		<?php else : ?>
+			<span class="sr2-c-product-portal__media-missing" role="status">
+				<?php esc_html_e( 'Product imagery is being verified.', 'skyyrose-flagship-2' ); ?>
+			</span>
 		<?php endif; ?>
-		<?php if ( count( $view_image_ids ) > 1 ) : ?>
-			<div class="sr2-c-product-portal__reel" aria-label="<?php echo esc_attr( sprintf( __( 'More views of %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>">
+		<?php if ( $reel_count > 1 ) : ?>
+			<div class="sr2-c-product-portal__reel" data-reel-count="<?php echo esc_attr( (string) $reel_count ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'More views of %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>">
 				<div class="sr2-c-product-portal__reel-track">
-					<?php foreach ( $view_image_ids as $view_index => $view_image_id ) : ?>
-						<figure class="sr2-c-product-portal__reel-frame">
-							<?php echo wp_kses_post( wp_get_attachment_image( $view_image_id, 'woocommerce_thumbnail', false, array( 'class' => 'sr2-c-product-portal__reel-image', 'loading' => 'lazy', 'decoding' => 'async', 'alt' => sprintf( __( '%s view %d', 'skyyrose-flagship-2' ), $product_name, $view_index + 1 ) ) ) ); ?>
-							<figcaption><?php echo esc_html( 0 === $view_index ? __( 'On model / front', 'skyyrose-flagship-2' ) : sprintf( __( 'View %02d', 'skyyrose-flagship-2' ), $view_index + 1 ) ); ?></figcaption>
+					<?php foreach ( $verified_media as $view_index => $view_media ) : ?>
+						<?php
+						$view_image_id = (int) $view_media['id'];
+						$view_role     = (string) $view_media['role'];
+						$view_label    = array(
+							'on_model_front' => __( 'On model / front', 'skyyrose-flagship-2' ),
+							'on_model_back'  => __( 'On model / back', 'skyyrose-flagship-2' ),
+							'mannequin_front' => __( 'Mannequin / front', 'skyyrose-flagship-2' ),
+							'mannequin_back' => __( 'Mannequin / back', 'skyyrose-flagship-2' ),
+							'render_3d'       => __( '3D render', 'skyyrose-flagship-2' ),
+							'packshot'        => __( 'Product detail', 'skyyrose-flagship-2' ),
+						);
+						?>
+						<figure class="sr2-c-product-portal__reel-frame" data-view-role="<?php echo esc_attr( $view_role ); ?>">
+							<?php echo wp_kses_post( wp_get_attachment_image( $view_image_id, 'woocommerce_thumbnail', false, array( 'class' => 'sr2-c-product-portal__reel-image', 'loading' => 'lazy', 'decoding' => 'async', 'sizes' => '(max-width: 640px) 30vw, 12vw', 'alt' => sprintf( __( '%s view %d', 'skyyrose-flagship-2' ), $product_name, $view_index + 1 ) ) ) ); ?>
+							<figcaption><?php echo esc_html( $view_label[ $view_role ] ?? sprintf( __( 'View %02d', 'skyyrose-flagship-2' ), $view_index + 1 ) ); ?></figcaption>
 						</figure>
 					<?php endforeach; ?>
 				</div>
