@@ -81,51 +81,27 @@ if [[ -z "$PYTHON" ]]; then
   exit 0
 fi
 
-# ── Regenerate + verify per-collection SOT (when a SOT master is edited) ───
-# data/collections/*.json are a GENERATED VIEW of three masters (catalog CSV,
-# visual-manifest.json, logo-registry.json). Editing a master without
-# regenerating leaves the view stale — the exact drift that caused repeated
-# wrong-file pick-ups. Regenerate + verify in-session so the view never lags.
-# Placed BEFORE the optional catalog-validator gate so a repo without that
-# validator still keeps the SOT current.
-# SOT masters = the three legacy masters PLUS per-collection identity.json (canon).
-SOT_MASTERS=(
-  "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
-  "wordpress-theme/skyyrose-flagship/data/visual-manifest.json"
-  "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
-)
-SOT_DATA_DIR="${REPO_ROOT}/wordpress-theme/skyyrose-flagship/data"
-SOT_TRIGGER=0
-for master in "${SOT_MASTERS[@]}"; do
-  if [[ "$REL_FILE" == "$master" ]]; then
-    SOT_TRIGGER=1
-    break
-  fi
-done
-if [[ "$REL_FILE" == wordpress-theme/skyyrose-flagship/data/collections/*/identity.json ]]; then
-  SOT_TRIGGER=1
+# Product SOT is the single machine-facing contract for every product consumer.
+# It must refresh after any catalog, logo-placement, or dossier change; the image
+# and Woo contracts are hash-bound projections and regenerate in the same pass.
+PRODUCT_SOT_TRIGGER=0
+if [[ "$REL_FILE" == "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv" \
+   || "$REL_FILE" == "wordpress-theme/skyyrose-flagship/data/logo-registry.json" \
+   || "$REL_FILE" == "$DOSSIER_GLOB_PREFIX"*.md ]]; then
+  PRODUCT_SOT_TRIGGER=1
 fi
-# Full SOT pipeline: design-tokens (from identity) → per-folder sot.json → designer
-# hubs → verify. Editing any master without regenerating leaves the generated view
-# stale — the exact drift that caused repeated wrong-file pick-ups.
-if [[ "$SOT_TRIGGER" == "1" && -f "${SOT_DATA_DIR}/build-collection-sot.py" ]]; then
-  if "$PYTHON" "${SOT_DATA_DIR}/gen-design-tokens.py" >/dev/null 2>&1 \
-    && "$PYTHON" "${SOT_DATA_DIR}/build-collection-sot.py" >/dev/null 2>&1 \
-    && "$PYTHON" "${SOT_DATA_DIR}/gen-collection-hub.py" >/dev/null 2>&1; then
-    if "$PYTHON" "${SOT_DATA_DIR}/verify-collection-sot.py" >/dev/null 2>&1; then
-      echo ""
-      echo "[catalog-drift-guard] SOT pipeline regenerated + verified (design-tokens + sot.json + hubs) after ${REL_FILE} edit."
-      echo ""
-    else
-      echo ""
-      echo "[catalog-drift-guard] WARNING: SOT regenerated but verification FAILED after editing ${REL_FILE}."
-      echo "  Run: python3 wordpress-theme/skyyrose-flagship/data/verify-collection-sot.py   (to see details)"
-      echo ""
-    fi
+if [[ "$PRODUCT_SOT_TRIGGER" == "1" ]]; then
+  if (cd "$REPO_ROOT" \
+    && "$PYTHON" -m skyyrose.core.product_sot >/dev/null \
+    && "$PYTHON" -m skyyrose.core.sot_images >/dev/null \
+    && "$PYTHON" scripts/launch/woocommerce_product_contract.py >/dev/null); then
+    echo ""
+    echo "[catalog-drift-guard] product-sot.json + sot-images.json + Woo contract regenerated after ${REL_FILE} edit."
+    echo ""
   else
     echo ""
-    echo "[catalog-drift-guard] WARNING: SOT pipeline regeneration FAILED after editing ${REL_FILE}."
-    echo "  Run the generators in wordpress-theme/skyyrose-flagship/data/ to see details."
+    echo "[catalog-drift-guard] WARNING: product contract regeneration FAILED after editing ${REL_FILE}."
+    echo "  Run: python3 -m skyyrose.core.product_sot"
     echo ""
   fi
 fi
@@ -136,11 +112,12 @@ if [[ ! -f "$VALIDATOR" ]]; then
 fi
 
 # ── Run validator (quiet, non-blocking) ────────────────────────────────────
-if ! "$PYTHON" "$VALIDATOR" --quiet 2>/dev/null; then
+CHECKS="dossier_slugs,logo_skus,csv_image_columns_resolve,product_sot_current,sot_images_current,woocommerce_sync_current"
+if ! "$PYTHON" "$VALIDATOR" --quiet --checks "$CHECKS" 2>/dev/null; then
   echo ""
   echo "[catalog-drift-guard] WARNING: Catalog consistency check failed after editing ${REL_FILE}."
-  echo "  Run: make validate-catalog   (to see details)"
-  echo "  Fix: make sync-catalog-dry   (preview auto-fixes)"
+  echo "  Run: python3 scripts/validate_catalog_consistency.py --checks $CHECKS"
+  echo "  Legacy collection/lookbook generators remain disabled until production is clean."
   echo "  The pre-commit hook will block commits until checks pass."
   echo ""
 fi
@@ -149,8 +126,8 @@ fi
 # any subsequent product claim. Memory may be stale; canonical files won.
 echo ""
 echo "[catalog-drift-guard] CANONICAL PRODUCT DATA TOUCHED: ${REL_FILE}"
-echo "  Re-read this file (or call skyyrose.core.catalog_loader /"
-echo "  skyyrose.core.dossier_loader) before claiming any product fact."
+echo "  Re-read data/product-sot.json (or call skyyrose.core.product_sot)"
+echo "  before claiming any product fact or dispatching creative work."
 echo ""
 
 exit 0

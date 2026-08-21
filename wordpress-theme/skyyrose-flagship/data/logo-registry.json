@@ -151,7 +151,9 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "width_inches": 3,
+          "height_inches": 4
         }
       ],
       "front_text": "BLACK IS BEAUTIFUL"
@@ -162,9 +164,17 @@
         {
           "logo_id": "black-roses-cloud-cluster",
           "position": "front_chest_center",
-          "technique": "embroidered"
+          "technique": "embroidered",
+          "notes": "Small chest placement matching the physical flatlay; do not enlarge."
+        },
+        {
+          "logo_id": "black-roses-cloud-cluster",
+          "position": "wearer_left_forearm",
+          "technique": "embroidered",
+          "notes": "Large longitudinal forearm artwork. This is not a circular upper-arm patch."
         }
-      ]
+      ],
+      "garment_notes": "White drawstrings and light floral hood lining. No circular arm patch or shoulder badge."
     },
     "br-005": {
       "name": "BLACK Rose Hoodie — Signature Edition",
@@ -215,12 +225,14 @@
           "position": "left_side",
           "technique": "sublimated",
           "size_inches": 12,
-          "notes": "Large sublimated element."
+          "notes": "Place after OAKLAND without covering or obscuring the final D."
         },
         {
           "logo_id": "black-roses-cloud-cluster",
           "position": "mesh_side_panels",
-          "technique": "stitched"
+          "technique": "stitched",
+          "colorway": "physical_multicolor",
+          "notes": "Viewer-left white side panel retains green stems and blue cloud accent from the physical flatlay."
         },
         {
           "logo_id": "love-hurts-full-lettering",
@@ -230,7 +242,8 @@
         }
       ],
       "front_text": "Oakland",
-      "front_text_technique": "tackle_twill_cut_out"
+      "front_text_technique": "tackle_twill_cut_out",
+      "front_text_notes": "Keep OAKLAND fully readable; the script mark must not overlap the final D."
     },
     "br-008": {
       "name": "BLACK Is Beautiful Jersey Series: 1 — SF Inspired (Red Football)",
@@ -252,7 +265,9 @@
         {
           "logo_id": "nfl-authentic-collection-card",
           "position": "bottom_left_corner",
-          "technique": "custom_football_patch"
+          "technique": "custom_football_patch",
+          "width_inches": 3,
+          "height_inches": 4
         }
       ],
       "jersey_number": "80"
@@ -264,23 +279,26 @@
           "logo_id": "black-roses-cloud-cluster",
           "position": "front_number_3",
           "technique": "stitched",
-          "colorway": "rose_gold",
+          "colorway": "grayscale",
           "notes": "Rose cluster fills the '3' digit in jersey number 32 on the front; '2' remains plain white."
         },
         {
           "logo_id": "black-roses-cloud-cluster",
           "position": "back_number_2",
           "technique": "stitched",
-          "colorway": "rose_gold",
+          "colorway": "grayscale",
           "notes": "Reversed on back — '3' is plain, '2' has the rose cluster fill."
         },
         {
           "logo_id": "nfl-authentic-collection-card",
           "position": "bottom_left_corner",
-          "technique": "custom_football_patch"
+          "technique": "custom_football_patch",
+          "width_inches": 3,
+          "height_inches": 4
         }
       ],
-      "jersey_number": "32"
+      "jersey_number": "32",
+      "garment_notes": "Black inner V-neck with visible white outer V band and thin dark outline. Exactly three black cuff bands on each sleeve, separated by white channels."
     },
     "br-010": {
       "name": "BLACK Is Beautiful Jersey Series: 3 — The Bay (Basketball)",
@@ -288,7 +306,9 @@
         {
           "logo_id": "nba-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_basketball_patch"
+          "technique": "custom_basketball_patch",
+          "width_inches": 3,
+          "height_inches": 4
         }
       ],
       "notes": "User confirmed: vision pipeline produced a good first render — preserve existing spec."
@@ -300,6 +320,8 @@
           "logo_id": "hockey-championship-card",
           "position": "front_patch",
           "technique": "custom_hockey_patch",
+          "width_inches": 3,
+          "height_inches": 4,
           "notes": "Hockey Championship card — different visual style from NBA/NFL cards (gray ground, shield with sticks+puck, minimalist)."
         }
       ],
@@ -316,11 +338,13 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "width_inches": 3,
+          "height_inches": 4
         }
       ],
       "front_text": "BLACK IS BEAUTIFUL",
-      "front_text_notes": "'A' of BLACK in black lettering, remainder of BLACK IS BEAUTIFUL in gold lettering."
+      "front_text_notes": "Approximately 72% of visible torso width. Letter faces are white except the black A; every letter has a gold satin-stitch edge."
     },
     "br-014": {
       "name": "BLACK Is Beautiful Jersey Series: 0 — Baseball Classic (Giants)",
@@ -334,7 +358,9 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "width_inches": 3,
+          "height_inches": 4
         }
       ],
       "front_text": "BLACK IS BEAUTIFUL",
@@ -352,7 +378,9 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "width_inches": 3,
+          "height_inches": 4
         }
       ],
       "front_text": "BLACK IS BEAUTIFUL",

@@ -7,10 +7,12 @@ manifest) — resolves product imagery through here, never through ad-hoc paths.
 Hardcoding ``assets/images/products/<sku>...`` anywhere else is a drift bug
 (``tests/test_sot_no_adhoc_imagery.py`` guards against it).
 
-Source of truth = the per-collection SOT view
+Image paths are projected from the per-collection SOT view
 ``wordpress-theme/skyyrose-flagship/data/collections/<slug>/sot.json`` (itself
 generated from ``identity.json`` + the catalog CSV + ``visual-manifest.json`` by
-``data/build-collection-sot.py`` — do not hand-edit it).
+``data/build-collection-sot.py`` — do not hand-edit it). Every serialized image
+manifest is also bound to ``data/product-sot.json`` product hashes, so creative
+media becomes stale as soon as its product specification changes.
 
 The front-first fallback chain mirrors the WordPress theme's
 ``template-parts/product-card-holo.php`` rule exactly: the on-model render
@@ -23,6 +25,7 @@ previews this module exists to prevent.
 from __future__ import annotations
 
 import functools
+import hashlib
 import json
 from pathlib import Path
 from typing import Literal
@@ -172,11 +175,23 @@ def serialize_manifest(manifest: dict | None = None) -> str:
     formatting (the way two independent serializers would). Pass a pre-built
     ``manifest`` to avoid rebuilding it.
     """
+    from skyyrose.core import product_sot
+
+    product_manifest = product_sot.build_manifest()
+    product_manifest_bytes = product_sot.serialize_manifest(product_manifest).encode("utf-8")
     payload = {
         "_generated_by": "skyyrose.core.sot_images.write_manifest — DO NOT EDIT. "
-        "Regenerate after build-collection-sot.py.",
+        "Regenerate after product-sot.json or build-collection-sot.py.",
         "_authority": "SOT product-imagery contract. Front-first fallback "
         "(on-model render before flat packshot).",
+        "product_sot": {
+            "path": "data/product-sot.json",
+            "sha256": hashlib.sha256(product_manifest_bytes).hexdigest(),
+            "product_hashes": {
+                sku: product["product_hash"]
+                for sku, product in product_manifest["products"].items()
+            },
+        },
         "images": build_manifest() if manifest is None else manifest,
     }
     return json.dumps(payload, indent=2) + "\n"

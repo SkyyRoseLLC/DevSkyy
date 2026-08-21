@@ -3,7 +3,7 @@
 # ("Glob Fishing Instead of Consulting Canonical Source").
 #
 # Per cerebrum.md: before any task, name the canonical source. Examples:
-#   Catalog → wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+#   Product → data/product-sot.json
 #   Brand   → knowledge-base/seed/from-interview.md
 #   ADRs    → knowledge-base/decisions/
 #
@@ -64,8 +64,9 @@ build_directive() {
     for t in "${stale[@]}"; do
         case "$t" in
             catalog)
-                out+="  - catalog → wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv (30 SKUs, source of truth; never grep individual JSONs)\n"
-                out+="    Python loader: skyyrose/core/catalog_loader.py   PHP loader: inc/product-catalog.php\n"
+                out+="  - product → data/product-sot.json (33 SKUs; single machine-facing contract for commerce + garment + references + media)\n"
+                out+="    Human authoring inputs: skyyrose-catalog.csv + data/dossiers/*.md + logo-registry.json\n"
+                out+="    Python loader: skyyrose/core/product_sot.py; never independently rejoin the authoring inputs downstream\n"
                 ;;
             brand)
                 out+="  - brand → knowledge-base/seed/from-interview.md (PRIMARY brand canon, Corey-authored; wins over derived docs)\n"
@@ -74,7 +75,7 @@ build_directive() {
                 out+="  - collection → knowledge-base/seed/from-interview.md (collection narratives) + wordpress-theme/skyyrose-flagship/template-collection-*.php\n"
                 ;;
             imagery-pipeline)
-                out+="  - imagery pipeline → docs/NANO_BANANA.md and skyyrose/elite_studio/ (canonical hub); NEVER call FASHN/Tripo/Meshy outside their agent wrappers\n"
+                out+="  - imagery pipeline → data/product-sot.json + data/sot-images.json, then skyyrose/elite_studio/; reject stale product hashes and never invent missing proof\n"
                 ;;
             adr)
                 out+="  - ADR / architectural decision → knowledge-base/decisions/ (numbered ADRs); SKYYROSE_V2_MASTER_PLAN.md §1.1 has locked decisions\n"

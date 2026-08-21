@@ -3,7 +3,9 @@ sku: br-004
 name: BLACK Rose Hoodie
 collection: black-rose
 logo_reference: data/brand-logos/three-rose-cluster.md
-reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
+reference_image: assets/products/source-photos/black-rose/br-004-hoodie-front.jpeg
+extra_references:
+  - assets/products/references/br-004-hoodie-real-front.jpeg
 ---
 
 # BLACK Rose Hoodie
@@ -14,10 +16,12 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
 
 > Logo art canonical reference:
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
-> - Reference photo:                `assets/products/references/br-004-hoodie-real-front.jpeg`
+> - Physical flatlay:               `assets/products/source-photos/black-rose/br-004-hoodie-front.jpeg`
+> - Secondary silhouette reference: `assets/products/references/br-004-hoodie-real-front.jpeg`
 
 ### Front
-- **front-chest** (~5–6in tall, centered just above the kangaroo pocket):
+- **front-chest** (small, ~2.5–3.5in tall, centered just above the kangaroo
+  pocket; match the physical flatlay rather than enlarging it):
   The Black Rose logo embroidered onto the hoodie. **Technique:**
   embroidered. **Color:** as rendered in the canonical logo + reference
   image (do NOT over-specify thread colorway in this dossier — the RAS
@@ -29,20 +33,20 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
   rose on back-center. NO logos anywhere on the back.)
 
 ### Sleeves / Collar / Hem / Other
-- **left-sleeve** (upper / shoulder area, exact dimensions TBD): A small
-  patch is visible in the reference photo at the upper-left-sleeve area.
-  Patch content, technique, and dimensions are **PARKED for later
-  verification** — Corey will confirm the patch detail in a follow-up
-  read-back. **Do not render this region with guessed content** —
-  the RAS pipeline should treat the upper-left-sleeve area as "small patch
-  present, content unverified" and prompt for the verification before
-  rendering this region in production.
-- **right-sleeve**: clean, no decoration.
+- **wearer's-left forearm / viewer-right sleeve** (large longitudinal graphic
+  from below the elbow toward the cuff): The Black Rose rose/cloud artwork
+  shown in the physical flatlay. This is direct garment artwork, **not a
+  circular patch and not an upper-arm badge**. Preserve its photographed
+  scale, orientation, and white/grey thread treatment. **Technique:**
+  embroidered. **Color:** white + grey tonal thread on black.
+- **wearer's-right sleeve / viewer-left sleeve**: clean, no decoration.
 - **kangaroo-pocket** (front): clean, no embroidery, no logo, no
   decoration on the pocket itself.
-- **hood-drawstring**: tonal black flat drawstring (matches the body —
-  NOT contrast-color white, NOT contrast-color rose-gold). Plain tips,
-  no metal, no branded tip.
+- **hood-lining**: Light grey/white lining printed with the repeating Black
+  Rose floral artwork visible in the physical flatlay. Do not replace it with
+  solid black lining. **Technique:** printed lining.
+- **hood-drawstring**: white flat drawstring, matching the physical flatlay.
+  Plain tips, no metal, no branded tip.
 - **collar-inside / interior-back-collar** (~1.75in × 0.75in): Branded
   woven size tag (universal SkyyRose product rule — every product carries
   a branded woven size tag at this position). Shows the SKU's size
@@ -56,19 +60,19 @@ reference_image: assets/products/references/br-004-hoodie-real-front.jpeg
 - NO white ribbed trim on cuffs, hem, or hood — the Black Rose Hoodie
   uses TONAL BLACK ribbing throughout (the white ribbing is the
   Crewneck/Joggers signature, not the Hoodie).
-- NO contrast-color drawstrings — they are tonal black, not white,
-  not rose-gold, not gold.
-- NO Black Rose logo on the back. NO Black Rose logo on the sleeves. NO
-  Black Rose logo on the kangaroo pocket. The rose appears at the
-  front-chest only.
+- NO tonal-black drawstrings — the physical product uses white drawstrings.
+- NO Black Rose logo on the back or kangaroo pocket. The sleeve carries only
+  the photographed longitudinal forearm artwork; do not add another sleeve
+  mark.
 - NO silicone-appliqué patch on the chest or anywhere else.
 - NO embossed/debossed decoration on the body or hood.
 - NO printed graphics, NO sublimated panels, NO heat-transfer vinyl,
   NO puff-print decoration.
 - NO front-pocket branding — the kangaroo pocket fabric is clean.
-- NO right-sleeve patch (only the left sleeve carries a small patch).
-- NO contrasting hood lining (assume same black tonal — to be verified
-  if a contrast lining exists, but default is uniform black).
+- NO circular arm patch, shoulder badge, league patch, or upper-arm emblem on
+  either sleeve.
+- NO solid-black hood lining — the physical flatlay proves the light floral
+  lining.
 - NO chest text or wordmark (the front rose is the only chest decoration).
 - NO Authentic Collection patch (that patch is reserved for the jersey
   series, not the hoodie).

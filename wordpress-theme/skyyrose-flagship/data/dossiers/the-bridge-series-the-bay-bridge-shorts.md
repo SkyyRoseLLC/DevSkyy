@@ -2,18 +2,20 @@
 sku: sg-001
 name: The Bridge Series 'The Bay Bridge' Shorts
 collection: signature
-reference_image: assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg
+reference_image: assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png
 extra_references:
+  - assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg
   - assets/products/references/sg-001-day-bay-bridge-shorts.jpeg
 ---
 
 # The Bridge Series 'The Bay Bridge' Shorts
 
-**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge sunset palette, separate SKU).
+**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: blue elasticated waistband matching the physical product with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge sunset palette, separate SKU).
 
 ## Branding — exactly what IS on this product
 
 > Reference images:
+> - Physical product front: `assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png`
 > - Bridge Series shorts variants (Bay Bridge top + Stay Golden bottom): `assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg`
 > - Bay Bridge shorts standalone techflat: `assets/products/references/sg-001-day-bay-bridge-shorts.jpeg`
 
@@ -26,7 +28,7 @@ extra_references:
 - **back-body** (entire field, continuation of front): Same Bay Bridge daytime photographic print continuing seamlessly from the front around to the back. **Technique:** sublimated. **Color:** photographic full-color, continuous wrap.
 
 ### Sleeves / Collar / Hem / Other
-- **waistband** (~1.5in tall, top of shorts): Black elasticated waistband at the top. **Technique:** stitched. **Color:** black.
+- **waistband** (~1.5in tall, top of shorts): Blue elasticated waistband at the top, matching the physical product rather than the older black-waistband techflat. **Technique:** stitched. **Color:** blue.
 - **drawstring** (~24in long, threaded through waistband): White flat drawstring threaded through the waistband, hanging from the front center. **Technique:** stitched. **Color:** white.
 - **left-pocket** (front-side hand pocket on wearer's left): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching (mesh shows the underlying photo print).
 - **right-pocket** (front-side hand pocket on wearer's right): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching.
@@ -45,7 +47,7 @@ extra_references:
 - NO black mesh body — body is WHITE mesh with the sublimated print on top (the print supplies all visible color).
 - NO contrast color side-panels — body is uniform front-to-back.
 - NO black drawstring — drawstring is WHITE.
-- NO white waistband — waistband is BLACK.
+- NO black or white waistband — the physical product waistband is BLUE.
 - NO zipper closures on the pockets — open welt.
 - NO additional pockets on the back — only two front side hand pockets.
 - NO embossed/debossed decoration anywhere.
@@ -55,5 +57,5 @@ extra_references:
 
 ## Scene direction
 
-- **Pose:** Front view straight-on (laid flat or on a model) showing the full daytime Bay Bridge sublimated print, the black waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the photo print and the slash pocket openings. For the back: back view straight-on showing the continuous bridge print.
+- **Pose:** Front view straight-on (laid flat or on a model) showing the full daytime Bay Bridge sublimated print, the blue waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the photo print and the slash pocket openings. For the back: back view straight-on showing the continuous bridge print.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

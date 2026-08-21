@@ -1,6 +1,45 @@
 {
-  "_generated_by": "skyyrose.core.sot_images.write_manifest \u2014 DO NOT EDIT. Regenerate after build-collection-sot.py.",
+  "_generated_by": "skyyrose.core.sot_images.write_manifest \u2014 DO NOT EDIT. Regenerate after product-sot.json or build-collection-sot.py.",
   "_authority": "SOT product-imagery contract. Front-first fallback (on-model render before flat packshot).",
+  "product_sot": {
+    "path": "data/product-sot.json",
+    "sha256": "d3c0249ce887520ce7f178759d9788a8fb5c8a4a71ccb376b3e05bbea8ba9bd6",
+    "product_hashes": {
+      "br-001": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832",
+      "br-002": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3",
+      "br-003": "5bd06f49fd29da436d772dcebe1c1392bfe9a98d712e0d47e7cd4ae6cab0935d",
+      "br-004": "d7a48b66e1e53a6d3d751e06b51bbf9a0c1b811bb439ec408cffb52488c24f7c",
+      "br-005": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763",
+      "br-006": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df",
+      "br-007": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e",
+      "br-008": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345",
+      "br-009": "25e3509aeb186c7886a5df7b96866f1c493f04fa2253d8b7caac12772eaf29a8",
+      "br-010": "fcadfb2a24292785e12e27498891286ac638b4b0b3992820892222248b6388e7",
+      "br-011": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42",
+      "br-012": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef",
+      "lh-002": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488",
+      "lh-003": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21",
+      "lh-004": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1",
+      "lh-005": "f1046d62100a446b5a0d60c05d2481e671c7fd8d57bb742ff6f319dc931bdd28",
+      "lh-006": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d",
+      "sg-001": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f",
+      "sg-002": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f",
+      "sg-003": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d",
+      "sg-005": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c",
+      "sg-006": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf",
+      "sg-007": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03",
+      "sg-009": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e",
+      "sg-011": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812",
+      "sg-012": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1",
+      "sg-013": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b",
+      "sg-014": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9",
+      "sg-015": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76",
+      "kids-001": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd",
+      "kids-002": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea",
+      "br-014": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973",
+      "br-015": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e"
+    }
+  },
   "images": {
     "br-001": {
       "front": "assets/images/products/br-001-onmodel.webp",
@@ -14,16 +53,12 @@
       "back_packshot": "assets/images/products/black-rose-joggers-back-model.webp"
     },
     "br-003": {
-      "front": "assets/images/products/br-003-onmodel.webp",
-      "back": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
-      "packshot": "assets/images/products/br-003-baseball-classic.jpeg",
-      "back_packshot": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp"
+      "front": "assets/images/products/br-003-baseball-classic.jpeg",
+      "packshot": "assets/images/products/br-003-baseball-classic.jpeg"
     },
     "br-004": {
-      "front": "assets/images/products/br-004-onmodel.webp",
-      "back": "assets/images/products/black-rose-hoodie-back-model.webp",
-      "packshot": "assets/images/products/br-004-black-rose-hoodie.jpeg",
-      "back_packshot": "assets/images/products/black-rose-hoodie-back-model.webp"
+      "front": "assets/images/products/br-004-black-rose-hoodie.jpeg",
+      "packshot": "assets/images/products/br-004-black-rose-hoodie.jpeg"
     },
     "br-005": {
       "front": "assets/images/products/ghost/br-005-ghost-front.webp",
@@ -38,8 +73,8 @@
       "back_packshot": "assets/images/products/black-rose-sherpa-jacket-back.jpg"
     },
     "br-007": {
-      "front": "assets/images/products/hub/br-007-front.webp",
-      "back": "assets/images/products/hub/br-007-back.webp",
+      "front": "assets/images/products/br-007.jpg",
+      "back": "assets/images/products/br-007-real-back.jpg",
       "packshot": "assets/images/products/br-007.jpg",
       "back_packshot": "assets/images/products/br-007-real-back.jpg"
     },
@@ -48,21 +83,21 @@
       "packshot": "assets/images/products/br-008-sf-inspired.jpg"
     },
     "br-009": {
-      "front": "assets/images/products/br-009-onmodel.webp",
+      "front": "assets/images/products/br-009-last-oakland-football.jpg",
       "packshot": "assets/images/products/br-009-last-oakland-football.jpg"
     },
     "br-010": {
-      "front": "assets/images/products/br-010-onmodel.webp",
+      "front": "assets/images/products/br-010-the-bay-basketball.jpeg",
       "packshot": "assets/images/products/br-010-the-bay-basketball.jpeg"
     },
     "br-011": {
-      "front": "assets/images/products/br-011-onmodel.webp",
+      "front": "assets/images/products/br-011-the-rose-hockey.png",
       "back": "assets/images/products/br-011-the-rose-hockey-back.webp",
       "packshot": "assets/images/products/br-011-the-rose-hockey.png",
       "back_packshot": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp"
     },
     "br-012": {
-      "front": "assets/images/products/jersey-last-oakland-baseball-front-model.webp",
+      "front": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
       "back": "assets/images/products/br-012-last-oakland-baseball-back.webp",
       "packshot": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
       "back_packshot": "assets/images/products/br-012-last-oakland-baseball-back.jpeg"
@@ -79,35 +114,31 @@
     },
     "kids-001": {
       "front": "assets/images/products/kids-001-onmodel-v2.webp",
-      "back": "assets/images/products/kids-red-set-back-model.webp",
       "packshot": "assets/images/products/kids-001-red-set.jpeg"
     },
     "kids-002": {
-      "front": "assets/images/products/ghost/kids-002-ghost-front.webp",
+      "front": "assets/images/products/kids-002-purple-set.jpeg",
       "back": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
       "packshot": "assets/images/products/kids-002-purple-set.jpeg"
     },
     "lh-002": {
       "front": "assets/images/products/lh-002-onmodel.webp",
       "back": "assets/images/products/love-hurts-joggers-back-model.webp",
-      "packshot": "assets/images/products/lh-002-joggers.jpeg",
+      "packshot": "assets/images/products/lh-002-onmodel.webp",
       "back_packshot": "assets/images/products/love-hurts-joggers-back-model.webp"
     },
     "lh-003": {
       "front": "assets/images/products/hub/lh-003-front.webp",
-      "back": "assets/images/products/love-hurts-basketball-shorts-back-model.webp",
+      "back": "assets/images/products/lh-003-real-back.jpg",
       "packshot": "assets/images/products/lh-003-shorts.jpeg",
       "back_packshot": "assets/images/products/lh-003-real-back.jpg"
     },
     "lh-004": {
       "front": "assets/images/products/lh-004-onmodel.webp",
-      "back": "assets/images/products/lh-004-bomber-back.webp",
-      "packshot": "assets/images/products/lh-004-bomber.png",
-      "back_packshot": "assets/images/products/lh-004-bomber-back.png"
+      "packshot": "assets/images/products/lh-004-bomber.png"
     },
     "lh-005": {
       "front": "assets/images/products/lh-005-onmodel.webp",
-      "back": "assets/images/products/the-fannie-back-model.webp",
       "packshot": "assets/images/products/lh-005-fannie.jpeg"
     },
     "lh-006": {
@@ -134,7 +165,6 @@
     },
     "sg-005": {
       "front": "assets/images/products/sg-005-onmodel.webp",
-      "back": "assets/images/products/bridge-bay-bridge-shirt-back-model.webp",
       "packshot": "assets/images/products/sg-005-bay-bridge-shirt.jpeg"
     },
     "sg-006": {
@@ -157,28 +187,22 @@
     "sg-011": {
       "front": "assets/images/products/sg-011-onmodel.webp",
       "back": "assets/images/products/hub/sg-011-back.webp",
-      "packshot": "assets/images/products/sg-011-original-label-tee-white.jpeg",
-      "back_packshot": "assets/images/products/original-label-tee-white-back-model.webp"
+      "packshot": "assets/images/products/sg-011-original-label-tee-white.jpeg"
     },
     "sg-012": {
       "front": "assets/images/products/sg-012-onmodel.webp",
-      "back": "assets/images/products/original-label-tee-orchid-back-model.webp",
-      "packshot": "assets/images/products/sg-012-original-label-tee-orchid.jpeg",
-      "back_packshot": "assets/images/products/original-label-tee-orchid-back-model.webp"
+      "packshot": "assets/images/products/sg-012-original-label-tee-orchid.jpeg"
     },
     "sg-013": {
       "front": "assets/images/products/sg-013-onmodel.webp",
-      "back": "assets/images/products/mint-lavender-crewneck-back-model.webp",
       "packshot": "assets/images/products/sg-013-mint-lavender-crewneck.jpeg"
     },
     "sg-014": {
       "front": "assets/images/products/hub/sg-014-front.webp",
-      "back": "assets/images/products/mint-lavender-sweatpants-back-model.webp",
       "packshot": "assets/images/products/sg-014-mint-lavender-sweatpants.jpeg"
     },
     "sg-015": {
       "front": "assets/images/products/hub/sg-015-front.webp",
-      "back": "assets/images/products/signature-windbreaker-set-back-model.webp",
       "packshot": "assets/images/products/sg-015-windbreaker-set.jpg"
     }
   }

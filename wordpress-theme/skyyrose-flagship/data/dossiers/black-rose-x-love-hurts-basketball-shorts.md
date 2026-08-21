@@ -5,10 +5,12 @@ collection: black-rose
 logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/love-hurts-logo.md
-reference_image: assets/products/references/br-007-shorts-real-front.jpeg
+reference_image: assets/products/source-photos/black-rose/br-007-shorts-front.jpeg
 extra_references:
-  - assets/products/references/br-007-shorts-real-back.jpeg
-  - assets/products/references/br-007-shorts-techflat.jpeg
+  - assets/products/source-photos/black-rose/br-007-shorts-side.jpeg
+  - assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg
+  - assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg
+  - assets/products/source-photos/black-rose/br-007-techflat-shorts.jpeg
 ---
 
 # BLACK Rose × Love Hurts Basketball Shorts
@@ -20,28 +22,26 @@ extra_references:
 > Logo art canonical references:
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - Love Hurts (wordmark + broken-heart-and-thorns lockup): `data/brand-logos/love-hurts-logo.md`
-> - Reference photos: `assets/products/references/br-007-shorts-real-front.jpeg`,
->                     `assets/products/references/br-007-shorts-real-back.jpeg`,
->                     `assets/products/references/br-007-shorts-techflat.jpeg`
+> - Physical photos: `assets/products/source-photos/black-rose/br-007-shorts-front.jpeg`,
+>                    `assets/products/source-photos/black-rose/br-007-shorts-side.jpeg`,
+>                    `assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg`,
+>                    `assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg`
+> - Techflat fallback: `assets/products/source-photos/black-rose/br-007-techflat-shorts.jpeg`
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
-> **Every logo on this product is converted to the shorts' tonal colorway
-> — black, grey, white, and cream/peach.** The canonical reds (Love Hurts
-> wordmark, red-roses-cluster), kelly-greens (stems), and white-and-blue
-> clouds are ALL replaced with greyscale / cream tonal renderings on this
-> garment. The cross-collection collab is signaled by *placement and
-> wordmark*, not by the brands' canonical colors. When the RAS prompt
-> attaches the canonical Love Hurts logo image and the canonical Black
-> Rose logo image as references, the model must use them ONLY for shape
-> / composition guidance — colors are remapped to the tonal palette
-> below.
+> The all-over body pattern and Love Hurts script use the shorts' tonal
+> black, grey, white, and cream treatment. The physical flatlay proves one
+> deliberate exception: the Black Rose cluster on the wearer's-right /
+> viewer-left white side panel retains green stems and a blue cloud accent.
+> Do not desaturate that side-panel embroidery.
 >
 > Tonal palette for this product:
 > - Body fabric: black mesh
 > - Side panels: white mesh
 > - Sublimated patterns: tonal grey on black
-> - Embroidered logos: tonal grey / cream / dark grey on white mesh
+> - Viewer-left side-panel rose: black/white rose, green stems, blue cloud
+> - Other embroidered logos: tonal grey / cream / dark grey on white mesh
 > - Tackle-twill: white face with dark satin-stitch edge
 > - Wordmark colors: cream / peach / light-pink (NOT red)
 > - Back-center pentagon panel logo: dark grey on white
@@ -58,21 +58,19 @@ extra_references:
   appliquéd onto the body in classic baseball-script style with a contrast
   satin-stitch edge. **Technique:** tackle-twill. **Color:** white twill
   letter face with a dark satin-stitch edge.
-- **front-right-thigh** (cursive script overlapping the OAKLAND wordmark):
+- **front-right-thigh** (cursive script immediately after the OAKLAND wordmark):
   The "Love Hurts" wordmark in cursive script, rendered as a large
   sublimated/printed wordmark in **cream/peach/pink tonal color** on the
-  black mesh. Spans the right thigh area, reading top-to-bottom as the
+  black mesh. The script may tuck behind a flourish but **must not cover or
+  obscure the final `D` in `OAKLAND`**. Match the physical spacing exactly.
+  Spans the right thigh area, reading top-to-bottom as the
   cursive lettering descends. **Technique:** sublimated. **Color:**
   cream/peach/light-pink tonal.
-- **left-mesh-side-panel** (small, on the white mesh side panel):
+- **wearer's-right / viewer-left mesh side panel** (small, on the white mesh side panel):
   The Black Rose three-rose-cluster art (canonical *shape* — three roses,
-  thorny vines, cloud at base) stitched onto the white mesh **in tonal
-  grey / dark thread only** (NOT canonical multi-color — this product
-  remaps every logo into the tonal grey/white/cream palette per the
-  COLORWAY OVERRIDE above). The cluster is recognizable by composition
-  but NOT by color. **Technique:** embroidered. **Color:** tonal
-  grey/dark thread on white mesh (no kelly-green stems, no white-and-
-  blue cloud).
+  thorny vines, cloud at base) stitched onto the white mesh with the
+  photographed **green stems and blue cloud accent**. **Technique:**
+  embroidered. **Color:** black/white rose + green stems + blue cloud.
 - **right-mesh-side-panel** (small, on the white mesh side panel):
   The "Love Hurts" wordmark (cursive script only — no broken heart in
   this position) stitched onto the white mesh. **Technique:** embroidered.
@@ -118,16 +116,13 @@ extra_references:
 
 ## Negative — what is NOT on this product (DO NOT render)
 
-- **NO canonical-color rendering of any logo on this garment.** Every
-  logo on these shorts is converted to the shorts' tonal palette
-  (black/grey/white/cream/peach). Specifically:
+- Do not introduce saturated color outside the one photographed side-panel
+  Black Rose cluster. Specifically:
   - NO red roses anywhere — the body sublimation is the Black Rose
     three-rose-cluster in tonal grey-on-black, NOT the canonical
     multi-color or Love Hurts red-roses variant.
-  - NO kelly-green stems on the left mesh side panel cluster — the
-    embroidered cluster is rendered in tonal grey/dark thread only.
-  - NO white-and-blue cloud color on any rose-cluster — clouds remap
-    to plain white or tonal grey on this product.
+  - NO removal or desaturation of the green stems and blue cloud on the
+    viewer-left white side-panel cluster.
   - NO bright red Love Hurts wordmark — the cursive script is rendered
     in cream/peach/light-pink tonal, NOT the canonical saturated red.
   - NO bright red broken-heart-and-thorns lockup on the back-center
@@ -148,6 +143,8 @@ extra_references:
 - NO black drawstrings — the drawstring is white.
 - NO black waistband — the waistband is white.
 - NO contrast satin-stitch edge other than dark on the OAKLAND letters.
+- NO script collision that covers the `D` in `OAKLAND`; the physical spacing
+  between the block wordmark and script is mandatory.
 - NO numbers anywhere — no player number, no jersey-style numerals.
 - NO sleeve elements (this is a shorts garment, lower-body only — no
   upper-body decoration of any kind).

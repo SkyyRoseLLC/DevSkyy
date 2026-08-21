@@ -33,7 +33,9 @@ Available check names (pass comma-separated to --checks):
   brand_primary         brand_primary logo id exists in logos block
   preorder_consistency  CSV badge column and is_preorder flag never contradict
   v7_cards_current      v7-cards.json equals fresh build_v7_cards.py output
+  product_sot_current   product-sot.json equals fresh product_sot output
   sot_images_current    sot-images.json equals fresh sot_images.serialize_manifest()
+  woocommerce_sync_current  Woo sync JSON equals fresh product SOT projection
   collection_sot_current  collections/<slug>/sot.json equal fresh build-collection-sot.py output
   lookbook_sot_current  lookbook-sot.json equals fresh build-lookbook-sot.py output
   lookbook_html_current  sot-lookbook.html equals fresh build-lookbook-from-sot.py output
@@ -922,6 +924,49 @@ def check_sot_images_current() -> CheckResult:
     return _ok(name, "sot-images.json matches fresh generator output")
 
 
+def check_product_sot_current() -> CheckResult:
+    """Verify the single machine-facing product contract is current."""
+    name = "product_sot_current"
+    if str(_REPO_ROOT) not in sys.path:
+        sys.path.insert(0, str(_REPO_ROOT))
+    try:
+        from skyyrose.core import product_sot
+
+        generated = product_sot.serialize_manifest()
+    except Exception as exc:
+        return _fail(name, f"product SOT generator failed to run: {exc}")
+    if not product_sot.MANIFEST_PATH.is_file():
+        return _fail(name, f"product-sot.json not found: {product_sot.MANIFEST_PATH}")
+    if product_sot.MANIFEST_PATH.read_text(encoding="utf-8") != generated:
+        return _fail(
+            name,
+            "product-sot.json is stale — run `python3 -m skyyrose.core.product_sot`",
+        )
+    return _ok(name, "product-sot.json matches all 33 canonical product sources")
+
+
+def check_woocommerce_sync_current() -> CheckResult:
+    """Verify the generated WooCommerce payload contract matches product SOT."""
+    name = "woocommerce_sync_current"
+    if str(_REPO_ROOT) not in sys.path:
+        sys.path.insert(0, str(_REPO_ROOT))
+    try:
+        from scripts.launch import woocommerce_product_contract
+
+        generated = woocommerce_product_contract.serialize_contract()
+    except Exception as exc:
+        return _fail(name, f"WooCommerce contract generator failed to run: {exc}")
+    path = woocommerce_product_contract.OUTPUT_PATH
+    if not path.is_file():
+        return _fail(name, f"WooCommerce product contract not found: {path}")
+    if path.read_text(encoding="utf-8") != generated:
+        return _fail(
+            name,
+            "WooCommerce product contract is stale — run scripts/launch/woocommerce_product_contract.py",
+        )
+    return _ok(name, "WooCommerce product contract matches product-sot.json")
+
+
 def check_collection_sot_current() -> CheckResult:
     """Verify each collections/<slug>/sot.json equals fresh generator output (no hand-drift).
 
@@ -1223,7 +1268,9 @@ ALL_CHECKS: dict[str, Any] = {
     "dossier_present": check_dossier_present,
     "badge_enum": check_badge_enum,
     "v7_cards_current": check_v7_cards_current,
+    "product_sot_current": check_product_sot_current,
     "sot_images_current": check_sot_images_current,
+    "woocommerce_sync_current": check_woocommerce_sync_current,
     "collection_sot_current": check_collection_sot_current,
     "lookbook_sot_current": check_lookbook_sot_current,
     "lookbook_html_current": check_lookbook_html_current,

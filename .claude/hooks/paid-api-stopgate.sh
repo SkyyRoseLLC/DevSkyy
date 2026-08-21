@@ -95,7 +95,10 @@ RULES=(
     '(vercel\s+deploy|vercel\s+--prod):::Vercel production deployment (devskyy.app):::none direct, but production site touched'
     'wp\s+(media\s+import|post\s+(create|update|delete)):::WordPress.com REST write (production):::production data mutation'
     # ---- Destructive shell ops ----
-    '(rm\s+-rf\s+/\s*$|rm\s+-rf\s+/\s+|rm\s+-rf\s+~|rm\s+-rf\s+\$\{?HOME\}?|rm\s+(-[a-z]*r[a-z]*f[a-z]*|-[a-z]*f[a-z]*r[a-z]*|--recursive.*--force|--force.*--recursive)\s+/):::Recursive delete of system / home directory:::IRREVERSIBLE data loss'
+    # Block only root, home, or top-level system trees. A scoped absolute path
+    # such as /tmp/devskyy-audit is not equivalent to deleting `/`; the old
+    # trailing `\s+/` alternative conflated both and blocked safe worktree tasks.
+    'rm[[:space:]]+(-[A-Za-z]*[rR][A-Za-z]*f[A-Za-z]*|-[A-Za-z]*f[A-Za-z]*[rR][A-Za-z]*|--recursive[[:space:]]+--force|--force[[:space:]]+--recursive)[[:space:]]+"?(/([[:space:];&|]|$)|~([[:space:];&|]|$)|\$\{?HOME\}?([[:space:];&|]|$)|/Users([[:space:];&|]|$)|/(System|Library|Applications|usr|etc|var|bin|sbin|private)([/[:space:];&|]|$)):::Recursive delete of system / home directory:::IRREVERSIBLE data loss'
     'git\s+push\s+(--force|-f|--force-with-lease):::Force push:::destructive: rewrites remote history'
     'git\s+reset\s+--hard\s+(origin|HEAD~):::Hard reset:::destructive: discards local commits'
     '(npx\s+claude-mem.*delete|claude-mem\s+delete):::claude-mem deletion:::memory loss (semi-irreversible)'

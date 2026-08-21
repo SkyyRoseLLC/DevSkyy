@@ -8,7 +8,10 @@ logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/black-rose-authentic-collection-patch.md
   - data/brand-logos/sr-monogram.md
-reference_image: assets/products/references/br-012-techflat.jpeg
+reference_image: assets/products/source-photos/black-rose/br-012-last-oakland-baseball-front.jpeg
+extra_references:
+  - assets/products/source-photos/black-rose/br-012-last-oakland-baseball-back.jpeg
+  - assets/products/references/br-012-techflat.jpeg
 ---
 
 # BLACK is Beautiful Jersey Series — 5. Baseball Classic (Last Oakland)
@@ -23,9 +26,12 @@ This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giant
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - Authentic Collection patch:    `data/brand-logos/black-rose-authentic-collection-patch.md`
 > - SR monogram:                   `data/brand-logos/sr-monogram.md`
+> - Physical front flatlay:         `assets/products/source-photos/black-rose/br-012-last-oakland-baseball-front.jpeg`
+> - Physical back flatlay:          `assets/products/source-photos/black-rose/br-012-last-oakland-baseball-back.jpeg`
 
 ### Front
-- **front-chest** (large, arched, ~9in wide): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large, arched, approximately **72% of the visible torso
+  width**, matching the physical flatlay): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering with a **gold satin-stitch edge**
   surrounding the letter faces. The contrast satin-stitch edge is integral
   to this colorway's look (vs. the Classic black which has no contrast edge).
@@ -36,7 +42,7 @@ This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giant
   - **Satin-stitch edge — gold** around every letter (including the black A).
   - **Technique:** tackle-twill. **Color:** white twill faces (with one black
     "A") + gold satin-stitch edge.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The Black Rose
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**): The Black Rose
   MLB Authentic Collection patch (yellow field, navy "BLACK ROSE / COLLECTION",
   MLB-style batter silhouette, white "AUTHENTIC" banner, red diamond divider,
   "Members Only / Yay Area, Ca", SkyyRose script logo, "Made for Kings ang

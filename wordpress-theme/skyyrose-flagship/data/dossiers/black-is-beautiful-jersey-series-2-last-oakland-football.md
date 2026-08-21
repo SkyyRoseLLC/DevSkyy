@@ -13,8 +13,9 @@ reference_image: assets/products/references/br-009-design-front.jpeg
 # BLACK is Beautiful Jersey Series — 2. Last Oakland (Football)
 
 **Garment type lock:** Authentic-style football jersey — V-neck collar opening
-with **solid black neckband** (contrast against the white body), short sleeves
-with a **black-and-white horizontal striped cuff band** at each cuff, straight
+with a **black inner neckband surrounded by a visible white outer V band with a
+thin dark outline**, short sleeves with **three black horizontal cuff bands**
+separated by white channels at each cuff, straight
 even hem. Solid **white** base fabric (Last Oakland Raiders-inspired road/away
 colorway). Mid-weight knit jersey fabric. Pullover construction — NO buttons,
 NO front placket. NOT a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a
@@ -39,11 +40,11 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 
 ### Front
 - **front-chest** (large, ~10in tall, vertically centered): The number
-  **"32"** rendered as athletic-block digits with a **black outline edge**
-  and greyscale Black Rose three-rose-cluster art filling the interior of
-  both digits. **Technique:** sublimated. **Color:** black outline +
-  greyscale rose-cluster fill on white ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The NFL
+  **"32"** rendered as athletic-block digits with a **black outline edge**.
+  The front **`3` contains the greyscale Black Rose rose/cloud fill** and the
+  front **`2` remains plain white**. **Technique:** sublimated. **Color:**
+  black outline + greyscale fill in `3` only on white ground.
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**): The NFL
   Authentic Collection patch sewn onto the lower-left hip. **Technique:**
   embroidered-patch.
 
@@ -57,21 +58,24 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
   **black twill** on the white body. **Technique:** tackle-twill. **Color:**
   black twill letters on white ground.
 - **back-center** (large, ~12in tall, vertically centered): The number
-  **"32"** rendered identically to the front. **Technique:** sublimated.
-  **Color:** black outline + greyscale rose-cluster fill.
+  **"32"** with the fill reversed from the front: the back **`3` remains
+  plain white** and the back **`2` contains the greyscale rose/cloud fill**.
+  **Technique:** sublimated. **Color:** black outline + greyscale fill in
+  `2` only on white ground.
 
 ### Sleeves
-- **left-shoulder / right-shoulder** (small, ~3–4in tall, on each shoulder):
-  A smaller version of the same "32" digit composition (greyscale rose-cluster
-  fill with black outline) on each shoulder/sleeve area. **Technique:**
-  sublimated. **Color:** black outline + greyscale rose-cluster fill.
+- **wearer's-left sleeve / viewer-right sleeve**: Athletic-block **`3`** in
+  black outline with white face.
+- **wearer's-right sleeve / viewer-left sleeve**: Athletic-block **`2`** in
+  black outline with white face.
 
 ### Collar / Hem / Other
-- **collar / V-neck binding**: Solid black neckband (~1in wide). **Technique:**
-  stitched. **Color:** black.
-- **left-cuff / right-cuff binding**: Black-and-white horizontal striped band
-  at each short sleeve cuff (alternating black and white stripes, ~1in tall
-  total). **Technique:** stitched. **Color:** alternating black + white.
+- **collar / V-neck binding**: Black inner neckband plus a clearly visible
+  white outer V band edged by the thin dark outline shown in the product
+  techflat. Do not collapse the collar into one solid black band.
+- **left-cuff / right-cuff binding**: Exactly **three black horizontal bands**
+  at each short sleeve cuff, separated by white channels, matching the
+  techflat widths and spacing. **Technique:** stitched. **Color:** black + white.
 - **collar-inside** (~1.75in × 0.75in): Branded woven size tag (universal
   SkyyRose product rule). **Technique:** woven-label.
 
@@ -82,6 +86,8 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 - NO red anywhere on this colorway (this is the Last Oakland white away —
   NO 49ers red, NO Giants orange).
 - NO solid-color "32" digits — the digits have black outline + rose fill.
+- NO rose fill in both front digits; front `3` only. NO rose fill in both back
+  digits; back `2` only.
 - NO MLB Authentic Collection patch (baseball series only).
 - NO Hockey Championship patch.
 - NO NBA Authentic Collection patch.
@@ -95,6 +101,8 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 - NO printed graphics other than the rose-fill inside digits and the sleeve
   number duplicates.
 - NO pinstripes.
+- NO two-stripe sleeve treatment; each cuff has three black bands.
+- NO solid-black-only collar; retain the visible white outer V band.
 - NO snap-front or zipper-front closure.
 
 ## Scene direction

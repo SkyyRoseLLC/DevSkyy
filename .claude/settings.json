@@ -150,12 +150,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-audit.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.wolf/hooks/memory-audit.sh\"",
             "timeout": 10
           },
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/claude-mem-sync.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.wolf/hooks/claude-mem-sync.sh\"",
             "timeout": 5
           }
         ]
@@ -166,17 +166,17 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/context7-prefetch.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/context7-prefetch.sh\"",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/canon-prefetch.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/canon-prefetch.sh\"",
             "timeout": 3
           },
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/prompt-eng-nudge.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/prompt-eng-nudge.sh\"",
             "timeout": 3
           }
         ]
@@ -185,7 +185,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /Users/theceo/DevSkyy/.claude/hooks/router/router.py",
+            "command": "python3 \"$(git rev-parse --show-toplevel)/.claude/hooks/router/router.py\"",
             "timeout": 10
           }
         ]
@@ -197,7 +197,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/paid-api-stopgate.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/paid-api-stopgate.sh\"",
             "timeout": 3
           }
         ]
@@ -207,7 +207,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/prompt-eng-tripwire.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/prompt-eng-tripwire.sh\"",
             "timeout": 3
           }
         ]
@@ -219,7 +219,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/context7-touched.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/context7-touched.sh\"",
             "timeout": 2
           }
         ]
@@ -229,7 +229,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/learning-tripwire.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/learning-tripwire.sh\"",
             "timeout": 2
           }
         ]
@@ -239,7 +239,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/phpcs-on-write.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/phpcs-on-write.sh\"",
             "timeout": 10
           }
         ]
@@ -249,7 +249,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/catalog-drift-guard.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/catalog-drift-guard.sh\"",
             "timeout": 15
           }
         ]
@@ -259,7 +259,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/python-format-on-write.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/python-format-on-write.sh\"",
             "timeout": 15
           }
         ]
@@ -269,7 +269,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "fp=$(jq -r '.tool_input.file_path // empty'); case \"$fp\" in /Users/theceo/DevSkyy/frontend/*.ts|/Users/theceo/DevSkyy/frontend/*.tsx) cd /Users/theceo/DevSkyy/frontend && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); root=$(git -C \"$(dirname \"$fp\")\" rev-parse --show-toplevel 2>/dev/null || true); case \"$fp\" in \"$root\"/frontend/*.ts|\"$root\"/frontend/*.tsx) cd \"$root/frontend\" && npx tsc --noEmit --pretty false 2>&1 | head -10 ;; esac; true",
             "timeout": 90,
             "statusMessage": "Type-checking frontend"
           }
@@ -281,7 +281,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/learning-reminder.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/learning-reminder.sh\"",
             "timeout": 3
           }
         ]
@@ -290,7 +290,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/stop-test-gate.sh",
+            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/stop-test-gate.sh\"",
             "timeout": 600,
             "statusMessage": "Running test suite (background)",
             "asyncRewake": true,
@@ -302,19 +302,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 /Users/theceo/DevSkyy/scripts/wolf_recurring_sync.py >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED — run python3 scripts/wolf_recurring_sync.py to see the error'; true",
+            "command": "root=$(git rev-parse --show-toplevel); python3 \"$root/scripts/wolf_recurring_sync.py\" >/dev/null 2>&1 || echo '[wolf-recurring-sync] FAILED — run python3 scripts/wolf_recurring_sync.py to see the error'; true",
             "timeout": 10
-          }
-        ]
-      }
-    ],
-    "SubagentStop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash /Users/theceo/DevSkyy/.claude/hooks/subagent-stop-tidy.sh",
-            "timeout": 5
           }
         ]
       }
