@@ -167,7 +167,7 @@ validate_deploy_target() {
     local remote_theme_name remote_extract_path
     remote_theme_name="$(basename "${WP_THEME_PATH:-}")"
     if [[ ! "$remote_theme_name" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ || "$remote_theme_name" != "$THEME_ARCHIVE_ROOT" ]]; then
-        log_error "Remote theme path '${WP_THEME_PATH:-missing}' does not match a safe archive root '$THEME_ARCHIVE_ROOT'"
+        log_error "Remote theme path '${WP_THEME_PATH:-missing}' does not match archive root '$THEME_ARCHIVE_ROOT' or uses an unsafe name"
         exit 1
     fi
 
