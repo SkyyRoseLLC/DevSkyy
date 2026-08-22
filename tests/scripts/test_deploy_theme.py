@@ -242,9 +242,7 @@ class TestDryRun:
             ),
         ],
     )
-    def test_rejects_unsafe_or_overlapping_remote_deploy_dir(
-        self, fake_env, env_updates, message
-    ):
+    def test_rejects_unsafe_or_overlapping_remote_deploy_dir(self, fake_env, env_updates, message):
         _, env_file, theme_dir = fake_env
         result = run_script(
             "--dry-run",
