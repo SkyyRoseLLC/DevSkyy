@@ -25,7 +25,16 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 THEME_DIR="${THEME_DIR_OVERRIDE:-$PROJECT_ROOT/wordpress-theme/skyyrose-flagship}"
+THEME_ARCHIVE_ROOT="$(basename "${THEME_DIR%/}")"
+ENV_FILE_EXPLICIT=false
+if [[ -n "${ENV_FILE:-}" ]]; then
+    ENV_FILE_EXPLICIT=true
+fi
 ENV_FILE="${ENV_FILE:-$PROJECT_ROOT/.env.wordpress}"
+REQUESTED_DEPLOY_TARGET="${DEPLOY_TARGET:-production}"
+DEPLOY_TARGET="$REQUESTED_DEPLOY_TARGET"
+REQUESTED_REMOTE_DEPLOY_DIR="${REMOTE_DEPLOY_DIR:-/tmp}"
+REMOTE_DEPLOY_DIR="$REQUESTED_REMOTE_DEPLOY_DIR"
 
 # ---------------------------------------------------------------------------
 # State tracking
@@ -54,7 +63,7 @@ log_error()   { echo -e "${RED}[ERROR]${NC} $1" >&2; }
 usage() {
     echo "Usage: deploy-theme.sh [OPTIONS]"
     echo ""
-    echo "Deploy the SkyyRose WordPress theme to production."
+    echo "Deploy the SkyyRose WordPress theme to an explicit environment."
     echo ""
     echo "Options:"
     echo "  --dry-run            Preview what would happen without touching production"
@@ -65,6 +74,7 @@ usage() {
     echo "  --help               Show this help message"
     echo ""
     echo "Environment:"
+    echo "  DEPLOY_TARGET        production (default) or staging"
     echo "  ENV_FILE             Path to .env.wordpress (default: \$PROJECT_ROOT/.env.wordpress)"
     echo "  THEME_DIR_OVERRIDE   Override theme source directory"
     echo "  PUBLIC_URL           Verified URL for post-deploy check (default: https://skyyrose.co/)"
@@ -115,6 +125,110 @@ load_credentials() {
     fi
     # shellcheck source=/dev/null
     source "$ENV_FILE"
+    # The command environment owns the deployment target. A sourced credential
+    # file must not be able to downgrade `staging` to `production` and bypass
+    # the staging-only hostname/path guards.
+    DEPLOY_TARGET="$REQUESTED_DEPLOY_TARGET"
+    REMOTE_DEPLOY_DIR="$REQUESTED_REMOTE_DEPLOY_DIR"
+}
+
+normalize_site_url() {
+    local url="${1%%\?*}"
+    url="${url%%#*}"
+    url="${url%/}"
+    printf '%s' "$url" | tr '[:upper:]' '[:lower:]'
+}
+
+# ---------------------------------------------------------------------------
+# Target resolution -- fail closed before any remote contact.
+# ---------------------------------------------------------------------------
+validate_deploy_target() {
+    case "$DEPLOY_TARGET" in
+        production|staging) ;;
+        *)
+            log_error "DEPLOY_TARGET must be 'production' or 'staging' (got '$DEPLOY_TARGET')"
+            exit 1
+            ;;
+    esac
+
+    if [[ ! "$THEME_ARCHIVE_ROOT" =~ ^[A-Za-z0-9._-]+$ ]]; then
+        log_error "Unsafe theme archive root '$THEME_ARCHIVE_ROOT' -- refusing to deploy"
+        exit 1
+    fi
+    if [[ ! "${WP_THEME_PATH:-}" =~ ^/[A-Za-z0-9._/-]+$ || "${WP_THEME_PATH:-}" == *"/../"* ]]; then
+        log_error "Unsafe or missing remote theme path '${WP_THEME_PATH:-missing}' -- refusing to deploy"
+        exit 1
+    fi
+    if [[ ! "$REMOTE_DEPLOY_DIR" =~ ^/[A-Za-z0-9._/-]+$ || "$REMOTE_DEPLOY_DIR" == *"/../"* ]]; then
+        log_error "Unsafe remote deploy directory '$REMOTE_DEPLOY_DIR' -- refusing to deploy"
+        exit 1
+    fi
+
+    local remote_theme_name
+    remote_theme_name="$(basename "${WP_THEME_PATH:-}")"
+    if [[ -z "${WP_THEME_PATH:-}" || "$remote_theme_name" != "$THEME_ARCHIVE_ROOT" ]]; then
+        log_error "Remote theme path '${WP_THEME_PATH:-missing}' does not match archive root '$THEME_ARCHIVE_ROOT'"
+        exit 1
+    fi
+
+    if [[ "$DEPLOY_TARGET" == "staging" ]]; then
+        if [[ "$ENV_FILE_EXPLICIT" != "true" || "${ENV_FILE##*/}" != *staging* ]]; then
+            log_error "Staging deploy requires an explicit staging-specific ENV_FILE"
+            exit 1
+        fi
+        if [[ -z "${PUBLIC_URL:-}" ]]; then
+            log_error "Staging deploy requires an explicit PUBLIC_URL"
+            exit 1
+        fi
+
+        local public_host
+        public_host="${PUBLIC_URL#*://}"
+        public_host="${public_host%%/*}"
+        public_host="${public_host%%:*}"
+        public_host="$(printf '%s' "$public_host" | tr '[:upper:]' '[:lower:]')"
+        if [[ "$public_host" != "staging.skyyrose.co" ]]; then
+            log_error "Staging PUBLIC_URL must resolve to 'staging.skyyrose.co' (got '$public_host')"
+            exit 1
+        fi
+        if [[ "$remote_theme_name" == "skyyrose-flagship" ]]; then
+            log_error "Staging target resolved to the production V1 theme path"
+            exit 1
+        fi
+    fi
+
+    log_info "Deploy target: $DEPLOY_TARGET"
+    log_info "Archive root: $THEME_ARCHIVE_ROOT"
+    log_info "Remote theme: $WP_THEME_PATH"
+    log_info "Public URL: ${PUBLIC_URL:-https://skyyrose.co/}"
+}
+
+# Bind staging credentials to the staging WordPress installation. Local labels
+# and PUBLIC_URL alone are not proof: production SSH credentials paired with a
+# staging URL would otherwise pass local validation and write to production.
+read_remote_site_url() {
+    "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "wp option get siteurl" 2>/dev/null
+}
+
+verify_remote_target_identity() {
+    [[ "$DEPLOY_TARGET" == "staging" ]] || return 0
+
+    local expected_site_url actual_site_url
+    expected_site_url="$(normalize_site_url "$PUBLIC_URL")"
+    if [[ "$DRY_RUN" == "true" ]]; then
+        log_info "[DRY RUN] Would verify remote WordPress site URL: $expected_site_url"
+        return 0
+    fi
+
+    if ! actual_site_url="$(read_remote_site_url)"; then
+        log_error "Unable to read remote WordPress site URL -- refusing staging deploy"
+        return 1
+    fi
+    actual_site_url="$(normalize_site_url "$actual_site_url")"
+    if [[ "$actual_site_url" != "$expected_site_url" ]]; then
+        log_error "Remote WordPress site URL '$actual_site_url' does not match staging target '$expected_site_url'"
+        return 1
+    fi
+    log_success "Remote WordPress identity verified: $actual_site_url"
 }
 
 # ---------------------------------------------------------------------------
@@ -325,7 +439,7 @@ check_version_triple() {
         fi
     done
     v_style=$(awk '/^Version:/ {print $2; exit}' "$THEME_DIR/style.css" 2>/dev/null || true)
-    v_func=$(sed -nE "s/^define\( 'SKYYROSE_VERSION', '([^']+)' \);.*/\1/p" "$THEME_DIR/functions.php" 2>/dev/null | head -1 || true)
+    v_func=$(sed -nE "s/^define\( 'SKYYROSE[0-9]*_VERSION', '([^']+)' \);.*/\1/p" "$THEME_DIR/functions.php" 2>/dev/null | head -1 || true)
     v_readme=$(awk '/^Stable tag:/ {print $3; exit}' "$THEME_DIR/readme.txt" 2>/dev/null || true)
     if [[ -z "$v_style" || -z "$v_func" || -z "$v_readme" ]]; then
         log_error "Version triple unreadable (style.css='${v_style:-?}' functions.php='${v_func:-?}' readme.txt='${v_readme:-?}') -- refusing to deploy"
@@ -380,6 +494,27 @@ check_tracked_files() {
 # static minimums, not exact counts).
 check_asset_floor() {
     local emblems fonts glb_state="MISSING"
+    if grep -qE "define\( 'SKYYROSE2_VERSION'" "$THEME_DIR/functions.php"; then
+        local required missing=0
+        fonts=$({ find "$THEME_DIR/assets/sot/fonts" -maxdepth 1 -name '*.woff2' 2>/dev/null || true; } | wc -l | tr -d ' ')
+        if [[ -f "$THEME_DIR/assets/models/skyy-mascot.glb" ]]; then glb_state="present"; fi
+        for required in \
+            assets/css/design-tokens.min.css \
+            assets/css/theme.min.css \
+            assets/js/theme.min.js; do
+            if [[ ! -f "$THEME_DIR/$required" ]]; then
+                log_error "V2 critical asset missing: $required"
+                missing=$((missing + 1))
+            fi
+        done
+        if (( fonts < 9 || missing > 0 )) || [[ "$glb_state" == "MISSING" ]]; then
+            log_error "V2 critical-asset floor FAILED: woff2=$fonts (need >=9), required bundles missing=$missing, mascot GLB $glb_state"
+            exit 1
+        fi
+        log_success "V2 critical-asset floor: $fonts woff2, required bundles present, mascot GLB $glb_state"
+        return 0
+    fi
+
     emblems=$({ find "$THEME_DIR/assets/images/emblems" -maxdepth 1 -name '*.webp' 2>/dev/null || true; } | wc -l | tr -d ' ')
     fonts=$({ find "$THEME_DIR/assets/fonts" -maxdepth 1 -name '*.woff2' 2>/dev/null || true; } | wc -l | tr -d ' ')
     if [[ -f "$THEME_DIR/assets/models/skyy.glb" ]]; then glb_state="present"; fi
@@ -469,8 +604,12 @@ preflight() {
             exit 1
         fi
         log_success "SSH connectivity verified"
+        if ! verify_remote_target_identity; then
+            exit 1
+        fi
     else
         log_info "[DRY RUN] Skipping SSH connectivity test"
+        verify_remote_target_identity
     fi
 
     log_success "All preflight checks passed"
@@ -594,6 +733,11 @@ transfer_files() {
         return 0
     fi
 
+    if [[ "$DEPLOY_TARGET" == "staging" ]]; then
+        log_error "Atomic staging transfer failed; non-atomic lftp mirror fallback is disabled"
+        return 1
+    fi
+
     log_warn "rsync failed or unavailable -- falling back to lftp SFTP mirror"
 
     if try_lftp; then
@@ -603,6 +747,20 @@ transfer_files() {
 
     log_error "Both rsync and lftp transfer failed"
     return 1
+}
+
+# Render the remote extract/swap transaction. Keeping this plan in a pure
+# function lets tests execute the exact command locally. The extracted root is
+# verified before the live path moves, and a failed candidate move restores the
+# backup inside the same remote shell even though REMOTE_SWAP_ID is not yet set.
+render_remote_swap_command() {
+    local zstd_flag="$1" remote_tar_name="$2" swap_id="$3"
+    local parent_dir theme_name backup_path
+    parent_dir="$(dirname "$WP_THEME_PATH")"
+    theme_name="$(basename "$WP_THEME_PATH")"
+    backup_path="${WP_THEME_PATH}.old.${swap_id}"
+
+    printf '%s' "set -e; cd '${REMOTE_DEPLOY_DIR}'; rm -rf -- '${THEME_ARCHIVE_ROOT}'; tar ${zstd_flag} -xf '${remote_tar_name}'; [ -d '${THEME_ARCHIVE_ROOT}' ]; had_live=0; if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${backup_path}'; had_live=1; fi; if mv '${THEME_ARCHIVE_ROOT}' '${WP_THEME_PATH}'; then rm -f '${remote_tar_name}'; (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true); else swap_rc=\$?; if [ \"\$had_live\" -eq 1 ] && [ -d '${backup_path}' ]; then mv '${backup_path}' '${WP_THEME_PATH}'; fi; exit \"\$swap_rc\"; fi"
 }
 
 try_rsync() {
@@ -671,12 +829,13 @@ try_rsync() {
     # truncated tar failed to extract, and the deploy still reported success).
     phase_start upload
     log_info "Uploading via scp..."
-    local local_size remote_size attempt upload_ok=0
+    local local_size remote_size remote_archive_path attempt upload_ok=0
+    remote_archive_path="${REMOTE_DEPLOY_DIR%/}/${remote_tar_name}"
     local_size=$(stat -f%z "$tmpzip" 2>/dev/null || stat -c%s "$tmpzip")
     for attempt in 1 2 3; do
-        if "${SCP_CMD[@]}" "$tmpzip" "${SSH_USER}@${SSH_HOST}:/tmp/${remote_tar_name}"; then
+        if "${SCP_CMD[@]}" "$tmpzip" "${SSH_USER}@${SSH_HOST}:${remote_archive_path}"; then
             remote_size=$("${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" \
-                "stat -c%s /tmp/${remote_tar_name} 2>/dev/null || wc -c < /tmp/${remote_tar_name}" \
+                "stat -c%s '${remote_archive_path}' 2>/dev/null || wc -c < '${remote_archive_path}'" \
                 2>/dev/null | tr -d '[:space:]')
             if [[ "$remote_size" == "$local_size" ]]; then
                 upload_ok=1
@@ -710,11 +869,10 @@ try_rsync() {
     swap_id="$(date +%s)-$$"
     # Swap + prune old backups (keep most recent 2) in one remote round-trip.
     # Retention is load-bearing for auto_rollback: zero backups → no anchor.
-    local parent_dir theme_name
-    parent_dir="$(dirname "$WP_THEME_PATH")"
-    theme_name="$(basename "$WP_THEME_PATH")"
-    if ! "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "set -e; cd /tmp && tar ${zstd_flag} -xf ${remote_tar_name} && (if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${WP_THEME_PATH}.old.${swap_id}'; fi) && mv skyyrose-flagship '${WP_THEME_PATH}' && rm -f ${remote_tar_name} && (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true)"; then
-        log_error "Remote extract/swap FAILED — live theme was not swapped"
+    local remote_swap_command
+    remote_swap_command="$(render_remote_swap_command "$zstd_flag" "$remote_tar_name" "$swap_id")"
+    if ! "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "$remote_swap_command"; then
+        log_error "Remote extract/swap FAILED — target was preserved or restored when possible"
         rm -f "$tmpzip"
         phase_end swap
         return 1
@@ -1066,6 +1224,10 @@ main() {
 
     # Load credentials (validates file exists)
     load_credentials
+
+    # Resolve the local archive root and remote environment before any
+    # credential/tool/network preflight can contact the target.
+    validate_deploy_target
 
     # 1. Preflight checks
     phase_start preflight
