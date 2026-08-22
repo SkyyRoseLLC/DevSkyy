@@ -151,23 +151,31 @@ validate_deploy_target() {
             ;;
     esac
 
-    if [[ ! "$THEME_ARCHIVE_ROOT" =~ ^[A-Za-z0-9._-]+$ ]]; then
+    if [[ ! "$THEME_ARCHIVE_ROOT" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
         log_error "Unsafe theme archive root '$THEME_ARCHIVE_ROOT' -- refusing to deploy"
         exit 1
     fi
-    if [[ ! "${WP_THEME_PATH:-}" =~ ^/[A-Za-z0-9._/-]+$ || "${WP_THEME_PATH:-}" == *"/../"* ]]; then
+    if [[ ! "${WP_THEME_PATH:-}" =~ ^/[A-Za-z0-9._/-]+$ || "${WP_THEME_PATH:-}" =~ (^|/)\.\.($|/) ]]; then
         log_error "Unsafe or missing remote theme path '${WP_THEME_PATH:-missing}' -- refusing to deploy"
         exit 1
     fi
-    if [[ ! "$REMOTE_DEPLOY_DIR" =~ ^/[A-Za-z0-9._/-]+$ || "$REMOTE_DEPLOY_DIR" == *"/../"* ]]; then
+    if [[ ! "$REMOTE_DEPLOY_DIR" =~ ^/[A-Za-z0-9._/-]+$ || "$REMOTE_DEPLOY_DIR" =~ (^|/)\.\.($|/) ]]; then
         log_error "Unsafe remote deploy directory '$REMOTE_DEPLOY_DIR' -- refusing to deploy"
         exit 1
     fi
 
-    local remote_theme_name
+    local remote_theme_name remote_extract_path
     remote_theme_name="$(basename "${WP_THEME_PATH:-}")"
-    if [[ -z "${WP_THEME_PATH:-}" || "$remote_theme_name" != "$THEME_ARCHIVE_ROOT" ]]; then
-        log_error "Remote theme path '${WP_THEME_PATH:-missing}' does not match archive root '$THEME_ARCHIVE_ROOT'"
+    if [[ ! "$remote_theme_name" =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ || "$remote_theme_name" != "$THEME_ARCHIVE_ROOT" ]]; then
+        log_error "Remote theme path '${WP_THEME_PATH:-missing}' does not match a safe archive root '$THEME_ARCHIVE_ROOT'"
+        exit 1
+    fi
+
+    remote_extract_path="${REMOTE_DEPLOY_DIR%/}/$THEME_ARCHIVE_ROOT"
+    if [[ "$remote_extract_path" == "$WP_THEME_PATH" ||
+          "$remote_extract_path" == "$WP_THEME_PATH/"* ||
+          "$WP_THEME_PATH" == "$remote_extract_path/"* ]]; then
+        log_error "Remote extraction path '$remote_extract_path' overlaps live theme '$WP_THEME_PATH'"
         exit 1
     fi
 
@@ -760,7 +768,7 @@ render_remote_swap_command() {
     theme_name="$(basename "$WP_THEME_PATH")"
     backup_path="${WP_THEME_PATH}.old.${swap_id}"
 
-    printf '%s' "set -e; cd '${REMOTE_DEPLOY_DIR}'; rm -rf -- '${THEME_ARCHIVE_ROOT}'; tar ${zstd_flag} -xf '${remote_tar_name}'; [ -d '${THEME_ARCHIVE_ROOT}' ]; had_live=0; if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${backup_path}'; had_live=1; fi; if mv '${THEME_ARCHIVE_ROOT}' '${WP_THEME_PATH}'; then rm -f '${remote_tar_name}'; (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true); else swap_rc=\$?; if [ \"\$had_live\" -eq 1 ] && [ -d '${backup_path}' ]; then mv '${backup_path}' '${WP_THEME_PATH}'; fi; exit \"\$swap_rc\"; fi"
+    printf '%s' "set -e; cd '${REMOTE_DEPLOY_DIR}'; rm -rf -- '${THEME_ARCHIVE_ROOT}'; tar ${zstd_flag} -xf '${remote_tar_name}'; [ -d '${THEME_ARCHIVE_ROOT}' ]; had_live=0; if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${backup_path}'; had_live=1; fi; if mv '${THEME_ARCHIVE_ROOT}' '${WP_THEME_PATH}'; then rm -f '${remote_tar_name}'; (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf -- '{}' 2>/dev/null; true); else swap_rc=\$?; if [ \"\$had_live\" -eq 1 ] && [ -d '${backup_path}' ]; then mv '${backup_path}' '${WP_THEME_PATH}'; fi; exit \"\$swap_rc\"; fi"
 }
 
 try_rsync() {
