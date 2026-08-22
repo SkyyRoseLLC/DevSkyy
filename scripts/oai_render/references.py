@@ -154,7 +154,7 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
         "sg-007": {"front": s / "signature" / "sg-beanie-purple.jpeg", "back": None},
         "sg-009": {"front": p / "sherpa-jacket-front.jpg", "back": None},
         "sg-011": {"front": p / "original-label-tee-white-front.webp", "back": None},
-        "sg-012": {"front": p / "original-label-tee-orchid-front.webp", "back": None},
+        "sg-012": {"front": p / "sg-012-onmodel.webp", "back": None},
         "sg-013": {
             "front": s / "signature" / "sg-mint-lav-crewneck-front.jpeg",
             "back": s / "signature" / "sg-mint-lav-crewneck-back.jpeg",
