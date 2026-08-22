@@ -33,7 +33,9 @@ on:
         type: boolean
 
 env:
-  PYTHON_VERSION: "3.12"
+  # Black validates AST equivalence against pyproject.toml's py313 target.
+  # Keep the CI interpreter aligned with that target.
+  PYTHON_VERSION: "3.13"
   NODE_VERSION: "22"
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
@@ -777,7 +779,9 @@ jobs:
           pip install --quiet uv
           # Resolution only — nothing is downloaded/installed. Flags verified
           # against uv 0.11.x (--extra, --python-version, -o).
-          uv pip compile pyproject.toml --extra all --python-version "${{ env.PYTHON_VERSION }}" -o /dev/null
+          lockfile="$(mktemp)"
+          trap 'rm -f "$lockfile"' EXIT
+          uv pip compile pyproject.toml --extra all --python-version "${{ env.PYTHON_VERSION }}" -o "$lockfile"
 
   # ===========================================================================
   # Stage 5: Deploy to Staging

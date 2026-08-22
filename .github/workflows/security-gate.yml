@@ -70,45 +70,6 @@ jobs:
           allow-dependencies-licenses: 'pkg:pypi/example@1.0.0'
 
   # ===========================================================================
-  # CodeQL Analysis
-  # ===========================================================================
-  codeql:
-    name: 🔬 CodeQL Analysis
-    # GitHub default CodeQL setup is configured for this repository. This
-    # advanced matrix remains available only when explicitly enabled via a
-    # repository variable, avoiding duplicate SARIF submissions.
-    if: ${{ vars.SKYYROSE_ADVANCED_CODEQL == 'true' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
-    strategy:
-      fail-fast: false
-      matrix:
-        language: [python, javascript]
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
-
-      - name: Initialize CodeQL
-        uses: github/codeql-action/init@7e411dfa505b8ce87fc7dc5606e45c59c40156a6  # v3
-        with:
-          languages: ${{ matrix.language }}
-          queries: security-and-quality
-
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@7e411dfa505b8ce87fc7dc5606e45c59c40156a6  # v3
-
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@7e411dfa505b8ce87fc7dc5606e45c59c40156a6  # v3
-        with:
-          category: "/language:${{matrix.language}}"
-
-  # ===========================================================================
   # License Compliance
   # ===========================================================================
   license-check:
@@ -179,7 +140,7 @@ jobs:
   security-summary:
     name: 📊 Security Summary
     runs-on: ubuntu-latest
-    needs: [secrets-scan, codeql, license-check]
+    needs: [secrets-scan, license-check]
     if: always()
 
     steps:
@@ -190,12 +151,11 @@ jobs:
           echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
           echo "| 🔑 Secrets Scan | ${{ needs.secrets-scan.result }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔬 CodeQL | ${{ needs.codeql.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "| 📜 License | ${{ needs.license-check.result }} |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
           if [[ "${{ needs.secrets-scan.result }}" == "failure" ]] || \
-             [[ "${{ needs.codeql.result }}" == "failure" ]]; then
+             [[ "${{ needs.license-check.result }}" == "failure" ]]; then
             echo "⚠️ **Some security checks failed. Review before merging.**" >> $GITHUB_STEP_SUMMARY
           else
             echo "✅ **All security checks passed.**" >> $GITHUB_STEP_SUMMARY
