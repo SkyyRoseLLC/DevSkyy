@@ -220,6 +220,18 @@ class TestDryRun:
         assert "Public URL: https://staging.skyyrose.co/" in result.stdout
         assert "Version triple in sync: 2.4.4" in result.stdout
 
+    def test_rejects_dot_segment_archive_root(self, fake_env):
+        _, env_file, theme_dir = fake_env
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir / ".."),
+            },
+        )
+        assert result.returncode != 0
+        assert "Unsafe theme archive root '..'" in (result.stdout + result.stderr)
+
     @pytest.mark.parametrize(
         ("env_updates", "message"),
         [
