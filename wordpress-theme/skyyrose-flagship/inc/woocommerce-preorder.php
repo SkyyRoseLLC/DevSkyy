@@ -277,7 +277,6 @@ function skyyrose_create_preorder_snapshot( $config ) {
  * @param int   $variation_id   Variation ID.
  * @param int   $quantity       Requested quantity.
  * @return array Modified cart item data.
- * @throws Exception When current allocation cannot satisfy the request.
  */
 function skyyrose_add_preorder_cart_item_snapshot( $cart_item_data, $product_id, $variation_id, $quantity ) {
 	$config = skyyrose_get_effective_preorder_config( $product_id, $variation_id );
@@ -286,16 +285,46 @@ function skyyrose_add_preorder_cart_item_snapshot( $cart_item_data, $product_id,
 		return $cart_item_data;
 	}
 
-	// WC_Cart::add_to_cart() can be called directly by theme integrations,
-	// bypassing the request-level woocommerce_add_to_cart_validation filter.
-	if ( ! skyyrose_validate_preorder_allocation( true, $product_id, $quantity, $variation_id ) ) {
-		throw new Exception( esc_html__( 'Requested pre-order quantity exceeds the current allocation.', 'skyyrose' ) );
-	}
-
+	// Allocation is enforced by WooCommerce's add-to-cart validation hook below.
+	// This filter must remain side-effect free because integrations may call
+	// WC_Cart::add_to_cart() from AJAX handlers without exception handling.
 	$cart_item_data['skyyrose_preorder_snapshot'] = skyyrose_create_preorder_snapshot( $config );
 	return $cart_item_data;
 }
 add_filter( 'woocommerce_add_cart_item_data', 'skyyrose_add_preorder_cart_item_snapshot', 10, 4 );
+
+/**
+ * Hydrate pre-deployment cart sessions with a commercial-promise snapshot.
+ *
+ * Persistent WooCommerce sessions created before snapshot support do not carry
+ * the new cart-item field. Capture the effective promise when such a session is
+ * restored so checkout display and order-line history remain interpretable.
+ * Existing snapshots are never replaced.
+ *
+ * @since 6.4.1
+ *
+ * @param array  $cart_item     Restored cart item.
+ * @param array  $session_values Stored session values.
+ * @param string $cart_item_key Cart item key.
+ * @return array Restored cart item.
+ */
+function skyyrose_hydrate_preorder_cart_item_snapshot( $cart_item, $session_values, $cart_item_key ) {
+	if ( isset( $cart_item['skyyrose_preorder_snapshot'] ) ) {
+		return $cart_item;
+	}
+
+	$config = skyyrose_get_effective_preorder_config(
+		absint( $cart_item['product_id'] ?? $session_values['product_id'] ?? 0 ),
+		absint( $cart_item['variation_id'] ?? $session_values['variation_id'] ?? 0 )
+	);
+
+	if ( $config['is_preorder'] ) {
+		$cart_item['skyyrose_preorder_snapshot'] = skyyrose_create_preorder_snapshot( $config );
+	}
+
+	return $cart_item;
+}
+add_filter( 'woocommerce_get_cart_item_from_session', 'skyyrose_hydrate_preorder_cart_item_snapshot', 10, 3 );
 
 /**
  * Add the snapshotted promise to cart and checkout line-item displays.
@@ -342,6 +371,16 @@ add_filter( 'woocommerce_get_item_data', 'skyyrose_display_preorder_cart_item_da
  */
 function skyyrose_persist_preorder_order_item_snapshot( $item, $cart_item_key, $values, $order ) {
 	$snapshot = $values['skyyrose_preorder_snapshot'] ?? null;
+
+	// Defensive fallback for carts created before this feature was deployed or
+	// restored through integrations that bypass the standard session filter.
+	if ( ! is_array( $snapshot ) ) {
+		$config = skyyrose_get_effective_preorder_config(
+			absint( $values['product_id'] ?? 0 ),
+			absint( $values['variation_id'] ?? 0 )
+		);
+		$snapshot = $config['is_preorder'] ? skyyrose_create_preorder_snapshot( $config ) : null;
+	}
 
 	if ( ! is_array( $snapshot ) || empty( $snapshot['is_preorder'] ) ) {
 		return;
