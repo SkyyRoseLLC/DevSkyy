@@ -128,11 +128,29 @@ class WooCommercePreorderTest extends TestCase {
 		$this->assertTrue( skyyrose_validate_preorder_allocation( true, 52, 99 ) );
 	}
 
-	public function test_snapshot_backstop_rejects_programmatic_add_to_cart(): void {
+	public function test_snapshot_filter_does_not_throw_when_allocation_is_zero(): void {
 		$this->registerProduct( 51, $this->preorderMeta( 0 ), '100' );
 
-		$this->expectException( Exception::class );
-		skyyrose_add_preorder_cart_item_snapshot( array(), 51, 0, 1 );
+		$data = skyyrose_add_preorder_cart_item_snapshot( array(), 51, 0, 1 );
+
+		$this->assertTrue( $data['skyyrose_preorder_snapshot']['is_preorder'] );
+		$this->assertSame( 0, $data['skyyrose_preorder_snapshot']['available_at_add_to_cart'] );
+	}
+
+	public function test_legacy_cart_session_is_hydrated_without_replacing_existing_snapshot(): void {
+		$this->registerProduct( 53, $this->preorderMeta( 4, '2027-06-01' ), '100' );
+		$legacy = array(
+			'product_id'   => 53,
+			'variation_id' => 0,
+			'quantity'     => 1,
+		);
+
+		$hydrated = skyyrose_hydrate_preorder_cart_item_snapshot( $legacy, $legacy, 'legacy-53' );
+		$this->assertSame( '2027-06-01', $hydrated['skyyrose_preorder_snapshot']['expected_ship_date'] );
+
+		$hydrated['skyyrose_preorder_snapshot']['expected_ship_date'] = '2027-01-01';
+		$restored = skyyrose_hydrate_preorder_cart_item_snapshot( $hydrated, $legacy, 'legacy-53' );
+		$this->assertSame( '2027-01-01', $restored['skyyrose_preorder_snapshot']['expected_ship_date'] );
 	}
 
 	public function test_existing_cart_quantity_is_included_in_allocation_validation(): void {
@@ -174,6 +192,21 @@ class WooCommercePreorderTest extends TestCase {
 
 		$this->assertSame( $values['skyyrose_preorder_snapshot'], $item->get_meta( '_skyyrose_preorder_snapshot', true ) );
 		$this->assertSame( 'skyyrose.preorder-commercial-promise', $item->get_meta( '_skyyrose_preorder_schema', true ) );
+		$this->assertSame( '1', $item->get_meta( '_skyyrose_preorder_schema_version', true ) );
+	}
+
+	public function test_order_line_builds_fallback_snapshot_for_legacy_cart_item(): void {
+		$this->registerProduct( 71, $this->preorderMeta( 3, '2027-07-01' ), '120' );
+		$values = array(
+			'product_id'   => 71,
+			'variation_id' => 0,
+			'quantity'     => 1,
+		);
+		$item = new WC_Order_Item_Product();
+
+		skyyrose_persist_preorder_order_item_snapshot( $item, 'legacy-71', $values, new WC_Order() );
+
+		$this->assertSame( '2027-07-01', $item->get_meta( '_skyyrose_preorder_snapshot', true )['expected_ship_date'] );
 		$this->assertSame( '1', $item->get_meta( '_skyyrose_preorder_schema_version', true ) );
 	}
 
