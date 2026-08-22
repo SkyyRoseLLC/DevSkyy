@@ -132,10 +132,10 @@ class QualityClassifier:
         Raises:
             ImportError: if transformers or PIL is not installed.
         """
+        model, processor = _load_clip_model()
+
         import torch  # type: ignore[import]
         from PIL import Image  # type: ignore[import]
-
-        model, processor = _load_clip_model()
 
         image = Image.open(image_path).convert("RGB")
         inputs = processor(

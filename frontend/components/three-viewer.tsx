@@ -1,31 +1,35 @@
 'use client';
 
-import { Suspense, useRef, useState, useCallback, useEffect } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import {
-  OrbitControls,
-  Environment,
-  useGLTF,
-  Center,
-  ContactShadows,
-  Html,
-  useProgress,
-} from '@react-three/drei';
-import * as THREE from 'three';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
-  Maximize2,
-  Minimize2,
-  Camera,
-  RotateCcw,
-  Sun,
-  Moon,
-  Download,
-  ZoomIn,
-  ZoomOut,
-  Loader2,
+Center,
+ContactShadows,
+Environment,
+Html,
+OrbitControls,
+useGLTF,
+useProgress,
+} from '@react-three/drei';
+import { Canvas,useFrame,useThree } from '@react-three/fiber';
+import {
+Camera,
+Download,
+Loader2,
+Maximize2,
+Minimize2,
+Moon,
+RotateCcw,
+Sun
 } from 'lucide-react';
+import { Suspense,useCallback,useEffect,useRef,useState } from 'react';
+import * as THREE from 'three';
+import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
+
+type ThreeViewerWindow = Window & {
+  __threeViewerReset?: () => void;
+  __threeViewerScreenshot?: () => void;
+};
 
 // Collection-specific lighting configurations
 const COLLECTION_LIGHTING = {
@@ -189,7 +193,7 @@ function CameraController({
   autoRotate: boolean;
   onReset?: () => void;
 }) {
-  const controlsRef = useRef<any>(null);
+  const controlsRef = useRef<OrbitControlsImpl | null>(null);
 
   const reset = useCallback(() => {
     if (controlsRef.current) {
@@ -200,9 +204,9 @@ function CameraController({
 
   // Expose reset function
   useEffect(() => {
-    (window as any).__threeViewerReset = reset;
+    (window as ThreeViewerWindow).__threeViewerReset = reset;
     return () => {
-      delete (window as any).__threeViewerReset;
+      delete (window as ThreeViewerWindow).__threeViewerReset;
     };
   }, [reset]);
 
@@ -232,13 +236,13 @@ function ScreenshotCapture({
   const { gl, scene, camera } = useThree();
 
   useEffect(() => {
-    (window as any).__threeViewerScreenshot = () => {
+    (window as ThreeViewerWindow).__threeViewerScreenshot = () => {
       gl.render(scene, camera);
       const dataUrl = gl.domElement.toDataURL('image/png');
       onCapture(dataUrl);
     };
     return () => {
-      delete (window as any).__threeViewerScreenshot;
+      delete (window as ThreeViewerWindow).__threeViewerScreenshot;
     };
   }, [gl, scene, camera, onCapture]);
 
@@ -285,11 +289,11 @@ export function ThreeViewer({
   }, []);
 
   const handleScreenshot = useCallback(() => {
-    (window as any).__threeViewerScreenshot?.();
+    (window as ThreeViewerWindow).__threeViewerScreenshot?.();
   }, []);
 
   const handleReset = useCallback(() => {
-    (window as any).__threeViewerReset?.();
+    (window as ThreeViewerWindow).__threeViewerReset?.();
   }, []);
 
   const handleLoad = useCallback(() => {

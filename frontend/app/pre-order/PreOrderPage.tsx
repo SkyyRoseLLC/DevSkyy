@@ -1,22 +1,21 @@
 'use client';
 
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import {
-  ArrowRight,
-  Check,
-  Shield,
-  Truck,
-  RotateCcw,
-  Star,
-  Package,
-  Crown,
-  Sparkles,
-  ShoppingBag,
-} from 'lucide-react';
 import type { CollectionConfig } from '@/lib/collections';
-import { useCartStore, type CartItem } from '@/lib/stores/cart-store';
+import { useCartStore,type CartItem } from '@/lib/stores/cart-store';
+import { AnimatePresence,motion } from 'framer-motion';
+import {
+ArrowRight,
+Check,
+Crown,
+Package,
+RotateCcw,
+Shield,
+ShoppingBag,
+Star,
+Truck
+} from 'lucide-react';
+import Link from 'next/link';
+import { useState } from 'react';
 
 interface PreOrderPageProps {
   collections: CollectionConfig[];
@@ -24,7 +23,7 @@ interface PreOrderPageProps {
 
 export default function PreOrderPage({ collections }: PreOrderPageProps) {
   const [activeCollection, setActiveCollection] = useState<string>('all');
-  const { items: cart, addItem, removeItem: removeCartItem, subtotal, itemCount } = useCartStore();
+  const { items: cart, addItem, removeItem: removeCartItem, subtotal } = useCartStore();
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 

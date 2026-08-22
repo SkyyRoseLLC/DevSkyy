@@ -5,7 +5,8 @@ Model-free: queries torch availability + dtype mapping only, never loads a model
 from __future__ import annotations
 
 import pytest
-import torch
+
+torch = pytest.importorskip("torch")
 
 from skyyrose.core.embeddings.device import dtype_load_kwargs, resolve_dtype, select_device
 from skyyrose.core.embeddings.errors import EmbedError

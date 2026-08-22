@@ -7,7 +7,7 @@
  */
 
 import type { CartState, CustomerInfo, Order } from '../types/product';
-import type { Stripe, PaymentIntentResult } from './stripeIntegration';
+import type { Stripe, StripeElements, PaymentIntentResult } from './stripeIntegration';
 import { initializeStripe, handlePaymentResult } from './stripeIntegration';
 import { createLogger } from '../utils/Logger';
 
@@ -139,7 +139,7 @@ export class CheckoutManager {
 
     try {
       // Redirect to Stripe Checkout
-      const result = await (this.stripe as any).redirectToCheckout({
+      const result = await this.stripe.redirectToCheckout({
         sessionId,
       });
 
@@ -157,7 +157,7 @@ export class CheckoutManager {
    * Option 2: Embedded checkout (modal)
    */
   async processPayment(
-    elements: any, // StripeElements
+    elements: StripeElements,
     cart: CartState,
     customer: CustomerInfo
   ): Promise<{
@@ -218,14 +218,19 @@ export class CheckoutManager {
         };
       }
 
+      const paymentIntentId = paymentResult.paymentIntentId;
+      if (!paymentIntentId) {
+        return { success: false, error: 'Stripe did not return a payment intent ID' };
+      }
+
       // Sync order to WooCommerce
       let wcOrderId: number | undefined;
       if (this.config.enableWooCommerceSync) {
-        wcOrderId = await this.createWooCommerceOrder(cart, paymentResult.paymentIntentId!, customer);
+        wcOrderId = await this.createWooCommerceOrder(cart, paymentIntentId, customer);
       }
 
       // Create order record
-      const order = await this.createOrder(cart, paymentResult.paymentIntentId!, customer, wcOrderId);
+      const order = await this.createOrder(cart, paymentIntentId, customer, wcOrderId);
 
       return {
         success: true,

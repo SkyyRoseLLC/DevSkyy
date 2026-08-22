@@ -1,27 +1,26 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import {
-  Sparkles,
-  Eye,
-  MousePointerClick,
-  Crown,
-  Timer,
-  TrendingUp,
-  Layers,
-  Target,
-  ArrowDown,
-  Gauge,
-  Zap,
+Card,
+CardContent,
+CardDescription,
+CardHeader,
+CardTitle,
+} from '@/components/ui/card';
+import {
+Crown,
+Eye,
+Gauge,
+Layers,
+MousePointerClick,
+Sparkles,
+Target,
+Timer,
+TrendingUp,
+Zap
 } from 'lucide-react';
+import { useEffect,useRef,useState } from 'react';
 
 const BRAND = {
   roseGold: '#B76E79',

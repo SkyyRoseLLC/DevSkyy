@@ -7,7 +7,7 @@ import reactHooksPlugin from "eslint-plugin-react-hooks";
 export default [
   // Global ignores (must be first, standalone object)
   {
-    ignores: [".next/", "node_modules/", "out/", "coverage/"],
+    ignores: [".next/", "node_modules/", "out/", "coverage/", ".claude/"],
   },
   // Base JS recommended rules
   js.configs.recommended,
@@ -113,6 +113,48 @@ export default [
 
       // General rules
       "no-console": ["warn", { allow: ["warn", "error"] }],
+    },
+  },
+  // Command-line, E2E, queue, and autonomous workers intentionally emit
+  // operator-visible progress. Browser application modules remain protected
+  // by the global no-console rule above.
+  {
+    files: [
+      "scripts/**/*.{ts,js,mjs}",
+      "e2e/**/*.{ts,js,mjs}",
+      "lib/autonomous/**/*.{ts,js}",
+      "lib/queue/**/*.{ts,js}",
+    ],
+    rules: {
+      "no-console": "off",
+    },
+  },
+  // These API clients mirror schemaless third-party payloads. Their public
+  // typed methods are validated by TypeScript; keeping `any` at the raw JSON
+  // boundary avoids falsely asserting a stable vendor response schema.
+  {
+    files: [
+      "lib/wordpress/operations-manager.ts",
+      "lib/vercel/deployment-manager.ts",
+      "scripts/deploy.ts",
+    ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
+  // Asset/QA views must display the exact source URL (including signed and
+  // local object URLs) without image transformation; storefront images still
+  // require next/image through the global rule.
+  {
+    files: [
+      "app/admin/assets/page.tsx",
+      "app/admin/imagery/page.tsx",
+      "app/admin/wordpress/page.tsx",
+      "components/admin/assets/*.tsx",
+      "components/admin/qa/*.tsx",
+    ],
+    rules: {
+      "@next/next/no-img-element": "off",
     },
   },
 ];

@@ -29,7 +29,7 @@ from decimal import Decimal
 from enum import StrEnum
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -96,10 +96,7 @@ class RollupResult(BaseModel):
     p99_value: Decimal | None = None
     metadata: dict[str, Any] = Field(default_factory=dict)
 
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class RollupSchedulerError(DevSkyError):

@@ -58,7 +58,7 @@ try:
     from gradio_client import Client as GradioClient
 except ImportError:
     GradioClient = None  # type: ignore[assignment,misc]
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 logger = structlog.get_logger(__name__)
 
@@ -213,10 +213,7 @@ class HF3DResult(BaseModel):
     status: str = "pending"  # pending, processing, completed, failed
     error_message: str | None = None
 
-    class Config:
-        """Pydantic config."""
-
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class HF3DOptimizationHints(BaseModel):

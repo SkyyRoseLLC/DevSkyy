@@ -21,7 +21,7 @@ from datetime import UTC, datetime
 from typing import Any, Literal
 
 from fastapi import APIRouter, BackgroundTasks, HTTPException, Query
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 from .dashboard import agent_registry
 from .websocket_integration import WebSocketIntegration
@@ -53,8 +53,7 @@ class TaskRequest(BaseModel):
     parameters: dict[str, Any] = Field(default_factory=dict)
     use_round_table: bool = Field(default=False, alias="useRoundTable")
 
-    class Config:
-        populate_by_name = True
+    model_config = ConfigDict(populate_by_name=True)
 
 
 class TaskResponse(BaseModel):

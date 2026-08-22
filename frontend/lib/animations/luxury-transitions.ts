@@ -408,6 +408,6 @@ export function createEase(
 ): Transition {
   return {
     duration,
-    ease: ease as any,
+    ease: ease as Transition['ease'],
   };
 }

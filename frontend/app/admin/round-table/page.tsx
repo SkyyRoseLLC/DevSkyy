@@ -1,27 +1,24 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Zap,
-  Trophy,
-  Clock,
-  DollarSign,
-  Play,
-  Loader2,
-  CheckCircle2,
-  XCircle,
-  Sparkles,
-} from 'lucide-react';
-import { api, type CompetitionResponse } from '@/lib/api';
+import { Tabs,TabsContent,TabsList,TabsTrigger } from '@/components/ui/tabs';
 import { useRoundTableWS } from '@/hooks/useWebSocket';
+import { api,type CompetitionResponse } from '@/lib/api';
+import { useQuery,useQueryClient } from '@tanstack/react-query';
+import {
+Clock,
+DollarSign,
+Loader2,
+Play,
+Sparkles,
+Trophy
+} from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 export default function RoundTablePage() {
   const { data: roundTableData, isLoading: loading } = useQuery({

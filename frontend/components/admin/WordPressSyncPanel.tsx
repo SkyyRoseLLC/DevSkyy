@@ -6,9 +6,10 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, CheckCircle2, XCircle, RefreshCw, Globe } from 'lucide-react';
 import { getWordPressSyncService } from '@/lib/wordpress/sync-service';
+import type { CompetitionResponse } from '@/lib/api/types';
 
 interface WordPressSyncPanelProps {
-  result: any;
+  result: CompetitionResponse;
   onSyncComplete?: (postId: number) => void;
 }
 

@@ -21,7 +21,7 @@ from datetime import UTC, datetime
 from enum import StrEnum
 from typing import Any
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 logger = logging.getLogger(__name__)
 
@@ -132,8 +132,7 @@ class ToolDefinition(BaseModel):
     handler: str | None = Field(None, description="Handler function path")
     requires_confirmation: bool = Field(False, description="Requires human approval")
 
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class AgentConfig(BaseModel):
@@ -170,8 +169,7 @@ class AgentConfig(BaseModel):
         description="Brand context for responses",
     )
 
-    class Config:
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 # =============================================================================

@@ -159,6 +159,15 @@
 		} );
 	}
 
+	// A route-owned immersive world can request the established Three/Draco
+	// loader without importing a second copy or waking the mascot itself. The
+	// request is deliberately one-way; individual worlds still wait for the
+	// `three-ready` event and keep their DOM-first fallback if WebGL fails.
+	window.skyyRoseLoadThree = loadThree;
+	window.addEventListener( 'skyyrose:request-three', function () {
+		loadThree( function () {} );
+	} );
+
 	// -------------------------------------------------------------------------
 	// Three.js scene initialisation
 	// -------------------------------------------------------------------------

@@ -38,7 +38,7 @@ from typing import Any
 from urllib.parse import urlparse
 
 import aiohttp
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(
@@ -94,10 +94,11 @@ class ModelFile(BaseModel):
     product_id: int = Field(..., ge=1, description="WooCommerce product ID")
     product_name: str = Field(..., min_length=1, max_length=200, description="Product name")
     collection: str = Field(..., min_length=1, max_length=50, description="Collection slug")
-    model_type: str = Field(..., regex="^(glb|usdz)$", description="Model file type")
+    model_type: str = Field(..., pattern="^(glb|usdz)$", description="Model file type")
     ar_enabled: bool = Field(default=True, description="Enable AR Quick Look")
 
-    @validator("file_path", pre=True)
+    @field_validator("file_path", mode="before")
+    @classmethod
     def validate_file_exists(cls, v: Any) -> Path:
         """Validate file exists and is readable."""
         path = Path(v) if isinstance(v, str) else v
@@ -107,7 +108,8 @@ class ModelFile(BaseModel):
             raise ValueError(f"Not a file: {path}")
         return path
 
-    @validator("file_path")
+    @field_validator("file_path")
+    @classmethod
     def validate_file_size(cls, v: Path) -> Path:
         """Validate file size (max 100MB for GLB/USDZ)."""
         max_size = 100 * 1024 * 1024  # 100MB
@@ -116,7 +118,8 @@ class ModelFile(BaseModel):
             raise ValueError(f"File too large: {file_size} bytes (max {max_size})")
         return v
 
-    @validator("product_name", pre=True)
+    @field_validator("product_name", mode="before")
+    @classmethod
     def sanitize_product_name(cls, v: Any) -> str:
         """Sanitize product name."""
         s = str(v).strip()
@@ -131,13 +134,14 @@ class UploadResult(BaseModel):
     product_id: int
     product_name: str
     model_type: str
-    status: str = Field(..., regex="^(success|failed|skipped)$")
+    status: str = Field(..., pattern="^(success|failed|skipped)$")
     media_id: int | None = Field(default=None, description="WordPress media attachment ID")
     message: str = Field(default="", max_length=500)
     uploaded_at: datetime | None = Field(default=None)
     wordpress_url: str | None = Field(default=None, max_length=2048)
 
-    @validator("wordpress_url", pre=True)
+    @field_validator("wordpress_url", mode="before")
+    @classmethod
     def validate_wp_url(cls, v: Any) -> str | None:
         """Validate WordPress URL format."""
         if v is None:

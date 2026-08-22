@@ -10,7 +10,7 @@ import type { CompetitionResponse } from '@/lib/api/types'
 interface TaskRequest {
   prompt: string
   task_type: 'content_generation' | 'scene_building' | 'product_update' | 'general'
-  metadata?: Record<string, any>
+  metadata?: Record<string, unknown>
 }
 
 interface TaskResult {

@@ -1,0 +1,49 @@
+{
+  "kind": "SkyyRose V2 generated lookbook review set",
+  "state": "FOUNDER_REVIEW_REQUIRED",
+  "provider": "gpt-image-2 via Codex built-in image generation",
+  "created_at": "2026-08-07",
+  "rule": "Each asset is a review-only editorial candidate. It is not storefront media, product truth, or an approved SOT promotion until founder review and SKU fidelity QA pass.",
+  "assets": [
+    {
+      "id": "signature-lake-merritt-mint-hoodie-v1",
+      "collection": "signature",
+      "file": "signature-lake-merritt-mint-hoodie-v1.png",
+      "sha256": "b23341b600a5f8489c7ae4312e3d2068fabe909d6be5f0727dbb74535fd7927f",
+      "sku_references": ["sg-006"],
+      "source_media": ["assets/images/products/sg-006-onmodel.webp"],
+      "scene": "Lake Merritt overlook at morning",
+      "required_review": ["exact purple chest graphic", "exact mint garment color", "no invented marks"]
+    },
+    {
+      "id": "black-rose-east-oakland-crewneck-v1",
+      "collection": "black-rose",
+      "file": "black-rose-east-oakland-crewneck-v1.png",
+      "sha256": "7398d0f2f8fddbd80c5a4f5a63dcb6d555a84d19c6bf8ad6051ac0119fdd94fd",
+      "sku_references": ["br-001"],
+      "source_media": ["assets/images/products/br-001-crewneck.png"],
+      "scene": "East Oakland black-marble passage after rain",
+      "required_review": ["exact rose-and-cloud embroidery", "white rib construction", "no jersey substitution"]
+    },
+    {
+      "id": "love-hurts-theatre-fannie-v1",
+      "collection": "love-hurts",
+      "file": "love-hurts-theatre-fannie-v1.png",
+      "sha256": "51d423e2f006d446ec4f6fc634d9c5c6974a088a47b6c9b499b49c664afb45e6",
+      "sku_references": ["lh-005"],
+      "source_media": ["assets/images/products/lh-005-onmodel.webp"],
+      "scene": "Wet-stone Oakland theatre threshold in red neon",
+      "required_review": ["exact bag lettering", "exact rose motif", "exact bag geometry"]
+    },
+    {
+      "id": "kids-capsule-purple-library-v1",
+      "collection": "kids-capsule",
+      "file": "kids-capsule-purple-library-v1.png",
+      "sha256": "0d6ed4d9e92073bb0b969647a0427930c59d6e950cdbbae93dff26f7824aeb27",
+      "sku_references": ["kids-002"],
+      "source_media": ["assets/images/products/kids-002-purple-set.webp"],
+      "scene": "Oakland heir playroom library",
+      "required_review": ["exact lavender-purple-pink block", "age-appropriate styling", "no invented marks"]
+    }
+  ]
+}

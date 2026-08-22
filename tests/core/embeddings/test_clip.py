@@ -6,7 +6,8 @@ from __future__ import annotations
 
 import numpy as np
 import pytest
-import torch
+
+torch = pytest.importorskip("torch")
 from transformers import CLIPModel, CLIPProcessor
 
 from skyyrose.core.embeddings.clip import ClipEncoder

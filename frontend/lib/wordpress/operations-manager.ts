@@ -463,7 +463,7 @@ export class WordPressOperationsManager {
     try {
       // WordPress 5.6+ site health endpoint
       return await this.request('GET', '/wp-site-health/v1/tests/background-updates')
-    } catch (error) {
+    } catch {
       // Fallback: Check basic connectivity
       const posts = await this.listPosts({ per_page: 1 })
       return {

@@ -1,0 +1,41 @@
+{
+  "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
+  "status": "DISCOVERY_ACTIVE",
+  "gaps": [
+    {
+      "id": "GAP-001",
+      "area": "visual_authority",
+      "state": "UNDER_REVIEW",
+      "source": "user direction",
+      "required_outcome": "V2 meets or exceeds V1-caliber visual authority while retaining an independent V2 system."
+    },
+    {
+      "id": "GAP-002",
+      "area": "end_to_end_commerce",
+      "state": "UNDER_REVIEW",
+      "source": "v2-gap-closure P2/P4",
+      "required_outcome": "Complete component and state contracts with truthful recovery paths."
+    },
+    {
+      "id": "GAP-003",
+      "area": "responsive_accessibility_evidence",
+      "state": "PENDING_IMPLEMENTATION",
+      "source": "v2-gap-closure P3/P5/P6",
+      "required_outcome": "390, 768, and 1440 evidence with independent visual and accessibility review."
+    },
+    {
+      "id": "GAP-004",
+      "area": "immersive_editorial_commerce",
+      "state": "UNDER_REVIEW",
+      "source": "founder direction",
+      "required_outcome": "Preserve and elevate Scroll World, video, and collection scenery as cinematic routes into product truth; media loading, failure, reduced motion, keyboard use, and touch use must retain equivalent facts and purchase reachability."
+    },
+    {
+      "id": "GAP-005",
+      "area": "collection_world_differentiation",
+      "state": "UNDER_REVIEW",
+      "source": "founder direction",
+      "required_outcome": "Signature, Black Rose, Love Hurts, and Kids Capsule each receive an explicit story grammar, collection-specific high-fidelity ProductCard and PDP composition, and a collection pre-order immersive scene. Shared component behavior may be reused, but imagery, typography, cadence, copy, and scene choreography must be collection-native and SOT-bound."
+    }
+  ]
+}

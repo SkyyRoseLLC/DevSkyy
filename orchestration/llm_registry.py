@@ -23,7 +23,7 @@ import logging
 import os
 from enum import StrEnum
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 logger = logging.getLogger(__name__)
 
@@ -125,8 +125,7 @@ class ModelDefinition(BaseModel):
     best_for: list[str] = []  # Task types this excels at
     avoid_for: list[str] = []  # Task types to avoid
 
-    class Config:
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class ProviderConfig(BaseModel):

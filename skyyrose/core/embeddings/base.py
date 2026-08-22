@@ -153,18 +153,25 @@ class BaseEncoder(ABC):
         with self._lock:
             if self._loaded:
                 return
-            # Imported here (not at module top) so the package imports without torch.
+            # Device discovery is optional infrastructure. Model-free encoders and
+            # test doubles work on CPU without importing torch; concrete ML
+            # encoders still report the missing extra when their loader runs.
+            self._device = self._config.device
+            if self._device is None:
+                try:
+                    from skyyrose.core.embeddings.device import select_device
+
+                    self._device = select_device()
+                except ImportError:
+                    self._device = "cpu"
+            logger.info("Loading %s on %s", self.space.key(), self._device)
             try:
-                from skyyrose.core.embeddings.device import select_device
+                self._model, self._processor = self._load(self._device)
             except ImportError as exc:
                 raise ImportError(
                     f"{type(self).__name__} requires the 'ml' extra. "
                     "Install with: pip install -e '.[ml]'"
                 ) from exc
-
-            self._device = self._config.device or select_device()
-            logger.info("Loading %s on %s", self.space.key(), self._device)
-            self._model, self._processor = self._load(self._device)
             self._loaded = True
 
     @staticmethod

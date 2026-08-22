@@ -9,7 +9,7 @@ interface VercelConfig {
   projectId?: string
 }
 
-interface Deployment {
+export interface Deployment {
   uid: string
   name: string
   url: string
@@ -35,7 +35,7 @@ interface DeploymentEvent {
   }
 }
 
-interface Project {
+export interface Project {
   id: string
   name: string
   accountId: string
@@ -55,12 +55,20 @@ interface Project {
   }>
 }
 
-interface EnvironmentVariable {
+export interface EnvironmentVariable {
   key: string
   value: string
   target: ('production' | 'preview' | 'development')[]
   type?: 'secret' | 'encrypted' | 'plain'
   id?: string
+}
+
+export interface VercelUser {
+  id?: string
+  uid?: string
+  name?: string
+  username?: string
+  email?: string
 }
 
 export class VercelDeploymentManager {
@@ -478,7 +486,7 @@ export class VercelDeploymentManager {
   /**
    * Get user info
    */
-  async getUser(): Promise<any> {
+  async getUser(): Promise<VercelUser> {
     return this.request('GET', '/v2/user')
   }
 

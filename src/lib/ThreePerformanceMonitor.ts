@@ -407,7 +407,8 @@ export class ThreePerformanceMonitor {
     // Check warnings
     const warnings = this.checkPerformance();
     if (warnings.length > 0 && this.config.onWarning) {
-      warnings.forEach(w => this.config.onWarning!(w));
+      const onWarning = this.config.onWarning;
+      warnings.forEach(w => onWarning(w));
     }
 
     // Callback

@@ -26,7 +26,7 @@ from datetime import UTC, datetime
 from enum import StrEnum
 from typing import Any
 
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from core.errors.production_errors import (
     DevSkyError,
@@ -133,8 +133,7 @@ class PipelineJob(BaseModel):
     total_duration_ms: int = 0
     stage_durations: dict[str, int] = {}
 
-    class Config:
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class PipelineResult(BaseModel):

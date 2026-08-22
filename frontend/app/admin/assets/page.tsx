@@ -85,7 +85,6 @@ export default function AssetsPage() {
     setViewMode,
     uploadAsset,
     updateAsset,
-    deleteAsset,
     deleteSelected,
     startBatchGeneration,
   } = useAssets();

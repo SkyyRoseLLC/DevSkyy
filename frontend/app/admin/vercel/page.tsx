@@ -1,32 +1,38 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Button } from '@/components/ui/button'
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card'
+import { Tabs,TabsContent,TabsList,TabsTrigger } from '@/components/ui/tabs'
+import type {
+Deployment,
+EnvironmentVariable,
+Project,
+VercelDeploymentManager,
+VercelUser,
+} from '@/lib/vercel/deployment-manager'
 import { getVercelDeploymentManager } from '@/lib/vercel/deployment-manager'
 import {
-  Rocket,
-  Activity,
-  Settings,
-  Globe,
-  GitBranch,
-  Clock,
-  CheckCircle2,
-  XCircle,
-  Loader2,
-  ExternalLink,
-  Play,
-  Trash2
+Activity,
+CheckCircle2,
+Clock,
+ExternalLink,
+GitBranch,
+Loader2,
+Play,
+Rocket,
+Settings,
+Trash2,
+XCircle
 } from 'lucide-react'
+import { useEffect,useState } from 'react'
 
 export default function VercelAdminPage() {
-  const [vercelManager, setVercelManager] = useState<any>(null)
-  const [deployments, setDeployments] = useState<any[]>([])
-  const [projects, setProjects] = useState<any[]>([])
-  const [envVars, setEnvVars] = useState<any[]>([])
-  const [user, setUser] = useState<any>(null)
+  const [vercelManager, setVercelManager] = useState<VercelDeploymentManager | null>(null)
+  const [deployments, setDeployments] = useState<Deployment[]>([])
+  const [projects, setProjects] = useState<Project[]>([])
+  const [envVars, setEnvVars] = useState<EnvironmentVariable[]>([])
+  const [user, setUser] = useState<VercelUser | null>(null)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -38,7 +44,7 @@ export default function VercelAdminPage() {
     }
   }, [])
 
-  const loadData = async (manager: any) => {
+  const loadData = async (manager: VercelDeploymentManager) => {
     setLoading(true)
     try {
       const [deploymentsData, projectsData, userData] = await Promise.all([
@@ -76,21 +82,6 @@ export default function VercelAdminPage() {
       // Promotion failed
     }
     setLoading(false)
-  }
-
-  const getStateColor = (state: string) => {
-    switch (state) {
-      case 'READY':
-        return 'text-green-400'
-      case 'ERROR':
-        return 'text-red-400'
-      case 'BUILDING':
-        return 'text-blue-400'
-      case 'QUEUED':
-        return 'text-yellow-400'
-      default:
-        return 'text-gray-400'
-    }
   }
 
   const getStateIcon = (state: string) => {

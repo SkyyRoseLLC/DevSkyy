@@ -1,30 +1,28 @@
 'use client';
 
-import { useMemo } from 'react';
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card';
 import {
-  Area,
-  AreaChart,
-  Bar,
-  BarChart,
-  CartesianGrid,
-  Cell,
-  Pie,
-  PieChart,
-  RadialBar,
-  RadialBarChart,
-  XAxis,
-  YAxis,
-} from 'recharts';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
+ChartConfig,
+ChartContainer,
+ChartLegend,
+ChartLegendContent,
+ChartTooltip,
+ChartTooltipContent,
 } from '@/components/ui/chart';
 import type { ProviderStats } from '@/lib/api';
+import { useMemo } from 'react';
+import {
+Area,
+AreaChart,
+Bar,
+BarChart,
+CartesianGrid,
+Cell,
+Pie,
+PieChart,
+XAxis,
+YAxis
+} from 'recharts';
 
 // SkyyRose brand colors
 const BRAND_COLORS = {
@@ -234,14 +232,6 @@ export function AgentStatusChart({ active, idle, offline }: AgentStatusChartProp
     { name: 'Active', value: active, fill: BRAND_COLORS.emerald },
     { name: 'Idle', value: idle, fill: BRAND_COLORS.amber },
     { name: 'Offline', value: offline, fill: '#6B7280' },
-  ];
-
-  const radialData = [
-    {
-      name: 'Agents',
-      active: (active / total) * 100,
-      fill: BRAND_COLORS.rose,
-    },
   ];
 
   return (

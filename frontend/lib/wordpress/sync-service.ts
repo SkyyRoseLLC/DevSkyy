@@ -47,7 +47,7 @@ interface WordPressPost {
   status: 'draft' | 'publish';
   categories: number[];
   tags: number[];
-  meta: Record<string, any>;
+  meta: Record<string, unknown>;
 }
 
 export class WordPressSyncService {
@@ -74,7 +74,7 @@ export class WordPressSyncService {
         post.title = options.title;
       }
 
-      const response = await wpProxyFetch('POST', '/wp/v2/posts', post);
+      const response = await wpProxyFetch<{ id: number }>('POST', '/wp/v2/posts', post);
 
       return {
         success: true,
@@ -158,7 +158,7 @@ export class WordPressSyncService {
   /**
    * Get sync status for a result
    */
-  async getSyncStatus(resultId: string): Promise<{ synced: boolean; postId?: number; error?: string }> {
+  async getSyncStatus(_resultId: string): Promise<{ synced: boolean; postId?: number; error?: string }> {
     // This would query WordPress to check if the post exists
     // For now, return a placeholder
     return { synced: false };

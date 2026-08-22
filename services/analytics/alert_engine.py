@@ -28,7 +28,7 @@ from decimal import Decimal
 from enum import StrEnum
 from typing import TYPE_CHECKING, Any, Protocol
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from sqlalchemy import text
 
 from core.errors.production_errors import (
@@ -138,10 +138,7 @@ class AlertConfig(BaseModel):
     created_at: datetime | None = None
     updated_at: datetime | None = None
 
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class AlertTrigger(BaseModel):
@@ -158,10 +155,7 @@ class AlertTrigger(BaseModel):
     context: dict[str, Any] = Field(default_factory=dict)
     triggered_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
 
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class MetricValue(BaseModel):

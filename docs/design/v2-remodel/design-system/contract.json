@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "id": "sr2-v2-remodel-commerce-system-contract",
+  "version": "0.1.0",
+  "candidate": "0074fc6e6b161266f9181303296941cd474208af",
+  "status": "IMPLEMENTATION_ADAPTER",
+  "authority": {
+    "product": "WooCommerce product and variation resolver",
+    "cart": "WooCommerce current customer session",
+    "checkout": "WooCommerce checkout and payment gateway",
+    "account": "WooCommerce current authenticated customer endpoints",
+    "service": "Policy-backed service endpoint or support page only"
+  },
+  "routeAccents": [
+    { "id": "route-shop", "route": "shop", "token": "--sr2-gold" },
+    { "id": "route-preorder", "route": "preorder", "token": "--sr2-rose" },
+    { "id": "route-checkout", "route": "checkout", "token": "--sr2-ink" },
+    { "id": "route-account", "route": "account", "token": "--sr2-silver" },
+    { "id": "route-service", "route": "service", "token": "--sr2-silver" }
+  ],
+  "components": [
+    {
+      "id": "product-card",
+      "selector": ".sr2-c-product-card",
+      "slots": ["media", "badges", "collection", "name", "price", "availability", "action"],
+      "variants": ["rail", "grid", "search", "related"],
+      "states": ["default", "hover", "focus-visible", "loading", "media-missing", "available", "unavailable", "preorder", "backorder", "error"],
+      "boundary": "The card may show parent availability only; it must not represent a specific variation as purchasable before WooCommerce resolves it."
+    },
+    {
+      "id": "variation-resolver",
+      "selector": ".sr2-c-variation",
+      "slots": ["attributeGroup", "selection", "price", "availability", "notice", "reset", "addAction"],
+      "variants": ["select", "accessible-chips", "inline", "sticky"],
+      "states": ["unselected", "partial", "resolving", "valid", "invalid", "unavailable", "backorder", "preorder", "error"],
+      "boundary": "WooCommerce resolves selected attributes, variation ID, price, media, stock and addability."
+    },
+    {
+      "id": "cart-summary",
+      "selector": ".sr2-c-cart, .sr2-c-summary",
+      "slots": ["lineItems", "quantity", "coupon", "totals", "shipping", "notices", "checkoutAction"],
+      "variants": ["page", "drawer", "checkout-adjacent"],
+      "states": ["empty", "updating", "recalculating", "valid", "stock-changed", "coupon-error", "server-error"],
+      "boundary": "Totals, shipping, quantity limits and mutations render from a confirmed current-session WooCommerce response."
+    },
+    {
+      "id": "checkout-readiness",
+      "selector": ".sr2-c-checkout",
+      "slots": ["address", "shipping", "payment", "disclosures", "orderSummary", "submit", "errors"],
+      "variants": ["core", "v2-shell"],
+      "states": ["incomplete", "validating", "ready", "submitting", "payment-action-required", "failed", "cancelled", "success"],
+      "boundary": "The gateway and WooCommerce own payment and order state; the shell never authorizes purchase."
+    },
+    {
+      "id": "account-shell",
+      "selector": ".sr2-c-account",
+      "slots": ["identity", "navigation", "endpoint", "notices", "support"],
+      "variants": ["guest", "authenticated"],
+      "states": ["sign-in", "reset", "dashboard", "no-orders", "order-detail", "address-error", "unauthorized", "session-expired"],
+      "boundary": "Only the current WooCommerce customer can read or mutate account data."
+    },
+    {
+      "id": "service-case",
+      "selector": ".sr2-c-service",
+      "slots": ["policyLink", "orderLookup", "reason", "evidence", "status", "contactFallback"],
+      "variants": ["return", "exchange", "order-support"],
+      "states": ["eligible", "ineligible", "pending", "submitted", "rejected", "error", "cancelled"],
+      "boundary": "Return eligibility, labels, fees, dates and capacity require authoritative service/policy data."
+    }
+  ],
+  "accessibility": {
+    "focus": "Native controls receive visible focus via --sr2-focus.",
+    "target": "Interactive controls have at least 2.75rem block/inline size where component-owned.",
+    "status": "Markup owners provide role=status or role=alert as appropriate; CSS never replaces text status.",
+    "motion": "Reduced motion removes nonessential transitions/spinner motion without removing controls or facts.",
+    "forcedColors": "Component boundaries and active controls retain system-color contrast."
+  },
+  "escapeHatch": {
+    "rule": "Wrap and slot canonical WooCommerce templates/hooks first.",
+    "requires": ["written core limitation", "authority mapping", "state and accessibility parity fixtures", "template compatibility plan", "staging evidence", "rollback path"],
+    "prohibited": ["client-authorized purchase", "invented inventory or fulfillment facts", "invented fit facts", "hidden recovery path"]
+  },
+  "gates": ["staging variation matrix", "stock race", "cart mutation", "checkout payment failure and recovery", "guest/auth account ownership", "returns authorization", "390/768/1440 browser evidence", "independent visual QA"]
+}

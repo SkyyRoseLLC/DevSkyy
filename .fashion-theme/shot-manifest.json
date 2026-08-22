@@ -1,0 +1,851 @@
+{
+  "schema_version": "1.0",
+  "kind": "skyyrose-v2-shot-manifest",
+  "state": "FROZEN",
+  "candidate": {
+    "branch": "codex/skyyrose-v2-marketplace",
+    "baseline_commit": "54d595abb24e58dc07501601b1150037a2663ad9",
+    "state": "FROZEN"
+  },
+  "authority": {
+    "product_media": "data/sot-images.json",
+    "non_product_media": "wordpress-theme/skyyrose-flagship/data/visual-manifest.json",
+    "rule": "A verified visual-manifest status identifies a source record; it does not supply a candidate-byte binding, rights record, or product association."
+  },
+  "approved_edit_sync": {
+    "status": "ENFORCED",
+    "rule": "A founder-approved visual edit is incomplete until the active file reference, rendered review surface, shot/design manifest record, candidate SHA-256, and evidence or ledger record are synchronized in the same pass.",
+    "required_surfaces": [
+      "source or review asset",
+      "served candidate asset when the edit is active in theme runtime",
+      "rendered preview or lookbook reference",
+      "shot/design manifest state and SHA-256",
+      "candidate evidence or journey ledger"
+    ],
+    "stale_asset_policy": "Superseded bytes may remain only as explicit historical evidence and must not remain bound to an active surface."
+  },
+  "intake_sources": [
+    {
+      "intake_id": "founder-supplied-scroll-world-archive-202607",
+      "source_path": "Downloads/archive",
+      "inventory": {
+        "file_count": 70,
+        "video_count": 38,
+        "image_count": 32,
+        "total_bytes_approx": 118489088
+      },
+      "inventory_sha256": "6626fe54b2da304788790c1d13687d6dafa905ff784cb5c0522ba7c59f9aa722",
+      "observed_media": "38 H.264/AAC MP4 clips at 496x864 and about four seconds; 32 PNG stills, principally portrait 752x1344 plus widescreen scene stills.",
+      "visual_clusters": [
+        "signature",
+        "black-rose",
+        "love-hurts",
+        "kids-capsule",
+        "global-transition"
+      ],
+      "intake_state": "CATALOGED_PENDING_ROUTE_AND_RIGHTS_BINDING",
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "rule": "This founder-supplied intake establishes candidate visual availability only. A file may not be copied into theme source or used on a production route until a semantic route, collection, approved use, fallback, rights record, and candidate-byte hash are bound."
+    }
+  ],
+  "media": [
+    {
+      "media_id": "v1-signature-golden-gate-yacht",
+      "source_record_path": "signature.hero_backdrops[0]",
+      "source_path": "branding/hero/signature-golden-gate-yacht",
+      "manifest_status": "verified",
+      "kind": "cinematic-backdrop",
+      "collection": "signature",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/branding/hero/signature-golden-gate-yacht-1280w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Signature cinematic scene-hero still"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "1d04e5c5b9c93c802dc77379516b090f8d1632c8f0b58d4d62bb1c50742b3a3f",
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v1-black-rose-forbidden-midnight",
+      "source_record_path": "black_rose.hero_backdrops[0]",
+      "source_path": "branding/hero/forbidden-midnight",
+      "manifest_status": "verified",
+      "kind": "cinematic-backdrop",
+      "collection": "black-rose",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/branding/hero/forbidden-midnight-1280w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "BR heroes/manifesto surfaces"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "c6157066a0627b736e3c687fb2842a7ad53eb1f5c93d0ae1780e4338831cc74e",
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v1-love-hurts-beauty-and-beast",
+      "source_record_path": "love_hurts.hero_backdrops[0]",
+      "source_path": "branding/hero/beauty-and-beast",
+      "manifest_status": "verified",
+      "kind": "cinematic-backdrop",
+      "collection": "love-hurts",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/branding/hero/beauty-and-beast-1280w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "LH heroes/manifesto surfaces"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "e8e787036a45ebebd737fe919861be1d5e96e33b74fa4bbd5b6f961d97510976",
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v1-kids-capsule-runway",
+      "source_record_path": "kids_capsule.atmospherics[1]",
+      "source_path": "images/immersive/scene-kids-capsule-runway",
+      "manifest_status": "verified",
+      "kind": "scene-art",
+      "collection": "kids-capsule",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-kids-capsule-runway.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "KC runway immersive scene still"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "eaf87adfb51c5d4303748cf5f2923639cb5b8ac5c0d773b3a80a6ca49c56921b",
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v1-preorder-luxury-nighttime",
+      "source_record_path": "brand_global.hero_backdrops[0]",
+      "source_path": "branding/hero/luxury-nighttime",
+      "manifest_status": "verified",
+      "kind": "cinematic-backdrop",
+      "collection": null,
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/branding/hero/luxury-nighttime-1280w.webp",
+      "candidate_file_state": "MISSING",
+      "approved_uses_from_source": [
+        "preorder gateway poster"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": null,
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v2-scroll-world-scene-1-signature",
+      "source_record_path": null,
+      "source_path": null,
+      "manifest_status": "UNKNOWN",
+      "kind": "scene",
+      "collection": "signature",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/scene-1-signature.webp",
+      "candidate_file_state": "PRESENT",
+      "candidate_sha256": "c0267322fcef1533849d50a04dee499230f0dce0406e509cebaf47c5c199cfdb",
+      "dimensions": "1920x1275",
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v2-scroll-world-scene-2-black-rose",
+      "source_record_path": null,
+      "source_path": null,
+      "manifest_status": "UNKNOWN",
+      "kind": "scene",
+      "collection": "black-rose",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/scene-2-black-rose.webp",
+      "candidate_file_state": "PRESENT",
+      "candidate_sha256": "b8fc17624d754136c60949b72de9a51df58f5d4c1fa2d4bc6264de3bba32452d",
+      "dimensions": "1920x1275",
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v2-scroll-world-scene-3-love-hurts",
+      "source_record_path": null,
+      "source_path": null,
+      "manifest_status": "UNKNOWN",
+      "kind": "scene",
+      "collection": "love-hurts",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/scene-3-love-hurts.webp",
+      "candidate_file_state": "PRESENT",
+      "candidate_sha256": "7d926b7854237cdbb882108661a401415cedfd8922e9b9bfd6aacfef105bc70c",
+      "dimensions": "1920x1275",
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v2-scroll-world-scene-4-kids-capsule",
+      "source_record_path": null,
+      "source_path": null,
+      "manifest_status": "UNKNOWN",
+      "kind": "scene",
+      "collection": "kids-capsule",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/scene-4-kids-capsule.webp",
+      "candidate_file_state": "PRESENT",
+      "candidate_sha256": "b4e25c19d34c6ea21f1c0d1c442c5422273a37aab390c8387dc0c68188b98d78",
+      "dimensions": "1920x1275",
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v2-scroll-world-scene-5-finale",
+      "source_record_path": null,
+      "source_path": null,
+      "manifest_status": "UNKNOWN",
+      "kind": "scene",
+      "collection": null,
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/scene-5-finale.webp",
+      "candidate_file_state": "PRESENT",
+      "candidate_sha256": "d4f1f5010aa98b173424cec0864d132f772353e29fd87bd2f08553cd9f33a7be",
+      "dimensions": "2048x1360",
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v2-preorder-black-rose-salon",
+      "source_record_path": null,
+      "source_path": null,
+      "manifest_status": "UNKNOWN",
+      "kind": "scene",
+      "collection": "black-rose",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/preorder/black-rose-salon.webp",
+      "candidate_file_state": "PRESENT",
+      "candidate_sha256": "2ca5326cb30844311f0dd593c7b6141ab7819ba0926913183e65c9bd6207a3eb",
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "state": "HOLD",
+      "blocker": "No inspected V1 visual-manifest record or scene-object-to-SKU evidence."
+    },
+    {
+      "media_id": "v1-love-hurts-varsity-editorial",
+      "source_record_path": "images/lookbook/lb-love-hurts-varsity-960w.webp",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/lookbook/lb-love-hurts-varsity-960w.webp",
+      "manifest_status": "founder-approved V1 reference",
+      "kind": "editorial-lookbook",
+      "collection": "love-hurts",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lookbook/lb-love-hurts-varsity-960w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Love Hurts V2 manifesto lookbook baseline"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "38b906e370af5575eb9044bc34693565dc3120dce48a4aaf4032bc89a52dbb88",
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v2-black-rose-lake-merritt-monument",
+      "source_record_path": "founder-approved generated visual 2026-08-06",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-9a3a3aac-10c0-404c-9dc4-f0b439a3639d.png",
+      "manifest_status": "FOUNDER_APPROVED",
+      "kind": "cinematic-backdrop",
+      "collection": "black-rose",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-lake-merritt-monument-v2.png",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Black Rose V2 alternate collection hero"
+      ],
+      "rights": {
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-visual-approval-2026-08-06"
+      },
+      "candidate_sha256": "c5796ecc0fb1719d3721b028bdbb1bec389906895e35c8cabdad8d52a36a8b87",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v2-black-rose-typography-star-salon",
+      "source_record_path": "founder-directed generated visual 2026-08-06",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-9e48f3a2-ef0e-494b-a5bd-b6fdb0b2ef86.png",
+      "manifest_status": "FOUNDER_DIRECTED",
+      "kind": "cinematic-backdrop",
+      "collection": "black-rose",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-typography-star-salon-v3.png",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Black Rose V2 collection hero"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-visual-direction-2026-08-06-black-rose-salon"
+      },
+      "candidate_sha256": "ecfdc06ef77fb8a58318cb2ad5b881d8fb5cba422f7c977b1f03951ca8fb0d64",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v2-love-hurts-golden-gate-monument",
+      "source_record_path": "founder-approved generated visual 2026-08-06",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-163bd750-d982-4a47-9c5a-18b0d582d5f7.png",
+      "manifest_status": "FOUNDER_APPROVED",
+      "kind": "cinematic-backdrop",
+      "collection": "love-hurts",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-golden-gate-monument-v2.png",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Love Hurts V2 collection hero"
+      ],
+      "rights": {
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-visual-approval-2026-08-06"
+      },
+      "candidate_sha256": "eedae0a86c18cb3e2d20c55b212d434d7244d4069bee71d02fc6ec0e38a1b962",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v2-signature-golden-gate-monuments",
+      "source_record_path": "founder-directed generated visual 2026-08-07",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-80826921-38b9-41d5-adb0-e9a2eaca8577.png",
+      "source_sha256": "a4166a8187cd5d78655685d39d72927f69bae6d1824c6c756f709a3f4664d0b3",
+      "manifest_status": "FOUNDER_DIRECTED",
+      "kind": "cinematic-backdrop",
+      "collection": "signature",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Signature V2 collection hero"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-hero-implementation-2026-08-07"
+      },
+      "candidate_sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v2-black-rose-bay-bridge-monuments",
+      "source_record_path": "founder-directed generated visual 2026-08-07",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-85b10f1e-b911-4bc4-8ba3-84bd04936ed8.png",
+      "source_sha256": "ecdc67d000dcecd09b8a64d08ac87edaf9771550c2eef3ef60752e3a7547e4c7",
+      "manifest_status": "FOUNDER_DIRECTED",
+      "kind": "cinematic-backdrop",
+      "collection": "black-rose",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Black Rose V2 collection hero"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-hero-implementation-2026-08-07"
+      },
+      "candidate_sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v2-love-hurts-rose-aisle-monuments",
+      "source_record_path": "founder-directed generated visual 2026-08-07",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-ba528c3e-8a1d-48f2-b396-772fe55afdf7.png",
+      "source_sha256": "58ee695bff409ac32ee9bfc5f153df0ddec82736cb6a86c73c5a58392a886eec",
+      "manifest_status": "FOUNDER_DIRECTED",
+      "kind": "cinematic-backdrop",
+      "collection": "love-hurts",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Love Hurts V2 collection hero"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-hero-implementation-2026-08-07"
+      },
+      "candidate_sha256": "000ec8308a8d72daa691ca8712ef751d7d8e9b9805a4b08060ebc9a59a2bc3a3",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v2-kids-capsule-heir-throne",
+      "source_record_path": "founder-directed generated visual 2026-08-07",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-9f9bf691-9926-4e24-9a73-6a0e312de52b.png",
+      "source_sha256": "8e54239195d1c1c4fdbebb8fe329f18dd7af995aaf8ab97912afb872b3550fe4",
+      "manifest_status": "SUPERSEDED_BY_FOUNDER_DIRECTION_2026_08_14",
+      "kind": "cinematic-backdrop-historical",
+      "collection": "kids-capsule",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v2.webp",
+      "candidate_file_state": "PRESENT_HISTORICAL_ONLY",
+      "approved_uses_from_source": [],
+      "superseded_by": "v3-kids-capsule-heir-throne-monument",
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-hero-implementation-2026-08-07"
+      },
+      "candidate_sha256": "aa43dd54c0d184f80fffabbc211fc39524fa16d523ee60c5491afa05e03ad810",
+      "state": "SUPERSEDED_RETAINED_HISTORICAL"
+    },
+    {
+      "media_id": "v2-kids-capsule-mascot-statue-bronze-v1",
+      "source_record_path": "founder-directed Kids Capsule statue exploration before 2026-08-14 color correction",
+      "source_path": ".fashion-theme/review-assets/kids-capsule-mascot-statue-v1.png",
+      "source_sha256": "b7ca08ae17cd12abc1672fb88b831ae7464a3053833eae5e6ccbab568ca5460a",
+      "manifest_status": "SUPERSEDED_BY_FOUNDER_DIRECTION_2026_08_14",
+      "kind": "collection-lookbook-monument-historical",
+      "collection": "kids-capsule",
+      "candidate_path": ".fashion-theme/review-assets/kids-capsule-mascot-statue-v1.png",
+      "candidate_file_state": "PRESENT_HISTORICAL_ONLY",
+      "approved_uses_from_source": [],
+      "superseded_by": "v2-kids-capsule-mascot-statue-full-color-v2",
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-kids-statue-color-correction-2026-08-14"
+      },
+      "candidate_sha256": "b7ca08ae17cd12abc1672fb88b831ae7464a3053833eae5e6ccbab568ca5460a",
+      "state": "SUPERSEDED_RETAINED_HISTORICAL"
+    },
+    {
+      "media_id": "v2-kids-capsule-mascot-statue-full-color-v2",
+      "source_record_path": "founder-directed Kids Capsule real-color statue correction 2026-08-14",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-651df801-d562-414e-84fa-73b742d2b52d.png",
+      "source_sha256": "179954d556559cfcb6b60425ec406c9a3840ecf5fb4edb7a9384e8bd744110a2",
+      "manifest_status": "SUPERSEDED_BY_FOUNDER_DIRECTION_2026_08_14",
+      "kind": "collection-lookbook-full-color-character-monument-historical",
+      "collection": "kids-capsule",
+      "identity_reference": {
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+        "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+      },
+      "candidate_path": ".fashion-theme/review-assets/kids-capsule-mascot-statue-v2-full-color.png",
+      "candidate_file_state": "PRESENT_HISTORICAL_ONLY",
+      "dimensions": "1672x941",
+      "approved_uses_from_source": [],
+      "superseded_by": "v3-kids-capsule-heir-throne-monument",
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-kids-statue-color-correction-2026-08-14"
+      },
+      "candidate_sha256": "179954d556559cfcb6b60425ec406c9a3840ecf5fb4edb7a9384e8bd744110a2",
+      "state": "SUPERSEDED_RETAINED_HISTORICAL"
+    },
+    {
+      "media_id": "v3-kids-capsule-heir-throne-monument",
+      "source_record_path": "founder-supplied heir throne visual and directed removal of both side outfit displays 2026-08-14",
+      "source_path": "/Users/theceo/Downloads/OpenAI Playground 2026-07-12 at 09.52.32.png",
+      "source_sha256": "c88de33e1fd6eb2151c0d221e66120108526ec752dc312e18cb05d5774518100",
+      "generated_source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-74b3b94e-3c53-4d1e-9c34-f9c83f93ccac.png",
+      "generated_source_sha256": "915f4277585aa1806545430ee816bdb3c0a1499366fd7d5186ecbf9b2540c08a",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_KIDS_MONUMENT",
+      "kind": "full-color-heir-throne-collection-monument",
+      "collection": "kids-capsule",
+      "identity_reference": {
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+        "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+      },
+      "review_path": ".fashion-theme/review-assets/kids-capsule-heir-throne-statue-v3-full-color.png",
+      "review_sha256": "915f4277585aa1806545430ee816bdb3c0a1499366fd7d5186ecbf9b2540c08a",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+      "candidate_file_state": "PRESENT",
+      "dimensions": "1672x941",
+      "bytes": 142022,
+      "approved_uses_from_source": [
+        "Kids Capsule V2 collection hero",
+        "V2 homepage Kids Capsule Royal Procession heir chapter",
+        "V2 collection imagery lookbook Kids Capsule opening frame"
+      ],
+      "excluded_elements": [
+        "purple side outfit display",
+        "red side outfit display"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-kids-throne-monument-2026-08-14"
+      },
+      "candidate_sha256": "fda7df7f2f0391e10c8e93121b0757242010d4c49e69d79beb8827a32d0b7936",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "global-skyyrose-header-animation",
+      "source_record_path": "founder-supplied SkyyRose animated GIF 2026-08-06",
+      "source_path": "/Users/theceo/DevSkyy/assets/branding/skyyrose-logo-animated.gif",
+      "source_sha256": "43332f8eab43af05266cbfdc85bc40acc92412a421bb679a6facb3ee5fa16dd4",
+      "manifest_status": "FOUNDER_APPROVED",
+      "kind": "global-brand-motion-mark",
+      "collection": null,
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 global header across every route",
+        "V2 global footer centered between House and customer-care navigation"
+      ],
+      "derivatives": [
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+          "sha256": "98cfbd006e42f81782f2dd2b9a72ac2c8d7015ce09ad880d95af0f244391fb22",
+          "role": "motion-enabled WebP"
+        },
+        {
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+          "sha256": "282401d94e26451c830e91c1f231e75a50869333e9afbf88df78842003856884",
+          "role": "initial, reduced-motion, and save-data fallback"
+        }
+      ],
+      "rights": {
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-brand-approval-2026-08-06"
+      },
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v1-kids-capsule-black-rose-editorial",
+      "source_record_path": "images/lookbook/lb-kid-black-rose-960w.webp",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/lookbook/lb-kid-black-rose-960w.webp",
+      "manifest_status": "founder-approved V1 reference",
+      "kind": "editorial-lookbook",
+      "collection": "kids-capsule",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lookbook/lb-kid-black-rose-960w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "Kids Capsule V2 manifesto lookbook baseline"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "cf13e15335aabdfcf11f1bb619a1b69c35503e2c2d4f250a94b323d0c9c2942f",
+      "state": "HOLD"
+    },
+    {
+      "media_id": "v1-about-skyy-rose-founder-portrait",
+      "source_record_path": "template-about.php hero image",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/homepage-story-founder.webp",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_ABOUT",
+      "kind": "founder-family-editorial",
+      "collection": null,
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/skyy-rose-founder-hero.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 About page hero"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-about-v2-2026-08-07"
+      },
+      "candidate_sha256": "fb1406939aeb76db25597108921bc1e230b17feebf0c74a284df5f8ac713b93d",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v1-about-signature-editorial",
+      "source_record_path": "template-parts/about/collections-grid.php",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/lookbook/lb-rose-hoodie-beanie-960w.webp",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_ABOUT",
+      "kind": "editorial-lookbook",
+      "collection": "signature",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lookbook/lb-rose-hoodie-beanie-960w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 About page collection archive"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-about-v2-2026-08-07"
+      },
+      "candidate_sha256": "d8704e75d28007e44f2dd665f8db07cc6e409b834539c33a00488c3418608fcf",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v1-about-black-rose-editorial",
+      "source_record_path": "template-parts/about/collections-grid.php",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/lookbook/lb-black-rose-football-960w.webp",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_ABOUT",
+      "kind": "editorial-lookbook",
+      "collection": "black-rose",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lookbook/lb-black-rose-football-960w.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 About page collection archive"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-about-v2-2026-08-07"
+      },
+      "candidate_sha256": "6de1299e035d7888c8c5ede47ab7a5b617adc970daac37dcfbdf319368cccc33",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v1-about-the-blox-premiere-poster",
+      "source_record_path": "template-parts/about/press-section.php",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/press-the-blox-interview.webp",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_ABOUT",
+      "kind": "press-editorial",
+      "collection": null,
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/the-blox-premiere.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 About page The Blox premiere module"
+      ],
+      "rights": {
+        "status": "FOUNDER_DIRECTED",
+        "record_id": "founder-about-v2-2026-08-07"
+      },
+      "candidate_sha256": "3cf0c90628ed4f9df6375669c9121aebc5bae011e4b48e9d8c727abff47f9c26",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    },
+    {
+      "media_id": "v1-signature-sg-005-home-hero-on-model",
+      "source_record_path": "data/skyyrose-catalog.csv SKU SG-005 product media",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp",
+      "source_sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_HOME_HERO",
+      "kind": "catalog-on-model-home-hero",
+      "collection": "signature",
+      "sku": "SG-005",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/signature-sg-005.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 homepage rotating on-model collection index"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v1-black-rose-br-004-home-hero-on-model",
+      "source_record_path": "data/skyyrose-catalog.csv SKU BR-004 product media",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp",
+      "source_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_HOME_HERO",
+      "kind": "catalog-on-model-home-hero",
+      "collection": "black-rose",
+      "sku": "BR-004",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/black-rose-br-004.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 homepage rotating on-model collection index"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v1-love-hurts-lh-004-home-hero-on-model",
+      "source_record_path": "data/skyyrose-catalog.csv SKU LH-004 product media",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-onmodel.webp",
+      "source_sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_HOME_HERO",
+      "kind": "catalog-on-model-home-hero",
+      "collection": "love-hurts",
+      "sku": "LH-004",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/love-hurts-lh-004.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 homepage rotating on-model collection index"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v1-kids-capsule-kids-001-home-hero-on-model",
+      "source_record_path": "data/skyyrose-catalog.csv SKU KIDS-001 product media",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
+      "source_sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+      "manifest_status": "FOUNDER_WITHHELD_FROM_V2_HOME_HERO",
+      "kind": "catalog-on-model-reserved-kids-reveal",
+      "collection": "kids-capsule",
+      "sku": "KIDS-001",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-kids-001.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+      "state": "PRESENT_WITHHELD_FROM_ACTIVE_SURFACE"
+    },
+    {
+      "media_id": "v2-kids-capsule-mascot-red-royal-procession",
+      "source_record_path": "founder-directed Scroll World archive 2026-08-11; garment proof data/skyyrose-catalog.csv SKU KIDS-001",
+      "source_path": "/Users/theceo/Downloads/archive/hf_20260719_195821_08103114-b886-4cb9-920d-f3c9f1a60497.png",
+      "source_sha256": "824d10a677dd13117c6736e142dd393ae806df0838b1b325d4f5989be95cfb3d",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_KIDS_ROYAL_PROCESSION",
+      "kind": "scroll-world-mascot-guardian-reveal-derivative",
+      "collection": "kids-capsule",
+      "sku": "KIDS-001",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-mascot-red-guard.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 homepage Kids Capsule Royal Procession local candidate"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "4f8fef289747434600cc064a642342c5127ed702bd2d336642579fc2bb57ce96",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v2-kids-capsule-mascot-purple-royal-procession",
+      "source_record_path": "founder-directed Scroll World archive 2026-08-11; garment proof data/skyyrose-catalog.csv SKU KIDS-002",
+      "source_path": "/Users/theceo/Downloads/archive/hf_20260719_195824_9b711bc8-28a1-4320-9cab-a08cb4f9be18.png",
+      "source_sha256": "f36e69a1c68c6f64eca69a5c24a8e68e865a463c09a09d1fa51932eb77db2307",
+      "manifest_status": "FOUNDER_DIRECTED_FOR_V2_KIDS_ROYAL_PROCESSION",
+      "kind": "scroll-world-mascot-guardian-reveal-derivative",
+      "collection": "kids-capsule",
+      "sku": "KIDS-002",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-mascot-purple-guard.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "V2 homepage Kids Capsule Royal Procession local candidate"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "5f33ec32eeeccea4b710ec4145957146c978da6ef06f9477719b79719088f096",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v1-kids-capsule-kids-002-product-proof",
+      "source_record_path": "data/skyyrose-catalog.csv SKU KIDS-002 product media",
+      "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
+      "source_sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
+      "manifest_status": "CATALOG_PRODUCT_PROOF",
+      "kind": "catalog-product-packshot",
+      "collection": "kids-capsule",
+      "sku": "KIDS-002",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/kids-002-purple-set.jpeg",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "local Woo fixture product proof"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v2-kids-capsule-kids-001-product-proof-thumbnail",
+      "source_record_path": "data/skyyrose-catalog.csv SKU KIDS-001 product media",
+      "source_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-kids-001.webp",
+      "source_sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
+      "manifest_status": "CATALOG_PRODUCT_PROOF_DERIVATIVE",
+      "kind": "catalog-product-thumbnail",
+      "collection": "kids-capsule",
+      "sku": "KIDS-001",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/kids-001-product-proof-400.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "local Woo fixture product proof"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "54110ac9be6feab1e8b188e299676669d9780ad19863bdd923856bb2bbf26c4b",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v2-kids-capsule-kids-002-product-proof-thumbnail",
+      "source_record_path": "data/skyyrose-catalog.csv SKU KIDS-002 product media",
+      "source_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/kids-002-purple-set.jpeg",
+      "source_sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
+      "manifest_status": "CATALOG_PRODUCT_PROOF_DERIVATIVE",
+      "kind": "catalog-product-thumbnail",
+      "collection": "kids-capsule",
+      "sku": "KIDS-002",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/kids-002-product-proof-400.webp",
+      "candidate_file_state": "PRESENT",
+      "approved_uses_from_source": [
+        "local Woo fixture product proof"
+      ],
+      "rights": {
+        "status": "MISSING",
+        "record_id": null
+      },
+      "candidate_sha256": "e28deee0e8bc8ba6271fd95b1e80acdef4e5619fdcc10f1641071a72a2ae1599",
+      "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
+    },
+    {
+      "media_id": "v3-jersey-series-town-line-arrival",
+      "source_record_path": "founder-approved SkyyRose Town Line arrival visual 2026-08-14",
+      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-b1661f51-ddb0-4696-89c1-095162c35c3e.png",
+      "source_sha256": "63833250e0ddb044bbb343947eaef817f940e9b7322033b9607102bc22897cfd",
+      "manifest_status": "FOUNDER_APPROVED_FOR_V2_JERSEY_SERIES_ENTRY",
+      "kind": "fictional-house-transit-hero",
+      "collection": "black-rose",
+      "review_path": ".fashion-theme/review-assets/jersey-series-town-line-train-v1.png",
+      "review_sha256": "63833250e0ddb044bbb343947eaef817f940e9b7322033b9607102bc22897cfd",
+      "candidate_path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp",
+      "candidate_file_state": "PRESENT",
+      "dimensions": "1672x941",
+      "bytes": 138992,
+      "approved_uses_from_source": [
+        "Jersey Series V2 entry-film poster",
+        "Jersey Series collection chapter visual",
+        "Jersey Series Town Line launch story"
+      ],
+      "excludes": [
+        "BART word marks",
+        "BART livery or route map",
+        "transit-agency station identity",
+        "transit affiliation or service claim"
+      ],
+      "rights": {
+        "status": "FOUNDER_APPROVED_GENERATED_CANDIDATE",
+        "record_id": "founder-town-line-approval-2026-08-14"
+      },
+      "candidate_sha256": "7c444e77815a11ff9eca87c0539359b1817562c0af2acc787e838d3d1d711148",
+      "state": "APPROVED_FOR_V2_CANDIDATE"
+    }
+  ],
+  "visual_evidence_contract": {
+    "required_per_media": [
+      "source record",
+      "candidate SHA-256",
+      "rights record",
+      "approved route/surface use",
+      "fallback"
+    ],
+    "required_per_shoppable_scene_object": [
+      "media_id",
+      "scene-object evidence",
+      "exact SKU",
+      "WooCommerce product/variation capture",
+      "SOT product-media selection"
+    ],
+    "fail_closed": true
+  },
+  "frozen_at_utc": "2026-08-15T04:58:10Z"
+}

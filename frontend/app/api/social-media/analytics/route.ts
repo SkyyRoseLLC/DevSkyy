@@ -10,9 +10,9 @@
  * When keys are missing, returns realistic simulated data with a flag.
  */
 
-import { NextRequest, NextResponse } from 'next/server';
 import { withAuth } from '@/lib/api-auth';
-import { getPlatformConnection, getPlatformToken, type PlatformId } from '@/lib/social-media/config';
+import { getPlatformConnection,getPlatformToken } from '@/lib/social-media/config';
+import { NextRequest,NextResponse } from 'next/server';
 
 // ---------------------------------------------------------------------------
 // Types (mirrors lib/api/endpoints/social-media.ts)

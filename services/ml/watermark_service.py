@@ -26,7 +26,7 @@ from typing import Any
 
 import numpy as np
 from PIL import Image
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from core.errors.production_errors import (
     DevSkyError,
@@ -106,8 +106,7 @@ class WatermarkResult(BaseModel):
     processing_time_ms: int
     correlation_id: str
 
-    class Config:
-        arbitrary_types_allowed = True
+    model_config = ConfigDict(arbitrary_types_allowed=True)
 
 
 class WatermarkDetectionResult(BaseModel):

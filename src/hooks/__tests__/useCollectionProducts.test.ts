@@ -113,7 +113,7 @@ describe('useCollectionProducts', () => {
   });
 
   it('should start in loading state', () => {
-    global.fetch = jest.fn().mockReturnValue(new Promise(() => {})); // never resolves
+    global.fetch = jest.fn().mockReturnValue(new Promise(jest.fn())); // never resolves
 
     const { result } = renderHook(() => useCollectionProducts({ categorySlug: 'loading-test' }));
 

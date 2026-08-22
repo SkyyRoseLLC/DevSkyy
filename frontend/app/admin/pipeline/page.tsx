@@ -1,31 +1,31 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Workflow,
-  Loader2,
-  CheckCircle2,
-  XCircle,
-  Clock,
-  Cpu,
-  Layers,
-  Activity,
-  RefreshCcw,
-} from 'lucide-react';
-import { api, type Job3D, type PipelineStatus, type Provider3D, type BatchJob } from '@/lib/api';
+import { Tabs,TabsContent,TabsList,TabsTrigger } from '@/components/ui/tabs';
 import { use3DPipelineWS } from '@/hooks/useWebSocket';
+import { api,type BatchJob,type Job3D,type Provider3D } from '@/lib/api';
+import {
+Activity,
+CheckCircle2,
+Clock,
+Cpu,
+Layers,
+Loader2,
+RefreshCcw,
+Workflow,
+XCircle,
+} from 'lucide-react';
+import { useCallback,useEffect,useState } from 'react';
 
 // Extracted Components
-import { QueueStatCard } from '@/components/admin/pipeline/QueueStatCard';
-import { ProviderCard } from '@/components/admin/pipeline/ProviderCard';
 import { BatchJobCard } from '@/components/admin/pipeline/BatchJobCard';
 import { JobCard } from '@/components/admin/pipeline/JobCard';
 import { JobDetailModal } from '@/components/admin/pipeline/JobDetailModal';
+import { ProviderCard } from '@/components/admin/pipeline/ProviderCard';
+import { QueueStatCard } from '@/components/admin/pipeline/QueueStatCard';
 
 interface QueueStats {
   queued: number;
@@ -36,7 +36,6 @@ interface QueueStats {
 }
 
 export default function PipelinePage() {
-  const [status, setStatus] = useState<PipelineStatus | null>(null);
   const [providers, setProviders] = useState<Provider3D[]>([]);
   const [jobs, setJobs] = useState<Job3D[]>([]);
   const [batchJobs, setBatchJobs] = useState<BatchJob[]>([]);
@@ -44,7 +43,7 @@ export default function PipelinePage() {
   const [selectedJob, setSelectedJob] = useState<Job3D | null>(null);
   const [expandedProviders, setExpandedProviders] = useState<Set<string>>(new Set());
 
-  const { status: wsStatus, lastMessage, isConnected } = use3DPipelineWS();
+  const { status: wsStatus, lastMessage } = use3DPipelineWS();
 
   // Calculate queue stats
   const queueStats: QueueStats = {
@@ -68,13 +67,11 @@ export default function PipelinePage() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const [statusData, providersData, jobsData, batchData] = await Promise.all([
-          api.pipeline3d.getStatus(),
+        const [providersData, jobsData, batchData] = await Promise.all([
           api.pipeline3d.getProviders(),
           api.pipeline3d.getJobs(50),
           api.batch.list(),
         ]);
-        setStatus(statusData);
         setProviders(providersData);
         setJobs(jobsData);
         setBatchJobs(batchData);
@@ -94,7 +91,6 @@ export default function PipelinePage() {
       if (['job_queued', 'job_started', 'job_progress', 'job_completed', 'job_failed'].includes(event.event)) {
         // Refresh jobs list
         api.pipeline3d.getJobs(50).then(setJobs);
-        api.pipeline3d.getStatus().then(setStatus);
       }
     }
   }, [lastMessage]);
@@ -114,12 +110,10 @@ export default function PipelinePage() {
   const refreshData = useCallback(async () => {
     setLoading(true);
     try {
-      const [statusData, jobsData, batchData] = await Promise.all([
-        api.pipeline3d.getStatus(),
+      const [jobsData, batchData] = await Promise.all([
         api.pipeline3d.getJobs(50),
         api.batch.list(),
       ]);
-      setStatus(statusData);
       setJobs(jobsData);
       setBatchJobs(batchData);
     } finally {

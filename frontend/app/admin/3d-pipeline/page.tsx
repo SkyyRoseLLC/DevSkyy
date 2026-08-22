@@ -1,31 +1,30 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Skeleton } from '@/components/ui/skeleton';
-import {
-  Box,
-  Upload,
-  Type,
-  Image as ImageIcon,
-  Play,
-  Loader2,
-  CheckCircle2,
-  XCircle,
-  Clock,
-  Sparkles,
-  Layers,
-  Cpu,
-  Zap,
-  ExternalLink,
-} from 'lucide-react';
-import { api, type Provider3D, type Job3D, type PipelineStatus } from '@/lib/api';
+import { Tabs,TabsContent,TabsList,TabsTrigger } from '@/components/ui/tabs';
 import { use3DPipelineWS } from '@/hooks/useWebSocket';
+import { api,type Job3D,type PipelineStatus,type Provider3D } from '@/lib/api';
+import {
+Box,
+CheckCircle2,
+Clock,
+Cpu,
+ExternalLink,
+Image as ImageIcon,
+Layers,
+Loader2,
+Play,
+Sparkles,
+Type,
+XCircle,
+Zap
+} from 'lucide-react';
+import { useEffect,useState } from 'react';
 
 interface MeshyStatus {
   provider: string;

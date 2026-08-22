@@ -21,7 +21,6 @@ from core.events.event_store import Event, EventStore
 
 
 @pytest.mark.unit
-@pytest.mark.asyncio
 class TestEvent:
     """Test the Event dataclass"""
 

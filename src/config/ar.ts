@@ -31,6 +31,18 @@ export interface CollectionARSettings {
   tryOnCategory: string;
 }
 
+export interface ARProductResponse {
+  id?: string | number;
+  name?: string;
+  [key: string]: unknown;
+}
+
+export interface TryOnJobResponse {
+  job_id?: string;
+  status?: string;
+  [key: string]: unknown;
+}
+
 // Environment-based configuration
 const getApiBaseUrl = (): string => {
   if (typeof process !== 'undefined' && process.env?.['VITE_API_BASE_URL']) {
@@ -158,22 +170,27 @@ export class ARApiClient {
       throw new Error(`Failed to create AR session: ${response.statusText}`);
     }
 
-    const data = await response.json();
-    this.sessionId = data.session_id as string;
-    return this.sessionId!;
+    const data: unknown = await response.json();
+    if (!data || typeof data !== 'object' || !('session_id' in data) || typeof data.session_id !== 'string') {
+      throw new Error('AR session response did not include a valid session_id');
+    }
+    this.sessionId = data.session_id;
+    return data.session_id;
   }
 
   /**
    * Get AR products for a collection
    */
-  async getProducts(collection: string): Promise<any[]> {
+  async getProducts(collection: string): Promise<ARProductResponse[]> {
     const response = await fetch(`${this.baseUrl}/api/v1/ar/products/${collection}`, { method: 'GET' });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch AR products: ${response.statusText}`);
     }
 
-    return response.json();
+    const data: unknown = await response.json();
+    if (!Array.isArray(data)) throw new Error('AR products response must be an array');
+    return data as ARProductResponse[];
   }
 
   /**
@@ -199,7 +216,11 @@ export class ARApiClient {
   /**
    * Submit try-on request to FASHN API
    */
-  async submitTryOn(modelImageUrl: string, garmentImageUrl: string, category: string = 'tops'): Promise<any> {
+  async submitTryOn(
+    modelImageUrl: string,
+    garmentImageUrl: string,
+    category: string = 'tops'
+  ): Promise<TryOnJobResponse> {
     const response = await fetch(`${this.baseUrl}/api/v1/virtual-tryon`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -216,18 +237,18 @@ export class ARApiClient {
       throw new Error(`Try-on request failed: ${response.statusText}`);
     }
 
-    return response.json();
+    return response.json() as Promise<TryOnJobResponse>;
   }
 
   /**
    * Check try-on job status
    */
-  async getTryOnStatus(jobId: string): Promise<any> {
+  async getTryOnStatus(jobId: string): Promise<TryOnJobResponse> {
     const response = await fetch(`${this.baseUrl}/api/v1/virtual-tryon/${jobId}`);
     if (!response.ok) {
       throw new Error(`Failed to get try-on status: ${response.statusText}`);
     }
-    return response.json();
+    return response.json() as Promise<TryOnJobResponse>;
   }
 
   /**

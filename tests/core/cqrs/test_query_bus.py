@@ -14,7 +14,6 @@ from core.cqrs.query_bus import Query, QueryBus
 
 
 @pytest.mark.unit
-@pytest.mark.asyncio
 class TestQuery:
     """Test Query dataclass"""
 

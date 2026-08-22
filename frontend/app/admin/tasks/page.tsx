@@ -10,7 +10,9 @@ import { Loader2, Trophy, Check, X } from 'lucide-react'
 export default function TasksPage() {
   const [prompt, setPrompt] = useState('')
   const [processing, setProcessing] = useState(false)
-  const [result, setResult] = useState<any>(null)
+  const [result, setResult] = useState<Awaited<
+    ReturnType<typeof roundTableAutoTrigger.processTask>
+  > | null>(null)
 
   const handleSubmitTask = async () => {
     if (!prompt.trim()) return
@@ -95,7 +97,7 @@ export default function TasksPage() {
                   </p>
                   <p>
                     <strong>Score:</strong>{' '}
-                    {result.roundTableResult?.winner?.score?.toFixed(2)}
+                    {result.roundTableResult?.winner?.scores.total.toFixed(2)}
                   </p>
                   {result.wordpressPostId && (
                     <a

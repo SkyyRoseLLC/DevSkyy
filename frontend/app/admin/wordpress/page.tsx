@@ -1,54 +1,52 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { getWordPressOperationsManager } from '@/lib/wordpress/operations-manager'
-import { getWordPressMenuManager } from '@/lib/wordpress/menu-manager'
-import { useWordPressAgent } from '@/lib/wordpress/agent-client'
-import type {
-  WPPostResponse,
-  WPPageResponse,
-  WPCategoryResponse,
-  WPTagResponse,
-  WPMediaResponse,
-  WPUserResponse,
-  WPMenuResponse,
-  WPConnectionStatus,
-} from '@/lib/wordpress/types'
 import { WPErrorBoundary } from '@/components/admin/wp-error-boundary'
 import {
-  PostsSkeleton,
-  PagesSkeleton,
-  MediaSkeleton,
-  CategoriesSkeleton,
-  TagsSkeleton,
-  UsersSkeleton,
+CategoriesSkeleton,
+MediaSkeleton,
+PagesSkeleton,
+PostsSkeleton,
+TagsSkeleton
 } from '@/components/admin/wp-skeleton'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Tabs,TabsContent,TabsList,TabsTrigger } from '@/components/ui/tabs'
+import { Textarea } from '@/components/ui/textarea'
+import { useWordPressAgent } from '@/lib/wordpress/agent-client'
+import { getWordPressMenuManager } from '@/lib/wordpress/menu-manager'
+import { getWordPressOperationsManager } from '@/lib/wordpress/operations-manager'
+import type {
+WPCategoryResponse,
+WPConnectionStatus,
+WPMediaResponse,
+WPMenuResponse,
+WPPageResponse,
+WPPostResponse,
+WPTagResponse,
+WPUserResponse,
+} from '@/lib/wordpress/types'
 import {
-  Globe,
-  FileText,
-  Image,
-  Tag,
-  Folder,
-  User,
-  Settings,
-  Activity,
-  Plus,
-  RefreshCw,
-  Trash2,
-  Edit,
-  CheckCircle2,
-  XCircle,
-  Bot,
-  Square,
-  ExternalLink,
-  X
+Activity,
+Bot,
+CheckCircle2,
+ExternalLink,
+FileText,
+Folder,
+Globe,
+Image,
+Plus,
+RefreshCw,
+Settings,
+Square,
+Tag,
+Trash2,
+User,
+X,
+XCircle
 } from 'lucide-react'
+import { useCallback,useEffect,useRef,useState } from 'react'
 
 // ---------------------------------------------------------------------------
 // Types
@@ -107,27 +105,7 @@ export default function WordPressAdminPage() {
   // Init
   // -------------------------------------------------------------------------
 
-  useEffect(() => {
-    const manager = getWordPressOperationsManager()
-    const mManager = getWordPressMenuManager()
-    setWpManager(manager)
-    setMenuManager(mManager)
-    if (manager) testConnection(manager)
-  }, [])
-
-  const testConnection = async (manager: WPManager) => {
-    setLoading(true)
-    try {
-      const result = await manager.testConnection()
-      setConnectionStatus(result)
-      if (result.success) loadData(manager)
-    } catch {
-      setConnectionStatus({ success: false, error: 'Connection test failed' })
-    }
-    setLoading(false)
-  }
-
-  const loadData = async (manager: WPManager) => {
+  const loadData = useCallback(async (manager: WPManager) => {
     try {
       const [postsData, pagesData, categoriesData, tagsData, mediaData] = await Promise.all([
         manager.listPosts({ per_page: 20 }),
@@ -144,7 +122,27 @@ export default function WordPressAdminPage() {
     } catch {
       showToast('Failed to load WordPress data', 'error')
     }
-  }
+  }, [showToast])
+
+  const testConnection = useCallback(async (manager: WPManager) => {
+    setLoading(true)
+    try {
+      const result = await manager.testConnection()
+      setConnectionStatus(result)
+      if (result.success) await loadData(manager)
+    } catch {
+      setConnectionStatus({ success: false, error: 'Connection test failed' })
+    }
+    setLoading(false)
+  }, [loadData])
+
+  useEffect(() => {
+    const manager = getWordPressOperationsManager()
+    const mManager = getWordPressMenuManager()
+    setWpManager(manager)
+    setMenuManager(mManager)
+    if (manager) void testConnection(manager)
+  }, [testConnection])
 
   const loadMenus = async () => {
     if (!menuManager) return

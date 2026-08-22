@@ -1,26 +1,25 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Label } from '@/components/ui/label';
-import { Badge } from '@/components/ui/badge';
-import {
-    CheckCircle2,
-    XCircle,
-    Loader2,
-    ChevronLeft,
-    ChevronRight,
-    ThumbsUp,
-    ThumbsDown,
-    RotateCcw,
-    Box,
-    Layers,
-    Palette,
-    Ruler,
-    Target,
-    Sparkles,
-    AlertTriangle,
-} from 'lucide-react';
 import { ModelViewerFallback } from '@/components/three-viewer';
+import { Button } from '@/components/ui/button';
+import { Card,CardContent,CardDescription,CardHeader,CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 import type { QAReview } from '@/lib/api';
+import {
+AlertTriangle,
+Box,
+CheckCircle2,
+ChevronLeft,
+ChevronRight,
+Layers,
+Loader2,
+Palette,
+RotateCcw,
+Ruler,
+Sparkles,
+Target,
+ThumbsDown,
+ThumbsUp,
+XCircle,
+} from 'lucide-react';
 
 const FIDELITY_THRESHOLD = 98;
 

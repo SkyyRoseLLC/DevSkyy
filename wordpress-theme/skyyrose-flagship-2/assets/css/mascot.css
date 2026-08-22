@@ -681,7 +681,11 @@
    sits behind (skyy-3d.js toggles display when a GLB is configured). --- */
 
 .skyy-3d-canvas {
+	position: fixed;
+	bottom: 20px;
 	right: 20px;
+	z-index: 9989;
+	pointer-events: none;
 }
 
 .skyy-3d-canvas--left {
