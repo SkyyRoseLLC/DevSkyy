@@ -13,9 +13,9 @@ THEME = Path(__file__).resolve().parents[1]
 OUTPUT = THEME / "languages/skyyrose-flagship-2.pot"
 CALL = re.compile(
     r"(?P<fn>__|_e|esc_html__|esc_html_e|esc_attr__|esc_attr_e)\(\s*"
-    r"(?P<quote>'|\")(?P<message>(?:\\.|(?!\2).)*)\2\s*,\s*"
-    r"(?P<domain>'|\")skyyrose-flagship-2\4",
-    re.DOTALL,
+    r"(?:'(?P<single>(?:\\.|[^'\\])*)'|"
+    r'"(?P<double>(?:\\.|[^"\\])*)")\s*,\s*'
+    r"(?:'skyyrose-flagship-2'|\"skyyrose-flagship-2\")"
 )
 
 
@@ -47,7 +47,9 @@ def collect() -> dict[str, list[str]]:
             continue
         text = source.read_text(encoding="utf-8")
         for match in CALL.finditer(text):
-            message = decode(match.group("message"), match.group("quote"))
+            quote = "'" if match.group("single") is not None else '"'
+            raw_message = match.group("single") or match.group("double") or ""
+            message = decode(raw_message, quote)
             line = text.count("\n", 0, match.start()) + 1
             messages[message].append(f"{source.relative_to(THEME)}:{line}")
     return dict(sorted(messages.items()))
