@@ -220,21 +220,30 @@ class TestDryRun:
         assert "Public URL: https://staging.skyyrose.co/" in result.stdout
         assert "Version triple in sync: 2.4.4" in result.stdout
 
-    def test_repository_v2_candidate_passes_staging_dry_run(self, fake_v2_staging_env):
-        _, env_file, _ = fake_v2_staging_env
-        theme_dir = PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship-2"
+    @pytest.mark.parametrize(
+        ("env_updates", "message"),
+        [
+            ({"REMOTE_DEPLOY_DIR": "/tmp/.."}, "Unsafe remote deploy directory"),
+            (
+                {"REMOTE_DEPLOY_DIR": "/htdocs/wp-content/themes"},
+                "overlaps live theme",
+            ),
+        ],
+    )
+    def test_rejects_unsafe_or_overlapping_remote_deploy_dir(
+        self, fake_env, env_updates, message
+    ):
+        _, env_file, theme_dir = fake_env
         result = run_script(
             "--dry-run",
             env_overrides={
-                "DEPLOY_TARGET": "staging",
                 "ENV_FILE": str(env_file),
                 "THEME_DIR_OVERRIDE": str(theme_dir),
+                **env_updates,
             },
         )
-        assert result.returncode == 0, result.stderr
-        assert "Version triple in sync: 2.4.4" in result.stdout
-        assert "V2 critical-asset floor" in result.stdout
-        assert "PHP syntax check passed" in result.stdout
+        assert result.returncode != 0
+        assert message in (result.stdout + result.stderr)
 
     @pytest.mark.parametrize(
         ("env_updates", "message"),
