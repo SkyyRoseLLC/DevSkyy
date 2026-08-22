@@ -401,10 +401,7 @@ export default function LoginPage() {
             </Button>
 
             <p className="text-center text-sm text-gray-400">
-              Don&apos;t have an account?{' '}
-              <a href="/register" className="text-rose-400 hover:text-rose-300 font-medium">
-                Sign up
-              </a>
+              Need owner access? Accounts are provisioned securely by the platform owner.
             </p>
           </CardFooter>
         </form>

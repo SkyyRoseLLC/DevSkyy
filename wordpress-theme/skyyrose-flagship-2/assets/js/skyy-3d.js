@@ -46,12 +46,13 @@
 	// talk/joy are optional — missing clips fall back to idle gracefully
 	// (see playNamedAction below).
 	var CLIP_IDLE  = 'skyy_idle';
-	var CLIP_WALK  = 'skyy_wave';
+	var CLIP_WALK  = 'skyy_walk';
 	var CLIP_WAVE  = 'skyy_wave';
 	var CLIP_POINT = 'skyy_wave';
 	var CLIP_TALK  = 'skyy_talk';
-	var CLIP_JOY   = 'skyy_wave';
+	var CLIP_JOY   = 'skyy_joy';
 	var CLIP_EXIT  = 'skyy_exit';
+	var REQUIRED_CLIPS = [ CLIP_IDLE, CLIP_WALK, CLIP_WAVE, CLIP_TALK, CLIP_JOY, CLIP_EXIT ];
 
 	// -------------------------------------------------------------------------
 	// DOM / Three.js setup
@@ -116,6 +117,10 @@
 		canvas.style.display = 'block';
 		var staticImg = document.querySelector( '.skyyrose-mascot__image' );
 		if ( staticImg ) staticImg.style.display = 'none';
+		var characterButton = canvas.closest( '.skyyrose-mascot__character' );
+		if ( characterButton ) characterButton.classList.add( 'is-3d-ready' );
+		var mascot = canvas.closest( '.skyyrose-mascot' );
+		if ( mascot ) mascot.dataset.renderer = '3d';
 	}
 
 	// -------------------------------------------------------------------------
@@ -200,7 +205,10 @@
 			return;
 		}
 		renderer.setPixelRatio( Math.min( window.devicePixelRatio, 2 ) );
-		renderer.setSize( CHARACTER_W, CHARACTER_H );
+		// Keep the high-resolution drawing buffer while CSS owns the responsive
+		// on-screen footprint. The default updateStyle=true silently rewrites
+		// our desktop/mobile dimensions back to 220x340 on every boot.
+		renderer.setSize( CHARACTER_W, CHARACTER_H, false );
 		renderer.shadowMap.enabled = false;
 		renderer.outputColorSpace = THREE.SRGBColorSpace;
 
@@ -304,13 +312,22 @@
 						actions[ clip.name.toLowerCase() ] = mixer.clipAction( clip );
 					} );
 
-					// Warn if expected clip names weren't found (helps debug GLB exports).
-					if ( ( ! actions[ CLIP_IDLE ] || ! actions[ CLIP_WALK ] ) && window.SKYYROSE_DEBUG ) {
-						// eslint-disable-next-line no-console
-						console.warn( 'Skyy 3D: expected clips "idle"/"walk" not found. Available:', Object.keys( actions ) );
+					var missingClips = REQUIRED_CLIPS.filter( function ( clipName ) {
+						return ! actions[ clipName ];
+					} );
+					if ( missingClips.length ) {
+						if ( window.SKYYROSE_DEBUG ) {
+							// eslint-disable-next-line no-console
+							console.warn( 'Skyy 3D: incomplete full-body action set. Missing:', missingClips );
+						}
+						canvas.style.display = 'none';
+						return;
 					}
 
 					modelReady = true;
+					document.dispatchEvent( new CustomEvent( 'skyy:3d-ready', {
+						detail: { clips: Object.keys( actions ) },
+					} ) );
 
 					if ( reduced ) {
 						// Pose one static idle frame — no loop ever runs.
@@ -358,8 +375,11 @@
 		}
 		if ( reduced ) return; // static idle pose only under reduced motion
 
-		var action = actions[ clipName ] || actions[ Object.keys( actions )[ 0 ] ];
+		var action = actions[ clipName ] || actions[ CLIP_IDLE ];
 		if ( ! action ) return;
+		action.enabled = true;
+		action.setEffectiveTimeScale( 1 );
+		action.setEffectiveWeight( 1 );
 
 		if ( currentAction && currentAction !== action ) {
 			currentAction.fadeOut( options && options.fadeOut || 0.3 );
@@ -502,6 +522,14 @@
 		bootStarted = true;
 		loadThree( initScene );
 	}
+
+	window.skyyRoseMascot3D = Object.freeze( {
+		isReady: function () { return modelReady; },
+		getActions: function () { return Object.keys( actions ).slice(); },
+		getCurrentAction: function () {
+			return currentAction ? currentAction.getClip().name : null;
+		},
+	} );
 
 	// Bind immediately — mascot.js can fire its first skyy:* events before
 	// Three.js or the GLB have loaded; pendingClip catches those.

@@ -103,6 +103,7 @@
 	// broadcast as a `skyy:*` CustomEvent so the 3D loader can switch
 	// animation clips. skyy-3d.js listens; nothing else needs these.
 	function emitSkyy(name) {
+		mascotEl.dataset.state = name;
 		document.dispatchEvent(new CustomEvent('skyy:' + name));
 	}
 
@@ -625,8 +626,8 @@
 			mascotEl.classList.add('skyyrose-mascot--hidden');
 			mascotEl.classList.remove('skyyrose-mascot--exiting');
 			state = 'dormant';
-			// The 3D canvas is a sibling of the mascot container — CSS state
-			// classes can't reach it, so it must be told to stop and hide.
+			// Stop the renderer once the walk-off completes; keeping this an
+			// explicit state event avoids spending GPU time while hidden.
 			emitSkyy('hidden');
 			if (onDone) onDone();
 		}, exitDuration);

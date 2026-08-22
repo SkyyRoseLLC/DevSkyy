@@ -1,6 +1,7 @@
 sandbox_mode = "danger-full-access"
 model_reasoning_summary = "detailed"
 
+model_verbosity = "high"
 [features]
 code_mode = true
 code_mode_host = true
