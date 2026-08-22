@@ -15,6 +15,13 @@ define( 'SKYYROSE_VERSION', '1.1.1' );
 define( 'SKYYROSE_ASSETS_URI', 'https://theme.test/assets' );
 
 require_once __DIR__ . '/stubs/wp-stubs.php';
+
+// This is an isolated unit harness, not a WordPress integration bootstrap.
+// Fail with a diagnostic instead of risking fatal redeclarations if a runner
+// preloads WooCommerce before these deliberately API-shaped test doubles.
+if ( class_exists( 'WC_Product', false ) || function_exists( 'wc_get_product' ) ) {
+	throw new RuntimeException( 'WooCommerce must not be preloaded for the isolated theme unit suite.' );
+}
 require_once __DIR__ . '/stubs/woocommerce-stubs.php';
 
 require_once SKYYROSE_DIR . '/inc/brand-colors.php';
