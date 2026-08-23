@@ -188,7 +188,7 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
         },
         # sg-012: Original Label Tee (Orchid)
         "sg-012": {
-            "front": P / "sg-012-onmodel.webp",
+            "front": P / "original-label-tee-orchid-front.webp",
             "back": None,
         },
         # sg-013: Mint & Lavender Crewneck
