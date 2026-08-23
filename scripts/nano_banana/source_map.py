@@ -14,6 +14,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 SPLIT_DIR = PROJECT_ROOT / "assets" / "techflats" / "split"
+SOURCE_PHOTOS_DIR = PROJECT_ROOT / "assets" / "products" / "source-photos"
 PRODUCTS_DIR = (
     PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "assets" / "images" / "products"
 )
@@ -30,6 +31,7 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
     """Return the complete source image mapping for all products."""
 
     S = SPLIT_DIR  # Split techflats (individual front/back)
+    R = SOURCE_PHOTOS_DIR  # Founder-supplied physical product photos
     P = PRODUCTS_DIR  # Original product photos
 
     return {
@@ -104,12 +106,12 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
             "front": S / "black-rose" / "br-jersey-hockey-front.jpeg",
             "back": S / "black-rose" / "br-jersey-hockey-back.jpeg",
         },
-        # br-012: Last Oakland Baseball Jersey — green/gold A's-inspired,
-        # "BLACK IS BEAUTIFUL" arched in gold, button-front, rose logo on back, gold piping
-        # User uploaded photo — waiting for file to be saved to disk
+        # br-012: Last Oakland Baseball — view-specific physical front and back.
+        # Dark forest green + gold trim; white tackle-twill faces with gold edges;
+        # only the A in BLACK has a black face.
         "br-012": {
-            "front": P / "last-oakland-baseball-jersey-front.jpeg",
-            "back": None,
+            "front": R / "black-rose" / "br-012-last-oakland-baseball-front.jpeg",
+            "back": R / "black-rose" / "br-012-last-oakland-baseball-back.jpeg",
         },
         # ══════════════════════════════════════════════════════════════
         # LOVE HURTS COLLECTION

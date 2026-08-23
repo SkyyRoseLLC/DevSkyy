@@ -20,6 +20,17 @@ extra_references:
 
 This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giants br-014 / White br-015). Green base + gold/yellow piping is the Oakland palette throughout.
 
+## View-specific physical evidence lock
+
+- The physical **front** reference is the sole authority for the front garment,
+  front trim, tackle-twill wordmark, black `A`, and Authentic Collection patch.
+- The physical **back** reference is the sole authority for the back garment,
+  gold SR monogram, embroidered rose-and-stem cluster, and cloud base. The
+  back-sheet tile is the actual back of this same green-and-gold `br-012`
+  product—not a second product, alternate colorway, or front-art reference.
+- Never mirror the front to invent a back, never copy another back-sheet tile
+  onto `br-012`, and never move the front wordmark onto the back.
+
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
@@ -54,6 +65,11 @@ This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giant
   Queens"). Sewn onto the lower-left hip. **Technique:** embroidered-patch.
 
 ### Back
+- **view lock:** Use only
+  `assets/products/source-photos/black-rose/br-012-last-oakland-baseball-back.jpeg`
+  for back construction and decoration. This back remains dark forest green
+  with gold/yellow trim and must not inherit black, white, orange, teal, or
+  basketball/football product details from neighboring back-sheet tiles.
 - **back-neck** (small, ~2in wide): The SR monogram, embroidered directly
   onto the jersey in **gold-tone thread** (matching the colorway theme — the
   SR mark renders in gold to match the gold satin-stitch edge and the gold

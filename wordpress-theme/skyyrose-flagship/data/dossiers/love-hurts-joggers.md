@@ -4,7 +4,7 @@ name: Love Hurts Joggers (Black)
 collection: love-hurts
 logo_reference: data/brand-logos/love-hurts-logo.md
 extra_logos:
-  - data/brand-logos/red-roses-cloud-cluster.md
+  - data/brand-logos/heart-rose-composite.md
 reference_image: assets/products/references/lh-002-techflat-front.jpeg
 ---
 
@@ -15,7 +15,7 @@ reference_image: assets/products/references/lh-002-techflat-front.jpeg
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
-> - Red Roses Cloud Cluster: `data/brand-logos/red-roses-cloud-cluster.md`
+> - Heart-and-Roses Composite: `data/brand-logos/heart-rose-composite.md`
 > - Love Hurts wordmark (NOT on this product, listed for canonical reference): `data/brand-logos/love-hurts-logo.md`
 > - Product techflat: `assets/products/references/lh-002-techflat-front.jpeg`
 
@@ -23,7 +23,7 @@ reference_image: assets/products/references/lh-002-techflat-front.jpeg
 - **front-body** (entire front body — solid black field): Solid black, cotton-fleece. **Technique:** stitched. **Color:** black.
 - **front-left-pocket** (vertical slash pocket at the left side of the upper hip): Slash-style hand pocket at the front left side, with vertical welt opening. **Technique:** stitched (sewn-on welt edges). **Color:** body-matching black.
 - **front-right-pocket** (vertical slash pocket at the right side of the upper hip): Slash-style hand pocket at the front right side, with vertical welt opening. **Technique:** stitched (sewn-on welt edges). **Color:** body-matching black.
-- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Red Roses Cloud Cluster** motif matching the founder flatlay — clustered red roses with green stems and pale cloud base, embroidered directly on the black body fabric. **Technique:** embroidered. **Color:** canonical red, green, white, and pale blue details on black body.
+- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Heart-and-Roses Composite** matching the founder techflat — a cracked red heart wrapped in dark thorn vines, with red roses and green leaves emerging above it. Preserve the complete heart, thorn, rose, and leaf silhouette at the compact scale shown on the physical design. Embroidered directly on the black body fabric. **Technique:** embroidered. **Color:** canonical bright/dark reds, dark brown-black thorns, green leaves, and black outline details.
 
 ### Back
 - (No back-body decoration. The back is a clean panel with no embroidered logo or graphic — the contrast side-panel wraps cleanly from front to back through the side seam.)
@@ -39,8 +39,8 @@ reference_image: assets/products/references/lh-002-techflat-front.jpeg
 
 ## Negative — what is NOT on this product (DO NOT render)
 
-- NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Red Roses Cloud Cluster on the left thigh.
-- NO heart-and-thorns / heart-rose-composite lockup on the joggers.
+- NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Heart-and-Roses Composite on the left thigh.
+- NO Red Roses Cloud Cluster or cloud base on the joggers. The thigh mark is the cracked-heart-and-thorns composition with roses emerging above it.
 - NO sublimated all-over rose pattern on the body — the black body is SOLID black fabric (not sublimated).
 - NO mirror colorway in this SKU — the white-base / black-panel mirror is a separate SKU (`lh-006 Love Hurts Joggers (White)`).
 - NO contrast piping at the waistband or cuffs — only the side-seam panel is contrast.
@@ -57,5 +57,5 @@ reference_image: assets/products/references/lh-002-techflat-front.jpeg
 
 ## Scene direction
 
-- **Pose:** Front view straight-on (laid flat or on a model) showing the black body + the vertical white contrast side-panel + the small Red Roses Cloud Cluster on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.
+- **Pose:** Front view straight-on (laid flat or on a model) showing the black body + the vertical white contrast side-panel + the small Heart-and-Roses Composite on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

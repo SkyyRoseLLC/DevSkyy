@@ -67,8 +67,10 @@ PRODUCTS = {
         "name": "Baseball Classic (Last Oakland) Black Is Beautiful Baseball Jersey (Green/Gold)",
         "caption": (
             "skyyrose_br003_oakland dark green baseball jersey with gold trim and piping, "
-            "'BLACK IS BEAUTIFUL' text in gold arched across chest, button-front, "
-            "back features large white and black rose emerging from gold clouds graphic, "
+            "white tackle-twill 'BLACK IS BEAUTIFUL' letter faces with gold stitched edges "
+            "arched across chest, only the A in BLACK has a black twill face, button-front, "
+            "back features the physical black white and grey embroidered rose-and-stem cluster "
+            "emerging from a yellow-gold and grey cloud base, "
             "small 'SR' monogram on back collar, Oakland A's green and gold colorway, "
             "Black Rose Collection by SkyyRose, luxury streetwear baseball jersey"
         ),

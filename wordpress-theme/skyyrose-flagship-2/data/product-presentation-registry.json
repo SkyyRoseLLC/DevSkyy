@@ -1,7 +1,7 @@
 {
   "generated_from": "data/product-sot.json",
   "kind": "skyyrose-v2-product-presentation-registry",
-  "product_sot_sha256": "fa70682418ddc5ceb51eeb356efab0f215eef6e8d387bc736b1d03a2a9193482",
+  "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
   "products": {
     "br-001": {
       "collection": "black-rose",
@@ -106,7 +106,7 @@
       "is_preorder": true,
       "media_proof_level": "physical_product_photo",
       "presentation": "jersey-series",
-      "product_sot_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775",
+      "product_sot_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6",
       "route": "/jersey-series/",
       "series_order": 40,
       "series_region": "oakland"
@@ -152,7 +152,7 @@
       "is_preorder": false,
       "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
-      "product_sot_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9",
+      "product_sot_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804",
       "route": "/collections/love-hurts/"
     },
     "lh-003": {
@@ -184,7 +184,7 @@
       "is_preorder": false,
       "media_proof_level": "approved_design_reference",
       "presentation": "love-hurts",
-      "product_sot_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb",
+      "product_sot_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1",
       "route": "/collections/love-hurts/"
     },
     "sg-001": {

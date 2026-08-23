@@ -127,7 +127,9 @@ CAPTION_OVERRIDES: dict[str, str] = {
     ),
     "br-012": (
         "baseball jersey Last Oakland BLACK IS BEAUTIFUL series number 5, "
-        "Oakland A's green and gold colorway, button-front, rose-in-clouds graphic on back, "
+        "dark forest-green and gold/yellow colorway, button-front, authentic white tackle-twill "
+        "BLACK IS BEAUTIFUL wordmark with gold stitched edges and only the A in BLACK using a "
+        "black twill face, view-specific embroidered rose-and-cloud physical back, "
         "Black Rose Collection by SkyyRose, luxury streetwear baseball jersey"
     ),
     # LOVE HURTS COLLECTION

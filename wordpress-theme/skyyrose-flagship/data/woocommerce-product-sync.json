@@ -2,7 +2,7 @@
   "schema": "skyyrose.woocommerce-product-sync.v1",
   "sources": {
     "product_sot": "data/product-sot.json",
-    "product_sot_sha256": "fa70682418ddc5ceb51eeb356efab0f215eef6e8d387bc736b1d03a2a9193482"
+    "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"
   },
   "category_names": {
     "signature": "Signature",
@@ -4994,7 +4994,7 @@
     },
     {
       "sku": "br-012",
-      "product_sot_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775",
+      "product_sot_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -5004,24 +5004,24 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-front.jpeg",
           "sha256": "da41030af207d29cb5dbda46fe0bc60328bb689d500b807ab463ced399f37fd1",
-          "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
+          "product_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.webp",
           "sha256": "9047c354c67226e6de730208837e6fd2409aa1053e76fc65c0f7132ca911c7f8",
-          "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
+          "product_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg",
           "sha256": "a5121d4275d493ab6ebb0e22fed896cbbcc2ca355856c4aca9fb33c0bf7dbb85",
-          "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
+          "product_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-5-last-oakland-baseball.md",
-        "sha256": "61d687a6a153f0a1093ce0d2ebe3a8240e31d25fd175704b5fd4dfb0b6682075",
+        "sha256": "a8af9ff0332f6adecd027509e913d7f35b0ddfb6f67f08c66d8c69f7f1e2d33c",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -5104,8 +5104,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "Green button-front baseball jersey with \"BLACK IS BEAUTIFUL\" arched in gold. Rose crest on back. Limited to 80 pieces.",
-        "short_description": "Green button-front baseball jersey with \"BLACK IS BEAUTIFUL\" arched in gold. Rose crest on back. Limited to 80 pieces.",
+        "description": "Dark forest-green button-front baseball jersey with gold/yellow trim. FRONT: white tackle-twill \"BLACK IS BEAUTIFUL\" lettering with a gold stitched edge; only the A in BLACK has a black twill face. The physical back shows the embroidered rose/cloud crest. Limited to 80 pieces.",
+        "short_description": "Dark forest-green button-front baseball jersey with gold/yellow trim. FRONT: white tackle-twill \"BLACK IS BEAUTIFUL\" lettering with a gold stitched edge; only the A in BLACK has a black twill face. Th",
         "sku": "br-012",
         "regular_price": "",
         "sale_price": "",
@@ -5213,7 +5213,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Green button-front baseball jersey with gold piping. FRONT: BLACK IS BEAUTIFUL spans approximately 80% of the visible torso width; letter faces are white except the black A, all edged in gold. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: large black rose rising from gold clouds with gold SR monogram at upper neck."
+            "value": "Dark forest-green button-front baseball jersey with gold/yellow trim. FRONT: authentic white tackle-twill BLACK IS BEAUTIFUL letter faces span approximately 80% of the visible torso width; every letter has a gold satin-stitched edge, and only the A in BLACK has a black twill face. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: use only the br-012 physical back reference—gold SR monogram above the embroidered black/white/grey rose-and-stem cluster with yellow/gold and grey cloud base."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -5241,11 +5241,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
+            "value": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "61d687a6a153f0a1093ce0d2ebe3a8240e31d25fd175704b5fd4dfb0b6682075"
+            "value": "a8af9ff0332f6adecd027509e913d7f35b0ddfb6f67f08c66d8c69f7f1e2d33c"
           },
           {
             "key": "_is_preorder",
@@ -5484,7 +5484,7 @@
     },
     {
       "sku": "lh-002",
-      "product_sot_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9",
+      "product_sot_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804",
       "category_slugs": [
         "love-hurts"
       ],
@@ -5493,18 +5493,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-002-onmodel.webp",
           "sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
-          "product_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
+          "product_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/love-hurts-joggers-back-model.webp",
           "sha256": "dbe22667ab46f7aff1355359eab07e7a3f9c989c458c85ab517b762b2187504d",
-          "product_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
+          "product_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
-        "sha256": "e356c57a4ce4348ec89fd6cc2acbf06ea55aaa48dae61df878f1650f022f7437",
+        "sha256": "00c4bb79b14e990c4f1832c5d87768c0b1c018bdd2a8f5eed2631926460b968e",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -5534,17 +5534,17 @@
             "role": "logo_reference_1",
             "authority": 69,
             "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
-            "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
-            "bytes": 2528
+            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
+            "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
+            "bytes": 3074
           },
           {
             "role": "logo_reference_1_art",
             "authority": 70,
             "kind": "product_reference",
-            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
-            "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
-            "bytes": 123109
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+            "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+            "bytes": 113277
           }
         ]
       },
@@ -5555,8 +5555,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
-        "short_description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left ",
+        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Heart-and-Roses Composite embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
+        "short_description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Heart-and-Roses Composite embroidered on the wearer-lef",
         "sku": "lh-002",
         "regular_price": "",
         "sale_price": "",
@@ -5664,7 +5664,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. White contrast side-panel running vertically on both side seams. Black drawstring. Plain back."
+            "value": "Small embroidered Heart-and-Roses Composite on the wearer-left thigh—cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. White contrast side-panel running vertically on both side seams. Black drawstring. Plain back."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -5692,11 +5692,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
+            "value": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "e356c57a4ce4348ec89fd6cc2acbf06ea55aaa48dae61df878f1650f022f7437"
+            "value": "00c4bb79b14e990c4f1832c5d87768c0b1c018bdd2a8f5eed2631926460b968e"
           },
           {
             "key": "_is_preorder",
@@ -7038,7 +7038,7 @@
     },
     {
       "sku": "lh-006",
-      "product_sot_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb",
+      "product_sot_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1",
       "category_slugs": [
         "love-hurts"
       ],
@@ -7047,24 +7047,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-onmodel.webp",
           "sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
-          "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
+          "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
           "sha256": "c48bd2e8e764859dee048e3c8f4af955e32bce041fd2975e5948ec700fcc0417",
-          "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
+          "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/love-hurts-joggers-white-back-model.webp",
           "sha256": "bdcf95a8e0f62c18d64e54b6695391e1f72eef6d1385da29d7c18cbf29d9d1c4",
-          "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
+          "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
-        "sha256": "3fcc4485b31d2bd29288da354697d3772c318ce1c11f7d1b530ca5b68e0028e1",
+        "sha256": "21559be08b5bb5feabd2165f8195ab7ff5a38f68036a79786fb28d4e8e674c9b",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -7094,17 +7094,17 @@
             "role": "logo_reference_1",
             "authority": 69,
             "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
-            "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
-            "bytes": 2528
+            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
+            "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
+            "bytes": 3074
           },
           {
             "role": "logo_reference_1_art",
             "authority": 70,
             "kind": "product_reference",
-            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
-            "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
-            "bytes": 123109
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+            "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+            "bytes": 113277
           }
         ]
       },
@@ -7115,8 +7115,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
-        "short_description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-l",
+        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Heart-and-Roses Composite embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
+        "short_description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Heart-and-Roses Composite embroidered on the wearer",
         "sku": "lh-006",
         "regular_price": "",
         "sale_price": "",
@@ -7224,7 +7224,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Black contrast side-panel running vertically on both side seams. Black drawstring. Plain back."
+            "value": "Small embroidered Heart-and-Roses Composite on the wearer-left thigh—cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. Black contrast side-panel running vertically on both side seams. Black drawstring. Plain back."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -7252,11 +7252,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
+            "value": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "3fcc4485b31d2bd29288da354697d3772c318ce1c11f7d1b530ca5b68e0028e1"
+            "value": "21559be08b5bb5feabd2165f8195ab7ff5a38f68036a79786fb28d4e8e674c9b"
           },
           {
             "key": "_is_preorder",

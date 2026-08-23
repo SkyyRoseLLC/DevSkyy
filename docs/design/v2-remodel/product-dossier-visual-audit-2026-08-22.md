@@ -45,11 +45,11 @@ are serialized in `data/product-sot.json`.
 | `br-012` | Last Oakland Baseball | Confirmed physical front/back layout and standardized the tackle-twill wordmark to approximately 80% of visible torso width; normalized the front-chest dossier structure so technique parsing cannot invent a bogus region. |
 | `br-014` | Baseball Classic — Giants | Confirmed black/orange colorway, approximately 80%-torso-width front wordmark, and exact patch/back crest; corrected catalog trim summary to a plain black bottom hem. |
 | `br-015` | Baseball Classic — White | Confirmed white/black colorway, approximately 80%-torso-width front wordmark, and exact patch/back crest; corrected catalog trim summary to a plain white bottom hem. |
-| `lh-002` | Love Hurts Joggers — Black | Corrected to black drawstring and small Red Roses Cloud Cluster on wearer-left thigh; removed the invented heart composite; plain back. |
+| `lh-002` | Love Hurts Joggers — Black | Founder correction 2026-08-23: black drawstring and small embroidered Heart-and-Roses Composite on wearer-left thigh, as shown by the techflat; no cloud-cluster substitution; plain back. |
 | `lh-003` | Love Hurts Basketball Shorts | Corrected the large front script to wearer-left, added both distinct side-panel marks, two rear welt pockets, and the large rear-right red/white heart composition; removed the invented exterior drawstring. |
 | `lh-004` | Love Hurts Bomber Jacket | Confirmed split front Love/Hurts lettering, white/black satin construction, rose hood lining, and large back heart/rose graphic. |
 | `lh-005` | The Fannie | Corrected to black pebbled faux leather with separate front and rear horizontal zipper pockets, white FANNIE embroidery, and red rose accent. |
-| `lh-006` | Love Hurts Joggers — White | Corrected to black drawstring and small Red Roses Cloud Cluster on wearer-left thigh; removed the invented heart composite; plain back. |
+| `lh-006` | Love Hurts Joggers — White | Founder correction 2026-08-23: black drawstring and small embroidered Heart-and-Roses Composite on wearer-left thigh, as shown by the techflat; no cloud-cluster substitution; plain back. |
 | `sg-001` | Bay Bridge Shorts | Confirmed daytime Bay Bridge sublimation, blue waistband, white drawstring, and lower wearer-left blue rose/cloud mark. |
 | `sg-002` | Stay Golden Shirt | Corrected the artwork from a small left-chest mark to the large centered embroidered violet rose with Golden Gate imagery inside; small rear-neck SR retained. |
 | `sg-003` | Stay Golden Shorts | Corrected waistband from black to deep purple; retained white drawstring, night Golden Gate sublimation, and lower wearer-left purple rose. |

@@ -4,7 +4,7 @@
   "authority": "Single machine-facing product contract for image generation, video generation, website, advertising, and WooCommerce. Edit catalog/dossier/logo sources, then regenerate.",
   "sources": {
     "catalog": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
-    "catalog_sha256": "54cd616c1751a8908af70aa78391dd1e74e12fbebb438986a430aa8296115f69",
+    "catalog_sha256": "a240226b133f90a6c400329d5db89b1c31a34fab01426928e0a18706c994cfb7",
     "logo_registry": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
     "logo_registry_sha256": "660aea5fa832849b47c8c1b9d3a36a665202e2f13f1927bda7ca2f7f0d3ad761"
   },
@@ -2699,7 +2699,7 @@
       "identity": {
         "name": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
         "collection": "black-rose",
-        "description": "Green button-front baseball jersey with \"BLACK IS BEAUTIFUL\" arched in gold. Rose crest on back. Limited to 80 pieces.",
+        "description": "Dark forest-green button-front baseball jersey with gold/yellow trim. FRONT: white tackle-twill \"BLACK IS BEAUTIFUL\" lettering with a gold stitched edge; only the A in BLACK has a black twill face. The physical back shows the embroidered rose/cloud crest. Limited to 80 pieces.",
         "badge": "Pre-Order"
       },
       "commerce": {
@@ -2726,7 +2726,7 @@
       },
       "garment": {
         "type_lock": "Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.",
-        "branding_summary": "Green button-front baseball jersey with gold piping. FRONT: BLACK IS BEAUTIFUL spans approximately 80% of the visible torso width; letter faces are white except the black A, all edged in gold. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: large black rose rising from gold clouds with gold SR monogram at upper neck.",
+        "branding_summary": "Dark forest-green button-front baseball jersey with gold/yellow trim. FRONT: authentic white tackle-twill BLACK IS BEAUTIFUL letter faces span approximately 80% of the visible torso width; every letter has a gold satin-stitched edge, and only the A in BLACK has a black twill face. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: use only the br-012 physical back reference—gold SR monogram above the embroidered black/white/grey rose-and-stem cluster with yellow/gold and grey cloud base.",
         "branding_regions": [
           {
             "region": "front-chest",
@@ -2966,7 +2966,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-5-last-oakland-baseball.md",
-        "dossier_sha256": "61d687a6a153f0a1093ce0d2ebe3a8240e31d25fd175704b5fd4dfb0b6682075"
+        "dossier_sha256": "a8af9ff0332f6adecd027509e913d7f35b0ddfb6f67f08c66d8c69f7f1e2d33c"
       },
       "consumer_contract": {
         "required_for": [
@@ -2979,14 +2979,14 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
+      "product_hash": "b34b44167fcb5f8d7d7d72d200d533274d4074e134de695274cd0c5ca52033d6"
     },
     "lh-002": {
       "sku": "lh-002",
       "identity": {
         "name": "Love Hurts Joggers (Black)",
         "collection": "love-hurts",
-        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
+        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Heart-and-Roses Composite embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
         "badge": ""
       },
       "commerce": {
@@ -3013,7 +3013,7 @@
       },
       "garment": {
         "type_lock": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). Black flat drawstring. NOT shorts. NOT a track short. NOT a basketball short. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`).",
-        "branding_summary": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. White contrast side-panel running vertically on both side seams. Black drawstring. Plain back.",
+        "branding_summary": "Small embroidered Heart-and-Roses Composite on the wearer-left thigh—cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. White contrast side-panel running vertically on both side seams. Black drawstring. Plain back.",
         "branding_regions": [
           {
             "region": "front-body",
@@ -3044,9 +3044,9 @@
           },
           {
             "region": "left-thigh",
-            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Red Roses Cloud Cluster** motif matching the founder flatlay — clustered red roses with green stems and pale cloud base, embroidered directly on the black body fabric. **Technique:** embroidered. **Color:** canonical red, green, white, and pale blue details on black body.",
+            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Heart-and-Roses Composite** matching the founder techflat — a cracked red heart wrapped in dark thorn vines, with red roses and green leaves emerging above it. Preserve the complete heart, thorn, rose, and leaf silhouette at the compact scale shown on the physical design. Embroidered directly on the black body fabric. **Technique:** embroidered. **Color:** canonical bright/dark reds, dark brown-black thorns, green leaves, and black outline details.",
             "technique": "embroidered",
-            "color_named": "canonical red, green, white, and pale blue details on black body",
+            "color_named": "canonical bright/dark reds, dark brown-black thorns, green leaves, and black outline details",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3116,8 +3116,8 @@
           }
         ],
         "negative_constraints": [
-          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Red Roses Cloud Cluster on the left thigh.",
-          "NO heart-and-thorns / heart-rose-composite lockup on the joggers.",
+          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Heart-and-Roses Composite on the left thigh.",
+          "NO Red Roses Cloud Cluster or cloud base on the joggers. The thigh mark is the cracked-heart-and-thorns composition with roses emerging above it.",
           "NO sublimated all-over rose pattern on the body — the black body is SOLID black fabric (not sublimated).",
           "NO mirror colorway in this SKU — the white-base / black-panel mirror is a separate SKU (`lh-006 Love Hurts Joggers (White)`).",
           "NO contrast piping at the waistband or cuffs — only the side-seam panel is contrast.",
@@ -3134,7 +3134,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (laid flat or on a model) showing the black body + the vertical white contrast side-panel + the small Red Roses Cloud Cluster on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
+        "pose": "Front view straight-on (laid flat or on a model) showing the black body + the vertical white contrast side-panel + the small Heart-and-Roses Composite on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -3183,17 +3183,17 @@
           "role": "logo_reference_1",
           "authority": 69,
           "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
-          "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
-          "bytes": 2528
+          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
+          "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
+          "bytes": 3074
         },
         {
           "role": "logo_reference_1_art",
           "authority": 70,
           "kind": "product_reference",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
-          "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
-          "bytes": 123109
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+          "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+          "bytes": 113277
         }
       ],
       "media": {
@@ -3239,7 +3239,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
-        "dossier_sha256": "e356c57a4ce4348ec89fd6cc2acbf06ea55aaa48dae61df878f1650f022f7437"
+        "dossier_sha256": "00c4bb79b14e990c4f1832c5d87768c0b1c018bdd2a8f5eed2631926460b968e"
       },
       "consumer_contract": {
         "required_for": [
@@ -3252,7 +3252,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
+      "product_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
     },
     "lh-003": {
       "sku": "lh-003",
@@ -4094,7 +4094,7 @@
       "identity": {
         "name": "Love Hurts Joggers (White)",
         "collection": "love-hurts",
-        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
+        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Heart-and-Roses Composite embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
         "badge": ""
       },
       "commerce": {
@@ -4121,7 +4121,7 @@
       },
       "garment": {
         "type_lock": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). Black flat drawstring. NOT shorts. NOT a track short. NOT a basketball short. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`).",
-        "branding_summary": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Black contrast side-panel running vertically on both side seams. Black drawstring. Plain back.",
+        "branding_summary": "Small embroidered Heart-and-Roses Composite on the wearer-left thigh—cracked red heart wrapped in dark thorns with red roses and green leaves emerging above. Black contrast side-panel running vertically on both side seams. Black drawstring. Plain back.",
         "branding_regions": [
           {
             "region": "front-body",
@@ -4152,9 +4152,9 @@
           },
           {
             "region": "left-thigh",
-            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Red Roses Cloud Cluster** motif matching the founder flatlay — clustered red roses with green stems and pale cloud base, embroidered directly on the white body fabric. **Technique:** embroidered. **Color:** canonical red, green, white, and pale blue details on white body.",
+            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Heart-and-Roses Composite** matching the founder techflat — a cracked red heart wrapped in dark thorn vines, with red roses and green leaves emerging above it. Preserve the complete heart, thorn, rose, and leaf silhouette at the compact scale shown on the physical design. Embroidered directly on the white body fabric. **Technique:** embroidered. **Color:** canonical bright/dark reds, dark brown-black thorns, green leaves, and black outline details.",
             "technique": "embroidered",
-            "color_named": "canonical red, green, white, and pale blue details on white body",
+            "color_named": "canonical bright/dark reds, dark brown-black thorns, green leaves, and black outline details",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -4224,8 +4224,8 @@
           }
         ],
         "negative_constraints": [
-          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Red Roses Cloud Cluster on the left thigh.",
-          "NO heart-and-thorns / heart-rose-composite lockup on the joggers.",
+          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Heart-and-Roses Composite on the left thigh.",
+          "NO Red Roses Cloud Cluster or cloud base on the joggers. The thigh mark is the cracked-heart-and-thorns composition with roses emerging above it.",
           "NO sublimated all-over rose pattern on the body — the white body is SOLID white fabric (not sublimated).",
           "NO mirror colorway in this SKU — the black-base / white-panel mirror is a separate SKU (`lh-002 Love Hurts Joggers (Black)`).",
           "NO contrast piping at the waistband or cuffs — only the side-seam panel is contrast.",
@@ -4242,7 +4242,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (laid flat or on a model) showing the white body + the vertical black contrast side-panel + the small Red Roses Cloud Cluster on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
+        "pose": "Front view straight-on (laid flat or on a model) showing the white body + the vertical black contrast side-panel + the small Heart-and-Roses Composite on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -4291,17 +4291,17 @@
           "role": "logo_reference_1",
           "authority": 69,
           "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
-          "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
-          "bytes": 2528
+          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
+          "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
+          "bytes": 3074
         },
         {
           "role": "logo_reference_1_art",
           "authority": 70,
           "kind": "product_reference",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
-          "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
-          "bytes": 123109
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+          "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+          "bytes": 113277
         }
       ],
       "media": {
@@ -4347,7 +4347,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
-        "dossier_sha256": "3fcc4485b31d2bd29288da354697d3772c318ce1c11f7d1b530ca5b68e0028e1"
+        "dossier_sha256": "21559be08b5bb5feabd2165f8195ab7ff5a38f68036a79786fb28d4e8e674c9b"
       },
       "consumer_contract": {
         "required_for": [
@@ -4360,7 +4360,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
+      "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
     },
     "sg-001": {
       "sku": "sg-001",

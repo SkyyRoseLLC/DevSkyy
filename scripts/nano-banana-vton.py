@@ -217,9 +217,12 @@ LOGO_TREATMENTS = {
         "back: large ROSE-ONLY embroidered logo centered — raised thread texture, rose-gold tone"
     ),
     "br-012": (
-        "front: 'BLACK IS BEAUTIFUL' text — the letter A in 'BLACK' is black, remaining letters "
-        "are gold; custom baseball patch at lower-hem; "
-        "back: large ROSE-ONLY embroidered logo centered, rose-gold thread"
+        "dark forest-green button-front baseball jersey with gold/yellow trim; "
+        "front: authentic white tackle-twill 'BLACK IS BEAUTIFUL' letter faces spanning about "
+        "80% of visible torso width, every letter edged in gold satin stitching, with only the A "
+        "in 'BLACK' using a black twill face; exact baseball patch at wearer-left lower hem; "
+        "back: preserve the view-specific physical br-012 back with gold SR monogram and the "
+        "embroidered black/white/grey rose-and-stem cluster over a yellow/gold and grey cloud base"
     ),
     "br-014": (
         "front: 'BLACK IS BEAUTIFUL' block text in orange/black Giants colorway across chest; "
