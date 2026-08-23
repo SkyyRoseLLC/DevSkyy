@@ -124,10 +124,6 @@
         "front_model_image": {
           "path": "assets/images/products/kids-001-onmodel-v2.webp",
           "resolved": "images/products/kids-001-onmodel-v2.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/kids-red-set-back-model.webp",
-          "resolved": "images/products/kids-red-set-back-model.webp"
         }
       },
       "dossier": "data/dossiers/kids-colorblock-hoodie-set-red-black.md",
@@ -143,10 +139,6 @@
         "image": {
           "path": "assets/images/products/kids-002-purple-set.jpeg",
           "resolved": "images/products/kids-002-purple-set.jpeg"
-        },
-        "front_model_image": {
-          "path": "assets/images/products/ghost/kids-002-ghost-front.webp",
-          "resolved": "images/products/ghost/kids-002-ghost-front.webp"
         },
         "back_model_image": {
           "path": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",

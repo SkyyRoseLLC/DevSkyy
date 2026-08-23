@@ -1,0 +1,67 @@
+{
+  "schema": "skyyrose.product-authenticity-deletion.v1",
+  "date": "2026-08-22",
+  "authority": "founder_directed_deletion",
+  "reason": "Delete AI imagery that depicts garments or product details the founder did not make.",
+  "result": {
+    "status": "complete",
+    "image_files_deleted": 183,
+    "metadata_files_deleted": 2,
+    "thread_generation_cache_remaining": 0,
+    "legacy_br_003_candidates_remaining": 0,
+    "nonprotected_v2_product_candidates_remaining": 0
+  },
+  "preserve": [
+    "founder-shot physical product photography",
+    "approved tech flats",
+    "canonical logo and patch masters",
+    "pixel-protected product cutouts derived from verified originals",
+    "founder footage and its exact-pixel derivatives"
+  ],
+  "deletion_groups": [
+    {
+      "root": "/Users/theceo/.codex/generated_images/01a02ba6-a9e7-7f63-a9da-66e422effa6c",
+      "selector": "all generated PNG outputs from this rejected task",
+      "status": "complete",
+      "deleted_images": 50
+    },
+    {
+      "root": "data/candidates/br-003/front",
+      "selector": "42 unapproved AI front-view candidates plus their generator manifest",
+      "status": "complete",
+      "deleted_images": 42,
+      "deleted_metadata": 1
+    },
+    {
+      "root": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/candidates/2026-08-22",
+      "selector": "top-level AI on-model remakes, rejected, quarantine, pending-fidelity, and unprotected Love Hurts generation layers",
+      "status": "complete",
+      "deleted_images": 24,
+      "deleted_metadata": 1
+    },
+    {
+      "root": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates",
+      "selector": "unprotected product-containing scene candidates with revision-required, fidelity-problem, provenance-blocked, or unapproved AI product rendering",
+      "status": "complete",
+      "deleted_images": 14
+    },
+    {
+      "root": ".artifacts",
+      "selector": "derived review boards whose source is one of the deleted invented-product candidates",
+      "status": "complete",
+      "deleted_images": 16
+    },
+    {
+      "root": "wordpress-theme/skyyrose-flagship/assets/images/products",
+      "selector": "duplicate canonical and V7 copies of explicitly authenticity-rejected front/model imagery for br-003, br-004, br-007, and br-011",
+      "status": "complete",
+      "deleted_images": 34
+    },
+    {
+      "root": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/preview",
+      "selector": "three rejected br-004 preview derivatives",
+      "status": "complete",
+      "deleted_images": 3
+    }
+  ]
+}

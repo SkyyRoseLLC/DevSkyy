@@ -10,7 +10,7 @@ extra_references:
 
 # Kids Colorblock Hoodie Set — Purple/Black
 
-**Garment type lock:** Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (lavender/light-pink hood + diagonal lavender-and-medium-purple upper-body panels + deep purple lower body), and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001) but in a purple-monochrome palette.
+**Garment type lock:** Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** with a deep-purple hood, dusty-pink upper yoke/right sleeve, medium-purple left sleeve/diagonal panel, and deep-purple lower body; and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction family as the Red/Black colorway (kids-001) but with its own exact purple/pink panel map.
 
 > **Note on catalog name:** The catalog lists this SKU as "Purple/Black," but the techflat + real-product photo confirm the **pants are deep purple, NOT black**. Render purple pants to match the actual product. The "Black" in the SKU name appears to refer to the dark-purple tones reading visually as a near-black neutral, NOT to a literal black pant.
 
@@ -22,17 +22,17 @@ extra_references:
 > - Real product photo:            `assets/products/references/kids-002-real-photo.jpeg`
 
 ### Hoodie — Front
-- **front-body color-block** (entire front body): Angular geometric color-block construction with diagonal seams. **Upper-left panel** (descending from top-left toward center): **lavender / light pink-purple**. **Upper-right panel** (descending from top-right toward center): **medium purple**. **Lower body** (from the diagonal meeting points down to the hem, including the kangaroo pocket area): **deep / dark purple**. **Technique:** stitched. **Color:** lavender + medium purple + deep purple.
-- **front-chest cluster** (ONLY mark on the hoodie front body; small, ~2in tall, on the CHEST — see the real product photo for exact position): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body (above the kangaroo pocket) — the front body carries this single chest cluster and nothing else.
+- **front-body color-block** (entire front body): Exact angular geometry from the techflat: a **dusty-pink upper yoke** crosses the chest; a **medium-purple diagonal panel** descends on the wearer's left side; and a **deep-purple lower body** fills the remaining torso. Preserve the three precise seam intersections rather than inventing a generic chevron. **Technique:** stitched color-block. **Color:** dusty pink + medium purple + deep purple.
+- **front-left-chest cluster** (wearer's left / viewer's right, small, ~2in tall): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body — the front carries this single chest cluster and nothing else.
 
 ### Hoodie — Back
-- **back-body color-block**: Mirrors the front — the back has the same angular lavender/medium-purple upper panels and deep-purple lower body. **Technique:** stitched. **Color:** lavender + medium purple + deep purple.
+- **back-body color-block**: Continues the exact techflat geometry: dusty-pink upper-back yoke, medium-purple diagonal wedge, and deep-purple lower body. Preserve the asymmetric seam angles shown in the back techflat. **Technique:** stitched color-block. **Color:** dusty pink + medium purple + deep purple.
 
 ### Hoodie — Sleeves / Hood / Hem / Other
-- **left-sleeve**: Solid **lavender / light pink-purple** to match the front-upper-left panel. **Technique:** stitched. **Color:** lavender.
-- **right-sleeve**: Solid **medium purple** to match the front-upper-right panel. **Technique:** stitched. **Color:** medium purple.
-- **sleeve patch** (ONE only, ~2in diameter, on the upper sleeve / shoulder — see the real product photo for which sleeve and its exact artwork): A small round embroidered patch. **Technique:** embroidered-patch. Only ONE sleeve carries a patch; the other sleeve is plain.
-- **hood**: Solid **lavender / light pink-purple** (matching the upper-left panel). **Technique:** stitched. **Color:** lavender.
+- **right-sleeve** (wearer's right / viewer's left in the front view): Solid **dusty pink** and carries the one circular shoulder patch. **Technique:** stitched. **Color:** dusty pink.
+- **left-sleeve** (wearer's left / viewer's right in the front view): Solid **medium purple** with no patch. **Technique:** stitched. **Color:** medium purple.
+- **right-sleeve patch** (ONE only, ~2in diameter, on the upper right sleeve / shoulder): Circular embroidered patch with a white ground, black border and lettering, and black rose in the center; **“Skyy Rose”** arcs across the top and **“Collection”** arcs across the bottom. **Technique:** embroidered-patch. The left sleeve is plain.
+- **hood**: Solid **deep purple**, matching the founder flatlay and techflat. **Technique:** stitched. **Color:** deep purple.
 - **hood-drawstring**: White flat drawstring threaded through the hood. **Technique:** stitched. **Color:** white.
 - **kangaroo-pocket**: Deep purple front kangaroo pocket integrated into the lower-body panel.
 - **left-cuff / right-cuff**: Ribbed-knit cuffs, color-matching their sleeves. **Technique:** stitched.
@@ -41,12 +41,12 @@ extra_references:
 
 ### Sweatpants — Front
 - **pants-body**: Solid **deep / dark purple** sweatpants (NOT black — see catalog-name note above). **Technique:** stitched. **Color:** deep purple.
-- **pants cluster** (ONE only, small, ~2in tall, on the pants — see the real product photo for exact position): A small Black Rose three-rose-cluster (greyscale). **Technique:** embroidered. **Color:** white + black + grey thread on deep purple. Only ONE cluster on the pants.
+- **pants-left-thigh cluster** (wearer's left / viewer's right, small, ~2in tall): A small Black Rose three-rose-cluster in greyscale. **Technique:** embroidered. **Color:** white + black + grey thread on deep purple. Only ONE cluster on the pants.
 
 ### Sweatpants — Other
 - **waistband-drawstring**: White flat drawstring. **Technique:** stitched. **Color:** white.
 - **left-pocket / right-pocket**: Slash-style hand pockets. **Technique:** stitched.
-- **pants-cuffs**: Ribbed-knit ankle cuffs (or straight-leg open hem). **Technique:** stitched. **Color:** deep purple.
+- **pants-cuffs**: Ribbed-knit ankle cuffs matching the founder flatlay. **Technique:** stitched. **Color:** deep purple.
 - **pants-inside / waistband-tag**: Branded woven size tag. **Technique:** woven-label.
 
 ## Negative — what is NOT on this product (DO NOT render)
@@ -55,7 +55,7 @@ extra_references:
 - NO red anywhere on this colorway — this is the all-purple sister set to kids-001 (Red/Black). NO red roses, NO red body panel, NO red kangaroo pocket.
 - NO solid-color hoodie body — body is angular color-block, NOT a solid lavender or solid purple field.
 - NO horizontal stripe blocking — color-block panels are DIAGONAL.
-- NO matching sleeves — LEFT sleeve is lavender (light), RIGHT sleeve is medium purple.
+- NO matching sleeves — the RIGHT sleeve is dusty pink with the circular patch; the LEFT sleeve is medium purple and plain.
 - NO colored drawstrings — drawstrings are WHITE on hoodie + WHITE on pants.
 - NO decoration on the back-body — back is a clean color-block panel.
 - NO logos on the kangaroo pocket fabric.

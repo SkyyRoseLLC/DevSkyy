@@ -10,7 +10,7 @@ extra_references:
 
 # The Fannie
 
-**Garment type lock:** A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, single front-pocket with a horizontal zipper closure, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection.
+**Garment type lock:** A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, one horizontal front zipper pocket and one horizontal rear zipper pocket, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection.
 
 ## Branding — exactly what IS on this product
 
@@ -25,7 +25,8 @@ extra_references:
 - **front-center-bottom** (~3–4in wide, centered on the lower front face below the zipper): The wordmark **"FANNIE"** in stylized white cursive script lettering, with a small **canonical Love Hurts red rose graphic** decoration to the immediate right of the wordmark (a single small red rose accent — similar in style to the small standalone rose accent used on lh-002 joggers). **Technique:** embroidered (wordmark in white thread + small red rose embroidered detail). **Color:** white "FANNIE" + small red rose accent.
 
 ### Back
-- **back-body** (the panel against the wearer's body): Solid **black pebbled faux-leather**, no decoration. **Technique:** stitched. **Color:** black.
+- **back-body** (the panel against the wearer's body): Solid **black pebbled faux-leather**, no logo decoration. **Technique:** stitched. **Color:** black.
+- **back-pocket-zipper** (horizontal, centered across the upper rear panel): A black zipper opening into the rear security pocket, matching the founder back flatlay. **Technique:** patch (sewn-on zipper hardware). **Color:** black zipper teeth and pull.
 - **strap-attachment-points** (D-rings or stitched belt-loops at the upper-left and upper-right corners of the bag): Two D-rings or stitched belt-loops where the nylon strap attaches. **Technique:** patch (sewn-on hardware). **Color:** black.
 
 ### Strap / Hardware / Other
@@ -42,10 +43,10 @@ extra_references:
 - NO Authentic Collection patch.
 - NO greyscale wordmark — the "FANNIE" lettering is WHITE on the black faux-leather.
 - NO red wordmark — the "FANNIE" letters are WHITE; the only red element is the small rose graphic accent next to the wordmark.
-- NO additional pockets visible from outside other than the single front zipper-pocket. No back pocket. No side pockets.
+- NO additional pockets beyond the one front zipper pocket and one rear zipper pocket. No side pockets.
 - NO hardware in metal-gold or rose-gold finish — all hardware (buckle, zipper) is BLACK.
 - NO contrast piping along any edge — the bag is uniformly black faux-leather with no contrast piping or trim.
-- NO drawstring closure — closure is the front zipper only.
+- NO drawstring closure — storage access is through the front and rear zippers.
 - NO embossed or debossed branding — the FANNIE wordmark is embroidered, NOT embossed into the faux-leather surface.
 - NO real leather (this is **faux-leather / PU pebbled-finish**, not genuine leather).
 - NO printed graphics — branding is embroidered.
@@ -53,5 +54,5 @@ extra_references:
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the bag worn flat (or laid flat), with the strap visible curving above and connecting to the bag corners — show the buckle clip and the FANNIE wordmark + red rose accent on the lower-front face. Optional alternate view: bag worn cross-body or at the waist on a model to show scale.
+- **Pose:** Front view straight-on showing the bag worn flat (or laid flat), with the strap visible curving above and connecting to the bag corners — show the buckle clip, front zipper, and FANNIE wordmark + red rose accent on the lower-front face. Back view must show the separate horizontal rear zipper pocket. Optional alternate view: bag worn cross-body or at the waist on a model to show scale.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

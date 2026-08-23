@@ -28,7 +28,7 @@ reference_image: assets/products/references/sg-002-stay-golden-shirt-techflat.jp
 > the matching Stay Golden Shorts (sg-003) sunset Golden Gate colorway.
 
 ### Front
-- **front-left-chest** (small, ~3in tall, on the wearer's left chest): The canonical Black Rose three-rose-cluster art (three roses + thorny vines + cloud at base) rendered in **purple/violet tonal colors** — petals in saturated purple-and-violet shades with darker violet shading and black ink outlines, stems and vines in darker purple-grey, cloud at the base in dark grey/charcoal. NOT canonical multi-color. NOT canonical greyscale. **Technique:** sublimated. **Color:** purple-violet rose-cluster on white ground.
+- **front-center-chest** (large, ~8–10in tall, centered on the chest): The canonical rose-cluster composition rendered in the **Stay Golden purple/violet colorway**, with the matching Golden Gate Bridge night imagery stitched within the rose-petal artwork exactly as shown in the founder flatlay and techflat. Petals use saturated purple-and-violet shades with darker violet details; stems and vines are dark purple-grey; the cloud base is charcoal. **Technique:** embroidered. **Color:** purple-violet, charcoal, and bridge-image threadwork on white ground.
 
 ### Back
 - **back-neck** (small, ~1.5in wide, top-center just below the collar): The SR monogram embroidered onto the jersey in **dark grey / black thread** (NOT canonical gold — black-on-white reads cleanly where gold-on-white would not on a casual tee). Rendered as the canonical SR cursive script. **Technique:** embroidered. **Color:** dark grey / black thread on white.
@@ -46,10 +46,10 @@ reference_image: assets/products/references/sg-002-stay-golden-shirt-techflat.jp
 - NO canonical multi-color rose-cluster (red roses + green stems + white-and-blue cloud) — the cluster is recolored to violet on this SKU.
 - NO canonical greyscale rose-cluster (Black Rose canonical) — recolored to violet.
 - NO Bay Bridge / Golden Gate photo print on the body — the body is solid white. The bridge photo prints are on the matching shorts (sg-001, sg-003), NOT on this shirt.
-- NO chest text or wordmark on the front body fabric — only the chest rose decoration.
+- NO chest text or wordmark on the front body fabric — only the large centered rose-and-bridge embroidery.
 - NO logo or graphic on the back body — only the small back-neck SR monogram.
 - NO Authentic Collection patch — that patch is reserved for the Black Rose jersey series.
-- NO Black Rose logo at front-center, front-right, or as a back-center large emblem — chest mark is small left-chest only.
+- NO small left-chest rose — the rose-and-bridge composition is LARGE and CENTERED on the front chest.
 - NO Love Hurts branding — this is a Signature collection product.
 - NO sublimated all-over body pattern — body is solid white.
 - NO contrast color sleeve cuffs or hem.
@@ -58,5 +58,5 @@ reference_image: assets/products/references/sg-002-stay-golden-shirt-techflat.jp
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the small left-chest violet rose-cluster on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.
+- **Pose:** Front view straight-on showing the large centered violet rose-and-Golden-Gate embroidery on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

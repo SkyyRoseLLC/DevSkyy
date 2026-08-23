@@ -12,6 +12,92 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Validate the product-card media approval contract against the product SOT adapter.
+ *
+ * @param array<string,mixed> $manifest Product-card media manifest.
+ * @param array<string,mixed> $registry Product presentation registry.
+ * @return bool
+ */
+function skyyrose2_validate_product_card_media_contract( $manifest, $registry ) {
+	if ( ! is_array( $manifest ) || ! is_array( $registry ) ) {
+		return false;
+	}
+	$registry_hash = isset( $registry['product_sot_sha256'] ) ? (string) $registry['product_sot_sha256'] : '';
+	$manifest_hash = isset( $manifest['product_sot_sha256'] ) ? (string) $manifest['product_sot_sha256'] : '';
+	$records       = isset( $registry['products'] ) && is_array( $registry['products'] ) ? $registry['products'] : array();
+	$media_records = isset( $manifest['products'] ) && is_array( $manifest['products'] ) ? $manifest['products'] : array();
+	$media_hashes  = isset( $manifest['product_hashes'] ) && is_array( $manifest['product_hashes'] ) ? $manifest['product_hashes'] : array();
+	$integrity     = isset( $manifest['asset_integrity'] ) && is_array( $manifest['asset_integrity'] ) ? $manifest['asset_integrity'] : array();
+	if ( ! $registry_hash || ! $manifest_hash || ! hash_equals( $registry_hash, $manifest_hash ) ) {
+		return false;
+	}
+
+	$registry_skus = array_keys( $records );
+	$media_skus    = array_keys( $media_records );
+	$hash_skus     = array_keys( $media_hashes );
+	sort( $registry_skus );
+	sort( $media_skus );
+	sort( $hash_skus );
+	if ( $registry_skus !== $media_skus || $registry_skus !== $hash_skus ) {
+		return false;
+	}
+
+	$allowed_roles = array( 'on_model_front', 'on_model_back', 'mannequin_front', 'mannequin_back', 'render_3d', 'packshot' );
+	$approved_skus = array();
+	foreach ( $records as $sku => $record ) {
+		$media_record  = isset( $media_records[ $sku ] ) && is_array( $media_records[ $sku ] ) ? $media_records[ $sku ] : array();
+		$expected_hash = isset( $record['product_sot_hash'] ) ? (string) $record['product_sot_hash'] : '';
+		$approved_hash = isset( $media_hashes[ $sku ] ) ? (string) $media_hashes[ $sku ] : '';
+		$expected_collection = isset( $record['collection'] ) ? (string) $record['collection'] : '';
+		$approved_collection = isset( $media_record['collection'] ) ? (string) $media_record['collection'] : '';
+		if (
+			! $expected_hash ||
+			! $approved_hash ||
+			! hash_equals( $expected_hash, $approved_hash ) ||
+			! $expected_collection ||
+			! hash_equals( $expected_collection, $approved_collection )
+		) {
+			return false;
+		}
+
+		$views = isset( $media_record['views'] ) && is_array( $media_record['views'] ) ? $media_record['views'] : array();
+		if ( ! $views ) {
+			if ( empty( $media_record['status'] ) || empty( $media_record['reason'] ) || isset( $integrity[ $sku ] ) ) {
+				return false;
+			}
+			continue;
+		}
+		if ( ! empty( $media_record['status'] ) && 'APPROVED' !== $media_record['status'] ) {
+			return false;
+		}
+		$roles = array();
+		foreach ( $views as $view ) {
+			$role = isset( $view['role'] ) ? (string) $view['role'] : '';
+			if ( ! in_array( $role, $allowed_roles, true ) || isset( $roles[ $role ] ) ) {
+				return false;
+			}
+			$roles[ $role ] = true;
+		}
+		if ( 'on_model_front' !== ( $views[0]['role'] ?? '' ) ) {
+			return false;
+		}
+		$integrity_roles = isset( $integrity[ $sku ] ) && is_array( $integrity[ $sku ] ) ? array_keys( $integrity[ $sku ] ) : array();
+		sort( $integrity_roles );
+		$role_keys = array_keys( $roles );
+		sort( $role_keys );
+		if ( $integrity_roles !== $role_keys ) {
+			return false;
+		}
+		$approved_skus[] = $sku;
+	}
+
+	$integrity_skus = array_keys( $integrity );
+	sort( $approved_skus );
+	sort( $integrity_skus );
+	return $approved_skus === $integrity_skus;
+}
+
+/**
  * Convert titled sections into portable block markup.
  *
  * @param array<int,array{title:string,body:string}> $sections Content sections.

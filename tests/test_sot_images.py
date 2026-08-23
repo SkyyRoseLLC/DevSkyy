@@ -1,9 +1,8 @@
 """Tests for the canonical SOT product-imagery resolver.
 
 The resolver is THE single authority for "what image represents this SKU" across
-every surface. These tests pin the front-first fallback contract (on-model render
-before flat packshot) that mirrors the WP theme's product-card-holo.php rule, and
-the manifest shape that non-Python surfaces (the dashboard) consume.
+every surface. These tests pin the approval-first contract: approved on-model media
+wins, while rejected or pending candidates fall back to canonical packshots.
 """
 
 from __future__ import annotations
@@ -24,19 +23,21 @@ def _clear_sot_cache():
     sot_images.refresh()
 
 
-def test_resolve_front_prefers_on_model_render():
-    # br-004 has both front_model_image (on-model) and image (flat packshot).
+def test_rejected_front_falls_back_to_packshot():
     path = sot_images.resolve_image("br-004", "front")
     assert path is not None
-    # Returns the SOT's front_model_image value exactly — assert on the contract,
-    # not on a filename substring (which would break on a differently-named asset).
-    assert path == sot_images._index()["br-004"]["images"]["front_model_image"]["path"]
-    # Never the flat packshot when an on-model render exists.
-    assert path != sot_images.resolve_image("br-004", "packshot")
+    assert path == sot_images.resolve_image("br-004", "packshot")
+    assert "front_model_image" not in sot_images._index()["br-004"]["images"]
 
 
-def test_resolve_back_uses_back_model_image():
-    path = sot_images.resolve_image("br-004", "back")
+def test_approved_front_prefers_on_model_render():
+    path = sot_images.resolve_image("br-006", "front")
+    assert path == sot_images._index()["br-006"]["images"]["front_model_image"]["path"]
+    assert path != sot_images.resolve_image("br-006", "packshot")
+
+
+def test_resolve_back_uses_canonical_back_when_model_is_unapproved():
+    path = sot_images.resolve_image("br-002", "back")
     assert path is not None
     assert "back" in path
 
@@ -49,12 +50,12 @@ def test_packshot_role_returns_flat_image():
 
 
 def test_back_packshot_role_returns_exact_back_image():
-    # br-004 has a real back_image value in the SOT — back_packshot must return
+    # br-002 has a real back image in the SOT — back_packshot must return
     # exactly that value, with no render-fallback (mirrors the packshot role's
     # single-key contract, but for the back face).
-    path = sot_images.resolve_image("br-004", "back_packshot")
+    path = sot_images.resolve_image("br-002", "back_packshot")
     assert path is not None
-    assert path == sot_images._index()["br-004"]["images"]["back_image"]["path"]
+    assert path == sot_images._index()["br-002"]["images"]["back_image"]["path"]
 
 
 def test_unknown_sku_returns_none_not_a_guess():
@@ -78,7 +79,8 @@ def test_all_four_collections_indexed():
 
 
 def test_has_render_true_for_real_sku_false_for_unknown():
-    assert sot_images.has_render("br-004") is True
+    assert sot_images.has_render("br-006") is True
+    assert sot_images.has_render("br-004") is False
     assert sot_images.has_render("zz-999") is False
 
 
@@ -115,3 +117,27 @@ def test_resolve_rejects_path_traversal(monkeypatch):
     monkeypatch.setattr(sot_images, "_index", lambda: synthetic)
     with pytest.raises(ValueError, match="escapes the assets tree"):
         sot_images.resolve_image("xx-002", "front")
+
+
+def test_approval_manifest_rejects_per_sku_hash_drift(tmp_path, monkeypatch):
+    product_sot_bytes = sot_images.product_sot.MANIFEST_PATH.read_bytes()
+    approval = json.loads(sot_images.APPROVAL_MANIFEST_PATH.read_text(encoding="utf-8"))
+    approval["product_hashes"]["br-001"] = "0" * 64
+    manifest_path = tmp_path / "opening-product-media.json"
+    manifest_path.write_text(json.dumps(approval), encoding="utf-8")
+    monkeypatch.setattr(sot_images, "APPROVAL_MANIFEST_PATH", manifest_path)
+
+    with pytest.raises(ValueError, match="stale for br-001"):
+        sot_images._approval_manifest(product_sot_bytes)
+
+
+def test_approval_manifest_rejects_incomplete_sku_binding(tmp_path, monkeypatch):
+    product_sot_bytes = sot_images.product_sot.MANIFEST_PATH.read_bytes()
+    approval = json.loads(sot_images.APPROVAL_MANIFEST_PATH.read_text(encoding="utf-8"))
+    del approval["product_hashes"]["br-001"]
+    manifest_path = tmp_path / "opening-product-media.json"
+    manifest_path.write_text(json.dumps(approval), encoding="utf-8")
+    monkeypatch.setattr(sot_images, "APPROVAL_MANIFEST_PATH", manifest_path)
+
+    with pytest.raises(ValueError, match="hash SKU set differs"):
+        sot_images._approval_manifest(product_sot_bytes)

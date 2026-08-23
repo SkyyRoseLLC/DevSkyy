@@ -83,10 +83,14 @@ def _catalog_meta(record: dict[str, Any]) -> list[dict[str, Any]]:
     commerce = record["commerce"]
     garment = record["garment"]
     rendering = record["rendering"]
+    merchandising = record["merchandising"]
     media = record["media"]
     source = record["source"]
     values = (
         ("_skyyrose_collection", identity["collection"]),
+        ("_skyyrose_series_slug", merchandising["series_slug"]),
+        ("_skyyrose_series_region", merchandising["series_region"]),
+        ("_skyyrose_series_order", merchandising["series_order"]),
         ("_skyyrose_badge", identity["badge"]),
         ("_skyyrose_edition_size", commerce["edition_size"]),
         ("_skyyrose_front_model_image", media.get("on_model_front", {}).get("path", "")),

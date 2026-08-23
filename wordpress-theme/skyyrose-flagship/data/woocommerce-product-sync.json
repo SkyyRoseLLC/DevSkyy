@@ -2,7 +2,7 @@
   "schema": "skyyrose.woocommerce-product-sync.v1",
   "sources": {
     "product_sot": "data/product-sot.json",
-    "product_sot_sha256": "d3c0249ce887520ce7f178759d9788a8fb5c8a4a71ccb376b3e05bbea8ba9bd6"
+    "product_sot_sha256": "fa70682418ddc5ceb51eeb356efab0f215eef6e8d387bc736b1d03a2a9193482"
   },
   "category_names": {
     "signature": "Signature",
@@ -14,7 +14,7 @@
   "products": [
     {
       "sku": "br-001",
-      "product_sot_hash": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832",
+      "product_sot_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c",
       "category_slugs": [
         "black-rose"
       ],
@@ -23,24 +23,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp",
           "sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724",
-          "product_hash": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832"
+          "product_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png",
           "sha256": "c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2",
-          "product_hash": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832"
+          "product_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-crewneck-back-model.webp",
           "sha256": "105bee1c200c034a886ba10df23fcb94a6d1a4a0e82deae1a390fc169396499d",
-          "product_hash": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832"
+          "product_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-crewneck.md",
-        "sha256": "c3443d005f8d9d06e59420f4631c8e6a58657abda30d43620de450b9db64e03c",
+        "sha256": "de2506ca27263f548c550ed85bb306b1ab03045acc35b1e6b33086586f9e4e37",
         "references": [
           {
             "role": "primary_logo_reference",
@@ -57,22 +57,6 @@
             "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
             "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
             "bytes": 133982
-          },
-          {
-            "role": "logo_reference_1",
-            "authority": 69,
-            "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
-            "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
-            "bytes": 2578
-          },
-          {
-            "role": "logo_reference_1_art",
-            "authority": 70,
-            "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
-            "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
-            "bytes": 77819
           }
         ]
       },
@@ -151,6 +135,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -208,11 +204,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832"
+            "value": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "c3443d005f8d9d06e59420f4631c8e6a58657abda30d43620de450b9db64e03c"
+            "value": "de2506ca27263f548c550ed85bb306b1ab03045acc35b1e6b33086586f9e4e37"
           },
           {
             "key": "_is_preorder",
@@ -446,7 +442,7 @@
     },
     {
       "sku": "br-002",
-      "product_sot_hash": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3",
+      "product_sot_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e",
       "category_slugs": [
         "black-rose"
       ],
@@ -455,24 +451,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-002-ghost-front.webp",
           "sha256": "9cd61c58bf3e85a42d74dc0dc22a554abb15d1f3cec86e3625f3165df6600004",
-          "product_hash": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3"
+          "product_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-002-joggers.png",
           "sha256": "f7596bbcee6a189aac561b60261bb313ff063cc62722a8f13fe721f0ac7a9928",
-          "product_hash": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3"
+          "product_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-joggers-back-model.webp",
           "sha256": "8d7a455d22a459e9e03220000aa9962aa365f446a3db963f18e8557f5b9232fa",
-          "product_hash": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3"
+          "product_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-joggers.md",
-        "sha256": "9d27c9a273c4b5ecd483be26f4aaba02d6c5358be5585668b29e2cefd5a7d1e4",
+        "sha256": "1756f90086eb28879a4742d6569f558d0804a48d9a1676983d7ffe6a3a2f4f3e",
         "references": [
           {
             "role": "primary_logo_reference",
@@ -489,22 +485,6 @@
             "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
             "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
             "bytes": 133982
-          },
-          {
-            "role": "logo_reference_1",
-            "authority": 69,
-            "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
-            "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
-            "bytes": 2578
-          },
-          {
-            "role": "logo_reference_1_art",
-            "authority": 70,
-            "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
-            "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
-            "bytes": 77819
           }
         ]
       },
@@ -583,6 +563,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -640,11 +632,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3"
+            "value": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "9d27c9a273c4b5ecd483be26f4aaba02d6c5358be5585668b29e2cefd5a7d1e4"
+            "value": "1756f90086eb28879a4742d6569f558d0804a48d9a1676983d7ffe6a3a2f4f3e"
           },
           {
             "key": "_is_preorder",
@@ -878,7 +870,7 @@
     },
     {
       "sku": "br-003",
-      "product_sot_hash": "5bd06f49fd29da436d772dcebe1c1392bfe9a98d712e0d47e7cd4ae6cab0935d",
+      "product_sot_hash": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -888,12 +880,12 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-003-baseball-classic.jpeg",
           "sha256": "34069502b799270fa63f41120acf30f2fd62874df8c475753a3af41489b59841",
-          "product_hash": "5bd06f49fd29da436d772dcebe1c1392bfe9a98d712e0d47e7cd4ae6cab0935d"
+          "product_hash": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic.md",
-        "sha256": "7c6d62e9c6ffbc38130d413e0829022b73dd857c3916f2b7e34c56b617de4096",
+        "sha256": "f5678225794ee83c6a20dffd6438d6312a6e8fe3335d4f8aaa5579f9ebd2f634",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -1028,6 +1020,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "oakland"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 10
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -1057,7 +1061,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Black button-front baseball jersey. FRONT: arched white 'BLACK IS BEAUTIFUL' tackle-twill wordmark and exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem. BACK: large embroidered greyscale rose/cloud crest with SR monogram at upper neck. White collar, placket, cuff, and hem trim; no sleeve patch."
+            "value": "Black button-front baseball jersey. FRONT: arched white 'BLACK IS BEAUTIFUL' tackle-twill wordmark spans approximately 80% of the visible torso width; exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem. BACK: large embroidered greyscale rose/cloud crest with SR monogram at upper neck. White collar, placket, and cuff trim; plain black bottom hem; no sleeve patch."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -1085,11 +1089,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "5bd06f49fd29da436d772dcebe1c1392bfe9a98d712e0d47e7cd4ae6cab0935d"
+            "value": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "7c6d62e9c6ffbc38130d413e0829022b73dd857c3916f2b7e34c56b617de4096"
+            "value": "f5678225794ee83c6a20dffd6438d6312a6e8fe3335d4f8aaa5579f9ebd2f634"
           },
           {
             "key": "_is_preorder",
@@ -1328,7 +1332,7 @@
     },
     {
       "sku": "br-004",
-      "product_sot_hash": "d7a48b66e1e53a6d3d751e06b51bbf9a0c1b811bb439ec408cffb52488c24f7c",
+      "product_sot_hash": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac",
       "category_slugs": [
         "black-rose"
       ],
@@ -1337,12 +1341,12 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-004-black-rose-hoodie.jpeg",
           "sha256": "64e1c21b1fc042417fc17767d02f854fea6b0637ef0901b06f672c0876a95487",
-          "product_hash": "d7a48b66e1e53a6d3d751e06b51bbf9a0c1b811bb439ec408cffb52488c24f7c"
+          "product_hash": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md",
-        "sha256": "256ac41adfa51d971d8f64ef16d79fd792506b41fc883a062083021f9f88f199",
+        "sha256": "682d65ceb15c68b6a0d689a9e501629192fc9e9b9a6e62dda6555538b34d9a8e",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -1453,6 +1457,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -1510,11 +1526,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "d7a48b66e1e53a6d3d751e06b51bbf9a0c1b811bb439ec408cffb52488c24f7c"
+            "value": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "256ac41adfa51d971d8f64ef16d79fd792506b41fc883a062083021f9f88f199"
+            "value": "682d65ceb15c68b6a0d689a9e501629192fc9e9b9a6e62dda6555538b34d9a8e"
           },
           {
             "key": "_is_preorder",
@@ -1748,7 +1764,7 @@
     },
     {
       "sku": "br-005",
-      "product_sot_hash": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763",
+      "product_sot_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20",
       "category_slugs": [
         "black-rose"
       ],
@@ -1757,30 +1773,30 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-005-ghost-front.webp",
           "sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61",
-          "product_hash": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763"
+          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-005-signature-hoodie.jpeg",
           "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
-          "product_hash": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763"
+          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-back-model.webp",
           "sha256": "953a14d4924bda179d09e636af718ebd51914a1a4a36147ada5e5a73d888acf8",
-          "product_hash": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763"
+          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition-back-model.webp",
           "sha256": "2ea30a2fa75fd36f713ffa3fc9812d2c4cc73e8982c30901d5f6fc700a2748d3",
-          "product_hash": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763"
+          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie-signature-edition.md",
-        "sha256": "55a09ad64b4a0a9fa9ac03b7fb8c370378327bcbc4acafa5bcd466d7d90e0532",
+        "sha256": "b670053624a30ffec8f0640789c24cf6e0a58d96be81e888cddd548c18c7b396",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -1883,6 +1899,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -1936,15 +1964,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (chest + hip), the white drawstrings, and the sublimated-rose-print inner hood lining."
+            "value": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (small chest mark + large forearm artwork), the white drawstrings, and the sublimated-rose-print inner hood lining."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763"
+            "value": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "55a09ad64b4a0a9fa9ac03b7fb8c370378327bcbc4acafa5bcd466d7d90e0532"
+            "value": "b670053624a30ffec8f0640789c24cf6e0a58d96be81e888cddd548c18c7b396"
           },
           {
             "key": "_is_preorder",
@@ -2178,7 +2206,7 @@
     },
     {
       "sku": "br-006",
-      "product_sot_hash": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df",
+      "product_sot_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -2188,24 +2216,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-006-onmodel.webp",
           "sha256": "d474d97d9fac60eff864a14f30b6e07845ea71696ae0483a2c5f7108f22c815b",
-          "product_hash": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df"
+          "product_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg",
           "sha256": "c5a4b17f625cbefeff7ed440b4fb879172154ace0c7193511eb02ab52a7352f6",
-          "product_hash": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df"
+          "product_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-back.jpg",
           "sha256": "ef980d90ac3beb786a16351cbb523222cf909c3c74c3b10165e929fd1aa881ce",
-          "product_hash": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df"
+          "product_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-sherpa-jacket.md",
-        "sha256": "83c6d2d6fb778d0f44a247a622be45c2dd7e4cd5092e30106c1c8e4f932f66fa",
+        "sha256": "e93031fa78e69b6ebc6d0a084a11ec60dd3ed32a821d7eb0c24a8603ae88b6d9",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -2230,6 +2258,14 @@
             "path": "assets/products/references/br-006-sherpa-jacket-real-closeup.jpeg",
             "sha256": "dbc5de009fab4541c480ce65dbf89eeead4ce0f84bb82c0546b85a64b2794995",
             "bytes": 97907
+          },
+          {
+            "role": "garment_reference_3",
+            "authority": 87,
+            "kind": "physical_product_video",
+            "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4",
+            "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+            "bytes": 20973139
           },
           {
             "role": "primary_logo_reference",
@@ -2324,6 +2360,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -2381,11 +2429,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df"
+            "value": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "83c6d2d6fb778d0f44a247a622be45c2dd7e4cd5092e30106c1c8e4f932f66fa"
+            "value": "e93031fa78e69b6ebc6d0a084a11ec60dd3ed32a821d7eb0c24a8603ae88b6d9"
           },
           {
             "key": "_is_preorder",
@@ -2624,7 +2672,7 @@
     },
     {
       "sku": "br-007",
-      "product_sot_hash": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e",
+      "product_sot_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6",
       "category_slugs": [
         "black-rose"
       ],
@@ -2633,13 +2681,13 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007.jpg",
           "sha256": "6d7ea279905b7cfdbc9fa58d371d0fcfc3e8326c2041b4b6a1c86219fe2c7890",
-          "product_hash": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e"
+          "product_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-back.jpg",
           "sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9",
-          "product_hash": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e"
+          "product_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
         }
       ],
       "dossier": {
@@ -2795,6 +2843,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -2852,7 +2912,7 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e"
+            "value": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
@@ -3090,7 +3150,7 @@
     },
     {
       "sku": "br-008",
-      "product_sot_hash": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345",
+      "product_sot_hash": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -3100,18 +3160,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-008-onmodel.webp",
           "sha256": "eb76157818cc49cea870e94c7a41681484bfb081226e69ef10d67db18f57c4e9",
-          "product_hash": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345"
+          "product_hash": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-008-sf-inspired.jpg",
           "sha256": "426edc25035c475e6e79818bc3a5be6612e2c1343ad85bdc5272f3bd1041357e",
-          "product_hash": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345"
+          "product_hash": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-1-sf-inspired-football.md",
-        "sha256": "c65a5342affbef43719a43955dd86c338548c7dc5e80daeaf0964abe9c7c2179",
+        "sha256": "e1ab9c0ea23a23e3208a0115fb9dd330f2b5430021fcb37126a05dddbfbf72b1",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -3230,6 +3290,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "san-francisco"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 50
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -3287,11 +3359,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345"
+            "value": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "c65a5342affbef43719a43955dd86c338548c7dc5e80daeaf0964abe9c7c2179"
+            "value": "e1ab9c0ea23a23e3208a0115fb9dd330f2b5430021fcb37126a05dddbfbf72b1"
           },
           {
             "key": "_is_preorder",
@@ -3530,7 +3602,7 @@
     },
     {
       "sku": "br-009",
-      "product_sot_hash": "25e3509aeb186c7886a5df7b96866f1c493f04fa2253d8b7caac12772eaf29a8",
+      "product_sot_hash": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -3540,7 +3612,7 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-009-last-oakland-football.jpg",
           "sha256": "60aebd8517d562b111f4042a48b7e2c7ccceefb2bf2a40e3e42a2d434e2f26e8",
-          "product_hash": "25e3509aeb186c7886a5df7b96866f1c493f04fa2253d8b7caac12772eaf29a8"
+          "product_hash": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614"
         }
       ],
       "dossier": {
@@ -3680,6 +3752,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "oakland"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 30
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -3737,7 +3821,7 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "25e3509aeb186c7886a5df7b96866f1c493f04fa2253d8b7caac12772eaf29a8"
+            "value": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
@@ -3980,7 +4064,7 @@
     },
     {
       "sku": "br-010",
-      "product_sot_hash": "fcadfb2a24292785e12e27498891286ac638b4b0b3992820892222248b6388e7",
+      "product_sot_hash": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -3990,7 +4074,7 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-010-the-bay-basketball.jpeg",
           "sha256": "ac39ac55169f3d031746cf212dd056a0514bd19a4ab5f1702063864097d71222",
-          "product_hash": "fcadfb2a24292785e12e27498891286ac638b4b0b3992820892222248b6388e7"
+          "product_hash": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329"
         }
       ],
       "dossier": {
@@ -4130,6 +4214,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "san-francisco"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 70
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -4187,7 +4283,7 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "fcadfb2a24292785e12e27498891286ac638b4b0b3992820892222248b6388e7"
+            "value": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
@@ -4430,7 +4526,7 @@
     },
     {
       "sku": "br-011",
-      "product_sot_hash": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42",
+      "product_sot_hash": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -4440,18 +4536,18 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-the-rose-hockey.png",
           "sha256": "027f6babaa7d9f5ac44c1ce5afdcd3ce181fd161f1d7fd5a1cc9fbe533fc2b3f",
-          "product_hash": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42"
+          "product_hash": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp",
           "sha256": "02951ec439a484fdb9764267532a02fe284eed5859a1c3226a74b48bed13b937",
-          "product_hash": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42"
+          "product_hash": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-4-the-rose-hockey.md",
-        "sha256": "7b12b66f3158e6f4896c1c453b4c6abbae3557b4dade4bf7d1a766b8275ee818",
+        "sha256": "7b3b68e436245ea05cdb590fa6d51123978a4ca121eeaa5e3cb9cd571b76c495",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -4586,6 +4682,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "san-jose"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 80
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -4643,11 +4751,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42"
+            "value": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "7b12b66f3158e6f4896c1c453b4c6abbae3557b4dade4bf7d1a766b8275ee818"
+            "value": "7b3b68e436245ea05cdb590fa6d51123978a4ca121eeaa5e3cb9cd571b76c495"
           },
           {
             "key": "_is_preorder",
@@ -4886,7 +4994,7 @@
     },
     {
       "sku": "br-012",
-      "product_sot_hash": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef",
+      "product_sot_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -4896,24 +5004,24 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-front.jpeg",
           "sha256": "da41030af207d29cb5dbda46fe0bc60328bb689d500b807ab463ced399f37fd1",
-          "product_hash": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef"
+          "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.webp",
           "sha256": "9047c354c67226e6de730208837e6fd2409aa1053e76fc65c0f7132ca911c7f8",
-          "product_hash": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef"
+          "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg",
           "sha256": "a5121d4275d493ab6ebb0e22fed896cbbcc2ca355856c4aca9fb33c0bf7dbb85",
-          "product_hash": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef"
+          "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-5-last-oakland-baseball.md",
-        "sha256": "fe1780be4afc53e738b97109e157fbed2548f7138f1d3be0e35b3f94629db76b",
+        "sha256": "61d687a6a153f0a1093ce0d2ebe3a8240e31d25fd175704b5fd4dfb0b6682075",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -5064,6 +5172,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "oakland"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 40
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -5093,7 +5213,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Green button-front baseball jersey with gold piping. FRONT: BLACK IS BEAUTIFUL spans about 72% of torso width; letter faces are white except the black A, all edged in gold. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: large black rose rising from gold clouds with gold SR monogram at upper neck."
+            "value": "Green button-front baseball jersey with gold piping. FRONT: BLACK IS BEAUTIFUL spans approximately 80% of the visible torso width; letter faces are white except the black A, all edged in gold. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: large black rose rising from gold clouds with gold SR monogram at upper neck."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -5121,11 +5241,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef"
+            "value": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "fe1780be4afc53e738b97109e157fbed2548f7138f1d3be0e35b3f94629db76b"
+            "value": "61d687a6a153f0a1093ce0d2ebe3a8240e31d25fd175704b5fd4dfb0b6682075"
           },
           {
             "key": "_is_preorder",
@@ -5364,7 +5484,7 @@
     },
     {
       "sku": "lh-002",
-      "product_sot_hash": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488",
+      "product_sot_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9",
       "category_slugs": [
         "love-hurts"
       ],
@@ -5373,18 +5493,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-002-onmodel.webp",
           "sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
-          "product_hash": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488"
+          "product_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/love-hurts-joggers-back-model.webp",
           "sha256": "dbe22667ab46f7aff1355359eab07e7a3f9c989c458c85ab517b762b2187504d",
-          "product_hash": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488"
+          "product_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
-        "sha256": "796f623b0de1006b10f4259ed5ab29427af7453de1f998029734a142a194ab33",
+        "sha256": "e356c57a4ce4348ec89fd6cc2acbf06ea55aaa48dae61df878f1650f022f7437",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -5414,17 +5534,17 @@
             "role": "logo_reference_1",
             "authority": 69,
             "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
-            "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
-            "bytes": 3074
+            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+            "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+            "bytes": 2528
           },
           {
             "role": "logo_reference_1_art",
             "authority": 70,
             "kind": "product_reference",
-            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
-            "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
-            "bytes": 113277
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+            "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+            "bytes": 123109
           }
         ]
       },
@@ -5435,8 +5555,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left thigh — the heart-and-thorns lockup with roses emerging from the top, rendered in red, green, and crimson on the black fabric. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
-        "short_description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left t",
+        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
+        "short_description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left ",
         "sku": "lh-002",
         "regular_price": "",
         "sale_price": "",
@@ -5503,6 +5623,18 @@
             "value": "love-hurts"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -5532,7 +5664,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Heart-rose-composite (Love Hurts heart-and-thorns lockup) embroidered on the left thigh. White contrast side-panel running vertically on both side seams. White drawstring."
+            "value": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. White contrast side-panel running vertically on both side seams. Black drawstring. Plain back."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -5556,15 +5688,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`)."
+            "value": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). Black flat drawstring. NOT shorts. NOT a track short. NOT a basketball short. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`)."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488"
+            "value": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "796f623b0de1006b10f4259ed5ab29427af7453de1f998029734a142a194ab33"
+            "value": "e356c57a4ce4348ec89fd6cc2acbf06ea55aaa48dae61df878f1650f022f7437"
           },
           {
             "key": "_is_preorder",
@@ -5798,7 +5930,7 @@
     },
     {
       "sku": "lh-003",
-      "product_sot_hash": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21",
+      "product_sot_hash": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c",
       "category_slugs": [
         "love-hurts"
       ],
@@ -5807,18 +5939,18 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg",
           "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
-          "product_hash": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21"
+          "product_hash": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
           "sha256": "d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136",
-          "product_hash": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21"
+          "product_hash": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-basketball-shorts.md",
-        "sha256": "5340a30adaa2507c51adbb4d06e2bd52f0e21d2d82a2dbe8e5826160871b1e9d",
+        "sha256": "66462629a585b6ae5260c24dc0306af4c24b756cd5708ee6c57e4eb9a2cb8852",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -5937,6 +6069,18 @@
             "value": "love-hurts"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -5990,15 +6134,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Knee-length athletic basketball shorts — **white mesh body fabric** with **all-over sublimated red-roses-cluster pattern** repeating across the entire body, **black ribbed elasticated waistband** with **white flat drawstring**, **side hand pockets** with vertical welt openings, **black ribbed-binding hem with red contrast piping** along the leg openings. Knee-length cut. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short."
+            "value": "Knee-length athletic basketball shorts — **white mesh body fabric** with **all-over sublimated red-roses-cluster pattern** repeating across the entire body, **black ribbed elasticated waistband with no visible exterior drawstring**, **side hand pockets** with black vertical welt openings, sculpted black mesh side panels, and **black ribbed-binding hem with white and red contrast piping** along the leg openings. Knee-length cut. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21"
+            "value": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "5340a30adaa2507c51adbb4d06e2bd52f0e21d2d82a2dbe8e5826160871b1e9d"
+            "value": "66462629a585b6ae5260c24dc0306af4c24b756cd5708ee6c57e4eb9a2cb8852"
           },
           {
             "key": "_is_preorder",
@@ -6232,7 +6376,7 @@
     },
     {
       "sku": "lh-004",
-      "product_sot_hash": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1",
+      "product_sot_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13",
       "category_slugs": [
         "love-hurts"
       ],
@@ -6241,13 +6385,13 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-onmodel.webp",
           "sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
-          "product_hash": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1"
+          "product_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-bomber.png",
           "sha256": "fb8dee3a83c5df81fe8372acc9c6dba2374b2d6f1c51b4b1bf4bcbb3dc6e79af",
-          "product_hash": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1"
+          "product_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
         }
       ],
       "dossier": {
@@ -6371,6 +6515,18 @@
             "value": "love-hurts"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -6428,7 +6584,7 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1"
+            "value": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
@@ -6666,7 +6822,7 @@
     },
     {
       "sku": "lh-005",
-      "product_sot_hash": "f1046d62100a446b5a0d60c05d2481e671c7fd8d57bb742ff6f319dc931bdd28",
+      "product_sot_hash": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583",
       "category_slugs": [
         "love-hurts",
         "pre-order"
@@ -6676,12 +6832,12 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg",
           "sha256": "8cae4c6b10bfe9bcd4ba60b4a5529769064ef9b5d558527bb71126a115697f18",
-          "product_hash": "f1046d62100a446b5a0d60c05d2481e671c7fd8d57bb742ff6f319dc931bdd28"
+          "product_hash": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-fannie.md",
-        "sha256": "016770b3c8d1b5389549c3c3830e7dc44d19c55542630bd855eed40c7cbe62c6",
+        "sha256": "0bb5c878a44408577bcd0140706c3649961ef057b5e5ccd82bd1273e0e727010",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -6724,8 +6880,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "Oakland luxury meets everyday utility. The essential Love Hurts fanny pack with premium embroidery.",
-        "short_description": "Oakland luxury meets everyday utility. The essential Love Hurts fanny pack with premium embroidery.",
+        "description": "Oakland luxury meets everyday utility. Black pebbled faux-leather fanny pack with premium embroidery and front and rear zipper pockets.",
+        "short_description": "Oakland luxury meets everyday utility. Black pebbled faux-leather fanny pack with premium embroidery and front and rear zipper pockets.",
         "sku": "lh-005",
         "regular_price": "45",
         "sale_price": "",
@@ -6787,6 +6943,18 @@
             "value": "love-hurts"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -6816,7 +6984,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "High-end leather fanny pack construction. The heart-and-rose logo positioned where the dot of the 'I' in 'FANNIE' would go."
+            "value": "Black pebbled faux-leather body with horizontal front and rear zipper pockets. White embroidered FANNIE wordmark with a small red rose accent on the front; adjustable black webbing strap and black hardware."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -6840,15 +7008,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, single front-pocket with a horizontal zipper closure, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection."
+            "value": "A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, one horizontal front zipper pocket and one horizontal rear zipper pocket, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "f1046d62100a446b5a0d60c05d2481e671c7fd8d57bb742ff6f319dc931bdd28"
+            "value": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "016770b3c8d1b5389549c3c3830e7dc44d19c55542630bd855eed40c7cbe62c6"
+            "value": "0bb5c878a44408577bcd0140706c3649961ef057b5e5ccd82bd1273e0e727010"
           },
           {
             "key": "_is_preorder",
@@ -6870,7 +7038,7 @@
     },
     {
       "sku": "lh-006",
-      "product_sot_hash": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d",
+      "product_sot_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb",
       "category_slugs": [
         "love-hurts"
       ],
@@ -6879,24 +7047,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-onmodel.webp",
           "sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
-          "product_hash": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d"
+          "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
           "sha256": "c48bd2e8e764859dee048e3c8f4af955e32bce041fd2975e5948ec700fcc0417",
-          "product_hash": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d"
+          "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/love-hurts-joggers-white-back-model.webp",
           "sha256": "bdcf95a8e0f62c18d64e54b6695391e1f72eef6d1385da29d7c18cbf29d9d1c4",
-          "product_hash": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d"
+          "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
-        "sha256": "5e0d549dbbc8cb184c86d85b6c56b52a51e5023af0c9b64205a15658621157c1",
+        "sha256": "3fcc4485b31d2bd29288da354697d3772c318ce1c11f7d1b530ca5b68e0028e1",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -6926,17 +7094,17 @@
             "role": "logo_reference_1",
             "authority": 69,
             "kind": "approved_logo_or_patch_art",
-            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
-            "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
-            "bytes": 3074
+            "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+            "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+            "bytes": 2528
           },
           {
             "role": "logo_reference_1_art",
             "authority": 70,
             "kind": "product_reference",
-            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
-            "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
-            "bytes": 113277
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+            "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+            "bytes": 123109
           }
         ]
       },
@@ -6947,8 +7115,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left thigh — the heart-and-thorns lockup with roses emerging from the top, rendered in red, green, and crimson on the white fabric. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
-        "short_description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the le",
+        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
+        "short_description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-l",
         "sku": "lh-006",
         "regular_price": "",
         "sale_price": "",
@@ -7015,6 +7183,18 @@
             "value": "love-hurts"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -7044,7 +7224,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Heart-rose-composite (Love Hurts heart-and-thorns lockup) embroidered on the left thigh. Black contrast side-panel running vertically on both side seams. White drawstring."
+            "value": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Black contrast side-panel running vertically on both side seams. Black drawstring. Plain back."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -7068,15 +7248,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`)."
+            "value": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). Black flat drawstring. NOT shorts. NOT a track short. NOT a basketball short. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`)."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d"
+            "value": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "5e0d549dbbc8cb184c86d85b6c56b52a51e5023af0c9b64205a15658621157c1"
+            "value": "3fcc4485b31d2bd29288da354697d3772c318ce1c11f7d1b530ca5b68e0028e1"
           },
           {
             "key": "_is_preorder",
@@ -7310,7 +7490,7 @@
     },
     {
       "sku": "sg-001",
-      "product_sot_hash": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f",
+      "product_sot_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941",
       "category_slugs": [
         "signature",
         "pre-order"
@@ -7320,19 +7500,19 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-001-bay-bridge-shorts.jpeg",
           "sha256": "3bfe3a460f6bb425240f2c268977e6c11f248bfd9bf9a872d83d2d11c441a950",
-          "product_hash": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f"
+          "product_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/bridge-bay-bridge-shorts-back-model.webp",
           "sha256": "aa9e2236f29b24c65598038f77c73c8d651bb8bec563391250790edeaa3d688b",
-          "product_hash": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f"
+          "product_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/the-bay-set-back-model.webp",
           "sha256": "205c10a7fb09f9888d4bce3100aed31d3099833b84b3659debc9f0bf8315eff7",
-          "product_hash": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f"
+          "product_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941"
         }
       ],
       "dossier": {
@@ -7440,6 +7620,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -7497,7 +7689,7 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f"
+            "value": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
@@ -7740,7 +7932,7 @@
     },
     {
       "sku": "sg-002",
-      "product_sot_hash": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f",
+      "product_sot_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e",
       "category_slugs": [
         "signature",
         "pre-order"
@@ -7750,24 +7942,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-002-stay-golden-shirt.webp",
           "sha256": "bd2e1c0481e1e982e7b4b811b2005f39fb14e95fc8d6cf4368d5716a04587e10",
-          "product_hash": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f"
+          "product_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-002-stay-golden-shirt.jpeg",
           "sha256": "a9b752b555281f473b7fc9924c930d1353e3ad5c123fd76b8eddbdd409155f3f",
-          "product_hash": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f"
+          "product_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/stay-golden-tee-back-model.webp",
           "sha256": "2b1868c007e196786d4a66fdb6534b16774dac8038676d9abea741c4f0e93685",
-          "product_hash": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f"
+          "product_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shirt.md",
-        "sha256": "59c76429f29cc9ec7f363928b7d3d5037c218ef3dd17f0c4fec4bc3fba857b85",
+        "sha256": "d8f682ac88811e96e0c50b431a60d29814ad263301912033597ce3a45d42c9c9",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -7886,6 +8078,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -7943,11 +8147,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f"
+            "value": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "59c76429f29cc9ec7f363928b7d3d5037c218ef3dd17f0c4fec4bc3fba857b85"
+            "value": "d8f682ac88811e96e0c50b431a60d29814ad263301912033597ce3a45d42c9c9"
           },
           {
             "key": "_is_preorder",
@@ -8186,7 +8390,7 @@
     },
     {
       "sku": "sg-003",
-      "product_sot_hash": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d",
+      "product_sot_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23",
       "category_slugs": [
         "signature",
         "pre-order"
@@ -8196,24 +8400,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/bridge-stay-golden-shorts-front-model.webp",
           "sha256": "938347e3dc840bc08f004406f6cf2ec672e9538fc4c8820f091899ca5ee510ce",
-          "product_hash": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d"
+          "product_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-003-stay-golden-shorts.jpeg",
           "sha256": "5148de48a616ab9d9fb334bf8b0ed8357259339fd45658f90c4ef640e581a71d",
-          "product_hash": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d"
+          "product_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/bridge-stay-golden-shorts-back-model.webp",
           "sha256": "aff15b6f2bc2bb17811b125f555702fdf00ecd33434e6ef3cda59016bfc98991",
-          "product_hash": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d"
+          "product_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shorts.md",
-        "sha256": "4deca5c523b2b4dde6fc5768a978a5e8b9af6a530a250da1c0a50518a3d3ca7d",
+        "sha256": "8440d195c9808e35c1e02dc1ea58e292a32902282a41c8b53bd6618ff9b81d40",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -8308,6 +8512,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -8361,15 +8577,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. \"Stay Golden\" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU)."
+            "value": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: **purple elasticated waistband matching the physical founder flatlay** with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. \"Stay Golden\" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU)."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d"
+            "value": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "4deca5c523b2b4dde6fc5768a978a5e8b9af6a530a250da1c0a50518a3d3ca7d"
+            "value": "8440d195c9808e35c1e02dc1ea58e292a32902282a41c8b53bd6618ff9b81d40"
           },
           {
             "key": "_is_preorder",
@@ -8608,7 +8824,7 @@
     },
     {
       "sku": "sg-005",
-      "product_sot_hash": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c",
+      "product_sot_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda",
       "category_slugs": [
         "signature",
         "pre-order"
@@ -8618,18 +8834,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp",
           "sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
-          "product_hash": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c"
+          "product_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-bay-bridge-shirt.jpeg",
           "sha256": "3e44b05480b96941c52b5d83d9e41eaec7f7fecda34358845b51306f7d961292",
-          "product_hash": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c"
+          "product_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
-        "sha256": "8d85cab5b536b01b023500dce3935e0e0199f4396b813fa8f514c8ae541152c3",
+        "sha256": "04ddbd458ced6c49f39ce2a12dccbe2edec9f6ed0180efffb87100f1e8a5783a",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -8747,6 +8963,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -8804,11 +9032,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c"
+            "value": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "8d85cab5b536b01b023500dce3935e0e0199f4396b813fa8f514c8ae541152c3"
+            "value": "04ddbd458ced6c49f39ce2a12dccbe2edec9f6ed0180efffb87100f1e8a5783a"
           },
           {
             "key": "_is_preorder",
@@ -9011,7 +9239,7 @@
     },
     {
       "sku": "sg-006",
-      "product_sot_hash": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf",
+      "product_sot_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3",
       "category_slugs": [
         "signature"
       ],
@@ -9020,24 +9248,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-006-onmodel.webp",
           "sha256": "510cac2c051615d0713180d512c1f4f132e6d774dd989e2e536e608be62bfe2f",
-          "product_hash": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf"
+          "product_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-006-mint-lavender-hoodie.png",
           "sha256": "0f47125187736a1089a42fa5f2f92987cbae5ac00c77bd41225697160afac4ea",
-          "product_hash": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf"
+          "product_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/mint-lavender-hoodie-back-model.webp",
           "sha256": "189647dfa9c1b82c502016380747c20b086c7ffe6cb4334110b9b1e13b28e8be",
-          "product_hash": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf"
+          "product_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-hoodie.md",
-        "sha256": "04cdd10dde63036f52990027a6e51b0cc7907c799543c4dfc6ad7d5216ee8529",
+        "sha256": "b059e3c5f064481ee4ebdffa13ca2101f09e8c56a7217c583329dbfff8e6df2b",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -9072,8 +9300,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "Sweet pastel vibes meet streetwear luxury. Mint and lavender colorblock with signature rose detail.",
-        "short_description": "Sweet pastel vibes meet streetwear luxury. Mint and lavender colorblock with signature rose detail.",
+        "description": "Sweet pastel streetwear in a solid mint pullover hoodie with a centered lavender rose composition.",
+        "short_description": "Sweet pastel streetwear in a solid mint pullover hoodie with a centered lavender rose composition.",
         "sku": "sg-006",
         "regular_price": "",
         "sale_price": "",
@@ -9140,6 +9368,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -9169,7 +9409,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Lavender rose logo centered on the front."
+            "value": "Large lavender rose composition centered on the solid mint front; white hood drawstrings; mint kangaroo pocket; plain mint back."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -9193,15 +9433,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any\nkind) — solid **mint green** body, hood, and sleeves, all one mint color.\n**Lavender/purple drawstrings** at the hood opening (the only contrast hardware).\nLarge lavender rose-cluster graphic centered on the chest. Ribbed cuffs and\nbottom hem in self-color mint. Mid-weight cotton-fleece fabric. Pairs with the\nMint & Lavender Sweatpants (sg-014) as a matching set. **Sold as the hoodie SKU\nonly — the matching sweatpants are sg-014, separate SKU.** NOT a zip-up. NOT a\ncrewneck (that's sg-013 Mint & Lavender Crewneck — separate SKU). NOT a\nwindbreaker (the white-body rainbow-chevron zip-up set is sg-015 — a completely\ndifferent product)."
+            "value": "PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any\nkind) — solid **mint green** body, hood, and sleeves, all one mint color.\n**White drawstrings** at the hood opening (the only contrast hardware).\nLarge lavender rose-cluster graphic centered on the chest. Ribbed cuffs and\nbottom hem in self-color mint. Mid-weight cotton-fleece fabric. Pairs with the\nMint & Lavender Sweatpants (sg-014) as a matching set. **Sold as the hoodie SKU\nonly — the matching sweatpants are sg-014, separate SKU.** NOT a zip-up. NOT a\ncrewneck (that's sg-013 Mint & Lavender Crewneck — separate SKU). NOT a\nwindbreaker (the white-body rainbow-chevron zip-up set is sg-015 — a completely\ndifferent product)."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf"
+            "value": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "04cdd10dde63036f52990027a6e51b0cc7907c799543c4dfc6ad7d5216ee8529"
+            "value": "b059e3c5f064481ee4ebdffa13ca2101f09e8c56a7217c583329dbfff8e6df2b"
           },
           {
             "key": "_is_preorder",
@@ -9435,7 +9675,7 @@
     },
     {
       "sku": "sg-007",
-      "product_sot_hash": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03",
+      "product_sot_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c",
       "category_slugs": [
         "signature"
       ],
@@ -9444,24 +9684,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-007-onmodel.webp",
           "sha256": "ba6b7523a516ae1feb310c38051e5367c891e4578628161794d0d63d0334363b",
-          "product_hash": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03"
+          "product_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-007-signature-beanie.png",
           "sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43",
-          "product_hash": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03"
+          "product_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/signature-beanie-back-model.webp",
           "sha256": "d26b90f648aa7a394fb7363e051bf166bd386889cfd46bcd555efa411bfccb0d",
-          "product_hash": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03"
+          "product_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-signature-beanie.md",
-        "sha256": "98842ce4880b4734b210f389dbbce01b378e8354a0d6e8f6e62f8131aa133228",
+        "sha256": "085fedf0686a3dcd6e05cf045e608c5c1f44a829559ad04d7b885e26346602fa",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -9512,8 +9752,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "Classic fitted beanie with embroidered signature rose. West Coast luxury meets everyday warmth. Rose-logo color variants: red, grey, black, purple.",
-        "short_description": "Classic fitted beanie with embroidered signature rose. West Coast luxury meets everyday warmth. Rose-logo color variants: red, grey, black, purple.",
+        "description": "Classic fitted black beanie with a small silicone signature-rose patch. West Coast luxury meets everyday warmth. Rose-logo color variants: red, grey, black, purple.",
+        "short_description": "Classic fitted black beanie with a small silicone signature-rose patch. West Coast luxury meets everyday warmth. Rose-logo color variants: red, grey, black, purple.",
         "sku": "sg-007",
         "regular_price": "25",
         "sale_price": "",
@@ -9575,6 +9815,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -9604,7 +9856,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Small silicone patch logo positioned slightly off-center to the left. Logo rose color variants: red, grey, black, purple."
+            "value": "Small rectangular silicone rose-logo patch positioned slightly off-center to the wearer's left. Logo rose color variants: red, grey, black, purple. No direct embroidery into the knit."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -9628,15 +9880,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic embroidered on the front face of the cuff. Mid-weight knit fabric."
+            "value": "Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rectangular silicone rose-logo patch attached to the front face of the cuff. Mid-weight knit fabric."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03"
+            "value": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "98842ce4880b4734b210f389dbbce01b378e8354a0d6e8f6e62f8131aa133228"
+            "value": "085fedf0686a3dcd6e05cf045e608c5c1f44a829559ad04d7b885e26346602fa"
           },
           {
             "key": "_is_preorder",
@@ -9653,7 +9905,7 @@
     },
     {
       "sku": "sg-009",
-      "product_sot_hash": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e",
+      "product_sot_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a",
       "category_slugs": [
         "signature"
       ],
@@ -9662,25 +9914,25 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
           "sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
-          "product_hash": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e"
+          "product_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
           "sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
-          "product_hash": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e"
+          "product_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/signature-sherpa-jacket-back-model.webp",
           "sha256": "ce3abe659db2e795bb54990758bdcf92ab7cc7cd555322440b83a0e3f5474b62",
-          "product_hash": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e"
+          "product_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/the-sherpa-jacket-back-model.webp",
           "sha256": "4c16fea9870d524bc47ff5846e4893164ff9e29f03ff1d68bab0eadf787f0468",
-          "product_hash": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e"
+          "product_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a"
         }
       ],
       "dossier": {
@@ -9804,6 +10056,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -9861,7 +10125,7 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e"
+            "value": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
@@ -10099,7 +10363,7 @@
     },
     {
       "sku": "sg-011",
-      "product_sot_hash": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812",
+      "product_sot_hash": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669",
       "category_slugs": [
         "signature"
       ],
@@ -10108,18 +10372,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-011-onmodel.webp",
           "sha256": "b278f4abfc7127ef62c97db79e21bd65d1f7506d18e44686325b1953dec89f06",
-          "product_hash": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812"
+          "product_hash": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-011-original-label-tee-white.jpeg",
           "sha256": "9e80fd8e297d6e5da548d39569301b2f032f1bb73949db2bc7a1c2b41f231ab1",
-          "product_hash": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812"
+          "product_hash": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/original-label-tee-white.md",
-        "sha256": "0d2fd02c684cc717e165734925f6198ed119812b5cb9eda1ffbe3b523a2df4a2",
+        "sha256": "3ae8edb4bdf767b5935ef86962bad7f4fcb50da29f32a64c2488efa9e72176c2",
         "references": []
       },
       "product": {
@@ -10197,6 +10461,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -10254,11 +10530,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812"
+            "value": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "0d2fd02c684cc717e165734925f6198ed119812b5cb9eda1ffbe3b523a2df4a2"
+            "value": "3ae8edb4bdf767b5935ef86962bad7f4fcb50da29f32a64c2488efa9e72176c2"
           },
           {
             "key": "_is_preorder",
@@ -10492,7 +10768,7 @@
     },
     {
       "sku": "sg-012",
-      "product_sot_hash": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1",
+      "product_sot_hash": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786",
       "category_slugs": [
         "signature"
       ],
@@ -10501,18 +10777,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-onmodel.webp",
           "sha256": "5cd91f17c0bbd77633be628e76b7d0100c2572f76b2912add5022b9831262f87",
-          "product_hash": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1"
+          "product_hash": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-original-label-tee-orchid.jpeg",
           "sha256": "ebbe6620d6781d128c7da811e7febad138dbbccb91fb8f760df98c6749fd8fb5",
-          "product_hash": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1"
+          "product_hash": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/original-label-tee-orchid.md",
-        "sha256": "cc5de2341bffaf523116b8f8a78db94dc9c77f61cb38bfef210521313f94ea9a",
+        "sha256": "6e5b685ef3e12db3d6991db0984bf0e8c42398367b8de618b1be9f56429a3688",
         "references": []
       },
       "product": {
@@ -10590,6 +10866,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -10647,11 +10935,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1"
+            "value": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "cc5de2341bffaf523116b8f8a78db94dc9c77f61cb38bfef210521313f94ea9a"
+            "value": "6e5b685ef3e12db3d6991db0984bf0e8c42398367b8de618b1be9f56429a3688"
           },
           {
             "key": "_is_preorder",
@@ -10885,7 +11173,7 @@
     },
     {
       "sku": "sg-013",
-      "product_sot_hash": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b",
+      "product_sot_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2",
       "category_slugs": [
         "signature"
       ],
@@ -10894,13 +11182,13 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-013-onmodel.webp",
           "sha256": "cb58e694639ff02b4dd7c1d009516df237f0acb39a8c6f6948930dad5d3c157b",
-          "product_hash": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b"
+          "product_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-013-mint-lavender-crewneck.jpeg",
           "sha256": "ad26b94284690685af52307d8bdc72d7187e9177586282275279b577179396f5",
-          "product_hash": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b"
+          "product_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2"
         }
       ],
       "dossier": {
@@ -11008,6 +11296,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -11065,7 +11365,7 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b"
+            "value": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
@@ -11303,7 +11603,7 @@
     },
     {
       "sku": "sg-014",
-      "product_sot_hash": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9",
+      "product_sot_hash": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867",
       "category_slugs": [
         "signature"
       ],
@@ -11312,18 +11612,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/sg-014-ghost-front.webp",
           "sha256": "a2ef67b68b940664eeeb9bf37b022def2a09ff435ac4756447d11702de10fd16",
-          "product_hash": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9"
+          "product_hash": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-014-mint-lavender-sweatpants.jpeg",
           "sha256": "1cc5ced83992c4c11ca39b36613f1bcddc44fd02c2b6ba9e648f591ba947eae4",
-          "product_hash": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9"
+          "product_hash": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-sweatpants.md",
-        "sha256": "361ab61cdd47cb5bf84784a201b70bb4da9605749043053cb57025644d84de47",
+        "sha256": "fa672390a6735624c4e596fcd4d79865c6ac052d599b70b5434b559c8918ec57",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -11426,6 +11726,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -11483,11 +11795,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9"
+            "value": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "361ab61cdd47cb5bf84784a201b70bb4da9605749043053cb57025644d84de47"
+            "value": "fa672390a6735624c4e596fcd4d79865c6ac052d599b70b5434b559c8918ec57"
           },
           {
             "key": "_is_preorder",
@@ -11721,7 +12033,7 @@
     },
     {
       "sku": "sg-015",
-      "product_sot_hash": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76",
+      "product_sot_hash": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d",
       "category_slugs": [
         "signature",
         "pre-order"
@@ -11731,18 +12043,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-015-onmodel.webp",
           "sha256": "3d2c32ea1ef392a234d25d487c524234faa3f3c05830673ce8ba387898de52a5",
-          "product_hash": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76"
+          "product_hash": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-015-windbreaker-set.jpg",
           "sha256": "cddd4d4dfccd473bbd1d1223c18270141342c7e6bc31bdab25df99f04d8ce2dc",
-          "product_hash": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76"
+          "product_hash": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-windbreaker-set.md",
-        "sha256": "cd1f0678c09312983907e55698f406adf264e77855691795f4e582b5a9f4875d",
+        "sha256": "9285c0e6d57b2f52e03f7c7037326b1bc161c279a156ca7b37e94e9c82c2610e",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -11793,8 +12105,8 @@
         "status": "publish",
         "featured": false,
         "catalog_visibility": "visible",
-        "description": "Signature luxury meets West Coast weather. A premium windbreaker set built for those who move through fog.",
-        "short_description": "Signature luxury meets West Coast weather. A premium windbreaker set built for those who move through fog.",
+        "description": "Signature luxury meets West Coast weather. A premium two-piece white nylon windbreaker jacket and pants set with sewn pastel chevron color-blocking.",
+        "short_description": "Signature luxury meets West Coast weather. A premium two-piece white nylon windbreaker jacket and pants set with sewn pastel chevron color-blocking.",
         "sku": "sg-015",
         "regular_price": "",
         "sale_price": "",
@@ -11861,6 +12173,18 @@
             "value": "signature"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -11890,7 +12214,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Premium windbreaker set (jacket + matching bottom). Branding detail TBD — provide a logo-details entry when you have the final spec."
+            "value": "White nylon jacket and pants with sewn pink, green, lavender, and yellow chevron panels; pink hood; striped rib-knit bands; small pink embroidered rose on wearer-left jacket chest and pants thigh; large embroidered SR monogram on upper jacket back."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -11918,11 +12242,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76"
+            "value": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "cd1f0678c09312983907e55698f406adf264e77855691795f4e582b5a9f4875d"
+            "value": "9285c0e6d57b2f52e03f7c7037326b1bc161c279a156ca7b37e94e9c82c2610e"
           },
           {
             "key": "_is_preorder",
@@ -12161,7 +12485,7 @@
     },
     {
       "sku": "kids-001",
-      "product_sot_hash": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd",
+      "product_sot_hash": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028",
       "category_slugs": [
         "kids-capsule"
       ],
@@ -12170,18 +12494,18 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-onmodel-v2.webp",
           "sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
-          "product_hash": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd"
+          "product_hash": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-001-red-set.jpeg",
           "sha256": "fb6ee3489c11a9223bc11598443be1b55f3c10f851cf063ff377a44670e92f9c",
-          "product_hash": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd"
+          "product_hash": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/kids-colorblock-hoodie-set-red-black.md",
-        "sha256": "af98b74131430762ffb05fbc7726fd6f483d15e2d71604315b4233eca3bb77ce",
+        "sha256": "47866bb356d3a703bca82a4a6eb882f026f718e94a4c2937cfb81ad658eace08",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -12292,6 +12616,18 @@
             "value": "kids-capsule"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -12349,11 +12685,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd"
+            "value": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "af98b74131430762ffb05fbc7726fd6f483d15e2d71604315b4233eca3bb77ce"
+            "value": "47866bb356d3a703bca82a4a6eb882f026f718e94a4c2937cfb81ad658eace08"
           },
           {
             "key": "_is_preorder",
@@ -12587,7 +12923,7 @@
     },
     {
       "sku": "kids-002",
-      "product_sot_hash": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea",
+      "product_sot_hash": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878",
       "category_slugs": [
         "kids-capsule"
       ],
@@ -12596,18 +12932,18 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-002-purple-set.jpeg",
           "sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
-          "product_hash": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea"
+          "product_hash": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
           "sha256": "7ce66f7a94a6b1d50c0ed7c6a701a675b81c61305d5293f3bfd5e43e9c290ea1",
-          "product_hash": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea"
+          "product_hash": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/kids-colorblock-hoodie-set-purple-black.md",
-        "sha256": "50f0ac3ce94c2d60e4a1b97e7959d06cb6a7cfedf51440f4b338bfc0376eee48",
+        "sha256": "885fb823e13d668c418f859ae2497fa0280e7c78557895eb28f1b24c86d58a8e",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -12718,6 +13054,18 @@
             "value": "kids-capsule"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": ""
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 0
+          },
+          {
             "key": "_skyyrose_badge",
             "value": ""
           },
@@ -12771,15 +13119,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (lavender/light-pink hood + diagonal lavender-and-medium-purple upper-body panels + deep purple lower body), and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001) but in a purple-monochrome palette."
+            "value": "Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** with a deep-purple hood, dusty-pink upper yoke/right sleeve, medium-purple left sleeve/diagonal panel, and deep-purple lower body; and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction family as the Red/Black colorway (kids-001) but with its own exact purple/pink panel map."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea"
+            "value": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "50f0ac3ce94c2d60e4a1b97e7959d06cb6a7cfedf51440f4b338bfc0376eee48"
+            "value": "885fb823e13d668c418f859ae2497fa0280e7c78557895eb28f1b24c86d58a8e"
           },
           {
             "key": "_is_preorder",
@@ -13013,7 +13361,7 @@
     },
     {
       "sku": "br-014",
-      "product_sot_hash": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973",
+      "product_sot_hash": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -13023,24 +13371,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-014-onmodel.webp",
           "sha256": "dcc3eb92e83591bdfa9d35b2691db72b5b8f3cf39b37e14dc671b32151b9f719",
-          "product_hash": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973"
+          "product_hash": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-014-baseball-classic-giants.jpeg",
           "sha256": "aed53e3a9a181c8e9a1c3909e8a50f410a249a8f93a5bc01271301add88ca890",
-          "product_hash": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973"
+          "product_hash": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-014-giants-back.webp",
           "sha256": "a51915c92dea276feb30bbafd1061b3c641e3fec69df635c0e48df5075d82474",
-          "product_hash": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973"
+          "product_hash": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic-giants.md",
-        "sha256": "57aeca9440387a6c10b341df04bdaf4c4ffbf7a8e3e9454888c09b9407418a5f",
+        "sha256": "488824479ba70930508dffbf72942454c786e3db2951752e9473cda1a016eda6",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -13191,6 +13539,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "san-francisco"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 60
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -13220,7 +13580,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "Black button-front baseball jersey with orange BLACK IS BEAUTIFUL wordmark and orange collar, placket, cuff, and hem trim. BACK: large greyscale rose/cloud crest with orange SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch."
+            "value": "Black button-front baseball jersey with orange BLACK IS BEAUTIFUL tackle-twill wordmark spanning approximately 80% of the visible torso width; orange collar, placket, and cuff trim; plain black bottom hem. BACK: large greyscale rose/cloud crest with orange SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -13248,11 +13608,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973"
+            "value": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "57aeca9440387a6c10b341df04bdaf4c4ffbf7a8e3e9454888c09b9407418a5f"
+            "value": "488824479ba70930508dffbf72942454c786e3db2951752e9473cda1a016eda6"
           },
           {
             "key": "_is_preorder",
@@ -13491,7 +13851,7 @@
     },
     {
       "sku": "br-015",
-      "product_sot_hash": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e",
+      "product_sot_hash": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb",
       "category_slugs": [
         "black-rose",
         "pre-order"
@@ -13501,24 +13861,24 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-015-onmodel.webp",
           "sha256": "b85812b19f282a8916a942326f54b3e1f7a0ee246025c35876c7b06451f2f65b",
-          "product_hash": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e"
+          "product_hash": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-015-baseball-classic-white.jpeg",
           "sha256": "0ce949e7cb59b028113acfdd61b5d1775fa7db85e5fa33fcdb893a1a7d724df9",
-          "product_hash": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e"
+          "product_hash": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-is-beautiful-jersey-white/black-is-beautiful-jersey-white-back-model.webp",
           "sha256": "eae215bc8058cdae8f7c718c0c51843796d3d964bf4702b335cd031cc9685a9c",
-          "product_hash": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e"
+          "product_hash": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic-white.md",
-        "sha256": "60f5025709b42db41a6f989c946a7c92f1225304037cd0a48e773ae533bed998",
+        "sha256": "958a98c632135fb0d40bcd6415951c3415416ab878c49a43f5cc0b98aa33c44a",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -13653,6 +14013,18 @@
             "value": "black-rose"
           },
           {
+            "key": "_skyyrose_series_slug",
+            "value": "jersey-series"
+          },
+          {
+            "key": "_skyyrose_series_region",
+            "value": "oakland"
+          },
+          {
+            "key": "_skyyrose_series_order",
+            "value": 20
+          },
+          {
             "key": "_skyyrose_badge",
             "value": "Pre-Order"
           },
@@ -13682,7 +14054,7 @@
           },
           {
             "key": "_skyyrose_branding_spec",
-            "value": "White button-front baseball jersey with black BLACK IS BEAUTIFUL wordmark and black collar, placket, cuff, and hem trim. BACK: large greyscale rose/cloud crest with black SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch."
+            "value": "White button-front baseball jersey with black BLACK IS BEAUTIFUL tackle-twill wordmark spanning approximately 80% of the visible torso width; black collar, placket, and cuff trim; plain white bottom hem. BACK: large greyscale rose/cloud crest with black SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch."
           },
           {
             "key": "_skyyrose_render_output_slug",
@@ -13710,11 +14082,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e"
+            "value": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "60f5025709b42db41a6f989c946a7c92f1225304037cd0a48e773ae533bed998"
+            "value": "958a98c632135fb0d40bcd6415951c3415416ab878c49a43f5cc0b98aa33c44a"
           },
           {
             "key": "_is_preorder",

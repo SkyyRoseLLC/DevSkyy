@@ -25,12 +25,18 @@ reference_image: assets/products/references/br-003-baseball-classic-techflat.jpe
 > `assets/products/references/br-003-baseball-classic-techflat.jpeg`.
 
 ### Front
-- **front-chest** (large, arched, ~9in wide): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering — pre-cut white fabric letters appliquéd
   onto the black jersey body in a baseball-script style with a subtle classic
   outline, arched across the upper-front-chest. **Technique:** tackle-twill.
   **Color:** white twill letters (no contrast satin-stitch edge — clean
   white-on-black).
+  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,
+  and on-model image, measure between the visible left and right torso side
+  seams at the wordmark baseline. The outermost letter edges sit approximately
+  10% in from each side, yielding approximately 80% visible torso width. Center
+  the single readable arch on the button placket; the placket may divide the
+  artwork naturally but must not remove, compress, or rearrange any letter.
 - **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**, near the bottom
   hem on the wearer's left hip): The Black Rose Authentic Collection patch —
   the rectangular yellow-and-white multi-element patch defined in the patch
@@ -103,12 +109,18 @@ reference_image: assets/products/references/br-003-baseball-classic-techflat.jpe
   Authentic Collection patch).
 - NO chest-pocket or breast-pocket (this is a clean-front jersey — only
   the placket and tackle-twill wordmark).
+- NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest
+  wordmark. It must remain one centered readable arch at approximately 80% of
+  the visible torso width, with approximately 10% clear torso margin on each
+  side. NO letters may wrap onto a sleeve or cross a side seam.
 
 ## Scene direction
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing the
   tackle-twill wordmark across the chest and the Authentic Collection patch
-  at the lower-left hip. For back renders: back view straight-on showing the
+  at the lower-left hip. The complete torso and both side seams must remain
+  visible so the locked 80% wordmark scale can be verified. For back renders:
+  back view straight-on showing the
   small gold SR monogram at the upper-back-neck and the large white-thread
   Black Rose embroidered logo across the back-center.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting

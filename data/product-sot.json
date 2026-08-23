@@ -4,7 +4,7 @@
   "authority": "Single machine-facing product contract for image generation, video generation, website, advertising, and WooCommerce. Edit catalog/dossier/logo sources, then regenerate.",
   "sources": {
     "catalog": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
-    "catalog_sha256": "88eed2b0ee75e73c19b2aa27b528f868b57c058509a1cd794abdf264aefad214",
+    "catalog_sha256": "54cd616c1751a8908af70aa78391dd1e74e12fbebb438986a430aa8296115f69",
     "logo_registry": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
     "logo_registry_sha256": "660aea5fa832849b47c8c1b9d3a36a665202e2f13f1927bda7ca2f7f0d3ad761"
   },
@@ -34,15 +34,20 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Crewneck sweatshirt — upper body only, round ribbed neckline, no hood, no buttons, no zipper, no front pocket. NOT a jersey. NOT a hoodie. NOT a jacket. NOT a t-shirt. NOT a tank top. Heavyweight cotton fleece, relaxed fit. **White ribbed neckband, white ribbed sleeve cuffs, white ribbed waist hem** (contrast white trim against the black body — same pattern as the matching joggers in the Black Rose set).",
         "branding_summary": "Embossed on front chest, approximately 10 inches wide.",
         "branding_regions": [
           {
             "region": "back-neck",
-            "description": "- **back-neck** (small, ~2in wide, top-center just below the white-ribbed\n  collar): The SR monogram (gold metallic art — see sr-monogram reference).\n  Embroidered directly onto the jersey in gold-tone thread. **Technique:**\n  embroidered. **Color:** gold-tone thread (preserves the gold-to-copper\n  gradient from the canonical mark).",
+            "description": "- **back-neck** (small, ~2in wide, top-center just below the white-ribbed\n  collar): A small version of the same Black Rose three-rose-cluster shown on\n  the authoritative front/back techflat. The three roses, leaves, thorny vines,\n  and single cloud pedestal remain recognizable at the reduced scale.\n  **Technique:** embroidered. **Color:** reduced BLACK / WHITE / GREY palette;\n  no green, blue, gold, or copper.",
             "technique": "embroidered",
-            "color_named": "gold-tone thread (preserves the gold-to-copper",
+            "color_named": "reduced BLACK / WHITE / GREY palette;",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "small, ~2in wide, top-center just below the white-ribbed\n  collar"
@@ -93,13 +98,13 @@
           "NO blue-tinted cloud shading on this product — the embossed cloud is",
           "NO embroidered Black Rose logo on the front chest (the front is embossed,",
           "NO embroidered patches on the lower right front (this is NOT a baseball jersey).",
-          "NO SR monogram on the front chest. NO SR monogram on the sleeves. NO SR",
-          "NO embroidered roses on mid back (the back-CENTER is empty; the SR monogram",
+          "NO SR monogram anywhere on this product — not on the front, sleeves,",
+          "NO large rose artwork on the back. The back-CENTER is empty; only the small",
           "NO baseball player graphics anywhere.",
           "NO sleeve patches, sleeve embroidery, sleeve printing — sleeves are clean.",
           "NO hem or side-seam decoration on the body fabric — the hem is plain ribbed",
           "NO chest text other than the embossed rose logo.",
-          "NO contrasting-color logos on the body fabric beyond the back-neck SR monogram.",
+          "NO gold or copper logo on the back-neck.",
           "NO silicone appliqué.",
           "NO heat-transfer vinyl.",
           "NO sublimated panels.",
@@ -107,7 +112,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Standing facing forward, three-quarter angle, hands relaxed at sides\n  or one hand in pocket of joggers. Chest area clearly lit from the front-left\n  to reveal the embossed logo's raised texture; back-neck framed in back/back-\n  three-quarter renders to show the gold SR monogram.",
+        "pose": "Standing facing forward, three-quarter angle, hands relaxed at sides\n  or one hand in pocket of joggers. Chest area clearly lit from the front-left\n  to reveal the embossed logo's raised texture; back-neck framed in back/back-\n  three-quarter renders to show the small BLACK / WHITE / GREY Black Rose\n  cluster directly below the white collar.",
         "setting": "Pure white studio backdrop, soft directional studio lighting,\n  subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -144,22 +149,6 @@
           "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
           "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
           "bytes": 133982
-        },
-        {
-          "role": "logo_reference_1",
-          "authority": 69,
-          "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
-          "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
-          "bytes": 2578
-        },
-        {
-          "role": "logo_reference_1_art",
-          "authority": 70,
-          "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
-          "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
-          "bytes": 77819
         }
       ],
       "media": {
@@ -197,7 +186,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-crewneck.md",
-        "dossier_sha256": "c3443d005f8d9d06e59420f4631c8e6a58657abda30d43620de450b9db64e03c"
+        "dossier_sha256": "de2506ca27263f548c550ed85bb306b1ab03045acc35b1e6b33086586f9e4e37"
       },
       "consumer_contract": {
         "required_for": [
@@ -210,7 +199,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832"
+      "product_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c"
     },
     "br-002": {
       "sku": "br-002",
@@ -237,6 +226,11 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Black jogger sweatpants — lower body only, elasticated waist with drawstring, tapered leg, ribbed ankle cuffs, side hand pockets, back pockets. **White ribbed waistband** at the top, **white ribbed ankle cuffs** at the bottom (contrast white trim against the black body — same pattern as the matching Black Rose Crewneck). NOT shorts. NOT straight-leg sweatpants. NOT cargo pants. NOT track pants with side stripes. NOT leggings. Heavyweight cotton-blend fleece, relaxed fit through the thigh.",
         "branding_summary": "Silicone patch logo on left thigh area.",
@@ -249,15 +243,6 @@
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "~3in × 2in"
-          },
-          {
-            "region": "right-thigh",
-            "description": "- **right-thigh** (small, ~1.5in–2in wide, upper-back-right hip area —\n  approximately mirroring the position of the front-left silicone patch\n  but on the back): The SR monogram, embroidered directly onto the fabric\n  in **gold-tone thread** (matching the gold-to-copper gradient of the\n  canonical SR mark). **Technique:** embroidered. **Color:** gold-tone thread.",
-            "technique": "embroidered",
-            "color_named": "gold-tone thread",
-            "color_hex": null,
-            "color_pantone": null,
-            "dimensions": "small, ~1.5in–2in wide, upper-back-right hip area —\n  approximately mirroring the position of the front-left silicone patch\n  but on the back"
           },
           {
             "region": "inside-waistband",
@@ -288,7 +273,7 @@
           },
           {
             "region": "drawstring",
-            "description": "- **drawstring**: Flat **white** drawstring threaded through the waistband.\n  No metal tips, no branded tips. **Technique:** stitched. **Color:** white.",
+            "description": "- **drawstring**: Flat **black** drawstring threaded through the waistband.\n  No metal tips, no branded tips. **Technique:** stitched. **Color:** white.",
             "technique": "stitched",
             "color_named": "white",
             "color_hex": null,
@@ -298,7 +283,7 @@
         ],
         "negative_constraints": [
           "NO logo on the right thigh on the FRONT — the silicone patch is on the",
-          "NO Black Rose silicone patch on the back — the back's only branding is",
+          "NO logo or monogram on the back. The back is plain black.",
           "NO embroidered logos on the front of the joggers — the front-left thigh",
           "NO embossed/debossed decoration anywhere.",
           "NO printed graphics or printed text on the legs, hem, or waistband.",
@@ -307,7 +292,7 @@
           "NO logo on the front of the ankle cuffs, no logo on the hem fabric.",
           "NO \"BLACK ROSE\" wordmark printed across the leg.",
           "NO sublimated panels, no heat-transfer vinyl, no puff-print decoration.",
-          "NO black drawstring (the drawstring is WHITE — confirmed in set techflat).",
+          "NO white drawstring — the physical flatlay confirms a BLACK drawstring.",
           "NO black waistband rib (the waistband rib is WHITE — confirmed).",
           "NO black ankle cuff rib (the ankle cuff rib is WHITE — confirmed).",
           "NO chest, sleeve, or upper-body decoration (this is a lower-body-only garment).",
@@ -315,7 +300,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view (or three-quarter front-left) for the silicone patch\n  on the front-left thigh; back view (or back-three-quarter) to show the\n  small embroidered gold SR monogram at the back-right hip.",
+        "pose": "Front view (or three-quarter front-left) for the silicone patch\n  on the front-left thigh; back view (or back-three-quarter) to document the\n  plain black back construction.",
         "setting": "Pure white studio backdrop, soft directional lighting from\n  front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -351,22 +336,6 @@
           "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
           "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
           "bytes": 133982
-        },
-        {
-          "role": "logo_reference_1",
-          "authority": 69,
-          "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
-          "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
-          "bytes": 2578
-        },
-        {
-          "role": "logo_reference_1_art",
-          "authority": 70,
-          "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
-          "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
-          "bytes": 77819
         }
       ],
       "media": {
@@ -412,7 +381,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-joggers.md",
-        "dossier_sha256": "9d27c9a273c4b5ecd483be26f4aaba02d6c5358be5585668b29e2cefd5a7d1e4"
+        "dossier_sha256": "1756f90086eb28879a4742d6569f558d0804a48d9a1676983d7ffe6a3a2f4f3e"
       },
       "consumer_contract": {
         "required_for": [
@@ -425,7 +394,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3"
+      "product_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e"
     },
     "br-003": {
       "sku": "br-003",
@@ -452,18 +421,23 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 10
+      },
       "garment": {
         "type_lock": "Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric. White piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. White buttons on the placket. NO player number on front. NO player number on back. NO player name on back. NO pinstripes. NOT a t-shirt. NOT a hoodie. NOT a basketball jersey. NOT a football jersey. Mid-weight knit jersey fabric. Solid black colorway (this is the Classic base; Oakland / Giants / White editions are separate SKUs br-012 / br-014 / br-015).",
-        "branding_summary": "Black button-front baseball jersey. FRONT: arched white 'BLACK IS BEAUTIFUL' tackle-twill wordmark and exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem. BACK: large embroidered greyscale rose/cloud crest with SR monogram at upper neck. White collar, placket, cuff, and hem trim; no sleeve patch.",
+        "branding_summary": "Black button-front baseball jersey. FRONT: arched white 'BLACK IS BEAUTIFUL' tackle-twill wordmark spans approximately 80% of the visible torso width; exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem. BACK: large embroidered greyscale rose/cloud crest with SR monogram at upper neck. White collar, placket, and cuff trim; plain black bottom hem; no sleeve patch.",
         "branding_regions": [
           {
             "region": "front-chest",
-            "description": "- **front-chest** (large, arched, ~9in wide): The phrase **\"BLACK IS BEAUTIFUL\"**\n  as authentic tackle-twill lettering — pre-cut white fabric letters appliquéd\n  onto the black jersey body in a baseball-script style with a subtle classic\n  outline, arched across the upper-front-chest. **Technique:** tackle-twill.\n  **Color:** white twill letters (no contrast satin-stitch edge — clean\n  white-on-black).",
+            "description": "- **front-chest** (large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**): The phrase **\"BLACK IS BEAUTIFUL\"**\n  as authentic tackle-twill lettering — pre-cut white fabric letters appliquéd\n  onto the black jersey body in a baseball-script style with a subtle classic\n  outline, arched across the upper-front-chest. **Technique:** tackle-twill.\n  **Color:** white twill letters (no contrast satin-stitch edge — clean\n  white-on-black).\n  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,\n  and on-model image, measure between the visible left and right torso side\n  seams at the wordmark baseline. The outermost letter edges sit approximately\n  10% in from each side, yielding approximately 80% visible torso width. Center\n  the single readable arch on the button placket; the placket may divide the\n  artwork naturally but must not remove, compress, or rearrange any letter.",
             "technique": "tackle-twill",
             "color_named": "white twill letters (no contrast satin-stitch edge — clean",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "large, arched, ~9in wide"
+            "dimensions": "large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**"
           },
           {
             "region": "front-left-hem / front-belly-lower-left",
@@ -552,11 +526,12 @@
           "NO heat-transfer vinyl.",
           "NO contrast-color satin-stitch edge around the tackle-twill letters",
           "NO logos at the hem on the right hip (only the lower-left has the",
-          "NO chest-pocket or breast-pocket (this is a clean-front jersey — only"
+          "NO chest-pocket or breast-pocket (this is a clean-front jersey — only",
+          "NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest"
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (or three-quarter front-left) showing the\n  tackle-twill wordmark across the chest and the Authentic Collection patch\n  at the lower-left hip. For back renders: back view straight-on showing the\n  small gold SR monogram at the upper-back-neck and the large white-thread\n  Black Rose embroidered logo across the back-center.",
+        "pose": "Front view straight-on (or three-quarter front-left) showing the\n  tackle-twill wordmark across the chest and the Authentic Collection patch\n  at the lower-left hip. The complete torso and both side seams must remain\n  visible so the locked 80% wordmark scale can be verified. For back renders:\n  back view straight-on showing the\n  small gold SR monogram at the upper-back-neck and the large white-thread\n  Black Rose embroidered logo across the back-center.",
         "setting": "Pure white studio backdrop, soft directional studio lighting\n  from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -661,7 +636,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic.md",
-        "dossier_sha256": "7c6d62e9c6ffbc38130d413e0829022b73dd857c3916f2b7e34c56b617de4096"
+        "dossier_sha256": "f5678225794ee83c6a20dffd6438d6312a6e8fe3335d4f8aaa5579f9ebd2f634"
       },
       "consumer_contract": {
         "required_for": [
@@ -674,7 +649,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "5bd06f49fd29da436d772dcebe1c1392bfe9a98d712e0d47e7cd4ae6cab0935d"
+      "product_hash": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e"
     },
     "br-004": {
       "sku": "br-004",
@@ -701,18 +676,23 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Black pullover hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (all tonal black, no contrast white trim — distinct from the matching Black Rose Crewneck/Joggers set which use white ribbing). NOT a zip-up. NOT a half-zip. NOT a crewneck. NOT a t-shirt. Heavyweight cotton fleece.",
         "branding_summary": "Black pullover hoodie with small greyscale rose/cloud crest at wearer-left chest, light floral hood lining, white drawstrings, and large longitudinal rose/cloud artwork on wearer-left forearm. No circular upper-arm patch and no centered chest graphic.",
         "branding_regions": [
           {
-            "region": "front-chest",
-            "description": "- **front-chest** (small, ~2.5–3.5in tall, centered just above the kangaroo\n  pocket; match the physical flatlay rather than enlarging it):\n  The Black Rose logo embroidered onto the hoodie. **Technique:**\n  embroidered. **Color:** as rendered in the canonical logo + reference\n  image (do NOT over-specify thread colorway in this dossier — the RAS\n  pipeline reads the canonical logo art and the product reference photo\n  for the thread treatment).",
+            "region": "wearer's-left chest / viewer-right chest",
+            "description": "- **wearer's-left chest / viewer-right chest** (small, ~2.5–3.5in tall,\n  above the kangaroo pocket; match the physical flatlay rather than centering\n  or enlarging it):\n  The Black Rose logo embroidered onto the hoodie. **Technique:**\n  embroidered. **Color:** as rendered in the canonical logo + reference\n  image (do NOT over-specify thread colorway in this dossier — the RAS\n  pipeline reads the canonical logo art and the product reference photo\n  for the thread treatment).",
             "technique": "embroidered",
             "color_named": "as rendered in the canonical logo + reference",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "small, ~2.5–3.5in tall, centered just above the kangaroo\n  pocket; match the physical flatlay rather than enlarging it"
+            "dimensions": "small, ~2.5–3.5in tall,\n  above the kangaroo pocket; match the physical flatlay rather than centering\n  or enlarging it"
           },
           {
             "region": "wearer's-left forearm / viewer-right sleeve",
@@ -758,7 +738,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on or three-quarter front-left, showing\n  the embroidered front-chest rose and the kangaroo pocket. Hood relaxed\n  back / lying flat against the upper back.",
+        "pose": "Front view straight-on or three-quarter front-left, showing\n  the embroidered wearer's-left-chest rose and the kangaroo pocket. Hood relaxed\n  back / lying flat against the upper back.",
         "setting": "Pure white studio backdrop, soft directional studio\n  lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -838,7 +818,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md",
-        "dossier_sha256": "256ac41adfa51d971d8f64ef16d79fd792506b41fc883a062083021f9f88f199"
+        "dossier_sha256": "682d65ceb15c68b6a0d689a9e501629192fc9e9b9a6e62dda6555538b34d9a8e"
       },
       "consumer_contract": {
         "required_for": [
@@ -851,7 +831,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "d7a48b66e1e53a6d3d751e06b51bbf9a0c1b811bb439ec408cffb52488c24f7c"
+      "product_hash": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac"
     },
     "br-005": {
       "sku": "br-005",
@@ -878,8 +858,13 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (chest + hip), the white drawstrings, and the sublimated-rose-print inner hood lining.",
+        "type_lock": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (small chest mark + large forearm artwork), the white drawstrings, and the sublimated-rose-print inner hood lining.",
         "branding_summary": "Silicone cut-out logo on right chest. Embroidered logo on the side of the body of the hoodie (not on the arm).",
         "branding_regions": [
           {
@@ -892,13 +877,13 @@
             "dimensions": "small, ~2–3in tall"
           },
           {
-            "region": "left-hip / left-side-body",
-            "description": "- **left-hip / left-side-body** (large, ~6–7in tall, on the wearer's\n  LEFT side at the hip / lower-side-body area, NOT on the sleeve): The\n  Black Rose logo embroidered onto the side of the hoodie body. Position\n  is explicitly the side body at hip level — Corey emphasized \"NOT\n  SLEEVE.\" **Technique:** embroidered. **Color:** as rendered in the\n  canonical logo + reference image.",
+            "region": "wearer's-left forearm / viewer-right sleeve",
+            "description": "- **wearer's-left forearm / viewer-right sleeve** (large, longitudinal\n  artwork running from below the elbow toward the cuff): The Black Rose logo\n  embroidered onto the sleeve exactly as shown in the physical flatlay.\n  It is forearm artwork, not a circular upper-arm patch and not a hip logo.\n  **Technique:** embroidered. **Color:** as rendered in the\n  canonical logo + reference image.",
             "technique": "embroidered",
             "color_named": "as rendered in the",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "large, ~6–7in tall, on the wearer's\n  LEFT side at the hip / lower-side-body area, NOT on the sleeve"
+            "dimensions": null
           },
           {
             "region": "hood-inside / inner-hood-lining",
@@ -930,8 +915,8 @@
         ],
         "negative_constraints": [
           "NO logo on the LEFT chest — the silicone patch is at the right-chest",
-          "NO embroidered logo on either sleeve. Corey's explicit instruction:",
-          "NO Black Rose logo on the right hip — the embroidered side-body logo",
+          "NO large logo on either hip or side-body panel. The large embroidered",
+          "NO circular upper-arm patch. The sleeve decoration is longitudinal",
           "NO black drawstrings — the drawstrings are WHITE (signature detail of",
           "NO silicone-appliqué multi-color patch — the right-chest silicone is",
           "NO printed graphics on the body fabric (the rose-pattern sublimation",
@@ -945,7 +930,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (or three-quarter front-left) showing\n  the right-chest silicone mark and the left-hip embroidered rose. The\n  hood relaxed back to reveal the grey sublimated-rose inner lining\n  along the upper edge of the hood opening. Optional: a detail shot of\n  the inside hood lining showing the rose-pattern sublimation.",
+        "pose": "Front view straight-on (or three-quarter front-left) showing\n  the right-chest silicone mark and the left-forearm embroidered rose. The\n  hood relaxed back to reveal the grey sublimated-rose inner lining\n  along the upper edge of the hood opening. Optional: a detail shot of\n  the inside hood lining showing the rose-pattern sublimation.",
         "setting": "Pure white studio backdrop, soft directional studio\n  lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -1041,7 +1026,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie-signature-edition.md",
-        "dossier_sha256": "55a09ad64b4a0a9fa9ac03b7fb8c370378327bcbc4acafa5bcd466d7d90e0532"
+        "dossier_sha256": "b670053624a30ffec8f0640789c24cf6e0a58d96be81e888cddd548c18c7b396"
       },
       "consumer_contract": {
         "required_for": [
@@ -1054,7 +1039,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763"
+      "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
     },
     "br-006": {
       "sku": "br-006",
@@ -1080,6 +1065,11 @@
         "edition_size": "250",
         "published": true,
         "is_preorder": true
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
       },
       "garment": {
         "type_lock": "Black satin bomber-style hooded jacket — **lustrous black satin** exterior fabric, **plush black sherpa** interior lining (visible inside the body and inside the hood). Hooded (sherpa-lined hood). **Front closure is a ZIPPER underneath with a button-overlap storm-flap covering it** — the zipper runs the full center-front length, and a buttoned/snapped storm flap overlaps the zipper line for a clean satin front (this is a two-layer placket). **Side hand pockets with zipper closures** at the lower sides. Long sleeves with **black ribbed cuffs**. **Black ribbed bomber-style waistband** at the bottom hem. NOT a parka. NOT a denim jacket. NOT a fleece hoodie. NOT a windbreaker. NOT a leather jacket.",
@@ -1258,6 +1248,14 @@
           "bytes": 97907
         },
         {
+          "role": "garment_reference_3",
+          "authority": 87,
+          "kind": "physical_product_video",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4",
+          "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+          "bytes": 20973139
+        },
+        {
           "role": "primary_logo_reference",
           "authority": 80,
           "kind": "approved_logo_or_patch_art",
@@ -1317,7 +1315,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-sherpa-jacket.md",
-        "dossier_sha256": "83c6d2d6fb778d0f44a247a622be45c2dd7e4cd5092e30106c1c8e4f932f66fa"
+        "dossier_sha256": "e93031fa78e69b6ebc6d0a084a11ec60dd3ed32a821d7eb0c24a8603ae88b6d9"
       },
       "consumer_contract": {
         "required_for": [
@@ -1330,7 +1328,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df"
+      "product_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd"
     },
     "br-007": {
       "sku": "br-007",
@@ -1356,6 +1354,11 @@
         "edition_size": "250",
         "published": true,
         "is_preorder": false
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
       },
       "garment": {
         "type_lock": "Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.",
@@ -1665,7 +1668,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e"
+      "product_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
     },
     "br-008": {
       "sku": "br-008",
@@ -1692,15 +1695,20 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-francisco",
+        "series_order": 50
+      },
       "garment": {
         "type_lock": "Authentic-style football jersey — V-neck collar opening\nwith **black-and-white horizontal striped neckband**, short sleeves with a\n**white triple-stripe band (three thin horizontal white stripes)** at each\ncuff, straight even hem (no drop-tail), no laces, no shoulder-armor seam.\nSolid **bright red** base fabric (San Francisco red colorway). Mid-weight\nknit jersey fabric. Pullover construction — NO buttons, NO front placket. NOT\na t-shirt. NOT a hoodie. NOT a basketball tank. NOT a baseball jersey.\n**PRE-ORDER product** — design renderings only; no real-product photography\nexists yet.",
         "branding_summary": "Red #80 football jersey. FRONT: rose-filled 8 and plain white 0; BACK reverses the fills. White triple sleeve stripes and black/white V-neck binding. Exact NFL Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem; no sleeve patch.",
         "branding_regions": [
           {
             "region": "front-chest",
-            "description": "- **front-chest** (large, ~10in tall, vertically centered between the\n  neckband and the lower belly): The number **\"80\"** rendered as\n  large athletic-block digits — each digit has a **white outline edge** with\n  the canonical Black Rose three-rose-cluster art (in tonal greyscale)\n  filling the interior of both the \"8\" and the \"0\". The rose composition is\n  preserved (three roses + thorny vines + cloud at base) but rendered in\n  black/white/grey only. **Technique:** sublimated. **Color:** white outline\n  + greyscale rose-cluster fill on red ground.",
+            "description": "- **front-chest** (large, ~10in tall, vertically centered between the\n  neckband and the lower belly): The number **\"80\"** rendered as\n  large athletic-block digits with a **white outline edge**. On the FRONT,\n  the **\"8\" contains the greyscale Black Rose rose/cloud fill** and the\n  **\"0\" remains plain white**, exactly as shown in the techflat. **Technique:**\n  sublimated. **Color:** white outline + greyscale fill in `8` only on red.",
             "technique": "sublimated",
-            "color_named": "white outline",
+            "color_named": "white outline + greyscale fill in `8` only on red",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "large, ~10in tall, vertically centered between the\n  neckband and the lower belly"
@@ -1725,9 +1733,9 @@
           },
           {
             "region": "back-center",
-            "description": "- **back-center** (large, ~12in tall, vertically centered between the\n  upper-back wordmark and the lower hem): The number **\"80\"** rendered\n  identically to the front — white outline + greyscale rose-cluster fill.\n  **Technique:** sublimated. **Color:** white outline + greyscale\n  rose-cluster fill.",
+            "description": "- **back-center** (large, ~12in tall, vertically centered between the\n  upper-back wordmark and the lower hem): The number **\"80\"** with the fill\n  reversed from the front: the back **\"8\" remains plain white** and the back\n  **\"0\" contains the greyscale rose/cloud fill**. **Technique:** sublimated.\n  **Color:** white outline + greyscale fill in `0` only on red.",
             "technique": "sublimated",
-            "color_named": "white outline + greyscale",
+            "color_named": "white outline + greyscale fill in `0` only on red",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "large, ~12in tall, vertically centered between the\n  upper-back wordmark and the lower hem"
@@ -1764,7 +1772,7 @@
           "NO player NAME on back. NO last name. NO first name. NO nameplate above",
           "NO numbers on sleeves — the sleeves are clean (only the white triple-stripe",
           "NO multi-color rendering of the rose-cluster fill inside the \"80\" — it is",
-          "NO solid-color \"80\" digits — the digits are NOT solid white; they have",
+          "NO rose fill in both digits. Front fill is in `8` only; back fill is in",
           "NO contrast satin-stitch edge around the \"BLACK IS BEAUTIFUL\" wordmark —",
           "NO buttons, NO placket, NO V-neck contrast piping other than the striped",
           "NO MLB Authentic Collection patch (that's the baseball series). NO NBA",
@@ -1779,7 +1787,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (or three-quarter front-left) showing the\n  large rose-fill \"80\" front-chest, the striped neckband, the white-stripe\n  cuffs, and the lower-left NFL patch. For back: back view straight-on\n  showing the \"BLACK IS BEAUTIFUL\" tackle-twill arch and the matching\n  rose-fill \"80\".",
+        "pose": "Front view straight-on (or three-quarter front-left) showing the\n  large rose-fill \"80\" front-chest, the striped neckband, the white-stripe\n  cuffs, and the lower-left NFL patch. For back: back view straight-on\n  showing the \"BLACK IS BEAUTIFUL\" tackle-twill arch and the reversed-fill\n  back \"80\".",
         "setting": "Pure white studio backdrop, soft directional studio lighting\n  from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -1884,7 +1892,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-1-sf-inspired-football.md",
-        "dossier_sha256": "c65a5342affbef43719a43955dd86c338548c7dc5e80daeaf0964abe9c7c2179"
+        "dossier_sha256": "e1ab9c0ea23a23e3208a0115fb9dd330f2b5430021fcb37126a05dddbfbf72b1"
       },
       "consumer_contract": {
         "required_for": [
@@ -1897,7 +1905,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345"
+      "product_hash": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163"
     },
     "br-009": {
       "sku": "br-009",
@@ -1923,6 +1931,11 @@
         "edition_size": "80",
         "published": true,
         "is_preorder": true
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 30
       },
       "garment": {
         "type_lock": "Authentic-style football jersey — V-neck collar opening\nwith a **black inner neckband surrounded by a visible white outer V band with a\nthin dark outline**, short sleeves with **three black horizontal cuff bands**\nseparated by white channels at each cuff, straight\neven hem. Solid **white** base fabric (Last Oakland Raiders-inspired road/away\ncolorway). Mid-weight knit jersey fabric. Pullover construction — NO buttons,\nNO front placket. NOT a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a\nbaseball jersey. **PRE-ORDER product** — design renderings only.",
@@ -2140,7 +2153,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "25e3509aeb186c7886a5df7b96866f1c493f04fa2253d8b7caac12772eaf29a8"
+      "product_hash": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614"
     },
     "br-010": {
       "sku": "br-010",
@@ -2166,6 +2179,11 @@
         "edition_size": "80",
         "published": true,
         "is_preorder": true
+      },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-francisco",
+        "series_order": 70
       },
       "garment": {
         "type_lock": "Authentic-style basketball tank — sleeveless, round\nneck with thin contrast binding, deep armhole openings (basketball-cut),\nstraight even hem. **White base body fabric with a sublimated all-over\nrose-cluster pattern fading from clean white at the upper-chest into greyscale\nsilhouettes at the lower hem** — the bottom third of the jersey is a layered\ngrey-on-white rose-cluster pattern that wraps front and back continuously.\nMid-weight tank fabric. NO sleeves. NO numbers anywhere. NOT a t-shirt. NOT\na football jersey. NOT a baseball jersey. **PRE-ORDER product** — design\nrenderings only.",
@@ -2382,7 +2400,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "fcadfb2a24292785e12e27498891286ac638b4b0b3992820892222248b6388e7"
+      "product_hash": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329"
     },
     "br-011": {
       "sku": "br-011",
@@ -2409,6 +2427,11 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-jose",
+        "series_order": 80
+      },
       "garment": {
         "type_lock": "Hockey-style pullover hoodie with long sleeves and a\nhood — round-neck pullover construction, hood with **bright teal/turquoise\ninner lining** against a black hood exterior, long sleeves ending in a\nlayered striped cuff band, straight hem with a matching layered striped hem\nband. Solid **black** base body fabric with **teal/turquoise (cyan)** accent\ncolorway. Mid-weight knit fabric, hockey-jersey-weight. NOT a basketball\ntank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket\n(distinct from br-006 which is a separate satin bomber). **PRE-ORDER product**\n— design renderings only.",
         "branding_summary": "Black hooded hockey jersey with teal hood lining, teal/white stripe bands, shoulder rose details, circular front rose crest, and rose-filled 0 on back beneath BLACK IS BEAUTIFUL. Exact Hockey Championship patch is 3in wide × 4in tall at wearer-left lower hem.",
@@ -2433,9 +2456,9 @@
           },
           {
             "region": "front-collar-area / upper-center-collar",
-            "description": "- **front-collar-area / upper-center-collar** (small, ~1in wide, just below\n  the hood opening at the V): A small black-and-white hockey-style league\n  emblem (a stylized shield with hockey stick + puck details, woven flat).\n  **Technique:** woven-label. **Color:** black + white.",
-            "technique": "woven-label",
-            "color_named": "black + white",
+            "description": "- **front-collar-area / upper-center-collar** (small, ~1in wide, just below\n  the hood opening at the V): A small Black Rose floral crest derived from\n  the canonical rose-cluster art, matching the product techflat. It is a\n  brand emblem, not a sports-league shield. **Technique:** embroidered.\n  **Color:** teal/cyan + black + white.",
+            "technique": "embroidered",
+            "color_named": "teal/cyan + black + white",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "small, ~1in wide, just below\n  the hood opening at the V"
@@ -2528,7 +2551,7 @@
           "NO multi-color canonical rose-cluster — the rose-cluster is recolored to",
           "NO solid-color \"0\" digit — the digit has teal outline + rose-cluster fill.",
           "NO MLB Authentic Collection patch. NO NFL Authentic Collection patch. NO",
-          "NO NHL logos, no barcode labels, no real sports league trademarks. The",
+          "NO NHL logos and NO generic or invented league-style collar shield. The",
           "NO embossed/debossed decoration.",
           "NO buttons, NO placket, NO zipper — pullover construction.",
           "NO laces at the V-neck (this is a fashion hoodie, not a tied-collar hockey",
@@ -2540,7 +2563,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the teal rose medallion + small\n  shoulder emblems + small collar league mark + lower-left Hockey Championship\n  patch + striped cuff and hem bands. Three-quarter view catches the teal hood\n  lining peeking inside. Back view shows the teal-twill \"BLACK IS BEAUTIFUL\"\n  arch + the small teal SR monogram + the back-center \"0\" + the matching\n  striped hem.",
+        "pose": "Front view straight-on showing the teal rose medallion + small\n  shoulder emblems + small Black Rose collar crest + lower-left Hockey Championship\n  patch + striped cuff and hem bands. Three-quarter view catches the teal hood\n  lining peeking inside. Back view shows the teal-twill \"BLACK IS BEAUTIFUL\"\n  arch + the small teal SR monogram + the back-center \"0\" + the matching\n  striped hem.",
         "setting": "Pure white studio backdrop, soft directional studio lighting\n  from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -2656,7 +2679,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-4-the-rose-hockey.md",
-        "dossier_sha256": "7b12b66f3158e6f4896c1c453b4c6abbae3557b4dade4bf7d1a766b8275ee818"
+        "dossier_sha256": "7b3b68e436245ea05cdb590fa6d51123978a4ca121eeaa5e3cb9cd571b76c495"
       },
       "consumer_contract": {
         "required_for": [
@@ -2669,7 +2692,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42"
+      "product_hash": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0"
     },
     "br-012": {
       "sku": "br-012",
@@ -2696,18 +2719,23 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 40
+      },
       "garment": {
         "type_lock": "Authentic-style baseball jersey — V-neck collar opening with gold/yellow piping, button-front placket with gold/yellow piping, short sleeves with gold/yellow cuff piping, straight even hem (no drop-tail). Solid **dark forest green** base fabric. Mid-weight knit jersey. NOT a t-shirt, NOT a hoodie, NOT a basketball tank, NOT a football jersey. **PRE-ORDER product**.",
-        "branding_summary": "Green button-front baseball jersey with gold piping. FRONT: BLACK IS BEAUTIFUL spans about 72% of torso width; letter faces are white except the black A, all edged in gold. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: large black rose rising from gold clouds with gold SR monogram at upper neck.",
+        "branding_summary": "Green button-front baseball jersey with gold piping. FRONT: BLACK IS BEAUTIFUL spans approximately 80% of the visible torso width; letter faces are white except the black A, all edged in gold. Exact Black Rose Authentic Collection patch is 3in wide × 4in tall at wearer-left lower hem. BACK: large black rose rising from gold clouds with gold SR monogram at upper neck.",
         "branding_regions": [
           {
-            "region": "Technique:",
-            "description": "- **Technique:** tackle-twill. **Color:** white twill faces (with one black\n    \"A\") + gold satin-stitch edge.",
+            "region": "front-chest",
+            "description": "- **front-chest** (large and arched; the horizontal wordmark length spans\n  approximately **80% of the visible torso width**, matching the founder\n  direction): The phrase **\"BLACK IS BEAUTIFUL\"**\n  as authentic tackle-twill lettering with a **gold satin-stitch edge**\n  surrounding the letter faces. The contrast satin-stitch edge is integral\n  to this colorway's look (vs. the Classic black which has no contrast edge).\n  Letter faces are WHITE twill except the \"A\" in \"BLACK,\" which is BLACK\n  twill as the deliberate Oakland accent. A gold satin-stitch edge surrounds\n  every letter, including the black A. **Technique:** tackle-twill.\n  **Color:** white twill faces (with one black A) + gold satin-stitch edge.\n  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,\n  and on-model image, measure between the visible left and right torso side\n  seams at the wordmark baseline. The outermost letter edges sit approximately\n  10% in from each side, yielding approximately 80% visible torso width. Center\n  the single readable arch on the button placket; the placket may divide the\n  artwork naturally but must not remove, compress, or rearrange any letter,\n  especially the colorway-defining black \"A\" in \"BLACK.\"",
             "technique": "tackle-twill",
-            "color_named": "white twill faces (with one black",
+            "color_named": "white twill faces (with one black A) + gold satin-stitch edge",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": null
+            "dimensions": "large and arched; the horizontal wordmark length spans\n  approximately **80% of the visible torso width**, matching the founder\n  direction"
           },
           {
             "region": "front-left-hem / front-belly-lower-left",
@@ -2797,11 +2825,12 @@
           "NO SR monogram on the back-center — that region is the rose-cluster only.",
           "NO sleeve patches anywhere on this jersey.",
           "NO pinstripes, NO embossed/debossed, NO sublimated panels, NO heat-transfer",
-          "NO chest-pocket or breast-pocket."
+          "NO chest-pocket or breast-pocket.",
+          "NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest"
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on or three-quarter front-left to display\n  the gold-edged tackle-twill wordmark with the black \"A\" accent; back view\n  straight-on for the embroidered logos.",
+        "pose": "Front view straight-on or three-quarter front-left to display\n  the gold-edged tackle-twill wordmark with the black \"A\" accent. The complete\n  torso and both side seams must remain visible so the locked 80% wordmark\n  scale can be verified; back view straight-on for the embroidered logos.",
         "setting": "Pure white studio backdrop, soft directional studio lighting\n  from front-left, subtle natural drop shadow.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -2937,7 +2966,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-5-last-oakland-baseball.md",
-        "dossier_sha256": "fe1780be4afc53e738b97109e157fbed2548f7138f1d3be0e35b3f94629db76b"
+        "dossier_sha256": "61d687a6a153f0a1093ce0d2ebe3a8240e31d25fd175704b5fd4dfb0b6682075"
       },
       "consumer_contract": {
         "required_for": [
@@ -2950,14 +2979,14 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef"
+      "product_hash": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775"
     },
     "lh-002": {
       "sku": "lh-002",
       "identity": {
         "name": "Love Hurts Joggers (Black)",
         "collection": "love-hurts",
-        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left thigh — the heart-and-thorns lockup with roses emerging from the top, rendered in red, green, and crimson on the black fabric. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
+        "description": "Oakland grit meets luxury. Solid black body with white contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror white colorway available as lh-006.",
         "badge": ""
       },
       "commerce": {
@@ -2977,9 +3006,14 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`).",
-        "branding_summary": "Heart-rose-composite (Love Hurts heart-and-thorns lockup) embroidered on the left thigh. White contrast side-panel running vertically on both side seams. White drawstring.",
+        "type_lock": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **BLACK body** with **WHITE contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). Black flat drawstring. NOT shorts. NOT a track short. NOT a basketball short. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The white-base mirror colorway is a separate SKU (`lh-006`).",
+        "branding_summary": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. White contrast side-panel running vertically on both side seams. Black drawstring. Plain back.",
         "branding_regions": [
           {
             "region": "front-body",
@@ -3010,9 +3044,9 @@
           },
           {
             "region": "left-thigh",
-            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): **Heart-rose-composite logo** — the Love Hurts heart-and-thorns lockup with roses emerging from the top, rendered embroidered on the black body fabric. **Technique:** embroidered. **Color:** red roses + green thorns + crimson heart, on black body.",
+            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Red Roses Cloud Cluster** motif matching the founder flatlay — clustered red roses with green stems and pale cloud base, embroidered directly on the black body fabric. **Technique:** embroidered. **Color:** canonical red, green, white, and pale blue details on black body.",
             "technique": "embroidered",
-            "color_named": "red roses + green thorns + crimson heart, on black body",
+            "color_named": "canonical red, green, white, and pale blue details on black body",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3037,18 +3071,18 @@
           },
           {
             "region": "waistband",
-            "description": "- **waistband**: Black elasticated waistband with **white flat drawstring**. **Technique:** stitched. **Color:** black waistband + white drawstring.",
+            "description": "- **waistband**: Black elasticated waistband with **black flat drawstring**. **Technique:** stitched. **Color:** black waistband + black drawstring.",
             "technique": "stitched",
-            "color_named": "black waistband + white drawstring",
+            "color_named": "black waistband + black drawstring",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
             "region": "drawstring",
-            "description": "- **drawstring**: White flat drawstring. **Technique:** stitched. **Color:** white.",
+            "description": "- **drawstring**: Black flat drawstring. **Technique:** stitched. **Color:** black.",
             "technique": "stitched",
-            "color_named": "white",
+            "color_named": "black",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3082,14 +3116,14 @@
           }
         ],
         "negative_constraints": [
-          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the heart-rose-composite on the left thigh.",
-          "NO red roses cloud cluster on the joggers — that motif is on lh-003 (basketball shorts) and lh-004 (bomber inside-hood), NOT here.",
+          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Red Roses Cloud Cluster on the left thigh.",
+          "NO heart-and-thorns / heart-rose-composite lockup on the joggers.",
           "NO sublimated all-over rose pattern on the body — the black body is SOLID black fabric (not sublimated).",
           "NO mirror colorway in this SKU — the white-base / black-panel mirror is a separate SKU (`lh-006 Love Hurts Joggers (White)`).",
           "NO contrast piping at the waistband or cuffs — only the side-seam panel is contrast.",
-          "NO black drawstring — the drawstring is WHITE.",
+          "NO white drawstring — the drawstring is BLACK.",
           "NO horizontal stripe blocking — the contrast panel runs VERTICALLY along the side seam, top to bottom.",
-          "NO decoration on the right thigh — the heart-rose-composite sits on the LEFT thigh only.",
+          "NO decoration on the right thigh — the small red-rose cluster sits on the LEFT thigh only.",
           "NO embossed/debossed decoration anywhere.",
           "NO printed all-over graphic on the body — body is solid black.",
           "NO Black Rose three-rose-cluster on this product — this is a Love Hurts collection product. Black Rose marks (gothic greyscale) do NOT appear here.",
@@ -3100,7 +3134,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (laid flat or on a model) showing the black body + the vertical white contrast side-panel + the heart-rose-composite on the left thigh + the white drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
+        "pose": "Front view straight-on (laid flat or on a model) showing the black body + the vertical white contrast side-panel + the small Red Roses Cloud Cluster on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -3149,17 +3183,17 @@
           "role": "logo_reference_1",
           "authority": 69,
           "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
-          "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
-          "bytes": 3074
+          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+          "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+          "bytes": 2528
         },
         {
           "role": "logo_reference_1_art",
           "authority": 70,
           "kind": "product_reference",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
-          "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
-          "bytes": 113277
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+          "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+          "bytes": 123109
         }
       ],
       "media": {
@@ -3205,7 +3239,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
-        "dossier_sha256": "796f623b0de1006b10f4259ed5ab29427af7453de1f998029734a142a194ab33"
+        "dossier_sha256": "e356c57a4ce4348ec89fd6cc2acbf06ea55aaa48dae61df878f1650f022f7437"
       },
       "consumer_contract": {
         "required_for": [
@@ -3218,7 +3252,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488"
+      "product_hash": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9"
     },
     "lh-003": {
       "sku": "lh-003",
@@ -3245,8 +3279,13 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "Knee-length athletic basketball shorts — **white mesh body fabric** with **all-over sublimated red-roses-cluster pattern** repeating across the entire body, **black ribbed elasticated waistband** with **white flat drawstring**, **side hand pockets** with vertical welt openings, **black ribbed-binding hem with red contrast piping** along the leg openings. Knee-length cut. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.",
+        "type_lock": "Knee-length athletic basketball shorts — **white mesh body fabric** with **all-over sublimated red-roses-cluster pattern** repeating across the entire body, **black ribbed elasticated waistband with no visible exterior drawstring**, **side hand pockets** with black vertical welt openings, sculpted black mesh side panels, and **black ribbed-binding hem with white and red contrast piping** along the leg openings. Knee-length cut. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.",
         "branding_summary": "Sublimated rose logo throughout the shorts. Big sublimated 'Love Hurts' logo on the left side. Additional 'Love Hurts' and rose logos stitched on the mesh sides of the shorts.",
         "branding_regions": [
           {
@@ -3259,28 +3298,64 @@
             "dimensions": null
           },
           {
-            "region": "front-right-thigh",
-            "description": "- **front-right-thigh** (large, diagonal, ~6–7in tall): The \"Love Hurts\" wordmark in cursive script — large red script lettering sublimated on the right thigh, reading top-to-bottom diagonally as the cursive lettering descends. **Technique:** sublimated. **Color:** canonical Love Hurts red.",
+            "region": "front-left-thigh",
+            "description": "- **front-left-thigh** (wearer's left / viewer's right, large and diagonal, ~6–7in tall): The \"Love Hurts\" wordmark in cursive script — large red script lettering sublimated on the left thigh, descending diagonally and partially wrapping toward the side panel. **Technique:** sublimated. **Color:** canonical Love Hurts red.",
             "technique": "sublimated",
             "color_named": "canonical Love Hurts red",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "large, diagonal, ~6–7in tall"
+            "dimensions": "wearer's left / viewer's right, large and diagonal, ~6–7in tall"
           },
           {
-            "region": "front-left-hem",
-            "description": "- **front-left-hem** (~2in × 2.5in, near the bottom hem on the wearer's left hip area): A small Love Hurts branded patch — a black-square patch with the \"Love Hurts\" wordmark in cursive red lettering. **Technique:** embroidered-patch. **Color:** red wordmark on black patch.",
-            "technique": "embroidered-patch",
-            "color_named": "red wordmark on black patch",
+            "region": "front-left-side-panel",
+            "description": "- **front-left-side-panel** (black mesh panel on the wearer's left / viewer's right): A smaller Love Hurts script mark in red and white, placed on the lower black mesh panel. **Technique:** embroidered. **Color:** red script with white outline.",
+            "technique": "embroidered",
+            "color_named": "red script with white outline",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "~2in × 2.5in, near the bottom hem on the wearer's left hip area"
+            "dimensions": null
+          },
+          {
+            "region": "front-right-side-panel",
+            "description": "- **front-right-side-panel** (black mesh panel on the wearer's right / viewer's left): A small Red Roses Cloud Cluster motif placed on the lower black mesh panel. **Technique:** embroidered. **Color:** canonical red, green, white, and pale blue.",
+            "technique": "embroidered",
+            "color_named": "canonical red, green, white, and pale blue",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
           },
           {
             "region": "back-body",
             "description": "- **back-body** (entire white mesh field, continues from front): Same all-over Red Roses Cloud Cluster pattern as the front, continuing seamlessly. **Technique:** sublimated. **Color:** canonical multi-color on white mesh.",
             "technique": "sublimated",
             "color_named": "canonical multi-color on white mesh",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
+            "region": "back-right-upper-thigh",
+            "description": "- **back-right-upper-thigh** (wearer's right / viewer's right, below the waistband): Large red broken-heart-and-thorns composition with the white Love Hurts monogram/lettering integrated into the artwork, matching the founder back flatlay. **Technique:** sublimated. **Color:** canonical red and white.",
+            "technique": "sublimated",
+            "color_named": "canonical red and white",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
+            "region": "back-left-pocket",
+            "description": "- **back-left-pocket** (horizontal welt below waistband): Horizontal rear welt pocket with black binding. **Technique:** stitched. **Color:** black welt on patterned white mesh.",
+            "technique": "stitched",
+            "color_named": "black welt on patterned white mesh",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
+            "region": "back-right-pocket",
+            "description": "- **back-right-pocket** (horizontal welt below waistband): Horizontal rear welt pocket with black binding, crossing the upper edge of the large back-right artwork as shown in the founder flatlay. **Technique:** stitched. **Color:** black welt on patterned white mesh.",
+            "technique": "stitched",
+            "color_named": "black welt on patterned white mesh",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3296,12 +3371,12 @@
           },
           {
             "region": "drawstring",
-            "description": "- **drawstring** (waistband-thread, ~24in long): White flat drawstring threaded through the waistband. **Technique:** stitched. **Color:** white.",
-            "technique": "stitched",
-            "color_named": "white",
+            "description": "- **drawstring**: No visible exterior drawstring in the founder flatlay. **Technique:** stitched internal elastic waistband. **Color:** black waistband.",
+            "technique": "stitched internal elastic waistband",
+            "color_named": "black waistband",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "waistband-thread, ~24in long"
+            "dimensions": null
           },
           {
             "region": "left-pocket",
@@ -3323,9 +3398,9 @@
           },
           {
             "region": "leg-binding",
-            "description": "- **leg-binding** (each leg opening, ~1in wide): Black ribbed-knit binding with a thin red contrast piping accent running along the binding edge. **Technique:** stitched. **Color:** black with red piping.",
+            "description": "- **leg-binding** (each leg opening, ~1in wide): Black ribbed-knit binding with thin white and red contrast piping accents following the sculpted leg opening. **Technique:** stitched. **Color:** black with white and red piping.",
             "technique": "stitched",
-            "color_named": "black with red piping",
+            "color_named": "black with white and red piping",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "each leg opening, ~1in wide"
@@ -3348,13 +3423,13 @@
           "NO contrast color side-panels — body is uniform white mesh with the sublimated pattern; no white-mesh-vs-black-mesh side panel distinction (that's br-007).",
           "NO OAKLAND tackle-twill wordmark — that's br-007. This product has only the Love Hurts cursive wordmark.",
           "NO COLORWAY OVERRIDE — colors render in canonical Love Hurts palette, NOT remapped to greyscale or tonal.",
-          "NO black drawstring — drawstring is WHITE.",
+          "NO visible exterior drawstring in the founder flatlay.",
           "NO white waistband — waistband is BLACK ribbed.",
-          "NO additional pockets on the back — only the two front side hand pockets exist.",
+          "NO plain back — the back has two horizontal black welt pockets and the large red-and-white broken-heart composition on the wearer's right.",
           "NO zipper closures on the pockets — pockets are open-welt, not zippered.",
-          "NO heart-and-thorns lockup separately on the body — the heart-and-thorns canonical art is NOT placed on this product as a standalone graphic.",
+          "NO heart-and-thorns lockup on the front; the large red-and-white heart composition is on the BACK RIGHT only.",
           "NO sublimated pattern in greyscale — the all-over rose pattern is canonical multi-color.",
-          "NO Love Hurts wordmark on the LEFT thigh — the cursive script is on the RIGHT thigh only.",
+          "NO large Love Hurts wordmark on the wearer's right thigh — it is on the LEFT thigh.",
           "NO embossed/debossed decoration anywhere.",
           "NO sleeve elements (this is a shorts garment, lower-body only).",
           "NO numbers anywhere — no jersey numerals.",
@@ -3362,7 +3437,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (laid flat or on a model) showing the all-over red-rose pattern + the right-thigh \"Love Hurts\" cursive wordmark + the lower-left Love Hurts patch + the black ribbed waistband with white drawstring + the black-and-red ribbed leg-binding. For the back: back view straight-on showing the continuous rose pattern.",
+        "pose": "Front view straight-on showing the all-over red-rose pattern + the large Love Hurts script on the wearer's left thigh + the two different embroidered black side panels + the plain black waistband with no exterior drawstring + black/white/red leg binding. For the back: show both horizontal welt pockets and the large red-and-white heart composition on the wearer's right.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -3470,7 +3545,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-basketball-shorts.md",
-        "dossier_sha256": "5340a30adaa2507c51adbb4d06e2bd52f0e21d2d82a2dbe8e5826160871b1e9d"
+        "dossier_sha256": "66462629a585b6ae5260c24dc0306af4c24b756cd5708ee6c57e4eb9a2cb8852"
       },
       "consumer_contract": {
         "required_for": [
@@ -3483,7 +3558,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21"
+      "product_hash": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c"
     },
     "lh-004": {
       "sku": "lh-004",
@@ -3509,6 +3584,11 @@
         "edition_size": "250",
         "published": true,
         "is_preorder": false
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
       },
       "garment": {
         "type_lock": "Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). NOT a satin bomber. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).",
@@ -3788,14 +3868,14 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1"
+      "product_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
     },
     "lh-005": {
       "sku": "lh-005",
       "identity": {
         "name": "The Fannie",
         "collection": "love-hurts",
-        "description": "Oakland luxury meets everyday utility. The essential Love Hurts fanny pack with premium embroidery.",
+        "description": "Oakland luxury meets everyday utility. Black pebbled faux-leather fanny pack with premium embroidery and front and rear zipper pockets.",
         "badge": "Pre-Order"
       },
       "commerce": {
@@ -3810,9 +3890,14 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, single front-pocket with a horizontal zipper closure, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection.",
-        "branding_summary": "High-end leather fanny pack construction. The heart-and-rose logo positioned where the dot of the 'I' in 'FANNIE' would go.",
+        "type_lock": "A **black PU/faux-leather fanny pack (waist-belt bag / cross-body sling)** — small rectangular bag body in pebbled-textured black faux-leather, one horizontal front zipper pocket and one horizontal rear zipper pocket, **adjustable black nylon webbing strap** with a **plastic quick-release buckle** (clip-on/clip-off side-release buckle), worn at the waist or across the chest. NOT a backpack. NOT a tote bag. NOT a duffel. NOT a wristlet. NOT a leather handbag. **A small accessory product** — distinct from the apparel pieces in the Love Hurts collection.",
+        "branding_summary": "Black pebbled faux-leather body with horizontal front and rear zipper pockets. White embroidered FANNIE wordmark with a small red rose accent on the front; adjustable black webbing strap and black hardware.",
         "branding_regions": [
           {
             "region": "front-body",
@@ -3843,9 +3928,18 @@
           },
           {
             "region": "back-body",
-            "description": "- **back-body** (the panel against the wearer's body): Solid **black pebbled faux-leather**, no decoration. **Technique:** stitched. **Color:** black.",
+            "description": "- **back-body** (the panel against the wearer's body): Solid **black pebbled faux-leather**, no logo decoration. **Technique:** stitched. **Color:** black.",
             "technique": "stitched",
             "color_named": "black",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
+            "region": "back-pocket-zipper",
+            "description": "- **back-pocket-zipper** (horizontal, centered across the upper rear panel): A black zipper opening into the rear security pocket, matching the founder back flatlay. **Technique:** patch (sewn-on zipper hardware). **Color:** black zipper teeth and pull.",
+            "technique": "patch (sewn-on zipper hardware)",
+            "color_named": "black zipper teeth and pull",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3895,10 +3989,10 @@
           "NO Authentic Collection patch.",
           "NO greyscale wordmark — the \"FANNIE\" lettering is WHITE on the black faux-leather.",
           "NO red wordmark — the \"FANNIE\" letters are WHITE; the only red element is the small rose graphic accent next to the wordmark.",
-          "NO additional pockets visible from outside other than the single front zipper-pocket. No back pocket. No side pockets.",
+          "NO additional pockets beyond the one front zipper pocket and one rear zipper pocket. No side pockets.",
           "NO hardware in metal-gold or rose-gold finish — all hardware (buckle, zipper) is BLACK.",
           "NO contrast piping along any edge — the bag is uniformly black faux-leather with no contrast piping or trim.",
-          "NO drawstring closure — closure is the front zipper only.",
+          "NO drawstring closure — storage access is through the front and rear zippers.",
           "NO embossed or debossed branding — the FANNIE wordmark is embroidered, NOT embossed into the faux-leather surface.",
           "NO real leather (this is **faux-leather / PU pebbled-finish**, not genuine leather).",
           "NO printed graphics — branding is embroidered.",
@@ -3906,7 +4000,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the bag worn flat (or laid flat), with the strap visible curving above and connecting to the bag corners — show the buckle clip and the FANNIE wordmark + red rose accent on the lower-front face. Optional alternate view: bag worn cross-body or at the waist on a model to show scale.",
+        "pose": "Front view straight-on showing the bag worn flat (or laid flat), with the strap visible curving above and connecting to the bag corners — show the buckle clip, front zipper, and FANNIE wordmark + red rose accent on the lower-front face. Back view must show the separate horizontal rear zipper pocket. Optional alternate view: bag worn cross-body or at the waist on a model to show scale.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -3980,7 +4074,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-fannie.md",
-        "dossier_sha256": "016770b3c8d1b5389549c3c3830e7dc44d19c55542630bd855eed40c7cbe62c6"
+        "dossier_sha256": "0bb5c878a44408577bcd0140706c3649961ef057b5e5ccd82bd1273e0e727010"
       },
       "consumer_contract": {
         "required_for": [
@@ -3993,14 +4087,14 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "f1046d62100a446b5a0d60c05d2481e671c7fd8d57bb742ff6f319dc931bdd28"
+      "product_hash": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583"
     },
     "lh-006": {
       "sku": "lh-006",
       "identity": {
         "name": "Love Hurts Joggers (White)",
         "collection": "love-hurts",
-        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. White flat drawstring. The Love Hurts heart-rose-composite embroidered on the left thigh — the heart-and-thorns lockup with roses emerging from the top, rendered in red, green, and crimson on the white fabric. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
+        "description": "The mirror of lh-002 in white. Solid white body with black contrast side-panels running vertically from waist to ankle. Black flat drawstring. Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Mid-weight cotton-fleece, athletic-fit through the leg, ribbed ankle cuffs. Mirror black colorway available as lh-002.",
         "badge": ""
       },
       "commerce": {
@@ -4020,9 +4114,14 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). White flat drawstring. NOT pants. NOT shorts. NOT a track short. NOT a basketball jogger. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`).",
-        "branding_summary": "Heart-rose-composite (Love Hurts heart-and-thorns lockup) embroidered on the left thigh. Black contrast side-panel running vertically on both side seams. White drawstring.",
+        "type_lock": "Athletic-fit jogger pants (slim through the leg, drawstring waist, ribbed or banded ankle cuffs). Mid-weight cotton-fleece fabric. **WHITE body** with **BLACK contrast side-panel running vertically down each side leg** (waistband to ankle on both left and right side seams). Black flat drawstring. NOT shorts. NOT a track short. NOT a basketball short. The contrast side-panel is a vertical strip of contrast fabric inserted from waist to ankle on each side seam, NOT a stripe-applique. The black-base mirror colorway is a separate SKU (`lh-002`).",
+        "branding_summary": "Small Red Roses Cloud Cluster embroidered on the wearer-left thigh. Black contrast side-panel running vertically on both side seams. Black drawstring. Plain back.",
         "branding_regions": [
           {
             "region": "front-body",
@@ -4053,9 +4152,9 @@
           },
           {
             "region": "left-thigh",
-            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): **Heart-rose-composite logo** — the Love Hurts heart-and-thorns lockup with roses emerging from the top, rendered embroidered on the white body fabric. **Technique:** embroidered. **Color:** red roses + green thorns + crimson heart, on white body.",
+            "description": "- **left-thigh** (centered on the wearer's left thigh, just below the hip): A small **Red Roses Cloud Cluster** motif matching the founder flatlay — clustered red roses with green stems and pale cloud base, embroidered directly on the white body fabric. **Technique:** embroidered. **Color:** canonical red, green, white, and pale blue details on white body.",
             "technique": "embroidered",
-            "color_named": "red roses + green thorns + crimson heart, on white body",
+            "color_named": "canonical red, green, white, and pale blue details on white body",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -4080,18 +4179,18 @@
           },
           {
             "region": "waistband",
-            "description": "- **waistband**: White elasticated waistband with **white flat drawstring**. **Technique:** stitched. **Color:** white.",
+            "description": "- **waistband**: White elasticated waistband with **black flat drawstring**. **Technique:** stitched. **Color:** white waistband + black drawstring.",
             "technique": "stitched",
-            "color_named": "white",
+            "color_named": "white waistband + black drawstring",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
             "region": "drawstring",
-            "description": "- **drawstring**: White flat drawstring. **Technique:** stitched. **Color:** white.",
+            "description": "- **drawstring**: Black flat drawstring. **Technique:** stitched. **Color:** black.",
             "technique": "stitched",
-            "color_named": "white",
+            "color_named": "black",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -4125,13 +4224,14 @@
           }
         ],
         "negative_constraints": [
-          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the heart-rose-composite on the left thigh.",
-          "NO red roses cloud cluster on the joggers — that motif is on lh-003 (basketball shorts) and lh-004 (bomber inside-hood), NOT here.",
+          "NO Love Hurts wordmark across the leg or thigh — the only Love-Hurts-coded mark on this product is the small Red Roses Cloud Cluster on the left thigh.",
+          "NO heart-and-thorns / heart-rose-composite lockup on the joggers.",
           "NO sublimated all-over rose pattern on the body — the white body is SOLID white fabric (not sublimated).",
           "NO mirror colorway in this SKU — the black-base / white-panel mirror is a separate SKU (`lh-002 Love Hurts Joggers (Black)`).",
           "NO contrast piping at the waistband or cuffs — only the side-seam panel is contrast.",
           "NO horizontal stripe blocking — the contrast panel runs VERTICALLY along the side seam, top to bottom.",
-          "NO decoration on the right thigh — the heart-rose-composite sits on the LEFT thigh only.",
+          "NO white drawstring — the drawstring is BLACK.",
+          "NO decoration on the right thigh — the small red-rose cluster sits on the LEFT thigh only.",
           "NO embossed/debossed decoration anywhere.",
           "NO printed all-over graphic on the body — body is solid white.",
           "NO Black Rose three-rose-cluster on this product — this is a Love Hurts collection product. Black Rose marks (gothic greyscale) do NOT appear here.",
@@ -4142,7 +4242,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (laid flat or on a model) showing the white body + the vertical black contrast side-panel + the heart-rose-composite on the left thigh + the white drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
+        "pose": "Front view straight-on (laid flat or on a model) showing the white body + the vertical black contrast side-panel + the small Red Roses Cloud Cluster on the left thigh + the black drawstring. For the back: clean back panel showing the contrast side-panel continuing.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -4191,17 +4291,17 @@
           "role": "logo_reference_1",
           "authority": 69,
           "kind": "approved_logo_or_patch_art",
-          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
-          "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
-          "bytes": 3074
+          "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+          "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+          "bytes": 2528
         },
         {
           "role": "logo_reference_1_art",
           "authority": 70,
           "kind": "product_reference",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
-          "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
-          "bytes": 113277
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+          "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+          "bytes": 123109
         }
       ],
       "media": {
@@ -4247,7 +4347,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
-        "dossier_sha256": "5e0d549dbbc8cb184c86d85b6c56b52a51e5023af0c9b64205a15658621157c1"
+        "dossier_sha256": "3fcc4485b31d2bd29288da354697d3772c318ce1c11f7d1b530ca5b68e0028e1"
       },
       "consumer_contract": {
         "required_for": [
@@ -4260,7 +4360,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d"
+      "product_hash": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb"
     },
     "sg-001": {
       "sku": "sg-001",
@@ -4286,6 +4386,11 @@
         "edition_size": "250",
         "published": true,
         "is_preorder": true
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
       },
       "garment": {
         "type_lock": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: blue elasticated waistband matching the physical product with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge sunset palette, separate SKU).",
@@ -4497,7 +4602,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f"
+      "product_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941"
     },
     "sg-002": {
       "sku": "sg-002",
@@ -4524,18 +4629,23 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Stay Golden Shorts (sg-003 Golden Gate sunset palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Bay Bridge Shirt (that's sg-005 — blue rose-cluster decoration, separate SKU). **The Stay Golden colorway uses a PURPLE/VIOLET rose-cluster on the chest** (matching the purple-and-orange Golden Gate sunset palette).",
         "branding_summary": "Embroidered rose with the Golden Gate Bridge imagery from the matching shorts stitched inside the rose.",
         "branding_regions": [
           {
-            "region": "front-left-chest",
-            "description": "- **front-left-chest** (small, ~3in tall, on the wearer's left chest): The canonical Black Rose three-rose-cluster art (three roses + thorny vines + cloud at base) rendered in **purple/violet tonal colors** — petals in saturated purple-and-violet shades with darker violet shading and black ink outlines, stems and vines in darker purple-grey, cloud at the base in dark grey/charcoal. NOT canonical multi-color. NOT canonical greyscale. **Technique:** sublimated. **Color:** purple-violet rose-cluster on white ground.",
-            "technique": "sublimated",
-            "color_named": "purple-violet rose-cluster on white ground",
+            "region": "front-center-chest",
+            "description": "- **front-center-chest** (large, ~8–10in tall, centered on the chest): The canonical rose-cluster composition rendered in the **Stay Golden purple/violet colorway**, with the matching Golden Gate Bridge night imagery stitched within the rose-petal artwork exactly as shown in the founder flatlay and techflat. Petals use saturated purple-and-violet shades with darker violet details; stems and vines are dark purple-grey; the cloud base is charcoal. **Technique:** embroidered. **Color:** purple-violet, charcoal, and bridge-image threadwork on white ground.",
+            "technique": "embroidered",
+            "color_named": "purple-violet, charcoal, and bridge-image threadwork on white ground",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "small, ~3in tall, on the wearer's left chest"
+            "dimensions": "large, ~8–10in tall, centered on the chest"
           },
           {
             "region": "back-neck",
@@ -4597,10 +4707,10 @@
           "NO canonical multi-color rose-cluster (red roses + green stems + white-and-blue cloud) — the cluster is recolored to violet on this SKU.",
           "NO canonical greyscale rose-cluster (Black Rose canonical) — recolored to violet.",
           "NO Bay Bridge / Golden Gate photo print on the body — the body is solid white. The bridge photo prints are on the matching shorts (sg-001, sg-003), NOT on this shirt.",
-          "NO chest text or wordmark on the front body fabric — only the chest rose decoration.",
+          "NO chest text or wordmark on the front body fabric — only the large centered rose-and-bridge embroidery.",
           "NO logo or graphic on the back body — only the small back-neck SR monogram.",
           "NO Authentic Collection patch — that patch is reserved for the Black Rose jersey series.",
-          "NO Black Rose logo at front-center, front-right, or as a back-center large emblem — chest mark is small left-chest only.",
+          "NO small left-chest rose — the rose-and-bridge composition is LARGE and CENTERED on the front chest.",
           "NO Love Hurts branding — this is a Signature collection product.",
           "NO sublimated all-over body pattern — body is solid white.",
           "NO contrast color sleeve cuffs or hem.",
@@ -4609,7 +4719,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the small left-chest violet rose-cluster on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.",
+        "pose": "Front view straight-on showing the large centered violet rose-and-Golden-Gate embroidery on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -4708,7 +4818,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shirt.md",
-        "dossier_sha256": "59c76429f29cc9ec7f363928b7d3d5037c218ef3dd17f0c4fec4bc3fba857b85"
+        "dossier_sha256": "d8f682ac88811e96e0c50b431a60d29814ad263301912033597ce3a45d42c9c9"
       },
       "consumer_contract": {
         "required_for": [
@@ -4721,7 +4831,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f"
+      "product_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e"
     },
     "sg-003": {
       "sku": "sg-003",
@@ -4748,8 +4858,13 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. \"Stay Golden\" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU).",
+        "type_lock": "Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: **purple elasticated waistband matching the physical founder flatlay** with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. \"Stay Golden\" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU).",
         "branding_summary": "Sublimated Golden Gate Bridge image covering the entire shorts. Purple embroidered rose on the bottom-left.",
         "branding_regions": [
           {
@@ -4781,9 +4896,9 @@
           },
           {
             "region": "waistband",
-            "description": "- **waistband** (~1.5in tall, top of shorts): Black elasticated waistband at the top (matching sg-001 construction). **Technique:** stitched. **Color:** black.",
+            "description": "- **waistband** (~1.5in tall, top of shorts): Purple elasticated waistband at the top, matching the physical founder flatlay rather than older black-waistband mockups. **Technique:** stitched. **Color:** deep purple.",
             "technique": "stitched",
-            "color_named": "black",
+            "color_named": "deep purple",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "~1.5in tall, top of shorts"
@@ -4845,7 +4960,7 @@
           "NO black mesh body — body is WHITE mesh with the sublimated sunset print on top.",
           "NO contrast color side-panels.",
           "NO black drawstring — drawstring is WHITE.",
-          "NO white waistband — waistband is BLACK.",
+          "NO black or white waistband — waistband is PURPLE.",
           "NO zipper closures on the pockets.",
           "NO additional back pockets.",
           "NO embossed/debossed decoration.",
@@ -4855,7 +4970,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the full sunset Golden Gate sublimated print, the black waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the sunset gradient and the orange-red bridge silhouette wrapping side-to-side. For the back: back view straight-on showing the continuous sunset bridge print.",
+        "pose": "Front view straight-on showing the full night Golden Gate sublimated print, the purple waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the night gradient and the illuminated bridge wrapping side-to-side. For the back: back view straight-on showing the continuous night bridge print.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -4937,7 +5052,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shorts.md",
-        "dossier_sha256": "4deca5c523b2b4dde6fc5768a978a5e8b9af6a530a250da1c0a50518a3d3ca7d"
+        "dossier_sha256": "8440d195c9808e35c1e02dc1ea58e292a32902282a41c8b53bd6618ff9b81d40"
       },
       "consumer_contract": {
         "required_for": [
@@ -4950,7 +5065,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d"
+      "product_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23"
     },
     "sg-005": {
       "sku": "sg-005",
@@ -4976,18 +5091,23 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).",
         "branding_summary": "Embroidered rose with the Bay Bridge imagery from the matching shorts stitched inside the rose.",
         "branding_regions": [
           {
-            "region": "front-chest",
-            "description": "- **front-chest** (small, ~3in tall, center-to-left chest): The Black Rose three-rose-cluster art (three roses + thorny vines + cloud at base) in a **blue colorway whose rose petals are filled with a photographic Bay Bridge scene** — the large bloom's petals contain a small hyper-real Bay Bridge image (steel-truss bridge + water + sky), so the blue/cyan rose's interior IS the bridge. Grey/silver thorny vines and stems, and a **BLUE cloud at the base** (light-blue with darker accents, matching the blue rose — NOT grey/charcoal). NOT canonical multi-color. NOT canonical greyscale. **Technique:** sublimated/printed. **Color:** blue rose with photographic-bridge petal fill + blue cloud on white ground.",
-            "technique": "sublimated/printed",
-            "color_named": "blue rose with photographic-bridge petal fill + blue cloud on white ground",
+            "region": "front-center-chest",
+            "description": "- **front-center-chest** (large, ~8–10in tall, centered on the chest): The canonical rose-cluster composition in a **blue colorway whose rose petals contain the matching Bay Bridge image**, exactly as shown in the founder flatlay and techflat. The large bloom carries the steel bridge, water, and sky imagery; thorny vines and stems are grey/silver; the cloud base is blue with darker accents. **Technique:** embroidered. **Color:** blue/cyan, grey/silver, and Bay Bridge image threadwork on white ground.",
+            "technique": "embroidered",
+            "color_named": "blue/cyan, grey/silver, and Bay Bridge image threadwork on white ground",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "small, ~3in tall, center-to-left chest"
+            "dimensions": "large, ~8–10in tall, centered on the chest"
           },
           {
             "region": "back-neck",
@@ -5049,10 +5169,10 @@
           "NO canonical multi-color rose-cluster — the cluster is recolored to blue on this SKU.",
           "NO canonical greyscale rose-cluster — recolored to blue.",
           "NO Bay Bridge / Golden Gate photo print on the body — body is solid white. Bridge photo prints belong to the matching shorts.",
-          "NO chest text or wordmark on the front body fabric — only the chest rose.",
+          "NO chest text or wordmark on the front body fabric — only the large centered rose-and-bridge embroidery.",
           "NO logo on the back body — only the small back-neck SR monogram.",
           "NO Authentic Collection patch.",
-          "NO Black Rose logo at front-center, front-right, or as a back-center large emblem.",
+          "NO small left-chest rose — the rose-and-bridge composition is LARGE and CENTERED on the front chest.",
           "NO Love Hurts branding.",
           "NO sublimated all-over body pattern — body is solid white.",
           "NO contrast color sleeve cuffs or hem.",
@@ -5061,7 +5181,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the small left-chest blue rose-cluster on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.",
+        "pose": "Front view straight-on showing the large centered blue rose-and-Bay-Bridge embroidery on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -5152,7 +5272,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
-        "dossier_sha256": "8d85cab5b536b01b023500dce3935e0e0199f4396b813fa8f514c8ae541152c3"
+        "dossier_sha256": "04ddbd458ced6c49f39ce2a12dccbe2edec9f6ed0180efffb87100f1e8a5783a"
       },
       "consumer_contract": {
         "required_for": [
@@ -5165,14 +5285,14 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c"
+      "product_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
     },
     "sg-006": {
       "sku": "sg-006",
       "identity": {
         "name": "Mint & Lavender Hoodie",
         "collection": "signature",
-        "description": "Sweet pastel vibes meet streetwear luxury. Mint and lavender colorblock with signature rose detail.",
+        "description": "Sweet pastel streetwear in a solid mint pullover hoodie with a centered lavender rose composition.",
         "badge": ""
       },
       "commerce": {
@@ -5192,9 +5312,14 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any\nkind) — solid **mint green** body, hood, and sleeves, all one mint color.\n**Lavender/purple drawstrings** at the hood opening (the only contrast hardware).\nLarge lavender rose-cluster graphic centered on the chest. Ribbed cuffs and\nbottom hem in self-color mint. Mid-weight cotton-fleece fabric. Pairs with the\nMint & Lavender Sweatpants (sg-014) as a matching set. **Sold as the hoodie SKU\nonly — the matching sweatpants are sg-014, separate SKU.** NOT a zip-up. NOT a\ncrewneck (that's sg-013 Mint & Lavender Crewneck — separate SKU). NOT a\nwindbreaker (the white-body rainbow-chevron zip-up set is sg-015 — a completely\ndifferent product).",
-        "branding_summary": "Lavender rose logo centered on the front.",
+        "type_lock": "PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any\nkind) — solid **mint green** body, hood, and sleeves, all one mint color.\n**White drawstrings** at the hood opening (the only contrast hardware).\nLarge lavender rose-cluster graphic centered on the chest. Ribbed cuffs and\nbottom hem in self-color mint. Mid-weight cotton-fleece fabric. Pairs with the\nMint & Lavender Sweatpants (sg-014) as a matching set. **Sold as the hoodie SKU\nonly — the matching sweatpants are sg-014, separate SKU.** NOT a zip-up. NOT a\ncrewneck (that's sg-013 Mint & Lavender Crewneck — separate SKU). NOT a\nwindbreaker (the white-body rainbow-chevron zip-up set is sg-015 — a completely\ndifferent product).",
+        "branding_summary": "Large lavender rose composition centered on the solid mint front; white hood drawstrings; mint kangaroo pocket; plain mint back.",
         "branding_regions": [
           {
             "region": "front-center-chest",
@@ -5225,9 +5350,9 @@
           },
           {
             "region": "hood-drawstrings",
-            "description": "- **hood-drawstrings** (two cords at the hood opening): **Lavender/purple** drawstrings with metal or self-tipped ends. **Technique:** stitched. **Color:** lavender/purple.",
+            "description": "- **hood-drawstrings** (two cords at the hood opening): **White** drawstrings with metal or self-tipped ends, matching the founder flatlay. **Technique:** stitched. **Color:** white.",
             "technique": "stitched",
-            "color_named": "lavender/purple",
+            "color_named": "white",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -5292,6 +5417,7 @@
           "NO white body — the body is SOLID MINT GREEN.",
           "NO rainbow chevron, NO multi-color stripe bands, NO color-block panels — that",
           "NO pink hood — hood is mint, same as the body.",
+          "NO lavender/purple or mint drawstrings — the drawstrings are WHITE.",
           "NO slash hand pockets, NO pink piping — single kangaroo pouch only.",
           "NO decoration on the back — back is blank mint (no SR monogram, no art).",
           "NO decoration on the sleeves, cuffs, hood, or hem.",
@@ -5304,7 +5430,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the solid mint body, lavender\n  drawstrings, centered lavender rose-cluster chest art, and kangaroo pocket.\n  Three-quarter view shows the clean mint sleeves. For the back: back view\n  straight-on showing the blank mint back panel and hood.",
+        "pose": "Front view straight-on showing the solid mint body, lavender\n  white drawstrings, centered lavender rose-cluster chest art, and kangaroo pocket.\n  Three-quarter view shows the clean mint sleeves. For the back: back view\n  straight-on showing the blank mint back panel and hood.",
         "setting": "Pure white studio backdrop, soft directional studio lighting\n  from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -5394,7 +5520,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-hoodie.md",
-        "dossier_sha256": "04cdd10dde63036f52990027a6e51b0cc7907c799543c4dfc6ad7d5216ee8529"
+        "dossier_sha256": "b059e3c5f064481ee4ebdffa13ca2101f09e8c56a7217c583329dbfff8e6df2b"
       },
       "consumer_contract": {
         "required_for": [
@@ -5407,14 +5533,14 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf"
+      "product_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3"
     },
     "sg-007": {
       "sku": "sg-007",
       "identity": {
         "name": "The Signature Beanie",
         "collection": "signature",
-        "description": "Classic fitted beanie with embroidered signature rose. West Coast luxury meets everyday warmth. Rose-logo color variants: red, grey, black, purple.",
+        "description": "Classic fitted black beanie with a small silicone signature-rose patch. West Coast luxury meets everyday warmth. Rose-logo color variants: red, grey, black, purple.",
         "badge": ""
       },
       "commerce": {
@@ -5429,18 +5555,23 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic embroidered on the front face of the cuff. Mid-weight knit fabric.",
-        "branding_summary": "Small silicone patch logo positioned slightly off-center to the left. Logo rose color variants: red, grey, black, purple.",
+        "type_lock": "Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rectangular silicone rose-logo patch attached to the front face of the cuff. Mid-weight knit fabric.",
+        "branding_summary": "Small rectangular silicone rose-logo patch positioned slightly off-center to the wearer's left. Logo rose color variants: red, grey, black, purple. No direct embroidery into the knit.",
         "branding_regions": [
           {
             "region": "front-cuff",
-            "description": "- **front-cuff** (small, ~1.5–2in tall, centered on the front face of the cuff fold): The selected variant's rose decoration (Variant 1, 2, 3, or 4 per the COLORWAY/DECORATION VARIANTS block above) embroidered into the cuff face. **Technique:** embroidered. **Color:** per selected variant.",
-            "technique": "embroidered",
-            "color_named": "per selected variant",
+            "description": "- **front-cuff** (small, ~1.5–2in tall, slightly off-center toward the wearer's left on the front face of the cuff fold): The selected variant's rose decoration (Variant 1, 2, 3, or 4 per the COLORWAY/DECORATION VARIANTS block above) rendered as a small rectangular **silicone logo patch** secured to the cuff. **Technique:** silicone. **Color:** per selected variant on a black/dark patch ground.",
+            "technique": "silicone",
+            "color_named": "per selected variant on a black/dark patch ground",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "small, ~1.5–2in tall, centered on the front face of the cuff fold"
+            "dimensions": "small, ~1.5–2in tall, slightly off-center toward the wearer's left on the front face of the cuff fold"
           },
           {
             "region": "cuff",
@@ -5480,13 +5611,13 @@
           "NO slouchy / oversize crown — the beanie is a snug fitted-knit silhouette.",
           "NO Authentic Collection patch on a beanie.",
           "NO SR monogram on the beanie (the SR mark is a back-neck embroidery on jerseys, not on accessories).",
-          "NO printed graphics — branding is embroidered, not printed.",
+          "NO direct embroidery into the knit and NO loose printed graphic — the branding is contained in the attached silicone logo patch.",
           "NO contrast piping along the cuff edge.",
           "NO tag visible on the exterior (interior size-tag only)."
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the cuff with the selected variant's rose decoration. Optional: 3/4 view showing the snug knit fit and the cuff fold-line.",
+        "pose": "Front view straight-on showing the cuff with the selected variant's silicone rose-logo patch slightly left of center. Optional: 3/4 view showing the snug knit fit, patch thickness, and cuff fold-line.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -5584,7 +5715,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-signature-beanie.md",
-        "dossier_sha256": "98842ce4880b4734b210f389dbbce01b378e8354a0d6e8f6e62f8131aa133228"
+        "dossier_sha256": "085fedf0686a3dcd6e05cf045e608c5c1f44a829559ad04d7b885e26346602fa"
       },
       "consumer_contract": {
         "required_for": [
@@ -5597,7 +5728,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03"
+      "product_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c"
     },
     "sg-009": {
       "sku": "sg-009",
@@ -5623,6 +5754,11 @@
         "edition_size": "250",
         "published": true,
         "is_preorder": false
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
       },
       "garment": {
         "type_lock": "Sherpa-lined zip-front jacket — solid **black** nylon-windbreaker-style exterior shell with full-length center-front zipper closure and a **white / cream sherpa fleece interior lining** that wraps the entire interior body, sleeves, and stand-up collar. Visible white-sherpa contrast at the front placket, sleeve cuffs, hem, and stand-up collar opening when the jacket is worn open. Two patch hand pockets at the lower body. Stand-up funnel-neck collar (NOT a hood). Small interior brand woven label at the back-neck. Mid-weight to outerwear weight. NOT a pullover. NOT a hoodie (no hood). NOT a sherpa-exterior coat (the sherpa is the INTERIOR lining; the exterior is smooth black nylon-style fabric). NOT a fully-reversible jacket (the rose-cluster embroidery is exterior-only, so it cannot be worn inside-out as a finished look). NOT a windbreaker set (this is the jacket alone, no matching pants).",
@@ -5894,7 +6030,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e"
+      "product_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a"
     },
     "sg-011": {
       "sku": "sg-011",
@@ -5921,15 +6057,29 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Classic crew-neck T-shirt, upper body only. NOT a crewneck sweatshirt, NOT a hoodie, NOT a jersey, NOT a long-sleeve. Short sleeves, ribbed crew neckline, no buttons, no hood, no kangaroo pocket. White 100% cotton construction.",
         "branding_summary": "Original SkyyRose label tee — minimal design with signature branding. Detailed placement spec TBD.",
         "branding_regions": [
           {
+            "region": "front-body",
+            "description": "- **front-body** (entire exterior front): Completely blank white fabric. No monogram, no graphic, no print, no embroidery. Clean tee front. **Technique:** stitched. **Color:** white.",
+            "technique": "stitched",
+            "color_named": "white",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
             "region": "collar-inside",
-            "description": "- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color/Colorway:** white/silver label with woven brand text on white ground.",
+            "description": "- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color:** white/silver label with woven brand text on white ground.",
             "technique": "woven-label",
-            "color_named": null,
+            "color_named": "white/silver label with woven brand text on white ground",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "back neck, ~1.5in wide × ~0.5in tall"
@@ -5990,7 +6140,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/original-label-tee-white.md",
-        "dossier_sha256": "0d2fd02c684cc717e165734925f6198ed119812b5cb9eda1ffbe3b523a2df4a2"
+        "dossier_sha256": "3ae8edb4bdf767b5935ef86962bad7f4fcb50da29f32a64c2488efa9e72176c2"
       },
       "consumer_contract": {
         "required_for": [
@@ -6003,7 +6153,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812"
+      "product_hash": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669"
     },
     "sg-012": {
       "sku": "sg-012",
@@ -6030,15 +6180,29 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Classic crew-neck T-shirt, upper body only. NOT a crewneck sweatshirt, NOT a hoodie, NOT a jersey, NOT a long-sleeve. Short sleeves, ribbed crew neckline, no buttons, no hood, no kangaroo pocket. Orchid (soft purple-pink) 100% cotton construction.",
         "branding_summary": "Original SkyyRose label tee — minimal design with signature branding. Detailed placement spec TBD.",
         "branding_regions": [
           {
+            "region": "front-body",
+            "description": "- **front-body** (entire exterior front): Completely blank orchid fabric. No monogram, no graphic, no print, no embroidery. Clean tee front. **Technique:** stitched. **Color:** orchid.",
+            "technique": "stitched",
+            "color_named": "orchid",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
             "region": "collar-inside",
-            "description": "- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color/Colorway:** white/rose-gold label with woven brand text on orchid-compatible ground.",
+            "description": "- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color:** white/rose-gold label with woven brand text on orchid-compatible ground.",
             "technique": "woven-label",
-            "color_named": null,
+            "color_named": "white/rose-gold label with woven brand text on orchid-compatible ground",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "back neck, ~1.5in wide × ~0.5in tall"
@@ -6099,7 +6263,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/original-label-tee-orchid.md",
-        "dossier_sha256": "cc5de2341bffaf523116b8f8a78db94dc9c77f61cb38bfef210521313f94ea9a"
+        "dossier_sha256": "6e5b685ef3e12db3d6991db0984bf0e8c42398367b8de618b1be9f56429a3688"
       },
       "consumer_contract": {
         "required_for": [
@@ -6112,7 +6276,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1"
+      "product_hash": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786"
     },
     "sg-013": {
       "sku": "sg-013",
@@ -6138,6 +6302,11 @@
         "edition_size": "250",
         "published": true,
         "is_preorder": false
+      },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
       },
       "garment": {
         "type_lock": "Crew-neck pullover sweatshirt — solid **mint green / seafoam-green** body fabric throughout (front, back, sleeves) with **NO hood, NO zipper, NO color-blocking, NO chevron stripes, NO contrast panels**. Long sleeves, ribbed crew-neck, ribbed cuffs at wrists, ribbed waistband at hem (all in matching mint). Mid-weight cotton-fleece fabric. NOT a hoodie (no hood — this is the no-hood sibling of the Mint & Lavender Hoodie sg-006). NOT a zip-up (pullover construction, no zipper). NOT a chevron-rainbow garment (the sg-006 hoodie has rainbow chevron stripes; this crewneck does NOT — it is a clean solid-mint body with embroidered rose decoration only). NOT a tee (this is a heavier sweatshirt with ribbed cuffs/waistband). The matching mint sweatpants visible in the techflat are sold as a separate companion piece — this dossier covers ONLY the crewneck top.",
@@ -6359,7 +6528,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b"
+      "product_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2"
     },
     "sg-014": {
       "sku": "sg-014",
@@ -6386,6 +6555,11 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Athletic-cut sweatpants with a tapered jogger leg and\nribbed ankle cuffs — solid **mint green** body, front and back, all one mint\ncolor. Small lavender rose-cluster logo on the **wearer's left thigh** (upper\nthigh, below the hip). Elasticated drawstring waistband, side-seam hand\npockets. Mid-weight cotton-fleece fabric. Pairs with the Mint & Lavender\nHoodie (sg-006) as a matching set. **Sold as the sweatpants SKU only — the\nmatching hoodie is sg-006, separate SKU.** NOT shorts. NOT track pants. NOT\nthe white chevron windbreaker-set pants (that's sg-015 — a completely\ndifferent product).",
         "branding_summary": "Embroidered rose logo on the left thigh.",
@@ -6410,9 +6584,18 @@
           },
           {
             "region": "waistband",
-            "description": "- **waistband** (elasticated, with drawstring): Self-color mint elasticated waistband with a drawstring. **Technique:** stitched. **Color:** mint green.",
+            "description": "- **waistband** (elasticated, with drawstring): Self-color mint elasticated waistband with a **white drawstring**, matching the founder flatlay. **Technique:** stitched. **Color:** mint green waistband + white drawstring.",
             "technique": "stitched",
-            "color_named": "mint green",
+            "color_named": "mint green waistband + white drawstring",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
+            "region": "drawstring",
+            "description": "- **drawstring**: White cord drawstring centered at the front waistband. **Technique:** stitched. **Color:** white.",
+            "technique": "stitched",
+            "color_named": "white",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -6468,7 +6651,8 @@
           "NO Bridge Series photo print.",
           "NO text or wordmark anywhere.",
           "NO embossed/debossed decoration.",
-          "NO multi-color cuffs or waistband — all ribbing and elastication is self-color mint."
+          "NO multi-color cuffs or waistband — all ribbing and elastication is self-color mint.",
+          "NO mint or lavender drawstring — the drawstring is WHITE."
         ]
       },
       "scene_direction": {
@@ -6546,7 +6730,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-sweatpants.md",
-        "dossier_sha256": "361ab61cdd47cb5bf84784a201b70bb4da9605749043053cb57025644d84de47"
+        "dossier_sha256": "fa672390a6735624c4e596fcd4d79865c6ac052d599b70b5434b559c8918ec57"
       },
       "consumer_contract": {
         "required_for": [
@@ -6559,14 +6743,14 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9"
+      "product_hash": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867"
     },
     "sg-015": {
       "sku": "sg-015",
       "identity": {
         "name": "The Windbreaker Set",
         "collection": "signature",
-        "description": "Signature luxury meets West Coast weather. A premium windbreaker set built for those who move through fog.",
+        "description": "Signature luxury meets West Coast weather. A premium two-piece white nylon windbreaker jacket and pants set with sewn pastel chevron color-blocking.",
         "badge": "Pre-Order"
       },
       "commerce": {
@@ -6586,9 +6770,14 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Two-piece matching set sold as a single SKU — **lightweight nylon zip-front hooded windbreaker JACKET + matching nylon track-style PANTS**. Both pieces are constructed from smooth lightweight **nylon windbreaker fabric** (NOT cotton-fleece — this is the lighter water-resistant sibling of the Mint & Lavender Hoodie set). Solid **white** body on both pieces with a **multi-color V-shape rainbow chevron color-block detail** at the upper chest (jacket) and at each upper-thigh (pants), **PINK contrast hood** on the jacket, **multi-color rainbow stripe bands** at the jacket cuffs / hem and the pants waistband / ankle cuffs. The jacket has a full-length center-front zipper. The pants have a white drawstring waistband and slash hand pockets. NOT cotton-fleece (this is the windbreaker variant, not the cousin sg-006 fleece hoodie + sg-014 fleece pants). NOT a single-piece SKU — this is sold as the matching JACKET + PANTS set together. NOT a fleece hoodie (different fabric, different weight, different construction). NOT solid black (catalog Color field reads \"Black\" but the techflat colorway is **WHITE body + PINK hood + multi-color rainbow chevron** — render the techflat colorway, not the catalog field).",
-        "branding_summary": "Premium windbreaker set (jacket + matching bottom). Branding detail TBD — provide a logo-details entry when you have the final spec.",
+        "branding_summary": "White nylon jacket and pants with sewn pink, green, lavender, and yellow chevron panels; pink hood; striped rib-knit bands; small pink embroidered rose on wearer-left jacket chest and pants thigh; large embroidered SR monogram on upper jacket back.",
         "branding_regions": [
           {
             "region": "front-body-jacket",
@@ -6601,21 +6790,21 @@
           },
           {
             "region": "front-chevron-jacket",
-            "description": "- **front-chevron-jacket** (large V-shape, ~10in wide, fanning from the upper chest outward toward both shoulders and up to the hood opening): Multi-color **rainbow chevron stripe color-block panel** — alternating pink + green + lavender + yellow stripes (~5–8 stripes, each ~0.5–1in wide) arranged in a V/chevron formation that meets at the center-front upper-chest and fans up-and-out toward each shoulder. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow on white ground.",
-            "technique": "sublimated",
+            "description": "- **front-chevron-jacket** (large V-shape, ~10in wide, fanning from the upper chest outward toward both shoulders and up to the hood opening): Multi-color **rainbow chevron sewn color-block panels** — alternating pink + green + lavender + yellow fabric strips arranged in a V/chevron formation that meets at the center-front zipper and fans up-and-out toward each shoulder. **Technique:** stitched color-block. **Color:** alternating pink + green + lavender + yellow on white ground.",
+            "technique": "stitched color-block",
             "color_named": "alternating pink + green + lavender + yellow on white ground",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "large V-shape, ~10in wide, fanning from the upper chest outward toward both shoulders and up to the hood opening"
           },
           {
-            "region": "front-center-chest-jacket",
-            "description": "- **front-center-chest-jacket** (small, ~2in tall, just below the V-chevron meeting point on the white body): Small **pink rose-cluster** decoration — canonical rose-cluster art recolored to a pink-on-white tonal palette (pink / coral petals + grey-pink outlines + white cloud) matching the small chest rose on the sg-006 hoodie. **Technique:** embroidered. **Color:** pink + coral + grey-pink thread on white.",
+            "region": "front-left-chest-jacket",
+            "description": "- **front-left-chest-jacket** (small, ~2in tall, on the wearer's left / viewer's right within the chevron field): Small **pink rose-cluster** decoration — canonical rose-cluster art recolored to a pink-on-white tonal palette (pink / coral petals + grey-pink outlines + white cloud). **Technique:** embroidered. **Color:** pink + coral + grey-pink thread.",
             "technique": "embroidered",
-            "color_named": "pink + coral + grey-pink thread on white",
+            "color_named": "pink + coral + grey-pink thread",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "small, ~2in tall, just below the V-chevron meeting point on the white body"
+            "dimensions": "small, ~2in tall, on the wearer's left / viewer's right within the chevron field"
           },
           {
             "region": "front-zipper-jacket",
@@ -6655,12 +6844,21 @@
           },
           {
             "region": "front-thigh-chevron-pants",
-            "description": "- **front-thigh-chevron-pants** (V-shape, ~6–7in wide, on each upper-thigh / hip area, mirroring across the center-front): Multi-color V-shape **rainbow chevron stripe color-block panel** on each upper thigh — alternating pink + green + lavender + yellow stripes arranged in V/chevron pattern. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow on white ground.",
-            "technique": "sublimated",
+            "description": "- **front-thigh-chevron-pants** (V-shape, ~6–7in wide, on each upper-thigh / hip area, mirroring across the center-front): Multi-color V-shape **rainbow sewn color-block panels** on each upper thigh — alternating pink + green + lavender + yellow fabric strips arranged in a V/chevron pattern. **Technique:** stitched color-block. **Color:** alternating pink + green + lavender + yellow on white ground.",
+            "technique": "stitched color-block",
             "color_named": "alternating pink + green + lavender + yellow on white ground",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": "V-shape, ~6–7in wide, on each upper-thigh / hip area, mirroring across the center-front"
+          },
+          {
+            "region": "front-left-thigh-rose-pants",
+            "description": "- **front-left-thigh-rose-pants** (small, ~2in tall, wearer's left / viewer's right upper thigh within the chevron): Small pink rose-cluster matching the jacket chest mark. **Technique:** embroidered. **Color:** pink + coral + grey-pink thread.",
+            "technique": "embroidered",
+            "color_named": "pink + coral + grey-pink thread",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": "small, ~2in tall, wearer's left / viewer's right upper thigh within the chevron"
           },
           {
             "region": "front-left-pocket-pants",
@@ -6736,26 +6934,26 @@
           },
           {
             "region": "left-sleeve-jacket",
-            "description": "- **left-sleeve-jacket** (long nylon sleeve): Solid white nylon body with a small V-shape rainbow chevron stripe panel at the upper-cuff / forearm area mirroring the front-chevron color story. **Technique:** sublimated. **Color:** white body with chevron accent.",
-            "technique": "sublimated",
-            "color_named": "white body with chevron accent",
+            "description": "- **left-sleeve-jacket** (long nylon sleeve): Solid white nylon body with small V-shape rainbow sewn color-block panels at the forearm mirroring the front-chevron construction. **Technique:** stitched color-block. **Color:** white body with pink, green, lavender, and yellow panels.",
+            "technique": "stitched color-block",
+            "color_named": "white body with pink, green, lavender, and yellow panels",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
             "region": "right-sleeve-jacket",
-            "description": "- **right-sleeve-jacket** (mirror of left-sleeve): Solid white with chevron accent at the upper-cuff. **Technique:** sublimated. **Color:** white body with chevron accent.",
-            "technique": "sublimated",
-            "color_named": "white body with chevron accent",
+            "description": "- **right-sleeve-jacket** (mirror of left-sleeve): Solid white with matching sewn chevron panels at the forearm. **Technique:** stitched color-block. **Color:** white body with pink, green, lavender, and yellow panels.",
+            "technique": "stitched color-block",
+            "color_named": "white body with pink, green, lavender, and yellow panels",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
             "region": "left-cuff-jacket",
-            "description": "- **left-cuff-jacket** (~1.5in tall ribbed cuff at wrist): Multi-color rainbow stripe band (alternating pink + green + lavender + yellow stripes wrapping the cuff). **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.",
-            "technique": "sublimated",
+            "description": "- **left-cuff-jacket** (~1.5in tall ribbed cuff at wrist): Multi-color striped rib-knit band (alternating pink + green + lavender + yellow bands wrapping the cuff). **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.",
+            "technique": "knitted/stitched",
             "color_named": "alternating pink + green + lavender + yellow",
             "color_hex": null,
             "color_pantone": null,
@@ -6763,8 +6961,8 @@
           },
           {
             "region": "right-cuff-jacket",
-            "description": "- **right-cuff-jacket** (mirror of left-cuff-jacket): Multi-color rainbow stripe band. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.",
-            "technique": "sublimated",
+            "description": "- **right-cuff-jacket** (mirror of left-cuff-jacket): Multi-color striped rib-knit band. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.",
+            "technique": "knitted/stitched",
             "color_named": "alternating pink + green + lavender + yellow",
             "color_hex": null,
             "color_pantone": null,
@@ -6772,8 +6970,8 @@
           },
           {
             "region": "waistband-jacket",
-            "description": "- **waistband-jacket** (~2in tall ribbed band at the jacket bottom hem): Multi-color rainbow stripe band wrapping the jacket front-and-back at the hem. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.",
-            "technique": "sublimated",
+            "description": "- **waistband-jacket** (~2in tall ribbed band at the jacket bottom hem): Multi-color striped rib-knit band wrapping the jacket front-and-back at the hem. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.",
+            "technique": "knitted/stitched",
             "color_named": "alternating pink + green + lavender + yellow",
             "color_hex": null,
             "color_pantone": null,
@@ -6781,8 +6979,8 @@
           },
           {
             "region": "waistband-pants",
-            "description": "- **waistband-pants** (~2in tall ribbed band at the pants top): Multi-color rainbow stripe band matching the jacket waistband (alternating pink + green + lavender + yellow stripes wrapping front-and-back). **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.",
-            "technique": "sublimated",
+            "description": "- **waistband-pants** (~2in tall ribbed band at the pants top): Multi-color striped rib-knit band matching the jacket waistband. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.",
+            "technique": "knitted/stitched",
             "color_named": "alternating pink + green + lavender + yellow",
             "color_hex": null,
             "color_pantone": null,
@@ -6790,8 +6988,8 @@
           },
           {
             "region": "left-ankle-cuff-pants",
-            "description": "- **left-ankle-cuff-pants** (~1.5in tall ribbed band at the left ankle): Multi-color rainbow stripe band matching the jacket cuff treatment. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.",
-            "technique": "sublimated",
+            "description": "- **left-ankle-cuff-pants** (~1.5in tall ribbed band at the left ankle): Multi-color striped rib-knit band matching the jacket cuff treatment. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.",
+            "technique": "knitted/stitched",
             "color_named": "alternating pink + green + lavender + yellow",
             "color_hex": null,
             "color_pantone": null,
@@ -6799,8 +6997,8 @@
           },
           {
             "region": "right-ankle-cuff-pants",
-            "description": "- **right-ankle-cuff-pants** (mirror of left-ankle-cuff-pants): Multi-color rainbow stripe band. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.",
-            "technique": "sublimated",
+            "description": "- **right-ankle-cuff-pants** (mirror of left-ankle-cuff-pants): Multi-color striped rib-knit band. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.",
+            "technique": "knitted/stitched",
             "color_named": "alternating pink + green + lavender + yellow",
             "color_hex": null,
             "color_pantone": null,
@@ -6832,14 +7030,14 @@
           "NO single-color drawstring matching the hood — drawstring is WHITE on the pink hood.",
           "NO solid-color cuffs or waistbands — cuffs and waistbands carry the multi-color rainbow stripe band on BOTH the jacket and the pants.",
           "NO contrast piping on the cuffs or waistband — those areas have the rainbow stripe band; only the slash pockets carry pink piping.",
-          "NO chevron on the back of the jacket or back of the pants — chevron decorations are on the FRONT only (front-chest jacket, front-thighs pants, sleeve forearm panels).",
-          "NO Black Rose three-rose-cluster as a chest emblem (greyscale) — the front-center-chest-jacket rose is a small pink-tonal canonical rose-cluster.",
+          "NO chevron on the back of the jacket or back of the pants — sewn chevron panels are on the FRONT only (front-chest jacket, front-thighs pants, sleeve forearm panels).",
+          "NO Black Rose three-rose-cluster as a chest emblem (greyscale) — the front-left-chest jacket rose and front-left-thigh pants rose are small pink-tonal canonical rose-clusters.",
           "NO Love Hurts canonical RED rose-cluster — this Signature set uses the pink-recolored variant.",
           "NO Authentic Collection patch (no NFL / NBA / Hockey patch).",
           "NO Bridge Series photo print on either piece.",
           "NO embossed or debossed decoration.",
-          "NO chest text or wordmark on the jacket front (the only front decoration is the chevron + small pink rose).",
-          "NO printed graphics other than the sublimated chevron stripes and stripe bands.",
+          "NO chest text or wordmark on the jacket front (the only front decoration is the sewn chevron + small pink rose).",
+          "NO sublimated or printed chevrons/stripe bands — these are sewn color-block panels and striped rib-knit bands.",
           "NO half-zip placket on the jacket — the zipper runs the FULL body length.",
           "NO additional pockets on the back of the jacket, pants, or sleeves — only the two front slash hand pockets per piece.",
           "NO sherpa lining (this is a windbreaker, not a sherpa-lined jacket — sg-009 is the sherpa-lined sibling).",
@@ -6847,7 +7045,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the jacket worn closed — white body + pink hood + V-chevron upper-chest stripes + small pink rose at center-chest + multi-color cuff and waistband bands + zipper + slash pocket pink piping. Back view shows the prominent SR monogram on the back yoke and the multi-color waistband band. Pants: front view shows V-chevron mirrored on each thigh + slash pocket piping + drawstring + multi-color waistband and ankle bands. Three-quarter view of the jacket shows the chevron wrapping toward the shoulders and the sleeve forearm chevron panels. Optional matching-set flat-lay shows jacket + pants together aligned to the techflat.",
+        "pose": "Front view straight-on showing the jacket worn closed — white body + pink hood + sewn V-chevron upper-chest panels + small pink rose on the wearer's left chest + multi-color rib-knit cuff and waistband bands + zipper + slash pocket pink piping. Back view shows the prominent SR monogram on the back yoke and the multi-color waistband band. Pants: front view shows sewn V-chevron panels mirrored on each thigh + the small pink rose on the wearer's left thigh + slash pocket piping + drawstring + multi-color waistband and ankle bands. Three-quarter view of the jacket shows the chevron wrapping toward the shoulders and the sleeve forearm panels. Optional matching-set flat-lay shows jacket + pants together aligned to the techflat.",
         "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -6943,7 +7141,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-windbreaker-set.md",
-        "dossier_sha256": "cd1f0678c09312983907e55698f406adf264e77855691795f4e582b5a9f4875d"
+        "dossier_sha256": "9285c0e6d57b2f52e03f7c7037326b1bc161c279a156ca7b37e94e9c82c2610e"
       },
       "consumer_contract": {
         "required_for": [
@@ -6956,7 +7154,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76"
+      "product_hash": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d"
     },
     "kids-001": {
       "sku": "kids-001",
@@ -6983,40 +7181,45 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
         "type_lock": "Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (red hood + diagonal black-and-white upper-body panels + red lower body), and (2) matching sweatpants in solid black with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.**",
         "branding_summary": "Black rose embroidered logo on the left chest and the left thigh. Right arm features a circular patch logo: white background, black lettering, black rose in center. Patch text: 'Skyy Rose' arched on top, 'Collection' arched on bottom.",
         "branding_regions": [
           {
             "region": "front-body color-block",
-            "description": "- **front-body color-block** (entire front body): Angular geometric color-block construction — the body is divided into three colorway panels by diagonal seams. **Upper-left panel** (from top-left descending diagonally toward center): solid **black**. **Upper-right panel** (from top-right descending diagonally toward center): solid **white**. **Lower body** (from the diagonal meeting points down to the hem, including the kangaroo pocket area): solid **red**. The diagonals create an angular chevron pointing down toward the kangaroo pocket. **Technique:** stitched. **Color:** black + white + red.",
-            "technique": "stitched",
+            "description": "- **front-body color-block** (entire front body): Angular geometric color-block construction matching the techflat: a **black upper yoke** runs across the wearer's right shoulder and upper chest; a **white diagonal panel** fills the wearer's left chest and continues into the left sleeve; the **red lower body** fills the torso below the diagonal seam. A narrow red triangular section rises toward center chest where the black and white panels meet. **Technique:** stitched color-block. **Color:** black + white + red.",
+            "technique": "stitched color-block",
             "color_named": "black + white + red",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
-            "region": "front-chest cluster",
-            "description": "- **front-chest cluster** (ONLY mark on the hoodie front body; small, ~2in tall, on the CHEST — see the real product photo for exact position): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body (above the kangaroo pocket) — the front body carries this single chest cluster and nothing else.",
+            "region": "front-left-chest cluster",
+            "description": "- **front-left-chest cluster** (wearer's left / viewer's right, small, ~2in tall): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body — the front carries this single chest cluster and nothing else.",
             "technique": "embroidered",
             "color_named": "white + black + grey thread",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "ONLY mark on the hoodie front body; small, ~2in tall, on the CHEST — see the real product photo for exact position"
+            "dimensions": "wearer's left / viewer's right, small, ~2in tall"
           },
           {
             "region": "back-body color-block",
-            "description": "- **back-body color-block**: Mirrors the front color-block construction — the back has the same angular black/white upper panels and red lower body, with the diagonals continuing from the front around to the back. **Technique:** stitched. **Color:** black + white + red.",
-            "technique": "stitched",
+            "description": "- **back-body color-block**: Continues the exact techflat panel geometry: black upper-back yoke, red lower body, and one white diagonal wedge between them. The back is not a generic mirrored redraw; preserve the specific seam angles shown in the techflat. **Technique:** stitched color-block. **Color:** black + white + red.",
+            "technique": "stitched color-block",
             "color_named": "black + white + red",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
-            "region": "left-sleeve",
-            "description": "- **left-sleeve**: Solid **black** to match the front-upper-left panel. **Technique:** stitched. **Color:** black.",
+            "region": "right-sleeve",
+            "description": "- **right-sleeve** (wearer's right / viewer's left in the front view): Solid **black** and carries the one circular shoulder patch. **Technique:** stitched. **Color:** black.",
             "technique": "stitched",
             "color_named": "black",
             "color_hex": null,
@@ -7024,8 +7227,8 @@
             "dimensions": null
           },
           {
-            "region": "right-sleeve",
-            "description": "- **right-sleeve**: Solid **white** to match the front-upper-right panel. **Technique:** stitched. **Color:** white.",
+            "region": "left-sleeve",
+            "description": "- **left-sleeve** (wearer's left / viewer's right in the front view): Solid **white** with no patch. **Technique:** stitched. **Color:** white.",
             "technique": "stitched",
             "color_named": "white",
             "color_hex": null,
@@ -7033,13 +7236,13 @@
             "dimensions": null
           },
           {
-            "region": "sleeve patch",
-            "description": "- **sleeve patch** (ONE only, ~2in diameter, on the upper sleeve / shoulder — see the real product photo for which sleeve): A small circular rose-cluster patch — Black Rose three-rose-cluster art rendered in greyscale on a circular patch backing with a contrast border ring. **Technique:** embroidered-patch. Only ONE sleeve carries a patch; the other sleeve is plain.",
+            "region": "right-sleeve patch",
+            "description": "- **right-sleeve patch** (ONE only, ~2in diameter, on the upper right sleeve / shoulder): Circular embroidered patch with a white ground, black border and lettering, and black rose in the center; **“Skyy Rose”** arcs across the top and **“Collection”** arcs across the bottom. **Technique:** embroidered-patch. The left sleeve is plain.",
             "technique": "embroidered-patch",
             "color_named": null,
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "ONE only, ~2in diameter, on the upper sleeve / shoulder — see the real product photo for which sleeve"
+            "dimensions": "ONE only, ~2in diameter, on the upper right sleeve / shoulder"
           },
           {
             "region": "hood",
@@ -7096,13 +7299,13 @@
             "dimensions": null
           },
           {
-            "region": "pants cluster",
-            "description": "- **pants cluster** (ONE only, small, ~2in tall, on the pants — see the real product photo for exact position): A small Black Rose three-rose-cluster (greyscale). **Technique:** embroidered. **Color:** white + black + grey thread on black. Only ONE cluster on the pants.",
+            "region": "pants-left-thigh cluster",
+            "description": "- **pants-left-thigh cluster** (wearer's left / viewer's right, small, ~2in tall): A small Black Rose three-rose-cluster in greyscale. **Technique:** embroidered. **Color:** white + black + grey thread on black. Only ONE cluster on the pants.",
             "technique": "embroidered",
             "color_named": "white + black + grey thread on black",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "ONE only, small, ~2in tall, on the pants — see the real product photo for exact position"
+            "dimensions": "wearer's left / viewer's right, small, ~2in tall"
           },
           {
             "region": "waistband-drawstring",
@@ -7124,7 +7327,7 @@
           },
           {
             "region": "pants-cuffs",
-            "description": "- **pants-cuffs**: Ribbed-knit ankle cuffs (or straight-leg open hem). **Technique:** stitched. **Color:** black.",
+            "description": "- **pants-cuffs**: Ribbed-knit ankle cuffs matching the founder flatlay. **Technique:** stitched. **Color:** black.",
             "technique": "stitched",
             "color_named": "black",
             "color_hex": null,
@@ -7145,7 +7348,7 @@
           "NO zip-up front (the hoodie is a pullover with a kangaroo pocket).",
           "NO solid red body — the body is angular color-block with black/white upper panels and a red lower body, NOT a solid red field.",
           "NO horizontal stripe blocking — the color-block panels are DIAGONAL, creating angular chevrons.",
-          "NO matching sleeves — the LEFT sleeve is black, the RIGHT sleeve is white (mirror continuation from the body panels).",
+          "NO matching sleeves — the RIGHT sleeve is black with the circular patch; the LEFT sleeve is white and plain.",
           "NO colored drawstrings — drawstrings are WHITE on the hoodie + WHITE on the pants.",
           "NO decoration on the back-body — the back is a clean color-block panel with no logo placement.",
           "NO logos on the kangaroo pocket fabric — the pocket is clean red.",
@@ -7255,7 +7458,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/kids-colorblock-hoodie-set-red-black.md",
-        "dossier_sha256": "af98b74131430762ffb05fbc7726fd6f483d15e2d71604315b4233eca3bb77ce"
+        "dossier_sha256": "47866bb356d3a703bca82a4a6eb882f026f718e94a4c2937cfb81ad658eace08"
       },
       "consumer_contract": {
         "required_for": [
@@ -7268,7 +7471,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd"
+      "product_hash": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028"
     },
     "kids-002": {
       "sku": "kids-002",
@@ -7295,49 +7498,54 @@
         "published": true,
         "is_preorder": false
       },
+      "merchandising": {
+        "series_slug": "",
+        "series_region": "",
+        "series_order": 0
+      },
       "garment": {
-        "type_lock": "Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** (lavender/light-pink hood + diagonal lavender-and-medium-purple upper-body panels + deep purple lower body), and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction as the Red/Black colorway (kids-001) but in a purple-monochrome palette.",
+        "type_lock": "Two-piece kids hoodie set — (1) pullover hoodie with kangaroo front pocket, drawstring hood, ribbed cuffs and hem, **angular geometric color-block construction** with a deep-purple hood, dusty-pink upper yoke/right sleeve, medium-purple left sleeve/diagonal panel, and deep-purple lower body; and (2) matching sweatpants in solid deep purple with drawstring waist. NOT a zip-up jacket. NOT a single-piece garment. NOT an adult-sized SKU. Mid-weight cotton-fleece fabric. **Two-piece sold together as one SKU.** Same construction family as the Red/Black colorway (kids-001) but with its own exact purple/pink panel map.",
         "branding_summary": "Purple/lavender colorblock hoodie and jogger set. Preserve exact physical chevron panels, left-chest and left-thigh rose/cloud marks, white drawstrings, and the circular right-arm Skyy Rose Collection patch at the scale shown by the physical product references. No invented logo placement.",
         "branding_regions": [
           {
             "region": "front-body color-block",
-            "description": "- **front-body color-block** (entire front body): Angular geometric color-block construction with diagonal seams. **Upper-left panel** (descending from top-left toward center): **lavender / light pink-purple**. **Upper-right panel** (descending from top-right toward center): **medium purple**. **Lower body** (from the diagonal meeting points down to the hem, including the kangaroo pocket area): **deep / dark purple**. **Technique:** stitched. **Color:** lavender + medium purple + deep purple.",
-            "technique": "stitched",
-            "color_named": "lavender + medium purple + deep purple",
+            "description": "- **front-body color-block** (entire front body): Exact angular geometry from the techflat: a **dusty-pink upper yoke** crosses the chest; a **medium-purple diagonal panel** descends on the wearer's left side; and a **deep-purple lower body** fills the remaining torso. Preserve the three precise seam intersections rather than inventing a generic chevron. **Technique:** stitched color-block. **Color:** dusty pink + medium purple + deep purple.",
+            "technique": "stitched color-block",
+            "color_named": "dusty pink + medium purple + deep purple",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
-            "region": "front-chest cluster",
-            "description": "- **front-chest cluster** (ONLY mark on the hoodie front body; small, ~2in tall, on the CHEST — see the real product photo for exact position): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body (above the kangaroo pocket) — the front body carries this single chest cluster and nothing else.",
+            "region": "front-left-chest cluster",
+            "description": "- **front-left-chest cluster** (wearer's left / viewer's right, small, ~2in tall): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body — the front carries this single chest cluster and nothing else.",
             "technique": "embroidered",
             "color_named": "white + black + grey thread",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "ONLY mark on the hoodie front body; small, ~2in tall, on the CHEST — see the real product photo for exact position"
+            "dimensions": "wearer's left / viewer's right, small, ~2in tall"
           },
           {
             "region": "back-body color-block",
-            "description": "- **back-body color-block**: Mirrors the front — the back has the same angular lavender/medium-purple upper panels and deep-purple lower body. **Technique:** stitched. **Color:** lavender + medium purple + deep purple.",
-            "technique": "stitched",
-            "color_named": "lavender + medium purple + deep purple",
-            "color_hex": null,
-            "color_pantone": null,
-            "dimensions": null
-          },
-          {
-            "region": "left-sleeve",
-            "description": "- **left-sleeve**: Solid **lavender / light pink-purple** to match the front-upper-left panel. **Technique:** stitched. **Color:** lavender.",
-            "technique": "stitched",
-            "color_named": "lavender",
+            "description": "- **back-body color-block**: Continues the exact techflat geometry: dusty-pink upper-back yoke, medium-purple diagonal wedge, and deep-purple lower body. Preserve the asymmetric seam angles shown in the back techflat. **Technique:** stitched color-block. **Color:** dusty pink + medium purple + deep purple.",
+            "technique": "stitched color-block",
+            "color_named": "dusty pink + medium purple + deep purple",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
             "region": "right-sleeve",
-            "description": "- **right-sleeve**: Solid **medium purple** to match the front-upper-right panel. **Technique:** stitched. **Color:** medium purple.",
+            "description": "- **right-sleeve** (wearer's right / viewer's left in the front view): Solid **dusty pink** and carries the one circular shoulder patch. **Technique:** stitched. **Color:** dusty pink.",
+            "technique": "stitched",
+            "color_named": "dusty pink",
+            "color_hex": null,
+            "color_pantone": null,
+            "dimensions": null
+          },
+          {
+            "region": "left-sleeve",
+            "description": "- **left-sleeve** (wearer's left / viewer's right in the front view): Solid **medium purple** with no patch. **Technique:** stitched. **Color:** medium purple.",
             "technique": "stitched",
             "color_named": "medium purple",
             "color_hex": null,
@@ -7345,19 +7553,19 @@
             "dimensions": null
           },
           {
-            "region": "sleeve patch",
-            "description": "- **sleeve patch** (ONE only, ~2in diameter, on the upper sleeve / shoulder — see the real product photo for which sleeve and its exact artwork): A small round embroidered patch. **Technique:** embroidered-patch. Only ONE sleeve carries a patch; the other sleeve is plain.",
+            "region": "right-sleeve patch",
+            "description": "- **right-sleeve patch** (ONE only, ~2in diameter, on the upper right sleeve / shoulder): Circular embroidered patch with a white ground, black border and lettering, and black rose in the center; **“Skyy Rose”** arcs across the top and **“Collection”** arcs across the bottom. **Technique:** embroidered-patch. The left sleeve is plain.",
             "technique": "embroidered-patch",
             "color_named": null,
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "ONE only, ~2in diameter, on the upper sleeve / shoulder — see the real product photo for which sleeve and its exact artwork"
+            "dimensions": "ONE only, ~2in diameter, on the upper right sleeve / shoulder"
           },
           {
             "region": "hood",
-            "description": "- **hood**: Solid **lavender / light pink-purple** (matching the upper-left panel). **Technique:** stitched. **Color:** lavender.",
+            "description": "- **hood**: Solid **deep purple**, matching the founder flatlay and techflat. **Technique:** stitched. **Color:** deep purple.",
             "technique": "stitched",
-            "color_named": "lavender",
+            "color_named": "deep purple",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -7408,13 +7616,13 @@
             "dimensions": null
           },
           {
-            "region": "pants cluster",
-            "description": "- **pants cluster** (ONE only, small, ~2in tall, on the pants — see the real product photo for exact position): A small Black Rose three-rose-cluster (greyscale). **Technique:** embroidered. **Color:** white + black + grey thread on deep purple. Only ONE cluster on the pants.",
+            "region": "pants-left-thigh cluster",
+            "description": "- **pants-left-thigh cluster** (wearer's left / viewer's right, small, ~2in tall): A small Black Rose three-rose-cluster in greyscale. **Technique:** embroidered. **Color:** white + black + grey thread on deep purple. Only ONE cluster on the pants.",
             "technique": "embroidered",
             "color_named": "white + black + grey thread on deep purple",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "ONE only, small, ~2in tall, on the pants — see the real product photo for exact position"
+            "dimensions": "wearer's left / viewer's right, small, ~2in tall"
           },
           {
             "region": "waistband-drawstring",
@@ -7436,7 +7644,7 @@
           },
           {
             "region": "pants-cuffs",
-            "description": "- **pants-cuffs**: Ribbed-knit ankle cuffs (or straight-leg open hem). **Technique:** stitched. **Color:** deep purple.",
+            "description": "- **pants-cuffs**: Ribbed-knit ankle cuffs matching the founder flatlay. **Technique:** stitched. **Color:** deep purple.",
             "technique": "stitched",
             "color_named": "deep purple",
             "color_hex": null,
@@ -7458,7 +7666,7 @@
           "NO red anywhere on this colorway — this is the all-purple sister set to kids-001 (Red/Black). NO red roses, NO red body panel, NO red kangaroo pocket.",
           "NO solid-color hoodie body — body is angular color-block, NOT a solid lavender or solid purple field.",
           "NO horizontal stripe blocking — color-block panels are DIAGONAL.",
-          "NO matching sleeves — LEFT sleeve is lavender (light), RIGHT sleeve is medium purple.",
+          "NO matching sleeves — the RIGHT sleeve is dusty pink with the circular patch; the LEFT sleeve is medium purple and plain.",
           "NO colored drawstrings — drawstrings are WHITE on hoodie + WHITE on pants.",
           "NO decoration on the back-body — back is a clean color-block panel.",
           "NO logos on the kangaroo pocket fabric.",
@@ -7568,7 +7776,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/kids-colorblock-hoodie-set-purple-black.md",
-        "dossier_sha256": "50f0ac3ce94c2d60e4a1b97e7959d06cb6a7cfedf51440f4b338bfc0376eee48"
+        "dossier_sha256": "885fb823e13d668c418f859ae2497fa0280e7c78557895eb28f1b24c86d58a8e"
       },
       "consumer_contract": {
         "required_for": [
@@ -7581,7 +7789,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea"
+      "product_hash": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878"
     },
     "br-014": {
       "sku": "br-014",
@@ -7608,18 +7816,23 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "san-francisco",
+        "series_order": 60
+      },
       "garment": {
         "type_lock": "Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid BLACK base fabric with **bright orange** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. **Black** buttons on the placket (matching the body, no contrast). NO player number on front. NO player number on back. NO player name on back. NO pinstripes. Mid-weight knit jersey. This is the GIANTS colorway (separate SKU from the Classic black-with-white-piping br-003).",
-        "branding_summary": "Black button-front baseball jersey with orange BLACK IS BEAUTIFUL wordmark and orange collar, placket, cuff, and hem trim. BACK: large greyscale rose/cloud crest with orange SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch.",
+        "branding_summary": "Black button-front baseball jersey with orange BLACK IS BEAUTIFUL tackle-twill wordmark spanning approximately 80% of the visible torso width; orange collar, placket, and cuff trim; plain black bottom hem. BACK: large greyscale rose/cloud crest with orange SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch.",
         "branding_regions": [
           {
             "region": "front-chest",
-            "description": "- **front-chest** (large, arched, ~9in wide): The phrase **\"BLACK IS BEAUTIFUL\"**\n  as authentic tackle-twill lettering — pre-cut **bright orange** fabric letters\n  appliquéd onto the black jersey body in a baseball-script style, arched across\n  the upper-front-chest. **Technique:** tackle-twill. **Color:** bright orange\n  twill (NO contrast satin-stitch edge — clean orange-on-black).",
+            "description": "- **front-chest** (large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**): The phrase **\"BLACK IS BEAUTIFUL\"**\n  as authentic tackle-twill lettering — pre-cut **bright orange** fabric letters\n  appliquéd onto the black jersey body in a baseball-script style, arched across\n  the upper-front-chest. **Technique:** tackle-twill. **Color:** bright orange\n  twill (NO contrast satin-stitch edge — clean orange-on-black).\n  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,\n  and on-model image, measure between the visible left and right torso side\n  seams at the wordmark baseline. The outermost letter edges sit approximately\n  10% in from each side, yielding approximately 80% visible torso width. Center\n  the single readable arch on the button placket; the placket may divide the\n  artwork naturally but must not remove, compress, or rearrange any letter.",
             "technique": "tackle-twill",
             "color_named": "bright orange",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "large, arched, ~9in wide"
+            "dimensions": "large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**"
           },
           {
             "region": "front-left-hem / front-belly-lower-left",
@@ -7706,11 +7919,12 @@
           "NO sleeve patches anywhere.",
           "NO pinstripes, NO embossed/debossed, NO sublimated panels, NO heat-transfer",
           "NO contrast colors other than orange — no green, no yellow, no red elsewhere.",
-          "NO contrast satin-stitch edge around the tackle-twill letters."
+          "NO contrast satin-stitch edge around the tackle-twill letters.",
+          "NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest"
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on or three-quarter front-left for the chest\n  wordmark; back view straight-on for the embroidered logos.",
+        "pose": "Front view straight-on or three-quarter front-left for the chest\n  wordmark. The complete torso and both side seams must remain visible so the\n  locked 80% wordmark scale can be verified; back view straight-on for the\n  embroidered logos.",
         "setting": "Pure white studio backdrop, soft directional studio lighting,\n  subtle natural drop shadow.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -7847,7 +8061,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic-giants.md",
-        "dossier_sha256": "57aeca9440387a6c10b341df04bdaf4c4ffbf7a8e3e9454888c09b9407418a5f"
+        "dossier_sha256": "488824479ba70930508dffbf72942454c786e3db2951752e9473cda1a016eda6"
       },
       "consumer_contract": {
         "required_for": [
@@ -7860,7 +8074,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973"
+      "product_hash": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f"
     },
     "br-015": {
       "sku": "br-015",
@@ -7887,18 +8101,23 @@
         "published": true,
         "is_preorder": true
       },
+      "merchandising": {
+        "series_slug": "jersey-series",
+        "series_region": "oakland",
+        "series_order": 20
+      },
       "garment": {
         "type_lock": "Authentic-style baseball jersey — V-neck collar opening, button-front placket, short sleeves, straight even hem (no drop-tail). Solid **white** base fabric with **black** piping/binding around V-neck collar, sleeve cuffs, and down both sides of the front placket. Black buttons on the placket. NO player number on front or back. NO player name on back. NO pinstripes. Mid-weight knit jersey. This is the WHITE colorway (separate SKU from Classic black br-003 / Giants br-014 / Oakland br-012).",
-        "branding_summary": "White button-front baseball jersey with black BLACK IS BEAUTIFUL wordmark and black collar, placket, cuff, and hem trim. BACK: large greyscale rose/cloud crest with black SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch.",
+        "branding_summary": "White button-front baseball jersey with black BLACK IS BEAUTIFUL tackle-twill wordmark spanning approximately 80% of the visible torso width; black collar, placket, and cuff trim; plain white bottom hem. BACK: large greyscale rose/cloud crest with black SR monogram. Exact 3in wide × 4in tall Black Rose Authentic Collection patch at wearer-left lower hem; no sleeve patch.",
         "branding_regions": [
           {
             "region": "front-chest",
-            "description": "- **front-chest** (large, arched, ~9in wide): The phrase **\"BLACK IS BEAUTIFUL\"**\n  as authentic tackle-twill lettering — pre-cut **black** fabric letters\n  appliquéd onto the white jersey body in a baseball-script style, arched\n  across the upper-front-chest. **Technique:** tackle-twill. **Color:** black\n  twill letters (the inverse colorway treatment of the Classic black; clean\n  black-on-white with no contrast satin-stitch edge).",
+            "description": "- **front-chest** (large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**): The phrase **\"BLACK IS BEAUTIFUL\"**\n  as authentic tackle-twill lettering — pre-cut **black** fabric letters\n  appliquéd onto the white jersey body in a baseball-script style, arched\n  across the upper-front-chest. **Technique:** tackle-twill. **Color:** black\n  twill letters (the inverse colorway treatment of the Classic black; clean\n  black-on-white with no contrast satin-stitch edge).\n  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,\n  and on-model image, measure between the visible left and right torso side\n  seams at the wordmark baseline. The outermost letter edges sit approximately\n  10% in from each side, yielding approximately 80% visible torso width. Center\n  the single readable arch on the button placket; the placket may divide the\n  artwork naturally but must not remove, compress, or rearrange any letter.",
             "technique": "tackle-twill",
             "color_named": "black",
             "color_hex": null,
             "color_pantone": null,
-            "dimensions": "large, arched, ~9in wide"
+            "dimensions": "large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**"
           },
           {
             "region": "front-left-hem / front-belly-lower-left",
@@ -7988,11 +8207,12 @@
           "NO multi-color (kelly-green / blue / yellow) rendering of the back rose;",
           "NO contrast satin-stitch edge around the tackle-twill letters.",
           "NO pinstripes, NO embossed/debossed, NO sublimated panels, NO heat-transfer",
-          "NO special \"A\" treatment (the colorway-specific black-A is Oakland's"
+          "NO special \"A\" treatment (the colorway-specific black-A is Oakland's",
+          "NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest"
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on or three-quarter front-left to display\n  the high-contrast black tackle-twill wordmark on the white body; back view\n  for the embroidered black-thread Black Rose logo.",
+        "pose": "Front view straight-on or three-quarter front-left to display\n  the high-contrast black tackle-twill wordmark on the white body. The complete\n  torso and both side seams must remain visible so the locked 80% wordmark\n  scale can be verified; back view for the embroidered black-thread Black Rose\n  logo.",
         "setting": "Pure white studio backdrop with subtle directional lighting\n  to define the white-on-white silhouette and avoid blowing out the body\n  fabric. Soft natural drop shadow.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -8113,7 +8333,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic-white.md",
-        "dossier_sha256": "60f5025709b42db41a6f989c946a7c92f1225304037cd0a48e773ae533bed998"
+        "dossier_sha256": "958a98c632135fb0d40bcd6415951c3415416ab878c49a43f5cc0b98aa33c44a"
       },
       "consumer_contract": {
         "required_for": [
@@ -8126,7 +8346,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e"
+      "product_hash": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb"
     }
   }
 }

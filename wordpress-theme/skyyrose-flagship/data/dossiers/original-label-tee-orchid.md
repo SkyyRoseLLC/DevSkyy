@@ -19,10 +19,10 @@ Authored from canonical product specification. Two-eyes review: Corey confirms e
 > **Founder-confirmed (2026-06-16): there are NO logos at all on the Original Label Tees.** No SR monogram, no chest mark, no sleeve badge, no print, no embroidery. The garment is a BLANK orchid tee whose only branding is the interior woven neck label (the "original label" the product is named for). A prior dossier revision invented a front-left-chest rose-gold SR monogram — that mark does NOT exist on the product and must never be rendered.
 
 ### Front
-- **front-body**: Completely blank orchid fabric. No monogram, no graphic, no print, no embroidery. Clean tee front.
+- **front-body** (entire exterior front): Completely blank orchid fabric. No monogram, no graphic, no print, no embroidery. Clean tee front. **Technique:** stitched. **Color:** orchid.
 
 ### Sleeves / Collar / Hem / Other
-- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color/Colorway:** white/rose-gold label with woven brand text on orchid-compatible ground.
+- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color:** white/rose-gold label with woven brand text on orchid-compatible ground.
 - **sleeves**: Plain short sleeves — no badge, no patch, no print.
 
 ## Negative — what is NOT on this product (DO NOT render)

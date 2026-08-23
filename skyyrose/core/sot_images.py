@@ -1,25 +1,9 @@
-"""Canonical SOT product-imagery resolver — the single authority for
-"what image represents this SKU".
+"""Approved product-imagery resolver backed by the canonical product SOT.
 
-Every surface that shows a product image — pipelines, MCP tools, subagents, the
-WordPress theme, and the dashboard (via the generated ``data/sot-images.json``
-manifest) — resolves product imagery through here, never through ad-hoc paths.
-Hardcoding ``assets/images/products/<sku>...`` anywhere else is a drift bug
-(``tests/test_sot_no_adhoc_imagery.py`` guards against it).
-
-Image paths are projected from the per-collection SOT view
-``wordpress-theme/skyyrose-flagship/data/collections/<slug>/sot.json`` (itself
-generated from ``identity.json`` + the catalog CSV + ``visual-manifest.json`` by
-``data/build-collection-sot.py`` — do not hand-edit it). Every serialized image
-manifest is also bound to ``data/product-sot.json`` product hashes, so creative
-media becomes stale as soon as its product specification changes.
-
-The front-first fallback chain mirrors the WordPress theme's
-``template-parts/product-card-holo.php`` rule exactly: the on-model render
-(``front_model_image``) is shown first; the flat studio packshot (``image``) is
-the last resort, never the default. This is the rule the dead prototype bundler
-violated (it bound cards to the flat ``image``), producing the flatlay/wrong-item
-previews this module exists to prevent.
+Product facts and media paths come from ``data/product-sot.json``. On-model or
+mannequin media becomes storefront-eligible only when it is present in the
+hash-bound V2 approval manifest. Rejected catalog candidates never win a
+fallback merely because a filename exists.
 """
 
 from __future__ import annotations
@@ -30,75 +14,108 @@ import json
 from pathlib import Path
 from typing import Literal
 
-# Anchor on the canonical path registry (skyyrose.core.paths) — never recompute
-# repo/theme roots locally (paths.py is the single place that answers "where").
-from skyyrose.core.paths import REPO_ROOT, THEME_ROOT
+from skyyrose.core import product_sot
+from skyyrose.core.paths import REPO_ROOT
 
-COLLECTIONS_DIR: Path = THEME_ROOT / "data" / "collections"
+APPROVAL_MANIFEST_PATH = (
+    REPO_ROOT
+    / "wordpress-theme"
+    / "skyyrose-flagship-2"
+    / "data"
+    / "opening-product-media.json"
+)
+MANIFEST_PATH = REPO_ROOT / "data" / "sot-images.json"
 
 Role = Literal["front", "back", "packshot", "back_packshot"]
-
-# role -> ordered SOT image keys. On-model render first, flat packshot last —
-# the same precedence product-card-holo.php applies. Order matters.
 _ROLE_KEYS: dict[str, tuple[str, ...]] = {
     "front": ("front_model_image", "image"),
     "back": ("back_model_image", "back_image"),
     "packshot": ("image",),
     "back_packshot": ("back_image",),
 }
+_APPROVED_FIELDS = {
+    "on_model_front": "front_model_image",
+    "on_model_back": "back_model_image",
+    "mannequin_front": "mannequin_front_image",
+    "mannequin_back": "mannequin_back_image",
+    "render_3d": "render_3d_image",
+}
+_THEME_PREFIX = "wordpress-theme/skyyrose-flagship/"
+
+
+def _validated_path(raw: str, sku: str) -> str:
+    normalized = raw[len(_THEME_PREFIX) :] if raw.startswith(_THEME_PREFIX) else raw
+    if (
+        normalized.startswith("/")
+        or ".." in Path(normalized).parts
+        or not normalized.startswith("assets/")
+    ):
+        raise ValueError(f"product SOT image path escapes the assets tree for {sku!r}: {raw!r}")
+    return normalized
+
+
+def _entry(path: str, sku: str) -> dict[str, str]:
+    validated = _validated_path(path, sku)
+    return {"path": validated, "resolved": validated}
+
+
+def _approval_manifest(product_sot_bytes: bytes) -> dict:
+    approval = json.loads(APPROVAL_MANIFEST_PATH.read_text(encoding="utf-8"))
+    expected_hash = hashlib.sha256(product_sot_bytes).hexdigest()
+    if approval.get("product_sot_sha256") != expected_hash:
+        raise ValueError("opening product-media approvals are stale relative to product-sot.json")
+    product_manifest = json.loads(product_sot_bytes).get("products", {})
+    approved_products = approval.get("products", {})
+    approved_hashes = approval.get("product_hashes", {})
+    if not isinstance(approved_products, dict) or set(approved_products) != set(product_manifest):
+        raise ValueError("opening product-media approval SKU set differs from product-sot.json")
+    if not isinstance(approved_hashes, dict) or set(approved_hashes) != set(product_manifest):
+        raise ValueError("opening product-media hash SKU set differs from product-sot.json")
+    for sku, product in product_manifest.items():
+        if approved_hashes.get(sku) != product.get("product_hash"):
+            raise ValueError(f"opening product-media approval is stale for {sku}")
+    return approval
 
 
 @functools.lru_cache(maxsize=1)
 def _index() -> dict[str, dict]:
-    """Build ``sku -> product`` from every collection's ``sot.json`` (cached).
+    product_sot_bytes = product_sot.MANIFEST_PATH.read_bytes()
+    manifest = json.loads(product_sot_bytes)
+    approvals = _approval_manifest(product_sot_bytes).get("products", {})
+    result: dict[str, dict] = {}
+    for sku, product in manifest.get("products", {}).items():
+        images: dict[str, dict[str, str]] = {}
+        media = product.get("media", {})
+        if media.get("packshot_front", {}).get("path"):
+            images["image"] = _entry(media["packshot_front"]["path"], sku)
+        if media.get("packshot_back", {}).get("path"):
+            images["back_image"] = _entry(media["packshot_back"]["path"], sku)
 
-    The verified asset hub's overrides are baked into ``sot.json`` upstream by
-    ``build-collection-sot.py`` (the single seam), so this resolver — and every
-    surface it feeds (Python ``resolve_image``, the PHP theme via ``sot.json``, the
-    dashboard via ``data/sot-images.json``) — honors the hub verdict uniformly
-    without a parallel override here.
-    """
-    idx: dict[str, dict] = {}
-    # Enumerate collections from the filesystem so a newly-added collection is
-    # picked up automatically — never a hardcoded slug list that silently omits it.
-    for sot_path in sorted(COLLECTIONS_DIR.glob("*/sot.json")):
-        slug = sot_path.parent.name
-        sot = json.loads(sot_path.read_text())
-        for prod in sot.get("products", []):
-            sku = prod.get("sku")
-            if sku:
-                idx[sku] = {**prod, "collection": slug}
-    return idx
+        for view in approvals.get(sku, {}).get("views", []):
+            field = _APPROVED_FIELDS.get(view.get("role", ""))
+            path = view.get("source")
+            if field and isinstance(path, str) and path:
+                images[field] = _entry(path, sku)
+
+        result[sku] = {
+            "sku": sku,
+            "name": product.get("identity", {}).get("name", ""),
+            "collection": product.get("identity", {}).get("collection", ""),
+            "product_sot_hash": product.get("product_hash", ""),
+            "images": images,
+        }
+    return result
 
 
 def refresh() -> None:
-    """Drop the cached index (call after regenerating ``sot.json``)."""
     _index.cache_clear()
 
 
 def all_skus() -> list[str]:
-    """Every SKU present in the SOT, sorted."""
     return sorted(_index())
 
 
-def _validated_path(raw: str, sku: str) -> str:
-    """Enforce the theme-relative contract — reject absolute paths / ``..`` escapes.
-
-    The SOT is repo-tracked and generated, so this is defense-in-depth (matching
-    ``paths.golden_path`` / ``paths.wp_product_path``): a consumer that ``open()``s
-    or serves the returned path must never receive one that climbs out of the tree.
-    """
-    if raw.startswith("/") or ".." in Path(raw).parts:
-        raise ValueError(f"sot.json image path escapes the assets tree for {sku!r}: {raw!r}")
-    return raw
-
-
 def _first_path(images: dict, keys: tuple[str, ...], sku: str) -> str | None:
-    """First present, validated ``path`` among ``keys`` — the front-first fallback.
-
-    Single authority for the fallback loop (used by both :func:`resolve_image` and
-    :func:`build_manifest`).
-    """
     for key in keys:
         entry = images.get(key)
         if isinstance(entry, dict) and entry.get("path"):
@@ -107,50 +124,26 @@ def _first_path(images: dict, keys: tuple[str, ...], sku: str) -> str | None:
 
 
 def resolve_image(sku: str, role: Role = "front") -> str | None:
-    """Return the theme-relative path (``assets/images/products/...``) for a SKU's
-    image in ``role``, applying the front-first fallback chain.
-
-    Returns ``None`` when the SKU is unknown or the SOT carries no image for the
-    role — callers fall back to their own placeholder. Never invents a path.
-
-    Args:
-        sku: Canonical SKU (e.g. ``"br-004"``).
-        role: ``"front"`` (on-model, default) | ``"back"`` | ``"packshot"`` (flat).
-    """
     if not sku:
         return None
-    prod = _index().get(sku)
-    if not prod:
+    product = _index().get(sku)
+    if not product:
         return None
-    return _first_path(prod.get("images", {}), _ROLE_KEYS.get(role, ()), sku)
+    return _first_path(product.get("images", {}), _ROLE_KEYS.get(role, ()), sku)
 
 
 def has_render(sku: str) -> bool:
-    """True when the SOT has an actual on-model FRONT render (``front_model_image``).
-
-    Distinct from ``resolve_image(sku, "front") is not None`` — that falls back to the
-    flat ``image`` packshot so a card always shows *something*. ``has_render`` answers
-    the narrower "is there a real render", so it must NOT honor the packshot fallback.
-    """
-    prod = _index().get(sku)
-    if not prod:
+    product = _index().get(sku)
+    if not product:
         return False
-    entry = prod.get("images", {}).get("front_model_image")
+    entry = product.get("images", {}).get("front_model_image")
     return isinstance(entry, dict) and bool(entry.get("path"))
 
 
 def build_manifest() -> dict[str, dict[str, str]]:
-    """Flat ``{sku: {front, back?, packshot?}}`` map of theme-relative paths.
-
-    The serialized form (``data/sot-images.json``) is the SOT imagery contract for
-    non-Python surfaces (the Next.js dashboard, any JS/PHP consumer). Generated —
-    regenerate via :func:`write_manifest`; never hand-edit.
-    """
-    # Single pass over the cached index, reusing the same _ROLE_KEYS fallback
-    # chain resolve_image() applies (one authority for the front-first rule).
     manifest: dict[str, dict[str, str]] = {}
-    for sku, prod in sorted(_index().items()):
-        images = prod.get("images", {})
+    for sku, product in sorted(_index().items()):
+        images = product.get("images", {})
         entry: dict[str, str] = {}
         for role, keys in _ROLE_KEYS.items():
             path = _first_path(images, keys, sku)
@@ -161,29 +154,15 @@ def build_manifest() -> dict[str, dict[str, str]]:
     return manifest
 
 
-# Default emit location: repo-root data/sot-images.json (a generated artifact
-# both systems can read without cross-wiring the WP theme tree).
-MANIFEST_PATH: Path = REPO_ROOT / "data" / "sot-images.json"
-
-
 def serialize_manifest(manifest: dict | None = None) -> str:
-    """Canonical serialized bytes of the SOT imagery manifest.
-
-    The SINGLE byte-authority for ``data/sot-images.json``: both
-    :func:`write_manifest` and the catalog validator's ``sot_images_current`` drift
-    guard call this, so the committed file and the CI check can never disagree on
-    formatting (the way two independent serializers would). Pass a pre-built
-    ``manifest`` to avoid rebuilding it.
-    """
-    from skyyrose.core import product_sot
-
     product_manifest = product_sot.build_manifest()
     product_manifest_bytes = product_sot.serialize_manifest(product_manifest).encode("utf-8")
     payload = {
-        "_generated_by": "skyyrose.core.sot_images.write_manifest — DO NOT EDIT. "
-        "Regenerate after product-sot.json or build-collection-sot.py.",
-        "_authority": "SOT product-imagery contract. Front-first fallback "
-        "(on-model render before flat packshot).",
+        "_generated_by": "skyyrose.core.sot_images.write_manifest — DO NOT EDIT",
+        "_authority": (
+            "Product-SOT media with hash-bound approval gating. Approved on-model media wins; "
+            "otherwise the canonical packshot remains the fail-closed fallback."
+        ),
         "product_sot": {
             "path": "data/product-sot.json",
             "sha256": hashlib.sha256(product_manifest_bytes).hexdigest(),
@@ -192,27 +171,24 @@ def serialize_manifest(manifest: dict | None = None) -> str:
                 for sku, product in product_manifest["products"].items()
             },
         },
+        "approval_manifest": (
+            "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json"
+        ),
         "images": build_manifest() if manifest is None else manifest,
     }
     return json.dumps(payload, indent=2) + "\n"
 
 
 def write_manifest(out_path: Path | None = None, manifest: dict | None = None) -> Path:
-    """Write the manifest to ``out_path`` (default :data:`MANIFEST_PATH`).
-
-    Pass an already-built ``manifest`` to avoid rebuilding it (e.g. when the caller
-    also needs the count); otherwise it is built here.
-    """
-    out = out_path or MANIFEST_PATH
-    # Never let a caller-supplied out_path write outside the repo.
-    if out_path is not None and not str(out.resolve()).startswith(str(REPO_ROOT)):
+    output = out_path or MANIFEST_PATH
+    if out_path is not None and not str(output.resolve()).startswith(str(REPO_ROOT.resolve())):
         raise ValueError(f"write_manifest: out_path must be within the repo: {out_path}")
-    out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(serialize_manifest(manifest))
-    return out
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(serialize_manifest(manifest), encoding="utf-8")
+    return output
 
 
 if __name__ == "__main__":
     images = build_manifest()
-    p = write_manifest(manifest=images)
-    print(f"wrote {p} ({len(images)} skus)")
+    path = write_manifest(manifest=images)
+    print(f"wrote {path} ({len(images)} skus)")

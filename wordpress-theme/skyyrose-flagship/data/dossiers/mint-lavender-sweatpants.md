@@ -47,7 +47,8 @@ different product).
 ### Front
 - **front-left-thigh** (small, ~3in tall, upper thigh on the wearer's LEFT leg, below the hip): The canonical rose-cluster composition in the lavender colorway, rendered small. Per the catalog: "Embroidered rose logo on the left thigh." **Technique:** embroidered. **Color:** lavender + grey-green + grey thread on mint.
 - **front-body** (everything else, waistband to ankle cuffs, both legs): Solid **mint green** cotton-fleece. **Technique:** stitched. **Color:** mint green.
-- **waistband** (elasticated, with drawstring): Self-color mint elasticated waistband with a drawstring. **Technique:** stitched. **Color:** mint green.
+- **waistband** (elasticated, with drawstring): Self-color mint elasticated waistband with a **white drawstring**, matching the founder flatlay. **Technique:** stitched. **Color:** mint green waistband + white drawstring.
+- **drawstring**: White cord drawstring centered at the front waistband. **Technique:** stitched. **Color:** white.
 - **side-pockets** (one at each side seam): Side-seam hand pockets, self-color, no contrast piping. **Technique:** stitched. **Color:** mint green.
 
 ### Back
@@ -75,6 +76,7 @@ different product).
 - NO text or wordmark anywhere.
 - NO embossed/debossed decoration.
 - NO multi-color cuffs or waistband — all ribbing and elastication is self-color mint.
+- NO mint or lavender drawstring — the drawstring is WHITE.
 
 ## Scene direction
 

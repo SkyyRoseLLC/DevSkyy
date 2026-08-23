@@ -14,11 +14,11 @@ command -v ffprobe >/dev/null 2>&1 || { echo "ffprobe is required" >&2; exit 1; 
 command -v magick >/dev/null 2>&1 || { echo "ImageMagick is required" >&2; exit 1; }
 
 models=(
-	"$model_dir/br-003-onmodel.webp"
+	"$model_dir/br-003-baseball-classic.jpeg"
 	"$model_dir/br-008-onmodel.webp"
 	"$model_dir/br-009-onmodel.webp"
 	"$model_dir/br-010-onmodel.webp"
-	"$model_dir/br-011-onmodel.webp"
+	"$model_dir/br-011-the-rose-hockey.png"
 )
 
 for required in "$source_frame" "$font_display" "$font_ui" "${models[@]}"; do

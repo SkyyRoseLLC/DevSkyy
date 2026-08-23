@@ -8,7 +8,7 @@ reference_image: assets/products/references/br-005-signature-hoodie-real.jpeg
 
 # BLACK Rose Hoodie — Signature Edition
 
-**Garment type lock:** Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The "Signature Edition" identity comes from the elevated branding placement (chest + hip), the white drawstrings, and the sublimated-rose-print inner hood lining.
+**Garment type lock:** Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The "Signature Edition" identity comes from the elevated branding placement (small chest mark + large forearm artwork), the white drawstrings, and the sublimated-rose-print inner hood lining.
 
 ## Branding — exactly what IS on this product
 
@@ -30,11 +30,11 @@ reference_image: assets/products/references/br-005-signature-hoodie-real.jpeg
   treat the back as clean unless confirmed otherwise.)
 
 ### Sleeves / Collar / Hem / Other
-- **left-hip / left-side-body** (large, ~6–7in tall, on the wearer's
-  LEFT side at the hip / lower-side-body area, NOT on the sleeve): The
-  Black Rose logo embroidered onto the side of the hoodie body. Position
-  is explicitly the side body at hip level — Corey emphasized "NOT
-  SLEEVE." **Technique:** embroidered. **Color:** as rendered in the
+- **wearer's-left forearm / viewer-right sleeve** (large, longitudinal
+  artwork running from below the elbow toward the cuff): The Black Rose logo
+  embroidered onto the sleeve exactly as shown in the physical flatlay.
+  It is forearm artwork, not a circular upper-arm patch and not a hip logo.
+  **Technique:** embroidered. **Color:** as rendered in the
   canonical logo + reference image.
 - **hood-inside / inner-hood-lining**: GREY contrast lining inside the
   hood with the **Black Rose logo sublimated throughout** as a repeating /
@@ -56,11 +56,10 @@ reference_image: assets/products/references/br-005-signature-hoodie-real.jpeg
 
 - NO logo on the LEFT chest — the silicone patch is at the right-chest
   position only.
-- NO embroidered logo on either sleeve. Corey's explicit instruction:
-  the side-body logo is NOT on the sleeve, it is on the BODY at the
-  side-hip area.
-- NO Black Rose logo on the right hip — the embroidered side-body logo
-  is on the LEFT side at the hip, not the right.
+- NO large logo on either hip or side-body panel. The large embroidered
+  artwork is on the wearer's LEFT FOREARM.
+- NO circular upper-arm patch. The sleeve decoration is longitudinal
+  forearm artwork matching the flatlay.
 - NO black drawstrings — the drawstrings are WHITE (signature detail of
   this edition).
 - NO silicone-appliqué multi-color patch — the right-chest silicone is
@@ -78,14 +77,14 @@ reference_image: assets/products/references/br-005-signature-hoodie-real.jpeg
   series).
 - NO embossed/debossed decoration on the body or hood fabric.
 - NO chest text or wordmark on the front body fabric — branding is the
-  silicone right-chest mark + the embroidered left-side body mark only.
+  silicone right-chest mark + the embroidered left-forearm artwork only.
 - NO heavyweight cotton fleece texture — this hoodie is the lighter
   polyester / jogger-feel variant (distinct from br-004's cotton fleece).
 
 ## Scene direction
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing
-  the right-chest silicone mark and the left-hip embroidered rose. The
+  the right-chest silicone mark and the left-forearm embroidered rose. The
   hood relaxed back to reveal the grey sublimated-rose inner lining
   along the upper edge of the hood opening. Optional: a detail shot of
   the inside hood lining showing the rose-pattern sublimation.

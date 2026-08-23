@@ -52,9 +52,10 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
   silhouette outline (simplified single-color version). **Technique:**
   embroidered. **Color:** white thread on black.
 - **front-collar-area / upper-center-collar** (small, ~1in wide, just below
-  the hood opening at the V): A small black-and-white hockey-style league
-  emblem (a stylized shield with hockey stick + puck details, woven flat).
-  **Technique:** woven-label. **Color:** black + white.
+  the hood opening at the V): A small Black Rose floral crest derived from
+  the canonical rose-cluster art, matching the product techflat. It is a
+  brand emblem, not a sports-league shield. **Technique:** embroidered.
+  **Color:** teal/cyan + black + white.
 - **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**, against the
   striped hem band): The Hockey Championship patch (greyscale/silver palette
   patch — see hockey-championship-patch reference). Sewn onto the lower-left
@@ -103,9 +104,8 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
 - NO solid-color "0" digit — the digit has teal outline + rose-cluster fill.
 - NO MLB Authentic Collection patch. NO NFL Authentic Collection patch. NO
   NBA Authentic Collection patch — only the Hockey Championship patch.
-- NO NHL logos, no barcode labels, no real sports league trademarks. The
-  collar emblem is a GENERIC black-and-white hockey-style woven league
-  label — NOT the NHL shield mark, NOT any real-league trademark. The
+- NO NHL logos and NO generic or invented league-style collar shield. The
+  collar mark is the small Black Rose floral crest from the techflat. The
   hem patch is the greyscale Hockey Championship patch — NOT a retail
   barcode/UPC label, NOT a price tag, NOT a hangtag.
 - NO embossed/debossed decoration.
@@ -127,7 +127,7 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
 ## Scene direction
 
 - **Pose:** Front view straight-on showing the teal rose medallion + small
-  shoulder emblems + small collar league mark + lower-left Hockey Championship
+  shoulder emblems + small Black Rose collar crest + lower-left Hockey Championship
   patch + striped cuff and hem bands. Three-quarter view catches the teal hood
   lining peeking inside. Back view shows the teal-twill "BLACK IS BEAUTIFUL"
   arch + the small teal SR monogram + the back-center "0" + the matching

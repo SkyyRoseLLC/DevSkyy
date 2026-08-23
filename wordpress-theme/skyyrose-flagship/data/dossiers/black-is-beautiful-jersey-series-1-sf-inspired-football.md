@@ -40,12 +40,10 @@ exists yet.
 ### Front
 - **front-chest** (large, ~10in tall, vertically centered between the
   neckband and the lower belly): The number **"80"** rendered as
-  large athletic-block digits — each digit has a **white outline edge** with
-  the canonical Black Rose three-rose-cluster art (in tonal greyscale)
-  filling the interior of both the "8" and the "0". The rose composition is
-  preserved (three roses + thorny vines + cloud at base) but rendered in
-  black/white/grey only. **Technique:** sublimated. **Color:** white outline
-  + greyscale rose-cluster fill on red ground.
+  large athletic-block digits with a **white outline edge**. On the FRONT,
+  the **"8" contains the greyscale Black Rose rose/cloud fill** and the
+  **"0" remains plain white**, exactly as shown in the techflat. **Technique:**
+  sublimated. **Color:** white outline + greyscale fill in `8` only on red.
 - **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**, near the bottom
   hem on the wearer's left hip): The NFL Authentic Collection patch (yellow
   field + navy "BLACK ROSE / COLLECTION" + NFL shield + white "AUTHENTIC"
@@ -60,10 +58,10 @@ exists yet.
   Rendered in **black twill** on the red body. **Technique:** tackle-twill.
   **Color:** black twill letters on red ground (no contrast satin-stitch edge).
 - **back-center** (large, ~12in tall, vertically centered between the
-  upper-back wordmark and the lower hem): The number **"80"** rendered
-  identically to the front — white outline + greyscale rose-cluster fill.
-  **Technique:** sublimated. **Color:** white outline + greyscale
-  rose-cluster fill.
+  upper-back wordmark and the lower hem): The number **"80"** with the fill
+  reversed from the front: the back **"8" remains plain white** and the back
+  **"0" contains the greyscale rose/cloud fill**. **Technique:** sublimated.
+  **Color:** white outline + greyscale fill in `0` only on red.
 
 ### Sleeves / Collar / Hem / Other
 - **collar / V-neck binding**: Black-and-white horizontal striped neckband
@@ -87,8 +85,8 @@ exists yet.
 - NO multi-color rendering of the rose-cluster fill inside the "80" — it is
   greyscale only. NO red roses, NO kelly-green stems, NO white-and-blue
   cloud color.
-- NO solid-color "80" digits — the digits are NOT solid white; they have
-  a white outline edge with rose-cluster art FILLING the interior.
+- NO rose fill in both digits. Front fill is in `8` only; back fill is in
+  `0` only. The opposite digit remains plain white.
 - NO contrast satin-stitch edge around the "BLACK IS BEAUTIFUL" wordmark —
   it is clean black-twill-on-red.
 - NO buttons, NO placket, NO V-neck contrast piping other than the striped
@@ -114,7 +112,7 @@ exists yet.
 - **Pose:** Front view straight-on (or three-quarter front-left) showing the
   large rose-fill "80" front-chest, the striped neckband, the white-stripe
   cuffs, and the lower-left NFL patch. For back: back view straight-on
-  showing the "BLACK IS BEAUTIFUL" tackle-twill arch and the matching
-  rose-fill "80".
+  showing the "BLACK IS BEAUTIFUL" tackle-twill arch and the reversed-fill
+  back "80".
 - **Setting:** Pure white studio backdrop, soft directional studio lighting
   from front-left, subtle natural drop shadow on the floor.

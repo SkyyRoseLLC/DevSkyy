@@ -20,7 +20,7 @@ Print-technique fields are conservative defaults pending founder confirmation.
 
 **Garment type lock:** PULLOVER hoodie (kangaroo pouch pocket, NO zipper of any
 kind) — solid **mint green** body, hood, and sleeves, all one mint color.
-**Lavender/purple drawstrings** at the hood opening (the only contrast hardware).
+**White drawstrings** at the hood opening (the only contrast hardware).
 Large lavender rose-cluster graphic centered on the chest. Ribbed cuffs and
 bottom hem in self-color mint. Mid-weight cotton-fleece fabric. Pairs with the
 Mint & Lavender Sweatpants (sg-014) as a matching set. **Sold as the hoodie SKU
@@ -50,7 +50,7 @@ different product).
 - **front-center-chest** (large, ~10in tall, centered on the chest between the hood opening and the kangaroo pocket): The canonical rose-cluster composition in the lavender colorway — lavender/purple roses with white petal highlights, grey-green thorny stems and leaves, rising from a grey-and-white cloud at the base. **Technique:** printed. **Color:** lavender + white + grey-green + grey on mint.
 - **front-body** (everything outside the chest art): Solid **mint green** cotton-fleece. **Technique:** stitched. **Color:** mint green.
 - **front-kangaroo-pocket** (lower front, full-width pouch pocket): Standard kangaroo pouch, self-color mint, no decoration. **Technique:** stitched. **Color:** mint green.
-- **hood-drawstrings** (two cords at the hood opening): **Lavender/purple** drawstrings with metal or self-tipped ends. **Technique:** stitched. **Color:** lavender/purple.
+- **hood-drawstrings** (two cords at the hood opening): **White** drawstrings with metal or self-tipped ends, matching the founder flatlay. **Technique:** stitched. **Color:** white.
 
 ### Back
 - **back-body** (entire back field, hood seam to hem): Solid **mint green**, no decoration of any kind. **Technique:** stitched. **Color:** mint green.
@@ -69,6 +69,7 @@ different product).
 - NO rainbow chevron, NO multi-color stripe bands, NO color-block panels — that
   is the sg-015 windbreaker set, a different product.
 - NO pink hood — hood is mint, same as the body.
+- NO lavender/purple or mint drawstrings — the drawstrings are WHITE.
 - NO slash hand pockets, NO pink piping — single kangaroo pouch only.
 - NO decoration on the back — back is blank mint (no SR monogram, no art).
 - NO decoration on the sleeves, cuffs, hood, or hem.
@@ -82,7 +83,7 @@ different product).
 ## Scene direction
 
 - **Pose:** Front view straight-on showing the solid mint body, lavender
-  drawstrings, centered lavender rose-cluster chest art, and kangaroo pocket.
+  white drawstrings, centered lavender rose-cluster chest art, and kangaroo pocket.
   Three-quarter view shows the clean mint sleeves. For the back: back view
   straight-on showing the blank mint back panel and hood.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting

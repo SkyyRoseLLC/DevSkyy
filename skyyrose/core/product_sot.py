@@ -70,6 +70,8 @@ def resolve_reference(value: str) -> Path:
 
 def _evidence_kind(path: Path) -> str:
     normalized = path.as_posix().lower()
+    if "source-footage" in normalized and path.suffix.lower() in {".m4v", ".mov", ".mp4", ".webm"}:
+        return "physical_product_video"
     if "source-photos" in normalized or "real-photo" in normalized or "real-" in path.name.lower():
         return "physical_product_photo"
     if "techflat" in normalized or "/split/" in normalized or "design-" in path.name.lower():
@@ -213,6 +215,11 @@ def build_product(row: dict[str, str], registry: dict[str, Any]) -> dict[str, An
             "edition_size": (row.get("edition_size") or "").strip(),
             "published": bool_col(row, "published"),
             "is_preorder": bool_col(row, "is_preorder"),
+        },
+        "merchandising": {
+            "series_slug": (row.get("series_slug") or "").strip(),
+            "series_region": (row.get("series_region") or "").strip(),
+            "series_order": int((row.get("series_order") or "0").strip() or 0),
         },
         "garment": {
             "type_lock": schema.garment_type_lock,

@@ -23,12 +23,18 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
 > - Product techflat:              `assets/products/references/br-015-techflat.jpeg`
 
 ### Front
-- **front-chest** (large, arched, ~9in wide): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering — pre-cut **black** fabric letters
   appliquéd onto the white jersey body in a baseball-script style, arched
   across the upper-front-chest. **Technique:** tackle-twill. **Color:** black
   twill letters (the inverse colorway treatment of the Classic black; clean
   black-on-white with no contrast satin-stitch edge).
+  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,
+  and on-model image, measure between the visible left and right torso side
+  seams at the wordmark baseline. The outermost letter edges sit approximately
+  10% in from each side, yielding approximately 80% visible torso width. Center
+  the single readable arch on the button placket; the placket may divide the
+  artwork naturally but must not remove, compress, or rearrange any letter.
 - **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**): The Black Rose
   Authentic Collection patch (full multi-color — yellow field, navy text,
   white banner, red diamond divider, etc.). Sewn onto the lower-left hip.
@@ -85,12 +91,18 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
   vinyl, NO printed graphics on the body.
 - NO special "A" treatment (the colorway-specific black-A is Oakland's
   signature; on the White edition every letter is uniformly black).
+- NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest
+  wordmark. It must remain one centered readable arch at approximately 80% of
+  the visible torso width, with approximately 10% clear torso margin on each
+  side. NO letters may wrap onto a sleeve or cross a side seam.
 
 ## Scene direction
 
 - **Pose:** Front view straight-on or three-quarter front-left to display
-  the high-contrast black tackle-twill wordmark on the white body; back view
-  for the embroidered black-thread Black Rose logo.
+  the high-contrast black tackle-twill wordmark on the white body. The complete
+  torso and both side seams must remain visible so the locked 80% wordmark
+  scale can be verified; back view for the embroidered black-thread Black Rose
+  logo.
 - **Setting:** Pure white studio backdrop with subtle directional lighting
   to define the white-on-white silhouette and avoid blowing out the body
   fabric. Soft natural drop shadow.

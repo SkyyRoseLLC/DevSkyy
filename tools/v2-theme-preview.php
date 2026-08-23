@@ -302,7 +302,17 @@ function wc_get_checkout_url() { return wc_get_page_permalink( 'checkout' ); }
 function wc_get_product_category_list( $id ) { return 'SkyyRose · Collection'; }
 function wp_get_post_terms( $product_id = 0, $taxonomy = '', $args = array() ) {
 	global $route, $preview_product;
-	$fixture_terms = array( 1 => 'signature', 2 => 'black-rose', 3 => 'love-hurts', 4 => 'kids-capsule', 5 => 'kids-capsule' );
+	$fixture_terms = array(
+		1  => 'signature',
+		2  => 'black-rose',
+		3  => 'love-hurts',
+		4  => 'kids-capsule',
+		5  => 'kids-capsule',
+		6  => 'love-hurts',
+		8  => 'love-hurts',
+		9  => 'love-hurts',
+		10 => 'love-hurts',
+	);
 	if ( isset( $fixture_terms[ (int) $product_id ] ) ) { return array( $fixture_terms[ (int) $product_id ] ); }
 	if ( 'product' === $route && $preview_product instanceof WC_Product && $preview_product->get_id() === (int) $product_id ) {
 		$sku = strtolower( $preview_product->get_sku() );
@@ -314,13 +324,14 @@ function wp_get_post_terms( $product_id = 0, $taxonomy = '', $args = array() ) {
 function preview_attachment_path( $id ) {
 	$images = array(
 		1   => 'images/products/preview/sg-005-front.webp',
-		2   => 'images/products/preview/br-004-front.webp',
 		3   => 'images/products/preview/lh-004-front.webp',
 		4   => 'images/products/preview/kids-001-front.webp',
+		6   => 'images/products/preview/lh-002-onmodel.webp',
 		7   => 'images/products/preview/kids-002-front.webp',
+		8   => 'images/products/preview/lh-003-front.webp',
+		9   => 'images/products/preview/lh-005-onmodel.webp',
+		10  => 'images/products/preview/lh-006-onmodel.webp',
 		102 => 'images/products/preview/sg-005-packshot.webp',
-		201 => 'images/products/preview/br-004-back.webp',
-		202 => 'images/products/preview/br-004-packshot.webp',
 		301 => 'images/products/preview/lh-004-back.webp',
 		302 => 'images/products/preview/lh-004-packshot.webp',
 		401 => 'images/products/preview/kids-001-back.webp',
@@ -390,7 +401,11 @@ function wc_get_products( $args = array() ) {
 	$fixtures = array(
 		new WC_Product( 1, 'Bay Bridge Shirt', 1, 'sg-005', array( 102 ) ),
 		new WC_Product( 2, 'Black Rose Hoodie', 2, 'br-004', array( 201, 202 ) ),
+		new WC_Product( 6, 'Love Hurts Joggers (Black)', 6, 'lh-002' ),
+		new WC_Product( 8, 'Love Hurts Basketball Shorts', 8, 'lh-003' ),
 		new WC_Product( 3, 'Love Hurts Bomber Jacket', 3, 'lh-004', array( 301, 302 ) ),
+		new WC_Product( 9, 'The Fannie', 9, 'lh-005' ),
+		new WC_Product( 10, 'Love Hurts Joggers (White)', 10, 'lh-006' ),
 		new WC_Product( 4, 'Kids Colorblock Hoodie Set — Red/Black', 4, 'kids-001', array( 401, 402 ) ),
 		new WC_Product( 5, 'Kids Colorblock Hoodie Set — Purple/Black', 7, 'kids-002', array( 701, 702 ) ),
 	);

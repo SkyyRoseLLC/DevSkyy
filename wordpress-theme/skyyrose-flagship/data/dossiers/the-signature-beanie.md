@@ -10,7 +10,7 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 
 # The Signature Beanie
 
-**Garment type lock:** Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rose graphic embroidered on the front face of the cuff. Mid-weight knit fabric.
+**Garment type lock:** Classic cuffed knit beanie / cap — solid black ribbed knit fabric, single fold-up cuff at the base (~2.5–3in tall folded), rounded crown, snug head-fit. NOT a hat with a brim. NOT a baseball cap. NOT a pom-pom beanie. NOT a slouchy beanie. NOT a fitted-cap. **Sold across 4 decoration / colorway variants** that share the same base beanie but differ in the small rectangular silicone rose-logo patch attached to the front face of the cuff. Mid-weight knit fabric.
 
 ## Branding — exactly what IS on this product
 
@@ -22,7 +22,7 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 > ### COLORWAY / DECORATION VARIANTS
 >
 > All 4 variants share the same **black ribbed knit beanie** base. The only
-> difference is the rose graphic embroidered on the front face of the cuff:
+> difference is the rose graphic molded/printed into a small rectangular silicone patch on the front face of the cuff:
 >
 > - **Variant 1 — Purple/Violet rose-cluster** (small, ~1.5in tall): a
 >   tonal purple-and-violet rendering of the canonical rose-cluster (three
@@ -45,7 +45,7 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 > single beanie.
 
 ### Front
-- **front-cuff** (small, ~1.5–2in tall, centered on the front face of the cuff fold): The selected variant's rose decoration (Variant 1, 2, 3, or 4 per the COLORWAY/DECORATION VARIANTS block above) embroidered into the cuff face. **Technique:** embroidered. **Color:** per selected variant.
+- **front-cuff** (small, ~1.5–2in tall, slightly off-center toward the wearer's left on the front face of the cuff fold): The selected variant's rose decoration (Variant 1, 2, 3, or 4 per the COLORWAY/DECORATION VARIANTS block above) rendered as a small rectangular **silicone logo patch** secured to the cuff. **Technique:** silicone. **Color:** per selected variant on a black/dark patch ground.
 
 ### Back
 - (Clean back — no decoration on the rear-cuff face or rear-crown.)
@@ -66,11 +66,11 @@ reference_image: assets/products/references/sg-007-techflat.jpeg
 - NO slouchy / oversize crown — the beanie is a snug fitted-knit silhouette.
 - NO Authentic Collection patch on a beanie.
 - NO SR monogram on the beanie (the SR mark is a back-neck embroidery on jerseys, not on accessories).
-- NO printed graphics — branding is embroidered, not printed.
+- NO direct embroidery into the knit and NO loose printed graphic — the branding is contained in the attached silicone logo patch.
 - NO contrast piping along the cuff edge.
 - NO tag visible on the exterior (interior size-tag only).
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the cuff with the selected variant's rose decoration. Optional: 3/4 view showing the snug knit fit and the cuff fold-line.
+- **Pose:** Front view straight-on showing the cuff with the selected variant's silicone rose-logo patch slightly left of center. Optional: 3/4 view showing the snug knit fit, patch thickness, and cuff fold-line.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

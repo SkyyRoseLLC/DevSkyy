@@ -194,18 +194,6 @@
         "image": {
           "path": "assets/images/products/br-003-baseball-classic.jpeg",
           "resolved": "images/products/br-003-baseball-classic.jpeg"
-        },
-        "front_model_image": {
-          "path": "assets/images/products/br-003-onmodel.webp",
-          "resolved": "images/products/br-003-onmodel.webp"
-        },
-        "back_image": {
-          "path": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
-          "resolved": "images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
-          "resolved": "images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp"
         }
       },
       "dossier": "data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic.md",
@@ -221,18 +209,6 @@
         "image": {
           "path": "assets/images/products/br-004-black-rose-hoodie.jpeg",
           "resolved": "images/products/br-004-black-rose-hoodie.jpeg"
-        },
-        "front_model_image": {
-          "path": "assets/images/products/br-004-onmodel.webp",
-          "resolved": "images/products/br-004-onmodel.webp"
-        },
-        "back_image": {
-          "path": "assets/images/products/black-rose-hoodie-back-model.webp",
-          "resolved": "images/products/black-rose-hoodie-back-model.webp"
-        },
-        "back_model_image": {
-          "path": "assets/images/products/black-rose-hoodie-back-model.webp",
-          "resolved": "images/products/black-rose-hoodie-back-model.webp"
         }
       },
       "dossier": "data/dossiers/black-rose-hoodie.md",
@@ -303,13 +279,13 @@
           "path": "assets/images/products/br-007.jpg",
           "resolved": "images/products/br-007.jpg"
         },
-        "front_model_image": {
-          "path": "assets/images/products/hub/br-007-front.webp",
-          "resolved": "images/products/hub/br-007-front.webp"
-        },
         "back_image": {
           "path": "assets/images/products/br-007-real-back.jpg",
           "resolved": "images/products/br-007-real-back.jpg"
+        },
+        "front_model_image": {
+          "path": "assets/images/products/hub/br-007-front.webp",
+          "resolved": "images/products/hub/br-007-front.webp"
         },
         "back_model_image": {
           "path": "assets/images/products/hub/br-007-back.webp",
@@ -348,10 +324,6 @@
         "image": {
           "path": "assets/images/products/br-009-last-oakland-football.jpg",
           "resolved": "images/products/br-009-last-oakland-football.jpg"
-        },
-        "front_model_image": {
-          "path": "assets/images/products/br-009-onmodel.webp",
-          "resolved": "images/products/br-009-onmodel.webp"
         }
       },
       "dossier": "data/dossiers/black-is-beautiful-jersey-series-2-last-oakland-football.md",
@@ -367,10 +339,6 @@
         "image": {
           "path": "assets/images/products/br-010-the-bay-basketball.jpeg",
           "resolved": "images/products/br-010-the-bay-basketball.jpeg"
-        },
-        "front_model_image": {
-          "path": "assets/images/products/br-010-onmodel.webp",
-          "resolved": "images/products/br-010-onmodel.webp"
         }
       },
       "dossier": "data/dossiers/black-is-beautiful-jersey-series-3-the-bay-basketball.md",
@@ -386,10 +354,6 @@
         "image": {
           "path": "assets/images/products/br-011-the-rose-hockey.png",
           "resolved": "images/products/br-011-the-rose-hockey.png"
-        },
-        "front_model_image": {
-          "path": "assets/images/products/br-011-onmodel.webp",
-          "resolved": "images/products/br-011-onmodel.webp"
         },
         "back_image": {
           "path": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp",
@@ -413,10 +377,6 @@
         "image": {
           "path": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
           "resolved": "images/products/br-012-last-oakland-baseball-front.jpeg"
-        },
-        "front_model_image": {
-          "path": "assets/images/products/jersey-last-oakland-baseball-front-model.webp",
-          "resolved": "images/products/jersey-last-oakland-baseball-front-model.webp"
         },
         "back_image": {
           "path": "assets/images/products/br-012-last-oakland-baseball-back.jpeg",

@@ -28,11 +28,17 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
 >                                  `assets/products/references/br-014-real-back.jpeg`
 
 ### Front
-- **front-chest** (large, arched, ~9in wide): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large and arched; the horizontal wordmark length spans approximately **80% of the visible torso width**): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering — pre-cut **bright orange** fabric letters
   appliquéd onto the black jersey body in a baseball-script style, arched across
   the upper-front-chest. **Technique:** tackle-twill. **Color:** bright orange
   twill (NO contrast satin-stitch edge — clean orange-on-black).
+  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,
+  and on-model image, measure between the visible left and right torso side
+  seams at the wordmark baseline. The outermost letter edges sit approximately
+  10% in from each side, yielding approximately 80% visible torso width. Center
+  the single readable arch on the button placket; the placket may divide the
+  artwork naturally but must not remove, compress, or rearrange any letter.
 - **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**): The Black Rose
   Authentic Collection patch (full multi-color: yellow field, navy text,
   white banner, red diamond divider, etc. — see patch reference). Sewn onto
@@ -83,10 +89,16 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
   vinyl, NO printed graphics on the body.
 - NO contrast colors other than orange — no green, no yellow, no red elsewhere.
 - NO contrast satin-stitch edge around the tackle-twill letters.
+- NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest
+  wordmark. It must remain one centered readable arch at approximately 80% of
+  the visible torso width, with approximately 10% clear torso margin on each
+  side. NO letters may wrap onto a sleeve or cross a side seam.
 
 ## Scene direction
 
 - **Pose:** Front view straight-on or three-quarter front-left for the chest
-  wordmark; back view straight-on for the embroidered logos.
+  wordmark. The complete torso and both side seams must remain visible so the
+  locked 80% wordmark scale can be verified; back view straight-on for the
+  embroidered logos.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting,
   subtle natural drop shadow.

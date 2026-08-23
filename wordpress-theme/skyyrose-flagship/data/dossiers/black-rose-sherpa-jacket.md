@@ -7,6 +7,7 @@ reference_image: assets/products/references/br-006-sherpa-jacket-real-front.jpeg
 extra_references:
   - assets/products/references/br-006-sherpa-jacket-real-open.jpeg
   - assets/products/references/br-006-sherpa-jacket-real-closeup.jpeg
+  - wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4
 ---
 
 # The Bomber Sherpa
@@ -20,6 +21,7 @@ extra_references:
 > - Reference photos:               `assets/products/references/br-006-sherpa-jacket-real-front.jpeg`,
 >                                   `assets/products/references/br-006-sherpa-jacket-real-open.jpeg`,
 >                                   `assets/products/references/br-006-sherpa-jacket-real-closeup.jpeg`
+> - Authentic founder footage:      `wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4`
 
 ### Front
 - **front-left-chest** (small, ~3–4in tall): The Black Rose logo embroidered

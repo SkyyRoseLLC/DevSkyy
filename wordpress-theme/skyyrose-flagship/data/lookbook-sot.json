@@ -198,18 +198,6 @@
             "image": {
               "path": "assets/images/products/br-003-baseball-classic.jpeg",
               "resolved": "images/products/br-003-baseball-classic.jpeg"
-            },
-            "front_model_image": {
-              "path": "assets/images/products/br-003-onmodel.webp",
-              "resolved": "images/products/br-003-onmodel.webp"
-            },
-            "back_image": {
-              "path": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
-              "resolved": "images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp",
-              "resolved": "images/products/black-is-beautiful-jersey/black-is-beautiful-jersey-back-model.webp"
             }
           },
           "dossier": "data/dossiers/black-is-beautiful-jersey-series-0-baseball-classic.md",
@@ -225,18 +213,6 @@
             "image": {
               "path": "assets/images/products/br-004-black-rose-hoodie.jpeg",
               "resolved": "images/products/br-004-black-rose-hoodie.jpeg"
-            },
-            "front_model_image": {
-              "path": "assets/images/products/br-004-onmodel.webp",
-              "resolved": "images/products/br-004-onmodel.webp"
-            },
-            "back_image": {
-              "path": "assets/images/products/black-rose-hoodie-back-model.webp",
-              "resolved": "images/products/black-rose-hoodie-back-model.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/black-rose-hoodie-back-model.webp",
-              "resolved": "images/products/black-rose-hoodie-back-model.webp"
             }
           },
           "dossier": "data/dossiers/black-rose-hoodie.md",
@@ -307,13 +283,13 @@
               "path": "assets/images/products/br-007.jpg",
               "resolved": "images/products/br-007.jpg"
             },
-            "front_model_image": {
-              "path": "assets/images/products/hub/br-007-front.webp",
-              "resolved": "images/products/hub/br-007-front.webp"
-            },
             "back_image": {
               "path": "assets/images/products/br-007-real-back.jpg",
               "resolved": "images/products/br-007-real-back.jpg"
+            },
+            "front_model_image": {
+              "path": "assets/images/products/hub/br-007-front.webp",
+              "resolved": "images/products/hub/br-007-front.webp"
             },
             "back_model_image": {
               "path": "assets/images/products/hub/br-007-back.webp",
@@ -352,10 +328,6 @@
             "image": {
               "path": "assets/images/products/br-009-last-oakland-football.jpg",
               "resolved": "images/products/br-009-last-oakland-football.jpg"
-            },
-            "front_model_image": {
-              "path": "assets/images/products/br-009-onmodel.webp",
-              "resolved": "images/products/br-009-onmodel.webp"
             }
           },
           "dossier": "data/dossiers/black-is-beautiful-jersey-series-2-last-oakland-football.md",
@@ -371,10 +343,6 @@
             "image": {
               "path": "assets/images/products/br-010-the-bay-basketball.jpeg",
               "resolved": "images/products/br-010-the-bay-basketball.jpeg"
-            },
-            "front_model_image": {
-              "path": "assets/images/products/br-010-onmodel.webp",
-              "resolved": "images/products/br-010-onmodel.webp"
             }
           },
           "dossier": "data/dossiers/black-is-beautiful-jersey-series-3-the-bay-basketball.md",
@@ -390,10 +358,6 @@
             "image": {
               "path": "assets/images/products/br-011-the-rose-hockey.png",
               "resolved": "images/products/br-011-the-rose-hockey.png"
-            },
-            "front_model_image": {
-              "path": "assets/images/products/br-011-onmodel.webp",
-              "resolved": "images/products/br-011-onmodel.webp"
             },
             "back_image": {
               "path": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp",
@@ -417,10 +381,6 @@
             "image": {
               "path": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
               "resolved": "images/products/br-012-last-oakland-baseball-front.jpeg"
-            },
-            "front_model_image": {
-              "path": "assets/images/products/jersey-last-oakland-baseball-front-model.webp",
-              "resolved": "images/products/jersey-last-oakland-baseball-front-model.webp"
             },
             "back_image": {
               "path": "assets/images/products/br-012-last-oakland-baseball-back.jpeg",
@@ -609,10 +569,6 @@
             "front_model_image": {
               "path": "assets/images/products/kids-001-onmodel-v2.webp",
               "resolved": "images/products/kids-001-onmodel-v2.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/kids-red-set-back-model.webp",
-              "resolved": "images/products/kids-red-set-back-model.webp"
             }
           },
           "dossier": "data/dossiers/kids-colorblock-hoodie-set-red-black.md",
@@ -628,10 +584,6 @@
             "image": {
               "path": "assets/images/products/kids-002-purple-set.jpeg",
               "resolved": "images/products/kids-002-purple-set.jpeg"
-            },
-            "front_model_image": {
-              "path": "assets/images/products/ghost/kids-002-ghost-front.webp",
-              "resolved": "images/products/ghost/kids-002-ghost-front.webp"
             },
             "back_model_image": {
               "path": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
@@ -849,8 +801,8 @@
           "published": true,
           "images": {
             "image": {
-              "path": "assets/images/products/lh-002-joggers.jpeg",
-              "resolved": "images/products/lh-002-joggers.jpeg"
+              "path": "assets/images/products/lh-002-onmodel.webp",
+              "resolved": "images/products/lh-002-onmodel.webp"
             },
             "front_model_image": {
               "path": "assets/images/products/lh-002-onmodel.webp",
@@ -879,17 +831,13 @@
               "path": "assets/images/products/lh-003-shorts.jpeg",
               "resolved": "images/products/lh-003-shorts.jpeg"
             },
-            "front_model_image": {
-              "path": "assets/images/products/hub/lh-003-front.webp",
-              "resolved": "images/products/hub/lh-003-front.webp"
-            },
             "back_image": {
               "path": "assets/images/products/lh-003-real-back.jpg",
               "resolved": "images/products/lh-003-real-back.jpg"
             },
-            "back_model_image": {
-              "path": "assets/images/products/love-hurts-basketball-shorts-back-model.webp",
-              "resolved": "images/products/love-hurts-basketball-shorts-back-model.webp"
+            "front_model_image": {
+              "path": "assets/images/products/hub/lh-003-front.webp",
+              "resolved": "images/products/hub/lh-003-front.webp"
             }
           },
           "dossier": "data/dossiers/love-hurts-basketball-shorts.md",
@@ -909,14 +857,6 @@
             "front_model_image": {
               "path": "assets/images/products/lh-004-onmodel.webp",
               "resolved": "images/products/lh-004-onmodel.webp"
-            },
-            "back_image": {
-              "path": "assets/images/products/lh-004-bomber-back.png",
-              "resolved": "images/products/lh-004-bomber-back.png"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/lh-004-bomber-back.webp",
-              "resolved": "images/products/lh-004-bomber-back.webp"
             }
           },
           "dossier": "data/dossiers/love-hurts-bomber-jacket.md",
@@ -936,10 +876,6 @@
             "front_model_image": {
               "path": "assets/images/products/lh-005-onmodel.webp",
               "resolved": "images/products/lh-005-onmodel.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/the-fannie-back-model.webp",
-              "resolved": "images/products/the-fannie-back-model.webp"
             }
           },
           "dossier": "data/dossiers/the-fannie.md",
@@ -1123,10 +1059,6 @@
               "path": "assets/images/products/sg-001-bay-bridge-shorts.jpeg",
               "resolved": "images/products/sg-001-bay-bridge-shorts.jpeg"
             },
-            "front_model_image": {
-              "path": "assets/images/products/sg-001-bay-bridge-shorts.webp",
-              "resolved": "images/products/sg-001-bay-bridge-shorts.webp"
-            },
             "back_image": {
               "path": "assets/images/products/the-bay-set-back-model.webp",
               "resolved": "images/products/the-bay-set-back-model.webp"
@@ -1134,6 +1066,10 @@
             "back_model_image": {
               "path": "assets/images/products/bridge-bay-bridge-shorts-back-model.webp",
               "resolved": "images/products/bridge-bay-bridge-shorts-back-model.webp"
+            },
+            "front_model_image": {
+              "path": "assets/images/products/sg-001-bay-bridge-shorts.webp",
+              "resolved": "images/products/sg-001-bay-bridge-shorts.webp"
             }
           },
           "dossier": "data/dossiers/the-bridge-series-the-bay-bridge-shorts.md",
@@ -1199,10 +1135,6 @@
             "front_model_image": {
               "path": "assets/images/products/sg-005-onmodel.webp",
               "resolved": "images/products/sg-005-onmodel.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/bridge-bay-bridge-shirt-back-model.webp",
-              "resolved": "images/products/bridge-bay-bridge-shirt-back-model.webp"
             }
           },
           "dossier": "data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
@@ -1300,10 +1232,6 @@
               "path": "assets/images/products/sg-011-onmodel.webp",
               "resolved": "images/products/sg-011-onmodel.webp"
             },
-            "back_image": {
-              "path": "assets/images/products/original-label-tee-white-back-model.webp",
-              "resolved": "images/products/original-label-tee-white-back-model.webp"
-            },
             "back_model_image": {
               "path": "assets/images/products/hub/sg-011-back.webp",
               "resolved": "images/products/hub/sg-011-back.webp"
@@ -1326,14 +1254,6 @@
             "front_model_image": {
               "path": "assets/images/products/sg-012-onmodel.webp",
               "resolved": "images/products/sg-012-onmodel.webp"
-            },
-            "back_image": {
-              "path": "assets/images/products/original-label-tee-orchid-back-model.webp",
-              "resolved": "images/products/original-label-tee-orchid-back-model.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/original-label-tee-orchid-back-model.webp",
-              "resolved": "images/products/original-label-tee-orchid-back-model.webp"
             }
           },
           "dossier": "data/dossiers/original-label-tee-orchid.md",
@@ -1353,10 +1273,6 @@
             "front_model_image": {
               "path": "assets/images/products/sg-013-onmodel.webp",
               "resolved": "images/products/sg-013-onmodel.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/mint-lavender-crewneck-back-model.webp",
-              "resolved": "images/products/mint-lavender-crewneck-back-model.webp"
             }
           },
           "dossier": "data/dossiers/mint-lavender-crewneck.md",
@@ -1376,10 +1292,6 @@
             "front_model_image": {
               "path": "assets/images/products/hub/sg-014-front.webp",
               "resolved": "images/products/hub/sg-014-front.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/mint-lavender-sweatpants-back-model.webp",
-              "resolved": "images/products/mint-lavender-sweatpants-back-model.webp"
             }
           },
           "dossier": "data/dossiers/mint-lavender-sweatpants.md",
@@ -1399,10 +1311,6 @@
             "front_model_image": {
               "path": "assets/images/products/hub/sg-015-front.webp",
               "resolved": "images/products/hub/sg-015-front.webp"
-            },
-            "back_model_image": {
-              "path": "assets/images/products/signature-windbreaker-set-back-model.webp",
-              "resolved": "images/products/signature-windbreaker-set-back-model.webp"
             }
           },
           "dossier": "data/dossiers/the-windbreaker-set.md",

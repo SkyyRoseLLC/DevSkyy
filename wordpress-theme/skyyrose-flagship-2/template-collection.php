@@ -16,6 +16,7 @@ $shop_url    = '#shop';
 $hero_desktop = skyyrose2_sot_asset_uri( $collection['hero'] );
 $hero_tablet  = ! empty( $collection['hero_tablet'] ) ? skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) : '';
 $hero_mobile  = ! empty( $collection['hero_mobile'] ) ? skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) : '';
+$hero_motion = skyyrose2_collection_hero_motion( $slug, $collection['hero'] );
 
 get_header();
 ?>
@@ -30,8 +31,15 @@ get_header();
 				<?php if ( $hero_tablet ) : ?><source media="(max-width: 74.99em)" srcset="<?php echo esc_url( $hero_tablet ); ?>"><?php endif; ?>
 				<img src="<?php echo esc_url( $hero_desktop ); ?>" alt="" width="1440" height="810" fetchpriority="high" decoding="sync" data-art-direction="<?php echo esc_attr( $hero_mobile ? 'responsive' : 'desktop-fallback' ); ?>">
 			</picture>
+			<?php if ( $hero_motion ) : ?>
+				<video class="sr2-collection-hero__motion" muted loop playsinline preload="none" poster="<?php echo esc_url( $hero_desktop ); ?>" data-collection-hero-video aria-hidden="true">
+					<source data-src="<?php echo esc_url( $hero_motion['webm'] ); ?>" type="video/webm">
+					<source data-src="<?php echo esc_url( $hero_motion['mp4'] ); ?>" type="video/mp4">
+				</video>
+			<?php endif; ?>
 		</div>
 		<div class="sr2-collection-hero__effects" data-scene-motion="<?php echo esc_attr( $slug ); ?>" aria-hidden="true">
+			<span class="sr2-scene-effect sr2-scene-effect--hook"></span>
 			<span class="sr2-scene-effect sr2-scene-effect--clouds"></span>
 			<span class="sr2-scene-effect sr2-scene-effect--bridge-lights"></span>
 			<span class="sr2-scene-effect sr2-scene-effect--signature-glow"></span>
@@ -43,6 +51,7 @@ get_header();
 			</span>
 		</div>
 		<div class="sr2-collection-hero__veil" aria-hidden="true"></div>
+		<button class="sr2-collection-hero__motion-toggle" type="button" data-scene-motion-toggle aria-pressed="false" hidden><?php esc_html_e( 'Pause motion', 'skyyrose-flagship-2' ); ?></button>
 	</section>
 
 	<header class="sr2-collection-identity">

@@ -39,13 +39,14 @@ reference_image: assets/products/references/sg-015-windbreaker-set-techflat.jpeg
 
 ### Front
 - **front-body-jacket** (entire white jacket field, between the hood seam and the bottom hem): Solid **white** nylon windbreaker shell fabric. **Technique:** stitched. **Color:** white.
-- **front-chevron-jacket** (large V-shape, ~10in wide, fanning from the upper chest outward toward both shoulders and up to the hood opening): Multi-color **rainbow chevron stripe color-block panel** — alternating pink + green + lavender + yellow stripes (~5–8 stripes, each ~0.5–1in wide) arranged in a V/chevron formation that meets at the center-front upper-chest and fans up-and-out toward each shoulder. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow on white ground.
-- **front-center-chest-jacket** (small, ~2in tall, just below the V-chevron meeting point on the white body): Small **pink rose-cluster** decoration — canonical rose-cluster art recolored to a pink-on-white tonal palette (pink / coral petals + grey-pink outlines + white cloud) matching the small chest rose on the sg-006 hoodie. **Technique:** embroidered. **Color:** pink + coral + grey-pink thread on white.
+- **front-chevron-jacket** (large V-shape, ~10in wide, fanning from the upper chest outward toward both shoulders and up to the hood opening): Multi-color **rainbow chevron sewn color-block panels** — alternating pink + green + lavender + yellow fabric strips arranged in a V/chevron formation that meets at the center-front zipper and fans up-and-out toward each shoulder. **Technique:** stitched color-block. **Color:** alternating pink + green + lavender + yellow on white ground.
+- **front-left-chest-jacket** (small, ~2in tall, on the wearer's left / viewer's right within the chevron field): Small **pink rose-cluster** decoration — canonical rose-cluster art recolored to a pink-on-white tonal palette (pink / coral petals + grey-pink outlines + white cloud). **Technique:** embroidered. **Color:** pink + coral + grey-pink thread.
 - **front-zipper-jacket** (vertical center-front, full body length from hood opening to waistband hem): Standard center-front zipper running the full length of the jacket body. **Technique:** patch. **Color:** body-tone hardware (white or near-white teeth).
 - **front-left-pocket-jacket** (vertical slash hand pocket at the lower-left jacket body, with **pink contrast piping** along the welt edge): Slash hand pocket. **Technique:** stitched. **Color:** white body with pink piping accent.
 - **front-right-pocket-jacket** (vertical slash hand pocket at the lower-right jacket body, mirror of left): Slash hand pocket with pink contrast piping. **Technique:** stitched. **Color:** white body with pink piping.
 - **front-body-pants** (entire white pants field, between the waistband and ankle cuffs): Solid **white** nylon windbreaker fabric. **Technique:** stitched. **Color:** white.
-- **front-thigh-chevron-pants** (V-shape, ~6–7in wide, on each upper-thigh / hip area, mirroring across the center-front): Multi-color V-shape **rainbow chevron stripe color-block panel** on each upper thigh — alternating pink + green + lavender + yellow stripes arranged in V/chevron pattern. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow on white ground.
+- **front-thigh-chevron-pants** (V-shape, ~6–7in wide, on each upper-thigh / hip area, mirroring across the center-front): Multi-color V-shape **rainbow sewn color-block panels** on each upper thigh — alternating pink + green + lavender + yellow fabric strips arranged in a V/chevron pattern. **Technique:** stitched color-block. **Color:** alternating pink + green + lavender + yellow on white ground.
+- **front-left-thigh-rose-pants** (small, ~2in tall, wearer's left / viewer's right upper thigh within the chevron): Small pink rose-cluster matching the jacket chest mark. **Technique:** embroidered. **Color:** pink + coral + grey-pink thread.
 - **front-left-pocket-pants** (vertical slash hand pocket on wearer's left thigh, with **pink contrast piping** along the welt edge): Slash hand pocket. **Technique:** stitched. **Color:** white body with pink piping.
 - **front-right-pocket-pants** (vertical slash hand pocket on wearer's right thigh, mirror of left): Slash hand pocket with pink contrast piping. **Technique:** stitched. **Color:** white body with pink piping.
 - **drawstring-pants** (~24in long, threaded through the pants waistband): White flat drawstring. **Technique:** stitched. **Color:** white.
@@ -58,14 +59,14 @@ reference_image: assets/products/references/sg-015-windbreaker-set-techflat.jpeg
 ### Sleeves / Hood / Hem / Other
 - **hood-jacket** (full hood with drawstring, ~10in tall when laid flat): Solid **pink / light pink** contrast hood. **Technique:** stitched. **Color:** pink / light pink.
 - **hood-drawstring-jacket** (white flat drawstring threaded through the hood opening): White drawstring. **Technique:** stitched. **Color:** white.
-- **left-sleeve-jacket** (long nylon sleeve): Solid white nylon body with a small V-shape rainbow chevron stripe panel at the upper-cuff / forearm area mirroring the front-chevron color story. **Technique:** sublimated. **Color:** white body with chevron accent.
-- **right-sleeve-jacket** (mirror of left-sleeve): Solid white with chevron accent at the upper-cuff. **Technique:** sublimated. **Color:** white body with chevron accent.
-- **left-cuff-jacket** (~1.5in tall ribbed cuff at wrist): Multi-color rainbow stripe band (alternating pink + green + lavender + yellow stripes wrapping the cuff). **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
-- **right-cuff-jacket** (mirror of left-cuff-jacket): Multi-color rainbow stripe band. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
-- **waistband-jacket** (~2in tall ribbed band at the jacket bottom hem): Multi-color rainbow stripe band wrapping the jacket front-and-back at the hem. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
-- **waistband-pants** (~2in tall ribbed band at the pants top): Multi-color rainbow stripe band matching the jacket waistband (alternating pink + green + lavender + yellow stripes wrapping front-and-back). **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
-- **left-ankle-cuff-pants** (~1.5in tall ribbed band at the left ankle): Multi-color rainbow stripe band matching the jacket cuff treatment. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
-- **right-ankle-cuff-pants** (mirror of left-ankle-cuff-pants): Multi-color rainbow stripe band. **Technique:** sublimated. **Color:** alternating pink + green + lavender + yellow.
+- **left-sleeve-jacket** (long nylon sleeve): Solid white nylon body with small V-shape rainbow sewn color-block panels at the forearm mirroring the front-chevron construction. **Technique:** stitched color-block. **Color:** white body with pink, green, lavender, and yellow panels.
+- **right-sleeve-jacket** (mirror of left-sleeve): Solid white with matching sewn chevron panels at the forearm. **Technique:** stitched color-block. **Color:** white body with pink, green, lavender, and yellow panels.
+- **left-cuff-jacket** (~1.5in tall ribbed cuff at wrist): Multi-color striped rib-knit band (alternating pink + green + lavender + yellow bands wrapping the cuff). **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.
+- **right-cuff-jacket** (mirror of left-cuff-jacket): Multi-color striped rib-knit band. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.
+- **waistband-jacket** (~2in tall ribbed band at the jacket bottom hem): Multi-color striped rib-knit band wrapping the jacket front-and-back at the hem. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.
+- **waistband-pants** (~2in tall ribbed band at the pants top): Multi-color striped rib-knit band matching the jacket waistband. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.
+- **left-ankle-cuff-pants** (~1.5in tall ribbed band at the left ankle): Multi-color striped rib-knit band matching the jacket cuff treatment. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.
+- **right-ankle-cuff-pants** (mirror of left-ankle-cuff-pants): Multi-color striped rib-knit band. **Technique:** knitted/stitched. **Color:** alternating pink + green + lavender + yellow.
 - **collar-inside-jacket** (~1.5in × 0.5in interior tag at the back-neck of the jacket): Branded woven size / composition label. **Technique:** woven-label. **Color:** brand-label palette.
 - **inside-waistband-pants** (~1.5in × 0.5in interior tag at the back-waistband of the pants): Branded woven size / composition label. **Technique:** woven-label. **Color:** brand-label palette.
 
@@ -77,14 +78,14 @@ reference_image: assets/products/references/sg-015-windbreaker-set-techflat.jpeg
 - NO single-color drawstring matching the hood — drawstring is WHITE on the pink hood.
 - NO solid-color cuffs or waistbands — cuffs and waistbands carry the multi-color rainbow stripe band on BOTH the jacket and the pants.
 - NO contrast piping on the cuffs or waistband — those areas have the rainbow stripe band; only the slash pockets carry pink piping.
-- NO chevron on the back of the jacket or back of the pants — chevron decorations are on the FRONT only (front-chest jacket, front-thighs pants, sleeve forearm panels).
-- NO Black Rose three-rose-cluster as a chest emblem (greyscale) — the front-center-chest-jacket rose is a small pink-tonal canonical rose-cluster.
+- NO chevron on the back of the jacket or back of the pants — sewn chevron panels are on the FRONT only (front-chest jacket, front-thighs pants, sleeve forearm panels).
+- NO Black Rose three-rose-cluster as a chest emblem (greyscale) — the front-left-chest jacket rose and front-left-thigh pants rose are small pink-tonal canonical rose-clusters.
 - NO Love Hurts canonical RED rose-cluster — this Signature set uses the pink-recolored variant.
 - NO Authentic Collection patch (no NFL / NBA / Hockey patch).
 - NO Bridge Series photo print on either piece.
 - NO embossed or debossed decoration.
-- NO chest text or wordmark on the jacket front (the only front decoration is the chevron + small pink rose).
-- NO printed graphics other than the sublimated chevron stripes and stripe bands.
+- NO chest text or wordmark on the jacket front (the only front decoration is the sewn chevron + small pink rose).
+- NO sublimated or printed chevrons/stripe bands — these are sewn color-block panels and striped rib-knit bands.
 - NO half-zip placket on the jacket — the zipper runs the FULL body length.
 - NO additional pockets on the back of the jacket, pants, or sleeves — only the two front slash hand pockets per piece.
 - NO sherpa lining (this is a windbreaker, not a sherpa-lined jacket — sg-009 is the sherpa-lined sibling).
@@ -92,5 +93,5 @@ reference_image: assets/products/references/sg-015-windbreaker-set-techflat.jpeg
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the jacket worn closed — white body + pink hood + V-chevron upper-chest stripes + small pink rose at center-chest + multi-color cuff and waistband bands + zipper + slash pocket pink piping. Back view shows the prominent SR monogram on the back yoke and the multi-color waistband band. Pants: front view shows V-chevron mirrored on each thigh + slash pocket piping + drawstring + multi-color waistband and ankle bands. Three-quarter view of the jacket shows the chevron wrapping toward the shoulders and the sleeve forearm chevron panels. Optional matching-set flat-lay shows jacket + pants together aligned to the techflat.
+- **Pose:** Front view straight-on showing the jacket worn closed — white body + pink hood + sewn V-chevron upper-chest panels + small pink rose on the wearer's left chest + multi-color rib-knit cuff and waistband bands + zipper + slash pocket pink piping. Back view shows the prominent SR monogram on the back yoke and the multi-color waistband band. Pants: front view shows sewn V-chevron panels mirrored on each thigh + the small pink rose on the wearer's left thigh + slash pocket piping + drawstring + multi-color waistband and ankle bands. Three-quarter view of the jacket shows the chevron wrapping toward the shoulders and the sleeve forearm panels. Optional matching-set flat-lay shows jacket + pants together aligned to the techflat.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

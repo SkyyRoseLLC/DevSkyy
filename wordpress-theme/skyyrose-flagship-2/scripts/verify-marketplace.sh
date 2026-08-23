@@ -5,7 +5,7 @@ THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$THEME_DIR"
 
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l >/dev/null
-for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json data/font-provenance.json; do
+for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json data/font-provenance.json data/collection-hero-motion.json; do
 	jq empty "$document"
 done
 
@@ -35,7 +35,9 @@ while IFS= read -r artwork_face; do
 done < <(jq -r '.artwork_only[] | .family + "|" + .path' "$font_manifest" | cut -d'|' -f1)
 
 python3 scripts/build-product-presentation-registry.py --check
+python3 ../../scripts/launch/woocommerce_product_contract.py --check
 python3 scripts/validate-opening-product-media.py
+python3 scripts/validate-collection-hero-motion.py
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check

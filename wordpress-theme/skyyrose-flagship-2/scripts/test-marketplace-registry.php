@@ -91,4 +91,25 @@ foreach ( $menus as $location => $menu ) {
 	}
 }
 
+$theme_dir = dirname( __DIR__ );
+$product_registry = json_decode( file_get_contents( $theme_dir . '/data/product-presentation-registry.json' ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+$product_media    = json_decode( file_get_contents( $theme_dir . '/data/opening-product-media.json' ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+skyyrose2_registry_assert( skyyrose2_validate_product_card_media_contract( $product_media, $product_registry ), 'Current product-card media contract must validate.' );
+
+$stale_global = $product_media;
+$stale_global['product_sot_sha256'] = str_repeat( '0', 64 );
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $stale_global, $product_registry ), 'Stale global product SOT hash must fail closed.' );
+
+$stale_sku = $product_media;
+$stale_sku['product_hashes']['br-001'] = str_repeat( '0', 64 );
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $stale_sku, $product_registry ), 'Stale per-SKU product hash must fail closed.' );
+
+$missing_integrity = $product_media;
+unset( $missing_integrity['asset_integrity']['br-006'] );
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $missing_integrity, $product_registry ), 'Approved media without asset integrity must fail closed.' );
+
+$wrong_opening_role = $product_media;
+$wrong_opening_role['products']['br-006']['views'][0]['role'] = 'packshot';
+skyyrose2_registry_assert( ! skyyrose2_validate_product_card_media_contract( $wrong_opening_role, $product_registry ), 'A product card that does not open on-model must fail closed.' );
+
 echo "Marketplace registry structure passed.\n";

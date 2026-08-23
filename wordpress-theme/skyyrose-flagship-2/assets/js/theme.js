@@ -11,7 +11,7 @@
 
   root.classList.add('sr2-motion-ready');
 
-  const saveData = Boolean(navigator.connection?.saveData);
+  let saveData = Boolean(navigator.connection?.saveData);
   if (reducedMotion || saveData) {
     root.classList.add('sr2-motion-reduced');
   }
@@ -114,21 +114,87 @@
      visitor explicitly asks for less data or motion. */
   document.querySelectorAll('[data-scene-motion]').forEach((scene) => {
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const hero = scene.closest('.sr2-collection-hero');
+    const motionVideo = hero?.querySelector('[data-collection-hero-video]');
+    const motionToggle = hero?.querySelector('[data-scene-motion-toggle]');
+    const motionSources = motionVideo ? Array.from(motionVideo.querySelectorAll('source[data-src]')) : [];
+    let motionLoaded = false;
+    let motionReady = false;
+    let motionFailed = false;
+    let loadTimer = 0;
     let inViewport = false;
+    let explicitlyPaused = false;
+
+    const markMotionFailed = () => {
+      motionFailed = true;
+      motionReady = false;
+      window.clearTimeout(loadTimer);
+      hero?.classList.remove('has-motion-plate');
+      if (motionVideo) {
+        motionVideo.dataset.motionState = 'fallback';
+        motionVideo.pause();
+      }
+    };
+
+    const markMotionReady = () => {
+      if (motionFailed) return;
+      motionReady = true;
+      window.clearTimeout(loadTimer);
+      hero?.classList.add('has-motion-plate');
+      if (motionVideo) motionVideo.dataset.motionState = 'ready';
+      syncScene();
+    };
+
+    const loadMotion = () => {
+      if (!motionVideo || motionLoaded || motionFailed) return;
+      if (motionSources.length < 2 || motionSources.some((source) => !source.dataset.src)) {
+        markMotionFailed();
+        return;
+      }
+      motionLoaded = true;
+      motionSources.forEach((source) => {
+        source.src = source.dataset.src;
+        delete source.dataset.src;
+      });
+      motionVideo.dataset.motionState = 'loading';
+      motionVideo.addEventListener('canplay', markMotionReady, { once: true });
+      motionVideo.addEventListener('error', markMotionFailed, { once: true });
+      motionVideo.addEventListener('abort', markMotionFailed, { once: true });
+      loadTimer = window.setTimeout(markMotionFailed, 12000);
+      motionVideo.load();
+    };
 
     const syncScene = () => {
-      const canAnimate = !motionPreference.matches && !saveData && !document.hidden;
+      const motionAvailable = !motionPreference.matches && !saveData;
+      const canAnimate = motionAvailable && !explicitlyPaused && !document.hidden;
       const state = canAnimate && inViewport ? 'running' : (canAnimate ? 'paused' : 'static');
       scene.dataset.sceneState = state;
       scene.dataset.sceneMode = motionPreference.matches ? 'reduced' : (saveData ? 'data-save' : 'cinematic');
+      hero?.classList.toggle('is-scene-running', state === 'running');
+      if (motionToggle) {
+        motionToggle.hidden = !motionAvailable;
+        motionToggle.setAttribute('aria-pressed', String(explicitlyPaused));
+        motionToggle.textContent = explicitlyPaused ? 'Resume motion' : 'Pause motion';
+      }
+      if (motionVideo && !motionFailed && canAnimate && inViewport) {
+        loadMotion();
+        if (motionReady) motionVideo.play().catch(markMotionFailed);
+      } else {
+        motionVideo?.pause();
+      }
     };
+
+    motionToggle?.addEventListener('click', () => {
+      explicitlyPaused = !explicitlyPaused;
+      syncScene();
+    });
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         inViewport = Boolean(entries[0]?.isIntersecting);
         syncScene();
       }, { rootMargin: '18% 0px', threshold: 0.01 });
-      observer.observe(scene);
+      observer.observe(hero || scene);
       window.addEventListener('pagehide', () => observer.disconnect(), { once: true });
     } else {
       // A static scene is the correct progressive fallback; do not start an
@@ -142,6 +208,11 @@
     } else if (motionPreference.addListener) {
       motionPreference.addListener(syncScene);
     }
+    navigator.connection?.addEventListener?.('change', () => {
+      saveData = Boolean(navigator.connection?.saveData);
+      root.classList.toggle('sr2-motion-reduced', motionPreference.matches || saveData);
+      syncScene();
+    });
     syncScene();
   });
 

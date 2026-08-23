@@ -1,53 +1,53 @@
 {
-  "_generated_by": "skyyrose.core.sot_images.write_manifest \u2014 DO NOT EDIT. Regenerate after product-sot.json or build-collection-sot.py.",
-  "_authority": "SOT product-imagery contract. Front-first fallback (on-model render before flat packshot).",
+  "_generated_by": "skyyrose.core.sot_images.write_manifest \u2014 DO NOT EDIT",
+  "_authority": "Product-SOT media with hash-bound approval gating. Approved on-model media wins; otherwise the canonical packshot remains the fail-closed fallback.",
   "product_sot": {
     "path": "data/product-sot.json",
-    "sha256": "d3c0249ce887520ce7f178759d9788a8fb5c8a4a71ccb376b3e05bbea8ba9bd6",
+    "sha256": "fa70682418ddc5ceb51eeb356efab0f215eef6e8d387bc736b1d03a2a9193482",
     "product_hashes": {
-      "br-001": "0c56adaad3d86efd8d67e6143257ceeb10a481c41ae1681ac39234011225f832",
-      "br-002": "31eb9744563a236f436ce3a4a2546cbfda6151b1ad823183e4655a9a7bf5cda3",
-      "br-003": "5bd06f49fd29da436d772dcebe1c1392bfe9a98d712e0d47e7cd4ae6cab0935d",
-      "br-004": "d7a48b66e1e53a6d3d751e06b51bbf9a0c1b811bb439ec408cffb52488c24f7c",
-      "br-005": "0ac429144815c0f8af40546265b92a20f647d3f942be236444ce96eead7e5763",
-      "br-006": "30c7284847d158e56a0984eec0332b337aef1a2cdca4309bfa5c47fb1699e5df",
-      "br-007": "3c0b9e2b6112ab3bc5f43579e2a0a1eef514389664870269c196655f9967299e",
-      "br-008": "ffe4ec909bee9fc35a47c2b044a26cf2d811a097163d705e370601d39ef6e345",
-      "br-009": "25e3509aeb186c7886a5df7b96866f1c493f04fa2253d8b7caac12772eaf29a8",
-      "br-010": "fcadfb2a24292785e12e27498891286ac638b4b0b3992820892222248b6388e7",
-      "br-011": "ed7b0f51d9e76d2355cc978ec2c8dcc447afaf1d7adf6121380be095b52b9f42",
-      "br-012": "77777fa40b99f3fa186c653ea6db2ee5218c7f272ae39c4f81e76dda19f7c8ef",
-      "lh-002": "1f1fc7842c171d054687a9b1c19ca4cd778eb95bd99b1955502cf77770493488",
-      "lh-003": "5d805d51f1433617c86b427cd819157bd3e649e87928d0f48e59df3b5746df21",
-      "lh-004": "17fda2d85f133c15074f1dceafcc205ad104a5c6695a84fc697f12eb8d1e71c1",
-      "lh-005": "f1046d62100a446b5a0d60c05d2481e671c7fd8d57bb742ff6f319dc931bdd28",
-      "lh-006": "58cacfc62543d4e18767224f24294372a961f87796fcc931f5bcd741e4b1001d",
-      "sg-001": "efb9f2fc2968c31fde0ae2ad653be5f2ffa4f1c706d8d5603b8b9c3f6594d05f",
-      "sg-002": "feefc4d8d475c42494354a7c630a262be7a90ee7c3a196ca8ea6623ce31e4e2f",
-      "sg-003": "c9d695c95b4c24c4ef72f1419842ca2e5ddc9496abcfb6bb96dc7af87fa0443d",
-      "sg-005": "a9b641197f4835ebae4b27e40a3e6564a08230173e3bf5f76a01f27accb81a2c",
-      "sg-006": "0d220cd83af3b0da1f5063be907d00f48f02ca52b11b45ece45ef7e5a9c2ceaf",
-      "sg-007": "4ee56fe74444c77c18b6f933801ee3a3c6882742ec56b3cadf9d641c25fc0b03",
-      "sg-009": "ff13fe68c0cfdd0954b13db4432c6a2c82014322426f07da08ea276a61152b8e",
-      "sg-011": "fb85f3630b5752c30856e0c088897dec229bf27a08f4c8aa8608c9643f3f1812",
-      "sg-012": "5f0f335d79ff0eb58526c9c641d7a2059e2fa014a22e6f90aa1b256069a7d9e1",
-      "sg-013": "b57f3459b5ef3f9f88f7b91a88be41123805d3d5bef1cd26c87a5ffe5570059b",
-      "sg-014": "53ca00d655512205c83a707b052d03941a9d1e97080e7e358c493e7b40503bb9",
-      "sg-015": "210bd2dfe470aba7c0ca421be8ce1a82aaf67cf1678406a581dadda50f46bd76",
-      "kids-001": "33e48fe4df1a7ca67c9909bbfec82684f1cb35405421d835568b685b6f65bafd",
-      "kids-002": "84dd89da2c16b87a7f3d46e96f60b5a73ddcb837cfff64170bc592bcf1547fea",
-      "br-014": "8597b3b97101931020559092a8ef8c59c87170d6476c8ca060531f889aede973",
-      "br-015": "ad62157b158e4c9f96c2f179ab3af174d54861a50afa1c6c6fb2d57cc164d07e"
+      "br-001": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c",
+      "br-002": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e",
+      "br-003": "665aca97d1b61be02dec4fce949fb32ea562ee82c9a63854cbbac4214041112e",
+      "br-004": "977cd308b8b9d512b72f0db91151b23936777282406aeaafe6977e635862bbac",
+      "br-005": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20",
+      "br-006": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd",
+      "br-007": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6",
+      "br-008": "6e5df3321ee8d9c262296ae28789b926b5e25c4e13af64f7cabb4a69c9c5d163",
+      "br-009": "348f18190d00ccdd6eb9b9702743a518ceee2c471e0a575d42381030341ac614",
+      "br-010": "a657b4ebe780966746b0cf72686575ba9a830c212dd518ad029e7642bc583329",
+      "br-011": "9dd33981cdf7e1e98247f0aa708054186bf877c3bb2c4c03687536a5e9cf42a0",
+      "br-012": "4bf6d592f7f2aa02bac0e98dfcad7d6d4a297d138aedf3f082d33d363408c775",
+      "lh-002": "73e7b3995227dab1503dacb33e8c2363efb3114318dbe237c4c9b76f9b02d3a9",
+      "lh-003": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c",
+      "lh-004": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13",
+      "lh-005": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583",
+      "lh-006": "b2b40cf36c08e7684d04fd90c5eac7dce4f9c1c2ba3e5dcb497323f9b8d0fceb",
+      "sg-001": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941",
+      "sg-002": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e",
+      "sg-003": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23",
+      "sg-005": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda",
+      "sg-006": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3",
+      "sg-007": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c",
+      "sg-009": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a",
+      "sg-011": "07116629c233b65d83677575f5661720c872c01441333619b8e874146505e669",
+      "sg-012": "d96a7efcf46057a84afb93fb27031849891b2d81965cc2df5b47c1a50eda8786",
+      "sg-013": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2",
+      "sg-014": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867",
+      "sg-015": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d",
+      "kids-001": "055e87cefa9cda456b59b230b7597fbead5a822854ccc615ff8f021ed9387028",
+      "kids-002": "9de73174b9b580cfadf21040753ddd17fdf34640ef3259a549352119a5251878",
+      "br-014": "2741304d4950265536ffc9b52d58f68b5ad88bce911fde8588612107aac9842f",
+      "br-015": "06adab4dd19a5c9092755f031b30176f406b9799f9ee366000538e4b85429ebb"
     }
   },
+  "approval_manifest": "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
   "images": {
     "br-001": {
-      "front": "assets/images/products/br-001-onmodel.webp",
-      "back": "assets/images/products/black-rose-crewneck-back-model.webp",
+      "front": "assets/images/products/br-001-crewneck.png",
       "packshot": "assets/images/products/br-001-crewneck.png"
     },
     "br-002": {
-      "front": "assets/images/products/ghost/br-002-ghost-front.webp",
+      "front": "assets/images/products/br-002-joggers.png",
       "back": "assets/images/products/black-rose-joggers-back-model.webp",
       "packshot": "assets/images/products/br-002-joggers.png",
       "back_packshot": "assets/images/products/black-rose-joggers-back-model.webp"
@@ -61,8 +61,8 @@
       "packshot": "assets/images/products/br-004-black-rose-hoodie.jpeg"
     },
     "br-005": {
-      "front": "assets/images/products/ghost/br-005-ghost-front.webp",
-      "back": "assets/images/products/black-rose-hoodie-signature-back-model.webp",
+      "front": "assets/images/products/br-005-signature-hoodie.jpeg",
+      "back": "assets/images/products/black-rose-hoodie-signature-edition-back-model.webp",
       "packshot": "assets/images/products/br-005-signature-hoodie.jpeg",
       "back_packshot": "assets/images/products/black-rose-hoodie-signature-edition-back-model.webp"
     },
@@ -79,7 +79,7 @@
       "back_packshot": "assets/images/products/br-007-real-back.jpg"
     },
     "br-008": {
-      "front": "assets/images/products/br-008-onmodel.webp",
+      "front": "assets/images/products/br-008-sf-inspired.jpg",
       "packshot": "assets/images/products/br-008-sf-inspired.jpg"
     },
     "br-009": {
@@ -92,33 +92,30 @@
     },
     "br-011": {
       "front": "assets/images/products/br-011-the-rose-hockey.png",
-      "back": "assets/images/products/br-011-the-rose-hockey-back.webp",
+      "back": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp",
       "packshot": "assets/images/products/br-011-the-rose-hockey.png",
       "back_packshot": "assets/images/products/black-is-beautiful-hockey-jersey-back-model.webp"
     },
     "br-012": {
       "front": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
-      "back": "assets/images/products/br-012-last-oakland-baseball-back.webp",
+      "back": "assets/images/products/br-012-last-oakland-baseball-back.jpeg",
       "packshot": "assets/images/products/br-012-last-oakland-baseball-front.jpeg",
       "back_packshot": "assets/images/products/br-012-last-oakland-baseball-back.jpeg"
     },
     "br-014": {
-      "front": "assets/images/products/br-014-onmodel.webp",
-      "back": "assets/images/products/br-014-giants-back.webp",
+      "front": "assets/images/products/br-014-baseball-classic-giants.jpeg",
       "packshot": "assets/images/products/br-014-baseball-classic-giants.jpeg"
     },
     "br-015": {
-      "front": "assets/images/products/br-015-onmodel.webp",
-      "back": "assets/images/products/black-is-beautiful-jersey-white/black-is-beautiful-jersey-white-back-model.webp",
+      "front": "assets/images/products/br-015-baseball-classic-white.jpeg",
       "packshot": "assets/images/products/br-015-baseball-classic-white.jpeg"
     },
     "kids-001": {
-      "front": "assets/images/products/kids-001-onmodel-v2.webp",
+      "front": "assets/images/products/kids-001-red-set.jpeg",
       "packshot": "assets/images/products/kids-001-red-set.jpeg"
     },
     "kids-002": {
       "front": "assets/images/products/kids-002-purple-set.jpeg",
-      "back": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
       "packshot": "assets/images/products/kids-002-purple-set.jpeg"
     },
     "lh-002": {
@@ -128,7 +125,7 @@
       "back_packshot": "assets/images/products/love-hurts-joggers-back-model.webp"
     },
     "lh-003": {
-      "front": "assets/images/products/hub/lh-003-front.webp",
+      "front": "assets/images/products/lh-003-shorts.jpeg",
       "back": "assets/images/products/lh-003-real-back.jpg",
       "packshot": "assets/images/products/lh-003-shorts.jpeg",
       "back_packshot": "assets/images/products/lh-003-real-back.jpg"
@@ -138,59 +135,55 @@
       "packshot": "assets/images/products/lh-004-bomber.png"
     },
     "lh-005": {
-      "front": "assets/images/products/lh-005-onmodel.webp",
+      "front": "assets/images/products/lh-005-fannie.jpeg",
       "packshot": "assets/images/products/lh-005-fannie.jpeg"
     },
     "lh-006": {
-      "front": "assets/images/products/lh-006-onmodel.webp",
+      "front": "assets/images/products/lh-006-joggers-white.jpeg",
       "back": "assets/images/products/love-hurts-joggers-white-back-model.webp",
       "packshot": "assets/images/products/lh-006-joggers-white.jpeg",
       "back_packshot": "assets/images/products/love-hurts-joggers-white-back-model.webp"
     },
     "sg-001": {
-      "front": "assets/images/products/sg-001-bay-bridge-shorts.webp",
-      "back": "assets/images/products/bridge-bay-bridge-shorts-back-model.webp",
+      "front": "assets/images/products/sg-001-bay-bridge-shorts.jpeg",
+      "back": "assets/images/products/the-bay-set-back-model.webp",
       "packshot": "assets/images/products/sg-001-bay-bridge-shorts.jpeg",
       "back_packshot": "assets/images/products/the-bay-set-back-model.webp"
     },
     "sg-002": {
-      "front": "assets/images/products/sg-002-stay-golden-shirt.webp",
-      "back": "assets/images/products/stay-golden-tee-back-model.webp",
+      "front": "assets/images/products/sg-002-stay-golden-shirt.jpeg",
       "packshot": "assets/images/products/sg-002-stay-golden-shirt.jpeg"
     },
     "sg-003": {
-      "front": "assets/images/products/hub/sg-003-front.webp",
-      "back": "assets/images/products/bridge-stay-golden-shorts-back-model.webp",
+      "front": "assets/images/products/sg-003-stay-golden-shorts.jpeg",
       "packshot": "assets/images/products/sg-003-stay-golden-shorts.jpeg"
     },
     "sg-005": {
-      "front": "assets/images/products/sg-005-onmodel.webp",
+      "front": "assets/images/products/sg-005-bay-bridge-shirt.jpeg",
       "packshot": "assets/images/products/sg-005-bay-bridge-shirt.jpeg"
     },
     "sg-006": {
-      "front": "assets/images/products/sg-006-onmodel.webp",
+      "front": "assets/images/products/sg-006-mint-lavender-hoodie.png",
       "back": "assets/images/products/mint-lavender-hoodie-back-model.webp",
       "packshot": "assets/images/products/sg-006-mint-lavender-hoodie.png",
       "back_packshot": "assets/images/products/mint-lavender-hoodie-back-model.webp"
     },
     "sg-007": {
-      "front": "assets/images/products/sg-007-signature-beanie.webp",
-      "back": "assets/images/products/signature-beanie-back-model.webp",
+      "front": "assets/images/products/sg-007-signature-beanie.png",
       "packshot": "assets/images/products/sg-007-signature-beanie.png"
     },
     "sg-009": {
       "front": "assets/images/products/sg-009-onmodel.webp",
-      "back": "assets/images/products/signature-sherpa-jacket-back-model.webp",
+      "back": "assets/images/products/the-sherpa-jacket-back-model.webp",
       "packshot": "assets/images/products/sg-009-sherpa-jacket.jpeg",
       "back_packshot": "assets/images/products/the-sherpa-jacket-back-model.webp"
     },
     "sg-011": {
-      "front": "assets/images/products/sg-011-onmodel.webp",
-      "back": "assets/images/products/hub/sg-011-back.webp",
+      "front": "assets/images/products/sg-011-original-label-tee-white.jpeg",
       "packshot": "assets/images/products/sg-011-original-label-tee-white.jpeg"
     },
     "sg-012": {
-      "front": "assets/images/products/sg-012-onmodel.webp",
+      "front": "assets/images/products/sg-012-original-label-tee-orchid.jpeg",
       "packshot": "assets/images/products/sg-012-original-label-tee-orchid.jpeg"
     },
     "sg-013": {
@@ -198,11 +191,11 @@
       "packshot": "assets/images/products/sg-013-mint-lavender-crewneck.jpeg"
     },
     "sg-014": {
-      "front": "assets/images/products/hub/sg-014-front.webp",
+      "front": "assets/images/products/sg-014-mint-lavender-sweatpants.jpeg",
       "packshot": "assets/images/products/sg-014-mint-lavender-sweatpants.jpeg"
     },
     "sg-015": {
-      "front": "assets/images/products/hub/sg-015-front.webp",
+      "front": "assets/images/products/sg-015-windbreaker-set.jpg",
       "packshot": "assets/images/products/sg-015-windbreaker-set.jpg"
     }
   }

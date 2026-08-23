@@ -19,10 +19,10 @@ Authored from canonical product specification. Two-eyes review: Corey confirms e
 > **Founder-confirmed (2026-06-16): there are NO logos at all on the Original Label Tees.** No SR monogram, no chest mark, no sleeve badge, no print, no embroidery. The garment is a BLANK white tee whose only branding is the interior woven neck label (the "original label" the product is named for). A prior dossier revision invented a front-left-chest SR monogram — that mark does NOT exist on the product and must never be rendered.
 
 ### Front
-- **front-body**: Completely blank white fabric. No monogram, no graphic, no print, no embroidery. Clean tee front.
+- **front-body** (entire exterior front): Completely blank white fabric. No monogram, no graphic, no print, no embroidery. Clean tee front. **Technique:** stitched. **Color:** white.
 
 ### Sleeves / Collar / Hem / Other
-- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color/Colorway:** white/silver label with woven brand text on white ground.
+- **collar-inside** (back neck, ~1.5in wide × ~0.5in tall): SkyyRose woven brand neck label, interior only — not visible from outside when worn. **Technique:** woven-label. **Color:** white/silver label with woven brand text on white ground.
 - **sleeves**: Plain short sleeves — no badge, no patch, no print.
 
 ## Negative — what is NOT on this product (DO NOT render)

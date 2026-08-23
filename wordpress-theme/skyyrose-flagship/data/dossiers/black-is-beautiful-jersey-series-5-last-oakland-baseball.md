@@ -30,18 +30,23 @@ This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giant
 > - Physical back flatlay:          `assets/products/source-photos/black-rose/br-012-last-oakland-baseball-back.jpeg`
 
 ### Front
-- **front-chest** (large, arched, approximately **72% of the visible torso
-  width**, matching the physical flatlay): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large and arched; the horizontal wordmark length spans
+  approximately **80% of the visible torso width**, matching the founder
+  direction): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering with a **gold satin-stitch edge**
   surrounding the letter faces. The contrast satin-stitch edge is integral
   to this colorway's look (vs. the Classic black which has no contrast edge).
-  - **Letter faces — WHITE twill**, EXCEPT…
-  - **The "A" in "BLACK" — BLACK twill** (the only black letter face, a
-    deliberate stylistic accent that calls back to the Oakland Athletics'
-    team-A identity).
-  - **Satin-stitch edge — gold** around every letter (including the black A).
-  - **Technique:** tackle-twill. **Color:** white twill faces (with one black
-    "A") + gold satin-stitch edge.
+  Letter faces are WHITE twill except the "A" in "BLACK," which is BLACK
+  twill as the deliberate Oakland accent. A gold satin-stitch edge surrounds
+  every letter, including the black A. **Technique:** tackle-twill.
+  **Color:** white twill faces (with one black A) + gold satin-stitch edge.
+  **Generation scale lock:** In every front-facing ghost-mannequin, flatlay,
+  and on-model image, measure between the visible left and right torso side
+  seams at the wordmark baseline. The outermost letter edges sit approximately
+  10% in from each side, yielding approximately 80% visible torso width. Center
+  the single readable arch on the button placket; the placket may divide the
+  artwork naturally but must not remove, compress, or rearrange any letter,
+  especially the colorway-defining black "A" in "BLACK."
 - **front-left-hem / front-belly-lower-left** (**3in wide × 4in tall**): The Black Rose
   MLB Authentic Collection patch (yellow field, navy "BLACK ROSE / COLLECTION",
   MLB-style batter silhouette, white "AUTHENTIC" banner, red diamond divider,
@@ -99,11 +104,16 @@ This is the OAKLAND colorway (separate SKU from the Classic black br-003 / Giant
 - NO pinstripes, NO embossed/debossed, NO sublimated panels, NO heat-transfer
   vinyl, NO printed graphics on the body.
 - NO chest-pocket or breast-pocket.
+- NO undersized, oversized, cropped, compressed, reflowed, or incomplete chest
+  wordmark. It must remain one centered readable arch at approximately 80% of
+  the visible torso width, with approximately 10% clear torso margin on each
+  side. NO letters may wrap onto a sleeve or cross a side seam.
 
 ## Scene direction
 
 - **Pose:** Front view straight-on or three-quarter front-left to display
-  the gold-edged tackle-twill wordmark with the black "A" accent; back view
-  straight-on for the embroidered logos.
+  the gold-edged tackle-twill wordmark with the black "A" accent. The complete
+  torso and both side seams must remain visible so the locked 80% wordmark
+  scale can be verified; back view straight-on for the embroidered logos.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting
   from front-left, subtle natural drop shadow.

@@ -3,8 +3,6 @@ sku: br-001
 name: BLACK Rose Crewneck
 collection: black-rose
 logo_reference: data/brand-logos/three-rose-cluster.md
-extra_logos:
-  - data/brand-logos/sr-monogram.md
 ---
 
 # BLACK Rose Crewneck
@@ -15,7 +13,6 @@ extra_logos:
 
 > Logo art canonical references:
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
-> - SR monogram (gold lettermark): `data/brand-logos/sr-monogram.md`
 
 ### Front
 - **front-chest** (~10in tall × proportional width): The Black Rose logo,
@@ -62,10 +59,13 @@ extra_logos:
 
 ### Back
 - **back-neck** (small, ~2in wide, top-center just below the white-ribbed
-  collar): The SR monogram (gold metallic art — see sr-monogram reference).
-  Embroidered directly onto the jersey in gold-tone thread. **Technique:**
-  embroidered. **Color:** gold-tone thread (preserves the gold-to-copper
-  gradient from the canonical mark).
+  collar): A small version of the same Black Rose three-rose-cluster shown on
+  the authoritative front/back techflat. The three roses, leaves, thorny vines,
+  and single cloud pedestal remain recognizable at the reduced scale.
+  **Technique:** embroidered. **Color:** reduced BLACK / WHITE / GREY palette;
+  no green, blue, gold, or copper.
+- **back-center**: Plain black body fabric below the small back-neck cluster.
+  No additional artwork or lettering.
 
 ### Sleeves / Collar / Hem / Other
 - **collar-outside / neckband**: White ribbed-knit neckband contrasting against
@@ -98,16 +98,16 @@ extra_logos:
 - NO embroidered Black Rose logo on the front chest (the front is embossed,
   NOT embroidered — embroidery would have visible thread texture).
 - NO embroidered patches on the lower right front (this is NOT a baseball jersey).
-- NO SR monogram on the front chest. NO SR monogram on the sleeves. NO SR
-  monogram at the back-center. The SR monogram is at the back-neck only.
-- NO embroidered roses on mid back (the back-CENTER is empty; the SR monogram
-  sits at the back-neck only).
+- NO SR monogram anywhere on this product — not on the front, sleeves,
+  back-neck, or back-center.
+- NO large rose artwork on the back. The back-CENTER is empty; only the small
+  Black Rose three-rose-cluster sits at the back-neck.
 - NO baseball player graphics anywhere.
 - NO sleeve patches, sleeve embroidery, sleeve printing — sleeves are clean.
 - NO hem or side-seam decoration on the body fabric — the hem is plain ribbed
   knit (white), no logo, no text, no piping.
 - NO chest text other than the embossed rose logo.
-- NO contrasting-color logos on the body fabric beyond the back-neck SR monogram.
+- NO gold or copper logo on the back-neck.
 - NO silicone appliqué.
 - NO heat-transfer vinyl.
 - NO sublimated panels.
@@ -118,6 +118,7 @@ extra_logos:
 - **Pose:** Standing facing forward, three-quarter angle, hands relaxed at sides
   or one hand in pocket of joggers. Chest area clearly lit from the front-left
   to reveal the embossed logo's raised texture; back-neck framed in back/back-
-  three-quarter renders to show the gold SR monogram.
+  three-quarter renders to show the small BLACK / WHITE / GREY Black Rose
+  cluster directly below the white collar.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting,
   subtle natural drop shadow on the floor.

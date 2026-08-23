@@ -9,7 +9,7 @@ extra_references:
 
 # The Bridge Series 'Stay Golden' Shorts
 
-**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. "Stay Golden" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU).
+**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Golden Gate Bridge at night**. The photo print shows the iconic Golden Gate Bridge illuminated against a deep purple-violet/navy night sky, with golden city-light reflections rippling vertically across the dark water at the lower portion. Standard basketball-shorts construction: **purple elasticated waistband matching the physical founder flatlay** with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. "Stay Golden" refers to the **Golden Gate Bridge lit gold against the night sky** (this is the NIGHT variant — carries a purple rose; the daytime Bay Bridge variant sg-001 carries a blue rose). NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT the Bay Bridge Shorts (that's sg-001 — daytime SF-Oakland Bay Bridge, separate SKU).
 
 ## Branding — exactly what IS on this product
 
@@ -25,7 +25,7 @@ extra_references:
 - **back-body** (entire field, continuation of front): Same Golden Gate sunset photographic print continuing seamlessly from the front around to the back. **Technique:** sublimated. **Color:** photographic full-color sunset, continuous wrap.
 
 ### Sleeves / Collar / Hem / Other
-- **waistband** (~1.5in tall, top of shorts): Black elasticated waistband at the top (matching sg-001 construction). **Technique:** stitched. **Color:** black.
+- **waistband** (~1.5in tall, top of shorts): Purple elasticated waistband at the top, matching the physical founder flatlay rather than older black-waistband mockups. **Technique:** stitched. **Color:** deep purple.
 - **drawstring** (~24in long, threaded through waistband): White flat drawstring threaded through the waistband, hanging from the front center. **Technique:** stitched. **Color:** white.
 - **left-pocket** (front-side hand pocket on wearer's left): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching.
 - **right-pocket** (front-side hand pocket on wearer's right): Vertical slash hand pocket with welt opening. **Technique:** stitched. **Color:** body-matching.
@@ -44,7 +44,7 @@ extra_references:
 - NO black mesh body — body is WHITE mesh with the sublimated sunset print on top.
 - NO contrast color side-panels.
 - NO black drawstring — drawstring is WHITE.
-- NO white waistband — waistband is BLACK.
+- NO black or white waistband — waistband is PURPLE.
 - NO zipper closures on the pockets.
 - NO additional back pockets.
 - NO embossed/debossed decoration.
@@ -54,5 +54,5 @@ extra_references:
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the full sunset Golden Gate sublimated print, the black waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the sunset gradient and the orange-red bridge silhouette wrapping side-to-side. For the back: back view straight-on showing the continuous sunset bridge print.
+- **Pose:** Front view straight-on showing the full night Golden Gate sublimated print, the purple waistband, white drawstring, and clean leg hem. Three-quarter view shows the side wrap of the night gradient and the illuminated bridge wrapping side-to-side. For the back: back view straight-on showing the continuous night bridge print.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

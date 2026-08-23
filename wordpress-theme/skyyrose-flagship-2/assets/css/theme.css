@@ -179,15 +179,26 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 /* Collection pages */
 .sr2-collection-hero { position: relative; display: grid; min-height: 100dvh; isolation: isolate; overflow: hidden; }
 .sr2-collection-hero__media, .sr2-collection-hero__veil { position: absolute; inset: 0; z-index: -2; }
-.sr2-collection-hero__media picture { display: block; width: 100%; height: 100%; }
+.sr2-collection-hero__media picture { display: block; width: 100%; height: 100%; transform: scale(1.008); transform-origin: var(--sr2-hero-origin, 50% 50%); animation: sr2-hero-breathe 14s cubic-bezier(.25, 1, .5, 1) infinite alternate; animation-play-state: paused; will-change: transform; }
+.sr2-collection-hero.is-scene-running .sr2-collection-hero__media picture { animation-play-state: running; }
 .sr2-collection-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.sr2-collection-hero__motion { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 800ms cubic-bezier(.25, 1, .5, 1); }
+.sr2-collection-hero.has-motion-plate .sr2-collection-hero__motion { opacity: 1; }
 .sr2-collection-hero__veil { z-index: -1; background: linear-gradient(0deg, rgba(5,5,6,.45), transparent 22%); }
+.sr2-collection-hero__motion-toggle { position: absolute; right: clamp(1rem, 2.5vw, 2.5rem); bottom: clamp(1rem, 2.5vw, 2.5rem); z-index: 3; min-height: 44px; padding: .7rem .9rem; border: 1px solid rgba(245, 241, 232, .42); background: rgba(4, 5, 6, .62); color: var(--sr2-ink); font-family: var(--sr2-font-ui); font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; backdrop-filter: blur(.7rem); cursor: pointer; transition: border-color 220ms cubic-bezier(.25, 1, .5, 1), background 220ms cubic-bezier(.25, 1, .5, 1), transform 120ms cubic-bezier(.25, 1, .5, 1); }
+.sr2-collection-hero__motion-toggle:hover, .sr2-collection-hero__motion-toggle:focus-visible { border-color: var(--sr2-ink); background: rgba(4, 5, 6, .82); outline: none; }
+.sr2-collection-hero__motion-toggle:active { transform: scale(.97); }
 .sr2-collection-hero__effects { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; contain: paint; }
 .sr2-scene-effect { position: absolute; inset: 0; opacity: 0; animation-play-state: paused; will-change: transform, opacity; }
 /* The scenic effects are intentionally separate from the artwork: they make the
    approved monument scenes breathe without repainting or masking any logo/garment
    proof. JavaScript only switches play-state while the hero is actually visible. */
 .sr2-collection-hero__effects[data-scene-state="running"] .sr2-scene-effect { animation-play-state: running; }
+.sr2-scene-effect--hook { mix-blend-mode: screen; opacity: 0; animation: sr2-hero-hook 8s cubic-bezier(.22, 1, .36, 1) infinite; }
+[data-collection="signature"] .sr2-scene-effect--hook { background: linear-gradient(105deg, transparent 16%, rgba(236, 190, 119, .04) 36%, rgba(255, 224, 164, .82) 49%, rgba(236, 190, 119, .04) 61%, transparent 82%); filter: blur(.35rem); mask-image: linear-gradient(transparent 38%, #000 55% 86%, transparent 98%); }
+[data-collection="black-rose"] .sr2-scene-effect--hook { background: radial-gradient(circle at 91% 14%, rgba(239, 244, 246, .7), transparent 7%), linear-gradient(111deg, transparent 48%, rgba(229, 237, 240, .76) 58%, transparent 67%); filter: blur(.25rem); mask-image: linear-gradient(#000 0 67%, transparent 89%); }
+[data-collection="love-hurts"] .sr2-scene-effect--hook { background: radial-gradient(ellipse at 50% 49%, rgba(255, 101, 71, .72), transparent 17%), linear-gradient(90deg, transparent 8%, rgba(191, 8, 25, .62) 49%, transparent 91%); filter: blur(.45rem); mask-image: linear-gradient(#000 0 74%, transparent 96%); }
+[data-collection="kids-capsule"] .sr2-scene-effect--hook { background: radial-gradient(circle at 51% 15%, rgba(255, 218, 144, .88), transparent 9%), linear-gradient(105deg, transparent 27%, rgba(255, 213, 132, .08) 43%, rgba(255, 229, 177, .72) 51%, rgba(255, 213, 132, .08) 60%, transparent 75%); filter: blur(.3rem); mask-image: radial-gradient(ellipse at 51% 49%, #000 0 31%, transparent 61%); }
 .sr2-scene-effect--clouds { background: radial-gradient(ellipse at 30% 28%, rgba(186, 193, 205, .18), transparent 34%), radial-gradient(ellipse at 72% 18%, rgba(103, 113, 131, .26), transparent 38%); filter: blur(1.5rem); mix-blend-mode: screen; opacity: .24; transform: scale(1.14); animation: sr2-cloud-roll 24s linear infinite; }
 .sr2-scene-effect--bridge-lights { background: radial-gradient(circle at 29% 64%, rgba(222, 211, 179, .96) 0 .16rem, transparent .38rem), radial-gradient(circle at 35% 61%, rgba(222, 211, 179, .82) 0 .14rem, transparent .34rem), radial-gradient(circle at 43% 58%, rgba(222, 211, 179, .9) 0 .14rem, transparent .34rem), radial-gradient(circle at 53% 56%, rgba(222, 211, 179, .84) 0 .14rem, transparent .34rem), radial-gradient(circle at 63% 56%, rgba(222, 211, 179, .92) 0 .14rem, transparent .36rem), radial-gradient(circle at 73% 58%, rgba(222, 211, 179, .72) 0 .13rem, transparent .32rem); background-size: 18% 18%; background-position: 0 0, 8% 4%, 18% 1%, 32% 0, 49% 3%, 66% 0; background-repeat: no-repeat; mix-blend-mode: screen; animation: sr2-bridge-flicker 3.8s steps(5, end) infinite; }
 .sr2-scene-effect--signature-glow { background: radial-gradient(ellipse at 74% 73%, color-mix(in srgb, var(--sr2-gold) 30%, transparent), transparent 31%), radial-gradient(circle at 71% 58%, color-mix(in srgb, var(--sr2-gold) 60%, transparent), transparent 20%); mix-blend-mode: screen; animation: sr2-signature-glow 5.5s ease-in-out infinite; }
@@ -212,6 +223,8 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 @keyframes sr2-signature-glow { 0%, 100% { opacity: .12; transform: scale(.94); } 50% { opacity: .48; transform: scale(1.08); } }
 @keyframes sr2-throne-glow { 0%, 100% { opacity: .12; transform: scale(.96); } 50% { opacity: .5; transform: scale(1.07); } }
 @keyframes sr2-petal-fall { 0% { opacity: 0; transform: translate3d(0, -8vh, 0) rotate(0deg); } 12% { opacity: .86; } 84% { opacity: .56; } 100% { opacity: 0; transform: translate3d(var(--petal-drift), 112vh, 0) rotate(520deg); } }
+@keyframes sr2-hero-hook { 0% { opacity: 0; transform: translate3d(-14%, 0, 0) scale(1.02); } 5% { opacity: .28; } 11% { opacity: .92; } 18% { opacity: 0; transform: translate3d(14%, 0, 0) scale(1.02); } 100% { opacity: 0; transform: translate3d(14%, 0, 0) scale(1.02); } }
+@keyframes sr2-hero-breathe { from { transform: translate3d(-.22%, 0, 0) scale(1.008); } to { transform: translate3d(.22%, -.12%, 0) scale(1.018); } }
 .sr2-motion-reduced .sr2-collection-hero__effects { display: none; }
 @media (max-width: 640px), (hover: none), (pointer: coarse) {
 	.sr2-scene-effect--clouds { filter: blur(1rem); opacity: .17; }
@@ -219,6 +232,7 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 	.sr2-scene-effect--petals i:nth-child(2n) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
+	.sr2-collection-hero__motion { display: none; }
 	.sr2-collection-hero__effects { display: none; }
 }
 .sr2-collection-identity { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 8vw, 10rem); align-items: end; padding: clamp(3rem, 7vw, 7rem) var(--sr2-page-pad); border-bottom: 1px solid var(--sr2-line); background: radial-gradient(circle at 75% 20%, color-mix(in srgb, var(--sr2-accent) 9%, transparent), transparent 45%), var(--sr2-void); }
@@ -238,14 +252,18 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
    crop and restrained semantic-copy position without re-layering its lockup or
    graphic artifact over the already-composed monument photography. */
 [data-collection="signature"] .sr2-collection-identity__copy { border-inline-start: 1px solid color-mix(in srgb, var(--sr2-gold) 78%, transparent); padding-inline-start: clamp(1rem, 2vw, 1.5rem); }
+[data-collection="signature"] .sr2-collection-hero { --sr2-hero-origin: 50% 58%; }
 [data-collection="signature"] .sr2-collection-identity__line { max-width: 38ch; }
 [data-collection="signature"] .sr2-collection-identity__chapter { letter-spacing: .25em; }
 [data-collection="black-rose"] .sr2-collection-hero__media img { object-position: center center; }
+[data-collection="black-rose"] .sr2-collection-hero { --sr2-hero-origin: 58% 48%; }
 [data-collection="black-rose"] .sr2-collection-identity__title { text-transform: uppercase; }
 [data-collection="love-hurts"] .sr2-collection-identity__copy { justify-self: end; text-align: right; }
+[data-collection="love-hurts"] .sr2-collection-hero { --sr2-hero-origin: 50% 54%; }
 [data-collection="love-hurts"] .sr2-collection-identity__title, [data-collection="love-hurts"] .sr2-collection-identity__line { margin-left: auto; }
 [data-collection="love-hurts"] .sr2-collection-identity__chapter { color: var(--sr2-crimson); }
 [data-collection="kids-capsule"] .sr2-collection-identity__chapter { color: var(--sr2-gold); }
+[data-collection="kids-capsule"] .sr2-collection-hero { --sr2-hero-origin: 51% 47%; }
 .sr2-collection-subchapter { margin-top: clamp(4rem, 9vw, 9rem); padding: clamp(2rem, 5vw, 5rem) 0 0; border-top: 1px solid var(--sr2-line); }
 .sr2-collection-subchapter > h2 { max-width: 12ch; margin: .2em 0 .35em; color: var(--sr2-ink); font-family: var(--sr2-font-display); font-size: clamp(2.6rem, 6vw, 6rem); letter-spacing: -.06em; line-height: .86; }
 .sr2-collection-subchapter > p:not(.sr2-eyebrow) { max-width: 52ch; margin: 0 0 clamp(2rem, 4vw, 4rem); color: var(--sr2-muted); }

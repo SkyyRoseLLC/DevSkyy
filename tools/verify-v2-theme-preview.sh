@@ -95,6 +95,24 @@ assert_response 'route=product&sku=br-004' '200' 'woocommerce/single-product.php
 for collection_route in signature black-rose love-hurts kids-capsule; do
 	assert_response "route=${collection_route}" '200' 'template-collection.php'
 done
+
+love_hurts_response="$(mktemp -t sr2-love-hurts-response.XXXXXX)"
+curl --silent --show-error --fail "$base_url?route=love-hurts" >"$love_hurts_response"
+for product_name in \
+	'Love Hurts Joggers (Black)' \
+	'Love Hurts Basketball Shorts' \
+	'Love Hurts Bomber Jacket' \
+	'The Fannie' \
+	'Love Hurts Joggers (White)'; do
+	rg -Fq "$product_name" "$love_hurts_response"
+done
+if [[ "$(rg -o 'data-card-direction="ornate-frame"' "$love_hurts_response" | wc -l | tr -d ' ')" != '5' ]]; then
+	echo 'Love Hurts preview must render exactly five canonical product cards' >&2
+	rm -f "$love_hurts_response"
+	exit 1
+fi
+rm -f "$love_hurts_response"
+
 for immersive_route in immersive-signature immersive-black-rose immersive-love-hurts immersive-kids-capsule; do
 	assert_response "route=${immersive_route}" '200' "template-${immersive_route}.php"
 done

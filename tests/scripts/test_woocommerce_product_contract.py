@@ -85,6 +85,24 @@ def test_preorder_meta_uses_theme_keys_and_preserves_available_count() -> None:
     assert "_skyyrose_preorder" not in meta
 
 
+def test_jersey_series_meta_is_projected_without_name_or_sku_inference() -> None:
+    jersey = _by_sku()["br-009"]
+    jersey_meta = {
+        item["key"]: item["value"] for item in jersey["product"]["meta_data"]
+    }
+    assert jersey_meta["_skyyrose_series_slug"] == "jersey-series"
+    assert jersey_meta["_skyyrose_series_region"] == "oakland"
+    assert jersey_meta["_skyyrose_series_order"] == 30
+
+    non_series = _by_sku()["br-006"]
+    non_series_meta = {
+        item["key"]: item["value"] for item in non_series["product"]["meta_data"]
+    }
+    assert non_series_meta["_skyyrose_series_slug"] == ""
+    assert non_series_meta["_skyyrose_series_region"] == ""
+    assert non_series_meta["_skyyrose_series_order"] == 0
+
+
 def test_contract_file_is_current() -> None:
     assert contract_builder.OUTPUT_PATH.read_text(encoding="utf-8") == (
         contract_builder.serialize_contract()

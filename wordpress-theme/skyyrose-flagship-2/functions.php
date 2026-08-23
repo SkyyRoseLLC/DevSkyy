@@ -550,6 +550,71 @@ function skyyrose2_collections() {
 }
 
 /**
+ * Return only founder-approved, hash-verified motion for a collection hero.
+ *
+ * @param string $slug Collection slug.
+ * @param string $responsive_hero Configured responsive hero path.
+ * @return array<string,string>
+ */
+function skyyrose2_collection_hero_motion( $slug, $responsive_hero ) {
+	static $manifest = null;
+	if ( null === $manifest ) {
+		$path     = SKYYROSE2_DIR . '/data/collection-hero-motion.json';
+		$decoded  = is_readable( $path ) ? json_decode( file_get_contents( $path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$manifest = is_array( $decoded ) && 'skyyrose.v2.collection-hero-motion.v1' === ( $decoded['schema'] ?? '' ) ? $decoded : array();
+	}
+
+	$slug       = sanitize_title( $slug );
+	$collection = isset( $manifest['collections'][ $slug ] ) && is_array( $manifest['collections'][ $slug ] ) ? $manifest['collections'][ $slug ] : array();
+	$source     = isset( $collection['source'] ) && is_array( $collection['source'] ) ? $collection['source'] : array();
+	$ai_motion  = isset( $collection['ai_motion'] ) && is_array( $collection['ai_motion'] ) ? $collection['ai_motion'] : array();
+	$expected_source = preg_replace( '#^images/hero/responsive/(.+)-1440w\.webp$#', 'assets/sot/images/hero/$1.webp', (string) $responsive_hero );
+	$source_file     = isset( $source['file'] ) ? (string) $source['file'] : '';
+	$source_hash     = isset( $source['sha256'] ) ? (string) $source['sha256'] : '';
+	$source_path     = $source_file ? SKYYROSE2_DIR . '/' . $source_file : '';
+	$actual_source_hash = $source_path && is_file( $source_path ) ? hash_file( 'sha256', $source_path ) : '';
+	if (
+		'founder_approved' !== ( $ai_motion['status'] ?? '' ) ||
+		! $expected_source ||
+		! hash_equals( $expected_source, $source_file ) ||
+		! $source_path ||
+		! $source_hash ||
+		! is_string( $actual_source_hash ) ||
+		! hash_equals( $source_hash, $actual_source_hash )
+	) {
+		return array();
+	}
+
+	$max_bytes = isset( $manifest['runtime']['performance']['max_web_asset_bytes'] ) ? absint( $manifest['runtime']['performance']['max_web_asset_bytes'] ) : 0;
+	$web       = isset( $ai_motion['web'] ) && is_array( $ai_motion['web'] ) ? $ai_motion['web'] : array();
+	$approved_root = 'assets/video/collection-heroes/approved/' . $slug . '/';
+	$motion        = array();
+	foreach ( $web as $asset ) {
+		$file = isset( $asset['file'] ) ? ltrim( (string) $asset['file'], '/' ) : '';
+		$hash = isset( $asset['sha256'] ) ? (string) $asset['sha256'] : '';
+		$path = $file ? SKYYROSE2_DIR . '/' . $file : '';
+		$extension = strtolower( pathinfo( $file, PATHINFO_EXTENSION ) );
+		$actual_hash = $path && is_file( $path ) ? hash_file( 'sha256', $path ) : '';
+		if (
+			! in_array( $extension, array( 'mp4', 'webm' ), true ) ||
+			0 !== strpos( $file, $approved_root ) ||
+			false !== strpos( $file, '..' ) ||
+			! $path ||
+			! $hash ||
+			! is_string( $actual_hash ) ||
+			! hash_equals( $hash, $actual_hash ) ||
+			! $max_bytes ||
+			filesize( $path ) > $max_bytes
+		) {
+			return array();
+		}
+		$motion[ $extension ] = SKYYROSE2_URI . '/' . $file;
+	}
+
+	return isset( $motion['mp4'], $motion['webm'] ) && 2 === count( $motion ) ? $motion : array();
+}
+
+/**
  * Return the canonical press corpus used by About and Journal fallbacks.
  *
  * These are source records, not invented editorial posts. A live WordPress
@@ -1036,6 +1101,10 @@ function skyyrose2_product_card_media_manifest() {
 
 	$decoded  = json_decode( file_get_contents( $path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$manifest = is_array( $decoded ) ? $decoded : array();
+	$registry = skyyrose2_presentation_registry();
+	if ( ! skyyrose2_validate_product_card_media_contract( $manifest, $registry ) ) {
+		$manifest = array();
+	}
 	return $manifest;
 }
 
@@ -1176,8 +1245,8 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 		if ( $product ) {
 			$pieces[] = array(
 				'sku'     => $sku,
-				'chapter' => __( $chapter_data['jersey_chapter'] ?? 'Jersey Series', 'skyyrose-flagship-2' ),
-				'start'   => (float) ( $chapter_data['film_start'] ?? 0 ),
+				'chapter' => $product->get_name(),
+				'order'   => absint( $chapter_data['series_order'] ?? 0 ),
 				'product' => $product,
 			);
 		}
@@ -1190,7 +1259,7 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 	usort(
 		$pieces,
 		static function ( $first, $second ) {
-			return $first['start'] <=> $second['start'];
+			return $first['order'] <=> $second['order'];
 		}
 	);
 	?>
@@ -1214,8 +1283,8 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 				</div>
 				</div>
 				<nav class="sr2-house-film__chapters" aria-label="<?php esc_attr_e( 'Jersey Series film chapters', 'skyyrose-flagship-2' ); ?>">
-					<?php foreach ( $pieces as $piece ) : ?>
-						<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) $piece['start'] ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
+					<?php foreach ( $pieces as $piece_index => $piece ) : ?>
+						<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) ( $piece_index * 2.6 ) ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
 					<?php endforeach; ?>
 				</nav>
 			</div>

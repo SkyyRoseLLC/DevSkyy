@@ -20,16 +20,16 @@ extra_references:
 > - Real product photo:            `assets/products/references/kids-001-real-photo.jpeg`
 
 ### Hoodie — Front
-- **front-body color-block** (entire front body): Angular geometric color-block construction — the body is divided into three colorway panels by diagonal seams. **Upper-left panel** (from top-left descending diagonally toward center): solid **black**. **Upper-right panel** (from top-right descending diagonally toward center): solid **white**. **Lower body** (from the diagonal meeting points down to the hem, including the kangaroo pocket area): solid **red**. The diagonals create an angular chevron pointing down toward the kangaroo pocket. **Technique:** stitched. **Color:** black + white + red.
-- **front-chest cluster** (ONLY mark on the hoodie front body; small, ~2in tall, on the CHEST — see the real product photo for exact position): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body (above the kangaroo pocket) — the front body carries this single chest cluster and nothing else.
+- **front-body color-block** (entire front body): Angular geometric color-block construction matching the techflat: a **black upper yoke** runs across the wearer's right shoulder and upper chest; a **white diagonal panel** fills the wearer's left chest and continues into the left sleeve; the **red lower body** fills the torso below the diagonal seam. A narrow red triangular section rises toward center chest where the black and white panels meet. **Technique:** stitched color-block. **Color:** black + white + red.
+- **front-left-chest cluster** (wearer's left / viewer's right, small, ~2in tall): The Black Rose three-rose-cluster, rendered in greyscale (NOT canonical multi-color). **Technique:** embroidered. **Color:** white + black + grey thread. NOTE: there is NO patch on the chest and NO logo on the stomach / lower body — the front carries this single chest cluster and nothing else.
 
 ### Hoodie — Back
-- **back-body color-block**: Mirrors the front color-block construction — the back has the same angular black/white upper panels and red lower body, with the diagonals continuing from the front around to the back. **Technique:** stitched. **Color:** black + white + red.
+- **back-body color-block**: Continues the exact techflat panel geometry: black upper-back yoke, red lower body, and one white diagonal wedge between them. The back is not a generic mirrored redraw; preserve the specific seam angles shown in the techflat. **Technique:** stitched color-block. **Color:** black + white + red.
 
 ### Hoodie — Sleeves / Hood / Hem / Other
-- **left-sleeve**: Solid **black** to match the front-upper-left panel. **Technique:** stitched. **Color:** black.
-- **right-sleeve**: Solid **white** to match the front-upper-right panel. **Technique:** stitched. **Color:** white.
-- **sleeve patch** (ONE only, ~2in diameter, on the upper sleeve / shoulder — see the real product photo for which sleeve): A small circular rose-cluster patch — Black Rose three-rose-cluster art rendered in greyscale on a circular patch backing with a contrast border ring. **Technique:** embroidered-patch. Only ONE sleeve carries a patch; the other sleeve is plain.
+- **right-sleeve** (wearer's right / viewer's left in the front view): Solid **black** and carries the one circular shoulder patch. **Technique:** stitched. **Color:** black.
+- **left-sleeve** (wearer's left / viewer's right in the front view): Solid **white** with no patch. **Technique:** stitched. **Color:** white.
+- **right-sleeve patch** (ONE only, ~2in diameter, on the upper right sleeve / shoulder): Circular embroidered patch with a white ground, black border and lettering, and black rose in the center; **“Skyy Rose”** arcs across the top and **“Collection”** arcs across the bottom. **Technique:** embroidered-patch. The left sleeve is plain.
 - **hood**: Solid **red** (full hood, matching the red lower body). **Technique:** stitched. **Color:** red.
 - **hood-drawstring**: White flat drawstring threaded through the hood. **Technique:** stitched. **Color:** white.
 - **kangaroo-pocket**: Red front kangaroo pocket integrated into the lower-body red panel. No decoration on the pocket fabric.
@@ -39,12 +39,12 @@ extra_references:
 
 ### Sweatpants — Front
 - **pants-body**: Solid **black** sweatpants. **Technique:** stitched. **Color:** black.
-- **pants cluster** (ONE only, small, ~2in tall, on the pants — see the real product photo for exact position): A small Black Rose three-rose-cluster (greyscale). **Technique:** embroidered. **Color:** white + black + grey thread on black. Only ONE cluster on the pants.
+- **pants-left-thigh cluster** (wearer's left / viewer's right, small, ~2in tall): A small Black Rose three-rose-cluster in greyscale. **Technique:** embroidered. **Color:** white + black + grey thread on black. Only ONE cluster on the pants.
 
 ### Sweatpants — Other
 - **waistband-drawstring**: White flat drawstring at the waistband. **Technique:** stitched. **Color:** white.
 - **left-pocket / right-pocket**: Slash-style hand pockets at both sides. **Technique:** stitched.
-- **pants-cuffs**: Ribbed-knit ankle cuffs (or straight-leg open hem). **Technique:** stitched. **Color:** black.
+- **pants-cuffs**: Ribbed-knit ankle cuffs matching the founder flatlay. **Technique:** stitched. **Color:** black.
 - **pants-inside / waistband-tag**: Branded woven size tag. **Technique:** woven-label.
 
 ## Negative — what is NOT on this product (DO NOT render)
@@ -52,7 +52,7 @@ extra_references:
 - NO zip-up front (the hoodie is a pullover with a kangaroo pocket).
 - NO solid red body — the body is angular color-block with black/white upper panels and a red lower body, NOT a solid red field.
 - NO horizontal stripe blocking — the color-block panels are DIAGONAL, creating angular chevrons.
-- NO matching sleeves — the LEFT sleeve is black, the RIGHT sleeve is white (mirror continuation from the body panels).
+- NO matching sleeves — the RIGHT sleeve is black with the circular patch; the LEFT sleeve is white and plain.
 - NO colored drawstrings — drawstrings are WHITE on the hoodie + WHITE on the pants.
 - NO decoration on the back-body — the back is a clean color-block panel with no logo placement.
 - NO logos on the kangaroo pocket fabric — the pocket is clean red.

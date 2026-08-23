@@ -20,8 +20,9 @@ extra_references:
 > - Secondary silhouette reference: `assets/products/references/br-004-hoodie-real-front.jpeg`
 
 ### Front
-- **front-chest** (small, ~2.5–3.5in tall, centered just above the kangaroo
-  pocket; match the physical flatlay rather than enlarging it):
+- **wearer's-left chest / viewer-right chest** (small, ~2.5–3.5in tall,
+  above the kangaroo pocket; match the physical flatlay rather than centering
+  or enlarging it):
   The Black Rose logo embroidered onto the hoodie. **Technique:**
   embroidered. **Color:** as rendered in the canonical logo + reference
   image (do NOT over-specify thread colorway in this dossier — the RAS
@@ -80,7 +81,7 @@ extra_references:
 ## Scene direction
 
 - **Pose:** Front view straight-on or three-quarter front-left, showing
-  the embroidered front-chest rose and the kangaroo pocket. Hood relaxed
+  the embroidered wearer's-left-chest rose and the kangaroo pocket. Hood relaxed
   back / lying flat against the upper back.
 - **Setting:** Pure white studio backdrop, soft directional studio
   lighting from front-left, subtle natural drop shadow on the floor.

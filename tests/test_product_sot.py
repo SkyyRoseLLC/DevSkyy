@@ -40,6 +40,50 @@ def test_all_jersey_patches_are_exactly_three_by_four_inches() -> None:
         assert all(item.get("height_inches") == 4 for item in patches), sku
 
 
+def test_jersey_series_membership_and_order_are_explicit() -> None:
+    products = product_sot.build_manifest()["products"]
+    jerseys = {
+        sku: product["merchandising"]
+        for sku, product in products.items()
+        if product["merchandising"]["series_slug"] == "jersey-series"
+    }
+    assert [
+        sku
+        for sku, _record in sorted(
+            jerseys.items(), key=lambda item: item[1]["series_order"]
+        )
+    ] == [
+        "br-003",
+        "br-015",
+        "br-009",
+        "br-012",
+        "br-008",
+        "br-014",
+        "br-010",
+        "br-011",
+    ]
+    assert {record["series_region"] for record in jerseys.values()} == {
+        "oakland",
+        "san-francisco",
+        "san-jose",
+    }
+    assert all(
+        product["merchandising"]
+        == {"series_slug": "", "series_region": "", "series_order": 0}
+        for sku, product in products.items()
+        if sku not in jerseys
+    )
+
+
+def test_br006_founder_footage_is_hash_bound_physical_product_evidence() -> None:
+    references = product_sot.build_manifest()["products"]["br-006"]["references"]
+    footage = [item for item in references if item["kind"] == "physical_product_video"]
+    assert len(footage) == 1
+    assert footage[0]["role"] == "garment_reference_3"
+    assert footage[0]["path"].endswith("black-rose-sherpa-founder-footage-2024.mp4")
+    assert footage[0]["sha256"]
+
+
 def test_checked_in_manifest_is_current() -> None:
     expected = product_sot.serialize_manifest()
     assert product_sot.MANIFEST_PATH.read_text(encoding="utf-8") == expected

@@ -40,7 +40,7 @@ reference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpe
 > authentic product photo.)
 
 ### Front
-- **front-chest** (small, ~3in tall, center-to-left chest): The Black Rose three-rose-cluster art (three roses + thorny vines + cloud at base) in a **blue colorway whose rose petals are filled with a photographic Bay Bridge scene** — the large bloom's petals contain a small hyper-real Bay Bridge image (steel-truss bridge + water + sky), so the blue/cyan rose's interior IS the bridge. Grey/silver thorny vines and stems, and a **BLUE cloud at the base** (light-blue with darker accents, matching the blue rose — NOT grey/charcoal). NOT canonical multi-color. NOT canonical greyscale. **Technique:** sublimated/printed. **Color:** blue rose with photographic-bridge petal fill + blue cloud on white ground.
+- **front-center-chest** (large, ~8–10in tall, centered on the chest): The canonical rose-cluster composition in a **blue colorway whose rose petals contain the matching Bay Bridge image**, exactly as shown in the founder flatlay and techflat. The large bloom carries the steel bridge, water, and sky imagery; thorny vines and stems are grey/silver; the cloud base is blue with darker accents. **Technique:** embroidered. **Color:** blue/cyan, grey/silver, and Bay Bridge image threadwork on white ground.
 
 ### Back
 - **back-neck** (small, ~1.5in wide, top-center just below the collar): The SR monogram embroidered onto the jersey in **dark grey / black thread** (NOT canonical gold). **Technique:** embroidered. **Color:** dark grey / black thread on white.
@@ -58,10 +58,10 @@ reference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpe
 - NO canonical multi-color rose-cluster — the cluster is recolored to blue on this SKU.
 - NO canonical greyscale rose-cluster — recolored to blue.
 - NO Bay Bridge / Golden Gate photo print on the body — body is solid white. Bridge photo prints belong to the matching shorts.
-- NO chest text or wordmark on the front body fabric — only the chest rose.
+- NO chest text or wordmark on the front body fabric — only the large centered rose-and-bridge embroidery.
 - NO logo on the back body — only the small back-neck SR monogram.
 - NO Authentic Collection patch.
-- NO Black Rose logo at front-center, front-right, or as a back-center large emblem.
+- NO small left-chest rose — the rose-and-bridge composition is LARGE and CENTERED on the front chest.
 - NO Love Hurts branding.
 - NO sublimated all-over body pattern — body is solid white.
 - NO contrast color sleeve cuffs or hem.
@@ -70,5 +70,5 @@ reference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpe
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the small left-chest blue rose-cluster on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.
+- **Pose:** Front view straight-on showing the large centered blue rose-and-Bay-Bridge embroidery on the white tee, the crew neck, and the short sleeves. For the back: back view straight-on showing the small SR monogram at the back-neck.
 - **Setting:** Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.

@@ -3,8 +3,8 @@
 
 This is a build-time adapter. WooCommerce remains responsible for product IDs,
 prices, stock, variations, and visibility; SOT media remains responsible for
-approved product visuals. The only supplemental classification is the explicit
-Jersey Series SKU set, kept here once so it cannot drift across PHP templates.
+approved product visuals. Merchandising-series membership, region, and order
+come only from the canonical product SOT.
 """
 
 from __future__ import annotations
@@ -20,17 +20,8 @@ sys.path.insert(0, str(ROOT))
 from skyyrose.core.product_sot import MANIFEST_PATH, build_manifest, serialize_manifest  # noqa: E402
 
 OUTPUT = Path(__file__).resolve().parents[1] / "data/product-presentation-registry.json"
-JERSEY_CHAPTERS = {
-    "br-003": ("00 / Baseball Classic (Black)", 0),
-    "br-015": ("00 / Baseball Classic (White)", 2.6),
-    "br-009": ("02 / Last Oakland Football", 5.2),
-    "br-012": ("05 / Baseball Classic (Last Oakland)", 7.8),
-    "br-008": ("01 / SF Inspired", 10.4),
-    "br-014": ("00 / Baseball Classic (Giants)", 13.0),
-    "br-010": ("03 / The Bay", 15.6),
-    "br-011": ("04 / The Rose", 18.2),
-}
 ALLOWED_COLLECTIONS = {"black-rose", "kids-capsule", "love-hurts", "signature"}
+ALLOWED_SERIES = {"jersey-series"}
 
 
 def build_registry() -> dict[str, object]:
@@ -40,37 +31,66 @@ def build_registry() -> dict[str, object]:
 
     manifest = build_manifest()
     products: dict[str, dict[str, object]] = {}
+    series_members: dict[str, list[tuple[int, str]]] = {
+        series_slug: [] for series_slug in ALLOWED_SERIES
+    }
+    series_orders: dict[str, set[int]] = {
+        series_slug: set() for series_slug in ALLOWED_SERIES
+    }
     for sku, product in manifest["products"].items():
         collection = product["identity"]["collection"]
         if not sku or sku in products:
             raise ValueError(f"Product SOT contains an empty or duplicate SKU: {sku!r}")
         if collection not in ALLOWED_COLLECTIONS:
             raise ValueError(f"Unknown collection for {sku}: {collection!r}")
-        presentation = "jersey-series" if sku in JERSEY_CHAPTERS else collection
+        merchandising = product.get("merchandising", {})
+        if not isinstance(merchandising, dict):
+            raise ValueError(f"Product SOT merchandising record is invalid for {sku}")
+        series_slug = str(merchandising.get("series_slug", ""))
+        series_region = str(merchandising.get("series_region", ""))
+        series_order = merchandising.get("series_order", 0)
+        if not isinstance(series_order, int) or isinstance(series_order, bool):
+            raise ValueError(f"Series order is invalid for {sku}: {series_order!r}")
+        if series_slug and series_slug not in ALLOWED_SERIES:
+            raise ValueError(f"Unknown merchandising series for {sku}: {series_slug!r}")
+        if series_slug:
+            if not series_region or series_order <= 0:
+                raise ValueError(f"Series metadata is incomplete for {sku}")
+            if series_order in series_orders[series_slug]:
+                raise ValueError(
+                    f"Duplicate {series_slug} series order: {series_order}"
+                )
+            series_orders[series_slug].add(series_order)
+            series_members[series_slug].append((series_order, sku))
+        elif series_region or series_order:
+            raise ValueError(f"Non-series product has series metadata: {sku}")
+
+        presentation = series_slug or collection
         record: dict[str, object] = {
             "collection": collection,
             "presentation": presentation,
-            "route": (
-                "/collections/black-rose/#jersey-series"
-                if presentation == "jersey-series"
-                else f"/collections/{presentation}/"
-            ),
+            "route": f"/{series_slug}/" if series_slug else f"/collections/{collection}/",
             "is_preorder": product["commerce"]["is_preorder"],
             "product_sot_hash": product["product_hash"],
             "media_proof_level": product["verification"]["proof_level"],
         }
-        if sku in JERSEY_CHAPTERS:
-            record["jersey_chapter"], record["film_start"] = JERSEY_CHAPTERS[sku]
+        if series_slug:
+            record["series_region"] = series_region
+            record["series_order"] = series_order
         products[sku] = record
-    missing_jerseys = sorted(set(JERSEY_CHAPTERS) - set(products))
-    if missing_jerseys:
-        raise ValueError(f"Jersey supplement references unknown SKUs: {missing_jerseys}")
+
+    supplements = {
+        f"{series_slug.replace('-', '_')}_skus": [
+            sku for _order, sku in sorted(members)
+        ]
+        for series_slug, members in sorted(series_members.items())
+    }
     return {
         "schema_version": "2.0.0",
         "kind": "skyyrose-v2-product-presentation-registry",
         "generated_from": "data/product-sot.json",
         "product_sot_sha256": hashlib.sha256(expected.encode()).hexdigest(),
-        "supplements": {"jersey_series_skus": sorted(JERSEY_CHAPTERS)},
+        "supplements": supplements,
         "products": dict(sorted(products.items())),
     }
 
