@@ -171,9 +171,18 @@ for collection in signature black-rose love-hurts kids-capsule; do
 		echo "FAIL generic product card: missing $collection card direction" >&2
 		exit 1
 	fi
+	for width in 640w 970w; do
+		statue="$THEME_DIR/assets/sot/images/product-card-portals/$collection-portal-statue-$width.webp"
+		if [[ ! -s "$statue" ]]; then
+			echo "FAIL collection portal statue missing: $collection $width" >&2
+			exit 1
+		fi
+	done
 done
 
 if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'data-portal-frame="<\?php echo esc_attr' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'sr2-c-product-portal__statue' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-card.php" || \

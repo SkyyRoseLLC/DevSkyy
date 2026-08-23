@@ -410,6 +410,12 @@ function skyyrose2_collections() {
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/signature-lockup.webp',
 			'artifact'   => 'images/logos/sr-monogram-rose-gold.webp',
+			'portal_statue' => array(
+				'src'    => 'images/product-card-portals/signature-portal-statue-970w.webp',
+				'small'  => 'images/product-card-portals/signature-portal-statue-640w.webp',
+				'width'  => 970,
+				'height' => 1621,
+			),
 			'atmosphere' => 'images/logos/rose-gold-rose.webp',
 			'lookbook'   => 'images/lookbook/lb-rose-hoodie-beanie-960w.webp',
 			'lookbook_mobile' => 'images/lookbook/lb-rose-hoodie-beanie-480w.webp',
@@ -444,6 +450,12 @@ function skyyrose2_collections() {
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/black-rose-lockup.webp',
 			'artifact'   => 'images/lockups/black-rose-star-graphic.webp',
+			'portal_statue' => array(
+				'src'    => 'images/product-card-portals/black-rose-portal-statue-970w.webp',
+				'small'  => 'images/product-card-portals/black-rose-portal-statue-640w.webp',
+				'width'  => 971,
+				'height' => 1619,
+			),
 			'atmosphere' => 'images/logos/black-roses-cloud-cluster.webp',
 			'lookbook'   => 'images/lookbook/lb-black-rose-football-960w.webp',
 			'lookbook_mobile' => 'images/lookbook/lb-black-rose-football-480w.webp',
@@ -478,6 +490,12 @@ function skyyrose2_collections() {
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/love-hurts-lockup.webp',
 			'artifact'   => 'images/lockups/love-hurts-star-heart-graphic.webp',
+			'portal_statue' => array(
+				'src'    => 'images/product-card-portals/love-hurts-portal-statue-970w.webp',
+				'small'  => 'images/product-card-portals/love-hurts-portal-statue-640w.webp',
+				'width'  => 968,
+				'height' => 1625,
+			),
 			'atmosphere' => 'images/logos/heart-rose-composite.webp',
 			// V1's original 960px editorial frame is the visual baseline V2 must exceed.
 			'lookbook'   => 'images/lookbook/lb-love-hurts-varsity-960w.webp',
@@ -512,6 +530,12 @@ function skyyrose2_collections() {
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/logos/sr-monogram-rose-gold.webp',
 			'artifact'   => 'images/mascot/skyy-canonical-v2.png',
+			'portal_statue' => array(
+				'src'    => 'images/product-card-portals/kids-capsule-portal-statue-970w.webp',
+				'small'  => 'images/product-card-portals/kids-capsule-portal-statue-640w.webp',
+				'width'  => 971,
+				'height' => 1619,
+			),
 			'atmosphere' => 'images/logos/sr-monogram-rose-gold.webp',
 			// Preserve V1's full editorial frame for an honest Kids Capsule baseline.
 			'lookbook'   => 'images/lookbook/lb-kid-black-rose-960w.webp',

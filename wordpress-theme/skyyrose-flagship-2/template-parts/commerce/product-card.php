@@ -58,13 +58,40 @@ $portal_order = array(
 );
 $chapter_number = isset( $portal_order[ $presentation ] ) ? $portal_order[ $presentation ] : $card_index + 1;
 $artifact_uri   = $collection_data && ! empty( $collection_data['artifact'] ) ? skyyrose2_sot_asset_uri( $collection_data['artifact'] ) : '';
+$rose_uri       = skyyrose2_sot_asset_uri( 'images/logos/rose-gold-rose.webp' );
+$portal_statue  = $collection_data && ! empty( $collection_data['portal_statue'] ) && is_array( $collection_data['portal_statue'] ) ? $collection_data['portal_statue'] : array();
+$portal_statue_uri = ! empty( $portal_statue['src'] ) ? skyyrose2_sot_asset_uri( $portal_statue['src'] ) : '';
+$portal_statue_small_uri = ! empty( $portal_statue['small'] ) ? skyyrose2_sot_asset_uri( $portal_statue['small'] ) : '';
+$portal_statue_width = ! empty( $portal_statue['width'] ) ? (int) $portal_statue['width'] : 970;
+$portal_statue_height = ! empty( $portal_statue['height'] ) ? (int) $portal_statue['height'] : 1620;
+$has_portal_statue = (bool) ( $portal_statue_uri && $portal_statue_small_uri );
 $scene_frames   = $collection_data ? skyyrose2_product_card_reel_frames( $collection_data ) : array();
 $scene_uri      = ! empty( $scene_frames[0]['uri'] ) ? $scene_frames[0]['uri'] : '';
 $verified_media  = skyyrose2_product_verified_card_media( $card_product );
 $primary_media   = ! empty( $verified_media[0] ) ? $verified_media[0] : array();
 $primary_image_id = ! empty( $primary_media['id'] ) ? (int) $primary_media['id'] : 0;
 $has_verified_media = (bool) $primary_image_id;
-$reel_count      = count( $verified_media );
+$media_verification_label = __( 'Product imagery is being verified.', 'skyyrose-flagship-2' );
+$media_link_label = sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $product_name );
+if ( ! $has_verified_media ) {
+	$media_link_label .= '. ' . $media_verification_label;
+}
+$reel_media      = array_values(
+	array_filter(
+		$verified_media,
+		static function ( $media ) {
+			return in_array(
+				(string) ( $media['role'] ?? '' ),
+				array( 'on_model_front', 'on_model_back' ),
+				true
+			);
+		}
+	)
+);
+// The portal opens only into an on-model proof pair. Mannequin, packshot, and
+// 3D evidence stays on the PDP; it never replaces the cinematic model card.
+$reel_media      = array_slice( $reel_media, 0, 2 );
+$reel_count      = count( $reel_media );
 $price_html     = $card_product->get_price_html();
 $stock_html     = function_exists( 'wc_get_stock_html' ) ? wc_get_stock_html( $card_product ) : '';
 $stock_state    = $card_product->is_in_stock() ? 'available' : 'unavailable';
@@ -86,6 +113,7 @@ $image_attrs    = array(
 <article
 	class="sr2-c-product-portal sr2-c-product-portal--ornate"
 	data-card-direction="ornate-frame"
+	data-portal-frame="<?php echo esc_attr( $has_portal_statue ? 'statue' : 'constructed' ); ?>"
 	data-product-reel
 	data-presentation="<?php echo esc_attr( $presentation ); ?>"
 	data-collection="<?php echo esc_attr( $collection_slug ?: $presentation ); ?>"
@@ -102,12 +130,35 @@ $image_attrs    = array(
 	<a
 		class="sr2-c-product-portal__media"
 		href="<?php echo esc_url( $product_url ); ?>"
-		aria-label="<?php echo esc_attr( sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>"
+		aria-label="<?php echo esc_attr( $media_link_label ); ?>"
 	>
 		<?php if ( $has_verified_media && $scene_uri ) : ?>
 			<img class="sr2-c-product-portal__scene" src="<?php echo esc_url( $scene_uri ); ?>" alt="" width="1280" height="720" loading="lazy" decoding="async" aria-hidden="true">
 		<?php endif; ?>
 		<span class="sr2-c-product-portal__shade" aria-hidden="true"></span>
+		<?php if ( $has_portal_statue ) : ?>
+			<img
+				class="sr2-c-product-portal__statue"
+				src="<?php echo esc_url( $portal_statue_small_uri ); ?>"
+				srcset="<?php echo esc_attr( $portal_statue_small_uri . ' 640w, ' . $portal_statue_uri . ' ' . $portal_statue_width . 'w' ); ?>"
+				sizes="(max-width: 640px) calc(100vw - 3rem), (max-width: 1024px) 46vw, 25vw"
+				alt=""
+				width="<?php echo esc_attr( (string) $portal_statue_width ); ?>"
+				height="<?php echo esc_attr( (string) $portal_statue_height ); ?>"
+				loading="<?php echo esc_attr( $loading ); ?>"
+				decoding="async"
+				aria-hidden="true"
+			>
+		<?php endif; ?>
+		<span class="sr2-c-product-portal__architecture" aria-hidden="true">
+			<span class="sr2-c-product-portal__pillar sr2-c-product-portal__pillar--left"><i></i><b></b></span>
+			<span class="sr2-c-product-portal__pillar sr2-c-product-portal__pillar--right"><i></i><b></b></span>
+			<span class="sr2-c-product-portal__stone-arch">
+				<span class="sr2-c-product-portal__rose-socket sr2-c-product-portal__rose-socket--left"><img src="<?php echo esc_url( $rose_uri ); ?>" alt="" width="72" height="72" loading="lazy" decoding="async"></span>
+				<span class="sr2-c-product-portal__rose-socket sr2-c-product-portal__rose-socket--keystone"><img src="<?php echo esc_url( $rose_uri ); ?>" alt="" width="96" height="96" loading="lazy" decoding="async"></span>
+				<span class="sr2-c-product-portal__rose-socket sr2-c-product-portal__rose-socket--right"><img src="<?php echo esc_url( $rose_uri ); ?>" alt="" width="72" height="72" loading="lazy" decoding="async"></span>
+			</span>
+		</span>
 		<span class="sr2-c-product-portal__frame" aria-hidden="true">
 			<?php if ( $has_verified_media && $artifact_uri ) : ?>
 				<img class="sr2-c-product-portal__frame-crest" src="<?php echo esc_url( $artifact_uri ); ?>" alt="" width="96" height="96" loading="lazy" decoding="async">
@@ -130,13 +181,13 @@ $image_attrs    = array(
 			<?php echo wp_kses_post( wp_get_attachment_image( $primary_image_id, 'woocommerce_thumbnail', false, $image_attrs ) ); ?>
 		<?php else : ?>
 			<span class="sr2-c-product-portal__media-missing" role="status">
-				<?php esc_html_e( 'Product imagery is being verified.', 'skyyrose-flagship-2' ); ?>
+				<?php echo esc_html( $media_verification_label ); ?>
 			</span>
 		<?php endif; ?>
 		<?php if ( $reel_count > 1 ) : ?>
 			<div class="sr2-c-product-portal__reel" data-reel-count="<?php echo esc_attr( (string) $reel_count ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'More views of %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>">
 				<div class="sr2-c-product-portal__reel-track">
-					<?php foreach ( $verified_media as $view_index => $view_media ) : ?>
+					<?php foreach ( $reel_media as $view_index => $view_media ) : ?>
 						<?php
 						$view_image_id = (int) $view_media['id'];
 						$view_role     = (string) $view_media['role'];
