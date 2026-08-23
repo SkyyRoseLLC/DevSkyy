@@ -902,6 +902,11 @@
           "sha256": "sha256:5cd91f17c0bbd77633be628e76b7d0100c2572f76b2912add5022b9831262f87"
         },
         {
+          "role": "garment",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/original-label-tee-orchid-front.webp",
+          "sha256": "sha256:c2b7b172a6c459652343da31ad96fa9c6598f56e10b763219a84b6c70776f46b"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/original-label-tee-orchid.md",
           "sha256": "sha256:cc5de2341bffaf523116b8f8a78db94dc9c77f61cb38bfef210521313f94ea9a"
