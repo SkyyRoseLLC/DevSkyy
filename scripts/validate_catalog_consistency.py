@@ -19,6 +19,7 @@ Usage:
 
 Available check names (pass comma-separated to --checks):
   csv_readable          CSV file is present and well-formed
+  catalog_replica       frontend deployment CSV is byte-identical to canonical CSV
   registry_readable     logo-registry.json is present and valid JSON
   registry_version      registry version >= 4
   registry_changelog    changelog entries are present and have required fields
@@ -80,6 +81,7 @@ _REPO_ROOT: Path = Path(__file__).resolve().parents[1]
 _CATALOG_CSV: Path = (
     _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
 )
+_FRONTEND_CATALOG_REPLICA: Path = _REPO_ROOT / "frontend" / "data" / "skyyrose-catalog.csv"
 _LOGO_REGISTRY: Path = (
     _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "logo-registry.json"
 )
@@ -325,6 +327,42 @@ def check_csv_readable() -> CheckResult:
     if missing:
         return _fail(name, f"CSV missing expected columns: {sorted(missing)}")
     return _ok(name, f"CSV readable — {len(rows)} rows, all required columns present")
+
+
+def check_catalog_replica() -> CheckResult:
+    """Require the Vercel deployment replica to match the catalog SOT byte-for-byte.
+
+    Vercel deploys from ``frontend/`` and cannot rely on the monorepo parent being
+    available at runtime. A stale replica can therefore serve different product
+    specifications or media from the WordPress catalog even when every canonical
+    catalog check passes.
+    """
+    name = "catalog_replica"
+    if not _CATALOG_CSV.exists():
+        return _fail(name, f"Canonical CSV not found: {_CATALOG_CSV}")
+    if not _FRONTEND_CATALOG_REPLICA.exists():
+        return _fail(name, f"Frontend catalog replica not found: {_FRONTEND_CATALOG_REPLICA}")
+
+    canonical_bytes = _CATALOG_CSV.read_bytes()
+    replica_bytes = _FRONTEND_CATALOG_REPLICA.read_bytes()
+    if canonical_bytes != replica_bytes:
+        def display_path(file_path: Path) -> str:
+            try:
+                return str(file_path.relative_to(_REPO_ROOT))
+            except ValueError:
+                return str(file_path)
+
+        return _fail(
+            name,
+            "Frontend catalog replica differs from the canonical catalog",
+            [
+                f"  canonical: {display_path(_CATALOG_CSV)} ({len(canonical_bytes)} bytes)",
+                f"  replica:   {display_path(_FRONTEND_CATALOG_REPLICA)} "
+                f"({len(replica_bytes)} bytes)",
+                "  Sync the canonical file to frontend/data/skyyrose-catalog.csv and verify with cmp.",
+            ],
+        )
+    return _ok(name, "Frontend deployment catalog is byte-identical to the canonical CSV")
 
 
 def check_registry_readable() -> CheckResult:
@@ -1249,6 +1287,7 @@ def check_product_embeddings_current() -> CheckResult:
 
 ALL_CHECKS: dict[str, Any] = {
     "csv_readable": check_csv_readable,
+    "catalog_replica": check_catalog_replica,
     "registry_readable": check_registry_readable,
     "registry_version": check_registry_version,
     "registry_changelog": check_registry_changelog,
