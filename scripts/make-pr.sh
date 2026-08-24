@@ -86,14 +86,8 @@ if [[ -z "${TITLE}" || -z "${PROBLEM}" || -z "${IMPLEMENTATION}" || -z "${TESTIN
   exit 1
 fi
 
-if [[ ! -x "$(command -v gh 2>/dev/null || true)" ]]; then
+if ! command -v gh >/dev/null 2>&1; then
   echo "GitHub CLI is required: install and run gh auth login first." >&2
-  exit 1
-fi
-
-if [[ -n "$(git status --short)" ]]; then
-  echo "Refusing to create PR with uncommitted work in working tree." >&2
-  echo "Run git status --short and commit only intended changes first." >&2
   exit 1
 fi
 
@@ -124,3 +118,36 @@ ${SCREENSHOTS:-None}
 
 ### Migration, environment, security, and deployment notes
 ${NOTES:-None}
+EOF
+
+if [[ "$DRY_RUN" -eq 1 ]]; then
+  echo "=== make-pr dry-run body ==="
+  echo
+  cat "${TMP_BODY}"
+  exit 0
+fi
+
+if [[ -n "$(git status --short)" ]]; then
+  echo "Refusing to create PR with uncommitted work in working tree." >&2
+  echo "Run git status --short and commit only intended changes first." >&2
+  exit 1
+fi
+
+if ! gh auth status >/dev/null 2>&1; then
+  echo "GitHub CLI authentication required. Run: gh auth login" >&2
+  exit 1
+fi
+
+if ! git remote get-url origin >/dev/null 2>&1; then
+  echo "No git remote named origin. Add one before creating PR." >&2
+  exit 1
+fi
+
+echo "Creating PR: ${CURRENT_BRANCH} -> ${BASE_BRANCH}"
+gh pr create \
+  --title "${TITLE}" \
+  --body-file "${TMP_BODY}" \
+  --base "${BASE_BRANCH}" \
+  --head "${CURRENT_BRANCH}" \
+  --repo "$(git remote get-url origin)" \
+  --push
