@@ -21,11 +21,9 @@ import json
 import os
 import re
 from collections import defaultdict
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
-
-from datetime import datetime, timezone
-
 
 try:  # Python 3.11+
     import tomllib
@@ -33,7 +31,6 @@ except ModuleNotFoundError:  # pragma: no cover
     import tomli as tomllib  # type: ignore[import-not-found]
 
 import json as _json
-
 
 ROOT = Path(".")
 SKIP_DIRS = {
@@ -61,7 +58,18 @@ SKIP_DIRS = {
 def normalize_package_name(spec: str) -> str:
     """Return the raw requirement token as a package key for reporting."""
 
-    return spec.split("[", 1)[0].split("==", 1)[0].split(">=", 1)[0].split("<=", 1)[0].split("~=", 1)[0].split(">", 1)[0].split("<", 1)[0].split("!=", 1)[0].split(";", 1)[0].strip()
+    return (
+        spec.split("[", 1)[0]
+        .split("==", 1)[0]
+        .split(">=", 1)[0]
+        .split("<=", 1)[0]
+        .split("~=", 1)[0]
+        .split(">", 1)[0]
+        .split("<", 1)[0]
+        .split("!=", 1)[0]
+        .split(";", 1)[0]
+        .strip()
+    )
 
 
 def classify_domain(path: Path) -> str:
@@ -141,9 +149,7 @@ def parse_pyproject(path: Path) -> dict[str, Any]:
         optional_groups = {}
 
     return {
-        "projectDependencies": [
-            item for item in (dependencies or []) if isinstance(item, str)
-        ],
+        "projectDependencies": [item for item in (dependencies or []) if isinstance(item, str)],
         "optionalDependencies": {
             name: [item for item in items if isinstance(item, str)]
             for name, items in optional_groups.items()
@@ -171,25 +177,19 @@ def is_unpinned(spec: str) -> bool:
 
 
 def is_manifest(path: Path) -> bool:
-    if path.name == "package.json":
-        return True
-    if path.name == "package-lock.json":
-        return True
-    if path.name == "pyproject.toml":
-        return True
-    if path.name == "requirements.txt":
-        return True
-    if path.name == "requirements-dev.txt":
-        return True
-    if fnmatch.fnmatch(path.name, "requirements*.txt"):
-        return True
-    return False
+    return path.name in {"package.json", "package-lock.json", "pyproject.toml"} or fnmatch.fnmatch(
+        path.name, "requirements*.txt"
+    )
 
 
 def collect_manifests() -> list[Path]:
     found: list[Path] = []
     for root, dirs, files in os.walk(ROOT):
-        dirs[:] = [d for d in dirs if d not in SKIP_DIRS and not d.startswith(".") or d in {".github", ".vscode", ".github"}]
+        dirs[:] = [
+            d
+            for d in dirs
+            if (d not in SKIP_DIRS and not d.startswith(".")) or d in {".github", ".vscode"}
+        ]
         current = Path(root)
         if any(part in SKIP_DIRS for part in current.parts):
             continue
@@ -268,13 +268,13 @@ def build_matrix(paths: list[Path]) -> dict[str, Any]:
     for row in rows:
         p = Path(row["path"])
         if p.name == "package.json":
-            if not (p.with_name("package-lock.json") in manifests):
+            if p.with_name("package-lock.json") not in manifests:
                 missing_locks.append(row["path"])
 
     # Orphan lockfiles
     orphan_locks: list[str] = []
     for p in sorted(lockfiles):
-        if not (p.with_name("package.json") in manifests):
+        if p.with_name("package.json") not in manifests:
             orphan_locks.append(str(p).replace("\\", "/"))
 
     # Unpinned requirements
@@ -284,17 +284,33 @@ def build_matrix(paths: list[Path]) -> dict[str, Any]:
             unpinned_reqs.append(row["path"])
 
     totals = {
-        "generatedAt": datetime.now(timezone.utc).isoformat(),
+        "generatedAt": datetime.now(UTC).isoformat(),
         "manifests": len(rows),
         "packageJson": sum(1 for r in rows if r["type"] == "package.json"),
         "lockFiles": sum(1 for r in rows if r["type"] == "package-lock.json"),
         "pyproject": sum(1 for r in rows if r["type"] == "pyproject.toml"),
         "requirements": sum(1 for r in rows if r["type"].startswith("requirements")),
         "totalDependencies": {
-            "npmDependencies": sum(r.get("counts", {}).get("dependencies", 0) for r in rows if r["type"] == "package.json"),
-            "npmDevDependencies": sum(r.get("counts", {}).get("devDependencies", 0) for r in rows if r["type"] == "package.json"),
-            "npmOptionalDependencies": sum(r.get("counts", {}).get("optionalDependencies", 0) for r in rows if r["type"] == "package.json"),
-            "npmPeerDependencies": sum(r.get("counts", {}).get("peerDependencies", 0) for r in rows if r["type"] == "package.json"),
+            "npmDependencies": sum(
+                r.get("counts", {}).get("dependencies", 0)
+                for r in rows
+                if r["type"] == "package.json"
+            ),
+            "npmDevDependencies": sum(
+                r.get("counts", {}).get("devDependencies", 0)
+                for r in rows
+                if r["type"] == "package.json"
+            ),
+            "npmOptionalDependencies": sum(
+                r.get("counts", {}).get("optionalDependencies", 0)
+                for r in rows
+                if r["type"] == "package.json"
+            ),
+            "npmPeerDependencies": sum(
+                r.get("counts", {}).get("peerDependencies", 0)
+                for r in rows
+                if r["type"] == "package.json"
+            ),
         },
         "gaps": {
             "missingLockFiles": len(missing_locks),
@@ -305,7 +321,10 @@ def build_matrix(paths: list[Path]) -> dict[str, Any]:
 
     return {
         "totals": totals,
-        "domains": {domain: sorted(manifests, key=lambda item: item["path"]) for domain, manifests in domains.items()},
+        "domains": {
+            domain: sorted(manifests, key=lambda item: item["path"])
+            for domain, manifests in domains.items()
+        },
         "gaps": {
             "missingLockFiles": sorted(missing_locks),
             "orphanLockFiles": sorted(orphan_locks),

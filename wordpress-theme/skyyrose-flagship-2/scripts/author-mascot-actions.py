@@ -18,7 +18,6 @@ from pathlib import Path
 
 import bpy
 
-
 FPS = 30
 REQUIRED_BONES = {
     "pelvis",
@@ -109,7 +108,7 @@ def nearest_pair(value: float, centers: list[tuple[str, float]]) -> list[tuple[s
         return [(ordered[0][0], 1.0)]
     if value >= ordered[-1][1]:
         return [(ordered[-1][0], 1.0)]
-    for left, right in zip(ordered, ordered[1:]):
+    for left, right in zip(ordered, ordered[1:], strict=False):
         if left[1] <= value <= right[1]:
             span = right[1] - left[1]
             right_weight = (value - left[1]) / span
@@ -125,7 +124,10 @@ def rebuild_skin_weights(mesh: bpy.types.Object) -> None:
     one-million-vertex scan and makes the authoring step reproducible.
     """
 
-    groups = {name: mesh.vertex_groups.get(name) or mesh.vertex_groups.new(name=name) for name in RIG_POINTS}
+    groups = {
+        name: mesh.vertex_groups.get(name) or mesh.vertex_groups.new(name=name)
+        for name in RIG_POINTS
+    }
     for group in groups.values():
         group.remove(range(len(mesh.data.vertices)))
 
@@ -215,7 +217,9 @@ def merged(**changes: tuple[float, float, float]) -> dict[str, tuple[float, floa
 def create_action(
     armature: bpy.types.Object,
     name: str,
-    frames: list[tuple[int, dict[str, tuple[float, float, float]], dict[str, tuple[float, float, float]]]],
+    frames: list[
+        tuple[int, dict[str, tuple[float, float, float]], dict[str, tuple[float, float, float]]]
+    ],
 ) -> None:
     action = bpy.data.actions.new(name=name)
     armature.animation_data.action = action
@@ -234,40 +238,215 @@ def build_actions(armature: bpy.types.Object) -> None:
 
     idle = [
         (1, merged(chest=(0.0, 0.0, 0.0), head=(0.0, 0.0, -2.0)), {"pelvis": (0.0, 0.0, 0.0)}),
-        (24, merged(**{"upper_arm.L": (2.0, 0.0, -86.0), "upper_arm.R": (-2.0, 0.0, 89.0), "forearm.L": (0.0, 0.0, -74.0), "chest": (1.5, 0.0, 1.0), "head": (-1.0, 3.0, 1.0)}), {"pelvis": (0.004, 0.004, 0.0)}),
-        (48, merged(**{"upper_arm.L": (-2.0, 0.0, -89.0), "upper_arm.R": (2.0, 0.0, 86.0), "forearm.R": (0.0, 0.0, 74.0), "chest": (-1.0, 0.0, -1.0), "head": (1.0, -3.0, -1.0)}), {"pelvis": (-0.004, 0.0, 0.0)}),
+        (
+            24,
+            merged(
+                **{
+                    "upper_arm.L": (2.0, 0.0, -86.0),
+                    "upper_arm.R": (-2.0, 0.0, 89.0),
+                    "forearm.L": (0.0, 0.0, -74.0),
+                    "chest": (1.5, 0.0, 1.0),
+                    "head": (-1.0, 3.0, 1.0),
+                }
+            ),
+            {"pelvis": (0.004, 0.004, 0.0)},
+        ),
+        (
+            48,
+            merged(
+                **{
+                    "upper_arm.L": (-2.0, 0.0, -89.0),
+                    "upper_arm.R": (2.0, 0.0, 86.0),
+                    "forearm.R": (0.0, 0.0, 74.0),
+                    "chest": (-1.0, 0.0, -1.0),
+                    "head": (1.0, -3.0, -1.0),
+                }
+            ),
+            {"pelvis": (-0.004, 0.0, 0.0)},
+        ),
         (72, merged(chest=(0.0, 0.0, 0.0), head=(0.0, 0.0, -2.0)), {"pelvis": (0.0, 0.0, 0.0)}),
     ]
 
     walk = [
-        (1, merged(**{"upper_arm.L": (-20.0, 0.0, -84.0), "upper_arm.R": (20.0, 0.0, 84.0), "thigh.L": (25.0, 0.0, -2.0), "thigh.R": (-25.0, 0.0, 2.0), "shin.R": (22.0, 0.0, 0.0)}), {"pelvis": (0.0, 0.0, 0.0)}),
-        (10, merged(**{"thigh.L": (0.0, 0.0, -2.0), "thigh.R": (0.0, 0.0, 2.0), "shin.L": (12.0, 0.0, 0.0), "shin.R": (12.0, 0.0, 0.0)}), {"pelvis": (0.0, 0.018, 0.0)}),
-        (19, merged(**{"upper_arm.L": (20.0, 0.0, -84.0), "upper_arm.R": (-20.0, 0.0, 84.0), "thigh.L": (-25.0, 0.0, -2.0), "thigh.R": (25.0, 0.0, 2.0), "shin.L": (22.0, 0.0, 0.0)}), {"pelvis": (0.0, 0.0, 0.0)}),
-        (28, merged(**{"thigh.L": (0.0, 0.0, -2.0), "thigh.R": (0.0, 0.0, 2.0), "shin.L": (12.0, 0.0, 0.0), "shin.R": (12.0, 0.0, 0.0)}), {"pelvis": (0.0, 0.018, 0.0)}),
-        (37, merged(**{"upper_arm.L": (-20.0, 0.0, -84.0), "upper_arm.R": (20.0, 0.0, 84.0), "thigh.L": (25.0, 0.0, -2.0), "thigh.R": (-25.0, 0.0, 2.0), "shin.R": (22.0, 0.0, 0.0)}), {"pelvis": (0.0, 0.0, 0.0)}),
+        (
+            1,
+            merged(
+                **{
+                    "upper_arm.L": (-20.0, 0.0, -84.0),
+                    "upper_arm.R": (20.0, 0.0, 84.0),
+                    "thigh.L": (25.0, 0.0, -2.0),
+                    "thigh.R": (-25.0, 0.0, 2.0),
+                    "shin.R": (22.0, 0.0, 0.0),
+                }
+            ),
+            {"pelvis": (0.0, 0.0, 0.0)},
+        ),
+        (
+            10,
+            merged(
+                **{
+                    "thigh.L": (0.0, 0.0, -2.0),
+                    "thigh.R": (0.0, 0.0, 2.0),
+                    "shin.L": (12.0, 0.0, 0.0),
+                    "shin.R": (12.0, 0.0, 0.0),
+                }
+            ),
+            {"pelvis": (0.0, 0.018, 0.0)},
+        ),
+        (
+            19,
+            merged(
+                **{
+                    "upper_arm.L": (20.0, 0.0, -84.0),
+                    "upper_arm.R": (-20.0, 0.0, 84.0),
+                    "thigh.L": (-25.0, 0.0, -2.0),
+                    "thigh.R": (25.0, 0.0, 2.0),
+                    "shin.L": (22.0, 0.0, 0.0),
+                }
+            ),
+            {"pelvis": (0.0, 0.0, 0.0)},
+        ),
+        (
+            28,
+            merged(
+                **{
+                    "thigh.L": (0.0, 0.0, -2.0),
+                    "thigh.R": (0.0, 0.0, 2.0),
+                    "shin.L": (12.0, 0.0, 0.0),
+                    "shin.R": (12.0, 0.0, 0.0),
+                }
+            ),
+            {"pelvis": (0.0, 0.018, 0.0)},
+        ),
+        (
+            37,
+            merged(
+                **{
+                    "upper_arm.L": (-20.0, 0.0, -84.0),
+                    "upper_arm.R": (20.0, 0.0, 84.0),
+                    "thigh.L": (25.0, 0.0, -2.0),
+                    "thigh.R": (-25.0, 0.0, 2.0),
+                    "shin.R": (22.0, 0.0, 0.0),
+                }
+            ),
+            {"pelvis": (0.0, 0.0, 0.0)},
+        ),
     ]
 
     wave = [
         (1, merged(head=(0.0, 0.0, -3.0)), {}),
-        (12, merged(**{"upper_arm.R": (0.0, 0.0, -18.0), "forearm.R": (0.0, 0.0, 72.0), "head": (0.0, -5.0, 2.0)}), {}),
-        (24, merged(**{"upper_arm.R": (-8.0, 0.0, -18.0), "forearm.R": (18.0, 0.0, 68.0), "head": (0.0, -5.0, 2.0)}), {}),
-        (36, merged(**{"upper_arm.R": (8.0, 0.0, -18.0), "forearm.R": (-12.0, 0.0, 74.0), "head": (0.0, -5.0, 2.0)}), {}),
-        (48, merged(**{"upper_arm.R": (-8.0, 0.0, -18.0), "forearm.R": (18.0, 0.0, 68.0), "head": (0.0, -5.0, 2.0)}), {}),
+        (
+            12,
+            merged(
+                **{
+                    "upper_arm.R": (0.0, 0.0, -18.0),
+                    "forearm.R": (0.0, 0.0, 72.0),
+                    "head": (0.0, -5.0, 2.0),
+                }
+            ),
+            {},
+        ),
+        (
+            24,
+            merged(
+                **{
+                    "upper_arm.R": (-8.0, 0.0, -18.0),
+                    "forearm.R": (18.0, 0.0, 68.0),
+                    "head": (0.0, -5.0, 2.0),
+                }
+            ),
+            {},
+        ),
+        (
+            36,
+            merged(
+                **{
+                    "upper_arm.R": (8.0, 0.0, -18.0),
+                    "forearm.R": (-12.0, 0.0, 74.0),
+                    "head": (0.0, -5.0, 2.0),
+                }
+            ),
+            {},
+        ),
+        (
+            48,
+            merged(
+                **{
+                    "upper_arm.R": (-8.0, 0.0, -18.0),
+                    "forearm.R": (18.0, 0.0, 68.0),
+                    "head": (0.0, -5.0, 2.0),
+                }
+            ),
+            {},
+        ),
         (60, merged(head=(0.0, 0.0, -3.0)), {}),
     ]
 
     talk = [
         (1, merged(head=(-2.0, 0.0, -2.0)), {}),
-        (12, merged(**{"forearm.L": (-12.0, 0.0, -58.0), "forearm.R": (10.0, 0.0, 54.0), "head": (3.0, -4.0, 1.0)}), {}),
-        (24, merged(**{"forearm.L": (8.0, 0.0, -68.0), "forearm.R": (-12.0, 0.0, 62.0), "head": (-3.0, 4.0, -1.0)}), {}),
-        (36, merged(**{"forearm.L": (-8.0, 0.0, -60.0), "forearm.R": (8.0, 0.0, 58.0), "head": (2.0, -2.0, 1.0)}), {}),
+        (
+            12,
+            merged(
+                **{
+                    "forearm.L": (-12.0, 0.0, -58.0),
+                    "forearm.R": (10.0, 0.0, 54.0),
+                    "head": (3.0, -4.0, 1.0),
+                }
+            ),
+            {},
+        ),
+        (
+            24,
+            merged(
+                **{
+                    "forearm.L": (8.0, 0.0, -68.0),
+                    "forearm.R": (-12.0, 0.0, 62.0),
+                    "head": (-3.0, 4.0, -1.0),
+                }
+            ),
+            {},
+        ),
+        (
+            36,
+            merged(
+                **{
+                    "forearm.L": (-8.0, 0.0, -60.0),
+                    "forearm.R": (8.0, 0.0, 58.0),
+                    "head": (2.0, -2.0, 1.0),
+                }
+            ),
+            {},
+        ),
         (48, merged(head=(-2.0, 0.0, -2.0)), {}),
     ]
 
     joy = [
         (1, merged(), {"pelvis": (0.0, 0.0, 0.0)}),
-        (10, merged(**{"upper_arm.L": (-12.0, 0.0, -18.0), "upper_arm.R": (12.0, 0.0, 18.0), "forearm.L": (0.0, 0.0, -35.0), "forearm.R": (0.0, 0.0, 35.0), "shin.L": (14.0, 0.0, 0.0), "shin.R": (14.0, 0.0, 0.0)}), {"pelvis": (0.0, 0.035, 0.0)}),
-        (20, merged(**{"upper_arm.L": (8.0, 0.0, -30.0), "upper_arm.R": (-8.0, 0.0, 30.0), "head": (-5.0, 0.0, 0.0)}), {"pelvis": (0.0, 0.0, 0.0)}),
+        (
+            10,
+            merged(
+                **{
+                    "upper_arm.L": (-12.0, 0.0, -18.0),
+                    "upper_arm.R": (12.0, 0.0, 18.0),
+                    "forearm.L": (0.0, 0.0, -35.0),
+                    "forearm.R": (0.0, 0.0, 35.0),
+                    "shin.L": (14.0, 0.0, 0.0),
+                    "shin.R": (14.0, 0.0, 0.0),
+                }
+            ),
+            {"pelvis": (0.0, 0.035, 0.0)},
+        ),
+        (
+            20,
+            merged(
+                **{
+                    "upper_arm.L": (8.0, 0.0, -30.0),
+                    "upper_arm.R": (-8.0, 0.0, 30.0),
+                    "head": (-5.0, 0.0, 0.0),
+                }
+            ),
+            {"pelvis": (0.0, 0.0, 0.0)},
+        ),
         (36, merged(), {"pelvis": (0.0, 0.0, 0.0)}),
     ]
 
