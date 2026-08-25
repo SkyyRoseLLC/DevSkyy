@@ -6,7 +6,6 @@ import csv
 import json
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
 REGISTRY = ROOT / "wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json"
@@ -36,7 +35,16 @@ def test_registry_preorder_state_is_derived_from_the_catalog() -> None:
 def test_jersey_membership_and_routes_have_one_registry_authority() -> None:
     registry = _registry()
     jerseys = registry["supplements"]["jersey_series_skus"]
-    assert jerseys == ["br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"]
+    assert jerseys == [
+        "br-003",
+        "br-008",
+        "br-009",
+        "br-010",
+        "br-011",
+        "br-012",
+        "br-014",
+        "br-015",
+    ]
     for sku in jerseys:
         record = registry["products"][sku]
         assert record["collection"] == "black-rose"

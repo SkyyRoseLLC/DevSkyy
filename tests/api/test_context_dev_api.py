@@ -49,7 +49,9 @@ def test_extract_structured_data_calls_server_side_wrapper(monkeypatch) -> None:
 
     monkeypatch.setattr(context_dev, "extract_structured_data", fake_extract)
 
-    response = _client(operator=True).post("/api/v1/context-dev/extractions", json=_request_payload())
+    response = _client(operator=True).post(
+        "/api/v1/context-dev/extractions", json=_request_payload()
+    )
 
     assert response.status_code == 200
     assert response.json() == {"data": {"how_it_works": "A grounded workflow description."}}
