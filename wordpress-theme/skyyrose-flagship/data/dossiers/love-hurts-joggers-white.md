@@ -5,7 +5,9 @@ collection: love-hurts
 logo_reference: data/brand-logos/love-hurts-logo.md
 extra_logos:
   - data/brand-logos/heart-rose-composite.md
-reference_image: assets/products/references/lh-006-techflat-front.jpeg
+reference_image: assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg
+extra_references:
+  - assets/products/references/lh-006-techflat-front.jpeg
 ---
 
 # Love Hurts Joggers (White)
@@ -17,7 +19,8 @@ reference_image: assets/products/references/lh-006-techflat-front.jpeg
 > Logo art canonical references:
 > - Heart-and-Roses Composite: `data/brand-logos/heart-rose-composite.md`
 > - Love Hurts wordmark (NOT on this product, listed for canonical reference): `data/brand-logos/love-hurts-logo.md`
-> - Product techflat (shared with lh-002): `assets/products/references/lh-006-techflat-front.jpeg`
+> - Physical white jogger: `assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg`
+> - Product techflat: `assets/products/references/lh-006-techflat-front.jpeg`
 
 ### Front
 - **front-body** (entire front body — solid white field): Solid white, cotton-fleece. **Technique:** stitched. **Color:** white.

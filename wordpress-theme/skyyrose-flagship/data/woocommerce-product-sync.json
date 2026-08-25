@@ -2,7 +2,7 @@
   "schema": "skyyrose.woocommerce-product-sync.v1",
   "sources": {
     "product_sot": "data/product-sot.json",
-    "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"
+    "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12"
   },
   "category_names": {
     "signature": "Signature",
@@ -1764,7 +1764,7 @@
     },
     {
       "sku": "br-005",
-      "product_sot_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20",
+      "product_sot_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e",
       "category_slugs": [
         "black-rose"
       ],
@@ -1773,30 +1773,30 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-005-ghost-front.webp",
           "sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61",
-          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
+          "product_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-005-signature-hoodie.jpeg",
           "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
-          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
+          "product_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-back-model.webp",
           "sha256": "953a14d4924bda179d09e636af718ebd51914a1a4a36147ada5e5a73d888acf8",
-          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
+          "product_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition-back-model.webp",
           "sha256": "2ea30a2fa75fd36f713ffa3fc9812d2c4cc73e8982c30901d5f6fc700a2748d3",
-          "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
+          "product_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie-signature-edition.md",
-        "sha256": "b670053624a30ffec8f0640789c24cf6e0a58d96be81e888cddd548c18c7b396",
+        "sha256": "393f5084ba5c09a8278b9e207158ad2cbdf3099ad44bfeac4e6eae0b3dbcc0c5",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -1805,6 +1805,14 @@
             "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
             "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
             "bytes": 282426
+          },
+          {
+            "role": "garment_reference_1",
+            "authority": 89,
+            "kind": "physical_product_photo",
+            "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+            "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+            "bytes": 28739
           },
           {
             "role": "primary_logo_reference",
@@ -1964,15 +1972,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (small chest mark + large forearm artwork), the white drawstrings, and the sublimated-rose-print inner hood lining."
+            "value": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (small raised silicone chest mark + large embroidered side-body artwork), the white drawstrings, and the sublimated-rose-print inner hood lining."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
+            "value": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "b670053624a30ffec8f0640789c24cf6e0a58d96be81e888cddd548c18c7b396"
+            "value": "393f5084ba5c09a8278b9e207158ad2cbdf3099ad44bfeac4e6eae0b3dbcc0c5"
           },
           {
             "key": "_is_preorder",
@@ -2672,7 +2680,7 @@
     },
     {
       "sku": "br-007",
-      "product_sot_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6",
+      "product_sot_hash": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b",
       "category_slugs": [
         "black-rose"
       ],
@@ -2681,18 +2689,18 @@
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007.jpg",
           "sha256": "6d7ea279905b7cfdbc9fa58d371d0fcfc3e8326c2041b4b6a1c86219fe2c7890",
-          "product_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
+          "product_hash": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b"
         },
         {
           "role": "packshot_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-back.jpg",
           "sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9",
-          "product_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
+          "product_hash": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
-        "sha256": "32be624d3080add7cfddca19e6b1b63f6b5445134dd68c89b6b62a43a417b1ba",
+        "sha256": "910765e8425681981383fc6a3e959562e7fe896c4361fbdcdc03bd211ca93c2b",
         "references": [
           {
             "role": "primary_garment_reference",
@@ -2908,15 +2916,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short."
+            "value": "Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with **narrow white mesh side constructions/inserts** that stay on the side of each leg rather than becoming broad front-facing white panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
+            "value": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "32be624d3080add7cfddca19e6b1b63f6b5445134dd68c89b6b62a43a417b1ba"
+            "value": "910765e8425681981383fc6a3e959562e7fe896c4361fbdcdc03bd211ca93c2b"
           },
           {
             "key": "_is_preorder",
@@ -5484,7 +5492,7 @@
     },
     {
       "sku": "lh-002",
-      "product_sot_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804",
+      "product_sot_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
       "category_slugs": [
         "love-hurts"
       ],
@@ -5493,22 +5501,30 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-002-onmodel.webp",
           "sha256": "c58b3741972167576efa0c2dafb4925570961734fa19d9373e3730c4330b674a",
-          "product_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
+          "product_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/love-hurts-joggers-back-model.webp",
           "sha256": "dbe22667ab46f7aff1355359eab07e7a3f9c989c458c85ab517b762b2187504d",
-          "product_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
+          "product_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
-        "sha256": "00c4bb79b14e990c4f1832c5d87768c0b1c018bdd2a8f5eed2631926460b968e",
+        "sha256": "b531f6634fa54726b2f0740c7bed4530754f1f8469f3270a7d0e78b7756c5eb0",
         "references": [
           {
             "role": "primary_garment_reference",
             "authority": 100,
+            "kind": "physical_product_photo",
+            "path": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+            "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f",
+            "bytes": 18111
+          },
+          {
+            "role": "garment_reference_1",
+            "authority": 89,
             "kind": "approved_design_reference",
             "path": "assets/products/references/lh-002-techflat-front.jpeg",
             "sha256": "1a5ad59e099bacf048261949ed316954723bfc7c6efb3918ea3f41631b62ca0c",
@@ -5692,11 +5708,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
+            "value": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "00c4bb79b14e990c4f1832c5d87768c0b1c018bdd2a8f5eed2631926460b968e"
+            "value": "b531f6634fa54726b2f0740c7bed4530754f1f8469f3270a7d0e78b7756c5eb0"
           },
           {
             "key": "_is_preorder",
@@ -6376,7 +6392,7 @@
     },
     {
       "sku": "lh-004",
-      "product_sot_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13",
+      "product_sot_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
       "category_slugs": [
         "love-hurts"
       ],
@@ -6385,26 +6401,50 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-onmodel.webp",
           "sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
-          "product_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
+          "product_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-004-bomber.png",
           "sha256": "fb8dee3a83c5df81fe8372acc9c6dba2374b2d6f1c51b4b1bf4bcbb3dc6e79af",
-          "product_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
+          "product_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
-        "sha256": "c432e4e0ab28987abaaee60d7223db1813e48c5e3c35a6ab10b809fad3b43765",
+        "sha256": "133a5535541782f89d2fe8f43d560b50deebf1a91cd2367abcf1169c6d5c1e4e",
         "references": [
           {
             "role": "primary_garment_reference",
             "authority": 100,
+            "kind": "physical_product_photo",
+            "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+            "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256",
+            "bytes": 575795
+          },
+          {
+            "role": "garment_reference_1",
+            "authority": 89,
+            "kind": "physical_product_photo",
+            "path": "assets/products/source-photos/love-hurts/lh-004-bomber-back.png",
+            "sha256": "e170a556f4ee444f273c4aacd2bfce569d0c87263397826b6e757db6402888f1",
+            "bytes": 1379945
+          },
+          {
+            "role": "garment_reference_2",
+            "authority": 88,
             "kind": "approved_design_reference",
             "path": "assets/products/references/lh-004-techflat-front.jpeg",
             "sha256": "a80570de81d5443fd0452a835cc662cf43ec969238789523ec7f83148306e506",
             "bytes": 44996
+          },
+          {
+            "role": "garment_reference_3",
+            "authority": 87,
+            "kind": "approved_design_reference",
+            "path": "assets/products/references/lh-004-techflat-back.jpeg",
+            "sha256": "d8952dad0e77c5635195467e3430d080fce7c2d1d2a374d884b5440380b6b50e",
+            "bytes": 78328
           },
           {
             "role": "primary_logo_reference",
@@ -6580,15 +6620,15 @@
           },
           {
             "key": "_skyyrose_garment_type_lock",
-            "value": "Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). NOT a satin bomber. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction)."
+            "value": "Hooded **satin varsity-bomber hybrid jacket** — lustrous **white satin body fabric** with **black contrast satin raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black satin hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The white and black shell surfaces must show the smooth reflective highlights and soft folds of satin, exactly as proven by the physical front photo. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). NOT a matte cotton varsity jacket. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction)."
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
+            "value": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "c432e4e0ab28987abaaee60d7223db1813e48c5e3c35a6ab10b809fad3b43765"
+            "value": "133a5535541782f89d2fe8f43d560b50deebf1a91cd2367abcf1169c6d5c1e4e"
           },
           {
             "key": "_is_preorder",
@@ -7038,7 +7078,7 @@
     },
     {
       "sku": "lh-006",
-      "product_sot_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1",
+      "product_sot_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079",
       "category_slugs": [
         "love-hurts"
       ],
@@ -7047,28 +7087,36 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-onmodel.webp",
           "sha256": "805af391800f930d5631db76521ae1b6443e4c6e70e71ba4ac7e215d670e3201",
-          "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
+          "product_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
           "sha256": "c48bd2e8e764859dee048e3c8f4af955e32bce041fd2975e5948ec700fcc0417",
-          "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
+          "product_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
         },
         {
           "role": "on_model_back",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/love-hurts-joggers-white-back-model.webp",
           "sha256": "bdcf95a8e0f62c18d64e54b6695391e1f72eef6d1385da29d7c18cbf29d9d1c4",
-          "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
+          "product_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
-        "sha256": "21559be08b5bb5feabd2165f8195ab7ff5a38f68036a79786fb28d4e8e674c9b",
+        "sha256": "b61eab3f92fabba681ddc0253d74ba74c839a22b4be8fc5a6f2ab70eb020822a",
         "references": [
           {
             "role": "primary_garment_reference",
             "authority": 100,
+            "kind": "physical_product_photo",
+            "path": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+            "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
+            "bytes": 22094
+          },
+          {
+            "role": "garment_reference_1",
+            "authority": 89,
             "kind": "approved_design_reference",
             "path": "assets/products/references/lh-006-techflat-front.jpeg",
             "sha256": "a85fbed9da1d7cc1dd8b7ce913b97b50c1f85274f328def457386abc40c97649",
@@ -7252,11 +7300,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
+            "value": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "21559be08b5bb5feabd2165f8195ab7ff5a38f68036a79786fb28d4e8e674c9b"
+            "value": "b61eab3f92fabba681ddc0253d74ba74c839a22b4be8fc5a6f2ab70eb020822a"
           },
           {
             "key": "_is_preorder",
@@ -8824,7 +8872,7 @@
     },
     {
       "sku": "sg-005",
-      "product_sot_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda",
+      "product_sot_hash": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6",
       "category_slugs": [
         "signature",
         "pre-order"
@@ -8834,22 +8882,30 @@
           "role": "featured",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp",
           "sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
-          "product_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
+          "product_hash": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6"
         },
         {
           "role": "packshot_front",
           "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-bay-bridge-shirt.jpeg",
           "sha256": "3e44b05480b96941c52b5d83d9e41eaec7f7fecda34358845b51306f7d961292",
-          "product_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
+          "product_hash": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6"
         }
       ],
       "dossier": {
         "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
-        "sha256": "04ddbd458ced6c49f39ce2a12dccbe2edec9f6ed0180efffb87100f1e8a5783a",
+        "sha256": "79af3109f9b09414d1caf3826be63099abeb47cbfab275de968e5321c4a04347",
         "references": [
           {
             "role": "primary_garment_reference",
             "authority": 100,
+            "kind": "physical_product_photo",
+            "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
+            "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1",
+            "bytes": 596566
+          },
+          {
+            "role": "garment_reference_1",
+            "authority": 89,
             "kind": "approved_design_reference",
             "path": "assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg",
             "sha256": "e5b88ecfcbd6889987d4fcf6c421d60010120fdc15d2c70315a94eb136fafcbc",
@@ -9032,11 +9088,11 @@
           },
           {
             "key": "_skyyrose_product_sot_hash",
-            "value": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
+            "value": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6"
           },
           {
             "key": "_skyyrose_product_sot_dossier_hash",
-            "value": "04ddbd458ced6c49f39ce2a12dccbe2edec9f6ed0180efffb87100f1e8a5783a"
+            "value": "79af3109f9b09414d1caf3826be63099abeb47cbfab275de968e5321c4a04347"
           },
           {
             "key": "_is_preorder",
