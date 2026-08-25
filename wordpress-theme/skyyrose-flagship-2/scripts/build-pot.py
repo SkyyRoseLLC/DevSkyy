@@ -11,10 +11,17 @@ from pathlib import Path
 
 THEME = Path(__file__).resolve().parents[1]
 OUTPUT = THEME / "languages/skyyrose-flagship-2.pot"
-CALL = re.compile(
-    r"(?P<fn>__|_e|esc_html__|esc_html_e|esc_attr__|esc_attr_e)\(\s*"
-    r"(?P<quote>'|\")(?P<message>(?:\\.|(?!\2).)*)\2\s*,\s*"
-    r"(?P<domain>'|\")skyyrose-flagship-2\4",
+_TRANSLATION_FUNCTIONS = r"__|_e|esc_html__|esc_html_e|esc_attr__|esc_attr_e"
+CALL_SINGLE = re.compile(
+    rf"(?P<fn>{_TRANSLATION_FUNCTIONS})\(\s*"
+    r"'(?P<message>(?:\\.|[^'\\])*)'\s*,\s*"
+    r"'skyyrose-flagship-2'",
+    re.DOTALL,
+)
+CALL_DOUBLE = re.compile(
+    rf"(?P<fn>{_TRANSLATION_FUNCTIONS})\(\s*"
+    r'"(?P<message>(?:\\.|[^"\\])*)"\s*,\s*'
+    r'"skyyrose-flagship-2"',
     re.DOTALL,
 )
 
@@ -46,10 +53,11 @@ def collect() -> dict[str, list[str]]:
         if any(part in {"node_modules", "vendor"} for part in source.parts):
             continue
         text = source.read_text(encoding="utf-8")
-        for match in CALL.finditer(text):
-            message = decode(match.group("message"), match.group("quote"))
-            line = text.count("\n", 0, match.start()) + 1
-            messages[message].append(f"{source.relative_to(THEME)}:{line}")
+        for call, quote in ((CALL_SINGLE, "'"), (CALL_DOUBLE, '"')):
+            for match in call.finditer(text):
+                message = decode(match.group("message"), quote)
+                line = text.count("\n", 0, match.start()) + 1
+                messages[message].append(f"{source.relative_to(THEME)}:{line}")
     return dict(sorted(messages.items()))
 
 
