@@ -36,6 +36,7 @@ async def kernel(tmp_path) -> Kernel:
     await k.close()
 
 
+@pytest.mark.integration
 @pytest.mark.asyncio
 async def test_real_agent_class_runs_through_kernel(kernel: Kernel):
     EnhancedSuperAgent, AgentConfig, AgentResult, AgentStatus, ADKProvider = _import_real_agent()

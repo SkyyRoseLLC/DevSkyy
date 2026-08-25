@@ -6,7 +6,6 @@ import pytest
 
 from integrations.context_dev import ContextDevConfigurationError, extract_structured_data
 
-
 SCHEMA = {
     "type": "object",
     "properties": {
@@ -17,10 +16,14 @@ SCHEMA = {
 }
 
 
-def test_extract_structured_data_returns_schema_matched_data(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_extract_structured_data_returns_schema_matched_data(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """The wrapper returns only the SDK's schema-matched data payload."""
     monkeypatch.setenv("CONTEXT_DEV_API_KEY", "test-context-dev-key")
-    response = Mock(data={"mission_statement": "Increase the GDP of the internet.", "pricing_plans": ["Pro"]})
+    response = Mock(
+        data={"mission_statement": "Increase the GDP of the internet.", "pricing_plans": ["Pro"]}
+    )
 
     with patch("integrations.context_dev.ContextDev") as context_dev:
         context_dev.return_value.web.extract.return_value = response

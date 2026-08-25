@@ -153,11 +153,17 @@ dev = [
     "pytest-asyncio>=0.23",
     "pytest-cov>=4.1",
     "pytest-mock>=3.12",
+    "pytest-timeout>=2.4",
+    "pytest-xdist>=3.6",
+    "rich>=13.9",
+    "typer>=0.15",
     # Test-only deps for tests/test_elite_*.py and tests/test_a11y_html_integrity.py.
-    # bs4 also appears in [mcp] as a transitive runtime constraint; included here so
-    # `pip install -e .[dev]` alone is enough to collect the test suite.
+    # These also appear in optional runtime extras or CI bootstrap. They are listed
+    # here so `uv sync --extra dev` alone can collect the default test suite.
     "fakeredis>=2.20",
     "beautifulsoup4>=4.13.5",
+    "pygltflib>=1.16.5",
+    "pyotp>=2.9",
     "mypy>=1.8",
     "ruff>=0.1",
     "black>=24.1",
@@ -513,6 +519,7 @@ skip = ["legacy/", ".venv/", ".venv-*/", ".claude/", "_archive/", "open-claude-c
 [tool.pytest.ini_options]
 minversion = "7.0"
 asyncio_mode = "auto"
+timeout = 10
 testpaths = ["tests"]
 pythonpath = [".", "scripts"]
 python_files = ["test_*.py", "*_test.py"]

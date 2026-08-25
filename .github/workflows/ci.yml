@@ -144,14 +144,6 @@ jobs:
           # not silently skip the tests that need them.
           pip install boto3 scikit-image trimesh pyotp
 
-      - name: Cache pytest
-        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9  # v6.1.0
-        with:
-          path: .pytest_cache
-          key: ${{ runner.os }}-pytest-${{ hashFiles('tests/**/*.py') }}
-          restore-keys: |
-            ${{ runner.os }}-pytest-
-
       - name: Run pytest with coverage
         run: |
           pytest tests/ \

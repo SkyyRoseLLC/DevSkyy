@@ -54,8 +54,7 @@ def extract_structured_data(
     api_key = os.getenv("CONTEXT_DEV_API_KEY", "").strip()
     if not api_key:
         raise ContextDevConfigurationError(
-            "CONTEXT_DEV_API_KEY must be set in the server environment before "
-            "using Context.dev."
+            "CONTEXT_DEV_API_KEY must be set in the server environment before " "using Context.dev."
         )
 
     parsed_url = urlparse(url)

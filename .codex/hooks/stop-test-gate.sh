@@ -9,9 +9,9 @@
 # session's clean Stop. This gate reads the stopping session's cwd (Claude Code passes
 # it as JSON on stdin: {"cwd": "...", ...}) and gates only the tree that session is in.
 #
-# Flake handling: on a red run, settle 5s then re-run `pytest --last-failed`; block
-# (exit 2) ONLY if the failure reproduces — absorbs load-timeout flakes and mid-edit
-# races without ever masking a real, reproducible failure.
+# Flake handling: on a red run, settle 5s then re-run the same current suite with
+# a cleared pytest cache. This absorbs load-timeout flakes and mid-edit races without
+# reviving unrelated failures retained by a previous run's cache.
 set -uo pipefail
 
 # bug-263: on macOS, Apple's _scproxy SIGSEGVs on the child side of subprocess
@@ -44,17 +44,16 @@ git status --porcelain -- '*.py' | grep -q . || exit 0
 ig=$(git ls-files --others --exclude-standard "tests/*.py" "tests/**/*.py" 2>/dev/null \
      | sed "s/^/--ignore=/" | tr "\n" " ")
 
-run_full()       { $PY -m pytest tests/ -x -q $ig 2>&1; }
-run_lastfailed() { $PY -m pytest --last-failed -q $ig 2>&1; }
+run_current_suite() { $PY -m pytest tests/ -x -q --cache-clear $ig 2>&1; }
 
-out=$(run_full); rc=$?
+out=$(run_current_suite); rc=$?
 [ "$rc" -eq 0 ] && exit 0   # green on the first try
 
 # First run failed. Settle (load drains / the other session's edit completes), then
-# re-run only what failed. --last-failed uses the cache from the run above; empty cache
-# falls back to the full suite (still safe).
+# re-run exactly the suite above from a clean cache. A full retry is deliberate: the
+# failure cache can retain tests that were not part of this run.
 sleep 5
-out2=$(run_lastfailed); rc2=$?
+out2=$(run_current_suite); rc2=$?
 if [ "$rc2" -eq 0 ]; then
   echo "Stop-gate: failure cleared on clean re-run (transient flake / mid-edit race) — not blocking."
   exit 0
