@@ -1247,6 +1247,24 @@ wheels = [
 ]
 
 [[package]]
+name = "context-dev"
+version = "2.12.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+    { name = "distro" },
+    { name = "httpx" },
+    { name = "pydantic", version = "2.11.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "pydantic", version = "2.13.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "sniffio" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/51/c2/5ebfcf1395237ce259d978a542006d8c9a5aadce837f3b6a872a0ddf7521/context_dev-2.12.0.tar.gz", hash = "sha256:d4549fc3eb23fd4328e09d4c7b90dbdb08e95f5578d8a66b0d8edf5319460a91", size = 344237, upload-time = "2026-08-23T19:16:05.538Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e2/f3/33c935260ef521fc3f97463429aa33df161309b4c19e45140a0dfcf2d5a0/context_dev-2.12.0-py3-none-any.whl", hash = "sha256:bb11596c2873724df8d7a5858d55ccf4334de4c29f602e9928fb3ee01321e31a", size = 252046, upload-time = "2026-08-23T19:16:04.252Z" },
+]
+
+[[package]]
 name = "contourpy"
 version = "1.3.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1607,6 +1625,7 @@ dependencies = [
     { name = "claude-agent-sdk" },
     { name = "cohere" },
     { name = "confluent-kafka" },
+    { name = "context-dev" },
     { name = "cryptography" },
     { name = "email-validator" },
     { name = "fastapi" },
@@ -1735,13 +1754,17 @@ all = [
     { name = "pydantic", version = "2.11.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
     { name = "pydantic", version = "2.13.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
     { name = "pydantic-settings" },
+    { name = "pygltflib" },
     { name = "pyjwt" },
     { name = "pymongo" },
+    { name = "pyotp" },
     { name = "pypdf" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "pytest-cov" },
     { name = "pytest-mock" },
+    { name = "pytest-timeout" },
+    { name = "pytest-xdist" },
     { name = "python-dateutil" },
     { name = "python-docx" },
     { name = "python-dotenv" },
@@ -1774,6 +1797,7 @@ all = [
     { name = "torchvision" },
     { name = "tqdm" },
     { name = "transformers" },
+    { name = "typer" },
     { name = "typing-extensions" },
     { name = "uvicorn", extra = ["standard"] },
     { name = "wandb" },
@@ -1800,12 +1824,18 @@ dev = [
     { name = "pip-tools" },
     { name = "playwright" },
     { name = "pre-commit" },
+    { name = "pygltflib" },
+    { name = "pyotp" },
     { name = "pytest" },
     { name = "pytest-asyncio" },
     { name = "pytest-cov" },
     { name = "pytest-mock" },
+    { name = "pytest-timeout" },
+    { name = "pytest-xdist" },
+    { name = "rich" },
     { name = "ruff" },
     { name = "selenium" },
+    { name = "typer" },
     { name = "watchfiles" },
 ]
 mcp = [
@@ -1974,6 +2004,7 @@ requires-dist = [
     { name = "click", marker = "extra == 'mcp'", specifier = ">=8.1.8" },
     { name = "cohere", specifier = ">=5.20.0" },
     { name = "confluent-kafka", specifier = ">=2.3.0" },
+    { name = "context-dev", specifier = ">=2.12.0" },
     { name = "cryptography", specifier = ">=48.0.1" },
     { name = "cryptography", marker = "extra == 'mcp'", specifier = "==49.0.0" },
     { name = "datasets", marker = "extra == 'ml'", specifier = ">=3.1.0" },
@@ -2019,7 +2050,7 @@ requires-dist = [
     { name = "langgraph", marker = "extra == 'mcp'", specifier = ">=0.2" },
     { name = "langgraph-checkpoint-postgres", marker = "extra == 'mcp'", specifier = ">=2.0.0" },
     { name = "lightrag-hku", marker = "extra == 'rag'", specifier = ">=1.5.4" },
-    { name = "litellm", specifier = ">=1.80,<1.81" },
+    { name = "litellm", specifier = ">=1.80,<1.94" },
     { name = "llama-index", marker = "extra == 'ml'", specifier = ">=0.12.0" },
     { name = "llama-index-llms-openai", marker = "extra == 'ml'", specifier = ">=0.3.0" },
     { name = "llama-index-multi-modal-llms-anthropic", marker = "extra == 'ml'", specifier = ">=0.2.0" },
@@ -2028,16 +2059,16 @@ requires-dist = [
     { name = "mangum", specifier = ">=0.18.0" },
     { name = "mangum", marker = "extra == 'api'", specifier = ">=0.18.0" },
     { name = "matplotlib", marker = "extra == 'ml'", specifier = "==3.11.1" },
-    { name = "mcp", specifier = ">=1.28.1" },
-    { name = "mcp", marker = "extra == 'mcp'", specifier = ">=1.28.1" },
+    { name = "mcp", specifier = ">=1.28.1,<2" },
+    { name = "mcp", marker = "extra == 'mcp'", specifier = ">=1.28.1,<2" },
     { name = "mistralai", specifier = ">=1.10.1" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.8" },
     { name = "nltk", marker = "extra == 'ml'", specifier = ">=3.10.0" },
     { name = "numpy", specifier = ">=2.1.3" },
     { name = "numpy", marker = "extra == 'ml'", specifier = ">=2.1.3" },
     { name = "omegaconf", marker = "extra == 'ml'", specifier = "==2.3.1" },
-    { name = "openai", specifier = ">=1.6,<2" },
-    { name = "openai", marker = "extra == 'mcp'", specifier = ">=1.57.2,<2" },
+    { name = "openai", specifier = ">=1.6,<3" },
+    { name = "openai", marker = "extra == 'mcp'", specifier = ">=1.57.2,<3" },
     { name = "opencv-python", specifier = ">=4.8" },
     { name = "opencv-python", marker = "extra == 'ml'", specifier = ">=4.10.0.84" },
     { name = "openpyxl", specifier = ">=3.1.0" },
@@ -2070,11 +2101,13 @@ requires-dist = [
     { name = "pydantic", marker = "extra == 'ml'", specifier = ">=2.10.3" },
     { name = "pydantic-settings", specifier = ">=2.1" },
     { name = "pydantic-settings", marker = "extra == 'mcp'", specifier = ">=2.8.0" },
+    { name = "pygltflib", marker = "extra == 'dev'", specifier = ">=1.16.5" },
     { name = "pygltflib", marker = "extra == 'rigging'", specifier = ">=1.16.5" },
     { name = "pyjwt", specifier = ">=2.13.0" },
     { name = "pyjwt", marker = "extra == 'api'", specifier = ">=2.13.0" },
     { name = "pyjwt", marker = "extra == 'mcp'", specifier = "==2.13.0" },
     { name = "pymongo", marker = "extra == 'ml'", specifier = "==4.17.0" },
+    { name = "pyotp", marker = "extra == 'dev'", specifier = ">=2.9" },
     { name = "pypdf", marker = "extra == 'mcp'", specifier = ">=6.6.2" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.4" },
     { name = "pytest", marker = "extra == 'mcp'", specifier = "==9.1.1" },
@@ -2082,6 +2115,8 @@ requires-dist = [
     { name = "pytest-asyncio", marker = "extra == 'mcp'", specifier = "==1.4.0" },
     { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.1" },
     { name = "pytest-mock", marker = "extra == 'dev'", specifier = ">=3.12" },
+    { name = "pytest-timeout", marker = "extra == 'dev'", specifier = ">=2.4" },
+    { name = "pytest-xdist", marker = "extra == 'dev'", specifier = ">=3.6" },
     { name = "python-dateutil", specifier = ">=2.8" },
     { name = "python-dateutil", marker = "extra == 'mcp'", specifier = "==2.9.0.post0" },
     { name = "python-docx", marker = "extra == 'mcp'", specifier = ">=1.1.2" },
@@ -2097,6 +2132,7 @@ requires-dist = [
     { name = "redis", marker = "extra == 'mcp'", specifier = "==8.0.1" },
     { name = "requests", specifier = ">=2.31" },
     { name = "requests", marker = "extra == 'mcp'", specifier = "==2.34.2" },
+    { name = "rich", marker = "extra == 'dev'", specifier = ">=13.9" },
     { name = "rich", marker = "extra == 'mcp'", specifier = "==15.0.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1" },
     { name = "scikit-learn", marker = "extra == 'ml'", specifier = ">=1.6.0" },
@@ -2132,6 +2168,7 @@ requires-dist = [
     { name = "transformers", marker = "extra == 'mcp'", specifier = ">=4.53.0" },
     { name = "transformers", marker = "extra == 'ml'", specifier = ">=4.53.0" },
     { name = "tripo3d", marker = "extra == 'rigging'", specifier = ">=0.4.1" },
+    { name = "typer", marker = "extra == 'dev'", specifier = ">=0.15" },
     { name = "typing-extensions", marker = "extra == 'mcp'", specifier = "==4.16.0" },
     { name = "uvicorn", marker = "extra == 'mcp'", specifier = ">=0.32.1" },
     { name = "uvicorn", marker = "extra == 'ml'", specifier = ">=0.32.1" },
@@ -2293,6 +2330,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/50/79/66800aadf48771f6b62f7eb014e352e5d06856655206165d775e675a02c9/exceptiongroup-1.3.1.tar.gz", hash = "sha256:8b412432c6055b0b7d14c310000ae93352ed6754f70fa8f7c34141f91c4e3219", size = 30371, upload-time = "2025-11-21T23:01:54.787Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/8a/0e/97c33bf5009bdbac74fd2beace167cab3f978feb69cc36f1ef79360d6c4e/exceptiongroup-1.3.1-py3-none-any.whl", hash = "sha256:a7a39a3bd276781e98394987d3a5701d0c4edffb633bb7a5144577f82c773598", size = 16740, upload-time = "2025-11-21T23:01:53.443Z" },
+]
+
+[[package]]
+name = "execnet"
+version = "2.1.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bf/89/780e11f9588d9e7128a3f87788354c7946a9cbb1401ad38a48c4db9a4f07/execnet-2.1.2.tar.gz", hash = "sha256:63d83bfdd9a23e35b9c6a3261412324f964c2ec8dcd8d3c6916ee9373e0befcd", size = 166622, upload-time = "2025-11-12T09:56:37.75Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ab/84/02fc1827e8cdded4aa65baef11296a9bbe595c474f0d6d758af082d849fd/execnet-2.1.2-py3-none-any.whl", hash = "sha256:67fba928dd5a544b783f6056f449e5e3931a5c378b128bc18501f7ea79e296ec", size = 40708, upload-time = "2025-11-12T09:56:36.333Z" },
 ]
 
 [[package]]
@@ -6916,6 +6962,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pyotp"
+version = "2.10.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/2d/c6/c5d96a86fd0bf6fa1bbb5c5c341ff3208638b692727a683c8289068d9a11/pyotp-2.10.0.tar.gz", hash = "sha256:d01e9703443616b03c57c700b5cbffd56a1f929c1b0f8f03131bc78c1fca9d3f", size = 18625, upload-time = "2026-06-14T03:48:49.221Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/65/33/7b83bde70eddaaaaef487751a9c3a5cc0c0be54620ded0e120ebdc401ff9/pyotp-2.10.0-py3-none-any.whl", hash = "sha256:1df2f6a1bcc3bb0716172a5215ddc2f8c7c7fd26a13df9927d52e1746934836c", size = 13768, upload-time = "2026-06-14T03:48:47.831Z" },
+]
+
+[[package]]
 name = "pyparsing"
 version = "3.3.1"
 source = { registry = "https://pypi.org/simple" }
@@ -7051,6 +7106,31 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/68/14/eb014d26be205d38ad5ad20d9a80f7d201472e08167f0bb4361e251084a9/pytest_mock-3.15.1.tar.gz", hash = "sha256:1849a238f6f396da19762269de72cb1814ab44416fa73a8686deac10b0d87a0f", size = 34036, upload-time = "2025-09-16T16:37:27.081Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5a/cc/06253936f4a7fa2e0f48dfe6d851d9c56df896a9ab09ac019d70b760619c/pytest_mock-3.15.1-py3-none-any.whl", hash = "sha256:0a25e2eb88fe5168d535041d09a4529a188176ae608a6d249ee65abc0949630d", size = 10095, upload-time = "2025-09-16T16:37:25.734Z" },
+]
+
+[[package]]
+name = "pytest-timeout"
+version = "2.4.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "pytest" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ac/82/4c9ecabab13363e72d880f2fb504c5f750433b2b6f16e99f4ec21ada284c/pytest_timeout-2.4.0.tar.gz", hash = "sha256:7e68e90b01f9eff71332b25001f85c75495fc4e3a836701876183c4bcfd0540a", size = 17973, upload-time = "2025-05-05T19:44:34.99Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/fa/b6/3127540ecdf1464a00e5a01ee60a1b09175f6913f0644ac748494d9c4b21/pytest_timeout-2.4.0-py3-none-any.whl", hash = "sha256:c42667e5cdadb151aeb5b26d114aff6bdf5a907f176a007a30b940d3d865b5c2", size = 14382, upload-time = "2025-05-05T19:44:33.502Z" },
+]
+
+[[package]]
+name = "pytest-xdist"
+version = "3.8.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "execnet" },
+    { name = "pytest" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/78/b4/439b179d1ff526791eb921115fca8e44e596a13efeda518b9d845a619450/pytest_xdist-3.8.0.tar.gz", hash = "sha256:7e578125ec9bc6050861aa93f2d59f1d8d085595d6551c2c90b6f4fad8d3a9f1", size = 88069, upload-time = "2025-07-01T13:30:59.346Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/ca/31/d4e37e9e550c2b92a9cbc2e4d0b7420a27224968580b5a447f420847c975/pytest_xdist-3.8.0-py3-none-any.whl", hash = "sha256:202ca578cfeb7370784a8c33d6d05bc6e13b4f25b5053c30a152269fd10f0b88", size = 46396, upload-time = "2025-07-01T13:30:56.632Z" },
 ]
 
 [[package]]

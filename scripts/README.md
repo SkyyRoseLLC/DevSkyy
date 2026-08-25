@@ -266,3 +266,30 @@ The generated keys are URL-safe base64 encoded strings that are:
 - Suitable for use in environment variables
 - Compatible with HTTP headers
 - Safe for storage in configuration files
+
+## Dependency Inventory
+
+### `dependency_matrix.py`
+
+Generate a domain-based dependency matrix for reproducible governance and audit.
+
+```bash
+# Human-readable summary in stdout
+python scripts/dependency_matrix.py
+
+# Persist JSON/Markdown artifacts
+python scripts/dependency_matrix.py \
+  --out-json /tmp/dependency-matrix.json \
+  --out-md /tmp/dependency-matrix.md
+```
+
+Defaults:
+- Scans canonical manifests (`package.json`, `package-lock.json`, `pyproject.toml`, `requirements*.txt`).
+- Ignores generated/vendor directories (`node_modules`, `.next`, `.venv`, build artifacts).
+- Reports gaps: missing lockfile, orphan lockfile, and unpinned requirements.
+
+Strict mode (CI-friendly):
+
+```bash
+python scripts/dependency_matrix.py --strict
+```

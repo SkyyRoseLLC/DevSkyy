@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "skyyrose-v2-house-of-roses-commerce",
+  "status": "LOCAL_PREVISUALIZATION_GENERATED_RELEASE_BLOCKED",
+  "verified_at": "2026-08-10",
+  "checks": [
+    {"id": "php-lint", "result": "PASS", "scope": "all skyyrose-flagship-2 PHP templates and local preview harness"},
+    {"id": "javascript-syntax", "result": "PASS", "scope": "source and minified theme and House of Roses motion controllers"},
+    {"id": "candidate-source-gate", "result": "BLOCKED", "scope": "candidate binding and shot evidence remain unfrozen or blocked"},
+    {"id": "desktop-card-grid", "result": "PASS", "scope": "1440px, four collection-owned portal cards"},
+    {"id": "desktop-pdp", "result": "PASS", "scope": "1440px, actual single-product template with Woo hook fixtures"},
+    {"id": "mobile-pdp", "result": "PASS", "scope": "390px, full-width product gallery before purchase controls"},
+    {"id": "header-reel", "result": "PASS", "scope": "four manifest-bound combined monument scenes, prev/next/pause/status controls"},
+    {"id": "skyyrose-tour-previsualization", "result": "LOCAL_ONLY", "scope": "1920x1080, 30fps, 16-second silent house-tour pacing artifact; no film, product-media, rights, or browser approval"}
+  ],
+  "artifacts": [
+    ".fashion-theme/evidence/house-of-roses/header-world-reel.png",
+    ".fashion-theme/evidence/house-of-roses/shop-desktop.png",
+    ".fashion-theme/evidence/house-of-roses/product-desktop.png",
+    ".fashion-theme/evidence/house-of-roses/product-mobile.png",
+    ".fashion-theme/evidence/house-of-roses/black-rose-jersey-desktop.png",
+    "wordpress-theme/skyyrose-flagship-2/assets/video/skyyrose-tour-around-the-bay.mp4",
+    "wordpress-theme/skyyrose-flagship-2/assets/video/skyyrose-tour-around-the-bay.webm",
+    "wordpress-theme/skyyrose-flagship-2/assets/video/skyyrose-tour-around-the-bay-poster.webp",
+    "docs/design/v2-remodel/house-of-roses/skyyrose-tour-film-storyboard.md"
+  ],
+  "unresolved_release_gates": [
+    "founder visual approval",
+    "expanded header-use rights recorded for the four combined scenes",
+    "Jersey Series source-byte rights and SKU eyes-on verification",
+    "same-candidate WordPress and WooCommerce staging behavior",
+    "independent accessibility and performance review"
+  ]
+}

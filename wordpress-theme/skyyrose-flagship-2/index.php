@@ -26,7 +26,7 @@ get_header();
 			<?php endwhile; ?>
 			<?php the_posts_pagination(); ?>
 		<?php else : ?>
-			<p class="sr2-empty"><?php esc_html_e( 'No stories published yet.', 'skyyrose-flagship-2' ); ?></p>
+			<?php get_template_part( 'template-parts/journal-press-fallback' ); ?>
 		<?php endif; ?>
 	</div>
 </main>

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.1",
+  "created_at_utc": "2026-08-16T03:45:00Z",
+  "candidate": {
+    "branch": "codex/skyyrose-v2-marketplace",
+    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
+    "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
+    "candidate_id": "skyyrose-v2-marketplace-06c63a4b9459",
+    "current_integration_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "last_verified_source_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "state": "CURRENT_LOCAL_CANDIDATE_VERIFIED"
+  },
+  "manifests": {
+    "candidate-manifest": {
+      "path": ".fashion-theme/candidate-manifest.json",
+      "sha256": "fda5081589ec9c8f5500c0b6caba01fb8e6caceeca6c097dc62a20136818ff32"
+    },
+    "catalog-binding": {
+      "path": ".fashion-theme/catalog-binding.json",
+      "sha256": "a813abdd090d3e363390bcbea34f83ba255f886e15200d132fca12bdea312fe9"
+    },
+    "shot-manifest": {
+      "path": ".fashion-theme/shot-manifest.json",
+      "sha256": "63a3dc739c49a52ed134974b43fab02c4676f9f433e0f1fae84e40d1c5f43006"
+    },
+    "promotion-manifest": {
+      "path": ".fashion-theme/promotion-manifest.json",
+      "sha256": "407176867d4f886d3ec5f353fecfef0e96259ec765724b7e78c9c3f412b44eb2"
+    },
+    "workspace-ledger": {
+      "path": ".fashion-theme/workspace-ledger.json",
+      "sha256": "534622f9e6b5e2aa9fd6d97e05093d6712b6e40ed163682b948500a7564f619e"
+    }
+  },
+  "package": {
+    "payload_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "source_tar_sha256": "f8f9abc7da4135b6077c3c1e8748ccc15f1d9f336c935b271036b39221997c07",
+    "marketplace_zip_sha256": "b854e40a2a347b3fa5e654e24db80657852ea65c041e5bb5a374e1e0e3b13ce9",
+    "source_file_count": 256,
+    "source_tar_command": "git archive --format=tar <current_integration_commit> -- $(git ls-tree -r --name-only <current_integration_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -Ev '^\\.fashion-theme/(codex-desktop-handoff|promotion-manifest)\\.json$') | shasum -a 256"
+  },
+  "handoff": {
+    "target": "codex-desktop",
+    "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
+    "current_integration_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "last_verified_source_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "payload_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
+    "status": "SOURCE_TRACKED_LOCAL_REVIEW_READY",
+    "notes": "The local V2 candidate is source-tracked, package-verified, and guarded against stale reconnects. Promotion evidence remains separately governed; no deployment is implied by this handoff."
+  }
+}

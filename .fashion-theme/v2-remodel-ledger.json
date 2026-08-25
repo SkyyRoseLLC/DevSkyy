@@ -1,0 +1,743 @@
+{
+  "program": "SkyyRose Flagship V2 Remodel",
+  "candidate": {
+    "baseline_commit": "0074fc6e6b161266f9181303296941cd474208af",
+    "branch": "codex/skyyrose-flagship-v2-prototype",
+    "worktree": "/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype",
+    "seed_path": "wordpress-theme/skyyrose-flagship-2",
+    "seed_snapshot_sha256": "2d8080cb9c406b5b983b641235207334b0698c2130034d3a2f60fea2a66dc0e8",
+    "state": "IMPLEMENTATION_WAVE_3_VISUAL_REBUILD"
+  },
+  "current_integration": {
+    "branch": "codex/skyyrose-v2-marketplace",
+    "worktree": "/Users/theceo/DevSkyy",
+    "current_integration_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "last_verified_source_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "marketplace_zip_sha256": "b854e40a2a347b3fa5e654e24db80657852ea65c041e5bb5a374e1e0e3b13ce9",
+    "status": "SOURCE_AND_LOCAL_PREVIEW_VERIFIED",
+    "note": "The prototype worktree is archival. Use the active marketplace branch and worktree above for all reconnects; do not resurrect the prototype path."
+  },
+  "authority": {
+    "approved_scope": "Remodel the V2 seed to V1-caliber end-to-end visual and commerce authority. Each collection is a distinct story world with collection-specific high-fidelity product cards, PDPs, and immersive pre-order shopping scenes.",
+    "excluded": [
+      "production deployment",
+      "external writes",
+      "paid services",
+      "new creative-media promotion without founder approval"
+    ]
+  },
+  "prompt_orchestration": {
+    "status": "IN_SCOPE_CONTRACTED",
+    "authority": "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/prompt-orchestration.md",
+    "prompt_engineering": [
+      "taxonomy-routed context assembly",
+      "accepted and rejected collection-specific examples",
+      "stable HTML and JSON output IDs",
+      "independent rubric and hard-fail criteria"
+    ],
+    "chain_stages": [
+      "discover",
+      "retrieve",
+      "direct",
+      "contract",
+      "build",
+      "inspect",
+      "critique",
+      "repair",
+      "release_gate"
+    ],
+    "cache_policy": {
+      "role": "replaceable optimization, never authority",
+      "key_inputs": [
+        "candidate hash",
+        "role",
+        "chain stage",
+        "prompt contract hash",
+        "Brain pack hash",
+        "SOT hash",
+        "schema version"
+      ],
+      "invalidate_on": [
+        "candidate mutation",
+        "SOT or Woo authority change",
+        "founder decision",
+        "rights state",
+        "Brain pack",
+        "schema or rubric",
+        "source freshness"
+      ],
+      "forbidden": [
+        "credentials",
+        "customer or order data",
+        "hidden reasoning",
+        "mutable commerce state",
+        "unapproved generated product media",
+        "release authorization"
+      ]
+    },
+    "required_evidence": [
+      "prompt contract and output hashes",
+      "chain stage and dependency IDs",
+      "cache HIT, MISS, BYPASS, STALE, or INVALIDATED with reason",
+      "schema result and independent reviewer disposition",
+      "actual candidate render or executable verification"
+    ]
+  },
+  "active_wave": {
+    "id": "v2-house-of-roses-commerce-wave",
+    "state": "LOCAL_VISUAL_QA_PASSED_FOUNDER_REVIEW_REQUIRED",
+    "approved_at": "2026-08-10",
+    "founder_direction": "Use the annotated House of Roses hybrid as the component source: scrolling typography and graphic-statue header; collection-owned ornate product cards; structurally sound PDP hero plus purchase spread; dedicated fictional SkyyRose Town Line journey film for the Jersey Series.",
+    "candidate_id": "0074fc6e6b161266f9181303296941cd474208af+working-tree-20260810",
+    "tool_profile": {
+      "default": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "temporary_expansions": [
+        {
+          "owner": "fashion-theme-lead",
+          "tools": [
+            "Edit",
+            "Write",
+            "ImageGen",
+            "Visualize",
+            "TemplateCreator"
+          ],
+          "reason": "Founder-requested component implementation, Town Line film concepting, reusable reference template, and inspectable visual contract.",
+          "revert_after": "candidate checkpoint"
+        }
+      ]
+    },
+    "owned_paths": {
+      "lead": [
+        ".fashion-theme/",
+        "docs/design/v2-remodel/"
+      ],
+      "component_contract": [
+        "docs/design/v2-remodel/house-of-roses/"
+      ],
+      "implementation": [
+        "wordpress-theme/skyyrose-flagship-2/"
+      ],
+      "media": [
+        "wordpress-theme/skyyrose-flagship-2/assets/video/",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/jersey-series/"
+      ]
+    },
+    "approval_boundaries": [
+      "no deployment",
+      "no paid provider call",
+      "no remote write",
+      "no SOT media promotion without founder review"
+    ],
+    "evidence": [
+      "docs/design/v2-remodel/house-of-roses/component-contract.json",
+      "docs/design/v2-remodel/house-of-roses/evidence.json",
+      ".fashion-theme/evidence/house-of-roses/header-world-reel.png",
+      ".fashion-theme/evidence/house-of-roses/shop-desktop.png",
+      ".fashion-theme/evidence/house-of-roses/product-desktop.png",
+      ".fashion-theme/evidence/house-of-roses/product-mobile.png",
+      ".fashion-theme/evidence/house-of-roses/black-rose-jersey-desktop.png"
+    ]
+  },
+  "phases": [
+    {
+      "id": "v2-remodel-discovery",
+      "state": "PASSED",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        ".fashion-theme/",
+        "docs/design/v2-remodel/"
+      ],
+      "dependencies": [],
+      "outputs": [
+        "V1 benchmark",
+        "design-system contract",
+        "commerce journey gap map"
+      ],
+      "evidence": [],
+      "blockers": [],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-system",
+      "state": "HANDOFF_PENDING",
+      "owner": "fashion-design-system-engineer",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/assets/css/",
+        "docs/design/v2-remodel/design-system/"
+      ],
+      "dependencies": [
+        "v2-remodel-discovery"
+      ],
+      "outputs": [
+        "V2 source commerce state adapter",
+        "design-system preview/contract/evidence handoff"
+      ],
+      "evidence": [
+        "docs/design/v2-remodel/design-system/preview.html",
+        "docs/design/v2-remodel/design-system/contract.json",
+        "docs/design/v2-remodel/design-system/evidence.json"
+      ],
+      "blockers": [
+        "resolved: V2 minified CSS/JS build and parity command"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-commerce",
+      "state": "SOURCE_GATE_PASSED",
+      "owner": "woocommerce-theme-engineer",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/woocommerce/",
+        "wordpress-theme/skyyrose-flagship-2/functions.php"
+      ],
+      "dependencies": [
+        "v2-remodel-discovery",
+        "v2-remodel-system"
+      ],
+      "outputs": [
+        "Black Rose Jersey Series commerce reveal",
+        "V2 product-card archive adapter",
+        "V2 checkout and order-received shells",
+        "V2 account/service/wishlist shells"
+      ],
+      "evidence": [
+        "PHP lint every wordpress-theme/skyyrose-flagship-2 PHP template",
+        "node --check wordpress-theme/skyyrose-flagship-2/assets/js/theme.js"
+      ],
+      "blockers": [
+        "resolved: V2 minified asset build/parity command",
+        "live WooCommerce SKU/variation/cart/checkout state evidence",
+        "no local WordPress runtime in this worktree"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-experience",
+      "state": "HANDOFF_PENDING",
+      "owner": "fashion-frontend-engineer",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/front-page.php",
+        "wordpress-theme/skyyrose-flagship-2/template-collection.php",
+        "wordpress-theme/skyyrose-flagship-2/header.php",
+        "wordpress-theme/skyyrose-flagship-2/footer.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/"
+      ],
+      "dependencies": [
+        "v2-remodel-system"
+      ],
+      "outputs": [
+        "poster-first hero",
+        "native scene-to-product bridges",
+        "motion/media fallback"
+      ],
+      "evidence": [
+        "node --check assets/js/theme.js",
+        "PHP lint front-page.php and template-collection.php",
+        "2026-08-07: collection-specific hero/world/shop/invitation copy rendered through tools/v2-theme-preview.php for Signature, Black Rose, Love Hurts, and Kids Capsule",
+        "2026-08-07: each collection route renders its founder-directed optimized WebP hero plus a three-chapter Scroll World; local browser inspection confirmed pinned desktop state and non-motion controls"
+      ],
+      "blockers": [
+        "runtime SKU/variation/media/rights bindings remain WooCommerce/SOT-owned and are validated at staging handoff"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-catalog-binding",
+      "state": "HANDOFF_PENDING",
+      "owner": "catalog-sot-integrator",
+      "owned_paths": [
+        ".fashion-theme/catalog-binding.json",
+        ".fashion-theme/shot-manifest.json",
+        "docs/design/v2-remodel/reports/catalog-media-binding-audit.md"
+      ],
+      "dependencies": [
+        "v2-remodel-discovery"
+      ],
+      "outputs": [
+        "fail-closed catalog-media and hotspot binding ledger",
+        "Scroll World source intake"
+      ],
+      "evidence": [
+        "docs/design/v2-remodel/reports/catalog-media-binding-audit.md",
+        "docs/design/v2-remodel/reports/scroll-world-archive-intake.md",
+        ".fashion-theme/catalog-binding.json",
+        ".fashion-theme/shot-manifest.json"
+      ],
+      "blockers": [
+        "live Woo product/variation IDs",
+        "media rights records",
+        "conflicting Black Rose hotspot identities"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-sku-media-contract",
+      "state": "BLOCKED_BY_MISSING_REVIEWED_MEDIA",
+      "owner": "catalog-sot-integrator",
+      "owned_paths": [
+        "skyyrose/core/sku_media_contract.py",
+        "scripts/verify-sku-media-contract.py",
+        "tests/test_sku_media_contract.py",
+        "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+      ],
+      "dependencies": [
+        "v2-remodel-catalog-binding"
+      ],
+      "outputs": [
+        "catalog-derived multi-view SKU production matrix",
+        "approval-gated multi-model job payloads for on-model, mannequin, and 3D capture",
+        "fail-closed all-SKU coverage gate",
+        "review-target and promotion-field instructions for every missing view"
+      ],
+      "evidence": [
+        "2026-08-07: 33 SKUs indexed; 0 complete; 99 required views missing",
+        "2026-08-07: --jobs emitted 99 SKU-bound generation specifications, all ready_for_reviewed_generation",
+        "2026-08-07: focused media/SOT/catalog tests passed",
+        "2026-08-07: csv_readable, sot_images_current, collection_sot_current, and csv_image_columns_resolve passed"
+      ],
+      "blockers": [
+        "33 mannequin-front renders",
+        "33 mannequin-back renders",
+        "33 verified 3D product renders",
+        "founder review and catalog promotion for each generated candidate"
+      ],
+      "next_authority": "FOUNDER_REVIEW_BEFORE_PAID_GENERATION"
+    },
+    {
+      "id": "v2-remodel-independent-review",
+      "state": "PENDING",
+      "owner": "fashion-visual-qa-red-team",
+      "owned_paths": [
+        ".fashion-theme/evidence/"
+      ],
+      "dependencies": [
+        "v2-remodel-commerce",
+        "v2-remodel-experience"
+      ],
+      "outputs": [],
+      "evidence": [],
+      "blockers": [
+        "independent browser, accessibility, and commerce review remains pending staging deployment"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-journal-routes",
+      "state": "HANDOFF_PENDING",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/home.php",
+        "wordpress-theme/skyyrose-flagship-2/single.php",
+        "wordpress-theme/skyyrose-flagship-2/archive.php",
+        "wordpress-theme/skyyrose-flagship-2/search.php",
+        "wordpress-theme/skyyrose-flagship-2/404.php"
+      ],
+      "dependencies": [
+        "v2-remodel-discovery"
+      ],
+      "outputs": [
+        "V1 WordPress journal data rendered in V2 presentation",
+        "V2 search and recovery routes"
+      ],
+      "evidence": [
+        "PHP lint every wordpress-theme/skyyrose-flagship-2 PHP template"
+      ],
+      "blockers": [
+        "no local WordPress runtime in this worktree for visual evidence"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-founder-and-reservation-pages",
+      "state": "LOCAL_PROTOTYPE_RENDERED",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/page.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/v2-about.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/v2-preorder.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "tools/v2-theme-preview.php",
+        ".fashion-theme/shot-manifest.json"
+      ],
+      "dependencies": [
+        "v2-remodel-discovery",
+        "v2-remodel-catalog-binding"
+      ],
+      "outputs": [
+        "founder-led About route with the V1 Skyy Rose hero, The Blox premiere, four original press links, and all V1 About lookbook assets",
+        "truthful pre-order route with a Black Rose salon threshold and WooCommerce product authority"
+      ],
+      "evidence": [
+        "2026-08-07: actual local routes rendered at /tools/v2-theme-preview.php?route=about and route=pre-order",
+        "2026-08-07: PHP lint passed for route and partials; candidate source gate passed; shot manifest parsed"
+      ],
+      "blockers": [
+        "founder visual approval of the finished local pages",
+        "staging browser and transactional evidence before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-remodel-self-healing-gate",
+      "state": "SOURCE_GATE_PASSED",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        ".wolf/memory.md",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "dependencies": [
+        "v2-remodel-commerce",
+        "v2-remodel-journal-routes"
+      ],
+      "outputs": [
+        "repeatable V2 source gate",
+        "durable correction rules",
+        "collection-specific anti-generic source floor"
+      ],
+      "evidence": [
+        "2026-08-06: bash wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh => PASS V2 candidate source gate",
+        "2026-08-06: anti-generic floor verifies distinct hero and product-card directions for Signature, Black Rose, Love Hurts, and Kids Capsule"
+      ],
+      "blockers": [
+        "staging visual and commerce evidence is still pending deployment"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "v2-remodel-home-on-model-loop",
+      "state": "LOCAL_VISUAL_QA_PASSED",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/front-page.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/theme.min.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/",
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        ".fashion-theme/shot-manifest.json",
+        ".fashion-theme/evidence/v2-home-hero-1440.png",
+        ".fashion-theme/evidence/v2-home-hero-three-worlds-1440.png",
+        ".fashion-theme/evidence/v2-home-hero-three-worlds-390.png"
+      ],
+      "dependencies": [
+        "v2-remodel-experience",
+        "v2-remodel-catalog-binding",
+        "v2-remodel-self-healing-gate"
+      ],
+      "outputs": [
+        "V1-authority V2 homepage hero with continuously rotating catalog-bound Signature, Black Rose, and Love Hurts on-model looks",
+        "static three-collection opening index with Kids Capsule withheld for a separate founder-planned reveal",
+        "pause, focus, visibility, reduced-motion, save-data, tablet, and mobile fallbacks",
+        "rebuilt minified V2 CSS and JavaScript assets"
+      ],
+      "evidence": [
+        "2026-08-08: desktop 1440 browser QA verified sr-home-model-loop animation, zero page overflow, and stable explicit pause/resume",
+        "2026-08-08: mobile 390 browser QA verified static native horizontal scrolling, 228 x 400 cards, hidden duplicates/control, and zero page overflow",
+        "2026-08-08: Save-Data browser QA verified static motion, hidden duplicate loop, and hidden motion control",
+        "2026-08-08: PHP lint, JavaScript syntax, shot-manifest JSON, and V2 candidate source gate passed",
+        "2026-08-08: local Lighthouse snapshot scored 96 accessibility and 100 best practices; remaining title/meta and product-card label findings are preview/pre-existing surfaces outside this hero",
+        "2026-08-10: founder narrowed the top hero to Signature, Black Rose, and Love Hurts; Kids Capsule remains available elsewhere but is withheld from the hero loop and hero navigation for a later dedicated reveal",
+        "2026-08-10: browser QA at 1440 and 390 verified three originals, three loop duplicates, three index links, zero Kids hero elements, zero page overflow, and one Kids collection entry elsewhere on the homepage"
+      ],
+      "blockers": [
+        "founder visual approval",
+        "rights records for the three active catalog-derived on-model hero bytes",
+        "founder visual approval of the implemented Kids Capsule Royal Procession reveal",
+        "staging render and commerce evidence before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-house-of-roses-commerce-wave",
+      "state": "LOCAL_VISUAL_QA_PASSED_FOUNDER_REVIEW_REQUIRED",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/",
+        "wordpress-theme/skyyrose-flagship-2/woocommerce/",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.min.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/video/",
+        "tools/v2-theme-preview.php",
+        "docs/design/v2-remodel/house-of-roses/"
+      ],
+      "dependencies": [
+        "v2-remodel-commerce",
+        "v2-remodel-experience",
+        "v2-remodel-catalog-binding"
+      ],
+      "outputs": [
+        "four-scene global collection-monument header reel",
+        "four collection-owned WooCommerce product portal cards plus isolated Jersey Series presentation",
+        "collection-owned WooCommerce single-product purchase portal",
+        "dedicated eight-SKU Jersey Series BART film reveal and reproducible local film build",
+        "desktop and mobile browser evidence",
+        "reusable image-generation template and inspectable component blueprint"
+      ],
+      "evidence": [
+        "2026-08-10: actual local shop rendered four collection portals across at 1440px",
+        "2026-08-10: actual single-product template rendered at 1440px and product-first at 390px",
+        "2026-08-10: header menu rendered four SOT-bound combined monument scenes with pause and navigation controls",
+        "2026-08-10: Jersey film encoded at 1920x1080, H.264/yuv420p, 30fps, 16 seconds",
+        "2026-08-10: PHP lint, JavaScript syntax, JSON parsing, diff check, and V2 candidate source gate passed"
+      ],
+      "blockers": [
+        "founder visual approval",
+        "expanded-use rights records for monument scenes",
+        "Jersey Series source-byte rights and eyes-on SKU verification",
+        "same-candidate staging WooCommerce, accessibility, and performance evidence"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-home-kids-capsule-reveal",
+      "state": "LOCAL_CANDIDATE_VERIFIED_FOUNDER_REVIEW_REQUIRED",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "docs/design/v2-remodel/kids-capsule-reveal/plan.md",
+        "docs/design/v2-remodel/kids-capsule-reveal/contract.json",
+        "docs/design/v2-remodel/kids-capsule-reveal/evidence.json",
+        "wordpress-theme/skyyrose-flagship-2/front-page.php",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/home/kids-capsule-reveal.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.min.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-mascot-red-guard.webp",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-mascot-purple-guard.webp",
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        "tools/v2-theme-preview.php",
+        ".fashion-theme/shot-manifest.json",
+        ".wolf/memory.md",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "dependencies": [
+        "v2-remodel-home-on-model-loop",
+        "v2-remodel-catalog-binding",
+        "v2-remodel-sku-media-contract",
+        "v2-remodel-self-healing-gate"
+      ],
+      "outputs": [
+        "selected Royal Procession Chapter 04 implementation after the three-world hero and before the full collection rail",
+        "three-chapter invitation guardians and heir story with native scroll and explicit controls",
+        "archive mascot red and purple guardians visibly wearing collection-specific colorblock sets",
+        "exact kids-001 red guardian and kids-002 purple guardian WooCommerce authority boundary",
+        "desktop tablet mobile no-JS reduced-motion Save-Data missing-media and missing-product fallbacks",
+        "rebuilt minified CSS and front-page-only JavaScript within component budgets"
+      ],
+      "evidence": [
+        "2026-08-11: founder selected Direction C Royal Procession",
+        "2026-08-11: actual V2 homepage template rendered at 1440x1000 768x1024 and 390x844 with zero page overflow",
+        "2026-08-11: archive red and purple mascot visuals replaced inaccurate interim guardians and are bound to exact kids-001 and kids-002 Woo product proof",
+        "2026-08-11: keyboard reduced-motion Save-Data no-JS media-failure and missing-product evidence passed",
+        "2026-08-11: local Lighthouse scored 100 accessibility 100 best practices 100 SEO and 99 agentic browsing",
+        "2026-08-11: local trace measured 164ms LCP and 0.02 CLS; 120-frame transition sample recorded zero full-frame drops and no task over 50ms",
+        "2026-08-14: synchronized full-color heir-throne monument reduced reveal media to 470300 bytes; JS remains 1019 bytes gzip and component CSS 10228 bytes minified",
+        "2026-08-11: PHP JavaScript JSON source/minified and candidate regression gates passed"
+      ],
+      "blockers": [
+        "founder visual approval of the finished Royal Procession",
+        "homepage-use and rights records for archive mascot throne and playroom media",
+        "independent same-candidate visual accessibility and performance review",
+        "real staging WooCommerce SKU variation cart and purchase-path evidence",
+        "explicit founder authorization before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-immersive-route-journal-typography-closure",
+      "state": "LOCAL_SOURCE_EDIT_PENDING_CANDIDATE_CHECKPOINT",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-signature.php",
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-black-rose.php",
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-love-hurts.php",
+        "wordpress-theme/skyyrose-flagship-2/template-immersive-kids-capsule.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/journal-press-fallback.php",
+        "wordpress-theme/skyyrose-flagship-2/home.php",
+        "wordpress-theme/skyyrose-flagship-2/index.php",
+        "wordpress-theme/skyyrose-flagship-2/inc/presentation-registry.php",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+        "wordpress-theme/skyyrose-flagship-2/data/font-provenance.json",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/OFL-1.1.txt",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/FONT-ATTRIBUTIONS.md",
+        "tools/v2-theme-preview.php",
+        "docs/design/v2-remodel/reports/typography-open-source-contract.md",
+        ".fashion-theme/workspace-ledger.json",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "outputs": [
+        "four immersive world templates provisioned as fresh-install pages under worlds/{collection}",
+        "local preview harness dispatches immersive routes and preserves numeric 404 route identifiers",
+        "Journal press fallback is shared by home.php and index.php so imported page_for_posts keeps founder-approved PR coverage",
+        "collection-specific typography uses only provenance-verified page fonts; unproven custom scripts remain blocked as artwork pending founder approval",
+        "font license and attribution bundle is shipped with hashes and provenance metadata",
+        "workspace ledger now records the active source as dirty and pending a candidate checkpoint instead of falsely reporting clean"
+      ],
+      "evidence": [
+        "2026-08-15: npm run build and npm run verify passed with 510 translation messages and 4 CSS/7 JS min-sync",
+        "2026-08-15: immersive-signature, immersive-black-rose, immersive-love-hurts, immersive-kids-capsule, 404, and journal preview routes returned HTTP 200 with expected markup and no PHP warnings",
+        "2026-08-15: all nine font hashes and the bundled OFL license hash match data/font-provenance.json",
+        "2026-08-15: verify-v2-candidate.sh passed immersive template, shared Journal fallback, and transparency checks"
+      ],
+      "blockers": [
+        "fresh independent browser visual QA at 390/768/1440",
+        "candidate-bound SOT media rights and WooCommerce variation/cart evidence",
+        "founder approval for custom SkyyRose script artwork provenance",
+        "explicit founder authorization before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    }
+  ],
+  "journey_closures": [
+    {
+      "id": "v2-house-of-roses-selected-page",
+      "state": "LOCAL_CANDIDATE_VERIFIED_FOUNDER_REVIEW_REQUIRED",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/front-page.php",
+        "wordpress-theme/skyyrose-flagship-2/template-collection.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        "tools/v2-theme-preview.php",
+        ".wolf/memory.md",
+        "docs/design/v2-remodel/reports/commerce-journey-gap-map.md",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "dependencies": [
+        "v2-remodel-home-on-model-loop",
+        "v2-home-kids-capsule-reveal",
+        "v2-remodel-catalog-binding",
+        "v2-remodel-sku-media-contract",
+        "v2-remodel-self-healing-gate"
+      ],
+      "outputs": [
+        "selected House of Roses full-page homepage composition",
+        "three-world opening and verified on-model filmstrip",
+        "collection-scenery WooCommerce product portals",
+        "scene-only collection monument heroes with document-flow identity chapters",
+        "separate Kids Capsule and Jersey Series reveal chapters",
+        "stale-minified-asset safety fallback"
+      ],
+      "evidence": [
+        "2026-08-13: PHP lint and V2 candidate source gate passed",
+        "2026-08-13: all four monument frames rendered with scene and veil only",
+        "2026-08-13: Black Rose rendered with no Jersey Series and homepage portals rendered no Jersey cards",
+        "2026-08-13: actual local 390 768 and 1440 layouts had zero horizontal overflow and zero broken images",
+        "2026-08-13: local desktop Lighthouse scored 100 accessibility 100 best practices 100 SEO and 100 agentic browsing",
+        "2026-08-13: browser console contained no warnings errors or issues"
+      ],
+      "blockers": [
+        "founder visual approval",
+        "independent same-candidate visual accessibility and performance review",
+        "real staging WooCommerce SKU variation cart and purchase-path evidence",
+        "explicit founder authorization before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-approved-visual-edit-sync",
+      "state": "ENFORCED_LOCAL_CANDIDATE",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        ".fashion-theme/review-assets/kids-capsule-mascot-statue-v1.png",
+        ".fashion-theme/review-assets/kids-capsule-mascot-statue-v2-full-color.png",
+        ".fashion-theme/review-assets/kids-capsule-heir-throne-statue-v3-full-color.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/home/kids-capsule-reveal.php",
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        ".fashion-theme/shot-manifest.json",
+        "docs/design/v2-remodel/collection-imagery-lookbook.html",
+        "docs/design/v2-remodel/kids-capsule-reveal/contract.json",
+        "docs/design/v2-remodel/kids-capsule-reveal/evidence.json",
+        "docs/design/v2-remodel/kids-capsule-reveal/plan.md",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "dependencies": [
+        "v2-home-kids-capsule-reveal",
+        "v2-remodel-self-healing-gate"
+      ],
+      "outputs": [
+        "full-color Skyy heir seated on the supplied black-and-gold throne as the canonical active Kids monument",
+        "purple and red side outfit displays removed from the monument scene",
+        "bronze V1, standing full-color V2, and former throne V2 retained only as explicitly superseded historical evidence",
+        "collection hero, Royal Procession, lookbook, verification path, contract, evidence, and shot/design manifest synchronized to the V3 byte",
+        "approved-edit synchronization rule enforced for future founder-approved visual corrections"
+      ],
+      "evidence": [
+        "2026-08-14: supplied throne reference SHA-256 c88de33e1fd6eb2151c0d221e66120108526ec752dc312e18cb05d5774518100",
+        "2026-08-14: full-color throne review PNG is 1672x941 and SHA-256 915f4277585aa1806545430ee816bdb3c0a1499366fd7d5186ecbf9b2540c08a",
+        "2026-08-14: served WebP is 142022 bytes and SHA-256 fda7df7f2f0391e10c8e93121b0757242010d4c49e69d79beb8827a32d0b7936",
+        "2026-08-14: canonical mascot identity reference is SHA-256 072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8",
+        "2026-08-14: lookbook and runtime no longer bind the monochrome bronze, standing mascot, or former throne bytes",
+        "2026-08-14: shot manifest marks all earlier Kids monument directions SUPERSEDED_RETAINED_HISTORICAL and V3 APPROVED_FOR_V2_CANDIDATE"
+      ],
+      "blockers": [
+        "founder eyes-on approval of the rendered full-color monument",
+        "independent same-candidate visual QA before release",
+        "explicit founder authorization before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-ornate-product-reel-scene-motion-logo-alpha",
+      "state": "LOCAL_SOURCE_EDIT_PENDING_CANDIDATE_CHECKPOINT",
+      "owner": "fashion-theme-lead",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php",
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/template-collection.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/brand/",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/emblems/",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/",
+        "wordpress-theme/skyyrose-flagship-2/assets/sot/images/logos/",
+        "wordpress-theme/skyyrose-flagship-2/data/brand-asset-transparency.json",
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        "docs/design/v2-remodel/house-of-roses/component-contract.json",
+        "docs/design/v2-remodel/reports/commerce-journey-gap-map.md",
+        ".fashion-theme/v2-remodel-ledger.json"
+      ],
+      "outputs": [
+        "approved ornate-frame product card with Woo/SOT on-model primary and verified gallery reel only",
+        "collection Scroll World chapters with a Woo product-proof rail item in every scene",
+        "collection-specific hero motion: bridge-light flicker and rolling clouds, falling Love Hurts petals, restrained Signature glow, and Kids throne glow",
+        "reduced-motion and Save-Data fail-closed static behavior",
+        "transparent RGBA canvas for every standalone brand mark while photography stays opaque",
+        "machine-readable transparency manifest and candidate-gate alpha verification"
+      ],
+      "evidence": [
+        "2026-08-15: npm run build generated 4 CSS and 7 JS assets; POT 506 messages",
+        "2026-08-15: verify-v2-candidate.sh passed",
+        "2026-08-15: npm run verify passed registry, POT, min-sync, and marketplace structure checks",
+        "2026-08-15: PHP lint and git diff --check passed",
+        "2026-08-15: local preview returned HTTP 200 for Signature, Black Rose, Love Hurts, Kids Capsule, and Shop; every collection route emitted scene effects and nine product-proof references",
+        "2026-08-15: standalone logo/lockup/emblem alpha audit passed with alpha_min=0 and visible_nonzero_pixels=true",
+        "2026-08-15: data/brand-asset-transparency.json records all 14 standalone marks; verify-v2-candidate.sh checks file presence and alpha bytes when ImageMagick is available"
+      ],
+      "blockers": [
+        "fresh independent browser visual QA at 390/768/1440",
+        "candidate-bound SOT media rights and WooCommerce variation/cart evidence",
+        "founder visual approval",
+        "explicit founder authorization before deployment"
+      ],
+      "next_authority": "FOUNDER_VISUAL_REVIEW"
+    }
+  ]
+}

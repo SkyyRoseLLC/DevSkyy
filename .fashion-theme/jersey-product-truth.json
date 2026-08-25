@@ -1,0 +1,151 @@
+{
+  "schema": "skyyrose.fashion-theme.jersey-product-truth.v1",
+  "scope": "Jersey Series as a Black Rose release in the active Flagship 2 V2 candidate",
+  "verdict": "FAIL",
+  "authorities": {
+    "catalog": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "dossiers": "wordpress-theme/skyyrose-flagship/data/dossiers/",
+    "media": "assets/hub/manifest.json",
+    "generated_media_projection": "data/sot-images.json",
+    "logos_and_patches": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+    "v2_presentation_projection": "wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json"
+  },
+  "active_v2_evidence": {
+    "preview_url": "http://127.0.0.1:8099/tools/v2-theme-preview.php?route=black-rose",
+    "candidate_commit": "e09e2a21994830be5c2f8448c91f375b8588e317",
+    "registered_jersey_skus": 8,
+    "rendered_jersey_chapter_cards": 8,
+    "rendered_product_images": 0,
+    "empty_product_image_shells": 8,
+    "root_cause": "tools/v2-theme-preview.php constructs all eight Jersey WC_Product fixtures with image_id 0; functions.php then emits sr2-product__image-empty. The Jersey grid also bypasses the approved ornate template-parts/commerce/product-card.php component.",
+    "green_gold_status": "br-012 is present in the generated presentation registry and chapter list, but its garment is visually omitted because the fixture has no bound image. It has no founder-verified hub front or back asset yet."
+  },
+  "patch_assets": {
+    "mlb": "assets/products/techflats/hero-overlays/br-patch-mlb-baseball.png",
+    "nfl": "assets/products/techflats/hero-overlays/br-patch-nfl-football.png",
+    "nba": "assets/products/techflats/hero-overlays/br-patch-nba-basketball.png",
+    "hockey": "assets/products/techflats/hero-overlays/br-patch-hockey.png",
+    "serving_rule": "Resolve the format-specific patch beside each SKU folder through logo-registry.json sku_folders; never infer or substitute a real-league asset."
+  },
+  "products": {
+    "br-003": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black)",
+      "color": "Black with white piping",
+      "required_patch": {"logo_id": "mlb-authentic-collection-card", "placement": "front-left lower hem"},
+      "required_marks": ["white tackle-twill BLACK IS BEAUTIFUL on front", "gold SR monogram at back neck", "large white-thread Black Rose cluster at back center"],
+      "verified_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-003/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-003-onmodel.webp"}
+      ],
+      "blocked_media": [{"role": "back", "reason": "wrong jersey; no verified back pick"}],
+      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-003-baseball-classic.jpeg",
+      "unverified_3d": ["renders/3d/web/br-003.glb"]
+    },
+    "br-008": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)",
+      "color": "Bright red with black-and-white neckband and white triple-stripe cuffs",
+      "required_patch": {"logo_id": "nfl-authentic-collection-card", "placement": "front-left lower hem"},
+      "required_marks": ["rose-filled 80 on front and back", "black tackle-twill BLACK IS BEAUTIFUL on upper back"],
+      "verified_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-008/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-008-onmodel.webp"},
+        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-008/front-product-card-alt.png", "source": "renders/oai/_lookbook/onmodel/br-008-onmodel.png"}
+      ],
+      "blocked_media": [{"role": "back", "reason": "no verified use pick"}],
+      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-008-sf-inspired.jpg",
+      "unverified_3d": ["renders/3d/br-008.glb", "renders/3d/br-008-sf-inspired_meshy.glb", "renders/3d/web/br-008.glb"]
+    },
+    "br-009": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
+      "color": "White with solid black neckband and black-and-white cuff bands",
+      "required_patch": {"logo_id": "nfl-authentic-collection-card", "placement": "front-left lower hem"},
+      "required_marks": ["rose-filled 32 on front, back, and shoulders", "black SR monogram at back neck", "black tackle-twill BLACK IS BEAUTIFUL on upper back"],
+      "verified_media": [],
+      "blocked_media": [
+        {"role": "on_model_front", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-009-onmodel.webp", "reason": "official NFL-style Black Rose patch is missing; hub verdict is pending and eyes-on review confirms omission"},
+        {"role": "back", "reason": "no verified use pick"}
+      ],
+      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-009-last-oakland-football.jpg",
+      "unverified_3d": ["renders/3d/br-009.glb", "renders/3d/br-009-last-oakland-football_meshy.glb", "renders/3d/web/br-009.glb"]
+    },
+    "br-010": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 3. The Bay (Basketball)",
+      "color": "White with tonal-grey rose fade and gold/yellow wordmarks",
+      "required_patch": {"logo_id": "nba-authentic-collection-card", "placement": "front-left lower hem"},
+      "required_marks": ["gold/yellow THE BAY medallion on front", "black SR monogram at back neck", "gold/yellow BLACK IS BEAUTIFUL stacked on back"],
+      "verified_media": [
+        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-010/front-product-card-alt.png", "source": "renders/oai/_lookbook/onmodel/br-010-onmodel.png"}
+      ],
+      "blocked_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-010/front.webp", "reason": "demoted: THE BAY wordmark is white/grey instead of canonical gold/yellow"},
+        {"role": "back", "reason": "no verified use pick"}
+      ],
+      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-010-the-bay-basketball.jpeg",
+      "unverified_3d": ["renders/3d/br-010.glb", "renders/3d/br-010-the-bay-basketball_meshy.glb", "renders/3d/web/br-010.glb"]
+    },
+    "br-011": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 4. The Rose (Hockey)",
+      "color": "Black with teal/cyan and white accents",
+      "required_patch": {"logo_id": "hockey-championship-card", "placement": "front-left lower hem"},
+      "required_marks": ["teal rose medallion on front", "teal SR monogram at back neck", "teal BLACK IS BEAUTIFUL and rose-filled 0 on back"],
+      "verified_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-011/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-onmodel.webp"},
+        {"role": "back_product_view", "path": "assets/hub/collections/black-rose/products/br-011/back.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-the-rose-hockey-back.webp"},
+        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-011/front-product-card-alt.png", "source": "renders/oai/_lookbook/onmodel/br-011-onmodel.png"}
+      ],
+      "blocked_media": [],
+      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-the-rose-hockey.png",
+      "unverified_3d": ["renders/3d/br-011.glb", "renders/3d/br-011-the-rose-hockey_meshy.glb", "renders/3d/web/br-011.glb"]
+    },
+    "br-012": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+      "color": "Dark forest green with gold/yellow piping",
+      "required_patch": {"logo_id": "mlb-authentic-collection-card", "placement": "front-left lower hem"},
+      "required_marks": ["white tackle-twill BLACK IS BEAUTIFUL with black A and gold satin edge", "gold SR monogram at back neck", "white-thread Black Rose cluster with gold cloud at back center"],
+      "verified_media": [],
+      "blocked_media": [
+        {"role": "front", "reason": "hub requires a new render from the existing canonical front references; no founder-verified use pick"},
+        {"role": "back", "reason": "hub requires a new render from the existing canonical back references; no founder-verified use pick"}
+      ],
+      "canonical_reference_media": [
+        "assets/products/references/br-012-techflat.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-front.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/jersey-last-oakland-baseball-front-model.webp"
+      ],
+      "unverified_3d": ["renders/3d/br-012.glb", "renders/3d/br-012-last-oakland-baseball-front_meshy.glb", "renders/3d/web/br-012.glb"]
+    },
+    "br-014": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Giants)",
+      "color": "Black with bright orange piping",
+      "required_patch": {"logo_id": "mlb-authentic-collection-card", "placement": "front-left lower hem"},
+      "required_marks": ["bright-orange tackle-twill BLACK IS BEAUTIFUL on front", "orange SR monogram at back neck", "large white-thread Black Rose cluster at back center"],
+      "verified_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-014/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-014-onmodel.webp"},
+        {"role": "mannequin_front", "path": "assets/hub/collections/black-rose/products/br-014/front-product-card-alt.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-014-ghost-front.webp"}
+      ],
+      "blocked_media": [{"role": "back", "reason": "no founder-verified hub back asset"}],
+      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-014-baseball-classic-giants.jpeg",
+      "unverified_3d": ["renders/3d/br-014.glb", "renders/3d/br-014-baseball-classic-giants_meshy.glb", "renders/3d/web/br-014.glb"]
+    },
+    "br-015": {
+      "canonical_name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (White)",
+      "color": "White with black piping",
+      "required_patch": {"logo_id": "mlb-authentic-collection-card", "placement": "front-left lower hem"},
+      "required_marks": ["black tackle-twill BLACK IS BEAUTIFUL on front", "black SR monogram at back neck", "large black-thread Black Rose cluster at back center"],
+      "verified_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-015/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-015-onmodel.webp"},
+        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-015/front-product-card-alt.png", "source": "renders/oai/_lookbook/onmodel/br-015-onmodel.png"}
+      ],
+      "blocked_media": [{"role": "back", "reason": "no founder-verified hub back asset"}],
+      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-015-baseball-classic-white.jpeg",
+      "unverified_3d": ["renders/3d/br-015.glb", "renders/3d/br-015-baseball-classic-white_meshy.glb", "renders/3d/web/br-015.glb"]
+    }
+  },
+  "implementation_map": [
+    "Bind the local preview Jersey fixtures to hub-verified media only; keep br-009 and br-012 visibly blocked instead of substituting another garment.",
+    "Render the Jersey grid through the approved ornate product-card component or a Jersey variant of the same component, preserving the eight-SKU registry order.",
+    "For br-009, replace the missing-patch front render using the canonical NFL-style Black Rose patch and dossier placement, then require founder verification before promotion.",
+    "For br-012, mine the existing green/gold front, back, techflat, patch, and 3D references; produce front/on-model and back candidates only through the founder-gated image pipeline, then add verified hub verdicts before serving.",
+    "Do not promote any renders/3d asset: all eight 3D files are present but none has a verified hub verdict.",
+    "Preserve WooCommerce ownership of live IDs, price, stock, variations, cart, checkout, and Product schema."
+  ]
+}

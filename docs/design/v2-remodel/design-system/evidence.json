@@ -1,0 +1,27 @@
+{
+  "id": "sr2-v2-remodel-system-evidence",
+  "candidate": "0074fc6e6b161266f9181303296941cd474208af",
+  "phase": "v2-remodel-system",
+  "attempt": 1,
+  "status": "PARTIAL",
+  "artifacts": [
+    { "id": "source-commerce-adapter", "path": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css", "state": "IMPLEMENTED_SOURCE_ONLY" },
+    { "id": "system-contract", "path": "docs/design/v2-remodel/design-system/contract.json", "state": "IMPLEMENTED" },
+    { "id": "system-preview", "path": "docs/design/v2-remodel/design-system/preview.html", "state": "IMPLEMENTED" }
+  ],
+  "checks": [
+    { "id": "existing-token-census", "state": "OBSERVED", "result": "Existing V2 design-tokens.css is canonical for this adapter; no parallel token file was created." },
+    { "id": "v2-css-build-discovery", "state": "BLOCKED", "result": "wordpress-theme/skyyrose-flagship/scripts/build-css.js targets the V1 theme root only. No V2 CSS build/check entrypoint exists." },
+    { "id": "minified-parity", "state": "BLOCKED", "result": "theme.min.css is not regenerated. Source styles are available to SCRIPT_DEBUG and this local preview; production minified parity requires an approved V2 build target." },
+    { "id": "css-static-lint", "state": "BLOCKED", "result": "No installed stylelint binary or PostCSS parser was available; no dependency installation was attempted. A brace-balance check passed (598 opening and 598 closing braces), but that is not a lint pass." },
+    { "id": "json-parse", "state": "PASS", "result": "Node JSON.parse passed for contract.json and evidence.json." },
+    { "id": "preview-stable-ids", "state": "PASS", "result": "Preview contains preview-product-default, preview-product-media-fallback, preview-variation, preview-cart and preview-service." },
+    { "id": "browser-a11y-responsive", "state": "UNVERIFIED", "result": "Requires rendered WooCommerce routes at 390x844, 768x1024 and 1440x900 plus keyboard, forced-colors, reduced-motion and live transaction evidence." }
+  ],
+  "unresolvedAuthority": [
+    "SKU-to-Woo-product-to-variation-to-approved-media binding",
+    "WooCommerce staging cart/checkout/payment/account/returns evidence",
+    "V2 CSS minification/build parity"
+  ],
+  "nextRunnableGap": "Wire canonical WooCommerce template adapters to the stable sr2-c-* selectors, then run the stated staging matrix."
+}

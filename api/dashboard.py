@@ -636,7 +636,9 @@ async def execute_agent_task(agent_type: SuperAgentTypeLiteral, request: Execute
 # =============================================================================
 
 
-@dashboard_router.get("/tools", response_model=list[ToolInfo])
+@dashboard_router.get(
+    "/tools", response_model=list[ToolInfo], operation_id="dashboard_api_v1_tools_list"
+)
 async def list_tools():
     """List all available tools across all agents"""
     all_tools: list[ToolInfo] = []
@@ -662,7 +664,7 @@ async def get_tools_by_category(category: str):
     return tools
 
 
-@dashboard_router.post("/tools/test")
+@dashboard_router.post("/tools/test", operation_id="dashboard_api_v1_tools_test")
 async def test_tool(tool_name: str, parameters: dict[str, Any] | None = None):
     """Test a tool with given parameters"""
     if parameters is None:

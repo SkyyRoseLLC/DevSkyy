@@ -318,6 +318,11 @@ export const MonitoringMetricsResponseSchema = z.object({
     summary: z.record(z.string(), z.unknown()),
 });
 
+// Context.dev structured web extraction
+export const ContextDevExtractionResponseSchema = z.object({
+    data: z.record(z.string(), z.unknown()),
+});
+
 // Autonomous Operation Schemas
 export const AutonomousOperationSchema = z.object({
     id: z.string(),

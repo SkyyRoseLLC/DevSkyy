@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0.0",
+  "contract_id": "skyyrose-v2-house-of-roses-commerce",
+  "candidate": "UNFROZEN: requires an immutable candidate hash before evidence can pass",
+  "reference": "exec-ab34f21f-ce1f-40b6-8890-d4c9e101d22f.png",
+  "components": [
+    {
+      "id": "hor-header-reel-01",
+      "surface": "global-header",
+      "contract": "Four founder-directed combined monument scenes; no duplicated frames presented as an eight-scene SOT.",
+      "runtime_hook": "[data-house-header-reel]",
+      "fallbacks": ["native horizontal rail", "reduced motion static rail", "Save-Data static rail"]
+    },
+    {
+      "id": "hor-product-portals-01",
+      "surface": "product-card",
+      "contract": "The approved ornate collection frame: a WooCommerce-authoritative card opens on the verified on-model product image, then exposes up to two verified gallery views on hover/focus/touch. The frame crest, product media, price, stock, add-to-cart, and link remain collection-specific and SOT/Woo-owned.",
+      "runtime_hook": ".sr2-c-product-portal[data-presentation]",
+      "card_direction": "ornate-frame",
+      "interaction": "primary on-model view -> hover/focus view reel; static multi-view strip for reduced-motion/coarse-pointer clients",
+      "presentations": ["signature", "black-rose", "love-hurts", "kids-capsule", "jersey-series"]
+    },
+    {
+      "id": "hor-pdp-portal-01",
+      "surface": "single-product",
+      "contract": "A 7/5 gallery-to-purchase spread preserving WooCommerce hook order, product type, variation, stock, cart, meta, tabs, upsells, and related-product authority.",
+      "runtime_hook": ".sr2-pdp-product--portal[data-presentation]",
+      "responsive": ["desktop 7/5 spread", "mobile product-first stack"]
+    },
+    {
+      "id": "hor-jersey-film-01",
+      "surface": "jersey-series-reveal",
+      "contract": "Dedicated Black Rose release chapter: Skyy Rose Tour Around the Bay previsualization and eight-SKU commerce rail; the fictional house train has no transit affiliation, and jersey SKUs never inherit core Black Rose portal artifacts.",
+      "runtime_hook": ".sr2-house-film[data-house-film]",
+      "sku_scope": ["br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"]
+    },
+    {
+      "id": "hor-brand-mark-transparency-01",
+      "surface": "brand-assets",
+      "contract": "Every standalone SkyyRose logo, collection lockup, emblem, graphic mark, and header wordmark is served with an RGBA alpha channel and a transparent canvas. Collection hero and editorial photography remain intentionally opaque scene assets.",
+      "runtime_hook": "assets/sot/{brand,images/emblems,images/lockups,images/logos}",
+      "verification": "alpha_min=0 and visible_nonzero_pixels=true for every standalone mark; no scene or hero backdrop is classified as a logo"
+    }
+  ],
+  "hard_fails": [
+    "invented or filename-inferred product media",
+    "jersey SKU presented as a generic Black Rose card instead of the dedicated release chapter",
+    "duplicated header scene presented as a distinct approved asset",
+    "scroll interception",
+    "autoplay audio",
+    "price, stock, variation, or cart truth detached from WooCommerce"
+  ]
+}
