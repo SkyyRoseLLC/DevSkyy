@@ -54,8 +54,9 @@ SKYYROSE_STAGING_API_BASE_URL = "https://staging-api.devskyy.app"
 SKYYROSE_STAGING_API_V1_URL = "https://staging-api.devskyy.app/api/v1"
 SKYYROSE_STAGING_API_PREFIX = "/api/v1"
 SKYYROSE_STAGING_WS_URL = "wss://staging-api.devskyy.app"
-SKYYROSE_STAGING_WORDPRESS_SITE = "https://staging.skyyrose.com"
+SKYYROSE_STAGING_WORDPRESS_SITE = "https://staging-7e48-skyyrose.wpcomstaging.com"
 SKYYROSE_STAGING_WORDPRESS_URL = "https://staging-7e48-skyyrose.wpcomstaging.com"
+SKYYROSE_STAGING_WORDPRESS_CUSTOM_DOMAIN = "https://staging.skyyrose.com"
 
 # Browser-safe defaults consumed by the Next.js frontend. Server-side
 # credentials remain unset and must come from the host secret manager.
