@@ -57,6 +57,9 @@ SKYYROSE_STAGING_WS_URL = "wss://staging-api.devskyy.app"
 SKYYROSE_STAGING_WORDPRESS_SITE = "https://staging-7e48-skyyrose.wpcomstaging.com"
 SKYYROSE_STAGING_WORDPRESS_URL = "https://staging-7e48-skyyrose.wpcomstaging.com"
 SKYYROSE_STAGING_WORDPRESS_CUSTOM_DOMAIN = "https://staging.skyyrose.com"
+SKYYROSE_STAGING_SSH_USER = "staging-7e48-skyyrose.wordpress.com"
+SKYYROSE_STAGING_SSH_HOST = "ssh.wp.com"
+SKYYROSE_STAGING_SSH_COMMAND = "ssh staging-7e48-skyyrose.wordpress.com@ssh.wp.com"
 
 # Browser-safe defaults consumed by the Next.js frontend. Server-side
 # credentials remain unset and must come from the host secret manager.
