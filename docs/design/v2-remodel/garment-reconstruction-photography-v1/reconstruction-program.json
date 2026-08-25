@@ -1,0 +1,92 @@
+{
+  "schema": "skyyrose.verified-garment-reconstruction-photography.v1",
+  "status": "ACTIVE_CANDIDATE_ONLY",
+  "founder_authorization": {
+    "date": "2026-08-25",
+    "authorization": "verified_garment_reconstruction_and_controlled_physical_product_photography",
+    "does_not_authorize": [
+      "image_generation",
+      "paid_external_call",
+      "Gemini_use",
+      "scene_asset_wiring",
+      "deployment",
+      "remote_upload",
+      "manifest_promotion",
+      "rejected_preview_or_composite_reuse"
+    ]
+  },
+  "source_lock": {
+    "product_sot_path": "data/product-sot.json",
+    "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+    "invalidates_on_drift": true
+  },
+  "accepted_exact_authority_tiers": [
+    "manufacturer_pattern_or_cad",
+    "verified_photogrammetry_or_3d_scan",
+    "clo_or_marvelous_source_file_with_provenance",
+    "founder_approved_measured_mesh",
+    "controlled_physical_product_photography"
+  ],
+  "rejected_as_reconstruction_authority": [
+    "ghost_or_mannequin_reference",
+    "single_view_product_image",
+    "generated_image",
+    "semantic_redraw",
+    "placeholder",
+    "founder_rejected_preview",
+    "founder_rejected_protected_composite"
+  ],
+  "required_capture_views": ["front", "left", "right", "back", "top", "bottom"],
+  "common_capture_requirements": [
+    "same physical sellable SKU, colorway, configuration, and documented size across the full set",
+    "neutral-light colour-card frame",
+    "physical ruler or known scale in every geometry view",
+    "full-resolution source retained locally and sha256-bound in the receipt",
+    "no warped perspective or unverified retouching",
+    "construction, logo/text, trim, material, and hardware details captured before reconstruction"
+  ],
+  "receipt_requirements": {
+    "relative_path": "evidence/<sku>/capture-receipt.json",
+    "required_fields": [
+      "sku",
+      "physical_size",
+      "colorway_or_configuration",
+      "capture_method",
+      "authority_tier",
+      "operator",
+      "captured_at",
+      "files",
+      "geometry_views",
+      "construction_detail_ids",
+      "surface_detail_ids"
+    ],
+    "required_file_fields": ["id", "relative_path", "sha256", "kind"],
+    "required_geometry_views": ["front", "left", "right", "back", "top", "bottom"],
+    "required_file_kinds": ["geometry", "colour_scale", "construction", "surface"]
+  },
+  "reconstruction_release_requirements": [
+    "geometry review: silhouette, panel topology, seams, cuffs, pockets, closures, and hardware agree with all verified views",
+    "UV and texture review: exact print, embroidery, patch, label, and color placement agree with verified close-ups",
+    "PBR review: base colour, roughness, normal, metallic, opacity, and material-response maps are documented where applicable",
+    "render review: orthographic and scene-light validation renders agree with the verified evidence without unreadable lettering or invented features",
+    "independent product-fidelity review is recorded before any same-pose on-model or scene workflow"
+  ],
+  "sku_requirements": [
+    {"sku":"br-001","collection":"black-rose","category":"crewneck","visible_risks":["front and back graphic placement","neck/cuff/hem construction","fleece material response"],"existing_sot_views":["packshot_front","on_model_front","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"br-002","collection":"black-rose","category":"joggers","visible_risks":["side seam and pocket construction","waistband/drawcord","leg silhouette"],"existing_sot_views":["packshot_front","packshot_back","on_model_front_is_ghost","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"br-005","collection":"black-rose","category":"hoodie","visible_risks":["hood construction","front/back graphics","pockets and cuffs"],"existing_sot_views":["packshot_front","packshot_back","on_model_front_is_ghost","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"br-007","collection":"black-rose","category":"top","visible_risks":["OAKLAND and Love Hurts lettering","front/back print placement","sleeve/neck construction"],"existing_sot_views":["packshot_front","packshot_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"lh-003","collection":"love-hurts","category":"shorts","visible_risks":["Love Hurts branding","waistband/drawcord","pocket/hem construction"],"existing_sot_views":["packshot_front","packshot_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"lh-005","collection":"love-hurts","category":"fanny_pack","visible_risks":["FANNIE lettering","zipper/hardware","strap and pouch geometry"],"existing_sot_views":["packshot_front"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-009","collection":"signature","category":"sherpa_jacket","visible_risks":["pile texture","zipper/hardware","front/back branding"],"existing_sot_views":["packshot_front","packshot_back","on_model_front","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-007","collection":"signature","category":"beanie","visible_risks":["knit texture","logo placement","crown and cuff construction"],"existing_sot_views":["packshot_front","on_model_front","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-013","collection":"signature","category":"crewneck","visible_risks":["mint/lavender color split","print placement","cuff and hem geometry"],"existing_sot_views":["packshot_front","on_model_front"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-014","collection":"signature","category":"sweatpants","visible_risks":["mint/lavender color split","side/pocket construction","waistband/leg silhouette"],"existing_sot_views":["packshot_front","on_model_front_is_ghost"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-006","collection":"signature","category":"hoodie","visible_risks":["mint/lavender color split","hood/pocket construction","front/back detail"],"existing_sot_views":["packshot_front","packshot_back","on_model_front","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-001","collection":"signature","category":"shorts","visible_risks":["Bay Bridge artwork placement","waistband/pocket/hem construction","front/back silhouette"],"existing_sot_views":["packshot_front","packshot_back","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-002","collection":"signature","category":"shirt","visible_risks":["Stay Golden artwork","front/back print placement","neck/sleeve construction"],"existing_sot_views":["packshot_front","on_model_front","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-003","collection":"signature","category":"shorts","visible_risks":["Stay Golden artwork","waistband/pocket/hem construction","front/back silhouette"],"existing_sot_views":["packshot_front","on_model_front","on_model_back"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-005","collection":"signature","category":"shirt","visible_risks":["Bay Bridge artwork","front/back print placement","neck/sleeve construction"],"existing_sot_views":["packshot_front","on_model_front"],"status":"AWAITING_VERIFIED_CAPTURE"},
+    {"sku":"sg-015","collection":"signature","category":"windbreaker_set","visible_risks":["jacket/pant configuration","zipper/hardware","reflective or technical material response"],"existing_sot_views":["packshot_front","on_model_front"],"status":"AWAITING_VERIFIED_CAPTURE"}
+  ]
+}

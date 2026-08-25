@@ -1,0 +1,61 @@
+{
+  "sku": "replace-with-exact-sku",
+  "physical_size": "replace-with-size-as-photographed",
+  "colorway_or_configuration": "replace-with-exact-sellable-configuration",
+  "capture_method": "controlled_physical_product_photography_or_verified_photogrammetry",
+  "authority_tier": "controlled_physical_product_photography",
+  "operator": "replace-with-accountable-operator",
+  "captured_at": "YYYY-MM-DDThh:mm:ssZ",
+  "geometry_views": ["front", "left", "right", "back", "top", "bottom"],
+  "construction_detail_ids": [
+    "neck_or_waistband",
+    "inside_label",
+    "seams_and_hem",
+    "pockets_or_closures",
+    "hardware_or_drawcord"
+  ],
+  "surface_detail_ids": [
+    "neutral_colour_card",
+    "all_logo_text_and_artwork",
+    "material_microtexture",
+    "trim_or_patch"
+  ],
+  "files": [
+    {
+      "id": "front-geometry-with-scale",
+      "relative_path": "source/replace-with-front-file.ext",
+      "sha256": "replace-with-lowercase-sha256-of-local-file",
+      "kind": "geometry"
+    },
+    {
+      "id": "neutral-colour-card",
+      "relative_path": "source/replace-with-colour-card-file.ext",
+      "sha256": "replace-with-lowercase-sha256-of-local-file",
+      "kind": "colour_scale"
+    },
+    {
+      "id": "construction-detail",
+      "relative_path": "source/replace-with-construction-detail-file.ext",
+      "sha256": "replace-with-lowercase-sha256-of-local-file",
+      "kind": "construction"
+    },
+    {
+      "id": "surface-detail",
+      "relative_path": "source/replace-with-surface-detail-file.ext",
+      "sha256": "replace-with-lowercase-sha256-of-local-file",
+      "kind": "surface"
+    }
+  ],
+  "reconstruction_artifacts": {
+    "pattern_or_scan_provenance": "pending until exact source is received",
+    "mesh_sha256": null,
+    "uv_review_receipt": null,
+    "pbr_review_receipt": null,
+    "render_review_receipt": null
+  },
+  "promotion": {
+    "scene_candidate_allowed": false,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}

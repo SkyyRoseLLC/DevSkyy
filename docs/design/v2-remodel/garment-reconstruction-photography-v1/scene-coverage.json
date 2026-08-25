@@ -1,0 +1,15 @@
+{
+  "schema": "skyyrose.reconstruction-scene-coverage.v1",
+  "candidate_only": true,
+  "not_a_scene_authorization": true,
+  "scene_dependencies": [
+    {"scene_id":"BR-COMMERCE-1","required_skus":["br-001","br-002"],"source_blockers":["BR_001_AND_BR_002_PROTECTED_GARMENT_MATTES_MISSING","BR_002_SAME_POSE_ON_MODEL_SOURCE_MISSING"]},
+    {"scene_id":"BR-COMMERCE-2","required_skus":["br-005","br-007"],"source_blockers":["APPROVED_ON_MODEL_TARGET_MISSING","BR_005_AND_BR_007_PROTECTED_GARMENT_MATTES_MISSING","NO_SAME_POSE_COMBINED_LOOK_AUTHORITY"]},
+    {"scene_id":"LH-COMMERCE-2","required_skus":["lh-003"],"source_blockers":["APPROVED_ON_MODEL_TARGET_MISSING","LH_003_PROTECTED_GARMENT_MATTE_MISSING"]},
+    {"scene_id":"LH-COMMERCE-3","required_skus":["lh-005"],"source_blockers":["LH_005_PROTECTED_GARMENT_AND_ACCESSORY_MATTE_MISSING","LH_005_ONMODEL_SOURCE_REQUIRES_CURRENT_SOT_MAPPING_CONFIRMATION"]},
+    {"scene_id":"SIG-COMMERCE-1","required_skus":["sg-009","sg-007"],"source_blockers":["SG_009_AND_SG_007_PROTECTED_GARMENT_MATTES_MISSING","NO_VERIFIED_SAME_POSE_COMBINED_LOOK_SOURCE"]},
+    {"scene_id":"SIG-COMMERCE-2","required_skus":["sg-013","sg-014","sg-006"],"source_blockers":["SG_013_SG_014_COMBINED_ON_MODEL_SOURCE_MISSING","SG_014_PROTECTED_GARMENT_MATTE_MISSING","SG_006_PROTECTED_GARMENT_MATTE_MISSING"]},
+    {"scene_id":"SIG-COMMERCE-3","required_skus":["sg-001","sg-002","sg-003","sg-005","sg-015"],"source_blockers":["SG_001_SG_003_LACK_APPROVED_ON_MODEL_TARGETS","ALL_FIVE_PRODUCT_IDENTITIES_LACK_PROTECTED_GARMENT_MATTES","NO_VERIFIED_THREE_LOOK_SAME_SCENE_SOURCE","POSE_CHANGE_FOR_RECOMPOSITION_IS_NOT_AUTHORIZED"]}
+  ],
+  "rule": "A verified garment evidence pass can resolve only the matching garment-source / matte prerequisite. Each combined-pose, physical integration, exact scene authority, product fidelity, native integration, founder, wiring, and deployment gate remains independent."
+}
