@@ -588,7 +588,12 @@ def _get_agents_snapshot() -> AgentListResponse:
     return _agents_cache["data"]
 
 
-@router.get("/agents", response_model=AgentListResponse, status_code=status.HTTP_200_OK)
+@router.get(
+    "/agents",
+    response_model=AgentListResponse,
+    status_code=status.HTTP_200_OK,
+    operation_id="monitoring_v1_agents_list",
+)
 async def list_agents(
     user: TokenPayload = Depends(get_current_user),
 ) -> AgentListResponse:

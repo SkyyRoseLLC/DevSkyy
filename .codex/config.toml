@@ -26,7 +26,43 @@ CANON_PREFETCH_DISABLE = "1"
 PROMPT_ENG_NUDGE_DISABLE = "1"
 ENABLE_TOOL_SEARCH = "true"
 
-# Runtime and environment URLs (frequently used by commands and scripts).
+# Safe local default. Change explicitly for a production operation; this preset
+# does not grant credentials, deployment permission, or provider access.
+SKYYROSE_ACTIVE_ENV = "staging"
+SKYYROSE_DEFAULT_ENV = "staging"
+SKYYROSE_DEPLOY_TARGET = "staging"
+SKYYROSE_ENV_PRODUCTION = "production"
+SKYYROSE_ENV_STAGING = "staging"
+SKYYROSE_ENV_DASHBOARD = "dashboard"
+
+# Production stack (canonical + readable).
+SKYYROSE_PRODUCTION_FRONTEND_URL = "https://app.devskyy.app"
+SKYYROSE_PRODUCTION_DASHBOARD_URL = "https://app.devskyy.app"
+SKYYROSE_PRODUCTION_API_URL = "https://api.devskyy.app"
+SKYYROSE_PRODUCTION_API_BASE_URL = "https://api.devskyy.app"
+SKYYROSE_PRODUCTION_API_V1_URL = "https://api.devskyy.app/api/v1"
+SKYYROSE_PRODUCTION_API_PREFIX = "/api/v1"
+SKYYROSE_PRODUCTION_WS_URL = "wss://api.devskyy.app"
+SKYYROSE_PRODUCTION_WORDPRESS_SITE = "https://skyyrose.co"
+SKYYROSE_PRODUCTION_WORDPRESS_URL = "https://skyyrose.com"
+
+# Staging stack (canonical + readable).
+SKYYROSE_STAGING_FRONTEND_URL = "https://staging.devskyy.app"
+SKYYROSE_STAGING_DASHBOARD_URL = "https://staging.devskyy.app"
+SKYYROSE_STAGING_API_URL = "https://staging-api.devskyy.app"
+SKYYROSE_STAGING_API_BASE_URL = "https://staging-api.devskyy.app"
+SKYYROSE_STAGING_API_V1_URL = "https://staging-api.devskyy.app/api/v1"
+SKYYROSE_STAGING_API_PREFIX = "/api/v1"
+SKYYROSE_STAGING_WS_URL = "wss://staging-api.devskyy.app"
+SKYYROSE_STAGING_WORDPRESS_SITE = "https://staging.skyyrose.com"
+SKYYROSE_STAGING_WORDPRESS_URL = "https://staging-7e48-skyyrose.wpcomstaging.com"
+
+# Browser-safe defaults consumed by the Next.js frontend. Server-side
+# credentials remain unset and must come from the host secret manager.
+NEXT_PUBLIC_API_URL = "https://staging-api.devskyy.app"
+NEXT_PUBLIC_WS_URL = "wss://staging-api.devskyy.app"
+
+# Legacy compatibility keys used by existing scripts.
 SKYYROSE_PROD_FRONTEND_URL = "https://app.devskyy.app"
 SKYYROSE_PROD_DASHBOARD_URL = "https://app.devskyy.app"
 SKYYROSE_PROD_API_URL = "https://api.devskyy.app"
@@ -35,31 +71,43 @@ SKYYROSE_PROD_API_V1_URL = "https://api.devskyy.app/api/v1"
 SKYYROSE_PROD_WORDPRESS_URL = "https://skyyrose.com"
 SKYYROSE_PROD_WORDPRESS_SITE = "https://skyyrose.co"
 SKYYROSE_WP_STAGING_PUBLIC_URL = "https://staging.skyyrose.com"
-SKYYROSE_STAGING_FRONTEND_URL = "https://staging.devskyy.app"
-SKYYROSE_STAGING_DASHBOARD_URL = "https://staging.devskyy.app"
-SKYYROSE_STAGING_API_URL = "https://staging-api.devskyy.app"
-SKYYROSE_STAGING_API_BASE_URL = "https://staging-api.devskyy.app"
-SKYYROSE_STAGING_API_V1_URL = "https://staging-api.devskyy.app/api/v1"
-SKYYROSE_STAGING_WORDPRESS_URL = "https://staging-7e48-skyyrose.wpcomstaging.com"
-SKYYROSE_STAGING_WORDPRESS_SITE = "https://staging.skyyrose.com"
-SKYYROSE_WPCLI_HOST = "skyyrose.wordpress.com"
 SKYYROSE_STAGING_WPCLI_HOST = "staging-7e48-skyyrose.wordpress.com"
+SKYYROSE_WPCLI_HOST = "skyyrose.wordpress.com"
 
-# Imagery / 3D pipeline endpoints and known provider URLs.
+# Imagery pipeline aliases for non-secret lookup.
 SKYYROSE_TRIPO_API_BASE_URL = "https://api.tripo3d.ai/v2"
 SKYYROSE_TRIPO_API_OPENAPI_URL = "https://api.tripo3d.ai/v2/openapi"
 SKYYROSE_TRIPO_DASHBOARD_URL = "https://www.tripo3d.ai/dashboard"
 SKYYROSE_TRIPO_DOCS_URL = "https://platform.tripo3d.ai/docs/api"
 SKYYROSE_MESHY_API_URL = "https://api.meshy.ai"
+SKYYROSE_IMAGERY_PIPELINES = "tripo,meshy"
+SKYYROSE_IMAGERY_PIPELINE = "tripo"
+TRIPO_API_BASE_URL = "https://api.tripo3d.ai/v2/openapi"
+TRIPO_API_TIMEOUT = "120"
+IMAGERY_PROVIDER = "tripo"
+IMAGERY_MODE = "host-secret-store"
 
-# Higgsfield / multimodel workflow metadata (non-secret capabilities map).
+# Higgsfield / multimodel metadata.
 SKYYROSE_HIGGSFIELD_WEB_URL = "https://higgsfield.ai"
 SKYYROSE_HIGGSFIELD_API_URL = "https://api.higgsfield.ai"
+HIGGSFIELD_API_URL = "https://api.higgsfield.ai"
+HIGGSFIELD_AUTH_MODE = "host-secret-store"
 SKYYROSE_MULTIMODEL_PIPELINE = "llm-round-table"
 SKYYROSE_MULTIMODEL_CAPABILITIES = "text-to-text,text-to-image,image-to-image,vision-routing,3d-generation"
 SKYYROSE_MULTIMODEL_PROVIDERS = "OPENAI,ANTHROPIC,GOOGLE_AI,GROQ,MISTRAL,COHERE"
+MULTIMODEL_PIPELINE = "llm-round-table"
+MULTIMODEL_AUTH_MODE = "host-secret-store"
 
-# Backward-compatible aliases used by scripts.
+# Short compatibility aliases for manual prompts and helper scripts.
+PRODUCTION_FRONTEND_URL = "https://app.devskyy.app"
+PRODUCTION_DASHBOARD_URL = "https://app.devskyy.app"
+PRODUCTION_API_URL = "https://api.devskyy.app"
+PRODUCTION_API_V1_URL = "https://api.devskyy.app/api/v1"
+PRODUCTION_WORDPRESS_URL = "https://skyyrose.co"
+PRODUCTION_WORDPRESS_HOST = "skyyrose.com"
 STAGING_FRONTEND_URL = "https://staging.devskyy.app"
+STAGING_DASHBOARD_URL = "https://staging.devskyy.app"
 STAGING_API_URL = "https://staging-api.devskyy.app"
+STAGING_API_V1_URL = "https://staging-api.devskyy.app/api/v1"
+STAGING_WORDPRESS_URL = "https://staging.skyyrose.com"
 STAGING_WP_URL = "https://staging-7e48-skyyrose.wpcomstaging.com"

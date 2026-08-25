@@ -73,7 +73,7 @@ TOOL_CATEGORIES = {
 # =============================================================================
 
 
-@tools_router.get("/tools", response_model=list[ToolInfo])
+@tools_router.get("/tools", response_model=list[ToolInfo], operation_id="tools_api_v1_tools_list")
 async def list_tools() -> list[ToolInfo]:
     """List all available tools across all agents."""
     all_tools = []
@@ -125,7 +125,9 @@ async def list_tools_by_category(category: str) -> list[ToolInfo]:
     return [t for t in all_tools if t.category == category]
 
 
-@tools_router.post("/tools/test", response_model=ToolTestResponse)
+@tools_router.post(
+    "/tools/test", response_model=ToolTestResponse, operation_id="tools_api_v1_tools_test"
+)
 async def test_tool(request: ToolTestRequest) -> ToolTestResponse:
     """Test a tool with given parameters."""
     import time
