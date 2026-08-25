@@ -275,6 +275,16 @@ class AdvancedRateLimiter:
                 requests_per_hour=300,
                 burst_limit=30,
             ),
+            # Authenticated Context.dev extraction can crawl many remote pages
+            # per request. Its dashboard role gate is the primary control, and
+            # this narrow endpoint window bounds repeated provider spend.
+            "/api/v1/context-dev/extractions": RateLimitRule(
+                name="context_dev_extractions_endpoint",
+                limit_type=RateLimitType.ENDPOINT_BASED,
+                requests_per_minute=3,
+                requests_per_hour=30,
+                burst_limit=3,
+            ),
         }
 
     def get_client_identifier(self, request: Request, limit_type: RateLimitType) -> str:

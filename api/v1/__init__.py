@@ -32,6 +32,7 @@ from api.v1.claude_sdk import router as claude_sdk_router
 from api.v1.code import router as code_router
 from api.v1.commerce import router as commerce_router
 from api.v1.competitors import router as competitors_router
+from api.v1.context_dev import router as context_dev_router
 from api.v1.descriptions import router as descriptions_router
 from api.v1.hf_spaces import hf_spaces_router
 from api.v1.lora import lora_router
@@ -56,6 +57,7 @@ __all__ = [
     "code_router",
     "commerce_router",
     "competitors_router",
+    "context_dev_router",
     "descriptions_router",
     "hf_spaces_router",
     "marketing_router",

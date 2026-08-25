@@ -342,6 +342,7 @@ from api.v1 import (
     catalog_router,
     code_router,
     commerce_router,
+    context_dev_router,
     hf_spaces_router,
     lora_router,
     marketing_router,
@@ -358,6 +359,7 @@ from api.v1 import (
 app.include_router(catalog_router, prefix="/api/v1")
 app.include_router(code_router, prefix="/api/v1")
 app.include_router(commerce_router, prefix="/api/v1")
+app.include_router(context_dev_router, prefix="/api/v1")
 app.include_router(hf_spaces_router, prefix="/api/v1")
 app.include_router(marketing_router, prefix="/api/v1")
 app.include_router(media_router, prefix="/api/v1")

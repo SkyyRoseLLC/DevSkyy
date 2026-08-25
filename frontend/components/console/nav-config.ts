@@ -11,6 +11,7 @@ export const CONSOLE_NAV_ITEMS: ConsoleNavItem[] = [
   { id: 'products', href: '/admin/products', label: 'Products' },
   { id: 'collections', href: '/admin/collections', label: 'Collections' },
   { id: 'agents', href: '/admin/agents', label: 'Agents' },
+  { id: 'web-extraction', href: '/admin/web-extraction', label: 'Web Extract' },
   { id: 'customers', href: '/admin/customers', label: 'Customers' },
   { id: 'settings', href: '/admin/settings', label: 'Settings' },
 ];
