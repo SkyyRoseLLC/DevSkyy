@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-07-22T20:39:54+00:00",
-  "catalog_sha": "sha256:ded09dd3cc62309e28b8ab6861131099601aa7898c46b632397f9488956d3ccf",
+  "generated_at": "2026-08-25T20:15:59+00:00",
+  "catalog_sha": "sha256:8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
   "skus": {
     "br-001": {
       "sku": "br-001",
@@ -903,8 +903,8 @@
         },
         {
           "role": "garment",
-          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/original-label-tee-orchid-front.webp",
-          "sha256": "sha256:c2b7b172a6c459652343da31ad96fa9c6598f56e10b763219a84b6c70776f46b"
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-original-label-tee-orchid.webp",
+          "sha256": "sha256:809395d6e82321db7d6e300aca980551c043670e3f43446256475343ec66df94"
         },
         {
           "role": "dossier",
