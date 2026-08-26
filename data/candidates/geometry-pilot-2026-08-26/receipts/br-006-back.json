@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.product-generation-receipt.v1",
+  "receipt_stage": "preflight",
+  "sku": "br-006",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "product_hash": "0e5f276e7650ee7b7962eb952da3af376e46536697b6effb213e176aae3fe3fd",
+  "operation": "candidate_only",
+  "model": "gpt-image-2",
+  "view": "back",
+  "candidate_status": "quarantined_pending_generation_and_founder_review",
+  "prompt": "Candidate-only back geometry study of SkyyRose br-006. Use only the hash-bound local originals in this receipt as visual authority. Preserve the garment's observed silhouette, colorway, construction, material response, closure, trim, and artwork exactly; do not invent logos, lettering, pockets, panels, or details. Clean neutral studio capture with a calibrated color scale and a small construction/material detail inset. This is a visual candidate for founder review, not evidence of actual back geometry and not storefront media.",
+  "originals": [
+    {
+      "role": "physical_product_authority",
+      "local_path": "assets/products/references/br-006-sherpa-jacket-real-front.jpeg",
+      "sha256": "8d36bb2d462f4e2145667021f06e9cad4150f9da886dda81488f6f78a1fd6793",
+      "bytes": 284972
+    },
+    {
+      "role": "physical_product_detail",
+      "local_path": "assets/products/references/br-006-sherpa-jacket-real-open.jpeg",
+      "sha256": "4b5cbc6df55f98f430a7e1ed4f1b0327aa0a5a677babcbf5f9e0f262fcf8dd9d",
+      "bytes": 77850
+    },
+    {
+      "role": "physical_product_detail",
+      "local_path": "assets/products/references/br-006-sherpa-jacket-real-closeup.jpeg",
+      "sha256": "dbc5de009fab4541c480ce65dbf89eeead4ce0f84bb82c0546b85a64b2794995",
+      "bytes": 97907
+    },
+    {
+      "role": "approved_on_model_source",
+      "local_path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-006-onmodel.webp",
+      "sha256": "d474d97d9fac60eff864a14f30b6e07845ea71696ae0483a2c5f7108f22c815b",
+      "bytes": 240482
+    }
+  ],
+  "planned_output": "data/candidates/geometry-pilot-2026-08-26/outputs/br-006-back.png"
+}

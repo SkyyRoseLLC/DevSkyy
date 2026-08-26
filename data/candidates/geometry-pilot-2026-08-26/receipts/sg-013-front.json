@@ -1,0 +1,27 @@
+{
+  "schema": "skyyrose.product-generation-receipt.v1",
+  "receipt_stage": "preflight",
+  "sku": "sg-013",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "product_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2",
+  "operation": "candidate_only",
+  "model": "gpt-image-2",
+  "view": "front",
+  "candidate_status": "quarantined_pending_generation_and_founder_review",
+  "prompt": "Candidate-only front geometry study of SkyyRose sg-013. Use only the hash-bound local originals in this receipt as visual authority. Preserve the garment's observed silhouette, colorway, construction, material response, closure, trim, and artwork exactly; do not invent logos, lettering, pockets, panels, or details. Clean neutral studio capture with a calibrated color scale and a small construction/material detail inset. This is a visual candidate for founder review, not evidence of actual front geometry and not storefront media.",
+  "originals": [
+    {
+      "role": "approved_design_reference",
+      "local_path": "assets/products/references/sg-013-techflat-front.jpeg",
+      "sha256": "05c665c0462700ec3cce7ce9dffec77c055a989d841a2cc128fba75b02f63ddc",
+      "bytes": 47803
+    },
+    {
+      "role": "approved_on_model_source",
+      "local_path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-013-onmodel.webp",
+      "sha256": "cb58e694639ff02b4dd7c1d009516df237f0acb39a8c6f6948930dad5d3c157b",
+      "bytes": 269208
+    }
+  ],
+  "planned_output": "data/candidates/geometry-pilot-2026-08-26/outputs/sg-013-front.png"
+}
