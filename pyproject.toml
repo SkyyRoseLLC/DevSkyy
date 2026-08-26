@@ -152,6 +152,13 @@ dev = [
     "pytest-asyncio>=0.23",
     "pytest-cov>=4.1",
     "pytest-mock>=3.12",
+    "pytest-timeout==2.4.0",
+    # Full-suite collection imports the character pipeline and HF provider clients.
+    # Keep these in dev so a clean test environment matches the collected suite.
+    "pygltflib==1.16.5",
+    "gradio-client==2.5.0",
+    # Character-pipeline verification imports matplotlib during test collection.
+    "matplotlib==3.11.1",
     # Test-only deps for tests/test_elite_*.py and tests/test_a11y_html_integrity.py.
     # bs4 also appears in [mcp] as a transitive runtime constraint; included here so
     # `pip install -e .[dev]` alone is enough to collect the test suite.
