@@ -17,7 +17,7 @@
   },
   "source_lock": {
     "product_sot_path": "data/product-sot.json",
-    "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+    "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
     "invalidates_on_drift": true
   },
   "accepted_exact_authority_tiers": [
