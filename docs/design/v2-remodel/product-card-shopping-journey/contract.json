@@ -1,6 +1,6 @@
 {
   "schemaVersion": "skyyrose.visual-commerce-contract.v1",
-  "candidateId": "a7fbceec7b313a99a989bff7a19745b0008e73a2+isolated-card-timeout-recovery",
+  "candidateId": "124a3feeb3d158f83241bd6f4c0585a181a0623c+cart-safe-slow-quick-add",
   "routeId": "collection",
   "sectionId": "product-portal-journey",
   "componentId": "sr2-c-product-portal",
@@ -17,7 +17,7 @@
     { "id": "missing-or-blocked-media", "media": "fail closed", "primaryAction": "not rendered", "secondaryAction": "not rendered", "feedback": "no generic fallback" }
   ],
   "responsive": {
-    "desktop": "A centered two-row top masthead places the approved SkyyRose graphic above a miniature engraved Cinzel collection label. The title, price/availability, hover narrative, variant chips, and actions share the same card axis. Fine-pointer hover/focus reveals only the WooCommerce short description and available purchasable variation attributes; cards with that reveal do not start a competing reel. Simple-product quick add has a localized, initiating-card-only success state and an eight-second unconfirmed-request timeout recovery state.",
+    "desktop": "A centered two-row top masthead places the approved SkyyRose graphic above a miniature engraved Cinzel collection label. The title, price/availability, hover narrative, variant chips, and actions share the same card axis. Fine-pointer hover/focus reveals only the WooCommerce short description and available purchasable variation attributes; cards with that reveal do not start a competing reel. Simple-product quick add has a localized, initiating-card-only success state; after eight seconds without confirmation, its own CTA becomes a non-retryable pending state that directs the customer to check the bag.",
     "mobile": "The top masthead remains centered with a compact graphic and miniature collection label. The action stack is single-column with no hover dependence; a native Piece details disclosure exposes the same read-only short description and available-variant summary for touch users. The statue frame uses responsive srcset and contain crop. Copy and metadata keep a bounded centered measure, while controls remain full-width and meet the touch-target rule. The canonical PDP retains the full product description and variation selector.",
     "reducedMotion": "No reel timer or transition dependency; hover-detail content remains a nonessential progressive disclosure and all verified media and actions remain visible."
   },
