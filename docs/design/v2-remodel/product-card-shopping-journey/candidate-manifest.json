@@ -1,0 +1,55 @@
+{
+  "candidateId": "skyyrose-v2-product-card-shopping-journey-383b776202f6-working-tree",
+  "baselineCommit": "383b776202f6c7106d07170664f77abf91cbc000",
+  "branch": "codex/product-card-shopping-journey",
+  "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
+  "scope": {
+    "verifiedMediaOverlay": [
+      "data/opening-product-media.json",
+      "functions.php",
+      "front-page.php",
+      "template-parts/commerce/product-card.php",
+      "template-parts/commerce/product-hero.php",
+      "woocommerce/content-product.php",
+      "assets/css/theme.css",
+      "assets/css/theme.min.css"
+    ],
+    "shoppingJourney": [
+      "template-parts/commerce/product-card.php",
+      "functions.php",
+      "assets/css/theme.css",
+      "assets/css/theme.min.css",
+      "assets/js/theme.js",
+      "assets/js/theme.min.js",
+      "scripts/verify-v2-candidate.sh",
+      "scripts/verify-live-playwright.mjs",
+      "docs/design/v2-remodel/product-card-shopping-journey/",
+      "skyyrose-suite/plugins/skyyrose-design/skills/prototype/UI.md"
+    ]
+  },
+  "invariants": [
+    "No generic, unverified, or generated product imagery is wired into storefront cards.",
+    "Only simple, purchasable, in-stock products receive a loop quick-add action.",
+    "Variable, unavailable, and nonpurchasable products retain a canonical PDP route.",
+    "Staging or production writes are excluded from this candidate artifact."
+  ],
+  "generatedOutputs": [
+    "wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css",
+    "wordpress-theme/skyyrose-flagship-2/assets/js/theme.min.js",
+    "wordpress-theme/skyyrose-flagship-2/languages/skyyrose-flagship-2.pot"
+  ],
+  "verification": [
+    "npm run lint:php",
+    "npm run check:assets",
+    "npm run check:registry",
+    "npm run check:i18n",
+    "npm run verify",
+    "bash scripts/verify-v2-candidate.sh",
+    "Playwright prototype variants at 1440, 768, and 390"
+  ],
+  "knownBlockers": [
+    "verify-v2-workspace.sh deliberately rejects the isolated feature branch because its reconnect record allows only main or the historic candidate branch.",
+    "A live cart-mutating E2E scenario requires an approved disposable staging fixture and reset boundary.",
+    "No deployment authority is attached to this candidate."
+  ]
+}

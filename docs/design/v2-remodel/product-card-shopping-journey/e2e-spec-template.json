@@ -1,0 +1,52 @@
+{
+  "allowErrorPatterns": [],
+  "maxPageErrors": 0,
+  "allowMutations": false,
+  "surfaces": [
+    {
+      "name": "product-portal-desktop-read-only",
+      "url": "REPLACE_WITH_STAGING_COLLECTION_URL",
+      "width": 1440,
+      "height": 960,
+      "evals": [
+        {
+          "desc": "stone portal has approved responsive framing and verified media",
+          "expr": "(()=>{const card=document.querySelector('.sr2-c-product-portal[data-portal-frame=statue][data-verified-media=true]');const image=card?.querySelector('.sr2-c-product-portal__product-image');return !!card && !!image && image.complete && !!image.currentSrc && getComputedStyle(image).objectFit==='contain';})()"
+        },
+        {
+          "desc": "server-derived purchase mode is explicit and never offers quick add for a variable card",
+          "expr": "(()=>Array.from(document.querySelectorAll('.sr2-c-product-portal')).every(card=>card.dataset.productType!=='variable'||!card.querySelector('[data-portal-quick-add]')) )()"
+        }
+      ]
+    },
+    {
+      "name": "product-portal-mobile-reduced-motion-read-only",
+      "url": "REPLACE_WITH_STAGING_COLLECTION_URL",
+      "width": 390,
+      "height": 844,
+      "reducedMotion": "reduce",
+      "evals": [
+        {
+          "desc": "mobile retains a full-width truthful action and static media reel",
+          "expr": "(()=>{const card=document.querySelector('.sr2-c-product-portal[data-portal-frame=statue]');const action=card?.querySelector('.sr2-c-product-portal__quick-add,.sr2-c-product-portal__purchase-link');const reel=card?.querySelector('.sr2-c-product-portal__reel');return !!card && !!action && (!reel || getComputedStyle(reel).transitionDuration==='0s');})()"
+        }
+      ]
+    }
+  ],
+  "mutating_example_requires_approved_fixture": {
+    "allowMutations": true,
+    "surfaces": [
+      {
+        "name": "simple-product-add-to-bag",
+        "url": "REPLACE_WITH_APPROVED_DISPOSABLE_STAGING_FIXTURE_URL",
+        "actions": [
+          { "type": "click", "selector": "[data-portal-quick-add]", "mutates": true },
+          { "type": "waitFor", "selector": "[data-portal-action-status][data-state=success]" }
+        ],
+        "evals": [
+          { "desc": "bag count and local result acknowledge the confirmed action", "expr": "(()=>document.querySelector('[data-portal-action-status]')?.dataset.state==='success'&&!!document.querySelector('.sr2-header__bag-count'))()" }
+        ]
+      }
+    ]
+  }
+}

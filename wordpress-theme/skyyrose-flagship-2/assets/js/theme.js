@@ -376,6 +376,49 @@
 
   document.querySelectorAll('[data-product-reel]').forEach(setupProductReel);
 
+  /* Product portals never resolve variants in the card. A loop action exists
+   * only when PHP has already established that the product is a simple,
+   * purchasable, in-stock item. WooCommerce remains the cart authority; this
+   * layer merely scopes its lifecycle feedback to the initiating card. */
+  const portalQuickAdd = (candidate) => {
+    const button = candidate && candidate.jquery ? candidate.get(0) : candidate;
+    return button instanceof Element && button.matches('[data-portal-quick-add]') ? button : null;
+  };
+  const setPortalQuickAddState = (candidate, state, message = '') => {
+    const button = portalQuickAdd(candidate);
+    if (!button) return;
+    const card = button.closest('.sr2-c-product-portal');
+    const status = card?.querySelector('[data-portal-action-status]');
+    if (!button.dataset.sr2OriginalLabel) button.dataset.sr2OriginalLabel = button.textContent.trim();
+
+    if (state === 'adding') {
+      button.setAttribute('aria-busy', 'true');
+      button.textContent = 'Adding…';
+    } else {
+      button.removeAttribute('aria-busy');
+      button.textContent = state === 'success' ? 'Added to bag' : button.dataset.sr2OriginalLabel;
+    }
+
+    if (status && message) {
+      status.dataset.state = state;
+      status.textContent = message;
+    }
+  };
+
+  if (window.jQuery) {
+    const $ = window.jQuery;
+    $(document.body).on('adding_to_cart', (_event, $button) => {
+      setPortalQuickAddState($button, 'adding', 'Adding this piece to your bag.');
+    });
+    $(document.body).on('added_to_cart', (_event, _fragments, _cartHash, $button) => {
+      const button = portalQuickAdd($button);
+      setPortalQuickAddState(button, 'success', 'Added to bag. Your bag count is updated.');
+      if (button) {
+        window.setTimeout(() => setPortalQuickAddState(button, 'ready', 'Ready to add another piece.'), reducedMotion ? 0 : 1800);
+      }
+    });
+  }
+
   /* Product-card quick view is a progressive layer over the direct PDP link.
    * All facts are copied from the live card payload; the full product page
    * remains the canonical place for options, variation resolution, and cart. */

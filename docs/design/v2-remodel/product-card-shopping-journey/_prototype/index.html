@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Throwaway — V2 Product Card Journey Variants</title>
+  <style>
+    :root { color-scheme: dark; --void: #0b0b0d; --paper: #e7e2d8; --dim: #a8a297; --line: #393731; --gold: #b89245; --red: #9f2c2c; --ease: cubic-bezier(.22,1,.36,1); }
+    * { box-sizing: border-box; }
+    body { min-width: 320px; margin: 0; background: radial-gradient(circle at 70% 0, #262116 0, var(--void) 37rem); color: var(--paper); font-family: Arial, sans-serif; }
+    main { width: min(1200px, calc(100% - 2rem)); margin: 0 auto; padding: 3rem 0 9rem; }
+    header { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; border-bottom: 1px solid var(--line); padding-bottom: 1.25rem; }
+    h1 { max-width: 13ch; margin: 0; font-family: Georgia, serif; font-size: clamp(2.4rem, 7vw, 5rem); font-weight: 400; line-height: .88; }
+    p { color: var(--dim); line-height: 1.55; }
+    .eyebrow, .annotation { color: var(--gold); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; }
+    .variant { display: none; padding-top: clamp(2rem, 7vw, 5rem); }
+    .variant.is-active { display: block; }
+    .stone { position: relative; overflow: hidden; border: 1px solid color-mix(in srgb, var(--accent) 65%, var(--line)); background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 12%, #171616), #080808 62%); box-shadow: inset 0 0 0 .25rem #080808, 0 1.5rem 4rem #0008; }
+    .stone::before { position: absolute; inset: .75rem; border: 1px solid color-mix(in srgb, var(--accent) 65%, transparent); content: ""; pointer-events: none; }
+    .media { display: grid; min-height: 24rem; place-items: center; border-bottom: 1px solid color-mix(in srgb, var(--accent) 35%, var(--line)); background: radial-gradient(ellipse at center, color-mix(in srgb, var(--accent) 18%, #202020), #111 65%); color: var(--dim); font-size: .7rem; letter-spacing: .15em; text-transform: uppercase; }
+    .media span { border: 1px dashed var(--dim); padding: .8rem 1rem; }
+    .action { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: .7rem 1rem; border: 1px solid var(--accent); color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
+    .action--fill { background: var(--accent); color: #090909; }
+    .action--subtle { border-color: var(--line); color: var(--paper); }
+    .direct-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+    .direct-card { --accent: var(--gold); }
+    .direct-card:nth-child(2) { --accent: #aaa8a2; }.direct-card:nth-child(3) { --accent: var(--red); }.direct-card:nth-child(4) { --accent: #c68c45; }
+    .direct-card .media { min-height: 18rem; }.direct-card__copy { display: grid; gap: .75rem; padding: 1rem; text-align: center; }.direct-card__copy h2 { margin: 0; font-family: Georgia, serif; font-size: 1.3rem; font-weight: 400; }.direct-card__facts { display: flex; justify-content: space-between; color: var(--dim); font-size: .7rem; }.direct-card__actions { display: grid; grid-template-columns: 1fr; gap: .45rem; }
+    .ledger { --accent: var(--gold); display: grid; grid-template-columns: minmax(16rem, .85fr) minmax(17rem, 1.15fr); min-height: 34rem; }.ledger .media { min-height: 100%; }.ledger__copy { display: grid; align-content: center; gap: 1rem; padding: clamp(1.3rem, 5vw, 4rem); }.ledger__copy h2 { max-width: 8ch; margin: 0; font-family: Georgia, serif; font-size: clamp(2.6rem, 7vw, 5.5rem); font-weight: 400; line-height: .86; }.ledger__row { display: flex; justify-content: space-between; gap: 1rem; border-block: 1px solid var(--line); padding: .8rem 0; color: var(--dim); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }.ledger__actions { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .editorial { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(1rem, 4vw, 4rem); align-items: end; }.editorial .stone { --accent: #aaa8a2; }.editorial__manifest { display: grid; gap: 1rem; padding: 1rem 0; }.editorial__manifest h2 { margin: 0; font-family: Georgia, serif; font-size: clamp(2.6rem, 7vw, 5.5rem); font-weight: 400; line-height: .88; }.editorial__status { border-top: 1px solid var(--line); padding-top: 1rem; }.editorial__status strong { display: block; color: var(--gold); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; }.editorial__actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .bag-rail { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding: 1rem; border: 1px solid var(--line); background: #12110f; }.bag-rail p { margin: 0; }.bag-rail strong { color: var(--gold); }
+    .switcher { position: fixed; right: 1rem; bottom: 1rem; left: 1rem; z-index: 2; display: flex; width: min(34rem, calc(100% - 2rem)); align-items: center; justify-content: center; gap: .5rem; margin: auto; padding: .55rem; border: 1px solid var(--line); background: #11110fe8; backdrop-filter: blur(12px); }.switcher a { min-height: 40px; padding: .75rem; color: var(--paper); font-size: .68rem; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; }.switcher a[aria-current="page"] { background: var(--gold); color: #090909; }
+    @media (max-width: 800px) { header { grid-template-columns: 1fr; }.direct-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }.ledger, .editorial { grid-template-columns: 1fr; }.ledger .media { min-height: 23rem; }.editorial { gap: 1rem; } }
+    @media (max-width: 520px) { main { width: min(100% - 1rem, 1200px); padding-top: 1.5rem; }.direct-grid { grid-template-columns: 1fr; }.direct-card .media { min-height: 26rem; }.ledger__actions { grid-template-columns: 1fr; }.bag-rail { align-items: flex-start; flex-direction: column; }.switcher { overflow-x: auto; justify-content: flex-start; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div><p class="eyebrow">Throwaway UI prototype · no real products or actions</p><h1>Stone portal shopping hierarchy</h1></div>
+      <p>Question: which structure lets verified media lead, gives purchase truth priority, and preserves a quiet bag confirmation without a modal?</p>
+    </header>
+
+    <section class="variant" data-variant="direct" aria-labelledby="direct-title">
+      <p class="annotation">A · direct action grid</p><h2 id="direct-title">Collection scan: same truth, repeated cadence.</h2>
+      <div class="direct-grid">
+        <article class="stone direct-card"><div class="media"><span>Verified media only</span></div><div class="direct-card__copy"><p class="eyebrow">Collection / one</p><h2>Portal one</h2><div class="direct-card__facts"><span>Availability</span><span>Price</span></div><div class="direct-card__actions"><a class="action action--fill" href="#">Add to bag</a><a class="action action--subtle" href="#">View piece</a></div></div></article>
+        <article class="stone direct-card"><div class="media"><span>Verified media only</span></div><div class="direct-card__copy"><p class="eyebrow">Collection / two</p><h2>Portal two</h2><div class="direct-card__facts"><span>Choose size</span><span>Price</span></div><div class="direct-card__actions"><a class="action" href="#">Choose size</a><a class="action action--subtle" href="#">View piece</a></div></div></article>
+        <article class="stone direct-card"><div class="media"><span>Verified media only</span></div><div class="direct-card__copy"><p class="eyebrow">Collection / three</p><h2>Portal three</h2><div class="direct-card__facts"><span>Availability</span><span>Price</span></div><div class="direct-card__actions"><a class="action action--fill" href="#">Add to bag</a><a class="action action--subtle" href="#">View piece</a></div></div></article>
+        <article class="stone direct-card"><div class="media"><span>Verified media only</span></div><div class="direct-card__copy"><p class="eyebrow">Collection / four</p><h2>Portal four</h2><div class="direct-card__facts"><span>View current state</span><span>Price</span></div><div class="direct-card__actions"><a class="action" href="#">View piece</a><a class="action action--subtle" href="#">Product proof</a></div></div></article>
+      </div>
+      <div class="bag-rail"><p><strong>Bag confirmation</strong><br>One quiet, card-local confirmation after WooCommerce succeeds.</p><a class="action action--subtle" href="#">View bag</a></div>
+    </section>
+
+    <section class="variant" data-variant="ledger" aria-labelledby="ledger-title">
+      <p class="annotation">B · product ledger</p><article class="stone ledger"><div class="media"><span>Verified media only</span></div><div class="ledger__copy"><p class="eyebrow">Collection-owned portal / factual ledger</p><h2 id="ledger-title">The frame yields to the decision.</h2><div class="ledger__row"><span>Availability</span><strong>Server state</strong></div><div class="ledger__row"><span>Media proof</span><strong>Approved attachment</strong></div><div class="ledger__actions"><a class="action action--fill" href="#">Add to bag</a><a class="action action--subtle" href="#">View piece</a></div><p>Variation-dependent cards replace the first action with a single “Choose size” link to the product page.</p></div></article>
+    </section>
+
+    <section class="variant" data-variant="editorial" aria-labelledby="editorial-title">
+      <p class="annotation">C · editorial product proof</p><div class="editorial"><article class="stone"><div class="media"><span>Verified media only</span></div></article><div class="editorial__manifest"><p class="eyebrow">Read the frame, then act</p><h2 id="editorial-title">A quiet story break before purchase.</h2><p>One oversized frame owns the moment; its ledger is outside the object. The price and action remain explicit, while media count and availability are factual.</p><div class="editorial__status"><strong>Media role · on-model front</strong><p>Reduced motion leaves every media view and action fully visible without a reel.</p></div><div class="editorial__actions"><a class="action action--fill" href="#">Add to bag</a><a class="action" href="#">View piece</a></div></div></div>
+    </section>
+  </main>
+  <nav class="switcher" aria-label="Prototype variants"><a data-link="direct" href="?variant=direct">A · direct</a><a data-link="ledger" href="?variant=ledger">B · ledger</a><a data-link="editorial" href="?variant=editorial">C · editorial</a></nav>
+  <script>
+    const choice = new URLSearchParams(location.search).get('variant');
+    const active = ['direct', 'ledger', 'editorial'].includes(choice) ? choice : 'direct';
+    document.querySelector(`[data-variant="${active}"]`).classList.add('is-active');
+    document.querySelector(`[data-link="${active}"]`).setAttribute('aria-current', 'page');
+  </script>
+</body>
+</html>

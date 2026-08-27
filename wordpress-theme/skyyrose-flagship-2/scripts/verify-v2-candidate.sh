@@ -202,10 +202,18 @@ if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/comme
 	exit 1
 fi
 
-if ! rg -q 'data-quick-view' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'sr2-quick-view' "$THEME_DIR/template-parts/commerce/quick-view.php" || \
-	! rg -q 'showModal' "$THEME_DIR/assets/js/theme.js"; then
-	echo "FAIL product-card quick-view layer missing" >&2
+if ! rg -q 'data-purchase-mode=' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'data-portal-quick-add' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'data-portal-action-status' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -Fq "'simple' === \$product_type" "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -Fq "'available' === \$stock_state" "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'setPortalQuickAddState' "$THEME_DIR/assets/js/theme.js"; then
+	echo "FAIL product-card truthful purchase and cart-feedback layer missing" >&2
+	exit 1
+fi
+
+if rg -q 'data-quick-view' "$THEME_DIR/template-parts/commerce/product-card.php"; then
+	echo "FAIL product-card must not make the quick-view modal its primary purchase path" >&2
 	exit 1
 fi
 

@@ -1,0 +1,21 @@
+{
+  "candidateId": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay+shopping-journey-working-tree",
+  "claimClass": "IMPLEMENTATION_IN_PROGRESS",
+  "artifacts": [
+    { "id": "candidate-manifest", "path": "candidate-manifest.json", "purpose": "current worktree identity and scoped change inventory" },
+    { "id": "preview", "path": "preview.html", "purpose": "stable-ID visual handoff" },
+    { "id": "prototype", "path": "_prototype/index.html", "purpose": "throwaway three-variant comparison" },
+    { "id": "e2e-template", "path": "e2e-spec-template.json", "purpose": "read-only and fixture-gated browser proof" }
+  ],
+  "constraintsVerifiedInSource": [
+    "verified-card media is fail-closed",
+    "product image crop is contain inside the active stone statue frame",
+    "server-derived product mode gates loop quick add",
+    "reduced-motion and coarse-pointer reel fallback is present"
+  ],
+  "pendingEvidence": [
+    "fresh browser captures at 390 and 1440 against this candidate",
+    "read-only staging run using a real collection URL",
+    "approved disposable fixture before any add-to-cart mutation test"
+  ]
+}

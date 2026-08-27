@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "skyyrose.visual-commerce-contract.v1",
+  "candidateId": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay+shopping-journey-working-tree",
+  "routeId": "collection",
+  "sectionId": "product-portal-journey",
+  "componentId": "sr2-c-product-portal",
+  "featureIds": ["quick_add_to_cart", "product_border"],
+  "sourceOfTruth": {
+    "media": "skyyrose2_product_verified_card_media",
+    "purchase": "WooCommerce WC_Product server state",
+    "collectionFrame": "skyyrose2_collections portal_statue asset"
+  },
+  "states": [
+    { "id": "verified-simple-available", "media": "approved attachment required", "primaryAction": "quick-add", "secondaryAction": "view-piece", "feedback": "local polite live status" },
+    { "id": "verified-variable", "media": "approved attachment required", "primaryAction": "choose-size-pdp", "secondaryAction": "view-piece", "feedback": "PDP resolves variation state" },
+    { "id": "verified-unavailable-or-nonpurchasable", "media": "approved attachment required", "primaryAction": "view-piece", "secondaryAction": "view-piece", "feedback": "no client-side purchase promise" },
+    { "id": "missing-or-blocked-media", "media": "fail closed", "primaryAction": "not rendered", "secondaryAction": "not rendered", "feedback": "no generic fallback" }
+  ],
+  "responsive": {
+    "desktop": "Fine-pointer reel may enhance approved multi-view media; action and PDP route remain immediately reachable.",
+    "mobile": "Single-column action stack; no hover dependence; statue frame uses responsive srcset and contain crop.",
+    "reducedMotion": "No reel timer or transition dependency; all verified media and actions remain visible."
+  },
+  "accessibility": [
+    "meaningful product image alt is product name",
+    "local action result uses role=status aria-live=polite aria-atomic=true",
+    "minimum 46px action controls",
+    "direct PDP link remains available in every rendered state"
+  ],
+  "e2e": {
+    "readOnlySpec": "e2e-spec-template.json",
+    "mutationRule": "requires an approved disposable staging product fixture and allowMutations=true"
+  },
+  "explicitExclusions": ["generic or generated product media", "in-card variation selection", "fake scarcity", "unapproved cart mutations", "conversion claims"]
+}

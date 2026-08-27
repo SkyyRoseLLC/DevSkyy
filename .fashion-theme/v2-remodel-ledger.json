@@ -738,6 +738,49 @@
         "explicit founder authorization before deployment"
       ],
       "next_authority": "FOUNDER_VISUAL_REVIEW"
+    },
+    {
+      "id": "v2-product-card-shopping-journey",
+      "state": "LOCAL_SOURCE_GATES_PASSED_E2E_MUTATION_BLOCKED",
+      "owner": "fashion-theme-lead",
+      "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
+      "baseline_id": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay",
+      "candidate_id": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay+shopping-journey-working-tree",
+      "attempt": 1,
+      "tool_profile": ["Read", "Grep", "Glob", "Bash", "Edit", "ImageGen", "Browser"],
+      "brain_routes": ["fashion_strategy", "page_architecture", "merchandising_conversion", "fit_imagery_returns", "growth_measurement"],
+      "feature_ids": ["quick_add_to_cart", "product_border"],
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2/functions.php",
+        "wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php",
+        "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+        "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+        "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
+        "scripts/verify-live-playwright.mjs",
+        "docs/design/v2-remodel/product-card-shopping-journey/",
+        "skyyrose-suite/plugins/skyyrose-design/skills/prototype/"
+      ],
+      "scope": "Keep approved stone-frame composition and verified Woo/SOT media. Add a server-derived simple-product quick-add path, PDP-only fallback for choice-dependent or unavailable products, local accessible cart feedback, and candidate-bound desktop/mobile/reduced-motion verification.",
+      "excluded": [
+        "generic or generated product imagery",
+        "variation selection inside a card",
+        "fake scarcity, reviews, or conversion claims",
+        "production deployment, payment, catalog, or media mutation",
+        "staging cart mutation without an approved disposable test fixture"
+      ],
+      "evidence": [
+        "Fashion Theme Team preflight passed on 2026-08-26",
+        "verified stone-card source imported from the previously staging-verified overlay",
+        "House of Roses reference-guided preview generated for composition only; not a product-media candidate",
+        "read-only wp-frontend implementation audit completed",
+        "theme PHP lint, generated-asset parity, marketplace verifier, and strengthened V2 source gate passed",
+        "three-variant throwaway UI prototype passed browser checks at 1440, 768, and 390"
+      ],
+      "blockers": [
+        "an interaction-capable staging E2E run requires an approved disposable WooCommerce fixture and cart-reset boundary",
+        "all deployment remains founder-authorized only"
+      ],
+      "next_authority": "AUTO_WITH_LOG"
     }
   ],
   "release_checkpoint": {

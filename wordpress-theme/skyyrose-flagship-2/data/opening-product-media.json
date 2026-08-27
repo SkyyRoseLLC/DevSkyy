@@ -46,8 +46,10 @@
     },
     "kids-002": {
       "collection": "kids-capsule",
+      "status": "blocked",
+      "blocked_reason": "on_model_front_unverified",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/ghost/kids-002-ghost-front.webp", "derivative": "assets/sot/images/products/preview/kids-002-front.webp" },
+        { "role": "unverified_front", "source": "assets/images/products/ghost/kids-002-ghost-front.webp", "derivative": "assets/sot/images/products/preview/kids-002-front.webp" },
         { "role": "on_model_back", "source": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-002-back.webp" },
         { "role": "packshot", "source": "assets/images/products/kids-002-purple-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-002-packshot.webp" }
       ]

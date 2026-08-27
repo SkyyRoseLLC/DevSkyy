@@ -81,7 +81,10 @@ HEALTH_CHECKS=(
     "Immersive: Love Hurts|/experience-love-hurts/|immersive-love-hurts"
     "Immersive: Signature|/experience-signature/|immersive-signature"
     "Pre-Order Gateway|/pre-order/|pre-order"
-    "Experiences Hub|/experience/|Immersive Experiences"
+    # /experience/ intentionally routes to the Black Rose immersive entry.
+    # Verify the destination's stable semantic heading rather than an absent
+    # legacy hub label.
+    "Experiences Hub|/experience/|immersive-world-title"
 )
 
 # ---------------------------------------------------------------------------

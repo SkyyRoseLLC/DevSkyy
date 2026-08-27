@@ -20,10 +20,15 @@
  *   {
  *     "allowErrorPatterns": ["Unexpected token '<'", "grainy-gradients"],
  *     "maxPageErrors": 0,
+ *     "allowMutations": false,
  *     "surfaces": [
  *       { "name": "immersive-signature",
  *         "url": "https://skyyrose.co/experience-signature/",
  *         "waitMs": 9000,
+ *         "actions": [
+ *           { "type": "click", "selector": "[data-portal-quick-add]", "mutates": true },
+ *           { "type": "waitFor", "selector": "[data-portal-action-status][data-state=success]" }
+ *         ],
  *         "evals": [
  *           { "desc": "intro overlay tears down", "expr": "!document.querySelector('.ic-overlay')" },
  *           { "desc": "room title revealed", "expr": "(()=>{const l=document.querySelector('.scene-title-overlay .scene-lockup');return !!l && getComputedStyle(l).opacity==='1';})()" }
@@ -68,6 +73,7 @@ try {
 const spec = loadSpec();
 const allow = (spec.allowErrorPatterns || []).map((p) => new RegExp(p));
 const maxErrors = spec.maxPageErrors ?? 0;
+const allowMutations = spec.allowMutations === true;
 const surfaces = spec.surfaces || [];
 if (!surfaces.length) {
   console.error('[pw-verify] spec has no surfaces');
@@ -88,7 +94,7 @@ const report = [];
 for (const s of surfaces) {
   const ctx = await browser.newContext({
     viewport: { width: s.width || 1280, height: s.height || 800 },
-    reducedMotion: 'no-preference',
+    reducedMotion: s.reducedMotion === 'reduce' ? 'reduce' : 'no-preference',
   });
   const page = await ctx.newPage();
   const errs = [];
@@ -101,10 +107,24 @@ for (const s of surfaces) {
     await page.goto(cacheBust(s.url), { waitUntil: 'domcontentloaded', timeout: s.gotoTimeoutMs || 60000 });
     if (s.waitMs) await page.waitForTimeout(s.waitMs);
 
-    const newErrs = errs.filter((m) => !allow.some((re) => re.test(m)));
-    if (newErrs.length > maxErrors) {
-      surfaceFail = true;
-      detail.push(`pageerrors ${newErrs.length} > budget ${maxErrors}: ${newErrs.slice(0, 4).join(' || ')}`);
+    for (const action of s.actions || []) {
+      if (action.mutates && !allowMutations) {
+        surfaceFail = true;
+        detail.push(`BLOCKED action "${action.type}" requires spec.allowMutations=true`);
+        continue;
+      }
+      try {
+        if (action.type === 'click') {
+          await page.locator(action.selector).click({ timeout: action.timeoutMs || 10000 });
+        } else if (action.type === 'waitFor') {
+          await page.locator(action.selector).waitFor({ state: action.state || 'visible', timeout: action.timeoutMs || 10000 });
+        } else {
+          throw new Error(`unsupported action type: ${action.type}`);
+        }
+      } catch (e) {
+        surfaceFail = true;
+        detail.push(`FAIL action "${action.type}" ${action.selector || ''} → ${e.message}`);
+      }
     }
 
     for (const ev of s.evals || []) {
@@ -112,6 +132,12 @@ for (const s of surfaces) {
       try { val = await page.evaluate(`(()=>(${ev.expr}))()`); ok = !!val; }
       catch (e) { val = `eval-threw: ${e.message}`; ok = false; }
       if (!ok) { surfaceFail = true; detail.push(`FAIL "${ev.desc}" → ${JSON.stringify(val)}`); }
+    }
+
+    const newErrs = errs.filter((m) => !allow.some((re) => re.test(m)));
+    if (newErrs.length > maxErrors) {
+      surfaceFail = true;
+      detail.push(`pageerrors ${newErrs.length} > budget ${maxErrors}: ${newErrs.slice(0, 4).join(' || ')}`);
     }
   } catch (e) {
     surfaceFail = true;

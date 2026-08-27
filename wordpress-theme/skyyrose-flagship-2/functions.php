@@ -202,12 +202,11 @@ function skyyrose2_assets() {
 	// so an eligible simple product gets the normal AJAX confirmation, fragments,
 	// and updated bag count; the anchor URL remains the no-JS cart fallback.
 	if (
-		function_exists( 'is_woocommerce' ) &&
-		(
-			is_page_template( 'template-collection.php' ) ||
-			is_page_template( 'template-preorder.php' ) ||
-			is_page_template( 'template-parts/v2-preorder.php' )
-		)
+		is_front_page() ||
+		is_page_template( 'template-collection.php' ) ||
+		is_page_template( 'template-preorder.php' ) ||
+		is_page_template( 'template-parts/v2-preorder.php' ) ||
+		( function_exists( 'is_woocommerce' ) && is_woocommerce() )
 	) {
 		wp_enqueue_script( 'wc-add-to-cart' );
 		wp_enqueue_script( 'wc-cart-fragments' );
@@ -843,14 +842,11 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 	if ( ! function_exists( 'wc_get_products' ) ) {
 		return array();
 	}
+	$display_limit = max( 1, absint( $limit ) );
 	$args = array(
-		/*
-		 * A narrow query can be filled by Jersey Series products before the
-		 * presentation guard excludes them from the core Black Rose rail.
-		 * Resolve against the full published collection, then apply the display
-		 * limit after registry/presentation isolation has succeeded.
-		 */
-		'limit'   => -1,
+		// Keep the storefront bounded while allowing reconciliation after the
+		// presentation and verified-media guards filter unavailable entries.
+		'limit'   => min( 48, max( 12, $display_limit * 4 ) ),
 		'status'  => 'publish',
 		'orderby' => 'date',
 		'order'   => 'DESC',
@@ -864,6 +860,9 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 	$products = wc_get_products( $args );
 	$filtered = array();
 	foreach ( $products as $product ) {
+		if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() ) {
+			continue;
+		}
 		$presentation = skyyrose2_product_presentation( $product );
 		if ( empty( $presentation ) ) {
 			continue;
@@ -875,6 +874,9 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 			continue;
 		}
 		if ( 'black-rose' === $collection && 'jersey-series' === ( $presentation['presentation'] ?? '' ) ) {
+			continue;
+		}
+		if ( empty( skyyrose2_product_verified_card_media( $product ) ) ) {
 			continue;
 		}
 		$filtered[] = $product;
@@ -945,6 +947,9 @@ function skyyrose2_get_products_by_skus( $skus, $required_collection ) {
 
 		$resolved_sku = sanitize_key( $product->get_sku() );
 		if ( $resolved_sku !== $sku ) {
+			continue;
+		}
+		if ( empty( skyyrose2_product_verified_card_media( $product ) ) ) {
 			continue;
 		}
 		$products[ $sku ] = $product;
@@ -1093,7 +1098,7 @@ function skyyrose2_product_verified_card_media( $product ) {
 	$records  = isset( $manifest['products'] ) && is_array( $manifest['products'] ) ? $manifest['products'] : array();
 	$record   = $sku && isset( $records[ $sku ] ) && is_array( $records[ $sku ] ) ? $records[ $sku ] : array();
 	$views    = isset( $record['views'] ) && is_array( $record['views'] ) ? $record['views'] : array();
-	if ( empty( $views ) || ! function_exists( 'wp_get_attachment_url' ) ) {
+	if ( empty( $views ) || 'blocked' === ( $record['status'] ?? 'approved' ) || ! function_exists( 'wp_get_attachment_url' ) ) {
 		return array();
 	}
 
@@ -1170,7 +1175,7 @@ function skyyrose2_product_verified_card_media( $product ) {
  * @param int        $index Product loop position.
  */
 function skyyrose2_render_product_loop_card( $product, $index = 0 ) {
-	if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() ) {
+	if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() || empty( skyyrose2_product_verified_card_media( $product ) ) ) {
 		return;
 	}
 

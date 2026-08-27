@@ -95,6 +95,28 @@ Put the switcher in a single shared component so both sub-shapes can reuse it. L
 
 Surface the URL (and the `?variant=` keys). The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"** — that's the actual design they want.
 
+### Commerce-sensitive prototype reinforcement
+
+When a UI prototype includes a purchase, account, consent, or other stateful
+control, make the **action boundary** visible without performing the action. A
+prototype can show `Add to bag`, `Choose size`, or `View piece`, but it must not
+write to a real cart, account, payment, or email system merely to look real.
+
+Record these three items beside every commerce-sensitive prototype:
+
+1. **Truth condition** — the server state that makes the action eligible. For
+   example, only a simple, purchasable, in-stock WooCommerce product may show
+   quick add; variation-dependent products must lead to the PDP.
+2. **Fallback path** — the no-JavaScript or unsupported-runtime route. For
+   example, the product URL remains available alongside an AJAX enhancement.
+3. **E2E boundary** — a read-only browser spec for each variant and a separate
+   mutation spec that cannot run until it identifies an approved disposable
+   staging fixture and explicitly opts in to mutations.
+
+The floating switcher is preview-only. Do not expose it on a route that shares
+a real production cart/session, and do not make variant selection mutate server
+state.
+
 ### 6. Capture the answer and clean up
 
 Once a variant has won, write down which one and why (commit message, ADR, issue, or a `NOTES.md` next to the prototype if running AFK and the user hasn't responded yet). Then:
@@ -109,4 +131,5 @@ Don't leave variant components or the switcher lying around. They rot fast and c
 - **Variants that differ only in colour or copy.** That's a tweak, not a prototype. Real variants disagree about structure.
 - **Sharing too much code between variants.** A shared `<Header>` is fine; a shared `<Layout>` defeats the point. Each variant should be free to throw out the layout.
 - **Wiring variants to real mutations.** Read-only prototypes are fine. If a variant needs to mutate, point it at a stub — the question is "what should this look like", not "does the backend work".
+- **Calling a clickable cart UI "E2E" without an explicit fixture boundary.** Browser proof can be read-only; a real cart write is a separate, fixture-bound authorization.
 - **Promoting the prototype directly to production.** The variant code was written under prototype constraints (no tests, minimal error handling). Rewrite it properly when you fold it in.
