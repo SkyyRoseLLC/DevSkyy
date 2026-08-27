@@ -142,6 +142,7 @@
   <button class="tab" data-f="black-rose">Black Rose</button>
   <button class="tab" data-f="love-hurts">Love Hurts</button>
   <button class="tab" data-f="signature">Signature</button>
+  <button class="tab" data-f="kids-capsule">Kids Capsule</button>
   <div class="spacer"></div>
   <div class="pills">
     <button class="pill active" data-s="all">All</button>
@@ -167,10 +168,19 @@
   </div>
 </div>
 
+<script src="./product-asset-manifest.js"></script>
 <script>
 /* ─── PRODUCT DATA ─────────────────────────────────── */
 
-const PRODUCTS = [
+const PRODUCT_DATA = window.SKYROSE_PRODUCT_GALLERY;
+if (!PRODUCT_DATA || !Array.isArray(PRODUCT_DATA.products) || !PRODUCT_DATA.images) {
+  throw new Error('Product asset manifest is unavailable. Run the gallery manifest builder.');
+}
+const PRODUCTS = PRODUCT_DATA.products;
+
+// Retained only as historical context; the live gallery reads the current SOT manifest.
+if (false) {
+const LEGACY_PRODUCTS = [
   // ── Black Rose (8 products) ───────────────────────────────────
   { id:'br-001', name:'BLACK Rose Crewneck', col:'black-rose', desc:'Gothic luxury. Embossed rose on deep black, a dark romance woven in every thread.' },
   { id:'br-002', name:'BLACK Rose Joggers', col:'black-rose', desc:'Twilight comfort meets gothic romance. Silicone rubber rose logo on soft fabric.' },
@@ -198,11 +208,13 @@ const PRODUCTS = [
   { id:'sg-011', name:'Original Label Tee (White)', col:'signature', desc:'Clean white premium tee. Signature Collection original label, couture everyday luxury.' },
   { id:'sg-012', name:'Original Label Tee (Orchid)', col:'signature', desc:'Orchid premium tee. Signature Collection original label, bold color statement.' },
 ];
+}
 
 const COL = {
   'black-rose': { name:'BLACK ROSE', accent:'#B76E79' },
   'love-hurts': { name:'LOVE HURTS', accent:'#8B0000' },
   'signature':  { name:'SIGNATURE',  accent:'#D4AF37' },
+  'kids-capsule': { name:'KIDS CAPSULE', accent:'#8B5CF6' },
 };
 
 /* ─── IMAGE MAP ────────────────────────────────────── */
@@ -210,6 +222,7 @@ const COL = {
 
 // Single source: wordpress-theme/skyyrose-flagship/assets/images/products/{sku}/
 // Order: Techflat → Flatlay/Product Photo → Render (Model)
+if (false) {
 const P = 'wordpress-theme/skyyrose-flagship/assets/images/products';
 
 function img(sku, file, label) {
@@ -350,6 +363,9 @@ const IMAGES = {
     img('sg-012', 'sg-012-back-model.webp', 'Render Back'),
   ],
 };
+}
+
+const IMAGES = PRODUCT_DATA.images;
 
 /* ─── STATE ────────────────────────────────────────── */
 
@@ -376,7 +392,7 @@ function classify(id, status) {
 function render() {
   const main = document.getElementById('gallery');
   main.innerHTML = '';
-  const cols = ['black-rose','love-hurts','signature'];
+  const cols = ['black-rose','love-hurts','signature','kids-capsule'];
   const shown = cols.filter(c => colFilter === 'all' || c === colFilter);
 
   shown.forEach(col => {
