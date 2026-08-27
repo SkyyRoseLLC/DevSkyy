@@ -1,0 +1,140 @@
+{
+  "schema": "product-fidelity-preflight-receipt.v1",
+  "status": "BLOCKED",
+  "operation": "native_collection_scene",
+  "target": {
+    "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
+    "metadata": {
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_fraction": 0.0,
+      "opaque_fraction": 1.0
+    }
+  },
+  "references": [
+    {
+      "index": 0,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "sg-009",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-009",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 886,
+        "height": 886,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 2,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-007-onmodel.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "sg-007",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-007-signature-beanie.png",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-007",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 2048,
+        "height": 2048,
+        "mode": "P",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 4,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png",
+      "role": "exact_logo_or_patch_authority",
+      "view": "scene",
+      "sku": "signature-font-sculpture",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1469,
+        "height": 414,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_fraction": 0.49359221,
+        "opaque_fraction": 0.36923307
+      }
+    },
+    {
+      "index": 5,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+      "role": "scene_authority",
+      "view": "scene",
+      "sku": "signature-hero",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    }
+  ],
+  "findings": [
+    {
+      "level": "error",
+      "code": "GARMENT_MATTE_REQUIRED",
+      "message": "Exact native scenes require a protected garment matte for: sg-007, sg-009"
+    },
+    {
+      "level": "error",
+      "code": "GARMENT_PLACEMENTS_REQUIRED",
+      "message": "Every protected garment matte needs an exact protected_placements entry"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "product-fidelity-edit.v1",
+  "operation": "native_collection_scene",
+  "handoff_status": "BLOCKED_PRE_GENERATION",
+  "source_freshness_lock": {"path":"data/product-sot.json","sha256":"4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"},
+  "target": {"path":"wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-onmodel.webp","sha256":"e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c"},
+  "generator": {"route":"environment_rebuild_around_source","supports_reference_images":true,"product_redraw_allowed":false,"intended_provider_alias":"gpt-image-2","provider_call_authorized":false},
+  "pose_change": false,
+  "collection_scene": {"collection_id":"love-hurts","scene_id":"LH-COMMERCE-3","story_role":"The Rose Vitrine","scene_variation":"intimate threshold and vitrine","products":[{"sku":"lh-005","cta":"Pre-Order The Fannie"}]},
+  "references": [
+    {"sku":"lh-005","view":"on_model_front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-onmodel.webp","sha256":"e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c","authority_state":"sot_verified","approved_pose_source":true,"verbatim_text":["FANNIE"]},
+    {"sku":"lh-005","view":"front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg","sha256":"8cae4c6b10bfe9bcd4ba60b4a5529769064ef9b5d558527bb71126a115697f18","authority_state":"sot_verified","verbatim_text":["FANNIE"]}
+  ],
+  "optical_contract": {"measurement_status":"PROVISIONAL_REQUIRES_FULL_SIZE_CONFIRMATION","output_dimensions":[1536,2048],"subject_bbox":[256,330,1270,1650],"horizon_y":990,"foot_contact_points":[[640,1640],[910,1640]],"lens_class":"normal","camera_height":"eye_level","key_light":{"direction":"camera_left","temperature_k":3100,"softness":"soft"},"shadow":{"direction":"camera_right","softness":"soft"},"floor_response":"satin","reflection_mode":"subtle","contact_shadow_required":true,"edge_spill_required":true,"depth_occlusion_required":true,"atmospheric_depth_required":true,"scene_grain_match_required":true},
+  "product_locks": ["lh-005 is a small rectangular black pebbled PU/faux-leather fanny pack/cross-body sling, not a purse, backpack, tote, or generic belt bag.","Preserve horizontal front and rear zipper pockets, adjustable black nylon webbing, black buckle, black hardware, and believable strap tension/body contact.","The exact white embroidered FANNIE wordmark and small red rose accent must retain scale, letterforms, and placement; no extra rose or generic logo."],
+  "prompt_plan": "Candidate-only close cross-body composition at accessory scale in an intimate Love Hurts threshold/vitrine. The Fannie is the product protagonist and the enchanted rose is sharply legible without replacing it. One coherent light field reveals pebbled leather, zipper hardware, body-contact compression, cast shadow, and scene spill. No distant full-body framing, floating strap, altered wordmark, or generic bag geometry.",
+  "review_gate": {"candidate_author":"unassigned-candidate-author","independent_reviewer_required":true,"minimum_scores":{"product_fidelity":95,"optical_integration":90,"anatomy_pose":90,"collection_story":90,"commerce_readiness":90}},
+  "promotion": {"founder_approval_required":true,"wiring_allowed":false,"deployment_allowed":false},
+  "pre_generation_blockers": ["LH_005_PROTECTED_GARMENT_AND_ACCESSORY_MATTE_MISSING","LH_005_ONMODEL_SOURCE_REQUIRES_CURRENT_SOT_MAPPING_CONFIRMATION","EXACT_ENCHANTED_ROSE_SCENE_AUTHORITY_NOT_YET_BOUND"]
+}

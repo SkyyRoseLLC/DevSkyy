@@ -16,11 +16,14 @@ import os
 import sys
 from pathlib import Path
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from scripts.oai_render.client import OAIImageClient
 from skyyrose.core.on_model_media_intake import validate_generation_receipt
 
 
-REPO_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_RECEIPTS = REPO_ROOT / "data/candidates/geometry-pilot-2026-08-26/receipts"
 PRODUCT_SOT = REPO_ROOT / "data/product-sot.json"
 

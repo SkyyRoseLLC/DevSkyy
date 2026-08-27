@@ -2,7 +2,7 @@
   "schema": "skyyrose.product-generation-receipt.v1",
   "receipt_stage": "preflight",
   "sku": "sg-009",
-  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
   "product_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a",
   "operation": "candidate_only",
   "model": "gpt-image-2",

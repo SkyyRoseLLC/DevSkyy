@@ -1,0 +1,27 @@
+{
+  "schema": "product-fidelity-edit.v1",
+  "operation": "native_collection_scene",
+  "handoff_status": "BLOCKED_PRE_GENERATION",
+  "source_freshness_lock": {"path":"data/product-sot.json","sha256":"4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"},
+  "target": {"path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-005-signature-hoodie.jpeg","sha256":"e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c"},
+  "generator": {"route":"environment_rebuild_around_source","supports_reference_images":true,"product_redraw_allowed":false,"intended_provider_alias":"gpt-image-2","provider_call_authorized":false},
+  "pose_change": false,
+  "collection_scene": {"collection_id":"black-rose","scene_id":"BR-COMMERCE-2","story_role":"The Open Waterfront","scene_variation":"open moonlit Oakland waterfront","products":[{"sku":"br-005","cta":"Complete the Look"},{"sku":"br-007","cta":"Complete the Look"}]},
+  "references": [
+    {"sku":"br-005","view":"front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-005-signature-hoodie.jpeg","sha256":"e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c","authority_state":"sot_verified"},
+    {"sku":"br-007","view":"front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-007.jpg","sha256":"6d7ea279905b7cfdbc9fa58d371d0fcfc3e8326c2041b4b6a1c86219fe2c7890","authority_state":"sot_verified","verbatim_text":["OAKLAND","Love Hurts"]},
+    {"sku":"br-007","view":"back","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-back.jpg","sha256":"f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9","authority_state":"sot_verified"},
+    {"sku":"black-rose-hero","view":"scene","role":"scene_authority","path":"wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp","sha256":"e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9","authority_state":"sot_verified"}
+  ],
+  "optical_contract": {"measurement_status":"PROVISIONAL_REQUIRES_APPROVED_ON_MODEL_TARGET","output_dimensions":[1536,2048],"subject_bbox":[300,180,1210,1920],"horizon_y":1120,"foot_contact_points":[[604,1910],[932,1910]],"lens_class":"normal","camera_height":"eye_level","key_light":{"direction":"camera_right","temperature_k":4100,"softness":"soft"},"shadow":{"direction":"camera_left","softness":"soft"},"floor_response":"wet","reflection_mode":"subtle","contact_shadow_required":true,"edge_spill_required":true,"depth_occlusion_required":true,"atmospheric_depth_required":true,"scene_grain_match_required":true},
+  "product_locks": [
+    "br-005 is a black lightweight polyester pullover hoodie with white drawstrings, kangaroo pocket, tonal ribbing, rose-print inner hood lining, and a small raised silicone cutout on wearer-right chest.",
+    "br-005 large rose/cloud art belongs on the side-body panel, never the sleeve or forearm.",
+    "br-007 is black mesh with tonal rose/cloud repeat, narrow white side constructions, white waistband/drawstring, three zipper pockets, black/white/gold binding, readable OAKLAND tackle twill, and Love Hurts script above the narrow side insert.",
+    "The br-007 white side panel stays narrow and contains the exact black rose, green stems, and blue cloud; rear authority never repairs a visible front/side region."
+  ],
+  "prompt_plan": "Candidate-only open Oakland waterfront at night, full moon and Bay Bridge in supporting depth, with a single naturally grounded br-005/br-007 look. Build light, wet ground, reflections, shadow, and edge spill around a verified on-model source. No completed Black Rose statue, broad white shorts panel, sleeve art, altered lettering, or decorative empty pocket.",
+  "review_gate": {"candidate_author":"unassigned-candidate-author","independent_reviewer_required":true,"minimum_scores":{"product_fidelity":95,"optical_integration":90,"anatomy_pose":90,"collection_story":90,"commerce_readiness":90}},
+  "promotion": {"founder_approval_required":true,"wiring_allowed":false,"deployment_allowed":false},
+  "pre_generation_blockers": ["APPROVED_ON_MODEL_TARGET_MISSING","BR_005_AND_BR_007_PROTECTED_GARMENT_MATTES_MISSING","NO_SAME_POSE_COMBINED_LOOK_AUTHORITY"]
+}

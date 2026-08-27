@@ -1,0 +1,74 @@
+{
+  "schema": "product-fidelity-preflight-receipt.v1",
+  "status": "BLOCKED",
+  "operation": "native_collection_scene",
+  "target": {
+    "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg",
+    "metadata": {
+      "width": 934,
+      "height": 841,
+      "mode": "RGB",
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_fraction": 0.0,
+      "opaque_fraction": 1.0
+    }
+  },
+  "references": [
+    {
+      "index": 0,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "lh-003",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 934,
+        "height": 841,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
+      "role": "physical_product_authority",
+      "view": "back",
+      "sku": "lh-003",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1536,
+        "height": 2048,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    }
+  ],
+  "findings": [
+    {
+      "level": "error",
+      "code": "APPROVED_ON_MODEL_TARGET_REQUIRED",
+      "message": "Native scenes must rebuild around the hash-identical approved on-model target",
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg"
+    },
+    {
+      "level": "error",
+      "code": "GARMENT_MATTE_REQUIRED",
+      "message": "Exact native scenes require a protected garment matte for: lh-003"
+    },
+    {
+      "level": "error",
+      "code": "GARMENT_PLACEMENTS_REQUIRED",
+      "message": "Every protected garment matte needs an exact protected_placements entry"
+    }
+  ]
+}

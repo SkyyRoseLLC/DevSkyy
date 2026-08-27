@@ -1,0 +1,15 @@
+{
+  "schema": "fashion-theme-team-collection-handoff.v1",
+  "collection_id": "black-rose",
+  "candidate_only": true,
+  "stable_ids": {"collection":"black-rose","scenes":["BR-COMMERCE-1","BR-COMMERCE-2","BR-COMMERCE-3"],"ctas":["Complete the Set","Complete the Look","Pre-Order the Jersey Series"]},
+  "source_freshness_lock": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+  "scene_cards": [
+    {"id":"BR-COMMERCE-1","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/br-commerce-1.json","cast":["br-001","br-002"],"cta":"Complete the Set"},
+    {"id":"BR-COMMERCE-2","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/br-commerce-2.json","cast":["br-005","br-007"],"cta":"Complete the Look"},
+    {"id":"BR-COMMERCE-3","status":"PRESERVE_DO_NOT_REGENERATE","candidate_hash":"90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683","local_asset_verification":"NOT_PRESENT_IN_THIS_WORKTREE","cta":"Pre-Order the Jersey Series","preservation_rule":"Do not alter the approved 79-pixel interior face correction in BLACK A or re-render the scene."}
+  ],
+  "founder_approval_required": true,
+  "wiring_allowed": false,
+  "deployment_allowed": false
+}

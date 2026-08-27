@@ -1,0 +1,15 @@
+{
+  "schema": "fashion-theme-team-collection-handoff.v1",
+  "collection_id": "love-hurts",
+  "candidate_only": true,
+  "stable_ids": {"collection":"love-hurts","scenes":["LH-COMMERCE-1","LH-COMMERCE-2","LH-COMMERCE-3"],"ctas":["Complete the Look","Shop the Shorts","Pre-Order The Fannie"]},
+  "source_freshness_lock": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+  "scene_cards": [
+    {"id":"LH-COMMERCE-1","status":"PRESERVE_DO_NOT_REGENERATE","candidate_hash":"1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38","local_asset_verification":"NOT_PRESENT_IN_THIS_WORKTREE","cta":"Complete the Look"},
+    {"id":"LH-COMMERCE-2","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/lh-commerce-2.json","cast":["lh-003"],"cta":"Shop the Shorts"},
+    {"id":"LH-COMMERCE-3","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/lh-commerce-3.json","cast":["lh-005"],"cta":"Pre-Order The Fannie"}
+  ],
+  "founder_approval_required": true,
+  "wiring_allowed": false,
+  "deployment_allowed": false
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "fashion-theme-team-collection-evidence.v1",
+  "collection_id": "signature",
+  "status": "BLOCKED",
+  "evidence_ids": [
+    {"id":"SIG-COMMERCE-1-preflight","path":"../../preflight-receipts/sig-commerce-1.json","status":"BLOCKED","codes":["GARMENT_MATTE_REQUIRED","GARMENT_PLACEMENTS_REQUIRED"]},
+    {"id":"SIG-COMMERCE-2-preflight","path":"../../preflight-receipts/sig-commerce-2.json","status":"BLOCKED","codes":["GARMENT_MATTE_REQUIRED","GARMENT_PLACEMENTS_REQUIRED"]},
+    {"id":"SIG-COMMERCE-3-preflight","path":"../../preflight-receipts/sig-commerce-3.json","status":"BLOCKED","codes":["GARMENT_MATTE_REQUIRED","GARMENT_PLACEMENTS_REQUIRED"]}
+  ],
+  "not_evidence": ["generated_candidate","native_review","founder_promotion","runtime_wiring","deployment"],
+  "next_authority": "founder_or_designated_media_owner"
+}

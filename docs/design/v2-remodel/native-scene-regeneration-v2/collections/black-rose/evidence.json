@@ -1,0 +1,11 @@
+{
+  "schema": "fashion-theme-team-collection-evidence.v1",
+  "collection_id": "black-rose",
+  "status": "BLOCKED",
+  "evidence_ids": [
+    {"id":"BR-COMMERCE-1-preflight","path":"../../preflight-receipts/br-commerce-1.json","status":"BLOCKED","codes":["GARMENT_MATTE_REQUIRED","GARMENT_PLACEMENTS_REQUIRED"]},
+    {"id":"BR-COMMERCE-2-preflight","path":"../../preflight-receipts/br-commerce-2.json","status":"BLOCKED","codes":["APPROVED_ON_MODEL_TARGET_REQUIRED","GARMENT_MATTE_REQUIRED","GARMENT_PLACEMENTS_REQUIRED"]}
+  ],
+  "not_evidence": ["generated_candidate","native_review","founder_promotion","runtime_wiring","deployment"],
+  "next_authority": "founder_or_designated_media_owner"
+}
