@@ -741,12 +741,12 @@
     },
     {
       "id": "v2-product-card-shopping-journey",
-      "state": "LOCAL_SOURCE_GATES_PASSED_FIXTURE_BROWSER_QA",
+      "state": "LOCAL_SOURCE_GATES_PASSED_COMPONENT_QA",
       "owner": "fashion-theme-lead",
       "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
       "baseline_id": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay",
-      "candidate_id": "f5baa822c8f00fe576eee476f123c97797bd885f+centered-top-lockup-working-tree",
-      "attempt": 5,
+      "candidate_id": "cd05eccc9d9572d307abda557023b00a59883b37+runtime-card-commerce-recovery",
+      "attempt": 6,
       "tool_profile": ["Read", "Grep", "Glob", "Bash", "Edit", "ImageGen", "Browser"],
       "brain_routes": ["fashion_strategy", "page_architecture", "merchandising_conversion", "fit_imagery_returns", "growth_measurement"],
       "feature_ids": ["quick_add_to_cart", "product_border"],
@@ -761,7 +761,7 @@
         "docs/design/v2-remodel/product-card-shopping-journey/",
         "skyyrose-suite/plugins/skyyrose-design/skills/prototype/"
       ],
-      "scope": "Keep approved stone-frame composition and verified Woo/SOT media. Center the product-card top masthead as one two-row graphic-and-miniature-Cinzel lockup, then retain the title, commerce metadata, hover disclosure, variant chips, and actions on its responsive media axis. Preserve bounded text measures, full-width mobile controls, server-derived quick-add eligibility, and PDP-only variation selection.",
+      "scope": "Keep approved stone-frame composition and verified Woo/SOT media. Center the product-card top masthead as one two-row graphic-and-miniature-Cinzel lockup, then retain the title, commerce metadata, hover disclosure, variant chips, and actions on its responsive media axis. Add touch-safe factual disclosure and initiating-card quick-add error/timeout recovery. Preserve bounded text measures, full-width mobile controls, server-derived quick-add eligibility, and PDP-only variation selection.",
       "excluded": [
         "generic or generated product imagery",
         "variation selection inside a card",
@@ -779,7 +779,8 @@
         "fresh fixture-only V2 template browser proof captured the graphic mark, Cinzel collection lockup, desktop hover disclosure, keyboard-focus disclosure with reduced motion, and static mobile reel at 1440 and 390",
         "fixture compatibility repair supplies the no-op WordPress remove_filter() hook only so the local PDP smoke route can render; it does not alter the theme's production hook behavior",
         "fixture browser smoke followed View piece from the card to the canonical product route with one rendered sr2-pdp-product and no fatal-error text",
-        "fresh 1440 and 390 fixture captures confirm the top graphic and collection label are a centered two-row masthead (0px / -0.01px center deltas), the label uses miniature Cinzel at 10.3px desktop and 9.28px mobile, and the title, commerce, hover disclosure, and actions share the media center axis; page scroll width equals viewport width, and the 390 action stack is single-column with 46px controls"
+        "fresh 1440 and 390 fixture captures confirm the top graphic and collection label are a centered two-row masthead (0px / -0.01px center deltas), the label uses miniature Cinzel at 10.3px desktop and 9.28px mobile, and the title, commerce, hover disclosure, and actions share the media center axis; page scroll width equals viewport width, and the 390 action stack is single-column with 46px controls",
+        "component review P1 is repaired: a fixture-safe Woo jQuery lifecycle assertion shows Adding to bag becomes a retryable error after add_to_cart failure and Added to bag after success; touch QA shows the 46px native Piece details disclosure opens the same server-derived story while the static reel remains visible"
       ],
       "blockers": [
         "an interaction-capable staging E2E run requires an approved disposable WooCommerce fixture and cart-reset boundary",
