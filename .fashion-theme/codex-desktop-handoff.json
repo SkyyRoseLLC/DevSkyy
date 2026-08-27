@@ -2,12 +2,12 @@
   "schema_version": "1.1",
   "created_at_utc": "2026-08-16T03:45:00Z",
   "candidate": {
-    "branch": "codex/skyyrose-v2-marketplace",
-    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
+    "branch": "main",
+    "payload_commit": "f16736329871cc03a3d325ce077d13729301ffad",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
-    "candidate_id": "skyyrose-v2-marketplace-06c63a4b9459",
-    "current_integration_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-    "last_verified_source_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "candidate_id": "skyyrose-v2-main-f16736329871",
+    "current_integration_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "last_verified_source_commit": "f16736329871cc03a3d325ce077d13729301ffad",
     "state": "CURRENT_LOCAL_CANDIDATE_VERIFIED"
   },
   "manifests": {
@@ -17,36 +17,44 @@
     },
     "catalog-binding": {
       "path": ".fashion-theme/catalog-binding.json",
-      "sha256": "a813abdd090d3e363390bcbea34f83ba255f886e15200d132fca12bdea312fe9"
+      "sha256": "652396dee4ff99b8b44d351925a53befa86936a030653610b64818573c080369"
     },
     "shot-manifest": {
       "path": ".fashion-theme/shot-manifest.json",
-      "sha256": "63a3dc739c49a52ed134974b43fab02c4676f9f433e0f1fae84e40d1c5f43006"
+      "sha256": "6ba9484b7bbb9fbbfc3a65c8309a5cbe88f35286b85dd348e4c23c6ed3f2192e"
     },
     "promotion-manifest": {
       "path": ".fashion-theme/promotion-manifest.json",
-      "sha256": "407176867d4f886d3ec5f353fecfef0e96259ec765724b7e78c9c3f412b44eb2"
+      "sha256": "ccf254dde5ba3af5077a7dab2a45cae252d6100820ae357f55b19c6b916299e4"
     },
     "workspace-ledger": {
       "path": ".fashion-theme/workspace-ledger.json",
-      "sha256": "534622f9e6b5e2aa9fd6d97e05093d6712b6e40ed163682b948500a7564f619e"
+      "sha256": "b67b19f2b99777e0eb3771deaf9915b7fea165eeb728e27b69ebe6642ffa228a"
+    },
+    "founder-rights-attestation": {
+      "path": ".fashion-theme/founder-rights-attestation-2026-08-26.json",
+      "sha256": "7ad78501c3e4755c2a2ddcb7c4d8fc4ac1f7db611cef9bef9cd766971140c712"
+    },
+    "woocommerce-runtime-capture": {
+      "path": ".fashion-theme/woocommerce-runtime-capture-2026-08-26.json",
+      "sha256": "cbe8bfaaac5515ace25c3af54a437df3e05d1a278db961f641bf596124a3ea33"
     }
   },
   "package": {
-    "payload_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-    "source_tar_sha256": "f8f9abc7da4135b6077c3c1e8748ccc15f1d9f336c935b271036b39221997c07",
-    "marketplace_zip_sha256": "b854e40a2a347b3fa5e654e24db80657852ea65c041e5bb5a374e1e0e3b13ce9",
+    "payload_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "source_tar_sha256": "2e8806a6be13178f4a423b7a0cfe8e63eb61755e2680a66224f34ceb5c433eb0",
+    "marketplace_zip_sha256": "46c8751d660f16c854c7fa6c282d482cf0706a79ba1b09575be6b2f0594448e7",
     "source_file_count": 256,
     "source_tar_command": "git archive --format=tar <current_integration_commit> -- $(git ls-tree -r --name-only <current_integration_commit> wordpress-theme/skyyrose-flagship-2 .fashion-theme | LC_ALL=C sort | grep -Ev '^\\.fashion-theme/(codex-desktop-handoff|promotion-manifest)\\.json$') | shasum -a 256"
   },
   "handoff": {
     "target": "codex-desktop",
     "source_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-    "current_integration_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-    "last_verified_source_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-    "payload_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
+    "current_integration_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "last_verified_source_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "payload_commit": "f16736329871cc03a3d325ce077d13729301ffad",
     "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
-    "status": "SOURCE_TRACKED_LOCAL_REVIEW_READY",
-    "notes": "The local V2 candidate is source-tracked, package-verified, and guarded against stale reconnects. Promotion evidence remains separately governed; no deployment is implied by this handoff."
+    "status": "SOURCE_RIGHTS_AND_RUNTIME_REVIEW_READY",
+    "notes": "The main V2 candidate is package-verified, founder-rights-attested, and bound to a read-only WooCommerce 33-SKU capture. Promotion and deployment remain separately gated by visual QA and final founder release authorization."
   }
 }

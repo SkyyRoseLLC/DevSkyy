@@ -4,22 +4,22 @@
   "worktrees": [
     {
       "worktree": "/Users/theceo/DevSkyy",
-      "branch": "codex/skyyrose-v2-marketplace",
+      "branch": "main",
       "base_commit": "f97383524206825e9f0bd24042e7990be43aee27",
-      "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
+      "payload_commit": "f16736329871cc03a3d325ce077d13729301ffad",
       "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
-      "current_integration_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-      "last_verified_source_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-      "marketplace_zip_sha256": "b854e40a2a347b3fa5e654e24db80657852ea65c041e5bb5a374e1e0e3b13ce9",
+      "current_integration_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+      "last_verified_source_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+      "marketplace_zip_sha256": "46c8751d660f16c854c7fa6c282d482cf0706a79ba1b09575be6b2f0594448e7",
       "owned_paths": [
         ".fashion-theme",
         "wordpress-theme/skyyrose-flagship-2"
       ],
-      "worktree_dirty": true,
+      "worktree_dirty": false,
       "owned_paths_dirty": false,
-      "dirty_reason": "Unrelated edits remain outside the V2-owned paths; the V2 source, commerce runtime, and generated artifacts are synchronized at current_integration_commit",
-      "status": "ACTIVE_SOURCE_AND_LOCAL_PREVIEW_VERIFIED",
-      "promoted_to": null
+      "dirty_reason": "No owned V2 changes at the source checkpoint.",
+      "status": "ACTIVE_SOURCE_RIGHTS_AND_RUNTIME_VERIFIED",
+      "promoted_to": "main-local-candidate"
     }
   ],
   "handoff": {

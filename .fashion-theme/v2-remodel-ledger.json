@@ -9,13 +9,13 @@
     "state": "IMPLEMENTATION_WAVE_3_VISUAL_REBUILD"
   },
   "current_integration": {
-    "branch": "codex/skyyrose-v2-marketplace",
+    "branch": "main",
     "worktree": "/Users/theceo/DevSkyy",
-    "current_integration_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-    "last_verified_source_commit": "06c63a4b94594cd075315ef2f922a9ece96b63c3",
-    "marketplace_zip_sha256": "b854e40a2a347b3fa5e654e24db80657852ea65c041e5bb5a374e1e0e3b13ce9",
-    "status": "SOURCE_AND_LOCAL_PREVIEW_VERIFIED",
-    "note": "The prototype worktree is archival. Use the active marketplace branch and worktree above for all reconnects; do not resurrect the prototype path."
+    "current_integration_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "last_verified_source_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "marketplace_zip_sha256": "46c8751d660f16c854c7fa6c282d482cf0706a79ba1b09575be6b2f0594448e7",
+    "status": "SOURCE_RIGHTS_AND_RUNTIME_VERIFIED",
+    "note": "main is the current local V2 candidate. Founder usage rights and a read-only 33-SKU WooCommerce capture are recorded separately; promotion and deployment remain gated by visual QA and final release authorization."
   },
   "authority": {
     "approved_scope": "Remodel the V2 seed to V1-caliber end-to-end visual and commerce authority. Each collection is a distinct story world with collection-specific high-fidelity product cards, PDPs, and immersive pre-order shopping scenes.",
@@ -739,5 +739,16 @@
       ],
       "next_authority": "FOUNDER_VISUAL_REVIEW"
     }
-  ]
+  ],
+  "release_checkpoint": {
+    "source_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "rights_attestation": ".fashion-theme/founder-rights-attestation-2026-08-26.json",
+    "woocommerce_capture": ".fashion-theme/woocommerce-runtime-capture-2026-08-26.json",
+    "remaining_gates": [
+      "per-SKU SOT-to-Woo attachment byte comparison",
+      "independent visual QA",
+      "final founder release authorization",
+      "deployment"
+    ]
+  }
 }
