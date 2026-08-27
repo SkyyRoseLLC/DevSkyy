@@ -1,5 +1,5 @@
 {
-  "candidateId": "a79816203f3273ff7584276293e3c6a8727c48d5+branded-hover-insight-working-tree",
+  "candidateId": "8de028c18be121a1d6b45c9921472bce629f02e5+centered-card-axis-working-tree",
   "claimClass": "LOCAL_SOURCE_GATES_PASSED_FIXTURE_BROWSER_EVIDENCE",
   "artifacts": [
     { "id": "candidate-manifest", "path": "candidate-manifest.json", "purpose": "current worktree identity and scoped change inventory" },
@@ -13,13 +13,14 @@
     "server-derived product mode gates loop quick add",
     "card rail uses the approved SkyyRose still graphic and ceremonial Cinzel collection lockup rather than a numeric chapter",
     "hover detail is sourced only from WooCommerce short description and currently purchasable, in-stock variation attributes",
-    "reduced-motion and coarse-pointer reel fallback is present"
+    "reduced-motion and coarse-pointer reel fallback is present",
+    "the statue lockup, commerce, hover disclosure, and action stack share the media center axis without page-level horizontal overflow"
   ],
   "fixtureBrowserEvidence": {
     "route": "tools/v2-theme-preview.php?route=shop",
     "viewports": [1440, 390],
     "states": ["desktop hover", "keyboard focus with prefers-reduced-motion", "mobile coarse pointer", "View piece to PDP"],
-    "observed": ["four visible SkyyRose graphic card marks", "four visible Cinzel collection lockups", "desktop disclosure opacity transitions from 0 to 1", "reduced-motion focus keeps disclosure reachable with 1ms token", "mobile keeps the verified-media reel static", "View piece reaches a rendered sr2-pdp-product without fatal-error text after the fixture hook compatibility repair"],
+    "observed": ["four visible SkyyRose graphic card marks", "four visible Cinzel collection lockups", "desktop disclosure opacity transitions from 0 to 1", "all centered card elements measure 0px horizontal delta from the media axis at 1440 and 390", "the page scroll width equals the viewport at 1440 and 390", "the 390px mobile action stack is one column with a 46px minimum action height", "reduced-motion and coarse pointer keep the verified-media reel static", "View piece reaches a rendered sr2-pdp-product without fatal-error text after the fixture hook compatibility repair"],
     "limitation": "The local fixture intentionally does not implement get_available_variations(), so it does not establish a real product's variant list. Variant values require a fresh real WooCommerce staging read after deployment approval."
   },
   "pendingEvidence": [

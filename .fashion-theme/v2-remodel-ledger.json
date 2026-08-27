@@ -741,12 +741,12 @@
     },
     {
       "id": "v2-product-card-shopping-journey",
-      "state": "LOCAL_SOURCE_GATES_PASSED_E2E_MUTATION_BLOCKED",
+      "state": "LOCAL_SOURCE_GATES_PASSED_FIXTURE_BROWSER_QA",
       "owner": "fashion-theme-lead",
       "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
       "baseline_id": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay",
-      "candidate_id": "a79816203f3273ff7584276293e3c6a8727c48d5+branded-hover-insight-working-tree",
-      "attempt": 2,
+      "candidate_id": "8de028c18be121a1d6b45c9921472bce629f02e5+centered-card-axis-working-tree",
+      "attempt": 4,
       "tool_profile": ["Read", "Grep", "Glob", "Bash", "Edit", "ImageGen", "Browser"],
       "brain_routes": ["fashion_strategy", "page_architecture", "merchandising_conversion", "fit_imagery_returns", "growth_measurement"],
       "feature_ids": ["quick_add_to_cart", "product_border"],
@@ -761,7 +761,7 @@
         "docs/design/v2-remodel/product-card-shopping-journey/",
         "skyyrose-suite/plugins/skyyrose-design/skills/prototype/"
       ],
-      "scope": "Keep approved stone-frame composition and verified Woo/SOT media. Use the approved SkyyRose graphic mark in place of numeric card chapters, render the collection name in compact ceremonial Cinzel, and add a fine-pointer hover/focus disclosure sourced solely from WooCommerce short descriptions and currently purchasable, in-stock variation attributes. Preserve the server-derived simple-product quick-add path and PDP-only variation selection.",
+      "scope": "Keep approved stone-frame composition and verified Woo/SOT media. Consolidate the product-card graphic mark, compact ceremonial Cinzel collection lockup, title, commerce metadata, hover disclosure, variant chips, and actions on one centered responsive axis. Preserve bounded text measures, full-width mobile controls, server-derived quick-add eligibility, and PDP-only variation selection.",
       "excluded": [
         "generic or generated product imagery",
         "variation selection inside a card",
@@ -778,7 +778,8 @@
         "three-variant throwaway UI prototype passed browser checks at 1440, 768, and 390",
         "fresh fixture-only V2 template browser proof captured the graphic mark, Cinzel collection lockup, desktop hover disclosure, keyboard-focus disclosure with reduced motion, and static mobile reel at 1440 and 390",
         "fixture compatibility repair supplies the no-op WordPress remove_filter() hook only so the local PDP smoke route can render; it does not alter the theme's production hook behavior",
-        "fixture browser smoke followed View piece from the card to the canonical product route with one rendered sr2-pdp-product and no fatal-error text"
+        "fixture browser smoke followed View piece from the card to the canonical product route with one rendered sr2-pdp-product and no fatal-error text",
+        "fresh 1440 and 390 fixture captures confirm the graphic lockup, collection label, title, commerce, hover disclosure, and actions have a 0px delta from the media center axis; page scroll width equals viewport width, and the 390 action stack is single-column with 46px controls"
       ],
       "blockers": [
         "an interaction-capable staging E2E run requires an approved disposable WooCommerce fixture and cart-reset boundary",
