@@ -196,6 +196,18 @@ function skyyrose2_assets() {
 	wp_enqueue_style( 'skyyrose2-tokens', SKYYROSE2_URI . $tokens_asset, array(), skyyrose2_asset_version( $tokens_asset ) );
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . $theme_asset, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $theme_asset ) );
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, array(), skyyrose2_asset_version( $theme_script ), true );
+	wp_localize_script(
+		'skyyrose2-theme',
+		'SKYYROSE2_PORTAL_QUICK_ADD',
+		array(
+			'addingLabel'   => __( 'Adding…', 'skyyrose-flagship-2' ),
+			'addingStatus'  => __( 'Adding this piece to your bag.', 'skyyrose-flagship-2' ),
+			'successLabel'  => __( 'Added to bag', 'skyyrose-flagship-2' ),
+			'successStatus' => __( 'Added to bag. Your bag count is updated.', 'skyyrose-flagship-2' ),
+			'readyStatus'   => __( 'Ready to add another piece.', 'skyyrose-flagship-2' ),
+			'errorStatus'   => __( 'We could not add this piece. Please try again.', 'skyyrose-flagship-2' ),
+		)
+	);
 	wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
 	// Editorial collection and reservation pages render native Woo loop actions
 	// outside WooCommerce's archive template. Load the same client runtime here
