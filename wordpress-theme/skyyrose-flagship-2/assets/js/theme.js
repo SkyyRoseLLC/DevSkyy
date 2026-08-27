@@ -387,22 +387,6 @@
   const portalQuickAddMessages = window.SKYYROSE2_PORTAL_QUICK_ADD || {};
   const portalQuickAddMessage = (key, fallback) => typeof portalQuickAddMessages[key] === 'string' ? portalQuickAddMessages[key] : fallback;
   const portalQuickAddTimers = new WeakMap();
-  const portalQuickAddsByProductId = new Map();
-  const portalQuickAddProductId = (button) => button.dataset.productId || '';
-  const trackPortalQuickAdd = (button) => {
-    const productId = portalQuickAddProductId(button);
-    if (!productId) return;
-    const buttons = portalQuickAddsByProductId.get(productId) || new Set();
-    buttons.add(button);
-    portalQuickAddsByProductId.set(productId, buttons);
-  };
-  const untrackPortalQuickAdd = (button) => {
-    const productId = portalQuickAddProductId(button);
-    const buttons = portalQuickAddsByProductId.get(productId);
-    if (!buttons) return;
-    buttons.delete(button);
-    if (!buttons.size) portalQuickAddsByProductId.delete(productId);
-  };
   const clearPortalQuickAddRecovery = (button) => {
     const timer = portalQuickAddTimers.get(button);
     if (timer) window.clearTimeout(timer);
@@ -418,10 +402,8 @@
     if (state === 'adding') {
       button.setAttribute('aria-busy', 'true');
       button.textContent = portalQuickAddMessage('addingLabel', 'Adding…');
-      trackPortalQuickAdd(button);
     } else {
       clearPortalQuickAddRecovery(button);
-      untrackPortalQuickAdd(button);
       button.removeAttribute('aria-busy');
       button.textContent = state === 'success' ? portalQuickAddMessage('successLabel', 'Added to bag') : button.dataset.sr2OriginalLabel;
     }
@@ -437,22 +419,8 @@
         if (button.getAttribute('aria-busy') === 'true') {
           setPortalQuickAddState(button, 'error', portalQuickAddMessage('errorStatus', 'We could not add this piece. Please try again.'));
         }
-      }, 15000));
+      }, 8000));
     }
-  };
-
-  const productIdFromAjaxSettings = (settings) => {
-    const data = settings?.data;
-    if (typeof data === 'string') return new URLSearchParams(data).get('product_id') || '';
-    if (data && typeof data.get === 'function') return data.get('product_id') || '';
-    if (data && typeof data === 'object') return String(data.product_id || '');
-    return '';
-  };
-  const recoverPortalQuickAdd = (productId, message) => {
-    const buttons = portalQuickAddsByProductId.get(String(productId)) || new Set();
-    buttons.forEach((button) => {
-      setPortalQuickAddState(button, 'error', message);
-    });
   };
 
   if (window.jQuery) {
@@ -465,13 +433,6 @@
       setPortalQuickAddState(button, 'success', portalQuickAddMessage('successStatus', 'Added to bag. Your bag count is updated.'));
       if (button) {
         window.setTimeout(() => setPortalQuickAddState(button, 'ready', portalQuickAddMessage('readyStatus', 'Ready to add another piece.')), reducedMotion ? 0 : 1800);
-      }
-    });
-    $(document).ajaxError((_event, _jqXHR, settings) => {
-      const request = `${settings?.url || ''} ${typeof settings?.data === 'string' ? settings.data : ''}`;
-      const productId = productIdFromAjaxSettings(settings);
-      if (request.includes('add_to_cart') && productId) {
-        recoverPortalQuickAdd(productId, portalQuickAddMessage('errorStatus', 'We could not add this piece. Please try again.'));
       }
     });
   }
