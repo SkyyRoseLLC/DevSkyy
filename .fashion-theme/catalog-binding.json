@@ -30,13 +30,18 @@
   },
   "runtime_authority": {
     "woocommerce": {
-      "product_id": null,
-      "variation_id": null,
-      "price": null,
-      "availability": null,
-      "captured_at": null,
-      "state": "UNVERIFIED",
-      "blocker": "No candidate-bound WooCommerce read was supplied or performed."
+      "state": "VERIFIED_READ_ONLY",
+      "capture_path": ".fashion-theme/woocommerce-runtime-capture-2026-08-26.json",
+      "capture_sha256": "cbe8bfaaac5515ace25c3af54a437df3e05d1a278db961f641bf596124a3ea33",
+      "captured_at": "2026-08-27T02:46:36Z",
+      "exact_catalog_sku_bindings": 33,
+      "missing_catalog_skus": [],
+      "unpublished_catalog_skus": [],
+      "zero_image_skus": [
+        "kids-001",
+        "kids-002"
+      ],
+      "note": "All 33 canonical SKUs resolve to published simple WooCommerce products. kids-001 and kids-002 have no Woo attachments; V2 serves only their exact SKU-bound theme fallback until Woo media is supplied."
     }
   },
   "dynamic_purchasable_surfaces": [
@@ -47,12 +52,9 @@
       "sku": null,
       "product_media_authority": "data/sot-images.json",
       "current_v2_media_source": "WooCommerce attachment image",
-      "state": "HOLD",
+      "state": "PARTIALLY_VERIFIED",
       "blockers": [
-        "No exact SKU-to-WooCommerce product ID mapping.",
-        "No exact variation ID/attributes/availability capture.",
-        "No SOT-image selection at the V2 card/PDP boundary.",
-        "No media rights or approved-use record."
+        "WooCommerce attachment bytes are not yet hash-compared against the local SOT per SKU."
       ]
     },
     {
@@ -60,11 +62,9 @@
       "source": "wordpress-theme/skyyrose-flagship-2/page.php:#reserve",
       "candidate_scope": "WooCommerce category pre-order, not the canonical is_preorder flag",
       "sku": null,
-      "state": "HOLD",
+      "state": "PARTIALLY_VERIFIED",
       "blockers": [
-        "WooCommerce category membership is UNKNOWN.",
-        "The implementation falls back to unscoped products if the category is empty.",
-        "No SKU/variation/media/rights binding exists."
+        "WooCommerce attachment bytes are not yet hash-compared against the local SOT per SKU."
       ]
     }
   ],
@@ -92,12 +92,11 @@
       "v2_note": "The Oakland statement jersey.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "HOLD",
+      "state": "RETIRED_LEGACY_DRAFT",
       "blockers": [
-        "V2 label/type conflicts with the catalog crewneck.",
-        "No scene-object proof.",
-        "No WooCommerce or rights evidence."
-      ]
+        "The legacy hotspot draft is retained inside a PHP false branch and is not rendered by the active V2 pre-order route."
+      ],
+      "runtime_state": "INACTIVE"
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-02",
@@ -122,11 +121,11 @@
       "v2_note": "A numbered piece from the house.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "HOLD",
+      "state": "RETIRED_LEGACY_DRAFT",
       "blockers": [
-        "No scene-object proof.",
-        "No selected variation, WooCommerce, or rights evidence."
-      ]
+        "The legacy hotspot draft is retained inside a PHP false branch and is not rendered by the active V2 pre-order route."
+      ],
+      "runtime_state": "INACTIVE"
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-03",
@@ -151,12 +150,11 @@
       "v2_note": "Bay Area sports memory, recut.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "HOLD",
+      "state": "RETIRED_LEGACY_DRAFT",
       "blockers": [
-        "V2 label/type conflicts with the catalog hoodie.",
-        "No scene-object proof.",
-        "No WooCommerce or rights evidence."
-      ]
+        "The legacy hotspot draft is retained inside a PHP false branch and is not rendered by the active V2 pre-order route."
+      ],
+      "runtime_state": "INACTIVE"
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-04",
@@ -181,12 +179,11 @@
       "v2_note": "Black Rose armor for the night.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "HOLD",
+      "state": "RETIRED_LEGACY_DRAFT",
       "blockers": [
-        "V2 label/type conflicts with the catalog football jersey.",
-        "No scene-object proof.",
-        "No WooCommerce or rights evidence."
-      ]
+        "The legacy hotspot draft is retained inside a PHP false branch and is not rendered by the active V2 pre-order route."
+      ],
+      "runtime_state": "INACTIVE"
     },
     {
       "bridge_id": "v2-preorder-black-rose-salon-05",
@@ -211,12 +208,11 @@
       "v2_note": "The rose travels across the Bay.",
       "woocommerce_product_id": null,
       "variation_id": null,
-      "state": "HOLD",
+      "state": "RETIRED_LEGACY_DRAFT",
       "blockers": [
-        "V2 label/type conflicts with the catalog football jersey.",
-        "No scene-object proof.",
-        "No WooCommerce or rights evidence."
-      ]
+        "The legacy hotspot draft is retained inside a PHP false branch and is not rendered by the active V2 pre-order route."
+      ],
+      "runtime_state": "INACTIVE"
     }
   ],
   "evidence_contract": {
@@ -232,5 +228,10 @@
     ],
     "fail_closed": true
   },
-  "frozen_at_utc": "2026-08-15T04:58:10Z"
+  "frozen_at_utc": "2026-08-15T04:58:10Z",
+  "rights_attestation": {
+    "record_id": "founder-rights-attestation-2026-08-26",
+    "path": ".fashion-theme/founder-rights-attestation-2026-08-26.json",
+    "attested_at_utc": "2026-08-26T00:00:00Z"
+  }
 }

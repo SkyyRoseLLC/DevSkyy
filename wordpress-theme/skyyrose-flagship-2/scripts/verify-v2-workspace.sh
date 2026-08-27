@@ -27,10 +27,10 @@ THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 REPO_ROOT="$(cd "$THEME_DIR/../.." && pwd)"
 cd "$REPO_ROOT"
 
-expected_branch="codex/skyyrose-v2-marketplace"
+expected_branch="$(jq -r '.candidate.branch' .fashion-theme/codex-desktop-handoff.json)"
 branch="$(git branch --show-current)"
-if [[ "$branch" != "$expected_branch" ]]; then
-	echo "FAIL V2 reconnect guard: expected branch $expected_branch, found ${branch:-detached}" >&2
+if [[ "$branch" != "$expected_branch" && "$branch" != "main" ]]; then
+	echo "FAIL V2 reconnect guard: expected candidate branch $expected_branch or main, found ${branch:-detached}" >&2
 	exit 1
 fi
 

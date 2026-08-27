@@ -27,7 +27,8 @@ if ( post_password_required() ) {
 	return;
 }
 
-$gallery_count       = count( $hero_product->get_gallery_image_ids() ) + ( $hero_product->get_image_id() ? 1 : 0 );
+$media_fallback      = ! $hero_product->get_image_id() ? skyyrose2_product_media_fallback( $hero_product ) : array();
+$gallery_count       = count( $hero_product->get_gallery_image_ids() ) + ( $hero_product->get_image_id() ? 1 : ( $media_fallback ? 1 : 0 ) );
 $stock_html          = wc_get_stock_html( $hero_product );
 $stock_state         = $hero_product->is_in_stock() ? 'available' : 'unavailable';
 $portal_kicker       = $hero_collection_data && ! empty( $hero_collection_data['kicker'] ) ? $hero_collection_data['kicker'] : '';
@@ -50,6 +51,11 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 			<span><?php esc_html_e( 'Product archive', 'skyyrose-flagship-2' ); ?></span>
 			<span><?php echo esc_html( sprintf( _n( '%d published view', '%d published views', $gallery_count, 'skyyrose-flagship-2' ), $gallery_count ) ); ?></span>
 		</p>
+		<?php if ( $media_fallback ) : ?>
+			<figure class="woocommerce-product-gallery__wrapper sr2-pdp-product__fallback-media">
+				<img src="<?php echo esc_url( $media_fallback['src'] ); ?>" alt="<?php echo esc_attr( $media_fallback['alt'] ); ?>" width="<?php echo esc_attr( (string) $media_fallback['width'] ); ?>" height="<?php echo esc_attr( (string) $media_fallback['height'] ); ?>" decoding="async">
+			</figure>
+		<?php else : ?>
 		<?php
 		/**
 		 * Hook: woocommerce_before_single_product_summary.
@@ -59,6 +65,7 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 		 */
 		do_action( 'woocommerce_before_single_product_summary' );
 		?>
+		<?php endif; ?>
 	</div>
 
 	<div class="summary entry-summary sr2-pdp-product__summary">

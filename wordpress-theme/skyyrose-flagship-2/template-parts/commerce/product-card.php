@@ -69,11 +69,12 @@ $has_portal_statue = (bool) ( $portal_statue_uri && $portal_statue_small_uri );
 $scene_frames   = $collection_data ? skyyrose2_product_card_reel_frames( $collection_data ) : array();
 $scene_uri      = ! empty( $scene_frames[0]['uri'] ) ? $scene_frames[0]['uri'] : '';
 $view_image_ids = skyyrose2_product_view_image_ids( $card_product );
+$media_fallback = ! $image_id ? skyyrose2_product_media_fallback( $card_product ) : array();
 $price_html     = $card_product->get_price_html();
 $stock_html     = function_exists( 'wc_get_stock_html' ) ? wc_get_stock_html( $card_product ) : '';
 $stock_state    = $card_product->is_in_stock() ? 'available' : 'unavailable';
 $stock_label    = $card_product->is_in_stock() ? __( 'Available', 'skyyrose-flagship-2' ) : __( 'Unavailable', 'skyyrose-flagship-2' );
-$quick_view_image = $image_id && function_exists( 'wp_get_attachment_image_url' ) ? wp_get_attachment_image_url( $image_id, 'woocommerce_single' ) : '';
+$quick_view_image = $image_id && function_exists( 'wp_get_attachment_image_url' ) ? wp_get_attachment_image_url( $image_id, 'woocommerce_single' ) : ( $media_fallback['src'] ?? '' );
 $quick_view_excerpt = wp_trim_words( wp_strip_all_tags( $card_product->get_short_description() ), 26, '…' );
 $loading        = $card_index < 4 ? 'eager' : 'lazy';
 $fetchpriority  = 0 === $card_index ? 'high' : 'auto';
@@ -96,7 +97,7 @@ $image_attrs    = array(
 	data-product-type="<?php echo esc_attr( $product_type ); ?>"
 	data-purchasable="<?php echo esc_attr( $purchasable ); ?>"
 	data-availability="<?php echo esc_attr( $stock_state ); ?>"
-	data-media-state="<?php echo esc_attr( $image_id ? 'ready' : 'missing' ); ?>"
+	data-media-state="<?php echo esc_attr( ( $image_id || $media_fallback ) ? 'ready' : 'missing' ); ?>"
 >
 	<header class="sr2-c-product-portal__chapter" aria-hidden="true">
 		<span><?php echo esc_html( sprintf( '%02d', $chapter_number ) ); ?></span>
@@ -155,6 +156,8 @@ $image_attrs    = array(
 		<?php endif; ?>
 		<?php if ( $image_id ) : ?>
 			<?php echo wp_kses_post( wp_get_attachment_image( $image_id, 'woocommerce_thumbnail', false, $image_attrs ) ); ?>
+		<?php elseif ( $media_fallback ) : ?>
+			<img class="sr2-c-product-portal__product-image" src="<?php echo esc_url( $media_fallback['src'] ); ?>" alt="<?php echo esc_attr( $media_fallback['alt'] ); ?>" width="<?php echo esc_attr( (string) $media_fallback['width'] ); ?>" height="<?php echo esc_attr( (string) $media_fallback['height'] ); ?>" loading="<?php echo esc_attr( $loading ); ?>" fetchpriority="<?php echo esc_attr( $fetchpriority ); ?>" decoding="async">
 		<?php elseif ( function_exists( 'wc_placeholder_img' ) ) : ?>
 			<?php echo wp_kses_post( wc_placeholder_img( 'woocommerce_thumbnail', $image_attrs ) ); ?>
 		<?php endif; ?>

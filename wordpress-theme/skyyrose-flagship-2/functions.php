@@ -28,6 +28,38 @@ function skyyrose2_sot_asset_uri( $path ) {
 }
 
 /**
+ * Return a founder-approved, SKU-specific theme fallback where the live
+ * WooCommerce product has no attachment at all. This is intentionally a
+ * tiny allowlist: it must never guess an image from a collection or reuse a
+ * neighboring SKU. WooCommerce remains the preferred media authority.
+ *
+ * @param WC_Product $product Current product.
+ * @return array{src:string,width:int,height:int,alt:string}|array{}
+ */
+function skyyrose2_product_media_fallback( $product ) {
+	if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! method_exists( $product, 'get_sku' ) ) {
+		return array();
+	}
+
+	$fallbacks = array(
+		'kids-001' => array( 'path' => 'images/products/kids-001-product-proof-400.webp', 'width' => 400, 'height' => 600 ),
+		'kids-002' => array( 'path' => 'images/products/kids-002-product-proof-400.webp', 'width' => 400, 'height' => 400 ),
+	);
+	$sku       = sanitize_key( $product->get_sku() );
+	$fallback  = $fallbacks[ $sku ] ?? null;
+	if ( ! is_array( $fallback ) || empty( $fallback['path'] ) || ! file_exists( SKYYROSE2_DIR . '/assets/sot/' . $fallback['path'] ) ) {
+		return array();
+	}
+
+	return array(
+		'src'    => skyyrose2_sot_asset_uri( $fallback['path'] ),
+		'width'  => (int) $fallback['width'],
+		'height' => (int) $fallback['height'],
+		'alt'    => $product->get_name(),
+	);
+}
+
+/**
  * Resolve an exact snapshot from the current Scroll World sequence.
  *
  * @param string $path Snapshot filename.

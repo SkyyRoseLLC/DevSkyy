@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "record_id": "founder-rights-attestation-2026-08-26",
+  "recorded_at_utc": "2026-08-26T00:00:00Z",
+  "authority": "SkyyRose founder and rights holder",
+  "attestation": "The founder confirms that they created and own the SkyyRose product photography, flatlays, technical artwork, scene media, campaign imagery, and V2 theme visual assets currently under review, and approves their use for the SkyyRose V2 storefront.",
+  "scope": {
+    "collections": ["signature", "black-rose", "love-hurts", "kids-capsule", "jersey-series"],
+    "surfaces": ["V2 storefront", "collection routes", "product cards", "product detail pages", "pre-order", "lookbook", "immersive routes"],
+    "asset_classes": ["product media", "editorial imagery", "cinematic backdrops", "scene media", "brand graphics", "video posters"]
+  },
+  "limits": [
+    "This records rights and approved V2 use only; it does not certify SKU fidelity, product-to-scene identity, accessibility, live WooCommerce behavior, or deployment.",
+    "New media or a changed byte requires its own candidate hash and the appropriate product-fidelity review."
+  ]
+}

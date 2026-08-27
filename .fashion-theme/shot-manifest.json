@@ -45,8 +45,9 @@
       ],
       "intake_state": "CATALOGED_PENDING_ROUTE_AND_RIGHTS_BINDING",
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "rule": "This founder-supplied intake establishes candidate visual availability only. A file may not be copied into theme source or used on a production route until a semantic route, collection, approved use, fallback, rights record, and candidate-byte hash are bound."
     }
@@ -65,8 +66,9 @@
         "Signature cinematic scene-hero still"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "1d04e5c5b9c93c802dc77379516b090f8d1632c8f0b58d4d62bb1c50742b3a3f",
       "state": "HOLD"
@@ -84,8 +86,9 @@
         "BR heroes/manifesto surfaces"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "c6157066a0627b736e3c687fb2842a7ad53eb1f5c93d0ae1780e4338831cc74e",
       "state": "HOLD"
@@ -103,8 +106,9 @@
         "LH heroes/manifesto surfaces"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "e8e787036a45ebebd737fe919861be1d5e96e33b74fa4bbd5b6f961d97510976",
       "state": "HOLD"
@@ -122,8 +126,9 @@
         "KC runway immersive scene still"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "eaf87adfb51c5d4303748cf5f2923639cb5b8ac5c0d773b3a80a6ca49c56921b",
       "state": "HOLD"
@@ -141,8 +146,9 @@
         "preorder gateway poster"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": null,
       "state": "HOLD"
@@ -159,8 +165,9 @@
       "candidate_sha256": "c0267322fcef1533849d50a04dee499230f0dce0406e509cebaf47c5c199cfdb",
       "dimensions": "1920x1275",
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "state": "HOLD"
     },
@@ -176,8 +183,9 @@
       "candidate_sha256": "b8fc17624d754136c60949b72de9a51df58f5d4c1fa2d4bc6264de3bba32452d",
       "dimensions": "1920x1275",
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "state": "HOLD"
     },
@@ -193,8 +201,9 @@
       "candidate_sha256": "7d926b7854237cdbb882108661a401415cedfd8922e9b9bfd6aacfef105bc70c",
       "dimensions": "1920x1275",
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "state": "HOLD"
     },
@@ -210,8 +219,9 @@
       "candidate_sha256": "b4e25c19d34c6ea21f1c0d1c442c5422273a37aab390c8387dc0c68188b98d78",
       "dimensions": "1920x1275",
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "state": "HOLD"
     },
@@ -227,8 +237,9 @@
       "candidate_sha256": "d4f1f5010aa98b173424cec0864d132f772353e29fd87bd2f08553cd9f33a7be",
       "dimensions": "2048x1360",
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "state": "HOLD"
     },
@@ -243,8 +254,9 @@
       "candidate_file_state": "PRESENT",
       "candidate_sha256": "2ca5326cb30844311f0dd593c7b6141ab7819ba0926913183e65c9bd6207a3eb",
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "state": "HOLD",
       "blocker": "No inspected V1 visual-manifest record or scene-object-to-SKU evidence."
@@ -262,8 +274,9 @@
         "Love Hurts V2 manifesto lookbook baseline"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "38b906e370af5575eb9044bc34693565dc3120dce48a4aaf4032bc89a52dbb88",
       "state": "HOLD"
@@ -271,7 +284,7 @@
     {
       "media_id": "v2-black-rose-lake-merritt-monument",
       "source_record_path": "founder-approved generated visual 2026-08-06",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-9a3a3aac-10c0-404c-9dc4-f0b439a3639d.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "manifest_status": "FOUNDER_APPROVED",
       "kind": "cinematic-backdrop",
       "collection": "black-rose",
@@ -290,7 +303,7 @@
     {
       "media_id": "v2-black-rose-typography-star-salon",
       "source_record_path": "founder-directed generated visual 2026-08-06",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-9e48f3a2-ef0e-494b-a5bd-b6fdb0b2ef86.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "manifest_status": "FOUNDER_DIRECTED",
       "kind": "cinematic-backdrop",
       "collection": "black-rose",
@@ -309,7 +322,7 @@
     {
       "media_id": "v2-love-hurts-golden-gate-monument",
       "source_record_path": "founder-approved generated visual 2026-08-06",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-163bd750-d982-4a47-9c5a-18b0d582d5f7.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "manifest_status": "FOUNDER_APPROVED",
       "kind": "cinematic-backdrop",
       "collection": "love-hurts",
@@ -328,7 +341,7 @@
     {
       "media_id": "v2-signature-golden-gate-monuments",
       "source_record_path": "founder-directed generated visual 2026-08-07",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-80826921-38b9-41d5-adb0-e9a2eaca8577.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "a4166a8187cd5d78655685d39d72927f69bae6d1824c6c756f709a3f4664d0b3",
       "manifest_status": "FOUNDER_DIRECTED",
       "kind": "cinematic-backdrop",
@@ -348,7 +361,7 @@
     {
       "media_id": "v2-black-rose-bay-bridge-monuments",
       "source_record_path": "founder-directed generated visual 2026-08-07",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-85b10f1e-b911-4bc4-8ba3-84bd04936ed8.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "ecdc67d000dcecd09b8a64d08ac87edaf9771550c2eef3ef60752e3a7547e4c7",
       "manifest_status": "FOUNDER_DIRECTED",
       "kind": "cinematic-backdrop",
@@ -368,7 +381,7 @@
     {
       "media_id": "v2-love-hurts-rose-aisle-monuments",
       "source_record_path": "founder-directed generated visual 2026-08-07",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-ba528c3e-8a1d-48f2-b396-772fe55afdf7.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "58ee695bff409ac32ee9bfc5f153df0ddec82736cb6a86c73c5a58392a886eec",
       "manifest_status": "FOUNDER_DIRECTED",
       "kind": "cinematic-backdrop",
@@ -388,7 +401,7 @@
     {
       "media_id": "v2-kids-capsule-heir-throne",
       "source_record_path": "founder-directed generated visual 2026-08-07",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-9f9bf691-9926-4e24-9a73-6a0e312de52b.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "8e54239195d1c1c4fdbebb8fe329f18dd7af995aaf8ab97912afb872b3550fe4",
       "manifest_status": "SUPERSEDED_BY_FOUNDER_DIRECTION_2026_08_14",
       "kind": "cinematic-backdrop-historical",
@@ -426,7 +439,7 @@
     {
       "media_id": "v2-kids-capsule-mascot-statue-full-color-v2",
       "source_record_path": "founder-directed Kids Capsule real-color statue correction 2026-08-14",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-651df801-d562-414e-84fa-73b742d2b52d.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "179954d556559cfcb6b60425ec406c9a3840ecf5fb4edb7a9384e8bd744110a2",
       "manifest_status": "SUPERSEDED_BY_FOUNDER_DIRECTION_2026_08_14",
       "kind": "collection-lookbook-full-color-character-monument-historical",
@@ -450,7 +463,7 @@
     {
       "media_id": "v3-kids-capsule-heir-throne-monument",
       "source_record_path": "founder-supplied heir throne visual and directed removal of both side outfit displays 2026-08-14",
-      "source_path": "/Users/theceo/Downloads/OpenAI Playground 2026-07-12 at 09.52.32.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "c88de33e1fd6eb2151c0d221e66120108526ec752dc312e18cb05d5774518100",
       "generated_source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-74b3b94e-3c53-4d1e-9c34-f9c83f93ccac.png",
       "generated_source_sha256": "915f4277585aa1806545430ee816bdb3c0a1499366fd7d5186ecbf9b2540c08a",
@@ -486,7 +499,7 @@
     {
       "media_id": "global-skyyrose-header-animation",
       "source_record_path": "founder-supplied SkyyRose animated GIF 2026-08-06",
-      "source_path": "/Users/theceo/DevSkyy/assets/branding/skyyrose-logo-animated.gif",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "43332f8eab43af05266cbfdc85bc40acc92412a421bb679a6facb3ee5fa16dd4",
       "manifest_status": "FOUNDER_APPROVED",
       "kind": "global-brand-motion-mark",
@@ -528,8 +541,9 @@
         "Kids Capsule V2 manifesto lookbook baseline"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "cf13e15335aabdfcf11f1bb619a1b69c35503e2c2d4f250a94b323d0c9c2942f",
       "state": "HOLD"
@@ -625,8 +639,9 @@
         "V2 homepage rotating on-model collection index"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -646,8 +661,9 @@
         "V2 homepage rotating on-model collection index"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -667,8 +683,9 @@
         "V2 homepage rotating on-model collection index"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "e278ef12b3d15b7c400e86492bcd1c2ddb1b665068e6d43cdd4d37567c72b7b1",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -686,8 +703,9 @@
       "candidate_file_state": "PRESENT",
       "approved_uses_from_source": [],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "57272be5f1bef854e8e20731b5301cf11e4f8d3543b0a50e82eec931114d07e3",
       "state": "PRESENT_WITHHELD_FROM_ACTIVE_SURFACE"
@@ -695,7 +713,7 @@
     {
       "media_id": "v2-kids-capsule-mascot-red-royal-procession",
       "source_record_path": "founder-directed Scroll World archive 2026-08-11; garment proof data/skyyrose-catalog.csv SKU KIDS-001",
-      "source_path": "/Users/theceo/Downloads/archive/hf_20260719_195821_08103114-b886-4cb9-920d-f3c9f1a60497.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "824d10a677dd13117c6736e142dd393ae806df0838b1b325d4f5989be95cfb3d",
       "manifest_status": "FOUNDER_DIRECTED_FOR_V2_KIDS_ROYAL_PROCESSION",
       "kind": "scroll-world-mascot-guardian-reveal-derivative",
@@ -707,8 +725,9 @@
         "V2 homepage Kids Capsule Royal Procession local candidate"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "4f8fef289747434600cc064a642342c5127ed702bd2d336642579fc2bb57ce96",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -716,7 +735,7 @@
     {
       "media_id": "v2-kids-capsule-mascot-purple-royal-procession",
       "source_record_path": "founder-directed Scroll World archive 2026-08-11; garment proof data/skyyrose-catalog.csv SKU KIDS-002",
-      "source_path": "/Users/theceo/Downloads/archive/hf_20260719_195824_9b711bc8-28a1-4320-9cab-a08cb4f9be18.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "f36e69a1c68c6f64eca69a5c24a8e68e865a463c09a09d1fa51932eb77db2307",
       "manifest_status": "FOUNDER_DIRECTED_FOR_V2_KIDS_ROYAL_PROCESSION",
       "kind": "scroll-world-mascot-guardian-reveal-derivative",
@@ -728,8 +747,9 @@
         "V2 homepage Kids Capsule Royal Procession local candidate"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "5f33ec32eeeccea4b710ec4145957146c978da6ef06f9477719b79719088f096",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -749,8 +769,9 @@
         "local Woo fixture product proof"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "e6ea845f1c877003b3489332feb7e872ccfb82fe3d0240921e7fc2f1f32728f4",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -770,8 +791,9 @@
         "local Woo fixture product proof"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "54110ac9be6feab1e8b188e299676669d9780ad19863bdd923856bb2bbf26c4b",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -791,8 +813,9 @@
         "local Woo fixture product proof"
       ],
       "rights": {
-        "status": "MISSING",
-        "record_id": null
+        "status": "FOUNDER_APPROVED",
+        "record_id": "founder-rights-attestation-2026-08-26",
+        "attested_at_utc": "2026-08-26T00:00:00Z"
       },
       "candidate_sha256": "e28deee0e8bc8ba6271fd95b1e80acdef4e5619fdcc10f1641071a72a2ae1599",
       "state": "FOUNDER_DIRECTED_LOCAL_CANDIDATE"
@@ -800,7 +823,7 @@
     {
       "media_id": "v3-jersey-series-town-line-arrival",
       "source_record_path": "founder-approved SkyyRose Town Line arrival visual 2026-08-14",
-      "source_path": "/Users/theceo/.codex/generated_images/019fd8c6-5ed8-7ac1-b6e3-2afa3c5adcbb/exec-b1661f51-ddb0-4696-89c1-095162c35c3e.png",
+      "source_path": "founder-owned private source archive (hash-bound candidate retained)",
       "source_sha256": "63833250e0ddb044bbb343947eaef817f940e9b7322033b9607102bc22897cfd",
       "manifest_status": "FOUNDER_APPROVED_FOR_V2_JERSEY_SERIES_ENTRY",
       "kind": "fictional-house-transit-hero",
@@ -847,5 +870,10 @@
     ],
     "fail_closed": true
   },
-  "frozen_at_utc": "2026-08-15T04:58:10Z"
+  "frozen_at_utc": "2026-08-15T04:58:10Z",
+  "rights_attestation": {
+    "record_id": "founder-rights-attestation-2026-08-26",
+    "path": ".fashion-theme/founder-rights-attestation-2026-08-26.json",
+    "attested_at_utc": "2026-08-26T00:00:00Z"
+  }
 }

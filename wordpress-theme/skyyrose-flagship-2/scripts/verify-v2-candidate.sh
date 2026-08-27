@@ -24,6 +24,21 @@ for route in \
 	require_file "$route"
 done
 
+rights_record="$REPO_ROOT/.fashion-theme/founder-rights-attestation-2026-08-26.json"
+runtime_capture="$REPO_ROOT/.fashion-theme/woocommerce-runtime-capture-2026-08-26.json"
+if [[ ! -f "$rights_record" ]] || ! jq -e '.record_id == "founder-rights-attestation-2026-08-26"' "$rights_record" >/dev/null; then
+	echo "FAIL founder V2 media-rights attestation missing" >&2
+	exit 1
+fi
+if ! jq -e '([.intake_sources[]?.rights.status, .media[]?.rights.status] | index("MISSING")) | not' "$REPO_ROOT/.fashion-theme/shot-manifest.json" >/dev/null; then
+	echo "FAIL V2 media manifest still contains an unapproved rights record" >&2
+	exit 1
+fi
+if [[ ! -f "$runtime_capture" ]] || ! jq -e '.result.exact_catalog_sku_bindings == 33 and (.result.missing_catalog_skus | length == 0) and (.result.unpublished_catalog_skus | length == 0)' "$runtime_capture" >/dev/null; then
+	echo "FAIL current 33-SKU WooCommerce authority capture missing or incomplete" >&2
+	exit 1
+fi
+
 for approved_visual in \
 	assets/sot/images/hero/black-rose-lake-merritt-monument-v2.png \
 	assets/sot/images/hero/black-rose-typography-star-salon-v3.png \

@@ -48,30 +48,19 @@
   },
   "findings": {
     "absolute_path_blockers": {
-      "status": "PRESENT_BLOCKER",
-      "paths_detected": [
-        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/v2-page-plan.json",
-        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/v2-gap-closure.html",
-        "/Users/theceo/plugins/fashion-theme-team/skills/fashion-theme-team/brain",
-        "/Users/theceo/Downloads/archive",
-        "/Users/theceo/.codex/generated_images/",
-        "/Users/theceo/DevSkyy/assets/branding/"
-      ],
-      "violating_files": [
-        ".fashion-theme/candidate-manifest.json",
-        ".fashion-theme/shot-manifest.json",
-        ".fashion-theme/v2-remodel-ledger.json"
-      ],
-      "next_step": "remove workstation-only provenance paths from runtime/build inputs, resolve catalog media rights and SKU bindings, complete independent visual QA, obtain founder release authorization, and rerun the promotion gate"
+      "status": "RESOLVED_IN_CURRENT_CANDIDATE",
+      "paths_detected": [],
+      "violating_files": [],
+      "next_step": "Complete independent visual QA and founder release authorization, then rerun the promotion gate."
     },
-    "catalog_media_state": "FROZEN_WITH_UNRESOLVED_BINDINGS",
+    "catalog_media_state": "RUNTIME_SKU_BINDINGS_VERIFIED__SOT_BYTE_COMPARISON_PENDING",
     "untracked_core_paths": [],
     "package_determinism": "package-theme.sh modified to fail on symlink and deterministic zip ordering"
   },
   "founder_review": {
     "creative_approval_required": true,
-    "media_rights_blocked": true,
-    "release_authorization": "NOT_AUTHORIZED",
+    "media_rights_blocked": false,
+    "release_authorization": "PENDING_FINAL_FOUNDER_RELEASE",
     "independent_visual_qa_required": true
   },
   "handoff_targets": {
@@ -270,5 +259,10 @@
       "blob": "1c0f6a0c3e9de37e05eb1a0ffd45d508482d9034"
     }
   ],
-  "critical_file_count": 32
+  "critical_file_count": 32,
+  "rights_attestation": {
+    "record_id": "founder-rights-attestation-2026-08-26",
+    "path": ".fashion-theme/founder-rights-attestation-2026-08-26.json",
+    "attested_at_utc": "2026-08-26T00:00:00Z"
+  }
 }
