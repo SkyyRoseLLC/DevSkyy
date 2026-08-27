@@ -354,6 +354,10 @@ function wc_get_template_part() { require get_template_directory() . '/woocommer
 function wc_product_class( $class = '', $product = null ) { echo 'class="' . esc_attr( $class ) . '"'; }
 function wc_get_loop_prop( $prop, $default = 0 ) { static $loop = 0; return 'loop' === $prop ? ++$loop : $default; }
 function wc_get_stock_html( $product ) { return '<p class="stock in-stock">Available for preorder</p>'; }
+// Fixture-only WordPress hook compatibility. The real platform provides this
+// function; the local preview needs the no-op so PDP template smoke tests use
+// the same rendering path without mutating any runtime hook registry.
+function remove_filter() { return true; }
 function woocommerce_template_loop_add_to_cart() {
 	global $product;
 	$url = $product instanceof WC_Product ? get_permalink( $product ) : '/tools/v2-theme-preview.php?route=product&sku=sg-005';

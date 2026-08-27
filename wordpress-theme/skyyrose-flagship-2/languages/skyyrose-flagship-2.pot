@@ -8,6 +8,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: skyyrose-flagship-2\n"
 
+#: template-parts/commerce/product-card.php:136
+msgid "%1$s: %2$s"
+msgstr ""
+
 #: template-collection.php:26
 msgid "%s collection monument scene"
 msgstr ""
@@ -24,8 +28,12 @@ msgstr ""
 msgid "%s scroll-world chapters"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:177
+#: template-parts/commerce/product-card.php:230
 msgid "%s view %d"
+msgstr ""
+
+#: template-parts/commerce/product-card.php:130
+msgid "+%d more"
 msgstr ""
 
 #: template-immersive-signature.php:40
@@ -132,11 +140,11 @@ msgstr ""
 msgid "Across the House"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:216
+#: template-parts/commerce/product-card.php:286
 msgid "Add %s to bag"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:89
+#: template-parts/commerce/product-card.php:82
 msgid "Add to bag"
 msgstr ""
 
@@ -172,12 +180,16 @@ msgstr ""
 msgid "Availability, fit, and production windows are reviewed case by case. A replacement is never promised until Client Services confirms the next available option."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:82 template-parts/home/kids-capsule-reveal.php:39
+#: template-parts/commerce/product-card.php:75 template-parts/home/kids-capsule-reveal.php:39
 msgid "Available"
 msgstr ""
 
 #: page.php:60
 msgid "Available to Reserve"
+msgstr ""
+
+#: template-parts/commerce/product-card.php:245
+msgid "Available variants"
 msgstr ""
 
 #: functions.php:456
@@ -344,11 +356,11 @@ msgstr ""
 msgid "Choose based on the silhouette you want and the product-specific fit note. Client Services can help compare measurements before purchase."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:90
+#: template-parts/commerce/product-card.php:83
 msgid "Choose options on the product page."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:89
+#: template-parts/commerce/product-card.php:82
 msgid "Choose size"
 msgstr ""
 
@@ -768,7 +780,7 @@ msgstr ""
 msgid "House support"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:182
+#: template-parts/commerce/product-card.php:235
 msgid "Hover to explore views"
 msgstr ""
 
@@ -1020,7 +1032,7 @@ msgstr ""
 msgid "Midnight House"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:173
+#: template-parts/commerce/product-card.php:226
 msgid "More views of %s"
 msgstr ""
 
@@ -1140,7 +1152,7 @@ msgstr ""
 msgid "Oakland, California · Independent luxury fashion."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:178
+#: template-parts/commerce/product-card.php:231
 msgid "On model / front"
 msgstr ""
 
@@ -1296,7 +1308,7 @@ msgstr ""
 msgid "Previous world chapter"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:195
+#: template-parts/commerce/product-card.php:265
 msgid "Price:"
 msgstr ""
 
@@ -1376,7 +1388,7 @@ msgstr ""
 msgid "Read the story"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:90
+#: template-parts/commerce/product-card.php:83
 msgid "Ready to add to bag."
 msgstr ""
 
@@ -2084,7 +2096,7 @@ msgstr ""
 msgid "Two monuments hold the entrance: the signature that made the promise and the SR monogram that made it a house. The bridge is not scenery. It is permission to move."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:82
+#: template-parts/commerce/product-card.php:75
 msgid "Unavailable"
 msgstr ""
 
@@ -2104,11 +2116,11 @@ msgstr ""
 msgid "Verified on-model looks from the three opening SkyyRose collection worlds"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:178
+#: template-parts/commerce/product-card.php:231
 msgid "View %02d"
 msgstr ""
 
-#: functions.php:1262 template-parts/commerce/product-card.php:124
+#: functions.php:1262 template-parts/commerce/product-card.php:177
 msgid "View %s"
 msgstr ""
 
@@ -2116,11 +2128,11 @@ msgstr ""
 msgid "View %s pieces"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:90
+#: template-parts/commerce/product-card.php:83
 msgid "View current product details and availability."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:89 template-parts/commerce/product-card.php:226
+#: template-parts/commerce/product-card.php:82 template-parts/commerce/product-card.php:296
 msgid "View piece"
 msgstr ""
 

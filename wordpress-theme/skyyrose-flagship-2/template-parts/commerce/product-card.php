@@ -55,16 +55,9 @@ if ( $is_jersey ) {
 	}
 }
 
-$portal_order = array(
-	'signature'     => 1,
-	'black-rose'    => 2,
-	'love-hurts'    => 3,
-	'kids-capsule'  => 4,
-	'jersey-series' => 5,
-);
-$chapter_number = isset( $portal_order[ $presentation ] ) ? $portal_order[ $presentation ] : $card_index + 1;
 $artifact_uri   = $collection_data && ! empty( $collection_data['artifact'] ) ? skyyrose2_sot_asset_uri( $collection_data['artifact'] ) : '';
 $rose_uri       = skyyrose2_sot_asset_uri( 'images/logos/rose-gold-rose.webp' );
+$brand_mark_uri = skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' );
 $portal_statue  = $collection_data && ! empty( $collection_data['portal_statue'] ) && is_array( $collection_data['portal_statue'] ) ? $collection_data['portal_statue'] : array();
 $portal_statue_uri = ! empty( $portal_statue['src'] ) ? skyyrose2_sot_asset_uri( $portal_statue['src'] ) : '';
 $portal_statue_small_uri = ! empty( $portal_statue['small'] ) ? skyyrose2_sot_asset_uri( $portal_statue['small'] ) : '';
@@ -88,6 +81,65 @@ $can_quick_add  = 'simple' === $product_type && 'true' === $purchasable && 'avai
 $purchase_mode  = $can_quick_add ? 'quick-add' : ( 'variable' === $product_type ? 'choose-options' : 'view-piece' );
 $purchase_label = $can_quick_add ? __( 'Add to bag', 'skyyrose-flagship-2' ) : ( 'choose-options' === $purchase_mode ? __( 'Choose size', 'skyyrose-flagship-2' ) : __( 'View piece', 'skyyrose-flagship-2' ) );
 $purchase_note  = $can_quick_add ? __( 'Ready to add to bag.', 'skyyrose-flagship-2' ) : ( 'choose-options' === $purchase_mode ? __( 'Choose options on the product page.', 'skyyrose-flagship-2' ) : __( 'View current product details and availability.', 'skyyrose-flagship-2' ) );
+$product_story  = wp_trim_words( wp_strip_all_tags( (string) $card_product->get_short_description() ), 28, '…' );
+$variant_options = array();
+
+// Card variants are a compact, read-only disclosure of currently purchasable,
+// in-stock WooCommerce variation data. Selection remains on the PDP, where
+// WooCommerce owns the exact combination, price, stock, and validation state.
+if ( 'variable' === $product_type && method_exists( $card_product, 'get_available_variations' ) && function_exists( 'wc_attribute_label' ) ) {
+	foreach ( (array) $card_product->get_available_variations( 'array' ) as $variation ) {
+		if ( ! is_array( $variation ) || empty( $variation['is_purchasable'] ) || empty( $variation['is_in_stock'] ) || empty( $variation['attributes'] ) || ! is_array( $variation['attributes'] ) ) {
+			continue;
+		}
+
+		foreach ( $variation['attributes'] as $attribute_name => $attribute_value ) {
+			$attribute_key = str_replace( 'attribute_', '', (string) $attribute_name );
+			$attribute_value = wc_clean( (string) $attribute_value );
+			if ( '' === $attribute_key || '' === $attribute_value ) {
+				continue;
+			}
+
+			if ( taxonomy_exists( $attribute_key ) ) {
+				$term = get_term_by( 'slug', $attribute_value, $attribute_key );
+				if ( $term && ! is_wp_error( $term ) ) {
+					$attribute_value = $term->name;
+				}
+			}
+
+			$attribute_label = wc_attribute_label( $attribute_key );
+			if ( ! isset( $variant_options[ $attribute_label ] ) ) {
+				$variant_options[ $attribute_label ] = array();
+			}
+			$variant_options[ $attribute_label ][ sanitize_title( $attribute_value ) ] = $attribute_value;
+		}
+	}
+}
+
+$variant_labels = array();
+foreach ( $variant_options as $attribute_label => $values ) {
+	$values = array_values( $values );
+	if ( empty( $values ) ) {
+		continue;
+	}
+	$visible_values = array_slice( $values, 0, 4 );
+	$hidden_count   = count( $values ) - count( $visible_values );
+	if ( $hidden_count > 0 ) {
+		$visible_values[] = sprintf(
+			/* translators: %d: number of additional currently available values. */
+			__( '+%d more', 'skyyrose-flagship-2' ),
+			$hidden_count
+		);
+	}
+	$variant_labels[] = sprintf(
+		/* translators: 1: WooCommerce attribute label, 2: currently available attribute values. */
+		__( '%1$s: %2$s', 'skyyrose-flagship-2' ),
+		$attribute_label,
+		implode( ' / ', $visible_values )
+	);
+}
+
+$has_hover_insight = (bool) ( $product_story || $variant_labels );
 $image_attrs    = array(
 	'class'         => 'sr2-c-product-portal__product-image',
 	'loading'       => $loading,
@@ -111,11 +163,12 @@ $image_attrs    = array(
 	data-verified-media="true"
 	data-primary-media-role="<?php echo esc_attr( $verified_media[0]['role'] ?? '' ); ?>"
 	data-media-count="<?php echo esc_attr( (string) count( $view_image_ids ) ); ?>"
+	data-hover-insight="<?php echo esc_attr( $has_hover_insight ? 'true' : 'false' ); ?>"
 	style="--sr2-media-count:<?php echo esc_attr( (string) max( 1, count( $view_image_ids ) ) ); ?>;"
 >
 	<header class="sr2-c-product-portal__chapter" aria-hidden="true">
-		<span><?php echo esc_html( sprintf( '%02d', $chapter_number ) ); ?></span>
-		<span><?php echo esc_html( $presentation_name ); ?></span>
+		<img class="sr2-c-product-portal__chapter-mark" src="<?php echo esc_url( $brand_mark_uri ); ?>" alt="" width="384" height="216" loading="lazy" decoding="async">
+		<span class="sr2-c-product-portal__chapter-collection"><?php echo esc_html( $presentation_name ); ?></span>
 	</header>
 
 	<a
@@ -180,6 +233,23 @@ $image_attrs    = array(
 					<?php endforeach; ?>
 				</div>
 				<span class="sr2-c-product-portal__reel-prompt" aria-hidden="true"><?php esc_html_e( 'Hover to explore views', 'skyyrose-flagship-2' ); ?></span>
+			</div>
+		<?php endif; ?>
+		<?php if ( $has_hover_insight ) : ?>
+			<div class="sr2-c-product-portal__hover-insight" data-portal-hover-insight>
+				<?php if ( $product_story ) : ?>
+					<p class="sr2-c-product-portal__hover-story"><?php echo esc_html( $product_story ); ?></p>
+				<?php endif; ?>
+				<?php if ( $variant_labels ) : ?>
+					<div class="sr2-c-product-portal__hover-variants">
+						<span><?php esc_html_e( 'Available variants', 'skyyrose-flagship-2' ); ?></span>
+						<ul>
+							<?php foreach ( $variant_labels as $variant_label ) : ?>
+								<li><?php echo esc_html( $variant_label ); ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				<?php endif; ?>
 			</div>
 		<?php endif; ?>
 	</a>
