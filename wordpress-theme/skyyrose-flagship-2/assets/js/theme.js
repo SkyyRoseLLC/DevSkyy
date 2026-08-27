@@ -398,13 +398,23 @@
     const card = button.closest('.sr2-c-product-portal');
     const status = card?.querySelector('[data-portal-action-status]');
     if (!button.dataset.sr2OriginalLabel) button.dataset.sr2OriginalLabel = button.textContent.trim();
+    if (!button.dataset.sr2OriginalHref) button.dataset.sr2OriginalHref = button.getAttribute('href') || '';
 
     if (state === 'adding') {
       button.setAttribute('aria-busy', 'true');
+      button.setAttribute('aria-disabled', 'true');
+      button.removeAttribute('href');
       button.textContent = portalQuickAddMessage('addingLabel', 'Adding…');
+    } else if (state === 'pending') {
+      button.setAttribute('aria-busy', 'true');
+      button.setAttribute('aria-disabled', 'true');
+      button.removeAttribute('href');
+      button.textContent = portalQuickAddMessage('pendingLabel', 'Still processing');
     } else {
       clearPortalQuickAddRecovery(button);
       button.removeAttribute('aria-busy');
+      button.removeAttribute('aria-disabled');
+      if (button.dataset.sr2OriginalHref) button.setAttribute('href', button.dataset.sr2OriginalHref);
       button.textContent = state === 'success' ? portalQuickAddMessage('successLabel', 'Added to bag') : button.dataset.sr2OriginalLabel;
     }
 
@@ -416,8 +426,9 @@
     if (state === 'adding') {
       clearPortalQuickAddRecovery(button);
       portalQuickAddTimers.set(button, window.setTimeout(() => {
+        portalQuickAddTimers.delete(button);
         if (button.getAttribute('aria-busy') === 'true') {
-          setPortalQuickAddState(button, 'error', portalQuickAddMessage('errorStatus', 'We could not add this piece. Please try again.'));
+          setPortalQuickAddState(button, 'pending', portalQuickAddMessage('pendingStatus', 'This piece is still processing. Check your bag before trying again.'));
         }
       }, 8000));
     }

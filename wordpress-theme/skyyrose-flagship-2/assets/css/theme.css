@@ -921,6 +921,7 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .sr2-c-product-portal__purchase-link, .sr2-c-product-portal__quick-add { grid-column: 1 / -1; }
 .sr2-c-product-portal__action-status { grid-column: 1 / -1; min-height: 1.5em; color: color-mix(in srgb, var(--sr2-ink) 72%, var(--sr2-muted)); font-family: var(--sr2-font-ui); font-size: .55rem; letter-spacing: .08em; line-height: 1.45; text-align: center; text-transform: uppercase; }
 .sr2-c-product-portal__quick-add[aria-busy="true"] { cursor: progress; opacity: .72; }
+.sr2-c-product-portal__quick-add[aria-disabled="true"] { pointer-events: none; }
 .sr2-c-product-portal__action-status[data-state="success"] { color: var(--sr2-portal-accent); }
 .sr2-c-product-portal__action-status[data-state="error"] { color: var(--sr2-crimson); }
 

@@ -205,7 +205,8 @@ function skyyrose2_assets() {
 			'successLabel'  => __( 'Added to bag', 'skyyrose-flagship-2' ),
 			'successStatus' => __( 'Added to bag. Your bag count is updated.', 'skyyrose-flagship-2' ),
 			'readyStatus'   => __( 'Ready to add another piece.', 'skyyrose-flagship-2' ),
-			'errorStatus'   => __( 'We could not add this piece. Please try again.', 'skyyrose-flagship-2' ),
+			'pendingLabel'  => __( 'Still processing', 'skyyrose-flagship-2' ),
+			'pendingStatus' => __( 'This piece is still processing. Check your bag before trying again.', 'skyyrose-flagship-2' ),
 		)
 	);
 	wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
