@@ -1,6 +1,6 @@
 {
   "schemaVersion": "skyyrose.visual-commerce-contract.v1",
-  "candidateId": "cd05eccc9d9572d307abda557023b00a59883b37+runtime-card-commerce-recovery",
+  "candidateId": "ed191bad89c359bb78b73c8184bc9139beed73ab+scoped-localized-card-recovery",
   "routeId": "collection",
   "sectionId": "product-portal-journey",
   "componentId": "sr2-c-product-portal",
@@ -17,7 +17,7 @@
     { "id": "missing-or-blocked-media", "media": "fail closed", "primaryAction": "not rendered", "secondaryAction": "not rendered", "feedback": "no generic fallback" }
   ],
   "responsive": {
-    "desktop": "A centered two-row top masthead places the approved SkyyRose graphic above a miniature engraved Cinzel collection label. The title, price/availability, hover narrative, variant chips, and actions share the same card axis. Fine-pointer hover/focus reveals only the WooCommerce short description and available purchasable variation attributes; cards with that reveal do not start a competing reel. Simple-product quick add has a local success, error, and timeout-recovery state.",
+    "desktop": "A centered two-row top masthead places the approved SkyyRose graphic above a miniature engraved Cinzel collection label. The title, price/availability, hover narrative, variant chips, and actions share the same card axis. Fine-pointer hover/focus reveals only the WooCommerce short description and available purchasable variation attributes; cards with that reveal do not start a competing reel. Simple-product quick add has a localized, initiating-card-only success, error, and timeout-recovery state.",
     "mobile": "The top masthead remains centered with a compact graphic and miniature collection label. The action stack is single-column with no hover dependence; a native Piece details disclosure exposes the same read-only short description and available-variant summary for touch users. The statue frame uses responsive srcset and contain crop. Copy and metadata keep a bounded centered measure, while controls remain full-width and meet the touch-target rule. The canonical PDP retains the full product description and variation selector.",
     "reducedMotion": "No reel timer or transition dependency; hover-detail content remains a nonessential progressive disclosure and all verified media and actions remain visible."
   },

@@ -1,5 +1,5 @@
 {
-  "candidateId": "cd05eccc9d9572d307abda557023b00a59883b37+runtime-card-commerce-recovery",
+  "candidateId": "ed191bad89c359bb78b73c8184bc9139beed73ab+scoped-localized-card-recovery",
   "claimClass": "LOCAL_SOURCE_GATES_PASSED_FIXTURE_BROWSER_EVIDENCE",
   "artifacts": [
     { "id": "candidate-manifest", "path": "candidate-manifest.json", "purpose": "current worktree identity and scoped change inventory" },
@@ -15,14 +15,14 @@
     "hover detail is sourced only from WooCommerce short description and currently purchasable, in-stock variation attributes",
     "reduced-motion and coarse-pointer reel fallback is present",
     "the top graphic and miniature Cinzel collection label form a single centered masthead, while the statue lockup, commerce, hover disclosure, and action stack share the media center axis without page-level horizontal overflow",
-    "simple-product quick add clears busy state and restores a truthful retry message after Woo AJAX failure or timeout",
+    "simple-product quick add clears busy state only for its matching initiating card and restores a localized truthful retry message after Woo AJAX failure or timeout",
     "touch users receive a native disclosure populated from the same server-derived card story and available-variant summary"
   ],
   "fixtureBrowserEvidence": {
     "route": "tools/v2-theme-preview.php?route=shop",
     "viewports": [1440, 390],
     "states": ["desktop hover", "keyboard focus with prefers-reduced-motion", "mobile coarse pointer", "View piece to PDP"],
-    "observed": ["four visible SkyyRose graphic card marks", "four visible Cinzel collection lockups", "the top mark and collection label are a single two-row masthead: both measure 0px horizontal delta from the media axis at 1440 and 390, with the mark above the label", "the collection label uses the Cinzel token at 10.3px desktop and 9.28px mobile", "desktop disclosure opacity transitions from 0 to 1", "all centered card elements measure 0px horizontal delta from the media axis at 1440 and 390", "the page scroll width equals the viewport at 1440 and 390", "the 390px mobile action stack is one column with a 46px minimum action height", "at 390, Piece details is visible with a 46px native summary control, opens to the server-derived story, and leaves the static reel visible", "a fixture-safe jQuery lifecycle shim proves Adding to bag clears to a retryable error after an add_to_cart AJAX error and clears to Added to bag after a success event", "reduced-motion and coarse pointer keep the verified-media reel static", "View piece reaches a rendered sr2-pdp-product without fatal-error text after the fixture hook compatibility repair"],
+    "observed": ["four visible SkyyRose graphic card marks", "four visible Cinzel collection lockups", "the top mark and collection label are a single two-row masthead: both measure 0px horizontal delta from the media axis at 1440 and 390, with the mark above the label", "the collection label uses the Cinzel token at 10.3px desktop and 9.28px mobile", "desktop disclosure opacity transitions from 0 to 1", "all centered card elements measure 0px horizontal delta from the media axis at 1440 and 390", "the page scroll width equals the viewport at 1440 and 390", "the 390px mobile action stack is one column with a 46px minimum action height", "at 390, Piece details is visible with a 46px native summary control, opens to the server-derived story, and leaves the static reel visible", "a fixture-safe jQuery lifecycle shim proves a matching add_to_cart error clears only the initiating card to a localized retryable error while a second card remains busy and independently reaches localized success", "reduced-motion and coarse pointer keep the verified-media reel static", "View piece reaches a rendered sr2-pdp-product without fatal-error text after the fixture hook compatibility repair"],
     "limitation": "The local fixture intentionally does not implement get_available_variations(), so it does not establish a real product's variant list. Variant values require a fresh real WooCommerce staging read after deployment approval."
   },
   "pendingEvidence": [

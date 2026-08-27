@@ -1,6 +1,6 @@
 {
-  "candidateId": "skyyrose-v2-product-card-shopping-journey-cd05eccc9d95-runtime-card-commerce-recovery",
-  "baselineCommit": "cd05eccc9d9572d307abda557023b00a59883b37",
+  "candidateId": "skyyrose-v2-product-card-shopping-journey-ed191bad89c3-scoped-localized-card-recovery",
+  "baselineCommit": "ed191bad89c359bb78b73c8184bc9139beed73ab",
   "branch": "codex/product-card-shopping-journey",
   "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
   "scope": {
@@ -35,7 +35,7 @@
     "The card rail uses only the approved local SkyyRose logo still and the existing Cinzel ceremonial type token; no numeric chapter is rendered.",
     "Hover detail can show only the WooCommerce short description and currently purchasable, in-stock variation attributes; it never selects a variation in-card.",
     "The top lockup is a centered two-row masthead: only the approved SkyyRose graphic above a miniature Cinzel collection label. The title, commerce, hover insight, and actions share its media axis; mobile keeps one-column 46px action controls without page-level horizontal overflow.",
-    "Touch disclosure repeats only the server-derived short description and available-variant summary; simple quick-add restores its original label and a truthful retry message after AJAX failure or timeout.",
+    "Touch disclosure repeats only the server-derived short description and available-variant summary; simple quick-add restores only its initiating card's original label and a localized truthful retry message after matching AJAX failure or timeout.",
     "Staging or production writes are excluded from this candidate artifact."
   ],
   "generatedOutputs": [
