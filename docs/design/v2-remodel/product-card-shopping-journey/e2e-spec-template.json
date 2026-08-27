@@ -54,7 +54,7 @@
     ],
     "unconfirmed_example_requires_no_cart_mutation": {
       "action": "Withhold the disposable fixture's add_to_cart confirmation and wait at least eight seconds without sending a cart mutation.",
-      "eval": "(()=>{const button=document.querySelector('[data-portal-quick-add]');const status=document.querySelector('[data-portal-action-status]');return !!button&&button.getAttribute('aria-busy')!=='true'&&status?.dataset.state==='error';})()"
+      "eval": "(()=>{const button=document.querySelector('[data-portal-quick-add]');const status=document.querySelector('[data-portal-action-status]');return !!button&&button.getAttribute('aria-busy')==='true'&&button.getAttribute('aria-disabled')==='true'&&status?.dataset.state==='pending';})()"
     }
   }
 }
