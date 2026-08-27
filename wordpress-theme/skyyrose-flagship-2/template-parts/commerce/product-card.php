@@ -140,6 +140,25 @@ foreach ( $variant_options as $attribute_label => $values ) {
 }
 
 $has_hover_insight = (bool) ( $product_story || $variant_labels );
+$render_card_insight = static function ( $story, $labels ) {
+	if ( $story ) :
+		?>
+		<p class="sr2-c-product-portal__hover-story"><?php echo esc_html( $story ); ?></p>
+		<?php
+	endif;
+	if ( $labels ) :
+		?>
+		<div class="sr2-c-product-portal__hover-variants">
+			<span><?php esc_html_e( 'Available variants', 'skyyrose-flagship-2' ); ?></span>
+			<ul>
+				<?php foreach ( $labels as $label ) : ?>
+					<li><?php echo esc_html( $label ); ?></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php
+	endif;
+};
 $image_attrs    = array(
 	'class'         => 'sr2-c-product-portal__product-image',
 	'loading'       => $loading,
@@ -237,19 +256,7 @@ $image_attrs    = array(
 		<?php endif; ?>
 		<?php if ( $has_hover_insight ) : ?>
 			<div class="sr2-c-product-portal__hover-insight" data-portal-hover-insight>
-				<?php if ( $product_story ) : ?>
-					<p class="sr2-c-product-portal__hover-story"><?php echo esc_html( $product_story ); ?></p>
-				<?php endif; ?>
-				<?php if ( $variant_labels ) : ?>
-					<div class="sr2-c-product-portal__hover-variants">
-						<span><?php esc_html_e( 'Available variants', 'skyyrose-flagship-2' ); ?></span>
-						<ul>
-							<?php foreach ( $variant_labels as $variant_label ) : ?>
-								<li><?php echo esc_html( $variant_label ); ?></li>
-							<?php endforeach; ?>
-						</ul>
-					</div>
-				<?php endif; ?>
+				<?php $render_card_insight( $product_story, $variant_labels ); ?>
 			</div>
 		<?php endif; ?>
 	</a>
@@ -273,6 +280,14 @@ $image_attrs    = array(
 				<?php endif; ?>
 			</div>
 		</div>
+		<?php if ( $has_hover_insight ) : ?>
+			<details class="sr2-c-product-portal__touch-insight" data-portal-touch-insight>
+				<summary><?php esc_html_e( 'Piece details', 'skyyrose-flagship-2' ); ?></summary>
+				<div class="sr2-c-product-portal__touch-insight-content">
+					<?php $render_card_insight( $product_story, $variant_labels ); ?>
+				</div>
+			</details>
+		<?php endif; ?>
 
 		<div class="sr2-c-product-portal__actions">
 			<?php if ( $can_quick_add ) : ?>

@@ -384,6 +384,12 @@
     const button = candidate && candidate.jquery ? candidate.get(0) : candidate;
     return button instanceof Element && button.matches('[data-portal-quick-add]') ? button : null;
   };
+  const portalQuickAddTimers = new WeakMap();
+  const clearPortalQuickAddRecovery = (button) => {
+    const timer = portalQuickAddTimers.get(button);
+    if (timer) window.clearTimeout(timer);
+    portalQuickAddTimers.delete(button);
+  };
   const setPortalQuickAddState = (candidate, state, message = '') => {
     const button = portalQuickAdd(candidate);
     if (!button) return;
@@ -395,6 +401,7 @@
       button.setAttribute('aria-busy', 'true');
       button.textContent = 'Adding…';
     } else {
+      clearPortalQuickAddRecovery(button);
       button.removeAttribute('aria-busy');
       button.textContent = state === 'success' ? 'Added to bag' : button.dataset.sr2OriginalLabel;
     }
@@ -403,6 +410,21 @@
       status.dataset.state = state;
       status.textContent = message;
     }
+
+    if (state === 'adding') {
+      clearPortalQuickAddRecovery(button);
+      portalQuickAddTimers.set(button, window.setTimeout(() => {
+        if (button.getAttribute('aria-busy') === 'true') {
+          setPortalQuickAddState(button, 'error', 'We could not add this piece. Please try again.');
+        }
+      }, 15000));
+    }
+  };
+
+  const recoverPortalQuickAdds = (message) => {
+    document.querySelectorAll('[data-portal-quick-add][aria-busy="true"]').forEach((button) => {
+      setPortalQuickAddState(button, 'error', message);
+    });
   };
 
   if (window.jQuery) {
@@ -416,6 +438,15 @@
       if (button) {
         window.setTimeout(() => setPortalQuickAddState(button, 'ready', 'Ready to add another piece.'), reducedMotion ? 0 : 1800);
       }
+    });
+    $(document).ajaxError((_event, _jqXHR, settings) => {
+      const request = `${settings?.url || ''} ${typeof settings?.data === 'string' ? settings.data : ''}`;
+      if (request.includes('add_to_cart')) {
+        recoverPortalQuickAdds('We could not add this piece. Please try again.');
+      }
+    });
+    $(document.body).on('wc_fragments_ajax_error', () => {
+      recoverPortalQuickAdds('We could not update your bag. Please try again.');
     });
   }
 

@@ -28,7 +28,7 @@ msgstr ""
 msgid "%s scroll-world chapters"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:230
+#: template-parts/commerce/product-card.php:249
 msgid "%s view %d"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Across the House"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:286
+#: template-parts/commerce/product-card.php:301
 msgid "Add %s to bag"
 msgstr ""
 
@@ -188,7 +188,7 @@ msgstr ""
 msgid "Available to Reserve"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:245
+#: template-parts/commerce/product-card.php:152
 msgid "Available variants"
 msgstr ""
 
@@ -780,7 +780,7 @@ msgstr ""
 msgid "House support"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:235
+#: template-parts/commerce/product-card.php:254
 msgid "Hover to explore views"
 msgstr ""
 
@@ -1032,7 +1032,7 @@ msgstr ""
 msgid "Midnight House"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:226
+#: template-parts/commerce/product-card.php:245
 msgid "More views of %s"
 msgstr ""
 
@@ -1152,7 +1152,7 @@ msgstr ""
 msgid "Oakland, California · Independent luxury fashion."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:231
+#: template-parts/commerce/product-card.php:250
 msgid "On model / front"
 msgstr ""
 
@@ -1244,6 +1244,10 @@ msgstr ""
 msgid "Payment did not complete. Nothing was charged."
 msgstr ""
 
+#: template-parts/commerce/product-card.php:285
+msgid "Piece details"
+msgstr ""
+
 #: template-parts/commerce/quick-view.php:23
 msgid "Piece from the house"
 msgstr ""
@@ -1308,7 +1312,7 @@ msgstr ""
 msgid "Previous world chapter"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:265
+#: template-parts/commerce/product-card.php:272
 msgid "Price:"
 msgstr ""
 
@@ -2116,11 +2120,11 @@ msgstr ""
 msgid "Verified on-model looks from the three opening SkyyRose collection worlds"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:231
+#: template-parts/commerce/product-card.php:250
 msgid "View %02d"
 msgstr ""
 
-#: functions.php:1262 template-parts/commerce/product-card.php:177
+#: functions.php:1262 template-parts/commerce/product-card.php:196
 msgid "View %s"
 msgstr ""
 
@@ -2132,7 +2136,7 @@ msgstr ""
 msgid "View current product details and availability."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:82 template-parts/commerce/product-card.php:296
+#: template-parts/commerce/product-card.php:82 template-parts/commerce/product-card.php:311
 msgid "View piece"
 msgstr ""
 
