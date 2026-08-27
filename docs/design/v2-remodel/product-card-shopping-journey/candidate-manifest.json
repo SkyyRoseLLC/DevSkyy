@@ -1,6 +1,6 @@
 {
-  "candidateId": "skyyrose-v2-product-card-shopping-journey-8de028c18be1-centered-card-axis-working-tree",
-  "baselineCommit": "8de028c18be121a1d6b45c9921472bce629f02e5",
+  "candidateId": "skyyrose-v2-product-card-shopping-journey-f5baa822c8f0-centered-top-lockup-working-tree",
+  "baselineCommit": "f5baa822c8f00fe576eee476f123c97797bd885f",
   "branch": "codex/product-card-shopping-journey",
   "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
   "scope": {
@@ -34,7 +34,7 @@
     "Variable, unavailable, and nonpurchasable products retain a canonical PDP route.",
     "The card rail uses only the approved local SkyyRose logo still and the existing Cinzel ceremonial type token; no numeric chapter is rendered.",
     "Hover detail can show only the WooCommerce short description and currently purchasable, in-stock variation attributes; it never selects a variation in-card.",
-    "The graphic lockup, collection label, title, commerce, hover insight, and actions remain centered on the card media axis; mobile keeps one-column 46px action controls without page-level horizontal overflow.",
+    "The top lockup is a centered two-row masthead: only the approved SkyyRose graphic above a miniature Cinzel collection label. The title, commerce, hover insight, and actions share its media axis; mobile keeps one-column 46px action controls without page-level horizontal overflow.",
     "Staging or production writes are excluded from this candidate artifact."
   ],
   "generatedOutputs": [
