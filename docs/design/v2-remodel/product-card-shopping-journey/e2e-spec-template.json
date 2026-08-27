@@ -29,6 +29,10 @@
         {
           "desc": "mobile retains a full-width truthful action and static media reel",
           "expr": "(()=>{const card=document.querySelector('.sr2-c-product-portal[data-portal-frame=statue]');const action=card?.querySelector('.sr2-c-product-portal__quick-add,.sr2-c-product-portal__purchase-link');const reel=card?.querySelector('.sr2-c-product-portal__reel');return !!card && !!action && (!reel || getComputedStyle(reel).transitionDuration==='0s');})()"
+        },
+        {
+          "desc": "touch users receive a native, non-selecting product-details disclosure when the card has factual insight",
+          "expr": "(()=>{const card=document.querySelector('.sr2-c-product-portal[data-portal-frame=statue][data-hover-insight=true]');const details=card?.querySelector('[data-portal-touch-insight]');const summary=details?.querySelector('summary');return !card||!!details&&getComputedStyle(details).display!=='none'&&summary.getBoundingClientRect().height>=46;})()"
         }
       ]
     }
@@ -47,6 +51,10 @@
           { "desc": "bag count and local result acknowledge the confirmed action", "expr": "(()=>document.querySelector('[data-portal-action-status]')?.dataset.state==='success'&&!!document.querySelector('.sr2-header__bag-count'))()" }
         ]
       }
-    ]
+    ],
+    "failure_example_requires_network_intercept": {
+      "action": "Force the approved disposable fixture's add_to_cart request to fail without sending a cart mutation.",
+      "eval": "(()=>{const button=document.querySelector('[data-portal-quick-add]');const status=document.querySelector('[data-portal-action-status]');return !!button&&button.getAttribute('aria-busy')!=='true'&&status?.dataset.state==='error';})()"
+    }
   }
 }

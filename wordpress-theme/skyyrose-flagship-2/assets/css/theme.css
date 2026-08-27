@@ -886,6 +886,7 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 .sr2-c-product-portal__hover-variants > span { color: var(--sr2-portal-accent); font-family: var(--sr2-font-ui); font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; }
 .sr2-c-product-portal__hover-variants ul { display: flex; flex-wrap: wrap; justify-content: center; gap: .36rem; margin: 0; padding: 0; list-style: none; }
 .sr2-c-product-portal__hover-variants li { padding: .28rem .44rem; border: 1px solid color-mix(in srgb, var(--sr2-portal-accent) 40%, transparent); color: color-mix(in srgb, var(--sr2-ink) 88%, var(--sr2-muted)); font-family: var(--sr2-font-body); font-size: .66rem; line-height: 1.25; }
+.sr2-c-product-portal__touch-insight { display: none; }
 @media (hover: hover) and (pointer: fine) {
 	.sr2-c-product-portal[data-hover-insight="true"]:is(:hover, :focus-within) .sr2-c-product-portal__hover-insight { opacity: 1; transform: translate3d(0, 0, 0); }
 }
@@ -963,6 +964,14 @@ html.sr2-motion-ready .sr2-reveal.is-seen { opacity: 1; transform: none; }
 	.sr2-c-product-portal[data-portal-frame="statue"] .sr2-c-product-portal__reel-track { gap: 1px; width: 100% !important; transform: none !important; transition: none; }
 	.sr2-c-product-portal[data-portal-frame="statue"] .sr2-c-product-portal__reel-frame { flex: 1 1 0 !important; min-width: 0; }
 	.sr2-c-product-portal__hover-insight { transition: none; }
+	.sr2-c-product-portal__touch-insight { display: block; inline-size: 100%; border-block: 1px solid var(--sr2-line-soft); }
+	.sr2-c-product-portal__touch-insight summary { display: flex; min-height: 46px; align-items: center; justify-content: center; gap: .5rem; padding: var(--sr2-space-2) var(--sr2-space-3); color: var(--sr2-portal-accent); font-family: var(--sr2-font-ui); font-size: .6rem; letter-spacing: .12em; list-style: none; text-align: center; text-transform: uppercase; cursor: pointer; }
+	.sr2-c-product-portal__touch-insight summary::-webkit-details-marker { display: none; }
+	.sr2-c-product-portal__touch-insight summary::after { content: "+"; font-size: 1rem; line-height: 1; }
+	.sr2-c-product-portal__touch-insight[open] summary::after { content: "−"; }
+	.sr2-c-product-portal__touch-insight-content { display: grid; justify-items: center; gap: .75rem; padding: 0 var(--sr2-space-3) var(--sr2-space-3); text-align: center; }
+	.sr2-c-product-portal__touch-insight-content .sr2-c-product-portal__hover-story { max-inline-size: 34ch; }
+	.sr2-c-product-portal__touch-insight-content .sr2-c-product-portal__hover-variants { max-inline-size: 34ch; }
 }
 
 .sr2-quick-view { width: min(58rem, calc(100% - 2rem)); max-width: none; padding: 0; border: 1px solid var(--sr2-gold); background: var(--sr2-void); color: var(--sr2-ink); box-shadow: 0 2rem 6rem rgba(0,0,0,.68); }
