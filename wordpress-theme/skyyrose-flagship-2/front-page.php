@@ -133,10 +133,12 @@ get_header();
 
 	<?php if ( $featured_product ) : ?>
 		<?php
-		$featured_image_id = $featured_product->get_image_id();
-		$featured_gallery  = method_exists( $featured_product, 'get_gallery_image_ids' ) ? array_slice( $featured_product->get_gallery_image_ids(), 0, 2 ) : array();
+		$featured_media    = skyyrose2_product_verified_card_media( $featured_product );
+		$featured_image_id = ! empty( $featured_media[0]['id'] ) ? absint( $featured_media[0]['id'] ) : 0;
+		$featured_gallery  = array_slice( $featured_media, 1, 2 );
 		?>
-		<section class="sr-house-featured" aria-labelledby="sr-house-featured-title" data-presentation="signature">
+		<?php if ( $featured_image_id ) : ?>
+		<section class="sr-house-featured" aria-labelledby="sr-house-featured-title" data-presentation="signature" data-verified-media="true">
 			<p class="sr-house-featured__vertical" aria-hidden="true"><?php esc_html_e( 'Signature', 'skyyrose-flagship-2' ); ?></p>
 			<div class="sr-house-featured__hero">
 				<?php if ( $featured_image_id ) : ?><?php echo wp_kses_post( wp_get_attachment_image( $featured_image_id, 'woocommerce_single', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?><?php endif; ?>
@@ -150,9 +152,10 @@ get_header();
 				<a class="sr-home__button sr-home__button--line" href="<?php echo esc_url( $featured_product->get_permalink() ); ?>"><?php esc_html_e( 'Enter the product scene', 'skyyrose-flagship-2' ); ?> ↗</a>
 			</div>
 			<div class="sr-house-featured__details">
-				<?php foreach ( $featured_gallery as $gallery_id ) : ?><?php echo wp_kses_post( wp_get_attachment_image( $gallery_id, 'woocommerce_thumbnail', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?><?php endforeach; ?>
+				<?php foreach ( $featured_gallery as $gallery_media ) : ?><?php if ( ! empty( $gallery_media['id'] ) ) : ?><?php echo wp_kses_post( wp_get_attachment_image( absint( $gallery_media['id'] ), 'woocommerce_thumbnail', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?><?php endif; ?><?php endforeach; ?>
 			</div>
 		</section>
+		<?php endif; ?>
 	<?php endif; ?>
 
 	<?php skyyrose2_render_black_rose_jersey_series( false ); ?>
