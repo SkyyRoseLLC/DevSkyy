@@ -745,8 +745,8 @@
       "owner": "fashion-theme-lead",
       "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
       "baseline_id": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay",
-      "candidate_id": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay+shopping-journey-working-tree",
-      "attempt": 1,
+      "candidate_id": "a79816203f3273ff7584276293e3c6a8727c48d5+branded-hover-insight-working-tree",
+      "attempt": 2,
       "tool_profile": ["Read", "Grep", "Glob", "Bash", "Edit", "ImageGen", "Browser"],
       "brain_routes": ["fashion_strategy", "page_architecture", "merchandising_conversion", "fit_imagery_returns", "growth_measurement"],
       "feature_ids": ["quick_add_to_cart", "product_border"],
@@ -757,10 +757,11 @@
         "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
         "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh",
         "scripts/verify-live-playwright.mjs",
+        "tools/v2-theme-preview.php",
         "docs/design/v2-remodel/product-card-shopping-journey/",
         "skyyrose-suite/plugins/skyyrose-design/skills/prototype/"
       ],
-      "scope": "Keep approved stone-frame composition and verified Woo/SOT media. Add a server-derived simple-product quick-add path, PDP-only fallback for choice-dependent or unavailable products, local accessible cart feedback, and candidate-bound desktop/mobile/reduced-motion verification.",
+      "scope": "Keep approved stone-frame composition and verified Woo/SOT media. Use the approved SkyyRose graphic mark in place of numeric card chapters, render the collection name in compact ceremonial Cinzel, and add a fine-pointer hover/focus disclosure sourced solely from WooCommerce short descriptions and currently purchasable, in-stock variation attributes. Preserve the server-derived simple-product quick-add path and PDP-only variation selection.",
       "excluded": [
         "generic or generated product imagery",
         "variation selection inside a card",
@@ -774,13 +775,16 @@
         "House of Roses reference-guided preview generated for composition only; not a product-media candidate",
         "read-only wp-frontend implementation audit completed",
         "theme PHP lint, generated-asset parity, marketplace verifier, and strengthened V2 source gate passed",
-        "three-variant throwaway UI prototype passed browser checks at 1440, 768, and 390"
+        "three-variant throwaway UI prototype passed browser checks at 1440, 768, and 390",
+        "fresh fixture-only V2 template browser proof captured the graphic mark, Cinzel collection lockup, desktop hover disclosure, keyboard-focus disclosure with reduced motion, and static mobile reel at 1440 and 390",
+        "fixture compatibility repair supplies the no-op WordPress remove_filter() hook only so the local PDP smoke route can render; it does not alter the theme's production hook behavior",
+        "fixture browser smoke followed View piece from the card to the canonical product route with one rendered sr2-pdp-product and no fatal-error text"
       ],
       "blockers": [
         "an interaction-capable staging E2E run requires an approved disposable WooCommerce fixture and cart-reset boundary",
         "all deployment remains founder-authorized only"
       ],
-      "next_authority": "AUTO_WITH_LOG"
+      "next_authority": "FOUNDER_STAGING_DEPLOYMENT_APPROVAL"
     }
   ],
   "release_checkpoint": {

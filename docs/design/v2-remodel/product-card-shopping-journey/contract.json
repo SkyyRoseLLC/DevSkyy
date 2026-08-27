@@ -1,6 +1,6 @@
 {
   "schemaVersion": "skyyrose.visual-commerce-contract.v1",
-  "candidateId": "383b776202f6c7106d07170664f77abf91cbc000+verified-media-overlay+shopping-journey-working-tree",
+  "candidateId": "a79816203f3273ff7584276293e3c6a8727c48d5+branded-hover-insight-working-tree",
   "routeId": "collection",
   "sectionId": "product-portal-journey",
   "componentId": "sr2-c-product-portal",
@@ -17,19 +17,21 @@
     { "id": "missing-or-blocked-media", "media": "fail closed", "primaryAction": "not rendered", "secondaryAction": "not rendered", "feedback": "no generic fallback" }
   ],
   "responsive": {
-    "desktop": "Fine-pointer reel may enhance approved multi-view media; action and PDP route remain immediately reachable.",
-    "mobile": "Single-column action stack; no hover dependence; statue frame uses responsive srcset and contain crop.",
-    "reducedMotion": "No reel timer or transition dependency; all verified media and actions remain visible."
+    "desktop": "The SkyyRose graphic mark replaces chapter numbers; an engraved Cinzel collection lockup remains compact. Fine-pointer hover/focus reveals only the WooCommerce short description and available purchasable variation attributes; cards with that reveal do not start a competing reel.",
+    "mobile": "Single-column action stack; no hover dependence; statue frame uses responsive srcset and contain crop. The canonical PDP retains the full product description and variation selector.",
+    "reducedMotion": "No reel timer or transition dependency; hover-detail content remains a nonessential progressive disclosure and all verified media and actions remain visible."
   },
   "accessibility": [
     "meaningful product image alt is product name",
     "local action result uses role=status aria-live=polite aria-atomic=true",
     "minimum 46px action controls",
-    "direct PDP link remains available in every rendered state"
+    "direct PDP link remains available in every rendered state",
+    "hover disclosure has a keyboard focus equivalent and never hosts a variant selector",
+    "brand mark is decorative while the adjacent collection lockup remains visible"
   ],
   "e2e": {
     "readOnlySpec": "e2e-spec-template.json",
     "mutationRule": "requires an approved disposable staging product fixture and allowMutations=true"
   },
-  "explicitExclusions": ["generic or generated product media", "in-card variation selection", "fake scarcity", "unapproved cart mutations", "conversion claims"]
+  "explicitExclusions": ["generic or generated product media", "in-card variation selection", "invented descriptions or variant values", "fake scarcity", "unapproved cart mutations", "conversion claims"]
 }

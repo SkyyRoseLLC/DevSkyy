@@ -205,10 +205,13 @@ fi
 if ! rg -q 'data-purchase-mode=' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'data-portal-quick-add' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'data-portal-action-status' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'data-portal-hover-insight' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'get_available_variations' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'skyyrose-logo-still-384w.webp' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -Fq "'simple' === \$product_type" "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -Fq "'available' === \$stock_state" "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'setPortalQuickAddState' "$THEME_DIR/assets/js/theme.js"; then
-	echo "FAIL product-card truthful purchase and cart-feedback layer missing" >&2
+	echo "FAIL product-card truthful purchase, branded card rail, or hover-detail layer missing" >&2
 	exit 1
 fi
 

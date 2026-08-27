@@ -1,6 +1,6 @@
 {
-  "candidateId": "skyyrose-v2-product-card-shopping-journey-383b776202f6-working-tree",
-  "baselineCommit": "383b776202f6c7106d07170664f77abf91cbc000",
+  "candidateId": "skyyrose-v2-product-card-shopping-journey-a79816203f32-branded-hover-insight-working-tree",
+  "baselineCommit": "a79816203f3273ff7584276293e3c6a8727c48d5",
   "branch": "codex/product-card-shopping-journey",
   "worktree": "/Users/theceo/DevSkyy-product-card-shopping-journey",
   "scope": {
@@ -23,6 +23,7 @@
       "assets/js/theme.min.js",
       "scripts/verify-v2-candidate.sh",
       "scripts/verify-live-playwright.mjs",
+      "tools/v2-theme-preview.php",
       "docs/design/v2-remodel/product-card-shopping-journey/",
       "skyyrose-suite/plugins/skyyrose-design/skills/prototype/UI.md"
     ]
@@ -31,6 +32,8 @@
     "No generic, unverified, or generated product imagery is wired into storefront cards.",
     "Only simple, purchasable, in-stock products receive a loop quick-add action.",
     "Variable, unavailable, and nonpurchasable products retain a canonical PDP route.",
+    "The card rail uses only the approved local SkyyRose logo still and the existing Cinzel ceremonial type token; no numeric chapter is rendered.",
+    "Hover detail can show only the WooCommerce short description and currently purchasable, in-stock variation attributes; it never selects a variation in-card.",
     "Staging or production writes are excluded from this candidate artifact."
   ],
   "generatedOutputs": [
@@ -45,10 +48,13 @@
     "npm run check:i18n",
     "npm run verify",
     "bash scripts/verify-v2-candidate.sh",
-    "Playwright prototype variants at 1440, 768, and 390"
+    "Playwright prototype variants at 1440, 768, and 390",
+    "fixture-only V2 card browser states at desktop hover, mobile coarse pointer, and reduced-motion keyboard focus",
+    "fixture-only View piece navigation from a card to the canonical product route"
   ],
   "knownBlockers": [
     "verify-v2-workspace.sh deliberately rejects the isolated feature branch because its reconnect record allows only main or the historic candidate branch.",
+    "The local V2 fixture has no WooCommerce get_available_variations() implementation, so real SKU variant strings require a fresh post-deployment staging read.",
     "A live cart-mutating E2E scenario requires an approved disposable staging fixture and reset boundary.",
     "No deployment authority is attached to this candidate."
   ]
