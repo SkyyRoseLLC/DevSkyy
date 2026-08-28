@@ -18,8 +18,9 @@ import logging
 from dataclasses import dataclass
 from pathlib import Path
 
-from . import config
 from skyyrose.core.catalog_loader import read_catalog_rows
+
+from . import config
 
 log = logging.getLogger(__name__)
 
