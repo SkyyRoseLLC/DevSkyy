@@ -1,6 +1,6 @@
 /**
  * Unit Tests for Stripe Integration
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import {
@@ -19,21 +19,21 @@ import {
 
 function createMockStripe(): Stripe {
   return {
-    elements: jest.fn().mockReturnValue({
-      create: jest.fn(),
-      getElement: jest.fn(),
-      submit: jest.fn(),
+    elements: vi.fn().mockReturnValue({
+      create: vi.fn(),
+      getElement: vi.fn(),
+      submit: vi.fn(),
     }),
-    confirmPayment: jest.fn(),
-    retrievePaymentIntent: jest.fn(),
+    confirmPayment: vi.fn(),
+    retrievePaymentIntent: vi.fn(),
   };
 }
 
 function createMockElements(): StripeElements {
   return {
-    create: jest.fn(),
-    getElement: jest.fn(),
-    submit: jest.fn(),
+    create: vi.fn(),
+    getElement: vi.fn(),
+    submit: vi.fn(),
   };
 }
 
@@ -74,7 +74,7 @@ describe('Stripe Integration', () => {
 
     it('should return null when Stripe.js is not loaded', () => {
       delete (window as any).Stripe;
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation();
 
       const result = initializeStripe('pk_test_123');
 
@@ -84,7 +84,7 @@ describe('Stripe Integration', () => {
 
     it('should create Stripe instance when Stripe.js is loaded', () => {
       const mockStripeInstance = createMockStripe();
-      (window as any).Stripe = jest.fn().mockReturnValue(mockStripeInstance);
+      (window as any).Stripe = vi.fn().mockReturnValue(mockStripeInstance);
 
       const result = initializeStripe('pk_test_123');
 
@@ -93,10 +93,10 @@ describe('Stripe Integration', () => {
     });
 
     it('should return null when Stripe constructor throws', () => {
-      (window as any).Stripe = jest.fn().mockImplementation(() => {
+      (window as any).Stripe = vi.fn().mockImplementation(() => {
         throw new Error('Invalid key');
       });
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation();
 
       const result = initializeStripe('bad_key');
 
@@ -249,9 +249,9 @@ describe('Stripe Integration', () => {
     it('should send correct request to backend', async () => {
       const mockResponse = {
         ok: true,
-        json: jest.fn().mockResolvedValue({ clientSecret: 'cs_test_abc' }),
+        json: vi.fn().mockResolvedValue({ clientSecret: 'cs_test_abc' }),
       };
-      global.fetch = jest.fn().mockResolvedValue(mockResponse);
+      global.fetch = vi.fn().mockResolvedValue(mockResponse);
 
       const cart = {
         items: [{ productId: 'p1', sku: 'SKU-1', name: 'Test', price: 99.99, quantity: 1 }],
@@ -273,7 +273,7 @@ describe('Stripe Integration', () => {
         })
       );
 
-      const body = JSON.parse((global.fetch as jest.Mock).mock.calls[0][1].body);
+      const body = JSON.parse((global.fetch as vi.Mock).mock.calls[0][1].body);
       expect(body.amount).toBe(11299); // cents
       expect(body.currency).toBe('usd');
       expect(result.clientSecret).toBe('cs_test_abc');
@@ -282,9 +282,9 @@ describe('Stripe Integration', () => {
     it('should handle API error response', async () => {
       const mockResponse = {
         ok: false,
-        json: jest.fn().mockResolvedValue({ error: 'Invalid amount' }),
+        json: vi.fn().mockResolvedValue({ error: 'Invalid amount' }),
       };
-      global.fetch = jest.fn().mockResolvedValue(mockResponse);
+      global.fetch = vi.fn().mockResolvedValue(mockResponse);
 
       const cart = {
         items: [],
@@ -304,9 +304,9 @@ describe('Stripe Integration', () => {
     it('should handle API error response without error message', async () => {
       const mockResponse = {
         ok: false,
-        json: jest.fn().mockResolvedValue({}),
+        json: vi.fn().mockResolvedValue({}),
       };
-      global.fetch = jest.fn().mockResolvedValue(mockResponse);
+      global.fetch = vi.fn().mockResolvedValue(mockResponse);
 
       const cart = {
         items: [],
@@ -323,8 +323,8 @@ describe('Stripe Integration', () => {
     });
 
     it('should handle network errors', async () => {
-      global.fetch = jest.fn().mockRejectedValue(new Error('Network error'));
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
+      global.fetch = vi.fn().mockRejectedValue(new Error('Network error'));
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation();
 
       const cart = {
         items: [],

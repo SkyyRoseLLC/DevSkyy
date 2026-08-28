@@ -1,6 +1,6 @@
 /**
  * Unit Tests for ProductInteractionHandler
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { ProductInteractionHandler, ProductInteractionConfig, CartManager } from '../productInteraction';
@@ -8,20 +8,22 @@ import { ShowroomProduct, InventoryStatus } from '../../types/product';
 import { InventoryManager } from '../inventory';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // --- Helpers ---
 
 function createMockMesh(overrides: Partial<any> = {}): any {
   const material = {
-    emissive: { setHex: jest.fn() },
+    emissive: { setHex: vi.fn() },
     emissiveIntensity: 0,
     opacity: 1,
     transparent: false,
@@ -35,27 +37,27 @@ function createMockMesh(overrides: Partial<any> = {}): any {
       x: 0,
       y: 0,
       z: 0,
-      clone: jest.fn().mockReturnValue({
+      clone: vi.fn().mockReturnValue({
         x: 0,
         y: 0,
         z: 0,
-        project: jest.fn().mockReturnThis(),
+        project: vi.fn().mockReturnThis(),
       }),
     },
     scale: {
       x: 1,
       y: 1,
       z: 1,
-      clone: jest.fn().mockReturnValue({
-        multiplyScalar: jest.fn().mockReturnThis(),
+      clone: vi.fn().mockReturnValue({
+        multiplyScalar: vi.fn().mockReturnThis(),
         x: 1.2,
         y: 1.2,
         z: 1.2,
       }),
-      lerpVectors: jest.fn(),
-      copy: jest.fn(),
+      lerpVectors: vi.fn(),
+      copy: vi.fn(),
     },
-    quaternion: { clone: jest.fn().mockReturnThis(), slerpQuaternions: jest.fn() },
+    quaternion: { clone: vi.fn().mockReturnThis(), slerpQuaternions: vi.fn() },
     userData: {},
     material,
     ...overrides,
@@ -80,22 +82,22 @@ function createMockProduct(overrides: Partial<ShowroomProduct> = {}): ShowroomPr
 
 function createMockCart(): CartManager {
   return {
-    addItem: jest.fn().mockResolvedValue(undefined),
-    getItemCount: jest.fn().mockReturnValue(0),
-    getTotalPrice: jest.fn().mockReturnValue(0),
+    addItem: vi.fn().mockResolvedValue(undefined),
+    getItemCount: vi.fn().mockReturnValue(0),
+    getTotalPrice: vi.fn().mockReturnValue(0),
   };
 }
 
 function createMockInventory(): InventoryManager {
   return {
-    subscribe: jest.fn().mockReturnValue(jest.fn()),
-    getStatus: jest.fn().mockReturnValue(null),
-    getGlowColor: jest.fn().mockReturnValue(0x00ff00),
-    getOpacity: jest.fn().mockReturnValue(1.0),
-    connect: jest.fn(),
-    disconnect: jest.fn(),
-    updateLocalStatus: jest.fn(),
-    unsubscribe: jest.fn(),
+    subscribe: vi.fn().mockReturnValue(vi.fn()),
+    getStatus: vi.fn().mockReturnValue(null),
+    getGlowColor: vi.fn().mockReturnValue(0x00ff00),
+    getOpacity: vi.fn().mockReturnValue(1.0),
+    connect: vi.fn(),
+    disconnect: vi.fn(),
+    updateLocalStatus: vi.fn(),
+    unsubscribe: vi.fn(),
   } as unknown as InventoryManager;
 }
 
@@ -105,23 +107,23 @@ function createMockCamera(): any {
       x: 0,
       y: 0,
       z: 5,
-      clone: jest.fn().mockReturnValue({ x: 0, y: 0, z: 5, lerpVectors: jest.fn() }),
-      lerpVectors: jest.fn(),
+      clone: vi.fn().mockReturnValue({ x: 0, y: 0, z: 5, lerpVectors: vi.fn() }),
+      lerpVectors: vi.fn(),
     },
     quaternion: {
-      clone: jest.fn().mockReturnValue({ slerpQuaternions: jest.fn() }),
-      slerpQuaternions: jest.fn(),
+      clone: vi.fn().mockReturnValue({ slerpQuaternions: vi.fn() }),
+      slerpQuaternions: vi.fn(),
     },
-    clone: jest.fn().mockReturnValue({
-      position: { copy: jest.fn() },
-      lookAt: jest.fn(),
-      quaternion: { clone: jest.fn().mockReturnValue({ slerpQuaternions: jest.fn() }) },
+    clone: vi.fn().mockReturnValue({
+      position: { copy: vi.fn() },
+      lookAt: vi.fn(),
+      quaternion: { clone: vi.fn().mockReturnValue({ slerpQuaternions: vi.fn() }) },
     }),
   };
 }
 
 function createMockScene(): any {
-  return { add: jest.fn(), remove: jest.fn(), children: [] };
+  return { add: vi.fn(), remove: vi.fn(), children: [] };
 }
 
 function createHandler(overrides: Partial<ProductInteractionConfig> = {}) {
@@ -146,17 +148,17 @@ function createHandler(overrides: Partial<ProductInteractionConfig> = {}) {
 
 describe('ProductInteractionHandler', () => {
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     // Mock performance.now for animations
-    jest.spyOn(performance, 'now').mockReturnValue(0);
+    vi.spyOn(performance, 'now').mockReturnValue(0);
     // Mock window dimensions
     Object.defineProperty(window, 'innerWidth', { value: 1920, writable: true });
     Object.defineProperty(window, 'innerHeight', { value: 1080, writable: true });
   });
 
   afterEach(() => {
-    jest.useRealTimers();
-    jest.restoreAllMocks();
+    vi.useRealTimers();
+    vi.restoreAllMocks();
   });
 
   describe('constructor', () => {
@@ -217,7 +219,7 @@ describe('ProductInteractionHandler', () => {
         stockQuantity: 3,
         reservedQuantity: 0,
       };
-      (inventory.getStatus as jest.Mock).mockReturnValue(status);
+      (inventory.getStatus as vi.Mock).mockReturnValue(status);
 
       handler.setupProduct(mesh, product);
 
@@ -229,7 +231,7 @@ describe('ProductInteractionHandler', () => {
       const { handler, inventory } = createHandler();
       const mesh = createMockMesh();
       const product = createMockProduct();
-      (inventory.getStatus as jest.Mock).mockReturnValue(null);
+      (inventory.getStatus as vi.Mock).mockReturnValue(null);
 
       handler.setupProduct(mesh, product);
 
@@ -262,9 +264,9 @@ describe('ProductInteractionHandler', () => {
       const { handler, inventory } = createHandler();
       const mesh = createMockMesh();
       const product = createMockProduct();
-      const callback = jest.fn();
+      const callback = vi.fn();
 
-      (inventory.getStatus as jest.Mock).mockReturnValue(null);
+      (inventory.getStatus as vi.Mock).mockReturnValue(null);
       handler.setupProduct(mesh, product);
       handler.setOnProductPanelShow(callback);
       handler.showProductPanel(product);
@@ -281,7 +283,7 @@ describe('ProductInteractionHandler', () => {
     it('should use center of screen when no mesh found', () => {
       const { handler } = createHandler();
       const product = createMockProduct({ id: 'no-mesh' });
-      const callback = jest.fn();
+      const callback = vi.fn();
 
       handler.setOnProductPanelShow(callback);
       handler.showProductPanel(product);
@@ -303,7 +305,7 @@ describe('ProductInteractionHandler', () => {
   describe('hideProductPanel', () => {
     it('should invoke onProductPanelHide callback', () => {
       const { handler } = createHandler();
-      const callback = jest.fn();
+      const callback = vi.fn();
 
       handler.setOnProductPanelHide(callback);
       handler.hideProductPanel();
@@ -323,7 +325,7 @@ describe('ProductInteractionHandler', () => {
       const mesh = createMockMesh();
       const product = createMockProduct();
 
-      (inventory.getStatus as jest.Mock).mockReturnValue({
+      (inventory.getStatus as vi.Mock).mockReturnValue({
         productId: product.id,
         stockStatus: 'in_stock',
         stockQuantity: 10,
@@ -342,7 +344,7 @@ describe('ProductInteractionHandler', () => {
       const product = createMockProduct();
       const options = { size: 'M', color: { name: 'Red', hex: '#ff0000' } };
 
-      (inventory.getStatus as jest.Mock).mockReturnValue({
+      (inventory.getStatus as vi.Mock).mockReturnValue({
         productId: product.id,
         stockStatus: 'in_stock',
         stockQuantity: 10,
@@ -359,9 +361,9 @@ describe('ProductInteractionHandler', () => {
       const { handler, inventory } = createHandler();
       const mesh = createMockMesh();
       const product = createMockProduct();
-      const callback = jest.fn();
+      const callback = vi.fn();
 
-      (inventory.getStatus as jest.Mock).mockReturnValue(null);
+      (inventory.getStatus as vi.Mock).mockReturnValue(null);
       handler.setupProduct(mesh, product);
       handler.setOnAddToCart(callback);
       await handler.addToCart(product.id);
@@ -373,9 +375,9 @@ describe('ProductInteractionHandler', () => {
       const { handler, cart, inventory } = createHandler();
       const mesh = createMockMesh();
       const product = createMockProduct();
-      const dispatchSpy = jest.spyOn(window, 'dispatchEvent');
+      const dispatchSpy = vi.spyOn(window, 'dispatchEvent');
 
-      (inventory.getStatus as jest.Mock).mockReturnValue({
+      (inventory.getStatus as vi.Mock).mockReturnValue({
         productId: product.id,
         stockStatus: 'out_of_stock',
         stockQuantity: 0,
@@ -397,10 +399,10 @@ describe('ProductInteractionHandler', () => {
       const { handler, cart, inventory } = createHandler();
       const mesh = createMockMesh();
       const product = createMockProduct();
-      const dispatchSpy = jest.spyOn(window, 'dispatchEvent');
+      const dispatchSpy = vi.spyOn(window, 'dispatchEvent');
 
-      (inventory.getStatus as jest.Mock).mockReturnValue(null);
-      (cart.addItem as jest.Mock).mockRejectedValue(new Error('Cart API failed'));
+      (inventory.getStatus as vi.Mock).mockReturnValue(null);
+      (cart.addItem as vi.Mock).mockRejectedValue(new Error('Cart API failed'));
 
       handler.setupProduct(mesh, product);
       await handler.addToCart(product.id);
@@ -417,8 +419,8 @@ describe('ProductInteractionHandler', () => {
       const mesh = createMockMesh();
       const product = createMockProduct();
 
-      (inventory.getStatus as jest.Mock).mockReturnValue(null);
-      (cart.addItem as jest.Mock).mockRejectedValue('string error');
+      (inventory.getStatus as vi.Mock).mockReturnValue(null);
+      (cart.addItem as vi.Mock).mockRejectedValue('string error');
 
       handler.setupProduct(mesh, product);
       await handler.addToCart(product.id);
@@ -448,7 +450,7 @@ describe('ProductInteractionHandler', () => {
     it('should update single MeshStandardMaterial', () => {
       const { handler, inventory } = createHandler();
       const material = {
-        emissive: { setHex: jest.fn() },
+        emissive: { setHex: vi.fn() },
         emissiveIntensity: 0,
         opacity: 1,
         transparent: false,
@@ -466,8 +468,8 @@ describe('ProductInteractionHandler', () => {
         reservedQuantity: 0,
       };
 
-      (inventory.getGlowColor as jest.Mock).mockReturnValue(0xffa500);
-      (inventory.getOpacity as jest.Mock).mockReturnValue(0.8);
+      (inventory.getGlowColor as vi.Mock).mockReturnValue(0xffa500);
+      (inventory.getOpacity as vi.Mock).mockReturnValue(0.8);
 
       handler.updateProductVisuals(mesh as any, status);
 
@@ -516,7 +518,7 @@ describe('ProductInteractionHandler', () => {
   describe('callback setters', () => {
     it('should set onProductPanelShow callback', () => {
       const { handler } = createHandler();
-      const cb = jest.fn();
+      const cb = vi.fn();
       handler.setOnProductPanelShow(cb);
 
       const product = createMockProduct();
@@ -526,7 +528,7 @@ describe('ProductInteractionHandler', () => {
 
     it('should set onProductPanelHide callback', () => {
       const { handler } = createHandler();
-      const cb = jest.fn();
+      const cb = vi.fn();
       handler.setOnProductPanelHide(cb);
 
       handler.hideProductPanel();
@@ -537,9 +539,9 @@ describe('ProductInteractionHandler', () => {
       const { handler, inventory } = createHandler();
       const mesh = createMockMesh();
       const product = createMockProduct();
-      const cb = jest.fn();
+      const cb = vi.fn();
 
-      (inventory.getStatus as jest.Mock).mockReturnValue(null);
+      (inventory.getStatus as vi.Mock).mockReturnValue(null);
       handler.setupProduct(mesh, product);
       handler.setOnAddToCart(cb);
       await handler.addToCart(product.id);

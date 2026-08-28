@@ -1,20 +1,20 @@
 /**
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import { SuccessCelebration } from '../SuccessCelebration';
 
 // Mock canvas context for confetti animation
 beforeAll(() => {
-  HTMLCanvasElement.prototype.getContext = jest.fn(() => ({
-    clearRect: jest.fn(),
-    save: jest.fn(),
-    restore: jest.fn(),
-    translate: jest.fn(),
-    rotate: jest.fn(),
-    fillRect: jest.fn(),
+  HTMLCanvasElement.prototype.getContext = vi.fn(() => ({
+    clearRect: vi.fn(),
+    save: vi.fn(),
+    restore: vi.fn(),
+    translate: vi.fn(),
+    rotate: vi.fn(),
+    fillRect: vi.fn(),
     fillStyle: '',
     globalAlpha: 1,
   })) as any;
@@ -26,22 +26,22 @@ describe('SuccessCelebration', () => {
     orderTotal: 149.99,
     currency: 'USD',
     customerEmail: 'test@example.com',
-    onContinueShopping: jest.fn(),
-    onViewOrder: jest.fn(),
+    onContinueShopping: vi.fn(),
+    onViewOrder: vi.fn(),
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
-    jest.useFakeTimers();
+    vi.clearAllMocks();
+    vi.useFakeTimers();
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   it('renders order confirmation message', () => {
     render(<SuccessCelebration {...defaultProps} />);
-    jest.advanceTimersByTime(100);
+    vi.advanceTimersByTime(100);
     expect(screen.getByText('Order Confirmed!')).toBeInTheDocument();
   });
 
