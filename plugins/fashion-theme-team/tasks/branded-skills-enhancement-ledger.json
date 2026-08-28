@@ -1,0 +1,82 @@
+{
+  "$schema": "../skills/fashion-theme-team/brain/schemas/task-packet.schema.json",
+  "initiative": "branded-skills-enhancement-v1",
+  "state": "COMPLETE",
+  "baseline_id": "git:268980208200a2357832477188670632fcc84b69",
+  "candidate_id": "reviewed-input:git:086f3be188eccf221305fefadafc8bdea5002ef4;active-contracts:sha256:0b97eb1d6d6f2854bc7a9838aabd1b820cb4f4476adbec20abdd837cd5d0b4f7",
+  "source_inventory": {
+    "root": "vendor/branded-skills",
+    "skill_count": 234,
+    "legacy_audit_aggregate_sha256": "be4188a15c97e8af81cf75aafaa65be45849917652fc40f33d3f421c4ae5f3f8",
+    "canonical_source_manifest_sha256": "ccc81bbb041156b733411425c6c4107dc86d3c6d7136395e61a3abdd0cd6c468",
+    "route_registry_sha256": "c87a1333d5d285bde9ac8a5d20458456a155270a4f080976971234c5185130d8",
+    "enhancement_source_aggregate_sha256": "401fd0f5eeca2f370dfb8eb0d894383ddf89db0410469d88604a94dde28de02c",
+    "active_contract_aggregate_sha256": "0b97eb1d6d6f2854bc7a9838aabd1b820cb4f4476adbec20abdd837cd5d0b4f7",
+    "canonical_algorithm": "Registry generator hashes lexical package-relative path plus tab plus source SHA-256; route and enhancement aggregates use their documented deterministic generators."
+  },
+  "approval": {
+    "scope": "all-234",
+    "status": "APPROVED",
+    "approved_at": "2026-08-16T16:30:00-07:00"
+  },
+  "tool_profile": {
+    "default": ["Read", "Grep", "Glob", "Bash"],
+    "builder_expansion": ["Edit", "Write"],
+    "reason": "Generate governed registries, schemas, adapters, tests, and documentation in an isolated plugin worktree."
+  },
+  "phases": [
+    {
+      "id": "provenance-sources",
+      "state": "COMPLETE",
+      "owner": "fashion-knowledge-curator",
+      "owned_paths": ["skills/fashion-theme-team/brain/branded-skills/sources/**"],
+      "attempt": 1,
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "enhancement-contracts",
+      "state": "COMPLETE",
+      "owner": "fashion-designops-governance-engineer",
+      "owned_paths": ["skills/fashion-theme-team/brain/branded-skills/schemas/**", "skills/fashion-theme-team/brain/branded-skills/README.md"],
+      "attempt": 1,
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "taxonomy-routing",
+      "state": "COMPLETE",
+      "owner": "fashion-brand-systems-researcher",
+      "owned_paths": ["skills/fashion-theme-team/brain/branded-skills/routes/**"],
+      "attempt": 1,
+      "next_authority": "AUTO_WITH_LOG"
+    },
+    {
+      "id": "integration",
+      "state": "COMPLETE",
+      "owner": "fashion-theme-lead",
+      "owned_paths": ["scripts/**", "skills/fashion-theme-team/SKILL.md", "skills/fashion-theme-team/brain/taxonomy.json", "scripts/verify.sh"],
+      "attempt": 1,
+      "next_authority": "AUTO_WITH_LOG",
+      "evidence": [
+        "234 strict enhancement manifests",
+        "234 deterministic route records",
+        "234 exact source SHA-256 records",
+        "18 of 18 host-pinned primary-authority artifact captures",
+        "scripts/verify.sh PASS"
+      ]
+    },
+    {
+      "id": "independent-review",
+      "state": "COMPLETE",
+      "owner": "theme-release-engineer",
+      "owned_paths": [],
+      "attempt": 1,
+      "next_authority": "AUTO_WITH_LOG",
+      "reviewed_input": "git:086f3be188eccf221305fefadafc8bdea5002ef4",
+      "reviewer": "independent-release-reviewer",
+      "reviewed_at": "2026-08-17T00:39:32Z",
+      "verdict": "PASS",
+      "findings": []
+    }
+  ],
+  "deployment": "FORBIDDEN_WITHOUT_FRESH_APPROVAL"
+}

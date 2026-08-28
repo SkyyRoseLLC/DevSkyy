@@ -1,0 +1,358 @@
+{
+  "schema_version": "1.0.0",
+  "captured_at": "2026-08-17T00:35:37+00:00",
+  "method": "CA-verified TLS; publisher and final hosts pinned; complete artifact up to 10 MB hashed; publisher identity marker checked",
+  "claim_boundary": "Artifact authentication only; every material claim still requires a current claim-specific anchor and applicability check at use time.",
+  "requested_count": 18,
+  "verified_count": 18,
+  "blocked_count": 0,
+  "captures": [
+    {
+      "publisher": "WooCommerce",
+      "requested_url": "https://developer.woocommerce.com/docs/",
+      "http_status": 200,
+      "final_url": "https://developer.woocommerce.com/docs/",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "developer.woocommerce.com",
+      "final_host": "developer.woocommerce.com",
+      "host_allowlist": [
+        "developer.woocommerce.com"
+      ],
+      "captured_bytes": 33169,
+      "capture_complete": true,
+      "content_sha256": "062e50d5c68838f362fecf9e2e455df6e7ec675902f31342bba55239481a0349",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Google Search Central",
+      "requested_url": "https://developers.google.com/search/docs",
+      "http_status": 200,
+      "final_url": "https://developers.google.com/search/docs",
+      "content_type": "text/html; charset=utf-8",
+      "etag": null,
+      "last_modified": "Tue, 04 Feb 2025 12:33:52 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "developers.google.com",
+      "final_host": "developers.google.com",
+      "host_allowlist": [
+        "developers.google.com"
+      ],
+      "captured_bytes": 188469,
+      "capture_complete": true,
+      "content_sha256": "6f4388d09087b7eae9eed971f1cea392e9624fb96ef75b1e800c688149b273fc",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Federal Communications Commission",
+      "requested_url": "https://docs.fcc.gov/public/attachments/FCC-23-64A1.pdf",
+      "http_status": 200,
+      "final_url": "https://docs.fcc.gov/public/attachments/FCC-23-64A1.pdf",
+      "content_type": "application/pdf; charset=UTF-8",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "docs.fcc.gov",
+      "final_host": "docs.fcc.gov",
+      "host_allowlist": [
+        "docs.fcc.gov"
+      ],
+      "captured_bytes": 2725804,
+      "capture_complete": true,
+      "content_sha256": "734f2f980343c4d7848025fca822a424e403684bf54ca26d63c0074db67faf0b",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Schema.org",
+      "requested_url": "https://schema.org/docs/documents.html",
+      "http_status": 200,
+      "final_url": "https://schema.org/docs/documents.html",
+      "content_type": "UNKNOWN_CURL_FALLBACK",
+      "etag": null,
+      "last_modified": null,
+      "client": "curl-ca-verified-fallback",
+      "primary_client_error": "ValueError: expected publisher/document identity marker absent",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "schema.org",
+      "final_host": "schema.org",
+      "host_allowlist": [
+        "schema.org"
+      ],
+      "captured_bytes": 12509,
+      "capture_complete": true,
+      "content_sha256": "25b2303f824ec50a5b4c3eb069e28160e44159a89471d1497dd399a4510b4627",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Yahoo",
+      "requested_url": "https://senders.yahooinc.com/best-practices/",
+      "http_status": 200,
+      "final_url": "https://senders.yahooinc.com/best-practices/",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": "W/\"73126-19fa9b6eeb0\"",
+      "last_modified": "Tue, 28 Jul 2026 17:12:46 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "senders.yahooinc.com",
+      "final_host": "senders.yahooinc.com",
+      "host_allowlist": [
+        "senders.yahooinc.com"
+      ],
+      "captured_bytes": 471334,
+      "capture_complete": true,
+      "content_sha256": "17d14a32b4d503b132015430ff1fc2fb37c1d9a5f93b30eb9bf93c0052b5ad99",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Google",
+      "requested_url": "https://support.google.com/a/answer/81126",
+      "http_status": 200,
+      "final_url": "https://support.google.com/mail/answer/81126?visit_id=639225237298134935-2388223287&rd=1",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "support.google.com",
+      "final_host": "support.google.com",
+      "host_allowlist": [
+        "support.google.com"
+      ],
+      "captured_bytes": 1429295,
+      "capture_complete": true,
+      "content_sha256": "ba75827e2dbf154cb168706014f4234e7ecd1209c4a107ddfaff1268f27bb773",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Meta",
+      "requested_url": "https://transparency.meta.com/policies/ad-standards/",
+      "http_status": 200,
+      "final_url": "https://transparency.meta.com/policies/ad-standards/",
+      "content_type": "text/html; charset=\"utf-8\"",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "transparency.meta.com",
+      "final_host": "transparency.meta.com",
+      "host_allowlist": [
+        "transparency.meta.com"
+      ],
+      "captured_bytes": 254791,
+      "capture_complete": true,
+      "content_sha256": "655c48454e097f010f9d93934828928f69c199c3d25846dd03ec0d9a9dfe11b4",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Microsoft Bing Webmaster",
+      "requested_url": "https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a",
+      "http_status": 200,
+      "final_url": "https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a",
+      "content_type": "text/html; charset=utf-8",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.bing.com",
+      "final_host": "www.bing.com",
+      "host_allowlist": [
+        "www.bing.com"
+      ],
+      "captured_bytes": 125562,
+      "capture_complete": true,
+      "content_sha256": "76683b2eba89d21bea912e71d7e8d8f42fa1ae892f88e86958adfd491eefb8f0",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "U.S. Copyright Office",
+      "requested_url": "https://www.copyright.gov/",
+      "http_status": 200,
+      "final_url": "https://www.copyright.gov/",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": null,
+      "last_modified": "Thu, 13 Aug 2026 15:43:58 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.copyright.gov",
+      "final_host": "www.copyright.gov",
+      "host_allowlist": [
+        "www.copyright.gov"
+      ],
+      "captured_bytes": 54825,
+      "capture_complete": true,
+      "content_sha256": "522c89fe668b5a3544fc0b5774a81e56c3fb565f4a319ce3dbc6aa67b8db2bf5",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "U.S. Consumer Product Safety Commission",
+      "requested_url": "https://www.cpsc.gov/Business--Manufacturing/Regulatory-Robot/Safer-Products-Start-Here",
+      "http_status": 200,
+      "final_url": "https://www.cpsc.gov/Business--Manufacturing/Regulatory-Robot/Safer-Products-Start-Here",
+      "content_type": "UNKNOWN_CURL_FALLBACK",
+      "etag": null,
+      "last_modified": null,
+      "client": "curl-ca-verified-fallback",
+      "primary_client_error": "HTTPError: HTTP Error 403: Forbidden",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.cpsc.gov",
+      "final_host": "www.cpsc.gov",
+      "host_allowlist": [
+        "www.cpsc.gov"
+      ],
+      "captured_bytes": 54637,
+      "capture_complete": true,
+      "content_sha256": "1a7d5c499bb9cecedfd58ae8f2b8563ed22192363b748d9ad3580ac226e48ff9",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Federal Trade Commission",
+      "requested_url": "https://www.ftc.gov/business-guidance/advertising-marketing",
+      "http_status": 200,
+      "final_url": "https://www.ftc.gov/business-guidance/advertising-marketing",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": "\"1786926720\"",
+      "last_modified": "Mon, 17 Aug 2026 00:32:00 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.ftc.gov",
+      "final_host": "www.ftc.gov",
+      "host_allowlist": [
+        "www.ftc.gov"
+      ],
+      "captured_bytes": 994994,
+      "capture_complete": true,
+      "content_sha256": "882bf541f25c216019eed6b90efd72484ee519152fe7c46924886c0b8995998f",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Federal Trade Commission",
+      "requested_url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+      "http_status": 200,
+      "final_url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": "\"1786926887\"",
+      "last_modified": "Mon, 17 Aug 2026 00:34:47 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.ftc.gov",
+      "final_host": "www.ftc.gov",
+      "host_allowlist": [
+        "www.ftc.gov"
+      ],
+      "captured_bytes": 1007088,
+      "capture_complete": true,
+      "content_sha256": "0f8b1d940f63e0c6616bab0c23d387f509522ed53a8bf584cf41b8f95c8ebe70",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Federal Trade Commission",
+      "requested_url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "http_status": 200,
+      "final_url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": "\"1786926774\"",
+      "last_modified": "Mon, 17 Aug 2026 00:32:54 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.ftc.gov",
+      "final_host": "www.ftc.gov",
+      "host_allowlist": [
+        "www.ftc.gov"
+      ],
+      "captured_bytes": 995707,
+      "capture_complete": true,
+      "content_sha256": "d5e7c9fa79480b4989b8227eedeb4a581fdbb9bcbd85daf1fc02416d70a5bfa5",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "Federal Trade Commission",
+      "requested_url": "https://www.ftc.gov/business-guidance/resources/selling-internet-prompt-delivery-rules",
+      "http_status": 200,
+      "final_url": "https://www.ftc.gov/business-guidance/resources/selling-internet-prompt-delivery-rules",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": "\"1786926653\"",
+      "last_modified": "Mon, 17 Aug 2026 00:30:53 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.ftc.gov",
+      "final_host": "www.ftc.gov",
+      "host_allowlist": [
+        "www.ftc.gov"
+      ],
+      "captured_bytes": 993072,
+      "capture_complete": true,
+      "content_sha256": "75bc7609cdbc65bd5f65b4d17c51807ff283d6d1d86b2eb2075433c551921594",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "LinkedIn",
+      "requested_url": "https://www.linkedin.com/legal/ads-policy",
+      "http_status": 200,
+      "final_url": "https://www.linkedin.com/legal/ads-policy",
+      "content_type": "text/html; charset=utf-8",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.linkedin.com",
+      "final_host": "www.linkedin.com",
+      "host_allowlist": [
+        "www.linkedin.com"
+      ],
+      "captured_bytes": 76270,
+      "capture_complete": true,
+      "content_sha256": "f9e7489919df061ae1b71bdb779bd50d358429c9e3e35edfca2b7bd11eebe206",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "TikTok",
+      "requested_url": "https://www.tiktok.com/community-guidelines/",
+      "http_status": 200,
+      "final_url": "https://www.tiktok.com/safety/en/policies-and-engagement/overview",
+      "content_type": "text/html",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.tiktok.com",
+      "final_host": "www.tiktok.com",
+      "host_allowlist": [
+        "www.tiktok.com"
+      ],
+      "captured_bytes": 2583605,
+      "capture_complete": true,
+      "content_sha256": "cbcdac7c0192e057ad88446687a95a37321475729094598d987ec5ea1860f6d3",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "United States Patent and Trademark Office",
+      "requested_url": "https://www.uspto.gov/trademarks",
+      "http_status": 200,
+      "final_url": "https://www.uspto.gov/trademarks",
+      "content_type": "text/html; charset=UTF-8",
+      "etag": null,
+      "last_modified": null,
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.uspto.gov",
+      "final_host": "www.uspto.gov",
+      "host_allowlist": [
+        "www.uspto.gov"
+      ],
+      "captured_bytes": 149345,
+      "capture_complete": true,
+      "content_sha256": "b3de0eebea40b62667c80dd24865fd5057c54b9bbea89a8990d0931ee611247c",
+      "identity_markers_verified": true
+    },
+    {
+      "publisher": "W3C",
+      "requested_url": "https://www.w3.org/TR/WCAG22/",
+      "http_status": 200,
+      "final_url": "https://www.w3.org/TR/WCAG22/",
+      "content_type": "text/html; charset=utf-8",
+      "etag": null,
+      "last_modified": "Thu, 12 Dec 2024 10:36:22 GMT",
+      "status": "VERIFIED_PINNED_PRIMARY_ARTIFACT",
+      "requested_host": "www.w3.org",
+      "final_host": "www.w3.org",
+      "host_allowlist": [
+        "www.w3.org"
+      ],
+      "captured_bytes": 512457,
+      "capture_complete": true,
+      "content_sha256": "6e3c5fe397257cae509a2fb4752b73062cf8cbeb92c2cec618989b17e4cf7057",
+      "identity_markers_verified": true
+    }
+  ],
+  "verdict": "PASS"
+}

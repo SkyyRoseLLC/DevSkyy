@@ -1,0 +1,394 @@
+{
+  "authority": {
+    "approval_boundaries": [
+      "new-dependency",
+      "credential",
+      "paid-api",
+      "external-write",
+      "upload",
+      "push",
+      "protected-branch-merge",
+      "destructive-action",
+      "staging-mutation",
+      "deployment",
+      "production-mutation"
+    ],
+    "claim_classes": [
+      "OBSERVED",
+      "APPROVED",
+      "RECOMMENDED",
+      "UNKNOWN",
+      "DURABLE",
+      "CURRENT",
+      "BRAND_SPECIFIC",
+      "INFERENCE",
+      "EXPERIMENT"
+    ],
+    "precedence": [
+      "repository-instructions-and-approved-SOT",
+      "current-official-documentation",
+      "dated-registered-research",
+      "durable-brain-guidance",
+      "inference-or-experiment"
+    ],
+    "prohibited": [
+      "secret-disclosure",
+      "fabricated-evidence",
+      "gate-waiver",
+      "unauthorized-production-mutation",
+      "invented-product-fact",
+      "invented-urgency",
+      "self-certification"
+    ]
+  },
+  "contract_id": "skyyrose.branded-skill.thought-leader-content-plan",
+  "evidence": {
+    "candidate_binding": "all-evidence-must-share-candidate-id",
+    "freshness": "mutation-invalidates-dependent-evidence",
+    "independent_review": "builder-cannot-approve-own-output",
+    "required_classes": [
+      "source",
+      "deterministic",
+      "accessibility",
+      "security",
+      "release"
+    ]
+  },
+  "fallback": {
+    "degraded_mode": "Return a schema-valid BLOCKED artifact with actionable missing-authority notes and no invented facts.",
+    "missing_input": "continue-independent-work-and-mark-dependent-claims-UNKNOWN-or-BLOCKED",
+    "terminal_status": "BLOCKED",
+    "transient_retry": {
+      "backoff": "bounded",
+      "maximum": 2
+    },
+    "unavailable_tool": "use-documented-safe-fallback-or-BLOCKED-never-fabricate"
+  },
+  "gap_analysis": {
+    "closures": [
+      {
+        "acceptance": "Evidence records exact authority paths and no output contradicts them.",
+        "control": "Load repository canon, approved catalog/media SOT, and founder decisions before source execution.",
+        "id": "bind-skyyrose-canon-and-sot"
+      },
+      {
+        "acceptance": "All evidence hashes recompute and reviewer identity differs from every builder and owner.",
+        "control": "Require candidate, source, contract, and artifact hashes plus an independent reviewer.",
+        "id": "bind-candidate-and-independent-review"
+      },
+      {
+        "acceptance": "Every material external claim has publisher, final URL, retrieval time, content hash, anchor, and freshness result.",
+        "control": "Resolve each material claim to a current host-pinned primary source and claim anchor.",
+        "id": "retrieve-pinned-primary-authority"
+      },
+      {
+        "acceptance": "Evidence proves authorized data use and suppression before any external action.",
+        "control": "Minimize and redact data; verify purpose, consent, suppression, retention, and deletion controls.",
+        "id": "enforce-privacy-consent-suppression"
+      },
+      {
+        "acceptance": "Price, stock, policy, CTA, and order states match the authoritative response; no false urgency or unsupported uplift claim exists.",
+        "control": "Bind live commerce facts to WooCommerce/SOT and classify proposed uplift as an instrumented experiment.",
+        "id": "enforce-commerce-truth-and-experiment-gates"
+      },
+      {
+        "acceptance": "Every used asset and endorsement resolves to approved provenance; filenames alone never establish identity.",
+        "control": "Require registry identity, rights record, consent/disclosure where applicable, and eyes-on media review.",
+        "id": "enforce-rights-and-media-provenance"
+      }
+    ],
+    "gaps": [
+      {
+        "closure_id": "bind-skyyrose-canon-and-sot",
+        "evidence": "Source heading inventory (31 headings) contains no approved SkyyRose canon or catalog-SOT binding.",
+        "id": "missing-skyyrose-authority-binding",
+        "impact": "Generic guidance could override brand or product truth."
+      },
+      {
+        "closure_id": "bind-candidate-and-independent-review",
+        "evidence": "Source verification sections observed: ['Thought Leadership Health Check'].",
+        "id": "missing-candidate-evidence-binding",
+        "impact": "Outputs could be accepted without exact candidate proof or an independent verdict."
+      },
+      {
+        "closure_id": "retrieve-pinned-primary-authority",
+        "evidence": "Detected risk terms: ['commerce', 'claims', 'personal-data', 'publication']; source has no registered current-authority capture contract.",
+        "id": "missing-authenticated-claim-sources",
+        "impact": "External, legal, platform, or outcome claims could be stale or unsupported."
+      },
+      {
+        "closure_id": "enforce-privacy-consent-suppression",
+        "evidence": "Source capability touches audience, email, phone, customer, community, or social data.",
+        "id": "privacy-consent-suppression-gap",
+        "impact": "Execution could retain data or contact people without valid consent and suppression controls."
+      },
+      {
+        "closure_id": "enforce-commerce-truth-and-experiment-gates",
+        "evidence": "Source capability touches product, offer, price, checkout, order, inventory, return, or conversion behavior.",
+        "id": "commerce-truth-and-dark-pattern-gap",
+        "impact": "Execution could invent commerce facts, urgency, proof, or unmeasured uplift."
+      },
+      {
+        "closure_id": "enforce-rights-and-media-provenance",
+        "evidence": "Source capability touches copyright, licensing, imagery, influencers, brand, or reusable content.",
+        "id": "rights-and-media-provenance-gap",
+        "impact": "Unverified ownership, consent, or media identity could enter a human-facing artifact."
+      }
+    ],
+    "method": "deterministic-source-review-plus-domain-contract",
+    "residual_unknowns": [
+      "task-specific-facts-until-runtime-authority-retrieval"
+    ],
+    "source_body_reviewed": true
+  },
+  "inputs": {
+    "optional": [
+      {
+        "authority": "approved-SOT",
+        "name": "catalog_and_rights",
+        "sensitive": false,
+        "type": "artifact-ref"
+      },
+      {
+        "authority": "official-documentation",
+        "name": "current_sources",
+        "sensitive": false,
+        "type": "array"
+      }
+    ],
+    "required": [
+      {
+        "authority": "user",
+        "name": "task",
+        "sensitive": false,
+        "type": "string"
+      },
+      {
+        "authority": "repository",
+        "name": "candidate_id",
+        "sensitive": false,
+        "type": "string"
+      },
+      {
+        "authority": "approved-SOT",
+        "name": "brand_canon",
+        "sensitive": false,
+        "type": "artifact-ref"
+      }
+    ],
+    "sensitive_data_policy": "minimize-redact-never-persist-secrets-or-customer-data",
+    "unknown_policy": "discover-read-only-then-mark-UNKNOWN"
+  },
+  "lifecycle": {
+    "compatibility": "Additive governance overlay; source skill remains reference-only and unchanged.",
+    "deprecation": {
+      "status": "not-deprecated"
+    },
+    "introduced": "1.0.0",
+    "migration": {
+      "guide": null,
+      "required": false
+    },
+    "rollback": {
+      "last_known_good": "source-skill-without-overlay",
+      "procedure": "Disable the branded router entry and execute only the unchanged source skill under repository instructions."
+    },
+    "state": "ACTIVE"
+  },
+  "output": {
+    "artifact_type": "thought-leader-content-plan-enhanced-deliverable",
+    "required_files": [
+      "thought-leader-content-plan-deliverable",
+      "thought-leader-content-plan-evidence"
+    ],
+    "schema_ref": "schemas/enhanced-skill-evidence.schema.json",
+    "stable_ids": [
+      "thought-leader-content-plan",
+      "fashion_content_copy"
+    ],
+    "status_vocabulary": [
+      "PASS",
+      "FAIL",
+      "BLOCKED",
+      "NOT_APPLICABLE",
+      "UNKNOWN"
+    ]
+  },
+  "provenance": {
+    "change_record": "branded-skills-v1",
+    "contract_sha256": "0be0a38b072c795d2077b46d42c848e371eeece2dad55e97dff3a5bf447efc9c",
+    "generated_at": "2026-08-16T00:00:00-07:00",
+    "generated_by": "scripts/generate-branded-skill-enhancements.py",
+    "owners": [
+      "fashion-accessibility-content-engineer",
+      "fashion-knowledge-curator"
+    ],
+    "reviewed_at": "2026-08-17T00:39:32Z",
+    "reviewed_by": "independent-release-reviewer"
+  },
+  "requirements": {
+    "accessibility": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "Use WCAG 2.2 AA semantics, keyboard access, focus, reflow, contrast, reduced motion, and equivalent fallbacks where applicable."
+      ]
+    },
+    "commerce": {
+      "applicability": "CONDITIONAL",
+      "rules": [
+        "WooCommerce and approved SOT own product, price, stock, variation, cart, checkout, and order truth."
+      ]
+    },
+    "ethics": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "No dark patterns, fabricated social proof, false scarcity, or unsupported outcome claims."
+      ]
+    },
+    "performance": {
+      "applicability": "CONDITIONAL",
+      "rules": [
+        "Declare candidate-specific budgets, measure them, and preserve a usable degraded mode."
+      ]
+    },
+    "privacy": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "Minimize and redact data; document consent, purpose, retention, and rollback for measurement."
+      ]
+    },
+    "security": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "Validate and escape boundaries, protect secrets, minimize permissions, and verify dependency provenance."
+      ]
+    }
+  },
+  "routing": {
+    "brain_route_ids": [
+      "fashion_content_copy"
+    ],
+    "load_policy": "metadata-first-source-on-match",
+    "tool_profile": {
+      "default": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "expansions": []
+    },
+    "trigger_summary": "Plans thought leadership content across articles, talks, social posts, and interviews with consistent messaging."
+  },
+  "schema_version": "1.0.0",
+  "skyyrose_overlay": {
+    "application": "required-for-fashion-commerce-output",
+    "brand_contract": "../../brand/skyyrose-artifact-system.json",
+    "non_negotiables": [
+      "garment-first",
+      "truthful-product-data",
+      "one-rose-gold-accent",
+      "oakland-editorial-thesis",
+      "SOT-or-founder-approved-media",
+      "no-fabricated-commerce-proof",
+      "logo-off-recognition"
+    ]
+  },
+  "source": {
+    "body_policy": "reference-only-never-copy",
+    "inventory_id": "bundle:content-copywriting/thought-leader-content-plan",
+    "relative_path": "content-copywriting/thought-leader-content-plan/SKILL.md",
+    "sha256": "bfa733fa4b645d03bbad40b7fca871ec95804ec815affd9673290806ebcb871e",
+    "skill_id": "thought-leader-content-plan"
+  },
+  "source_capability_profile": {
+    "declared_tools": [
+      "read",
+      "write",
+      "glob"
+    ],
+    "headings": [
+      "Thought Leader Content Plan",
+      "When to Use This Skill",
+      "Core Principle",
+      "Phase 1: Brief",
+      "Required Inputs",
+      "Phase 2: Intellectual Framework",
+      "Core Thesis",
+      "Your Thought Leadership Thesis",
+      "Signature Framework",
+      "The [Your Name] [Framework Name]",
+      "Content Pillars (3-5)",
+      "Phase 3: Build",
+      "Content Ecosystem",
+      "Content Format Hierarchy",
+      "90-Day Content Calendar",
+      "Month 1: Establish the POV",
+      "Month 2: Deepen and Defend",
+      "Month 3: Expand and Amplify",
+      "Message Consistency Guide",
+      "Say This / Not That",
+      "Phase 4: Polish",
+      "1. Authority Indicators",
+      "Authority Milestones",
+      "2. Quarterly Review",
+      "Thought Leadership Health Check",
+      "3. Content Repurposing Map",
+      "One Idea \u2192 Multiple Formats",
+      "Example 1: AI for Business Thought Leadership",
+      "Example 2: Pricing Strategy Thought Leadership",
+      "Anti-Patterns",
+      "Recovery"
+    ],
+    "input_sections": [
+      "Required Inputs"
+    ],
+    "output_sections": [
+      "Content Format Hierarchy",
+      "One Idea \u2192 Multiple Formats",
+      "Example 1: AI for Business Thought Leadership",
+      "Example 2: Pricing Strategy Thought Leadership"
+    ],
+    "profile_sha256": "88ba6cb8aa2d59ecb11a24211fc5deb5c860e0f478df9768b8598b79410cdeef",
+    "risk_terms": [
+      "commerce",
+      "claims",
+      "personal-data",
+      "publication"
+    ],
+    "verification_sections": [
+      "Thought Leadership Health Check"
+    ]
+  },
+  "verification": {
+    "checks": [
+      {
+        "command_or_method": "Recompute SHA-256 of the referenced SKILL.md.",
+        "evidence_class": "source",
+        "id": "source-hash",
+        "pass_condition": "Hash equals source.sha256."
+      },
+      {
+        "command_or_method": "Validate this record against enhanced-skill.schema.json.",
+        "evidence_class": "deterministic",
+        "id": "contract-schema",
+        "pass_condition": "Draft 2020-12 validation passes with no errors."
+      },
+      {
+        "command_or_method": "Execute and inspect the source capability sections bound by profile 88ba6cb8aa2d59ecb11a24211fc5deb5c860e0f478df9768b8598b79410cdeef.",
+        "evidence_class": "deterministic",
+        "id": "source-workflow",
+        "pass_condition": "The thought-leader-content-plan deliverable covers its declared inputs, workflow, output, and acceptance sections without bypassing any gap closure."
+      },
+      {
+        "command_or_method": "A role independent of the builder reviews candidate-bound outputs and applicable gates.",
+        "evidence_class": "release",
+        "id": "candidate-review",
+        "pass_condition": "No FAIL, BLOCKED, or UNKNOWN check remains."
+      }
+    ],
+    "evidence_schema": "enhanced-skill-evidence.schema.json",
+    "self_certification": false,
+    "verdict_owner": "independent-reviewer"
+  }
+}

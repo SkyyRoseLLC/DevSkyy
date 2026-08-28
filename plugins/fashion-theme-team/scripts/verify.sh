@@ -52,6 +52,8 @@ expected_skills=(
   fashion-handoff-contracts
   fashion-release-evidence
   fashion-premium-feature-system
+  fashion-branded-skills
+  product-fidelity-image-edits
 )
 
 for agent_name in "${expected_agents[@]}"; do
@@ -98,6 +100,7 @@ required_brain_files=(
   pages/page-blueprints.md
   pages/page-blueprints.json
   prompts/prompt-stack.md
+  prompts/prompt-orchestration.md
   prompts/few-shot-patterns.md
   prompts/evaluator-rubric.json
   schemas/handoff-contract.schema.json
@@ -139,6 +142,13 @@ required_brain_files=(
   v2/team-run-motion-repair.md
   v2/team-run-release-loop.md
   features/premium-feature-catalog.json
+  branded-skills/README.md
+  branded-skills/enhancement-index.json
+  branded-skills/routes/route-registry.json
+  branded-skills/sources/source-registry.json
+  branded-skills/sources/authority-capture.json
+  branded-skills/schemas/enhanced-skill.schema.json
+  branded-skills/schemas/enhanced-skill-evidence.schema.json
   visuals/skyyrose-brain-overview.png
   visuals/skyyrose-brain-overview-mobile.png
   visuals/skyyrose-v2-page-atlas.png
@@ -181,6 +191,150 @@ for json_file in \
   }
 done
 
+branded_root="${brain_root}/branded-skills"
+test "$(find "${branded_root}/enhanced" -maxdepth 1 -type f -name '*.json' | wc -l | tr -d ' ')" -eq 234 || {
+  printf 'FAIL: expected exactly 234 enhanced branded-skill contracts\n' >&2
+  exit 1
+}
+python3 "${plugin_root}/scripts/generate-branded-skill-enhancements.py" \
+  --source-root "${plugin_root}/vendor/branded-skills" \
+  --output-root "${branded_root}" \
+  --check
+python3 "${branded_root}/sources/validate_source_registry.py" \
+  --registry "${branded_root}/sources/source-registry.json" \
+  --plugin-root "${plugin_root}"
+node "${branded_root}/routes/validate-routes.mjs"
+jq -e '
+  .verdict == "PASS" and .requested_count == 18 and .verified_count == 18 and .blocked_count == 0 and
+  (all(.captures[]; (.requested_url | startswith("https://")) and
+    (.final_url | startswith("https://")) and .status == "VERIFIED_PINNED_PRIMARY_ARTIFACT" and
+    .capture_complete == true and .identity_markers_verified == true and
+    (. as $capture | $capture.requested_host == $capture.final_host and ($capture.host_allowlist | index($capture.final_host) != null)) and
+    (.content_sha256 | test("^[a-f0-9]{64}$"))))
+' "${branded_root}/sources/authority-capture.json" >/dev/null
+python3 - "${branded_root}/sources/authority-capture.json" <<'PY'
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+capture = json.loads(Path(sys.argv[1]).read_text())
+captured_at = datetime.fromisoformat(capture["captured_at"])
+age = datetime.now(timezone.utc) - captured_at.astimezone(timezone.utc)
+if age.total_seconds() < 0 or age.days > 30:
+    raise SystemExit(f"authority capture is outside the 30-day freshness window: {age}")
+if any(item["captured_bytes"] <= 0 or item["captured_bytes"] > 10_000_000 for item in capture["captures"]):
+    raise SystemExit("authority capture size boundary failed")
+print("PASS: pinned authority artifacts are complete and within the 30-day freshness window")
+PY
+python3 - "${branded_root}" <<'PY'
+import json
+import copy
+import hashlib
+import sys
+from pathlib import Path
+from jsonschema import Draft202012Validator
+
+root = Path(sys.argv[1])
+schema = json.loads((root / "schemas/enhanced-skill.schema.json").read_text())
+Draft202012Validator.check_schema(schema)
+evidence_schema = json.loads((root / "schemas/enhanced-skill-evidence.schema.json").read_text())
+Draft202012Validator.check_schema(evidence_schema)
+validator = Draft202012Validator(schema)
+records = sorted((root / "enhanced").glob("*.json"))
+errors = []
+contract_hashes = {}
+index = json.loads((root / "enhancement-index.json").read_text())
+for record in records:
+    parsed = json.loads(record.read_text())
+    errors.extend(f"{record.name}: {error.json_path}: {error.message}" for error in validator.iter_errors(parsed))
+    material = copy.deepcopy(parsed)
+    claimed = material["provenance"].pop("contract_sha256")
+    actual = hashlib.sha256(json.dumps(material, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()).hexdigest()
+    if claimed != actual:
+        errors.append(f"{record.name}: contract SHA-256 does not bind canonical contract content")
+    contract_hashes[f"enhanced/{record.name}"] = claimed
+    gap_ids = {gap["id"] for gap in parsed["gap_analysis"]["gaps"]}
+    closure_ids = {closure["id"] for closure in parsed["gap_analysis"]["closures"]}
+    if len(gap_ids) != len(parsed["gap_analysis"]["gaps"]) or not all(gap["closure_id"] in closure_ids for gap in parsed["gap_analysis"]["gaps"]):
+        errors.append(f"{record.name}: gap-to-closure mapping is incomplete or duplicated")
+    if parsed["lifecycle"]["state"] != "ACTIVE":
+        errors.append(f"{record.name}: release contract is not ACTIVE")
+    if parsed["provenance"]["reviewed_at"] != index.get("reviewed_at") or parsed["provenance"]["reviewed_by"] != index.get("reviewed_by"):
+        errors.append(f"{record.name}: review identity does not match the activation index")
+    if parsed["provenance"]["reviewed_by"] in parsed["provenance"]["owners"]:
+        errors.append(f"{record.name}: activation reviewer is not independent")
+if errors:
+    raise SystemExit("\n".join(errors))
+if index.get("skill_count") != 234 or len(index.get("records", [])) != 234:
+    raise SystemExit("enhancement index does not contain 234 records")
+contract_aggregate = hashlib.sha256("".join(contract_hashes[item["path"]] for item in index["records"]).encode()).hexdigest()
+if index.get("lifecycle_state") != "ACTIVE" or index.get("contract_aggregate_sha256") != contract_aggregate:
+    raise SystemExit("activation index does not bind the 234 active contract hashes")
+print("PASS: 234 enhanced branded-skill contracts satisfy the strict schema")
+PY
+
+active_contract_sha="$(jq -r '.contract_aggregate_sha256' "${branded_root}/enhancement-index.json")"
+jq -e --arg active_contract_sha "${active_contract_sha}" '
+  .state == "COMPLETE" and
+  (.candidate_id | contains("reviewed-input:git:086f3be188eccf221305fefadafc8bdea5002ef4")) and
+  (.candidate_id | contains($active_contract_sha)) and
+  .source_inventory.active_contract_aggregate_sha256 == $active_contract_sha and
+  (all(.phases[]; .state == "COMPLETE")) and
+  (any(.phases[]; .id == "independent-review" and .verdict == "PASS" and (.findings | length) == 0))
+' "${plugin_root}/tasks/branded-skills-enhancement-ledger.json" >/dev/null || {
+  printf 'FAIL: activation ledger is stale or not independently approved\n' >&2
+  exit 1
+}
+
+evidence_tmp="$(mktemp -d)"
+python3 - "${plugin_root}" "${evidence_tmp}" <<'PY'
+import hashlib
+import json
+import sys
+from pathlib import Path
+
+plugin = Path(sys.argv[1])
+target = Path(sys.argv[2])
+contract = json.loads((plugin / "skills/fashion-theme-team/brain/branded-skills/enhanced/brand-architecture.json").read_text())
+artifact_path = "skills/fashion-theme-team/brain/branded-skills/README.md"
+artifact_hash = hashlib.sha256((plugin / artifact_path).read_bytes()).hexdigest()
+artifacts = [{"id": "contract-readme", "path": artifact_path, "sha256": artifact_hash}]
+candidate_material = "\n".join(f"{item['id']}:{item['path']}:{item['sha256']}" for item in artifacts)
+evidence = {
+    "schema_version": "1.0.0", "contract_id": contract["contract_id"],
+    "candidate_id": "portable-fixture", "candidate_sha256": hashlib.sha256(candidate_material.encode()).hexdigest(),
+    "source_sha256": contract["source"]["sha256"], "contract_sha256": contract["provenance"]["contract_sha256"],
+    "builder_ids": ["fixture-builder"], "started_at": "2026-08-16T10:00:00+00:00", "completed_at": "2026-08-16T10:01:00+00:00",
+    "checks": [
+        {"id": "source-hash", "status": "PASS", "method": "fixture", "artifact_refs": ["contract-readme"]},
+        {"id": "contract-schema", "status": "PASS", "method": "fixture", "artifact_refs": ["contract-readme"]},
+        {"id": "source-workflow", "status": "PASS", "method": "fixture", "artifact_refs": ["contract-readme"]},
+        {"id": "candidate-review", "status": "PASS", "method": "fixture", "artifact_refs": ["contract-readme"]},
+    ],
+    "artifacts": artifacts, "unknowns": [],
+    "review": {"independent": True, "reviewer": "fixture-independent-reviewer", "reviewed_at": "2026-08-16T10:02:00+00:00"},
+    "verdict": "PASS",
+}
+(target / "positive.json").write_text(json.dumps(evidence))
+evidence["review"]["reviewer"] = "fixture-builder"
+(target / "negative.json").write_text(json.dumps(evidence))
+PY
+python3 "${plugin_root}/scripts/validate-branded-evidence.py" \
+  --evidence "${evidence_tmp}/positive.json" \
+  --contract "${branded_root}/enhanced/brand-architecture.json" \
+  --schema "${branded_root}/schemas/enhanced-skill-evidence.schema.json" \
+  --plugin-root "${plugin_root}"
+if python3 "${plugin_root}/scripts/validate-branded-evidence.py" \
+  --evidence "${evidence_tmp}/negative.json" \
+  --contract "${branded_root}/enhanced/brand-architecture.json" \
+  --schema "${branded_root}/schemas/enhanced-skill-evidence.schema.json" \
+  --plugin-root "${plugin_root}" >/dev/null 2>&1; then
+  printf 'FAIL: non-independent evidence fixture was accepted\n' >&2
+  exit 1
+fi
+rm -r "${evidence_tmp}"
+
 jq -e . "${brain_root}/examples/contract.json" >/dev/null
 jq -e . "${brain_root}/examples/evidence.json" >/dev/null
 
@@ -193,6 +347,16 @@ jq -e '
   (all(.features[]; (.id | length) > 2 and (.label | length) > 2 and (.owner | length) > 2 and (.contract | length) > 2 and (.acceptance | length) >= 2))
 ' "${brain_root}/features/premium-feature-catalog.json" >/dev/null || {
   printf 'FAIL: premium feature catalog must contain 44 unique executable records\n' >&2
+  exit 1
+}
+jq -e '
+  any(.routes[]; .id == "prompt_orchestration" and
+    (.triggers | index("prompt engineering") != null) and
+    (.triggers | index("prompt chaining") != null) and
+    (.triggers | index("prompt caching") != null) and
+    (.packs | index("prompts/prompt-orchestration.md") != null))
+' "${brain_root}/taxonomy.json" >/dev/null || {
+  printf 'FAIL: prompt engineering/chaining/caching route is missing\n' >&2
   exit 1
 }
 jq -e '.status == "planned-not-implemented" and .brand.id == "skyyrose" and (.pages | length) == 28' "${brain_root}/v2/v2-page-plan.json" >/dev/null
@@ -407,15 +571,49 @@ test "${host_count}" -ge 5 || { printf 'FAIL: research uses fewer than five host
 test "${inline_count}" -ge 10 || { printf 'FAIL: research has fewer than ten inline citations\n' >&2; exit 1; }
 test "${source_count}" -ge 15 || { printf 'FAIL: research has fewer than fifteen sources\n' >&2; exit 1; }
 
-jq -e '.name == "fashion-theme-team"' "${plugin_root}/.codex-plugin/plugin.json" >/dev/null
+jq -e '
+  .name == "fashion-theme-team" and
+  (.interface.capabilities | index("Prompt Engineering") != null) and
+  (.interface.capabilities | index("Typed Prompt Chains") != null) and
+  (.interface.capabilities | index("Prompt Caching") != null) and
+  (.interface.capabilities | index("Native Collection Scene Pipeline") != null) and
+  (.interface.capabilities | index("Exact Product Fidelity Gates") != null)
+' "${plugin_root}/.codex-plugin/plugin.json" >/dev/null
 jq -e '.hooks.SessionStart | length > 0' "${plugin_root}/hooks/hooks.json" >/dev/null
 bash -n "${plugin_root}/hooks/session-start.sh"
 bash -n "${plugin_root}/scripts/preflight.sh"
 bash -n "${plugin_root}/scripts/report.sh"
 bash -n "${plugin_root}/scripts/verify.sh"
+bash -n "${plugin_root}/scripts/verify-portable-package.sh"
+test -s "${plugin_root}/skills/fashion-theme-team/references/distribution-contract.md" || {
+  printf 'FAIL: missing one-team distribution contract\n' >&2
+  exit 1
+}
 python3 -m py_compile \
+  "${plugin_root}/scripts/generate-branded-skill-enhancements.py" \
+  "${plugin_root}/scripts/capture-branded-authorities.py" \
+  "${plugin_root}/scripts/sync-branded-skill-sources.py" \
+  "${plugin_root}/scripts/sync-team-distributions.py" \
+  "${plugin_root}/scripts/validate-branded-evidence.py" \
   "${plugin_root}/runtime/elite_web_builder/run.py" \
   "${plugin_root}/runtime/elite_web_builder/core/verification_loop.py"
+
+product_fidelity_root="${plugin_root}/skills/product-fidelity-image-edits"
+test -s "${product_fidelity_root}/references/native-scene-integration.md" || {
+  printf 'FAIL: embedded native-scene integration contract is missing\n' >&2
+  exit 1
+}
+jq -e '.schema == "product-fidelity-model-registry.v1"' \
+  "${product_fidelity_root}/references/model-capability-registry.json" >/dev/null
+python3 -m py_compile \
+  "${product_fidelity_root}/scripts/fidelity_gate.py" \
+  "${product_fidelity_root}/scripts/model_registry.py" \
+  "${product_fidelity_root}/scripts/test_fidelity_gate.py" \
+  "${product_fidelity_root}/scripts/test_model_registry.py"
+(
+  cd "${product_fidelity_root}"
+  python3 -m unittest discover -s scripts -p 'test_*.py' >/dev/null
+)
 
 test -s "${plugin_root}/runtime/elite_web_builder/INTEGRATION.md" || {
   printf 'FAIL: missing elite runtime integration overlay\n' >&2
@@ -440,7 +638,7 @@ if rg -n 'DEFAULT_PRD|load_dotenv|PASSED or SKIPPED' \
   exit 1
 fi
 
-for required_term in 'PENDING.*READY.*ACTIVE' 'four active' 'candidate ID' 'tool budget' 'SkyyRose' 'garment is the protagonist' 'eyes-on' 'authoritative primary' 'Fashion Theme Brain' 'preview.html' 'contract.json' 'EXPERIMENT'; do
+for required_term in 'PENDING.*READY.*ACTIVE' 'four active' 'candidate ID' 'tool budget' 'SkyyRose' 'garment is the protagonist' 'eyes-on' 'authoritative primary' 'Fashion Theme Brain' 'preview.html' 'contract.json' 'EXPERIMENT' 'One team distribution control'; do
   rg -i "${required_term}" "${plugin_root}/skills/fashion-theme-team" >/dev/null || {
     printf 'FAIL: missing motherbase contract term: %s\n' "${required_term}" >&2
     exit 1
@@ -451,6 +649,10 @@ marker_pattern='\[TO''DO:|FIX''ME|PLACE''HOLDER'
 if rg -n "${marker_pattern}" "${plugin_root}" --glob '*.md' --glob '*.json' --glob '*.yaml' --glob '*.sh' >/dev/null; then
   printf 'FAIL: unresolved placeholder marker found\n' >&2
   exit 1
+fi
+
+if test "${FASHION_SKIP_PORTABLE_CHECK:-0}" != "1"; then
+  bash "${plugin_root}/scripts/verify-portable-package.sh"
 fi
 
 printf 'PASS: fashion-theme-team motherbase integrity\n'

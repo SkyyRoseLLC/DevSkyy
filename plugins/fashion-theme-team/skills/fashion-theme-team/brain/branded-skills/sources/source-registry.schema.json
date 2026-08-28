@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skyyrose.local/schemas/branded-skill-source-registry-v1.json",
+  "title": "Branded skill source registry",
+  "type": "object",
+  "required": ["registry_version", "as_of", "source_root", "source_count", "source_manifest_sha256", "authority_requirements", "sources", "unknowns"],
+  "properties": {
+    "registry_version": {"const": "1.0.0"},
+    "as_of": {"type": "string", "format": "date"},
+    "source_root": {"type": "string"},
+    "source_count": {"const": 234},
+    "source_manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sources": {
+      "type": "array",
+      "minItems": 234,
+      "maxItems": 234,
+      "items": {
+        "type": "object",
+        "required": ["id", "source_path", "sha256", "frontmatter", "classification", "authority_requirement_id", "claim_status"],
+        "properties": {
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "frontmatter": {
+            "type": "object",
+            "required": ["status", "raw_exact", "raw_sha256", "parsed_non_authoritative"]
+          },
+          "classification": {
+            "type": "object",
+            "required": ["bundle_domain", "normalized_domain", "fashion_applicability", "rationale", "use_constraint"],
+            "properties": {
+              "fashion_applicability": {"enum": ["high", "medium", "conditional", "low"]}
+            }
+          }
+        }
+      }
+    },
+    "unknowns": {"type": "array"}
+  }
+}
