@@ -490,7 +490,7 @@
   const heroNav = document.querySelector('.sr-home__hero-nav');
   if (heroVideo) {
     const heroSource = heroVideo.querySelector('source[data-src]');
-    const canPlayHero = !reducedMotion && !saveData && window.matchMedia('(min-width: 48em)').matches;
+    const canPlayHero = !reducedMotion && !saveData;
     const FADE_MS = 500;
     let fadeFrame = 0;
     let fadeStart = 0;
