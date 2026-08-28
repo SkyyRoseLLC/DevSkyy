@@ -1,18 +1,20 @@
 /**
  * Unit Tests for CartManager
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { CartManager, CartItem } from '../cart';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 function createItem(overrides: Partial<CartItem> = {}): CartItem {
@@ -205,14 +207,14 @@ describe('CartManager', () => {
   describe('subscribe', () => {
     it('should call subscriber immediately with current state', () => {
       const cart = CartManager.getInstance();
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       expect(cb).toHaveBeenCalledWith(expect.objectContaining({ items: [] }));
     });
 
     it('should notify on addItem', () => {
       const cart = CartManager.getInstance();
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       cb.mockClear();
       cart.addItem(createItem());
@@ -221,7 +223,7 @@ describe('CartManager', () => {
 
     it('should unsubscribe', () => {
       const cart = CartManager.getInstance();
-      const cb = jest.fn();
+      const cb = vi.fn();
       const unsub = cart.subscribe(cb);
       cb.mockClear();
       unsub();
@@ -233,7 +235,7 @@ describe('CartManager', () => {
       const cart = CartManager.getInstance();
       // First call (immediate) succeeds, second call (from addItem) throws
       let callCount = 0;
-      const badCb = jest.fn().mockImplementation(() => {
+      const badCb = vi.fn().mockImplementation(() => {
         callCount++;
         if (callCount > 1) throw new Error('bad');
       });
@@ -265,8 +267,8 @@ describe('CartManager', () => {
 
     it('should make API request when URL configured', async () => {
       CartManager.resetInstance();
-      const mockResponse = { ok: true, json: jest.fn().mockResolvedValue({}) };
-      global.fetch = jest.fn().mockResolvedValue(mockResponse);
+      const mockResponse = { ok: true, json: vi.fn().mockResolvedValue({}) };
+      global.fetch = vi.fn().mockResolvedValue(mockResponse);
 
       const cart = CartManager.getInstance({ wooCommerceUrl: 'https://shop.test' });
       cart.addItem(createItem());
@@ -277,7 +279,7 @@ describe('CartManager', () => {
 
     it('should throw on failed sync', async () => {
       CartManager.resetInstance();
-      global.fetch = jest.fn().mockResolvedValue({ ok: false, statusText: 'Server Error' });
+      global.fetch = vi.fn().mockResolvedValue({ ok: false, statusText: 'Server Error' });
 
       const cart = CartManager.getInstance({ wooCommerceUrl: 'https://shop.test' });
       await expect(cart.syncWithWooCommerce()).rejects.toThrow('sync failed');

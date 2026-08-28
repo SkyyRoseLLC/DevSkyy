@@ -1,15 +1,15 @@
 /**
  * Unit Tests for CheckoutManager
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { CheckoutManager, createCheckoutManager } from '../checkout';
 import { handlePaymentResult, initializeStripe } from '../stripeIntegration';
 
 // Mock stripeIntegration
-jest.mock('../stripeIntegration', () => ({
-  initializeStripe: jest.fn().mockReturnValue(null),
-  handlePaymentResult: jest.fn().mockReturnValue({ success: true, paymentIntentId: 'pi_test' }),
+vi.mock('../stripeIntegration', () => ({
+  initializeStripe: vi.fn().mockReturnValue(null),
+  handlePaymentResult: vi.fn().mockReturnValue({ success: true, paymentIntentId: 'pi_test' }),
 }));
 
 const mockCart = {
@@ -68,14 +68,14 @@ describe('CheckoutManager', () => {
 
   afterEach(() => {
     global.fetch = originalFetch;
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   describe('createCheckoutSession', () => {
     it('should create a checkout session', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ sessionId: 'sess_123' }),
+        json: vi.fn().mockResolvedValue({ sessionId: 'sess_123' }),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -89,9 +89,9 @@ describe('CheckoutManager', () => {
     });
 
     it('should use apiBaseUrl when configured', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ sessionId: 'sess_123' }),
+        json: vi.fn().mockResolvedValue({ sessionId: 'sess_123' }),
       });
 
       const mgr = new CheckoutManager({ ...defaultConfig, apiBaseUrl: 'https://api.test' });
@@ -104,9 +104,9 @@ describe('CheckoutManager', () => {
     });
 
     it('should handle API error', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: false,
-        json: jest.fn().mockResolvedValue({ error: 'Bad request' }),
+        json: vi.fn().mockResolvedValue({ error: 'Bad request' }),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -116,9 +116,9 @@ describe('CheckoutManager', () => {
     });
 
     it('should handle API error without message', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: false,
-        json: jest.fn().mockResolvedValue({}),
+        json: vi.fn().mockResolvedValue({}),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -128,8 +128,8 @@ describe('CheckoutManager', () => {
     });
 
     it('should handle network error', async () => {
-      global.fetch = jest.fn().mockRejectedValue(new Error('Network'));
-      jest.spyOn(console, 'error').mockImplementation();
+      global.fetch = vi.fn().mockRejectedValue(new Error('Network'));
+      vi.spyOn(console, 'error').mockImplementation();
 
       const mgr = new CheckoutManager(defaultConfig);
       const result = await mgr.createCheckoutSession(mockCart);
@@ -145,10 +145,10 @@ describe('CheckoutManager', () => {
     });
 
     it('should redirect when stripe is initialized', async () => {
-      const mockRedirect = jest.fn().mockResolvedValue({});
+      const mockRedirect = vi.fn().mockResolvedValue({});
       initializeStripe.mockReturnValue({
         redirectToCheckout: mockRedirect,
-        confirmPayment: jest.fn(),
+        confirmPayment: vi.fn(),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -158,22 +158,22 @@ describe('CheckoutManager', () => {
     });
 
     it('should throw when redirect returns error', async () => {
-      const mockRedirect = jest.fn().mockResolvedValue({ error: { message: 'Session expired' } });
+      const mockRedirect = vi.fn().mockResolvedValue({ error: { message: 'Session expired' } });
       initializeStripe.mockReturnValue({
         redirectToCheckout: mockRedirect,
-        confirmPayment: jest.fn(),
+        confirmPayment: vi.fn(),
       });
 
-      jest.spyOn(console, 'error').mockImplementation();
+      vi.spyOn(console, 'error').mockImplementation();
       const mgr = new CheckoutManager(defaultConfig);
       await expect(mgr.redirectToCheckout('sess_123')).rejects.toThrow('Session expired');
     });
 
     it('should save Three.js state before redirect', async () => {
-      const mockRedirect = jest.fn().mockResolvedValue({});
+      const mockRedirect = vi.fn().mockResolvedValue({});
       initializeStripe.mockReturnValue({
         redirectToCheckout: mockRedirect,
-        confirmPayment: jest.fn(),
+        confirmPayment: vi.fn(),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -196,15 +196,15 @@ describe('CheckoutManager', () => {
     });
 
     it('should process payment successfully', async () => {
-      const mockConfirmPayment = jest.fn().mockResolvedValue({
+      const mockConfirmPayment = vi.fn().mockResolvedValue({
         paymentIntent: { id: 'pi_success', status: 'succeeded' },
       });
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
       handlePaymentResult.mockReturnValue({ success: true, paymentIntentId: 'pi_success' });
 
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ orderId: 'order-1' }),
+        json: vi.fn().mockResolvedValue({ orderId: 'order-1' }),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -215,15 +215,15 @@ describe('CheckoutManager', () => {
     });
 
     it('should process payment with billing address and phone', async () => {
-      const mockConfirmPayment = jest.fn().mockResolvedValue({
+      const mockConfirmPayment = vi.fn().mockResolvedValue({
         paymentIntent: { id: 'pi_success', status: 'succeeded' },
       });
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
       handlePaymentResult.mockReturnValue({ success: true, paymentIntentId: 'pi_success' });
 
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ orderId: 'order-2' }),
+        json: vi.fn().mockResolvedValue({ orderId: 'order-2' }),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -238,16 +238,16 @@ describe('CheckoutManager', () => {
     });
 
     it('should sync to WooCommerce when enabled', async () => {
-      const mockConfirmPayment = jest.fn().mockResolvedValue({
+      const mockConfirmPayment = vi.fn().mockResolvedValue({
         paymentIntent: { id: 'pi_wc', status: 'succeeded' },
       });
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
       handlePaymentResult.mockReturnValue({ success: true, paymentIntentId: 'pi_wc' });
 
-      global.fetch = jest
+      global.fetch = vi
         .fn()
-        .mockResolvedValueOnce({ ok: true, json: jest.fn().mockResolvedValue({ id: 789 }) }) // WC order
-        .mockResolvedValueOnce({ ok: true, json: jest.fn().mockResolvedValue({ orderId: 'order-wc' }) }); // Order record
+        .mockResolvedValueOnce({ ok: true, json: vi.fn().mockResolvedValue({ id: 789 }) }) // WC order
+        .mockResolvedValueOnce({ ok: true, json: vi.fn().mockResolvedValue({ orderId: 'order-wc' }) }); // Order record
 
       const mgr = new CheckoutManager({ ...defaultConfig, enableWooCommerceSync: true });
       const result = await mgr.processPayment({}, mockCart, mockCustomerNoBilling);
@@ -257,7 +257,7 @@ describe('CheckoutManager', () => {
     });
 
     it('should return error when payment fails', async () => {
-      const mockConfirmPayment = jest.fn().mockResolvedValue({
+      const mockConfirmPayment = vi.fn().mockResolvedValue({
         error: { message: 'Card declined' },
       });
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
@@ -271,7 +271,7 @@ describe('CheckoutManager', () => {
     });
 
     it('should return default error when payment result has no error message', async () => {
-      const mockConfirmPayment = jest.fn().mockResolvedValue({});
+      const mockConfirmPayment = vi.fn().mockResolvedValue({});
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
       handlePaymentResult.mockReturnValue({ success: false });
 
@@ -283,10 +283,10 @@ describe('CheckoutManager', () => {
     });
 
     it('should handle exception during payment', async () => {
-      const mockConfirmPayment = jest.fn().mockRejectedValue(new Error('Network timeout'));
+      const mockConfirmPayment = vi.fn().mockRejectedValue(new Error('Network timeout'));
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
 
-      jest.spyOn(console, 'error').mockImplementation();
+      vi.spyOn(console, 'error').mockImplementation();
       const mgr = new CheckoutManager(defaultConfig);
       const result = await mgr.processPayment({}, mockCart, mockCustomerNoBilling);
 
@@ -295,10 +295,10 @@ describe('CheckoutManager', () => {
     });
 
     it('should handle non-Error exception during payment', async () => {
-      const mockConfirmPayment = jest.fn().mockRejectedValue('string error');
+      const mockConfirmPayment = vi.fn().mockRejectedValue('string error');
       initializeStripe.mockReturnValue({ confirmPayment: mockConfirmPayment });
 
-      jest.spyOn(console, 'error').mockImplementation();
+      vi.spyOn(console, 'error').mockImplementation();
       const mgr = new CheckoutManager(defaultConfig);
       const result = await mgr.processPayment({}, mockCart, mockCustomerNoBilling);
 
@@ -309,9 +309,9 @@ describe('CheckoutManager', () => {
 
   describe('createWooCommerceOrder', () => {
     it('should create WooCommerce order', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ id: 456 }),
+        json: vi.fn().mockResolvedValue({ id: 456 }),
       });
 
       const mgr = new CheckoutManager({ ...defaultConfig, apiBaseUrl: 'https://api.test' });
@@ -325,8 +325,8 @@ describe('CheckoutManager', () => {
     });
 
     it('should throw on API failure', async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: false });
-      jest.spyOn(console, 'error').mockImplementation();
+      global.fetch = vi.fn().mockResolvedValue({ ok: false });
+      vi.spyOn(console, 'error').mockImplementation();
 
       const mgr = new CheckoutManager(defaultConfig);
       await expect(mgr.createWooCommerceOrder(mockCart, 'pi_test', mockCustomer)).rejects.toThrow(
@@ -335,17 +335,17 @@ describe('CheckoutManager', () => {
     });
 
     it('should throw on network error', async () => {
-      global.fetch = jest.fn().mockRejectedValue(new Error('Connection refused'));
-      jest.spyOn(console, 'error').mockImplementation();
+      global.fetch = vi.fn().mockRejectedValue(new Error('Connection refused'));
+      vi.spyOn(console, 'error').mockImplementation();
 
       const mgr = new CheckoutManager(defaultConfig);
       await expect(mgr.createWooCommerceOrder(mockCart, 'pi_test', mockCustomer)).rejects.toThrow('Connection refused');
     });
 
     it('should include stripe payment ID and billing/shipping data', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ id: 100 }),
+        json: vi.fn().mockResolvedValue({ id: 100 }),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -365,8 +365,8 @@ describe('CheckoutManager', () => {
     it('should dispatch event when state exists', () => {
       const state = { timestamp: Date.now() };
       sessionStorage.setItem('threejs_state', JSON.stringify(state));
-      const spy = jest.spyOn(window, 'dispatchEvent');
-      jest.spyOn(console, 'debug').mockImplementation();
+      const spy = vi.spyOn(window, 'dispatchEvent');
+      vi.spyOn(console, 'debug').mockImplementation();
 
       const mgr = new CheckoutManager(defaultConfig);
       mgr.restoreThreeJsState();
@@ -377,7 +377,7 @@ describe('CheckoutManager', () => {
 
     it('should do nothing when no saved state', () => {
       sessionStorage.clear();
-      const spy = jest.spyOn(window, 'dispatchEvent');
+      const spy = vi.spyOn(window, 'dispatchEvent');
 
       const mgr = new CheckoutManager(defaultConfig);
       mgr.restoreThreeJsState();
@@ -387,7 +387,7 @@ describe('CheckoutManager', () => {
 
     it('should handle corrupt state gracefully', () => {
       sessionStorage.setItem('threejs_state', 'not json');
-      jest.spyOn(console, 'error').mockImplementation();
+      vi.spyOn(console, 'error').mockImplementation();
 
       const mgr = new CheckoutManager(defaultConfig);
       expect(() => mgr.restoreThreeJsState()).not.toThrow();
@@ -396,7 +396,7 @@ describe('CheckoutManager', () => {
 
   describe('showSuccessAnimation', () => {
     it('should dispatch checkout:success event', () => {
-      const spy = jest.spyOn(window, 'dispatchEvent');
+      const spy = vi.spyOn(window, 'dispatchEvent');
 
       const mgr = new CheckoutManager(defaultConfig);
       mgr.showSuccessAnimation();
@@ -407,9 +407,9 @@ describe('CheckoutManager', () => {
 
   describe('getSessionStatus', () => {
     it('should fetch session status', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ status: 'complete', payment_status: 'paid' }),
+        json: vi.fn().mockResolvedValue({ status: 'complete', payment_status: 'paid' }),
       });
 
       const mgr = new CheckoutManager(defaultConfig);
@@ -420,8 +420,8 @@ describe('CheckoutManager', () => {
     });
 
     it('should handle fetch error', async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: false });
-      jest.spyOn(console, 'error').mockImplementation();
+      global.fetch = vi.fn().mockResolvedValue({ ok: false });
+      vi.spyOn(console, 'error').mockImplementation();
 
       const mgr = new CheckoutManager(defaultConfig);
       const result = await mgr.getSessionStatus('sess_123');
@@ -431,8 +431,8 @@ describe('CheckoutManager', () => {
     });
 
     it('should handle network error', async () => {
-      global.fetch = jest.fn().mockRejectedValue(new Error('Timeout'));
-      jest.spyOn(console, 'error').mockImplementation();
+      global.fetch = vi.fn().mockRejectedValue(new Error('Timeout'));
+      vi.spyOn(console, 'error').mockImplementation();
 
       const mgr = new CheckoutManager(defaultConfig);
       const result = await mgr.getSessionStatus('sess_123');

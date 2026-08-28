@@ -1,0 +1,36 @@
+{
+  "evidence_id": "branded-skills-routing-validation-attempt-1",
+  "phase": "taxonomy-routing",
+  "attempt": 1,
+  "candidate": "worktree:codex/branded-skills-v1:uncommitted",
+  "command": "node skills/fashion-theme-team/brain/branded-skills/routes/validate-routes.mjs",
+  "exit_code": 0,
+  "observed": {
+    "verdict": "PASS_PLUGIN_ROUTE_INTEGRITY_ONLY",
+    "route_count": 234,
+    "domain_count": 7,
+    "unique_ids": 234,
+    "aggregate_sha256": "c87a1333d5d285bde9ac8a5d20458456a155270a4f080976971234c5185130d8"
+  },
+  "scope": [
+    "route shape",
+    "stable ID uniqueness",
+    "source file existence and SHA-256 freshness",
+    "seven-domain coverage",
+    "fail-closed source authentication",
+    "filename identity prohibition"
+  ],
+  "not_proven": [
+    "routing precision on real work orders",
+    "source skill quality",
+    "brand or product claims",
+    "visual quality or approval",
+    "commerce behavior",
+    "operational or release readiness"
+  ],
+  "unknowns": [
+    "target audience and journey state until supplied",
+    "rights, consent, catalog, policy, inventory, imagery, and publication state until verified",
+    "real-task retrieval precision until independently evaluated"
+  ]
+}

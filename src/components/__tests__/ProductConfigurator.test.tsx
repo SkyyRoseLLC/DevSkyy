@@ -1,6 +1,6 @@
 /**
  * Unit Tests for ProductConfigurator
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import React from 'react';
@@ -8,21 +8,23 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { ProductConfigurator } from '../ProductConfigurator';
 import * as THREE from 'three';
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // Mock materialSwapper
-jest.mock('../../lib/materialSwapper', () => ({
+vi.mock('../../lib/materialSwapper', () => ({
   materialSwapper: {
-    setColor: jest.fn(),
-    saveOriginal: jest.fn(),
-    resetToOriginal: jest.fn(),
+    setColor: vi.fn(),
+    saveOriginal: vi.fn(),
+    resetToOriginal: vi.fn(),
   },
 }));
 
@@ -50,8 +52,8 @@ const mockMesh = {
 };
 
 describe('ProductConfigurator', () => {
-  const mockConfigChange = jest.fn();
-  const mockAddToCart = jest.fn();
+  const mockConfigChange = vi.fn();
+  const mockAddToCart = vi.fn();
 
   const defaultProps = {
     product: mockProduct,
@@ -61,7 +63,7 @@ describe('ProductConfigurator', () => {
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('should render product name', () => {

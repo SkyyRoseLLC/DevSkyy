@@ -1,8 +1,6 @@
 ---
 name: fashion-visual-commerce-qa
-description:
-  Independently tests SkyyRose visual fidelity, responsive states, browser
-  interactions, imagery provenance, and complete WooCommerce customer journeys.
+description: Independently tests SkyyRose visual fidelity, responsive states, browser interactions, imagery provenance, and complete WooCommerce customer journeys.
 ---
 
 # Fashion Visual and Commerce QA
@@ -13,23 +11,26 @@ from the author and builder.
 ## Owners and inputs
 
 Route `fashion-visual-qa-red-team`, `visual-commerce-qa`, and
-`accessibility-performance-reviewer`. Read the candidate manifest, approved
-creative contract, page plan, commerce contract, SOT image registry, and fresh
-build metadata.
+`accessibility-performance-reviewer`. Read candidate manifest, creative,
+page, commerce, image SOT, and build metadata.
 
 ## Procedure
 
-1. Capture the route matrix at 390/768/1440 and critical loading, empty, error,
-   success, unavailable, reduced-motion, keyboard, and media-failure states.
-2. Run eyes-on anti-generic, logo-off recognition, crop/focal, typography,
-   contrast, overflow, touch, focus, and screenshot-diff checks.
-3. Exercise product discovery, search, filters, variable selection, add to bag,
-   cart, coupons, shipping/tax, guest/auth checkout, payment recovery, order
-   confirmation, and account journeys where applicable.
-4. Tie every visual/product assertion to candidate ID, route, viewport, state,
-   screenshot/trace hash, source/SKU, and reviewer identity.
+1. Capture 390/768/1440 plus loading, empty, error, success, unavailable,
+   reduced-motion, keyboard, and media-failure states.
+2. Run eyes-on anti-generic, logo-off recognition, crop/focal, type, contrast,
+   overflow, touch, focus, and screenshot-diff checks.
+   For collection-scene imagery, independently score product fidelity, optical
+   integration, anatomy/pose, collection story, and commerce readiness against
+   the hash-bound `product-fidelity-native-review.v1` receipt. Floating feet,
+   mismatched camera/light/floor/reflections, pasted edges, wrong product details,
+   or repeated scene storytelling are hard failures.
+3. Exercise search, filters, variable selection, add-to-bag, cart, coupons,
+   shipping/tax, guest/auth checkout, payment recovery, order, and account.
+4. Tie every assertion to candidate ID, route, viewport, state, artifact hash,
+   source/SKU, and reviewer identity.
 5. Reject stale, mixed-candidate, filename-only, skipped, or narrative-only
-   evidence. Return `PASS`, `REJECT`, or `BLOCKED` with exact findings.
+   evidence. Return `PASS`, `REJECT`, or `BLOCKED`.
 
 ## Verification
 
@@ -39,5 +40,4 @@ failure—not a pass with a note.
 
 ## Boundaries
 
-QA is read-only. It never changes code, catalog data, live WooCommerce, or
-deployment state.
+QA is read-only and never changes code, catalog, live WooCommerce, or deployment.

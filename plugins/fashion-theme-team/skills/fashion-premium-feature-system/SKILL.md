@@ -1,9 +1,6 @@
 ---
 name: fashion-premium-feature-system
-description:
-  Executes and governs every premium storefront feature in the SkyyRose feature
-  catalog, from landing-page immersion and merchandising controls through
-  WooCommerce states, accessibility, security, performance, and release proof.
+description: Executes and governs every premium storefront feature in the SkyyRose feature catalog, from landing-page immersion and merchandising controls through WooCommerce states, accessibility, security, performance, and release proof.
 ---
 
 # Fashion Premium Feature System
@@ -49,8 +46,8 @@ same candidate hash. Missing or stale proof is `UNVERIFIED` or `BLOCKED`.
    verify nonces/capabilities, use prepared queries, constrain remote URLs,
    validate uploads, obtain consent for email/waitlist, and never trust client
    price, stock, preorder, shipping, or countdown state.
-6. Budget every interaction for LCP/CLS/INP, route JavaScript, media bytes, font
-   loading, GPU/CPU work, battery, and 390/768/1440 behavior. Respect
+6. Budget every interaction for LCP/CLS/INP, route JavaScript, media bytes,
+   font loading, GPU/CPU work, battery, and 390/768/1440 behavior. Respect
    `prefers-reduced-motion`, keyboard/touch parity, RTL, zoom, forced colors,
    and localization.
 7. Test real and degraded journeys: first visit, returning visitor, slow/offline

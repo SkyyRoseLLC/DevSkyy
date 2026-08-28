@@ -1,22 +1,24 @@
 /**
  * Unit Tests for ThreeJSService
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { ThreeJSService } from '../ThreeJSService';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // Mock config
-jest.mock('../../config/index', () => ({
+vi.mock('../../config/index', () => ({
   threejsConfig: {
     enableWebGL2: true,
     enableShadows: true,
@@ -28,19 +30,19 @@ jest.mock('../../config/index', () => ({
 
 // Mock Three.js
 const mockScene = {
-  add: jest.fn(),
-  remove: jest.fn(),
-  clear: jest.fn(),
+  add: vi.fn(),
+  remove: vi.fn(),
+  clear: vi.fn(),
   background: null,
   fog: null,
   children: [],
 };
 
 const mockRenderer = {
-  setSize: jest.fn(),
-  setPixelRatio: jest.fn(),
-  render: jest.fn(),
-  dispose: jest.fn(),
+  setSize: vi.fn(),
+  setPixelRatio: vi.fn(),
+  render: vi.fn(),
+  dispose: vi.fn(),
   domElement: document.createElement('canvas'),
   shadowMap: { enabled: false, type: 0 },
   info: {
@@ -51,50 +53,64 @@ const mockRenderer = {
 };
 
 const mockCamera = {
-  position: { set: jest.fn(), x: 0, y: 0, z: 5 },
+  position: { set: vi.fn(), x: 0, y: 0, z: 5 },
   aspect: 1,
-  updateProjectionMatrix: jest.fn(),
+  updateProjectionMatrix: vi.fn(),
 };
 
-jest.mock('three', () => ({
-  Scene: jest.fn(() => mockScene),
-  WebGLRenderer: jest.fn(() => mockRenderer),
-  PerspectiveCamera: jest.fn(() => mockCamera),
-  Color: jest.fn(),
-  Fog: jest.fn(),
-  AmbientLight: jest.fn(() => ({ position: { set: jest.fn() } })),
-  DirectionalLight: jest.fn(() => ({
-    position: { set: jest.fn() },
-    castShadow: false,
-    shadow: { mapSize: { width: 0, height: 0 } },
-  })),
-  BoxGeometry: jest.fn(),
-  SphereGeometry: jest.fn(),
-  PlaneGeometry: jest.fn(),
-  MeshLambertMaterial: jest.fn(() => ({ dispose: jest.fn() })),
-  Mesh: jest.fn(() => ({
-    position: { set: jest.fn() },
-    rotation: { x: 0 },
-    castShadow: false,
-    receiveShadow: false,
-  })),
+vi.mock('three', () => ({
+  Scene: vi.fn(function Scene() {
+    return mockScene;
+  }),
+  WebGLRenderer: vi.fn(function WebGLRenderer() {
+    return mockRenderer;
+  }),
+  PerspectiveCamera: vi.fn(function PerspectiveCamera() {
+    return mockCamera;
+  }),
+  Color: vi.fn(function Color() {}),
+  Fog: vi.fn(function Fog() {}),
+  AmbientLight: vi.fn(function AmbientLight() {
+    return { position: { set: vi.fn() } };
+  }),
+  DirectionalLight: vi.fn(function DirectionalLight() {
+    return {
+      position: { set: vi.fn() },
+      castShadow: false,
+      shadow: { mapSize: { width: 0, height: 0 } },
+    };
+  }),
+  BoxGeometry: vi.fn(function BoxGeometry() {}),
+  SphereGeometry: vi.fn(function SphereGeometry() {}),
+  PlaneGeometry: vi.fn(function PlaneGeometry() {}),
+  MeshLambertMaterial: vi.fn(function MeshLambertMaterial() {
+    return { dispose: vi.fn() };
+  }),
+  Mesh: vi.fn(function Mesh() {
+    return {
+      position: { set: vi.fn() },
+      rotation: { x: 0 },
+      castShadow: false,
+      receiveShadow: false,
+    };
+  }),
   PCFSoftShadowMap: 2,
 }));
 
 // Mock requestAnimationFrame
 let animationCallback: FrameRequestCallback | null = null;
-global.requestAnimationFrame = jest.fn((cb: FrameRequestCallback) => {
+global.requestAnimationFrame = vi.fn((cb: FrameRequestCallback) => {
   animationCallback = cb;
   return 1;
 });
-global.cancelAnimationFrame = jest.fn();
+global.cancelAnimationFrame = vi.fn();
 
 describe('ThreeJSService', () => {
   let service: ThreeJSService;
   let container: HTMLElement;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     service = new ThreeJSService();
     container = document.createElement('div');
     Object.defineProperty(container, 'clientWidth', { value: 800 });
@@ -155,10 +171,10 @@ describe('ThreeJSService', () => {
       expect(mockCamera.position.set).toHaveBeenCalledWith(1, 2, 3);
     });
 
-    it('should handle initialization errors', () => {
-      const THREE = require('three');
+    it('should handle initialization errors', async () => {
+      const THREE = await import('three');
       const originalScene = THREE.Scene;
-      THREE.Scene = jest.fn(() => {
+      THREE.Scene = vi.fn(function Scene() {
         throw new Error('Scene initialization failed');
       });
 
@@ -247,7 +263,7 @@ describe('ThreeJSService', () => {
 
     it('should call animation callback if provided', () => {
       service.initializeScene(container);
-      const callback = jest.fn();
+      const callback = vi.fn();
       service.startAnimation(callback);
 
       // Simulate animation frame

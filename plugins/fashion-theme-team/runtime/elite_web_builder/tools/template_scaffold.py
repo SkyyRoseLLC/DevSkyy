@@ -177,11 +177,10 @@ def _wp_single(name: str, slug: str, options: dict[str, Any]) -> tuple[ScaffoldF
 
 def _wp_template_part(name: str, slug: str, options: dict[str, Any]) -> tuple[ScaffoldFile, ...]:
     """Generate WordPress FSE template part."""
-    area = options.get("area", "uncategorized")
     html_content = (
         f'<!-- wp:group {{"layout":{{"type":"constrained"}}}} -->\n'
         f'<div class="wp-block-group">\n'
-        f"  <!-- Add {name} content here ({area}) -->\n"
+        f"  <!-- Add {name} content here -->\n"
         f"</div>\n"
         f"<!-- /wp:group -->\n"
     )
@@ -628,25 +627,46 @@ def list_templates() -> dict[str, list[dict[str, str]]]:
     """
     return {
         "wordpress": [
-            {"type": "page", "description": "FSE page template with block pattern JSON"},
+            {
+                "type": "page",
+                "description": "FSE page template with block pattern JSON",
+            },
             {"type": "archive", "description": "FSE archive template with query loop"},
             {"type": "single", "description": "FSE single post/CPT template"},
             {
                 "type": "template-part",
                 "description": "Reusable template part (header, footer, sidebar)",
             },
-            {"type": "block-pattern", "description": "Block pattern with PHP registration"},
+            {
+                "type": "block-pattern",
+                "description": "Block pattern with PHP registration",
+            },
         ],
         "shopify": [
             {"type": "page", "description": "Online Store 2.0 page JSON template"},
-            {"type": "collection", "description": "Online Store 2.0 collection JSON template"},
-            {"type": "product", "description": "Online Store 2.0 product JSON template"},
+            {
+                "type": "collection",
+                "description": "Online Store 2.0 collection JSON template",
+            },
+            {
+                "type": "product",
+                "description": "Online Store 2.0 product JSON template",
+            },
             {"type": "section", "description": "Liquid section with schema block"},
             {"type": "snippet", "description": "Reusable Liquid snippet"},
         ],
         "component": [
-            {"type": "react", "description": "React TSX component with test and CSS module"},
-            {"type": "vue", "description": "Vue SFC component with test and CSS module"},
-            {"type": "vanilla", "description": "Vanilla JS/TS component with test and CSS"},
+            {
+                "type": "react",
+                "description": "React TSX component with test and CSS module",
+            },
+            {
+                "type": "vue",
+                "description": "Vue SFC component with test and CSS module",
+            },
+            {
+                "type": "vanilla",
+                "description": "Vanilla JS/TS component with test and CSS",
+            },
         ],
     }

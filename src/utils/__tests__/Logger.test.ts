@@ -1,22 +1,22 @@
 /**
  * Unit Tests for Logger Utility
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { Logger, createLogger, logger } from '../Logger';
 
 // Mock config
-jest.mock('../../config/index', () => ({
+vi.mock('../../config/index', () => ({
   monitoringConfig: {
     logLevel: 'info',
   },
 }));
 
 describe('Logger', () => {
-  let consoleSpy: jest.SpyInstance;
+  let consoleSpy: vi.SpyInstance;
 
   beforeEach(() => {
-    consoleSpy = jest.spyOn(console, 'log').mockImplementation();
+    consoleSpy = vi.spyOn(console, 'log').mockImplementation();
   });
 
   afterEach(() => {
@@ -51,15 +51,15 @@ describe('Logger', () => {
       expect(consoleSpy).not.toHaveBeenCalled();
     });
 
-    it('should fall back to info level when config has no logLevel', () => {
+    it('should fall back to info level when config has no logLevel', async () => {
       // Test the fallback when monitoringConfig.logLevel is empty
-      jest.resetModules();
-      jest.doMock('../../config/index', () => ({
+      vi.resetModules();
+      vi.doMock('../../config/index', () => ({
         monitoringConfig: {
           logLevel: '', // Empty string - falsy
         },
       }));
-      const { Logger: LoggerNoConfig } = require('../Logger');
+      const { Logger: LoggerNoConfig } = await import('../Logger');
       const log = new LoggerNoConfig('TestService');
       expect(log.getLevel()).toBe('info');
     });
@@ -261,7 +261,7 @@ describe('Logger', () => {
 
   describe('log events', () => {
     it('should dispatch custom event when window is available', () => {
-      const eventListener = jest.fn();
+      const eventListener = vi.fn();
       window.addEventListener('devskyyLog', eventListener);
 
       const log = new Logger('TestService');
@@ -351,7 +351,7 @@ describe('Logger', () => {
 
   describe('window event dispatch', () => {
     it('should dispatch devskyyLog event', () => {
-      const eventHandler = jest.fn();
+      const eventHandler = vi.fn();
       window.addEventListener('devskyyLog', eventHandler);
 
       const log = new Logger('TestService');

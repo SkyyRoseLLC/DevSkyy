@@ -159,7 +159,10 @@ class TestGoogleAdapter:
         }
 
         with patch.object(
-            adapter, "_call_gemini_rest", new_callable=AsyncMock, return_value=mock_response
+            adapter,
+            "_call_gemini_rest",
+            new_callable=AsyncMock,
+            return_value=mock_response,
         ):
             result = await adapter.call(
                 model="gemini-3-pro-preview",
@@ -181,7 +184,10 @@ class TestGoogleAdapter:
         mock_response = {"candidates": []}
 
         with patch.object(
-            adapter, "_call_gemini_rest", new_callable=AsyncMock, return_value=mock_response
+            adapter,
+            "_call_gemini_rest",
+            new_callable=AsyncMock,
+            return_value=mock_response,
         ):
             with pytest.raises(ValueError, match="empty"):
                 await adapter.call(

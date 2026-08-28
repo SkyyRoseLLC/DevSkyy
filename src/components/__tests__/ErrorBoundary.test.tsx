@@ -1,6 +1,6 @@
 /**
  * Unit Tests for ErrorBoundary
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import React from 'react';
@@ -10,7 +10,7 @@ import { ErrorBoundary, ErrorFallback, withErrorBoundary } from '../ErrorBoundar
 // Suppress console.error from error boundaries
 const originalConsoleError = console.error;
 beforeAll(() => {
-  console.error = jest.fn();
+  console.error = vi.fn();
 });
 afterAll(() => {
   console.error = originalConsoleError;
@@ -23,7 +23,7 @@ function ThrowingComponent({ shouldThrow }) {
 }
 
 describe('ErrorFallback', () => {
-  const mockReset = jest.fn();
+  const mockReset = vi.fn();
   const testError = new Error('Something went wrong');
 
   it('should render error message', () => {
@@ -72,7 +72,7 @@ describe('ErrorBoundary', () => {
   });
 
   it('should call onError callback', () => {
-    const onError = jest.fn();
+    const onError = vi.fn();
     render(
       <ErrorBoundary onError={onError}>
         <ThrowingComponent shouldThrow={true} />
