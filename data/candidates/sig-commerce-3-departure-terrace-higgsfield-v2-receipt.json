@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "scene_id": "SIG-COMMERCE-3",
+  "candidate_id": "SIG-COMMERCE-3-departure-terrace-protected-composite-v2",
+  "created_at": "2026-08-29T07:36:52Z",
+  "git_branch": "codex/higgsfield-scroll-world-scenes",
+  "status": "CANDIDATE_QUARANTINED_PENDING_FOUNDER_VISUAL_REVIEW",
+  "provider": {
+    "name": "higgsfield",
+    "model": "gpt_image_2",
+    "job_id": "3c47be48-20b3-42a3-a196-f071c50ca63c",
+    "resolution": "2k",
+    "aspect_ratio": "16:9",
+    "workspace_id": "b9928f7d-3821-49a1-a40e-04c97f1bf6b8"
+  },
+  "generation_scope": {
+    "route": "environment_only_then_protected_composite",
+    "founder_paid_generation_authorized": true,
+    "product_redraw_allowed": false,
+    "runtime_promotion_allowed": false,
+    "deployment_allowed": false
+  },
+  "source_authorities": [
+    {
+      "role": "exact_signature_hero_look",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+      "sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8"
+    },
+    {
+      "role": "oakland_bay_bridge_scene_authority",
+      "path": "skyyrose/assets/scenes/signature/signature-oakland-waterfront-bay-bridge-day/signature-oakland-waterfront-bay-bridge-day-v2.png",
+      "sha256": "d3a7aab2a92e4201a21d44bc592ad357dda93480c9578e7fbcc07a8d421c6e15"
+    },
+    {
+      "role": "protected_mixed_cast_rgba",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/authority-stage/protected-input/sig-commerce-3-mixed-cast-v1-alpha.png",
+      "sha256": "a4be287cf6051ed50aa9f103f4ae3be0561d7a82259f1e6fb665973573ba352b"
+    },
+    {
+      "role": "exact_signature_font_sculpture",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png",
+      "sha256": "e259c246a320b8220044da915c3b6fa89ecbbe7ab4a74eb80bafebe668d0e274"
+    },
+    {
+      "role": "exact_sr_rose_graphic",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png",
+      "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc"
+    }
+  ],
+  "outputs": [
+    {
+      "role": "environment_plate",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/higgsfield-candidates/SIG-COMMERCE-3-signature-hero-bay-environment-higgsfield-v2.png",
+      "sha256": "3ee5539d06e7ac7657c1317c2a7bcf06b6443569e449e706a5db8de3bd4e6ff7",
+      "dimensions": "2688x1520"
+    },
+    {
+      "role": "protected_scene_composite_candidate",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/higgsfield-candidates/SIG-COMMERCE-3-departure-terrace-protected-composite-v2.png",
+      "sha256": "13d7e58fa68ad3e698ab435823f501141630caca4b4edfaf4a93509790027a51",
+      "dimensions": "2688x1520"
+    }
+  ],
+  "protected_pixel_audit": {
+    "placement": {
+      "x": 801,
+      "y": 72,
+      "scale": "1:1"
+    },
+    "fully_opaque_source_pixels_checked": 99608,
+    "changed_fully_opaque_pixels": 0,
+    "result": "PASS_EXACT_MATCH"
+  },
+  "visual_review_notes": [
+    "Exact Signature hero material and night-grade language is retained in the environment direction.",
+    "The distant landmark is the Oakland Bay Bridge authority, not the Golden Gate Bridge.",
+    "The cast, garments, font sculpture, and SR-rose graphic were not redrawn by the provider.",
+    "Native optical integration, founder visual approval, runtime wiring, animation, and deployment remain separate gates."
+  ]
+}
