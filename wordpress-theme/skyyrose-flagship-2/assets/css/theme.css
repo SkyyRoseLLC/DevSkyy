@@ -476,7 +476,8 @@ html.sr2-motion-ready .sr2-image-reveal:not(.is-seen) img { transform: scale(1.0
 .woocommerce .woocommerce-ordering select { padding: var(--sr2-space-3); border: 1px solid var(--sr2-line); background: var(--sr2-card); color: var(--sr2-ink); }
 .woocommerce ul.products { display: grid; max-width: var(--sr2-wide); grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.2rem, 2.5vw, 2.8rem); margin: var(--sr2-space-16) auto 0; padding: 0; }
 .woocommerce ul.products::before, .woocommerce ul.products::after { display: none; }
-.woocommerce ul.products li.product { width: auto; float: none; margin: 0; }
+.woocommerce ul.products li.product,
+.woocommerce ul.products.columns-3 li.product { width: auto; float: none; margin: 0; }
 .woocommerce ul.products li.product a img { margin: 0; aspect-ratio: 3 / 4; object-fit: cover; background: var(--sr2-card); }
 .woocommerce ul.products li.product .woocommerce-loop-product__title { font-family: var(--sr2-font-display); font-size: 1.3rem; letter-spacing: -0.035em; }
 .woocommerce ul.products li.product .price { color: var(--sr2-muted); }

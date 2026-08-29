@@ -223,6 +223,12 @@ if ! rg -q 'data-purchase-mode=' "$THEME_DIR/template-parts/commerce/product-car
 	exit 1
 fi
 
+if ! rg -Fq '.woocommerce ul.products.columns-3 li.product {' "$THEME_DIR/assets/css/theme.css" || \
+	! rg -Fq 'width: auto; float: none; margin: 0;' "$THEME_DIR/assets/css/theme.css"; then
+	echo "FAIL V2 shop grid must override WooCommerce legacy percentage card widths" >&2
+	exit 1
+fi
+
 if rg -q 'data-quick-view' "$THEME_DIR/template-parts/commerce/product-card.php"; then
 	echo "FAIL product-card must not make the quick-view modal its primary purchase path" >&2
 	exit 1
