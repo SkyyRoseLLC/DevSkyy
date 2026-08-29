@@ -562,7 +562,9 @@
   const heroNav = document.querySelector('.sr-home__hero-nav');
   if (heroVideo) {
     const heroSource = heroVideo.querySelector('source[data-src]');
-    const canPlayHero = !reducedMotion && !saveData;
+    // The responsive poster is the mobile source of truth. Do not fetch or
+    // initialize the cinematic video below the matching CSS breakpoint.
+    const canPlayHero = !reducedMotion && !saveData && window.matchMedia('(min-width: 781px)').matches;
     const FADE_MS = 500;
     let fadeFrame = 0;
     let fadeStart = 0;
