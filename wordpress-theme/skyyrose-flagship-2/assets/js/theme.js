@@ -344,7 +344,7 @@
   });
 
   const setupProductReel = (card) => {
-    const frames = card.querySelectorAll('.sr2-c-product-card__reel-frame, .sr2-c-product-portal__reel-frame');
+    const frames = card.querySelectorAll('.sr2-c-product-portal__reel-frame');
     if (frames.length < 2 || card.querySelector('[data-portal-hover-insight]') || reducedMotion || !finePointer) return;
 
     let timer = 0;

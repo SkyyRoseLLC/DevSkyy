@@ -202,6 +202,14 @@ if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/comme
 	exit 1
 fi
 
+# The generic V2 card anatomy was retired in favor of the portal contract.
+# Keep the loop wrapper (`sr2-c-product-card-wrap`) available, but fail fast
+# if a rendered template or runtime binds to a retired element selector.
+if rg -n --glob '*.php' --glob 'theme.js' 'sr2-c-product-card__' "$THEME_DIR"; then
+	echo "FAIL retired generic product-card element API was reintroduced; use the portal contract" >&2
+	exit 1
+fi
+
 if ! rg -q 'data-purchase-mode=' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'data-portal-quick-add' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'data-portal-action-status' "$THEME_DIR/template-parts/commerce/product-card.php" || \
