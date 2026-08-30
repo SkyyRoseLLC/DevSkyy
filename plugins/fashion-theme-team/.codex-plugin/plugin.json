@@ -1,7 +1,7 @@
 {
   "name": "fashion-theme-team",
-  "version": "0.3.0+codex.20260809100000",
-  "description": "The SkyyRose motherbase and governed Fashion Theme Brain for evidence-backed, end-to-end WooCommerce fashion theme delivery.",
+  "version": "0.4.0+codex.20260825142900",
+  "description": "The SkyyRose motherbase and governed Fashion Theme Brain for prompt-orchestrated, evidence-backed, end-to-end WooCommerce fashion theme delivery.",
   "author": {
     "name": "SkyyRose LLC"
   },
@@ -12,8 +12,13 @@
     "woocommerce",
     "theme-development",
     "multi-agent",
+    "prompt-engineering",
+    "prompt-chaining",
+    "prompt-caching",
     "premium-theme-features",
-    "interactive-commerce"
+    "interactive-commerce",
+    "collection-imagery",
+    "product-fidelity"
   ],
   "skills": "./skills/",
   "interface": {
@@ -34,9 +39,17 @@
       "Page Blueprint Library",
       "SkyyRose Visual Artifact System",
       "V2 Page and Imagery Atlas",
+      "Native Collection Scene Pipeline",
+      "Exact Product Fidelity Gates",
+      "Prompt Engineering",
+      "Typed Prompt Chains",
+      "Prompt Caching",
       "Premium Feature System",
       "Interactive Commerce Features",
-      "Lazy Elite Runtime"
+      "234 Branded Skill Enhancements",
+      "Pinned Primary Authority Artifacts",
+      "Lazy Elite Runtime",
+      "One Team Distribution Control"
     ],
     "brandColor": "#B76E79",
     "defaultPrompt": [
@@ -45,7 +58,11 @@
       "Audit this fashion storefront and dispatch the right specialists.",
       "Build a complete page-by-page fashion storefront contract with rendered HTML and schema-valid JSON handoffs.",
       "Plan every V2 storefront page, section, feature, responsive transformation, and imagery brief.",
-      "Implement the 44-item premium feature catalog to enterprise production standard with evidence."
+      "Build a native cinematic collection scene from exact SKU sources and hold it behind product, optical-integration, story, and founder gates.",
+      "Use prompt engineering, typed prompt chains, and safe prompt caching to deliver a complete candidate in one pass.",
+      "Implement the 44-item premium feature catalog to enterprise production standard with evidence.",
+      "Route a bundled branded skill through its SkyyRose gap-closure contract and authenticated sources.",
+      "Synchronize the Fashion Theme Team's DevSkyy vendor package and installed cache from one verified source."
     ]
   }
 }

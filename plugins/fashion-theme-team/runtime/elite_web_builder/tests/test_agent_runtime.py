@@ -22,7 +22,10 @@ def routing_config():
         {
             "routes": {
                 "frontend_dev": {"provider": "anthropic", "model": "claude-sonnet-4-6"},
-                "design_system": {"provider": "google", "model": "gemini-3-pro-preview"},
+                "design_system": {
+                    "provider": "google",
+                    "model": "gemini-3-pro-preview",
+                },
             },
             "fallbacks": {
                 "anthropic": {"provider": "google", "model": "gemini-3-pro-preview"},

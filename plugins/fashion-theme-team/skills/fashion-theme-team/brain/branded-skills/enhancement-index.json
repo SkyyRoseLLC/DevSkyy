@@ -1,0 +1,1662 @@
+{
+  "$schema": "schemas/enhancement-index.schema.json",
+  "brand": "skyyrose",
+  "contract_aggregate_sha256": "0b97eb1d6d6f2854bc7a9838aabd1b820cb4f4476adbec20abdd837cd5d0b4f7",
+  "domains": {
+    "branding-design": 24,
+    "content-copywriting": 56,
+    "e-commerce-products": 24,
+    "email-marketing-automation": 42,
+    "sales-funnels": 30,
+    "seo-search": 20,
+    "social-media": 38
+  },
+  "lifecycle_state": "ACTIVE",
+  "records": [
+    {
+      "contract_id": "skyyrose.branded-skill.brand-architecture",
+      "domain": "branding-design",
+      "id": "brand-architecture",
+      "path": "enhanced/brand-architecture.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-audit",
+      "domain": "branding-design",
+      "id": "brand-audit",
+      "path": "enhanced/brand-audit.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-identity-guide",
+      "domain": "branding-design",
+      "id": "brand-identity-guide",
+      "path": "enhanced/brand-identity-guide.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-positioning-statement",
+      "domain": "branding-design",
+      "id": "brand-positioning-statement",
+      "path": "enhanced/brand-positioning-statement.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-refresh",
+      "domain": "branding-design",
+      "id": "brand-refresh",
+      "path": "enhanced/brand-refresh.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-tagline",
+      "domain": "branding-design",
+      "id": "brand-tagline",
+      "path": "enhanced/brand-tagline.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-voice-guide",
+      "domain": "branding-design",
+      "id": "brand-voice-guide",
+      "path": "enhanced/brand-voice-guide.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.color-palette-generator",
+      "domain": "branding-design",
+      "id": "color-palette-generator",
+      "path": "enhanced/color-palette-generator.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.executive-resume",
+      "domain": "branding-design",
+      "id": "executive-resume",
+      "path": "enhanced/executive-resume.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.expert-positioning",
+      "domain": "branding-design",
+      "id": "expert-positioning",
+      "path": "enhanced/expert-positioning.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.icon-set-brief",
+      "domain": "branding-design",
+      "id": "icon-set-brief",
+      "path": "enhanced/icon-set-brief.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.merch-design-brief",
+      "domain": "branding-design",
+      "id": "merch-design-brief",
+      "path": "enhanced/merch-design-brief.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.mission-statement",
+      "domain": "branding-design",
+      "id": "mission-statement",
+      "path": "enhanced/mission-statement.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.naming-workshop",
+      "domain": "branding-design",
+      "id": "naming-workshop",
+      "path": "enhanced/naming-workshop.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.packaging-brief",
+      "domain": "branding-design",
+      "id": "packaging-brief",
+      "path": "enhanced/packaging-brief.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.portfolio-page",
+      "domain": "branding-design",
+      "id": "portfolio-page",
+      "path": "enhanced/portfolio-page.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.presentation-template-guide",
+      "domain": "branding-design",
+      "id": "presentation-template-guide",
+      "path": "enhanced/presentation-template-guide.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.rebrand-plan",
+      "domain": "branding-design",
+      "id": "rebrand-plan",
+      "path": "enhanced/rebrand-plan.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.signage-brief",
+      "domain": "branding-design",
+      "id": "signage-brief",
+      "path": "enhanced/signage-brief.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.signature-talk",
+      "domain": "branding-design",
+      "id": "signature-talk",
+      "path": "enhanced/signature-talk.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.speaking-one-sheet",
+      "domain": "branding-design",
+      "id": "speaking-one-sheet",
+      "path": "enhanced/speaking-one-sheet.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.style-tile",
+      "domain": "branding-design",
+      "id": "style-tile",
+      "path": "enhanced/style-tile.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.unboxing-experience",
+      "domain": "branding-design",
+      "id": "unboxing-experience",
+      "path": "enhanced/unboxing-experience.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.visual-identity-brief",
+      "domain": "branding-design",
+      "id": "visual-identity-brief",
+      "path": "enhanced/visual-identity-brief.json",
+      "route": "brand_identity_governance"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.about-page",
+      "domain": "content-copywriting",
+      "id": "about-page",
+      "path": "enhanced/about-page.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.article-rewriter",
+      "domain": "content-copywriting",
+      "id": "article-rewriter",
+      "path": "enhanced/article-rewriter.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.authority-content-strategy",
+      "domain": "content-copywriting",
+      "id": "authority-content-strategy",
+      "path": "enhanced/authority-content-strategy.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.blog-post",
+      "domain": "content-copywriting",
+      "id": "blog-post",
+      "path": "enhanced/blog-post.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.book-outline",
+      "domain": "content-copywriting",
+      "id": "book-outline",
+      "path": "enhanced/book-outline.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.book-proposal",
+      "domain": "content-copywriting",
+      "id": "book-proposal",
+      "path": "enhanced/book-proposal.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-story",
+      "domain": "content-copywriting",
+      "id": "brand-story",
+      "path": "enhanced/brand-story.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.caption-writer",
+      "domain": "content-copywriting",
+      "id": "caption-writer",
+      "path": "enhanced/caption-writer.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.case-study",
+      "domain": "content-copywriting",
+      "id": "case-study",
+      "path": "enhanced/case-study.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.collection-page-copy",
+      "domain": "content-copywriting",
+      "id": "collection-page-copy",
+      "path": "enhanced/collection-page-copy.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.comparison-article",
+      "domain": "content-copywriting",
+      "id": "comparison-article",
+      "path": "enhanced/comparison-article.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-audit",
+      "domain": "content-copywriting",
+      "id": "content-audit",
+      "path": "enhanced/content-audit.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-brief",
+      "domain": "content-copywriting",
+      "id": "content-brief",
+      "path": "enhanced/content-brief.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-calendar",
+      "domain": "content-copywriting",
+      "id": "content-calendar",
+      "path": "enhanced/content-calendar.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-cluster-plan",
+      "domain": "content-copywriting",
+      "id": "content-cluster-plan",
+      "path": "enhanced/content-cluster-plan.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-gap-finder",
+      "domain": "content-copywriting",
+      "id": "content-gap-finder",
+      "path": "enhanced/content-gap-finder.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-pillar-strategy",
+      "domain": "content-copywriting",
+      "id": "content-pillar-strategy",
+      "path": "enhanced/content-pillar-strategy.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-repurpose",
+      "domain": "content-copywriting",
+      "id": "content-repurpose",
+      "path": "enhanced/content-repurpose.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.content-style-guide",
+      "domain": "content-copywriting",
+      "id": "content-style-guide",
+      "path": "enhanced/content-style-guide.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.donation-page-copy",
+      "domain": "content-copywriting",
+      "id": "donation-page-copy",
+      "path": "enhanced/donation-page-copy.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.ebook-outline",
+      "domain": "content-copywriting",
+      "id": "ebook-outline",
+      "path": "enhanced/ebook-outline.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.expert-roundup-pitch",
+      "domain": "content-copywriting",
+      "id": "expert-roundup-pitch",
+      "path": "enhanced/expert-roundup-pitch.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.faq-generator",
+      "domain": "content-copywriting",
+      "id": "faq-generator",
+      "path": "enhanced/faq-generator.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.feature-announcement",
+      "domain": "content-copywriting",
+      "id": "feature-announcement",
+      "path": "enhanced/feature-announcement.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.ghostwriter-brief",
+      "domain": "content-copywriting",
+      "id": "ghostwriter-brief",
+      "path": "enhanced/ghostwriter-brief.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.headline-generator",
+      "domain": "content-copywriting",
+      "id": "headline-generator",
+      "path": "enhanced/headline-generator.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.help-center-article",
+      "domain": "content-copywriting",
+      "id": "help-center-article",
+      "path": "enhanced/help-center-article.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.hook-generator",
+      "domain": "content-copywriting",
+      "id": "hook-generator",
+      "path": "enhanced/hook-generator.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.landing-page-copy",
+      "domain": "content-copywriting",
+      "id": "landing-page-copy",
+      "path": "enhanced/landing-page-copy.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.linkedin-article",
+      "domain": "content-copywriting",
+      "id": "linkedin-article",
+      "path": "enhanced/linkedin-article.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.listicle-generator",
+      "domain": "content-copywriting",
+      "id": "listicle-generator",
+      "path": "enhanced/listicle-generator.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.microcopy-writer",
+      "domain": "content-copywriting",
+      "id": "microcopy-writer",
+      "path": "enhanced/microcopy-writer.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.newsletter-builder",
+      "domain": "content-copywriting",
+      "id": "newsletter-builder",
+      "path": "enhanced/newsletter-builder.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.newsletter-strategy",
+      "domain": "content-copywriting",
+      "id": "newsletter-strategy",
+      "path": "enhanced/newsletter-strategy.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.pillar-page",
+      "domain": "content-copywriting",
+      "id": "pillar-page",
+      "path": "enhanced/pillar-page.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.podcast-one-sheet",
+      "domain": "content-copywriting",
+      "id": "podcast-one-sheet",
+      "path": "enhanced/podcast-one-sheet.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.podcast-show-notes",
+      "domain": "content-copywriting",
+      "id": "podcast-show-notes",
+      "path": "enhanced/podcast-show-notes.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.press-kit",
+      "domain": "content-copywriting",
+      "id": "press-kit",
+      "path": "enhanced/press-kit.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.press-release",
+      "domain": "content-copywriting",
+      "id": "press-release",
+      "path": "enhanced/press-release.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.pricing-page-copy",
+      "domain": "content-copywriting",
+      "id": "pricing-page-copy",
+      "path": "enhanced/pricing-page-copy.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-changelog",
+      "domain": "content-copywriting",
+      "id": "product-changelog",
+      "path": "enhanced/product-changelog.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-description",
+      "domain": "content-copywriting",
+      "id": "product-description",
+      "path": "enhanced/product-description.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-faq",
+      "domain": "content-copywriting",
+      "id": "product-faq",
+      "path": "enhanced/product-faq.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.professional-bio",
+      "domain": "content-copywriting",
+      "id": "professional-bio",
+      "path": "enhanced/professional-bio.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.recipe-card",
+      "domain": "content-copywriting",
+      "id": "recipe-card",
+      "path": "enhanced/recipe-card.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.release-notes",
+      "domain": "content-copywriting",
+      "id": "release-notes",
+      "path": "enhanced/release-notes.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.script-to-blog",
+      "domain": "content-copywriting",
+      "id": "script-to-blog",
+      "path": "enhanced/script-to-blog.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seo-content-brief",
+      "domain": "content-copywriting",
+      "id": "seo-content-brief",
+      "path": "enhanced/seo-content-brief.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.speech-writer",
+      "domain": "content-copywriting",
+      "id": "speech-writer",
+      "path": "enhanced/speech-writer.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.thought-leader-content-plan",
+      "domain": "content-copywriting",
+      "id": "thought-leader-content-plan",
+      "path": "enhanced/thought-leader-content-plan.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.thought-leadership",
+      "domain": "content-copywriting",
+      "id": "thought-leadership",
+      "path": "enhanced/thought-leadership.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.tutorial-writer",
+      "domain": "content-copywriting",
+      "id": "tutorial-writer",
+      "path": "enhanced/tutorial-writer.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.video-script",
+      "domain": "content-copywriting",
+      "id": "video-script",
+      "path": "enhanced/video-script.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.viral-content-formula",
+      "domain": "content-copywriting",
+      "id": "viral-content-formula",
+      "path": "enhanced/viral-content-formula.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.white-paper",
+      "domain": "content-copywriting",
+      "id": "white-paper",
+      "path": "enhanced/white-paper.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.youtube-thumbnail",
+      "domain": "content-copywriting",
+      "id": "youtube-thumbnail",
+      "path": "enhanced/youtube-thumbnail.json",
+      "route": "fashion_content_copy"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.cross-border-selling",
+      "domain": "e-commerce-products",
+      "id": "cross-border-selling",
+      "path": "enhanced/cross-border-selling.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.dropshipping-supplier-brief",
+      "domain": "e-commerce-products",
+      "id": "dropshipping-supplier-brief",
+      "path": "enhanced/dropshipping-supplier-brief.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.exchange-policy",
+      "domain": "e-commerce-products",
+      "id": "exchange-policy",
+      "path": "enhanced/exchange-policy.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.food-delivery-strategy",
+      "domain": "e-commerce-products",
+      "id": "food-delivery-strategy",
+      "path": "enhanced/food-delivery-strategy.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.food-truck-business-plan",
+      "domain": "e-commerce-products",
+      "id": "food-truck-business-plan",
+      "path": "enhanced/food-truck-business-plan.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.gift-guide",
+      "domain": "e-commerce-products",
+      "id": "gift-guide",
+      "path": "enhanced/gift-guide.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.investment-property-analysis",
+      "domain": "e-commerce-products",
+      "id": "investment-property-analysis",
+      "path": "enhanced/investment-property-analysis.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.lease-agreement-checklist",
+      "domain": "e-commerce-products",
+      "id": "lease-agreement-checklist",
+      "path": "enhanced/lease-agreement-checklist.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.marketplace-listing",
+      "domain": "e-commerce-products",
+      "id": "marketplace-listing",
+      "path": "enhanced/marketplace-listing.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.neighborhood-guide",
+      "domain": "e-commerce-products",
+      "id": "neighborhood-guide",
+      "path": "enhanced/neighborhood-guide.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.open-house-plan",
+      "domain": "e-commerce-products",
+      "id": "open-house-plan",
+      "path": "enhanced/open-house-plan.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-recall-plan",
+      "domain": "e-commerce-products",
+      "id": "product-recall-plan",
+      "path": "enhanced/product-recall-plan.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-sourcing-brief",
+      "domain": "e-commerce-products",
+      "id": "product-sourcing-brief",
+      "path": "enhanced/product-sourcing-brief.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.property-listing",
+      "domain": "e-commerce-products",
+      "id": "property-listing",
+      "path": "enhanced/property-listing.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.property-management-sop",
+      "domain": "e-commerce-products",
+      "id": "property-management-sop",
+      "path": "enhanced/property-management-sop.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.real-estate-crm-setup",
+      "domain": "e-commerce-products",
+      "id": "real-estate-crm-setup",
+      "path": "enhanced/real-estate-crm-setup.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.real-estate-newsletter",
+      "domain": "e-commerce-products",
+      "id": "real-estate-newsletter",
+      "path": "enhanced/real-estate-newsletter.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.rental-listing",
+      "domain": "e-commerce-products",
+      "id": "rental-listing",
+      "path": "enhanced/rental-listing.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seasonal-inventory-plan",
+      "domain": "e-commerce-products",
+      "id": "seasonal-inventory-plan",
+      "path": "enhanced/seasonal-inventory-plan.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seller-onboarding",
+      "domain": "e-commerce-products",
+      "id": "seller-onboarding",
+      "path": "enhanced/seller-onboarding.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.size-guide",
+      "domain": "e-commerce-products",
+      "id": "size-guide",
+      "path": "enhanced/size-guide.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.store-launch-plan",
+      "domain": "e-commerce-products",
+      "id": "store-launch-plan",
+      "path": "enhanced/store-launch-plan.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.subscription-box-plan",
+      "domain": "e-commerce-products",
+      "id": "subscription-box-plan",
+      "path": "enhanced/subscription-box-plan.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.wholesale-catalog",
+      "domain": "e-commerce-products",
+      "id": "wholesale-catalog",
+      "path": "enhanced/wholesale-catalog.json",
+      "route": "fashion_product_operations"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.abandoned-cart-email",
+      "domain": "email-marketing-automation",
+      "id": "abandoned-cart-email",
+      "path": "enhanced/abandoned-cart-email.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.ambassador-program",
+      "domain": "email-marketing-automation",
+      "id": "ambassador-program",
+      "path": "enhanced/ambassador-program.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.black-friday-emails",
+      "domain": "email-marketing-automation",
+      "id": "black-friday-emails",
+      "path": "enhanced/black-friday-emails.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.cart-recovery-sms",
+      "domain": "email-marketing-automation",
+      "id": "cart-recovery-sms",
+      "path": "enhanced/cart-recovery-sms.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.cause-marketing-campaign",
+      "domain": "email-marketing-automation",
+      "id": "cause-marketing-campaign",
+      "path": "enhanced/cause-marketing-campaign.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.cold-outreach",
+      "domain": "email-marketing-automation",
+      "id": "cold-outreach",
+      "path": "enhanced/cold-outreach.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.customer-review-strategy",
+      "domain": "email-marketing-automation",
+      "id": "customer-review-strategy",
+      "path": "enhanced/customer-review-strategy.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.downsell-sequence",
+      "domain": "email-marketing-automation",
+      "id": "downsell-sequence",
+      "path": "enhanced/downsell-sequence.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.drip-campaign",
+      "domain": "email-marketing-automation",
+      "id": "drip-campaign",
+      "path": "enhanced/drip-campaign.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-ab-test-plan",
+      "domain": "email-marketing-automation",
+      "id": "email-ab-test-plan",
+      "path": "enhanced/email-ab-test-plan.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-deliverability-audit",
+      "domain": "email-marketing-automation",
+      "id": "email-deliverability-audit",
+      "path": "enhanced/email-deliverability-audit.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-design-system",
+      "domain": "email-marketing-automation",
+      "id": "email-design-system",
+      "path": "enhanced/email-design-system.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-list-cleanup",
+      "domain": "email-marketing-automation",
+      "id": "email-list-cleanup",
+      "path": "enhanced/email-list-cleanup.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-newsletter-template",
+      "domain": "email-marketing-automation",
+      "id": "email-newsletter-template",
+      "path": "enhanced/email-newsletter-template.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-preference-center",
+      "domain": "email-marketing-automation",
+      "id": "email-preference-center",
+      "path": "enhanced/email-preference-center.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-sequence",
+      "domain": "email-marketing-automation",
+      "id": "email-sequence",
+      "path": "enhanced/email-sequence.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.email-subject-line-tester",
+      "domain": "email-marketing-automation",
+      "id": "email-subject-line-tester",
+      "path": "enhanced/email-subject-line-tester.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.engagement-playbook",
+      "domain": "email-marketing-automation",
+      "id": "engagement-playbook",
+      "path": "enhanced/engagement-playbook.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.flash-sale-campaign",
+      "domain": "email-marketing-automation",
+      "id": "flash-sale-campaign",
+      "path": "enhanced/flash-sale-campaign.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.launch-email-sequence",
+      "domain": "email-marketing-automation",
+      "id": "launch-email-sequence",
+      "path": "enhanced/launch-email-sequence.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.loyalty-program",
+      "domain": "email-marketing-automation",
+      "id": "loyalty-program",
+      "path": "enhanced/loyalty-program.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.milestone-email",
+      "domain": "email-marketing-automation",
+      "id": "milestone-email",
+      "path": "enhanced/milestone-email.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.order-bump-copy",
+      "domain": "email-marketing-automation",
+      "id": "order-bump-copy",
+      "path": "enhanced/order-bump-copy.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.payment-plan-offer",
+      "domain": "email-marketing-automation",
+      "id": "payment-plan-offer",
+      "path": "enhanced/payment-plan-offer.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.price-increase-notice",
+      "domain": "email-marketing-automation",
+      "id": "price-increase-notice",
+      "path": "enhanced/price-increase-notice.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-launch-email",
+      "domain": "email-marketing-automation",
+      "id": "product-launch-email",
+      "path": "enhanced/product-launch-email.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.re-engagement-email",
+      "domain": "email-marketing-automation",
+      "id": "re-engagement-email",
+      "path": "enhanced/re-engagement-email.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.referral-program",
+      "domain": "email-marketing-automation",
+      "id": "referral-program",
+      "path": "enhanced/referral-program.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.renewal-campaign",
+      "domain": "email-marketing-automation",
+      "id": "renewal-campaign",
+      "path": "enhanced/renewal-campaign.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seasonal-campaign",
+      "domain": "email-marketing-automation",
+      "id": "seasonal-campaign",
+      "path": "enhanced/seasonal-campaign.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.social-proof-collector",
+      "domain": "email-marketing-automation",
+      "id": "social-proof-collector",
+      "path": "enhanced/social-proof-collector.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.testimonial-collector",
+      "domain": "email-marketing-automation",
+      "id": "testimonial-collector",
+      "path": "enhanced/testimonial-collector.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.thank-you-campaign",
+      "domain": "email-marketing-automation",
+      "id": "thank-you-campaign",
+      "path": "enhanced/thank-you-campaign.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.transactional-email",
+      "domain": "email-marketing-automation",
+      "id": "transactional-email",
+      "path": "enhanced/transactional-email.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.trial-to-paid-email",
+      "domain": "email-marketing-automation",
+      "id": "trial-to-paid-email",
+      "path": "enhanced/trial-to-paid-email.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.two-sided-email-strategy",
+      "domain": "email-marketing-automation",
+      "id": "two-sided-email-strategy",
+      "path": "enhanced/two-sided-email-strategy.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.upsell-sequence",
+      "domain": "email-marketing-automation",
+      "id": "upsell-sequence",
+      "path": "enhanced/upsell-sequence.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.user-generated-content",
+      "domain": "email-marketing-automation",
+      "id": "user-generated-content",
+      "path": "enhanced/user-generated-content.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.waitlist-builder",
+      "domain": "email-marketing-automation",
+      "id": "waitlist-builder",
+      "path": "enhanced/waitlist-builder.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.webinar-email-sequence",
+      "domain": "email-marketing-automation",
+      "id": "webinar-email-sequence",
+      "path": "enhanced/webinar-email-sequence.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.welcome-sequence",
+      "domain": "email-marketing-automation",
+      "id": "welcome-sequence",
+      "path": "enhanced/welcome-sequence.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.win-back-campaign",
+      "domain": "email-marketing-automation",
+      "id": "win-back-campaign",
+      "path": "enhanced/win-back-campaign.json",
+      "route": "fashion_lifecycle_email"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.business-plan",
+      "domain": "sales-funnels",
+      "id": "business-plan",
+      "path": "enhanced/business-plan.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.coaching-framework",
+      "domain": "sales-funnels",
+      "id": "coaching-framework",
+      "path": "enhanced/coaching-framework.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.collaboration-agreement",
+      "domain": "sales-funnels",
+      "id": "collaboration-agreement",
+      "path": "enhanced/collaboration-agreement.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.competitor-analysis",
+      "domain": "sales-funnels",
+      "id": "competitor-analysis",
+      "path": "enhanced/competitor-analysis.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.customer-journey-map",
+      "domain": "sales-funnels",
+      "id": "customer-journey-map",
+      "path": "enhanced/customer-journey-map.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.customer-persona",
+      "domain": "sales-funnels",
+      "id": "customer-persona",
+      "path": "enhanced/customer-persona.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.customer-segmentation",
+      "domain": "sales-funnels",
+      "id": "customer-segmentation",
+      "path": "enhanced/customer-segmentation.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.discovery-call-script",
+      "domain": "sales-funnels",
+      "id": "discovery-call-script",
+      "path": "enhanced/discovery-call-script.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.joint-venture-proposal",
+      "domain": "sales-funnels",
+      "id": "joint-venture-proposal",
+      "path": "enhanced/joint-venture-proposal.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.lead-magnet",
+      "domain": "sales-funnels",
+      "id": "lead-magnet",
+      "path": "enhanced/lead-magnet.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.market-research",
+      "domain": "sales-funnels",
+      "id": "market-research",
+      "path": "enhanced/market-research.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.market-sizing",
+      "domain": "sales-funnels",
+      "id": "market-sizing",
+      "path": "enhanced/market-sizing.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.membership-site-plan",
+      "domain": "sales-funnels",
+      "id": "membership-site-plan",
+      "path": "enhanced/membership-site-plan.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.objection-handler",
+      "domain": "sales-funnels",
+      "id": "objection-handler",
+      "path": "enhanced/objection-handler.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.partnership-proposal",
+      "domain": "sales-funnels",
+      "id": "partnership-proposal",
+      "path": "enhanced/partnership-proposal.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.pitch-deck",
+      "domain": "sales-funnels",
+      "id": "pitch-deck",
+      "path": "enhanced/pitch-deck.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-comparison",
+      "domain": "sales-funnels",
+      "id": "product-comparison",
+      "path": "enhanced/product-comparison.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-roadmap",
+      "domain": "sales-funnels",
+      "id": "product-roadmap",
+      "path": "enhanced/product-roadmap.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.proposal-writer",
+      "domain": "sales-funnels",
+      "id": "proposal-writer",
+      "path": "enhanced/proposal-writer.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.revenue-model",
+      "domain": "sales-funnels",
+      "id": "revenue-model",
+      "path": "enhanced/revenue-model.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.sales-battlecard",
+      "domain": "sales-funnels",
+      "id": "sales-battlecard",
+      "path": "enhanced/sales-battlecard.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.sales-deck",
+      "domain": "sales-funnels",
+      "id": "sales-deck",
+      "path": "enhanced/sales-deck.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.sales-email-template",
+      "domain": "sales-funnels",
+      "id": "sales-email-template",
+      "path": "enhanced/sales-email-template.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.sales-funnel-builder",
+      "domain": "sales-funnels",
+      "id": "sales-funnel-builder",
+      "path": "enhanced/sales-funnel-builder.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.sales-script",
+      "domain": "sales-funnels",
+      "id": "sales-script",
+      "path": "enhanced/sales-script.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.strategic-alliance-plan",
+      "domain": "sales-funnels",
+      "id": "strategic-alliance-plan",
+      "path": "enhanced/strategic-alliance-plan.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.swot-analysis",
+      "domain": "sales-funnels",
+      "id": "swot-analysis",
+      "path": "enhanced/swot-analysis.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.value-proposition-canvas",
+      "domain": "sales-funnels",
+      "id": "value-proposition-canvas",
+      "path": "enhanced/value-proposition-canvas.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.webinar-sales-script",
+      "domain": "sales-funnels",
+      "id": "webinar-sales-script",
+      "path": "enhanced/webinar-sales-script.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.win-loss-analysis",
+      "domain": "sales-funnels",
+      "id": "win-loss-analysis",
+      "path": "enhanced/win-loss-analysis.json",
+      "route": "ethical_fashion_funnel"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.checkout-optimizer",
+      "domain": "seo-search",
+      "id": "checkout-optimizer",
+      "path": "enhanced/checkout-optimizer.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.featured-snippet-optimizer",
+      "domain": "seo-search",
+      "id": "featured-snippet-optimizer",
+      "path": "enhanced/featured-snippet-optimizer.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.google-business-profile",
+      "domain": "seo-search",
+      "id": "google-business-profile",
+      "path": "enhanced/google-business-profile.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.keyword-research",
+      "domain": "seo-search",
+      "id": "keyword-research",
+      "path": "enhanced/keyword-research.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.landing-page-audit",
+      "domain": "seo-search",
+      "id": "landing-page-audit",
+      "path": "enhanced/landing-page-audit.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.link-building-plan",
+      "domain": "seo-search",
+      "id": "link-building-plan",
+      "path": "enhanced/link-building-plan.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.local-seo-plan",
+      "domain": "seo-search",
+      "id": "local-seo-plan",
+      "path": "enhanced/local-seo-plan.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.marketplace-seo",
+      "domain": "seo-search",
+      "id": "marketplace-seo",
+      "path": "enhanced/marketplace-seo.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.meta-tag-optimizer",
+      "domain": "seo-search",
+      "id": "meta-tag-optimizer",
+      "path": "enhanced/meta-tag-optimizer.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.platform-migration",
+      "domain": "seo-search",
+      "id": "platform-migration",
+      "path": "enhanced/platform-migration.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-listing-optimizer",
+      "domain": "seo-search",
+      "id": "product-listing-optimizer",
+      "path": "enhanced/product-listing-optimizer.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.schema-markup-guide",
+      "domain": "seo-search",
+      "id": "schema-markup-guide",
+      "path": "enhanced/schema-markup-guide.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seo-audit",
+      "domain": "seo-search",
+      "id": "seo-audit",
+      "path": "enhanced/seo-audit.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seo-competitor-analysis",
+      "domain": "seo-search",
+      "id": "seo-competitor-analysis",
+      "path": "enhanced/seo-competitor-analysis.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seo-migration-plan",
+      "domain": "seo-search",
+      "id": "seo-migration-plan",
+      "path": "enhanced/seo-migration-plan.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.seo-reporting-template",
+      "domain": "seo-search",
+      "id": "seo-reporting-template",
+      "path": "enhanced/seo-reporting-template.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.site-architecture-plan",
+      "domain": "seo-search",
+      "id": "site-architecture-plan",
+      "path": "enhanced/site-architecture-plan.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.store-page-audit",
+      "domain": "seo-search",
+      "id": "store-page-audit",
+      "path": "enhanced/store-page-audit.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.technical-seo-checklist",
+      "domain": "seo-search",
+      "id": "technical-seo-checklist",
+      "path": "enhanced/technical-seo-checklist.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.youtube-seo",
+      "domain": "seo-search",
+      "id": "youtube-seo",
+      "path": "enhanced/youtube-seo.json",
+      "route": "fashion_search_discovery"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.author-platform-plan",
+      "domain": "social-media",
+      "id": "author-platform-plan",
+      "path": "enhanced/author-platform-plan.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.brand-photography-brief",
+      "domain": "social-media",
+      "id": "brand-photography-brief",
+      "path": "enhanced/brand-photography-brief.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.co-marketing-plan",
+      "domain": "social-media",
+      "id": "co-marketing-plan",
+      "path": "enhanced/co-marketing-plan.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.community-launch",
+      "domain": "social-media",
+      "id": "community-launch",
+      "path": "enhanced/community-launch.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.community-moderation",
+      "domain": "social-media",
+      "id": "community-moderation",
+      "path": "enhanced/community-moderation.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.crisis-comms",
+      "domain": "social-media",
+      "id": "crisis-comms",
+      "path": "enhanced/crisis-comms.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.facebook-group-plan",
+      "domain": "social-media",
+      "id": "facebook-group-plan",
+      "path": "enhanced/facebook-group-plan.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.food-photography-brief",
+      "domain": "social-media",
+      "id": "food-photography-brief",
+      "path": "enhanced/food-photography-brief.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.guest-post-pitch",
+      "domain": "social-media",
+      "id": "guest-post-pitch",
+      "path": "enhanced/guest-post-pitch.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.hashtag-strategy",
+      "domain": "social-media",
+      "id": "hashtag-strategy",
+      "path": "enhanced/hashtag-strategy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.influencer-campaign-brief",
+      "domain": "social-media",
+      "id": "influencer-campaign-brief",
+      "path": "enhanced/influencer-campaign-brief.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.influencer-outreach",
+      "domain": "social-media",
+      "id": "influencer-outreach",
+      "path": "enhanced/influencer-outreach.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.instagram-carousel",
+      "domain": "social-media",
+      "id": "instagram-carousel",
+      "path": "enhanced/instagram-carousel.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.linkedin-profile-optimizer",
+      "domain": "social-media",
+      "id": "linkedin-profile-optimizer",
+      "path": "enhanced/linkedin-profile-optimizer.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.linkedin-strategy",
+      "domain": "social-media",
+      "id": "linkedin-strategy",
+      "path": "enhanced/linkedin-strategy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.media-kit",
+      "domain": "social-media",
+      "id": "media-kit",
+      "path": "enhanced/media-kit.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.meme-content-brief",
+      "domain": "social-media",
+      "id": "meme-content-brief",
+      "path": "enhanced/meme-content-brief.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.menu-design-brief",
+      "domain": "social-media",
+      "id": "menu-design-brief",
+      "path": "enhanced/menu-design-brief.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.networking-strategy",
+      "domain": "social-media",
+      "id": "networking-strategy",
+      "path": "enhanced/networking-strategy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.personal-brand-strategy",
+      "domain": "social-media",
+      "id": "personal-brand-strategy",
+      "path": "enhanced/personal-brand-strategy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.pinterest-strategy",
+      "domain": "social-media",
+      "id": "pinterest-strategy",
+      "path": "enhanced/pinterest-strategy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.platform-community-guidelines",
+      "domain": "social-media",
+      "id": "platform-community-guidelines",
+      "path": "enhanced/platform-community-guidelines.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.podcast-guest-pitch",
+      "domain": "social-media",
+      "id": "podcast-guest-pitch",
+      "path": "enhanced/podcast-guest-pitch.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.pr-pitch",
+      "domain": "social-media",
+      "id": "pr-pitch",
+      "path": "enhanced/pr-pitch.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.product-photography-brief",
+      "domain": "social-media",
+      "id": "product-photography-brief",
+      "path": "enhanced/product-photography-brief.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.reddit-strategy",
+      "domain": "social-media",
+      "id": "reddit-strategy",
+      "path": "enhanced/reddit-strategy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.short-form-video-plan",
+      "domain": "social-media",
+      "id": "short-form-video-plan",
+      "path": "enhanced/short-form-video-plan.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.social-listening-plan",
+      "domain": "social-media",
+      "id": "social-listening-plan",
+      "path": "enhanced/social-listening-plan.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.social-media-audit",
+      "domain": "social-media",
+      "id": "social-media-audit",
+      "path": "enhanced/social-media-audit.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.social-media-calendar",
+      "domain": "social-media",
+      "id": "social-media-calendar",
+      "path": "enhanced/social-media-calendar.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.social-media-graphics",
+      "domain": "social-media",
+      "id": "social-media-graphics",
+      "path": "enhanced/social-media-graphics.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.social-media-policy",
+      "domain": "social-media",
+      "id": "social-media-policy",
+      "path": "enhanced/social-media-policy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.social-media-strategy",
+      "domain": "social-media",
+      "id": "social-media-strategy",
+      "path": "enhanced/social-media-strategy.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.sponsor-pitch",
+      "domain": "social-media",
+      "id": "sponsor-pitch",
+      "path": "enhanced/sponsor-pitch.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.thread-hook-writer",
+      "domain": "social-media",
+      "id": "thread-hook-writer",
+      "path": "enhanced/thread-hook-writer.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.tiktok-script",
+      "domain": "social-media",
+      "id": "tiktok-script",
+      "path": "enhanced/tiktok-script.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.twitter-thread",
+      "domain": "social-media",
+      "id": "twitter-thread",
+      "path": "enhanced/twitter-thread.json",
+      "route": "fashion_social_campaigns"
+    },
+    {
+      "contract_id": "skyyrose.branded-skill.youtube-strategy",
+      "domain": "social-media",
+      "id": "youtube-strategy",
+      "path": "enhanced/youtube-strategy.json",
+      "route": "fashion_social_campaigns"
+    }
+  ],
+  "registry_id": "skyyrose-branded-skills-enhancement-v1",
+  "reviewed_at": "2026-08-17T00:39:32Z",
+  "reviewed_by": "independent-release-reviewer",
+  "skill_count": 234,
+  "source_aggregate_sha256": "401fd0f5eeca2f370dfb8eb0d894383ddf89db0410469d88604a94dde28de02c",
+  "status": "active",
+  "version": "1.0.0"
+}

@@ -1,6 +1,6 @@
 /**
  * Unit Tests for ThreePerformanceMonitor
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { ThreePerformanceMonitor, getPerformanceMonitor, resetPerformanceMonitor } from '../ThreePerformanceMonitor';
@@ -10,17 +10,17 @@ function createMockRenderer() {
     info: {
       render: { calls: 10, triangles: 5000, points: 0, lines: 0 },
       memory: { geometries: 5, textures: 8 },
-      reset: jest.fn(),
+      reset: vi.fn(),
     },
-    getContext: jest.fn().mockReturnValue({
-      getExtension: jest.fn().mockReturnValue(null),
+    getContext: vi.fn().mockReturnValue({
+      getExtension: vi.fn().mockReturnValue(null),
     }),
   };
 }
 
 function createMockScene() {
   return {
-    traverse: jest.fn().mockImplementation(cb => {
+    traverse: vi.fn().mockImplementation(cb => {
       // Simulate 3 objects, 2 visible
       cb({ visible: true });
       cb({ visible: true });
@@ -35,7 +35,7 @@ describe('ThreePerformanceMonitor', () => {
   let scene;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     monitor = new ThreePerformanceMonitor();
     renderer = createMockRenderer();
     scene = createMockScene();
@@ -151,7 +151,7 @@ describe('ThreePerformanceMonitor', () => {
     });
 
     it('should sample metrics when interval elapsed', () => {
-      const onMetrics = jest.fn();
+      const onMetrics = vi.fn();
       const fastMonitor = new ThreePerformanceMonitor({
         sampleIntervalMs: 0, // immediate sampling
         onMetrics,
@@ -355,7 +355,7 @@ describe('ThreePerformanceMonitor', () => {
 
   describe('sampleMetrics (via endFrame)', () => {
     it('should populate metrics from renderer info', () => {
-      const onMetrics = jest.fn();
+      const onMetrics = vi.fn();
       const m = new ThreePerformanceMonitor({ sampleIntervalMs: 0, onMetrics });
 
       m.attach(renderer, scene);
@@ -378,7 +378,7 @@ describe('ThreePerformanceMonitor', () => {
     });
 
     it('should call onWarning for poor performance', () => {
-      const onWarning = jest.fn();
+      const onWarning = vi.fn();
       renderer.info.render.calls = 600;
       renderer.info.render.triangles = 2000000;
 

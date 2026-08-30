@@ -1,22 +1,24 @@
 /**
  * Unit Tests for OpenAIService
- * @jest-environment node
+ * @vitest-environment node
  */
 
 import { OpenAIService } from '../OpenAIService';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // Mock config
-jest.mock('../../config/index', () => ({
+vi.mock('../../config/index', () => ({
   openaiConfig: {
     apiKey: 'test-api-key',
     baseURL: 'https://api.openai.com/v1',
@@ -28,14 +30,14 @@ jest.mock('../../config/index', () => ({
 }));
 
 // Mock global fetch
-const mockFetch = jest.fn();
+const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
 describe('OpenAIService', () => {
   let service: OpenAIService;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     service = new OpenAIService();
   });
 
@@ -51,12 +53,12 @@ describe('OpenAIService', () => {
       // The constructor would have thrown if API key was missing
     });
 
-    it('should throw error when API key is missing', () => {
+    it('should throw error when API key is missing', async () => {
       // Reset modules to allow re-mocking
-      jest.resetModules();
+      vi.resetModules();
 
       // Mock config with empty API key
-      jest.doMock('../../config/index', () => ({
+      vi.doMock('../../config/index', () => ({
         openaiConfig: {
           apiKey: '', // Empty API key
           baseURL: 'https://api.openai.com/v1',
@@ -68,19 +70,19 @@ describe('OpenAIService', () => {
       }));
 
       // Mock Logger again since modules were reset
-      jest.doMock('../../utils/Logger', () => ({
-        Logger: jest.fn().mockImplementation(() => ({
-          info: jest.fn(),
-          warn: jest.fn(),
-          error: jest.fn(),
-          debug: jest.fn(),
-        })),
+      vi.doMock('../../utils/Logger', () => ({
+        Logger: vi.fn(function Logger() {
+          return {
+            info: vi.fn(),
+            warn: vi.fn(),
+            error: vi.fn(),
+            debug: vi.fn(),
+          };
+        }),
       }));
 
-      // The module exports a singleton, so importing will throw
-      expect(() => {
-        require('../OpenAIService');
-      }).toThrow('OpenAI API key is required');
+      // The module exports a singleton, so importing will throw.
+      await expect(import('../OpenAIService')).rejects.toThrow('OpenAI API key is required');
     });
   });
 

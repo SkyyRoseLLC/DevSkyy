@@ -1,43 +1,43 @@
 ---
 name: fashion-brand-experience
-description:
-  Defines SkyyRose brand direction, visual identity, editorial composition,
-  typography, imagery provenance, and logo-off recognition for fashion
-  storefronts.
+description: Defines SkyyRose brand direction, visual identity, editorial composition, typography, imagery provenance, and logo-off recognition.
 ---
 
 # Fashion Brand Experience
 
-Use before a major visual redesign, new collection world, hero, lookbook, or
+Use before a major visual redesign, collection world, hero, lookbook, or
 imagery system.
 
 ## Owners and inputs
 
-Route to `brand-experience-architect`, `fashion-brand-systems-researcher`,
+Route `brand-experience-architect`, `fashion-brand-systems-researcher`,
 `fashion-typography-layout-director`, and `fashion-knowledge-curator`. Read
-`brain/brand/`, `skyyrose-design-canon.md`, high-end design standards, approved
-catalog/image SOT, and the current design-system contract.
+`brain/brand/`, SkyyRose canon, high-end design standards, approved catalog/image
+SOT, and the design-system contract.
 
 ## Procedure
 
-1. Establish the SkyyRose thesis, audience tension, Oakland point of view,
-   garment-first hierarchy, and explicit anti-generic exclusions.
+1. Establish the SkyyRose thesis, Oakland point of view, garment-first
+   hierarchy, and anti-generic exclusions.
 2. Define type roles, editorial grid, crop/focal rules, rhythm, density,
-   collection-specific composition axes, RTL/localization behavior, and
-   390/768/1440 transformations.
-3. Map every image or render to SKU/collection, source, rights status, crop, alt
-   text, and review state. Filenames and plausible captions are not proof.
-4. Produce the logo-off recognition test and rejected-direction board.
-5. Return SkyyRose-branded `preview.html`, `contract.json`, and `evidence.json`.
+   collection composition axes, RTL/localization, and 390/768/1440 behavior.
+3. Map each image to SKU/collection, source, rights, crop, alt text, and review
+   state. Filenames and plausible captions are not proof.
+4. Produce a logo-off recognition test and rejected-direction board.
+5. For generated collection scenes, hand the approved direction to
+   `product-fidelity-image-edits` as a `native_collection_scene` contract with the
+   exact SKU/CTA cast, source hashes, distinct scene variation, camera/light/floor
+   analysis, anti-generic exclusions, and founder-promotion boundary.
+6. Return SkyyRose-branded HTML/JSON/evidence handoffs.
 
 ## Acceptance
 
-One rose-gold accent remains intentional; the garment is the protagonist; no
+The garment remains the protagonist; one rose-gold accent is intentional; no
 generic centered-everything, gradient-text, stock imagery, or interchangeable
-luxury-serif pattern passes. Visual claims require eyes-on captures and a fresh
-reviewer. Missing provenance is `UNVERIFIED`, not filled with invented media.
+luxury pattern passes. Missing provenance is `UNVERIFIED`.
 
 ## Boundaries
 
-This skill defines direction and provenance. It does not implement CSS/JS,
-change catalog records, or issue final visual approval.
+Direction and provenance only: no image generation, CSS/JS implementation,
+catalog changes, or final visual approval. The media gate creates and verifies
+the candidate; the founder retains promotion approval.

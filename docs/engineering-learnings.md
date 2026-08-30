@@ -149,6 +149,11 @@
 
 ## Deploy-source completeness — gitignored live riders (2026-07-13)
 
+## Root npm audit remediation (2026-08-27)
+
+- **Do not treat an audit threshold as a substitute for dependency repair.** Root `npm audit` reported 22 high findings through the current Jest and OpenWolf/Puppeteer toolchains even after both direct packages were at their latest available releases. The supported remediation is to remove the unpatchable dependency paths: root unit tests run under Vitest, and design QC uses the maintained Playwright path. Retain `npm run security:audit:production` in CI for runtime deployment gating, but continue to run the full audit locally and in dependency-maintenance review.
+- **A committed root lockfile is part of the security control.** CI must use `npm ci`, never a fresh `npm install`, before running the audit and test gates; otherwise audit output is not reproducible from the reviewed commit.
+
 - **The live theme dir contains 17 functional assets that exist in NO git commit** — blanket-gitignored binaries that have ridden along on every deploy from the primary checkout's working tree (`deploy-theme.sh` is git-unaware; it tars the directory on disk). The hot-swap replaces the remote dir wholesale, so **any deploy from a clean checkout / fresh worktree / CI deletes them from production** (BR/LH hero emblems vanish via `page.php`'s `file_exists` gate; mascot/avatar/scene refs 404). Overlay them into the deploy source first, or `git add -f` them (preferred, per the 2026-07-07 rule above).
 - **Rider manifest (verified against the live server listing, 2026-07-13):**
   - `assets/images/emblems/black-rose-emblem.png` + `.webp`

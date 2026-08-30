@@ -405,7 +405,6 @@ class TestSelfHealIntegration:
     def test_diagnose_from_verification_report(self) -> None:
         """Self-healer can diagnose from a verification report."""
         healer = SelfHealer(max_attempts=3)
-
         # Create a report with a failed gate
         from core.verification_loop import VerificationReport
 

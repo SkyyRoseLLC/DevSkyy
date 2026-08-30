@@ -789,7 +789,10 @@ class TestValidationSummary:
             ValidationResult(valid=True, claim_type=ClaimType.FILE_EXISTS, value="a", message="ok"),
             ValidationResult(valid=True, claim_type=ClaimType.COLOR_VALUE, value="b", message="ok"),
             ValidationResult(
-                valid=False, claim_type=ClaimType.JSON_VALIDITY, value="c", message="bad"
+                valid=False,
+                claim_type=ClaimType.JSON_VALIDITY,
+                value="c",
+                message="bad",
             ),
         ]
         summary = validator.summarize(results)

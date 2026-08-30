@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skyyrose.local/schemas/branded-skills/enhanced-skill.schema.json",
+  "title": "SkyyRose Enhanced Bundled Skill Contract",
+  "description": "A lazy-loaded governance overlay for one bundled skill. It references the source skill and never embeds its full body.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "contract_id", "source", "source_capability_profile", "routing", "inputs", "authority", "skyyrose_overlay", "gap_analysis", "output", "requirements", "evidence", "fallback", "verification", "lifecycle", "provenance"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "contract_id": {"type": "string", "pattern": "^skyyrose\\.branded-skill\\.[a-z0-9]+(?:-[a-z0-9]+)*$", "maxLength": 160},
+    "source": {"$ref": "#/$defs/sourceRef"},
+    "source_capability_profile": {
+      "type": "object", "additionalProperties": false,
+      "required": ["headings", "declared_tools", "input_sections", "output_sections", "verification_sections", "risk_terms", "profile_sha256"],
+      "properties": {
+        "headings": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "declared_tools": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "input_sections": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "output_sections": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "verification_sections": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "risk_terms": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "profile_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "routing": {
+      "type": "object", "additionalProperties": false,
+      "required": ["trigger_summary", "brain_route_ids", "load_policy", "tool_profile"],
+      "properties": {
+        "trigger_summary": {"type": "string", "minLength": 10, "maxLength": 500},
+        "brain_route_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "load_policy": {"const": "metadata-first-source-on-match"},
+        "tool_profile": {
+          "type": "object", "additionalProperties": false, "required": ["default", "expansions"],
+          "properties": {
+            "default": {"const": ["Read", "Grep", "Glob", "Bash"]},
+            "expansions": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["capability", "reason", "authority"], "properties": {"capability": {"type": "string", "minLength": 1}, "reason": {"type": "string", "minLength": 1}, "authority": {"enum": ["AUTO_WITH_LOG", "ASK"]}}}}
+          }
+        }
+      }
+    },
+    "inputs": {
+      "type": "object", "additionalProperties": false, "required": ["required", "optional", "unknown_policy", "sensitive_data_policy"],
+      "properties": {
+        "required": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/inputField"}},
+        "optional": {"type": "array", "items": {"$ref": "#/$defs/inputField"}},
+        "unknown_policy": {"const": "discover-read-only-then-mark-UNKNOWN"},
+        "sensitive_data_policy": {"const": "minimize-redact-never-persist-secrets-or-customer-data"}
+      }
+    },
+    "authority": {
+      "type": "object", "additionalProperties": false, "required": ["precedence", "claim_classes", "approval_boundaries", "prohibited"],
+      "properties": {
+        "precedence": {"const": ["repository-instructions-and-approved-SOT", "current-official-documentation", "dated-registered-research", "durable-brain-guidance", "inference-or-experiment"]},
+        "claim_classes": {"const": ["OBSERVED", "APPROVED", "RECOMMENDED", "UNKNOWN", "DURABLE", "CURRENT", "BRAND_SPECIFIC", "INFERENCE", "EXPERIMENT"]},
+        "approval_boundaries": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["new-dependency", "credential", "paid-api", "external-write", "upload", "push", "protected-branch-merge", "destructive-action", "staging-mutation", "deployment", "production-mutation"]}},
+        "prohibited": {"type": "array", "minItems": 1, "contains": {"const": "self-certification"}, "items": {"enum": ["secret-disclosure", "fabricated-evidence", "gate-waiver", "unauthorized-production-mutation", "invented-product-fact", "invented-urgency", "self-certification"]}}
+      }
+    },
+    "skyyrose_overlay": {
+      "type": "object", "additionalProperties": false, "required": ["brand_contract", "application", "non_negotiables"],
+      "properties": {
+        "brand_contract": {"const": "../../brand/skyyrose-artifact-system.json"},
+        "application": {"enum": ["required-for-human-facing-artifact", "required-for-fashion-commerce-output", "not-applicable-with-rationale"]},
+        "rationale": {"type": "string", "minLength": 1},
+        "non_negotiables": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"enum": ["garment-first", "truthful-product-data", "one-rose-gold-accent", "oakland-editorial-thesis", "SOT-or-founder-approved-media", "no-fabricated-commerce-proof", "logo-off-recognition"]}}
+      },
+      "allOf": [{"if": {"properties": {"application": {"const": "not-applicable-with-rationale"}}}, "then": {"required": ["rationale"]}}]
+    },
+    "gap_analysis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["method", "source_body_reviewed", "gaps", "closures", "residual_unknowns"],
+      "properties": {
+        "method": {"const": "deterministic-source-review-plus-domain-contract"},
+        "source_body_reviewed": {"const": true},
+        "gaps": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/gapRecord"}},
+        "closures": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/closureRecord"}},
+        "residual_unknowns": {"type": "array", "items": {"$ref": "#/$defs/id"}}
+      }
+    },
+    "output": {
+      "type": "object", "additionalProperties": false, "required": ["artifact_type", "schema_ref", "required_files", "stable_ids", "status_vocabulary"],
+      "properties": {
+        "artifact_type": {"type": "string", "minLength": 1},
+        "schema_ref": {"type": "string", "minLength": 1},
+        "required_files": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "stable_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/id"}},
+        "status_vocabulary": {"const": ["PASS", "FAIL", "BLOCKED", "NOT_APPLICABLE", "UNKNOWN"]}
+      }
+    },
+    "requirements": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ethics", "commerce", "accessibility", "performance", "security", "privacy"],
+      "properties": {
+        "ethics": {"$ref": "#/$defs/requirementSet"}, "commerce": {"$ref": "#/$defs/requirementSet"},
+        "accessibility": {"$ref": "#/$defs/requirementSet"}, "performance": {"$ref": "#/$defs/requirementSet"},
+        "security": {"$ref": "#/$defs/requirementSet"}, "privacy": {"$ref": "#/$defs/requirementSet"}
+      }
+    },
+    "evidence": {
+      "type": "object", "additionalProperties": false, "required": ["candidate_binding", "required_classes", "freshness", "independent_review"],
+      "properties": {
+        "candidate_binding": {"const": "all-evidence-must-share-candidate-id"},
+        "required_classes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["source", "deterministic", "visual", "interaction", "commerce", "accessibility", "performance", "security", "rights", "release"]}},
+        "freshness": {"const": "mutation-invalidates-dependent-evidence"},
+        "independent_review": {"const": "builder-cannot-approve-own-output"}
+      }
+    },
+    "fallback": {
+      "type": "object", "additionalProperties": false, "required": ["degraded_mode", "missing_input", "unavailable_tool", "transient_retry", "terminal_status"],
+      "properties": {
+        "degraded_mode": {"type": "string", "minLength": 1},
+        "missing_input": {"const": "continue-independent-work-and-mark-dependent-claims-UNKNOWN-or-BLOCKED"},
+        "unavailable_tool": {"const": "use-documented-safe-fallback-or-BLOCKED-never-fabricate"},
+        "transient_retry": {"type": "object", "additionalProperties": false, "required": ["maximum", "backoff"], "properties": {"maximum": {"const": 2}, "backoff": {"const": "bounded"}}},
+        "terminal_status": {"enum": ["FAIL", "BLOCKED"]}
+      }
+    },
+    "verification": {
+      "type": "object", "additionalProperties": false, "required": ["checks", "verdict_owner", "self_certification", "evidence_schema"],
+      "properties": {
+        "checks": {"type": "array", "minItems": 1, "items": {"type": "object", "additionalProperties": false, "required": ["id", "command_or_method", "pass_condition", "evidence_class"], "properties": {"id": {"$ref": "#/$defs/id"}, "command_or_method": {"type": "string", "minLength": 1}, "pass_condition": {"type": "string", "minLength": 1}, "evidence_class": {"type": "string", "minLength": 1}}}},
+        "verdict_owner": {"type": "string", "minLength": 1},
+        "self_certification": {"const": false},
+        "evidence_schema": {"const": "enhanced-skill-evidence.schema.json"}
+      }
+    },
+    "lifecycle": {
+      "type": "object", "additionalProperties": false, "required": ["state", "introduced", "compatibility", "deprecation", "migration", "rollback"],
+      "properties": {
+        "state": {"enum": ["DRAFT", "ACTIVE", "DEPRECATED", "RETIRED"]},
+        "introduced": {"$ref": "#/$defs/semver"},
+        "compatibility": {"type": "string", "minLength": 1},
+        "deprecation": {"type": "object", "additionalProperties": false, "required": ["status"], "properties": {"status": {"enum": ["not-deprecated", "announced", "deprecated"]}, "replacement_contract_id": {"type": "string"}, "remove_after": {"$ref": "#/$defs/semver"}, "owner": {"type": "string"}}},
+        "migration": {"type": "object", "additionalProperties": false, "required": ["required", "guide"], "properties": {"required": {"type": "boolean"}, "guide": {"type": ["string", "null"]}}},
+        "rollback": {"type": "object", "additionalProperties": false, "required": ["last_known_good", "procedure"], "properties": {"last_known_good": {"type": "string", "minLength": 1}, "procedure": {"type": "string", "minLength": 1}}}
+      }
+    },
+    "provenance": {
+      "type": "object", "additionalProperties": false, "required": ["contract_sha256", "generated_by", "generated_at", "reviewed_at", "reviewed_by", "owners", "change_record"],
+      "properties": {
+        "contract_sha256": {"$ref": "#/$defs/sha256"}, "generated_by": {"type": "string", "minLength": 1},
+        "generated_at": {"type": "string", "format": "date-time"}, "reviewed_at": {"type": ["string", "null"], "format": "date-time"},
+        "reviewed_by": {"type": ["string", "null"], "minLength": 1},
+        "owners": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "change_record": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$", "maxLength": 160},
+    "semver": {"type": "string", "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?(?:\\+[0-9A-Za-z.-]+)?$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "sourceRef": {"type": "object", "additionalProperties": false, "required": ["skill_id", "relative_path", "sha256", "inventory_id", "body_policy"], "properties": {"skill_id": {"$ref": "#/$defs/id"}, "relative_path": {"type": "string", "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+SKILL\\.md$"}, "sha256": {"$ref": "#/$defs/sha256"}, "inventory_id": {"type": "string", "minLength": 1}, "body_policy": {"const": "reference-only-never-copy"}}},
+    "inputField": {"type": "object", "additionalProperties": false, "required": ["name", "type", "authority", "sensitive"], "properties": {"name": {"$ref": "#/$defs/id"}, "type": {"enum": ["string", "number", "boolean", "object", "array", "path", "uri", "artifact-ref"]}, "authority": {"enum": ["user", "repository", "approved-SOT", "official-documentation", "registered-source", "derived"]}, "sensitive": {"type": "boolean"}, "description": {"type": "string", "minLength": 1}}},
+    "requirementSet": {"type": "object", "additionalProperties": false, "required": ["applicability", "rules"], "properties": {"applicability": {"enum": ["REQUIRED", "CONDITIONAL", "NOT_APPLICABLE"]}, "rationale": {"type": "string", "minLength": 1}, "rules": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 3}}}, "allOf": [{"if": {"properties": {"applicability": {"const": "NOT_APPLICABLE"}}}, "then": {"required": ["rationale"]}}]}
+    ,"gapRecord": {"type": "object", "additionalProperties": false, "required": ["id", "evidence", "impact", "closure_id"], "properties": {"id": {"$ref": "#/$defs/id"}, "evidence": {"type": "string", "minLength": 10}, "impact": {"type": "string", "minLength": 10}, "closure_id": {"$ref": "#/$defs/id"}}}
+    ,"closureRecord": {"type": "object", "additionalProperties": false, "required": ["id", "control", "acceptance"], "properties": {"id": {"$ref": "#/$defs/id"}, "control": {"type": "string", "minLength": 10}, "acceptance": {"type": "string", "minLength": 10}}}
+  }
+}

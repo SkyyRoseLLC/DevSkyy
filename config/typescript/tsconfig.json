@@ -45,7 +45,7 @@
       "@/config/*": ["src/config/*"],
       "@/security/*": ["src/security/*"]
     },
-    "types": ["node", "jest", "@types/three"]
+    "types": ["node", "vitest/globals", "@types/three"]
   },
   "include": ["../../src/**/*"],
   "exclude": [

@@ -56,6 +56,10 @@ get_header();
 				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp' ) ); ?>">
 				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" alt="" width="1440" height="810" fetchpriority="high" decoding="sync">
 			</picture>
+			<video muted playsinline preload="none" poster="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" data-hero-video aria-hidden="true">
+				<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm">
+				<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4">
+			</video>
 		</div>
 		<div class="sr-house-hero__atmosphere" aria-hidden="true"><span class="sr-house-hero__clouds"></span><span class="sr-house-hero__bridge-lights"></span><span class="sr-house-hero__scanline"></span></div>
 		<div class="sr-house-hero__veil" aria-hidden="true"></div>

@@ -1,0 +1,15 @@
+{
+  "registry": "skills/fashion-theme-team/brain/branded-skills/sources/source-registry.json",
+  "expected_count": 234,
+  "observed_count": 234,
+  "unique_ids": 234,
+  "unique_paths": 234,
+  "source_hashes_verified": 234,
+  "frontmatter_verified": 234,
+  "authority_domain_count": 7,
+  "authenticated_https_authority_url_count": 18,
+  "authority_artifact_capture": "Validated separately by authority-capture.json; claim-specific anchors must still be fresh at use time",
+  "unknown_count": 7,
+  "errors": [],
+  "verdict": "PASS"
+}

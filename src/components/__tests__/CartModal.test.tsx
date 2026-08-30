@@ -1,13 +1,13 @@
 /**
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 import { CartModal } from '../CartModal';
 
 // Mock useCart hook
-jest.mock('../../hooks/useCart', () => ({
+vi.mock('../../hooks/useCart', () => ({
   useCart: () => ({
     items: [],
     subtotal: 0,
@@ -15,18 +15,18 @@ jest.mock('../../hooks/useCart', () => ({
     total: 0,
     itemCount: 0,
     currency: 'USD',
-    updateQuantity: jest.fn(),
-    removeItem: jest.fn(),
-    clearCart: jest.fn(),
+    updateQuantity: vi.fn(),
+    removeItem: vi.fn(),
+    clearCart: vi.fn(),
     error: null,
   }),
 }));
 
 describe('CartModal', () => {
-  const mockOnClose = jest.fn();
+  const mockOnClose = vi.fn();
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('renders nothing when isOpen is false', () => {

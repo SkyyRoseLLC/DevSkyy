@@ -1,6 +1,6 @@
 /**
  * Unit Tests for PriceTag3D
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import React from 'react';
@@ -9,30 +9,36 @@ import { PriceTag3D, createPriceTag3DObject, setupCSS2DRenderer, updateCSS2DRend
 import * as THREE from 'three';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // Mock CSS2DRenderer
-const mockRender = jest.fn();
-jest.mock('three/examples/jsm/renderers/CSS2DRenderer.js', () => ({
-  CSS2DRenderer: jest.fn().mockImplementation(() => ({
-    setSize: jest.fn(),
-    render: mockRender,
-    domElement: Object.assign(document.createElement('div'), {
-      style: { position: '', top: '', left: '', pointerEvents: '' },
-    }),
-  })),
-  CSS2DObject: jest.fn().mockImplementation(element => ({
-    element,
-    position: { copy: jest.fn() },
-    layers: { set: jest.fn() },
-  })),
+const mockRender = vi.fn();
+vi.mock('three/examples/jsm/renderers/CSS2DRenderer.js', () => ({
+  CSS2DRenderer: vi.fn(function CSS2DRenderer() {
+    return {
+      setSize: vi.fn(),
+      render: mockRender,
+      domElement: Object.assign(document.createElement('div'), {
+        style: { position: '', top: '', left: '', pointerEvents: '' },
+      }),
+    };
+  }),
+  CSS2DObject: vi.fn(function CSS2DObject(element) {
+    return {
+      element,
+      position: { copy: vi.fn() },
+      layers: { set: vi.fn() },
+    };
+  }),
 }));
 
 describe('PriceTag3D Component', () => {

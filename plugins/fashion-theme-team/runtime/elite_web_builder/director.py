@@ -1,3 +1,4 @@
+# ruff: noqa: E402
 """
 Project Director — coordinates the Elite Web Builder team.
 
@@ -225,7 +226,8 @@ class Director:
                 continue
             deps_met = all(
                 self._stories.get(
-                    dep, UserStory(id=dep, title="", description="", agent_role=AgentRole.DIRECTOR)
+                    dep,
+                    UserStory(id=dep, title="", description="", agent_role=AgentRole.DIRECTOR),
                 ).status
                 == StoryStatus.GREEN
                 for dep in story.depends_on
@@ -444,7 +446,10 @@ class Director:
                                         correct=f"Fix {analysis.category.value} in {analysis.gate.name}",
                                         agent=story.agent_role.value,
                                         story_id=story.id,
-                                        tags=[analysis.gate.name, analysis.category.value],
+                                        tags=[
+                                            analysis.gate.name,
+                                            analysis.category.value,
+                                        ],
                                     )
                                 )
                             story.status = StoryStatus.FAILED

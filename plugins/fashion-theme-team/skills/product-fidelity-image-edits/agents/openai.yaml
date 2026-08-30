@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Fidelity Media Gate"
+  short_description: "Exact products in native cinematic scenes"
+  default_prompt: "Use $product-fidelity-image-edits to bind the exact SKU sources, author the optical integration contract, and verify both product fidelity and native photographic integration before this media candidate can reach founder review."

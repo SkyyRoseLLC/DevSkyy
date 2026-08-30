@@ -110,7 +110,11 @@ def _make_result(
                 "title": "Eliminate render-blocking resources",
                 "score": 0,
             },
-            {"id": "uses-responsive-images", "title": "Properly size images", "score": 0.5},
+            {
+                "id": "uses-responsive-images",
+                "title": "Properly size images",
+                "score": 0.5,
+            },
         ],
         timestamp="2026-02-20T12:00:00Z",
     )
