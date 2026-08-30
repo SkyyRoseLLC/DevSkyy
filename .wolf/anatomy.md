@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-30T12:43:08.121Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-30T15:58:11.751Z
 > Files: 2294 tracked on main ∪ origin/main | Anatomy hits: 0 | Misses: 0
 
 ## ./
@@ -4405,8 +4405,8 @@
   - fn `_clamp_score` L158-166 (~84 tok)
   - fn `_uses_sku_as_handle` L167-178 (~133 tok)
   - class `CopyAdapter` L179-275 (~1088 tok)
-- `imagery.py` — ImageryAdapter: deterministic_checks (excluded SKU gate + PNG validation), build_judge_request, parse_verdict (fail-closed 6-gate scoring) (~1425 tok)
-  - class `ImageryAdapter` L55-117 (~868 tok)
+- `imagery.py` — Render Fidelity Evaluator — imagery domain adapter. (~1440 tok)
+  - class `ImageryAdapter` L56-118 (~868 tok)
 
 ## examples/
 
