@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-08-30T22:21:22+00:00",
-  "catalog_sha": "sha256:a8dea82bae08f39cef89d9a6a0a90639cbb85aa19b7899e46e7cd792fa72fa8f",
+  "generated_at": "2026-08-30T22:59:26+00:00",
+  "catalog_sha": "sha256:d8bdb7c791606eef8e14248b96e868b918972ecc1544a2c9642f0d4692ade361",
   "skus": {
     "br-001": {
       "sku": "br-001",
@@ -223,9 +223,14 @@
           "sha256": "sha256:850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
         },
         {
+          "role": "garment-founder-four-angle",
+          "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+          "sha256": "sha256:7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
-          "sha256": "sha256:274adf8ff0472eaa3006f099725c20f46bd6e5bf48d441306ae13b134bf429cf"
+          "sha256": "sha256:30d4e23ed59655d3eee08456ee417e632a6e6431d0282aa876ab20c0df58255a"
         }
       ]
     },

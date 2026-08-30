@@ -6,6 +6,8 @@ logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/love-hurts-logo.md
 reference_image: assets/products/source-photos/black-rose/br-007-shorts-front.jpeg
+founder_physical_authority_board: assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg
+founder_physical_authority_board_sha256: 7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130
 extra_references:
   - assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg
   - assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg
@@ -15,18 +17,23 @@ extra_references:
 
 # BLACK Rose × Love Hurts Basketball Shorts
 
-**Garment type lock:** Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
+**Garment type lock:** Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two front-side hand-pocket openings** (one per side) and **two separate horizontal rear pocket openings** (one per side) — four visible pocket openings total in the physical four-angle authority. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
 
 ## Branding — exactly what IS on this product
 
 > Logo art canonical references:
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - Love Hurts (wordmark + broken-heart-and-thorns lockup): `data/brand-logos/love-hurts-logo.md`
+> - Founder-supplied four-angle physical authority board: `assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg` (`sha256:7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130`)
 > - Physical source photos: `assets/products/source-photos/black-rose/br-007-shorts-front.jpeg`,
 >                           `assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg`,
 >                           `assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg`,
 >                           `assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg`
 > - Techflat context: `assets/products/source-photos/black-rose/br-007-techflat-shorts.jpeg`
+>
+> The four-angle board is founder-confirmed physical product truth. For editing or
+> generation, use the individual front, back, wearer-left, and wearer-right files
+> as the view-specific authorities. Never mirror one side to manufacture the other.
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
@@ -58,7 +65,7 @@ extra_references:
   appliquéd onto the body in classic baseball-script style with a contrast
   satin-stitch edge. **Technique:** tackle-twill. **Color:** white twill
   letter face with a dark satin-stitch edge.
-- **front-right-thigh** (cursive script overlapping the OAKLAND wordmark):
+- **front-wearer-left-thigh** (cursive script overlapping the OAKLAND wordmark):
   The "Love Hurts" wordmark in cursive script, rendered as a large
   sublimated/printed wordmark in **cream/peach/pink tonal color** on the
   black mesh. Spans the right thigh area, reading top-to-bottom as the
@@ -77,11 +84,11 @@ extra_references:
 - **back-body** (entire black mesh field): Same sublimated tonal grey
   rose-cluster pattern as the front-body (continuous across the garment).
   **Technique:** sublimated. **Color:** tonal grey on black mesh.
-- **back-upper / back-yoke** (large cursive across the upper back):
-  The "Love Hurts" wordmark in cursive script, rendered larger than the
-  front-right version, in **cream/peach/light-pink tonal color** sublimated
-  onto the back mesh. **Technique:** sublimated. **Color:** cream/peach/
-  light-pink tonal.
+- **back-wearer-left / upper-side continuity** (large cursive treatment entering
+  from the wearer-left side): The "Love Hurts" wordmark and broken-heart/thorn
+  treatment continue onto the wearer-left rear field in **cream/peach/light-pink
+  tonal color**. It is asymmetric and must not be centered, mirrored, or repeated
+  on wearer-right. **Technique:** sublimated. **Color:** cream/peach/light-pink tonal.
 - **back-side continuity:** The white mesh inserts remain on the two outer side
   panels. There is no white center-back pentagon. The wearer-left panel carries
   Love Hurts; the wearer-right panel carries the Black Rose cluster.
@@ -95,11 +102,10 @@ extra_references:
   Vertical hand pockets at both sides, **with zipper closures**.
   **Technique:** patch (sewn-on zipper hardware). **Color:** black
   zipper teeth (with white piping at the pocket edge).
-- **back-pocket** (single, centered upper-back, with zipper):
-  One zippered back pocket — visible as a horizontal welt opening
-  with white piping at the welt edges. **Technique:** patch (sewn-on
-  zipper hardware). **Color:** black zipper teeth (with white piping
-  at the welt edges).
+- **back-left-pocket / back-right-pocket** (two separate upper-back openings):
+  Two horizontal rear pocket openings — one on each side of the center-back seam —
+  with white welt/piping treatment. Do not collapse these into one centered pocket
+  and do not add a third rear pocket.
 - **hem / leg-binding**: Black ribbed-knit binding at the leg openings
   with a thin white contrast piping accent. **Technique:** stitched.
   **Color:** black with white piping.
@@ -127,8 +133,10 @@ extra_references:
   the OAKLAND tackle-twill wordmark, not a rose.
 - NO solid-color body — the body fabric carries the sublimated rose
   pattern (NOT a plain black field).
-- NO front pockets visible from outside — the visible pockets are on
-  the BACK only; the front is uninterrupted by pocket openings.
+- NO missing front-side pocket openings — the physical front shows one vertical
+  white-trimmed opening at each side. Do not erase them or replace them with cargo pockets.
+- NO single centered rear pocket — the physical back shows two separate horizontal
+  rear pocket openings, one per side.
 - NO black drawstrings — the drawstring is white.
 - NO black waistband — the waistband is white.
 - NO contrast satin-stitch edge other than dark on the OAKLAND letters.
@@ -137,8 +145,8 @@ extra_references:
   upper-body decoration of any kind).
 - NO Authentic Collection patch (that is reserved for the jersey series).
 - NO sublimated pattern on the white mesh side panels — the side panels
-  are clean white mesh with only the embroidered cluster (left) and
-  wordmark (right) on top.
+  are clean white mesh with only the Love Hurts embroidery on wearer-left
+  and the physical-color Black Rose cluster on wearer-right.
 
 ## Scene direction
 

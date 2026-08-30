@@ -160,10 +160,11 @@
       "candidate_id": "26f1ef20c6-br-commerce-2-v3",
       "attempt": 3,
       "outputs": [
-        "BR-COMMERCE-2 semantic v3 generated at renders/scroll-world/BR-COMMERCE-2/BR-COMMERCE-2-gpt-image-2-candidate-v3.png with SHA-256 26f1ef20c690f3736cbfa040c312ed7c609645fdda68a5ec03a68bf2c42f3113.",
+        "BR-COMMERCE-2 semantic v3 was moved to renders/scroll-world/BR-COMMERCE-2/rejected/BR-COMMERCE-2-gpt-image-2-candidate-v3-wrong-shorts-rejected.png with SHA-256 26f1ef20c690f3736cbfa040c312ed7c609645fdda68a5ec03a68bf2c42f3113.",
         "The candidate contains the exact requested two-look cast, excludes br-001/br-002, bridge and star treatments, and uses the font-statue-only Black Rose story.",
         "Senior review scores: product fidelity 77, optical integration 89, anatomy 96, collection story 94, commerce readiness 84.",
-        "V3 is the preferred quarantined refinement source; semantic generation is not proof of protected product, identity, or statue pixels."
+        "V3 was founder-rejected because the model is not wearing the actual BR-007 shorts; it cannot be reused as an edit or generation target.",
+        "Founder-supplied four-angle BR-007 physical authority is recorded at assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg with SHA-256 7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130."
       ],
       "blockers": [
         "paid provider approval",
@@ -188,16 +189,16 @@
       "candidate_id": "26f1ef20c6-br-commerce-2-v3",
       "attempt": 2,
       "outputs": [
-        "BR-COMMERCE-2 v3 completed independent visual review and remains a quarantined semantic candidate.",
-        "Direction, cast, anatomy, exclusion, and collection-story checks passed; fidelity promotion did not pass."
+        "BR-COMMERCE-2 v3 completed independent visual review and was then founder-rejected for wrong BR-007 shorts.",
+        "Direction, cast, anatomy, exclusion, and collection-story checks were insufficient because the physical product did not match."
       ],
       "blockers": [
         "Exact font-statue pixels and proportions are not preserved.",
-        "BR-007 shorts panel placement and construction remain approximate.",
+        "BR-007 shorts are not the founder's exact physical product; the v3 candidate is rejected and cannot be promoted or reused.",
         "BR-005, BR-007, BR-004, and model identity bytes are not protected by the semantic generation route.",
         "Male and female lighting still require one-field exposure integration."
       ],
-      "next_authority": "founder review"
+      "next_authority": "product-fidelity editor using the founder four-angle BR-007 authority"
     }
   ]
 }

@@ -1,0 +1,67 @@
+{
+  "schema": "product-fidelity-source-authority.v1",
+  "status": "VERIFIED",
+  "recorded_at": "2026-08-30",
+  "sku": "br-007",
+  "product_name": "BLACK Rose x Love Hurts Basketball Shorts",
+  "view": "founder_four_angle_physical_board",
+  "role": "physical_product_authority",
+  "source": {
+    "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+    "sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+    "dimensions": [1504, 1344],
+    "founder_confirmation": "All four panels show the founder's actual physical product."
+  },
+  "source_sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+  "component_views": [
+    {
+      "view": "front",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+      "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314"
+    },
+    {
+      "view": "back",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg",
+      "sha256": "8ee61bc5c937b9caf20e3d33445c9eaee8de70bc48c13a3a782006bf192eb2cb"
+    },
+    {
+      "view": "wearer_left",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg",
+      "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2"
+    },
+    {
+      "view": "wearer_right",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg",
+      "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
+    }
+  ],
+  "catalog": {
+    "path": "skyyrose-catalog.csv",
+    "sha256": "d8bdb7c791606eef8e14248b96e868b918972ecc1544a2c9642f0d4692ade361"
+  },
+  "sot_manifest": {
+    "path": "data/sot-images.json",
+    "sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b"
+  },
+  "source_photo_manifest": {
+    "path": "assets/products/source-photos/manifest.json",
+    "sha256": "e7e256e315e5ed284f209747d6d7eb67804f4665352e1dae70362a3e9cae3333"
+  },
+  "asset_manifest": {
+    "path": "assets/products/manifest.json",
+    "sha256": "2a50674d77b75b2c973884f11b83ab9ce5313302e81efa949d2b11c5ecbbe467"
+  },
+  "dossier": {
+    "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
+    "sha256": "30d4e23ed59655d3eee08456ee417e632a6e6431d0282aa876ab20c0df58255a"
+  },
+  "resolver": {
+    "id": "devskyy-product-authority-resolver",
+    "version": "1.0.0"
+  },
+  "usage_policy": {
+    "board_role": "founder-confirmed physical construction and cross-view identity authority",
+    "generation_inputs": "Use the hash-bound individual component view matching the requested camera. Never mirror a side view or substitute a generated candidate.",
+    "candidate_promotion": "A generated garment must match the contracted view and pass independent product-fidelity review before founder review."
+  }
+}

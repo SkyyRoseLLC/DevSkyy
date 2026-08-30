@@ -112,7 +112,28 @@ def test_br007_preserves_directional_side_authority():
     assert coverage["garment_type"] == "shorts"
     assert coverage["photo_paths"]["wearer-left"].endswith("br-007-shorts-wearer-left.jpeg")
     assert coverage["photo_paths"]["wearer-right"].endswith("br-007-shorts-wearer-right.jpeg")
+    assert coverage["photo_paths"]["founder-four-angle"].endswith(
+        "br-007-founder-four-angle-physical-authority.jpg"
+    )
     assert "side" in coverage["present_angles"]
+
+
+def test_founder_four_angle_board_cannot_replace_individual_view_authority():
+    """The proof board is supplemental and cannot satisfy compositor angles alone."""
+    from scripts import audit_source_photos as audit
+    from skyyrose.core.catalog_loader import read_catalog_rows
+
+    row = next(row for row in read_catalog_rows() if row.get("sku") == "br-007")
+    board = (
+        ROOT
+        / "assets/products/source-photos/black-rose"
+        / "br-007-founder-four-angle-physical-authority.jpg"
+    )
+    coverage = asdict(audit._build_coverage_for(row, {"founder-four-angle": board}))
+
+    assert coverage["present_angles"] == []
+    assert coverage["missing_angles"] == ["front", "back", "side", "detail-pocket"]
+    assert coverage["has_minimum_for_compositor"] is False
 
 
 def test_source_photo_cli_uses_wearer_relative_angles():

@@ -113,6 +113,13 @@ _CANONICAL_SELECTIONS: dict[tuple[str, str], str] = {
 }
 
 _EXPLICIT_PATH_ANGLES: dict[str, tuple[str, str]] = {
+    # Founder-confirmed board containing BR-007's physical front, back,
+    # wearer-left, and wearer-right views. It is supplemental authority; the
+    # individual view files remain the per-angle compositor inputs.
+    "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg": (
+        "br-007",
+        "founder-four-angle",
+    ),
     # The canonical fannie packshot predates the angle-suffix convention.
     "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg": (
         "lh-005",

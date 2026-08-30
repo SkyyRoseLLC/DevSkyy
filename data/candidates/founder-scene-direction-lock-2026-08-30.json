@@ -259,11 +259,41 @@
       },
       {
         "sku": "br-007",
-        "path": "assets/products/references/br-007-shorts-real-front.jpeg",
-        "sha256": "2da1309689439041ce8a53a23a7c5d6eeac1b80ecbf8822efbb796361a37c285"
+        "role": "founder four-angle physical authority board",
+        "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+        "sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+        "authority_receipt": {
+          "path": "data/candidates/br-007-four-angle-source-authority-2026-08-30.json",
+          "sha256": "0e3da7f59cb3f36adb9e9f5f8116936e1acc192e03107b280d94aacf6f85994c"
+        }
       },
       {
         "sku": "br-007",
+        "role": "physical product authority: front",
+        "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+        "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314"
+      },
+      {
+        "sku": "br-007",
+        "role": "physical product authority: back",
+        "path": "assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg",
+        "sha256": "8ee61bc5c937b9caf20e3d33445c9eaee8de70bc48c13a3a782006bf192eb2cb"
+      },
+      {
+        "sku": "br-007",
+        "role": "physical product authority: wearer-left Love Hurts panel",
+        "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg",
+        "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2"
+      },
+      {
+        "sku": "br-007",
+        "role": "physical product authority: wearer-right Black Rose panel",
+        "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg",
+        "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
+      },
+      {
+        "sku": "br-007",
+        "role": "secondary techflat context only; cannot override physical views",
         "path": "assets/products/references/br-007-shorts-techflat.jpeg",
         "sha256": "7e2d14d55e12e4b1a03c3de45f4317071f28d5c981594852ec7a38e8c4eb8c6f"
       },
