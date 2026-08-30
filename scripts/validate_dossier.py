@@ -43,6 +43,7 @@ ALLOWED_TECHNIQUES = {
     "embroidered-patch",
     "printed",
     "screen-print",
+    "sewn-on",
     "sublimated",
     "stitched",
     "patch",

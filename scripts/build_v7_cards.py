@@ -42,16 +42,17 @@ from pathlib import Path
 
 from skyyrose.core.catalog_loader import (
     CATALOG_CSV,
+    PROJECT_ROOT,
     bool_col,
     int_col,
     read_catalog_rows,
 )
 
 # ---------------------------------------------------------------------------
-# Paths (derived from the canonical CSV location — single path anchor)
+# Paths (catalog truth is root-owned; the V7 cards remain a theme projection)
 # ---------------------------------------------------------------------------
-_THEME_DATA: Path = CATALOG_CSV.parent
-_THEME_ROOT: Path = _THEME_DATA.parent
+_THEME_ROOT: Path = PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship"
+_THEME_DATA: Path = _THEME_ROOT / "data"
 _V7_IMG_DIR: Path = _THEME_ROOT / "assets" / "images" / "products" / "v7"
 _OUT_PATH: Path = _THEME_DATA / "v7-cards.json"
 
