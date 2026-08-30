@@ -71,8 +71,32 @@
     ],
     "source_records": [
       "data/candidates/founder-scene-approvals-2026-08-29.json",
-      "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/manifest.json"
+      "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/manifest.json",
+      "data/candidates/founder-scene-direction-lock-2026-08-30.json"
     ]
+  },
+  "founder_scene_direction_reconciliation": {
+    "record": "data/candidates/founder-scene-direction-lock-2026-08-30.json",
+    "signature_model_authority": "FOUNDER_VERIFIED__DO_NOT_REGENERATE",
+    "signature_assignments": {
+      "SIG-COMMERCE-1": {
+        "products": ["sg-009", "sg-007"],
+        "scene": "dimensional Signature font statue"
+      },
+      "SIG-COMMERCE-2": {
+        "products": ["sg-013", "sg-014", "sg-006"],
+        "scene": "protected Signature SR-and-rose graphic monument"
+      },
+      "SIG-COMMERCE-3": {
+        "products": ["sg-001", "sg-005", "sg-003", "sg-002", "sg-015"],
+        "scene": "one ensemble in the Golden Gate environment",
+        "product_group_count": 4,
+        "canonical_sku_count": 5
+      }
+    },
+    "black_rose_assignment": {
+      "BR-COMMERCE-2": "preserve selected base and apply only mask-bounded canonical logo patches"
+    }
   },
   "phases": [
     {
@@ -88,6 +112,8 @@
         "Four product-scene visuals are founder-approved: BR-COMMERCE-1, BR-COMMERCE-3, LH-COMMERCE-1, and LH-COMMERCE-3.",
         "All four approved product-scene visuals are hash-verified locally; BR-COMMERCE-1 and LH-COMMERCE-3 were recovered byte-identically from their original provider results.",
         "Five product-scene visuals remain unapproved: BR-COMMERCE-2, LH-COMMERCE-2, SIG-COMMERCE-1, SIG-COMMERCE-2, and SIG-COMMERCE-3.",
+        "Signature model acquisition is resolved by founder verification: SIG-COMMERCE-1 uses the Sherpa and Beanie look with the font statue; SIG-COMMERCE-2 uses the mint and lavender couple with the graphic monument; SIG-COMMERCE-3 places all five pre-order SKUs together in one Golden Gate scene.",
+        "BR-COMMERCE-2 is a bounded logo-patch repair of the selected base, not a scene or model rebuild.",
         "Historical four-scene statue set classified as rejected legacy scope, not part of the commerce count."
       ],
       "blockers": [],
@@ -108,12 +134,14 @@
         "Existing founder approvals preserved as independent approval facts; missing local artifacts do not erase those decisions."
       ],
       "blockers": [
-        "Five unapproved product-scene contracts require v2 re-authoring against current root authority.",
-        "The five unapproved scenes are missing approved same-pose/on-model product sources and genuine garment mattes.",
+        "BR-COMMERCE-2 and LH-COMMERCE-2 retain unresolved bounded product-fidelity work.",
+        "BR-COMMERCE-2 requires mask-bounded canonical logo patches; its selected base scene, model, pose, garment silhouette, and environment must remain unchanged.",
+        "LH-COMMERCE-2 still requires a separately authorized current product-source resolution.",
+        "The three Signature scenes no longer have a model-authority blocker; they are environment-integration work around founder-verified protected sources.",
         "Fourteen of seventeen candidate dossier hashes are stale.",
         "Responsive safe-zone and optical measurements are not current candidate-bound evidence."
       ],
-      "next_authority": "founder decision applies only to the five unapproved scenes"
+      "next_authority": "product-fidelity image editor for BR-COMMERCE-2 and SIG-COMMERCE-1 through SIG-COMMERCE-3; separate source-authority resolution for LH-COMMERCE-2"
     },
     {
       "id": "SCENE-GENERATION-3",
@@ -126,10 +154,11 @@
       "outputs": [],
       "blockers": [
         "paid provider approval",
-        "per-scene v2 preflight PASS for the five unapproved scenes",
+        "candidate-bound preflight PASS for BR-COMMERCE-2, LH-COMMERCE-2, and the three founder-mapped Signature scenes",
         "registered scene-generation adapter live validation",
-        "current source-authority receipts",
-        "approved same-pose sources and garment mattes"
+        "current source-authority receipts for LH-COMMERCE-2",
+        "mask receipt and pixel-diff verification for BR-COMMERCE-2",
+        "native-integration verification for each protected Signature model layer"
       ],
       "next_authority": "independent visual reviewer"
     },

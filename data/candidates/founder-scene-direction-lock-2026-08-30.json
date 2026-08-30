@@ -1,0 +1,180 @@
+{
+  "schema_version": "skyyrose.founder-scene-direction-lock.v1",
+  "recorded_at": "2026-08-30",
+  "authority": "FOUNDER_CURRENT_TASK",
+  "scope": "Signature commerce scene casting and BR-COMMERCE-2 bounded repair",
+  "global_constraints": {
+    "verified_models": "PRESERVE_EXACTLY",
+    "garment_redraw": "PROHIBITED",
+    "scene_change_only": true,
+    "promotion": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "wiring": "NOT_AUTHORIZED_BY_THIS_RECORD",
+    "deployment": "NOT_AUTHORIZED_BY_THIS_RECORD"
+  },
+  "signature_scenes": [
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "founder_direction": "The Sherpa Jacket and Signature Beanie look uses the dimensional Signature font statue scene.",
+      "product_bindings": [
+        "sg-009",
+        "sg-007"
+      ],
+      "cast": [
+        {
+          "role": "single verified look",
+          "wears": [
+            "sg-009",
+            "sg-007"
+          ]
+        }
+      ],
+      "hero_aspect": "font_statue",
+      "scene_plate": {
+        "path": "renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
+        "sha256": "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600"
+      },
+      "protected_model_input": {
+        "path": "renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
+        "sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a"
+      },
+      "state": "READY_FOR_ENVIRONMENT_REBUILD_AROUND_PROTECTED_SOURCE"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "founder_direction": "The mint and lavender couple uses the protected Signature SR-and-rose graphic monument scene.",
+      "product_bindings": [
+        "sg-013",
+        "sg-014",
+        "sg-006"
+      ],
+      "cast": [
+        {
+          "role": "male verified look",
+          "wears": [
+            "sg-013",
+            "sg-014"
+          ]
+        },
+        {
+          "role": "female verified look",
+          "wears": [
+            "sg-006"
+          ]
+        }
+      ],
+      "hero_aspect": "signature_graphic_monument",
+      "scene_plate": {
+        "path": "renders/scroll-world/SIG-COMMERCE-2/scene-authority/sig-3-graphic-monument-environment-plate-v3.png",
+        "sha256": "ce1232d5b470a25a160fdde4f559b87652782d9f19b69fe635313944cfedc5fb"
+      },
+      "protected_model_inputs": [
+        {
+          "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-013-sg-014-mint-set-look-protected-v2.png",
+          "sha256": "eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16"
+        },
+        {
+          "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-006-hoodie-look-protected-v1.png",
+          "sha256": "7e6a0c73f442859891f7b612de2e872dcaa4ec1b8f14ece290541f839a549740"
+        }
+      ],
+      "state": "READY_FOR_ENVIRONMENT_REBUILD_AROUND_PROTECTED_SOURCES"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-3",
+      "founder_direction": "All five Signature pre-order items appear together in one Golden Gate environment.",
+      "product_bindings": [
+        "sg-001",
+        "sg-005",
+        "sg-003",
+        "sg-002",
+        "sg-015"
+      ],
+      "product_group_count": 4,
+      "canonical_sku_count": 5,
+      "windbreaker_set_rule": "sg-015 jacket and pants are one canonical set SKU",
+      "hero_aspect": "golden_gate_background",
+      "scene_plates": [
+        {
+          "role": "golden_gate_environment_authority",
+          "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-2-bridge-landscape-environment-plate-v3.png",
+          "sha256": "0704df08db9ad6e49d7055d31b1d49073a86eca9b0569f151842d52dd0ba4271"
+        },
+        {
+          "role": "founder_supplied_scene_look_reference",
+          "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
+          "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97"
+        }
+      ],
+      "protected_model_inputs": [
+        {
+          "covers": [
+            "sg-001",
+            "sg-005"
+          ],
+          "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
+          "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0"
+        },
+        {
+          "covers": [
+            "sg-003",
+            "sg-002"
+          ],
+          "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
+          "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575"
+        },
+        {
+          "covers": [
+            "sg-015"
+          ],
+          "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
+          "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09"
+        }
+      ],
+      "state": "READY_FOR_SINGLE_ENSEMBLE_ENVIRONMENT_REBUILD"
+    }
+  ],
+  "black_rose_bounded_repair": {
+    "scene_id": "BR-COMMERCE-2",
+    "founder_direction": "Preserve the existing promising scene and perform only a bounded logo patch edit.",
+    "selected_base": {
+      "path": "renders/scroll-world/BR-COMMERCE-2/founder-selected-base/br-commerce-2-native-preview-v1.png",
+      "sha256": "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925"
+    },
+    "product_bindings": [
+      "br-005",
+      "br-007"
+    ],
+    "canonical_patch_authorities": [
+      {
+        "sku": "br-005",
+        "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+        "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4"
+      },
+      {
+        "sku": "br-007",
+        "path": "assets/products/references/br-007-shorts-real-front.jpeg",
+        "sha256": "2da1309689439041ce8a53a23a7c5d6eeac1b80ecbf8822efbb796361a37c285"
+      },
+      {
+        "sku": "br-007",
+        "path": "assets/products/references/br-007-shorts-techflat.jpeg",
+        "sha256": "7e2d14d55e12e4b1a03c3de45f4317071f28d5c981594852ec7a38e8c4eb8c6f"
+      }
+    ],
+    "allowed_changes": [
+      "replace incorrect garment logo pixels inside explicit masks",
+      "edge blend limited to the patched logo boundaries"
+    ],
+    "prohibited_changes": [
+      "model identity",
+      "pose",
+      "garment silhouette",
+      "scene composition",
+      "environment",
+      "lighting outside the patch masks",
+      "new or duplicated logos"
+    ],
+    "rejected_patch": "The prior patch that added an extra arm logo is not authority and must not be reused.",
+    "state": "READY_FOR_MASK_BOUNDED_LOGO_PATCH"
+  }
+}
