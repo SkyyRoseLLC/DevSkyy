@@ -1072,16 +1072,19 @@ function skyyrose2_product_card_media_manifest() {
 }
 
 /**
- * Return only attachment IDs that are both in the product gallery and named
- * in the approved SOT media manifest, ordered for a portal card.
+ * Return only gallery attachments or packaged derivatives that are both named
+ * in the founder-admitted SOT media manifest, ordered for a portal card.
  *
  * Product cards must lead with an on-model front view. Falling back to a
  * WooCommerce thumbnail, a collection scene, or a generic placeholder makes
  * a product look approved when its garment proof is not. If the on-model
- * proof cannot be reconciled, this intentionally returns an empty array.
+ * proof cannot be reconciled, this intentionally returns an empty array. A
+ * package-verified on-model derivative is a narrowly scoped fallback for a
+ * missing live attachment; it may never resolve a different SKU or a generic
+ * WooCommerce placeholder.
  *
  * @param WC_Product $product Current WooCommerce product.
- * @return array<int,array{id:int,role:string}>
+ * @return array<int,array{id:int,role:string,src?:string,width?:int,height?:int}>
  */
 function skyyrose2_product_verified_card_media( $product ) {
 	if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
@@ -1105,9 +1108,6 @@ function skyyrose2_product_verified_card_media( $product ) {
 		$attachment_ids = array_merge( $attachment_ids, array_map( 'absint', (array) $product->get_gallery_image_ids() ) );
 	}
 	$attachment_ids = array_values( array_unique( array_filter( $attachment_ids ) ) );
-	if ( empty( $attachment_ids ) ) {
-		return array();
-	}
 
 	$attachment_paths = array();
 	foreach ( $attachment_ids as $attachment_id ) {
@@ -1124,6 +1124,9 @@ function skyyrose2_product_verified_card_media( $product ) {
 		$role = isset( $view['role'] ) ? strtolower( (string) $view['role'] ) : '';
 		$role = preg_replace( '/[^a-z0-9_]/', '', $role );
 		if ( ! in_array( $role, $allowed_roles, true ) || isset( $matched[ $role ] ) ) {
+			continue;
+		}
+		if ( 'on_model_front' === $role && 'founder_launch_front' !== ( $view['admission'] ?? '' ) ) {
 			continue;
 		}
 
@@ -1143,6 +1146,24 @@ function skyyrose2_product_verified_card_media( $product ) {
 				break;
 			}
 		}
+
+		if ( isset( $matched[ $role ] ) || 'on_model_front' !== $role || empty( $view['derivative'] ) ) {
+			continue;
+		}
+
+		$derivative_path = ltrim( (string) $view['derivative'], '/' );
+		$derivative_file = SKYYROSE2_DIR . '/' . $derivative_path;
+		if ( ! file_exists( $derivative_file ) ) {
+			continue;
+		}
+		$dimensions = function_exists( 'wp_getimagesize' ) ? wp_getimagesize( $derivative_file ) : @getimagesize( $derivative_file ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+		$matched[ $role ] = array(
+			'id'     => 0,
+			'role'   => $role,
+			'src'    => SKYYROSE2_URI . '/' . $derivative_path,
+			'width'  => ! empty( $dimensions[0] ) ? (int) $dimensions[0] : 600,
+			'height' => ! empty( $dimensions[1] ) ? (int) $dimensions[1] : 800,
+		);
 	}
 
 	if ( empty( $matched['on_model_front'] ) ) {

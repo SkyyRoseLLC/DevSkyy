@@ -197,8 +197,43 @@ if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/comme
 	! rg -q 'sr2-c-product-portal__architecture' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/functions.php"; then
+	! rg -q 'function skyyrose2_product_verified_card_media' "$THEME_DIR/functions.php" || \
+	! rg -q 'skyyrose2_product_verified_card_media' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'founder_launch_front' "$THEME_DIR/data/opening-product-media.json"; then
 	echo "FAIL approved ornate product-card frame or verified view reel missing" >&2
+	exit 1
+fi
+
+if ! node - "$THEME_DIR/data/opening-product-media.json" "$THEME_DIR/data/product-presentation-registry.json" <<'NODE'
+const fs = require('fs');
+const [mediaPath, registryPath] = process.argv.slice(2);
+const media = JSON.parse(fs.readFileSync(mediaPath, 'utf8'));
+const registry = JSON.parse(fs.readFileSync(registryPath, 'utf8'));
+const products = media.products || {};
+const rejectedPath = /(?:^|\/)(?:ghost|hub)(?:\/|$)|(?:^|[-_])(?:flat|mannequin|placeholder)(?:[-_]|$)/i;
+const jerseySkus = new Set(['br-003', 'br-008', 'br-009', 'br-010', 'br-011', 'br-012', 'br-014', 'br-015']);
+const collections = new Set();
+let preorderFrontCount = 0;
+for (const [sku, record] of Object.entries(products)) {
+  const presentation = registry.products?.[sku];
+  const fronts = (record.views || []).filter((view) => view.role === 'on_model_front' && view.admission === 'founder_launch_front');
+  if (!presentation || fronts.length !== 1 || rejectedPath.test(fronts[0]?.source || '') || jerseySkus.has(sku)) {
+    throw new Error(`invalid launch-card front admission for ${sku}`);
+  }
+  if (record.collection !== presentation.collection) {
+    throw new Error(`collection mismatch for ${sku}`);
+  }
+  collections.add(record.collection);
+  if (presentation.is_preorder) preorderFrontCount += 1;
+}
+for (const collection of ['signature', 'black-rose', 'love-hurts', 'kids-capsule']) {
+  if (!collections.has(collection)) throw new Error(`missing launch front for ${collection}`);
+}
+if (!preorderFrontCount) throw new Error('pre-order has no admitted on-model front');
+console.log(`Launch card media admission passed (${Object.keys(products).length} SKU fronts; ${preorderFrontCount} pre-order fronts).`);
+NODE
+then
+	echo "FAIL launch card media admission is incomplete or uses a rejected source" >&2
 	exit 1
 fi
 
