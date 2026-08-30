@@ -58,6 +58,17 @@ History follows Conventional Commit-style subjects: `feat(theme): ...`,
 `fix(theme): ...`, `docs: ...`, `chore(wolf): ...`. Use imperative, scoped
 summaries.
 
+Every completed code change must follow the full review handoff sequence:
+
+1. Run the relevant validation commands.
+2. Commit the validated changes on the current branch.
+3. Call the `make_pr` tool immediately after the commit with an appropriate
+   title and body.
+
+Do not call `make_pr` when no codebase changes were made. Do not finish with a
+commit that has not been handed off through `make_pr`, and do not create a pull
+request for uncommitted work.
+
 Pull requests need problem statement, implementation summary, test evidence,
 linked issue/bug ID, and screenshots or recordings for UI changes. Note
 migrations, environment changes, security impact, and deployment steps. Never
