@@ -1,0 +1,86 @@
+{
+  "schema_version": "fashion-theme-team-phase-ledger.v1",
+  "mission": "Finish the remaining SkyyRose Image 2 collection-scene review candidates without bypassing product authority, native integration, independent review, or founder promotion gates.",
+  "baseline": {
+    "branch": "codex/final-scenes-e2e-20260830",
+    "commit": "6d3e87bab9f401856e9d122b2f2ccbfa4a129b2a",
+    "worktree": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy",
+    "dirty": false,
+    "status_checked_before_checkpoint": true
+  },
+  "approval_boundaries": {
+    "local_candidate_generation": "ASK_BEFORE_PAID_CALL",
+    "candidate_commit": "AUTO_WITH_LOG",
+    "promotion": "FOUNDER_APPROVAL_REQUIRED",
+    "wiring": "SEPARATE_APPROVAL_REQUIRED",
+    "deployment": "SEPARATE_APPROVAL_REQUIRED"
+  },
+  "phases": [
+    {
+      "id": "SCENE-DISCOVERY-1",
+      "state": "PASSED",
+      "owner": "fashion-theme-lead",
+      "dependencies": [],
+      "owned_paths": ["tasks/fashion-theme-team-final-scenes-ledger-2026-08-30.json"],
+      "candidate_id": "6d3e87bab-scene-discovery-1",
+      "attempt": 1,
+      "outputs": [
+        "Nine commerce scenes reconciled: two preserved exact-byte candidates and seven unfinished scenes.",
+        "Historical four-scene statue set classified as rejected legacy scope, not part of the commerce count."
+      ],
+      "blockers": [],
+      "next_authority": "catalog-sot-integrator and brand-experience-architect"
+    },
+    {
+      "id": "SCENE-AUTHORITY-2",
+      "state": "BLOCKED",
+      "owner": "catalog-sot-integrator",
+      "dependencies": ["SCENE-DISCOVERY-1"],
+      "owned_paths": [],
+      "candidate_id": "6d3e87bab-scene-authority-1",
+      "attempt": 1,
+      "outputs": [
+        "Current-root 17-SKU scene authority matrix completed.",
+        "Focused source/manifest tests: 27 passed.",
+        "Root source-photo audit: 12 of 33 compositor-ready, 21 blocked, zero with full required-angle coverage."
+      ],
+      "blockers": [
+        "Seven contracts require v2 re-authoring against current root authority.",
+        "Missing approved same-pose/on-model product sources and genuine garment mattes.",
+        "Fourteen of seventeen candidate dossier hashes are stale.",
+        "Responsive safe-zone and optical measurements are not current candidate-bound evidence."
+      ],
+      "next_authority": "founder decision: exact-product capture route or full-native-redraw candidate authorization"
+    },
+    {
+      "id": "SCENE-GENERATION-3",
+      "state": "BLOCKED",
+      "owner": "product-fidelity-image-edits",
+      "dependencies": ["SCENE-AUTHORITY-2"],
+      "owned_paths": ["wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/"],
+      "candidate_id": null,
+      "attempt": 1,
+      "outputs": [],
+      "blockers": [
+        "paid provider approval",
+        "per-scene v2 preflight PASS",
+        "registered scene-generation adapter live validation",
+        "current source-authority receipts",
+        "approved same-pose sources and garment mattes"
+      ],
+      "next_authority": "independent visual reviewer"
+    },
+    {
+      "id": "SCENE-REVIEW-4",
+      "state": "PENDING",
+      "owner": "visual-commerce-qa",
+      "dependencies": ["SCENE-GENERATION-3"],
+      "owned_paths": [],
+      "candidate_id": null,
+      "attempt": 1,
+      "outputs": [],
+      "blockers": [],
+      "next_authority": "founder review"
+    }
+  ]
+}
