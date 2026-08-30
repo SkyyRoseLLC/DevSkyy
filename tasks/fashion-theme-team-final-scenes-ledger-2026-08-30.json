@@ -96,7 +96,11 @@
       }
     },
     "black_rose_assignment": {
-      "BR-COMMERCE-2": "preserve selected base; correct BR-007 shorts and BR-005 logos with bounded masks; add the exact founder-supplied BR-004 woman in the long hoodie-dress"
+      "BR-COMMERCE-2": "correct BR-007 shorts and BR-005 logos with bounded masks; add exact founder-supplied BR-004 long-hoodie woman; route the final cast to the exact Black Rose font-statue-only scene because the other approved Black Rose scenes carry the bridge and graphic roles"
+    },
+    "black_rose_product_exclusivity": {
+      "BR-COMMERCE-1": "br-001 and br-002 are exclusive to the founder-approved star/rose graphic scene at cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952",
+      "BR-COMMERCE-2": "br-005, br-007, and br-004 only; no crewneck or jogger reuse"
     }
   },
   "phases": [
@@ -114,7 +118,8 @@
         "All four approved product-scene visuals are hash-verified locally; BR-COMMERCE-1 and LH-COMMERCE-3 were recovered byte-identically from their original provider results.",
         "Five product-scene visuals remain unapproved: BR-COMMERCE-2, LH-COMMERCE-2, SIG-COMMERCE-1, SIG-COMMERCE-2, and SIG-COMMERCE-3.",
         "Signature routing is founder-locked: SIG-COMMERCE-1 uses the Sherpa and Beanie look with the font statue; SIG-COMMERCE-2 uses the mint and lavender couple with the graphic monument but its previously bound female model is rejected; SIG-COMMERCE-3 places all five pre-order SKUs together in one Golden Gate scene and requires exact SG-001/SG-003 shorts corrections.",
-        "BR-COMMERCE-2 preserves its selected base, corrects BR-007 shorts and BR-005 logos within explicit masks, and adds the exact founder-supplied BR-004 long-hoodie woman; this is not a full scene rebuild.",
+        "BR-COMMERCE-2 preserves the promising male cast/layout only, corrects BR-007 shorts and BR-005 logos within explicit masks, adds the exact founder-supplied BR-004 long-hoodie woman, and replaces the superseded waterfront with the Black Rose font-statue-only environment.",
+        "BR-COMMERCE-1 remains the exclusive approved scene for br-001 crewneck and br-002 joggers; those products cannot appear in BR-COMMERCE-2.",
         "Historical four-scene statue set classified as rejected legacy scope, not part of the commerce count."
       ],
       "blockers": [],
@@ -136,7 +141,7 @@
       ],
       "blockers": [
         "BR-COMMERCE-2 and LH-COMMERCE-2 retain unresolved bounded product-fidelity work.",
-        "BR-COMMERCE-2 requires mask-bounded shorts/logo corrections plus the exact founder-supplied BR-004 long-hoodie woman model; its selected base scene, existing male model, pose, garment silhouette, and environment must remain unchanged outside those envelopes.",
+        "BR-COMMERCE-2 requires mask-bounded shorts/logo corrections, a pixel-preserving matte for the exact founder-supplied BR-004 long-hoodie woman, and a new font-statue-only plate. Its existing male model, pose, and garment silhouette remain protected; the old bridge-and-waterfront environment is superseded.",
         "LH-COMMERCE-2 still requires a separately authorized current product-source resolution.",
         "SIG-COMMERCE-1 is environment integration around a protected model and exact protected font statue.",
         "SIG-COMMERCE-2 is blocked until the correct founder-supplied female wearer replaces the rejected mint-hoodie model.",
@@ -144,7 +149,7 @@
         "Fourteen of seventeen candidate dossier hashes are stale.",
         "Responsive safe-zone and optical measurements are not current candidate-bound evidence."
       ],
-      "next_authority": "founder-supplied BR-004 woman model and SIG-COMMERCE-2 replacement wearer; then product-fidelity image editor; separate source-authority resolution for LH-COMMERCE-2"
+      "next_authority": "pixel-preserving BR-004 matte, BR-COMMERCE-2 font-statue-only plate, and SIG-COMMERCE-2 replacement wearer; then product-fidelity image editor; separate source-authority resolution for LH-COMMERCE-2"
     },
     {
       "id": "SCENE-GENERATION-3",
@@ -161,6 +166,8 @@
         "registered scene-generation adapter live validation",
         "current source-authority receipts for LH-COMMERCE-2",
         "mask receipt and pixel-diff verification for BR-COMMERCE-2",
+        "font-statue-only BR-COMMERCE-2 plate bound to the exact Black Rose statue",
+        "pixel-preserving alpha matte receipt for the founder-supplied BR-004 woman",
         "correct replacement wearer authority for SIG-COMMERCE-2",
         "exact shorts-correction receipts for SIG-COMMERCE-3",
         "native-integration verification for each protected Signature model layer and protected monument"

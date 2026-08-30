@@ -151,13 +151,55 @@
       "state": "BLOCKED_PENDING_SHORTS_CORRECTION_AND_SINGLE_ENSEMBLE_INTEGRATION"
     }
   ],
+  "black_rose_scene_exclusivity": {
+    "BR-COMMERCE-1": {
+      "decision": "FOUNDER_APPROVED_VISUAL__PRESERVE_DO_NOT_REGENERATE",
+      "asset": "renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-gpt-image-2-candidate.png",
+      "sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952",
+      "exclusive_product_bindings": [
+        "br-001",
+        "br-002"
+      ],
+      "hero_aspect": "black_rose_star_graphic",
+      "rule": "The crewneck and joggers are exclusive to this approved scene and must not be reused in BR-COMMERCE-2 or another Black Rose scene."
+    },
+    "BR-COMMERCE-2": {
+      "exclusive_product_bindings": [
+        "br-005",
+        "br-007",
+        "br-004"
+      ],
+      "hero_aspect": "black_rose_font_statue_only"
+    }
+  },
   "black_rose_bounded_repair": {
     "scene_id": "BR-COMMERCE-2",
-    "founder_direction": "Preserve the existing promising scene, correct the shorts and garment logos with bounded patches, and add the exact founder-supplied woman wearing the separate long BR-004 hoodie as a hoodie dress.",
-    "edit_scope": "MASKED_GARMENT_PIXELS_AND_EXACT_FOUNDER_MODEL_INSERTION_ONLY",
+    "founder_direction": "Correct the shorts and garment logos with bounded patches, add the exact founder-supplied woman wearing the separate long BR-004 hoodie as a hoodie dress, and place the cast in the Black Rose font-statue scene as the sole hero treatment.",
+    "edit_scope": "MASKED_GARMENT_PIXELS__EXACT_FOUNDER_MODEL_INSERTION__AND_PROTECTED_FONT_STATUE_ENVIRONMENT_REPLACEMENT_ONLY",
     "selected_base": {
       "path": "renders/scroll-world/BR-COMMERCE-2/founder-selected-base/br-commerce-2-native-preview-v1.png",
-      "sha256": "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925"
+      "sha256": "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925",
+      "role": "promising cast/layout reference only; its bridge-and-waterfront environment is superseded"
+    },
+    "scene_contract": {
+      "hero_aspect": "black_rose_font_statue_only",
+      "protected_hero_element": {
+        "path": "renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+        "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+        "placement": "Preserve the exact silver dimensional lettering, backing rails, Collection line, rose, silhouette, proportions, and depth as the scene's sole hero monument."
+      },
+      "required_environment": "restrained Black Rose black-stone environment supporting the font statue and cast without another collection monument",
+      "forbidden_scene_elements": [
+        "Bay Bridge or Golden Gate Bridge as a scene feature",
+        "Black Rose star graphic or separate graphic monument",
+        "generic or redrawn lettering",
+        "competing statue, lockup, portal, or hero mark"
+      ],
+      "forbidden_product_bindings": [
+        "br-001",
+        "br-002"
+      ],
+      "environment_state": "BLOCKED_PENDING_FONT_STATUE_ONLY_PLATE"
     },
     "product_bindings": [
       "br-005",
@@ -181,6 +223,34 @@
         ]
       }
     ],
+    "founder_supplied_model_source": {
+      "wearer": "woman",
+      "sku": "br-004",
+      "path": "assets/products/source-photos/black-rose/br-004-founder-model-source-front.png",
+      "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+      "dimensions": [
+        2688,
+        1520
+      ],
+      "source_alpha_extrema": [
+        255,
+        255
+      ],
+      "decision": "FOUNDER_SUPPLIED_EXACT_MODEL_AUTHORITY",
+      "authority_rank": "PRIMARY__OVERRIDES_OLDER_FLAT_HOODIE_DRESS_FILE",
+      "preserve": [
+        "identity",
+        "face",
+        "hair",
+        "body",
+        "pose",
+        "BR-004 long hoodie-dress",
+        "centered monochrome rose-over-cloud embroidery",
+        "boots"
+      ],
+      "source_background": "SOURCE_ONLY__MUST_NOT_ENTER_FINAL_SCENE",
+      "matte_state": "BLOCKED_PENDING_PIXEL_PRESERVING_ALPHA_MATTE"
+    },
     "canonical_patch_authorities": [
       {
         "sku": "br-005",
@@ -199,33 +269,36 @@
       },
       {
         "sku": "br-004",
-        "role": "physical long-hoodie construction and silhouette authority",
+        "role": "secondary physical construction history only",
         "path": "assets/3d-models/black-rose/Womens Black Rose Hooded Dress.jpeg",
-        "sha256": "23e4a5107d1617110c8d7fadb83b6bf67f7f8eb462ca70fdc30d5fdcee1b5882"
+        "sha256": "23e4a5107d1617110c8d7fadb83b6bf67f7f8eb462ca70fdc30d5fdcee1b5882",
+        "authority_rank": "SECONDARY__CANNOT_OVERRIDE_FOUNDER_MODEL"
       }
     ],
     "allowed_changes": [
       "correct BR-007 shorts construction and logo pixels inside explicit masks",
       "replace incorrect BR-005 garment logo pixels inside explicit masks",
       "insert the exact founder-supplied BR-004 woman model into the open scene area",
+      "replace the superseded bridge-and-waterfront background with a new Black Rose black-stone plate carrying only the exact protected font statue as its hero treatment",
+      "add contact shadows, floor reflections, depth, and environmental light around protected model boundaries without altering protected model RGB pixels",
       "edge blend limited to the patch masks and the inserted model integration envelope"
     ],
     "prohibited_changes": [
-      "model identity",
-      "pose",
-      "garment silhouette",
-      "scene composition",
-      "environment",
-      "lighting outside the patch masks",
-      "new or duplicated logos"
+      "existing male model identity",
+      "existing male pose",
+      "existing male garment silhouette",
+      "existing male pixels outside the approved shorts and logo masks",
+      "environment changes beyond the authorized font-statue-only replacement",
+      "redrawing or relighting protected model pixels outside the approved garment masks",
+      "new or duplicated logos",
+      "reuse of the BR-COMMERCE-1 crewneck or joggers"
     ],
-    "required_model_source": "Founder is supplying the exact BR-004 woman model; no generated or substitute woman is allowed.",
     "required_mask_receipts": [
       "BR-007 shorts correction mask path and sha256",
       "BR-005 logo correction mask path and sha256",
-      "BR-004 woman integration envelope path and sha256"
+      "BR-004 woman pixel-preserving alpha matte and integration envelope path and sha256"
     ],
     "rejected_patch": "The prior patch that added an extra arm logo is not authority and must not be reused.",
-    "state": "BLOCKED_PENDING_MASKS_AND_FOUNDER_SUPPLIED_BR004_WOMAN_MODEL"
+    "state": "BLOCKED_PENDING_FONT_STATUE_PLATE__SHORTS_LOGO_MASKS__AND_BR004_ALPHA_MATTE"
   }
 }

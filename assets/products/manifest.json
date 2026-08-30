@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generated_at": "2026-08-30T12:39:14+00:00",
-  "catalog_sha": "sha256:8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+  "generated_at": "2026-08-30T22:21:22+00:00",
+  "catalog_sha": "sha256:a8dea82bae08f39cef89d9a6a0a90639cbb85aa19b7899e46e7cd792fa72fa8f",
   "skus": {
     "br-001": {
       "sku": "br-001",
@@ -126,7 +126,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md",
-          "sha256": "sha256:c997adef784bb4b8e3c9be7cda7da05db5214a5bc30975274f78df1052c3cb7d"
+          "sha256": "sha256:9e872e44c00a96934560ef942020fddc0f67f137433ca9a3441761c7f89b5173"
         }
       ]
     },
