@@ -7,7 +7,8 @@ Usage:
 
 Loads .env files in priority order (last wins):
     1. Root .env (all keys)
-    2. gemini/.env (real API keys, overrides placeholders)
+    2. Root .env.secrets (local secrets, overrides placeholders)
+    3. gemini/.env (provider-specific keys, overrides placeholders)
 
 Works from any subdirectory in the project.
 """
@@ -30,7 +31,7 @@ def _find_project_root() -> Path:
 
 def load_project_env(*, verbose: bool = False) -> Path:
     """
-    Load the root .env and gemini/.env (override=True) so real keys win.
+    Load project environment files so local secrets override placeholders.
 
     Returns the project root path for convenience.
     """
@@ -44,6 +45,7 @@ def load_project_env(*, verbose: bool = False) -> Path:
     root = _find_project_root()
 
     root_env = root / ".env"
+    secrets_env = root / ".env.secrets"
     gemini_env = root / "gemini" / ".env"
 
     if root_env.exists():
@@ -52,6 +54,11 @@ def load_project_env(*, verbose: bool = False) -> Path:
             print(f"[load_env] Loaded {root_env}")
     elif verbose:
         print(f"[load_env] WARNING: {root_env} not found")
+
+    if secrets_env.exists():
+        load_dotenv(secrets_env, override=True)
+        if verbose:
+            print(f"[load_env] Loaded {secrets_env} (override=True)")
 
     if gemini_env.exists():
         load_dotenv(gemini_env, override=True)

@@ -8,7 +8,8 @@
  *
  * Loads .env files in priority order (last wins):
  *   1. Root .env (all keys)
- *   2. gemini/.env (real API keys, overrides placeholders)
+ *   2. Root .env.secrets (local secrets, overrides placeholders)
+ *   3. gemini/.env (provider-specific keys, overrides placeholders)
  *
  * Works from any subdirectory in the project.
  */
@@ -37,10 +38,15 @@ function loadEnv() {
 
   const root = findProjectRoot();
   const rootEnv = path.join(root, '.env');
+  const secretsEnv = path.join(root, '.env.secrets');
   const geminiEnv = path.join(root, 'gemini', '.env');
 
   if (fs.existsSync(rootEnv)) {
     dotenv.config({ path: rootEnv });
+  }
+
+  if (fs.existsSync(secretsEnv)) {
+    dotenv.config({ path: secretsEnv, override: true });
   }
 
   if (fs.existsSync(geminiEnv)) {
