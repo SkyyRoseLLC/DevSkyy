@@ -12,7 +12,12 @@ The gate consumes JSON. Every path must resolve inside `--workspace`; absolute p
   "generator": {
     "route": "masked_edit",
     "supports_explicit_mask": true,
-    "model_id": "openai-responses-image-mask"
+    "model_id": "gpt-image-2-2026-04-21",
+    "api_surface": "images",
+    "endpoint": "/v1/images/edits",
+    "capture_request_id": true,
+    "parameters": {"size": "1024x1024", "quality": "high", "output_format": "png"},
+    "prompt": "Replace only the masked product region using the bound product authorities."
   },
   "edit_region": {
     "type": "polygon",
@@ -53,7 +58,9 @@ The gate consumes JSON. Every path must resolve inside `--workspace`; absolute p
 }
 ```
 
-Supported edit-region types are `polygon` and `bbox`. A `bbox` uses half-open `[left, top, right, bottom]` coordinates: right and bottom are locked. `feather_px` must be a non-negative integer no larger than one quarter of the shorter image dimension. The internal mask uses white for editable pixels and black for locked pixels. Provider-specific mask polarity must be converted explicitly by the caller and recorded with a derived-mask SHA-256 receipt. A hash-bound independent semantic review of exact lettering/logo/construction is required; outside-mask equality alone cannot prove that the generated pixels are correct.
+Supported edit-region types are `polygon` and `bbox`. A `bbox` uses half-open `[left, top, right, bottom]` coordinates: right and bottom are locked. `feather_px` must be a non-negative integer no larger than one quarter of the shorter image dimension. It affects the human review overlay only; the provider mask remains strictly binary so feathering cannot expand edit authority beyond the contract geometry. The internal mask uses white for editable pixels and black for locked pixels. Optimization also emits an API-ready OpenAI PNG whose alpha is zero in the editable region and 255 in the locked region. The API mask must have an alpha channel, match the input dimensions, remain below 50MB, and be bound by SHA-256. A hash-bound independent semantic review of exact lettering/logo/construction is required; outside-mask equality alone cannot prove that the generated pixels are correct.
+
+For this one-shot localized workflow, use the Image API `/v1/images/edits`, pin the reviewed GPT Image 2 snapshot, and omit `input_fidelity`; GPT Image 2 applies high input fidelity automatically and rejects that parameter. The contracted target must be PNG so the alpha-bearing PNG mask has the same format, and both input and mask must be below 50MB. `parameters.size` must exactly equal the target `WIDTHxHEIGHT`; the gate also enforces GPT Image 2's current edge, multiple-of-16, aspect-ratio, and pixel-count limits. Only registry-allowlisted, correctly typed parameter values are admitted. The exact prompt is contract-bound and its SHA-256 is generation-receipt-bound. Responses image generation remains a conversational or multi-step route, not a substitute for this directly model-addressed edit contract. API keys must come from the process environment or a secret manager and must never appear in a prompt, contract, reference pack, generation receipt, or verification receipt.
 
 Pass the localized review receipt to verification:
 
@@ -62,8 +69,36 @@ python3 scripts/fidelity_gate.py verify \
   --contract /absolute/path/contract.json \
   --workspace /absolute/path/workspace \
   --output /absolute/path/candidate.png \
+  --generation-receipt /absolute/path/generation-receipt.json \
   --review /absolute/path/semantic-review.json
 ```
+
+The generation receipt binds the provider call, request ID, exact model request, API surface, input, mask, and output without storing credentials:
+
+```json
+{
+  "schema": "product-fidelity-generation-receipt.v1",
+  "contract_sha256": "SHA-256 of canonical sorted compact JSON contract",
+  "provider": "openai",
+  "api_surface": "images",
+  "endpoint": "/v1/images/edits",
+  "requested_model": "gpt-image-2-2026-04-21",
+  "input_sha256": "SHA-256 of target bytes",
+  "request_image_sha256s": [
+    "target SHA-256 first",
+    "each product-authority reference SHA-256 in contract order"
+  ],
+  "mask_path": "reference-pack/openai-edit-mask-alpha-zero-is-editable.png",
+  "mask_sha256": "SHA-256 of API-ready mask bytes",
+  "output_sha256": "SHA-256 of candidate bytes",
+  "prompt_sha256": "SHA-256 of the exact UTF-8 generator.prompt",
+  "request_parameters": {"size": "1024x1024", "quality": "high", "output_format": "png"},
+  "x_request_id": "provider request identifier",
+  "sdk_version": "openai-python/version-or-http-client/version"
+}
+```
+
+The gate rejects missing or stale bindings, wrong API/model/endpoint/prompt/parameter claims, missing/extra/reordered request images, wrong mask dimensions or polarity, masks without alpha, masks at or above 50MB, forbidden `input_fidelity`, unsupported parameters, and secret-like keys or values at any nesting depth. `request_image_sha256s` must contain the target first followed by every product-authority reference in contract order; context-only and scene-only references are excluded. The request ID and SDK version are audit evidence, not cryptographic proof of the caller identity.
 
 The semantic review receipt is bound to both the canonical JSON contract and candidate bytes:
 
@@ -169,7 +204,7 @@ Every placement must resolve to exactly one hash-verified protected reference, u
     "route": "environment_rebuild_around_source",
     "supports_reference_images": true,
     "product_redraw_allowed": false,
-    "model_id": "openai-responses-image-mask"
+    "model_id": "openai-responses-image-tool"
   },
   "pose_change": false,
   "collection_scene": {
@@ -284,7 +319,7 @@ The independent review receipt passed to `verify --review` is:
 
 ## Version and policy boundaries
 
-`product-fidelity-edit.v1` is intentionally blocked with `SCHEMA_MIGRATION_REQUIRED`; it must not silently inherit v2 guarantees. V2 requires a registry-backed `generator.model_id`, current model capability evidence, product source-authority receipts, explicit `verbatim_text` declarations, zero outside-mask change, zero per-channel tolerance, strict protected placement, byte-snapshot hashing, and the v2 semantic/native review shapes. A model registry match is a policy floor, not proof of current API availability, so preflight never authorizes a paid generation call by itself.
+`product-fidelity-edit.v1` is intentionally blocked with `SCHEMA_MIGRATION_REQUIRED`; it must not silently inherit v2 guarantees. V2 requires a registry-backed `generator.model_id`, current model capability evidence, product source-authority receipts, explicit `verbatim_text` declarations, zero outside-mask change, zero per-channel tolerance, strict protected placement, byte-snapshot hashing, and the v2 semantic/native review shapes. OpenAI localized edits additionally require the pinned Image API contract and a request-, mask-, input-, and output-bound generation receipt. A model registry match is a policy floor, not proof of current API availability, so preflight never authorizes a paid generation call by itself.
 
 ## Reference roles
 

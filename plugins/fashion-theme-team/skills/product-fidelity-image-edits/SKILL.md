@@ -42,6 +42,8 @@ For motion, use [video fidelity](references/video-fidelity.md). For a true 3D as
 1. Inspect the target and every reference visually. Filenames are never product truth.
 2. Create a v2 JSON contract using [the contract schema](references/contract-schema.md). Record explicit `sku`, `view`, `role`, path, SHA-256, `verbatim_text` declaration, and hash-bound source-authority receipt for each product reference. The authority receipt must bind the exact source bytes to the current catalog, imagery SOT manifest, governing dossier, and resolver version. For collection scenes, also bind collection, scene, exact SKU/CTA cast, source analysis, optical contract, promotion boundary, and independent-review rubric.
 3. Resolve the declared provider/model against the registry. Run `model_registry.py validate` before any paid call. If a provider exposes runtime model discovery, record that receipt too; the registry is a policy floor, not proof of live availability.
+   - For a one-shot OpenAI localized patch, use the Image API `/v1/images/edits` and pin the reviewed GPT Image 2 snapshot. Do not substitute the Responses image tool or a wrapper-only route.
+   - Omit `input_fidelity` for GPT Image 2. Bind exact target/output geometry, prompt hash, allowlisted request parameters, the ordered target-plus-product-authority request images, API-ready alpha mask, output, request ID, and SDK/client version in a credential-free generation receipt.
 4. Normalize misleading filenames into canonical pack names. Never allow a file named `back` to enter a `side` job without canonical renaming and explicit `view: side` metadata.
 5. Run:
 
@@ -50,12 +52,12 @@ For motion, use [video fidelity](references/video-fidelity.md). For a true 3D as
    python3 scripts/fidelity_gate.py optimize --contract /absolute/path/contract.json --workspace /absolute/path/workspace --out-dir /absolute/path/reference-pack
    ```
 
-6. For a localized patch, inspect the generated mask overlay before any paid or remote generation. Do not continue if the mask covers the face, body, other garment regions, scene, or product features that should remain locked.
+6. For a localized patch, inspect the generated mask overlay and provider mask before any paid or remote generation. For OpenAI, the target and provider mask must both be PNG and below 50MB; the same-size mask uses alpha zero only inside the editable region and alpha 255 outside it. The requested output size must exactly match the valid target geometry. Do not continue if the mask covers the face, body, other garment regions, scene, or product features that should remain locked.
 7. Generate only through the contract-declared route. Do not silently fall back from masked editing to a full-frame semantic edit.
 8. Verify the result. Localized patches require a v2 contract- and candidate-bound independent semantic-review receipt with the exact contracted check set and verbatim-text result. Native collection scenes require a v2 hash-bound independent visual-review receipt:
 
    ```bash
-   python3 scripts/fidelity_gate.py verify --contract /absolute/path/localized-contract.json --workspace /absolute/path/workspace --output /absolute/path/candidate.png --review /absolute/path/semantic-review.json
+   python3 scripts/fidelity_gate.py verify --contract /absolute/path/localized-contract.json --workspace /absolute/path/workspace --output /absolute/path/candidate.png --generation-receipt /absolute/path/generation-receipt.json --review /absolute/path/semantic-review.json
    python3 scripts/fidelity_gate.py verify --contract /absolute/path/native-scene-contract.json --workspace /absolute/path/workspace --output /absolute/path/candidate.png --review /absolute/path/native-review.json
    ```
 
