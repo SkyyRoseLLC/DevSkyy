@@ -55,6 +55,7 @@ async def test_clean_render_passes_through_vision_judge(monkeypatch):
                 "branding_legible_and_correct": True,
                 "photorealistic_not_flat": True,
                 "all_garments_present": True,
+                "authority_consistent": True,
                 "reason": "pass",
             },
             0.012,

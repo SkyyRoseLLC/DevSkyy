@@ -1,8 +1,9 @@
 """Configuration for the OpenAI gpt-image-2 product render pipeline.
 
-Loads API keys via the project env loader (root .env + gemini/.env with
-override=True) and exposes the fixed, deterministic render parameters that
-make every product render identical. No Gemini / nano-banana dependencies.
+Loads API keys from the project root ``.env`` without allowing legacy env
+files to override caller-provided credentials, and exposes the pinned render
+parameters that make every product render reproducible. No Gemini /
+nano-banana dependencies.
 """
 
 from __future__ import annotations
@@ -10,18 +11,23 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-# Load root .env + gemini/.env (override=True) so OPENAI_API_KEY is present.
-# config/ is a repo-root package; fall back to a path walk if it is not yet
-# importable (e.g. when the module is imported before sys.path is set up).
-try:  # pragma: no cover - import wiring
-    from config.load_env import load_project_env
+# Load the render pipeline's approved root environment without importing the
+# top-level ``config`` package. Importing ``config.load_env`` executes
+# ``config/__init__.py`` first; that module imports ``config.settings``, whose
+# legacy ``.env.hf`` override can silently replace a freshly provisioned
+# project key before the render client is constructed.
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+try:  # pragma: no cover - optional dependency guard
+    from dotenv import load_dotenv
 
-    PROJECT_ROOT = load_project_env()
-except Exception:  # pragma: no cover - defensive fallback
-    PROJECT_ROOT = Path(__file__).resolve().parents[2]
+    load_dotenv(PROJECT_ROOT / ".env", override=False)
+except ImportError:  # pragma: no cover - environment already populated by caller
+    pass
 
 # ── Model + render parameters (the "identical procedure") ───────────────────
-MODEL = "gpt-image-2"  # OpenAI "Image 2"; auto-high-fidelity on every input
+# Pin the exact Image 2 snapshot. The floating alias can change underneath a
+# paid batch, making otherwise identical calls non-reproducible.
+MODEL = "gpt-image-2-2026-04-21"
 QUALITY = "high"  # highest fidelity tier
 SIZE = "1024x1536"  # portrait → feeds the 4:5 holo card crop
 OUTPUT_FORMAT = "png"  # lossless
@@ -45,7 +51,10 @@ INPUT_FIDELITY_SUPPORTED_MODELS = frozenset({"gpt-image-1", "gpt-image-1-mini", 
 
 # ── Networking / resilience ─────────────────────────────────────────────────
 REQUEST_TIMEOUT_S = 180.0
-MAX_RETRIES = 5
+# Paid image calls have one retry owner and one billable-attempt budget entry.
+# Keep both the SDK and this wrapper at zero automatic retries; the batch can
+# resume explicitly from its receipts without a hidden retry storm.
+MAX_RETRIES = 0
 RETRY_BACKOFF_BASE_S = 2.0  # exponential: base * 2**attempt (+ jitter)
 RETRY_BACKOFF_MAX_S = 60.0
 
@@ -151,14 +160,14 @@ API_KEY_ENV = "OPENAI_API_KEY"
 def get_api_key() -> str:
     """Return the OpenAI API key from the environment, or raise a clear error.
 
-    The key is loaded from gemini/.env (override=True) by config/load_env.py.
-    It is never logged or printed.
+    The key is loaded from the project root ``.env`` without overriding an
+    explicit caller environment. It is never logged or printed.
     """
     key = os.environ.get(API_KEY_ENV, "").strip()
     if not key:
         raise RuntimeError(
-            f"{API_KEY_ENV} not set. Add it to gemini/.env "
-            "(loaded with override=True by config/load_env.py) and retry."
+            f"{API_KEY_ENV} not set. Add it to the project root .env or export it "
+            "for this process and retry."
         )
     return key
 

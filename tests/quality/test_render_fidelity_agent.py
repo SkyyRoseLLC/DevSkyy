@@ -43,6 +43,7 @@ async def test_agent_scores_via_core_and_judge(monkeypatch):
                 "branding_legible_and_correct": True,
                 "photorealistic_not_flat": True,
                 "all_garments_present": True,
+                "authority_consistent": True,
                 "reason": "pass",
             },
             0.03,
