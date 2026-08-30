@@ -580,7 +580,9 @@ jq -e '
   (.interface.capabilities | index("Exact Product Fidelity Gates") != null)
 ' "${plugin_root}/.codex-plugin/plugin.json" >/dev/null
 jq -e '.hooks.SessionStart | length > 0' "${plugin_root}/hooks/hooks.json" >/dev/null
-bash "${plugin_root}/scripts/check-formatting.sh" --check
+FASHION_REQUIRE_PYTHON_FORMATTER_TOOLS=1 \
+  bash "${plugin_root}/scripts/check-formatting.sh" --check
+python3 -m unittest discover -s "${plugin_root}/scripts" -p 'test_*.py' >/dev/null
 bash -n "${plugin_root}/hooks/session-start.sh"
 bash -n "${plugin_root}/scripts/preflight.sh"
 bash -n "${plugin_root}/scripts/report.sh"
