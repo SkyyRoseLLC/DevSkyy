@@ -32,7 +32,9 @@ _MIN_DIM = 2048
 _VALID_ANGLES = {
     "front",
     "back",
-    "side",
+    # Always wearer-relative: "wearer-left" is the customer's left side when worn.
+    "wearer-left",
+    "wearer-right",
     "three-quarter",
     "detail-graphic",
     "detail-hood",
@@ -113,7 +115,15 @@ def _try_bria_matte(path: Path) -> str | None:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Add a source product photo")
     parser.add_argument("--sku", required=True)
-    parser.add_argument("--angle", required=True, choices=sorted(_VALID_ANGLES))
+    parser.add_argument(
+        "--angle",
+        required=True,
+        choices=sorted(_VALID_ANGLES),
+        help=(
+            "view of the garment; directional sides are always wearer-relative "
+            "(wearer-left/wearer-right)"
+        ),
+    )
     parser.add_argument("--image", required=True, type=Path)
     parser.add_argument("--no-matte-check", action="store_true", help="Skip BRIA matte sanity")
     parser.add_argument("--force", action="store_true", help="Skip overwrite confirmation")

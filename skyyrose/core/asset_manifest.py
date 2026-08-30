@@ -46,7 +46,8 @@ class AssetRecord:
     """One asset a SKU consumes, pinned to its content hash at generation time.
 
     Roles mirror the render pipeline's reference kinds — "garment",
-    "garment-back", "logo", "patch" — plus "dossier".
+    "garment-back", "logo", "patch" — plus wearer-relative physical
+    authorities ("garment-wearer-left/right") and "dossier".
     """
 
     role: str
