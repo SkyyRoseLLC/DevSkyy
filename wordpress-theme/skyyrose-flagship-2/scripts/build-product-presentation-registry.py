@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
-CATALOG = ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+CATALOG = ROOT / "data/skyyrose-catalog.csv"
 OUTPUT = Path(__file__).resolve().parents[1] / "data/product-presentation-registry.json"
 JERSEY_CHAPTERS = {
     "br-003": ("00 / Baseball Classic (Black)", 0),
@@ -63,7 +63,7 @@ def build_registry() -> dict[str, object]:
     return {
         "schema_version": "1.0.0",
         "kind": "skyyrose-v2-product-presentation-registry",
-        "generated_from": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+        "generated_from": "data/skyyrose-catalog.csv",
         "supplements": {"jersey_series_skus": sorted(JERSEY_CHAPTERS)},
         "products": dict(sorted(products.items())),
     }

@@ -21,7 +21,7 @@ Collection pages must each render their own hero banner (correct asset, correct 
 - Verification via post-deploy curl + visual diff (`openwolf designqc`).
 
 ### Pre-Order SKU Filtering (DATA-02 — already complete)
-- Source: `pre_order` column in `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (single source of truth)
+- Source: `pre_order` column in `data/skyyrose-catalog.csv` (single source of truth)
 - Filter point: PHP catalog loader (single enforcement)
 - Affected SKUs: br-004, br-005, br-006, br-d01..d04, lh-001, sg-001, sg-d01
 - Live-site state already marked complete in REQUIREMENTS.md; phase task is to verify state, not re-implement.

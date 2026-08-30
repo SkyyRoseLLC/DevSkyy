@@ -62,7 +62,7 @@ def load_catalog() -> dict[str, dict]:
 # ``P`` = original product photos.
 @functools.lru_cache(maxsize=1)
 def get_source_map() -> dict[str, dict[str, Path | None]]:
-    """Return the complete SKU → {front, back} garment image mapping.
+    """Return the complete SKU → exact-view garment image mapping.
 
     Memoized: the map is built from static ``config`` path constants, so it is
     reconstructed once per process rather than on every ``build_references`` /
@@ -70,6 +70,7 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
     """
     s = config.SPLIT_DIR
     p = config.PRODUCTS_DIR
+    r = config.PRODUCT_REFERENCES_DIR
     sp = config.PRODUCT_SOURCE_PHOTOS_DIR
     return {
         # ── BLACK ROSE ──
@@ -95,14 +96,18 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
         },
         "br-004": {"front": p / "black-rose-hoodie-source.jpg", "back": None},
         "br-005": {
-            "front": p / "black-rose-hoodie-signature-edition-hoodie-ltd-source.jpg",
+            "front": r / "br-005-signature-hoodie-real.jpeg",
             "back": None,
         },
         "br-006": {
             "front": p / "black-rose-sherpa-jacket-sherpa-product.jpg",
             "back": p / "black-rose-sherpa-jacket-back.jpg",
         },
-        "br-007": {"front": p / "br-007-real-front.jpg", "back": p / "br-007-real-back.jpg"},
+        "br-007": {
+            "front": r / "br-007-shorts-front-source.jpg",
+            "left_hip": r / "br-007-shorts-left-hip-source.jpg",
+            "back": r / "br-007-shorts-back-source.jpg",
+        },
         "br-008": {
             "front": s / "black-rose" / "br-jersey-football-sf-front.jpeg",
             "back": s / "black-rose" / "br-jersey-football-sf-back.jpeg",
@@ -187,10 +192,9 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
 def _collection_logos() -> dict[str, Path]:
     o = config.OVERLAYS_DIR
     return {
-        # Black Rose non-jersey products carry the three-rose-cluster (greyscale),
-        # per every dossier's logo_reference. (Jerseys override to sport patches
-        # in _sku_logo_refs.) The old br-brand-script.png default was the wrong
-        # mark — it made the model render a "BR" wordmark instead of the cluster.
+        # Collection-level fallback only. BR-005 is explicitly overridden below
+        # because its product-specific photographed decorations have no authorized
+        # standalone logo art and must never inherit this generic collection asset.
         "black-rose": config.LOGOS_DIR / "three-rose-cluster-greyscale.png",
         "love-hurts": o / "lh-logo-combined.png",
         "signature": o / "sig-brand-skyy-rose-gold.png",
@@ -205,6 +209,17 @@ def _sku_logo_refs() -> dict[str, Path]:
     t = config.TECHFLATS_DIR
     cw = config.LOGOS_DIR  # colorway-correct three-rose-cluster references
     return {
+        # BR-005 physical garment is the only decoration authority. Passing the
+        # complete source is intentional: no generic logo/vector substitution.
+        "br-005": config.PROJECT_ROOT
+        / "assets"
+        / "products"
+        / "references"
+        / "br-005-signature-hoodie-real.jpeg",
+        # BR-007 wearer-left front white-panel embroidery. This exact
+        # interlocking SR-with-rose silhouette is product authority; a generic
+        # SR monogram or redrawn letterform is a hard reject.
+        "br-007": config.PROJECT_ROOT / "data" / "brand-logos" / "sr-rose-monogram.png",
         # Black Rose jerseys → sport patches (the elements that were going missing)
         "br-008": o / "br-patch-nfl-football.png",
         "br-009": o / "br-patch-nfl-football.png",
@@ -423,8 +438,17 @@ def build_references(
     """
     smap = get_source_map().get(sku, {})
     front = smap.get("front")
+    left_hip = smap.get("left_hip")
     back = smap.get("back")
     flatlay = find_flatlay_photo(sku)
+
+    mapped_paths = {
+        path.resolve()
+        for path in (front, left_hip, back)
+        if path is not None and path.exists()
+    }
+    if flatlay is not None and flatlay.exists() and flatlay.resolve() in mapped_paths:
+        flatlay = None
 
     refs: list[ReferenceImage] = []
 
@@ -454,6 +478,20 @@ def build_references(
             )
         )
 
+    if left_hip and left_hip.exists():
+        refs.append(
+            ReferenceImage(
+                label=(
+                    "REFERENCE IMAGE {n} — GARMENT PHYSICAL SOURCE (WEARER-LEFT HIP/SIDE): "
+                    "founder-supplied side-view authority. It is NOT a back view. Preserve its "
+                    "white pentagonal/chevron Love Hurts insert and horizontal opening on the "
+                    "wearer's LEFT HIP/SIDE only; never move that construction to back-center."
+                ),
+                path=left_hip,
+                kind="garment-left-hip",
+            )
+        )
+
     # Must have at least one garment reference — otherwise hard-fail.
     if not refs:
         raise MissingReferenceError(
@@ -464,8 +502,9 @@ def build_references(
         refs.append(
             ReferenceImage(
                 label=(
-                    "REFERENCE IMAGE {n} — GARMENT TECH FLAT (BACK VIEW): rear-facing design "
-                    "illustration showing back panel layout and graphics."
+                    "REFERENCE IMAGE {n} — GARMENT PHYSICAL SOURCE (BACK VIEW): exact rear-facing "
+                    "authority. Preserve its rear openings and panel layout; never mirror the "
+                    "front or left-hip construction onto the back."
                 ),
                 path=back,
                 kind="garment-back",
@@ -486,7 +525,8 @@ def build_references(
                 label=(
                     "REFERENCE IMAGE {n} — "
                     + ("SPORT PATCH" if is_patch else "LOGO/BRANDING")
-                    + " CLOSE-UP: the EXACT graphic on the garment. Reproduce it at the EXACT "
+                    + " CLOSE-UP: the EXACT graphic on the garment. Reproduce its complete "
+                    "silhouette at the EXACT "
                     "position and size shown in the tech flat. Do NOT resize, reposition, "
                     "duplicate, omit, or alter it."
                 ),

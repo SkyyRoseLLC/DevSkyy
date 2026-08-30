@@ -777,11 +777,11 @@ This theme uses AI-generated fashion model images showing real models wearing th
 
 **DO NOT hardcode a SKU table here.** The previous version of this section drifted out of sync with the canonical CSV and caused a wasted paid render run. Read canonical names directly from:
 
-**`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`** (column `name`)
+**`data/skyyrose-catalog.csv`** (column `name`)
 
 Quick one-liner to dump current live SKU → name mapping:
 ```bash
-python3 -c "import csv; [print(f'{r[\"sku\"]:<10} {r[\"name\"]}') for r in csv.DictReader(open('wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv'))]"
+python3 -c "import csv; [print(f'{r[\"sku\"]:<10} {r[\"name\"]}') for r in csv.DictReader(open('data/skyyrose-catalog.csv'))]"
 ```
 
 Or via the Python helper:

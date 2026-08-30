@@ -78,7 +78,7 @@ Instagram 11am–1pm / 7–9pm · TikTok 9am, 12pm, 6pm, 9pm · X throughout day
 **All product facts (name, collection, price, colorway, garment type, edition size) MUST resolve
 through the canonical sources in order:**
 
-1. **Catalog CSV:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — 33 SKUs,
+1. **Catalog CSV:** `data/skyyrose-catalog.csv` — 33 SKUs,
    columns: `sku, name, price, collection, description, sizes, color, edition_size, ...`
 2. **Per-SKU dossier:** `skyyrose/assets/data/product-content.json` + per-SKU dossier files
    (linked via `dossier_slug` column in the CSV).

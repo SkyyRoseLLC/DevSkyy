@@ -11,8 +11,8 @@ import time, just ``Path`` objects.
 Canonical product-data sources (enforced by
 ``feedback_canonical_sources_only.md``)::
 
-    CATALOG_CSV    wordpress-theme/.../data/skyyrose-catalog.csv
-    DOSSIERS_DIR   wordpress-theme/.../data/dossiers/*.md
+    CATALOG_CSV    data/skyyrose-catalog.csv
+    DOSSIERS_DIR   data/dossiers/*.md
 
 Canonical golden-image source (uploader writes here, pipeline reads here)::
 
@@ -38,7 +38,7 @@ from skyyrose.core.dossier_loader import DOSSIERS_DIR
 REPO_ROOT: Path = PROJECT_ROOT
 
 # ─── WordPress theme tree ──────────────────────────────────────────────
-THEME_ROOT: Path = CATALOG_CSV.parent.parent
+THEME_ROOT: Path = REPO_ROOT / "wordpress-theme" / "skyyrose-flagship"
 WP_ASSETS_DIR: Path = THEME_ROOT / "assets"
 WP_PRODUCTS_DIR: Path = WP_ASSETS_DIR / "images" / "products"
 WP_LOGOS_DIR: Path = WP_ASSETS_DIR / "images" / "logos"

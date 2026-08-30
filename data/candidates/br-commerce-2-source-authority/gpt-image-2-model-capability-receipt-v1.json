@@ -1,0 +1,15 @@
+{
+  "schema": "skyyrose.model-capability-validation.v1",
+  "validated_at": "2026-08-28T00:00:00Z",
+  "registry": "/Users/theceo/plugins/fashion-theme-team/skills/product-fidelity-image-edits/references/model-capability-registry.json",
+  "validator": "/Users/theceo/plugins/fashion-theme-team/skills/product-fidelity-image-edits/scripts/model_registry.py",
+  "requested_alias": "gpt-image-2",
+  "operation": "product_image_candidate",
+  "status": "PASS",
+  "code": "REGISTERED_CAPABILITY_MATCH",
+  "resolved_model": "openai-responses-image-mask",
+  "fidelity_tier": "bounded_only_after_pixel_verification",
+  "live_availability_verified": false,
+  "post_verification_required": true,
+  "message": "Responses image_generation supports input_image_mask. Source-authority generation has no prior wearer pixels to preserve; the new candidate remains quarantined and must pass exact product review before any environment integration. Later native edits require matte binding and outside-mask verification."
+}

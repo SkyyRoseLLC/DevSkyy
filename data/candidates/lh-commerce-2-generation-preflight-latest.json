@@ -1,0 +1,68 @@
+{
+  "schema": "skyyrose.scroll-world-generation-gate-receipt.v1",
+  "criteria_path": "data/scroll-world-one-shot-verification-criteria.json",
+  "criteria_sha256": "8e15ed437401c9f53ceffcc21229837cf81d44286259acbe84f12e7b2f66098a",
+  "source_sot_sha256": "5eecf5c8abc84bdcadbafb983e14a4bfee13c3446479a39b62fb883fb81267a0",
+  "status": "PASS_SOURCE_PREFLIGHT",
+  "global_failures": [],
+  "scenes": [
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "status": "PASS_SOURCE_PREFLIGHT",
+      "checks": [
+        {
+          "role": "lh003_front_physical",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg",
+          "expected_sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+          "actual_sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+          "status": "PASS"
+        },
+        {
+          "role": "lh003_back_physical",
+          "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
+          "expected_sha256": "d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136",
+          "actual_sha256": "d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136",
+          "status": "PASS"
+        },
+        {
+          "role": "male_identity_candidate_not_product_authority",
+          "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/LH-003-men-led-on-model-authority-candidate.png",
+          "expected_sha256": "17840a8cf49919f150722125eed826327a369be5dbd22b53c066ba62459d5dfe",
+          "actual_sha256": "17840a8cf49919f150722125eed826327a369be5dbd22b53c066ba62459d5dfe",
+          "status": "PASS"
+        },
+        {
+          "role": "female_identity_candidate_not_product_authority",
+          "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/LH-003-women-led-on-model-authority-candidate.png",
+          "expected_sha256": "dda284ee42e16de246195229739543e378be997a4ad80e845851260f5cfb0190",
+          "actual_sha256": "dda284ee42e16de246195229739543e378be997a4ad80e845851260f5cfb0190",
+          "status": "PASS"
+        },
+        {
+          "role": "protected_enchanted_rose_hero",
+          "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png",
+          "expected_sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02",
+          "actual_sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02",
+          "status": "PASS"
+        },
+        {
+          "role": "approved_environment_plate",
+          "path": "renders/scroll-world/scene-plates/LH-COMMERCE-2-shorts-chamber-plate-v1.png",
+          "expected_sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+          "actual_sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+          "status": "PASS"
+        }
+      ],
+      "failures": [],
+      "provider_submission_allowed": true,
+      "runtime_wiring_allowed": false,
+      "deployment_allowed": false
+    }
+  ],
+  "boundary": {
+    "source_preflight_is_not_product_postflight": true,
+    "source_preflight_is_not_founder_promotion": true,
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}

@@ -1,6 +1,6 @@
 # Social Media Agent — Knowledge Reference
 
-**Catalog source of truth:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`. Every post references a real SKU. Never invent product names or prices.
+**Catalog source of truth:** `data/skyyrose-catalog.csv`. Every post references a real SKU. Never invent product names or prices.
 
 The Social Media sub-agent generates platform-specific captions, hashtags, campaigns, and content calendars. It pairs with the Imagery Agent (who supplies visuals) and the SEO Content Agent (who supplies long-form copy). Production output is consumed by `frontend/app/api/social-media/generate/route.ts` or scheduled via Klaviyo / Meta Business Suite.
 

@@ -15,7 +15,8 @@ from typing import Any
 
 
 THEME_RELATIVE_PREFIX = "wordpress-theme/skyyrose-flagship/"
-SUPPORTED_STATES = {"APPROVED_CURRENT_STOREFRONT_ON_MODEL_FRONT", None}
+SUPPORTED_STATES = {"APPROVED_CURRENT_STOREFRONT_ON_MODEL_FRONT"}
+NON_MODEL_PATH_MARKERS = ("/ghost/", "-ghost-", "/packshot/", "-packshot.")
 
 
 class MediaIntakeError(ValueError):
@@ -63,6 +64,13 @@ def _registered_source_matches(expected: Path, source: object, repo_root: Path) 
     if not source.startswith(THEME_RELATIVE_PREFIX):
         candidates.append(_repository_path(repo_root, f"{THEME_RELATIVE_PREFIX}{source}"))
     return any(candidate == expected for candidate in candidates if candidate is not None)
+
+
+def _is_semantically_on_model(path: Path) -> bool:
+    """Reject role laundering: a ghost or packshot is never an on-model authority."""
+
+    normalized = f"/{path.as_posix().lower()}"
+    return not any(marker in normalized for marker in NON_MODEL_PATH_MARKERS)
 
 
 def _integrity_record(registry: dict[str, Any], sku: str, view: dict[str, Any]) -> tuple[object, object]:
@@ -175,6 +183,151 @@ def validate_generation_receipt(
     return {"valid": not blockers, "blockers": blockers}
 
 
+def validate_multi_sku_generation_receipt(
+    product_sot_path: Path,
+    receipt_path: Path,
+    *,
+    repo_root: Path,
+    require_output: bool = False,
+) -> dict[str, Any]:
+    """Validate one paid candidate request containing two or more exact products.
+
+    This is the combined-look companion to :func:`validate_generation_receipt`.
+    It proves only that a candidate-only provider request is source-current,
+    explicitly authorized, and incapable of silently reusing a rejected input.
+    It never grants founder approval, native-scene promotion, wiring, or deploy.
+    """
+
+    product_sot_bytes = product_sot_path.read_bytes()
+    product_sot = _load_json(product_sot_path, "product SOT")
+    receipt = _load_json(receipt_path, "multi-SKU generation receipt")
+    sot_products = product_sot.get("products")
+    if not isinstance(sot_products, dict):
+        raise MediaIntakeError("product SOT requires a products object")
+
+    blockers: list[str] = []
+    if receipt.get("schema") != "skyyrose.multi-sku-source-authority-preflight.v1":
+        blockers.append("RECEIPT_SCHEMA_INVALID")
+    if receipt.get("product_sot_sha256") != _sha256_bytes(product_sot_bytes):
+        blockers.append("PRODUCT_SOT_HASH_MISMATCH")
+
+    rejected = receipt.get("rejected_inputs")
+    rejected = rejected if isinstance(rejected, list) else []
+    rejected_hashes = {
+        item.get("sha256")
+        for item in rejected
+        if isinstance(item, dict) and item.get("usable_as_input") is False
+    }
+    rejected_paths = {
+        item.get("path")
+        for item in rejected
+        if isinstance(item, dict) and item.get("usable_as_input") is False
+    }
+    if not rejected_hashes or not rejected_paths:
+        blockers.append("REJECTED_INPUT_DENYLIST_MISSING")
+
+    product_records = receipt.get("products")
+    if not isinstance(product_records, list) or len(product_records) < 2:
+        blockers.append("MULTI_SKU_PRODUCT_RECORDS_MISSING")
+        product_records = []
+    seen_skus: set[str] = set()
+    for record in product_records:
+        if not isinstance(record, dict):
+            blockers.append("PRODUCT_RECORD_INVALID")
+            continue
+        sku = record.get("sku")
+        if not isinstance(sku, str) or sku in seen_skus:
+            blockers.append("PRODUCT_SKU_INVALID_OR_DUPLICATE")
+            continue
+        seen_skus.add(sku)
+        product = sot_products.get(sku)
+        if not isinstance(product, dict):
+            blockers.append(f"SKU_NOT_IN_PRODUCT_SOT:{sku}")
+        elif record.get("product_hash") != product.get("product_hash"):
+            blockers.append(f"PRODUCT_HASH_MISMATCH:{sku}")
+
+        worn_by = record.get("worn_by")
+        if not isinstance(worn_by, list) or set(worn_by) != {"man", "woman"}:
+            blockers.append(f"DUAL_CAST_ASSIGNMENT_MISSING:{sku}")
+
+        originals = record.get("originals")
+        if not isinstance(originals, list) or not originals:
+            blockers.append(f"ORIGINALS_MISSING:{sku}")
+            continue
+        physical_present = False
+        for original in originals:
+            if not isinstance(original, dict):
+                blockers.append(f"ORIGINAL_INVALID:{sku}")
+                continue
+            if original.get("role") == "physical_product_authority":
+                physical_present = True
+            if original.get("sha256") in rejected_hashes or original.get("local_path") in rejected_paths:
+                blockers.append(f"REJECTED_INPUT_REUSED:{sku}")
+            blockers.extend(
+                f"{blocker}:{sku}"
+                for blocker in _validate_local_artifact(
+                    original,
+                    repo_root=repo_root,
+                    label="ORIGINAL",
+                )
+            )
+        if not physical_present:
+            blockers.append(f"PHYSICAL_PRODUCT_AUTHORITY_MISSING:{sku}")
+
+    assignments = receipt.get("cast_assignments")
+    if not isinstance(assignments, dict) or set(assignments) != {"man", "woman"}:
+        blockers.append("EXACT_DUAL_CAST_ASSIGNMENTS_MISSING")
+    else:
+        for cast in ("man", "woman"):
+            assigned = assignments.get(cast)
+            if not isinstance(assigned, list) or set(assigned) != seen_skus:
+                blockers.append(f"CAST_SKU_SET_MISMATCH:{cast}")
+
+    prompt_artifact = receipt.get("prompt_artifact")
+    blockers.extend(
+        _validate_local_artifact(prompt_artifact, repo_root=repo_root, label="PROMPT")
+    )
+    capability = receipt.get("model_capability_validation")
+    if not isinstance(capability, dict) or capability.get("status") != "PASS":
+        blockers.append("MODEL_CAPABILITY_VALIDATION_MISSING")
+    if receipt.get("provider") != "openai_responses_image_generation":
+        blockers.append("PROVIDER_NOT_CANONICAL_PRODUCT_ENGINE")
+    if receipt.get("model") != "gpt-image-2":
+        blockers.append("MODEL_NOT_CANONICAL_PRODUCT_ENGINE")
+    if receipt.get("operation") != "candidate_only":
+        blockers.append("OPERATION_NOT_CANDIDATE_ONLY")
+    if receipt.get("environment_scope") != "neutral_studio_authority_only":
+        blockers.append("ENVIRONMENT_SCOPE_NOT_NEUTRAL_STUDIO")
+    if receipt.get("paid_generation_authorized") is not True or not receipt.get(
+        "authorization_reference"
+    ):
+        blockers.append("PAID_GENERATION_AUTHORIZATION_MISSING")
+    if receipt.get("output_quarantine_required") is not True:
+        blockers.append("OUTPUT_QUARANTINE_NOT_REQUIRED")
+    if receipt.get("founder_review_required") is not True:
+        blockers.append("FOUNDER_REVIEW_NOT_REQUIRED")
+    if receipt.get("independent_review_required") is not True:
+        blockers.append("INDEPENDENT_REVIEW_NOT_REQUIRED")
+    for forbidden_permission in (
+        "scene_generation_allowed",
+        "runtime_wiring_allowed",
+        "promotion_allowed",
+        "deployment_allowed",
+    ):
+        if receipt.get(forbidden_permission) is not False:
+            blockers.append(f"FORBIDDEN_PERMISSION_NOT_FALSE:{forbidden_permission}")
+
+    output = receipt.get("output")
+    if require_output or output is not None:
+        blockers.extend(_validate_local_artifact(output, repo_root=repo_root, label="OUTPUT"))
+
+    return {
+        "valid": not blockers,
+        "skus": sorted(seen_skus),
+        "blockers": blockers,
+    }
+
+
 def validate_media_intake(
     product_sot_path: Path,
     registry_path: Path,
@@ -212,6 +365,9 @@ def validate_media_intake(
             raise MediaIntakeError(f"invalid product/registry record for {sku}")
         if product_hashes[sku] != product.get("product_hash"):
             blockers.append("PRODUCT_HASH_MISMATCH")
+        identity = product.get("identity") if isinstance(product.get("identity"), dict) else {}
+        if media_entry.get("collection") != identity.get("collection"):
+            blockers.append("COLLECTION_MISMATCH")
 
         views = media_entry.get("views", [])
         if not isinstance(views, list):
@@ -232,6 +388,8 @@ def validate_media_intake(
             expected_path = _repository_path(repo_root, sot_media.get("path", ""))
             if expected_path is None or not expected_path.is_file():
                 blockers.append("SOT_ON_MODEL_SOURCE_MISSING")
+            elif not _is_semantically_on_model(expected_path):
+                blockers.append("SOT_ON_MODEL_SOURCE_IS_GHOST_OR_PACKSHOT")
             elif not _registered_source_matches(expected_path, view.get("source"), repo_root):
                 blockers.append("SOURCE_PATH_MISMATCH")
             else:

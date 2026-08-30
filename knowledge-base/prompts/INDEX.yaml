@@ -33,7 +33,7 @@ prompts:
       cost_per_call_usd_p50: null
     canon_dependencies:
       - knowledge-base/seed/from-interview.md
-      - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+      - data/skyyrose-catalog.csv
     tags: [orchestration, brand, opus, routing]
     eval: null
     notes: |
@@ -61,7 +61,7 @@ prompts:
       cost_per_call_usd_p50: null
     canon_dependencies:
       - knowledge-base/seed/from-interview.md
-      - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+      - data/skyyrose-catalog.csv
     tags: [brand, marketing, copy, instagram, captions, product-description]
     eval: null
     notes: |
@@ -106,7 +106,7 @@ prompts:
     last_updated: 2026-05-12
     performance: { evaluated: null, pass_rate: null, cost_per_call_usd_p50: null }
     canon_dependencies:
-      - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+      - data/skyyrose-catalog.csv
     tags: [catalog, products, pricing, imagery-coverage]
     eval: null
     notes: |
@@ -263,7 +263,7 @@ prompts:
     last_updated: 2026-05-12
     performance: { evaluated: null, pass_rate: null, cost_per_call_usd_p50: null }
     canon_dependencies:
-      - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+      - data/skyyrose-catalog.csv
     tags: [mcp, tools, catalog, brand, theme, deploy]
     eval: null
     notes: |
@@ -291,7 +291,7 @@ prompts:
     last_updated: 2026-05-13
     performance: { evaluated: null, pass_rate: null, cost_per_call_usd_p50: null }
     canon_dependencies:
-      - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+      - data/skyyrose-catalog.csv
       - knowledge-base/seed/from-interview.md
     tags: [imagery, generation, gemini, flux, nano-banana]
     eval: null

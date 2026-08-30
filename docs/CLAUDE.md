@@ -8,7 +8,7 @@ When working on **anything visual, brand-touching, or collection-specific**, rea
 |-----|---------------|--------------|
 | `docs/brand/visual-references.md` | The Five canonical visual references (Kith / Oaklandish / Culture Kings / Fear of God / Palm Angels) + the locked-out European-luxury-house lineage | Any aesthetic, mockup, design proposal, brand pitch, agent visual brief |
 | `docs/brand/collection-stories.md` | Per-collection canon: Black Rose / Love Hurts / Signature / Kids Capsule — origin, voice, mood, founder-locked taglines | Any copy, any collection page, any product description |
-| `wordpress-theme/skyyrose-flagship/data/collections/<slug>/identity.json` | **Per-collection identity SOT (canon seed):** palette (named hex), fonts {script,caps,body}, story seed, lockup. `design-tokens.css`, `sot.json`, `index.html` are GENERATED from it. Edit identity.json, never the generated files. | Any collection palette/font/identity work. See `data/collections/README.md` |
+| `data/collections/<slug>/identity.json` | **Per-collection identity SOT (canon seed):** palette (named hex), fonts {script,caps,body}, story seed, lockup. `design-tokens.css`, the theme `sot.json`, and `index.html` are GENERATED from it. Edit identity.json, never the generated views. | Any collection palette/font/identity work. See the root `data/collections/` source tree. |
 | `docs/brand/corey-questions.md` + `docs/brand/canon-audit-2026-05-23.md` | Founder voice locks (verbatim) + canon audit history | Voice-frame copy, founder-quote attribution |
 | `docs/brand/asset-hierarchy.md` | 3-tier brand asset map; brand-primary monogram = `sr-monogram-rose-gold` | Any brand-mark placement decision |
 
@@ -26,7 +26,7 @@ These come from `~/.claude/projects/-Users-theceo-DevSkyy/memory/` and apply to 
 1. **Hero titles = collection lockup IMAGES, never type-rendered.** Each collection has a canonical brand-script lockup in `assets/images/hero-overlays/` (BR/LH/SIG) or `assets/images/logos/` (Kids). Fonts (per `data/brand/typography.json` + per-collection `identity.json` — Italiana/Yellowtail retired 2026-07-10) apply only to interior surfaces.
 2. **Each collection has its own canon — never mix quotes.** "Hurts is the bloodline that raised me" = Love Hurts ONLY. Black Rose canon = armor / "you already stood up" / "concrete answering back". Never substitute one collection's voice for another.
 3. **Always reference The Five.** Kith / Oaklandish / Culture Kings / Fear of God / Palm Angels. Never Bottega / Numéro / Hedi Slimane / Rick Owens / 032c / Acne FW24 / Givenchy by Tisci / Khaite / Bode / The Row — those are locked OUT.
-4. **Catalog is the source of truth.** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` is the only product manifest. Never reference retired SKUs or invent SKUs.
+4. **Catalog is the source of truth.** `data/skyyrose-catalog.csv` is the only product manifest. Never reference retired SKUs or invent SKUs.
 5. **No mock data in production code.** Even in spec docs, name real verified files and paths only.
 6. **Product imagery resolves through the SOT only.** Every surface (WP, dashboard, MCP, pipelines, agents, skills, plugins) gets a SKU's image from `skyyrose.core.sot_images.resolve_image()` / `data/sot-images.json` — front-first (on-model render before flat packshot), never a hardcoded `assets/images/products/...` literal or a `/images/scenes/*` fabrication. Policy + backlog: `docs/brand/sot-imagery-policy.md`. Guard: `tests/test_sot_no_adhoc_imagery.py`.
 

@@ -153,7 +153,7 @@ The WP hot-swap deploy (`scripts/deploy-theme.sh`) has no Shopify equivalent —
 
 ## 7. Catalog sync (deferred)
 
-WP reads `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` at runtime via `skyyrose_get_product_catalog()`. Shopify would:
+WP reads `data/skyyrose-catalog.csv` at runtime via `skyyrose_get_product_catalog()`. Shopify would:
 1. Import the CSV as Shopify Products (via Shopify Admin API or CSV import)
 2. Map CSV columns to Shopify fields:
 
@@ -197,7 +197,7 @@ All of the above land in the follow-up "Shopify plug-in" PR. This knowledge file
 **Reads (at build time):**
 - `wordpress-theme/skyyrose-flagship/theme.json` — brand tokens, font families (copy into Shopify settings_schema)
 - `wordpress-theme/skyyrose-flagship/assets/fonts/*.woff2` — copy into `themes/shopify/assets/fonts/`
-- `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — for sync (deferred)
+- `data/skyyrose-catalog.csv` — for sync (deferred)
 - `wordpress-theme/skyyrose-flagship/template-parts/product-card-holo.php` — reference for Liquid parity
 
 **Writes (scaffold only in this PR):**

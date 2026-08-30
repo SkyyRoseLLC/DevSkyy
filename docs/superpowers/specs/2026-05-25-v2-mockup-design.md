@@ -259,5 +259,5 @@ Single Write call producing one HTML file (estimated 800-1500 lines depending on
 - `docs/brand/visual-references.md` — locked reference set
 - `~/.claude/projects/-Users-theceo-DevSkyy/memory/feedback_brand_visual_references.md` — agent-side enforcement of the lineage
 - `~/.claude/skills/skyyrose-brand-dna/SKILL.md` — brand DNA skill
-- `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — Black Rose SKU list for F04 spread
+- `data/skyyrose-catalog.csv` — Black Rose SKU list for F04 spread
 - `wordpress-theme/skyyrose-flagship/assets/branding/` — hero photography + collection logos source

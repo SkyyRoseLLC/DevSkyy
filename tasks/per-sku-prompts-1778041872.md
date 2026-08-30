@@ -1105,6 +1105,14 @@ DO NOT RENDER (authored canonical negatives):
 
 ## br-007
 
+> **ARCHIVAL / TERMINALLY STALE — DO NOT EXECUTE OR REUSE.** This historical
+> prompt predates the founder-confirmed BR-007 front / wearer-left-hip / true
+> back source split and contains rejected panel, color, pocket, and logo-role
+> assignments. Current generation must consume `data/product-sot.json`,
+> `data/dossiers/black-rose-x-love-hurts-basketball-shorts.md`, the three
+> root-owned physical sources in `assets/products/references/`, and
+> `data/brand-logos/sr-rose-monogram.png` only.
+
 **Vision cache:** MISSING
 **Inferred DNA:** (no vision cache — generator prompt would lack inferred DNA detail)
 **Engine route:** `flux-pro` (fal-ai/flux-pro/v1.1) — Standard garment — FLUX Pro best value (98% quality, 26% cost)
@@ -3704,4 +3712,3 @@ DO NOT RENDER (authored canonical negatives):
 ```
 
 ---
-

@@ -126,7 +126,7 @@ The agent must enforce the SkyyRose **96+ replica bar**: per-metric vetoes again
 
 ### Asset Sources
 - `data/product-bundles/<dir>/manifest.json` — per-SKU asset registry. Schema: `{sku, name, dirname, collection, files: {techflat-front, techflat-back, source-photo, logo-ref, spec}}`. Phase 15 reads `source-photo` (flatlay = ground truth) and `techflat-front` (logo placement reference)
-- `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs, 28 garments + 2 accessories + 3 jersey color variants — TBD reconciliation): `sku`, `garment_type_lock` (col 22), `branding_spec` (col 16), `render_source_override` (col 18), `front_model_image` (col 8 = output target)
+- `data/skyyrose-catalog.csv` (33 SKUs, 28 garments + 2 accessories + 3 jersey color variants — TBD reconciliation): `sku`, `garment_type_lock` (col 22), `branding_spec` (col 16), `render_source_override` (col 18), `front_model_image` (col 8 = output target)
 
 ### Project Conventions
 - `CLAUDE.md` (root) — STOP-AND-SHOW protocol for paid API calls (mandatory before any Tripo/Meshy/Gemini paid run); Context7-first for any external library; production-grade code quality (no TODOs, no placeholders, no half-baked code)

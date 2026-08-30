@@ -112,7 +112,7 @@
 <td><code>agents/quality/deterministic_gate.py</code></td>
 <td>Pure Python, no LLM. Hard-fails (short-circuits to revise) on any of:
   <ul>
-    <li><strong>Product-fact mismatch</strong> vs the canonical catalog CSV (<code>wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv</code>, 33 SKUs): product name, price, collection, sizes, edition size. Resolves by SKU/name; the only un-hallucinatable check.</li>
+    <li><strong>Product-fact mismatch</strong> vs the canonical catalog CSV (<code>data/skyyrose-catalog.csv</code>, 33 SKUs): product name, price, collection, sizes, edition size. Resolves by SKU/name; the only un-hallucinatable check.</li>
     <li><strong>Placeholder/stub markers</strong>: <code>TODO</code>, <code>FIXME</code>, <code>lorem</code>, <code>{{</code>, empty required fields.</li>
     <li><strong>Banned-phrase / canon violations</strong>: per-collection canon (e.g. "bloodline that raised me" is Love Hurts only) sourced from <code>docs/brand/collection-stories.md</code>; banned cross-collection quote leakage; tagline must be exactly "Luxury Grows from Concrete."</li>
     <li><strong>Required-structure check</strong>: presence of expected sections for the content type (e.g. PDP copy must have title + body; SEO copy must have meta description within length bounds).</li>
@@ -286,7 +286,7 @@ route:
 <tr><td>Content pipeline (gated)</td><td><code>agents/core/content/agent.py:21</code>; <code>agents/skyyrose_content_agent.py:271,692</code></td></tr>
 <tr><td>EventBus</td><td><code>core/events/event_bus.py:21,39,43,79</code></td></tr>
 <tr><td>Metrics model (to extend)</td><td><code>agents/models.py:201</code>; migration alongside <code>alembic/versions/001_baseline_schema.py</code></td></tr>
-<tr><td>Catalog (fact gate)</td><td><code>wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv</code> (33 SKUs) + per-SKU dossiers</td></tr>
+<tr><td>Catalog (fact gate)</td><td><code>data/skyyrose-catalog.csv</code> (33 SKUs) + per-SKU dossiers</td></tr>
 <tr><td>Canon (banned-phrase gate)</td><td><code>docs/brand/collection-stories.md</code></td></tr>
 <tr><td>New package</td><td><code>agents/quality/</code> (+ <code>__init__.py</code>)</td></tr>
 </table>

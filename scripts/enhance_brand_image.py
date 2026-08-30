@@ -1,7 +1,7 @@
 """Enhance a brand-asset or product-reference image to canonical quality.
 
 Single entry point for any image that's about to be saved into
-`wordpress-theme/skyyrose-flagship/data/brand-logos/` or
+`data/brand-logos/` or
 `wordpress-theme/skyyrose-flagship/data/product-references/`. Runs a
 deterministic enhancement pipeline:
 
@@ -14,7 +14,7 @@ deterministic enhancement pipeline:
 Usage:
     python scripts/enhance_brand_image.py SOURCE TARGET
     python scripts/enhance_brand_image.py "/Users/.../photo.jpeg" \\
-        wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg
+        data/brand-logos/sr-monogram.jpeg
     python scripts/enhance_brand_image.py SOURCE TARGET --upscale 4
 
 The pipeline is deterministic (no AI, no paid API) — output quality depends

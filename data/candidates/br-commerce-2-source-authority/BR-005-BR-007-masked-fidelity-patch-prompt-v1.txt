@@ -1,0 +1,30 @@
+LOCALIZED PRODUCT-FIDELITY PATCH. The first image is the immutable dual-cast
+studio base. The mask makes only five small product-decoration regions editable;
+every opaque pixel outside those regions must remain unchanged. Do not restage,
+redraw, relight, retouch, crop, or alter either model or any unmasked garment area.
+
+In the two editable BR-005 chest regions, replace the existing thread-like mark
+only with the exact product-specific small silhouette visible in the physical
+BR-005 garment source. No standalone logo art is authorized. The generic
+data/brand-logos/three-rose-cluster.jpeg asset is a prohibited substitution.
+It is a molded silicone cut-out/applique on the wearer-right chest: smooth
+rubber/silicone surface, crisp die-cut raised perimeter, clean molded valleys,
+tonal grey-white relief, subtle satin-rubber highlight. It must not contain
+thread, stitches, fuzzy fibers, a patch border, text, an SR monogram, a single
+rose, a tree, or generic floral art. Reconstruct the surrounding black hoodie
+fabric naturally inside the mask and keep the white drawcords unchanged.
+
+In the two editable BR-007 wearer-right front white-mesh regions, reproduce the
+exact small embroidered Black Rose cluster from the BR-007 front authority:
+black/grey rose blooms, green stems/leaves, and a white cloud with pale-blue
+underside shading. Preserve the white mesh and piping around it. Do not add those
+green/blue accents anywhere else.
+
+In the editable BR-007 wearer-left front white-mesh region, reproduce the exact
+small SR-with-rose monogram from the BR-007 board in dark monochrome embroidery.
+Preserve the supplied interlocking SR letters, terminal rose, leaves, continuous
+stem, and baseline flourish. It is not plain SR text, a scribble, Love Hurts
+lettering, or a rose cluster. Preserve the white mesh panel and hem binding.
+
+No changes outside the transparent mask regions. Exact source geometry and
+material response override novelty.

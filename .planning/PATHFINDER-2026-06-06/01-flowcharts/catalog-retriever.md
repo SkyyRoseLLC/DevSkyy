@@ -31,7 +31,7 @@ flowchart TD
 ## Findings
 - **Two production callers:** `scripts/index_skyyrose_catalog.py:67` (index) and `api/v1/catalog.py:65` via `CatalogRetriever.for_production(namespace="catalog")` (query) → the Voyage+Pinecone path.
 - **Content composition** now via `dossier_loader.get_product_with_dossier()` = name + collection + garment_type_lock + branding_block + scene_setting + description. (00-features.md described an older composition — branding_spec+description+name — STALE; reconcile.)
-- Source of truth: catalog CSV `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` loaded by `skyyrose/core/catalog_loader.py:33`.
+- Source of truth: catalog CSV `data/skyyrose-catalog.csv` loaded by `skyyrose/core/catalog_loader.py:33`.
 
 ## Gaps
 - Overlap with F2's `skyyrose-catalog` collection (LightRAG) — same CSV feeding two different vector stores under near-identical collection names. Strong Phase 2 candidate.

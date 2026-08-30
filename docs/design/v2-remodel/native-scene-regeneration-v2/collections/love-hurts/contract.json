@@ -3,11 +3,11 @@
   "collection_id": "love-hurts",
   "candidate_only": true,
   "stable_ids": {"collection":"love-hurts","scenes":["LH-COMMERCE-1","LH-COMMERCE-2","LH-COMMERCE-3"],"ctas":["Complete the Look","Shop the Shorts","Pre-Order The Fannie"]},
-  "source_freshness_lock": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+  "source_freshness_lock": "a4b6f420fa358d2475c380dd12e2394c70c07b844981fd1a631e2ccaf8821139",
   "scene_cards": [
-    {"id":"LH-COMMERCE-1","status":"PRESERVE_DO_NOT_REGENERATE","candidate_hash":"1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38","local_asset_verification":"NOT_PRESENT_IN_THIS_WORKTREE","cta":"Complete the Look"},
+    {"id":"LH-COMMERCE-1","status":"FOUNDER_APPROVED_PRESERVE_DO_NOT_REGENERATE__RUNTIME_PROMOTION_PENDING","candidate_hash":"1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38","local_asset_verification":"SHA256_MATCHED_IN_THIS_WORKTREE","local_candidate":"../../../../../../renders/scroll-world/LH-COMMERCE-1/preserved-candidate/LH-COMMERCE-1-vow-aisle-founder-approved-v1.png","founder_approval_record":"../../../../../../data/candidates/founder-scene-approvals-2026-08-29.json","exact_cast":["lh-004","lh-002","lh-006"],"wearer_sku_assignments":[{"wearer":"man","look_id":"lh-bomber-black","skus":["lh-004","lh-002"]},{"wearer":"woman","look_id":"lh-bomber-white","skus":["lh-004","lh-006"]}],"cta":"Complete the Look"},
     {"id":"LH-COMMERCE-2","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/lh-commerce-2.json","cast":["lh-003"],"cta":"Shop the Shorts"},
-    {"id":"LH-COMMERCE-3","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/lh-commerce-3.json","cast":["lh-005"],"cta":"Pre-Order The Fannie"}
+    {"id":"LH-COMMERCE-3","status":"FOUNDER_APPROVED_VISUAL__RUNTIME_PROMOTION_PENDING","contract":"../../scene-contracts/lh-commerce-3.json","candidate_hash":"5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a","local_candidate":"../../../../../../renders/scroll-world/LH-COMMERCE-3/scene-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-candidate-v3.png","founder_approval_record":"../../../../../../data/candidates/founder-scene-approvals-2026-08-29.json","cast":["lh-005"],"cta":"Pre-Order The Fannie"}
   ],
   "founder_approval_required": true,
   "wiring_allowed": false,

@@ -2,7 +2,7 @@
  * Products API Route
  *
  * Reads the canonical product catalog
- * (`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`) and serves
+ * (`data/skyyrose-catalog.csv`) and serves
  * shaped product records to admin panels and public pages.
  *
  * GET  /api/products                        — All products

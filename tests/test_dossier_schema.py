@@ -211,6 +211,46 @@ class TestCoverage:
         cov = coverage_for(schema)
         assert any("color_hex" in w for w in cov.warnings)
 
+    def test_coverage_reports_material_lock_completion(self):
+        block = """- **front-right-chest** (~2in): Molded rose. **Technique:** silicone.
+          **Color:** tonal grey. **Material:** molded silicone elastomer.
+          **Construction:** one cut-out molded unit. **Surface:** smooth rubber-like relief.
+          **Attachment:** applied flush to chest fabric. **Verify:** crisp perimeter and no stitches.
+          **Reject:** embroidery, flat print, woven patch, or wrong placement.
+        """
+        raw = RawDossier(
+            sku="br-005",
+            name="Signature Hoodie",
+            collection="black-rose",
+            slug="signature-hoodie",
+            garment_type_lock="Pullover hoodie. NOT a zip-up.",
+            branding_block=block,
+            negative_block="- NO sleeve placement",
+            material_lock_version="v1",
+        )
+        schema = DossierSchema.from_raw(raw)
+        assert schema.branding[0].material_lock is not None
+        assert schema.branding[0].material_lock.material_family == "molded silicone elastomer"
+        assert coverage_for(schema).material_lock_coverage_pct == 100.0
+
+    def test_opted_in_material_lock_fails_closed_when_partial(self):
+        block = """- **front-right-chest** (~2in): Molded rose. **Technique:** silicone.
+          **Color:** tonal grey. **Material:** molded silicone elastomer.
+          **Construction:** one cut-out molded unit.
+        """
+        raw = RawDossier(
+            sku="br-005",
+            name="Signature Hoodie",
+            collection="black-rose",
+            slug="signature-hoodie",
+            garment_type_lock="Pullover hoodie. NOT a zip-up.",
+            branding_block=block,
+            negative_block="- NO sleeve placement",
+            material_lock_version="v1",
+        )
+        with pytest.raises(DossierSchemaError, match="partial material lock"):
+            DossierSchema.from_raw(raw)
+
 
 # ---------------------------------------------------------------------------
 # Round-trip with real markdown

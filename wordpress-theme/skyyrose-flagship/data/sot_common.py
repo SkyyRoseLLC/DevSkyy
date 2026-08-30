@@ -12,14 +12,16 @@ from pathlib import Path
 from typing import Any
 
 DATA = Path(__file__).resolve().parent
-sys.path.insert(0, str(DATA.parents[2]))
+REPO_ROOT = DATA.parents[2]
+sys.path.insert(0, str(REPO_ROOT))
 from skyyrose.core.paths import WP_ASSETS_DIR  # noqa: E402
 
 ASSETS = WP_ASSETS_DIR
-COLLECTIONS_DIR = DATA / "collections"
+SOURCE_DATA = REPO_ROOT / "data"
+COLLECTIONS_DIR = SOURCE_DATA / "collections"
 SCHEMA = COLLECTIONS_DIR / "identity.schema.json"
-MANIFEST = DATA / "visual-manifest.json"
-LOGO_REG = DATA / "logo-registry.json"
+MANIFEST = SOURCE_DATA / "visual-manifest.json"
+LOGO_REG = SOURCE_DATA / "logo-registry.json"
 
 # webp first = preferred; resolve_asset honors THIS order, not alphabetical glob order.
 IMG_EXTS = (".webp", ".avif", ".png", ".jpg", ".jpeg", ".svg", ".mp4", ".webm")

@@ -252,7 +252,7 @@ The period is part of the tagline. This is the **only** tagline. Never paraphras
 
 Product facts — name, collection, price, description, colorway — resolve through:
 
-1. **Catalog CSV:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs)
+1. **Catalog CSV:** `data/skyyrose-catalog.csv` (33 SKUs)
 2. **Per-SKU dossiers:** `skyyrose/elite_studio/assets/` per-product directories
 3. **Live agent (for social copy):** `SocialMediaAgent` → `skyyrose/assets/data/product-content.json`
 
@@ -284,7 +284,7 @@ The following actions require an explicit confirmation manifest + `y` from the u
 |-------|-----------------|
 | Visual references (The Five) + full lockup rule | `brand-guardrails.md § 2, § 4` |
 | Collection voice lines (per-collection full library) | `docs/brand/collection-stories.md` |
-| Per-SKU product facts | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + per-SKU dossiers |
+| Per-SKU product facts | `data/skyyrose-catalog.csv` + per-SKU dossiers |
 | Canonical visual references doc | `docs/brand/visual-references.md` |
 | STOP-AND-SHOW full protocol | `CLAUDE.md` (project root) under "STOP AND SHOW" |
 | Font declarations | `wordpress-theme/skyyrose-flagship/theme.json` |

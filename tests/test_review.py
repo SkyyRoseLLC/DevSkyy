@@ -2,7 +2,7 @@
 
 Uses tmp_path fixture to build an isolated repo skeleton per test:
 
-    {tmp}/wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+    {tmp}/data/skyyrose-catalog.csv
     {tmp}/renders/ghost-mannequin/{sku}-ghost-front.webp
     {tmp}/renders/ghost-mannequin/approved/   (created by approve())
 """
@@ -30,7 +30,7 @@ from skyyrose.core.review import (
     reject,
 )
 
-CATALOG_REL = Path("wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv")
+CATALOG_REL = Path("data/skyyrose-catalog.csv")
 GHOST_REL = Path("renders/ghost-mannequin")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]

@@ -93,6 +93,7 @@ def _build_audit_prompt(dossier: dict, view: str = "front") -> str:
     # Lazy import breaks the circular: synthesis.__init__ → flux_pipeline → vision_audit_agent.
     try:
         from ..synthesis.stages.mask_deriver import parse_branding_entries  # noqa: PLC0415
+        from skyyrose.core.material_fidelity import compile_material_lock_prompt  # noqa: PLC0415
 
         all_entries = parse_branding_entries(full_branding)
         view_entries = [e for e in all_entries if e.matches_view(view)]
@@ -102,11 +103,14 @@ def _build_audit_prompt(dossier: dict, view: str = "front") -> str:
             )
         else:
             branding_block = full_branding
+        material_block = compile_material_lock_prompt(view_entries)
     except ImportError:
         branding_block = full_branding
+        material_block = ""
     except Exception:
         logger.warning("branding filter failed for view=%s; using full block", view, exc_info=True)
         branding_block = full_branding
+        material_block = ""
 
     return (
         f"You are an independent fidelity auditor for SkyyRose product renders. "
@@ -116,12 +120,15 @@ def _build_audit_prompt(dossier: dict, view: str = "front") -> str:
         f"{dossier.get('garment_type_lock', '')}\n\n"
         f"BRANDING — exactly what SHOULD appear on this product's {view.upper()} view:\n"
         f"{branding_block}\n\n"
+        f"MATERIAL / SURFACE / ATTACHMENT GATE — exact observable physics:\n"
+        f"{material_block or 'No structured material lock is authored for this product.'}\n\n"
         f"NEGATIVE — what MUST NOT appear on this product:\n"
         f"{dossier.get('negative_block', '')}\n\n"
         f"INSPECT the attached rendered image. Identify ANY element that:\n"
         f"  (a) appears in the NEGATIVE list, or\n"
         f"  (b) appears in the render but is not authorized by the {view.upper()} VIEW BRANDING list, or\n"
         f"  (c) contradicts the GARMENT LOCK (wrong garment type).\n\n"
+        f"  (d) uses the wrong surface physics, attachment, or technique for a locked region.\n\n"
         f"IMPORTANT: This is a {view.upper()} VIEW render. Do NOT flag missing elements "
         f"that belong to other views (e.g. back-view branding on a front-view render).\n\n"
         f"Reply with VALID JSON, no prose, no code fences:\n"

@@ -77,7 +77,7 @@ assets
 /wordpress-theme/skyyrose-flagship/*
 !/wordpress-theme/skyyrose-flagship/data
 /wordpress-theme/skyyrose-flagship/data/*
-!/wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+!/data/skyyrose-catalog.csv
 /source-products
 /brand-assets
 /cerebrum

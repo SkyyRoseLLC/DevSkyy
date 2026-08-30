@@ -1,7 +1,43 @@
 {
-  "schema": "skyyrose.sot.opening-product-media.v1",
-  "purpose": "Local V2 prototype product reels. These derivatives are sourced only from the canonical product-imagery SOT and do not replace WooCommerce gallery authority in production.",
-  "source_of_truth": "data/sot-images.json",
+  "schema": "skyyrose.sot.opening-product-media.v2",
+  "purpose": "Fail-closed V2 on-model intake for all current products. Registry presence is not approval; only exact hash-bound, explicitly reviewed on-model sources may receive the approved status.",
+  "source_of_truth": "data/product-sot.json",
+  "product_sot_sha256": "98310ba35a27e4ae0690d54ca8dd35394b6fdfa314721d32e443ec865d3d2f9f",
+  "product_hashes": {
+    "br-001": "c84fd1f4dce836046c67bb23c356b6fa5256e8fb0737645a833903a44888fecb",
+    "br-002": "c2906c59d90806f6ea88c5d30e4c1dcb137de5fe74af4faa553f1bf5e83a002c",
+    "br-003": "75ef4e8af697a071abe4e8e79af6f56ff594528059f03c0e86d910a9b8170884",
+    "br-004": "9f0b77865f126b8cdc6b050734b925d0eddf3cd548d98b6270008240c20118ad",
+    "br-005": "849e883fbac39c65cdd3aeeb35ef8dbf2ac67f4ff3174af45f6d412896c4b7b6",
+    "br-006": "4b0ef5157b130887c18513ac3c845077fc749e16faeb6a8cdd8f563cc9358cdc",
+    "br-007": "d0309d6342565bc6dd2112022f3ee8045227d222cfc556212f96e80c5f7c9cde",
+    "br-008": "7c6c2edbb5cd1b36c971766edc5cc85c908f2de60ae78d5f3fec5c90fdc67e61",
+    "br-009": "6e111ecadfe6431e9558e46976dd8d554d182ce5df4015dc486dc44fb114db33",
+    "br-010": "6d73b9aa7bb123450e9a8cc8e50b841abfcb4b8e34c7724e6d59c2ea59705628",
+    "br-011": "473d3eaf2fe1a986f7cdb4061edf5bee4422aa08f9c8de390cc3eb28c008bd8a",
+    "br-012": "01a91372cae153223c58c3d3641bad4e9db5cf24ce8036970f4923218480e7d3",
+    "br-014": "8d32552025be688dcb49bf26e56a868fedf19d3210d2ee244ddcd8c930f51b6f",
+    "br-015": "6104ee3657a462f17758e19b3dfc81170993ff4a8ba44685d461175991421770",
+    "kids-001": "46ed365389ef039ac51436faf163f3b716740580fc1ed341a7becba240ac747d",
+    "kids-002": "3676cdd976dc6f230548d31e01deb5fe2b6c3b088f01528ec8a8d5882e6dbd79",
+    "lh-002": "3e2a473a56f73fdd0ac96b1ada531ffedb9fa94ab6932ac926159931e1bf75f7",
+    "lh-003": "30045b206ef1cc95413dcd8617720f52d7e6d2eff26ba3dabf48560955417f78",
+    "lh-004": "583f009e778baafb8d129cbda34bc44c46555aee74d787b7959d822045c4b28d",
+    "lh-005": "2335b8992df31221c10ca6ff885d52f99fb7e4956bd40a5763c154d736869658",
+    "lh-006": "6279c5a37711609abea9ac7e2226fbfe170d0b7ed58f6413af466c2ad3a5a3fd",
+    "sg-001": "aa8af5ce2679a391831c51e4528c36a12451b1952a1aa95e35efc3dde69d2a96",
+    "sg-002": "36836bd4ac437578412b28e2cc929a0c8a0ee5dacf5e5a80b3d7c1b6285f1e76",
+    "sg-003": "6a7b4ad159bd4b3e3f03e70629dc893f217f6f6c701565bbd4cb1da72e593719",
+    "sg-005": "18b37bf8446f647f22a03d9ce60b638d16fafaf4cbd61f7acec16ec2f1c1d523",
+    "sg-006": "8da6c11a4eb09b360fef440a3f1b0e1835d6be06f3760d2910c79843243c6d57",
+    "sg-007": "6de07310518cfb3e9f1010e50bcdd20438d013af27d911567d98d1a9f0336886",
+    "sg-009": "e78d0e98676406f47db1290ffc531a5ba640855f818e22d38e25a5c4534751d8",
+    "sg-011": "d73652796ded04093905f1aac01557f5e4b3d50941e21ca1dc4cff38f934cac0",
+    "sg-012": "d1a7c41a49919f2023005c677ceaa586af4ec5d9aae12c18c42d22e9cb98e084",
+    "sg-013": "ecff5494693ab1f702c2984357cee4d7bf52bf1d4d76148d139db714ee04641f",
+    "sg-014": "32909632af307080afbb74ec7b9c9dd4723a0c1eb61aa0959762b09adb7aad39",
+    "sg-015": "0d60b5cf71159647e1d2db4f3c25ad5037b1e5350e398048ba8178e7fc9ae11d"
+  },
   "delivery": {
     "format": "webp",
     "max_dimension": "600x800",
@@ -13,44 +49,245 @@
     ]
   },
   "products": {
-    "sg-005": {
-      "collection": "signature",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/sg-005-onmodel.webp", "derivative": "assets/sot/images/products/preview/sg-005-front.webp" },
-        { "role": "packshot", "source": "assets/images/products/sg-005-bay-bridge-shirt.jpeg", "derivative": "assets/sot/images/products/preview/sg-005-packshot.webp" }
-      ]
+    "br-001": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-002": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-003": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
     },
     "br-004": {
       "collection": "black-rose",
+      "status": "LEGACY_RECORD_PENDING_REVALIDATION",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/br-004-onmodel.webp", "derivative": "assets/sot/images/products/preview/br-004-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/black-rose-hoodie-back-model.webp", "derivative": "assets/sot/images/products/preview/br-004-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/br-004-black-rose-hoodie.jpeg", "derivative": "assets/sot/images/products/preview/br-004-packshot.webp" }
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/br-004-onmodel.webp",
+          "derivative": "assets/sot/images/products/preview/br-004-front.webp"
+        },
+        {
+          "role": "on_model_back",
+          "source": "assets/images/products/black-rose-hoodie-back-model.webp",
+          "derivative": "assets/sot/images/products/preview/br-004-back.webp"
+        },
+        {
+          "role": "packshot",
+          "source": "assets/images/products/br-004-black-rose-hoodie.jpeg",
+          "derivative": "assets/sot/images/products/preview/br-004-packshot.webp"
+        }
       ]
     },
-    "lh-004": {
-      "collection": "love-hurts",
-      "views": [
-        { "role": "on_model_front", "source": "assets/images/products/lh-004-onmodel.webp", "derivative": "assets/sot/images/products/preview/lh-004-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/lh-004-bomber-back.webp", "derivative": "assets/sot/images/products/preview/lh-004-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/lh-004-bomber.png", "derivative": "assets/sot/images/products/preview/lh-004-packshot.webp" }
-      ]
+    "br-005": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-006": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-007": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-008": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-009": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-010": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-011": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-012": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-014": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "br-015": {
+      "collection": "black-rose",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
     },
     "kids-001": {
       "collection": "kids-capsule",
+      "status": "LEGACY_RECORD_PENDING_REVALIDATION",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/kids-001-onmodel-v2.webp", "derivative": "assets/sot/images/products/preview/kids-001-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/kids-red-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-001-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/kids-001-red-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-001-packshot.webp" }
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/kids-001-onmodel-v2.webp",
+          "derivative": "assets/sot/images/products/preview/kids-001-front.webp"
+        },
+        {
+          "role": "on_model_back",
+          "source": "assets/images/products/kids-red-set-back-model.webp",
+          "derivative": "assets/sot/images/products/preview/kids-001-back.webp"
+        },
+        {
+          "role": "packshot",
+          "source": "assets/images/products/kids-001-red-set.jpeg",
+          "derivative": "assets/sot/images/products/preview/kids-001-packshot.webp"
+        }
       ]
     },
     "kids-002": {
       "collection": "kids-capsule",
+      "status": "LEGACY_RECORD_PENDING_REVALIDATION",
       "views": [
-        { "role": "on_model_front", "source": "assets/images/products/ghost/kids-002-ghost-front.webp", "derivative": "assets/sot/images/products/preview/kids-002-front.webp" },
-        { "role": "on_model_back", "source": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp", "derivative": "assets/sot/images/products/preview/kids-002-back.webp" },
-        { "role": "packshot", "source": "assets/images/products/kids-002-purple-set.jpeg", "derivative": "assets/sot/images/products/preview/kids-002-packshot.webp" }
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/ghost/kids-002-ghost-front.webp",
+          "derivative": "assets/sot/images/products/preview/kids-002-front.webp"
+        },
+        {
+          "role": "on_model_back",
+          "source": "assets/images/products/kids-purple-set/kids-purple-set-back-model.webp",
+          "derivative": "assets/sot/images/products/preview/kids-002-back.webp"
+        },
+        {
+          "role": "packshot",
+          "source": "assets/images/products/kids-002-purple-set.jpeg",
+          "derivative": "assets/sot/images/products/preview/kids-002-packshot.webp"
+        }
       ]
+    },
+    "lh-002": {
+      "collection": "love-hurts",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "lh-003": {
+      "collection": "love-hurts",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "lh-004": {
+      "collection": "love-hurts",
+      "status": "LEGACY_RECORD_PENDING_REVALIDATION",
+      "views": [
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/lh-004-onmodel.webp",
+          "derivative": "assets/sot/images/products/preview/lh-004-front.webp"
+        },
+        {
+          "role": "on_model_back",
+          "source": "assets/images/products/lh-004-bomber-back.webp",
+          "derivative": "assets/sot/images/products/preview/lh-004-back.webp"
+        },
+        {
+          "role": "packshot",
+          "source": "assets/images/products/lh-004-bomber.png",
+          "derivative": "assets/sot/images/products/preview/lh-004-packshot.webp"
+        }
+      ]
+    },
+    "lh-005": {
+      "collection": "love-hurts",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "lh-006": {
+      "collection": "love-hurts",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-001": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-002": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-003": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-005": {
+      "collection": "signature",
+      "status": "LEGACY_RECORD_PENDING_REVALIDATION",
+      "views": [
+        {
+          "role": "on_model_front",
+          "source": "assets/images/products/sg-005-onmodel.webp",
+          "derivative": "assets/sot/images/products/preview/sg-005-front.webp"
+        },
+        {
+          "role": "packshot",
+          "source": "assets/images/products/sg-005-bay-bridge-shirt.jpeg",
+          "derivative": "assets/sot/images/products/preview/sg-005-packshot.webp"
+        }
+      ]
+    },
+    "sg-006": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-007": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-009": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-011": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-012": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-013": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-014": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
+    },
+    "sg-015": {
+      "collection": "signature",
+      "status": "MISSING_EXACT_ON_MODEL_AUTHORITY",
+      "views": []
     }
   }
 }

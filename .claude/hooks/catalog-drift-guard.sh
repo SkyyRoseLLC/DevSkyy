@@ -32,7 +32,7 @@ fi
 REL_FILE="${EDITED_FILE#"$REPO_ROOT/"}"
 
 CATALOG_PATTERNS=(
-  "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+  "data/skyyrose-catalog.csv"
   "wordpress-theme/skyyrose-flagship/data/visual-manifest.json"
   "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
   "wordpress-theme/skyyrose-flagship/data/product-similarities.json"
@@ -43,7 +43,7 @@ CATALOG_PATTERNS=(
 
 # Per feedback_canonical_sources_only.md (locked 2026-05-27): dossier .md
 # files are the second authoritative source and any touch must announce.
-DOSSIER_GLOB_PREFIX="wordpress-theme/skyyrose-flagship/data/dossiers/"
+DOSSIER_GLOB_PREFIX="data/dossiers/"
 
 MATCHED=0
 for pattern in "${CATALOG_PATTERNS[@]}"; do
@@ -90,7 +90,7 @@ fi
 # validator still keeps the SOT current.
 # SOT masters = the three legacy masters PLUS per-collection identity.json (canon).
 SOT_MASTERS=(
-  "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+  "data/skyyrose-catalog.csv"
   "wordpress-theme/skyyrose-flagship/data/visual-manifest.json"
   "wordpress-theme/skyyrose-flagship/data/logo-registry.json"
 )

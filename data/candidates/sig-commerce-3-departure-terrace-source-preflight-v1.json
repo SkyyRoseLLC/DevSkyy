@@ -1,0 +1,49 @@
+{
+  "schema": "skyyrose.product-fidelity-candidate-preflight.v1",
+  "status": "PREFLIGHT_PASSED__CANDIDATE_ONLY__FOUNDER_REVIEW_REQUIRED",
+  "created_for": "SIG-COMMERCE-3 The Departure Terrace",
+  "founder_directive": "Integrate men and women in the official Signature scene edit: Bay Bridge shirt-and-shorts, Stay Golden shirt-and-shorts, and the Windbreaker Set.",
+  "founder_scene_direction_approval": "Approved: Signature's two hero-derived world moments and The Departure Terrace are the official scene directions. This approval does not promote any generated product candidate or waive source/matte/native-integration review.",
+  "source_freshness_lock": {"path": "data/product-sot.json", "sha256": "bdb03c036f37c3928084194a4707cf83d5318cee6a71590dc462e3c47da51a57"},
+  "candidate_authority_generation": {"authorized": true, "provider": "builtin-imagegen", "resolved_capability": "product_image_candidate", "fidelity_tier": "candidate_only", "promotion_allowed": false, "wiring_allowed": false, "deployment_allowed": false},
+  "scene_binding": {
+    "scene_id": "SIG-COMMERCE-3",
+    "label": "The Departure Terrace",
+    "role": "collection_preorder",
+    "cta": "Explore Pre-Orders",
+    "official_environment": {"path": "skyyrose/assets/scenes/signature/signature-oakland-waterfront-bay-bridge-day/signature-oakland-waterfront-bay-bridge-day-v2.png", "sha256": "d3a7aab2a92e4201a21d44bc592ad357dda93480c9578e7fbcc07a8d421c6e15", "visual_check": "Oakland-side Bay Bridge waterfront/pier, daytime, bridge and skyline visible; founder-directed scene plate.", "use_rule": "Preserve as the exact environment plate for the later protected composite. Never replace with generic San Francisco, Golden Gate, or a regenerated waterfront."}
+  },
+  "exact_cast": [
+    {
+      "look_id": "sg-baybridge-set", "cast_role": "men-led", "skus": ["sg-005", "sg-001"],
+      "sources": [
+        {"sku": "sg-005", "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg", "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1", "view": "front"},
+        {"sku": "sg-001", "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png", "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c", "view": "front"}
+      ],
+      "detail_locks": ["White tee with the exact centered blue/cyan Bay Bridge rose embroidery; no text.", "White mesh knee-length shorts with continuous daytime Bay Bridge/city/water sublimation, blue waistband, white drawstring, and lower wearer-left blue rose/cloud.", "Never exchange this blue daytime Bay Bridge palette for the purple Stay Golden palette."]
+    },
+    {
+      "look_id": "sg-staygolden-set", "cast_role": "women-led", "skus": ["sg-002", "sg-003"],
+      "sources": [
+        {"sku": "sg-002", "path": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg", "sha256": "25f82fa5960105b4e093892c3aec28e707dd0d0534413e21075163d92f7a2baa", "view": "front"},
+        {"sku": "sg-003", "path": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png", "sha256": "6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e", "view": "front"}
+      ],
+      "detail_locks": ["White tee with the exact large centered purple/violet rose-and-Golden-Gate embroidery; no text.", "White mesh knee-length shorts with continuous purple/violet Golden Gate and city-light print, purple waistband, white drawstring, and lower wearer-left purple rose.", "The Golden Gate exists only within this garment print; it is never the scene environment."]
+    },
+    {
+      "look_id": "sg-015-windbreaker-set", "cast_role": "women-led", "skus": ["sg-015"],
+      "sources": [{"sku": "sg-015", "path": "assets/products/source-photos/signature/sg-015-windbreaker-set.jpg", "sha256": "cddd4d4dfccd473bbd1d1223c18270141342c7e6bc31bdab25df99f04d8ce2dc", "view": "front-and-back-design-sheet"}],
+      "detail_locks": ["One inseparable white lightweight nylon jacket-and-pants set, never split into invented SKUs.", "Pink hood; pastel pink, lavender, mint, and yellow sewn chevrons; pink pocket piping; white zipper and drawstrings; multicolor cuff/hem/waist bands; small pink rose marks.", "Large SR monogram is upper jacket back only; do not invent lettering or a front chest monogram."]
+    }
+  ],
+  "source_stage_script": {
+    "required_frame": "One full-body mixed adult cast: one man in sg-baybridge-set, one woman in sg-staygolden-set, and one woman in the complete sg-015 windbreaker set.",
+    "camera": "straight-on editorial 50mm-equivalent, full bodies and every short/hem/waistband visible, enough separation to inspect the five products independently.",
+    "background": "neutral warm-grey studio only for this source-stage candidate; no city, bridge, product text, signage, or environment.",
+    "interaction": "natural connected group, not a catalog row: Bay Bridge wearer takes one relaxed forward step, Stay Golden wearer shares a real sightline, windbreaker wearer forms the central connection; no occlusion of embroidery, waistbands, bridge prints, or chevrons.",
+    "prohibited": ["generic clothing or substitute shorts/shirts", "product-name text, captions, labels, or invented logos", "blue/purple colorway exchange", "Golden Gate in the environment", "separate jacket or pants sold as an invented sg-015 SKU", "cropped legs, concealed waistbands, or unreadable product fronts"]
+  },
+  "scene_stage_script_after_authority_pass": {"environment": "Use the hash-bound Oakland Bay Bridge plate exactly; place the approved protected cast on the pier plane, keeping the foreground sketch crate unobstructed.", "integration": "Shared warm upper-right key light, soft shadows cast to viewer-left, Bay-water reflection response, correct plank-plane foot contact, soft atmospheric depth, real mutual sightline and minor occlusion.", "forbidden": "No independent redraw of garments, no generic waterfront, no Golden Gate scene, no product swapping, no text overlay inside the generated image."},
+  "required_before_scene_generation": ["Founder visual pass for the full mixed-cast source-stage candidate.", "One protected garment matte per look, with real alpha and declared source hash.", "Independent product-fidelity and native-integration review receipts.", "Byte-preserving protected composite plan using the hash-bound Oakland environment plate."],
+  "known_evidence_gaps": ["Root SOT presently classifies sg-002, sg-003, sg-005, and sg-015 at design/reference proof levels even though the current founder-source inputs are available under assets/products/source-photos. This prevents promotion, not candidate-only source-stage generation.", "No protected garment mattes exist yet for this three-look group.", "No approved same-pose mixed-cast authority exists yet."]
+}

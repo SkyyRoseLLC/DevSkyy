@@ -1,6 +1,6 @@
 {
   "version": "v4",
-  "source_of_truth": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+  "source_of_truth": "data/skyyrose-catalog.csv",
   "generated_at": "2026-04-20",
   "replicate_model": "devskyy/skyyrose-lora-v4",
   "total_live_skus_in_catalog": 30,

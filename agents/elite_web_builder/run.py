@@ -283,8 +283,8 @@ collection hero=collection-specific logo centered above heading, product cards=N
 ## Products — canonical sources
 Resolve every product reference — SKU, name, collection, price, pre-order \
 flag, image filename, dossier slug — through ONE OF:
-  - `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (the catalog)
-  - `wordpress-theme/skyyrose-flagship/data/dossiers/{slug}.md` (per-SKU spec)
+  - `data/skyyrose-catalog.csv` (the catalog)
+  - `data/dossiers/{slug}.md` (per-SKU spec)
 Read via `core/ground_truth.py` at story generation time. Never inline a \
 product list in this PRD — caused drift on retired SKUs (sg-004, lh-001) \
 historically. 32 SKUs across four collections (Black Rose, Love Hurts, \

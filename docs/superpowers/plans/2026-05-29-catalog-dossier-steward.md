@@ -2411,7 +2411,7 @@ python -m skyyrose.steward verify --skus br-001 lh-002 --with-vision
 python -m skyyrose.steward scaffold --sku br-001
 ```
 
-Drafts land in `wordpress-theme/skyyrose-flagship/data/dossiers/_drafts/{slug}.draft.md`.
+Drafts land in `data/dossiers/_drafts/{slug}.draft.md`.
 The canonical `{slug}.md` is NEVER machine-written.
 
 ## Architecture

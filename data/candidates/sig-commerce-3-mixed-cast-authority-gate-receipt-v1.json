@@ -1,0 +1,129 @@
+{
+  "schema": "product-fidelity-preflight-receipt.v1",
+  "status": "PASS",
+  "operation": "native_collection_scene",
+  "target": {
+    "path": "/Users/theceo/.codex/worktrees/9fe2/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp",
+    "metadata": {
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_fraction": 0.0,
+      "opaque_fraction": 1.0
+    }
+  },
+  "references": [
+    {
+      "index": 0,
+      "path": "/Users/theceo/.codex/worktrees/9fe2/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "sg-005",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "path": "/Users/theceo/.codex/worktrees/9fe2/DevSkyy/assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-005",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 2048,
+        "height": 2048,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 2,
+      "path": "/Users/theceo/.codex/worktrees/9fe2/DevSkyy/assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-001",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 2000,
+        "height": 1800,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "path": "/Users/theceo/.codex/worktrees/9fe2/DevSkyy/assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-002",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 2048,
+        "height": 2048,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 4,
+      "path": "/Users/theceo/.codex/worktrees/9fe2/DevSkyy/assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-003",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 2000,
+        "height": 1800,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 5,
+      "path": "/Users/theceo/.codex/worktrees/9fe2/DevSkyy/assets/products/source-photos/signature/sg-015-windbreaker-set.jpg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-015",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 864,
+        "height": 1200,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    }
+  ],
+  "findings": []
+}

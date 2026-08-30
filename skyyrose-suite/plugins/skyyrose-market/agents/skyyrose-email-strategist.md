@@ -27,7 +27,7 @@ Canon foundation. Governs voice, palette, tagline, collection attribution, The F
 **Key rules absorbed from this skill:**
 - Tagline verbatim, with period: `Luxury Grows from Concrete.`
 - Collection voice isolation — Black Rose (armor/silver `#C0C0C0`), Love Hurts (bloodline/crimson `#DC143C`), Signature (stay golden/gold `#D4AF37`), Kids Capsule (little royalty/rose gold `#B76E79`) — voices never cross-attributed
-- Products by NAME in all customer-facing copy, resolved from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + per-SKU dossiers — never from memory, never invented
+- Products by NAME in all customer-facing copy, resolved from `data/skyyrose-catalog.csv` + per-SKU dossiers — never from memory, never invented
 - Visual DNA = The Five (Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels) — never European luxury-house lineage
 - Collection names in hero positions = lockup PNG assets at the paths in `brand-guardrails.md § 4` — never live typeset text
 - No cross-sell / no related products / no urgency timers — garment is the protagonist
@@ -122,7 +122,7 @@ Every email output includes:
 
 Discount codes: always `{{ welcome_discount_code }}` or the Klaviyo dynamic coupon variable — never a literal string.
 
-Product references: always resolve product NAME from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`. If the catalog does not contain the product, surface the gap — do not invent.
+Product references: always resolve product NAME from `data/skyyrose-catalog.csv`. If the catalog does not contain the product, surface the gap — do not invent.
 
 ## Operating Discipline (always-on)
 

@@ -1,0 +1,107 @@
+{
+  "schema": "skyyrose.scroll-world-generation-gate-receipt.v1",
+  "criteria_path": "data/scroll-world-one-shot-verification-criteria.json",
+  "criteria_sha256": "ed4c589d8929b9a5767e2c4e6354682a5abac0df87ffd6f1cfc70b66a7c16833",
+  "source_sot_sha256": "98310ba35a27e4ae0690d54ca8dd35394b6fdfa314721d32e443ec865d3d2f9f",
+  "status": "PASS_SOURCE_PREFLIGHT__BLOCKED_PROVIDER_SUBMISSION",
+  "global_failures": [],
+  "scenes": [
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "status": "PASS_SOURCE_PREFLIGHT__BLOCKED_PROVIDER_SUBMISSION",
+      "checks": [
+        {
+          "role": "br005_physical",
+          "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+          "expected_sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
+          "actual_sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
+          "status": "PASS"
+        },
+        {
+          "role": "br005_photographed_chest_mark_detail_context_only",
+          "path": "data/candidates/br-commerce-2-source-authority/qa/br-005-physical-chest-patch-crop-tight.png",
+          "expected_sha256": "491738a4c8490325b97e986fb559e9f0f7e5866718b5000511402378c0d1b6d8",
+          "actual_sha256": "491738a4c8490325b97e986fb559e9f0f7e5866718b5000511402378c0d1b6d8",
+          "status": "PASS"
+        },
+        {
+          "role": "br007_front_physical",
+          "path": "assets/products/references/br-007-shorts-front-source.jpg",
+          "expected_sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+          "actual_sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+          "status": "PASS"
+        },
+        {
+          "role": "br007_founder_approved_onmodel_front_protected_pixels",
+          "path": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-front-2026-08-29.png",
+          "expected_sha256": "ed3a1406ec8b72f6bae88163f1a1f02659d801dda179066b36ce81b47979b418",
+          "actual_sha256": "ed3a1406ec8b72f6bae88163f1a1f02659d801dda179066b36ce81b47979b418",
+          "status": "PASS"
+        },
+        {
+          "role": "br007_back_physical",
+          "path": "assets/products/references/br-007-shorts-back-source.jpg",
+          "expected_sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9",
+          "actual_sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9",
+          "status": "PASS"
+        },
+        {
+          "role": "br007_left_hip_physical_not_back",
+          "path": "assets/products/references/br-007-shorts-left-hip-source.jpg",
+          "expected_sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2",
+          "actual_sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2",
+          "status": "PASS"
+        },
+        {
+          "role": "br004_physical",
+          "path": "assets/products/references/br-004-hoodie-real-front.jpeg",
+          "expected_sha256": "bf34e9283fe404e14a0d0ce4cfc3aeb5e51689de695685b3365662335e095699",
+          "actual_sha256": "bf34e9283fe404e14a0d0ce4cfc3aeb5e51689de695685b3365662335e095699",
+          "status": "PASS"
+        },
+        {
+          "role": "br004_woman_founder_approved_source",
+          "path": "renders/scroll-world/BR-004/authority-stage/BR-004-women-led-on-model-authority-candidate.png",
+          "expected_sha256": "97fc73d7617d473076ba653e9cc3d63a3e5a4d1249cda33120389998a0dd3d12",
+          "actual_sha256": "97fc73d7617d473076ba653e9cc3d63a3e5a4d1249cda33120389998a0dd3d12",
+          "status": "PASS"
+        },
+        {
+          "role": "hero_graphic",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/black-rose-star-graphic.png",
+          "expected_sha256": "6af686d798fb6541c3a691492809224a6318d62573d1462c4f3f99af9957ec78",
+          "actual_sha256": "6af686d798fb6541c3a691492809224a6318d62573d1462c4f3f99af9957ec78",
+          "status": "PASS"
+        },
+        {
+          "role": "approved_environment_plate",
+          "path": "renders/scroll-world/scene-plates/BR-COMMERCE-2-waterfront-plate-v1.png",
+          "expected_sha256": "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a",
+          "actual_sha256": "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a",
+          "status": "PASS"
+        }
+      ],
+      "failures": [],
+      "source_preflight_passed": true,
+      "provider_submission_allowed": false,
+      "provider_blockers": [
+        "GLOBAL_PAID_PROVIDER_PAUSE_ACTIVE",
+        "BR005_UPPER_BODY_EDIT_MASK_REQUIRES_FOUNDER_REVIEW",
+        "BR005_WEARER_RIGHT_CHEST_SILICONE_ATTACHMENT_MATTE_MISSING",
+        "BR005_WEARER_LEFT_SIDE_BODY_ONLY_EMBROIDERY_ATTACHMENT_MATTE_MISSING",
+        "BR005_ON_APPROVED_MAN_NOT_YET_MASK_EDITED_AND_VERIFIED",
+        "FOUNDER_APPROVED_MAN_GENUINE_ALPHA_NOT_AVAILABLE",
+        "FOUNDER_EXPLICIT_RESUME_REQUIRED_AFTER_VISIBLE_SOURCE_PROOF"
+      ],
+      "runtime_wiring_allowed": false,
+      "deployment_allowed": false
+    }
+  ],
+  "boundary": {
+    "source_preflight_is_not_product_postflight": true,
+    "source_preflight_is_not_founder_promotion": true,
+    "source_preflight_is_not_provider_submission_authorization": true,
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}

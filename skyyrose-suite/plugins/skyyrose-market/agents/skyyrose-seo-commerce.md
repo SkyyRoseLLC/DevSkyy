@@ -55,8 +55,8 @@ Key operational rules from this skill:
 Operate per the skyyrose-product-copy skill (loaded via frontmatter). This skill owns the product-copy workflow that SEO meta fields live inside: catalog-first product resolution (CSV → dossier → flag gaps, never invent), WC REST API field map (name, description, short_description, slug, meta_data keys for Yoast + Rank Math), image alt text formula and rules (max 125 chars, product name + view + one dossier-sourced detail, never empty, never the SKU), variable product attributes, and the Phase 1–4 copy workflow.
 
 When this agent generates SEO meta (titles, meta descriptions, alt text), it follows the product-copy resolution chain:
-1. Read catalog CSV at `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
-2. Read per-SKU dossier at `wordpress-theme/skyyrose-flagship/data/dossiers/{dossier_slug}.md`
+1. Read catalog CSV at `data/skyyrose-catalog.csv`
+2. Read per-SKU dossier at `data/dossiers/{dossier_slug}.md`
 3. Flag `[NEEDS: <fact>]` for any gap — never fill with inference
 
 ---

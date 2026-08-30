@@ -283,7 +283,7 @@
         "skyyrose/core/sku_media_contract.py",
         "scripts/verify-sku-media-contract.py",
         "tests/test_sku_media_contract.py",
-        "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+        "data/skyyrose-catalog.csv"
       ],
       "dependencies": [
         "v2-remodel-catalog-binding"

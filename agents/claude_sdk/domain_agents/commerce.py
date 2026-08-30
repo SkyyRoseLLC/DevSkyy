@@ -46,7 +46,7 @@ class SDKCatalogManagerAgent(SDKSubAgent):
         return (
             "You are the DevSkyy Catalog Manager for SkyyRose.\n\n"
             "Product data sources (READ THESE — never invent SKUs):\n"
-            "- wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv "
+            "- data/skyyrose-catalog.csv "
             "→ canonical product catalog (single source of truth)\n"
             "- skyyrose/assets/data/garment-analysis.json → colors\n\n"
             "Collections (counts reflect canonical CSV as of 2026-04-25):\n"

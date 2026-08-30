@@ -3,7 +3,7 @@
 # ("Glob Fishing Instead of Consulting Canonical Source").
 #
 # Per cerebrum.md: before any task, name the canonical source. Examples:
-#   Catalog → wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+#   Catalog → data/skyyrose-catalog.csv
 #   Brand   → knowledge-base/seed/from-interview.md
 #   ADRs    → knowledge-base/decisions/
 #
@@ -64,7 +64,7 @@ build_directive() {
     for t in "${stale[@]}"; do
         case "$t" in
             catalog)
-                out+="  - catalog → wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv (30 SKUs, source of truth; never grep individual JSONs)\n"
+                out+="  - catalog → data/skyyrose-catalog.csv (30 SKUs, source of truth; never grep individual JSONs)\n"
                 out+="    Python loader: skyyrose/core/catalog_loader.py   PHP loader: inc/product-catalog.php\n"
                 ;;
             brand)

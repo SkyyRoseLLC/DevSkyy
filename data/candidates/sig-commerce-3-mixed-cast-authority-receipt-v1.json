@@ -1,0 +1,17 @@
+{
+  "schema": "skyyrose.product-fidelity-candidate-receipt.v1",
+  "status": "CANDIDATE_QUARANTINED_PENDING_FOUNDER_VISUAL_REVIEW",
+  "scene_id": "SIG-COMMERCE-3",
+  "stage": "mixed-cast source authority",
+  "output": {"path": "renders/scroll-world/SIG-COMMERCE-3/authority-stage/SIG-COMMERCE-3-mixed-cast-men-women-source-authority-candidate-v1.png", "sha256": "a8e6fe09b94542c411919d364d4998ac345b7016665a0ec02331566253a9b6c4", "dimensions": [1086, 1448]},
+  "provider": {"route": "builtin-imagegen", "capability_receipt": "data/candidates/sig-commerce-3-mixed-cast-authority-gate-receipt-v1.json", "fidelity_tier": "candidate_only"},
+  "input_contract": {"path": "data/candidates/sig-commerce-3-mixed-cast-authority-gate-v1.json", "sha256": "2ad5bffd73a8ab3cab51bee8b7df205723d26aef80d50701256c51680477c6df"},
+  "exact_cast": {"men_led": ["sg-005", "sg-001"], "women_led": ["sg-002", "sg-003", "sg-015"]},
+  "visual_precheck": {
+    "result": "NO_IMMEDIATE_HARD_REJECTION_OBSERVED",
+    "confirmed": ["mixed adult cast is integrated rather than a disconnected product row", "blue Bay Bridge shirt/shorts and blue waistband remain distinct from the purple Stay Golden shirt/shorts and purple waistband", "windbreaker is visibly a single jacket-and-pants outfit with pink hood and pastel chevrons", "no visible product-name text, captions, or generic city environment"],
+    "review_required": ["Confirm every source-detail placement, especially all small embroidery and windbreaker pocket/chevron construction, at founder review.", "Candidate has no protected garment mattes and therefore cannot be composited or promoted."]
+  },
+  "next_allowed_action": "After founder pass, create one real-alpha protected garment matte per look and use only the hash-bound Oakland Bay Bridge plate for the final protected composite.",
+  "promotion": {"approved": false, "wiring_allowed": false, "deployment_allowed": false}
+}

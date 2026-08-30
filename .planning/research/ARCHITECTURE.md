@@ -115,7 +115,7 @@ They look like mismatches but resolve cleanly by SKU:
 ### Layer Diagram
 
 ```
-wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+data/skyyrose-catalog.csv
                          |
                          |  (single canonical source, never forked)
                          v
@@ -540,5 +540,5 @@ All findings derived from direct file reads and pyc decompilation in this sessio
 - `/Users/theceo/DevSkyy/renders/preflight.py` — read in full
 - `/Users/theceo/DevSkyy/docs/superpowers/plans/2026-04-20-ghost-mannequin-pipeline.md` — read in full
 - `data/product-bundles/*/manifest.json` — all 32 manifests read via cross-reference script
-- `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — headers + 5 rows confirmed
+- `data/skyyrose-catalog.csv` — headers + 5 rows confirmed
 - Cross-reference script output: 19/30 exact matches; 11 mismatches catalogued

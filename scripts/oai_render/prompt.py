@@ -14,6 +14,13 @@ import logging
 import re
 from pathlib import Path
 
+from skyyrose.core.dossier_loader import parse_dossier_markdown
+from skyyrose.core.dossier_schema import DossierSchema, parse_branding_regions
+from skyyrose.core.material_fidelity import (
+    MATERIAL_FIDELITY_GUARDRAIL,
+    compile_material_lock_prompt,
+)
+
 from . import config
 
 log = logging.getLogger(__name__)
@@ -120,16 +127,21 @@ GHOST_BACKGROUND = (
 # On-model only → collection-specific scene/environment (founder-directed brand atmosphere).
 COLLECTION_SCENES = {
     "black-rose": (
-        "the Bay Bridge silhouetted behind, shot from the Oakland shore at blue hour, framed by a "
-        "moody black-rose garden — dark romantic luxury, dramatic low light, roses in deep shadow"
+        "the exact Black Rose world: moonlit Oakland/Bay landscape with the Bay Bridge from the "
+        "Oakland side and either the exact Black Rose type/monument architecture or the protected "
+        "rose-within-silver-star graphic. Never substitute generic gothic signage, generic stars, "
+        "or another bridge"
     ),
     "love-hurts": (
-        "a darkly romantic Beauty-and-the-Beast setting seen from the Beast's point of view — a "
-        "candlelit gothic château interior, ornate and brooding, shadow-heavy, emotionally intense"
+        "the exact protected enchanted rose under glass in its candlelit cathedral chamber, shot as "
+        "a high-fashion protective shadow-edge watcher perspective from the Beast's side of the room. "
+        "The rose must remain sharply visible and physically lit. This is emotional camera grammar only: "
+        "never depict a literal Beast character, costume, face, generic heart, generic flower, or substitute rose dome"
     ),
     "signature": (
-        "the Golden Gate Bridge and Bay Area skyline at golden hour — confident West-Coast "
-        "street-luxury energy, warm sunlight, effortless swag"
+        "the founder-directed Oakland waterfront: Oakland pier viewpoint, exact Bay Bridge span, water, "
+        "and distant San Francisco skyline. Never show the Golden Gate Bridge, a generic San Francisco "
+        "landmark, or alternate bridge geometry"
     ),
     "kids-capsule": (
         "a regal throne room, 'the heir to the throne' — opulent gold-and-velvet palace setting, "
@@ -154,7 +166,9 @@ def _background_for(style: str, collection: str) -> str:
         return (
             f"BACKGROUND / SCENE: {scene}. The model is photographed within this environment; keep "
             "the garment sharp, correctly lit, and fully unobstructed — the scene is atmosphere, "
-            "never covering or recoloring the product."
+            "never covering or recoloring the product. This generic on-model route creates a source-stage "
+            "candidate only: it is never permission to replace a root-indexed Scroll World scene, use random "
+            "collection products, or wire the output at runtime."
         )
     return GHOST_BACKGROUND
 
@@ -188,6 +202,7 @@ _BASE_PROCEDURE = (
     "MATERIAL: render the true surface texture named in the spec — satin must read glossy and "
     "light-catching, sherpa must show visible pile, nylon must look smooth and technical, fleece "
     "must look soft and matte. A garment rendered in the wrong material is an invalid result.\n"
+    f"{MATERIAL_FIDELITY_GUARDRAIL}\n"
     "PHOTOREALISM: some references are FLAT vector technical drawings (tech flats). They define "
     "construction and graphics ONLY — the output must be a fully photorealistic photograph of the "
     "real manufactured garment: dimensional fabric with natural drape, real seams, real texture, "
@@ -251,9 +266,17 @@ def read_dossier(dossier_path: Path | None) -> str | None:
     if not dossier_path or not dossier_path.exists():
         return None
     try:
-        body = _strip_frontmatter_and_comments(dossier_path.read_text(encoding="utf-8"))
+        raw_text = dossier_path.read_text(encoding="utf-8")
     except OSError:
         return None
+    raw_dossier = parse_dossier_markdown(raw_text)
+    if raw_dossier.material_lock_version:
+        if not raw_dossier.slug:
+            raw_dossier.slug = dossier_path.stem
+        # Opted-in material locks are a render stop gate. Do not swallow schema
+        # errors or downgrade to unstructured dossier prose.
+        DossierSchema.from_raw(raw_dossier)
+    body = _strip_frontmatter_and_comments(raw_text)
     if not body:
         return None
     body = sanitize_injected_text(body, source=dossier_path.name)
@@ -421,6 +444,9 @@ def build_prompt(
         parts.append("")
 
     if dossier_text:
+        material_lock_prompt = compile_material_lock_prompt(
+            parse_branding_regions(dossier_text)
+        )
         parts.append(
             "EXACT PRODUCT SPEC — CONSTRUCTION AND MATERIALS ONLY (replicate the physical garment "
             "details — fabric, colorway, graphics, logos, patches, labels — precisely; pose, scene, "
@@ -428,6 +454,9 @@ def build_prompt(
         )
         parts.append(dossier_text)
         parts.append("")
+        if material_lock_prompt:
+            parts.append(material_lock_prompt)
+            parts.append("")
         parts.append(
             "PRESENTATION OVERRIDE: use the PRESENTATION + VIEW lines at the top for framing/pose; "
             "IGNORE any conflicting pose, setting, or scene direction in the spec above. The spec "
@@ -468,6 +497,7 @@ _PAIR_BASE_PROCEDURE = (
     "fabric, color, every graphic, logo, embroidery, label, and patch in exact position and size. Do "
     "NOT invent, omit, resize, recolor, duplicate, or reposition any element of either garment, and "
     "do NOT blend the two garments into one.\n"
+    f"{MATERIAL_FIDELITY_GUARDRAIL}\n"
     "CONSISTENCY: identical catalog styling across every paired look in the line."
 )
 
@@ -518,6 +548,12 @@ def build_pair_prompt(
             )
             parts.append(g["dossier_text"])
             parts.append("")
+            material_lock_prompt = compile_material_lock_prompt(
+                parse_branding_regions(g["dossier_text"])
+            )
+            if material_lock_prompt:
+                parts.append(material_lock_prompt)
+                parts.append("")
 
     parts.append(
         "PRESENTATION OVERRIDE: framing, pose, scene, and layout are governed ONLY by the directives "

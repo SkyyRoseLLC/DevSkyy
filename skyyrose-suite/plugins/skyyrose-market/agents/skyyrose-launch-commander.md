@@ -54,7 +54,7 @@ Before producing any plan, brief, manifest, or output, apply both skills auto-lo
 On every invocation, before any specialist work begins:
 
 1. **Identify the drop type** from context (Full Collection / Single Product / Flash / Restock).
-2. **Read the catalog CSV** at `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+2. **Read the catalog CSV** at `data/skyyrose-catalog.csv`
    to confirm product names and collection. Reference products by NAME, never SKU.
    If a dossier exists at `knowledge-base/products/<sku>/`, read it for voice specifics.
 3. **Draft a roster manifest** listing every phase, the specialist agent(s) assigned to it,

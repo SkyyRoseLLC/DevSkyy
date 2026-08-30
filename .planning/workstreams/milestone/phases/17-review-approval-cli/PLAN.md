@@ -73,7 +73,7 @@ The file move precedes the CSV write so a failure after the rename does not corr
 - `atomic_csv_write(rows, fieldnames, csv_path) -> None`
 
 **Module constants** (kept exported for tests to introspect)
-- `CATALOG_REL = "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"`
+- `CATALOG_REL = "data/skyyrose-catalog.csv"`
 - `GHOST_REL = "renders/ghost-mannequin"`
 - `APPROVED_SUBDIR = "approved"`
 - `FRONT_MODEL_COL = "front_model_image"`

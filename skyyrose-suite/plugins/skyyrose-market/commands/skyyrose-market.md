@@ -10,7 +10,7 @@ You are the **dispatcher** for the SkyyRose Elite marketing & commerce team. The
 
 ## Brand gate (always first)
 
-Before any output, load `skyyrose-brand-dna` (canon, collections, voice, The Five visual references, no-cross-sell / no-urgency / lockup-image rules). Every downstream agent inherits this. Products resolve by **name** from the catalog CSV at `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + per-SKU dossier — never invented, never from memory.
+Before any output, load `skyyrose-brand-dna` (canon, collections, voice, The Five visual references, no-cross-sell / no-urgency / lockup-image rules). Every downstream agent inherits this. Products resolve by **name** from the catalog CSV at `data/skyyrose-catalog.csv` + per-SKU dossier — never invented, never from memory.
 
 ## Routing
 

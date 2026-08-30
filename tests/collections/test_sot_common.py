@@ -3,8 +3,10 @@ from pathlib import Path
 
 import pytest
 
-DATA = Path(__file__).resolve().parents[2] / "wordpress-theme/skyyrose-flagship/data"
-SCHEMA = DATA / "collections/identity.schema.json"
+ROOT = Path(__file__).resolve().parents[2]
+DATA = ROOT / "wordpress-theme/skyyrose-flagship/data"
+SOURCE_DATA = ROOT / "data"
+SCHEMA = SOURCE_DATA / "collections/identity.schema.json"
 
 
 def test_schema_is_valid_jsonschema():
@@ -48,7 +50,7 @@ def test_identity_validates_and_matches_canon(slug):
     import jsonschema
 
     schema = json.loads(SCHEMA.read_text())
-    ident = json.loads((DATA / "collections" / slug / "identity.json").read_text())
+    ident = json.loads((SOURCE_DATA / "collections" / slug / "identity.json").read_text())
     jsonschema.validate(ident, schema)
     assert ident["slug"] == slug
     assert ident["key"] == slug.replace("-", "_")

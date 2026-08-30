@@ -13,7 +13,7 @@ Sources parsed:
                                       $wc_pages array — slug => title page registry
   - footer.php                       hardcoded legal/help <li><a href="home_url('/x/')">
                                       links (FAQ, shipping-returns, privacy-policy, ...)
-  - data/skyyrose-catalog.csv        distinct `collection` values (collection => URL)
+  - repository-root data/skyyrose-catalog.csv        distinct `collection` values (collection => URL)
 
 Fails loud (non-zero exit) if any source yields suspiciously little — a silent
 empty/partial site-guide.json would quietly break the mascot's "where is X"
@@ -34,6 +34,7 @@ from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 THEME_DIR = REPO_ROOT / "wordpress-theme" / "skyyrose-flagship"
+CATALOG_PATH = REPO_ROOT / "data" / "skyyrose-catalog.csv"
 
 # Title always immediately precedes url as adjacent keys within a menu item
 # (parent or child) in inc/menu-setup.php, so a single non-greedy DOTALL
@@ -226,7 +227,7 @@ def build_intents(pages: dict[str, dict[str, Any]], collections: list[str]) -> l
     return intents
 
 
-def generate(theme_dir: Path = THEME_DIR) -> dict[str, Any]:
+def generate(theme_dir: Path = THEME_DIR, *, catalog_path: Path = CATALOG_PATH) -> dict[str, Any]:
     """Parse every source and return the {pages, intents} site-guide dict.
 
     Raises SystemExit (not a soft error) if any source parses to
@@ -238,7 +239,6 @@ def generate(theme_dir: Path = THEME_DIR) -> dict[str, Any]:
         encoding="utf-8"
     )
     footer_source = (theme_dir / "footer.php").read_text(encoding="utf-8")
-    catalog_path = theme_dir / "data" / "skyyrose-catalog.csv"
 
     menu_items = extract_menu_items(menu_source)
     page_registry = extract_page_registry(activation_source)

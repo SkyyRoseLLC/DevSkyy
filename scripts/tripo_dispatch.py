@@ -41,9 +41,9 @@ except ImportError:  # pragma: no cover — CLI invocation outside the repo root
     sys.path.insert(0, str(REPO_ROOT))
     from skyyrose.core.sot_images import resolve_image  # noqa: E402
 
-CATALOG_CSV = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+CATALOG_CSV = REPO_ROOT / "data/skyyrose-catalog.csv"
 THEME_ROOT = REPO_ROOT / "wordpress-theme/skyyrose-flagship"
-DOSSIER_DIR = THEME_ROOT / "data/dossiers"
+DOSSIER_DIR = REPO_ROOT / "data/dossiers"
 OUTPUT_DIR = REPO_ROOT / "renders/output/tripo"
 CREDITS_PER_SKU = 10  # flux.1_kontext_pro + generate_multiview_image template
 

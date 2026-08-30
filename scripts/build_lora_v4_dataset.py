@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
-"""
-Build SkyyRose LoRA v4 Training Dataset.
+"""Archival SkyyRose LoRA v4 dataset builder.
+
+This builder is intentionally fail-closed. Its hardcoded product definitions
+predate the root product SOT and contain superseded BR-007 view, logo, and
+construction facts. Use ``scripts/build_lora_v5_dataset.py`` instead.
 
 v3 Problem: Single trigger word 'skyyrose' for 390 images — model learned brand aesthetic
 but couldn't distinguish individual products.
@@ -117,12 +120,14 @@ PRODUCTS = {
     },
     "br-007": {
         "trigger": "skyyrose_br007",
-        "name": "Oakland Black Rose Shorts",
+        "name": "BLACK Rose x Love Hurts Basketball Shorts",
         "caption": (
-            "skyyrose_br007 black athletic shorts with 'OAKLAND' text in white across front, "
-            "rose pattern print throughout, 'Bay Area' script overlay, white drawstring waistband, "
-            "white side panels with geometric diamond shapes, small rose-in-clouds patch on left leg, "
-            "Black Rose Collection by SkyyRose, luxury streetwear shorts"
+            "skyyrose_br007 black mesh basketball shorts with white tackle-twill 'OAKLAND' across "
+            "the front, cream and peach 'Love Hurts' script across the wearer's-left thigh and hip, "
+            "tonal gray rose repeat, colored Black Rose rose-and-cloud cluster on the wearer's-right "
+            "front white panel, exact dark SR-with-rose monogram on the wearer's-left front white "
+            "panel, left-hip chevron Love Hurts insert never back-center, two horizontal rear "
+            "openings and no white back-center panel, Black Rose x Love Hurts by SkyyRose"
         ),
         "techflat": "br-007-techflat.jpeg",
         "model_shots": [],  # Model shots show wrong product (hoodie instead of shorts)
@@ -296,6 +301,12 @@ def write_caption(image_name: str, caption: str):
 
 
 def main():
+    raise SystemExit(
+        "BLOCKED: LoRA v4 is archival and contains stale product facts. "
+        "Use scripts/build_lora_v5_dataset.py, which consumes the root catalog "
+        "and exact BR-007 physical source roles."
+    )
+
     print("=" * 70)
     print("  SKYYROSE LORA V4 DATASET BUILDER")
     print("  Per-SKU trigger words + detailed tech flat captions")

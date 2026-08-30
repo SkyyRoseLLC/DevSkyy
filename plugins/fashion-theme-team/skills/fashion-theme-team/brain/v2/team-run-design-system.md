@@ -18,8 +18,8 @@ The audit used the repository and Fashion Theme Brain sources below. The reposit
 | `docs/brand/visual-references.md` | The Five: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels; Oakland/civic and sport DNA. |
 | `wordpress-theme/skyyrose-flagship/theme.json:6-159` | WordPress layout, palette, gradients, and font declarations. |
 | `wordpress-theme/skyyrose-flagship/assets/css/design-tokens.css:78-232` | Generated semantic colors, typography aliases, radii, motion/easing, and layout tokens. |
-| `wordpress-theme/skyyrose-flagship/data/brand/typography.json` | Archivo display, Hanken Grotesk body, Anton utility, Cinzel caps, and script lockups. |
-| `wordpress-theme/skyyrose-flagship/data/collections/*/identity.json` | Verified per-collection accent and lockup/image status. |
+| `data/brand/typography.json` | Root-owned source for Archivo display, Hanken Grotesk body, Anton utility, Cinzel caps, and script lockups. |
+| `data/collections/*/identity.json` | Root-owned source for verified per-collection accent and lockup/image status. |
 | `.../brain/brand/skyyrose-artifact-system.json:1-44` and `skyyrose-artifact.css:25-140` | Brain artifact tokens, recognition devices, responsive CSS, and reduced-motion fallback. |
 | `.../brain/v2/v2-page-plan.json:1-80` and `v2-page-and-imagery-plan.md:1-63` | 28-page grammar, CTA system, imagery policy, responsive and production checklist. |
 | `.../brain/taxonomy.json:24-40` | Visual/page/interactive routing packs and owners. |

@@ -1,7 +1,7 @@
 /**
  * Canonical catalog WRITE path (server-only).
  *
- * Writes back to `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+ * Writes back to `data/skyyrose-catalog.csv`
  * — the ONE source of truth — via an atomic temp-file rename. Only the edited
  * SKU's row is re-serialized (see `applyPatch`); all other rows, and all 24
  * columns, are preserved verbatim.

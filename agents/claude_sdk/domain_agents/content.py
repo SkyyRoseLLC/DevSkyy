@@ -100,7 +100,7 @@ class SDKCollectionPublisherAgent(SDKSubAgent):
             "Brand voice: confident, poetic, never generic. "
             "Reference Oakland, the Bay, concrete, roses.\n\n"
             "Read product files before writing content. Cross-reference "
-            "with wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv for "
+            "with data/skyyrose-catalog.csv for "
             "accurate SKUs and descriptions."
         )
 

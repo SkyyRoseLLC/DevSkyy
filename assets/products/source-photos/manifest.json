@@ -235,17 +235,20 @@
       "sku": "br-007",
       "name": "BLACK Rose x Love Hurts Basketball Shorts",
       "collection": "black-rose",
-      "garment_type": "jersey",
+      "garment_type": "shorts",
       "required_angles": [
         "front",
         "back",
+        "left-hip",
         "three-quarter",
         "detail-patch",
         "detail-stitching"
       ],
       "present_angles": [
         "front",
-        "back"
+        "back",
+        "left-hip",
+        "on-model-front"
       ],
       "missing_angles": [
         "three-quarter",
@@ -253,11 +256,14 @@
         "detail-stitching"
       ],
       "photo_paths": {
-        "front": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
-        "side": "assets/products/source-photos/black-rose/br-007-shorts-side.jpeg",
+        "on-model-front-founder-approved": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-front-2026-08-29.png",
+        "founder-contact-sheet": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-contact-sheet-2026-08-29.png",
+        "front": "assets/products/references/br-007-shorts-front-source.jpg",
+        "left-hip": "assets/products/references/br-007-shorts-left-hip-source.jpg",
+        "back": "assets/products/references/br-007-shorts-back-source.jpg",
+        "exact-sr-with-rose-logo": "data/brand-logos/sr-rose-monogram.png",
         "detail": "assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg",
         "hanger": "assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg",
-        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-back.jpg",
         "techflat": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-techflat.jpeg"
       },
       "has_minimum_for_compositor": true,

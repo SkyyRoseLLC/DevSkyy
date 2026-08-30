@@ -272,7 +272,7 @@ echo $CORS_ORIGINS
 
 **Symptom**: All product links go to `/pre-order/` instead of collection pages.
 **Cause**: `skyyrose_product_url()` fallback routes to pre-order when WooCommerce doesn't have the product.
-**Fix**: Verify `is_preorder` flags in `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (the canonical catalog — `inc/product-catalog.php:28` resolves it via `get_theme_file_path('data/skyyrose-catalog.csv')`, not the root-level `data/product-catalog.csv`). The PHP theme reads this at runtime, not a hardcoded array. Non-preorder products must have `is_preorder=0` in the CSV.
+**Fix**: Verify `is_preorder` flags in `data/skyyrose-catalog.csv` (the canonical catalog — `inc/product-catalog.php:28` resolves it via `get_theme_file_path('data/skyyrose-catalog.csv')`, not the root-level `data/product-catalog.csv`). The PHP theme reads this at runtime, not a hardcoded array. Non-preorder products must have `is_preorder=0` in the CSV.
 
 ## Rollback Procedures
 

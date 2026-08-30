@@ -238,7 +238,7 @@ wp_set_object_terms($product_id, 'black-rose', 'product_cat');
 | SIGNATURE | The Runway | Rose Gold, Gold | `#B76E79` | `sg-` |
 | KIDS CAPSULE | — | Pink, Lavender | `#FFB6C1` | `kids-` |
 
-**SKU ranges are not listed here** because they drift. Read the active SKU list from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (canonical source) or via `skyyrose_get_collection_products($slug)` in PHP.
+**SKU ranges are not listed here** because they drift. Read the active SKU list from `data/skyyrose-catalog.csv` (canonical source) or via `skyyrose_get_collection_products($slug)` in PHP.
 
 ### Store Pages
 - Shop → Collections page

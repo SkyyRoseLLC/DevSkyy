@@ -1,7 +1,7 @@
 """Canonical catalog loader — shared by nano_banana and elite_studio.
 
 Single import surface for:
-    CATALOG_CSV        — Path to wordpress-theme/.../data/skyyrose-catalog.csv
+    CATALOG_CSV        — Path to data/skyyrose-catalog.csv
     read_catalog_rows  — Raw CSV row iterator (list[dict[str, str]])
     bool_col           — "1" / "0" → bool coercion
     int_col            — str → int | None, None if blank or <1
@@ -22,9 +22,9 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
-CATALOG_CSV = (
-    PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
+# Product facts are repository-root authority. Themes consume compiled
+# presentation artifacts and must never become a second catalog source.
+CATALOG_CSV = PROJECT_ROOT / "data" / "skyyrose-catalog.csv"
 
 PRODUCT_STATUS = {"draft", "pre-order", "live", "retired"}
 

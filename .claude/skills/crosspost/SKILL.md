@@ -32,7 +32,7 @@ Required before any adaptation — **absent input = stop, never guess**:
 2. **Target platform list + priority order.**
 3. **Credentials / posting surface** for each target, and confirmation the account is the right
    one. For SkyyRose product claims, facts come from
-   `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` only.
+   `data/skyyrose-catalog.csv` only.
 4. **Explicit go-ahead to publish.** Posting to a live account is an external write and is
    irreversible in practice (deletes do not un-see). **STOP AND SHOW the exact per-platform text
    and wait for `y` before any publish call** — one manifest, one `y`, one send. Approval never

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Trash WC products that exist on skyyrose.co but not in canonical CSV.
 
-Reads canonical SKUs from wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv,
+Reads canonical SKUs from data/skyyrose-catalog.csv,
 fetches live products via public Store API (no auth, no rate-limit on read),
 DELETEs extras via authenticated WC v3 (requires WOOCOMMERCE_KEY/SECRET in env).
 
@@ -21,13 +21,7 @@ from pathlib import Path
 
 import httpx
 
-CATALOG = (
-    Path(__file__).resolve().parent.parent
-    / "wordpress-theme"
-    / "skyyrose-flagship"
-    / "data"
-    / "skyyrose-catalog.csv"
-)
+CATALOG = Path(__file__).resolve().parent.parent / "data" / "skyyrose-catalog.csv"
 SITE = "https://skyyrose.co"
 STORE_API = f"{SITE}/wp-json/wc/store/v1/products"
 WC_API = f"{SITE}/wp-json/wc/v3/products"

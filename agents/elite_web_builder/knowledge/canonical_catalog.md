@@ -1,6 +1,6 @@
 # Canonical Catalog — Elite Web Builder Reference
 
-**Single source of truth:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+**Single source of truth:** `data/skyyrose-catalog.csv`
 
 This file used to duplicate the SKU table as a static reference. **That table drifted** within one session and caused a wasted paid render run on 2026-04-19 (kids-001 was listed here as "Purple/Pink" while the CSV said "Red/Black"). The duplicate was removed; now every agent reads the CSV on demand.
 

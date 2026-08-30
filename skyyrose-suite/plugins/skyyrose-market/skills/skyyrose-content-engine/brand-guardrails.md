@@ -70,13 +70,13 @@ the collection name itself. The lockup IS the name.
 ## 6. Canonical product source
 
 Product facts (name, collection, price, description) resolve through the canonical catalog
-(`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`) + the live agent
+(`data/skyyrose-catalog.csv`) + the live agent
 `SocialMediaAgent`, which loads `skyyrose/assets/data/product-content.json`. **Never invent a
 product, colorway, or detail.** If a skill needs product data, call the agent or read the catalog —
 do not hallucinate. (This rule traces to the lh-005 fanny-pack hallucination incident.)
 
 **Resolution order:**
-1. `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs, authoritative)
+1. `data/skyyrose-catalog.csv` (33 SKUs, authoritative)
 2. Per-SKU dossier (linked via `dossier_slug` column)
 3. `SocialMediaAgent.get_collection_context(collection)` for collection-level facts
 

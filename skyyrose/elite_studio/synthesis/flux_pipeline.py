@@ -33,6 +33,9 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from skyyrose.core.dossier_schema import parse_branding_regions
+from skyyrose.core.material_fidelity import require_complete_material_locks
+
 from llm.model_ids import GEMINI_VISION_MODEL
 
 from ..agents.vision_audit_agent import VisionAuditAgent, VisionAuditResult
@@ -121,6 +124,11 @@ async def render(
     """
     started = time.perf_counter()
     techflat_path = Path(techflat_path)
+    require_complete_material_locks(
+        version=str(dossier.get("material_lock_version", "")),
+        regions=parse_branding_regions(str(dossier.get("branding_block", ""))),
+        context=f"{sku}:{view}",
+    )
 
     name_slug = _name_slug(dossier.get("name", sku))
     resolved_out_dir = Path(out_dir) if out_dir else DEFAULT_OUT_DIR / name_slug

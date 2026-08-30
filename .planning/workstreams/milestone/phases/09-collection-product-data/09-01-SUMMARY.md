@@ -4,7 +4,7 @@ plan: "01"
 subsystem: catalog-integrity
 tags: [pytest, data-validation, DATA-02, DATA-03, regression-gate]
 dependency_graph:
-  requires: [skyyrose.core.catalog_loader, wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv]
+  requires: [skyyrose.core.catalog_loader, data/skyyrose-catalog.csv]
   provides: [tests/test_collection_data_integrity.py]
   affects: []
 tech_stack:

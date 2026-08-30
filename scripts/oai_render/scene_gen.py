@@ -86,30 +86,18 @@ def _manifest() -> CostManifest:
 
 def main(argv: list[str] | None = None) -> int:
     args = _parse(argv)
+    if args.mode == "generate":
+        print(
+            "ABORT: unbound environment-only scene generation is disabled for the V2 Scroll World. "
+            "Use a Fashion Theme Team native_collection_scene contract with a declared scene ID, "
+            "exact CTA cast, protected source inputs, and a successful paid-scene authorization.",
+            file=sys.stderr,
+        )
+        return 4
     manifest = _manifest()
     print(format_manifest(manifest))
 
-    if args.mode == "plan":
-        print("\nPlan only — zero API calls. Re-run with `generate --yes` to spend.")
-        return 0
-    if not args.yes:
-        print("\nRefusing to spend without --yes.", file=sys.stderr)
-        return 1
-
-    enforce_cap(manifest)
-
-    from .client import OAIImageClient
-
-    client = OAIImageClient()
-    _OUT_DIR.mkdir(parents=True, exist_ok=True)
-    for name, prompt in _SCENES:
-        out = _OUT_DIR / f"{name}.png"
-        print(f"\n[{name}] generating ({_SCENE_SIZE}) ...", flush=True)
-        data = client.generate(prompt=prompt, size=_SCENE_SIZE, background="opaque")
-        out.write_bytes(data)
-        print(f"  -> {out} ({out.stat().st_size // 1024}KB)", flush=True)
-
-    print("\nDone. Review the scenes eyes-on before converting/deploying.", flush=True)
+    print("\nPlan only — zero API calls. Native V2 scene generation is governed elsewhere.")
     return 0
 
 

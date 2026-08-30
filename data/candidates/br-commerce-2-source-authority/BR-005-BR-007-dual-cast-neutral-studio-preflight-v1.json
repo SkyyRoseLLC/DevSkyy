@@ -1,0 +1,127 @@
+{
+  "schema": "skyyrose.multi-sku-source-authority-preflight.v1",
+  "status": "SUPERSEDED_REJECTED__WRONG_BR005_GRAPHIC_AUTHORITY__DO_NOT_EXECUTE",
+  "phase_id": "BR-COMMERCE-2-SOURCE-AUTHORITY",
+  "attempt": 1,
+  "candidate_id": "BR005-BR007-DUAL-CAST-NEUTRAL-STUDIO-01",
+  "scene_reference_id": "BR-COMMERCE-2",
+  "repository_commit": "4b5b753e761054dc4cb4d36fa7093a8f725df91e",
+  "created_at": "2026-08-28T00:00:00Z",
+  "candidate_author": "codex-fashion-theme-team-production",
+  "product_sot_path": "data/product-sot.json",
+  "product_sot_sha256": "59bd6834cb6fef4c6d0fd25768657984f2387e79aa13479af337fd334788be7a",
+  "scene_reference_index": {
+    "path": "data/scroll-world-scene-reference-index.json",
+    "sha256": "051ed81998accb6e51bdba6280bcd7795f3ee105dfeb1a0a8344f779b05d2bb0"
+  },
+  "scene_contract": {
+    "path": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/br-commerce-2.json",
+    "sha256": "df8e524968e807b231a3df6f6da618755d0d7ba12bc7a745ac426b42c7c6cfa4"
+  },
+  "provider": "openai_responses_image_generation",
+  "model": "gpt-image-2",
+  "operation": "candidate_only",
+  "environment_scope": "neutral_studio_authority_only",
+  "paid_generation_authorized": false,
+  "authorization_reference": "Founder directive in source task: use GPT Image 2 now for missing isolated neutral-studio on-model authority candidates; configured paid production work authorized without another approval. Founder correction: missing on-model imagery is the output of this source stage, not a generation blocker.",
+  "cost_boundary": {
+    "max_provider_requests_for_attempt": 1,
+    "requested_output_count": 1,
+    "requested_quality": "highest_available",
+    "retry_requires_new_attempt_receipt": true
+  },
+  "model_capability_validation": {
+    "status": "PASS",
+    "code": "REGISTERED_CAPABILITY_MATCH",
+    "requested_alias": "gpt-image-2",
+    "resolved_model": "openai-responses-image-mask",
+    "operation": "product_image_candidate",
+    "receipt_path": "data/candidates/br-commerce-2-source-authority/gpt-image-2-model-capability-receipt-v1.json"
+  },
+  "prompt_artifact": {
+    "local_path": "data/candidates/br-commerce-2-source-authority/BR-005-BR-007-dual-cast-neutral-studio-prompt-v1.txt",
+    "sha256": "d54bc80f757334d037c78ee3a57feb6d51d83362b40447f69c809e27a1905d84",
+    "bytes": 6703
+  },
+  "cast_assignments": {
+    "man": ["br-005", "br-007"],
+    "woman": ["br-005", "br-007"]
+  },
+  "products": [
+    {
+      "sku": "br-005",
+      "product_hash": "d946718d55cd20078d776a6df25e7f3f8ecd73096232c1f058c8032bd9121251",
+      "worn_by": ["man", "woman"],
+      "originals": [
+        {
+          "role": "physical_product_authority",
+          "local_path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+          "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
+          "bytes": 282426,
+          "view": "front_flatlay"
+        },
+        {
+          "role": "physical_product_detail_context_only",
+          "local_path": "data/candidates/br-commerce-2-source-authority/qa/br-005-physical-chest-patch-crop-tight.png",
+          "sha256": "491738a4c8490325b97e986fb559e9f0f7e5866718b5000511402378c0d1b6d8",
+          "bytes": 27897,
+          "view": "exact_crop_from_physical_source__standalone_art_unverified"
+        }
+      ]
+    },
+    {
+      "sku": "br-007",
+      "product_hash": "0421caae7e8f284cded070fc94e830dc33bf20d89690bdcf17738ead3aeccffa",
+      "worn_by": ["man", "woman"],
+      "originals": [
+        {
+          "role": "physical_product_authority",
+          "local_path": "assets/products/references/br-007-shorts-real-front.jpeg",
+          "sha256": "2da1309689439041ce8a53a23a7c5d6eeac1b80ecbf8822efbb796361a37c285",
+          "bytes": 524675,
+          "view": "front"
+        },
+        {
+          "role": "physical_product_authority",
+          "local_path": "assets/products/references/br-007-shorts-real-back.jpeg",
+          "sha256": "da21327eb370e8a159913757e07d4eae7486e8c684c60d4c61655cab17abb7f7",
+          "bytes": 465082,
+          "view": "back"
+        }
+      ]
+    }
+  ],
+  "rejected_inputs": [
+    {
+      "path": "skyyrose/elite_studio/assets/golden/br-005/front.jpg",
+      "sha256": "807fc3496a71f2599011a5a07c6bf9f1d8b594883533f79c2f8837d84233555e",
+      "reason": "forbidden arm artwork and broken overlay; deleted",
+      "usable_as_input": false
+    },
+    {
+      "path": "skyyrose/elite_studio/assets/golden/br-005/reference.jpg",
+      "sha256": "807fc3496a71f2599011a5a07c6bf9f1d8b594883533f79c2f8837d84233555e",
+      "reason": "byte-identical forbidden arm artwork; deleted",
+      "usable_as_input": false
+    },
+    {
+      "path": "renders/scroll-world/BR-COMMERCE-2/scene-candidate/BR-COMMERCE-2-founder-approved-composition-source.png",
+      "sha256": "39dacad1a83ab2059d33b9b4dd43607e8af26cc1e3a1af6596782f7ac3ada252",
+      "reason": "scene context contained forbidden arm artwork; deleted",
+      "usable_as_input": false
+    },
+    {
+      "path": "renders/scroll-world/BR-COMMERCE-2/scene-candidate/BR-COMMERCE-2-dual-cast-hero-candidate-v1.png",
+      "sha256": "3c5b1f2586649ad8b74491ae5c6c2f599e1097ce80f09a0bb2b6ecfc62e336c3",
+      "reason": "terminal full-frame product-fidelity reject with undeclared BR-004 cast",
+      "usable_as_input": false
+    }
+  ],
+  "output_quarantine_required": true,
+  "founder_review_required": true,
+  "independent_review_required": true,
+  "scene_generation_allowed": false,
+  "runtime_wiring_allowed": false,
+  "promotion_allowed": false,
+  "deployment_allowed": false
+}

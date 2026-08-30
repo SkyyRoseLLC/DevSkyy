@@ -22,6 +22,7 @@ from pathlib import Path
 from typing import Any
 
 import httpx
+import numpy as np
 from PIL import Image
 
 from ...budget import BudgetExceededError
@@ -33,6 +34,26 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 _REMBG_UNAVAILABLE_SENTINEL = "__REMBG_UNAVAILABLE__"
+
+# ``rembg`` 2.0.69 still imports several NumPy 1.x compatibility aliases.
+# The workstation now uses NumPy 2.x, which removed those aliases before the
+# local ONNX background-removal model has a chance to load.  Keep the shim
+# deliberately narrow and local to this adapter: it restores the historical
+# names only when absent and does not alter the global NumPy installation.
+# This preserves the no-network/no-credit first route for protected mattes.
+_NUMPY_1X_COMPAT_ALIASES: dict[str, Any] = {
+    "trapz": getattr(np, "trapezoid", None),
+    "in1d": getattr(np, "isin", None),
+    "sometrue": getattr(np, "any", None),
+    "alltrue": getattr(np, "all", None),
+    "asfarray": lambda value, dtype=float: np.asarray(value, dtype=dtype),
+    "round_": getattr(np, "round", None),
+    "product": getattr(np, "prod", None),
+    "cumproduct": getattr(np, "cumprod", None),
+}
+for _alias, _replacement in _NUMPY_1X_COMPAT_ALIASES.items():
+    if _replacement is not None and not hasattr(np, _alias):
+        setattr(np, _alias, _replacement)
 
 try:  # pragma: no cover - exercised via tests that patch this name
     from rembg import remove  # type: ignore[import-not-found]

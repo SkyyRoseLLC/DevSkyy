@@ -17,10 +17,13 @@ SPLIT_DIR = PROJECT_ROOT / "assets" / "techflats" / "split"
 PRODUCTS_DIR = (
     PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "assets" / "images" / "products"
 )
+PRODUCT_REFERENCES_DIR = PROJECT_ROOT / "assets" / "products" / "references"
 
 
 # ── AUTHORITATIVE SOURCE MAP ────────────────────────────────────────────────
-# Format: SKU → { "front": Path, "back": Path | None }
+# Format: SKU → explicit view roles. Most use ``front`` / ``back``; a
+# founder-supplied side authority must use a view-specific key such as
+# ``left_hip`` and may never be relabeled as the back.
 # "front" is used for front view generation
 # "back" is used for back view generation
 # Both are used as reference for branding/editorial views
@@ -31,6 +34,7 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
 
     S = SPLIT_DIR  # Split techflats (individual front/back)
     P = PRODUCTS_DIR  # Original product photos
+    R = PRODUCT_REFERENCES_DIR  # Root-owned physical source authority
 
     return {
         # ══════════════════════════════════════════════════════════════
@@ -69,8 +73,7 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
         # br-005: BLACK Rose Hoodie Signature Edition
         # Small silicone cutout rose on chest + large embroidered rose on hoodie SIDE + rose-print hood lining
         "br-005": {
-            "front": P
-            / "black-rose-hoodie-signature-edition-hoodie-ltd-source.jpg",  # waiting for user to save upload to disk
+            "front": R / "br-005-signature-hoodie-real.jpeg",
             "back": None,
         },
         # br-006: BLACK Rose Sherpa Jacket (satin shell, sherpa lining)
@@ -81,8 +84,10 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
         # br-007: BLACK Rose x Love Hurts Basketball Shorts
         # Real product photos supplied — black mesh, OAKLAND + Love Hurts silver script, tonal rose
         "br-007": {
-            "front": P / "br-007-real-front.jpg",
-            "back": P / "br-007-real-back.jpg",
+            "front": R / "br-007-shorts-front-source.jpg",
+            # Founder correction 2026-08-28: LEFT HIP/SIDE, never back.
+            "left_hip": R / "br-007-shorts-left-hip-source.jpg",
+            "back": R / "br-007-shorts-back-source.jpg",
         },
         # br-008: SF Inspired Football Jersey — use split techflat
         "br-008": {

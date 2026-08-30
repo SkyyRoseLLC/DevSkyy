@@ -1575,7 +1575,7 @@
   {
     "id": "bug-103",
     "timestamp": "2026-05-16T08:25:00-07:00",
-    "error_message": "5 prod modules reference data/product-catalog.csv as 'single source of truth' but that file is NOT on the main tree and NOT git-tracked (only the canonical wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv is tracked)",
+    "error_message": "5 prod modules reference data/product-catalog.csv as 'single source of truth' but that file is NOT on the main tree and NOT git-tracked (only the canonical data/skyyrose-catalog.csv is tracked)",
     "file": "database/seed_catalog.py",
     "root_cause": "Legacy second-CSV references predating the catalog_loader consolidation. Affected: database/seed_catalog.py, agents/social_media_agent.py, scripts/nano-banana-vton.py, agents/claude_sdk/domain_agents/content.py, renders/preflight.py (comments). They point at a phantom data/product-catalog.csv path.",
     "fix": "PENDING \u2014 OUT OF bug-102/Phase 14 scope (would touch DB seeding + social agent + vton, unrelated subsystems \u2014 scope-creep risk). Handoff target for the deferred v1.3 Site Fix milestone's first task (audit CSV -> one canonical source). Do NOT fix inside Phase 14.",
@@ -1617,7 +1617,7 @@
     "id": "bug-105",
     "timestamp": "2026-05-19T19:50:00-07:00",
     "error_message": "br-011 deep-dive RCA revealed 3 drift gaps in tripo guard + catalog/dossier alignment + QUARANTINE.md mischaracterization (post-bug-096 hardening)",
-    "file": "scripts/tripo_dispatch.py + tests/test_tripo_dispatch_guards.py + wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv + renders/output/tripo/QUARANTINE.md",
+    "file": "scripts/tripo_dispatch.py + tests/test_tripo_dispatch_guards.py + data/skyyrose-catalog.csv + renders/output/tripo/QUARANTINE.md",
     "root_cause": "(1) classify_skus only checked tech-flat file existence \u2014 ignored authoritative catalog render_is_tech_flat column. br-011 had a 12.6MB PNG flagged 0 (branded product render). --force-branded would have approved it. (2) QUARANTINE.md row 24 mischaracterized br-011 as NHL Authentic cut, no hood, mesh side panels \u2014 dossier says Hockey-style pullover hoodie. Garment shape rendered correct; only branding hallucinated. (3) Catalog garment_type_lock=jersey conflicted with dossier hoodie construction.",
     "fix": "Added _is_catalog_tech_flat() helper and inserted middle guard layer in classify_skus: BRANDED -> CATALOG TECH-FLAT FLAG -> FILE EXISTS. Updated 4 existing tests + added 3 new (total 16/16). Catalog br-011 garment_type_lock: jersey -> hoodie. QUARANTINE.md row 24 corrected + Fix section bumped to 4 guards + test count 12 -> 16.",
     "tags": [
@@ -1660,7 +1660,7 @@
     "id": "bug-119",
     "timestamp": "2026-06-09T19:30:00-07:00",
     "error_message": "Founder review: sg-006/sg-014 renders showed 'WRONG PRODUCT \u2014 rendered the signature windbreaker outfit'; 41 of 79 renders flagged total",
-    "file": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-hoodie.md",
+    "file": "data/dossiers/mint-lavender-hoodie.md",
     "root_cause": "sg-006/sg-014 dossiers describe a white chevron zip-up garment (the windbreaker-set design) instead of the mint pullover/sweats shown in their techflats \u2014 dossier was Claude-authored (cmem #11235) from wrong reference photos; its reference_image field points at a mislabeled file that is actually the black sherpa jacket. gpt-image-2 obeyed dossier text over the reference image.",
     "fix": "RESOLVED 2026-06-10: both dossiers re-authored from the real mint garments (techflats sg-mint-lav-hoodie-front / sg-mint-lav-sweats-{front,back} + catalog CSV); sg-006/sg-014 removed from config.EXCLUDED_SKUS; mislabeled sg-006-and-sg-014-mint-lavender-set-techflat.jpeg (actually the sherpa jacket) git-rm'd; golden placement.md regenerated for sg-006/013/014/015; false cross-claims fixed in mint-lavender-crewneck.md + the-windbreaker-set.md; stale stage1 prompt previews removed; regression test test_mint_lavender_skus_render_again_with_clean_dossiers guards drift-back.",
     "tags": [
@@ -2027,7 +2027,7 @@
     "id": "bug-146",
     "timestamp": "2026-06-19",
     "error_message": "On-model render QC: 3/26 renders defective (br-005 black-not-green, br-012 black-not-green, sg-002 collage inset) + committed CSV front_model_image still on OLD paths while committed SOT/binaries are onmodel (parallel commit b432bcac9 shipped old CSV).",
-    "file": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "file": "data/skyyrose-catalog.csv",
     "root_cause": "Parallel session committed 26 onmodel binaries+SOT+manifest+test with the OLD CSV -> committed CSV<->SOT inconsistency. Separately, gpt-image rendered dark-green garments (br-005 olive hoodie, br-012 green jersey) as pure black, and sg-002 got a corner inset panel; deterministic_checks passed all three (color/inset invisible to dimension+band checks), only the paid Claude vision judge caught them.",
     "fix": "Working-tree CSV re-wired 23 good SKUs to onmodel; br-005/br-012/sg-002 reverted to prior fallback (ghost/front-model). Regenerated SOT to match; manifest --check + 23 tests green. br-005 CSV color=Black is ALSO wrong (real garment olive-green, founder confirmed). Re-render the 3 (paid, gated) before wiring them. NOT committed (parallel session active).",
     "tags": [
@@ -2504,7 +2504,7 @@
     "id": "bug-169",
     "timestamp": "2026-06-30T00:00:00-07:00",
     "error_message": "br-011 (Jersey Series 4 Hockey) has garment_type_lock='hoodie' but is a jersey per registry+_JERSEY_SKUS",
-    "file": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "file": "data/skyyrose-catalog.csv",
     "root_cause": "Jersey membership in 3 unsynced places (CSV garment_type_lock, registry sku_folders, _JERSEY_SKUS). br-011 CSV=hoodie, other two=jersey. Same redundant-field disease as br-014/15.",
     "fix": "RESOLVED (2026-06-24, commit 9ea639a744e70e638052bab6f7bb32d7258b1f75) \u2014 this note was stale. The jersey roster is derived from logo-registry.json sku_folders (scripts/sync_catalog_downstream.py:_registry_jersey_skus), NOT from CSV garment_type_lock, by deliberate design documented in cerebrum.md:79. br-011's garment_type_lock='hoodie' is CORRECT and dossier-confirmed (data/dossiers/black-is-beautiful-jersey-series-4-the-rose-hockey.md: 'Hockey-style pullover hoodie ... with a hood'; 'this is a fashion hoodie, not a tied-collar hockey jersey'). Flipping CSV to 'jersey' changes the render prompt \u2014 garment_type_lock is fed verbatim into the RAS/FLUX prompt (skyyrose/elite_studio/agents/three_d_agent.py:95-112, literal f-string 'GARMENT LOCK: {dossier[\"garment_type_lock\"]}') and into the dual-vision QA gate (skyyrose/elite_studio/graph/nodes/ghost_mannequin.py:139-147) \u2014 so this was investigated and rejected. Re-open only if the founder explicitly wants to revisit the hood-vs-no-hood render decision; do not re-derive the roster from garment_type_lock again (twice-rejected per cerebrum.md:79).",
     "tags": [
@@ -4104,7 +4104,7 @@
     "id": "bug-251",
     "timestamp": "2026-07-12",
     "error_message": "csv.reader->writer round-trip of skyyrose-catalog.csv rewrote all 34 lines (68-line diff) for a 7-cell edit \u2014 CRLF endings flattened to LF and quoting re-normalized",
-    "file": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "file": "data/skyyrose-catalog.csv",
     "root_cause": "catalog CSV uses CRLF + minimal quoting; python csv module round-trip is NOT lossless (lineterminator + re-quoting). Caught by diff-stat gate before commit; reverted.",
     "fix": "Reverted; redid as per-row regex substitution on the raw text preserving CRLF \u2014 diff exactly 7 rows/7 cells. Rule: never round-trip the catalog CSV through csv.writer; edit rows surgically or use the /admin/catalog lossless writer.",
     "tags": [

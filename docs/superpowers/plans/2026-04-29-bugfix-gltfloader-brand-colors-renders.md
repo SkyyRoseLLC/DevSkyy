@@ -22,7 +22,7 @@
 | `wordpress-theme/skyyrose-flagship/inc/brand.generated.php` | 2 | Regenerate (do not hand-edit) |
 | `scripts/nano-banana-run.py` | 3 | Recover from worktree |
 | `scripts/nano_banana/*.py` (18 modules) | 3 | Recover from worktree |
-| `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` | 3 | Write `front_model_image` paths for 12 SKUs |
+| `data/skyyrose-catalog.csv` | 3 | Write `front_model_image` paths for 12 SKUs |
 
 ---
 
@@ -173,7 +173,7 @@ This task uses `gemini-3-pro-image-preview` (Nano Banana Pro). Each image genera
 **Files:**
 - Recover: `scripts/nano-banana-run.py` (from worktree)
 - Recover: `scripts/nano_banana/` — 18 missing modules (from worktree)
-- Update: `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (write `front_model_image` column for 12 SKUs)
+- Update: `data/skyyrose-catalog.csv` (write `front_model_image` column for 12 SKUs)
 
 - [ ] **Step 3.1 — Confirm the 12 SKUs missing front_model_image**
 
@@ -181,7 +181,7 @@ This task uses `gemini-3-pro-image-preview` (Nano Banana Pro). Each image genera
   python3 -c "
   import csv
   missing = []
-  with open('wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv') as f:
+  with open('data/skyyrose-catalog.csv') as f:
       for r in csv.DictReader(f):
           if not r.get('front_model_image','').strip():
               missing.append((r['sku'], r['name'], r['collection']))
@@ -308,7 +308,7 @@ This task uses `gemini-3-pro-image-preview` (Nano Banana Pro). Each image genera
 - [ ] **Step 3.8 — Update catalog CSV with front_model_image paths**
 
   For each SKU that generated successfully, update the `front_model_image` column in
-  `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`.
+  `data/skyyrose-catalog.csv`.
 
   The path must be theme-relative (matching the existing format in the CSV, e.g. `assets/images/products/...`).
 
@@ -316,7 +316,7 @@ This task uses `gemini-3-pro-image-preview` (Nano Banana Pro). Each image genera
   # Verify the current path format for a SKU that already has front_model_image
   python3 -c "
   import csv
-  with open('wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv') as f:
+  with open('data/skyyrose-catalog.csv') as f:
       for r in csv.DictReader(f):
           if r.get('front_model_image','').strip():
               print(r['sku'], '→', r['front_model_image'])
@@ -337,7 +337,7 @@ This task uses `gemini-3-pro-image-preview` (Nano Banana Pro). Each image genera
 
   ```bash
   git add scripts/nano-banana-run.py scripts/nano_banana/
-  git add wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+  git add data/skyyrose-catalog.csv
   git commit -m "feat(renders): recover nano_banana pipeline; add front_model_image for 12 SKUs"
   ```
 

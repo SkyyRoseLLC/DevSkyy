@@ -40,7 +40,7 @@ that gap visible. The two `SkyyRose-*` files contain only a family/subfamily
 name and no copyright, license, or upstream URL. They are not open-source
 claims and remain blocked artwork.
 
-The V1 authority (`wordpress-theme/skyyrose-flagship/data/brand/typography.json`
+The V1 authority (`data/brand/typography.json`
 and its generated `assets/css/design-tokens.css`) separates universal roles
 from a `collection_scripts` registry. V2 keeps the universal Archivo / Hanken
 Grotesk / Anton / Cinzel / Inter roles, but does not carry V1's script names

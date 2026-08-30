@@ -180,7 +180,7 @@ pip install -e .  # so the agent can import nano_banana.* tools
 
 ## Catalog change required
 
-Add an `engine_override` column to `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`. Empty for most SKUs; populated for the ~5-10 SKUs where vision-driven routing has empirically failed.
+Add an `engine_override` column to `data/skyyrose-catalog.csv`. Empty for most SKUs; populated for the ~5-10 SKUs where vision-driven routing has empirically failed.
 
 Per F3, br-001 should be `engine_override=gemini-pro`. After the lh-004 source-strategy comparison completes (running in background), we'll know if lh-004 needs an override too.
 

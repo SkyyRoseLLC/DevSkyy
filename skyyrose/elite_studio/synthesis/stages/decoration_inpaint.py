@@ -19,6 +19,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from skyyrose.core.material_fidelity import compile_material_lock_prompt
+
 from ..clients import FalClient
 from ..prompts.decoration_prompts import build_decoration_prompt
 from ..state.telemetry import CostTracker
@@ -203,6 +205,9 @@ def _compose_decoration_prompt(
         for e in decoration_entries
     ]
     body = "\n\n".join(f"REGION {i + 1}: {p}" for i, p in enumerate(per_region))
+    material_contract = compile_material_lock_prompt(decoration_entries)
+    if material_contract:
+        body = f"{material_contract}\n\n{body}"
 
     feedback = build_violation_feedback(
         prior_violations=prior_violations,

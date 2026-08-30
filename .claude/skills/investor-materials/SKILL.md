@@ -32,7 +32,7 @@ the conflict**:
 
 1. **Traction metrics** — with the system they came from, not recollection. SkyyRose product,
    price, and SKU-count facts come from
-   `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`; live order/revenue facts come
+   `data/skyyrose-catalog.csv`; live order/revenue facts come
    from the WooCommerce REST API (`/wp-json/wc/v3`, BasicAuth with keys in `.env.wordpress`) —
    the MCP `wc_*` tools have a broken auth username and return `invalid_username`.
 2. **Pricing and revenue assumptions**, each stated explicitly.
@@ -94,7 +94,7 @@ done
 3. **Traction claims match the live system, not memory** — for SkyyRose SKU counts:
 
 ```bash
-python3 -c "import csv; print(sum(1 for _ in csv.DictReader(open('wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv'))), 'catalog rows')"
+python3 -c "import csv; print(sum(1 for _ in csv.DictReader(open('data/skyyrose-catalog.csv'))), 'catalog rows')"
 ```
 
    **PASS:** the printed count equals the SKU count claimed in the deck. A mismatch means the

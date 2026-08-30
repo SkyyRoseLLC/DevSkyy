@@ -15,7 +15,7 @@ verified_sources:
   - DevSkyy Elite Studio component inventory (Bash `ls skyyrose/elite_studio/agents/`)
   - DevSkyy billing stack (Bash `find . -path billing/`) — exists, not yet customer-facing
   - DevSkyy 3D pipeline inventory (Bash `ls ai_3d/`, `ls pipelines/clothing_3d/`, `ls hf-spaces/3d-converter/`)
-  - SkyyRose catalog (33 SKUs, 4 collections per `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`)
+  - SkyyRose catalog (33 SKUs, 4 collections per `data/skyyrose-catalog.csv`)
 ---
 
 # Elite Team — Strategic Spec

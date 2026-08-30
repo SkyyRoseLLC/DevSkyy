@@ -31,7 +31,7 @@ def test_brand_primary_is_sr_monogram(registry: LogoRegistry) -> None:
 
 
 def test_brand_primary_resolves_to_logos_dir(registry: LogoRegistry) -> None:
-    path = registry.image_path(sku="br-005", logo_id="sr-monogram-rose-gold")
+    path = registry.image_path(sku="sg-001", logo_id="sr-monogram-rose-gold")
     assert path.parent.name == "logos"
     assert path.name == "sr-monogram-rose-gold.jpeg"
     assert path.exists(), f"missing brand-primary asset: {path}"
@@ -42,6 +42,22 @@ def test_black_roses_stays_centralized(registry: LogoRegistry) -> None:
     entry = registry.get_logo("black-roses-cloud-cluster")
     assert entry.co_located_per_sku is False
     assert entry.collection == "black_rose"
+
+
+def test_br005_uses_exact_root_owned_three_rose_cluster(registry: LogoRegistry) -> None:
+    path = registry.image_path(sku="br-005", logo_id="three-rose-cluster")
+    assert path.as_posix().endswith("/data/brand-logos/three-rose-cluster.jpeg")
+    assert path.exists(), f"missing root product-art authority: {path}"
+
+    placements = registry.placements_for("br-005")
+    exact = {(p["logo_id"], p["position"], p["technique"]) for p in placements}
+    assert exact == {
+        ("three-rose-cluster", "right_chest", "silicone_cut_out"),
+        ("three-rose-cluster", "body_side_panel", "embroidered"),
+    }
+    assert all(p["logo_id"] != "sr-monogram-rose-gold" for p in placements)
+    forbidden_positions = {"arm", "sleeve", "forearm", "shoulder", "pocket"}
+    assert not forbidden_positions.intersection(p["position"] for p in placements)
 
 
 def test_red_rose_is_dual_collection(registry: LogoRegistry) -> None:

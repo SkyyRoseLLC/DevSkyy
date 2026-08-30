@@ -1,0 +1,49 @@
+{
+  "schema": "skyyrose.native-scene-candidate-receipt.v1",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate": {
+    "path": "renders/scroll-world/LH-COMMERCE-2/one-shot-candidates/LH-COMMERCE-2-one-shot-candidate-v2.png",
+    "sha256": "465fe62b6119e0eae2641e293ed4161480421855f0af73887aad577119d0ebab",
+    "dimensions": [1672, 941]
+  },
+  "generation_boundary": {
+    "generated_before_provider_stop_message_was_received": true,
+    "additional_provider_calls_after_stop": 0,
+    "prior_rejected_scene_used_as_input": false,
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "source_preflight": {
+    "receipt": "data/candidates/lh-commerce-2-generation-preflight-latest.json",
+    "status": "PASS_SOURCE_PREFLIGHT",
+    "criteria": "data/scroll-world-one-shot-verification-criteria.json"
+  },
+  "author_postflight": {
+    "review_scope": "full-resolution visual rejection only; not an independent approval",
+    "status": "REJECTED_QUARANTINED",
+    "hard_failures": [
+      "incomplete_or_invented_Love_Hurts_lettering",
+      "exact_front_side_lettering_is_not_complete_and_readable_on_either_wearer"
+    ],
+    "passing_observations": [
+      "Both adult models are present in front/front-three-quarter LH-003 construction.",
+      "White mesh, black waistband without exterior drawstring, repeated rose/cloud field, black pocket welts, asymmetric black side panels, and red-white-black hem treatment remain visually close to the physical front.",
+      "The protected enchanted rose is sharp under glass in the approved cracked chamber.",
+      "Both wearers share a coherent floor, light field, contact shadow direction, reflection field, scale, and atmospheric depth."
+    ],
+    "reject_findings": [
+      "The visible red side script resolves only as a partial Lo-like fragment on both shorts, not the required complete readable Love Hurts treatment.",
+      "Because logo and lettering accuracy is a 100-point gate and this is a declared hard reject, the otherwise strong scene cannot pass product fidelity or enter founder promotion."
+    ],
+    "estimated_scores": {
+      "product_fidelity": 82,
+      "scene_canon_fidelity": 98,
+      "wearer_assignment_accuracy": 100,
+      "logo_and_lettering_accuracy": 45,
+      "optical_integration": 96,
+      "anatomy_and_body_contact": 97
+    }
+  },
+  "state": "CANDIDATE_QUARANTINED_REJECTED_NOT_REFERENCE_NOT_WIREABLE",
+  "founder_status": "PENDING"
+}

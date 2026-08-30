@@ -259,7 +259,7 @@ def validate_catalog_readers(*, raise_on_mismatch: bool = False) -> dict[str, st
 
     Per MEMORY.md, four reader paths exist (Python: core.catalog_loader,
     elite_studio.catalog, scripts.nano_banana.catalog; PHP: skyyrose_get_product_catalog).
-    All MUST resolve to wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv.
+    All MUST resolve to data/skyyrose-catalog.csv.
     This function imports each Python reader and asserts they expose the same path.
 
     Returns:
@@ -299,8 +299,8 @@ def validate_catalog_readers(*, raise_on_mismatch: bool = False) -> dict[str, st
         # constant that resolves to the same CSV (nano_banana predates the core import).
         imports_core = "from skyyrose.core.catalog_loader import CATALOG_CSV" in text
         uses_canonical_path = (
-            'wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"' in text
-            or "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv" in text
+            '"data" / "skyyrose-catalog.csv"' in text
+            or "data/skyyrose-catalog.csv" in text
         )
         if imports_core or uses_canonical_path:
             results["scripts.nano_banana.catalog"] = canonical or "<inherits from core>"
@@ -434,7 +434,7 @@ def verify_no_orphans(*, raise_on_orphan: bool = False) -> dict[str, list[str]]:
     import re as _re
 
     repo = Path(__file__).resolve().parent.parent.parent
-    canonical_csv = repo / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
+    canonical_csv = repo / "data" / "skyyrose-catalog.csv"
 
     canonical_skus: set[str] = set()
     if canonical_csv.exists():

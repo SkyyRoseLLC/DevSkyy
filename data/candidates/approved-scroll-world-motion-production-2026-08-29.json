@@ -1,0 +1,86 @@
+{
+  "schema": "skyyrose.approved-scroll-world-motion-production.v1",
+  "status": "FOUNDER_DIRECTIVE_BINDING__MOTION_REQUIRED_FOR_EVERY_APPROVED_SCENE",
+  "provider": {
+    "service": "Higgsfield",
+    "model": "seedance_2_0",
+    "registry_route": "other-generative-video/image_to_video_candidate",
+    "fidelity_tier": "temporal_candidate_only",
+    "live_schema_verified": true
+  },
+  "global_motion_contract": {
+    "camera": "One continuous controlled forward-camera move that belongs to the Scroll World journey; no disconnected portal cut, montage, jump cut, or unrelated replacement scene.",
+    "first_frame": "The founder-approved still is the mandatory first-frame authority and remains the visual identity anchor.",
+    "product_lock": "Garment construction, logos, embroidery, lettering, colors, proportions, hardware, accessories, faces, and body contact may not change through time.",
+    "environment_lock": "Motion may animate atmosphere, practical light, reflection, fabric micro-response, and restrained human movement without replacing the approved world.",
+    "audio_policy": "silent candidate; Scroll World audio is authored separately",
+    "candidate_boundary": "Every generative clip stays quarantined until decoded temporal QA and founder motion approval. No video frame becomes product authority.",
+    "sampling_plan": "Decode first, last, every scene-change frame, and at least one frame per second; increase sampling around fast motion or any detected drift."
+  },
+  "scenes": [
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "start_image": {
+        "path": "renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-gpt-image-2-candidate.png",
+        "sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952"
+      },
+      "motion_candidate": {
+        "path": "renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-seedance-2.0-candidate.mp4",
+        "sha256": "e12dcab99540695fc7d3231eeb488e9d0edd19f1d451582116356196c5deaffb",
+        "duration_seconds": 4.041667,
+        "dimensions": [1080, 1920],
+        "state": "EXISTING_MOTION_CANDIDATE__TEMPORAL_REVALIDATION_REQUIRED_FOR_SCROLL_WORLD"
+      }
+    },
+    {
+      "scene_id": "LH-COMMERCE-1",
+      "start_image": {
+        "path": "renders/scroll-world/LH-COMMERCE-1/preserved-candidate/LH-COMMERCE-1-vow-aisle-founder-approved-v1.png",
+        "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38"
+      },
+      "output_path": "renders/scroll-world/LH-COMMERCE-1/motion-candidate/LH-COMMERCE-1-vow-aisle-seedance-2.0-candidate-v1.mp4",
+      "aspect_ratio": "16:9",
+      "duration_seconds": 5,
+      "prompt": "One unbroken cinematic forward dolly down the exact approved Love Hurts Vow Aisle toward the protected enchanted rose under glass. Keep the approved man and woman, bomber jackets, joggers, faces, bodies, construction, logos, lettering, proportions, and physical contact unchanged. Their movement is restrained and natural: breathing, one subtle shared glance, minimal fabric response. The protected rose remains the sharp emotional anchor from the Beast-side watcher perspective while candlelight, cathedral haze, floor reflections, and suspended dust shift naturally. No cut, no portal, no generic heart, no substitute flower, no new product, no logo or garment mutation, no face or anatomy drift.",
+      "motion_candidate": {
+        "path": "renders/scroll-world/LH-COMMERCE-1/motion-candidate/LH-COMMERCE-1-vow-aisle-seedance-2.0-candidate-v1.mp4",
+        "sha256": "841bb58a42e4a9f4e07c9b58ffa60dba3c7763ce9543d1eaf29db855b63fb48b",
+        "bytes": 20584409,
+        "duration_seconds": 5.041667,
+        "dimensions": [1920, 1080],
+        "frames": 121,
+        "fps": 24,
+        "provider_job_id": "0110cc0d-2b6b-4526-8c5f-0c6864ab863e",
+        "qa_frames": "renders/scroll-world/LH-COMMERCE-1/motion-candidate/qa-frames-v1",
+        "receipt": "renders/scroll-world/LH-COMMERCE-1/motion-candidate/LH-COMMERCE-1-motion-receipt-v1.json"
+      },
+      "state": "REJECTED_TEMPORAL_QA__PERMANENTLY_QUARANTINED__DO_NOT_WIRE_OR_STITCH"
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "start_image": {
+        "path": "renders/scroll-world/LH-COMMERCE-3/scene-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-candidate-v3.png",
+        "sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a"
+      },
+      "output_path": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-v3-seedance-2.0-motion-candidate-v1.mp4",
+      "aspect_ratio": "3:4",
+      "duration_seconds": 5,
+      "prompt": "One continuous high-fashion forward camera glide inside this exact founder-selected dark Love Hurts cathedral vitrine scene. Move gently toward The Fannie and the founder-accepted enchanted rose under glass, with a restrained slight camera arc that reveals depth without changing the composition. Preserve the woman, face, anatomy, garment, Fannie bag geometry, pebbled material, strap, buckle, zipper, visible lettering, rose detail, and body contact from this locked first frame through every frame. Only subtle breathing, controlled fabric micro-motion, candle flicker, haze, glass reflections, and floor light may move. No cut, no portal, no extra bag, no replacement rose, no generic flower or heart, no lettering change, no logo drift, no warped hands, and no product redraw.",
+      "motion_candidate": {
+        "path": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-v3-seedance-2.0-motion-candidate-v1.mp4",
+        "sha256": "46d2b2347e43ce53398bb26ecfbba1f4ca72a9ddd5ebe849e4786bcb0b7ec04e",
+        "bytes": 19782012,
+        "duration_seconds": 5.041667,
+        "dimensions": [1248, 1664],
+        "frames": 121,
+        "fps": 24,
+        "provider_job_id": "86b1c898-7b94-48d1-a391-af7b8dd23f08",
+        "qa_frames": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/qa-frames-v1",
+        "receipt": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/LH-COMMERCE-3-motion-receipt-v1.json"
+      },
+      "state": "CANDIDATE_QUARANTINED__TEMPORAL_QA_PASS_AGAINST_SELECTED_START_FRAME__FOUNDER_MOTION_REVIEW_PENDING"
+    }
+  ],
+  "runtime_wiring_allowed": false,
+  "deployment_allowed": false
+}

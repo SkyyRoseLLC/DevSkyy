@@ -16,6 +16,7 @@ $shop_url    = '#shop';
 $hero_desktop = skyyrose2_sot_asset_uri( $collection['hero'] );
 $hero_tablet  = ! empty( $collection['hero_tablet'] ) ? skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) : '';
 $hero_mobile  = ! empty( $collection['hero_mobile'] ) ? skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) : '';
+$world_scenes = skyyrose2_scroll_world_production_scenes( $slug );
 
 get_header();
 ?>
@@ -62,13 +63,16 @@ get_header();
 	</section>
 
 	<section id="world" class="sr2-worlds" aria-labelledby="sr2-world-story-title" data-horizontal-world data-scroll-world-pinned>
-		<header class="sr2-section-head sr2-section-head--split"><div><p><?php esc_html_e( 'Scroll World / Immersive Shopping', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-world-story-title"><?php echo esc_html( $collection['world_heading'] ); ?></h2><p><?php echo esc_html( $collection['world_intro'] ); ?></p></div><div class="sr2-rail-controls"><span data-rail-count>01 / <?php echo esc_html( sprintf( '%02d', count( $collection['world'] ) ) ); ?></span><button type="button" data-rail-prev aria-label="<?php esc_attr_e( 'Previous world chapter', 'skyyrose-flagship-2' ); ?>">←</button><button type="button" data-rail-next aria-label="<?php esc_attr_e( 'Next world chapter', 'skyyrose-flagship-2' ); ?>">→</button></div></header>
+		<header class="sr2-section-head sr2-section-head--split"><div><p><?php esc_html_e( 'Scroll World / Immersive Shopping', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-world-story-title"><?php echo esc_html( $collection['world_heading'] ); ?></h2><p><?php echo esc_html( $collection['world_intro'] ); ?></p></div><?php if ( $world_scenes ) : ?><div class="sr2-rail-controls"><span data-rail-count>01 / <?php echo esc_html( sprintf( '%02d', count( $world_scenes ) ) ); ?></span><button type="button" data-rail-prev aria-label="<?php esc_attr_e( 'Previous world chapter', 'skyyrose-flagship-2' ); ?>">←</button><button type="button" data-rail-next aria-label="<?php esc_attr_e( 'Next world chapter', 'skyyrose-flagship-2' ); ?>">→</button></div><?php endif; ?></header>
+		<?php if ( ! $world_scenes ) : ?>
+			<p class="sr2-section-head__note"><?php esc_html_e( 'Native Scroll World scenes remain unavailable until their exact product-on-model sources, independent visual review, and founder promotion records are complete.', 'skyyrose-flagship-2' ); ?></p>
+		<?php else : ?>
 		<div class="sr2-worlds__stage" data-scroll-world-stage>
 			<div class="sr2-worlds__rail" tabindex="0" aria-label="<?php echo esc_attr( sprintf( __( '%s scroll-world chapters', 'skyyrose-flagship-2' ), $collection['name'] ) ); ?>" data-horizontal-rail>
-				<?php foreach ( $collection['world'] as $index => $scene ) : ?>
+				<?php foreach ( $world_scenes as $index => $scene ) : ?>
 					<?php $scene_uri = skyyrose2_collection_scene_uri( $scene ); ?>
-					<?php $scene_product = skyyrose2_collection_scene_product( $slug, $index ); ?>
-					<article class="sr2-world">
+					<?php $scene_product = skyyrose2_collection_scene_product( $slug, $index, $scene ); ?>
+					<article class="sr2-world" data-scene-id="<?php echo esc_attr( $scene['id'] ); ?>" data-scene-role="<?php echo esc_attr( $scene['role'] ); ?>">
 						<img src="<?php echo esc_url( $scene_uri ); ?>" alt="" width="1920" height="1080" loading="lazy" decoding="async">
 						<div class="sr2-world__shade" aria-hidden="true"></div>
 						<?php if ( $scene_product && $scene_product->get_image_id() ) : ?>
@@ -77,12 +81,13 @@ get_header();
 								<span class="sr2-world__product-copy"><small><?php esc_html_e( 'Piece in this world', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $scene_product->get_name() ); ?></strong><em><?php esc_html_e( 'View product proof', 'skyyrose-flagship-2' ); ?> ↗</em></span>
 							</a>
 						<?php endif; ?>
-						<div class="sr2-world__copy"><small><?php echo esc_html( sprintf( __( 'Chapter %02d', 'skyyrose-flagship-2' ), $index + 1 ) ); ?></small><strong><?php echo esc_html( $scene['label'] ); ?></strong><em><?php echo esc_html( $scene['copy'] ); ?></em><a href="#shop"><?php echo esc_html( sprintf( __( 'View %s pieces', 'skyyrose-flagship-2' ), $collection['name'] ) ); ?> <span aria-hidden="true">↗</span></a></div>
+						<div class="sr2-world__copy"><small><?php echo esc_html( sprintf( __( 'Chapter %02d', 'skyyrose-flagship-2' ), $index + 1 ) ); ?></small><strong><?php echo esc_html( $scene['label'] ); ?></strong><em><?php echo esc_html( $scene['copy'] ); ?></em><a href="<?php echo esc_url( $scene['cta']['href'] ); ?>"><?php echo esc_html( $scene['cta']['label'] ); ?> <span aria-hidden="true">↗</span></a></div>
 					</article>
 				<?php endforeach; ?>
 			</div>
 			<div class="sr2-rail-progress" aria-hidden="true"><span data-rail-progress></span></div>
 		</div>
+		<?php endif; ?>
 	</section>
 
 	<section id="shop" class="sr2-section sr2-section--products sr2-collection-shop">

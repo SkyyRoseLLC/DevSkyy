@@ -1,0 +1,147 @@
+{
+  "schema": "skyyrose.multi-sku-source-authority-preflight.v1",
+  "phase_id": "BR-COMMERCE-2-SOURCE-AUTHORITY",
+  "attempt": 5,
+  "candidate_id": "BR005-BR007-DUAL-CAST-NEUTRAL-STUDIO-05",
+  "scene_reference_id": "BR-COMMERCE-2",
+  "created_at": "2026-08-28T17:45:00Z",
+  "candidate_author": "codex-fashion-theme-team-production",
+  "product_sot_path": "data/product-sot.json",
+  "product_sot_sha256": "5eecf5c8abc84bdcadbafb983e14a4bfee13c3446479a39b62fb883fb81267a0",
+  "scene_reference_index": {
+    "path": "data/scroll-world-scene-reference-index.json",
+    "sha256": "8be29de58fbf88111e7f7d33663c22f6e24df1a2480b0cf592ca6f1c677d1164"
+  },
+  "scene_contract": {
+    "path": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/br-commerce-2.json",
+    "sha256": "cc1b69ffac29c176e7a4f10e23e2deb972683a9cd01e4b48451aa3ee6296a61f"
+  },
+  "provider": "openai_responses_image_generation",
+  "model": "gpt-image-2",
+  "operation": "candidate_only",
+  "environment_scope": "neutral_studio_authority_only",
+  "paid_generation_authorized": true,
+  "authorization_reference": "Founder directive authorizes paid GPT Image 2 source-stage production; missing on-model authority is an output of this stage and does not block quarantined candidate generation.",
+  "model_capability_validation": {
+    "status": "PASS",
+    "code": "REGISTERED_CAPABILITY_MATCH",
+    "requested_alias": "gpt-image-2",
+    "resolved_model": "openai-responses-image-mask",
+    "operation": "product_image_candidate",
+    "receipt_path": "data/candidates/br-commerce-2-source-authority/gpt-image-2-model-capability-receipt-v1.json"
+  },
+  "prompt_artifact": {
+    "local_path": "data/candidates/br-commerce-2-source-authority/BR-005-BR-007-masked-fidelity-patch-prompt-v1.txt",
+    "sha256": "c320526eec84103e484b93af7b07daa1a98c34cac2009c9fe89aba67d5c5521f",
+    "bytes": 1803
+  },
+  "cast_assignments": {
+    "man": ["br-005", "br-007"],
+    "woman": ["br-005", "br-007"]
+  },
+  "products": [
+    {
+      "sku": "br-005",
+      "product_hash": "80032d75f2c408940f6160e9eb5aac36f2fad14d752831401266df60cb7a5fcb",
+      "worn_by": ["man", "woman"],
+      "originals": [
+        {
+          "role": "physical_product_authority",
+          "local_path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+          "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
+          "bytes": 282426,
+          "view": "front_flatlay"
+        },
+        {
+          "role": "canonical_product_art",
+          "local_path": "data/brand-logos/three-rose-cluster.jpeg",
+          "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+          "bytes": 133982,
+          "view": "art_master"
+        }
+      ]
+    },
+    {
+      "sku": "br-007",
+      "product_hash": "d0309d6342565bc6dd2112022f3ee8045227d222cfc556212f96e80c5f7c9cde",
+      "worn_by": ["man", "woman"],
+      "originals": [
+        {
+          "role": "physical_product_authority",
+          "local_path": "assets/products/references/br-007-shorts-front-source.jpg",
+          "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+          "bytes": 181742,
+          "view": "front"
+        },
+        {
+          "role": "physical_product_authority",
+          "local_path": "assets/products/references/br-007-shorts-left-hip-source.jpg",
+          "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2",
+          "bytes": 182575,
+          "view": "left_hip_not_back"
+        },
+        {
+          "role": "physical_product_authority",
+          "local_path": "assets/products/references/br-007-shorts-back-source.jpg",
+          "sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9",
+          "bytes": 2656341,
+          "view": "back"
+        },
+        {
+          "role": "exact_logo_authority",
+          "local_path": "data/brand-logos/sr-rose-monogram.png",
+          "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc",
+          "bytes": 140137,
+          "view": "wearer_left_front_white_panel_detail"
+        }
+      ]
+    }
+  ],
+  "protected_patch_mask": {
+    "local_path": "data/candidates/br-commerce-2-source-authority/protected-input-bundles/attempt-2/candidate-v2-local-product-patch-mask.png",
+    "sha256": "619c518b7430d96ed8b125e9fc1bb00debc0caa850cb8b6b7d2a1240190093f1",
+    "dimensions": "1024x1536",
+    "editable_fraction": 0.023779,
+    "status": "PREPARED_NOT_CONSUMED_BY_V5"
+  },
+  "patch_execution": {
+    "mode": "deterministic_source_extract_and_composite",
+    "outside_mask_zero_change_proof": false,
+    "authority_eligibility": false,
+    "reason": "Independent review found that exact BR-005 silicone relief and the exact BR-007 SR-with-rose silhouette were not visibly proven. The candidate is retained only as a composition/cast diagnostic."
+  },
+  "independent_review": {
+    "status": "REJECTED_SOURCE_AUTHORITY__KEEP_QUARANTINED",
+    "passed": [
+      "DUAL_CAST_ANATOMY_AND_BODY_CONTACT",
+      "BR005_SIDE_BODY_EMBROIDERY_PLACEMENT_NO_ARM_ART",
+      "BR007_OAKLAND_LOVE_HURTS_TONAL_REPEAT_AND_BASE_CONSTRUCTION",
+      "BR007_COLORED_CLUSTER_REGION"
+    ],
+    "failed": [
+      "BR005_EXACT_THREE_ROSE_SILICONE_RELIEF_UNPROVEN",
+      "BR007_EXACT_SR_WITH_ROSE_SILHOUETTE_UNPROVEN"
+    ]
+  },
+  "rejected_inputs": [
+    {"path": "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v1.png", "sha256": "8d248e6bac7daba373148a2f08f65d168d963640aed5bd72829d7ba2bee1929d", "reason": "full-frame product-fidelity drift", "usable_as_input": false},
+    {"path": "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v2.png", "sha256": "c6ee2008729d63d2dd7331e2b8bf7f6c27b1cf38347436801b384fccbb03ba1e", "reason": "full-frame product-fidelity drift", "usable_as_input": false},
+    {"path": "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v3-deterministic-patch.png", "sha256": "10ae9ed9b42ad584e84ffb80219eda14ba60c1fd57992e5afdb4d1083ce7eb44", "reason": "superseded QA intermediate", "usable_as_input": false},
+    {"path": "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v4-deterministic-patch.png", "sha256": "de51c3128bd16a49875d44f4cc228b29fd197092f3d6dc40c5bd342fb1176038", "reason": "superseded QA intermediate", "usable_as_input": false},
+    {"path": "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v6-full-frame-edit-rejected.png", "sha256": "749d3dda7497d405804e02ea301bbac67f6479d37937134b0fdf45c206190938", "reason": "terminal full-frame drift reject; 96.7182 percent changed; wrong BR-007 panel assignments; failed BR-005 chest material", "usable_as_input": false}
+  ],
+  "output": {
+    "local_path": "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v5-deterministic-patch.png",
+    "sha256": "49261f88c065fc5ebaeae73622615eed5dcdf370183eb8c29bd26f88c0fff090",
+    "bytes": 1944003,
+    "dimensions": "1024x1536",
+    "status": "REJECTED_SOURCE_AUTHORITY__QUARANTINED_COMPOSITION_DIAGNOSTIC_ONLY"
+  },
+  "output_quarantine_required": true,
+  "founder_review_required": true,
+  "independent_review_required": true,
+  "scene_generation_allowed": false,
+  "runtime_wiring_allowed": false,
+  "promotion_allowed": false,
+  "deployment_allowed": false
+}

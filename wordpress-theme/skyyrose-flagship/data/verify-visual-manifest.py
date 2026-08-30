@@ -14,7 +14,7 @@ from pathlib import Path
 
 DATA_DIR = Path(__file__).resolve().parent
 ASSETS = DATA_DIR.parent / "assets"
-MANIFEST = DATA_DIR / "visual-manifest.json"
+MANIFEST = DATA_DIR.parents[2] / "data" / "visual-manifest.json"
 
 
 def iter_assets(node, trail=""):

@@ -28,7 +28,7 @@ key_files:
     - tests/test_fashion_context.py
     - tests/test_preflight_audit.py
   modified:
-    - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+    - data/skyyrose-catalog.csv
     - tests/test_catalog_csv_integrity.py
     - tests/scripts/nano_banana/conftest.py
 decisions:

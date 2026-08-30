@@ -54,7 +54,7 @@ _GHOST_ENVIRONMENT: str = "seamless studio cyclorama"
 
 _ONMODEL_DEFAULTS: dict[str, dict[str, object]] = {
     "signature": {
-        "environment": "Golden Gate Bridge and Bay Area skyline at golden hour, confident West-Coast street-luxury energy, warm sunlight",
+        "environment": "Founder-directed Oakland waterfront from the Oakland pier viewpoint: exact Bay Bridge span, water, and distant San Francisco skyline; no Golden Gate Bridge, generic San Francisco landmark, or alternate bridge geometry",
         "lighting": {
             "key": "warm golden-hour sun, high-right",
             "fill": "open sky fill, soft shadow",
@@ -71,7 +71,7 @@ _ONMODEL_DEFAULTS: dict[str, dict[str, object]] = {
         "mood": "aspirational, grounded luxury, effortless swag",
     },
     "black-rose": {
-        "environment": "Oakland shoreline at blue hour, Bay Bridge silhouetted behind, moody black-rose garden with roses in deep shadow",
+        "environment": "Exact Black Rose world: moonlit Oakland/Bay landscape with the Bay Bridge from Oakland side and either exact Black Rose type/monument architecture or protected rose-within-silver-star graphic; no generic gothic sign, star, or bridge",
         "lighting": {
             "key": "dramatic blue-hour ambient, deep shadow",
             "fill": "minimal fill, dark romantic low light",
@@ -88,7 +88,7 @@ _ONMODEL_DEFAULTS: dict[str, dict[str, object]] = {
         "mood": "dark romantic luxury, armor, defiance",
     },
     "love-hurts": {
-        "environment": "candlelit gothic château interior, ornate and brooding, shadow-heavy — Beauty-and-the-Beast setting from the Beast's point of view",
+        "environment": "Exact protected enchanted rose under glass in its candlelit cathedral chamber, kept sharply visible and physically lit; high-fashion protective shadow-edge watcher perspective from the Beast's side only, never a literal Beast character, costume, face, generic heart, flower, or substitute dome",
         "lighting": {
             "key": "candlelight, warm and directional, low",
             "fill": "deep shadow, emotionally intense",
@@ -102,7 +102,7 @@ _ONMODEL_DEFAULTS: dict[str, dict[str, object]] = {
         },
         "film_stock": "Kodak Portra 800",
         "color_palette": ["#DC143C", "#B76E79", "#0A0A0A", "#8B0000"],
-        "mood": "dark romance, brooding intensity, emotionally raw",
+        "mood": "dark romance, guarded high-fashion intimacy, emotionally raw",
     },
     "kids-capsule": {
         "environment": "opulent throne room, gold-and-velvet palace setting, heir to the throne — playful young-royalty grandeur",

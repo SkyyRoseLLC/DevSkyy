@@ -26,7 +26,7 @@ allowed-tools: Read Write Edit Glob
 - **Per-collection background and lighting:** Black Rose = dark/concrete, cool-dramatic. Love Hurts = deep red-brick or dark surfaces, crimson-warm. Signature = warm wood, natural stone, golden tone. Kids Capsule = clean, bright, warm-neutral.
 - **Color tokens:** Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`.
 - **Products referenced by NAME, not SKU.** "Black Rose Crewneck" in the brief — not "br-001." Photographers don't know the internal catalog.
-- **Product facts from catalog only.** Never invent colorways, materials, or features. Resolve against `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` before briefing.
+- **Product facts from catalog only.** Never invent colorways, materials, or features. Resolve against `data/skyyrose-catalog.csv` before briefing.
 - Full canon: `../skyyrose-content-engine/brand-guardrails.md`
 
 ---

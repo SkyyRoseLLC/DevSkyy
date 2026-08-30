@@ -29,7 +29,7 @@ def _referenced_paths() -> dict[str, set[str]]:
     """Theme-relative image paths per SOT surface that serves them."""
     surfaces = [
         REPO / "data" / "sot-images.json",
-        REPO / THEME / "data" / "skyyrose-catalog.csv",
+        REPO / "data" / "skyyrose-catalog.csv",
         *sorted((REPO / THEME / "data" / "collections").glob("*/sot.json")),
     ]
     return {
@@ -57,7 +57,7 @@ def test_census_covers_all_surfaces_and_finds_paths():
     """The census must actually be looking at something — an empty sweep can't fail."""
     refs = _referenced_paths()
     assert "data/sot-images.json" in refs
-    assert f"{THEME}/data/skyyrose-catalog.csv" in refs
+    assert "data/skyyrose-catalog.csv" in refs
     collection_surfaces = [s for s in refs if s.endswith("/sot.json")]
     assert (
         len(collection_surfaces) >= 4

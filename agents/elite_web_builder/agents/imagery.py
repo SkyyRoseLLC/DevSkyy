@@ -33,7 +33,7 @@ IMAGERY_SPEC = AgentSpec(
         "photography at the highest available quality tier.\n\n"
         "Core responsibilities:\n"
         "- Every render follows the canonical catalog "
-        "(wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv) — "
+        "(data/skyyrose-catalog.csv) — "
         "never invent products.\n"
         "- For every SKU you render, look up branding_spec and apply it "
         "character-perfect. Misspelled text is a FAIL.\n"

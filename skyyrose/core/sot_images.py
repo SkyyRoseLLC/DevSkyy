@@ -8,7 +8,7 @@ Hardcoding ``assets/images/products/<sku>...`` anywhere else is a drift bug
 (``tests/test_sot_no_adhoc_imagery.py`` guards against it).
 
 Source of truth = the per-collection SOT view
-``wordpress-theme/skyyrose-flagship/data/collections/<slug>/sot.json`` (itself
+``wordpress-theme/skyyrose-flagship/data/collections/<slug>/sot.json`` (a generated theme view, itself
 generated from ``identity.json`` + the catalog CSV + ``visual-manifest.json`` by
 ``data/build-collection-sot.py`` — do not hand-edit it).
 

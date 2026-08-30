@@ -52,7 +52,7 @@ prompts:
       cost_per_call_usd_p50: null
     canon_dependencies:             # what the prompt assumes about the world
       - knowledge-base/seed/from-interview.md  # brand canon
-      - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv  # SKU truth
+      - data/skyyrose-catalog.csv  # SKU truth
     tags: [brand, marketing, copy]
     eval: eval/brand-writer.jsonl   # path or null
     notes: |

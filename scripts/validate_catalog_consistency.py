@@ -3,8 +3,8 @@
 
 Checks that all downstream files referencing SKUs or logos are consistent with
 the two canonical data sources:
-  1. wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv   (33 SKUs)
-  2. wordpress-theme/skyyrose-flagship/data/logo-registry.json     (v4 logos)
+  1. data/skyyrose-catalog.csv   (33 SKUs)
+  2. data/logo-registry.json                                       (v4 logos)
 
 Exit codes:
   0  — all checks pass (or all requested checks pass)
@@ -75,17 +75,13 @@ from typing import Any
 # scripts/validate_catalog_consistency.py → parents[0] = scripts/ → parents[1] = repo root
 _REPO_ROOT: Path = Path(__file__).resolve().parents[1]
 
-_CATALOG_CSV: Path = (
-    _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
-_LOGO_REGISTRY: Path = (
-    _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "logo-registry.json"
-)
+_CATALOG_CSV: Path = _REPO_ROOT / "data" / "skyyrose-catalog.csv"
+_LOGO_REGISTRY: Path = _REPO_ROOT / "data" / "logo-registry.json"
 _SIMILARITIES_JSON: Path = (
     _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "product-similarities.json"
 )
 _SKU_RESOLVER_PY: Path = _REPO_ROOT / "skyyrose" / "elite_studio" / "sku_resolver.py"
-_DOSSIERS_DIR: Path = _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "dossiers"
+_DOSSIERS_DIR: Path = _REPO_ROOT / "data" / "dossiers"
 _V7_CARDS_JSON: Path = (
     _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "v7-cards.json"
 )

@@ -28,8 +28,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 MANIFEST = REPO / "tasks" / "phase-e-manifest.md"
-CATALOG = REPO / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-DOSSIERS = REPO / "wordpress-theme" / "skyyrose-flagship" / "data" / "dossiers"
+CATALOG = REPO / "data" / "skyyrose-catalog.csv"
+DOSSIERS = REPO / "data" / "dossiers"
 THEME_ROOT = REPO / "wordpress-theme" / "skyyrose-flagship"
 
 BUDGET_FILE = REPO / "skyyrose" / "elite_studio" / "budget.py"

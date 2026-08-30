@@ -44,30 +44,12 @@
     "confidence": 1.0,
     "method": "manual_override"
   },
-  "br-015": {
+  "br-004": {
     "image_id": 8737,
     "image_url": "https://skyyrose.co/wp-content/uploads/2026/01/BR_WOMENS_BLACK_ROSE_HOODED_DRESS_main.jpg",
     "webp_id": 8711,
     "webp_url": "https://skyyrose.co/wp-content/uploads/2026/01/BR_WOMENS_BLACK_ROSE_HOODED_DRESS_main.webp",
     "match_key": "BR_WOMENS_BLACK_ROSE_HOODED_DRESS_main",
-    "confidence": 1.0,
-    "method": "manual_override"
-  },
-  "br-004": {
-    "image_id": 8727,
-    "image_url": "https://skyyrose.co/wp-content/uploads/2026/01/BR_007_20230616_170635_1_main.jpg",
-    "webp_id": 8631,
-    "webp_url": "https://skyyrose.co/wp-content/uploads/2026/01/BR_007_20230616_170635_1_main.webp",
-    "match_key": "BR_007_20230616_170635_1_main",
-    "confidence": 1.0,
-    "method": "manual_override"
-  },
-  "br-005": {
-    "image_id": 8736,
-    "image_url": "https://skyyrose.co/wp-content/uploads/2026/01/BR_THE_BLACK_ROSE_SHERPA_main.jpg",
-    "webp_id": 8878,
-    "webp_url": "https://skyyrose.co/wp-content/uploads/2026/01/BR_THE_BLACK_ROSE_SHERPA_main.webp",
-    "match_key": "BR_THE_BLACK_ROSE_SHERPA_main",
     "confidence": 1.0,
     "method": "manual_override"
   },

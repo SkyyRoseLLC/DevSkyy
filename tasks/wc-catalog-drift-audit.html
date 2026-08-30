@@ -20,7 +20,7 @@
 </head>
 <body>
 <h1>WooCommerce ↔ Catalog Drift Audit</h1>
-<p><strong>Date:</strong> 2026-06-06 · <strong>Source of truth:</strong> <code>wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv</code> (33 SKUs) · <strong>Live store:</strong> skyyrose.co (35 WC products) · <strong>Method:</strong> read-only WC REST <code>/wp-json/wc/v3/products</code> vs catalog CSV. No writes performed.</p>
+<p><strong>Date:</strong> 2026-06-06 · <strong>Source of truth:</strong> <code>data/skyyrose-catalog.csv</code> (33 SKUs) · <strong>Live store:</strong> skyyrose.co (35 WC products) · <strong>Method:</strong> read-only WC REST <code>/wp-json/wc/v3/products</code> vs catalog CSV. No writes performed.</p>
 <p><strong>Headline:</strong> 24/33 catalog SKUs have a correctly-named WC product. Remaining 9 + 4 orphan WC products carry SKU collisions, scheme mismatches, retired SKUs, and missing imagery.</p>
 
 <h2 id="false-positives">0. False positives (no action)</h2>

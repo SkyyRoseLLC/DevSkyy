@@ -175,7 +175,7 @@ WebXR (optional):
 - `frontend/lib/pipeline-config/pipelines/virtual-tryon.ts`
 - `src/collections/*Experience.ts`
 - `wordpress-theme/skyyrose-flagship/assets/images/products/*.png|.jpg|.jpeg` (reference photos)
-- `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+- `data/skyyrose-catalog.csv`
 
 **Writes:**
 - `wordpress-theme/skyyrose-flagship/assets/3d/{sku}/{lod}.glb` — LOD0/1/2 GLB per SKU

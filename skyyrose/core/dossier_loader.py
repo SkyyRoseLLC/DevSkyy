@@ -1,7 +1,7 @@
 """Per-product design dossier loader — shared by all four catalog readers.
 
 Reads markdown dossiers from
-`wordpress-theme/skyyrose-flagship/data/dossiers/{slug}.md` and parses them
+`data/dossiers/{slug}.md` and parses them
 into a structured dict consumed by:
   - skyyrose.core.catalog_loader.get_product_with_dossier()
   - nano_banana.catalog
@@ -52,6 +52,7 @@ class Dossier:
     extra_logos: list[str] = field(default_factory=list)
     reference_image: str = ""
     extra_references: list[str] = field(default_factory=list)
+    material_lock_version: str = ""
     raw: str = field(default="", repr=False)
 
     def to_dict(self) -> dict:
@@ -69,6 +70,7 @@ class Dossier:
             "extra_logos": list(self.extra_logos),
             "reference_image": self.reference_image,
             "extra_references": list(self.extra_references),
+            "material_lock_version": self.material_lock_version,
         }
 
 
@@ -176,6 +178,7 @@ def parse_dossier_markdown(text: str) -> Dossier:
         extra_logos=fm_lists.get("extra_logos", []),
         reference_image=fm.get("reference_image", ""),
         extra_references=fm_lists.get("extra_references", []),
+        material_lock_version=fm.get("material_lock_version", ""),
         raw=text,
     )
 

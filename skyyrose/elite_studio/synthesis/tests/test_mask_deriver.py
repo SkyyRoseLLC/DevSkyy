@@ -62,6 +62,24 @@ def test_parse_extracts_region_technique_color():
     assert by_region["back-yoke"].technique == "woven-label"
 
 
+def test_parse_preserves_complex_region_and_material_lock():
+    block = """- **wearer's-left side body / viewer-right torso** (below armhole to hem):
+    Longitudinal rose/cloud. **Technique:** embroidered. **Color:** white/grey.
+    **Material:** embroidery thread. **Construction:** direct stitched embroidery.
+    **Surface:** directional thread and stitch relief. **Attachment:** thread penetrates body fabric.
+    **Verify:** side body only. **Reject:** sleeve, arm, forearm, or patch border.
+    """
+    entries = parse_branding_entries(block)
+    assert len(entries) == 1
+    assert entries[0].region == "wearer's-left side body / viewer-right torso"
+    assert entries[0].material_lock is not None
+    assert "stitch relief" in entries[0].material_lock["surface_response"]
+
+
+def test_silicone_is_a_masked_decoration_technique():
+    assert "silicone" in DECORATION_TECHNIQUES
+
+
 def test_parse_handles_empty_block():
     assert parse_branding_entries("") == []
 

@@ -15,7 +15,7 @@
 | `renders/config.py` | config | transform | `renders/preflight.py` (import style) + RESEARCH.md Pattern 2 | role-match |
 | `skyyrose/elite_studio/fashion/context.py` | service | transform | self (one-line path fix) | self |
 | `scripts/preflight_audit.py` | utility | file-I/O | `renders/preflight.py` + `scripts/split_techflats.py` | role-match |
-| `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` | config | — | self (additive column) | self |
+| `data/skyyrose-catalog.csv` | config | — | self (additive column) | self |
 | `tests/test_catalog_csv_integrity.py` | test | — | self (add test cases) | self |
 | `tests/scripts/nano_banana/conftest.py` | test | — | self (update `_CSV_COLUMNS`) | self |
 | `tests/test_renders_config.py` | test | — | `skyyrose/elite_studio/tests/test_brand.py` | role-match |
@@ -256,7 +256,7 @@ skipped_path.write_text(
 
 ---
 
-### `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (config — column addition)
+### `data/skyyrose-catalog.csv` (config — column addition)
 
 **Analog:** self — the existing CSV. No code pattern needed; this is a data edit.
 

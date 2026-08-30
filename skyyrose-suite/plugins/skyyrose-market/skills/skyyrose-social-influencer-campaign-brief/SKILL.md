@@ -48,7 +48,7 @@ Full canon: `../skyyrose-content-engine/brand-guardrails.md`
 **GATE: Confirm collection, product name(s), and go-live window before drafting the brief.**
 
 > Product facts (name, price, collection) must be resolved from the canonical catalog at
-> `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — do not invent product details.
+> `data/skyyrose-catalog.csv` — do not invent product details.
 
 ---
 

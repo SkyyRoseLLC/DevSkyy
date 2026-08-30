@@ -76,7 +76,7 @@ The techflat inventory is 23 of 28 in-scope garment SKUs ready. Five SKUs are mi
 
 ```
 canonical CSV
-  (wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv)
+  (data/skyyrose-catalog.csv)
         │
         ▼
 skyyrose.core.catalog_loader  ← single reader, all pipelines delegate here
@@ -385,7 +385,7 @@ kids-002 hoodie
 
 | Old Approach | Current Approach | When Changed | Impact |
 |--------------|------------------|--------------|--------|
-| `data/product-catalog.csv` (root) | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` | 2026-04-19 | fashion/context.py still uses old path — INFRA-03 |
+| `data/product-catalog.csv` (root) | `data/skyyrose-catalog.csv` | 2026-04-19 | fashion/context.py still uses old path — INFRA-03 |
 | Multiple catalog sources (yaml, manifest.json, csv) | Single canonical CSV | 2026-04-19 | Legacy readers must all migrate |
 | Directory-name bundle lookup | manifest.json SKU field lookup | This session | Required by INFRA-02 — name-based lookup fails |
 
@@ -515,7 +515,7 @@ All findings verified by direct file reads and command execution this session:
 - `skyyrose/elite_studio/fashion/context.py` — stale path confirmed by path resolution
 - `renders/preflight.py` — import requirements confirmed
 - `renders/__main__.py` — import requirements confirmed
-- `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — schema (21 columns), row count (30), accessory flags verified
+- `data/skyyrose-catalog.csv` — schema (21 columns), row count (30), accessory flags verified
 - `data/product-bundles/` — 32 directories inspected, all manifest.json files scanned
 - `scripts/nano_banana/__pycache__/` — .pyc files confirm source was deleted
 - `tests/test_catalog_csv_integrity.py` — live test run confirms 1 failure (nano_banana import)

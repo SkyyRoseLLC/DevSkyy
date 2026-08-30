@@ -2,7 +2,7 @@
   "captured_at_utc": "2026-08-27T02:46:36Z",
   "catalog": {
     "expected_sku_count": 33,
-    "path": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "path": "data/skyyrose-catalog.csv",
     "sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627"
   },
   "kind": "skyyrose-v2-woocommerce-read-authority",

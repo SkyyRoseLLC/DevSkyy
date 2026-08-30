@@ -28,7 +28,7 @@ Plan and execute launch campaigns that convert — not just campaigns that ship.
 Required before Phase 3 — **absent input = stop, never assume**:
 
 1. **Product truth.** For SkyyRose: SKU, name, price, and availability come from
-   `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`; imagery resolves only via
+   `data/skyyrose-catalog.csv`; imagery resolves only via
    `data/sot-images.json` / `skyyrose.core.sot_images` (filenames are not identity); collection
    language only from `docs/brand/collection-stories.md`. Never a product fact from memory.
 2. **Audience research** — from `market-research`: jobs-to-be-done, fears, language, alternatives.
@@ -123,7 +123,7 @@ grep -rnE '[0-9]+(\.[0-9]+)?%|\$[0-9]' ./campaign/ | grep -v 'Source:'
 4. **Price/SKU claims match the catalog** — the SOT, not memory:
 
 ```bash
-grep -n '<sku>' wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+grep -n '<sku>' data/skyyrose-catalog.csv
 ```
 
    **PASS:** the row exists and its name/price match every mention in the campaign copy. No row

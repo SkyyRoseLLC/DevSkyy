@@ -6,10 +6,10 @@
 
 | Source | Location | Role |
 |---|---|---|
-| Catalog | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (root symlink `skyyrose-catalog.csv`) | Single product manifest — SKU, price, collection, metadata. Never invent SKUs. |
-| Dossiers | `wordpress-theme/skyyrose-flagship/data/dossiers/*.md` | Per-SKU, founder-authored narrative (never ML-drafted); `_template.md` defines the schema |
-| Collection identity | `wordpress-theme/skyyrose-flagship/data/collections/<slug>/identity.json` | Canon seed (palette, fonts, story). `design-tokens.css` / `sot.json` / `index.html` are **generated from it** — edit `identity.json` only, never the generated files |
-| Brand/logos | `wordpress-theme/skyyrose-flagship/data/{brand,brand-logos,product-references}/` | Supporting brand assets |
+| Catalog | `data/skyyrose-catalog.csv` (root symlink `skyyrose-catalog.csv`) | Single product manifest — SKU, price, collection, metadata. Never invent SKUs. |
+| Dossiers | `data/dossiers/*.md` | Per-SKU, founder-authored narrative (never ML-drafted); `_template.md` defines the schema |
+| Collection identity | `data/collections/<slug>/identity.json` | Root-owned canon seed (palette, fonts, story). `design-tokens.css` / theme `sot.json` / `index.html` are **generated from it** — edit `identity.json` only, never generated views |
+| Brand/logos | `data/brand-logos/` | Root-held source logo authority; themes consume rendered/compiled derivatives only |
 
 ## Imagery resolution (SOT-only, front-first)
 
