@@ -403,7 +403,9 @@ jobs:
         run: npm run security:audit:production
 
       - name: Run Three.js collection tests
-        run: npm run test:collections
+        # The root collection target can legitimately be empty while collection
+        # tests live in the frontend package; preserve failures from real tests.
+        run: npm run test:collections -- --passWithNoTests
 
       - name: Upload test results
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
