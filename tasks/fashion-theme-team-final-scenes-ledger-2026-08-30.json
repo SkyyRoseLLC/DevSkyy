@@ -1,6 +1,6 @@
 {
   "schema_version": "fashion-theme-team-phase-ledger.v1",
-  "mission": "Finish the remaining SkyyRose Image 2 collection-scene review candidates without bypassing product authority, native integration, independent review, or founder promotion gates.",
+  "mission": "Preserve every founder-approved SkyyRose scene decision, recover approved artifacts where necessary, and finish only the five product-scene visuals that remain unapproved without bypassing product authority, native integration, independent review, or promotion gates.",
   "baseline": {
     "branch": "codex/final-scenes-e2e-20260830",
     "commit": "6d3e87bab9f401856e9d122b2f2ccbfa4a129b2a",
@@ -12,8 +12,67 @@
     "local_candidate_generation": "ASK_BEFORE_PAID_CALL",
     "candidate_commit": "AUTO_WITH_LOG",
     "promotion": "FOUNDER_APPROVAL_REQUIRED",
-    "wiring": "SEPARATE_APPROVAL_REQUIRED",
+    "wiring": "PER_SCENE_APPROVAL_REQUIRED__LH_COMMERCE_1_ALREADY_APPROVED_FOR_V2_WIRING",
     "deployment": "SEPARATE_APPROVAL_REQUIRED"
+  },
+  "approval_reconciliation": {
+    "scene_direction_or_environment_plate_approvals": {
+      "count": 9,
+      "scene_ids": [
+        "BR-COMMERCE-1",
+        "BR-COMMERCE-2",
+        "BR-COMMERCE-3",
+        "LH-COMMERCE-1",
+        "LH-COMMERCE-2",
+        "LH-COMMERCE-3",
+        "SIG-COMMERCE-1",
+        "SIG-COMMERCE-2",
+        "SIG-COMMERCE-3"
+      ],
+      "state": "FOUNDER_APPROVED"
+    },
+    "product_scene_visual_approvals": [
+      {
+        "scene_id": "BR-COMMERCE-1",
+        "sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952",
+        "decision": "FOUNDER_APPROVED_VISUAL",
+        "artifact_state": "APPROVAL_RECORDED__LOCAL_ARTIFACT_RECOVERY_REQUIRED",
+        "scope": "still image candidate only"
+      },
+      {
+        "scene_id": "BR-COMMERCE-3",
+        "sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+        "decision": "FOUNDER_APPROVED_PRODUCT_SCENE",
+        "artifact_state": "HASH_VERIFIED_LOCAL__PRESERVE_DO_NOT_REGENERATE",
+        "scope": "approved product scene after bounded 79-pixel correction"
+      },
+      {
+        "scene_id": "LH-COMMERCE-1",
+        "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+        "decision": "FOUNDER_APPROVED_VISUAL",
+        "artifact_state": "HASH_VERIFIED_LOCAL__PRESERVE_DO_NOT_REGENERATE",
+        "scope": "V2 scene wiring approved; deployment and production write not approved",
+        "machine_review_override": true
+      },
+      {
+        "scene_id": "LH-COMMERCE-3",
+        "sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a",
+        "decision": "FOUNDER_APPROVED_VISUAL",
+        "artifact_state": "APPROVAL_RECORDED__LOCAL_ARTIFACT_RECOVERY_REQUIRED",
+        "scope": "visual selection and motion authorization; runtime promotion not approved"
+      }
+    ],
+    "product_scene_visuals_without_founder_approval": [
+      "BR-COMMERCE-2",
+      "LH-COMMERCE-2",
+      "SIG-COMMERCE-1",
+      "SIG-COMMERCE-2",
+      "SIG-COMMERCE-3"
+    ],
+    "source_records": [
+      "data/candidates/founder-scene-approvals-2026-08-29.json",
+      "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/manifest.json"
+    ]
   },
   "phases": [
     {
@@ -25,7 +84,10 @@
       "candidate_id": "6d3e87bab-scene-discovery-1",
       "attempt": 1,
       "outputs": [
-        "Nine commerce scenes reconciled: two preserved exact-byte candidates and seven unfinished scenes.",
+        "Nine commerce scenes reconciled; all nine scene directions or environment plates are founder-approved.",
+        "Four product-scene visuals are founder-approved: BR-COMMERCE-1, BR-COMMERCE-3, LH-COMMERCE-1, and LH-COMMERCE-3.",
+        "BR-COMMERCE-3 and LH-COMMERCE-1 are hash-verified locally; BR-COMMERCE-1 and LH-COMMERCE-3 retain approval records but require approved-artifact recovery.",
+        "Five product-scene visuals remain unapproved: BR-COMMERCE-2, LH-COMMERCE-2, SIG-COMMERCE-1, SIG-COMMERCE-2, and SIG-COMMERCE-3.",
         "Historical four-scene statue set classified as rejected legacy scope, not part of the commerce count."
       ],
       "blockers": [],
@@ -42,15 +104,17 @@
       "outputs": [
         "Current-root 17-SKU scene authority matrix completed.",
         "Focused source/manifest tests: 27 passed.",
-        "Root source-photo audit: 12 of 33 compositor-ready, 21 blocked, zero with full required-angle coverage."
+        "Root source-photo audit: 12 of 33 compositor-ready, 21 blocked, zero with full required-angle coverage.",
+        "Existing founder approvals preserved as independent approval facts; missing local artifacts do not erase those decisions."
       ],
       "blockers": [
-        "Seven contracts require v2 re-authoring against current root authority.",
-        "Missing approved same-pose/on-model product sources and genuine garment mattes.",
+        "Five unapproved product-scene contracts require v2 re-authoring against current root authority.",
+        "BR-COMMERCE-1 and LH-COMMERCE-3 approved image artifacts require recovery from their original generated-output storage or founder-supplied copies.",
+        "The five unapproved scenes are missing approved same-pose/on-model product sources and genuine garment mattes.",
         "Fourteen of seventeen candidate dossier hashes are stale.",
         "Responsive safe-zone and optical measurements are not current candidate-bound evidence."
       ],
-      "next_authority": "founder decision: exact-product capture route or full-native-redraw candidate authorization"
+      "next_authority": "artifact recovery for approved BR-COMMERCE-1 and LH-COMMERCE-3; founder decision applies only to the five unapproved scenes"
     },
     {
       "id": "SCENE-GENERATION-3",
@@ -63,7 +127,7 @@
       "outputs": [],
       "blockers": [
         "paid provider approval",
-        "per-scene v2 preflight PASS",
+        "per-scene v2 preflight PASS for the five unapproved scenes",
         "registered scene-generation adapter live validation",
         "current source-authority receipts",
         "approved same-pose sources and garment mattes"
