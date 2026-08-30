@@ -11,9 +11,9 @@
   "current_integration": {
     "branch": "main",
     "worktree": "/Users/theceo/DevSkyy",
-    "current_integration_commit": "f16736329871cc03a3d325ce077d13729301ffad",
-    "last_verified_source_commit": "f16736329871cc03a3d325ce077d13729301ffad",
-    "marketplace_zip_sha256": "46c8751d660f16c854c7fa6c282d482cf0706a79ba1b09575be6b2f0594448e7",
+    "current_integration_commit": "ccffce2a52c5f1203d93c9582deebaa7837750d3",
+    "last_verified_source_commit": "ccffce2a52c5f1203d93c9582deebaa7837750d3",
+    "marketplace_zip_sha256": "53bdc9e72c21779b20932944b37a247135a68f6214862d3e4c62305f9d01d6a4",
     "status": "SOURCE_RIGHTS_AND_RUNTIME_VERIFIED",
     "note": "main is the current local V2 candidate. Founder usage rights and a read-only 33-SKU WooCommerce capture are recorded separately; promotion and deployment remain gated by visual QA and final release authorization."
   },
@@ -741,7 +741,7 @@
     }
   ],
   "release_checkpoint": {
-    "source_commit": "f16736329871cc03a3d325ce077d13729301ffad",
+    "source_commit": "ccffce2a52c5f1203d93c9582deebaa7837750d3",
     "rights_attestation": ".fashion-theme/founder-rights-attestation-2026-08-26.json",
     "woocommerce_capture": ".fashion-theme/woocommerce-runtime-capture-2026-08-26.json",
     "remaining_gates": [
