@@ -1,0 +1,78 @@
+{
+  "schema_version": "skyyrose-scene-generation-receipt.v1",
+  "recorded_at": "2026-08-30",
+  "scene_id": "BR-COMMERCE-2",
+  "candidate": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/BR-COMMERCE-2-gpt-image-2-candidate-v3.png",
+    "sha256": "26f1ef20c690f3736cbfa040c312ed7c609645fdda68a5ec03a68bf2c42f3113",
+    "dimensions": [1672, 941],
+    "color_mode": "RGB",
+    "state": "QUARANTINED_SEMANTIC_REVIEW_CANDIDATE",
+    "preferred_over": "BR-COMMERCE-2-gpt-image-2-candidate-v2.png"
+  },
+  "generation": {
+    "route": "codex-imagegen-wrapper",
+    "operation": "multi_reference_semantic_composite_and_targeted_refinement",
+    "capability_tier": "candidate_only",
+    "exact_protected_pixel_claim": false,
+    "paid_api_key_used": false
+  },
+  "product_bindings": ["br-005", "br-007", "br-004"],
+  "references": [
+    {
+      "role": "male_cast_layout_authority",
+      "path": "renders/scroll-world/BR-COMMERCE-2/founder-selected-base/br-commerce-2-native-preview-v1.png",
+      "sha256": "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925"
+    },
+    {
+      "role": "founder_primary_br004_model_authority",
+      "path": "assets/products/source-photos/black-rose/br-004-founder-model-source-front.png",
+      "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34"
+    },
+    {
+      "role": "protected_font_statue_authority",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+      "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c"
+    },
+    {
+      "role": "br005_product_authority",
+      "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+      "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4"
+    },
+    {
+      "role": "br007_product_authority",
+      "path": "assets/products/references/br-007-shorts-real-front.jpeg",
+      "sha256": "2da1309689439041ce8a53a23a7c5d6eeac1b80ecbf8822efbb796361a37c285"
+    }
+  ],
+  "scene_direction_checks": {
+    "exact_two_model_cast": "PASS",
+    "br001_br002_excluded": "PASS",
+    "bridge_excluded": "PASS",
+    "star_graphic_excluded": "PASS",
+    "font_statue_only_story": "PASS",
+    "clean_anatomy": "PASS"
+  },
+  "independent_review": {
+    "reviewer": "senior-fidelity-gate-reviewer",
+    "verdict": "BLOCKED_FOR_FIDELITY_PROMOTION",
+    "scores": {
+      "product_fidelity": 77,
+      "optical_integration": 89,
+      "anatomy_pose": 96,
+      "collection_story": 94,
+      "commerce_readiness": 84
+    },
+    "hard_fails": [
+      "BR-007 rose-cloud patch remains on the wrong white shorts panel and construction details remain approximate.",
+      "Font-statue letter, rail, lower-rose, base, and reflection pixels differ from the protected authority.",
+      "The semantic route cannot prove byte-identical preservation of the statue, identities, or garments.",
+      "Male lighting remains colder and darker than the woman and does not fully share one exposure."
+    ]
+  },
+  "promotion": {
+    "founder_status": "PENDING",
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}
