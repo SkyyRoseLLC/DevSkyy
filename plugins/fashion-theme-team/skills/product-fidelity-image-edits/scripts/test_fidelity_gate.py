@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -30,7 +31,7 @@ class FidelityGateTests(unittest.TestCase):
         self.workspace = Path(self.tempdir.name)
         self.target = self.workspace / "scene.png"
         self.reference = self.workspace / "br-007-side.jpg"
-        save_rgb(self.target, (15, 15, 15))
+        save_rgb(self.target, (15, 15, 15), (1024, 1024))
         save_rgb(self.reference, (245, 245, 245), (48, 60))
         self.catalog = self.workspace / "skyyrose-catalog.csv"
         self.sot_manifest = self.workspace / "sot-images.json"
@@ -177,7 +178,7 @@ class FidelityGateTests(unittest.TestCase):
         receipt = json.loads(completed.stdout)
         self.assertEqual("RECEIPT_INPUT_COLLISION", receipt["code"])
         with Image.open(self.target) as preserved:
-            self.assertEqual((64, 64), preserved.size)
+            self.assertEqual((1024, 1024), preserved.size)
 
     def test_cli_receipt_failure_is_structured_and_never_creates_parent(self) -> None:
         contract = self.localized_contract()
@@ -211,7 +212,16 @@ class FidelityGateTests(unittest.TestCase):
             "generator": {
                 "route": "masked_edit",
                 "supports_explicit_mask": True,
-                "model_id": "openai-responses-image-mask",
+                "model_id": "gpt-image-2-2026-04-21",
+                "api_surface": "images",
+                "endpoint": "/v1/images/edits",
+                "capture_request_id": True,
+                "parameters": {
+                    "size": "1024x1024",
+                    "quality": "high",
+                    "output_format": "png",
+                },
+                "prompt": "Replace only the masked product panel using the bound authority image.",
             },
             "edit_region": {
                 "type": "bbox",
@@ -266,6 +276,44 @@ class FidelityGateTests(unittest.TestCase):
         path.write_text(json.dumps(review), encoding="utf-8")
         return path
 
+    def generation_receipt(self, contract: dict, candidate: Path, **overrides: object) -> Path:
+        mask_path = self.workspace / "openai-edit-mask.png"
+        with Image.open(self.workspace / contract["target"]["path"]) as target:
+            target_size = target.size
+        fidelity_gate.build_openai_edit_mask(contract, target_size).save(
+            mask_path, format="PNG", optimize=True
+        )
+        receipt = {
+            "schema": fidelity_gate.GENERATION_RECEIPT_SCHEMA,
+            "contract_sha256": fidelity_gate.sha256_json(contract),
+            "provider": "openai",
+            "api_surface": "images",
+            "endpoint": "/v1/images/edits",
+            "requested_model": "gpt-image-2-2026-04-21",
+            "input_sha256": contract["target"]["sha256"],
+            "request_image_sha256s": [
+                contract["target"]["sha256"],
+                *[
+                    reference["sha256"]
+                    for reference in contract["references"]
+                    if reference["role"] in fidelity_gate.PRODUCT_ROLES
+                ],
+            ],
+            "mask_path": mask_path.name,
+            "mask_sha256": fidelity_gate.sha256_file(mask_path),
+            "output_sha256": fidelity_gate.sha256_file(candidate),
+            "prompt_sha256": hashlib.sha256(
+                contract["generator"]["prompt"].encode("utf-8")
+            ).hexdigest(),
+            "request_parameters": dict(contract["generator"]["parameters"]),
+            "x_request_id": "req_test_123",
+            "sdk_version": "openai-python/test",
+        }
+        receipt.update(overrides)
+        path = self.workspace / "generation-receipt.json"
+        path.write_text(json.dumps(receipt), encoding="utf-8")
+        return path
+
     def native_contract(self) -> dict:
         matte = self.workspace / "br-007-garment-matte.png"
         save_protected(matte, real_alpha=True)
@@ -280,7 +328,7 @@ class FidelityGateTests(unittest.TestCase):
                 "route": "environment_rebuild_around_source",
                 "supports_reference_images": True,
                 "product_redraw_allowed": False,
-                "model_id": "openai-responses-image-mask",
+                "model_id": "openai-responses-image-tool",
             },
             "pose_change": False,
             "collection_scene": {
@@ -366,13 +414,15 @@ class FidelityGateTests(unittest.TestCase):
 
     def protected_contract(self) -> dict:
         protected = self.workspace / "protected.png"
+        protected_target = self.workspace / "protected-target.png"
         save_protected(protected, real_alpha=True)
+        save_rgb(protected_target, (15, 15, 15), (64, 64))
         return {
             "schema": fidelity_gate.SCHEMA,
             "operation": "protected_scene_composite",
             "target": {
-                "path": self.target.name,
-                "sha256": fidelity_gate.sha256_file(self.target),
+                "path": protected_target.name,
+                "sha256": fidelity_gate.sha256_file(protected_target),
             },
             "generator": {
                 "route": "background_only_then_composite",
@@ -560,6 +610,107 @@ class FidelityGateTests(unittest.TestCase):
             {finding["code"] for finding in receipt["findings"]},
         )
 
+    def test_openai_localized_route_requires_pinned_snapshot(self) -> None:
+        contract = self.localized_contract()
+        contract["generator"]["model_id"] = "gpt-image-2"
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "PINNED_MODEL_REQUIRED",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_openai_gpt_image_2_forbids_input_fidelity_parameter(self) -> None:
+        contract = self.localized_contract()
+        contract["generator"]["parameters"]["input_fidelity"] = "high"
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "FORBIDDEN_GENERATOR_PARAMETER",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_openai_localized_route_requires_images_edit_endpoint(self) -> None:
+        contract = self.localized_contract()
+        contract["generator"]["api_surface"] = "responses"
+        contract["generator"]["endpoint"] = "/v1/responses"
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "GENERATOR_API_CONTRACT_MISMATCH",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_openai_localized_route_requires_png_input_matching_mask_format(self) -> None:
+        contract = self.localized_contract()
+        jpeg_target = self.workspace / "target.jpg"
+        Image.open(self.target).convert("RGB").save(jpeg_target, format="JPEG")
+        contract["target"] = {
+            "path": jpeg_target.name,
+            "sha256": fidelity_gate.sha256_file(jpeg_target),
+        }
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "GENERATOR_INPUT_FORMAT_INVALID",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_openai_localized_route_rejects_unsupported_geometry(self) -> None:
+        contract = self.localized_contract()
+        small_target = self.workspace / "small-target.png"
+        save_rgb(small_target, (15, 15, 15), (64, 64))
+        contract["target"] = {
+            "path": small_target.name,
+            "sha256": fidelity_gate.sha256_file(small_target),
+        }
+        contract["generator"]["parameters"]["size"] = "64x64"
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "GENERATOR_INPUT_GEOMETRY_INVALID",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_openai_localized_route_rejects_unknown_parameters(self) -> None:
+        contract = self.localized_contract()
+        contract["generator"]["parameters"]["bogus"] = True
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "GENERATOR_PARAMETERS_UNKNOWN",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_openai_localized_route_requires_secret_free_prompt(self) -> None:
+        for prompt in (None, "Use Bearer abcdefghijklmnopqrstuvwxyz123456"):
+            with self.subTest(prompt=prompt is None):
+                contract = self.localized_contract()
+                if prompt is None:
+                    del contract["generator"]["prompt"]
+                else:
+                    contract["generator"]["prompt"] = prompt
+
+                receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+                self.assertEqual("BLOCKED", receipt["status"])
+                codes = {finding["code"] for finding in receipt["findings"]}
+                self.assertTrue(
+                    {"GENERATOR_PROMPT_REQUIRED", "SECRET_MATERIAL_FORBIDDEN"}.intersection(codes)
+                )
+
     def test_localized_preflight_forbids_contract_weakened_pixel_policy(self) -> None:
         for field, value, code in (
             ("max_outside_changed_pixels", 4096, "OUTSIDE_CHANGE_TOLERANCE_FORBIDDEN"),
@@ -624,6 +775,25 @@ class FidelityGateTests(unittest.TestCase):
 
         self.assertEqual("OUT_DIR_OUTSIDE_WORKSPACE", raised.exception.code)
 
+    def test_openai_mask_is_rgba_with_alpha_zero_only_in_edit_region(self) -> None:
+        contract = self.localized_contract()
+
+        mask = fidelity_gate.build_openai_edit_mask(contract, (64, 64))
+
+        self.assertEqual("RGBA", mask.mode)
+        self.assertEqual(0, mask.getchannel("A").getpixel((20, 20)))
+        self.assertEqual(255, mask.getchannel("A").getpixel((2, 2)))
+
+    def test_openai_mask_feather_never_expands_edit_authority(self) -> None:
+        contract = self.localized_contract()
+        contract["edit_region"]["feather_px"] = 2
+
+        mask = fidelity_gate.build_openai_edit_mask(contract, (64, 64))
+
+        alpha = mask.getchannel("A")
+        self.assertEqual(0, alpha.getpixel((16, 16)))
+        self.assertEqual(255, alpha.getpixel((15, 16)))
+
     def test_outside_mask_change_is_blocked(self) -> None:
         contract = self.localized_contract()
         candidate = self.workspace / "candidate.png"
@@ -687,6 +857,18 @@ class FidelityGateTests(unittest.TestCase):
         self.assertEqual(0, receipt["outside_changed_pixels"])
         self.assertEqual(1, receipt["inside_changed_pixels"])
 
+    def test_localized_verifier_blocks_output_format_drift(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.jpg"
+        image = Image.open(self.target).convert("RGB")
+        image.putpixel((20, 20), (255, 0, 0))
+        image.save(candidate, format="JPEG")
+
+        receipt = fidelity_gate.verify_localized_output(contract, self.workspace, candidate)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertEqual("OUTPUT_FORMAT_DRIFT", receipt["code"])
+
     def test_localized_cli_verify_requires_semantic_review_receipt(self) -> None:
         contract = self.localized_contract()
         contract_path = self.workspace / "localized-contract.json"
@@ -695,6 +877,7 @@ class FidelityGateTests(unittest.TestCase):
         image = Image.open(self.target).convert("RGBA")
         image.putpixel((20, 20), (255, 0, 0, 255))
         image.save(candidate)
+        generation_receipt = self.generation_receipt(contract, candidate)
 
         completed = subprocess.run(
             [
@@ -707,6 +890,8 @@ class FidelityGateTests(unittest.TestCase):
                 str(self.workspace),
                 "--output",
                 str(candidate),
+                "--generation-receipt",
+                str(generation_receipt),
             ],
             check=False,
             capture_output=True,
@@ -718,6 +903,243 @@ class FidelityGateTests(unittest.TestCase):
         self.assertEqual("BLOCKED", receipt["status"])
         self.assertEqual("SEMANTIC_REVIEW_REQUIRED", receipt["code"])
 
+    def test_localized_cli_verify_requires_generation_receipt(self) -> None:
+        contract = self.localized_contract()
+        contract_path = self.workspace / "localized-contract.json"
+        contract_path.write_text(json.dumps(contract), encoding="utf-8")
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+
+        completed = self.run_gate_cli(
+            "verify",
+            "--contract",
+            str(contract_path),
+            "--workspace",
+            str(self.workspace),
+            "--output",
+            str(candidate),
+        )
+
+        self.assertEqual(2, completed.returncode, completed.stderr)
+        receipt = json.loads(completed.stdout)
+        self.assertEqual("GENERATION_RECEIPT_REQUIRED", receipt["code"])
+
+    def test_generation_receipt_rejects_secret_material(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+        generation_receipt = self.generation_receipt(
+            contract, candidate, openai_api_key="must-never-be-recorded"
+        )
+        preflight = fidelity_gate.validate_contract(contract, self.workspace)
+
+        result = fidelity_gate.verify_generation_receipt(
+            contract,
+            self.workspace,
+            fidelity_gate.sha256_file(candidate),
+            generation_receipt,
+            preflight["model_capability"]["api_contract"],
+        )
+
+        self.assertEqual("BLOCKED", result["status"])
+        self.assertTrue(
+            any(item.startswith("SECRET_MATERIAL_FORBIDDEN") for item in result["findings"])
+        )
+
+    def test_generator_contract_rejects_nested_secret_material(self) -> None:
+        contract = self.localized_contract()
+        contract["generator"]["parameters"]["authorization"] = "must-never-be-recorded"
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "SECRET_MATERIAL_FORBIDDEN",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_generator_contract_rejects_secret_pattern_under_innocent_key(self) -> None:
+        contract = self.localized_contract()
+        contract["generator"]["metadata"] = {"note": "sk-abcdefghijklmnopqrstuvwxyz1234567890"}
+
+        receipt = fidelity_gate.validate_contract(contract, self.workspace)
+
+        self.assertEqual("BLOCKED", receipt["status"])
+        self.assertIn(
+            "SECRET_MATERIAL_FORBIDDEN",
+            {finding["code"] for finding in receipt["findings"]},
+        )
+
+    def test_generation_receipt_rejects_forbidden_input_fidelity(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+        generation_receipt = self.generation_receipt(
+            contract, candidate, request_parameters={"input_fidelity": "high"}
+        )
+        preflight = fidelity_gate.validate_contract(contract, self.workspace)
+
+        result = fidelity_gate.verify_generation_receipt(
+            contract,
+            self.workspace,
+            fidelity_gate.sha256_file(candidate),
+            generation_receipt,
+            preflight["model_capability"]["api_contract"],
+        )
+
+        self.assertEqual("BLOCKED", result["status"])
+        self.assertIn(
+            "GENERATION_RECEIPT_FORBIDDEN_PARAMETERS:input_fidelity",
+            result["findings"],
+        )
+
+    def test_generation_receipt_must_match_contracted_parameters(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+        generation_receipt = self.generation_receipt(
+            contract,
+            candidate,
+            request_parameters={
+                "size": "1024x1024",
+                "quality": "low",
+                "output_format": "png",
+            },
+        )
+        preflight = fidelity_gate.validate_contract(contract, self.workspace)
+
+        result = fidelity_gate.verify_generation_receipt(
+            contract,
+            self.workspace,
+            fidelity_gate.sha256_file(candidate),
+            generation_receipt,
+            preflight["model_capability"]["api_contract"],
+        )
+
+        self.assertEqual("BLOCKED", result["status"])
+        self.assertIn("GENERATION_RECEIPT_PARAMETERS_MISMATCH", result["findings"])
+
+    def test_generation_receipt_must_match_contracted_prompt(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+        generation_receipt = self.generation_receipt(contract, candidate, prompt_sha256="0" * 64)
+        preflight = fidelity_gate.validate_contract(contract, self.workspace)
+
+        result = fidelity_gate.verify_generation_receipt(
+            contract,
+            self.workspace,
+            fidelity_gate.sha256_file(candidate),
+            generation_receipt,
+            preflight["model_capability"]["api_contract"],
+        )
+
+        self.assertEqual("BLOCKED", result["status"])
+        self.assertIn("GENERATION_RECEIPT_PROMPT_SHA256_MISMATCH", result["findings"])
+
+    def test_generation_receipt_binds_ordered_exact_request_images(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+        expected_images = [
+            contract["target"]["sha256"],
+            contract["references"][0]["sha256"],
+        ]
+        preflight = fidelity_gate.validate_contract(contract, self.workspace)
+
+        for request_images in (
+            expected_images[:1],
+            [*expected_images, "f" * 64],
+            list(reversed(expected_images)),
+        ):
+            with self.subTest(request_images=request_images):
+                generation_receipt = self.generation_receipt(
+                    contract,
+                    candidate,
+                    request_image_sha256s=request_images,
+                )
+                result = fidelity_gate.verify_generation_receipt(
+                    contract,
+                    self.workspace,
+                    fidelity_gate.sha256_file(candidate),
+                    generation_receipt,
+                    preflight["model_capability"]["api_contract"],
+                )
+
+                self.assertEqual("BLOCKED", result["status"])
+                self.assertIn(
+                    "GENERATION_RECEIPT_REQUEST_IMAGE_SHA256S_MISMATCH",
+                    result["findings"],
+                )
+
+    def test_generation_receipt_rejects_secret_pattern_under_innocent_key(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+        generation_receipt = self.generation_receipt(
+            contract,
+            candidate,
+            metadata={"note": "Bearer abcdefghijklmnopqrstuvwxyz123456"},
+        )
+        preflight = fidelity_gate.validate_contract(contract, self.workspace)
+
+        result = fidelity_gate.verify_generation_receipt(
+            contract,
+            self.workspace,
+            fidelity_gate.sha256_file(candidate),
+            generation_receipt,
+            preflight["model_capability"]["api_contract"],
+        )
+
+        self.assertEqual("BLOCKED", result["status"])
+        self.assertTrue(
+            any(item.startswith("SECRET_MATERIAL_FORBIDDEN") for item in result["findings"])
+        )
+
+    def test_generation_receipt_rejects_wrong_mask_polarity(self) -> None:
+        contract = self.localized_contract()
+        candidate = self.workspace / "candidate.png"
+        image = Image.open(self.target).convert("RGBA")
+        image.putpixel((20, 20), (255, 0, 0, 255))
+        image.save(candidate)
+        generation_receipt = self.generation_receipt(contract, candidate)
+        receipt_data = json.loads(generation_receipt.read_text(encoding="utf-8"))
+        mask_path = self.workspace / receipt_data["mask_path"]
+        wrong_alpha = fidelity_gate.build_edit_mask(contract, (1024, 1024)).convert("RGBA")
+        wrong_alpha.putalpha(fidelity_gate.build_edit_mask(contract, (1024, 1024)))
+        wrong_alpha.save(mask_path, format="PNG")
+        receipt_data["mask_sha256"] = fidelity_gate.sha256_file(mask_path)
+        generation_receipt.write_text(json.dumps(receipt_data), encoding="utf-8")
+        preflight = fidelity_gate.validate_contract(contract, self.workspace)
+
+        result = fidelity_gate.verify_generation_receipt(
+            contract,
+            self.workspace,
+            fidelity_gate.sha256_file(candidate),
+            generation_receipt,
+            preflight["model_capability"]["api_contract"],
+        )
+
+        self.assertEqual("BLOCKED", result["status"])
+        self.assertIn(
+            "GENERATION_MASK_ALPHA_POLARITY_OR_REGION_MISMATCH",
+            result["findings"],
+        )
+
     def test_localized_cli_verify_blocks_stale_candidate_review(self) -> None:
         contract = self.localized_contract()
         contract_path = self.workspace / "localized-contract.json"
@@ -726,6 +1148,7 @@ class FidelityGateTests(unittest.TestCase):
         image = Image.open(self.target).convert("RGBA")
         image.putpixel((20, 20), (255, 0, 0, 255))
         image.save(candidate)
+        generation_receipt = self.generation_receipt(contract, candidate)
         review = self.localized_review(contract, candidate, candidate_sha256="0" * 64)
 
         completed = subprocess.run(
@@ -741,6 +1164,8 @@ class FidelityGateTests(unittest.TestCase):
                 str(candidate),
                 "--review",
                 str(review),
+                "--generation-receipt",
+                str(generation_receipt),
             ],
             check=False,
             capture_output=True,
@@ -760,6 +1185,7 @@ class FidelityGateTests(unittest.TestCase):
         image = Image.open(self.target).convert("RGBA")
         image.putpixel((20, 20), (255, 0, 0, 255))
         image.save(candidate)
+        generation_receipt = self.generation_receipt(contract, candidate)
         review = self.localized_review(contract, candidate)
 
         completed = subprocess.run(
@@ -775,6 +1201,8 @@ class FidelityGateTests(unittest.TestCase):
                 str(candidate),
                 "--review",
                 str(review),
+                "--generation-receipt",
+                str(generation_receipt),
             ],
             check=False,
             capture_output=True,
@@ -783,7 +1211,8 @@ class FidelityGateTests(unittest.TestCase):
 
         self.assertEqual(0, completed.returncode, completed.stderr)
         receipt = json.loads(completed.stdout)
-        self.assertEqual("PASS_PIXEL_AND_SEMANTIC_REVIEW", receipt["code"])
+        self.assertEqual("PASS_PIXEL_GENERATION_AND_SEMANTIC_REVIEW", receipt["code"])
+        self.assertEqual("GENERATION_RECEIPT_PASS", receipt["generation_receipt"]["code"])
         self.assertEqual("SEMANTIC_REVIEW_PASS", receipt["semantic_review"]["code"])
         self.assertFalse(receipt["wiring_allowed"])
 

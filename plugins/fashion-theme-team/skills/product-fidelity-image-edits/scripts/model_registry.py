@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import sys
 from datetime import date
@@ -27,11 +28,108 @@ REQUIRED_FIELDS = {
     "source",
 }
 VALID_MODALITIES = {"image", "video", "3d"}
+API_CONTRACT_FIELDS = {
+    "api_surface",
+    "endpoint",
+    "request_model",
+    "required_generator_fields",
+    "forbidden_parameters",
+    "parameter_policy",
+    "mask",
+    "required_receipt_fields",
+}
+MASK_CONTRACT_FIELDS = {
+    "format",
+    "alpha_channel_required",
+    "alpha_zero_is_editable",
+    "same_dimensions_as_input",
+    "max_input_bytes",
+}
+PARAMETER_POLICY_FIELDS = {"allowed", "required", "enums"}
 
 
-def load_registry(path: Path) -> dict[str, Any]:
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if data.get("schema") != "product-fidelity-model-registry.v1":
+def _validate_api_contract(model: dict[str, Any]) -> None:
+    api_contract = model.get("api_contract")
+    if api_contract is None:
+        return
+    if not isinstance(api_contract, dict) or set(api_contract) != API_CONTRACT_FIELDS:
+        raise ValueError(f"model {model['id']} has invalid api_contract fields")
+    for field in ("api_surface", "endpoint", "request_model"):
+        if not isinstance(api_contract[field], str) or not api_contract[field].strip():
+            raise ValueError(f"model {model['id']} api_contract.{field} must be non-empty")
+    if not api_contract["endpoint"].startswith("/v1/"):
+        raise ValueError(f"model {model['id']} api_contract.endpoint must start with /v1/")
+    required_fields = api_contract["required_generator_fields"]
+    if not isinstance(required_fields, dict) or not required_fields:
+        raise ValueError(
+            f"model {model['id']} api_contract.required_generator_fields must be an object"
+        )
+    for field in ("forbidden_parameters", "required_receipt_fields"):
+        values = api_contract[field]
+        if (
+            not isinstance(values, list)
+            or not values
+            or not all(isinstance(item, str) and item for item in values)
+        ):
+            raise ValueError(f"model {model['id']} api_contract.{field} must be a string list")
+        if len(values) != len(set(values)):
+            raise ValueError(f"model {model['id']} api_contract.{field} contains duplicates")
+    parameter_policy = api_contract["parameter_policy"]
+    if not isinstance(parameter_policy, dict) or set(parameter_policy) != PARAMETER_POLICY_FIELDS:
+        raise ValueError(f"model {model['id']} has invalid api_contract.parameter_policy fields")
+    for field in ("allowed", "required"):
+        values = parameter_policy[field]
+        if (
+            not isinstance(values, list)
+            or not values
+            or not all(isinstance(item, str) and item for item in values)
+        ):
+            raise ValueError(
+                f"model {model['id']} api_contract.parameter_policy.{field} must be a string list"
+            )
+        if len(values) != len(set(values)):
+            raise ValueError(
+                f"model {model['id']} api_contract.parameter_policy.{field} contains duplicates"
+            )
+    if not set(parameter_policy["required"]).issubset(parameter_policy["allowed"]):
+        raise ValueError(
+            f"model {model['id']} api_contract.parameter_policy.required must be allowed"
+        )
+    enums = parameter_policy["enums"]
+    if not isinstance(enums, dict) or not set(enums).issubset(parameter_policy["allowed"]):
+        raise ValueError(f"model {model['id']} api_contract.parameter_policy.enums is invalid")
+    for field, values in enums.items():
+        if (
+            not isinstance(values, list)
+            or not values
+            or not all(isinstance(item, str) and item for item in values)
+        ):
+            raise ValueError(
+                f"model {model['id']} api_contract.parameter_policy.enums.{field} is invalid"
+            )
+    mask = api_contract["mask"]
+    if not isinstance(mask, dict) or set(mask) != MASK_CONTRACT_FIELDS:
+        raise ValueError(f"model {model['id']} has invalid api_contract.mask fields")
+    if mask["format"] != "png":
+        raise ValueError(f"model {model['id']} api_contract.mask.format must be png")
+    for field in (
+        "alpha_channel_required",
+        "alpha_zero_is_editable",
+        "same_dimensions_as_input",
+    ):
+        if mask[field] is not True:
+            raise ValueError(f"model {model['id']} api_contract.mask.{field} must be true")
+    max_input_bytes = mask["max_input_bytes"]
+    if isinstance(max_input_bytes, bool) or not isinstance(max_input_bytes, int):
+        raise ValueError(
+            f"model {model['id']} api_contract.mask.max_input_bytes must be an integer"
+        )
+    if max_input_bytes <= 0:
+        raise ValueError(f"model {model['id']} api_contract.mask.max_input_bytes must be positive")
+
+
+def _validate_registry(data: dict[str, Any]) -> dict[str, Any]:
+    if data.get("schema") != "product-fidelity-model-registry.v2":
         raise ValueError("unsupported registry schema")
     date.fromisoformat(data["verified_on"])
     models = data.get("models")
@@ -55,12 +153,23 @@ def load_registry(path: Path) -> dict[str, Any]:
                 isinstance(item, str) for item in model[field]
             ):
                 raise ValueError(f"model {model['id']} field {field} must be a string list")
+        _validate_api_contract(model)
         for key in [model["id"], *model["aliases"]]:
             normalized = key.casefold()
             if normalized in keys:
                 raise ValueError(f"duplicate model id or alias: {key}")
             keys.add(normalized)
     return data
+
+
+def load_registry_snapshot(path: Path) -> tuple[dict[str, Any], str]:
+    payload = path.read_bytes()
+    data = json.loads(payload.decode("utf-8"))
+    return _validate_registry(data), hashlib.sha256(payload).hexdigest()
+
+
+def load_registry(path: Path) -> dict[str, Any]:
+    return load_registry_snapshot(path)[0]
 
 
 def index_registry(data: dict[str, Any]) -> dict[str, dict[str, Any]]:
@@ -98,6 +207,7 @@ def validate_request(data: dict[str, Any], model_id: str, operation: str) -> dic
         "fidelity_tier": model["fidelity_tier"],
         "live_availability_verified": False,
         "post_verification_required": True,
+        "api_contract": model.get("api_contract"),
         "message": model["notes"],
     }
 

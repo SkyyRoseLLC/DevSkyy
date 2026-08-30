@@ -23,6 +23,7 @@ LEGACY_SCHEMAS = {"product-fidelity-edit.v1"}
 SEMANTIC_REVIEW_SCHEMA = "product-fidelity-semantic-review.v2"
 NATIVE_REVIEW_SCHEMA = "product-fidelity-native-review.v2"
 SOURCE_AUTHORITY_SCHEMA = "product-fidelity-source-authority.v1"
+GENERATION_RECEIPT_SCHEMA = "product-fidelity-generation-receipt.v1"
 OPERATIONS = {
     "localized_product_patch",
     "native_collection_scene",
@@ -49,6 +50,10 @@ VALID_VIEWS = {
     "detail",
 }
 HEX64 = re.compile(r"^[0-9a-f]{64}$")
+SECRET_VALUE_PATTERN = re.compile(
+    r"(?:\bBearer\s+[A-Za-z0-9._~+/=-]{16,}|\bsk-[A-Za-z0-9_-]{16,})",
+    re.IGNORECASE,
+)
 NATIVE_ROUTES = {
     "environment_rebuild_around_source",
     "protected_garment_reconstruction",
@@ -86,6 +91,17 @@ MODEL_CAPABILITY_MAP = {
     "native_collection_scene": "multi_reference",
 }
 MAX_REGISTRY_AGE_DAYS = 30
+SECRET_FIELD_NAMES = {
+    "api_key",
+    "apikey",
+    "authorization",
+    "bearer",
+    "openai_api_key",
+    "secret",
+    "token",
+    "access_token",
+    "refresh_token",
+}
 
 
 class GateError(RuntimeError):
@@ -217,9 +233,12 @@ def load_image_snapshot(path: Path, *, mode: str | None = None) -> tuple[Image.I
     try:
         with Image.open(BytesIO(payload)) as opened:
             opened.load()
+            source_format = opened.format
             image = ImageOps.exif_transpose(opened).copy()
         if mode is not None:
             image = image.convert(mode)
+        image.format = source_format
+        image.info["_fidelity_snapshot_size_bytes"] = len(payload)
     except Exception as exc:  # Pillow uses format-specific exception classes.
         raise GateError(f"Cannot decode image {path}: {exc}", "IMAGE_UNREADABLE") from exc
     return image, digest
@@ -246,7 +265,9 @@ def _image_metadata(image: Image.Image) -> dict[str, Any]:
     return {
         "width": width,
         "height": height,
+        "format": image.format,
         "mode": image.mode,
+        "size_bytes": image.info.get("_fidelity_snapshot_size_bytes"),
         "has_alpha": has_alpha,
         "alpha_min": alpha_min,
         "alpha_max": alpha_max,
@@ -831,8 +852,9 @@ def _validate_model_capability(
         receipt["code"] = "OPERATION_INVALID"
         return receipt
     try:
-        registry = model_registry.load_registry(model_registry.DEFAULT_REGISTRY)
-        registry_sha = sha256_file(model_registry.DEFAULT_REGISTRY)
+        registry, registry_sha = model_registry.load_registry_snapshot(
+            model_registry.DEFAULT_REGISTRY
+        )
         verified_on = date.fromisoformat(registry["verified_on"])
     except (OSError, KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
         findings.append(
@@ -883,6 +905,112 @@ def _validate_model_capability(
         receipt["code"] = "MODEL_CAPABILITY_BLOCKED"
         return receipt
 
+    api_findings_start = len(findings)
+    api_contract = model.get("api_contract")
+    if api_contract is not None:
+        for field, expected in api_contract["required_generator_fields"].items():
+            if generator.get(field) != expected:
+                findings.append(
+                    Finding(
+                        "error",
+                        "GENERATOR_API_CONTRACT_MISMATCH",
+                        f"generator.{field} must equal {expected!r} for {model['id']}",
+                    )
+                )
+        if model_id != api_contract["request_model"]:
+            findings.append(
+                Finding(
+                    "error",
+                    "PINNED_MODEL_REQUIRED",
+                    f"generator.model_id must pin {api_contract['request_model']}",
+                )
+            )
+        parameters = generator.get("parameters", {})
+        if not isinstance(parameters, dict):
+            findings.append(
+                Finding(
+                    "error",
+                    "GENERATOR_PARAMETERS_INVALID",
+                    "generator.parameters must be an object when present",
+                )
+            )
+            parameters = {}
+        prompt = generator.get("prompt")
+        if not isinstance(prompt, str) or not prompt.strip():
+            findings.append(
+                Finding(
+                    "error",
+                    "GENERATOR_PROMPT_REQUIRED",
+                    "OpenAI edit contracts require a non-empty generator.prompt",
+                )
+            )
+        elif SECRET_VALUE_PATTERN.search(prompt):
+            findings.append(
+                Finding(
+                    "error",
+                    "SECRET_MATERIAL_FORBIDDEN",
+                    "generator.prompt appears to contain secret material",
+                )
+            )
+        forbidden = set(api_contract["forbidden_parameters"])
+        present_forbidden = sorted(forbidden.intersection(parameters))
+        if present_forbidden:
+            findings.append(
+                Finding(
+                    "error",
+                    "FORBIDDEN_GENERATOR_PARAMETER",
+                    f"Forbidden generator parameters are present: {present_forbidden}",
+                )
+            )
+        parameter_policy = api_contract["parameter_policy"]
+        allowed_parameters = set(parameter_policy["allowed"])
+        unknown_parameters = sorted(set(parameters) - allowed_parameters)
+        if unknown_parameters:
+            findings.append(
+                Finding(
+                    "error",
+                    "GENERATOR_PARAMETERS_UNKNOWN",
+                    f"Unknown generator parameters are present: {unknown_parameters}",
+                )
+            )
+        missing_parameters = sorted(set(parameter_policy["required"]) - set(parameters))
+        if missing_parameters:
+            findings.append(
+                Finding(
+                    "error",
+                    "GENERATOR_PARAMETERS_REQUIRED",
+                    f"Required generator parameters are missing: {missing_parameters}",
+                )
+            )
+        for field, allowed_values in parameter_policy["enums"].items():
+            if field in parameters and parameters[field] not in allowed_values:
+                findings.append(
+                    Finding(
+                        "error",
+                        "GENERATOR_PARAMETER_INVALID",
+                        f"generator.parameters.{field} must be one of {allowed_values}",
+                    )
+                )
+        secret_fields = sorted(_secret_field_paths(generator))
+        if secret_fields:
+            findings.append(
+                Finding(
+                    "error",
+                    "SECRET_MATERIAL_FORBIDDEN",
+                    f"Generator contracts must not contain secret fields: {secret_fields}",
+                )
+            )
+    if len(findings) != api_findings_start:
+        receipt.update(
+            {
+                "code": "GENERATOR_API_CONTRACT_BLOCKED",
+                "model": model["id"],
+                "provider": model["provider"],
+                "api_contract": api_contract,
+            }
+        )
+        return receipt
+
     receipt.update(
         {
             "status": "PASS",
@@ -891,6 +1019,7 @@ def _validate_model_capability(
             "provider": model["provider"],
             "required_capability": required_capability,
             "registry_status": model["status"],
+            "api_contract": api_contract,
             "required_next_step": "Bind a fresh live model-discovery receipt and obtain explicit generation approval",
         }
     )
@@ -1230,6 +1359,57 @@ def validate_contract(contract: dict[str, Any], workspace: Path) -> dict[str, An
         )
 
     if operation == "localized_product_patch" and target_meta is not None:
+        api_contract = model_capability.get("api_contract")
+        if isinstance(api_contract, dict):
+            width = target_meta["width"]
+            height = target_meta["height"]
+            pixel_count = width * height
+            if target_meta.get("format") != "PNG":
+                findings.append(
+                    Finding(
+                        "error",
+                        "GENERATOR_INPUT_FORMAT_INVALID",
+                        "OpenAI masked edits require a PNG input so the PNG alpha mask has the same format",
+                        str(target_path) if target_path else None,
+                    )
+                )
+            if (
+                width % 16 != 0
+                or height % 16 != 0
+                or max(width, height) > 3840
+                or max(width, height) / min(width, height) > 3
+                or not 655_360 <= pixel_count <= 8_294_400
+            ):
+                findings.append(
+                    Finding(
+                        "error",
+                        "GENERATOR_INPUT_GEOMETRY_INVALID",
+                        "GPT Image 2 input geometry must satisfy current edge, ratio, and pixel-count limits",
+                        str(target_path) if target_path else None,
+                    )
+                )
+            expected_size = f"{width}x{height}"
+            if generator.get("parameters", {}).get("size") != expected_size:
+                findings.append(
+                    Finding(
+                        "error",
+                        "GENERATOR_OUTPUT_SIZE_MISMATCH",
+                        f"generator.parameters.size must equal target geometry {expected_size}",
+                    )
+                )
+            size_bytes = target_meta.get("size_bytes")
+            if (
+                not is_strict_int(size_bytes)
+                or size_bytes >= api_contract["mask"]["max_input_bytes"]
+            ):
+                findings.append(
+                    Finding(
+                        "error",
+                        "GENERATOR_INPUT_TOO_LARGE",
+                        "OpenAI masked edit input must be less than 50MB",
+                        str(target_path) if target_path else None,
+                    )
+                )
         if generator.get("route") not in {"masked_edit", "deterministic_composite"}:
             findings.append(
                 Finding(
@@ -1617,6 +1797,18 @@ def build_edit_mask(
     return mask
 
 
+def build_openai_edit_mask(
+    contract: dict[str, Any],
+    target_size: tuple[int, int],
+) -> Image.Image:
+    """Convert the internal white-editable mask to OpenAI's alpha-zero-editable PNG."""
+    internal_mask = build_edit_mask(contract, target_size, include_feather=False)
+    provider_alpha = ImageOps.invert(internal_mask)
+    provider_mask = provider_alpha.convert("RGBA")
+    provider_mask.putalpha(provider_alpha)
+    return provider_mask
+
+
 def _content_bbox(image: Image.Image) -> tuple[int, int, int, int]:
     rgba = image.convert("RGBA")
     alpha = rgba.getchannel("A")
@@ -1717,6 +1909,15 @@ def optimize_references(
         mask = build_edit_mask(contract, target_image.size)
         mask_path = out_dir / "editable-region-mask-white-is-editable.png"
         mask.save(mask_path, format="PNG")
+        openai_mask = build_openai_edit_mask(contract, target_image.size)
+        openai_mask_path = out_dir / "openai-edit-mask-alpha-zero-is-editable.png"
+        openai_mask.save(openai_mask_path, format="PNG", optimize=True)
+        openai_mask_size_bytes = openai_mask_path.stat().st_size
+        if openai_mask_size_bytes >= 50_000_000:
+            raise GateError(
+                "OpenAI edit mask must be less than 50MB",
+                "OPENAI_MASK_TOO_LARGE",
+            )
         overlay = target_image.copy()
         red = Image.new("RGBA", target_image.size, (255, 0, 0, 0))
         red.putalpha(mask.point(lambda value: round(value * 0.42)))
@@ -1726,9 +1927,15 @@ def optimize_references(
         mask_record = {
             "mask_path": str(mask_path),
             "mask_sha256": sha256_file(mask_path),
+            "openai_mask_path": str(openai_mask_path),
+            "openai_mask_sha256": sha256_file(openai_mask_path),
+            "openai_mask_mode": openai_mask.mode,
+            "openai_mask_dimensions": list(openai_mask.size),
+            "openai_mask_size_bytes": openai_mask_size_bytes,
             "overlay_path": str(overlay_path),
             "overlay_sha256": sha256_file(overlay_path),
             "polarity": "white_is_editable_black_is_locked",
+            "openai_polarity": "alpha_zero_is_editable_alpha_255_is_locked",
         }
 
     persisted_contract, contract_file_sha = load_contract_snapshot(contract_path)
@@ -1758,6 +1965,163 @@ def _changed_bbox(changed: np.ndarray) -> list[int] | None:
         return None
     ys, xs = np.nonzero(changed)
     return [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1]
+
+
+def _secret_field_paths(value: Any, prefix: str = "") -> list[str]:
+    findings: list[str] = []
+    if isinstance(value, dict):
+        for key, nested in value.items():
+            path = f"{prefix}.{key}" if prefix else str(key)
+            if _is_secret_field_name(key):
+                findings.append(path)
+            findings.extend(_secret_field_paths(nested, path))
+    elif isinstance(value, list):
+        for index, nested in enumerate(value):
+            findings.extend(_secret_field_paths(nested, f"{prefix}[{index}]"))
+    elif isinstance(value, str) and SECRET_VALUE_PATTERN.search(value):
+        findings.append(prefix or "$")
+    return findings
+
+
+def _is_secret_field_name(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    normalized = value.strip().casefold().replace("-", "_")
+    return (
+        normalized in SECRET_FIELD_NAMES
+        or normalized.endswith("_api_key")
+        or normalized.endswith("_secret")
+    )
+
+
+def verify_generation_receipt(
+    contract: dict[str, Any],
+    workspace: Path,
+    output_sha256: str,
+    receipt_path: Path | None,
+    api_contract: dict[str, Any],
+) -> dict[str, Any]:
+    if receipt_path is None:
+        return {
+            "status": "BLOCKED",
+            "code": "GENERATION_RECEIPT_REQUIRED",
+            "wiring_allowed": False,
+        }
+    try:
+        resolved_receipt = resolve_path(str(receipt_path), workspace)
+        receipt, receipt_sha = load_contract_snapshot(resolved_receipt)
+    except GateError as exc:
+        return {
+            "status": "BLOCKED",
+            "code": "GENERATION_RECEIPT_INVALID",
+            "message": str(exc),
+            "wiring_allowed": False,
+        }
+
+    findings: list[str] = []
+    if receipt.get("schema") != GENERATION_RECEIPT_SCHEMA:
+        findings.append("GENERATION_RECEIPT_SCHEMA_INVALID")
+    required_fields = api_contract["required_receipt_fields"]
+    missing_fields = sorted(field for field in required_fields if field not in receipt)
+    if missing_fields:
+        findings.append(f"GENERATION_RECEIPT_FIELDS_MISSING:{','.join(missing_fields)}")
+    secret_paths = _secret_field_paths(receipt)
+    if secret_paths:
+        findings.append(f"SECRET_MATERIAL_FORBIDDEN:{','.join(secret_paths)}")
+
+    expected_request_images = [contract.get("target", {}).get("sha256")]
+    references = contract.get("references", [])
+    if isinstance(references, list):
+        expected_request_images.extend(
+            reference.get("sha256")
+            for reference in references
+            if isinstance(reference, dict) and reference.get("role") in PRODUCT_ROLES
+        )
+    expected_values = {
+        "contract_sha256": sha256_json(contract),
+        "provider": "openai",
+        "api_surface": api_contract["api_surface"],
+        "endpoint": api_contract["endpoint"],
+        "requested_model": api_contract["request_model"],
+        "input_sha256": contract.get("target", {}).get("sha256"),
+        "request_image_sha256s": expected_request_images,
+        "output_sha256": output_sha256,
+        "prompt_sha256": hashlib.sha256(
+            contract.get("generator", {}).get("prompt", "").encode("utf-8")
+        ).hexdigest(),
+    }
+    for field, expected in expected_values.items():
+        if receipt.get(field) != expected:
+            findings.append(f"GENERATION_RECEIPT_{field.upper()}_MISMATCH")
+    for field in ("x_request_id", "sdk_version"):
+        if not isinstance(receipt.get(field), str) or not receipt[field].strip():
+            findings.append(f"GENERATION_RECEIPT_{field.upper()}_INVALID")
+    parameters = receipt.get("request_parameters")
+    if not isinstance(parameters, dict):
+        findings.append("GENERATION_RECEIPT_PARAMETERS_INVALID")
+        parameters = {}
+    forbidden_parameters = set(api_contract["forbidden_parameters"])
+    forbidden_present = sorted(forbidden_parameters.intersection(parameters))
+    if forbidden_present:
+        findings.append(f"GENERATION_RECEIPT_FORBIDDEN_PARAMETERS:{','.join(forbidden_present)}")
+    contracted_parameters = contract.get("generator", {}).get("parameters", {})
+    if parameters != contracted_parameters:
+        findings.append("GENERATION_RECEIPT_PARAMETERS_MISMATCH")
+
+    mask_report: dict[str, Any] = {}
+    mask_path_value = receipt.get("mask_path")
+    if not isinstance(mask_path_value, str) or not mask_path_value.strip():
+        findings.append("GENERATION_RECEIPT_MASK_PATH_INVALID")
+    else:
+        try:
+            mask_path = resolve_path(mask_path_value, workspace)
+            mask, actual_mask_sha = load_image_snapshot(mask_path)
+            mask_size_bytes = mask.info.get("_fidelity_snapshot_size_bytes")
+            target_path = resolve_path(contract["target"]["path"], workspace)
+            target, target_sha = load_image_snapshot(target_path)
+            expected_mask = build_openai_edit_mask(contract, target.size)
+            mask_report = {
+                "path": str(mask_path),
+                "sha256": actual_mask_sha,
+                "mode": mask.mode,
+                "dimensions": list(mask.size),
+                "size_bytes": mask_size_bytes,
+            }
+            if receipt.get("mask_sha256") != actual_mask_sha:
+                findings.append("GENERATION_RECEIPT_MASK_HASH_MISMATCH")
+            if target_sha != contract.get("target", {}).get("sha256"):
+                findings.append("GENERATION_RECEIPT_INPUT_HASH_DRIFT")
+            if mask.format != "PNG":
+                findings.append("GENERATION_MASK_FORMAT_INVALID")
+            if "A" not in mask.getbands():
+                findings.append("GENERATION_MASK_ALPHA_REQUIRED")
+            if mask.size != target.size:
+                findings.append("GENERATION_MASK_DIMENSION_MISMATCH")
+            elif "A" in mask.getbands():
+                actual_alpha = np.asarray(mask.getchannel("A"), dtype=np.uint8)
+                expected_alpha = np.asarray(expected_mask.getchannel("A"), dtype=np.uint8)
+                if not np.array_equal(actual_alpha, expected_alpha):
+                    findings.append("GENERATION_MASK_ALPHA_POLARITY_OR_REGION_MISMATCH")
+            if not is_strict_int(mask_size_bytes):
+                findings.append("GENERATION_MASK_SIZE_UNAVAILABLE")
+            elif mask_size_bytes >= api_contract["mask"]["max_input_bytes"]:
+                findings.append("GENERATION_MASK_TOO_LARGE")
+        except (GateError, OSError, KeyError, TypeError) as exc:
+            findings.append(f"GENERATION_MASK_INVALID:{exc}")
+
+    return {
+        "status": "PASS" if not findings else "BLOCKED",
+        "code": "GENERATION_RECEIPT_PASS" if not findings else "GENERATION_RECEIPT_BLOCKED",
+        "receipt_path": str(resolved_receipt),
+        "receipt_sha256": receipt_sha,
+        "provider_execution_recorded": not findings,
+        "provider_receipt_trust_state": "SELF_DECLARED_WITH_REQUEST_ID",
+        "x_request_id": receipt.get("x_request_id"),
+        "requested_model": receipt.get("requested_model"),
+        "mask": mask_report,
+        "findings": findings,
+        "wiring_allowed": False,
+    }
 
 
 def verify_localized_output(
@@ -1792,10 +2156,25 @@ def verify_localized_output(
             "wiring_allowed": False,
         }
     if output_snapshot is None:
-        output, output_sha = load_image_snapshot(output_path, mode="RGBA")
+        output, output_sha = load_image_snapshot(output_path)
     else:
         output, output_sha = output_snapshot
-        output = output.convert("RGBA")
+    output_format = output.format
+    expected_output_format = (
+        contract.get("generator", {}).get("parameters", {}).get("output_format")
+    )
+    if isinstance(expected_output_format, str) and (
+        not isinstance(output_format, str)
+        or output_format.casefold() != expected_output_format.casefold()
+    ):
+        return {
+            "status": "BLOCKED",
+            "code": "OUTPUT_FORMAT_DRIFT",
+            "expected_output_format": expected_output_format,
+            "actual_output_format": output_format,
+            "wiring_allowed": False,
+        }
+    output = output.convert("RGBA")
     if output.size != baseline.size:
         return {
             "status": "BLOCKED",
@@ -2316,6 +2695,7 @@ def main() -> int:
     add_common(verify_parser)
     verify_parser.add_argument("--output", type=Path, required=True)
     verify_parser.add_argument("--review", type=Path)
+    verify_parser.add_argument("--generation-receipt", type=Path)
 
     args = parser.parse_args()
     workspace = args.workspace.expanduser().resolve()
@@ -2337,6 +2717,7 @@ def main() -> int:
         for input_path in (
             getattr(args, "output", None),
             getattr(args, "review", None),
+            getattr(args, "generation_receipt", None),
         ):
             if input_path is None:
                 continue
@@ -2403,29 +2784,51 @@ def main() -> int:
                     if pixel_result["status"] != "PASS":
                         result = pixel_result
                     else:
-                        semantic_result = verify_semantic_review(
-                            contract,
-                            workspace,
-                            output_path,
-                            args.review.expanduser() if args.review else None,
-                            pixel_result["output_sha256"],
-                        )
-                        if semantic_result["status"] != "PASS":
+                        api_contract = preflight.get("model_capability", {}).get("api_contract")
+                        generation_result = None
+                        if isinstance(api_contract, dict):
+                            generation_result = verify_generation_receipt(
+                                contract,
+                                workspace,
+                                pixel_result["output_sha256"],
+                                (
+                                    args.generation_receipt.expanduser()
+                                    if args.generation_receipt
+                                    else None
+                                ),
+                                api_contract,
+                            )
+                        if generation_result is not None and generation_result["status"] != "PASS":
                             result = {
-                                **semantic_result,
+                                **generation_result,
                                 "pixel_verification": pixel_result,
                             }
                         else:
-                            result = {
-                                "status": "PASS",
-                                "code": "PASS_PIXEL_AND_SEMANTIC_REVIEW",
-                                "candidate_sha256": semantic_result["candidate_sha256"],
-                                "pixel_verification": pixel_result,
-                                "semantic_review": semantic_result,
-                                "promotion_state": "FOUNDER_REVIEW_REQUIRED",
-                                "wiring_allowed": False,
-                                "deployment_allowed": False,
-                            }
+                            semantic_result = verify_semantic_review(
+                                contract,
+                                workspace,
+                                output_path,
+                                args.review.expanduser() if args.review else None,
+                                pixel_result["output_sha256"],
+                            )
+                            if semantic_result["status"] != "PASS":
+                                result = {
+                                    **semantic_result,
+                                    "pixel_verification": pixel_result,
+                                    "generation_receipt": generation_result,
+                                }
+                            else:
+                                result = {
+                                    "status": "PASS",
+                                    "code": "PASS_PIXEL_GENERATION_AND_SEMANTIC_REVIEW",
+                                    "candidate_sha256": semantic_result["candidate_sha256"],
+                                    "pixel_verification": pixel_result,
+                                    "generation_receipt": generation_result,
+                                    "semantic_review": semantic_result,
+                                    "promotion_state": "FOUNDER_REVIEW_REQUIRED",
+                                    "wiring_allowed": False,
+                                    "deployment_allowed": False,
+                                }
                 elif contract["operation"] == "protected_scene_composite":
                     result = verify_protected_output(
                         contract,

@@ -580,6 +580,7 @@ jq -e '
   (.interface.capabilities | index("Exact Product Fidelity Gates") != null)
 ' "${plugin_root}/.codex-plugin/plugin.json" >/dev/null
 jq -e '.hooks.SessionStart | length > 0' "${plugin_root}/hooks/hooks.json" >/dev/null
+bash "${plugin_root}/scripts/check-formatting.sh" --check
 bash -n "${plugin_root}/hooks/session-start.sh"
 bash -n "${plugin_root}/scripts/preflight.sh"
 bash -n "${plugin_root}/scripts/report.sh"
@@ -603,7 +604,18 @@ test -s "${product_fidelity_root}/references/native-scene-integration.md" || {
   printf 'FAIL: embedded native-scene integration contract is missing\n' >&2
   exit 1
 }
-jq -e '.schema == "product-fidelity-model-registry.v1"' \
+jq -e '
+  .schema == "product-fidelity-model-registry.v2" and
+  any(.models[];
+    .id == "openai-gpt-image-2-edit" and
+    .api_contract.api_surface == "images" and
+    .api_contract.endpoint == "/v1/images/edits" and
+    .api_contract.request_model == "gpt-image-2-2026-04-21" and
+    (.api_contract.forbidden_parameters | index("input_fidelity") != null) and
+    (.api_contract.parameter_policy.required | index("size") != null) and
+    .api_contract.mask.alpha_zero_is_editable == true and
+    .api_contract.mask.same_dimensions_as_input == true)
+' \
   "${product_fidelity_root}/references/model-capability-registry.json" >/dev/null
 python3 -m py_compile \
   "${product_fidelity_root}/scripts/fidelity_gate.py" \

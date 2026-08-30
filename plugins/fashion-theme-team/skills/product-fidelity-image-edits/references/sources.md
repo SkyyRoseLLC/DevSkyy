@@ -1,8 +1,10 @@
 # Capability sources
 
-Registry review date: 2026-08-24. Re-check first-party documentation before changing a model ID.
+Registry review date: 2026-08-30. Re-check first-party documentation before changing a model ID.
 
 - OpenAI image generation and masked edits: https://developers.openai.com/api/docs/guides/image-generation
+- OpenAI GPT Image 2 model and snapshot: https://developers.openai.com/api/docs/models/gpt-image-2
+- OpenAI production best practices: https://developers.openai.com/api/docs/guides/production-best-practices
 - OpenAI video API: https://platform.openai.com/docs/api-reference/videos
 - Google image generation and deprecations: https://ai.google.dev/gemini-api/docs/image-generation and https://ai.google.dev/gemini-api/docs/deprecations
 - Google video generation and Python SDK: https://ai.google.dev/gemini-api/docs/video and https://github.com/googleapis/python-genai
