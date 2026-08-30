@@ -6,7 +6,7 @@
   "global_constraints": {
     "verified_models": "PRESERVE_EXACTLY",
     "garment_redraw": "PROHIBITED",
-    "scene_change_only": true,
+    "signature_scene_change_only": true,
     "promotion": "NOT_AUTHORIZED_BY_THIS_RECORD",
     "wiring": "NOT_AUTHORIZED_BY_THIS_RECORD",
     "deployment": "NOT_AUTHORIZED_BY_THIS_RECORD"
@@ -33,11 +33,16 @@
         "path": "renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
         "sha256": "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600"
       },
+      "protected_hero_element": {
+        "path": "renders/scroll-world/SIG-COMMERCE-1/protected-hero-element/signature-skyyrose-font-sculpture-protected-v1.png",
+        "sha256": "e259c246a320b8220044da915c3b6fa89ecbbe7ab4a74eb80bafebe668d0e274",
+        "placement": "Integrate as a separate dimensional architectural statue; preserve the exact protected silhouette, gold palette, proportions, and letterforms."
+      },
       "protected_model_input": {
         "path": "renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
         "sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a"
       },
-      "state": "READY_FOR_ENVIRONMENT_REBUILD_AROUND_PROTECTED_SOURCE"
+      "state": "AWAITING_NATIVE_INTEGRATION_MEASUREMENTS"
     },
     {
       "scene_id": "SIG-COMMERCE-2",
@@ -67,17 +72,26 @@
         "path": "renders/scroll-world/SIG-COMMERCE-2/scene-authority/sig-3-graphic-monument-environment-plate-v3.png",
         "sha256": "ce1232d5b470a25a160fdde4f559b87652782d9f19b69fe635313944cfedc5fb"
       },
+      "protected_hero_element": {
+        "path": "renders/scroll-world/SIG-COMMERCE-2/protected-hero-element/signature-sr-rose-graphic-founder-supplied-v1.png",
+        "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc",
+        "placement": "Integrate as a separate rose-gold environmental monument; preserve the exact supplied silhouette, palette, letterform, flourish, leaves, and internal rose."
+      },
       "protected_model_inputs": [
         {
           "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-013-sg-014-mint-set-look-protected-v2.png",
           "sha256": "eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16"
-        },
-        {
-          "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-006-hoodie-look-protected-v1.png",
-          "sha256": "7e6a0c73f442859891f7b612de2e872dcaa4ec1b8f14ece290541f839a549740"
         }
       ],
-      "state": "READY_FOR_ENVIRONMENT_REBUILD_AROUND_PROTECTED_SOURCES"
+      "rejected_model_inputs": [
+        {
+          "path": "renders/scroll-world/SIG-COMMERCE-2/protected-input/sg-006-hoodie-look-protected-v1.png",
+          "sha256": "7e6a0c73f442859891f7b612de2e872dcaa4ec1b8f14ece290541f839a549740",
+          "decision": "FOUNDER_REJECTED__DO_NOT_USE"
+        }
+      ],
+      "missing_required_source": "Correct founder-supplied SG-006 wearer/model authority is still required for the mint-and-lavender couple.",
+      "state": "BLOCKED_PENDING_CORRECT_FEMALE_MODEL_SOURCE"
     },
     {
       "scene_id": "SIG-COMMERCE-3",
@@ -130,19 +144,42 @@
           "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09"
         }
       ],
-      "state": "READY_FOR_SINGLE_ENSEMBLE_ENVIRONMENT_REBUILD"
+      "required_product_corrections": [
+        "sg-001 Bay Bridge Shorts must preserve the exact daytime Bay Bridge photographic print, blue waistband, white drawstring, and blue rose placement.",
+        "sg-003 Stay Golden Shorts must preserve the exact Golden Gate night print, purple waistband, white drawstring, and purple rose placement."
+      ],
+      "state": "BLOCKED_PENDING_SHORTS_CORRECTION_AND_SINGLE_ENSEMBLE_INTEGRATION"
     }
   ],
   "black_rose_bounded_repair": {
     "scene_id": "BR-COMMERCE-2",
-    "founder_direction": "Preserve the existing promising scene and perform only a bounded logo patch edit.",
+    "founder_direction": "Preserve the existing promising scene, correct the shorts and garment logos with bounded patches, and add the exact founder-supplied woman wearing the separate long BR-004 hoodie as a hoodie dress.",
+    "edit_scope": "MASKED_GARMENT_PIXELS_AND_EXACT_FOUNDER_MODEL_INSERTION_ONLY",
     "selected_base": {
       "path": "renders/scroll-world/BR-COMMERCE-2/founder-selected-base/br-commerce-2-native-preview-v1.png",
       "sha256": "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925"
     },
     "product_bindings": [
       "br-005",
-      "br-007"
+      "br-007",
+      "br-004"
+    ],
+    "cast": [
+      {
+        "wearer": "man",
+        "look_id": "br-signature-hoodie-shorts",
+        "wears": [
+          "br-005",
+          "br-007"
+        ]
+      },
+      {
+        "wearer": "woman",
+        "look_id": "br-long-hoodie-dress",
+        "wears": [
+          "br-004"
+        ]
+      }
     ],
     "canonical_patch_authorities": [
       {
@@ -159,11 +196,19 @@
         "sku": "br-007",
         "path": "assets/products/references/br-007-shorts-techflat.jpeg",
         "sha256": "7e2d14d55e12e4b1a03c3de45f4317071f28d5c981594852ec7a38e8c4eb8c6f"
+      },
+      {
+        "sku": "br-004",
+        "role": "physical long-hoodie construction and silhouette authority",
+        "path": "assets/3d-models/black-rose/Womens Black Rose Hooded Dress.jpeg",
+        "sha256": "23e4a5107d1617110c8d7fadb83b6bf67f7f8eb462ca70fdc30d5fdcee1b5882"
       }
     ],
     "allowed_changes": [
-      "replace incorrect garment logo pixels inside explicit masks",
-      "edge blend limited to the patched logo boundaries"
+      "correct BR-007 shorts construction and logo pixels inside explicit masks",
+      "replace incorrect BR-005 garment logo pixels inside explicit masks",
+      "insert the exact founder-supplied BR-004 woman model into the open scene area",
+      "edge blend limited to the patch masks and the inserted model integration envelope"
     ],
     "prohibited_changes": [
       "model identity",
@@ -174,7 +219,13 @@
       "lighting outside the patch masks",
       "new or duplicated logos"
     ],
+    "required_model_source": "Founder is supplying the exact BR-004 woman model; no generated or substitute woman is allowed.",
+    "required_mask_receipts": [
+      "BR-007 shorts correction mask path and sha256",
+      "BR-005 logo correction mask path and sha256",
+      "BR-004 woman integration envelope path and sha256"
+    ],
     "rejected_patch": "The prior patch that added an extra arm logo is not authority and must not be reused.",
-    "state": "READY_FOR_MASK_BOUNDED_LOGO_PATCH"
+    "state": "BLOCKED_PENDING_MASKS_AND_FOUNDER_SUPPLIED_BR004_WOMAN_MODEL"
   }
 }

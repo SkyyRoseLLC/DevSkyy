@@ -85,7 +85,8 @@
       },
       "SIG-COMMERCE-2": {
         "products": ["sg-013", "sg-014", "sg-006"],
-        "scene": "protected Signature SR-and-rose graphic monument"
+        "scene": "protected Signature SR-and-rose graphic monument",
+        "source_exception": "the previously bound mint female model was founder-rejected and requires the correct replacement"
       },
       "SIG-COMMERCE-3": {
         "products": ["sg-001", "sg-005", "sg-003", "sg-002", "sg-015"],
@@ -95,7 +96,7 @@
       }
     },
     "black_rose_assignment": {
-      "BR-COMMERCE-2": "preserve selected base and apply only mask-bounded canonical logo patches"
+      "BR-COMMERCE-2": "preserve selected base; correct BR-007 shorts and BR-005 logos with bounded masks; add the exact founder-supplied BR-004 woman in the long hoodie-dress"
     }
   },
   "phases": [
@@ -112,8 +113,8 @@
         "Four product-scene visuals are founder-approved: BR-COMMERCE-1, BR-COMMERCE-3, LH-COMMERCE-1, and LH-COMMERCE-3.",
         "All four approved product-scene visuals are hash-verified locally; BR-COMMERCE-1 and LH-COMMERCE-3 were recovered byte-identically from their original provider results.",
         "Five product-scene visuals remain unapproved: BR-COMMERCE-2, LH-COMMERCE-2, SIG-COMMERCE-1, SIG-COMMERCE-2, and SIG-COMMERCE-3.",
-        "Signature model acquisition is resolved by founder verification: SIG-COMMERCE-1 uses the Sherpa and Beanie look with the font statue; SIG-COMMERCE-2 uses the mint and lavender couple with the graphic monument; SIG-COMMERCE-3 places all five pre-order SKUs together in one Golden Gate scene.",
-        "BR-COMMERCE-2 is a bounded logo-patch repair of the selected base, not a scene or model rebuild.",
+        "Signature routing is founder-locked: SIG-COMMERCE-1 uses the Sherpa and Beanie look with the font statue; SIG-COMMERCE-2 uses the mint and lavender couple with the graphic monument but its previously bound female model is rejected; SIG-COMMERCE-3 places all five pre-order SKUs together in one Golden Gate scene and requires exact SG-001/SG-003 shorts corrections.",
+        "BR-COMMERCE-2 preserves its selected base, corrects BR-007 shorts and BR-005 logos within explicit masks, and adds the exact founder-supplied BR-004 long-hoodie woman; this is not a full scene rebuild.",
         "Historical four-scene statue set classified as rejected legacy scope, not part of the commerce count."
       ],
       "blockers": [],
@@ -135,13 +136,15 @@
       ],
       "blockers": [
         "BR-COMMERCE-2 and LH-COMMERCE-2 retain unresolved bounded product-fidelity work.",
-        "BR-COMMERCE-2 requires mask-bounded canonical logo patches; its selected base scene, model, pose, garment silhouette, and environment must remain unchanged.",
+        "BR-COMMERCE-2 requires mask-bounded shorts/logo corrections plus the exact founder-supplied BR-004 long-hoodie woman model; its selected base scene, existing male model, pose, garment silhouette, and environment must remain unchanged outside those envelopes.",
         "LH-COMMERCE-2 still requires a separately authorized current product-source resolution.",
-        "The three Signature scenes no longer have a model-authority blocker; they are environment-integration work around founder-verified protected sources.",
+        "SIG-COMMERCE-1 is environment integration around a protected model and exact protected font statue.",
+        "SIG-COMMERCE-2 is blocked until the correct founder-supplied female wearer replaces the rejected mint-hoodie model.",
+        "SIG-COMMERCE-3 is blocked until the Bay Bridge and Stay Golden shorts are corrected and all five pre-order SKUs are integrated into one Golden Gate scene.",
         "Fourteen of seventeen candidate dossier hashes are stale.",
         "Responsive safe-zone and optical measurements are not current candidate-bound evidence."
       ],
-      "next_authority": "product-fidelity image editor for BR-COMMERCE-2 and SIG-COMMERCE-1 through SIG-COMMERCE-3; separate source-authority resolution for LH-COMMERCE-2"
+      "next_authority": "founder-supplied BR-004 woman model and SIG-COMMERCE-2 replacement wearer; then product-fidelity image editor; separate source-authority resolution for LH-COMMERCE-2"
     },
     {
       "id": "SCENE-GENERATION-3",
@@ -158,7 +161,9 @@
         "registered scene-generation adapter live validation",
         "current source-authority receipts for LH-COMMERCE-2",
         "mask receipt and pixel-diff verification for BR-COMMERCE-2",
-        "native-integration verification for each protected Signature model layer"
+        "correct replacement wearer authority for SIG-COMMERCE-2",
+        "exact shorts-correction receipts for SIG-COMMERCE-3",
+        "native-integration verification for each protected Signature model layer and protected monument"
       ],
       "next_authority": "independent visual reviewer"
     },
