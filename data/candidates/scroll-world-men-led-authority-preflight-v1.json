@@ -1,0 +1,119 @@
+{
+  "schema": "skyyrose.men-led-on-model-authority-preflight.v1",
+  "status": "AUTHORITY_CANDIDATES_GENERATED__SCENE_INTEGRATION_BLOCKED_PENDING_MATTES_AND_BACKGROUND_BINDING",
+  "source_freshness_lock": {
+    "path": "data/product-sot.json",
+    "sha256": "bdb03c036f37c3928084194a4707cf83d5318cee6a71590dc462e3c47da51a57"
+  },
+  "scope": "Six source-safe men-led neutral-studio authority candidates for the current V2 Scroll World cast. This is not scene generation, scene approval, runtime wiring, or deployment authorization.",
+  "global_requirements": [
+    "Full-body men-led neutral-studio authority image, front three-quarter pose, physically worn product, natural body contact, and no scene background.",
+    "Match the confident contemporary Oakland energy of existing approved site photography; do not copy a source-stage candidate or use a rejected candidate as an input.",
+    "No catalog-name text, product-name text, invented patches, labels, logos, embroidery, prints, construction, or additional products.",
+    "Every output remains quarantined pending independent product-fidelity visual QA and founder review before it can be an authority or scene input."
+  ],
+  "candidates": [
+    {
+      "candidate_id": "BR-004-MEN-LED-AUTHORITY-01",
+      "scene_reference_id": null,
+      "skus": ["br-004"],
+      "physical_references": [
+        {"path": "assets/products/references/br-004-hoodie-real-front.jpeg", "sha256": "bf34e9283fe404e14a0d0ce4cfc3aeb5e51689de695685b3365662335e095699", "view": "front"}
+      ],
+      "detail_lock": [
+        "Regular BLACK Rose Hoodie only: longer black pullover hoodie on men, centered monochrome rose/cloud embroidery above kangaroo pouch, tonal black drawstrings, clean side body and sleeves.",
+        "Never use BR-005 Signature Edition construction: no side-body embroidery, right-chest silicone cutout, sublimated-rose hood lining, white drawstrings, text, label, or circular patch."
+      ],
+      "scene_route_after_review": "No scene route until a selected Black Rose scene reference and source/matte gates are clear."
+    },
+    {
+      "candidate_id": "LH-003-MEN-LED-AUTHORITY-01",
+      "scene_reference_id": "LH-COMMERCE-2",
+      "skus": ["lh-003"],
+      "physical_references": [
+        {"path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg", "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f", "view": "front"},
+        {"path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg", "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c", "view": "back"}
+      ],
+      "detail_lock": [
+        "White mesh shorts with complete red-rose, green-stem, and white-cloud sublimation; black waistband; black vertical pocket welts; sculpted black mesh side panels; black hem binding with white/red piping.",
+        "Complete readable Love Hurts script and exact side-panel embroidery; no exterior drawstring or invented top."
+      ],
+      "scene_route_after_review": "LH-COMMERCE-2 The Fractured Chamber only."
+    },
+    {
+      "candidate_id": "LH-005-MEN-LED-AUTHORITY-01",
+      "scene_reference_id": "LH-COMMERCE-3",
+      "skus": ["lh-005"],
+      "physical_references": [
+        {"path": "assets/products/references/lh-005-fannie-photo.jpeg", "sha256": "408608ca8b0eec1a319f5dedca9f87bae1b1ffe5558a46e15f001abf70940181", "view": "front"}
+      ],
+      "detail_lock": [
+        "Small rectangular black pebbled PU/faux-leather Fannie fanny pack/cross-body sling; horizontal front and rear zipper pockets, black nylon webbing, black buckle, black hardware, and natural strap tension/body contact.",
+        "Preserve the exact white FANNIE embroidery and small red rose accent at the photographed scale and placement; not a purse, backpack, tote, or generic belt bag."
+      ],
+      "scene_route_after_review": "LH-COMMERCE-3 The Rose Vitrine only."
+    },
+    {
+      "candidate_id": "SG-009-SG-007-MEN-LED-AUTHORITY-01",
+      "scene_reference_id": "SIG-COMMERCE-1",
+      "skus": ["sg-009", "sg-007"],
+      "physical_references": [
+        {"path": "assets/products/source-photos/signature/sg-009-sherpa-jacket-open.jpeg", "sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb", "view": "front_open"},
+        {"path": "assets/products/source-photos/signature/sg-007-signature-beanie-black.png", "sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43", "view": "front"}
+      ],
+      "detail_lock": [
+        "SG-009 smooth black nylon/windbreaker exterior, cream sherpa visible at the placket, cuffs, hem, and tall funnel collar; full gold-toned zipper; lower patch pockets; exact wearer-left chest red rose/cloud embroidery; lower hem tab; no hood or exterior sherpa.",
+        "SG-007 black rib-knit cuffed beanie with small slightly wearer-left molded silicone rose-logo patch; never direct embroidery or generic woven square."
+      ],
+      "scene_route_after_review": "SIG-COMMERCE-1 The Oakland Atelier only."
+    },
+    {
+      "candidate_id": "SG-006-MEN-LED-AUTHORITY-01",
+      "scene_reference_id": "SIG-COMMERCE-2",
+      "skus": ["sg-006"],
+      "physical_references": [
+        {"path": "assets/products/source-photos/signature/sg-006-mint-lavender-hoodie-front-authentic.png", "sha256": "0f47125187736a1089a42fa5f2f92987cbae5ac00c77bd41225697160afac4ea", "view": "front"}
+      ],
+      "detail_lock": [
+        "Solid muted mint/seafoam pullover hoodie on a man, ordinary long-hoodie proportion, white drawstrings, mint kangaroo pocket, large centered lavender rose chest composition, and plain mint back.",
+        "No invented lower garment, chevrons, color blocks, labels, extra logo, or product-name text."
+      ],
+      "scene_route_after_review": "SIG-COMMERCE-2 Oakland Bay Mist only."
+    },
+    {
+      "candidate_id": "SG-013-SG-014-MEN-LED-AUTHORITY-01",
+      "scene_reference_id": "SIG-COMMERCE-2",
+      "skus": ["sg-013", "sg-014"],
+      "physical_references": [
+        {"path": "assets/products/source-photos/signature/sg-013-mint-lavender-crewneck-front.jpeg", "sha256": "ad26b94284690685af52307d8bdc72d7187e9177586282275279b577179396f5", "view": "front"},
+        {"path": "assets/products/source-photos/signature/sg-014-mint-lavender-sweatpants-front.jpeg", "sha256": "1cc5ced83992c4c11ca39b36613f1bcddc44fd02c2b6ba9e648f591ba947eae4", "view": "front"}
+      ],
+      "detail_lock": [
+        "SG-013 solid mint crewneck: no hood, zipper, chevrons, or color blocks; large centered lavender rose/cloud embroidery and small back-neck embroidery.",
+        "SG-014 solid mint tapered sweatpants with small lavender embroidered rose/cloud on the wearer-left thigh; preserve the pair as a single exact look."
+      ],
+      "scene_route_after_review": "SIG-COMMERCE-2 Oakland Bay Mist only."
+    }
+  ],
+  "candidate_generation_results": [
+    {"candidate_id": "BR-004-MEN-LED-AUTHORITY-01", "output_path": "renders/scroll-world/BR-004/authority-stage/BR-004-men-led-on-model-authority-candidate.png", "sha256": "3eec1c31621700349b01f63ae0f5d2bec829bd923765ab2826e484c0b7a2aa2a", "dimensions": [1023, 1537], "state": "CANDIDATE_QUARANTINED_PENDING_INDEPENDENT_VISUAL_QA_AND_FOUNDER_REVIEW"},
+    {"candidate_id": "LH-003-MEN-LED-AUTHORITY-01", "output_path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/LH-003-men-led-on-model-authority-candidate.png", "sha256": "17840a8cf49919f150722125eed826327a369be5dbd22b53c066ba62459d5dfe", "dimensions": [936, 1681], "state": "CANDIDATE_QUARANTINED_PENDING_INDEPENDENT_VISUAL_QA_AND_FOUNDER_REVIEW"},
+    {"candidate_id": "LH-005-MEN-LED-AUTHORITY-01", "output_path": "renders/scroll-world/LH-COMMERCE-3/authority-stage/LH-005-men-led-on-model-authority-candidate.png", "sha256": "e228d3316a056b380643d99dc2ca6cfcc7af1c0b2ad3c9756d8328274fb5c6f6", "dimensions": [1024, 1536], "state": "CANDIDATE_QUARANTINED_PENDING_INDEPENDENT_VISUAL_QA_AND_FOUNDER_REVIEW"},
+    {"candidate_id": "SG-009-SG-007-MEN-LED-AUTHORITY-01", "output_path": "renders/scroll-world/SIG-COMMERCE-1/authority-stage/SG-009-SG-007-men-led-on-model-authority-candidate-rejected-beanie-label-drift.png", "sha256": "c5400a676a6730307ddfb7e46f0ecddd6263a5c7ee526b3c3719baa150c78eda", "state": "REJECTED_QUARANTINED_BEANIE_LABEL_DRIFT_AND_SOURCE_CONTRACT_CONFLICT", "do_not_reuse_as_source": true},
+    {"candidate_id": "SG-006-MEN-LED-AUTHORITY-01", "output_path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/SG-006-men-led-on-model-authority-candidate.png", "sha256": "17857b962851648a2fa8780d025e5aaba11391e8ba4bfb684a9ee2e2b07097e4", "dimensions": [1023, 1537], "state": "CANDIDATE_QUARANTINED_PENDING_INDEPENDENT_VISUAL_QA_AND_FOUNDER_REVIEW"},
+    {"candidate_id": "SG-013-SG-014-MEN-LED-AUTHORITY-01", "output_path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/SG-013-SG-014-men-led-on-model-authority-candidate.png", "sha256": "720eb5c8eb072bd166e14754e72cf69393226eb0caf14e78e02cbcc0832f3865", "dimensions": [1023, 1537], "state": "CANDIDATE_QUARANTINED_PENDING_INDEPENDENT_VISUAL_QA_AND_FOUNDER_REVIEW"}
+  ],
+  "scene_background_audit": [
+    {"path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-black-rose-moon-court-gpt2.webp", "sha256": "64a3622a65a3e77dfc4e51bb67cee7a04bbca90264a8fc5828e1762366d8cb5b", "finding": "Does not match the selected Black Rose Type Foundry or Open Waterfront references; do not use as a substitute."},
+    {"path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-love-hurts-cathedral.webp", "sha256": "c8b2aeb4876ae2bb493bd92e5a80d38f2923014feca1391f38e048178e609604", "finding": "Has visible generated text/artifact in-frame; block until a clean founder-approved source plate is supplied."},
+    {"path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-love-hurts-cracked-rose-gpt2.webp", "sha256": "3f4a97c51d4ce933c4c9d2fa029596b34542650d4b5842d18bbc45a6480ce709", "finding": "Matches the Fractured Chamber language but cannot receive LH-003 until an approved source-stage authority and protected garment matte exist."},
+    {"path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-signature-oakland-atelier-gpt2.webp", "sha256": "90d56210e27aa988fe88a7b11f3985663c4708d1b3d489f1d631298f9a7c50ca", "finding": "Matches The Oakland Atelier only; its exact SG-009/SG-007 cast is blocked by the current beanie source-contract conflict."}
+  ],
+  "blocking_findings": [
+    "SG_007_PHYSICAL_BEANIE_REFERENCE_SHOWS_A_LARGE_RECTANGULAR_ROSE_CLOUD_PATCH_WHILE_THE_CURRENT_SCENE_CONTRACT_SAYS_SMALL_MOLDED_PATCH; NO_REROLL_OR_SCENE_USE_UNTIL_ROOT_SOT_AND_CONTRACT_ARE_RECONCILED.",
+    "NO_NEW_MEN_LED_AUTHORITY_OUTPUT_HAS_A_PROTECTED_GARMENT_OR_ACCESSORY_MATTE; DO_NOT_GENERATE_A_NATIVE_SCENE_AROUND_IT.",
+    "THE_AVAILABLE_LOVE_HURTS_CATHEDRAL_BACKGROUND_HAS_VISIBLE_GENERATED_TEXT_ARTIFACTS; DO_NOT_USE_IT_AS_A_SCENE_PLATE.",
+    "THE_SELECTED_BLACK_ROSE_AND_SIGNATURE_SCENE_ROUTES_LACK_A_MATCHING_CLEAN_BACKGROUND_AUTHORITY_FOR_THE_NEW_CASTS."
+  ],
+  "scene_integration_rule": "Do not call a scene provider from this preflight. After visual QA and founder review of a men-led authority candidate, create a separate native scene contract that names its exact scene_reference_id and uses only a founder-approved protected scene authority from the root scene-reference index."
+}

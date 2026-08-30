@@ -12,7 +12,7 @@ Full path: `/Users/theceo/DevSkyy/.wolf/cerebrum.md`
 
 ### Source of Truth (lines ~1–15)
 
-- Canonical product data: `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+- Canonical product data: `data/skyyrose-catalog.csv`
 - Retired files (do not resurrect): `catalog.yaml`, `manifest.json`, `generate_catalog.py`, `sync_manifest_from_catalog.py` (all 2026-04-19), plus `skyyrose/assets/data/prompts/overrides/` (2026-04-25, hallucination source)
 - `[wolf: cerebrum.md:1]`
 

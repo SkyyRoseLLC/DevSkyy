@@ -311,6 +311,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--yes", action="store_true", help="confirm the paid run (generate)")
     args = ap.parse_args(argv)
 
+    if args.mode == "generate":
+        _log.error(
+            "ABORT: the legacy generic lookbook generator is disabled for V2 Scroll World work. "
+            "Use the Fashion Theme Team native_collection_scene route with an exact scene ID, "
+            "CTA cast, protected source inputs, and paid-scene authorization."
+        )
+        return 4
+
     # Anchor --out inside the canonical output dir — a traversal --out must not
     # let a write land outside renders/.
     out_dir = Path(args.out).resolve()
@@ -329,22 +337,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     _log.info("%s", cost.format_manifest(manifest))
-    if args.mode == "plan":
-        return 0
-
-    try:
-        cost.enforce_cap(manifest)
-    except cost.CostCapExceeded as exc:
-        _log.error("ABORT: %s", exc)
-        return 2
-    if not args.yes:
-        _log.error("\nRefusing to spend without --yes (STOP-AND-SHOW gate).")
-        return 3
-    if not config.api_key_present():
-        _log.error("ABORT: %s not set (add to .env.hf)", config.API_KEY_ENV)
-        return 2
-
-    return _run_batch(args.sku, args.scene, args.collection, out_dir)
+    return 0
 
 
 if __name__ == "__main__":

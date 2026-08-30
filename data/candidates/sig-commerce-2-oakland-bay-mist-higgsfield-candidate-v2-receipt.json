@@ -1,0 +1,37 @@
+{
+  "schema": "skyyrose.native-scene-candidate-receipt.v1",
+  "scene_reference_id": "SIG-COMMERCE-2",
+  "story_role": "Oakland Bay Mist",
+  "candidate_state": "LOOKBOOK_ONLY_CANDIDATE__REJECTED_AS_NATIVE_SCROLL_WORLD_SCENE",
+  "output": {
+    "path": "renders/scroll-world/SIG-COMMERCE-2/scene-candidate/SIG-COMMERCE-2-oakland-bay-mist-higgsfield-candidate-v2.png",
+    "sha256": "8875d3b20e93bf3d22426e9e307561017d245b5a6c763903760895c7cbf28322",
+    "dimensions": [1792, 2400],
+    "provider_job_id": "6dabdb1b-d970-4c92-836c-f751b47b07fa",
+    "provider_model_requested": "nano_banana_pro",
+    "provider_model_returned": "nano_banana_2"
+  },
+  "verified_inputs": [
+    {"role": "man_sg006_authority", "path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/SG-006-men-led-on-model-authority-candidate.png", "sha256": "17857b962851648a2fa8780d025e5aaba11391e8ba4bfb684a9ee2e2b07097e4"},
+    {"role": "woman_sg013_sg014_authority", "path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/SIG-013-014-women-led-on-model-authority-candidate.png", "sha256": "187714264faf103a7a8efda1c0763c593161f661fa4c5c621d229ab243d91735"},
+    {"role": "sg006_physical_front", "path": "assets/products/source-photos/signature/sg-006-mint-lavender-hoodie-front-authentic.png", "sha256": "0f47125187736a1089a42fa5f2f92987cbae5ac00c77bd41225697160afac4ea"},
+    {"role": "sg013_physical_front", "path": "assets/products/source-photos/signature/sg-013-mint-lavender-crewneck-front.jpeg", "sha256": "ad26b94284690685af52307d8bdc72d7187e9177586282275279b577179396f5"},
+    {"role": "sg014_physical_front", "path": "assets/products/source-photos/signature/sg-014-mint-lavender-sweatpants-front.jpeg", "sha256": "1cc5ced83992c4c11ca39b36613f1bcddc44fd02c2b6ba9e648f591ba947eae4"},
+    {"role": "exact_oakland_bay_bridge_world_authority", "path": "skyyrose/assets/scenes/signature/signature-oakland-waterfront-bay-bridge-day/signature-oakland-waterfront-bay-bridge-day-v2.png", "sha256": "d3a7aab2a92e4201a21d44bc592ad357dda93480c9578e7fbcc07a8d421c6e15"}
+  ],
+  "manual_visual_observations": {
+    "exact_bay_bridge_visible": true,
+    "golden_gate_or_generic_bridge_detected": false,
+    "man_and_woman_share_pier_floor_plane_and_eyeline": true,
+    "mint_blue_signature_story_present": true,
+    "review_status": "FOUNDER_CLASSIFIED_AS_LOOKBOOK_ONLY",
+    "scroll_world_rejection_reason": "Although product and Bay Bridge fidelity are strong, the static paired pier portrait reads as a disconnected editorial/lookbook photograph rather than the website's continuous forward Scroll World journey and its required hero-derived spatial choreography.",
+    "allowed_use": "LOOKBOOK_CANDIDATE_ONLY",
+    "prohibited_use": ["native Scroll World scene", "Scroll World continuity input", "runtime scene asset", "scene provider reference"]
+  },
+  "promotion": {
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false,
+    "required_before_promotion": ["independent native visual QA", "founder approval record", "hash-bound runtime promotion receipt"]
+  }
+}

@@ -1,12 +1,13 @@
 """Logo Registry — Canonical loader for SkyyRose logo metadata + path resolution.
 
 Reads the canonical registry at:
-  wordpress-theme/skyyrose-flagship/data/logo-registry.json
+  data/logo-registry.json
 
 The registry has two categories of logo:
 
-1. **Centralized logos** — single file, lives under `assets/images/logos/`.
-   Entry has a `file` field naming the canonical filename. Examples:
+1. **Centralized logos** — a root-owned canonical source declared by
+   `source_path`, or a legacy distribution under `assets/images/logos/`
+   declared by `file`. Examples:
    `sr-monogram-rose-gold`, `black-roses-cloud-cluster`, `heart-rose-composite`.
 
 2. **Per-SKU co-located patches** — same graphic copied into each using SKU's
@@ -25,8 +26,10 @@ Typical usage:
     from skyyrose.elite_studio.logo_registry import LogoRegistry
 
     reg = LogoRegistry.load()
-    # Centralized logo (any SKU resolution works):
-    sr_path = reg.image_path(sku="br-005", logo_id="sr-monogram-rose-gold")
+    # Centralized site-wide logo (SKU is irrelevant for this lookup):
+    sr_path = reg.image_path(sku="sg-001", logo_id="sr-monogram-rose-gold")
+    # Root-owned exact product-art authority:
+    br005_mark = reg.image_path(sku="br-005", logo_id="three-rose-cluster")
     # Per-SKU co-located patch:
     nfl_path = reg.image_path(sku="br-008", logo_id="nfl-authentic-collection-card")
     # Placements for a SKU:
@@ -42,7 +45,7 @@ from pathlib import Path
 from typing import Any
 
 from skyyrose.core.catalog_loader import CATALOG_CSV
-from skyyrose.core.paths import THEME_ROOT, WP_LOGOS_DIR, WP_PRODUCTS_DIR
+from skyyrose.core.paths import REPO_ROOT, THEME_ROOT, WP_LOGOS_DIR, WP_PRODUCTS_DIR
 
 REGISTRY_JSON: Path = CATALOG_CSV.parent / "logo-registry.json"
 
@@ -63,6 +66,7 @@ class LogoEntry:
     recolor_allowed: bool
     co_located_per_sku: bool
     filename: str
+    source_path: str | None
     collection: str | None
     category: str | None
     site_wide: bool
@@ -117,7 +121,9 @@ class LogoRegistry:
     def image_path(self, *, sku: str, logo_id: str) -> Path:
         """Return absolute filesystem path for a logo's image as it applies to ``sku``.
 
-        For centralized logos: resolves to ``<theme>/assets/images/logos/<file>``.
+        For root-owned product-art authority: resolves to repository-relative
+        ``source_path``. For legacy centralized logos: resolves to
+        ``<theme>/assets/images/logos/<file>``.
         For ``co_located_per_sku`` patches: resolves to
         ``<theme>/assets/images/products/<sku_folders[sku]>/<filename>``.
 
@@ -126,6 +132,13 @@ class LogoRegistry:
             SkuFolderUnknownError: if logo is per-SKU but the SKU has no folder mapping
         """
         entry = self.get_logo(logo_id)
+        if entry.source_path:
+            relative = Path(entry.source_path)
+            if relative.is_absolute() or ".." in relative.parts:
+                raise ValueError(
+                    f"unsafe logo source_path for {logo_id!r}: {entry.source_path!r}"
+                )
+            return REPO_ROOT / relative
         if entry.co_located_per_sku:
             folder = self._sku_folders.get(sku)
             if not folder:
@@ -159,6 +172,7 @@ def _entry_from_raw(logo_id: str, data: dict[str, Any]) -> LogoEntry:
         recolor_allowed=bool(data.get("recolor_allowed", False)),
         co_located_per_sku=co_located,
         filename=str(filename),
+        source_path=str(data["source_path"]) if data.get("source_path") else None,
         collection=data.get("collection"),
         category=data.get("category"),
         site_wide=bool(data.get("site_wide", False)),

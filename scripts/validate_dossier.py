@@ -1,7 +1,7 @@
 """Validate per-product design dossiers.
 
 Reads dossier markdown files under
-`wordpress-theme/skyyrose-flagship/data/dossiers/`, checks YAML frontmatter,
+`data/dossiers/`, checks YAML frontmatter,
 controlled-vocabulary fields, and contradiction rules, then exits 0 (all pass)
 or 1 (any fail) with a structured report.
 
@@ -21,8 +21,18 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
-DOSSIERS_DIR = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/dossiers"
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from skyyrose.core.dossier_loader import parse_dossier_markdown  # noqa: E402
+from skyyrose.core.dossier_schema import (  # noqa: E402
+    DossierSchema,
+    DossierSchemaError,
+    parse_branding_regions,
+)
+
+CSV_PATH = REPO_ROOT / "data/skyyrose-catalog.csv"
+DOSSIERS_DIR = REPO_ROOT / "data/dossiers"
 
 ALLOWED_COLLECTIONS = {"black-rose", "love-hurts", "signature", "kids-capsule"}
 
@@ -128,14 +138,6 @@ def extract_subsection(section: str, heading: str) -> str | None:
     return match.group(1) if match else None
 
 
-BRANDING_ENTRY_RE = re.compile(
-    r"-\s+\*\*([\w-]+)\*\*\s*\(([^)]+)\)\s*:\s*(.+?)\.\s*"
-    r"\*\*Technique:\*\*\s*([\w-]+)\.\s*"
-    r"\*\*Color:\*\*\s*([^.]+)\.",
-    re.DOTALL,
-)
-
-
 @dataclass
 class BrandingEntry:
     region: str
@@ -146,19 +148,43 @@ class BrandingEntry:
 
 
 def parse_branding_entries(section: str) -> list[BrandingEntry]:
-    entries: list[BrandingEntry] = []
-    for match in BRANDING_ENTRY_RE.finditer(section):
-        region, dims, desc, tech, color = match.groups()
-        entries.append(
-            BrandingEntry(
-                region=region.strip(),
-                dimensions=dims.strip(),
-                description=desc.strip(),
-                technique=tech.strip(),
-                color=color.strip(),
-            )
+    """Use the same parser as SOT compilation and paid render preflight."""
+    return [
+        BrandingEntry(
+            region=region.region,
+            dimensions=region.dimensions or "unspecified",
+            description=region.description,
+            technique=region.technique,
+            color=region.color_named or "source-reference exact color",
         )
-    return entries
+        for region in parse_branding_regions(section)
+    ]
+
+
+def recognized_techniques(value: str) -> tuple[str, ...]:
+    """Return every controlled-vocabulary technique named by a detailed value.
+
+    Dossiers may append construction details such as ``(sewn-on hardware)`` or
+    combine secondary processes with ``+``/``/``.  The full value must remain
+    available to render prompts, while this validator confirms that it contains
+    a machine-recognized primary technique.  Longest-first matching prevents
+    ``embroidered-patch`` from collapsing to the broader ``patch`` token.
+    """
+
+    normalized = value.casefold().strip()
+    recognized: list[str] = []
+    for technique in sorted(ALLOWED_TECHNIQUES, key=len, reverse=True):
+        pattern = rf"(?<![\w-]){re.escape(technique.casefold())}(?![\w-])"
+        if re.search(pattern, normalized):
+            recognized.append(technique)
+    return tuple(recognized)
+
+
+def canonical_technique(value: str) -> str:
+    """Return the longest recognized technique, or an empty string."""
+
+    techniques = recognized_techniques(value)
+    return techniques[0] if techniques else ""
 
 
 def validate_dossier(path: Path, active_skus: set[str]) -> DossierResult:
@@ -216,18 +242,49 @@ def validate_dossier(path: Path, active_skus: set[str]) -> DossierResult:
     if not negative_section:
         result.errors.append("missing '## Negative' section")
 
+    material_lock_version = fm.get("material_lock_version", "").strip()
+    if material_lock_version:
+        if material_lock_version != "v1":
+            result.errors.append(
+                f"unsupported material_lock_version {material_lock_version!r}; expected 'v1'"
+            )
+        else:
+            raw_dossier = parse_dossier_markdown(text)
+            if not raw_dossier.slug:
+                raw_dossier.slug = path.stem
+            try:
+                schema = DossierSchema.from_raw(raw_dossier)
+            except DossierSchemaError as exc:
+                result.errors.append(f"material-lock schema invalid: {exc}")
+            else:
+                unlocked = [
+                    region.region for region in schema.branding if region.material_lock is None
+                ]
+                if unlocked:
+                    result.errors.append(
+                        "material_lock_version v1 requires material/construction/surface/"
+                        "attachment/verify/reject on every parsed branding region; missing: "
+                        + ", ".join(unlocked)
+                    )
+
     if branding_section:
-        positive_entries = parse_branding_entries(branding_section)
+        try:
+            positive_entries = parse_branding_entries(branding_section)
+        except DossierSchemaError as exc:
+            result.errors.append(f"branding schema invalid: {exc}")
+            positive_entries = []
         if not positive_entries:
             result.warnings.append(
                 "branding section parsed zero entries — confirm format matches "
                 "`- **region** (dimensions): description. **Technique:** X. **Color:** Y.`"
             )
         for entry in positive_entries:
-            if entry.technique not in ALLOWED_TECHNIQUES:
+            technique = canonical_technique(entry.technique)
+            if not technique:
                 result.errors.append(
                     f"technique '{entry.technique}' (region {entry.region}) "
-                    f"not in controlled vocabulary {sorted(ALLOWED_TECHNIQUES)}"
+                    "does not contain a recognized primary technique from "
+                    f"controlled vocabulary {sorted(ALLOWED_TECHNIQUES)}"
                 )
             for field_name, value in (
                 ("dimensions", entry.dimensions),
@@ -246,7 +303,9 @@ def validate_dossier(path: Path, active_skus: set[str]) -> DossierResult:
             # forbidden at Y).
             EXCLUSION_PHRASES = ("other than", "only at", "only on", "except at", "except on")
             for entry in positive_entries:
-                tech = entry.technique.lower()
+                techniques = recognized_techniques(entry.technique)
+                if not techniques:
+                    continue
                 region = entry.region.lower()
                 lines = negative_section.lower().splitlines()
                 for line in lines:
@@ -254,9 +313,11 @@ def validate_dossier(path: Path, active_skus: set[str]) -> DossierResult:
                         continue
                     if any(phrase in line for phrase in EXCLUSION_PHRASES):
                         continue
-                    if tech in line and region in line:
+                    matching_techniques = [tech for tech in techniques if tech in line]
+                    if matching_techniques and region in line:
                         result.errors.append(
-                            f"contradiction: positive lists technique '{entry.technique}' "
+                            "contradiction: positive lists technique "
+                            f"'{entry.technique}' ({', '.join(matching_techniques)}) "
                             f"on region '{entry.region}', but negative also names that "
                             f"combination: '{line.strip().lstrip('- ').strip()}'"
                         )

@@ -39,10 +39,10 @@ A consensus QA judge with `_PASS_THRESHOLD = 80`. Lives at `skyyrose/elite_studi
 ### Catalog
 
 **SKU**:
-A short identifier like `br-001`, `sg-007`, `kids-002`, `lh-003`. The collection prefix (`br-`, `sg-`, `lh-`, `kids-`) maps 1:1 to a collection. Source of truth: `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`.
+A short identifier like `br-001`, `sg-007`, `kids-002`, `lh-003`. The collection prefix (`br-`, `sg-`, `lh-`, `kids-`) maps 1:1 to a collection. Source of truth: `data/skyyrose-catalog.csv`.
 
 **Dossier**:
-Per-product design specification at `wordpress-theme/skyyrose-flagship/data/dossiers/{name-slug}.md`. Carries the rich per-region branding spec (technique, dimensions, color, NEGATIVE list) the 3D RAS pipeline reads. Filenames are name-keyed, not SKU-keyed.
+Per-product design specification at `data/dossiers/{name-slug}.md`. Carries the rich per-region branding spec (technique, dimensions, color, NEGATIVE list) the 3D RAS pipeline reads. Filenames are name-keyed, not SKU-keyed.
 _Avoid_: "spec" (overloaded with eval specs), "manifest" (retired terminology — see Flagged ambiguities)
 
 ## Relationships
@@ -63,5 +63,5 @@ _Avoid_: "spec" (overloaded with eval specs), "manifest" (retired terminology �
 - "**Pipeline**" was used to mean (a) the LangGraph topology vision→generator→quality→compositor→finalize, AND (b) the compositor's internal six-stage flow. Resolved: outer = "the graph"; inner = "the compositor stages". The procedural `scripts/run_compositor_pipeline.py` is neither — it's a transitional CLI, see ADR-0001.
 - "**Compositor**" was used to mean both **CompositorAgent** AND `scripts/run_compositor_pipeline.py`. Resolved: the script is transitional; **CompositorAgent** is canonical. ADR-0001.
 - "**The brand centroid**" (singular, with definite article) was sometimes used as if there were one canonical centroid; sometimes implied per-collection centroids existed. Resolved: as-shipped is **one global centroid per encoder** (CLIP + DINOv2 = 2 files). Per-collection is deferred pending measurement data — ADR-0002.
-- "**Manifest**" / "**catalog YAML**" referred to the retired `assets/product-masters/{catalog.yaml,manifest.json}` files. Resolved: source of truth is the CSV at `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`. The retired files MUST NOT be resurrected.
+- "**Manifest**" / "**catalog YAML**" referred to the retired `assets/product-masters/{catalog.yaml,manifest.json}` files. Resolved: source of truth is the CSV at `data/skyyrose-catalog.csv`. The retired files MUST NOT be resurrected.
 - "**Quality gate**" / "**QA gate**" — there are three independent ones (embedding, visual regression, dual-agent QA). Always disambiguate which one.

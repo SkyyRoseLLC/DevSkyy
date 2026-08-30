@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.founder-scene-approval-record.v1",
+  "decision_date": "2026-08-29",
+  "decision_source": "founder_current_codex_task",
+  "approvals": [
+    {
+      "scene_id": "LH-COMMERCE-1",
+      "candidate_path": "renders/scroll-world/LH-COMMERCE-1/preserved-candidate/LH-COMMERCE-1-vow-aisle-founder-approved-v1.png",
+      "candidate_sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+      "decision": "FOUNDER_APPROVED_VISUAL",
+      "motion_required": true,
+      "motion_contract": "data/candidates/approved-scroll-world-motion-production-2026-08-29.json",
+      "preservation_rule": "Preserve exactly; do not regenerate or use as a generative reference."
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "candidate_path": "renders/scroll-world/LH-COMMERCE-3/scene-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-candidate-v3.png",
+      "candidate_sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a",
+      "decision": "FOUNDER_APPROVED_VISUAL",
+      "motion_required": true,
+      "motion_contract": "data/candidates/approved-scroll-world-motion-production-2026-08-29.json",
+      "selection_reason": "Founder selected the other Fannie visual: the darker Higgsfield v3 cathedral/cloche scene. Independent product-detail concerns remain active, so visual approval and motion authorization do not constitute product-media or runtime promotion."
+    },
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "candidate_path": "renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-gpt-image-2-candidate.png",
+      "candidate_sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952",
+      "decision": "FOUNDER_APPROVED_VISUAL",
+      "motion_required": true,
+      "motion_contract": "data/candidates/approved-scroll-world-motion-production-2026-08-29.json",
+      "scope": "still image candidate only; the Seedance motion candidate retains its existing separate review state"
+    }
+  ],
+  "promotion_boundary": {
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false,
+    "required_next_evidence": "HASH_BOUND_RUNTIME_PROMOTION_RECEIPT_REQUIRED"
+  }
+}

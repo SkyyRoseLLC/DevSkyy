@@ -141,7 +141,7 @@ def silent_coordinator():
 # ---------------------------------------------------------------------------
 
 _CATALOG_CSV = (
-    Path(__file__).parents[3] / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+    Path(__file__).parents[3] / "data/skyyrose-catalog.csv"
 )
 
 

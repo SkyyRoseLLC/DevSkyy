@@ -35,7 +35,7 @@ GF_START = "/* GENERATED:global-fonts START"
 GF_END = "/* GENERATED:global-fonts END */"
 
 # Typography SOT path
-TYPOGRAPHY_JSON = DATA / "brand" / "typography.json"
+TYPOGRAPHY_JSON = DATA.parents[2] / "data" / "brand" / "typography.json"
 
 
 def hex_to_rgb(hex_: str) -> str:

@@ -46,7 +46,7 @@ Full canon: `../skyyrose-content-engine/brand-guardrails.md`
 
 **GATE: Confirm collection, product name, and creator handle before generating any pitch copy.**
 
-> Product facts resolve from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`.
+> Product facts resolve from `data/skyyrose-catalog.csv`.
 > Never invent a product name, colorway, or price.
 
 ---

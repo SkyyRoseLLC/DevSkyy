@@ -165,7 +165,7 @@ The Imagery orchestrator takes this brief and routes it through the Elite Studio
 ## 9. Files this agent reads / writes
 
 **Reads (never writes):**
-- `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — canonical catalog
+- `data/skyyrose-catalog.csv` — canonical catalog
 - `skyyrose/elite_studio/fashion/photography.py` — style definitions
 - `wordpress-theme/skyyrose-flagship/assets/images/products/*.png|*.jpg|*.jpeg` — reference photos
 

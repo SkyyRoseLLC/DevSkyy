@@ -25,7 +25,7 @@ Before producing any output, apply skyyrose-brand-dna canon (auto-loaded via fro
 
 - Tagline verbatim: `Luxury Grows from Concrete.` — period included, no paraphrase, no truncation.
 - Collections: Black Rose / Love Hurts / Signature / Kids Capsule. Never cross-attribute voices, quotes, or visual language between them.
-- Products by NAME, never SKU. Resolve all product facts from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs) + per-SKU dossier in the same directory. Never invent details from memory.
+- Products by NAME, never SKU. Resolve all product facts from `data/skyyrose-catalog.csv` (33 SKUs) + per-SKU dossier in the same directory. Never invent details from memory.
 - Visual references = The Five only: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels. Never European luxury-house lineage (Bottega, Rick Owens, Acne, Hedi Slimane, 032c, Givenchy-by-Tisci, Celine, Balenciaga, Vetements).
 - Collection names in any hero position = lockup PNG assets composited by Elite Studio. Never type-rendered in the photograph.
 - No cross-sell, no related-products on PDP, no urgency timers. The garment is the protagonist.
@@ -56,7 +56,7 @@ Do not invent brief content that is not scaffolded by this skill. If a session t
 
 Any brief that names a product must resolve those product details before writing the shot-list table:
 
-1. Read `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — colorways, materials, graphic details for the requested SKUs.
+1. Read `data/skyyrose-catalog.csv` — colorways, materials, graphic details for the requested SKUs.
 2. Read the per-SKU dossier for each featured product.
 3. Use those verified facts. If a selling point is not in the CSV or dossier, it does not appear in the brief.
 

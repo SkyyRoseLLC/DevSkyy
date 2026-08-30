@@ -18,7 +18,7 @@ view, accessory hero. The garment is the only subject.
 single-product pages, search result thumbs.
 
 **Inputs:**
-- A SKU row from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+- A SKU row from `data/skyyrose-catalog.csv`
 - Reference product photo (tech-flat or real product shot)
 
 **Outputs:**

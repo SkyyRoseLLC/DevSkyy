@@ -46,7 +46,7 @@ Eight domains, all mapped to the schema `domain` field:
 /universal-learner dossier: br-004
 ```
 
-Reads `wordpress-theme/skyyrose-flagship/data/dossiers/<slug>.md`, parses YAML frontmatter + zone-structured body, extracts and tags elements with SKU provenance.
+Reads `data/dossiers/<slug>.md`, parses YAML frontmatter + zone-structured body, extracts and tags elements with SKU provenance.
 
 ### Mode C — Batch dossier sweep
 
@@ -284,7 +284,7 @@ Step 8: Learning Report
 
 ## SKU-Aware Dossier Ingestion
 
-Dossier path: `wordpress-theme/skyyrose-flagship/data/dossiers/<slug>.md`
+Dossier path: `data/dossiers/<slug>.md`
 
 ### YAML frontmatter fields consumed
 

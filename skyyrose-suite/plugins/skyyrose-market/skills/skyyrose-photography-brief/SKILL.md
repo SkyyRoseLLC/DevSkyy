@@ -78,7 +78,7 @@ Briefs reference products by human-readable name: "Black Rose Crewneck" — not 
 
 Product facts (colorways, materials, features, graphic details) resolve from:
 
-1. `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs)
+1. `data/skyyrose-catalog.csv` (33 SKUs)
 2. Per-SKU dossier files (in the same directory)
 
 Never invent product details from memory. If a selling point isn't confirmed in the CSV or dossier, it doesn't go in the brief.

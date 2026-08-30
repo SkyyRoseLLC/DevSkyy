@@ -297,7 +297,10 @@ def _write_minimal_theme_fixture(tmp_path: Path, *, collections: str = "black-ro
 def test_generate_raises_when_catalog_has_zero_collections(tmp_path: Path) -> None:
     theme_dir = _write_minimal_theme_fixture(tmp_path, collections="")
     with pytest.raises(SystemExit, match="0 collections"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(
+            theme_dir=theme_dir,
+            catalog_path=theme_dir / "data" / "skyyrose-catalog.csv",
+        )
 
 
 def test_generate_raises_when_required_page_missing(tmp_path: Path) -> None:
@@ -328,7 +331,10 @@ def test_generate_raises_when_required_page_missing(tmp_path: Path) -> None:
         "sku,collection\nbr-001,black-rose\n", encoding="utf-8"
     )
     with pytest.raises(SystemExit, match="required page"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(
+            theme_dir=theme_dir,
+            catalog_path=theme_dir / "data" / "skyyrose-catalog.csv",
+        )
 
 
 def test_generate_raises_when_page_registry_too_small(tmp_path: Path) -> None:
@@ -345,14 +351,20 @@ def test_generate_raises_when_page_registry_too_small(tmp_path: Path) -> None:
         "sku,collection\nbr-001,black-rose\n", encoding="utf-8"
     )
     with pytest.raises(SystemExit, match="registered pages parsed"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(
+            theme_dir=theme_dir,
+            catalog_path=theme_dir / "data" / "skyyrose-catalog.csv",
+        )
 
 
 def test_generate_raises_when_footer_has_no_legal_links(tmp_path: Path) -> None:
     theme_dir = _write_minimal_theme_fixture(tmp_path)
     (theme_dir / "footer.php").write_text("<p>no legal links here</p>", encoding="utf-8")
     with pytest.raises(SystemExit, match="footer legal links"):
-        guide.generate(theme_dir=theme_dir)
+        guide.generate(
+            theme_dir=theme_dir,
+            catalog_path=theme_dir / "data" / "skyyrose-catalog.csv",
+        )
 
 
 # ---------------------------------------------------------------------------

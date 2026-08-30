@@ -30,7 +30,7 @@ Both skills are auto-loaded via frontmatter. No output is valid until both are a
   - Signature — stay golden, quiet confidence, gold `#D4AF37`
   - Kids Capsule — little royalty, heritage passed down, rose gold `#B76E79`
 - **Products:** reference by NAME (e.g., "BLACK Rose Hoodie") — never SKU in any ad copy or brief
-- **Fabric specs:** resolve from per-SKU dossier at `wordpress-theme/skyyrose-flagship/data/dossiers/` only — never infer or invent
+- **Fabric specs:** resolve from per-SKU dossier at `data/dossiers/` only — never infer or invent
 - **Social proof:** bracket templates until real reviews exist: `[Customer name, City]` / `[X]+ members` — never fabricate numbers
 - **Scarcity:** real edition sizes from catalog only (jersey series: ~80 pieces). No urgency timers, no countdown clocks
 - **Visual refs:** The Five — Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels — these five only. European luxury house references (Bottega, Rick Owens, 032c, Acne, Givenchy, Hedi Slimane) are never acceptable
@@ -44,8 +44,8 @@ Both skills are auto-loaded via frontmatter. No output is valid until both are a
 
 Every product fact (name, price, colorway, availability, edition size) resolves through:
 
-1. `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — 33 SKUs, authoritative
-2. Per-SKU dossiers: `wordpress-theme/skyyrose-flagship/data/dossiers/<sku>/` — Corey-authored specs
+1. `data/skyyrose-catalog.csv` — 33 SKUs, authoritative
+2. Per-SKU dossiers: `data/dossiers/<sku>/` — Corey-authored specs
 
 Never invent a product, colorway, fabric spec, or edition size. If catalog data is absent, surface the gap — do not fill it with inference. (~10/33 SKUs are pre-order; treat as primary case, not edge case.)
 

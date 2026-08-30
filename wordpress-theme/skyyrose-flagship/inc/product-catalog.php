@@ -3,7 +3,7 @@
  * Centralized Product Catalog — CSV-backed loader
  *
  * Single source of truth for all product data:
- *   data/skyyrose-catalog.csv
+ *   repository-root data/skyyrose-catalog.csv
  *
  * Every consumer (templates, WooCommerce overrides, 404 fallback, immersive
  * templates, JSON-LD, admin screens, sync scripts) MUST read through this file.
@@ -19,19 +19,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Absolute path to the repository-root canonical product-data directory.
+ *
+ * Production must mount the root source of truth and define
+ * `SKYYROSE_SOT_ROOT`; the theme deliberately has no local catalog fallback.
+ * In a full repository checkout, the root is derived from the theme location.
+ * This keeps WooCommerce a consumer of product truth rather than its owner.
+ *
+ * @since 7.0.0
+ * @return string
+ */
+function skyyrose_product_sot_root_path() {
+	if ( defined( 'SKYYROSE_SOT_ROOT' ) && is_string( SKYYROSE_SOT_ROOT ) && '' !== SKYYROSE_SOT_ROOT ) {
+		return untrailingslashit( SKYYROSE_SOT_ROOT );
+	}
+
+	// /repo/wordpress-theme/skyyrose-flagship -> /repo.
+	return dirname( get_theme_file_path(), 2 );
+}
+
+/**
  * Absolute path to the canonical catalog CSV.
  *
  * @since 7.0.0
  * @return string
  */
 function skyyrose_catalog_csv_path() {
-	return get_theme_file_path( 'data/skyyrose-catalog.csv' );
+	return trailingslashit( skyyrose_product_sot_root_path() ) . 'data/skyyrose-catalog.csv';
 }
 
 /**
  * Get the full product catalog, keyed by SKU.
  *
- * Parses data/skyyrose-catalog.csv on first call, caches in a static for the
+ * Parses repository-root data/skyyrose-catalog.csv on first call, caches in a static for the
  * duration of the request. Unknown columns in the CSV are passed through
  * unchanged so the schema can grow without code changes.
  *

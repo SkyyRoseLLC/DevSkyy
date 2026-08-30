@@ -301,8 +301,8 @@ Both gaps closed 2026-05-23. Canon below; treat as source of truth for all downs
 - `/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/template-landing-love-hurts.php`
 - `/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/template-landing-signature.php`
 - `/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/template-parts/collection/founder-pullquote.php`
-- `/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md`
-- `/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+- `/Users/theceo/DevSkyy/data/dossiers/love-hurts-bomber-jacket.md`
+- `/Users/theceo/DevSkyy/data/skyyrose-catalog.csv`
 - `/Users/theceo/DevSkyy/knowledge-base/seed/from-interview.md`
 - `/Users/theceo/.claude/projects/-Users-theceo-DevSkyy/memory/project_brand.md`
 - `/Users/theceo/.claude/projects/-Users-theceo-DevSkyy/memory/project_founder_voice.md`

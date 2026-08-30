@@ -1,0 +1,219 @@
+{
+  "schema": "skyyrose.scroll-world-one-shot-verification-criteria.v1",
+  "decision_date": "2026-08-29",
+  "owner": "repo_root_product_sot",
+  "status": "BINDING_PRE_PROVIDER_GATE",
+  "purpose": "Fail closed before any paid scene submission. A scene pack passes only when its exact physical-product sources, declared wearer/SKU allocation, protected hero asset, foreground reuse boundary, and one-camera optical contract are hash-bound. Candidate generation remains quarantined and never implies promotion.",
+  "source_freshness_lock": {
+    "path": "data/product-sot.json",
+    "sha256": "98310ba35a27e4ae0690d54ca8dd35394b6fdfa314721d32e443ec865d3d2f9f"
+  },
+  "thresholds": {
+    "source_hash_integrity": 100,
+    "product_fidelity": 100,
+    "scene_canon_fidelity": 100,
+    "wearer_assignment_accuracy": 100,
+    "logo_and_lettering_accuracy": 100,
+    "optical_integration_minimum": 95,
+    "anatomy_and_body_contact_minimum": 95,
+    "hard_failures_allowed": 0
+  },
+  "stage_model": {
+    "source_preflight": "Physical references, founder-selected model identities, exact hero plate/graphic, hashes, prompt locks, and forbidden inputs must pass before a provider call.",
+    "candidate_postflight": "Every visible product feature and hero anchor is checked against source pixels; natural integration is checked at full frame and 200 percent detail crops.",
+    "motion_postflight": "The accepted still is the only first frame; all product wearers remain visible; no cut, portal, environment-only tail, text mutation, logo mutation, garment mutation, or anatomy drift is allowed."
+  },
+  "global_hard_rejects": [
+    "generic_environment_or_random_collection_product",
+    "rejected_full_frame_scene_used_as_a_generation_reference",
+    "historical_five_world_pack_used_as_current_scene_authority",
+    "product_or_model_layer_redrawn_when_foreground_only_reuse_is_declared",
+    "invented_text_label_patch_logo_or_garment_decoration",
+    "wrong_bridge_wrong_statue_wrong_rose_or_approximate_hero_graphic",
+    "separate_floor_planes_or_conflicting_light_shadow_reflection_fields",
+    "floating_feet_pasted_edges_haloing_scale_mismatch_or_missing_contact_shadow",
+    "candidate_marked_wireable_published_or_deployed_before_founder_promotion_receipt"
+  ],
+  "provider_policy": {
+    "source_authority_route": "gpt-image-2 reference-bound candidate generation or masked/localized edit only",
+    "environment_route": "protected foreground composite into an exact hash-bound hero plate; Higgsfield may animate or integrate only after source and postflight gates pass",
+    "full_frame_product_redraw_allowed": false,
+    "rejected_environment_reuse_allowed": false,
+    "rejected_edit_foreground_identity_reuse_allowed": true,
+    "provider_submission_allowed": false,
+    "cost_control_state": "OPERATOR_PAUSED_ALL_PAID_CALLS",
+    "resume_condition": "Founder explicitly resumes generation after reviewing the exact source proof board, edit mask, and scene-specific submission receipt.",
+    "output_state": "CANDIDATE_QUARANTINED_PENDING_INDEPENDENT_VISUAL_QA_AND_FOUNDER_REVIEW",
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "scene_packs": {
+    "BR-COMMERCE-2": {
+      "collection": "black-rose",
+      "role": "hero_world_moment_2_complete_the_look",
+      "cta": {"label": "Complete the Look", "href": "#shop"},
+      "wearer_assignments": [
+        {"wearer": "man", "skus": ["br-005", "br-007"], "required_view": "front_or_front_three_quarter"},
+        {"wearer": "woman", "skus": ["br-004"], "required_view": "front_or_front_three_quarter_long_hoodie_dress"}
+      ],
+      "required_inputs": [
+        {"role": "br005_physical", "path": "assets/products/references/br-005-signature-hoodie-real.jpeg", "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4"},
+        {"role": "br005_photographed_chest_mark_detail_context_only", "path": "data/candidates/br-commerce-2-source-authority/qa/br-005-physical-chest-patch-crop-tight.png", "sha256": "491738a4c8490325b97e986fb559e9f0f7e5866718b5000511402378c0d1b6d8"},
+        {"role": "br007_front_physical", "path": "assets/products/references/br-007-shorts-front-source.jpg", "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314"},
+        {"role": "br007_founder_approved_onmodel_front_protected_pixels", "path": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-front-2026-08-29.png", "sha256": "ed3a1406ec8b72f6bae88163f1a1f02659d801dda179066b36ce81b47979b418"},
+        {"role": "br007_back_physical", "path": "assets/products/references/br-007-shorts-back-source.jpg", "sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9"},
+        {"role": "br007_left_hip_physical_not_back", "path": "assets/products/references/br-007-shorts-left-hip-source.jpg", "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2"},
+        {"role": "br004_physical", "path": "assets/products/references/br-004-hoodie-real-front.jpeg", "sha256": "bf34e9283fe404e14a0d0ce4cfc3aeb5e51689de695685b3365662335e095699"},
+        {"role": "br004_woman_founder_approved_source", "path": "renders/scroll-world/BR-004/authority-stage/BR-004-women-led-on-model-authority-candidate.png", "sha256": "97fc73d7617d473076ba653e9cc3d63a3e5a4d1249cda33120389998a0dd3d12"},
+        {"role": "hero_graphic", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/black-rose-star-graphic.png", "sha256": "6af686d798fb6541c3a691492809224a6318d62573d1462c4f3f99af9957ec78"},
+        {"role": "approved_environment_plate", "path": "renders/scroll-world/scene-plates/BR-COMMERCE-2-waterfront-plate-v1.png", "sha256": "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a"}
+      ],
+      "product_locks": [
+        "BR-005 is BLACK Rose Hoodie - Signature Edition only: black pullover, white drawstrings, exact photographed sublimated rose-lined hood, exact photographed product-specific molded silicone cutout at wearer-right chest, and the exact photographed longitudinal embroidery only on the wearer-left side-body below the armhole. No standalone logo art or generic collection graphic is authorized.",
+        "BR-005 side embroidery never appears on the sleeve, forearm, back, pocket center, or BR-004.",
+        "BR-004 is the separate regular BLACK Rose Hoodie: long proportion; on women it reads as a hoodie dress; no side embroidery and no BR-005 silicone chest construction.",
+        "BR-007 must preserve black rose-repeat mesh, white waistband/drawstring, OAKLAND and Love Hurts front lettering, exact asymmetric side panels, exact SR rose mark, and view-correct front/back/left-hip construction."
+      ],
+      "scene_locks": [
+        "Moonlit Oakland/Bay rooftop-waterfront luxury environment with wet shared floor and real Bay depth.",
+        "Use the exact Black Rose silver star/rose hero graphic as a physical environmental monument, not as invented garment art.",
+        "The man and woman share floor plane, moon/key direction, contact shadows, wet reflections, atmospheric depth, scale, occlusion, and a believable sightline or runway interaction."
+      ],
+      "forbidden_inputs": [
+        "renders/scroll-world/BR-COMMERCE-2/scene-candidate/BR-COMMERCE-2-dual-cast-hero-candidate-v1.png",
+        "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v6-full-frame-edit-rejected.png"
+      ],
+      "hard_rejects": [
+        "BR005_chest_not_exact_photographed_product_specific_molded_silicone_cutout",
+        "BR005_generic_three_rose_cluster_or_other_logo_substituted",
+        "BR005_side_embroidery_on_arm_or_missing",
+        "BR004_shortened_or_given_BR005_details",
+        "BR007_front_back_left_hip_role_swap_or_invented_mark",
+        "Black_Rose_hero_graphic_approximated_or_relettered"
+      ],
+      "provider_submission_control": {
+        "allowed": false,
+        "status": "BLOCKED_PRE_PROVIDER",
+        "blocking_items": [
+          "BR005_UPPER_BODY_EDIT_MASK_REQUIRES_FOUNDER_REVIEW",
+          "BR005_WEARER_RIGHT_CHEST_SILICONE_ATTACHMENT_MATTE_MISSING",
+          "BR005_WEARER_LEFT_SIDE_BODY_ONLY_EMBROIDERY_ATTACHMENT_MATTE_MISSING",
+          "BR005_ON_APPROVED_MAN_NOT_YET_MASK_EDITED_AND_VERIFIED",
+          "FOUNDER_APPROVED_MAN_GENUINE_ALPHA_NOT_AVAILABLE",
+          "FOUNDER_EXPLICIT_RESUME_REQUIRED_AFTER_VISIBLE_SOURCE_PROOF"
+        ]
+      }
+    },
+    "LH-COMMERCE-2": {
+      "collection": "love-hurts",
+      "role": "hero_world_moment_2_complete_the_look",
+      "cta": {"label": "Shop the Shorts", "href": "#shop"},
+      "wearer_assignments": [
+        {"wearer": "man", "skus": ["lh-003"], "required_view": "front_or_front_three_quarter"},
+        {"wearer": "woman", "skus": ["lh-003"], "required_view": "front_or_front_three_quarter"}
+      ],
+      "required_inputs": [
+        {"role": "lh003_front_physical", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg", "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"},
+        {"role": "lh003_back_physical", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg", "sha256": "d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136"},
+        {"role": "male_identity_candidate_not_product_authority", "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/LH-003-men-led-on-model-authority-candidate.png", "sha256": "17840a8cf49919f150722125eed826327a369be5dbd22b53c066ba62459d5dfe"},
+        {"role": "female_identity_candidate_not_product_authority", "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/LH-003-women-led-on-model-authority-candidate.png", "sha256": "dda284ee42e16de246195229739543e378be997a4ad80e845851260f5cfb0190"},
+        {"role": "protected_enchanted_rose_hero", "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png", "sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02"},
+        {"role": "approved_environment_plate", "path": "renders/scroll-world/scene-plates/LH-COMMERCE-2-shorts-chamber-plate-v1.png", "sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d"}
+      ],
+      "product_locks": [
+        "Both adult models wear the exact same LH-003 shorts and are framed from the verified front or front three-quarter construction for this pass.",
+        "White mesh, exact red rose/green stem/white cloud sublimation, black waistband without exterior drawstring, black vertical pocket welts, sculpted black side panels, black hem binding, red-white piping, and the physical Love Hurts script geometry remain exact.",
+        "Never invent, complete, duplicate, mirror, or reflow lettering. Natural truncation is permitted only where the physical wrap, selected front-three-quarter pose, or real occlusion produces the same truncation as the verified source.",
+        "The back reference is comparison evidence only unless a rear view is deliberately used; front art may never replace back construction."
+      ],
+      "scene_locks": [
+        "Exact protected enchanted rose under glass remains a sharp primary hero focal point.",
+        "Beast-perspective means a protective low shadow-edge couture camera, never a literal Beast character.",
+        "Cracked/scarred rose material chamber, thorned runway, amber/crimson light, shared polished floor, coherent shadows/reflections, natural interaction, and no cutout-row composition."
+      ],
+      "forbidden_inputs": [
+        "renders/scroll-world/LH-COMMERCE-2/scene-candidate/LH-COMMERCE-2-fractured-chamber-higgsfield-candidate-v1.png"
+      ],
+      "hard_rejects": [
+        "LH003_front_art_used_as_back",
+        "invented_completed_duplicated_mirrored_or_reflowed_Love_Hurts_lettering",
+        "wrong_panel_binding_waistband_or_rose_cloud_pattern",
+        "enchanted_rose_replaced_or_obscured",
+        "generic_heart_flower_or_literal_Beast"
+      ]
+    },
+    "SIG-COMMERCE-2": {
+      "collection": "signature",
+      "role": "hero_world_moment_2_complete_the_look",
+      "cta": {"label": "Complete the Look", "href": "#shop"},
+      "wearer_assignments": [
+        {"wearer": "man", "skus": ["sg-006"], "source_policy": "preserve existing foreground identity and exact long mint hoodie"},
+        {"wearer": "woman", "skus": ["sg-013", "sg-014"], "source_policy": "preserve founder-approved mint crewneck and sweatpants foreground"}
+      ],
+      "required_inputs": [
+        {"role": "male_foreground_identity", "path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/SG-006-men-led-on-model-authority-candidate.png", "sha256": "17857b962851648a2fa8780d025e5aaba11391e8ba4bfb684a9ee2e2b07097e4"},
+        {"role": "female_founder_approved_foreground", "path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/SIG-013-014-women-led-on-model-authority-candidate.png", "sha256": "187714264faf103a7a8efda1c0763c593161f661fa4c5c621d229ab243d91735"},
+        {"role": "male_foreground_alpha", "path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/protected-input/sg-006-men-led-onmodel-candidate-alpha.png", "sha256": "15f236c77bac60edef738dfddea6d39f8a4c7aa22acae7a3fc55f163a5ff8d1b"},
+        {"role": "female_foreground_alpha", "path": "renders/scroll-world/SIG-COMMERCE-2/authority-stage/protected-input/sg-013-014-women-led-onmodel-candidate-alpha.png", "sha256": "f49875ca135b8ab6787ccc28aeb77caa14f8a565a94f9a95e56bebc1d2a874db"},
+        {"role": "exact_signature_hero", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp", "sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8"}
+      ],
+      "product_locks": [
+        "SG-006 remains the exact long solid mint pullover hoodie with white drawstrings, kangaroo pocket, and one centered lavender rose/cloud composition; no zipper, chevrons, or invented trousers branding.",
+        "SG-013 is the exact solid mint crewneck and SG-014 the exact matching tapered mint sweatpants with small lavender wearer-left-thigh rose/cloud placement.",
+        "Foreground model identity and product pixels are retained from the selected edit layers; the rejected environment is discarded and may not condition the new scene."
+      ],
+      "scene_locks": [
+        "Use the exact Signature hero look: wet luxury runway, exact gold SkyyRose script sculpture, exact gold SR rose sculpture, Golden Gate behind, and the same dark-gold hero color treatment.",
+        "Models walk or interact naturally on the hero runway and share its floor, key light, shadows, reflection direction, scale, grain, depth, and occlusion.",
+        "This founder directive supersedes the older SIG-COMMERCE-2 no-Golden-Gate/Bay-Bridge-only wording."
+      ],
+      "forbidden_inputs": [
+        "renders/scroll-world/SIG-COMMERCE-2/scene-candidate/SIG-COMMERCE-2-oakland-bay-mist-candidate.png",
+        "renders/scroll-world/SIG-COMMERCE-2/scene-candidate/SIG-COMMERCE-2-oakland-bay-mist-higgsfield-candidate-v2.png"
+      ],
+      "hard_rejects": [
+        "Golden_Gate_or_gold_hero_sculptures_missing_or_approximated",
+        "mint_lavender_products_recolored_or_reconstructed",
+        "rejected_environment_reused",
+        "foregrounds_read_as_pasted_cutouts"
+      ]
+    },
+    "SIG-COMMERCE-3": {
+      "collection": "signature",
+      "role": "collection_preorder_departure_runway",
+      "cta": {"label": "Explore Pre-Orders", "href": "/pre-order/"},
+      "wearer_assignments": [
+        {"wearer": "man", "skus": ["sg-005", "sg-001"], "color_story": "Bay Bridge blue"},
+        {"wearer": "woman", "skus": ["sg-015"], "color_story": "windbreaker departure"},
+        {"wearer": "woman", "skus": ["sg-002", "sg-003"], "color_story": "Stay Golden purple"}
+      ],
+      "required_inputs": [
+        {"role": "founder_approved_mixed_cast", "path": "renders/scroll-world/SIG-COMMERCE-3/authority-stage/SIG-COMMERCE-3-mixed-cast-men-women-source-authority-candidate-v1.png", "sha256": "a8e6fe09b94542c411919d364d4998ac345b7016665a0ec02331566253a9b6c4"},
+        {"role": "bay_bridge_man_alpha", "path": "renders/scroll-world/SIG-COMMERCE-3/authority-stage/protected-input/sg-005-sg-001-man-bay-bridge-look-alpha.png", "sha256": "8bb2735ed8fbc1bc9bd5d09399b6d0279c116bd561fee44143272036237d5029"},
+        {"role": "windbreaker_woman_alpha", "path": "renders/scroll-world/SIG-COMMERCE-3/authority-stage/protected-input/sg-015-woman-windbreaker-set-alpha.png", "sha256": "5b2f6df5361a93f18676270907d6ca7ddac91256e2ca31aab4112528b0b5c878"},
+        {"role": "stay_golden_woman_alpha", "path": "renders/scroll-world/SIG-COMMERCE-3/authority-stage/protected-input/sg-002-sg-003-woman-stay-golden-look-alpha.png", "sha256": "a58d8f4af9a6b0efbe6a63686dc8e7c1b2a3c96386811dd71f7c18c77aef8c13"},
+        {"role": "exact_signature_departure_runway_plate", "path": "renders/scroll-world/scene-plates/SIG-COMMERCE-3-departure-terrace-plate-v1.png", "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97"},
+        {"role": "exact_sr_rose_graphic", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png", "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc"}
+      ],
+      "product_locks": [
+        "Preserve the selected mixed-cast foreground product pixels and identities; do not redraw any garment.",
+        "Keep Bay Bridge blue and Stay Golden purple visibly distinct; preserve the exact white/pastel windbreaker construction."
+      ],
+      "scene_locks": [
+        "Replace the rejected environment with the exact hero-derived wet departure runway plate.",
+        "Place the retained cast as a real runway group with staggered depth, shared floor contact, coherent runway light/reflections, mutual sightlines, and environmental occlusion.",
+        "Retain the exact SR rose hero object in its original form."
+      ],
+      "forbidden_inputs": [
+        "renders/scroll-world/SIG-COMMERCE-3/scene-candidate/SIG-COMMERCE-3-oakland-departure-seedream-v1.png",
+        "renders/scroll-world/SIG-COMMERCE-3/higgsfield-candidates/SIG-COMMERCE-3-departure-terrace-protected-composite-v2.png"
+      ],
+      "hard_rejects": [
+        "protected_foreground_product_pixels_changed",
+        "Bay_Bridge_blue_and_Stay_Golden_purple_merged",
+        "runway_plate_or_SR_hero_object_approximated",
+        "flat_cutout_row_without_depth_or_interaction"
+      ]
+    }
+  }
+}

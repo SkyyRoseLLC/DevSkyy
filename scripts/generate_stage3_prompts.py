@@ -22,7 +22,7 @@ from pathlib import Path
 # Path setup
 # ---------------------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parent.parent
-DOSSIER_DIR = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/dossiers"
+DOSSIER_DIR = REPO_ROOT / "data/dossiers"
 OUTPUT_DIR = REPO_ROOT / "renders/prompts-preview"
 
 # Ensure repo root is on sys.path so we can import from the package tree.

@@ -21,7 +21,9 @@ from typing import Any
 
 DATA = Path(__file__).resolve().parent
 sys.path.insert(0, str(DATA))
-sys.path.insert(0, str(DATA.parents[2]))
+REPO_ROOT = DATA.parents[2]
+SOURCE_DATA = REPO_ROOT / "data"
+sys.path.insert(0, str(REPO_ROOT))
 import sot_common  # noqa: E402
 
 from skyyrose.core.asset_hub import served_theme_path  # noqa: E402
@@ -86,7 +88,8 @@ def load_products_by_collection() -> dict[str, list]:
                 "published": bool_col(row, "published"),
                 "images": imgs,
                 "dossier": f"data/dossiers/{dslug}.md" if dslug else None,
-                "dossier_exists": bool(dslug) and (DATA / "dossiers" / f"{dslug}.md").is_file(),
+                "dossier_exists": bool(dslug)
+                and (SOURCE_DATA / "dossiers" / f"{dslug}.md").is_file(),
             }
         )
     return by_col

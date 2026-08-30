@@ -17,9 +17,7 @@ PRODUCTS_DIR = (
     PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "assets" / "images" / "products"
 )
 SOURCE_DIR = PROJECT_ROOT / "skyyrose" / "assets" / "images" / "source-products"
-CATALOG_CSV = (
-    PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
+CATALOG_CSV = PROJECT_ROOT / "data" / "skyyrose-catalog.csv"
 SPECS_JSON = PROJECT_ROOT / "data" / "product-specs.json"
 
 

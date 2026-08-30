@@ -52,7 +52,7 @@ If a creator brief is for Black Rose, "bloodline" language is forbidden. If it i
 ### Product Naming
 Always use the product's **full name** as it appears in the canonical catalog. Never use a SKU (br-001, lh-002, etc.) in creator-facing copy. SKU-first referencing causes product conflations and looks unprofessional outside the internal team.
 
-> **Canonical source:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + per-SKU dossier files. Resolve product name, price, and collection from that source — never from memory, never invented.
+> **Canonical source:** `data/skyyrose-catalog.csv` + per-SKU dossier files. Resolve product name, price, and collection from that source — never from memory, never invented.
 
 ### Hero Lockup Rule
 The collection name in any hero position (video title card, Story text, Reel opening frame) **must be the official lockup PNG asset** supplied from the brand asset pack — never type-rendered using live fonts. Collections have lockup images in `assets/images/hero-overlays/` (Black Rose, Love Hurts, Signature) and `assets/images/logos/` (Kids Capsule). The creator does not compose the collection name in their editing app.

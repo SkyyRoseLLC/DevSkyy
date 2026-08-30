@@ -1,0 +1,29 @@
+{
+  "schema": "skyyrose.preserved-scene-retrieval-receipt.v1",
+  "scene_reference_id": "LH-COMMERCE-1",
+  "candidate_role": "founder_approved_preserved_scene",
+  "candidate": {
+    "path": "renders/scroll-world/LH-COMMERCE-1/preserved-candidate/LH-COMMERCE-1-vow-aisle-founder-approved-v1.png",
+    "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+    "dimensions": [1672, 941]
+  },
+  "retrieval_source": {
+    "path": "/Users/theceo/.codex/generated_images/01a02ba6-a9e7-7f63-a9da-66e422effa6c/exec-abc2a68f-57f5-4965-a519-be19018e50b4.png",
+    "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38"
+  },
+  "verification": {
+    "sha256_matches_preserved_candidate": true,
+    "byte_identity_confirmed": true,
+    "visual_classification": "man-and-woman Love Hurts bomber-and-joggers Vow Aisle with protected enchanted rose",
+    "review_state": "FOUNDER_APPROVED_PRESERVE_ONLY"
+  },
+  "bound_cast": [
+    {"wearer": "man", "look_id": "lh-bomber-black", "skus": ["lh-004", "lh-002"]},
+    {"wearer": "woman", "look_id": "lh-bomber-white", "skus": ["lh-004", "lh-006"]}
+  ],
+  "promotion": {
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false,
+    "rule": "Retrieval and hash verification preserve the approved candidate; they do not authorize alteration, regeneration, runtime wiring, or deployment."
+  }
+}

@@ -31,7 +31,7 @@ from skyyrose.elite_studio.upload import (
     upload_batch,
 )
 
-CATALOG_REL = Path("wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv")
+CATALOG_REL = Path("data/skyyrose-catalog.csv")
 GHOST_REL = Path("renders/ghost-mannequin")
 APPROVED_REL = GHOST_REL / "approved"
 

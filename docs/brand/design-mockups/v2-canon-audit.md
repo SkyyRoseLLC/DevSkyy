@@ -113,7 +113,7 @@
 
 #### `#br-spread` product labels
 - Products: br-001 ($180), br-004 ($240), br-005 ($320), br-008 ($260)
-- All four SKUs exist in canonical catalog (`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`)
+- All four SKUs exist in canonical catalog (`data/skyyrose-catalog.csv`)
 - No LH, SIG, or KC copy on BR pages ✓
 - **PASS**
 

@@ -19,13 +19,13 @@ Locked 2026-05-24. Canonical source for which logo/mark belongs where.
 | Mobile nav | `assets/branding/skyyrose-rose-icon-mobile-nav.webp` | 120×120 | Mobile menu header |
 | Favicon | `assets/branding/skyyrose-rose-icon-favicon.webp` | 60×60 | Browser tab favicon |
 | Hero | `assets/branding/skyyrose-monogram.webp` | full-res | 404 page, loading state, large brand moments |
-| Master | `assets/images/logos/sr-monogram-rose-gold.{avif,webp,jpeg}` | 720×720 master | SKU embroidery render source (br-005) |
+| Master | `assets/images/logos/sr-monogram-rose-gold.{avif,webp,jpeg}` | 720×720 master | Site-wide brand-chrome render source only; not a BR-005 decoration |
 
 **Source of truth:** `data/logo-registry.json` → `brand_primary: "sr-monogram-rose-gold"` + `logos."sr-monogram-rose-gold".site_wide: true`
 
 **Theme integration:** `header.php` navbar — `<img src=".../branding/skyyrose-monogram-nav.webp">` with hover scale + rose-gold drop-shadow.
 
-**Secondary use:** Master version also appears as embroidered right-chest placement on `br-005` (Black Rose Hoodie — Signature Edition).
+**Product exclusion:** `br-005` (BLACK Rose Hoodie — Signature Edition) does not use the SR monogram or the generic `three-rose-cluster.jpeg` asset. Its exact product-specific right-chest silicone cutout, longitudinal wearer-left side-body embroidery, and hood-lining artwork are authorized only by the physical BR-005 source photograph until an exact standalone art file is founder-verified. See the root dossier and `data/logo-registry.json`.
 
 ---
 

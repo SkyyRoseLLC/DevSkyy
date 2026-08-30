@@ -11,9 +11,7 @@ from pathlib import Path
 from typing import Any
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_CATALOG_PATH = (
-    REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
+DEFAULT_CATALOG_PATH = REPO_ROOT / "data" / "skyyrose-catalog.csv"
 
 
 def load_catalog(path: Path = DEFAULT_CATALOG_PATH) -> dict[str, dict[str, Any]]:

@@ -69,7 +69,7 @@ per-call parameters override them.
 
 Dossiers live at:
 ```
-wordpress-theme/skyyrose-flagship/data/dossiers/<slug>.md
+data/dossiers/<slug>.md
 ```
 Each dossier has YAML frontmatter:
 ```yaml
@@ -291,7 +291,7 @@ design-master emits one of these per render request:
   "reference_labels": [
     "image 1 — front reference photograph of the real manufactured BLACK Rose Hoodie (br-004-hoodie-real-front.jpeg)"
   ],
-  "dossier_spec_path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md",
+  "dossier_spec_path": "data/dossiers/black-rose-hoodie.md",
   "negative_guardrails": "DO NOT add text, watermarks, mockup labels, size tags, price tags, multiple garments, collage panels, or any branding not physically present on the garment ...",
   "is_patch": false,
   "founder_corrections": [],
@@ -435,7 +435,7 @@ photo]. No reference sheet. No multiple panels. No collage. No grid. No split-sc
   "reference_labels": [
     "image 1 — front reference photograph of the real manufactured BLACK Rose Hoodie (br-004-hoodie-real-front.jpeg)"
   ],
-  "dossier_spec_path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md",
+  "dossier_spec_path": "data/dossiers/black-rose-hoodie.md",
   "negative_guardrails": "DO NOT add text, watermarks ...",
   "is_patch": false,
   "founder_corrections": [],

@@ -22,7 +22,7 @@ import requests
 from dotenv import load_dotenv
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-CATALOG_PATH = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+CATALOG_PATH = REPO_ROOT / "data/skyyrose-catalog.csv"
 DEFAULT_OUTPUT = REPO_ROOT / ".fashion-theme/woocommerce-runtime-capture-2026-08-26.json"
 
 

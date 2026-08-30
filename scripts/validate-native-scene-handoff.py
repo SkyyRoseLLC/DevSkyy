@@ -69,8 +69,39 @@ def main() -> int:
         if not isinstance(lock, dict) or lock.get(hash_key) != product_sot_hash:
             blockers.append(f"{name}: PRODUCT_SOT_HASH_MISMATCH")
 
-    if manifest.get("candidate_images_present") is not False:
+    if manifest.get("candidate_images_present") is True:
+        if manifest.get("candidate_only_quarantine_required") is not True:
+            blockers.append("manifest: CANDIDATE_QUARANTINE_BOUNDARY_MISSING")
+        if manifest.get("runtime_candidate_assets_present") is not False:
+            blockers.append("manifest: RUNTIME_CANDIDATE_ASSET_BOUNDARY_INVALID")
+        generated = manifest.get("generated_candidate_hashes")
+        if not isinstance(generated, list) or not generated:
+            blockers.append("manifest: CANDIDATE_HASH_EVIDENCE_MISSING")
+        else:
+            for item in generated:
+                if not isinstance(item, dict) or not item.get("sha256") or not item.get("status"):
+                    blockers.append("manifest: CANDIDATE_HASH_EVIDENCE_INVALID")
+    elif manifest.get("candidate_images_present") is not False:
         blockers.append("manifest: CANDIDATE_IMAGES_STATE_INVALID")
+
+    artifact_hashes = manifest.get("artifact_hashes")
+    if not isinstance(artifact_hashes, dict) or not artifact_hashes:
+        blockers.append("manifest: ARTIFACT_HASH_LEDGER_MISSING")
+    else:
+        for relative, expected_hash in artifact_hashes.items():
+            if not isinstance(relative, str) or not isinstance(expected_hash, str):
+                blockers.append("manifest: ARTIFACT_HASH_LEDGER_INVALID")
+                continue
+            artifact = (handoff / relative).resolve()
+            try:
+                artifact.relative_to(handoff)
+            except ValueError:
+                blockers.append(f"manifest: ARTIFACT_PATH_ESCAPES_HANDOFF {relative}")
+                continue
+            if not artifact.is_file():
+                blockers.append(f"manifest: ARTIFACT_MISSING {relative}")
+            elif sha256(artifact) != expected_hash:
+                blockers.append(f"manifest: ARTIFACT_HASH_MISMATCH {relative}")
     promotion = manifest.get("promotion")
     if not isinstance(promotion, dict) or promotion.get("wiring_allowed") is not False or promotion.get("deployment_allowed") is not False:
         blockers.append("manifest: PROMOTION_BOUNDARY_INVALID")

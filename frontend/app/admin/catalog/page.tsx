@@ -5,7 +5,7 @@
  *
  * Agents (and the founder) edit per-SKU commerce fields here: copy, price,
  * badge, sizes, edition size, and the published / pre-order flags. Writes land
- * in `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — the ONE
+ * in `data/skyyrose-catalog.csv` — the ONE
  * source of truth — via `PUT /api/catalog/:sku`.
  *
  * Deliberately NOT here:

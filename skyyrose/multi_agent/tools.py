@@ -30,7 +30,7 @@ async def get_product_catalog(args: dict[str, Any]) -> dict[str, Any]:
     """Load the canonical SkyyRose product catalog.
 
     Resolves through ``skyyrose.core.catalog_loader.read_catalog_rows``, which
-    reads ``wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`` — the
+    reads ``data/skyyrose-catalog.csv`` — the
     only authoritative product data source. Other product-data files were
     retired 2026-04-19 / 2026-04-25 / 2026-05-27 and are not consulted.
     """

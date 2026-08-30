@@ -37,7 +37,7 @@ Read the task and map it to the owning plugin(s) using the handoff graph in `CRO
 ## Guardrails (always)
 
 - **STOP-AND-SHOW** before any paid render (gpt-image-2 via `skyyrose-design`) or production write (WooCommerce, media upload, deploy). Print Action / SKU / Source / Cost and wait for `y`.
-- **Catalog is the source of truth.** Product facts resolve through `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + per-SKU dossiers only — never invented.
+- **Catalog is the source of truth.** Product facts resolve through `data/skyyrose-catalog.csv` + per-SKU dossiers only — never invented.
 - **Brand canon** (collections, palettes, The Five visual references) is locked; conflicts are bugs.
 
 ## Output

@@ -19,6 +19,7 @@ sys.path.insert(0, str(DATA))
 import sot_common  # noqa: E402
 
 OUT = DATA / "collections"
+SOURCE_COLLECTIONS = DATA.parents[2] / "data" / "collections"
 # index.html lives at data/collections/<slug>/ — three levels below the theme
 # root, so assets/ resolves via ../../../ (was ../../, which pointed at the
 # nonexistent data/assets/ and 404'd every hub image).
@@ -143,11 +144,12 @@ def main() -> int:
 
     idents = sot_common.load_identity()
     for slug, ident in idents.items():
-        # Inputs (sot.json, copy.md) always come from the tracked canonical tree;
-        # only the rendered index.html output is redirectable via --out-dir.
+        # The generated collection view stays with the theme, while founder copy is
+        # root-owned source truth. Only rendered index.html output is redirectable.
         in_folder = OUT / slug
         sot = json.loads((in_folder / "sot.json").read_text())
-        copy_md = (in_folder / "copy.md").read_text() if (in_folder / "copy.md").is_file() else ""
+        copy_path = SOURCE_COLLECTIONS / slug / "copy.md"
+        copy_md = copy_path.read_text() if copy_path.is_file() else ""
         out_folder = out / slug
         out_folder.mkdir(parents=True, exist_ok=True)
         (out_folder / "index.html").write_text(page(ident, sot, copy_md))

@@ -41,6 +41,13 @@ from skyyrose.core.dossier_loader import (  # noqa: E402
     Dossier,
     get_product_with_dossier,
 )
+from skyyrose.core.dossier_schema import DossierSchema, parse_branding_regions  # noqa: E402
+from skyyrose.core.material_fidelity import compile_material_lock_prompt  # noqa: E402
+
+
+def _material_lock_block(dossier: Dossier) -> str:
+    """Compile any structured dossier material locks for prompt/QA salience."""
+    return compile_material_lock_prompt(parse_branding_regions(dossier.branding_block))
 
 
 def build_judge_spec_from_dossier(dossier: Dossier) -> str:
@@ -63,6 +70,10 @@ def build_judge_spec_from_dossier(dossier: Dossier) -> str:
 
     if dossier.garment_type_lock:
         parts.append(f"GARMENT TYPE LOCK:\n{dossier.garment_type_lock}")
+
+    material_locks = _material_lock_block(dossier)
+    if material_locks:
+        parts.append(material_locks)
 
     if dossier.branding_block:
         parts.append(f"BRANDING — exactly what IS on this product:\n{dossier.branding_block}")
@@ -109,6 +120,9 @@ def build_dna_from_sku(sku: str) -> VisionContext:
     """
     bundle = get_product_with_dossier(sku)
     dossier: Dossier = bundle["_dossier"]
+    # This is a pre-generation stop gate. Opted-in material contracts may not
+    # degrade to prose if even one parsed region lacks the six physical facts.
+    DossierSchema.from_raw(dossier)
     spec = build_judge_spec_from_dossier(dossier)
     catalog_fields = {k: v for k, v in bundle.items() if k != "_dossier"}
     return VisionContext(
@@ -170,6 +184,9 @@ def augment_prompt_with_dossier_positives(prompt: str, dna: VisionContext | dict
         sections.append(f"GARMENT TYPE (must match exactly):\n{type_lock}")
     if branding:
         sections.append(f"BRANDING — exactly what to render:\n{branding}")
+    material_locks = _material_lock_block(dossier)
+    if material_locks:
+        sections.append(material_locks)
     canonical = (
         "CANONICAL DESIGN SPEC (authored truth — overrides any conflicting inferred description below):\n\n"
         + "\n\n".join(sections)

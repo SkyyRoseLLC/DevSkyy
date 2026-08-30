@@ -3,9 +3,9 @@
   "collection_id": "black-rose",
   "candidate_only": true,
   "stable_ids": {"collection":"black-rose","scenes":["BR-COMMERCE-1","BR-COMMERCE-2","BR-COMMERCE-3"],"ctas":["Complete the Set","Complete the Look","Pre-Order the Jersey Series"]},
-  "source_freshness_lock": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+  "source_freshness_lock": "a4b6f420fa358d2475c380dd12e2394c70c07b844981fd1a631e2ccaf8821139",
   "scene_cards": [
-    {"id":"BR-COMMERCE-1","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/br-commerce-1.json","cast":["br-001","br-002"],"cta":"Complete the Set"},
+    {"id":"BR-COMMERCE-1","status":"FOUNDER_APPROVED_VISUAL__RUNTIME_PROMOTION_PENDING","contract":"../../scene-contracts/br-commerce-1.json","candidate_hash":"cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952","local_candidate":"../../../../../../renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-gpt-image-2-candidate.png","founder_approval_record":"../../../../../../data/candidates/founder-scene-approvals-2026-08-29.json","cast":["br-001","br-002"],"cta":"Complete the Set"},
     {"id":"BR-COMMERCE-2","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/br-commerce-2.json","cast":["br-005","br-007"],"cta":"Complete the Look"},
     {"id":"BR-COMMERCE-3","status":"PRESERVE_DO_NOT_REGENERATE","candidate_hash":"90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683","local_asset_verification":"NOT_PRESENT_IN_THIS_WORKTREE","cta":"Pre-Order the Jersey Series","preservation_rule":"Do not alter the approved 79-pixel interior face correction in BLACK A or re-render the scene."}
   ],

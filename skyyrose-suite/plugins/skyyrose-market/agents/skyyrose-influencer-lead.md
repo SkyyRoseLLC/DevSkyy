@@ -31,7 +31,7 @@ skills win — fix the downstream content, not the canon.
 - Collection voice isolation — Black Rose / Love Hurts / Signature / Kids Capsule never
   cross-attributed. "Bloodline" = Love Hurts only. "Armor" = Black Rose only.
 - Products by NAME from the catalog, never by SKU. Resolve from:
-  `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + per-SKU dossier.
+  `data/skyyrose-catalog.csv` + per-SKU dossier.
   Never from memory, never invented.
 - Visual references = The Five: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels.
   Never European luxury-house lineage (Bottega, Numéro, Hedi Slimane, Rick Owens, 032c,

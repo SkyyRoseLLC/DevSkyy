@@ -72,10 +72,10 @@ Those actions cross to the **runtime plane** and require STOP-AND-SHOW confirmat
 
 Resolution order for every product (do not skip steps):
 
-1. Read `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — resolve `sku`, `name`,
+1. Read `data/skyyrose-catalog.csv` — resolve `sku`, `name`,
    `price`, `collection`, `sizes`, `color`, `edition_size`, `is_preorder`, `branding_spec`,
    `dossier_slug`.
-2. Read `wordpress-theme/skyyrose-flagship/data/dossiers/{dossier_slug}.md` — resolve
+2. Read `data/dossiers/{dossier_slug}.md` — resolve
    construction (gsm, material, stitch spec, placement), narrative canon, founder intent.
    Dossier text is Corey-authored; its words are the source of truth for narrative copy.
 3. If a required fact is absent from both CSV and dossier, flag it inline: `[NEEDS: fabric weight]`

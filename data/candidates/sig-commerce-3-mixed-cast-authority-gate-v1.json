@@ -1,0 +1,20 @@
+{
+  "schema": "product-fidelity-edit.v1",
+  "operation": "native_collection_scene",
+  "target": {"path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp", "sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a"},
+  "generator": {"route": "full_native_redraw_candidate", "supports_reference_images": true, "product_redraw_allowed": true, "provider": "builtin-imagegen", "fidelity_tier": "candidate_only"},
+  "pose_change": false,
+  "collection_scene": {"collection_id": "signature", "scene_id": "SIG-COMMERCE-3-SOURCE-AUTHORITY", "story_role": "The Departure Terrace mixed-cast source authority", "scene_variation": "neutral-studio authority before protected Oakland composite", "products": [{"sku": "sg-005", "cta": "Explore Pre-Orders"}, {"sku": "sg-001", "cta": "Explore Pre-Orders"}, {"sku": "sg-002", "cta": "Explore Pre-Orders"}, {"sku": "sg-003", "cta": "Explore Pre-Orders"}, {"sku": "sg-015", "cta": "Explore Pre-Orders"}]},
+  "references": [
+    {"sku": "sg-005", "view": "on_model_front", "role": "physical_product_authority", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp", "sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a", "authority_state": "sot_verified", "approved_pose_source": true},
+    {"sku": "sg-005", "view": "front", "role": "physical_product_authority", "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg", "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1", "authority_state": "sot_verified"},
+    {"sku": "sg-001", "view": "front", "role": "physical_product_authority", "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png", "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c", "authority_state": "sot_verified"},
+    {"sku": "sg-002", "view": "front", "role": "physical_product_authority", "path": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg", "sha256": "25f82fa5960105b4e093892c3aec28e707dd0d0534413e21075163d92f7a2baa", "authority_state": "sot_verified"},
+    {"sku": "sg-003", "view": "front", "role": "physical_product_authority", "path": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png", "sha256": "6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e", "authority_state": "sot_verified"},
+    {"sku": "sg-015", "view": "front", "role": "physical_product_authority", "path": "assets/products/source-photos/signature/sg-015-windbreaker-set.jpg", "sha256": "cddd4d4dfccd473bbd1d1223c18270141342c7e6bc31bdab25df99f04d8ce2dc", "authority_state": "sot_verified"}
+  ],
+  "optical_contract": {"output_dimensions": [1536, 2048], "subject_bbox": [120, 80, 1416, 1970], "horizon_y": 1380, "foot_contact_points": [[330, 1900], [700, 1900], [1140, 1900]], "lens_class": "normal", "camera_height": "eye_level", "key_light": {"direction": "camera-left", "temperature_k": 5000, "softness": "soft"}, "shadow": {"direction": "camera-right", "softness": "soft"}, "floor_response": "matte", "reflection_mode": "none", "contact_shadow_required": true, "edge_spill_required": true, "depth_occlusion_required": true, "atmospheric_depth_required": true, "scene_grain_match_required": true},
+  "review_gate": {"candidate_author": "founder-authorized-production", "independent_reviewer_required": true, "minimum_scores": {"product_fidelity": 95, "optical_integration": 90, "anatomy_pose": 90, "collection_story": 90, "commerce_readiness": 90}},
+  "promotion": {"founder_approval_required": true, "wiring_allowed": false, "deployment_allowed": false},
+  "candidate_only_constraints": ["This is a source-stage candidate, not the final scene.", "No generic product replacements.", "All five product fronts, shorts prints, waistbands, and windbreaker construction must remain visible for review.", "Founder must pass it and the three real-alpha garment mattes must exist before the Oakland Bay Bridge plate is used."]
+}

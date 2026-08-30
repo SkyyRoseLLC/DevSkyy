@@ -558,7 +558,7 @@ Compare with-LoRA vs without-LoRA via vision audit pass rate.
 - `skyyrose/core/dossier_loader.py` — unchanged
 - `skyyrose/elite_studio/agents/vision_audit_agent.py` — unchanged (already patched for LOW-severity)
 - `skyyrose/elite_studio/forensics.py` — extended with new stage fields
-- `wordpress-theme/skyyrose-flagship/data/dossiers/*.md` — unchanged
+- `data/dossiers/*.md` — unchanged
 - `scripts/validate_dossier.py` — unchanged
 - `scripts/check_dossier_coverage.py` — unchanged
 

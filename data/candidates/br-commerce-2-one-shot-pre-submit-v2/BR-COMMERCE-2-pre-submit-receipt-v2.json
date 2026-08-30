@@ -1,0 +1,41 @@
+{
+  "schema": "skyyrose.native-scene-pre-submit-receipt.v2",
+  "scene_id": "BR-COMMERCE-2",
+  "manifest_path": "data/candidates/br-commerce-2-one-shot-pre-submit-v2/BR-COMMERCE-2-one-shot-generation-manifest-v2.json",
+  "prompt_path": "data/candidates/br-commerce-2-one-shot-pre-submit-v2/BR-COMMERCE-2-masked-man-edit-prompt-v2.txt",
+  "proof_board_path": null,
+  "eyes_on_sources": false,
+  "rejected_visual_evidence": "DELETED_FROM_ACTIVE_REPO_PACK__BR005_PLACEMENT_READ_AS_ARM_ART",
+  "source_checks": {
+    "root_sot_current": "PASS",
+    "br005_physical_and_material_locks": "PASS_PRODUCT_CONSTRUCTION_ONLY__NOT_VALID_PLACEMENT_EXAMPLE",
+    "br005_standalone_graphic_authority": "BLOCKED_NOT_VERIFIED__GENERIC_THREE_ROSE_CLUSTER_PROHIBITED",
+    "br007_front_left_right_back_physical_views": "PASS",
+    "founder_approved_br007_man": "PASS",
+    "founder_approved_br004_woman": "PASS",
+    "br004_rgb_plus_silhouette_matte_pair": "PASS",
+    "exact_black_rose_hero_graphic": "PASS",
+    "approved_waterfront_plate": "PASS",
+    "upper_body_only_mask_geometry_and_overlay": "BLOCKED_GENERAL_GARMENT_MASK_CANNOT_AUTHORIZE_DECORATION_PLACEMENT",
+    "rejected_candidate_excluded": "PASS"
+  },
+  "contradiction_check": {
+    "br005_vs_br004_identity_separated": "PASS",
+    "br005_chest_vs_side_attachment_separated": "BLOCKED_DEDICATED_CHEST_AND_SIDE_BODY_ATTACHMENT_MATTES_MISSING",
+    "br007_left_hip_not_mislabeled_as_back": "PASS",
+    "hero_graphic_not_used_as_garment_logo": "PASS"
+  },
+  "provider_gate": "BLOCKED_PRE_PROVIDER",
+  "provider_call_made": false,
+  "blockers": [
+    "The deleted proof board visually read as embroidery on the arm and is invalid for placement authority.",
+    "A dedicated wearer-left SIDE-BODY-ONLY embroidery placement matte is required. The arm, sleeve, forearm, shoulder, chest, pocket, and cuff must be outside that matte.",
+    "A separate wearer-right-chest silicone attachment matte is required. Neither attachment may be generated through the general hoodie-body mask.",
+    "The approved man proves BR-007 but currently wears a tank top. The upper-body-only mask exists and preserves the face and all BR-007 pixels, but founder approval of that mask is still required before the paid edit.",
+    "A genuine approved male subject alpha is not yet available. The zero-cost rembg attempt failed before output because its Python 3.14 runtime imports NumPy without np.trapz.",
+    "Lead explicitly halted provider calls until founder-visible source proof is reviewed."
+  ],
+  "verdict": "REJECTED_PRE_SUBMIT_PACK__ARM_PLACEMENT_AMBIGUITY__REBUILD_REQUIRED",
+  "runtime_wiring_allowed": false,
+  "deployment_allowed": false
+}

@@ -51,7 +51,7 @@ FETCH_RETRY_BACKOFF_SECONDS = 1.5
 THEME_SLUG = "skyyrose-flagship"
 
 # Per-collection holo-card minimums derived from the canonical CSV at
-# wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv.
+# data/skyyrose-catalog.csv.
 # Floors are set ~20% below actual counts so adding/removing one SKU
 # does not auto-fail the gate; the regression mode we are catching is
 # "page rendered ZERO or ONE card", not "catalog drifted by 1".

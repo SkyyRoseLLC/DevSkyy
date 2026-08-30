@@ -33,7 +33,7 @@ Required before writing a single finding — **absent input = stop, never fill t
    record the URL and the retrieval date. A claim whose source cannot be opened is deleted or
    relabelled as an assumption.
 3. **Internal facts, from the SOT** — for SkyyRose sizing or competitive positioning, product and
-   price reality comes from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`, never
+   price reality comes from `data/skyyrose-catalog.csv`, never
    from recollection.
 4. **A stated as-of date.** Data ages; the reader needs to know how stale.
 

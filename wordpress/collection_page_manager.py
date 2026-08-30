@@ -8,7 +8,7 @@ rendering (that happens in PHP/WordPress).
 
 **This module is a thin adapter.** Authoritative data lives in:
   - `assets/brand/brand.yaml`                                   (via skyyrose.elite_studio.brand)
-  - `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (via skyyrose.elite_studio.catalog → skyyrose.core.catalog_loader)
+  - `data/skyyrose-catalog.csv` (via skyyrose.elite_studio.catalog → skyyrose.core.catalog_loader)
 
 Do not hardcode collection metadata here. Edit the brand YAML / catalog CSV SoTs instead.
 (The old product-masters YAML catalog master was retired 2026-04-19; the catalog is now the CSV.)

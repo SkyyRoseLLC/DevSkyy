@@ -15,6 +15,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 from PIL import Image
+from skyyrose.core.dossier_schema import DossierSchemaError
 
 from scripts.oai_render import config
 from scripts.oai_render import prompt as prompt_mod
@@ -30,7 +31,29 @@ from scripts.oai_render.prompt import (
     sanitize_injected_text,
     sanitize_name,
 )
-from scripts.oai_render.references import ReferenceImage
+from scripts.oai_render.references import ReferenceImage, build_references, get_source_map
+
+
+def test_br007_source_map_keeps_front_left_hip_and_back_distinct():
+    sources = get_source_map()["br-007"]
+    assert sources["front"] == config.PRODUCT_REFERENCES_DIR / "br-007-shorts-front-source.jpg"
+    assert sources["left_hip"] == (
+        config.PRODUCT_REFERENCES_DIR / "br-007-shorts-left-hip-source.jpg"
+    )
+    assert sources["back"] == config.PRODUCT_REFERENCES_DIR / "br-007-shorts-back-source.jpg"
+    assert sources["left_hip"] != sources["back"]
+
+
+def test_br007_references_label_left_hip_as_not_back_and_attach_exact_sr_rose():
+    refs = build_references("br-007", "black-rose", include_back=True)
+    by_kind = {ref.kind: ref for ref in refs}
+
+    assert "garment-left-hip" in by_kind
+    assert "NOT a back view" in by_kind["garment-left-hip"].label
+    assert by_kind["garment-back"].path.name == "br-007-shorts-back-source.jpg"
+    assert by_kind["logo"].path == (
+        config.PROJECT_ROOT / "data" / "brand-logos" / "sr-rose-monogram.png"
+    )
 
 # ── Sanitizer ────────────────────────────────────────────────────────────────
 
@@ -92,6 +115,21 @@ def test_read_dossier_sanitizes_and_caps(tmp_path: Path):
     assert "multiple angles" not in body  # line sanitizer
     assert "Fleece crewneck" in body
     assert "Cotton-poly blend" in body
+
+
+def test_read_dossier_fails_closed_on_incomplete_opted_in_material_lock(tmp_path: Path):
+    dossier = tmp_path / "br-005.md"
+    dossier.write_text(
+        "---\nsku: br-005\nname: Signature Hoodie\ncollection: black-rose\n"
+        "material_lock_version: v1\n---\n"
+        "**Garment type lock:** Pullover hoodie. NOT a zip-up.\n\n"
+        "## Branding\n- **front-right-chest** (~2in): Rose. **Technique:** silicone. "
+        "**Color:** grey. **Material:** silicone. **Construction:** molded unit.\n\n"
+        "## Negative\n- NO sleeve placement\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(DossierSchemaError, match="partial material lock"):
+        read_dossier(dossier)
 
 
 # ── Prompt guardrails ────────────────────────────────────────────────────────
@@ -440,6 +478,32 @@ def test_base_procedure_carries_material_and_photorealism_directives():
     assert "MATERIAL:" in p and "satin" in p
     assert "PHOTOREALISM:" in p and "tech flats" in p
     assert "BRANDING IS EXHAUSTIVE" in p
+    assert "EMBELLISHMENT MATERIAL FIDELITY" in p
+    assert "Molded silicone" in p
+    assert "embroidery must resolve as directional thread" in p
+    assert "sublimation must remain inside the textile fibers" in p
+
+
+def test_br005_prompt_compiles_machine_enforced_material_locks():
+    dossier_path = config.DOSSIER_DIR / "black-rose-hoodie-signature-edition.md"
+    dossier_text = read_dossier(dossier_path)
+    p = build_prompt(
+        name="BLACK Rose Hoodie — Signature Edition",
+        sku="br-005",
+        collection="black-rose",
+        reference_labels=[],
+        dossier_text=dossier_text,
+        is_patch=False,
+        style="ghost",
+        view="front",
+    )
+    assert "MATERIAL LOCKS — PHYSICAL PRODUCT TRUTH" in p
+    assert "REGION: front-right-chest" in p
+    assert "SURFACE / LIGHT RESPONSE: smooth, clean-edged" in p
+    assert "REGION: wearer's-left side body / viewer-right torso" in p
+    assert "REJECT: any arm, sleeve, forearm" in p
+    assert "REGION: hood-inside / inner-hood-lining" in p
+    assert "zero raised edge" in p
 
 
 def test_qc_schema_gates_flat_renders():

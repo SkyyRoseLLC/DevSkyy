@@ -5,6 +5,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "wordpress-theme/skyyrose-flagship/data"
+SOURCE_DATA = ROOT / "data"
 GEN = DATA / "gen-collection-hub.py"
 
 
@@ -24,7 +25,7 @@ def _run_gen(out_dir: Path) -> None:
 def test_hub_renders_all_sections_and_escapes(tmp_path):
     _run_gen(tmp_path)
     html = (tmp_path / "black-rose" / "index.html").read_text()
-    identity = json.loads((DATA / "collections/black-rose/identity.json").read_text())
+    identity = json.loads((SOURCE_DATA / "collections/black-rose/identity.json").read_text())
     script_font = identity["fonts"]["script"]["family"]
     assert "<!DOCTYPE html>" in html
     assert "Black Rose" in html

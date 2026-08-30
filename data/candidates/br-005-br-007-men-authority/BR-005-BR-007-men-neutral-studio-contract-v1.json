@@ -1,0 +1,128 @@
+{
+  "schema": "product-fidelity-edit.v1",
+  "status": "SUPERSEDED_REJECTED__WRONG_BR005_GRAPHIC_AUTHORITY__DO_NOT_EXECUTE",
+  "operation": "native_collection_scene",
+  "target": {
+    "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+    "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c"
+  },
+  "generator": {
+    "route": "full_native_redraw_candidate",
+    "supports_reference_images": true,
+    "product_redraw_allowed": false,
+    "provider_submission_allowed": false,
+    "provider": "higgsfield",
+    "model": "gpt-image-2"
+  },
+  "pose_change": true,
+  "source_stage_candidate": true,
+  "product_sot": {
+    "path": "data/product-sot.json",
+    "sha256": "5eecf5c8abc84bdcadbafb983e14a4bfee13c3446479a39b62fb883fb81267a0"
+  },
+  "collection_scene": {
+    "collection_id": "black-rose",
+    "scene_id": "BR-005-BR-007-AUTHORITY-MAN",
+    "story_role": "neutral studio on-model authority candidate",
+    "scene_variation": "single full-body men-led authority image",
+    "products": [
+      {"sku": "br-005", "cta": "candidate-only"},
+      {"sku": "br-007", "cta": "candidate-only"}
+    ]
+  },
+  "references": [
+    {
+      "sku": "br-005",
+      "view": "front",
+      "role": "physical_product_authority",
+      "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+      "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+      "authority_state": "sot_verified"
+    },
+    {
+      "sku": "br-007",
+      "view": "front",
+      "role": "physical_product_authority",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+      "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+      "authority_state": "founder_supplied"
+    },
+    {
+      "sku": "br-007",
+      "view": "back",
+      "role": "physical_product_authority",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg",
+      "sha256": "8ee61bc5c937b9caf20e3d33445c9eaee8de70bc48c13a3a782006bf192eb2cb",
+      "authority_state": "founder_supplied"
+    },
+    {
+      "sku": "br-007",
+      "view": "left_side",
+      "role": "physical_product_authority",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-left-side.jpeg",
+      "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2",
+      "authority_state": "founder_supplied"
+    },
+    {
+      "sku": "br-007",
+      "view": "right_side",
+      "role": "physical_product_authority",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-right-side.jpeg",
+      "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8",
+      "authority_state": "founder_supplied"
+    },
+    {
+      "sku": "br-005",
+      "view": "detail",
+      "role": "physical_product_detail_context_only",
+      "path": "data/candidates/br-commerce-2-source-authority/qa/br-005-physical-chest-patch-crop-tight.png",
+      "sha256": "491738a4c8490325b97e986fb559e9f0f7e5866718b5000511402378c0d1b6d8",
+      "authority_state": "derived_exact_crop__standalone_art_unverified__generic_logo_substitution_prohibited"
+    }
+  ],
+  "optical_contract": {
+    "output_dimensions": [1536, 2048],
+    "subject_bbox": [320, 90, 1216, 1980],
+    "horizon_y": 1640,
+    "foot_contact_points": [[650, 1960], [930, 1960]],
+    "lens_class": "normal",
+    "camera_height": "eye_level",
+    "key_light": {"direction": "camera_left", "temperature_k": 5000, "softness": "soft"},
+    "shadow": {"direction": "camera_right", "softness": "soft"},
+    "floor_response": "matte warm-grey studio floor",
+    "reflection_mode": "none",
+    "contact_shadow_required": true,
+    "edge_spill_required": false,
+    "depth_occlusion_required": false,
+    "atmospheric_depth_required": false,
+    "scene_grain_match_required": false
+  },
+  "review_gate": {
+    "candidate_author": "codex-fashion-theme-team-production",
+    "independent_reviewer_required": true,
+    "minimum_scores": {
+      "product_fidelity": 95,
+      "optical_integration": 90,
+      "anatomy_pose": 90,
+      "collection_story": 0,
+      "commerce_readiness": 90
+    }
+  },
+  "promotion": {
+    "founder_approval_required": true,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "hard_reject_conditions": [
+    "any rose or graphic on either sleeve, arm, forearm, or shoulder",
+    "BR-005 side embroidery anywhere except the wearer's-left side body beside the kangaroo pocket",
+    "BR-005 silicone mark anywhere except the wearer's-right chest or rendered as thread/print",
+    "missing white flat drawstrings or missing grey sublimated rose inner hood lining",
+    "product-name text, Signature Edition lettering, arm label, circular patch, or invented garment decoration",
+    "BR-007 left and right side panels mirrored, exchanged, simplified, or replaced",
+    "front artwork copied onto the BR-007 back or any generated rear geometry presented as verified",
+    "misspelled OAKLAND, generic basketball shorts, fake team marks, or altered black-white mesh construction",
+    "generic catalog casting that does not match the SkyyRose Oakland luxury-streetwear energy",
+    "cropped feet, covered garment regions, floating stance, or non-neutral environment"
+  ]
+}

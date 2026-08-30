@@ -29,7 +29,7 @@ Required before drafting — **absent input = stop and ask, never invent**:
 1. **Audience and purpose** — who reads it, what they should be able to do afterwards.
 2. **Source material for every factual claim** — notes, transcripts, docs, research, or a live
    probe. For SkyyRose content: product facts come only from
-   `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`, collection language only from
+   `data/skyyrose-catalog.csv`, collection language only from
    `docs/brand/collection-stories.md`, founder voice only from `docs/brand/corey-questions.md`.
    Never a biographical or metric claim from memory.
 3. **Voice reference** — a `VOICE PROFILE` from `brand-voice`, or 3+ real samples (published

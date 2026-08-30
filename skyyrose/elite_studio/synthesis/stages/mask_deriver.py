@@ -31,6 +31,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from skyyrose.core.dossier_schema import parse_branding_regions
+
 logger = logging.getLogger(__name__)
 
 # Techniques that produce VISIBLE applied decoration (worth masking).
@@ -51,6 +53,7 @@ DECORATION_TECHNIQUES: frozenset[str] = frozenset(
         "heat-transfer",
         "laser-engraved",
         "tackle-twill",
+        "silicone",
         "silicone-applique",
     }
 )
@@ -85,6 +88,7 @@ class BrandingEntry:
     description: str
     technique: str
     color: str
+    material_lock: dict[str, str] | None = None
     raw: str = ""
 
     def is_decoration(self) -> bool:
@@ -110,19 +114,28 @@ class MaskResult:
 
 
 def parse_branding_entries(branding_block: str) -> list[BrandingEntry]:
-    """Extract structured entries from a dossier's branding_block markdown."""
-    entries: list[BrandingEntry] = []
-    for match in _ENTRY_RE.finditer(branding_block):
-        entries.append(
-            BrandingEntry(
-                region=match.group("region").strip(),
-                description=match.group("description").strip().rstrip("."),
-                technique=match.group("technique").strip(),
-                color=match.group("color").strip().rstrip("."),
-                raw=match.group(0),
-            )
+    """Extract entries through the canonical dossier parser.
+
+    The former local regex rejected legitimate regions containing apostrophes,
+    spaces, or slashes and discarded material locks. A render pipeline must not
+    silently lose a region merely because its human-readable locator is richer
+    than ``front-chest``.
+    """
+    return [
+        BrandingEntry(
+            region=region.region,
+            description=region.description,
+            technique=region.technique,
+            color=region.color_named or "source-reference exact color",
+            material_lock=(
+                region.material_lock.model_dump(mode="json")
+                if region.material_lock is not None
+                else None
+            ),
+            raw=region.description,
         )
-    return entries
+        for region in parse_branding_regions(branding_block)
+    ]
 
 
 def filter_decoration_entries(entries: list[BrandingEntry], *, view: str) -> list[BrandingEntry]:

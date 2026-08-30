@@ -480,7 +480,7 @@ Corey, KB seed interview, 2026-05-03: "Identify verified source first, then exec
 
 **Replacement:**
 Before any task, name the canonical source(s) you'll consult in one sentence. Examples:
-- Touching product data → `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (+ `data/dossiers/{slug}.md` if rendering-related)
+- Touching product data → `data/skyyrose-catalog.csv` (+ `data/dossiers/{slug}.md` if rendering-related)
 - Touching brand canon → `eval/brand-story.md` + `knowledge-base/seed/from-interview.md`
 - Touching architecture → `knowledge-base/decisions/` + `docs/adr/`
 - Touching locked decisions → `docs/SKYYROSE_V2_MASTER_PLAN.md` §1.1

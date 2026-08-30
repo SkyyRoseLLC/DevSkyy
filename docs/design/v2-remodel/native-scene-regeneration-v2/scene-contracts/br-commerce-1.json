@@ -2,11 +2,12 @@
   "schema": "product-fidelity-edit.v1",
   "operation": "native_collection_scene",
   "handoff_status": "BLOCKED_PRE_GENERATION",
-  "source_freshness_lock": {"path":"data/product-sot.json","sha256":"4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"},
+  "source_freshness_lock": {"path":"data/product-sot.json","sha256":"a4b6f420fa358d2475c380dd12e2394c70c07b844981fd1a631e2ccaf8821139"},
   "target": {"path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp","sha256":"d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724"},
   "generator": {"route":"environment_rebuild_around_source","supports_reference_images":true,"product_redraw_allowed":false,"intended_provider_alias":"gpt-image-2","provider_call_authorized":false},
   "pose_change": false,
   "collection_scene": {"collection_id":"black-rose","scene_id":"BR-COMMERCE-1","story_role":"The Type Foundry","scene_variation":"silver-font-statue interior","products":[{"sku":"br-001","cta":"Complete the Set"},{"sku":"br-002","cta":"Complete the Set"}]},
+  "hero_continuity_anchor": {"id":"BR_FONT_STATUE","kind":"font_statue","path":"wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png","sha256":"a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c","rule":"Exact Black Rose font-and-rose statue form only; it remains wall-aligned architecture and may not become generated lettering or a substitute sign."},
   "references": [
     {"sku":"br-001","view":"on_model_front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp","sha256":"d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724","authority_state":"sot_verified","approved_pose_source":true},
     {"sku":"br-001","view":"front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png","sha256":"c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2","authority_state":"sot_verified"},

@@ -114,6 +114,14 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--yes", action="store_true", help="confirm the paid run (generate)")
     args = ap.parse_args(argv)
 
+    if args.mode == "generate":
+        _log.error(
+            "ABORT: generic environment-only previews are disabled for the V2 Scroll World. "
+            "A paid scene must be built from the declared Fashion Theme Team native_collection_scene "
+            "contract and clear its exact scene authorization first."
+        )
+        return 4
+
     collections = args.collection or sorted(COLLECTION_SCENE)
     total = len(collections) * config.EST_COST_PER_IMAGE_USD
     if total > HARD_CAP_USD:
@@ -121,39 +129,7 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     print(_manifest(collections))
-    if args.mode == "plan":
-        return 0
-    if not args.yes:
-        _log.error("\nRefusing to spend without --yes (STOP-AND-SHOW gate).")
-        return 3
-    if not config.api_key_present():
-        _log.error("ABORT: %s not set (add to .env.hf)", config.API_KEY_ENV)
-        return 2
-
-    failures = 0
-    for coll in collections:
-        # Sanitize collection name to prevent path traversal
-        safe_coll = coll.replace("/", "_").replace("\\", "_").replace("..", "_")
-        dest = OUT_DIR / f"_scene-preview-{safe_coll}.png"
-        # Validate dest is within OUT_DIR to prevent path traversal
-        try:
-            dest.resolve().relative_to(OUT_DIR.resolve())
-        except ValueError:
-            _log.error("[%s] ABORT: path traversal attempt", coll)
-            return 2
-        try:
-            _log.info("[%s] rendering backdrop ...", coll)
-            data = _generate_one(coll, dest)
-            _log.info("[%s] ok %s (%d KB)", coll, dest, len(data) // 1024)
-        except openai.AuthenticationError:
-            # Never log str(exc) — the SDK echoes a partial key in it.
-            _log.error("[%s] FAIL AuthenticationError: check %s", coll, config.API_KEY_ENV)
-            return 1
-        except Exception as exc:  # noqa: BLE001 — surface type, continue the batch
-            failures += 1
-            _log.error("[%s] FAIL %s: render failed", coll, type(exc).__name__)
-    _log.info("\nDone. %d ok, %d failed -> %s", len(collections) - failures, failures, OUT_DIR)
-    return 1 if failures else 0
+    return 0
 
 
 if __name__ == "__main__":

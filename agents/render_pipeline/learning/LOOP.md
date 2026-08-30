@@ -21,7 +21,7 @@ All three paths are gitignored (run artifacts; reproducible from runs themselves
 `agents/render_pipeline/learning/proposals.py`:
 
 - `propose_engine_overrides(min_runs=3, min_score=80.0)` — returns proposed
-  `engine_override` rows for `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+  `engine_override` rows for `data/skyyrose-catalog.csv`
   when an engine consistently wins for a SKU.
 - `digest_failure_modes(min_failures=5)` — clusters recurring failure reasons
   into actionable categories.
@@ -52,7 +52,7 @@ In a Claude Code session, invoke:
   1. cd /Users/theceo/DevSkyy-render-pipeline
   2. Run `make adk-learning-report` and parse the proposals
   3. For each engine_override proposal with min_score >= 85 and runs >= 5:
-     - Update wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+     - Update data/skyyrose-catalog.csv
        to set engine_override for that SKU
      - Commit with message "feat(catalog): promote engine_override <eng> for <sku>
        (learning-loop, <runs> runs, score=<score>)"
@@ -76,7 +76,7 @@ catalog CSV and the prompt-engineering code on its own. Before flipping it on:
 
 - [ ] At least 30 successful pipeline runs across 5+ SKUs to give the
       `min_runs` floor enough signal to avoid false promotions
-- [ ] A backup branch of `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+- [ ] A backup branch of `data/skyyrose-catalog.csv`
       so loop-driven changes can be reverted in one command
 - [ ] Manual review of the first proposals output to confirm the recommendations
       match human judgment (run `make adk-learning-report` after ~10 runs and
@@ -86,7 +86,7 @@ catalog CSV and the prompt-engineering code on its own. Before flipping it on:
 
 ## What this loop does NOT do
 
-- It does not modify the dossier files (`wordpress-theme/skyyrose-flagship/data/dossiers/*.md`)
+- It does not modify the dossier files (`data/dossiers/*.md`)
   — those are Corey-authored canonical specs per `feedback_dossier_authoring.md`
   in project memory. The pipeline must hard-fail on missing dossiers, not
   generate or "improve" them.

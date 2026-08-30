@@ -1,7 +1,7 @@
 """Pydantic schema for per-product design dossiers.
 
 Layers structured validation over the markdown dossiers at
-``wordpress-theme/skyyrose-flagship/data/dossiers/{slug}.md``. The markdown
+``data/dossiers/{slug}.md``. The markdown
 format stays the source of truth for human authoring; this module parses it
 into a strongly-typed model that downstream agents (compositor prompt synth,
 brand guardian, vision audit) can consume without re-parsing.
@@ -14,6 +14,9 @@ Schema invariants enforced here:
   * ``garment_type_lock`` must be non-empty (drives the FLUX prompt clause).
   * Color codes (hex / Pantone) are OPTIONAL but warned-on-missing — the
     Phase 8 plan promotes them to required after Corey's first backfill PR.
+  * A dossier that opts into ``material_lock_version: v1`` must give every
+    parsed branding region a complete material/construction/surface/attachment
+    lock plus positive and negative visual verification cues.
 
 Schema MISSES (deliberate, captured for follow-up):
   * Color values are prose-named (``rose gold``, ``tonal white``) rather than
@@ -45,6 +48,17 @@ from skyyrose.core.dossier_loader import Dossier as RawDossier
 # ---------------------------------------------------------------------------
 
 
+class MaterialLock(BaseModel):
+    """Physical manufacturing facts that image/video prompts must preserve."""
+
+    material_family: str = Field(..., min_length=1)
+    physical_construction: str = Field(..., min_length=1)
+    surface_response: str = Field(..., min_length=1)
+    attachment_method: str = Field(..., min_length=1)
+    verification_cues: str = Field(..., min_length=1)
+    reject_cues: str = Field(..., min_length=1)
+
+
 class BrandingRegion(BaseModel):
     """One placement region (front-chest, back-neck, sleeve cuff, etc.)."""
 
@@ -58,6 +72,7 @@ class BrandingRegion(BaseModel):
     color_hex: str | None = None
     color_pantone: str | None = None
     dimensions: str | None = None
+    material_lock: MaterialLock | None = None
 
     @field_validator("color_hex")
     @classmethod
@@ -81,6 +96,7 @@ class DossierSchema(BaseModel):
     negative: list[str] = Field(..., min_length=1)
     scene_pose: str = ""
     scene_setting: str = ""
+    material_lock_version: str = ""
 
     @classmethod
     def from_raw(cls, raw: RawDossier) -> DossierSchema:
@@ -90,6 +106,19 @@ class DossierSchema(BaseModel):
         """
         branding = parse_branding_regions(raw.branding_block)
         negative = parse_negative_list(raw.negative_block)
+        material_lock_version = raw.material_lock_version.strip()
+        if material_lock_version and material_lock_version != "v1":
+            raise DossierSchemaError(
+                f"dossier {raw.sku} declares unsupported material_lock_version "
+                f"{material_lock_version!r}"
+            )
+        if material_lock_version == "v1":
+            missing = [region.region for region in branding if region.material_lock is None]
+            if missing:
+                raise DossierSchemaError(
+                    f"dossier {raw.sku} material_lock_version v1 requires complete material "
+                    f"facts for every branding region; missing: {', '.join(missing)}"
+                )
         try:
             return cls(
                 sku=raw.sku,
@@ -101,6 +130,7 @@ class DossierSchema(BaseModel):
                 negative=negative,
                 scene_pose=raw.scene_pose,
                 scene_setting=raw.scene_setting,
+                material_lock_version=material_lock_version,
             )
         except Exception as exc:
             raise DossierSchemaError(
@@ -127,6 +157,9 @@ class DossierSchemaError(ValueError):
 #   - Color is the first **Color:** segment
 #   - Hex is detected as #RRGGBB anywhere in the line (optional)
 #   - Pantone is detected as "PMS <code>" or "Pantone <code>" (optional)
+#   - Material/Construction/Surface/Attachment/Verify/Reject form an optional
+#     all-or-nothing physical material lock. They become required when the
+#     dossier frontmatter declares ``material_lock_version: v1``.
 
 
 _BULLET_RE = re.compile(r"^\s*-\s+\*\*(?P<region>[^*]+)\*\*", re.MULTILINE)
@@ -138,6 +171,41 @@ _PANTONE_RE = re.compile(
     r"\b(?:PMS|Pantone)[\s-]*([0-9A-Za-z][0-9A-Za-z\-]*)",
     re.IGNORECASE,
 )
+_MATERIAL_LABELS = {
+    "material_family": "Material",
+    "physical_construction": "Construction",
+    "surface_response": "Surface",
+    "attachment_method": "Attachment",
+    "verification_cues": "Verify",
+    "reject_cues": "Reject",
+}
+
+
+def _label_value(bullet: str, label: str) -> str | None:
+    """Extract a bold markdown label value up to the next bold label or EOF."""
+    match = re.search(
+        rf"\*\*{re.escape(label)}:\*\*\s*(.+?)(?=\s+\*\*[A-Za-z][^*]*:\*\*|\Z)",
+        bullet,
+        re.IGNORECASE | re.DOTALL,
+    )
+    if not match:
+        return None
+    value = " ".join(match.group(1).split()).strip().rstrip(".").strip()
+    return value or None
+
+
+def _material_lock_from_bullet(bullet: str, region: str) -> MaterialLock | None:
+    values = {field: _label_value(bullet, label) for field, label in _MATERIAL_LABELS.items()}
+    present = {field for field, value in values.items() if value}
+    if not present:
+        return None
+    missing = set(values) - present
+    if missing:
+        labels = ", ".join(_MATERIAL_LABELS[field] for field in sorted(missing))
+        raise DossierSchemaError(
+            f"branding region {region!r} has a partial material lock; missing labels: {labels}"
+        )
+    return MaterialLock(**values)  # type: ignore[arg-type]
 
 
 def parse_branding_regions(branding_block: str) -> list[BrandingRegion]:
@@ -179,6 +247,7 @@ def parse_branding_regions(branding_block: str) -> list[BrandingRegion]:
 
         pantone_match = _PANTONE_RE.search(bullet)
         color_pantone = f"PMS {pantone_match.group(1).strip()}" if pantone_match else None
+        material_lock = _material_lock_from_bullet(bullet, region_name)
 
         # Description is the bullet body sans the bold-region prefix and the
         # Technique / Color trailing labels — keep raw for now.
@@ -194,6 +263,7 @@ def parse_branding_regions(branding_block: str) -> list[BrandingRegion]:
                     color_hex=color_hex,
                     color_pantone=color_pantone,
                     dimensions=dimensions,
+                    material_lock=material_lock,
                 )
             )
         except Exception as exc:  # pragma: no cover - schema raises ValidationError
@@ -257,6 +327,7 @@ class DossierCoverage:
     region_count: int
     hex_coverage_pct: float
     pantone_coverage_pct: float
+    material_lock_coverage_pct: float
     warnings: tuple[str, ...]
 
     def to_dict(self) -> dict[str, Any]:
@@ -268,6 +339,7 @@ class DossierCoverage:
             "region_count": self.region_count,
             "hex_coverage_pct": self.hex_coverage_pct,
             "pantone_coverage_pct": self.pantone_coverage_pct,
+            "material_lock_coverage_pct": self.material_lock_coverage_pct,
             "warnings": list(self.warnings),
         }
 
@@ -277,11 +349,14 @@ def coverage_for(schema: DossierSchema) -> DossierCoverage:
     total = len(schema.branding)
     hex_n = sum(1 for r in schema.branding if r.color_hex)
     pantone_n = sum(1 for r in schema.branding if r.color_pantone)
+    material_lock_n = sum(1 for r in schema.branding if r.material_lock)
     warnings: list[str] = []
     if total == 0:
         warnings.append("no branding regions detected")
     if hex_n < total:
         warnings.append(f"{total - hex_n} region(s) missing color_hex")
+    if material_lock_n < total:
+        warnings.append(f"{total - material_lock_n} region(s) missing material_lock")
     if not schema.scene_pose:
         warnings.append("scene_pose empty")
     if not schema.scene_setting:
@@ -294,6 +369,9 @@ def coverage_for(schema: DossierSchema) -> DossierCoverage:
         region_count=total,
         hex_coverage_pct=round(100.0 * hex_n / total, 1) if total else 0.0,
         pantone_coverage_pct=round(100.0 * pantone_n / total, 1) if total else 0.0,
+        material_lock_coverage_pct=(
+            round(100.0 * material_lock_n / total, 1) if total else 0.0
+        ),
         warnings=tuple(warnings),
     )
 
@@ -321,6 +399,7 @@ def load_validated_for_sku(sku: str) -> DossierSchema:
 
 __all__ = [
     "BrandingRegion",
+    "MaterialLock",
     "DossierSchema",
     "DossierSchemaError",
     "DossierCoverage",

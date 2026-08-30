@@ -239,7 +239,7 @@ async def es_render(params: RenderInput) -> str:
     except KeyError as exc:
         raise RuntimeError(
             f"SKU {params.sku!r} not in catalog: {exc}. Add the SKU to "
-            "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv first."
+            "data/skyyrose-catalog.csv first."
         ) from exc
     except DossierMissingError as exc:
         raise RuntimeError(

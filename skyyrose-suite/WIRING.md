@@ -50,7 +50,7 @@ Source: `agents/base_super_agent/agent.py`, `agents/skyyrose_content_agent.py`, 
 - **Elite Studio** (`skyyrose/elite_studio/`) is the imagery hub — LangGraph graph (`graph/builder.py`), FLUX synthesis (`synthesis/flux_pipeline.py`), 6-stage compositor. The **photography-director** persona authors the *brief*; Elite Studio *executes* the render. Entry: `coordinator.produce(sku, view)` / `platform/service.generate_3d(tenant_id, sku, ...)`. The lockup is composited at the Elite Studio stage — never burned into camera (see `skyyrose-photography-brief`).
 - **3D round table** (`orchestration/threed_round_table.py`) is the 3D stage inside Elite Studio — not a marketing touchpoint, but launch-commander references it when a drop needs 3D PDP assets.
 - **ADK render_pipeline** (`agents/render_pipeline/`) — 9-step product render, callable engine inside Elite Studio. Marketing copy and imagery run on separate dispatch paths today (`orchestration/asset_pipeline.py` does NOT call the content/marketing agents) — launch-commander is the coordination layer that sequences them.
-- **Data spine**: every persona resolves product facts through `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + `knowledge-base/products/<sku>/` dossier → content agent → WooCommerce REST `meta_data` (SEO) / `description` / `short_description`.
+- **Data spine**: every persona resolves product facts through `data/skyyrose-catalog.csv` + `knowledge-base/products/<sku>/` dossier → content agent → WooCommerce REST `meta_data` (SEO) / `description` / `short_description`.
 
 ---
 

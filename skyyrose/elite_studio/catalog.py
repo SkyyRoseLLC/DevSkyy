@@ -1,7 +1,7 @@
 """Catalog — Single source of truth loader for SkyyRose product data.
 
 Reads the canonical CSV at:
-  wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+  data/skyyrose-catalog.csv
 
 Typical usage:
 

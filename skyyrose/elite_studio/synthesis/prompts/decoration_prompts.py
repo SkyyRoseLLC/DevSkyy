@@ -101,6 +101,11 @@ TECHNIQUE_PHYSICS: dict[str, str] = {
         "raised silicone applique with a smooth glossy surface that sits above "
         "the fabric, full-color art preserved within the silicone layer"
     ),
+    "silicone": (
+        "one molded silicone cut-out with a smooth uniform rubber-like surface, "
+        "clean crisp perimeter, restrained highlights, and slightly raised relief; "
+        "no woven texture, no directional thread, and no printed ink"
+    ),
 }
 
 
@@ -166,6 +171,10 @@ TECHNIQUE_NEGATIVE_PREFIX: dict[str, str] = {
     "silicone-applique": (
         "ZERO embroidery thread, ZERO flat print. "
         "Only raised glossy silicone bonded to the fabric surface."
+    ),
+    "silicone": (
+        "ZERO embroidery thread, ZERO stitches, ZERO flat print, ZERO woven patch, "
+        "ZERO multicolor applique. Only the exact molded silicone cut-out unit."
     ),
     "_default": (
         "ZERO embroidery thread unless the technique is embroidery. "

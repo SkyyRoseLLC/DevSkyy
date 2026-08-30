@@ -24,7 +24,7 @@ The orchestrator has already grounded the plan in the actual code shapes. Subseq
 | FAL Kontext refinement | `scripts/nano_banana/engine_fal.py` | `refine_with_kontext` (l.163), `_closest_kontext_aspect_ratio` (l.41), `_is_png_bytes` (l.62) |
 | Dossier loader (canonical truth) | `skyyrose/core/dossier_loader.py` | `Dossier` (l.41), `get_product_with_dossier` (l.146), `DossierMissingError` (l.32) |
 | Existing test patterns | `tests/scripts/nano_banana/` | `test_spec_builder.py`, `test_kontext_helpers.py`, `test_refinement_prompt.py`, `conftest.py` |
-| Catalog truth | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` | 33 SKUs; `dossier_slug` column maps SKU → `data/dossiers/{slug}.md` |
+| Catalog truth | `data/skyyrose-catalog.csv` | 33 SKUs; `dossier_slug` column maps SKU → `data/dossiers/{slug}.md` |
 
 ### Allowed APIs (verified by reading source on 2026-05-05)
 

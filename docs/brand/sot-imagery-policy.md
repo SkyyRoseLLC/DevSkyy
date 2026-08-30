@@ -9,7 +9,7 @@
 
 ## What "the SOT" is
 
-- **Master:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` columns
+- **Master:** `data/skyyrose-catalog.csv` columns
   `front_model_image`, `back_model_image`, `back_image`, `image`.
 - **Generated view:** `data/collections/<slug>/sot.json` (`products[].images`), built by
   `data/build-collection-sot.py`.

@@ -218,7 +218,7 @@ class CatalogRetriever:
                     "branding_block": (dossier_data.get("branding_block") or "").strip(),
                     "description": (row.get("description") or "").strip(),
                 },
-                source="wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+                source="data/skyyrose-catalog.csv",
             )
             documents.append(doc)
             texts.append(content)

@@ -26,10 +26,10 @@ allowed-tools: Read Write Edit Glob Grep
 
 Resolution order (strict — do not skip steps):
 
-1. **Catalog CSV** — `/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+1. **Catalog CSV** — `/Users/theceo/DevSkyy/data/skyyrose-catalog.csv`
    Columns: `sku, name, price, collection, description, badge, image, front_model_image, back_image, back_model_image, sizes, color, edition_size, published, is_preorder, branding_spec, render_output_slug, render_source_override, render_back_source_override, render_is_tech_flat, render_is_accessory, garment_type_lock, dossier_slug, engine_override`
 
-2. **Per-SKU dossier** — `/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/data/dossiers/{dossier_slug}.md`
+2. **Per-SKU dossier** — `/Users/theceo/DevSkyy/data/dossiers/{dossier_slug}.md`
    Contains: construction details, gsm/material, narrative canon, founder intent. The dossier is Corey-authored — its words are the source of truth.
 
 3. **User confirmation** — if a fact is absent from CSV + dossier, flag it with `[NEEDS: <fact>]` and proceed. Never fill the gap with invention.

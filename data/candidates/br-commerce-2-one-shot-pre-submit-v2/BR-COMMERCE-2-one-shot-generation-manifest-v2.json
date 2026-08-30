@@ -1,0 +1,234 @@
+{
+  "schema": "skyyrose.native-scene-one-shot-pack.v2",
+  "scene_id": "BR-COMMERCE-2",
+  "collection": "black-rose",
+  "story_role": "The Open Waterfront",
+  "status": "BLOCKED_PRE_PROVIDER",
+  "source_sot": {
+    "path": "data/product-sot.json",
+    "sha256": "98310ba35a27e4ae0690d54ca8dd35394b6fdfa314721d32e443ec865d3d2f9f"
+  },
+  "founder_direction": {
+    "man": [
+      "br-005",
+      "br-007"
+    ],
+    "woman": [
+      "br-004"
+    ],
+    "scene": "Moonlit Oakland waterfront using the exact approved plate and exact Black Rose hero graphic, with both models photographed as inhabitants of one environment.",
+    "promotion_boundary": "Candidate and quarantine only. No wiring, publish, deploy, or promotion."
+  },
+  "cast": [
+    {
+      "wearer": "man",
+      "identity_source": {
+        "path": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-front-2026-08-29.png",
+        "sha256": "ed3a1406ec8b72f6bae88163f1a1f02659d801dda179066b36ce81b47979b418",
+        "dimensions": [
+          363,
+          466
+        ],
+        "approval_state": "FOUNDER_APPROVED",
+        "locked_pixels": "Face, anatomy, pose, BR-007 shorts, legs, footwear, and visible body contact are protected. This source currently has a black tank top and is not BR-005 authority."
+      },
+      "products": [
+        {
+          "sku": "br-005",
+          "name": "BLACK Rose Hoodie — Signature Edition",
+          "product_hash": "849e883fbac39c65cdd3aeeb35ef8dbf2ac67f4ff3174af45f6d412896c4b7b6",
+          "physical_authority": {
+            "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+            "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4"
+          },
+          "photographed_decoration_authority": {
+            "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+            "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
+            "standalone_art_authorized": false,
+            "explicitly_forbidden_substitute": "data/brand-logos/three-rose-cluster.jpeg"
+          },
+          "surface_attachment_locks": [
+            "Small compact tonal molded-silicone cut-out of the exact product-specific silhouette photographed on the physical BR-005, on the wearer's RIGHT chest only (viewer-left in a front view). No generic collection-logo substitution.",
+            "Silicone surface is smooth, clean-edged, slightly raised, rubber-like, and free of thread texture.",
+            "One longitudinal white/grey rose-and-cloud embroidery only on the wearer's LEFT SIDE BODY (viewer-right torso), beginning below the armhole and continuing beside the kangaroo pocket toward the hem.",
+            "The longitudinal embroidery has directional thread texture and never touches an arm, sleeve, forearm, shoulder, chest, pocket, or cuff.",
+            "White flat woven drawstrings with plain textile ends; grey inner hood lining with tonal sublimated roses; lightweight black polyester body; tonal black cuff and hem ribbing; clean kangaroo pocket."
+          ]
+        },
+        {
+          "sku": "br-007",
+          "name": "BLACK Rose x Love Hurts Basketball Shorts",
+          "product_hash": "d0309d6342565bc6dd2112022f3ee8045227d222cfc556212f96e80c5f7c9cde",
+          "founder_approved_on_model_authority": {
+            "path": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-front-2026-08-29.png",
+            "sha256": "ed3a1406ec8b72f6bae88163f1a1f02659d801dda179066b36ce81b47979b418"
+          },
+          "physical_views": [
+            {
+              "view": "front",
+              "path": "assets/products/references/br-007-shorts-front-source.jpg",
+              "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314"
+            },
+            {
+              "view": "wearers_left_hip_not_back",
+              "path": "assets/products/references/br-007-shorts-left-hip-source.jpg",
+              "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2"
+            },
+            {
+              "view": "wearers_right_side",
+              "path": "assets/products/source-photos/black-rose/br-007-shorts-right-side.jpeg",
+              "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
+            },
+            {
+              "view": "back",
+              "path": "assets/products/references/br-007-shorts-back-source.jpg",
+              "sha256": "f1245ae31b688f0e1a830da7e9eaa09411219caeede13569d3a9cb90d8f286b9"
+            }
+          ],
+          "front_locks": [
+            "White waistband and white flat drawstring.",
+            "Black mesh main body with tonal grey repeating rose/cloud pattern.",
+            "Narrow white mesh side constructions with black binding and white piping; do not widen into broad blank panels.",
+            "Readable exact OAKLAND tackle-twill wordmark across front center.",
+            "Cream/peach/light-pink Love Hurts script wraps the wearer's-left front thigh/hip.",
+            "Wearer's-right white side panel contains the colored Black Rose cluster with black/grey blooms, green stems/leaves, and pale-blue cloud shading.",
+            "Wearer's-left white side panel contains the small dark exact SR-with-rose monogram.",
+            "Wearer's-left pentagonal Love Hurts insert remains a side/hip feature and is never moved to back center."
+          ]
+        }
+      ]
+    },
+    {
+      "wearer": "woman",
+      "identity_source": {
+        "path": "renders/scroll-world/BR-004/authority-stage/BR-004-women-led-on-model-authority-candidate.png",
+        "sha256": "97fc73d7617d473076ba653e9cc3d63a3e5a4d1249cda33120389998a0dd3d12",
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "approval_state": "FOUNDER_APPROVED_SOURCE_STAGE"
+      },
+      "protected_subject_matte": {
+        "path": "renders/scroll-world/BR-004/authority-stage/protected-input/br-004-women-led-subject-alpha-candidate.png",
+        "sha256": "6479f2b01820c755252e2046d0d900df361c57bdab4e78b6d997341c0d0c933e",
+        "eyes_on_state": "PASS_SILHOUETTE_MATTE",
+        "usage_rule": "This file is a black subject silhouette with transparency, not a standalone RGB subject alpha. Pair it with the founder-approved BR-004 RGB source; never treat the matte itself as product pixels."
+      },
+      "products": [
+        {
+          "sku": "br-004",
+          "name": "BLACK Rose Hoodie",
+          "product_hash": "9f0b77865f126b8cdc6b050734b925d0eddf3cd548d98b6270008240c20118ad",
+          "physical_authority": {
+            "path": "assets/3d-models/black-rose/Womens Black Rose Hooded Dress.jpeg",
+            "sha256": "23e4a5107d1617110c8d7fadb83b6bf67f7f8eb462ca70fdc30d5fdcee1b5882"
+          },
+          "locks": [
+            "Long black heavyweight pullover hoodie worn as a hoodie dress on women.",
+            "One large monochrome rose/cloud embroidery centered on the front chest above the kangaroo pocket.",
+            "Tonal black drawstrings, ribbed cuffs, and ribbed hem.",
+            "No silicone anywhere; no side-body decoration; no arm or sleeve decoration; no white drawstrings; no rose-print inner hood lining."
+          ]
+        }
+      ]
+    }
+  ],
+  "scene_authorities": {
+    "approved_environment_plate": {
+      "path": "renders/scroll-world/scene-plates/BR-COMMERCE-2-waterfront-plate-v1.png",
+      "sha256": "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    "exact_hero_graphic": {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/black-rose-star-graphic.png",
+      "sha256": "6af686d798fb6541c3a691492809224a6318d62573d1462c4f3f99af9957ec78",
+      "alpha_required": true,
+      "rule": "Use this exact rose-within-silver-star graphic as environmental continuity. Do not redraw, restyle, add lettering, replace the rose, or use it as garment art."
+    }
+  },
+  "optical_contract": {
+    "output_dimensions": [
+      1672,
+      941
+    ],
+    "lens_class": "normal",
+    "camera_height": "eye_level",
+    "horizon_y": 484,
+    "floor_response": "wet_polished_stone",
+    "key_light": "soft cool moonlight from upper camera-right with restrained architectural fill from camera-left",
+    "shadow": "soft contact shadows falling slightly camera-left and backward",
+    "reflection": "subtle vertically compressed floor reflections beneath both models and the hero monument",
+    "depth_order": [
+      "near floor and parapets",
+      "models sharing one foreground plane",
+      "exact hero graphic as a mid-ground architectural monument",
+      "waterfront and Bay Bridge in supporting depth",
+      "moon and sky"
+    ],
+    "native_integration_required": [
+      "same horizon and floor plane",
+      "matched body scale and camera perspective",
+      "shared key-light direction and edge spill",
+      "contact shadows attached to both sets of feet",
+      "subtle wet-floor reflections",
+      "atmospheric depth and consistent grain",
+      "natural mutual sightline without catalogue lineup stiffness",
+      "no cutout halo, matte fringe, floating feet, or independent studio pools"
+    ]
+  },
+  "execution_route": {
+    "stage_1": "Use the founder-approved BR-007 man frame as the edit target. With the explicit upper-body-only mask below, create only the undecorated BR-005 base garment volume: black body, plain black sleeves, hood with exact rose lining, white drawstrings, kangaroo pocket, and tonal ribbing. Do not create the chest silicone or side-body embroidery in this pass. Preserve face, pose, BR-007 shorts, legs, footwear, and every pixel outside the reviewed mask.",
+    "stage_1_edit_mask": {
+      "path": "data/candidates/br-commerce-2-one-shot-pre-submit-v2/BR-COMMERCE-2-approved-man-upper-body-edit-mask-v3.png",
+      "sha256": "d9147b68f975d3f7cf9bfb6d74ac4671646744bd7a7df5ddb14aba6107c96714",
+      "dimensions": [
+        363,
+        466
+      ],
+      "polarity": "alpha_0_edit_alpha_255_protect",
+      "eyes_on_overlay": {
+        "path": "data/candidates/br-commerce-2-one-shot-pre-submit-v2/BR-COMMERCE-2-approved-man-upper-body-edit-overlay-v3.png",
+        "sha256": "09d22144a53bf5a6bb951689e9a9918cbbc37a6267e7aa4ab883b14aabf03512",
+        "state": "READY_FOR_FOUNDER_REVIEW"
+      },
+      "protected_regions": "Face/head opening and the full BR-007 shorts/legs/footwear area remain outside the edit zone."
+    },
+    "stage_2": "Create two independent reviewed attachment mattes over the accepted base garment: one small wearer-right-chest matte for the molded silicone cluster and one wearer-left SIDE-BODY-ONLY matte for the longitudinal embroidery. Every arm, sleeve, forearm, shoulder, chest outside the silicone zone, pocket, and cuff pixel is excluded from the embroidery matte.",
+    "stage_3": "Apply the exact attachments only inside their independent mattes, then create and review a genuine alpha for the exact resulting male source. Reject any arm/sleeve intersection, opaque checkerboard, clipped limb, or altered BR-007 pixel.",
+    "stage_4": "Place the exact male alpha, founder-approved BR-004 woman alpha, exact hero graphic, and approved waterfront plate into one camera/floor/light contract. Restrict any generative integration pass to environment, edge spill, contact-shadow, and reflection regions; product/face pixels remain protected.",
+    "provider_policy": "Built-in image generation is not eligible for stage 1 because it exposes no explicit mask. A mask-capable edit route is mandatory. No provider call is allowed while this manifest is BLOCKED_PRE_PROVIDER."
+  },
+  "hard_rejects": [
+    "Any generic collection logo, data/brand-logos/three-rose-cluster.jpeg substitution, single-rose mark, SR mark, or invented floral chest mark on BR-005; any embroidered, printed, metallic, full-color, or left-chest treatment instead of the compact exact photographed product-specific molded-silicone cutout.",
+    "Any BR-005 longitudinal art on the arm, sleeve, forearm, shoulder, chest, pocket, or cuff; any duplicated side art.",
+    "Any BR-005 feature transferred to BR-004, including silicone, white drawstrings, rose-lined hood, or side-body art.",
+    "Any short/cropped BR-004 silhouette instead of the long hoodie dress.",
+    "Any BR-007 OAKLAND misspelling, altered Love Hurts script, missing tonal body pattern, widened white panels, view swap, mirrored side marks, displaced pentagonal insert, generic monogram, or invented decoration.",
+    "Any redrawn, approximate, text-bearing, or substituted Black Rose hero graphic.",
+    "Any catalogue lineup, pasted cutout, floating foot, unshared light field, inconsistent shadow/reflection, or environment that is not the approved waterfront world.",
+    "Any reuse of a rejected candidate as generation reference or product/scene authority."
+  ],
+  "pre_submit_gate": {
+    "product_fidelity_required": 100,
+    "scene_routing_required": 100,
+    "native_optical_integration_required": 95,
+    "hard_reject_count_required": 0,
+    "provider_submission_allowed": false,
+    "blocking_items": [
+      "BR005_UPPER_BODY_EDIT_MASK_CREATED_BUT_NOT_YET_FOUNDER_APPROVED",
+      "BR005_WEARER_RIGHT_CHEST_SILICONE_ATTACHMENT_MATTE_MISSING",
+      "BR005_WEARER_LEFT_SIDE_BODY_ONLY_EMBROIDERY_ATTACHMENT_MATTE_MISSING",
+      "BR005_ON_APPROVED_MAN_NOT_YET_MASK_EDITED_AND_VERIFIED",
+      "FOUNDER_APPROVED_MAN_GENUINE_ALPHA_NOT_AVAILABLE",
+      "MASK_EXTRACTION_TOOLCHAIN_ERROR_NUMPY_TRAPZ_PREVENTED_ZERO_COST_MALE_ALPHA_CREATION",
+      "LEAD_EXPLICIT_REAUTHORIZATION_REQUIRED_AFTER_FOUNDER_VISIBLE_SOURCE_PROOF"
+    ]
+  },
+  "proof_board": null,
+  "runtime_wiring_allowed": false,
+  "deployment_allowed": false
+}

@@ -3,8 +3,8 @@
   "scope": "Jersey Series as a Black Rose release in the active Flagship 2 V2 candidate",
   "verdict": "FAIL",
   "authorities": {
-    "catalog": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
-    "dossiers": "wordpress-theme/skyyrose-flagship/data/dossiers/",
+    "catalog": "data/skyyrose-catalog.csv",
+    "dossiers": "data/dossiers/",
     "media": "assets/hub/manifest.json",
     "generated_media_projection": "data/sot-images.json",
     "logos_and_patches": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",

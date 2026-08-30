@@ -33,7 +33,7 @@ Required before drafting — **absent input = stop and ask, never proceed on ass
 3. **Platform targets** — X, LinkedIn, TikTok, YouTube, newsletter, or multi-platform.
 4. **Goal** — awareness, conversion, recruiting, authority, launch support, or engagement.
 5. **Voice profile** — from `brand-voice` if one exists. For SkyyRose work, product facts come
-   only from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` and collection
+   only from `data/skyyrose-catalog.csv` and collection
    language only from `docs/brand/collection-stories.md` — never from memory.
 
 ## Procedure

@@ -155,7 +155,7 @@ ALL product images are AI-generated fashion model photos showing real models wea
 
 ## Products (30 total, 4 collections)
 
-**Authoritative source:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — read through the PHP loader (`skyyrose_get_product_catalog()`) or the Python loader (`scripts.nano_banana.catalog.load_catalog()`). Full SKU table with branding specs, prices, pre-order flags, and image paths lives in `knowledge/canonical_catalog.md`.
+**Authoritative source:** `data/skyyrose-catalog.csv` — read through the PHP loader (`skyyrose_get_product_catalog()`) or the Python loader (`scripts.nano_banana.catalog.load_catalog()`). Full SKU table with branding specs, prices, pre-order flags, and image paths lives in `knowledge/canonical_catalog.md`.
 
 ### BLACK ROSE (12)
 br-001 BLACK Rose Crewneck · br-002 BLACK Rose Joggers · br-003 BLACK is Beautiful Jersey Series: 0. Baseball Classic · br-004 BLACK Rose Hoodie · br-005 BLACK Rose Hoodie — Signature Edition · br-006 BLACK Rose Sherpa Jacket · br-007 BLACK Rose × Love Hurts Basketball Shorts · br-008 Jersey Series: 1. SF Inspired (Football) · br-009 Jersey Series: 2. Last Oakland (Football) · br-010 Jersey Series: 3. The Bay (Basketball) · br-011 Jersey Series: 4. The Rose (Hockey) · br-012 Jersey Series: 5. Last Oakland (Baseball)

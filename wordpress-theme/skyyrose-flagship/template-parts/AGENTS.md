@@ -18,7 +18,7 @@ wordpress-theme/skyyrose-flagship/template-parts/
 ```
 wordpress-theme/skyyrose-flagship/inc/product-catalog.php   # catalog helpers
 wordpress-theme/skyyrose-flagship/assets/css/               # read CSS only
-wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv # verify SKUs
+data/skyyrose-catalog.csv # verify SKUs
 ```
 
 **Out of bounds — do not touch:**

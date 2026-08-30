@@ -8,8 +8,8 @@ Enforcement system that catches drift between canonical data sources and downstr
 
 | Source | Path | What it owns |
 |--------|------|-------------|
-| **Product catalog** | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` | All 33 SKUs, garment types, dossier slugs |
-| **Logo registry** | `wordpress-theme/skyyrose-flagship/data/logo-registry.json` | All logos, placements, sku_logos, sku_folders |
+| **Product catalog** | `data/skyyrose-catalog.csv` | All 33 SKUs, garment types, dossier slugs |
+| **Logo registry** | `data/logo-registry.json` | Root-owned source for all logos, placements, sku_logos, and sku_folders |
 
 ---
 
@@ -20,7 +20,7 @@ Enforcement system that catches drift between canonical data sources and downstr
 | `skyyrose/elite_studio/sku_resolver.py` | `_JERSEY_SKUS` frozenset == CSV rows with jersey garment_type_lock | Yes |
 | `wordpress-theme/.../data/product-similarities.json` | Top-level SKU keys + array refs must exist in CSV | Yes |
 | `wordpress-theme/.../data/logo-registry.json` | `updated:` date field | Yes (timestamp only) |
-| `wordpress-theme/.../data/dossiers/*.md` | `sku:` frontmatter must be a live SKU | **Human review** |
+| `data/dossiers/*.md` | `sku:` frontmatter must be a live SKU | **Human review** |
 | `skyyrose/elite_studio/commerce.py` | Catalog summary prompt SKU list | **Human review** |
 | `skyyrose/elite_studio/tests/ProductCatalogTest.php` | Test SKU list | **Human review** |
 

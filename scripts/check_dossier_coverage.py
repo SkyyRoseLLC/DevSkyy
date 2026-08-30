@@ -1,9 +1,9 @@
 """Confirm every active SKU has a per-product design dossier.
 
 Reads the canonical CSV at
-`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` and verifies
+`data/skyyrose-catalog.csv` and verifies
 each active SKU has a matching dossier at
-`wordpress-theme/skyyrose-flagship/data/dossiers/{slug}.md`.
+`data/dossiers/{slug}.md`.
 
 Slug source preference:
   1. The `dossier_slug` column on the CSV row (once Task #16 lands).
@@ -23,8 +23,8 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-CSV_PATH = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
-DOSSIERS_DIR = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/dossiers"
+CSV_PATH = REPO_ROOT / "data/skyyrose-catalog.csv"
+DOSSIERS_DIR = REPO_ROOT / "data/dossiers"
 
 VARIANT_TO_BASE: dict[str, str] = {}
 

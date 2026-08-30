@@ -12,7 +12,7 @@
   },
   "source_snapshots": {
     "catalog_csv": {
-      "path": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+      "path": "data/skyyrose-catalog.csv",
       "sha256": "ded09dd3cc62309e28b8ab6861131099601aa7898c46b632397f9488956d3ccf",
       "product_count": 33
     },

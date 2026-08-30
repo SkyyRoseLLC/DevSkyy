@@ -1,7 +1,7 @@
 """Phase 1: Map WordPress media images to product catalog SKUs.
 
 Reads:
-  - wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv (canonical)
+  - data/skyyrose-catalog.csv (canonical)
   - wordpress/webp_image_mapping.json (74 uploaded WP images)
 
 Outputs:
@@ -41,9 +41,10 @@ MANUAL_OVERRIDES: dict[str, str] = {
     "br-003": "BR_266AD7B0_88A6_4489_AA58_AB72A5_main",
     "br-013": "BR_5A8946B1_B51F_4144_BCBB_F02846_main",
     "br-014": "BR_DEC_18_2023_6_09_21_PM_2_main",
-    "br-015": "BR_WOMENS_BLACK_ROSE_HOODED_DRESS_main",
-    "br-004": "BR_007_20230616_170635_1_main",
-    "br-005": "BR_THE_BLACK_ROSE_SHERPA_main",
+    # BR-004 is the regular long Black Rose Hoodie. The referenced physical
+    # source is the Women's Black Rose Hooded Dress; it must never inherit the
+    # Signature Edition's side embroidery or a generic BR_007 source.
+    "br-004": "BR_WOMENS_BLACK_ROSE_HOODED_DRESS_main",
     "br-006": "BR_BLACK_ROSE_SHERPA_main",
     "br-007": "LH_003_20221110_200039_main",
     "br-008": "LH_PROD_0D142A63_main",
@@ -71,6 +72,15 @@ MANUAL_OVERRIDES: dict[str, str] = {
     # Kids
     "kids-001": "SIG_SIGNATURE_COLLECTION_RED_ROSE__main",
     "kids-002": "SIG_PROD_FCCB8B16_main",
+}
+
+# A remote filename match is not product authority. These SKUs previously
+# resolved to a different garment: BR-005 to a sherpa and BR-015 to the long
+# BR-004 hoodie. Leave them deliberately unmapped until a reviewed exact media
+# receipt supplies their own remote binding. Do not fall back to token scoring.
+EXACT_SOURCE_REQUIRED_SKUS: dict[str, str] = {
+    "br-005": "Signature Edition requires its own reviewed remote media binding.",
+    "br-015": "Jersey Series cannot use the BR-004 long hoodie source.",
 }
 
 # Product name keywords → image key keywords mapping
@@ -133,6 +143,13 @@ def map_images() -> dict[str, dict]:
     """Build SKU → image mapping."""
     from skyyrose.core.catalog_loader import read_catalog_rows
 
+    if not IMAGE_MAP_JSON.is_file():
+        raise SystemExit(
+            "BLOCKED: remote WordPress media inventory is missing at "
+            f"{IMAGE_MAP_JSON.relative_to(ROOT)}. Restore a reviewed inventory before "
+            "rebuilding SKU bindings; automatic matching is forbidden for protected SKUs."
+        )
+
     # Load catalog
     products: list[dict] = list(read_catalog_rows())
 
@@ -153,6 +170,11 @@ def map_images() -> dict[str, dict]:
         name = product["name"].strip().strip('"')
         slug = product.get("render_output_slug", "").strip()
         collection_slug = product.get("collection", "").strip()
+
+        if sku in EXACT_SOURCE_REQUIRED_SKUS:
+            unmatched.append(sku)
+            print(f"  ! {sku:18s} → BLOCKED ({EXACT_SOURCE_REQUIRED_SKUS[sku]})")
+            continue
 
         # Check manual overrides first
         if sku in MANUAL_OVERRIDES:

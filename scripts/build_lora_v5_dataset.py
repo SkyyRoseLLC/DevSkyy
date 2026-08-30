@@ -30,12 +30,11 @@ from pathlib import Path
 from PIL import Image
 
 PROJECT_ROOT = Path(__file__).parent.parent
-CATALOG_CSV = (
-    PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
+CATALOG_CSV = PROJECT_ROOT / "data" / "skyyrose-catalog.csv"
 PRODUCTS_DIR = (
     PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "assets" / "images" / "products"
 )
+PRODUCT_REFERENCES_DIR = PROJECT_ROOT / "assets" / "products" / "references"
 DATASET_DIR = PROJECT_ROOT / "datasets" / "skyyrose_lora_v5"
 IMAGES_DIR = DATASET_DIR / "images"
 CAPTIONS_DIR = DATASET_DIR / "captions"
@@ -97,10 +96,13 @@ CAPTION_OVERRIDES: dict[str, str] = {
         "Black Rose Collection by SkyyRose, luxury streetwear outerwear"
     ),
     "br-007": (
-        "black athletic shorts with 'OAKLAND' text in white across front, rose pattern print "
-        "throughout, 'Bay Area' script overlay, white elastic drawstring waistband, "
-        "white side panels with geometric diamond shapes, small rose-in-clouds patch on left leg, "
-        "Black Rose Collection by SkyyRose, luxury streetwear shorts"
+        "black mesh basketball shorts with white tackle-twill 'OAKLAND' across the front, "
+        "cream and peach 'Love Hurts' script across the wearer's-left thigh and hip, tonal gray "
+        "rose repeat, colored Black Rose rose-and-cloud cluster on the wearer's-right front white "
+        "panel, exact dark SR-with-rose monogram on the wearer's-left front white panel, white "
+        "pentagonal chevron Love Hurts insert on the wearer's-left hip only and never back-center, "
+        "two horizontal rear openings with no white back-center panel, Black Rose x Love Hurts "
+        "collaboration by SkyyRose, luxury streetwear shorts"
     ),
     "br-008": (
         "football jersey SF Inspired BLACK IS BEAUTIFUL series number 1, "
@@ -243,7 +245,9 @@ TECHFLAT_OVERRIDES: dict[str, list[str]] = {
     "br-004": ["br-004-black-rose-hoodie.jpeg"],
     "br-005": ["br-005-signature-hoodie.jpeg"],
     "br-006": ["br-006-sherpa-jacket.jpeg"],
-    "br-007": ["br-007-basketball-shorts.jpeg"],
+    # BR-007 uses the three exact root physical sources below. Do not mix the
+    # obsolete theme techflat into the authority set.
+    "br-007": [],
     "br-008": ["br-008-sf-inspired.jpg"],
     "br-009": ["br-009-last-oakland-football.jpg"],
     "br-010": ["br-010-the-bay-basketball.jpeg"],
@@ -287,11 +291,6 @@ MODEL_SHOTS: dict[str, list[str]] = {
     "br-003": ["br-003-back-model.webp"],
     "br-004": ["br-004-back-model.webp"],
     "br-005": ["br-005-back-model.webp"],
-    "br-007": [
-        "br-007-back-model.webp",
-        "br-007-real-front.jpg",
-        "br-007-real-back.jpg",
-    ],
     "br-008": ["br-008-back-model.webp"],
     # LOVE HURTS
     "lh-002": ["lh-002-back-model.webp"],
@@ -315,6 +314,17 @@ MODEL_SHOTS: dict[str, list[str]] = {
     # KIDS CAPSULE
     "kids-001": ["kids-red-set-front-model.webp", "kids-red-set-back-model.webp"],
     "kids-002": ["kids-purple-set-front-model.webp", "kids-purple-set-back-model.webp"],
+}
+
+# Root-owned physical product photographs are product authority, not model
+# shots. Their explicit view roles prevent the founder-supplied BR-007 left-hip
+# image from ever being trained as a back view.
+PHYSICAL_SOURCE_SHOTS: dict[str, list[tuple[str, Path]]] = {
+    "br-007": [
+        ("front", PRODUCT_REFERENCES_DIR / "br-007-shorts-front-source.jpg"),
+        ("left_hip_not_back", PRODUCT_REFERENCES_DIR / "br-007-shorts-left-hip-source.jpg"),
+        ("back", PRODUCT_REFERENCES_DIR / "br-007-shorts-back-source.jpg"),
+    ]
 }
 
 
@@ -392,7 +402,9 @@ def main() -> int:
         product_images = 0
 
         # 1. Techflat(s) — primary training images
-        techflat_files = TECHFLAT_OVERRIDES.get(sku) or [f"{sku}-techflat.jpeg"]
+        techflat_files = TECHFLAT_OVERRIDES.get(sku)
+        if techflat_files is None:
+            techflat_files = [f"{sku}-techflat.jpeg"]
         for tf_file in techflat_files:
             src = PRODUCTS_DIR / tf_file
             if not src.exists():
@@ -427,7 +439,45 @@ def main() -> int:
                 print(f"  + techflat: {tf_file} → {dst}")
                 product_images += 1
 
-        # 2. Model shots — verified secondary images
+        # 2. Exact physical source views — never mislabeled as on-model media.
+        for source_view, src in PHYSICAL_SOURCE_SHOTS.get(sku, []):
+            if not src.exists():
+                print(f"  ! MISSING physical source: {src.name}")
+                missing.append(f"{sku}: {src.relative_to(PROJECT_ROOT)}")
+                continue
+
+            stem = f"{sku}-physical-{source_view.replace('_', '-')}"
+            dst = f"{stem}.jpg"
+            caption = build_caption(
+                sku,
+                csv_name,
+                collection,
+                suffix=(
+                    f", exact founder-supplied physical product authority, {source_view} view; "
+                    "view role is binding and must not be mirrored or reassigned"
+                ),
+            )
+
+            if not args.dry_run:
+                if copy_and_prepare_image(src, dst):
+                    write_caption(stem, caption)
+                    metadata_entries.append(
+                        {
+                            "file_name": dst,
+                            "text": caption,
+                            "sku": sku,
+                            "type": "physical_product_authority",
+                            "view": source_view,
+                            "trigger": trigger,
+                        }
+                    )
+                    product_images += 1
+                    print(f"  + physical source ({source_view}): {src.name}")
+            else:
+                print(f"  + physical source ({source_view}): {src.name} → {dst}")
+                product_images += 1
+
+        # 3. Model shots — verified secondary images
         shots = MODEL_SHOTS.get(sku, [])
         for shot_file in shots:
             src = PRODUCTS_DIR / shot_file

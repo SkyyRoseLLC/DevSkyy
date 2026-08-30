@@ -19,7 +19,7 @@ Every generated image must show a model wearing the **exact real product** — c
 
 ## Product Catalog
 
-**Single source of truth:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
+**Single source of truth:** `data/skyyrose-catalog.csv`
 
 Read the CSV for SKU, name, price, collection, branding_spec, and image paths. Previous versions of this doc kept a hardcoded SKU table that drifted out of sync with the CSV (e.g., kids-001 was listed here as "Purple/Pink" when the CSV said "Red/Black" — caused a wasted paid render run on 2026-04-19).
 

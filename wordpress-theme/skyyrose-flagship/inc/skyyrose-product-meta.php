@@ -548,7 +548,7 @@ if ( defined( 'WP_CLI' ) && WP_CLI ) {
 
 		$dry_run    = isset( $assoc_args['dry-run'] );
 		$only_sku   = isset( $assoc_args['sku'] ) ? sanitize_text_field( $assoc_args['sku'] ) : '';
-		$csv_path   = trailingslashit( get_stylesheet_directory() ) . 'data/skyyrose-catalog.csv';
+		$csv_path   = skyyrose_catalog_csv_path();
 		$schema     = skyyrose_product_meta_schema();
 		$csv_map    = array();
 		$col_to_key = array();

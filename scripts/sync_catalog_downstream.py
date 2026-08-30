@@ -41,12 +41,8 @@ from typing import Any
 # ---------------------------------------------------------------------------
 _REPO_ROOT: Path = Path(__file__).resolve().parents[1]
 
-_CATALOG_CSV: Path = (
-    _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
-_LOGO_REGISTRY: Path = (
-    _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "logo-registry.json"
-)
+_CATALOG_CSV: Path = _REPO_ROOT / "data" / "skyyrose-catalog.csv"
+_LOGO_REGISTRY: Path = _REPO_ROOT / "data" / "logo-registry.json"
 _SIMILARITIES_JSON: Path = (
     _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "product-similarities.json"
 )
@@ -528,7 +524,7 @@ def _collect_human_attention(rows: list[dict[str, str]]) -> list[str]:
     all_skus = _csv_all_skus(rows)
 
     # Check for dossiers with unknown SKUs in frontmatter
-    dossiers_dir = _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "dossiers"
+    dossiers_dir = _REPO_ROOT / "data" / "dossiers"
     if dossiers_dir.exists():
         for md in sorted(dossiers_dir.glob("*.md")):
             text = md.read_text(encoding="utf-8", errors="replace")

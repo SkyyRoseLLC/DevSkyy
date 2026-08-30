@@ -13,7 +13,7 @@ The gotchas below are the ones a fresh session gets wrong.
 
 ## Catalog data is SERVER-ONLY
 
-`lib/catalog.ts` and `lib/catalog-server.ts` use `node:fs` (`catalog.ts:13`). Importing either from a `'use client'` component **crashes the build**. Client code must call the REST routes (`/api/catalog`, `/api/catalog/[sku]`). The CSV resolver walks up 6 dirs from `process.cwd()` (`catalog.ts:48`) — confirm Vercel `rootDirectory=frontend` keeps `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` in scope.
+`lib/catalog.ts` and `lib/catalog-server.ts` use `node:fs` (`catalog.ts:13`). Importing either from a `'use client'` component **crashes the build**. Client code must call the REST routes (`/api/catalog`, `/api/catalog/[sku]`). The CSV resolver walks up 6 dirs from `process.cwd()` (`catalog.ts:48`) — confirm Vercel `rootDirectory=frontend` keeps `data/skyyrose-catalog.csv` in scope.
 
 ## State management — three layers, pick the right one
 

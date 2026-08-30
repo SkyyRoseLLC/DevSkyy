@@ -81,7 +81,7 @@ For any Phase 5 work proposed during planning that competes with 5.1.5 for resou
 - [`docs/SKYYROSE_V2_MASTER_PLAN.md`](../../docs/SKYYROSE_V2_MASTER_PLAN.md) §5 — original Phase 5 sub-phase ordering, now superseded by this ADR for sequencing
 - [`docs/SKYYROSE_WORDPRESS_PLAN.md`](../../docs/SKYYROSE_WORDPRESS_PLAN.md) §6 — per-page editorial briefs that depend on imagery quality
 - [`MEMORY.md`](../../../.claude/projects/-Users-theceo-DevSkyy/memory/MEMORY.md) "Production Imagery Pipeline (Verified Mar 8)" — current pipeline state
-- `wordpress-theme/skyyrose-flagship/data/dossiers/` — per-product branding spec the imagery pipeline reads
+- `data/dossiers/` — per-product branding spec the imagery pipeline reads
 - `skyyrose/elite_studio/agents/compositor_agent.py` — the 6-stage pipeline that needs the reliability sweep
 
 ## Open questions for Phase 5 planning

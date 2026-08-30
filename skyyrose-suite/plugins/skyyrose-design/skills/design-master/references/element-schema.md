@@ -4,7 +4,7 @@ The single contract that `universal-learner` (writer) and `design-master` (reade
 `universal-learner` extracts elements into this shape; `design-master` queries them to assemble `gpt-image-2` prompts. One schema, two consumers — no code duplication.
 
 This schema is grounded in two real artifacts (do not drift from them):
-- **Input:** SkyyRose product dossiers — markdown + YAML frontmatter (`sku`, `name`, `collection`, `logo_reference`, `reference_image`) + zone-structured prose body (garment-type lock, Branding by placement zone, Negative, Scene direction). Source: `wordpress-theme/skyyrose-flagship/data/dossiers/*.md`.
+- **Input:** SkyyRose product dossiers — markdown + YAML frontmatter (`sku`, `name`, `collection`, `logo_reference`, `reference_image`) + zone-structured prose body (garment-type lock, Branding by placement zone, Negative, Scene direction). Source: `data/dossiers/*.md`.
 - **Output target:** the production `gpt-image-2` prompt grammar in `scripts/oai_render/prompt.py` (`images.edit` mode, size `1024x1536`, `quality:high`, negatives baked inline as `DO NOT` text — gpt-image-2 has **no** `negative_prompt` API field, **no** `seed`).
 
 ## Element record
@@ -85,7 +85,7 @@ This schema is grounded in two real artifacts (do not drift from them):
   "product_line": "PRODUCT: BLACK Rose Hoodie (SKU br-004) — Black Rose collection.",
   "reference_images": ["data/product-references/br-004-hoodie-real-front.jpeg"],
   "reference_labels": ["image 1 — front real photo"],
-  "dossier_spec_path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie.md",
+  "dossier_spec_path": "data/dossiers/black-rose-hoodie.md",
   "is_patch": false,
   "founder_corrections": [],
   "negative_guardrails": "DO NOT add text, watermarks, mockup labels ...",

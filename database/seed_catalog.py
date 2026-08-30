@@ -66,7 +66,7 @@ def _load_products() -> list[dict]:
     """Load the canonical product list via skyyrose.core.catalog_loader.
 
     Reads the single source of truth
-    (wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv). The loader
+    (data/skyyrose-catalog.csv). The loader
     already skips blank / SKU-less rows, and the canonical CSV carries no
     render-variant rows, so every row is a standalone product.
     """

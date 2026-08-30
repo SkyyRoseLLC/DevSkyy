@@ -24,7 +24,7 @@ from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 
-CATALOG_REL = "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+CATALOG_REL = "data/skyyrose-catalog.csv"
 GHOST_REL = "renders/ghost-mannequin"
 APPROVED_SUBDIR = "approved"
 FRONT_MODEL_COL = "front_model_image"

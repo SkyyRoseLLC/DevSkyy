@@ -1,0 +1,31 @@
+{
+  "schema": "skyyrose.native-scene-candidate-receipt.v1",
+  "scene_reference_id": "LH-COMMERCE-2",
+  "story_role": "The Fractured Chamber",
+  "candidate_state": "REJECTED_QUARANTINED_DO_NOT_REUSE_AS_SCENE_OR_GENERATIVE_REFERENCE",
+  "output": {
+    "path": "renders/scroll-world/LH-COMMERCE-2/scene-candidate/LH-COMMERCE-2-fractured-chamber-higgsfield-candidate-v1.png",
+    "sha256": "505b5c3617e4a2500e8afcbd4707af8220b56dff4b18cd5e99ffc7cd90d468fc",
+    "dimensions": [1792, 2400],
+    "provider_job_id": "4d25fdc3-676c-47f3-a62b-09d31705d4b7",
+    "provider_model_requested": "nano_banana_pro",
+    "provider_model_returned": "nano_banana_2"
+  },
+  "verified_inputs": [
+    {"role": "man_on_model_authority", "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/LH-003-men-led-on-model-authority-candidate.png", "sha256": "17840a8cf49919f150722125eed826327a369be5dbd22b53c066ba62459d5dfe"},
+    {"role": "woman_on_model_authority", "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/LH-003-women-led-on-model-authority-candidate.png", "sha256": "dda284ee42e16de246195229739543e378be997a4ad80e845851260f5cfb0190"},
+    {"role": "man_protected_alpha", "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/protected-input/lh-003-men-led-onmodel-candidate-alpha.png", "sha256": "a8761dfa1c8158aaf123642aa45a2fb71c84c31c99e8f7ad2df46517a6c8c248"},
+    {"role": "woman_protected_alpha", "path": "renders/scroll-world/LH-COMMERCE-2/authority-stage/protected-input/lh-003-women-led-onmodel-candidate-alpha.png", "sha256": "913894cd1a401f627c87319880022c7b2ba38822c8159de277df7b468a5dbc52"},
+    {"role": "lh003_physical_front", "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg", "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"},
+    {"role": "fractured_chamber_plate", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-love-hurts-cracked-rose-gpt2.webp", "sha256": "3f4a97c51d4ce933c4c9d2fa029596b34542650d4b5842d18bbc45a6480ce709"},
+    {"role": "protected_rose_authority", "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png", "sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02"}
+  ],
+  "manual_fidelity_review": {
+    "passing_observations": ["Dual cast is present with coherent floor plane, vitrine illumination, shadows, and reflections.", "Protected enchanted rose appears once under glass.", "Woman's front-facing shorts retain the primary white mesh/rose/black-panel language."],
+    "hard_failure": "The man is rendered in a rear view, but the rear shorts show a carried-over front Love Hurts graphic treatment rather than the exact physical back: two horizontal black welt pockets and the large red-and-white broken-heart-and-thorns composition on the wearer's right.",
+    "required_reroll_change": "Include the physical LH-003 back reference as a locked image whenever the man is framed from rear; otherwise frame both exact shorts only from their verified front geometry.",
+    "promotion_allowed": false,
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}

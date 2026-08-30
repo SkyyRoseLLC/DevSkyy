@@ -1,12 +1,12 @@
 {
   "$schema": "Canonical logo registry for the SkyyRose imagery pipeline. Logos with `co_located_per_sku: true` are resolved at consumption time via `assets/images/products/<sku-folder>/<filename>` — the sku-folder is the canonical render_output_slug from skyyrose-catalog.csv. All other logos live in assets/images/logos/. Every SKU's logo placements are defined here, cross-checked with skyyrose-catalog.csv::branding_spec during pre-flight. Edit both files together when adding a logo or reassigning placements.",
-  "version": 6,
-  "updated": "2026-06-11",
+  "version": 8,
+  "updated": "2026-08-28",
   "brand_primary": "sr-monogram-rose-gold",
   "logos": {
     "sr-monogram-rose-gold": {
       "file": "sr-monogram-rose-gold.jpeg",
-      "description": "SKYYROSE BRAND PRIMARY LOGO (site-wide). Rose-gold metallic SR monogram with stylized rose flourish. Use in header, footer, favicon, loading states, mobile menu. ALSO used as embroidered placement on br-005 (Black Rose Hoodie — Signature Edition) at right chest. Confirmed brand primary 2026-05-24.",
+      "description": "SKYYROSE BRAND PRIMARY LOGO (site-wide). Rose-gold metallic SR monogram with stylized rose flourish. Use in header, footer, favicon, loading states, and mobile menu. It is not a BR-005 product decoration. Confirmed brand primary 2026-05-24; BR-005 exclusion founder-corrected 2026-08-28.",
       "primary_color": "#B76E79",
       "recolor_allowed": true,
       "site_wide": true
@@ -16,6 +16,13 @@
       "description": "SkyyRose 'SR' monogram in warm gold finish. Used on the Signature collection as the premium colorway.",
       "primary_color": "#D4AF37",
       "recolor_allowed": false
+    },
+    "sr-rose-monogram": {
+      "source_path": "data/brand-logos/sr-rose-monogram.png",
+      "description": "ROOT ART AUTHORITY. Exact interlocking SR monogram terminating in a stemmed rose flourish. Preserve the supplied silhouette, letter construction, rose, leaves, and continuous baseline flourish. BR-007 uses this exact shape as a small dark embroidered mark on the wearer's-left front white-mesh side panel; never substitute plain SR letters, Love Hurts lettering, or a rose cluster.",
+      "primary_color": "#C99A8F",
+      "recolor_allowed": true,
+      "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc"
     },
     "rose-gold-rose": {
       "file": "rose-gold-rose.jpeg",
@@ -30,6 +37,20 @@
       "primary_color": "#2F2F2F",
       "recolor_allowed": false,
       "collection": "black_rose"
+    },
+    "three-rose-cluster": {
+      "source_path": "data/brand-logos/three-rose-cluster.jpeg",
+      "description": "ROOT SHARED ART ASSET. This illustration is not BR-005 garment-decoration authority and must never be substituted for the photographed BR-005 right-chest silicone cutout, side-body embroidery, or hood-lining artwork. Use only for SKUs whose dossier independently verifies this exact art.",
+      "primary_color": "#A9A9A9",
+      "recolor_allowed": true,
+      "collection": "shared"
+    },
+    "br-005-photographed-decoration": {
+      "source_path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+      "description": "BR-005 PRODUCT-SPECIFIC PHYSICAL AUTHORITY ONLY. The exact photographed right-chest molded silicone cutout, wearer-left side-body embroidery, and sublimated hood-lining artwork must be copied only from this physical garment source. No standalone vector or generic collection graphic is currently authorized. Do not substitute three-rose-cluster.jpeg, an SR monogram, a single rose, a generated floral mark, text, or any other logo asset.",
+      "recolor_allowed": false,
+      "collection": "black_rose",
+      "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4"
     },
     "red-roses-cloud-cluster": {
       "file": "red-roses-cloud-cluster.jpeg",
@@ -170,16 +191,18 @@
       "name": "BLACK Rose Hoodie — Signature Edition",
       "placements": [
         {
-          "logo_id": "sr-monogram-rose-gold",
+          "logo_id": "br-005-photographed-decoration",
           "position": "right_chest",
           "technique": "silicone_cut_out",
-          "colorway": "rose_gold"
+          "colorway": "tonal_grey_white",
+          "notes": "Exact product-specific silhouette from the physical BR-005 chest mark only. Standalone art is unverified. No thread texture, generic collection logo, SR monogram, text, recolor, or invented floral substitution."
         },
         {
-          "logo_id": "black-roses-cloud-cluster",
+          "logo_id": "br-005-photographed-decoration",
           "position": "body_side_panel",
           "technique": "embroidered",
-          "notes": "On body side, NOT on arm."
+          "colorway": "tonal_grey_white",
+          "notes": "One exact product-specific photographed longitudinal treatment on the wearer's-left side body below the armhole beside the kangaroo pocket. Standalone art is unverified. Never on the arm, sleeve, forearm, shoulder, chest, or pocket."
         }
       ]
     },
@@ -212,21 +235,31 @@
         },
         {
           "logo_id": "love-hurts-full-lettering",
-          "position": "left_side",
+          "position": "wearers_left_front_thigh_and_hip_wrap",
           "technique": "sublimated",
           "size_inches": 12,
-          "notes": "Large sublimated element."
+          "notes": "Large cream/peach/grey treatment crosses the wearer's-left front thigh and continues naturally around the left hip/back-left edge. Preserve the asymmetric wrap from the physical front, left-hip, and back sources; never center or mirror it."
         },
         {
-          "logo_id": "black-roses-cloud-cluster",
-          "position": "mesh_side_panels",
-          "technique": "stitched"
+          "logo_id": "three-rose-cluster",
+          "position": "wearers_right_front_white_mesh_side_panel",
+          "technique": "embroidered",
+          "colorway": "physical_front_panel_black_green_blue",
+          "notes": "Exact photographed Black Rose cluster appears only on the wearer's-right white-mesh side panel: black/grey blooms, green stems/leaves, white cloud with pale-blue underside shading. Do not make it tonal and do not propagate these colors elsewhere."
+        },
+        {
+          "logo_id": "sr-rose-monogram",
+          "position": "wearers_left_front_white_mesh_side_panel",
+          "technique": "embroidered",
+          "colorway": "dark_monochrome_on_white_mesh",
+          "notes": "Small dark interlocking monogram exactly as photographed on the wearer's-left front white-mesh side panel. Use the source shape only; do not render rose-gold, enlarge it, or substitute Love Hurts lettering."
         },
         {
           "logo_id": "love-hurts-full-lettering",
-          "position": "mesh_side_panels",
-          "technique": "stitched",
-          "notes": "Smaller Love Hurts + Rose logos stitched on mesh side panels."
+          "position": "wearers_left_hip_white_pentagonal_chevron_insert",
+          "technique": "embroidered",
+          "colorway": "dark_monochrome_on_white_mesh",
+          "notes": "Dark Love Hurts lockup inside the white pentagonal/chevron insert on the wearer's-left HIP/SIDE. The left-hip source is not a back view. Never relocate this insert or lockup to back center."
         }
       ],
       "front_text": "Oakland",
@@ -654,6 +687,15 @@
   },
   "gaps": [],
   "changelog": [
+    {
+      "version": 8,
+      "date": "2026-08-28",
+      "changes": [
+        "Corrected BR-007 view semantics from founder source evidence: the former processed 'back' crop is a wearer's-left hip/side view; the authoritative front, left-hip, and physical back sources now have separate root-owned roles.",
+        "Locked the colored Black Rose cluster to the wearer's-right front white-mesh panel and the small dark interlocking monogram to the wearer's-left front white-mesh panel.",
+        "Locked the white pentagonal/chevron Love Hurts insert to the wearer's-left hip/side and prohibited any back-center relocation; the physical back has two horizontal white-trimmed openings and no centered white panel."
+      ]
+    },
     {
       "version": 5,
       "date": "2026-05-27",

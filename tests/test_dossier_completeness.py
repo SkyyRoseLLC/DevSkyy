@@ -1,7 +1,7 @@
 """CI gate — every active SKU must have a schema-valid dossier.
 
 Reads the canonical CSV at
-``wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`` and asserts
+``data/skyyrose-catalog.csv`` and asserts
 that every row's ``dossier_slug`` resolves to a markdown file that parses
 cleanly through ``DossierSchema``. Schema failures fail CI loudly.
 

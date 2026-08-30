@@ -348,7 +348,7 @@ DevSkyy/
 ├── security/                    # JWT, OAuth2, AES-256-GCM
 ├── data/
 │   └── product-catalog.csv      # Legacy path; canonical catalog is
-│                                 # wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv
+│                                 # data/skyyrose-catalog.csv
 ├── scripts/                     # Deploy, sync, generation, verification scripts
 ├── tests/                       # pytest + jest
 └── docs/                        # Documentation
@@ -363,4 +363,4 @@ DevSkyy/
 - Python line length: 100
 - Use `npm` not `pnpm` (Vercel compat on Node 22+)
 - WordPress: extend via hooks, never modify core
-- Product catalog is single-source: `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — never invent or reference retired SKUs
+- Product catalog is single-source: `data/skyyrose-catalog.csv` — never invent or reference retired SKUs

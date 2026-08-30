@@ -31,7 +31,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 TRIPO_OUTPUT = REPO_ROOT / "renders/output/tripo"
-CATALOG_CSV = REPO_ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+CATALOG_CSV = REPO_ROOT / "data/skyyrose-catalog.csv"
 ASSETS_DIR = REPO_ROOT / "wordpress-theme/skyyrose-flagship/assets/images/products"
 
 IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".tiff", ".bmp"}

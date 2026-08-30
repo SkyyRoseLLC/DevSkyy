@@ -28,9 +28,7 @@ from pathlib import Path
 #                                            parents[2] = repo root
 _REPO_ROOT: Path = Path(__file__).resolve().parents[2]
 
-CATALOG_CSV_PATH: Path = (
-    _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
-)
+CATALOG_CSV_PATH: Path = _REPO_ROOT / "data" / "skyyrose-catalog.csv"
 
 BUNDLE_DIR: Path = _REPO_ROOT / "data" / "product-bundles"
 

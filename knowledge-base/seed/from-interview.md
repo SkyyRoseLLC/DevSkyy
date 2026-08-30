@@ -88,7 +88,7 @@ The neighborhoods, places, and codes from Oakland that drive SkyyRose's geograph
 
 **No token-wasting glob fishing.** Before writing code, read the canonical source for the data or behavior you're touching. The canonical sources are:
 
-- Product data → `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + `data/dossiers/{slug}.md`
+- Product data → `data/skyyrose-catalog.csv` + `data/dossiers/{slug}.md`
 - Brand canon → this file + `eval/brand-story.md`
 - Architecture decisions → `knowledge-base/decisions/` + `docs/adr/`
 - Locked decisions → `docs/SKYYROSE_V2_MASTER_PLAN.md` §1.1

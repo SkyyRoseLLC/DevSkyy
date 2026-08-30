@@ -1,0 +1,22 @@
+Use case: identity-preserve / explicit masked garment edit
+Asset type: BR-COMMERCE-2 protected on-model product authority candidate
+
+EDIT TARGET
+Use the founder-approved male image as the immutable base. Edit ONLY the reviewed upper-body garment mask that covers the black tank top and the necessary sleeve/hood volume. Every pixel outside the mask must remain unchanged, including his face, hair, skin, tattoos outside the mask, body proportions, pose, hands, BR-007 shorts, legs, footwear, and source geometry.
+
+PRIMARY REQUEST — BASE GARMENT ONLY
+Inside the mask only, create the undecorated base construction of the physical BR-005 BLACK Rose Hoodie — Signature Edition: lightweight black polyester pullover body, completely plain black sleeves, tonal black ribbing, clean kangaroo pocket, white FLAT woven drawstrings, and grey inner hood lining carrying the exact tonal sublimated repeating rose pattern.
+
+Do not create either garment attachment in this pass. The molded silicone chest cluster and longitudinal side-body embroidery will be applied later through two separate founder-reviewed attachment mattes. The general upper-body mask is not placement authority for either attachment.
+
+MANDATORY PLAIN-SLEEVE LOCK
+Both sleeves, arms, forearms, shoulders, cuffs, and armhole fabric remain completely plain black. No rose, cloud, stem, leaf, logo, text, patch, embroidery, print, silicone, tonal ghost image, or decorative mark may intersect any sleeve or arm pixel.
+
+PROTECTED BR-007 LOCK
+The founder-approved BR-007 shorts are outside the edit mask and must remain pixel-identical. Do not regenerate, reinterpret, recolor, relabel, resize, or restyle any part of the shorts. Preserve their exact OAKLAND lettering, Love Hurts script, tonal rose repeat, white waistband and drawstring, narrow white mesh side construction, bindings, and photographed front panel marks.
+
+AVOID
+No chest artwork in this base pass. No side-body artwork in this base pass. No arm artwork. No sleeve artwork. No generic rose logo. No extra chest mark. No left-chest logo. No black drawstrings. No solid-black inner hood. No heavyweight cotton-fleece texture. No text or labels added anywhere. No pose change. No face change. No anatomy change. No shorts change. No background change outside the reviewed mask.
+
+OUTPUT BOUNDARY
+Return one quarantined source-stage candidate at exactly the edit target's original dimensions. Generation is not approval, wiring, publishing, or deployment.

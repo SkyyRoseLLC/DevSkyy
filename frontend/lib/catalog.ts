@@ -1,7 +1,7 @@
 /**
  * Canonical product catalog reader (server-only).
  *
- * Reads `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` — the
+ * Reads `data/skyyrose-catalog.csv` — the
  * ONE source of truth for every SkyyRose SKU. Parsed once per server process,
  * cached in module scope, hot-reloaded in `next dev` when the file changes.
  *
@@ -33,12 +33,7 @@ export interface CatalogProduct {
   brandingSpec: string;
 }
 
-const CANONICAL_CSV_RELATIVE = path.join(
-  'wordpress-theme',
-  'skyyrose-flagship',
-  'data',
-  'skyyrose-catalog.csv'
-);
+const CANONICAL_CSV_RELATIVE = path.join('data', 'skyyrose-catalog.csv');
 
 // Vercel builds this app with `frontend/` as its root directory, so it cannot
 // trace the WordPress SOT from the monorepo parent into a serverless function.

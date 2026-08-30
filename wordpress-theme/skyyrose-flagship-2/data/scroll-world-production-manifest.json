@@ -1,0 +1,85 @@
+{
+  "schema": "skyyrose.v2.scroll-world-production-manifest.v1",
+  "status": "BLOCKED_SOURCE_AND_PROMOTION_GATES",
+  "source_freshness_lock": {
+    "path": "data/product-sot.json",
+    "sha256": "98310ba35a27e4ae0690d54ca8dd35394b6fdfa314721d32e443ec865d3d2f9f"
+  },
+  "historical_five_world_pack": "ARCHIVAL_CONTEXT_ONLY_NOT_RUNTIME_FALLBACK",
+  "hero_dual_cast_four_sku_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "each collection's two hero-derived world moments together",
+    "required_roles": ["hero_world_moment_1", "hero_world_moment_2"],
+    "required_scene_wearers": ["man", "woman"],
+    "minimum_distinct_exact_skus_across_two_hero_moments": 4,
+    "scene_requirement": "The two hero-derived scenes together contain both wearers naturally placed in each collection world and at least four different exact SKUs. Their different collection-specific selections may only use the declared hero-scene SKU casts; source-stage coverage elsewhere does not satisfy hero-scene coverage.",
+    "preorder_boundary": "The collection-preorder scene is an exact-CTA product moment and does not count toward the hero-pair four-SKU requirement.",
+    "collection_plan_status": {
+      "black-rose": "DECLARED_FOUR_SKU_HERO_CAST_SOURCE_GATES_BLOCKED",
+      "love-hurts": "DECLARED_FOUR_SKU_HERO_CAST__PRESERVED_VOW_AISLE_LOCAL_HASH_VERIFIED_QUARANTINED",
+      "signature": "DECLARED_FIVE_SKU_HERO_CAST_MEETS_FOUR_MINIMUM_SOURCE_GATES_BLOCKED"
+    },
+    "wiring_allowed_before_coverage": false
+  },
+  "hero_derived_cta_anchor_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "all three declared CTA scenes in the Black Rose and Signature collections",
+    "required_anchor_kinds": ["font_statue", "scene_backdrop", "hero_graphic", "scene_backdrop_and_gold_monuments"],
+    "rule": "Each scene has one exact, hash-bound hero-derived primary anchor. It cannot be replaced by generated lettering, a generic landmark, approximate logo art, or a disconnected room.",
+    "assignments": {
+      "black-rose": {"BR-COMMERCE-1": "BR_FONT_STATUE", "BR-COMMERCE-2": "BR_STAR_GRAPHIC", "BR-COMMERCE-3": "BR_BAY_BRIDGE_NIGHT_BACKDROP"},
+      "signature": {"SIG-COMMERCE-1": "SIG_FONT_STATUE", "SIG-COMMERCE-2": "SIG_GOLDEN_GATE_MONUMENTS_HERO", "SIG-COMMERCE-3": "SIG_SR_ROSE_GRAPHIC"}
+    },
+    "wiring_allowed_before_coverage": false
+  },
+  "love_hurts_enchanted_rose_story_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "all three declared Love Hurts CTA scenes",
+    "protected_rose_anchor_id": "LH_ENCHANTED_ROSE_CATHEDRAL",
+    "rule": "Every Love Hurts scene is a high-fashion product world around the same exact protected enchanted rose under glass. It remains visible, sharp, physically lit, and protected; no generic heart, flower, substitute rose, or disconnected cathedral plate is allowed.",
+    "beast_perspective": "Protective low or shadow-edge watcher perspective from the Beast's side of the chamber; never a literal Beast character, costume, face, or imitation.",
+    "scene_assignments": {"LH-COMMERCE-1": "ceremonial_vow_aisle_approach_to_the_protected_rose", "LH-COMMERCE-2": "fractured_chamber_with_protected_rose_sharp_opposite_the_product", "LH-COMMERCE-3": "intimate_vitrine_with_the_fannie_foreground_and_protected_rose_legible"},
+    "wiring_allowed_before_coverage": false
+  },
+  "founder_scene_direction_approvals": {
+    "black-rose": "APPROVED",
+    "signature": "APPROVED",
+    "love-hurts": "APPROVED__PROTECTED_ENCHANTED_ROSE_BEAST_PERSPECTIVE_HIGH_FASHION"
+  },
+  "scene_reference_index": {
+    "path": "data/scroll-world-scene-reference-index.json",
+    "sha256": "786e6dd28cc3a359806d4a109e28d9a91dc413ecfabe5be99223f8fe84489b08",
+    "required_for_candidate_selection": true
+  },
+  "promotion": {
+    "founder_status": "PENDING",
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "collections": {
+    "black-rose": {
+      "required_roles": ["hero_world_moment_1", "hero_world_moment_2", "collection_preorder"],
+      "scenes": [
+        {"id": "BR-COMMERCE-1", "scene_reference_id": "BR-COMMERCE-1", "hero_continuity_anchor_id": "BR_FONT_STATUE", "role": "hero_world_moment_1", "label": "The Type Foundry", "contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/br-commerce-1.json", "status": "FOUNDER_APPROVED_VISUAL__RUNTIME_PROMOTION_PENDING", "product_skus": ["br-001", "br-002"], "cta": {"label": "Complete the Set", "href": "#shop"}, "asset": {"path": "renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-gpt-image-2-candidate.png", "sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952", "founder_approval_record": "data/candidates/founder-scene-approvals-2026-08-29.json", "runtime_wiring_allowed": false}},
+        {"id": "BR-COMMERCE-2", "scene_reference_id": "BR-COMMERCE-2", "hero_continuity_anchor_id": "BR_STAR_GRAPHIC", "role": "hero_world_moment_2", "label": "The Open Waterfront", "contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/br-commerce-2.json", "status": "SOURCE_AUTHORITY_CANDIDATES_REJECTED__BLOCKED", "product_skus": ["br-005", "br-007", "br-004"], "cta": {"label": "Complete the Look", "href": "#shop"}, "candidate_evidence": ["renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v5-deterministic-patch.png", "renders/scroll-world/BR-COMMERCE-2/source-authority/BR-005-BR-007-dual-cast-neutral-studio-candidate-v6-full-frame-edit-rejected.png"], "asset": null},
+        {"id": "BR-COMMERCE-3", "scene_reference_id": "BR-COMMERCE-3", "hero_continuity_anchor_id": "BR_BAY_BRIDGE_NIGHT_BACKDROP", "role": "collection_preorder", "label": "Jersey Series", "status": "PRESERVED_NOT_LOCALLY_VERIFIABLE", "product_skus": ["br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"], "cta": {"label": "Pre-Order the Jersey Series", "href": "#jersey-series"}, "asset": null}
+      ]
+    },
+    "love-hurts": {
+      "required_roles": ["hero_world_moment_1", "hero_world_moment_2", "collection_preorder"],
+      "scenes": [
+        {"id": "LH-COMMERCE-1", "scene_reference_id": "LH-COMMERCE-1", "love_hurts_rose_anchor_id": "LH_ENCHANTED_ROSE_CATHEDRAL", "role": "hero_world_moment_1", "label": "The Vow Aisle", "status": "FOUNDER_APPROVED_PRESERVE_DO_NOT_REGENERATE__RUNTIME_PROMOTION_PENDING", "product_skus": ["lh-004", "lh-002", "lh-006"], "founder_declared_wearer_sku_assignments": [{"wearer": "man", "look_id": "lh-bomber-black", "skus": ["lh-004", "lh-002"]}, {"wearer": "woman", "look_id": "lh-bomber-white", "skus": ["lh-004", "lh-006"]}], "local_preserved_candidate": {"path": "renders/scroll-world/LH-COMMERCE-1/preserved-candidate/LH-COMMERCE-1-vow-aisle-founder-approved-v1.png", "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38", "receipt": "data/candidates/lh-commerce-1-vow-aisle-preserved-retrieval-receipt-v1.json", "founder_approval_record": "data/candidates/founder-scene-approvals-2026-08-29.json", "runtime_wiring_allowed": false, "motion_candidate": {"path": "renders/scroll-world/LH-COMMERCE-1/motion-candidate/LH-COMMERCE-1-vow-aisle-seedance-2.0-candidate-v1.mp4", "sha256": "841bb58a42e4a9f4e07c9b58ffa60dba3c7763ce9543d1eaf29db855b63fb48b", "receipt": "renders/scroll-world/LH-COMMERCE-1/motion-candidate/LH-COMMERCE-1-motion-receipt-v1.json", "state": "REJECTED_TEMPORAL_QA__PERMANENTLY_QUARANTINED__DO_NOT_WIRE_OR_STITCH"}}, "missing_requirements": ["HASH_BOUND_RUNTIME_PROMOTION_RECEIPT_REQUIRED"], "cta": {"label": "Complete the Look", "href": "#shop"}, "asset": null},
+        {"id": "LH-COMMERCE-2", "scene_reference_id": "LH-COMMERCE-2", "love_hurts_rose_anchor_id": "LH_ENCHANTED_ROSE_CATHEDRAL", "role": "hero_world_moment_2", "label": "The Fractured Chamber", "contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/lh-commerce-2.json", "status": "BLOCKED_SOURCE_GATE", "product_skus": ["lh-003"], "cta": {"label": "Shop the Shorts", "href": "#shop"}, "asset": null},
+        {"id": "LH-COMMERCE-3", "scene_reference_id": "LH-COMMERCE-3", "love_hurts_rose_anchor_id": "LH_ENCHANTED_ROSE_CATHEDRAL", "role": "collection_preorder", "label": "The Rose Vitrine", "contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/lh-commerce-3.json", "status": "FOUNDER_APPROVED_VISUAL__RUNTIME_PROMOTION_PENDING", "product_skus": ["lh-005"], "cta": {"label": "Pre-Order The Fannie", "href": "/pre-order/"}, "asset": {"path": "renders/scroll-world/LH-COMMERCE-3/scene-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-candidate-v3.png", "sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a", "founder_approval_record": "data/candidates/founder-scene-approvals-2026-08-29.json", "runtime_wiring_allowed": false, "motion_candidate": {"path": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-v3-seedance-2.0-motion-candidate-v1.mp4", "sha256": "46d2b2347e43ce53398bb26ecfbba1f4ca72a9ddd5ebe849e4786bcb0b7ec04e", "receipt": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/LH-COMMERCE-3-motion-receipt-v1.json", "state": "QUARANTINED__FOUNDER_MOTION_REVIEW_PENDING"}}}
+      ]
+    },
+    "signature": {
+      "required_roles": ["hero_world_moment_1", "hero_world_moment_2", "collection_preorder"],
+      "scenes": [
+        {"id": "SIG-COMMERCE-1", "scene_reference_id": "SIG-COMMERCE-1", "hero_continuity_anchor_id": "SIG_FONT_STATUE", "role": "hero_world_moment_1", "label": "The Oakland Atelier", "contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/sig-commerce-1.json", "status": "BLOCKED_SOURCE_GATE", "product_skus": ["sg-009", "sg-007"], "cta": {"label": "Complete the Look", "href": "#shop"}, "asset": null},
+        {"id": "SIG-COMMERCE-2", "scene_reference_id": "SIG-COMMERCE-2", "hero_continuity_anchor_id": "SIG_GOLDEN_GATE_MONUMENTS_HERO", "role": "hero_world_moment_2", "label": "Signature Hero Runway", "contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/sig-commerce-2.json", "status": "BLOCKED_SOURCE_GATE", "product_skus": ["sg-013", "sg-014", "sg-006"], "cta": {"label": "Complete the Look", "href": "#shop"}, "asset": null},
+        {"id": "SIG-COMMERCE-3", "scene_reference_id": "SIG-COMMERCE-3", "hero_continuity_anchor_id": "SIG_SR_ROSE_GRAPHIC", "role": "collection_preorder", "label": "The Departure Terrace", "contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/sig-commerce-3.json", "status": "BLOCKED_SOURCE_GATE", "product_skus": ["sg-005", "sg-001", "sg-002", "sg-003", "sg-015"], "cta": {"label": "Explore Pre-Orders", "href": "/pre-order/"}, "asset": null}
+      ]
+    }
+  }
+}

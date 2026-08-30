@@ -7,7 +7,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CATALOG = ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+CATALOG = ROOT / "data/skyyrose-catalog.csv"
 REGISTRY = ROOT / "wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json"
 
 
@@ -49,6 +49,6 @@ def test_jersey_membership_and_routes_have_one_registry_authority() -> None:
         record = registry["products"][sku]
         assert record["collection"] == "black-rose"
         assert record["presentation"] == "jersey-series"
-        assert record["route"] == "/collections/jersey-series/"
+        assert record["route"] == "/collections/black-rose/#jersey-series"
         assert "jersey_chapter" in record
         assert "film_start" in record

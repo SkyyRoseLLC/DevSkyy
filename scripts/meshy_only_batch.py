@@ -34,7 +34,7 @@ load_dotenv(PROJECT_ROOT / ".env.hf")
 load_dotenv(PROJECT_ROOT / ".env")
 
 THEME = PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship"
-CATALOG = THEME / "data" / "skyyrose-catalog.csv"
+CATALOG = PROJECT_ROOT / "data" / "skyyrose-catalog.csv"
 PRODUCTS = THEME / "assets" / "images" / "products"
 OUT_DIR = PROJECT_ROOT / "renders" / "3d"
 

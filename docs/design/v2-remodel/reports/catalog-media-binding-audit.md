@@ -14,10 +14,10 @@
 
 | Concern | Canonical authority | Observed state | Status |
 | --- | --- | --- | --- |
-| SKU, product facts, structured availability flag, size/color | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` | 33 SKU records; `published`, `is_preorder`, sizes, color, and a dossier slug are present. | OBSERVED |
-| Garment canon | `wordpress-theme/skyyrose-flagship/data/dossiers/<name>.md` | Catalog carries dossier slugs; this audit did not infer a scene/product relationship from prose. | OBSERVED |
+| SKU, product facts, structured availability flag, size/color | `data/skyyrose-catalog.csv` | 33 SKU records; `published`, `is_preorder`, sizes, color, and a dossier slug are present. | OBSERVED |
+| Garment canon | `data/dossiers/<name>.md` | Catalog carries dossier slugs; this audit did not infer a scene/product relationship from prose. | OBSERVED |
 | Product images | generated `data/sot-images.json` | Front-first contract has entries for all 33 catalog SKUs. V2 does not read it. | OBSERVED / UNBOUND |
-| Non-product imagery identity | `wordpress-theme/skyyrose-flagship/data/visual-manifest.json` | Relevant source records are `status: "verified"`; that status does not bind an unregistered V2 copy, a rights record, or an intended product association. | OBSERVED / UNBOUND |
+| Non-product imagery identity | `data/visual-manifest.json` | Relevant source records are `status: "verified"`; that status does not bind an unregistered V2 copy, a rights record, or an intended product association. | OBSERVED / UNBOUND |
 | Runtime price, stock, purchasability, variation ID | WooCommerce server state | V2 gets product cards through `wc_get_products()` and image/price/stock from each WC product; no current WooCommerce snapshot was supplied or queried. | UNKNOWN |
 | V2 candidate media identity / rights / hash | candidate-local manifest (required, absent) | No `catalog-binding.json`, `shot-manifest.json`, rights record, candidate manifest, or V2 visual manifest exists. | MISSING |
 
@@ -172,9 +172,9 @@ Create one immutable `catalog-binding.json` and one `shot-manifest.json` for the
 ## Exact evidence files inspected
 
 - [SOT registry](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/SOT.md)
-- [Canonical catalog CSV](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv)
+- [Canonical catalog CSV](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/data/skyyrose-catalog.csv)
 - [Generated product-image contract](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/data/sot-images.json)
-- [Non-product visual-manifest](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/wordpress-theme/skyyrose-flagship/data/visual-manifest.json)
+- [Non-product visual-manifest](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/data/visual-manifest.json)
 - [V2 collection/media and WC card helpers](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/wordpress-theme/skyyrose-flagship-2/functions.php)
 - [V2 collection template](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/wordpress-theme/skyyrose-flagship-2/template-collection.php)
 - [V2 pre-order scene bridge](/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype/wordpress-theme/skyyrose-flagship-2/page.php)

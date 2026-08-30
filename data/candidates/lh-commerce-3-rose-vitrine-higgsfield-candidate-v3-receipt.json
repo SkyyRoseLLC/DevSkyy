@@ -1,0 +1,89 @@
+{
+  "schema": "skyyrose.native-scene-candidate-receipt.v1",
+  "scene_reference_id": "LH-COMMERCE-3",
+  "story_role": "The Rose Vitrine",
+  "candidate_state": "FOUNDER_VISUALLY_APPROVED_CANDIDATE__RETAIN_QUARANTINED_PENDING_PRODUCT_MEDIA_PROMOTION",
+  "founder_visual_direction_status": {
+    "status": "FOUNDER_APPROVED__ROSE_VARIATION_ACCEPTED",
+    "scope": "The high-fashion Love Hurts mood, cold-cathedral tension, vitrine intimacy, and the rendered protected rose under glass are founder-approved visual direction for this retained candidate.",
+    "motion_generation_authorized": true,
+    "motion_authorization_date": "2026-08-29",
+    "does_not_authorize": [
+      "treating this candidate as a replacement physical-product source for a future product redraw",
+      "runtime wiring, publication, deployment, or product-media promotion"
+    ]
+  },
+  "output": {
+    "path": "renders/scroll-world/LH-COMMERCE-3/scene-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-candidate-v3.png",
+    "sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a",
+    "dimensions": [1696, 2528],
+    "provider_job_id": "bf5823fd-1110-468d-a560-12f1d87b419e",
+    "provider_model_requested": "nano_banana_pro",
+    "provider_model_returned": "nano_banana_2"
+  },
+  "verified_inputs": [
+    {
+      "role": "women_led_on_model_authority",
+      "path": "renders/scroll-world/LH-COMMERCE-3/authority-stage/LH-005-women-led-on-model-authority-candidate.png",
+      "sha256": "cff835cd014b678c347cd960ae34e1ed644927c3402eaa8d5c88690730f8c3cd"
+    },
+    {
+      "role": "exact_physical_fannie_authority",
+      "path": "assets/products/references/lh-005-fannie-photo.jpeg",
+      "sha256": "408608ca8b0eec1a319f5dedca9f87bae1b1ffe5558a46e15f001abf70940181"
+    },
+    {
+      "role": "protected_enchanted_rose_world_authority",
+      "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png",
+      "sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02"
+    },
+    {
+      "role": "protected_woman_matte",
+      "path": "renders/scroll-world/LH-COMMERCE-3/authority-stage/protected-input/lh-005-women-led-onmodel-candidate-alpha.png",
+      "sha256": "4abd8d60446d8a8a7f61e31c841a5a84f864fa98ba57cc5b5618432f92454e7d"
+    }
+  ],
+  "source_detail_script_preflight": {
+    "product_sot": {"path": "data/product-sot.json", "sha256": "bdb03c036f37c3928084194a4707cf83d5318cee6a71590dc462e3c47da51a57"},
+    "script_guards": [
+      "scripts/oai_render/prompt.py locks the protected Love Hurts rose and forbids literal Beast imagery",
+      "scripts/oai_render/scene_schema.py keeps the protected rose world and non-literal Beast-side camera grammar",
+      "scripts/validate-scroll-world-production.py passes while maintaining fail-closed runtime promotion"
+    ],
+    "preflight_result": "PASS_FOR_CANDIDATE_GENERATION_ONLY"
+  },
+  "independent_native_review": {
+    "path": "renders/scroll-world/LH-COMMERCE-3/scene-candidate/native-review-lh-commerce-3-rose-vitrine-v3.json",
+    "candidate_sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a",
+    "verdict": "SUPERSEDED_IN_PART_BY_FOUNDER_ROSE_VARIATION_APPROVAL",
+    "founder_resolution": "The founder has accepted the rendered enchanted rose/cloche/vitrine treatment. Do not spend a paid reroll attempting to restore a pixel-identical earlier rose treatment.",
+    "remaining_scope": "The review remains useful only for its independent notes on exact Fannie physical-product media; it is not a rejection of the rose or collection scene direction."
+  },
+  "promotion": {
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false,
+    "required_before_promotion": [
+      "a hash-bound product-media promotion receipt for the retained exact candidate",
+      "runtime wiring approval",
+      "hash-bound runtime promotion receipt"
+    ]
+  },
+  "animation_attempt": {
+    "reference_image_provider_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260828_022012_bf5823fd-1110-468d-a560-12f1d87b419e.png",
+    "requested": "five-second locked-reference candidate animation",
+    "state": "SEEDANCE_2_0_MOTION_CANDIDATE_COMPLETED__QUARANTINED_PENDING_FOUNDER_MOTION_REVIEW",
+    "provider_failures": [
+      "seedance_2_5 requires mode omni_reference for start-image media",
+      "seedance_2_5 omni_reference rejected because the Private workspace monthly credit balance is exhausted",
+      "seedance_2_5 and seedance_2_0 reject unlimited generation for the submitted routes",
+      "seedance_2_0 default billing route reports the same exhausted Private workspace monthly credit balance"
+    ],
+    "fallback_used": "none; no generic local animation or alternative product redraw is permitted",
+    "completed_motion_candidate": {
+      "path": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-v3-seedance-2.0-motion-candidate-v1.mp4",
+      "sha256": "46d2b2347e43ce53398bb26ecfbba1f4ca72a9ddd5ebe849e4786bcb0b7ec04e",
+      "provider_job_id": "86b1c898-7b94-48d1-a391-af7b8dd23f08",
+      "receipt": "renders/scroll-world/LH-COMMERCE-3/motion-candidate/LH-COMMERCE-3-motion-receipt-v1.json"
+    }
+  }
+}

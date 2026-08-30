@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build data/editorial-index.json from data/dossiers/*.md.
+ * Build data/editorial-index.json from repository-root data/dossiers/*.md.
  *
  * Dossiers are INTERNAL render-pipeline specs (garment locks, branding
  * placement, negative prompts, scene direction) and must never deploy or
@@ -23,7 +23,7 @@ const fs = require('fs');
 const path = require('path');
 
 const themeDir = path.resolve(__dirname, '..');
-const dossierDir = path.join(themeDir, 'data', 'dossiers');
+const dossierDir = path.resolve(themeDir, '..', '..', 'data', 'dossiers');
 const outFile = path.join(themeDir, 'data', 'editorial-index.json');
 
 function isEligible(raw) {

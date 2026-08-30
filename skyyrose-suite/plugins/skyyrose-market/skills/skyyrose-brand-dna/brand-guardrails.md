@@ -112,7 +112,7 @@ Confirmed locked: 2026-05-25.
 
 Product facts — name, collection, price, description, colorway — resolve through:
 
-1. **Catalog CSV:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` (33 SKUs)
+1. **Catalog CSV:** `data/skyyrose-catalog.csv` (33 SKUs)
 2. **Per-SKU dossiers:** `skyyrose/elite_studio/assets/` per-product directories
 3. **Live agent (for social copy):** `SocialMediaAgent` → `skyyrose/assets/data/product-content.json`
 
@@ -205,7 +205,7 @@ Tables for inputs, GATE lines where confirmation matters.
 | Full brand identity, founder story, collections | `SKILL.md` (this directory) |
 | Per-collection canonical voice lines | `docs/brand/collection-stories.md` |
 | Visual references canonical doc | `docs/brand/visual-references.md` |
-| Per-SKU product catalog | `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` |
+| Per-SKU product catalog | `data/skyyrose-catalog.csv` |
 | Per-SKU dossiers | `skyyrose/elite_studio/assets/<sku>/` |
 | Design tokens (CSS vars, all palette values) | `wordpress-theme/skyyrose-flagship/assets/css/design-tokens.css` |
 | Font declarations | `wordpress-theme/skyyrose-flagship/theme.json` |

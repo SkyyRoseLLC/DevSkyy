@@ -97,6 +97,58 @@ function skyyrose2_collection_scene_uri( $scene ) {
 	return isset( $scene['source'] ) && 'scroll-world' === $scene['source'] ? skyyrose2_scroll_world_asset_uri( $scene['image'] ) : skyyrose2_sot_asset_uri( $scene['image'] );
 }
 
+/**
+ * Return native Scroll World scenes only after every collection role is fully
+ * approved for wiring. This intentionally has no environment-only fallback:
+ * no exact product source means no gallery.
+ *
+ * @param string $collection Collection slug.
+ * @return array<int,array<string,mixed>>
+ */
+function skyyrose2_scroll_world_production_scenes( $collection ) {
+	static $manifest = null;
+	$collection = sanitize_title( $collection );
+	if ( null === $manifest ) {
+		$path     = SKYYROSE2_DIR . '/data/scroll-world-production-manifest.json';
+		$raw      = is_readable( $path ) ? file_get_contents( $path ) : false; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$manifest = is_string( $raw ) ? json_decode( $raw, true ) : array();
+		$manifest = is_array( $manifest ) ? $manifest : array();
+	}
+
+	$promotion = isset( $manifest['promotion'] ) && is_array( $manifest['promotion'] ) ? $manifest['promotion'] : array();
+	$galleries = isset( $manifest['collections'] ) && is_array( $manifest['collections'] ) ? $manifest['collections'] : array();
+	$gallery   = isset( $galleries[ $collection ] ) && is_array( $galleries[ $collection ] ) ? $galleries[ $collection ] : array();
+	$roles     = array( 'hero_world_moment_1', 'hero_world_moment_2', 'collection_preorder' );
+	$scenes    = isset( $gallery['scenes'] ) && is_array( $gallery['scenes'] ) ? $gallery['scenes'] : array();
+	if ( 'FOUNDER_APPROVED_WIREABLE' !== ( $manifest['status'] ?? '' ) || empty( $promotion['wiring_allowed'] ) || $roles !== ( $gallery['required_roles'] ?? array() ) || 3 !== count( $scenes ) ) {
+		return array();
+	}
+
+	$output = array();
+	foreach ( $scenes as $index => $scene ) {
+		$asset = isset( $scene['asset'] ) && is_array( $scene['asset'] ) ? $scene['asset'] : array();
+		$cta   = isset( $scene['cta'] ) && is_array( $scene['cta'] ) ? $scene['cta'] : array();
+		if ( ! is_array( $scene ) || ( $roles[ $index ] ?? '' ) !== ( $scene['role'] ?? '' ) || 'FOUNDER_APPROVED_WIREABLE' !== ( $scene['status'] ?? '' ) || empty( $scene['founder_approval_reference'] ) || empty( $scene['independent_review_receipt'] ) || empty( $asset['path'] ) || empty( $asset['sha256'] ) || empty( $scene['product_skus'] ) || empty( $cta['label'] ) || empty( $cta['href'] ) ) {
+			return array();
+		}
+		$asset_path  = SKYYROSE2_DIR . '/assets/sot/' . ltrim( $asset['path'], '/' );
+		$actual_hash = is_file( $asset_path ) ? hash_file( 'sha256', $asset_path ) : false;
+		if ( ! is_string( $actual_hash ) || ! hash_equals( (string) $asset['sha256'], $actual_hash ) ) {
+			return array();
+		}
+		$output[] = array(
+			'id'           => sanitize_key( $scene['id'] ?? '' ),
+			'role'         => sanitize_key( $scene['role'] ),
+			'image'        => ltrim( $asset['path'], '/' ),
+			'product_skus' => array_map( 'sanitize_key', $scene['product_skus'] ),
+			'cta'          => array( 'label' => sanitize_text_field( $cta['label'] ), 'href' => esc_url_raw( $cta['href'] ) ),
+			'label'        => sanitize_text_field( $scene['label'] ?? $scene['id'] ),
+			'copy'         => sanitize_textarea_field( $scene['copy'] ?? '' ),
+		);
+	}
+	return $output;
+}
+
 /** Theme supports and navigation slots. */
 function skyyrose2_setup() {
 	load_theme_textdomain( 'skyyrose-flagship-2', SKYYROSE2_DIR . '/languages' );
@@ -888,21 +940,26 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 /**
  * Resolve the garment proof assigned to a Scroll World chapter.
  *
- * A chapter remains scenic, but it must also carry a real item from its own
- * collection. The product image, name, price, and availability stay WooCommerce
- * authoritative; Jersey Series remains isolated from the core Black Rose rail.
+ * A native chapter must carry one of its explicitly declared SKU casts. The
+ * product image, name, price, and availability stay WooCommerce authoritative;
+ * the function refuses to choose a product by arbitrary rail position.
  *
  * @param string $collection Collection slug.
  * @param int    $chapter Chapter index.
  * @return WC_Product|false
  */
-function skyyrose2_collection_scene_product( $collection, $chapter = 0 ) {
-	$products = skyyrose2_get_products( 12, $collection );
-	if ( empty( $products ) ) {
+function skyyrose2_collection_scene_product( $collection, $chapter = 0, $scene = array() ) {
+	if ( is_array( $scene ) && ! empty( $scene['product_skus'] ) && function_exists( 'wc_get_product_id_by_sku' ) && function_exists( 'wc_get_product' ) ) {
+		foreach ( $scene['product_skus'] as $sku ) {
+			$product_id = wc_get_product_id_by_sku( sanitize_key( $sku ) );
+			$product    = $product_id ? wc_get_product( $product_id ) : false;
+			if ( $product instanceof WC_Product ) {
+				return $product;
+			}
+		}
 		return false;
 	}
-	$index = absint( $chapter ) % count( $products );
-	return $products[ $index ] ?? false;
+	return false;
 }
 
 /**

@@ -91,7 +91,7 @@ Six DAMA-DMBOK data-quality dimensions, each a pure-code check over real data:
 - `scaffold.py::build_skeleton(sku) -> DossierSkeleton`: from `_template.md` + catalog-row
   facts (sku/name/collection/garment_type). Placeholders only — **zero prose**.
 - `scaffold.py::write_draft(skeleton) -> Path`: writes to
-  `wordpress-theme/skyyrose-flagship/data/dossiers/_drafts/{slug}.draft.md` — **never** the
+  `data/dossiers/_drafts/{slug}.draft.md` — **never** the
   canonical `{slug}.md` path. Machine text never reaches a canonical dossier.
 - Interrogate: engine computes gaps → `LLMReasoner.interrogate(skeleton, known)` orders them
   into targeted questions for Corey → Corey fills → re-verify. The steward never authors content.

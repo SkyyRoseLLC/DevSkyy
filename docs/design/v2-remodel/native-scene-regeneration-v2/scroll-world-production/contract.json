@@ -1,0 +1,210 @@
+{
+  "schema": "skyyrose.scroll-world-production-contract.v1",
+  "status": "SOURCE_STAGE_AUTHORIZED_IN_PROGRESS__SCENE_AND_PROMOTION_GATES_BLOCKED",
+  "source_freshness_lock": {
+    "path": "data/product-sot.json",
+    "sha256": "98310ba35a27e4ae0690d54ca8dd35394b6fdfa314721d32e443ec865d3d2f9f"
+  },
+  "historical_five_world_pack": {
+    "path": "tasks/scroll-world-collections-spec.md",
+    "status": "ARCHIVAL_CONTEXT_ONLY",
+    "rule": "The environment-only five-world prompt pack cannot be selected as a scene source, product source, generation reference, or runtime gallery fallback for this production contract."
+  },
+  "hero_dual_cast_four_sku_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "each collection's two hero-derived world moments together",
+    "required_roles": ["hero_world_moment_1", "hero_world_moment_2"],
+    "required_scene_wearers": ["man", "woman"],
+    "minimum_distinct_exact_skus_across_two_hero_moments": 4,
+    "scene_composition": "Both adults are naturally placed in each hero collection world. Across the two hero moments, their different collection-specific selections total four distinct exact SKUs at minimum and are assigned only by that collection's approved scene edit; all selected products share the physical floor, light, shadows, reflections, depth, occlusion, and real sightline or movement interaction.",
+    "preorder_boundary": "The third collection-preorder scene preserves its own exact CTA and does not count toward the two-hero-moment four-SKU requirement.",
+    "collection_plan_status": {
+      "black-rose": "DECLARED_FOUR_SKU_HERO_CAST_SOURCE_GATES_BLOCKED",
+      "love-hurts": "DECLARED_FOUR_SKU_HERO_CAST__PRESERVED_VOW_AISLE_LOCAL_HASH_VERIFIED_QUARANTINED",
+      "signature": "DECLARED_FIVE_SKU_HERO_CAST_MEETS_FOUR_MINIMUM_SOURCE_GATES_BLOCKED"
+    },
+    "does_not_change": ["the three-scene-per-collection architecture", "the collection-specific editorial direction", "the continuous forward Scroll World order"],
+    "promotion_boundary": "No rendered scene may claim this coverage from an off-scene authority image. Each approved hero-scene wearer/SKU allocation must have source, matte, detail, and native-integration evidence."
+  },
+  "hero_derived_cta_anchor_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "all three declared CTA scenes in the Black Rose and Signature collections",
+    "rule": "Each of the three scenes has one required primary hero-derived anchor in its exact approved form: font statue, scene backdrop, or protected graphic. The source object is hash-bound; no generated lettering, generic bridge, approximate logo, or interchangeable room is permitted.",
+    "required_anchor_kinds": ["font_statue", "scene_backdrop", "hero_graphic", "scene_backdrop_and_gold_monuments"],
+    "assignments": {
+      "black-rose": {"BR-COMMERCE-1": "BR_FONT_STATUE", "BR-COMMERCE-2": "BR_STAR_GRAPHIC", "BR-COMMERCE-3": "BR_BAY_BRIDGE_NIGHT_BACKDROP"},
+      "signature": {"SIG-COMMERCE-1": "SIG_FONT_STATUE", "SIG-COMMERCE-2": "SIG_GOLDEN_GATE_MONUMENTS_HERO", "SIG-COMMERCE-3": "SIG_SR_ROSE_GRAPHIC"}
+    },
+    "black_rose_preorder_lock": "BR-COMMERCE-3 preserves the Jersey Series intimate luxury-night salon with the exact Bay Bridge backdrop visible behind the collection; it may not become a generic night bridge or a disconnected catalog room.",
+    "preserved_scene_boundary": "A local continuity reference never substitutes for local verification of the separately recorded preserved founder candidate or permission to alter/regenerate it.",
+    "promotion_boundary": "This visual-continuity lock is additional to, not a substitute for, exact products, source/matte proof, native integration, independent visual QA, founder approval, wiring, or deployment gates."
+  },
+  "love_hurts_enchanted_rose_story_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "all three declared Love Hurts CTA scenes",
+    "protected_rose_anchor": {"id": "LH_ENCHANTED_ROSE_CATHEDRAL", "kind": "protected_rose_world", "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png", "sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02"},
+    "rule": "Every Love Hurts scene is a high-fashion product world around the same exact protected enchanted rose under glass. It remains visible, sharply legible, physically lit, and materially protected; generic hearts, flowers, substitute rose silhouettes, or decorative rose scatter are prohibited.",
+    "beast_perspective": "A protective, intimate watcher viewpoint from the Beast's side of the chamber: a low or shadow-edge editorial camera held on the guarded rose. Perspective and emotional grammar only; never a literal Beast character, costume, face, or imitation.",
+    "high_fashion_rule": "Use couture editorial negative space, sculptural stone, controlled candle/amber/crimson light, fabric texture, hardware detail, real body contact, and one coherent lens/light field. Product clarity and the enchanted rose remain premium focal authorities.",
+    "scene_assignments": {"LH-COMMERCE-1": "ceremonial_vow_aisle_approach_to_the_protected_rose", "LH-COMMERCE-2": "fractured_chamber_with_protected_rose_sharp_opposite_the_product", "LH-COMMERCE-3": "intimate_vitrine_with_the_fannie_foreground_and_protected_rose_legible"},
+    "promotion_boundary": "This artistic/source lock does not clear exact cast, source/matte proof, native integration, independent visual QA, founder promotion, runtime wiring, or deployment."
+  },
+  "founder_scene_direction_approvals": {
+    "black-rose": "APPROVED",
+    "signature": "APPROVED",
+    "love-hurts": "APPROVED__PROTECTED_ENCHANTED_ROSE_BEAST_PERSPECTIVE_HIGH_FASHION"
+  },
+  "scene_reference_index": {
+    "path": "data/scroll-world-scene-reference-index.json",
+    "sha256": "786e6dd28cc3a359806d4a109e28d9a91dc413ecfabe5be99223f8fe84489b08",
+    "rule": "A provider request, prompt, candidate receipt, or scene candidate must name one exact scene_reference_id from this root-owned index and match its role, journey chapter, SKU cast, CTA, scene reference, and blocked/allowed state."
+  },
+  "forward_journey": [
+    {"id": "SW-OPEN-SIGNATURE", "chapter": "Oakland Signature showroom", "collection": "signature", "kind": "collection-entry"},
+    {"id": "SW-BLACK-ROSE", "chapter": "Black Rose rooftop garden", "collection": "black-rose", "kind": "collection-entry"},
+    {"id": "SW-LOVE-HURTS", "chapter": "Love Hurts cathedral chamber", "collection": "love-hurts", "kind": "collection-entry"},
+    {"id": "SW-KIDS-CAPSULE", "chapter": "Kids Capsule canonical mascot world", "collection": "kids-capsule", "kind": "transition-only"},
+    {"id": "SW-FINALE", "chapter": "Near-black finale", "collection": "finale", "kind": "transition-only"}
+  ],
+  "provider_execution": {
+    "provider": "Higgsfield",
+    "image": {
+      "model": "gpt_image_2",
+      "media_roles": ["image"],
+      "resolution": "2k",
+      "quality": "high",
+      "aspect_ratio": "3:2",
+      "route": "environment_rebuild_around_source",
+      "rule": "Every approved on-model/product source is sent as a declared reference image only after the local generation receipt and source/matte gate pass. A techflat is never substituted for a physical worn source."
+    },
+    "motion": {
+      "model": "seedance_2_0",
+      "media_roles": ["start_image", "image_references"],
+      "resolution": "1080p",
+      "mode": "std",
+      "duration_seconds": 8,
+      "generate_audio": false,
+      "camera_rule": "One forward-only camera journey. Each leg starts from the previous reviewed final frame; do not use an end-image to force a disconnected portal transition."
+    },
+    "paid_action_authorized": false,
+    "remote_upload_authorized": false,
+    "authorization_scope": "OPERATOR_PAUSED_COST_CONTROL. No paid call or remote upload is allowed until the exact founder-visible source pack and masks pass the local pre-submit gate and the founder explicitly resumes generation."
+  },
+  "collection_galleries": {
+    "black-rose": {
+      "required_roles": ["hero_world_moment_1", "hero_world_moment_2", "collection_preorder"],
+      "scene_ids": ["BR-COMMERCE-1", "BR-COMMERCE-2", "BR-COMMERCE-3"],
+      "hero_language": ["exact Black Rose type/monument architecture", "moonlit Oakland/Bay landscape"],
+      "preorder_subject": "Jersey Series",
+      "exact_preorder_cta": "Pre-Order the Jersey Series",
+      "prohibitions": ["Black Rose Signature Hoodie is Black Rose, never Signature or SG", "No obsolete displaced-cloud pairing", "No generic environment-only scene", "No random product selection"]
+    },
+    "love-hurts": {
+      "required_roles": ["hero_world_moment_1", "hero_world_moment_2", "collection_preorder"],
+      "scene_ids": ["LH-COMMERCE-1", "LH-COMMERCE-2", "LH-COMMERCE-3"],
+      "hero_language": ["protected enchanted rose/cathedral world — the enchanted rose is the non-negotiable focal object; preserved Vow Aisle cast is man: lh-004 + lh-002 and woman: lh-004 + lh-006", "scarred/cracked rose material world — lh-003"],
+      "preorder_subject": "The Fannie",
+      "exact_preorder_cta": "Pre-Order The Fannie",
+      "prohibitions": ["No generic hearts", "No generic flowers", "Protected rose must remain exact", "No generic environment-only scene", "No random product selection"]
+    },
+    "signature": {
+      "required_roles": ["hero_world_moment_1", "hero_world_moment_2", "collection_preorder"],
+      "scene_ids": ["SIG-COMMERCE-1", "SIG-COMMERCE-2", "SIG-COMMERCE-3"],
+      "hero_language": ["protected SkyyRose sculpture", "Oakland/Bay landmark world"],
+      "preorder_subject": "Bridge Series / Windbreaker departure",
+      "exact_preorder_cta": "Explore Pre-Orders",
+      "prohibitions": ["No generic San Francisco or Golden Gate environment", "Keep the Bay Bridge blue story distinct from the Stay Golden purple story", "No generic environment-only scene", "No random product selection"]
+    }
+  },
+  "native_integration_requirements": [
+    "Every model group shares a floor plane, light direction, shadows, reflections, depth, occlusion, and sightline or movement interaction.",
+    "The product is the primary focal authority; the world is built around source camera geometry and never turns the model into a catalog cutout.",
+    "Each cast SKU has a current physical-product authority, approved same-pose on-model source, protected garment/accessory matte, full-size optical measurements, and a local receipt before any environment-provider upload; source-authority generation is the authorized upstream stage that creates the on-model source and matte evidence.",
+    "Every candidate needs an independent product-fidelity-native-review.v1 receipt and founder approval before runtime wiring."
+  ],
+  "v2_dual_cast_on_model_authority": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "coverage_requirement": "Every V2 SKU must finish with one women-led and one men-led full-body on-model authority shot.",
+    "per_shot_requirements": [
+      "current physical product authority inputs and SHA-256 hashes",
+      "source-stage candidate receipt, protected alpha matte, and local output hash",
+      "independent product-fidelity visual QA and founder approval before authority or scene use",
+      "no catalog-name text, invented labels, patches, construction, logos, lettering, or decorations"
+    ],
+    "completion_rule": "A candidate, rejected candidate, generic render, or unhash-bound legacy on-model file does not satisfy either cast slot. Each SKU needs two distinct approved cast records."
+  },
+  "source_stage_execution": {
+    "status": "FOUNDER_AUTHORIZED_IN_PROGRESS",
+    "rule": "Missing on-model authority images, multi-product same-pose authorities, and protected mattes are outputs of the source-authority production stage. Their absence must not block generation of quarantined source-stage candidates from verified physical product references.",
+    "source_stage_provider_calls_allowed": false,
+    "required_before_source_stage_call": [
+      "current root product SOT and per-SKU product hashes",
+      "hash-verified physical product and exact logo/art inputs",
+      "source/detail/prompt preflight",
+      "paid-candidate authorization and bounded request receipt",
+      "candidate quarantine with no runtime or scene promotion"
+    ],
+    "created_after_source_candidate": [
+      "protected garment/accessory matte",
+      "candidate output hash and receipt",
+      "independent product-fidelity review",
+      "founder approval or exact rejection/patch record"
+    ],
+    "scene_environment_boundary": "Approved source authority, protected matte, and independent/founder evidence remain mandatory before Higgsfield environment integration. This downstream scene gate does not prohibit the source-stage generation that creates the evidence."
+  },
+  "product_fidelity_overrides": {
+    "br-004": {
+      "status": "FOUNDER_CORRECTION_BINDING",
+      "catalog_identity_only": "BLACK Rose Hoodie",
+      "silhouette_lock": "The regular BLACK Rose Hoodie is the longer pullover: a hoodie dress on women and a longer hoodie on men.",
+      "branding_lock": "One large monochrome Black Rose rose/cloud embroidery is centered above the pouch. The side body is plain.",
+      "prohibited_on_br004": ["side-body embroidery", "second crest", "right-chest silicone cutout", "sublimated-rose hood lining", "Signature Edition lettering", "product-name lettering"],
+      "visual_qa": "Reject if BR-004 is shortened, gains side-body embroidery, receives Signature Edition construction or decoration, or loses its centered chest rose/cloud embroidery."
+    },
+    "br-005": {
+      "status": "FOUNDER_CORRECTION_BINDING",
+      "catalog_identity_only": "Black Rose Hoodie — Signature Edition",
+      "right_chest_lock": "The right chest carries the exact product-specific molded silicone-cut form photographed on the physical BR-005. No standalone art is authorized; generic collection logos and data/brand-logos/three-rose-cluster.jpeg are prohibited substitutions.",
+      "hood_lining_lock": "The hood is lined with the sublimated Black Rose rose design.",
+      "side_body_lock": "The wearer's-left side body/viewer's-right torso carries the exact photographed longitudinal Black Rose rose/cloud embroidery from underarm to hem.",
+      "material_physics_locks": {
+        "front-right-chest": {
+          "material": "tonal molded silicone elastomer",
+          "surface": "smooth clean-edged slightly raised rubber-like relief with no thread texture",
+          "attachment": "one applied cut-out unit seated flush to right-chest fabric; exact bonding chemistry remains unverified",
+          "reject": "thread embroidery, visible stitches, flat print, woven patch, multicolor applique, generic rose, or left-chest placement"
+        },
+        "wearer's-left side body / viewer-right torso": {
+          "material": "white/grey embroidery thread on black polyester body fabric",
+          "surface": "directional stitch texture and slight raised thread relief following side-body folds",
+          "attachment": "thread penetrates the side-body fabric with no detachable patch border",
+          "reject": "any sleeve, arm, forearm, shoulder, chest, or pocket placement; silicone, flat print, patch border, duplicate, text, or circular emblem"
+        },
+        "hood-inside / inner-hood-lining": {
+          "material": "sublimation dye within grey lining textile",
+          "surface": "lining weave remains visible with zero raised edge, pile, stitch relief, or patch thickness",
+          "attachment": "integral to the lining fibers and never an applied surface element",
+          "reject": "embroidery, patch, rubber relief, exterior pattern, solid-black lining, or substitute floral motif"
+        }
+      },
+      "prohibited_on_br005": ["Signature Edition lettering", "product-name lettering", "circular patch", "unphotographed decoration", "duplicated side-body artwork"],
+      "visual_qa": "Reject if any locked material is rendered as a different physical technique, if the BR-005 rose/cloud embroidery is moved, duplicated, relabelled, or otherwise differs from its photographed side-body treatment, or if surface/attachment/reject cues are not visibly satisfied; do not reuse a rejected candidate as a reference."
+    }
+  },
+  "runtime_promotion_rule": "The theme may render a collection gallery only when all three declared roles are FOUNDER_APPROVED_WIREABLE with hash-bound local assets, independent review receipts, founder approval references, exact casts, and exact CTA records. Otherwise it renders no scene media.",
+  "current_blockers": [
+    "SCENE_INTEGRATION__EXACT_NATIVE_SCENE_GARMENT_OR_ACCESSORY_MATTES_MISSING",
+    "SCENE_INTEGRATION__MULTI_PRODUCT_SAME_POSE_AUTHORITIES_NOT_YET_FOUNDER_APPROVED",
+    "V2_COMPLETION__DUAL_CAST_ON_MODEL_AUTHORITY_COVERAGE_INCOMPLETE",
+    "BR_COMMERCE_2_FULL_FRAME_GENERATIVE_REDRAW_REJECTED_FOR_BR005_PRODUCT_FIDELITY",
+    "SIGNATURE_OAKLAND_BAY_LANDMARK_AUTHORITY_MISSING",
+    "PRESERVED_FOUNDER_APPROVED_SCENES_NOT_PRESENT_FOR_LOCAL_HASH_VERIFICATION",
+    "LH_COMMERCE_1_PRESERVED_CANDIDATE_QUARANTINED_PENDING_RUNTIME_PROMOTION_EVIDENCE",
+    "INDEPENDENT_NATIVE_REVIEWS_AND_FOUNDER_PROMOTION_RECORDS_MISSING"
+  ],
+  "promotion": {
+    "founder_status": "PENDING",
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}

@@ -8,9 +8,12 @@ Silicone cut-out logo on right chest. Embroidered logo on the side of the body o
 Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The "Signature Edition" identity comes from the elevated branding placement (chest + hip), the white drawstrings, and the sublimated-rose-print inner hood lining.
 
 ## Logo placements
-1. **sr-monogram-rose-gold** — position: `right_chest`, technique: `silicone_cut_out`
-2. **black-roses-cloud-cluster** — position: `body_side_panel`, technique: `embroidered`
-   - On body side, NOT on arm.
+1. **three-rose-cluster** — position: `right_chest`, technique: `silicone_cut_out`
+   - One tonal molded silicone cut-out of the exact canonical three-rose-cluster silhouette.
+   - Smooth clean-edged rubber-like relief; no stitch texture, SR monogram, text, single rose, or generic floral substitute.
+2. **three-rose-cluster** — position: `body_side_panel`, technique: `embroidered`
+   - One longitudinal rose/cloud embroidery on the wearer's-left side body below the armhole beside the kangaroo pocket.
+   - On the body side only — never on the arm, sleeve, forearm, shoulder, chest, or pocket.
 
 ## Render scene context (dossier)
 **Pose:** Front view straight-on (or three-quarter front-left) showing

@@ -53,7 +53,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger("batch")
 
-CATALOG_CSV = Path("wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv")
+CATALOG_CSV = Path("data/skyyrose-catalog.csv")
 ASSETS_ROOT = Path("wordpress-theme/skyyrose-flagship")
 BATCH_COLLECTIONS = {"love-hurts", "signature"}
 

@@ -1,0 +1,225 @@
+{
+  "schema": "skyyrose.scroll-world-scene-reference-index.v1",
+  "status": "ALL_COLLECTION_SCENE_DIRECTIONS_FOUNDER_APPROVED__SOURCE_AND_PROMOTION_GATES_REMAIN_BLOCKED",
+  "source_freshness_lock": {
+    "path": "data/product-sot.json",
+    "sha256": "98310ba35a27e4ae0690d54ca8dd35394b6fdfa314721d32e443ec865d3d2f9f"
+  },
+  "purpose": "The sole root-owned selection index for native Scroll World candidate production. A provider request, prompt, receipt, or candidate is invalid unless it names one of these exact scene_reference_id values and matches its collection, role, cast, CTA, journey position, and reference state.",
+  "selection_rules": [
+    "No generic environment-only scene, random collection product, or historical five-world-pack prompt may substitute for an indexed scene.",
+    "A preserved scene with no locally verifiable source remains preserve-only. It is not a prompt target and may not be regenerated from description.",
+    "Every environment candidate is built only around approved exact product-on-model sources with a protected garment or accessory matte, hash-bound receipt, source/detail/script preflight, independent visual QA, and founder review.",
+    "A source-stage authority image, lookbook image, rejected candidate, or quarantined output is not a Scroll World scene reference or an approved scene input.",
+    "All scenes remain blocked from provider generation and runtime wiring until their record's source and review gates are explicitly cleared."
+  ],
+  "hero_dual_cast_four_sku_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "each collection's two hero-derived world moments together",
+    "required_roles": ["hero_world_moment_1", "hero_world_moment_2"],
+    "required_scene_wearers": ["man", "woman"],
+    "minimum_distinct_exact_skus_across_two_hero_moments": 4,
+    "sku_allocation": "Across the two hero moments, the man and woman receive different collection-specific selections drawn only from those moments' declared exact SKU casts. The hero pair must include four distinct exact SKUs at minimum. Every confirmed wearer/SKU allocation is explicit in the approved collection scene edit; no random or generic garment fills a look.",
+    "placement": "Both adult wearers naturally belong to each hero scene and share its floor plane, key light, shadows, reflections, depth, occlusion, and sightline or movement interaction.",
+    "preorder_boundary": "The third collection-preorder scene remains its own exact-CTA product moment and is not used to satisfy the four-SKU hero-pair requirement.",
+    "prohibitions": ["automatic one-man-and-one-woman duplication of every SKU", "a token mixed-gender group with unassigned garments", "cutout rows", "random substitute SKUs", "off-scene gender coverage used as evidence for a hero scene", "using preorder SKU(s) to pad a hero-pair allocation"],
+    "coverage_evidence": "Each approved wearer/SKU pairing requires its own hash-bound source authority, detail check, matte, and native-integration review before the scene can promote.",
+    "collection_plan_status": {
+      "black-rose": "DECLARED_FOUR_SKU_HERO_CAST_SOURCE_GATES_BLOCKED",
+      "love-hurts": "DECLARED_FOUR_SKU_HERO_CAST__PRESERVED_VOW_AISLE_LOCAL_HASH_VERIFIED_QUARANTINED",
+      "signature": "DECLARED_FIVE_SKU_HERO_CAST_MEETS_FOUR_MINIMUM_SOURCE_GATES_BLOCKED"
+    },
+    "preserved_scene_rule": "A preserved asset is not silently altered. If it lacks the founder-directed hero-pair allocation, the gap remains blocked until a compliant successor is supplied or produced."
+  },
+  "hero_derived_cta_anchor_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "all three declared CTA scenes in the Black Rose and Signature collections",
+    "rule": "Each declared scene carries one required primary hero-derived anchor: the exact font statue, exact scene backdrop, or exact protected graphic. The anchor is a hash-bound source object in its approved hero form, never generated replacement lettering, a generic landmark, or approximate logo art.",
+    "required_anchor_kinds": ["font_statue", "scene_backdrop", "hero_graphic", "scene_backdrop_and_gold_monuments"],
+    "collection_coverage": {
+      "black-rose": ["BR-COMMERCE-1", "BR-COMMERCE-2", "BR-COMMERCE-3"],
+      "signature": ["SIG-COMMERCE-1", "SIG-COMMERCE-2", "SIG-COMMERCE-3"]
+    },
+    "preserved_scene_boundary": "A preserved scene retains its linked anchor as visual continuity evidence only. It remains preserve-only until the separately recorded founder candidate hash and visual review are locally verifiable.",
+    "promotion_boundary": "An anchor receipt does not clear product-on-model, matte, native-integration, independent-QA, founder-approval, runtime-wiring, or deployment gates."
+  },
+  "love_hurts_enchanted_rose_story_rule": {
+    "status": "FOUNDER_DIRECTIVE_BINDING",
+    "scope": "all three declared Love Hurts CTA scenes",
+    "protected_rose_anchor": {"id": "LH_ENCHANTED_ROSE_CATHEDRAL", "kind": "protected_rose_world", "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png", "sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02"},
+    "rule": "Every Love Hurts scene is a high-fashion product world built around the same exact protected enchanted rose under glass. The rose remains visible, sharply legible, physically lit, and materially protected; no generic heart, flower, substitute rose silhouette, or decorative rose scatter may stand in for it.",
+    "beast_perspective": "Use a protective, intimate watcher viewpoint from the Beast's side of the chamber: a low or shadow-edge editorial camera held on the rose as the guarded focal object. This is perspective and emotional grammar only—never a literal Beast character, costume, face, or imitation.",
+    "high_fashion_rule": "Models and exact products are photographed as couture editorial subjects with deliberate negative space, sculptural stone, controlled candle/amber/crimson light, fabric texture, hardware detail, real body contact, and a single coherent lens/light field. Product clarity and the enchanted rose both remain premium focal authorities.",
+    "scene_assignments": {
+      "LH-COMMERCE-1": "ceremonial_vow_aisle_approach_to_the_protected_rose",
+      "LH-COMMERCE-2": "fractured_chamber_with_protected_rose_sharp_opposite_the_product",
+      "LH-COMMERCE-3": "intimate_vitrine_with_the_fannie_foreground_and_protected_rose_legible"
+    },
+    "prohibitions": ["generic hearts", "generic flowers", "alternate rose dome", "literal Beast character or costume", "Disney-style polish", "product cutouts against an unrelated cathedral plate", "rose obscured by product or CTA treatment"],
+    "promotion_boundary": "The source anchor and artistic direction do not clear exact-cast, source/matte, native-integration, independent visual-QA, founder promotion, wiring, or deployment gates."
+  },
+  "collection_direction_approval": {
+    "black-rose": "FOUNDER_APPROVED_SCENE_DIRECTION",
+    "signature": "FOUNDER_APPROVED_SCENE_DIRECTION",
+    "love-hurts": "FOUNDER_APPROVED_SCENE_DIRECTION__PROTECTED_ENCHANTED_ROSE_BEAST_PERSPECTIVE_HIGH_FASHION"
+  },
+  "forward_journey": [
+    {"journey_position": 1, "journey_id": "SW-OPEN-SIGNATURE", "chapter": "Oakland Signature showroom", "collection": "signature"},
+    {"journey_position": 2, "journey_id": "SW-BLACK-ROSE", "chapter": "Black Rose rooftop garden", "collection": "black-rose"},
+    {"journey_position": 3, "journey_id": "SW-LOVE-HURTS", "chapter": "Love Hurts cathedral chamber", "collection": "love-hurts"},
+    {"journey_position": 4, "journey_id": "SW-KIDS-CAPSULE", "chapter": "Kids Capsule canonical mascot world", "collection": "kids-capsule", "transition_only": true},
+    {"journey_position": 5, "journey_id": "SW-FINALE", "chapter": "Near-black finale", "collection": "finale", "transition_only": true}
+  ],
+  "collection_scenes": {
+    "black-rose": [
+      {
+        "scene_reference_id": "BR-COMMERCE-1",
+        "role": "hero_world_moment_1",
+        "journey_chapter": "Black Rose rooftop garden",
+        "label": "The Type Foundry",
+        "scene_variation": "silver-font-statue interior",
+        "native_scene_contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/br-commerce-1.json",
+    "reference_state": "FOUNDER_APPROVED_SCENE_DIRECTION__SOURCE_GATE_BLOCKED",
+        "hero_continuity_anchor": {"id": "BR_FONT_STATUE", "kind": "font_statue", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png", "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c", "requirement": "Use the exact Black Rose font-and-rose statue form as wall-aligned architecture; no generated lettering or substitute sign."},
+        "exact_skus": ["br-001", "br-002"],
+        "exact_cta": {"label": "Complete the Set", "href": "#shop"},
+        "non_negotiables": ["Exact Black Rose font-and-rose sculpture remains wall-aligned architectural support.", "No generated lettering or generic rose sign."],
+        "provider_generation_allowed": false
+      },
+      {
+        "scene_reference_id": "BR-COMMERCE-2",
+        "role": "hero_world_moment_2",
+        "journey_chapter": "Black Rose rooftop garden",
+        "label": "The Open Waterfront",
+        "scene_variation": "open moonlit Oakland waterfront",
+        "native_scene_contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/br-commerce-2.json",
+    "reference_state": "FOUNDER_APPROVED_SCENE_DIRECTION__SOURCE_GATE_BLOCKED",
+        "hero_continuity_anchor": {"id": "BR_STAR_GRAPHIC", "kind": "hero_graphic", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/black-rose-star-graphic.png", "sha256": "6af686d798fb6541c3a691492809224a6318d62573d1462c4f3f99af9957ec78", "requirement": "Use the exact Black Rose rose-within-silver-star graphic form; no redrawn rose, generic star, or approximate emblem."},
+        "exact_skus": ["br-005", "br-007", "br-004"],
+        "founder_declared_wearer_sku_assignments": [
+          {"wearer": "man", "look_id": "br-signature-hoodie-shorts", "skus": ["br-005", "br-007"]},
+          {"wearer": "woman", "look_id": "br-long-hoodie-dress", "skus": ["br-004"]}
+        ],
+        "exact_cta": {"label": "Complete the Look", "href": "#shop"},
+        "non_negotiables": ["No SKU substitution.", "The man wears BR-005 plus BR-007; the woman wears the separate long BR-004 hoodie as a hoodie dress.", "BR-005 and BR-007 require exact physical-source binding and the woman must preserve the founder-approved BR-004 source before any environment work."],
+        "provider_generation_allowed": false
+      },
+      {
+        "scene_reference_id": "BR-COMMERCE-3",
+        "role": "collection_preorder",
+        "journey_chapter": "Black Rose rooftop garden",
+        "label": "Jersey Series",
+        "scene_variation": "preserved founder-approved Jersey Series intimate luxury night; no locally verifiable founder candidate asset",
+        "native_scene_contract": null,
+        "reference_state": "PRESERVE_ONLY_NOT_LOCALLY_VERIFIABLE",
+        "preserved_candidate_hash": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+        "hero_continuity_anchor": {"id": "BR_BAY_BRIDGE_NIGHT_BACKDROP", "kind": "scene_backdrop", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/preorder/black-rose-salon.webp", "sha256": "2ca5326cb30844311f0dd593c7b6141ab7819ba0926913183e65c9bd6207a3eb", "requirement": "Preserve the exact intimate luxury-night salon backdrop: black marble, black lounge seating, and the Bay Bridge visible behind the Jersey Series. Do not replace it with a generic night bridge or a disconnected catalog room."},
+        "exact_skus": ["br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"],
+        "exact_cta": {"label": "Pre-Order the Jersey Series", "href": "#jersey-series"},
+        "non_negotiables": ["Do not alter or regenerate the preserved approved scene without a newly supplied, hash-bound founder scene reference.", "No random Jersey Series SKU selection."],
+        "provider_generation_allowed": false
+      }
+    ],
+    "love-hurts": [
+      {
+        "scene_reference_id": "LH-COMMERCE-1",
+        "role": "hero_world_moment_1",
+        "journey_chapter": "Love Hurts cathedral chamber",
+        "label": "The Vow Aisle",
+        "scene_variation": "preserved founder-approved Vow Aisle mixed cast: man in the Love Hurts Bomber with black Love Hurts Joggers, woman in the same Love Hurts Bomber with white Love Hurts Joggers; local candidate hash verified and quarantined",
+        "native_scene_contract": null,
+        "reference_state": "PRESERVED_LOCAL_HASH_VERIFIED_QUARANTINED",
+        "preserved_candidate_hash": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+        "local_preserved_candidate": {"path": "renders/scroll-world/LH-COMMERCE-1/preserved-candidate/LH-COMMERCE-1-vow-aisle-founder-approved-v1.png", "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38", "receipt": "data/candidates/lh-commerce-1-vow-aisle-preserved-retrieval-receipt-v1.json", "review_status": "FOUNDER_APPROVED_PRESERVE_ONLY", "runtime_wiring_allowed": false},
+        "love_hurts_rose_anchor_id": "LH_ENCHANTED_ROSE_CATHEDRAL",
+        "love_hurts_rose_assignment": "ceremonial_vow_aisle_approach_to_the_protected_rose",
+        "exact_skus": ["lh-004", "lh-002", "lh-006"],
+        "founder_declared_wearer_sku_assignments": [
+          {"wearer": "man", "look_id": "lh-bomber-black", "skus": ["lh-004", "lh-002"]},
+          {"wearer": "woman", "look_id": "lh-bomber-white", "skus": ["lh-004", "lh-006"]}
+        ],
+        "exact_cta": {"label": "Complete the Look", "href": "#shop"},
+        "non_negotiables": ["The protected enchanted rose is Love Hurts' primary focal object, never a generic flower, heart, or replaceable background prop.", "Preserve the approved mixed cast exactly: the man wears lh-004 with lh-002, and the woman wears lh-004 with lh-006.", "Do not regenerate, crop, edit, or use this preserved candidate as a new generative reference.", "Its local candidate file is hash-verified but remains quarantined from runtime wiring until the separate native-review and promotion records exist."],
+        "provider_generation_allowed": false
+      },
+      {
+        "scene_reference_id": "LH-COMMERCE-2",
+        "role": "hero_world_moment_2",
+        "journey_chapter": "Love Hurts cathedral chamber",
+        "label": "The Fractured Chamber",
+        "scene_variation": "low close thorned runway and cracked-rose chamber",
+        "native_scene_contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/lh-commerce-2.json",
+    "reference_state": "NATIVE_CONTRACT_SELECTED_BLOCKED_SOURCE_GATE",
+        "love_hurts_rose_anchor_id": "LH_ENCHANTED_ROSE_CATHEDRAL",
+        "love_hurts_rose_assignment": "fractured_chamber_with_protected_rose_sharp_opposite_the_product",
+        "exact_skus": ["lh-003"],
+        "exact_cta": {"label": "Shop the Shorts", "href": "#shop"},
+        "non_negotiables": ["The protected enchanted rose is Love Hurts' primary focal object and is required opposite the cracked-rose material world.", "No generic hearts, flowers, or substitute rose silhouette."],
+        "provider_generation_allowed": false
+      },
+      {
+        "scene_reference_id": "LH-COMMERCE-3",
+        "role": "collection_preorder",
+        "journey_chapter": "Love Hurts cathedral chamber",
+        "label": "The Rose Vitrine",
+        "scene_variation": "intimate threshold and vitrine",
+        "native_scene_contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/lh-commerce-3.json",
+        "reference_state": "NATIVE_CONTRACT_SELECTED_BLOCKED_SOURCE_GATE",
+        "love_hurts_rose_anchor_id": "LH_ENCHANTED_ROSE_CATHEDRAL",
+        "love_hurts_rose_assignment": "intimate_vitrine_with_the_fannie_foreground_and_protected_rose_legible",
+        "exact_skus": ["lh-005"],
+        "exact_cta": {"label": "Pre-Order The Fannie", "href": "/pre-order/"},
+        "non_negotiables": ["The Fannie is the product protagonist.", "The protected enchanted rose remains sharply legible as the collection focal object; it cannot be replaced by a generic flower."],
+        "provider_generation_allowed": false
+      }
+    ],
+    "signature": [
+      {
+        "scene_reference_id": "SIG-COMMERCE-1",
+        "role": "hero_world_moment_1",
+        "journey_chapter": "Oakland Signature showroom",
+        "label": "The Oakland Atelier",
+        "scene_variation": "left-statue, right-bridge atelier recomposition",
+        "native_scene_contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/sig-commerce-1.json",
+        "reference_state": "FOUNDER_APPROVED_SCENE_DIRECTION__SOURCE_GATE_BLOCKED",
+        "hero_continuity_anchor": {"id": "SIG_FONT_STATUE", "kind": "font_statue", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png", "sha256": "e259c246a320b8220044da915c3b6fa89ecbbe7ab4a74eb80bafebe668d0e274", "requirement": "Use the protected clean-gold SkyyRose font sculpture in its exact founder-supplied form; no altered script, generated lettering, or statue fragments."},
+        "exact_skus": ["sg-009", "sg-007"],
+        "exact_cta": {"label": "Complete the Look", "href": "#shop"},
+        "non_negotiables": ["Use the protected clean gold Skyy Rose sculpture at frame left and Oakland/Bay bridge landscape at right.", "Model contact requires actual occlusion, balance, and cast shadow."],
+        "provider_generation_allowed": false
+      },
+      {
+        "scene_reference_id": "SIG-COMMERCE-2",
+        "role": "hero_world_moment_2",
+        "journey_chapter": "Oakland Signature showroom",
+        "label": "Signature Hero Runway",
+        "scene_variation": "founder-directed exact Signature gold-monument runway with Golden Gate night backdrop",
+        "native_scene_contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/sig-commerce-2.json",
+        "reference_state": "FOUNDER_APPROVED_SCENE_DIRECTION__SOURCE_GATE_BLOCKED",
+        "hero_continuity_anchor": {"id": "SIG_GOLDEN_GATE_MONUMENTS_HERO", "kind": "scene_backdrop_and_gold_monuments", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp", "sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8", "requirement": "Preserve the exact Signature hero form: wet night runway, exact gold SkyyRose script sculpture, exact gold SR rose sculpture, Golden Gate behind, and its dark-gold color field. This current founder direction supersedes the older Bay-Bridge-only wording."},
+        "exact_skus": ["sg-013", "sg-014", "sg-006"],
+        "exact_cta": {"label": "Complete the Look", "href": "#shop"},
+        "founder_declared_wearer_sku_assignments": [
+          {"wearer": "man", "look_id": "mint-long-hoodie", "skus": ["sg-006"]},
+          {"wearer": "woman", "look_id": "mint-crew-sweatpants", "skus": ["sg-013", "sg-014"]}
+        ],
+        "non_negotiables": ["Use the exact gold hero sculptures and Golden Gate hero backdrop; do not approximate or regenerate their lettering or form.", "Preserve the selected foreground model/product layers but discard the rejected edit environments.", "All cast members must share the same runway floor, light, shadow, reflection, grain, depth, occlusion, and natural movement field."],
+        "provider_generation_allowed": false
+      },
+      {
+        "scene_reference_id": "SIG-COMMERCE-3",
+        "role": "collection_preorder",
+        "journey_chapter": "Oakland Signature showroom",
+        "label": "The Departure Terrace",
+        "scene_variation": "open sunrise Bay departure terrace",
+        "native_scene_contract": "docs/design/v2-remodel/native-scene-regeneration-v2/scene-contracts/sig-commerce-3.json",
+        "reference_state": "FOUNDER_APPROVED_SCENE_DIRECTION__SOURCE_GATE_BLOCKED",
+        "hero_continuity_anchor": {"id": "SIG_SR_ROSE_GRAPHIC", "kind": "hero_graphic", "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png", "sha256": "2667368884d96e5d0689fdb5f6795940b0ea9aa79035d4542859c235b7864bcc", "requirement": "Use the protected founder-supplied SR-and-rose graphic in its exact form as an environmental object only; never turn it into approximate lettering or clothing art."},
+        "exact_skus": ["sg-005", "sg-001", "sg-002", "sg-003", "sg-015"],
+        "exact_cta": {"label": "Explore Pre-Orders", "href": "/pre-order/"},
+        "non_negotiables": ["Keep the Bay Bridge blue story distinct from the Stay Golden purple story.", "The protected SR-and-rose environmental object is never clothing art or approximate lettering."],
+        "provider_generation_allowed": false
+      }
+    ]
+  }
+}
