@@ -8,8 +8,10 @@ No network calls — the OpenAI client and QC judge are faked.
 
 from __future__ import annotations
 
+import hashlib
 import io
 import json
+from dataclasses import replace
 from pathlib import Path
 
 import numpy as np
@@ -17,8 +19,10 @@ import pytest
 from PIL import Image
 
 from scripts.oai_render import config
+from scripts.oai_render import pipeline as pipeline_mod
 from scripts.oai_render import prompt as prompt_mod
 from scripts.oai_render import qc
+from scripts.oai_render.client import ImageCallResult
 from scripts.oai_render.cost import SpendTracker
 from scripts.oai_render.pipeline import SkuPlan, render_sku
 from scripts.oai_render.prompt import (
@@ -31,6 +35,7 @@ from scripts.oai_render.prompt import (
     sanitize_name,
 )
 from scripts.oai_render.references import ReferenceImage
+from scripts.oai_render.runlog import RunLog, load_events
 
 # ── Sanitizer ────────────────────────────────────────────────────────────────
 
@@ -208,10 +213,57 @@ class _FakeClient:
         self.calls = 0
         self.prompts: list[str] = []
 
-    def edit(self, *, prompt: str, image_paths: list[Path]) -> bytes:
+    def edit_with_metadata(
+        self,
+        *,
+        prompt: str,
+        image_paths: list[Path],
+        expected_input_sha256s: tuple[str, ...] | None = None,
+    ) -> ImageCallResult:
         self.calls += 1
         self.prompts.append(prompt)
-        return self.payload
+        input_hashes = expected_input_sha256s or tuple(
+            hashlib.sha256(str(path).encode("utf-8")).hexdigest() for path in image_paths
+        )
+        prompt_sha256 = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+        parameters: dict[str, object] = {
+            "model": "gpt-image-2-2026-04-21",
+            "quality": "high",
+            "size": "1024x1536",
+            "output_format": "png",
+            "background": "auto",
+            "n": 1,
+        }
+        contract: dict[str, object] = {
+            "contract_id": "skyyrose-product-image-candidate-v1",
+            "authority_state": "CANDIDATE_ONLY",
+            "operation": "product_image_candidate",
+            "provider": "openai",
+            "api_surface": "images",
+            "endpoint": "/v1/images/edits",
+            "requested_model": "gpt-image-2-2026-04-21",
+            "prompt_sha256": prompt_sha256,
+            "request_image_sha256s": list(input_hashes),
+            "mask_sha256": None,
+            "request_parameters": parameters,
+            "release_authority": False,
+        }
+        contract_sha256 = hashlib.sha256(
+            json.dumps(contract, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
+        return ImageCallResult(
+            data=self.payload,
+            request_id=f"req_fake_{self.calls}",
+            requested_model="gpt-image-2-2026-04-21",
+            sdk_version="test",
+            endpoint="/v1/images/edits",
+            request_parameters=parameters,
+            ordered_input_sha256s=input_hashes,
+            mask_sha256=None,
+            prompt_sha256=prompt_sha256,
+            job_contract=contract,
+            contract_sha256=contract_sha256,
+        )
 
 
 class _ScriptedGate:
@@ -246,7 +298,7 @@ def _plan() -> SkuPlan:
         name="Black Rose Crewneck",
         collection="black-rose",
         output_slug="black-rose-crewneck",
-        references=[ReferenceImage(label="ref 1", path=Path("/nonexistent.png"), kind="garment")],
+        references=[ReferenceImage(label="ref 1", path=Path(__file__), kind="garment")],
         prompt="prompt",
     )
 
@@ -315,6 +367,189 @@ def test_render_sku_no_gate_accepts_first_render(_tmp_output):
     assert result.output_path is not None and result.output_path.exists()
 
 
+def test_render_sku_writes_hash_bound_candidate_receipt(_tmp_output, tmp_path: Path):
+    ref = tmp_path / "reference.png"
+    ref.write_bytes(b"physical-source-bytes")
+    plan = _plan()
+    plan.references = [ReferenceImage(label="physical front", path=ref, kind="garment")]
+
+    class _MetadataClient:
+        def edit_with_metadata(
+            self,
+            *,
+            prompt: str,
+            image_paths: list[Path],
+            expected_input_sha256s: tuple[str, ...] | None = None,
+        ):
+            prompt_sha256 = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+            input_hashes = expected_input_sha256s or (
+                "0f42fe3ccdc71744b95003efaf209de0fa1b3982aded905d04d42e418290c0e2",
+            )
+            parameters: dict[str, object] = {
+                "model": "gpt-image-2-2026-04-21",
+                "quality": "high",
+                "size": "1024x1536",
+                "output_format": "png",
+                "background": "auto",
+                "n": 1,
+            }
+            contract: dict[str, object] = {
+                "contract_id": "skyyrose-product-image-candidate-v1",
+                "authority_state": "CANDIDATE_ONLY",
+                "operation": "product_image_candidate",
+                "provider": "openai",
+                "api_surface": "images",
+                "endpoint": "/v1/images/edits",
+                "requested_model": "gpt-image-2-2026-04-21",
+                "release_authority": False,
+                "prompt_sha256": prompt_sha256,
+                "request_image_sha256s": list(input_hashes),
+                "mask_sha256": None,
+                "request_parameters": parameters,
+            }
+            return ImageCallResult(
+                data=b"generated-candidate",
+                request_id="req_receipt_123",
+                requested_model="gpt-image-2-2026-04-21",
+                sdk_version="2.23.0",
+                endpoint="/v1/images/edits",
+                request_parameters=parameters,
+                ordered_input_sha256s=input_hashes,
+                mask_sha256=None,
+                prompt_sha256=prompt_sha256,
+                job_contract=contract,
+                contract_sha256=hashlib.sha256(
+                    json.dumps(contract, sort_keys=True, separators=(",", ":")).encode("utf-8")
+                ).hexdigest(),
+            )
+
+    result = render_sku(plan, _MetadataClient(), gate=None, spend=SpendTracker())
+
+    assert result.status == "rendered"
+    assert result.receipt_path is not None and result.receipt_path.exists()
+    receipt = json.loads(result.receipt_path.read_text(encoding="utf-8"))
+    assert receipt["authority_state"] == "CANDIDATE_ONLY"
+    assert receipt["contract"]["release_authority"] is False
+    assert receipt["contract_sha256"]
+    assert receipt["x_request_id"] == "req_receipt_123"
+    assert receipt["requested_model"] == "gpt-image-2-2026-04-21"
+    assert receipt["ordered_inputs"][0]["sha256"] == (
+        "0f42fe3ccdc71744b95003efaf209de0fa1b3982aded905d04d42e418290c0e2"
+    )
+    assert receipt["output"]["sha256"] == (
+        "859b51b2664361deeb1beb449774d587932af5c8ca27ae74134f38b1fbac9da1"
+    )
+    assert receipt["output_sha256"] == receipt["output"]["sha256"]
+    assert receipt["request_image_sha256s"] == [receipt["input_sha256"]]
+    assert receipt["mask_path"] is None
+    assert receipt["mask_sha256"] is None
+    serialized = json.dumps(receipt)
+    assert "OPENAI_API_KEY" not in serialized
+    assert "sk-proj" not in serialized
+
+
+def test_render_sku_rejects_legacy_client_before_call(_tmp_output):
+    class _LegacyClient:
+        calls = 0
+
+        def edit(self, *, prompt: str, image_paths: list[Path]):
+            self.calls += 1
+            return b"unreceipted"
+
+    client = _LegacyClient()
+    result = render_sku(_plan(), client, gate=None, spend=SpendTracker())
+
+    assert result.status == "error"
+    assert "evidence_required" in result.reason
+    assert client.calls == 0
+
+
+def test_render_sku_reruns_publish_request_unique_candidates(_tmp_output):
+    client = _FakeClient(b"candidate")
+
+    first = render_sku(_plan(), client, gate=None, spend=SpendTracker())
+    second = render_sku(_plan(), client, gate=None, spend=SpendTracker())
+
+    assert first.status == second.status == "rendered"
+    assert first.output_path != second.output_path
+    assert first.output_path is not None and first.output_path.exists()
+    assert second.output_path is not None and second.output_path.exists()
+    assert ".candidate.req_fake_" in first.output_path.name
+
+
+@pytest.mark.parametrize(
+    "tamper",
+    ["model", "endpoint", "parameters", "release_authority", "input_hashes", "mask"],
+)
+def test_receipt_rejects_self_consistent_contract_contradictions(_tmp_output, tamper):
+    base = _FakeClient(b"candidate")
+
+    class _TamperedClient:
+        def edit_with_metadata(
+            self,
+            *,
+            prompt: str,
+            image_paths: list[Path],
+            expected_input_sha256s: tuple[str, ...] | None = None,
+        ):
+            result = base.edit_with_metadata(
+                prompt=prompt,
+                image_paths=image_paths,
+                expected_input_sha256s=expected_input_sha256s,
+            )
+            changes = {}
+            contract = dict(result.job_contract)
+            if tamper == "model":
+                changes["requested_model"] = "gpt-image-2"
+                contract["requested_model"] = "gpt-image-2"
+            elif tamper == "endpoint":
+                changes["endpoint"] = "/v1/responses"
+                contract["endpoint"] = "/v1/responses"
+            elif tamper == "parameters":
+                parameters = {**result.request_parameters, "quality": "low"}
+                changes["request_parameters"] = parameters
+                contract["request_parameters"] = parameters
+            elif tamper == "release_authority":
+                contract["release_authority"] = True
+            elif tamper == "input_hashes":
+                hashes = ("0" * 64,)
+                changes["ordered_input_sha256s"] = hashes
+                contract["request_image_sha256s"] = list(hashes)
+            else:
+                changes["mask_sha256"] = "f" * 64
+                contract["mask_sha256"] = "f" * 64
+            changes["job_contract"] = contract
+            changes["contract_sha256"] = hashlib.sha256(
+                json.dumps(contract, sort_keys=True, separators=(",", ":")).encode("utf-8")
+            ).hexdigest()
+            return replace(result, **changes)
+
+    result = render_sku(_plan(), _TamperedClient(), gate=None, spend=SpendTracker())
+
+    assert result.status == "error"
+    assert any(term in result.reason for term in ("provider", "contract", "mask"))
+
+
+def test_rejected_attempt_persistence_failure_stops_paid_retries(
+    _tmp_output, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+):
+    client = _FakeClient(b"candidate")
+    gate = _ScriptedGate([False])
+    runlog = RunLog(path=tmp_path / "failure.jsonl")
+
+    def _fail(*_args, **_kwargs):
+        raise OSError("disk full")
+
+    monkeypatch.setattr(pipeline_mod, "_write_generation_receipt", _fail)
+    result = render_sku(_plan(), client, gate=gate, spend=SpendTracker(), runlog=runlog)
+
+    assert result.status == "error"
+    assert client.calls == 1
+    events = load_events(runlog.path)
+    assert "evidence_error" in [event["event"] for event in events]
+    assert "quarantined" not in [event["event"] for event in events]
+
+
 # ── Q-unavail: judge-infra failure → mandatory human review, never auto-ship ──
 
 
@@ -354,6 +589,127 @@ def test_qc_check_judge_unavailable_routes_to_review(monkeypatch):
     assert verdict.needs_review is True
     assert verdict.passed is False
     assert "judge_unavailable" in verdict.failure_tags
+
+
+@pytest.mark.parametrize(
+    "malformed",
+    [
+        {},
+        {"garment_matches_reference": "false"},
+        {
+            "visual_analysis": "looks wrong",
+            "is_single_photograph": True,
+            "garment_matches_reference": True,
+            "view_correct": True,
+            "branding_legible_and_correct": True,
+            "photorealistic_not_flat": True,
+            "all_garments_present": True,
+            "authority_consistent": True,
+            "reason": "pass",
+            "unexpected": True,
+        },
+    ],
+)
+def test_qc_malformed_judge_verdict_fails_closed(malformed):
+    gate = qc.QCGate(judge_fn=lambda _req: (malformed, 0.01))
+    verdict = gate.check(
+        _png_bytes(_noise_render()),
+        qc.RenderExpectation(
+            sku="br-001",
+            name="Black Rose Crewneck",
+            style="ghost",
+            view="front",
+            is_pair=False,
+            is_patch=False,
+        ),
+    )
+
+    assert verdict.passed is False
+    assert verdict.needs_review is True
+    assert verdict.failure_tags == ("malformed_judge_verdict",)
+
+
+def test_qc_authority_conflict_routes_to_review_without_retry():
+    raw = {
+        "visual_analysis": "dossier says white drawstring; real garment photo shows black",
+        "is_single_photograph": True,
+        "garment_matches_reference": True,
+        "view_correct": True,
+        "branding_legible_and_correct": True,
+        "photorealistic_not_flat": True,
+        "all_garments_present": True,
+        "authority_consistent": False,
+        "reason": "dossier and photo conflict on drawstring color",
+    }
+    gate = qc.QCGate(judge_fn=lambda _req: (raw, 0.01))
+    verdict = gate.check(
+        _png_bytes(_noise_render()),
+        qc.RenderExpectation(
+            sku="br-002",
+            name="BLACK Rose Joggers",
+            style="ghost",
+            view="front",
+            is_pair=False,
+            is_patch=True,
+            dossier_spec="The drawstring is WHITE.",
+        ),
+    )
+
+    assert verdict.passed is False
+    assert verdict.needs_review is True
+    assert verdict.failure_tags == ("authority_conflict",)
+
+
+def test_judge_api_retries_one_transient_failure(monkeypatch: pytest.MonkeyPatch):
+    gate = qc.QCGate(use_judge=False)
+    calls = 0
+
+    class _TransientError(Exception):
+        status_code = 429
+
+    def _send():
+        nonlocal calls
+        calls += 1
+        if calls == 1:
+            raise _TransientError("rate limited")
+        return "ok"
+
+    monkeypatch.setattr(qc.time, "sleep", lambda _delay: None)
+
+    assert gate._call_judge_api(_send) == "ok"
+    assert calls == 2
+    assert gate._last_judge_attempts == 2
+
+
+def test_judge_api_does_not_retry_non_transient_failure(monkeypatch: pytest.MonkeyPatch):
+    gate = qc.QCGate(use_judge=False)
+    calls = 0
+
+    class _InvalidRequestError(Exception):
+        status_code = 400
+
+    def _send():
+        nonlocal calls
+        calls += 1
+        raise _InvalidRequestError("invalid schema")
+
+    monkeypatch.setattr(qc.time, "sleep", lambda _delay: None)
+
+    with pytest.raises(_InvalidRequestError):
+        gate._call_judge_api(_send)
+    assert calls == 1
+    assert gate._last_judge_attempts == 1
+
+
+@pytest.mark.parametrize("provider", ["openai", "anthropic"])
+def test_judge_clients_disable_hidden_sdk_retries(provider: str, monkeypatch: pytest.MonkeyPatch):
+    monkeypatch.setattr(config, "QC_JUDGE_PROVIDER", provider)
+    monkeypatch.setenv("OPENAI_API_KEY", "test-key-abc")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "test-key-abc")
+
+    gate = qc.QCGate()
+
+    assert gate._client.max_retries == 0
 
 
 def test_render_sku_needs_review_quarantines_without_retry(_tmp_output):
@@ -504,6 +860,25 @@ def test_qc_judge_receives_dossier_branding_ground_truth():
     # and blank panels are explicitly NOT failed for "missing branding".
     assert exp.branding_spec in text
     assert "blank" in text.lower() and "absence" in text.lower()
+
+
+def test_qc_judge_rejects_obvious_trim_and_construction_mismatches():
+    from scripts.oai_render.qc import RenderExpectation, _judge_instructions
+
+    text = _judge_instructions(
+        RenderExpectation(
+            sku="br-002",
+            name="BLACK Rose Joggers",
+            style="ghost",
+            view="front",
+            is_pair=False,
+            is_patch=True,
+        )
+    ).lower()
+
+    assert "wrong drawstring color" in text
+    assert "wrong zipper/closure" in text
+    assert "product facts, not cosmetic micro-deviations" in text
 
 
 def test_founder_keeper_assets_skip_their_plan(tmp_path, monkeypatch):

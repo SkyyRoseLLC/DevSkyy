@@ -7,8 +7,12 @@ manifest with ZERO API calls. Live generation requires an explicit caller
 
 from __future__ import annotations
 
+import hashlib
 import json
 import logging
+import os
+import re
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import TYPE_CHECKING
@@ -20,7 +24,7 @@ from .references import MissingReferenceError, Pair, ReferenceImage
 from .scene_schema import build_scene
 
 if TYPE_CHECKING:
-    from .client import RenderClient
+    from .client import ImageCallResult, RenderClient
     from .cost import SpendTracker
     from .qc import QCGate
     from .runlog import RunLog
@@ -42,6 +46,7 @@ class SkuPlan:
     prompt: str = ""
     is_patch: bool = False
     branding_spec: str = ""  # dossier's per-view branding bullets, ground truth for the QC judge
+    dossier_spec: str = ""  # founder-authored garment canon for the QC authority gate
     is_pair: bool = False  # True for a paired-look on-model (two garments, one model)
     pair_id: str | None = None
     pair_skus: tuple[str, ...] | None = None
@@ -58,6 +63,168 @@ class RenderResult:
     status: str  # "rendered" | "skipped" | "error" | "qc_failed" | "needs_review"
     reason: str = ""
     output_path: Path | None = None
+    receipt_path: Path | None = None
+
+
+def _sha256_bytes(data: bytes) -> str:
+    return hashlib.sha256(data).hexdigest()
+
+
+def _sha256_path(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _relative_path(path: Path | str) -> str:
+    path = Path(path)
+    try:
+        return str(path.resolve().relative_to(config.PROJECT_ROOT.resolve()))
+    except ValueError:
+        return str(path.resolve())
+
+
+def _safe_token(value: str) -> str:
+    return re.sub(r"[^A-Za-z0-9_.-]", "_", value)[:120]
+
+
+def _atomic_write_no_clobber(path: Path, data: bytes) -> None:
+    """Publish bytes atomically and fail when the immutable target already exists."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
+    temp_path = Path(temp_name)
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(data)
+            fh.flush()
+            os.fsync(fh.fileno())
+        os.link(temp_path, path)
+        dir_fd = os.open(path.parent, os.O_RDONLY)
+        try:
+            os.fsync(dir_fd)
+        finally:
+            os.close(dir_fd)
+    finally:
+        temp_path.unlink(missing_ok=True)
+
+
+def _atomic_write_json_no_clobber(path: Path, value: dict) -> None:
+    payload = (json.dumps(value, indent=2, sort_keys=True) + "\n").encode("utf-8")
+    _atomic_write_no_clobber(path, payload)
+
+
+def _write_generation_receipt(
+    plan: SkuPlan,
+    data: bytes,
+    attempt: int,
+    prompt: str,
+    call_result: ImageCallResult,
+    *,
+    status: str,
+    output_path: Path,
+    runlog: RunLog | None,
+) -> Path:
+    """Write a hash-bound, secret-free receipt for one paid image attempt."""
+    receipt_dir = config.OUTPUT_DIR / "_receipts" / plan.output_slug
+    receipt_dir.mkdir(parents=True, exist_ok=True)
+    view = "pair" if plan.is_pair else plan.view
+    request_token = _safe_token(call_result.request_id)
+    receipt_path = (
+        receipt_dir / f"{plan.style}-{view}.attempt{attempt}.{status}.{request_token}.json"
+    )
+    if len(call_result.ordered_input_sha256s) != len(plan.references):
+        raise ValueError("provider input hash count does not match the ordered reference list")
+    expected_prompt_sha256 = _sha256_bytes(prompt.encode("utf-8"))
+    if call_result.prompt_sha256 != expected_prompt_sha256:
+        raise ValueError("provider prompt hash does not match the attempted prompt")
+    expected_parameters: dict[str, object] = {
+        "model": config.MODEL,
+        "quality": config.QUALITY,
+        "size": config.SIZE,
+        "output_format": config.OUTPUT_FORMAT,
+        "background": config.BACKGROUND,
+        "n": config.N,
+    }
+    if config.MODEL in config.INPUT_FIDELITY_SUPPORTED_MODELS:
+        expected_parameters["input_fidelity"] = config.INPUT_FIDELITY
+    if call_result.endpoint != "/v1/images/edits":
+        raise ValueError("provider endpoint does not match the approved Images edit surface")
+    if call_result.requested_model != config.MODEL:
+        raise ValueError("provider model does not match the pinned model snapshot")
+    if call_result.mask_sha256 is not None:
+        raise ValueError("unmasked product-candidate pipeline received an unexpected mask hash")
+    if call_result.request_parameters != expected_parameters:
+        raise ValueError("provider request parameters do not match the approved render contract")
+    expected_contract: dict[str, object] = {
+        "contract_id": "skyyrose-product-image-candidate-v1",
+        "authority_state": "CANDIDATE_ONLY",
+        "operation": "product_image_candidate",
+        "provider": "openai",
+        "api_surface": "images",
+        "endpoint": call_result.endpoint,
+        "requested_model": call_result.requested_model,
+        "prompt_sha256": call_result.prompt_sha256,
+        "request_image_sha256s": list(call_result.ordered_input_sha256s),
+        "mask_sha256": call_result.mask_sha256,
+        "request_parameters": call_result.request_parameters,
+        "release_authority": False,
+    }
+    if call_result.job_contract != expected_contract:
+        raise ValueError("provider job contract contradicts the approved candidate-only contract")
+    expected_contract_sha256 = _sha256_bytes(
+        json.dumps(
+            expected_contract,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+    )
+    if call_result.contract_sha256 != expected_contract_sha256:
+        raise ValueError("provider job contract hash is invalid")
+    input_records = [
+        {"path": _relative_path(ref.path), "sha256": sha256}
+        for ref, sha256 in zip(
+            plan.references,
+            call_result.ordered_input_sha256s,
+            strict=True,
+        )
+    ]
+    output_sha256 = _sha256_bytes(data)
+    receipt = {
+        "schema_version": 1,
+        "contract": call_result.job_contract,
+        "contract_sha256": call_result.contract_sha256,
+        "model_adapter_id": "openai-gpt-image-2-edit",
+        "authority_state": "CANDIDATE_ONLY",
+        "provider": "openai",
+        "api_surface": "images",
+        "endpoint": call_result.endpoint,
+        "requested_model": call_result.requested_model,
+        "sdk_version": call_result.sdk_version,
+        "x_request_id": call_result.request_id,
+        "sku": plan.sku,
+        "style": plan.style,
+        "view": plan.view,
+        "attempt": attempt,
+        "status": status,
+        "input_sha256": input_records[0]["sha256"],
+        "request_image_sha256s": [record["sha256"] for record in input_records],
+        "mask_path": None,
+        "mask_sha256": call_result.mask_sha256,
+        "output_sha256": output_sha256,
+        "prompt_sha256": call_result.prompt_sha256,
+        "ordered_inputs": input_records,
+        "output": {
+            "path": _relative_path(output_path),
+            "sha256": output_sha256,
+            "bytes": len(data),
+        },
+        "request_parameters": call_result.request_parameters,
+        "run_log": _relative_path(runlog.path) if runlog is not None else None,
+    }
+    _atomic_write_json_no_clobber(receipt_path, receipt)
+    return receipt_path
 
 
 def resolve_targets(
@@ -213,6 +380,7 @@ def plan_sku(
         prompt=prompt,
         is_patch=is_patch,
         branding_spec=extract_view_branding(dossier_text, view),
+        dossier_spec=dossier_text[:6000],
     )
 
 
@@ -273,6 +441,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
         prompt=prompt,
         is_patch=any(g["is_patch"] for g in garments),
         branding_spec=pair_branding,
+        dossier_spec="\n\n".join(g["dossier_text"][:3000] for g in garments),
     )
 
 
@@ -304,13 +473,27 @@ def _output_filename(plan: SkuPlan) -> str:
     return f"{plan.style}{suffix}.png"
 
 
-def _quarantine(plan: SkuPlan, data: bytes, attempt: int, verdict) -> Path:
-    """Write a QC-rejected render + its verdict to the quarantine dir for review."""
-    qdir = config.REJECTED_DIR / plan.output_slug
-    qdir.mkdir(parents=True, exist_ok=True)
+def _candidate_output_filename(plan: SkuPlan, request_id: str) -> str:
     stem = _output_filename(plan).removesuffix(".png")
-    img_path = qdir / f"{stem}.attempt{attempt}.png"
-    img_path.write_bytes(data)
+    return f"{stem}.candidate.{_safe_token(request_id)}.png"
+
+
+def _quarantine_path(plan: SkuPlan, attempt: int, request_id: str) -> Path:
+    qdir = config.REJECTED_DIR / plan.output_slug
+    stem = _output_filename(plan).removesuffix(".png")
+    return qdir / f"{stem}.attempt{attempt}.{_safe_token(request_id)}.png"
+
+
+def _quarantine(
+    plan: SkuPlan,
+    data: bytes,
+    attempt: int,
+    verdict,
+    *,
+    request_id: str,
+) -> Path:
+    """Write a QC-rejected render + its verdict to the quarantine dir for review."""
+    img_path = _quarantine_path(plan, attempt, request_id)
     meta = {
         "sku": plan.sku,
         "style": plan.style,
@@ -319,10 +502,11 @@ def _quarantine(plan: SkuPlan, data: bytes, attempt: int, verdict) -> Path:
         "attempt": attempt,
         "failure_tags": list(verdict.failure_tags),
         "reason": verdict.reason,
+        "x_request_id": request_id,
+        "output_sha256": _sha256_bytes(data),
     }
-    (qdir / f"{stem}.attempt{attempt}.json").write_text(
-        json.dumps(meta, indent=2), encoding="utf-8"
-    )
+    _atomic_write_json_no_clobber(img_path.with_suffix(".json"), meta)
+    _atomic_write_no_clobber(img_path, data)
     return img_path
 
 
@@ -378,8 +562,9 @@ def render_sku(
     Loop: budget check → paid render → QC verdict. A failing verdict quarantines
     the attempt and re-renders, up to ``config.QC_MAX_RENDER_RETRIES`` extra
     attempts; exhaustion returns status ``qc_failed`` (needs human review) — the
-    batch continues. Without a gate the first successful render is accepted
-    (legacy behavior, used by tests and judge-disabled runs).
+    batch continues. Every client must return provider evidence through
+    ``edit_with_metadata``; a legacy byte-only client is rejected before a paid
+    call so receipt creation cannot be bypassed.
     """
 
     def _emit(event: str, **fields) -> None:
@@ -391,6 +576,12 @@ def render_sku(
     if not plan.renderable:
         _emit("skipped", reason=plan.error or "no references")
         return RenderResult(sku=plan.sku, status="skipped", reason=plan.error or "no references")
+
+    edit_with_metadata = getattr(client, "edit_with_metadata", None)
+    if not callable(edit_with_metadata):
+        reason = "evidence_required: render client does not provide request-bound metadata"
+        _emit("evidence_error", reason=reason)
+        return RenderResult(sku=plan.sku, status="error", reason=reason)
 
     max_attempts = 1 + config.QC_MAX_RENDER_RETRIES
     last_verdict = None
@@ -415,7 +606,21 @@ def render_sku(
         if last_verdict is not None:
             attempt_prompt += _retry_correction(last_verdict)
         try:
-            data = client.edit(prompt=attempt_prompt, image_paths=[r.path for r in plan.references])
+            expected_input_sha256s = tuple(_sha256_path(ref.path) for ref in plan.references)
+            call_result = edit_with_metadata(
+                prompt=attempt_prompt,
+                image_paths=[r.path for r in plan.references],
+                expected_input_sha256s=expected_input_sha256s,
+            )
+            if call_result.ordered_input_sha256s != expected_input_sha256s:
+                raise ValueError("provider input hashes do not match the preflight source bytes")
+            data = call_result.data
+            _emit(
+                "provider_response",
+                attempt=attempt + 1,
+                requested_model=call_result.requested_model,
+                x_request_id=call_result.request_id,
+            )
         except Exception as exc:  # surfaced, never swallowed
             log.error("Render failed for %s: %s", plan.sku, exc)
             reason = f"{type(exc).__name__}: {str(exc)[:300]}"
@@ -450,19 +655,62 @@ def render_sku(
             # Never auto-accept it, and never burn paid retries — re-rendering cannot
             # fix a down judge. Quarantine the bytes for mandatory human sign-off and
             # stop here.
-            _quarantine(plan, data, attempt + 1, verdict)
+            try:
+                quarantine_path = _quarantine_path(plan, attempt + 1, call_result.request_id)
+                receipt_path = _write_generation_receipt(
+                    plan,
+                    data,
+                    attempt + 1,
+                    attempt_prompt,
+                    call_result,
+                    status="needs_review",
+                    output_path=quarantine_path,
+                    runlog=runlog,
+                )
+                _quarantine(
+                    plan,
+                    data,
+                    attempt + 1,
+                    verdict,
+                    request_id=call_result.request_id,
+                )
+            except (OSError, ValueError) as exc:
+                reason = f"evidence persistence failed: {type(exc).__name__}: {exc}"
+                _emit("evidence_error", reason=reason)
+                return RenderResult(sku=plan.sku, status="error", reason=reason)
             _emit(
                 "qc_needs_review",
                 attempt=attempt + 1,
                 tags=list(verdict.failure_tags),
                 reason=verdict.reason,
+                receipt_path=str(receipt_path) if receipt_path else None,
             )
             return RenderResult(sku=plan.sku, status="needs_review", reason=verdict.summary)
 
         if verdict is None or verdict.passed:
-            return _accept_render(plan, data, attempt + 1, _emit)
+            return _accept_render(
+                plan,
+                data,
+                attempt + 1,
+                attempt_prompt,
+                call_result,
+                runlog,
+                _emit,
+            )
 
-        _reject_render(plan, data, attempt + 1, max_attempts, verdict, _emit)
+        persistence_error = _reject_render(
+            plan,
+            data,
+            attempt + 1,
+            max_attempts,
+            attempt_prompt,
+            call_result,
+            runlog,
+            verdict,
+            _emit,
+        )
+        if persistence_error is not None:
+            return RenderResult(sku=plan.sku, status="error", reason=persistence_error)
         # Early-abort: the SAME failure mode twice running means the references +
         # corrective feedback still didn't fix it — a further identical-failure render
         # is wasted spend. Stop and quarantine for human review.
@@ -490,29 +738,95 @@ def render_sku(
     )
 
 
-def _accept_render(plan: SkuPlan, data: bytes, attempt: int, _emit) -> RenderResult:
+def _accept_render(
+    plan: SkuPlan,
+    data: bytes,
+    attempt: int,
+    prompt: str,
+    call_result: ImageCallResult,
+    runlog: RunLog | None,
+    _emit,
+) -> RenderResult:
     """Persist an accepted render to the output tree (disk errors captured, not raised)."""
     try:
         out_dir = config.OUTPUT_DIR / plan.output_slug
-        out_dir.mkdir(parents=True, exist_ok=True)
-        out_path = out_dir / _output_filename(plan)
-        out_path.write_bytes(data)
-    except OSError as exc:  # disk error after a paid call — capture, don't abort
-        log.error("Disk write failed for %s: %s", plan.sku, exc)
-        _emit("render_error", reason=f"disk: {exc}")
-        return RenderResult(sku=plan.sku, status="error", reason=f"disk: {exc}")
+        out_path = out_dir / _candidate_output_filename(plan, call_result.request_id)
+        receipt_path = _write_generation_receipt(
+            plan,
+            data,
+            attempt,
+            prompt,
+            call_result,
+            status="qc_passed_candidate",
+            output_path=out_path,
+            runlog=runlog,
+        )
+        _atomic_write_no_clobber(out_path, data)
+    except (OSError, ValueError) as exc:  # fail closed after a paid call
+        prefix = "disk" if isinstance(exc, OSError) else "evidence"
+        log.error("Candidate publication failed for %s: %s", plan.sku, exc)
+        reason = f"{prefix}: {exc}"
+        _emit("render_error", reason=reason)
+        return RenderResult(sku=plan.sku, status="error", reason=reason)
     log.info("Rendered %s → %s (%d bytes)", plan.sku, out_path, len(data))
-    _emit("accepted", attempt=attempt, path=str(out_path))
-    return RenderResult(sku=plan.sku, status="rendered", output_path=out_path)
+    _emit(
+        "accepted",
+        attempt=attempt,
+        path=str(out_path),
+        receipt_path=str(receipt_path) if receipt_path else None,
+        output_sha256=_sha256_bytes(data),
+    )
+    return RenderResult(
+        sku=plan.sku,
+        status="rendered",
+        output_path=out_path,
+        receipt_path=receipt_path,
+    )
 
 
-def _reject_render(plan: SkuPlan, data: bytes, attempt: int, max_attempts: int, verdict, _emit):
+def _reject_render(
+    plan: SkuPlan,
+    data: bytes,
+    attempt: int,
+    max_attempts: int,
+    prompt: str,
+    call_result: ImageCallResult,
+    runlog: RunLog | None,
+    verdict,
+    _emit,
+) -> str | None:
     """Quarantine a QC-rejected attempt for human review; the caller decides on retry."""
+    receipt_path = None
     try:
-        _quarantine(plan, data, attempt, verdict)
-    except OSError as exc:
+        quarantine_path = _quarantine_path(plan, attempt, call_result.request_id)
+        receipt_path = _write_generation_receipt(
+            plan,
+            data,
+            attempt,
+            prompt,
+            call_result,
+            status="quarantined",
+            output_path=quarantine_path,
+            runlog=runlog,
+        )
+        _quarantine(
+            plan,
+            data,
+            attempt,
+            verdict,
+            request_id=call_result.request_id,
+        )
+    except (OSError, ValueError) as exc:
         log.error("Quarantine write failed for %s: %s", plan.sku, exc)
-    _emit("quarantined", attempt=attempt, tags=list(verdict.failure_tags))
+        reason = f"evidence persistence failed: {type(exc).__name__}: {exc}"
+        _emit("evidence_error", attempt=attempt, reason=reason)
+        return reason
+    _emit(
+        "quarantined",
+        attempt=attempt,
+        tags=list(verdict.failure_tags),
+        receipt_path=str(receipt_path) if receipt_path else None,
+    )
     log.warning(
         "QC rejected %s attempt %d/%d [%s] — %s",
         plan.sku,
@@ -521,6 +835,7 @@ def _reject_render(plan: SkuPlan, data: bytes, attempt: int, max_attempts: int, 
         ",".join(verdict.failure_tags),
         verdict.reason,
     )
+    return None
 
 
 def expectation_for(plan: SkuPlan):
@@ -534,6 +849,7 @@ def expectation_for(plan: SkuPlan):
         is_pair=plan.is_pair,
         is_patch=plan.is_patch,
         branding_spec=plan.branding_spec,
+        dossier_spec=plan.dossier_spec,
         reference_paths=tuple(r.path for r in plan.references),
     )
 
