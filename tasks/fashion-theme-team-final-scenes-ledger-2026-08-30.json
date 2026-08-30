@@ -36,7 +36,7 @@
         "scene_id": "BR-COMMERCE-1",
         "sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952",
         "decision": "FOUNDER_APPROVED_VISUAL",
-        "artifact_state": "APPROVAL_RECORDED__LOCAL_ARTIFACT_RECOVERY_REQUIRED",
+        "artifact_state": "HASH_VERIFIED_LOCAL__RECOVERED_FROM_ORIGINAL_PROVIDER_RESULT",
         "scope": "still image candidate only"
       },
       {
@@ -58,7 +58,7 @@
         "scene_id": "LH-COMMERCE-3",
         "sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a",
         "decision": "FOUNDER_APPROVED_VISUAL",
-        "artifact_state": "APPROVAL_RECORDED__LOCAL_ARTIFACT_RECOVERY_REQUIRED",
+        "artifact_state": "HASH_VERIFIED_LOCAL__RECOVERED_FROM_ORIGINAL_PROVIDER_RESULT",
         "scope": "visual selection and motion authorization; runtime promotion not approved"
       }
     ],
@@ -86,7 +86,7 @@
       "outputs": [
         "Nine commerce scenes reconciled; all nine scene directions or environment plates are founder-approved.",
         "Four product-scene visuals are founder-approved: BR-COMMERCE-1, BR-COMMERCE-3, LH-COMMERCE-1, and LH-COMMERCE-3.",
-        "BR-COMMERCE-3 and LH-COMMERCE-1 are hash-verified locally; BR-COMMERCE-1 and LH-COMMERCE-3 retain approval records but require approved-artifact recovery.",
+        "All four approved product-scene visuals are hash-verified locally; BR-COMMERCE-1 and LH-COMMERCE-3 were recovered byte-identically from their original provider results.",
         "Five product-scene visuals remain unapproved: BR-COMMERCE-2, LH-COMMERCE-2, SIG-COMMERCE-1, SIG-COMMERCE-2, and SIG-COMMERCE-3.",
         "Historical four-scene statue set classified as rejected legacy scope, not part of the commerce count."
       ],
@@ -109,12 +109,11 @@
       ],
       "blockers": [
         "Five unapproved product-scene contracts require v2 re-authoring against current root authority.",
-        "BR-COMMERCE-1 and LH-COMMERCE-3 approved image artifacts require recovery from their original generated-output storage or founder-supplied copies.",
         "The five unapproved scenes are missing approved same-pose/on-model product sources and genuine garment mattes.",
         "Fourteen of seventeen candidate dossier hashes are stale.",
         "Responsive safe-zone and optical measurements are not current candidate-bound evidence."
       ],
-      "next_authority": "artifact recovery for approved BR-COMMERCE-1 and LH-COMMERCE-3; founder decision applies only to the five unapproved scenes"
+      "next_authority": "founder decision applies only to the five unapproved scenes"
     },
     {
       "id": "SCENE-GENERATION-3",

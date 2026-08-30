@@ -1,0 +1,36 @@
+{
+  "schema": "skyyrose.founder-scene-artifact-recovery.v1",
+  "recovered_at": "2026-08-30",
+  "recovery_reason": "Founder approval records survived but the approved image bytes were absent from active worktrees.",
+  "policy": {
+    "regeneration_used": false,
+    "hash_match_required": true,
+    "promotion_changed": false,
+    "deployment_changed": false
+  },
+  "artifacts": [
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "provider": "Higgsfield",
+      "provider_model": "gpt_image_2",
+      "provider_job_id": "390acdcc-de62-4ce4-9e0a-c5fe6c464ee5",
+      "provider_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260827_035320_390acdcc-de62-4ce4-9e0a-c5fe6c464ee5.png",
+      "path": "renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-gpt-image-2-candidate.png",
+      "sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952",
+      "dimensions": [1360, 2048],
+      "bytes": 3499225,
+      "state": "FOUNDER_APPROVED_VISUAL__HASH_VERIFIED_RECOVERED"
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "provider": "Higgsfield",
+      "provider_job_id": "bf5823fd-1110-468d-a560-12f1d87b419e",
+      "provider_result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260828_022012_bf5823fd-1110-468d-a560-12f1d87b419e.png",
+      "path": "renders/scroll-world/LH-COMMERCE-3/scene-candidate/LH-COMMERCE-3-rose-vitrine-higgsfield-candidate-v3.png",
+      "sha256": "5ca175de5142a68839589c7157ea74125c813883c7bebc47e68a62202c59035a",
+      "dimensions": [1696, 2528],
+      "bytes": 4041093,
+      "state": "FOUNDER_APPROVED_VISUAL__HASH_VERIFIED_RECOVERED"
+    }
+  ]
+}
