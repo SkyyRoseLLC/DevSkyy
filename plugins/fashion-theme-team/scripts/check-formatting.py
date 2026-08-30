@@ -87,7 +87,16 @@ def decode_nul_list(payload: bytes) -> list[str]:
 
 def changed_files() -> set[str]:
     paths = set(
-        decode_nul_list(run_git("diff", "--name-only", "--diff-filter=ACMRTUXB", "-z", "HEAD"))
+        decode_nul_list(
+            run_git(
+                "diff",
+                "--relative",
+                "--name-only",
+                "--diff-filter=ACMRTUXB",
+                "-z",
+                "HEAD",
+            )
+        )
     )
     paths.update(decode_nul_list(run_git("ls-files", "--others", "--exclude-standard", "-z")))
     return paths
@@ -108,7 +117,19 @@ def candidate_files(changed_only: bool) -> list[str]:
         paths = set(
             decode_nul_list(run_git("ls-files", "--cached", "--others", "--exclude-standard", "-z"))
         )
-    return sorted(path for path in paths if (REPO_ROOT / path).is_file())
+    root = REPO_ROOT.resolve()
+    candidates: list[str] = []
+    for path in paths:
+        candidate = REPO_ROOT / path
+        if candidate.is_symlink():
+            raise MatrixError(f"Git-listed source must not be a symlink: {path}")
+        try:
+            candidate.resolve().relative_to(root)
+        except (OSError, ValueError) as exc:
+            raise MatrixError(f"Git-listed source escapes package root: {path}") from exc
+        if candidate.is_file():
+            candidates.append(path)
+    return sorted(candidates)
 
 
 def matches_exclude(path: str, pattern: str) -> bool:
@@ -268,7 +289,7 @@ def run_command(command: Sequence[str], files: Sequence[Path]) -> None:
 def run_black(files: list[Path], fix: bool, config: dict[str, Any]) -> str:
     command = resolve_tool("black")
     if command is None:
-        if os.environ.get("FASHION_REQUIRE_FORMATTER_TOOLS") == "1":
+        if os.environ.get("FASHION_REQUIRE_PYTHON_FORMATTER_TOOLS") == "1":
             raise MatrixError(
                 "black is required but unavailable; install requirements-formatting.txt"
             )
@@ -287,22 +308,21 @@ def run_black(files: list[Path], fix: bool, config: dict[str, Any]) -> str:
 
 def run_python_quality_checks(
     files: list[Path],
-    changed_paths: set[str],
+    quality_paths: set[str],
     fix: bool,
     config: dict[str, Any],
 ) -> list[str]:
-    """Run import/lint formatters on changed Python files only.
+    """Run import/lint formatters on the Python files selected for quality checks.
 
-    Existing runtime files predate this matrix and have intentionally different
-    import grouping. Checking only changed Python files prevents unrelated churn,
-    while ensuring every new or modified Python file passes the full lane.
+    Changed-only invocations limit the set to the current delta. Full and portable
+    verification pass every Python source so a clean checkout cannot hide drift.
     """
-    changed = [path for path in files if path.relative_to(REPO_ROOT).as_posix() in changed_paths]
-    if not changed:
+    selected = [path for path in files if path.relative_to(REPO_ROOT).as_posix() in quality_paths]
+    if not selected:
         return []
     python_config = config["language"]["python"]
     statuses: list[str] = []
-    required = os.environ.get("FASHION_REQUIRE_FORMATTER_TOOLS") == "1"
+    required = os.environ.get("FASHION_REQUIRE_PYTHON_FORMATTER_TOOLS") == "1"
     for tool_name, version_key, version_args, command_args in (
         (
             python_config.get("imports_formatter", "isort"),
@@ -327,11 +347,11 @@ def run_python_quality_checks(
         enforce_pinned_version(command, tool_name, python_config.get(version_key, ""), version_args)
         if fix:
             if tool_name == "ruff":
-                run_command([command, "check", "--select", "I", "--fix"], changed)
+                run_command([command, "check", "--select", "I", "--fix"], selected)
             else:
-                run_command([command], changed)
+                run_command([command], selected)
         else:
-            run_command([command, *command_args], changed)
+            run_command([command, *command_args], selected)
         statuses.append(f"{tool_name} {python_config.get(version_key, '')}".rstrip())
     return statuses
 
@@ -371,8 +391,8 @@ def run_optional_formatter(
         run_command([command, *formatter_args] if fix else [command, "-d", *formatter_args], files)
         return
     if language == "php":
-        mode = ["fix", "--using-cache=no"] if fix else ["check", "--using-cache=no"]
-        run_command([command, *mode], files)
+        php_mode = ["fix", "--using-cache=no"] if fix else ["check", "--using-cache=no"]
+        run_command([command, *php_mode], files)
         return
     run_command([command, *formatter_args], files)
 
@@ -490,6 +510,7 @@ def main(argv: Sequence[str] | None = None) -> int:
     config = load_config()
     paths = candidate_files(args.changed)
     changed_paths = changed_files() if has_git_worktree() else set()
+    quality_paths = changed_paths if args.changed else set(paths)
     groups, excluded, unknown = classify_files(paths, config)
     if unknown:
         print("FAIL: unclassified text/source files:", file=sys.stderr)
@@ -508,7 +529,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             for path in files:
                 print(f"  {language}: {path.relative_to(REPO_ROOT)}")
         try:
-            status, errors = format_group(language, files, changed_paths, fix, config)
+            status, errors = format_group(language, files, quality_paths, fix, config)
         except MatrixError as exc:
             failures.append(str(exc))
             continue

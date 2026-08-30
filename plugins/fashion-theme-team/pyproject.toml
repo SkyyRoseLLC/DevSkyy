@@ -5,6 +5,7 @@ target-version = ["py313"]
 [tool.isort]
 profile = "black"
 line_length = 100
+known_first_party = ["agents", "core", "runtime", "scripts", "tools"]
 
 [tool.ruff]
 target-version = "py313"
