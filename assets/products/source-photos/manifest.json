@@ -550,7 +550,7 @@
       ],
       "photo_paths": {
         "back": "assets/products/source-photos/signature/sg-001-bay-bridge-set-techflat-back.jpeg",
-        "front": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front.jpeg"
+        "front": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png"
       },
       "has_minimum_for_compositor": true,
       "source_type": "photography"
@@ -600,7 +600,7 @@
         "detail-pocket"
       ],
       "photo_paths": {
-        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/hub/sg-003-front.webp"
+        "front": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png"
       },
       "has_minimum_for_compositor": false,
       "source_type": "missing"

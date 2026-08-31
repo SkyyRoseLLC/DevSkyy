@@ -1,0 +1,59 @@
+{
+  "schema": "product-fidelity-edit.v2",
+  "operation": "localized_product_patch",
+  "target": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
+    "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0"
+  },
+  "generator": {
+    "route": "masked_edit",
+    "supports_explicit_mask": true,
+    "model_id": "gpt-image-2-2026-04-21",
+    "api_surface": "images",
+    "endpoint": "/v1/images/edits",
+    "capture_request_id": true,
+    "parameters": {
+      "size": "1024x1536",
+      "quality": "high",
+      "output_format": "png",
+      "background": "transparent"
+    },
+    "prompt": "Edit only the transparent mask on the lower viewer-right leg of the blue Bay Bridge shorts. Remove the invented pale SR monogram completely. Replace it with the exact small blue embroidered rose above a small white cloud shown on the bound SG-001 physical front authority. Preserve the shorts silhouette, hem, mesh texture, daytime Bay Bridge photograph, skyline mapping, blue waistband, white drawstring, model, shirt, body, pose, lighting, alpha, and every unmasked pixel. Do not add letters, initials, monograms, new text, extra logos, or new garment construction."
+  },
+  "edit_region": {
+    "type": "bbox",
+    "coordinate_space": "pixels",
+    "bbox": [596, 1005, 657, 1075],
+    "feather_px": 2
+  },
+  "references": [
+    {
+      "sku": "sg-001",
+      "view": "front",
+      "role": "physical_product_authority",
+      "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c",
+      "verbatim_text": [],
+      "authority_receipt": {
+        "path": "data/candidates/sg-001-front-source-authority-2026-08-31.json",
+        "sha256": "9817bb0721eac699a4f94c782f127381a04c9a6bc061f7048eb8c452134bdfa4"
+      }
+    }
+  ],
+  "verification": {
+    "max_outside_changed_pixels": 0,
+    "min_inside_changed_pixels": 1,
+    "per_channel_tolerance": 0
+  },
+  "semantic_review": {
+    "required": true,
+    "scope": "logo_and_construction",
+    "candidate_author": "codex-scene-builder",
+    "required_checks": [
+      "color_and_material",
+      "construction",
+      "placement",
+      "verbatim_text"
+    ]
+  }
+}

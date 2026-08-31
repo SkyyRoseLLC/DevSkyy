@@ -1,0 +1,227 @@
+{
+  "schema": "product-fidelity-preflight-receipt.v2",
+  "status": "PASS",
+  "contract_sha256": "5cfd5cb880c850b92999fde7024a8ccd147049b0f9c58a2b8278664f49f24fb2",
+  "operation": "localized_product_patch",
+  "target": {
+    "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
+    "metadata": {
+      "width": 1024,
+      "height": 1536,
+      "format": "PNG",
+      "mode": "RGBA",
+      "size_bytes": 1702105,
+      "has_alpha": true,
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "transparent_fraction": 0.79995918,
+      "opaque_fraction": 0.20004082
+    }
+  },
+  "references": [
+    {
+      "index": 0,
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-001",
+      "authority_state": null,
+      "source_authority": {
+        "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/data/candidates/sg-001-front-source-authority-2026-08-31.json",
+        "sha256": "9817bb0721eac699a4f94c782f127381a04c9a6bc061f7048eb8c452134bdfa4",
+        "schema": "product-fidelity-source-authority.v1",
+        "status": "VERIFIED",
+        "resolver": {
+          "id": "devskyy-product-authority-resolver",
+          "version": "1.0.0"
+        },
+        "bound_authority_hashes": {
+          "catalog": "d8bdb7c791606eef8e14248b96e868b918972ecc1544a2c9642f0d4692ade361",
+          "sot_manifest": "7270670bb0837a7871283a82a817481b0d12bb51a93d73d9c8437a900d181d14",
+          "dossier": "01196b736501e92c14c41135128970fe383e284b6d7dd3ff08eee93866eed99e"
+        },
+        "trust_state": "LOCAL_HASH_BOUND_AUTHORITY_RECEIPT"
+      },
+      "metadata": {
+        "width": 2000,
+        "height": 1800,
+        "format": "PNG",
+        "mode": "RGBA",
+        "size_bytes": 3472834,
+        "has_alpha": true,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    }
+  ],
+  "model_capability": {
+    "status": "PASS",
+    "generation_authorized": false,
+    "live_availability_verified": false,
+    "registry_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/plugins/fashion-theme-team/skills/product-fidelity-image-edits/references/model-capability-registry.json",
+    "registry_sha256": "6c92b0ec74c7f78239bbba8edc1cded4066ac76f6a5ad82239c418e88e8362be",
+    "registry_verified_on": "2026-08-30",
+    "registry_age_days": 1,
+    "model_requested": "gpt-image-2-2026-04-21",
+    "registry_result": {
+      "status": "PASS",
+      "code": "REGISTERED_CAPABILITY_MATCH",
+      "model": "openai-gpt-image-2-edit",
+      "operation": "bounded_image_edit",
+      "fidelity_tier": "bounded_only_after_pixel_verification",
+      "live_availability_verified": false,
+      "post_verification_required": true,
+      "api_contract": {
+        "api_surface": "images",
+        "endpoint": "/v1/images/edits",
+        "request_model": "gpt-image-2-2026-04-21",
+        "required_generator_fields": {
+          "api_surface": "images",
+          "endpoint": "/v1/images/edits",
+          "capture_request_id": true
+        },
+        "forbidden_parameters": [
+          "input_fidelity"
+        ],
+        "parameter_policy": {
+          "allowed": [
+            "size",
+            "quality",
+            "output_format",
+            "background",
+            "moderation"
+          ],
+          "required": [
+            "size",
+            "quality",
+            "output_format"
+          ],
+          "enums": {
+            "quality": [
+              "low",
+              "medium",
+              "high",
+              "auto"
+            ],
+            "output_format": [
+              "png"
+            ],
+            "background": [
+              "auto",
+              "opaque",
+              "transparent"
+            ],
+            "moderation": [
+              "auto",
+              "low"
+            ]
+          }
+        },
+        "mask": {
+          "format": "png",
+          "alpha_channel_required": true,
+          "alpha_zero_is_editable": true,
+          "same_dimensions_as_input": true,
+          "max_input_bytes": 50000000
+        },
+        "required_receipt_fields": [
+          "contract_sha256",
+          "provider",
+          "api_surface",
+          "endpoint",
+          "requested_model",
+          "input_sha256",
+          "request_image_sha256s",
+          "mask_path",
+          "mask_sha256",
+          "output_sha256",
+          "prompt_sha256",
+          "request_parameters",
+          "x_request_id",
+          "sdk_version"
+        ]
+      },
+      "message": "Use the Image API for one-shot localized edits. Pin the GPT Image 2 snapshot, omit input_fidelity, bind the same-size alpha mask, capture x-request-id, and verify zero outside-mask drift."
+    },
+    "code": "REGISTERED_CAPABILITY_MATCH",
+    "model": "openai-gpt-image-2-edit",
+    "provider": "openai",
+    "required_capability": "explicit_mask_edit",
+    "registry_status": "external_api",
+    "api_contract": {
+      "api_surface": "images",
+      "endpoint": "/v1/images/edits",
+      "request_model": "gpt-image-2-2026-04-21",
+      "required_generator_fields": {
+        "api_surface": "images",
+        "endpoint": "/v1/images/edits",
+        "capture_request_id": true
+      },
+      "forbidden_parameters": [
+        "input_fidelity"
+      ],
+      "parameter_policy": {
+        "allowed": [
+          "size",
+          "quality",
+          "output_format",
+          "background",
+          "moderation"
+        ],
+        "required": [
+          "size",
+          "quality",
+          "output_format"
+        ],
+        "enums": {
+          "quality": [
+            "low",
+            "medium",
+            "high",
+            "auto"
+          ],
+          "output_format": [
+            "png"
+          ],
+          "background": [
+            "auto",
+            "opaque",
+            "transparent"
+          ],
+          "moderation": [
+            "auto",
+            "low"
+          ]
+        }
+      },
+      "mask": {
+        "format": "png",
+        "alpha_channel_required": true,
+        "alpha_zero_is_editable": true,
+        "same_dimensions_as_input": true,
+        "max_input_bytes": 50000000
+      },
+      "required_receipt_fields": [
+        "contract_sha256",
+        "provider",
+        "api_surface",
+        "endpoint",
+        "requested_model",
+        "input_sha256",
+        "request_image_sha256s",
+        "mask_path",
+        "mask_sha256",
+        "output_sha256",
+        "prompt_sha256",
+        "request_parameters",
+        "x_request_id",
+        "sdk_version"
+      ]
+    },
+    "required_next_step": "Bind a fresh live model-discovery receipt and obtain explicit generation approval"
+  },
+  "generation_authorized": false,
+  "findings": []
+}

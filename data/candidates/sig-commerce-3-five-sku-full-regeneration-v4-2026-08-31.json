@@ -2,10 +2,10 @@
   "schema_version": "skyyrose.scene-generation-receipt.v1",
   "scene_id": "SIG-COMMERCE-3",
   "recorded_at": "2026-08-31",
-  "status": "PASS_REVIEW_CANDIDATE",
-  "promotion_state": "FOUNDER_REVIEW_ONLY",
+  "status": "FOUNDER_REJECTED_HALLUCINATED_SHORTS",
+  "promotion_state": "FOUNDER_REJECTED_DO_NOT_USE",
   "candidate": {
-    "path": "renders/scroll-world/SIG-COMMERCE-3/candidates/SIG-COMMERCE-3-five-sku-blended-real-full-regeneration-v4.png",
+    "path": "renders/scroll-world/SIG-COMMERCE-3/rejected/SIG-COMMERCE-3-five-sku-blended-real-full-regeneration-v4-hallucinated-shorts.png",
     "sha256": "e3b9c8ebce65b22ada1328f87d243d0fd6cb70228dae375edd0711e98d6fc9c8",
     "dimensions": [1672, 941]
   },
@@ -72,9 +72,18 @@
       "visible_identity": "purple and orange Golden Gate night-print shorts with white drawstring and purple rose"
     }
   ],
-  "independent_review": {
+  "founder_rejection": {
+    "verdict": "REJECTED",
+    "reason": "Both bridge shorts were semantic redraws rather than exact physical product reproductions.",
+    "hard_fails": [
+      "SG-001 Bay Bridge print mapping and garment construction were hallucinated.",
+      "SG-003 Stay Golden print mapping and garment construction were hallucinated."
+    ],
+    "correction_rule": "Do not use this candidate as a future edit or generation target. Begin from the exact physical authorities with a reviewed explicit mask or approved same-pose product source."
+  },
+  "superseded_independent_review": {
     "reviewer": "senior-fidelity-gate-reviewer",
-    "verdict": "PASS_REVIEW_CANDIDATE",
+    "verdict": "SUPERSEDED_BY_FOUNDER_REJECTION",
     "reviewed_candidate_sha256": "e3b9c8ebce65b22ada1328f87d243d0fd6cb70228dae375edd0711e98d6fc9c8",
     "scores": {
       "product_fidelity": 96,
@@ -92,7 +101,7 @@
     "boundary": "Semantic regeneration does not prove byte-exact source preservation."
   },
   "release_boundaries": {
-    "founder_approval": "REQUIRED",
+    "founder_approval": "REJECTED",
     "runtime_wiring": "NOT_AUTHORIZED",
     "woocommerce_sync": "NOT_AUTHORIZED",
     "staging_deployment": "NOT_AUTHORIZED",

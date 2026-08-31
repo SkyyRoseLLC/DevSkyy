@@ -1,0 +1,76 @@
+{
+  "schema": "skyyrose.scene-candidate-receipt.v2",
+  "scene_id": "SIG-COMMERCE-3",
+  "status": "PASS_REVIEW_CANDIDATE_NOT_PROMOTED",
+  "promotion_state": "FOUNDER_REVIEW_REQUIRED",
+  "candidate": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/candidates/SIG-COMMERCE-3-five-sku-protected-composite-v10.png",
+    "sha256": "09a46aa72aab041a4dd5d5d5f07b6e06a3a7f01e86cbd7332d14419647925bb4",
+    "dimensions": [1672, 941]
+  },
+  "metrics": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/candidates/SIG-COMMERCE-3-five-sku-protected-composite-v10-metrics.json",
+    "sha256": "de1d76274e8abe8cb7ed810b983ed1d35b8d876d8d86e7e8b3bf76e00e4e80e0"
+  },
+  "proof": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/candidates/SIG-COMMERCE-3-five-sku-protected-composite-v10-proof.png",
+    "sha256": "f2d89eb688aa7e7720d72a5547d22630e7f20b95a8bafe785d7b994a1bc6b3b3"
+  },
+  "scene_authority": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
+    "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97"
+  },
+  "sku_coverage": ["sg-001", "sg-002", "sg-003", "sg-005", "sg-015"],
+  "protected_looks": [
+    {
+      "skus": ["sg-005", "sg-001"],
+      "path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg-005-sg-001-exact-blue-rose-protected-v2.png",
+      "sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0"
+    },
+    {
+      "skus": ["sg-002", "sg-003"],
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
+      "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575"
+    },
+    {
+      "skus": ["sg-015"],
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
+      "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09"
+    }
+  ],
+  "physical_short_authorities": [
+    {
+      "sku": "sg-001",
+      "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c",
+      "authority_receipt": {
+        "path": "data/candidates/sg-001-front-source-authority-2026-08-31.json",
+        "sha256": "9817bb0721eac699a4f94c782f127381a04c9a6bc061f7048eb8c452134bdfa4"
+      }
+    },
+    {
+      "sku": "sg-003",
+      "path": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
+      "sha256": "6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e",
+      "authority_receipt": {
+        "path": "data/candidates/sg-003-front-source-authority-2026-08-31.json",
+        "sha256": "dd8aeb64cfcb4a73a510144953ea2778d65a7e1d4d7187d1573b1c79260f8be2"
+      }
+    }
+  ],
+  "review": {
+    "reviewer": "senior-fidelity-gate-reviewer-kierkegaard",
+    "verdict": "PASS_REVIEW_CANDIDATE",
+    "product_fidelity": "PASS",
+    "optical_integration": "PASS",
+    "notes": "Both shorts retain their source-bound prints, drawstrings, colors, and rose placements. Both nominally planted shoes meet the terrace with attached ambient occlusion; the center viewer-right shoe remains intentionally raised. Candidate review does not authorize promotion or deployment."
+  },
+  "invariants": {
+    "full_scene_generation": false,
+    "product_semantic_redraw": false,
+    "v4_hallucinated_shorts_reused": false,
+    "protected_garment_intersection_during_footwear_grounding": false,
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}

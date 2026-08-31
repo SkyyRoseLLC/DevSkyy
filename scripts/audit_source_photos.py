@@ -110,9 +110,27 @@ _CANONICAL_SELECTIONS: dict[tuple[str, str], str] = {
     ("lh-003", "back"): (
         "assets/products/source-photos/love-hurts/lh-003-shorts-techflat-v1-back.jpg"
     ),
+    # Founder-confirmed physical fronts. These outrank legacy JPEG/WebP
+    # consumers and are the literal print authority for Signature scene work.
+    ("sg-001", "front"): (
+        "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png"
+    ),
+    ("sg-003", "front"): (
+        "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png"
+    ),
 }
 
 _EXPLICIT_PATH_ANGLES: dict[str, tuple[str, str]] = {
+    # Founder-confirmed physical fronts intentionally use an ``-authentic``
+    # suffix after the view token, so bind their angles explicitly.
+    "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png": (
+        "sg-001",
+        "front",
+    ),
+    "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png": (
+        "sg-003",
+        "front",
+    ),
     # Founder-confirmed board containing BR-007's physical front, back,
     # wearer-left, and wearer-right views. It is supplemental authority; the
     # individual view files remain the per-angle compositor inputs.

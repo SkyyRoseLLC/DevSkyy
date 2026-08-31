@@ -1,0 +1,16 @@
+{
+  "schema": "product-fidelity-semantic-review.v2",
+  "contract_sha256": "5cfd5cb880c850b92999fde7024a8ccd147049b0f9c58a2b8278664f49f24fb2",
+  "candidate_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
+  "reviewer": "senior-fidelity-gate-reviewer-kierkegaard",
+  "scope": "logo_and_construction",
+  "verdict": "PASS",
+  "findings": [],
+  "checks": {
+    "color_and_material": "PASS",
+    "construction": "PASS",
+    "placement": "PASS",
+    "verbatim_text": "PASS"
+  },
+  "expected_verbatim_text": []
+}

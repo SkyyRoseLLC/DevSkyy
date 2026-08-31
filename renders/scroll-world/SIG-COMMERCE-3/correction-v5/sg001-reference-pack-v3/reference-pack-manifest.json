@@ -1,0 +1,41 @@
+{
+  "schema": "product-fidelity-reference-pack.v2",
+  "status": "PREPARED_NOT_GENERATION_APPROVED",
+  "contract_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/data/candidates/sig-commerce-3-sg001-logo-mask-contract-v5-2026-08-31.json",
+  "contract_sha256": "5cfd5cb880c850b92999fde7024a8ccd147049b0f9c58a2b8278664f49f24fb2",
+  "contract_file_sha256": "a77c72c458bebf9e53c4443b8b10f5d063a95624800851e9f69826ebe5ecbf29",
+  "operation": "localized_product_patch",
+  "references": [
+    {
+      "source_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "source_sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c",
+      "canonical_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-reference-pack-v3/sg-001-front-physical-product-authority-1.png",
+      "canonical_sha256": "7a7e5b391e876f7249b10bc4b25504aacf6d87eb27c40db28fda22a5c728d10e",
+      "sku": "sg-001",
+      "view": "front",
+      "role": "physical_product_authority",
+      "dimensions": [
+        1536,
+        1536
+      ],
+      "source_was_upsampled": false
+    }
+  ],
+  "mask": {
+    "mask_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-reference-pack-v3/editable-region-mask-white-is-editable.png",
+    "mask_sha256": "677bd3325ee0fe6d27103923a20cee3c216c738a4360f790bc32508c90755ec1",
+    "openai_mask_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-reference-pack-v3/openai-edit-mask-alpha-zero-is-editable.png",
+    "openai_mask_sha256": "a58fc3dce52096a0277655c4fa14524ed4f5400757652d842a9abe8941347b80",
+    "openai_mask_mode": "RGBA",
+    "openai_mask_dimensions": [
+      1024,
+      1536
+    ],
+    "openai_mask_size_bytes": 8512,
+    "overlay_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-reference-pack-v3/editable-region-overlay-review.png",
+    "overlay_sha256": "32a84d2f171765c35bee343e3a899d374ab51d90fed3577ce135924c44a002c2",
+    "polarity": "white_is_editable_black_is_locked",
+    "openai_polarity": "alpha_zero_is_editable_alpha_255_is_locked"
+  },
+  "required_next_step": "Visually inspect optimized references and mask overlay, then rerun preflight using current hashes."
+}

@@ -1,0 +1,188 @@
+{
+  "schema": "skyyrose.protected-scene-composite-metrics.v1",
+  "scene_id": "SIG-COMMERCE-3",
+  "status": "REVIEW_CANDIDATE_NOT_PROMOTED",
+  "operation": "protected_scene_composite",
+  "background": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
+    "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+    "dimensions": [
+      1672,
+      941
+    ]
+  },
+  "looks": [
+    {
+      "source_path": "renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg-005-sg-001-exact-blue-rose-protected-v2.png",
+      "source_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "source_alpha_bbox": [
+        272,
+        158,
+        717,
+        1453
+      ],
+      "prepared_dimensions": [
+        253,
+        735
+      ],
+      "source_opaque_pixels": 310367,
+      "prepared_opaque_pixels": 94451,
+      "transform": "premultiplied_uniform_lanczos_resize_only",
+      "semantic_redraw": false,
+      "generative_edit": false,
+      "alpha_refinement": "one-pixel erosion plus 0.55px feather",
+      "look_id": "SG-005+SG-001",
+      "placement": {
+        "x": 270,
+        "y": 161,
+        "ground_y": 892
+      },
+      "scene_light_grade_rgb_and_exposure": [
+        0.99,
+        1.0,
+        0.98,
+        0.98
+      ],
+      "secondary_footwear_grounding": {
+        "status": "grounded_non_product_pixels_only",
+        "vertical_extension_px": 6,
+        "secondary_foot_fraction": 0.25,
+        "region_px": [
+          0,
+          544,
+          139,
+          735
+        ],
+        "protected_garment_intersection": false,
+        "transform": "vertical_lanczos_extension_below_short_hem"
+      },
+      "pose_floor_anchor": {
+        "foot_fraction": 0.76,
+        "local_bottom_y": 731,
+        "scene_floor_y": 892
+      }
+    },
+    {
+      "source_path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
+      "source_sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "source_alpha_bbox": [
+        294,
+        51,
+        760,
+        1517
+      ],
+      "prepared_dimensions": [
+        245,
+        770
+      ],
+      "source_opaque_pixels": 423089,
+      "prepared_opaque_pixels": 110659,
+      "transform": "premultiplied_uniform_lanczos_resize_only",
+      "semantic_redraw": false,
+      "generative_edit": false,
+      "alpha_refinement": "one-pixel erosion plus 0.55px feather",
+      "look_id": "SG-015",
+      "placement": {
+        "x": 685,
+        "y": 131,
+        "ground_y": 900
+      },
+      "scene_light_grade_rgb_and_exposure": [
+        0.97,
+        0.98,
+        1.0,
+        0.96
+      ],
+      "secondary_footwear_grounding": null,
+      "pose_floor_anchor": {
+        "foot_fraction": 0.28,
+        "local_bottom_y": 769,
+        "scene_floor_y": 900
+      }
+    },
+    {
+      "source_path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
+      "source_sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575",
+      "source_dimensions": [
+        941,
+        1672
+      ],
+      "source_alpha_bbox": [
+        249,
+        26,
+        708,
+        1633
+      ],
+      "prepared_dimensions": [
+        219,
+        765
+      ],
+      "source_opaque_pixels": 445100,
+      "prepared_opaque_pixels": 94416,
+      "transform": "premultiplied_uniform_lanczos_resize_only",
+      "semantic_redraw": false,
+      "generative_edit": false,
+      "alpha_refinement": "one-pixel erosion plus 0.55px feather",
+      "look_id": "SG-002+SG-003",
+      "placement": {
+        "x": 1030,
+        "y": 131,
+        "ground_y": 895
+      },
+      "scene_light_grade_rgb_and_exposure": [
+        1.02,
+        0.96,
+        0.86,
+        0.92
+      ],
+      "secondary_footwear_grounding": {
+        "status": "grounded_non_product_pixels_only",
+        "vertical_extension_px": 17,
+        "secondary_foot_fraction": 0.26,
+        "region_px": [
+          0,
+          513,
+          127,
+          765
+        ],
+        "protected_garment_intersection": false,
+        "transform": "vertical_lanczos_extension_below_short_hem"
+      },
+      "pose_floor_anchor": {
+        "foot_fraction": 0.76,
+        "local_bottom_y": 764,
+        "scene_floor_y": 895
+      }
+    }
+  ],
+  "output": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/candidates/SIG-COMMERCE-3-five-sku-protected-composite-v10.png",
+    "sha256": "09a46aa72aab041a4dd5d5d5f07b6e06a3a7f01e86cbd7332d14419647925bb4",
+    "dimensions": [
+      1672,
+      941
+    ]
+  },
+  "proof": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/candidates/SIG-COMMERCE-3-five-sku-protected-composite-v10-proof.png",
+    "sha256": "f2d89eb688aa7e7720d72a5547d22630e7f20b95a8bafe785d7b994a1bc6b3b3"
+  },
+  "invariants": {
+    "full_scene_generation": false,
+    "product_pixel_generation": false,
+    "product_semantic_redraw": false,
+    "source_layers_alpha_protected": true,
+    "only_background_addition": "contact_shadows_ambient_occlusion_and_reflections",
+    "source_layer_transform": "crop_to_alpha_then_premultiplied_uniform_resize",
+    "matte_edge_decontamination": "premultiplied_alpha_resampling",
+    "protected_layer_color_grade": "documented RGB gains and exposure only; no geometry or print redraw"
+  }
+}

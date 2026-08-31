@@ -1,0 +1,25 @@
+{
+  "schema": "product-fidelity-source-authority.v1",
+  "status": "VERIFIED",
+  "sku": "sg-003",
+  "view": "front",
+  "role": "physical_product_authority",
+  "source_sha256": "6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e",
+  "catalog": {
+    "path": "skyyrose-catalog.csv",
+    "sha256": "d8bdb7c791606eef8e14248b96e868b918972ecc1544a2c9642f0d4692ade361"
+  },
+  "sot_manifest": {
+    "path": "assets/products/source-photos/manifest.json",
+    "sha256": "7270670bb0837a7871283a82a817481b0d12bb51a93d73d9c8437a900d181d14"
+  },
+  "dossier": {
+    "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shorts.md",
+    "sha256": "4deca5c523b2b4dde6fc5768a978a5e8b9af6a530a250da1c0a50518a3d3ca7d"
+  },
+  "resolver": {
+    "id": "devskyy-product-authority-resolver",
+    "version": "1.0.0"
+  },
+  "authority_note": "Founder-supplied physical front view. It governs the purple waistband, white drawstring, Golden Gate night print, and lower-leg purple rose-and-cloud placement."
+}
