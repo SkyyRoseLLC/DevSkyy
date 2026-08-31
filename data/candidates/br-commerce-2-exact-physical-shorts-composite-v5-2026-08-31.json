@@ -1,0 +1,114 @@
+{
+  "schema_version": "skyyrose.scene-deterministic-composite-receipt.v1",
+  "recorded_at": "2026-08-31",
+  "scene_id": "BR-COMMERCE-2",
+  "status": "SENIOR_REVIEW_BLOCKED__EXACT_PHYSICAL_SOURCE_PASS__OPTICAL_HARD_FAIL",
+  "candidate": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/quarantine/BR-COMMERCE-2-exact-physical-shorts-composite-v5-optical-blocked.png",
+    "sha256": "4a71d17b8d7b3975fb841277860bab5f9c191fce153641574d8170219ea94014",
+    "dimensions": [1672, 941]
+  },
+  "authorities": [
+    {
+      "role": "founder_selected_male_identity_pose_and_br005_source",
+      "path": "renders/scroll-world/BR-COMMERCE-2/founder-selected-base/br-commerce-2-native-preview-v1.png",
+      "sha256": "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925"
+    },
+    {
+      "role": "br007_exact_physical_front",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+      "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314"
+    },
+    {
+      "role": "br004_founder_model_source",
+      "path": "assets/products/source-photos/black-rose/br-004-founder-model-source-front.png",
+      "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34"
+    },
+    {
+      "role": "font_statue_authority",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+      "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c"
+    },
+    {
+      "role": "empty_enclosed_black_stone_plate",
+      "path": "renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
+      "sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b"
+    }
+  ],
+  "derived_layers": [
+    {
+      "role": "founder_selected_male_alpha",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v5/br2-founder-selected-male-alpha-v1.png",
+      "sha256": "c45fa37623fe948ec4eeeecb5fe8dba5e3e8948a44e595676b067096267c2816",
+      "transform": "alpha derived by human segmentation; RGB copied from founder-selected base"
+    },
+    {
+      "role": "founder_selected_male_without_prior_shorts",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v5/br2-founder-selected-male-no-shorts-alpha-v1.png",
+      "sha256": "f9dbbcf4ba298aaa1e5b43f1d49b54f86249a90a846f0d720ebeae6d2c86664b",
+      "transform": "alpha cleared in rectangle x=420..700, y=420..650; RGB otherwise unchanged"
+    },
+    {
+      "role": "br007_physical_front_alpha",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v5/br007-physical-front-shorts-alpha-v1.png",
+      "sha256": "ebcdd0ffe3570453d99682c95965931efa7a0f7e60baa938f9a3be62572d9d99",
+      "transform": "alpha derived by product segmentation; RGB copied from exact physical front"
+    },
+    {
+      "role": "br007_physical_front_scene_scale",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v5/br007-physical-front-shorts-scene-scale-v1.png",
+      "sha256": "32b288d126ba29409609173b0aba9aca7ac62c20f049e05174a9cec685c1fc2e",
+      "transform": "alpha trim, Lanczos resize to 225x200"
+    },
+    {
+      "role": "selected_male_with_exact_br007_composite",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v5/br2-founder-selected-male-with-exact-br007-alpha-v1.png",
+      "sha256": "2cada56baab48a1279357c5cf342df89475b8d7072563249ce5446b810e110cd",
+      "transform": "over composite; BR007 layer placed at x=438, y=430 on 1672x941 transparent canvas"
+    },
+    {
+      "role": "br004_scene_scale",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v4/br-004-founder-model-alpha-v2-scene-scale.png",
+      "sha256": "47c18a8583674e0473840cda083e2656588a68c27da21e1ff0b73a0e5f267f03",
+      "transform": "alpha trim, Lanczos resize to 780px height"
+    },
+    {
+      "role": "font_statue_scene_scale",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v4/black-rose-font-statue-alpha-v1-scene-scale.png",
+      "sha256": "3dac640e18b84b9db2fd334ab83b58ac0b06f4d552be008dfebcb3976474b6bb",
+      "transform": "alpha trim, Lanczos resize to 620px width"
+    }
+  ],
+  "final_composite_order": [
+    "empty enclosed plate",
+    "contact-shadow ellipse centered at 545,875 radius 150x22",
+    "contact-shadow ellipse centered at 865,875 radius 120x18",
+    "font statue at x=1015, y=250",
+    "selected male with exact BR007 at native canvas origin",
+    "BR004 woman at x=720, y=105"
+  ],
+  "fidelity_checks": {
+    "founder_selected_male_identity_pose_preserved": "PASS",
+    "br007_from_exact_physical_front_source": "PASS",
+    "br007_front_oakland_wordmark_present": "PASS",
+    "br007_tonal_rose_cloud_pattern_present": "PASS",
+    "br007_asymmetric_side_panels_present": "PASS",
+    "br004_long_hoodie_woman_present": "PASS",
+    "font_statue_only_hero_story": "PASS",
+    "bridge_waterfront_city_excluded": "PASS",
+    "br001_br002_reused": "PASS_NONE_REUSED",
+    "optical_on_body_integration": "REQUIRES_FOUNDER_AND_SENIOR_VISUAL_REVIEW"
+  },
+  "promotion": {
+    "founder_status": "NOT_SUBMITTED__SENIOR_REVIEW_BLOCKED",
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "senior_review": {
+    "verdict": "BLOCK",
+    "source_fidelity": "PASS",
+    "scene_direction": "PASS",
+    "optical_integration": "HARD_FAIL",
+    "reason": "The exact flat packshot remains visibly planar on the wearer: floating waistband, incorrect hoodie overlap, no thigh wrap, insufficient drape and depth, visible matte edges, generic shadows, and missing matched floor reflections."
+  }
+}

@@ -35,6 +35,13 @@
       "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
     }
   ],
+  "on_model_authority": {
+    "view": "founder_approved_onmodel_front",
+    "path": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-front-2026-08-29.png",
+    "sha256": "ed3a1406ec8b72f6bae88163f1a1f02659d801dda179066b36ce81b47979b418",
+    "dimensions": [363, 466],
+    "usage_rule": "Preserve the wearer and BR-007 RGB pixels as one protected source. Do not warp the four-angle flat product board onto a different body and claim exactness."
+  },
   "catalog": {
     "path": "skyyrose-catalog.csv",
     "sha256": "d8bdb7c791606eef8e14248b96e868b918972ecc1544a2c9642f0d4692ade361"

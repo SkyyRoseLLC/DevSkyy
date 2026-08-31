@@ -1,0 +1,79 @@
+{
+  "schema_version": "skyyrose.scene-deterministic-composite-receipt.v1",
+  "recorded_at": "2026-08-31",
+  "scene_id": "BR-COMMERCE-2",
+  "status": "SENIOR_REVIEW_BLOCKED__QUARANTINED",
+  "candidate": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/rejected/BR-COMMERCE-2-exact-source-composite-v4-review-blocked.png",
+    "sha256": "d3a91d613f76b1c66a4890d50cb69487039991f0db6a8ca4f66a1b9235d97a97",
+    "dimensions": [1672, 941]
+  },
+  "operation": {
+    "route": "generated_empty_plate_plus_deterministic_protected_layer_composite",
+    "generated_scope": "Empty architecture only. No people, products, logos, lettering, roses, or statue were generated in the plate.",
+    "protected_source_rule": "BR-007 wearer, BR-004 woman, and font-statue layers derive from their hash-bound sources. Product pixels were not semantically redrawn in the final composite.",
+    "promotion_boundary": "Founder-review candidate only. No wiring, publish, deployment, or release authorization."
+  },
+  "inputs": [
+    {
+      "role": "br007_founder_approved_onmodel_front",
+      "path": "assets/products/source-photos/black-rose/br-007-founder-approved-onmodel-front-2026-08-29.png",
+      "sha256": "ed3a1406ec8b72f6bae88163f1a1f02659d801dda179066b36ce81b47979b418",
+      "product_state": "EXACT_SOURCE_AUTHORITY"
+    },
+    {
+      "role": "br004_founder_model_source",
+      "path": "assets/products/source-photos/black-rose/br-004-founder-model-source-front.png",
+      "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+      "product_state": "EXACT_SOURCE_AUTHORITY"
+    },
+    {
+      "role": "font_statue_authority",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+      "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+      "product_state": "PROTECTED_HERO_SOURCE"
+    },
+    {
+      "role": "empty_architecture_plate",
+      "path": "renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-font-statue-gallery-plate-v1.png",
+      "sha256": "5cda28b433717f7e13d79224950881d786adb2fa310ddbf61921f74a6fa87aa4",
+      "product_state": "NO_PRODUCT_PIXELS"
+    }
+  ],
+  "protected_layers": [
+    {
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v4/br-007-founder-approved-wearer-alpha-v2.png",
+      "sha256": "e1c127a6c3ea8b3fefe46ea6ce7d64a811c7121f42ab3a7f6274697aa02b2896",
+      "method": "human subject matte from exact RGB source; RGB retained, alpha derived"
+    },
+    {
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v4/br-004-founder-model-alpha-v2.png",
+      "sha256": "19bcd7039d3e8c8e1a4665fc6844ade9ed3db485874ca480f5d8f0dff06b6ed5",
+      "method": "human subject matte from exact RGB source; RGB retained, alpha derived"
+    },
+    {
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v4/black-rose-font-statue-alpha-v1.png",
+      "sha256": "62fba0c2f1e0aca1650b3e3ded735c8f894b2997a76b817acd42102ff74296ff",
+      "method": "color-key foreground matte from exact protected hero source; RGB retained, alpha derived"
+    }
+  ],
+  "fidelity_checks": {
+    "br007_short_pixels_source_derived": "PASS",
+    "br007_front_oakland_wordmark_present": "PASS",
+    "br007_tonal_rose_cloud_pattern_present": "PASS",
+    "br007_asymmetric_side_panels_preserved": "PASS",
+    "br004_long_hoodie_woman_present": "PASS",
+    "font_statue_only_hero_story": "PASS",
+    "br001_br002_reused": "PASS_NONE_REUSED",
+    "br005_signature_hoodie_on_male": "BLOCKED__APPROVED_BR007_WEARER_SOURCE_HAS_BLACK_TANK_TOP"
+  },
+  "promotion": {
+    "founder_status": "NOT_SUBMITTED__SENIOR_REVIEW_BLOCKED",
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "senior_review": {
+    "verdict": "BLOCK",
+    "reason": "Wrong male identity versus the founder-selected base, superseded waterfront retained, incomplete transform receipt, and visible matte/lighting integration defects."
+  }
+}
