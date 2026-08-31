@@ -1,0 +1,101 @@
+{
+  "schema_version": "skyyrose.scene-generation-receipt.v1",
+  "scene_id": "SIG-COMMERCE-3",
+  "recorded_at": "2026-08-31",
+  "status": "PASS_REVIEW_CANDIDATE",
+  "promotion_state": "FOUNDER_REVIEW_ONLY",
+  "candidate": {
+    "path": "renders/scroll-world/SIG-COMMERCE-3/candidates/SIG-COMMERCE-3-five-sku-blended-real-full-regeneration-v4.png",
+    "sha256": "e3b9c8ebce65b22ada1328f87d243d0fd6cb70228dae375edd0711e98d6fc9c8",
+    "dimensions": [1672, 941]
+  },
+  "operation": {
+    "route": "openai_full_scene_regeneration",
+    "provider": "OpenAI image generation through Codex",
+    "model_receipt": "not_exposed_by_generation_tool",
+    "generative_provider_used": true,
+    "deterministic": false,
+    "scope": "Fresh wide hero scene integrating the Golden Gate terrace, SkyyRose font statue, three protected preorder looks, and the physical SG-001 shorts authority.",
+    "style_contract": "SkyyRose blended reality: cinematic fashion editorial, sculptural luxury, shaped sunset light, atmospheric fog, and premium commerce readability rather than an ordinary lifestyle photograph."
+  },
+  "directional_contract": {
+    "path": "data/candidates/founder-scene-direction-lock-2026-08-30.json",
+    "sha256": "3a63591917fee41b695bb2d1639ea8f89ed0409104559ed90b3ca69a7c9b0958",
+    "founder_direction": "All five Signature pre-order items appear together in one Golden Gate environment."
+  },
+  "reference_inputs": [
+    {
+      "role": "founder supplied scene look reference",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
+      "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97"
+    },
+    {
+      "role": "SG-005 Bay Bridge shirt and SG-001 shorts protected look",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
+      "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0"
+    },
+    {
+      "role": "SG-002 shirt and SG-003 shorts protected look",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
+      "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575"
+    },
+    {
+      "role": "SG-015 full windbreaker set protected look",
+      "path": "renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
+      "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09"
+    },
+    {
+      "role": "SG-001 physical shorts front and blue rose placement authority",
+      "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c"
+    }
+  ],
+  "canonical_product_bindings": [
+    {
+      "sku": "sg-005",
+      "visible_identity": "white Bay Bridge tee with blue and cyan rose artwork"
+    },
+    {
+      "sku": "sg-001",
+      "visible_identity": "daytime Bay Bridge photographic shorts with blue waistband, white drawstring, and garment-bounded blue rose"
+    },
+    {
+      "sku": "sg-015",
+      "visible_identity": "white pastel chevron windbreaker jacket and pants as one set SKU with multicolor ankle cuffs"
+    },
+    {
+      "sku": "sg-002",
+      "visible_identity": "white Stay Golden tee with large centered multicolor rose artwork"
+    },
+    {
+      "sku": "sg-003",
+      "visible_identity": "purple and orange Golden Gate night-print shorts with white drawstring and purple rose"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "senior-fidelity-gate-reviewer",
+    "verdict": "PASS_REVIEW_CANDIDATE",
+    "reviewed_candidate_sha256": "e3b9c8ebce65b22ada1328f87d243d0fd6cb70228dae375edd0711e98d6fc9c8",
+    "scores": {
+      "product_fidelity": 96,
+      "optical_integration": 96,
+      "anatomy_pose": 95,
+      "collection_story": 98,
+      "commerce_readiness": 96
+    },
+    "passes": [
+      "all five canonical SKU identities are present and visually distinct",
+      "one coherent Golden Gate environment with stronger SkyyRose sculpture integration",
+      "unified sunset lighting, grounding, reflections, and believable garment construction",
+      "no pasted edges or hard anatomy failures"
+    ],
+    "boundary": "Semantic regeneration does not prove byte-exact source preservation."
+  },
+  "release_boundaries": {
+    "founder_approval": "REQUIRED",
+    "runtime_wiring": "NOT_AUTHORIZED",
+    "woocommerce_sync": "NOT_AUTHORIZED",
+    "staging_deployment": "NOT_AUTHORIZED",
+    "production_deployment": "NOT_AUTHORIZED"
+  }
+}
