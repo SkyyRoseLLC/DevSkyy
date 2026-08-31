@@ -1,0 +1,30 @@
+{
+  "schema": "product-fidelity-source-authority.v1",
+  "status": "VERIFIED",
+  "recorded_at": "2026-08-31",
+  "sku": "br-007",
+  "view": "wearer_right",
+  "role": "physical_product_authority",
+  "source_sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8",
+  "source": {
+    "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg",
+    "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
+  },
+  "catalog": {
+    "path": "skyyrose-catalog.csv",
+    "sha256": "d8bdb7c791606eef8e14248b96e868b918972ecc1544a2c9642f0d4692ade361"
+  },
+  "sot_manifest": {
+    "path": "data/sot-images.json",
+    "sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b"
+  },
+  "dossier": {
+    "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
+    "sha256": "30d4e23ed59655d3eee08456ee417e632a6e6431d0282aa876ab20c0df58255a"
+  },
+  "resolver": {
+    "id": "devskyy-product-authority-resolver",
+    "version": "1.0.0"
+  },
+  "directional_rule": "Wearer-right carries the colored Black Rose and cloud embroidery; never mirror the wearer-left source."
+}

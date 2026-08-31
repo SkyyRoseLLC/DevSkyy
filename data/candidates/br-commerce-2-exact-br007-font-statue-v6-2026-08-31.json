@@ -1,0 +1,125 @@
+{
+  "schema_version": "skyyrose.scene-deterministic-composite-receipt.v1",
+  "scene_id": "BR-COMMERCE-2",
+  "recorded_at": "2026-08-31",
+  "status": "PASS_CANDIDATE_ONLY",
+  "promotion_state": "FOUNDER_REVIEW_ONLY",
+  "candidate": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/review/BR-COMMERCE-2-exact-br007-font-statue-review-v6.png",
+    "sha256": "4794c0b576e4801792cefab6bb82074b4ab34c917c6c2b2a36d02c770dd90357",
+    "dimensions": [1672, 941]
+  },
+  "founder_supplied_target": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+    "sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+    "note": "Source RGB contains a baked checkerboard and is not a true-alpha layer."
+  },
+  "operation": {
+    "route": "local_deterministic_masked_composite",
+    "implementation": "opencv-4.13.0",
+    "script": {
+      "path": "scripts/build_br_commerce_2_exact_composite_v6.py",
+      "sha256": "90e3b4fa5eda5c31f48b8c9c99e49aeec8eb0a3fed0399f5a755356189da8a5b"
+    },
+    "generative_provider_used": false,
+    "mirroring_used": false,
+    "scope": "BR-007 wearer-side logo patches, checkerboard-to-alpha extraction, protected-layer scene composite, and contact shadows"
+  },
+  "physical_product_authorities": [
+    {
+      "sku": "br-007",
+      "view": "front",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+      "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314"
+    },
+    {
+      "sku": "br-007",
+      "view": "wearer_left",
+      "role": "tonal Love Hurts side-panel embroidery authority",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg",
+      "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2",
+      "authority_receipt": {
+        "path": "data/candidates/br-007-wearer-left-source-authority-2026-08-31.json",
+        "sha256": "5906a30bb8ee65c44a02bec4163a1a49bfbe0910616bda439e273b85c1526be6"
+      }
+    },
+    {
+      "sku": "br-007",
+      "view": "wearer_right",
+      "role": "colored Black Rose and cloud side-panel embroidery authority",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg",
+      "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8",
+      "authority_receipt": {
+        "path": "data/candidates/br-007-wearer-right-source-authority-2026-08-31.json",
+        "sha256": "0cb381268a3406ec13b544ba373819ed762abe9719bc08db3e046f2f7cbc42eb"
+      }
+    }
+  ],
+  "directional_contract": {
+    "viewer_left": "wearer_right colored Black Rose and cloud treatment",
+    "viewer_right": "wearer_left tonal Love Hurts treatment",
+    "scene_lock": {
+      "path": "data/candidates/founder-scene-direction-lock-2026-08-30.json",
+      "sha256": "3a63591917fee41b695bb2d1639ea8f89ed0409104559ed90b3ca69a7c9b0958"
+    }
+  },
+  "localized_patch_evidence": {
+    "rgb_output": {
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v6/br-commerce-2-dual-cast-br007-corrected-rgb-v6.png",
+      "sha256": "0c38c4bb6e7fca32f49feb1f4e09336e14c7c297913875d7459878a5533ad10d"
+    },
+    "explicit_mask": {
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v6/br007-side-panels-explicit-mask-v6.png",
+      "sha256": "e23b13a1babfc0c95c484ea37d8d1cecd085df196d52da7696a6b7fa7b2b9fd3"
+    },
+    "outside_mask_changed_pixels": 0,
+    "inside_mask_changed_pixels": 1228,
+    "mask_pixels": 1241,
+    "per_channel_tolerance": 0,
+    "truthful_pixel_claim": "The source-derived logos are threshold-extracted and perspective-resampled. They are not byte-identical source pixels; all target pixels outside the mask are byte-identical."
+  },
+  "protected_alpha_layer": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v6/br-commerce-2-dual-cast-br007-corrected-alpha-v6.png",
+    "sha256": "5462a3a7108b939cf10c43fa8a806d18160b52e198da8242e03d036fbd081d0a",
+    "alpha_zero_pixels": 1332058,
+    "alpha_opaque_pixels": 231146,
+    "alpha_partial_pixels": 10148,
+    "baked_checkerboard_removed": true
+  },
+  "scene_layers": [
+    {
+      "role": "empty enclosed black-stone gallery plate",
+      "path": "renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
+      "sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b"
+    },
+    {
+      "role": "protected Black Rose font statue",
+      "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v4/black-rose-font-statue-alpha-v1-scene-scale.png",
+      "sha256": "3dac640e18b84b9db2fd334ab83b58ac0b06f4d552be008dfebcb3976474b6bb"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "senior-fidelity-gate-reviewer",
+    "verdict": "PASS_CANDIDATE_ONLY",
+    "reviewed_candidate_sha256": "4794c0b576e4801792cefab6bb82074b4ab34c917c6c2b2a36d02c770dd90357",
+    "passes": [
+      "correct wearer-relative side mapping",
+      "no mirrored side authority",
+      "zero outside-mask drift",
+      "real alpha with checker removed",
+      "enclosed font-statue-only scene direction"
+    ],
+    "remaining_optical_notes": [
+      "minor fringe at some hair, shoe, and garment edges",
+      "contact shadows remain generic and floor reflections are not fully matched",
+      "font statue retains keyed edge and backing artifacts"
+    ]
+  },
+  "release_boundaries": {
+    "founder_approval": "REQUIRED",
+    "runtime_wiring": "NOT_AUTHORIZED",
+    "woocommerce_sync": "NOT_AUTHORIZED",
+    "staging_deployment": "NOT_AUTHORIZED",
+    "production_deployment": "NOT_AUTHORIZED"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema_version": "skyyrose.localized-product-patch-metrics.v1",
+  "target": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+    "sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e"
+  },
+  "output_rgb": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v6/br-commerce-2-dual-cast-br007-corrected-rgb-v6.png",
+    "sha256": "0c38c4bb6e7fca32f49feb1f4e09336e14c7c297913875d7459878a5533ad10d"
+  },
+  "output_alpha": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v6/br-commerce-2-dual-cast-br007-corrected-alpha-v6.png",
+    "sha256": "5462a3a7108b939cf10c43fa8a806d18160b52e198da8242e03d036fbd081d0a"
+  },
+  "explicit_mask": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/protected-composite-layers-v6/br007-side-panels-explicit-mask-v6.png",
+    "sha256": "e23b13a1babfc0c95c484ea37d8d1cecd085df196d52da7696a6b7fa7b2b9fd3"
+  },
+  "review_scene": {
+    "path": "renders/scroll-world/BR-COMMERCE-2/review/BR-COMMERCE-2-exact-br007-font-statue-review-v6.png",
+    "sha256": "4794c0b576e4801792cefab6bb82074b4ab34c917c6c2b2a36d02c770dd90357"
+  },
+  "verification": {
+    "outside_mask_changed_pixels": 0,
+    "inside_mask_changed_pixels": 1228,
+    "mask_pixels": 1241,
+    "alpha_zero_pixels": 1332058,
+    "alpha_opaque_pixels": 231146,
+    "alpha_partial_pixels": 10148
+  }
+}
