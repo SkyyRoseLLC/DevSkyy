@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "../skyyrose-flagship/assets/images/products/br-001-onmodel.webp",
+  "source_sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-001-joint-look-protected-candidate-v1.png",
+  "output_sha256": "66ff16cd7bd28112cbdf0e7e4b01213da1b2ffa6dd6af350579a3b0fb45374d6",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.156532,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

@@ -1,0 +1,140 @@
+{
+  "schema": "skyyrose.founder-scene-corrections.v3",
+  "engine": "builtin-imagegen",
+  "mode": "precise edits and controlled recompositions",
+  "approval_state": "CANDIDATE_ONLY_FOUNDER_REVIEW_REQUIRED",
+  "wiring_allowed": false,
+  "deployment_allowed": false,
+  "jobs": {
+    "br-commerce-2-shorts-side-patch-v3": {
+      "operation": "precise-object-edit",
+      "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-shorts-side-patched-v3.png",
+      "references": [
+        {
+          "role": "locked_edit_target",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-natural-placement-v2.png",
+          "sha256": "0b5800004b305abe45b1bfb09771f7b4aeb5a443713b1d89dbbc1b5be0cb6a0e"
+        },
+        {
+          "role": "exact_side_view_physical_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v3/founder-supplied-sources/br-007-shorts-side-founder-source-v1.jpg",
+          "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit. Asset type: Black Rose Scroll World Scene 2 candidate. Image 1 is the locked scene and model. Image 2 is the exact BR-007 shorts SIDE VIEW authority, not a back view. Change only the visible shorts surface on the model. Match the physical side view exactly: black mesh, tonal rose-and-cloud repeat, grey Love Hurts script, two grey bats above the script, the real vertical zipper/pocket construction, black-white binding, the narrow white mesh inset with its exact small Love Hurts graphic, and the white waistband. Preserve the visible OAKLAND front lettering already wrapping into view. Respect the model's current angle; do not invent a back panel or unseen construction. Preserve every other element: model identity, face, pose, body, hoodie and all hoodie artwork, garment silhouettes, bridge, moon, water, wet floor, lighting, shadows, reflections, camera and aspect ratio. No duplicate logos, no enlarged white insert, no new text, no watermark. Founder-review candidate only."
+    },
+    "lh-commerce-2-shorts-front-patch-v3": {
+      "operation": "precise-object-edit",
+      "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-shorts-front-patched-v3.png",
+      "references": [
+        {
+          "role": "locked_edit_target",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-natural-placement-v2.png",
+          "sha256": "3442db8998ddb600ebdc919f0dd91c1ddd9bb224731ef14e21daffd4dda7d118"
+        },
+        {
+          "role": "exact_front_view_physical_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v3/founder-supplied-sources/lh-003-shorts-front-founder-source-v1.jpg",
+          "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6"
+        }
+      ],
+      "prompt": "Use case: precise-object-edit. Asset type: Love Hurts Scroll World Scene 2 candidate. Image 1 is the locked scene and model. Image 2 is the exact LH-003 shorts FRONT VIEW authority. Change only the worn shorts. Reproduce the physical front construction exactly at the model's three-quarter angle: black waistband, white perforated mesh body, exact orange-red roses rising from small white clouds, large red Love Hurts script across the upper front, the red heart and black bat artwork, black vertical zipper/pocket trim, exact red-white-black binding, and the black lower-center inset containing the small true Love Hurts heart-and-script graphic. Preserve the complete model from head through shoes, black tank, body, pose, identity, tattoos, enchanted rose vitrine, cathedral, candles, wet floor, lighting, shadows, reflections, camera and landscape aspect ratio. No generic flowers, no spelling drift, no replacement scene, no extra text, no watermark. Founder-review candidate only."
+    },
+    "sig-commerce-1-font-statue-lean-v3": {
+      "operation": "controlled-compositing-recomposition",
+      "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-font-statue-lean-v3.png",
+      "references": [
+        {
+          "role": "prior_candidate_product_and_mood_reference",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-natural-placement-v2.png",
+          "sha256": "8e6b33308db1b6335a930ee97e8dd5b85d74cd0c49175aa97b4b1499bf08d010"
+        },
+        {
+          "role": "architectural_material_and_bay_reference",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-oakland-atelier-plate-v1.png",
+          "sha256": "ec4767d6d38e76482f6d184a2d76a266a3e695a881d2ce1d155fa80f1106b209"
+        },
+        {
+          "role": "exact_founder_font_sculpture_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png",
+          "sha256": "e259c246a320b8220044da915c3b6fa89ecbbe7ab4a74eb80bafebe668d0e274"
+        },
+        {
+          "role": "exact_sherpa_model_and_product_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-009-onmodel-front-protected-v1.png",
+          "sha256": "4626dade5bf9a3825b5d4a65afac8df214e7f7aae2773248871a45337a9d9a45"
+        },
+        {
+          "role": "sherpa_and_beanie_detail_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-009-sg-007-detail-proof-v2.png",
+          "sha256": "af47c17849e7b33354c82f7fc2da0ba16a9424a0e53e51538e1af97408b199ad"
+        }
+      ],
+      "prompt": "Use case: compositing. Asset type: Signature Scroll World commerce scene. Recompose the landscape rather than patching the prior wall. Create a wide exterior rose-gold-and-black luxury Bay terrace at blue hour. On the LEFT, place the exact founder Skyy Rose script-and-rose sculpture from Image 3 as a large freestanding metal font statue with clean negative space around every letter; it must not be mounted on or lost against a wall. Use a minimal dark stone support that does not add connected legs or alter the exact Skyy Rose letterforms and rose. Place the exact Sherpa-and-beanie model from Images 4 and 5 beside it in a natural editorial pose: his shoulder and upper back lightly lean against the sturdy side of the statue/support, body angled toward the RIGHT, head turned over his shoulder to look at the Bay Bridge. Move the illuminated Bay Bridge and skyline to the RIGHT half of frame so his gaze clearly leads toward it. Keep the black Sherpa exterior, cream fleece lining, gold zipper, exact chest embroidery, hem tab and exact molded silicone beanie patch unchanged. Photorealistic wide environmental fashion campaign, natural weight and contact, coherent warm statue rim light with cool Bay fill, wet stone reflections. Do not include the old wall-mounted font, an interior worktable, duplicate lettering, THE, COLLECTION, generic logos, extra people, or watermark. Founder-review candidate only."
+    },
+    "sig-commerce-2-open-terrace-v3": {
+      "operation": "controlled-compositing-recomposition",
+      "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-open-terrace-v3.png",
+      "references": [
+        {
+          "role": "prior_candidate_cast_and_color_reference",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-natural-placement-v2.png",
+          "sha256": "585588118ca909d03fe91fc613c9c6ec4c2c1bb0d7a9af2dd17607db1393b736"
+        },
+        {
+          "role": "fog_over_bay_landscape_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-fog-over-bay-plate-v1.png",
+          "sha256": "0dc11e853d4be2bb927d9a3c40997087635b32c0c17ff84b2694dd3862234aa3"
+        },
+        {
+          "role": "exact_male_product_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-013-onmodel-front-protected-v1.png",
+          "sha256": "876323d4e9bea50c16bb03a22b3b38ca2cfdfcad2c2a466f70d9181f6fab05dd"
+        },
+        {
+          "role": "exact_female_hoodie_product_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-006-onmodel-protected-candidate-v1.png",
+          "sha256": "23d8708e0542d181f38bcd3cb6b5804731d1204a9defd74e492e9c8613f880ee"
+        },
+        {
+          "role": "three_product_detail_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-013-sg-014-sg-006-detail-proof-v2.png",
+          "sha256": "0cbf21c27ca3553bfcc2114d44fb567e58799d88f26a2a4c76bf62546b88231c"
+        }
+      ],
+      "prompt": "Use case: compositing. Asset type: Signature Scroll World commerce scene. Preserve the fog-over-Bay terrace, Golden Gate Bridge, skyline, blue-hour fog, wet stone and warm architectural edge light from Image 2, but REMOVE both empty rose-gold rectangular frames completely. Replace them with believable low dark-stone terrace edges and subtle continuous rose-gold floor lighting that belongs to the architecture—no rectangles, portals, floating frames or empty cutouts behind the models. Place the exact male mint crewneck-and-sweats look and exact female mint hoodie look from Images 3 through 5 into a natural editorial interaction, not a symmetrical catalog stance. Let the male stand left near a low parapet with relaxed weight and one hand in a pocket, torso turned slightly toward the bridge. Place the woman right and slightly deeper, turned three-quarter toward him and the view with one hand resting naturally on the parapet; keep both full bodies and every product front visible. Pose changes are allowed, but exact mint garment construction, lavender-grey rose-over-cloud embroideries, drawcords, cuffs, pocket and product colors must not change. Female trousers remain plain and unbranded. Match fog fill, copper rim, contact shadows and wet-floor reflections. No extra people, logos, text, floating architecture or watermark. Founder-review candidate only."
+    },
+    "sig-commerce-3-natural-group-v3": {
+      "operation": "controlled-compositing-recomposition",
+      "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-natural-group-v3.png",
+      "references": [
+        {
+          "role": "prior_candidate_cast_and_world_reference",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-natural-placement-v2.png",
+          "sha256": "b32c183bb7df127b8405d34d631fc9e08279833a7f775b184b910e54031be1ee"
+        },
+        {
+          "role": "departure_terrace_and_monument_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-departure-terrace-plate-v1.png",
+          "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97"
+        },
+        {
+          "role": "bay_bridge_look_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-005-bay-bridge-pair-protected-candidate-v1.png",
+          "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0"
+        },
+        {
+          "role": "stay_golden_look_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-002-sg-003-detail-proof-v2.png",
+          "sha256": "2b11e6f6aca4b35587c7c6672483e49bb07403fcde2646bae0eda0245f247209"
+        },
+        {
+          "role": "windbreaker_look_authority",
+          "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v1/signature-windbreaker-proof-board-v1.png",
+          "sha256": "a4a7f4d02ca77a2c1e88d793ebb03cc7b902bb49618cb09d2199f23679f6ac66"
+        }
+      ],
+      "prompt": "Use case: compositing. Asset type: Signature preorder Scroll World commerce scene. Preserve the departure terrace, fog, skyline, bridge, wet stone, sunrise and the exact rose-gold SR-and-rose monument from Image 2. Recompose the three models as a believable fashion group captured between moments, not three people dropped into a row. Pose changes are encouraged while protecting every product. Place the Bay Bridge male on the LEFT seated naturally on a low dark-stone terrace ledge, one foot planted and one leg relaxed, torso turned enough to show the exact white SG-005 shirt embroidery and full blue SG-001 bridge-print shorts. Place the Stay Golden male near CENTER standing one step behind and leaning one forearm lightly on the same ledge, turned toward the seated man while keeping the exact white SG-002 shirt and purple SG-003 shorts fully visible. Place the windbreaker woman in the RIGHT-CENTER foreground taking a natural slow step toward them and glancing back toward the group, with the exact white SG-015 jacket and pants, pink hood, pastel chevrons, striped ribbing, pockets, zippers and rose marks visible. Keep all three clear of the monument on the far RIGHT. Match one shared sunrise key, fog fill, scale, fabric texture, contact shadows and wet-floor reflections. Do not alter product artwork, colors, embroidery, sublimation, chevrons or monument geometry. No extra people, generic bridge prints, text or watermark. Founder-review candidate only."
+    }
+  }
+}

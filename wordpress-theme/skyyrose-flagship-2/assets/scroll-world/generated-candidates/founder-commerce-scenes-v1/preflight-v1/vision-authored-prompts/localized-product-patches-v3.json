@@ -1,0 +1,75 @@
+{
+  "schema": "skyyrose.localized-product-patches.v3",
+  "engine": "builtin-imagegen",
+  "canonical_product_engine": "gpt-image-2",
+  "mode": "precise-object-edit",
+  "source_policy": "The first reference is the locked natural-placement candidate. Remaining references are physical product authority. Preserve every pixel outside the named garment regions as closely as the editor permits.",
+  "workflow": [
+    "verify every reference path and SHA-256",
+    "visualize the candidate and product authority",
+    "apply only the named garment-surface corrections",
+    "compare output against the locked candidate and product authority",
+    "run GPT adversarial verification",
+    "hold for founder approval before wiring"
+  ],
+  "wiring_allowed": false,
+  "deployment_allowed": false,
+  "jobs": {
+    "br-commerce-1-patch": {
+      "references": [
+        {"role": "locked_edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-1-natural-placement-v2.png", "sha256": "6c0a01f54a6ce46fb4d2b947e882a3c32ca158001e1d0c521a6300c7697e5070"},
+        {"role": "crewneck_physical_authority", "path": "assets/products/source-photos/black-rose/br-001-crewneck-front-authentic.png", "sha256": "c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2"},
+        {"role": "jogger_physical_authority", "path": "assets/products/source-photos/black-rose/br-002-joggers-front-authentic.png", "sha256": "f7596bbcee6a189aac561b60261bb313ff063cc62722a8f13fe721f0ac7a9928"}
+      ],
+      "prompt": "Precise garment-surface edit. Image 1 is locked. Change only the crewneck chest mark and wearer-left jogger thigh mark. Reconstruct the crewneck mark as the exact subtle black-on-black embossed relief visible in Image 2, not white ink, not embroidery and not a new rose drawing. Reconstruct the jogger mark as the exact small molded silicone applique visible in Image 3. Keep their real scale, placement, relief and low-contrast material response. Preserve the model, pose, face, silhouette, garment construction, wall statue, bridge, moon, lighting, wet floor, shadows, reflections, camera and all other pixels. No extra logo, text, product or watermark. Founder-review candidate only."
+    },
+    "br-commerce-2-patch": {
+      "references": [
+        {"role": "locked_edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-natural-placement-v2.png", "sha256": "0b5800004b305abe45b1bfb09771f7b4aeb5a443713b1d89dbbc1b5be0cb6a0e"},
+        {"role": "hoodie_physical_authority", "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg", "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c"},
+        {"role": "shorts_front_side_back_authority", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/br-007-front-side-back-proof-v2.png", "sha256": "559351875e1b60c99ee9822c0d004bf17a6196cb9f02afcb833214b4f29bdd70"}
+      ],
+      "prompt": "Precise garment-surface edit. Image 1 is locked. On the hoodie, correct only the chest silicone cutout and relocate the large rose/cloud art from the arm to the side-body panel exactly as Image 2 shows. On the shorts, reproduce Image 3 exactly: black mesh with tonal rose/cloud repeat, OAKLAND tackle-twill across the front, Love Hurts script above the narrow side insert, correct black-white-gold binding, and the small true rose/cloud mark inside the narrow white side panel. Do not enlarge the white panel. Preserve the model, pose, face, garment silhouettes, bridge, moon, waterfront, lighting, wet floor, shadows, reflections, camera and all non-garment pixels. No extra logo, text, product or watermark. Founder-review candidate only."
+    },
+    "lh-commerce-2-patch": {
+      "references": [
+        {"role": "locked_edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-natural-placement-v2.png", "sha256": "3442db8998ddb600ebdc919f0dd91c1ddd9bb224731ef14e21daffd4dda7d118"},
+        {"role": "front_physical_authority", "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg", "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"},
+        {"role": "back_physical_authority", "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg", "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c"}
+      ],
+      "prompt": "Precise shorts-only edit. Image 1 is locked. Correct only the worn shorts using Images 2 and 3 as physical truth: exact complete Love Hurts wording, exact rose-and-cloud sublimation repeat, exact side panel geometry, binding, waistband and hem. Preserve the black tank, model identity, face, hair, body, pose, limbs, shoes, enchanted rose, cathedral, lighting, contact shadow, reflection, camera and all other pixels. Do not invent flowers, letters, patches or panel shapes. No watermark. Founder-review candidate only."
+    },
+    "lh-commerce-3-patch": {
+      "references": [
+        {"role": "locked_edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-natural-placement-v2.png", "sha256": "fe6b7e5deb20a84505d2c6896221648f208d43be619fe3b777165b381e33ba62"},
+        {"role": "bag_physical_authority", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg", "sha256": "8cae4c6b10bfe9bcd4ba60b4a5529769064ef9b5d558527bb71126a115697f18"},
+        {"role": "onmodel_physical_authority", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-onmodel.webp", "sha256": "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c"}
+      ],
+      "prompt": "Precise bag-surface edit. Image 1 is locked. Change only the crossbody Fannie bag artwork. Reproduce the exact FANNIE embroidery, letter forms, rose cluster, scale and placement from Images 2 and 3; keep the same bag body, strap, angle, folds and contact against the model. Preserve the woman, clothing, pose, face, hair, enchanted rose, cathedral, lighting, wet floor, shadows, reflections, camera and all other pixels. No spelling drift, extra letters, new logo or watermark. Founder-review candidate only."
+    },
+    "sig-commerce-1-patch": {
+      "references": [
+        {"role": "locked_edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-natural-placement-v2.png", "sha256": "8e6b33308db1b6335a930ee97e8dd5b85d74cd0c49175aa97b4b1499bf08d010"},
+        {"role": "sherpa_onmodel_authority", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-009-onmodel-front-protected-v1.png", "sha256": "4626dade5bf9a3825b5d4a65afac8df214e7f7aae2773248871a45337a9d9a45"},
+        {"role": "beanie_onmodel_authority", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-007-onmodel-protected-candidate-v1.png", "sha256": "45c6bca620ca0a6793e093eeb1d9e0373d4992f0447cf975863e1194da13fcbb"},
+        {"role": "physical_detail_authority", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-009-sg-007-detail-proof-v2.png", "sha256": "af47c17849e7b33354c82f7fc2da0ba16a9424a0e53e51538e1af97408b199ad"}
+      ],
+      "prompt": "Precise accessory and jacket-surface edit. Image 1 is locked. Correct only the beanie front patch, Sherpa wearer-left chest embroidery and lower hem tab from Images 2 through 4. The beanie uses the exact molded silicone logo, not a generic woven square. The Sherpa retains its exact rose/cloud embroidery, tab scale, fleece pile and black shell construction. Preserve the model, identity, pose, face, jacket silhouette, atelier, gold Skyy Rose wall sculpture, bridge, lighting, shadows, floor and camera. No extra logos, text, products or watermark. Founder-review candidate only."
+    },
+    "sig-commerce-2-patch": {
+      "references": [
+        {"role": "locked_edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-natural-placement-v2.png", "sha256": "585588118ca909d03fe91fc613c9c6ec4c2c1bb0d7a9af2dd17607db1393b736"},
+        {"role": "physical_detail_authority", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-013-sg-014-sg-006-detail-proof-v2.png", "sha256": "0cbf21c27ca3553bfcc2114d44fb567e58799d88f26a2a4c76bf62546b88231c"}
+      ],
+      "prompt": "Precise embroidery-only edit. Image 1 is locked. Correct the male crewneck chest embroidery and small wearer-left jogger thigh embroidery, plus the female hoodie chest embroidery, to the exact lavender-grey rose-over-cloud threadwork in Image 2. Preserve real stitch relief, scale and placement. Keep the female trousers plain and unbranded with no thigh mark. Preserve both people, identities, faces, poses, garment construction, terrace, bridge, fog, copper frames, wet floor, reflections, lighting and camera. No printed substitute, duplicate logo, new text or watermark. Founder-review candidate only."
+    },
+    "sig-commerce-3-patch": {
+      "references": [
+        {"role": "locked_edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-natural-placement-v2.png", "sha256": "b32c183bb7df127b8405d34d631fc9e08279833a7f775b184b910e54031be1ee"},
+        {"role": "stay_golden_physical_authority", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-002-sg-003-detail-proof-v2.png", "sha256": "2b11e6f6aca4b35587c7c6672483e49bb07403fcde2646bae0eda0245f247209"},
+        {"role": "windbreaker_physical_authority", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v1/signature-windbreaker-proof-board-v1.png", "sha256": "a4a7f4d02ca77a2c1e88d793ebb03cc7b902bb49618cb09d2199f23679f6ac66"}
+      ],
+      "prompt": "Precise three-look garment-surface edit. Image 1 is locked. Keep the left Bay Bridge look unless it conflicts with visible product authority already present. On the center look, reproduce the exact Stay Golden shirt embroidery and continuous purple night Golden Gate shorts sublimation from Image 2. On the right look, reproduce the exact white windbreaker construction from Image 3: pink hood, pastel pink-lavender-mint-yellow chevrons, pink-trim pockets and zippers, striped ribbing and pale rose marks. Preserve all three models, identities, faces, bodies, poses, garment silhouettes, exact SR-and-rose monument, bridge, skyline, fog, wet floor, sunrise, lighting, shadows, reflections and camera. No product mixing, generic bridge art, new logo, text or watermark. Founder-review candidate only."
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "skyyrose.limited-preview-generation-batch.v1",
+  "generated_at": "2026-08-24",
+  "authorization": "AUTHORIZE LIMITED PREVIEW GENERATION",
+  "scope": "Seven missing commerce-scene candidates; BR-COMMERCE-3 and LH-COMMERCE-1 were not regenerated.",
+  "prompt_contract": {
+    "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/remaining-commerce-scenes-limited-preview-v1.json",
+    "sha256": "a5901d062c5f47639b8d5300364a340cbc0141fa2a55254d889e09cdd1bcf9ac"
+  },
+  "review_authorities": [
+    "gpt-5.5-pro",
+    "founder"
+  ],
+  "machine_review": {
+    "state": "GPT_REJECTED_ALL_BELOW_95",
+    "review_path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/postflight-v1/remaining-commerce-scenes-gpt-review-v1.json",
+    "review_sha256": "5ed5c3b724410ec4e9f87a97fb7fc3d23ef295a36f86f82668a528ab8f69f991",
+    "overall_verdict": "partially-improved",
+    "overall_score_0_100": 75,
+    "recommend_ship": false
+  },
+  "founder_review_state": "PENDING_EXPLICIT_SELECTION",
+  "wiring_allowed": false,
+  "deployment_allowed": false,
+  "outputs": {
+    "BR-COMMERCE-1": {
+      "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-1-native-preview-v1.png",
+      "sha256": "553ca793f721c696d9a90d596cf2b73b5a2ab907b59deb869fce1570cb3d5a1e",
+      "dimensions": [1671, 941],
+      "state": "FOUNDER_REVIEW_REQUIRED"
+    },
+    "BR-COMMERCE-2": {
+      "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-native-preview-v1.png",
+      "sha256": "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925",
+      "dimensions": [1672, 941],
+      "state": "FOUNDER_REVIEW_REQUIRED"
+    },
+    "LH-COMMERCE-2": {
+      "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-native-preview-v1.png",
+      "sha256": "c1359ebb38cd9b72416e40d49bc211253ba574629c910244e59e809f735f116f",
+      "dimensions": [1672, 941],
+      "state": "FOUNDER_REVIEW_REQUIRED"
+    },
+    "LH-COMMERCE-3": {
+      "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-native-preview-v1.png",
+      "sha256": "f9e64d4fbd5c886b22d6c68aa10eb4c9441349fdb65967baf8b33fd9dd71e2f1",
+      "dimensions": [1672, 941],
+      "state": "FOUNDER_REVIEW_REQUIRED"
+    },
+    "SIG-COMMERCE-1": {
+      "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-native-preview-v1.png",
+      "sha256": "88918849e157749ecfcb5731b51dfd3c83c494bf6f946e917568726ec5473b65",
+      "dimensions": [1670, 941],
+      "state": "FOUNDER_REVIEW_REQUIRED"
+    },
+    "SIG-COMMERCE-2": {
+      "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-native-preview-v1.png",
+      "sha256": "34b51269a2f8e357becd9050c76863a00695fdcb1b6a7eb863f4293b8ad1ac32",
+      "dimensions": [1671, 941],
+      "state": "FOUNDER_REVIEW_REQUIRED"
+    },
+    "SIG-COMMERCE-3": {
+      "path": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-native-preview-v1.png",
+      "sha256": "71cece84eff6f8d50df9b68a9865b00e194ec8846ce23b4b3c1cb32648378af5",
+      "dimensions": [1672, 941],
+      "state": "FOUNDER_REVIEW_REQUIRED"
+    }
+  }
+}

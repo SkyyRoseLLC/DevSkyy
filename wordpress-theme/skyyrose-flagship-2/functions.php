@@ -65,6 +65,172 @@ function skyyrose2_collection_scene_uri( $scene ) {
 	return isset( $scene['source'] ) && 'scroll-world' === $scene['source'] ? skyyrose2_scroll_world_asset_uri( $scene['image'] ) : skyyrose2_sot_asset_uri( $scene['image'] );
 }
 
+/**
+ * Return hash-verified founder-selected V2 placeholder media.
+ *
+ * Placeholders are deliberately separate from final scene approval. An invalid
+ * or stale placeholder record is ignored and the approved plate remains the
+ * runtime fallback.
+ *
+ * @return array<string,array<string,mixed>>
+ */
+function skyyrose2_founder_scene_placeholders() {
+	static $placeholders = null;
+	if ( null !== $placeholders ) {
+		return $placeholders;
+	}
+
+	$path     = SKYYROSE2_DIR . '/data/founder-selected-theme-placeholders-v1.json';
+	$contents = is_readable( $path ) ? file_get_contents( $path ) : false; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	$decoded  = $contents ? json_decode( $contents, true ) : null;
+	if (
+		! is_array( $decoded ) ||
+		'skyyrose.v2.founder-selected-theme-placeholders.v1' !== ( $decoded['schema'] ?? '' ) ||
+		! is_array( $decoded['scene_placeholders'] ?? null )
+	) {
+		$placeholders = array();
+		return $placeholders;
+	}
+
+	$placeholders = array();
+	foreach ( $decoded['scene_placeholders'] as $scene_id => $placeholder ) {
+		$asset = ltrim( (string) ( $placeholder['asset'] ?? '' ), '/' );
+		$hash  = (string) ( $placeholder['sha256'] ?? '' );
+		$file  = $asset ? SKYYROSE2_DIR . '/assets/scroll-world/' . $asset : '';
+		$actual_hash = $file && is_file( $file ) ? hash_file( 'sha256', $file ) : '';
+		if (
+			'FOUNDER_SELECTED_PLACEHOLDER' !== ( $placeholder['state'] ?? '' ) ||
+			! $asset ||
+			! $hash ||
+			! is_string( $actual_hash ) ||
+			! hash_equals( $hash, $actual_hash )
+		) {
+			continue;
+		}
+
+		$placeholder['asset'] = $asset;
+		$placeholders[ sanitize_key( strtolower( (string) $scene_id ) ) ] = $placeholder;
+	}
+
+	return $placeholders;
+}
+
+/**
+ * Return the founder-approved commerce-scene contract for one collection.
+ *
+ * The JSON contract is the single runtime owner of scene IDs, plate assets,
+ * exact SKU casts, model layers, approval state, and CTA language. A malformed
+ * or unapproved contract fails closed to the legacy narrative worlds.
+ *
+ * @param string $collection Collection slug.
+ * @return array<int,array<string,mixed>>
+ */
+function skyyrose2_collection_commerce_scenes( $collection ) {
+	static $contract = null;
+
+	if ( null === $contract ) {
+		$path     = SKYYROSE2_DIR . '/data/scene-narrative-blueprints.json';
+		$contents = is_readable( $path ) ? file_get_contents( $path ) : false;
+		$decoded  = $contents ? json_decode( $contents, true ) : null;
+		$contract = is_array( $decoded ) ? $decoded : array();
+	}
+
+	$collection = sanitize_title( $collection );
+	$chapters   = $contract['collections'][ $collection ]['commerce_scene_chapters'] ?? array();
+	if ( empty( $chapters ) || ! is_array( $chapters ) ) {
+		return array();
+	}
+
+	$scenes       = array();
+	$placeholders = skyyrose2_founder_scene_placeholders();
+	foreach ( $chapters as $chapter ) {
+		$plate_state = (string) ( $chapter['plate_approval_state'] ?? '' );
+		if ( empty( $chapter['scene_id'] ) || empty( $chapter['plate_asset'] ) || 0 !== strpos( $plate_state, 'FOUNDER_APPROVED' ) ) {
+			return array();
+		}
+
+		$scene_key   = sanitize_key( strtolower( (string) $chapter['scene_id'] ) );
+		$placeholder = $placeholders[ $scene_key ] ?? array();
+		$use_placeholder = ! empty( $placeholder ) && $collection === sanitize_title( $placeholder['collection'] ?? '' );
+
+		$chapter['image']  = $use_placeholder ? $placeholder['asset'] : $chapter['plate_asset'];
+		$chapter['source'] = 'scroll-world';
+		$chapter['width']  = absint( $use_placeholder ? ( $placeholder['dimensions'][0] ?? 1672 ) : ( $chapter['plate_dimensions'][0] ?? 1672 ) );
+		$chapter['height'] = absint( $use_placeholder ? ( $placeholder['dimensions'][1] ?? 941 ) : ( $chapter['plate_dimensions'][1] ?? 941 ) );
+		$chapter['placeholder_active'] = $use_placeholder;
+		$chapter['placeholder_state']  = $use_placeholder ? (string) $placeholder['state'] : '';
+		$chapter['placeholder_role']   = $use_placeholder ? (string) ( $placeholder['role'] ?? '' ) : '';
+		$chapter['suppress_model_layers_for_placeholder'] = $use_placeholder && ! empty( $placeholder['suppress_model_layers'] );
+		$scenes[]          = $chapter;
+	}
+
+	return $scenes;
+}
+
+/**
+ * Resolve every exact product slot in a founder commerce scene.
+ *
+ * Missing products remain explicit slots. Nothing is substituted and an
+ * incomplete cast cannot masquerade as a complete look or set.
+ *
+ * @param array<string,mixed> $scene Scene contract.
+ * @param string              $collection Required collection slug.
+ * @return array{state:string,slots:array<int,array<string,mixed>>,missing:array<int,string>}
+ */
+function skyyrose2_resolve_commerce_scene_products( $scene, $collection ) {
+	$skus     = array_values( array_filter( array_map( 'sanitize_key', (array) ( $scene['product_bindings'] ?? array() ) ) ) );
+	$resolved = skyyrose2_get_products_by_skus( $skus, $collection );
+	$slots    = array();
+	$missing  = array();
+
+	foreach ( $skus as $sku ) {
+		$product = $resolved[ $sku ] ?? false;
+		$state   = $product ? 'ready' : 'unavailable';
+		if ( $product && ( ! $product->is_purchasable() || ! $product->is_in_stock() ) ) {
+			$state = 'currently_unavailable';
+		}
+		if ( ! $product ) {
+			$missing[] = $sku;
+		}
+		$slots[] = array(
+			'sku'     => $sku,
+			'state'   => $state,
+			'product' => $product,
+		);
+	}
+
+	$state = empty( $missing ) ? 'ready' : ( count( $missing ) === count( $skus ) ? 'unavailable' : 'partial' );
+	return array(
+		'state'   => $state,
+		'slots'   => $slots,
+		'missing' => $missing,
+	);
+}
+
+/**
+ * Return truthful scene-action copy from the live WooCommerce product state.
+ *
+ * @param WC_Product $product WooCommerce product.
+ * @param bool       $preorder_requested Scene requires preorder language.
+ * @return string
+ */
+function skyyrose2_scene_product_action_label( $product, $preorder_requested = false ) {
+	$name         = $product->get_name();
+	$presentation = skyyrose2_product_presentation( $product );
+	$is_preorder  = $preorder_requested && ! empty( $presentation['is_preorder'] );
+
+	if ( ! $product->is_purchasable() || ! $product->is_in_stock() ) {
+		return sprintf( __( 'View %s — currently unavailable', 'skyyrose-flagship-2' ), $name );
+	}
+	if ( $is_preorder && method_exists( $product, 'is_type' ) && $product->is_type( 'variable' ) ) {
+		return sprintf( __( 'Choose options to pre-order %s', 'skyyrose-flagship-2' ), $name );
+	}
+	if ( $is_preorder ) {
+		return sprintf( __( 'Pre-Order %s', 'skyyrose-flagship-2' ), $name );
+	}
+	return sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $name );
+}
+
 /** Theme supports and navigation slots. */
 function skyyrose2_setup() {
 	load_theme_textdomain( 'skyyrose-flagship-2', SKYYROSE2_DIR . '/languages' );
@@ -485,7 +651,7 @@ function skyyrose2_collections() {
 			// Founder-directed cathedral monuments. V1 Beauty and the Beast remains a world chapter below.
 			'hero'       => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp',
 			'hero_tablet' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp',
-			'hero_mobile' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp',
+			'hero_mobile' => 'images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp',
 			'portrait'   => 'scene-3-love-hurts.webp',
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/love-hurts-lockup.webp',
@@ -1391,7 +1557,7 @@ function skyyrose2_footer() {
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'pre-order' ) ); ?>"><?php esc_html_e( 'Pre-Order', 'skyyrose-flagship-2' ); ?></a>
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a>
 		</nav>
-		<div class="sr2-footer__identity"><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-384w.webp' ) ); ?>" data-brand-animation-mode="viewport" alt="" width="384" height="216" loading="lazy" decoding="async" aria-hidden="true"><span class="screen-reader-text"><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
+		<div class="sr2-footer__identity"><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-256w.webp' ) ); ?>" data-brand-animation-mode="viewport" alt="" width="384" height="216" loading="lazy" decoding="async" aria-hidden="true"><span class="screen-reader-text"><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
 		<nav class="sr2-footer__nav sr2-footer__nav--service" aria-label="<?php esc_attr_e( 'Customer care', 'skyyrose-flagship-2' ); ?>">
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'faq' ) ); ?>"><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></a>
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'shipping-returns' ) ); ?>"><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></a>

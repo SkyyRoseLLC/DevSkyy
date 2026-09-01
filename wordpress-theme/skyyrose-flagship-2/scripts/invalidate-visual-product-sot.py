@@ -24,6 +24,12 @@ MEDIA_MANIFESTS = (
     ROOT / "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
     ROOT / "wordpress-theme/skyyrose-flagship/data/opening-product-media.json",
 )
+SCENE_BLUEPRINT = ROOT / "wordpress-theme/skyyrose-flagship-2/data/scene-narrative-blueprints.json"
+SCENE_MANIFEST = (
+    ROOT
+    / "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates"
+    / "founder-commerce-scenes-v1/manifest.json"
+)
 BLOCKED_STATUSES = {
     "MISSING_APPROVED_ON_MODEL_FRONT",
     "REJECTED_AUTHENTICITY",
@@ -91,6 +97,11 @@ def _invalidate_manifest(
                 raise ValueError(f"changed unapproved SKU is not fail-closed: {sku}")
             changed_blocked.append(sku)
 
+    if not invalidated and not changed_blocked:
+        previous_audit = manifest.get("visual_contract_audit", {})
+        invalidated = list(previous_audit.get("changed_approved_skus_invalidated", []))
+        changed_blocked = list(previous_audit.get("changed_blocked_skus_preserved", []))
+
     manifest["product_sot_sha256"] = product_sot_sha256
     manifest["product_hashes"] = {
         sku: product["product_hash"] for sku, product in current_products.items()
@@ -104,6 +115,51 @@ def _invalidate_manifest(
         "visual_assets_changed": False,
     }
     return manifest, invalidated, changed_blocked
+
+
+def _rebind_scene_contracts(
+    product_sot_sha256: str,
+    audited_at: str,
+    changed_skus: list[str],
+) -> list[str]:
+    blueprint = _load(SCENE_BLUEPRINT)
+    manifest = _load(SCENE_MANIFEST)
+    affected_scene_ids: list[str] = []
+    changed = set(changed_skus)
+
+    for collection in blueprint.get("collections", {}).values():
+        for scene in collection.get("commerce_scene_chapters", []):
+            if changed.intersection(scene.get("product_bindings", [])):
+                scene_id = scene["scene_id"]
+                affected_scene_ids.append(scene_id)
+                scene["generation_gate"] = "CORRECTED_PRODUCT_LAYERS_REQUIRED"
+                scene["generation_state"] = "PRODUCT_VISUAL_CONTRACT_CHANGED_REVIEW_REQUIRED"
+
+    for scene in manifest.get("scenes", []):
+        if scene.get("scene_id") in affected_scene_ids:
+            if not str(scene.get("plate_state", "")).startswith("FOUNDER_APPROVED"):
+                raise ValueError(f"affected scene plate is not founder approved: {scene['scene_id']}")
+            scene["composite_state"] = "PENDING_CORRECTED_PRODUCT_LAYERS"
+
+    audit = {
+        "kind": "visual_product_sot_scene_rebind",
+        "audited_at": audited_at,
+        "changed_skus": sorted(changed),
+        "affected_scene_ids": sorted(set(affected_scene_ids)),
+        "plate_assets_changed": False,
+        "product_layers_require_founder_review": True,
+    }
+    blueprint["product_sot_sha256"] = product_sot_sha256
+    blueprint["visual_product_sot_rebind"] = audit
+    manifest["product_sot_sha256"] = product_sot_sha256
+    manifest["visual_product_sot_rebind"] = audit
+    SCENE_BLUEPRINT.write_text(
+        json.dumps(blueprint, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    SCENE_MANIFEST.write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    return sorted(set(affected_scene_ids))
 
 
 def main() -> int:
@@ -143,6 +199,16 @@ def main() -> int:
     for path, skus in invalidated_by_manifest.items():
         if skus:
             print(f"invalidated in {path}: " + ", ".join(skus))
+    changed_skus = sorted(
+        {
+            sku
+            for values in (*invalidated_by_manifest.values(), *blocked_by_manifest.values())
+            for sku in values
+        }
+    )
+    affected_scenes = _rebind_scene_contracts(product_sot_sha256, args.date, changed_skus)
+    if affected_scenes:
+        print("scene product layers require renewed founder review: " + ", ".join(affected_scenes))
     return 0
 
 

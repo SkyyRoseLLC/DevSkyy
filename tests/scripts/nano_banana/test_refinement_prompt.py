@@ -29,7 +29,7 @@ def _make_synth(
     veto: bool = False,
 ) -> JudgmentScore:
     return JudgmentScore(
-        judge="claude-opus-4-7",
+        judge="claude-opus-5",
         garment_type=80,
         color_accuracy=70,
         text_accuracy=80,

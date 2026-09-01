@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/sig-commerce-2-female-hoodie-generated-source-v1.png",
+  "source_sha256": "cc8e867fef04f3222968f86941fe444e8301188a7bc77af2b55b484de0d1981d",
+  "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-female-hoodie-generated-protected-v1.png",
+  "output_sha256": "7e6a0c73f442859891f7b612de2e872dcaa4ec1b8f14ece290541f839a549740",
+  "dimensions": [
+    941,
+    1672
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.30864,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

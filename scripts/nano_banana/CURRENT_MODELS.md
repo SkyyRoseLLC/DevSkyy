@@ -1,6 +1,6 @@
 # Nano Banana Tournament — Current Model Roster
 
-**Last verified: 2026-05-04** against live model lists from each provider's API.
+**Last verified: 2026-08-23** against live model lists from each provider's API.
 
 Re-verify before raising versions. Live discovery commands at the bottom of this file.
 
@@ -12,7 +12,7 @@ Re-verify before raising versions. Live discovery commands at the bottom of this
 |------|----------|-------------|-------|
 | **Vision Judge 1** | `gpt-5.5-pro` | OpenAI Responses API | Reasoning Pro tier, multimodal, structured-JSON via `text.format` |
 | **Vision Judge 2** | `gemini-3.1-pro-preview` | Google GenAI `models.generate_content` | Thinking-native, dynamic budget, structured-JSON via `response_schema` |
-| **Synthesis Judge** | `claude-opus-4-7` | Anthropic Messages API | Adaptive thinking, text-only, reasons over both vision reports |
+| **Synthesis Judge** | `claude-opus-5` | Anthropic Messages API | Latest Opus; adaptive thinking, text-only synthesis over both vision reports |
 
 Defined in `scripts/nano_banana/tournament.py` as `GPT_JUDGE_MODEL`, `GEMINI_JUDGE_MODEL`, `OPUS_SYNTHESIS_MODEL`.
 
@@ -65,20 +65,23 @@ response = client.models.generate_content(
 
 Model ID gotcha: `gemini-3.1-pro` (no suffix) returns 404. The live ID is `gemini-3.1-pro-preview`.
 
-### Anthropic Claude Opus 4.7
+### Anthropic Claude Opus 5
 
 ```python
 client.messages.create(
-    model="claude-opus-4-7",
+    model="claude-opus-5",
     max_tokens=4096,
-    thinking={"type": "adaptive", "display": "summarized"},   # 4.7: adaptive only, no budget_tokens
+    thinking={"type": "adaptive", "display": "summarized"},   # adaptive thinking, no fixed budget_tokens
     output_config={"effort": "xhigh"},                         # xhigh > high > medium > low
     messages=[{"role": "user", "content": "..."}],
 )
 # Read text from blocks where block.type == "text" (skip "thinking" blocks)
 ```
 
-Opus 4.7 removed `temperature`/`top_p`/`top_k` and the fixed `budget_tokens` mode. Adaptive thinking is the only on-mode; `display: "summarized"` makes thinking content visible (default is `omitted`).
+The live Opus 5 capability record confirms adaptive thinking, `xhigh` effort,
+structured outputs, image input, a 1M-token input context, and up to 128K output
+tokens. The synthesis runner retains `display: "summarized"` and does not use a
+fixed thinking-token budget.
 
 ---
 
@@ -125,7 +128,7 @@ for m in c.models.list(limit=50).data:
 
 ---
 
-## Snapshot of full live catalog (2026-05-04)
+## Snapshot of live catalog (Anthropic refreshed 2026-08-23)
 
 ### OpenAI GPT-5 family (Chat Completions + Responses APIs)
 
@@ -163,13 +166,15 @@ gemini-3.1-pro-preview                      Gemini 3.1 Pro Preview   ← chosen
 gemini-3.1-pro-preview-customtools          Gemini 3.1 Pro Preview Custom Tools
 ```
 
-### Anthropic Claude family (chosen)
+### Anthropic Claude family
 
 ```
-claude-opus-4-7                             ← chosen for synthesis
-claude-opus-4-6                             prior generation
-claude-sonnet-4-6                           cheaper, lower-priority work
-claude-haiku-4-5                            high-volume / cost-sensitive paths
+claude-opus-5                               ← chosen for synthesis
+claude-sonnet-5                             latest Sonnet
+claude-fable-5                              latest Fable
+claude-opus-4-8                             prior Opus generation
+claude-opus-4-7                             older compatible Opus
+claude-sonnet-4-6                           older Sonnet
 ```
 
 ---
@@ -178,7 +183,9 @@ claude-haiku-4-5                            high-volume / cost-sensitive paths
 
 - **`gpt-5.5-pro`** is the latest (2026-04-23) Pro-tier reasoning model. Pro tier supports `reasoning={"effort": "high"}` and outperforms standard `gpt-5.5` on the visual-comparison benchmarks our judge prompt mirrors.
 - **`gemini-3.1-pro-preview`** is the newest Pro Gemini available. The preview suffix is structural — Google ships 3.1-Pro under `-preview` until the public-stable cutover. `gemini-3-pro-preview` (the older 3.0 Pro preview) is still available but lacks 3.1's improved long-context vision reasoning.
-- **`claude-opus-4-7`** is unchanged from the prior config. Opus 4.7 added Task Budgets, removed sampling params, and made thinking content opt-in via `display: "summarized"` — all relevant to the synthesis use case where we want visible reasoning that we don't display directly.
+- **`claude-opus-5`** is the newest model in the configured Anthropic account's
+  live catalog (created 2026-07-24). Its capability record explicitly supports
+  adaptive thinking and `xhigh` effort, so it replaces Opus 4.7 for synthesis.
 
 ---
 

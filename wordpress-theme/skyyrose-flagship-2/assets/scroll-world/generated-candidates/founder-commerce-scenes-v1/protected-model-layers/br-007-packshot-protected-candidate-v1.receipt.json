@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "../skyyrose-flagship/assets/images/products/br-007.jpg",
+  "source_sha256": "6d7ea279905b7cfdbc9fa58d371d0fcfc3e8326c2041b4b6a1c86219fe2c7890",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-007-packshot-protected-candidate-v1.png",
+  "output_sha256": "20723cd0c0a4bf877f2f53b26c219527efccbc577662f63ba606001afa5b1a0d",
+  "dimensions": [
+    3024,
+    4032
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.209108,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

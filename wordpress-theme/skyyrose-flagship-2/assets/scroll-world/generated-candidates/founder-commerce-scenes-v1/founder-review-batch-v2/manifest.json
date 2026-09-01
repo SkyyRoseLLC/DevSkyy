@@ -1,0 +1,1320 @@
+{
+  "schema": "skyyrose.founder-commerce-review-batch.v2",
+  "generated_at": "2026-08-24T03:06:25.445Z",
+  "approval_state": "FOUNDER_REVIEW_REQUIRED",
+  "production_wired": false,
+  "note": "Mechanical composites for founder review. Approval is not inferred from generation or validation.",
+  "product_sot": {
+    "file": "../../data/product-sot.json",
+    "sha256": "587712b89ce777d86ade121c0917456b2490a5585bde0c1823377b87feca7a87"
+  },
+  "image_model_prompt_contract": {
+    "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/image-model-prompts-v1.json",
+    "sha256": "8bcf093709d00e3a3de70c232f1f40eaa0874ecdac1e3d608c15825375e23150",
+    "format": "json",
+    "direct_untracked_chat_prompt_forbidden": true
+  },
+  "opening_product_media": {
+    "file": "data/opening-product-media.json",
+    "sha256": "309e11da347646d827a1eea82fac498415ccf3ee42198736623de030cacd6356",
+    "product_sot_sha256": "587712b89ce777d86ade121c0917456b2490a5585bde0c1823377b87feca7a87"
+  },
+  "already_approved_scene": {
+    "scene_id": "BR-COMMERCE-3",
+    "excluded_from_remaining_eight_review": true,
+    "asset": "black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+    "sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+    "plate_state": "FOUNDER_APPROVED_AFTER_REQUIRED_A_CORRECTION",
+    "composite_state": "FOUNDER_APPROVED_PRODUCT_SCENE"
+  },
+  "scenes": [
+    {
+      "collection": "Black Rose",
+      "scene_id": "br-commerce-1",
+      "prompt_contract_id": "br-commerce-1-v2",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-1-font-type-foundry-plate-v1.png",
+      "plate_sha256": "f0667422fb3d5c766ba490a89fe1e65005867796dd645331d245765541912112",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "br-001",
+          "name": "BLACK Rose Crewneck",
+          "product_hash": "8557233d6b49c97489cdec30fe7ae010243c16cc357fb782115abdbfa656b78c",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-crewneck.md",
+          "dossier_sha256": "de2506ca27263f548c550ed85bb306b1ab03045acc35b1e6b33086586f9e4e37",
+          "references": [
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            }
+          ],
+          "opening_media_state": "REJECTED_AUTHENTICITY",
+          "opening_media_reason": "Founder correction requires an embossed BLACK Rose crewneck treatment, but every current br-001 product and on-model source depicts a contrasting embroidered rose/cloud graphic. No current source is replica-eligible."
+        },
+        {
+          "sku": "br-002",
+          "name": "BLACK Rose Joggers",
+          "product_hash": "fcd1a8ad41b8f0f03b6769f2ddcbf4c7ccec9e9142508f9bd3b74656dda98d9e",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-joggers.md",
+          "dossier_sha256": "1756f90086eb28879a4742d6569f558d0804a48d9a1676983d7ffe6a3a2f4f3e",
+          "references": [
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            }
+          ],
+          "opening_media_state": "MISSING_APPROVED_ON_MODEL_FRONT",
+          "opening_media_reason": "Current verified front is flat jogger media, not an on-model view."
+        }
+      ],
+      "fidelity_contracts": [],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-1-crew-jogger-generated-protected-v2.png",
+          "sha256": "59069da3f65f84fe3344ce62378c84408e1f8446df5b1e55c92541f77fbb0d72",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-1-crew-jogger-generated-protected-v2.receipt.json",
+          "protected_layer_receipt_sha256": "9f663ac7049d63040b56d843027ea7e77bc3453dd8815eeb1de4fc60e59721d9",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-1-crew-jogger-generated-source-v2.png",
+          "protected_source_sha256": "042ecfc1e65450f503ef84ab95434e5d9679d35cc7a1d843e6186c0b50edb0ee",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            941,
+            1672
+          ],
+          "rendered_bounds": [
+            846,
+            69,
+            491,
+            872
+          ],
+          "skus": [
+            "br-001",
+            "br-002"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/br-commerce-1-founder-review-v2.png",
+      "output_sha256": "e8cb104d06a26f8e1c5c8ace426b86ca812ac5ce662aa13ba4e09968eb9e0558",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "collection": "Black Rose",
+      "scene_id": "br-commerce-2",
+      "prompt_contract_id": "br-commerce-2-v2",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-waterfront-plate-v1.png",
+      "plate_sha256": "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "br-005",
+          "name": "BLACK Rose Hoodie — Signature Edition",
+          "product_hash": "11b11c69c79011098448f4ef572c19fe7908fdbc057cadd0ba89247f54198c06",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie-signature-edition.md",
+          "dossier_sha256": "d78dcd803e2d0bcbdef3a1b740387759c43885c7f58cc7a84039e68b9e51027f",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "product_reference",
+              "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
+              "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
+              "bytes": 282426
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            }
+          ],
+          "opening_media_state": "MISSING_APPROVED_ON_MODEL_FRONT",
+          "opening_media_reason": "Current verified front is a ghost-mannequin hoodie, not an on-model view."
+        },
+        {
+          "sku": "br-007",
+          "name": "BLACK Rose x Love Hurts Basketball Shorts",
+          "product_hash": "3d69482a606becd8de5a6b0dc47758bbd5c9feb0989aded18bcbba2e60d59ecb",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
+          "dossier_sha256": "f60cd94126f5d6110af67219061843f18e3645491a88545f1d8b64de4c9d9a74",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "physical_product_photo",
+              "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+              "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+              "bytes": 181742
+            },
+            {
+              "role": "garment_reference_1",
+              "authority": 89,
+              "kind": "physical_product_photo",
+              "path": "assets/products/source-photos/black-rose/br-007-shorts-side.jpeg",
+              "sha256": "850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8",
+              "bytes": 167973
+            },
+            {
+              "role": "garment_reference_2",
+              "authority": 88,
+              "kind": "physical_product_photo",
+              "path": "assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg",
+              "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2",
+              "bytes": 182575
+            },
+            {
+              "role": "garment_reference_3",
+              "authority": 87,
+              "kind": "physical_product_photo",
+              "path": "assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg",
+              "sha256": "8ee61bc5c937b9caf20e3d33445c9eaee8de70bc48c13a3a782006bf192eb2cb",
+              "bytes": 174915
+            },
+            {
+              "role": "garment_reference_4",
+              "authority": 86,
+              "kind": "physical_product_photo",
+              "path": "assets/products/source-photos/black-rose/br-007-techflat-shorts.jpeg",
+              "sha256": "9a4a17b9220f22b865803b18123fa82721ac8e68b03617793892d6a8170d5037",
+              "bytes": 47538
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/love-hurts-logo.md",
+              "sha256": "53a496c230cd276d09942ff5123cfa10876193e7d540bffe861cb0765a6cefc2",
+              "bytes": 3782
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/love-hurts-full-lettering.jpeg",
+              "sha256": "bd3ecf066dc57a036fc9ac5a546edff513138ef3035c1185bcbf973549d3f4f6",
+              "bytes": 165802
+            }
+          ],
+          "opening_media_state": "REJECTED_AUTHENTICITY",
+          "opening_media_reason": "Current front has incorrect logo color and the back omits required Love Hurts placements."
+        }
+      ],
+      "fidelity_contracts": [
+        "br-005: raised tonal silicone cut-out at wearer-right chest",
+        "br-005: large embroidered rose artwork on side body, never sleeve or arm",
+        "br-007: narrow white side construction, never broad white front-leg panel",
+        "br-007: complete Love Hurts script on black field above narrow white insert"
+      ],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-2-hoodie-shorts-generated-protected-v2.png",
+          "sha256": "6890d567faa821296af14d92081b528d5b918e96d059dc9731be4f731c1e9ee6",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-2-hoodie-shorts-generated-protected-v2.receipt.json",
+          "protected_layer_receipt_sha256": "e4225e240a96ef5290d946c24a41338057b5ad505d149a801d306dfae8019622",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-2-hoodie-shorts-generated-source-v2.png",
+          "protected_source_sha256": "218d0ffaf345d206e8d21a8f1eceab1b5a606b7869eb41ca108b2da63cb0a78c",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            941,
+            1672
+          ],
+          "rendered_bounds": [
+            208,
+            67,
+            492,
+            874
+          ],
+          "skus": [
+            "br-005",
+            "br-007"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/br-commerce-2-founder-review-v2.png",
+      "output_sha256": "8593bc8bb18e8c0fca811c6f7c7bf6e25a36a913b55217e1aa74caf1a4361dcc",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "collection": "Love Hurts",
+      "scene_id": "lh-commerce-1",
+      "prompt_contract_id": "lh-commerce-1-v1",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+      "plate_sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "lh-004",
+          "name": "Love Hurts Bomber Jacket",
+          "product_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
+          "dossier_sha256": "c432e4e0ab28987abaaee60d7223db1813e48c5e3c35a6ab10b809fad3b43765",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/lh-004-techflat-front.jpeg",
+              "sha256": "a80570de81d5443fd0452a835cc662cf43ec969238789523ec7f83148306e506",
+              "bytes": 44996
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/love-hurts-logo.md",
+              "sha256": "53a496c230cd276d09942ff5123cfa10876193e7d540bffe861cb0765a6cefc2",
+              "bytes": 3782
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/love-hurts-full-lettering.jpeg",
+              "sha256": "bd3ecf066dc57a036fc9ac5a546edff513138ef3035c1185bcbf973549d3f4f6",
+              "bytes": 165802
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+              "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+              "bytes": 2528
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+              "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+              "bytes": 123109
+            }
+          ],
+          "opening_media_state": "APPROVED_OPENING_MEDIA",
+          "opening_media_reason": "Opening media provides one or more approved product views."
+        },
+        {
+          "sku": "lh-002",
+          "name": "Love Hurts Joggers (Black)",
+          "product_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
+          "dossier_sha256": "00c4bb79b14e990c4f1832c5d87768c0b1c018bdd2a8f5eed2631926460b968e",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/lh-002-techflat-front.jpeg",
+              "sha256": "1a5ad59e099bacf048261949ed316954723bfc7c6efb3918ea3f41631b62ca0c",
+              "bytes": 26284
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/love-hurts-logo.md",
+              "sha256": "53a496c230cd276d09942ff5123cfa10876193e7d540bffe861cb0765a6cefc2",
+              "bytes": 3782
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/love-hurts-full-lettering.jpeg",
+              "sha256": "bd3ecf066dc57a036fc9ac5a546edff513138ef3035c1185bcbf973549d3f4f6",
+              "bytes": 165802
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
+              "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
+              "bytes": 3074
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+              "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+              "bytes": 113277
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        },
+        {
+          "sku": "lh-006",
+          "name": "Love Hurts Joggers (White)",
+          "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
+          "dossier_sha256": "21559be08b5bb5feabd2165f8195ab7ff5a38f68036a79786fb28d4e8e674c9b",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/lh-006-techflat-front.jpeg",
+              "sha256": "a85fbed9da1d7cc1dd8b7ce913b97b50c1f85274f328def457386abc40c97649",
+              "bytes": 29259
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/love-hurts-logo.md",
+              "sha256": "53a496c230cd276d09942ff5123cfa10876193e7d540bffe861cb0765a6cefc2",
+              "bytes": 3782
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/love-hurts-full-lettering.jpeg",
+              "sha256": "bd3ecf066dc57a036fc9ac5a546edff513138ef3035c1185bcbf973549d3f4f6",
+              "bytes": 165802
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/heart-rose-composite.md",
+              "sha256": "afe6e350813bd7fdcccf77a855037ad8aa774ae74f4ca9cd1ad7b1da93222cdd",
+              "bytes": 3074
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+              "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+              "bytes": 113277
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        }
+      ],
+      "fidelity_contracts": [],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-commerce-1-two-model-bomber-generated-protected-v1.png",
+          "sha256": "81a264363dbab5c26c3132feefdcb66b8febafc381196d1c707c687d4fd5171c",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-commerce-1-two-model-bomber-generated-protected-v1.receipt.json",
+          "protected_layer_receipt_sha256": "ab03c7bbab85acfb93ddaf1e94c2911a7bd779fd257ed2f4b6333eb16b1a50a9",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/lh-commerce-1-two-model-bomber-generated-source-v1.png",
+          "protected_source_sha256": "f9fe2423f9ec21d15552efe10eea1a04b57dfb72af5a5682ff8cae6e6123bf9c",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            1023,
+            1537
+          ],
+          "rendered_bounds": [
+            88,
+            69,
+            580,
+            872
+          ],
+          "skus": [
+            "lh-004",
+            "lh-002",
+            "lh-006"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/lh-commerce-1-founder-review-v2.png",
+      "output_sha256": "ca4a68bc99caef0ac1184202a8bfecf071644a85df530646570063d7034e71e7",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "collection": "Love Hurts",
+      "scene_id": "lh-commerce-2",
+      "prompt_contract_id": "lh-commerce-2-v2",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-shorts-chamber-plate-v1.png",
+      "plate_sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "lh-003",
+          "name": "Love Hurts Basketball Shorts",
+          "product_hash": "3cceca9656872d9cb1598539dbb23801241e57fa63d749a32f740087743a3a8c",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-basketball-shorts.md",
+          "dossier_sha256": "66462629a585b6ae5260c24dc0306af4c24b756cd5708ee6c57e4eb9a2cb8852",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/lh-003-techflat-front.jpeg",
+              "sha256": "81b0490dbaffa22d5b2236eae800a2cff4d60eb4fd34e6a07433c9937f0a4447",
+              "bytes": 204048
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/love-hurts-logo.md",
+              "sha256": "53a496c230cd276d09942ff5123cfa10876193e7d540bffe861cb0765a6cefc2",
+              "bytes": 3782
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/love-hurts-full-lettering.jpeg",
+              "sha256": "bd3ecf066dc57a036fc9ac5a546edff513138ef3035c1185bcbf973549d3f4f6",
+              "bytes": 165802
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+              "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+              "bytes": 2528
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+              "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+              "bytes": 123109
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        }
+      ],
+      "fidelity_contracts": [],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-commerce-2-neutral-top-generated-protected-v2.png",
+          "sha256": "14dfb0db11dbdfcf4622aba85242385a57d6dc0deeb035bf2f65989dcefa0c0d",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-commerce-2-neutral-top-generated-protected-v2.receipt.json",
+          "protected_layer_receipt_sha256": "3e5f24dffdf1a2e9c2bd4a4420f8be1c6d8e620bae2b8fff9ac8d0bcc2e89a61",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/lh-commerce-2-neutral-top-generated-source-v2.png",
+          "protected_source_sha256": "79c0fcf334e6adefff3a4f1430502a30a98c6a48320a2ea8d2e5f283f64450fc",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            1023,
+            1537
+          ],
+          "rendered_bounds": [
+            174,
+            69,
+            580,
+            872
+          ],
+          "skus": [
+            "lh-003"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/lh-commerce-2-founder-review-v2.png",
+      "output_sha256": "adcd5585b8c59f6c1546dd23d7f6d1a85c774fbf50164b8263ddeed05b25151c",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "collection": "Love Hurts",
+      "scene_id": "lh-commerce-3",
+      "prompt_contract_id": "lh-commerce-3-v1",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-fannie-vitrine-plate-v1.png",
+      "plate_sha256": "8179bf5a0b7fc83427844e4d4d06a684ea8ee055a9ce59423ccc5923ab40c73b",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "lh-005",
+          "name": "The Fannie",
+          "product_hash": "67cba7ca43810be60c66e5e29d12449c61a76a8704ef1498c145950f9ae53583",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-fannie.md",
+          "dossier_sha256": "0bb5c878a44408577bcd0140706c3649961ef057b5e5ccd82bd1273e0e727010",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "product_reference",
+              "path": "assets/products/references/lh-005-fannie-photo.jpeg",
+              "sha256": "408608ca8b0eec1a319f5dedca9f87bae1b1ffe5558a46e15f001abf70940181",
+              "bytes": 146820
+            },
+            {
+              "role": "garment_reference_1",
+              "authority": 89,
+              "kind": "product_reference",
+              "path": "assets/products/references/lh-005-fannie-mockup.jpeg",
+              "sha256": "a81ea0ddde232a07253ba53168580bc36fba6b0c61622e172b65e8b161c36213",
+              "bytes": 75580
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/love-hurts-logo.md",
+              "sha256": "53a496c230cd276d09942ff5123cfa10876193e7d540bffe861cb0765a6cefc2",
+              "bytes": 3782
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/love-hurts-full-lettering.jpeg",
+              "sha256": "bd3ecf066dc57a036fc9ac5a546edff513138ef3035c1185bcbf973549d3f4f6",
+              "bytes": 165802
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        }
+      ],
+      "fidelity_contracts": [],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-005-onmodel-logo-pass-protected-v1.png",
+          "sha256": "18be7a61147ccdef88eaf8fe1fc0c701924c29c8e2bc8bbd453a8291f109934f",
+          "source_state": "EXISTING_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-005-onmodel-logo-pass-protected-v1.receipt.json",
+          "protected_layer_receipt_sha256": "ad7de6868f6844c721341121745800e19b47087261c9da76db85b413e78e68d3",
+          "protected_source": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-005-onmodel-logo-pass-v1.png",
+          "protected_source_sha256": "8ad8c741e10c4acb9520d46b96b0532a47e34cae58e14fe87aba4c89836532dc",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            1023,
+            1537
+          ],
+          "rendered_bounds": [
+            80,
+            0,
+            785,
+            941
+          ],
+          "skus": [
+            "lh-005"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/lh-commerce-3-founder-review-v2.png",
+      "output_sha256": "68189a631ec44fe1e56cfa62567523efa453a76fe687f78ef72538a5bc6e46d7",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "collection": "Signature",
+      "scene_id": "sig-commerce-1",
+      "prompt_contract_id": "sig-commerce-1-v2",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-oakland-atelier-plate-v1.png",
+      "plate_sha256": "ec4767d6d38e76482f6d184a2d76a266a3e695a881d2ce1d155fa80f1106b209",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "sg-009",
+          "name": "The Sherpa Jacket",
+          "product_hash": "e1225f6dd639353e538ab35ddcc5395db6214a0fc9c0660fdb947eb71077e03a",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-sherpa-jacket.md",
+          "dossier_sha256": "358c11e77f353575f26d6c1569cf0ae8f6d5d20b2e10727f548f39a549d3cd41",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "product_reference",
+              "path": "assets/products/references/sg-009-sherpa-front.jpeg",
+              "sha256": "d19b59e25007817a2a95300ca632c58e7c0206647f74ab758fde60b60fd14de6",
+              "bytes": 55426
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+              "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+              "bytes": 2528
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+              "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+              "bytes": 123109
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
+              "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
+              "bytes": 2578
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
+              "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
+              "bytes": 77819
+            }
+          ],
+          "opening_media_state": "APPROVED_OPENING_MEDIA",
+          "opening_media_reason": "Opening media provides one or more approved product views."
+        },
+        {
+          "sku": "sg-007",
+          "name": "The Signature Beanie",
+          "product_hash": "b825e597702fd8259af26184caecb7d611da0d3ef84b9cd2e6644ff300cdad2c",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-signature-beanie.md",
+          "dossier_sha256": "085fedf0686a3dcd6e05cf045e608c5c1f44a829559ad04d7b885e26346602fa",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/sg-007-techflat.jpeg",
+              "sha256": "b50a98043429d5097edbbafc603812c4ff22e60bf0528ce4aa270d1a565f381a",
+              "bytes": 116787
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+              "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+              "bytes": 2528
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+              "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+              "bytes": 123109
+            }
+          ],
+          "opening_media_state": "MISSING_APPROVED_ON_MODEL_FRONT",
+          "opening_media_reason": "Current verified front is flat beanie media, not an on-model view."
+        }
+      ],
+      "fidelity_contracts": [],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-1-sherpa-beanie-generated-protected-v2.png",
+          "sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-1-sherpa-beanie-generated-protected-v2.receipt.json",
+          "protected_layer_receipt_sha256": "3dedb12397272ef87b44e3717d601e4fcee7920574e6a012755fda3c3baad51a",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/sig-commerce-1-sherpa-beanie-generated-source-v2.png",
+          "protected_source_sha256": "3de6e7a5f31efb2bf404b245502fb253f8d2d9733ea78d868d7d4057a931f0d6",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            941,
+            1672
+          ],
+          "rendered_bounds": [
+            222,
+            69,
+            491,
+            872
+          ],
+          "skus": [
+            "sg-009",
+            "sg-007"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/sig-commerce-1-founder-review-v2.png",
+      "output_sha256": "b15275fdbeded528909e305dca40530cade28d09e4f0bcbc209ec966481a9db3",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "collection": "Signature",
+      "scene_id": "sig-commerce-2",
+      "prompt_contract_id": "sig-commerce-2-v2",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-fog-over-bay-plate-v1.png",
+      "plate_sha256": "0dc11e853d4be2bb927d9a3c40997087635b32c0c17ff84b2694dd3862234aa3",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "sg-013",
+          "name": "Mint & Lavender Crewneck",
+          "product_hash": "0f21948eaeb04166cea6d262bc2e85604282974292bac6cfd5398952d49c7ff2",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-crewneck.md",
+          "dossier_sha256": "21054a52111606871fb164d3e90c4cc26bb0406be704091d992df74f2730b559",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/sg-013-techflat-front.jpeg",
+              "sha256": "05c665c0462700ec3cce7ce9dffec77c055a989d841a2cc128fba75b02f63ddc",
+              "bytes": 47803
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+              "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+              "bytes": 2528
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+              "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+              "bytes": 123109
+            }
+          ],
+          "opening_media_state": "APPROVED_OPENING_MEDIA",
+          "opening_media_reason": "Opening media provides one or more approved product views."
+        },
+        {
+          "sku": "sg-014",
+          "name": "Mint & Lavender Sweatpants",
+          "product_hash": "0f063bd55595390672123e0aecff6df96be10bdefddcbdec45614d665dbc6867",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-sweatpants.md",
+          "dossier_sha256": "fa672390a6735624c4e596fcd4d79865c6ac052d599b70b5434b559c8918ec57",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/techflats/split/signature/sg-mint-lav-sweats-front.jpeg",
+              "sha256": "5d641401d0d8c4043448a9eea15ded2d90c2c8ddd0192d196868296dc1cdaa18",
+              "bytes": 14807
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        },
+        {
+          "sku": "sg-006",
+          "name": "Mint & Lavender Hoodie",
+          "product_hash": "a407ac32f302853404fe5c091539338eb4b98a06f62a195a301b4b4132e41bb3",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/mint-lavender-hoodie.md",
+          "dossier_sha256": "b059e3c5f064481ee4ebdffa13ca2101f09e8c56a7217c583329dbfff8e6df2b",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/techflats/split/signature/sg-mint-lav-hoodie-front.jpeg",
+              "sha256": "a1a7fcc38870766c8dbe55b30e9f86cc5d15f9ac24a01e777ebec2ce0868ee13",
+              "bytes": 58828
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        }
+      ],
+      "fidelity_contracts": [],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-male-mint-set-generated-protected-v2.png",
+          "sha256": "eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-male-mint-set-generated-protected-v2.receipt.json",
+          "protected_layer_receipt_sha256": "a5a6341d20da46caa29fc5fb01ebefeb6609659f52a4a38cd17f2846a5928dc3",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/sig-commerce-2-male-mint-set-generated-source-v2.png",
+          "protected_source_sha256": "c9baa4162212f547e2a84bc98d13ee89976e972ce1fd5efc0e8988b288b7778e",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            1024,
+            1536
+          ],
+          "rendered_bounds": [
+            258,
+            121,
+            547,
+            820
+          ],
+          "skus": [
+            "sg-013",
+            "sg-014"
+          ]
+        },
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-female-hoodie-generated-protected-v1.png",
+          "sha256": "7e6a0c73f442859891f7b612de2e872dcaa4ec1b8f14ece290541f839a549740",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-female-hoodie-generated-protected-v1.receipt.json",
+          "protected_layer_receipt_sha256": "e690a8387343e054676af5f6bdf2e482439d3a4f5ad71aec7ff6071635f6d7e5",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/sig-commerce-2-female-hoodie-generated-source-v1.png",
+          "protected_source_sha256": "cc8e867fef04f3222968f86941fe444e8301188a7bc77af2b55b484de0d1981d",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            941,
+            1672
+          ],
+          "rendered_bounds": [
+            870,
+            121,
+            461,
+            820
+          ],
+          "skus": [
+            "sg-006"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/sig-commerce-2-founder-review-v2.png",
+      "output_sha256": "cb1a4c5806925b16fc757d851c5f75ed3b6b5e5808e96aca4a37fc9a13236392",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "collection": "Signature",
+      "scene_id": "sig-commerce-3",
+      "prompt_contract_id": "sig-commerce-3-v2",
+      "approval_state": "FOUNDER_REVIEW_REQUIRED",
+      "plate": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-departure-terrace-plate-v1.png",
+      "plate_sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+      "upstream_plate_state": "FOUNDER_APPROVED",
+      "products": [
+        {
+          "sku": "sg-005",
+          "name": "The Bridge Series 'The Bay Bridge' Shirt",
+          "product_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
+          "dossier_sha256": "04ddbd458ced6c49f39ce2a12dccbe2edec9f6ed0180efffb87100f1e8a5783a",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg",
+              "sha256": "e5b88ecfcbd6889987d4fcf6c421d60010120fdc15d2c70315a94eb136fafcbc",
+              "bytes": 162010
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
+              "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
+              "bytes": 2578
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
+              "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
+              "bytes": 77819
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        },
+        {
+          "sku": "sg-001",
+          "name": "The Bridge Series 'The Bay Bridge' Shorts",
+          "product_hash": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shorts.md",
+          "dossier_sha256": "37294843755b17e50d2416b6a46121f086dc165cd6c9fd498c8ca85ee517cffb",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "physical_product_photo",
+              "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+              "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c",
+              "bytes": 3472834
+            },
+            {
+              "role": "garment_reference_1",
+              "authority": 89,
+              "kind": "product_reference",
+              "path": "assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg",
+              "sha256": "c802ad0704b69081cbdf193d206f2b253243eaf6acfd06ba57708e0b40c1906b",
+              "bytes": 161262
+            },
+            {
+              "role": "garment_reference_2",
+              "authority": 88,
+              "kind": "product_reference",
+              "path": "assets/products/references/sg-001-day-bay-bridge-shorts.jpeg",
+              "sha256": "6e6349d2ffecfd944d8102c47cc167703a1a3dde4dcc4fd0389693c4746221a8",
+              "bytes": 663197
+            }
+          ],
+          "opening_media_state": "MISSING_APPROVED_ON_MODEL_FRONT",
+          "opening_media_reason": "Current verified front is flat shorts media, not an on-model view."
+        },
+        {
+          "sku": "sg-015",
+          "name": "The Windbreaker Set",
+          "product_hash": "b01ceabb690a9924c160bc4599d065f26f59d4b203248ad308a72484a9f2d34d",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-windbreaker-set.md",
+          "dossier_sha256": "9285c0e6d57b2f52e03f7c7037326b1bc161c279a156ca7b37e94e9c82c2610e",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/sg-015-windbreaker-set-techflat.jpeg",
+              "sha256": "f05187dff58eaa626c68442636a0ef9648dc31d619609c927b79e2890dcf8db4",
+              "bytes": 255617
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
+              "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
+              "bytes": 2578
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
+              "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
+              "bytes": 77819
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/red-roses-cloud-cluster.md",
+              "sha256": "a3d3e0f5ca428728ab457312ce39cd2e0bdb5ce1d0c6a1d57f4bf6c931258130",
+              "bytes": 2528
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "product_reference",
+              "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/red-roses-cloud-cluster.jpeg",
+              "sha256": "6d9e81465d5c7f8187e6d3d12bbe5c5d301701bd30da192ecb736cfac8d5bdbc",
+              "bytes": 123109
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        },
+        {
+          "sku": "sg-002",
+          "name": "The Bridge Series 'Stay Golden' Shirt",
+          "product_hash": "902ca0e235ce5398c8cb32d65614d10e9660e3a0eea0f33fc06b65c52c4f717e",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shirt.md",
+          "dossier_sha256": "d8f682ac88811e96e0c50b431a60d29814ad263301912033597ce3a45d42c9c9",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "approved_design_reference",
+              "path": "assets/products/references/sg-002-stay-golden-shirt-techflat.jpeg",
+              "sha256": "652826e525ae261bed597dc7952f42005ac723b417fe77e434ddb2ded7f4148f",
+              "bytes": 132340
+            },
+            {
+              "role": "primary_logo_reference",
+              "authority": 80,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.md",
+              "sha256": "035f11824b0952f62c875e9bd5edc19d01101823816e978d621eaf39a3b16e95",
+              "bytes": 4904
+            },
+            {
+              "role": "primary_logo_reference_art",
+              "authority": 81,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/three-rose-cluster.jpeg",
+              "sha256": "381c56518b0e015051c9a4a1ab6afb2134d2ba091ef3350ac30bcb9b6a43b8b2",
+              "bytes": 133982
+            },
+            {
+              "role": "logo_reference_1",
+              "authority": 69,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.md",
+              "sha256": "0732b857fea55c8d59da91188a5c1d977e0d5c21275d71c9b61b232b987e873e",
+              "bytes": 2578
+            },
+            {
+              "role": "logo_reference_1_art",
+              "authority": 70,
+              "kind": "approved_logo_or_patch_art",
+              "path": "wordpress-theme/skyyrose-flagship/data/brand-logos/sr-monogram.jpeg",
+              "sha256": "2fe0388156242665b0dca46d4a402e8f6fd2ffc47f7416856cc629d2ab7fa146",
+              "bytes": 77819
+            }
+          ],
+          "opening_media_state": "MISSING_APPROVED_ON_MODEL_FRONT",
+          "opening_media_reason": "Current verified front is flat shirt media, not an on-model view."
+        },
+        {
+          "sku": "sg-003",
+          "name": "The Bridge Series 'Stay Golden' Shorts",
+          "product_hash": "cb9931b0c43970158a047b2e48e1b85dc9fb55ce3780d73d5ead8dd4fb5b4e23",
+          "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shorts.md",
+          "dossier_sha256": "8440d195c9808e35c1e02dc1ea58e292a32902282a41c8b53bd6618ff9b81d40",
+          "references": [
+            {
+              "role": "primary_garment_reference",
+              "authority": 100,
+              "kind": "product_reference",
+              "path": "assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg",
+              "sha256": "c802ad0704b69081cbdf193d206f2b253243eaf6acfd06ba57708e0b40c1906b",
+              "bytes": 161262
+            },
+            {
+              "role": "garment_reference_1",
+              "authority": 89,
+              "kind": "product_reference",
+              "path": "assets/products/references/sg-003-sunset-golden-gate-shorts.jpeg",
+              "sha256": "a1191068850ff760ee31057d876fde88b7b9ee8845e72eaeeaeda1a2a7b107d2",
+              "bytes": 493387
+            }
+          ],
+          "opening_media_state": "STALE_PRODUCT_HASH",
+          "opening_media_reason": "Founder flatlay/techflat audit changed the product visual contract; previous media must be regenerated and reviewed against the new hash."
+        }
+      ],
+      "fidelity_contracts": [
+        "sg-005 + sg-001: complete Bay Bridge shirt-and-shorts look must be visually prominent and readable",
+        "sg-001: blue waistband, white drawstring, daytime Bay Bridge wrap, blue rose at lower wearer-left leg",
+        "sg-005: white tee with large blue Bay Bridge rose-cluster centered on chest"
+      ],
+      "layers": [
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-005-bay-bridge-pair-protected-candidate-v1.png",
+          "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
+          "source_state": "EXISTING_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-005-bay-bridge-pair-protected-candidate-v1.receipt.json",
+          "protected_layer_receipt_sha256": "33f23f4186f42726afb19cee69ba5e3b61f16dcb52282f8cc211f497f91abec3",
+          "protected_source": "../skyyrose-flagship/assets/images/products/sg-005-onmodel.webp",
+          "protected_source_sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            1024,
+            1536
+          ],
+          "rendered_bounds": [
+            10,
+            69,
+            581,
+            872
+          ],
+          "skus": [
+            "sg-005",
+            "sg-001"
+          ]
+        },
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-015-onmodel-protected-candidate-v1.png",
+          "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09",
+          "source_state": "EXISTING_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-015-onmodel-protected-candidate-v1.receipt.json",
+          "protected_layer_receipt_sha256": "e4075ffc896140c4c924439fa449b517a89c3d5b4a96e869cb871f5027184077",
+          "protected_source": "../skyyrose-flagship/assets/images/products/sg-015-onmodel.webp",
+          "protected_source_sha256": "3d2c32ea1ef392a234d25d487c524234faa3f3c05830673ce8ba387898de52a5",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            1024,
+            1536
+          ],
+          "rendered_bounds": [
+            520,
+            231,
+            473,
+            710
+          ],
+          "skus": [
+            "sg-015"
+          ]
+        },
+        {
+          "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-3-stay-golden-generated-protected-v1.png",
+          "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575",
+          "source_state": "GENERATED_FOUNDER_REVIEW_CANDIDATE",
+          "protected_layer_receipt": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-3-stay-golden-generated-protected-v1.receipt.json",
+          "protected_layer_receipt_sha256": "450b45acb5352ad0d9090189cd68ef3abddced47a5ace88472e6a60d96335e7a",
+          "protected_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/sig-commerce-3-stay-golden-generated-source-v1.png",
+          "protected_source_sha256": "962d1b17b4ede8e2684552d50c17fc7b11a33257c9916b33c446b9093548e6c4",
+          "rgb_preserved": true,
+          "source_dimensions": [
+            941,
+            1672
+          ],
+          "rendered_bounds": [
+            945,
+            231,
+            400,
+            710
+          ],
+          "skus": [
+            "sg-002",
+            "sg-003"
+          ]
+        }
+      ],
+      "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/sig-commerce-3-founder-review-v2.png",
+      "output_sha256": "e31cc863c370e11389485983fda347bcfe3b57e2634e3416c43cc0b8cbe2eb4b",
+      "dimensions": [
+        1672,
+        941
+      ]
+    }
+  ],
+  "contact_sheet": {
+    "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/founder-review-eight-scene-contact-sheet-v2.png",
+    "sha256": "0ef7d0bedb91df2289bd061435bd65876d307f71589e7ab3e9c81202a3a1db19",
+    "dimensions": [
+      1672,
+      1936
+    ]
+  },
+  "product_detail_sheet": {
+    "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v2/founder-review-eight-scene-product-detail-sheet-v2.png",
+    "sha256": "66e8894072714f060106799359b6282e457d74da95a819130acffa21e9f22f93",
+    "dimensions": [
+      1672,
+      1936
+    ],
+    "evidence_state": "FOUNDER_VISUAL_REVIEW_AID_NOT_AUTOMATIC_APPROVAL"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.limited-pro-preflight.v1",
+  "status": "PASS_LIMITED_PRO_READY_FOR_ONE_GENERATION",
+  "certified_at": "2026-08-24T04:27:48.450328+00:00",
+  "prompt": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-limited-pro-v1.json",
+    "sha256": "968eacac73b90c9bca08a428a214f09682e1aac68e349c5c6581192092c21b7e"
+  },
+  "product_sot": {
+    "path": "data/product-sot.json",
+    "sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12"
+  },
+  "reviewed_files": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/lh-commerce-1-two-model-bomber-generated-source-v1.png",
+      "sha256": "f9fe2423f9ec21d15552efe10eea1a04b57dfb72af5a5682ff8cae6e6123bf9c"
+    },
+    {
+      "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+      "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256"
+    },
+    {
+      "path": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+      "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f"
+    },
+    {
+      "path": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+      "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+      "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0"
+    }
+  ],
+  "generation_limit": 1,
+  "external_api_tournament_complete": false,
+  "founder_visual_approval_required": true,
+  "deployment_authorized": false
+}

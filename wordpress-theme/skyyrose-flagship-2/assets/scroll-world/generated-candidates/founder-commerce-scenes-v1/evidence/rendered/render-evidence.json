@@ -1,0 +1,218 @@
+[
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-1",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-1-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-2",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-2-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-3",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-3-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "complete"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-1",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-1-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "complete"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-2",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-2-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-3",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-3-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-1",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-1-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "partial"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-2",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-2-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "partial"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-3",
+    "viewport": "desktop-1440x900",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-3-desktop-1440x900.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-1",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-1-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-2",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-2-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-3",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-3-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "complete"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-1",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-1-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "complete"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-2",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-2-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-3",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-3-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-1",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-1-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "partial"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-2",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-2-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "partial"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-3",
+    "viewport": "tablet-768x1024",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-3-tablet-768x1024.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-1",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-1-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-2",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-2-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "black-rose",
+    "sceneId": "br-commerce-3",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/black-rose-br-commerce-3-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "complete"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-1",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-1-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "complete"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-2",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-2-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "love-hurts",
+    "sceneId": "lh-commerce-3",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/love-hurts-lh-commerce-3-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-1",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-1-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "partial"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-2",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-2-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "partial"
+  },
+  {
+    "collection": "signature",
+    "sceneId": "sig-commerce-3",
+    "viewport": "mobile-390x844",
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered/signature-sig-commerce-3-mobile-390x844.png",
+    "commerceState": "ready",
+    "compositeState": "pending"
+  }
+]

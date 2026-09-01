@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "../skyyrose-flagship/assets/images/products/sg-001-bay-bridge-shorts.jpeg",
+  "source_sha256": "3bfe3a460f6bb425240f2c268977e6c11f248bfd9bf9a872d83d2d11c441a950",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-001-packshot-protected-candidate-v1.png",
+  "output_sha256": "1799147d117d0e9f50fa3ed489815f8b0641c0522bc1ba6da07a27e20e5ade2b",
+  "dimensions": [
+    886,
+    886
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.383299,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

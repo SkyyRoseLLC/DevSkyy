@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/sig-commerce-1-sherpa-beanie-generated-source-v2.png",
+  "source_sha256": "3de6e7a5f31efb2bf404b245502fb253f8d2d9733ea78d868d7d4057a931f0d6",
+  "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-1-sherpa-beanie-generated-protected-v2.png",
+  "output_sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
+  "dimensions": [
+    941,
+    1672
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.284271,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

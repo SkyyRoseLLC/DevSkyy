@@ -1,0 +1,130 @@
+{
+  "schema": "skyyrose.v2.scene-candidates.v1",
+  "generated_at": "2026-08-20",
+  "generator": "gpt-image-2 via Codex imagegen",
+  "path_base": "wordpress-theme/skyyrose-flagship-2",
+  "product_sot": "data/product-sot.json",
+  "product_sot_sha256": "2778ed740081c5f528a1135953520005ab47f3d33efd259ca5517de63f599e58",
+  "approval_state": "FOUNDER_REVIEW_REQUIRED",
+  "production_stage": "previsualization",
+  "production_contract": "data/scene-production-contract.json",
+  "narrative_blueprint": "data/scene-narrative-blueprints.json",
+  "wire_policy": "No candidate may replace a V2 scene until its status is founder_approved and its product references still match data/product-sot.json hashes.",
+  "optimization": {
+    "format": "webp",
+    "quality": 86,
+    "metadata": "stripped",
+    "source_png_bytes": 27780521,
+    "optimized_webp_bytes": 2572946
+  },
+  "candidates": [
+    {
+      "collection": "black-rose",
+      "chapter": "Forbidden Garden — Protected Product V3",
+      "sku": "br-001",
+      "product_role": "protagonist",
+      "story_role": "origin_chapter",
+      "hero_relationship": "The wearer crosses the forbidden garden threshold while wrought iron, moonlight, black roses, Bay Bridge geometry, and the star monument foreshadow the completed Black Rose hero court.",
+      "file": "black-rose/forbidden-garden-br-001-v3-protected-product.webp",
+      "sha256": "6d4400ebe67e7707e1001fe469fc0ac4c9bce124b0e66423d2b7307fa4703ad2",
+      "source_scene": "assets/scroll-world/scene-2-black-rose.webp",
+      "hero_inspiration": "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "product_references": [
+        "../skyyrose-flagship/assets/images/products/br-001-onmodel.webp",
+        "../skyyrose-flagship/assets/images/products/br-001-crewneck.png"
+      ],
+      "passes_completed": [
+        "protected_product_target",
+        "environment_rebuild",
+        "physical_integration",
+        "cinematic_grade",
+        "product_detail_review_200_percent"
+      ],
+      "founder_visual_approval": {
+        "approved_at": "2026-08-21",
+        "scope": "desktop and mobile master visuals"
+      },
+      "responsive_assets": {
+        "mobile": {
+          "file": "black-rose/forbidden-garden-br-001-v3-mobile.webp",
+          "sha256": "7bf75ec513c55a77819d8a1feac9716ec3a8890277c470cd352168cff5ca7d6b",
+          "width": 941,
+          "height": 1672,
+          "status": "founder_review_required",
+          "founder_visual_approval": "2026-08-21"
+        }
+      },
+      "status": "founder_review_required",
+      "qa_notes": [
+        "Best current realism/fidelity method. Still blocked from approval until every contract category and evidence item independently reaches 100."
+      ]
+    },
+    {
+      "collection": "black-rose",
+      "chapter": "The Making of a Monument — Founder Film",
+      "sku": "br-006",
+      "product_role": "protagonist",
+      "story_role": "hero_origin_chapter",
+      "hero_relationship": "Authentic founder footage and the real Sherpa garment become the memory core while the Bay Bridge, moon, forged rose, and unfinished star rays assemble toward the completed Black Rose hero.",
+      "file": "black-rose/br-006-hero-origin-film-monument-v1.webp",
+      "sha256": "e3fe9ad3e53b21041de089c9894178dfe9ddbcd39d5702dc3bd789ca1bcef685",
+      "source_scene": "assets/sot/branding/hero/forbidden-midnight-1280w.webp",
+      "hero_inspiration": "assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "product_references": [
+        "../skyyrose-flagship/assets/images/products/br-006-onmodel.webp",
+        "../skyyrose-flagship/assets/images/products/br-006-sherpa-jacket.jpeg",
+        "assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4"
+      ],
+      "motion_assets": [
+        {
+          "role": "founder_film_mp4",
+          "file": "assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.mp4",
+          "sha256": "405321e50b8544917aa5075e817ad22ad58e51b90afd19bc7d0192b69e5f038b"
+        },
+        {
+          "role": "founder_film_webm",
+          "file": "assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.webm",
+          "sha256": "19e965a65f63b0768166849a1d7e800f6349bc5c8ba77cf42aac5fcebce0576d"
+        },
+        {
+          "role": "founder_film_poster",
+          "file": "assets/scroll-world/video/black-rose/br-006/poster/br-006-hero-origin-poster.jpg",
+          "sha256": "b3f037953b5d377f44cd19ba14a8d4ac5f1043695e46e7b42d48d773b3456d8f"
+        }
+      ],
+      "review_preview": {
+        "file": "assets/scroll-world/generated-candidates/black-rose/br-006-hero-origin-film-preview.html",
+        "sha256": "78e8da39ee0df408dece61755d38e0790cf3bffa01dbbf8307df0b64198bba3d"
+      },
+      "passes_completed": [
+        "hero_footprint_alignment",
+        "authentic_founder_footage_integration",
+        "deterministic_atmospheric_motion",
+        "reduced_motion_fallback"
+      ],
+      "status": "founder_review_required",
+      "qa_notes": [
+        "Backdrop motion plate is pending independent visual review before it can replace the deterministic CSS motion fallback.",
+        "Back on-model reveal remains founder-review-required and must not enter the product SOT until approved at 200 percent."
+      ]
+    }
+  ],
+  "product_sot_rebind": {
+    "kind": "nonvisual_merchandising_metadata_rebind",
+    "rebound_at": "2026-08-22",
+    "previous_product_sot_sha256": "9ae8c2b6f8857ea47e57d1d348421f428187ffc1fa53565076f477104bbf16a7",
+    "current_product_sot_sha256": "2778ed740081c5f528a1135953520005ab47f3d33efd259ca5517de63f599e58",
+    "preserved_visual_reviewed_at": "2026-08-21",
+    "visual_assets_changed": false,
+    "allowed_changes": [
+      "catalog source hash",
+      "merchandising series metadata",
+      "derived product hashes"
+    ]
+  },
+  "authenticity_cleanup": {
+    "date": "2026-08-22",
+    "authority": "founder_directed_deletion",
+    "rule": "Unprotected AI product depictions and authenticity-rejected renderings were deleted; verified source products and protected cutouts were preserved."
+  }
+}

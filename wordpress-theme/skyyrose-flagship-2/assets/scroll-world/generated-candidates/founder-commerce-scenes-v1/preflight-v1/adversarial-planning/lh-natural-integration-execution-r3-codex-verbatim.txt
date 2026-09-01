@@ -1,0 +1,195 @@
+Outcome: the Round 3 planning package is ready for Opus review. It is intentionally and mechanically blocked from image generation.
+
+No image was generated, no existing binary was edited, no founder-approved source pixel or source hash changed, no V2 runtime file was wired, no legacy Flagship runtime file was changed, and nothing was deployed, committed, or pushed. I am not claiming visual correctness because there is no generated candidate to inspect.
+
+## What changed
+
+1. Added the durable machine-readable native-scene planning contract:
+
+   [lh-commerce-1-native-scene-regeneration-plan-v1.json](/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-native-scene-regeneration-plan-v1.json:1)
+
+   SHA-256: `9cc182f9c353443c800bee6a3e6971ac1b8e54309ae73a20763b27ec3aef10dd`
+
+   The contract:
+
+   - Locks Branch A, `NATIVE_SCENE_REGENERATION`, as the selected planning route.
+   - Binds 16 current source/evidence files by role, path, SHA-256, dimensions, and color mode where applicable.
+   - Separates generator-conditioning references from validation-only evidence.
+   - Uses the cathedral plate only as environment, camera, floor, architecture, enchanted-rose, and collection-narrative authority.
+   - Uses the approved two-model layer as identity, pose-relationship, front product-placement, and scale evidence.
+   - Uses the three physical-product images and canonical heart-and-rose art as product authority.
+   - Binds the current product SOT and exact `lh-004`, `lh-002`, and `lh-006` product hashes.
+   - Records detailed bomber and jogger construction, material, color, placement, embroidery, stripe, placket, pocket, hood, drawstring, side-panel, cuff, and thigh-logo gates.
+   - Includes camera, vanishing-point, floor-plane, pose, occlusion, lighting, contact-shadow, reflection, depth, atmosphere, grain, optics, edge, enchanted-rose, and responsive UI-safe-zone requirements.
+   - Requires a nine-candidate `3x3` batch and contact sheet, with candidate hashes and per-region reports.
+   - Makes every output a candidate only, requiring the full judge tournament and fresh founder reapproval.
+   - Explicitly forbids overwriting any bound input, V2 wiring, deployment, or production writes.
+   - Records desktop, tablet, and mobile safe-zone plans as provisional and blocks generation until real rendered breakpoint measurements replace them.
+   - Records the current user designation of the model layer as an approved reference while also preserving the machine receipt’s actual `FOUNDER_REVIEW_REQUIRED` state. A machine founder-approval record remains required before generation.
+
+2. Added the fail-closed executable validator:
+
+   [validate-native-scene-regeneration-preflight.py](/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/scripts/validate-native-scene-regeneration-preflight.py:1)
+
+   SHA-256: `6d695e0556f5b6a2fcddd13f02b1261e378b21d592e60200c73987693dc87400`
+
+   The validator checks:
+
+   - Contract schema, scene identity, selected branch, and authorization boundaries.
+   - Every bound path and SHA-256 against current bytes.
+   - Image dimensions and RGB/RGBA role expectations.
+   - Unique generator and validation-only roles.
+   - No duplicate generator paths or role reclassification.
+   - Product hashes against current `data/product-sot.json`.
+   - Canonical physical-product and logo references against current SOT records.
+   - Patched-model and protected-RGB receipt lineage.
+   - Proof-manifest, proof-board, tournament-policy, and judge-receipt bindings.
+   - Exact per-region fidelity-gate coverage.
+   - Fatal rejection-rule coverage.
+   - Nine-candidate batch/contact-sheet requirements.
+   - Candidate-only, no-wiring, no-deployment state.
+   - Git-tracked state for every bound file and the prompt contract before a generation gate may pass.
+
+   It provides two deliberately separate modes:
+
+   - Default planning validation can issue `PASS_PROMPT_PACKAGE_READY_FOR_OPUS_REVIEW`.
+   - `--generation-gate` fails closed until every operational and approval prerequisite is satisfied.
+
+3. Added focused tamper and regression tests:
+
+   [test_native_scene_regeneration_preflight.py](/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/tests/test_native_scene_regeneration_preflight.py:1)
+
+   SHA-256: `5fa8fb7128a95ca075b67948e40478bbf29a3ac75f9d05fe98667d727193b6a1`
+
+   The 11 tests cover:
+
+   - Current planning-package validation.
+   - Material generation blockers.
+   - Attempts to grant relight authority without calibration.
+   - `NO_OBSERVED_CONTRADICTION` attempting to import a gain field.
+   - Raster-only verdicts attempting to add `VALIDATED_COMPATIBLE`.
+   - Any nonzero `max_abs_log_gain`.
+   - Substitution of the protected low-frequency source.
+   - Stale reference hashes.
+   - Relaxed candidate/founder-reapproval state.
+   - Unverifiable product regions.
+   - Attempts to authorize V2 wiring or deployment.
+
+4. Generated the durable planning-validation receipt:
+
+   [lh-commerce-1-native-scene-planning-validation-v1.json](/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/lh-commerce-1-native-scene-planning-validation-v1.json:1)
+
+   SHA-256: `c5103cb24e5b38d23345613ca1b8b6f2e5630829ceb788e2a2edc5b81bf72b1b`
+
+   Its authoritative state is:
+
+   - `status`: `PASS_PROMPT_PACKAGE_READY_FOR_OPUS_REVIEW`
+   - `selected_branch`: `NATIVE_SCENE_REGENERATION`
+   - `current_pair_verdict`: `UNRESOLVABLE`
+   - `relight_authority`: `false`
+   - `max_abs_log_gain`: `0`
+   - `protected_low_frequency_source`: approved two-model input
+   - `generation_permitted`: `false`
+   - `v2_wiring_authorized`: `false`
+   - `deployment_authorized`: `false`
+   - `visual_correctness_claimed`: `false`
+
+## Round 2 invariant enforcement
+
+The Round 2 challenger’s requested invariant is now enforced in the contract, validator, and tamper tests:
+
+```text
+if calibration_evidence_for_both_assets != true:
+    raster-only outcomes are limited to:
+        VALIDATED_INCOMPATIBLE
+        NO_OBSERVED_CONTRADICTION
+        UNRESOLVABLE
+
+    relight_authority == false
+    max_abs_log_gain_over_protected_masks == 0
+    protected_low_frequency_band == approved_input
+    chroma_import_allowed == false
+    generator_derived_spatial_gain_allowed == false
+```
+
+`VALIDATED_COMPATIBLE` cannot appear in the raster-only outcome set. `NO_OBSERVED_CONTRADICTION` cannot authorize gain, chroma import, or protected-pixel relighting. The current pair is locked to `UNRESOLVABLE`.
+
+Only admissible exact-rig calibration evidence for both assets could support future positive relight authority. Estimator confidence, low raster residuals, prompt claims, and narrow posteriors are explicitly not calibration evidence.
+
+## Current generation blockers
+
+The generation gate exits `1`, as expected, with these blockers:
+
+- `GENERATION_NOT_AUTHORIZED`
+- `CONTRACT_REQUIRES_OPUS_REVIEW`
+- `CONTRACT_EXPLICITLY_BLOCKS_GENERATION`
+- `RESPONSIVE_SAFE_ZONES_ARE_PROVISIONAL`
+- `MANDATORY_TOURNAMENT_JUDGES_UNAVAILABLE`
+- `MODEL_REFERENCE_MACHINE_FOUNDER_APPROVAL_NOT_RECORDED`
+- Bound plate, model, receipts, proof artifacts, judge receipt, and tournament policy are currently untracked.
+- The new prompt contract is currently untracked.
+- `PASS_READY_TO_GENERATE_RECEIPT_NOT_ISSUED`
+- `FRESH_FOUNDER_GENERATION_AUTHORIZATION_REQUIRED`
+
+The current live judge receipt reports `gpt-5.5-pro`, `gemini-3.1-pro-preview`, and `claude-opus-5` unavailable because inference quota or credit is exhausted. The validator does not accept the tournament policy’s configured availability flag as a substitute for the failed live receipt.
+
+## Verification commands and results
+
+- `jq empty .../lh-commerce-1-native-scene-regeneration-plan-v1.json`
+  - Passed; the contract is valid JSON.
+
+- `.venv/bin/ruff format <validator> <tests>`
+  - Reformatted both Python files.
+
+- `.venv/bin/ruff check <validator> <tests>`
+  - `All checks passed!`
+
+- `.venv/bin/python -m py_compile <validator> <tests>`
+  - Passed.
+
+- Initial `python3 -m pytest ...`
+  - Did not reach test collection. System Python 3.14 encountered the repository’s stale warning-filter reference to `starlette.exceptions.StarletteDeprecationWarning`, which is absent from the installed Starlette version.
+  - No repository configuration or dependency was changed to conceal that issue.
+
+- `.venv/bin/python -m pytest -o 'filterwarnings=ignore::DeprecationWarning' -p no:cacheprovider -q wordpress-theme/skyyrose-flagship-2/tests/test_native_scene_regeneration_preflight.py`
+  - Passed: 11 tests.
+
+- `.venv/bin/python wordpress-theme/skyyrose-flagship-2/scripts/validate-native-scene-regeneration-preflight.py --write-receipt`
+  - Passed:
+    `PASS_PROMPT_PACKAGE_READY_FOR_OPUS_REVIEW contract_sha256=9cc182f9c353443c800bee6a3e6971ac1b8e54309ae73a20763b27ec3aef10dd sources=16 generation_permitted=false`
+
+- `.venv/bin/python wordpress-theme/skyyrose-flagship-2/scripts/validate-native-scene-regeneration-preflight.py --generation-gate`
+  - Expected fail-closed result: exit `1`.
+  - Reported all generation blockers listed above.
+
+- Post-work SHA-256 verification:
+  - Cathedral plate: `2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2`
+  - Protected model layer: `66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158`
+  - `lh-004` physical reference: `7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256`
+  - `lh-002` physical reference: `4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f`
+  - `lh-006` physical reference: `9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe`
+  - Canonical thigh mark: `4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0`
+
+  These match their pre-work and contract-bound values.
+
+## Deviations from the Opus revised plan
+
+All deviations are deliberate consequences of the current authorization boundary or the verbatim Round 2 challenge:
+
+- The Opus plan’s complete Steps 0–16 were not executed. The current request authorized only the durable prompt-planning contract, fail-closed pre-generation validator, focused tests, and validation receipt.
+- The Step 1A raster-estimator path was not implemented and cannot grant `VALIDATED_COMPATIBLE`. The Round 2 challenger explicitly superseded that part of the revised plan: raster-only analysis may reject or report no observed contradiction, but cannot authorize protected-pixel relighting.
+- The plan no longer leaves Branch A/B/C open. The current user request chooses Branch A, native-scene regeneration planning.
+- No illumination estimator, renderer benchmark, calibration intake system, plate geometry solver, matte refinement, compositor, protected relighter, interaction-plate builder, seam pass, visual QA engine, contact-sheet renderer, approval writer, rollout guard, or runtime integration was built.
+- Responsive safe zones are encoded as required provisional planning rectangles, but no rendered breakpoint capture or crop inversion was performed. Generation remains blocked until that mechanical measurement exists.
+- The contract was placed in the named `preflight-v1/vision-authored-prompts` package instead of introducing the broader `assets/scroll-world/scene-contracts` architecture from the full Opus plan.
+- The existing `build-natural-scene-integration.py`, `scene-narrative-blueprints.json`, `template-collection.php`, `theme.css`, and translation files were not changed.
+- The patched model receipt’s machine state remains `FOUNDER_REVIEW_REQUIRED`. The package records the current user’s designation of the hash as the selected approved reference but does not fabricate a missing machine approval record.
+- No generation model was invoked, so no batch manifest, candidate image, fidelity score, judge verdict, synthesis verdict, founder approval, or visual-correctness evidence exists.
+
+## Opus-review readiness
+
+Yes—the prompt-planning package is ready for Opus review.
+
+It is not ready for generation. Opus should review the contract structure, the exact Branch A prompt semantics, the Round 2 zero-gain invariant, per-region fidelity coverage, provisional safe-zone policy, and the enumerated generation blockers. A later, separately authorized package would need measured safe zones, tracked and current inputs, live mandatory judges, machine approval evidence, a new pass-ready-to-generate receipt, and fresh founder generation authorization.
+
+Prior workspace memory was used only to preserve established V2, product-first, candidate-state, and enchanted-rose focal conventions; every current source hash and operational blocker reported above was re-verified in this turn.

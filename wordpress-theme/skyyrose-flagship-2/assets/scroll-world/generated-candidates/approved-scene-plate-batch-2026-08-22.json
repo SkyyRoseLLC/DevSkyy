@@ -1,0 +1,119 @@
+{
+  "schema": "skyyrose.v2.approved-scene-plate-batch.v1",
+  "generated_at": "2026-08-22",
+  "generator": "gpt-image-2 via Codex imagegen",
+  "production_contract": "data/scene-production-contract.json",
+  "stage": "environment_plate_candidate",
+  "wire_status": "unwired",
+  "founder_approval_status": "scene_concepts_approved_product_composites_not_approved",
+  "review_contact_sheet": {
+    "file": "approved-scene-plate-contact-sheet-2026-08-22.jpg",
+    "sha256": "3bd93c652bd90989a97c32fa9ba869fc9dea5f91828fe27b7eb16fcb1c851a66",
+    "dimensions": "792x1588"
+  },
+  "product_pixel_policy": "No garment was generated into these plates. Verified product foregrounds must be composited later and pass the fail-closed fidelity gate.",
+  "collection_rules": {
+    "love-hurts": "The enchanted rose and the protected product must both remain sharply legible. No environmental pseudo-text.",
+    "black-rose": "Open-Air is excluded from this rotation and remains exclusive to br-006 because the approved source video displays the Black Rose Sherpa Bomber.",
+    "kids-capsule": "Rose-gold heir language with distinct playroom, runway, and salon compositions.",
+    "signature": "Oakland atelier, across-water, and Golden Gate salon compositions must remain visibly distinct."
+  },
+  "plates": [
+    {
+      "collection": "black-rose",
+      "scene_id": "BR-1",
+      "chapter": "Forbidden Garden Threshold",
+      "file": "black-rose/approved-concepts/br-1-forbidden-garden-threshold-plate-v2.png",
+      "sha256": "760fb192d2b014927528ae4df461105cbd2119f9147923001d27237a245b2d15",
+      "dimensions": "1024x1536"
+    },
+    {
+      "collection": "black-rose",
+      "scene_id": "BR-2",
+      "chapter": "Midnight Type Foundry",
+      "file": "black-rose/approved-concepts/br-2-midnight-type-foundry-plate-v2.png",
+      "sha256": "e4fb28718a72ffce7a4e41f889c1ea12c2152d8f358547e16e4059607610cffc",
+      "dimensions": "1024x1536"
+    },
+    {
+      "collection": "black-rose",
+      "scene_id": "BR-3",
+      "chapter": "Silver Moon Court",
+      "file": "black-rose/approved-concepts/br-3-silver-moon-court-plate-v2.png",
+      "sha256": "c3eb937644148e0ae87c3d8b9f4421c169d8789864092aa502f3ef573d852a51",
+      "dimensions": "1086x1448"
+    },
+    {
+      "collection": "kids-capsule",
+      "scene_id": "KID-1",
+      "chapter": "After-Dark Playroom",
+      "file": "kids-capsule/approved-concepts/kid-1-after-dark-playroom-plate-v2.png",
+      "sha256": "7af5eef433edb364b0a9e9c09ae467c3dce954ff0e04d6532b98b438a0177a25",
+      "dimensions": "1122x1402"
+    },
+    {
+      "collection": "kids-capsule",
+      "scene_id": "KID-2",
+      "chapter": "First Runway",
+      "file": "kids-capsule/approved-concepts/kid-2-first-runway-plate-v2.png",
+      "sha256": "96080a99cd9c19710248f6bd8c649d876973fc92d59a2bc4222a355ce641fad5",
+      "dimensions": "1122x1402"
+    },
+    {
+      "collection": "kids-capsule",
+      "scene_id": "KID-3",
+      "chapter": "Heir's Salon",
+      "file": "kids-capsule/approved-concepts/kid-3-heirs-salon-plate-v2.png",
+      "sha256": "bc5d8dab39111d4d16418c61445a9aba4e60f5f4613de01378244268dd4b0011",
+      "dimensions": "1122x1402"
+    },
+    {
+      "collection": "love-hurts",
+      "scene_id": "LH-1",
+      "chapter": "Cathedral of the Living Rose",
+      "file": "love-hurts/approved-concepts/lh-1-cathedral-living-rose-plate-v2.png",
+      "sha256": "705b0ae75248b21f9bd55afb73fdfb0955f1bd90cd4c1e02052d414adb294c83",
+      "dimensions": "1024x1535"
+    },
+    {
+      "collection": "love-hurts",
+      "scene_id": "LH-2",
+      "chapter": "Chamber Where Time Stopped",
+      "file": "love-hurts/approved-concepts/lh-2-chamber-time-stopped-plate-v2.png",
+      "sha256": "34b94eca8a7af4ff94af8eab10744b0d5dbd3bb24d5e4f8e0b7e5c80dd549df5",
+      "dimensions": "1024x1536"
+    },
+    {
+      "collection": "love-hurts",
+      "scene_id": "LH-3",
+      "chapter": "Protected Wound",
+      "file": "love-hurts/approved-concepts/lh-3-protected-wound-plate-v2.png",
+      "sha256": "2b7e5168016689acdfa687501760ef1528af422b4365743ffce0db889fcccbc2",
+      "dimensions": "1024x1536"
+    },
+    {
+      "collection": "signature",
+      "scene_id": "SIG-1",
+      "chapter": "The First Atelier",
+      "file": "signature/approved-concepts/sig-1-first-atelier-plate-v2.png",
+      "sha256": "3d9e639cb0000dc3ad0f5536a7cc2134a64cde560e4dd6c0dff9062a73d07924",
+      "dimensions": "1024x1536"
+    },
+    {
+      "collection": "signature",
+      "scene_id": "SIG-2",
+      "chapter": "Across Water",
+      "file": "signature/approved-concepts/sig-2-across-water-plate-v2.png",
+      "sha256": "025adaf28b86f5b46b62e090c70577662a62d5fa30e204473c829e3b45024331",
+      "dimensions": "1024x1536"
+    },
+    {
+      "collection": "signature",
+      "scene_id": "SIG-3",
+      "chapter": "Golden Gate Salon",
+      "file": "signature/approved-concepts/sig-3-golden-gate-salon-plate-v2.png",
+      "sha256": "ef67b921f799486a7eeb27d4f6242894add90b9e6ccc2cb9595abf98eda32023",
+      "dimensions": "1024x1536"
+    }
+  ]
+}

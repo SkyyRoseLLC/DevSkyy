@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Black Rose Sherpa / Hero Origin Film Monument</title>
+	<style>
+		:root {
+			color-scheme: dark;
+			font-family: Arial, sans-serif;
+			background: #050505;
+			color: #f5f5f0;
+		}
+
+		* { box-sizing: border-box; }
+
+		body {
+			display: grid;
+			min-height: 100svh;
+			margin: 0;
+			place-items: center;
+			background: #050505;
+		}
+
+		.scene {
+			position: relative;
+			width: min(100vw, 1536px);
+			aspect-ratio: 3 / 2;
+			overflow: hidden;
+			isolation: isolate;
+			background: #020303;
+		}
+
+		.scene__world {
+			position: absolute;
+			inset: 0;
+			z-index: -3;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.scene__motion-plate {
+			position: absolute;
+			inset: 0;
+			z-index: -2;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			opacity: 0;
+			transition: opacity 800ms cubic-bezier(0.25, 1, 0.5, 1);
+		}
+
+		.scene.has-motion-plate .scene__motion-plate { opacity: 1; }
+		.scene.has-motion-plate :is(.scene__clouds, .scene__bridge-light, .scene__water-light, .scene__sparks, .scene__petals) { opacity: 0; }
+
+		.scene__clouds,
+		.scene__bridge-light,
+		.scene__water-light,
+		.scene__sparks,
+		.scene__petals {
+			position: absolute;
+			inset: 0;
+			pointer-events: none;
+			transition: opacity 500ms cubic-bezier(0.25, 1, 0.5, 1);
+		}
+
+		.scene__clouds {
+			z-index: -2;
+			background: url("br-006-hero-origin-film-monument-v1.webp") center / cover no-repeat;
+			filter: contrast(1.08) brightness(0.72);
+			mask-image: linear-gradient(#000 0 42%, transparent 66%);
+			opacity: 0.24;
+			transform: scale(1.035) translate3d(-0.8%, 0, 0);
+			animation: storm-drift 18s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+			will-change: transform, opacity;
+		}
+
+		.scene__bridge-light {
+			z-index: -1;
+			background:
+				linear-gradient(102deg, transparent 9%, rgba(234, 226, 202, 0.02) 31%, rgba(247, 237, 211, 0.42) 46%, rgba(234, 226, 202, 0.02) 59%, transparent 79%);
+			filter: blur(3px);
+			mask-image: linear-gradient(transparent 31%, #000 43% 61%, transparent 69%);
+			opacity: 0;
+			transform: translate3d(-38%, 0, 0);
+			animation: bridge-travel 9s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+			will-change: transform, opacity;
+		}
+
+		.scene__water-light {
+			z-index: -1;
+			background:
+				repeating-linear-gradient(96deg, transparent 0 6%, rgba(218, 226, 228, 0.08) 6.4% 7%, transparent 7.4% 13%);
+			filter: blur(5px);
+			mask-image: linear-gradient(transparent 51%, #000 69% 100%);
+			mix-blend-mode: screen;
+			opacity: 0.28;
+			transform: translate3d(-1%, 0, 0) scaleX(1.03);
+			animation: water-breathe 6.5s cubic-bezier(0.25, 1, 0.5, 1) infinite alternate;
+			will-change: transform, opacity;
+		}
+
+		.scene__sparks,
+		.scene__petals {
+			z-index: 2;
+			overflow: hidden;
+		}
+
+		.scene__sparks span,
+		.scene__petals span {
+			position: absolute;
+			display: block;
+			animation-play-state: inherit;
+			will-change: transform, opacity;
+		}
+
+		.scene__sparks span {
+			width: clamp(2px, 0.18vw, 4px);
+			aspect-ratio: 1;
+			border-radius: 50%;
+			background: #f1c27a;
+			box-shadow: 0 0 8px #f5a84b, 0 0 16px rgba(238, 153, 57, 0.72);
+			opacity: 0;
+			animation: spark-rise 3.4s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+		}
+
+		.scene__sparks span:nth-child(1) { left: 82%; top: 69%; animation-delay: 0.4s; }
+		.scene__sparks span:nth-child(2) { left: 88%; top: 61%; animation-delay: 1.35s; animation-duration: 4.1s; }
+		.scene__sparks span:nth-child(3) { left: 79%; top: 15%; animation-delay: 2.1s; animation-duration: 3.8s; }
+		.scene__sparks span:nth-child(4) { left: 59%; top: 44%; animation-delay: 2.75s; animation-duration: 4.4s; }
+
+		.scene__petals span {
+			bottom: 6%;
+			width: clamp(7px, 0.85vw, 15px);
+			aspect-ratio: 1.6;
+			border-radius: 70% 20% 70% 20%;
+			background: rgba(8, 9, 9, 0.88);
+			box-shadow: inset 1px 0 rgba(218, 225, 226, 0.2);
+			opacity: 0;
+			animation: petal-skitter 11s linear infinite;
+		}
+
+		.scene__petals span:nth-child(1) { left: 47%; animation-delay: 0.5s; }
+		.scene__petals span:nth-child(2) { left: 66%; animation-delay: 4.1s; animation-duration: 13s; }
+		.scene__petals span:nth-child(3) { left: 77%; animation-delay: 7.4s; animation-duration: 12s; }
+
+		.scene.is-motion-paused :is(.scene__clouds, .scene__bridge-light, .scene__water-light, .scene__sparks span, .scene__petals span) {
+			animation-play-state: paused;
+		}
+
+		@keyframes storm-drift {
+			0% { opacity: 0.18; transform: scale(1.035) translate3d(-0.8%, 0, 0); }
+			100% { opacity: 0.32; transform: scale(1.055) translate3d(0.8%, -0.35%, 0); }
+		}
+
+		@keyframes bridge-travel {
+			0%, 12% { opacity: 0; transform: translate3d(-38%, 0, 0); }
+			32%, 68% { opacity: 0.5; }
+			88%, 100% { opacity: 0; transform: translate3d(38%, 0, 0); }
+		}
+
+		@keyframes water-breathe {
+			0% { opacity: 0.18; transform: translate3d(-1%, 0, 0) scaleX(1.03); }
+			100% { opacity: 0.34; transform: translate3d(1%, 0.25%, 0) scaleX(0.985); }
+		}
+
+		@keyframes spark-rise {
+			0%, 76%, 100% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.45); }
+			80% { opacity: 0.92; }
+			96% { opacity: 0; transform: translate3d(22px, -42px, 0) scale(1); }
+		}
+
+		@keyframes petal-skitter {
+			0%, 12% { opacity: 0; transform: translate3d(-9vw, 0, 0) rotate(0); }
+			18% { opacity: 0.62; }
+			88% { opacity: 0.42; }
+			100% { opacity: 0; transform: translate3d(24vw, -2.5vh, 0) rotate(440deg); }
+		}
+
+		.scene__veil {
+			position: absolute;
+			inset: 0;
+			z-index: -1;
+			pointer-events: none;
+			background:
+				linear-gradient(90deg, rgba(0, 0, 0, 0.25), transparent 42%),
+				linear-gradient(0deg, rgba(0, 0, 0, 0.78), transparent 38%);
+		}
+
+		.portal {
+			position: absolute;
+			top: 10.5%;
+			left: 60.25%;
+			width: 18.45%;
+			height: 56.25%;
+			filter: drop-shadow(0 0 18px rgba(215, 225, 230, 0.24));
+		}
+
+		.portal::after {
+			position: absolute;
+			inset: -1%;
+			border: 1px solid rgba(235, 240, 242, 0.2);
+			clip-path: polygon(5% 0, 95% 0, 100% 4%, 100% 96%, 95% 100%, 5% 100%, 0 96%, 0 4%);
+			box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.08);
+			content: "";
+			pointer-events: none;
+		}
+
+		.portal__video,
+		.portal__back {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center 30%;
+			clip-path: polygon(5% 0, 95% 0, 100% 4%, 100% 96%, 95% 100%, 5% 100%, 0 96%, 0 4%);
+			filter: grayscale(1) contrast(1.16) brightness(0.86);
+			transition: opacity 700ms ease, filter 700ms ease;
+		}
+
+		.portal__video {
+			mix-blend-mode: screen;
+			opacity: 0.88;
+		}
+
+		.portal__back {
+			opacity: 0;
+		}
+
+		.scene.is-back-view .portal__video { opacity: 0.12; }
+		.scene.is-back-view .portal__back { opacity: 0.94; }
+
+		.scene__copy {
+			position: absolute;
+			left: clamp(1rem, 4vw, 4rem);
+			bottom: clamp(1rem, 4vw, 3.5rem);
+			max-width: 32rem;
+			text-shadow: 0 2px 16px #000;
+		}
+
+		.scene__copy small,
+		.scene__copy button {
+			font-size: clamp(0.62rem, 0.8vw, 0.78rem);
+			font-weight: 700;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+		}
+
+		.scene__copy h1 {
+			max-width: 8ch;
+			margin: 0.45rem 0;
+			font-family: Georgia, serif;
+			font-size: clamp(2.2rem, 5vw, 5.6rem);
+			font-weight: 400;
+			line-height: 0.88;
+		}
+
+		.scene__copy p {
+			max-width: 38ch;
+			margin: 0 0 1rem;
+			color: #c8cbca;
+			font-size: clamp(0.86rem, 1vw, 1rem);
+			line-height: 1.5;
+		}
+
+		.scene__actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.6rem;
+		}
+
+		.scene__copy button {
+			min-height: 44px;
+			padding: 0.7rem 0.9rem;
+			border: 1px solid rgba(224, 231, 232, 0.45);
+			background: rgba(0, 0, 0, 0.58);
+			color: inherit;
+			cursor: pointer;
+		}
+
+		.scene__copy button:hover,
+		.scene__copy button:focus-visible {
+			border-color: #f5f5f0;
+			background: rgba(245, 245, 240, 0.12);
+			outline: none;
+		}
+
+		@media (max-width: 760px) {
+			body { align-items: start; }
+			.scene {
+				width: 100%;
+				min-height: 100svh;
+				aspect-ratio: auto;
+			}
+				.scene__world { object-position: 65% center; }
+				.portal {
+					top: 14%;
+				left: 48%;
+				width: 44%;
+				height: 55%;
+			}
+			.scene__copy { right: 1rem; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.scene__motion-plate,
+			.scene__clouds,
+			.scene__bridge-light,
+			.scene__water-light,
+			.scene__sparks,
+			.scene__petals { display: none; }
+			.portal__video { display: none; }
+			.portal__back { opacity: 0.94; }
+		}
+	</style>
+</head>
+<body>
+		<main class="scene" data-memory-scene>
+			<img class="scene__world" src="br-006-hero-origin-film-monument-v1.webp" alt="">
+			<video class="scene__motion-plate" autoplay loop muted playsinline preload="metadata" poster="br-006-hero-origin-film-monument-v1.webp" data-motion-plate aria-hidden="true">
+				<source src="../../video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.webm" type="video/webm">
+				<source src="../../video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.mp4" type="video/mp4">
+			</video>
+			<div class="scene__clouds" aria-hidden="true"></div>
+			<div class="scene__bridge-light" aria-hidden="true"></div>
+			<div class="scene__water-light" aria-hidden="true"></div>
+			<div class="scene__sparks" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+			<div class="scene__petals" aria-hidden="true"><span></span><span></span><span></span></div>
+			<div class="portal" aria-label="Founder footage of the Black Rose Bomber Sherpa">
+				<video class="portal__video" autoplay loop muted playsinline preload="metadata" poster="../../video/black-rose/br-006/poster/br-006-hero-origin-poster.jpg" data-memory-video>
+					<source src="../../video/black-rose/br-006/web/br-006-hero-origin-loop.webm" type="video/webm">
+					<source src="../../video/black-rose/br-006/web/br-006-hero-origin-loop.mp4" type="video/mp4">
+			</video>
+			<img class="portal__back" src="br-006-sherpa-back-on-model-v1.webp" alt="Rear on-model view of the Black Rose Bomber Sherpa with the large embroidered rose centered on the back">
+		</div>
+		<div class="scene__veil" aria-hidden="true"></div>
+		<section class="scene__copy" aria-labelledby="scene-title">
+			<small>Black Rose / The Making of a Monument</small>
+			<h1 id="scene-title">The rose remembers.</h1>
+			<p>The real garment holds the first memory. Bridge light, rose steel, and unfinished star points rise around it.</p>
+			<div class="scene__actions">
+				<button type="button" data-view-toggle aria-pressed="false">Reveal back embroidery</button>
+					<button type="button" data-motion-toggle aria-pressed="false">Pause scene</button>
+			</div>
+		</section>
+	</main>
+	<script>
+		(() => {
+			const scene = document.querySelector('[data-memory-scene]');
+			const video = scene.querySelector('[data-memory-video]');
+			const motionPlate = scene.querySelector('[data-motion-plate]');
+			const viewToggle = scene.querySelector('[data-view-toggle]');
+			const motionToggle = scene.querySelector('[data-motion-toggle]');
+			const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+			const setMotion = (paused) => {
+				scene.classList.toggle('is-motion-paused', paused);
+				if (paused) {
+					video.pause();
+					motionPlate.pause();
+				} else {
+					video.play().catch(() => {});
+					motionPlate.play().catch(() => {});
+				}
+				motionToggle.setAttribute('aria-pressed', String(paused));
+				motionToggle.textContent = paused ? 'Play scene' : 'Pause scene';
+			};
+
+			viewToggle.addEventListener('click', () => {
+				const backView = scene.classList.toggle('is-back-view');
+				viewToggle.setAttribute('aria-pressed', String(backView));
+				viewToggle.textContent = backView ? 'Return to founder film' : 'Reveal back embroidery';
+			});
+
+			motionToggle.addEventListener('click', () => setMotion(!video.paused));
+			motionPlate.addEventListener('canplay', () => scene.classList.add('has-motion-plate'), { once: true });
+			document.addEventListener('visibilitychange', () => {
+				if (document.hidden) {
+					video.pause();
+					motionPlate.pause();
+				} else if ('false' === motionToggle.getAttribute('aria-pressed') && !reducedMotion.matches) {
+					video.play().catch(() => {});
+					motionPlate.play().catch(() => {});
+				}
+			});
+
+			if (reducedMotion.matches) setMotion(true);
+		})();
+	</script>
+</body>
+</html>

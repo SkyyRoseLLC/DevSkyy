@@ -1,0 +1,28 @@
+{
+  "schema": "skyyrose.limited-pro-adversarial-review.v1",
+  "candidate": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+  "candidate_sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+  "review_mode": "independent repository visual red-team; external API tournament unavailable because all three provider accounts are quota or credit blocked",
+  "founder_edit_scope": "Patch only the two drifted thigh logos; do not broaden the edit",
+  "verdict": "partially-improved",
+  "recommend_ship": false,
+  "approval_boundary": "FOUNDER_REVIEW_REQUIRED",
+  "passes": [
+    "Candidate is a genuine RGBA PNG with true alpha transparency.",
+    "Source, canonical logo, output, and diff hashes match the surgical receipt.",
+    "All 6576 changed pixels are confined to the two declared thigh regions.",
+    "Both bombers read as glossy satin with white bodies, black hoods and sleeves, white sleeve stripes, black pocket welts, snaps, and black-red-white ribbing.",
+    "Male black joggers retain white drawstrings; female white joggers retain black drawstrings.",
+    "Both wearer-left thigh marks now contain the canonical broken heart base, thorn wrap, roses, green leaves, and splatter.",
+    "Model anatomy and full-body silhouettes remain coherent."
+  ],
+  "disclosed_preexisting_flags": [
+    "The physical jogger flatlays show contrast construction on inner-leg and crotch areas; the generated candidate retains only outer contrast stripes.",
+    "The bomber chest lettering color and fine flourish treatment are visually similar but not an exact replica of the physical proof.",
+    "The physical bomber hood drawcord is not visible on either model; rose-print lining is visible only on the female model.",
+    "The patched canonical logos read somewhat larger and harder-edged than the small integrated embroidery in the flatlays."
+  ],
+  "automatic_v2_wiring_permitted": false,
+  "deployment_authorized": false,
+  "next_decision": "Founder accepts or rejects this exact logo-only patched candidate."
+}

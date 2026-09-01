@@ -1,0 +1,37 @@
+{
+  "schema": "skyyrose.protected-scene-composite.v1",
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_only": true,
+  "founder_approval_required": true,
+  "v2_wired": false,
+  "deployment_authorized": false,
+  "plate": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v3/sig-commerce-2-stage-1-protected-candidate-v1.png",
+    "sha256": "7d7279a4fb0dc518021931ba5f3610eda19a9f925b6f6c44dab97847b7036569",
+    "dimensions": [
+      1672,
+      941
+    ]
+  },
+  "protected_model": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-female-hoodie-generated-protected-v1.png",
+    "sha256": "7e6a0c73f442859891f7b612de2e872dcaa4ec1b8f14ece290541f839a549740",
+    "placement": [
+      1030,
+      94,
+      439,
+      780
+    ],
+    "fully_opaque_rgb_exact": true
+  },
+  "overlays": [],
+  "floor_interaction": {
+    "floor_y": 874,
+    "shadow": "alpha_derived",
+    "reflection": "alpha_derived"
+  },
+  "output": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v3/sig-commerce-2-no-frames-protected-candidate-v1.png",
+    "sha256": "c71e8d509e40f132ec8b25c7c752ab59fea5d96af4c58f858f8ff850edb5e80c"
+  }
+}

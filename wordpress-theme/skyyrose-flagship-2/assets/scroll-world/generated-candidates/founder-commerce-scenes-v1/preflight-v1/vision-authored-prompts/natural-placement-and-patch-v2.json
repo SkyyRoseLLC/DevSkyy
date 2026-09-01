@@ -1,0 +1,168 @@
+{
+  "schema": "skyyrose.natural-placement-and-patch.v2",
+  "engine": "built-in-imagegen",
+  "canonical_product_engine": "openai/gpt-image-2",
+  "mode": "edit-with-references",
+  "authorization": "Use these scenes and models. First naturally place these models in the scene. Some products need patch work too.",
+  "approval_state": "CANDIDATE_ONLY_FOUNDER_REVIEW_REQUIRED",
+  "wiring_allowed": false,
+  "deployment_allowed": false,
+  "workflow": [
+    "natural_placement",
+    "visual_fidelity_review",
+    "localized_patch_only_where_required",
+    "gpt_and_founder_review"
+  ],
+  "jobs": {
+    "br-commerce-1": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-1-native-preview-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-1-font-type-foundry-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-001-joint-look-protected-candidate-v1.png",
+        "assets/products/source-photos/black-rose/br-001-crewneck-front-authentic.png",
+        "assets/products/source-photos/black-rose/br-002-joggers-front-authentic.png"
+      ],
+      "reference_sha256": [
+        "553ca793f721c696d9a90d596cf2b73b5a2ab907b59deb869fce1570cb3d5a1e",
+        "f0667422fb3d5c766ba490a89fe1e65005867796dd645331d245765541912112",
+        "66ff16cd7bd28112cbdf0e7e4b01213da1b2ffa6dd6af350579a3b0fb45374d6",
+        "c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2",
+        "f7596bbcee6a189aac561b60261bb313ff063cc62722a8f13fe721f0ac7a9928"
+      ],
+      "prompt": "Use case: compositing. Asset type: V2 Black Rose Scroll World commerce scene. Image 1 is the edit target and composition guide. Image 2 is the locked scene authority: preserve the Black Rose wall monument, lettering, rose, Bay Bridge, moon, architecture, camera, and every background pixel outside the model integration area. Image 3 is the model identity, body, pose, proportions, and clothing-fit authority. Images 4 and 5 are the physical product authorities. Replace only the model in Image 1 with the exact model identity and full-body look from Image 3, naturally photographed in Image 2. Preserve the black crewneck's white collar, cuffs and hem and exact large raised embossed black-white-grey rose-and-cloud chest relief from Image 4. Preserve the black joggers' white waistband, black drawstring, white ankle cuffs and small molded silicone rose-and-cloud applique on wearer-left thigh from Image 5. Match moonlight direction, wet-floor reflection, contact shadow, ambient occlusion at the shoes, atmospheric grain, lens depth and edge softness so the person is part of the original exposure. Keep the model on the right and the full monument readable on the left. Constraints: change only the model and its immediate light/shadow/reflection envelope; no scene redesign; no embroidered or printed replacement for the embossed relief; no colored rose; no generic thigh logo; no extra text; no watermark. Founder-review candidate only.",
+      "patch_after_placement": [
+        "crewneck embossed relief",
+        "jogger silicone thigh applique"
+      ]
+    },
+    "br-commerce-2": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-native-preview-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-waterfront-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-2-hoodie-shorts-generated-source-v2.png",
+        "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/br-007-front-side-back-proof-v2.png"
+      ],
+      "reference_sha256": [
+        "1ced81f2f3ba9caad1ede84405224ec09c4a4fae58c0f581f69324a2e49f4925",
+        "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a",
+        "218d0ffaf345d206e8d21a8f1eceab1b5a606b7869eb41ca108b2da63cb0a78c",
+        "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+        "559351875e1b60c99ee9822c0d004bf17a6196cb9f02afcb833214b4f29bdd70"
+      ],
+      "prompt": "Use case: compositing. Asset type: V2 Black Rose Scroll World commerce scene. Image 1 is the edit target and layout guide. Image 2 is the locked Oakland waterfront scene authority; preserve the bridge, moon, clouds, shoreline, architecture, camera and open CTA space. Image 3 is the full-body model identity, body, pose and fit authority. Image 4 is the physical BR-005 hoodie authority. Image 5 is a three-view physical BR-007 shorts proof board. Replace only the model in Image 1 with the exact model identity and full-body proportions from Image 3, naturally photographed in Image 2. Hoodie: black pullover, white drawstrings, grey rose-print hood lining, kangaroo pocket, small raised tonal silicone cut-out on wearer-right chest, both sleeves plain black, and large embroidered rose-and-cloud artwork vertically on the wearer-left side-body below the armhole—never on sleeve or forearm. Shorts: black mesh with tonal rose repeat, white waistband and drawstring, complete separate OAKLAND block tackle-twill and Love Hurts script, narrow white mesh side insert, black-white binding, zipper pockets, exact multicolor side rose with green stems and blue cloud, and correct rear-side artwork. Match moon/bridge light, wet-floor contact shadow and reflection, haze, scale, shared grain and edge softness. Constraints: change only model and immediate integration envelope; preserve all background geometry; no arm artwork; no broad white polygon; no merged or truncated lettering; no generic rose; no watermark. Founder-review candidate only.",
+      "patch_after_placement": [
+        "hoodie chest silicone cut-out",
+        "hoodie side-body embroidery placement",
+        "shorts lettering and narrow side insert"
+      ]
+    },
+    "lh-commerce-2": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-native-preview-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-shorts-chamber-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-003-onmodel-logo-pass-protected-v1.png",
+        "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+        "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg"
+      ],
+      "reference_sha256": [
+        "c1359ebb38cd9b72416e40d49bc211253ba574629c910244e59e809f735f116f",
+        "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+        "46e6f64c79b8ebf393bfad34294997dd3cb8ef4338f11ea92fa7b4ce9a9222da",
+        "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+        "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: V2 Love Hurts Scroll World commerce scene. Image 1 is the rejected edit target and composition reference only. Image 2 is the locked fractured cathedral and enchanted-rose scene authority. Image 3 is the exact full-body model identity, pose, body, styling and product-scale authority. Images 4 and 5 are the physical LH-003 shorts front/back authorities. Replace the cropped model in Image 1 with the complete head-to-shoes model from Image 3, positioned left of the enchanted rose with no body crop. Preserve the model's face, hair, body, pose and plain black top. Preserve the exact white mesh shorts, repeated red rose-over-blue/white-cloud sublimation, black waistband, red-black-white binding, black mesh side panels, zipper pockets, complete red Love Hurts lettering and small stitched marks. Keep front and wearer-left side readable. Integrate with real cathedral red bounce, top light, floor contact, shadow/reflection, haze, shared grain and lens depth. Keep the enchanted rose sharply visible. Constraints: change only model and immediate integration envelope; do not alter cathedral, vitrine or rose; no invented shirt logo; no generic floral repeat; no cropped head or feet; no watermark. Founder-review candidate only.",
+      "patch_after_placement": [
+        "complete Love Hurts lettering",
+        "rose-and-cloud sublimation repeat",
+        "side panel and binding"
+      ]
+    },
+    "lh-commerce-3": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-native-preview-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-fannie-vitrine-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-005-onmodel-logo-pass-protected-v1.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-onmodel.webp"
+      ],
+      "reference_sha256": [
+        "f9e64d4fbd5c886b22d6c68aa10eb4c9441349fdb65967baf8b33fd9dd71e2f1",
+        "8179bf5a0b7fc83427844e4d4d06a684ea8ee055a9ce59423ccc5923ab40c73b",
+        "18be7a61147ccdef88eaf8fe1fc0c701924c29c8e2bc8bbd453a8291f109934f",
+        "8cae4c6b10bfe9bcd4ba60b4a5529769064ef9b5d558527bb71126a115697f18",
+        "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c"
+      ],
+      "prompt": "Use case: identity-preserve. Asset type: V2 Love Hurts Scroll World commerce scene. Image 1 is the edit target and placement guide. Image 2 is the locked black cathedral vitrine scene authority. Image 3 is the exact model identity, body, pose, plain black outfit and corrected cross-body bag placement authority. Images 4 and 5 are physical LH-005 Fannie construction authorities. Replace only the model in Image 1 with the exact model identity and proportions from Image 3 and integrate her naturally into Image 2. Preserve the compact black pebbled bag, curved top seam, full-width front zipper and black pull, black webbing strap, matte buckle, and exact white embroidered word FANNIE—F-A-N-N-I-E—with the small red-and-green rose cluster above the final letters. Keep both the bag and enchanted rose in sharp focus. Match red key light, vitrine reflections, floor contact, shadow, edge softness, haze and shared grain. Constraints: change only model and immediate integration envelope; preserve architecture, vitrine, glass, rose and fissures; do not change spelling; no generic logo; no bright hardware; no watermark. Founder-review candidate only.",
+      "patch_after_placement": [
+        "FANNIE embroidery and rose cluster"
+      ]
+    },
+    "sig-commerce-1": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-native-preview-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-oakland-atelier-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-009-onmodel-front-protected-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-007-onmodel-protected-candidate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-009-sg-007-detail-proof-v2.png"
+      ],
+      "reference_sha256": [
+        "88918849e157749ecfcb5731b51dfd3c83c494bf6f946e917568726ec5473b65",
+        "ec4767d6d38e76482f6d184a2d76a266a3e695a881d2ce1d155fa80f1106b209",
+        "4626dade5bf9a3825b5d4a65afac8df214e7f7aae2773248871a45337a9d9a45",
+        "45c6bca620ca0a6793e093eeb1d9e0373d4992f0447cf975863e1194da13fcbb",
+        "af47c17849e7b33354c82f7fc2da0ba16a9424a0e53e51538e1af97408b199ad"
+      ],
+      "prompt": "Use case: compositing. Asset type: V2 Signature Scroll World commerce scene. Image 1 is the edit target and placement guide. Image 2 is the locked Oakland atelier authority; preserve the exact gold SkyyRose wall sculpture, lettering, rose, wall alignment, Bay skyline, worktable, architecture and lighting. Image 3 is the exact Sherpa model identity, body, pose, fit and jacket authority. Image 4 is the beanie-on-model fit authority. Image 5 is the physical Sherpa and beanie detail proof. Replace only the model in Image 1 with the exact identity and full-body Sherpa look from Image 3, adding the exact black rib-knit cuff beanie from Images 4 and 5. Jacket: smooth black exterior, thick cream-white fleece lining, tall turned-back funnel collar, gold zipper, small red/green/blue-white rose-cloud chest embroidery and tiny hem tab. Beanie: one small rectangular molded silicone patch on wearer-right front cuff with exact grey-and-white rose-over-cloud art—never a generic white label or colored embroidery. Match warm atelier rim, cool city fill, floor contact, shadow/reflection, shared grain, edge softness and depth. Constraints: change only model and immediate integration envelope; preserve wall sculpture and background; no extra jacket marks; no generic beanie label; no watermark. Founder-review candidate only.",
+      "patch_after_placement": [
+        "beanie molded silicone patch",
+        "Sherpa chest embroidery and hem tab"
+      ]
+    },
+    "sig-commerce-2": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-native-preview-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-fog-over-bay-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-013-onmodel-front-protected-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-006-onmodel-protected-candidate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-013-sg-014-sg-006-detail-proof-v2.png"
+      ],
+      "reference_sha256": [
+        "34b51269a2f8e357becd9050c76863a00695fdcb1b6a7eb863f4293b8ad1ac32",
+        "0dc11e853d4be2bb927d9a3c40997087635b32c0c17ff84b2694dd3862234aa3",
+        "876323d4e9bea50c16bb03a22b3b38ca2cfdfcad2c2a466f70d9181f6fab05dd",
+        "23d8708e0542d181f38bcd3cb6b5804731d1204a9defd74e492e9c8613f880ee",
+        "0cbf21c27ca3553bfcc2114d44fb567e58799d88f26a2a4c76bf62546b88231c"
+      ],
+      "prompt": "Use case: compositing. Asset type: V2 Signature Scroll World commerce scene. Image 1 is the edit target and two-model layout guide. Image 2 is the locked fog-over-Bay terrace authority; preserve the glowing frames, skyline, Golden Gate Bridge, fog, wet stone, copper lighting and camera. Image 3 is the exact male identity, body, pose and mint crew/sweats fit authority. Image 4 is the exact hoodie styling and product authority; convert the wearer to a woman while keeping the hoodie construction. Image 5 is the physical three-product detail board. Replace only the two models in Image 1. Male at left wears exact SG-013 crewneck and SG-014 sweats: matching muted mint fleece, large centered lavender-grey embroidered rose-over-cloud on chest, small wearer-left thigh embroidery, white drawstring and elastic cuffs. Female at right wears exact SG-006 mint hoodie: hood, white drawcords, kangaroo pocket, rib cuffs/hem and large centered lavender-grey embroidered rose-over-cloud; pair it with plain unbranded neutral mint trousers with no thigh mark so they cannot be mistaken for SG-014. Match cool fog fill, copper rim, mutual scale, floor contact, wet reflections, shared grain, edge softness and depth. Constraints: change only models and immediate integration envelopes; preserve all scene geometry; no black trousers; no duplicate thigh logo; no printed substitute for embroidery; no watermark. Founder-review candidate only.",
+      "patch_after_placement": [
+        "male chest and thigh embroideries",
+        "female hoodie embroidery",
+        "remove any female trouser thigh mark"
+      ]
+    },
+    "sig-commerce-3": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-native-preview-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-departure-terrace-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-005-bay-bridge-pair-protected-candidate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v2/sg-002-sg-003-detail-proof-v2.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v1/signature-windbreaker-proof-board-v1.png"
+      ],
+      "reference_sha256": [
+        "71cece84eff6f8d50df9b68a9865b00e194ec8846ce23b4b3c1cb32648378af5",
+        "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+        "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
+        "2b11e6f6aca4b35587c7c6672483e49bb07403fcde2646bae0eda0245f247209",
+        "a4a7f4d02ca77a2c1e88d793ebb03cc7b902bb49618cb09d2199f23679f6ac66"
+      ],
+      "prompt": "Use case: compositing. Asset type: V2 Signature preorder Scroll World commerce scene. Image 1 is the edit target and three-model layout guide. Image 2 is the locked departure terrace authority; preserve the exact rose-gold SR-and-rose freestanding monument, bridge, fog, skyline, wet floor, sunrise and camera. Image 3 is the exact Bay Bridge male model and product authority. Image 4 is the physical Stay Golden shirt/shorts authority. Image 5 is the exact windbreaker techflat/on-model authority. Replace only the three models in Image 1 while preserving their full-body left-to-right layout. Left male: exact white SG-005 Bay Bridge shirt with centered blue-black-grey rose/bridge/cloud embroidery and blue SG-001 mesh shorts with continuous daylight Bay Bridge and skyline sublimation, white drawcord and small lavender rose-over-cloud mark. Center male: white SG-002 Stay Golden shirt with exact purple-orange night-bridge rose/cloud embroidery and SG-003 purple night Golden Gate mesh shorts with continuous illuminated bridge/city print, white drawcord and small lavender rose-over-cloud mark. Right woman: exact SG-015 white windbreaker jacket and pants with pink hood, pastel pink/lavender/mint/yellow chevrons, striped rib cuffs/hem/waist, pink-trim pockets, zippers and pale rose marks. Match sunrise backlight, fog fill, wet-floor contact shadows/reflections, shared grain, scale, edge softness and depth. Keep every model clear of the monument. Constraints: change only models and immediate integration envelopes; preserve monument geometry and background; no product mixing; no generic bridge prints; no extra logos or text; no watermark. Founder-review candidate only.",
+      "patch_after_placement": [
+        "Bay Bridge shirt embroidery and shorts sublimation",
+        "Stay Golden shirt embroidery and shorts sublimation",
+        "windbreaker chevrons, pockets, ribbing and rose marks"
+      ]
+    }
+  }
+}

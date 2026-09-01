@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "../skyyrose-flagship/assets/images/products/sg-002-stay-golden-shirt.webp",
+  "source_sha256": "bd2e1c0481e1e982e7b4b811b2005f39fb14e95fc8d6cf4368d5716a04587e10",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-002-packshot-protected-candidate-v1.png",
+  "output_sha256": "a5fd92ea6ecf7db7b2a614c0d59c6493732f680b30c2256c01dac426a98b24ea",
+  "dimensions": [
+    886,
+    886
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.480823,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

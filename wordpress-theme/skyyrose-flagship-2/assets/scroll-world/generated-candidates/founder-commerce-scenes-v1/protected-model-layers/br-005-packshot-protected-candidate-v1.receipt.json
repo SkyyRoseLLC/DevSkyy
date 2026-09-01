@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "../skyyrose-flagship/assets/images/products/br-005-signature-hoodie.jpeg",
+  "source_sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-005-packshot-protected-candidate-v1.png",
+  "output_sha256": "7c472ff8af09f4b74138addde54ac83711e3f76b0606591cfc6dbb863cfaef29",
+  "dimensions": [
+    360,
+    360
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.516698,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

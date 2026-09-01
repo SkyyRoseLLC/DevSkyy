@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-1-crew-jogger-generated-source-v2.png",
+  "source_sha256": "042ecfc1e65450f503ef84ab95434e5d9679d35cc7a1d843e6186c0b50edb0ee",
+  "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-1-crew-jogger-generated-protected-v2.png",
+  "output_sha256": "59069da3f65f84fe3344ce62378c84408e1f8446df5b1e55c92541f77fbb0d72",
+  "dimensions": [
+    941,
+    1672
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.257863,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

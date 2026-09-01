@@ -1,0 +1,49 @@
+Not satisfied yet. The revision correctly withdraws the scalar key-light solve and establishes a substantially safer default, but one raster-only escape hatch still survives the exact round‑1 challenge.
+
+The repository evidence supports the revision’s factual premise:
+
+- The original protected-layer receipt records only hashes, dimensions, alpha extrema, opaque fraction, extraction model, and RGB preservation. It contains no camera, exposure, white balance, geometry, normals, depth, materials, lights, or probes: [protected-layer receipt](/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-commerce-1-two-model-bomber-generated-protected-v1.receipt.json:1).
+- The surgical-patch receipt adds logo placement, changed-pixel bounds, and preservation evidence, but still no illumination calibration: [patch receipt](/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.receipt.json:1).
+- The existing prompt’s description of warm overhead light, red side light, rim, shadows, and reflections is a visual instruction, not measured illumination evidence: [integration prompt](/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-natural-integration-v1.json:36).
+- Visual inspection confirms the core ambiguity: the cathedral contains an overhead beam, numerous practicals, red environment light, spatially varying reflections, haze, and tone mapping, while the extracted two-model layer has its own baked studio-like illumination. Neither raster exposes the latent variables needed to distinguish competing physical explanations.
+
+The revision successfully fixes most of the challenge:
+
+- `UNRESOLVABLE` is now the default.
+- The dominant-light azimuth/elevation/CCT tuple is removed.
+- Missing calibration is explicitly inventoried.
+- Under `UNRESOLVABLE`, protected-region gain and chroma import are forced to identity.
+- Branches A and B are honest continuations.
+- Branch C is treated as a rejection candidate, not as permission to ship.
+- The later inconsistency rules are expressly rejection-only and do not claim to certify physical correctness.
+
+The remaining decisive blocker is Step 1A. It still permits an admissible benchmarked estimator to move these uncalibrated generated rasters from `UNRESOLVABLE` to `VALIDATED_COMPATIBLE`; that verdict then authorizes Step 8 to import generator-derived, spatially varying low-frequency gains into protected pixels.
+
+A sealed known-rig benchmark can bound performance on its sampled benchmark distribution. It cannot make the latent illumination of this particular pair identifiable. Likewise:
+
+- Narrow posterior intervals are conditional on the estimator, priors, nuisance model, and region/normal assumptions; they do not recover information absent from the rasters.
+- Low residuals establish that at least one modeled explanation fits, not that the underlying multi-source fields are uniquely or physically correctly recovered.
+- Prior sensitivity checks detect some instability but cannot detect shared model misspecification.
+- Synthetic “domain-shift” transforms do not prove that arbitrary diffusion-generated rasters lie inside the benchmark’s validated coverage.
+- Pass 7 is itself generative, so compatibility between the two inputs would still not validate the per-pixel gain field extracted from that generated reference.
+
+Therefore, the plan’s predicted `UNRESOLVABLE` outcome is only an expectation, not a fail-closed invariant. Once a Step 1A admissibility record exists, the same evidence-deficient pair can receive positive relight authority. That is the surviving form of the original non-identifiability problem.
+
+What would change my mind is one precise contract change:
+
+> For any pair where either asset lacks admissible exact-rig calibration under Step 1B, Step 1A may return only `VALIDATED_INCOMPATIBLE`, `NO_OBSERVED_CONTRADICTION`, or `UNRESOLVABLE`; it must never authorize non-identity protected-pixel relighting. `NO_OBSERVED_CONTRADICTION` must behave exactly like `UNRESOLVABLE` in Step 8.
+
+Enforce that mechanically with a schema/runtime invariant and tamper test:
+
+```text
+if calibration_evidence_for_both_assets != true:
+    verdict must not grant relight authority
+    max_abs_log_gain_over_protected_masks == 0
+    protected_low_frequency_band == approved_input
+```
+
+Step 1A can remain valuable as a rejection detector, estimator research program, and future benchmark. The only route to a positive verdict that authorizes spatial illumination transfer should be Step 1B evidence for both assets—such as a controlled render scene hash or matched probe/rig records. A diffusion-only Branch A remains non-calibrated and therefore must retain identity gain unless it is produced through that controlled path.
+
+With that change, I would consider the exact round‑1 challenge resolved: the current pair would be unconditionally `UNRESOLVABLE` for protected-pixel relighting, while Branch A through a calibrated renderer and Branch B plate-only would remain executable. No repository files were edited.
+
+{"satisfied":false,"specific_challenge":"Step 1A still allows an uncalibrated generated-raster pair to become VALIDATED_COMPATIBLE and authorize non-identity protected-pixel gains; change it so raster-only estimation can reject or report no observed contradiction but only matched Step 1B calibration for both assets can grant relight authority."}

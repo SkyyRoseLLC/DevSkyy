@@ -601,7 +601,7 @@ def _build_refinement_prompt(name: str, sku: str, qa_result: TournamentResult) -
 
     Three tiers, strictly more informative as judge data quality improves:
 
-    1. **Synthesis-aware** (preferred): Opus 4.7 ran successfully and
+    1. **Synthesis-aware** (preferred): Opus 5 ran successfully and
        produced consensus-filtered fixes via its `suggested_fixes` and
        severity-prioritized issues via its `issues`. We pass these
        directly. If `hallucination_veto` fired, we prepend a hard

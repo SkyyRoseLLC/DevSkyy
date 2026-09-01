@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "../skyyrose-flagship/assets/images/products/sg-009-onmodel.webp",
+  "source_sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-009-onmodel-front-protected-v1.png",
+  "output_sha256": "4626dade5bf9a3825b5d4a65afac8df214e7f7aae2773248871a45337a9d9a45",
+  "dimensions": [
+    1024,
+    1536
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.199776,
+  "model": "existing-alpha-mask",
+  "alpha_source": "assets/sot/images/products/candidates/2026-08-22/layers/hero-aspect-scenes/sg-009-onmodel-front-protected.png",
+  "alpha_source_sha256": "eba76b08eb98f1cc7a08226a779f27a8157b73446b02071b4fb073bc79ba02b7",
+  "rgb_preserved": true
+}

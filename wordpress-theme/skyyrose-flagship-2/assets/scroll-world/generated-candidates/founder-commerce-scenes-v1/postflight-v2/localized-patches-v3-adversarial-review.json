@@ -1,0 +1,69 @@
+{
+  "schema": "skyyrose.localized-patch-adversarial-review.v3",
+  "overall_verdict": "REJECT",
+  "recommend_ship": false,
+  "any_can_become_next_stage_source": false,
+  "contract": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/localized-product-patches-v3.json",
+    "sha256": "0dfb5bb628651fc939adaf99ae17ac9458ac3199d9067dd09a0f33792b364cee",
+    "reference_hash_validation": "PASS"
+  },
+  "review_note": "The delegated reviewer initially searched for the contract under postflight-v2. The contract's authoritative preflight path and SHA-256 are recorded above; its references were independently validated before generation. This path-discovery miss does not weaken the visible fail verdicts below.",
+  "per_scene": [
+    {
+      "scene_id": "br-commerce-2",
+      "patch_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/postflight-v2/rejected-patches-v3/br-commerce-2-localized-patch-v3-rejected.png",
+      "patch_sha256": "78635054cd5b6a1f4f721f42ed2cb0b487644a24454e22cb9138f034bd1e603e",
+      "patch_dimensions": "1672x941",
+      "baseline_sha256": "0b5800004b305abe45b1bfb09771f7b4aeb5a443713b1d89dbbc1b5be0cb6a0e",
+      "diff_bbox": "0,0,1672,941",
+      "changed_pixels_gt3": 682101,
+      "changed_percent": 43.3534,
+      "scene_preservation_verdict": "FAIL",
+      "product_correction_verdict": "FAIL",
+      "hallucination_veto": true,
+      "findings": [
+        "Full-frame change is not a localized garment patch.",
+        "Hoodie artwork expanded onto the arm/sleeve instead of moving cleanly to the side body.",
+        "Chest mark still does not read as exact raised tonal silicone.",
+        "BR-007 side insert, rose repeat, binding and pocket details remain inexact."
+      ]
+    },
+    {
+      "scene_id": "lh-commerce-2",
+      "patch_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/postflight-v2/rejected-patches-v3/lh-commerce-2-localized-patch-v3-rejected.png",
+      "patch_sha256": "3cc71d08ddbb030ec37f3a5d547477b6255a2b25428c8a292055004dd7fd4141",
+      "patch_dimensions": "1672x941",
+      "baseline_sha256": "3442db8998ddb600ebdc919f0dd91c1ddd9bb224731ef14e21daffd4dda7d118",
+      "diff_bbox": "0,0,1672,941",
+      "changed_pixels_gt3": 544531,
+      "changed_percent": 34.6096,
+      "scene_preservation_verdict": "FAIL",
+      "product_correction_verdict": "FAIL",
+      "hallucination_veto": true,
+      "findings": [
+        "Full-frame change is not a localized shorts patch.",
+        "Love Hurts wording is more visible but not exact.",
+        "Generic floral repeat remains.",
+        "Panel, binding, pocket and black-mesh details remain inexact."
+      ]
+    },
+    {
+      "scene_id": "lh-commerce-3",
+      "patch_path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/postflight-v2/rejected-patches-v3/lh-commerce-3-localized-patch-v3-rejected.png",
+      "patch_sha256": "76f4f3783e65dae4c5f5def32830c2d8f506f2348144fb0e2965d5e17d73260d",
+      "patch_dimensions": "941x1672",
+      "baseline_sha256": "fe6b7e5deb20a84505d2c6896221648f208d43be619fe3b777165b381e33ba62",
+      "baseline_dimensions": "1672x941",
+      "scene_preservation_verdict": "FAIL",
+      "product_correction_verdict": "FAIL",
+      "hallucination_veto": true,
+      "findings": [
+        "Hard aspect-ratio failure: the wide scene became a portrait image.",
+        "The locked vitrine, negative space and scene composition were replaced.",
+        "FANNIE remains warped and the rose cluster and bag hardware remain inexact."
+      ]
+    }
+  ],
+  "next_action": "Do not use these outputs as edit sources. Preserve the seven natural-placement-v2 candidates as scene-layout references only. Perform future product corrections through explicit masks or protected-product compositing with outside-mask pixel-diff enforcement."
+}

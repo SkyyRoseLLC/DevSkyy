@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/lh-002-onmodel-heart-logo-pass-v1.png",
+  "source_sha256": "38fec034eaede735f5de0676755308eed11c35261c535e56c369be07c9e9eff9",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-002-onmodel-logo-pass-protected-v1.png",
+  "output_sha256": "590e6f680d6124b1b198813dbff845fbe583d922b29c4b8526aaa02cb61bcb46",
+  "dimensions": [
+    1023,
+    1537
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.216331,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

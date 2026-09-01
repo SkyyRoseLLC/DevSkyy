@@ -1,0 +1,105 @@
+{
+  "schema": "skyyrose.remaining-commerce-scenes-limited-preview.v1",
+  "authorization": "generate the other collections NOW",
+  "approval_state": "CANDIDATE_ONLY_FOUNDER_REVIEW_REQUIRED",
+  "review_authorities": ["gpt-5.5-pro", "founder"],
+  "jobs": {
+    "br-commerce-1": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-1-font-type-foundry-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/br-002-joggers.png"
+      ],
+      "prompt": "Use case: photorealistic-natural. Create a 1672:941 cinematic Black Rose commerce scene as one native photograph, not a cutout. Image 1 is the locked moonlit Bay Bridge type-foundry environment and exact silver Black Rose wall monument; do not redraw its lettering, rails, rose, proportions, or wall alignment. Image 2 is the model identity, pose, scale, and fit reference. Image 3 is the exact BR-001 crewneck: black body, white rib collar/cuffs/hem, and large centered raised embossed black-white-grey rose-and-cloud chest relief; it is embossed dimensional relief, never embroidery or print. Image 4 is exact BR-002 joggers: black body, white waistband, black drawstring, white ankle cuffs, and small molded silicone rose-and-cloud applique on wearer-left thigh. Photograph one full-body model naturally wearing both products together, dominant in the right foreground with correct wet-floor contact shadow, moon/bridge edge light, reflected highlights, shared grain, and clear negative space for storefront controls. Preserve exact garment construction and marks. Avoid invented text, wrong logo, colored roses, missing white ribbing, embroidered crewneck art, printed jogger mark, floating feet, halo, UI, watermark, or alteration of the wall statue. Founder-review candidate only."
+    },
+    "br-commerce-2": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-2-waterfront-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-2-hoodie-shorts-generated-source-v2.png",
+        "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+        "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+        "assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg"
+      ],
+      "prompt": "Use case: photorealistic-natural. Create a 1672:941 native moonlit Oakland waterfront fashion photograph. Image 1 is the locked Bay Bridge environment. Image 2 supplies the model identity, full-body pose, and product scale only; physical Images 3-5 override every garment detail. BR-005 is a black lightweight pullover hoodie with white drawstrings, kangaroo pocket, tonal cuffs/hem, grey rose-print sublimated hood lining, and a small raised tonal white-grey silicone cut-out on wearer-right chest. Its large embroidered rose-and-cloud artwork belongs vertically on the wearer's left SIDE-BODY panel below the armhole, never on sleeve or forearm; both sleeves stay plain black. BR-007 is black mesh basketball shorts with subtle tonal rose repeat, white waistband/drawstring, complete OAKLAND white tackle twill with dark stitched edge and unobscured final D, full Love Hurts script on the black side/thigh field above a narrow white mesh side insert, black-white binding, zipper pockets, exact multicolor side rose with green stems and blue cloud, plus correct back-side Love Hurts artwork. Render the model naturally on the wet floor with shared moon/bridge light, contact shadow, restrained reflection, depth, and no cutout edge. Product dominates left foreground; bridge and moon remain readable. No arm art, broad white polygon, truncated lettering, generic logo, UI, watermark, or invented product. Founder-review candidate only."
+    },
+    "lh-commerce-2": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-shorts-chamber-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg"
+      ],
+      "prompt": "Use case: photorealistic-natural. Create a 1672:941 cinematic Love Hurts product scene as one exposure. Image 1 is the locked fractured cathedral chamber and enchanted rose under cracked glass. Images 2 and 3 are the exact physical LH-003 basketball shorts front and back. Photograph one full-body fashion model in a restrained black sleeveless top wearing the shorts; the shorts are the sole product protagonist and fill enough of the left foreground to prove construction. Preserve the white mesh body with repeated red rose-and-cloud sublimation, black waistband, red-black-white binding, black mesh side panels, zipper pockets, complete red Love Hurts side lettering, and small stitched side marks. Do not substitute the heart-thorns jogger logo and do not invent a shirt logo. Pose three-quarter front-left so front, wearer-left side, waistband, pockets, binding, and lettering are readable; use natural cathedral light, red bounce, correct floor contact, shadow/reflection, shared grain and haze. Keep the enchanted rose sharply recognizable on the right. No generic shorts, missing lettering, wrong rose family, oversized white panel, UI, watermark, floating feet, or pasted-cutout edge. Founder-review candidate only."
+    },
+    "lh-commerce-3": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-fannie-vitrine-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-005-onmodel-logo-pass-protected-v1.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-onmodel.webp"
+      ],
+      "reference_sha256": [
+        "8179bf5a0b7fc83427844e4d4d06a684ea8ee055a9ce59423ccc5923ab40c73b",
+        "18be7a61147ccdef88eaf8fe1fc0c701924c29c8e2bc8bbd453a8291f109934f",
+        "8cae4c6b10bfe9bcd4ba60b4a5529769064ef9b5d558527bb71126a115697f18",
+        "e3df4aa2781881b9364490c09611308d0c9c0a42fbab19fd114365eca8bda43c"
+      ],
+      "visual_source_review": "PASS_2026-08-24",
+      "prompt": "Use case: photorealistic-natural. Create a 1672:941 cinematic Love Hurts preorder scene as one native camera exposure. Image 1 is the locked black cathedral vitrine with a sharply focused enchanted red rose at right; preserve the architecture, glass, rose, red fissures, and open dark wall at left. Image 2 supplies the approved model styling, cross-body scale, and corrected bag mark. Images 3 and 4 prove the exact LH-005 Fannie: compact black pebbled faux-leather waist/cross-body bag, curved top seam, full-width front zipper pocket with black pull, adjustable black webbing strap, black side wings, matte black side-release buckle, and exact white embroidered FANNIE lettering across the lower front with a small red-and-green rose cluster integrated above the final letters. Place one full-body woman naturally in the left foreground wearing a plain black tonal outfit and the bag diagonally across her torso; the bag is large enough to inspect and remains the sole product protagonist. Match the scene's low red key, glass reflections, haze, floor contact, shadow, depth of field, and grain so the person was photographed there. Keep both the bag and enchanted rose in deliberate sharp focus. Do not invent a second logo, change the spelling, turn embroidery into print, add bright hardware, cover the zipper, float the model, alter the vitrine, add UI, or add a watermark. Founder-review candidate only."
+    },
+    "sig-commerce-1": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-1-oakland-atelier-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-009-onmodel-front-protected-v1.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/sg-009-sherpa-jacket.jpeg",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-007-onmodel-protected-candidate-v1.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/sg-007-signature-beanie.png"
+      ],
+      "reference_sha256": [
+        "ec4767d6d38e76482f6d184a2d76a266a3e695a881d2ce1d155fa80f1106b209",
+        "4626dade5bf9a3825b5d4a65afac8df214e7f7aae2773248871a45337a9d9a45",
+        "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
+        "45c6bca620ca0a6793e093eeb1d9e0373d4992f0447cf975863e1194da13fcbb",
+        "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43"
+      ],
+      "visual_source_review": "PASS_2026-08-24",
+      "prompt": "Use case: photorealistic-natural. Create a 1672:941 cinematic Signature collection atelier scene as one photograph. Image 1 is the locked Oakland atelier at blue hour; preserve the exact gold SkyyRose script-and-rose wall sculpture, its wall alignment, the Bay skyline, worktable, architecture, and warm practical lights. Images 2 and 3 prove SG-009: a black full-zip reversible Sherpa jacket with smooth black woven exterior, thick cream-white fleece interior and tall turned-back funnel collar, gold zipper, tonal black cuffs and hem, small embroidered red rose with green stem and blue-white cloud on wearer-left chest, and tiny branded hem tab. Images 4 and 5 prove SG-007: black rib-knit cuff beanie with one small rectangular molded silicone patch on the wearer-right front cuff showing the exact grey-and-white rose-over-cloud artwork; never a colored embroidered rose. Photograph one full-body male model naturally wearing the Sherpa jacket open enough to reveal the cream lining and wearing the exact beanie. Put him in the left-center atelier floor with real contact shadow, warm rim from the worktable, cool city fill, matching reflections, depth and grain; product remains dominant and the wall monument remains readable. No extra garment graphics, wrong beanie logo, purple rose, printed patch, distorted lettering, floating feet, cutout halo, UI, watermark, or altered wall sculpture. Founder-review candidate only."
+    },
+    "sig-commerce-2": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-2-fog-over-bay-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-013-onmodel-front-protected-v1.png",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/sg-014-mint-lavender-sweatpants.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/products/sg-006-mint-lavender-hoodie.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-006-onmodel-protected-candidate-v1.png"
+      ],
+      "reference_sha256": [
+        "0dc11e853d4be2bb927d9a3c40997087635b32c0c17ff84b2694dd3862234aa3",
+        "876323d4e9bea50c16bb03a22b3b38ca2cfdfcad2c2a466f70d9181f6fab05dd",
+        "1cc5ced83992c4c11ca39b36613f1bcddc44fd02c2b6ba9e648f591ba947eae4",
+        "0f47125187736a1089a42fa5f2f92987cbae5ac00c77bd41225697160afac4ea",
+        "23d8708e0542d181f38bcd3cb6b5804731d1204a9defd74e492e9c8613f880ee"
+      ],
+      "visual_source_review": "PASS_2026-08-24",
+      "prompt": "Use case: photorealistic-natural. Create a 1672:941 cinematic Signature collection fashion scene as one native blue-hour terrace photograph. Image 1 is the locked fog-over-Bay terrace; preserve both glowing rectangular frames, skyline, Golden Gate Bridge, fog bank, wet stone, and copper edge light. Images 2 and 3 prove the coordinated men's SG-013 crewneck and SG-014 sweatpants: matching muted mint fleece, ribbed crew collar/cuffs/hem, elastic jogger cuffs, white drawstring, and the same lavender-and-grey embroidered rose rising from a white-grey cloud—large centered chest embroidery on the crew and small wearer-left upper-thigh embroidery on the sweats. Images 4 and 5 prove the women's SG-006 mint hoodie: matching mint fleece, hood, white drawcords, kangaroo pocket, rib cuffs/hem, and a larger centered lavender-and-grey embroidered rose-over-cloud artwork. Photograph one full-body male model at left wearing the exact crewneck and sweatpants, and one full-body female model at right wearing the exact hoodie with simple unbranded mint bottoms that do not imitate another SKU. Their bodies must feel photographed together in the terrace: correct floor contact, mutual scale, cool fog fill, copper rim, wet-stone reflections, shared grain and air. Keep the bridge visible between them and both glowing frames legible. No changed mint hue, printed chest art, extra thigh logos, black trousers, duplicated person, floating feet, cutout halo, UI, watermark, or altered landscape. Founder-review candidate only."
+    },
+    "sig-commerce-3": {
+      "references": [
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-departure-terrace-plate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-005-bay-bridge-pair-protected-candidate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v1/signature-preorder-four-products-proof-board-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-015-onmodel-protected-candidate-v1.png",
+        "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v1/signature-windbreaker-proof-board-v1.png"
+      ],
+      "reference_sha256": [
+        "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+        "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
+        "8fa781c6ec73867fe64613d82aa35ce4e5ce74e1c1b011df69e74b95d804a519",
+        "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09",
+        "a4a7f4d02ca77a2c1e88d793ebb03cc7b902bb49618cb09d2199f23679f6ac66"
+      ],
+      "visual_source_review": "PASS_2026-08-24",
+      "prompt": "Use case: photorealistic-natural. Create a 1672:941 cinematic Signature preorder departure scene as one cohesive sunrise terrace fashion photograph. Image 1 is the locked Bay Bridge departure terrace; preserve the exact rose-gold SR-and-rose freestanding monument at right, bridge, fog, skyline, wet floor, lighting, and open center-left stage. Image 2 proves the Bay Bridge look: white SG-005 shirt with the exact centered blue-black-grey rose/bridge/cloud embroidery and blue SG-001 mesh shorts carrying a continuous daylight Bay Bridge and skyline sublimation, white drawcord, and small lavender rose-over-cloud mark. Image 3 proves the separate Bay Bridge and Stay Golden products: SG-001 blue daytime bridge shorts, SG-005 white Bay shirt, SG-002 white Stay Golden shirt with exact purple-orange night-bridge rose/cloud embroidery, and SG-003 purple night Golden Gate mesh shorts with continuous illuminated bridge/city print, white drawcord, and small lavender rose-over-cloud mark. Images 4 and 5 prove SG-015: women's white windbreaker jacket and pants with pink hood, pastel pink/lavender/mint/yellow chevrons, striped rib cuffs/hem/waist, pink-trim pockets, front zippers and pale rose marks; back stays mostly white with small SR at upper neck. Stage three naturally photographed full-body models across the left and center: one man in the Bay Bridge shirt and shorts, one man in the Stay Golden shirt and shorts, and one woman in the complete windbreaker set. Each exact outfit must remain visually separate and readable for individual preorder links. Match sunrise backlight, soft fog fill, wet-floor contact shadows and reflections, scale, depth, shared grain and atmospheric haze. Keep all models clear of the exact monument and do not redraw or cover it. No product mixing, wrong bridge time/color, invented text, generic rose, altered chevrons, duplicate models, floating feet, collage seams, UI, watermark, or altered monument. Founder-review candidate only."
+    }
+  }
+}

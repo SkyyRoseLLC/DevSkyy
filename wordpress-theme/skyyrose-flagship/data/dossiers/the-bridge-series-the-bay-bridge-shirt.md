@@ -5,7 +5,9 @@ collection: signature
 logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/sr-monogram.md
-reference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg
+reference_image: assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg
+extra_references:
+  - assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg
 ---
 
 # The Bridge Series 'The Bay Bridge' Shirt
@@ -25,6 +27,7 @@ reference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpe
 > Logo art canonical references:
 > - Black Rose three-rose-cluster (recolored to blue for this SKU): `data/brand-logos/three-rose-cluster.md`
 > - SR monogram (back-neck):                                         `data/brand-logos/sr-monogram.md`
+> - Physical founder front photo:                                    `assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg`
 > - Product techflat:                                                 `assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg`
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering

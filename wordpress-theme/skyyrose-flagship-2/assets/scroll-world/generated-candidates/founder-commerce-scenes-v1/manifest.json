@@ -1,0 +1,190 @@
+{
+  "schema": "skyyrose.founder-commerce-scenes.v1",
+  "approval_date": "2026-08-23",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "approval_boundary": {
+    "environment_plates": "FOUNDER_APPROVED",
+    "product_composites": "PER_SCENE",
+    "deployment": "NOT_AUTHORIZED"
+  },
+  "black_rose_graphic_rule": {
+    "required": [
+      "star",
+      "single rose",
+      "leaves and stem",
+      "black-and-silver identity",
+      "natural placement"
+    ],
+    "non_blocking": [
+      "pedestal shape",
+      "architectural base shape"
+    ]
+  },
+  "scenes": [
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "asset": "black-rose/br-commerce-1-font-type-foundry-plate-v1.png",
+      "sha256": "f0667422fb3d5c766ba490a89fe1e65005867796dd645331d245765541912112",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED",
+      "composite_state": "PENDING_APPROVED_PRODUCT_LAYERS"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "asset": "black-rose/br-commerce-2-waterfront-plate-v1.png",
+      "sha256": "b3d8ebb29516a329b0fef02d1b059a940288c836bd581d9f5b0eeeea8f7e819a",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED",
+      "composite_state": "PENDING_CORRECTED_PRODUCT_LAYERS"
+    },
+    {
+      "scene_id": "BR-COMMERCE-3",
+      "asset": "black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+      "sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+      "dimensions": [
+        1536,
+        1024
+      ],
+      "plate_state": "FOUNDER_APPROVED_AFTER_REQUIRED_A_CORRECTION",
+      "composite_state": "FOUNDER_APPROVED_PRODUCT_SCENE",
+      "source": "black-rose/sources/br-commerce-3-five-jersey-lounge-founder-source-v1.png",
+      "source_sha256": "11fd3d70368483df3d58c79c5ec27089d8924aab72bd59bd8975e906e3d3e2a9",
+      "allowed_edit": {
+        "changed_pixel_count": 79,
+        "maximum_changed_pixel_count": 100,
+        "bounding_box": [
+          206,
+          628,
+          14,
+          17
+        ]
+      }
+    },
+    {
+      "scene_id": "LH-COMMERCE-1",
+      "asset": "love-hurts/lh-commerce-1-vow-aisle-founder-approved-v2.png",
+      "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED_NATIVE_SCENE_WITH_REVIEW_OVERRIDE",
+      "composite_state": "FOUNDER_APPROVED_PRODUCT_SCENE",
+      "machine_review": {
+        "reviewer": "gpt-5.5",
+        "verdict": "REJECT",
+        "score": 74,
+        "threshold": 95,
+        "founder_override": true
+      },
+      "founder_approval_receipt": "love-hurts/lh-commerce-1-vow-aisle-founder-approved-v2.receipt.json"
+    },
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "asset": "love-hurts/lh-commerce-2-shorts-chamber-plate-v1.png",
+      "sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED",
+      "composite_state": "PENDING_FOUNDER_LOGO_PASS"
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "asset": "love-hurts/lh-commerce-3-fannie-vitrine-plate-v1.png",
+      "sha256": "8179bf5a0b7fc83427844e4d4d06a684ea8ee055a9ce59423ccc5923ab40c73b",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED",
+      "composite_state": "PENDING_FOUNDER_LOGO_PASS"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "asset": "signature/sig-commerce-1-oakland-atelier-plate-v1.png",
+      "sha256": "ec4767d6d38e76482f6d184a2d76a266a3e695a881d2ce1d155fa80f1106b209",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED",
+      "composite_state": "APPROVED_MODEL_PREVIEW_PARTIAL"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "asset": "signature/sig-commerce-2-fog-over-bay-plate-v1.png",
+      "sha256": "0dc11e853d4be2bb927d9a3c40997087635b32c0c17ff84b2694dd3862234aa3",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED",
+      "composite_state": "APPROVED_MODEL_PREVIEW_PARTIAL"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-3",
+      "asset": "signature/sig-commerce-3-departure-terrace-plate-v1.png",
+      "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "plate_state": "FOUNDER_APPROVED",
+      "composite_state": "PENDING_CORRECTED_PRODUCT_LAYERS"
+    }
+  ],
+  "protected_model_layers": [
+    {
+      "sku": "sg-009",
+      "asset": "protected-model-layers/sg-009-onmodel-front-protected-v1.png",
+      "sha256": "4626dade5bf9a3825b5d4a65afac8df214e7f7aae2773248871a45337a9d9a45",
+      "source_sha256": "8f833dc10024745bcc4d8378028124d62f1609472d909d61b8f504dcbc641e33",
+      "rgb_preserved": true,
+      "approval_state": "APPROVED_FRONT_ONLY"
+    },
+    {
+      "sku": "sg-013",
+      "asset": "protected-model-layers/sg-013-onmodel-front-protected-v1.png",
+      "sha256": "876323d4e9bea50c16bb03a22b3b38ca2cfdfcad2c2a466f70d9181f6fab05dd",
+      "source_sha256": "cb58e694639ff02b4dd7c1d009516df237f0acb39a8c6f6948930dad5d3c157b",
+      "rgb_preserved": true,
+      "approval_state": "APPROVED_FRONT_ONLY"
+    },
+    {
+      "skus": [
+        "lh-004",
+        "lh-002",
+        "lh-006"
+      ],
+      "asset": "limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+      "sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+      "source_sha256": "5ab938c951e5004a766e401432ada865dbc933c1450a44495c5bc4b1e0158894",
+      "rgb_preserved_outside_logo_rois": true,
+      "approval_state": "APPROVED_LIMITED_PRO_FOUNDER",
+      "approval_method": "LIMITED_PRO_SURGICAL_LOGO_PATCH",
+      "surgical_receipt": "limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.receipt.json",
+      "adversarial_review": "limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.adversarial.json",
+      "founder_approval_receipt": "limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.founder-approval.json"
+    }
+  ],
+  "visual_product_sot_rebind": {
+    "kind": "visual_product_sot_scene_rebind",
+    "audited_at": "2026-08-23",
+    "changed_skus": [
+      "br-007"
+    ],
+    "affected_scene_ids": [
+      "BR-COMMERCE-2"
+    ],
+    "plate_assets_changed": false,
+    "product_layers_require_founder_review": true
+  }
+}

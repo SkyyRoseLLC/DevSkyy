@@ -1,0 +1,81 @@
+{
+  "schema": "skyyrose.limited-pro-vision-prompt.v1",
+  "status": "LIMITED_PRO_DRAFT_REQUIRES_MECHANICAL_CERTIFICATION",
+  "job": "lh-commerce-1-limited-pro-v1",
+  "scope": "Love Hurts two-model bomber and jogger surgical correction only",
+  "authorization": {
+    "basis": "Founder explicitly requested a limited run using the paid interactive Pro session without external GPT API judges",
+    "full_three_provider_tournament_waived_for_this_candidate": true,
+    "founder_visual_approval_still_required": true,
+    "deployment_authorized": false
+  },
+  "vision_method": {
+    "model": "current Codex/ChatGPT multimodal session",
+    "external_api_calls": false,
+    "rejected_generated_outputs_used_as_product_truth": false,
+    "physical_references_visualized_before_prompt": true
+  },
+  "product_sot": {
+    "path": "data/product-sot.json",
+    "sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12"
+  },
+  "product_bindings": {
+    "lh-004": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
+    "lh-002": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
+    "lh-006": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
+  },
+  "input_images": [
+    {
+      "role": "edit_target_composition_only",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/lh-commerce-1-two-model-bomber-generated-source-v1.png",
+      "sha256": "f9fe2423f9ec21d15552efe10eea1a04b57dfb72af5a5682ff8cae6e6123bf9c"
+    },
+    {
+      "role": "canonical_lh-004_physical_satin_bomber",
+      "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+      "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256"
+    },
+    {
+      "role": "canonical_lh-002_black_joggers",
+      "path": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+      "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f"
+    },
+    {
+      "role": "canonical_lh-006_white_joggers",
+      "path": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+      "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe"
+    },
+    {
+      "role": "canonical_exact_heart_shaped_base_logo",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+      "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0"
+    }
+  ],
+  "visual_observations": [
+    "The physical bomber is a glossy satin snap-front hooded jacket with a white satin body, black satin raglan sleeves and hood, narrow white sleeve stripes, black pocket welts, and black-white-red striped rib-knit cuffs and hem.",
+    "The physical bomber chest carries two separate red script marks: Love on the wearer's right and Hurts on the wearer's left.",
+    "The physical black joggers have a black body, long white outer-leg panels, a white drawstring, ankle openings with visible snaps, and one small red heart-and-roses emblem on the wearer's left upper thigh.",
+    "The physical white joggers have a white body, long black outer-leg panels, a black drawstring, ankle openings with visible snaps, and the same small red heart-and-roses emblem on the wearer's left upper thigh.",
+    "The exact emblem is a cracked red heart forming the base, wrapped by dark thorn branches, with three red rose blooms and green leaves rising from the heart. It is not a rose-on-cloud cluster and not a separate rose bouquet."
+  ],
+  "positive_prompt": "Perform a restrained product-fidelity edit of IMAGE 1, using IMAGES 2 through 5 as exact physical product evidence. Preserve both models' identities, faces, hair, skin tones, anatomy, hands, poses, body proportions, full-body framing, socks, sneakers, lighting direction, and every already-correct pixel. Preserve the male on viewer-left and female on viewer-right. Both wear the exact LH-004 hooded snap-front satin bomber: a lustrous WHITE SATIN front body with visible narrow specular highlights and soft satin folds; BLACK SATIN raglan sleeves and hood; one narrow WHITE stripe down each outer sleeve; black pocket welts; black-white-red striped rib-knit cuffs and bottom hem; and the two separate red script chest marks, Love on the wearer's right chest and Hurts on the wearer's left chest. Do not rewrite or redesign the chest lettering. The male wears the exact LH-002 black joggers: black body, long white outer-leg panels, white drawstring, snap-opening ankle construction. The female wears the exact LH-006 white joggers: white body, long black outer-leg panels, black drawstring, snap-opening ankle construction. On each model's WEARER-LEFT upper thigh only, replace the existing wrong emblem with a compact exact replica of IMAGE 5: one cracked RED HEART forming the entire base, wrapped by DARK BROWN-BLACK THORN BRANCHES, with THREE RED ROSE BLOOMS and small GREEN LEAVES rising from the heart. Copy the supplied artwork's silhouette, proportions, internal cracks, thorn placement, rose count, colors, and orientation. Keep each emblem modest and physically embroidered at the scale shown by the jogger flatlays. Output one genuine RGBA PNG with true transparent alpha behind the two complete models.",
+  "negative_prompt": "No repaint of faces, hair, skin, anatomy, hands, pose, shoes, body shape, or framing. No matte cotton, fleece, canvas, leather, or plastic bomber. No black center body. No white sleeves. No missing sleeve stripe. No changed snap-front construction. No invented or respelled chest lettering. No generic rose bouquet. No rose-on-cloud cluster. No standalone rose. No SR monogram. No heart without thorns. No emblem without the cracked heart-shaped base. No extra thigh logo. No oversized thigh logo. No logo on the wearer's right thigh. No swapped jogger colors or side panels. No baked checkerboard, white studio background, set, scenery, watermark, caption, or extra text.",
+  "invariants": [
+    "Male identity, pose, and complete full-body silhouette remain unchanged.",
+    "Female identity, pose, and complete full-body silhouette remain unchanged.",
+    "Both bombers read unmistakably as lustrous satin.",
+    "Bomber white body, black sleeves and hood, white sleeve stripes, snaps, pocket welts, and striped ribbing remain exact.",
+    "Male joggers remain black with white side panels and white drawstring.",
+    "Female joggers remain white with black side panels and black drawstring.",
+    "Both wearer-left thighs carry the exact compact heart-shaped-base logo with three roses, green leaves, and dark thorns.",
+    "No rose-cloud substitute or generic rose mark is allowed.",
+    "The output must contain true alpha transparency rather than rendered checkerboard pixels."
+  ],
+  "output": {
+    "format": "png",
+    "color_mode": "RGBA",
+    "background": "transparent",
+    "approval_state": "FOUNDER_REVIEW_REQUIRED",
+    "v2_wiring_allowed_before_founder_approval": false
+  }
+}

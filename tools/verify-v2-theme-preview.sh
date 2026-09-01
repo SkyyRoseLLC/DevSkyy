@@ -91,7 +91,7 @@ assert_response() {
 assert_response 'route=home' '200' 'front-page.php'
 assert_response 'route=collections' '200' 'page.php'
 assert_response 'route=shop' '200' 'woocommerce/archive-product.php'
-assert_response 'route=product&sku=br-004' '200' 'woocommerce/single-product.php'
+assert_response 'route=product&sku=lh-004' '200' 'woocommerce/single-product.php'
 for collection_route in signature black-rose love-hurts kids-capsule; do
 	assert_response "route=${collection_route}" '200' 'template-collection.php'
 done
@@ -112,6 +112,34 @@ if [[ "$(rg -o 'data-card-direction="ornate-frame"' "$love_hurts_response" | wc 
 	exit 1
 fi
 rm -f "$love_hurts_response"
+
+assert_collection_placeholders() {
+	local route="$1"
+	shift
+	local response
+	response="$(mktemp -t sr2-placeholder-response.XXXXXX)"
+	curl --silent --show-error --fail "$base_url?route=$route" >"$response"
+	rg -Fq 'data-placeholder-state="FOUNDER_SELECTED_PLACEHOLDER"' "$response"
+	rg -Fq 'Founder-selected placeholder; final product scene awaiting fidelity review.' "$response"
+	for asset in "$@"; do
+		rg -Fq "$asset" "$response"
+	done
+	rm -f "$response"
+}
+
+assert_collection_placeholders \
+	'signature' \
+	'placeholders/founder-selected-v1/signature-graphic-monogram-backdrop-v1.png' \
+	'placeholders/founder-selected-v1/signature-bay-bridge-shorts-v1.png' \
+	'assets/sot/images/logos/rose-gold-rose.webp'
+assert_collection_placeholders \
+	'black-rose' \
+	'placeholders/founder-selected-v1/black-rose-east-oakland-crewneck-v1.png'
+assert_collection_placeholders \
+	'love-hurts' \
+	'placeholders/founder-selected-v1/love-hurts-star-heart-statue-backdrop-v1.png' \
+	'placeholders/founder-selected-v1/love-hurts-graphic-heart-backdrop-v1.png' \
+	'assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp'
 
 for immersive_route in immersive-signature immersive-black-rose immersive-love-hurts immersive-kids-capsule; do
 	assert_response "route=${immersive_route}" '200' "template-${immersive_route}.php"

@@ -1,0 +1,30 @@
+{
+  "schema": "skyyrose.founder-scene-approval.v1",
+  "scene_id": "LH-COMMERCE-1",
+  "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-vow-aisle-founder-approved-v2.png",
+  "sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "provider_source": "/Users/theceo/.codex/generated_images/01a02ba6-a9e7-7f63-a9da-66e422effa6c/exec-abc2a68f-57f5-4965-a519-be19018e50b4.png",
+  "matrix_cell": "lh-native-p2-r3",
+  "founder_directive_verbatim": "wire this one as the approved scene",
+  "founder_approved": true,
+  "machine_review": {
+    "reviewer": "gpt-5.5",
+    "verdict": "REJECT",
+    "score": 74,
+    "threshold": 95,
+    "blocking_notes": [
+      "hood drawcord and lining evidence",
+      "jogger inner-panel readability",
+      "thigh embroidery scale and exactness",
+      "scene integration edge and floor-contact concerns"
+    ]
+  },
+  "founder_override_of_machine_rejection": true,
+  "approval_scope": "V2_SCENE_WIRING",
+  "deployment_authorized": false,
+  "production_write_authorized": false
+}

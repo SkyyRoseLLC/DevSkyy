@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.production-guardian.v1",
+  "learning": {
+    "recommendation_occurrences": 2,
+    "gate_occurrences": 2,
+    "maximum_fix_iterations": 3
+  },
+  "forbidden_production_sources": [
+    "data/collections/",
+    "data/lookbook-sot.json",
+    "docs/campaigns/sot-lookbook.html",
+    "assets/hub/manifest.json"
+  ],
+  "production_consumers": [
+    "skyyrose/core/sot_images.py",
+    "scripts/oai_render/references.py",
+    "scripts/launch/woocommerce_product_contract.py",
+    "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py"
+  ],
+  "ship_checks": [
+    ["python3", "scripts/validate_catalog_consistency.py", "--checks", "dossier_slugs,logo_skus,csv_image_columns_resolve,product_sot_current,sot_images_current,woocommerce_sync_current"],
+    ["python3", "scripts/launch/woocommerce_product_contract.py", "--check"],
+    ["python3", "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py", "--check"],
+    ["python3", "wordpress-theme/skyyrose-flagship-2/scripts/validate-opening-product-media.py"],
+    ["python3", "wordpress-theme/skyyrose-flagship-2/scripts/validate-scene-production.py"]
+  ],
+  "safe_repairs": [
+    ["python3", "-m", "skyyrose.core.product_sot"],
+    ["python3", "-m", "skyyrose.core.sot_images"],
+    ["python3", "scripts/launch/woocommerce_product_contract.py"],
+    ["python3", "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py"]
+  ],
+  "protected_commands": [
+    "git push",
+    "deploy",
+    "sync_products.py --apply",
+    "woocommerce"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "skyyrose.vision-grounded-image-prompt.v1",
+  "status": "BLOCKED_REQUIRED_MODEL_INFERENCE_FAILED",
+  "created_at": "2026-08-24T04:20:28.211092+00:00",
+  "job": "lh-commerce-1-v2",
+  "failed_model_stage": "gpt-5.5-pro",
+  "failure_reason": "inference_quota_or_credit_exhausted",
+  "generation_permitted": false,
+  "secrets_in_receipt": false
+}

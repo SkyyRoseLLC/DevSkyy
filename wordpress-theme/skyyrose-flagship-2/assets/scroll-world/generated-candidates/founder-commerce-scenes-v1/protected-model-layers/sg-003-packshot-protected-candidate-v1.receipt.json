@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "../skyyrose-flagship/assets/images/products/bridge-stay-golden-shorts-front-model.webp",
+  "source_sha256": "938347e3dc840bc08f004406f6cf2ec672e9538fc4c8820f091899ca5ee510ce",
+  "output": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sg-003-packshot-protected-candidate-v1.png",
+  "output_sha256": "e32bf2379b213e4f8da09af2ba23b98aac4b1eecdda2f67859f542e1bfe54772",
+  "dimensions": [
+    1024,
+    1024
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.443359,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

@@ -15,7 +15,7 @@ extra_references:
 
 # BLACK Rose × Love Hurts Basketball Shorts
 
-**Garment type lock:** Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
+**Garment type lock:** Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with **narrow white mesh side constructions/inserts** that stay on the side of each leg rather than becoming broad front-facing white panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.
 
 ## Branding — exactly what IS on this product
 
@@ -27,6 +27,12 @@ extra_references:
 >                    `assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg`,
 >                    `assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg`
 > - Techflat fallback: `assets/products/source-photos/black-rose/br-007-techflat-shorts.jpeg`
+>
+> The founder-identified view roles are locked: `br-007-shorts-front.jpeg`
+> (`a176ba1a...1695314`) is the authoritative **front + left-side** photo and
+> `br-007-shorts-back-detail.jpeg` (`34ad777e...2309d2`) is the authoritative
+> **back** photo. The white mesh visible from the front is only the narrow side
+> construction; it must never expand into a large white front-leg field.
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
@@ -63,8 +69,10 @@ extra_references:
   sublimated/printed wordmark in **cream/peach/pink tonal color** on the
   black mesh. The script may tuck behind a flourish but **must not cover or
   obscure the final `D` in `OAKLAND`**. Match the physical spacing exactly.
-  Spans the right thigh area, reading top-to-bottom as the
-  cursive lettering descends. **Technique:** sublimated. **Color:**
+  The complete words must fit cleanly on the black side/thigh field **above the
+  narrow white side construction**; no letter may enter the white mesh insert.
+  Spans the right thigh area, reading top-to-bottom as the cursive lettering
+  descends. **Technique:** sublimated. **Color:**
   cream/peach/light-pink tonal.
 - **wearer's-right / viewer-left mesh side panel** (small, on the white mesh side panel):
   The Black Rose three-rose-cluster art (canonical *shape* — three roses,
@@ -138,13 +146,17 @@ extra_references:
   the OAKLAND tackle-twill wordmark, not a rose.
 - NO solid-color body — the body fabric carries the sublimated rose
   pattern (NOT a plain black field).
-- NO front pockets visible from outside — the visible pockets are on
-  the BACK only; the front is uninterrupted by pocket openings.
+- NO open cargo-pocket bags or patch pockets on the front. The only front
+  pocket evidence is the pair of narrow vertical **zippered side-hand-pocket
+  openings** proven by the physical front/left-side photo; retain those slim
+  zipper welts without turning them into broad white front panels.
 - NO black drawstrings — the drawstring is white.
 - NO black waistband — the waistband is white.
 - NO contrast satin-stitch edge other than dark on the OAKLAND letters.
-- NO script collision that covers the `D` in `OAKLAND`; the physical spacing
-  between the block wordmark and script is mandatory.
+- NO script collision; the final `D` in `OAKLAND` must remain completely unobscured and the physical spacing between the block wordmark and script is mandatory.
+- NO oversized white front-leg panel. The white mesh is a narrow side
+  construction, and the main cream/peach "Love Hurts" script remains entirely
+  on the black field above it.
 - NO numbers anywhere — no player number, no jersey-style numerals.
 - NO sleeve elements (this is a shorts garment, lower-body only — no
   upper-body decoration of any kind).
@@ -157,8 +169,9 @@ extra_references:
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing
   the OAKLAND wordmark, the front-right Love Hurts script, the left
-  Black Rose cluster on the mesh side panel, and the cream/peach
-  cursive wordmark across the right thigh. For back: back view
+  Black Rose cluster on the narrow mesh side construction, and the complete
+  cream/peach cursive wordmark cleanly above the opposite narrow side
+  construction. For back: back view
   straight-on showing the upper-back Love Hurts cursive script and the
   pentagonal white panel insert at the lower-back-center.
 - **Setting:** Pure white studio backdrop, soft directional studio

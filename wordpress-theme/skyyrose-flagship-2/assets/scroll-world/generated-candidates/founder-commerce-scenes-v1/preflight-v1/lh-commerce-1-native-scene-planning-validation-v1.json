@@ -1,0 +1,206 @@
+{
+  "schema": "skyyrose.native-scene-regeneration-planning-validation.v1",
+  "status": "PASS_PROMPT_PACKAGE_READY_FOR_OPUS_REVIEW",
+  "validated_at": "2026-08-24T15:51:20.378688+00:00",
+  "contract": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-native-scene-regeneration-plan-v1.json",
+    "sha256": "d3bd177d5ec8c085853401c3e07476dd293b7aad898f7c9760a1efb25512b016"
+  },
+  "scene_id": "LH-COMMERCE-1",
+  "selected_branch": "NATIVE_SCENE_REGENERATION",
+  "source_audit": [
+    {
+      "role": "current_product_sot",
+      "usage": "validation_only",
+      "path": "data/product-sot.json",
+      "sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+      "bytes": 445832,
+      "git_tracked": true
+    },
+    {
+      "role": "locked_environment_composition_reference",
+      "usage": "generator_conditioning",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+      "sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+      "bytes": 2437094,
+      "git_tracked": true,
+      "dimensions": [
+        1672,
+        941
+      ],
+      "color_mode": "RGB"
+    },
+    {
+      "role": "approved_two_model_identity_pose_and_product_placement_reference",
+      "usage": "generator_conditioning",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+      "sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+      "bytes": 1921328,
+      "git_tracked": true,
+      "dimensions": [
+        1023,
+        1537
+      ],
+      "color_mode": "RGBA"
+    },
+    {
+      "role": "canonical_lh_004_physical_product_reference",
+      "usage": "generator_conditioning",
+      "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+      "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256",
+      "bytes": 575795,
+      "git_tracked": true,
+      "dimensions": [
+        1284,
+        1321
+      ],
+      "color_mode": "RGB"
+    },
+    {
+      "role": "canonical_lh_002_physical_product_reference",
+      "usage": "generator_conditioning",
+      "path": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+      "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f",
+      "bytes": 18111,
+      "git_tracked": true,
+      "dimensions": [
+        400,
+        360
+      ],
+      "color_mode": "RGB"
+    },
+    {
+      "role": "canonical_lh_006_physical_product_reference",
+      "usage": "generator_conditioning",
+      "path": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+      "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
+      "bytes": 22094,
+      "git_tracked": true,
+      "dimensions": [
+        400,
+        360
+      ],
+      "color_mode": "RGB"
+    },
+    {
+      "role": "canonical_heart_rose_thigh_mark_reference",
+      "usage": "generator_conditioning",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+      "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+      "bytes": 113277,
+      "git_tracked": true,
+      "dimensions": [
+        720,
+        720
+      ],
+      "color_mode": "RGB"
+    },
+    {
+      "role": "patched_model_lineage_receipt",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.receipt.json",
+      "sha256": "f94e6b7abb1324d6c633ae92204131e09ec69652afc63814838fef40c68952ee",
+      "bytes": 1816,
+      "git_tracked": true
+    },
+    {
+      "role": "protected_model_lineage_receipt",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-generated-protected-v1.receipt.json",
+      "sha256": "9a0872ea0e5f8a0236907715ac7bc07a5cfc8e57a03c26d0e9fae0dff6ba2221",
+      "bytes": 1021,
+      "git_tracked": true
+    },
+    {
+      "role": "product_proof_manifest",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/product-proof-manifest-v1.json",
+      "sha256": "bbc431f8ee5e0826d9ff15d8cce68637784da780e03c6e5b738ecf16d595f8bf",
+      "bytes": 4291,
+      "git_tracked": true
+    },
+    {
+      "role": "product_proof_contact_sheet",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/product-proof-board-v1.png",
+      "sha256": "18134718710facfed7ea247fc8c43cf0cfdc397f4fda76ca1ce42b07d29c6e53",
+      "bytes": 1578039,
+      "git_tracked": true
+    },
+    {
+      "role": "mandatory_tournament_policy",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship-2/data/image-generation-tournament-policy-v1.json",
+      "sha256": "e146dc140ac25fabf885dcc86300f60fbc1f2a6bf4d94a26f18c8cb589872da4",
+      "bytes": 615,
+      "git_tracked": true
+    },
+    {
+      "role": "live_judge_availability_receipt",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/judge-availability-receipt-v1.json",
+      "sha256": "11eb55f49330ddc3c84608ac4630d40adcf775106f853eb19073b8a54823f23f",
+      "bytes": 718,
+      "git_tracked": true
+    },
+    {
+      "role": "lh_004_canonical_dossier",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
+      "sha256": "133a5535541782f89d2fe8f43d560b50deebf1a91cd2367abcf1169c6d5c1e4e",
+      "bytes": 8917,
+      "git_tracked": true
+    },
+    {
+      "role": "lh_002_canonical_dossier",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
+      "sha256": "b531f6634fa54726b2f0740c7bed4530754f1f8469f3270a7d0e78b7756c5eb0",
+      "bytes": 6320,
+      "git_tracked": true
+    },
+    {
+      "role": "lh_006_canonical_dossier",
+      "usage": "validation_only",
+      "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
+      "sha256": "b61eab3f92fabba681ddc0253d74ba74c839a22b4be8fc5a6f2ab70eb020822a",
+      "bytes": 6320,
+      "git_tracked": true
+    }
+  ],
+  "lineage_checks": {
+    "patched_model_lineage_current": true,
+    "protected_rgb_lineage_current": true,
+    "model_reference_machine_approval_state": "FOUNDER_REVIEW_REQUIRED",
+    "model_reference_machine_founder_approval_recorded": false,
+    "product_proof_current": true,
+    "tournament_thresholds_locked": true,
+    "required_judges_live": false,
+    "judge_availability_receipt_fresh": false,
+    "judge_availability_status": "BLOCKED_REQUIRED_JUDGE_UNAVAILABLE"
+  },
+  "round_2_invariant": {
+    "calibration_evidence_for_both_assets": false,
+    "current_pair_verdict": "UNRESOLVABLE",
+    "relight_authority": false,
+    "max_abs_log_gain": 0,
+    "protected_low_frequency_source": "approved_two_model_identity_pose_and_product_placement_reference"
+  },
+  "per_region_fidelity_gate_count": 7,
+  "automatic_rejection_rule_count": 16,
+  "batch_candidate_count": 9,
+  "generation_permitted": false,
+  "generation_blockers": [
+    "GENERATION_NOT_AUTHORIZED",
+    "CONTRACT_REQUIRES_OPUS_REVIEW",
+    "CONTRACT_EXPLICITLY_BLOCKS_GENERATION",
+    "RESPONSIVE_SAFE_ZONES_ARE_PROVISIONAL",
+    "MANDATORY_TOURNAMENT_JUDGES_UNAVAILABLE",
+    "MODEL_REFERENCE_MACHINE_FOUNDER_APPROVAL_NOT_RECORDED",
+    "PASS_READY_TO_GENERATE_RECEIPT_NOT_ISSUED",
+    "FRESH_FOUNDER_GENERATION_AUTHORIZATION_REQUIRED"
+  ],
+  "v2_wiring_authorized": false,
+  "deployment_authorized": false,
+  "visual_correctness_claimed": false
+}

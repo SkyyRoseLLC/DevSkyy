@@ -1,0 +1,26 @@
+{
+  "name": "skyyrose-production-guardian",
+  "version": "0.1.0",
+  "description": "Continuous production hardening for DevSkyy: correction learning, regression locks, deterministic repair, adversarial verification, and push/deploy stop gates.",
+  "author": {
+    "name": "SkyyRose LLC"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "SkyyRose Production Guardian",
+    "shortDescription": "Learn from corrections and block regressions.",
+    "longDescription": "Combines project-scoped continuous learning, RED-GREEN regression locking, deterministic source-of-truth validation, independent verification, safe generated-artifact repair, and approval-preserving ship gates.",
+    "developerName": "SkyyRose LLC",
+    "category": "Development",
+    "capabilities": [
+      "Continuous Learning",
+      "Regression Prevention",
+      "TDD",
+      "Production Verification",
+      "Adversarial Review",
+      "Safe Auto-Repair",
+      "Push and Deploy Gates"
+    ],
+    "defaultPrompt": "Run the SkyyRose production correction loop, convert every confirmed defect into a regression lock, and stop before any unapproved external write."
+  }
+}

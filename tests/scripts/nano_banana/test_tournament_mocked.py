@@ -428,25 +428,19 @@ def test_run_tournament_aggregate_equals_synthesis_overall(monkeypatch, fake_ima
     assert len(result.judges) == 3
 
 
-def test_run_tournament_falls_back_to_vision_pair_mean_without_synthesis(
-    monkeypatch, fake_image_pair
-):
-    """No anthropic client → no synthesis judge → aggregate = vision_pair_mean."""
+def test_run_tournament_requires_synthesis(monkeypatch, fake_image_pair):
+    """No anthropic client fails closed instead of using a degraded mean."""
     src, cand = fake_image_pair
     monkeypatch.setattr(tournament, "judge_with_gpt", lambda *a, **kw: _vision_with_overall(82))
     monkeypatch.setattr(tournament, "judge_with_gemini", lambda *a, **kw: _vision_with_overall(78))
 
     clients = {"openai": MagicMock(), "gemini": MagicMock()}  # no anthropic
-    result = run_tournament(clients, src, cand, dna={"spec": "..."})
-
-    assert result.synthesis_overall is None
-    assert result.aggregate_score == 80.0  # (82 + 78) / 2
-    assert result.vision_pair_mean == 80.0
-    assert len(result.judges) == 2
+    with pytest.raises(ValueError, match="synthesis judge"):
+        run_tournament(clients, src, cand, dna={"spec": "..."})
 
 
-def test_run_tournament_one_vision_judge_runs_with_warning(monkeypatch, fake_image_pair, caplog):
-    """Only one vision client → tournament runs degraded; missing slot is placeholder."""
+def test_run_tournament_requires_both_vision_judges(monkeypatch, fake_image_pair):
+    """A missing vision judge fails closed before any degraded tournament runs."""
     src, cand = fake_image_pair
     monkeypatch.setattr(tournament, "judge_with_gpt", lambda *a, **kw: _vision_with_overall(72))
     # judge_with_gemini should NOT be called since gemini client is missing
@@ -455,20 +449,9 @@ def test_run_tournament_one_vision_judge_runs_with_warning(monkeypatch, fake_ima
         "judge_with_gemini",
         lambda *a, **kw: pytest.fail("gemini judge ran without a client"),
     )
-    # Synthesis still runs against the placeholder
-    monkeypatch.setattr(
-        tournament, "judge_with_opus_synthesis", lambda *a, **kw: _synthesis_with_overall(60)
-    )
-
-    import logging
-
     clients = {"openai": MagicMock(), "anthropic": MagicMock()}
-    with caplog.at_level(logging.WARNING, logger="nano_banana.tournament"):
-        result = run_tournament(clients, src, cand, dna={"spec": "..."})
-
-    assert any("running with 1/2 judges" in rec.message.lower() for rec in caplog.records)
-    assert result.aggregate_score == 60.0  # synthesis still runs
-    assert result.vision_pair_mean == 72.0  # Only the available vision judge counts
+    with pytest.raises(ValueError, match="every required vision judge"):
+        run_tournament(clients, src, cand, dna={"spec": "..."})
 
 
 def test_run_tournament_zero_vision_judges_raises(fake_image_pair):
@@ -512,9 +495,14 @@ def test_run_tournament_dedupes_fixes_across_judges(monkeypatch, fake_image_pair
             GEMINI_JUDGE_MODEL, 70, ["match #0a0a0a", "Remove cloud"]
         ),
     )
+    monkeypatch.setattr(
+        tournament,
+        "judge_with_opus_synthesis",
+        lambda *a, **kw: _synthesis_with_overall(98),
+    )
 
     result = run_tournament(
-        clients={"openai": MagicMock(), "gemini": MagicMock()},
+        clients={"openai": MagicMock(), "gemini": MagicMock(), "anthropic": MagicMock()},
         source_path=src,
         candidate_path=cand,
         dna={},
@@ -528,15 +516,18 @@ def test_run_tournament_dedupes_fixes_across_judges(monkeypatch, fake_image_pair
     assert "remove cloud" in fixes_lower
 
 
-def test_run_tournament_passing_threshold_drives_passed_98(monkeypatch, fake_image_pair):
-    """passed_98 reflects aggregate_score against the configured threshold."""
+def test_run_tournament_strict_three_judge_gate_drives_passed_98(monkeypatch, fake_image_pair):
+    """Passing requires both vision scores >=95 plus synthesis >=98 with no veto."""
     src, cand = fake_image_pair
     monkeypatch.setattr(tournament, "judge_with_gpt", lambda *a, **kw: _vision_with_overall(95))
     monkeypatch.setattr(tournament, "judge_with_gemini", lambda *a, **kw: _vision_with_overall(95))
 
-    # Threshold 80 → 95 passes
+    monkeypatch.setattr(
+        tournament, "judge_with_opus_synthesis", lambda *a, **kw: _synthesis_with_overall(98)
+    )
+
     r1 = run_tournament(
-        clients={"openai": MagicMock(), "gemini": MagicMock()},
+        clients={"openai": MagicMock(), "gemini": MagicMock(), "anthropic": MagicMock()},
         source_path=src,
         candidate_path=cand,
         dna={},
@@ -544,15 +535,33 @@ def test_run_tournament_passing_threshold_drives_passed_98(monkeypatch, fake_ima
     )
     assert r1.passed_98 is True
 
-    # Threshold 98 → 95 fails (despite the field name, threshold is configurable)
+    monkeypatch.setattr(tournament, "judge_with_gemini", lambda *a, **kw: _vision_with_overall(94))
     r2 = run_tournament(
-        clients={"openai": MagicMock(), "gemini": MagicMock()},
+        clients={"openai": MagicMock(), "gemini": MagicMock(), "anthropic": MagicMock()},
         source_path=src,
         candidate_path=cand,
         dna={},
         passing_threshold=98.0,
     )
     assert r2.passed_98 is False
+
+
+def test_run_tournament_hallucination_veto_blocks_passing(monkeypatch, fake_image_pair):
+    src, cand = fake_image_pair
+    monkeypatch.setattr(tournament, "judge_with_gpt", lambda *a, **kw: _vision_with_overall(100))
+    monkeypatch.setattr(tournament, "judge_with_gemini", lambda *a, **kw: _vision_with_overall(100))
+    monkeypatch.setattr(
+        tournament,
+        "judge_with_opus_synthesis",
+        lambda *a, **kw: _synthesis_with_overall(100, veto=True),
+    )
+    result = run_tournament(
+        clients={"openai": MagicMock(), "gemini": MagicMock(), "anthropic": MagicMock()},
+        source_path=src,
+        candidate_path=cand,
+        dna={"spec": "..."},
+    )
+    assert result.passed_98 is False
 
 
 def test_run_tournament_propagates_synthesis_judgment_to_judges_list(monkeypatch, fake_image_pair):

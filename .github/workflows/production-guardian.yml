@@ -1,0 +1,22 @@
+name: Production Guardian
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hardening:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate guardian plugin
+        run: python3 "$GITHUB_WORKSPACE/plugins/skyyrose-production-guardian/scripts/guardian.py" check --root "$GITHUB_WORKSPACE" --mode ci
+      - name: Test guardian rules
+        run: python3 -m pytest -q plugins/skyyrose-production-guardian/tests

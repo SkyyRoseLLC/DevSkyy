@@ -1,0 +1,12 @@
+{
+  "schema": "skyyrose.image-generation-preflight-receipt.v1",
+  "status": "BLOCKED_NATIVE_SCENE_RELEASE",
+  "generated_at": "2026-08-24T15:51:30.226577+00:00",
+  "scene_id": "LH-COMMERCE-1",
+  "generation_permitted": false,
+  "blockers": [
+    "TRUSTED_PROVIDER_TOOL_RESULT_VERIFIER_UNAVAILABLE",
+    "REQUIRED_JUDGE_LIVE_PROBE_FAILED",
+    "required judge unavailable"
+  ]
+}

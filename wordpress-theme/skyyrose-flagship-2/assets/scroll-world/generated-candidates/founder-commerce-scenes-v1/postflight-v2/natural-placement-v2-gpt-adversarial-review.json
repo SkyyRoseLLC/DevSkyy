@@ -1,0 +1,137 @@
+{
+  "schema": "skyyrose.gpt-adversarial-image-review.v2",
+  "review_scope": "seven natural-placement-v2 candidates",
+  "overall_verdict": "REJECT",
+  "threshold": 95,
+  "recommend_ship": false,
+  "recommend_wire_or_deploy": false,
+  "overall_pass_for_founder_review": false,
+  "founder_approval_remains_separate": true,
+  "inspection_status": "completed_for_all_seven_full_resolution_candidates",
+  "prompt_contract": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/natural-placement-and-patch-v2.json",
+    "sha256": "df59bb8b9492826fc645061625be2f79b1d2f28fe3b620139cd33b4bf39858c9"
+  },
+  "contact_sheet": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-nine-scenes-natural-placement-v2.jpg",
+    "sha256": "cb9b76655c900862715cc01c66211880b80d439bddb17642ae7f462f637cdb7d"
+  },
+  "best_available_candidates": [
+    {"scene_id": "sig-commerce-2", "reason": "Best natural placement and coherent cast; embroidery exactness and width still fail."},
+    {"scene_id": "br-commerce-1", "reason": "Strong scene preservation; embossed and silicone product details are not exact."},
+    {"scene_id": "sig-commerce-3", "reason": "Strong multi-model composition; preorder SKU details and prints drift."}
+  ],
+  "per_scene": [
+    {
+      "scene_id": "br-commerce-1",
+      "candidate_sha256": "6c0a01f54a6ce46fb4d2b947e882a3c32ca158001e1d0c521a6300c7697e5070",
+      "natural_placement_score": 84,
+      "scene_preservation_score": 94,
+      "product_fidelity_score": 76,
+      "pass_for_founder_review": false,
+      "hallucination_veto": false,
+      "bounded_patch_regions": ["crewneck embossed relief", "jogger silicone thigh applique"],
+      "exact_visible_mismatches": [
+        "Crewneck mark reads as softened flat art instead of exact raised black-on-black embossed relief.",
+        "Fine rose outlines, grey leaf texture and cloud-edge geometry are simplified.",
+        "Jogger thigh applique is too low-detail to certify as the exact molded silicone mark.",
+        "White waistband and cuffs are visually ambiguous."
+      ]
+    },
+    {
+      "scene_id": "br-commerce-2",
+      "candidate_sha256": "0b5800004b305abe45b1bfb09771f7b4aeb5a443713b1d89dbbc1b5be0cb6a0e",
+      "natural_placement_score": 86,
+      "scene_preservation_score": 93,
+      "product_fidelity_score": 61,
+      "pass_for_founder_review": false,
+      "hallucination_veto": true,
+      "bounded_patch_regions": ["hoodie chest silicone cut-out", "hoodie side-body embroidery placement", "shorts lettering and narrow side insert"],
+      "exact_visible_mismatches": [
+        "Chest mark reads as a light printed patch rather than a raised tonal silicone cut-out.",
+        "Large rose/cloud art intersects the sleeve and forearm instead of remaining on the side-body panel.",
+        "OAKLAND and Love Hurts lettering, rose repeat and multicolor side mark are softened or generalized.",
+        "White mesh insert is too broad and loses exact panel and binding geometry."
+      ]
+    },
+    {
+      "scene_id": "lh-commerce-2",
+      "candidate_sha256": "3442db8998ddb600ebdc919f0dd91c1ddd9bb224731ef14e21daffd4dda7d118",
+      "natural_placement_score": 87,
+      "scene_preservation_score": 95,
+      "product_fidelity_score": 66,
+      "pass_for_founder_review": false,
+      "hallucination_veto": true,
+      "bounded_patch_regions": ["complete Love Hurts lettering", "rose-and-cloud sublimation repeat", "side panel and binding"],
+      "exact_visible_mismatches": [
+        "Rose/cloud repeat is generalized and brown-orange instead of the exact physical sublimation.",
+        "Complete Love Hurts script is not preserved.",
+        "Side-panel angles, binding proportions, stitched marks and zipper construction drift."
+      ]
+    },
+    {
+      "scene_id": "lh-commerce-3",
+      "candidate_sha256": "fe6b7e5deb20a84505d2c6896221648f208d43be619fe3b777165b381e33ba62",
+      "natural_placement_score": 88,
+      "scene_preservation_score": 96,
+      "product_fidelity_score": 57,
+      "pass_for_founder_review": false,
+      "hallucination_veto": true,
+      "bounded_patch_regions": ["FANNIE embroidery and rose cluster"],
+      "exact_visible_mismatches": [
+        "FANNIE lettering is warped and not exactly legible.",
+        "Wordmark style and baseline drift from the physical product.",
+        "Rose cluster, zipper line, pull, buckle, strap hardware and panel seam are softened or inexact."
+      ]
+    },
+    {
+      "scene_id": "sig-commerce-1",
+      "candidate_sha256": "8e6b33308db1b6335a930ee97e8dd5b85d74cd0c49175aa97b4b1499bf08d010",
+      "natural_placement_score": 86,
+      "scene_preservation_score": 94,
+      "product_fidelity_score": 62,
+      "pass_for_founder_review": false,
+      "hallucination_veto": true,
+      "bounded_patch_regions": ["beanie molded silicone patch", "Sherpa chest embroidery and hem tab"],
+      "exact_visible_mismatches": [
+        "Beanie patch is a generic white square rather than the molded silicone rose-over-cloud patch.",
+        "Sherpa embroidery stitch texture and color separation are not exact.",
+        "Candidate width is 1670 rather than 1672 pixels."
+      ]
+    },
+    {
+      "scene_id": "sig-commerce-2",
+      "candidate_sha256": "585588118ca909d03fe91fc613c9c6ec4c2c1bb0d7a9af2dd17607db1393b736",
+      "natural_placement_score": 87,
+      "scene_preservation_score": 91,
+      "product_fidelity_score": 74,
+      "pass_for_founder_review": false,
+      "hallucination_veto": false,
+      "bounded_patch_regions": ["male chest and thigh embroideries", "female hoodie embroidery", "plain unbranded female trousers"],
+      "exact_visible_mismatches": [
+        "Male chest, male thigh and female hoodie marks are softened and printed-looking instead of exact embroidery.",
+        "Female trousers are unbranded but read as matching sweats rather than clearly neutral trousers.",
+        "Candidate width is 1671 rather than 1672 pixels."
+      ]
+    },
+    {
+      "scene_id": "sig-commerce-3",
+      "candidate_sha256": "b32c183bb7df127b8405d34d631fc9e08279833a7f775b184b910e54031be1ee",
+      "natural_placement_score": 86,
+      "scene_preservation_score": 93,
+      "product_fidelity_score": 68,
+      "pass_for_founder_review": false,
+      "hallucination_veto": true,
+      "bounded_patch_regions": ["Bay Bridge shirt embroidery and shorts sublimation", "Stay Golden shirt embroidery and shorts sublimation", "windbreaker chevrons, pockets, ribbing and rose marks"],
+      "exact_visible_mismatches": [
+        "Bay Bridge and Stay Golden embroidery linework and material relief are not exact.",
+        "Both shorts use generalized bridge/city sublimation; the left lower mark is substituted or ambiguous.",
+        "Windbreaker chevron registration, rose marks, zipper trim, pockets and rib proportions drift."
+      ]
+    }
+  ],
+  "unverified_scope": [
+    "Responsive browser captures and live UI behavior were not part of this static asset gate.",
+    "No files were wired, approved, deployed or promoted by this review."
+  ]
+}

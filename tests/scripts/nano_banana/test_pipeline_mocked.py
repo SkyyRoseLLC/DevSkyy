@@ -108,7 +108,7 @@ def _make_tournament_result(
     gpt = _make_judgment(judge="gpt-stub", overall=int(score), text=text, logo=logo)
     gem = _make_judgment(judge="gem-stub", overall=int(score), text=text, logo=logo)
     synth = JudgmentScore(
-        judge="claude-opus-4-7",
+        judge="claude-opus-5",
         garment_type=int(score),
         color_accuracy=int(score),
         text_accuracy=text,

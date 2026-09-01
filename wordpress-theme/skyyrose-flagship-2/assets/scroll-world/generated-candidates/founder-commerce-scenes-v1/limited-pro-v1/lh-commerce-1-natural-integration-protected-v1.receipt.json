@@ -1,0 +1,48 @@
+{
+  "schema": "skyyrose.natural-scene-integration-receipt.v1",
+  "scene_id": "LH-COMMERCE-1",
+  "prompt": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-natural-integration-v1.json",
+  "prompt_sha256": "5791c9943782acc530085b0fb26196c42b308e39d25c557c86723a87f903e4d3",
+  "plate": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+  "plate_sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+  "protected_model_layer": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+  "protected_model_layer_sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+  "guide": null,
+  "guide_sha256": null,
+  "layout_output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-natural-layout-v1.png",
+  "layout_output_sha256": "cb8f0a18ffeac9959ea823c729c6e5c0bccc2924636de00ab4e07a4546448af3",
+  "production_output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-natural-integration-protected-v1.png",
+  "production_output_sha256": "cb8f0a18ffeac9959ea823c729c6e5c0bccc2924636de00ab4e07a4546448af3",
+  "dimensions": [
+    1672,
+    941
+  ],
+  "model_placement": {
+    "origin": [
+      245,
+      105
+    ],
+    "scaled_dimensions": [
+      519,
+      780
+    ],
+    "opaque_bounds": [
+      281,
+      123,
+      722,
+      877
+    ],
+    "floor_contact_y": 875
+  },
+  "product_pixel_policy": {
+    "generator_output_is_guide_only": true,
+    "generated_pixels_removed_within_dilated_model_silhouette": false,
+    "protected_layer_composited_last": true,
+    "fully_opaque_model_rgb_exact": true,
+    "contact_shadow_derived_from_alpha": true,
+    "reflection_derived_from_protected_layer": true
+  },
+  "approval_state": "FOUNDER_REVIEW_REQUIRED",
+  "v2_wired": false,
+  "deployment_authorized": false
+}

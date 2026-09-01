@@ -1,7 +1,7 @@
 {
   "generated_from": "data/product-sot.json",
   "kind": "skyyrose-v2-product-presentation-registry",
-  "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
   "products": {
     "br-001": {
       "collection": "black-rose",
@@ -40,9 +40,9 @@
     "br-005": {
       "collection": "black-rose",
       "is_preorder": false,
-      "media_proof_level": "canonical_product_reference",
+      "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
-      "product_sot_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20",
+      "product_sot_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e",
       "route": "/collections/black-rose/"
     },
     "br-006": {
@@ -58,7 +58,7 @@
       "is_preorder": false,
       "media_proof_level": "physical_product_photo",
       "presentation": "black-rose",
-      "product_sot_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6",
+      "product_sot_hash": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b",
       "route": "/collections/black-rose/"
     },
     "br-008": {
@@ -150,9 +150,9 @@
     "lh-002": {
       "collection": "love-hurts",
       "is_preorder": false,
-      "media_proof_level": "approved_design_reference",
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
-      "product_sot_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804",
+      "product_sot_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
       "route": "/collections/love-hurts/"
     },
     "lh-003": {
@@ -166,9 +166,9 @@
     "lh-004": {
       "collection": "love-hurts",
       "is_preorder": false,
-      "media_proof_level": "approved_design_reference",
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
-      "product_sot_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13",
+      "product_sot_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
       "route": "/collections/love-hurts/"
     },
     "lh-005": {
@@ -182,9 +182,9 @@
     "lh-006": {
       "collection": "love-hurts",
       "is_preorder": false,
-      "media_proof_level": "approved_design_reference",
+      "media_proof_level": "physical_product_photo",
       "presentation": "love-hurts",
-      "product_sot_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1",
+      "product_sot_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079",
       "route": "/collections/love-hurts/"
     },
     "sg-001": {
@@ -214,9 +214,9 @@
     "sg-005": {
       "collection": "signature",
       "is_preorder": true,
-      "media_proof_level": "approved_design_reference",
+      "media_proof_level": "physical_product_photo",
       "presentation": "signature",
-      "product_sot_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda",
+      "product_sot_hash": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6",
       "route": "/collections/signature/"
     },
     "sg-006": {

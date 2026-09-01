@@ -1,0 +1,36 @@
+{
+  "schema": "skyyrose.founder-media-approval.v1",
+  "scene_id": "LH-COMMERCE-1",
+  "candidate": "limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+  "candidate_sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+  "approved_at": "2026-08-24T06:12:02Z",
+  "approved_by": "founder",
+  "approval_evidence": "Founder replied 'approve' after reviewing the exact logo-only patched candidate.",
+  "approval_state": "FOUNDER_APPROVED",
+  "approved_scope": {
+    "collection": "love-hurts",
+    "scene": "LH-COMMERCE-1",
+    "skus": [
+      "lh-004",
+      "lh-002",
+      "lh-006"
+    ],
+    "view": "front two-model combined look",
+    "v2_local_wiring": true,
+    "deployment": false
+  },
+  "bindings": {
+    "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+    "limited_prompt_sha256": "968eacac73b90c9bca08a428a214f09682e1aac68e349c5c6581192092c21b7e",
+    "limited_preflight_sha256": "aecf031d553a2e88ab5e56cf63b8c42028571f8b33b398d04e2a5bb39367b7cf",
+    "surgical_patch_receipt_sha256": "f94e6b7abb1324d6c633ae92204131e09ec69652afc63814838fef40c68952ee",
+    "adversarial_review_sha256": "1bb440a2e4bae22d71dfffef910ddecc06d7e6deca3c5de1fd1b2b4607226885"
+  },
+  "disclosed_review_state": {
+    "adversarial_verdict": "partially-improved",
+    "adversarial_recommend_ship": false,
+    "founder_override": true,
+    "override_scope": "Founder accepted the exact candidate after directing a logo-only patch."
+  },
+  "deployment_authorized": false
+}

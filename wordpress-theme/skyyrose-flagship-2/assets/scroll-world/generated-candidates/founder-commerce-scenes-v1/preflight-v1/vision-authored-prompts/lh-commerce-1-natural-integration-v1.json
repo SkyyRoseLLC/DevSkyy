@@ -1,0 +1,75 @@
+{
+  "schema": "skyyrose.natural-scene-integration-prompt.v1",
+  "status": "FOUNDER_APPROVED_PRODUCT_PIXELS_INTEGRATION_CANDIDATE",
+  "job": "lh-commerce-1-natural-integration-v1",
+  "scene_id": "LH-COMMERCE-1",
+  "scope": "Naturally integrate the founder-approved Love Hurts two-model product layer into The Vow Aisle without repainting any model or garment pixels.",
+  "authorization": {
+    "basis": "Founder requested that approved models be naturally placed into the collection scenes using the vision-grounded prompt system.",
+    "product_repainting_authorized": false,
+    "scene_integration_guide_authorized": true,
+    "v2_wiring_before_founder_review": false,
+    "deployment_authorized": false
+  },
+  "vision_method": {
+    "model": "current Codex/ChatGPT multimodal session with Image 2 integration guide",
+    "plate_and_protected_layer_visualized_before_prompt": true,
+    "prompt_written_in_json_before_generation": true,
+    "generated_product_pixels_may_be_final": false,
+    "protected_product_pixels_restored_after_generation": true
+  },
+  "inputs": [
+    {
+      "role": "founder_approved_love_hurts_cathedral_plate",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+      "sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+      "dimensions": [1672, 941]
+    },
+    {
+      "role": "founder_approved_protected_two_model_product_layer",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+      "sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+      "dimensions": [1023, 1537],
+      "skus": ["lh-004", "lh-002", "lh-006"]
+    }
+  ],
+  "visual_diagnosis": [
+    "The current CSS overlay is centered too close to the product navigation and reads as a cutout because it has only a generic drop shadow.",
+    "The cathedral plate has a low glossy black floor, a warm overhead aisle light, red side light from the windows and roses, and a strong central vanishing point.",
+    "The enchanted rose under glass is the collection's emotional co-protagonist and must retain an unobstructed center sightline.",
+    "The approved two-model layer already contains the exact founder-approved satin bombers, black and white joggers, and patched heart-and-rose thigh logos; none of those pixels may be regenerated.",
+    "The models should occupy the left foreground as a single fashion pair, with their shoes contacting the same floor plane and the enchanted rose visible beyond their right shoulder line.",
+    "Natural integration requires scale consistent with the cathedral aisle, warm rim light around the silhouettes, soft black contact shadows beneath both shoes, and restrained vertical reflections on the polished floor."
+  ],
+  "layout_contract": {
+    "canvas": [1672, 941],
+    "protected_group": {
+      "height_px": 780,
+      "x_px": 245,
+      "y_px": 105,
+      "expected_opaque_bounds_px": [283, 125, 719, 875],
+      "floor_contact_y_px": 875,
+      "narrative_role": "left-foreground product protagonists"
+    },
+    "protected_rose_safe_zone_px": [744, 300, 930, 535],
+    "shopping_ui_safe_zone_px": [1120, 36, 1632, 410],
+    "copy_safe_zone_px": [50, 590, 590, 915]
+  },
+  "positive_prompt": "Create a cinematic natural-integration GUIDE from IMAGE 1 and IMAGE 2 for SkyyRose Love Hurts scene LH-COMMERCE-1. IMAGE 1 is the locked cathedral environment. IMAGE 2 is the locked founder-approved two-model product layer. Keep the cathedral architecture, central vanishing point, red rose-lined aisle, reflective black floor, candles, and enchanted rose under glass recognizable and undistorted. Place the complete two-model pair together in the LEFT FOREGROUND at the exact layout coordinates supplied in this JSON: 780 pixels tall on the 1672 by 941 canvas, group origin x=245 y=105, both pairs of shoes meeting floor y=875. Leave the enchanted rose fully readable in the center distance and reserve the upper-right shopping UI corridor. Make the pair feel photographed inside this cathedral through physically coherent scene interaction only: soft black contact shadows directly beneath every shoe; narrow, vertically compressed reflections beneath the shoes on the glossy floor; subtle warm aisle-light rim around hair, shoulders, and outer silhouettes; faint red bounce from the rose windows and petals onto the surrounding floor and air; consistent depth, grain, contrast, and atmospheric falloff. Treat IMAGE 2 as an immutable protected product plate. Do not redesign, repaint, relight, restyle, re-pose, split, crop, or rewrite either person or garment. The final production compositor will restore the exact protected pixels after using this output as a lighting and placement guide. Generate no UI, product cards, captions, lettering, logos, watermarks, or added people.",
+  "negative_prompt": "No garment repaint. No face change. No pose change. No anatomy change. No changed satin, ribbing, stripes, snaps, jogger panels, drawstrings, shoes, chest scripts, or thigh logos. No new logo or text. No floating feet. No hard sticker halo. No generic studio drop shadow. No giant reflection. No fog hiding the products. No occlusion of the enchanted rose. No moving or replacing the rose under glass. No altered cathedral geometry. No product panel, CTA, title, caption, watermark, frame, checkerboard, or transparency preview.",
+  "protected_pixel_gate": {
+    "final_model_rgb_source": "founder_approved_protected_two_model_product_layer",
+    "generator_output_role": "scene_integration_guide_only",
+    "generated_pixels_removed_within_dilated_model_silhouette": true,
+    "exact_protected_layer_composited_last": true,
+    "opaque_model_rgb_must_match_resized_protected_layer": true,
+    "contact_shadow_and_reflection_must_be_derived_from_protected_alpha": true
+  },
+  "output": {
+    "guide_format": "png",
+    "production_format": "png",
+    "production_dimensions": [1672, 941],
+    "approval_state": "FOUNDER_REVIEW_REQUIRED",
+    "v2_wiring_allowed_before_founder_approval": false
+  }
+}

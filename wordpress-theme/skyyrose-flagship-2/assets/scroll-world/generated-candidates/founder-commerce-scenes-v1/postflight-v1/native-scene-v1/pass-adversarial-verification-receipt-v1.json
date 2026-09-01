@@ -1,0 +1,6 @@
+{
+  "schema": "skyyrose.adversarial-image-verification-receipt.v1",
+  "status": "BLOCKED_STALE_ADVERSARIAL_VERIFICATION",
+  "generated_at": "2026-08-24T15:51:07.077154+00:00",
+  "reason": "a new release preflight was started"
+}

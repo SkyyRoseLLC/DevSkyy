@@ -1,0 +1,120 @@
+{
+  "schema": "skyyrose.image-generation-product-proof.v1",
+  "stage": "BEFORE_PROMPT_AUTHORING",
+  "approval_state": "INPUT_EVIDENCE_ONLY_NOT_GENERATED",
+  "product_sot": {
+    "file": "data/product-sot.json",
+    "sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12"
+  },
+  "items": [
+    {
+      "label": "BR-005 / physical hoodie",
+      "skus": [
+        "br-005"
+      ],
+      "source": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+      "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+      "product_hashes": {
+        "br-005": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e"
+      }
+    },
+    {
+      "label": "BR-007 / founder front + left side",
+      "skus": [
+        "br-007"
+      ],
+      "source": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+      "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+      "product_hashes": {
+        "br-007": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b"
+      }
+    },
+    {
+      "label": "BR-007 / founder back",
+      "skus": [
+        "br-007"
+      ],
+      "source": "assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg",
+      "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2",
+      "product_hashes": {
+        "br-007": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b"
+      }
+    },
+    {
+      "label": "LH-004 / physical satin bomber",
+      "skus": [
+        "lh-004"
+      ],
+      "source": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+      "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256",
+      "product_hashes": {
+        "lh-004": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69"
+      }
+    },
+    {
+      "label": "LH-002 / physical black jogger",
+      "skus": [
+        "lh-002"
+      ],
+      "source": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+      "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f",
+      "product_hashes": {
+        "lh-002": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed"
+      }
+    },
+    {
+      "label": "LH-006 / physical white jogger",
+      "skus": [
+        "lh-006"
+      ],
+      "source": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+      "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
+      "product_hashes": {
+        "lh-006": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
+      }
+    },
+    {
+      "label": "LH-002 + LH-006 / exact thigh logo",
+      "skus": [
+        "lh-002",
+        "lh-006"
+      ],
+      "source": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+      "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+      "product_hashes": {
+        "lh-002": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
+        "lh-006": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
+      }
+    },
+    {
+      "label": "SG-001 / physical Bay Bridge shorts",
+      "skus": [
+        "sg-001"
+      ],
+      "source": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c",
+      "product_hashes": {
+        "sg-001": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941"
+      }
+    },
+    {
+      "label": "SG-005 / physical Bay Bridge shirt",
+      "skus": [
+        "sg-005"
+      ],
+      "source": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
+      "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1",
+      "product_hashes": {
+        "sg-005": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6"
+      }
+    }
+  ],
+  "board": {
+    "file": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/product-proof-board-v1.png",
+    "sha256": "18134718710facfed7ea247fc8c43cf0cfdc397f4fda76ca1ce42b07d29c6e53",
+    "dimensions": [
+      1800,
+      1692
+    ]
+  }
+}

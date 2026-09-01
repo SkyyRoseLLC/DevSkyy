@@ -1,0 +1,42 @@
+{
+  "schema": "skyyrose.rejected-image-generation-attempt.v1",
+  "status": "ABORTED_FOUNDER_VETO_AND_OUTPUT_CONTRACT_FAILURE",
+  "approval_state": "REJECTED_NOT_FOR_REPO_MEDIA_OR_COMPOSITOR",
+  "preflight_prompt_sha256": "9777a6e03815d01273e35f4f6ab5305d2329c6cb5dd13f786dccd93a42e14aca",
+  "completed_jobs": {
+    "br-commerce-2-v3": {
+      "external_generated_file": "exec-6165bbad-4a6b-4ca2-bc4b-79c11634060e.png",
+      "sha256": "99e35d94f5102488dbde7d6f799ad44a216bbca13cd41b0e28b5d59879e8aecf",
+      "dimensions": [941, 1672],
+      "mode": "RGB",
+      "alpha": null,
+      "verdict": "regressed",
+      "recommend_ship": false,
+      "failures": [
+        "checkerboard is baked into RGB pixels; output has no alpha channel",
+        "BR-005 large artwork remains on sleeve/forearm instead of the side body",
+        "BR-005 chest mark is not an exact raised silicone asset",
+        "BR-007 and model pixels were broadly re-synthesized instead of surgically preserved"
+      ]
+    },
+    "lh-commerce-1-v2": {
+      "external_generated_file": "exec-29486c2e-ee90-41f7-8e10-a0a71b830402.png",
+      "sha256": "096afd657d5c8668dd697eaf80a87324b6d1684b9e3d51c1b868ece66c34861f",
+      "dimensions": [1023, 1537],
+      "mode": "RGB",
+      "alpha": null,
+      "verdict": "regressed",
+      "recommend_ship": false,
+      "failures": [
+        "checkerboard is baked into RGB pixels; output has no alpha channel",
+        "both thigh logos are generic rose arrangements rather than the exact heart-shaped-base composite",
+        "models and garment pixels were broadly re-synthesized instead of surgically preserved"
+      ]
+    }
+  },
+  "not_dispatched": ["sig-commerce-3-v3"],
+  "tournament_state": "SKIPPED_BECAUSE_FOUNDER_VETO_AND_MECHANICAL_OUTPUT_FAILURE_PRECEDE_PAID_JUDGING",
+  "compositor_state": "BLOCKED",
+  "repository_media_state": "NO_GENERATED_IMAGE_COPIED_INTO_REPOSITORY",
+  "required_next_method": "DETERMINISTIC_PROTECTED_PIXEL_COMPOSITING_WITH_EXACT_LOGO_ASSETS_AND_MEASURED_EDIT_MASKS"
+}

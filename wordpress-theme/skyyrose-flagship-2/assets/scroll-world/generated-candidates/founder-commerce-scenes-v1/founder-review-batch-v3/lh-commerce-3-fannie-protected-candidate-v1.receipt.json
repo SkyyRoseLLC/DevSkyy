@@ -1,0 +1,37 @@
+{
+  "schema": "skyyrose.protected-scene-composite.v1",
+  "scene_id": "LH-COMMERCE-3",
+  "candidate_only": true,
+  "founder_approval_required": true,
+  "v2_wired": false,
+  "deployment_authorized": false,
+  "plate": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-3-fannie-vitrine-plate-v1.png",
+    "sha256": "8179bf5a0b7fc83427844e4d4d06a684ea8ee055a9ce59423ccc5923ab40c73b",
+    "dimensions": [
+      1672,
+      941
+    ]
+  },
+  "protected_model": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-005-onmodel-logo-pass-protected-v1.png",
+    "sha256": "18be7a61147ccdef88eaf8fe1fc0c701924c29c8e2bc8bbd453a8291f109934f",
+    "placement": [
+      135,
+      76,
+      539,
+      810
+    ],
+    "fully_opaque_rgb_exact": true
+  },
+  "overlays": [],
+  "floor_interaction": {
+    "floor_y": 858,
+    "shadow": "alpha_derived",
+    "reflection": "alpha_derived"
+  },
+  "output": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/founder-review-batch-v3/lh-commerce-3-fannie-protected-candidate-v1.png",
+    "sha256": "a7881cbd24e9af1a4d74b455b8a7d7af2aaba4783e02f5349fa15bddae853b54"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "skyyrose.native-scene-founder-generation-authorization.v1",
+  "authorized_at": "2026-08-24T14:32:34Z",
+  "founder_directives_verbatim": [
+    "release blockers and generate some images",
+    "the plan should be implemented in the workflow"
+  ],
+  "scene_id": "LH-COMMERCE-1",
+  "contract": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-native-scene-regeneration-plan-v1.json",
+  "contract_sha256": "d3bd177d5ec8c085853401c3e07476dd293b7aad898f7c9760a1efb25512b016",
+  "candidate_count": 9,
+  "generation_authorized": true,
+  "review_candidates_only": true,
+  "final_visual_approval_granted": false,
+  "v2_runtime_wiring_authorized": false,
+  "deployment_authorized": false,
+  "production_write_authorized": false,
+  "commit_authorized": false
+}

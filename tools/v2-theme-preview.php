@@ -381,13 +381,13 @@ function has_term( $term, $taxonomy = '', $post = null ) {
 function _n( $single, $plural, $number ) { return 1 === (int) $number ? $single : $plural; }
 
 class WC_Product {
-	private $id; private $name; private $image; private $sku; private $gallery;
-	public function __construct( $id, $name, $image, $sku = '', $gallery = array() ) { $this->id = $id; $this->name = $name; $this->image = $image; $this->sku = $sku ?: 'preview-' . $id; $this->gallery = $gallery; }
+	private $id; private $name; private $image; private $sku; private $gallery; private $price;
+	public function __construct( $id, $name, $image, $sku = '', $gallery = array(), $price = 128 ) { $this->id = $id; $this->name = $name; $this->image = $image; $this->sku = $sku ?: 'preview-' . $id; $this->gallery = $gallery; $this->price = $price; }
 	public function get_id() { return $this->id; }
 	public function get_name() { return $this->name; }
 	public function get_image_id() { return $this->image; }
 	public function get_gallery_image_ids() { return $this->gallery; }
-	public function get_price_html() { return '<span class="woocommerce-Price-amount amount">$128.00</span>'; }
+	public function get_price_html() { return '<span class="woocommerce-Price-amount amount">$' . number_format( (float) $this->price, 2 ) . '</span>'; }
 	public function is_in_stock() { return true; }
 	public function is_visible() { return true; }
 	public function is_purchasable() { return true; }
@@ -399,13 +399,26 @@ class WC_Product {
 }
 function wc_get_products( $args = array() ) {
 	$fixtures = array(
-		new WC_Product( 1, 'Bay Bridge Shirt', 1, 'sg-005', array( 102 ) ),
-		new WC_Product( 2, 'Black Rose Hoodie', 2, 'br-004', array( 201, 202 ) ),
-		new WC_Product( 6, 'Love Hurts Joggers (Black)', 6, 'lh-002' ),
-		new WC_Product( 8, 'Love Hurts Basketball Shorts', 8, 'lh-003' ),
-		new WC_Product( 3, 'Love Hurts Bomber Jacket', 3, 'lh-004', array( 301, 302 ) ),
-		new WC_Product( 9, 'The Fannie', 9, 'lh-005' ),
-		new WC_Product( 10, 'Love Hurts Joggers (White)', 10, 'lh-006' ),
+		new WC_Product( 1, "The Bridge Series 'The Bay Bridge' Shirt", 1, 'sg-005', array( 102 ), 25 ),
+		new WC_Product( 21, "The Bridge Series 'The Bay Bridge' Shorts", 0, 'sg-001', array(), 65 ),
+		new WC_Product( 22, "The Bridge Series 'Stay Golden' Shirt", 0, 'sg-002', array(), 65 ),
+		new WC_Product( 23, "The Bridge Series 'Stay Golden' Shorts", 0, 'sg-003', array(), 65 ),
+		new WC_Product( 26, 'Mint & Lavender Hoodie', 0, 'sg-006', array(), 45 ),
+		new WC_Product( 27, 'The Signature Beanie', 0, 'sg-007', array(), 25 ),
+		new WC_Product( 29, 'The Sherpa Jacket', 0, 'sg-009', array(), 80 ),
+		new WC_Product( 33, 'Mint & Lavender Crewneck', 0, 'sg-013', array(), 40 ),
+		new WC_Product( 34, 'Mint & Lavender Sweatpants', 0, 'sg-014', array(), 45 ),
+		new WC_Product( 35, 'The Windbreaker Set', 0, 'sg-015', array(), 85 ),
+		new WC_Product( 2, 'Black Rose Hoodie', 2, 'br-004', array( 201, 202 ), 65 ),
+		new WC_Product( 11, 'BLACK Rose Crewneck', 0, 'br-001', array(), 35 ),
+		new WC_Product( 12, 'BLACK Rose Joggers', 0, 'br-002', array(), 50 ),
+		new WC_Product( 15, 'BLACK Rose Hoodie — Signature Edition', 0, 'br-005', array(), 65 ),
+		new WC_Product( 17, 'BLACK Rose x Love Hurts Basketball Shorts', 0, 'br-007', array(), 65 ),
+		new WC_Product( 6, 'Love Hurts Joggers (Black)', 6, 'lh-002', array(), 95 ),
+		new WC_Product( 8, 'Love Hurts Basketball Shorts', 8, 'lh-003', array(), 75 ),
+		new WC_Product( 3, 'Love Hurts Bomber Jacket', 3, 'lh-004', array( 301, 302 ), 265 ),
+		new WC_Product( 9, 'The Fannie', 9, 'lh-005', array(), 45 ),
+		new WC_Product( 10, 'Love Hurts Joggers (White)', 10, 'lh-006', array(), 95 ),
 		new WC_Product( 4, 'Kids Colorblock Hoodie Set — Red/Black', 4, 'kids-001', array( 401, 402 ) ),
 		new WC_Product( 5, 'Kids Colorblock Hoodie Set — Purple/Black', 7, 'kids-002', array( 701, 702 ) ),
 	);
@@ -426,11 +439,11 @@ function wc_get_products( $args = array() ) {
 function preview_jersey_products() {
 	return array(
 		new WC_Product( 103, 'Baseball Classic Black', 0, 'br-003' ),
-		new WC_Product( 108, 'SF Inspired Football', 0, 'br-008' ),
-		new WC_Product( 109, 'Last Oakland Football', 0, 'br-009' ),
-		new WC_Product( 110, 'The Bay Basketball', 0, 'br-010' ),
-		new WC_Product( 111, 'The Rose Hockey', 0, 'br-011' ),
-		new WC_Product( 112, 'Last Oakland Baseball', 0, 'br-012' ),
+		new WC_Product( 108, 'BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)', 0, 'br-008', array(), 115 ),
+		new WC_Product( 109, 'BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)', 0, 'br-009', array(), 115 ),
+		new WC_Product( 110, 'BLACK is Beautiful Jersey Series: 3. The Bay (Basketball)', 0, 'br-010', array(), 100 ),
+		new WC_Product( 111, 'BLACK is Beautiful Jersey Series: 4. The Rose (Hockey)', 0, 'br-011', array(), 115 ),
+		new WC_Product( 112, 'BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)', 0, 'br-012', array(), 100 ),
 		new WC_Product( 114, 'Giants Baseball', 0, 'br-014' ),
 		new WC_Product( 115, 'Baseball Classic White', 0, 'br-015' )
 	);

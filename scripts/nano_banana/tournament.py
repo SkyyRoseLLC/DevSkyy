@@ -4,7 +4,7 @@ Architecture:
 - GPT-5.5-Pro and Gemini 3.1 Pro Preview run in parallel as VISION
   judges, each comparing the candidate image against the source spec
   image and producing a structured 7-axis score.
-- Claude Opus 4.7 then runs as a TEXT-ONLY SYNTHESIS judge: it reads the
+- Claude Opus 5 then runs as a TEXT-ONLY SYNTHESIS judge: it reads the
   two vision reports + the DNA spec and produces a final reasoned
   judgment, including a rationale, vision-consensus signal, and a
   hallucination veto. Opus is intentionally NOT given the images — its
@@ -30,16 +30,19 @@ log = logging.getLogger(__name__)
 
 # Vision judges — evaluate source vs candidate images directly.
 # Newest+best models from each provider (verified against live model
-# catalogs on 2026-05-04 — see scripts/nano_banana/CURRENT_MODELS.md).
+# catalogs on 2026-08-23 — see scripts/nano_banana/CURRENT_MODELS.md).
 GPT_JUDGE_MODEL = "gpt-5.5-pro"
 GEMINI_JUDGE_MODEL = "gemini-3.1-pro-preview"
 
 # Synthesis judge — text-only. Opus reads the two vision reports + the DNA
 # spec and returns a final verdict with rationale. Uses adaptive thinking
 # with summarized display so the SDK returns visible reasoning blocks
-# alongside the JSON answer. NO budget_tokens (removed on Opus 4.7); NO
+# alongside the JSON answer. NO budget_tokens (adaptive thinking only); NO
 # temperature/top_p/top_k (also removed).
-OPUS_SYNTHESIS_MODEL = "claude-opus-4-7"
+OPUS_SYNTHESIS_MODEL = "claude-opus-5"
+MINIMUM_EACH_VISION_SCORE = 95
+MINIMUM_FINAL_SCORE = 98
+REQUIRED_HALLUCINATION_VETO_RESULT = False
 
 
 JUDGE_PROMPT = """You are a strict QA inspector for a luxury fashion brand.
@@ -504,18 +507,19 @@ def _format_synthesis_prompt(spec: str, gpt: JudgmentScore, gemini: JudgmentScor
 
 
 def _opus_synthesis_call(client, gpt: JudgmentScore, gemini: JudgmentScore, dna: dict) -> str:
-    """Call Opus 4.7 in text-only synthesis mode.
+    """Call Opus 5 in text-only synthesis mode.
 
-    SDK contract notes (Opus 4.7, verified via Context7 against the
-    Anthropic Python SDK + the migration guide):
+    SDK contract notes (Opus 5, verified against the live Anthropic model
+    capability record on 2026-08-23):
     - Use `thinking={"type": "adaptive", "display": "summarized"}`. Adaptive
-      is the only on-mode for 4.7; `enabled`+`budget_tokens` returns 400.
+      is the supported thinking mode; fixed `enabled`+`budget_tokens` is not.
       `display: "summarized"` makes thinking-block text visible in the
-      response (default is `omitted` on 4.7).
+      response.
     - `effort` lives inside `output_config`, not at the top level. `xhigh`
       sits between `high` and `max` and is the recommended default for
-      reasoning-heavy work on 4.7.
-    - No `temperature`/`top_p`/`top_k` — those are removed on 4.7.
+      reasoning-heavy synthesis work.
+    - The live capability record confirms structured outputs, adaptive
+      thinking, xhigh effort, 1M input tokens, and 128K maximum output tokens.
     """
     spec = _dna_to_spec(dna)
     prompt = _format_synthesis_prompt(spec, gpt, gemini)
@@ -767,14 +771,14 @@ def run_tournament(
 
     Flow:
     1. GPT-5.5-pro + Gemini-3.1-pro-preview run concurrently against both images.
-    2. Their JudgmentScore results are passed to Opus 4.7 as text.
+    2. Their JudgmentScore results are passed to Opus 5 as text.
     3. Opus produces the canonical overall + reasoned rationale.
 
-    Coverage rules:
-    - Zero vision judges → ValueError. Synthesis without vision is meaningless.
-    - One vision judge → warn loudly. Opus still runs but gets a flagged
-      placeholder in the missing slot.
-    - No synthesis client → warn; aggregate falls back to vision-pair mean.
+    Coverage rules are fail-closed for product fidelity:
+    - Both required vision judges must be configured and available.
+    - The required synthesis judge must be configured and available.
+    - Passing requires each vision score >= 95, synthesis >= 98, and a false
+      synthesis hallucination veto. The aggregate score alone is insufficient.
 
     `vision_timeout` defaults to 600s (10 min). Reasoning-mode vision
     models with `effort=high` and dynamic thinking are highly
@@ -798,18 +802,15 @@ def run_tournament(
             "over zero vision reports."
         )
     if vision_missing:
-        log.warning(
-            "Vision pair running with %d/%d judges. Missing: %s. "
-            "Synthesis judge will be told this slot is unavailable.",
-            len(vision_available),
-            len(VISION_JUDGE_LABELS),
-            ", ".join(f"{name} ({VISION_JUDGE_LABELS[name]})" for name in vision_missing),
+        raise ValueError(
+            "Cannot run fidelity tournament: every required vision judge must be "
+            "available. Missing: "
+            + ", ".join(f"{name} ({VISION_JUDGE_LABELS[name]})" for name in vision_missing)
         )
     if not synthesis_available:
-        log.warning(
-            "Synthesis judge (%s) unavailable — aggregate will fall back to "
-            "vision-pair mean. Set ANTHROPIC_API_KEY for full 3-judge mode.",
-            SYNTHESIS_JUDGE_LABEL,
+        raise ValueError(
+            f"Cannot run fidelity tournament: synthesis judge "
+            f"{SYNTHESIS_JUDGE_LABEL} is required. Set ANTHROPIC_API_KEY."
         )
 
     # Stage 1: vision pair, in parallel
@@ -855,9 +856,8 @@ def run_tournament(
         )
         judges.append(synthesis_judgment)
 
-    # Aggregate: synthesis overall is canonical. Without synthesis, fall
-    # back to vision-pair mean of the available judges only — a missing
-    # or failed slot would otherwise drag the mean to 0.
+    # Aggregate remains the synthesis score, but passing is a strict
+    # conjunction across all required judges rather than an average.
     vision_pair_overalls = [
         j.overall
         for j in (vision_judges.get("openai"), vision_judges.get("gemini"))
@@ -866,7 +866,17 @@ def run_tournament(
     vision_pair_mean = (
         sum(vision_pair_overalls) / len(vision_pair_overalls) if vision_pair_overalls else 0.0
     )
-    aggregate = float(synthesis_judgment.overall) if synthesis_judgment else vision_pair_mean
+    aggregate = float(synthesis_judgment.overall) if synthesis_judgment else 0.0
+    strict_pass = (
+        gpt_judgment.available
+        and gemini_judgment.available
+        and synthesis_judgment is not None
+        and synthesis_judgment.available
+        and gpt_judgment.overall >= MINIMUM_EACH_VISION_SCORE
+        and gemini_judgment.overall >= MINIMUM_EACH_VISION_SCORE
+        and synthesis_judgment.overall >= max(passing_threshold, MINIMUM_FINAL_SCORE)
+        and synthesis_judgment.hallucination_veto is REQUIRED_HALLUCINATION_VETO_RESULT
+    )
 
     # Collect issues + fixes from all participating judges
     all_fixes: list[str] = []
@@ -905,7 +915,7 @@ def run_tournament(
         candidate_path=str(candidate_path),
         judges=judges,
         aggregate_score=aggregate,
-        passed_98=aggregate >= passing_threshold,
+        passed_98=strict_pass,
         top_issues=list(dict.fromkeys(critical_issues))[:5],
         all_fixes=unique_fixes[:10],
         vision_pair_mean=vision_pair_mean,

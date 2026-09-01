@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-2-hoodie-shorts-generated-source-v2.png",
+  "source_sha256": "218d0ffaf345d206e8d21a8f1eceab1b5a606b7869eb41ca108b2da63cb0a78c",
+  "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-2-hoodie-shorts-generated-protected-v2.png",
+  "output_sha256": "6890d567faa821296af14d92081b528d5b918e96d059dc9731be4f731c1e9ee6",
+  "dimensions": [
+    941,
+    1672
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.274436,
+  "model": "existing-alpha-mask",
+  "alpha_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-2-hoodie-shorts-generated-protected-v1.png",
+  "alpha_source_sha256": "c3554bb3e5d3f4602cee1761b1c0df1b44dda18b0369a1be5a31d17dd4c6d5fb",
+  "rgb_preserved": true
+}

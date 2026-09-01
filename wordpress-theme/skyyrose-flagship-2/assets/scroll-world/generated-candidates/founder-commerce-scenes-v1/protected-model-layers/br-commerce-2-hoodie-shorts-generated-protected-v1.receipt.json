@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-2-hoodie-shorts-generated-source-v1.png",
+  "source_sha256": "19b575d928ae83bb4a6d2f34c4aa8292ed14f572cd6f8cdd78e6da2798b3d25b",
+  "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/br-commerce-2-hoodie-shorts-generated-protected-v1.png",
+  "output_sha256": "c3554bb3e5d3f4602cee1761b1c0df1b44dda18b0369a1be5a31d17dd4c6d5fb",
+  "dimensions": [
+    941,
+    1672
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.274436,
+  "model": "isnet-general-use",
+  "alpha_source": null,
+  "alpha_source_sha256": null,
+  "rgb_preserved": true
+}

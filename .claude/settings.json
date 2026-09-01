@@ -192,15 +192,20 @@
       }
     ],
     "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/paid-api-stopgate.sh\"",
-            "timeout": 3
-          }
-        ]
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/paid-api-stopgate.sh\"",
+          "timeout": 3
+        },
+        {
+          "type": "command",
+          "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/production-guardian.sh\" preflight",
+          "timeout": 5
+        }
+      ]
       },
       {
         "matcher": "Write|Edit|MultiEdit",
@@ -234,9 +239,9 @@
           }
         ]
       },
-      {
-        "matcher": "Edit|Write|MultiEdit",
-        "hooks": [
+    {
+      "matcher": "Edit|Write|MultiEdit",
+      "hooks": [
           {
             "type": "command",
             "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/phpcs-on-write.sh\"",
@@ -250,9 +255,30 @@
           {
             "type": "command",
             "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/catalog-drift-guard.sh\"",
-            "timeout": 15
-          }
-        ]
+          "timeout": 15
+        }
+      ]
+    },
+    {
+      "matcher": "Edit|Write|MultiEdit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/production-guardian.sh\" fast",
+          "timeout": 20,
+          "statusMessage": "Running production regression guards"
+        }
+      ]
+    },
+    {
+      "matcher": "Bash|Edit|Write|MultiEdit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/production-guardian.sh\" observe",
+          "timeout": 5
+        }
+      ]
       },
       {
         "matcher": "Edit|Write|MultiEdit",
@@ -277,9 +303,9 @@
       }
     ],
     "Stop": [
-      {
-        "hooks": [
-          {
+    {
+      "hooks": [
+        {
             "type": "command",
             "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/learning-reminder.sh\"",
             "timeout": 3
@@ -294,9 +320,21 @@
             "timeout": 600,
             "statusMessage": "Running test suite (background)",
             "asyncRewake": true,
-            "rewakeSummary": "Stop-hook test suite FAILED"
-          }
-        ]
+          "rewakeSummary": "Stop-hook test suite FAILED"
+        }
+      ]
+    },
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/production-guardian.sh\" ship",
+          "timeout": 600,
+          "statusMessage": "Running Production Guardian ship gates",
+          "asyncRewake": true,
+          "rewakeSummary": "Production Guardian blocked completion"
+        }
+      ]
       },
       {
         "hooks": [

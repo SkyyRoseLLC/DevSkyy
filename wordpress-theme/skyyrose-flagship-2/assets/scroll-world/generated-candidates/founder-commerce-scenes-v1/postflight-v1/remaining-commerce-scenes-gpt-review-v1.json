@@ -1,0 +1,156 @@
+{
+  "schema": "skyyrose.gpt-vision-review.v1",
+  "reviewer": "gpt-5.5-pro",
+  "threshold": 95,
+  "overall_verdict": "partially-improved",
+  "recommend_ship": false,
+  "overall_score_0_100": 75,
+  "founder_approval_inferred": false,
+  "evidence": [
+    {
+      "scope": "repo",
+      "finding": "The seven-job prompt contract is CANDIDATE_ONLY_FOUNDER_REVIEW_REQUIRED."
+    },
+    {
+      "scope": "repro",
+      "finding": "All seven candidate hashes and dimensions were independently recomputed. BR-COMMERCE-1 is 1671x941, SIG-COMMERCE-1 is 1670x941, and SIG-COMMERCE-2 is 1671x941 rather than 1672x941."
+    },
+    {
+      "scope": "repro",
+      "finding": "All embedded reference hashes for LH-COMMERCE-3 and SIG-COMMERCE-1 through SIG-COMMERCE-3 matched. Expected-hash verification remains absent in the prompt contract for BR-COMMERCE-1, BR-COMMERCE-2, and LH-COMMERCE-2."
+    },
+    {
+      "scope": "repro",
+      "finding": "All seven individual PNGs and their source references were inspected at full resolution. No scene reached 95 and no scene is clean."
+    }
+  ],
+  "per_scene": [
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "verdict": "partially-improved",
+      "recommend_ship": false,
+      "score_0_100": 76,
+      "exact_product_fidelity_blockers": [
+        "Output width is 1671 rather than 1672.",
+        "Crewneck artwork is not certifiably the exact raised embossed dimensional relief.",
+        "Jogger waistband, drawstring, cuffs, and exact molded silicone thigh applique are not all cleanly proven."
+      ],
+      "natural_integration_blockers": [
+        "Model lighting is cleaner and more studio-shaped than the wet moonlit environment.",
+        "Foot contact and floor reflection do not prove a single native exposure."
+      ],
+      "monument_or_plate_drift": [
+        "Wall monument, Bay Bridge, and moon remain recognizable, but the plate is visually close rather than certified exact."
+      ]
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "verdict": "partially-improved",
+      "recommend_ship": false,
+      "score_0_100": 72,
+      "exact_product_fidelity_blockers": [
+        "Hoodie artwork is not cleanly confined to the wearer-left side-body; sleeves are not proven plain.",
+        "Chest silicone cut-out material and scale are not exact.",
+        "Shorts side insert broadens, multicolor rose detail is reduced, and back artwork is unverifiable from the pose.",
+        "Tonal repeat and zipper-pocket construction are not cleanly matched."
+      ],
+      "natural_integration_blockers": [
+        "Contact shadow and reflection are too restrained for single-exposure proof.",
+        "Model lighting is more frontal than the bridge-and-moon plate."
+      ],
+      "monument_or_plate_drift": [
+        "Bridge and moon remain readable, but the locked plate is only approximately reused."
+      ]
+    },
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "verdict": "partially-improved",
+      "recommend_ship": false,
+      "score_0_100": 62,
+      "exact_product_fidelity_blockers": [
+        "The prompt requires a full-body model, but the head and face are cropped.",
+        "Waistband, pockets, side panels, zipper construction, binding, and back features are not fully proven.",
+        "Complete red Love Hurts lettering is unreadable and the rose-and-cloud repeat drifts."
+      ],
+      "natural_integration_blockers": [
+        "Insertion is coherent but fails the required full-body composition.",
+        "Floor contact and reflection do not overcome the product-proof failures."
+      ],
+      "monument_or_plate_drift": [
+        "Enchanted rose remains sharp, but the plate is zoomed and cropped rather than preserved exactly."
+      ]
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "verdict": "partially-improved",
+      "recommend_ship": false,
+      "score_0_100": 78,
+      "exact_product_fidelity_blockers": [
+        "FANNIE embroidery is warped rather than exact.",
+        "Rose placement and detail drift.",
+        "Front zipper, pull, curved seam, side wings, buckle, and strap hardware are not all readable or matched."
+      ],
+      "natural_integration_blockers": [
+        "Integration is coherent, but model lighting and edge sharpness remain cleaner than the dark-red plate.",
+        "Floor contact remains low-confidence."
+      ],
+      "monument_or_plate_drift": [
+        "Vitrine, enchanted rose, fissures, and open wall remain recognizable with no major monument drift."
+      ]
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "verdict": "partially-improved",
+      "recommend_ship": false,
+      "score_0_100": 74,
+      "exact_product_fidelity_blockers": [
+        "Output width is 1670 rather than 1672.",
+        "Beanie patch is a generic white label rather than the exact molded silicone rose-over-cloud patch.",
+        "Sherpa chest embroidery, hem tab, collar, and gold zipper are not fully certifiable."
+      ],
+      "natural_integration_blockers": [
+        "Model lighting is slightly pasted and studio-clean compared with the atelier.",
+        "Foot contact shadow is insufficient for clean single-exposure proof."
+      ],
+      "monument_or_plate_drift": [
+        "Gold SkyyRose sculpture and atelier remain readable, but the locked plate is visually close rather than certified exact."
+      ]
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "verdict": "partially-improved",
+      "recommend_ship": false,
+      "score_0_100": 82,
+      "exact_product_fidelity_blockers": [
+        "Output width is 1671 rather than 1672.",
+        "Crew, sweatpants, and hoodie embroideries are softened and not exact.",
+        "Women's bottoms risk implying an undocumented matching SKU."
+      ],
+      "natural_integration_blockers": [
+        "Foreground lighting is cleaner than the fog-over-Bay terrace.",
+        "Wet-stone reflections and foot contact remain plausible rather than proven."
+      ],
+      "monument_or_plate_drift": [
+        "Skyline, fog, bridge, and glowing frames remain recognizable, but the bridge is not cleanly framed between the models."
+      ]
+    },
+    {
+      "scene_id": "SIG-COMMERCE-3",
+      "verdict": "partially-improved",
+      "recommend_ship": false,
+      "score_0_100": 80,
+      "exact_product_fidelity_blockers": [
+        "All three models are present, but the five preorder SKUs are not exact enough for separate product links.",
+        "Bay Bridge and Stay Golden prints and small marks are simplified.",
+        "Windbreaker chevrons, rose marks, pockets, zippers, ribs, and back mark are not all verifiable."
+      ],
+      "natural_integration_blockers": [
+        "Contact shadows and wet-floor reflections are too generic for strict single-exposure proof.",
+        "Model sharpness does not fully match the sunrise haze."
+      ],
+      "monument_or_plate_drift": [
+        "The SR-and-rose monument and Bay setting remain recognizable, but exact geometry and scale are not certified."
+      ]
+    }
+  ]
+}

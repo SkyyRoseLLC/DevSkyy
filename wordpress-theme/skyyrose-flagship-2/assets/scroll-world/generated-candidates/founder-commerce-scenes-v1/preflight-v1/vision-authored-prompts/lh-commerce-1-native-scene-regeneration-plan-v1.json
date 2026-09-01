@@ -1,0 +1,515 @@
+{
+  "schema": "skyyrose.native-scene-regeneration-planning-contract.v1",
+  "contract_id": "lh-commerce-1-native-scene-regeneration-plan-v1",
+  "scene_id": "LH-COMMERCE-1",
+  "collection": "love-hurts",
+  "scene_name": "The Vow Aisle",
+  "status": "PLANNING_PACKAGE_OPUS_REVIEW_REQUIRED",
+  "purpose": "Plan one hash-bound native-in-scene regeneration batch in which the complete Love Hurts cathedral, the two-model relationship, the exact products, and the enchanted rose are authored as one coherent exposure. This contract does not authorize an image-model call.",
+  "planning_provenance": {
+    "workflow": "adversarial-planning",
+    "round": 3,
+    "locked_plan": {
+      "source": "/Users/theceo/.codex/sessions/2026/08/22/rollout-2026-08-22T15-45-37-01a02ba6-a9e7-7f63-a9da-66e422effa6c.jsonl",
+      "line": 10264,
+      "line_sha256": "034a56f5873015205ff6d76bc0ed6d8e87c6e14511956ed4f68470a82304137b",
+      "planner": "claude-opus-5"
+    },
+    "task_brief": {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/adversarial-planning/lh-natural-integration-task-v1.md",
+      "sha256": "8ee88903e05778e6d9472a0f206f4c4f24c19a3cc9cdcc06628b86bddcda1b8b"
+    },
+    "round_2_challenge": {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/adversarial-planning/lh-natural-integration-challenge-r2-codex-verbatim.txt",
+      "sha256": "53bcf9cbdb3340f4a5b55caa90513382b4c73905218f6f2d098331ea81d3c0be"
+    }
+  },
+  "authorization": {
+    "prompt_planning_authorized": true,
+    "generation_authorized": false,
+    "binary_edit_authorized": false,
+    "source_pixel_mutation_authorized": false,
+    "v2_runtime_wiring_authorized": false,
+    "legacy_runtime_changes_authorized": false,
+    "deployment_authorized": false,
+    "commit_authorized": false,
+    "founder_reapproval_required": true
+  },
+  "branch_decision": {
+    "selected_branch": "NATIVE_SCENE_REGENERATION",
+    "selected_branch_alias": "A",
+    "reason": "The current cathedral plate and protected two-model layer have no admissible exact-rig calibration evidence. They are unresolvable for protected-pixel relighting, so the planning path is a new native-scene candidate conditioned by immutable approved references, followed by complete fidelity review and founder reapproval.",
+    "current_pair_relight_state": "UNRESOLVABLE",
+    "current_pair_may_be_composited_with_relight": false,
+    "current_pair_may_grant_relight_authority": false,
+    "existing_approved_sources_are_read_only": true,
+    "candidate_must_be_written_to_new_path": true
+  },
+  "input_role_policy": {
+    "roles_are_unique": true,
+    "paths_are_unique_across_generator_inputs": true,
+    "generator_inputs_may_not_be_reclassified": true,
+    "environment_reference_is_not_product_authority": true,
+    "model_reference_is_identity_pose_and_product_placement_evidence": true,
+    "physical_product_references_are_product_authority": true,
+    "logo_reference_is_mark_geometry_and_color_authority": true,
+    "proof_and_receipt_files_are_validation_only": true,
+    "filenames_are_never_product_evidence": true
+  },
+  "bindings": {
+    "current_product_sot": {
+      "role": "current_product_sot",
+      "usage": "validation_only",
+      "path": "data/product-sot.json",
+      "sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12"
+    },
+    "generator_conditioning_references": [
+      {
+        "role": "locked_environment_composition_reference",
+        "usage": "generator_conditioning",
+        "authority": "environment_camera_floor_architecture_rose_and_collection_narrative_only",
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+        "sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+        "dimensions": [1672, 941],
+        "color_mode": "RGB"
+      },
+      {
+        "role": "approved_two_model_identity_pose_and_product_placement_reference",
+        "usage": "generator_conditioning",
+        "authority": "model_identity_pose_relationship_front_product_placement_and_scale_reference",
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+        "sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+        "dimensions": [1023, 1537],
+        "color_mode": "RGBA",
+        "current_user_designation": "founder_approved_reference",
+        "bound_machine_receipt_approval_state": "FOUNDER_REVIEW_REQUIRED",
+        "machine_founder_approval_record_present": false,
+        "skus": ["lh-004", "lh-002", "lh-006"]
+      },
+      {
+        "role": "canonical_lh_004_physical_product_reference",
+        "usage": "generator_conditioning",
+        "authority": "product_construction_material_color_and_front_branding",
+        "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+        "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256",
+        "dimensions": [1284, 1321],
+        "color_mode": "RGB",
+        "skus": ["lh-004"]
+      },
+      {
+        "role": "canonical_lh_002_physical_product_reference",
+        "usage": "generator_conditioning",
+        "authority": "product_construction_color_side_panels_drawstring_and_thigh_mark_placement",
+        "path": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+        "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f",
+        "dimensions": [400, 360],
+        "color_mode": "RGB",
+        "skus": ["lh-002"]
+      },
+      {
+        "role": "canonical_lh_006_physical_product_reference",
+        "usage": "generator_conditioning",
+        "authority": "product_construction_color_side_panels_drawstring_and_thigh_mark_placement",
+        "path": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+        "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
+        "dimensions": [400, 360],
+        "color_mode": "RGB",
+        "skus": ["lh-006"]
+      },
+      {
+        "role": "canonical_heart_rose_thigh_mark_reference",
+        "usage": "generator_conditioning",
+        "authority": "exact_heart_thorns_roses_leaves_geometry_and_color",
+        "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+        "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+        "dimensions": [720, 720],
+        "color_mode": "RGB",
+        "skus": ["lh-002", "lh-006"]
+      }
+    ],
+    "validation_only_evidence": [
+      {
+        "role": "patched_model_lineage_receipt",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.receipt.json",
+        "sha256": "f94e6b7abb1324d6c633ae92204131e09ec69652afc63814838fef40c68952ee"
+      },
+      {
+        "role": "protected_model_lineage_receipt",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-generated-protected-v1.receipt.json",
+        "sha256": "9a0872ea0e5f8a0236907715ac7bc07a5cfc8e57a03c26d0e9fae0dff6ba2221"
+      },
+      {
+        "role": "product_proof_manifest",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/product-proof-manifest-v1.json",
+        "sha256": "bbc431f8ee5e0826d9ff15d8cce68637784da780e03c6e5b738ecf16d595f8bf"
+      },
+      {
+        "role": "product_proof_contact_sheet",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/product-proof-board-v1.png",
+        "sha256": "18134718710facfed7ea247fc8c43cf0cfdc397f4fda76ca1ce42b07d29c6e53"
+      },
+      {
+        "role": "mandatory_tournament_policy",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship-2/data/image-generation-tournament-policy-v1.json",
+        "sha256": "e146dc140ac25fabf885dcc86300f60fbc1f2a6bf4d94a26f18c8cb589872da4"
+      },
+      {
+        "role": "live_judge_availability_receipt",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/judge-availability-receipt-v1.json",
+        "sha256": "ee55d5c8faa0ce05e5e5b4f6c8644399ca3cb3f82fd78c2d4f6a7372e599b5e9"
+      },
+      {
+        "role": "lh_004_canonical_dossier",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
+        "sha256": "133a5535541782f89d2fe8f43d560b50deebf1a91cd2367abcf1169c6d5c1e4e"
+      },
+      {
+        "role": "lh_002_canonical_dossier",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
+        "sha256": "b531f6634fa54726b2f0740c7bed4530754f1f8469f3270a7d0e78b7756c5eb0"
+      },
+      {
+        "role": "lh_006_canonical_dossier",
+        "usage": "validation_only",
+        "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
+        "sha256": "b61eab3f92fabba681ddc0253d74ba74c839a22b4be8fc5a6f2ab70eb020822a"
+      }
+    ]
+  },
+  "product_bindings": {
+    "lh-004": {
+      "product_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
+      "name": "Love Hurts Bomber Jacket",
+      "required_regions": [
+        "white_lustrous_satin_body",
+        "black_lustrous_satin_raglan_sleeves",
+        "black_satin_hood",
+        "white_red_rose_silhouette_sublimated_hood_lining_when_visible",
+        "embroidered_love_left_chest_and_hurts_right_chest",
+        "center_snap_or_button_placket",
+        "vertical_slash_welt_pockets",
+        "red_white_black_striped_rib_cuffs",
+        "red_white_black_striped_rib_waistband"
+      ],
+      "forbidden_drift": [
+        "matte cotton or canvas shell",
+        "zipper front",
+        "set-in sleeves",
+        "solid cuffs or waistband",
+        "white sleeves",
+        "new numbers or logos",
+        "front heart-and-thorns graphic"
+      ]
+    },
+    "lh-002": {
+      "product_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
+      "name": "Love Hurts Joggers (Black)",
+      "required_regions": [
+        "solid_black_cotton_fleece_body",
+        "continuous_white_contrast_side_panels_waist_to_ankle_both_sides",
+        "black_flat_drawstring",
+        "small_embroidered_heart_and_roses_composite_on_wearer_left_thigh",
+        "ribbed_or_banded_black_ankle_cuffs"
+      ],
+      "forbidden_drift": [
+        "shorts",
+        "horizontal stripe blocking",
+        "right-thigh decoration",
+        "rose cloud base",
+        "wordmark down leg",
+        "all-over print",
+        "generic rose or SR monogram"
+      ]
+    },
+    "lh-006": {
+      "product_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079",
+      "name": "Love Hurts Joggers (White)",
+      "required_regions": [
+        "solid_white_cotton_fleece_body",
+        "continuous_black_contrast_side_panels_waist_to_ankle_both_sides",
+        "black_flat_drawstring",
+        "small_embroidered_heart_and_roses_composite_on_wearer_left_thigh",
+        "ribbed_or_banded_white_ankle_cuffs"
+      ],
+      "forbidden_drift": [
+        "shorts",
+        "horizontal stripe blocking",
+        "right-thigh decoration",
+        "rose cloud base",
+        "wordmark down leg",
+        "all-over print",
+        "generic rose or SR monogram"
+      ]
+    }
+  },
+  "illumination_identifiability": {
+    "calibration_evidence_for_both_assets": false,
+    "calibration_records": {
+      "required_asset_roles": [
+        "locked_environment_composition_reference",
+        "approved_two_model_identity_pose_and_product_placement_reference"
+      ],
+      "records": [],
+      "authority_state": "ABSENT_NO_RELIGHT_AUTHORITY",
+      "all_records_must_be_hash_verified": true
+    },
+    "current_pair_verdict": "UNRESOLVABLE",
+    "raster_only_allowed_outcomes": [
+      "VALIDATED_INCOMPATIBLE",
+      "NO_OBSERVED_CONTRADICTION",
+      "UNRESOLVABLE"
+    ],
+    "raster_only_may_grant_relight_authority": false,
+    "relight_authority": false,
+    "protected_pixel_policy": {
+      "max_abs_log_gain": 0,
+      "protected_low_frequency_band_source": "approved_two_model_identity_pose_and_product_placement_reference",
+      "protected_low_frequency_band_must_equal_approved_input": true,
+      "chroma_import_allowed": false,
+      "generator_derived_spatial_gain_allowed": false
+    },
+    "positive_relight_authority_requires": "admissible_exact_rig_calibration_evidence_for_both_assets",
+    "prompt_assertions_are_calibration_evidence": false,
+    "narrow_estimator_posteriors_are_calibration_evidence": false,
+    "no_observed_contradiction_behaves_as_unresolvable": true
+  },
+  "native_scene_requirements": {
+    "camera": {
+      "single_lens_single_exposure_intent": true,
+      "preserve_plate_aspect_ratio": "1672:941",
+      "preserve_central_cathedral_vanishing_point": true,
+      "preserve_aisle_and_pew_perspective": true,
+      "reject_horizon_or_architecture_drift": true
+    },
+    "floor": {
+      "models_share_one_solved_floor_plane": true,
+      "both_shoes_make_visible_contact": true,
+      "no_plate_texture_may_continue_through_soles": true,
+      "reflection_strength_must_not_exceed_observed_floor_gloss": true
+    },
+    "pose_relationship": {
+      "two_models_remain_a_single_fashion_pair": true,
+      "retain_approved_identity_and_front_product_readability": true,
+      "anatomy_may_not_change": true,
+      "hands_may_not_hide_required_product_regions": true,
+      "garments_may_not_merge_or_swap_between_models": true
+    },
+    "occlusion": {
+      "required_product_regions_must_be_verifiable": true,
+      "enchanted_rose_max_occlusion_fraction": 0.15,
+      "models_may_receive_natural_environment_occlusion_only_if_no_product_gate_is_hidden": true,
+      "no_ui_safe_zone_intersection": true
+    },
+    "lighting": {
+      "author_scene_as_one_native_exposure": true,
+      "respect_overhead_aisle_beam_warm_practicals_red_environment_bounce_and_atmospheric_falloff": true,
+      "do_not_copy_or_infer_a_protected_pixel_relight_field_from_the_current_raster_pair": true,
+      "product_material_response_must_remain_truthful": true,
+      "white_and_black_bomber_panels_must_read_as_lustrous_satin": true,
+      "joggers_must_read_as_cotton_fleece_not_satin": true,
+      "faces_may_not_be_relit_as_a_postprocess": true
+    },
+    "shadows": {
+      "contact_shadow_required_under_every_shoe": true,
+      "cast_shadow_direction_penumbra_density_and_lobe_count_must_not_contradict_plate_exemplars": true,
+      "generic_centered_drop_shadow_forbidden": true,
+      "floating_feet_fatal": true
+    },
+    "reflections": {
+      "floor_reflections_must_reproject_through_the_same_floor_plane": true,
+      "reflection_is_vertically_compressed_distance_blurred_and_floor_tinted": true,
+      "mirror_clone_reflection_forbidden": true,
+      "reflection_may_not_invent_product_detail": true
+    },
+    "depth_and_atmosphere": {
+      "models_match_depth_of_field_at_placement_depth": true,
+      "haze_may_wrap_around_but_not_hide_product_regions": true,
+      "foreground_midground_and_rose_depth_order_must_remain_legible": true
+    },
+    "grain_and_optics": {
+      "one_shared_full_frame_grain_field": true,
+      "grain_scale_matches_plate": true,
+      "vignette_chromatic_aberration_highlight_rolloff_and_edge_sharpness_are_shared": true,
+      "hard_alpha_halo_and_mismatched_edge_sharpness_are_fatal": true
+    },
+    "hero_rose": {
+      "role": "co_equal_emotional_focal_point",
+      "must_remain_under_glass": true,
+      "must_remain_recognizable": true,
+      "minimum_saliency_ratio_vs_dominant_model": 0.8,
+      "max_occlusion_fraction": 0.15
+    }
+  },
+  "responsive_safe_zones": {
+    "coordinate_space": "normalized_generation_frame",
+    "source_canvas": [1672, 941],
+    "measurement_state": "PROVISIONAL_REQUIRES_RENDERED_BREAKPOINT_CAPTURE",
+    "generation_blocked_until_measured": true,
+    "breakpoints": [
+      {
+        "id": "desktop",
+        "viewport": [1440, 1000],
+        "keep_clear": [
+          {"id": "global_navigation", "rect": [0.0, 0.0, 1.0, 0.1]},
+          {"id": "shopping_ui_product_links_and_price", "rect": [0.65, 0.04, 0.99, 0.46]},
+          {"id": "scene_copy_and_primary_cta", "rect": [0.02, 0.58, 0.37, 0.99]}
+        ]
+      },
+      {
+        "id": "tablet",
+        "viewport": [768, 1024],
+        "keep_clear": [
+          {"id": "global_navigation", "rect": [0.0, 0.0, 1.0, 0.12]},
+          {"id": "shopping_ui_product_links_and_price", "rect": [0.54, 0.5, 0.99, 0.99]},
+          {"id": "scene_copy_and_primary_cta", "rect": [0.02, 0.56, 0.55, 0.99]}
+        ]
+      },
+      {
+        "id": "mobile",
+        "viewport": [390, 844],
+        "keep_clear": [
+          {"id": "global_navigation", "rect": [0.0, 0.0, 1.0, 0.14]},
+          {"id": "scene_copy", "rect": [0.04, 0.64, 0.96, 0.82]},
+          {"id": "shopping_ui_product_links_price_and_primary_cta", "rect": [0.04, 0.78, 0.96, 0.99]}
+        ]
+      }
+    ],
+    "validation_requirement": "Measure rendered UI rectangles at all three viewports, invert each crop transform into this coordinate space, replace provisional rectangles, compute the union, and require zero subject, required-product-region, or rose collisions before generation."
+  },
+  "prompt_payload": {
+    "target_model": "gpt-image-2",
+    "operation": "multi_reference_native_scene_regeneration",
+    "positive_prompt": "Generate one complete cinematic Love Hurts scene as a native photograph-like exposure, using every reference only for its declared role. Preserve the cathedral plate's 1672:941 composition, central aisle vanishing point, pew geometry, red rose-lined architecture, warm overhead beam, candle practicals, glossy dark floor, red environmental bounce, haze, and enchanted rose under glass. Render the exact approved two-model identity and pose relationship naturally inside the left foreground, with both models standing on the same cathedral floor plane. Reproduce the three exact products from the physical-product and model references: lh-004 as a lustrous white satin body with black lustrous satin raglan sleeves and black satin hood, embroidered Love on wearer-left chest and Hurts on wearer-right chest, snap or button placket, vertical slash welt pockets, and red-white-black striped rib cuffs and waistband; lh-002 as solid black cotton-fleece joggers with continuous white side panels from waist to ankle, black flat drawstring, and the small exact embroidered heart-and-roses composite on the wearer-left thigh; lh-006 as solid white cotton-fleece joggers with continuous black side panels from waist to ankle, black flat drawstring, and the same small exact embroidered heart-and-roses composite on the wearer-left thigh. The thigh mark is a cracked red heart wrapped in dark thorns with three red roses and green leaves, with no cloud base and no SR monogram. Keep every required construction and mark visible enough for region-by-region verification. Author camera, perspective, scale, pose, occlusion, overhead and practical lighting, material response, shoe contact shadows, restrained floor reflections, depth of field, atmosphere, grain, edge behavior, highlight rolloff, and color contamination as one coherent scene. The enchanted rose is the emotional co-protagonist: keep it recognizable under glass, no more than 15 percent occluded, with saliency at least 0.8 times the dominant model. Keep all desktop, tablet, and mobile UI-safe zones clear. Return a new review candidate only; do not overwrite or imply pixel identity with any approved source.",
+    "negative_prompt": "No garment invention, recolor, swapped colorway, merged garments, wrong fabric, matte bomber, satin joggers, set-in bomber sleeves, zipper-front bomber, solid cuffs, solid waistband, missing placket, missing welt pockets, shorts, horizontal side stripes, white drawstring, right-thigh logo, rose-cloud base, generic rose, SR monogram, wrong heart, wrong thorn count or arrangement, missing roses, missing green leaves, wordmark down a jogger leg, new text, new logo, numbers, watermark, UI, product cards, captions, distorted face, changed identity, changed anatomy, fused fingers, extra limb, hidden product gate, floating feet, plate texture through soles, generic drop shadow, impossible shadow lobe, mirror-clone reflection, giant reflection, hard cutout halo, mismatched sharpness, mismatched grain, fog over product details, blocked enchanted rose, moved rose case, altered cathedral geometry, shifted vanishing point, camera roll, horizon drift, UI-safe-zone collision, production approval, runtime wiring, or deployment claim."
+  },
+  "per_region_fidelity_checks": [
+    {
+      "id": "lh004_satin_and_color_blocking",
+      "sku": "lh-004",
+      "regions": ["front_body", "left_raglan_sleeve", "right_raglan_sleeve", "hood"],
+      "checks": ["physical_reference_match", "material_response_match", "white_black_color_block_match", "raglan_seam_match"],
+      "unverifiable_is_failure": true
+    },
+    {
+      "id": "lh004_front_construction_and_branding",
+      "sku": "lh-004",
+      "regions": ["left_chest", "right_chest", "center_placket", "left_welt_pocket", "right_welt_pocket", "left_cuff", "right_cuff", "waistband"],
+      "checks": ["lettering_content_and_side_match", "embroidery_technique_match", "closure_match", "pocket_geometry_match", "stripe_sequence_match"],
+      "unverifiable_is_failure": true
+    },
+    {
+      "id": "lh002_body_side_panels_and_drawstring",
+      "sku": "lh-002",
+      "regions": ["front_body", "left_side_panel", "right_side_panel", "waistband", "drawstring", "ankle_cuffs"],
+      "checks": ["physical_reference_match", "cotton_fleece_material_match", "black_body_match", "continuous_white_side_panels_match", "black_drawstring_match"],
+      "unverifiable_is_failure": true
+    },
+    {
+      "id": "lh002_left_thigh_mark",
+      "sku": "lh-002",
+      "regions": ["wearer_left_thigh"],
+      "checks": ["canonical_logo_template_match", "placement_match", "scale_match", "embroidered_technique_match", "heart_thorns_three_roses_green_leaves_match", "ocr_and_mark_whitelist"],
+      "unverifiable_is_failure": true
+    },
+    {
+      "id": "lh006_body_side_panels_and_drawstring",
+      "sku": "lh-006",
+      "regions": ["front_body", "left_side_panel", "right_side_panel", "waistband", "drawstring", "ankle_cuffs"],
+      "checks": ["physical_reference_match", "cotton_fleece_material_match", "white_body_match", "continuous_black_side_panels_match", "black_drawstring_match"],
+      "unverifiable_is_failure": true
+    },
+    {
+      "id": "lh006_left_thigh_mark",
+      "sku": "lh-006",
+      "regions": ["wearer_left_thigh"],
+      "checks": ["canonical_logo_template_match", "placement_match", "scale_match", "embroidered_technique_match", "heart_thorns_three_roses_green_leaves_match", "ocr_and_mark_whitelist"],
+      "unverifiable_is_failure": true
+    },
+    {
+      "id": "model_identity_and_anatomy",
+      "sku": "scene",
+      "regions": ["male_face", "female_face", "hands", "legs", "feet", "two_model_silhouette"],
+      "checks": ["approved_identity_reference_match", "pose_relationship_match", "anatomy_sanity", "no_subject_merge"],
+      "unverifiable_is_failure": true
+    }
+  ],
+  "rejection_rules": [
+    {"id": "STALE_SOURCE_OR_HASH", "fatal": true},
+    {"id": "UNTRACKED_GENERATION_REFERENCE", "fatal": true},
+    {"id": "AMBIGUOUS_OR_DUPLICATE_INPUT_ROLE", "fatal": true},
+    {"id": "MISSING_EXACT_PRODUCT_REGION", "fatal": true},
+    {"id": "PRODUCT_CONSTRUCTION_OR_MATERIAL_DRIFT", "fatal": true},
+    {"id": "LOGO_TEXT_PLACEMENT_SCALE_OR_TECHNIQUE_DRIFT", "fatal": true},
+    {"id": "MODEL_IDENTITY_POSE_OR_ANATOMY_DRIFT", "fatal": true},
+    {"id": "PASTED_CUTOUT_OR_EDGE_HALO", "fatal": true},
+    {"id": "FLOATING_FEET_OR_FLOOR_PLANE_FAILURE", "fatal": true},
+    {"id": "IMPOSSIBLE_SHADOW_OR_REFLECTION", "fatal": true},
+    {"id": "INCONSISTENT_LIGHT_OR_MATERIAL_RESPONSE", "fatal": true},
+    {"id": "DEPTH_GRAIN_OR_OPTICS_MISMATCH", "fatal": true},
+    {"id": "HERO_ROSE_BLOCKED_OR_DEEMPHASIZED", "fatal": true},
+    {"id": "UI_SAFE_ZONE_COLLISION", "fatal": true},
+    {"id": "UNVERIFIABLE_REQUIRED_REGION", "fatal": true},
+    {"id": "TOURNAMENT_OR_FOUNDER_APPROVAL_MISSING", "fatal": true}
+  ],
+  "batch_and_review_contract": {
+    "batch_only": true,
+    "candidate_count": 9,
+    "matrix": {
+      "pose_relationship_variants": 3,
+      "rose_framing_variants": 3,
+      "seeds_per_cell": 1
+    },
+    "all_candidates_share_exact_contract_hash": true,
+    "all_candidates_record_seed_model_id_prompt_hash_and_ordered_input_hashes": true,
+    "contact_sheet": {
+      "required": true,
+      "layout": "3x3",
+      "every_tile_labels_candidate_hash": true,
+      "every_tile_shows_safe_zone_overlay_version": true,
+      "every_tile_links_per_region_fidelity_report": true,
+      "rejected_candidates_are_separate_from_founder_selection_board": true
+    },
+    "mandatory_review_sequence": [
+      "mechanical_hash_and_role_validation",
+      "per_region_product_fidelity_validation",
+      "pasted_cutout_and_scene_coherence_rejection",
+      "gpt-5.5-pro_independent_vision_score_at_least_95",
+      "gemini-3.1-pro-preview_independent_vision_score_at_least_95",
+      "claude-opus-5_synthesis_score_at_least_98_and_hallucination_veto_false",
+      "founder_contact_sheet_review_and_explicit_hash_approval"
+    ]
+  },
+  "output_contract": {
+    "format": "png",
+    "dimensions": [1672, 941],
+    "candidate_directory": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/native-scene-regeneration-v1/",
+    "approval_state": "CANDIDATE_ONLY_FOUNDER_REAPPROVAL_REQUIRED",
+    "may_claim_visual_correctness_before_generation_and_review": false,
+    "may_claim_product_pixel_identity": false,
+    "may_overwrite_any_bound_input": false,
+    "v2_wiring_state": "FORBIDDEN",
+    "deployment_state": "FORBIDDEN",
+    "production_write_state": "FORBIDDEN"
+  },
+  "pre_generation_gates": {
+    "planning_contract_validation_required": true,
+    "all_bound_hashes_current_required": true,
+    "all_generator_references_git_tracked_required": true,
+    "machine_founder_approval_record_for_model_reference_required": true,
+    "all_input_roles_unique_required": true,
+    "rendered_breakpoint_safe_zones_measured_required": true,
+    "exact_ordered_generator_input_manifest_required": true,
+    "live_required_judges_available_required": true,
+    "pass_ready_to_generate_receipt_required": true,
+    "fresh_founder_generation_authorization_required": true,
+    "current_state_generation_permitted": false
+  }
+}

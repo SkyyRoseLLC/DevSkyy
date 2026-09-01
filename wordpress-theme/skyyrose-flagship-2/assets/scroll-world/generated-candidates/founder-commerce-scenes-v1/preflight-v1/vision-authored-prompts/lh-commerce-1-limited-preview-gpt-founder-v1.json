@@ -1,0 +1,59 @@
+{
+  "schema": "skyyrose.limited-preview-image-prompt.v1",
+  "scene_id": "LH-COMMERCE-1",
+  "contract_id": "lh-commerce-1-native-scene-regeneration-plan-v1",
+  "contract_sha256": "d3bd177d5ec8c085853401c3e07476dd293b7aad898f7c9760a1efb25512b016",
+  "authorization_verbatim": "AUTHORIZE LIMITED PREVIEW GENERATION",
+  "review_authorities": [
+    "gpt-5.5-pro",
+    "founder"
+  ],
+  "candidate_count": 9,
+  "approval_state": "CANDIDATE_ONLY_FOUNDER_REAPPROVAL_REQUIRED",
+  "wiring_allowed": false,
+  "deployment_allowed": false,
+  "input_references": [
+    {
+      "index": 1,
+      "role": "locked_environment_composition_reference",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+      "sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2"
+    },
+    {
+      "index": 2,
+      "role": "approved_two_model_identity_pose_and_product_placement_reference",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+      "sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158"
+    },
+    {
+      "index": 3,
+      "role": "canonical_lh_004_physical_product_reference",
+      "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+      "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256"
+    },
+    {
+      "index": 4,
+      "role": "packed_black_white_joggers_and_canonical_mark_reference",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/generator-conditioning-v1/lh-joggers-mark-packed-v1.png",
+      "sha256": "4b803c3579695581837517a98cdab70df3d4fec3f1cef2e748c5b320782485d2",
+      "packed_source_hashes": [
+        "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f",
+        "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
+        "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0"
+      ]
+    }
+  ],
+  "base_prompt": "Use case: photorealistic-natural. Asset type: founder-review-only wide V2 cinematic shopping scene candidate, target 1672:941 landscape. Image 1 is the locked cathedral environment, camera, architecture, aisle, glossy floor, lighting, and enchanted-rose authority. Image 2 is the approved two-model identity, styling relationship, pose scale, and front-product-placement reference. Image 3 is the physical Love Hurts bomber construction, satin material, color blocking, hood, drawcord, lettering, snap placket, pocket, cuff, and waistband authority. Image 4 is a packed evidence board: left is the exact black joggers, center is the exact white joggers, and right is the exact heart-and-roses thigh embroidery. Generate one coherent native fashion photograph in a single exposure, never a pasted composite. Preserve Image 1's central vanishing point, black gothic arches, red rose-lined architecture, warm overhead beam, candles, glossy black floor, haze, and enchanted red rose under glass in its original central background position. Naturally photograph the same male and female models from Image 2 as one fashion pair on the cathedral floor. Both shoes have correct contact shadows; lighting, red environmental bounce, restrained floor reflections, depth of field, grain, highlight rolloff, and edge softness are shared across environment and people. Both models wear the exact Image 3 bomber: lustrous white satin body, lustrous black satin raglan sleeves and black satin hood, visible rose-print hood lining where naturally exposed, black hood drawcord, split embroidered wordmarks Love on wearer-left chest and Hurts on wearer-right chest, center snap placket, two black vertical slash welt pockets, and black-white-red striped rib cuffs and waistband. The male wears exact black cotton-fleece joggers from Image 4 left: continuous white outer-leg panels plus continuous white inner-leg and crotch panels, black flat drawstring, black ankle cuffs, and one small exact Image 4 right embroidery on wearer-left thigh. The female wears exact white cotton-fleece joggers from Image 4 center: continuous black outer-leg panels plus continuous black inner-leg and crotch panels, black flat drawstring, white ankle cuffs, and one small exact Image 4 right embroidery on wearer-left thigh. The small embroidery is the broken red heart wrapped in dark thorns with three red roses and green leaves, fabric-integrated rather than an oversized decal. Keep every chest wordmark, placket, pocket, striped rib, jogger panel, drawstring, thigh mark, cuff, hand, leg, and foot readable. Preserve ample storefront negative space. Keep the enchanted rose fully recognizable, at least eighty percent as salient as the dominant model and no more than fifteen percent occluded. Exact product construction outranks aesthetic variation.",
+  "negative_prompt": "No garment invention, recolor, swapped colorway, merged garments, wrong fabric, matte bomber, satin joggers, set-in sleeves, zipper front, white bomber sleeves, missing hood drawcord, solid cuffs, solid waistband, missing snap placket, missing welt pockets, missing inner-leg panels, horizontal jogger stripes, white drawstring, right-thigh logo, generic rose logo, cloud base, SR monogram, leg wordmark, shorts, extra products, giant logo, invented lettering, UI, captions, watermark, identity drift, malformed anatomy, fused hands, floating feet, generic drop shadow, mirror-clone reflection, hard cutout halo, mismatched sharpness, blocked enchanted rose, moved rose case, altered cathedral geometry, camera roll, or collage appearance.",
+  "matrix": [
+    {"job_id": "lh-native-p1-r1", "pose": "Male half-step forward at far-left foreground; female just to his right and slightly behind; separated relaxed three-quarter stances.", "rose_framing": "Centered rose under the overhead beam is the distant emotional axis, connected to the pair by the aisle reflection."},
+    {"job_id": "lh-native-p2-r1", "pose": "Female half-step forward at far-left foreground; male just to her left and slightly behind; all garment gates unobstructed.", "rose_framing": "Centered rose under the overhead beam is the distant emotional axis, connected to the pair by the aisle reflection."},
+    {"job_id": "lh-native-p3-r1", "pose": "Shoulder-to-shoulder at far-left foreground with a small natural gap; male angled outward and female inward; garments never overlap.", "rose_framing": "Centered rose under the overhead beam is the distant emotional axis, connected to the pair by the aisle reflection."},
+    {"job_id": "lh-native-p1-r2", "pose": "Male half-step forward at far-left foreground; female just to his right and slightly behind; separated relaxed three-quarter stances.", "rose_framing": "Use the left foreground rose architecture as a soft framing edge while the central rose under glass remains sharp and unobstructed."},
+    {"job_id": "lh-native-p2-r2", "pose": "Female half-step forward at far-left foreground; male just to her left and slightly behind; all garment gates unobstructed.", "rose_framing": "Use the left foreground rose architecture as a soft framing edge while the central rose under glass remains sharp and unobstructed."},
+    {"job_id": "lh-native-p3-r2", "pose": "Shoulder-to-shoulder at far-left foreground with a small natural gap; male angled outward and female inward; garments never overlap.", "rose_framing": "Use the left foreground rose architecture as a soft framing edge while the central rose under glass remains sharp and unobstructed."},
+    {"job_id": "lh-native-p1-r3", "pose": "Male half-step forward at far-left foreground; female just to his right and slightly behind; separated relaxed three-quarter stances.", "rose_framing": "Slightly lower editorial camera emphasis on the aisle reflection leading precisely to the central rose under glass; no camera roll or architecture change."},
+    {"job_id": "lh-native-p2-r3", "pose": "Female half-step forward at far-left foreground; male just to her left and slightly behind; all garment gates unobstructed.", "rose_framing": "Slightly lower editorial camera emphasis on the aisle reflection leading precisely to the central rose under glass; no camera roll or architecture change."},
+    {"job_id": "lh-native-p3-r3", "pose": "Shoulder-to-shoulder at far-left foreground with a small natural gap; male angled outward and female inward; garments never overlap.", "rose_framing": "Slightly lower editorial camera emphasis on the aisle reflection leading precisely to the central rose under glass; no camera roll or architecture change."}
+  ]
+}

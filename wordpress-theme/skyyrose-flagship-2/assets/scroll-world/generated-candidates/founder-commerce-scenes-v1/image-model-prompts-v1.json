@@ -1,0 +1,149 @@
+{
+  "schema": "skyyrose.image-model-prompt-contract.v2",
+  "product_sot_sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12",
+  "proof_binding": {
+    "manifest": {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/product-proof-manifest-v1.json",
+      "sha256": "bbc431f8ee5e0826d9ff15d8cce68637784da780e03c6e5b738ecf16d595f8bf"
+    },
+    "board": {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/product-proof-board-v1.png",
+      "sha256": "18134718710facfed7ea247fc8c43cf0cfdc397f4fda76ca1ce42b07d29c6e53"
+    },
+    "required_stage": "BEFORE_PROMPT_AUTHORING"
+  },
+  "tournament_policy": {
+    "path": "wordpress-theme/skyyrose-flagship-2/data/image-generation-tournament-policy-v1.json",
+    "sha256": "e146dc140ac25fabf885dcc86300f60fbc1f2a6bf4d94a26f18c8cb589872da4"
+  },
+  "policy": {
+    "prompt_source_required": true,
+    "allowed_prompt_file_formats": ["json", "html"],
+    "direct_untracked_chat_prompt_forbidden": true,
+    "all_transitive_inputs_must_be_hash_reviewed": true,
+    "legacy_or_unapproved_input_forbidden": true,
+    "founder_product_photos_override_generated_interpretation": true,
+    "preflight_receipt_required_before_generation": true,
+    "independent_adversarial_verdict_required_after_every_batch": true,
+    "compositor_requires_all_adversarial_reviewers_to_recommend_ship": true,
+    "output_state": "FOUNDER_REVIEW_REQUIRED"
+  },
+  "active_generation_jobs": [
+    "br-commerce-2-v3",
+    "lh-commerce-1-v2",
+    "sig-commerce-3-v3"
+  ],
+  "generation_jobs": {
+    "br-commerce-2-v3": {
+      "scene_id": "br-commerce-2",
+      "status": "BLOCKED_METHOD_HALLUCINATED",
+      "blocked_reason": "Founder veto: broad re-synthesis, incorrect placement, and baked checkerboard RGB output",
+      "required_next_method": "deterministic protected-pixel compositing with measured edit masks",
+      "model": "gpt-image-2",
+      "operation": "edit",
+      "output": {"format": "png", "background": "transparent", "approval_state": "FOUNDER_REVIEW_REQUIRED"},
+      "input_images": [
+        {"role": "edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/br-commerce-2-hoodie-shorts-generated-source-v2.png", "sha256": "218d0ffaf345d206e8d21a8f1eceab1b5a606b7869eb41ca108b2da63cb0a78c", "approval": "blocked_prior_candidate_for_surgical_correction_only"},
+        {"role": "br-005_physical_garment_reference", "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg", "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c", "approval": "canonical_founder_product_proof"},
+        {"role": "br-007_founder_front_left_reference", "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg", "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314", "approval": "canonical_founder_product_proof"},
+        {"role": "br-007_founder_back_reference", "path": "assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg", "sha256": "34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2", "approval": "canonical_founder_product_proof"}
+      ],
+      "product_bindings": {
+        "br-005": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e",
+        "br-007": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b"
+      },
+      "proof_sources": [
+        "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+        "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+        "assets/products/source-photos/black-rose/br-007-shorts-back-detail.jpeg"
+      ],
+      "positive_prompt": "Edit the supplied transparent full-body model image only where required to make the two garments exact replicas of the supplied founder product references. Preserve the model's identity, face, hair, skin tone, anatomy, pose, hands, full-body framing, socks, shoes, lighting, silhouette, and all already-correct pixels. BR-005 hoodie: keep a black lightweight pullover hoodie with white drawstrings, kangaroo pocket, tonal black cuffs and hem, and grey inner hood lining with a sublimated repeating rose pattern. The small wearer-right chest mark must be a raised tonal white-grey silicone cut-out with visible molded thickness and a shallow edge shadow, not embroidery and not print. Place the large embroidered rose-and-cloud artwork longitudinally on the wearer's left side-body panel, which appears on the viewer-right torso side, below the armhole toward the lower side seam. Both sleeves and both arms must remain plain black. BR-007 shorts: reproduce the founder front-and-left-side reference exactly: black mesh body with subtle tonal rose repeat, white waistband and drawstring, OAKLAND in white tackle twill with dark stitched outline, and the complete Love Hurts script fully legible on the black thigh/side field above the narrow white mesh side construction. Keep the final D in OAKLAND completely unobscured. The white mesh must remain a narrow side insert and must not widen into a broad front-facing polygon. Preserve the small embroidered Black Rose side motif with green stems and blue cloud. Return one genuine transparent PNG with no background.",
+      "negative_prompt": "Do not redesign either garment. No sleeve art, forearm art, arm patch, circular sleeve patch, or large white sleeve graphic. No embroidered or printed chest mark; the chest mark is raised tonal silicone. No broad white shorts panel, no oversized white polygon, no missing or truncated Love Hurts lettering, no overlap over the final D in OAKLAND, no invented wordmark, no invented logo, no altered model identity, no changed pose, no cropped feet, no changed shoes, no checkerboard baked into the pixels, no set, no backdrop, no watermark, and no extra text.",
+      "invariants": [
+        "BR-005 chest mark is raised tonal silicone",
+        "BR-005 large artwork is on side body only",
+        "BR-005 sleeves remain plain black",
+        "BR-007 white mesh is narrow side construction",
+        "BR-007 Love Hurts is complete on black above white insert",
+        "BR-007 final D in OAKLAND is unobscured"
+      ]
+    },
+    "lh-commerce-1-v2": {
+      "scene_id": "lh-commerce-1",
+      "status": "BLOCKED_METHOD_HALLUCINATED",
+      "blocked_reason": "Founder veto: generic thigh logos, broad re-synthesis, and baked checkerboard RGB output",
+      "required_next_method": "deterministic protected-pixel compositing with exact heart-shaped-base logo asset",
+      "model": "gpt-image-2",
+      "operation": "edit",
+      "output": {"format": "png", "background": "transparent", "approval_state": "FOUNDER_REVIEW_REQUIRED"},
+      "input_images": [
+        {"role": "edit_target", "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/sources/image2-foregrounds-v1/lh-commerce-1-two-model-bomber-generated-source-v1.png", "sha256": "f9fe2423f9ec21d15552efe10eea1a04b57dfb72af5a5682ff8cae6e6123bf9c", "approval": "blocked_prior_candidate_for_surgical_correction_only"},
+        {"role": "lh-004_physical_satin_bomber_reference", "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg", "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256", "approval": "canonical_founder_product_proof"},
+        {"role": "lh-002_physical_black_jogger_reference", "path": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg", "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f", "approval": "canonical_founder_product_proof"},
+        {"role": "lh-006_physical_white_jogger_reference", "path": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg", "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe", "approval": "canonical_founder_product_proof"},
+        {"role": "exact_heart_and_roses_thigh_logo_reference", "path": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg", "sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0", "approval": "canonical_logo_proof"}
+      ],
+      "product_bindings": {
+        "lh-004": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69",
+        "lh-002": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed",
+        "lh-006": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
+      },
+      "proof_sources": [
+        "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+        "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+        "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+        "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg"
+      ],
+      "positive_prompt": "Surgically edit the supplied transparent two-model image while preserving both models' identities, faces, hair, skin tones, anatomy, poses, hands, full-body framing, sneakers, lighting, and all already-correct garment construction. Both Love Hurts bomber jackets must match the founder physical product reference as lustrous satin: the white and black shell surfaces, raglan sleeves, and hood must show refined satin sheen, specular highlights, and soft fabric folds rather than matte cotton. Preserve the snap-front construction, black-and-white color blocking, striped rib-knit cuffs and hems, and the Love Hurts chest lettering. The male model wears the exact black joggers and the female model wears the exact white joggers, each retaining the correct contrasting side panels, drawstrings, fit, and silhouette from the supplied physical references. Replace each wrong thigh mark with the exact supplied heart-and-roses composite logo as one compact embroidered emblem on the wearer's left upper thigh. Match the logo's exact heart silhouette, rose arrangement, thorn details, proportions, colors, orientation, and modest physical size from the proof. Return one genuine transparent PNG with both complete models and no background.",
+      "negative_prompt": "No matte cotton bomber, no fleece bomber, no leather bomber, no changed color blocking, no invented chest lettering, no separate rose-only thigh logo, no generic rose cluster, no SR monogram, no broken-heart substitute, no oversized thigh logo, no logo on the wearer's right thigh, no lost side panels, no altered faces or body proportions, no changed poses, no cropped feet, no changed footwear, no baked checkerboard, no set, no backdrop, no watermark, and no extra text.",
+      "invariants": [
+        "both bomber shells and sleeves read as lustrous satin",
+        "male wears exact black joggers",
+        "female wears exact white joggers",
+        "both wearer-left thighs use exact compact heart-and-roses composite",
+        "model identities and full-body poses remain unchanged"
+      ]
+    },
+    "sig-commerce-3-v3": {
+      "scene_id": "sig-commerce-3",
+      "status": "BLOCKED_WITH_ABORTED_BATCH",
+      "blocked_reason": "Not dispatched because the batch was stopped after the first two jobs failed fidelity",
+      "required_next_method": "deterministic surgical logo replacement preserving every non-logo pixel",
+      "model": "gpt-image-2",
+      "operation": "edit",
+      "output": {"format": "png", "background": "transparent", "approval_state": "FOUNDER_REVIEW_REQUIRED"},
+      "input_images": [
+        {"role": "edit_target", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp", "sha256": "e75b7f78bc271338c378a2f71b449602b9b773d18afbe09f809120e50f70265a", "approval": "current_on_model_candidate_for_surgical_correction_only"},
+        {"role": "sg-001_physical_bay_bridge_shorts_reference", "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png", "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c", "approval": "canonical_founder_product_proof"},
+        {"role": "sg-005_physical_bay_bridge_shirt_reference", "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg", "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1", "approval": "canonical_founder_product_proof"}
+      ],
+      "product_bindings": {
+        "sg-001": "cf66629cefb14dd82149d6140bfc142e5786fafb276f2a8bfd7445803183f941",
+        "sg-005": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6"
+      },
+      "proof_sources": [
+        "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+        "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg"
+      ],
+      "positive_prompt": "Make one surgical logo correction to the supplied on-model Bay Bridge shirt-and-shorts look. Preserve the model's identity, face, hair, skin tone, anatomy, pose, hands, full-body framing, shoes, shirt, shorts construction, blue waistband, white drawstring, full daytime Bay Bridge wrap, lighting, transparency, and every already-correct pixel. On the lower wearer's-left leg of the shorts only, replace the incorrect SR-style monogram with the exact small embroidered blue rose motif shown in the supplied physical Bay Bridge shorts reference. Match its exact placement, blue colorway, silhouette, thread texture, scale, and orientation. Keep the white shirt's large centered embroidered blue/cyan rose-and-Bay-Bridge chest cluster unchanged and fully readable. Return one genuine transparent PNG.",
+      "negative_prompt": "Do not alter the model, face, pose, body, shirt, chest embroidery, bridge wrap, waistband, drawstring, shorts fit, legs, shoes, or framing. No SR monogram on the lower shorts leg, no generic rose, no black rose, no red rose, no extra logo, no removed Bay Bridge imagery, no changed blue palette, no baked checkerboard, no set, no backdrop, no watermark, and no extra text.",
+      "invariants": [
+        "only lower wearer-left shorts logo changes",
+        "lower wearer-left shorts logo is exact small embroidered blue rose",
+        "no SR monogram remains on lower shorts leg",
+        "shirt keeps exact large blue/cyan Bay Bridge rose cluster",
+        "full Bay Bridge shirt-and-shorts look remains complete and prominent"
+      ]
+    }
+  },
+  "scene_registry": {
+    "br-commerce-1-v2": {"scene_id": "br-commerce-1", "skus": ["br-001", "br-002"], "operation": "identity-preserve composite"},
+    "br-commerce-2-v3": {"scene_id": "br-commerce-2", "skus": ["br-005", "br-007"], "operation": "precise-object-edit"},
+    "lh-commerce-1-v2": {"scene_id": "lh-commerce-1", "skus": ["lh-004", "lh-002", "lh-006"], "operation": "precise-object-edit"},
+    "lh-commerce-2-v2": {"scene_id": "lh-commerce-2", "skus": ["lh-003"], "operation": "precise-object-edit"},
+    "lh-commerce-3-v1": {"scene_id": "lh-commerce-3", "skus": ["lh-005"], "operation": "identity-preserve composite"},
+    "sig-commerce-1-v2": {"scene_id": "sig-commerce-1", "skus": ["sg-009", "sg-007"], "operation": "identity-preserve composite"},
+    "sig-commerce-2-v2": {"scene_id": "sig-commerce-2", "skus": ["sg-013", "sg-014", "sg-006"], "operation": "identity-preserve composite"},
+    "sig-commerce-3-v3": {"scene_id": "sig-commerce-3", "skus": ["sg-005", "sg-001", "sg-015", "sg-002", "sg-003"], "operation": "precise-object-edit and layout"}
+  }
+}

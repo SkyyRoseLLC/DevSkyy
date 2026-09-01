@@ -864,12 +864,12 @@
         "series_order": 0
       },
       "garment": {
-        "type_lock": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (small chest mark + large forearm artwork), the white drawstrings, and the sublimated-rose-print inner hood lining.",
+        "type_lock": "Black PULLOVER hoodie — long sleeves, drawstring hood, kangaroo front pocket, ribbed cuffs at the wrists, ribbed waist hem at the bottom (tonal black ribbing, no contrast white trim). Constructed from a **lightweight polyester / jogger-feel fabric** (NOT heavyweight cotton fleece — distinct from the basic Black Rose Hoodie br-004 which is heavier cotton). NOT a zip-up. NOT a half-zip. NOT a crewneck. The \"Signature Edition\" identity comes from the elevated branding placement (small raised silicone chest mark + large embroidered side-body artwork), the white drawstrings, and the sublimated-rose-print inner hood lining.",
         "branding_summary": "Silicone cut-out logo on right chest. Embroidered logo on the side of the body of the hoodie (not on the arm).",
         "branding_regions": [
           {
             "region": "front-right-chest",
-            "description": "- **front-right-chest** (small, ~2–3in tall): The Black Rose logo as a\n  **silicone cut-out patch** — silicone applied to the fabric in the\n  shape of the canonical three-rose-cluster art (cut-out silicone shape\n  rather than full-color silicone-appliqué). Tonal/monochrome treatment\n  per the reference photo. **Technique:** silicone. **Color:** as rendered\n  in the canonical logo + reference image (white/grey tonal).",
+            "description": "- **front-right-chest** (small, ~2–3in tall): The Black Rose logo as a\n  **raised silicone cut-out patch** — silicone applied to the fabric in the\n  shape of the canonical three-rose-cluster art (cut-out silicone shape\n  rather than full-color silicone-appliqué). Tonal/monochrome treatment\n  per the reference photo. **Technique:** silicone. **Color:** as rendered\n  in the canonical logo + reference image (white/grey tonal).",
             "technique": "silicone",
             "color_named": "as rendered",
             "color_hex": null,
@@ -877,8 +877,8 @@
             "dimensions": "small, ~2–3in tall"
           },
           {
-            "region": "wearer's-left forearm / viewer-right sleeve",
-            "description": "- **wearer's-left forearm / viewer-right sleeve** (large, longitudinal\n  artwork running from below the elbow toward the cuff): The Black Rose logo\n  embroidered onto the sleeve exactly as shown in the physical flatlay.\n  It is forearm artwork, not a circular upper-arm patch and not a hip logo.\n  **Technique:** embroidered. **Color:** as rendered in the\n  canonical logo + reference image.",
+            "region": "wearer's-left side body / viewer-right torso side",
+            "description": "- **wearer's-left side body / viewer-right torso side** (large, longitudinal\n  artwork integrated along the hoodie body from below the armhole toward the\n  lower side seam): The Black Rose logo is embroidered onto the **body of the\n  hoodie**, exactly as shown in the physical flatlay. It is side-body artwork,\n  not sleeve or arm artwork, not a circular upper-arm patch, and not a hip logo.\n  **Technique:** embroidered. **Color:** as rendered in the\n  canonical logo + reference image.",
             "technique": "embroidered",
             "color_named": "as rendered in the",
             "color_hex": null,
@@ -915,8 +915,8 @@
         ],
         "negative_constraints": [
           "NO logo on the LEFT chest — the silicone patch is at the right-chest",
-          "NO large logo on either hip or side-body panel. The large embroidered",
-          "NO circular upper-arm patch. The sleeve decoration is longitudinal",
+          "NO large embroidered artwork on either sleeve or arm. The large artwork is",
+          "NO circular upper-arm patch and NO forearm decoration. Both sleeves remain plain black apart from their construction seams.",
           "NO black drawstrings — the drawstrings are WHITE (signature detail of",
           "NO silicone-appliqué multi-color patch — the right-chest silicone is",
           "NO printed graphics on the body fabric (the rose-pattern sublimation",
@@ -930,7 +930,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (or three-quarter front-left) showing\n  the right-chest silicone mark and the left-forearm embroidered rose. The\n  hood relaxed back to reveal the grey sublimated-rose inner lining\n  along the upper edge of the hood opening. Optional: a detail shot of\n  the inside hood lining showing the rose-pattern sublimation.",
+        "pose": "Front view straight-on (or three-quarter front-left) showing\n  the raised right-chest silicone mark and the left-side-body embroidered rose.\n  The sleeves must remain visibly plain black so the body placement is unambiguous. The\n  hood relaxed back to reveal the grey sublimated-rose inner lining\n  along the upper edge of the hood opening. Optional: a detail shot of\n  the inside hood lining showing the rose-pattern sublimation.",
         "setting": "Pure white studio backdrop, soft directional studio\n  lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -965,6 +965,14 @@
           "path": "assets/products/references/br-005-signature-hoodie-real.jpeg",
           "sha256": "26e37c6897ef47a870e89e89adf2188595de27e26033cc4cfedf491df91bdaa4",
           "bytes": 282426
+        },
+        {
+          "role": "garment_reference_1",
+          "authority": 89,
+          "kind": "physical_product_photo",
+          "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+          "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+          "bytes": 28739
         },
         {
           "role": "primary_logo_reference",
@@ -1019,14 +1027,14 @@
       },
       "verification": {
         "record_complete": true,
-        "proof_level": "canonical_product_reference",
+        "proof_level": "physical_product_photo",
         "on_model_front_present": true,
         "media_approval_is_separate": true,
         "no_visual_invention_allowed": true
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-hoodie-signature-edition.md",
-        "dossier_sha256": "b670053624a30ffec8f0640789c24cf6e0a58d96be81e888cddd548c18c7b396"
+        "dossier_sha256": "393f5084ba5c09a8278b9e207158ad2cbdf3099ad44bfeac4e6eae0b3dbcc0c5"
       },
       "consumer_contract": {
         "required_for": [
@@ -1039,7 +1047,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "78a627090f62f3e35c0b77057ba0e9a91575b93b9ec919579d564b5cbd650f20"
+      "product_hash": "52c6d51513ff2899b6332ebbdad76c6e4c936403296eb73668006184a701898e"
     },
     "br-006": {
       "sku": "br-006",
@@ -1361,7 +1369,7 @@
         "series_order": 0
       },
       "garment": {
-        "type_lock": "Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with white mesh side panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.",
+        "type_lock": "Knee-length (or just-above-knee) athletic basketball shorts — black mesh main body with **narrow white mesh side constructions/inserts** that stay on the side of each leg rather than becoming broad front-facing white panels, white elasticated waistband with white drawstring, **two side hand pockets** (left and right — both with zipper closures) and **one back pocket** (also with zipper closure) — three zip pockets total. Black ribbed-binding hem with white contrast piping. Cross-collection collab combining Black Rose and Love Hurts visual systems on a single garment. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short.",
         "branding_summary": "Black mesh basketball shorts with tonal rose repeat, white contrast panels, and fully readable OAKLAND tackle-twill script; no logo may overlap or cover the final D. Preserve the physical side-panel rose with green stems and blue cloud plus the Love Hurts side branding.",
         "branding_regions": [
           {
@@ -1384,7 +1392,7 @@
           },
           {
             "region": "front-right-thigh",
-            "description": "- **front-right-thigh** (cursive script immediately after the OAKLAND wordmark):\n  The \"Love Hurts\" wordmark in cursive script, rendered as a large\n  sublimated/printed wordmark in **cream/peach/pink tonal color** on the\n  black mesh. The script may tuck behind a flourish but **must not cover or\n  obscure the final `D` in `OAKLAND`**. Match the physical spacing exactly.\n  Spans the right thigh area, reading top-to-bottom as the\n  cursive lettering descends. **Technique:** sublimated. **Color:**\n  cream/peach/light-pink tonal.",
+            "description": "- **front-right-thigh** (cursive script immediately after the OAKLAND wordmark):\n  The \"Love Hurts\" wordmark in cursive script, rendered as a large\n  sublimated/printed wordmark in **cream/peach/pink tonal color** on the\n  black mesh. The script may tuck behind a flourish but **must not cover or\n  obscure the final `D` in `OAKLAND`**. Match the physical spacing exactly.\n  The complete words must fit cleanly on the black side/thigh field **above the\n  narrow white side construction**; no letter may enter the white mesh insert.\n  Spans the right thigh area, reading top-to-bottom as the cursive lettering\n  descends. **Technique:** sublimated. **Color:**\n  cream/peach/light-pink tonal.",
             "technique": "sublimated",
             "color_named": "cream/peach/light-pink tonal",
             "color_hex": null,
@@ -1502,11 +1510,12 @@
           "NO multi-color rendering of the body sublimated rose pattern — it is",
           "NO Black Rose logo at front-thigh-center — the front center carries",
           "NO solid-color body — the body fabric carries the sublimated rose",
-          "NO front pockets visible from outside — the visible pockets are on",
+          "NO open cargo-pocket bags or patch pockets on the front. The only front",
           "NO black drawstrings — the drawstring is white.",
           "NO black waistband — the waistband is white.",
           "NO contrast satin-stitch edge other than dark on the OAKLAND letters.",
-          "NO script collision that covers the `D` in `OAKLAND`; the physical spacing",
+          "NO script collision; the final `D` in `OAKLAND` must remain completely unobscured and the physical spacing between the block wordmark and script is mandatory.",
+          "NO oversized white front-leg panel. The white mesh is a narrow side",
           "NO numbers anywhere — no player number, no jersey-style numerals.",
           "NO sleeve elements (this is a shorts garment, lower-body only — no",
           "NO Authentic Collection patch (that is reserved for the jersey series).",
@@ -1514,7 +1523,7 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on (or three-quarter front-left) showing\n  the OAKLAND wordmark, the front-right Love Hurts script, the left\n  Black Rose cluster on the mesh side panel, and the cream/peach\n  cursive wordmark across the right thigh. For back: back view\n  straight-on showing the upper-back Love Hurts cursive script and the\n  pentagonal white panel insert at the lower-back-center.",
+        "pose": "Front view straight-on (or three-quarter front-left) showing\n  the OAKLAND wordmark, the front-right Love Hurts script, the left\n  Black Rose cluster on the narrow mesh side construction, and the complete\n  cream/peach cursive wordmark cleanly above the opposite narrow side\n  construction. For back: back view\n  straight-on showing the upper-back Love Hurts cursive script and the\n  pentagonal white panel insert at the lower-back-center.",
         "setting": "Pure white studio backdrop, soft directional studio\n  lighting from front-left, subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
@@ -1655,7 +1664,7 @@
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
-        "dossier_sha256": "32be624d3080add7cfddca19e6b1b63f6b5445134dd68c89b6b62a43a417b1ba"
+        "dossier_sha256": "910765e8425681981383fc6a3e959562e7fe896c4361fbdcdc03bd211ca93c2b"
       },
       "consumer_contract": {
         "required_for": [
@@ -1668,7 +1677,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "a0df58d782b38c7e47ee71f211c53952ed3df23db6df2aeab2bc0ef4978a4da6"
+      "product_hash": "0b599da88315c7bcc560e323bdef0e3fe3d2ec7e756fa277de4141de9bb9cd4b"
     },
     "br-008": {
       "sku": "br-008",
@@ -3158,6 +3167,14 @@
         {
           "role": "primary_garment_reference",
           "authority": 100,
+          "kind": "physical_product_photo",
+          "path": "assets/products/source-photos/love-hurts/lh-004-joggers-black.jpeg",
+          "sha256": "4d32ff44f2413e371fac41315e59faf66578b04fb1fb912953d743e8dac6a99f",
+          "bytes": 18111
+        },
+        {
+          "role": "garment_reference_1",
+          "authority": 89,
           "kind": "approved_design_reference",
           "path": "assets/products/references/lh-002-techflat-front.jpeg",
           "sha256": "1a5ad59e099bacf048261949ed316954723bfc7c6efb3918ea3f41631b62ca0c",
@@ -3232,14 +3249,14 @@
       },
       "verification": {
         "record_complete": true,
-        "proof_level": "approved_design_reference",
+        "proof_level": "physical_product_photo",
         "on_model_front_present": true,
         "media_approval_is_separate": true,
         "no_visual_invention_allowed": true
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers.md",
-        "dossier_sha256": "00c4bb79b14e990c4f1832c5d87768c0b1c018bdd2a8f5eed2631926460b968e"
+        "dossier_sha256": "b531f6634fa54726b2f0740c7bed4530754f1f8469f3270a7d0e78b7756c5eb0"
       },
       "consumer_contract": {
         "required_for": [
@@ -3252,7 +3269,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "38fbfd10b7c9a51ff2410f6429bd194bac207c487583dd69a58f52b8a5f4e804"
+      "product_hash": "9443f3752197f9c541ee9dca4254d923876edd4c9f4f2000b0101f5cc20cdaed"
     },
     "lh-003": {
       "sku": "lh-003",
@@ -3591,14 +3608,14 @@
         "series_order": 0
       },
       "garment": {
-        "type_lock": "Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). NOT a satin bomber. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).",
+        "type_lock": "Hooded **satin varsity-bomber hybrid jacket** — lustrous **white satin body fabric** with **black contrast satin raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black satin hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The white and black shell surfaces must show the smooth reflective highlights and soft folds of satin, exactly as proven by the physical front photo. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). NOT a matte cotton varsity jacket. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).",
         "branding_summary": "'Love Hurts' logo lettering across the front. Inside of the hood features a sublimated rose logo. BACK: large 'Heart and Rose' Love Hurts logo centered.",
         "branding_regions": [
           {
             "region": "front-body",
-            "description": "- **front-body** (entire white field, between the raglan sleeve seams and excluding the placket): Solid **white** fabric. **Technique:** stitched. **Color:** white.",
+            "description": "- **front-body** (entire white field, between the raglan sleeve seams and excluding the placket): Solid **white satin** fabric with smooth, directional reflective highlights and soft lustrous folds. **Technique:** stitched. **Color:** white satin.",
             "technique": "stitched",
-            "color_named": "white",
+            "color_named": "white satin",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3659,18 +3676,18 @@
           },
           {
             "region": "left-sleeve",
-            "description": "- **left-sleeve** (solid black raglan, diagonal seam from underarm to neck on the left): Solid **black** fabric, different color from the white body. **Technique:** stitched. **Color:** black.",
+            "description": "- **left-sleeve** (solid black raglan, diagonal seam from underarm to neck on the left): Solid **black satin** fabric with the same lustrous shell finish as the body. **Technique:** stitched. **Color:** black satin.",
             "technique": "stitched",
-            "color_named": "black",
+            "color_named": "black satin",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
           },
           {
             "region": "right-sleeve",
-            "description": "- **right-sleeve** (solid black raglan, diagonal seam from underarm to neck on the right): Solid **black** fabric, different color from the white body. **Technique:** stitched. **Color:** black.",
+            "description": "- **right-sleeve** (solid black raglan, diagonal seam from underarm to neck on the right): Solid **black satin** fabric with the same lustrous shell finish as the body. **Technique:** stitched. **Color:** black satin.",
             "technique": "stitched",
-            "color_named": "black",
+            "color_named": "black satin",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3704,9 +3721,9 @@
           },
           {
             "region": "hood",
-            "description": "- **hood**: Solid **black** hood (matches the black raglan sleeves). **Technique:** stitched. **Color:** black.",
+            "description": "- **hood**: Solid **black satin exterior** hood (matches the black satin raglan sleeves). **Technique:** stitched. **Color:** black satin.",
             "technique": "stitched",
-            "color_named": "black",
+            "color_named": "black satin",
             "color_hex": null,
             "color_pantone": null,
             "dimensions": null
@@ -3735,7 +3752,7 @@
           "NO greyscale rose rendering anywhere — all rose imagery is canonical Love Hurts multi-color (red + green + brown).",
           "NO single-color body — the body is WHITE with BLACK raglan sleeves and BLACK hood (three-color contrast: white body + black sleeves + black hood).",
           "NO non-raglan sleeve seam — the sleeves are RAGLAN cut (diagonal seam from underarm to neck), NOT set-in.",
-          "NO satin or sherpa fabric — this is a cotton-blend bomber/varsity weight, NOT satin (that's br-006) or sherpa.",
+          "NO matte cotton-fleece or dull canvas shell. The white body, black sleeves,",
           "NO zipper-front closure — the front is BUTTON or SNAP placket, NOT a zipper.",
           "NO solid-color cuffs/hem — the rib-knit cuffs and waistband have a STRIPED accent pattern (white + red + black), NOT solid black or solid white.",
           "NO sublimated all-over body pattern — the body is solid white, NOT sublimated.",
@@ -3751,8 +3768,8 @@
         ]
       },
       "scene_direction": {
-        "pose": "Front view straight-on showing the white body + black raglan sleeves + black hood + cursive \"Love\" / \"Hurts\" chest wordmark + striped cuff and hem bands + button-front placket. Three-quarter view catches the raglan seam diagonal and the side wrap of the striped bands. For the back: back view straight-on showing the large heart-and-thorns + roses graphic and the matching striped hem.",
-        "setting": "Pure white studio backdrop, soft directional studio lighting from front-left, subtle natural drop shadow on the floor.",
+        "pose": "Front view straight-on showing the white satin body + black satin raglan sleeves + black satin hood + cursive \"Love\" / \"Hurts\" chest wordmark + striped cuff and hem bands + button-front placket. Three-quarter view catches the satin highlights, raglan seam diagonal, and side wrap of the striped bands. For the back: back view straight-on showing the large heart-and-thorns + roses graphic and the matching striped hem.",
+        "setting": "Pure white studio backdrop, soft directional studio lighting from front-left positioned to reveal the white and black satin sheen without clipping highlights, plus a subtle natural drop shadow on the floor.",
         "collection_hero_is_inspiration_only": true,
         "hero_assets_must_not_be_replaced": true
       },
@@ -3790,10 +3807,34 @@
         {
           "role": "primary_garment_reference",
           "authority": 100,
+          "kind": "physical_product_photo",
+          "path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+          "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256",
+          "bytes": 575795
+        },
+        {
+          "role": "garment_reference_1",
+          "authority": 89,
+          "kind": "physical_product_photo",
+          "path": "assets/products/source-photos/love-hurts/lh-004-bomber-back.png",
+          "sha256": "e170a556f4ee444f273c4aacd2bfce569d0c87263397826b6e757db6402888f1",
+          "bytes": 1379945
+        },
+        {
+          "role": "garment_reference_2",
+          "authority": 88,
           "kind": "approved_design_reference",
           "path": "assets/products/references/lh-004-techflat-front.jpeg",
           "sha256": "a80570de81d5443fd0452a835cc662cf43ec969238789523ec7f83148306e506",
           "bytes": 44996
+        },
+        {
+          "role": "garment_reference_3",
+          "authority": 87,
+          "kind": "approved_design_reference",
+          "path": "assets/products/references/lh-004-techflat-back.jpeg",
+          "sha256": "d8952dad0e77c5635195467e3430d080fce7c2d1d2a374d884b5440380b6b50e",
+          "bytes": 78328
         },
         {
           "role": "primary_logo_reference",
@@ -3848,14 +3889,14 @@
       },
       "verification": {
         "record_complete": true,
-        "proof_level": "approved_design_reference",
+        "proof_level": "physical_product_photo",
         "on_model_front_present": true,
         "media_approval_is_separate": true,
         "no_visual_invention_allowed": true
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
-        "dossier_sha256": "c432e4e0ab28987abaaee60d7223db1813e48c5e3c35a6ab10b809fad3b43765"
+        "dossier_sha256": "133a5535541782f89d2fe8f43d560b50deebf1a91cd2367abcf1169c6d5c1e4e"
       },
       "consumer_contract": {
         "required_for": [
@@ -3868,7 +3909,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "759562c3c9bb580a96986881894bac6a4a69930227731b6791c6f961801e3e13"
+      "product_hash": "c379ded98f2a9203848f4b996ecc0f2f96f637254e0abc206718bd2317523a69"
     },
     "lh-005": {
       "sku": "lh-005",
@@ -4266,6 +4307,14 @@
         {
           "role": "primary_garment_reference",
           "authority": 100,
+          "kind": "physical_product_photo",
+          "path": "assets/products/source-photos/love-hurts/lh-002-joggers-white.jpeg",
+          "sha256": "9d6c5605d05378e5ee5c02e12828adc848dbb3eb233118dc181edfca36de05fe",
+          "bytes": 22094
+        },
+        {
+          "role": "garment_reference_1",
+          "authority": 89,
           "kind": "approved_design_reference",
           "path": "assets/products/references/lh-006-techflat-front.jpeg",
           "sha256": "a85fbed9da1d7cc1dd8b7ce913b97b50c1f85274f328def457386abc40c97649",
@@ -4340,14 +4389,14 @@
       },
       "verification": {
         "record_complete": true,
-        "proof_level": "approved_design_reference",
+        "proof_level": "physical_product_photo",
         "on_model_front_present": true,
         "media_approval_is_separate": true,
         "no_visual_invention_allowed": true
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-joggers-white.md",
-        "dossier_sha256": "21559be08b5bb5feabd2165f8195ab7ff5a38f68036a79786fb28d4e8e674c9b"
+        "dossier_sha256": "b61eab3f92fabba681ddc0253d74ba74c839a22b4be8fc5a6f2ab70eb020822a"
       },
       "consumer_contract": {
         "required_for": [
@@ -4360,7 +4409,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "e8a0163f1cd6aadc852e8577a5f5f92829fb039206143287924bba5015fc4ae1"
+      "product_hash": "279787da0b0a41cf8ca41f8825721a8b725af239586461b34e90c1f33e045079"
     },
     "sg-001": {
       "sku": "sg-001",
@@ -5207,6 +5256,14 @@
         {
           "role": "primary_garment_reference",
           "authority": 100,
+          "kind": "physical_product_photo",
+          "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
+          "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1",
+          "bytes": 596566
+        },
+        {
+          "role": "garment_reference_1",
+          "authority": 89,
           "kind": "approved_design_reference",
           "path": "assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg",
           "sha256": "e5b88ecfcbd6889987d4fcf6c421d60010120fdc15d2c70315a94eb136fafcbc",
@@ -5265,14 +5322,14 @@
       },
       "verification": {
         "record_complete": true,
-        "proof_level": "approved_design_reference",
+        "proof_level": "physical_product_photo",
         "on_model_front_present": true,
         "media_approval_is_separate": true,
         "no_visual_invention_allowed": true
       },
       "source": {
         "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
-        "dossier_sha256": "04ddbd458ced6c49f39ce2a12dccbe2edec9f6ed0180efffb87100f1e8a5783a"
+        "dossier_sha256": "79af3109f9b09414d1caf3826be63099abeb47cbfab275de968e5321c4a04347"
       },
       "consumer_contract": {
         "required_for": [
@@ -5285,7 +5342,7 @@
         "reference_order": "ascending authority number is weaker; highest authority wins",
         "reject_stale_product_hash": true
       },
-      "product_hash": "f166c6d479fc9ecf661680bd91268fcee0c41f86c607ff30322a19db71c2bfda"
+      "product_hash": "183ffaf647cd1d186f7572679ac86a51efe10a175a50ffb832295ac0ee310bc6"
     },
     "sg-006": {
       "sku": "sg-006",

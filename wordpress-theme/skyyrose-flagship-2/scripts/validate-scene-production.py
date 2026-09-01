@@ -14,6 +14,57 @@ CONTRACT = THEME / "data/scene-production-contract.json"
 BLUEPRINTS = THEME / "data/scene-narrative-blueprints.json"
 MANIFEST = THEME / "assets/scroll-world/generated-candidates/scene-candidate-manifest.json"
 
+def validate_founder_commerce_casts(
+    collection_blueprints: object, products: object
+) -> None:
+    if not isinstance(collection_blueprints, dict) or not isinstance(products, dict):
+        raise ValueError("scene commerce cast sources are invalid")
+
+    scene_ids: set[str] = set()
+    for collection in ("black-rose", "love-hurts", "signature"):
+        collection_blueprint = collection_blueprints.get(collection)
+        if not isinstance(collection_blueprint, dict):
+            raise ValueError(f"founder commerce collection is missing: {collection}")
+        chapters = collection_blueprint.get("commerce_scene_chapters")
+        if not isinstance(chapters, list) or len(chapters) != 3:
+            raise ValueError(f"founder commerce scene count drift: {collection}")
+        for chapter in chapters:
+            if not isinstance(chapter, dict):
+                raise ValueError(f"founder commerce scene is invalid: {collection}")
+            scene_id = chapter.get("scene_id")
+            if not isinstance(scene_id, str) or not scene_id or scene_id in scene_ids:
+                raise ValueError(f"founder commerce scene ID is invalid or duplicated: {scene_id}")
+            scene_ids.add(scene_id)
+            skus = chapter.get("product_bindings")
+            if not isinstance(skus, list) or not skus or len(skus) != len(set(skus)):
+                raise ValueError(f"founder commerce cast is empty or duplicated: {scene_id}")
+            if chapter.get("individual_product_links_required") is not True:
+                raise ValueError(f"individual commerce links are not required: {scene_id}")
+            if chapter.get("aggregate_bundle_product") is not False:
+                raise ValueError(f"scene implies an unapproved bundle product: {scene_id}")
+            for field in ("direction", "primary_cta", "hero_aspect", "story_support", "product_focus"):
+                if not isinstance(chapter.get(field), str) or not chapter[field].strip():
+                    raise ValueError(f"founder commerce scene lacks {field}: {scene_id}")
+            generation_gate = chapter.get("generation_gate")
+            if not isinstance(generation_gate, str) or not generation_gate.startswith("BLOCKED_UNTIL_"):
+                raise ValueError(f"founder fidelity gate is missing: {scene_id}")
+            if chapter.get("approval_state") != "FOUNDER_DIRECTION_LOCKED":
+                raise ValueError(f"founder direction lock is missing: {scene_id}")
+            if chapter.get("generation_state") != "NOT_GENERATED":
+                raise ValueError(f"unapproved generation state: {scene_id}")
+
+            for sku in skus:
+                product = products.get(sku)
+                if not isinstance(product, dict):
+                    raise ValueError(f"founder commerce cast uses unknown SKU: {sku}")
+                identity = product.get("identity")
+                if not isinstance(identity, dict) or identity.get("collection") != collection:
+                    raise ValueError(f"founder commerce cast crosses collections: {scene_id} {sku}")
+                if chapter.get("preorder_product_links_required") is True:
+                    commerce = product.get("commerce")
+                    if not isinstance(commerce, dict) or commerce.get("is_preorder") is not True:
+                        raise ValueError(f"founder pre-order scene includes a non-pre-order SKU: {scene_id} {sku}")
+
 
 def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -134,6 +185,7 @@ def main() -> int:
     collection_blueprints = blueprints.get("collections", {})
     if not isinstance(collection_blueprints, dict) or not collection_blueprints:
         raise ValueError("scene narrative blueprints have no collections")
+    validate_founder_commerce_casts(collection_blueprints, products)
     candidates = manifest.get("candidates", [])
     if not isinstance(candidates, list) or not candidates:
         raise ValueError("scene candidate manifest has no candidates")
