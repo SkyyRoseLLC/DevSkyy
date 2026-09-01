@@ -12,9 +12,18 @@ require_file() {
 	fi
 }
 
+file_size() {
+	if stat -c '%s' "$1" >/dev/null 2>&1; then
+		stat -c '%s' "$1"
+	else
+		stat -f '%z' "$1"
+	fi
+}
+
 for route in \
 	front-page.php page.php home.php single.php archive.php search.php 404.php page-wishlist.php \
 	template-collection.php functions.php header.php footer.php \
+	inc/product-catalog.php inc/product-media.php inc/product-cards.php inc/woocommerce.php \
 	template-parts/home/kids-capsule-reveal.php \
 	template-parts/journal-press-fallback.php \
 	template-immersive-signature.php template-immersive-black-rose.php \
@@ -61,8 +70,8 @@ if ! rg -q "woocommerce_add_to_cart_fragments" "$THEME_DIR/functions.php"; then
 	exit 1
 fi
 
-if ! rg -q "function skyyrose2_registry_reconciliation_report" "$THEME_DIR/functions.php" || \
-	! rg -q "admin_notices.*skyyrose2_registry_reconciliation_notice|add_action\( 'admin_notices', 'skyyrose2_registry_reconciliation_notice'" "$THEME_DIR/functions.php"; then
+if ! rg -q "function skyyrose2_registry_reconciliation_report" "$THEME_DIR/inc/product-catalog.php" || \
+	! rg -q "admin_notices.*skyyrose2_registry_reconciliation_notice|add_action\( 'admin_notices', 'skyyrose2_registry_reconciliation_notice'" "$THEME_DIR/inc/product-catalog.php"; then
 	echo "FAIL published WooCommerce SKU to presentation-registry reconciliation missing" >&2
 	exit 1
 fi
@@ -114,17 +123,17 @@ if ! rg -q "data-feature-id=\"kids-royal-procession-v1\"" "$THEME_DIR/template-p
 	exit 1
 fi
 
-if ! rg -q "function skyyrose2_get_products_by_skus" "$THEME_DIR/functions.php" || \
+if ! rg -q "function skyyrose2_get_products_by_skus" "$THEME_DIR/inc/product-catalog.php" || \
 	! rg -Fq "array( 'kids-001', 'kids-002' )" "$THEME_DIR/front-page.php" || \
-	! rg -q "required_collection" "$THEME_DIR/functions.php"; then
+	! rg -q "required_collection" "$THEME_DIR/inc/product-catalog.php"; then
 	echo "FAIL Kids Capsule exact-SKU collection resolver missing" >&2
 	exit 1
 fi
 
-if ! rg -q "function skyyrose2_presentation_registry" "$THEME_DIR/functions.php" || \
+if ! rg -q "function skyyrose2_presentation_registry" "$THEME_DIR/inc/product-catalog.php" || \
 	! rg -q "woocommerce_cart_is_empty" "$THEME_DIR/woocommerce/cart/cart.php" || \
 	! rg -Fq "function_exists( 'wc_get_page_permalink' )" "$THEME_DIR/404.php" || \
-	rg -Fq "if ( empty( \$products ) && 'pre-order' === \$collection )" "$THEME_DIR/functions.php"; then
+	rg -Fq "if ( empty( \$products ) && 'pre-order' === \$collection )" "$THEME_DIR/inc/product-catalog.php"; then
 	echo "FAIL V2 truth and WooCommerce compatibility contract missing" >&2
 	exit 1
 fi
@@ -176,7 +185,7 @@ done
 if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
 	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/functions.php"; then
+	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/inc/product-media.php"; then
 	echo "FAIL approved ornate product-card frame or verified view reel missing" >&2
 	exit 1
 fi
@@ -195,7 +204,7 @@ for hero_base in signature-golden-gate-monuments-v2 black-rose-bay-bridge-monume
 	for width in 1440 1024 640; do
 		variant="assets/sot/images/hero/responsive/${hero_base}-${width}w.webp"
 		require_file "$variant"
-		variant_bytes="$(stat -f '%z' "$THEME_DIR/$variant")"
+		variant_bytes="$(file_size "$THEME_DIR/$variant")"
 		if [ "$variant_bytes" -gt 260000 ]; then
 			echo "FAIL responsive hero exceeds 260KB: $variant ($variant_bytes)" >&2
 			exit 1
@@ -203,7 +212,7 @@ for hero_base in signature-golden-gate-monuments-v2 black-rose-bay-bridge-monume
 	done
 done
 
-if ! rg -q 'function skyyrose2_collection_scene_product' "$THEME_DIR/functions.php" || \
+if ! rg -q 'function skyyrose2_collection_scene_product' "$THEME_DIR/inc/product-catalog.php" || \
 	! rg -q 'sr2-world__product' "$THEME_DIR/template-collection.php"; then
 	echo "FAIL collection Scroll World product proof binding missing" >&2
 	exit 1

@@ -4,6 +4,30 @@ set -euo pipefail
 THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$THEME_DIR"
 
+file_size() {
+	if stat -c '%s' "$1" >/dev/null 2>&1; then
+		stat -c '%s' "$1"
+	else
+		stat -f '%z' "$1"
+	fi
+}
+
+has_alpha_channel() {
+	if command -v identify >/dev/null 2>&1; then
+		identify -format '%[channels]' "$1" | grep -q 'a'
+		return
+	fi
+	python3 - "$1" <<'PY'
+from pathlib import Path
+import sys
+from PIL import Image
+
+with Image.open(Path(sys.argv[1])) as image:
+    if "A" not in image.getbands() and "transparency" not in image.info:
+        raise SystemExit(1)
+PY
+}
+
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l >/dev/null
 for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json data/font-provenance.json; do
 	jq empty "$document"
@@ -43,7 +67,7 @@ while IFS= read -r base; do
 	for width in 640 1024 1440; do
 		asset="assets/sot/images/hero/responsive/${base}-${width}w.webp"
 		test -s "$asset" || { echo "Missing optimized hero derivative: $asset" >&2; exit 1; }
-		bytes="$(stat -f '%z' "$asset")"
+		bytes="$(file_size "$asset")"
 		if [ "$bytes" -gt 260000 ]; then
 			echo "Optimized hero derivative exceeds 260KB: $asset" >&2
 			exit 1
@@ -59,7 +83,7 @@ while IFS=$'\t' read -r derivative_root basename widths; do
 	while IFS= read -r width; do
 		asset="${derivative_root}/${basename}-${width}w.webp"
 		test -s "$asset" || { echo "Missing optimized editorial derivative: $asset" >&2; exit 1; }
-		bytes="$(stat -f '%z' "$asset")"
+		bytes="$(file_size "$asset")"
 		if [ "$bytes" -gt "$editorial_max_bytes" ]; then
 			echo "Optimized editorial derivative exceeds ${editorial_max_bytes} bytes: $asset" >&2
 			exit 1
@@ -71,7 +95,7 @@ done < <(jq -r '.editorial_derivative_sets[]? | [.derivative_root, .basename, (.
 # over the collection worlds, so alpha-channel loss is a shipping failure.
 while IFS= read -r asset; do
 	test -s "$asset" || { echo "Missing transparent brand asset: $asset" >&2; exit 1; }
-	if ! identify -format '%[channels]' "$asset" | grep -q 'a'; then
+	if ! has_alpha_channel "$asset"; then
 		echo "Brand asset lost its transparent alpha channel: $asset" >&2
 		exit 1
 	fi
@@ -79,7 +103,7 @@ done < <(jq -r '.transparent_brand_assets[]' data/image-optimization.json)
 
 while IFS= read -r derivative; do
 	test -s "$derivative" || { echo "Missing opening product-media derivative: $derivative" >&2; exit 1; }
-	bytes="$(stat -f '%z' "$derivative")"
+	bytes="$(file_size "$derivative")"
 	if [ "$bytes" -gt 80000 ]; then
 		echo "Opening product-media derivative exceeds 80KB: $derivative" >&2
 		exit 1
@@ -99,6 +123,7 @@ for required in \
 	template-collection.php woocommerce/archive-product.php woocommerce/cart/cart.php \
 	woocommerce/checkout/form-checkout.php woocommerce/checkout/thankyou.php \
 	woocommerce/content-product.php woocommerce/single-product.php \
+	inc/product-catalog.php inc/product-media.php inc/product-cards.php inc/woocommerce.php \
 	theme.json screenshot.png readme.txt README.md CHANGELOG.md LICENSE.txt rtl.css editor-style.css \
 	npm-shrinkwrap.json \
 	languages/skyyrose-flagship-2.pot; do
