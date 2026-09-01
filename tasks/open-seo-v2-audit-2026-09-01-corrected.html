@@ -1,0 +1,149 @@
+<!-- SEO audit report generated from the installed OpenSEO seo-audit template. -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>staging-7e48-skyyrose.wpcomstaging.com SEO review</title>
+<style>
+  :root {
+    --bg: #e2e9f3;
+    --ink: #122650;
+    --muted: #4f5f79;
+    --rule: #c2cddd;
+    --rule-strong: #122650;
+  }
+  html { background: var(--bg); color-scheme: light; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: Charter, Georgia, "Times New Roman", serif;
+    line-height: 1.55; margin: 0; padding: 3.5rem 1.5rem 5rem;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+  }
+  h1 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700; font-size: 1.6rem; letter-spacing: -0.01em;
+    margin: 0.75rem 0 0.25rem; text-wrap: balance;
+  }
+  .subtitle { color: var(--muted); margin: 0 0 2.5rem; font-size: 1.02rem; max-width: 46rem; }
+  .dateline { color: var(--muted); font-size: 0.92rem; margin: 0 0 1.1rem; }
+  h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700; font-size: 1.25rem; margin: 3rem 0 0.75rem;
+  }
+  .lede { font-size: 1.05rem; max-width: 46rem; }
+  section > p { max-width: 46rem; }
+  hr.heavy { border: 0; border-top: 2px solid var(--rule-strong); margin: 3rem 0 0; }
+  section .cols:first-of-type { border-top: 1px solid var(--rule); }
+  .cols {
+    display: grid; grid-template-columns: minmax(180px, 5fr) 8fr;
+    gap: 1.25rem; padding: 0.6rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .row-title { font-size: 1.12rem; margin: 0; }
+  .row-title .tag { display: block; margin-top: 0.35rem; }
+  .cols > div p { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.95rem; }
+  .cols > div p:last-child { margin-bottom: 0; }
+  .cols > div p.fix { color: var(--ink); }
+  .fix b { font-weight: 600; }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.85em; word-break: break-word;
+  }
+  ol { padding-left: 1.3rem; max-width: 44rem; }
+  ol li { margin-bottom: 0.5rem; }
+  ul.plain { list-style: none; padding: 0; max-width: 46rem; }
+  ul.plain li { padding: 0.5rem 0; border-bottom: 1px solid var(--rule); font-size: 0.98rem; }
+  ul.plain li:first-child { border-top: 1px solid var(--rule); }
+  ul.plain .why { color: var(--muted); }
+  footer { margin-top: 4rem; color: var(--muted); font-size: 0.88rem; max-width: 46rem; }
+  @media (max-width: 620px) {
+    .cols { grid-template-columns: 1fr; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>staging-7e48-skyyrose.wpcomstaging.com</h1>
+    <p class="dateline">September 1, 2026</p>
+    <p class="subtitle">No crawlable HTML, meaning page source that an automated site-checking tool can retrieve, was obtained from the corrected SkyyRose V2 staging host, so its page-level SEO state could not be assessed. The immediate gate is externally verifiable access: make the exact staging URL return an unauthenticated HTML page before page titles, search summaries, headings, images, links, or indexing controls can be verified. This report documents the completed zero-page crawl, the independent fetch checks, and the single recovery action for this week.</p>
+  </header>
+
+  <section>
+    <h2>Where the site stands</h2>
+    <p class="lede">OpenSEO completed audit <code>47b05a95-f5f9-4467-937c-67dbb98f6934</code> with Lighthouse disabled and recorded <code>0/0 pages</code>. Its issue list was empty because no pages were crawled, and its page list contained zero rows.</p>
+    <p class="lede">An independent command-line request could not resolve the corrected hostname in the audit environment, and independent browser and search routes returned no live HTML for the corrected host or the checked staging variants. These observations do not establish whether the cause is DNS, WordPress.com staging state, access controls, or another network layer. They do establish that no material page finding can be responsibly reported from this run.</p>
+  </section>
+
+  <hr class="heavy">
+
+  <section>
+    <h2>If you only do one thing</h2>
+    <p class="lede">Confirm and, where needed, restore unauthenticated HTTPS access to the exact corrected V2 staging homepage.</p>
+    <p>Search engines and automated site-checking tools need an HTML response before any page-level SEO work can be measured. Externally verifiable access is therefore the highest-leverage gate for V2 this week.</p>
+    <ol>
+      <li>In WordPress.com, confirm that the staging site is active and that its privacy or access setting permits an external visitor to load <code>https://staging-7e48-skyyrose.wpcomstaging.com/</code> without signing in.</li>
+      <li>If the page still does not load from a private browser window and a second network, send hosting support this exact message: <i>Please restore unauthenticated HTTPS reachability for https://staging-7e48-skyyrose.wpcomstaging.com/. The root URL must return an HTML document to external crawlers, meaning automated site-checking tools. If this staging hostname has been replaced, please provide the exact current hostname and add a permanent 301 redirect, which tells browsers and crawlers that the old address has moved.</i></li>
+      <li>Confirm success by loading the page in a private window, viewing its page source, and checking that an external header request returns <code>200</code>, or one permanent <code>301</code> redirect followed by <code>200</code>. Then run a new crawl and require more than zero pages before accepting SEO findings.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Small fixes, in order</h2>
+    <div class="cols">
+      <div><p class="row-title">Make the exact host fetchable <span class="mono tag">audit blocker</span></p></div>
+      <div>
+        <p>OpenSEO evidence: <code>completed</code>, <code>0/0 pages</code>, with no page rows. Independent evidence: no HTML response was captured from the corrected host.</p>
+        <p class="fix"><b>Fix:</b> Verify the site is active, publicly readable, and connected to the exact hostname shown in this report. Ask WordPress.com support to repair the host when those controls are already correct.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Choose one staging hostname <span class="mono tag">next</span></p></div>
+      <div>
+        <p>The pre-existing OpenSEO project used <code>staging.devskyy.com</code>; this corrected project uses <code>staging-7e48-skyyrose.wpcomstaging.com</code>. Checks of <code>staging.skyyrose.com</code> and <code>staging.devskyy.com</code> did not yield verifiable live HTML or a redirect during this review.</p>
+        <p class="fix"><b>Fix:</b> Declare one canonical staging hostname, meaning the preferred address. Configure the other intentional aliases to use a permanent 301 redirect, or retire them clearly.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Check crawler access <span class="mono tag">next</span></p></div>
+      <div>
+        <p>The zero-page result could not distinguish a missing host from a login wall, privacy setting, bot challenge, or another access rule.</p>
+        <p class="fix"><b>Fix:</b> Open the exact URL in a private browser window with no WordPress login. If visitors see a password, login, challenge, or maintenance screen, adjust the staging access rule long enough to permit the approved audit.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Require a real HTML document <span class="mono tag">next</span></p></div>
+      <div>
+        <p>No live <code>&lt;title&gt;</code> (browser and search title), meta description (search-result summary), heading, canonical URL (preferred address), image alternative text (written image description), or internal link was available to verify.</p>
+        <p class="fix"><b>Fix:</b> After reachability is restored, use View Page Source and confirm the response contains the homepage HTML rather than only a hosting error, redirect loop, or access page.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Treat the empty issue list correctly <span class="mono tag">important</span></p></div>
+      <div>
+        <p>OpenSEO returned <code>No issues recorded</code> alongside a zero-page crawl. No pages means there was nothing on which to run issue checks.</p>
+        <p class="fix"><b>Fix:</b> Do not use this empty list as an SEO pass. Accept the next audit only when it lists actual pages whose HTML can also be fetched independently.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Already working</h2>
+    <ul class="plain">
+      <li>OpenSEO authentication succeeded for the SkyyRose account. <span class="why">This allowed the required project and audit workflow to run.</span></li>
+      <li>A separate exact-host project was created for the corrected staging target. <span class="why">Its audit evidence is no longer mixed with the earlier <code>staging.devskyy.com</code> project.</span></li>
+      <li>The research log was checked before the crawl and was empty. <span class="why">No stale research was reused.</span></li>
+      <li>No backlink, domain-overview, rank, or keyword research calls were made. <span class="why">The account's research credits were preserved.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Reviewed September 1, 2026. OpenSEO sources: account check, project list, project context and research history, one accepted site audit with Lighthouse disabled, one delayed status check, audit issues, and audit pages. Independent verification: direct HTTPS fetch, browser retrieval, exact-host search, and checks of the known staging hostname variants. The command-line environment could not resolve the corrected host, browser retrieval produced no page response, search returned no indexed result, and OpenSEO crawled zero pages. No page-level findings, backlinks, domain estimates, or keywords are claimed.</p>
+  </footer>
+</div>
+</body>
+</html>
