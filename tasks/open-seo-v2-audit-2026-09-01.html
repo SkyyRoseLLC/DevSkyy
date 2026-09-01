@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>staging.devskyy.com SEO review</title>
+<style>
+  :root {
+    --bg: #e2e9f3;
+    --ink: #122650;
+    --muted: #4f5f79;
+    --rule: #c2cddd;
+    --rule-strong: #122650;
+  }
+  html { background: var(--bg); color-scheme: light; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: Charter, Georgia, "Times New Roman", serif;
+    line-height: 1.55; margin: 0; padding: 3.5rem 1.5rem 5rem;
+  }
+  .page { max-width: 860px; margin: 0 auto; }
+  .mono {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);
+  }
+  h1 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700; font-size: 1.6rem; letter-spacing: -0.01em;
+    margin: 0.75rem 0 0.25rem; text-wrap: balance;
+  }
+  .subtitle { color: var(--muted); margin: 0 0 2.5rem; font-size: 1.02rem; max-width: 46rem; }
+  .dateline { color: var(--muted); font-size: 0.92rem; margin: 0 0 1.1rem; }
+  h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700; font-size: 1.25rem; margin: 3rem 0 0.75rem;
+  }
+  .lede { font-size: 1.05rem; max-width: 46rem; }
+  section > p { max-width: 46rem; }
+  hr.heavy { border: 0; border-top: 2px solid var(--rule-strong); margin: 3rem 0 0; }
+  section .cols:first-of-type { border-top: 1px solid var(--rule); }
+  .cols {
+    display: grid; grid-template-columns: minmax(180px, 5fr) 8fr;
+    gap: 1.25rem; padding: 0.6rem 0; border-bottom: 1px solid var(--rule);
+  }
+  .row-title { font-size: 1.12rem; margin: 0; }
+  .row-title .tag { display: block; margin-top: 0.35rem; }
+  .cols > div p { margin: 0 0 0.6rem; color: var(--muted); font-size: 0.95rem; }
+  .cols > div p:last-child { margin-bottom: 0; }
+  .cols > div p.fix { color: var(--ink); }
+  .fix b { font-weight: 600; }
+  code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.85em; word-break: break-word;
+  }
+  ol { padding-left: 1.3rem; max-width: 44rem; }
+  ol li { margin-bottom: 0.5rem; }
+  ul.plain { list-style: none; padding: 0; max-width: 46rem; }
+  ul.plain li { padding: 0.5rem 0; border-bottom: 1px solid var(--rule); font-size: 0.98rem; }
+  ul.plain li:first-child { border-top: 1px solid var(--rule); }
+  ul.plain .why { color: var(--muted); }
+  footer { margin-top: 4rem; color: var(--muted); font-size: 0.88rem; max-width: 46rem; }
+  @media (max-width: 620px) {
+    .cols { grid-template-columns: 1fr; gap: 0.4rem; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>staging.devskyy.com</h1>
+    <p class="dateline">September 1, 2026</p>
+    <p class="subtitle">The V2 staging address is unavailable to the public Domain Name System (DNS), which connects a domain name to its server, and did not return a usable page to OpenSEO. The single highest-leverage action is to give the audit a real, externally resolvable V2 staging URL while keeping staging excluded from search results until launch approval. This report covers the OpenSEO crawl, independent availability checks, and the exact recovery handoff.</p>
+  </header>
+
+  <section>
+    <h2>Where the site stands</h2>
+    <p class="lede">OpenSEO completed one audit with Lighthouse disabled. It reached only <code>https://staging.devskyy.com/</code>, recorded HTTP <code>530</code>, found zero words and zero internal links, and could not identify an indexable document.</p>
+    <p class="lede">Independent checks found the underlying blocker: Google Public DNS returned <code>Status: 3</code>, meaning the domain name does not exist in public DNS, for both <code>devskyy.com</code> and <code>staging.devskyy.com</code>. No live HTML was available, so titles, descriptions, headings, preferred page addresses, image text, structured data, and content quality remain unknown rather than failed.</p>
+  </section>
+
+  <hr class="heavy">
+
+  <section>
+    <h2>If you only do one thing</h2>
+    <p class="lede">Give OpenSEO one real V2 target by restoring <code>staging.devskyy.com</code> in DNS or providing the actual externally crawlable V2 staging URL.</p>
+    <p>Until an external crawler can retrieve the page, every page-level SEO improvement is guesswork. Crawl access does not require publishing staging in search results: a <code>noindex</code> instruction can continue telling search engines not to list the staging pages.</p>
+    <ol>
+      <li>Send the DNS or hosting owner this message: <i>“Please make staging.devskyy.com resolve to the current SkyyRose V2 staging origin and return the homepage HTML to authorized external crawlers. Keep the staging site excluded from search indexing until launch approval. If this hostname was retired, please send the exact replacement V2 staging URL.”</i></li>
+      <li>Ask the owner to confirm which DNS record points the hostname to its server and the final secure HTTPS address after any redirect.</li>
+      <li>Check that a public DNS lookup returns an address and that the homepage returns HTTP <code>200</code>. Then rerun one OpenSEO crawl before making page-level SEO decisions.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>Small fixes, in order</h2>
+    <div class="cols">
+      <div><p class="row-title">Restore a public DNS route <span class="mono tag">critical</span></p></div>
+      <div>
+        <p><b>Independent verification:</b> Google Public DNS returned <code>{&quot;Status&quot;:3}</code> for A, CNAME, AAAA, NS, and TXT checks covering the staging hostname and its parent domain. Status 3 is <code>NXDOMAIN</code>, meaning no such domain name was found.</p>
+        <p class="fix"><b>Fix:</b> Restore the intended DNS zone and staging record, or replace the audit target with the current V2 staging hostname. Confirm the record after DNS propagation.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Return the homepage document <span class="mono tag">critical</span></p></div>
+      <div>
+        <p><b>OpenSEO finding:</b> audit <code>692b6daa-f1f3-4a42-b2a5-1260daffb09f</code> recorded HTTP <code>530</code> for <code>/</code>. The crawl completed with <code>1/1</code> pages.</p>
+        <p class="fix"><b>Fix:</b> After DNS resolves, have hosting route secure web traffic to the V2 staging origin and confirm that <code>/</code> returns status <code>200</code>, meaning a successful response, with HTML. Keep any intended staging access control compatible with the authorized audit crawler.</p>
+      </div>
+    </div>
+    <div class="cols">
+      <div><p class="row-title">Repeat the prelaunch audit <span class="mono tag">after recovery</span></p></div>
+      <div>
+        <p><b>OpenSEO finding:</b> the only crawled row had an empty title, empty description, <code>wordCount: 0</code>, <code>internalLinkCount: 0</code>, and <code>isIndexable: false</code>. These values describe the failed response, not the intended V2 page.</p>
+        <p class="fix"><b>Fix:</b> Rerun the crawl only after the URL is reachable. Review the new live HTML before changing titles, descriptions, headings, links, preferred page addresses, or image text.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Already working</h2>
+    <ul class="plain">
+      <li>OpenSEO is installed and authenticated for the SkyyRose account. <span class="why">The audit workflow itself is available once the target resolves.</span></li>
+      <li>A dedicated project now exists for <code>staging.devskyy.com</code>. <span class="why">Future crawl history can stay separated from other SkyyRose or legacy properties.</span></li>
+      <li>The failure was checked through more than one network path. <span class="why">OpenSEO reported HTTP 530, Google Public DNS reported NXDOMAIN, and a separate remote fetch could not retrieve the HTTPS page.</span></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Reviewed September 1, 2026. Tool findings came from OpenSEO project <code>20294959-0358-4d9c-b7d8-4bd9e0b3af22</code>: one site audit, Lighthouse disabled, one issue row, and one page row. Independent verification used local DNS resolution, Google Public DNS over HTTPS, and a separate remote page fetch. Live HTML verification could not be performed because the hostname does not resolve publicly. No backlink, domain, or keyword research was purchased because the research log was empty and the connected account reported zero credits. The tool host blocked the attempted durable write-back of the key page and research-log entry behind an approval gate, so this report does not claim that project context was updated.</p>
+  </footer>
+</div>
+</body>
+</html>
