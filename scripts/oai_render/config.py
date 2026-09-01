@@ -1,8 +1,10 @@
 """Configuration for the OpenAI gpt-image-2 product render pipeline.
 
-Loads API keys via the project env loader (root .env + gemini/.env with
-override=True) and exposes the fixed, deterministic render parameters that
-make every product render identical. No Gemini / nano-banana dependencies.
+The renderer reads only its approved root environment files.  A caller-provided
+environment always wins; otherwise ``.env.local`` supplies the project-scoped
+OpenAI key ahead of a base ``.env``.  It deliberately avoids importing the
+global ``config`` package because that package can load unrelated legacy
+provider files with overriding precedence.
 """
 
 from __future__ import annotations
@@ -10,18 +12,40 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-# Load root .env + gemini/.env (override=True) so OPENAI_API_KEY is present.
-# config/ is a repo-root package; fall back to a path walk if it is not yet
-# importable (e.g. when the module is imported before sys.path is set up).
-try:  # pragma: no cover - import wiring
-    from config.load_env import load_project_env
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+API_KEY_ENV = "OPENAI_API_KEY"
 
-    PROJECT_ROOT = load_project_env()
-except Exception:  # pragma: no cover - defensive fallback
-    PROJECT_ROOT = Path(__file__).resolve().parents[2]
+
+def load_render_env(project_root: Path = PROJECT_ROOT) -> None:
+    """Load the renderer's local key without replacing a caller's environment.
+
+    ``.env.local`` is Git-ignored and is the approved destination for a
+    project-scoped renderer key.  It intentionally takes precedence over a
+    base ``.env`` while a process-supplied key retains the highest priority.
+    Values are never logged or returned.
+    """
+    try:
+        from dotenv import dotenv_values, load_dotenv
+    except ImportError:  # pragma: no cover - environment may be supplied by caller
+        return
+
+    caller_supplied_key = bool(os.environ.get(API_KEY_ENV, "").strip())
+    load_dotenv(project_root / ".env", override=False)
+    if caller_supplied_key:
+        return
+
+    local_key = (dotenv_values(project_root / ".env.local").get(API_KEY_ENV) or "").strip()
+    if local_key:
+        os.environ[API_KEY_ENV] = local_key
+
+
+load_render_env()
 
 # ── Model + render parameters (the "identical procedure") ───────────────────
-MODEL = "gpt-image-2"  # OpenAI "Image 2"; auto-high-fidelity on every input
+# Use the current first-party GPT Image 2 model identifier. Any future model
+# change must be reviewed against the product-fidelity registry and the approved
+# product fixture set before this value is updated.
+MODEL = "gpt-image-2"
 QUALITY = "high"  # highest fidelity tier
 SIZE = "1024x1536"  # portrait → feeds the 4:5 holo card crop
 OUTPUT_FORMAT = "png"  # lossless
@@ -50,7 +74,8 @@ RETRY_BACKOFF_BASE_S = 2.0  # exponential: base * 2**attempt (+ jitter)
 RETRY_BACKOFF_MAX_S = 60.0
 
 # ── Cost guardrails ─────────────────────────────────────────────────────────
-# Estimate for the STOP-AND-SHOW manifest; real spend is whatever OpenAI bills.
+# Estimate for the STOP-AND-SHOW manifest; provider-reported usage is recorded
+# per call, while billing remains the OpenAI dashboard's final authority.
 # Verified 2026-06: gpt-image-2 high quality ≈ $0.21 at 1024x1024. Our 1024x1536
 # portrait + multi-image edit (reference input tokens) ≈ $0.35–0.40/image. Edit-
 # heavy / retried calls can run higher — treat this as a floor, not a ceiling.
@@ -60,9 +85,9 @@ HARD_COST_CAP_USD = 50.0  # abort any run whose manifest estimate exceeds this
 # ── QC gate (post-generation validation, pre-acceptance) ────────────────────
 # Layered: free deterministic checks (decode / dimensions / collage panels),
 # then a cheap VLM judge. The HARD_COST_CAP_USD above guards the manifest
-# ESTIMATE; the SpendTracker in cost.py enforces the same cap against ACTUAL
-# accumulated spend (renders + judged retries + judge calls) at runtime, which
-# closes the retry-storm gap (worst case previously ~$189 vs the $50 cap).
+# ESTIMATE; the SpendTracker in cost.py enforces the same cap against the
+# accumulated runtime estimate (renders + judged retries + judge calls), which
+# bounds retry volume. It is deliberately not described as billed spend.
 QC_ENABLED = True
 # Vision judge. Was gpt-4o-mini @ detail:"low" — that combo was UNRELIABLE in both
 # directions: it hallucinated defects (green that wasn't there), false-PASSED a
@@ -79,7 +104,13 @@ QC_ENABLED = True
 # (gpt-4o-mini, gpt-4.1, gpt-5.1) each hit only ~2/6 — all missed a gross missing-sherpa
 # defect and mis-read fine logo art. Default is anthropic; fail-closed without its key so
 # a paid batch never runs on the unreliable judge or, worse, silently un-judged.
-QC_JUDGE_PROVIDER = "anthropic"
+# Keep Anthropic as the production default, but allow an explicitly scoped
+# per-run provider override when a governed fallback is required. ``manual``
+# is a quarantine-only mode: it creates candidates but requires a separate
+# visual approval before any output can be accepted or wired. The caller still
+# has to opt in to either fallback; an unset or invalid value must never
+# silently select one.
+QC_JUDGE_PROVIDER = os.environ.get("OAI_QC_JUDGE_PROVIDER", "anthropic").strip().lower()
 # OpenAI fallback (do NOT trust as a sole gate — kept for offline/keyless smoke tests).
 QC_JUDGE_MODEL = "gpt-4.1"
 QC_JUDGE_DETAIL = "high"  # full-resolution tiles (OpenAI only)
@@ -96,7 +127,11 @@ ANTHROPIC_API_KEY_ENV = "ANTHROPIC_API_KEY"
 # observation. 300 tokens forced an instant verdict with no room to look — it
 # false-PASSED the missing-sherpa br-006. ~1500 fits analysis + 6 gates + reason.
 QC_JUDGE_MAX_OUTPUT_TOKENS = 1500
-QC_MAX_RENDER_RETRIES = 2  # judged re-renders per plan before quarantine
+# Blind paid re-renders are opt-in.  A fidelity miss normally means the source,
+# mask, or prompt contract needs inspection; paying again before that review is
+# what caused prior waste.  Operators may set OAI_QC_MAX_RENDER_RETRIES for a
+# governed, targeted retry run after recording the correction.
+QC_MAX_RENDER_RETRIES = max(0, int(os.environ.get("OAI_QC_MAX_RENDER_RETRIES", "0")))
 # Per-judge-call cost ceiling for the cap math. OpenAI gpt-4.1@high ≈ $0.005-0.008;
 # Anthropic claude-sonnet-4-6 (1 candidate + 3 refs, full-res) ≈ $0.04-0.05.
 EST_JUDGE_COST_USD = 0.05
@@ -145,20 +180,17 @@ LOGOS_DIR = _ap.PRODUCT_LOGOS  # colorway-correct three-rose-cluster render refe
 OUTPUT_DIR = PROJECT_ROOT / "renders" / "oai"
 REJECTED_DIR = OUTPUT_DIR / "_rejected"  # QC-failed renders quarantined for human review
 
-API_KEY_ENV = "OPENAI_API_KEY"
-
-
 def get_api_key() -> str:
     """Return the OpenAI API key from the environment, or raise a clear error.
 
-    The key is loaded from gemini/.env (override=True) by config/load_env.py.
+    The key is loaded from the renderer's approved project environment files.
     It is never logged or printed.
     """
     key = os.environ.get(API_KEY_ENV, "").strip()
     if not key:
         raise RuntimeError(
-            f"{API_KEY_ENV} not set. Add it to gemini/.env "
-            "(loaded with override=True by config/load_env.py) and retry."
+            f"{API_KEY_ENV} not set. Add it to .env.local or supply it in the "
+            "calling environment and retry."
         )
     return key
 

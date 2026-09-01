@@ -108,8 +108,10 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
             "back": s / "black-rose" / "br-jersey-football-sf-back.jpeg",
         },
         "br-009": {
-            "front": s / "black-rose" / "br-jersey-football-oakland-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-football-oakland-back.jpeg",
+            "front": config.PROJECT_ROOT
+            / "assets/products/references/br-009-founder-white-football-front-sot.png",
+            "back": config.PROJECT_ROOT
+            / "assets/products/references/br-009-founder-white-football-back-sot.png",
         },
         "br-010": {
             "front": s / "black-rose" / "br-jersey-basketball-front.jpeg",
@@ -424,7 +426,10 @@ def build_references(
     smap = get_source_map().get(sku, {})
     front = smap.get("front")
     back = smap.get("back")
-    flatlay = find_flatlay_photo(sku)
+    # Founder-declared sources supersede filename-matched rescue photography.
+    # Never blend a newer physical source with a stale SKU-prefix match.
+    founder_source = front is not None and "-founder-" in front.name
+    flatlay = None if founder_source else find_flatlay_photo(sku)
 
     refs: list[ReferenceImage] = []
 
@@ -445,7 +450,11 @@ def build_references(
         refs.append(
             ReferenceImage(
                 label=(
-                    "REFERENCE IMAGE {n} — GARMENT TECH FLAT (FRONT VIEW): front-facing design "
+                    "REFERENCE IMAGE {n} — FOUNDER PRODUCT SOT: supplied source pixels are the "
+                    "authority. Preserve shown panel layout, graphic placement, silhouette, "
+                    "construction, colors, and trims exactly; do not blend an older reference."
+                    if founder_source
+                    else "REFERENCE IMAGE {n} — GARMENT TECH FLAT (FRONT VIEW): front-facing design "
                     "illustration showing front panel layout, graphic placement, silhouette, "
                     "and construction."
                 ),
@@ -460,7 +469,7 @@ def build_references(
             f"{sku}: no usable garment reference (front={front}, flatlay=None)."
         )
 
-    if include_back and back and back.exists():
+    if include_back and back and back.exists() and back != front:
         refs.append(
             ReferenceImage(
                 label=(

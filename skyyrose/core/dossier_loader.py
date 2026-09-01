@@ -19,6 +19,7 @@ upstream by scripts/validate_dossier.py).
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass, field
 from functools import cache
@@ -27,6 +28,7 @@ from pathlib import Path
 from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows
 
 DOSSIERS_DIR = CATALOG_CSV.parent / "dossiers"
+RENDER_CORRECTIONS_PATH = CATALOG_CSV.parent / "render-corrections.json"
 
 
 class DossierMissingError(FileNotFoundError):
@@ -35,6 +37,10 @@ class DossierMissingError(FileNotFoundError):
     The pipeline fails loudly rather than fall back to the thin CSV
     `branding_spec` column. Author the dossier before rendering.
     """
+
+
+class RenderCorrectionsError(RuntimeError):
+    """Raised when the binding founder-amendment feed cannot be trusted."""
 
 
 @dataclass
@@ -70,6 +76,34 @@ class Dossier:
             "reference_image": self.reference_image,
             "extra_references": list(self.extra_references),
         }
+
+
+@dataclass(frozen=True)
+class ProductRenderContract:
+    """Dossier-first physical-product truth plus binding founder amendments.
+
+    The commerce catalog is intentionally limited to identity and routing. It
+    is not a visual source: construction, marks, wording, placement, and
+    material must come from the authored dossier and current amendments.
+    """
+
+    product: dict[str, str]
+    dossier: Dossier
+    founder_corrections: tuple[str, ...]
+
+    def prompt_text(self) -> str:
+        sections = [
+            f"PRODUCT: {self.dossier.name} ({self.dossier.sku})",
+            f"GARMENT TYPE LOCK:\n{self.dossier.garment_type_lock}",
+            f"BRANDING — exactly what IS on this product:\n{self.dossier.branding_block}",
+            f"DO NOT RENDER — physical exclusions:\n{self.dossier.negative_block}",
+        ]
+        if self.founder_corrections:
+            sections.append(
+                "FOUNDER CORRECTIONS — newer than any conflicting catalog copy:\n"
+                + "\n".join(self.founder_corrections)
+            )
+        return "\n\n".join(section for section in sections if section.strip())
 
 
 def _parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -221,11 +255,46 @@ def get_product_with_dossier(sku: str) -> dict:
     return {**row, "dossier": dossier.to_dict(), "_dossier": dossier}
 
 
+def get_product_render_contract(sku: str) -> ProductRenderContract:
+    """Load fail-closed physical-product truth for a render or derivative.
+
+    Missing or malformed founder corrections block the operation: accepting a
+    stale catalog description would reintroduce the wrong-product class of
+    render failures.
+    """
+    merged = get_product_with_dossier(sku)
+    try:
+        raw = json.loads(RENDER_CORRECTIONS_PATH.read_text(encoding="utf-8"))
+    except OSError as exc:
+        raise RenderCorrectionsError(
+            f"Cannot read required founder corrections at {RENDER_CORRECTIONS_PATH}: {exc}"
+        ) from exc
+    except json.JSONDecodeError as exc:
+        raise RenderCorrectionsError(
+            f"Founder corrections are invalid JSON at {RENDER_CORRECTIONS_PATH}: {exc}"
+        ) from exc
+    candidates = raw.get("corrections")
+    if not isinstance(candidates, dict):
+        raise RenderCorrectionsError("Founder corrections must contain a 'corrections' object.")
+    candidate = candidates.get(sku, [])
+    if not isinstance(candidate, list) or not all(isinstance(item, str) for item in candidate):
+        raise RenderCorrectionsError(f"Founder corrections for {sku} must be a string list.")
+    return ProductRenderContract(
+        product={key: value for key, value in merged.items() if isinstance(value, str)},
+        dossier=merged["_dossier"],
+        founder_corrections=tuple(item for item in candidate if item.strip()),
+    )
+
+
 __all__ = [
     "DOSSIERS_DIR",
+    "RENDER_CORRECTIONS_PATH",
     "Dossier",
     "DossierMissingError",
+    "RenderCorrectionsError",
+    "ProductRenderContract",
     "parse_dossier_markdown",
     "load_dossier",
     "get_product_with_dossier",
+    "get_product_render_contract",
 ]

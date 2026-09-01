@@ -10,5 +10,7 @@
 google-genai>=1.14.0
 Pillow>=12.3.0
 together>=2.24.1
-openai>=1.30
+# Pin the SDK major version so the documented Image API call surface does not
+# silently change under a paid product-rendering pipeline.
+openai>=1.30,<2
 httpx>=0.27

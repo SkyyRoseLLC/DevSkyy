@@ -19,6 +19,7 @@ from PIL import Image
 from scripts.oai_render import config
 from scripts.oai_render import prompt as prompt_mod
 from scripts.oai_render import qc
+from scripts.oai_render.client import ImageRenderReceipt
 from scripts.oai_render.cost import SpendTracker
 from scripts.oai_render.pipeline import SkuPlan, render_sku
 from scripts.oai_render.prompt import (
@@ -214,6 +215,20 @@ class _FakeClient:
         return self.payload
 
 
+class _ReceiptClient(_FakeClient):
+    """Provider-shaped client double that preserves the receipt contract."""
+
+    def edit(self, *, prompt: str, image_paths: list[Path]) -> ImageRenderReceipt:
+        super().edit(prompt=prompt, image_paths=image_paths)
+        return ImageRenderReceipt(
+            image_bytes=self.payload,
+            request_id="req_test_789",
+            usage={"input_tokens": 12, "output_tokens": 34},
+            model="gpt-image-2-2026-04-21",
+            provider_attempts=1,
+        )
+
+
 class _ScriptedGate:
     """QC gate double whose verdicts (and optional per-attempt failure tags) are scripted."""
 
@@ -251,7 +266,10 @@ def _plan() -> SkuPlan:
     )
 
 
-def test_render_sku_accepts_on_retry_after_qc_fail(_tmp_output):
+def test_render_sku_accepts_on_governed_retry_after_qc_fail(_tmp_output, monkeypatch):
+    # Retries are never a default paid behavior; this test opts into a reviewed,
+    # targeted retry policy to exercise the correction feedback path.
+    monkeypatch.setattr(config, "QC_MAX_RENDER_RETRIES", 1)
     client = _FakeClient(b"png-bytes")
     gate = _ScriptedGate([False, True])
     result = render_sku(_plan(), client, gate=gate, spend=SpendTracker())
@@ -276,8 +294,9 @@ def test_render_sku_quarantines_after_exhausting_retries(_tmp_output):
     assert not (config.OUTPUT_DIR / "black-rose-crewneck" / "ghost.png").exists()
 
 
-def test_render_sku_early_aborts_on_repeated_identical_failure(_tmp_output):
+def test_render_sku_early_aborts_on_repeated_identical_failure(_tmp_output, monkeypatch):
     """Same QC failure twice running → abort before burning the final retry (saves spend)."""
+    monkeypatch.setattr(config, "QC_MAX_RENDER_RETRIES", 2)
     client = _FakeClient(b"png-bytes")
     gate = _ScriptedGate([False])  # identical tag (collage_panels) every attempt
     result = render_sku(_plan(), client, gate=gate, spend=SpendTracker())
@@ -286,8 +305,9 @@ def test_render_sku_early_aborts_on_repeated_identical_failure(_tmp_output):
     assert client.calls == 2
 
 
-def test_render_sku_feeds_qc_reason_into_retry(_tmp_output):
+def test_render_sku_feeds_qc_reason_into_retry(_tmp_output, monkeypatch):
     """The retry prompt carries the prior rejection's reason — not a blind replay."""
+    monkeypatch.setattr(config, "QC_MAX_RENDER_RETRIES", 1)
     client = _FakeClient(b"png-bytes")
     gate = _ScriptedGate([False, True])
     result = render_sku(_plan(), client, gate=gate, spend=SpendTracker())
@@ -313,6 +333,24 @@ def test_render_sku_no_gate_accepts_first_render(_tmp_output):
     assert result.status == "rendered"
     assert client.calls == 1
     assert result.output_path is not None and result.output_path.exists()
+
+
+def test_render_sku_records_provider_receipt_without_calling_estimate_actual(_tmp_output, tmp_path):
+    """Request ID and provider token telemetry must survive the renderer boundary."""
+    from scripts.oai_render.runlog import RunLog
+
+    client = _ReceiptClient(b"png-bytes")
+    run_path = tmp_path / "runs" / "run-test.jsonl"
+    run_path.parent.mkdir()
+    runlog = RunLog(path=run_path)
+    result = render_sku(_plan(), client, gate=None, spend=SpendTracker(), runlog=runlog)
+    assert result.status == "rendered"
+    events = [json.loads(line) for line in runlog.path.read_text().splitlines()]
+    receipt = next(event for event in events if event["event"] == "provider_response")
+    assert receipt["provider_request_id"] == "req_test_789"
+    assert receipt["provider_usage"] == {"input_tokens": 12, "output_tokens": 34}
+    assert receipt["estimated_spend_usd"] > 0
+    assert "spent_usd" not in receipt
 
 
 # ── Q-unavail: judge-infra failure → mandatory human review, never auto-ship ──

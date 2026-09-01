@@ -7,7 +7,7 @@ logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/nfl-authentic-collection-patch.md
   - data/brand-logos/sr-monogram.md
-reference_image: assets/products/references/br-009-design-front.jpeg
+reference_image: assets/products/references/br-009-founder-white-football-front-sot.png
 ---
 
 # BLACK is Beautiful Jersey Series — 2. Last Oakland (Football)
@@ -26,7 +26,9 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - NFL Authentic Collection patch: `data/brand-logos/nfl-authentic-collection-patch.md`
 > - SR monogram (back-neck):       `data/brand-logos/sr-monogram.md`
-> - Product design render:          `assets/products/references/br-009-design-front.jpeg`
+> - Founder front SOT:              `assets/products/references/br-009-founder-white-football-front-sot.png`
+> - Founder back SOT:               `assets/products/references/br-009-founder-white-football-back-sot.png`
+> - Deterministic patch record:     `assets/products/references/br-009-founder-white-football-patch-contract.json`
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
@@ -39,26 +41,23 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 
 ### Front
 - **front-chest** (large, ~10in tall, vertically centered): The number
-  **"32"** rendered as athletic-block digits with a **black outline edge**
-  and greyscale Black Rose three-rose-cluster art filling the interior of
-  both digits. **Technique:** sublimated. **Color:** black outline +
-  greyscale rose-cluster fill on white ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The NFL
-  Authentic Collection patch sewn onto the lower-left hip. **Technique:**
-  embroidered-patch.
+  **"32"** rendered as athletic-block digits with a **black outline edge**:
+  the **"3" is filled with greyscale Black Rose three-rose-cluster art** and
+  the **"2" remains plain white**. **Technique:** sublimated. **Color:**
+  black outline + greyscale rose-cluster fill on the "3" only, white "2".
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in high**): The
+  NFL Authentic Collection patch sewn onto the **wearer's left** lower hip.
+  **Technique:** embroidered-patch.
 
 ### Back
 - **back-neck** (small, ~2in wide, top-center just below the collar yoke):
-  The SR monogram embroidered directly onto the jersey in **black thread**
-  (instead of canonical gold — black-on-white for this colorway).
-  **Technique:** embroidered. **Color:** black thread.
-- **back-yoke / upper-back** (arched, ~9in wide): The phrase **"BLACK IS
-  BEAUTIFUL"** in tackle-twill lettering, baseball-script style. Rendered in
-  **black twill** on the white body. **Technique:** tackle-twill. **Color:**
-  black twill letters on white ground.
-- **back-center** (large, ~12in tall, vertically centered): The number
-  **"32"** rendered identically to the front. **Technique:** sublimated.
-  **Color:** black outline + greyscale rose-cluster fill.
+  The SR monogram embroidered in **black thread**. **Technique:** embroidered.
+  **Color:** black thread on white.
+- **back-yoke / upper-back** (arched, ~9in wide): **"BLACK IS BEAUTIFUL"**
+  in black tackle-twill lettering on white ground. **Technique:** tackle-twill.
+- **back-center** (large, ~12in tall): The number **"32"** with a black
+  outline: the **"3" remains plain white** and the **"2" is filled with the
+  tonal greyscale Black Rose three-rose-cluster art. **Technique:** sublimated.
 
 ### Sleeves
 - **left-shoulder / right-shoulder** (small, ~3–4in tall, on each shoulder):
@@ -77,7 +76,7 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 
 ## Negative — what is NOT on this product (DO NOT render)
 
-- NO player NAME on back. NO nameplate above the back number.
+- NO player NAME or design not present in the official founder back techflat.
 - NO multi-color rendering of the rose-cluster fill — greyscale only.
 - NO red anywhere on this colorway (this is the Last Oakland white away —
   NO 49ers red, NO Giants orange).
@@ -87,8 +86,8 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 - NO NBA Authentic Collection patch.
 - NO embossed/debossed decoration.
 - NO buttons, NO placket — pullover construction.
-- NO standalone Black Rose three-rose-cluster art on the back-center other
-  than as digit fill — the rose appears ONLY inside the digit fills.
+- NO standalone Black Rose three-rose-cluster art outside the front "3" and
+  back "2" digit fills.
 - NO gold thread on the SR monogram — black thread for this colorway.
 - NO sleeve PATCHES — the sleeves carry duplicate "32" numerals, not woven
   patches.
@@ -99,10 +98,10 @@ baseball jersey. **PRE-ORDER product** — design renderings only.
 
 ## Scene direction
 
-- **Pose:** Front view straight-on showing the front-chest "32" with rose
-  fill, the black neckband, the striped cuffs, and the lower-left NFL patch.
-  Three-quarter view shows the sleeve "32" detail. Back view shows the
-  upper-back "BLACK IS BEAUTIFUL" tackle-twill, the small black SR monogram
-  at back-neck, and the matching back-center "32".
+- **Pose:** Front view straight-on showing the front-chest "32" with a
+  rose-filled "3" and plain "2", the black neckband, the striped cuffs, and
+  the 3in × 4in lower-left NFL patch. Three-quarter view shows the sleeve
+  "32" detail. Back view shows the black SR monogram, BLACK IS BEAUTIFUL
+  yoke lettering, and the rose-filled back "2".
 - **Setting:** Pure white studio backdrop, soft directional studio lighting
   from front-left, subtle natural drop shadow on the floor.

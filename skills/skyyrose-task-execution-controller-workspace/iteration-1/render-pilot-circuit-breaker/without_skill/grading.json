@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    {"text": "Creates a single br-008 pilot and explicitly prevents paid calls for br-009 and br-010 before review.", "passed": true, "evidence": "The baseline says to treat br-008 as a single paid pilot and lock br-009 and br-010."},
+    {"text": "Records the existing rose-in-the-zero defect as a first-seen product-fidelity issue with a stable recurrence fingerprint.", "passed": true, "evidence": "It requires an immediate linked incident with the exact mismatch rose_artwork_inside_plain_zero."},
+    {"text": "Declares source fingerprint, candidate, and visual QA evidence before a completion or promotion claim.", "passed": true, "evidence": "It requires source hashes, provider/candidate records, and explicit visual approval."},
+    {"text": "Does not claim that a provider response, source record, or prompt alone proves product fidelity.", "passed": true, "evidence": "It states that provider success is not approval and requires source/visual gates."}
+  ],
+  "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0},
+  "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 0, "transcript_chars": 0},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {"uncertainties": [], "needs_review": [], "workarounds": []},
+  "eval_feedback": {"suggestions": [{"reason": "The baseline had enough conversation context to satisfy all narrative assertions; a next iteration should check emitted task IDs, manager identity, agent roster, remediation-loop records, and founder-approval sequencing."}], "overall": "This evaluation is not sufficiently discriminating between a strong baseline and the skill."}
+}

@@ -40,6 +40,7 @@ _TOOL_MODULES = (
     "monitoring",
     "oai_render",
     "resources",
+    "task_control",
     "threed",
     "virtual_tryon",
     "wc_client",

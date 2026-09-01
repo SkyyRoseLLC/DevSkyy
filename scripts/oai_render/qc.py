@@ -396,6 +396,7 @@ class QCGate:
     ) -> None:
         self._use_judge = use_judge and config.QC_ENABLED
         self._provider = config.QC_JUDGE_PROVIDER
+        self._manual_review_only = self._provider == "manual"
         self._judge_fn = judge_fn  # injection seam: callable(req) -> (verdict_dict, cost_usd)
         # Q-fusion centroid seam. centroid_fn(data) -> GateVerdict-like | None (tests inject a
         # fake to stay model-free). centroid_path None -> brand_centroid.DEFAULT_CENTROID_PATH,
@@ -416,7 +417,7 @@ class QCGate:
         self._centroid_mode = _raw_mode
         self._client = None
         self._model = ""
-        if self._use_judge and self._judge_fn is None:
+        if self._use_judge and self._judge_fn is None and not self._manual_review_only:
             try:
                 if self._provider == "anthropic":
                     import anthropic
@@ -432,13 +433,18 @@ class QCGate:
                         api_key=key, timeout=config.REQUEST_TIMEOUT_S
                     )
                     self._model = config.QC_JUDGE_MODEL_ANTHROPIC
-                else:
+                elif self._provider == "openai":
                     from openai import OpenAI
 
                     self._client = OpenAI(
                         api_key=config.get_api_key(), timeout=config.REQUEST_TIMEOUT_S
                     )
                     self._model = config.QC_JUDGE_MODEL
+                else:
+                    raise RuntimeError(
+                        "Unsupported OAI_QC_JUDGE_PROVIDER "
+                        f"{self._provider!r}; expected 'anthropic', 'openai', or 'manual'."
+                    )
             except Exception as exc:
                 # No silent degradation: a judge that cannot start is a hard error,
                 # otherwise a paid batch would run ungated without anyone noticing.
@@ -452,6 +458,16 @@ class QCGate:
                 passed=False,
                 failure_tags=tuple(det_tags),
                 reason="deterministic pre-check failed",
+            )
+        if self._manual_review_only:
+            return QCVerdict(
+                passed=False,
+                failure_tags=("manual_review_required",),
+                reason=(
+                    "No configured automated vision judge is available; "
+                    "candidate requires independent visual fidelity review."
+                ),
+                needs_review=True,
             )
         centroid = self._centroid_signal(data)
         if not self._use_judge:

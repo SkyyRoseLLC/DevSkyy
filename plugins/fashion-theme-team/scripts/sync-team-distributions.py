@@ -19,8 +19,12 @@ from pathlib import Path
 PACKAGE_NAME = "fashion-theme-team"
 LOCAL_PATH_PARTS = {
     ".git",
+    ".mypy_cache",
+    ".venv",
+    ".venv-format",
     ".ruff_cache",
     "__pycache__",
+    "node_modules",
     ".pytest_cache",
     ".DS_Store",
 }

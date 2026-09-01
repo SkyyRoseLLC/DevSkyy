@@ -1,0 +1,16 @@
+{
+  "schema": "product-fidelity-local-patch-review.v1",
+  "candidate_path": "assets/products/references/br-009-founder-white-football-front-sot.png",
+  "candidate_sha256": "675a487d9afe147edd029272e1d359968b8f2702e5c5d035748bd475cc2de075",
+  "reviewed_at": "2026-08-30",
+  "review_method": "direct visual comparison against the founder front techflat and the canonical br-009 NFL patch; deterministic outside-mask pixel comparison",
+  "verdict": "PASS",
+  "checks": {
+    "patch_artwork_matches_canonical_reference": true,
+    "patch_placement_is_wearer_left_lower_front": true,
+    "patch_physical_footprint_inches": "3 x 4",
+    "front_number_is_32_with_only_3_rose_filled": true,
+    "outside_mask_changed_pixels": 0,
+    "unapproved_garment_or_text_changes": false
+  }
+}

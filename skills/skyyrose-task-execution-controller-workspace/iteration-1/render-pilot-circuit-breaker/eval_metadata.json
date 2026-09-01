@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "render-pilot-circuit-breaker",
+  "prompt": "We need on-model front renders for br-008, br-009, and br-010. The last br-008 candidate put the rose artwork inside the plain zero and I cannot spend on all three again if that happens. Set up the controlled work so we can produce the next candidate safely.",
+  "assertions": [
+    "Creates a single br-008 pilot and explicitly prevents paid calls for br-009 and br-010 before review.",
+    "Records the existing rose-in-the-zero defect as a first-seen product-fidelity issue with a stable recurrence fingerprint.",
+    "Declares source fingerprint, candidate, and visual QA evidence before a completion or promotion claim.",
+    "Does not claim that a provider response, source record, or prompt alone proves product fidelity."
+  ]
+}

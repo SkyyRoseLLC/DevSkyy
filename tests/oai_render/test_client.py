@@ -18,9 +18,11 @@ from __future__ import annotations
 
 import base64
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import MagicMock
 
 import pytest
+from PIL import Image
 
 from scripts.oai_render import config
 from scripts.oai_render.client import OAIImageClient
@@ -32,8 +34,10 @@ def _build_client_with_mock(monkeypatch: pytest.MonkeyPatch) -> tuple[OAIImageCl
     monkeypatch.setenv("OPENAI_API_KEY", "test-key-abc")
     client = OAIImageClient()
     fake_sdk = MagicMock()
-    fake_sdk.images.edit.return_value = MagicMock(
-        data=[MagicMock(b64_json=base64.b64encode(b"image-bytes").decode())]
+    fake_sdk.images.edit.return_value = SimpleNamespace(
+        data=[SimpleNamespace(b64_json=base64.b64encode(b"image-bytes").decode())],
+        _request_id="req_edit_123",
+        usage={"input_tokens": 12, "output_tokens": 34},
     )
     client._client = fake_sdk  # replace the real OpenAI SDK client
     return client, fake_sdk
@@ -49,10 +53,14 @@ def test_edit_omits_input_fidelity_for_unsupported_model(
 
     out = client.edit(prompt="SKYYROSE varsity, studio", image_paths=[img])
 
-    assert out == b"image-bytes"
+    assert out.image_bytes == b"image-bytes"
+    assert out.request_id == "req_edit_123"
+    assert out.usage == {"input_tokens": 12, "output_tokens": 34}
+    assert out.model == config.MODEL
+    assert out.provider_attempts == 1
     fake_sdk.images.edit.assert_called_once()
     kwargs = fake_sdk.images.edit.call_args.kwargs
-    assert kwargs["model"] == "gpt-image-2"
+    assert kwargs["model"] == config.MODEL
     assert "input_fidelity" not in kwargs  # gpt-image-2 400s on this param
     assert config.MODEL not in config.INPUT_FIDELITY_SUPPORTED_MODELS
 
@@ -68,7 +76,7 @@ def test_edit_sends_input_fidelity_for_supported_model(
 
     out = client.edit(prompt="SKYYROSE varsity, studio", image_paths=[img])
 
-    assert out == b"image-bytes"
+    assert out.image_bytes == b"image-bytes"
     kwargs = fake_sdk.images.edit.call_args.kwargs
     assert kwargs["model"] == "gpt-image-1.5"
     assert kwargs["input_fidelity"] == "high"  # not omitted, not "low"
@@ -84,18 +92,52 @@ def test_generate_text_to_image_contract(monkeypatch: pytest.MonkeyPatch) -> Non
     monkeypatch.setenv("OPENAI_API_KEY", "test-key-abc")
     client = OAIImageClient()
     fake_sdk = MagicMock()
-    fake_sdk.images.generate.return_value = MagicMock(
-        data=[MagicMock(b64_json=base64.b64encode(b"scene-bytes").decode())]
+    fake_sdk.images.generate.return_value = SimpleNamespace(
+        data=[SimpleNamespace(b64_json=base64.b64encode(b"scene-bytes").decode())],
+        _request_id="req_generate_456",
+        usage={"input_tokens": 56},
     )
     client._client = fake_sdk
 
     out = client.generate(prompt="gothic cathedral at night", size="1152x1536")
 
-    assert out == b"scene-bytes"
+    assert out.image_bytes == b"scene-bytes"
+    assert out.request_id == "req_generate_456"
+    assert out.usage == {"input_tokens": 56}
     fake_sdk.images.generate.assert_called_once()
     kwargs = fake_sdk.images.generate.call_args.kwargs
-    assert kwargs["model"] == "gpt-image-2"
+    assert kwargs["model"] == config.MODEL
     assert kwargs["size"] == "1152x1536"
     assert kwargs["background"] == "opaque"  # scenes are full backdrops
     assert "response_format" not in kwargs  # rejected by gpt-image models
     assert "image" not in kwargs  # text-to-image: no reference
+
+
+def test_edit_rejects_mask_with_different_dimensions_before_provider_call(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    client, fake_sdk = _build_client_with_mock(monkeypatch)
+    image_path = tmp_path / "source.png"
+    mask_path = tmp_path / "mask.png"
+    Image.new("RGBA", (32, 32), "white").save(image_path)
+    Image.new("RGBA", (16, 32), "black").save(mask_path)
+
+    with pytest.raises(ValueError, match="Mask dimensions"):
+        client.edit(prompt="deterministic patch", image_paths=[image_path], mask_path=mask_path)
+
+    fake_sdk.images.edit.assert_not_called()
+
+
+def test_edit_rejects_mask_without_alpha_before_provider_call(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    client, fake_sdk = _build_client_with_mock(monkeypatch)
+    image_path = tmp_path / "source.png"
+    mask_path = tmp_path / "mask.png"
+    Image.new("RGBA", (32, 32), "white").save(image_path)
+    Image.new("RGB", (32, 32), "black").save(mask_path)
+
+    with pytest.raises(ValueError, match="alpha channel"):
+        client.edit(prompt="deterministic patch", image_paths=[image_path], mask_path=mask_path)
+
+    fake_sdk.images.edit.assert_not_called()

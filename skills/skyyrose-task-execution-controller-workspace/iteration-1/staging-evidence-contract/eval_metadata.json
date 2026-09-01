@@ -1,0 +1,11 @@
+{
+  "eval_id": 2,
+  "eval_name": "staging-evidence-contract",
+  "prompt": "Deploy the V2 product-card framing and animated hero to staging after the current commit. I need proof at desktop and 390px, including the animation fallback and any failed network resources. Do not touch production.",
+  "assertions": [
+    "Scopes the task to staging and explicitly preserves the no-production boundary.",
+    "Requires source hash, deployment receipt, desktop evidence, 390px/mobile evidence, fallback evidence, and network-resource evidence.",
+    "Records first-seen visual or failed-resource defects before a retry or completion claim.",
+    "Does not call a local build or deploy response sufficient staging verification."
+  ]
+}

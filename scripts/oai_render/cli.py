@@ -69,11 +69,6 @@ def _build_parser() -> argparse.ArgumentParser:
     gen.add_argument(
         "--yes", action="store_true", help="Confirm paid generation after the manifest."
     )
-    gen.add_argument(
-        "--skip-asset-verify",
-        action="store_true",
-        help="Skip the pre-flight asset-manifest integrity check (NOT recommended).",
-    )
     return parser
 
 
@@ -154,23 +149,17 @@ def main(argv: list[str] | None = None) -> int:
         print("\nPaid generation is gated. Re-run with --yes to proceed.")
         return 2
 
-    # Asset-integrity gate BEFORE constructing the client — so a drifted-source
-    # run reports the actionable drift rather than a confusing "API key missing"
-    # if the key happens to be absent. render_all re-runs the same gate for any
-    # non-CLI caller; here we've already checked, so it renders with it off.
-    if not args.skip_asset_verify:
-        drift = pipeline.verify_plan_assets(dry["plans"])
-        if drift:
-            print("\nABORT: asset integrity check failed before paid generation.")
-            print("  A source file changed or vanished since the manifest was committed —")
-            print("  rendering against it risks the bug-119 wrong-product class. Findings:")
-            for d in drift:
-                print(f"    {d.sku:<14} {d.role:<13} {d.kind:<14} {d.path}")
-            print(
-                "\n  Resolve the file, regenerate with `python scripts/build_asset_manifest.py`,\n"
-                "  confirm the change is intended, then re-run. Override with --skip-asset-verify."
-            )
-            return 4
+    # Asset integrity is mandatory here and again inside the provider choke
+    # point. A paid product-creation run may never bypass founder-SOT proof.
+    drift = pipeline.verify_plan_assets(dry["plans"])
+    if drift:
+        print("\nABORT: asset integrity check failed before paid generation.")
+        print("  A source file changed or vanished since the manifest was committed —")
+        print("  rendering against it risks the wrong-product class. Findings:")
+        for d in drift:
+            print(f"    {d.sku:<14} {d.role:<20} {d.kind:<14} {d.path}")
+        print("\n  Resolve the file, regenerate the manifest, confirm it, then re-run.")
+        return 4
 
     from .client import OAIImageClient
     from .runlog import RunLog
@@ -179,16 +168,18 @@ def main(argv: list[str] | None = None) -> int:
     runlog = RunLog()  # every paid run is observable + leaves a forensic JSONL
     print(f"\nRun log: {runlog.path}")
     print("Watch live: python scripts/oai-render-monitor.py  →  http://127.0.0.1:8946/")
-    # Render the EXACT plans the manifest was built from (no re-plan → no TOCTOU).
-    results = pipeline.render_all(dry["plans"], client, verify_assets=False, runlog=runlog)
+    # Re-verify the exact plan immediately before the provider call to close
+    # the plan-to-provider race.
+    results = pipeline.render_all(dry["plans"], client, verify_assets=True, runlog=runlog)
 
     rendered = [r for r in results if r.status == "rendered"]
     errored = [r for r in results if r.status == "error"]
     skipped = [r for r in results if r.status == "skipped"]
     qc_failed = [r for r in results if r.status == "qc_failed"]
+    blocked = [r for r in results if r.status == "blocked"]
     print(
         f"\nDone — {len(rendered)} rendered, {len(skipped)} skipped, "
-        f"{len(errored)} errored, {len(qc_failed)} QC-failed."
+        f"{len(errored)} errored, {len(qc_failed)} QC-failed, {len(blocked)} release-blocked."
     )
     for r in rendered:
         print(f"  ✓ {r.sku} → {r.output_path}")
@@ -196,7 +187,9 @@ def main(argv: list[str] | None = None) -> int:
         print(f"  ✗ {r.sku}: {r.reason}")
     for r in qc_failed:
         print(f"  ⚠ {r.sku} QC-failed (quarantined in renders/oai/_rejected/): {r.reason}")
-    return 0 if not (errored or qc_failed) else 4
+    for r in blocked:
+        print(f"  ⏸ {r.sku} release-blocked: {r.reason}")
+    return 0 if not (errored or qc_failed or blocked) else 4
 
 
 if __name__ == "__main__":

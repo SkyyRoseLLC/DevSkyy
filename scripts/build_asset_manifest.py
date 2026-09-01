@@ -30,7 +30,6 @@ if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
 from scripts.oai_render import references  # noqa: E402
-from skyyrose.core import paths  # noqa: E402
 from skyyrose.core.asset_manifest import (  # noqa: E402
     AssetManifest,
     AssetRecord,
@@ -38,7 +37,8 @@ from skyyrose.core.asset_manifest import (  # noqa: E402
     hash_if_present,
     to_repo_relative,
 )
-from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
+from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows  # noqa: E402
+from skyyrose.core.dossier_loader import RENDER_CORRECTIONS_PATH  # noqa: E402
 from skyyrose.core.hashing import sha256_of_file  # noqa: E402
 
 
@@ -67,7 +67,7 @@ def build() -> AssetManifest:
     dossier_index = references.build_dossier_index()
 
     manifest = AssetManifest()
-    manifest.catalog_sha = sha256_of_file(paths.CATALOG_CSV)
+    manifest.catalog_sha = sha256_of_file(CATALOG_CSV)
 
     # Record every asset the renderer ACTUALLY resolves (build_references applies
     # the real-photo / flatlay rescue), not the raw source-map dict — so the
@@ -93,6 +93,9 @@ def build() -> AssetManifest:
         dossier_rec = _record("dossier", dossier_index.get(sku))
         if dossier_rec is not None:
             records.append(dossier_rec)
+        corrections_rec = _record("founder-corrections", RENDER_CORRECTIONS_PATH)
+        if corrections_rec is not None:
+            records.append(corrections_rec)
         manifest.skus[sku] = SkuAssets(
             sku=sku,
             name=info["name"],

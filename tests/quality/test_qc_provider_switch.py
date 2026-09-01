@@ -58,3 +58,16 @@ def test_anthropic_judge_error_routes_to_mandatory_review(monkeypatch):
     assert v.passed is False and v.needs_review is True
     assert v.failure_tags == ("judge_unavailable",)
     assert v.judge_cost_usd == 0.0
+
+
+def test_manual_provider_quarantines_without_calling_a_judge(monkeypatch):
+    """Manual mode may create candidates, but it can never auto-accept one."""
+    monkeypatch.setattr(config, "QC_JUDGE_PROVIDER", "manual")
+    gate = QCGate(use_judge=True)
+    monkeypatch.setattr("scripts.oai_render.qc.deterministic_checks", lambda data: [])
+
+    verdict = gate.check(b"\x89PNG", _exp())
+
+    assert verdict.passed is False
+    assert verdict.needs_review is True
+    assert verdict.failure_tags == ("manual_review_required",)

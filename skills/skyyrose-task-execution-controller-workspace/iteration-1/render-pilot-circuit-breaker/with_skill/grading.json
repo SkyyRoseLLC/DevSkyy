@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    {"text": "Creates a single br-008 pilot and explicitly prevents paid calls for br-009 and br-010 before review.", "passed": true, "evidence": "Release decision authorizes br-008 only and explicitly holds br-009 and br-010."},
+    {"text": "Records the existing rose-in-the-zero defect as a first-seen product-fidelity issue with a stable recurrence fingerprint.", "passed": true, "evidence": "The response records br-008-front-zero-fill-v1 before rendering and specifies recurrence handling."},
+    {"text": "Declares source fingerprint, candidate, and visual QA evidence before a completion or promotion claim.", "passed": true, "evidence": "The task record and QA sections require source fingerprints, provider/candidate evidence, and named visual QA."},
+    {"text": "Does not claim that a provider response, source record, or prompt alone proves product fidelity.", "passed": true, "evidence": "It says a provider success response is not a pass and requires a full-resolution visual review."}
+  ],
+  "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0},
+  "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 0, "transcript_chars": 0},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {"uncertainties": [], "needs_review": [], "workarounds": []},
+  "eval_feedback": {"suggestions": [], "overall": "The output meets the task-control requirements."}
+}

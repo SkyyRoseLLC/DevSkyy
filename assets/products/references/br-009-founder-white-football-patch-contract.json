@@ -1,0 +1,57 @@
+{
+  "schema": "product-fidelity-edit.v1",
+  "operation": "localized_product_patch",
+  "target": {
+    "path": "assets/products/references/br-009-founder-white-football-front-unpatched-sot.png",
+    "sha256": "e8199134235cf3e6ef13e5f88e20a3a2bb720eba8bd689a6f99154923ff3c83f"
+  },
+  "generator": {
+    "route": "deterministic_composite",
+    "supports_explicit_mask": true,
+    "tool": "ImageMagick",
+    "interpolation": "none"
+  },
+  "edit_region": {
+    "type": "bbox",
+    "coordinate_space": "pixels",
+    "bbox": [278, 300, 305, 338],
+    "mask_path": "assets/products/references/br-009-founder-white-football-front-patch-mask.png",
+    "mask_sha256": "2a62dd451477ba51debf4afd14c9de9296ae6d4c73d5a80ffe7863c3070d9610",
+    "mask_polarity": "white=authorized_edit; black=locked",
+    "physical_measurement": {"width_inches": 3, "height_inches": 4},
+    "placement": "wearer-left front lower hem"
+  },
+  "references": [
+    {
+      "sku": "br-009",
+      "view": "front",
+      "role": "physical_product_authority",
+      "path": "assets/products/references/br-009-founder-white-football-front-sot.png",
+      "sha256": "675a487d9afe147edd029272e1d359968b8f2702e5c5d035748bd475cc2de075",
+      "verbatim_text": ["32"]
+    },
+    {
+      "sku": "br-009",
+      "view": "front",
+      "role": "exact_logo_or_patch_authority",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-is-beautiful-football-jersey-white/nfl-authentic-collection-card.jpeg",
+      "sha256": "0f3f4545545d80761b0c41a4cc29eda0c1756771fda3c1249f922633371032bf",
+      "verbatim_text": ["BLACK ROSE", "NFL", "AUTHENTIC", "COLLECTION"]
+    }
+  ],
+  "output": {
+    "path": "assets/products/references/br-009-founder-white-football-front-sot.png",
+    "sha256": "675a487d9afe147edd029272e1d359968b8f2702e5c5d035748bd475cc2de075"
+  },
+  "verification": {
+    "max_outside_changed_pixels": 0,
+    "min_inside_changed_pixels": 1,
+    "per_channel_tolerance": 0,
+    "outside_mask_region_checks": ["400x300+0+0", "400x35+0+338", "278x38+0+300", "95x38+305+300"]
+  },
+  "semantic_review": {
+    "required": true,
+    "receipt": "assets/products/references/br-009-founder-white-football-patch-review.json",
+    "scope": "NFL patch artwork, 3x4-inch footprint, wearer-left lower-front placement, jersey construction"
+  }
+}

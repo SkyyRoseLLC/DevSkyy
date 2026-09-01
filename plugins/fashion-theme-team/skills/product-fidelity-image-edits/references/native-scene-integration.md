@@ -49,7 +49,7 @@ The contract target must be the same hash-bound approved on-model file declared 
 
 ## Independent review receipt
 
-The candidate review JSON uses schema `product-fidelity-native-review.v1` and binds the candidate SHA-256. It contains a reviewer distinct from the author, five 0–100 scores, hard-fail findings, and a founder status.
+The candidate review JSON uses schema `product-fidelity-native-review.v2` and binds both the canonical contract SHA-256 and candidate SHA-256. It contains a reviewer distinct from the author, five 0–100 scores, hard-fail findings, and a founder status. Reviewer and founder identities remain self-declared until a separate signed attestation is verified, so neither a passing score nor `founder_status: APPROVED` authorizes wiring or deployment.
 
 Required score dimensions:
 

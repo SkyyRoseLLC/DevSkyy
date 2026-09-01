@@ -45,12 +45,13 @@ class CostManifest:
 
 @dataclass
 class SpendTracker:
-    """Runtime ACTUAL-spend accounting against the hard cap.
+    """Runtime estimated-spend accounting against the budget cap.
 
     The manifest cap above guards the pre-run ESTIMATE; this guards accumulated
-    real spend (renders + QC-gated re-renders + judge calls) during the run, so
-    a retry storm can never blow past the cap. Check ``can_afford`` BEFORE every
-    paid call; ``add`` after it fires.
+    estimated spend (renders + QC-gated re-renders + judge calls) during the
+    run, so a retry storm is bounded. OpenAI usage telemetry is written to the
+    run log; dashboard billing remains the source of billed spend. Check
+    ``can_afford`` BEFORE every paid call; ``add`` after it fires.
     """
 
     cap_usd: float = config.HARD_COST_CAP_USD
@@ -77,18 +78,17 @@ def enforce_cap(manifest: CostManifest) -> None:
 
 
 def format_manifest(manifest: CostManifest) -> str:
-    """Render the STOP-AND-SHOW cost manifest as a human-readable block."""
+    """Render the required preflight cost manifest without implying a dry-run prompts."""
     lines = [
-        "STOP — Confirm before proceeding (paid OpenAI gpt-image-2 generation):",
+        "Render preflight — paid OpenAI gpt-image-2 generation requires --yes:",
         "",
         f"  Model       : {config.MODEL} (quality={config.QUALITY}, size={config.SIZE})",
         f"  Products    : {len(manifest.entries)}",
         f"  Images      : {manifest.n_images}",
         f"  Est. cost   : ~${manifest.est_total_usd:.2f}  "
         f"(ESTIMATE @ ${config.EST_COST_PER_IMAGE_USD:.2f}/image — a FLOOR; verify live pricing)",
-        f"  Worst case  : ${config.HARD_COST_CAP_USD:.2f}  "
-        f"(runtime SpendTracker hard-stops ACTUAL spend — renders, QC re-renders, judge calls — "
-        f"at the cap)",
+        f"  Run budget  : ${config.HARD_COST_CAP_USD:.2f}  "
+        f"(runtime estimated-spend cap; provider usage is logged per call, dashboard billing is final)",
         f"  Hard cap    : ${config.HARD_COST_CAP_USD:.2f}"
         + ("  ⚠ EXCEEDED" if manifest.over_cap else ""),
         "",
@@ -99,5 +99,5 @@ def format_manifest(manifest: CostManifest) -> str:
         note = f"  [{e.note}]" if e.note else ""
         lines.append(f"  {e.sku:<11} {e.n_images:>6}  {e.ref_count:>4}  {e.name}{note}")
     lines.append("")
-    lines.append("Proceed? [y/N]")
+    lines.append("Dry-run makes no provider calls. Generate requires explicit --yes.")
     return "\n".join(lines)

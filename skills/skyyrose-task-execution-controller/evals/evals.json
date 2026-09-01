@@ -1,0 +1,29 @@
+{
+  "skill_name": "skyyrose-task-execution-controller",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We need on-model front renders for br-008, br-009, and br-010. The last br-008 candidate put the rose artwork inside the plain zero and I cannot spend on all three again if that happens. Set up the controlled work so we can produce the next candidate safely.",
+      "expected_output": "Creates one controlled br-008 pilot; records the known numeral-fill issue as the first incident; does not authorize a three-SKU paid batch; declares exact evidence and a resolution path.",
+      "expectations": [
+        "Creates a single br-008 pilot and explicitly prevents paid calls for br-009 and br-010 before review.",
+        "Records the existing rose-in-the-zero defect as a first-seen product-fidelity issue with a stable recurrence fingerprint.",
+        "Declares source fingerprint, candidate, and visual QA evidence before a completion or promotion claim.",
+        "Does not claim that a provider response, source record, or prompt alone proves product fidelity."
+      ],
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Deploy the V2 product-card framing and animated hero to staging after the current commit. I need proof at desktop and 390px, including the animation fallback and any failed network resources. Do not touch production.",
+      "expected_output": "Creates a staging-only task contract with source/deployment/desktop/mobile/fallback/network evidence; preserves the production boundary; logs any first-seen visual or resource failure before retry or completion.",
+      "expectations": [
+        "Scopes the task to staging and explicitly preserves the no-production boundary.",
+        "Requires source hash, deployment receipt, desktop evidence, 390px/mobile evidence, fallback evidence, and network-resource evidence.",
+        "Records first-seen visual or failed-resource defects before a retry or completion claim.",
+        "Does not call a local build or deploy response sufficient staging verification."
+      ],
+      "files": []
+    }
+  ]
+}

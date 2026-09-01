@@ -240,22 +240,25 @@
           "position": "front_number_8",
           "technique": "stitched",
           "colorway": "rose_gold",
-          "notes": "Rose cluster fills the '8' digit in jersey number 80 on the front; '0' remains plain white."
+          "notes": "Founder front SOT: rose cluster fills only the 8 in jersey number 80; the 0 is plain white with a black athletic outline and no rose, vine, or cloud detail."
         },
         {
           "logo_id": "black-roses-cloud-cluster",
           "position": "back_number_0",
           "technique": "stitched",
           "colorway": "rose_gold",
-          "notes": "Reversed on back — '8' is plain, '0' has the rose cluster fill."
+          "notes": "Founder back SOT: reversed on back — 8 is plain white; rose cluster fills only the 0. BLACK IS BEAUTIFUL is black tackle-twill with a white border."
         },
         {
           "logo_id": "nfl-authentic-collection-card",
           "position": "bottom_left_corner",
-          "technique": "custom_football_patch"
+          "technique": "custom_football_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left front lower hem. All Jersey Series sport patches share this 3-inch-wide by 4-inch-high physical footprint."
         }
       ],
-      "jersey_number": "80"
+      "jersey_number": "80",
+      "cuff_trim": "Three white horizontal sleeve stripes with black border stripes on both cuffs; never use plain white bands."
     },
     "br-009": {
       "name": "BLACK Is Beautiful Jersey Series: 2 — Last Oakland (White Football)",
@@ -271,16 +274,19 @@
           "logo_id": "black-roses-cloud-cluster",
           "position": "back_number_2",
           "technique": "stitched",
-          "colorway": "rose_gold",
-          "notes": "Reversed on back — '3' is plain, '2' has the rose cluster fill."
+          "colorway": "greyscale",
+          "notes": "Official founder back SOT: the '3' is plain white and the rose cluster fills only the '2' digit in the back number 32."
         },
         {
           "logo_id": "nfl-authentic-collection-card",
           "position": "bottom_left_corner",
-          "technique": "custom_football_patch"
+          "technique": "custom_football_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left front lower hem. Every Jersey Series sport patch is 3 inches wide by 4 inches high."
         }
       ],
-      "jersey_number": "32"
+      "jersey_number": "32",
+      "rear_view_status": "Official founder back techflat recorded; use only the separate br-009 founder back SOT asset."
     },
     "br-010": {
       "name": "BLACK Is Beautiful Jersey Series: 3 — The Bay (Basketball)",

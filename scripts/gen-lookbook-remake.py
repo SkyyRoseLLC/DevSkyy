@@ -104,6 +104,20 @@ def _as_upload(path: Path) -> tuple[str, bytes, str]:
 
 
 def gen_edit(source: Path, prompt: str, mask: Path | None = None) -> bytes:
+    """Retired direct-provider route.
+
+    This legacy helper cannot bind a SKU to the hash manifest or record the
+    canonical OpenAI receipt, so allowing it to spend would recreate a second
+    ungoverned product pipeline. Use ``scripts/oai-render-run.py`` instead.
+    """
+    raise RuntimeError(
+        "Direct lookbook edits are disabled. Use scripts/oai-render-run.py with a SKU-bound "
+        "canonical render plan."
+    )
+
+
+def _retired_gen_edit(source: Path, prompt: str, mask: Path | None = None) -> bytes:
+    """Historical implementation retained for audit only; never call it."""
     key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not key:
         raise RuntimeError("OPENAI_API_KEY absent from .env.hf")
@@ -241,7 +255,12 @@ def main() -> int:
     if args.mode == "plan":
         print(build_manifest(source, variants, mask))
         return 0
-    return run(source, variants, mask, yes=args.yes)
+    print(
+        "ABORT: direct lookbook generation is retired. Create the SKU-bound plan with "
+        "scripts/oai-render-run.py so source verification and provider receipts stay mandatory.",
+        file=sys.stderr,
+    )
+    return 2
 
 
 if __name__ == "__main__":

@@ -1,11 +1,8 @@
-"""Source image mapping — maps every SKU to its correct front/back techflat.
+"""Compatibility facade for the canonical product-source map.
 
-This is the AUTHORITATIVE mapping. The product catalog references this
-instead of guessing from filenames. Every product has explicit front
-and back source paths (or None if unavailable).
-
-Split techflats live in: assets/techflats/split/{collection}/
-Original sources live in: wordpress-theme/skyyrose-flagship/assets/images/products/
+New paid-render code must resolve sources from ``scripts.oai_render.references``.
+The historical map below stays private for migration analysis only, so it
+cannot compete with the content-hashed contract used by the live renderer.
 """
 
 from __future__ import annotations
@@ -19,15 +16,15 @@ PRODUCTS_DIR = (
 )
 
 
-# ── AUTHORITATIVE SOURCE MAP ────────────────────────────────────────────────
+# ── HISTORICAL SOURCE MAP (private migration reference only) ─────────────────
 # Format: SKU → { "front": Path, "back": Path | None }
 # "front" is used for front view generation
 # "back" is used for back view generation
 # Both are used as reference for branding/editorial views
 
 
-def get_source_map() -> dict[str, dict[str, Path | None]]:
-    """Return the complete source image mapping for all products."""
+def _legacy_source_map() -> dict[str, dict[str, Path | None]]:
+    """Historical mapping retained only for migration/audit reference."""
 
     S = SPLIT_DIR  # Split techflats (individual front/back)
     P = PRODUCTS_DIR  # Original product photos
@@ -223,6 +220,13 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
             "back": S / "kids-capsule" / "kids-purple-joggers-back.jpeg",
         },
     }
+
+
+def get_source_map() -> dict[str, dict[str, Path | None]]:
+    """Return a copy of the sole canonical source map for legacy callers."""
+    from scripts.oai_render.references import get_source_map as canonical_source_map
+
+    return {sku: dict(views) for sku, views in canonical_source_map().items()}
 
 
 def validate_source_map() -> dict:

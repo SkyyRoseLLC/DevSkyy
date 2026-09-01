@@ -31,7 +31,10 @@ _TERMINAL = {"accepted", "qc_failed", "error", "skipped"}
 
 def aggregate(events: list[dict]) -> dict:
     """Fold a run's event stream into dashboard state: run meta + per-SKU progress."""
-    run: dict = {"started": None, "finished": False, "spent_usd": 0.0}
+    # This value is our *local estimate* from configured image/Judge pricing.
+    # Provider token telemetry is retained in the JSONL; only the provider
+    # billing dashboard can settle an actual charge.
+    run: dict = {"started": None, "finished": False, "estimated_spend_usd": 0.0}
     skus: dict[str, dict] = {}
 
     def sku_state(sku: str) -> dict:
@@ -42,9 +45,11 @@ def aggregate(events: list[dict]) -> dict:
 
     for ev in events:
         kind = ev.get("event", "")
-        spent = ev.get("spent_usd")
-        if isinstance(spent, (int, float)):
-            run["spent_usd"] = max(run["spent_usd"], float(spent))
+        estimated_spend = ev.get("estimated_spend_usd", ev.get("spent_usd"))
+        if isinstance(estimated_spend, (int, float)):
+            run["estimated_spend_usd"] = max(
+                run["estimated_spend_usd"], float(estimated_spend)
+            )
 
         if kind == "run_start":
             run.update(
@@ -156,9 +161,9 @@ function render(d){
     +"  ·  "+prog.done+"/"+prog.total+" done"
     +(run.finished?"  ·  FINISHED":"  ·  live")
     +(run.error?"  ·  "+run.error:"");
-  const spent=run.spent_usd||0, cap=run.cap_usd||50;
+  const spent=run.estimated_spend_usd||0, cap=run.cap_usd||50;
   document.getElementById("spendbar").style.width=Math.min(100,100*spent/cap)+"%";
-  document.getElementById("spendlabel").textContent="$"+spent.toFixed(2)+" of $"+cap.toFixed(2)+" cap";
+  document.getElementById("spendlabel").textContent="est. $"+spent.toFixed(2)+" of $"+cap.toFixed(2)+" cap";
   const grid=document.getElementById("grid");
   grid.replaceChildren();
   for(const s of d.skus||[]){

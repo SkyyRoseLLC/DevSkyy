@@ -18,6 +18,7 @@ from .cost import CostManifest, ManifestEntry
 from .prompt import SceneError, build_pair_prompt, build_prompt, extract_view_branding, read_dossier
 from .references import MissingReferenceError, Pair, ReferenceImage
 from .scene_schema import build_scene
+from skyyrose.core.product_asset_contract import ProductAssetContractError, load_product_asset_contract
 
 if TYPE_CHECKING:
     from .client import RenderClient
@@ -55,9 +56,11 @@ class SkuPlan:
 @dataclass
 class RenderResult:
     sku: str
-    status: str  # "rendered" | "skipped" | "error" | "qc_failed" | "needs_review"
+    status: str  # "rendered" | "skipped" | "blocked" | "error" | "qc_failed" | "needs_review"
     reason: str = ""
     output_path: Path | None = None
+    provider_request_id: str | None = None
+    failure_tags: tuple[str, ...] = ()
 
 
 def resolve_targets(
@@ -164,6 +167,7 @@ def plan_sku(
     slug = info.get("output_slug", sku)
 
     try:
+        contract = load_product_asset_contract(sku)
         refs = references.build_references(sku, collection, view=view)
         use_style_ref = style_reference is not None and Path(style_reference).is_file()
         if use_style_ref:
@@ -178,6 +182,11 @@ def plan_sku(
             ]
         is_patch = references.requires_patch(sku)
         dossier_text = read_dossier(dossier_index.get(sku))
+        if contract.render.founder_corrections:
+            dossier_text += (
+                "\n\n## Founder corrections (binding newer amendment)\n"
+                + "\n".join(f"- {item}" for item in contract.render.founder_corrections)
+            )
         scene = build_scene(sku=sku, name=name, collection=collection, style=style)
         prompt = build_prompt(
             name=name,
@@ -191,7 +200,7 @@ def plan_sku(
             scene=scene,
             style_reference=use_style_ref,
         )
-    except (MissingReferenceError, SceneError) as exc:
+    except (MissingReferenceError, SceneError, ProductAssetContractError) as exc:
         return SkuPlan(
             sku=sku,
             name=name,
@@ -225,6 +234,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
     try:
         for member in pair.skus:
             mname = catalog.get(member, {}).get("name", member)
+            contract = load_product_asset_contract(member)
             refs = references.build_references(member, pair.collection, include_back=False)
             refs = refs[:per_garment_cap]
             combined.extend(refs)
@@ -233,7 +243,13 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
                     "name": mname,
                     "sku": member,
                     "reference_labels": [r.label for r in refs],
-                    "dossier_text": read_dossier(dossier_index.get(member)),
+                    "dossier_text": read_dossier(dossier_index.get(member))
+                    + (
+                        "\n\n## Founder corrections (binding newer amendment)\n"
+                        + "\n".join(f"- {item}" for item in contract.render.founder_corrections)
+                        if contract.render.founder_corrections
+                        else ""
+                    ),
                     "is_patch": references.requires_patch(member),
                 }
             )
@@ -245,7 +261,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
         prompt = build_pair_prompt(
             pair_label=pair.label, collection=pair.collection, garments=garments
         )
-    except (MissingReferenceError, SceneError) as exc:
+    except (MissingReferenceError, SceneError, ProductAssetContractError) as exc:
         return SkuPlan(
             sku=pair.skus[0],
             name=pair.label,
@@ -385,7 +401,7 @@ def render_sku(
     def _emit(event: str, **fields) -> None:
         if runlog is not None:
             if spend is not None:
-                fields.setdefault("spent_usd", round(spend.spent_usd, 2))
+                fields.setdefault("estimated_spend_usd", round(spend.spent_usd, 2))
             runlog.emit(event, sku=plan.sku, slug=plan.output_slug, **fields)
 
     if not plan.renderable:
@@ -394,6 +410,7 @@ def render_sku(
 
     max_attempts = 1 + config.QC_MAX_RENDER_RETRIES
     last_verdict = None
+    last_provider_request_id: str | None = None
     for attempt in range(max_attempts):
         if spend is not None and not spend.can_afford(config.EST_COST_PER_IMAGE_USD):
             _emit("budget_stop", cap_usd=spend.cap_usd)
@@ -415,14 +432,36 @@ def render_sku(
         if last_verdict is not None:
             attempt_prompt += _retry_correction(last_verdict)
         try:
-            data = client.edit(prompt=attempt_prompt, image_paths=[r.path for r in plan.references])
+            response = client.edit(prompt=attempt_prompt, image_paths=[r.path for r in plan.references])
+            # Test doubles and legacy callers may return raw bytes; real OpenAI
+            # calls return an immutable receipt with request/usage telemetry.
+            if isinstance(response, bytes):
+                data = response
+                receipt_fields = {
+                    "provider": "legacy-or-test-client",
+                    "provider_request_id": None,
+                    "provider_usage": {},
+                    "provider_attempts": 1,
+                }
+            else:
+                data = response.image_bytes
+                receipt_fields = response.log_fields()
         except Exception as exc:  # surfaced, never swallowed
+            from .client import provider_error_context
+
             log.error("Render failed for %s: %s", plan.sku, exc)
             reason = f"{type(exc).__name__}: {str(exc)[:300]}"
-            _emit("render_error", reason=reason)
-            return RenderResult(sku=plan.sku, status="error", reason=reason)
+            _emit("render_error", reason=reason, **provider_error_context(exc))
+            return RenderResult(
+                sku=plan.sku,
+                status="error",
+                reason=reason,
+                failure_tags=("provider_error",),
+            )
         if spend is not None:
             spend.add(config.EST_COST_PER_IMAGE_USD)
+        _emit("provider_response", attempt=attempt + 1, **receipt_fields)
+        last_provider_request_id = receipt_fields.get("provider_request_id")
 
         if gate is None:
             verdict = None
@@ -457,10 +496,18 @@ def render_sku(
                 tags=list(verdict.failure_tags),
                 reason=verdict.reason,
             )
-            return RenderResult(sku=plan.sku, status="needs_review", reason=verdict.summary)
+            return RenderResult(
+                sku=plan.sku,
+                status="needs_review",
+                reason=verdict.summary,
+                provider_request_id=last_provider_request_id,
+                failure_tags=tuple(verdict.failure_tags),
+            )
 
         if verdict is None or verdict.passed:
-            return _accept_render(plan, data, attempt + 1, _emit)
+            return _accept_render(
+                plan, data, attempt + 1, _emit, provider_request_id=last_provider_request_id
+            )
 
         _reject_render(plan, data, attempt + 1, max_attempts, verdict, _emit)
         # Early-abort: the SAME failure mode twice running means the references +
@@ -487,10 +534,14 @@ def render_sku(
         sku=plan.sku,
         status="qc_failed",
         reason=last_verdict.summary if last_verdict else "qc failed",
+        provider_request_id=last_provider_request_id,
+        failure_tags=tuple(last_verdict.failure_tags) if last_verdict else (),
     )
 
 
-def _accept_render(plan: SkuPlan, data: bytes, attempt: int, _emit) -> RenderResult:
+def _accept_render(
+    plan: SkuPlan, data: bytes, attempt: int, _emit, *, provider_request_id: str | None
+) -> RenderResult:
     """Persist an accepted render to the output tree (disk errors captured, not raised)."""
     try:
         out_dir = config.OUTPUT_DIR / plan.output_slug
@@ -500,10 +551,21 @@ def _accept_render(plan: SkuPlan, data: bytes, attempt: int, _emit) -> RenderRes
     except OSError as exc:  # disk error after a paid call — capture, don't abort
         log.error("Disk write failed for %s: %s", plan.sku, exc)
         _emit("render_error", reason=f"disk: {exc}")
-        return RenderResult(sku=plan.sku, status="error", reason=f"disk: {exc}")
+        return RenderResult(
+            sku=plan.sku,
+            status="error",
+            reason=f"disk: {exc}",
+            provider_request_id=provider_request_id,
+            failure_tags=("output_write_error",),
+        )
     log.info("Rendered %s → %s (%d bytes)", plan.sku, out_path, len(data))
     _emit("accepted", attempt=attempt, path=str(out_path))
-    return RenderResult(sku=plan.sku, status="rendered", output_path=out_path)
+    return RenderResult(
+        sku=plan.sku,
+        status="rendered",
+        output_path=out_path,
+        provider_request_id=provider_request_id,
+    )
 
 
 def _reject_render(plan: SkuPlan, data: bytes, attempt: int, max_attempts: int, verdict, _emit):
@@ -721,15 +783,27 @@ def render_all(
     judged retry, judge) draws from the same HARD_COST_CAP_USD budget.
     """
     if verify_assets:
+        contract_skus = {plan.sku for plan in plans}
+        contract_skus.update(sku for plan in plans for sku in (plan.pair_skus or ()))
+        for sku in sorted(contract_skus):
+            load_product_asset_contract(sku)
         drift = verify_plan_assets(plans)
         if drift:
             raise AssetIntegrityError(drift)
 
     from .cost import SpendTracker
     from .qc import QCGate
+    from .release_controller import ReleaseController, RenderMisreadLogger
 
     gate = QCGate() if config.QC_ENABLED else None
     spend = SpendTracker()
+    release = ReleaseController(
+        RenderMisreadLogger(config.OUTPUT_DIR / "_control" / "render-misreads.jsonl")
+    )
+    renderable = [plan for plan in plans if plan.renderable]
+    decision = release.authorize(renderable)
+    allowed = {id(renderable[index]) for index in decision.allowed_plans}
+    blocked = {id(renderable[index]) for index in decision.blocked_plans}
     if runlog is not None:
         runlog.emit(
             "run_start",
@@ -740,10 +814,46 @@ def render_all(
             judge=(
                 config.QC_JUDGE_MODEL_ANTHROPIC
                 if config.QC_JUDGE_PROVIDER == "anthropic"
-                else config.QC_JUDGE_MODEL
+                else (
+                    "manual-review-only"
+                    if config.QC_JUDGE_PROVIDER == "manual"
+                    else config.QC_JUDGE_MODEL
+                )
             ),
         )
-    results = [render_sku(p, client, gate=gate, spend=spend, runlog=runlog) for p in plans]
+        runlog.emit(
+            "release_decision",
+            reason=decision.reason,
+            allowed_skus=[renderable[index].sku for index in decision.allowed_plans],
+            blocked_skus=[renderable[index].sku for index in decision.blocked_plans],
+        )
+
+    results: list[RenderResult] = []
+    for plan in plans:
+        if not plan.renderable:
+            results.append(
+                RenderResult(sku=plan.sku, status="skipped", reason=plan.error or "no references")
+            )
+            continue
+        if id(plan) in blocked or id(plan) not in allowed:
+            results.append(
+                RenderResult(
+                    sku=plan.sku,
+                    status="blocked",
+                    reason=f"release controller: {decision.reason}",
+                )
+            )
+            continue
+        before_spend = spend.spent_usd
+        result = render_sku(plan, client, gate=gate, spend=spend, runlog=runlog)
+        release.record_result(
+            plan,
+            result,
+            provider_request_id=result.provider_request_id,
+            estimated_spend_usd=spend.spent_usd - before_spend,
+            failure_tags=result.failure_tags,
+        )
+        results.append(result)
     if runlog is not None:
         statuses = [r.status for r in results]
         runlog.emit(
@@ -752,7 +862,8 @@ def render_all(
             skipped=statuses.count("skipped"),
             errored=statuses.count("error"),
             qc_failed=statuses.count("qc_failed"),
-            spent_usd=round(spend.spent_usd, 2),
+            blocked=statuses.count("blocked"),
+            estimated_spend_usd=round(spend.spent_usd, 2),
             cap_usd=spend.cap_usd,
         )
     log.info("Batch spend (estimated): $%.2f of $%.2f cap", spend.spent_usd, spend.cap_usd)

@@ -15,8 +15,9 @@ import base64
 import logging
 import random
 import time
+from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Protocol
+from typing import Any, Protocol
 
 from . import config
 
@@ -25,10 +26,30 @@ log = logging.getLogger(__name__)
 _MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}
 
 
+@dataclass(frozen=True)
+class ImageRenderReceipt:
+    """One provider result plus the forensic metadata needed to reproduce it."""
+
+    image_bytes: bytes
+    request_id: str | None
+    usage: dict[str, Any]
+    model: str
+    provider_attempts: int
+
+    def log_fields(self) -> dict[str, Any]:
+        return {
+            "provider": "openai",
+            "provider_request_id": self.request_id,
+            "provider_model": self.model,
+            "provider_usage": self.usage,
+            "provider_attempts": self.provider_attempts,
+        }
+
+
 class RenderClient(Protocol):
     """Structural type for an image render client (used for typing in pipeline)."""
 
-    def edit(self, *, prompt: str, image_paths: list[Path]) -> bytes: ...
+    def edit(self, *, prompt: str, image_paths: list[Path]) -> ImageRenderReceipt: ...
 
 
 def _as_upload(path: Path) -> tuple[str, bytes, str]:
@@ -37,6 +58,41 @@ def _as_upload(path: Path) -> tuple[str, bytes, str]:
     if mime is None:
         raise ValueError(f"Unsupported image type for edit reference: {path}")
     return (path.name, path.read_bytes(), mime)
+
+
+def _validate_mask(image_path: Path, mask_path: Path) -> None:
+    """Validate OpenAI's edit-mask contract before a paid provider call."""
+    from PIL import Image
+
+    max_bytes = 50 * 1024 * 1024
+    for path in (image_path, mask_path):
+        if path.stat().st_size > max_bytes:
+            raise ValueError(f"{path.name} exceeds the OpenAI edit-mask 50 MB limit.")
+    with Image.open(image_path) as image, Image.open(mask_path) as mask:
+        if image.size != mask.size:
+            raise ValueError(
+                f"Mask dimensions {mask.size} must match first edit image dimensions {image.size}."
+            )
+        if image.format != mask.format:
+            raise ValueError(
+                f"Mask format {mask.format} must match first edit image format {image.format}."
+            )
+        if "A" not in mask.getbands():
+            raise ValueError("Edit mask must contain an alpha channel.")
+
+
+def provider_error_context(exc: Exception) -> dict[str, Any]:
+    """Return safe, structured OpenAI diagnostics for the forensic run log."""
+    body = getattr(exc, "body", None)
+    details = body.get("moderation_details") if isinstance(body, dict) else None
+    return {
+        "provider": "openai",
+        "provider_request_id": getattr(exc, "request_id", None)
+        or getattr(exc, "_request_id", None),
+        "provider_error_code": getattr(exc, "code", None),
+        "provider_error_type": type(exc).__name__,
+        "moderation_details": details if isinstance(details, dict) else None,
+    }
 
 
 class OAIImageClient:
@@ -48,7 +104,11 @@ class OAIImageClient:
         except ImportError as exc:  # pragma: no cover - dependency guard
             raise RuntimeError("openai SDK not installed. `pip install openai` (>=1.0).") from exc
         self._OpenAI = OpenAI
-        self._client = OpenAI(api_key=config.get_api_key(), timeout=config.REQUEST_TIMEOUT_S)
+        # Disable the SDK retry layer so the bounded retry policy below is the
+        # sole source of provider-call accounting and auditability.
+        self._client = OpenAI(
+            api_key=config.get_api_key(), timeout=config.REQUEST_TIMEOUT_S, max_retries=0
+        )
 
     def _transient_errors(self) -> tuple[type[Exception], ...]:
         """Return the OpenAI exception classes worth retrying."""
@@ -58,8 +118,10 @@ class OAIImageClient:
         errs = tuple(getattr(openai, n) for n in names if hasattr(openai, n))
         return errs or (Exception,)
 
-    def edit(self, *, prompt: str, image_paths: list[Path], mask_path: Path | None = None) -> bytes:
-        """Run one gpt-image-2 edit and return decoded image bytes.
+    def edit(
+        self, *, prompt: str, image_paths: list[Path], mask_path: Path | None = None
+    ) -> ImageRenderReceipt:
+        """Run one pinned GPT Image edit and return bytes plus provider receipt.
 
         Retries transient failures with exponential backoff + jitter; re-raises
         after ``config.MAX_RETRIES``. Never returns a partial/placeholder image.
@@ -88,6 +150,7 @@ class OAIImageClient:
         if config.MODEL in config.INPUT_FIDELITY_SUPPORTED_MODELS:
             kwargs["input_fidelity"] = config.INPUT_FIDELITY
         if mask_path is not None:
+            _validate_mask(image_paths[0], mask_path)
             kwargs["mask"] = _as_upload(mask_path)
 
         return self._run_with_retry(lambda: self._client.images.edit(**kwargs))
@@ -100,8 +163,8 @@ class OAIImageClient:
         quality: str | None = None,
         output_format: str | None = None,
         background: str = "opaque",
-    ) -> bytes:
-        """Run one gpt-image-2 text-to-image generation; return decoded bytes.
+    ) -> ImageRenderReceipt:
+        """Run one pinned GPT Image generation and return bytes plus receipt.
 
         Unlike :meth:`edit`, sends NO reference image — used for scene
         backgrounds. gpt-image models always return base64 and reject
@@ -122,14 +185,32 @@ class OAIImageClient:
         }
         return self._run_with_retry(lambda: self._client.images.generate(**kwargs))
 
-    def _decode_first(self, resp) -> bytes:
-        """Decode the first image of an OpenAI images response to raw bytes."""
+    @staticmethod
+    def _usage_payload(usage: Any) -> dict[str, Any]:
+        if usage is None:
+            return {}
+        if hasattr(usage, "model_dump"):
+            return usage.model_dump(exclude_none=True)
+        if isinstance(usage, dict):
+            return dict(usage)
+        if hasattr(usage, "__dict__"):
+            return {key: value for key, value in vars(usage).items() if not key.startswith("_")}
+        return {}
+
+    def _decode_first(self, resp) -> ImageRenderReceipt:
+        """Decode the image and preserve provider metadata rather than discarding it."""
         b64 = resp.data[0].b64_json
         if not b64:
             raise RuntimeError("OpenAI returned an empty image payload.")
-        return base64.b64decode(b64)
+        return ImageRenderReceipt(
+            image_bytes=base64.b64decode(b64),
+            request_id=getattr(resp, "_request_id", None) or getattr(resp, "request_id", None),
+            usage=self._usage_payload(getattr(resp, "usage", None)),
+            model=config.MODEL,
+            provider_attempts=1,
+        )
 
-    def _run_with_retry(self, do_call) -> bytes:
+    def _run_with_retry(self, do_call) -> ImageRenderReceipt:
         """Run ``do_call()`` (one image API call) with bounded backoff retry.
 
         Retries only transient OpenAI errors (429 / timeout / connection /
@@ -141,7 +222,7 @@ class OAIImageClient:
         attempt = 0
         while True:
             try:
-                return self._decode_first(do_call())
+                return replace(self._decode_first(do_call()), provider_attempts=attempt + 1)
             except transient as exc:
                 attempt += 1
                 if attempt > config.MAX_RETRIES:

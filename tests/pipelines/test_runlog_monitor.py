@@ -71,10 +71,16 @@ def test_render_sku_emits_attempt_verdict_accept_sequence(tmp_path, monkeypatch)
 
     assert result.status == "rendered"
     events = load_events(rl.path)
-    assert [e["event"] for e in events] == ["attempt", "qc_verdict", "accepted"]
-    assert events[1]["passed"] is True
-    assert "sherpa" in events[1]["analysis"]
-    assert events[2]["path"].endswith("ghost.png")
+    assert [e["event"] for e in events] == [
+        "attempt",
+        "provider_response",
+        "qc_verdict",
+        "accepted",
+    ]
+    assert events[1]["provider"] == "legacy-or-test-client"
+    assert events[2]["passed"] is True
+    assert "sherpa" in events[2]["analysis"]
+    assert events[3]["path"].endswith("ghost.png")
 
 
 def test_render_sku_emits_quarantine_then_exhausted(tmp_path, monkeypatch):
@@ -91,9 +97,11 @@ def test_render_sku_emits_quarantine_then_exhausted(tmp_path, monkeypatch):
     kinds = [e["event"] for e in load_events(rl.path)]
     assert kinds == [
         "attempt",
+        "provider_response",
         "qc_verdict",
         "quarantined",
         "attempt",
+        "provider_response",
         "qc_verdict",
         "quarantined",
         "qc_exhausted",
@@ -134,7 +142,9 @@ def test_aggregate_builds_per_sku_dashboard_state():
     assert len(by["a"]["attempts"]) == 2
     assert by["a"]["attempts"][0]["verdict"]["tags"] == ["branding_drift"]
     assert by["b"]["status"] == "rendering"
-    assert state["run"]["spent_usd"] == 0.9
+    # Older logs retain spent_usd; the monitor presents it as a local estimate
+    # for compatibility rather than misrepresenting it as settled billing.
+    assert state["run"]["estimated_spend_usd"] == 0.9
     assert state["run"]["progress"] == {"done": 1, "total": 2}
     assert state["run"]["finished"] is False
 

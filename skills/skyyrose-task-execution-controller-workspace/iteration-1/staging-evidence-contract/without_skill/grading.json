@@ -1,0 +1,14 @@
+{
+  "expectations": [
+    {"text": "Scopes the task to staging and explicitly preserves the no-production boundary.", "passed": true, "evidence": "The baseline repeatedly states staging-only and excludes production."},
+    {"text": "Requires source hash, deployment receipt, desktop evidence, 390px/mobile evidence, fallback evidence, and network-resource evidence.", "passed": true, "evidence": "It requires candidate/deployed hashes, desktop/390px checks, fallbacks, and failed-resource reporting."},
+    {"text": "Records first-seen visual or failed-resource defects before a retry or completion claim.", "passed": true, "evidence": "It says an expected resource failure or crop mismatch is a staging blocker."},
+    {"text": "Does not call a local build or deploy response sufficient staging verification.", "passed": true, "evidence": "It requires a fresh browser verification after cache propagation."}
+  ],
+  "summary": {"passed": 4, "failed": 0, "total": 4, "pass_rate": 1.0},
+  "execution_metrics": {"tool_calls": {}, "total_tool_calls": 0, "total_steps": 1, "errors_encountered": 0, "output_chars": 0, "transcript_chars": 0},
+  "timing": {},
+  "claims": [],
+  "user_notes_summary": {"uncertainties": [], "needs_review": [], "workarounds": []},
+  "eval_feedback": {"suggestions": [{"reason": "The baseline had sufficient context to meet all narrative requirements; the next iteration should assert actual controller commands and manager/founder authorization records."}], "overall": "This evaluation is not sufficiently discriminating between a strong baseline and the skill."}
+}
