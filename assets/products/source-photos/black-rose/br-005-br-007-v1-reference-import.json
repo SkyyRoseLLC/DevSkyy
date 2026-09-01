@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.v1-reference-import.v1",
+  "purpose": "Local source-reference preservation only. These bytes are not storefront media or approval for generation or promotion.",
+  "imported_from": "wordpress-theme/skyyrose-flagship",
+  "products": {
+    "br-005": [
+      {
+        "path": "br-005-v1-front-reference.webp",
+        "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition/black-rose-hoodie-signature-edition-front-model.webp",
+        "sha256": "042c9434855d26beb4dcf8e15e2c7776413e47c2bf9283fdfeff411925963230",
+        "dimensions": "864x1184",
+        "observed_role": "garment reference; not a verified worn on-model capture"
+      },
+      {
+        "path": "br-005-v1-back-reference.webp",
+        "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition-back-model.webp",
+        "sha256": "2ea30a2fa75fd36f713ffa3fc9812d2c4cc73e8982c30901d5f6fc700a2748d3",
+        "dimensions": "896x1200",
+        "observed_role": "garment reference; not a verified worn on-model capture"
+      }
+    ],
+    "br-007": [
+      {
+        "path": "br-007-v1-on-model-front-reference.webp",
+        "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/hub/br-007-front.webp",
+        "sha256": "b9473ded79d2ee52b7d132790574405197191bc3427411a5cff55616382095a7",
+        "dimensions": "1024x1536",
+        "observed_role": "on-model shorts reference; unpaired with BR-005"
+      },
+      {
+        "path": "br-007-v1-on-model-back-reference.webp",
+        "source_path": "wordpress-theme/skyyrose-flagship/assets/images/products/hub/br-007-back.webp",
+        "sha256": "11bfdd039fab91827e370c318e3ec9a9c48a49e457325f07494cad7d139e1e62",
+        "dimensions": "896x1200",
+        "observed_role": "on-model shorts reference; unpaired with BR-005"
+      }
+    ]
+  }
+}
