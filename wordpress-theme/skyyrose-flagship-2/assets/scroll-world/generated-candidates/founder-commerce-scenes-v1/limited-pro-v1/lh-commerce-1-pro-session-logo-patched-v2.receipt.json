@@ -1,0 +1,63 @@
+{
+  "schema": "skyyrose.surgical-logo-patch.v1",
+  "source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-generated-protected-v1.png",
+  "source_sha256": "5ab938c951e5004a766e401432ada865dbc933c1450a44495c5bc4b1e0158894",
+  "canonical_logo": "wordpress-theme/skyyrose-flagship/assets/images/logos/heart-rose-composite.jpeg",
+  "canonical_logo_sha256": "4fa89db7f18e4d4b97adee30d7fc1a5cee3b87cfae3383ee2c6705e57ed577a0",
+  "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2.png",
+  "output_sha256": "66dca2ce0998286c35d10e06e367c4e4913fc6136cff36f7d037a1cdc93c2158",
+  "diff": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-logo-patched-v2-diff.png",
+  "diff_sha256": "d69893af08aa00623af6788b68849b1b6207e904e6f2e25029726d962a3d62d1",
+  "dimensions": [
+    1023,
+    1537
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "placements": [
+    {
+      "model": "male",
+      "roi": [
+        388,
+        758,
+        460,
+        856
+      ],
+      "logo_box": [
+        392,
+        762,
+        456,
+        852
+      ],
+      "garment": "black"
+    },
+    {
+      "model": "female",
+      "roi": [
+        750,
+        800,
+        818,
+        892
+      ],
+      "logo_box": [
+        754,
+        803,
+        816,
+        889
+      ],
+      "garment": "white"
+    }
+  ],
+  "changed_bounds": [
+    392,
+    762,
+    816,
+    889
+  ],
+  "changed_pixels": 6576,
+  "changed_pixels_outside_allowed_rois": 0,
+  "all_non_logo_pixels_preserved": true,
+  "approval_state": "FOUNDER_REVIEW_REQUIRED"
+}

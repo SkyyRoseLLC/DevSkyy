@@ -1,0 +1,27 @@
+{
+  "schema": "skyyrose.image-judge-availability.v1",
+  "status": "BLOCKED_REQUIRED_JUDGE_UNAVAILABLE",
+  "checked_at": "2026-08-24T15:15:31.259995+00:00",
+  "all_judges_available": false,
+  "judges": [
+    {
+      "model": "gpt-5.5-pro",
+      "available": true,
+      "reason": "live_model_probe_passed",
+      "configured_credentials_tried": 1
+    },
+    {
+      "model": "gemini-3.1-pro-preview",
+      "available": false,
+      "reason": "inference_quota_or_credit_exhausted",
+      "configured_credentials_tried": 1
+    },
+    {
+      "model": "claude-opus-5",
+      "available": true,
+      "reason": "live_model_probe_passed",
+      "configured_credentials_tried": 1
+    }
+  ],
+  "secrets_in_receipt": false
+}

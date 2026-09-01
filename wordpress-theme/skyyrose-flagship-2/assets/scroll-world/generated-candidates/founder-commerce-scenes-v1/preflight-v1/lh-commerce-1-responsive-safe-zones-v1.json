@@ -1,0 +1,353 @@
+{
+  "schema": "skyyrose.native-scene-responsive-safe-zones.v1",
+  "status": "PASS_MEASURED_SAFE_ZONES",
+  "measured_at": "2026-08-24T15:15:36.632Z",
+  "scene_id": "LH-COMMERCE-1",
+  "contract": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-native-scene-regeneration-plan-v1.json",
+  "contract_sha256": "d3bd177d5ec8c085853401c3e07476dd293b7aad898f7c9760a1efb25512b016",
+  "coordinate_space": "normalized_generation_frame",
+  "preview_url": "http://127.0.0.1:59581/tools/v2-theme-preview.php?route=love-hurts",
+  "preview_identity": {
+    "route": "love-hurts",
+    "template": "template-collection.php",
+    "theme": "SkyyRose Flagship 2 2.4.4",
+    "candidate": "skyyrose-v2-marketplace-06c63a4b9459",
+    "commit": "4312310422124b61c9c6b49c898465e2e1c565f5"
+  },
+  "source_asset": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+    "sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+    "dimensions": [
+      1672,
+      941
+    ]
+  },
+  "render_source_bindings": [
+    {
+      "path": "tools/v2-theme-preview.php",
+      "sha256": "802dfea24f76bb93488b2027034da0d4339ba01030adced0321b56b206232e58",
+      "bytes": 34167
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/template-collection.php",
+      "sha256": "7f6afa60b5f5cac6079f3b141d7bad681a533bb91cda93cc6e66e74be08232c3",
+      "bytes": 15564
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/functions.php",
+      "sha256": "211316f6bde78df2492f6b0a85204f3599a8704121eb220eab324bf81a51e60d",
+      "bytes": 81333
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/data/scene-narrative-blueprints.json",
+      "sha256": "8b9fc4b6d30f3a908c0d7f4c8afc26bc0255ca3bb6ebfcd16a9b23c586c1fd0e",
+      "bytes": 32406
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/data/founder-selected-theme-placeholders-v1.json",
+      "sha256": "7072cd6bb81783ba6890ddac521073667c12785801a77473fb99cf5652d234ff",
+      "bytes": 4235
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json",
+      "sha256": "bb24f48e475b0b0a2351bf657014f9986e9e30471226e18338db0b7994006e86",
+      "bytes": 11113
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+      "sha256": "8d46e7cf7f61e13a3eceb199a0a26128aa5af9979fc4414687888145d30ec9e2",
+      "bytes": 3362
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "sha256": "1d162b53b326217d29b9c48156bfbcb06470f66ef2d9a807564996b5a2939042",
+      "bytes": 219065
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+      "sha256": "427ee7ac31c80de8c7dcb92a78223da17e7d2dc3510f7293ac1f5725d3f8abc9",
+      "bytes": 31862
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+      "sha256": "79c148ad9ce53f2699befb34bdee94ffd6ebaf6b5a3502d10fa18cbe560665f1",
+      "bytes": 21266
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+      "sha256": "6c48478c5721e32cfea4affbd92ef315688ed6d08504b29ad6630874d66a2c1c",
+      "bytes": 3904
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+      "sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+      "bytes": 90096
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "sha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
+      "bytes": 34664
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+      "sha256": "23aab0b2692a0c89eb7997d3c7cf5bda41276d6cd4ab6cc0edc3edfcece32b09",
+      "bytes": 12004
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+      "sha256": "09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370",
+      "bytes": 25904
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
+      "bytes": 48432
+    }
+  ],
+  "breakpoints": [
+    {
+      "id": "desktop",
+      "viewport": [
+        1440,
+        1000
+      ],
+      "measurement_source": "rendered_v2_dom",
+      "screenshot": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/safe-zone-captures-v1/lh-commerce-1-desktop.png",
+      "screenshot_sha256": "aec7740a6843668ab6d36f7240ecddbf21f6e3478b601e52b1cadd7b0f8366ba",
+      "source_image_sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+      "scene_id": "lh-commerce-1",
+      "preview_identity": {
+        "route": "love-hurts",
+        "theme": "SkyyRose Flagship 2 2.4.4",
+        "candidate": "skyyrose-v2-marketplace-06c63a4b9459",
+        "commit": "4312310422124b61c9c6b49c898465e2e1c565f5",
+        "template": "template-collection.php"
+      },
+      "source_image": "http://127.0.0.1:59581/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "image_element_rect": [
+        0,
+        76.33,
+        1440,
+        1000.33
+      ],
+      "image_document_rect": [
+        0,
+        2590.33,
+        1440,
+        3514.33
+      ],
+      "crop_transform": {
+        "scale": 0.98193411,
+        "rendered_dimensions": [
+          1641.794,
+          924
+        ],
+        "offset": [
+          -100.897,
+          0
+        ],
+        "object_fit": "cover",
+        "object_position": "50% 50%"
+      },
+      "keep_clear": [
+        {
+          "id": "shopping_ui_product_links_and_price",
+          "rect": [
+            0.670545,
+            0.04329,
+            0.914181,
+            0.301339
+          ],
+          "viewport_rect": [
+            1000,
+            116.33,
+            1400,
+            354.77
+          ]
+        },
+        {
+          "id": "scene_copy_and_primary_cta",
+          "rect": [
+            0.096535,
+            0.653527,
+            0.403516,
+            0.937669
+          ],
+          "viewport_rect": [
+            57.59,
+            680.19,
+            561.59,
+            942.73
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tablet",
+      "viewport": [
+        768,
+        1024
+      ],
+      "measurement_source": "rendered_v2_dom",
+      "screenshot": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/safe-zone-captures-v1/lh-commerce-1-tablet.png",
+      "screenshot_sha256": "5ef66858d11aa6cfee6177879483e1251d652e2127de1c1ced90e2818a45740b",
+      "source_image_sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+      "scene_id": "lh-commerce-1",
+      "preview_identity": {
+        "route": "love-hurts",
+        "theme": "SkyyRose Flagship 2 2.4.4",
+        "candidate": "skyyrose-v2-marketplace-06c63a4b9459",
+        "commit": "4312310422124b61c9c6b49c898465e2e1c565f5",
+        "template": "template-collection.php"
+      },
+      "source_image": "http://127.0.0.1:59581/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "image_element_rect": [
+        30.72,
+        75.81,
+        660.47,
+        792.61
+      ],
+      "image_document_rect": [
+        30.72,
+        2275.81,
+        660.47,
+        2992.61
+      ],
+      "crop_transform": {
+        "scale": 0.76173951,
+        "rendered_dimensions": [
+          1273.628,
+          716.797
+        ],
+        "offset": [
+          -321.939,
+          0
+        ],
+        "object_fit": "cover",
+        "object_position": "50% 50%"
+      },
+      "keep_clear": [
+        {
+          "id": "shopping_ui_product_links_and_price",
+          "rect": [
+            0.54825,
+            0.032131,
+            0.729144,
+            0.364774
+          ],
+          "viewport_rect": [
+            407.05,
+            98.84,
+            637.44,
+            337.28
+          ]
+        },
+        {
+          "id": "scene_copy_and_primary_cta",
+          "rect": [
+            0.276892,
+            0.561831,
+            0.48794,
+            0.957144
+          ],
+          "viewport_rect": [
+            61.44,
+            478.53,
+            330.23,
+            761.89
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mobile",
+      "viewport": [
+        390,
+        844
+      ],
+      "measurement_source": "rendered_v2_dom",
+      "screenshot": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/safe-zone-captures-v1/lh-commerce-1-mobile.png",
+      "screenshot_sha256": "abc6c1e1721834606e2cf9bee162c600e886fbe39f5ed1605b41088415a0274a",
+      "source_image_sha256": "2d67bc390a5317139aa1356dfb2470d79a72a5f2c02138bd8d89beb51d3f77e2",
+      "scene_id": "lh-commerce-1",
+      "preview_identity": {
+        "route": "love-hurts",
+        "theme": "SkyyRose Flagship 2 2.4.4",
+        "candidate": "skyyrose-v2-marketplace-06c63a4b9459",
+        "commit": "4312310422124b61c9c6b49c898465e2e1c565f5",
+        "template": "template-collection.php"
+      },
+      "source_image": "http://127.0.0.1:59581/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-bomber-cathedral-plate-v1.png",
+      "source_dimensions": [
+        1672,
+        941
+      ],
+      "image_element_rect": [
+        16,
+        63.5,
+        367,
+        923.5
+      ],
+      "image_document_rect": [
+        16,
+        2103.5,
+        367,
+        2963.5
+      ],
+      "crop_transform": {
+        "scale": 0.91392136,
+        "rendered_dimensions": [
+          1528.077,
+          860
+        ],
+        "offset": [
+          -588.538,
+          0
+        ],
+        "object_fit": "cover",
+        "object_position": "50% 50%"
+      },
+      "keep_clear": [
+        {
+          "id": "shopping_ui_product_links_and_price",
+          "rect": [
+            0.393003,
+            0.013953,
+            0.606997,
+            0.255287
+          ],
+          "viewport_rect": [
+            28,
+            75.5,
+            355,
+            283.05
+          ]
+        },
+        {
+          "id": "scene_copy_and_primary_cta",
+          "rect": [
+            0.393003,
+            0.665752,
+            0.606997,
+            0.976744
+          ],
+          "viewport_rect": [
+            28,
+            636.05,
+            355,
+            903.5
+          ]
+        }
+      ]
+    }
+  ],
+  "generation_rule": "Every model, required product region, and enchanted rose must remain outside every keep-clear rectangle."
+}

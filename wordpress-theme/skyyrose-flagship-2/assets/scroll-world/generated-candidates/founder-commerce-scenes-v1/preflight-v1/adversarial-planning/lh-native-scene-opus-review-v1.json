@@ -1,0 +1,18 @@
+{
+  "schema": "skyyrose.adversarial-planning-review.v1",
+  "reviewer_id": "claude-opus-5",
+  "available": true,
+  "reviewed_at": "2026-08-24T14:32:34Z",
+  "contract": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/preflight-v1/vision-authored-prompts/lh-commerce-1-native-scene-regeneration-plan-v1.json",
+  "contract_sha256": "d3bd177d5ec8c085853401c3e07476dd293b7aad898f7c9760a1efb25512b016",
+  "ship": true,
+  "blocking_findings": [],
+  "evidence_scope": "planning_contract_only",
+  "visual_correctness_reviewed": false,
+  "generation_authorized": false,
+  "deployment_authorized": false,
+  "notes": [
+    "Strict zero-gain calibration and native-scene requirements were accepted after revision.",
+    "Generated pixels, product fidelity, runtime wiring, and deployment were outside this planning review."
+  ]
+}

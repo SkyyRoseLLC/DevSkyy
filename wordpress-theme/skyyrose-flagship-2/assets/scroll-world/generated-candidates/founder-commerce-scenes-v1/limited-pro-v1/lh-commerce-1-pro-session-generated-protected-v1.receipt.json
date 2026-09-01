@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.protected-model-layer.v1",
+  "source": "/Users/theceo/.codex/generated_images/01a02ba6-a9e7-7f63-a9da-66e422effa6c/exec-1c39de1e-9b15-4814-9005-66f46d04896f.png",
+  "source_sha256": "41d4003d89f0d0074cbd2cbfe004618145e555eecee864716fda6e2e11716735",
+  "output": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/limited-pro-v1/lh-commerce-1-pro-session-generated-protected-v1.png",
+  "output_sha256": "5ab938c951e5004a766e401432ada865dbc933c1450a44495c5bc4b1e0158894",
+  "dimensions": [
+    1023,
+    1537
+  ],
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "opaque_fraction": 0.441992,
+  "model": "existing-alpha-mask",
+  "alpha_source": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/lh-commerce-1-two-model-bomber-generated-protected-v1.png",
+  "alpha_source_sha256": "81a264363dbab5c26c3132feefdcb66b8febafc381196d1c707c687d4fd5171c",
+  "rgb_preserved": true
+}
