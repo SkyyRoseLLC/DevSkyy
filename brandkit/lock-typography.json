@@ -1,0 +1,18 @@
+{
+  "source_summary": "Canonical universal typography from wordpress-theme/skyyrose-flagship/data/brand/typography.json; collection scripts remain separate locked display assets.",
+  "typography": {
+    "display": {
+      "family": "Archivo",
+      "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/archivo-latin.woff2",
+      "style": "normal",
+      "weight": 900
+    },
+    "body": {
+      "family": "Hanken Grotesk",
+      "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/hanken-grotesk-latin.woff2",
+      "style": "normal",
+      "weight": 400
+    },
+    "font_links": []
+  }
+}

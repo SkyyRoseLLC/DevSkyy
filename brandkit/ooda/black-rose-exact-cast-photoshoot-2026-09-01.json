@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "operation": "higgsfield-product-photoshoot-ooda",
+  "mode": "restyle",
+  "target": "Exact male and female Black Rose models and garments integrated natively with the Black Rose font statue",
+  "observe": {
+    "composite_authority": {
+      "path": "/Users/theceo/Downloads/Codex Image Aug 31, 2026, 10_21_48 AM.png",
+      "sha256": "4794c0b576e4801792cefab6bb82074b4ab34c917c6c2b2a36d02c770dd90357",
+      "upload_id": "201885a6-f1d9-4104-ac4f-3211f106ae01"
+    },
+    "protected_cast_authority": {
+      "path": "/Users/theceo/Downloads/OpenAI Playground 2026-08-31 at 09.28.37.png",
+      "sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+      "upload_id": "c7a41a46-ad61-477b-ac6b-d6b7f828c5d0"
+    },
+    "br007_four_angle_authority": {
+      "path": "/Users/theceo/Desktop/products copy/Codex Image Aug 30, 2026, 03_43_25 PM.jpg",
+      "sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+      "upload_id": "8d56a477-9b26-401e-ad72-cd37e4be6553"
+    },
+    "statue_lockup_authority": {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/_prototype/homepage/assets/branding/black-rose-collection-text.webp",
+      "sha256": "9bdd926488ac294e59fe27ea72029add9b7b298c034de44b42c80179831df779",
+      "upload_id": "79243609-f8d2-4993-9934-de4eaac3c398"
+    }
+  },
+  "orient": {
+    "route": "restyle",
+    "count": 1,
+    "aspect_ratio": "16:9",
+    "authority_order": [
+      "exact composite layout",
+      "protected model and garment pixels",
+      "four-angle physical BR-007 construction",
+      "font statue silhouette and spelling"
+    ]
+  },
+  "decide": "Run one bounded candidate and stop if the provider is unavailable or any exact model, garment, shorts, or statue detail is redrawn.",
+  "act": {
+    "attempts": 2,
+    "job_created": false,
+    "result_url": null,
+    "error": "Cannot reach https://fnf-api-gw.higgsfield.ai/fnf/developer/v2alpha/product-photoshoot/enhance.",
+    "status": "provider_endpoint_unreachable"
+  },
+  "promotion_allowed": false,
+  "wiring_allowed": false,
+  "founder_status": "PENDING",
+  "resume": "Reuse the four upload IDs and the same locked restyle request. Do not re-upload, change the authority order, substitute another model, or increase count until one candidate returns and passes independent product and optical review."
+}

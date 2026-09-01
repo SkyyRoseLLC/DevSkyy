@@ -1,0 +1,48 @@
+{
+  "source_summary": "Canonical SkyyRose global and collection palette from assets/brand/brand.yaml and verified collection identity files.",
+  "palette": {
+    "colors": [
+      {
+        "hex": "#0A0A0A",
+        "name": "Concrete Black",
+        "role": "global background and only brand black"
+      },
+      {
+        "hex": "#F5F5F5",
+        "name": "Paper",
+        "role": "primary light text"
+      },
+      {
+        "hex": "#B76E79",
+        "name": "Rose Gold",
+        "role": "global accent and primary monogram"
+      },
+      {
+        "hex": "#D4AF37",
+        "name": "Signature Gold",
+        "role": "Signature collection accent"
+      },
+      {
+        "hex": "#DC143C",
+        "name": "Love Hurts Crimson",
+        "role": "Love Hurts collection accent"
+      },
+      {
+        "hex": "#C0C0C0",
+        "name": "Black Rose Silver",
+        "role": "Black Rose collection accent"
+      },
+      {
+        "hex": "#1A1A1A",
+        "name": "Ink",
+        "role": "secondary dark surface"
+      },
+      {
+        "hex": "#8A8A8A",
+        "name": "Ash",
+        "role": "restrained neutral"
+      }
+    ],
+    "gradients": []
+  }
+}

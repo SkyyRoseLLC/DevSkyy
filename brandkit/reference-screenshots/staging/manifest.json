@@ -1,0 +1,62 @@
+{
+  "schema_version": "skyyrose.collection-hero-staging-screenshots.v1",
+  "captured_at": "2026-09-01T13:25:24Z",
+  "site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "purpose": "Rendered staging-page reference for scene planning and collection-native hero-asset selection. These screenshots are visual direction, not product-pixel authority or promotion approval.",
+  "collections": {
+    "black-rose": {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+      "screenshot": "black-rose-collection-hero.png",
+      "sha256": "dbe74b5c715b09e07cd78e66677fbd0d034803fb3f6600962593cf430af3f66b",
+      "rendered_hero_assets": [
+        "The Black Rose Collection font statue",
+        "black rose in a star monument",
+        "Bay Bridge moon court"
+      ],
+      "current_scene_rule": "The BR-COMMERCE-2 long-hoodie scene uses the font statue only; the star monument remains valid staging-page direction but is excluded from that scene."
+    },
+    "love-hurts": {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+      "screenshot": "love-hurts-collection-hero.png",
+      "sha256": "75249b4049f31238b6fff9c1c54719a4f1f9bdf046afd66a507cb7f6677740d6",
+      "rendered_hero_assets": [
+        "Love Hurts collection script",
+        "enchanted rose under glass",
+        "cracked-heart rose-star monument"
+      ],
+      "current_scene_rule": "The enchanted rose is the primary conversion and animation hero; script or logo graphics may identify the collection but must not displace the rose."
+    },
+    "signature": {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+      "screenshot": "signature-collection-hero.png",
+      "sha256": "bc144b346ad3addcf6c54b0a13b49f284b11235055495cc1b41fe49179925cb9",
+      "rendered_hero_assets": [
+        "The SkyyRose Collection font statue",
+        "rose-gold SR monogram and rose monument",
+        "Golden Gate terrace"
+      ],
+      "current_scene_rule": "Use either the Signature font statue or approved Signature logo graphic per scene, while the five-product preorder scene retains Golden Gate atmosphere."
+    },
+    "kids-capsule": {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/kids-capsule/",
+      "screenshot": "kids-capsule-collection-hero.png",
+      "sha256": "544b221c090dd8238f445deb8696a10cafea9cd0ccd48eb56c6827ad8abfc39e",
+      "rendered_hero_assets": [
+        "The Heir wordmark",
+        "Next Up throne plinth",
+        "rose-gold crown and throne"
+      ],
+      "current_scene_rule": "Visual direction only. The staged child outfit is not accepted as product truth until it maps to a canonical Kids SKU and authoritative source imagery."
+    }
+  },
+  "hard_boundaries": [
+    "A staging screenshot proves rendered direction only.",
+    "Catalog, collection SOT, dossier, and physical or protected product sources control every garment pixel.",
+    "A collection hero asset may not be reused as another collection's identity device.",
+    "Animation must lead attention into the product and CTA, never obscure garment inspection."
+  ]
+}

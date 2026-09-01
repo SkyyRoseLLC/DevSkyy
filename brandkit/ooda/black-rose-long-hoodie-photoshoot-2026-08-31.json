@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "operation": "higgsfield-product-photoshoot-ooda",
+  "mode": "restyle",
+  "target": "Black Rose long hoodie dress with Black Rose font statue only",
+  "authoritative_product_source": {
+    "path": "/Users/theceo/Downloads/BLACK_Rose_Long_Hoodie.png",
+    "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34"
+  },
+  "authoritative_statue_reference": {
+    "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/_prototype/homepage/assets/branding/black-rose-collection-text.webp",
+    "sha256": "9bdd926488ac294e59fe27ea72029add9b7b298c034de44b42c80179831df779"
+  },
+  "cycles": [
+    {
+      "cycle": 1,
+      "observe": "The protected source already contains the correct woman and long hoodie dress; the desired change is native environment and font-statue integration.",
+      "orient": "Use restyle rather than virtual try-on to minimize garment reconstruction.",
+      "decide": "Run one 16:9 candidate with the product source dominant and the collection lockup controlling only the statue.",
+      "act": {
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260901_050933_e60598c1-4163-4415-9f6c-5b1f06193a15.png",
+        "local_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/brandkit/jobs/black-rose-long-hoodie-ooda-01/candidate.png",
+        "sha256": "64a419314705fe28dd5a9a5a001460ce4cc57166d3f19077460f6f6f77932500"
+      },
+      "assessment": {
+        "optical_integration": "pass_candidate",
+        "statue_integration": "pass_candidate",
+        "product_fidelity": "fail",
+        "blocking_reason": "The real hoodie artwork was replaced by a winged rose graphic and the garment silhouette changed."
+      },
+      "status": "rejected_product_drift"
+    },
+    {
+      "cycle": 2,
+      "observe": "Cycle 1 proved the photoshoot route can create one coherent exposure but cannot be trusted to preserve the exact garment without another correction attempt.",
+      "orient": "Reuse the successful scene only as composition and lighting evidence while promoting the original product source above every generated reference.",
+      "decide": "Use the one permitted retry and stop photoshoot spending if exact garment artwork still drifts.",
+      "act": {
+        "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260901_051305_c2b3161d-f1df-464b-8320-ecae163d6fcc.png",
+        "local_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/brandkit/jobs/black-rose-long-hoodie-ooda-02/candidate.png",
+        "sha256": "1de3ecc817554d6906b04c9c8ea7b715f6abc877dc2b4aaafc4f59178db0f2dc"
+      },
+      "assessment": {
+        "optical_integration": "pass_candidate",
+        "statue_integration": "pass_candidate",
+        "product_fidelity": "fail_exactness",
+        "blocking_reason": "The hoodie is semantically much closer, but the two-rose-over-cloud artwork and model identity remain regenerated approximations instead of pixel-bound source truth."
+      },
+      "status": "reference_only_not_promotable"
+    }
+  ],
+  "decision": {
+    "photoshoot_route": "stop_after_retry",
+    "best_reference": "cycle_2",
+    "promotion_allowed": false,
+    "wiring_allowed": false,
+    "founder_status": "PENDING",
+    "next_route": "Use the second candidate only as native environment, lighting, statue, and composition evidence. Preserve the original woman and garment with an explicit mask-bound workflow; independently inspect the garment boundary, floor contact, and light wrap before founder review."
+  }
+}

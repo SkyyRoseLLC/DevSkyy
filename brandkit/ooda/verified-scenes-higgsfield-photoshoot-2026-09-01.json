@@ -1,0 +1,128 @@
+{
+  "task_id": "verified-scenes-higgsfield-photoshoot-2026-09-01",
+  "created_at": "2026-09-01T13:03:57Z",
+  "route": "native_collection_scene",
+  "status": "rendered_all_quarantined",
+  "authorization": {
+    "source": "founder request in current Codex task",
+    "scope": "one 2K paid Higgsfield restyle candidate for each of three supplied verified scenes",
+    "promotion_authorized": false
+  },
+  "ownership": {
+    "project_manager": "Codex primary agent",
+    "provider_operator": "Higgsfield product-photoshoot skill",
+    "product_truth_auditor": "Fashion Theme Team scene_product_truth",
+    "independent_reviewer": "Fashion Theme Team fidelity_gate_reviewer",
+    "final_approver": "founder"
+  },
+  "budget": {
+    "model": "nano_banana_pro",
+    "resolution": "2k",
+    "credits_per_candidate": 2,
+    "candidate_count_cap": 3,
+    "credit_cap": 6,
+    "automatic_retries": 0
+  },
+  "thresholds": {
+    "product_fidelity_min": 95,
+    "optical_integration_min": 90,
+    "anatomy_min": 90,
+    "brand_story_min": 90,
+    "commerce_readiness_min": 90,
+    "founder_approval_required": true
+  },
+  "scenes": [
+    {
+      "index": 0,
+      "scene_id": "signature-preorder-golden-gate",
+      "source_path": "/Users/theceo/Downloads/OpenAI Playground 2026-08-31 at 11.02.59.webp",
+      "source_sha256": "11e9fe54c8bff8be2b3bc0508bd8d22b5b04e33d3f546acf33541b8478a9dc1c",
+      "aspect_ratio": "16:9",
+      "mode": "restyle",
+      "hero_asset_gate": "Golden Gate environment plus the approved rose-gold Signature monogram sculpture; preserve the five-product preorder story and do not substitute a generic luxury prop",
+      "authority_state": "mapped: SG-005 plus SG-001 male, SG-015 center, SG-002 plus SG-003 right; physical source photos override dossier color drift",
+      "provider_state": "completed",
+      "provider_job_id": "b4248114-1b6a-4dff-bc5e-569bf3d2ca51",
+      "output_path": "brandkit/jobs/2026-09-01-signature-higgsfield/signature-golden-gate-photoshoot-candidate-01.png",
+      "output_sha256": "887f74a2e48b27e6fc1c64255c0f3a31caabcc8bff7af3c89bd783b7fb7356d3",
+      "review_state": "FAIL_CANDIDATE_ONLY",
+      "review_scores": {
+        "product_fidelity": 42,
+        "optical_integration": 96,
+        "anatomy": 95,
+        "hero_fidelity": 78,
+        "commerce_readiness": 38
+      },
+      "review_findings": [
+        "The left male is not wearing exact SG-005 plus SG-001 product truth; the Bay Bridge shirt and continuous daytime bridge-print shorts were replaced by generic rose and striped interpretations.",
+        "SG-015 is directionally closest but loses sleeve chevrons, pocket piping and rainbow ankle cuffs.",
+        "SG-002 plus SG-003 are recognizable but their artwork and photographic print were redrawn.",
+        "The Signature monument is incomplete and altered."
+      ]
+    },
+    {
+      "index": 1,
+      "scene_id": "black-rose-exact-cast-font-statue",
+      "source_path": "/Users/theceo/Downloads/Codex Image Aug 31, 2026, 09_20_08 AM.png",
+      "source_sha256": "4a71d17b8d7b3975fb841277860bab5f9c191fce153641574d8170219ea94014",
+      "aspect_ratio": "16:9",
+      "mode": "restyle",
+      "hero_asset_gate": "Black Rose script/font statue only; do not reuse the rose-in-star sculpture or the crew-and-jogger hero device",
+      "authority_state": "mapped: BR-005 hoodie plus BR-007 four-angle physical shorts male; BR-004 hoodie worn long female; protected Black Rose font statue",
+      "provider_state": "completed",
+      "provider_job_id": "2df0195f-b951-4c8d-9f63-2b6440c8a879",
+      "output_path": "brandkit/jobs/2026-09-01-black-rose-higgsfield/black-rose-photoshoot-candidate-01.png",
+      "output_sha256": "144548416443bfa1d4259324d090d76831b80ebee29946da7c96114eba67ea8a",
+      "review_state": "FAIL_CANDIDATE_ONLY",
+      "review_scores": {
+        "product_fidelity": 70,
+        "optical_integration": 95,
+        "anatomy": 96,
+        "hero_fidelity": 68,
+        "commerce_readiness": 45
+      },
+      "review_findings": [
+        "BR-005 large artwork moved from the required wearer-left hip/body to the forearm and its geometry was simplified.",
+        "BR-007 OAKLAND and Love Hurts typography, mesh panels, marks, pocket and hem construction were approximated.",
+        "BR-004 silhouette is directionally correct but its embroidery was redrawn rather than protected.",
+        "The font statue was regenerated with changed lettering, rails, rose treatment and pedestal geometry."
+      ]
+    },
+    {
+      "index": 2,
+      "scene_id": "signature-mint-lavender-bay-bridge",
+      "source_path": "/Users/theceo/Downloads/composite.png",
+      "source_sha256": "e1258fc98f7df63945e0e133c05c5fcdb84be2b2b138aafe01754205c4e277fa",
+      "aspect_ratio": "3:4",
+      "mode": "restyle",
+      "hero_asset_gate": "approved mint-and-lavender garment graphic integrated as the scene device with Bay Bridge atmosphere; no unrelated statue",
+      "authority_state": "mapped: SG-006 male with non-product black pants; SG-013 plus SG-014 female; approved Signature SR rose graphic",
+      "provider_state": "completed",
+      "provider_job_id": "7150a71f-6189-462b-9201-0f5a18218786",
+      "output_path": "brandkit/jobs/2026-09-01-signature-higgsfield/signature-mint-lavender-photoshoot-candidate-01.png",
+      "output_sha256": "241e7626a5f2a371b1431363fc73817c71ebc88d125e864d4b62b88c3e0a4c88",
+      "review_state": "FAIL_CANDIDATE_ONLY",
+      "review_scores": {
+        "product_fidelity": 74,
+        "optical_integration": 90,
+        "anatomy": 95,
+        "hero_fidelity": 46,
+        "commerce_readiness": 52
+      },
+      "review_findings": [
+        "SG-006, SG-013 and SG-014 roles, silhouettes and placements are directionally correct, but all embroidery was redrawn and the mint color shifted toward cyan.",
+        "The approved Signature SR rose graphic became a small loose floor object instead of an upright environmental hero monument.",
+        "The revised cast request conflicts with the current founder lock; promotion requires an updated role contract and a hash-bound approved SG-006 male source."
+      ]
+    }
+  ],
+  "fail_closed_rules": [
+    "No candidate may be promoted from provider success alone.",
+    "Any altered SKU construction, artwork, colorway, logo placement, or product pairing fails product fidelity.",
+    "Any missing, substituted, duplicated, or collection-incompatible hero asset fails the scene even when garments pass.",
+    "Every collection scene must contain either that collection's approved font statue or that collection's approved logo graphic; the global monogram alone is insufficient.",
+    "A hero asset from one collection may never be reused as the identity device for another collection.",
+    "Any pasted edge, mismatched lens or light, floating foot, missing contact shadow, or incoherent wet-surface reflection fails optical integration.",
+    "A failed scene receives no automatic paid retry; its issue must be classified and a bounded remediation approved first."
+  ]
+}

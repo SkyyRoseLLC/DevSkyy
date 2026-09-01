@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "status": "foundation-locked-scene-contract-pending-founder-review",
+  "brand_context": {
+    "name": "SkyyRose",
+    "legal_name": "The Skyy Rose Collection LLC",
+    "offering": "Luxury streetwear born from Oakland",
+    "industry": "Luxury fashion and streetwear",
+    "positioning": "Intellectual street poetry from The Town; luxury with a pulse, not a logo.",
+    "audience": "People who want clothing that communicates identity without shouting or explaining itself to outsiders.",
+    "tagline": "Luxury Grows from Concrete.",
+    "tone": [
+      "confident",
+      "cinematic",
+      "editorial",
+      "specific",
+      "earned"
+    ]
+  },
+  "concept": {
+    "name": "Luxury Grows from Concrete",
+    "visual_premise": "Oakland and San Francisco infrastructure, wet concrete, fog, metal sculpture, and real garments share one coherent exposure. The luxury comes from material truth, stance, proportion, and atmosphere rather than generic decoration.",
+    "research_principles": [
+      "Treat Oakland and bridge architecture as specific places, not generic metropolitan backdrops.",
+      "Generate bodies, environment, atmosphere, floor contact, lighting, and reflections as one native scene whenever possible.",
+      "Bind every garment to an exact SKU source before localized edits.",
+      "Keep technical product fidelity and photographic integration as independent approval gates."
+    ],
+    "reference_preferences": [
+      "rain-dark stone and concrete",
+      "fog crossing bridge architecture",
+      "controlled golden-hour or moonlit practical illumination",
+      "museum-scale brand sculpture physically present in the environment",
+      "editorial fashion blocking with natural interpersonal energy"
+    ],
+    "avoid": [
+      "flat cutouts placed on an independently generated plate",
+      "floating feet or missing contact shadows",
+      "different lens, camera height, light direction, color temperature, grain, or depth between subjects",
+      "generic marble-pedestal luxury or hotel-lobby styling",
+      "plastic CGI surfaces, excessive bloom, or artificial perfection",
+      "corrupted, approximate, duplicated, or invented logos",
+      "semantic redraw of protected garment regions",
+      "off-system colors",
+      "centered stock hero composition with a generic shopping CTA"
+    ]
+  },
+  "visual_axes": {
+    "restrained_expressive": 50,
+    "geometric_organic": 50,
+    "familiar_experimental": 50
+  },
+  "authoritative_assets": {
+    "logo": {
+      "origin": "user_supplied",
+      "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/logos/sr-monogram-rose-gold.webp",
+      "registry": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+      "registry_id": "sr-monogram-rose-gold",
+      "status": "fixed",
+      "evidence": "source-declared"
+    },
+    "fonts": [
+      {
+        "family": "Archivo",
+        "role": "display and hero headings",
+        "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/archivo-latin.woff2",
+        "status": "fixed",
+        "evidence": "source-declared"
+      },
+      {
+        "family": "Hanken Grotesk",
+        "role": "body and editorial copy",
+        "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/hanken-grotesk-latin.woff2",
+        "status": "fixed",
+        "evidence": "source-declared"
+      },
+      {
+        "family": "Cinzel",
+        "role": "engraved caps and eyebrows",
+        "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/cinzel-latin.woff2",
+        "status": "fixed",
+        "evidence": "source-declared"
+      },
+      {
+        "family": "SkyyRose Black Rose Script",
+        "role": "Black Rose collection lockup and physical font statue only",
+        "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/skyyrose-black-rose-script-latin.woff2",
+        "status": "fixed",
+        "evidence": "source-declared"
+      },
+      {
+        "family": "SkyyRose Love Hurts Graffiti",
+        "role": "Love Hurts collection lockup only",
+        "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/skyyrose-love-hurts-graffiti-latin.woff2",
+        "status": "fixed",
+        "evidence": "source-declared"
+      },
+      {
+        "family": "Pinyon Script",
+        "role": "Signature collection script and font-statue language",
+        "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/design-system/skyyrose-storefront/src/fonts/pinyon-script-latin.woff2",
+        "status": "fixed",
+        "evidence": "source-declared"
+      }
+    ],
+    "references": [
+      {
+        "role": "founder-approved Signature environment and sculpture language",
+        "source": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/signature/sig-commerce-3-departure-terrace-plate-v1.png",
+        "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+        "status": "fixed",
+        "evidence": "user-declared"
+      },
+      {
+        "role": "approved Black Rose crew-and-jogger scene; do not reuse its cast in another scene",
+        "source": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-1/BR-COMMERCE-1-gpt-image-2-candidate.png",
+        "sha256": "cd26b3da86bfeab8687926087c474a30af537d7dbd8012b219e07b01682c4952",
+        "status": "fixed",
+        "evidence": "user-declared"
+      }
+    ]
+  },
+  "palette": {
+    "origin": "user_supplied",
+    "primary": [
+      "#0A0A0A",
+      "#B76E79"
+    ],
+    "accent": [
+      "#D4AF37",
+      "#DC143C",
+      "#C0C0C0"
+    ],
+    "neutral": [
+      "#F5F5F5",
+      "#1A1A1A",
+      "#8A8A8A"
+    ],
+    "semantic_roles": {
+      "global_black": "#0A0A0A",
+      "global_rose_gold": "#B76E79",
+      "signature": "#D4AF37",
+      "love_hurts": "#DC143C",
+      "black_rose": "#C0C0C0"
+    },
+    "forbidden": [
+      "unapproved neon colors",
+      "arbitrary generic luxury beige",
+      "uncontrolled cyan-orange grading"
+    ],
+    "status": "fixed",
+    "evidence": "source-declared"
+  },
+  "typography": {
+    "origin": "user_supplied",
+    "display": {
+      "family": "Archivo",
+      "weight": 900,
+      "width": 125
+    },
+    "body": {
+      "family": "Hanken Grotesk",
+      "weight": 400
+    },
+    "caps": {
+      "family": "Cinzel"
+    },
+    "collection_scripts": {
+      "black_rose": "SkyyRose Black Rose Script",
+      "love_hurts": "SkyyRose Love Hurts Graffiti",
+      "signature": "Pinyon Script"
+    },
+    "fallbacks": [
+      "Inter",
+      "system-ui",
+      "sans-serif"
+    ],
+    "font_links": [],
+    "status": "fixed",
+    "evidence": "source-declared"
+  },
+  "layout": {
+    "grid": "environmental editorial composition with asymmetric subject groups and protected negative space",
+    "margins": "keep faces, footwear, garment hems, and sculpture outside crop-risk zones",
+    "spacing_scale": [
+      4,
+      8,
+      12,
+      16,
+      24,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "alignment": "subjects align to real floor planes and architectural perspective lines",
+    "density": "cinematic but legible; each garment must read without forming a catalog lineup",
+    "status": "proposed",
+    "evidence": "inferred"
+  },
+  "shape_language": {
+    "corner_radii": [
+      0,
+      2
+    ],
+    "borders": [
+      "precise metal edges",
+      "stone joints",
+      "architectural reveals"
+    ],
+    "shadows": [
+      "contact-correct",
+      "soft atmospheric falloff",
+      "shared direction and temperature"
+    ],
+    "forms": [
+      "rose geometry",
+      "monogram curves",
+      "bridge cable rhythm",
+      "gothic arches",
+      "wet concrete planes"
+    ]
+  },
+  "graphic_devices": {
+    "motifs": [
+      "rose emerging from concrete",
+      "SR monogram",
+      "collection script sculpture",
+      "bridge structure"
+    ],
+    "patterns": [
+      "garment-specific graphics only from exact SKU sources"
+    ],
+    "textures": [
+      "rain-dark concrete",
+      "brushed or polished metal",
+      "fog",
+      "real textile microtexture",
+      "controlled surface wear"
+    ],
+    "rules": [
+      "A sculpture must occupy real volume, receive scene light, cast a shadow, and participate in reflections.",
+      "Do not render a logo as a flat overlay when it is supposed to be a statue or environmental object.",
+      "Do not cross-pollinate collection marks or product-exclusive graphics."
+    ]
+  },
+  "composition": {
+    "hierarchy": "garment first, human presence second, place and sculpture third; no element may feel superimposed",
+    "logo_placement": [
+      "site-wide SR monogram only for global brand moments",
+      "collection sculpture only in its assigned scene",
+      "garment graphics only where the physical SKU defines them"
+    ],
+    "image_behavior": "one photographic world with shared lens response, grain, light wrap, atmospheric depth, floor contact, occlusion, and reflection behavior",
+    "text_behavior": "avoid generated readable campaign copy inside the photograph; apply exact text deterministically after image approval"
+  },
+  "native_integration_contract": {
+    "status": "fixed",
+    "operation": "native_collection_scene",
+    "method": "environment_rebuild_around_source",
+    "required": [
+      "Generate or reconstruct the environment around the approved on-model source instead of pasting the source onto an independent plate.",
+      "Use one camera model, horizon, focal behavior, grain structure, and depth response across the full frame.",
+      "Match key direction, fill ratio, rim behavior, color temperature, fog contamination, and reflective spill on every subject.",
+      "Resolve feet, floor compression, contact shadows, cast shadows, reflections, occlusion, and garment-body deformation together.",
+      "Protect exact garment graphics, construction, color blocking, and logo placement with mask-bound edits.",
+      "Inspect edges at 200 percent and reject halo, planar garment, hard cutout, and mismatched sharpness artifacts."
+    ],
+    "layout_proof_only": [
+      "protected_scene_composite",
+      "manual Figma layout",
+      "flat alpha cutout on independent background"
+    ]
+  },
+  "applications": {
+    "black_rose": {
+      "story": "Grief that became armor. Oakland night and gothic gravity.",
+      "environment": "Oakland and Bay Bridge night language, rain-dark concrete, silver and charcoal material response.",
+      "scene_rules": [
+        "The approved crew-and-jogger cast belongs only to BR-COMMERCE-1.",
+        "The long hoodie scene uses the Black Rose script/font statue as its primary environmental brand device because other approved scenes already carry bridge and garment-graphic devices.",
+        "Logo corrections must be localized patches; do not redraw the full scene."
+      ]
+    },
+    "love_hurts": {
+      "story": "Beauty and the Beast from the Beast's perspective; passionate Oakland romanticism.",
+      "environment": "Crimson atmosphere, gothic cathedral architecture, enchanted rose dome, controlled emotional tension.",
+      "scene_rules": [
+        "Use only canonical Love Hurts wordmarks and rose/heart assets assigned by the logo registry.",
+        "The enchanted rose under glass is the primary Love Hurts hero asset; a font statue or collection logo graphic may identify the collection but cannot replace the rose.",
+        "For motion, awaken the rose with restrained internal glow, glass caustics, and a small petal release that directs attention toward the product and CTA; never use a decorative loop that competes with garment inspection.",
+        "Keep garments physically integrated with architecture, fog, glass, and reflected crimson light."
+      ]
+    },
+    "signature": {
+      "story": "What you wear when you have stopped explaining yourself.",
+      "environment": "Golden Gate and San Francisco golden-hour fog with rain-dark terrace stone and rose-gold architectural sculpture.",
+      "scene_rules": [
+        "All five Signature pre-order items appear in the same pre-order scene.",
+        "The pre-order scene uses the Golden Gate environment.",
+        "The mint and lavender couple uses the approved garment graphic as the scene device.",
+        "The sherpa-and-beanie look uses the Signature font statue.",
+        "Do not duplicate one garment look across multiple commerce scenes."
+      ]
+    }
+  },
+  "unknowns": [
+    "A source-native transparent or vector master for the global SR monogram has not been confirmed; current canonical master is raster WebP.",
+    "Exact production camera and lens metadata are not embedded in the approved Signature reference and must be estimated or deliberately chosen before generation.",
+    "Higgsfield Nano Banana Pro is selected for the current one-candidate-per-scene 2K restyle pilots; no scene has been promoted and paid retries remain disabled.",
+    "This scene-focused Brand Lock has not yet received explicit founder approval."
+  ]
+}
