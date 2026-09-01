@@ -39,12 +39,15 @@
     "br-009": [
       "[ghost-back] rose logo only goes in the 2 in back",
       "[ghost] rose logo only goes in the 3 infront",
-      "[on-model] fix rose logo only goes in the 3"
+      "[on-model] fix rose logo only goes in the 3",
+      "[all renders] Official founder front/back SOT is the separate br-009 white-football reference pair. FRONT 32: only the 3 has the tonal greyscale rose fill. BACK 32: only the 2 has the tonal greyscale rose fill. The NFL Authentic Collection patch is 3 inches wide by 4 inches high at the wearer-left front lower hem."
     ],
     "br-008": [
-      "[ghost-back] rose logo only goes in the 0 in back",
-      "[ghost] rose only goes in the 8 in front",
-      "[on-model] fix logo inside numbers"
+      "[ghost-back] render 80: the 8 is plain white and the rose logo fills only the 0",
+      "[ghost] render 80: the rose logo fills only the 8 and the 0 is plain white",
+      "[on-model] fix logo inside numbers",
+      "[all renders] Founder front/back SOT: BR-008 is 80 on BOTH sides. FRONT: the 8 is rose-filled and the 0 is plain white. BACK: the 8 is plain white and the 0 is rose-filled. Never render one digit by itself, and never place the rose fill in both digits on either side.",
+      "[all renders] BR-008 NFL Authentic Collection patch is 3 inches wide by 4 inches long at the wearer-left front lower hem. Each of the three white sleeve stripes has black border edging. Upper-back BLACK IS BEAUTIFUL is black tackle twill with a white border."
     ],
     "br-011": [
       "[ghost-back] adjust hood",

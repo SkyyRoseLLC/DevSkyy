@@ -7,7 +7,7 @@ logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/nba-authentic-collection-patch.md
   - data/brand-logos/sr-monogram.md
-reference_image: assets/products/references/br-010-design-front.jpeg
+reference_image: assets/products/references/br-010-founder-basketball-front-sot.png
 ---
 
 # BLACK is Beautiful Jersey Series — 3. The Bay (Basketball)
@@ -28,7 +28,8 @@ renderings only.
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - NBA Authentic Collection patch: `data/brand-logos/nba-authentic-collection-patch.md`
 > - SR monogram (back-neck):       `data/brand-logos/sr-monogram.md`
-> - Product design render:          `assets/products/references/br-010-design-front.jpeg`
+> - Founder front SOT:              `assets/products/references/br-010-founder-basketball-front-sot.png`
+> - Founder back SOT:               `assets/products/references/br-010-founder-basketball-back-sot.png`
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
@@ -51,9 +52,10 @@ renderings only.
   canonical Black Rose three-rose-cluster (greyscale) centered inside the
   circle. **Technique:** sublimated. **Color:** dark grey ring + gold "THE
   BAY" text + greyscale rose-cluster.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, against the
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in high**, against the
   fading rose pattern): The NBA Authentic Collection patch sewn onto the
-  lower-left hip. **Technique:** embroidered-patch.
+  wearer's lower-left hip. **Technique:** embroidered-patch. This is the
+  required footprint for every Jersey Series sport patch.
 
 ### Back
 - **back-neck** (small, ~2in wide): The SR monogram embroidered directly

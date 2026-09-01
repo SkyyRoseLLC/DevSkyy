@@ -1,0 +1,98 @@
+{
+  "schema": "skyyrose.founder-jersey-sot.v1",
+  "received_at": "2026-08-29",
+  "authority": "Founder-declared jersey source of truth; supplied local source pixels outrank prior techflats, renders, catalog copy, and filename inference.",
+  "assets": [
+    {
+      "sku": "br-008",
+      "source": {
+        "source_filename": "br-design-football-jersey-red.jpg",
+        "path": "assets/products/references/br-008-founder-front-back-sot.jpg",
+        "sha256": "sha256:e8bf9bf682aefcc716df01b0b62a8fe2a3c8f33c57a264c521db3e2b87f33f2d"
+      },
+      "views": ["front", "back"],
+      "panel_layout": "left=front; right=back",
+      "split_views": {
+        "front": {"path": "assets/products/references/br-008-founder-front-sot.png", "sha256": "sha256:db0dc90edd3c0f7edb3b66fccdafda3f8a154637e9644386a4d9f84468004676", "crop": "400x385+0+0"},
+        "back": {"path": "assets/products/references/br-008-founder-back-sot.png", "sha256": "sha256:808dd71f1a373aac1e20561c7a8aa84098653fb0251a2a2ca1d1b98c43dae680", "crop": "400x385+400+0"}
+      },
+      "notes": "Red football jersey: front 80 has rose-filled 8 and plain white 0; back 80 has plain white 8 and rose-filled 0. Three white sleeve stripes are black edged and BLACK IS BEAUTIFUL is black with white border."
+    },
+    {
+      "sku": "br-009",
+      "source": {
+        "source_filename": "br-design-football-jersey-white.jpg",
+        "path": "assets/products/references/br-009-founder-white-football-front-back-sot.jpg",
+        "sha256": "sha256:60aebd8517d562b111f4042a48b7e2c7ccceefb2bf2a40e3e42a2d434e2f26e8"
+      },
+      "views": ["front", "back"],
+      "panel_layout": "left=front; right=back",
+      "split_views": {
+        "front": {"path": "assets/products/references/br-009-founder-white-football-front-sot.png", "sha256": "sha256:675a487d9afe147edd029272e1d359968b8f2702e5c5d035748bd475cc2de075", "crop": "400x373+0+0", "patch_composite_contract": "assets/products/references/br-009-founder-white-football-patch-contract.json"},
+        "back": {"path": "assets/products/references/br-009-founder-white-football-back-sot.png", "sha256": "sha256:a72cf15df65c0bcb98880c470858216c86cc0a85c02db9e2b0996614744b3171", "crop": "400x373+400+0"}
+      },
+      "preserved_unpatched_front": {"path": "assets/products/references/br-009-founder-white-football-front-unpatched-sot.png", "sha256": "sha256:e8199134235cf3e6ef13e5f88e20a3a2bb720eba8bd689a6f99154923ff3c83f"},
+      "notes": "Official Last Oakland football techflat: front 32 has rose-filled 3 and plain 2; back 32 has plain 3 and rose-filled 2. Front patch is deterministically composited at wearer-left lower hem with a 3 x 4 inch footprint."
+    },
+    {
+      "sku": "br-010",
+      "source": {
+        "source_filename": "br-design-basketball-jersey.jpg",
+        "path": "assets/products/references/br-010-founder-basketball-front-back-sot.jpg",
+        "sha256": "sha256:ac39ac55169f3d031746cf212dd056a0514bd19a4ab5f1702063864097d71222"
+      },
+      "views": ["front", "back"],
+      "panel_layout": "left=front; right=back",
+      "split_views": {
+        "front": {"path": "assets/products/references/br-010-founder-basketball-front-sot.png", "sha256": "sha256:f8c5285953127694f906d2332c014be5d6705f58bcf6fce195a41c6309a29884", "crop": "272x450+0+0"},
+        "back": {"path": "assets/products/references/br-010-founder-basketball-back-sot.png", "sha256": "sha256:9ed29df66a6986991387a4e0021a0dcb6f1d683c308d1998a5e26cafb38182d9", "crop": "271x450+272+0"}
+      },
+      "notes": "White basketball tank with gold THE BAY medallion front, lower tonal grey rose field, black SR at rear neck, and stacked gold BLACK IS BEAUTIFUL on back."
+    },
+    {
+      "sku": "br-011",
+      "source": {
+        "source_filename": "br-design-hockey-jersey copy.jpg",
+        "path": "assets/products/references/br-011-founder-hockey-front-back-sot.jpg",
+        "sha256": "sha256:30dac8cdad28cae4b73b46f2fe9d02f9df939600b675d222d7ca500c744ddb04"
+      },
+      "views": ["front", "back"],
+      "panel_layout": "left=front; right=back",
+      "split_views": {
+        "front": {"path": "assets/products/references/br-011-founder-hockey-front-sot.png", "sha256": "sha256:764adebeb1695ea3136f0e21d93df52d8ffbe0076df89c31455296b935d76e92", "crop": "1055x1490+0+0"},
+        "back": {"path": "assets/products/references/br-011-founder-hockey-back-sot.png", "sha256": "sha256:7fba3ef74346e185bcc254c5b3096146fe3aedf2727b7e3e2d0717bd0d7dbb6a", "crop": "1055x1490+1055+0"}
+      },
+      "notes": "Black hockey hoodie with teal/white trims, front circular rose crest, shoulder marks, lower patch, rear black/teal BLACK IS BEAUTIFUL, and rose-filled 0."
+    },
+    {
+      "sku": "br-012",
+      "source": {
+        "source_filename": "br-003-techflat-oakland.jpeg",
+        "path": "assets/products/references/br-012-founder-oakland-front-back-sot.jpeg",
+        "sha256": "sha256:1749fbf270ac2b040446c2f94c63e0175f675157a4a9c6e46c59dae199fbaa2a"
+      },
+      "views": ["front", "back"],
+      "panel_layout": "left=front; right=back",
+      "split_views": {
+        "front": {"path": "assets/products/references/br-012-founder-oakland-front-sot.png", "sha256": "sha256:3e22699ffa6fa0c9b2c71d325ff1d2becb5ece648bc21c41be6c59f7f2f977f5", "crop": "360x450+0+0"},
+        "back": {"path": "assets/products/references/br-012-founder-oakland-back-sot.png", "sha256": "sha256:4102ca50782307e484f6749ff055e0c5e70bac71f867e3f94d3cd9b490e536ea", "crop": "360x450+360+0"}
+      },
+      "notes": "Oakland baseball colorway: dark forest green, gold piping, arched BLACK IS BEAUTIFUL, lower-front patch, gold SR rear neck, and white rose cluster with gold cloud on rear."
+    },
+    {
+      "sku": "br-014",
+      "source": {
+        "source_filename": "br-003-techflat-giants.jpeg",
+        "path": "assets/products/references/br-014-founder-giants-front-back-sot.jpeg",
+        "sha256": "sha256:db6cc663a9f363233e1828bbe0f72e9f89e3795c685f180047574138c1065b05"
+      },
+      "views": ["front", "back"],
+      "panel_layout": "left=front; right=back",
+      "split_views": {
+        "front": {"path": "assets/products/references/br-014-founder-giants-front-sot.png", "sha256": "sha256:b134b30be7b2be3dcb7676797a998e7da0c6bbb4d29e6bad11a90d5c702e6c7a", "crop": "512x768+0+0"},
+        "back": {"path": "assets/products/references/br-014-founder-giants-back-sot.png", "sha256": "sha256:e7d1abc7f307ad3b42fed448e7a998970b9ba9033123e7b01d03f11f63c93f6c", "crop": "512x768+512+0"}
+      },
+      "notes": "Giants baseball colorway: black body, bright orange piping and wordmark, lower-front patch, orange SR rear neck, and white rose cluster on rear."
+    }
+  ]
+}

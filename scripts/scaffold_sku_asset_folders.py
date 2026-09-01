@@ -205,12 +205,21 @@ def _build_placement_md(sku: str, product: dict, registry: dict) -> str:
     """Generate the per-SKU placement brief from canonical sources only."""
     name = product.get("name", "")
     collection = product.get("collection", "")
-    branding_spec = (product.get("branding_spec") or "").strip()
     dossier = product.get("dossier") or product.get("_dossier") or {}
     garment_lock = (dossier.get("garment_type_lock") or "").strip()
     scene_pose = (dossier.get("scene_pose") or "").strip()
     scene_setting = (dossier.get("scene_setting") or "").strip()
     negative = (dossier.get("negative_block") or "").strip()
+    founder_corrections: tuple[str, ...] = ()
+    try:
+        from skyyrose.core.product_asset_contract import load_product_asset_contract
+
+        founder_corrections = load_product_asset_contract(sku).render.founder_corrections
+    except Exception:
+        # The placement file is a derivative/doc generator. The production
+        # render path fails closed; this output stays readable for an SKU that
+        # is actively being authored and identifies the missing contract below.
+        founder_corrections = ("Asset contract unavailable — do not use this derivative for rendering.",)
 
     sku_logos = (registry.get("sku_logos") or {}).get(sku, {})
     placements = sku_logos.get("placements") or []
@@ -221,8 +230,8 @@ def _build_placement_md(sku: str, product: dict, registry: dict) -> str:
         f"# {sku} — {name}",
         f"_Collection: {collection}_",
         "",
-        "## Branding spec (one-line)",
-        branding_spec if branding_spec else "_None recorded._",
+        "## Physical render authority",
+        "Use the authored dossier plus founder corrections below. The commerce catalog is not a physical-product specification.",
         "",
         "## Garment silhouette lock",
         garment_lock if garment_lock else "_None recorded._",
@@ -261,9 +270,14 @@ def _build_placement_md(sku: str, product: dict, registry: dict) -> str:
         "## Do NOT render",
         negative if negative else "_No negative constraints recorded._",
         "",
+        "## Founder corrections (binding amendments)",
+        "\n".join(f"- {correction}" for correction in founder_corrections)
+        if founder_corrections
+        else "_No newer amendment recorded._",
+        "",
         "---",
         "_This file is auto-generated from the canonical sources_",
-        "_(catalog CSV + dossier + logo-registry.json) by_",
+        "_(dossier + founder corrections + logo-registry.json; catalog supplies identity only) by_",
         "_`scripts/scaffold_sku_asset_folders.py`. Edit those sources, not this file._",
         "",
     ]

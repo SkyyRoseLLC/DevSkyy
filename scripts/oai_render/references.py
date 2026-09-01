@@ -13,7 +13,6 @@ skipped, never rendered as an incomplete image.
 
 from __future__ import annotations
 
-import csv
 import functools
 import logging
 from dataclasses import dataclass
@@ -39,22 +38,24 @@ class ReferenceImage:
 
 # ── Catalog ─────────────────────────────────────────────────────────────────
 def load_catalog() -> dict[str, dict]:
-    """Load the product catalog CSV, keyed by SKU. Single source of truth."""
-    catalog: dict[str, dict] = {}
-    if not config.CATALOG_CSV.exists():
-        raise FileNotFoundError(f"Catalog CSV not found: {config.CATALOG_CSV}")
-    with config.CATALOG_CSV.open(newline="", encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            sku = (row.get("sku") or "").strip()
-            if not sku:
-                continue
-            catalog[sku] = {
-                "name": (row.get("name") or "").strip(),
-                "collection": (row.get("collection") or "").strip(),
-                "is_preorder": (row.get("is_preorder") or "").strip() == "1",
-                "output_slug": (row.get("render_output_slug") or "").strip() or sku,
-            }
-    return catalog
+    """Load the commerce catalog through the shared reader, keyed by SKU.
+
+    This adapter reads only identity/routing values. Physical garment truth
+    enters the render path through mandatory dossier and founder-correction
+    layers, never through thin CSV descriptions.
+    """
+    from skyyrose.core.catalog_loader import read_catalog_rows
+
+    return {
+        sku: {
+            "name": (row.get("name") or "").strip(),
+            "collection": (row.get("collection") or "").strip(),
+            "is_preorder": (row.get("is_preorder") or "").strip() == "1",
+            "output_slug": (row.get("render_output_slug") or "").strip() or sku,
+        }
+        for row in read_catalog_rows(config.CATALOG_CSV)
+        if (sku := (row.get("sku") or "").strip())
+    }
 
 
 # ── Authoritative SKU → {front, back} garment source map ────────────────────
@@ -86,8 +87,8 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
             "back": s / "black-rose" / "br-jersey-baseball-black-back.jpeg",
         },
         "br-014": {
-            "front": s / "black-rose" / "br-jersey-baseball-giants-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-baseball-giants-back.jpeg",
+            "front": config.PROJECT_ROOT / "assets/products/references/br-014-founder-giants-front-sot.png",
+            "back": config.PROJECT_ROOT / "assets/products/references/br-014-founder-giants-back-sot.png",
         },
         "br-015": {
             "front": s / "black-rose" / "br-jersey-baseball-white-front.jpeg",
@@ -104,24 +105,24 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
         },
         "br-007": {"front": p / "br-007-real-front.jpg", "back": p / "br-007-real-back.jpg"},
         "br-008": {
-            "front": s / "black-rose" / "br-jersey-football-sf-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-football-sf-back.jpeg",
+            "front": config.PROJECT_ROOT / "assets/products/references/br-008-founder-front-sot.png",
+            "back": config.PROJECT_ROOT / "assets/products/references/br-008-founder-back-sot.png",
         },
         "br-009": {
-            "front": s / "black-rose" / "br-jersey-football-oakland-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-football-oakland-back.jpeg",
+            "front": config.PROJECT_ROOT / "assets/products/references/br-009-founder-white-football-front-sot.png",
+            "back": config.PROJECT_ROOT / "assets/products/references/br-009-founder-white-football-back-sot.png",
         },
         "br-010": {
-            "front": s / "black-rose" / "br-jersey-basketball-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-basketball-back.jpeg",
+            "front": config.PROJECT_ROOT / "assets/products/references/br-010-founder-basketball-front-sot.png",
+            "back": config.PROJECT_ROOT / "assets/products/references/br-010-founder-basketball-back-sot.png",
         },
         "br-011": {
-            "front": s / "black-rose" / "br-jersey-hockey-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-hockey-back.jpeg",
+            "front": config.PROJECT_ROOT / "assets/products/references/br-011-founder-hockey-front-sot.png",
+            "back": config.PROJECT_ROOT / "assets/products/references/br-011-founder-hockey-back-sot.png",
         },
         "br-012": {
-            "front": p / "last-oakland-baseball-jersey-front.jpeg",
-            "back": p / "br-012-last-oakland-baseball-back.jpeg",
+            "front": config.PROJECT_ROOT / "assets/products/references/br-012-founder-oakland-front-sot.png",
+            "back": config.PROJECT_ROOT / "assets/products/references/br-012-founder-oakland-back-sot.png",
         },
         # ── LOVE HURTS ──
         "lh-002": {"front": s / "love-hurts" / "lh-joggers-front.jpeg", "back": None},
@@ -424,7 +425,12 @@ def build_references(
     smap = get_source_map().get(sku, {})
     front = smap.get("front")
     back = smap.get("back")
-    flatlay = find_flatlay_photo(sku)
+    # A founder-declared source is already the product authority. Do not prepend
+    # an older rescue/flatlay match merely because its filename happens to share
+    # the SKU prefix; that was the path by which superseded jersey art could
+    # still reach a paid render.
+    founder_source = front is not None and "-founder-" in front.name
+    flatlay = None if founder_source else find_flatlay_photo(sku)
 
     refs: list[ReferenceImage] = []
 
@@ -445,7 +451,11 @@ def build_references(
         refs.append(
             ReferenceImage(
                 label=(
-                    "REFERENCE IMAGE {n} — GARMENT TECH FLAT (FRONT VIEW): front-facing design "
+                    "REFERENCE IMAGE {n} — FOUNDER PRODUCT SOT: supplied source pixels are the "
+                    "authority. Preserve the shown panel layout, graphic placement, silhouette, "
+                    "construction, colors, and trims exactly; do not blend an older reference."
+                    if founder_source
+                    else "REFERENCE IMAGE {n} — GARMENT TECH FLAT (FRONT VIEW): front-facing design "
                     "illustration showing front panel layout, graphic placement, silhouette, "
                     "and construction."
                 ),
@@ -460,7 +470,7 @@ def build_references(
             f"{sku}: no usable garment reference (front={front}, flatlay=None)."
         )
 
-    if include_back and back and back.exists():
+    if include_back and back and back.exists() and back != front:
         refs.append(
             ReferenceImage(
                 label=(

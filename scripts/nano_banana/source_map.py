@@ -1,11 +1,8 @@
-"""Source image mapping — maps every SKU to its correct front/back techflat.
+"""Compatibility facade for the canonical product-source map.
 
-This is the AUTHORITATIVE mapping. The product catalog references this
-instead of guessing from filenames. Every product has explicit front
-and back source paths (or None if unavailable).
-
-Split techflats live in: assets/techflats/split/{collection}/
-Original sources live in: wordpress-theme/skyyrose-flagship/assets/images/products/
+The single live mapping belongs to :mod:`scripts.oai_render.references`, where
+the manifest and product-asset contract resolve it. This retained Nano Banana
+module only serves older callers and must never carry competing product truth.
 """
 
 from __future__ import annotations
@@ -19,15 +16,11 @@ PRODUCTS_DIR = (
 )
 
 
-# ── AUTHORITATIVE SOURCE MAP ────────────────────────────────────────────────
-# Format: SKU → { "front": Path, "back": Path | None }
-# "front" is used for front view generation
-# "back" is used for back view generation
-# Both are used as reference for branding/editorial views
+# ── Historical mapping retained solely for audit / migration reference ──────
 
 
-def get_source_map() -> dict[str, dict[str, Path | None]]:
-    """Return the complete source image mapping for all products."""
+def _legacy_source_map() -> dict[str, dict[str, Path | None]]:
+    """Historical map kept out of production resolution paths."""
 
     S = SPLIT_DIR  # Split techflats (individual front/back)
     P = PRODUCTS_DIR  # Original product photos
@@ -51,10 +44,12 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
             "front": S / "black-rose" / "br-jersey-baseball-black-front.jpeg",
             "back": S / "black-rose" / "br-jersey-baseball-black-back.jpeg",
         },
-        # br-003 variants — split from composite techflats
+        # br-003 variants — the founder board is a two-panel SOT: left front,
+        # right back. Keep this compatibility map aligned with the contract-led
+        # OAI map until the legacy adapter is removed.
         "br-014": {
-            "front": S / "black-rose" / "br-jersey-baseball-giants-front.jpeg",
-            "back": S / "black-rose" / "br-jersey-baseball-giants-back.jpeg",
+            "front": PROJECT_ROOT / "assets/products/references/br-014-founder-giants-front-back-sot.jpeg",
+            "back": PROJECT_ROOT / "assets/products/references/br-014-founder-giants-front-back-sot.jpeg",
         },
         "br-015": {
             "front": S / "black-rose" / "br-jersey-baseball-white-front.jpeg",
@@ -84,32 +79,33 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
             "front": P / "br-007-real-front.jpg",
             "back": P / "br-007-real-back.jpg",
         },
-        # br-008: SF Inspired Football Jersey — use split techflat
+        # br-008: Founder two-panel red football jersey SOT.
         "br-008": {
-            "front": S / "black-rose" / "br-jersey-football-sf-front.jpeg",
-            "back": S / "black-rose" / "br-jersey-football-sf-back.jpeg",
+            "front": PROJECT_ROOT / "assets/products/references/br-008-founder-front-back-sot.jpg",
+            "back": PROJECT_ROOT / "assets/products/references/br-008-founder-front-back-sot.jpg",
         },
-        # br-009: Last Oakland Football Jersey
+        # br-009: Founder supplied a front-only white football SOT. Do not
+        # synthesize a rear source from an old split techflat.
         "br-009": {
-            "front": S / "black-rose" / "br-jersey-football-oakland-front.jpeg",
-            "back": S / "black-rose" / "br-jersey-football-oakland-back.jpeg",
+            "front": PROJECT_ROOT / "assets/products/references/br-009-founder-white-football-front-sot.webp",
+            "back": None,
         },
-        # br-010: The Bay Basketball Jersey
+        # br-010: Founder two-panel basketball SOT.
         "br-010": {
-            "front": S / "black-rose" / "br-jersey-basketball-front.jpeg",
-            "back": S / "black-rose" / "br-jersey-basketball-back.jpeg",
+            "front": PROJECT_ROOT / "assets/products/references/br-010-founder-basketball-front-back-sot.jpg",
+            "back": PROJECT_ROOT / "assets/products/references/br-010-founder-basketball-front-back-sot.jpg",
         },
-        # br-011: The Rose Hockey Jersey (Sharks Edition)
+        # br-011: Founder two-panel hockey hoodie SOT.
         "br-011": {
-            "front": S / "black-rose" / "br-jersey-hockey-front.jpeg",
-            "back": S / "black-rose" / "br-jersey-hockey-back.jpeg",
+            "front": PROJECT_ROOT / "assets/products/references/br-011-founder-hockey-front-back-sot.jpg",
+            "back": PROJECT_ROOT / "assets/products/references/br-011-founder-hockey-front-back-sot.jpg",
         },
         # br-012: Last Oakland Baseball Jersey — green/gold A's-inspired,
         # "BLACK IS BEAUTIFUL" arched in gold, button-front, rose logo on back, gold piping
-        # User uploaded photo — waiting for file to be saved to disk
+        # Founder two-panel Oakland SOT: left front, right back.
         "br-012": {
-            "front": P / "last-oakland-baseball-jersey-front.jpeg",
-            "back": None,
+            "front": PROJECT_ROOT / "assets/products/references/br-012-founder-oakland-front-back-sot.jpeg",
+            "back": PROJECT_ROOT / "assets/products/references/br-012-founder-oakland-front-back-sot.jpeg",
         },
         # ══════════════════════════════════════════════════════════════
         # LOVE HURTS COLLECTION
@@ -223,6 +219,13 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
             "back": S / "kids-capsule" / "kids-purple-joggers-back.jpeg",
         },
     }
+
+
+def get_source_map() -> dict[str, dict[str, Path | None]]:
+    """Return a copy of the sole canonical source map for legacy callers."""
+    from scripts.oai_render.references import get_source_map as canonical_source_map
+
+    return {sku: dict(views) for sku, views in canonical_source_map().items()}
 
 
 def validate_source_map() -> dict:

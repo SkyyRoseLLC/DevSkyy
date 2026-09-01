@@ -46,6 +46,7 @@ from skyyrose.core.dossier_loader import Dossier  # noqa: E402
 # read `dna.get("_dossier")` (spec_builder.augment_prompt) keep working.
 _DOSSIER_KEY = "_dossier"
 _SPEC_KEY = "spec"
+_FOUNDER_CORRECTIONS_KEY = "_founder_corrections"
 
 
 @dataclass
@@ -63,6 +64,7 @@ class VisionContext:
     catalog: dict = field(default_factory=dict)
     spec: str | None = None
     dossier: Dossier | None = None
+    founder_corrections: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         """Enforce: a None dossier means a None spec.
@@ -98,6 +100,10 @@ class VisionContext:
             if self.dossier is None:
                 raise KeyError(key)
             return self.dossier
+        if key == _FOUNDER_CORRECTIONS_KEY:
+            if not self.founder_corrections:
+                raise KeyError(key)
+            return self.founder_corrections
         if key in self.catalog:
             return self.catalog[key]
         if key in self.inferred:
@@ -133,6 +139,8 @@ class VisionContext:
         out.update(self.catalog)
         if self.spec is not None:
             out[_SPEC_KEY] = self.spec
+        if self.founder_corrections:
+            out[_FOUNDER_CORRECTIONS_KEY] = list(self.founder_corrections)
         return out
 
 

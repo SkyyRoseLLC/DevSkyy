@@ -6,7 +6,7 @@ logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/black-rose-authentic-collection-patch.md
   - data/brand-logos/sr-monogram.md
-reference_image: assets/products/references/br-014-techflat.jpeg
+reference_image: assets/products/references/br-014-founder-giants-front-sot.png
 extra_references:
   - assets/products/references/br-014-real-front.jpeg
   - assets/products/references/br-014-real-back.jpeg
@@ -23,17 +23,19 @@ inherits_from: black-is-beautiful-jersey-series-0-baseball-classic
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - Authentic Collection patch:    `data/brand-logos/black-rose-authentic-collection-patch.md`
 > - SR monogram:                   `data/brand-logos/sr-monogram.md`
-> - Product techflat:              `assets/products/references/br-014-techflat.jpeg`
+> - Founder front SOT:             `assets/products/references/br-014-founder-giants-front-sot.png`
+> - Founder back SOT:              `assets/products/references/br-014-founder-giants-back-sot.png`
 > - Real product photos:           `assets/products/references/br-014-real-front.jpeg`,
 >                                  `assets/products/references/br-014-real-back.jpeg`
 
 ### Front
-- **front-chest** (large, arched, ~9in wide): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large, arched, spanning **75–80% of the usable front-panel
+  width**): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering — pre-cut **bright orange** fabric letters
   appliquéd onto the black jersey body in a baseball-script style, arched across
   the upper-front-chest. **Technique:** tackle-twill. **Color:** bright orange
   twill (NO contrast satin-stitch edge — clean orange-on-black).
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The Black Rose
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in high**): The Black Rose
   Authentic Collection patch (full multi-color: yellow field, navy text,
   white banner, red diamond divider, etc. — see patch reference). Sewn onto
   the lower-left hip. **Technique:** embroidered-patch.

@@ -18,6 +18,7 @@ from .cost import CostManifest, ManifestEntry
 from .prompt import SceneError, build_pair_prompt, build_prompt, extract_view_branding, read_dossier
 from .references import MissingReferenceError, Pair, ReferenceImage
 from .scene_schema import build_scene
+from skyyrose.core.product_asset_contract import ProductAssetContractError, load_product_asset_contract
 
 if TYPE_CHECKING:
     from .client import RenderClient
@@ -164,6 +165,7 @@ def plan_sku(
     slug = info.get("output_slug", sku)
 
     try:
+        contract = load_product_asset_contract(sku)
         refs = references.build_references(sku, collection, view=view)
         use_style_ref = style_reference is not None and Path(style_reference).is_file()
         if use_style_ref:
@@ -178,6 +180,11 @@ def plan_sku(
             ]
         is_patch = references.requires_patch(sku)
         dossier_text = read_dossier(dossier_index.get(sku))
+        if contract.render.founder_corrections:
+            dossier_text += (
+                "\n\n## Founder corrections (binding newer amendment)\n"
+                + "\n".join(f"- {item}" for item in contract.render.founder_corrections)
+            )
         scene = build_scene(sku=sku, name=name, collection=collection, style=style)
         prompt = build_prompt(
             name=name,
@@ -191,7 +198,7 @@ def plan_sku(
             scene=scene,
             style_reference=use_style_ref,
         )
-    except (MissingReferenceError, SceneError) as exc:
+    except (MissingReferenceError, SceneError, ProductAssetContractError) as exc:
         return SkuPlan(
             sku=sku,
             name=name,
@@ -225,6 +232,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
     try:
         for member in pair.skus:
             mname = catalog.get(member, {}).get("name", member)
+            contract = load_product_asset_contract(member)
             refs = references.build_references(member, pair.collection, include_back=False)
             refs = refs[:per_garment_cap]
             combined.extend(refs)
@@ -233,7 +241,15 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
                     "name": mname,
                     "sku": member,
                     "reference_labels": [r.label for r in refs],
-                    "dossier_text": read_dossier(dossier_index.get(member)),
+                    "dossier_text": read_dossier(dossier_index.get(member))
+                    + (
+                        "\n\n## Founder corrections (binding newer amendment)\n"
+                        + "\n".join(
+                            f"- {item}" for item in contract.render.founder_corrections
+                        )
+                        if contract.render.founder_corrections
+                        else ""
+                    ),
                     "is_patch": references.requires_patch(member),
                 }
             )
@@ -245,7 +261,7 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
         prompt = build_pair_prompt(
             pair_label=pair.label, collection=pair.collection, garments=garments
         )
-    except (MissingReferenceError, SceneError) as exc:
+    except (MissingReferenceError, SceneError, ProductAssetContractError) as exc:
         return SkuPlan(
             sku=pair.skus[0],
             name=pair.label,
@@ -721,6 +737,14 @@ def render_all(
     judged retry, judge) draws from the same HARD_COST_CAP_USD budget.
     """
     if verify_assets:
+        # Re-load the dossier-first contract immediately before the first
+        # provider call. This catches a catalog/dossier/corrections change made
+        # after planning but before rendering; raw manifest verification alone
+        # cannot prove the prompt still represents the current contract.
+        contract_skus = {plan.sku for plan in plans}
+        contract_skus.update(sku for plan in plans for sku in (plan.pair_skus or ()))
+        for sku in sorted(contract_skus):
+            load_product_asset_contract(sku)
         drift = verify_plan_assets(plans)
         if drift:
             raise AssetIntegrityError(drift)

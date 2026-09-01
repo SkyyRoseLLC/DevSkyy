@@ -456,10 +456,10 @@ def test_run_single_hallucination_veto_triggers_refinement_even_with_high_scores
 # ── run_single — dossier paths ─────────────────────────────────────────────
 
 
-def test_run_single_dossier_soft_fail_falls_back_to_inferred_dna(
+def test_run_single_dossier_missing_blocks_before_generation(
     isolated_project_root, fake_source_image, stub_registry, stub_dependencies, monkeypatch, caplog
 ):
-    """Missing dossier file: pipeline logs warning and continues with inferred DNA."""
+    """Missing dossier file blocks before a derivative can be generated."""
 
     def _raise_missing(sku):
         raise DossierMissingError(f"no dossier for {sku}")
@@ -472,13 +472,13 @@ def test_run_single_dossier_soft_fail_falls_back_to_inferred_dna(
     with caplog.at_level(logging.WARNING, logger="nano_banana.pipeline"):
         result = pipe.run_single(_sample_product(), fake_source_image, view="front")
 
-    # Pipeline still produced an output (didn't hard-fail)
-    assert result.output_path is not None
+    # Pipeline must not create a derivative from inferred / cached analysis.
+    assert result.output_path is None
     # Vision desc lacks the canonical spec key
     assert "spec" not in result.vision_desc
     assert "_dossier" not in result.vision_desc
-    # Warning was logged
-    assert any("DOSSIER" in rec.message and "falling back" in rec.message for rec in caplog.records)
+    assert result.issues and "Product asset contract blocked" in result.issues[0]
+    assert any("CONTRACT" in rec.message for rec in caplog.records)
 
 
 def test_run_single_dossier_negatives_appended_to_generator_prompt(

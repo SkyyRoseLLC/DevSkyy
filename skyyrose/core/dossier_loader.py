@@ -19,6 +19,7 @@ upstream by scripts/validate_dossier.py).
 
 from __future__ import annotations
 
+import json
 import re
 from dataclasses import dataclass, field
 from functools import cache
@@ -27,6 +28,7 @@ from pathlib import Path
 from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows
 
 DOSSIERS_DIR = CATALOG_CSV.parent / "dossiers"
+RENDER_CORRECTIONS_PATH = CATALOG_CSV.parent / "render-corrections.json"
 
 
 class DossierMissingError(FileNotFoundError):
@@ -35,6 +37,10 @@ class DossierMissingError(FileNotFoundError):
     The pipeline fails loudly rather than fall back to the thin CSV
     `branding_spec` column. Author the dossier before rendering.
     """
+
+
+class RenderCorrectionsError(RuntimeError):
+    """Raised when the binding founder-amendment feed cannot be trusted."""
 
 
 @dataclass
@@ -70,6 +76,36 @@ class Dossier:
             "reference_image": self.reference_image,
             "extra_references": list(self.extra_references),
         }
+
+
+@dataclass(frozen=True)
+class ProductRenderContract:
+    """The product facts a renderer is allowed to use.
+
+    The catalog establishes SKU identity, commerce state, and collection
+    routing. Physical construction, graphics, wording, placement, and material
+    live in the authored dossier, with founder corrections applied as the
+    latest binding amendment.
+    """
+
+    product: dict[str, str]
+    dossier: Dossier
+    founder_corrections: tuple[str, ...]
+
+    def prompt_text(self) -> str:
+        """Return an exhaustive, renderer-ready physical-product contract."""
+        sections = [
+            f"PRODUCT: {self.dossier.name} ({self.dossier.sku})",
+            f"GARMENT TYPE LOCK:\n{self.dossier.garment_type_lock}",
+            f"BRANDING — exactly what IS on this product:\n{self.dossier.branding_block}",
+            f"DO NOT RENDER — physical exclusions:\n{self.dossier.negative_block}",
+        ]
+        if self.founder_corrections:
+            sections.append(
+                "FOUNDER CORRECTIONS — newer than any conflicting cached analysis or catalog copy:\n"
+                + "\n".join(self.founder_corrections)
+            )
+        return "\n\n".join(section for section in sections if section.strip())
 
 
 def _parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -221,11 +257,48 @@ def get_product_with_dossier(sku: str) -> dict:
     return {**row, "dossier": dossier.to_dict(), "_dossier": dossier}
 
 
+def get_product_render_contract(sku: str) -> ProductRenderContract:
+    """Load the dossier-first physical-product contract for a render.
+
+    Short CSV descriptions and ``branding_spec`` are commerce/discovery copy,
+    so they are intentionally excluded from the returned physical contract.
+    The authored dossier remains mandatory. The founder-corrections feed is a
+    required binding amendment, not optional convenience data: a missing or
+    malformed file blocks a render instead of silently weakening product truth.
+    """
+    merged = get_product_with_dossier(sku)
+    try:
+        raw = json.loads(RENDER_CORRECTIONS_PATH.read_text(encoding="utf-8"))
+    except OSError as exc:
+        raise RenderCorrectionsError(
+            f"Cannot read required founder corrections at {RENDER_CORRECTIONS_PATH}: {exc}"
+        ) from exc
+    except json.JSONDecodeError as exc:
+        raise RenderCorrectionsError(
+            f"Founder corrections are invalid JSON at {RENDER_CORRECTIONS_PATH}: {exc}"
+        ) from exc
+    candidates = raw.get("corrections")
+    if not isinstance(candidates, dict):
+        raise RenderCorrectionsError("Founder corrections must contain a 'corrections' object.")
+    candidate = candidates.get(sku, [])
+    if not isinstance(candidate, list) or not all(isinstance(item, str) for item in candidate):
+        raise RenderCorrectionsError(f"Founder corrections for {sku} must be a string list.")
+    corrections = tuple(item for item in candidate if item.strip())
+    return ProductRenderContract(
+        product={key: value for key, value in merged.items() if isinstance(value, str)},
+        dossier=merged["_dossier"],
+        founder_corrections=corrections,
+    )
+
+
 __all__ = [
     "DOSSIERS_DIR",
     "Dossier",
     "DossierMissingError",
+    "RenderCorrectionsError",
+    "ProductRenderContract",
     "parse_dossier_markdown",
     "load_dossier",
     "get_product_with_dossier",
+    "get_product_render_contract",
 ]

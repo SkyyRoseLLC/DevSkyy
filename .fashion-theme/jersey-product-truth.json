@@ -18,7 +18,7 @@
     "rendered_product_images": 0,
     "empty_product_image_shells": 8,
     "root_cause": "tools/v2-theme-preview.php constructs all eight Jersey WC_Product fixtures with image_id 0; functions.php then emits sr2-product__image-empty. The Jersey grid also bypasses the approved ornate template-parts/commerce/product-card.php component.",
-    "green_gold_status": "br-012 is present in the generated presentation registry and chapter list, but its garment is visually omitted because the fixture has no bound image. It has no founder-verified hub front or back asset yet."
+    "green_gold_status": "br-012 now has a founder-declared front/back source bound to the render contract. It remains omitted from V2 until a separately approved product render is produced and verified against that source."
   },
   "patch_assets": {
     "mlb": "assets/products/techflats/hero-overlays/br-patch-mlb-baseball.png",
@@ -42,28 +42,31 @@
     },
     "br-008": {
       "canonical_name": "BLACK is Beautiful Jersey Series: 1. SF Inspired (Football)",
-      "color": "Bright red with black-and-white neckband and white triple-stripe cuffs",
-      "required_patch": {"logo_id": "nfl-authentic-collection-card", "placement": "front-left lower hem"},
-      "required_marks": ["rose-filled 80 on front and back", "black tackle-twill BLACK IS BEAUTIFUL on upper back"],
+      "color": "Bright red with black-and-white neckband and three white sleeve stripes, each edged in black",
+      "required_patch": {"logo_id": "nfl-authentic-collection-card", "placement": "wearer-left front lower hem", "width_inches": 3, "height_inches": 4},
+      "required_marks": ["front: 80; the 8 is rose-cluster-filled and the 0 is plain white", "back: 80; the 8 is plain white and the 0 is rose-cluster-filled", "upper back: BLACK IS BEAUTIFUL in black tackle twill with a white border", "three white sleeve stripes, each with black border edging"],
       "verified_media": [
         {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-008/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-008-onmodel.webp"},
         {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-008/front-product-card-alt.png", "source": "renders/oai/_lookbook/onmodel/br-008-onmodel.png"}
       ],
       "blocked_media": [{"role": "back", "reason": "no verified use pick"}],
-      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-008-sf-inspired.jpg",
+      "sot_packshot": "assets/products/references/br-008-founder-front-sot.png",
+      "sot_back_reference": "assets/products/references/br-008-founder-back-sot.png",
       "unverified_3d": ["renders/3d/br-008.glb", "renders/3d/br-008-sf-inspired_meshy.glb", "renders/3d/web/br-008.glb"]
     },
     "br-009": {
       "canonical_name": "BLACK is Beautiful Jersey Series: 2. Last Oakland (Football)",
       "color": "White with solid black neckband and black-and-white cuff bands",
-      "required_patch": {"logo_id": "nfl-authentic-collection-card", "placement": "front-left lower hem"},
-      "required_marks": ["rose-filled 32 on front, back, and shoulders", "black SR monogram at back neck", "black tackle-twill BLACK IS BEAUTIFUL on upper back"],
+      "required_patch": {"logo_id": "nfl-authentic-collection-card", "placement": "wearer-left front lower hem", "width_inches": 3, "height_inches": 4},
+      "required_marks": ["front 32: rose-filled 3 and plain white 2", "back 32: plain white 3 and rose-filled 2", "duplicate 32 shoulder numerals", "black V-neck and black/white sleeve stripes", "wearer-left lower-front NFL-style patch"],
       "verified_media": [],
       "blocked_media": [
         {"role": "on_model_front", "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-009-onmodel.webp", "reason": "official NFL-style Black Rose patch is missing; hub verdict is pending and eyes-on review confirms omission"},
-        {"role": "back", "reason": "no verified use pick"}
+        {"role": "back", "reason": "no founder-verified product render yet; official founder back techflat is now available"}
       ],
-      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-009-last-oakland-football.jpg",
+      "sot_packshot": "assets/products/references/br-009-founder-white-football-front-sot.png",
+      "sot_back_reference": "assets/products/references/br-009-founder-white-football-back-sot.png",
+      "founder_sot": {"receipt": "assets/products/references/founder-jersey-sot.json", "views": ["front", "back"], "sha256": "sha256:60aebd8517d562b111f4042a48b7e2c7ccceefb2bf2a40e3e42a2d434e2f26e8"},
       "unverified_3d": ["renders/3d/br-009.glb", "renders/3d/br-009-last-oakland-football_meshy.glb", "renders/3d/web/br-009.glb"]
     },
     "br-010": {
@@ -71,14 +74,15 @@
       "color": "White with tonal-grey rose fade and gold/yellow wordmarks",
       "required_patch": {"logo_id": "nba-authentic-collection-card", "placement": "front-left lower hem"},
       "required_marks": ["gold/yellow THE BAY medallion on front", "black SR monogram at back neck", "gold/yellow BLACK IS BEAUTIFUL stacked on back"],
-      "verified_media": [
-        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-010/front-product-card-alt.png", "source": "renders/oai/_lookbook/onmodel/br-010-onmodel.png"}
-      ],
+      "verified_media": [],
       "blocked_media": [
         {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-010/front.webp", "reason": "demoted: THE BAY wordmark is white/grey instead of canonical gold/yellow"},
-        {"role": "back", "reason": "no verified use pick"}
+        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-010/front-product-card-alt.png", "reason": "not revalidated against the founder front/back SOT"},
+        {"role": "back", "reason": "no founder-verified product render yet"}
       ],
-      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-010-the-bay-basketball.jpeg",
+      "sot_packshot": "assets/products/references/br-010-founder-basketball-front-sot.png",
+      "sot_back_reference": "assets/products/references/br-010-founder-basketball-back-sot.png",
+      "founder_sot": {"receipt": "assets/products/references/founder-jersey-sot.json", "views": ["front", "back"], "sha256": "sha256:ac39ac55169f3d031746cf212dd056a0514bd19a4ab5f1702063864097d71222"},
       "unverified_3d": ["renders/3d/br-010.glb", "renders/3d/br-010-the-bay-basketball_meshy.glb", "renders/3d/web/br-010.glb"]
     },
     "br-011": {
@@ -86,13 +90,15 @@
       "color": "Black with teal/cyan and white accents",
       "required_patch": {"logo_id": "hockey-championship-card", "placement": "front-left lower hem"},
       "required_marks": ["teal rose medallion on front", "teal SR monogram at back neck", "teal BLACK IS BEAUTIFUL and rose-filled 0 on back"],
-      "verified_media": [
-        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-011/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-onmodel.webp"},
-        {"role": "back_product_view", "path": "assets/hub/collections/black-rose/products/br-011/back.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-the-rose-hockey-back.webp"},
-        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-011/front-product-card-alt.png", "source": "renders/oai/_lookbook/onmodel/br-011-onmodel.png"}
+      "verified_media": [],
+      "blocked_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-011/front.webp", "reason": "not revalidated against the founder front/back SOT"},
+        {"role": "back_product_view", "path": "assets/hub/collections/black-rose/products/br-011/back.webp", "reason": "not revalidated against the founder front/back SOT"},
+        {"role": "on_model_front_alt", "path": "assets/hub/collections/black-rose/products/br-011/front-product-card-alt.png", "reason": "not revalidated against the founder front/back SOT"}
       ],
-      "blocked_media": [],
-      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-the-rose-hockey.png",
+      "sot_packshot": "assets/products/references/br-011-founder-hockey-front-sot.png",
+      "sot_back_reference": "assets/products/references/br-011-founder-hockey-back-sot.png",
+      "founder_sot": {"receipt": "assets/products/references/founder-jersey-sot.json", "views": ["front", "back"], "sha256": "sha256:30dac8cdad28cae4b73b46f2fe9d02f9df939600b675d222d7ca500c744ddb04"},
       "unverified_3d": ["renders/3d/br-011.glb", "renders/3d/br-011-the-rose-hockey_meshy.glb", "renders/3d/web/br-011.glb"]
     },
     "br-012": {
@@ -106,11 +112,12 @@
         {"role": "back", "reason": "hub requires a new render from the existing canonical back references; no founder-verified use pick"}
       ],
       "canonical_reference_media": [
-        "assets/products/references/br-012-techflat.jpeg",
-        "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-front.jpeg",
-        "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg",
-        "wordpress-theme/skyyrose-flagship/assets/images/products/jersey-last-oakland-baseball-front-model.webp"
+        "assets/products/references/br-012-founder-oakland-front-sot.png",
+        "assets/products/references/br-012-founder-oakland-back-sot.png"
       ],
+      "sot_packshot": "assets/products/references/br-012-founder-oakland-front-sot.png",
+      "sot_back_reference": "assets/products/references/br-012-founder-oakland-back-sot.png",
+      "founder_sot": {"receipt": "assets/products/references/founder-jersey-sot.json", "views": ["front", "back"], "sha256": "sha256:1749fbf270ac2b040446c2f94c63e0175f675157a4a9c6e46c59dae199fbaa2a"},
       "unverified_3d": ["renders/3d/br-012.glb", "renders/3d/br-012-last-oakland-baseball-front_meshy.glb", "renders/3d/web/br-012.glb"]
     },
     "br-014": {
@@ -118,12 +125,15 @@
       "color": "Black with bright orange piping",
       "required_patch": {"logo_id": "mlb-authentic-collection-card", "placement": "front-left lower hem"},
       "required_marks": ["bright-orange tackle-twill BLACK IS BEAUTIFUL on front", "orange SR monogram at back neck", "large white-thread Black Rose cluster at back center"],
-      "verified_media": [
-        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-014/front.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/br-014-onmodel.webp"},
-        {"role": "mannequin_front", "path": "assets/hub/collections/black-rose/products/br-014/front-product-card-alt.webp", "source": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-014-ghost-front.webp"}
+      "verified_media": [],
+      "blocked_media": [
+        {"role": "on_model_front", "path": "assets/hub/collections/black-rose/products/br-014/front.webp", "reason": "not revalidated against the founder front/back SOT"},
+        {"role": "mannequin_front", "path": "assets/hub/collections/black-rose/products/br-014/front-product-card-alt.webp", "reason": "not revalidated against the founder front/back SOT"},
+        {"role": "back", "reason": "no founder-verified product render yet"}
       ],
-      "blocked_media": [{"role": "back", "reason": "no founder-verified hub back asset"}],
-      "sot_packshot": "wordpress-theme/skyyrose-flagship/assets/images/products/br-014-baseball-classic-giants.jpeg",
+      "sot_packshot": "assets/products/references/br-014-founder-giants-front-sot.png",
+      "sot_back_reference": "assets/products/references/br-014-founder-giants-back-sot.png",
+      "founder_sot": {"receipt": "assets/products/references/founder-jersey-sot.json", "views": ["front", "back"], "sha256": "sha256:db6cc663a9f363233e1828bbe0f72e9f89e3795c685f180047574138c1065b05"},
       "unverified_3d": ["renders/3d/br-014.glb", "renders/3d/br-014-baseball-classic-giants_meshy.glb", "renders/3d/web/br-014.glb"]
     },
     "br-015": {

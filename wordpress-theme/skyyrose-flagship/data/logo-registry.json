@@ -151,10 +151,13 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left lower-front patch. All Jersey Series sport patches are 3 inches wide by 4 inches high."
         }
       ],
-      "front_text": "BLACK IS BEAUTIFUL"
+      "front_text": "BLACK IS BEAUTIFUL",
+      "front_text_coverage": "75–80% of usable front-panel width"
     },
     "br-004": {
       "name": "BLACK Rose Hoodie",
@@ -237,25 +240,28 @@
       "placements": [
         {
           "logo_id": "black-roses-cloud-cluster",
-          "position": "front_number_8",
+          "position": "front_number_8_of_80",
           "technique": "stitched",
           "colorway": "rose_gold",
-          "notes": "Rose cluster fills the '8' digit in jersey number 80 on the front; '0' remains plain white."
+          "notes": "Founder front SOT: 80. The first digit '8' is rose-cluster-filled; the second digit '0' is plain white."
         },
         {
           "logo_id": "black-roses-cloud-cluster",
-          "position": "back_number_0",
+          "position": "back_number_0_of_80",
           "technique": "stitched",
           "colorway": "rose_gold",
-          "notes": "Reversed on back — '8' is plain, '0' has the rose cluster fill."
+          "notes": "Founder back SOT: 80. The first digit '8' is plain white; the second digit '0' is rose-cluster-filled."
         },
         {
           "logo_id": "nfl-authentic-collection-card",
           "position": "bottom_left_corner",
-          "technique": "custom_football_patch"
+          "technique": "custom_football_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left front lower hem; patch is 3 inches wide by 4 inches long."
         }
       ],
-      "jersey_number": "80"
+      "front_number": "80",
+      "back_number": "80"
     },
     "br-009": {
       "name": "BLACK Is Beautiful Jersey Series: 2 — Last Oakland (White Football)",
@@ -271,16 +277,19 @@
           "logo_id": "black-roses-cloud-cluster",
           "position": "back_number_2",
           "technique": "stitched",
-          "colorway": "rose_gold",
-          "notes": "Reversed on back — '3' is plain, '2' has the rose cluster fill."
+          "colorway": "greyscale",
+          "notes": "Official founder back SOT: the '3' is plain white and the rose cluster fills only the '2' digit in the back number 32."
         },
         {
           "logo_id": "nfl-authentic-collection-card",
           "position": "bottom_left_corner",
-          "technique": "custom_football_patch"
+          "technique": "custom_football_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left front lower hem. Every Jersey Series sport patch is 3 inches wide by 4 inches high."
         }
       ],
-      "jersey_number": "32"
+      "jersey_number": "32",
+      "rear_view_status": "Official founder back techflat recorded; use only the separate br-009 founder back SOT asset."
     },
     "br-010": {
       "name": "BLACK Is Beautiful Jersey Series: 3 — The Bay (Basketball)",
@@ -288,7 +297,9 @@
         {
           "logo_id": "nba-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_basketball_patch"
+          "technique": "custom_basketball_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left lower-front patch. All Jersey Series sport patches are 3 inches wide by 4 inches high."
         }
       ],
       "notes": "User confirmed: vision pipeline produced a good first render — preserve existing spec."
@@ -300,7 +311,8 @@
           "logo_id": "hockey-championship-card",
           "position": "front_patch",
           "technique": "custom_hockey_patch",
-          "notes": "Hockey Championship card — different visual style from NBA/NFL cards (gray ground, shield with sticks+puck, minimalist)."
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left lower-front patch. Hockey Championship card — different visual style from NBA/NFL cards (gray ground, shield with sticks+puck, minimalist). All Jersey Series sport patches are 3 inches wide by 4 inches high."
         }
       ],
       "notes": "User confirmed: vision did a good job on the first render of this — preserve existing."
@@ -316,11 +328,14 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left lower-front patch. All Jersey Series sport patches are 3 inches wide by 4 inches high."
         }
       ],
       "front_text": "BLACK IS BEAUTIFUL",
-      "front_text_notes": "'A' of BLACK in black lettering, remainder of BLACK IS BEAUTIFUL in gold lettering."
+      "front_text_notes": "'A' of BLACK in black lettering, remainder of BLACK IS BEAUTIFUL in gold lettering.",
+      "front_text_coverage": "75–80% of usable front-panel width"
     },
     "br-014": {
       "name": "BLACK Is Beautiful Jersey Series: 0 — Baseball Classic (Giants)",
@@ -334,10 +349,13 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left lower-front patch. All Jersey Series sport patches are 3 inches wide by 4 inches high."
         }
       ],
       "front_text": "BLACK IS BEAUTIFUL",
+      "front_text_coverage": "75–80% of usable front-panel width",
       "colorway_notes": "Giants colorway — black and orange accents."
     },
     "br-015": {
@@ -352,10 +370,13 @@
         {
           "logo_id": "mlb-authentic-collection-card",
           "position": "front_patch",
-          "technique": "custom_baseball_patch"
+          "technique": "custom_baseball_patch",
+          "size_inches": "3 × 4",
+          "notes": "Wearer-left lower-front patch. All Jersey Series sport patches are 3 inches wide by 4 inches high."
         }
       ],
       "front_text": "BLACK IS BEAUTIFUL",
+      "front_text_coverage": "75–80% of usable front-panel width",
       "colorway_notes": "White colorway of the Baseball Classic jersey."
     },
     "lh-002": {

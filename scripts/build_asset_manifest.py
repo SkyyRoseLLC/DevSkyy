@@ -38,7 +38,8 @@ from skyyrose.core.asset_manifest import (  # noqa: E402
     hash_if_present,
     to_repo_relative,
 )
-from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
+from skyyrose.core.catalog_loader import CATALOG_CSV, read_catalog_rows  # noqa: E402
+from skyyrose.core.dossier_loader import RENDER_CORRECTIONS_PATH  # noqa: E402
 from skyyrose.core.hashing import sha256_of_file  # noqa: E402
 
 
@@ -93,6 +94,12 @@ def build() -> AssetManifest:
         dossier_rec = _record("dossier", dossier_index.get(sku))
         if dossier_rec is not None:
             records.append(dossier_rec)
+        # The amendment feed is a binding physical-product source, not a
+        # sidecar. Pin it per SKU so every contract verifies the exact rules
+        # in force when this manifest was generated.
+        corrections_rec = _record("founder-corrections", RENDER_CORRECTIONS_PATH)
+        if corrections_rec is not None:
+            records.append(corrections_rec)
         manifest.skus[sku] = SkuAssets(
             sku=sku,
             name=info["name"],

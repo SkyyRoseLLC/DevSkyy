@@ -6,15 +6,16 @@ preorder: true
 logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/nfl-authentic-collection-patch.md
-reference_image: assets/products/references/br-008-design-front.jpeg
+reference_image: assets/products/references/br-008-founder-front-sot.png
 ---
 
 # BLACK is Beautiful Jersey Series — 1. SF Inspired (Football)
 
 **Garment type lock:** Authentic-style football jersey — V-neck collar opening
 with **black-and-white horizontal striped neckband**, short sleeves with a
-**white triple-stripe band (three thin horizontal white stripes)** at each
-cuff, straight even hem (no drop-tail), no laces, no shoulder-armor seam.
+**white triple-stripe band (three thin horizontal white stripes, each edged
+in black)** at each cuff, straight even hem (no drop-tail), no laces, no
+shoulder-armor seam.
 Solid **bright red** base fabric (San Francisco red colorway). Mid-weight
 knit jersey fabric. Pullover construction — NO buttons, NO front placket. NOT
 a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a baseball jersey.
@@ -26,7 +27,8 @@ exists yet.
 > Logo art canonical references:
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - NFL Authentic Collection patch: `data/brand-logos/nfl-authentic-collection-patch.md`
-> - Product design render:          `assets/products/references/br-008-design-front.jpeg`
+> - Founder front SOT:              `assets/products/references/br-008-founder-front-sot.png`
+> - Founder back SOT:               `assets/products/references/br-008-founder-back-sot.png`
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
@@ -38,16 +40,14 @@ exists yet.
 > stems, NO white-and-blue clouds.
 
 ### Front
-- **front-chest** (large, ~10in tall, vertically centered between the
-  neckband and the lower belly): The number **"80"** rendered as
-  large athletic-block digits — each digit has a **white outline edge** with
-  the canonical Black Rose three-rose-cluster art (in tonal greyscale)
-  filling the interior of both the "8" and the "0". The rose composition is
-  preserved (three roses + thorny vines + cloud at base) but rendered in
-  black/white/grey only. **Technique:** sublimated. **Color:** white outline
-  + greyscale rose-cluster fill on red ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, near the bottom
-  hem on the wearer's left hip): The NFL Authentic Collection patch (yellow
+- **front-chest** (large athletic-block **"80"**, vertically centered between
+  the neckband and the lower belly): Founder front SOT is **80**. The **"8"**
+  has a white outline edge and canonical Black Rose three-rose-cluster art in
+  tonal greyscale filling its interior; the adjacent **"0"** is plain white
+  with a black outline and contains no rose art. **Technique:** sublimated.
+  **Color:** white/black outlines; greyscale rose-cluster fill in the 8 only.
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in long**, near
+  the bottom hem on the wearer's left hip): The NFL Authentic Collection patch (yellow
   field + navy "BLACK ROSE / COLLECTION" + NFL shield + white "AUTHENTIC"
   banner + red diamond divider + greyscale rose-cluster + "Property Of /
   Black Is Beautiful Series / Skyy Rose Co" footer — see patch reference).
@@ -57,13 +57,15 @@ exists yet.
 - **back-yoke / upper-back** (across the upper-back, arched, ~9–10in wide):
   The phrase **"BLACK IS BEAUTIFUL"** as authentic tackle-twill lettering,
   baseball-script style with subtle outlines, arched across the upper-back.
-  Rendered in **black twill** on the red body. **Technique:** tackle-twill.
-  **Color:** black twill letters on red ground (no contrast satin-stitch edge).
-- **back-center** (large, ~12in tall, vertically centered between the
-  upper-back wordmark and the lower hem): The number **"80"** rendered
-  identically to the front — white outline + greyscale rose-cluster fill.
-  **Technique:** sublimated. **Color:** white outline + greyscale
-  rose-cluster fill.
+  Rendered in **black twill with a white border** on the red body.
+  **Technique:** tackle-twill. **Color:** black twill letters with a white
+  border on red ground.
+- **back-center** (large athletic-block **"80"**, vertically centered between
+  the upper-back wordmark and the lower hem): Founder back SOT is **80**. The
+  first **"8"** is plain white with a black outline and contains no rose art;
+  the adjacent **"0"** has a white outline and canonical Black Rose
+  three-rose-cluster fill in tonal greyscale. **Technique:** sublimated.
+  **Color:** white/black outlines; greyscale rose-cluster fill in the 0 only.
 
 ### Sleeves / Collar / Hem / Other
 - **collar / V-neck binding**: Black-and-white horizontal striped neckband
@@ -71,9 +73,9 @@ exists yet.
   opening is shaped within this striped band. **Technique:** stitched.
   **Color:** alternating black + white.
 - **left-cuff / right-cuff binding**: White triple-stripe (three thin
-  horizontal white stripes spaced evenly) on each short sleeve cuff against
-  the red body fabric. **Technique:** stitched. **Color:** white stripes on
-  red.
+  horizontal white stripes spaced evenly), **each with black border edging**,
+  on each short sleeve cuff against the red body fabric. **Technique:**
+  stitched. **Color:** white stripes with black borders on red.
 - **collar-inside** (~1.75in × 0.75in): Branded woven size tag (universal
   SkyyRose product rule). **Technique:** woven-label.
 
@@ -84,13 +86,16 @@ exists yet.
   BEAUTIFUL" wordmark.
 - NO numbers on sleeves — the sleeves are clean (only the white triple-stripe
   cuff treatment, no shoulder digit, no sleeve number).
-- NO multi-color rendering of the rose-cluster fill inside the "80" — it is
+- NO multi-color rendering of the rose-cluster fill inside the front "8" or
+  back "0" — it is
   greyscale only. NO red roses, NO kelly-green stems, NO white-and-blue
   cloud color.
-- NO solid-color "80" digits — the digits are NOT solid white; they have
-  a white outline edge with rose-cluster art FILLING the interior.
-- NO contrast satin-stitch edge around the "BLACK IS BEAUTIFUL" wordmark —
-  it is clean black-twill-on-red.
+- NO single-digit construction: both front and back must read "80".
+- NO rose fill in the front "0" or back "8". NO plain-white front "8" or
+  back "0"; the rose-filled digit must follow the founder front/back SOT.
+- NO missing white border around the black "BLACK IS BEAUTIFUL" wordmark.
+- NO unedged white sleeve stripes: every white stripe must have black border
+  edging.
 - NO buttons, NO placket, NO V-neck contrast piping other than the striped
   neckband — this is a pullover construction.
 - NO MLB Authentic Collection patch (that's the baseball series). NO NBA
@@ -100,8 +105,8 @@ exists yet.
 - NO SR monogram on the back-neck — this colorway has no separate back-neck
   embroidered mark.
 - NO standalone Black Rose rose-cluster on the back-center other than as
-  digit fill — the rose-cluster appears ONLY inside the "80" digits, not as
-  a separate composition.
+  digit fill — the rose-cluster appears ONLY inside the front "8" and back
+  "0", not as a separate composition.
 - NO sleeve patches (no shoulder NFL patch, no league patch on the
   shoulders).
 - NO sublimated panels other than the rose-fill inside the digits and the
@@ -112,9 +117,9 @@ exists yet.
 ## Scene direction
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing the
-  large rose-fill "80" front-chest, the striped neckband, the white-stripe
-  cuffs, and the lower-left NFL patch. For back: back view straight-on
-  showing the "BLACK IS BEAUTIFUL" tackle-twill arch and the matching
-  rose-fill "80".
+  single large rose-fill "8" front-chest, the striped neckband, the
+  black-edged white-stripe cuffs, and the 3in × 4in lower-left NFL patch. For
+  back: back view straight-on showing the black-with-white-border "BLACK IS
+  BEAUTIFUL" tackle-twill arch and the single rose-fill "0".
 - **Setting:** Pure white studio backdrop, soft directional studio lighting
   from front-left, subtle natural drop shadow on the floor.

@@ -7,7 +7,7 @@ logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/hockey-championship-patch.md
   - data/brand-logos/sr-monogram.md
-reference_image: assets/products/references/br-011-design-front.jpeg
+reference_image: assets/products/references/br-011-founder-hockey-front-sot.png
 ---
 
 # BLACK is Beautiful Jersey Series — 4. The Rose (Hockey)
@@ -28,7 +28,8 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - Hockey Championship patch:     `data/brand-logos/hockey-championship-patch.md`
 > - SR monogram (back-neck):       `data/brand-logos/sr-monogram.md`
-> - Product design render:          `assets/products/references/br-011-design-front.jpeg`
+> - Founder front SOT:              `assets/products/references/br-011-founder-hockey-front-sot.png`
+> - Founder back SOT:               `assets/products/references/br-011-founder-hockey-back-sot.png`
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
@@ -55,10 +56,11 @@ tank. NOT a baseball jersey. NOT a football jersey. NOT a sherpa jacket
   the hood opening at the V): A small black-and-white hockey-style league
   emblem (a stylized shield with hockey stick + puck details, woven flat).
   **Technique:** woven-label. **Color:** black + white.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, against the
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in high**, against the
   striped hem band): The Hockey Championship patch (greyscale/silver palette
   patch — see hockey-championship-patch reference). Sewn onto the lower-left
-  hip. **Technique:** embroidered-patch.
+  hip. **Technique:** embroidered-patch. This is the required footprint for
+  every Jersey Series sport patch.
 
 ### Back
 - **back-neck** (small, ~2in wide): The SR monogram embroidered directly

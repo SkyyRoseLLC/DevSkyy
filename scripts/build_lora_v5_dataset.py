@@ -7,9 +7,10 @@ After the April 2026 SKU consolidation, lh-002/003/004 triggers trained
 on completely wrong garment types. sg-004/sg-d01/sg-d03/sg-d04 were retired
 SKUs that had no business being in the training set.
 
-v5 Solution: SKU list is read directly from skyyrose-catalog.csv (the single
-source of truth). Only manually-authored sections below are:
-  - CAPTION_OVERRIDES: detailed garment descriptions per SKU
+v5 Solution: SKU identity is read from the commerce catalog, while every
+training caption and input gate reads the shared dossier-first product asset
+contract. The CSV is not a garment specification. Only manually-authored
+sections below are:
   - TECHFLAT_OVERRIDES: when techflat filename doesn't follow {sku}-techflat.jpeg
   - MODEL_SHOTS: Gemini-verified model shot filenames per SKU
 
@@ -22,14 +23,20 @@ Usage:
 """
 
 import argparse
-import csv
 import json
 import shutil
+import sys
 from pathlib import Path
 
 from PIL import Image
 
 PROJECT_ROOT = Path(__file__).parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from skyyrose.core.catalog_loader import read_catalog_rows
+from skyyrose.core.product_asset_contract import ProductAssetContract, load_product_asset_contract
+
 CATALOG_CSV = (
     PROJECT_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "skyyrose-catalog.csv"
 )
@@ -47,19 +54,18 @@ def sku_to_trigger(sku: str) -> str:
 
 
 def read_catalog() -> list[dict]:
-    """Return all published, non-retired SKUs from the canonical CSV."""
-    rows = []
-    with open(CATALOG_CSV, newline="", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            if row.get("published", "").strip().lower() in ("true", "1", "yes"):
-                rows.append(row)
-    return rows
+    """Return published SKU identities from the shared commerce reader."""
+    return [
+        row
+        for row in read_catalog_rows()
+        if row.get("published", "").strip().lower() in ("true", "1", "yes")
+    ]
 
 
 # ─── Caption Overrides ────────────────────────────────────────────────────────
-# Manually maintained. Update when product descriptions change.
-# Do NOT include the trigger prefix — it is prepended at build time.
-# SKUs omitted here get a fallback caption derived from the CSV name + collection.
+# Legacy migration map retained only for review history. It is deliberately
+# not consumed by the builder: product training text is dossier-first so an
+# old hand-written sentence cannot override a real garment correction.
 
 CAPTION_OVERRIDES: dict[str, str] = {
     # BLACK ROSE COLLECTION
@@ -104,8 +110,10 @@ CAPTION_OVERRIDES: dict[str, str] = {
     ),
     "br-008": (
         "football jersey SF Inspired BLACK IS BEAUTIFUL series number 1, "
-        "SF 49ers colorway with rose fill pattern in numbers, V-neck collar, "
-        "short sleeves with stripe details, back nameplate reads BLACK IS BEAUTIFUL, "
+        "bright red colorway with 80 on both sides: front rose-filled 8 plus plain-white 0, "
+        "back plain-white 8 plus rose-filled 0, "
+        "black-and-white V-neck collar, three white sleeve stripes each edged in black, "
+        "upper-back BLACK IS BEAUTIFUL in black with a white border, 3 by 4 inch wearer-left hem patch, "
         "Black Rose Collection by SkyyRose, luxury streetwear football jersey"
     ),
     "br-009": (
@@ -340,10 +348,21 @@ def write_caption(image_stem: str, caption: str) -> None:
     (CAPTIONS_DIR / f"{image_stem}.txt").write_text(caption, encoding="utf-8")
 
 
-def build_caption(sku: str, csv_name: str, collection: str, suffix: str = "") -> str:
-    trigger = sku_to_trigger(sku)
-    body = CAPTION_OVERRIDES.get(sku) or f"{csv_name}, {collection} Collection by SkyyRose"
-    return f"{trigger} {body}{suffix}"
+def build_caption(contract: ProductAssetContract, suffix: str = "") -> str:
+    """Build a training caption from the same physical contract as renders."""
+    dossier = contract.render.dossier
+    physical_spec = "\n\n".join(
+        section
+        for section in (
+            dossier.garment_type_lock.strip(),
+            dossier.branding_block.strip(),
+            dossier.negative_block.strip(),
+            "\n".join(contract.render.founder_corrections).strip(),
+        )
+        if section
+    )
+    trigger = sku_to_trigger(contract.sku)
+    return f"{trigger}\n\nCANONICAL PRODUCT CONTRACT:\n{physical_spec}{suffix}"
 
 
 def main() -> int:
@@ -390,6 +409,13 @@ def main() -> int:
         print(f"\n--- {sku}: {csv_name} ---")
         print(f"    trigger: {trigger}")
         product_images = 0
+        try:
+            contract = load_product_asset_contract(sku)
+        except Exception as exc:
+            # Fail before copying any training image or writing a caption.
+            print(f"  ! BLOCKED product asset contract: {exc}")
+            missing.append(f"{sku}: product asset contract blocked ({exc})")
+            continue
 
         # 1. Techflat(s) — primary training images
         techflat_files = TECHFLAT_OVERRIDES.get(sku) or [f"{sku}-techflat.jpeg"]
@@ -402,12 +428,7 @@ def main() -> int:
 
             stem = f"{sku}-{Path(tf_file).stem}" if len(techflat_files) > 1 else f"{sku}-techflat"
             dst = f"{stem}.jpg"
-            caption = build_caption(
-                sku,
-                csv_name,
-                collection,
-                suffix=", technical flat lay illustration, product design reference",
-            )
+            caption = build_caption(contract, suffix="\n\nVIEW: technical flat lay product design reference")
 
             if not args.dry_run:
                 if copy_and_prepare_image(src, dst):
@@ -438,12 +459,7 @@ def main() -> int:
 
             stem = f"{sku}-{Path(shot_file).stem}"
             dst = f"{stem}.jpg"
-            caption = build_caption(
-                sku,
-                csv_name,
-                collection,
-                suffix=", fashion model wearing the garment, full body shot",
-            )
+            caption = build_caption(contract, suffix="\n\nVIEW: fashion model wearing the garment, full body shot")
 
             if not args.dry_run:
                 if copy_and_prepare_image(src, dst):
@@ -477,7 +493,7 @@ def main() -> int:
         # dataset_info.json
         info = {
             "version": "v5",
-            "source": "skyyrose-catalog.csv",
+            "source": "dossier-first product asset contract (catalog identity only)",
             "total_images": total_images,
             "total_products": total_products,
             "trigger_format": "skyyrose_{sku_no_hyphens}",

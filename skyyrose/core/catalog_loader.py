@@ -1,4 +1,4 @@
-"""Canonical catalog loader — shared by nano_banana and elite_studio.
+"""Canonical commerce-catalog loader — shared by nano_banana and elite_studio.
 
 Single import surface for:
     CATALOG_CSV        — Path to wordpress-theme/.../data/skyyrose-catalog.csv
@@ -9,8 +9,12 @@ Single import surface for:
     PRODUCT_STATUS     — Valid status enum strings
 
 Both nano_banana/catalog.py and skyyrose/elite_studio/catalog.py build
-their higher-level types on top of this module. The PHP loader uses the
-same canonical CSV but cannot share this code — keep the schema and
+their higher-level types on top of this module. The CSV is authoritative for
+SKU identity, commerce state, collection routing, and sellable metadata. It
+is *not* the authority for a garment's physical construction, graphics,
+wording, placement, or material; renderers must load the required dossier and
+founder corrections through ``get_product_render_contract``. The PHP loader
+uses the same commerce CSV but cannot share this code — keep the schema and
 status-derivation rules documented in both places when they change.
 """
 
@@ -67,7 +71,7 @@ def int_col(row: dict, key: str) -> int | None:
 
 
 def get_product_with_dossier(sku: str) -> dict:
-    """Return the canonical CSV row for `sku` merged with its parsed dossier.
+    """Return the commerce row for `sku` merged with its physical dossier.
 
     Hard-fails (raises ``DossierMissingError``) if the SKU has no dossier.
     The thin CSV `branding_spec` column is NOT a fallback.

@@ -25,13 +25,14 @@ reference_image: assets/products/references/br-003-baseball-classic-techflat.jpe
 > `assets/products/references/br-003-baseball-classic-techflat.jpeg`.
 
 ### Front
-- **front-chest** (large, arched, ~9in wide): The phrase **"BLACK IS BEAUTIFUL"**
+- **front-chest** (large, arched, spanning **75–80% of the usable front-panel
+  width**): The phrase **"BLACK IS BEAUTIFUL"**
   as authentic tackle-twill lettering — pre-cut white fabric letters appliquéd
   onto the black jersey body in a baseball-script style with a subtle classic
   outline, arched across the upper-front-chest. **Technique:** tackle-twill.
   **Color:** white twill letters (no contrast satin-stitch edge — clean
   white-on-black).
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in, near the bottom
+- **front-left-hem / front-belly-lower-left** (**3in wide × 4in high**, near the bottom
   hem on the wearer's left hip): The Black Rose Authentic Collection patch —
   the rectangular yellow-and-white multi-element patch defined in the patch
   reference file (BLACK ROSE / MLB-style batter silhouette / AUTHENTIC banner /

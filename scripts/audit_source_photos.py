@@ -80,7 +80,6 @@ _ANGLE_RE = re.compile(
 )
 
 _GARMENT_KEYWORDS: list[tuple[str, str]] = [
-    ("crewneck", "crewneck"),
     ("hoodie", "hoodie"),
     ("sherpa jacket", "jacket"),
     ("jacket", "jacket"),
@@ -93,7 +92,9 @@ _GARMENT_KEYWORDS: list[tuple[str, str]] = [
     ("set", "set"),
     ("shorts", "shorts"),
     ("joggers", "joggers"),
+    ("jogger", "joggers"),
     ("pants", "joggers"),
+    ("crewneck", "crewneck"),
     ("tee", "tee"),
     ("t-shirt", "tee"),
     ("hat", "accessory"),
@@ -106,10 +107,26 @@ _GARMENT_KEYWORDS: list[tuple[str, str]] = [
 
 def _infer_garment_type(garment_lock: str, name: str) -> str:
     """Best-effort garment type from dossier garment_type_lock + product name."""
-    haystack = f"{garment_lock} {name}".lower()
-    for needle, gtype in _GARMENT_KEYWORDS:
-        if needle in haystack:
-            return gtype
+    # A garment lock names the intended garment first, then rejects nearby
+    # silhouettes (for example, "NOT a hoodie").  Do not classify from a
+    # rejected silhouette: that would give a football jersey hoodie coverage
+    # requirements and route the wrong photo-detail gate to production.
+    positive_lock = re.sub(
+        r"\b(?:not|no)\s+(?:an?\s+)?[a-z-]+(?:\s+[a-z-]+)?",
+        "",
+        garment_lock,
+        flags=re.IGNORECASE,
+    )
+    # The leading silhouette clause is authoritative. Later prose often
+    # compares a product to another garment (e.g. a hoodie "distinct from the
+    # matching Crewneck/Joggers set"), and using the whole paragraph first
+    # previously misclassified real products. Only use that remaining prose as
+    # a fallback when the explicit leading clause and product name are silent.
+    lead = positive_lock.split("—", 1)[0].split(".", 1)[0].lower()
+    for haystack in (lead, name.lower(), positive_lock.lower()):
+        for needle, gtype in _GARMENT_KEYWORDS:
+            if needle in haystack:
+                return gtype
     return "accessory"  # safest default — minimal angle requirements
 
 

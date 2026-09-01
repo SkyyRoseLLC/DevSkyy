@@ -39,11 +39,13 @@ from nano_banana.vision_context import VisionContext  # noqa: E402
 
 from skyyrose.core.dossier_loader import (  # noqa: E402
     Dossier,
-    get_product_with_dossier,
 )
+from skyyrose.core.product_asset_contract import load_product_asset_contract  # noqa: E402
 
 
-def build_judge_spec_from_dossier(dossier: Dossier) -> str:
+def build_judge_spec_from_dossier(
+    dossier: Dossier, founder_corrections: tuple[str, ...] = ()
+) -> str:
     """Format a Dossier object into a multi-section spec string.
 
     Layout:
@@ -70,6 +72,12 @@ def build_judge_spec_from_dossier(dossier: Dossier) -> str:
     if dossier.negative_block:
         parts.append(
             f"NEGATIVE — what is NOT on this product (DO NOT render):\n{dossier.negative_block}"
+        )
+
+    if founder_corrections:
+        parts.append(
+            "FOUNDER CORRECTIONS — newer than conflicting cached analysis or catalog copy:\n"
+            + "\n".join(founder_corrections)
         )
 
     if dossier.scene_pose or dossier.scene_setting:
@@ -107,15 +115,15 @@ def build_dna_from_sku(sku: str) -> VisionContext:
     `dna.get("garment_type")` continues working — the lookup falls
     through to `catalog` (CSV) and then to `inferred` (vision).
     """
-    bundle = get_product_with_dossier(sku)
-    dossier: Dossier = bundle["_dossier"]
-    spec = build_judge_spec_from_dossier(dossier)
-    catalog_fields = {k: v for k, v in bundle.items() if k != "_dossier"}
+    contract = load_product_asset_contract(sku)
+    dossier = contract.render.dossier
+    spec = build_judge_spec_from_dossier(dossier, contract.render.founder_corrections)
     return VisionContext(
         inferred={},
-        catalog=catalog_fields,
+        catalog=contract.product,
         spec=spec,
         dossier=dossier,
+        founder_corrections=contract.render.founder_corrections,
     )
 
 
@@ -163,13 +171,19 @@ def augment_prompt_with_dossier_positives(prompt: str, dna: VisionContext | dict
         return prompt
     type_lock = (getattr(dossier, "garment_type_lock", "") or "").strip()
     branding = (getattr(dossier, "branding_block", "") or "").strip()
-    if not type_lock and not branding:
+    corrections = tuple(dna.get("_founder_corrections", ()) or ())
+    if not type_lock and not branding and not corrections:
         return prompt
     sections: list[str] = []
     if type_lock:
         sections.append(f"GARMENT TYPE (must match exactly):\n{type_lock}")
     if branding:
         sections.append(f"BRANDING — exactly what to render:\n{branding}")
+    if corrections:
+        sections.append(
+            "FOUNDER CORRECTIONS — binding newer product amendments:\n"
+            + "\n".join(str(correction) for correction in corrections)
+        )
     canonical = (
         "CANONICAL DESIGN SPEC (authored truth — overrides any conflicting inferred description below):\n\n"
         + "\n\n".join(sections)
@@ -202,9 +216,18 @@ def augment_prompt_with_dossier_negatives(prompt: str, dna: VisionContext | dict
     if not dossier:
         return prompt
     negative_block = getattr(dossier, "negative_block", "") or ""
-    if not negative_block.strip():
+    corrections = tuple(dna.get("_founder_corrections", ()) or ())
+    if not negative_block.strip() and not corrections:
         return prompt
-    return f"{prompt}\n\nDO NOT RENDER (authored canonical negatives):\n{negative_block}"
+    additions: list[str] = []
+    if negative_block.strip():
+        additions.append(f"DO NOT RENDER (authored canonical negatives):\n{negative_block}")
+    if corrections:
+        additions.append(
+            "FOUNDER CORRECTIONS — enforce on this derivative:\n"
+            + "\n".join(str(correction) for correction in corrections)
+        )
+    return f"{prompt}\n\n" + "\n\n".join(additions)
 
 
 __all__ = [

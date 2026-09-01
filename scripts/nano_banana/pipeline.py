@@ -162,16 +162,26 @@ class ProductionPipeline:
         log.info("PIPELINE: %s — %s (%s)", sku, name, view)
         log.info("=" * 60)
 
-        # ── Step 1: DESCRIBE ─────────────────────────────────────────
-        vision_desc = self._get_or_cache_vision(product, source_path)
-
-        # Inject canonical dossier spec for the tournament. Routing and
-        # prompt-builder code still use inferred fields. Soft-fail when
-        # a dossier is missing so SKUs mid-authoring still render.
+        # Load the fail-closed product asset contract before any provider
+        # call. Routing may still consult inferred image traits, but the
+        # physical product specification and source provenance must be
+        # dossier-first and hash-pinned; a SKU mid-authoring cannot create a
+        # derivative from cached vision or a thin catalog description.
         try:
             from nano_banana.spec_builder import build_dna_from_sku
 
             canonical = build_dna_from_sku(sku)
+        except Exception as exc:
+            message = f"Product asset contract blocked {sku}: {exc}"
+            log.error("CONTRACT: %s", message)
+            result.issues.append(message)
+            return result
+
+        # ── Step 1: DESCRIBE ─────────────────────────────────────────
+        # Only verified source inputs may incur vision-provider work or enter
+        # the persistent cache.
+        vision_desc = self._get_or_cache_vision(product, source_path)
+        try:
             # Attribute writes on VisionContext — typed contract instead
             # of the previous string-keyed mutation. Spec and dossier are
             # always populated together (they come from the same load),
@@ -183,12 +193,11 @@ class ProductionPipeline:
                 sku,
                 len(canonical.spec) if canonical.spec else 0,
             )
-        except Exception as exc:
-            log.warning(
-                "DOSSIER: no canonical spec for %s — falling back to inferred DNA. Reason: %s",
-                sku,
-                exc,
-            )
+        except Exception as exc:  # defensive: the verified context must be attachable
+            message = f"Product asset contract context failed for {sku}: {exc}"
+            log.error("CONTRACT: %s", message)
+            result.issues.append(message)
+            return result
 
         # Store flat-dict view for JSON serialization & downstream readers.
         # The Dossier object is intentionally dropped here (large, not

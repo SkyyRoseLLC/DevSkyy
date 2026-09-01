@@ -159,6 +159,35 @@ def _load_catalog() -> dict:
     return catalog
 
 
+def _load_product_asset_contract(sku):
+    """Load the sole physical-product contract for a legacy VTON render.
+
+    This compatibility pipeline may retain CSV-only routing fields, but it
+    must never make an image from the old garment-analysis cache or a caller's
+    vision guess when a dossier-plus-hash-verified source contract is absent.
+    """
+    if str(PROJECT_ROOT) not in sys.path:
+        sys.path.insert(0, str(PROJECT_ROOT))
+    from skyyrose.core.product_asset_contract import load_product_asset_contract
+
+    return load_product_asset_contract(sku)
+
+
+def _load_product_asset_contract_text(sku: str) -> str:
+    """Compatibility wrapper for prompt call sites."""
+    return _load_product_asset_contract(sku).prompt_text()
+
+
+def _verified_contract_source(contract, role: str = "garment") -> Path:
+    """Return a hash-pinned source from the shared contract, never a local guess."""
+    for asset in contract.assets.assets:
+        if asset.role == role and asset.sha256:
+            source = PROJECT_ROOT / asset.path
+            if source.is_file():
+                return source
+    raise ValueError(f"{contract.sku}: no hash-pinned {role} input is available")
+
+
 PRODUCT_CATALOG = _load_catalog()
 
 # Derived sets — no manual maintenance required; driven by CSV columns.
@@ -252,10 +281,11 @@ LOGO_TREATMENTS = {
         "with thorned heart above); mesh side panels: embroidered 'Love Hurts' text and rose marks"
     ),
     "br-008": (
-        "football jersey #80 — jersey-style stitched numbers, ~8 in tall; "
-        "FRONT: digit '8' has rose-gold rose fill inside the numeral, digit '0' is plain white; "
-        "BACK: reversed — digit '8' is plain white, digit '0' has rose-gold rose fill; "
-        "bottom-left corner: custom circular football patch"
+        "bright-red football jersey with a black-and-white V-neck; FRONT: 80, with a rose-filled "
+        "'8' and plain-white '0'; BACK: 80, with a plain-white '8' and rose-filled '0'; "
+        "upper-back BLACK IS BEAUTIFUL is black with a white border; "
+        "three white sleeve stripes, each edged in black; wearer-left lower-front 3 in wide by "
+        "4 in long NFL Authentic Collection patch"
     ),
     "br-009": (
         "football jersey #32 — jersey-style stitched numbers, ~8 in tall, white with black border; "
@@ -1623,12 +1653,23 @@ def process_product(
 
     engine_label = "GPT-Image-1.5" if use_gpt_image else "FLUX.2" if use_flux else "Gemini"
 
-    # Build analysis-enhanced prompt detail.
-    # Priority: passed-in analysis dict > garment-analysis.json cache > nothing.
-    analysis_detail = ""
+    # The physical product contract must lead every creation.  Vision analysis
+    # is useful only as non-authoritative visual context; it cannot replace a
+    # missing dossier or a source whose manifest hash drifted.
+    try:
+        contract = _load_product_asset_contract(sku)
+        src = _verified_contract_source(contract)
+        analysis_detail = contract.prompt_text()
+        log.info("Product asset contract verified for %s", sku)
+    except Exception as exc:
+        log.error("SKIP %s: product asset contract blocked creation: %s", sku, exc)
+        results["status"] = "product_asset_contract_blocked"
+        results["reason"] = str(exc)
+        return results
+
     if analysis:
-        analysis_detail = analysis_to_prompt_detail(analysis)
-        log.info("Vision analysis (passed-in) available for %s — enhancing prompts", sku)
+        analysis_detail += "\n\nNON-AUTHORITATIVE VISION CONTEXT:\n" + analysis_to_prompt_detail(analysis)
+        log.info("Vision analysis available for %s as secondary context", sku)
     else:
         # Auto-load from garment-analysis.json (written by vision_batch.py)
         ga_path = PROJECT_ROOT / "skyyrose" / "assets" / "data" / "garment-analysis.json"
@@ -1637,8 +1678,11 @@ def process_product(
                 ga_data = json.loads(ga_path.read_text(encoding="utf-8"))
                 ga_entry = ga_data.get("products", {}).get(sku)
                 if ga_entry and ga_entry.get("garmentAnalysis"):
-                    analysis_detail = f"PRE-VISION SPEC: {ga_entry['garmentAnalysis'][:600]}"
-                    log.info("Loaded garment-analysis.json spec for %s", sku)
+                    analysis_detail += (
+                        "\n\nNON-AUTHORITATIVE CACHED VISION CONTEXT:\n"
+                        f"{ga_entry['garmentAnalysis'][:600]}"
+                    )
+                    log.info("Loaded garment-analysis.json as secondary context for %s", sku)
             except Exception as exc:
                 log.debug("Could not load garment-analysis.json for %s: %s", sku, exc)
     log.info("Engine: %s for %s", engine_label, sku)
@@ -1657,7 +1701,10 @@ def process_product(
         view_src = src
         has_back_ref = False  # True only when we have a dedicated back reference image
         if view == "back":
-            back_src = get_back_source(sku, PRODUCT_CATALOG.get(sku, {}))
+            try:
+                back_src = _verified_contract_source(contract, "garment-back")
+            except ValueError:
+                back_src = None
             if back_src:
                 view_src = back_src
                 has_back_ref = True
@@ -1911,6 +1958,15 @@ def cmd_composite(args):
         name = product["name"]
         source = product["source_image"]
 
+        try:
+            contract = _load_product_asset_contract(sku)
+            source = _verified_contract_source(contract)
+        except Exception as exc:
+            log.error("[%d/%d] BLOCKED %s: product asset contract: %s", i, len(products), sku, exc)
+            all_results.append({"sku": sku, "name": name, "status": "product_asset_contract_blocked", "reason": str(exc)})
+            skip_count += 1
+            continue
+
         if not source:
             log.warning("[%d/%d] SKIP %s: no source image", i, len(products), sku)
             all_results.append({"sku": sku, "name": name, "status": "no_source"})
@@ -1948,7 +2004,11 @@ def cmd_composite(args):
                 view,
             )
 
-            prompt = composite_prompt(name, sku, view)
+            prompt = (
+                contract.prompt_text()
+                + "\n\nCOMPOSITE TASK:\n"
+                + composite_prompt(name, sku, view)
+            )
             image_bytes = None
 
             for attempt in range(1, MAX_RETRIES + 1):
