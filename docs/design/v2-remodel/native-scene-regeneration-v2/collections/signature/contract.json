@@ -1,0 +1,15 @@
+{
+  "schema": "fashion-theme-team-collection-handoff.v1",
+  "collection_id": "signature",
+  "candidate_only": true,
+  "stable_ids": {"collection":"signature","scenes":["SIG-COMMERCE-1","SIG-COMMERCE-2","SIG-COMMERCE-3"],"ctas":["Complete the Look","Complete the Look","Explore Pre-Orders"]},
+  "source_freshness_lock": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2",
+  "scene_cards": [
+    {"id":"SIG-COMMERCE-1","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/sig-commerce-1.json","cast":["sg-009","sg-007"],"cta":"Complete the Look"},
+    {"id":"SIG-COMMERCE-2","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/sig-commerce-2.json","cast":["sg-013","sg-014","sg-006"],"cta":"Complete the Look"},
+    {"id":"SIG-COMMERCE-3","status":"BLOCKED_PRE_GENERATION","contract":"../../scene-contracts/sig-commerce-3.json","cast":["sg-005","sg-001","sg-002","sg-003","sg-015"],"cta":"Explore Pre-Orders"}
+  ],
+  "founder_approval_required": true,
+  "wiring_allowed": false,
+  "deployment_allowed": false
+}

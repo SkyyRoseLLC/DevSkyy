@@ -1,0 +1,212 @@
+{
+  "schema": "product-fidelity-preflight-receipt.v1",
+  "status": "BLOCKED",
+  "operation": "native_collection_scene",
+  "target": {
+    "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-015-onmodel.webp",
+    "metadata": {
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_fraction": 0.0,
+      "opaque_fraction": 1.0
+    }
+  },
+  "references": [
+    {
+      "index": 0,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-onmodel.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "sg-005",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-005-bay-bridge-shirt.jpeg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-005",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 886,
+        "height": 886,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 2,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-001-bay-bridge-shorts.jpeg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-001",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 886,
+        "height": 886,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-002-stay-golden-shirt.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "sg-002",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 886,
+        "height": 886,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 4,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-002-stay-golden-shirt.jpeg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-002",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 886,
+        "height": 886,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 5,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-003-stay-golden-shorts.jpeg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-003",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 886,
+        "height": 886,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 6,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-015-onmodel.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "sg-015",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 7,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/sg-015-windbreaker-set.jpg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "sg-015",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 864,
+        "height": 1200,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 8,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/signature-sr-rose-graphic-founder-supplied-v1.png",
+      "role": "exact_logo_or_patch_authority",
+      "view": "scene",
+      "sku": "signature-sr-rose-graphic",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_fraction": 0.83612442,
+        "opaque_fraction": 0.12641907
+      }
+    },
+    {
+      "index": 9,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+      "role": "scene_authority",
+      "view": "scene",
+      "sku": "signature-hero",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    }
+  ],
+  "findings": [
+    {
+      "level": "error",
+      "code": "GARMENT_MATTE_REQUIRED",
+      "message": "Exact native scenes require a protected garment matte for: sg-001, sg-002, sg-003, sg-005, sg-015"
+    },
+    {
+      "level": "error",
+      "code": "GARMENT_PLACEMENTS_REQUIRED",
+      "message": "Every protected garment matte needs an exact protected_placements entry"
+    }
+  ]
+}

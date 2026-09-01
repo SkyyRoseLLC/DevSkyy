@@ -1,0 +1,68 @@
+{
+  "schema": "product-fidelity-preflight-receipt.v1",
+  "status": "BLOCKED",
+  "operation": "native_collection_scene",
+  "target": {
+    "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-onmodel.webp",
+    "metadata": {
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_fraction": 0.0,
+      "opaque_fraction": 1.0
+    }
+  },
+  "references": [
+    {
+      "index": 0,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-onmodel.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "lh-005",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/lh-005-fannie.jpeg",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "lh-005",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 886,
+        "height": 886,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    }
+  ],
+  "findings": [
+    {
+      "level": "error",
+      "code": "GARMENT_MATTE_REQUIRED",
+      "message": "Exact native scenes require a protected garment matte for: lh-005"
+    },
+    {
+      "level": "error",
+      "code": "GARMENT_PLACEMENTS_REQUIRED",
+      "message": "Every protected garment matte needs an exact protected_placements entry"
+    }
+  ]
+}

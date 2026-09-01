@@ -1,0 +1,37 @@
+{
+  "schema": "skyyrose.native-scene-handoff-manifest.v1",
+  "status": "BLOCKED_PRE_GENERATION",
+  "candidate_images_present": false,
+  "generated_candidate_hashes": [],
+  "source_freshness_lock": {
+    "path": "data/product-sot.json",
+    "sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"
+  },
+  "artifact_hashes": {
+    "README.md": "2e6019bc666725d817444a63d5b2c2418dcd1dc05af62f8fcc50366eccc6d661",
+    "phase-ledger.json": "b5ce290362c82c35b453c6b618fa3b635699dab02037abefcfb423f32e913547",
+    "source-ledger.json": "f387b362d695c2b88d01ae7d26600a77ff53c6e6901bff7624911d1489b4e646",
+    "model-capability-receipt.json": "0ffa5512c9af796dcf690c2dd57cc1043577e6ed29b1def358f2293b98bc3c8b",
+    "scene-contracts/br-commerce-1.json": "64d54572dc58719351f8eba3ec57c2deee49e4dfc6f7fa7bdb2ca52349f22d92",
+    "scene-contracts/br-commerce-2.json": "585d13e6da7457ec2cd384688df2eb2218f4bc6c80c3c8148b7853094ca1a6f4",
+    "scene-contracts/lh-commerce-2.json": "80f5f38dddf2526b7dcab8744bc0f6641c775b58a273415fb7b82e1342058576",
+    "scene-contracts/lh-commerce-3.json": "e695fe8b734393da480a35bce2638250fe2508dc7bc6bfd39d00c5b54ad8e4c2",
+    "scene-contracts/sig-commerce-1.json": "6bffd966fc732fc4d6b969311140ec5e18356a2a38ad91144e09ccb0a642fc35",
+    "scene-contracts/sig-commerce-2.json": "1fbec2359d4896a18d8c497151c1abf9ac9480af8b264a2392bc2609230f733f",
+    "scene-contracts/sig-commerce-3.json": "27fb14fc8f8c0a67fb22e3788574bf1fd99213d985552e8247d0596740a86755"
+  },
+  "verification": {
+    "contracts_json_parse": "PASS",
+    "collection_structured_handoff_consistency": "PASS",
+    "fidelity_preflights": "BLOCKED_ONLY_FOR_MISSING_MATTES_AND_ON_MODEL_SOURCES",
+    "gpt_image_2_registry_scene_generation": "PASS_REGISTERED_CAPABILITY_MATCH",
+    "black_rose_font_statue_restored": "PASS_SHA256_a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+    "fashion_theme_team_plugin_integrity": "PASS_PLUGIN_ROUTE_INTEGRITY_ONLY",
+    "theme_image_generation_preflight": "FAIL_BASELINE_MISSING_LEGACY_PROMPT_CONTRACT"
+  },
+  "promotion": {
+    "founder_status": "PENDING",
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  }
+}

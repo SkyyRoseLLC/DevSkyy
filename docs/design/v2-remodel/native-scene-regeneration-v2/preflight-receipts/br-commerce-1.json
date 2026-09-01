@@ -1,0 +1,122 @@
+{
+  "schema": "product-fidelity-preflight-receipt.v1",
+  "status": "BLOCKED",
+  "operation": "native_collection_scene",
+  "target": {
+    "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp",
+    "metadata": {
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "has_alpha": false,
+      "alpha_min": 255,
+      "alpha_max": 255,
+      "transparent_fraction": 0.0,
+      "opaque_fraction": 1.0
+    }
+  },
+  "references": [
+    {
+      "index": 0,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp",
+      "role": "physical_product_authority",
+      "view": "on_model_front",
+      "sku": "br-001",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1024,
+        "height": 1536,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 1,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "br-001",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 2000,
+        "height": 1800,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 2,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship/assets/images/products/br-002-joggers.png",
+      "role": "physical_product_authority",
+      "view": "front",
+      "sku": "br-002",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 2000,
+        "height": 1800,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 3,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "role": "scene_authority",
+      "view": "scene",
+      "sku": "black-rose-hero",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 1672,
+        "height": 941,
+        "mode": "RGB",
+        "has_alpha": false,
+        "alpha_min": 255,
+        "alpha_max": 255,
+        "transparent_fraction": 0.0,
+        "opaque_fraction": 1.0
+      }
+    },
+    {
+      "index": 4,
+      "path": "/Users/theceo/DevSkyy-image2-native-scenes-prep/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png",
+      "role": "exact_logo_or_patch_authority",
+      "view": "scene",
+      "sku": "black-rose-font-statue",
+      "authority_state": "sot_verified",
+      "metadata": {
+        "width": 520,
+        "height": 395,
+        "mode": "RGBA",
+        "has_alpha": true,
+        "alpha_min": 0,
+        "alpha_max": 255,
+        "transparent_fraction": 0.55299416,
+        "opaque_fraction": 0.34163583
+      }
+    }
+  ],
+  "findings": [
+    {
+      "level": "error",
+      "code": "GARMENT_MATTE_REQUIRED",
+      "message": "Exact native scenes require a protected garment matte for: br-001, br-002"
+    },
+    {
+      "level": "error",
+      "code": "GARMENT_PLACEMENTS_REQUIRED",
+      "message": "Every protected garment matte needs an exact protected_placements entry"
+    }
+  ]
+}

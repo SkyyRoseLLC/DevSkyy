@@ -1,0 +1,20 @@
+{
+  "schema": "product-fidelity-edit.v1",
+  "operation": "native_collection_scene",
+  "handoff_status": "BLOCKED_PRE_GENERATION",
+  "source_freshness_lock": {"path":"data/product-sot.json","sha256":"4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"},
+  "target": {"path":"wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg","sha256":"5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"},
+  "generator": {"route":"environment_rebuild_around_source","supports_reference_images":true,"product_redraw_allowed":false,"intended_provider_alias":"gpt-image-2","provider_call_authorized":false},
+  "pose_change": false,
+  "collection_scene": {"collection_id":"love-hurts","scene_id":"LH-COMMERCE-2","story_role":"The Fractured Chamber","scene_variation":"low close thorned runway and cracked-rose chamber","products":[{"sku":"lh-003","cta":"Shop the Shorts"}]},
+  "references": [
+    {"sku":"lh-003","view":"front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg","sha256":"5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f","authority_state":"sot_verified","verbatim_text":["Love Hurts"]},
+    {"sku":"lh-003","view":"back","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg","sha256":"d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136","authority_state":"sot_verified"}
+  ],
+  "optical_contract": {"measurement_status":"PROVISIONAL_REQUIRES_APPROVED_ON_MODEL_TARGET","output_dimensions":[1536,2048],"subject_bbox":[246,450,1290,1788],"horizon_y":1010,"foot_contact_points":[[618,1775],[920,1775]],"lens_class":"normal","camera_height":"low","key_light":{"direction":"camera_left","temperature_k":2850,"softness":"soft"},"shadow":{"direction":"camera_right","softness":"soft"},"floor_response":"polished","reflection_mode":"subtle","contact_shadow_required":true,"edge_spill_required":true,"depth_occlusion_required":true,"atmospheric_depth_required":true,"scene_grain_match_required":true},
+  "product_locks": ["lh-003 is white mesh with complete red-rose/green-stem/white-cloud sublimation.","No exterior drawstring: black waistband, black vertical pocket welts, sculpted black mesh side panels, black hem binding with white/red piping.","Love Hurts must be complete and readable; exact side-panel embroidery and physical panel geometry are mandatory."],
+  "prompt_plan": "Candidate-only low, close on-model shorts scene in a thorned runway/cracked-rose chamber, materially distinct from the Vow Aisle. The shorts occupy the primary focal zone while the protected enchanted rose stays sharply in focus on the opposite side. One camera and light field; no generic hearts, random flowers, altered panels, or cropped lettering.",
+  "review_gate": {"candidate_author":"unassigned-candidate-author","independent_reviewer_required":true,"minimum_scores":{"product_fidelity":95,"optical_integration":90,"anatomy_pose":90,"collection_story":90,"commerce_readiness":90}},
+  "promotion": {"founder_approval_required":true,"wiring_allowed":false,"deployment_allowed":false},
+  "pre_generation_blockers": ["APPROVED_ON_MODEL_TARGET_MISSING","LH_003_PROTECTED_GARMENT_MATTE_MISSING","EXACT_ENCHANTED_ROSE_SCENE_AUTHORITY_NOT_YET_BOUND"]
+}

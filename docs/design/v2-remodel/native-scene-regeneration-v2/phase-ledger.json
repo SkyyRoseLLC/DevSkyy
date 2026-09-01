@@ -1,0 +1,89 @@
+{
+  "schema": "fashion-theme-team-phase-ledger.v1",
+  "phase_id": "v2-native-commerce-scenes-gpt-image-2-prep-2026-08-25",
+  "state": "BLOCKED",
+  "owner": "fashion-theme-lead",
+  "worktree": "/Users/theceo/DevSkyy-image2-native-scenes-prep",
+  "branch": "codex/image2-native-scenes-prep",
+  "baseline": {
+    "commit": "ca50e403e599079543df310b29b23781d2228bf8",
+    "product_sot_path": "data/product-sot.json",
+    "product_sot_sha256": "4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"
+  },
+  "owned_paths": [
+    "docs/design/v2-remodel/native-scene-regeneration-v2"
+  ],
+  "scope": {
+    "prepared_scene_ids": [
+      "BR-COMMERCE-1",
+      "BR-COMMERCE-2",
+      "LH-COMMERCE-2",
+      "LH-COMMERCE-3",
+      "SIG-COMMERCE-1",
+      "SIG-COMMERCE-2",
+      "SIG-COMMERCE-3"
+    ],
+    "preserved_scene_ids": ["BR-COMMERCE-3", "LH-COMMERCE-1"],
+    "excluded_actions": [
+      "image_generation",
+      "paid_external_call",
+      "Gemini_use",
+      "scene_asset_wiring",
+      "deployment",
+      "remote_upload",
+      "manifest_promotion",
+      "rejected_candidate_reuse"
+    ]
+  },
+  "candidate_identity": {
+    "generated_candidate_present": false,
+    "candidate_sha256": null,
+    "founder_status": "PENDING",
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "dependencies": [
+    "current-source-hashes",
+    "registry-validated-gpt-image-2-native-scene-adapter",
+    "approved-on-model-source-per-scene",
+    "protected-garment-matte-per-cast-sku",
+    "full-size-source-measurements",
+    "independent-native-review-after-candidate"
+  ],
+  "blockers": [
+    "EXACT_NATIVE_SCENE_GARMENT_MATTES_MISSING",
+    "MULTI_PRODUCT_SAME_POSE_AUTHORITIES_INCOMPLETE"
+  ],
+  "resolved_blockers": [
+    {
+      "id": "PRODUCT_SOT_HASH_CHANGED_FROM_SUPPLIED_HANDOFF",
+      "resolution": "All seven contracts and the source ledger bind the current local SOT hash 4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2; the older 4ccfbe handoff is retained as stale historical evidence only."
+    },
+    {
+      "id": "GPT_IMAGE_2_NATIVE_COLLECTION_SCENE_OPERATION_NOT_REGISTERED",
+      "resolution": "The native_scene contract is a local policy layer over the registry's supported lower-level scene_generation capability. gpt-image-2 validates for scene_generation; live provider availability and a paid request were not tested or made."
+    },
+    {
+      "id": "BLACK_ROSE_FONT_STATUE_EXTRACT_ABSENT",
+      "resolution": "Restored the exact 520x395 RGBA hero-derived authority from the approved product-card worktree and verified SHA-256 a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c."
+    }
+  ],
+  "non_scope_baseline_observations": [
+    {
+      "id": "BASELINE_THEME_PREFLIGHT_MISSING_LEGACY_PROMPT_CONTRACT",
+      "status": "UNRESOLVED_NOT_A_NATIVE_HANDOFF_GATE",
+      "reason": "The legacy validator requires an absent, old-SOT image-model-prompts-v1.json batch. Recreating or importing it would neither establish current seven-scene source truth nor be a safe way to clear a native-scene gate."
+    }
+  ],
+  "baseline_checks": [
+    {
+      "command": "python3 wordpress-theme/skyyrose-flagship-2/scripts/validate-image-generation-preflight.py",
+      "status": "FAIL_BASELINE",
+      "finding": "prompt contract missing: wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/image-model-prompts-v1.json",
+      "scope_decision": "Not recreated or bypassed. This candidate-only preparation does not alter the missing legacy prompt contract."
+    }
+  ],
+  "next_authority": "founder_or_designated_media_owner",
+  "attempt": 1,
+  "updated_at": "2026-08-25"
+}

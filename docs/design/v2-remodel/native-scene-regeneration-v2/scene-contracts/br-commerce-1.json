@@ -1,0 +1,28 @@
+{
+  "schema": "product-fidelity-edit.v1",
+  "operation": "native_collection_scene",
+  "handoff_status": "BLOCKED_PRE_GENERATION",
+  "source_freshness_lock": {"path":"data/product-sot.json","sha256":"4b5799ab3e16eaf75dd3c37321339eb861176bb53e161fd18263c35bed78c9e2"},
+  "target": {"path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp","sha256":"d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724"},
+  "generator": {"route":"environment_rebuild_around_source","supports_reference_images":true,"product_redraw_allowed":false,"intended_provider_alias":"gpt-image-2","provider_call_authorized":false},
+  "pose_change": false,
+  "collection_scene": {"collection_id":"black-rose","scene_id":"BR-COMMERCE-1","story_role":"The Type Foundry","scene_variation":"silver-font-statue interior","products":[{"sku":"br-001","cta":"Complete the Set"},{"sku":"br-002","cta":"Complete the Set"}]},
+  "references": [
+    {"sku":"br-001","view":"on_model_front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp","sha256":"d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724","authority_state":"sot_verified","approved_pose_source":true},
+    {"sku":"br-001","view":"front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png","sha256":"c9cd0614f52f8c9a6f8bcfb098acd89bcca15ea612cb62a48bba5d48697123c2","authority_state":"sot_verified"},
+    {"sku":"br-002","view":"front","role":"physical_product_authority","path":"wordpress-theme/skyyrose-flagship/assets/images/products/br-002-joggers.png","sha256":"f7596bbcee6a189aac561b60261bb313ff063cc62722a8f13fe721f0ac7a9928","authority_state":"sot_verified"},
+    {"sku":"black-rose-hero","view":"scene","role":"scene_authority","path":"wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp","sha256":"e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9","authority_state":"sot_verified"},
+    {"sku":"black-rose-font-statue","view":"scene","role":"exact_logo_or_patch_authority","path":"wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png","sha256":"a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c","authority_state":"sot_verified"}
+  ],
+  "optical_contract": {"measurement_status":"PROVISIONAL_REQUIRES_FULL_SIZE_CONFIRMATION","output_dimensions":[1536,2048],"subject_bbox":[348,144,1190,1900],"horizon_y":1210,"foot_contact_points":[[635,1890],[916,1890]],"lens_class":"normal","camera_height":"eye_level","key_light":{"direction":"camera_left","temperature_k":4200,"softness":"soft"},"shadow":{"direction":"camera_right","softness":"soft"},"floor_response":"satin","reflection_mode":"subtle","contact_shadow_required":true,"edge_spill_required":true,"depth_occlusion_required":true,"atmospheric_depth_required":true,"scene_grain_match_required":true},
+  "product_locks": [
+    "br-001 is a heavyweight black fleece crewneck: no hood, zipper, buttons, or pocket; white ribbed neckband, cuffs, and waist hem.",
+    "br-001 centered chest is a black/white/grey raised embossed three-rose/cloud relief, never embroidery, print, silicone, white patch, or flat ink.",
+    "br-002 is a black fleece tapered jogger with white ribbed waistband and ankle cuffs; its small wearer-left thigh appliqué is molded silicone, never embroidery or print.",
+    "Keep the exact Black Rose font-and-rose sculpture aligned with the wall as architecture; no generated lettering or generic rose sign."
+  ],
+  "prompt_plan": "Candidate-only native photograph. One model in the exact br-001/br-002 set, built from the approved br-001 on-model camera. Product is largest focal subject; silver Black Rose type architecture is wall-aligned support, with restrained Oakland night depth. One normal lens and one soft cool-left light field; preserve floor contact, shadow direction, edge spill, grain, and occlusion. Do not redraw product details, add text UI, invent marks, or use a rejected scene.",
+  "review_gate": {"candidate_author":"unassigned-candidate-author","independent_reviewer_required":true,"minimum_scores":{"product_fidelity":95,"optical_integration":90,"anatomy_pose":90,"collection_story":90,"commerce_readiness":90}},
+  "promotion": {"founder_approval_required":true,"wiring_allowed":false,"deployment_allowed":false},
+  "pre_generation_blockers": ["BR_001_AND_BR_002_PROTECTED_GARMENT_MATTES_MISSING","BR_002_SAME_POSE_ON_MODEL_SOURCE_MISSING"]
+}

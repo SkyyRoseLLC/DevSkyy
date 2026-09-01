@@ -1,0 +1,24 @@
+{
+  "schema": "product-fidelity-model-capability-receipt.v1",
+  "checked_at": "2026-08-25",
+  "registry_path": "/Users/theceo/.codex/skills/product-fidelity-image-edits/references/model-capability-registry.json",
+  "registry_verified_on": "2026-08-24",
+  "requested_provider_alias": "gpt-image-2",
+  "resolved_model": "openai-responses-image-mask",
+  "requested_operation": "native_collection_scene",
+  "registry_operation": "scene_generation",
+  "status": "PASS_REGISTERED_CAPABILITY_MATCH",
+  "code": "REGISTERED_CAPABILITY_MATCH",
+  "fidelity_tier": "bounded_only_after_pixel_verification",
+  "message": "The local native_collection_scene contract is mapped to the registry's supported scene_generation capability. GPT Image 2 supports high-fidelity image inputs and image-generation/edit endpoints; the contract's exact-product, matte, native-integration, and independent-review requirements remain mandatory.",
+  "live_provider_probe": "NOT_RUN",
+  "external_or_paid_call_made": false,
+  "fallbacks_used": [],
+  "prohibited_fallbacks": [
+    "Gemini",
+    "builtin-imagegen",
+    "maskless_localized_product_edit",
+    "rejected_preview_generation"
+  ],
+  "reentry_requirement": "Before any provider call, validate the selected adapter's reference-input handling and current account availability. No paid or remote call is authorized by this receipt."
+}
