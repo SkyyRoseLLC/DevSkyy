@@ -21,18 +21,20 @@ $world_url  = skyyrose2_collection_url( 'kids-capsule' );
  * @param string          $role Human-readable role.
  */
 $render_guardian_proof = static function ( $product, $sku, $role ) {
+	$product_media = $product ? skyyrose2_product_verified_card_media( $product ) : array();
+	$product_ready = $product && ! empty( $product_media[0]['id'] );
 	?>
-	<div class="sr-kids-procession__proof" data-sku="<?php echo esc_attr( $sku ); ?>" data-product-state="<?php echo $product ? 'resolved' : 'unavailable'; ?>">
+	<div class="sr-kids-procession__proof" data-sku="<?php echo esc_attr( $sku ); ?>" data-product-state="<?php echo $product_ready ? 'resolved' : 'unavailable'; ?>">
 		<div class="sr-kids-procession__proof-media">
-			<?php if ( $product && $product->get_image_id() ) : ?>
-				<?php echo wp_kses_post( wp_get_attachment_image( $product->get_image_id(), 'woocommerce_thumbnail', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?>
+			<?php if ( $product_ready ) : ?>
+				<?php echo wp_kses_post( wp_get_attachment_image( absint( $product_media[0]['id'] ), 'woocommerce_thumbnail', false, array( 'loading' => 'lazy', 'decoding' => 'async', 'alt' => $product->get_name() ) ) ); ?>
 			<?php else : ?>
 				<span aria-hidden="true">SR</span>
 			<?php endif; ?>
 		</div>
 		<div class="sr-kids-procession__proof-copy">
 			<p><?php echo esc_html( $role ); ?> · <?php echo esc_html( strtoupper( $sku ) ); ?></p>
-			<?php if ( $product ) : ?>
+			<?php if ( $product_ready ) : ?>
 				<h4><a href="<?php echo esc_url( $product->get_permalink() ); ?>"><?php echo esc_html( $product->get_name() ); ?></a></h4>
 				<div class="sr-kids-procession__commerce">
 					<span class="sr-kids-procession__price"><span class="screen-reader-text"><?php esc_html_e( 'Current price:', 'skyyrose-flagship-2' ); ?></span><?php echo wp_kses_post( $product->get_price_html() ); ?></span>

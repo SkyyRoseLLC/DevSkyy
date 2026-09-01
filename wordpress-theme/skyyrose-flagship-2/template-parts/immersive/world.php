@@ -139,7 +139,8 @@ get_header();
 							$product_id = wc_get_product_id_by_sku( $sku );
 							$product    = $product_id ? wc_get_product( $product_id ) : false;
 						}
-		if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() || ! $product->get_image_id() ) {
+						$product_media = $product ? skyyrose2_product_verified_card_media( $product ) : array();
+		if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() || empty( $product_media[0]['id'] ) ) {
 			continue;
 		}
 		$hotspot_presentation = function_exists( 'skyyrose2_product_presentation' ) ? skyyrose2_product_presentation( $product ) : array();
@@ -155,7 +156,7 @@ get_header();
 							data-correlation-id="<?php echo esc_attr( $correlation_id ); ?>"
 							aria-label="<?php echo esc_attr( sprintf( __( 'Explore %s', 'skyyrose-flagship-2' ), $product->get_name() ) ); ?>">
 							<span class="sr2-immersive__hotspot-media">
-								<?php echo wp_kses_post( wp_get_attachment_image( $product->get_image_id(), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-immersive__hotspot-image', 'loading' => 'lazy', 'decoding' => 'async', 'alt' => $product->get_name() ) ) ); ?>
+								<?php echo wp_kses_post( wp_get_attachment_image( absint( $product_media[0]['id'] ), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-immersive__hotspot-image', 'loading' => 'lazy', 'decoding' => 'async', 'alt' => $product->get_name() ) ) ); ?>
 							</span>
 							<span class="sr2-immersive__hotspot-copy"><small><?php esc_html_e( 'Piece in this scene', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $product->get_name() ); ?></strong><em><?php esc_html_e( 'View the product', 'skyyrose-flagship-2' ); ?> →</em></span>
 						</a>

@@ -27,7 +27,11 @@ if ( post_password_required() ) {
 	return;
 }
 
-$gallery_count       = count( $hero_product->get_gallery_image_ids() ) + ( $hero_product->get_image_id() ? 1 : 0 );
+$verified_media      = function_exists( 'skyyrose2_product_verified_card_media' ) ? skyyrose2_product_verified_card_media( $hero_product ) : array();
+$verified_media_ids  = array_values( array_filter( array_map( static function ( $media ) {
+	return isset( $media['id'] ) ? absint( $media['id'] ) : 0;
+}, $verified_media ) ) );
+$gallery_count       = count( $verified_media_ids );
 $stock_html          = wc_get_stock_html( $hero_product );
 $stock_state         = $hero_product->is_in_stock() ? 'available' : 'unavailable';
 $portal_kicker       = $hero_collection_data && ! empty( $hero_collection_data['kicker'] ) ? $hero_collection_data['kicker'] : '';
@@ -44,6 +48,7 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 	data-purchasable="<?php echo esc_attr( $purchasable ); ?>"
 	data-gallery-count="<?php echo esc_attr( (string) $gallery_count ); ?>"
 	data-availability="<?php echo esc_attr( $stock_state ); ?>"
+	data-verified-media="<?php echo ! empty( $verified_media_ids ) ? 'true' : 'false'; ?>"
 >
 	<div class="sr2-pdp-product__media" role="region" aria-label="<?php esc_attr_e( 'Published product views', 'skyyrose-flagship-2' ); ?>">
 		<p class="sr2-pdp-product__media-label">
@@ -52,12 +57,39 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 		</p>
 		<?php
 		/**
-		 * Hook: woocommerce_before_single_product_summary.
-		 *
-		 * @hooked woocommerce_show_product_sale_flash - 10
-		 * @hooked woocommerce_show_product_images - 20
+		 * Keep WooCommerce's sale/gallery hook sequence while constraining the
+		 * gallery to manifest-approved attachments for this product only.
 		 */
-		do_action( 'woocommerce_before_single_product_summary' );
+		$previous_global_product = $GLOBALS['product'] ?? null;
+		$GLOBALS['product']      = $hero_product;
+		if ( ! empty( $verified_media_ids ) ) {
+			$verified_image_filter = static function ( $image_id, $product ) use ( $hero_product, $verified_media_ids ) {
+				return $product === $hero_product ? $verified_media_ids[0] : $image_id;
+			};
+			$verified_gallery_filter = static function ( $image_ids, $product ) use ( $hero_product, $verified_media_ids ) {
+				return $product === $hero_product ? array_slice( $verified_media_ids, 1 ) : $image_ids;
+			};
+			add_filter( 'woocommerce_product_get_image_id', $verified_image_filter, 999, 2 );
+			add_filter( 'woocommerce_product_get_gallery_image_ids', $verified_gallery_filter, 999, 2 );
+			/**
+			 * Hook: woocommerce_before_single_product_summary.
+			 *
+			 * @hooked woocommerce_show_product_sale_flash - 10
+			 * @hooked woocommerce_show_product_images - 20
+			 */
+			do_action( 'woocommerce_before_single_product_summary' );
+			remove_filter( 'woocommerce_product_get_image_id', $verified_image_filter, 999 );
+			remove_filter( 'woocommerce_product_get_gallery_image_ids', $verified_gallery_filter, 999 );
+		} else {
+			do_action( 'woocommerce_show_product_sale_flash' );
+			?>
+			<div class="sr2-pdp-product__media-unavailable" role="status">
+				<strong><?php esc_html_e( 'Product views are being prepared.', 'skyyrose-flagship-2' ); ?></strong>
+				<span><?php esc_html_e( 'This piece will return when its approved on-model proof is published.', 'skyyrose-flagship-2' ); ?></span>
+			</div>
+			<?php
+		}
+		$GLOBALS['product'] = $previous_global_product;
 		?>
 	</div>
 

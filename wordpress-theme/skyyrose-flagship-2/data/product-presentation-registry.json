@@ -217,6 +217,28 @@
       "route": "/collections/signature/"
     }
   },
+  "scene_products": {
+    "black-rose": [
+      "br-004",
+      "br-001",
+      "br-002"
+    ],
+    "kids-capsule": [
+      "kids-001",
+      "kids-001",
+      "kids-001"
+    ],
+    "love-hurts": [
+      "lh-004",
+      "lh-002",
+      "lh-003"
+    ],
+    "signature": [
+      "sg-005",
+      "sg-006",
+      "sg-007"
+    ]
+  },
   "schema_version": "1.0.0",
   "supplements": {
     "jersey_series_skus": [

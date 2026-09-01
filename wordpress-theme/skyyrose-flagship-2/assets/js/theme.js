@@ -120,6 +120,8 @@
       const canAnimate = !motionPreference.matches && !saveData && !document.hidden;
       const state = canAnimate && inViewport ? 'running' : (canAnimate ? 'paused' : 'static');
       scene.dataset.sceneState = state;
+      const hero = scene.closest('.sr2-collection-hero');
+      if (hero) hero.dataset.sceneState = state;
       scene.dataset.sceneMode = motionPreference.matches ? 'reduced' : (saveData ? 'data-save' : 'cinematic');
     };
 
@@ -375,6 +377,64 @@
   };
 
   document.querySelectorAll('[data-product-reel]').forEach(setupProductReel);
+
+  /* Theme-owned wishlist fallback. It stores only WooCommerce product IDs;
+   * price, stock, variations, and checkout remain server-authoritative. */
+  const wishlistKey = 'skyyrose2-wishlist-v1';
+  const readWishlist = () => {
+    try {
+      const value = JSON.parse(window.localStorage.getItem(wishlistKey) || '[]');
+      return new Set(Array.isArray(value) ? value.map(String) : []);
+    } catch (error) {
+      return new Set();
+    }
+  };
+  const writeWishlist = (items) => {
+    try {
+      window.localStorage.setItem(wishlistKey, JSON.stringify(Array.from(items)));
+    } catch (error) {
+      // Private browsing or storage-disabled clients still retain usable cards.
+    }
+  };
+  const syncWishlist = (items) => {
+    document.querySelectorAll('[data-wishlist-toggle]').forEach((button) => {
+      const saved = items.has(String(button.dataset.productId || ''));
+      const label = saved ? button.dataset.wishlistRemoveLabel : button.dataset.wishlistAddLabel;
+      button.setAttribute('aria-pressed', String(saved));
+      button.setAttribute('aria-label', label || (saved ? 'Remove saved piece' : 'Save piece'));
+      button.dataset.wishlistState = saved ? 'saved' : 'available';
+      const icon = button.querySelector('[aria-hidden="true"]');
+      if (icon) icon.textContent = saved ? '♥' : '♡';
+    });
+    const wishlistPage = document.querySelector('[data-wishlist-page]');
+    if (!wishlistPage) return;
+    const entries = Array.from(wishlistPage.querySelectorAll('[data-wishlist-item]'));
+    let visible = 0;
+    entries.forEach((entry) => {
+      const show = items.has(String(entry.dataset.productId || ''));
+      entry.hidden = !show;
+      if (show) visible += 1;
+    });
+    const empty = wishlistPage.querySelector('[data-wishlist-empty]');
+    if (empty) empty.hidden = visible > 0;
+  };
+  let wishlist = readWishlist();
+  syncWishlist(wishlist);
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-wishlist-toggle]');
+    if (!button) return;
+    const id = String(button.dataset.productId || '');
+    if (!id) return;
+    if (wishlist.has(id)) wishlist.delete(id);
+    else wishlist.add(id);
+    writeWishlist(wishlist);
+    syncWishlist(wishlist);
+  });
+  window.addEventListener('storage', (event) => {
+    if (event.key !== wishlistKey) return;
+    wishlist = readWishlist();
+    syncWishlist(wishlist);
+  });
 
   /* Product-card quick view is a progressive layer over the direct PDP link.
    * All facts are copied from the live card payload; the full product page

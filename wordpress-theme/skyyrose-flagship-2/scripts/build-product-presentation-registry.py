@@ -29,6 +29,19 @@ JERSEY_CHAPTERS = {
 }
 ALLOWED_COLLECTIONS = {"black-rose", "kids-capsule", "love-hurts", "signature"}
 
+# Editorial chapters are a presentation decision, not a query-order side
+# effect. Reordering or publishing a product must never silently change the
+# garment shown in an approved scene.
+SCENE_PRODUCTS = {
+    "signature": ["sg-005", "sg-006", "sg-007"],
+    "black-rose": ["br-004", "br-001", "br-002"],
+    "love-hurts": ["lh-004", "lh-002", "lh-003"],
+    # The second Kids Capsule SKU remains media-blocked until its real
+    # on-model front is approved; repeat the verified anchor rather than
+    # letting an unverified garment enter an editorial chapter.
+    "kids-capsule": ["kids-001", "kids-001", "kids-001"],
+}
+
 
 def build_registry() -> dict[str, object]:
     products: dict[str, dict[str, object]] = {}
@@ -60,11 +73,18 @@ def build_registry() -> dict[str, object]:
     missing_jerseys = sorted(set(JERSEY_CHAPTERS) - set(products))
     if missing_jerseys:
         raise ValueError(f"Jersey supplement references unknown SKUs: {missing_jerseys}")
+    for collection, skus in SCENE_PRODUCTS.items():
+        for sku in skus:
+            if sku not in products:
+                raise ValueError(f"Scene assignment references unknown SKU: {collection}/{sku}")
+            if products[sku]["collection"] != collection:
+                raise ValueError(f"Scene assignment crosses collections: {collection}/{sku}")
     return {
         "schema_version": "1.0.0",
         "kind": "skyyrose-v2-product-presentation-registry",
         "generated_from": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
         "supplements": {"jersey_series_skus": sorted(JERSEY_CHAPTERS)},
+        "scene_products": SCENE_PRODUCTS,
         "products": dict(sorted(products.items())),
     }
 

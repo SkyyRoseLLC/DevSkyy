@@ -26,7 +26,7 @@ while ( have_posts() ) :
 			<?php get_template_part( 'template-parts/v2-preorder' ); ?>
 			<?php if ( false ) : // Retained legacy draft until the V2 page audit closes. ?>
 			<section class="sr2-preorder-hero" aria-labelledby="sr2-page-title">
-				<div class="sr2-preorder-hero__media"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'branding/hero/luxury-nighttime-1280w.webp' ) ); ?>" alt="" width="1280" height="549" fetchpriority="high"></div>
+				<div class="sr2-preorder-hero__media"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'branding/hero/forbidden-midnight-1280w.webp' ) ); ?>" alt="" width="1280" height="549" fetchpriority="high"></div>
 				<div class="sr2-preorder-hero__copy"><p class="sr2-eyebrow"><?php esc_html_e( 'Pre-Order · Limited Editions', 'skyyrose-flagship-2' ); ?></p><h1 id="sr2-page-title"><?php esc_html_e( 'Reserve the piece before the world moves on.', 'skyyrose-flagship-2' ); ?></h1><p><?php esc_html_e( 'No manufactured urgency. Clear edition status, expected timing, and your place secured.', 'skyyrose-flagship-2' ); ?></p><a class="sr2-button sr2-button--fill" href="#reserve"><?php esc_html_e( 'View reservable pieces', 'skyyrose-flagship-2' ); ?></a></div>
 			</section>
 			<?php

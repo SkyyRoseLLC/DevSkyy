@@ -16,6 +16,8 @@
     "check:assets": "node scripts/build-assets.mjs --check",
     "check:i18n": "python3 scripts/build-pot.py --check",
     "check:registry": "python3 scripts/build-product-presentation-registry.py --check",
+    "verify:image-delivery": "python3 scripts/verify-image-delivery.py",
+    "test:visual-contract": "php scripts/test-visual-contract.php",
     "check:provisioning": "php scripts/test-marketplace-registry.php",
     "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
     "verify": "bash scripts/verify-marketplace.sh",

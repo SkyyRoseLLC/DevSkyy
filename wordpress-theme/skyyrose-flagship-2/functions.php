@@ -226,7 +226,10 @@ function skyyrose2_seo_context() {
 		if ( $product ) {
 			$context['title']       = $product->get_name() . ' | ' . get_bloginfo( 'name' );
 			$context['description'] = wp_strip_all_tags( $product->get_short_description() ?: $product->get_name() . ' · ' . __( 'SkyyRose collection piece.', 'skyyrose-flagship-2' ) );
-			$context['image']       = $product->get_image_id() ? wp_get_attachment_image_url( $product->get_image_id(), 'full' ) : $context['image'];
+			$product_media         = skyyrose2_product_verified_card_media( $product );
+			if ( ! empty( $product_media[0]['id'] ) ) {
+				$context['image'] = wp_get_attachment_image_url( absint( $product_media[0]['id'] ), 'full' ) ?: $context['image'];
+			}
 			$context['type']        = 'product';
 		}
 	} elseif ( is_single() ) {
@@ -787,14 +790,11 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 	if ( ! function_exists( 'wc_get_products' ) ) {
 		return array();
 	}
+	$display_limit = max( 1, absint( $limit ) );
 	$args = array(
-		/*
-		 * A narrow query can be filled by Jersey Series products before the
-		 * presentation guard excludes them from the core Black Rose rail.
-		 * Resolve against the full published collection, then apply the display
-		 * limit after registry/presentation isolation has succeeded.
-		 */
-		'limit'   => -1,
+		// Keep the storefront bounded while allowing a small reconciliation
+		// window for registry and verified-media isolation below.
+		'limit'   => min( 48, max( 12, $display_limit * 4 ) ),
 		'status'  => 'publish',
 		'orderby' => 'date',
 		'order'   => 'DESC',
@@ -808,6 +808,9 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 	$products = wc_get_products( $args );
 	$filtered = array();
 	foreach ( $products as $product ) {
+		if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() ) {
+			continue;
+		}
 		$presentation = skyyrose2_product_presentation( $product );
 		if ( empty( $presentation ) ) {
 			continue;
@@ -819,6 +822,11 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
 			continue;
 		}
 		if ( 'black-rose' === $collection && 'jersey-series' === ( $presentation['presentation'] ?? '' ) ) {
+			continue;
+		}
+		// Public V2 cards are product-proof surfaces. Do not expose a product
+		// until the approved manifest reconciles an on-model front attachment.
+		if ( empty( skyyrose2_product_verified_card_media( $product ) ) ) {
 			continue;
 		}
 		$filtered[] = $product;
@@ -841,12 +849,23 @@ function skyyrose2_get_products( $limit = 6, $collection = '', $featured = false
  * @return WC_Product|false
  */
 function skyyrose2_collection_scene_product( $collection, $chapter = 0 ) {
-	$products = skyyrose2_get_products( 12, $collection );
-	if ( empty( $products ) ) {
+	$collection  = sanitize_title( $collection );
+	$registry    = skyyrose2_presentation_registry();
+	$assignments = isset( $registry['scene_products'][ $collection ] ) && is_array( $registry['scene_products'][ $collection ] ) ? $registry['scene_products'][ $collection ] : array();
+	$sku         = isset( $assignments[ absint( $chapter ) ] ) ? sanitize_key( $assignments[ absint( $chapter ) ] ) : '';
+	if ( ! $sku || ! function_exists( 'wc_get_product_id_by_sku' ) || ! function_exists( 'wc_get_product' ) ) {
 		return false;
 	}
-	$index = absint( $chapter ) % count( $products );
-	return $products[ $index ] ?? false;
+	$product_id = absint( wc_get_product_id_by_sku( $sku ) );
+	$product    = $product_id ? wc_get_product( $product_id ) : false;
+	if ( ! $product || ! $product->is_visible() || ( function_exists( 'get_post_status' ) && 'publish' !== get_post_status( $product_id ) ) ) {
+		return false;
+	}
+	$presentation = skyyrose2_product_presentation( $product );
+	if ( empty( $presentation ) || sanitize_title( $presentation['collection'] ?? '' ) !== $collection || empty( skyyrose2_product_verified_card_media( $product ) ) ) {
+		return false;
+	}
+	return $product;
 }
 
 /**
@@ -889,6 +908,9 @@ function skyyrose2_get_products_by_skus( $skus, $required_collection ) {
 
 		$resolved_sku = sanitize_key( $product->get_sku() );
 		if ( $resolved_sku !== $sku ) {
+			continue;
+		}
+		if ( empty( skyyrose2_product_verified_card_media( $product ) ) ) {
 			continue;
 		}
 		$products[ $sku ] = $product;
@@ -1037,7 +1059,7 @@ function skyyrose2_product_verified_card_media( $product ) {
 	$records  = isset( $manifest['products'] ) && is_array( $manifest['products'] ) ? $manifest['products'] : array();
 	$record   = $sku && isset( $records[ $sku ] ) && is_array( $records[ $sku ] ) ? $records[ $sku ] : array();
 	$views    = isset( $record['views'] ) && is_array( $record['views'] ) ? $record['views'] : array();
-	if ( empty( $views ) || ! function_exists( 'wp_get_attachment_url' ) ) {
+	if ( empty( $views ) || 'blocked' === ( $record['status'] ?? 'approved' ) || ! function_exists( 'wp_get_attachment_url' ) ) {
 		return array();
 	}
 
@@ -1114,7 +1136,7 @@ function skyyrose2_product_verified_card_media( $product ) {
  * @param int        $index Product loop position.
  */
 function skyyrose2_render_product_loop_card( $product, $index = 0 ) {
-	if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() ) {
+	if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() || empty( skyyrose2_product_verified_card_media( $product ) ) ) {
 		return;
 	}
 
@@ -1149,7 +1171,8 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 		}
 		$product_id = wc_get_product_id_by_sku( $sku );
 		$product    = $product_id ? wc_get_product( $product_id ) : false;
-		if ( $product ) {
+		$product_presentation = $product ? skyyrose2_product_presentation( $product ) : array();
+		if ( $product && $product->is_visible() && ( ! function_exists( 'get_post_status' ) || 'publish' === get_post_status( $product_id ) ) && 'jersey-series' === ( $product_presentation['presentation'] ?? '' ) && ! empty( skyyrose2_product_verified_card_media( $product ) ) ) {
 			$pieces[] = array(
 				'sku'     => $sku,
 				'chapter' => __( $chapter_data['jersey_chapter'] ?? 'Jersey Series', 'skyyrose-flagship-2' ),
@@ -1194,7 +1217,8 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 				<?php
 				$product     = $piece['product'];
 				$product_url = get_permalink( $product->get_id() );
-				$image_id    = $product->get_image_id();
+				$product_media = skyyrose2_product_verified_card_media( $product );
+				$image_id      = ! empty( $product_media[0]['id'] ) ? absint( $product_media[0]['id'] ) : 0;
 				?>
 				<article class="sr2-jersey-reveal__piece">
 					<p><?php echo esc_html( $piece['chapter'] ); ?></p>

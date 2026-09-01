@@ -38,6 +38,8 @@ python3 scripts/build-product-presentation-registry.py --check
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check
+python3 scripts/verify-image-delivery.py
+php scripts/test-visual-contract.php
 
 while IFS= read -r base; do
 	for width in 640 1024 1440; do

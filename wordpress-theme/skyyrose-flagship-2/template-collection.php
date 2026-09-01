@@ -71,9 +71,10 @@ get_header();
 					<article class="sr2-world">
 						<img src="<?php echo esc_url( $scene_uri ); ?>" alt="" width="1920" height="1080" loading="lazy" decoding="async">
 						<div class="sr2-world__shade" aria-hidden="true"></div>
-						<?php if ( $scene_product && $scene_product->get_image_id() ) : ?>
+						<?php $scene_media = $scene_product ? skyyrose2_product_verified_card_media( $scene_product ) : array(); ?>
+						<?php if ( $scene_product && ! empty( $scene_media[0]['id'] ) ) : ?>
 							<a class="sr2-world__product" href="<?php echo esc_url( $scene_product->get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Shop %s from the %s collection', 'skyyrose-flagship-2' ), $scene_product->get_name(), $collection['name'] ) ); ?>">
-								<?php echo wp_kses_post( wp_get_attachment_image( $scene_product->get_image_id(), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-world__product-image', 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?>
+								<?php echo wp_kses_post( wp_get_attachment_image( absint( $scene_media[0]['id'] ), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-world__product-image', 'loading' => 'lazy', 'decoding' => 'async', 'alt' => $scene_product->get_name() ) ) ); ?>
 								<span class="sr2-world__product-copy"><small><?php esc_html_e( 'Piece in this world', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $scene_product->get_name() ); ?></strong><em><?php esc_html_e( 'View product proof', 'skyyrose-flagship-2' ); ?> ↗</em></span>
 							</a>
 						<?php endif; ?>
