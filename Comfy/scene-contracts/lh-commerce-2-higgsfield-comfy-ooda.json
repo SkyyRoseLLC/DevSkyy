@@ -106,17 +106,31 @@
   "source_bindings": [
     {
       "role": "lh-003_physical_front",
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
       "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
       "send_to_higgsfield": true,
-      "preserve": "white mesh, all-over rose field, Love Hurts graphics, stitched side marks"
+      "preserve": "white perforated mesh, all-over rose field, wearer-left red Love Hurts treatment, directional black-mesh side insets, black waistband, and black/red/white angular leg binding"
     },
     {
       "role": "lh-003_physical_back",
-      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
-      "sha256": "d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+      "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
       "send_to_higgsfield": true,
-      "preserve": "exact rear pockets and broken-heart-and-thorns back construction"
+      "preserve": "two black-trimmed zippered rear pockets, continuous all-over rose field, and large red-and-black wearer-left rear Love Hurts treatment"
+    },
+    {
+      "role": "lh-003_physical_wearer_left",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+      "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
+      "send_to_higgsfield": true,
+      "preserve": "wearer-left zippered side pocket, large red Love Hurts script, and black-mesh inset with the smaller Love Hurts rose/heart emblem"
+    },
+    {
+      "role": "lh-003_physical_wearer_right",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+      "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a",
+      "send_to_higgsfield": true,
+      "preserve": "wearer-right zippered side pocket and black-mesh inset with the embroidered red rose bouquet, green stems, and white-and-blue cloud"
     },
     {
       "role": "approved_environment_plate",
@@ -140,11 +154,17 @@
     "count": 1,
     "resolution_request": "2k",
     "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "Cinematic urban-grit Love Hurts campaign in The Fractured Chamber, reimagined as an abandoned civic transit hall after midnight. One founder-approved customer in the exact LH-003 shorts stands left at product-readable scale; the protected enchanted rose under glass stands right on a weighted plinth. Fractured black marble, raw concrete, aged steel, damp satin floor, red emergency practical light, cold ambient spill, deep detailed shadows, restrained film grain, believable contact and occlusion. Professional 16:9 customer-and-product hierarchy; no castle, ballroom, Beast character, generic hearts, flower wall, velvet lounge, pasted edges, or invented garment details.",
+    "prompt": "Cinematic urban-grit Love Hurts campaign in The Fractured Chamber, reimagined as an abandoned civic transit hall after midnight. One founder-approved customer in the exact LH-003 shorts stands left at product-readable scale; preserve exactly four zippered pockets, two side and two back, with a zipper on every pocket. The protected enchanted rose under glass stands right on a weighted plinth. Fractured black marble, raw concrete, aged steel, damp satin floor, red emergency practical light, cold ambient spill, deep detailed shadows, restrained film grain, believable contact and occlusion. Professional 16:9 customer-and-product hierarchy; no castle, ballroom, Beast character, generic hearts, flower wall, velvet lounge, pasted edges, open pockets, zipperless pockets, extra pockets, or invented garment details.",
     "brand_context": "Love Hurts is controlled romantic urban cinema: defiance inside fractured civic architecture, red emergency light, enchanted drama, customer dignity, and exact luxury streetwear product clarity.",
-    "product_context": "Preserve the exact LH-003 front and back construction. Never place the front Love Hurts treatment on the rear. Use no customer identity until founder-approved on-model authority and a protected garment matte are bound.",
+    "product_context": "Preserve the exact LH-003 four-view construction without mirroring. The shorts use white perforated mesh with an all-over orange-red rose-bouquet-on-cloud field, a black ribbed waistband, and angular black leg binding traced by red and white stripes. Pocket topology is invariant: exactly four zippered pockets total, comprising two side hand pockets and two rear pockets; every pocket must visibly retain its zipper closure. The wearer-left front/side carries the large red Love Hurts script and a black-mesh inset with the smaller Love Hurts rose/heart emblem. The wearer-right black-mesh inset carries the embroidered red rose bouquet with green stems and a white-and-blue cloud. The back has two black-trimmed zippered rear pockets plus a large red-and-black wearer-left Love Hurts treatment. Do not render open welts, zipperless pockets, cargo pockets, patch pockets, or any extra pocket. Use no customer identity until founder-approved on-model authority and a protected garment matte are bound.",
     "prompt_assertions": {
-      "required_phrases": ["LH-003", "Fractured Chamber", "enchanted rose"],
+      "required_phrases": [
+        "LH-003",
+        "Fractured Chamber",
+        "enchanted rose",
+        "four zippered pockets",
+        "two side and two back"
+      ],
       "forbidden_phrases": ["front graphic on the back", "generic red shorts"]
     }
   },
@@ -186,7 +206,7 @@
     "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
-    "prompt_sha256": "306141a612f89229f709fb2330de859438cfb95222ea0d76cb0e801dfadecb5c",
+    "prompt_sha256": "223cc1b4ddc1564770696b4ea5e605aa0d51f925d0be3f34cb17430176488b8b",
     "prompt_review_receipt": null,
     "require_candidate_bound_approval": true,
     "approval_receipt": null,
@@ -195,7 +215,7 @@
   },
   "ooda": {
     "observe": [
-      "verify catalog, image SOT, physical front/back, chamber plate, and rose hashes",
+      "verify catalog, image SOT, all four directional physical product views, founder-confirmed four-zipper pocket topology, chamber plate, and rose hashes",
       "confirm approved on-model target and garment matte exist"
     ],
     "orient": [
@@ -203,7 +223,7 @@
       "treat outputs as candidate-only"
     ],
     "decide": [
-      "hard-fail wrong front/back graphic placement, generic rose, missing product, or unapproved identity"
+      "hard-fail wrong front/back graphic placement, any pocket-count or zipper-closure drift, generic rose, missing product, or unapproved identity"
     ],
     "act": [
       "stage in Comfy",

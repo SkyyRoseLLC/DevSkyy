@@ -24,6 +24,10 @@ from tests.sparse_guard import requires_tree
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST_PATH = ROOT / "assets" / "products" / "source-photos" / "manifest.json"
+LH003_DOSSIER_PATH = (
+    ROOT / "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-basketball-shorts.md"
+)
+LH003_CONTRACT_PATH = ROOT / "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json"
 
 # Every test reads the manifest under assets/ — sparse worktrees exclude that
 # tree by design; full checkouts and CI still fail closed on a missing manifest.
@@ -116,6 +120,41 @@ def test_br007_preserves_directional_side_authority():
         "br-007-founder-four-angle-physical-authority.jpg"
     )
     assert "side" in coverage["present_angles"]
+
+
+def test_lh003_prefers_physical_four_view_authority_over_techflats():
+    """Founder-supplied photography must outrank the older LH-003 techflats."""
+    from scripts import audit_source_photos as audit
+    from skyyrose.core.catalog_loader import read_catalog_rows
+
+    row = next(row for row in read_catalog_rows() if row.get("sku") == "lh-003")
+    generated = asdict(audit._build_coverage_for(row, audit._scan_files()["lh-003"]))
+    coverage = json.loads(MANIFEST_PATH.read_text())["skus"]["lh-003"]
+
+    assert coverage == generated
+    assert coverage["source_type"] == "photography"
+    assert coverage["photo_paths"]["front"].endswith("lh-003-shorts-front.jpeg")
+    assert coverage["photo_paths"]["back"].endswith("lh-003-shorts-back.jpeg")
+    assert coverage["photo_paths"]["wearer-left"].endswith("lh-003-shorts-wearer-left.jpg")
+    assert coverage["photo_paths"]["wearer-right"].endswith("lh-003-shorts-wearer-right.jpg")
+    assert coverage["present_angles"] == ["front", "back", "side"]
+    assert coverage["missing_angles"] == ["detail-pocket"]
+
+
+def test_lh003_founder_confirmed_four_zipper_pocket_truth_is_fail_closed():
+    """The dossier and scene OODA contract must agree on four zippered pockets."""
+    dossier = LH003_DOSSIER_PATH.read_text()
+    contract = json.loads(LH003_CONTRACT_PATH.read_text())
+    contract_text = json.dumps(contract)
+
+    assert "exactly four zippered pockets" in dossier.lower()
+    assert "two side pockets and two rear pockets" in dossier.lower()
+    assert "no zipper closures" not in dossier.lower()
+    assert "open black-mesh welts" not in dossier.lower()
+    assert "exactly four zippered pockets" in contract_text.lower()
+    assert "two side and two back" in contract_text.lower()
+    assert "zipperless pockets" in contract_text.lower()
+    assert "rear welt pockets" not in contract_text.lower()
 
 
 def test_founder_four_angle_board_cannot_replace_individual_view_authority():
