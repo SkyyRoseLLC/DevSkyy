@@ -43,7 +43,7 @@ from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
 from skyyrose.core.hashing import sha256_of_file  # noqa: E402
 
 _SOURCE_PHOTO_MANIFEST = _REPO_ROOT / "assets" / "products" / "source-photos" / "manifest.json"
-_DIRECTIONAL_SOURCE_ROLES = ("wearer-left", "wearer-right")
+_SUPPLEMENTAL_SOURCE_ROLES = ("wearer-left", "wearer-right", "founder-four-angle")
 
 
 def _catalog_rows() -> dict[str, dict]:
@@ -66,14 +66,14 @@ def _record(role: str, path: Path | None) -> AssetRecord | None:
     return AssetRecord(role=role, path=to_repo_relative(path), sha256=hash_if_present(path))
 
 
-def _directional_source_records(sku: str) -> list[AssetRecord]:
-    """Hash-bind wearer-relative physical plates consumed by fidelity gates."""
+def _supplemental_source_records(sku: str) -> list[AssetRecord]:
+    """Hash-bind directional and founder-board physical authorities."""
     if not _SOURCE_PHOTO_MANIFEST.exists():
         return []
     raw = json.loads(_SOURCE_PHOTO_MANIFEST.read_text(encoding="utf-8"))
     photo_paths = raw.get("skus", {}).get(sku, {}).get("photo_paths", {})
     records: list[AssetRecord] = []
-    for role in _DIRECTIONAL_SOURCE_ROLES:
+    for role in _SUPPLEMENTAL_SOURCE_ROLES:
         rel = photo_paths.get(role)
         if not rel:
             continue
@@ -111,7 +111,7 @@ def build() -> AssetManifest:
             rec = _record(ref.kind, ref.path)
             if rec is not None:
                 records.append(rec)
-        for rec in _directional_source_records(sku):
+        for rec in _supplemental_source_records(sku):
             if rec.path not in seen:
                 seen.add(rec.path)
                 records.append(rec)
