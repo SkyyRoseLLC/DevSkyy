@@ -61,14 +61,16 @@
       "id": "LH-COMMERCE-2-OODA-1",
       "scene_id": "LH-COMMERCE-2",
       "state": "BLOCKED",
-      "owner": "catalog-sot-integrator",
+      "owner": "product-fidelity-image-edits",
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "fc991963afe4b4631b45a6dd938601452a600e91a87d8c2b208a3927b8872a6a",
+      "contract_sha256": "6d7a196cecfa320735c80f7c6457d89d5046d944addf82118913135c651fec8b",
       "evidence": [
         "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
-        "tasks/lh-003-source-authority-intake-20260902.json"
+        "tasks/lh-003-source-authority-intake-20260902.json",
+        "tasks/lh-003-model-casting-20260902-a1.json",
+        "Comfy/receipts/lh-003-model-casting-independent-review-20260902.json"
       ],
       "outputs": [
         "four directional physical product views and hash-bound source-authority receipt PASS",
@@ -76,14 +78,17 @@
         "approved Love Hurts rose-aisle collection hero is hash-bound as world inspiration; customer and exact product remain primary",
         "Fractured Chamber and enchanted-rose hashes PASS",
         "cinematic urban-grit creative and optical contracts PASS",
-        "local Comfy correction-only and one-attempt credit policies PASS"
+        "local Comfy correction-only and one-attempt credit policies PASS",
+        "one 2K adult Black woman casting board generated for exactly 8.5 credits; identity, anatomy, styling, pockets, fit, and neutral source quality passed",
+        "independent review scored 83.3/100 and hard-failed wearer-relative artwork continuity; candidate quarantined with no automatic retry"
       ],
       "blockers": [
-        "founder-approved LH-003 on-model target missing",
+        "model-casting A1 quarantined because Love Hurts artwork changes anatomical sides between front and rear views",
+        "founder-approved LH-003 on-model target still missing",
         "protected garment matte missing",
         "paid preflight approval missing"
       ],
-      "next_authority": "founder-approved LH-003 on-model source and protected garment matte"
+      "next_authority": "founder decision on model identity concept, then separately authorized exact-garment recovery and protected matte; no automatic paid retry"
     },
     {
       "id": "SIG-COMMERCE-1-OODA-1",

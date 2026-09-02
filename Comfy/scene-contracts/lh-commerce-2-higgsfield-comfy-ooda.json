@@ -10,8 +10,8 @@
     "phase_id": "LH-COMMERCE-2-OODA-1",
     "attempt": 1,
     "accountable": "fashion-theme-lead",
-    "current_owner": "catalog-sot-integrator",
-    "next_authority": "founder-approved LH-003 on-model source and protected garment matte"
+    "current_owner": "product-fidelity-image-edits",
+    "next_authority": "founder decision on the successful model identity concept, followed by a separately authorized exact-garment recovery route and protected matte"
   },
   "catalog_snapshot": {
     "catalog_path": "skyyrose-catalog.csv",
@@ -214,7 +214,28 @@
   "provider_capability": {
     "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
     "exact_product_guarantee": false,
-    "rule": "Do not enhance or generate until approved wearer authority and a protected LH-003 matte are bound."
+    "adapter": "higgsfield_product_photoshoot",
+    "model_id": "gpt_image_2",
+    "operation": "scene_generation",
+    "registry_path": "Comfy/scene-contracts/higgsfield-product-photoshoot-model-registry-20260902.json",
+    "registry_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
+    "runtime_receipt": "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
+    "runtime_receipt_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
+    "estimated_credits": 8.5,
+    "rule": "Do not enhance or generate the final scene until approved wearer authority and a protected LH-003 matte are bound; provider success is never product approval, native-integration approval, or promotion."
+  },
+  "upstream_model_casting": {
+    "task_id": "LH-003-MODEL-CASTING-20260902-A1",
+    "contract": "Comfy/scene-contracts/lh-003-model-casting-higgsfield-ooda.json",
+    "candidate": "Comfy/quarantine/LH-003-MODEL-CASTING/LH-003-MODEL-CASTING-20260902-A1.png",
+    "candidate_sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+    "independent_review": "Comfy/receipts/lh-003-model-casting-independent-review-20260902.json",
+    "score": 83.3,
+    "verdict": "REJECT",
+    "identity_and_anatomy": "PASS_CONCEPT_ONLY",
+    "product_directionality": "HARD_FAIL",
+    "eligible_as_scene_input": false,
+    "automatic_retry_allowed": false
   },
   "comfy": {
     "routing": "local",
@@ -276,7 +297,8 @@
     ]
   },
   "execute_blockers": [
-    "founder-approved LH-003 on-model target is missing",
+    "LH-003-MODEL-CASTING-20260902-A1 created a strong consistent model identity but the complete candidate was rejected because directional artwork changed anatomical sides between front and rear views",
+    "founder-approved LH-003 on-model target is still missing",
     "LH-003 protected garment matte is missing",
     "candidate-bound preflight and paid Higgsfield generation approval not recorded"
   ],

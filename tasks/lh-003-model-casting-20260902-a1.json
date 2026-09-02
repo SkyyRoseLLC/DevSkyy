@@ -1,0 +1,135 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "state": "FAIL",
+  "project_manager": "fashion-theme-lead",
+  "scope": {
+    "sku": "lh-003",
+    "product": "Love Hurts Basketball Shorts",
+    "candidate_id": "LH-003-MODEL-CASTING-20260902-A1",
+    "capability": "product-fidelity-image-edits",
+    "target": "Create one reusable original campaign-model casting reference wearing the exact LH-003 shorts before LH-COMMERCE-2 scene execution",
+    "route": "higgsfield_product_photoshoot_enhance_then_pinned_gpt_image_2",
+    "view": "neutral front-three-quarter and rear-three-quarter casting board",
+    "exclusions": [
+      "Love Hurts final scene generation",
+      "collection-world or sculpture reference inputs",
+      "automatic paid retry",
+      "Soul identity training before casting approval",
+      "Comfy staging",
+      "storefront wiring",
+      "promotion or deployment"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Model-casting project manager",
+      "capabilities": ["scope", "credit control", "evidence integration"],
+      "deliverable": "Candidate-bound casting handoff"
+    },
+    {
+      "name": "higgsfield-product-photoshoot",
+      "job_title": "Virtual try-on generator",
+      "capabilities": [
+        "virtual_model_tryout",
+        "four-view product conditioning"
+      ],
+      "deliverable": "One neutral two-view on-model candidate"
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Independent product and casting reviewer",
+      "capabilities": [
+        "product fidelity",
+        "identity consistency",
+        "anatomy and optical review"
+      ],
+      "deliverable": "Candidate-bound independent verdict",
+      "independent_from_project_manager": true,
+      "may_edit_candidate": false
+    }
+  ],
+  "acceptance_criteria": [
+    "The candidate contains one original adult Black woman campaign customer shown as the same identity in front-three-quarter and rear-three-quarter full-body views.",
+    "The model reads as confident, professional, contemporary Oakland luxury streetwear rather than a generic catalog mannequin or costume character.",
+    "A minimal black fitted top does not obscure the LH-003 waistband, pockets, artwork, side panels, or leg binding.",
+    "The exact LH-003 white perforated mesh, rose field, black waistband, angular black panels, red-white binding, directional artwork, and four-pocket topology remain recognizable against the four physical sources.",
+    "There are exactly two side pockets and two rear pockets in the garment construction, every visible pocket retains a zipper, and no cargo, patch, open-welt, or extra pocket is invented.",
+    "The neutral studio board contains no rose aisle, monument, sculpture, environmental storytelling, or added display text.",
+    "The output is candidate-only until independent product-fidelity review and explicit founder casting approval are recorded.",
+    "No second paid candidate is submitted automatically if the first candidate fails."
+  ],
+  "evidence_requirements": [
+    "source_authority_receipt",
+    "casting_contract",
+    "enhanced_prompt_receipt",
+    "provider_receipt_and_actual_credit_cost",
+    "candidate_sha256_and_dimensions",
+    "independent_review",
+    "founder_casting_decision"
+  ],
+  "authority": {
+    "source_receipt": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+    "casting_contract": "Comfy/scene-contracts/lh-003-model-casting-higgsfield-ooda.json",
+    "physical_source_sha256": {
+      "front": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+      "back": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
+      "wearer_left": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
+      "wearer_right": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+    }
+  },
+  "credit_control": {
+    "provider": "higgsfield",
+    "account_plan_observed": "plus",
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 1,
+    "automatic_paid_retries": false,
+    "candidate_id": "LH-003-MODEL-CASTING-20260902-A1",
+    "max_estimated_credits": 8.5,
+    "actual_credits_spent": 8.5
+  },
+  "issues": [
+    {
+      "issue_id": "LH003-CAST-001",
+      "state": "IN_REMEDIATION",
+      "first_seen": "2026-09-02",
+      "description": "LH-COMMERCE-2 has no approved on-model wearer; the missing model must be created as a separate controlled casting candidate before scene generation.",
+      "resolution_required": "Generate one neutral hash-bound candidate, obtain independent review, then request founder casting approval."
+    },
+    {
+      "issue_id": "LH003-PROMPT-001",
+      "state": "RESOLVED",
+      "first_seen": "2026-09-02",
+      "description": "The first non-generating Higgsfield enhancement changed vertical side pockets to horizontal, invented a center-back black panel, changed the contracted black top, and failed to distinguish exact product wording from prohibited added display text.",
+      "resolution_required": "Correct the intent and product context, explicitly bind wearer-left versus wearer-right artwork from eyes-on source review, rerun enhance-only, and require a current prompt-adherence PASS before generation.",
+      "recurrence_count": 2,
+      "latest_observation": "The second enhancement corrected pocket orientation and rear geometry but reversed wearer-left and wearer-right artwork; it was rejected before paid generation.",
+      "resolution": "The third enhancement passed every casting and product assertion and is pinned by SHA-256 for the paid call.",
+      "resolved_at": "2026-09-02"
+    },
+    {
+      "issue_id": "LH003-CAST-002",
+      "state": "OPEN",
+      "first_seen": "2026-09-02",
+      "description": "The generated model identity, anatomy, pocket topology, styling, and neutral source quality passed, but the Love Hurts treatment changes wearer-relative sides between the front and rear panels.",
+      "candidate_sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+      "resolution_required": "Do not reuse the quarantined candidate as construction authority. A separate founder decision may approve or reject only the model casting concept before a new explicitly authorized recovery route is designed."
+    }
+  ],
+  "manager_verification": {
+    "status": "FAIL_DIRECTIONAL_ARTWORK",
+    "evidence": [
+      "The four physical product views and four-zipper invariant are already hash-bound.",
+      "The casting call is isolated from final scene generation and limited to one paid candidate.",
+      "Two enhanced prompts were rejected before paid generation.",
+      "The third backend-enhanced prompt passed and is pinned at ccc3c58b44f7b473d4998a47ba1634ba5578aea5a3255451b4c9ce61b3dd0f48.",
+      "One 2K candidate was generated for exactly 8.5 credits and bound at 7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9.",
+      "Independent visual-commerce-qa scored 83.3/100 and rejected the candidate because the garment artwork changes anatomical sides between views.",
+      "The model identity, anatomy, professional presence, pocket topology, garment fit, crop, and neutral studio quality passed independently.",
+      "The candidate is quarantined and no automatic paid retry, garment-matte production, Comfy staging, scene input, promotion, wiring, or deployment is allowed."
+    ]
+  },
+  "founder_approval": "PENDING",
+  "release_decision": "NOT_AUTHORIZED"
+}
