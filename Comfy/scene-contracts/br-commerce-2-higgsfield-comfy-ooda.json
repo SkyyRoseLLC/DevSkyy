@@ -36,19 +36,91 @@
         "scene_form": "founder-supplied long hoodie dress"
       }
     ],
-    "forbidden_skus": [
-      "br-001",
-      "br-002"
-    ]
+    "forbidden_skus": ["br-001", "br-002"]
   },
   "composition": {
     "aspect_ratio": "16:9",
     "target_width": 1672,
     "target_height": 941,
     "customer_priority": "Two confident campaign protagonists at product-readable scale.",
-    "environment": "Restrained nocturnal black-stone gallery with grounded atmosphere and no bridge or waterfront.",
+    "environment": "Oakland midnight concrete-rose court beneath a brutalist transit undercroft: rain-darkened aggregate, blackened steel, sodium-vapor edge light, cool fog, and no bridge or waterfront.",
     "brand_object": "The exact Black Rose font sculpture, physically supported and integrated into the shared ground plane.",
     "energy_contract": "Comfy/SCENE-ENERGY-BAR.md"
+  },
+  "creative_direction": {
+    "style": "cinematic_urban_grit",
+    "story_role": "Two Oakland protagonists own a rain-darkened civic undercroft; the garments are the campaign and the Black Rose sculpture is a weighted monument in their world.",
+    "focal_hierarchy": [
+      "exact BR-005 plus BR-007 male look and exact BR-004 female look",
+      "customer faces, posture, and shared confidence",
+      "physically grounded Black Rose sculpture",
+      "Oakland concrete, steel, fog, and practical light"
+    ],
+    "material_language": [
+      "rain-darkened concrete aggregate",
+      "blackened structural steel",
+      "oxidized dark-metal sculpture",
+      "wet satin pavement with restrained reflections"
+    ],
+    "place_cues": [
+      "Oakland transit undercroft geometry",
+      "sodium-vapor practical light",
+      "Bay fog without bridge iconography"
+    ],
+    "logo_off_recognition": "Nocturnal Oakland monumentality, dual-customer dominance, rose geometry, and black-on-black material depth remain recognizable with all logos hidden.",
+    "anti_generic": [
+      "no luxury hotel or generic black showroom",
+      "no random graffiti, neon cyberpunk, or warehouse prop pile",
+      "no tiny pasted customers or decorative sculpture pocket",
+      "no dirt-overlay shortcut standing in for physical urban texture"
+    ]
+  },
+  "optical_contract": {
+    "output": { "width": 2048, "height": 1152 },
+    "horizon_y": 585,
+    "subject_boxes": [
+      {
+        "id": "male_br005_br007",
+        "x": 150,
+        "y": 175,
+        "width": 500,
+        "height": 875
+      },
+      { "id": "female_br004", "x": 655, "y": 170, "width": 455, "height": 885 },
+      {
+        "id": "black_rose_sculpture",
+        "x": 1210,
+        "y": 365,
+        "width": 690,
+        "height": 640
+      }
+    ],
+    "contact_points": [
+      { "id": "male_feet", "x": 410, "y": 1040 },
+      { "id": "female_feet", "x": 875, "y": 1045 },
+      { "id": "sculpture_base", "x": 1545, "y": 1000 }
+    ],
+    "lens_class": "normal",
+    "camera_height": "eye_level",
+    "key_light": {
+      "direction": "camera_right_rear",
+      "quality": "hard_to_soft",
+      "color": "warm_sodium"
+    },
+    "shadow_behavior": {
+      "direction": "camera_left_front",
+      "density": "deep_but_open",
+      "contact": "firm"
+    },
+    "floor_response": "wet_reflective",
+    "reflection_mode": "controlled",
+    "requirements": {
+      "contact": true,
+      "occlusion": true,
+      "depth": true,
+      "grain_match": true,
+      "edge_spill_match": true
+    }
   },
   "source_bindings": [
     {
@@ -124,16 +196,11 @@
     "count": 1,
     "resolution_request": "2k",
     "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "A powerful Black Rose luxury streetwear campaign: two confident customers and their exact mapped garments in a restrained nocturnal black-stone gallery, with the exact font sculpture grounded as a deliberate physical monument. Product and customer first, professional wide editorial hierarchy, one coherent light and ground plane.",
-    "brand_context": "SkyyRose Black Rose is nocturnal gothic luxury streetwear: urban monumentality, controlled menace, cinematic restraint, exact product authority, no generic filler.",
+    "prompt": "Cinematic urban-grit Black Rose campaign at Oakland midnight: two confident customers in their exact mapped garments dominate a rain-darkened brutalist transit undercroft. Blackened steel, wet concrete aggregate, controlled Bay fog, warm sodium-vapor edge light, cool ambient sky, deep open blacks, restrained film grain, and one coherent ground plane. Place the exact Black Rose font sculpture as a weighted freestanding monument with believable base contact, occlusion, shadow, and wet-floor reflection. Product and customer first at editorial-readable scale; professional 16:9 composition; no generic showroom, hotel lobby, random graffiti, neon cyberpunk, dirt overlay, or pasted collage edges.",
+    "brand_context": "SkyyRose Black Rose is nocturnal Oakland gothic luxury streetwear: civic monumentality, controlled menace, customer dignity, real concrete and steel response, cinematic restraint, and exact product authority.",
     "product_context": "Male wears exact BR-005 Signature Edition hoodie with exact BR-007 basketball shorts. BR-005 has white drawstrings, a small rose mark on the wearer's right chest, and the large floral artwork on the lower side-body panel; the large artwork must remain off every sleeve and the chest mark must remain exclusively wearer-right. BR-007 must follow the founder four-angle board exactly: black rose-pattern mesh, white waistband, OAKLAND front lettering, script Love Hurts treatment, white side panels, geometric black-and-white trim, and the physical left/right side marks. Female wears the exact founder-supplied BR-004 long hoodie dress with its centered white rose-bouquet-and-cloud graphic. Preserve construction, logos, wordmarks, placement, color, cast identity, and the exact Black Rose font sculpture. No BR-001, BR-002, bridge, waterfront, star monument, extra people, or invented text.",
     "prompt_assertions": {
-      "required_phrases": [
-        "right chest",
-        "side-body",
-        "OAKLAND",
-        "waistband"
-      ],
+      "required_phrases": ["right chest", "side-body", "OAKLAND", "waistband"],
       "forbidden_phrases": [
         "emblem embroidered at left chest",
         "graphic screenprinted along the left sleeve",
@@ -141,6 +208,48 @@
         "from elbow to cuff"
       ]
     }
+  },
+  "provider_capability": {
+    "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
+    "exact_product_guarantee": false,
+    "rule": "Provider success is not product approval, native-integration approval, or promotion."
+  },
+  "comfy": {
+    "routing": "local",
+    "server": "127.0.0.1:8188",
+    "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
+    "workflow": "SELECT_AFTER_CANDIDATE_HASH_AND_DEFECT_CLASSIFICATION",
+    "allowed_operations": [
+      "background-only atmosphere correction",
+      "mask-bounded relighting without garment redraw",
+      "contact shadow and restrained reflection integration",
+      "edge-spill and grain matching",
+      "exact sculpture alpha placement",
+      "mask-bounded product correction from approved authority"
+    ],
+    "forbidden_operations": [
+      "full-frame product redraw",
+      "prompt-only product correction",
+      "rejected candidate as a new generation input",
+      "automatic paid retry"
+    ],
+    "requires_candidate_hash": true,
+    "requires_mask_for_product_pixels": true,
+    "requires_independent_review": true
+  },
+  "credit_control": {
+    "mode": "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "require_current_observe_pass": true,
+    "require_prompt_review_pass": true,
+    "prompt_sha256": "9d47ca0d0bd5f60891ddee3a42b30b0cec65f8e232306640954756ec3951e6d6",
+    "prompt_review_receipt": null,
+    "require_candidate_bound_approval": true,
+    "approval_receipt": null,
+    "on_failure": "OPEN_ISSUE_AND_STOP",
+    "rejected_candidate_may_be_next_input": false
   },
   "ooda": {
     "observe": [

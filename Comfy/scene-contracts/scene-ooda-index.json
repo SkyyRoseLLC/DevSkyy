@@ -3,7 +3,20 @@
   "plugin": "fashion-theme-team@personal",
   "plugin_contract": "/Users/theceo/.codex/plugins/cache/personal/fashion-theme-team/0.4.0+codex.20260825142900/skills/fashion-theme-team/SKILL.md",
   "governance": "Comfy/FASHION-THEME-TEAM-OODA.md",
-  "state_model": ["PENDING", "READY", "ACTIVE", "HANDOFF_PENDING", "INTEGRATING", "REVIEWING", "PASSED", "FAILED", "BLOCKED", "SUPERSEDED"],
+  "active_task": "Comfy/scene-contracts/cinematic-urban-grit-ooda-task.json",
+  "visual_contract": "Comfy/CINEMATIC-URBAN-GRIT-SCENE-BIBLE.md",
+  "state_model": [
+    "PENDING",
+    "READY",
+    "ACTIVE",
+    "HANDOFF_PENDING",
+    "INTEGRATING",
+    "REVIEWING",
+    "PASSED",
+    "FAILED",
+    "BLOCKED",
+    "SUPERSEDED"
+  ],
   "phase_ownership": {
     "observe": {
       "accountable": "fashion-theme-lead",
@@ -45,13 +58,33 @@
     "old_review_invalid_after_mutation": true,
     "rejected_assets_are_evidence_only": true,
     "provider_success_is_not_promotion": true,
-    "comfy_staging_is_not_runtime_wiring": true
+    "comfy_staging_is_not_runtime_wiring": true,
+    "one_candidate_one_paid_attempt": true,
+    "automatic_paid_retries": false,
+    "current_prompt_review_required": true,
+    "candidate_bound_paid_approval_required": true,
+    "measured_optical_contract_required": true
   },
   "scenes": [
-    {"scene_id": "BR-COMMERCE-2", "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json"},
-    {"scene_id": "LH-COMMERCE-2", "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json"},
-    {"scene_id": "SIG-COMMERCE-1", "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json"},
-    {"scene_id": "SIG-COMMERCE-2", "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json"},
-    {"scene_id": "SIG-COMMERCE-3", "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json"}
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json"
+    },
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-3",
+      "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json"
+    }
   ]
 }

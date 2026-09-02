@@ -1,10 +1,14 @@
 {
   "schema": "skyyrose.scene-ooda-ledger/1",
   "recorded_at": "2026-09-02",
-  "mission": "Execute the five remaining mapped commerce scenes through a Higgsfield Product Photoshoot to Comfy OODA with Fashion Theme Team governance.",
+  "mission": "Execute the five remaining mapped commerce scenes through a cinematic urban-grit, product-first OODA with Fashion Theme Team governance and fail-closed credit control.",
+  "active_task": {
+    "path": "Comfy/scene-contracts/cinematic-urban-grit-ooda-task.json",
+    "state": "NEEDS_REVIEW"
+  },
   "team_index": {
     "path": "Comfy/scene-contracts/scene-ooda-index.json",
-    "sha256": "3f8243d394bbb58c240c2d58affe804ad57da1d9d61d02b21eaaa2cd2f6fbde5"
+    "sha256": "849a08060a02879495075e383a641f6f4632b548ab12e2239ec384c42425eab4"
   },
   "approval_boundaries": {
     "higgsfield_enhancement_only": "AUTO_WITH_LOG",
@@ -23,13 +27,21 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "ad4de07c964524c940c49fe75a926a6713d3959b0f473d2bb2af382531c57d70",
+      "contract_sha256": "1422c1b6873f14481ee52b82f7cfe7c7dd97b14056842f928630884b53d5cecb",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json"
       ],
-      "outputs": ["source and runtime dependencies PASS", "corrected no-spend enhanced prompt PASS"],
-      "blockers": ["candidate-bound paid preflight approval is not recorded"],
+      "outputs": [
+        "source and runtime dependencies PASS",
+        "prior no-spend enhanced prompt PASS retained as history only",
+        "cinematic urban-grit creative and optical contracts PASS",
+        "local Comfy correction-only and one-attempt credit policies PASS"
+      ],
+      "blockers": [
+        "current cinematic urban-grit prompt needs a new hash-bound no-spend review",
+        "candidate-bound paid preflight approval is not recorded"
+      ],
       "next_authority": "approved provider runtime, then independent visual-commerce-qa"
     },
     {
@@ -40,10 +52,18 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "13bc173a0d837a2d5c82e69a60160bea5ccf624dfa70f38c7daa50313a95923c",
+      "contract_sha256": "0c156463443110d95f6b0312719eee37350169e64b2653d1784f2bdc9e4cccc7",
       "evidence": [],
-      "outputs": ["physical front/back, Fractured Chamber, and enchanted-rose hashes PASS"],
-      "blockers": ["founder-approved LH-003 on-model target missing", "protected garment matte missing", "paid preflight approval missing"],
+      "outputs": [
+        "physical front/back, Fractured Chamber, and enchanted-rose hashes PASS",
+        "cinematic urban-grit creative and optical contracts PASS",
+        "local Comfy correction-only and one-attempt credit policies PASS"
+      ],
+      "blockers": [
+        "founder-approved LH-003 on-model target missing",
+        "protected garment matte missing",
+        "paid preflight approval missing"
+      ],
       "next_authority": "founder-approved LH-003 on-model source and protected garment matte"
     },
     {
@@ -54,10 +74,17 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json",
-      "contract_sha256": "9f7a6ab62df977265467c66ebeda5a070ed6e27d785558e5fd71898c194aec96",
+      "contract_sha256": "0a8798b7845d46cb9ddf4aa890bcd63c37c2b1e98251e706363abfbb12e0b90e",
       "evidence": ["Comfy/LOG.md"],
-      "outputs": ["protected customer/product, physical products, environment, and cleaned sculpture hashes PASS"],
-      "blockers": ["corrected enhanced prompt not yet reviewed", "paid preflight approval missing"],
+      "outputs": [
+        "protected customer/product, physical products, environment, and cleaned sculpture hashes PASS",
+        "cinematic urban-grit creative and optical contracts PASS",
+        "local Comfy correction-only and one-attempt credit policies PASS"
+      ],
+      "blockers": [
+        "corrected enhanced prompt not yet reviewed",
+        "paid preflight approval missing"
+      ],
       "next_authority": "prompt assertion review, approved provider runtime, then independent visual-commerce-qa"
     },
     {
@@ -68,10 +95,18 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "28d17f487a07b1049f2f0d086a91a8687cf901143f5e5e85fa0aba5bbae62efe",
+      "contract_sha256": "42299b11d1593bd88974f3d829ddeac916d552801f8b7f5e8bd0074178657a79",
       "evidence": [],
-      "outputs": ["allowed male/products/environment/monument hashes PASS", "founder-rejected female hash deny-listed"],
-      "blockers": ["correct founder-supplied SG-006 female wearer missing", "prompt review and paid preflight approval missing"],
+      "outputs": [
+        "allowed male/products/environment/monument hashes PASS",
+        "founder-rejected female hash deny-listed",
+        "cinematic urban-grit creative and optical contracts PASS",
+        "local Comfy correction-only and one-attempt credit policies PASS"
+      ],
+      "blockers": [
+        "correct founder-supplied SG-006 female wearer missing",
+        "prompt review and paid preflight approval missing"
+      ],
       "next_authority": "correct founder-supplied SG-006 female wearer authority"
     },
     {
@@ -82,11 +117,20 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json",
-      "contract_sha256": "ebf4ec2b04997652ae8a564875bb95ef875c5a8a97fd62870bf5eeb88c2309d0",
+      "contract_sha256": "5ebc2e1d1958cb026a4815d29d7f88e1b83e60d4dbca8c4721b060bde24a093e",
       "evidence": [],
-      "outputs": ["founder composition, three protected looks, and five physical product hashes PASS"],
-      "blockers": ["SG-001 correction receipt not promoted into packet", "SG-003 correction receipt missing", "prompt review and paid preflight approval missing"],
-      "next_authority": "verified SG-001 and SG-003 correction receipts, then brand-experience-architect"
+      "outputs": [
+        "founder composition, three protected looks, and five physical product hashes PASS",
+        "existing scene designated preserve-and-correct only; full-frame paid generation forbidden",
+        "cinematic urban-grit creative and optical contracts PASS",
+        "local Comfy correction-only and one-attempt credit policies PASS"
+      ],
+      "blockers": [
+        "SG-001 correction receipt not promoted into packet",
+        "SG-003 correction receipt missing",
+        "mask-bound correction approval missing; full-frame prompt review is intentionally not pursued"
+      ],
+      "next_authority": "verified SG-001 and SG-003 correction receipts, then independent visual-commerce-qa"
     }
   ]
 }

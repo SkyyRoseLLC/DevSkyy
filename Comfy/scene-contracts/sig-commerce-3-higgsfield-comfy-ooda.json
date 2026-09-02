@@ -19,11 +19,15 @@
     "image_manifest_path": "data/sot-images.json",
     "image_manifest_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
     "products": [
-      {"sku": "sg-001", "name": "The Bay Bridge Shorts"},
-      {"sku": "sg-005", "name": "The Bay Bridge Shirt"},
-      {"sku": "sg-003", "name": "Stay Golden Shorts"},
-      {"sku": "sg-002", "name": "Stay Golden Shirt"},
-      {"sku": "sg-015", "name": "The Windbreaker Set", "canonical_set_rule": "jacket and pants are one SKU"}
+      { "sku": "sg-001", "name": "The Bay Bridge Shorts" },
+      { "sku": "sg-005", "name": "The Bay Bridge Shirt" },
+      { "sku": "sg-003", "name": "Stay Golden Shorts" },
+      { "sku": "sg-002", "name": "Stay Golden Shirt" },
+      {
+        "sku": "sg-015",
+        "name": "The Windbreaker Set",
+        "canonical_set_rule": "jacket and pants are one SKU"
+      }
     ]
   },
   "composition": {
@@ -31,21 +35,170 @@
     "target_width": 1672,
     "target_height": 941,
     "customer_priority": "Three confident protagonists; every one of the five canonical SKUs remains readable.",
-    "environment": "Founder-supplied Golden Gate departure terrace composition.",
+    "environment": "Preserve the founder-supplied rain-wet Bay departure terrace, fog-softened skyline and bridge, practical lights, ensemble spacing, and rose-gold monument.",
     "brand_object": "Rose-gold Signature monument remains physically integrated without crowding the ensemble.",
     "energy_contract": "Comfy/SCENE-ENERGY-BAR.md"
   },
+  "creative_direction": {
+    "style": "cinematic_urban_grit",
+    "story_role": "Three customers own a wet Bay departure terrace at night; five exact products create the ensemble story and the rose-gold sculpture anchors the center without stealing the campaign.",
+    "focal_hierarchy": [
+      "all five exact products across three protected customers",
+      "three customer faces and ensemble stance",
+      "central rose-gold Signature sculpture",
+      "wet terrace, fog, skyline, and bridge depth"
+    ],
+    "material_language": [
+      "rain-wet concrete",
+      "black structural architecture",
+      "rose-gold sculpture metal",
+      "fog-softened glass and city practicals"
+    ],
+    "place_cues": [
+      "Bay departure terrace",
+      "fog-softened Golden Gate and skyline",
+      "night practicals reflected on wet concrete"
+    ],
+    "logo_off_recognition": "Three-customer West Coast ensemble, wet concrete, fogged Bay infrastructure, and rose-gold monumentality already carry Signature without logo dependence.",
+    "anti_generic": [
+      "no full-frame regeneration of the approved composition",
+      "no generic replacement shorts or model recasting",
+      "no cleaner luxury lobby substitution",
+      "no enlarged monument that competes with the ensemble"
+    ]
+  },
+  "optical_contract": {
+    "output": { "width": 2048, "height": 1152 },
+    "horizon_y": 570,
+    "subject_boxes": [
+      {
+        "id": "left_sg001_sg005_customer",
+        "x": 125,
+        "y": 185,
+        "width": 500,
+        "height": 835
+      },
+      {
+        "id": "center_sg003_sg002_customer",
+        "x": 760,
+        "y": 175,
+        "width": 500,
+        "height": 855
+      },
+      {
+        "id": "right_sg015_customer",
+        "x": 1410,
+        "y": 180,
+        "width": 500,
+        "height": 845
+      },
+      {
+        "id": "signature_sculpture",
+        "x": 830,
+        "y": 360,
+        "width": 610,
+        "height": 560
+      }
+    ],
+    "contact_points": [
+      { "id": "left_customer_feet", "x": 370, "y": 1010 },
+      { "id": "center_customer_feet", "x": 1010, "y": 1025 },
+      { "id": "right_customer_feet", "x": 1650, "y": 1015 },
+      { "id": "sculpture_base", "x": 1135, "y": 920 }
+    ],
+    "lens_class": "normal",
+    "camera_height": "eye_level",
+    "key_light": {
+      "direction": "camera_left_front",
+      "quality": "large_soft_campaign_source_with_city_edges",
+      "color": "neutral_skin_warm_practicals"
+    },
+    "shadow_behavior": {
+      "direction": "camera_right_rear",
+      "density": "deep_but_open",
+      "contact": "preserve_existing"
+    },
+    "floor_response": "wet_reflective",
+    "reflection_mode": "controlled",
+    "requirements": {
+      "contact": true,
+      "occlusion": true,
+      "depth": true,
+      "grain_match": true,
+      "edge_spill_match": true
+    }
+  },
   "source_bindings": [
-    {"role": "founder_composition_target", "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/founder-supplied-source/sig-commerce-3-five-sku-ensemble-target-2026-08-31.webp", "sha256": "11e9fe54c8bff8be2b3bc0508bd8d22b5b04e33d3f546acf33541b8478a9dc1c", "send_to_higgsfield": true, "preserve": "wide three-person hierarchy and five-SKU ensemble"},
-    {"role": "departure_terrace_environment", "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png", "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97", "send_to_higgsfield": true, "preserve": "Golden Gate environment and ground plane"},
-    {"role": "protected_bay_bridge_look", "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png", "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0", "send_to_higgsfield": true, "preserve": "customer identity and SG-005/SG-001 look, subject to exact SG-001 correction"},
-    {"role": "protected_stay_golden_look", "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png", "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575", "send_to_higgsfield": true, "preserve": "customer identity and SG-002/SG-003 look, subject to exact SG-003 correction"},
-    {"role": "protected_windbreaker_look", "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png", "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09", "send_to_higgsfield": true, "preserve": "customer identity and complete jacket-plus-pants set"},
-    {"role": "sg-001_physical_authority", "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png", "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c", "send_to_higgsfield": true, "preserve": "daytime Bay Bridge all-over print, blue waistband, white drawstring, blue rose bottom-left"},
-    {"role": "sg-005_physical_authority", "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg", "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1", "send_to_higgsfield": true, "preserve": "white shirt and blue rose with Bay Bridge imagery"},
-    {"role": "sg-003_physical_authority", "path": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png", "sha256": "6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e", "send_to_higgsfield": true, "preserve": "Golden Gate night all-over print, purple waistband, white drawstring, purple rose bottom-left"},
-    {"role": "sg-002_physical_authority", "path": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg", "sha256": "25f82fa5960105b4e093892c3aec28e707dd0d0534413e21075163d92f7a2baa", "send_to_higgsfield": true, "preserve": "white shirt and rose containing Golden Gate imagery"},
-    {"role": "sg-015_physical_authority", "path": "assets/products/source-photos/signature/sg-015-windbreaker-set.jpg", "sha256": "cddd4d4dfccd473bbd1d1223c18270141342c7e6bc31bdab25df99f04d8ce2dc", "send_to_higgsfield": true, "preserve": "complete coordinated windbreaker jacket and pants as one canonical SKU"}
+    {
+      "role": "founder_composition_target",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/founder-supplied-source/sig-commerce-3-five-sku-ensemble-target-2026-08-31.webp",
+      "sha256": "11e9fe54c8bff8be2b3bc0508bd8d22b5b04e33d3f546acf33541b8478a9dc1c",
+      "send_to_higgsfield": true,
+      "preserve": "wide three-person hierarchy and five-SKU ensemble"
+    },
+    {
+      "role": "departure_terrace_environment",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/scene-authority/sig-commerce-3-departure-terrace-plate-v1.png",
+      "sha256": "4360dcf2d36b0183bf1f197d842a77df6f9c8012a72ecf9195e691c986651f97",
+      "send_to_higgsfield": true,
+      "preserve": "Golden Gate environment and ground plane"
+    },
+    {
+      "role": "protected_bay_bridge_look",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-005-bay-bridge-look-protected-v1.png",
+      "sha256": "62095f1bc8c87d71a48d1d77cefc6afa26ed27c023f0b78b24b43ed6fea0f2d0",
+      "send_to_higgsfield": true,
+      "preserve": "customer identity and SG-005/SG-001 look, subject to exact SG-001 correction"
+    },
+    {
+      "role": "protected_stay_golden_look",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-002-sg-003-stay-golden-look-protected-v1.png",
+      "sha256": "786fbb95ed5d823574d66b5d3121f44d1b6f2a9b7f054a6bcdc678da9768b575",
+      "send_to_higgsfield": true,
+      "preserve": "customer identity and SG-002/SG-003 look, subject to exact SG-003 correction"
+    },
+    {
+      "role": "protected_windbreaker_look",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/protected-input/sg-015-windbreaker-look-protected-v1.png",
+      "sha256": "3ead3dca633ee5c6500aacea9b19cddac7437fc72e8d97698c79738c41dfff09",
+      "send_to_higgsfield": true,
+      "preserve": "customer identity and complete jacket-plus-pants set"
+    },
+    {
+      "role": "sg-001_physical_authority",
+      "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+      "sha256": "780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c",
+      "send_to_higgsfield": true,
+      "preserve": "daytime Bay Bridge all-over print, blue waistband, white drawstring, blue rose bottom-left"
+    },
+    {
+      "role": "sg-005_physical_authority",
+      "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
+      "sha256": "5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1",
+      "send_to_higgsfield": true,
+      "preserve": "white shirt and blue rose with Bay Bridge imagery"
+    },
+    {
+      "role": "sg-003_physical_authority",
+      "path": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
+      "sha256": "6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e",
+      "send_to_higgsfield": true,
+      "preserve": "Golden Gate night all-over print, purple waistband, white drawstring, purple rose bottom-left"
+    },
+    {
+      "role": "sg-002_physical_authority",
+      "path": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg",
+      "sha256": "25f82fa5960105b4e093892c3aec28e707dd0d0534413e21075163d92f7a2baa",
+      "send_to_higgsfield": true,
+      "preserve": "white shirt and rose containing Golden Gate imagery"
+    },
+    {
+      "role": "sg-015_physical_authority",
+      "path": "assets/products/source-photos/signature/sg-015-windbreaker-set.jpg",
+      "sha256": "cddd4d4dfccd473bbd1d1223c18270141342c7e6bc31bdab25df99f04d8ce2dc",
+      "send_to_higgsfield": true,
+      "preserve": "complete coordinated windbreaker jacket and pants as one canonical SKU"
+    }
   ],
   "authority_dependencies": [],
   "higgsfield": {
@@ -54,20 +207,99 @@
     "count": 1,
     "resolution_request": "2k",
     "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "A powerful wide Golden Gate Signature campaign with the founder-supplied three-person ensemble and all five exact pre-order SKUs readable as one cohesive customer-driven composition.",
+    "prompt": "Preserve the founder-supplied cinematic urban-grit Golden Gate Signature ensemble exactly: three protected customers, wet Bay departure terrace, fog-softened skyline and bridge, central rose-gold sculpture, practical reflections, and all five exact pre-order SKUs readable as one cohesive customer-driven composition. Do not regenerate the full frame. Only correct the SG-001 and SG-003 shorts inside explicit masks from verified physical authorities while preserving cast identity, pose, faces, shirts, SG-015 set, lighting, depth, grain, contact, occlusion, and existing environment pixels.",
     "brand_context": "SkyyRose Signature is West Coast architectural luxury, Golden Gate identity, rose-gold craft, confident ensemble casting, and professional campaign hierarchy.",
     "product_context": "Preserve exact SG-001 daytime Bay Bridge shorts, SG-005 Bay Bridge shirt, SG-003 Golden Gate night shorts, SG-002 Stay Golden shirt, and the complete SG-015 windbreaker jacket-plus-pants set. Never treat SG-015 as two SKUs and never substitute or hallucinate either shorts print.",
     "prompt_assertions": {
       "required_phrases": ["five", "SG-001", "SG-003", "SG-015", "Golden Gate"],
-      "forbidden_phrases": ["generic blue shorts", "generic purple shorts", "six products"]
+      "forbidden_phrases": [
+        "generic blue shorts",
+        "generic purple shorts",
+        "six products"
+      ]
     }
   },
-  "ooda": {
-    "observe": ["verify all ten source hashes", "verify exact SG-001 and SG-003 correction receipts", "confirm five canonical SKUs and four product groups"],
-    "orient": ["use founder 16:9 ensemble target as composition authority", "Higgsfield creates a native cohesive campaign candidate"],
-    "decide": ["hard-fail missing SKU, wrong bridge print, wrong rose color/placement, split SG-015 count, cutout integration, or altered cast"],
-    "act": ["stage in Comfy", "mask-correct only the authorized shorts regions", "quarantine failures", "require independent and founder review"]
+  "execution_strategy": {
+    "mode": "PRESERVE_EXISTING_SCENE_MASK_BOUND_CORRECTION_ONLY",
+    "full_frame_paid_generation": false,
+    "reason": "The founder-supplied target already satisfies the campaign energy; only exact SG-001 and SG-003 shorts authority remains unresolved.",
+    "required_corrections": [
+      "SG-001 shorts inside verified mask",
+      "SG-003 shorts inside verified mask"
+    ],
+    "preserve": [
+      "all customer identities and poses",
+      "shirts and SG-015 set",
+      "terrace, fog, skyline, bridge, sculpture, lighting, reflections, and crop"
+    ]
   },
-  "execute_blockers": ["verified exact SG-001 shorts-correction receipt is not promoted into the packet", "verified exact SG-003 shorts-correction receipt is missing", "corrected enhanced prompt has not passed", "candidate-bound preflight and paid Higgsfield generation approval not recorded"],
+  "provider_capability": {
+    "higgsfield_role": "DISABLED_FOR_FULL_FRAME_REGENERATION",
+    "exact_product_guarantee": false,
+    "rule": "No Higgsfield full-frame spend is justified for this scene."
+  },
+  "comfy": {
+    "routing": "local",
+    "server": "127.0.0.1:8188",
+    "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
+    "workflow": "MASK_BOUND_SHORTS_CORRECTION_AFTER_AUTHORITY_RECEIPTS",
+    "allowed_operations": [
+      "SG-001 mask-bounded correction from verified physical authority",
+      "SG-003 mask-bounded correction from verified physical authority",
+      "edge-spill and grain matching inside correction boundary",
+      "contact, occlusion, and reflection repair caused only by corrected shorts"
+    ],
+    "forbidden_operations": [
+      "full-frame product redraw",
+      "full-frame paid regeneration",
+      "customer recasting",
+      "environment replacement",
+      "prompt-only product correction",
+      "automatic paid retry"
+    ],
+    "requires_candidate_hash": true,
+    "requires_mask_for_product_pixels": true,
+    "requires_independent_review": true
+  },
+  "credit_control": {
+    "mode": "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "require_current_observe_pass": true,
+    "require_prompt_review_pass": true,
+    "prompt_sha256": "607f50b23e11ed784563c0a367675b764aaf429465587a36870766835a4d0d85",
+    "prompt_review_receipt": null,
+    "require_candidate_bound_approval": true,
+    "approval_receipt": null,
+    "on_failure": "OPEN_ISSUE_AND_STOP",
+    "rejected_candidate_may_be_next_input": false
+  },
+  "ooda": {
+    "observe": [
+      "verify all ten source hashes",
+      "verify exact SG-001 and SG-003 correction receipts",
+      "confirm five canonical SKUs and four product groups"
+    ],
+    "orient": [
+      "use founder 16:9 ensemble target as composition authority",
+      "Higgsfield creates a native cohesive campaign candidate"
+    ],
+    "decide": [
+      "hard-fail missing SKU, wrong bridge print, wrong rose color/placement, split SG-015 count, cutout integration, or altered cast"
+    ],
+    "act": [
+      "stage in Comfy",
+      "mask-correct only the authorized shorts regions",
+      "quarantine failures",
+      "require independent and founder review"
+    ]
+  },
+  "execute_blockers": [
+    "verified exact SG-001 shorts-correction receipt is not promoted into the packet",
+    "verified exact SG-003 shorts-correction receipt is missing",
+    "mask-bound local correction plan and independent review assignment are not approved",
+    "full-frame paid Higgsfield generation is intentionally disabled"
+  ],
   "promotion_gate": "FOUNDER_APPROVED_VISUAL"
 }
