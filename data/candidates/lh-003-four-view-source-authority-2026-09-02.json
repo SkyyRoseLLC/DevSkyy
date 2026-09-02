@@ -81,7 +81,7 @@
   },
   "scene_contract": {
     "path": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-    "sha256": "e336beca09aed49047a208cd0cd887b06975838b559fb670730980c82d953f74"
+    "sha256": "fc991963afe4b4631b45a6dd938601452a600e91a87d8c2b208a3927b8872a6a"
   },
   "usage_policy": {
     "generation_inputs": "Use the physical view matching the requested camera and keep left/right sources distinct. Do not mirror, infer an unseen wearer, or treat the product-only views as an approved on-model target.",

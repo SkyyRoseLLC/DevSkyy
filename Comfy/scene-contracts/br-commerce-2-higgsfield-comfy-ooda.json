@@ -43,18 +43,18 @@
     "target_width": 1672,
     "target_height": 941,
     "customer_priority": "Two confident campaign protagonists at product-readable scale.",
-    "environment": "Oakland midnight concrete-rose court beneath a brutalist transit undercroft: rain-darkened aggregate, blackened steel, sodium-vapor edge light, cool fog, and no bridge or waterfront.",
+    "environment": "Oakland midnight civic terrace above the bay: rain-darkened black stone, blackened steel, sodium-vapor edge light, cool fog, wet reflections, and the Bay Bridge receding as a distant place cue rather than the hero.",
     "brand_object": "The exact Black Rose font sculpture, physically supported and integrated into the shared ground plane.",
     "energy_contract": "Comfy/SCENE-ENERGY-BAR.md"
   },
   "creative_direction": {
     "style": "cinematic_urban_grit",
-    "story_role": "Two Oakland protagonists own a rain-darkened civic undercroft; the garments are the campaign and the Black Rose sculpture is a weighted monument in their world.",
+    "story_role": "Two Oakland protagonists own a rain-darkened civic terrace above the bay; the garments are the campaign, the Black Rose sculpture is a weighted monument in their world, and the bridge supplies Oakland depth rather than postcard spectacle.",
     "focal_hierarchy": [
       "exact BR-005 plus BR-007 male look and exact BR-004 female look",
       "customer faces, posture, and shared confidence",
       "physically grounded Black Rose sculpture",
-      "Oakland concrete, steel, fog, and practical light"
+      "Oakland wet stone, steel, fog, and distant Bay Bridge depth"
     ],
     "material_language": [
       "rain-darkened concrete aggregate",
@@ -63,15 +63,16 @@
       "wet satin pavement with restrained reflections"
     ],
     "place_cues": [
-      "Oakland transit undercroft geometry",
+      "Oakland civic-terrace geometry with the Bay Bridge receding behind the subjects",
       "sodium-vapor practical light",
-      "Bay fog without bridge iconography"
+      "Bay fog and restrained waterfront depth"
     ],
-    "logo_off_recognition": "Nocturnal Oakland monumentality, dual-customer dominance, rose geometry, and black-on-black material depth remain recognizable with all logos hidden.",
+    "logo_off_recognition": "Nocturnal Oakland monumentality, distant Bay Bridge geometry, dual-customer dominance, rose geometry, and black-on-black material depth remain recognizable with all logos hidden.",
     "anti_generic": [
       "no luxury hotel or generic black showroom",
       "no random graffiti, neon cyberpunk, or warehouse prop pile",
       "no tiny pasted customers or decorative sculpture pocket",
+      "no empty monument postcard, duplicate word monuments, or copied star monument",
       "no dirt-overlay shortcut standing in for physical urban texture"
     ]
   },
@@ -131,11 +132,11 @@
       "preserve": "cast identity, pose relationship, landscape hierarchy"
     },
     {
-      "role": "environment_authority",
-      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
-      "sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b",
+      "role": "black_rose_collection_world_reference",
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+      "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
       "send_to_higgsfield": true,
-      "preserve": "black-stone gallery language; no waterfront, bridge, or extra monument"
+      "preserve": "extract the nocturnal Oakland Bay Bridge depth, monochrome wet-stone palette, fog, reflection behavior, and physically weighted monument scale; do not copy the empty composition, extra star monument, duplicate word monument, or let scenery outrank the customers and products"
     },
     {
       "role": "exact_brand_sculpture",
@@ -196,11 +197,18 @@
     "count": 1,
     "resolution_request": "2k",
     "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "Cinematic urban-grit Black Rose campaign at Oakland midnight: two confident customers in their exact mapped garments dominate a rain-darkened brutalist transit undercroft. Blackened steel, wet concrete aggregate, controlled Bay fog, warm sodium-vapor edge light, cool ambient sky, deep open blacks, restrained film grain, and one coherent ground plane. Place the exact Black Rose font sculpture as a weighted freestanding monument with believable base contact, occlusion, shadow, and wet-floor reflection. Product and customer first at editorial-readable scale; professional 16:9 composition; no generic showroom, hotel lobby, random graffiti, neon cyberpunk, dirt overlay, or pasted collage edges.",
+    "prompt": "Cinematic urban-grit Black Rose campaign at Oakland midnight, inspired by the approved Black Rose Bay Bridge monument hero without copying its empty tableau: two confident customers in their exact mapped garments dominate a rain-darkened civic terrace above the bay. The Bay Bridge recedes through controlled fog as an Oakland depth cue. Blackened steel, wet concrete aggregate, warm sodium-vapor edge light, cool ambient sky, deep open blacks, restrained film grain, and one coherent ground plane. Place the exact Black Rose font sculpture as one weighted freestanding monument with believable base contact, occlusion, shadow, and wet-floor reflection. Product and customer first at editorial-readable scale; professional 16:9 composition; no copied star monument, duplicate word monument, generic showroom, hotel lobby, random graffiti, neon cyberpunk, dirt overlay, or pasted collage edges.",
     "brand_context": "SkyyRose Black Rose is nocturnal Oakland gothic luxury streetwear: civic monumentality, controlled menace, customer dignity, real concrete and steel response, cinematic restraint, and exact product authority.",
-    "product_context": "Male wears exact BR-005 Signature Edition hoodie with exact BR-007 basketball shorts. BR-005 has white drawstrings, a small rose mark on the wearer's right chest, and the large floral artwork on the lower side-body panel; the large artwork must remain off every sleeve and the chest mark must remain exclusively wearer-right. BR-007 must follow the founder four-angle board exactly: black rose-pattern mesh, white waistband, OAKLAND front lettering, script Love Hurts treatment, white side panels, geometric black-and-white trim, and the physical left/right side marks. Female wears the exact founder-supplied BR-004 long hoodie dress with its centered white rose-bouquet-and-cloud graphic. Preserve construction, logos, wordmarks, placement, color, cast identity, and the exact Black Rose font sculpture. No BR-001, BR-002, bridge, waterfront, star monument, extra people, or invented text.",
+    "product_context": "Male wears exact BR-005 Signature Edition hoodie with exact BR-007 basketball shorts. BR-005 has white drawstrings, a small rose mark on the wearer's right chest, and the large floral artwork on the lower side-body panel; the large artwork must remain off every sleeve and the chest mark must remain exclusively wearer-right. BR-007 must follow the founder four-angle board exactly: black rose-pattern mesh, white waistband, OAKLAND front lettering, script Love Hurts treatment, white side panels, geometric black-and-white trim, and the physical left/right side marks. Female wears the exact founder-supplied BR-004 long hoodie dress with its centered white rose-bouquet-and-cloud graphic. Preserve construction, logos, wordmarks, placement, color, cast identity, and the exact Black Rose font sculpture. The Bay Bridge belongs only to the distant environment. No BR-001, BR-002, copied star monument, duplicate font monument, extra people, or invented text.",
     "prompt_assertions": {
-      "required_phrases": ["right chest", "side-body", "OAKLAND", "waistband"],
+      "required_phrases": [
+        "right chest",
+        "side-body",
+        "OAKLAND",
+        "waistband",
+        "Bay Bridge",
+        "Product and customer first"
+      ],
       "forbidden_phrases": [
         "emblem embroidered at left chest",
         "graphic screenprinted along the left sleeve",
@@ -208,6 +216,45 @@
         "from elbow to cuff"
       ]
     }
+  },
+  "prompt_adherence": {
+    "mode": "FAIL_CLOSED",
+    "independent_reviewer_role": "visual-commerce-qa",
+    "preflight": {
+      "required_source_roles": [
+        "composition_and_cast_authority",
+        "black_rose_collection_world_reference",
+        "exact_brand_sculpture",
+        "br-005_physical_product_authority",
+        "br-007_physical_product_authority",
+        "br-004_founder_wearer_authority"
+      ],
+      "required_prompt_claims": [
+        "Product and customer first",
+        "Bay Bridge",
+        "right chest",
+        "OAKLAND",
+        "one weighted freestanding monument"
+      ]
+    },
+    "post_capture": {
+      "minimum_total_score": 90,
+      "dimensions": [
+        { "id": "exact_product_and_cast_fidelity", "weight": 40 },
+        { "id": "customer_product_focal_hierarchy", "weight": 20 },
+        { "id": "black_rose_bay_bridge_world_match", "weight": 15 },
+        { "id": "single_authorized_sculpture", "weight": 10 },
+        { "id": "native_optical_integration", "weight": 15 }
+      ]
+    },
+    "hard_fail_invariants": [
+      "wrong SKU, garment construction, logo placement, wordmark, or cast identity",
+      "customer or exact product is not one of the first two focal levels",
+      "copied star monument, duplicate word monument, or any second brand monument",
+      "Bay Bridge or scenery overtakes the customers and garments",
+      "floating contact, pasted edges, incoherent light, or unbound sculpture geometry"
+    ],
+    "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY"
   },
   "provider_capability": {
     "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
@@ -254,10 +301,10 @@
     "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
-    "prompt_sha256": "9d47ca0d0bd5f60891ddee3a42b30b0cec65f8e232306640954756ec3951e6d6",
-    "prompt_review_receipt": "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T123014719152Z.json",
+    "prompt_sha256": "3e9236ad692acd7316c48d48a899b0056c2facce8ad6d294fb679affddb84af4",
+    "prompt_review_receipt": null,
     "require_candidate_bound_approval": true,
-    "approval_receipt": "Comfy/receipts/br-commerce-2-paid-generation-approval-20260902T123217Z.json",
+    "approval_receipt": null,
     "approval_consumed": true,
     "on_failure": "OPEN_ISSUE_AND_STOP",
     "rejected_candidate_may_be_next_input": false
@@ -266,7 +313,7 @@
     "observe": [
       "verify catalog and image-manifest hashes",
       "verify every source hash and required dependency",
-      "load prior rejection and scene-direction constraints"
+      "load prior rejection, approved Black Rose Bay Bridge world reference, and scene-direction constraints"
     ],
     "orient": [
       "use Higgsfield Product Photoshoot hero_banner for a native 16:9 campaign candidate",
@@ -288,6 +335,8 @@
     "candidate_id": "BR-COMMERCE-2-HF-PILOT-20260902-A1",
     "provider_job_id": "4d961ef1-a45d-4b6f-9acb-57df6af7a951",
     "generation_receipt": "Comfy/receipts/br-commerce-2-higgsfield-generate-20260902T123611624331Z.json",
+    "prior_prompt_review_receipt": "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T123014719152Z.json",
+    "prior_paid_approval_receipt": "Comfy/receipts/br-commerce-2-paid-generation-approval-20260902T123217Z.json",
     "candidate_path": "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-HF-PILOT-20260902-A1.png",
     "candidate_sha256": "224eb55a9baa7495a80b50b9b61a4df596dc9840c92e9820b8de5a4a91928fad",
     "credits_spent": 8.5,
@@ -297,6 +346,7 @@
   "execute_blockers": [
     "the single approved paid attempt has been consumed",
     "candidate hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry",
+    "the revised Bay Bridge world prompt has no current independent prompt-review receipt or new candidate-bound approval",
     "automatic paid retry is forbidden",
     "explicit protected masks and a local Comfy native-integration plan are required before correction"
   ],

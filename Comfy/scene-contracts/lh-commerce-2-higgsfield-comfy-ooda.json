@@ -26,18 +26,18 @@
     "target_height": 941,
     "story_role": "The Fractured Chamber",
     "customer_priority": "Product-readable confident fashion protagonist; cast remains blocked until founder-approved authority exists.",
-    "environment": "The Fractured Chamber as an abandoned civic transit hall after midnight: fractured black marble and concrete, red emergency practicals, damp floor, and the enchanted rose under glass.",
+    "environment": "The Fractured Chamber as an urban-gothic rose aisle after midnight: cathedral-scale pointed arches recast in black civic stone and aged iron, fractured masonry, red practicals, a wet reflective floor, and the enchanted rose under glass.",
     "brand_object": "The exact protected enchanted rose remains sharply legible opposite the product.",
     "energy_contract": "Comfy/SCENE-ENERGY-BAR.md"
   },
   "creative_direction": {
     "style": "cinematic_urban_grit",
-    "story_role": "One defiant customer confronts the enchanted rose inside a fractured after-hours civic chamber; the exact LH-003 shorts remain the emotional and commercial proof point.",
+    "story_role": "One defiant customer owns a fractured urban-gothic rose aisle after midnight; the exact LH-003 shorts remain the emotional and commercial proof point while the aisle and physically grounded rose monument establish the Love Hurts world.",
     "focal_hierarchy": [
       "exact LH-003 shorts on an approved customer at product-readable scale",
       "customer expression, stance, and skin tone",
       "enchanted rose under glass",
-      "fractured civic architecture and red emergency light"
+      "urban-gothic rose aisle, fractured civic stone, and red emergency light"
     ],
     "material_language": [
       "cracked black marble",
@@ -46,13 +46,16 @@
       "damp floor with blood-red practical reflections"
     ],
     "place_cues": [
-      "abandoned transit concourse",
+      "pointed-arch urban rose aisle recast in civic stone and iron",
+      "physically weighted Love Hurts monument scale",
       "red emergency fixtures",
       "cold midnight ambient spill"
     ],
-    "logo_off_recognition": "Romantic danger is communicated through one defiant customer, fractured civic stone, red emergency light, and a protected rose under glass—not generic hearts.",
+    "logo_off_recognition": "Romantic danger is communicated through one defiant customer, a deep red urban-gothic rose aisle, fractured civic stone, physically weighted monument scale, and a protected rose under glass—not generic hearts.",
     "anti_generic": [
       "no fantasy castle, Beast character, or ballroom",
+      "no robed fantasy figure or empty monument tableau",
+      "no copied Love Hurts word monument, star/heart monument, or any monument beyond the single protected enchanted-rose dome and plinth",
       "no generic hearts, flower wall, or red velvet lounge",
       "no glamour retouch that erases concrete and skin texture",
       "no tiny garment, floating rose dome, or pasted customer"
@@ -133,11 +136,11 @@
       "preserve": "wearer-right zippered side pocket and black-mesh inset with the embroidered red rose bouquet, green stems, and white-and-blue cloud"
     },
     {
-      "role": "approved_environment_plate",
-      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-shorts-chamber-plate-v1.png",
-      "sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+      "role": "love_hurts_collection_world_reference",
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
+      "sha256": "000ec8308a8d72daa691ca8712ef751d7d8e9b9805a4b08060ebc9a59a2bc3a3",
       "send_to_higgsfield": true,
-      "preserve": "Fractured Chamber spatial identity and wide composition language"
+      "preserve": "extract only the deep red urban-gothic rose-aisle architecture, wet black floor, central depth, reflection behavior, and physically weighted scale; do not copy the robed figure, empty tableau, Love Hurts word monument, star/heart monument, or any monument beyond the separately bound single protected enchanted-rose dome and plinth; never allow the environment to outrank the approved customer and exact LH-003 shorts"
     },
     {
       "role": "protected_enchanted_rose",
@@ -154,19 +157,59 @@
     "count": 1,
     "resolution_request": "2k",
     "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "Cinematic urban-grit Love Hurts campaign in The Fractured Chamber, reimagined as an abandoned civic transit hall after midnight. One founder-approved customer in the exact LH-003 shorts stands left at product-readable scale; preserve exactly four zippered pockets, two side and two back, with a zipper on every pocket. The protected enchanted rose under glass stands right on a weighted plinth. Fractured black marble, raw concrete, aged steel, damp satin floor, red emergency practical light, cold ambient spill, deep detailed shadows, restrained film grain, believable contact and occlusion. Professional 16:9 customer-and-product hierarchy; no castle, ballroom, Beast character, generic hearts, flower wall, velvet lounge, pasted edges, open pockets, zipperless pockets, extra pockets, or invented garment details.",
+    "prompt": "Cinematic urban-grit Love Hurts campaign in The Fractured Chamber, inspired by the approved Love Hurts rose-aisle monument hero without copying its empty tableau: an urban-gothic aisle after midnight with pointed arches recast in fractured black civic stone and aged iron. One founder-approved customer in the exact LH-003 shorts dominates the left-center at product-readable scale; preserve exactly four zippered pockets, two side and two back, with a zipper on every pocket. The single allowed monument is the separately bound protected enchanted rose under glass, standing right on one weighted plinth. Wet black floor, deep red practical light, cold ambient spill, detailed shadows, restrained film grain, believable contact and occlusion. Professional 16:9 customer-and-product hierarchy; no copied Love Hurts word monument, copied star/heart monument, other monument, robed fantasy figure, castle, ballroom, Beast character, generic hearts, flower wall, velvet lounge, pasted edges, open pockets, zipperless pockets, extra pockets, or invented garment details.",
     "brand_context": "Love Hurts is controlled romantic urban cinema: defiance inside fractured civic architecture, red emergency light, enchanted drama, customer dignity, and exact luxury streetwear product clarity.",
-    "product_context": "Preserve the exact LH-003 four-view construction without mirroring. The shorts use white perforated mesh with an all-over orange-red rose-bouquet-on-cloud field, a black ribbed waistband, and angular black leg binding traced by red and white stripes. Pocket topology is invariant: exactly four zippered pockets total, comprising two side hand pockets and two rear pockets; every pocket must visibly retain its zipper closure. The wearer-left front/side carries the large red Love Hurts script and a black-mesh inset with the smaller Love Hurts rose/heart emblem. The wearer-right black-mesh inset carries the embroidered red rose bouquet with green stems and a white-and-blue cloud. The back has two black-trimmed zippered rear pockets plus a large red-and-black wearer-left Love Hurts treatment. Do not render open welts, zipperless pockets, cargo pockets, patch pockets, or any extra pocket. Use no customer identity until founder-approved on-model authority and a protected garment matte are bound.",
+    "product_context": "Preserve the exact LH-003 four-view construction without mirroring. The shorts use white perforated mesh with an all-over orange-red rose-bouquet-on-cloud field, a black ribbed waistband, and angular black leg binding traced by red and white stripes. Pocket topology is invariant: exactly four zippered pockets total, comprising two side hand pockets and two rear pockets; every pocket must visibly retain its zipper closure. The wearer-left front/side carries the large red Love Hurts script and a black-mesh inset with the smaller Love Hurts rose/heart emblem. The wearer-right black-mesh inset carries the embroidered red rose bouquet with green stems and a white-and-blue cloud. The back has two black-trimmed zippered rear pockets plus a large red-and-black wearer-left Love Hurts treatment. Do not render open welts, zipperless pockets, cargo pockets, patch pockets, or any extra pocket. The collection-world reference supplies architecture and lighting only; its word sculpture and star/heart monument are forbidden. Use no customer identity until founder-approved on-model authority and a protected garment matte are bound.",
     "prompt_assertions": {
       "required_phrases": [
         "LH-003",
         "Fractured Chamber",
         "enchanted rose",
+        "rose-aisle monument hero",
         "four zippered pockets",
         "two side and two back"
       ],
       "forbidden_phrases": ["front graphic on the back", "generic red shorts"]
     }
+  },
+  "prompt_adherence": {
+    "mode": "FAIL_CLOSED",
+    "independent_reviewer_role": "visual-commerce-qa",
+    "preflight": {
+      "required_source_roles": [
+        "lh-003_physical_front",
+        "lh-003_physical_back",
+        "lh-003_physical_wearer_left",
+        "lh-003_physical_wearer_right",
+        "love_hurts_collection_world_reference",
+        "protected_enchanted_rose"
+      ],
+      "required_prompt_claims": [
+        "customer-and-product hierarchy",
+        "rose-aisle monument hero",
+        "four zippered pockets",
+        "two side and two back",
+        "single allowed monument"
+      ]
+    },
+    "post_capture": {
+      "minimum_total_score": 90,
+      "dimensions": [
+        { "id": "lh003_four_view_product_fidelity", "weight": 40 },
+        { "id": "customer_product_focal_hierarchy", "weight": 20 },
+        { "id": "love_hurts_rose_aisle_world_match", "weight": 15 },
+        { "id": "single_protected_rose_monument", "weight": 10 },
+        { "id": "native_optical_integration", "weight": 15 }
+      ]
+    },
+    "hard_fail_invariants": [
+      "pocket count, pocket location, zipper closure, directional artwork, or garment construction drift",
+      "unapproved wearer identity or customer/product hierarchy below the first two focal levels",
+      "copied Love Hurts word monument, copied star/heart monument, or any monument beyond the protected rose dome and plinth",
+      "robed fantasy figure or empty monument tableau",
+      "floating contact, pasted edges, incoherent light, or unbound rose geometry"
+    ],
+    "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY"
   },
   "provider_capability": {
     "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
@@ -206,7 +249,7 @@
     "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
-    "prompt_sha256": "223cc1b4ddc1564770696b4ea5e605aa0d51f925d0be3f34cb17430176488b8b",
+    "prompt_sha256": "c7542b841a53a4c04c7e0b1bfee069b3d6abee90e7c95811d8c969953d8ed034",
     "prompt_review_receipt": null,
     "require_candidate_bound_approval": true,
     "approval_receipt": null,
@@ -215,7 +258,7 @@
   },
   "ooda": {
     "observe": [
-      "verify catalog, image SOT, all four directional physical product views, founder-confirmed four-zipper pocket topology, chamber plate, and rose hashes",
+      "verify catalog, image SOT, all four directional physical product views, founder-confirmed four-zipper pocket topology, approved Love Hurts collection-world reference, and rose hashes",
       "confirm approved on-model target and garment matte exist"
     ],
     "orient": [

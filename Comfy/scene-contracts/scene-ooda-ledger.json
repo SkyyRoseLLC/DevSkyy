@@ -27,7 +27,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "90b918d7c13aaa9dc20a835d0ed5fcc8b403069d7322a6dc3ed558bea71fcd1a",
+      "contract_sha256": "54494f55cf351ecd0ef0f8d71610bd35ae56383677669ab4771331f35f9d2e9c",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json",
@@ -39,6 +39,7 @@
         "Comfy/receipts/br-commerce-2-manager-triage-20260902T123710Z.json"
       ],
       "outputs": [
+        "approved Black Rose Bay Bridge collection hero is hash-bound as world inspiration; product/customer hierarchy remains primary",
         "source and runtime dependencies PASS",
         "prior no-spend enhanced prompt PASS retained as history only",
         "cinematic urban-grit creative and optical contracts PASS",
@@ -64,7 +65,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "e336beca09aed49047a208cd0cd887b06975838b559fb670730980c82d953f74",
+      "contract_sha256": "fc991963afe4b4631b45a6dd938601452a600e91a87d8c2b208a3927b8872a6a",
       "evidence": [
         "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
         "tasks/lh-003-source-authority-intake-20260902.json"
@@ -72,6 +73,7 @@
       "outputs": [
         "four directional physical product views and hash-bound source-authority receipt PASS",
         "founder-confirmed two side plus two rear pocket topology with zipper closures on all four pockets PASS",
+        "approved Love Hurts rose-aisle collection hero is hash-bound as world inspiration; customer and exact product remain primary",
         "Fractured Chamber and enchanted-rose hashes PASS",
         "cinematic urban-grit creative and optical contracts PASS",
         "local Comfy correction-only and one-attempt credit policies PASS"
