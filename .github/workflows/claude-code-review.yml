@@ -12,6 +12,10 @@ on:
 
 jobs:
   claude-review:
+    # The Claude action rejects bot-authored events before it can review them.
+    # Dependabot updates are handled by Dependabot's own rebase/merge flow and
+    # should produce a skipped advisory review, not a misleading failure.
+    if: github.event.pull_request.user.login != 'dependabot[bot]'
     # Optional: Filter by PR author
     # if: |
     #   github.event.pull_request.user.login == 'external-contributor' ||
