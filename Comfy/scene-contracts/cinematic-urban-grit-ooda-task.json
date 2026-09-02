@@ -1,7 +1,7 @@
 {
   "schema": "skyyrose.scene-creative-hardening-task/1",
   "task_id": "SCENE-CINEMATIC-URBAN-GRIT-OODA-20260902",
-  "state": "NEEDS_REVIEW",
+  "state": "FAIL",
   "project_manager": "fashion-theme-lead",
   "scope": {
     "scene_ids": [
@@ -73,18 +73,20 @@
     "founder_promotion_decision"
   ],
   "issues": [
-    "BR-COMMERCE-2 and SIG-COMMERCE-1 require new prompt-review receipts because the cinematic urban-grit prompt mutation invalidated prior prompt evidence.",
+    "BR-COMMERCE-2 candidate BR-COMMERCE-2-HF-PILOT-20260902-A1 hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry; it is quarantined with no retry.",
+    "SIG-COMMERCE-1 still requires a current prompt-review receipt before any separate execution request.",
     "LH-COMMERCE-2 remains blocked on a founder-approved LH-003 wearer and protected garment matte.",
     "SIG-COMMERCE-2 remains blocked on the correct founder-approved SG-006 woman; the prior wearer stays deny-listed.",
     "SIG-COMMERCE-3 remains blocked on verified SG-001 and SG-003 mask-bound correction receipts and must not be regenerated full-frame."
   ],
   "manager_verification": {
-    "status": "PASS_CONFIGURATION_ONLY",
+    "status": "FAIL_CANDIDATE_PRODUCT_AUTHORITY",
     "evidence": [
       "All five source, creative, optical, local-Comfy, team, and credit-control contracts validate.",
       "10 scene OODA unit tests pass.",
-      "All five paid_execution_ready values remain false.",
-      "No provider generation or paid action was executed."
+      "One founder-authorized BR-COMMERCE-2 Higgsfield Product Photoshoot candidate was generated for 8.5 credits.",
+      "The 2688x1520 candidate is hash-bound and quarantined after manager hard-fail triage.",
+      "No retry, Comfy staging, promotion, wiring, or deployment was performed."
     ]
   },
   "founder_approval": "PENDING",

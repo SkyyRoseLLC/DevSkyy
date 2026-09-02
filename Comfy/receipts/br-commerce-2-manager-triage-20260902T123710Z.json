@@ -1,0 +1,43 @@
+{
+  "schema": "skyyrose.scene-manager-triage/1",
+  "scene_id": "BR-COMMERCE-2",
+  "candidate_id": "BR-COMMERCE-2-HF-PILOT-20260902-A1",
+  "recorded_at": "2026-09-02T12:37:10Z",
+  "reviewer": {
+    "role": "fashion-theme-lead",
+    "independent_visual_review": false,
+    "purpose": "Hard-fail triage before local Comfy staging"
+  },
+  "candidate": {
+    "path": "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-HF-PILOT-20260902-A1.png",
+    "sha256": "224eb55a9baa7495a80b50b9b61a4df596dc9840c92e9820b8de5a4a91928fad",
+    "width": 2688,
+    "height": 1520,
+    "provider_job_id": "4d961ef1-a45d-4b6f-9acb-57df6af7a951",
+    "generation_receipt": "Comfy/receipts/br-commerce-2-higgsfield-generate-20260902T123611624331Z.json",
+    "generation_receipt_sha256": "355b84e698c93248b01a0a6060aeb05de8f9b7f39256a31ea817b8eda1eeab99",
+    "credits_spent": 8.5
+  },
+  "observations": {
+    "campaign_energy": "PASS_PRELIMINARY",
+    "customer_presence": "PASS_PRELIMINARY",
+    "urban_grit_environment": "PASS_PRELIMINARY",
+    "lighting_and_grounding": "PASS_PRELIMINARY",
+    "exact_product_fidelity": "HARD_FAIL",
+    "exact_cast_identity": "HARD_FAIL",
+    "exact_sculpture_geometry": "HARD_FAIL"
+  },
+  "hard_fails": [
+    "BR-005 small chest rose moved from the wearer's right chest in the physical authority to the wearer's left chest in the candidate.",
+    "BR-007 shorts cut, side-panel geometry, physical side marks, and all-over construction do not precisely match the founder four-angle authority.",
+    "The founder-approved BR-004 woman was recast with different facial identity and hair.",
+    "The BR-004 center artwork was regenerated rather than preserved from the approved long-hoodie source.",
+    "The exact two-level protected Black Rose sculpture geometry was changed into a different four-level stack."
+  ],
+  "disposition": "QUARANTINED_NO_RETRY",
+  "comfy_staging_allowed": false,
+  "next_generation_input_allowed": false,
+  "automatic_paid_retry_allowed": false,
+  "promotion_allowed": false,
+  "next_safe_route": "Return to the approved cast and physical product authorities; create explicit protected masks and use local Comfy only for environment reconstruction and native optical integration without redrawing cast, garment, logos, or sculpture."
+}

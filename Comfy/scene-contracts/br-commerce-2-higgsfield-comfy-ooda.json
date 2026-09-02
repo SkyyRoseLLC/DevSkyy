@@ -2,7 +2,7 @@
   "schema": "skyyrose.scene-ooda/1",
   "scene_id": "BR-COMMERCE-2",
   "collection": "black-rose",
-  "status": "BLOCKED_PRE_GENERATION",
+  "status": "FAIL_CANDIDATE_QUARANTINED",
   "purpose": "Create one native 16:9 Black Rose campaign candidate in Higgsfield, then route it through Comfy for bounded correction, integration, evidence, and independent review.",
   "fashion_theme_team": {
     "plugin": "fashion-theme-team@personal",
@@ -212,6 +212,14 @@
   "provider_capability": {
     "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
     "exact_product_guarantee": false,
+    "adapter": "higgsfield_product_photoshoot",
+    "model_id": "gpt_image_2",
+    "operation": "scene_generation",
+    "registry_path": "Comfy/scene-contracts/higgsfield-product-photoshoot-model-registry-20260902.json",
+    "registry_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
+    "runtime_receipt": "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
+    "runtime_receipt_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
+    "estimated_credits": 8.5,
     "rule": "Provider success is not product approval, native-integration approval, or promotion."
   },
   "comfy": {
@@ -240,14 +248,17 @@
   "credit_control": {
     "mode": "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
     "max_paid_generations": 1,
-    "paid_generations_recorded": 0,
+    "paid_generations_recorded": 1,
     "automatic_paid_retries": false,
+    "planned_candidate_id": "BR-COMMERCE-2-HF-PILOT-20260902-A1",
+    "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
     "prompt_sha256": "9d47ca0d0bd5f60891ddee3a42b30b0cec65f8e232306640954756ec3951e6d6",
-    "prompt_review_receipt": null,
+    "prompt_review_receipt": "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T123014719152Z.json",
     "require_candidate_bound_approval": true,
-    "approval_receipt": null,
+    "approval_receipt": "Comfy/receipts/br-commerce-2-paid-generation-approval-20260902T123217Z.json",
+    "approval_consumed": true,
     "on_failure": "OPEN_ISSUE_AND_STOP",
     "rejected_candidate_may_be_next_input": false
   },
@@ -273,8 +284,21 @@
       "never promote, wire, deploy, or overwrite SOT automatically"
     ]
   },
+  "last_execution": {
+    "candidate_id": "BR-COMMERCE-2-HF-PILOT-20260902-A1",
+    "provider_job_id": "4d961ef1-a45d-4b6f-9acb-57df6af7a951",
+    "generation_receipt": "Comfy/receipts/br-commerce-2-higgsfield-generate-20260902T123611624331Z.json",
+    "candidate_path": "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-HF-PILOT-20260902-A1.png",
+    "candidate_sha256": "224eb55a9baa7495a80b50b9b61a4df596dc9840c92e9820b8de5a4a91928fad",
+    "credits_spent": 8.5,
+    "manager_triage": "Comfy/receipts/br-commerce-2-manager-triage-20260902T123710Z.json",
+    "disposition": "QUARANTINED_NO_RETRY"
+  },
   "execute_blockers": [
-    "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+    "the single approved paid attempt has been consumed",
+    "candidate hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry",
+    "automatic paid retry is forbidden",
+    "explicit protected masks and a local Comfy native-integration plan are required before correction"
   ],
   "promotion_gate": "FOUNDER_APPROVED_VISUAL"
 }

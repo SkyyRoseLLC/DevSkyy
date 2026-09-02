@@ -1,0 +1,208 @@
+{
+  "schema": "skyyrose.scene-ooda-receipt/1",
+  "scene_id": "BR-COMMERCE-2",
+  "action": "higgsfield-generate",
+  "recorded_at": "2026-09-02T12:36:11.624331+00:00",
+  "payload": {
+    "observe": {
+      "scene_id": "BR-COMMERCE-2",
+      "catalog_checks": [
+        {
+          "path": "/Users/theceo/DevSkyy/skyyrose-catalog.csv",
+          "exists": true,
+          "actual_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+          "expected_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/data/sot-images.json",
+          "exists": true,
+          "actual_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+          "expected_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+          "status": "PASS"
+        }
+      ],
+      "source_checks": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+          "exists": true,
+          "actual_sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+          "expected_sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
+          "exists": true,
+          "actual_sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b",
+          "expected_sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+          "exists": true,
+          "actual_sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+          "expected_sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+          "exists": true,
+          "actual_sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+          "expected_sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+          "exists": true,
+          "actual_sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+          "expected_sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+          "exists": true,
+          "actual_sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+          "expected_sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png",
+          "exists": true,
+          "actual_sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+          "expected_sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+          "status": "PASS"
+        }
+      ],
+      "dependency_checks": [
+        {
+          "path": "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp",
+          "exists": true,
+          "actual_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+          "expected_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-005-ghost-front.webp",
+          "exists": true,
+          "actual_sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61",
+          "expected_sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/hub/br-007-front.webp",
+          "exists": true,
+          "actual_sha256": "b9473ded79d2ee52b7d132790574405197191bc3427411a5cff55616382095a7",
+          "expected_sha256": "b9473ded79d2ee52b7d132790574405197191bc3427411a5cff55616382095a7",
+          "status": "PASS"
+        }
+      ],
+      "forbidden_input_checks": [],
+      "forbidden_routing_clean": true,
+      "team_contract_check": {
+        "path": "/Users/theceo/DevSkyy/Comfy/scene-contracts/scene-ooda-index.json",
+        "plugin": "fashion-theme-team@personal",
+        "phase_id": "BR-COMMERCE-2-OODA-1",
+        "current_owner": "catalog-sot-integrator",
+        "failures": [],
+        "status": "PASS"
+      },
+      "creative_direction_check": {
+        "status": "PASS",
+        "failures": []
+      },
+      "optical_contract_check": {
+        "status": "PASS",
+        "failures": []
+      },
+      "comfy_contract_check": {
+        "status": "PASS",
+        "failures": []
+      },
+      "provider_capability_check": {
+        "status": "PASS",
+        "failures": [],
+        "registry_check": {
+          "path": "/Users/theceo/DevSkyy/Comfy/scene-contracts/higgsfield-product-photoshoot-model-registry-20260902.json",
+          "exists": true,
+          "actual_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
+          "expected_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
+          "status": "PASS"
+        },
+        "runtime_receipt_check": {
+          "path": "/Users/theceo/DevSkyy/Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
+          "exists": true,
+          "actual_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
+          "expected_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
+          "status": "PASS"
+        },
+        "model": "higgsfield-product-photoshoot-gpt-image-2",
+        "operation": "scene_generation"
+      },
+      "credit_control_check": {
+        "status": "PASS",
+        "failures": [],
+        "prompt_review": {
+          "status": "PASS",
+          "path": "/Users/theceo/DevSkyy/Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T123014719152Z.json",
+          "failures": []
+        },
+        "paid_approval": {
+          "status": "PASS",
+          "path": "/Users/theceo/DevSkyy/Comfy/receipts/br-commerce-2-paid-generation-approval-20260902T123217Z.json",
+          "failures": []
+        },
+        "attempt_available": true
+      },
+      "source_ready": true,
+      "dependencies_ready": true,
+      "configuration_ready": true,
+      "paid_authorized": true,
+      "paid_route_permitted": true,
+      "execute_blockers": [],
+      "paid_execution_ready": true
+    },
+    "result": {
+      "command": [
+        "higgsfield",
+        "--json",
+        "product-photoshoot",
+        "create",
+        "--mode",
+        "hero_banner",
+        "--prompt",
+        "Cinematic urban-grit Black Rose campaign at Oakland midnight: two confident customers in their exact mapped garments dominate a rain-darkened brutalist transit undercroft. Blackened steel, wet concrete aggregate, controlled Bay fog, warm sodium-vapor edge light, cool ambient sky, deep open blacks, restrained film grain, and one coherent ground plane. Place the exact Black Rose font sculpture as a weighted freestanding monument with believable base contact, occlusion, shadow, and wet-floor reflection. Product and customer first at editorial-readable scale; professional 16:9 composition; no generic showroom, hotel lobby, random graffiti, neon cyberpunk, dirt overlay, or pasted collage edges.",
+        "--aspect_ratio",
+        "16:9",
+        "--count",
+        "1",
+        "--brand_context",
+        "SkyyRose Black Rose is nocturnal Oakland gothic luxury streetwear: civic monumentality, controlled menace, customer dignity, real concrete and steel response, cinematic restraint, and exact product authority.",
+        "--product_context",
+        "Male wears exact BR-005 Signature Edition hoodie with exact BR-007 basketball shorts. BR-005 has white drawstrings, a small rose mark on the wearer's right chest, and the large floral artwork on the lower side-body panel; the large artwork must remain off every sleeve and the chest mark must remain exclusively wearer-right. BR-007 must follow the founder four-angle board exactly: black rose-pattern mesh, white waistband, OAKLAND front lettering, script Love Hurts treatment, white side panels, geometric black-and-white trim, and the physical left/right side marks. Female wears the exact founder-supplied BR-004 long hoodie dress with its centered white rose-bouquet-and-cloud graphic. Preserve construction, logos, wordmarks, placement, color, cast identity, and the exact Black Rose font sculpture. No BR-001, BR-002, bridge, waterfront, star monument, extra people, or invented text.",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+        "--image",
+        "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+        "--image",
+        "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+        "--image",
+        "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "failed": [],
+        "job_ids": ["4d961ef1-a45d-4b6f-9acb-57df6af7a951"],
+        "urls": [
+          "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png"
+        ]
+      },
+      "stderr": ""
+    }
+  }
+}

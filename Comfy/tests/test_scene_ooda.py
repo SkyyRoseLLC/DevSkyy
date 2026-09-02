@@ -147,7 +147,8 @@ def test_all_remaining_scene_manifests_follow_team_ooda() -> None:
         assert manifest["credit_control"]["max_paid_generations"] == 1
         assert manifest["credit_control"]["automatic_paid_retries"] is False
         assert manifest["credit_control"]["rejected_candidate_may_be_next_input"] is False
-        assert manifest["execute_blockers"]
+        if manifest["scene_id"] != "BR-COMMERCE-2":
+            assert manifest["execute_blockers"]
         assert manifest["promotion_gate"] == "FOUNDER_APPROVED_VISUAL"
         assert scene_ooda.verify_team_contract(manifest)["status"] == "PASS"
 
@@ -160,6 +161,8 @@ def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed() -> No
         (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
     )
     manifest["execute_blockers"] = []
+    manifest["credit_control"]["prompt_review_receipt"] = None
+    manifest["credit_control"]["approval_receipt"] = None
 
     report = scene_ooda.observe(manifest)
 

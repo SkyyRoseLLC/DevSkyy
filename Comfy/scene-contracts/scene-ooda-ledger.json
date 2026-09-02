@@ -4,7 +4,7 @@
   "mission": "Execute the five remaining mapped commerce scenes through a cinematic urban-grit, product-first OODA with Fashion Theme Team governance and fail-closed credit control.",
   "active_task": {
     "path": "Comfy/scene-contracts/cinematic-urban-grit-ooda-task.json",
-    "state": "NEEDS_REVIEW"
+    "state": "FAIL"
   },
   "team_index": {
     "path": "Comfy/scene-contracts/scene-ooda-index.json",
@@ -22,27 +22,39 @@
     {
       "id": "BR-COMMERCE-2-OODA-1",
       "scene_id": "BR-COMMERCE-2",
-      "state": "BLOCKED",
-      "owner": "catalog-sot-integrator",
+      "state": "FAILED",
+      "owner": "product-fidelity-image-edits",
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "1422c1b6873f14481ee52b82f7cfe7c7dd97b14056842f928630884b53d5cecb",
+      "contract_sha256": "90b918d7c13aaa9dc20a835d0ed5fcc8b403069d7322a6dc3ed558bea71fcd1a",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
-        "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json"
+        "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json",
+        "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T123004088681Z.json",
+        "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T123014719152Z.json",
+        "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
+        "Comfy/receipts/br-commerce-2-paid-generation-approval-20260902T123217Z.json",
+        "Comfy/receipts/br-commerce-2-higgsfield-generate-20260902T123611624331Z.json",
+        "Comfy/receipts/br-commerce-2-manager-triage-20260902T123710Z.json"
       ],
       "outputs": [
         "source and runtime dependencies PASS",
         "prior no-spend enhanced prompt PASS retained as history only",
         "cinematic urban-grit creative and optical contracts PASS",
-        "local Comfy correction-only and one-attempt credit policies PASS"
+        "local Comfy correction-only and one-attempt credit policies PASS",
+        "one 8.5-credit 2688x1520 candidate generated and hash-bound",
+        "candidate quarantined before Comfy staging"
       ],
       "blockers": [
-        "current cinematic urban-grit prompt needs a new hash-bound no-spend review",
-        "candidate-bound paid preflight approval is not recorded"
+        "single approved paid attempt consumed",
+        "BR-005 chest mark moved to the wrong side",
+        "BR-007 physical construction drifted",
+        "BR-004 founder-approved cast identity and center artwork were regenerated",
+        "protected Black Rose sculpture geometry was changed",
+        "explicit protected masks and local Comfy native-integration plan are required"
       ],
-      "next_authority": "approved provider runtime, then independent visual-commerce-qa"
+      "next_authority": "product-fidelity-image-edits mask and protected-source recovery plan; no automatic paid retry"
     },
     {
       "id": "LH-COMMERCE-2-OODA-1",
@@ -52,7 +64,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "0c156463443110d95f6b0312719eee37350169e64b2653d1784f2bdc9e4cccc7",
+      "contract_sha256": "9752d20efe2fc86346fcf2b338429f1ae68303d0049e5bbfbdb75f3d09eb2c6c",
       "evidence": [],
       "outputs": [
         "physical front/back, Fractured Chamber, and enchanted-rose hashes PASS",
@@ -74,7 +86,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json",
-      "contract_sha256": "0a8798b7845d46cb9ddf4aa890bcd63c37c2b1e98251e706363abfbb12e0b90e",
+      "contract_sha256": "1afd8359ddf6292925ca47187a8fb5caa2e84869d92ba6122f39c8c3475db727",
       "evidence": ["Comfy/LOG.md"],
       "outputs": [
         "protected customer/product, physical products, environment, and cleaned sculpture hashes PASS",
@@ -95,7 +107,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "42299b11d1593bd88974f3d829ddeac916d552801f8b7f5e8bd0074178657a79",
+      "contract_sha256": "2221f0be79b5d1bf8e2132dfcfbce999abf8f8751f8f0a222b4f56c90f772004",
       "evidence": [],
       "outputs": [
         "allowed male/products/environment/monument hashes PASS",
@@ -117,7 +129,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json",
-      "contract_sha256": "5ebc2e1d1958cb026a4815d29d7f88e1b83e60d4dbca8c4721b060bde24a093e",
+      "contract_sha256": "76664c2345bbd1bad4d710d7809776bffc64ce86db64da711f37c0f6a8e0b2e2",
       "evidence": [],
       "outputs": [
         "founder composition, three protected looks, and five physical product hashes PASS",
