@@ -1,0 +1,16 @@
+output_prefix: sig-commerce-1/native-correction-v2
+pipeline:
+  - fragment: sig1-nano-banana-correction-v2
+    alias: sig1-correction
+    inputs:
+      batch_images_images_image0: $asset.sig-commerce-1/sig1-native-integration-base-v1.png
+      batch_images_images_image1: $asset.sig-commerce-1/sg-009-sg-007-protected-model-v2.png
+      batch_images_images_image2: $asset.sig-commerce-1/sig1-font-statue-clean-transparent-v2.png
+    params:
+      nano_banana_pro_google_gemini_image_prompt: >-
+        Edit reference image 1 as the fixed base photograph. Do not change its room, camera, Golden Gate view, wet black floor, composition, person position, or lighting design. Use reference image 2 as the exact identity and product authority: restore the same adult male face and hair; the exact black beanie with its small square front label; and the exact black satin sherpa jacket with white sherpa collar and lining, zipper, flap pockets, sleeve label, seams, proportions, and exact red rose chest embroidery. Keep the black trousers and black-and-white sneakers. Use reference image 3 as exact sculpture authority: preserve the gold cursive Skyy Rose letterforms, dimensional proportions, copper rose, spacing, and wording exactly while integrating it naturally on the left wall. Correct only semantic drift from reference image 1. Preserve its native contact shadows, wet-floor reflections, warm edge light, cool window fill, depth, grain, and full-body stance. Do not invent, replace, simplify, stylize, recolor, resize, or move any garment component, logo, label, face, limb, shoe, letter, rose, bridge, person, or prop. Return one photorealistic 2:3 luxury campaign image with no cutout halo and no floating feet.
+      nano_banana_pro_google_gemini_image_model: gemini-3-pro-image-preview
+      nano_banana_pro_google_gemini_image_seed: 913009008
+      nano_banana_pro_google_gemini_image_aspect_ratio: "2:3"
+      nano_banana_pro_google_gemini_image_resolution: 1K
+      nano_banana_pro_google_gemini_image_response_modalities: IMAGE
