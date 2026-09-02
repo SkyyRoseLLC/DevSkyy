@@ -196,6 +196,330 @@ def verify_optical_contract(manifest: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def verify_prompt_adherence(manifest: dict[str, Any]) -> dict[str, Any]:
+    """Validate a fail-closed preflight and post-capture adherence contract."""
+    if "prompt_adherence" not in manifest:
+        return {"status": "PASS", "configured": False, "failures": []}
+    adherence = manifest["prompt_adherence"]
+
+    failures: list[str] = []
+    if not isinstance(adherence, dict):
+        return {
+            "status": "INVALID_PROMPT_ADHERENCE",
+            "configured": True,
+            "failures": ["prompt_adherence must be an object"],
+        }
+    if adherence.get("mode") != "FAIL_CLOSED":
+        failures.append("prompt_adherence mode must be FAIL_CLOSED")
+    if (
+        not isinstance(adherence.get("independent_reviewer_role"), str)
+        or not adherence["independent_reviewer_role"].strip()
+    ):
+        failures.append("independent_reviewer_role must be a non-empty string")
+
+    preflight = adherence.get("preflight")
+    if not isinstance(preflight, dict):
+        failures.append("preflight must be an object")
+    else:
+        required_roles = preflight.get("required_source_roles")
+        if (
+            not isinstance(required_roles, list)
+            or not required_roles
+            or not all(isinstance(role, str) and role.strip() for role in required_roles)
+        ):
+            failures.append("required_source_roles must contain non-empty strings")
+        else:
+            routed_roles = [
+                binding.get("role")
+                for binding in manifest.get("source_bindings", [])
+                if isinstance(binding, dict) and binding.get("send_to_higgsfield") is True
+            ]
+            missing_roles = sorted(set(required_roles) - set(routed_roles))
+            if missing_roles:
+                failures.append(f"missing routed source roles: {', '.join(missing_roles)}")
+            duplicate_roles = sorted(
+                role for role in set(required_roles) if routed_roles.count(role) != 1
+            )
+            if duplicate_roles:
+                failures.append(
+                    "required source roles must be routed exactly once: "
+                    + ", ".join(duplicate_roles)
+                )
+
+        required_claims = preflight.get("required_prompt_claims")
+        if (
+            not isinstance(required_claims, list)
+            or not required_claims
+            or not all(isinstance(claim, str) and claim.strip() for claim in required_claims)
+        ):
+            failures.append("required_prompt_claims must contain non-empty strings")
+        else:
+            prompt_packet = " ".join(
+                str(manifest.get("higgsfield", {}).get(key, ""))
+                for key in ("prompt", "brand_context", "product_context")
+            ).casefold()
+            missing_claims = [
+                claim for claim in required_claims if claim.casefold() not in prompt_packet
+            ]
+            if missing_claims:
+                failures.append(f"missing required prompt claims: {', '.join(missing_claims)}")
+
+    post_capture = adherence.get("post_capture")
+    if not isinstance(post_capture, dict):
+        failures.append("post_capture must be an object")
+    else:
+        minimum_score = post_capture.get("minimum_total_score")
+        if (
+            not isinstance(minimum_score, int)
+            or isinstance(minimum_score, bool)
+            or not 90 <= minimum_score <= 100
+        ):
+            failures.append("minimum_total_score must be an integer from 90 to 100")
+        dimensions = post_capture.get("dimensions")
+        if not isinstance(dimensions, list) or not dimensions:
+            failures.append("post_capture dimensions must be a non-empty list")
+        else:
+            total_weight = 0
+            dimension_ids: list[str] = []
+            for index, dimension in enumerate(dimensions):
+                if not isinstance(dimension, dict):
+                    failures.append(f"dimensions[{index}] must be an object")
+                    continue
+                dimension_id = dimension.get("id")
+                weight = dimension.get("weight")
+                if not isinstance(dimension_id, str) or not dimension_id.strip():
+                    failures.append(f"dimensions[{index}].id must be a non-empty string")
+                else:
+                    dimension_ids.append(dimension_id)
+                if not isinstance(weight, (int, float)) or isinstance(weight, bool) or weight <= 0:
+                    failures.append(f"dimensions[{index}].weight must be positive")
+                else:
+                    total_weight += weight
+            if len(dimension_ids) != len(set(dimension_ids)):
+                failures.append("post_capture dimension ids must be unique")
+            if total_weight != 100:
+                failures.append("post_capture dimension weights must total 100")
+
+    hard_fail_invariants = adherence.get("hard_fail_invariants")
+    if (
+        not isinstance(hard_fail_invariants, list)
+        or not hard_fail_invariants
+        or not all(
+            isinstance(invariant, str) and invariant.strip() for invariant in hard_fail_invariants
+        )
+    ):
+        failures.append("hard_fail_invariants must contain non-empty strings")
+    if adherence.get("disposition_on_failure") != "QUARANTINE_NO_AUTOMATIC_RETRY":
+        failures.append("disposition_on_failure must be QUARANTINE_NO_AUTOMATIC_RETRY")
+
+    return {
+        "status": "PASS" if not failures else "INVALID_PROMPT_ADHERENCE",
+        "configured": True,
+        "failures": failures,
+    }
+
+
+def verify_prompt_adherence_review(
+    manifest: dict[str, Any], candidate: Path, review_path: Path | None
+) -> dict[str, Any]:
+    """Verify an independent, candidate-bound post-capture adherence scorecard."""
+    contract_check = verify_prompt_adherence(manifest)
+    candidate_check = verify_file(candidate, None)
+    result: dict[str, Any] = {
+        "status": "INVALID_PROMPT_ADHERENCE_REVIEW",
+        "contract_check": contract_check,
+        "candidate_check": candidate_check,
+        "failures": [],
+    }
+    if contract_check["status"] != "PASS":
+        result["failures"].append("prompt adherence contract is invalid")
+        return result
+    if not contract_check["configured"]:
+        return {
+            **result,
+            "status": "PASS",
+            "configured": False,
+            "failures": [],
+        }
+    result["configured"] = True
+    if candidate_check["status"] != "PRESENT_UNHASHED":
+        result["failures"].append("candidate is missing")
+        return result
+    quarantine_path = prompt_adherence_quarantine_path(
+        manifest["scene_id"], candidate_check["actual_sha256"]
+    )
+    if quarantine_path.is_file():
+        result["status"] = "CANDIDATE_HASH_QUARANTINED"
+        result["quarantine_marker"] = str(quarantine_path)
+        try:
+            result["quarantine_record"] = json.loads(quarantine_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            result["failures"].append(f"quarantine marker cannot be parsed: {exc}")
+        return result
+    if review_path is None:
+        result["failures"].append("candidate-bound prompt adherence review is required")
+        return result
+
+    review_path = review_path.expanduser().resolve()
+    result["review_path"] = str(review_path)
+    review_check = verify_file(review_path, None)
+    result["review_receipt_check"] = review_check
+    if review_check["status"] != "PRESENT_UNHASHED":
+        result["failures"].append("review receipt is missing")
+        return result
+    try:
+        review = json.loads(review_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        result["failures"].append(f"review receipt cannot be parsed: {exc}")
+        return result
+    if not isinstance(review, dict):
+        result["failures"].append("review receipt must be an object")
+        return result
+
+    adherence = manifest["prompt_adherence"]
+    failures: list[str] = result["failures"]
+    if review.get("schema") != "skyyrose.prompt-adherence-review/1":
+        failures.append("invalid prompt adherence review schema")
+    if review.get("scene_id") != manifest.get("scene_id"):
+        failures.append("review scene does not match manifest")
+    if review.get("candidate_sha256") != candidate_check.get("actual_sha256"):
+        failures.append("review is not bound to the current candidate hash")
+    if review.get("manifest_fingerprint") != execution_fingerprint(manifest):
+        failures.append("review is stale for the current executable manifest")
+
+    reviewer = review.get("reviewer")
+    if not isinstance(reviewer, dict):
+        failures.append("reviewer must be an object")
+    else:
+        if reviewer.get("role") != adherence["independent_reviewer_role"]:
+            failures.append("reviewer role does not match the independent review contract")
+        if reviewer.get("independent") is not True:
+            failures.append("reviewer must attest independent=true")
+        if not isinstance(reviewer.get("id"), str) or not reviewer["id"].strip():
+            failures.append("reviewer id must be a non-empty string")
+        else:
+            reviewer_id = reviewer["id"].strip().casefold()
+            accountable = (
+                str(manifest.get("fashion_theme_team", {}).get("accountable", ""))
+                .strip()
+                .casefold()
+            )
+            if reviewer_id == accountable:
+                failures.append("reviewer must be independent from the accountable manager")
+
+    dimensions = adherence["post_capture"]["dimensions"]
+    expected_scores = {dimension["id"]: dimension["weight"] for dimension in dimensions}
+    scores = review.get("scores")
+    weighted_total = 0.0
+    if not isinstance(scores, dict):
+        failures.append("scores must be an object")
+    else:
+        missing_scores = sorted(set(expected_scores) - set(scores))
+        extra_scores = sorted(set(scores) - set(expected_scores))
+        if missing_scores:
+            failures.append(f"missing dimension scores: {', '.join(missing_scores)}")
+        if extra_scores:
+            failures.append(f"unexpected dimension scores: {', '.join(extra_scores)}")
+        for dimension_id, weight in expected_scores.items():
+            score = scores.get(dimension_id)
+            if (
+                not isinstance(score, (int, float))
+                or isinstance(score, bool)
+                or not 0 <= score <= 100
+            ):
+                failures.append(f"score for {dimension_id} must be between 0 and 100")
+            else:
+                weighted_total += score * weight / 100
+
+    expected_invariants = adherence["hard_fail_invariants"]
+    hard_fail_results = review.get("hard_fail_results")
+    hard_failures: list[str] = []
+    if not isinstance(hard_fail_results, list):
+        failures.append("hard_fail_results must be a list")
+    else:
+        observed: dict[str, dict[str, Any]] = {}
+        for index, item in enumerate(hard_fail_results):
+            if not isinstance(item, dict) or not isinstance(item.get("invariant"), str):
+                failures.append(f"hard_fail_results[{index}] must name an invariant")
+                continue
+            invariant = item["invariant"]
+            if invariant in observed:
+                failures.append(f"duplicate hard-fail result: {invariant}")
+                continue
+            observed[invariant] = item
+        missing_invariants = [item for item in expected_invariants if item not in observed]
+        extra_invariants = [item for item in observed if item not in expected_invariants]
+        if missing_invariants:
+            failures.append(f"missing hard-fail results: {', '.join(missing_invariants)}")
+        if extra_invariants:
+            failures.append(f"unexpected hard-fail results: {', '.join(extra_invariants)}")
+        for invariant in expected_invariants:
+            item = observed.get(invariant)
+            if item is None:
+                continue
+            if not isinstance(item.get("failed"), bool):
+                failures.append(f"hard-fail result must use a boolean: {invariant}")
+            elif item["failed"]:
+                hard_failures.append(invariant)
+            if not isinstance(item.get("evidence"), str) or not item["evidence"].strip():
+                failures.append(f"hard-fail result requires evidence: {invariant}")
+
+    result["weighted_total"] = round(weighted_total, 2)
+    result["minimum_total_score"] = adherence["post_capture"]["minimum_total_score"]
+    result["hard_failures"] = hard_failures
+    if failures:
+        return result
+    if hard_failures:
+        result["status"] = "HARD_FAIL_QUARANTINED"
+    elif weighted_total < adherence["post_capture"]["minimum_total_score"]:
+        result["status"] = "BELOW_THRESHOLD_QUARANTINED"
+    else:
+        result["status"] = "PASS"
+    return result
+
+
+def prompt_adherence_quarantine_path(scene_id: str, candidate_sha256: str) -> Path:
+    """Return the immutable quarantine marker path for a candidate hash."""
+    safe_scene_id = "".join(
+        character if character.isalnum() or character in {"-", "_"} else "-"
+        for character in scene_id.casefold()
+    )
+    return (
+        COMFY_ROOT / "quarantine" / "prompt-adherence" / safe_scene_id / f"{candidate_sha256}.json"
+    )
+
+
+def persist_prompt_adherence_quarantine(manifest: dict[str, Any], review: dict[str, Any]) -> Path:
+    """Persist the first hard-fail/below-threshold disposition without overwrite."""
+    candidate_sha256 = review.get("candidate_check", {}).get("actual_sha256")
+    if not isinstance(candidate_sha256, str) or not candidate_sha256:
+        raise ValueError("cannot quarantine a candidate without a SHA-256")
+    marker = prompt_adherence_quarantine_path(manifest["scene_id"], candidate_sha256)
+    marker.parent.mkdir(parents=True, exist_ok=True)
+    document = {
+        "schema": "skyyrose.prompt-adherence-quarantine/1",
+        "scene_id": manifest["scene_id"],
+        "candidate_sha256": candidate_sha256,
+        "manifest_fingerprint": execution_fingerprint(manifest),
+        "recorded_at": datetime.now(UTC).isoformat(),
+        "disposition": review["status"],
+        "weighted_total": review.get("weighted_total"),
+        "minimum_total_score": review.get("minimum_total_score"),
+        "hard_failures": review.get("hard_failures", []),
+        "review_path": review.get("review_path"),
+        "review_sha256": review.get("review_receipt_check", {}).get("actual_sha256"),
+        "immutable": True,
+        "automatic_retry": False,
+    }
+    try:
+        with marker.open("x", encoding="utf-8") as handle:
+            json.dump(document, handle, indent=2)
+            handle.write("\n")
+    except FileExistsError:
+        pass
+    return marker
+
+
 def verify_comfy_contract(manifest: dict[str, Any]) -> dict[str, Any]:
     comfy = manifest.get("comfy")
     failures: list[str] = []
@@ -456,6 +780,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
     team_contract_check = verify_team_contract(manifest)
     creative_direction_check = verify_creative_direction(manifest)
     optical_contract_check = verify_optical_contract(manifest)
+    prompt_adherence_check = verify_prompt_adherence(manifest)
     comfy_contract_check = verify_comfy_contract(manifest)
     provider_capability_check = verify_provider_capability(manifest)
     credit_control_check = verify_credit_control(manifest)
@@ -467,6 +792,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
         and team_contract_check["status"] == "PASS"
         and creative_direction_check["status"] == "PASS"
         and optical_contract_check["status"] == "PASS"
+        and prompt_adherence_check["status"] == "PASS"
         and comfy_contract_check["status"] == "PASS"
         and credit_control_check["status"] == "PASS"
     )
@@ -488,6 +814,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
         "team_contract_check": team_contract_check,
         "creative_direction_check": creative_direction_check,
         "optical_contract_check": optical_contract_check,
+        "prompt_adherence_check": prompt_adherence_check,
         "comfy_contract_check": comfy_contract_check,
         "provider_capability_check": provider_capability_check,
         "credit_control_check": credit_control_check,
@@ -635,11 +962,35 @@ def action_execute(manifest: dict[str, Any], allow_spend: bool) -> int:
         print(json.dumps(report, indent=2), file=sys.stderr)
         return 3
     result = run_command(higgsfield_command(manifest, False))
-    receipt = write_receipt(
-        manifest["scene_id"], "higgsfield-generate", {"observe": report, "result": result}
+    adherence_required = verify_prompt_adherence(manifest).get("configured") is True
+    candidate_status = (
+        "CANDIDATE_ONLY_PROMPT_ADHERENCE_REVIEW_REQUIRED"
+        if adherence_required
+        else "CANDIDATE_ONLY_PENDING_INDEPENDENT_REVIEW"
     )
-    print(json.dumps({"receipt": str(receipt), "result": result}, indent=2))
-    return 0 if result["exit_code"] == 0 else result["exit_code"]
+    receipt = write_receipt(
+        manifest["scene_id"],
+        "higgsfield-generate",
+        {
+            "observe": report,
+            "result": result,
+            "candidate_status": candidate_status,
+        },
+    )
+    print(
+        json.dumps(
+            {
+                "receipt": str(receipt),
+                "result": result,
+                "candidate_status": candidate_status,
+                "next_action": "review-candidate" if adherence_required else None,
+            },
+            indent=2,
+        )
+    )
+    if result["exit_code"] != 0:
+        return result["exit_code"]
+    return 5 if adherence_required else 0
 
 
 def action_review_enhance(manifest: dict[str, Any], receipt_path: Path | None) -> int:
@@ -665,7 +1016,27 @@ def action_review_enhance(manifest: dict[str, Any], receipt_path: Path | None) -
     return 0 if inspection["status"] == "PASS" else 4
 
 
-def action_stage(manifest: dict[str, Any], candidate: Path | None) -> int:
+def action_review_candidate(
+    manifest: dict[str, Any], candidate: Path | None, receipt_path: Path | None
+) -> int:
+    if candidate is None:
+        raise RuntimeError("candidate review requires --candidate /absolute/path/to/image")
+    review = verify_prompt_adherence_review(
+        manifest, candidate.expanduser().resolve(), receipt_path
+    )
+    if review["status"] in {
+        "HARD_FAIL_QUARANTINED",
+        "BELOW_THRESHOLD_QUARANTINED",
+    }:
+        marker = persist_prompt_adherence_quarantine(manifest, review)
+        review["quarantine_marker"] = str(marker)
+    print(json.dumps(review, indent=2))
+    return 0 if review["status"] == "PASS" else 4
+
+
+def action_stage(
+    manifest: dict[str, Any], candidate: Path | None, receipt_path: Path | None
+) -> int:
     if candidate is None:
         raise RuntimeError("staging requires --candidate /absolute/path/to/image")
     candidate = candidate.expanduser().resolve()
@@ -673,6 +1044,16 @@ def action_stage(manifest: dict[str, Any], candidate: Path | None) -> int:
     if not check["exists"]:
         print(json.dumps(check, indent=2), file=sys.stderr)
         return 2
+    adherence_review = verify_prompt_adherence_review(manifest, candidate, receipt_path)
+    if adherence_review["status"] != "PASS":
+        if adherence_review["status"] in {
+            "HARD_FAIL_QUARANTINED",
+            "BELOW_THRESHOLD_QUARANTINED",
+        }:
+            marker = persist_prompt_adherence_quarantine(manifest, adherence_review)
+            adherence_review["quarantine_marker"] = str(marker)
+        print(json.dumps(adherence_review, indent=2), file=sys.stderr)
+        return 4
     require_cli("comfy")
     result = run_command(["comfy", "--where", "local", "upload", str(candidate)])
     receipt = write_receipt(
@@ -680,7 +1061,8 @@ def action_stage(manifest: dict[str, Any], candidate: Path | None) -> int:
         "comfy-stage-candidate",
         {
             "candidate": check,
-            "candidate_status": "CANDIDATE_ONLY_PENDING_INDEPENDENT_REVIEW",
+            "candidate_status": "CANDIDATE_ONLY_PROMPT_ADHERENCE_PASS",
+            "prompt_adherence_review": adherence_review,
             "result": result,
         },
     )
@@ -692,7 +1074,14 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "action",
-        choices=("validate", "enhance", "review-enhance", "execute", "stage"),
+        choices=(
+            "validate",
+            "enhance",
+            "review-enhance",
+            "execute",
+            "review-candidate",
+            "stage",
+        ),
     )
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--allow-spend", action="store_true")
@@ -713,7 +1102,9 @@ def main() -> int:
             return action_review_enhance(manifest, args.receipt)
         if args.action == "execute":
             return action_execute(manifest, args.allow_spend)
-        return action_stage(manifest, args.candidate)
+        if args.action == "review-candidate":
+            return action_review_candidate(manifest, args.candidate, args.receipt)
+        return action_stage(manifest, args.candidate, args.receipt)
     except (OSError, RuntimeError, ValueError) as exc:
         print(json.dumps({"error": str(exc)}), file=sys.stderr)
         return 2

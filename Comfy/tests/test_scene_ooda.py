@@ -186,6 +186,298 @@ def test_optical_contract_rejects_geometry_outside_frame() -> None:
     assert "subject_boxes[0] exceeds output geometry" in result["failures"]
 
 
+def test_collection_world_prompt_adherence_is_hash_bound_and_fail_closed() -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    expected = {
+        "BR-COMMERCE-2": {
+            "role": "black_rose_collection_world_reference",
+            "suffix": "black-rose-bay-bridge-monuments-v4.webp",
+            "forbidden": "copied star monument",
+        },
+        "LH-COMMERCE-2": {
+            "role": "love_hurts_collection_world_reference",
+            "suffix": "love-hurts-rose-aisle-monuments-v3.webp",
+            "forbidden": "copied star/heart monument",
+        },
+    }
+
+    for filename in (
+        "br-commerce-2-higgsfield-comfy-ooda.json",
+        "lh-commerce-2-higgsfield-comfy-ooda.json",
+    ):
+        manifest = json.loads((contract_root / filename).read_text(encoding="utf-8"))
+        rule = expected[manifest["scene_id"]]
+        binding = next(item for item in manifest["source_bindings"] if item["role"] == rule["role"])
+        serialized = json.dumps(manifest).casefold()
+
+        assert binding["path"].endswith(rule["suffix"])
+        assert (
+            scene_ooda.verify_file(scene_ooda.resolve_path(binding["path"]), binding["sha256"])[
+                "status"
+            ]
+            == "PASS"
+        )
+        assert rule["forbidden"] in serialized
+        adherence = scene_ooda.verify_prompt_adherence(manifest)
+        assert adherence == {"status": "PASS", "configured": True, "failures": []}
+        assert manifest["prompt_adherence"]["post_capture"]["minimum_total_score"] == 90
+        assert manifest["prompt_adherence"]["disposition_on_failure"] == (
+            "QUARANTINE_NO_AUTOMATIC_RETRY"
+        )
+
+
+def test_prompt_adherence_rejects_missing_source_role_and_prompt_claim() -> None:
+    manifest = {
+        "source_bindings": [{"role": "product"}],
+        "higgsfield": {
+            "prompt": "customer-first scene",
+            "brand_context": "brand",
+            "product_context": "product",
+        },
+        "prompt_adherence": {
+            "mode": "FAIL_CLOSED",
+            "independent_reviewer_role": "visual-commerce-qa",
+            "preflight": {
+                "required_source_roles": ["product", "world"],
+                "required_prompt_claims": ["customer-first", "four zippered pockets"],
+            },
+            "post_capture": {
+                "minimum_total_score": 90,
+                "dimensions": [{"id": "fidelity", "weight": 100}],
+            },
+            "hard_fail_invariants": ["wrong product"],
+            "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY",
+        },
+    }
+
+    result = scene_ooda.verify_prompt_adherence(manifest)
+
+    assert result["status"] == "INVALID_PROMPT_ADHERENCE"
+    assert "missing routed source roles: product, world" in result["failures"]
+    assert "missing required prompt claims: four zippered pockets" in result["failures"]
+
+
+def test_prompt_adherence_rejects_unrouted_duplicate_null_and_weak_threshold() -> None:
+    base = {
+        "source_bindings": [
+            {"role": "product", "send_to_higgsfield": True},
+            {"role": "world", "send_to_higgsfield": False},
+        ],
+        "higgsfield": {
+            "prompt": "customer-first exact product world",
+            "brand_context": "brand",
+            "product_context": "product",
+        },
+        "prompt_adherence": {
+            "mode": "FAIL_CLOSED",
+            "independent_reviewer_role": "visual-commerce-qa",
+            "preflight": {
+                "required_source_roles": ["product", "world"],
+                "required_prompt_claims": ["customer-first", "exact product"],
+            },
+            "post_capture": {
+                "minimum_total_score": 0,
+                "dimensions": [{"id": "fidelity", "weight": 100}],
+            },
+            "hard_fail_invariants": ["wrong product"],
+            "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY",
+        },
+    }
+
+    result = scene_ooda.verify_prompt_adherence(base)
+    assert "missing routed source roles: world" in result["failures"]
+    assert "minimum_total_score must be an integer from 90 to 100" in result["failures"]
+
+    base["source_bindings"] = [
+        {"role": "product", "send_to_higgsfield": True},
+        {"role": "product", "send_to_higgsfield": True},
+        {"role": "world", "send_to_higgsfield": True},
+    ]
+    base["prompt_adherence"]["post_capture"]["minimum_total_score"] = 90
+    result = scene_ooda.verify_prompt_adherence(base)
+    assert "required source roles must be routed exactly once: product" in result["failures"]
+
+    base["prompt_adherence"] = None
+    result = scene_ooda.verify_prompt_adherence(base)
+    assert result["status"] == "INVALID_PROMPT_ADHERENCE"
+
+
+def _prompt_adherence_review(
+    manifest: dict, candidate_sha256: str, score: float, hard_failure: bool = False
+) -> dict:
+    dimensions = manifest["prompt_adherence"]["post_capture"]["dimensions"]
+    invariants = manifest["prompt_adherence"]["hard_fail_invariants"]
+    return {
+        "schema": "skyyrose.prompt-adherence-review/1",
+        "scene_id": manifest["scene_id"],
+        "candidate_sha256": candidate_sha256,
+        "manifest_fingerprint": scene_ooda.execution_fingerprint(manifest),
+        "reviewer": {
+            "id": "independent-reviewer-test",
+            "role": manifest["prompt_adherence"]["independent_reviewer_role"],
+            "independent": True,
+        },
+        "scores": {dimension["id"]: score for dimension in dimensions},
+        "hard_fail_results": [
+            {
+                "invariant": invariant,
+                "failed": hard_failure and index == 0,
+                "evidence": f"reviewed invariant {index}",
+            }
+            for index, invariant in enumerate(invariants)
+        ],
+    }
+
+
+def test_candidate_bound_prompt_adherence_enforces_threshold_and_hard_fail(
+    tmp_path: Path,
+) -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "lh-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    candidate = tmp_path / "candidate.png"
+    candidate.write_bytes(b"candidate pixels")
+    candidate_sha256 = scene_ooda.sha256_file(candidate)
+    review_path = tmp_path / "review.json"
+
+    review_path.write_text(
+        json.dumps(_prompt_adherence_review(manifest, candidate_sha256, 90)),
+        encoding="utf-8",
+    )
+    passed = scene_ooda.verify_prompt_adherence_review(manifest, candidate, review_path)
+    assert passed["status"] == "PASS"
+    assert passed["weighted_total"] == 90
+
+    review_path.write_text(
+        json.dumps(_prompt_adherence_review(manifest, candidate_sha256, 89)),
+        encoding="utf-8",
+    )
+    below = scene_ooda.verify_prompt_adherence_review(manifest, candidate, review_path)
+    assert below["status"] == "BELOW_THRESHOLD_QUARANTINED"
+    assert below["weighted_total"] == 89
+
+    review_path.write_text(
+        json.dumps(_prompt_adherence_review(manifest, candidate_sha256, 100, True)),
+        encoding="utf-8",
+    )
+    hard_failed = scene_ooda.verify_prompt_adherence_review(manifest, candidate, review_path)
+    assert hard_failed["status"] == "HARD_FAIL_QUARANTINED"
+    assert hard_failed["weighted_total"] == 100
+    assert hard_failed["hard_failures"] == [manifest["prompt_adherence"]["hard_fail_invariants"][0]]
+
+    stale = _prompt_adherence_review(manifest, "0" * 64, 100)
+    review_path.write_text(json.dumps(stale), encoding="utf-8")
+    invalid = scene_ooda.verify_prompt_adherence_review(manifest, candidate, review_path)
+    assert invalid["status"] == "INVALID_PROMPT_ADHERENCE_REVIEW"
+    assert "review is not bound to the current candidate hash" in invalid["failures"]
+
+    review_path.write_text("[]", encoding="utf-8")
+    malformed = scene_ooda.verify_prompt_adherence_review(manifest, candidate, review_path)
+    assert malformed["status"] == "INVALID_PROMPT_ADHERENCE_REVIEW"
+    assert "review receipt must be an object" in malformed["failures"]
+
+    manager_review = _prompt_adherence_review(manifest, candidate_sha256, 100)
+    manager_review["reviewer"]["id"] = " FASHION-THEME-LEAD "
+    review_path.write_text(json.dumps(manager_review), encoding="utf-8")
+    manager = scene_ooda.verify_prompt_adherence_review(manifest, candidate, review_path)
+    assert manager["status"] == "INVALID_PROMPT_ADHERENCE_REVIEW"
+    assert "reviewer must be independent from the accountable manager" in manager["failures"]
+
+
+def test_comfy_stage_blocks_without_passing_prompt_adherence_review(
+    tmp_path: Path,
+) -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "lh-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    candidate = tmp_path / "candidate.png"
+    candidate.write_bytes(b"candidate pixels")
+
+    assert scene_ooda.action_stage(manifest, candidate, None) == 4
+
+
+def test_hard_fail_quarantine_is_durable_for_candidate_hash(tmp_path: Path, monkeypatch) -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "lh-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    candidate = tmp_path / "candidate.png"
+    candidate.write_bytes(b"candidate pixels")
+    candidate_sha256 = scene_ooda.sha256_file(candidate)
+    review_path = tmp_path / "review.json"
+    monkeypatch.setattr(scene_ooda, "COMFY_ROOT", tmp_path / "Comfy")
+
+    review_path.write_text(
+        json.dumps(_prompt_adherence_review(manifest, candidate_sha256, 100, True)),
+        encoding="utf-8",
+    )
+    assert scene_ooda.action_review_candidate(manifest, candidate, review_path) == 4
+    marker = scene_ooda.prompt_adherence_quarantine_path(manifest["scene_id"], candidate_sha256)
+    assert marker.is_file()
+    first_record = json.loads(marker.read_text(encoding="utf-8"))
+    assert first_record["disposition"] == "HARD_FAIL_QUARANTINED"
+    assert first_record["automatic_retry"] is False
+
+    review_path.write_text(
+        json.dumps(_prompt_adherence_review(manifest, candidate_sha256, 100)),
+        encoding="utf-8",
+    )
+    replacement = scene_ooda.verify_prompt_adherence_review(manifest, candidate, review_path)
+    assert replacement["status"] == "CANDIDATE_HASH_QUARANTINED"
+
+    upload_called = False
+
+    def fake_run_command(_command):
+        nonlocal upload_called
+        upload_called = True
+        return {"exit_code": 0, "stdout": {}, "stderr": ""}
+
+    monkeypatch.setattr(scene_ooda, "require_cli", lambda _name: None)
+    monkeypatch.setattr(scene_ooda, "run_command", fake_run_command)
+    assert scene_ooda.action_stage(manifest, candidate, review_path) == 4
+    assert upload_called is False
+
+
+def test_direct_stage_hard_fail_persists_quarantine_before_return(
+    tmp_path: Path, monkeypatch
+) -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "lh-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    candidate = tmp_path / "candidate.png"
+    candidate.write_bytes(b"direct-stage candidate pixels")
+    candidate_sha256 = scene_ooda.sha256_file(candidate)
+    review_path = tmp_path / "review.json"
+    monkeypatch.setattr(scene_ooda, "COMFY_ROOT", tmp_path / "Comfy")
+
+    upload_called = False
+
+    def fake_run_command(_command):
+        nonlocal upload_called
+        upload_called = True
+        return {"exit_code": 0, "stdout": {}, "stderr": ""}
+
+    monkeypatch.setattr(scene_ooda, "require_cli", lambda _name: None)
+    monkeypatch.setattr(scene_ooda, "run_command", fake_run_command)
+    review_path.write_text(
+        json.dumps(_prompt_adherence_review(manifest, candidate_sha256, 100, True)),
+        encoding="utf-8",
+    )
+    assert scene_ooda.action_stage(manifest, candidate, review_path) == 4
+    marker = scene_ooda.prompt_adherence_quarantine_path(manifest["scene_id"], candidate_sha256)
+    assert marker.is_file()
+
+    review_path.write_text(
+        json.dumps(_prompt_adherence_review(manifest, candidate_sha256, 100)),
+        encoding="utf-8",
+    )
+    assert scene_ooda.action_stage(manifest, candidate, review_path) == 4
+    assert upload_called is False
+
+
 def test_credit_control_rejects_paid_retry_configuration() -> None:
     contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
     manifest = json.loads(

@@ -60,6 +60,8 @@
     "Every scene defines output geometry, camera, horizon, contact points, light, shadow, floor, reflection, grain, depth, and occlusion requirements.",
     "Urban grit comes from real material behavior and place-specific visual language, not generic warehouse props or distressed overlays.",
     "Every protected garment, customer identity, wordmark, and sculpture remains bound to an approved source hash.",
+    "Black Rose and Love Hurts scene worlds derive from their supplied collection hero assets while customers and exact products remain the first two focal levels.",
+    "Black Rose and Love Hurts use fail-closed Prompt Adherence OODA: required references and claims pass before execution; weighted post-capture review scores at least 90/100; any hard invariant failure quarantines the candidate regardless of score.",
     "No paid execution can start without current source checks, prompt assertion PASS, explicit candidate-bound approval, and a one-attempt budget envelope.",
     "A rejected or mutated candidate cannot be retried automatically or used as the next generation input."
   ],
@@ -73,9 +75,9 @@
     "founder_promotion_decision"
   ],
   "issues": [
-    "BR-COMMERCE-2 candidate BR-COMMERCE-2-HF-PILOT-20260902-A1 hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry; it is quarantined with no retry.",
+    "BR-COMMERCE-2 candidate BR-COMMERCE-2-HF-PILOT-20260902-A1 hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry; it is quarantined with no retry. The revised scene contract now uses the supplied Black Rose Bay Bridge hero only as collection-world inspiration and requires a fresh prompt review plus separately authorized future attempt.",
     "SIG-COMMERCE-1 still requires a current prompt-review receipt before any separate execution request.",
-    "LH-003 physical authority now binds front, back, wearer-left, and wearer-right views plus the founder-confirmed invariant of two zippered side pockets and two zippered rear pockets; LH-COMMERCE-2 remains blocked on a founder-approved wearer and protected garment matte.",
+    "LH-003 physical authority now binds front, back, wearer-left, and wearer-right views plus the founder-confirmed invariant of two zippered side pockets and two zippered rear pockets. The scene world now derives from the supplied Love Hurts rose-aisle hero without copying its robed figure or empty monument tableau; LH-COMMERCE-2 remains blocked on a founder-approved wearer and protected garment matte.",
     "SIG-COMMERCE-2 remains blocked on the correct founder-approved SG-006 woman; the prior wearer stays deny-listed.",
     "SIG-COMMERCE-3 remains blocked on verified SG-001 and SG-003 mask-bound correction receipts and must not be regenerated full-frame."
   ],
@@ -83,10 +85,12 @@
     "status": "FAIL_CANDIDATE_PRODUCT_AUTHORITY",
     "evidence": [
       "All five source, creative, optical, local-Comfy, team, and credit-control contracts validate.",
-      "10 scene OODA unit tests pass.",
+      "17 scene OODA unit tests pass.",
       "One founder-authorized BR-COMMERCE-2 Higgsfield Product Photoshoot candidate was generated for 8.5 credits.",
       "The 2688x1520 candidate is hash-bound and quarantined after manager hard-fail triage.",
       "LH-003 source authority now uses four byte-matched physical views and fails closed on any four-pocket or zipper-closure drift; no LH render was submitted.",
+      "The supplied 1672x941 Black Rose Bay Bridge and Love Hurts rose-aisle collection heroes are hash-bound as collection-specific world references; no generation call was made.",
+      "Prompt Adherence OODA validates uniquely routed reference roles and required prompt claims, then requires an independent candidate-and-contract-bound review receipt; weighted dimensions total 100, scores below 90 quarantine, any hard failure quarantines regardless of score, and Comfy staging rejects missing or non-PASS review receipts.",
       "No retry, Comfy staging, promotion, wiring, or deployment was performed."
     ]
   },

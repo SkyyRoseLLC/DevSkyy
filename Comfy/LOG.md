@@ -187,3 +187,22 @@ Append-only execution and decision log for recoverable local scene production.
   render, provider call, Comfy job, or credit spend was performed;
   `LH-COMMERCE-2` remains blocked on an approved on-model wearer and protected
   garment matte.
+- 2026-09-02 DIRECTION founder supplied the 1672x941 Black Rose Bay Bridge
+  monument hero (`e5ebd5a0...`) and Love Hurts rose-aisle monument hero
+  (`000ec830...`) as collection-scene inspiration. Both are hash-bound to their
+  matching OODA contracts for world, material, wet-floor reflection, and
+  monumental-scale cues only; customer and exact product remain primary. The
+  temporary screenshot is direction-only and is not a generation input. BR's
+  prior paid approval stays consumed and invalid for the revised prompt; LH
+  remains source-blocked. No provider call, Comfy job, or credit spend was
+  performed.
+- 2026-09-02 OODA added fail-closed prompt-adherence contracts to the Black Rose
+  and Love Hurts scenes. Preflight now verifies collection-matched source roles
+  and prompt claims; post-capture review uses weighted product, hierarchy,
+  collection-world, monument, and optical-integration dimensions with a 90/100
+  minimum. Review receipts bind the independent reviewer, candidate SHA-256, and
+  current executable contract fingerprint. Any product, identity, pocket,
+  hierarchy, monument, or native-contact hard failure quarantines the candidate
+  regardless of average score, and Comfy staging rejects a missing, stale,
+  below-threshold, or hard-failed review. No provider call, Comfy job, or credit
+  spend was performed.
