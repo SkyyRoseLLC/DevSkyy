@@ -139,11 +139,79 @@ def test_all_remaining_scene_manifests_follow_team_ooda() -> None:
         assert manifest["higgsfield"]["mode"] == "hero_banner"
         assert manifest["higgsfield"]["aspect_ratio"] == "16:9"
         assert manifest["higgsfield"]["count"] == 1
+        assert manifest["creative_direction"]["style"] == "cinematic_urban_grit"
+        assert scene_ooda.verify_creative_direction(manifest)["status"] == "PASS"
+        assert scene_ooda.verify_optical_contract(manifest)["status"] == "PASS"
+        assert scene_ooda.verify_comfy_contract(manifest)["status"] == "PASS"
+        assert scene_ooda.verify_credit_control(manifest)["status"] == "PASS"
+        assert manifest["credit_control"]["max_paid_generations"] == 1
+        assert manifest["credit_control"]["automatic_paid_retries"] is False
+        assert manifest["credit_control"]["rejected_candidate_may_be_next_input"] is False
         assert manifest["execute_blockers"]
         assert manifest["promotion_gate"] == "FOUNDER_APPROVED_VISUAL"
         assert scene_ooda.verify_team_contract(manifest)["status"] == "PASS"
 
     assert actual_scenes == expected_scenes
+
+
+def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed() -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    manifest["execute_blockers"] = []
+
+    report = scene_ooda.observe(manifest)
+
+    assert report["configuration_ready"] is True
+    assert report["credit_control_check"]["prompt_review"]["status"] == "MISSING_RECEIPT"
+    assert report["credit_control_check"]["paid_approval"]["status"] == "MISSING_RECEIPT"
+    assert report["paid_authorized"] is False
+    assert report["paid_execution_ready"] is False
+
+
+def test_optical_contract_rejects_geometry_outside_frame() -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "sig-commerce-1-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    manifest["optical_contract"]["subject_boxes"][0]["x"] = 2048
+
+    result = scene_ooda.verify_optical_contract(manifest)
+
+    assert result["status"] == "INVALID_OPTICAL_CONTRACT"
+    assert "subject_boxes[0] exceeds output geometry" in result["failures"]
+
+
+def test_credit_control_rejects_paid_retry_configuration() -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+    manifest["credit_control"]["max_paid_generations"] = 2
+    manifest["credit_control"]["automatic_paid_retries"] = True
+
+    result = scene_ooda.verify_credit_control(manifest)
+
+    assert result["status"] == "INVALID_CREDIT_CONTROL"
+    assert "max_paid_generations must equal 1" in result["failures"]
+    assert "automatic_paid_retries must be false" in result["failures"]
+
+
+def test_signature_ensemble_is_preserve_and_correct_only() -> None:
+    contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
+    manifest = json.loads(
+        (contract_root / "sig-commerce-3-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
+    )
+
+    assert manifest["execution_strategy"]["full_frame_paid_generation"] is False
+    assert manifest["execution_strategy"]["mode"] == (
+        "PRESERVE_EXISTING_SCENE_MASK_BOUND_CORRECTION_ONLY"
+    )
+    assert "full-frame paid regeneration" in manifest["comfy"]["forbidden_operations"]
+    report = scene_ooda.observe(manifest)
+    assert report["paid_route_permitted"] is False
+    assert report["paid_execution_ready"] is False
 
 
 def test_rejected_source_cannot_be_routed_to_higgsfield(tmp_path: Path) -> None:

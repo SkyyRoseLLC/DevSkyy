@@ -18,7 +18,7 @@
     "catalog_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
     "image_manifest_path": "data/sot-images.json",
     "image_manifest_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
-    "products": [{"sku": "lh-003", "name": "Love Hurts Basketball Shorts"}]
+    "products": [{ "sku": "lh-003", "name": "Love Hurts Basketball Shorts" }]
   },
   "composition": {
     "aspect_ratio": "16:9",
@@ -26,9 +26,82 @@
     "target_height": 941,
     "story_role": "The Fractured Chamber",
     "customer_priority": "Product-readable confident fashion protagonist; cast remains blocked until founder-approved authority exists.",
-    "environment": "Low close thorned runway and cracked-rose chamber.",
+    "environment": "The Fractured Chamber as an abandoned civic transit hall after midnight: fractured black marble and concrete, red emergency practicals, damp floor, and the enchanted rose under glass.",
     "brand_object": "The exact protected enchanted rose remains sharply legible opposite the product.",
     "energy_contract": "Comfy/SCENE-ENERGY-BAR.md"
+  },
+  "creative_direction": {
+    "style": "cinematic_urban_grit",
+    "story_role": "One defiant customer confronts the enchanted rose inside a fractured after-hours civic chamber; the exact LH-003 shorts remain the emotional and commercial proof point.",
+    "focal_hierarchy": [
+      "exact LH-003 shorts on an approved customer at product-readable scale",
+      "customer expression, stance, and skin tone",
+      "enchanted rose under glass",
+      "fractured civic architecture and red emergency light"
+    ],
+    "material_language": [
+      "cracked black marble",
+      "raw municipal concrete",
+      "aged steel and glass",
+      "damp floor with blood-red practical reflections"
+    ],
+    "place_cues": [
+      "abandoned transit concourse",
+      "red emergency fixtures",
+      "cold midnight ambient spill"
+    ],
+    "logo_off_recognition": "Romantic danger is communicated through one defiant customer, fractured civic stone, red emergency light, and a protected rose under glass—not generic hearts.",
+    "anti_generic": [
+      "no fantasy castle, Beast character, or ballroom",
+      "no generic hearts, flower wall, or red velvet lounge",
+      "no glamour retouch that erases concrete and skin texture",
+      "no tiny garment, floating rose dome, or pasted customer"
+    ]
+  },
+  "optical_contract": {
+    "output": { "width": 2048, "height": 1152 },
+    "horizon_y": 590,
+    "subject_boxes": [
+      {
+        "id": "approved_lh003_customer",
+        "x": 155,
+        "y": 165,
+        "width": 620,
+        "height": 900
+      },
+      {
+        "id": "enchanted_rose_dome",
+        "x": 1270,
+        "y": 410,
+        "width": 470,
+        "height": 520
+      }
+    ],
+    "contact_points": [
+      { "id": "customer_feet", "x": 455, "y": 1055 },
+      { "id": "rose_plinth", "x": 1505, "y": 930 }
+    ],
+    "lens_class": "normal",
+    "camera_height": "eye_level",
+    "key_light": {
+      "direction": "camera_right",
+      "quality": "cutting_side_light",
+      "color": "deep_emergency_red"
+    },
+    "shadow_behavior": {
+      "direction": "camera_left",
+      "density": "deep_but_detailed",
+      "contact": "firm"
+    },
+    "floor_response": "damp_satin",
+    "reflection_mode": "subtle",
+    "requirements": {
+      "contact": true,
+      "occlusion": true,
+      "depth": true,
+      "grain_match": true,
+      "edge_spill_match": true
+    }
   },
   "source_bindings": [
     {
@@ -67,19 +140,75 @@
     "count": 1,
     "resolution_request": "2k",
     "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "An emotionally charged Love Hurts luxury streetwear campaign in The Fractured Chamber: exact LH-003 basketball shorts at product-readable scale, a powerful customer, and the exact enchanted rose under glass sharply integrated into one cinematic wide scene.",
-    "brand_context": "Love Hurts is controlled romantic cinema, defiance, enchanted drama, and luxury streetwear product clarity; no generic hearts, flowers, or literal Beast character.",
+    "prompt": "Cinematic urban-grit Love Hurts campaign in The Fractured Chamber, reimagined as an abandoned civic transit hall after midnight. One founder-approved customer in the exact LH-003 shorts stands left at product-readable scale; the protected enchanted rose under glass stands right on a weighted plinth. Fractured black marble, raw concrete, aged steel, damp satin floor, red emergency practical light, cold ambient spill, deep detailed shadows, restrained film grain, believable contact and occlusion. Professional 16:9 customer-and-product hierarchy; no castle, ballroom, Beast character, generic hearts, flower wall, velvet lounge, pasted edges, or invented garment details.",
+    "brand_context": "Love Hurts is controlled romantic urban cinema: defiance inside fractured civic architecture, red emergency light, enchanted drama, customer dignity, and exact luxury streetwear product clarity.",
     "product_context": "Preserve the exact LH-003 front and back construction. Never place the front Love Hurts treatment on the rear. Use no customer identity until founder-approved on-model authority and a protected garment matte are bound.",
     "prompt_assertions": {
       "required_phrases": ["LH-003", "Fractured Chamber", "enchanted rose"],
       "forbidden_phrases": ["front graphic on the back", "generic red shorts"]
     }
   },
+  "provider_capability": {
+    "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
+    "exact_product_guarantee": false,
+    "rule": "Do not enhance or generate until approved wearer authority and a protected LH-003 matte are bound."
+  },
+  "comfy": {
+    "routing": "local",
+    "server": "127.0.0.1:8188",
+    "role": "POST_CAPTURE_PROTECTED_CORRECTION_ONLY",
+    "workflow": "SELECT_AFTER_CANDIDATE_HASH_AND_DEFECT_CLASSIFICATION",
+    "allowed_operations": [
+      "background-only chamber atmosphere correction",
+      "mask-bounded relighting without garment redraw",
+      "contact shadow and damp-floor reflection integration",
+      "edge-spill and grain matching",
+      "protected rose-dome placement",
+      "mask-bounded LH-003 correction from approved authority"
+    ],
+    "forbidden_operations": [
+      "full-frame product redraw",
+      "prompt-only product correction",
+      "unapproved customer invention",
+      "rejected candidate as a new generation input",
+      "automatic paid retry"
+    ],
+    "requires_candidate_hash": true,
+    "requires_mask_for_product_pixels": true,
+    "requires_independent_review": true
+  },
+  "credit_control": {
+    "mode": "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "require_current_observe_pass": true,
+    "require_prompt_review_pass": true,
+    "prompt_sha256": "306141a612f89229f709fb2330de859438cfb95222ea0d76cb0e801dfadecb5c",
+    "prompt_review_receipt": null,
+    "require_candidate_bound_approval": true,
+    "approval_receipt": null,
+    "on_failure": "OPEN_ISSUE_AND_STOP",
+    "rejected_candidate_may_be_next_input": false
+  },
   "ooda": {
-    "observe": ["verify catalog, image SOT, physical front/back, chamber plate, and rose hashes", "confirm approved on-model target and garment matte exist"],
-    "orient": ["use Higgsfield hero_banner only after cast authority is approved", "treat outputs as candidate-only"],
-    "decide": ["hard-fail wrong front/back graphic placement, generic rose, missing product, or unapproved identity"],
-    "act": ["stage in Comfy", "apply only mask-bounded corrections", "quarantine failures", "require independent and founder review"]
+    "observe": [
+      "verify catalog, image SOT, physical front/back, chamber plate, and rose hashes",
+      "confirm approved on-model target and garment matte exist"
+    ],
+    "orient": [
+      "use Higgsfield hero_banner only after cast authority is approved",
+      "treat outputs as candidate-only"
+    ],
+    "decide": [
+      "hard-fail wrong front/back graphic placement, generic rose, missing product, or unapproved identity"
+    ],
+    "act": [
+      "stage in Comfy",
+      "apply only mask-bounded corrections",
+      "quarantine failures",
+      "require independent and founder review"
+    ]
   },
   "execute_blockers": [
     "founder-approved LH-003 on-model target is missing",
