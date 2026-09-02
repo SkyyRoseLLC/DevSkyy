@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/sync-scene-authority.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/sync-scene-authority.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
@@ -21,7 +23,9 @@
     "vercel:env:push": "vercel env push .env.production",
     "vercel:logs": "vercel logs",
     "vercel:inspect": "vercel inspect",
-    "vercel:project": "vercel project ls"
+    "vercel:project": "vercel project ls",
+    "sync:scene-authority": "node scripts/sync-scene-authority.mjs",
+    "check:scene-authority": "node scripts/sync-scene-authority.mjs --check"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.46",
