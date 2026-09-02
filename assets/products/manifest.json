@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-08-30T12:39:14+00:00",
+  "generated_at": "2026-09-02T07:20:04+00:00",
   "catalog_sha": "sha256:8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
   "skus": {
     "br-001": {
@@ -221,6 +221,11 @@
           "role": "garment-wearer-right",
           "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg",
           "sha256": "sha256:850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
+        },
+        {
+          "role": "garment-founder-four-angle",
+          "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+          "sha256": "sha256:7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130"
         },
         {
           "role": "dossier",
