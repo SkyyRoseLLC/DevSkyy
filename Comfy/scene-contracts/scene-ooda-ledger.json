@@ -65,12 +65,14 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "6d7a196cecfa320735c80f7c6457d89d5046d944addf82118913135c651fec8b",
+      "contract_sha256": "edd12d66e9137d3f98f42e56e5051a5dbdf4ef9876be54673d8c48772e9cca9c",
       "evidence": [
         "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
         "tasks/lh-003-source-authority-intake-20260902.json",
         "tasks/lh-003-model-casting-20260902-a1.json",
-        "Comfy/receipts/lh-003-model-casting-independent-review-20260902.json"
+        "Comfy/receipts/lh-003-model-casting-independent-review-20260902.json",
+        "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+        "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json"
       ],
       "outputs": [
         "four directional physical product views and hash-bound source-authority receipt PASS",
@@ -80,15 +82,16 @@
         "cinematic urban-grit creative and optical contracts PASS",
         "local Comfy correction-only and one-attempt credit policies PASS",
         "one 2K adult Black woman casting board generated for exactly 8.5 credits; identity, anatomy, styling, pockets, fit, and neutral source quality passed",
-        "independent review scored 83.3/100 and hard-failed wearer-relative artwork continuity; candidate quarantined with no automatic retry"
+        "independent review scored 83.3/100 and hard-failed wearer-relative artwork continuity; candidate quarantined with no automatic retry",
+        "founder approved LH-MODEL-01 identity only; two garment-free bust references are cropped, hash-bound, and eligible only for separately authorized identity conditioning"
       ],
       "blockers": [
         "model-casting A1 quarantined because Love Hurts artwork changes anatomical sides between front and rear views",
-        "founder-approved LH-003 on-model target still missing",
+        "founder-approved identity now exists, but an approved exact-LH-003 on-model product target still does not",
         "protected garment matte missing",
         "paid preflight approval missing"
       ],
-      "next_authority": "founder decision on model identity concept, then separately authorized exact-garment recovery and protected matte; no automatic paid retry"
+      "next_authority": "separately authorized exact-garment recovery around founder-approved LH-MODEL-01, protected matte, and independent product review; no automatic paid retry"
     },
     {
       "id": "SIG-COMMERCE-1-OODA-1",

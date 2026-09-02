@@ -219,3 +219,16 @@ Append-only execution and decision log for recoverable local scene production.
   between the front and rear views. The candidate is quarantined with no
   automatic retry and cannot be used for a garment matte, Comfy staging, or
   `LH-COMMERCE-2` scene input.
+
+# 2026-09-02 — LH-MODEL-01 founder identity approval
+
+- Recorded the founder statement `approve model identity` as
+  `APPROVED_IDENTITY_ONLY` for the adult Love Hurts campaign model from
+  `LH-003-MODEL-CASTING-20260902-A1`.
+- Extracted two garment-free, hash-bound identity references:
+  `front-bust-v1.png` and `rear-profile-bust-v1.png`.
+- Preserved the full casting board in quarantine because its wearer-relative
+  Love Hurts artwork failed continuity. No garment, full-board, matte,
+  final-scene, Soul-training, staging, promotion, deployment, or paid-retry
+  approval was inferred.
+- Provider calls: `0`. Additional credits spent: `0`.

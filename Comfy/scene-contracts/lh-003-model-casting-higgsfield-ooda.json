@@ -13,7 +13,7 @@
     "build": "athletic natural build with realistic anatomy",
     "hair": "natural textured hair styled clear of the waistband and pocket regions",
     "styling": "minimal fitted sleeveless black crop top ending above the waistband, simple black low-profile sneakers, no jacket, bag, jewelry, or accessory obscuring the shorts",
-    "reuse_boundary": "candidate identity may not enter LH-COMMERCE-2 until founder-approved and hash-bound"
+    "reuse_boundary": "LH-MODEL-01 identity-only crops are founder-approved and hash-bound for separately authorized identity conditioning. The quarantined full casting board remains ineligible as construction authority or scene input."
   },
   "composition": {
     "aspect_ratio": "16:9",
@@ -194,6 +194,42 @@
     "next_generation_input_allowed": false,
     "garment_matte_allowed": false,
     "comfy_staging_allowed": false
+  },
+  "founder_identity_approval": {
+    "status": "APPROVED_IDENTITY_ONLY",
+    "identity_id": "LH-MODEL-01",
+    "statement": "approve model identity",
+    "recorded_at": "2026-09-02",
+    "receipt": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+    "receipt_sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+    "manifest": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+    "manifest_sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+    "reference_assets": [
+      {
+        "role": "front_bust_identity_only",
+        "path": "Comfy/approved-identities/love-hurts/lh-model-01/front-bust-v1.png",
+        "sha256": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6",
+        "garment_pixels_included": false
+      },
+      {
+        "role": "rear_profile_bust_identity_only",
+        "path": "Comfy/approved-identities/love-hurts/lh-model-01/rear-profile-bust-v1.png",
+        "sha256": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b",
+        "garment_pixels_included": false
+      }
+    ],
+    "approved_scope": [
+      "face",
+      "skin tone",
+      "hair",
+      "body type and proportions",
+      "adult age presentation",
+      "campaign presence"
+    ],
+    "full_candidate_approval": false,
+    "product_fidelity_approval": false,
+    "scene_input_approval": false,
+    "paid_retry_approval": false
   },
   "promotion_gate": "FOUNDER_APPROVED_MODEL_CASTING"
 }
