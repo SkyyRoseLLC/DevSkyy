@@ -182,6 +182,8 @@
     "max_paid_generations": 1,
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
+    "planned_candidate_id": "LH-COMMERCE-2-HF-PILOT-A1",
+    "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
     "prompt_sha256": "306141a612f89229f709fb2330de859438cfb95222ea0d76cb0e801dfadecb5c",

@@ -1,0 +1,17 @@
+{
+  "schema": "skyyrose.scene-ooda-receipt/1",
+  "scene_id": "BR-COMMERCE-2",
+  "action": "higgsfield-enhance-review",
+  "recorded_at": "2026-09-02T12:30:14.719152+00:00",
+  "payload": {
+    "reviewed_receipt": "/Users/theceo/DevSkyy/Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T123004088681Z.json",
+    "inspection": {
+      "status": "PASS",
+      "prompt_present": true,
+      "missing_required_phrases": [],
+      "present_forbidden_phrases": []
+    },
+    "generation_submitted": false,
+    "prompt_sha256": "9d47ca0d0bd5f60891ddee3a42b30b0cec65f8e232306640954756ec3951e6d6"
+  }
+}

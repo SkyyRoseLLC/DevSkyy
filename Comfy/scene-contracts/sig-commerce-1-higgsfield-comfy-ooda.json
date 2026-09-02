@@ -197,6 +197,8 @@
     "max_paid_generations": 1,
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
+    "planned_candidate_id": "SIG-COMMERCE-1-HF-PILOT-A1",
+    "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
     "prompt_sha256": "15af721a9ad4d9fb5f7dd92f9cbce1b681d247d887870ff824d426d437a58ca2",

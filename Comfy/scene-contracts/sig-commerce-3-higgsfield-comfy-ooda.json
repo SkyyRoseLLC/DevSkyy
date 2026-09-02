@@ -266,6 +266,8 @@
     "max_paid_generations": 1,
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
+    "planned_candidate_id": "SIG-COMMERCE-3-LOCAL-CORRECTION-A1",
+    "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
     "prompt_sha256": "607f50b23e11ed784563c0a367675b764aaf429465587a36870766835a4d0d85",

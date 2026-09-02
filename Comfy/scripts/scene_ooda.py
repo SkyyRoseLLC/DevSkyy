@@ -221,6 +221,77 @@ def verify_comfy_contract(manifest: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def verify_provider_capability(manifest: dict[str, Any]) -> dict[str, Any]:
+    capability = manifest.get("provider_capability")
+    failures: list[str] = []
+    if not isinstance(capability, dict):
+        return {
+            "status": "MISSING_PROVIDER_CAPABILITY",
+            "failures": ["missing provider_capability"],
+        }
+    required = (
+        "registry_path",
+        "registry_sha256",
+        "runtime_receipt",
+        "runtime_receipt_sha256",
+        "model_id",
+        "operation",
+    )
+    missing = [key for key in required if not capability.get(key)]
+    if missing:
+        return {
+            "status": "MISSING_RUNTIME_CAPABILITY",
+            "failures": [f"missing provider capability fields: {', '.join(missing)}"],
+        }
+
+    registry_check = verify_file(
+        resolve_path(capability["registry_path"]), capability["registry_sha256"]
+    )
+    receipt_check = verify_file(
+        resolve_path(capability["runtime_receipt"]),
+        capability["runtime_receipt_sha256"],
+    )
+    if registry_check["status"] != "PASS":
+        failures.append("provider registry file or hash is invalid")
+    if receipt_check["status"] != "PASS":
+        failures.append("runtime capability receipt file or hash is invalid")
+
+    model: dict[str, Any] | None = None
+    if not failures:
+        try:
+            registry = json.loads(
+                resolve_path(capability["registry_path"]).read_text(encoding="utf-8")
+            )
+        except (OSError, json.JSONDecodeError) as exc:
+            failures.append(f"provider registry cannot be parsed: {exc}")
+        else:
+            if registry.get("schema") != "product-fidelity-model-registry.v2":
+                failures.append("unsupported provider registry schema")
+            for candidate in registry.get("models", []):
+                identifiers = [candidate.get("id"), *candidate.get("aliases", [])]
+                if capability["model_id"].casefold() in {
+                    identifier.casefold()
+                    for identifier in identifiers
+                    if isinstance(identifier, str)
+                }:
+                    model = candidate
+                    break
+            if model is None:
+                failures.append("provider model is absent from the bound registry")
+            elif capability["operation"] not in model.get("allowed_operations", []):
+                failures.append("provider operation is not allowed for the bound model")
+            elif model.get("fidelity_tier") != "candidate_only":
+                failures.append("Higgsfield scene generation must remain candidate_only")
+    return {
+        "status": "PASS" if not failures else "INVALID_PROVIDER_CAPABILITY",
+        "failures": failures,
+        "registry_check": registry_check,
+        "runtime_receipt_check": receipt_check,
+        "model": model.get("id") if model else None,
+        "operation": capability.get("operation"),
+    }
+
+
 def verify_authorization_receipt(
     manifest: dict[str, Any], raw_path: str | None, expected_action: str
 ) -> dict[str, Any]:
@@ -263,6 +334,14 @@ def verify_authorization_receipt(
             or not payload["planned_candidate_id"].strip()
         ):
             failures.append("approval must name a planned candidate id")
+        elif payload["planned_candidate_id"] != manifest.get("credit_control", {}).get(
+            "planned_candidate_id"
+        ):
+            failures.append("approval planned candidate does not match the manifest")
+        if payload.get("maximum_estimated_credits") != manifest.get("credit_control", {}).get(
+            "max_estimated_credits"
+        ):
+            failures.append("approval credit ceiling does not match the manifest")
         if payload.get("manifest_sha256") != execution_fingerprint(manifest):
             failures.append("approval is not bound to the current executable manifest")
     return {
@@ -292,6 +371,25 @@ def verify_credit_control(manifest: dict[str, Any]) -> dict[str, Any]:
         failures.append("paid_generations_recorded must be a non-negative integer")
     if control.get("automatic_paid_retries") is not False:
         failures.append("automatic_paid_retries must be false")
+    if (
+        not isinstance(control.get("planned_candidate_id"), str)
+        or not control["planned_candidate_id"].strip()
+    ):
+        failures.append("planned_candidate_id must be a non-empty string")
+    maximum_estimated_credits = control.get("max_estimated_credits")
+    if (
+        not isinstance(maximum_estimated_credits, (int, float))
+        or isinstance(maximum_estimated_credits, bool)
+        or maximum_estimated_credits <= 0
+    ):
+        failures.append("max_estimated_credits must be a positive number")
+    provider_estimate = manifest.get("provider_capability", {}).get("estimated_credits")
+    if (
+        isinstance(maximum_estimated_credits, (int, float))
+        and isinstance(provider_estimate, (int, float))
+        and provider_estimate > maximum_estimated_credits
+    ):
+        failures.append("provider estimate exceeds the approved credit ceiling")
     for key in (
         "require_current_observe_pass",
         "require_prompt_review_pass",
@@ -359,6 +457,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
     creative_direction_check = verify_creative_direction(manifest)
     optical_contract_check = verify_optical_contract(manifest)
     comfy_contract_check = verify_comfy_contract(manifest)
+    provider_capability_check = verify_provider_capability(manifest)
     credit_control_check = verify_credit_control(manifest)
     source_ready = all(check["status"] == "PASS" for check in catalog_checks + source_checks)
     dependencies_ready = all(check["status"] == "PASS" for check in dependency_checks)
@@ -390,6 +489,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
         "creative_direction_check": creative_direction_check,
         "optical_contract_check": optical_contract_check,
         "comfy_contract_check": comfy_contract_check,
+        "provider_capability_check": provider_capability_check,
         "credit_control_check": credit_control_check,
         "source_ready": source_ready,
         "dependencies_ready": dependencies_ready,
@@ -401,6 +501,7 @@ def observe(manifest: dict[str, Any]) -> dict[str, Any]:
         and dependencies_ready
         and not manifest["execute_blockers"]
         and paid_authorized
+        and provider_capability_check["status"] == "PASS"
         and paid_route_permitted,
     }
 
