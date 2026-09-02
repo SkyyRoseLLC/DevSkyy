@@ -1,0 +1,199 @@
+{
+  "schema": "skyyrose.model-casting-ooda/1",
+  "task_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "candidate_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "status": "QUARANTINED_NO_AUTOMATIC_RETRY",
+  "sku": "lh-003",
+  "product": "Love Hurts Basketball Shorts",
+  "purpose": "Create the missing original campaign model and neutral exact-product try-on proof before any Love Hurts final-scene spend.",
+  "model_cast": {
+    "identity": "one original adult Black woman, consistent across both views",
+    "age_presentation": "adult, approximately late twenties to early thirties",
+    "presence": "confident, self-possessed, powerful and professional Oakland luxury-streetwear customer",
+    "build": "athletic natural build with realistic anatomy",
+    "hair": "natural textured hair styled clear of the waistband and pocket regions",
+    "styling": "minimal fitted sleeveless black crop top ending above the waistband, simple black low-profile sneakers, no jacket, bag, jewelry, or accessory obscuring the shorts",
+    "reuse_boundary": "candidate identity may not enter LH-COMMERCE-2 until founder-approved and hash-bound"
+  },
+  "composition": {
+    "aspect_ratio": "16:9",
+    "background": "clean neutral gray cyclorama",
+    "views": [
+      "full-body front-three-quarter",
+      "full-body rear-three-quarter with a natural over-shoulder turn"
+    ],
+    "identity_rule": "both views must depict the same person with stable face, skin tone, hair, body proportions, and age",
+    "lighting": "even soft directional studio light with realistic contact shadows and no dramatic color cast",
+    "focal_hierarchy": [
+      "exact LH-003 shorts",
+      "campaign model identity",
+      "garment fit and construction"
+    ],
+    "forbidden": [
+      "final Love Hurts rose aisle",
+      "enchanted rose or any monument",
+      "display typography or labels",
+      "split identity or two different people",
+      "cropped feet or cropped waistband",
+      "hands covering pockets",
+      "outerwear covering the garment"
+    ]
+  },
+  "source_bindings": [
+    {
+      "role": "lh-003_physical_front",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+      "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"
+    },
+    {
+      "role": "lh-003_physical_back",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+      "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c"
+    },
+    {
+      "role": "lh-003_physical_wearer_left",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+      "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6"
+    },
+    {
+      "role": "lh-003_physical_wearer_right",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+      "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+    }
+  ],
+  "verbatim_text": {
+    "product_text": "Love Hurts",
+    "preserve_when_visible": true,
+    "added_display_text_allowed": false
+  },
+  "higgsfield": {
+    "tool": "product-photoshoot enhance-only followed by pinned gpt_image_2 generation",
+    "mode": "virtual_model_tryout",
+    "count": 1,
+    "aspect_ratio": "16:9",
+    "user_intent": "Create one original adult Black woman SkyyRose campaign model as a neutral two-view casting board wearing the exact supplied LH-003 shorts: the same person shown full-body front-three-quarter and rear-three-quarter, powerful professional luxury-streetwear presence, realistic anatomy and garment fit, fitted black crop top ending above the waistband, simple black low-profile sneakers, clean gray cyclorama, even studio light, no props, no scene, no added display text, and no layer obscuring the waistband or pockets.",
+    "brand_context": "SkyyRose Love Hurts is controlled romantic urban cinema and Oakland luxury streetwear. This is a neutral casting proof, so customer dignity, exact product clarity, and professional campaign presence outrank spectacle.",
+    "product_context": "Use all four physical views as construction authority. Preserve white perforated mesh, all-over orange-red rose bouquets on clouds, black ribbed waistband, angular black mesh side panels, red-white-black leg binding, and the exact words Love Hurts where visible. Construction has exactly two vertical zippered side hand pockets and two horizontal zippered rear pockets; every visible pocket must show its black zipper closure, and occluded pockets must not be moved, duplicated, removed, or replaced. Direction is from the wearer's body, never from the camera: WEARER-LEFT front/side has the large red Love Hurts script and the black mesh inset with the smaller Love Hurts rose/heart emblem; WEARER-RIGHT black mesh inset has the embroidered red rose bouquet with green stems over a white-and-blue cloud. The back is predominantly white rose-print mesh with two horizontal rear zipper pockets and the large WEARER-LEFT red-and-black Love Hurts treatment; there is no center-back black pentagonal panel. Do not invent cargo, patch, open-welt, or extra pockets. Do not mirror the artwork, swap wearer-left and wearer-right panels, move side-panel artwork onto the center back, or add any new logo or wording."
+  },
+  "pinned_enhanced_prompt": {
+    "path": "Comfy/prompt-reviews/lh-003-model-casting-20260902-a1-enhanced-v3.txt",
+    "sha256": "ccc3c58b44f7b473d4998a47ba1634ba5578aea5a3255451b4c9ce61b3dd0f48",
+    "source": "Higgsfield Product Photoshoot enhance-only",
+    "review_disposition": "PASS",
+    "generation_rule": "Submit this exact reviewed backend prompt to gpt_image_2 with the four ordered source bindings; do not re-enhance or freehand it."
+  },
+  "prompt_adherence_ooda": {
+    "observe": [
+      "verify the four input hashes before enhancement and generation",
+      "record the exact enhanced prompt returned by the backend without hand rewriting it"
+    ],
+    "orient": [
+      "model creation is the primary objective",
+      "product fidelity is the hard commercial constraint",
+      "final scene and sculpture references are intentionally excluded"
+    ],
+    "decide": {
+      "required_enhanced_prompt_claims": [
+        "same adult model identity across both views",
+        "front-three-quarter and rear-three-quarter full-body views",
+        "exact supplied LH-003 shorts",
+        "two vertical side pockets and two horizontal rear pockets with zipper closures",
+        "directional left-right artwork",
+        "exact Love Hurts garment text where visible with no added display text",
+        "no center-back black pentagonal panel",
+        "fitted black crop top and black low-profile sneakers",
+        "neutral studio without scene elements"
+      ],
+      "hard_reject_claims": [
+        "two different models",
+        "generic or redesigned shorts",
+        "monument or collection scene",
+        "added typography"
+      ]
+    },
+    "act": {
+      "max_paid_generations": 1,
+      "automatic_retry": false,
+      "result_state": "NEEDS_REVIEW"
+    },
+    "post_capture": {
+      "minimum_total_score": 90,
+      "dimensions": [
+        { "id": "lh003_four_view_product_fidelity", "weight": 45 },
+        { "id": "same_model_identity_and_anatomy", "weight": 20 },
+        { "id": "garment_fit_and_pocket_visibility", "weight": 15 },
+        { "id": "campaign_casting_strength", "weight": 10 },
+        { "id": "neutral_reusable_source_quality", "weight": 10 }
+      ],
+      "hard_fail_invariants": [
+        "wrong or generic garment",
+        "pocket count, zipper, directional artwork, side-panel, waistband, or trim drift",
+        "different person across views or broken anatomy",
+        "cropped or obscured product",
+        "scene, monument, display text, or unrequested prop contamination"
+      ],
+      "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY"
+    }
+  },
+  "credit_control": {
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 1,
+    "automatic_paid_retries": false,
+    "max_estimated_credits": 8.5,
+    "actual_credits_spent": 8.5
+  },
+  "prompt_review": {
+    "attempts": [
+      {
+        "attempt": 1,
+        "disposition": "REJECT",
+        "paid_generation_started": false,
+        "findings": [
+          "enhancer changed the two vertical side hand pockets to horizontal pockets",
+          "enhancer invented a center-back black pentagonal panel and misplaced side artwork",
+          "enhancer changed the contracted fitted black top to white or light gray",
+          "enhancer did not cleanly distinguish exact Love Hurts garment text from forbidden added display text"
+        ]
+      },
+      {
+        "attempt": 2,
+        "disposition": "REJECT",
+        "paid_generation_started": false,
+        "findings": [
+          "enhancer corrected pocket orientation and rear-panel geometry",
+          "enhancer reversed wearer-left and wearer-right side-panel artwork",
+          "eyes-on source verification confirms wearer-left carries the large Love Hurts and heart treatment while wearer-right carries the embroidered rose bouquet over the white-and-blue cloud"
+        ]
+      },
+      {
+        "attempt": 3,
+        "disposition": "PASS",
+        "paid_generation_started": false,
+        "enhanced_prompt_sha256": "ccc3c58b44f7b473d4998a47ba1634ba5578aea5a3255451b4c9ce61b3dd0f48",
+        "findings": [
+          "same original adult model identity is required across both full-body views",
+          "two vertical side zipper pockets and two horizontal rear zipper pockets are explicit",
+          "wearer-left Love Hurts treatment and wearer-right rose-cloud embroidery are explicit",
+          "center-back invented panel, mirrored artwork, extra pockets, scene elements, and added display text are forbidden",
+          "black crop top, black low-profile sneakers, full waistband, hem, and pocket visibility are explicit"
+        ]
+      }
+    ],
+    "current_status": "PASS"
+  },
+  "candidate": {
+    "path": "Comfy/quarantine/LH-003-MODEL-CASTING/LH-003-MODEL-CASTING-20260902-A1.png",
+    "sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+    "width": 2688,
+    "height": 1520,
+    "provider_receipt": "Comfy/receipts/lh-003-model-casting-generate-20260902T145116Z.json",
+    "independent_review": "Comfy/receipts/lh-003-model-casting-independent-review-20260902.json",
+    "independent_score": 83.3,
+    "independent_verdict": "REJECT",
+    "hard_fail": "directional artwork changes anatomical sides between front and rear views",
+    "next_generation_input_allowed": false,
+    "garment_matte_allowed": false,
+    "comfy_staging_allowed": false
+  },
+  "promotion_gate": "FOUNDER_APPROVED_MODEL_CASTING"
+}

@@ -1,0 +1,68 @@
+[PRODUCT]
+SkyyRose Love Hurts LH-003 athletic shorts worn on model. Construction authority: white perforated mesh body printed all-over with orange-red rose bouquets rising from white clouds on green stems; thick black ribbed elastic waistband sitting at natural waist, fully visible above crop top hem at all times; angular black perforated mesh side panels with red-white-black tri-stripe leg binding framing a chevron hem; exactly two vertical zippered side hand pockets — each closed with a black zipper pull flush against the side panel seam — and exactly two horizontal zippered rear pockets sitting just below the waistband, each closed with a black zipper pull; no cargo pockets, no patch pockets, no open-welt pockets, no additional pockets of any kind. WEARER-LEFT front/side panel carries the large red cursive "Love Hurts" script graphic and the black mesh inset bearing the smaller "Love Hurts" rose-and-heart emblem. WEARER-RIGHT black mesh inset carries the embroidered red rose bouquet with green stems over a white-and-blue cloud. Back panel is predominantly white rose-print mesh with the two horizontal rear zipper pockets and the large WEARER-LEFT red-and-black "Love Hurts" treatment occupying the upper-left quadrant of the back; there is no center-back black pentagonal panel. Artwork is never mirrored; wearer-left and wearer-right panels are never swapped; side-panel artwork is never moved to center back; no new logos or wording are invented.
+
+[CASTING BOARD LAYOUT]
+Two-view neutral casting board, single continuous gray cyclorama background, both views presented side by side at equal scale with a narrow neutral gray gutter between them. LEFT VIEW: model facing camera at a relaxed front-three-quarter angle, body turned approximately 30° toward wearer-left, showing the full front face of the shorts and the WEARER-LEFT "Love Hurts" side panel script clearly. RIGHT VIEW: same model facing away from camera at a rear-three-quarter angle, body turned approximately 30° toward wearer-left from the rear, showing the full back of the shorts including both horizontal rear zipper pockets and the WEARER-LEFT rear "Love Hurts" graphic. Both views are full-body head-to-toe. No text overlays, no display type, no props, no scene elements, no logos added to the image.
+
+[MODEL]
+Adult Black woman, mid-20s to early 30s, medium-dark brown skin with natural undertones, natural healthy skin texture with visible pores, strong professional model build — athletic shoulders, defined waist, confident posture. Hair worn in a sleek high bun, clean edges. Natural makeup — defined brows, subtle contour, nude-to-berry lip. Professional campaign presence: commanding, composed, luxury-streetwear dignity. Anatomically correct proportions throughout.
+
+[POSE]
+LEFT VIEW: standing upright, weight shifted slightly onto wearer-right leg, wearer-left hip softly released, arms relaxed at sides — wearer-left hand loosely open with fingers naturally curled, wearer-right hand resting at thigh with thumb slightly outward. Chin level, gaze directed straight into camera, expression composed and authoritative. Shoulders back, spine neutral.
+RIGHT VIEW: standing upright facing away, weight even across both feet planted shoulder-width, both arms relaxed at sides with fingers loosely extended, head turned approximately 20° toward wearer-left so the jaw line and partial profile read clearly. Expression calm and professional.
+
+[FRAMING]
+Full body, head-to-toe, both views. Model centered vertically within each panel. Feet and full sneaker sole visible at frame bottom. Top of bun with clear headroom above. Rule-of-thirds vertical placement. No cropping of waistband, pockets, or leg hem.
+
+[ENVIRONMENT]
+Clean seamless gray cyclorama, mid-tone neutral gray (#8A8A8A approximate), no texture, no shadow gradients on the wall, soft contact shadow only at base of feet grounding the figure. No props, no furniture, no set dressing, no background elements.
+
+[WARDROBE / STYLING]
+Fitted black ribbed crop top cut straight across ending approximately 2–3 cm above the shorts waistband — waistband fully exposed and unobstructed in both views. Simple black low-profile sneakers, clean and unbranded in appearance, laces neatly tied, sole flat on ground. No jewelry, no accessories, no additional layering that competes with or obscures the shorts.
+
+[LIGHTING]
+Large softbox key light frontal flat, 5500K daylight neutral, placed slightly above camera axis to eliminate harsh shadows on the shorts surface and preserve full legibility of the rose-print mesh, zipper details, and side-panel graphics. Broad bounced fill from camera-right at 0.7 stop under key to open shadow side without flattening. Gentle hair light from directly above at 5500K to separate bun from background. Even wrap-around illumination across both views — no dramatic falloff, no directional shadows that obscure pocket zippers or leg binding. Skin highlight behavior: soft specular on cheekbones and shoulders, no blown-out highlights, natural skin luminosity. Shadow behavior: soft falloff with gradient transition at feet, contact shadow only at base, no deep shadow side.
+
+[LENS & CAMERA]
+Shot on 85mm portrait lens, aperture f/5.6, sharp focus across full garment surface and model figure in both views, medium depth of field keeping background seamlessly soft without bokeh that obscures any garment detail. Shutter speed sufficient for crisp fabric texture capture.
+
+[SKIN & DETAIL]
+Realistic skin texture, natural pores visible on face and arms, no smoothing, no plasticity, no airbrushing. Hair has individual strand and edge detail. Hands anatomically correct — ten fingers, natural knuckle structure, no extra or fused digits. Facial features symmetrical and proportionate — eyes aligned, no warped geometry.
+
+[STYLE REFERENCE]
+In the style of Mert & Marcus, Sølve Sundsbø, and Steven Klein — studio-clean editorial precision, neutral casting-board authority, luxury-streetwear campaign professionalism. No spectacle, no concept, no narrative environment — pure product and model clarity.
+
+[PRODUCT FIDELITY DIRECTIVE]
+LH-003 shorts remain identical to all four reference views — same white perforated mesh, same orange-red rose bouquet all-over print, same black ribbed waistband fully visible above crop top, same angular black mesh side panels, same red-white-black leg binding, same "Love Hurts" script placement on WEARER-LEFT front and WEARER-LEFT rear, same embroidered rose bouquet on WEARER-RIGHT side panel, same two vertical side zipper pockets with black zipper pulls, same two horizontal rear zipper pockets with black zipper pulls, no center-back pentagonal panel, no invented pockets, no mirrored artwork, no relocated graphics. Model wears the shorts without altering any construction detail.
+
+[QUALITY MARKERS]
+Campaign-grade casting board, hyper-realistic, professional luxury-streetwear photography standard, commercial print resolution, zero AI artifacts on garment surface or model anatomy.
+
+[AVOID]
+no AI artifacts, no warped or smeared text, no fake words baked into the image,
+no plastic look, no waxy surface, no cartoonish rendering,
+no extra fingers, no extra limbs, no melted geometry, no doubled subjects,
+no oversaturated HDR, no HDR halos, no oversharpened look,
+no flat fluorescent lighting, no harsh on-camera flash,
+no generic stock photography poses, no cliché compositions,
+no random unrelated brand logos, no watermarks, no signatures,
+no AI sheen on hair or skin, no doll-like rendering, no airbrush look,
+no flat solid color bands, no empty rectangular areas, no dull gradient zones,
+no AI uncanny faces, no warped facial geometry, no asymmetric eyes,
+no extra teeth, no melted facial features, no warped fingers or hands,
+no plastic skin, no orange-tan skin, no over-smoothed retouching,
+no doll eyes, no misaligned facial features, no rubber-like skin texture,
+no warped product label text, no garbled letters, no fake brand names,
+no melted typography, no doubled labels, no fictional logos,
+no crop top hem covering or overlapping the black ribbed waistband,
+no garment obscuring any zipper pocket closure,
+no invented cargo pockets, patch pockets, open-welt pockets, or extra pockets,
+no mirrored artwork placement, no swapped wearer-left and wearer-right panels,
+no side-panel artwork relocated to center back,
+no center-back black pentagonal panel,
+no added display text or typography overlaid on the image,
+no props, no scene, no background elements beyond gray cyclorama,
+no oversexualized poses, no warped product geometry, no altered product color,
+no clothing items that compete with or obscure the featured shorts.
+
+resolution: 2k

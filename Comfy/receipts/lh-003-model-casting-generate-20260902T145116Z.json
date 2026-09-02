@@ -1,0 +1,61 @@
+{
+  "schema": "skyyrose.model-casting-generation-receipt/1",
+  "task_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "candidate_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "recorded_at": "2026-09-02T14:51:16.965435Z",
+  "provider": {
+    "name": "higgsfield",
+    "job_type": "gpt_image_2",
+    "job_id": "2167f0ad-2a69-4432-a926-36527e2dd8b4",
+    "status": "completed",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260902_145116_2167f0ad-2a69-4432-a926-36527e2dd8b4.png"
+  },
+  "request": {
+    "route": "Higgsfield Product Photoshoot enhance-only followed by exact pinned GPT Image 2 generation",
+    "mode": "virtual_model_tryout",
+    "aspect_ratio": "16:9",
+    "resolution": "2k",
+    "quality": "high",
+    "count": 1,
+    "prompt_path": "Comfy/prompt-reviews/lh-003-model-casting-20260902-a1-enhanced-v3.txt",
+    "prompt_sha256": "ccc3c58b44f7b473d4998a47ba1634ba5578aea5a3255451b4c9ce61b3dd0f48",
+    "ordered_sources": [
+      {
+        "role": "lh-003_physical_front",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+        "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"
+      },
+      {
+        "role": "lh-003_physical_back",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+        "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c"
+      },
+      {
+        "role": "lh-003_physical_wearer_left",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+        "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6"
+      },
+      {
+        "role": "lh-003_physical_wearer_right",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+        "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+      }
+    ]
+  },
+  "credit_receipt": {
+    "estimated_credits": 8.5,
+    "credits_before": 1353.5,
+    "credits_after": 1345.0,
+    "actual_credits_spent": 8.5,
+    "automatic_retry_allowed": false
+  },
+  "candidate": {
+    "path": "Comfy/quarantine/LH-003-MODEL-CASTING/LH-003-MODEL-CASTING-20260902-A1.png",
+    "sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+    "width": 2688,
+    "height": 1520,
+    "format": "PNG",
+    "initial_state": "NEEDS_REVIEW",
+    "final_state": "QUARANTINED_NO_AUTOMATIC_RETRY"
+  }
+}

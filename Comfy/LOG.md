@@ -206,3 +206,16 @@ Append-only execution and decision log for recoverable local scene production.
   regardless of average score, and Comfy staging rejects a missing, stale,
   below-threshold, or hard-failed review. No provider call, Comfy job, or credit
   spend was performed.
+- 2026-09-02 CASTING `LH-003-MODEL-CASTING-20260902-A1` created one original
+  adult Black woman campaign-model board through a hash-pinned Higgsfield
+  Product Photoshoot enhancement and GPT Image 2 call. Two non-generating
+  enhanced prompts were rejected before spend for pocket-orientation,
+  invented-panel, styling, and wearer-left/right errors; the third passed and
+  was pinned at `ccc3c58b...`. The single 2688x1520 candidate cost exactly 8.5
+  credits and is bound at `7c911e35...`. Independent visual-commerce QA passed
+  identity, anatomy, styling, all four zipper pockets, fit, crop, and neutral
+  source quality but scored the complete candidate 83.3/100 and hard-failed
+  directional artwork because the Love Hurts treatment changes anatomical sides
+  between the front and rear views. The candidate is quarantined with no
+  automatic retry and cannot be used for a garment matte, Comfy staging, or
+  `LH-COMMERCE-2` scene input.
