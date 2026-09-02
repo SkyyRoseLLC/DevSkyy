@@ -92,10 +92,11 @@
   "issues": [
     {
       "issue_id": "LH003-CAST-001",
-      "state": "IN_REMEDIATION",
+      "state": "PARTIALLY_RESOLVED_IDENTITY_ONLY",
       "first_seen": "2026-09-02",
       "description": "LH-COMMERCE-2 has no approved on-model wearer; the missing model must be created as a separate controlled casting candidate before scene generation.",
-      "resolution_required": "Generate one neutral hash-bound candidate, obtain independent review, then request founder casting approval."
+      "resolution_required": "Use the founder-approved identity-only references in a separately authorized exact-garment recovery, obtain independent product review, then request approval for the corrected on-model target.",
+      "partial_resolution": "Founder approved LH-MODEL-01 identity only on 2026-09-02; no garment or scene approval was granted."
     },
     {
       "issue_id": "LH003-PROMPT-001",
@@ -127,9 +128,37 @@
       "One 2K candidate was generated for exactly 8.5 credits and bound at 7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9.",
       "Independent visual-commerce-qa scored 83.3/100 and rejected the candidate because the garment artwork changes anatomical sides between views.",
       "The model identity, anatomy, professional presence, pocket topology, garment fit, crop, and neutral studio quality passed independently.",
+      "Founder statement 'approve model identity' is recorded as APPROVED_IDENTITY_ONLY for LH-MODEL-01 with two garment-free, hash-bound bust references.",
       "The candidate is quarantined and no automatic paid retry, garment-matte production, Comfy staging, scene input, promotion, wiring, or deployment is allowed."
     ]
   },
-  "founder_approval": "PENDING",
+  "founder_approval": {
+    "status": "APPROVED_IDENTITY_ONLY",
+    "statement": "approve model identity",
+    "recorded_at": "2026-09-02",
+    "identity_id": "LH-MODEL-01",
+    "receipt": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+    "receipt_sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+    "manifest": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+    "manifest_sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+    "scope": [
+      "face and facial proportions",
+      "skin tone",
+      "high-bun natural-texture hairstyle",
+      "athletic natural body type and proportions",
+      "adult age presentation",
+      "confident professional Oakland luxury-streetwear campaign presence"
+    ],
+    "exclusions": [
+      "LH-003 garment pixels or construction",
+      "product-fidelity approval",
+      "full casting-board approval",
+      "garment-matte approval",
+      "LH-COMMERCE-2 scene approval",
+      "Soul identity training",
+      "paid generation or retry",
+      "Comfy staging, storefront wiring, promotion, or deployment"
+    ]
+  },
   "release_decision": "NOT_AUTHORIZED"
 }

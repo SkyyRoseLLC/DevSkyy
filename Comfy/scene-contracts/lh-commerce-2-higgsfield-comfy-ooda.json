@@ -11,7 +11,7 @@
     "attempt": 1,
     "accountable": "fashion-theme-lead",
     "current_owner": "product-fidelity-image-edits",
-    "next_authority": "founder decision on the successful model identity concept, followed by a separately authorized exact-garment recovery route and protected matte"
+    "next_authority": "separately authorized exact-garment recovery around founder-approved LH-MODEL-01, followed by protected garment matte and independent product review"
   },
   "catalog_snapshot": {
     "catalog_path": "skyyrose-catalog.csv",
@@ -232,7 +232,26 @@
     "independent_review": "Comfy/receipts/lh-003-model-casting-independent-review-20260902.json",
     "score": 83.3,
     "verdict": "REJECT",
-    "identity_and_anatomy": "PASS_CONCEPT_ONLY",
+    "identity_and_anatomy": "FOUNDER_APPROVED_IDENTITY_ONLY",
+    "approved_identity_id": "LH-MODEL-01",
+    "founder_identity_approval": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+    "founder_identity_approval_sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+    "approved_identity_manifest": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+    "approved_identity_manifest_sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+    "approved_identity_assets": [
+      {
+        "role": "front_bust_identity_only",
+        "path": "Comfy/approved-identities/love-hurts/lh-model-01/front-bust-v1.png",
+        "sha256": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6",
+        "garment_pixels_included": false
+      },
+      {
+        "role": "rear_profile_bust_identity_only",
+        "path": "Comfy/approved-identities/love-hurts/lh-model-01/rear-profile-bust-v1.png",
+        "sha256": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b",
+        "garment_pixels_included": false
+      }
+    ],
     "product_directionality": "HARD_FAIL",
     "eligible_as_scene_input": false,
     "automatic_retry_allowed": false
@@ -297,8 +316,8 @@
     ]
   },
   "execute_blockers": [
-    "LH-003-MODEL-CASTING-20260902-A1 created a strong consistent model identity but the complete candidate was rejected because directional artwork changed anatomical sides between front and rear views",
-    "founder-approved LH-003 on-model target is still missing",
+    "LH-MODEL-01 identity is founder-approved, but LH-003-MODEL-CASTING-20260902-A1 remains rejected because directional artwork changed anatomical sides between front and rear views",
+    "approved exact-LH-003 on-model product target is still missing; identity approval alone does not authorize the rejected garment board",
     "LH-003 protected garment matte is missing",
     "candidate-bound preflight and paid Higgsfield generation approval not recorded"
   ],
