@@ -3,8 +3,8 @@
   "recorded_at": "2026-09-02",
   "mission": "Execute the five remaining mapped commerce scenes through a cinematic urban-grit, product-first OODA with Fashion Theme Team governance and fail-closed credit control.",
   "active_task": {
-    "path": "Comfy/scene-contracts/cinematic-urban-grit-ooda-task.json",
-    "state": "FAIL"
+    "path": "tasks/scene-recovery-ooda-20260902.json",
+    "state": "COMPLETE_WITH_BLOCKERS"
   },
   "team_index": {
     "path": "Comfy/scene-contracts/scene-ooda-index.json",
@@ -27,7 +27,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "54494f55cf351ecd0ef0f8d71610bd35ae56383677669ab4771331f35f9d2e9c",
+      "contract_sha256": "d28fa9a67a87405deb24e8dc8f72d983b5ebf346969f7b786b62285fba3c5ed8",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json",
@@ -36,7 +36,8 @@
         "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
         "Comfy/receipts/br-commerce-2-paid-generation-approval-20260902T123217Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-generate-20260902T123611624331Z.json",
-        "Comfy/receipts/br-commerce-2-manager-triage-20260902T123710Z.json"
+        "Comfy/receipts/br-commerce-2-manager-triage-20260902T123710Z.json",
+        "Comfy/receipts/protected-alpha-audit-20260902.json"
       ],
       "outputs": [
         "approved Black Rose Bay Bridge collection hero is hash-bound as world inspiration; product/customer hierarchy remains primary",
@@ -53,7 +54,9 @@
         "BR-007 physical construction drifted",
         "BR-004 founder-approved cast identity and center artwork were regenerated",
         "protected Black Rose sculpture geometry was changed",
-        "explicit protected masks and local Comfy native-integration plan are required"
+        "composition and BR-004 references are opaque, not cutouts",
+        "available real-alpha dual-cast v6 contains a rejected product correction",
+        "clean separate approved cast/product alphas and local Comfy native-integration plan are required"
       ],
       "next_authority": "product-fidelity-image-edits mask and protected-source recovery plan; no automatic paid retry"
     },
@@ -65,14 +68,19 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "edd12d66e9137d3f98f42e56e5051a5dbdf4ef9876be54673d8c48772e9cca9c",
+      "contract_sha256": "c89595f81516fb2cbc5923c32144f455f010bf4e237d35ba680e8f73617ac92c",
       "evidence": [
         "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
         "tasks/lh-003-source-authority-intake-20260902.json",
         "tasks/lh-003-model-casting-20260902-a1.json",
         "Comfy/receipts/lh-003-model-casting-independent-review-20260902.json",
         "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
-        "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json"
+        "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+        "Comfy/receipts/lh-003-front-product-matte-v1.json",
+        "Comfy/receipts/lh-003-back-product-matte-v1.json",
+        "Comfy/receipts/lh-003-wearer-left-product-matte-v1.json",
+        "Comfy/receipts/lh-003-wearer-right-product-matte-v1.json",
+        "Comfy/receipts/local-comfy-authority-upload-20260902.json"
       ],
       "outputs": [
         "four directional physical product views and hash-bound source-authority receipt PASS",
@@ -83,12 +91,13 @@
         "local Comfy correction-only and one-attempt credit policies PASS",
         "one 2K adult Black woman casting board generated for exactly 8.5 credits; identity, anatomy, styling, pockets, fit, and neutral source quality passed",
         "independent review scored 83.3/100 and hard-failed wearer-relative artwork continuity; candidate quarantined with no automatic retry",
-        "founder approved LH-MODEL-01 identity only; two garment-free bust references are cropped, hash-bound, and eligible only for separately authorized identity conditioning"
+        "founder approved LH-MODEL-01 identity only; two garment-free bust references are cropped, hash-bound, and eligible only for separately authorized identity conditioning",
+        "four exact-RGB product-only alpha mattes generated, reviewed, receipt-bound, and staged in local Comfy"
       ],
       "blockers": [
         "model-casting A1 quarantined because Love Hurts artwork changes anatomical sides between front and rear views",
         "founder-approved identity now exists, but an approved exact-LH-003 on-model product target still does not",
-        "protected garment matte missing",
+        "approved exact on-model garment matte remains missing; product-only mattes do not satisfy wearer authority",
         "paid preflight approval missing"
       ],
       "next_authority": "separately authorized exact-garment recovery around founder-approved LH-MODEL-01, protected matte, and independent product review; no automatic paid retry"
@@ -96,20 +105,28 @@
     {
       "id": "SIG-COMMERCE-1-OODA-1",
       "scene_id": "SIG-COMMERCE-1",
-      "state": "READY",
+      "state": "BLOCKED",
       "owner": "brand-experience-architect",
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-1-higgsfield-comfy-ooda.json",
-      "contract_sha256": "1afd8359ddf6292925ca47187a8fb5caa2e84869d92ba6122f39c8c3475db727",
-      "evidence": ["Comfy/LOG.md"],
+      "contract_sha256": "3dcc5dc7789cee252fe111c5a660112807535d2977f57dd2a18a67f4e4f47995",
+      "evidence": [
+        "Comfy/LOG.md",
+        "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T193504736502Z.json",
+        "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T194229733789Z.json",
+        "Comfy/receipts/protected-alpha-audit-20260902.json"
+      ],
       "outputs": [
         "protected customer/product, physical products, environment, and cleaned sculpture hashes PASS",
         "cinematic urban-grit creative and optical contracts PASS",
-        "local Comfy correction-only and one-attempt credit policies PASS"
+        "local Comfy correction-only and one-attempt credit policies PASS",
+        "black SG-007 source replaces the conflicting green reference",
+        "four rejected candidate hashes are deny-listed",
+        "provider capability and static prompt-adherence contracts PASS"
       ],
       "blockers": [
-        "corrected enhanced prompt not yet reviewed",
+        "corrected prompt enhancement endpoint unavailable; no enhanced-prompt PASS receipt exists",
         "paid preflight approval missing"
       ],
       "next_authority": "prompt assertion review, approved provider runtime, then independent visual-commerce-qa"
@@ -122,11 +139,12 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "2221f0be79b5d1bf8e2132dfcfbce999abf8f8751f8f0a222b4f56c90f772004",
-      "evidence": [],
+      "contract_sha256": "c08cc076abfc4a76ac553631e14a2b8c25d60041e6f9f4556d00c6ae309acc29",
+      "evidence": ["Comfy/receipts/protected-alpha-audit-20260902.json"],
       "outputs": [
         "allowed male/products/environment/monument hashes PASS",
         "founder-rejected female hash deny-listed",
+        "distinct real-alpha SG-006 alternative discovered and kept unrouted pending exact founder approval",
         "cinematic urban-grit creative and optical contracts PASS",
         "local Comfy correction-only and one-attempt credit policies PASS"
       ],
@@ -144,16 +162,20 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/sig-commerce-3-higgsfield-comfy-ooda.json",
-      "contract_sha256": "76664c2345bbd1bad4d710d7809776bffc64ce86db64da711f37c0f6a8e0b2e2",
-      "evidence": [],
+      "contract_sha256": "13b785af512bdbc48599642e843411fb2d4f152d00f84112c9a34145544d993b",
+      "evidence": [
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json"
+      ],
       "outputs": [
         "founder composition, three protected looks, and five physical product hashes PASS",
         "existing scene designated preserve-and-correct only; full-frame paid generation forbidden",
         "cinematic urban-grit creative and optical contracts PASS",
-        "local Comfy correction-only and one-attempt credit policies PASS"
+        "local Comfy correction-only and one-attempt credit policies PASS",
+        "SG-001 corrected asset and zero-outside-mask verification are live-packet dependencies"
       ],
       "blockers": [
-        "SG-001 correction receipt not promoted into packet",
+        "SG-001 remains candidate-only pending founder review",
         "SG-003 correction receipt missing",
         "mask-bound correction approval missing; full-frame prompt review is intentionally not pursued"
       ],

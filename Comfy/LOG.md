@@ -232,3 +232,34 @@ Append-only execution and decision log for recoverable local scene production.
   final-scene, Soul-training, staging, promotion, deployment, or paid-retry
   approval was inferred.
 - Provider calls: `0`. Additional credits spent: `0`.
+
+# 2026-09-02 — Scene recovery OODA: actions 1, 2, and 3
+
+- LH-003: created four deterministic edge-connected product-only alpha mattes
+  from the hash-bound front, back, wearer-left, and wearer-right physical
+  sources. Source RGB is preserved per pixel; receipts explicitly record
+  `on_model_authority=false`. All four were reviewed on checkerboard, black, and
+  white and uploaded to local ComfyUI at `127.0.0.1:8188`. The exact on-model
+  garment source and wearer matte remain blocked; the rejected casting board was
+  not reused.
+- SIG-COMMERCE-1: the first enhance-only receipt exposed a green SG-007 source
+  conflict. Replaced it with the black physical source, added exact identity,
+  pose, product-variant, sculpture, focal-hierarchy, and forbidden-hash locks,
+  and bound the registered Higgsfield runtime capability. Static source,
+  provider, Comfy, and prompt-adherence checks pass. A second enhance-only call
+  stopped because the Higgsfield enhancement endpoint was unreachable. No image
+  generation, candidate, approval, or credit spend occurred.
+- SIG-COMMERCE-2: discovered a distinct real-alpha SG-006 woman at hash
+  `3b2a8b69...`; it remains unrouted because that exact identity/file has no
+  founder approval. The earlier deny-listed source remains prohibited.
+- SIG-COMMERCE-3: bound the existing SG-001 corrected protected asset plus its
+  generation and verification receipts into the live packet. Verification
+  records zero changed pixels outside the authorized mask. SG-003 is still
+  missing and full-frame regeneration remains forbidden.
+- BR-COMMERCE-2: channel audit proved the founder composition and BR-004 wearer
+  sources are opaque references, not cutouts. The exact sculpture has real
+  alpha, but the available real-alpha dual-cast v6 contains a rejected product
+  correction. No local composite was submitted, no rejected asset was recycled,
+  and the consumed paid attempt was not retried.
+- Net new provider image calls: `0`. Net new credits spent: `0`. Promotion,
+  runtime wiring, deployment, and release remain unauthorized.

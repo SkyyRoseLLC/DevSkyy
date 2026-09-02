@@ -1,0 +1,47 @@
+{
+  "schema": "skyyrose.local-comfy-authority-upload-receipt/1",
+  "recorded_at": "2026-09-02",
+  "server": "http://127.0.0.1:8188",
+  "purpose": "Stage hash-bound protected authority inputs for local candidate-only workflows without submitting a generation job.",
+  "uploads": [
+    {
+      "source_path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-front-product-matte-v1.png",
+      "sha256": "5313b5aad0dc25222fc89c3036e50550d8c174b36d5374065a22d79caa3deacc",
+      "authority": "product_only_not_on_model"
+    },
+    {
+      "source_path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-back-product-matte-v1.png",
+      "sha256": "dc203cb54c77811fdcb34a46421fb9142b06e8d8ce4a684ebe02b5e9f07ad526",
+      "authority": "product_only_not_on_model"
+    },
+    {
+      "source_path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-wearer-left-product-matte-v1.png",
+      "sha256": "206153c049c96a11bc87da63040016a2c26495286648178ca2897fceff9ec5dc",
+      "authority": "product_only_not_on_model"
+    },
+    {
+      "source_path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-wearer-right-product-matte-v1.png",
+      "sha256": "d8d91b490fa7dba9b2c3dd77addd683c2368dce111f41bab979702f145c7a136",
+      "authority": "product_only_not_on_model"
+    },
+    {
+      "source_path": "assets/products/source-photos/signature/sg-007-signature-beanie-black.png",
+      "sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43",
+      "authority": "physical_product_source"
+    },
+    {
+      "source_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
+      "sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
+      "authority": "protected_customer_and_product_candidate_input"
+    },
+    {
+      "source_path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-hero-element/signature-skyyrose-font-sculpture-clean-transparent-v2.png",
+      "sha256": "4db76780d8280af2d1d7c081b424ccd385054f15778593b240cec52e34b75c3e",
+      "authority": "protected_signature_sculpture"
+    }
+  ],
+  "upload_result": "PASS",
+  "generation_submitted": false,
+  "credits_spent": 0,
+  "approval_boundary": "CANDIDATE_ONLY_STAGING_NOT_SCENE_APPROVAL"
+}

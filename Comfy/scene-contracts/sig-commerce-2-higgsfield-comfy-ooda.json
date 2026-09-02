@@ -172,6 +172,14 @@
       "decision": "FOUNDER_REJECTED_DO_NOT_USE"
     }
   ],
+  "discovered_unapproved_inputs": [
+    {
+      "path": "/Users/theceo/DevSkyy/editorial-staging/signature/sg-006-alpha.png",
+      "sha256": "3b2a8b6961ce817e5ef6527dfd6153016d46e6a4748deba4539cd00051c7daa5",
+      "classification": "REAL_ALPHA_UNAPPROVED_IDENTITY_DO_NOT_ROUTE",
+      "required_next_authority": "founder approval or rejection of this exact identity and file hash"
+    }
+  ],
   "higgsfield": {
     "mode": "hero_banner",
     "aspect_ratio": "16:9",
