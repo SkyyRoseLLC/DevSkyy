@@ -37,6 +37,8 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
+from api.v2.auth import require_dashboard_operator_or_api_key
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -81,22 +83,83 @@ def _fake_char_json(character_id: str = "char_abc123", name: str = "TestChar") -
     )
 
 
+def test_operator_bearer_authorizes_creative_api_in_production(
+    monkeypatch, secured_creative_client
+):
+    """The dashboard relay must work without exposing the internal API key."""
+    from api.v2 import auth as v2_auth
+    from security.jwt_oauth2_auth import JWTConfig, JWTManager, UserRole
+
+    manager = JWTManager(JWTConfig(secret_key="s" * 64, refresh_secret_key="r" * 64))
+    monkeypatch.setattr(v2_auth, "jwt_manager", manager)
+    monkeypatch.setenv("ENVIRONMENT", "production")
+    monkeypatch.setenv("API_KEY", "internal-only-key")
+
+    operator_token = manager.create_access_token("owner-1", [UserRole.SUPER_ADMIN.value])
+    with patch("api.v2.creative._get_redis", return_value=MagicMock(zrevrange=lambda *_: [])):
+        response = secured_creative_client.get(
+            "/api/v2/creative/operations",
+            headers={"Authorization": f"Bearer {operator_token}"},
+        )
+
+    assert response.status_code == 200
+
+
+def test_non_operator_bearer_is_rejected_in_production(monkeypatch, secured_creative_client):
+    from api.v2 import auth as v2_auth
+    from security.jwt_oauth2_auth import JWTConfig, JWTManager, UserRole
+
+    manager = JWTManager(JWTConfig(secret_key="s" * 64, refresh_secret_key="r" * 64))
+    monkeypatch.setattr(v2_auth, "jwt_manager", manager)
+    monkeypatch.setenv("ENVIRONMENT", "production")
+    monkeypatch.setenv("API_KEY", "internal-only-key")
+
+    token = manager.create_access_token("reader-1", [UserRole.API_USER.value])
+    response = secured_creative_client.get(
+        "/api/v2/creative/operations",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+
+    assert response.status_code == 403
+
+
+def test_privileged_v2_routes_fail_closed_without_credentials(secured_creative_client):
+    response = secured_creative_client.get("/api/v2/creative/operations")
+
+    assert response.status_code == 401
+
+
+def test_api_key_authenticates_when_a_stale_bearer_header_is_present(
+    monkeypatch, secured_creative_client
+):
+    monkeypatch.setenv("API_KEY", "internal-only-key")
+
+    with patch("api.v2.creative._get_redis", return_value=MagicMock(zrevrange=lambda *_: [])):
+        response = secured_creative_client.get(
+            "/api/v2/creative/operations",
+            headers={
+                "Authorization": "Bearer stale-or-malformed-token",
+                "X-API-Key": "internal-only-key",
+            },
+        )
+
+    assert response.status_code == 200
+
+
 # ---------------------------------------------------------------------------
 # App fixtures
 # ---------------------------------------------------------------------------
 
 
 @pytest.fixture(autouse=True)
-def _dev_auth_env(monkeypatch):
-    """Pin ENVIRONMENT so api.v2's fail-closed auth guard does not depend on
-    ambient env. The guard (_check_api_key) raises 503 "API_KEY not configured"
-    when API_KEY is unset AND ENVIRONMENT is not a dev value — so without this,
-    these tests pass only when the shell happens to export a dev ENVIRONMENT
-    (a bug-231 test-isolation violation). Tests that exercise real auth set
-    API_KEY themselves, which takes the header-validation branch and is
-    unaffected by this default.
-    """
+def _test_auth_env(monkeypatch):
+    """Pin the environment; endpoint fixtures provide an explicit test override."""
     monkeypatch.setenv("ENVIRONMENT", "test")
+    monkeypatch.delenv("API_KEY", raising=False)
+
+
+def _allow_test_operator() -> None:
+    return None
 
 
 @pytest.fixture(scope="module")
@@ -104,6 +167,7 @@ def creative_client():
     from api.v2.creative import router
 
     app = FastAPI()
+    app.dependency_overrides[require_dashboard_operator_or_api_key] = _allow_test_operator
     app.include_router(router, prefix="/api/v2")
     return TestClient(app, raise_server_exceptions=False)
 
@@ -113,6 +177,7 @@ def characters_client():
     from api.v2.characters import router
 
     app = FastAPI()
+    app.dependency_overrides[require_dashboard_operator_or_api_key] = _allow_test_operator
     app.include_router(router, prefix="/api/v2")
     return TestClient(app, raise_server_exceptions=False)
 
@@ -137,6 +202,25 @@ def webhooks_client():
 
 @pytest.fixture(scope="module")
 def health_client():
+    from api.v2.health import router
+
+    app = FastAPI()
+    app.dependency_overrides[require_dashboard_operator_or_api_key] = _allow_test_operator
+    app.include_router(router, prefix="/api/v2")
+    return TestClient(app, raise_server_exceptions=False)
+
+
+@pytest.fixture()
+def secured_creative_client():
+    from api.v2.creative import router
+
+    app = FastAPI()
+    app.include_router(router, prefix="/api/v2")
+    return TestClient(app, raise_server_exceptions=False)
+
+
+@pytest.fixture()
+def secured_health_client():
     from api.v2.health import router
 
     app = FastAPI()
@@ -799,7 +883,7 @@ class TestUsageEndpoint:
         assert "total_cost_usd" in body
         assert body["total_cost_usd"] >= 0.0
 
-    def test_usage_requires_auth_when_api_key_set(self, health_client):
+    def test_usage_requires_auth_when_api_key_set(self, secured_health_client):
         with patch.dict("os.environ", {"API_KEY": "secret-key"}):
-            resp = health_client.get("/api/v2/usage")  # no X-API-Key header
+            resp = secured_health_client.get("/api/v2/usage")  # no X-API-Key header
         assert resp.status_code == 401

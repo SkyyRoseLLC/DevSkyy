@@ -16,8 +16,10 @@ import uuid
 from datetime import UTC, datetime
 from typing import Any
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel, Field, field_validator
+
+from api.v2.auth import require_dashboard_operator_or_api_key
 
 logger = logging.getLogger(__name__)
 
@@ -37,36 +39,6 @@ except ImportError:  # pragma: no cover
 
 _CHAR_KEY_PREFIX = "elite_studio:characters:"
 _CHAR_TTL = 86_400 * 30  # 30-day TTL
-
-
-# ---------------------------------------------------------------------------
-# Auth dependency (mirrors v1)
-# ---------------------------------------------------------------------------
-
-
-def _get_api_key_dependency():
-    async def _check_api_key(x_api_key: str | None = Header(default=None, alias="X-API-Key")):
-        expected = os.getenv("API_KEY", "")
-        if not expected:
-            # Fail closed outside dev — a missing API_KEY must not allow through.
-            if os.getenv("ENVIRONMENT", "").lower() in ("development", "dev", "local", "test"):
-                return None
-            raise HTTPException(
-                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-                detail="API_KEY not configured",
-            )
-        if x_api_key != expected:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid or missing X-API-Key header",
-                headers={"WWW-Authenticate": "ApiKey"},
-            )
-        return x_api_key
-
-    return _check_api_key
-
-
-_api_key_dep = _get_api_key_dependency()
 
 
 # ---------------------------------------------------------------------------
@@ -221,7 +193,7 @@ def _build_character_response(
 )
 async def create_character(
     body: CreateCharacterRequest,
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Create a new SkyyRose brand character.
 
@@ -246,7 +218,7 @@ async def create_character(
     summary="Get the canonical SkyyRose mascot character",
 )
 async def get_rosie(
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Return the canonical Rosie character spec.
 
@@ -292,7 +264,7 @@ async def get_rosie(
 )
 async def get_character(
     character_id: str,
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Retrieve a previously created character by its ID."""
     r = _require_redis()
@@ -313,7 +285,7 @@ async def get_character(
 async def list_characters(
     page: int = Query(default=1, ge=1),
     page_size: int = Query(default=20, ge=1, le=100),
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """List all stored characters with pagination."""
     r = _require_redis()
@@ -356,7 +328,7 @@ async def list_characters(
 async def update_character(
     character_id: str,
     body: UpdateCharacterRequest,
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Update a character's spec fields and regenerate its sheet prompts.
 

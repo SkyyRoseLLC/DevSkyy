@@ -55,6 +55,10 @@ except ImportError:
 
 logger = logging.getLogger(__name__)
 
+DASHBOARD_WEBSOCKET_CHANNELS = frozenset(
+    {"agents", "round_table", "tasks", "3d_pipeline", "metrics"}
+)
+
 
 # =============================================================================
 # Configuration
@@ -158,6 +162,7 @@ class TokenType(StrEnum):
     RESET_PASSWORD = "reset_password"
     VERIFY_EMAIL = "verify_email"
     API_KEY = "api_key"
+    WEBSOCKET = "websocket"
 
 
 @dataclass
@@ -174,6 +179,7 @@ class TokenPayload:
     iat: datetime | None = None  # Issued at time
     iss: str | None = None  # Issuer
     aud: str | None = None  # Audience
+    channel: str | None = None  # Channel binding for short-lived WebSocket tickets
 
     def has_role(self, role: UserRole) -> bool:
         """Check if payload has a specific role."""
@@ -287,6 +293,17 @@ class TokenRefreshRequest(BaseModel):
     """Token refresh request model."""
 
     refresh_token: str
+
+
+class WebSocketTicketRequest(BaseModel):
+    """Request a short-lived ticket for one dashboard live-update channel."""
+
+    channel: str = Field(..., min_length=1, max_length=32, pattern=r"^[a-z_]+$")
+
+
+class WebSocketTicketResponse(BaseModel):
+    ticket: str
+    expires_in: int
 
 
 # =============================================================================
@@ -653,6 +670,22 @@ class JWTManager:
             algorithm=self.config.algorithm,
         )
 
+    def create_websocket_ticket(self, user_id: str, roles: list[str], channel: str) -> str:
+        """Create a channel-bound ticket that cannot authenticate ordinary API calls."""
+        now = datetime.now(UTC)
+        claims = {
+            "sub": user_id,
+            "jti": secrets.token_urlsafe(16),
+            "type": TokenType.WEBSOCKET.value,
+            "roles": roles,
+            "channel": channel,
+            "iss": self.config.issuer,
+            "aud": self.config.audience,
+            "iat": now,
+            "exp": now + timedelta(seconds=60),
+        }
+        return jwt.encode(claims, self.config.secret_key, algorithm=self.config.algorithm)
+
     def create_token_pair(
         self,
         user_id: str,
@@ -741,6 +774,7 @@ class JWTManager:
             iat=datetime.fromtimestamp(payload["iat"], tz=UTC),
             iss=payload.get("iss"),
             aud=payload.get("aud"),
+            channel=payload.get("channel"),
         )
 
     def refresh_tokens(self, refresh_token: str) -> TokenResponse:
@@ -1125,6 +1159,26 @@ def _create_auth_router():
         except Exception as e:
             logger.error(f"Error verifying user: {e}")
             return None
+
+    @router.post("/ws-ticket", response_model=WebSocketTicketResponse)
+    async def create_websocket_ticket(
+        request: WebSocketTicketRequest,
+        user: TokenPayload = Depends(get_current_user),
+    ) -> WebSocketTicketResponse:
+        """Issue one short-lived WebSocket ticket for an authenticated operator."""
+        if not user.has_any_role({UserRole.ADMIN, UserRole.SUPER_ADMIN}):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN, detail="Insufficient permissions"
+            )
+        if request.channel not in DASHBOARD_WEBSOCKET_CHANNELS:
+            raise HTTPException(
+                status_code=status.HTTP_422_UNPROCESSABLE_ENTITY, detail="Unsupported channel"
+            )
+
+        return WebSocketTicketResponse(
+            ticket=jwt_manager.create_websocket_ticket(user.sub, user.roles, request.channel),
+            expires_in=60,
+        )
 
     # Rate limiter for login attempts (brute force protection)
     login_rate_limiter = RateLimiter(max_attempts=5, window_seconds=300)

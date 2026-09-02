@@ -8,17 +8,12 @@ import { z } from 'zod';
 // =============================================================================
 
 const WS_URL = (() => {
-  const url = process.env.NEXT_PUBLIC_WS_URL || 'ws://localhost:8000';
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
   try {
-    // Validate WebSocket URL format
-    const parsed = new URL(url);
-    if (!['ws:', 'wss:'].includes(parsed.protocol)) {
-      console.error('Invalid WebSocket protocol, falling back to localhost');
-      return 'ws://localhost:8000';
-    }
-    return url;
+    const parsed = new URL(apiUrl);
+    parsed.protocol = parsed.protocol === 'https:' ? 'wss:' : 'ws:';
+    return parsed.origin;
   } catch {
-    console.error('Invalid WS_URL, falling back to localhost');
     return 'ws://localhost:8000';
   }
 })();
@@ -41,10 +36,12 @@ const RoundTableEventSchema = z.object({
   event: z.enum(['competition_started', 'provider_responded', 'competition_completed', 'error']),
   competition_id: z.string().optional(),
   provider_id: z.string().optional(),
-  result: z.object({
-    score: z.number(),
-    latency_ms: z.number(),
-  }).optional(),
+  result: z
+    .object({
+      score: z.number(),
+      latency_ms: z.number(),
+    })
+    .optional(),
   winner: z.string().optional(),
   error: z.string().optional(),
 });
@@ -88,17 +85,22 @@ function validateChannel(channel: string): boolean {
   return /^[a-zA-Z0-9_-]+$/.test(channel);
 }
 
-function sanitizeToken(token: string | null): string | null {
-  if (!token) return null;
-  // Basic JWT format validation (three base64url segments)
-  const jwtPattern = /^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/;
-  return jwtPattern.test(token) ? token : null;
+async function requestWebSocketTicket(channel: string): Promise<string | null> {
+  try {
+    const response = await fetch('/api/platform/api/v1/auth/ws-ticket', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ channel }),
+    });
+    if (!response.ok) return null;
+    const data = (await response.json()) as { ticket?: unknown };
+    return typeof data.ticket === 'string' ? data.ticket : null;
+  } catch {
+    return null;
+  }
 }
 
-function parseMessage<T>(
-  data: string,
-  schema?: z.ZodType<T>
-): WebSocketMessage<T> | null {
+function parseMessage<T>(data: string, schema?: z.ZodType<T>): WebSocketMessage<T> | null {
   try {
     const parsed = JSON.parse(data);
 
@@ -156,7 +158,7 @@ export function useWebSocket<T = unknown>(
   // Validate channel on mount
   const isValidChannel = validateChannel(channel);
 
-  const connect = useCallback(() => {
+  const connect = useCallback(async () => {
     if (!isValidChannel) {
       setError({
         code: 'INVALID_CHANNEL',
@@ -169,17 +171,27 @@ export function useWebSocket<T = unknown>(
 
     if (wsRef.current?.readyState === WebSocket.OPEN) return;
 
-    const token = typeof window !== 'undefined'
-      ? sanitizeToken(localStorage.getItem('access_token'))
-      : null;
-
-    const wsUrl = `${WS_URL}/api/ws/${encodeURIComponent(channel)}${token ? `?token=${encodeURIComponent(token)}` : ''}`;
-
     setStatus('connecting');
     setError(null);
 
+    const ticket = await requestWebSocketTicket(channel);
+    if (!ticket) {
+      setStatus('error');
+      setError({
+        code: 'AUTHENTICATION_FAILED',
+        message: 'Unable to authorize live updates for this dashboard session',
+        timestamp: new Date(),
+      });
+      return;
+    }
+
+    const wsUrl = `${WS_URL}/api/ws/${encodeURIComponent(channel)}`;
+
     try {
-      const ws = new WebSocket(wsUrl);
+      // The ticket is a short-lived, channel-bound handshake credential. It
+      // intentionally travels as a WebSocket subprotocol, never in a URL or
+      // browser storage, so it is absent from access logs and referrers.
+      const ws = new WebSocket(wsUrl, ['devskyy-ticket', ticket]);
 
       ws.onopen = () => {
         setStatus('connected');
@@ -187,11 +199,11 @@ export function useWebSocket<T = unknown>(
         setError(null);
       };
 
-      ws.onmessage = (event) => {
+      ws.onmessage = event => {
         const message = parseMessage<T>(event.data, schema);
         if (message) {
           setLastMessage(message);
-          setMessages((prev) => {
+          setMessages(prev => {
             const next = [...prev, message];
             // Keep only the last N messages to prevent memory issues
             return next.slice(-MAX_MESSAGE_HISTORY);
@@ -199,7 +211,7 @@ export function useWebSocket<T = unknown>(
         }
       };
 
-      ws.onerror = (event) => {
+      ws.onerror = event => {
         setStatus('error');
         setError({
           code: 'CONNECTION_ERROR',
@@ -209,7 +221,7 @@ export function useWebSocket<T = unknown>(
         console.error('WebSocket error:', event);
       };
 
-      ws.onclose = (event) => {
+      ws.onclose = event => {
         setStatus('disconnected');
         wsRef.current = null;
 
@@ -297,7 +309,7 @@ export function useWebSocket<T = unknown>(
 
   useEffect(() => {
     if (autoConnect) {
-      connect();
+      void connect();
     }
     return () => disconnect();
   }, [autoConnect, connect, disconnect]);

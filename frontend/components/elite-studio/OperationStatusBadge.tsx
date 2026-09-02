@@ -33,6 +33,11 @@ const STATUS_CONFIG: Record<
     className: 'border-red-500/50 bg-red-500/10 text-red-400',
     icon: XCircle,
   },
+  cancelled: {
+    label: 'Cancelled',
+    className: 'border-gray-600 bg-gray-800 text-gray-400',
+    icon: XCircle,
+  },
 };
 
 export function OperationStatusBadge({ status, className = '' }: OperationStatusBadgeProps) {
@@ -42,13 +47,10 @@ export function OperationStatusBadge({ status, className = '' }: OperationStatus
 
   return (
     <Badge
-      variant="outline"
+      variant='outline'
       className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 font-medium ${config.className} ${className}`}
     >
-      <Icon
-        className={`h-3 w-3 flex-shrink-0 ${isSpinning ? 'animate-spin' : ''}`}
-        aria-hidden="true"
-      />
+      <Icon className={`h-3 w-3 flex-shrink-0 ${isSpinning ? 'animate-spin' : ''}`} aria-hidden='true' />
       <span>{config.label}</span>
     </Badge>
   );

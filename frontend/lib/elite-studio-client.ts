@@ -1,22 +1,11 @@
 import { z } from 'zod';
 import { ApiError } from './api';
+import { API_URL } from './api/config';
+import { fetchWithTimeout, getAuthHeaders } from './api/client';
 
 // =============================================================================
 // ENVIRONMENT
 // =============================================================================
-
-const API_URL = (() => {
-  const url = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
-  try {
-    new URL(url);
-    return url;
-  } catch {
-    console.error('Invalid API_URL, falling back to localhost');
-    return 'http://localhost:8000';
-  }
-})();
-
-const REQUEST_TIMEOUT = 30000;
 
 // =============================================================================
 // ZOD SCHEMAS
@@ -26,9 +15,9 @@ const CreativeOperationSchema = z.object({
   operation_id: z.string(),
   intent: z.string(),
   sku: z.string(),
-  status: z.enum(['queued', 'running', 'completed', 'failed']),
+  status: z.enum(['queued', 'running', 'completed', 'failed', 'cancelled']),
   created_at: z.string(),
-  result: z.record(z.string(), z.unknown()).optional(),
+  result: z.record(z.string(), z.unknown()).nullable().optional(),
   error: z.string().optional(),
   cost_usd: z.number(),
   stage_timings: z.record(z.string(), z.number()),
@@ -46,15 +35,17 @@ const CharacterSchema = z.object({
 const OperationListResponseSchema = z.object({
   operations: z.array(CreativeOperationSchema),
   total: z.number(),
+  page: z.number(),
+  page_size: z.number(),
 });
 
 const UsageSchema = z.object({
-  renders_used: z.number(),
-  renders_quota: z.number(),
-  models_3d_used: z.number(),
-  social_packs_used: z.number(),
-  period_start: z.string(),
-  period_end: z.string(),
+  total_operations: z.number(),
+  completed: z.number(),
+  failed: z.number(),
+  queued: z.number(),
+  total_cost_usd: z.number(),
+  checked_at: z.string(),
 });
 
 const HealthSchema = z.object({
@@ -79,47 +70,15 @@ export interface CreateOperationRequest {
 }
 
 export interface ListOperationsFilters {
-  status?: 'queued' | 'running' | 'completed' | 'failed';
+  status?: 'queued' | 'running' | 'completed' | 'failed' | 'cancelled';
   intent?: string;
   page?: number;
   limit?: number;
 }
 
 // =============================================================================
-// REQUEST UTILITIES (mirrors api.ts patterns)
+// REQUEST UTILITIES
 // =============================================================================
-
-function getAuthToken(): string | null {
-  if (typeof window === 'undefined') return null;
-  return localStorage.getItem('access_token');
-}
-
-async function getAuthHeaders(): Promise<HeadersInit> {
-  const token = getAuthToken();
-  const headers: HeadersInit = {
-    'Content-Type': 'application/json',
-    'X-Request-ID': crypto.randomUUID(),
-  };
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
-  return headers;
-}
-
-async function fetchWithTimeout(
-  url: string,
-  options: RequestInit,
-  timeout = REQUEST_TIMEOUT
-): Promise<Response> {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), timeout);
-  try {
-    const response = await fetch(url, { ...options, signal: controller.signal });
-    return response;
-  } finally {
-    clearTimeout(timeoutId);
-  }
-}
 
 async function handleResponse<T>(response: Response, schema: z.ZodType<T>): Promise<T> {
   if (!response.ok) {
@@ -159,7 +118,7 @@ export const eliteStudioClient = {
     if (!intent.trim()) throw new ApiError('intent is required', 400, 'INVALID_INPUT');
     if (!sku.trim()) throw new ApiError('sku is required', 400, 'INVALID_INPUT');
 
-    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/operations`, {
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/creative/operations`, {
       method: 'POST',
       headers: await getAuthHeaders(),
       body: JSON.stringify({ intent: intent.trim(), sku: sku.trim(), params }),
@@ -168,33 +127,30 @@ export const eliteStudioClient = {
   },
 
   getOperation: async (id: string): Promise<CreativeOperation> => {
-    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/operations/${encodeURIComponent(id)}`, {
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/creative/operations/${encodeURIComponent(id)}`, {
       headers: await getAuthHeaders(),
     });
     return handleResponse(res, CreativeOperationSchema);
   },
 
-  listOperations: async (
-    filters: ListOperationsFilters = {}
-  ): Promise<OperationListResponse> => {
+  listOperations: async (filters: ListOperationsFilters = {}): Promise<OperationListResponse> => {
     const params = new URLSearchParams();
     if (filters.status) params.set('status', filters.status);
     if (filters.intent) params.set('intent', filters.intent);
     if (filters.page !== undefined) params.set('page', String(Math.max(1, filters.page)));
-    if (filters.limit !== undefined) params.set('limit', String(Math.min(100, Math.max(1, filters.limit))));
+    if (filters.limit !== undefined) params.set('page_size', String(Math.min(100, Math.max(1, filters.limit))));
 
-    const res = await fetchWithTimeout(
-      `${API_URL}/api/v1/elite-studio/operations?${params.toString()}`,
-      { headers: await getAuthHeaders() }
-    );
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/creative/operations?${params.toString()}`, {
+      headers: await getAuthHeaders(),
+    });
     return handleResponse(res, OperationListResponseSchema);
   },
 
   cancelOperation: async (id: string): Promise<void> => {
-    const res = await fetchWithTimeout(
-      `${API_URL}/api/v1/elite-studio/operations/${encodeURIComponent(id)}/cancel`,
-      { method: 'POST', headers: await getAuthHeaders() }
-    );
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/creative/operations/${encodeURIComponent(id)}`, {
+      method: 'DELETE',
+      headers: await getAuthHeaders(),
+    });
     return handleVoid(res);
   },
 
@@ -203,28 +159,31 @@ export const eliteStudioClient = {
   // ──────────────────────────────────────────────────────────────────────────
 
   getCharacter: async (id: string): Promise<Character> => {
-    const res = await fetchWithTimeout(
-      `${API_URL}/api/v1/elite-studio/characters/${encodeURIComponent(id)}`,
-      { headers: await getAuthHeaders() }
-    );
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/characters/${encodeURIComponent(id)}`, {
+      headers: await getAuthHeaders(),
+    });
     return handleResponse(res, CharacterSchema);
   },
 
   listCharacters: async (): Promise<Character[]> => {
-    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/characters`, {
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/characters`, {
       headers: await getAuthHeaders(),
     });
-    const data = await (res.ok ? res.json() : res.json().then((b: unknown) => { throw ApiError.fromResponse(res.status, b); }));
-    const parsed = z.array(CharacterSchema).safeParse(data);
+    const data = await (res.ok
+      ? res.json()
+      : res.json().then((b: unknown) => {
+          throw ApiError.fromResponse(res.status, b);
+        }));
+    const parsed = z.object({ characters: z.array(CharacterSchema) }).safeParse(data);
     if (!parsed.success) {
       console.error('Character list validation failed:', parsed.error.issues);
       return [];
     }
-    return parsed.data;
+    return parsed.data.characters;
   },
 
   getRosie: async (): Promise<Character> => {
-    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/characters/rosie`, {
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/characters/rosie`, {
       headers: await getAuthHeaders(),
     });
     return handleResponse(res, CharacterSchema);
@@ -246,7 +205,7 @@ export const eliteStudioClient = {
   // ──────────────────────────────────────────────────────────────────────────
 
   getHealth: async (): Promise<EliteStudioHealth> => {
-    const res = await fetchWithTimeout(`${API_URL}/api/v1/elite-studio/health`, {
+    const res = await fetchWithTimeout(`${API_URL}/api/v2/health`, {
       headers: await getAuthHeaders(),
     });
     return handleResponse(res, HealthSchema);

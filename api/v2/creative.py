@@ -16,8 +16,10 @@ import os
 from datetime import UTC, datetime
 from typing import Any
 
-from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
+from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel, Field, field_validator
+
+from api.v2.auth import require_dashboard_operator_or_api_key
 
 logger = logging.getLogger(__name__)
 
@@ -69,36 +71,6 @@ def _get_redis() -> Any | None:
 
 
 # ---------------------------------------------------------------------------
-# Auth dependency (mirrors v1)
-# ---------------------------------------------------------------------------
-
-
-def _get_api_key_dependency():
-    async def _check_api_key(x_api_key: str | None = Header(default=None, alias="X-API-Key")):
-        expected = os.getenv("API_KEY", "")
-        if not expected:
-            # Fail closed outside dev — a missing API_KEY must not allow through.
-            if os.getenv("ENVIRONMENT", "").lower() in ("development", "dev", "local", "test"):
-                return None
-            raise HTTPException(
-                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
-                detail="API_KEY not configured",
-            )
-        if x_api_key != expected:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid or missing X-API-Key header",
-                headers={"WWW-Authenticate": "ApiKey"},
-            )
-        return x_api_key
-
-    return _check_api_key
-
-
-_api_key_dep = _get_api_key_dependency()
-
-
-# ---------------------------------------------------------------------------
 # Pydantic V2 models
 # ---------------------------------------------------------------------------
 
@@ -132,7 +104,7 @@ class CreateOperationRequest(BaseModel):
 class OperationResponse(BaseModel):
     operation_id: str
     intent: str
-    status: str  # "queued" | "running" | "completed" | "failed"
+    status: str  # "queued" | "running" | "completed" | "failed" | "cancelled"
     sku: str = ""
     created_at: str
     result: dict | None = None
@@ -239,7 +211,7 @@ def _cancel_queued_op(r: Any, operation_id: str) -> bool:
 )
 async def create_operation(
     body: CreateOperationRequest,
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Create a creative operation.
 
@@ -320,7 +292,7 @@ async def create_operation(
 )
 async def get_operation(
     operation_id: str,
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Return status and result for a specific operation.
 
@@ -348,7 +320,7 @@ async def list_operations(
     status_filter: str | None = Query(default=None, alias="status"),
     intent: str | None = Query(default=None),
     sku: str | None = Query(default=None),
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """List creative operations with optional filters.
 
@@ -404,7 +376,7 @@ async def list_operations(
 )
 async def cancel_operation(
     operation_id: str,
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Cancel a queued operation.
 

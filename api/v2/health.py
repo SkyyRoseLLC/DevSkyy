@@ -14,8 +14,10 @@ import os
 from datetime import UTC, datetime
 from typing import Any
 
-from fastapi import APIRouter, Depends, Header, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
 from pydantic import BaseModel
+
+from api.v2.auth import require_dashboard_operator_or_api_key
 
 logger = logging.getLogger(__name__)
 
@@ -24,30 +26,6 @@ router = APIRouter(tags=["Health v2"])
 _QUEUE_NAME = "queue:elite_studio_produce"
 _OP_KEY_PREFIX = "elite_studio:v2:operation:"
 _RESULT_KEY_PREFIX = "elite_studio:result:"
-
-
-# ---------------------------------------------------------------------------
-# Auth dependency (mirrors v1)
-# ---------------------------------------------------------------------------
-
-
-def _get_api_key_dependency():
-    async def _check_api_key(x_api_key: str | None = Header(default=None, alias="X-API-Key")):
-        expected = os.getenv("API_KEY", "")
-        if not expected:
-            return None
-        if x_api_key != expected:
-            raise HTTPException(
-                status_code=status.HTTP_401_UNAUTHORIZED,
-                detail="Invalid or missing X-API-Key header",
-                headers={"WWW-Authenticate": "ApiKey"},
-            )
-        return x_api_key
-
-    return _check_api_key
-
-
-_api_key_dep = _get_api_key_dependency()
 
 
 # ---------------------------------------------------------------------------
@@ -158,7 +136,7 @@ async def health():
     summary="Current usage summary (requires auth)",
 )
 async def usage_summary(
-    _auth=Depends(_api_key_dep),
+    _auth=Depends(require_dashboard_operator_or_api_key),
 ):
     """Return an aggregated usage summary for the authenticated tenant.
 

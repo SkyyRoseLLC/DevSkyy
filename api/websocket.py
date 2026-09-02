@@ -16,13 +16,34 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import os
 from datetime import datetime
 from typing import Any
 
 from fastapi import WebSocket, WebSocketDisconnect
 from fastapi.routing import APIRouter
 
+from security.jwt_oauth2_auth import (
+    DASHBOARD_WEBSOCKET_CHANNELS,
+    TokenPayload,
+    TokenType,
+    UserRole,
+    jwt_manager,
+)
+
 logger = logging.getLogger(__name__)
+
+WEBSOCKET_TICKET_PROTOCOL = "devskyy-ticket"
+
+
+def is_allowed_websocket_origin(origin: str | None) -> bool:
+    """Allow dashboard origins only; WebSocket upgrades bypass normal CORS middleware."""
+    production_origins = {"https://www.devskyy.app", "https://devskyy.app"}
+    if os.getenv("ENVIRONMENT", "").lower() == "production":
+        return origin in production_origins
+
+    return origin in production_origins | {"http://localhost:3000", "http://127.0.0.1:3000"}
+
 
 # Create WebSocket router
 ws_router = APIRouter()
@@ -42,11 +63,7 @@ class ConnectionManager:
     def __init__(self) -> None:
         """Initialize connection manager with empty connection pools."""
         self.active_connections: dict[str, set[WebSocket]] = {
-            "agents": set(),
-            "round_table": set(),
-            "tasks": set(),
-            "3d_pipeline": set(),
-            "metrics": set(),
+            channel: set() for channel in DASHBOARD_WEBSOCKET_CHANNELS
         }
         self._message_queue: asyncio.Queue[dict[str, Any]] = asyncio.Queue()
         self._broadcast_task: asyncio.Task[None] | None = None
@@ -65,7 +82,9 @@ class ConnectionManager:
             logger.warning(f"Attempted connection to invalid channel: {channel}")
             return False
 
-        await websocket.accept()
+        # Select only the public protocol label. Never echo the ticket value
+        # offered by the browser during the WebSocket handshake.
+        await websocket.accept(subprotocol=WEBSOCKET_TICKET_PROTOCOL)
         self.active_connections[channel].add(websocket)
         logger.info(
             f"WebSocket connected to {channel} channel "
@@ -158,6 +177,36 @@ class ConnectionManager:
 manager = ConnectionManager()
 
 
+def ticket_from_websocket_protocol(protocol_header: str | None) -> str | None:
+    """Extract a ticket from the WebSocket handshake without using a URL query."""
+    if not protocol_header:
+        return None
+    offered = [value.strip() for value in protocol_header.split(",")]
+    try:
+        index = offered.index(WEBSOCKET_TICKET_PROTOCOL)
+    except ValueError:
+        return None
+    if index + 1 >= len(offered):
+        return None
+    return offered[index + 1]
+
+
+def validate_websocket_ticket(ticket: str | None, channel: str) -> TokenPayload | None:
+    """Validate a channel-bound ticket without accepting it as an API access token."""
+    if not ticket:
+        return None
+    try:
+        payload = jwt_manager.validate_token(ticket, TokenType.WEBSOCKET)
+    except Exception:
+        return None
+
+    if payload.channel != channel or not payload.has_any_role(
+        {UserRole.ADMIN, UserRole.SUPER_ADMIN}
+    ):
+        return None
+    return payload
+
+
 async def websocket_handler(websocket: WebSocket, channel: str) -> None:
     """WebSocket handler for a specific channel.
 
@@ -168,7 +217,16 @@ async def websocket_handler(websocket: WebSocket, channel: str) -> None:
     Raises:
         WebSocketDisconnect: When client disconnects
     """
-    # Validate and connect
+    if not is_allowed_websocket_origin(websocket.headers.get("origin")):
+        await websocket.close(code=4403, reason="Forbidden origin")
+        return
+
+    ticket = ticket_from_websocket_protocol(websocket.headers.get("sec-websocket-protocol"))
+    if not validate_websocket_ticket(ticket, channel):
+        await websocket.close(code=4401, reason="Unauthorized")
+        return
+
+    # Validate channel and connect after the ticket is authenticated.
     if not await manager.connect(websocket, channel):
         await websocket.close(code=4004, reason=f"Invalid channel: {channel}")
         return
