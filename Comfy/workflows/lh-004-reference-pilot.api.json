@@ -1,0 +1,116 @@
+{
+  "1": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b_fp8_mixed.safetensors",
+      "type": "lumina2",
+      "device": "default"
+    }
+  },
+  "2": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    }
+  },
+  "3": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "z_image_turbo_bf16.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "4": {
+    "class_type": "ModelSamplingAuraFlow",
+    "inputs": {
+      "model": ["3", 0],
+      "shift": 3.0
+    }
+  },
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "lh-004-bomber-front.jpg"
+    }
+  },
+  "6": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "lh-004-bomber-back.png"
+    }
+  },
+  "7": {
+    "class_type": "TextEncodeZImageOmni",
+    "inputs": {
+      "clip": ["1", 0],
+      "vae": ["2", 0],
+      "image1": ["13", 0],
+      "image2": ["14", 0],
+      "auto_resize_images": false,
+      "prompt": "Create a photorealistic vertical luxury fashion campaign photograph for SkyyRose Love Hurts. One adult Black fashion model stands full-body in a rain-darkened romantic courtyard at blue hour, surrounded by deep crimson roses, wet black stone, restrained candle glow, and subtle atmospheric mist. The model must wear the exact same hooded black-and-white satin bomber jacket shown in both reference images. Preserve the garment construction and identity exactly: white satin front body, black satin raglan sleeves and hood, black shoulder panels, white sleeve stripes, red black and white striped rib knit at cuffs and hem, black vertical welt pockets, snap-button front, floral hood lining, and the exact red Love Hurts chest wordmarks. Do not redesign, recolor, simplify, replace, mirror, invent, or move any garment artwork. The jacket is the hero and must be fully visible, naturally fitted, physically integrated with the body, with correct satin folds, contact shadows, environmental reflections, and realistic edge lighting. Editorial 50mm lens, eye-level camera, premium cinematic fashion photography, natural skin texture, believable anatomy, no text outside the garment, no extra logos, no duplicate garments, no floating product, no flat lay, no mannequin, no collage, no pasted-on appearance."
+    }
+  },
+  "8": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": ["7", 0]
+    }
+  },
+  "9": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 512,
+      "height": 768,
+      "batch_size": 1
+    }
+  },
+  "10": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": ["4", 0],
+      "positive": ["7", 0],
+      "negative": ["8", 0],
+      "latent_image": ["9", 0],
+      "seed": 7400401,
+      "steps": 4,
+      "cfg": 1.0,
+      "sampler_name": "res_multistep",
+      "scheduler": "simple",
+      "denoise": 1.0
+    }
+  },
+  "11": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": ["10", 0],
+      "vae": ["2", 0]
+    }
+  },
+  "12": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": ["11", 0],
+      "filename_prefix": "skyyrose/lh-004-reference-pilot"
+    }
+  },
+  "13": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": ["5", 0],
+      "target_width": 512,
+      "target_height": 512,
+      "padding_color": "white",
+      "interpolation": "lanczos"
+    }
+  },
+  "14": {
+    "class_type": "ResizeAndPadImage",
+    "inputs": {
+      "image": ["6", 0],
+      "target_width": 512,
+      "target_height": 512,
+      "padding_color": "white",
+      "interpolation": "lanczos"
+    }
+  }
+}
