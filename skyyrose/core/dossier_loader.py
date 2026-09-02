@@ -20,6 +20,7 @@ upstream by scripts/validate_dossier.py).
 from __future__ import annotations
 
 import re
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass, field
 from functools import cache
 from pathlib import Path
@@ -35,6 +36,57 @@ class DossierMissingError(FileNotFoundError):
     The pipeline fails loudly rather than fall back to the thin CSV
     `branding_spec` column. Author the dossier before rendering.
     """
+
+
+class DossierReferenceError(ValueError):
+    """Raised when a catalog dossier reference is absent or unsafe."""
+
+
+_DOSSIER_SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+
+
+@dataclass(frozen=True)
+class DossierBinding:
+    """The catalog-declared association between one SKU and one dossier."""
+
+    sku: str
+    name: str
+    collection: str
+    slug: str
+    path: Path
+
+
+@dataclass(frozen=True)
+class FashionThemeDossierContext:
+    """Read-only SOT projection for Fashion Theme Team consumers.
+
+    The markdown dossier and catalog row remain authoritative. This object is
+    deliberately a projection: consumers may use its facts for storytelling,
+    merchandising, PDP, fit, care, and visual handoffs, but must not write it
+    back or infer an alternate dossier from a product name or filename.
+    """
+
+    sku: str
+    name: str
+    collection: str
+    dossier_slug: str
+    dossier_path: str
+    catalog: dict[str, str]
+    dossier: dict
+    validated_dossier: dict
+
+    def to_dict(self) -> dict:
+        """Return a detached JSON-ready copy for an external consumer."""
+        return {
+            "sku": self.sku,
+            "name": self.name,
+            "collection": self.collection,
+            "dossier_slug": self.dossier_slug,
+            "dossier_path": self.dossier_path,
+            "catalog": dict(self.catalog),
+            "dossier": dict(self.dossier),
+            "validated_dossier": dict(self.validated_dossier),
+        }
 
 
 @dataclass
@@ -180,6 +232,65 @@ def parse_dossier_markdown(text: str) -> Dossier:
     )
 
 
+def dossier_path(slug: str, dossiers_dir: Path | None = None) -> Path:
+    """Resolve a declared dossier slug to a safe markdown path.
+
+    Slugs are identifiers, not paths. Rejecting separators and dot segments
+    keeps every consumer inside the canonical dossier directory.
+    """
+    normalized_slug = slug.strip()
+    if not _DOSSIER_SLUG_RE.fullmatch(normalized_slug):
+        raise DossierReferenceError(
+            f"Invalid dossier_slug {slug!r}; use lowercase letters, digits, and hyphens only."
+        )
+    base = (dossiers_dir or DOSSIERS_DIR).resolve()
+    path = (base / f"{normalized_slug}.md").resolve()
+    try:
+        path.relative_to(base)
+    except ValueError as exc:  # defensive: slug validation above should prevent this
+        raise DossierReferenceError(f"Dossier path escapes canonical directory: {slug!r}") from exc
+    return path
+
+
+def dossier_binding_for_row(
+    row: Mapping[str, str], dossiers_dir: Path | None = None
+) -> DossierBinding:
+    """Build one catalog-declared dossier binding without fallback inference."""
+    sku = (row.get("sku") or "").strip()
+    if not sku:
+        raise DossierReferenceError("Catalog row has no SKU for dossier resolution.")
+    slug = (row.get("dossier_slug") or "").strip()
+    if not slug:
+        raise DossierMissingError(
+            f"SKU {sku!r} has no dossier_slug in {CATALOG_CSV}. "
+            "Add the declared dossier_slug before loading."
+        )
+    return DossierBinding(
+        sku=sku,
+        name=(row.get("name") or "").strip(),
+        collection=(row.get("collection") or "").strip(),
+        slug=slug,
+        path=dossier_path(slug, dossiers_dir),
+    )
+
+
+def iter_dossier_bindings(
+    rows: Iterable[Mapping[str, str]] | None = None, dossiers_dir: Path | None = None
+) -> tuple[DossierBinding, ...]:
+    """Return every SKU binding, preserving intentional shared dossier slugs."""
+    source_rows = read_catalog_rows() if rows is None else rows
+    return tuple(dossier_binding_for_row(row, dossiers_dir) for row in source_rows)
+
+
+def dossier_binding_for_sku(sku: str, dossiers_dir: Path | None = None) -> DossierBinding:
+    """Resolve a SKU through the canonical CSV, never from a guessed filename."""
+    normalized_sku = sku.strip()
+    for row in read_catalog_rows():
+        if row.get("sku") == normalized_sku:
+            return dossier_binding_for_row(row, dossiers_dir)
+    raise KeyError(f"SKU {sku!r} not found in {CATALOG_CSV}")
+
+
 @cache
 def load_dossier(slug: str, dossiers_dir: Path | None = None) -> Dossier:
     """Load and parse a dossier by slug. Raises DossierMissingError if absent.
@@ -187,8 +298,7 @@ def load_dossier(slug: str, dossiers_dir: Path | None = None) -> Dossier:
     Memoized: callers should treat the returned Dossier as read-only —
     mutating fields mutates the shared cache.
     """
-    base = dossiers_dir or DOSSIERS_DIR
-    path = base / f"{slug}.md"
+    path = dossier_path(slug, dossiers_dir)
     if not path.exists():
         raise DossierMissingError(
             f"No dossier at {path}. Author the dossier before rendering. "
@@ -207,25 +317,53 @@ def get_product_with_dossier(sku: str) -> dict:
         KeyError if SKU is not in the canonical CSV.
         DossierMissingError if the SKU's dossier file does not exist.
     """
-    rows = {row["sku"]: row for row in read_catalog_rows()}
-    if sku not in rows:
-        raise KeyError(f"SKU {sku!r} not found in {CATALOG_CSV}")
-    row = rows[sku]
-    slug = (row.get("dossier_slug") or "").strip()
-    if not slug:
-        raise DossierMissingError(
-            f"SKU {sku!r} has no dossier_slug in {CATALOG_CSV}. "
-            f"Add the dossier_slug column value before loading."
-        )
-    dossier = load_dossier(slug)
+    binding = dossier_binding_for_sku(sku)
+    row = next(row for row in read_catalog_rows() if row.get("sku") == binding.sku)
+    dossier = load_dossier(binding.slug)
     return {**row, "dossier": dossier.to_dict(), "_dossier": dossier}
+
+
+def load_fashion_theme_dossier_context(sku: str) -> FashionThemeDossierContext:
+    """Load validated, provenance-labelled facts for Fashion Theme Team.
+
+    Importing the schema lazily avoids a module cycle while ensuring external
+    design consumers receive validated facts rather than raw markdown text.
+    """
+    binding = dossier_binding_for_sku(sku)
+    row = next(row for row in read_catalog_rows() if row.get("sku") == binding.sku)
+    dossier = load_dossier(binding.slug)
+    from skyyrose.core.dossier_schema import DossierSchema
+
+    validated = DossierSchema.from_raw(dossier).model_dump(mode="json")
+    try:
+        source_path = str(binding.path.relative_to(CATALOG_CSV.parents[3]))
+    except ValueError:
+        source_path = str(binding.path)
+    return FashionThemeDossierContext(
+        sku=binding.sku,
+        name=binding.name,
+        collection=binding.collection,
+        dossier_slug=binding.slug,
+        dossier_path=source_path,
+        catalog=dict(row),
+        dossier=dossier.to_dict(),
+        validated_dossier=validated,
+    )
 
 
 __all__ = [
     "DOSSIERS_DIR",
     "Dossier",
+    "DossierBinding",
     "DossierMissingError",
+    "DossierReferenceError",
+    "FashionThemeDossierContext",
+    "dossier_path",
+    "dossier_binding_for_row",
+    "dossier_binding_for_sku",
+    "iter_dossier_bindings",
     "parse_dossier_markdown",
     "load_dossier",
+    "load_fashion_theme_dossier_context",
     "get_product_with_dossier",
 ]

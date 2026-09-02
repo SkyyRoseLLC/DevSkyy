@@ -79,7 +79,6 @@ _SIMILARITIES_JSON: Path = (
     _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "product-similarities.json"
 )
 _SKU_RESOLVER_PY: Path = _REPO_ROOT / "skyyrose" / "elite_studio" / "sku_resolver.py"
-_DOSSIERS_DIR: Path = _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "dossiers"
 _V7_CARDS_JSON: Path = (
     _REPO_ROOT / "wordpress-theme" / "skyyrose-flagship" / "data" / "v7-cards.json"
 )
@@ -656,17 +655,20 @@ def check_dossier_slugs() -> CheckResult:
     rows = _load_csv()
     if rows is None:
         return _fail(name, "Cannot check dossier slugs — CSV not readable")
-    if not _DOSSIERS_DIR.exists():
-        return _fail(name, f"Dossiers directory not found: {_DOSSIERS_DIR}")
+    from skyyrose.core.dossier_loader import (
+        DossierMissingError,
+        DossierReferenceError,
+        iter_dossier_bindings,
+    )
 
-    existing_slugs: set[str] = {p.stem for p in _DOSSIERS_DIR.glob("*.md")}
     missing: list[str] = []
-    for row in rows:
-        slug = row.get("dossier_slug", "").strip()
-        if not slug:
-            continue
-        if slug not in existing_slugs:
-            missing.append(f"  {row['sku']}: dossier_slug={slug!r} has no .md file")
+    try:
+        bindings = iter_dossier_bindings(rows)
+    except (DossierMissingError, DossierReferenceError) as exc:
+        return _fail(name, str(exc))
+    for binding in bindings:
+        if not binding.path.exists():
+            missing.append(f"  {binding.sku}: dossier_slug={binding.slug!r} has no .md file")
     if missing:
         return _fail(
             name,

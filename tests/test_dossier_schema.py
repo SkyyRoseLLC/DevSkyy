@@ -5,7 +5,15 @@ from __future__ import annotations
 import pytest
 
 from skyyrose.core.dossier_loader import Dossier as RawDossier
-from skyyrose.core.dossier_loader import parse_dossier_markdown
+from skyyrose.core.dossier_loader import (
+    DossierMissingError,
+    DossierReferenceError,
+    dossier_binding_for_row,
+    dossier_path,
+    iter_dossier_bindings,
+    load_fashion_theme_dossier_context,
+    parse_dossier_markdown,
+)
 from skyyrose.core.dossier_schema import (
     BrandingRegion,
     DossierSchema,
@@ -252,3 +260,33 @@ slug: love-hurts-tee
         assert schema.branding[0].color_hex == "#DC143C"
         assert len(schema.negative) == 2
         assert schema.scene_pose == "three-quarter"
+
+
+class TestDossierResolution:
+    def test_path_rejects_path_traversal(self, tmp_path):
+        with pytest.raises(DossierReferenceError, match="Invalid dossier_slug"):
+            dossier_path("../outside", tmp_path)
+
+    def test_binding_requires_declared_slug(self, tmp_path):
+        with pytest.raises(DossierMissingError, match="has no dossier_slug"):
+            dossier_binding_for_row({"sku": "sr-001", "name": "Rose"}, tmp_path)
+
+    def test_shared_slug_is_preserved_per_sku(self, tmp_path):
+        rows = (
+            {"sku": "sr-001", "name": "Rose", "collection": "Signature", "dossier_slug": "rose"},
+            {
+                "sku": "sr-002",
+                "name": "Rose Variant",
+                "collection": "Signature",
+                "dossier_slug": "rose",
+            },
+        )
+        bindings = iter_dossier_bindings(rows, tmp_path)
+        assert [binding.sku for binding in bindings] == ["sr-001", "sr-002"]
+        assert {binding.slug for binding in bindings} == {"rose"}
+
+    def test_fashion_theme_context_is_validated_and_provenance_labelled(self):
+        context = load_fashion_theme_dossier_context("br-001")
+        assert context.dossier_slug == context.dossier["slug"]
+        assert context.validated_dossier["sku"] == "br-001"
+        assert context.dossier_path.startswith("wordpress-theme/skyyrose-flagship/data/dossiers/")
