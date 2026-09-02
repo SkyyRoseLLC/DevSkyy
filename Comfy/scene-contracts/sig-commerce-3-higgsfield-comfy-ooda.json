@@ -200,7 +200,26 @@
       "preserve": "complete coordinated windbreaker jacket and pants as one canonical SKU"
     }
   ],
-  "authority_dependencies": [],
+  "authority_dependencies": [
+    {
+      "role": "verified_sg001_corrected_protected_look",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg-005-sg-001-exact-blue-rose-protected-v2.png",
+      "expected_sha256": "cc40b0828e327bffe382dc11e1d3e24d3a0f6dfb2a40f61c7bc2edafed445ad0",
+      "authority": "CANDIDATE_ONLY_PIXEL_AND_SEMANTIC_PASS"
+    },
+    {
+      "role": "sg001_mask_bound_generation_receipt",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-generation-receipt-v1.json",
+      "expected_sha256": "0ceacf9d801f5649c511701d1cc47861bfc5ff513935ff957c7e0d19e8566043"
+    },
+    {
+      "role": "sg001_mask_bound_verification_receipt",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-3/correction-v5/sg001-logo-edit-verify-receipt-v1.json",
+      "expected_sha256": "3e743f254ff78d46974fcd3aab8b24a818b4bfbfe2a8fedda1982a1effa51cab",
+      "outside_mask_changed_pixels": 0,
+      "promotion_state": "FOUNDER_REVIEW_REQUIRED"
+    }
+  ],
   "higgsfield": {
     "mode": "hero_banner",
     "aspect_ratio": "16:9",
@@ -298,7 +317,7 @@
     ]
   },
   "execute_blockers": [
-    "verified exact SG-001 shorts-correction receipt is not promoted into the packet",
+    "SG-001 mask-bound correction is now packet-bound with zero outside-mask changed pixels but remains candidate-only pending founder review",
     "verified exact SG-003 shorts-correction receipt is missing",
     "mask-bound local correction plan and independent review assignment are not approved",
     "full-frame paid Higgsfield generation is intentionally disabled"

@@ -2,7 +2,7 @@
   "schema": "skyyrose.scene-ooda/1",
   "scene_id": "SIG-COMMERCE-1",
   "collection": "signature",
-  "status": "READY_FOR_ENHANCE_ONLY",
+  "status": "BLOCKED_PROMPT_ENHANCEMENT_ENDPOINT_UNAVAILABLE",
   "purpose": "Recompose the mapped Sherpa-and-Beanie look into a powerful wide Signature campaign while preserving the protected customer/product and exact cleaned font sculpture.",
   "fashion_theme_team": {
     "plugin": "fashion-theme-team@personal",
@@ -120,10 +120,10 @@
     },
     {
       "role": "sg-007_physical_authority",
-      "path": "assets/products/source-photos/signature/sg-007-signature-beanie-green.jpeg",
-      "sha256": "4dc8f8894d5197f9d94fd9ce187eb49e2a103a52753f4e201e5eb87c2ce4eda4",
+      "path": "assets/products/source-photos/signature/sg-007-signature-beanie-black.png",
+      "sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43",
       "send_to_higgsfield": true,
-      "preserve": "exact beanie silhouette and small slightly off-center patch"
+      "preserve": "solid black ribbed-knit body, folded cuff, exact small light rose patch artwork, scale, and wearer-left-of-center placement"
     },
     {
       "role": "environment_authority_not_composition_target",
@@ -141,19 +141,54 @@
     }
   ],
   "authority_dependencies": [],
+  "prompt_attempts": [
+    {
+      "receipt": "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T193504736502Z.json",
+      "disposition": "REJECTED_GREEN_SG007_SOURCE_CONFLICT",
+      "generation_submitted": false
+    },
+    {
+      "receipt": "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T194229733789Z.json",
+      "disposition": "BLOCKED_PROVIDER_ENHANCEMENT_ENDPOINT_UNREACHABLE",
+      "generation_submitted": false
+    }
+  ],
+  "forbidden_inputs": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/rejected/SIG-COMMERCE-1-comfy-protected-recovery-v1-founder-rejected.png",
+      "sha256": "cf39a576ea2657378ea8fbd7c2b93d0f5ddd8550d60ce1b88488fd3c06be7908",
+      "decision": "FOUNDER_REJECTED_DO_NOT_REUSE"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/rejected/SIG-COMMERCE-1-native-correction-v2-design-standard-fail.png",
+      "sha256": "60463f036514ae0336de97ccca218bae2d4e19870a0df5b0f35fe42d1ea42d31",
+      "decision": "DESIGN_STANDARD_REJECTED_DO_NOT_REUSE"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/comfy-campaign-hero-v3/output/SIG-COMMERCE-1-campaign-hero-v3.png",
+      "sha256": "e1fb0669ec4b4d04ddf599dd79e389ed91aeaa6f11893245a43b64da06566219",
+      "decision": "FOUNDER_REJECTED_DO_NOT_REUSE"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/comfy-candidate-v1/output/sig-commerce-1-nano-banana-pro-pilot.png",
+      "sha256": "7035f14f07eaeb5d3deeca0dcbe5a9d69adcb74fef4f3b145bdfc3cbb2561a51",
+      "decision": "PRODUCT_DRIFT_REJECTED_DO_NOT_REUSE"
+    }
+  ],
   "higgsfield": {
     "mode": "hero_banner",
     "aspect_ratio": "16:9",
     "count": 1,
     "resolution_request": "2k",
     "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
-    "prompt": "Cinematic urban-grit Signature campaign on a rain-cleared SF/Oakland industrial roof deck. The exact SG-009 Sherpa Jacket and SG-007 Signature Beanie customer owns the left third at full-body product-readable scale. The exact clean transparent SkyyRose font sculpture stands on the right as a freestanding rose-gold and copper civic sign with real weight, base contact, occlusion, shadow, and damp-floor reflection. Board-formed concrete, weathered black steel, distant cranes and bridge lights, marine fog, warm edge light, neutral skin, deep open blacks, restrained film grain. Professional 16:9 hierarchy; no lobby, apartment, wall plaque, skyline wallpaper, pasted halo, split wordmark, or missing copper rose.",
+    "prompt": "Cinematic urban-grit Signature campaign on a rain-cleared SF/Oakland industrial roof deck in a professional 16:9 frame. The exact protected customer remains the primary dominant focal level on the left third at full-body product-readable scale: preserve the same face, identity, body proportions, pose, and exact SG-009 Sherpa Jacket with black outer construction, white sherpa lining, and red front rose. Preserve the exact SG-007 Signature Beanie as a solid black ribbed-knit body with folded cuff and the exact small light rose patch at its wearer-left-of-center scale and placement. Do not regenerate, substitute, restyle, recolor, or reposition the customer or either garment. The exact clean transparent sculpture is secondary on the right: one continuous single-line SkyyRose wordmark with unchanged gold letterforms, unchanged proportions, and one copper rose in its exact integrated position. It is one freestanding civic sign with real weight, base contact, occlusion, shadow, and damp-floor reflection; never duplicate, rearrange, flatten, or mount it to a wall. The environment is tertiary: board-formed concrete, weathered black steel, distant cranes and bridge lights, marine fog, warm edge light, neutral skin, deep open blacks, restrained film grain. No interior, apartment, skyline backdrop, pasted halo, split lettering, extra monument, invented text, or missing brand element.",
     "brand_context": "SkyyRose Signature is refined West Coast industrial luxury: rose-gold craft against damp concrete and marine fog, confident customer presence, cinematic restraint, and exact product authority.",
-    "product_context": "Preserve SG-009 black outer construction, white sherpa body lining, red front rose, and the protected SG-007 beanie. Preserve the font sculpture as one exact SkyyRose wordmark with its copper rose; never split the wordmark, omit the rose, or turn it into a wall sticker.",
+    "product_context": "Preserve the exact customer's face, identity, body proportions, and pose. SG-009 keeps its black outer construction, white sherpa body lining, and red front rose. SG-007 is the selected solid-black beanie variant with a folded ribbed cuff and exact small light rose patch artwork, scale, and wearer-left-of-center placement. Preserve one continuous single-line SkyyRose sculpture with unchanged gold letterforms, unchanged proportions, and exactly one copper rose at its bound location. Customer and garments are primary, sculpture secondary, environment tertiary.",
     "prompt_assertions": {
       "required_phrases": [
         "white sherpa",
         "Signature Beanie",
+        "solid black",
         "copper rose",
         "16:9"
       ],
@@ -167,7 +202,55 @@
   "provider_capability": {
     "higgsfield_role": "REFERENCE_GENERATION_CANDIDATE_ONLY",
     "exact_product_guarantee": false,
+    "adapter": "higgsfield_product_photoshoot",
+    "model_id": "gpt_image_2",
+    "operation": "scene_generation",
+    "registry_path": "Comfy/scene-contracts/higgsfield-product-photoshoot-model-registry-20260902.json",
+    "registry_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
+    "runtime_receipt": "Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
+    "runtime_receipt_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
+    "estimated_credits": 8.5,
     "rule": "A provider result is only an environment and integration candidate; protected product and sculpture pixels remain authoritative."
+  },
+  "prompt_adherence": {
+    "mode": "FAIL_CLOSED",
+    "independent_reviewer_role": "visual-commerce-qa",
+    "preflight": {
+      "required_source_roles": [
+        "protected_customer_product_look",
+        "sg-009_physical_authority",
+        "sg-007_physical_authority",
+        "environment_authority_not_composition_target",
+        "exact_clean_font_sculpture"
+      ],
+      "required_prompt_claims": [
+        "primary dominant focal level",
+        "same face, identity, body proportions, pose",
+        "white sherpa",
+        "solid black ribbed-knit body",
+        "one continuous single-line SkyyRose wordmark",
+        "copper rose",
+        "sculpture is secondary",
+        "environment is tertiary"
+      ]
+    },
+    "post_capture": {
+      "minimum_total_score": 90,
+      "dimensions": [
+        { "id": "exact_sg009_sg007_and_identity_fidelity", "weight": 40 },
+        { "id": "customer_product_focal_hierarchy", "weight": 20 },
+        { "id": "single_exact_sculpture", "weight": 15 },
+        { "id": "cinematic_urban_grit_world", "weight": 10 },
+        { "id": "native_optical_integration", "weight": 15 }
+      ]
+    },
+    "hard_fail_invariants": [
+      "wrong customer identity, pose, SG-009 construction, SG-007 color, patch, scale, or placement",
+      "customer or exact garments are not the primary dominant focal level",
+      "split, duplicated, rearranged, recolored, or rose-less sculpture",
+      "portrait output, interior, showroom, floating contact, pasted edges, or incoherent light"
+    ],
+    "disposition_on_failure": "QUARANTINE_NO_AUTOMATIC_RETRY"
   },
   "comfy": {
     "routing": "local",
@@ -201,7 +284,7 @@
     "max_estimated_credits": 8.5,
     "require_current_observe_pass": true,
     "require_prompt_review_pass": true,
-    "prompt_sha256": "15af721a9ad4d9fb5f7dd92f9cbce1b681d247d887870ff824d426d437a58ca2",
+    "prompt_sha256": "41a47983fa652a2cf7e282e4cf889b668b3c5bd666fbb182103d11da567edb1d",
     "prompt_review_receipt": null,
     "require_candidate_bound_approval": true,
     "approval_receipt": null,
@@ -228,7 +311,7 @@
     ]
   },
   "execute_blockers": [
-    "corrected enhanced prompt has not passed product and sculpture assertions",
+    "corrected source-bound prompt passes static assertions, but Higgsfield enhancement endpoint was unreachable and no enhanced-prompt PASS receipt exists",
     "candidate-bound preflight and paid Higgsfield generation approval not recorded"
   ],
   "promotion_gate": "FOUNDER_APPROVED_VISUAL"

@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "operation": "EDGE_CONNECTED_NEAR_WHITE_ALPHA_EXTRACTION",
+  "disposition": "PRODUCT_ONLY_MATTE_CANDIDATE",
+  "role": "lh-003_physical_front_product_only_matte",
+  "created_at": "2026-09-02T19:29:05.533287Z",
+  "source": {
+    "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+    "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+    "width": 934,
+    "height": 841
+  },
+  "output": {
+    "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-front-product-matte-v1.png",
+    "sha256": "5313b5aad0dc25222fc89c3036e50550d8c174b36d5374065a22d79caa3deacc",
+    "mode": "RGBA",
+    "rgb_policy": "SOURCE_RGB_PRESERVED_BYTE_FOR_BYTE_PER_PIXEL"
+  },
+  "proof": {
+    "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-front-matte-proof-v1.png",
+    "sha256": "9e1781f59d17326b22433326f9b4bbedb542ba1573bdb4efd65f962473126423",
+    "views": [
+      "checkerboard",
+      "black",
+      "white"
+    ]
+  },
+  "algorithm": {
+    "connectivity": 8,
+    "minimum_channel": 238,
+    "maximum_chroma": 22,
+    "transparent_pixel_count": 432709,
+    "transparent_fraction": 0.55087499,
+    "opaque_pixel_count": 352785
+  },
+  "guardrails": {
+    "generative_operation": false,
+    "on_model_authority": false,
+    "promotion_authority": false,
+    "allowed_use": "source inspection, protected product layout, and mask planning"
+  }
+}
