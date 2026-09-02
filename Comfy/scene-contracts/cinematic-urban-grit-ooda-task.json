@@ -75,7 +75,7 @@
   "issues": [
     "BR-COMMERCE-2 candidate BR-COMMERCE-2-HF-PILOT-20260902-A1 hard-failed exact BR-005 chest placement, BR-007 construction, BR-004 cast and artwork identity, and protected sculpture geometry; it is quarantined with no retry.",
     "SIG-COMMERCE-1 still requires a current prompt-review receipt before any separate execution request.",
-    "LH-COMMERCE-2 remains blocked on a founder-approved LH-003 wearer and protected garment matte.",
+    "LH-003 physical authority now binds front, back, wearer-left, and wearer-right views plus the founder-confirmed invariant of two zippered side pockets and two zippered rear pockets; LH-COMMERCE-2 remains blocked on a founder-approved wearer and protected garment matte.",
     "SIG-COMMERCE-2 remains blocked on the correct founder-approved SG-006 woman; the prior wearer stays deny-listed.",
     "SIG-COMMERCE-3 remains blocked on verified SG-001 and SG-003 mask-bound correction receipts and must not be regenerated full-frame."
   ],
@@ -86,6 +86,7 @@
       "10 scene OODA unit tests pass.",
       "One founder-authorized BR-COMMERCE-2 Higgsfield Product Photoshoot candidate was generated for 8.5 credits.",
       "The 2688x1520 candidate is hash-bound and quarantined after manager hard-fail triage.",
+      "LH-003 source authority now uses four byte-matched physical views and fails closed on any four-pocket or zipper-closure drift; no LH render was submitted.",
       "No retry, Comfy staging, promotion, wiring, or deployment was performed."
     ]
   },

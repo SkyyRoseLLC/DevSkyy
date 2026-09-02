@@ -64,10 +64,15 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "9752d20efe2fc86346fcf2b338429f1ae68303d0049e5bbfbdb75f3d09eb2c6c",
-      "evidence": [],
+      "contract_sha256": "e336beca09aed49047a208cd0cd887b06975838b559fb670730980c82d953f74",
+      "evidence": [
+        "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+        "tasks/lh-003-source-authority-intake-20260902.json"
+      ],
       "outputs": [
-        "physical front/back, Fractured Chamber, and enchanted-rose hashes PASS",
+        "four directional physical product views and hash-bound source-authority receipt PASS",
+        "founder-confirmed two side plus two rear pocket topology with zipper closures on all four pockets PASS",
+        "Fractured Chamber and enchanted-rose hashes PASS",
         "cinematic urban-grit creative and optical contracts PASS",
         "local Comfy correction-only and one-attempt credit policies PASS"
       ],

@@ -70,8 +70,8 @@
     "compositor_blocked": 21,
     "full_required_coverage": 0,
     "by_source_type": {
-      "photography": 11,
-      "techflat": 1,
+      "photography": 12,
+      "techflat": 0,
       "missing": 21
     }
   },
@@ -440,18 +440,20 @@
       ],
       "present_angles": [
         "front",
-        "back"
+        "back",
+        "side"
       ],
       "missing_angles": [
-        "side",
         "detail-pocket"
       ],
       "photo_paths": {
-        "back": "assets/products/source-photos/love-hurts/lh-003-shorts-techflat-v1-back.jpg",
-        "front": "assets/products/source-photos/love-hurts/lh-003-shorts-techflat-v1-front.jpg"
+        "back": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+        "front": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+        "wearer-left": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+        "wearer-right": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg"
       },
       "has_minimum_for_compositor": true,
-      "source_type": "techflat"
+      "source_type": "photography"
     },
     "lh-004": {
       "sku": "lh-004",
