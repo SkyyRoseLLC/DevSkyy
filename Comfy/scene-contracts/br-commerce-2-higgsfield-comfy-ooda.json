@@ -1,0 +1,171 @@
+{
+  "schema": "skyyrose.scene-ooda/1",
+  "scene_id": "BR-COMMERCE-2",
+  "collection": "black-rose",
+  "status": "BLOCKED_PRE_GENERATION",
+  "purpose": "Create one native 16:9 Black Rose campaign candidate in Higgsfield, then route it through Comfy for bounded correction, integration, evidence, and independent review.",
+  "fashion_theme_team": {
+    "plugin": "fashion-theme-team@personal",
+    "team_contract": "Comfy/scene-contracts/scene-ooda-index.json",
+    "phase_id": "BR-COMMERCE-2-OODA-1",
+    "attempt": 1,
+    "accountable": "fashion-theme-lead",
+    "current_owner": "catalog-sot-integrator",
+    "next_authority": "approved provider runtime, then independent visual-commerce-qa"
+  },
+  "catalog_snapshot": {
+    "catalog_path": "skyyrose-catalog.csv",
+    "catalog_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+    "image_manifest_path": "data/sot-images.json",
+    "image_manifest_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+    "products": [
+      {
+        "sku": "br-005",
+        "name": "BLACK Rose Hoodie - Signature Edition",
+        "wearer": "male"
+      },
+      {
+        "sku": "br-007",
+        "name": "BLACK Rose x Love Hurts Basketball Shorts",
+        "wearer": "male"
+      },
+      {
+        "sku": "br-004",
+        "name": "BLACK Rose Hoodie",
+        "wearer": "female",
+        "scene_form": "founder-supplied long hoodie dress"
+      }
+    ],
+    "forbidden_skus": [
+      "br-001",
+      "br-002"
+    ]
+  },
+  "composition": {
+    "aspect_ratio": "16:9",
+    "target_width": 1672,
+    "target_height": 941,
+    "customer_priority": "Two confident campaign protagonists at product-readable scale.",
+    "environment": "Restrained nocturnal black-stone gallery with grounded atmosphere and no bridge or waterfront.",
+    "brand_object": "The exact Black Rose font sculpture, physically supported and integrated into the shared ground plane.",
+    "energy_contract": "Comfy/SCENE-ENERGY-BAR.md"
+  },
+  "source_bindings": [
+    {
+      "role": "composition_and_cast_authority",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+      "sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+      "send_to_higgsfield": true,
+      "preserve": "cast identity, pose relationship, landscape hierarchy"
+    },
+    {
+      "role": "environment_authority",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
+      "sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b",
+      "send_to_higgsfield": true,
+      "preserve": "black-stone gallery language; no waterfront, bridge, or extra monument"
+    },
+    {
+      "role": "exact_brand_sculpture",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+      "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+      "send_to_higgsfield": true,
+      "preserve": "exact lettering and rose sculpture geometry"
+    },
+    {
+      "role": "br-005_physical_product_authority",
+      "path": "assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+      "sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+      "send_to_higgsfield": true,
+      "preserve": "black construction, right-chest silicone cut-out logo, side-body embroidery"
+    },
+    {
+      "role": "br-007_physical_product_authority",
+      "path": "assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+      "sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+      "send_to_higgsfield": true,
+      "preserve": "Oakland front lettering, rose field, Love Hurts marks, mesh side construction"
+    },
+    {
+      "role": "br-007_founder_four_angle_physical_authority",
+      "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+      "sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+      "send_to_higgsfield": true,
+      "preserve": "founder-confirmed physical front, back, wearer-left, and wearer-right construction identity"
+    },
+    {
+      "role": "br-004_founder_wearer_authority",
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png",
+      "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+      "send_to_higgsfield": true,
+      "preserve": "female wearer identity and exact long-hoodie product presentation"
+    }
+  ],
+  "authority_dependencies": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp",
+      "required_for": "data/sot-images.json runtime parity",
+      "expected_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-005-ghost-front.webp",
+      "required_for": "data/sot-images.json runtime parity",
+      "expected_sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/hub/br-007-front.webp",
+      "required_for": "data/sot-images.json runtime parity",
+      "expected_sha256": "b9473ded79d2ee52b7d132790574405197191bc3427411a5cff55616382095a7"
+    }
+  ],
+  "higgsfield": {
+    "mode": "hero_banner",
+    "aspect_ratio": "16:9",
+    "count": 1,
+    "resolution_request": "2k",
+    "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
+    "prompt": "A powerful Black Rose luxury streetwear campaign: two confident customers and their exact mapped garments in a restrained nocturnal black-stone gallery, with the exact font sculpture grounded as a deliberate physical monument. Product and customer first, professional wide editorial hierarchy, one coherent light and ground plane.",
+    "brand_context": "SkyyRose Black Rose is nocturnal gothic luxury streetwear: urban monumentality, controlled menace, cinematic restraint, exact product authority, no generic filler.",
+    "product_context": "Male wears exact BR-005 Signature Edition hoodie with exact BR-007 basketball shorts. BR-005 has white drawstrings, a small rose mark on the wearer's right chest, and the large floral artwork on the lower side-body panel; the large artwork must remain off every sleeve and the chest mark must remain exclusively wearer-right. BR-007 must follow the founder four-angle board exactly: black rose-pattern mesh, white waistband, OAKLAND front lettering, script Love Hurts treatment, white side panels, geometric black-and-white trim, and the physical left/right side marks. Female wears the exact founder-supplied BR-004 long hoodie dress with its centered white rose-bouquet-and-cloud graphic. Preserve construction, logos, wordmarks, placement, color, cast identity, and the exact Black Rose font sculpture. No BR-001, BR-002, bridge, waterfront, star monument, extra people, or invented text.",
+    "prompt_assertions": {
+      "required_phrases": [
+        "right chest",
+        "side-body",
+        "OAKLAND",
+        "waistband"
+      ],
+      "forbidden_phrases": [
+        "emblem embroidered at left chest",
+        "graphic screenprinted along the left sleeve",
+        "large detailed black rose with cloud and thorns graphic",
+        "from elbow to cuff"
+      ]
+    }
+  },
+  "ooda": {
+    "observe": [
+      "verify catalog and image-manifest hashes",
+      "verify every source hash and required dependency",
+      "load prior rejection and scene-direction constraints"
+    ],
+    "orient": [
+      "use Higgsfield Product Photoshoot hero_banner for a native 16:9 campaign candidate",
+      "treat every Higgsfield result as candidate-only"
+    ],
+    "decide": [
+      "hard-fail wrong SKU, garment, logo, wordmark, cast, sculpture, or aspect ratio",
+      "hard-fail cutout appearance, floating contact, wall-sticker sculpture, tiny product, or incoherent light",
+      "independent visual review precedes founder review"
+    ],
+    "act": [
+      "stage a surviving candidate in local Comfy",
+      "apply only mask-bounded or authority-preserving corrections",
+      "write immutable receipts and quarantine failures",
+      "never promote, wire, deploy, or overwrite SOT automatically"
+    ]
+  },
+  "execute_blockers": [
+    "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+  ],
+  "promotion_gate": "FOUNDER_APPROVED_VISUAL"
+}

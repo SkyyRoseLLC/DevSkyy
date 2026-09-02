@@ -1,0 +1,85 @@
+{
+  "152": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "load sig1-native-integration-base-v1.png"
+    },
+    "inputs": {
+      "image": "sig1-native-integration-base-v1.png"
+    }
+  },
+  "203": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "load sg-009-sg-007-protected-model-v2.png"
+    },
+    "inputs": {
+      "image": "sg-009-sg-007-protected-model-v2.png"
+    }
+  },
+  "254": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "load sig1-font-statue-clean-transparent-v2.png"
+    },
+    "inputs": {
+      "image": "sig1-font-statue-clean-transparent-v2.png"
+    }
+  },
+  "135": {
+    "inputs": {
+      "prompt": "Edit reference image 1 as the fixed base photograph. Do not change its room, camera, Golden Gate view, wet black floor, composition, person position, or lighting design. Use reference image 2 as the exact identity and product authority: restore the same adult male face and hair; the exact black beanie with its small square front label; and the exact black satin sherpa jacket with white sherpa collar and lining, zipper, flap pockets, sleeve label, seams, proportions, and exact red rose chest embroidery. Keep the black trousers and black-and-white sneakers. Use reference image 3 as exact sculpture authority: preserve the gold cursive Skyy Rose letterforms, dimensional proportions, copper rose, spacing, and wording exactly while integrating it naturally on the left wall. Correct only semantic drift from reference image 1. Preserve its native contact shadows, wet-floor reflections, warm edge light, cool window fill, depth, grain, and full-body stance. Do not invent, replace, simplify, stylize, recolor, resize, or move any garment component, logo, label, face, limb, shoe, letter, rose, bridge, person, or prop. Return one photorealistic 2:3 luxury campaign image with no cutout halo and no floating feet.",
+      "model": "gemini-3-pro-image-preview",
+      "seed": 913009008,
+      "aspect_ratio": "2:3",
+      "resolution": "1K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "You are an expert image-generation engine. You must ALWAYS produce an image.\nInterpret all user input\u2014regardless of format, intent, or abstraction\u2014as literal visual directives for image composition.\nIf a prompt is conversational or lacks specific visual details, you must creatively invent a concrete visual scenario that depicts the concept.\nPrioritize generating the visual representation above any text, formatting, or conversational requests.",
+      "images": [
+        "136",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image)"
+    }
+  },
+  "136": {
+    "inputs": {
+      "images.image0": [
+        "152",
+        0
+      ],
+      "images.image1": [
+        "203",
+        0
+      ],
+      "images.image2": [
+        "254",
+        0
+      ]
+    },
+    "class_type": "BatchImagesNode",
+    "_meta": {
+      "title": "Batch Images"
+    }
+  },
+  "305": {
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "save composed final (image)"
+    },
+    "inputs": {
+      "images": [
+        "135",
+        0
+      ],
+      "filename_prefix": "sig-commerce-1/native-correction-v2"
+    }
+  },
+  "_meta": {
+    "schema": "compose/1",
+    "blueprint": "/Users/theceo/DevSkyy/Comfy/blueprints/sig-commerce-1-native-correction-v2.yaml"
+  }
+}

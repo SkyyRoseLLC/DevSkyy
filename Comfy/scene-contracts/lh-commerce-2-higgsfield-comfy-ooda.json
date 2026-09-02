@@ -1,0 +1,90 @@
+{
+  "schema": "skyyrose.scene-ooda/1",
+  "scene_id": "LH-COMMERCE-2",
+  "collection": "love-hurts",
+  "status": "BLOCKED_SOURCE_GATE",
+  "purpose": "Create the final Love Hurts commerce scene only after current founder-approved on-model and protected-matte authority exists.",
+  "fashion_theme_team": {
+    "plugin": "fashion-theme-team@personal",
+    "team_contract": "Comfy/scene-contracts/scene-ooda-index.json",
+    "phase_id": "LH-COMMERCE-2-OODA-1",
+    "attempt": 1,
+    "accountable": "fashion-theme-lead",
+    "current_owner": "catalog-sot-integrator",
+    "next_authority": "founder-approved LH-003 on-model source and protected garment matte"
+  },
+  "catalog_snapshot": {
+    "catalog_path": "skyyrose-catalog.csv",
+    "catalog_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+    "image_manifest_path": "data/sot-images.json",
+    "image_manifest_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+    "products": [{"sku": "lh-003", "name": "Love Hurts Basketball Shorts"}]
+  },
+  "composition": {
+    "aspect_ratio": "16:9",
+    "target_width": 1672,
+    "target_height": 941,
+    "story_role": "The Fractured Chamber",
+    "customer_priority": "Product-readable confident fashion protagonist; cast remains blocked until founder-approved authority exists.",
+    "environment": "Low close thorned runway and cracked-rose chamber.",
+    "brand_object": "The exact protected enchanted rose remains sharply legible opposite the product.",
+    "energy_contract": "Comfy/SCENE-ENERGY-BAR.md"
+  },
+  "source_bindings": [
+    {
+      "role": "lh-003_physical_front",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-shorts.jpeg",
+      "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+      "send_to_higgsfield": true,
+      "preserve": "white mesh, all-over rose field, Love Hurts graphics, stitched side marks"
+    },
+    {
+      "role": "lh-003_physical_back",
+      "path": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
+      "sha256": "d6e2756c3d87ef5c6d38abae124647e33881a065ad31a53f6c4c37c72223a136",
+      "send_to_higgsfield": true,
+      "preserve": "exact rear pockets and broken-heart-and-thorns back construction"
+    },
+    {
+      "role": "approved_environment_plate",
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-2-shorts-chamber-plate-v1.png",
+      "sha256": "371ff6295b2002cfb1670683e2dc0601782ed0504565ce1fe1a85cf0ad3f616d",
+      "send_to_higgsfield": true,
+      "preserve": "Fractured Chamber spatial identity and wide composition language"
+    },
+    {
+      "role": "protected_enchanted_rose",
+      "path": "skyyrose/assets/scenes/love-hurts/love-hurts-enchanted-rose-cathedral/love-hurts-enchanted-rose-cathedral-v2.png",
+      "sha256": "4f3c937f958f9ee4f6e87ec2696a70ea67903ffe24b52b41f699bb50680c7b02",
+      "send_to_higgsfield": true,
+      "preserve": "exact rose-under-glass continuity authority"
+    }
+  ],
+  "authority_dependencies": [],
+  "higgsfield": {
+    "mode": "hero_banner",
+    "aspect_ratio": "16:9",
+    "count": 1,
+    "resolution_request": "2k",
+    "resolution_note": "The installed CLI does not expose a resolution flag; verify returned dimensions before Comfy staging.",
+    "prompt": "An emotionally charged Love Hurts luxury streetwear campaign in The Fractured Chamber: exact LH-003 basketball shorts at product-readable scale, a powerful customer, and the exact enchanted rose under glass sharply integrated into one cinematic wide scene.",
+    "brand_context": "Love Hurts is controlled romantic cinema, defiance, enchanted drama, and luxury streetwear product clarity; no generic hearts, flowers, or literal Beast character.",
+    "product_context": "Preserve the exact LH-003 front and back construction. Never place the front Love Hurts treatment on the rear. Use no customer identity until founder-approved on-model authority and a protected garment matte are bound.",
+    "prompt_assertions": {
+      "required_phrases": ["LH-003", "Fractured Chamber", "enchanted rose"],
+      "forbidden_phrases": ["front graphic on the back", "generic red shorts"]
+    }
+  },
+  "ooda": {
+    "observe": ["verify catalog, image SOT, physical front/back, chamber plate, and rose hashes", "confirm approved on-model target and garment matte exist"],
+    "orient": ["use Higgsfield hero_banner only after cast authority is approved", "treat outputs as candidate-only"],
+    "decide": ["hard-fail wrong front/back graphic placement, generic rose, missing product, or unapproved identity"],
+    "act": ["stage in Comfy", "apply only mask-bounded corrections", "quarantine failures", "require independent and founder review"]
+  },
+  "execute_blockers": [
+    "founder-approved LH-003 on-model target is missing",
+    "LH-003 protected garment matte is missing",
+    "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+  ],
+  "promotion_gate": "FOUNDER_APPROVED_VISUAL"
+}

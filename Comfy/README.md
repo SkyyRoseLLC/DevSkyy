@@ -1,12 +1,12 @@
 # SkyyRose local ComfyUI project
 
-This project is the local, no-provider-spend execution surface for SkyyRose scene candidates. The canonical catalog and image sources remain in the DevSkyy repository; this directory stores workflows, hash-bound scene contracts, and append-only run evidence.
+This project is the governed execution surface for SkyyRose scene candidates. The canonical catalog and image sources remain in the DevSkyy repository; this directory stores workflows, hash-bound scene contracts, OODA orchestration, and append-only run evidence.
 
 ## Runtime contract
 
 - Backend: `local` (`http://127.0.0.1:8188`)
 - Project default: `defaults.where: local` in `comfy.yaml`
-- Provider/API spend: forbidden unless separately authorized
+- Provider/API spend: forbidden unless separately authorized and the scene contract has no execution blockers
 - Generated images: candidate-only until product-fidelity, physical-integration, optical-realism, independent-review, and founder-approval gates pass
 - Canonical product files are uploaded from their registered repository paths; generated outputs never become source authority
 
@@ -64,3 +64,39 @@ comfy --where local --json download <prompt_id>
 ```
 
 Append the prompt ID to `job_ids.txt` at submission time and the submission/QC decision to `LOG.md`. Source hashes and acceptance criteria live in `scene-contracts/`.
+
+## Higgsfield photoshoot inside the Comfy OODA
+
+Higgsfield Product Photoshoot is the native campaign-capture stage; it does not own source truth or promotion. Comfy owns authority validation, staging, bounded correction, integration, receipts, rejection routing, and review handoff.
+
+Fashion Theme Team governance is embedded through `scene-contracts/scene-ooda-index.json` and the durable `scene-contracts/scene-ooda-ledger.json`. See `FASHION-THEME-TEAM-OODA.md` for role ownership and handoff boundaries. All five remaining mapped scenes have individual contracts; blocked scenes remain mapped and validated without being sent to paid generation.
+
+The first governed packet is `BR-COMMERCE-2`:
+
+```bash
+python3 Comfy/scripts/scene_ooda.py validate \
+  --manifest Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json
+
+python3 Comfy/scripts/scene_ooda.py enhance \
+  --manifest Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json
+```
+
+`enhance` uses Higgsfield's no-generation `--enhance-only` path. Paid generation is deliberately fail-closed: it requires the explicit `execute --allow-spend` action and a contract with zero source, dependency, preflight, or approval blockers.
+
+If assertion rules change after a human/product-authority review, re-evaluate the immutable enhancement receipt without another provider request:
+
+```bash
+python3 Comfy/scripts/scene_ooda.py review-enhance \
+  --manifest Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json \
+  --receipt /absolute/path/to/higgsfield-enhance-receipt.json
+```
+
+A generated result remains candidate-only and can be staged locally with:
+
+```bash
+python3 Comfy/scripts/scene_ooda.py stage \
+  --manifest Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json \
+  --candidate /absolute/path/to/candidate.png
+```
+
+Staging uploads the candidate to local ComfyUI and writes a receipt. It does not promote, wire, deploy, or overwrite any SOT file.
