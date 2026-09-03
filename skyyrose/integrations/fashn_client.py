@@ -13,9 +13,10 @@ API reference (FASHN v1):
 
 Auth: Bearer FASHN_API_KEY (Authorization header).
 
-Cost (per renders/preflight.py constants):
-    tryon-v1.6:    $0.075 per sample
-    bg-remove-v1:  $0.025 per sample
+Billing:
+    tryon-v1.6 uses the legacy USD estimate below.
+    tryon-max is credit-priced by generation mode and resolution; the client
+    reports credits and deliberately does not invent a USD conversion.
 
 This module deliberately does NOT bypass the paid-api-stopgate hook — that
 hook intercepts shell `python -m renders.fashn` invocations. In-process
@@ -56,6 +57,26 @@ COST_PER_SAMPLE_USD: dict[str, float] = {
     "bg-remove-v1": 0.025,
 }
 
+# First-party Try-On Max pricing, verified 2026-09-02:
+# https://docs.fashn.ai/api-reference/tryon-max
+TRYON_MAX_CREDITS: dict[tuple[str, str], int] = {
+    ("fast", "1k"): 1,
+    ("fast", "2k"): 2,
+    ("fast", "4k"): 3,
+    ("balanced", "1k"): 2,
+    ("balanced", "2k"): 3,
+    ("balanced", "4k"): 4,
+    ("quality", "1k"): 3,
+    ("quality", "2k"): 4,
+    ("quality", "4k"): 5,
+}
+TRYON_MAX_MODEL = "tryon-max"
+TRYON_MAX_LIFECYCLE = "preview"
+
+TryOnMaxResolution = Literal["1k", "2k", "4k"]
+TryOnMaxGenerationMode = Literal["fast", "balanced", "quality"]
+TryOnMaxOutputFormat = Literal["png", "jpeg"]
+
 
 class FashnError(RuntimeError):
     """Raised on any FASHN API failure (HTTP error, job failure, timeout)."""
@@ -88,6 +109,7 @@ class FashnResult:
     cost_usd: float
     latency_s: float
     raw_status: dict[str, Any]
+    credits_used: int | None = None
 
 
 class FashnClient:
@@ -172,20 +194,42 @@ class FashnClient:
             raise FashnError(str(last_exc))
         raise FashnError("unreachable: retry loop exited")
 
+    async def _request_once(
+        self,
+        method: str,
+        path: str,
+        *,
+        json: dict | None = None,
+    ) -> httpx.Response:
+        """Send a non-idempotent request exactly once.
+
+        A connection failure after a provider accepted ``POST /run`` is
+        ambiguous. Retrying it could create and bill a second prediction, so
+        candidate-generation submissions use this path and require a human to
+        reconcile provider history before any retry.
+        """
+        try:
+            return await self._client.request(method, path, json=json)
+        except self._RETRIABLE_NETWORK as exc:
+            raise FashnError(
+                "FASHN submission outcome is unknown after a network error; "
+                "automatic retry is disabled to prevent duplicate paid jobs"
+            ) from exc
+
     async def _start_job(
         self,
         model_name: str,
         inputs: dict[str, Any],
         *,
+        retry_submission: bool = True,
         sleep: Any = asyncio.sleep,
     ) -> str:
         """POST /v1/run — returns job ID."""
-        response = await self._request_with_retry(
-            "POST",
-            "/run",
-            json={"model_name": model_name, "inputs": inputs},
-            sleep=sleep,
-        )
+        payload = {"model_name": model_name, "inputs": inputs}
+        if retry_submission:
+            response = await self._request_with_retry("POST", "/run", json=payload, sleep=sleep)
+        else:
+            response = await self._request_once("POST", "/run", json=payload)
         if response.status_code not in (200, 201, 202):
             raise FashnError(
                 f"FASHN /run failed: HTTP {response.status_code} — {_safe_error_excerpt(response)}"
@@ -284,6 +328,106 @@ class FashnClient:
             cost_usd=per_sample * num_samples,
             latency_s=time.monotonic() - start,
             raw_status=status_body,
+        )
+
+    async def run_tryon_max(
+        self,
+        *,
+        model_image: str,
+        product_image: str,
+        prompt: str = "",
+        resolution: TryOnMaxResolution = "2k",
+        generation_mode: TryOnMaxGenerationMode = "quality",
+        seed: int = 42,
+        num_images: int = 1,
+        output_format: TryOnMaxOutputFormat = "png",
+        return_base64: bool = True,
+        sleep: Any = asyncio.sleep,
+    ) -> FashnResult:
+        """Run one governed Try-On Max candidate request.
+
+        ``model_image`` and ``product_image`` may be public URLs or image data
+        URIs. SkyyRose's OODA runner uses data URIs so source files do not need
+        to be uploaded to a public bucket. The provider submission is sent
+        exactly once; only status polling is retried.
+
+        Try-On Max is a Preview endpoint. A successful provider response is a
+        candidate receipt, never product-fidelity approval or scene promotion.
+        """
+        if not isinstance(model_image, str) or not model_image.strip():
+            raise ValueError("model_image must be a non-empty URL or data URI")
+        if not isinstance(product_image, str) or not product_image.strip():
+            raise ValueError("product_image must be a non-empty URL or data URI")
+        if not isinstance(prompt, str):
+            raise TypeError("prompt must be a string")
+        if resolution not in {"1k", "2k", "4k"}:
+            raise ValueError(f"unsupported Try-On Max resolution: {resolution!r}")
+        if generation_mode not in {"fast", "balanced", "quality"}:
+            raise ValueError(f"unsupported Try-On Max generation_mode: {generation_mode!r}")
+        if isinstance(seed, bool) or not isinstance(seed, int) or not 0 <= seed <= 2**32 - 1:
+            raise ValueError("seed must be an integer from 0 to 2^32 - 1")
+        if (
+            isinstance(num_images, bool)
+            or not isinstance(num_images, int)
+            or not 1 <= num_images <= 4
+        ):
+            raise ValueError("num_images must be an integer from 1 to 4")
+        if output_format not in {"png", "jpeg"}:
+            raise ValueError(f"unsupported Try-On Max output_format: {output_format!r}")
+        if not isinstance(return_base64, bool):
+            raise TypeError("return_base64 must be a boolean")
+
+        inputs: dict[str, Any] = {
+            "product_image": product_image,
+            "model_image": model_image,
+            "prompt": prompt,
+            "resolution": resolution,
+            "generation_mode": generation_mode,
+            "seed": seed,
+            "num_images": num_images,
+            "output_format": output_format,
+            "return_base64": return_base64,
+        }
+
+        start = time.monotonic()
+        job_id = await self._start_job(
+            TRYON_MAX_MODEL,
+            inputs,
+            retry_submission=False,
+            sleep=sleep,
+        )
+        status_body = await self._poll_until_done(job_id, sleep=sleep)
+        if status_body.get("status") != "completed":
+            err = status_body.get("error") or status_body.get("status", "unknown")
+            raise FashnError(f"FASHN job {job_id} did not complete: {err}")
+
+        raw_outputs = status_body.get("output") or []
+        expected_prefixes = (
+            ("data:image/png;base64,", "data:image/jpeg;base64,")
+            if return_base64
+            else ("https://",)
+        )
+        outputs = [
+            value
+            for value in raw_outputs
+            if isinstance(value, str) and value.startswith(expected_prefixes)
+        ]
+        if len(outputs) != num_images:
+            expected = "base64 image data" if return_base64 else "HTTPS output URLs"
+            raise FashnError(
+                f"FASHN job {job_id} returned {len(outputs)} valid {expected}; "
+                f"expected exactly {num_images} (raw output count: {len(raw_outputs)})"
+            )
+
+        credits_used = TRYON_MAX_CREDITS[(generation_mode, resolution)] * num_images
+        return FashnResult(
+            job_id=job_id,
+            output_urls=outputs,
+            model_name=TRYON_MAX_MODEL,
+            cost_usd=0.0,
+            latency_s=time.monotonic() - start,
+            raw_status=status_body,
+            credits_used=credits_used,
         )
 
 

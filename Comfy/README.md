@@ -100,3 +100,45 @@ python3 Comfy/scripts/scene_ooda.py stage \
 ```
 
 Staging uploads the candidate to local ComfyUI and writes a receipt. It does not promote, wire, deploy, or overwrite any SOT file.
+
+## Specialized garment placement before scene generation
+
+Scenes that lack an approved exact on-model product layer use the separate FASHN Try-On Max pilot before Higgsfield or Comfy environment work. This stage receives one approved full-body model image and one primary product image; the other physical product views remain independent review authority because Try-On Max accepts only one product image and cannot prove unseen construction.
+
+The initial governed pilot is `LH-003-TRYON-MAX-PILOT-A1`:
+
+```bash
+/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 \
+  Comfy/scripts/vto_ooda.py validate \
+  --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json
+```
+
+Validation is expected to remain `BLOCKED` until all three gates exist:
+
+1. a founder-approved full-body `LH-MODEL-01` source and authority receipt;
+2. the hash-bound product pack and registered `tryon-max` capability; and
+3. an approval receipt bound to the current execution fingerprint for one four-credit candidate.
+
+Only after those gates pass can the separately authorized command run:
+
+```bash
+/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 \
+  Comfy/scripts/vto_ooda.py execute \
+  --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json \
+  --allow-spend
+```
+
+The runner sends local inputs as private data URIs, requests one lossless PNG with a fixed seed, refuses automatic submission retry, and writes a contract/input/output/job/credit receipt. A successful response remains quarantined and candidate-only until an independent reviewer verifies model identity, all four zippered pockets, wearer-relative artwork, front/back construction, and absence of non-garment drift. Only that reviewed on-model layer may continue into the cinematic environment and sculpture pipeline.
+
+The independent receipt is checked separately and cannot be authored by the candidate builder:
+
+```bash
+/Library/Frameworks/Python.framework/Versions/3.14/bin/python3 \
+  Comfy/scripts/vto_ooda.py review \
+  --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json \
+  --candidate Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png \
+  --execution-receipt Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json \
+  --review /absolute/path/to/lh-003-vto-independent-review.json
+```
+
+An independent `PASS` still reports `scene_input_authorized: false`; explicit founder product approval must be bound before the candidate becomes an on-model authority for `LH-COMMERCE-2`.

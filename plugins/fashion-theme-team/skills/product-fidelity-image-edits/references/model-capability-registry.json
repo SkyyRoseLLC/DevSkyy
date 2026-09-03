@@ -1,6 +1,6 @@
 {
   "schema": "product-fidelity-model-registry.v2",
-  "verified_on": "2026-08-30",
+  "verified_on": "2026-09-02",
   "unknown_models": "block",
   "exactness_rule": "Reference conditioning is not a pixel, temporal, geometry, or material lock.",
   "models": [
@@ -86,6 +86,31 @@
       "fidelity_tier": "candidate_only",
       "notes": "Use Responses for conversational or multi-step image workflows. One-shot localized product patches must use the directly model-addressed Image API route so the gate can pin and audit the image model.",
       "source": "https://developers.openai.com/api/docs/guides/image-generation"
+    },
+    {
+      "id": "fashn-tryon-max",
+      "aliases": ["tryon-max", "fashn_tryon_max"],
+      "provider": "fashn",
+      "modality": "image",
+      "status": "external_api_preview",
+      "capabilities": [
+        "virtual_tryon",
+        "model_identity_preservation",
+        "pose_preservation",
+        "product_reference",
+        "high_resolution",
+        "seed_control"
+      ],
+      "allowed_operations": ["virtual_tryon_candidate"],
+      "blocked_operations": [
+        "unreviewed_exact_product",
+        "multi_view_product_reconstruction",
+        "automatic_paid_retry",
+        "direct_scene_promotion"
+      ],
+      "fidelity_tier": "candidate_only_after_source_binding_and_independent_review",
+      "notes": "Try-On Max accepts one product image and one existing model image, then attempts to preserve the model identity, pose, and styling. It is Preview, cannot prove unseen multi-view construction, and requires source-hash validation plus independent product review before any downstream scene use.",
+      "source": "https://docs.fashn.ai/api-reference/tryon-max"
     },
     {
       "id": "gemini-native-image",

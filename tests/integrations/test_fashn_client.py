@@ -17,6 +17,8 @@ import pytest
 
 from skyyrose.integrations.fashn_client import (
     COST_PER_SAMPLE_USD,
+    TRYON_MAX_CREDITS,
+    TRYON_MAX_MODEL,
     FashnClient,
     FashnCredentials,
     FashnError,
@@ -166,6 +168,99 @@ class TestRunTryonHappyPath:
                 sleep=_zero_sleep,
             )
         assert result.cost_usd == 0.3  # 4 × 0.075
+
+
+class TestRunTryonMax:
+    @pytest.mark.asyncio
+    async def test_uses_current_contract_and_reports_credits(self) -> None:
+        output = "data:image/png;base64,aW1hZ2U="
+        transport = FakeTransport(
+            [
+                _ok_response({"id": "max-1"}),
+                _ok_response({"status": "completed", "output": [output]}),
+            ]
+        )
+        async with _make_client(transport) as client:
+            result = await client.run_tryon_max(
+                model_image="data:image/png;base64,bW9kZWw=",
+                product_image="data:image/png;base64,cHJvZHVjdA==",
+                prompt="Replace only the lower-body garment.",
+                resolution="2k",
+                generation_mode="quality",
+                seed=17,
+                num_images=1,
+                output_format="png",
+                return_base64=True,
+                sleep=_zero_sleep,
+            )
+
+        assert result.model_name == TRYON_MAX_MODEL
+        assert result.output_urls == [output]
+        assert result.cost_usd == 0.0
+        assert result.credits_used == 4
+        request = json.loads(transport.calls[0].content)
+        assert request == {
+            "model_name": "tryon-max",
+            "inputs": {
+                "product_image": "data:image/png;base64,cHJvZHVjdA==",
+                "model_image": "data:image/png;base64,bW9kZWw=",
+                "prompt": "Replace only the lower-body garment.",
+                "resolution": "2k",
+                "generation_mode": "quality",
+                "seed": 17,
+                "num_images": 1,
+                "output_format": "png",
+                "return_base64": True,
+            },
+        }
+
+    @pytest.mark.asyncio
+    async def test_submission_network_error_is_not_retried(self) -> None:
+        class AmbiguousSubmissionTransport(httpx.AsyncBaseTransport):
+            def __init__(self) -> None:
+                self.calls = 0
+
+            async def handle_async_request(self, request: httpx.Request) -> httpx.Response:
+                self.calls += 1
+                raise httpx.ConnectError("connection lost after submit", request=request)
+
+        transport = AmbiguousSubmissionTransport()
+        client = FashnClient(
+            FashnCredentials(api_key="fa_test"),
+            timeout_seconds=5.0,
+            transport=transport,
+        )
+        async with client:
+            with pytest.raises(FashnError, match="automatic retry is disabled"):
+                await client.run_tryon_max(
+                    model_image="data:image/png;base64,bW9kZWw=",
+                    product_image="data:image/png;base64,cHJvZHVjdA==",
+                )
+        assert transport.calls == 1
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        ("kwargs", "message"),
+        [
+            ({"resolution": "8k"}, "resolution"),
+            ({"generation_mode": "automatic"}, "generation_mode"),
+            ({"seed": -1}, "seed"),
+            ({"num_images": 5}, "num_images"),
+            ({"output_format": "webp"}, "output_format"),
+        ],
+    )
+    async def test_rejects_invalid_parameters(
+        self, kwargs: dict[str, object], message: str
+    ) -> None:
+        transport = FakeTransport([])
+        async with _make_client(transport) as client:
+            with pytest.raises((TypeError, ValueError), match=message):
+                await client.run_tryon_max(
+                    model_image="data:image/png;base64,bW9kZWw=",
+                    product_image="data:image/png;base64,cHJvZHVjdA==",
+                    **kwargs,  # type: ignore[arg-type]
+                )
+        assert not transport.calls
 
 
 # ---------------------------------------------------------------------------
@@ -341,6 +436,10 @@ class TestCostConstants:
 
     def test_bg_remove_cost(self) -> None:
         assert COST_PER_SAMPLE_USD["bg-remove-v1"] == 0.025
+
+    def test_tryon_max_credit_matrix(self) -> None:
+        assert TRYON_MAX_CREDITS[("fast", "1k")] == 1
+        assert TRYON_MAX_CREDITS[("quality", "4k")] == 5
 
 
 class TestSafeErrorExcerpt:

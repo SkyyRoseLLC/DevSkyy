@@ -292,6 +292,19 @@
     "eligible_as_scene_input": false,
     "automatic_retry_allowed": false
   },
+  "upstream_vto": {
+    "task_id": "LH-003-VTO-PILOT-INTEGRATION-20260902",
+    "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+    "contract": "Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+    "provider": "fashn",
+    "model_id": "tryon-max",
+    "model_lifecycle": "preview",
+    "status": "BLOCKED_PENDING_APPROVED_FULL_BODY_MODEL",
+    "role": "Create one exact on-model LH-003 candidate before environment generation; this route never owns product truth or scene promotion.",
+    "automatic_retry_allowed": false,
+    "candidate_only": true,
+    "scene_input_allowed_before_independent_review": false
+  },
   "comfy": {
     "routing": "local",
     "server": "127.0.0.1:8188",
