@@ -1,0 +1,81 @@
+{
+  "schema_version": "reference-guided-image-generation-receipt.v1",
+  "receipt_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1-GENERATION",
+  "stage_id": "SCENE-STAGE-05R-LH003-FASHION-EDITORIAL-POSE-RECOVERY-20260903",
+  "candidate_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+  "generated_at": "2026-09-03T08:48:43-07:00",
+  "execution": {
+    "interface": "OpenAI imagegen",
+    "route": "full_frame_reference_guided_redraw",
+    "attempt_number": 1,
+    "attempt_ceiling": 1,
+    "automatic_retry": false,
+    "provider_request_id": null,
+    "provider_model_snapshot": null,
+    "provider_price": null,
+    "provider_metadata_note": "The imagegen tool returned an image and local output path but did not expose request ID, model snapshot, or price metadata.",
+    "fashn_credits_spent": 0
+  },
+  "authorization": {
+    "preflight_path": "tasks/scene-stage-05r-lh003-fashion-editorial-pose-recovery-20260903-preflight.json",
+    "preflight_sha256": "8621d71b4f247d796f42155ddfcb01122638fcedd0f1ca551e9fe23e368bdd31",
+    "scope": "One quarantined fashion-editorial pose-redraw candidate only."
+  },
+  "canonical_prompt": {
+    "path": "Comfy/prompts/lh-003-fashion-editorial-pose-recovery-a1.txt",
+    "sha256": "ba7ebe6aa5161cd9628a82a37bd7a38cbac316e15c8be9a784636fed26d9ce5b"
+  },
+  "ordered_input_references": [
+    {
+      "role": "approved_identity_and_body_authority",
+      "view": "full_body_front",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "front",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+      "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "back",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+      "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "wearer_left",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+      "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "wearer_right",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+      "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+    }
+  ],
+  "prohibited_input": {
+    "candidate_id": "LH-003-TRYON-MAX-PILOT-A1",
+    "sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "supplied_to_generation": false,
+    "reason": "Rejected Stage 4 result cannot become authority."
+  },
+  "output": {
+    "original_tool_path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-fd648bef-6675-4067-9901-26968e8c2287.png",
+    "imported_path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+    "sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
+    "pixel_width": 937,
+    "pixel_height": 1678,
+    "authority": "CANDIDATE_ONLY",
+    "quarantine": true
+  },
+  "disposition": {
+    "state": "AWAITING_INDEPENDENT_REVIEW",
+    "founder_approved_product_fidelity": false,
+    "promotion_authorized": false,
+    "stage_6_authorized": false
+  }
+}

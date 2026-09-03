@@ -1,0 +1,132 @@
+{
+  "schema_version": "scene-stage-recovery-preflight.v1",
+  "stage_id": "SCENE-STAGE-05R-LH003-FASHION-EDITORIAL-POSE-RECOVERY-20260903",
+  "candidate_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+  "created_at": "2026-09-03T00:00:00-07:00",
+  "base_stage_commit": "2727f403807625cae90fffa8750aeaa248e846a2",
+  "state": "AUTHORIZED_FOR_ONE_CANDIDATE",
+  "objective": "Create one reference-guided fashion-editorial redraw candidate in a new pose that exposes LH-003 side-pocket zipper zones and wearer-relative artwork while preserving the approved LH-MODEL-01 appearance.",
+  "founder_authority": {
+    "directive": "model is fine. generate a different pose since you blockin what i approved. its your business now call the shots",
+    "interpreted_scope": [
+      "Use the approved LH-MODEL-01 appearance as identity authority.",
+      "Select and generate one different fashion-editorial pose.",
+      "Permit a full-frame reference-guided redraw experiment that remains quarantined and candidate-only."
+    ],
+    "not_authorized": [
+      "Automatic retry or a second candidate.",
+      "Reuse of the rejected Stage 4 VTO as generation authority.",
+      "Waiver of product-fidelity, identity, anatomy, or construction review.",
+      "Promotion, storefront wiring, publication, deployment, or Stage 6 execution."
+    ]
+  },
+  "execution_policy": {
+    "route": "full_frame_reference_guided_redraw",
+    "provider_interface": "OpenAI imagegen",
+    "candidate_ceiling": 1,
+    "automatic_retry": false,
+    "fashn_credit_spend": 0,
+    "output_authority": "CANDIDATE_ONLY",
+    "quarantine_required": true,
+    "stop_after_first_terminal_result": true
+  },
+  "ordered_generation_references": [
+    {
+      "role": "approved_identity_and_body_authority",
+      "view": "full_body_front",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "front",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+      "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "back",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+      "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "wearer_left",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+      "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6"
+    },
+    {
+      "role": "physical_product_authority",
+      "view": "wearer_right",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+      "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+    }
+  ],
+  "source_authority": {
+    "receipt_path": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+    "receipt_sha256": "7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552"
+  },
+  "excluded_generation_sources": [
+    {
+      "candidate_id": "LH-003-TRYON-MAX-PILOT-A1",
+      "path": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png",
+      "sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+      "reason": "Rejected for identity, non-garment, zipper, artwork, and construction drift; context-only and prohibited as generation authority."
+    }
+  ],
+  "pose_contract": {
+    "name": "front_biased_athletic_contrapposto",
+    "weight_bearing_leg": "wearer_right",
+    "lead_foot": "wearer_left_half_step_forward",
+    "pelvis_rotation_max_degrees": 10,
+    "shoulders": "square_to_camera",
+    "face": "toward_camera",
+    "arms_and_hands": "clear_of_waistband_hips_and_side_pockets",
+    "framing": "full_body_head_to_feet",
+    "review_intent": "Expose both side-pocket openings, zipper sliders and pulls, both side-panel constructions, and wearer-relative artwork without hand or limb occlusion."
+  },
+  "identity_invariants": [
+    "Preserve the approved adult Black woman's face, skin tone, high-bun natural hair, body proportions, black crop top, hands, and neutral gray cyclorama.",
+    "Do not beautify, age-shift, recolor, replace, or reinterpret the approved model identity."
+  ],
+  "product_invariants": [
+    "SKU LH-003 shorts only.",
+    "White perforated mesh base with orange-red rose-on-cloud repeat.",
+    "Black ribbed waistband, substantial angular black side panels, and red-white binding.",
+    "Exactly two side pockets and two rear pockets, all zippered; do not fabricate rear pockets on the front view.",
+    "Both visible side pockets must show recognizable zipper teeth, sliders, and pulls.",
+    "Wearer-left artwork is the large red Love Hurts script with the smaller rose-heart emblem.",
+    "Wearer-right artwork is the red rose bouquet with green stems and white-blue cloud.",
+    "No mirroring, extra pockets, cargo pockets, open welts, omitted zippers, substituted text, or redesigned panels."
+  ],
+  "editorial_direction": {
+    "mode": "fashion_editorial",
+    "visual_language": "premium contemporary streetwear lookbook with restrained athletic confidence",
+    "lighting": "large soft key with controlled sculpting and clean detail visibility",
+    "background": "seamless neutral gray cyclorama with subtle grounded contact shadow",
+    "priority_order": [
+      "exact garment construction and artwork",
+      "approved identity continuity",
+      "clear review geometry",
+      "editorial finish"
+    ]
+  },
+  "required_independent_review": {
+    "dimensions": [
+      "identity",
+      "anatomy_and_pose",
+      "side_pocket_count_and_opening_geometry",
+      "zipper_teeth_slider_and_pull_visibility",
+      "wearer_left_artwork",
+      "wearer_right_artwork",
+      "waistband_panels_binding_and_mesh_construction",
+      "non_garment_preservation"
+    ],
+    "allowed_verdicts": [
+      "PASS",
+      "REJECT",
+      "BLOCKED"
+    ],
+    "promotion_on_generation_success": false
+  }
+}

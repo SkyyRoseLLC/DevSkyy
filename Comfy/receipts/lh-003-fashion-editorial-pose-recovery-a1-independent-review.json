@@ -1,0 +1,134 @@
+{
+  "schema_version": "product-fidelity-independent-review.v2",
+  "review_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1-INDEPENDENT-REVIEW",
+  "stage_id": "SCENE-STAGE-05R-LH003-FASHION-EDITORIAL-POSE-RECOVERY-20260903",
+  "reviewed_at": "2026-09-03T08:51:26-07:00",
+  "reviewer": {
+    "role": "independent_fashion_visual_product_fidelity_reviewer",
+    "name": "Leibniz",
+    "agent_id": "01a06770-2545-7b10-898d-f2bf625893f1",
+    "read_only": true,
+    "authored_candidate": false
+  },
+  "bindings": {
+    "candidate": {
+      "id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+      "path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+      "sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
+      "pixel_width": 937,
+      "pixel_height": 1678
+    },
+    "preflight": {
+      "path": "tasks/scene-stage-05r-lh003-fashion-editorial-pose-recovery-20260903-preflight.json",
+      "sha256": "8621d71b4f247d796f42155ddfcb01122638fcedd0f1ca551e9fe23e368bdd31"
+    },
+    "generation_receipt": {
+      "path": "Comfy/receipts/lh-003-fashion-editorial-pose-recovery-a1-generation.json",
+      "sha256": "ed61a3822e06e7f9e8beca0f627423208776d007fbfdfa76a51066b6db5f1cdb"
+    },
+    "approved_identity": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579"
+    },
+    "four_view_source_authority": {
+      "path": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+      "sha256": "7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552"
+    }
+  },
+  "integrity_findings": {
+    "candidate_hash_confirmed": true,
+    "candidate_geometry_confirmed": true,
+    "preflight_hash_confirmed": true,
+    "approved_identity_hash_confirmed": true,
+    "four_physical_authority_hashes_confirmed": true,
+    "authorities_inspected_at_original_detail": true,
+    "rejected_stage_4_vto_opened_or_used": false
+  },
+  "dimensions": [
+    {
+      "id": "identity_continuity",
+      "status": "FAIL",
+      "defect_id": "ID-01",
+      "evidence": "The candidate retains the broad casting profile, adult presentation, high bun, and general styling, but materially reinterprets the approved face. Eye and eyeliner shape, brow thickness and arch, nasal shape, lip contour, jaw and chin contour, and skin rendering differ from identity authority."
+    },
+    {
+      "id": "anatomy_and_requested_pose",
+      "status": "FAIL",
+      "defect_id": "POSE-01",
+      "evidence": "Full anatomy is present without an obvious extra, missing, fused, or broken limb or digit. Face and shoulders are camera-forward and hands are mostly clear. The straight weight-bearing leg is wearer-left while wearer-right is bent and crossed, reversing the contracted wearer-right weight-bearing leg."
+    },
+    {
+      "id": "side_pocket_count_and_opening_geometry",
+      "status": "PASS",
+      "defect_id": null,
+      "evidence": "Exactly two upper side-pocket openings are visible, one per wearer side, with no extra cargo or welt pocket. Their location and generally vertical-to-slightly-angled entry geometry correspond to the physical front authority."
+    },
+    {
+      "id": "side_pocket_zipper_hardware",
+      "status": "FAIL",
+      "defect_id": "ZIP-01",
+      "evidence": "Dark pocket-edge tracks are visible, but distinct zipper teeth, sliders, and pulls cannot be independently resolved on both sides. Dark strips that resemble zipper tape do not satisfy hardware proof."
+    },
+    {
+      "id": "wearer_left_artwork",
+      "status": "FAIL",
+      "defect_id": "ART-L-01",
+      "evidence": "Artwork is on the correct wearer side and is not obviously mirrored, but the large Love Hurts treatment is only partly exposed. The smaller rose-heart emblem is too soft and compressed to verify exact text and emblem integrity against the wearer-left authority."
+    },
+    {
+      "id": "wearer_right_artwork",
+      "status": "FAIL",
+      "defect_id": "ART-R-01",
+      "evidence": "A small floral mark appears on the correct wearer-right black panel, but the panel is too narrowly exposed to prove the complete red bouquet, green stems, and distinct white-blue cloud. Exact content, orientation, and placement remain ambiguous."
+    },
+    {
+      "id": "waistband_panels_binding_hem_mesh_silhouette",
+      "status": "PASS",
+      "defect_id": null,
+      "evidence": "The candidate visibly retains the broad black ribbed waistband, white perforated rose-cloud mesh body, substantial angular black side panels, red-white binding paths, black mesh hem layer, and basketball-short silhouette."
+    },
+    {
+      "id": "non_garment_continuity_and_studio_realism",
+      "status": "FAIL",
+      "defect_id": "ID-01",
+      "evidence": "The gray cyclorama, floor contact, shadows, full-body framing, black crop top, and footwear are grounded and realistic, but the facial and skin reinterpretation prevents non-garment continuity."
+    }
+  ],
+  "first_seen_defects": [
+    {
+      "id": "ID-01",
+      "severity": "BLOCKING",
+      "summary": "Material approved-identity facial and skin drift."
+    },
+    {
+      "id": "POSE-01",
+      "severity": "BLOCKING",
+      "summary": "Contracted weight-bearing-leg laterality is reversed."
+    },
+    {
+      "id": "ZIP-01",
+      "severity": "BLOCKING",
+      "summary": "Both side-pocket zipper teeth, sliders, and pulls are not directly and unambiguously visible."
+    },
+    {
+      "id": "ART-L-01",
+      "severity": "BLOCKING",
+      "summary": "Wearer-left large script and small emblem are incompletely exposed and not exact-verifiable."
+    },
+    {
+      "id": "ART-R-01",
+      "severity": "BLOCKING",
+      "summary": "Wearer-right bouquet, stems, and cloud are too compressed or obscured for exact-verifiable proof."
+    }
+  ],
+  "verdict": "REJECT",
+  "disposition": {
+    "candidate_authority": "QUARANTINED_REJECTED",
+    "stage_6_may_start": false,
+    "promotion_authorized": false,
+    "scene_input_authority_granted": false,
+    "founder_approval_granted": false,
+    "retry_authorized": false,
+    "wiring_publication_or_deployment_authorized": false
+  }
+}

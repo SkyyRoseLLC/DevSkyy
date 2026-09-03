@@ -1,0 +1,68 @@
+{
+  "schema_version": "scene-stage-terminal-ledger.v1",
+  "stage_id": "SCENE-STAGE-05R-LH003-FASHION-EDITORIAL-POSE-RECOVERY-20260903",
+  "terminal_at": "2026-09-03T08:51:27-07:00",
+  "terminal_state": "REJECTED",
+  "branch": "codex/scene-stage-05r-lh003-pose-recovery-20260903",
+  "base_commit": "2727f403807625cae90fffa8750aeaa248e846a2",
+  "objective_result": "One founder-directed fashion-editorial pose-redraw candidate was generated, imported, independently reviewed, and rejected without retry.",
+  "execution": {
+    "candidate_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+    "attempts_used": 1,
+    "attempt_ceiling": 1,
+    "automatic_retry": false,
+    "fashn_credits_spent": 0,
+    "provider_price": null,
+    "candidate_sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
+    "candidate_authority": "QUARANTINED_REJECTED"
+  },
+  "artifacts": {
+    "preflight": {
+      "path": "tasks/scene-stage-05r-lh003-fashion-editorial-pose-recovery-20260903-preflight.json",
+      "sha256": "8621d71b4f247d796f42155ddfcb01122638fcedd0f1ca551e9fe23e368bdd31"
+    },
+    "canonical_prompt": {
+      "path": "Comfy/prompts/lh-003-fashion-editorial-pose-recovery-a1.txt",
+      "sha256": "ba7ebe6aa5161cd9628a82a37bd7a38cbac316e15c8be9a784636fed26d9ce5b"
+    },
+    "candidate": {
+      "path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+      "sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c"
+    },
+    "generation_receipt": {
+      "path": "Comfy/receipts/lh-003-fashion-editorial-pose-recovery-a1-generation.json",
+      "sha256": "ed61a3822e06e7f9e8beca0f627423208776d007fbfdfa76a51066b6db5f1cdb"
+    },
+    "independent_review": {
+      "path": "Comfy/receipts/lh-003-fashion-editorial-pose-recovery-a1-independent-review.json",
+      "sha256": "b76d97e5ec49c453129f29b45628f6923255a00c38ab3c6d8c67cccc756a8e10"
+    }
+  },
+  "independent_verdict": {
+    "verdict": "REJECT",
+    "passed_dimensions": [
+      "side_pocket_count_and_opening_geometry",
+      "waistband_panels_binding_hem_mesh_silhouette"
+    ],
+    "blocking_defects": [
+      "ID-01",
+      "POSE-01",
+      "ZIP-01",
+      "ART-L-01",
+      "ART-R-01"
+    ]
+  },
+  "downstream_gates": {
+    "stage_6": "BLOCKED",
+    "promotion": "NOT_AUTHORIZED",
+    "storefront_wiring": "NOT_AUTHORIZED",
+    "publication": "NOT_AUTHORIZED",
+    "deployment": "NOT_AUTHORIZED",
+    "additional_generation": "NOT_AUTHORIZED"
+  },
+  "next_valid_recovery_routes": [
+    "Founder authorizes a separately capped additional redraw candidate with an amended pose and review geometry.",
+    "Acquire approved same-pose on-model photography with directly visible zipper hardware and wearer-relative artwork.",
+    "Build and verify a true garment-preserving 3D route before changing pose."
+  ]
+}

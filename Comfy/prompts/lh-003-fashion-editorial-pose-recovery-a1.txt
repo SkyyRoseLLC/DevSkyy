@@ -1,0 +1,35 @@
+Create exactly one photorealistic, full-body fashion-editorial studio image. This is a quarantined reference-guided pose-redraw candidate, not a redesign.
+
+REFERENCE ROLES
+- Reference image 1 is the sole identity, face, body, hair, styling-above-the-waist, shoe, and studio authority. Preserve the same adult Black woman: the same recognizable face, facial structure, expression, skin tone and texture, high natural-hair bun, small hoop earrings, body proportions, black sleeveless crop top, bare arms, hands, legs, black sneakers, and neutral gray cyclorama.
+- Reference images 2 through 5 are four physical views of the exact LH-003 shorts and are the sole garment authority. Replace only the plain black shorts from reference 1 with this exact garment.
+- Never use or infer from any previously generated VTO candidate.
+
+POSE AND CAMERA
+- Make a clearly different but restrained editorial pose: front-biased athletic contrapposto.
+- Her weight is on her right leg. Her left foot is one half-step forward, still shoulder-width apart so neither leg hides the other.
+- Keep pelvis rotation at no more than 10 degrees from square to camera. Keep shoulders and face toward camera. Keep her gaze directly at camera.
+- Both elbows are softly relaxed and both hands float slightly away from the outer thighs and hips. No finger, hand, wrist, arm, or hair may overlap the waistband, pocket openings, zippers, side panels, artwork, or shorts hem.
+- Full body from entire bun to complete shoes, centered, eye-level camera, natural human anatomy, realistic stance and weight distribution.
+- Do not crop the feet, hair, hands, or garment.
+
+EXACT LH-003 GARMENT
+- Reproduce the same loose basketball-short silhouette and length from the product references.
+- White perforated athletic mesh base with the same repeated orange-red rose bouquets, green stems, and small white cloud motifs.
+- Wide solid black ribbed waistband.
+- Substantial angular black perforated-mesh side panels, not thin stripes.
+- Exact red-and-white binding around the angular panels and along the lower hem, with the black lower border.
+- Exactly two front/side pockets and exactly two rear pockets, all zippered as established by the four source views. In this front-biased pose, show the two real diagonal side-pocket openings only; do not invent rear pockets on the front.
+- Both visible diagonal side pockets must clearly show their black zipper tracks with recognizable zipper teeth, metal sliders, and pull tabs. They must not look like open welts, seams, cargo pockets, or decorative strips.
+- Keep wearer-relative orientation correct and never mirror the garment.
+- On the WEARER'S LEFT side panel, reproduce the large red cursive words "Love Hurts" and the smaller red rose-heart "Love Hurts" emblem in their source-relative placements.
+- On the WEARER'S RIGHT side panel, reproduce the embroidered red rose bouquet with green stems rising from the small white-and-blue cloud in its source-relative placement.
+- Preserve all panel angles, piping paths, mesh perforations, seam logic, drape, scale, and left/right asymmetry shown in the physical references.
+- No extra pockets, no cargo construction, no omitted zipper, no substituted wording, no generic rose graphics, no logos beyond the exact garment artwork, and no redesign.
+
+EDITORIAL FINISH
+- Premium contemporary streetwear lookbook, restrained athletic confidence.
+- Large soft studio key, subtle sculpting, accurate textile texture, readable construction detail, realistic garment drape, realistic skin, and a clean grounded contact shadow under both shoes.
+- Keep the same seamless neutral gray cyclorama. No props, furniture, scenery, text overlays, borders, captions, watermarks, dramatic color grading, or background changes.
+- Fidelity priority order: exact garment construction and wearer-relative artwork first; approved identity continuity second; unobstructed review geometry third; editorial polish fourth.
+- If a requested artistic flourish conflicts with product or identity fidelity, omit the flourish.
