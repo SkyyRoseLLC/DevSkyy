@@ -1,0 +1,354 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903",
+  "source_task_id": "SCENE-STAGE-04-LH003-VTO-EXECUTION-20260903",
+  "stage": "5/7",
+  "created_at": "2026-09-03T14:26:08Z",
+  "updated_at": "2026-09-03T14:32:53Z",
+  "state": "FAIL",
+  "project_manager": "fashion-theme-lead",
+  "base_commit": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "stage_entry_commit": "3188251709a3bc5b5ea1361b468d31bc7e5c0688",
+  "scope": {
+    "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+    "candidate_ref": "LH-003-VTO-FRONT-A1",
+    "candidate_path": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png",
+    "candidate_sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "sku": "LH-003",
+    "view": "front",
+    "model_identity": "LH-MODEL-01",
+    "target_surface": "independent pocket, zipper, artwork, identity, pose, and anatomy review of the exact Stage 4 candidate",
+    "worktree": "/Users/theceo/.codex/worktrees/stage-05-lh003-independent-review/DevSkyy",
+    "credit_ceiling": 0,
+    "provider_post_ceiling": 0,
+    "exclusions": [
+      "editing or regenerating the candidate",
+      "a paid provider call or retry",
+      "reviewer repair of its own findings",
+      "claiming rear pockets as directly rendered in the front candidate",
+      "founder approval inferred before the independent verdict",
+      "scene-input authority or approved-path copy",
+      "environment or scene generation",
+      "storefront wiring",
+      "publication or deployment",
+      "automatic Stage 6 progression"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Stage 5 project manager",
+      "owned_deliverable": "Scope control, evidence reconciliation, and candidate disposition",
+      "may_author_independent_verdict": false,
+      "may_grant_founder_approval": false
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Independent VTO candidate reviewer",
+      "owned_deliverable": "Hash-bound eyes-on review receipt and native verification result",
+      "independent_from_project_manager": true,
+      "independent_from_candidate_author": true,
+      "may_edit_candidate": false,
+      "may_grant_founder_approval": false
+    },
+    {
+      "name": "founder",
+      "job_title": "Human candidate-authority owner",
+      "owned_deliverable": "Separate exact-candidate approval only after an independent PASS",
+      "current_statement_scope": "authorize Stage 5 review only"
+    }
+  ],
+  "authority": {
+    "founder_stage_5_instruction": "approve",
+    "interpretation": "Authorize Stage 5 independent review; do not pre-approve the candidate before the review result.",
+    "stage_4_commit": "3188251709a3bc5b5ea1361b468d31bc7e5c0688",
+    "stage_4_ledger": {
+      "path": "tasks/scene-stage-04-lh003-vto-execution-20260903.json",
+      "sha256": "2d63c870033ece8584abfefefe367c41f7041840d65c2f83ed1c965fdb1e052d",
+      "state": "NEEDS_REVIEW"
+    },
+    "contract": {
+      "path": "Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+      "sha256": "7527f09126bbecda1ba91dc1894ab6dff1fc99902c98a4f022b33b38f966d290",
+      "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f"
+    },
+    "execution_receipt": {
+      "path": "Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json",
+      "sha256": "09cbca764879f3dfd48e3ea9cec7d97c28fa2cae8d92ddab269721df3f9ecfcd"
+    },
+    "candidate": {
+      "path": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png",
+      "sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+      "dimensions": [
+        1536,
+        2752
+      ],
+      "status": "QUARANTINED_PENDING_STAGE_5_INDEPENDENT_REVIEW"
+    }
+  },
+  "acceptance_criteria": [
+    "Every Stage 4 contract, approval, marker, execution, source, and candidate hash verifies before visual review.",
+    "The independent reviewer inspects the exact candidate beside the approved model, protected front matte, and all four physical LH-003 source views.",
+    "The approved face, skin tone, hair, adult age presentation, pose, hands, waist, limbs, feet, and overall anatomy remain credible and materially preserved.",
+    "Front construction, fit, rose-cloud field, waistband, panels, binding, text, emblem, and wearer-relative artwork match source authority without mirroring.",
+    "Both visible side pockets and both side zipper closures are directly observable and correct.",
+    "The two rear pockets and rear zippers remain source-authority checks only and are not overclaimed as front-rendered proof.",
+    "No unintended drift appears in the model, face, hair, top, hands, background, product text, or non-garment pixels.",
+    "The independent review receipt uses the contract exact check set and pocket-evidence object and binds the current contract and candidate hashes.",
+    "The native vto_ooda.py review command returns PASS before manager founder-readiness can be recorded.",
+    "A failed check records a first-seen issue, retains quarantine, and permits no automatic retry.",
+    "An independent PASS permits only a separate exact-candidate founder decision; it does not grant scene-input authority.",
+    "No Stage 6 work, provider call, promotion, wiring, publication, or deployment occurs."
+  ],
+  "evidence_requirements": [
+    "task_record_creation",
+    "stage_4_dependency",
+    "candidate_hash_and_geometry",
+    "eyes_on_identity_anatomy_review",
+    "eyes_on_product_construction_review",
+    "pocket_and_zipper_review",
+    "wearer_relative_artwork_review",
+    "rear_visibility_boundary",
+    "native_review_verification",
+    "manager_reverification",
+    "zero_spend_and_stage_6_non_start"
+  ],
+  "evidence": [
+    {
+      "name": "task_record_creation",
+      "state": "PASS",
+      "artifact": "tasks/scene-stage-05-lh003-independent-review-20260903.json",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:26:08Z",
+      "notes": "Created before independent inspection or review-receipt authoring."
+    },
+    {
+      "name": "stage_4_dependency",
+      "state": "PASS",
+      "artifact": "Stage 4 terminal commit 3188251709a3bc5b5ea1361b468d31bc7e5c0688",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:26:08Z",
+      "notes": "Stage 5 begins from the committed immutable Stage 4 candidate and receipt chain."
+    },
+    {
+      "name": "candidate_hash_and_geometry",
+      "state": "PASS",
+      "artifact": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png sha256 b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f; dimensions 1536x2752",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "The reviewed bytes match the Stage 4 candidate and execution receipt."
+    },
+    {
+      "name": "eyes_on_identity_anatomy_review",
+      "state": "FAIL",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "Material face/skin identity drift and non-garment upper-body/hand drift. No gross limb, digit, or foot malformation, but preservation failed."
+    },
+    {
+      "name": "eyes_on_product_construction_review",
+      "state": "FAIL",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "Angular black side panels and red-white binding geometry drift from physical source authority."
+    },
+    {
+      "name": "pocket_and_zipper_review",
+      "state": "FAIL",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "Dark side openings are present, but neither side clearly proves zipper teeth, slider, or pull."
+    },
+    {
+      "name": "wearer_relative_artwork_review",
+      "state": "FAIL",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "Wearer-right bouquet/stems/cloud panel is absent; wearer-left text and emblem are incomplete or illegible."
+    },
+    {
+      "name": "rear_visibility_boundary",
+      "state": "PASS",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "Rear pockets and zippers remain source-authority facts and were not overclaimed as visible in the front candidate."
+    },
+    {
+      "name": "native_review_verification",
+      "state": "BLOCKED_EXPECTED_FOR_REJECTED_CANDIDATE",
+      "command": ".venv/bin/python Comfy/scripts/vto_ooda.py review --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json --candidate Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png --execution-receipt Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json --review Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json",
+      "artifact": "exit 2; three semantic review failures; zero binding, hash, geometry, credit, schema, reviewer, or pocket-matrix failures",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "Native verification correctly fails closed because the truthful independent verdict is BLOCKED."
+    },
+    {
+      "name": "manager_reverification",
+      "state": "PASS_REJECTION_CONFIRMED",
+      "artifact": "Candidate, contract, execution, and independent-review hashes reconcile; five material review issues remain open",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "The manager confirms rejection, quarantine, no retry, and no founder-promotion request."
+    },
+    {
+      "name": "zero_spend_and_stage_6_non_start",
+      "state": "PASS",
+      "artifact": "No provider call, credit debit, candidate mutation, retry, approval receipt, scene-input authority, or Stage 6 ledger",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:32:53Z",
+      "notes": "Stage 5 is read-only review. Stage 6 remains unstarted."
+    }
+  ],
+  "issues": [
+    {
+      "id": "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F1_IDENTITY_DRIFT",
+      "fingerprint": "candidate=b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f;invariant=model_identity_and_pose_preservation",
+      "first_seen_at": "2026-09-03T14:32:53Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKING_FIDELITY",
+      "state": "OPEN",
+      "failed_invariant": "The candidate materially redraws the approved face and skin, including eyes, brows, nose, lips, jaw contour, tone, and texture.",
+      "evidence": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "required_resolution": "A newly and separately authorized recovery route must preserve the approved identity and non-garment pixels; the consumed Stage 4 attempt cannot be retried."
+    },
+    {
+      "id": "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F2_NON_GARMENT_DRIFT",
+      "fingerprint": "candidate=b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f;invariant=lower_body_only_replacement",
+      "first_seen_at": "2026-09-03T14:32:53Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKING_FIDELITY",
+      "state": "OPEN",
+      "failed_invariant": "Shoulders, upper arms, hands, fingers, crop-top construction, and gray cyclorama/floor transition changed outside the authorized lower-body garment replacement.",
+      "evidence": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "required_resolution": "Use a route capable of protecting all non-garment pixels or provide a newly approved exact on-model source; no retry is authorized."
+    },
+    {
+      "id": "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F3_SIDE_ZIPPER_PROOF_MISSING",
+      "fingerprint": "candidate=b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f;invariant=both_visible_side_zippers",
+      "first_seen_at": "2026-09-03T14:32:53Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKING_CONSTRUCTION",
+      "state": "OPEN",
+      "failed_invariant": "Neither visible side pocket resolves zipper teeth, slider, or pull strongly enough to prove both required zipper closures.",
+      "evidence": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "required_resolution": "A replacement candidate must directly and clearly show both side zipper closures. Rear zippers remain source-only in a front view."
+    },
+    {
+      "id": "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F4_SIDE_ARTWORK_FIDELITY",
+      "fingerprint": "candidate=b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f;invariant=wearer_relative_artwork",
+      "first_seen_at": "2026-09-03T14:32:53Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKING_PRODUCT_IDENTITY",
+      "state": "OPEN",
+      "failed_invariant": "Wearer-right rose bouquet/stems/cloud panel is absent, while wearer-left Love Hurts script and small emblem are partial or illegible.",
+      "evidence": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "required_resolution": "A replacement candidate must preserve complete unmirrored wearer-left and wearer-right artwork from physical source authority."
+    },
+    {
+      "id": "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F5_CONSTRUCTION_DRIFT",
+      "fingerprint": "candidate=b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f;invariant=angular_panels_and_binding",
+      "first_seen_at": "2026-09-03T14:32:53Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKING_CONSTRUCTION",
+      "state": "OPEN",
+      "failed_invariant": "Substantial angular black side panels and red-white binding were reduced or geometrically changed from the physical sources.",
+      "evidence": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json sha256 bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc",
+      "required_resolution": "A replacement candidate must match the physical angular black panel and red-white binding geometry under a separately authorized recovery task."
+    }
+  ],
+  "review": {
+    "status": "BLOCKED",
+    "reviewer": "visual-commerce-qa",
+    "candidate_sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "verdict": "BLOCKED",
+    "findings": [
+      {
+        "id": "F1_IDENTITY_DRIFT",
+        "summary": "The candidate materially redraws the approved face and skin, including eyes, brows, nose, lips, jaw contour, tone, and texture.",
+        "failed_check": "model identity and pose preservation"
+      },
+      {
+        "id": "F2_NON_GARMENT_DRIFT",
+        "summary": "Shoulders, upper arms, hands, fingers, crop-top construction, and gray cyclorama/floor transition changed outside the authorized lower-body garment replacement.",
+        "failed_check": "no model, product, text, or background drift outside the garment"
+      },
+      {
+        "id": "F3_SIDE_ZIPPER_PROOF_MISSING",
+        "summary": "Neither visible side pocket resolves zipper teeth, slider, or pull strongly enough to prove both required zipper closures.",
+        "failed_check": "both visible side pockets and both visible zipper closures"
+      },
+      {
+        "id": "F4_SIDE_ARTWORK_FIDELITY",
+        "summary": "Wearer-right rose bouquet/stems/cloud panel is absent, while wearer-left Love Hurts script and small emblem are partial or illegible.",
+        "failed_check": "wearer-left versus wearer-right artwork"
+      },
+      {
+        "id": "F5_CONSTRUCTION_DRIFT",
+        "summary": "Substantial angular black side panels and red-white binding were reduced or geometrically changed from the physical sources.",
+        "failed_check": "front construction and fit"
+      }
+    ],
+    "checks": {
+      "model identity and pose preservation": "FAIL",
+      "front construction and fit": "FAIL",
+      "both visible side pockets and both visible zipper closures": "FAIL",
+      "wearer-left versus wearer-right artwork": "FAIL",
+      "rear-pocket source authority without rendered-proof overclaim": "PASS",
+      "no model, product, text, or background drift outside the garment": "FAIL"
+    },
+    "receipt": {
+      "path": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json",
+      "sha256": "bb2566dd2b60e37777c5ceebd06636fd61c0627b23670bac6b4bbe9cca1e95cc"
+    },
+    "native_verification": {
+      "status": "BLOCKED",
+      "exit_code": 2,
+      "failures": [
+        "independent review verdict must be PASS",
+        "passing review cannot contain unresolved findings",
+        "every contracted product-fidelity check must pass"
+      ],
+      "binding_failures": []
+    }
+  },
+  "manager_verification": {
+    "status": "PASS_REJECTION_CONFIRMED",
+    "reviewer": "fashion-theme-lead",
+    "timestamp": "2026-09-03T14:32:53Z",
+    "missing_evidence": [],
+    "open_blocking_issues": [
+      "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F1_IDENTITY_DRIFT",
+      "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F2_NON_GARMENT_DRIFT",
+      "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F3_SIDE_ZIPPER_PROOF_MISSING",
+      "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F4_SIDE_ARTWORK_FIDELITY",
+      "SCENE-STAGE-05-LH003-INDEPENDENT-REVIEW-20260903::F5_CONSTRUCTION_DRIFT"
+    ],
+    "notes": "Stage 5 review is complete with a blocked candidate. No retry or downstream authority is available."
+  },
+  "release_decision": "REJECTED_AND_QUARANTINED_NO_RETRY",
+  "blocker": {
+    "code": "CANDIDATE_FAILED_INDEPENDENT_FIDELITY_REVIEW",
+    "candidate_sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "open_issue_count": 5,
+    "retry_allowed": false,
+    "founder_approval_eligible": false,
+    "stage_6_allowed": false
+  },
+  "terminal_gate": {
+    "status": "FAIL",
+    "disposition": "STAGE_5_REVIEW_COMPLETE_CANDIDATE_REJECTED",
+    "completed_at": "2026-09-03T14:32:53Z",
+    "manager_verdict": "PASS_REJECTION_CONFIRMED",
+    "independent_verdict": "BLOCKED",
+    "candidate_sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "findings_count": 5,
+    "credits_spent": 0,
+    "retry_allowed": false,
+    "stage_6_started": false
+  }
+}

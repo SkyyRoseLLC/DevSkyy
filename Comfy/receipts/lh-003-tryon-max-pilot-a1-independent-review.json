@@ -1,0 +1,117 @@
+{
+  "schema": "skyyrose.vto-independent-review/1",
+  "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+  "contract_sha256": "7527f09126bbecda1ba91dc1894ab6dff1fc99902c98a4f022b33b38f966d290",
+  "candidate_sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+  "reviewer": "visual-commerce-qa",
+  "reviewed_at": "2026-09-03T14:31:31Z",
+  "verdict": "BLOCKED",
+  "findings": [
+    "F1 IDENTITY_DRIFT: Against the approved model, the candidate materially redraws the face and skin: eye shape and eyeliner, brow shape, nose, lips and jaw contour, and skin tone and texture differ. The approved face is not preserved outside the lower-body edit.",
+    "F2 NON_GARMENT_DRIFT: The candidate redraws shoulder and upper-arm rendering, hand and finger contours and placement, crop-top neckline, hem and folds, and the gray cyclorama and floor transition. This exceeds lower-body-only replacement even though the full body remains framed and no gross limb or foot malformation is visible.",
+    "F3 SIDE_ZIPPER_PROOF_MISSING: Both side zones contain dark vertical trims or openings, but neither side resolves a distinct zipper slider, pull, or teeth at useful zoom. The two side pockets therefore cannot truthfully be accepted as DIRECTLY_VISIBLE_ZIPPERED.",
+    "F4 SIDE_ARTWORK_FIDELITY: On wearer-right (viewer-left), the required black angular side panel with rose bouquet, green stems, and white-blue cloud is absent. On wearer-left (viewer-right), only a partial large-script fragment and an illegible small red mark are visible rather than intact Love Hurts script and the small emblem. Side-specific text integrity and exact non-mirrored artwork are not proven.",
+    "F5 CONSTRUCTION_DRIFT: The physical front and side sources show substantial angular black side panels bounded by red-white binding; the candidate collapses these into narrow dark strips and small hem gussets and changes the panel and binding geometry. The waistband, mesh body, rose-cloud repeat, and general shorts silhouette are plausible, but the construction is not source-exact."
+  ],
+  "checks": {
+    "model identity and pose preservation": "FAIL",
+    "front construction and fit": "FAIL",
+    "both visible side pockets and both visible zipper closures": "FAIL",
+    "wearer-left versus wearer-right artwork": "FAIL",
+    "rear-pocket source authority without rendered-proof overclaim": "PASS",
+    "no model, product, text, or background drift outside the garment": "FAIL"
+  },
+  "pocket_evidence": {
+    "wearer_left_side": {
+      "candidate_proof": "DIRECTLY_VISIBLE_ZIPPERED",
+      "required_disposition": "PASS"
+    },
+    "wearer_right_side": {
+      "candidate_proof": "DIRECTLY_VISIBLE_ZIPPERED",
+      "required_disposition": "PASS"
+    },
+    "wearer_left_rear": {
+      "candidate_proof": "NOT_OBSERVABLE_IN_FRONT_CANDIDATE",
+      "source_authority": "PASS"
+    },
+    "wearer_right_rear": {
+      "candidate_proof": "NOT_OBSERVABLE_IN_FRONT_CANDIDATE",
+      "source_authority": "PASS"
+    }
+  },
+  "visual_observations": {
+    "review_method": [
+      "Eyes-on comparison of the full 1536x2752 candidate against the approved full-body model.",
+      "Normalized face and top, hands and waist, legs and feet, garment-front, and wearer-side crops inspected at useful zoom.",
+      "Candidate garment compared against the protected front matte and the physical front, back, wearer-left, and wearer-right source views."
+    ],
+    "model_identity_and_pose": {
+      "status": "FAIL",
+      "preserved": [
+        "front-facing standing pose",
+        "adult age presentation",
+        "high-bun hairstyle category",
+        "neutral expression category",
+        "full-body framing with both shoulders, arms, hands, legs, and feet present",
+        "no gross extra, missing, fused, or broken limb or digit defect"
+      ],
+      "not_preserved": [
+        "facial feature geometry and makeup treatment",
+        "skin tone and texture rendering",
+        "shoulder and upper-arm rendering",
+        "hand and finger contours and placement",
+        "exact crop-top shape and fabric folds"
+      ]
+    },
+    "front_construction_and_fit": {
+      "status": "FAIL",
+      "preserved": [
+        "black waistband",
+        "white perforated mesh body",
+        "orange-red rose-on-cloud repeat",
+        "red-white-black lower-edge treatment",
+        "generally plausible worn shorts volume"
+      ],
+      "not_preserved": [
+        "source-exact angular black side-panel topology",
+        "source-exact red-white binding path",
+        "full side-panel scale and placement",
+        "source-exact transition from front mesh body to the side panels"
+      ]
+    },
+    "both_visible_side_pockets_and_both_visible_zipper_closures": {
+      "status": "FAIL",
+      "observation": "A dark vertical opening or trim appears on each upper side, but neither resolves zipper teeth or a slider and pull. Presence of two zippered closures is not directly visible proof."
+    },
+    "wearer_left_versus_wearer_right_artwork": {
+      "status": "FAIL",
+      "wearer_left_viewer_right": "The large red script is only partially rendered and the small emblem is not legible as the source emblem.",
+      "wearer_right_viewer_left": "The black inset carrying the rose bouquet, green stems, and white-blue cloud is not rendered as shown by the wearer-right source.",
+      "rose_cloud_field": "The repeating front rose-cloud field is present and upright, but that does not cure the missing side-specific artwork.",
+      "mirroring": "No affirmative exact no-mirroring conclusion is possible because the required side-specific elements are missing or unreadable."
+    },
+    "rear_pocket_source_authority": {
+      "status": "PASS",
+      "observation": "The front candidate does not directly expose either rear pocket or rear zipper. The two rear zippered pockets remain facts supported only by the back and side source authority, and this review makes no rendered-proof claim for them."
+    },
+    "non_garment_drift": {
+      "status": "FAIL",
+      "observation": "Face, skin rendering, shoulders, hands, top details, and studio background and floor rendering differ from the approved model despite the contract limiting the change to the lower-body garment."
+    },
+    "source_observations": {
+      "front": "The physical front establishes the white rose-cloud mesh body, black waistband, two dark side pocket openings, large wearer-left script, angular side panels, and red-white binding.",
+      "back": "The physical back establishes exactly two rear pockets with black-trim zipper closures; these are not visible in the candidate.",
+      "wearer_left": "The wearer-left source establishes the large Love Hurts script, small Love Hurts emblem, a side zipper, and a rear zipper.",
+      "wearer_right": "The wearer-right source establishes the rose bouquet with green stems and white-blue cloud on the black angular panel, a side zipper, and a rear zipper."
+    }
+  },
+  "downstream_exclusions": {
+    "candidate_remains_quarantined": true,
+    "founder_approval_granted": false,
+    "promotion_or_copy_authorized": false,
+    "scene_input_authorized": false,
+    "stage_6_authorized": false,
+    "retry_or_additional_spend_authorized": false,
+    "wiring_publication_or_deployment_authorized": false
+  }
+}
