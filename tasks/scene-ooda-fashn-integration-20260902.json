@@ -60,7 +60,7 @@
     "image_sot": "data/sot-images.json",
     "lh003_source_authority": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
     "fashion_theme_team_source": "/Users/theceo/plugins/fashion-theme-team",
-    "fashion_theme_team_commit": "e1015692f69f02e663fa17dd880b170238bba02d",
+    "fashion_theme_team_commit": "7571dc04b4ea37a47327871f97775ca40971110f",
     "fashion_theme_team_vendor": "plugins/fashion-theme-team",
     "comfy_runtime": "http://127.0.0.1:8189"
   },

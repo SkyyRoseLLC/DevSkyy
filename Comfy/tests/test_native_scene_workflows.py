@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-import io
 import hashlib
+import io
 import json
 from pathlib import Path
 
 import pytest
 from PIL import Image
-from skyyrose.integrations import comfy_client
 
 from Comfy.scripts.native_scene_workflows import (
     BIREFNET_MODEL,
@@ -15,6 +14,7 @@ from Comfy.scripts.native_scene_workflows import (
     build_lh_native_composite_workflow,
     verify_protected_foreground_rgb,
 )
+from skyyrose.integrations import comfy_client
 
 
 def _class_types(workflow: dict) -> set[str]:

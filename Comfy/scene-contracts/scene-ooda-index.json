@@ -2,7 +2,7 @@
   "schema": "skyyrose.scene-ooda-team-index/1",
   "plugin": "fashion-theme-team@personal",
   "plugin_contract": "plugins/fashion-theme-team/skills/fashion-theme-team/SKILL.md",
-  "plugin_source_commit": "e1015692f69f02e663fa17dd880b170238bba02d",
+  "plugin_source_commit": "7571dc04b4ea37a47327871f97775ca40971110f",
   "governance": "Comfy/FASHION-THEME-TEAM-OODA.md",
   "active_task": "Comfy/scene-contracts/cinematic-urban-grit-ooda-task.json",
   "visual_contract": "Comfy/CINEMATIC-URBAN-GRIT-SCENE-BIBLE.md",

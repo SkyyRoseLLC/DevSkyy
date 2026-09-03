@@ -27,8 +27,9 @@ export default {
 
   // Prettier-supported source and content languages. Shell and TOML support
   // comes from the explicitly pinned plugins in .prettierrc.js.
-  '*.{js,jsx,ts,tsx,mjs,cjs,json,jsonc,yaml,yml,md,mdx,css,scss,less,html,htm,graphql,gql,sh,bash,zsh,toml,sql,xml,svg,ipynb}':
+  '*.{js,jsx,ts,tsx,mjs,cjs,json,jsonc,yaml,yml,md,mdx,css,scss,less,html,htm,graphql,gql,sh,bash,zsh,toml,sql,ipynb}':
     files => commandsFor(['prettier --write --ignore-unknown'], files),
+  '*.{xml,svg}': files => commandsFor(['python3 scripts/format_markup.py'], files),
   '{Dockerfile,**/Dockerfile,.husky/*}': 'prettier --write --ignore-unknown',
 
   // Root application JS/TS: apply ESLint fixes after Prettier.

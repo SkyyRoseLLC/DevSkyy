@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-import importlib.util
 import base64
+import importlib.util
 import io
 import json
 from dataclasses import dataclass

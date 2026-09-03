@@ -8,27 +8,26 @@ from pathlib import Path
 import httpx
 import pytest
 from PIL import Image
-from skyyrose.integrations import comfy_client
 
 from Comfy.scripts.environment_plate_ooda import (
     FORBIDDEN_ENVIRONMENT_SUBJECTS,
     build_founder_approval_packet,
 )
-
+from skyyrose.integrations import comfy_client
 from skyyrose.integrations.comfy_client import (
     DEFAULT_COMFY_BASE_URL,
     REQUIRED_BACKGROUND_MODEL,
     REQUIRED_SCENE_NODES,
+    RUNWAY_APPROVAL_SCHEMA,
     ComfyClient,
     ComfyExecution,
     ComfyOutput,
     ComfyRuntimeError,
     ComfySubmission,
-    RUNWAY_APPROVAL_SCHEMA,
     ValidatedWorkflow,
     execution_receipt,
-    runway_execution_fingerprint,
     runway_contract_sha256,
+    runway_execution_fingerprint,
     workflow_sha256,
 )
 
