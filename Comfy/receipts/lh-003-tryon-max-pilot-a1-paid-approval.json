@@ -1,0 +1,22 @@
+{
+  "schema": "skyyrose.vto-paid-approval/1",
+  "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+  "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+  "max_credits": 4,
+  "max_candidates": 1,
+  "approved": true,
+  "approved_by": "founder",
+  "approved_at": "2026-09-03T14:22:00Z",
+  "founder_statement": "I approve exactly one LH-003-TRYON-MAX-PILOT-A1 VTO candidate bound to execution fingerprint 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f for a maximum of four FASHN credits, with no automatic retry.",
+  "automatic_retry": false,
+  "authority_scope": "ONE_PAID_TRYON_MAX_ATTEMPT_ONLY",
+  "does_not_authorize": [
+    "a second candidate or any retry",
+    "approval or promotion of the generated VTO candidate",
+    "Stage 5 independent review",
+    "rear-pocket rendered-proof claims from the front view",
+    "environment or scene generation",
+    "storefront wiring",
+    "publication or deployment"
+  ]
+}

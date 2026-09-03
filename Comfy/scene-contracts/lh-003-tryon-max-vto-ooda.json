@@ -114,7 +114,10 @@
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
     "max_credits": 4,
-    "approval_receipt": null,
+    "approval_receipt": {
+      "path": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-approval.json",
+      "sha256": "6042beb31c53cd5867fd10d1393c8000c784456f25fc108f69cb79cd1c7ee2e1"
+    },
     "on_unknown_submission_outcome": "STOP_AND_RECONCILE_PROVIDER_HISTORY"
   },
   "review_gate": {

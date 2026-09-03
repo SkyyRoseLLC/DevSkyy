@@ -1,0 +1,264 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "SCENE-STAGE-04-LH003-VTO-EXECUTION-20260903",
+  "source_task_id": "SCENE-STAGE-03-LH003-VTO-PREPARATION-20260903",
+  "stage": "4/7",
+  "created_at": "2026-09-03T14:21:32Z",
+  "updated_at": "2026-09-03T14:23:44Z",
+  "state": "NEEDS_REVIEW",
+  "project_manager": "fashion-theme-lead",
+  "base_commit": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "stage_entry_commit": "a8437d3929d1fe70591af3600fdf191b44685855",
+  "scope": {
+    "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+    "candidate_ref": "LH-003-VTO-FRONT-A1",
+    "sku": "LH-003",
+    "view": "front",
+    "model_identity": "LH-MODEL-01",
+    "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+    "target_surface": "exactly one quarantined front-facing LH-003 VTO candidate and provider execution receipt",
+    "worktree": "/Users/theceo/.codex/worktrees/stage-04-lh003-vto-execution/DevSkyy",
+    "provider_operation": "fashn tryon-max",
+    "candidate_ceiling": 1,
+    "paid_attempt_ceiling": 1,
+    "credit_ceiling": 4,
+    "exclusions": [
+      "a second provider submission or any automatic retry",
+      "changing the approved contract, request, product source, model source, mode, resolution, seed, or output count",
+      "independent candidate review, which belongs to Stage 5",
+      "candidate approval, scene-input authority, promotion, or approved-path copy",
+      "rear-pocket rendered-proof claims from the front candidate",
+      "environment or scene generation",
+      "storefront wiring",
+      "publication or deployment",
+      "automatic Stage 5 progression"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Stage 4 project manager",
+      "owned_deliverable": "Bound execution ledger, provider receipt, and quarantined handoff",
+      "may_approve_candidate": false
+    },
+    {
+      "name": "product-fidelity-image-edits",
+      "job_title": "Governed VTO execution operator",
+      "owned_deliverable": "Exactly one hash-bound quarantined VTO candidate",
+      "may_review_own_candidate": false,
+      "automatic_retry": false
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Reserved Stage 5 independent reviewer",
+      "owned_deliverable": "No Stage 4 action; independent candidate review begins only after separate Stage 5 authorization",
+      "independent_from_project_manager": true,
+      "independent_from_candidate_author": true
+    },
+    {
+      "name": "founder",
+      "job_title": "Human spend authority owner",
+      "owned_deliverable": "Exact fingerprint-bound one-attempt four-credit approval",
+      "may_approve_candidate_separately": true
+    }
+  ],
+  "authority": {
+    "stage_3_commit": "a8437d3929d1fe70591af3600fdf191b44685855",
+    "stage_3_ledger": {
+      "path": "tasks/scene-stage-03-lh003-vto-preparation-20260903.json",
+      "sha256": "769f9a708898e4acafdb1ec53f9919cba851b90427ce10e3126a6efc75084d05",
+      "state": "PASS",
+      "manager_verdict": "PASS_STAGE_3_COMPLETE"
+    },
+    "stage_4_approval_packet": {
+      "path": "tasks/scene-stage-04-lh003-vto-execution-approval-packet.json",
+      "sha256": "2cc2148c74ea272c2078fefea14409365bcd657d9db367530ef71be99943b6bf"
+    },
+    "contract": {
+      "path": "Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+      "sha256_before_approval_binding": "6f0b55ff676fd3be423d43a67701a3f767c5b69368fe21a214a0809da914f62a",
+      "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f"
+    },
+    "founder_approval_statement": "I approve exactly one LH-003-TRYON-MAX-PILOT-A1 VTO candidate bound to execution fingerprint 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f for a maximum of four FASHN credits, with no automatic retry."
+  },
+  "acceptance_criteria": [
+    "The imported Stage 3 ledger, contract, preflight, independent review, and approval packet match their sealed hashes before execution.",
+    "The founder approval receipt exactly binds fingerprint 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f, one candidate, four credits, and no automatic retry.",
+    "Only the approval-receipt binding may change the contract after the approved fingerprint was calculated.",
+    "The immutable paid-attempt marker is consumed before the sole POST /v1/run submission.",
+    "Exactly one Try-On Max request uses the sealed product image, model image, prompt, 2k quality mode, seed 42, one PNG, and base64 transport.",
+    "The provider receipt records job ID, exact source hashes, request, output hash and geometry, provider-reported credits, and authenticated balance change.",
+    "The candidate remains quarantined and candidate-only with no scene-input, promotion, wiring, publication, or deployment authority.",
+    "No retry occurs for failure, rejection, timeout, or ambiguous submission outcome.",
+    "Stage 5 independent review is not started automatically."
+  ],
+  "evidence_requirements": [
+    "task_record_creation",
+    "stage_3_dependency",
+    "founder_spend_approval",
+    "approval_receipt_binding",
+    "single_attempt_marker",
+    "provider_execution_receipt",
+    "candidate_quarantine",
+    "credit_reconciliation",
+    "manager_reverification",
+    "stage_5_non_start"
+  ],
+  "evidence": [
+    {
+      "name": "task_record_creation",
+      "state": "PASS",
+      "artifact": "tasks/scene-stage-04-lh003-vto-execution-20260903.json",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:21:32Z",
+      "notes": "Created before approval receipt binding, attempt marker creation, or provider submission."
+    },
+    {
+      "name": "stage_3_dependency",
+      "state": "PASS",
+      "artifact": "Stage 3 terminal commit a8437d3929d1fe70591af3600fdf191b44685855",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:21:32Z",
+      "notes": "Stage 4 worktree was created directly from the committed Stage 3 terminal state."
+    },
+    {
+      "name": "founder_spend_approval",
+      "state": "PASS",
+      "artifact": "Exact approval statement recorded in the current task",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:21:32Z",
+      "notes": "Authorization covers one attempt, one candidate, at most four credits, and no retry. It does not approve the resulting candidate or Stage 5."
+    },
+    {
+      "name": "approval_receipt_binding",
+      "state": "PASS",
+      "command": "Create exact founder approval receipt and bind only credit_control.approval_receipt into the sealed contract",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-approval.json sha256 6042beb31c53cd5867fd10d1393c8000c784456f25fc108f69cb79cd1c7ee2e1; post-binding contract sha256 7527f09126bbecda1ba91dc1894ab6dff1fc99902c98a4f022b33b38f966d290",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:23:44Z",
+      "notes": "The normalized execution fingerprint remained 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f. No executable field changed."
+    },
+    {
+      "name": "single_attempt_marker",
+      "state": "PASS",
+      "command": "vto_ooda.py atomic attempt consumption before provider submission",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-attempt.json sha256 4c80b60236cf614371dac739fcb8fd84adcc3221349ac2c605eab3d030c1bde0",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:23:44Z",
+      "notes": "State CONSUMED_BEFORE_SUBMISSION; automatic_retry false; one approved attempt is exhausted."
+    },
+    {
+      "name": "provider_execution_receipt",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/vto_ooda.py execute --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json --allow-spend",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json sha256 09cbca764879f3dfd48e3ea9cec7d97c28fa2cae8d92ddab269721df3f9ecfcd; FASHN job dafd0692-e55d-401b-827c-b528abe955e4",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:22:59Z",
+      "notes": "Exactly one sealed Try-On Max request completed with the contracted product, model, prompt, 2k quality mode, seed 42, one PNG, and base64 transport."
+    },
+    {
+      "name": "candidate_quarantine",
+      "state": "PASS",
+      "command": "Provider output decode, geometry validation, hash, and exclusive-create write by vto_ooda.py",
+      "artifact": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png sha256 b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f; dimensions 1536x2752",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:23:44Z",
+      "notes": "Candidate-only. It has not received product-fidelity, identity, anatomy, scene-input, founder-candidate, promotion, wiring, publication, or deployment approval."
+    },
+    {
+      "name": "credit_reconciliation",
+      "state": "PASS",
+      "command": "Authenticated FASHN balance before and after the one provider attempt plus provider credit header",
+      "artifact": "balance 95 -> 91; provider_reported_credits 4; contracted_credits 4",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:23:44Z",
+      "notes": "The observed debit exactly matches the approved four-credit ceiling."
+    },
+    {
+      "name": "manager_reverification",
+      "state": "PASS_EXECUTION_HANDOFF",
+      "command": "Reconcile fingerprint, approval, contract, marker, source hashes, provider job, output hash, dimensions, debit, and quarantine boundary",
+      "artifact": "contract 7527f09126bbecda1ba91dc1894ab6dff1fc99902c98a4f022b33b38f966d290; approval 6042beb31c53cd5867fd10d1393c8000c784456f25fc108f69cb79cd1c7ee2e1; marker 4c80b60236cf614371dac739fcb8fd84adcc3221349ac2c605eab3d030c1bde0; execution 09cbca764879f3dfd48e3ea9cec7d97c28fa2cae8d92ddab269721df3f9ecfcd; candidate b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:23:44Z",
+      "notes": "Stage 4 execution evidence is complete. Visual acceptance is intentionally deferred to separately authorized Stage 5."
+    },
+    {
+      "name": "stage_5_non_start",
+      "state": "PASS",
+      "command": "Stage boundary enforcement",
+      "artifact": "No Stage 5 ledger or independent candidate-review receipt was created",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:23:44Z",
+      "notes": "No eyes-on pass, founder candidate approval, scene-input authority, promotion, environment work, wiring, publication, or deployment is claimed."
+    }
+  ],
+  "issues": [],
+  "spend_control": {
+    "status": "CONSUMED_ONE_AUTHORIZED_ATTEMPT",
+    "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+    "max_paid_attempts": 1,
+    "actual_paid_attempts": 1,
+    "max_candidates": 1,
+    "actual_candidates": 1,
+    "max_credits": 4,
+    "actual_credits": 4,
+    "automatic_retry": false,
+    "further_execution_allowed": false,
+    "approval_receipt": {
+      "path": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-approval.json",
+      "sha256": "6042beb31c53cd5867fd10d1393c8000c784456f25fc108f69cb79cd1c7ee2e1"
+    },
+    "attempt_marker": {
+      "path": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-attempt.json",
+      "sha256": "4c80b60236cf614371dac739fcb8fd84adcc3221349ac2c605eab3d030c1bde0",
+      "state": "CONSUMED_BEFORE_SUBMISSION"
+    }
+  },
+  "candidate": {
+    "status": "QUARANTINED_PENDING_STAGE_5_INDEPENDENT_REVIEW",
+    "path": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png",
+    "sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "dimensions": {
+      "width": 1536,
+      "height": 2752
+    },
+    "provider_job_id": "dafd0692-e55d-401b-827c-b528abe955e4",
+    "execution_receipt": {
+      "path": "Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json",
+      "sha256": "09cbca764879f3dfd48e3ea9cec7d97c28fa2cae8d92ddab269721df3f9ecfcd"
+    },
+    "candidate_only": true,
+    "independent_review_required": true,
+    "founder_candidate_approval_required": true,
+    "scene_input_allowed": false,
+    "promotion_allowed": false,
+    "stage_5_review_started": false
+  },
+  "manager_verification": {
+    "status": "PASS_STAGE_4_EXECUTION_COMPLETE_NEEDS_REVIEW",
+    "reviewer": "fashion-theme-lead",
+    "timestamp": "2026-09-03T14:23:44Z",
+    "missing_evidence": [
+      "Stage 5 independent pocket, zipper, artwork, identity, and anatomy review",
+      "separate founder approval of the exact candidate if Stage 5 passes"
+    ],
+    "notes": "These are downstream gates, not missing Stage 4 execution evidence. The one paid attempt is complete and cannot be retried."
+  },
+  "release_decision": "NOT_AUTHORIZED_CANDIDATE_QUARANTINED",
+  "blocker": {
+    "code": "STAGE_5_INDEPENDENT_REVIEW_NOT_STARTED",
+    "candidate_sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "automatic_progression": false
+  },
+  "terminal_gate": {
+    "status": "NEEDS_REVIEW",
+    "disposition": "STAGE_4_EXECUTION_COMPLETE",
+    "completed_at": "2026-09-03T14:23:44Z",
+    "manager_verdict": "PASS_EXECUTION_RECEIPT_CANDIDATE_QUARANTINED",
+    "candidate_sha256": "b540bcf450dff0fe13e998aeac3adc8897851e4043a856b67359e6c39b99c42f",
+    "provider_job_id": "dafd0692-e55d-401b-827c-b528abe955e4",
+    "credits_spent": 4,
+    "stage_5_started": false
+  }
+}

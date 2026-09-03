@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.paid-attempt-marker/1",
+  "created_at": "2026-09-03T14:22:02.809262+00:00",
+  "operation": "fashn_tryon_max",
+  "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+  "contract_sha256": "7527f09126bbecda1ba91dc1894ab6dff1fc99902c98a4f022b33b38f966d290",
+  "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+  "approval_receipt_sha256": "6042beb31c53cd5867fd10d1393c8000c784456f25fc108f69cb79cd1c7ee2e1",
+  "source_sha256s": {
+    "product": "5313b5aad0dc25222fc89c3036e50550d8c174b36d5374065a22d79caa3deacc",
+    "model": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "supporting_front": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+    "supporting_back": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
+    "supporting_wearer_left": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
+    "supporting_wearer_right": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+  },
+  "state": "CONSUMED_BEFORE_SUBMISSION",
+  "automatic_retry": false,
+  "immutable": true
+}
