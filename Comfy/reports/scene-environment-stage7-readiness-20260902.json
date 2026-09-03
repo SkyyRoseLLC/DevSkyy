@@ -1,0 +1,140 @@
+{
+  "schema": "skyyrose.scene-environment-readiness/1",
+  "task_id": "SCENE-ENVIRONMENT-PRODUCTION-STAGE7-20260902",
+  "recorded_at": "2026-09-02T22:38:14-07:00",
+  "branch": "codex/scene-stage7-environment",
+  "base_commit": "6ff47121398c81b2084e1fba355c12d33f34c335",
+  "result": "READY_FOR_INTEGRATION_BLOCKED_FOR_PAID_EXECUTION",
+  "environment": {
+    "setup_script": "scripts/setup-codex-environment.sh",
+    "preset_files": [
+      ".codex/environments/environment.toml",
+      ".codex/environments/environment-2.toml"
+    ],
+    "worktree_local_venv": true,
+    "python": "3.13.12",
+    "pytest": "9.1.1",
+    "ruff": "0.14.13",
+    "black": "26.5.1",
+    "pillow": "12.3.0",
+    "locked_sync": "uv sync --frozen --extra dev"
+  },
+  "runtime_evidence": {
+    "comfy_base_url": "http://127.0.0.1:8189",
+    "comfy_health": "HEALTHY",
+    "runway_node": "RunwayTextToImageNode",
+    "runway_model": "gen-4",
+    "live_price_usd": 0.11,
+    "live_node_schema_sha256": "8f4d4ce8467861fd9428868976c192be325a8e7a8ba72b89d5e4d69635506ac9",
+    "birefnet_model_path": "/Users/theceo/ComfyUI-Shared/models/background_removal/birefnet.safetensors",
+    "birefnet_model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+    "birefnet_model_size_bytes": 444473596
+  },
+  "local_inspiration": [
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "path": "/Users/theceo/Downloads/archive-3/hf_20260828_024447_4d25fdc3-676c-47f3-a62b-09d31705d4b7.png",
+      "sha256": "505b5c3617e4a2500e8afcbd4707af8220b56dff4b18cd5e99ffc7cd90d468fc",
+      "authority_role": "COMPOSITION_ATMOSPHERE_ONLY",
+      "sent_to_runway": false
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "path": "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png",
+      "sha256": "224eb55a9baa7495a80b50b9b61a4df596dc9840c92e9820b8de5a4a91928fad",
+      "authority_role": "COMPOSITION_ATMOSPHERE_ONLY",
+      "sent_to_runway": false,
+      "denied_authority": [
+        "people",
+        "garments",
+        "logos",
+        "wordmarks",
+        "pants",
+        "sculpture",
+        "products"
+      ]
+    },
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "path": "/Users/theceo/Downloads/archive-3/hf_20260902_145116_2167f0ad-2a69-4432-a926-36527e2dd8b4.png",
+      "sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+      "authority_role": "IDENTITY_ONLY_QUARANTINED_AS_PRODUCT_SOURCE",
+      "sent_to_runway": false,
+      "blocker": "directional product artwork swaps sides between the front and rear views"
+    }
+  ],
+  "contract_preflights": [
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+      "execution_fingerprint": "5420086f0647d1028e5d0c0bb9e80dda3f941946ed64504682987124afb2b927",
+      "status": "BLOCKED",
+      "structural_failures": [],
+      "paid_submission_performed": false
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+      "execution_fingerprint": "0f0dfba335dd1260db19b4919d303a7b84491c186c031cc6d5b62ad794cc13c4",
+      "status": "BLOCKED",
+      "structural_failures": [],
+      "paid_submission_performed": false
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1",
+      "execution_fingerprint": "dde1e17c97d2d399b7cc567732ef581aa795a88b10169d1426fa17f414efd5aa",
+      "status": "BLOCKED",
+      "structural_failures": [],
+      "paid_submission_performed": false
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+      "execution_fingerprint": "0c0cfef276ea7cc0f5ac14a9b301aab7a1cb73a4368a4e01cddf51e9cf79c1e9",
+      "status": "BLOCKED",
+      "structural_failures": [],
+      "paid_submission_performed": false
+    }
+  ],
+  "policy_evidence": {
+    "provider_input_mode": "prompt_only",
+    "runway_reference_image": null,
+    "protected_assets_sent": [],
+    "workflow_contains_load_image": false,
+    "one_candidate_ceiling": 1,
+    "automatic_paid_retries": false,
+    "promotion_allowed": false,
+    "runtime_wiring_allowed": false,
+    "deployment_allowed": false,
+    "post_merge_restart_required": true
+  },
+  "verification": {
+    "focused_tests": {
+      "result": "PASS",
+      "count": 73,
+      "paths": [
+        "Comfy/tests/test_environment_plate_ooda.py",
+        "Comfy/tests/test_birefnet_edge_confidence.py",
+        "Comfy/tests/test_scene_ooda.py",
+        "Comfy/tests/test_vto_ooda.py",
+        "tests/integrations/test_fashn_client.py"
+      ]
+    },
+    "ruff": "PASS",
+    "black": "PASS",
+    "shellcheck": "PASS",
+    "json_parse": "PASS",
+    "git_diff_check": "PASS",
+    "environment_setup_second_run": "PASS_IDEMPOTENT"
+  },
+  "open_blockers": [
+    "LH full-body and front-facing protected product foreground authority is unresolved",
+    "BR prior paid attempt remains consumed and protected wearer alphas are unresolved",
+    "SIG protected sources require current independent verification",
+    "SIG-COMMERCE-2 female SG-006 wearer authority is unresolved",
+    "integration is not merged into main",
+    "candidate-bound founder approval has not been requested or recorded"
+  ],
+  "next_action": "INTEGRATE_CODE_THEN_REBASE_OR_RESTART_FROM_MERGED_MAIN_AND_REFRESH_ALL_PAID_EXECUTION_EVIDENCE"
+}
