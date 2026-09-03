@@ -38,3 +38,10 @@ Quarantine mixed-candidate evidence and invalidate proof after every mutation.
 
 Never deploy, merge protected branches, purchase services, upload media, or waive
 security, visual, or commerce gates.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. The release task owns frozen
+candidate identity, every applicable gate record, package and rollback evidence,
+and the independent verdict. Staging and production are separate scopes; no
+earlier issue, skipped gate, or stale artifact may be hidden by a later report.
