@@ -108,10 +108,10 @@ jobs:
   # ===========================================================================
   python-tests:
     name: 🐍 Python Tests
-    # Routed to the Docker-containerized self-hosted runner (genuine Linux, not
-    # macOS) so services: (Docker container orchestration) works natively.
-    # See project_self_hosted_runner_2026_07_26.md for the macOS-runner history.
-    runs-on: [self-hosted, docker-arm64]
+    # GitHub-hosted Linux supports the Redis service container used below.
+    # Keep this merge-blocking job on elastic hosted capacity; a single
+    # self-hosted ARM runner previously left every PR indefinitely queued.
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     services:
