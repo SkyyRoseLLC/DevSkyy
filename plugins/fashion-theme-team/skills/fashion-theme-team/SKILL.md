@@ -46,21 +46,22 @@ from a verified source package; a source change must be propagated deliberately.
 Use the narrowest execution skill for the phase, then return to this motherbase
 for scheduling and evidence integration:
 
-| Capability                                                   | Skill                            | Primary owners                                                                   |
-| ------------------------------------------------------------ | -------------------------------- | -------------------------------------------------------------------------------- |
-| Fashion Commerce Brain, page blueprints, V2 atlas            | `fashion-strategy-brain`         | commerce strategist, brand architect, merchandising architect, knowledge curator |
-| SkyyRose visual artifact system and imagery direction        | `fashion-brand-experience`       | brand architect, brand-systems researcher, typography/layout director            |
-| Exact-product media, native collection scenes, and fidelity gates | `product-fidelity-image-edits` | brand architect, product-truth owner, independent visual reviewer                 |
-| Tokens, components, states, design-system adoption           | `fashion-design-system`          | design-system engineer and inner pod                                             |
-| Catalog, WooCommerce, fit, returns, product discovery        | `fashion-commerce-engineering`   | catalog SOT, WooCommerce, merchandising, fit/returns                             |
-| PHP/CSS/JS implementation, immersive motion, fallbacks       | `fashion-frontend-motion`        | frontend, WooCommerce, motion/responsive                                         |
-| WCAG, content states, reduced motion, performance            | `fashion-a11y-performance`       | accessibility/content engineer and independent reviewer                          |
-| Browser, visual, and purchase-journey proof                  | `fashion-visual-commerce-qa`     | visual red team, visual commerce QA, accessibility/performance reviewer          |
-| HTML/JSON/evidence parity                                    | `fashion-handoff-contracts`      | every role producing an artifact; lead integrates                                |
-| Packaging, marketplace readiness, rollback, release evidence | `fashion-release-evidence`       | release engineer and DesignOps                                                   |
-| 44-item premium feature implementation and enterprise gates  | `fashion-premium-feature-system` | frontend, commerce, design-system, accessibility, QA, and release owners         |
-| 234 branded capability adapters and source-gap closure       | `fashion-branded-skills`         | knowledge curator, brand systems, DesignOps, and independent reviewer            |
-| Optional provider execution and self-healing                 | `elite-builder-runtime`          | explicitly approved runtime owner                                                |
+| Capability                                                        | Skill                            | Primary owners                                                                   |
+| ----------------------------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------- |
+| Fashion Commerce Brain, page blueprints, V2 atlas                 | `fashion-strategy-brain`         | commerce strategist, brand architect, merchandising architect, knowledge curator |
+| SkyyRose visual artifact system and imagery direction             | `fashion-brand-experience`       | brand architect, brand-systems researcher, typography/layout director            |
+| Exact-product media, native collection scenes, and fidelity gates | `product-fidelity-image-edits`   | brand architect, product-truth owner, independent visual reviewer                |
+| Tokens, components, states, design-system adoption                | `fashion-design-system`          | design-system engineer and inner pod                                             |
+| Catalog, WooCommerce, fit, returns, product discovery             | `fashion-commerce-engineering`   | catalog SOT, WooCommerce, merchandising, fit/returns                             |
+| PHP/CSS/JS implementation, immersive motion, fallbacks            | `fashion-frontend-motion`        | frontend, WooCommerce, motion/responsive                                         |
+| WCAG, content states, reduced motion, performance                 | `fashion-a11y-performance`       | accessibility/content engineer and independent reviewer                          |
+| Browser, visual, and purchase-journey proof                       | `fashion-visual-commerce-qa`     | visual red team, visual commerce QA, accessibility/performance reviewer          |
+| HTML/JSON/evidence parity                                         | `fashion-handoff-contracts`      | every role producing an artifact; lead integrates                                |
+| Packaging, marketplace readiness, rollback, release evidence      | `fashion-release-evidence`       | release engineer and DesignOps                                                   |
+| 44-item premium feature implementation and enterprise gates       | `fashion-premium-feature-system` | frontend, commerce, design-system, accessibility, QA, and release owners         |
+| 234 branded capability adapters and source-gap closure            | `fashion-branded-skills`         | knowledge curator, brand systems, DesignOps, and independent reviewer            |
+| Optional provider execution and self-healing                      | `elite-builder-runtime`          | explicitly approved runtime owner                                                |
+| End-to-end task, issue, evidence, and release control             | `fashion-e2e-task-execution`     | lead plus independent reviewer                                                   |
 
 Do not load all skills by default. A role may temporarily expand its tool profile
 only under `references/tool-budget-and-loading.md`, with the expansion recorded
@@ -97,6 +98,11 @@ and optional runtime tools remain lazy-loaded.
 2. Have the lead initialize the durable phase ledger from
    [references/autonomy-protocol.md](references/autonomy-protocol.md), capture an
    immutable baseline, and obtain the required post-audit approval before edits.
+   For every capability in scope, also load `fashion-e2e-task-execution` and
+   issue a named project manager and create its task record before the first
+   side effect. The E2E record binds scope, declared evidence, first-seen
+   issues, resolutions, and completion; the phase ledger remains the cross-role
+   schedule of record.
 3. Run discovery and creative direction against
    [references/skyyrose-design-canon.md](references/skyyrose-design-canon.md) and
    [references/high-end-design-standard.md](references/high-end-design-standard.md).

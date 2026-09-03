@@ -1,6 +1,6 @@
 {
   "schema": "product-fidelity-model-registry.v2",
-  "verified_on": "2026-08-30",
+  "verified_on": "2026-09-02",
   "unknown_models": "block",
   "exactness_rule": "Reference conditioning is not a pixel, temporal, geometry, or material lock.",
   "models": [
@@ -80,20 +80,65 @@
       "provider": "openai",
       "modality": "image",
       "status": "external_api",
-      "capabilities": ["scene_generation", "semantic_edit", "multi_reference", "explicit_mask_edit"],
+      "capabilities": [
+        "scene_generation",
+        "semantic_edit",
+        "multi_reference",
+        "explicit_mask_edit"
+      ],
       "allowed_operations": ["scene_generation", "product_image_candidate"],
-      "blocked_operations": ["bounded_image_edit_for_one_shot_workflow", "unverified_exact_product"],
+      "blocked_operations": [
+        "bounded_image_edit_for_one_shot_workflow",
+        "unverified_exact_product"
+      ],
       "fidelity_tier": "candidate_only",
       "notes": "Use Responses for conversational or multi-step image workflows. One-shot localized product patches must use the directly model-addressed Image API route so the gate can pin and audit the image model.",
       "source": "https://developers.openai.com/api/docs/guides/image-generation"
     },
     {
+      "id": "fashn-tryon-max",
+      "aliases": ["tryon-max", "fashn_tryon_max"],
+      "provider": "fashn",
+      "modality": "image",
+      "status": "external_api_preview",
+      "capabilities": [
+        "virtual_tryon",
+        "model_identity_preservation",
+        "pose_preservation",
+        "product_reference",
+        "high_resolution",
+        "seed_control"
+      ],
+      "allowed_operations": ["virtual_tryon_candidate"],
+      "blocked_operations": [
+        "unreviewed_exact_product",
+        "multi_view_product_reconstruction",
+        "automatic_paid_retry",
+        "direct_scene_promotion"
+      ],
+      "fidelity_tier": "candidate_only_after_source_binding_and_independent_review",
+      "notes": "Try-On Max accepts one product image and one existing model image, then attempts to preserve the model identity, pose, and styling. It is Preview, cannot prove unseen multi-view construction, and requires source-hash validation plus independent product review before any downstream scene use.",
+      "source": "https://docs.fashn.ai/api-reference/tryon-max"
+    },
+    {
       "id": "gemini-native-image",
-      "aliases": ["gemini-3.1-flash-image", "gemini-3-pro-image", "gemini-2.5-flash-image", "nano-banana", "nano-banana-pro"],
+      "aliases": [
+        "gemini-3.1-flash-image",
+        "gemini-3-pro-image",
+        "gemini-2.5-flash-image",
+        "nano-banana",
+        "nano-banana-pro"
+      ],
       "provider": "google",
       "modality": "image",
       "status": "verify_live_model_id",
-      "capabilities": ["scene_generation", "semantic_edit", "multi_reference", "high_resolution", "text_rendering"],
+      "capabilities": [
+        "scene_generation",
+        "semantic_edit",
+        "multi_reference",
+        "high_resolution",
+        "text_rendering"
+      ],
       "allowed_operations": ["scene_generation", "product_image_candidate"],
       "blocked_operations": ["bounded_image_edit", "protected_pixel_edit"],
       "fidelity_tier": "candidate_only",
@@ -102,7 +147,12 @@
     },
     {
       "id": "google-imagen-legacy",
-      "aliases": ["imagen-4.0-generate-001", "imagen-4.0-ultra-generate-001", "imagen-4.0-fast-generate-001", "imagen-3.0-capability-001"],
+      "aliases": [
+        "imagen-4.0-generate-001",
+        "imagen-4.0-ultra-generate-001",
+        "imagen-4.0-fast-generate-001",
+        "imagen-3.0-capability-001"
+      ],
       "provider": "google",
       "modality": "image",
       "status": "deprecated_or_platform_specific",
@@ -128,7 +178,12 @@
     },
     {
       "id": "masked-diffusion-inpaint",
-      "aliases": ["flux-fill", "fal-ai/flux-pro/v1/fill", "stability-inpaint", "stable-image-inpaint"],
+      "aliases": [
+        "flux-fill",
+        "fal-ai/flux-pro/v1/fill",
+        "stability-inpaint",
+        "stable-image-inpaint"
+      ],
       "provider": "multiple",
       "modality": "image",
       "status": "adapter_specific",
@@ -154,7 +209,17 @@
     },
     {
       "id": "semantic-image-platforms",
-      "aliases": ["midjourney-v8.2", "midjourney-v7", "runway-image", "luma-photon", "ideogram", "recraft", "leonardo", "bria", "seedream"],
+      "aliases": [
+        "midjourney-v8.2",
+        "midjourney-v7",
+        "runway-image",
+        "luma-photon",
+        "ideogram",
+        "recraft",
+        "leonardo",
+        "bria",
+        "seedream"
+      ],
       "provider": "multiple",
       "modality": "image",
       "status": "external_or_manual",
@@ -180,11 +245,22 @@
     },
     {
       "id": "google-video-generation",
-      "aliases": ["gemini-omni-flash", "veo-3.1-generate-preview", "veo-3.1-fast-generate-preview", "veo-3.1-lite-generate-preview"],
+      "aliases": [
+        "gemini-omni-flash",
+        "veo-3.1-generate-preview",
+        "veo-3.1-fast-generate-preview",
+        "veo-3.1-lite-generate-preview"
+      ],
       "provider": "google",
       "modality": "video",
       "status": "verify_live_model_id",
-      "capabilities": ["text_to_video", "image_to_video", "last_frame_control", "video_extension", "native_audio"],
+      "capabilities": [
+        "text_to_video",
+        "image_to_video",
+        "last_frame_control",
+        "video_extension",
+        "native_audio"
+      ],
       "allowed_operations": ["image_to_video_candidate", "video_edit_candidate"],
       "blocked_operations": ["exact_product_video"],
       "fidelity_tier": "temporal_candidate_only",
@@ -193,7 +269,15 @@
     },
     {
       "id": "runway-video-router",
-      "aliases": ["gen4.5", "gen4_turbo", "seedance2", "seedance2_fast", "seedance2_mini", "veo3.1", "veo3.1_fast"],
+      "aliases": [
+        "gen4.5",
+        "gen4_turbo",
+        "seedance2",
+        "seedance2_fast",
+        "seedance2_mini",
+        "veo3.1",
+        "veo3.1_fast"
+      ],
       "provider": "runway",
       "modality": "video",
       "status": "external_api",
@@ -206,7 +290,14 @@
     },
     {
       "id": "other-generative-video",
-      "aliases": ["luma-ray", "luma-modify-video", "kling", "higgsfield", "midjourney-video", "firefly-video"],
+      "aliases": [
+        "luma-ray",
+        "luma-modify-video",
+        "kling",
+        "higgsfield",
+        "midjourney-video",
+        "firefly-video"
+      ],
       "provider": "multiple",
       "modality": "video",
       "status": "external_or_account_specific",
@@ -219,7 +310,12 @@
     },
     {
       "id": "deterministic-video-composite",
-      "aliases": ["ffmpeg-composite", "after-effects-protected-layer", "nuke-protected-layer", "blender-compositor"],
+      "aliases": [
+        "ffmpeg-composite",
+        "after-effects-protected-layer",
+        "nuke-protected-layer",
+        "blender-compositor"
+      ],
       "provider": "local_or_dcc",
       "modality": "video",
       "status": "toolchain_specific",
@@ -249,7 +345,13 @@
       "provider": "meshy",
       "modality": "3d",
       "status": "external_api",
-      "capabilities": ["single_image_to_3d", "multi_image_to_3d", "pbr_materials", "cardinal_thumbnails", "multiple_formats"],
+      "capabilities": [
+        "single_image_to_3d",
+        "multi_image_to_3d",
+        "pbr_materials",
+        "cardinal_thumbnails",
+        "multiple_formats"
+      ],
       "allowed_operations": ["image_to_3d_candidate"],
       "blocked_operations": ["exact_3d_replica_without_multiview_gate"],
       "fidelity_tier": "reconstruction_candidate",
@@ -271,7 +373,13 @@
     },
     {
       "id": "open-3d-reconstruction-models",
-      "aliases": ["tencent/Hunyuan3D-2", "spar3d", "stable-fast-3d", "stabilityai/TripoSR", "instantmesh"],
+      "aliases": [
+        "tencent/Hunyuan3D-2",
+        "spar3d",
+        "stable-fast-3d",
+        "stabilityai/TripoSR",
+        "instantmesh"
+      ],
       "provider": "multiple",
       "modality": "3d",
       "status": "open_or_external",
@@ -284,11 +392,24 @@
     },
     {
       "id": "deterministic-3d-authoring",
-      "aliases": ["blender", "clo3d", "marvelous-designer", "cad", "photogrammetry", "structured-light-scan"],
+      "aliases": [
+        "blender",
+        "clo3d",
+        "marvelous-designer",
+        "cad",
+        "photogrammetry",
+        "structured-light-scan"
+      ],
       "provider": "local_or_dcc",
       "modality": "3d",
       "status": "toolchain_specific",
-      "capabilities": ["deterministic_3d", "measurements", "uv_authoring", "pbr_authoring", "revision_control"],
+      "capabilities": [
+        "deterministic_3d",
+        "measurements",
+        "uv_authoring",
+        "pbr_authoring",
+        "revision_control"
+      ],
       "allowed_operations": ["exact_3d_replica"],
       "blocked_operations": [],
       "fidelity_tier": "exact_if_source_and_measurement_verified",
