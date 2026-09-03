@@ -1,0 +1,63 @@
+{
+  "schema": "skyyrose.vto-stage3-independent-review/1",
+  "task_id": "SCENE-STAGE-03-LH003-VTO-PREPARATION-20260903",
+  "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+  "contract_sha256": "6f0b55ff676fd3be423d43a67701a3f767c5b69368fe21a214a0809da914f62a",
+  "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+  "reviewer": "visual-commerce-qa",
+  "reviewed_at": "2026-09-03T14:16:48Z",
+  "verdict": "PASS",
+  "findings": [],
+  "checks": {
+    "1. The approved full-body model is suitable as a front-facing VTO model input and its authority scope is not exceeded.": "PASS",
+    "2. The primary transparent matte visually corresponds to the physical front and is not a fabricated substitute.": "PASS",
+    "3. Front, back, wearer-left, and wearer-right classifications are correct and not mirrored.": "PASS",
+    "4. The source set supports exactly two side pockets plus two rear pockets, all four with zipper closures.": "PASS",
+    "5. Wearer-left versus wearer-right artwork, rose/cloud field, black waistband, angular panels, and red-white binding are accurately encoded in the contract.": "PASS",
+    "6. The request replaces only the lower-body garment and protects model identity, face, hair, pose, skin, top, hands, and background.": "PASS",
+    "7. The future front candidate is required to directly prove only both side pockets/zippers; rear pockets remain source authority and are not overclaimed as rendered proof.": "PASS",
+    "8. One candidate, four-credit ceiling, consumed-before-submission marker, no automatic retry, and unknown-outcome stop are correctly encoded.": "PASS",
+    "9. Stage 3 remains zero-spend: approval receipt null, no attempt marker, no candidate, no execution receipt, and no POST /v1/run.": "PASS",
+    "10. The Stage 4 packet binds exactly fingerprint 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f and does not itself grant approval.": "PASS"
+  },
+  "source_observations": {
+    "approved_full_body_model": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+      "observation": "Founder-approved identity and full-body geometry are presented straight-on with complete framing, unobstructed waist and hips, hands away from the lower garment, a plain black top, stable face and hair, and a neutral background suitable for lower-body-only VTO conditioning. The contract uses this asset only within its approved model identity and geometry scope."
+    },
+    "primary_transparent_front_matte": {
+      "path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-front-product-matte-v1.png",
+      "sha256": "5313b5aad0dc25222fc89c3036e50550d8c174b36d5374065a22d79caa3deacc",
+      "observation": "The RGBA matte visually matches the physical front at identical 934x841 geometry. It contains 432709 fully transparent pixels, 352785 fully opaque pixels, no partial-alpha pixels, and every nontransparent RGB pixel matches the physical front source exactly, so it is a source-derived product matte rather than a fabricated substitute."
+    },
+    "physical_front": {
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+      "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+      "observation": "Correct front view. It shows the black ribbed waistband, white perforated rose-on-cloud body, angular black side and hem panels with red-white binding, wearer-left Love Hurts artwork on image-right, wearer-right rose-bouquet inset on image-left, and the two front-side zipper locations."
+    },
+    "physical_back": {
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+      "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
+      "observation": "Correct back view. It directly shows two separate black-trimmed horizontal rear zipper closures, the continuing rose-on-cloud field, angular bound panels, and the rear Love Hurts treatment concentrated on wearer-left at image-right."
+    },
+    "physical_wearer_left": {
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+      "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
+      "observation": "Correct unmirrored wearer-left view. It shows one vertical side zipper, one rear zipper, the large red Love Hurts script, the smaller Love Hurts emblem on the black inset, rose/cloud print, black waistband, and red-white angular binding."
+    },
+    "physical_wearer_right": {
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+      "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a",
+      "observation": "Correct unmirrored wearer-right view. It shows one vertical side zipper, one rear zipper, the embroidered rose bouquet with green stems and white-blue cloud on the black inset, rose/cloud print, black waistband, and red-white angular binding."
+    }
+  },
+  "downstream_exclusions": [
+    "This review does not grant Stage 4 paid approval or authorize POST /v1/run.",
+    "Do not create or consume a paid-attempt marker before explicit fingerprint-bound founder approval.",
+    "Do not execute VTO, generate a candidate, create an execution receipt, or retry an unknown, failed, or rejected submission.",
+    "A future front candidate must directly prove only both side pockets and their zipper closures; rear pockets remain source-authority requirements and are not rendered proof or full-360 proof.",
+    "No future provider response is product-fidelity approval, scene authority, promotion authority, or retry authority by itself.",
+    "Do not start Stage 4 or Stage 5, create or compose a scene, promote, wire, publish, or deploy from this Stage 3 receipt."
+  ]
+}

@@ -3,7 +3,7 @@
   "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
   "scene_id": "LH-COMMERCE-2",
   "sku": "lh-003",
-  "status": "BLOCKED_PENDING_APPROVED_FULL_BODY_MODEL",
+  "status": "PREPARED_PENDING_STAGE_4_PAID_APPROVAL",
   "purpose": "Create one source-bound on-model LH-003 candidate before any Fractured Chamber environment or sculpture work.",
   "model": {
     "id": "tryon-max",
@@ -71,17 +71,22 @@
     "model": {
       "role": "approved_full_body_model",
       "view": "full_body_front",
-      "path": null,
-      "sha256": null,
-      "authority_state": "PENDING_FOUNDER_APPROVED_FULL_BODY_MODEL",
-      "authority_receipt": null,
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+      "authority_state": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+      "authority_receipt": {
+        "path": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+        "sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+      },
       "identity_context": {
         "identity_id": "LH-MODEL-01",
         "manifest": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
         "manifest_sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
         "founder_identity_approval": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
         "founder_identity_approval_sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
-        "scope": "identity only; the bust references are not a full-body VTO input"
+        "founder_full_body_authority": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+        "founder_full_body_authority_sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584",
+        "scope": "founder-approved full-body model identity and geometry input only; VTO execution remains separately gated"
       }
     }
   },
@@ -156,8 +161,6 @@
     "deployment_allowed": false
   },
   "execute_blockers": [
-    "Bind a founder-approved full-body LH-MODEL-01 source suitable for Try-On Max.",
-    "Bind a hash-verified full-body model authority receipt.",
-    "Record a contract-bound approval receipt for exactly one 4-credit candidate."
+    "Record a Stage 4 founder approval receipt bound to this exact execution fingerprint for exactly one candidate and no more than four credits."
   ]
 }

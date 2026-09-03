@@ -1,0 +1,163 @@
+{
+  "schema": "skyyrose.vto-spend-approval-request/1",
+  "task_id": "SCENE-STAGE-04-LH003-VTO-EXECUTION-20260903",
+  "source_task_id": "SCENE-STAGE-03-LH003-VTO-PREPARATION-20260903",
+  "stage": "4/7",
+  "requested_at": "2026-09-03T14:15:09Z",
+  "status": "AWAITING_EXPLICIT_FOUNDER_SPEND_APPROVAL",
+  "operation": {
+    "provider": "fashn",
+    "model_name": "tryon-max",
+    "lifecycle": "preview",
+    "endpoint": "POST https://api.fashn.ai/v1/run",
+    "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+    "candidate_id": "LH-003-VTO-FRONT-A1",
+    "sku": "LH-003",
+    "view": "front",
+    "candidate_ceiling": 1,
+    "paid_attempt_ceiling": 1,
+    "automatic_retry": false
+  },
+  "fingerprint": {
+    "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+    "algorithm": "sha256 of canonical contract JSON with credit_control.approval_receipt normalized to null",
+    "contract_path": "Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+    "contract_sha256_before_approval_binding": "6f0b55ff676fd3be423d43a67701a3f767c5b69368fe21a214a0809da914f62a",
+    "approval_binding_rule": "After explicit Stage 4 approval, adding only the hash-bound approval receipt changes the raw contract hash but must not change this execution fingerprint. Any other contract or input change invalidates this packet."
+  },
+  "stage_3_preflight": {
+    "path": "Comfy/receipts/lh-003-tryon-max-stage3-preflight.json",
+    "sha256": "23dd840f536f48d9ce76c2b63223cf9b3ddc38a750188869fd175f0985675c28",
+    "status": "PASS_PENDING_STAGE_4_APPROVAL",
+    "technical_ready": true,
+    "execution_ready": false,
+    "blockers": []
+  },
+  "authority": {
+    "stage_2_ledger": {
+      "path": "tasks/scene-stage-02-lh-model-01-20260903.json",
+      "sha256": "307061d2617505426b12a431d4ba12de26e87ef6f1ed478db810e15d67676de2",
+      "state": "COMPLETE"
+    },
+    "model": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+      "authority_state": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+      "authority_receipt": {
+        "path": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+        "sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+      }
+    },
+    "primary_product": {
+      "path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-front-product-matte-v1.png",
+      "sha256": "5313b5aad0dc25222fc89c3036e50550d8c174b36d5374065a22d79caa3deacc",
+      "authority_receipt": {
+        "path": "Comfy/receipts/lh-003-front-product-matte-v1.json",
+        "sha256": "ece97ad4afb4b98ece38c73c16eeace62a82716aeab534586c14b2bc7feecfdf"
+      }
+    },
+    "supporting_product_views": [
+      {
+        "view": "front",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+        "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f"
+      },
+      {
+        "view": "back",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+        "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c"
+      },
+      {
+        "view": "wearer_left",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+        "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6"
+      },
+      {
+        "view": "wearer_right",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+        "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+      }
+    ],
+    "four_view_authority": {
+      "path": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+      "sha256": "7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552"
+    },
+    "construction_invariant": "exactly two zippered side pockets and two zippered rear pockets",
+    "rear_visibility_boundary": "The future front candidate can directly prove only the two side pockets. Both rear pockets remain source-authority requirements and must never be claimed as rendered proof."
+  },
+  "request": {
+    "model_name": "tryon-max",
+    "inputs": {
+      "product_image": "private data URI derived only from authority.primary_product",
+      "model_image": "private data URI derived only from authority.model",
+      "prompt": "Preserve the approved model identity, face, hair, body, pose, skin texture, black fitted top, hands, and background. Replace only the lower-body garment with the exact supplied LH-003 basketball shorts, worn naturally at the waist. Do not mirror, reinterpret, simplify, relocate, or rewrite any product artwork or construction.",
+      "resolution": "2k",
+      "generation_mode": "quality",
+      "seed": 42,
+      "num_images": 1,
+      "output_format": "png",
+      "return_base64": true
+    },
+    "local_validation_only": {
+      "supporting_product_views": "All four remain local source and review evidence; they are not additional provider inputs.",
+      "four_view_authority": "Binds construction and wearer-relative artwork without pretending Try-On Max can prove unseen rear rendering."
+    }
+  },
+  "live_price": {
+    "checked_at": "2026-09-03T14:15:09Z",
+    "first_party_source": "https://docs.fashn.ai/api-reference/tryon-max",
+    "generation_mode": "quality",
+    "resolution": "2k",
+    "num_images_multiplier": 1,
+    "total_credits": 4,
+    "maximum_authorized_credits_requested": 4,
+    "formula": "4 credits x 1 image = 4 credits"
+  },
+  "zero_spend_reconciliation": {
+    "stage_2_ending_balance": 95,
+    "stage_3_preflight_balance": 95,
+    "balance_delta": 0,
+    "provider_post_run_calls_by_stage_3": 0,
+    "credits_spent_by_stage_3": 0,
+    "candidate_absent": true,
+    "execution_receipt_absent": true,
+    "paid_attempt_marker_absent": true,
+    "paid_approval_receipt_absent": true,
+    "status": "PASS_ZERO_SPEND"
+  },
+  "sealed_outputs": {
+    "candidate_path": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png",
+    "execution_receipt": "Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json",
+    "paid_attempt_marker": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-attempt.json",
+    "proposed_paid_approval_receipt": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-approval.json",
+    "independent_candidate_review": "Comfy/receipts/lh-003-tryon-max-pilot-a1-independent-review.json"
+  },
+  "attempt_and_failure_policy": {
+    "attempt_marker_state_before_submission": "CONSUMED_BEFORE_SUBMISSION",
+    "submission_retries": 0,
+    "status_polling_may_retry": true,
+    "unknown_submission_outcome": "STOP_AND_RECONCILE_PROVIDER_HISTORY",
+    "failed_or_rejected_candidate": "retain in quarantine, record a first-seen issue, and do not retry",
+    "successful_provider_response": "candidate-only; not product-fidelity approval, scene authority, promotion, or VTO retry authority"
+  },
+  "post_candidate_gates": [
+    "Independent visual-commerce-qa review of exact model identity, pose, anatomy, front construction, both visible side pockets and zippers, wearer-relative artwork, no product/text/background drift, and the source-only rear-pocket boundary.",
+    "Manager re-verification that the approval, marker, provider receipt, debit, source hashes, candidate hash, geometry, and independent review all bind to the same execution.",
+    "Separate founder approval of the exact resulting candidate hash before any FRONT_SCENE_INPUT_ALLOWED authority.",
+    "No scene generation, composition, promotion, storefront wiring, publication, deployment, or Stage 5 progression."
+  ],
+  "execution_command_after_stage_4_approval_only": ".venv/bin/python Comfy/scripts/vto_ooda.py execute --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json --allow-spend",
+  "approval_request": {
+    "approval_receipt_schema_after_explicit_approval": "skyyrose.vto-paid-approval/1",
+    "requested_statement": "I approve exactly one LH-003-TRYON-MAX-PILOT-A1 VTO candidate bound to execution fingerprint 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f for a maximum of four FASHN credits, with no automatic retry.",
+    "not_authorized_by_this_request": [
+      "a second candidate or any retry",
+      "approval or promotion of the generated VTO candidate",
+      "rear-pocket rendered-proof claims from a front view",
+      "scene generation or composition",
+      "storefront wiring",
+      "publication or deployment",
+      "Stage 5 progression"
+    ]
+  }
+}

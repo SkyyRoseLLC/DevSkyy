@@ -4,8 +4,8 @@
   "source_task_id": "SCENE-STAGE-02-LH-MODEL-01-20260903",
   "stage": "3/7",
   "created_at": "2026-09-03T14:00:00Z",
-  "updated_at": "2026-09-03T14:00:00Z",
-  "state": "IN_PROGRESS",
+  "updated_at": "2026-09-03T14:19:06Z",
+  "state": "PASS",
   "project_manager": "fashion-theme-lead",
   "base_commit": "4da200886c73252c5271f5bf89de61c5c32ba062",
   "scope": {
@@ -91,16 +91,21 @@
       "source_path": "/Users/theceo/.codex/worktrees/31a0/DevSkyy/tasks/scene-stage-02-lh-model-01-20260903.json",
       "sha256": "307061d2617505426b12a431d4ba12de26e87ef6f1ed478db810e15d67676de2",
       "state": "COMPLETE",
-      "manager_verdict": "PASS_STAGE_2_COMPLETE"
+      "manager_verdict": "PASS_STAGE_2_COMPLETE",
+      "path": "tasks/scene-stage-02-lh-model-01-20260903.json",
+      "imported_commit": "82ecd0ca26b48f0ca30ac41d8a1c2874b7d8fb6f",
+      "integration_merge_commit": "bded0331facec2bc6a1988f0ac74e7e59e11a015"
     },
     "approved_full_body_model": {
       "source_path": "/Users/theceo/.codex/worktrees/31a0/DevSkyy/Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
       "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
-      "status": "FOUNDER_APPROVED_FULL_BODY_MODEL"
+      "status": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png"
     },
     "founder_model_authority_receipt": {
       "source_path": "/Users/theceo/.codex/worktrees/31a0/DevSkyy/Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
-      "sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+      "sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584",
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json"
     },
     "product_truth": {
       "sku": "LH-003",
@@ -171,41 +176,174 @@
       "reviewer": "fashion-theme-lead",
       "timestamp": "2026-09-03T14:00:00Z",
       "notes": "Authorization covers zero-credit Stage 3 preparation only. It does not approve any paid VTO request or Stage 4 execution."
+    },
+    {
+      "name": "stage_2_authority_import",
+      "state": "PASS",
+      "command": "git merge --no-ff codex/scene-stage-02-lh-model-01-20260903",
+      "artifact": "Stage 2 commit 82ecd0ca26b48f0ca30ac41d8a1c2874b7d8fb6f imported by merge bded0331facec2bc6a1988f0ac74e7e59e11a015",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "The approved plate and complete Stage 2 receipt chain were imported through Git history, not copied as loose assets."
+    },
+    {
+      "name": "lh003_product_sot",
+      "state": "PASS",
+      "command": "Bind the canonical LH-003 source-authority receipt and its catalog, SOT, source-manifest, asset-manifest, dossier, and scene-contract hashes",
+      "artifact": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json sha256 7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "Authority is physical-source intake only; the rejected casting board supplies no garment or construction authority."
+    },
+    {
+      "name": "four_view_source_authority",
+      "state": "PASS",
+      "command": "Native VTO prepare hash validation plus independent eyes-on source classification",
+      "artifact": "front 5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f; back 65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c; wearer-left d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6; wearer-right c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "All four paths and hashes passed; wearer-relative classifications are visually correct and unmirrored."
+    },
+    {
+      "name": "four_zipper_construction_review",
+      "state": "PASS",
+      "command": "Independent eyes-on inspection of front, back, wearer-left, wearer-right, and protected matte",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-stage3-independent-review.json sha256 6d7959d467c5d64abcb12dd9ab3db3203e39ad232808af0d4ff8976e5a10b57f",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "Exactly two side pockets and two rear pockets are evidenced, all four with zipper closures. Front output may directly prove only the two side zippers; rear pockets remain source authority."
+    },
+    {
+      "name": "provider_model_registry",
+      "state": "PASS",
+      "command": "Comfy/scripts/vto_ooda.py prepare registry validation",
+      "artifact": "fashn-tryon-max; REGISTERED_CANDIDATE_ONLY_MODEL; registry sha256 0c701bdba8f427cbb18e032e134ef3a4b1c92fe3f2ec2ace2993566807b2f5df",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "Registry permits virtual_tryon_candidate only and forbids unreviewed exact-product claims, automatic retries, and direct scene promotion."
+    },
+    {
+      "name": "authenticated_zero_spend_runtime",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/vto_ooda.py prepare --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+      "artifact": "Authenticated FASHN balance 95 credits; required future ceiling 4; provider POST count 0",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "The read-only credit endpoint succeeded. Paid Try-On Max availability is not claimed until a separately approved execution returns a provider receipt."
+    },
+    {
+      "name": "vto_contract",
+      "state": "PASS",
+      "command": "Bind approved model authority into the existing merged LH-003 Try-On Max OODA contract",
+      "artifact": "Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json sha256 6f0b55ff676fd3be423d43a67701a3f767c5b69368fe21a214a0809da914f62a; execution fingerprint 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "The paid approval receipt remains null. The request is one 2k quality PNG with seed 42 and exact product/model source bindings."
+    },
+    {
+      "name": "zero_spend_preflight",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/vto_ooda.py prepare --contract Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-stage3-preflight.json sha256 23dd840f536f48d9ce76c2b63223cf9b3ddc38a750188869fd175f0985675c28",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "PASS_PENDING_APPROVAL; technical_ready true; execution_ready false; blockers []; output paths reserved."
+    },
+    {
+      "name": "stage_4_approval_packet",
+      "state": "PASS",
+      "command": "Seal exact fingerprint, request, sources, price, one-attempt controls, outputs, and failure policy",
+      "artifact": "tasks/scene-stage-04-lh003-vto-execution-approval-packet.json sha256 2cc2148c74ea272c2078fefea14409365bcd657d9db367530ef71be99943b6bf",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "The packet is an approval request only. It does not grant paid authority or start Stage 4."
+    },
+    {
+      "name": "independent_review",
+      "state": "PASS",
+      "command": "Independent hash, JSON, alpha, source-view, construction, request, rear-proof-boundary, and zero-spend review",
+      "artifact": "Comfy/receipts/lh-003-tryon-max-stage3-independent-review.json sha256 6d7959d467c5d64abcb12dd9ab3db3203e39ad232808af0d4ff8976e5a10b57f",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "All ten Stage 3 checks passed with findings []. The primary matte is source-derived RGBA at 934x841 with opaque RGB byte-identical to the physical front."
+    },
+    {
+      "name": "manager_reverification",
+      "state": "PASS",
+      "command": "Reconcile imported Stage 2 authority, source hashes, preflight, independent review, exact fingerprint, price, output absence, and approval boundary",
+      "artifact": "contract 6f0b55ff676fd3be423d43a67701a3f767c5b69368fe21a214a0809da914f62a; preflight 23dd840f536f48d9ce76c2b63223cf9b3ddc38a750188869fd175f0985675c28; review 6d7959d467c5d64abcb12dd9ab3db3203e39ad232808af0d4ff8976e5a10b57f; packet 2cc2148c74ea272c2078fefea14409365bcd657d9db367530ef71be99943b6bf",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "All Stage 3 evidence is complete. The next action is a separate founder decision on the exact Stage 4 fingerprint."
+    },
+    {
+      "name": "paid_non_execution_evidence",
+      "state": "PASS",
+      "command": "Native output reservation check plus independent artifact-absence review",
+      "artifact": "approval receipt absent; paid-attempt marker absent; VTO candidate absent; execution receipt absent; Stage 3 FASHN balance unchanged at 95",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T14:19:06Z",
+      "notes": "Stage 3 issued no POST /v1/run, spent zero credits, and did not start Stage 4."
     }
   ],
   "issues": [],
   "zero_spend_control": {
-    "status": "ENFORCED",
+    "status": "PASS_ZERO_SPEND",
     "max_provider_post_calls": 0,
+    "actual_provider_post_calls": 0,
     "max_credits": 0,
-    "paid_attempt_marker_allowed": false,
-    "candidate_creation_allowed": false,
+    "actual_credits_spent": 0,
+    "balance_before": 95,
+    "balance_after": 95,
+    "paid_attempt_marker_created": false,
+    "candidate_created": false,
     "automatic_retry": false
   },
   "preparation": {
-    "status": "NOT_STARTED",
-    "contract": null,
-    "execution_fingerprint": null,
-    "live_price_credits": null,
-    "stage_4_approval_packet": null
+    "status": "COMPLETE_PENDING_SEPARATE_STAGE_4_APPROVAL",
+    "contract": {
+      "path": "Comfy/scene-contracts/lh-003-tryon-max-vto-ooda.json",
+      "sha256": "6f0b55ff676fd3be423d43a67701a3f767c5b69368fe21a214a0809da914f62a"
+    },
+    "execution_fingerprint": "02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f",
+    "live_price_credits": 4,
+    "live_price_source": "https://docs.fashn.ai/api-reference/tryon-max",
+    "authenticated_balance": 95,
+    "preflight_receipt": {
+      "path": "Comfy/receipts/lh-003-tryon-max-stage3-preflight.json",
+      "sha256": "23dd840f536f48d9ce76c2b63223cf9b3ddc38a750188869fd175f0985675c28"
+    },
+    "independent_review": {
+      "path": "Comfy/receipts/lh-003-tryon-max-stage3-independent-review.json",
+      "sha256": "6d7959d467c5d64abcb12dd9ab3db3203e39ad232808af0d4ff8976e5a10b57f",
+      "verdict": "PASS",
+      "findings": []
+    },
+    "stage_4_approval_packet": {
+      "path": "tasks/scene-stage-04-lh003-vto-execution-approval-packet.json",
+      "sha256": "2cc2148c74ea272c2078fefea14409365bcd657d9db367530ef71be99943b6bf",
+      "status": "AWAITING_EXPLICIT_FOUNDER_SPEND_APPROVAL"
+    },
+    "approval_statement_requested": "I approve exactly one LH-003-TRYON-MAX-PILOT-A1 VTO candidate bound to execution fingerprint 02ae44fd8fc26a4defc16e8924fcd3b40f60dbe04b5e8ad221b688ed568d4a0f for a maximum of four FASHN credits, with no automatic retry."
   },
   "manager_verification": {
-    "status": "PENDING",
+    "status": "PASS_STAGE_3_COMPLETE",
     "reviewer": "fashion-theme-lead",
-    "missing_evidence": [
-      "stage_2_authority_import",
-      "lh003_product_sot",
-      "four_view_source_authority",
-      "four_zipper_construction_review",
-      "provider_model_registry",
-      "authenticated_zero_spend_runtime",
-      "vto_contract",
-      "zero_spend_preflight",
-      "stage_4_approval_packet",
-      "independent_review",
-      "paid_non_execution_evidence"
-    ]
+    "timestamp": "2026-09-03T14:19:06Z",
+    "missing_evidence": [],
+    "notes": "Stage 3 is complete and zero-spend. Stage 4 is not started or authorized."
   },
-  "release_decision": "NOT_AUTHORIZED",
-  "blocker": null
+  "release_decision": "STAGE_3_COMPLETE_STAGE_4_NOT_AUTHORIZED",
+  "blocker": null,
+  "terminal_gate": {
+    "status": "PASS",
+    "disposition": "PASS_STAGE_3_COMPLETE",
+    "completed_at": "2026-09-03T14:19:06Z",
+    "manager_verdict": "PASS_STAGE_3_COMPLETE",
+    "independent_verdict": "PASS",
+    "founder_stage_3_authorization": "RECORDED",
+    "stage_4_started": false,
+    "paid_vto_executed": false,
+    "credits_spent": 0
+  }
 }
