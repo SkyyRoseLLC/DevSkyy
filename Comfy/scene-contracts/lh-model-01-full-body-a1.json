@@ -46,7 +46,10 @@
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
     "max_credits": 4,
-    "approval_receipt": null,
+    "approval_receipt": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-paid-approval.json",
+      "sha256": "81255f7af0ef7964d47df64ba1c49499043f0934c8a7f830082ef9bd925ac10a"
+    },
     "on_unknown_submission_outcome": "STOP_AND_RECONCILE_PROVIDER_HISTORY"
   },
   "review_gate": {

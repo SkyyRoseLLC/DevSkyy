@@ -1,0 +1,78 @@
+{
+  "schema": "skyyrose.model-plate-founder-authority/1",
+  "recorded_at": "2026-09-03T14:02:14Z",
+  "task_id": "SCENE-STAGE-02-LH-MODEL-01-20260903",
+  "stage": "2/7",
+  "identity_id": "LH-MODEL-01",
+  "plate_id": "LH-MODEL-01-FULL-BODY-A1",
+  "status": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+  "founder_statement": "I approve LH-MODEL-01-FULL-BODY-A1 candidate SHA-256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579 as FOUNDER_APPROVED_FULL_BODY_MODEL authority for LH-MODEL-01. This does not authorize VTO, scene generation, promotion, storefront wiring, publication, or deployment.",
+  "approved_candidate": {
+    "path": "Comfy/quarantine/LH-MODEL-01/LH-MODEL-01-FULL-BODY-A1.png",
+    "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "width": 768,
+    "height": 1376,
+    "disposition": "RETAINED_QUARANTINE_PROVENANCE"
+  },
+  "approved_asset": {
+    "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+    "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "width": 768,
+    "height": 1376,
+    "byte_identity_with_candidate": true,
+    "authority": "FULL_BODY_MODEL_IDENTITY_ONLY"
+  },
+  "bindings": {
+    "contract": {
+      "path": "Comfy/scene-contracts/lh-model-01-full-body-a1.json",
+      "sha256": "e698a90d339e807c19feb920036502a2e5514421d594e465b4783abc96941565",
+      "execution_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c"
+    },
+    "paid_approval": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-paid-approval.json",
+      "sha256": "81255f7af0ef7964d47df64ba1c49499043f0934c8a7f830082ef9bd925ac10a"
+    },
+    "paid_attempt_marker": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-paid-attempt.json",
+      "sha256": "92c2f8071f0562a93bbb16000ed547d334be6bfa18547585d5d4ace029ad2ad5",
+      "state": "CONSUMED_BEFORE_SUBMISSION"
+    },
+    "execution_receipt": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-execution.json",
+      "sha256": "ded85b3a94995733b00c4232b23fa88c1769166c8ad5c5cec632570293a1c9ac",
+      "provider_job_id": "c38526ce-40a0-4666-b131-83dd1b28d654",
+      "provider_reported_credits": 4,
+      "balance_before": 99,
+      "balance_after": 95
+    },
+    "independent_review": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-independent-review.json",
+      "sha256": "fab587f227cebf8245f8390c0ff5c7a34e6d5f82c131cafa5fa49e5fea623df4",
+      "verdict": "PASS",
+      "findings": []
+    }
+  },
+  "authorization_boundary": {
+    "allowed": [
+      "Treat the exact approved asset hash as FOUNDER_APPROVED_FULL_BODY_MODEL authority for LH-MODEL-01.",
+      "Use the approved asset only as model identity and full-body geometry authority in a separately authorized downstream contract."
+    ],
+    "not_authorized": [
+      "VTO preparation or execution",
+      "any additional paid generation or retry",
+      "SkyyRose or Love Hurts garment authority",
+      "product fidelity or construction authority",
+      "scene generation or composition",
+      "promotion or commerce use",
+      "storefront wiring",
+      "publication or deployment"
+    ],
+    "automatic_stage_progression": false
+  },
+  "credit_effect_of_founder_plate_approval": {
+    "new_provider_calls": 0,
+    "new_credits_spent": 0,
+    "stage_2_total_provider_calls": 1,
+    "stage_2_total_credits_spent": 4
+  }
+}

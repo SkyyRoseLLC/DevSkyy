@@ -1,0 +1,18 @@
+{
+  "schema": "skyyrose.paid-attempt-marker/1",
+  "created_at": "2026-09-03T13:47:24.016494+00:00",
+  "operation": "fashn_model_create",
+  "plate_id": "LH-MODEL-01-FULL-BODY-A1",
+  "contract_sha256": "e698a90d339e807c19feb920036502a2e5514421d594e465b4783abc96941565",
+  "execution_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c",
+  "approval_receipt_sha256": "81255f7af0ef7964d47df64ba1c49499043f0934c8a7f830082ef9bd925ac10a",
+  "source_sha256s": {
+    "identity_manifest": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+    "founder_identity_approval": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+    "front_bust": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6",
+    "rear_profile": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b"
+  },
+  "state": "CONSUMED_BEFORE_SUBMISSION",
+  "automatic_retry": false,
+  "immutable": true
+}

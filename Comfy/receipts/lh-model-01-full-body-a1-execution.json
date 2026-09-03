@@ -1,0 +1,49 @@
+{
+  "schema": "skyyrose.model-plate-execution-receipt/1",
+  "created_at": "2026-09-03T13:48:17.523216+00:00",
+  "plate_id": "LH-MODEL-01-FULL-BODY-A1",
+  "identity_id": "LH-MODEL-01",
+  "contract_sha256": "e698a90d339e807c19feb920036502a2e5514421d594e465b4783abc96941565",
+  "execution_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c",
+  "attempt_marker": "Comfy/receipts/lh-model-01-full-body-a1-paid-attempt.json",
+  "attempt_marker_sha256": "92c2f8071f0562a93bbb16000ed547d334be6bfa18547585d5d4ace029ad2ad5",
+  "approval_receipt": "Comfy/receipts/lh-model-01-full-body-a1-paid-approval.json",
+  "approval_receipt_sha256": "81255f7af0ef7964d47df64ba1c49499043f0934c8a7f830082ef9bd925ac10a",
+  "provider": "fashn",
+  "requested_model": "model-create",
+  "model_lifecycle": "experimental",
+  "job_id": "c38526ce-40a0-4666-b131-83dd1b28d654",
+  "request_parameters": {
+    "face_reference_input": "front_bust",
+    "face_reference_mode": "match_base",
+    "prompt": "Full-body straight-on studio casting plate of the approved adult Black woman identity, athletic natural proportions, high-bun natural-texture hairstyle, neutral confident expression, both hands relaxed away from the hips and waistband, both legs and feet fully visible, fitted plain matte-black crop top ending above the natural waist, plain close-fitting black bike shorts with no logos, pockets, trim, text, or artwork, simple black low-profile footwear, neutral medium-gray cyclorama, even product-photography light, no props, no fashion product, no scene, no display text.",
+    "aspect_ratio": "9:16",
+    "resolution": "1k",
+    "generation_mode": "fast",
+    "seed": 42,
+    "num_images": 1,
+    "output_format": "png",
+    "return_base64": true
+  },
+  "source_sha256s": {
+    "identity_manifest": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+    "founder_identity_approval": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+    "front_bust": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6",
+    "rear_profile": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b"
+  },
+  "output_path": "Comfy/quarantine/LH-MODEL-01/LH-MODEL-01-FULL-BODY-A1.png",
+  "output_sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+  "output_dimensions": {
+    "width": 768,
+    "height": 1376
+  },
+  "contracted_credits": 4,
+  "provider_reported_credits": 4,
+  "balance_before": 99,
+  "balance_after": 95,
+  "balance_after_status": "RECORDED",
+  "provider_latency_seconds": 52.12049299990758,
+  "output_transport": "base64_png",
+  "candidate_only": true,
+  "founder_authority": null
+}
