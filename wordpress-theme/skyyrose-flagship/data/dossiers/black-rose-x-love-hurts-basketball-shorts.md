@@ -5,10 +5,12 @@ collection: black-rose
 logo_reference: data/brand-logos/three-rose-cluster.md
 extra_logos:
   - data/brand-logos/love-hurts-logo.md
-reference_image: assets/products/references/br-007-shorts-real-front.jpeg
+reference_image: assets/products/source-photos/black-rose/br-007-shorts-front.jpeg
 extra_references:
-  - assets/products/references/br-007-shorts-real-back.jpeg
-  - assets/products/references/br-007-shorts-techflat.jpeg
+  - assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg
+  - assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg
+  - assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg
+  - assets/products/source-photos/black-rose/br-007-techflat-shorts.jpeg
 ---
 
 # BLACK Rose × Love Hurts Basketball Shorts
@@ -20,31 +22,29 @@ extra_references:
 > Logo art canonical references:
 > - Black Rose three-rose-cluster: `data/brand-logos/three-rose-cluster.md`
 > - Love Hurts (wordmark + broken-heart-and-thorns lockup): `data/brand-logos/love-hurts-logo.md`
-> - Reference photos: `assets/products/references/br-007-shorts-real-front.jpeg`,
->                     `assets/products/references/br-007-shorts-real-back.jpeg`,
->                     `assets/products/references/br-007-shorts-techflat.jpeg`
+> - Physical source photos: `assets/products/source-photos/black-rose/br-007-shorts-front.jpeg`,
+>                           `assets/products/source-photos/black-rose/br-007-shorts-back-hanger.jpeg`,
+>                           `assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg`,
+>                           `assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg`
+> - Techflat context: `assets/products/source-photos/black-rose/br-007-techflat-shorts.jpeg`
 >
 > ### COLORWAY OVERRIDE — read this BEFORE rendering
 >
-> **Every logo on this product is converted to the shorts' tonal colorway
-> — black, grey, white, and cream/peach.** The canonical reds (Love Hurts
-> wordmark, red-roses-cluster), kelly-greens (stems), and white-and-blue
-> clouds are ALL replaced with greyscale / cream tonal renderings on this
-> garment. The cross-collection collab is signaled by *placement and
-> wordmark*, not by the brands' canonical colors. When the RAS prompt
-> attaches the canonical Love Hurts logo image and the canonical Black
-> Rose logo image as references, the model must use them ONLY for shape
-> / composition guidance — colors are remapped to the tonal palette
-> below.
+> The black body print, OAKLAND tackle-twill, and Love Hurts wordmarks use the
+> shorts' black, grey, white, and cream/peach tonal palette. The embroidered
+> Black Rose cluster on the **wearer-right white mesh side panel is the physical
+> exception**: black rose, green stem/leaves, and pale blue/white cloud. Preserve
+> the physical source colors and placement; do not mirror this panel.
 >
 > Tonal palette for this product:
 > - Body fabric: black mesh
 > - Side panels: white mesh
 > - Sublimated patterns: tonal grey on black
-> - Embroidered logos: tonal grey / cream / dark grey on white mesh
+> - Wearer-left side embroidery: tonal grey / cream / dark grey on white mesh
+> - Wearer-right Black Rose embroidery: black rose, green stem/leaves,
+>   pale blue/white cloud on white mesh
 > - Tackle-twill: white face with dark satin-stitch edge
 > - Wordmark colors: cream / peach / light-pink (NOT red)
-> - Back-center pentagon panel logo: dark grey on white
 
 ### Front
 - **front-body** (entire black mesh field): The Black Rose three-rose-cluster
@@ -64,19 +64,14 @@ extra_references:
   black mesh. Spans the right thigh area, reading top-to-bottom as the
   cursive lettering descends. **Technique:** sublimated. **Color:**
   cream/peach/light-pink tonal.
-- **left-mesh-side-panel** (small, on the white mesh side panel):
-  The Black Rose three-rose-cluster art (canonical *shape* — three roses,
-  thorny vines, cloud at base) stitched onto the white mesh **in tonal
-  grey / dark thread only** (NOT canonical multi-color — this product
-  remaps every logo into the tonal grey/white/cream palette per the
-  COLORWAY OVERRIDE above). The cluster is recognizable by composition
-  but NOT by color. **Technique:** embroidered. **Color:** tonal
-  grey/dark thread on white mesh (no kelly-green stems, no white-and-
-  blue cloud).
-- **right-mesh-side-panel** (small, on the white mesh side panel):
+- **wearer-left-mesh-side-panel** (small, on the white mesh side panel):
   The "Love Hurts" wordmark (cursive script only — no broken heart in
   this position) stitched onto the white mesh. **Technique:** embroidered.
   **Color:** dark/contrast thread on white mesh.
+- **wearer-right-mesh-side-panel** (small, on the white mesh side panel):
+  The Black Rose cluster stitched onto the white mesh: black rose bloom,
+  green stem/leaves, and pale blue/white cloud. **Technique:** embroidered.
+  **Color:** physical source colors; do not tonalize, mirror, or move it.
 
 ### Back
 - **back-body** (entire black mesh field): Same sublimated tonal grey
@@ -87,14 +82,9 @@ extra_references:
   front-right version, in **cream/peach/light-pink tonal color** sublimated
   onto the back mesh. **Technique:** sublimated. **Color:** cream/peach/
   light-pink tonal.
-- **back-center-lower** (pentagon-shaped white panel insert, ~6–7in across):
-  A **white pentagon-star-shaped contrast fabric panel** sewn into the
-  lower-back-center between the two leg openings. Inside the panel:
-  the Love Hurts full lockup (broken-heart-and-thorns + "Love Hurts"
-  wordmark — see logo_reference) printed/embroidered in dark grey on
-  the white panel. **Technique:** patch (pentagonal contrast fabric) +
-  embroidered (Love Hurts logo on the panel). **Color:** white panel +
-  dark grey logo art.
+- **back-side continuity:** The white mesh inserts remain on the two outer side
+  panels. There is no white center-back pentagon. The wearer-left panel carries
+  Love Hurts; the wearer-right panel carries the Black Rose cluster.
 
 ### Sleeves / Collar / Hem / Other
 - **waistband-rib**: White elasticated waistband at the top.
@@ -118,25 +108,19 @@ extra_references:
 
 ## Negative — what is NOT on this product (DO NOT render)
 
-- **NO canonical-color rendering of any logo on this garment.** Every
-  logo on these shorts is converted to the shorts' tonal palette
+- **NO canonical red Love Hurts treatment on this garment.** The Love Hurts
+  wordmarks remain in the shorts' tonal palette
   (black/grey/white/cream/peach). Specifically:
   - NO red roses anywhere — the body sublimation is the Black Rose
     three-rose-cluster in tonal grey-on-black, NOT the canonical
     multi-color or Love Hurts red-roses variant.
-  - NO kelly-green stems on the left mesh side panel cluster — the
-    embroidered cluster is rendered in tonal grey/dark thread only.
-  - NO white-and-blue cloud color on any rose-cluster — clouds remap
-    to plain white or tonal grey on this product.
   - NO bright red Love Hurts wordmark — the cursive script is rendered
     in cream/peach/light-pink tonal, NOT the canonical saturated red.
-  - NO bright red broken-heart-and-thorns lockup on the back-center
-    pentagon — the Love Hurts logo on the panel is rendered in dark
-    grey on white, NOT in canonical red and brown vines.
-- NO Black Rose three-rose-cluster on the right mesh side panel — the
-  right side carries the Love Hurts wordmark only.
-- NO Love Hurts wordmark on the left mesh side panel — the left side
-  carries the Black Rose cluster only.
+- NO Black Rose cluster on the wearer-left mesh side panel — wearer-left
+  carries the Love Hurts wordmark only.
+- NO Love Hurts wordmark on the wearer-right mesh side panel — wearer-right
+  carries the physical-color Black Rose cluster only.
+- NO center-back white pentagon or center-back Love Hurts patch.
 - NO multi-color rendering of the body sublimated rose pattern — it is
   tonal grey-on-black, NOT the full multi-color art.
 - NO Black Rose logo at front-thigh-center — the front center carries
@@ -159,10 +143,9 @@ extra_references:
 ## Scene direction
 
 - **Pose:** Front view straight-on (or three-quarter front-left) showing
-  the OAKLAND wordmark, the front-right Love Hurts script, the left
-  Black Rose cluster on the mesh side panel, and the cream/peach
-  cursive wordmark across the right thigh. For back: back view
-  straight-on showing the upper-back Love Hurts cursive script and the
-  pentagonal white panel insert at the lower-back-center.
+  the OAKLAND wordmark, the wearer-left Love Hurts script/side panel, and the
+  wearer-right physical-color Black Rose cluster. For back: back view
+  straight-on showing the upper-back Love Hurts cursive script and both outer
+  side panels, with no invented center-back panel.
 - **Setting:** Pure white studio backdrop, soft directional studio
   lighting from front-left, subtle natural drop shadow on the floor.

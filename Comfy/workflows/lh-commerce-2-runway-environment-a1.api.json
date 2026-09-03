@@ -1,0 +1,38 @@
+{
+  "1": {
+    "class_type": "RunwayTextToImageNode",
+    "inputs": {
+      "prompt": "Wide cinematic Fractured Chamber architecture with a deep ruined gothic cathedral volume, radial tracery window high in the rear wall, towering black stone arches, aged iron, restrained deep-red drape accents, cool moonlit volumetric shafts, low warm practical spill reserved for the right-side protected-object zone, and a cracked wet obsidian floor with physically plausible reflections. Preserve an open left-center customer zone, an open right monument zone, an unobstructed central depth corridor, and grounded floor contact space. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+      "ratio": "1920:1080"
+    },
+    "_meta": {
+      "title": "LH-COMMERCE-2 product-free environment only"
+    }
+  },
+  "2": {
+    "class_type": "ResizeImageMaskNode",
+    "inputs": {
+      "input": [
+        "1",
+        0
+      ],
+      "resize_type": {
+        "resize_type": "scale dimensions",
+        "width": 2048,
+        "height": 1152,
+        "crop": "disabled"
+      },
+      "scale_method": "lanczos"
+    }
+  },
+  "3": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "2",
+        0
+      ],
+      "filename_prefix": "SkyyRose/LH-COMMERCE-2/environment-a1"
+    }
+  }
+}

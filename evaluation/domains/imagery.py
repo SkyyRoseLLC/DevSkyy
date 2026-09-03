@@ -25,7 +25,7 @@ from scripts.oai_render.qc import (
     deterministic_checks,
 )
 
-_GATES = tuple(_GATE_TAGS.keys())  # canonical 6 gates, in qc.py order
+_GATES = tuple(_GATE_TAGS.keys())  # canonical gates, in qc.py order
 
 IMAGERY_TOOL: dict = {
     "name": "render_qc_verdict",
@@ -44,6 +44,7 @@ IMAGERY_TOOL: dict = {
             "branding_legible_and_correct": {"type": "boolean"},
             "photorealistic_not_flat": {"type": "boolean"},
             "all_garments_present": {"type": "boolean"},
+            "authority_consistent": {"type": "boolean"},
             "reason": {"type": "string"},
         },
         "required": ["visual_analysis", *(_GATES), "reason"],

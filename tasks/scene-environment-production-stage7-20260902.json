@@ -1,0 +1,98 @@
+{
+  "schema": "fashion.e2e-task/1",
+  "task_id": "SCENE-ENVIRONMENT-PRODUCTION-STAGE7-20260902",
+  "source_task_id": "SCENE-OODA-FASHN-INTEGRATION-20260902",
+  "created_at": "2026-09-02T22:31:27-07:00",
+  "state": "READY_FOR_INTEGRATION",
+  "project_manager": "fashion-theme-lead",
+  "branch": "codex/scene-stage7-environment",
+  "base_commit": "6ff47121398c81b2084e1fba355c12d33f34c335",
+  "scope": [
+    "govern prompt-only Runway Gen-4 product-free environment plate preflight",
+    "bind local scene inspiration as composition and atmosphere authority only",
+    "record BiRefNet alpha and edge-confidence evidence without changing protected RGB",
+    "provide reusable contracts for LH-COMMERCE-2, BR-COMMERCE-2, SIG-COMMERCE-1, and SIG-COMMERCE-2",
+    "provision a worktree-local locked .venv with the development verification toolchain"
+  ],
+  "roster": [
+    {
+      "role": "environment-plate-contract-owner",
+      "responsibility": "contracts, read-only preflight, tests, and readiness evidence"
+    },
+    {
+      "role": "independent-scene-reviewer",
+      "responsibility": "separate product fidelity, physical integration, optical realism, and release review"
+    }
+  ],
+  "authority": {
+    "runway": "product-free environment plates only",
+    "birefnet": "customer/product alpha extraction and descriptive edge-confidence only",
+    "comfy_local": "hash-bound upload, placement, scale, occlusion, contact shadow, reflection, edge treatment, composition, prompt/history, and receipts",
+    "protected_rgb": "byte-identical customer, identity, garment, artwork, zipper, pocket, and approved sculpture pixels"
+  },
+  "issues": [
+    {
+      "id": "ISSUE-001",
+      "severity": "BLOCKER",
+      "state": "MITIGATED_IN_CONTRACT",
+      "finding": "The prior LH Runway image reference contains people, garments, a rose, lettering, monuments, and a robed figure.",
+      "resolution": "Current provider workflow is prompt-only and contains no LoadImage or reference_image input."
+    },
+    {
+      "id": "ISSUE-002",
+      "severity": "BLOCKER",
+      "state": "OPEN",
+      "finding": "The LH-003 model casting board swaps directional product artwork between front and rear views.",
+      "resolution": "Use identity only; reject it as protected product or scene authority pending a corrected source."
+    },
+    {
+      "id": "ISSUE-003",
+      "severity": "ENVIRONMENT",
+      "state": "OPEN",
+      "finding": "Fashion Theme Team parity is exact, but its verifier observes Black 26.5.1 where the package expects 26.1.0.",
+      "resolution": "Do not mutate the shared environment; report version drift separately from source parity."
+    },
+    {
+      "id": "ISSUE-004",
+      "severity": "BLOCKER",
+      "state": "OPEN",
+      "finding": "Integration is not merged into main.",
+      "resolution": "Any paid execution must rebase or restart from merged main and refresh schema, price, fingerprint, and founder approval."
+    }
+  ],
+  "acceptance_criteria": [
+    "every Runway prompt explicitly forbids all governed subject classes",
+    "no local inspiration or protected asset is uploaded to Runway",
+    "exact workflow fingerprint, prompt, live price, candidate ceiling, approval path, and attempt marker are shown before paid execution",
+    "one paid candidate maximum with no automatic retry",
+    "BiRefNet evidence is hash-bound and cannot be mistaken for product approval",
+    "all output remains quarantined with promotion, wiring, and deployment disabled",
+    "focused tests and static validation pass"
+  ],
+  "provider_side_effects": {
+    "credentials_read": false,
+    "paid_submission_performed": false,
+    "attempt_marker_created": false,
+    "automatic_retry_performed": false
+  },
+  "founder_approval": {
+    "requested": false,
+    "recorded": false
+  },
+  "verification": {
+    "completed_at": "2026-09-02T22:38:14-07:00",
+    "focused_tests_passed": 73,
+    "ruff": "PASS",
+    "black": "PASS",
+    "shellcheck": "PASS",
+    "json_parse": "PASS",
+    "git_diff_check": "PASS",
+    "live_comfy_preflight": "PASS_BLOCKED_AS_DESIGNED",
+    "readiness_report": "Comfy/reports/scene-environment-stage7-readiness-20260902.json"
+  },
+  "release": {
+    "promotion_authorized": false,
+    "runtime_wiring_authorized": false,
+    "deployment_authorized": false
+  }
+}

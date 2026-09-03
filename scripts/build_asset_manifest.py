@@ -21,6 +21,7 @@ manifest edited by hand, fails the build.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -41,6 +42,9 @@ from skyyrose.core.asset_manifest import (  # noqa: E402
 from skyyrose.core.catalog_loader import read_catalog_rows  # noqa: E402
 from skyyrose.core.hashing import sha256_of_file  # noqa: E402
 
+_SOURCE_PHOTO_MANIFEST = _REPO_ROOT / "assets" / "products" / "source-photos" / "manifest.json"
+_SUPPLEMENTAL_SOURCE_ROLES = ("wearer-left", "wearer-right", "founder-four-angle")
+
 
 def _catalog_rows() -> dict[str, dict]:
     """SKU → {name, collection, garment_type} via the shared catalog loader."""
@@ -60,6 +64,23 @@ def _record(role: str, path: Path | None) -> AssetRecord | None:
     if path is None:
         return None
     return AssetRecord(role=role, path=to_repo_relative(path), sha256=hash_if_present(path))
+
+
+def _supplemental_source_records(sku: str) -> list[AssetRecord]:
+    """Hash-bind directional and founder-board physical authorities."""
+    if not _SOURCE_PHOTO_MANIFEST.exists():
+        return []
+    raw = json.loads(_SOURCE_PHOTO_MANIFEST.read_text(encoding="utf-8"))
+    photo_paths = raw.get("skus", {}).get(sku, {}).get("photo_paths", {})
+    records: list[AssetRecord] = []
+    for role in _SUPPLEMENTAL_SOURCE_ROLES:
+        rel = photo_paths.get(role)
+        if not rel:
+            continue
+        record = _record(f"garment-{role}", _REPO_ROOT / rel)
+        if record is not None:
+            records.append(record)
+    return records
 
 
 def build() -> AssetManifest:
@@ -89,6 +110,10 @@ def build() -> AssetManifest:
             seen.add(rel)
             rec = _record(ref.kind, ref.path)
             if rec is not None:
+                records.append(rec)
+        for rec in _supplemental_source_records(sku):
+            if rec.path not in seen:
+                seen.add(rec.path)
                 records.append(rec)
         dossier_rec = _record("dossier", dossier_index.get(sku))
         if dossier_rec is not None:

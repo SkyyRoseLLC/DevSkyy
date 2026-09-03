@@ -20,7 +20,7 @@ def test_excluded_sku_hard_fails_deterministically():
     assert "excluded_sku" in tags
 
 
-def test_tool_schema_has_visual_analysis_first_and_six_gates():
+def test_tool_schema_has_visual_analysis_first_and_all_gates():
     props = list(IMAGERY_TOOL["input_schema"]["properties"].keys())
     assert props[0] == "visual_analysis"
     for gate in (
@@ -30,6 +30,7 @@ def test_tool_schema_has_visual_analysis_first_and_six_gates():
         "branding_legible_and_correct",
         "photorealistic_not_flat",
         "all_garments_present",
+        "authority_consistent",
     ):
         assert gate in props
 
@@ -44,12 +45,13 @@ def test_parse_verdict_maps_gates_to_tags():
         "branding_legible_and_correct": True,
         "photorealistic_not_flat": True,
         "all_garments_present": True,
+        "authority_consistent": True,
         "reason": "wrong garment",
     }
     v = ad.parse_verdict(judge_output, det_failures=[])
     assert v.passed is False
     assert "wrong_garment" in v.failure_tags
-    assert v.score == 5 / 6
+    assert v.score == 6 / 7
     assert v.domain == "imagery"
 
 

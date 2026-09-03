@@ -1,0 +1,20 @@
+{
+  "schema": "skyyrose.foreground-coverage-authority/1",
+  "state": "BLOCKED_PENDING_ACCEPTED_FOREGROUND_BASELINE",
+  "scene_id": "LH-COMMERCE-2",
+  "source_sha256": null,
+  "minimum_coverage_ratio": 0.05,
+  "maximum_coverage_ratio": 0.98,
+  "independent_baseline_receipt": null,
+  "segmentation_model": {
+    "id": "birefnet",
+    "path": "/Users/theceo/ComfyUI-Shared/models/background_removal/birefnet.safetensors",
+    "sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
+  },
+  "activation_requirements": [
+    "Bind the exact founder-approved FRONT_SCENE_INPUT_ALLOWED candidate hash as source_sha256.",
+    "Bind a hash-identical independent visual-commerce-qa PASS baseline receipt.",
+    "Keep coverage within the fail-closed 0.05 through 0.98 safety envelope.",
+    "Do not activate from a rejected, unreviewed, or rear-proof candidate."
+  ]
+}

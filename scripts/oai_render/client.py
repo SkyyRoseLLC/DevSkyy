@@ -12,9 +12,12 @@ never sent; the returned base64 is decoded to image bytes.
 from __future__ import annotations
 
 import base64
+import hashlib
+import json
 import logging
 import random
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Protocol
 
@@ -25,10 +28,33 @@ log = logging.getLogger(__name__)
 _MIME = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}
 
 
+@dataclass(frozen=True)
+class ImageCallResult:
+    """Decoded image plus the non-secret provider evidence for its API call."""
+
+    data: bytes
+    request_id: str
+    requested_model: str
+    sdk_version: str
+    endpoint: str
+    request_parameters: dict[str, object]
+    ordered_input_sha256s: tuple[str, ...]
+    mask_sha256: str | None
+    prompt_sha256: str
+    job_contract: dict[str, object]
+    contract_sha256: str
+
+
 class RenderClient(Protocol):
     """Structural type for an image render client (used for typing in pipeline)."""
 
-    def edit(self, *, prompt: str, image_paths: list[Path]) -> bytes: ...
+    def edit_with_metadata(
+        self,
+        *,
+        prompt: str,
+        image_paths: list[Path],
+        expected_input_sha256s: tuple[str, ...] | None = None,
+    ) -> ImageCallResult: ...
 
 
 def _as_upload(path: Path) -> tuple[str, bytes, str]:
@@ -48,7 +74,11 @@ class OAIImageClient:
         except ImportError as exc:  # pragma: no cover - dependency guard
             raise RuntimeError("openai SDK not installed. `pip install openai` (>=1.0).") from exc
         self._OpenAI = OpenAI
-        self._client = OpenAI(api_key=config.get_api_key(), timeout=config.REQUEST_TIMEOUT_S)
+        self._client = OpenAI(
+            api_key=config.get_api_key(),
+            timeout=config.REQUEST_TIMEOUT_S,
+            max_retries=0,
+        )
 
     def _transient_errors(self) -> tuple[type[Exception], ...]:
         """Return the OpenAI exception classes worth retrying."""
@@ -71,7 +101,30 @@ class OAIImageClient:
                 f"{len(image_paths)} references exceeds the {config.MAX_REFERENCE_IMAGES} limit."
             )
 
+        return self.edit_with_metadata(
+            prompt=prompt, image_paths=image_paths, mask_path=mask_path
+        ).data
+
+    def edit_with_metadata(
+        self,
+        *,
+        prompt: str,
+        image_paths: list[Path],
+        mask_path: Path | None = None,
+        expected_input_sha256s: tuple[str, ...] | None = None,
+    ) -> ImageCallResult:
+        """Run an edit and retain request metadata needed for an audit receipt."""
+        if not image_paths:
+            raise ValueError("edit_with_metadata() requires at least one reference image.")
+        if len(image_paths) > config.MAX_REFERENCE_IMAGES:
+            raise ValueError(
+                f"{len(image_paths)} references exceeds the {config.MAX_REFERENCE_IMAGES} limit."
+            )
+
         images = [_as_upload(p) for p in image_paths]
+        ordered_input_sha256s = tuple(hashlib.sha256(image[1]).hexdigest() for image in images)
+        if expected_input_sha256s is not None and ordered_input_sha256s != expected_input_sha256s:
+            raise RuntimeError("reference bytes changed between pipeline preflight and upload")
         kwargs: dict = {
             "model": config.MODEL,
             "image": images,
@@ -87,10 +140,41 @@ class OAIImageClient:
         # configured model is known to accept it.
         if config.MODEL in config.INPUT_FIDELITY_SUPPORTED_MODELS:
             kwargs["input_fidelity"] = config.INPUT_FIDELITY
-        if mask_path is not None:
-            kwargs["mask"] = _as_upload(mask_path)
+        mask_upload = _as_upload(mask_path) if mask_path is not None else None
+        if mask_upload is not None:
+            kwargs["mask"] = mask_upload
 
-        return self._run_with_retry(lambda: self._client.images.edit(**kwargs))
+        public_parameters = {
+            key: value for key, value in kwargs.items() if key not in {"image", "mask", "prompt"}
+        }
+        prompt_sha256 = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+        mask_sha256 = hashlib.sha256(mask_upload[1]).hexdigest() if mask_upload else None
+        job_contract: dict[str, object] = {
+            "contract_id": "skyyrose-product-image-candidate-v1",
+            "authority_state": "CANDIDATE_ONLY",
+            "operation": "product_image_candidate",
+            "provider": "openai",
+            "api_surface": "images",
+            "endpoint": "/v1/images/edits",
+            "requested_model": config.MODEL,
+            "prompt_sha256": prompt_sha256,
+            "request_image_sha256s": list(ordered_input_sha256s),
+            "mask_sha256": mask_sha256,
+            "request_parameters": public_parameters,
+            "release_authority": False,
+        }
+        contract_sha256 = hashlib.sha256(
+            json.dumps(job_contract, sort_keys=True, separators=(",", ":")).encode("utf-8")
+        ).hexdigest()
+        return self._run_with_retry_raw(
+            lambda: self._client.images.with_raw_response.edit(**kwargs),
+            public_parameters=public_parameters,
+            ordered_input_sha256s=ordered_input_sha256s,
+            mask_sha256=mask_sha256,
+            prompt_sha256=prompt_sha256,
+            job_contract=job_contract,
+            contract_sha256=contract_sha256,
+        )
 
     def generate(
         self,
@@ -142,6 +226,65 @@ class OAIImageClient:
         while True:
             try:
                 return self._decode_first(do_call())
+            except transient as exc:
+                attempt += 1
+                if attempt > config.MAX_RETRIES:
+                    log.error(
+                        "gpt-image-2 call failed after %d retries: %s", config.MAX_RETRIES, exc
+                    )
+                    raise
+                delay = min(
+                    config.RETRY_BACKOFF_BASE_S * (2 ** (attempt - 1))
+                    + random.uniform(0, 1),  # nosec B311 — backoff jitter, not crypto
+                    config.RETRY_BACKOFF_MAX_S,
+                )
+                log.warning(
+                    "Transient error (attempt %d/%d): %s — retrying in %.1fs",
+                    attempt,
+                    config.MAX_RETRIES,
+                    exc,
+                    delay,
+                )
+                time.sleep(delay)
+
+    def _run_with_retry_raw(
+        self,
+        do_call,
+        *,
+        public_parameters: dict[str, object],
+        ordered_input_sha256s: tuple[str, ...],
+        mask_sha256: str | None,
+        prompt_sha256: str,
+        job_contract: dict[str, object],
+        contract_sha256: str,
+    ) -> ImageCallResult:
+        """Run a raw-response call and preserve its provider request identifier."""
+        import openai
+
+        transient = self._transient_errors()
+        attempt = 0
+        while True:
+            try:
+                raw = do_call()
+                parsed = raw.parse()
+                request_id = raw.headers.get("x-request-id")
+                if not request_id:
+                    raise RuntimeError(
+                        "OpenAI image response omitted x-request-id; refusing an untraceable result."
+                    )
+                return ImageCallResult(
+                    data=self._decode_first(parsed),
+                    request_id=request_id,
+                    requested_model=config.MODEL,
+                    sdk_version=openai.__version__,
+                    endpoint="/v1/images/edits",
+                    request_parameters=public_parameters,
+                    ordered_input_sha256s=ordered_input_sha256s,
+                    mask_sha256=mask_sha256,
+                    prompt_sha256=prompt_sha256,
+                    job_contract=job_contract,
+                    contract_sha256=contract_sha256,
+                )
             except transient as exc:
                 attempt += 1
                 if attempt > config.MAX_RETRIES:

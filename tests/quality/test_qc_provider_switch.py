@@ -31,6 +31,7 @@ def test_anthropic_provider_uses_claude_judge(monkeypatch):
                 "branding_legible_and_correct": True,
                 "photorealistic_not_flat": True,
                 "all_garments_present": True,
+                "authority_consistent": True,
                 "reason": "pass",
             },
             0.02,
@@ -57,4 +58,4 @@ def test_anthropic_judge_error_routes_to_mandatory_review(monkeypatch):
     v = gate.check(b"\x89PNG", _exp())
     assert v.passed is False and v.needs_review is True
     assert v.failure_tags == ("judge_unavailable",)
-    assert v.judge_cost_usd == 0.0
+    assert v.judge_cost_usd == config.EST_JUDGE_COST_USD

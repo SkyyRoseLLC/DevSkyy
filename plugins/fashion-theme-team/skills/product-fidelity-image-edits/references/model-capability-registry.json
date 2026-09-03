@@ -1,6 +1,6 @@
 {
-  "schema": "product-fidelity-model-registry.v1",
-  "verified_on": "2026-08-24",
+  "schema": "product-fidelity-model-registry.v2",
+  "verified_on": "2026-09-02",
   "unknown_models": "block",
   "exactness_rule": "Reference conditioning is not a pixel, temporal, geometry, or material lock.",
   "models": [
@@ -18,17 +18,99 @@
       "source": "local tool schema"
     },
     {
-      "id": "openai-responses-image-mask",
-      "aliases": ["gpt-image-2", "gpt-image-1.5", "openai-image-generation-tool"],
+      "id": "openai-gpt-image-2-edit",
+      "aliases": ["gpt-image-2", "gpt-image-2-2026-04-21", "openai-images-edits"],
       "provider": "openai",
       "modality": "image",
-      "status": "verify_live_model_id",
-      "capabilities": ["scene_generation", "semantic_edit", "multi_reference", "explicit_mask_edit"],
-      "allowed_operations": ["scene_generation", "product_image_candidate", "bounded_image_edit"],
-      "blocked_operations": ["unverified_exact_product"],
+      "status": "external_api",
+      "capabilities": ["semantic_edit", "multi_reference", "explicit_mask_edit"],
+      "allowed_operations": ["bounded_image_edit"],
+      "blocked_operations": ["maskless_fallback", "unverified_exact_product"],
       "fidelity_tier": "bounded_only_after_pixel_verification",
-      "notes": "Responses image_generation supports input_image_mask. The adapter must expose and bind it; verify outside-mask pixels after generation.",
+      "notes": "Use the Image API for one-shot localized edits. Pin the GPT Image 2 snapshot, omit input_fidelity, bind the same-size alpha mask, capture x-request-id, and verify zero outside-mask drift.",
+      "api_contract": {
+        "api_surface": "images",
+        "endpoint": "/v1/images/edits",
+        "request_model": "gpt-image-2-2026-04-21",
+        "required_generator_fields": {
+          "api_surface": "images",
+          "endpoint": "/v1/images/edits",
+          "capture_request_id": true
+        },
+        "forbidden_parameters": ["input_fidelity"],
+        "parameter_policy": {
+          "allowed": ["size", "quality", "output_format", "background", "moderation"],
+          "required": ["size", "quality", "output_format"],
+          "enums": {
+            "quality": ["low", "medium", "high", "auto"],
+            "output_format": ["png"],
+            "background": ["auto", "opaque", "transparent"],
+            "moderation": ["auto", "low"]
+          }
+        },
+        "mask": {
+          "format": "png",
+          "alpha_channel_required": true,
+          "alpha_zero_is_editable": true,
+          "same_dimensions_as_input": true,
+          "max_input_bytes": 50000000
+        },
+        "required_receipt_fields": [
+          "contract_sha256",
+          "provider",
+          "api_surface",
+          "endpoint",
+          "requested_model",
+          "input_sha256",
+          "request_image_sha256s",
+          "mask_path",
+          "mask_sha256",
+          "output_sha256",
+          "prompt_sha256",
+          "request_parameters",
+          "x_request_id",
+          "sdk_version"
+        ]
+      },
       "source": "https://developers.openai.com/api/docs/guides/image-generation"
+    },
+    {
+      "id": "openai-responses-image-tool",
+      "aliases": ["openai-image-generation-tool", "openai-responses-image-mask"],
+      "provider": "openai",
+      "modality": "image",
+      "status": "external_api",
+      "capabilities": ["scene_generation", "semantic_edit", "multi_reference", "explicit_mask_edit"],
+      "allowed_operations": ["scene_generation", "product_image_candidate"],
+      "blocked_operations": ["bounded_image_edit_for_one_shot_workflow", "unverified_exact_product"],
+      "fidelity_tier": "candidate_only",
+      "notes": "Use Responses for conversational or multi-step image workflows. One-shot localized product patches must use the directly model-addressed Image API route so the gate can pin and audit the image model.",
+      "source": "https://developers.openai.com/api/docs/guides/image-generation"
+    },
+    {
+      "id": "fashn-tryon-max",
+      "aliases": ["tryon-max", "fashn_tryon_max"],
+      "provider": "fashn",
+      "modality": "image",
+      "status": "external_api_preview",
+      "capabilities": [
+        "virtual_tryon",
+        "model_identity_preservation",
+        "pose_preservation",
+        "product_reference",
+        "high_resolution",
+        "seed_control"
+      ],
+      "allowed_operations": ["virtual_tryon_candidate"],
+      "blocked_operations": [
+        "unreviewed_exact_product",
+        "multi_view_product_reconstruction",
+        "automatic_paid_retry",
+        "direct_scene_promotion"
+      ],
+      "fidelity_tier": "candidate_only_after_source_binding_and_independent_review",
+      "notes": "Try-On Max accepts one product image and one existing model image, then attempts to preserve the model identity, pose, and styling. It is Preview, cannot prove unseen multi-view construction, and requires source-hash validation plus independent product review before any downstream scene use.",
+      "source": "https://docs.fashn.ai/api-reference/tryon-max"
     },
     {
       "id": "gemini-native-image",

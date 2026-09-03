@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-08-25T20:15:59+00:00",
+  "generated_at": "2026-09-03T06:16:41+00:00",
   "catalog_sha": "sha256:8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
   "skus": {
     "br-001": {
@@ -213,9 +213,24 @@
           "sha256": "sha256:fd4738f50bca8aea436e5ae2c8fdb7bb8ce8a1528738a587a6c1eeafdf930ba7"
         },
         {
+          "role": "garment-wearer-left",
+          "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-left.jpeg",
+          "sha256": "sha256:34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2"
+        },
+        {
+          "role": "garment-wearer-right",
+          "path": "assets/products/source-photos/black-rose/br-007-shorts-wearer-right.jpeg",
+          "sha256": "sha256:850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
+        },
+        {
+          "role": "garment-founder-four-angle",
+          "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+          "sha256": "sha256:7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-rose-x-love-hurts-basketball-shorts.md",
-          "sha256": "sha256:dec60e3d018ffde9ec26339c89f42a699e0a5a6302671e8152e3cc55fd4e22fb"
+          "sha256": "sha256:274adf8ff0472eaa3006f099725c20f46bd6e5bf48d441306ae13b134bf429cf"
         }
       ]
     },
@@ -561,9 +576,19 @@
           "sha256": "sha256:9a4732278be213a52f81af6688c5c7469a23ff1e88d9f05ac6b414143a5aac0d"
         },
         {
+          "role": "garment-wearer-left",
+          "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+          "sha256": "sha256:d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6"
+        },
+        {
+          "role": "garment-wearer-right",
+          "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+          "sha256": "sha256:c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-basketball-shorts.md",
-          "sha256": "sha256:5340a30adaa2507c51adbb4d06e2bd52f0e21d2d82a2dbe8e5826160871b1e9d"
+          "sha256": "sha256:115952d71ade955796c98e3d80f688e2607256d975f16ebc80f1fc977b7199ff"
         }
       ]
     },

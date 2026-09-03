@@ -1,0 +1,14 @@
+# Immutable vendor input; source parity checks own this tree.
+vendor/**
+
+# Generated branded-skill projections and their evidence snapshots.
+skills/fashion-theme-team/brain/branded-skills/enhanced/**
+skills/fashion-theme-team/brain/branded-skills/routes/route-registry.json
+skills/fashion-theme-team/brain/branded-skills/routes/validation-evidence.json
+skills/fashion-theme-team/brain/branded-skills/sources/source-registry.json
+skills/fashion-theme-team/brain/branded-skills/sources/validation-report.json
+
+# Binary media is never a text-formatting input.
+**/*.png
+**/*.pdf
+**/*.woff2

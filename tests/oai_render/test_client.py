@@ -17,6 +17,7 @@ No real OpenAI call is made — the SDK client is replaced with a mock.
 from __future__ import annotations
 
 import base64
+import hashlib
 from pathlib import Path
 from unittest.mock import MagicMock
 
@@ -32,9 +33,11 @@ def _build_client_with_mock(monkeypatch: pytest.MonkeyPatch) -> tuple[OAIImageCl
     monkeypatch.setenv("OPENAI_API_KEY", "test-key-abc")
     client = OAIImageClient()
     fake_sdk = MagicMock()
-    fake_sdk.images.edit.return_value = MagicMock(
-        data=[MagicMock(b64_json=base64.b64encode(b"image-bytes").decode())]
-    )
+    parsed = MagicMock(data=[MagicMock(b64_json=base64.b64encode(b"image-bytes").decode())])
+    raw = MagicMock()
+    raw.parse.return_value = parsed
+    raw.headers = {"x-request-id": "req_test_123"}
+    fake_sdk.images.with_raw_response.edit.return_value = raw
     client._client = fake_sdk  # replace the real OpenAI SDK client
     return client, fake_sdk
 
@@ -50,9 +53,9 @@ def test_edit_omits_input_fidelity_for_unsupported_model(
     out = client.edit(prompt="SKYYROSE varsity, studio", image_paths=[img])
 
     assert out == b"image-bytes"
-    fake_sdk.images.edit.assert_called_once()
-    kwargs = fake_sdk.images.edit.call_args.kwargs
-    assert kwargs["model"] == "gpt-image-2"
+    fake_sdk.images.with_raw_response.edit.assert_called_once()
+    kwargs = fake_sdk.images.with_raw_response.edit.call_args.kwargs
+    assert kwargs["model"] == "gpt-image-2-2026-04-21"
     assert "input_fidelity" not in kwargs  # gpt-image-2 400s on this param
     assert config.MODEL not in config.INPUT_FIDELITY_SUPPORTED_MODELS
 
@@ -69,7 +72,7 @@ def test_edit_sends_input_fidelity_for_supported_model(
     out = client.edit(prompt="SKYYROSE varsity, studio", image_paths=[img])
 
     assert out == b"image-bytes"
-    kwargs = fake_sdk.images.edit.call_args.kwargs
+    kwargs = fake_sdk.images.with_raw_response.edit.call_args.kwargs
     assert kwargs["model"] == "gpt-image-1.5"
     assert kwargs["input_fidelity"] == "high"  # not omitted, not "low"
     assert config.INPUT_FIDELITY == "high"
@@ -94,8 +97,55 @@ def test_generate_text_to_image_contract(monkeypatch: pytest.MonkeyPatch) -> Non
     assert out == b"scene-bytes"
     fake_sdk.images.generate.assert_called_once()
     kwargs = fake_sdk.images.generate.call_args.kwargs
-    assert kwargs["model"] == "gpt-image-2"
+    assert kwargs["model"] == "gpt-image-2-2026-04-21"
     assert kwargs["size"] == "1152x1536"
     assert kwargs["background"] == "opaque"  # scenes are full backdrops
     assert "response_format" not in kwargs  # rejected by gpt-image models
     assert "image" not in kwargs  # text-to-image: no reference
+
+
+def test_edit_with_metadata_captures_request_evidence(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    client, _ = _build_client_with_mock(monkeypatch)
+    img = tmp_path / "ref.png"
+    img.write_bytes(_FAKE_PNG)
+
+    result = client.edit_with_metadata(prompt="exact garment", image_paths=[img])
+
+    assert result.data == b"image-bytes"
+    assert result.request_id == "req_test_123"
+    assert result.requested_model == "gpt-image-2-2026-04-21"
+    assert result.endpoint == "/v1/images/edits"
+    assert result.sdk_version
+    assert "prompt" not in result.request_parameters
+    assert "image" not in result.request_parameters
+
+
+def test_edit_metadata_hashes_exact_uploaded_bytes_before_call(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    client, fake_sdk = _build_client_with_mock(monkeypatch)
+    img = tmp_path / "ref.png"
+    original = _FAKE_PNG
+    img.write_bytes(original)
+    raw = fake_sdk.images.with_raw_response.edit.return_value
+
+    def _mutate_after_upload(**_kwargs):
+        img.write_bytes(b"changed-after-upload-snapshot")
+        return raw
+
+    fake_sdk.images.with_raw_response.edit.side_effect = _mutate_after_upload
+
+    result = client.edit_with_metadata(prompt="exact garment", image_paths=[img])
+
+    assert result.ordered_input_sha256s == (hashlib.sha256(original).hexdigest(),)
+    assert result.ordered_input_sha256s[0] != hashlib.sha256(img.read_bytes()).hexdigest()
+
+
+def test_client_disables_hidden_sdk_retries(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("OPENAI_API_KEY", "test-key-abc")
+    client = OAIImageClient()
+
+    assert client._client.max_retries == 0
+    assert config.MAX_RETRIES == 0

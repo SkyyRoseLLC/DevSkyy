@@ -1,0 +1,109 @@
+# Fashion Theme Team formatting matrix.
+#
+# The matrix is intentionally source-first: vendor inputs, generated projections,
+# evidence snapshots, and binary media are owned by their parity or integrity
+# checks and must not be rewritten by a formatter.
+schema = "fashion-theme-team-formatting.v1"
+
+[scope]
+include_tracked = true
+include_untracked = true
+exclude = [
+  "vendor/**",
+  "skills/fashion-theme-team/brain/branded-skills/enhanced/**",
+  "skills/fashion-theme-team/brain/branded-skills/routes/route-registry.json",
+  "skills/fashion-theme-team/brain/branded-skills/routes/validation-evidence.json",
+  "skills/fashion-theme-team/brain/branded-skills/sources/source-registry.json",
+  "skills/fashion-theme-team/brain/branded-skills/sources/validation-report.json",
+  ".git/**",
+  ".mypy_cache/**",
+  ".pytest_cache/**",
+  ".ruff_cache/**",
+  "**/.mypy_cache/**",
+  "**/.pytest_cache/**",
+  "**/.ruff_cache/**",
+  "**/node_modules/**",
+  "**/__pycache__/**",
+]
+
+[policy]
+encoding = "utf-8"
+line_endings = "lf"
+final_newline = true
+trailing_whitespace = "forbidden"
+markdown_hard_break = "exactly-two-spaces"
+unknown_text = "fail"
+
+[language.python]
+extensions = [".py"]
+formatter = "black"
+formatter_version = "26.3.1"
+syntax = "ast.parse"
+imports_formatter = "isort"
+imports_formatter_version = "8.0.0"
+lint_formatter = "ruff"
+lint_formatter_version = "0.15.2"
+changed_file_policy = "enforce-import-and-lint-checks"
+
+[language.shell]
+extensions = [".sh", ".bash", ".zsh"]
+formatter = "shfmt"
+formatter_args = ["-i", "2", "-ci", "-sr", "-bn"]
+fallback = "bash -n plus deterministic text policy"
+
+[language.javascript]
+extensions = [".js", ".mjs", ".cjs"]
+formatter = "prettier"
+formatter_args = ["--config", ".prettierrc.json"]
+fallback = "node --check plus deterministic text policy"
+
+[language.json]
+extensions = [".json"]
+formatter = "prettier"
+formatter_args = ["--config", ".prettierrc.json"]
+fallback = "JSON parse plus deterministic text policy"
+
+[language.markdown]
+extensions = [".md", ".markdown"]
+formatter = "prettier"
+formatter_args = ["--config", ".prettierrc.json"]
+fallback = "deterministic text policy; exactly two spaces for hard breaks"
+
+[language.css]
+extensions = [".css"]
+formatter = "prettier"
+formatter_args = ["--config", ".prettierrc.json"]
+fallback = "deterministic text policy"
+
+[language.html]
+extensions = [".html", ".htm"]
+formatter = "prettier"
+formatter_args = ["--config", ".prettierrc.json"]
+fallback = "HTML parser plus deterministic text policy"
+
+[language.yaml]
+extensions = [".yaml", ".yml"]
+formatter = "prettier"
+formatter_args = ["--config", ".prettierrc.json"]
+fallback = "YAML parse plus deterministic text policy"
+
+[language.toml]
+extensions = [".toml"]
+formatter = "tomllib"
+fallback = "TOML parse plus deterministic text policy"
+
+[language.php]
+extensions = [".php"]
+formatter = "php-cs-fixer"
+fallback = "php -l plus deterministic text policy"
+
+[language.plain_text]
+extensions = [".txt"]
+formatter = "deterministic text policy"
+
+[language.metadata]
+filenames = [".editorconfig", ".gitignore", ".prettierignore"]
+formatter = "deterministic text policy"
+
+[binary]
+extensions = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif", ".ico", ".pdf", ".woff", ".woff2", ".ttf", ".otf"]

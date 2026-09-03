@@ -39,3 +39,10 @@ authority, and unresolved contradictions remain `BLOCKED`.
 
 Plans and routes only: no theme implementation, catalog mutation, creative
 approval, uplift claim, or deployment.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. Start a scoped task before
+research or planning output is adopted; record source freshness, route matrix,
+schema parity, contradictions, and independent review before handing a work
+packet to implementation.

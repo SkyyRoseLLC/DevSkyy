@@ -7,10 +7,13 @@ the contract the live dashboard depends on.
 
 from __future__ import annotations
 
+import hashlib
 import json
+from pathlib import Path
 from types import SimpleNamespace
 
 from scripts.oai_render import config, pipeline
+from scripts.oai_render.client import ImageCallResult
 from scripts.oai_render.monitor import aggregate, snapshot
 from scripts.oai_render.pipeline import SkuPlan
 from scripts.oai_render.qc import QCVerdict
@@ -23,14 +26,57 @@ def _plan() -> SkuPlan:
         name="BLACK Rose Crewneck",
         collection="black-rose",
         output_slug="black-rose-crewneck",
-        references=[SimpleNamespace(path="/tmp/ref.png", label="real garment photo")],
+        references=[SimpleNamespace(path=Path(__file__), label="real garment photo")],
         prompt="render it",
     )
 
 
 class _FakeClient:
-    def edit(self, *, prompt, image_paths):
-        return b"png-bytes"
+    def __init__(self):
+        self.calls = 0
+
+    def edit_with_metadata(self, *, prompt, image_paths, expected_input_sha256s=None):
+        self.calls += 1
+        prompt_sha256 = hashlib.sha256(prompt.encode("utf-8")).hexdigest()
+        input_hashes = expected_input_sha256s or tuple(
+            hashlib.sha256(str(path).encode("utf-8")).hexdigest() for path in image_paths
+        )
+        contract = {
+            "contract_id": "skyyrose-product-image-candidate-v1",
+            "authority_state": "CANDIDATE_ONLY",
+            "operation": "product_image_candidate",
+            "provider": "openai",
+            "api_surface": "images",
+            "endpoint": "/v1/images/edits",
+            "requested_model": "gpt-image-2-2026-04-21",
+            "prompt_sha256": prompt_sha256,
+            "request_image_sha256s": list(input_hashes),
+            "mask_sha256": None,
+            "request_parameters": {
+                "model": "gpt-image-2-2026-04-21",
+                "quality": "high",
+                "size": "1024x1536",
+                "output_format": "png",
+                "background": "auto",
+                "n": 1,
+            },
+            "release_authority": False,
+        }
+        return ImageCallResult(
+            data=b"png-bytes",
+            request_id=f"req_runlog_{self.calls}",
+            requested_model="gpt-image-2-2026-04-21",
+            sdk_version="test",
+            endpoint="/v1/images/edits",
+            request_parameters=contract["request_parameters"],
+            ordered_input_sha256s=input_hashes,
+            mask_sha256=None,
+            prompt_sha256=prompt_sha256,
+            job_contract=contract,
+            contract_sha256=hashlib.sha256(
+                json.dumps(contract, sort_keys=True, separators=(",", ":")).encode("utf-8")
+            ).hexdigest(),
+        )
 
 
 class _FakeGate:
@@ -71,10 +117,15 @@ def test_render_sku_emits_attempt_verdict_accept_sequence(tmp_path, monkeypatch)
 
     assert result.status == "rendered"
     events = load_events(rl.path)
-    assert [e["event"] for e in events] == ["attempt", "qc_verdict", "accepted"]
-    assert events[1]["passed"] is True
-    assert "sherpa" in events[1]["analysis"]
-    assert events[2]["path"].endswith("ghost.png")
+    assert [e["event"] for e in events] == [
+        "attempt",
+        "provider_response",
+        "qc_verdict",
+        "accepted",
+    ]
+    assert events[2]["passed"] is True
+    assert "sherpa" in events[2]["analysis"]
+    assert ".candidate.req_runlog_1.png" in events[3]["path"]
 
 
 def test_render_sku_emits_quarantine_then_exhausted(tmp_path, monkeypatch):
@@ -91,9 +142,11 @@ def test_render_sku_emits_quarantine_then_exhausted(tmp_path, monkeypatch):
     kinds = [e["event"] for e in load_events(rl.path)]
     assert kinds == [
         "attempt",
+        "provider_response",
         "qc_verdict",
         "quarantined",
         "attempt",
+        "provider_response",
         "qc_verdict",
         "quarantined",
         "qc_exhausted",

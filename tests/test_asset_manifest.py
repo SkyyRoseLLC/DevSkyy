@@ -75,6 +75,34 @@ def test_catalog_sha_is_pinned():
     assert m.catalog_sha and m.catalog_sha.startswith("sha256:")
 
 
+def test_br007_directional_authorities_are_hash_bound():
+    assets = AssetManifest.load().skus["br-007"]
+    wearer_left = assets.by_role("garment-wearer-left")
+    wearer_right = assets.by_role("garment-wearer-right")
+
+    assert wearer_left is not None
+    assert wearer_left.path.endswith("br-007-shorts-wearer-left.jpeg")
+    assert wearer_left.sha256 == (
+        "sha256:34ad777e56b38bea0d86c87e9815c537b109ab7fcf39614711093fb55f2309d2"
+    )
+    assert wearer_right is not None
+    assert wearer_right.path.endswith("br-007-shorts-wearer-right.jpeg")
+    assert wearer_right.sha256 == (
+        "sha256:850d29f480bcb8e282a21ffca427bd368a03d05ff5f61fad8a8ff58f497ec8f8"
+    )
+
+
+def test_br007_founder_four_angle_authority_is_hash_bound():
+    assets = AssetManifest.load().skus["br-007"]
+    founder_board = assets.by_role("garment-founder-four-angle")
+
+    assert founder_board is not None
+    assert founder_board.path.endswith("br-007-founder-four-angle-physical-authority.jpg")
+    assert founder_board.sha256 == (
+        "sha256:7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130"
+    )
+
+
 def test_verify_detects_a_missing_file(tmp_path):
     """A manifest that names an absent file must surface as drift."""
     from skyyrose.core.asset_manifest import AssetRecord, SkuAssets

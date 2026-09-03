@@ -1,0 +1,6 @@
+# Complete dependencies for scripts/verify.sh.
+# Install with: python3 -m pip install -r requirements-verify.txt
+-r requirements-formatting.txt
+jsonschema>=4.23,<5
+numpy>=2.1.3,<3
+Pillow>=12.3,<13

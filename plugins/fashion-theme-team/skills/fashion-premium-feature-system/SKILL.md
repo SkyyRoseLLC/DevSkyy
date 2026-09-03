@@ -86,3 +86,10 @@ The skill may report only `PASS`, `FAIL`, or `BLOCKED` for a candidate. `PASS`
 means ready for founder review, never permission to deploy. The catalog remains
 `governed-not-implemented` until the actual theme candidate supplies evidence
 for the selected records.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill for every selected feature ID.
+Bind the state matrix, fallback, security, accessibility, performance, commerce,
+and release proof to one candidate; record the first observed missing state or
+broken journey before a further implementation or release attempt.

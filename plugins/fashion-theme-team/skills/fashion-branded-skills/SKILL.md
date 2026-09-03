@@ -59,3 +59,10 @@ No paid provider, credential use, upload, remote write, staging mutation,
 deployment, or production mutation without its required approval. Source skill
 inclusion is not factual authentication or quality certification. Missing or
 stale authority is `UNKNOWN` or `BLOCKED`, never inferred.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with every selected branded capability. Record
+the exact source hash, route and packs, authority capture, gap closures, output
+contract, and independent evidence; the first stale or unclosed authority gap
+blocks that task scope until it is resolved.

@@ -1,4 +1,9 @@
 export default {
+  // Prettier 3 no longer discovers plugins automatically. Keep repository
+  // language support explicit so the pre-commit hook behaves the same on
+  // every workstation and CI runner.
+  plugins: ['prettier-plugin-sh', 'prettier-plugin-sql', 'prettier-plugin-toml'],
+
   // Basic formatting
   semi: true,
   trailingComma: 'es5',
@@ -72,6 +77,12 @@ export default {
         printWidth: 120,
         tabWidth: 2,
         htmlWhitespaceSensitivity: 'ignore',
+      },
+    },
+    {
+      files: '*.ipynb',
+      options: {
+        parser: 'json',
       },
     },
   ],
