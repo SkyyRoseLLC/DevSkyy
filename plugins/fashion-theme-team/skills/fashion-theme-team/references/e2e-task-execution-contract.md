@@ -50,33 +50,14 @@ the earlier record. Staging and production are separate task scopes.
 {
   "task_id": "task_...",
   "project_manager": "fashion_theme_team_project_manager",
-  "agents": [
-    {
-      "name": "fashion_frontend_engineer",
-      "job_title": "Frontend Engineer",
-      "capabilities": ["responsive implementation", "motion fallback"],
-      "owned_deliverable": "V2 card surface"
-    }
-  ],
+  "agents": [{"name": "fashion_frontend_engineer", "job_title": "Frontend Engineer", "capabilities": ["responsive implementation", "motion fallback"], "owned_deliverable": "V2 card surface"}],
   "kind": "fashion_frontend_motion",
-  "scope": { "candidate": "git:...", "route": "shop", "target": "staging" },
+  "scope": {"candidate": "git:...", "route": "shop", "target": "staging"},
   "requirements": ["source_hash", "desktop_capture", "mobile_capture", "independent_review"],
   "acceptance_criteria": ["desktop and mobile framing pass", "no failed scoped resource"],
-  "evidence": [{ "name": "source_hash", "artifact": "...", "sha256": "..." }],
-  "issues": [{ "id": "issue_...", "fingerprint": "...", "state": "OPEN" }],
-  "remediation_loops": [
-    {
-      "owner_team": "fashion-frontend-motion",
-      "agents": [
-        {
-          "name": "fashion_motion_responsive_engineer",
-          "job_title": "Motion and Responsive Engineer",
-          "capabilities": ["mobile crop correction"]
-        }
-      ],
-      "state": "OPEN"
-    }
-  ],
+  "evidence": [{"name": "source_hash", "artifact": "...", "sha256": "..."}],
+  "issues": [{"id": "issue_...", "fingerprint": "...", "state": "OPEN"}],
+  "remediation_loops": [{"owner_team": "fashion-frontend-motion", "agents": [{"name": "fashion_motion_responsive_engineer", "job_title": "Motion and Responsive Engineer", "capabilities": ["mobile crop correction"]}], "state": "OPEN"}],
   "founder_approval": "PENDING",
   "verdict": "BLOCKED"
 }

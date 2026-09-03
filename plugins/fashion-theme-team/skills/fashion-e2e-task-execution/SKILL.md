@@ -95,22 +95,22 @@ or reinterpret a failed review as a pass.
 
 ## Capability evidence matrix
 
-| Capability                       | Required task evidence before completion                                                                            | Independent verdict              |
-| -------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| `fashion-strategy-brain`         | source registry, route/job matrix, source freshness, contract/schema parity                                         | strategy/knowledge review        |
-| `fashion-brand-experience`       | brand direction, image provenance, crop/type rules, logo-off review                                                 | brand review                     |
-| `product-fidelity-image-edits`   | source-authority receipt, contract, mask or optical plan, provider receipt, visual review                           | product-fidelity review          |
-| `fashion-design-system`          | token/component contract, fixtures, generated parity, adoption impact                                               | design-system red team           |
-| `fashion-commerce-engineering`   | catalog mapping, state matrix, server-truth checks, purchase-journey proof                                          | commerce QA                      |
-| `fashion-frontend-motion`        | source/build hash, minified parity, 390/768/1440 captures, reduced-motion and fallback proof, console/network trace | frontend/motion review           |
-| `fashion-a11y-performance`       | keyboard/focus, screen-reader/reflow, reduced-motion, CWV/budget, route/state trace                                 | accessibility/performance review |
-| `fashion-visual-commerce-qa`     | eyes-on captures, candidate hash, SKU/provenance, customer-journey trace, failures                                  | independent QA verdict           |
-| `fashion-handoff-contracts`      | `preview.html`, `contract.json`, `evidence.json`, schema/ID/source parity                                           | handoff validation               |
-| `fashion-premium-feature-system` | feature ID/state matrix, fallback/security/performance/commerce proof                                               | cross-discipline review          |
-| `fashion-branded-skills`         | source hash, selected route/pack, gap closures, authenticated authority capture                                     | independent evidence review      |
-| `elite-builder-runtime`          | approved PRD/routing/budget, execution record, self-heal trace, downstream evidence                                 | independent Team gates           |
-| `fashion-release-evidence`       | frozen candidate, all applicable gate records, compatibility/package/rollback packet                                | release engineer verdict         |
-| `fashion-theme-team`             | phase ledger, ownership/handoffs, integrated candidate manifest, complete evidence set                              | founder-review readiness         |
+| Capability | Required task evidence before completion | Independent verdict |
+| --- | --- | --- |
+| `fashion-strategy-brain` | source registry, route/job matrix, source freshness, contract/schema parity | strategy/knowledge review |
+| `fashion-brand-experience` | brand direction, image provenance, crop/type rules, logo-off review | brand review |
+| `product-fidelity-image-edits` | source-authority receipt, contract, mask or optical plan, provider receipt, visual review | product-fidelity review |
+| `fashion-design-system` | token/component contract, fixtures, generated parity, adoption impact | design-system red team |
+| `fashion-commerce-engineering` | catalog mapping, state matrix, server-truth checks, purchase-journey proof | commerce QA |
+| `fashion-frontend-motion` | source/build hash, minified parity, 390/768/1440 captures, reduced-motion and fallback proof, console/network trace | frontend/motion review |
+| `fashion-a11y-performance` | keyboard/focus, screen-reader/reflow, reduced-motion, CWV/budget, route/state trace | accessibility/performance review |
+| `fashion-visual-commerce-qa` | eyes-on captures, candidate hash, SKU/provenance, customer-journey trace, failures | independent QA verdict |
+| `fashion-handoff-contracts` | `preview.html`, `contract.json`, `evidence.json`, schema/ID/source parity | handoff validation |
+| `fashion-premium-feature-system` | feature ID/state matrix, fallback/security/performance/commerce proof | cross-discipline review |
+| `fashion-branded-skills` | source hash, selected route/pack, gap closures, authenticated authority capture | independent evidence review |
+| `elite-builder-runtime` | approved PRD/routing/budget, execution record, self-heal trace, downstream evidence | independent Team gates |
+| `fashion-release-evidence` | frozen candidate, all applicable gate records, compatibility/package/rollback packet | release engineer verdict |
+| `fashion-theme-team` | phase ledger, ownership/handoffs, integrated candidate manifest, complete evidence set | founder-review readiness |
 
 ## Staging and release work
 

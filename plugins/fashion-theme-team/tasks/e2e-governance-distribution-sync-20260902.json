@@ -42,7 +42,12 @@
       "/Users/theceo/.codex/plugins/cache/personal/fashion-theme-team/0.4.0+codex.20260825142900"
     ],
     "target_branch": "main",
-    "exclusions": ["theme deployment", "provider spend", "scene promotion", "production release"]
+    "exclusions": [
+      "theme deployment",
+      "provider spend",
+      "scene promotion",
+      "production release"
+    ]
   },
   "acceptance_criteria": [
     "canonical plugin verification passes",
