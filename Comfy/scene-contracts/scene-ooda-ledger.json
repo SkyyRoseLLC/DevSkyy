@@ -27,7 +27,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "d23925af2ba89967ea743ca591d11db9ad0e3658a893859122026b41839cbdc2",
+      "contract_sha256": "d72e8b77249961f588d8494b34c6d099fe09952b1841b91e9d6cd87c06dea964",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json",

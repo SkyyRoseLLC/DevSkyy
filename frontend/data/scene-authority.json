@@ -2,7 +2,7 @@
   "schema": "skyyrose.scene-authority-projection/1",
   "recordedAt": "2026-09-02",
   "source": {
-    "ledgerSha256": "62c19e589c44ef5cf49e953ab7b575dbe56c31ed38ccff778fb9ee539a29e827"
+    "ledgerSha256": "6a7d403136a189347adc083e753cca41a90ba31eca9ca12a095f5a9cfbf078d8"
   },
   "approvalBoundaries": {
     "paidGeneration": "SEPARATE_PAID_ACTION_APPROVAL",
@@ -31,7 +31,7 @@
       },
       "identity": null,
       "evidenceHashes": {
-        "contract": "d23925af2ba89967ea743ca591d11db9ad0e3658a893859122026b41839cbdc2",
+        "contract": "d72e8b77249961f588d8494b34c6d099fe09952b1841b91e9d6cd87c06dea964",
         "identityApproval": null,
         "identityManifest": null
       },
