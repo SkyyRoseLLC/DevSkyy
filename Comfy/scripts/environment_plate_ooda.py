@@ -64,9 +64,12 @@ def _sha256_json(value: Any) -> str:
 
 
 def _contract_sha256(contract: Mapping[str, Any]) -> str:
-    """Hash the contract without its self-referential approval file binding."""
+    """Hash immutable execution inputs, excluding approval and merge-gate state."""
     normalized = json.loads(json.dumps(contract))
     normalized.setdefault("credit_control", {})["approval_receipt"] = None
+    # This gate intentionally changes only after the approved branch lands on
+    # main. It is a workflow-state transition, not a provider request input.
+    normalized["post_merge_execution_gate"] = None
     return _sha256_json(normalized)
 
 

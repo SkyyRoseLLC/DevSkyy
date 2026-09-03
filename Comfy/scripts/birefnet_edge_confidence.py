@@ -52,7 +52,12 @@ def analyze_birefnet_mask(
         raise EdgeConfidenceError("mask is empty")
     try:
         with Image.open(io.BytesIO(mask_bytes)) as opened:
-            mask = opened.convert("L")
+            if "A" in opened.getbands():
+                mask = opened.getchannel("A")
+                mode_analyzed = "A"
+            else:
+                mask = opened.convert("L")
+                mode_analyzed = "L"
             mask.load()
     except (OSError, UnidentifiedImageError) as exc:
         raise EdgeConfidenceError(f"mask is not a readable image: {exc}") from exc
@@ -88,7 +93,7 @@ def analyze_birefnet_mask(
             "sha256": _sha256_bytes(mask_bytes),
             "width": width,
             "height": height,
-            "mode_analyzed": "L",
+            "mode_analyzed": mode_analyzed,
         },
         "metrics": {
             "foreground_ratio": round(foreground / total, 8),

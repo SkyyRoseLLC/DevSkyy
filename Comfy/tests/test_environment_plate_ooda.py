@@ -279,3 +279,20 @@ def test_fingerprint_changes_with_prompt_or_live_schema(tmp_path: Path) -> None:
 
     assert first["execution_fingerprint"] != second["execution_fingerprint"]
     assert first["execution_fingerprint"] != third["execution_fingerprint"]
+
+
+def test_merge_gate_transition_does_not_stale_founder_fingerprint(tmp_path: Path) -> None:
+    contract, path = _portable_contract(CONTRACTS[0], tmp_path)
+    first = build_founder_approval_packet(
+        contract=contract,
+        contract_path=path,
+        live_object_info=_live_object_info(),
+    )
+    contract["post_merge_execution_gate"] = {"required": False, "action": "SATISFIED"}
+    second = build_founder_approval_packet(
+        contract=contract,
+        contract_path=path,
+        live_object_info=_live_object_info(),
+    )
+
+    assert first["execution_fingerprint"] == second["execution_fingerprint"]

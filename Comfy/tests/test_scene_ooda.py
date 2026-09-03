@@ -216,7 +216,7 @@ def test_lh_native_workflow_dependencies_are_hash_bound_and_fail_closed() -> Non
     assert any(check["status"] == "MISSING_PROTECTED_RGB_VERIFICATION" for check in rgb_checks)
 
 
-def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed() -> None:
+def test_paid_execution_needs_portable_authorities_and_receipts() -> None:
     contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
     manifest = json.loads(
         (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
@@ -227,7 +227,8 @@ def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed() -> No
 
     report = scene_ooda.observe(manifest)
 
-    assert report["configuration_ready"] is True
+    assert report["configuration_ready"] is False
+    assert any(check["status"] == "MISSING" for check in report["source_checks"])
     assert report["credit_control_check"]["prompt_review"]["status"] == "MISSING_RECEIPT"
     assert report["credit_control_check"]["paid_approval"]["status"] == "MISSING_RECEIPT"
     assert report["paid_authorized"] is False

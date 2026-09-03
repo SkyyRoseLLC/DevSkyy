@@ -25,6 +25,16 @@ def _png_bytes(values: list[int], size: tuple[int, int]) -> bytes:
     return output.getvalue()
 
 
+def _rgba_png_bytes(alpha_values: list[int], size: tuple[int, int]) -> bytes:
+    image = Image.new("RGBA", size, (255, 255, 255, 255))
+    alpha = Image.new("L", size)
+    alpha.putdata(alpha_values)
+    image.putalpha(alpha)
+    output = io.BytesIO()
+    image.save(output, format="PNG")
+    return output.getvalue()
+
+
 def test_receipt_binds_source_model_mask_and_descriptive_metrics() -> None:
     mask = _png_bytes([0, 32, 128, 255], (2, 2))
 
@@ -58,6 +68,16 @@ def test_degenerate_mask_is_blocked(value: int) -> None:
 
     assert receipt["status"] == "BLOCKED_DEGENERATE_MASK"
     assert receipt["quality_decision"] == "UNDETERMINED"
+
+
+def test_rgba_mask_uses_alpha_instead_of_rgb_luminance() -> None:
+    mask = _rgba_png_bytes([0, 64, 192, 255], (2, 2))
+
+    receipt = analyze_birefnet_mask(mask, source_sha256=SOURCE_SHA256)
+
+    assert receipt["mask"]["mode_analyzed"] == "A"
+    assert receipt["metrics"]["transparent_ratio"] == 0.25
+    assert receipt["metrics"]["opaque_ratio"] == 0.25
 
 
 def test_invalid_hash_or_image_is_rejected() -> None:
