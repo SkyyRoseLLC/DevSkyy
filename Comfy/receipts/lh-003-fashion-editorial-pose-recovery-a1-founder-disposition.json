@@ -1,0 +1,45 @@
+{
+  "schema_version": "founder-candidate-disposition.v1",
+  "disposition_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1-FOUNDER-DISPOSITION",
+  "stage_id": "SCENE-STAGE-05R-LH003-FASHION-EDITORIAL-POSE-RECOVERY-20260903",
+  "decided_at": "2026-09-03T09:36:07-07:00",
+  "founder_directive": "pass",
+  "interpretation": "Founder accepts the candidate as a risk exception for downstream Stage 6 preparation despite the independent REJECT verdict.",
+  "candidate": {
+    "id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+    "path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+    "sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
+    "physical_location_remains_quarantine": true
+  },
+  "independent_review": {
+    "path": "Comfy/receipts/lh-003-fashion-editorial-pose-recovery-a1-independent-review.json",
+    "sha256": "b76d97e5ec49c453129f29b45628f6923255a00c38ab3c6d8c67cccc756a8e10",
+    "verdict": "REJECT",
+    "verdict_modified": false,
+    "blocking_defects_preserved": [
+      "ID-01",
+      "POSE-01",
+      "ZIP-01",
+      "ART-L-01",
+      "ART-R-01"
+    ]
+  },
+  "founder_disposition": {
+    "status": "FOUNDER_ACCEPTED_WITH_KNOWN_DEFECTS",
+    "technical_product_fidelity_status": "REJECT",
+    "risk_waiver": true,
+    "retry_requested": false,
+    "retry_authorized": false
+  },
+  "downstream_scope": {
+    "stage_6_preparation_allowed": true,
+    "stage_6_execution_authorized": false,
+    "candidate_may_be_used_as_context_only": true,
+    "candidate_may_be_claimed_exact_product_authority": false,
+    "candidate_may_be_promoted_to_approved_product_authority": false,
+    "storefront_wiring_authorized": false,
+    "publication_authorized": false,
+    "deployment_authorized": false
+  },
+  "non_waivable_record": "The founder disposition does not erase, relabel, or falsify the independent review. Any Stage 6 contract must carry the candidate's REJECT verdict and five known defects."
+}
