@@ -28,8 +28,8 @@ CONTRACTS = (
 )
 
 
-def _live_runway_schema(price: float = 0.11) -> dict:
-    return {
+def _live_object_info(price: float = 0.11) -> dict:
+    runway = {
         "input": {
             "required": {
                 "prompt": ["STRING", {"multiline": True}],
@@ -45,6 +45,11 @@ def _live_runway_schema(price: float = 0.11) -> dict:
         "category": "partner/image/Runway",
         "api_node": True,
         "price_badge": {"expr": json.dumps({"type": "usd", "usd": price})},
+    }
+    return {
+        "RunwayTextToImageNode": runway,
+        "ResizeImageMaskNode": {"input": {"required": {"input": ["IMAGE", {}]}}},
+        "SaveImage": {"input": {"required": {"images": ["IMAGE", {}]}}},
     }
 
 
@@ -141,7 +146,7 @@ def test_founder_packet_exposes_exact_price_fingerprint_and_stop(tmp_path: Path)
     packet = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
-        live_node_schema=_live_runway_schema(),
+        live_object_info=_live_object_info(),
     )
 
     assert packet["status"] == "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL"
@@ -167,7 +172,7 @@ def test_declared_scene_blockers_remain_fail_closed(tmp_path: Path) -> None:
     packet = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
-        live_node_schema=_live_runway_schema(),
+        live_object_info=_live_object_info(),
     )
 
     assert packet["status"] == "BLOCKED"
@@ -182,7 +187,7 @@ def test_live_price_drift_blocks_before_submission(tmp_path: Path) -> None:
     packet = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
-        live_node_schema=_live_runway_schema(price=0.12),
+        live_object_info=_live_object_info(price=0.12),
     )
 
     assert packet["status"] == "BLOCKED"
@@ -194,16 +199,16 @@ def test_live_price_drift_blocks_before_submission(tmp_path: Path) -> None:
 def test_live_schema_must_identify_expected_partner_node(tmp_path: Path) -> None:
     contract, path = _portable_contract(CONTRACTS[0], tmp_path)
     contract["execution_blockers"] = []
-    schema = _live_runway_schema()
-    schema["description"] = "Unknown image generator"
-    schema["name"] = "Unknown"
-    schema["display_name"] = "Unknown"
-    schema["python_module"] = "unknown"
+    schema = _live_object_info()
+    schema["RunwayTextToImageNode"]["description"] = "Unknown image generator"
+    schema["RunwayTextToImageNode"]["name"] = "Unknown"
+    schema["RunwayTextToImageNode"]["display_name"] = "Unknown"
+    schema["RunwayTextToImageNode"]["python_module"] = "unknown"
 
     packet = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
-        live_node_schema=schema,
+        live_object_info=schema,
     )
 
     assert packet["status"] == "BLOCKED"
@@ -218,7 +223,7 @@ def test_malformed_contract_builds_blocked_packet_instead_of_crashing(tmp_path: 
     packet = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
-        live_node_schema=_live_runway_schema(),
+        live_object_info=_live_object_info(),
     )
 
     assert packet["status"] == "BLOCKED"
@@ -255,21 +260,21 @@ def test_fingerprint_changes_with_prompt_or_live_schema(tmp_path: Path) -> None:
     first = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
-        live_node_schema=_live_runway_schema(),
+        live_object_info=_live_object_info(),
     )
     changed_contract = copy.deepcopy(contract)
     changed_contract["request"]["prompt"] += " Extra empty architecture."
     second = build_founder_approval_packet(
         contract=changed_contract,
         contract_path=path,
-        live_node_schema=_live_runway_schema(),
+        live_object_info=_live_object_info(),
     )
-    changed_schema = _live_runway_schema()
-    changed_schema["description"] = "Updated live schema"
+    changed_schema = _live_object_info()
+    changed_schema["RunwayTextToImageNode"]["description"] = "Updated live schema"
     third = build_founder_approval_packet(
         contract=contract,
         contract_path=path,
-        live_node_schema=changed_schema,
+        live_object_info=changed_schema,
     )
 
     assert first["execution_fingerprint"] != second["execution_fingerprint"]

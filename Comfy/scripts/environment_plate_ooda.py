@@ -52,7 +52,7 @@ class EnvironmentContractError(ValueError):
 
 
 def _canonical_json(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
+    return json.dumps(value, sort_keys=True, separators=(",", ":"))
 
 
 def _sha256_bytes(value: bytes) -> str:
@@ -61,6 +61,13 @@ def _sha256_bytes(value: bytes) -> str:
 
 def _sha256_json(value: Any) -> str:
     return _sha256_bytes(_canonical_json(value).encode("utf-8"))
+
+
+def _contract_sha256(contract: Mapping[str, Any]) -> str:
+    """Hash the contract without its self-referential approval file binding."""
+    normalized = json.loads(json.dumps(contract))
+    normalized.setdefault("credit_control", {})["approval_receipt"] = None
+    return _sha256_json(normalized)
 
 
 def _resolve_bound_path(_contract_path: Path, raw_path: str) -> Path:
@@ -81,7 +88,9 @@ def load_contract(path: Path) -> dict[str, Any]:
     return contract
 
 
-def validate_contract(contract: Mapping[str, Any], *, contract_path: Path) -> list[str]:
+def validate_contract(
+    contract: Mapping[str, Any], *, contract_path: Path, execution_ready: bool = False
+) -> list[str]:
     """Return every blocking policy failure without weakening later checks."""
     failures: list[str] = []
     provider = contract.get("provider")
@@ -126,6 +135,41 @@ def validate_contract(contract: Mapping[str, Any], *, contract_path: Path) -> li
     for subject in FORBIDDEN_ENVIRONMENT_SUBJECTS:
         if f"no {subject.casefold()}" not in prompt_casefold:
             failures.append(f"prompt must explicitly forbid {subject}")
+    positive_scan = prompt_casefold
+    for allowed_zone in (
+        "customer zone",
+        "monument zone",
+        "protected-object zone",
+        "protected object zone",
+    ):
+        positive_scan = positive_scan.replace(allowed_zone, "")
+    for subject in FORBIDDEN_ENVIRONMENT_SUBJECTS:
+        positive_scan = positive_scan.replace(f"no {subject.casefold()}", "")
+    positive_subject_terms = (
+        "person",
+        "people",
+        "model",
+        "customer",
+        "garment",
+        "product",
+        "pants",
+        "shorts",
+        "logo",
+        "wordmark",
+        "text",
+        "signage",
+        "heart",
+        "rose",
+        "sculpture",
+        "monument",
+        "robed",
+        "beast",
+        "ballroom",
+        "flower wall",
+    )
+    leaked_terms = sorted({term for term in positive_subject_terms if term in positive_scan})
+    if leaked_terms:
+        failures.append("prompt positively requests forbidden content: " + ", ".join(leaked_terms))
 
     declared_forbidden = contract.get("forbidden_plate_content")
     if not isinstance(declared_forbidden, list) or set(declared_forbidden) != set(
@@ -181,7 +225,11 @@ def validate_contract(contract: Mapping[str, Any], *, contract_path: Path) -> li
             failures.append("paid_generations_recorded must be zero before the candidate")
         if credit.get("automatic_paid_retries") is not False:
             failures.append("automatic paid retries must be disabled")
-        if credit.get("approval_receipt") is not None:
+        approval = credit.get("approval_receipt")
+        if execution_ready:
+            if not isinstance(approval, Mapping):
+                failures.append("execution-ready contract requires a bound approval receipt")
+        elif approval is not None:
             failures.append("approval receipt must remain null until explicit founder approval")
         ceiling = credit.get("max_live_price_usd")
         if isinstance(ceiling, bool) or not isinstance(ceiling, (int, float)) or ceiling <= 0:
@@ -199,16 +247,22 @@ def validate_contract(contract: Mapping[str, Any], *, contract_path: Path) -> li
                 failures.append(f"output.{field} must be false")
 
     restart = contract.get("post_merge_execution_gate")
-    if not isinstance(restart, Mapping) or (
-        restart.get("required") is not True
-        or restart.get("action") != "REBASE_OR_RESTART_FROM_MERGED_MAIN"
+    expected_restart = (
+        {"required": False, "action": "SATISFIED"}
+        if execution_ready
+        else {"required": True, "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN"}
+    )
+    if not isinstance(restart, Mapping) or any(
+        restart.get(key) != value for key, value in expected_restart.items()
     ):
-        failures.append("paid execution must restart from merged main after integration")
+        failures.append("paid execution merge/restart state is invalid")
     execution_blockers = contract.get("execution_blockers")
     if not isinstance(execution_blockers, list) or not all(
         isinstance(blocker, str) and blocker.strip() for blocker in execution_blockers
     ):
         failures.append("execution_blockers must be a list of non-empty strings")
+    elif execution_ready and execution_blockers:
+        failures.append("execution-ready contract must have no declared blockers")
     return failures
 
 
@@ -271,7 +325,7 @@ def validate_workflow_is_product_free(workflow: Mapping[str, Any]) -> list[str]:
     return failures
 
 
-def _live_runway_schema(*, base_url: str = DEFAULT_COMFY_BASE_URL) -> dict[str, Any]:
+def _live_object_info(*, base_url: str = DEFAULT_COMFY_BASE_URL) -> dict[str, Any]:
     if base_url != DEFAULT_COMFY_BASE_URL:
         raise EnvironmentContractError("Comfy base URL must be exactly http://127.0.0.1:8189")
     try:
@@ -282,7 +336,7 @@ def _live_runway_schema(*, base_url: str = DEFAULT_COMFY_BASE_URL) -> dict[str, 
     node = body.get(RUNWAY_NODE) if isinstance(body, dict) else None
     if not isinstance(node, dict):
         raise EnvironmentContractError(f"{RUNWAY_NODE} is not installed")
-    return node
+    return body
 
 
 def _live_price(node_schema: Mapping[str, Any]) -> float:
@@ -318,7 +372,7 @@ def build_founder_approval_packet(
     *,
     contract: Mapping[str, Any],
     contract_path: Path,
-    live_node_schema: Mapping[str, Any],
+    live_object_info: Mapping[str, Any],
 ) -> dict[str, Any]:
     """Create the exact read-only packet shown before any paid submission."""
     failures = validate_contract(contract, contract_path=contract_path)
@@ -333,6 +387,9 @@ def build_founder_approval_packet(
         workflow = {}
         failures.append(f"prompt-only workflow cannot be built: {exc}")
     failures.extend(validate_workflow_is_product_free(workflow))
+    live_node_schema = live_object_info.get(RUNWAY_NODE)
+    if not isinstance(live_node_schema, Mapping):
+        raise EnvironmentContractError(f"{RUNWAY_NODE} is not installed")
     failures.extend(_validate_live_runway_schema(live_node_schema))
     live_price = _live_price(live_node_schema)
     credit = contract.get("credit_control")
@@ -342,8 +399,19 @@ def build_founder_approval_packet(
             f"live Runway price ${live_price:.2f} exceeds ${float(ceiling):.2f} ceiling"
         )
     workflow_hash = _sha256_json(workflow)
-    contract_hash = _sha256_json(contract)
-    live_schema_hash = _sha256_json(live_node_schema)
+    contract_hash = _contract_sha256(contract)
+    used_classes = {
+        str(node.get("class_type"))
+        for node in workflow.values()
+        if isinstance(node, Mapping) and isinstance(node.get("class_type"), str)
+    }
+    missing_classes = sorted(used_classes - set(live_object_info))
+    if missing_classes:
+        failures.append(f"live Comfy node inventory is incomplete: {missing_classes}")
+    used_schemas = {
+        name: live_object_info[name] for name in sorted(used_classes) if name in live_object_info
+    }
+    live_schema_hash = _sha256_json(used_schemas)
     output = contract.get("output")
     output = output if isinstance(output, Mapping) else {}
     request = contract.get("request")
@@ -416,7 +484,7 @@ def main() -> int:
         packet = build_founder_approval_packet(
             contract=contract,
             contract_path=args.contract,
-            live_node_schema=_live_runway_schema(base_url=args.base_url),
+            live_object_info=_live_object_info(base_url=args.base_url),
         )
     except EnvironmentContractError as exc:
         packet = {

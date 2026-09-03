@@ -118,17 +118,37 @@
     "required_checks": [
       "model identity and pose preservation",
       "front construction and fit",
-      "four-pocket topology and four zipper closures",
+      "both visible side pockets and both visible zipper closures",
       "wearer-left versus wearer-right artwork",
-      "rear construction against the physical back authority",
+      "rear-pocket source authority without rendered-proof overclaim",
       "no model, product, text, or background drift outside the garment"
     ],
+    "pocket_evidence": {
+      "wearer_left_side": {
+        "candidate_proof": "DIRECTLY_VISIBLE_ZIPPERED",
+        "required_disposition": "PASS"
+      },
+      "wearer_right_side": {
+        "candidate_proof": "DIRECTLY_VISIBLE_ZIPPERED",
+        "required_disposition": "PASS"
+      },
+      "wearer_left_rear": {
+        "candidate_proof": "NOT_OBSERVABLE_IN_FRONT_CANDIDATE",
+        "source_authority": "PASS"
+      },
+      "wearer_right_rear": {
+        "candidate_proof": "NOT_OBSERVABLE_IN_FRONT_CANDIDATE",
+        "source_authority": "PASS"
+      }
+    },
+    "scope": "A PASS may authorize only front-facing scene input after a separate founder approval. It never proves rear rendering or full 360-degree fidelity.",
     "failure_disposition": "QUARANTINE_NO_AUTOMATIC_RETRY",
     "founder_approval_required": true
   },
   "output": {
     "candidate_path": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png",
     "execution_receipt": "Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json",
+    "attempt_marker": "Comfy/receipts/lh-003-tryon-max-pilot-a1-paid-attempt.json",
     "candidate_only": true,
     "scene_input_allowed": false,
     "promotion_allowed": false,

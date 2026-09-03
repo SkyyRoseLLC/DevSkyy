@@ -1,13 +1,34 @@
+const quotePath = file => `'${file.replace(/'/g, `'\\''`)}'`;
+
+const isByteStableOrManaged = file => {
+  const normalized = file.replace(/\\/g, '/');
+  return (
+    /(^|\/)plugins\/fashion-theme-team\//.test(normalized) ||
+    /(^|\/)Comfy\/receipts\//.test(normalized) ||
+    /(^|\/)Comfy\/quarantine\//.test(normalized) ||
+    /\.(?:png|jpe?g|webp|gif|avif|mp4|mov|webm|mp3|wav|flac|safetensors|ckpt|pt|pth|bin)$/i.test(normalized)
+  );
+};
+
+const mutableFiles = files => files.filter(file => !isByteStableOrManaged(file));
+
+const commandsFor = (commands, files) => {
+  const selected = mutableFiles(files);
+  if (selected.length === 0) return [];
+  const paths = selected.map(quotePath).join(' ');
+  return commands.map(command => `${command} ${paths}`);
+};
+
 /** @type {import('lint-staged').Configuration} */
 export default {
   // Python: normalize imports, apply safe lint fixes, format, then reject only
   // findings that cannot be fixed automatically. lint-staged appends paths.
-  '*.py': ['isort', 'ruff check --fix', 'black', 'ruff check'],
+  '*.py': files => commandsFor(['isort', 'ruff check --fix', 'black', 'ruff check'], files),
 
   // Prettier-supported source and content languages. Shell and TOML support
   // comes from the explicitly pinned plugins in .prettierrc.js.
   '*.{js,jsx,ts,tsx,mjs,cjs,json,jsonc,yaml,yml,md,mdx,css,scss,less,html,htm,graphql,gql,sh,bash,zsh,toml,sql,xml,svg,ipynb}':
-    'prettier --write --ignore-unknown',
+    files => commandsFor(['prettier --write --ignore-unknown'], files),
   '{Dockerfile,**/Dockerfile,.husky/*}': 'prettier --write --ignore-unknown',
 
   // Root application JS/TS: apply ESLint fixes after Prettier.

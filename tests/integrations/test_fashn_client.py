@@ -10,21 +10,38 @@ Covers:
 
 from __future__ import annotations
 
+import base64
+import io
 import json
 
 import httpx
 import pytest
+from PIL import Image
 
 from skyyrose.integrations.fashn_client import (
     COST_PER_SAMPLE_USD,
+    FASHN_CREDITS_HEADER,
+    FASHN_KEYCHAIN_SERVICE,
+    KEYCHAIN_EXECUTABLE,
+    MODEL_CREATE_MODEL,
     TRYON_MAX_CREDITS,
     TRYON_MAX_MODEL,
     FashnClient,
+    FashnCredits,
     FashnCredentials,
     FashnError,
     FashnResult,
     _safe_error_excerpt,
 )
+
+
+def _png_data_uri(size: tuple[int, int] = (1536, 2736)) -> str:
+    buffer = io.BytesIO()
+    Image.new("RGB", size, (30, 30, 30)).save(buffer, format="PNG")
+    return "data:image/png;base64," + base64.b64encode(buffer.getvalue()).decode("ascii")
+
+
+PNG_DATA_URI = _png_data_uri()
 
 
 async def _zero_sleep(_: float) -> None:
@@ -61,6 +78,59 @@ class TestCredentials:
         assert "fa_test_secret_abc123" not in str(creds)
         assert "<redacted>" in str(creds)
 
+    def test_loads_from_keychain_without_exposing_secret(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        monkeypatch.setattr("skyyrose.integrations.fashn_client.sys.platform", "darwin")
+        monkeypatch.setattr("skyyrose.integrations.fashn_client.os.path.isfile", lambda _: True)
+
+        class Completed:
+            returncode = 0
+            stdout = "fa_keychain_secret\n"
+            stderr = ""
+
+        calls: list[list[str]] = []
+
+        def fake_run(args: list[str], **_: object) -> Completed:
+            calls.append(args)
+            return Completed()
+
+        monkeypatch.setattr("skyyrose.integrations.fashn_client.subprocess.run", fake_run)
+        creds = FashnCredentials.from_keychain(account="theceo")
+
+        assert creds.api_key == "fa_keychain_secret"
+        assert calls == [
+            [
+                KEYCHAIN_EXECUTABLE,
+                "find-generic-password",
+                "-s",
+                FASHN_KEYCHAIN_SERVICE,
+                "-a",
+                "theceo",
+                "-w",
+            ]
+        ]
+        assert "fa_keychain_secret" not in repr(creds)
+
+    def test_missing_keychain_item_fails_without_secret_text(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        monkeypatch.setattr("skyyrose.integrations.fashn_client.sys.platform", "darwin")
+        monkeypatch.setattr("skyyrose.integrations.fashn_client.os.path.isfile", lambda _: True)
+
+        class Completed:
+            returncode = 44
+            stdout = ""
+            stderr = "security: SecKeychainSearchCopyNext: item not found"
+
+        monkeypatch.setattr(
+            "skyyrose.integrations.fashn_client.subprocess.run",
+            lambda *args, **kwargs: Completed(),
+        )
+        with pytest.raises(KeyError, match="skyyrose-fashn-api") as exc:
+            FashnCredentials.from_keychain(account="theceo")
+        assert "SecKeychain" not in str(exc.value)
+
 
 # ---------------------------------------------------------------------------
 # FakeTransport + client builder
@@ -91,8 +161,13 @@ def _make_client(transport: FakeTransport, poll_interval: float = 0.001) -> Fash
     )
 
 
-def _ok_response(json_body: dict, status: int = 200) -> httpx.Response:
-    return httpx.Response(status, content=json.dumps(json_body).encode())
+def _ok_response(
+    json_body: dict,
+    status: int = 200,
+    *,
+    headers: dict[str, str] | None = None,
+) -> httpx.Response:
+    return httpx.Response(status, content=json.dumps(json_body).encode(), headers=headers)
 
 
 # ---------------------------------------------------------------------------
@@ -173,11 +248,14 @@ class TestRunTryonHappyPath:
 class TestRunTryonMax:
     @pytest.mark.asyncio
     async def test_uses_current_contract_and_reports_credits(self) -> None:
-        output = "data:image/png;base64,aW1hZ2U="
+        output = PNG_DATA_URI
         transport = FakeTransport(
             [
                 _ok_response({"id": "max-1"}),
-                _ok_response({"status": "completed", "output": [output]}),
+                _ok_response(
+                    {"status": "completed", "output": [output]},
+                    headers={FASHN_CREDITS_HEADER: "4"},
+                ),
             ]
         )
         async with _make_client(transport) as client:
@@ -198,6 +276,8 @@ class TestRunTryonMax:
         assert result.output_urls == [output]
         assert result.cost_usd == 0.0
         assert result.credits_used == 4
+        assert result.expected_credits == 4
+        assert result.actual_credits == 4
         request = json.loads(transport.calls[0].content)
         assert request == {
             "model_name": "tryon-max",
@@ -261,6 +341,140 @@ class TestRunTryonMax:
                     **kwargs,  # type: ignore[arg-type]
                 )
         assert not transport.calls
+
+    @pytest.mark.asyncio
+    async def test_missing_provider_credit_header_blocks_acceptance(self) -> None:
+        transport = FakeTransport(
+            [
+                _ok_response({"id": "max-no-usage"}),
+                _ok_response({"status": "completed", "output": [PNG_DATA_URI]}),
+            ]
+        )
+        async with _make_client(transport) as client:
+            with pytest.raises(FashnError, match=FASHN_CREDITS_HEADER):
+                await client.run_tryon_max(
+                    model_image="data:image/png;base64,bW9kZWw=",
+                    product_image="data:image/png;base64,cHJvZHVjdA==",
+                    sleep=_zero_sleep,
+                )
+
+    @pytest.mark.asyncio
+    async def test_mismatched_provider_credit_header_blocks_acceptance(self) -> None:
+        transport = FakeTransport(
+            [
+                _ok_response({"id": "max-wrong-usage"}),
+                _ok_response(
+                    {"status": "completed", "output": [PNG_DATA_URI]},
+                    headers={FASHN_CREDITS_HEADER: "3"},
+                ),
+            ]
+        )
+        async with _make_client(transport) as client:
+            with pytest.raises(FashnError, match="reported 3 credits"):
+                await client.run_tryon_max(
+                    model_image="data:image/png;base64,bW9kZWw=",
+                    product_image="data:image/png;base64,cHJvZHVjdA==",
+                    sleep=_zero_sleep,
+                )
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize(
+        "outputs",
+        [
+            [PNG_DATA_URI, "https://example.test/unexpected.png"],
+            ["data:image/png;base64,%%%"],
+            ["data:image/jpeg;base64,/9j/4AAQ"],
+            ["data:image/png;base64,aW1hZ2U="],
+            [
+                "data:image/png;base64,"
+                + base64.b64encode(b"\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR" + b"\x00" * 8).decode(
+                    "ascii"
+                )
+            ],
+            [_png_data_uri((1, 1))],
+        ],
+    )
+    async def test_base64_mode_requires_exact_exclusive_valid_png_outputs(
+        self, outputs: list[str]
+    ) -> None:
+        transport = FakeTransport(
+            [
+                _ok_response({"id": "max-invalid-output"}),
+                _ok_response(
+                    {"status": "completed", "output": outputs},
+                    headers={FASHN_CREDITS_HEADER: "4"},
+                ),
+            ]
+        )
+        async with _make_client(transport) as client:
+            with pytest.raises(FashnError):
+                await client.run_tryon_max(
+                    model_image="data:image/png;base64,bW9kZWw=",
+                    product_image="data:image/png;base64,cHJvZHVjdA==",
+                    resolution="2k",
+                    generation_mode="quality",
+                    sleep=_zero_sleep,
+                )
+
+
+class TestCreditsAndModelCreate:
+    @pytest.mark.asyncio
+    async def test_get_credits_parses_typed_balance(self) -> None:
+        transport = FakeTransport(
+            [_ok_response({"credits": {"total": 12, "subscription": 8, "on_demand": 4}})]
+        )
+        async with _make_client(transport) as client:
+            balance = await client.get_credits(sleep=_zero_sleep)
+        assert balance == FashnCredits(total=12, subscription=8, on_demand=4)
+        assert transport.calls[0].method == "GET"
+        assert transport.calls[0].url.path == "/v1/credits"
+
+    @pytest.mark.asyncio
+    async def test_model_create_exact_request_and_credit_evidence(self) -> None:
+        output = PNG_DATA_URI
+        transport = FakeTransport(
+            [
+                _ok_response({"id": "model-1"}),
+                _ok_response(
+                    {"status": "completed", "output": [output]},
+                    headers={FASHN_CREDITS_HEADER: "4"},
+                ),
+            ]
+        )
+        async with _make_client(transport) as client:
+            result = await client.run_model_create(
+                prompt="Full-body studio casting plate.",
+                face_reference="data:image/png;base64,ZmFjZQ==",
+                face_reference_mode="match_base",
+                aspect_ratio="9:16",
+                resolution="1k",
+                generation_mode="fast",
+                seed=42,
+                num_images=1,
+                output_format="png",
+                return_base64=True,
+                sleep=_zero_sleep,
+            )
+
+        assert result.model_name == MODEL_CREATE_MODEL
+        assert result.expected_credits == 4
+        assert result.actual_credits == 4
+        request = json.loads(transport.calls[0].content)
+        assert request == {
+            "model_name": "model-create",
+            "inputs": {
+                "prompt": "Full-body studio casting plate.",
+                "aspect_ratio": "9:16",
+                "resolution": "1k",
+                "generation_mode": "fast",
+                "seed": 42,
+                "num_images": 1,
+                "output_format": "png",
+                "return_base64": True,
+                "face_reference": "data:image/png;base64,ZmFjZQ==",
+                "face_reference_mode": "match_base",
+            },
+        }
 
 
 # ---------------------------------------------------------------------------

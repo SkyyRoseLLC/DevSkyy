@@ -1,0 +1,78 @@
+{
+  "schema": "skyyrose.model-plate-ooda/1",
+  "plate_id": "LH-MODEL-01-FULL-BODY-A1",
+  "identity_id": "LH-MODEL-01",
+  "status": "BLOCKED_PENDING_CANDIDATE_BOUND_PAID_APPROVAL",
+  "purpose": "Create one full-body front casting plate for the approved Love Hurts identity without introducing SkyyRose product or scene authority.",
+  "model": {
+    "id": "model-create",
+    "provider": "fashn",
+    "lifecycle": "experimental",
+    "operation": "full_body_identity_plate_candidate"
+  },
+  "inputs": {
+    "identity_manifest": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+      "sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52"
+    },
+    "founder_identity_approval": {
+      "path": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+      "sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b"
+    },
+    "front_bust": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/front-bust-v1.png",
+      "sha256": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6"
+    },
+    "rear_profile": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/rear-profile-bust-v1.png",
+      "sha256": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b"
+    }
+  },
+  "request": {
+    "face_reference_input": "front_bust",
+    "face_reference_mode": "match_base",
+    "prompt": "Full-body straight-on studio casting plate of the approved adult Black woman identity, athletic natural proportions, high-bun natural-texture hairstyle, neutral confident expression, both hands relaxed away from the hips and waistband, both legs and feet fully visible, fitted plain matte-black crop top ending above the natural waist, plain close-fitting black bike shorts with no logos, pockets, trim, text, or artwork, simple black low-profile footwear, neutral medium-gray cyclorama, even product-photography light, no props, no fashion product, no scene, no display text.",
+    "aspect_ratio": "9:16",
+    "resolution": "1k",
+    "generation_mode": "fast",
+    "seed": 42,
+    "num_images": 1,
+    "output_format": "png",
+    "return_base64": true
+  },
+  "credit_control": {
+    "mode": "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "max_credits": 4,
+    "approval_receipt": null,
+    "on_unknown_submission_outcome": "STOP_AND_RECONCILE_PROVIDER_HISTORY"
+  },
+  "review_gate": {
+    "candidate_author": "product-fidelity-image-edits",
+    "independent_reviewer": "visual-commerce-qa",
+    "required_checks": [
+      "approved face, skin tone, hairstyle, age presentation, and campaign presence",
+      "full head-to-foot framing",
+      "realistic hands, feet, limbs, waist, and body proportions",
+      "straight-on pose with both hip and waist areas unobstructed",
+      "plain replacement garment with no SkyyRose or Love Hurts details",
+      "neutral removable background",
+      "identity plate only with no product, scene, or promotional authority"
+    ],
+    "founder_approval_required": true,
+    "approved_authority_state": "FOUNDER_APPROVED_FULL_BODY_MODEL"
+  },
+  "output": {
+    "candidate_path": "Comfy/quarantine/LH-MODEL-01/LH-MODEL-01-FULL-BODY-A1.png",
+    "execution_receipt": "Comfy/receipts/lh-model-01-full-body-a1-execution.json",
+    "attempt_marker": "Comfy/receipts/lh-model-01-full-body-a1-paid-attempt.json",
+    "independent_review": "Comfy/receipts/lh-model-01-full-body-a1-independent-review.json",
+    "approved_path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+    "authority_receipt": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+    "candidate_only": true,
+    "vto_binding_allowed": false,
+    "promotion_allowed": false
+  }
+}

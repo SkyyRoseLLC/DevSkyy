@@ -90,13 +90,13 @@ def test_read_only_catalog_adapters_use_canonical_reader(relative_path: str) -> 
     assert "csv.DictReader" not in source, f"{relative_path} parses the catalog directly"
     assert "from skyyrose.core.catalog_loader import read_catalog_rows" in source
     assert re.search(
-        r"\\bread_catalog_rows\\s*\\(", source
+        r"\bread_catalog_rows\s*\(", source
     ), f"{relative_path} imports but does not call the canonical reader"
     assert not re.search(
-        r"^\\s*(?:import\\s+csv\\b|from\\s+csv\\b)", source, re.MULTILINE
+        r"^\s*(?:import\s+csv\b|from\s+csv\b)", source, re.MULTILINE
     ), f"{relative_path} must not import a local CSV parser"
     assert not re.search(
-        r"\\b(?:open|read_text)\\s*\\([^)]*catalog[^)]*\\.csv",
+        r"\b(?:open|read_text)\s*\([^)]*catalog[^)]*\.csv",
         source,
         re.IGNORECASE | re.DOTALL,
     ), f"{relative_path} must not open a catalog CSV directly"
