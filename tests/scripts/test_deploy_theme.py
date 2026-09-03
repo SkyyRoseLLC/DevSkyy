@@ -9,6 +9,7 @@ import os
 import re
 import shutil
 import subprocess
+import tarfile
 from pathlib import Path
 
 import pytest
@@ -37,7 +38,28 @@ def fake_env(tmp_path):
     return tmp_path, env_file, theme_dir
 
 
-def _make_deployable_theme(theme_dir: Path, *, version: str = "1.0.0") -> None:
+@pytest.fixture
+def fake_v2_staging_env(tmp_path):
+    """Create an explicit staging target for the V2 theme."""
+    env_file = tmp_path / ".env.wordpress.staging"
+    env_file.write_text(
+        "SSH_HOST=ssh.wp.com\n"
+        "SSH_PORT=22\n"
+        "SSH_USER=staging.wordpress.com\n"
+        "SSH_PASS=fake-password\n"
+        "WP_THEME_PATH=/htdocs/wp-content/themes/skyyrose-flagship-2\n"
+        "SFTP_HOST=sftp.wp.com\n"
+        "SFTP_PORT=22\n"
+        "SFTP_USER=staging.wordpress.com\n"
+        "SFTP_PASS=fake-password\n"
+        "PUBLIC_URL=https://staging.skyyrose.co/\n"
+    )
+    theme_dir = tmp_path / "wordpress-theme" / "skyyrose-flagship-2"
+    _make_deployable_theme(theme_dir, version="2.4.4", generation=2)
+    return tmp_path, env_file, theme_dir
+
+
+def _make_deployable_theme(theme_dir: Path, *, version: str = "1.0.0", generation: int = 1) -> None:
     """Write a minimal but *gate-passing* theme.
 
     preflight_completeness() requires a synced version triple + the
@@ -50,8 +72,29 @@ def _make_deployable_theme(theme_dir: Path, *, version: str = "1.0.0") -> None:
     (theme_dir / "style.css").write_text(
         f"/*\nTheme Name: Test\nVersion:             {version}\n*/\n"
     )
-    (theme_dir / "functions.php").write_text(f"<?php\ndefine( 'SKYYROSE_VERSION', '{version}' );\n")
+    version_constant = "SKYYROSE2_VERSION" if generation == 2 else "SKYYROSE_VERSION"
+    (theme_dir / "functions.php").write_text(
+        f"<?php\ndefine( '{version_constant}', '{version}' );\n"
+    )
     (theme_dir / "readme.txt").write_text(f"Stable tag: {version}\n")
+    if generation == 2:
+        for relative_path in (
+            "assets/css/design-tokens.min.css",
+            "assets/css/theme.min.css",
+            "assets/js/theme.min.js",
+        ):
+            path = theme_dir / relative_path
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(b"")
+        fonts = theme_dir / "assets" / "sot" / "fonts"
+        fonts.mkdir(parents=True, exist_ok=True)
+        for i in range(9):
+            (fonts / f"font-{i}-latin.woff2").write_bytes(b"")
+        models = theme_dir / "assets" / "models"
+        models.mkdir(parents=True, exist_ok=True)
+        (models / "skyy-mascot.glb").write_bytes(b"")
+        return
+
     emblems = theme_dir / "assets" / "images" / "emblems"
     emblems.mkdir(parents=True, exist_ok=True)
     for name in ("black-rose", "love-hurts", "signature"):
@@ -145,6 +188,145 @@ class TestDryRun:
             },
         )
         assert "cache flush" in result.stdout.lower()
+
+    def test_v1_resolves_archive_root_and_remote_path(self, fake_env):
+        _, env_file, theme_dir = fake_env
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+            },
+        )
+        assert result.returncode == 0, result.stderr
+        assert "Archive root: skyyrose-flagship" in result.stdout
+        assert "Remote theme: /htdocs/wp-content/themes/skyyrose-flagship" in result.stdout
+        assert "Version triple in sync: 1.0.0" in result.stdout
+
+    def test_v2_staging_resolves_exact_target(self, fake_v2_staging_env):
+        _, env_file, theme_dir = fake_v2_staging_env
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "DEPLOY_TARGET": "staging",
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+            },
+        )
+        assert result.returncode == 0, result.stderr
+        assert "Deploy target: staging" in result.stdout
+        assert "Archive root: skyyrose-flagship-2" in result.stdout
+        assert "Remote theme: /htdocs/wp-content/themes/skyyrose-flagship-2" in result.stdout
+        assert "Public URL: https://staging.skyyrose.co/" in result.stdout
+        assert "Version triple in sync: 2.4.4" in result.stdout
+
+    def test_rejects_dot_segment_archive_root(self, fake_env):
+        _, env_file, theme_dir = fake_env
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir / ".."),
+            },
+        )
+        assert result.returncode != 0
+        assert "Unsafe theme archive root '..'" in (result.stdout + result.stderr)
+
+    @pytest.mark.parametrize(
+        ("env_updates", "message"),
+        [
+            ({"REMOTE_DEPLOY_DIR": "/tmp/.."}, "Unsafe remote deploy directory"),
+            (
+                {"REMOTE_DEPLOY_DIR": "/htdocs/wp-content/themes"},
+                "overlaps live theme",
+            ),
+        ],
+    )
+    def test_rejects_unsafe_or_overlapping_remote_deploy_dir(self, fake_env, env_updates, message):
+        _, env_file, theme_dir = fake_env
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+                **env_updates,
+            },
+        )
+        assert result.returncode != 0
+        assert message in (result.stdout + result.stderr)
+
+    @pytest.mark.parametrize(
+        ("env_updates", "message"),
+        [
+            ({"PUBLIC_URL": "https://skyyrose.co/"}, "Staging PUBLIC_URL"),
+            (
+                {"WP_THEME_PATH": "/htdocs/wp-content/themes/skyyrose-flagship"},
+                "does not match archive root",
+            ),
+        ],
+    )
+    def test_v2_staging_rejects_production_target(self, fake_v2_staging_env, env_updates, message):
+        _, env_file, theme_dir = fake_v2_staging_env
+        env_text = env_file.read_text()
+        for key, value in env_updates.items():
+            env_text = re.sub(rf"^{key}=.*$", f"{key}={value}", env_text, flags=re.MULTILINE)
+        env_file.write_text(env_text)
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "DEPLOY_TARGET": "staging",
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+            },
+        )
+        assert result.returncode != 0
+        assert message in (result.stdout + result.stderr)
+
+    def test_v2_staging_requires_staging_named_env_file(self, fake_v2_staging_env):
+        tmp_path, env_file, theme_dir = fake_v2_staging_env
+        generic_env = tmp_path / ".env.wordpress"
+        env_file.rename(generic_env)
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "DEPLOY_TARGET": "staging",
+                "ENV_FILE": str(generic_env),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+            },
+        )
+        assert result.returncode != 0
+        assert "staging-specific ENV_FILE" in (result.stdout + result.stderr)
+
+    def test_v2_staging_requires_public_url(self, fake_v2_staging_env):
+        _, env_file, theme_dir = fake_v2_staging_env
+        env_file.write_text(
+            re.sub(r"^PUBLIC_URL=.*$\n?", "", env_file.read_text(), flags=re.MULTILINE)
+        )
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "DEPLOY_TARGET": "staging",
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+                "PUBLIC_URL": "",
+            },
+        )
+        assert result.returncode != 0
+        assert "explicit PUBLIC_URL" in (result.stdout + result.stderr)
+
+    def test_env_file_cannot_downgrade_staging_target(self, fake_v2_staging_env):
+        _, env_file, theme_dir = fake_v2_staging_env
+        env_file.write_text(env_file.read_text() + "DEPLOY_TARGET=production\n")
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "DEPLOY_TARGET": "staging",
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+            },
+        )
+        assert result.returncode == 0, result.stderr
+        assert "Deploy target: staging" in result.stdout
 
 
 class TestHelp:
@@ -365,6 +547,173 @@ def _rendered_excludes() -> tuple[list[str], list[str]]:
     rsync_excludes = [line[len("RSYNC:") :] for line in lines if line.startswith("RSYNC:")]
     tar_excludes = [line[len("TAR:") :] for line in lines if line.startswith("TAR:")]
     return rsync_excludes, tar_excludes
+
+
+def _run_defs_script(body: str) -> subprocess.CompletedProcess[str]:
+    """Source deploy function definitions and run a focused shell harness."""
+    return subprocess.run(
+        ["bash", "-c", _defs_only_script() + "\n" + body],
+        capture_output=True,
+        text=True,
+        timeout=15,
+    )
+
+
+def _render_remote_swap_command(
+    *, remote_dir: Path, theme_root: str, theme_path: Path, archive_name: str
+) -> str:
+    body = f"""
+THEME_ARCHIVE_ROOT={theme_root!s}
+WP_THEME_PATH={theme_path!s}
+REMOTE_DEPLOY_DIR={remote_dir!s}
+render_remote_swap_command '' {archive_name!s} test-swap
+"""
+    result = _run_defs_script(body)
+    assert result.returncode == 0, result.stderr
+    return result.stdout
+
+
+class TestRemoteTargetIdentity:
+    """Staging credentials must resolve to the canonical staging WordPress."""
+
+    def test_matching_remote_site_url_passes(self):
+        result = _run_defs_script("""
+DEPLOY_TARGET=staging
+DRY_RUN=false
+PUBLIC_URL=https://staging.skyyrose.co/
+read_remote_site_url() { printf '%s\\n' 'https://staging.skyyrose.co'; }
+verify_remote_target_identity
+""")
+        assert result.returncode == 0, result.stderr
+        assert "identity verified" in result.stdout
+
+    def test_production_remote_site_url_fails_closed(self):
+        result = _run_defs_script("""
+DEPLOY_TARGET=staging
+DRY_RUN=false
+PUBLIC_URL=https://staging.skyyrose.co/
+read_remote_site_url() { printf '%s\\n' 'https://skyyrose.co'; }
+if verify_remote_target_identity; then exit 90; fi
+""")
+        assert result.returncode == 0
+        assert "does not match staging target" in result.stderr
+
+    def test_unreadable_remote_site_url_fails_closed(self):
+        result = _run_defs_script("""
+DEPLOY_TARGET=staging
+DRY_RUN=false
+PUBLIC_URL=https://staging.skyyrose.co/
+read_remote_site_url() { return 1; }
+if verify_remote_target_identity; then exit 91; fi
+""")
+        assert result.returncode == 0
+        assert "Unable to read remote WordPress site URL" in result.stderr
+
+
+class TestRemoteSwapPlan:
+    """Execute the rendered remote plan without contacting WordPress."""
+
+    @staticmethod
+    def _write_archive(remote_dir: Path, root_name: str) -> str:
+        source_root = remote_dir / "archive-source" / root_name
+        source_root.mkdir(parents=True)
+        (source_root / "candidate.txt").write_text("candidate")
+        archive = remote_dir / "candidate.tar"
+        with tarfile.open(archive, "w") as handle:
+            handle.add(source_root, arcname=root_name)
+        return archive.name
+
+    def test_missing_extracted_root_preserves_live_theme(self, tmp_path):
+        remote_dir = tmp_path / "remote"
+        remote_dir.mkdir()
+        live_theme = tmp_path / "themes" / "skyyrose-flagship-2"
+        live_theme.mkdir(parents=True)
+        (live_theme / "live.txt").write_text("live")
+        archive_name = self._write_archive(remote_dir, "wrong-root")
+        command = _render_remote_swap_command(
+            remote_dir=remote_dir,
+            theme_root="skyyrose-flagship-2",
+            theme_path=live_theme,
+            archive_name=archive_name,
+        )
+
+        result = subprocess.run(["bash", "-c", command], capture_output=True, text=True)
+
+        assert result.returncode != 0
+        assert (live_theme / "live.txt").read_text() == "live"
+        assert not Path(f"{live_theme}.old.test-swap").exists()
+
+    def test_candidate_move_failure_restores_live_theme(self, tmp_path):
+        remote_dir = tmp_path / "remote"
+        remote_dir.mkdir()
+        live_theme = tmp_path / "themes" / "skyyrose-flagship-2"
+        live_theme.mkdir(parents=True)
+        (live_theme / "live.txt").write_text("live")
+        archive_name = self._write_archive(remote_dir, "skyyrose-flagship-2")
+        command = _render_remote_swap_command(
+            remote_dir=remote_dir,
+            theme_root="skyyrose-flagship-2",
+            theme_path=live_theme,
+            archive_name=archive_name,
+        )
+        fake_bin = tmp_path / "bin"
+        fake_bin.mkdir()
+        fake_mv = fake_bin / "mv"
+        fake_mv.write_text(
+            "#!/usr/bin/env bash\n"
+            'if [[ "$1" == "skyyrose-flagship-2" ]]; then exit 23; fi\n'
+            'exec /bin/mv "$@"\n'
+        )
+        fake_mv.chmod(0o755)
+        env = os.environ.copy()
+        env["PATH"] = f"{fake_bin}:{env['PATH']}"
+
+        result = subprocess.run(["bash", "-c", command], capture_output=True, text=True, env=env)
+
+        assert result.returncode == 23
+        assert (live_theme / "live.txt").read_text() == "live"
+        assert not Path(f"{live_theme}.old.test-swap").exists()
+
+    def test_successful_swap_retains_rollback_generation(self, tmp_path):
+        remote_dir = tmp_path / "remote"
+        remote_dir.mkdir()
+        stale_root = remote_dir / "skyyrose-flagship-2"
+        stale_root.mkdir()
+        (stale_root / "stale.txt").write_text("must not ship")
+        live_theme = tmp_path / "themes" / "skyyrose-flagship-2"
+        live_theme.mkdir(parents=True)
+        (live_theme / "live.txt").write_text("live")
+        archive_name = self._write_archive(remote_dir, "skyyrose-flagship-2")
+        command = _render_remote_swap_command(
+            remote_dir=remote_dir,
+            theme_root="skyyrose-flagship-2",
+            theme_path=live_theme,
+            archive_name=archive_name,
+        )
+
+        result = subprocess.run(["bash", "-c", command], capture_output=True, text=True)
+
+        assert result.returncode == 0, result.stderr
+        assert (live_theme / "candidate.txt").read_text() == "candidate"
+        assert not (live_theme / "stale.txt").exists()
+        backup = Path(f"{live_theme}.old.test-swap")
+        assert (backup / "live.txt").read_text() == "live"
+        assert not (remote_dir / archive_name).exists()
+
+
+class TestStagingFallback:
+    def test_staging_never_calls_non_atomic_lftp_fallback(self):
+        result = _run_defs_script("""
+DEPLOY_TARGET=staging
+THEME_DIR=/tmp/source
+WP_THEME_PATH=/tmp/target
+try_rsync() { return 1; }
+try_lftp() { echo LFTP_CALLED; return 0; }
+if transfer_files; then exit 92; fi
+""")
+        assert result.returncode == 0
+        assert "non-atomic lftp mirror fallback is disabled" in result.stderr
+        assert "LFTP_CALLED" not in result.stdout
 
 
 class TestExcludes:
