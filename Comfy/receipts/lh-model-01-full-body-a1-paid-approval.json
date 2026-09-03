@@ -1,0 +1,21 @@
+{
+  "schema": "skyyrose.model-plate-paid-approval/1",
+  "plate_id": "LH-MODEL-01-FULL-BODY-A1",
+  "execution_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c",
+  "max_credits": 4,
+  "max_candidates": 1,
+  "approved": true,
+  "approved_by": "founder",
+  "approved_at": "2026-09-03T13:47:13Z",
+  "founder_response": "approved",
+  "approval_request": "I approve exactly one LH-MODEL-01-FULL-BODY-A1 Model Create candidate bound to execution fingerprint e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c for a maximum of four FASHN credits, with no automatic retry.",
+  "automatic_retry": false,
+  "authority_scope": "ONE_PAID_MODEL_CREATE_ATTEMPT_ONLY",
+  "does_not_authorize": [
+    "a second candidate or retry",
+    "approval or promotion of the generated plate",
+    "VTO preparation or execution",
+    "scene or storefront wiring",
+    "publication or deployment"
+  ]
+}

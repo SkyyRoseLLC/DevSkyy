@@ -1,0 +1,149 @@
+{
+  "schema": "skyyrose.model-plate-spend-approval-request/1",
+  "task_id": "SCENE-STAGE-02-LH-MODEL-01-20260903",
+  "stage": "2/7",
+  "requested_at": "2026-09-03T13:37:36Z",
+  "status": "AWAITING_EXPLICIT_FOUNDER_SPEND_APPROVAL",
+  "operation": {
+    "provider": "fashn",
+    "model_name": "model-create",
+    "lifecycle": "experimental",
+    "endpoint": "POST https://api.fashn.ai/v1/run",
+    "candidate_id": "LH-MODEL-01-FULL-BODY-A1",
+    "identity_id": "LH-MODEL-01",
+    "candidate_ceiling": 1,
+    "paid_attempt_ceiling": 1,
+    "automatic_retry": false
+  },
+  "fingerprint": {
+    "execution_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c",
+    "algorithm": "sha256 of canonical contract JSON with credit_control.approval_receipt normalized to null",
+    "contract_path": "Comfy/scene-contracts/lh-model-01-full-body-a1.json",
+    "contract_sha256_before_approval_binding": "ad50001890bd90d687d6ff556ebb4c64b73e48c3f9fe028b7d77063f3ce0e3f2",
+    "approval_binding_rule": "After explicit approval, adding only the hash-bound approval receipt changes the raw contract hash but must not change this execution fingerprint. Any other contract or input change invalidates this packet."
+  },
+  "authority": {
+    "stage_1_ledger": {
+      "path": "/Users/theceo/.codex/worktrees/1e78/DevSkyy/tasks/scene-stage-01-fashn-runtime-verify-20260903.json",
+      "sha256": "e7e87fce135ffc8e8111be1a4f46f58d23109553ec4f154457345b9304651366",
+      "state": "COMPLETE",
+      "manager_verdict": "PASS_RUNTIME_READY",
+      "independent_verdict": "PASS_RUNTIME_READY"
+    },
+    "identity_manifest": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+      "sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+      "scope": "FOUNDER_APPROVED_IDENTITY_ONLY"
+    },
+    "founder_identity_approval": {
+      "path": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+      "sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+      "scope": "APPROVED_IDENTITY_ONLY"
+    },
+    "submitted_identity_reference": {
+      "role": "front_bust_identity_only",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/front-bust-v1.png",
+      "sha256": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6",
+      "transport": "private data URI; source bytes are not embedded in this packet"
+    },
+    "corroborating_identity_reference": {
+      "role": "rear_profile_bust_identity_only",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/rear-profile-bust-v1.png",
+      "sha256": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b",
+      "submitted_to_provider": false
+    },
+    "rejected_casting_board": {
+      "path": "Comfy/quarantine/LH-003-MODEL-CASTING/LH-003-MODEL-CASTING-20260902-A1.png",
+      "sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+      "status": "REJECTED_AND_QUARANTINED",
+      "submitted_to_provider": false,
+      "authority": "NONE for garment, construction, product, scene, or model-image input"
+    }
+  },
+  "request": {
+    "model_name": "model-create",
+    "inputs": {
+      "prompt": "Full-body straight-on studio casting plate of the approved adult Black woman identity, athletic natural proportions, high-bun natural-texture hairstyle, neutral confident expression, both hands relaxed away from the hips and waistband, both legs and feet fully visible, fitted plain matte-black crop top ending above the natural waist, plain close-fitting black bike shorts with no logos, pockets, trim, text, or artwork, simple black low-profile footwear, neutral medium-gray cyclorama, even product-photography light, no props, no fashion product, no scene, no display text.",
+      "face_reference": "private data URI derived only from submitted_identity_reference",
+      "face_reference_mode": "match_base",
+      "aspect_ratio": "9:16",
+      "resolution": "1k",
+      "generation_mode": "fast",
+      "seed": 42,
+      "num_images": 1,
+      "output_format": "png",
+      "return_base64": true
+    }
+  },
+  "live_price": {
+    "checked_at": "2026-09-03T13:37:36Z",
+    "first_party_source": "https://docs.fashn.ai/api-reference/model-create",
+    "base_generation_credits": 1,
+    "face_reference_surcharge_credits": 3,
+    "num_images_multiplier": 1,
+    "total_credits": 4,
+    "maximum_authorized_credits_requested": 4,
+    "formula": "(1 fast/1k base + 3 face_reference surcharge) x 1 image = 4 credits"
+  },
+  "zero_spend_reconciliation": {
+    "stage_1_balance": 99,
+    "preflight_live_balance": 99,
+    "subscription_credits": 0,
+    "on_demand_credits": 99,
+    "balance_delta_since_stage_1": 0,
+    "candidate_absent_before_and_after_preflight": true,
+    "execution_receipt_absent_before_and_after_preflight": true,
+    "paid_attempt_marker_absent_before_and_after_preflight": true,
+    "spend_approval_receipt_absent": true,
+    "provider_post_run_calls_by_stage_2": 0,
+    "credits_spent_by_stage_2": 0,
+    "status": "PASS_ZERO_SPEND"
+  },
+  "preflight": {
+    "command": ".venv/bin/python Comfy/scripts/model_plate_ooda.py preflight --contract Comfy/scene-contracts/lh-model-01-full-body-a1.json",
+    "status": "PASS_PENDING_APPROVAL",
+    "technical_ready": true,
+    "execution_ready": false,
+    "blockers": [],
+    "live_balance": 99,
+    "required_credits": 4,
+    "output_paths_reserved": true,
+    "approval_code": "PAID_APPROVAL_PENDING"
+  },
+  "sealed_outputs": {
+    "candidate_path": "Comfy/quarantine/LH-MODEL-01/LH-MODEL-01-FULL-BODY-A1.png",
+    "execution_receipt": "Comfy/receipts/lh-model-01-full-body-a1-execution.json",
+    "paid_attempt_marker": "Comfy/receipts/lh-model-01-full-body-a1-paid-attempt.json",
+    "proposed_paid_approval_receipt": "Comfy/receipts/lh-model-01-full-body-a1-paid-approval.json",
+    "independent_review": "Comfy/receipts/lh-model-01-full-body-a1-independent-review.json",
+    "approved_path_after_separate_plate_approval": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+    "founder_authority_receipt_after_separate_plate_approval": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json"
+  },
+  "attempt_and_failure_policy": {
+    "attempt_marker_state_before_submission": "CONSUMED_BEFORE_SUBMISSION",
+    "submission_retries": 0,
+    "status_polling_may_retry": true,
+    "unknown_submission_outcome": "STOP_AND_RECONCILE_PROVIDER_HISTORY",
+    "failed_or_rejected_candidate": "retain in quarantine, record first-seen issue, and do not retry",
+    "successful_provider_response": "candidate-only; not identity/anatomy approval, promotion, or VTO authority"
+  },
+  "post_candidate_gates": [
+    "Independent visual-commerce-qa review of the exact candidate hash against every identity, anatomy, framing, plain-garment, neutral-background, and no-product check in the contract.",
+    "Manager re-verification that the receipt, attempt marker, source hashes, credit debit, output geometry, and independent review all bind to the same candidate.",
+    "Separate explicit founder approval of the exact full-body plate hash before copying it to the approved path or writing full-body identity authority.",
+    "Stop Stage 2 without VTO, scene generation, promotion, storefront wiring, publication, or deployment."
+  ],
+  "execution_command_after_approval_only": ".venv/bin/python Comfy/scripts/model_plate_ooda.py execute --contract Comfy/scene-contracts/lh-model-01-full-body-a1.json --allow-spend",
+  "approval_request": {
+    "approval_receipt_schema_after_explicit_approval": "skyyrose.model-plate-paid-approval/1",
+    "requested_authority": "Approve exactly one LH-MODEL-01-FULL-BODY-A1 Model Create candidate bound to execution fingerprint e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c for a maximum of four FASHN credits, with no automatic retry.",
+    "not_authorized_by_this_request": [
+      "a second candidate or any retry",
+      "approval of the generated plate",
+      "VTO",
+      "product or scene authority",
+      "promotion or approved-path copy",
+      "wiring, publication, or deployment"
+    ]
+  }
+}

@@ -1,0 +1,484 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "SCENE-STAGE-02-LH-MODEL-01-20260903",
+  "source_task_id": "SCENE-STAGE-01-FASHN-RUNTIME-VERIFY-20260903",
+  "stage": "2/7",
+  "created_at": "2026-09-03T13:36:01Z",
+  "updated_at": "2026-09-03T14:02:14Z",
+  "state": "COMPLETE",
+  "project_manager": "fashion-theme-lead",
+  "base_commit": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "scope": {
+    "candidate_ref": "LH-MODEL-01-FULL-BODY-A1",
+    "identity_id": "LH-MODEL-01",
+    "target_surface": "one quarantined full-body front identity plate candidate",
+    "worktree": "/Users/theceo/.codex/worktrees/31a0/DevSkyy",
+    "target_environment": "local governed FASHN Model Create candidate preparation and review only",
+    "provider_operation": "fashn model-create",
+    "candidate_ceiling": 1,
+    "credit_ceiling": 4,
+    "exclusions": [
+      "the rejected LH-003 casting board as garment, construction, product, scene, or model-image authority",
+      "any LH-003 or SkyyRose garment pixels, construction, artwork, pockets, zippers, waistband, or trim",
+      "more than one paid candidate or any automatic retry",
+      "provider POST /v1/run before exact fingerprint-bound founder spend approval",
+      "candidate promotion before independent identity and anatomy review plus exact-candidate founder approval",
+      "VTO preparation or execution",
+      "Comfy scene generation or staging",
+      "storefront wiring",
+      "publication or deployment"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Stage 2 project manager",
+      "capabilities": [
+        "scope and dependency control",
+        "authority binding",
+        "evidence completeness",
+        "spend-gate enforcement",
+        "manager re-verification",
+        "handoff"
+      ],
+      "owned_deliverable": "Strict E2E Stage 2 ledger and final disposition",
+      "may_approve_candidate": false
+    },
+    {
+      "name": "product-fidelity-image-edits",
+      "job_title": "Governed model-plate candidate operator",
+      "capabilities": [
+        "identity-only source binding",
+        "sealed Model Create execution",
+        "quarantine and receipt creation"
+      ],
+      "owned_deliverable": "At most one hash-bound quarantined full-body plate candidate",
+      "may_review_own_candidate": false
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Independent identity and anatomy reviewer",
+      "capabilities": [
+        "eyes-on identity comparison",
+        "anatomy and framing review",
+        "plain-garment and product-absence verification",
+        "candidate-bound verdict"
+      ],
+      "owned_deliverable": "Independent review receipt for the exact candidate hash",
+      "independent_from_project_manager": true,
+      "independent_from_candidate_author": true,
+      "may_edit_candidate": false,
+      "may_grant_founder_approval": false
+    },
+    {
+      "name": "founder",
+      "job_title": "Human authority owner",
+      "capabilities": [
+        "exact fingerprint-bound spend approval",
+        "exact full-body candidate approval"
+      ],
+      "owned_deliverable": "Two separate explicit approvals: paid attempt first, exact plate authority second"
+    }
+  ],
+  "authority": {
+    "stage_1_thread_id": "01a0675c-6719-78a3-a81a-3bc01c861671",
+    "stage_1_ledger": {
+      "path": "/Users/theceo/.codex/worktrees/1e78/DevSkyy/tasks/scene-stage-01-fashn-runtime-verify-20260903.json",
+      "sha256": "e7e87fce135ffc8e8111be1a4f46f58d23109553ec4f154457345b9304651366",
+      "state": "COMPLETE",
+      "manager_verdict": "PASS_RUNTIME_READY",
+      "independent_verdict": "PASS_RUNTIME_READY"
+    },
+    "founder_stage_2_instruction": "Stage 1 is COMPLETE/PASS_RUNTIME_READY; begin Stage 2 with zero-spend reconciliation and preflight, then stop at the exact one-candidate four-credit approval packet if Model Create is required.",
+    "model_plate_contract": {
+      "path": "Comfy/scene-contracts/lh-model-01-full-body-a1.json",
+      "sha256": "ad50001890bd90d687d6ff556ebb4c64b73e48c3f9fe028b7d77063f3ce0e3f2"
+    },
+    "identity_manifest": {
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+      "sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+      "status": "FOUNDER_APPROVED_IDENTITY_ONLY"
+    },
+    "founder_identity_approval": {
+      "path": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+      "sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+      "status": "APPROVED_IDENTITY_ONLY"
+    },
+    "identity_references": [
+      {
+        "role": "front_bust_identity_only",
+        "path": "Comfy/approved-identities/love-hurts/lh-model-01/front-bust-v1.png",
+        "sha256": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6",
+        "garment_pixels_included": false
+      },
+      {
+        "role": "rear_profile_bust_identity_only_corroboration",
+        "path": "Comfy/approved-identities/love-hurts/lh-model-01/rear-profile-bust-v1.png",
+        "sha256": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b",
+        "garment_pixels_included": false,
+        "submitted_to_provider": false
+      }
+    ],
+    "rejected_casting_board": {
+      "path": "Comfy/quarantine/LH-003-MODEL-CASTING/LH-003-MODEL-CASTING-20260902-A1.png",
+      "sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+      "status": "REJECTED_AND_QUARANTINED",
+      "authority": "DENY_LISTED_EXCEPT_AS_SOURCE_OF_THE_TWO_ALREADY_EXTRACTED_IDENTITY_ONLY_CROPS",
+      "submitted_to_provider": false
+    },
+    "provider_pricing_authority": "https://docs.fashn.ai/api-reference/model-create",
+    "task_control": "repository tasks JSON ledger fallback because skyyrose.core.task_control and scripts/task_control.py are absent at the base commit",
+    "approved_full_body_model": {
+      "identity_id": "LH-MODEL-01",
+      "plate_id": "LH-MODEL-01-FULL-BODY-A1",
+      "status": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+      "authority_receipt": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+      "authority_receipt_sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+    }
+  },
+  "acceptance_criteria": [
+    "The supplied Stage 1 ledger is hash-bound and records COMPLETE with manager and independent PASS_RUNTIME_READY verdicts before Stage 2 proceeds.",
+    "HEAD before scoped task edits is exactly 4da200886c73252c5271f5bf89de61c5c32ba062.",
+    "Only the approved LH-MODEL-01 identity manifest, founder identity approval, front bust, and rear-profile corroboration are authority; every bound hash must verify.",
+    "The rejected casting board never supplies garment, product, construction, scene, or provider model-image authority.",
+    "Zero-spend reconciliation proves no prior Stage 2 candidate, execution receipt, approval receipt, or paid-attempt marker exists and compares the current authenticated credit balance to Stage 1 without POST /v1/run.",
+    "Current first-party pricing proves the exact request costs no more than four credits: one 1k fast output at one credit plus one face-reference surcharge of three credits.",
+    "The preflight returns PASS_PENDING_APPROVAL for the exact unmodified contract and reports one execution fingerprint, one candidate, four credits, sufficient live balance, and reserved output paths.",
+    "Before POST /v1/run, the founder receives the exact fingerprint, contract and source hashes, full request parameters, exact live price, candidate ceiling, output/receipt paths, attempt-marker semantics, no-retry rule, and unknown-outcome recovery rule.",
+    "No paid request occurs until the founder explicitly approves that exact fingerprint for one candidate at a maximum of four credits in this task.",
+    "If approved, exactly one non-idempotent Model Create submission is made; the attempt marker is consumed before submission and no retry is made for any result or ambiguous outcome.",
+    "Any candidate remains quarantined and candidate-only until an independent reviewer passes every contract identity, anatomy, framing, plain-garment, background, and product-absence check against the exact candidate hash.",
+    "The exact independently reviewed full-body plate receives a separate explicit founder approval before any approved identity path or authority receipt is created.",
+    "VTO, promotion, scene wiring, storefront wiring, publication, and deployment do not begin in Stage 2."
+  ],
+  "evidence_requirements": [
+    "stage_1_dependency",
+    "base_commit_and_scope",
+    "task_record_creation",
+    "identity_authority_hashes",
+    "rejected_board_deny_list",
+    "zero_spend_reconciliation",
+    "current_provider_price",
+    "model_plate_preflight",
+    "exact_spend_approval_packet",
+    "founder_spend_approval",
+    "single_attempt_execution_receipt",
+    "independent_identity_anatomy_review",
+    "manager_reverification",
+    "founder_exact_plate_approval",
+    "vto_non_start_evidence"
+  ],
+  "evidence": [
+    {
+      "name": "stage_1_dependency",
+      "state": "PASS",
+      "command": "jq terminal gate summary and shasum -a 256 of the founder-supplied Stage 1 ledger",
+      "artifact": "/Users/theceo/.codex/worktrees/1e78/DevSkyy/tasks/scene-stage-01-fashn-runtime-verify-20260903.json sha256 e7e87fce135ffc8e8111be1a4f46f58d23109553ec4f154457345b9304651366",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:36:01Z",
+      "notes": "Ledger state COMPLETE; manager and independent reviewer both record PASS_RUNTIME_READY; all issues are RESOLVED. The founder's current instruction explicitly accepts this authority and starts Stage 2."
+    },
+    {
+      "name": "base_commit_and_scope",
+      "state": "PASS",
+      "command": "git status --short --branch; git rev-parse HEAD; git show -s 4da200886",
+      "artifact": "4da200886c73252c5271f5bf89de61c5c32ba062",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:36:01Z",
+      "notes": "Detached HEAD matched the requested merge commit and the worktree was clean before this task ledger was added."
+    },
+    {
+      "name": "task_record_creation",
+      "state": "PASS",
+      "command": "apply_patch add tasks/scene-stage-02-lh-model-01-20260903.json",
+      "artifact": "tasks/scene-stage-02-lh-model-01-20260903.json",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:36:01Z",
+      "notes": "Created before this worktree's environment setup, live provider balance probe, approval receipt, attempt marker, or paid operation. No secret is stored."
+    },
+    {
+      "name": "worktree_local_setup",
+      "state": "PASS",
+      "command": "bash scripts/setup-codex-environment.sh",
+      "artifact": "/Users/theceo/.codex/worktrees/31a0/DevSkyy/.venv",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:36:58Z",
+      "notes": "Frozen worktree-local environment created successfully with Python 3.13.12 and project dependencies; no environment from another checkout was used."
+    },
+    {
+      "name": "identity_authority_hashes",
+      "state": "PASS",
+      "command": "shasum -a 256 of the model-plate contract, approved identity manifest, founder identity receipt, front bust, and rear-profile corroboration; model_plate_ooda.py preflight binding checks",
+      "artifact": "contract ad50001890bd90d687d6ff556ebb4c64b73e48c3f9fe028b7d77063f3ce0e3f2; manifest 8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52; founder identity receipt e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b; front bust a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6; rear profile ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:37:36Z",
+      "notes": "Every contract-bound input hash verified. Only the front identity-only bust is submitted as face_reference; the rear-profile identity-only crop remains local corroboration."
+    },
+    {
+      "name": "rejected_board_deny_list",
+      "state": "PASS",
+      "command": "inspect identity-manifest.json, founder identity receipt, model-plate contract, and preflight input bindings",
+      "artifact": "LH-003-MODEL-CASTING-20260902-A1 sha256 7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9 remains REJECTED_AND_QUARANTINED and is absent from the provider request",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:37:36Z",
+      "notes": "The board has no garment, construction, product, scene, or model-image authority. Its only permitted legacy relationship is provenance for the two already extracted garment-free identity crops."
+    },
+    {
+      "name": "focused_preflight_tests",
+      "state": "PASS",
+      "command": ".venv/bin/pytest -q Comfy/tests/test_model_plate_ooda.py",
+      "artifact": "4 passed",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:37:36Z",
+      "notes": "Focused local tests cover model-plate validation and spend guards without provider generation."
+    },
+    {
+      "name": "zero_spend_reconciliation",
+      "state": "PASS",
+      "command": "pre/post artifact audit around model_plate_ooda.py preflight plus authenticated non-billable GET /v1/credits",
+      "artifact": "Stage 1 balance 99; Stage 2 preflight balance 99; delta 0; candidate, execution receipt, paid approval receipt, paid-attempt marker, review, approved plate, and founder authority receipt all absent before and after",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:37:36Z",
+      "notes": "Stage 2 issued no POST /v1/run, consumed no attempt marker, created no candidate, and spent zero credits."
+    },
+    {
+      "name": "current_provider_price",
+      "state": "PASS",
+      "command": "current read-only lookup of first-party FASHN Model Create API reference",
+      "artifact": "https://docs.fashn.ai/api-reference/model-create: fast/1k base 1 credit plus face_reference 3 credits, multiplied by one output, total 4 credits",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:37:36Z",
+      "notes": "Price was checked against current first-party authority on the same task turn; the contract ceiling equals the calculated live price."
+    },
+    {
+      "name": "model_plate_preflight",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/model_plate_ooda.py preflight --contract Comfy/scene-contracts/lh-model-01-full-body-a1.json",
+      "artifact": "PASS_PENDING_APPROVAL; execution fingerprint e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c; live balance 99; required 4; output paths reserved",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:37:36Z",
+      "notes": "Technical readiness is true, execution readiness is false, and the only pending gate is a fingerprint-bound founder spend approval. The script's blockers array is empty because the approval is intentionally modeled as pending."
+    },
+    {
+      "name": "exact_spend_approval_packet",
+      "state": "PASS",
+      "command": "apply_patch add immutable-scope approval request; jq empty; shasum -a 256",
+      "artifact": "tasks/scene-stage-02-lh-model-01-20260903-approval-packet.json sha256 3083b5b912a0e0ef4b1cab210daa104cab62c36008f47ac81033907132830d0b",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:38:42Z",
+      "notes": "Packet contains the full request, exact fingerprint and hashes, current four-credit price, one-candidate ceiling, proposed approval receipt, attempt-marker semantics, no-retry rule, unknown-outcome rule, quarantine path, independent review gate, separate plate-approval gate, and explicit VTO/release exclusions."
+    },
+    {
+      "name": "vto_non_start_evidence",
+      "state": "PASS",
+      "command": "pre/post scoped artifact audit and git status",
+      "artifact": "Only the Stage 2 task ledger and approval packet are new; no VTO contract, receipt, marker, candidate, approved source, scene, frontend, theme, or deployment file was changed",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:38:42Z",
+      "notes": "VTO has not started."
+    },
+    {
+      "name": "founder_spend_approval",
+      "state": "PASS",
+      "command": "Founder replied approved directly to the exact fingerprint-bound Stage 2 approval request; approval receipt was written and bound before execution",
+      "artifact": "Comfy/receipts/lh-model-01-full-body-a1-paid-approval.json sha256 81255f7af0ef7964d47df64ba1c49499043f0934c8a7f830082ef9bd925ac10a",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:52:02Z",
+      "notes": "Authority covered exactly one candidate, at most four FASHN credits, and no automatic retry. It did not approve the resulting plate or any VTO, promotion, wiring, publication, or deployment."
+    },
+    {
+      "name": "single_attempt_execution_receipt",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/model_plate_ooda.py execute --contract Comfy/scene-contracts/lh-model-01-full-body-a1.json --allow-spend",
+      "artifact": "Comfy/receipts/lh-model-01-full-body-a1-execution.json sha256 ded85b3a94995733b00c4232b23fa88c1769166c8ad5c5cec632570293a1c9ac; provider job c38526ce-40a0-4666-b131-83dd1b28d654; candidate sha256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:48:17Z",
+      "notes": "Exactly one attempt was consumed before submission. FASHN reported four credits; authenticated balance changed from 99 to 95. Candidate remains quarantined and candidate-only."
+    },
+    {
+      "name": "independent_identity_anatomy_review",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/model_plate_ooda.py review --contract Comfy/scene-contracts/lh-model-01-full-body-a1.json --candidate Comfy/quarantine/LH-MODEL-01/LH-MODEL-01-FULL-BODY-A1.png --execution-receipt Comfy/receipts/lh-model-01-full-body-a1-execution.json --review Comfy/receipts/lh-model-01-full-body-a1-independent-review.json",
+      "artifact": "Comfy/receipts/lh-model-01-full-body-a1-independent-review.json sha256 fab587f227cebf8245f8390c0ff5c7a34e6d5f82c131cafa5fa49e5fea623df4",
+      "reviewer": "visual-commerce-qa",
+      "timestamp": "2026-09-03T13:52:02Z",
+      "notes": "Independent eyes-on review passed every exact identity, anatomy, framing, pose, plain-garment, neutral-background, and no-product check with findings []. Native review verification returned PASS."
+    },
+    {
+      "name": "manager_reverification",
+      "state": "PASS_PENDING_FOUNDER_PLATE_APPROVAL",
+      "command": "Manager reconciliation of native review verification, execution receipt, attempt marker, approval receipt, candidate hash, provider charge, and authenticated balance delta",
+      "artifact": "candidate sha256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579; execution receipt sha256 ded85b3a94995733b00c4232b23fa88c1769166c8ad5c5cec632570293a1c9ac; independent review sha256 fab587f227cebf8245f8390c0ff5c7a34e6d5f82c131cafa5fa49e5fea623df4",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:52:02Z",
+      "notes": "All machine and independent-review evidence binds to the exact candidate. Only the separate founder exact-plate approval remains."
+    },
+    {
+      "name": "founder_exact_plate_approval",
+      "state": "PASS",
+      "command": "Founder supplied the exact candidate-hash approval statement in the Stage 2 task",
+      "artifact": "candidate sha256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579; Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json sha256 48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:02:14Z",
+      "notes": "Approval grants FOUNDER_APPROVED_FULL_BODY_MODEL identity authority only and explicitly excludes VTO, scenes, promotion, wiring, publication, and deployment."
+    },
+    {
+      "name": "approved_identity_asset",
+      "state": "PASS",
+      "command": "Exact-byte guarded copy from quarantined candidate to the contract-reserved approved path",
+      "artifact": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png sha256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:02:14Z",
+      "notes": "Approved asset is byte-identical to the independently reviewed and founder-approved candidate. Quarantine provenance is retained."
+    },
+    {
+      "name": "stage_2_terminal_gate",
+      "state": "PASS",
+      "command": "Manager reconciliation of Stage 1 authority, identity sources, one-attempt spend approval, provider receipt, four-credit delta, independent review, founder exact-plate approval, and downstream non-start boundaries",
+      "artifact": "tasks/scene-stage-02-lh-model-01-20260903.json; approved asset sha256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579; founder authority sha256 48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:02:14Z",
+      "notes": "Stage 2 is complete. Stage 3 and every VTO, scene, commerce, publication, and deployment action remain unstarted and unauthorized."
+    }
+  ],
+  "issues": [
+    {
+      "id": "SCENE-STAGE-02-LH-MODEL-01-20260903::paid_execution::FOUNDER_SPEND_APPROVAL_REQUIRED",
+      "fingerprint": "scope=LH-MODEL-01-FULL-BODY-A1;execution=e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c;invariant=explicit_founder_approval_before_one_four_credit_candidate",
+      "first_seen_at": "2026-09-03T13:37:36Z",
+      "recurrence_count": 1,
+      "severity": "HUMAN_AUTHORITY_GATE",
+      "state": "RESOLVED",
+      "failed_invariant": "The one-candidate Model Create POST cannot occur without explicit founder approval bound to the exact execution fingerprint and four-credit ceiling.",
+      "evidence": "Technical preflight is PASS_PENDING_APPROVAL with approval code PAID_APPROVAL_PENDING.",
+      "required_resolution": "Founder explicitly approves fingerprint e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c for exactly one candidate and no more than four credits; then create and bind the approval receipt before execution.",
+      "notes": "This is an intentional authorization boundary, not a technical defect.",
+      "resolved_at": "2026-09-03T13:52:02Z",
+      "resolution_evidence": "Founder approval receipt sha256 81255f7af0ef7964d47df64ba1c49499043f0934c8a7f830082ef9bd925ac10a; consumed by exactly one provider attempt"
+    },
+    {
+      "id": "SCENE-STAGE-02-LH-MODEL-01-20260903::plate_authority::FOUNDER_EXACT_PLATE_APPROVAL_REQUIRED",
+      "fingerprint": "plate=LH-MODEL-01-FULL-BODY-A1;candidate_sha256=93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579;invariant=explicit_founder_candidate_approval_before_identity_authority",
+      "first_seen_at": "2026-09-03T13:52:02Z",
+      "recurrence_count": 1,
+      "severity": "HUMAN_AUTHORITY_GATE",
+      "state": "RESOLVED",
+      "failed_invariant": "A provider-successful and independently reviewed candidate is not approved full-body identity authority without explicit founder approval of its exact SHA-256.",
+      "evidence": "Independent review PASS with findings [] for candidate SHA-256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579.",
+      "required_resolution": "Founder visually inspects and explicitly approves this exact candidate hash; only then may it be copied to the approved identity path and receive a founder authority receipt.",
+      "notes": "This is a separate approval from the consumed four-credit spend authorization.",
+      "resolved_at": "2026-09-03T14:02:14Z",
+      "resolution_evidence": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json sha256 48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+    }
+  ],
+  "zero_spend_reconciliation": {
+    "status": "PASS_THEN_ONE_AUTHORIZED_FOUR_CREDIT_ATTEMPT",
+    "stage_1_balance": 99,
+    "current_balance": 95,
+    "subscription_credits": 0,
+    "on_demand_credits": 99,
+    "balance_delta_since_stage_1": -4,
+    "credits_spent_by_stage_2": 4,
+    "post_run_submissions": 1,
+    "candidate_exists": true,
+    "execution_receipt_exists": true,
+    "paid_attempt_marker_exists": true,
+    "spend_approval_receipt_exists": true
+  },
+  "preflight": {
+    "status": "CONSUMED_BY_AUTHORIZED_EXECUTION",
+    "execution_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c",
+    "contract_sha256": "ad50001890bd90d687d6ff556ebb4c64b73e48c3f9fe028b7d77063f3ce0e3f2",
+    "live_price_credits": 4,
+    "live_balance": 99,
+    "technical_ready": true,
+    "execution_ready": false,
+    "technical_blockers": [],
+    "execution_gate": "PAID_ATTEMPT_CONSUMED",
+    "approval_packet": {
+      "path": "tasks/scene-stage-02-lh-model-01-20260903-approval-packet.json",
+      "sha256": "3083b5b912a0e0ef4b1cab210daa104cab62c36008f47ac81033907132830d0b"
+    }
+  },
+  "founder_spend_approval": {
+    "status": "APPROVED_AND_CONSUMED",
+    "approved_at": "2026-09-03T13:52:02Z",
+    "requested_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c",
+    "approved_fingerprint": "e91a054eb18384feba0cf5a03125849e5e66e8f4245741ff13c57a748436730c",
+    "max_candidates": 1,
+    "max_credits": 4,
+    "automatic_retry": false,
+    "receipt": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-paid-approval.json",
+      "sha256": "81255f7af0ef7964d47df64ba1c49499043f0934c8a7f830082ef9bd925ac10a"
+    }
+  },
+  "candidate": {
+    "status": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+    "path": "Comfy/quarantine/LH-MODEL-01/LH-MODEL-01-FULL-BODY-A1.png",
+    "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "provider_job_id": "c38526ce-40a0-4666-b131-83dd1b28d654",
+    "approved_path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+    "approved_path_sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "authority_receipt": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+      "sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+    },
+    "promotion_allowed": false,
+    "vto_binding_allowed": false
+  },
+  "independent_review": {
+    "status": "PASS",
+    "reviewer": "visual-commerce-qa",
+    "candidate_sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "findings": [],
+    "receipt": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-independent-review.json",
+      "sha256": "fab587f227cebf8245f8390c0ff5c7a34e6d5f82c131cafa5fa49e5fea623df4"
+    },
+    "native_verification": "PASS"
+  },
+  "manager_verification": {
+    "status": "PASS_STAGE_2_COMPLETE",
+    "reviewer": "fashion-theme-lead",
+    "timestamp": "2026-09-03T14:02:14Z",
+    "missing_evidence": [],
+    "notes": "All Stage 2 evidence is complete and hash-bound. The approved plate is model identity authority only; no downstream operation is authorized."
+  },
+  "founder_plate_approval": {
+    "status": "APPROVED_AND_RECORDED",
+    "approved_at": "2026-09-03T14:02:14Z",
+    "candidate_sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "candidate_path": "Comfy/quarantine/LH-MODEL-01/LH-MODEL-01-FULL-BODY-A1.png",
+    "approved_path": "Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+    "approved_path_sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+    "authority": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+    "founder_statement": "I approve LH-MODEL-01-FULL-BODY-A1 candidate SHA-256 93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579 as FOUNDER_APPROVED_FULL_BODY_MODEL authority for LH-MODEL-01. This does not authorize VTO, scene generation, promotion, storefront wiring, publication, or deployment.",
+    "authority_receipt": {
+      "path": "Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+      "sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+    },
+    "does_not_authorize": [
+      "VTO preparation or execution",
+      "scene generation",
+      "promotion",
+      "storefront wiring",
+      "publication",
+      "deployment"
+    ]
+  },
+  "release_decision": "STAGE_2_COMPLETE_NO_DOWNSTREAM_AUTHORIZATION",
+  "blocker": null,
+  "terminal_gate": {
+    "status": "PASS",
+    "disposition": "COMPLETE",
+    "completed_at": "2026-09-03T14:02:14Z",
+    "manager_verdict": "PASS_STAGE_2_COMPLETE",
+    "independent_verdict": "PASS",
+    "founder_authority": "FOUNDER_APPROVED_FULL_BODY_MODEL",
+    "next_stage_started": false,
+    "vto_started": false
+  }
+}

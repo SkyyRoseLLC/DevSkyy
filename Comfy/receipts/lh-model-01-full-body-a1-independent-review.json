@@ -1,0 +1,18 @@
+{
+  "schema": "skyyrose.model-plate-independent-review/1",
+  "plate_id": "LH-MODEL-01-FULL-BODY-A1",
+  "contract_sha256": "e698a90d339e807c19feb920036502a2e5514421d594e465b4783abc96941565",
+  "candidate_sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+  "reviewer": "visual-commerce-qa",
+  "verdict": "PASS",
+  "findings": [],
+  "checks": {
+    "approved face, skin tone, hairstyle, age presentation, and campaign presence": "PASS",
+    "full head-to-foot framing": "PASS",
+    "realistic hands, feet, limbs, waist, and body proportions": "PASS",
+    "straight-on pose with both hip and waist areas unobstructed": "PASS",
+    "plain replacement garment with no SkyyRose or Love Hurts details": "PASS",
+    "neutral removable background": "PASS",
+    "identity plate only with no product, scene, or promotional authority": "PASS"
+  }
+}
