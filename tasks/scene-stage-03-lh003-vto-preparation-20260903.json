@@ -1,0 +1,211 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "SCENE-STAGE-03-LH003-VTO-PREPARATION-20260903",
+  "source_task_id": "SCENE-STAGE-02-LH-MODEL-01-20260903",
+  "stage": "3/7",
+  "created_at": "2026-09-03T14:00:00Z",
+  "updated_at": "2026-09-03T14:00:00Z",
+  "state": "IN_PROGRESS",
+  "project_manager": "fashion-theme-lead",
+  "base_commit": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "scope": {
+    "sku": "LH-003",
+    "view": "front",
+    "candidate_ref": "LH-003-VTO-FRONT-A1",
+    "model_identity": "LH-MODEL-01",
+    "target_surface": "one sealed, unexecuted exact-LH-003 front-facing VTO request and Stage 4 approval packet",
+    "worktree": "/Users/theceo/.codex/worktrees/stage-03-lh003-vto-prep/DevSkyy",
+    "target_environment": "local governed FASHN VTO preparation only",
+    "credit_ceiling": 0,
+    "provider_post_ceiling": 0,
+    "candidate_ceiling": 0,
+    "exclusions": [
+      "POST https://api.fashn.ai/v1/run",
+      "any paid VTO generation, retry, or attempt marker",
+      "candidate creation or promotion",
+      "using the rejected LH-003 casting board as product, garment, construction, scene, or model-image authority",
+      "weakening the four-pocket construction rule: two side pockets and two back pockets, all zippered",
+      "scene generation or composition",
+      "storefront wiring",
+      "publication or deployment",
+      "automatic Stage 4 progression"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Stage 3 project manager",
+      "capabilities": [
+        "scope and dependency control",
+        "authority binding",
+        "zero-spend enforcement",
+        "evidence completeness",
+        "manager re-verification",
+        "handoff"
+      ],
+      "owned_deliverable": "Strict E2E Stage 3 ledger and terminal disposition",
+      "may_approve_paid_execution": false
+    },
+    {
+      "name": "product-fidelity-image-edits",
+      "job_title": "Exact-garment VTO preparation operator",
+      "capabilities": [
+        "model and product source binding",
+        "four-view construction encoding",
+        "sealed VTO request preparation",
+        "zero-credit preflight"
+      ],
+      "owned_deliverable": "Unexecuted hash-bound LH-003 front VTO contract and approval packet",
+      "may_review_own_contract": false,
+      "may_execute_paid_request": false
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Independent source and VTO-contract reviewer",
+      "capabilities": [
+        "eyes-on source review",
+        "four-pocket and zipper verification",
+        "identity and anatomy authority review",
+        "request and exclusion review"
+      ],
+      "owned_deliverable": "Independent Stage 3 source and contract verdict",
+      "independent_from_project_manager": true,
+      "independent_from_contract_author": true,
+      "may_edit_sources_or_contract": false,
+      "may_execute_paid_request": false
+    },
+    {
+      "name": "founder",
+      "job_title": "Human authority owner",
+      "capabilities": [
+        "authorize Stage 3 zero-credit preparation",
+        "separately approve or reject a future exact Stage 4 paid fingerprint"
+      ],
+      "owned_deliverable": "Stage 3 authorization now; any paid execution approval remains separate"
+    }
+  ],
+  "authority": {
+    "founder_stage_3_instruction": "approve stage 3",
+    "founder_stage_3_scope": "Zero-credit LH-003 VTO preparation only; no VTO execution or automatic Stage 4 progression.",
+    "stage_2_ledger": {
+      "source_path": "/Users/theceo/.codex/worktrees/31a0/DevSkyy/tasks/scene-stage-02-lh-model-01-20260903.json",
+      "sha256": "307061d2617505426b12a431d4ba12de26e87ef6f1ed478db810e15d67676de2",
+      "state": "COMPLETE",
+      "manager_verdict": "PASS_STAGE_2_COMPLETE"
+    },
+    "approved_full_body_model": {
+      "source_path": "/Users/theceo/.codex/worktrees/31a0/DevSkyy/Comfy/approved-identities/love-hurts/lh-model-01/full-body-front-a1.png",
+      "sha256": "93421d59bfd994ffd7b82ae99edf9003ac2855d226b8dcdacb446401b2cd3579",
+      "status": "FOUNDER_APPROVED_FULL_BODY_MODEL"
+    },
+    "founder_model_authority_receipt": {
+      "source_path": "/Users/theceo/.codex/worktrees/31a0/DevSkyy/Comfy/receipts/lh-model-01-full-body-a1-founder-authority.json",
+      "sha256": "48365414f27e3f684b79987e47c01dcd61541d2c2c7f0b792f87532271f0a584"
+    },
+    "product_truth": {
+      "sku": "LH-003",
+      "required_views": [
+        "front",
+        "back",
+        "left-side closeup",
+        "right-side closeup"
+      ],
+      "required_construction": "two side pockets and two back pockets, all zippered"
+    },
+    "task_control": "repository tasks JSON ledger fallback because runtime task-control availability has not yet been established in this isolated worktree"
+  },
+  "acceptance_criteria": [
+    "The Stage 2 terminal ledger and founder full-body-model authority receipt verify against their declared SHA-256 values before use.",
+    "The approved LH-MODEL-01 full-body plate is imported byte-identically and remains model identity and geometry authority only.",
+    "Current repository product SOT and source-authority evidence resolve LH-003 to the exact front, back, left-side, and right-side physical references.",
+    "Independent eyes-on review confirms two side pockets and two back pockets, all zippered, with artwork, identity, waistband, trim, and construction recorded without inference from the rejected casting board.",
+    "The VTO provider and model resolve through the checked-in capability registry and current authenticated runtime without issuing a paid provider POST.",
+    "The prepared request binds one front-facing model image, the correct LH-003 garment authority set, exact hashes, target geometry, mode, seed, candidate ceiling, credit ceiling, no-retry semantics, and output paths.",
+    "The zero-spend preflight produces exactly one deterministic execution fingerprint and a current price no greater than the future Stage 4 ceiling of four credits.",
+    "The Stage 4 approval packet states the exact fingerprint, request parameters, source hashes, current price, one-candidate ceiling, consumed-before-submission marker rule, no-retry rule, and unknown-outcome recovery rule.",
+    "No paid attempt marker, provider POST, VTO candidate, execution receipt, promotion, scene, storefront, publication, deployment, or Stage 4 execution occurs in Stage 3.",
+    "An independent reviewer passes the exact prepared contract and source bindings before manager re-verification.",
+    "The founder's Stage 3 authorization is recorded, but it is not reinterpreted as approval of the future Stage 4 paid fingerprint."
+  ],
+  "evidence_requirements": [
+    "task_record_creation",
+    "base_commit_and_isolation",
+    "founder_stage_3_authorization",
+    "stage_2_authority_import",
+    "lh003_product_sot",
+    "four_view_source_authority",
+    "four_zipper_construction_review",
+    "provider_model_registry",
+    "authenticated_zero_spend_runtime",
+    "vto_contract",
+    "zero_spend_preflight",
+    "stage_4_approval_packet",
+    "independent_review",
+    "manager_reverification",
+    "paid_non_execution_evidence"
+  ],
+  "evidence": [
+    {
+      "name": "task_record_creation",
+      "state": "PASS",
+      "command": "Create Stage 3 repository JSON ledger before authority import or VTO preparation",
+      "artifact": "tasks/scene-stage-03-lh003-vto-preparation-20260903.json",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:00:00Z",
+      "notes": "The task exists before any Stage 2 artifact import, provider probe, request preparation, attempt marker, or paid operation. No secret is stored."
+    },
+    {
+      "name": "base_commit_and_isolation",
+      "state": "PASS",
+      "command": "git worktree add -b codex/scene-stage-03-lh003-vto-prep-20260903 <isolated-worktree> 4da200886c73252c5271f5bf89de61c5c32ba062",
+      "artifact": "/Users/theceo/.codex/worktrees/stage-03-lh003-vto-prep/DevSkyy at 4da200886c73252c5271f5bf89de61c5c32ba062",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:00:00Z",
+      "notes": "Fresh isolated branch codex/scene-stage-03-lh003-vto-prep-20260903. The base checkout was not modified."
+    },
+    {
+      "name": "founder_stage_3_authorization",
+      "state": "PASS",
+      "command": "Record founder instruction in the current task",
+      "artifact": "Founder statement: approve stage 3",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T14:00:00Z",
+      "notes": "Authorization covers zero-credit Stage 3 preparation only. It does not approve any paid VTO request or Stage 4 execution."
+    }
+  ],
+  "issues": [],
+  "zero_spend_control": {
+    "status": "ENFORCED",
+    "max_provider_post_calls": 0,
+    "max_credits": 0,
+    "paid_attempt_marker_allowed": false,
+    "candidate_creation_allowed": false,
+    "automatic_retry": false
+  },
+  "preparation": {
+    "status": "NOT_STARTED",
+    "contract": null,
+    "execution_fingerprint": null,
+    "live_price_credits": null,
+    "stage_4_approval_packet": null
+  },
+  "manager_verification": {
+    "status": "PENDING",
+    "reviewer": "fashion-theme-lead",
+    "missing_evidence": [
+      "stage_2_authority_import",
+      "lh003_product_sot",
+      "four_view_source_authority",
+      "four_zipper_construction_review",
+      "provider_model_registry",
+      "authenticated_zero_spend_runtime",
+      "vto_contract",
+      "zero_spend_preflight",
+      "stage_4_approval_packet",
+      "independent_review",
+      "paid_non_execution_evidence"
+    ]
+  },
+  "release_decision": "NOT_AUTHORIZED",
+  "blocker": null
+}
