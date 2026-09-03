@@ -33,6 +33,13 @@
       "runtime": "elite-builder-runtime",
       "approval": "SEPARATE_PAID_ACTION_APPROVAL"
     },
+    "act_vto": {
+      "owner": "product-fidelity-image-edits",
+      "runtime": "fashn-tryon-max",
+      "scope": "ONE_SOURCE_BOUND_CANDIDATE_BEFORE_ENVIRONMENT_GENERATION",
+      "approval": "SEPARATE_PAID_ACTION_APPROVAL",
+      "independent_review": "visual-commerce-qa"
+    },
     "act_correction": {
       "capability": "product-fidelity-image-edits",
       "surface": "ComfyUI",
@@ -63,7 +70,8 @@
     "automatic_paid_retries": false,
     "current_prompt_review_required": true,
     "candidate_bound_paid_approval_required": true,
-    "measured_optical_contract_required": true
+    "measured_optical_contract_required": true,
+    "vto_candidate_precedes_scene_generation_when_on_model_authority_is_missing": true
   },
   "scenes": [
     {

@@ -1,0 +1,143 @@
+{
+  "schema": "skyyrose.vto-ooda/1",
+  "pilot_id": "LH-003-TRYON-MAX-PILOT-A1",
+  "scene_id": "LH-COMMERCE-2",
+  "sku": "lh-003",
+  "status": "BLOCKED_PENDING_APPROVED_FULL_BODY_MODEL",
+  "purpose": "Create one source-bound on-model LH-003 candidate before any Fractured Chamber environment or sculpture work.",
+  "model": {
+    "id": "tryon-max",
+    "provider": "fashn",
+    "lifecycle": "preview",
+    "operation": "virtual_tryon_candidate",
+    "registry": {
+      "path": "plugins/fashion-theme-team/skills/product-fidelity-image-edits/references/model-capability-registry.json",
+      "sha256": "0c701bdba8f427cbb18e032e134ef3a4b1c92fe3f2ec2ace2993566807b2f5df"
+    }
+  },
+  "inputs": {
+    "product": {
+      "role": "primary_product_image",
+      "view": "front",
+      "path": "Comfy/assets/love-hurts/lh-003/protected-mattes/lh-003-shorts-front-product-matte-v1.png",
+      "sha256": "5313b5aad0dc25222fc89c3036e50550d8c174b36d5374065a22d79caa3deacc",
+      "authority_receipt": {
+        "path": "Comfy/receipts/lh-003-front-product-matte-v1.json",
+        "sha256": "ece97ad4afb4b98ece38c73c16eeace62a82716aeab534586c14b2bc7feecfdf"
+      }
+    },
+    "supporting_product_views": [
+      {
+        "role": "physical_product_authority",
+        "view": "front",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+        "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+        "authority_receipt": {
+          "path": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+          "sha256": "7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552"
+        }
+      },
+      {
+        "role": "physical_product_authority",
+        "view": "back",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+        "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
+        "authority_receipt": {
+          "path": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+          "sha256": "7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552"
+        }
+      },
+      {
+        "role": "physical_product_authority",
+        "view": "wearer_left",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+        "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
+        "authority_receipt": {
+          "path": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+          "sha256": "7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552"
+        }
+      },
+      {
+        "role": "physical_product_authority",
+        "view": "wearer_right",
+        "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+        "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a",
+        "authority_receipt": {
+          "path": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+          "sha256": "7d75633405d539fc56da3f8d17862d27c0acebb9d453afba1b2d5cd662d1c552"
+        }
+      }
+    ],
+    "model": {
+      "role": "approved_full_body_model",
+      "view": "full_body_front",
+      "path": null,
+      "sha256": null,
+      "authority_state": "PENDING_FOUNDER_APPROVED_FULL_BODY_MODEL",
+      "authority_receipt": null,
+      "identity_context": {
+        "identity_id": "LH-MODEL-01",
+        "manifest": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+        "manifest_sha256": "8f3ab3fbaa2a34ac66ecb28f2fd29e329f028db72a53f62cccc7a91db867ca52",
+        "founder_identity_approval": "Comfy/receipts/lh-model-01-founder-identity-approval-20260902.json",
+        "founder_identity_approval_sha256": "e2c8e365e3f5f232d5af54fc6dbc94dd131fecb12f6aa226683166b7e9446a6b",
+        "scope": "identity only; the bust references are not a full-body VTO input"
+      }
+    }
+  },
+  "request": {
+    "prompt": "Preserve the approved model identity, face, hair, body, pose, skin texture, black fitted top, hands, and background. Replace only the lower-body garment with the exact supplied LH-003 basketball shorts, worn naturally at the waist. Do not mirror, reinterpret, simplify, relocate, or rewrite any product artwork or construction.",
+    "resolution": "2k",
+    "generation_mode": "quality",
+    "seed": 42,
+    "num_images": 1,
+    "output_format": "png",
+    "return_base64": true
+  },
+  "product_invariants": [
+    "exactly two zippered side pockets and two zippered rear pockets",
+    "white perforated mesh with the complete orange-red rose-on-cloud field",
+    "black ribbed waistband and angular black panels with red-white binding",
+    "wearer-left large Love Hurts script and small Love Hurts emblem",
+    "wearer-right embroidered rose bouquet with green stems and white-blue cloud",
+    "two black-trimmed rear zippers and wearer-left rear Love Hurts treatment",
+    "no mirroring, cargo pockets, open welts, extra pockets, or zipper removal"
+  ],
+  "credit_control": {
+    "mode": "ONE_CANDIDATE_ONE_PAID_ATTEMPT",
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "max_credits": 4,
+    "approval_receipt": null,
+    "on_unknown_submission_outcome": "STOP_AND_RECONCILE_PROVIDER_HISTORY"
+  },
+  "review_gate": {
+    "candidate_author": "product-fidelity-image-edits",
+    "independent_reviewer": "visual-commerce-qa",
+    "required_checks": [
+      "model identity and pose preservation",
+      "front construction and fit",
+      "four-pocket topology and four zipper closures",
+      "wearer-left versus wearer-right artwork",
+      "rear construction against the physical back authority",
+      "no model, product, text, or background drift outside the garment"
+    ],
+    "failure_disposition": "QUARANTINE_NO_AUTOMATIC_RETRY",
+    "founder_approval_required": true
+  },
+  "output": {
+    "candidate_path": "Comfy/quarantine/LH-003-VTO/LH-003-TRYON-MAX-PILOT-A1.png",
+    "execution_receipt": "Comfy/receipts/lh-003-tryon-max-pilot-a1-execution.json",
+    "candidate_only": true,
+    "scene_input_allowed": false,
+    "promotion_allowed": false,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "execute_blockers": [
+    "Bind a founder-approved full-body LH-MODEL-01 source suitable for Try-On Max.",
+    "Bind a hash-verified full-body model authority receipt.",
+    "Record a contract-bound approval receipt for exactly one 4-credit candidate."
+  ]
+}
