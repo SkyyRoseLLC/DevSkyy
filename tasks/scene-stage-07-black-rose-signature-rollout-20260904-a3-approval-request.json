@@ -1,0 +1,57 @@
+{
+  "schema": "skyyrose.runway-environment-a3-approval-request/1",
+  "stage_id": "SCENE-STAGE-07-BLACK-ROSE-SIGNATURE-ROLLOUT-20260904",
+  "recorded_at": "2026-09-04T15:07:42Z",
+  "state": "PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "candidates": [
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+      "execution_fingerprint": "3d7206be9ae323eedc4337b7ae351fd21b360c4a5f39ae9f9d72be5b1de39f1b",
+      "live_price_usd": 0.11,
+      "workflow_sha256": "3945d1b7e0b12d99622d170881bf4037c14429a11ec69d9c250329fe1ac46936",
+      "contract_sha256": "aece3fb87c0234c424a0e760683f9ec3522aeef64ea1eb2b11a3b1228c964287",
+      "partner_auth_status": "PASS",
+      "candidate_bound_approval_path": "Comfy/receipts/br-commerce-2-runway-environment-a3-founder-approval.json",
+      "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a3-paid-attempt.json",
+      "protected_assets_sent_to_runway": [],
+      "paid_submission_performed": false
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A3",
+      "execution_fingerprint": "bbcd5936db2b06361b63956d23e3cc6162595c2afbc00fad438aeb72786b70db",
+      "live_price_usd": 0.11,
+      "workflow_sha256": "4f594ec23857c055a3ceed3e16180ad6b47eb3854f223d55ffe31e7dce04215f",
+      "contract_sha256": "8588345940d2583124d9a16d318b7e037258fbd712fb647f099d9ddc4430ccac",
+      "partner_auth_status": "PASS",
+      "candidate_bound_approval_path": "Comfy/receipts/sig-commerce-1-runway-environment-a3-founder-approval.json",
+      "attempt_marker": "Comfy/receipts/sig-commerce-1-runway-environment-a3-paid-attempt.json",
+      "protected_assets_sent_to_runway": [],
+      "paid_submission_performed": false
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+      "execution_fingerprint": "495b9a5e21f5db9846f61660d31e8cc5d02f6939556520f83f884388ac852c20",
+      "live_price_usd": 0.11,
+      "workflow_sha256": "e43fb58906111fc3c31c6c7f0d3827182f27d464bfafe4f0e0fd023ae814df7d",
+      "contract_sha256": "463c26ef76b4fae1461ac295ff71383b6810dd4ed7bd05d52b90a7f4a13d4468",
+      "partner_auth_status": "PASS",
+      "candidate_bound_approval_path": "Comfy/receipts/sig-commerce-2-runway-environment-a3-founder-approval.json",
+      "attempt_marker": "Comfy/receipts/sig-commerce-2-runway-environment-a3-paid-attempt.json",
+      "protected_assets_sent_to_runway": [],
+      "paid_submission_performed": false
+    }
+  ],
+  "maximum_combined_price_usd": 0.33,
+  "automatic_paid_retries": false,
+  "prior_attempts_reusable": false,
+  "authorization_exclusions": [
+    "protected composition",
+    "promotion",
+    "storefront wiring",
+    "publication",
+    "deployment"
+  ]
+}
