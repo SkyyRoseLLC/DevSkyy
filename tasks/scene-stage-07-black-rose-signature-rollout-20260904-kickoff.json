@@ -6,7 +6,7 @@
   "created_at": "2026-09-04T00:00:00-07:00",
   "base_commit": "c432975cc0e72e210dbc211950d650030e97ee0e",
   "branch": "codex/scene-stage-07-br-signature-rollout-20260904",
-  "status": "A2_APPROVED_FOR_EXACT_PRODUCT_FREE_ENVIRONMENT_BATCH",
+  "status": "A2_PARTIAL_OR_FAILED_NO_RETRY",
   "execution_mode": "PARALLEL_PRODUCT_FREE_ENVIRONMENT_PREFLIGHT",
   "scope": {
     "included": [
@@ -218,5 +218,39 @@
         "validation": "PASS"
       }
     ]
+  },
+  "a2_environment_execution": {
+    "recorded_at": "2026-09-04T14:43:50.796946+00:00",
+    "results": [
+      {
+        "scene_id": "BR-COMMERCE-2",
+        "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "2b63daf5-829e-46d6-9a13-c155e243165b",
+        "candidate_created": false,
+        "execution_receipt": "Comfy/receipts/br-commerce-2-runway-environment-a2-execution.json",
+        "automatic_retry": false
+      },
+      {
+        "scene_id": "SIG-COMMERCE-1",
+        "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "95f4ef89-1f3f-472e-8364-76d576829357",
+        "candidate_created": false,
+        "execution_receipt": "Comfy/receipts/sig-commerce-1-runway-environment-a2-execution.json",
+        "automatic_retry": false
+      },
+      {
+        "scene_id": "SIG-COMMERCE-2",
+        "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "2132a22e-0ff7-4778-ac77-b1800d46ce9d",
+        "candidate_created": false,
+        "execution_receipt": "Comfy/receipts/sig-commerce-2-runway-environment-a2-execution.json",
+        "automatic_retry": false
+      }
+    ],
+    "automatic_retry": false,
+    "protected_assets_sent": []
   }
 }

@@ -1,0 +1,18 @@
+{
+  "schema": "skyyrose.comfy-paid-attempt-marker/1",
+  "workflow_sha256": "f5f503884ec79d7285b344e8e08030c909376181a08d4bd94371431c5cd76ce7",
+  "contract_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/scene-contracts/sig-commerce-1-runway-environment-a2.json",
+  "contract_sha256": "b25e4eca4a63414441d96b4589ad29727d4702a57b0735fe654b63232d43a4cd",
+  "approval_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-1-runway-environment-a2-founder-approval.json",
+  "approval_sha256": "08ea9c570d2b3770343c465f5e6ad55589b43f4fd362c762ffd6dce46669e3ef",
+  "scene_id": "SIG-COMMERCE-1",
+  "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2",
+  "execution_fingerprint": "f4b3d4ce4998037cfd4993f56ba572e4e2f55643f8e3d46dbe731a6d783b8407",
+  "live_price_usd": 0.11,
+  "paid_partner_nodes": [
+    "RunwayTextToImageNode"
+  ],
+  "state": "CONSUMED_BEFORE_SUBMISSION",
+  "automatic_retry": false,
+  "immutable": true
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "skyyrose.runway-environment-credit-reconciliation/1",
+  "stage_id": "SCENE-STAGE-07-BLACK-ROSE-SIGNATURE-ROLLOUT-20260904",
+  "batch": "A2",
+  "recorded_at": "2026-09-04T14:51:02Z",
+  "status": "NO_CHARGE_OBSERVED",
+  "balance_source": "SIGNED_IN_COMFY_UI",
+  "credits_before": 7294,
+  "credits_after": 7294,
+  "observed_delta": 0,
+  "provider_charge_guarantee": false,
+  "candidate_outputs_created": 0,
+  "automatic_retry_performed": false,
+  "executions": [
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+      "prompt_id": "2b63daf5-829e-46d6-9a13-c155e243165b",
+      "result": "FAILED_HTTP_401_BEFORE_PROVIDER_CANDIDATE"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2",
+      "prompt_id": "95f4ef89-1f3f-472e-8364-76d576829357",
+      "result": "FAILED_HTTP_401_BEFORE_PROVIDER_CANDIDATE"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+      "prompt_id": "2132a22e-0ff7-4778-ac77-b1800d46ce9d",
+      "result": "FAILED_HTTP_401_BEFORE_PROVIDER_CANDIDATE"
+    }
+  ],
+  "notes": "The signed-in Comfy UI displayed 7,294 credits before and after the A2 batch. This records an observed zero delta only; it is not a provider billing guarantee and grants no retry or downstream authority."
+}
