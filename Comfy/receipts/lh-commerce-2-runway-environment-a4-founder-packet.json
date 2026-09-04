@@ -1,0 +1,90 @@
+{
+  "schema": "skyyrose.runway-environment-founder-packet/1",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+  "execution_fingerprint": "bc484ef2e6c63174030058b9a8099ad5bdc05bda06e69329383fcbca4c003d14",
+  "fingerprint_material": {
+    "schema": "skyyrose.runway-environment-execution-fingerprint/1",
+    "scene_id": "LH-COMMERCE-2",
+    "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+    "contract_sha256": "7e487719d89def62a6f6a33bae170221c48eee085c6e14065d06f38330eb2eb2",
+    "workflow_sha256": "6d4174396d76d0152ca5d879a84a8e6032e6d8af731603b6c15bfa4dd0e41800",
+    "prompt_sha256": "e75003758f844e3578a07ab063abe8cab809b7e479b5b7fde212fb65b5a28aee",
+    "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+    "live_price_usd": 0.11,
+    "approval_path": "Comfy/receipts/lh-commerce-2-runway-environment-a4-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/lh-commerce-2-runway-environment-a4-paid-attempt.json",
+    "max_paid_generations": 1
+  },
+  "prompt": "Wide cinematic Fractured Chamber architecture with a deep ruined gothic cathedral volume, radial tracery window high in the rear wall, towering black stone arches, aged iron, restrained deep-red drape accents, cool moonlit volumetric shafts, low warm practical spill reserved for the right-side protected-object zone, and a cracked wet obsidian floor with physically plausible reflections. Preserve an open left-center customer zone, an open right monument zone, an unobstructed central depth corridor, and grounded floor contact space. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+  "live_partner_node": {
+    "class_type": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "price_usd": 0.11,
+    "schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024"
+  },
+  "partner_auth": {
+    "status": "PASS",
+    "code": "COMFY_PARTNER_AUTH_VERIFIED",
+    "environment_variable": "COMFY_API_KEY",
+    "endpoint": "https://api.comfy.org/customers/balance",
+    "paid_attempt_consumed": false
+  },
+  "one_candidate_ceiling": {
+    "max_paid_generations": 1,
+    "max_price_usd": 0.11,
+    "automatic_paid_retries": false
+  },
+  "candidate_bound_approval_path": "Comfy/receipts/lh-commerce-2-runway-environment-a4-founder-approval.json",
+  "attempt_marker": "Comfy/receipts/lh-commerce-2-runway-environment-a4-paid-attempt.json",
+  "workflow": {
+    "1": {
+      "class_type": "RunwayTextToImageNode",
+      "inputs": {
+        "prompt": "Wide cinematic Fractured Chamber architecture with a deep ruined gothic cathedral volume, radial tracery window high in the rear wall, towering black stone arches, aged iron, restrained deep-red drape accents, cool moonlit volumetric shafts, low warm practical spill reserved for the right-side protected-object zone, and a cracked wet obsidian floor with physically plausible reflections. Preserve an open left-center customer zone, an open right monument zone, an unobstructed central depth corridor, and grounded floor contact space. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+        "ratio": "1920:1080"
+      },
+      "_meta": {
+        "title": "LH-COMMERCE-2 product-free environment only"
+      }
+    },
+    "2": {
+      "class_type": "ResizeImageMaskNode",
+      "inputs": {
+        "input": [
+          "1",
+          0
+        ],
+        "resize_type": "scale dimensions",
+        "resize_type.width": 2048,
+        "resize_type.height": 1152,
+        "resize_type.crop": "disabled",
+        "scale_method": "lanczos"
+      }
+    },
+    "3": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "images": [
+          "2",
+          0
+        ],
+        "filename_prefix": "SkyyRose/LH-COMMERCE-2/environment-a4"
+      }
+    }
+  },
+  "workflow_sha256": "6d4174396d76d0152ca5d879a84a8e6032e6d8af731603b6c15bfa4dd0e41800",
+  "contract_sha256": "7e487719d89def62a6f6a33bae170221c48eee085c6e14065d06f38330eb2eb2",
+  "protected_assets_sent_to_runway": [],
+  "paid_submission_performed": false,
+  "failures": [],
+  "declared_execution_blockers": [],
+  "next_action": "STOP_FOR_EXPLICIT_FOUNDER_APPROVAL",
+  "post_merge_execution_gate": {
+    "required": false,
+    "action": "SATISFIED",
+    "reason": "Current isolated stage is based on the merged 4da200886 lineage; foreground readiness is intentionally enforced at local composition, not product-free plate generation.",
+    "merged_commit": "4da200886"
+  }
+}

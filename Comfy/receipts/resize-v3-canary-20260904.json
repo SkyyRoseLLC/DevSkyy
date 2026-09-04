@@ -1,0 +1,30 @@
+{
+  "schema": "skyyrose.comfy-resize-v3-canary/1",
+  "recorded_at": "2026-09-04T16:29:28.750160+00:00",
+  "status": "PASS",
+  "purpose": "Prove flattened COMFY_DYNAMICCOMBO_V3 resize serialization before another paid Runway attempt.",
+  "prompt_id": "102c211c-da1f-4c2b-91b0-c1657a6fa607",
+  "workflow_sha256": "1e46479539e0cfb523c8a77f0c2ea1570c4ae69ca8de286af29b65bae09dfccb",
+  "history_sha256": "798a10e3efd46f3c1fe3e0440dd21d440272f386e26e3bacad62b3517f88f705",
+  "workflow_path": "EmptyImage -> ResizeImageMaskNode -> SaveImage",
+  "resize_inputs": {
+    "resize_type": "scale dimensions",
+    "resize_type.width": 128,
+    "resize_type.height": 72,
+    "resize_type.crop": "disabled",
+    "scale_method": "lanczos"
+  },
+  "output": {
+    "filename": "resize-v3-canary_00001_.png",
+    "subfolder": "SkyyRose/preflight",
+    "type": "output",
+    "sha256": "1fc1fbe7f6ada89e74f550ba07c987db0ac47f0cfe544494b0a8000832dd6401",
+    "bytes": 574,
+    "width": 128,
+    "height": 72,
+    "format": "PNG"
+  },
+  "paid_partner_nodes": [],
+  "paid_price_usd": 0,
+  "provider_generation_performed": false
+}

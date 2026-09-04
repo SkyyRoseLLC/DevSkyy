@@ -1,0 +1,53 @@
+{
+  "schema": "skyyrose.runway-environment-a4-approval-request/1",
+  "recorded_at": "2026-09-04T16:29:35.332622+00:00",
+  "state": "PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "automatic_paid_retries": false,
+  "prior_attempts_reusable": false,
+  "serial_execution_policy": {
+    "max_concurrent_provider_tasks": 1,
+    "wait_for_terminal_state_before_next_submission": true,
+    "minimum_delay_seconds_after_terminal_state": 5,
+    "stop_remaining_batch_on_http_429": true
+  },
+  "cross_stage_maximum_combined_price_usd": 0.44,
+  "account_readiness": {
+    "effective_balance_reported": 3422.64808,
+    "credits_per_usd": 211,
+    "required_credits_for_0_44_usd": 92.84,
+    "sufficient": true
+  },
+  "resize_canary": {
+    "status": "PASS",
+    "prompt_id": "102c211c-da1f-4c2b-91b0-c1657a6fa607",
+    "workflow_sha256": "1e46479539e0cfb523c8a77f0c2ea1570c4ae69ca8de286af29b65bae09dfccb",
+    "paid_partner_nodes": []
+  },
+  "approval_statement_template": "I approve exactly one product-free Runway Gen-4 environment candidate for each of:\n\nLH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint bc484ef2e6c63174030058b9a8099ad5bdc05bda06e69329383fcbca4c003d14,\n\nBR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint 6b090ea5457fcfe106270fe0f5a06b8794bb6d90a4e4238a000011c4dd48eb46,\n\nSIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint f76233a63d38d552993444d08d03af036cd72c1d24dd5bf83b6ff7ab4ec1a589,\n\nand SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint 17493b37b88c9f624119a664390c3ff2fca2a66ff5c60ac0fe6172f6e082cee0,\n\nfor no more than $0.11 each and $0.44 combined, with serial execution, exactly one candidate per scene, and no automatic retry. Stop the remaining batch on HTTP 429. This authorizes only the four product-free A4 environment generations. It does not authorize protected composition, promotion, storefront wiring, publication, or deployment.",
+  "authorization_exclusions": [
+    "protected composition",
+    "promotion",
+    "storefront wiring",
+    "publication",
+    "deployment"
+  ],
+  "stage_id": "SCENE-STAGE-06-LH-COMMERCE-2-20260904",
+  "candidates": [
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "execution_fingerprint": "bc484ef2e6c63174030058b9a8099ad5bdc05bda06e69329383fcbca4c003d14",
+      "live_price_usd": 0.11,
+      "workflow_sha256": "6d4174396d76d0152ca5d879a84a8e6032e6d8af731603b6c15bfa4dd0e41800",
+      "contract_sha256": "7e487719d89def62a6f6a33bae170221c48eee085c6e14065d06f38330eb2eb2",
+      "partner_auth_status": "PASS",
+      "candidate_bound_approval_path": "Comfy/receipts/lh-commerce-2-runway-environment-a4-founder-approval.json",
+      "attempt_marker": "Comfy/receipts/lh-commerce-2-runway-environment-a4-paid-attempt.json",
+      "protected_assets_sent_to_runway": [],
+      "paid_submission_performed": false
+    }
+  ],
+  "maximum_combined_price_usd": 0.11,
+  "approval_packet": "Comfy/receipts/lh-commerce-2-runway-environment-a4-founder-packet.json",
+  "contract": "Comfy/scene-contracts/lh-commerce-2-runway-environment-a4.json"
+}
