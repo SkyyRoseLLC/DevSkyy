@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -57,6 +58,20 @@ def _canonical_json(value: Any) -> str:
 
 def _sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
+
+
+def _merged_commit_is_ancestor(commit: str) -> bool:
+    """Prove a contract's satisfied merge gate against the current checkout."""
+    if not commit.strip():
+        return False
+    result = subprocess.run(
+        ["/usr/bin/git", "merge-base", "--is-ancestor", commit, "HEAD"],
+        cwd=PROJECT_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    return result.returncode == 0
 
 
 def _sha256_json(value: Any) -> str:
@@ -250,14 +265,23 @@ def validate_contract(
                 failures.append(f"output.{field} must be false")
 
     restart = contract.get("post_merge_execution_gate")
-    expected_restart = (
-        {"required": False, "action": "SATISFIED"}
-        if execution_ready
-        else {"required": True, "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN"}
-    )
-    if not isinstance(restart, Mapping) or any(
-        restart.get(key) != value for key, value in expected_restart.items()
-    ):
+    if not isinstance(restart, Mapping):
+        failures.append("paid execution merge/restart state is invalid")
+    elif restart.get("required") is True:
+        if (
+            restart.get("action") != "REBASE_OR_RESTART_FROM_MERGED_MAIN"
+            or execution_ready
+        ):
+            failures.append("paid execution merge/restart state is invalid")
+    elif restart.get("required") is False:
+        merged_commit = restart.get("merged_commit")
+        if (
+            restart.get("action") != "SATISFIED"
+            or not isinstance(merged_commit, str)
+            or not _merged_commit_is_ancestor(merged_commit)
+        ):
+            failures.append("paid execution merge/restart state is invalid")
+    else:
         failures.append("paid execution merge/restart state is invalid")
     execution_blockers = contract.get("execution_blockers")
     if not isinstance(execution_blockers, list) or not all(
