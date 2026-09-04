@@ -1,0 +1,219 @@
+{
+  "schema": "skyyrose.runway-environment-serial-batch-execution/1",
+  "recorded_at": "2026-09-04T23:37:24.799084+00:00",
+  "results": [
+    {
+      "schema": "skyyrose.runway-environment-execution/1",
+      "scene_id": "LH-COMMERCE-2",
+      "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "execution_fingerprint": "bc484ef2e6c63174030058b9a8099ad5bdc05bda06e69329383fcbca4c003d14",
+      "recorded_at": "2026-09-04T23:34:24.755760+00:00",
+      "serial_index": 1,
+      "approval_receipt_path": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/receipts/lh-commerce-2-runway-environment-a4-founder-approval.json",
+      "approval_receipt_sha256": "ccccc55308e831e9018ec0d9ade882e288da9abd011f2114e715d4c22e52afe2",
+      "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/receipts/lh-commerce-2-runway-environment-a4-paid-attempt.json",
+      "workflow_sha256": "6d4174396d76d0152ca5d879a84a8e6032e6d8af731603b6c15bfa4dd0e41800",
+      "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+      "paid_price_usd": 0.11,
+      "automatic_retry": false,
+      "authority_limits": {
+        "protected_composition": false,
+        "promotion": false,
+        "storefront_wiring": false,
+        "publication": false,
+        "deployment": false
+      },
+      "provider_inputs": {
+        "mode": "prompt_only",
+        "reference_image": null,
+        "protected_assets_sent": []
+      },
+      "status": "CANDIDATE_CREATED_QUARANTINED",
+      "history_sha256": "9d85860ebbec7fa9e5c9e7bb28dff9a70968989de0d3b76096c9561fa9ee1852",
+      "comfy_status": "success",
+      "provider_output": {
+        "node_id": "3",
+        "filename": "environment-a4_00001_.png",
+        "subfolder": "SkyyRose/LH-COMMERCE-2",
+        "type": "output"
+      },
+      "candidate_output": {
+        "created": true,
+        "path": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4.png",
+        "sha256": "6eb7496a4330ecafc34aa303ad3fb782c501f63e0367e17ef8961addb8e06f4a",
+        "bytes": 3065562,
+        "width": 2048,
+        "height": 1152,
+        "authority": "QUARANTINED_CANDIDATE_ONLY"
+      },
+      "prompt_id": "d92711d3-852e-415b-9475-63547dd50af1",
+      "attempt_marker_sha256": "9f39f9afad34a85100257554a5f3abdce82132bcb2c23c8a35333acdafb2d70a"
+    },
+    {
+      "schema": "skyyrose.runway-environment-execution/1",
+      "scene_id": "BR-COMMERCE-2",
+      "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "execution_fingerprint": "6b090ea5457fcfe106270fe0f5a06b8794bb6d90a4e4238a000011c4dd48eb46",
+      "recorded_at": "2026-09-04T23:35:28.450908+00:00",
+      "serial_index": 2,
+      "approval_receipt_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/br-commerce-2-runway-environment-a4-founder-approval.json",
+      "approval_receipt_sha256": "8e1f7dbb78a64b8c949e56d25f067af2cdc5e0a57b66a23ba6a3f8350a39c5fa",
+      "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/br-commerce-2-runway-environment-a4-paid-attempt.json",
+      "workflow_sha256": "ea3cb643a55a04caab820c3376360b72a223c8cff2e21c096a89b33b6a20d173",
+      "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+      "paid_price_usd": 0.11,
+      "automatic_retry": false,
+      "authority_limits": {
+        "protected_composition": false,
+        "promotion": false,
+        "storefront_wiring": false,
+        "publication": false,
+        "deployment": false
+      },
+      "provider_inputs": {
+        "mode": "prompt_only",
+        "reference_image": null,
+        "protected_assets_sent": []
+      },
+      "status": "CANDIDATE_CREATED_QUARANTINED",
+      "history_sha256": "230f6d2a7de699416c06406fc3777a174dec2a6cc42761a0b246a75b7a22d4f4",
+      "comfy_status": "success",
+      "provider_output": {
+        "node_id": "3",
+        "filename": "environment-a4_00001_.png",
+        "subfolder": "SkyyRose/BR-COMMERCE-2",
+        "type": "output"
+      },
+      "candidate_output": {
+        "created": true,
+        "path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4.png",
+        "sha256": "ccdfe34c5ec1e843114097d8fb2f463c791345a00b5fa8b5d699ebc37aa65596",
+        "bytes": 3006828,
+        "width": 2048,
+        "height": 1152,
+        "authority": "QUARANTINED_CANDIDATE_ONLY"
+      },
+      "prompt_id": "847e2c81-9359-4d1c-97d0-c659452416f3",
+      "attempt_marker_sha256": "6af3051303d30590768db88b20481986bd0fd501dd5d11ad7d6286d3b55fd9ce"
+    },
+    {
+      "schema": "skyyrose.runway-environment-execution/1",
+      "scene_id": "SIG-COMMERCE-1",
+      "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A4",
+      "execution_fingerprint": "f76233a63d38d552993444d08d03af036cd72c1d24dd5bf83b6ff7ab4ec1a589",
+      "recorded_at": "2026-09-04T23:36:08.032268+00:00",
+      "serial_index": 3,
+      "approval_receipt_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-1-runway-environment-a4-founder-approval.json",
+      "approval_receipt_sha256": "724fed870a01974e8998f54cec5a6ec2093fa744e17740e46909d43d83decd99",
+      "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-1-runway-environment-a4-paid-attempt.json",
+      "workflow_sha256": "fe76aac64c6636c546df443a169a96d3e5b5c33bb28dce950015ff88b7b03c3d",
+      "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+      "paid_price_usd": 0.11,
+      "automatic_retry": false,
+      "authority_limits": {
+        "protected_composition": false,
+        "promotion": false,
+        "storefront_wiring": false,
+        "publication": false,
+        "deployment": false
+      },
+      "provider_inputs": {
+        "mode": "prompt_only",
+        "reference_image": null,
+        "protected_assets_sent": []
+      },
+      "status": "CANDIDATE_CREATED_QUARANTINED",
+      "history_sha256": "6c408eb56a6df813be9f4e4d28edbbcdb6b39b954999a7ce8e46afdf05d19376",
+      "comfy_status": "success",
+      "provider_output": {
+        "node_id": "3",
+        "filename": "environment-a4_00001_.png",
+        "subfolder": "SkyyRose/SIG-COMMERCE-1",
+        "type": "output"
+      },
+      "candidate_output": {
+        "created": true,
+        "path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A4.png",
+        "sha256": "c825af96c1434444ef0e1f954f991fe819bbfa8d62b7c5edb1382f7c8edbeaad",
+        "bytes": 2424973,
+        "width": 2048,
+        "height": 1152,
+        "authority": "QUARANTINED_CANDIDATE_ONLY"
+      },
+      "prompt_id": "e2a21e7f-2b21-44ba-a66d-c9eaa0380870",
+      "attempt_marker_sha256": "cb96b21daa9025180e4f11371dd6a721b516286526aa9adfe83c4c76a45a472d"
+    },
+    {
+      "schema": "skyyrose.runway-environment-execution/1",
+      "scene_id": "SIG-COMMERCE-2",
+      "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "execution_fingerprint": "17493b37b88c9f624119a664390c3ff2fca2a66ff5c60ac0fe6172f6e082cee0",
+      "recorded_at": "2026-09-04T23:36:48.760025+00:00",
+      "serial_index": 4,
+      "approval_receipt_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-2-runway-environment-a4-founder-approval.json",
+      "approval_receipt_sha256": "e7cdc4c71d2883b71f5df6c9dfd300ad5e05cd3cb973825ec410d81a41e6ef32",
+      "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-2-runway-environment-a4-paid-attempt.json",
+      "workflow_sha256": "cf19a90f67ca898063bd1e6cefda642ec36efc24efddee0721a72af336475abf",
+      "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+      "paid_price_usd": 0.11,
+      "automatic_retry": false,
+      "authority_limits": {
+        "protected_composition": false,
+        "promotion": false,
+        "storefront_wiring": false,
+        "publication": false,
+        "deployment": false
+      },
+      "provider_inputs": {
+        "mode": "prompt_only",
+        "reference_image": null,
+        "protected_assets_sent": []
+      },
+      "status": "CANDIDATE_CREATED_QUARANTINED",
+      "history_sha256": "9c4b52b964ff8a19dddd259ed09aac2215fc43d0a40e860b5d4f0a178e234f8f",
+      "comfy_status": "success",
+      "provider_output": {
+        "node_id": "3",
+        "filename": "environment-a4_00001_.png",
+        "subfolder": "SkyyRose/SIG-COMMERCE-2",
+        "type": "output"
+      },
+      "candidate_output": {
+        "created": true,
+        "path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4.png",
+        "sha256": "5811afb7ae87e3220ea785ba10097447e01e5a01d502e11e3fd983c167f512ef",
+        "bytes": 2280297,
+        "width": 2048,
+        "height": 1152,
+        "authority": "QUARANTINED_CANDIDATE_ONLY"
+      },
+      "prompt_id": "a896e161-9825-4a31-8afa-9f68c90f3973",
+      "attempt_marker_sha256": "43cc21ff5fe2e8b62509997f3fb54a0b206d9bd69d1a5ceafdcf032cbc09ecbd"
+    }
+  ],
+  "unsubmitted_candidates": [],
+  "maximum_combined_price_usd": 0.44,
+  "automatic_retry": false,
+  "max_concurrent_provider_tasks": 1,
+  "stop_on_any_failure": true,
+  "balance_before_raw": {
+    "amount_micros": 3422.64808,
+    "effective_balance_micros": 3422.64808,
+    "pending_charges_micros": 0,
+    "currency": "usd"
+  },
+  "balance_after_raw": {
+    "amount_micros": 3388.32808,
+    "effective_balance_micros": 3388.32808,
+    "pending_charges_micros": 0,
+    "currency": "usd"
+  },
+  "billing_note": "Raw account observations; per-prompt charges not reconciled.",
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  }
+}

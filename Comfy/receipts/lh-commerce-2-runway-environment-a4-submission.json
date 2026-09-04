@@ -1,0 +1,30 @@
+{
+  "schema": "skyyrose.runway-environment-execution/1",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+  "execution_fingerprint": "bc484ef2e6c63174030058b9a8099ad5bdc05bda06e69329383fcbca4c003d14",
+  "recorded_at": "2026-09-04T23:34:24.755760+00:00",
+  "serial_index": 1,
+  "approval_receipt_path": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/receipts/lh-commerce-2-runway-environment-a4-founder-approval.json",
+  "approval_receipt_sha256": "ccccc55308e831e9018ec0d9ade882e288da9abd011f2114e715d4c22e52afe2",
+  "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/receipts/lh-commerce-2-runway-environment-a4-paid-attempt.json",
+  "workflow_sha256": "6d4174396d76d0152ca5d879a84a8e6032e6d8af731603b6c15bfa4dd0e41800",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "paid_price_usd": 0.11,
+  "automatic_retry": false,
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "prompt_id": "d92711d3-852e-415b-9475-63547dd50af1",
+  "status": "SUBMITTED",
+  "client_id": "f40ed7b4-e996-4640-afe6-1c8eab5696ac"
+}
