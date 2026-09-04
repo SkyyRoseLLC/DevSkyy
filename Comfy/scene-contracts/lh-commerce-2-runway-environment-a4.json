@@ -93,7 +93,10 @@
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
     "candidate_bound_approval_required": true,
-    "approval_receipt": null,
+    "approval_receipt": {
+      "path": "Comfy/receipts/lh-commerce-2-runway-environment-a4-founder-approval.json",
+      "sha256": "ccccc55308e831e9018ec0d9ade882e288da9abd011f2114e715d4c22e52afe2"
+    },
     "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
   },
   "execution_blockers": [],
