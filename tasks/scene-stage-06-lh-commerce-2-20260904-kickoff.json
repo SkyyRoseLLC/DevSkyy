@@ -35,7 +35,7 @@
     "final_composite_approval": false,
     "promotion_wiring_publication_or_deployment": false
   },
-  "status": "A2_FUNDED_PENDING_EXACT_FOUNDER_APPROVAL",
+  "status": "A2_APPROVED_FOR_EXACT_PRODUCT_FREE_ENVIRONMENT_BATCH",
   "artifacts": [
     {
       "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
@@ -123,5 +123,27 @@
       }
     ],
     "balance_verified_at": "2026-09-04T14:40:18.496824+00:00"
+  },
+  "a2_founder_approval": {
+    "approved_at": "2026-09-04T14:42:22.255288+00:00",
+    "approval_statement_sha256": "0271f8bc8f47805a5a98f8023c3c1a0994dd8ff6e5e6b389665676765314276f",
+    "verified_displayed_comfy_credits": 7294,
+    "maximum_combined_price_usd": 0.44,
+    "maximum_candidates": 4,
+    "automatic_retry": false,
+    "records": [
+      {
+        "scene_id": "LH-COMMERCE-2",
+        "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "execution_fingerprint": "9f7597db72f7b9a62cffb74ee7b5e81252f1170afb2918bdf56febf75a3ceb81",
+        "approval_path": "Comfy/receipts/lh-commerce-2-runway-environment-a2-founder-approval.json",
+        "approval_sha256": "aa11fd95cf5f0e8be83ef7b3f7584d1478b3dae86cd0ad57126595ce665f8161",
+        "attempt_marker": "Comfy/receipts/lh-commerce-2-runway-environment-a2-paid-attempt.json",
+        "candidate_path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A2.png",
+        "execution_receipt": "Comfy/receipts/lh-commerce-2-runway-environment-a2-execution.json",
+        "live_price_usd": 0.11,
+        "validation": "PASS"
+      }
+    ]
   }
 }
