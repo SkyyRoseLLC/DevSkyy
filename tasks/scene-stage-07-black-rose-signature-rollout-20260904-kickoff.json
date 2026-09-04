@@ -6,7 +6,7 @@
   "created_at": "2026-09-04T00:00:00-07:00",
   "base_commit": "c432975cc0e72e210dbc211950d650030e97ee0e",
   "branch": "codex/scene-stage-07-br-signature-rollout-20260904",
-  "status": "BLOCKED_COMFY_LOGIN_ATTEMPTS_CONSUMED_NO_RETRY",
+  "status": "BLOCKED_ZERO_COMFY_CREDITS_A2_PREPARED",
   "execution_mode": "PARALLEL_PRODUCT_FREE_ENVIRONMENT_PREFLIGHT",
   "scope": {
     "included": [
@@ -135,5 +135,41 @@
     "automatic_retry": false,
     "protected_assets_sent": [],
     "next_action": "RESTORE_COMFY_LOGIN_THEN_REQUIRE_A_NEW_EXACT_ATTEMPT_APPROVAL"
+  },
+  "a2_recovery": {
+    "created_at": "2026-09-04T14:39:17.523834+00:00",
+    "authenticated": true,
+    "displayed_comfy_credits": 0,
+    "automatic_retry": false,
+    "new_exact_approval_required": true,
+    "candidates": [
+      {
+        "scene_id": "BR-COMMERCE-2",
+        "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "contract": "Comfy/scene-contracts/br-commerce-2-runway-environment-a2.json",
+        "packet": "Comfy/receipts/br-commerce-2-runway-environment-a2-founder-packet.json",
+        "execution_fingerprint": "7ce5429d0c4810f917b67397cc3dc393babd54ac3ae323bf45a13d760008e931",
+        "live_price_usd": 0.11,
+        "status": "BLOCKED_ZERO_COMFY_CREDITS_PENDING_NEW_APPROVAL"
+      },
+      {
+        "scene_id": "SIG-COMMERCE-1",
+        "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2",
+        "contract": "Comfy/scene-contracts/sig-commerce-1-runway-environment-a2.json",
+        "packet": "Comfy/receipts/sig-commerce-1-runway-environment-a2-founder-packet.json",
+        "execution_fingerprint": "7847bf8a628a459e3b014dc93524c8abf9b6e9af44697ca425f7f0aabf6096dd",
+        "live_price_usd": 0.11,
+        "status": "BLOCKED_ZERO_COMFY_CREDITS_PENDING_NEW_APPROVAL"
+      },
+      {
+        "scene_id": "SIG-COMMERCE-2",
+        "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "contract": "Comfy/scene-contracts/sig-commerce-2-runway-environment-a2.json",
+        "packet": "Comfy/receipts/sig-commerce-2-runway-environment-a2-founder-packet.json",
+        "execution_fingerprint": "686ef1be4ff2fae28a3db0ebd180fc41737d4aa806da917a45149e4349b52ac9",
+        "live_price_usd": 0.11,
+        "status": "BLOCKED_ZERO_COMFY_CREDITS_PENDING_NEW_APPROVAL"
+      }
+    ]
   }
 }
