@@ -184,7 +184,7 @@
       {
         "scene_id": "BR-COMMERCE-2",
         "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
-        "execution_fingerprint": "2d780e88f95f40245c5f14be80ae3056366c79a52e3f2be16b2dab819dcf09d5",
+        "execution_fingerprint": "1ba279d4cf8e4499fa9c80660856584448714e1d9629ac63519a3f23cd2b1659",
         "approval_path": "Comfy/receipts/br-commerce-2-runway-environment-a2-founder-approval.json",
         "approval_sha256": "5ee2b66cbc4e3f9cf24b91bdeb9fd3e868cb2d1149a8b2b4b267c4d0008ad8da",
         "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a2-paid-attempt.json",
@@ -196,7 +196,7 @@
       {
         "scene_id": "SIG-COMMERCE-1",
         "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2",
-        "execution_fingerprint": "2d780e88f95f40245c5f14be80ae3056366c79a52e3f2be16b2dab819dcf09d5",
+        "execution_fingerprint": "f4b3d4ce4998037cfd4993f56ba572e4e2f55643f8e3d46dbe731a6d783b8407",
         "approval_path": "Comfy/receipts/sig-commerce-1-runway-environment-a2-founder-approval.json",
         "approval_sha256": "08ea9c570d2b3770343c465f5e6ad55589b43f4fd362c762ffd6dce46669e3ef",
         "attempt_marker": "Comfy/receipts/sig-commerce-1-runway-environment-a2-paid-attempt.json",
