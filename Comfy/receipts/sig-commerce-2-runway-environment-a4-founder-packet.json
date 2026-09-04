@@ -1,0 +1,90 @@
+{
+  "schema": "skyyrose.runway-environment-founder-packet/1",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+  "execution_fingerprint": "17493b37b88c9f624119a664390c3ff2fca2a66ff5c60ac0fe6172f6e082cee0",
+  "fingerprint_material": {
+    "schema": "skyyrose.runway-environment-execution-fingerprint/1",
+    "scene_id": "SIG-COMMERCE-2",
+    "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+    "contract_sha256": "71094e57217518341c855aef6a7ef12e8715d565b2385abe0a688a956bf7111e",
+    "workflow_sha256": "cf19a90f67ca898063bd1e6cefda642ec36efc24efddee0721a72af336475abf",
+    "prompt_sha256": "7489affc03c2fd6046aab0bd28ed25deac4f83644667abd017dcdba563c83912",
+    "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+    "live_price_usd": 0.11,
+    "approval_path": "Comfy/receipts/sig-commerce-2-runway-environment-a4-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/sig-commerce-2-runway-environment-a4-paid-attempt.json",
+    "max_paid_generations": 1
+  },
+  "prompt": "Wide pre-dawn Oakland transit overlook with brutalist concrete terraces, weathered steel, fading sodium-vapor warmth, cool Bay fog, muted mint and lavender ambient reflections, and a continuous damp satin ground plane. Preserve campaign-scale customer zones at both outer thirds and an open grounded center zone for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+  "live_partner_node": {
+    "class_type": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "price_usd": 0.11,
+    "schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024"
+  },
+  "partner_auth": {
+    "status": "PASS",
+    "code": "COMFY_PARTNER_AUTH_VERIFIED",
+    "environment_variable": "COMFY_API_KEY",
+    "endpoint": "https://api.comfy.org/customers/balance",
+    "paid_attempt_consumed": false
+  },
+  "one_candidate_ceiling": {
+    "max_paid_generations": 1,
+    "max_price_usd": 0.11,
+    "automatic_paid_retries": false
+  },
+  "candidate_bound_approval_path": "Comfy/receipts/sig-commerce-2-runway-environment-a4-founder-approval.json",
+  "attempt_marker": "Comfy/receipts/sig-commerce-2-runway-environment-a4-paid-attempt.json",
+  "workflow": {
+    "1": {
+      "class_type": "RunwayTextToImageNode",
+      "inputs": {
+        "prompt": "Wide pre-dawn Oakland transit overlook with brutalist concrete terraces, weathered steel, fading sodium-vapor warmth, cool Bay fog, muted mint and lavender ambient reflections, and a continuous damp satin ground plane. Preserve campaign-scale customer zones at both outer thirds and an open grounded center zone for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+        "ratio": "1920:1080"
+      },
+      "_meta": {
+        "title": "SIG-COMMERCE-2 product-free environment only"
+      }
+    },
+    "2": {
+      "class_type": "ResizeImageMaskNode",
+      "inputs": {
+        "input": [
+          "1",
+          0
+        ],
+        "resize_type": "scale dimensions",
+        "resize_type.width": 2048,
+        "resize_type.height": 1152,
+        "resize_type.crop": "disabled",
+        "scale_method": "lanczos"
+      }
+    },
+    "3": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "images": [
+          "2",
+          0
+        ],
+        "filename_prefix": "SkyyRose/SIG-COMMERCE-2/environment-a4"
+      }
+    }
+  },
+  "workflow_sha256": "cf19a90f67ca898063bd1e6cefda642ec36efc24efddee0721a72af336475abf",
+  "contract_sha256": "71094e57217518341c855aef6a7ef12e8715d565b2385abe0a688a956bf7111e",
+  "protected_assets_sent_to_runway": [],
+  "paid_submission_performed": false,
+  "failures": [],
+  "declared_execution_blockers": [],
+  "next_action": "STOP_FOR_EXPLICIT_FOUNDER_APPROVAL",
+  "post_merge_execution_gate": {
+    "required": false,
+    "action": "SATISFIED",
+    "reason": "The current lineage contains merged commit 4da200886. Product-free environment generation is independent of foreground or cast readiness; those remain protected-composition gates.",
+    "merged_commit": "4da200886"
+  }
+}

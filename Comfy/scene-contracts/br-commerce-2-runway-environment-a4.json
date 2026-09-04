@@ -1,0 +1,204 @@
+{
+  "schema": "skyyrose.runway-environment-plate/1",
+  "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+  "scene_id": "BR-COMMERCE-2",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "strategy": "environment_rebuild_around_source",
+  "provider": {
+    "name": "runway",
+    "route": "comfy_partner_node",
+    "node": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "comfy_base_url": "http://127.0.0.1:8189"
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": [],
+    "reason": "The local reference contains deny-listed garments, people, lettering, and sculpture pixels."
+  },
+  "local_composition_inspiration": [
+    {
+      "path": "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png",
+      "sha256": "224eb55a9baa7495a80b50b9b61a4df596dc9840c92e9820b8de5a4a91928fad",
+      "width": 2688,
+      "height": 1520,
+      "authority_role": "COMPOSITION_ATMOSPHERE_ONLY",
+      "sent_to_runway": false,
+      "use": [
+        "Oakland brutalist undercroft depth",
+        "wet concrete reflection behavior",
+        "cool-left and sodium-right light separation",
+        "campaign-scale three-anchor spacing"
+      ],
+      "deny_as_authority": [
+        "people",
+        "identity",
+        "hoodies",
+        "pants or shorts",
+        "logos",
+        "word sculpture"
+      ]
+    }
+  ],
+  "request": {
+    "ratio": "1920:1080",
+    "num_outputs": 1,
+    "prompt": "Wide nocturnal Oakland brutalist transit undercroft with massive raw-concrete columns, a deep civic perspective corridor, rain-darkened aggregate, weathered blackened steel, cold Bay fog entering from camera-left, restrained sodium-vapor warmth from camera-right, and a continuous wet concrete ground plane with controlled reflections. Preserve open campaign-scale zones at the left and right thirds plus a physically grounded central object zone for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+    "prompt_source": "Locally distilled from a deny-listed composition candidate; no source pixels are uploaded."
+  },
+  "forbidden_plate_content": [
+    "people",
+    "garments",
+    "products",
+    "text",
+    "wordmarks",
+    "signage",
+    "hearts",
+    "roses",
+    "sculptures",
+    "monuments",
+    "robed figures",
+    "Beast characters",
+    "ballrooms",
+    "flower walls"
+  ],
+  "comfy_local_postprocess": {
+    "required_after_separate_approvals": [
+      "separate approved BR-005 plus BR-007 male protected alpha",
+      "separate approved BR-004 protected alpha",
+      "exact transparent Black Rose sculpture",
+      "placement, scaling, ordered occlusion, contact shadows, reflections, edge treatment, and final composition",
+      "prompt/history retrieval and hash-bound receipts"
+    ],
+    "protected_rgb_policy": "Cast identity, BR-004, BR-005, BR-007, every logo/artwork detail, and sculpture RGB remain byte-identical.",
+    "birefnet_evidence": {
+      "schema": "skyyrose.birefnet-edge-confidence/1",
+      "model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+      "role": "ALPHA_AND_EDGE_CONFIDENCE_ONLY",
+      "generative_use_allowed": false,
+      "independent_visual_review_required": true
+    }
+  },
+  "credit_control": {
+    "currency": "USD",
+    "max_live_price_usd": 0.11,
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "candidate_bound_approval_required": true,
+    "approval_receipt": null,
+    "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
+  },
+  "execution_blockers": [],
+  "output": {
+    "candidate_path": "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4.png",
+    "filename_prefix": "SkyyRose/BR-COMMERCE-2/environment-a4",
+    "approval_path": "Comfy/receipts/br-commerce-2-runway-environment-a4-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a4-paid-attempt.json",
+    "promotion_allowed": false,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "post_merge_execution_gate": {
+    "required": false,
+    "action": "SATISFIED",
+    "reason": "The current lineage contains merged commit 4da200886. Product-free environment generation is independent of foreground or cast readiness; those remain protected-composition gates.",
+    "merged_commit": "4da200886"
+  },
+  "parallel_execution_policy": {
+    "product_free_environment_independent_of_foreground_readiness": true,
+    "protected_assets_sent_to_runway": [],
+    "foreground_and_environment_may_prepare_concurrently": true,
+    "provider_submissions_must_be_serial": true,
+    "composite_still_requires_verified_foreground_and_plate": true,
+    "activated_at": "2026-09-04T16:29:28.750160+00:00"
+  },
+  "prior_attempt": {
+    "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+    "execution_fingerprint": "3d7206be9ae323eedc4337b7ae351fd21b360c4a5f39ae9f9d72be5b1de39f1b",
+    "prompt_id": "db111c86-1748-4ea0-97b7-dd84a2f3f920",
+    "execution_receipt": "Comfy/receipts/br-commerce-2-runway-environment-a3-execution.json",
+    "status": "EXECUTION_FAILED_NO_RETRY",
+    "failure_stage": "LOCAL_RESIZE_SERIALIZATION_AFTER_RUNWAY_NODE_COMPLETION",
+    "comfy_prompt_submitted": true,
+    "runway_node_completed": true,
+    "candidate_created": false,
+    "automatic_retry_performed": false,
+    "observed_charge_usd": null,
+    "charge_state": "ACCOUNT_BALANCE_CHANGED_BUT_PER_PROMPT_CHARGE_NOT_RECONCILED"
+  },
+  "recovery_authority": {
+    "attempt_type": "NEW_CANDIDATE_AFTER_A3_TERMINAL_FAILURE",
+    "automatic_retry": false,
+    "new_exact_founder_approval_required": true,
+    "a3_attempt_marker_preserved": true,
+    "a3_candidate_id_reuse_allowed": false
+  },
+  "account_readiness": {
+    "verified_at": "2026-09-04T16:29:28.750160+00:00",
+    "authenticated": true,
+    "endpoint": "https://api.comfy.org/customers/balance",
+    "currency": "usd",
+    "effective_balance_reported": 3422.64808,
+    "pending_charges_reported": 0,
+    "credits_per_usd": 211,
+    "batch_maximum_price_usd": 0.44,
+    "batch_required_credits": 92.84,
+    "sufficient_for_four_candidate_batch": true,
+    "source": "COMFY_API_KEY_AUTHENTICATED_BALANCE_ENDPOINT_AND_OFFICIAL_CREDIT_CONVERSION"
+  },
+  "earlier_attempt_reference": {
+    "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+    "execution_fingerprint": "1c839d0421c7fa0720282118fea86951329c68105075dfd7a45692525eeeb990",
+    "prompt_id": "64d27d66-1226-417e-ba02-971aefc1f1fa",
+    "execution_receipt": "Comfy/receipts/br-commerce-2-runway-environment-a1-execution.json",
+    "status": "EXECUTION_FAILED_NO_RETRY",
+    "failure_stage": "COMFY_PARTNER_NODE_AUTHORIZATION",
+    "comfy_prompt_submitted": true,
+    "runway_task_id": null,
+    "candidate_created": false,
+    "observed_charge_usd": null,
+    "charge_state": "UNCONFIRMED_AUTH_REJECTED_WITHOUT_RUNWAY_TASK_ID"
+  },
+  "prior_cache_recovery": {
+    "attempted": true,
+    "receipt": "Comfy/receipts/br-commerce-2-runway-environment-a3-cache-recovery.json",
+    "provider_credentials_supplied": false,
+    "provider_generation_performed": false,
+    "candidate_created": false
+  },
+  "serial_execution_policy": {
+    "submission_mode": "SERIAL",
+    "candidate_order": [
+      "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A4",
+      "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4"
+    ],
+    "max_concurrent_provider_tasks": 1,
+    "wait_for_terminal_state_before_next_submission": true,
+    "minimum_delay_seconds_after_terminal_state": 5,
+    "stop_remaining_batch_on_http_429": true,
+    "automatic_paid_retries": false
+  },
+  "runtime_retry_guard": {
+    "runway_node_source_path": "/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/nodes_runway.py",
+    "runway_node_source_sha256": "7999cd6205e46b17f140dfe5e06ae9824a32cf62251bfb2f78ae196f52841da1",
+    "max_retries": 0,
+    "max_retries_on_rate_limit": 0
+  },
+  "local_resize_readiness": {
+    "status": "PASS",
+    "receipt": "Comfy/receipts/resize-v3-canary-20260904.json",
+    "receipt_sha256": "3e4543468a4add02333eb76625efebe6945712aeb6c391e29b41b0620254f8ef",
+    "prompt_id": "102c211c-da1f-4c2b-91b0-c1657a6fa607",
+    "workflow_sha256": "1e46479539e0cfb523c8a77f0c2ea1570c4ae69ca8de286af29b65bae09dfccb",
+    "history_sha256": "798a10e3efd46f3c1fe3e0440dd21d440272f386e26e3bacad62b3517f88f705",
+    "expected_output_dimensions": {
+      "width": 128,
+      "height": 72
+    },
+    "paid_partner_nodes": []
+  }
+}
