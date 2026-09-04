@@ -1,0 +1,71 @@
+{
+  "schema": "skyyrose.runway-environment-execution-failure/1",
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+  "recorded_at": "2026-09-04T15:28:13.065227+00:00",
+  "approval_receipt_path": "Comfy/receipts/sig-commerce-2-runway-environment-a3-founder-approval.json",
+  "approval_receipt_sha256": "8c6c6a37e1d15a7741ce8fb02057a20f792855c4487c64364e36f07723e27f2d",
+  "attempt_marker_path": "Comfy/receipts/sig-commerce-2-runway-environment-a3-paid-attempt.json",
+  "attempt_marker_sha256": "ea4b7cc21e506050402aa7e5914cd0bf3e21cf4d1e76de20973c98d1da448e1a",
+  "paid_price_usd": 0.11,
+  "automatic_retry": false,
+  "runtime_retry_guard": {
+    "runway_node_source_path": "/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/nodes_runway.py",
+    "runway_node_source_sha256": "7999cd6205e46b17f140dfe5e06ae9824a32cf62251bfb2f78ae196f52841da1",
+    "max_retries": 0,
+    "max_retries_on_rate_limit": 0
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  },
+  "execution_fingerprint": "495b9a5e21f5db9846f61660d31e8cc5d02f6939556520f83f884388ac852c20",
+  "status": "EXECUTION_FAILED_NO_RETRY",
+  "prompt_id": "d5885bc7-dddf-4043-9a67-5d6e90a112a8",
+  "error": "ComfyRuntimeError: Comfy prompt d5885bc7-dddf-4043-9a67-5d6e90a112a8 failed",
+  "provider_status": {
+    "status_str": "error",
+    "completed": false,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "d5885bc7-dddf-4043-9a67-5d6e90a112a8",
+          "timestamp": 1788535692048
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "prompt_id": "d5885bc7-dddf-4043-9a67-5d6e90a112a8",
+          "timestamp": 1788535692049
+        }
+      ],
+      [
+        "execution_error",
+        {
+          "prompt_id": "d5885bc7-dddf-4043-9a67-5d6e90a112a8",
+          "node_id": "1",
+          "node_type": "RunwayTextToImageNode",
+          "exception_message": "Rate Limit Exceeded: The server returned 429 after all retry attempts. Please wait and try again.\n",
+          "exception_type": "Exception",
+          "executed": [],
+          "timestamp": 1788535692931
+        }
+      ]
+    ]
+  },
+  "workflow_sha256": "e43fb58906111fc3c31c6c7f0d3827182f27d464bfafe4f0e0fd023ae814df7d",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "candidate_output": {
+    "created": false
+  }
+}

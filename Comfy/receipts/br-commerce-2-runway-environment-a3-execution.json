@@ -1,0 +1,73 @@
+{
+  "schema": "skyyrose.runway-environment-execution-failure/1",
+  "scene_id": "BR-COMMERCE-2",
+  "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+  "recorded_at": "2026-09-04T15:28:12.053358+00:00",
+  "approval_receipt_path": "Comfy/receipts/br-commerce-2-runway-environment-a3-founder-approval.json",
+  "approval_receipt_sha256": "4d6309cfc5d17eec9d451b58a6d32d9f05e2bf6039c95b02ae892ad0f939af97",
+  "attempt_marker_path": "Comfy/receipts/br-commerce-2-runway-environment-a3-paid-attempt.json",
+  "attempt_marker_sha256": "4145b4263e411301de4b0ddd14e9a0964119a7d3f12112bad931ab819c08b0ec",
+  "paid_price_usd": 0.11,
+  "automatic_retry": false,
+  "runtime_retry_guard": {
+    "runway_node_source_path": "/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/nodes_runway.py",
+    "runway_node_source_sha256": "7999cd6205e46b17f140dfe5e06ae9824a32cf62251bfb2f78ae196f52841da1",
+    "max_retries": 0,
+    "max_retries_on_rate_limit": 0
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  },
+  "execution_fingerprint": "3d7206be9ae323eedc4337b7ae351fd21b360c4a5f39ae9f9d72be5b1de39f1b",
+  "status": "EXECUTION_FAILED_NO_RETRY",
+  "prompt_id": "db111c86-1748-4ea0-97b7-dd84a2f3f920",
+  "error": "ComfyRuntimeError: Comfy prompt db111c86-1748-4ea0-97b7-dd84a2f3f920 failed",
+  "provider_status": {
+    "status_str": "error",
+    "completed": false,
+    "messages": [
+      [
+        "execution_start",
+        {
+          "prompt_id": "db111c86-1748-4ea0-97b7-dd84a2f3f920",
+          "timestamp": 1788535657182
+        }
+      ],
+      [
+        "execution_cached",
+        {
+          "prompt_id": "db111c86-1748-4ea0-97b7-dd84a2f3f920",
+          "timestamp": 1788535657182
+        }
+      ],
+      [
+        "execution_error",
+        {
+          "prompt_id": "db111c86-1748-4ea0-97b7-dd84a2f3f920",
+          "node_id": "2",
+          "node_type": "ResizeImageMaskNode",
+          "exception_message": "ResizeImageMaskNode.execute() missing 1 required positional argument: 'resize_type'\n",
+          "exception_type": "TypeError",
+          "executed": [
+            "1"
+          ],
+          "timestamp": 1788535691630
+        }
+      ]
+    ]
+  },
+  "workflow_sha256": "3945d1b7e0b12d99622d170881bf4037c14429a11ec69d9c250329fe1ac46936",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "candidate_output": {
+    "created": false
+  }
+}
