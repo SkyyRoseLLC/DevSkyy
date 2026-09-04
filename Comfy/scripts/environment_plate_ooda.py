@@ -310,12 +310,12 @@ def build_prompt_only_workflow(contract: Mapping[str, Any]) -> dict[str, Any]:
             "class_type": "ResizeImageMaskNode",
             "inputs": {
                 "input": ["1", 0],
-                "resize_type": {
-                    "resize_type": "scale dimensions",
-                    "width": MASTER_WIDTH,
-                    "height": MASTER_HEIGHT,
-                    "crop": "disabled",
-                },
+                # Comfy V3 DynamicCombo values use flattened prompt keys. A nested
+                # UI-shaped object validates but is discarded before execution.
+                "resize_type": "scale dimensions",
+                "resize_type.width": MASTER_WIDTH,
+                "resize_type.height": MASTER_HEIGHT,
+                "resize_type.crop": "disabled",
                 "scale_method": "lanczos",
             },
         },
@@ -341,6 +341,23 @@ def validate_workflow_is_product_free(workflow: Mapping[str, Any]) -> list[str]:
             runway_count += 1
             if isinstance(inputs, Mapping) and "reference_image" in inputs:
                 failures.append("Runway environment node must not receive reference_image")
+        if class_type == "ResizeImageMaskNode":
+            required_resize_inputs = {
+                "resize_type": "scale dimensions",
+                "resize_type.width": MASTER_WIDTH,
+                "resize_type.height": MASTER_HEIGHT,
+                "resize_type.crop": "disabled",
+                "scale_method": "lanczos",
+            }
+            if not isinstance(inputs, Mapping):
+                failures.append("ResizeImageMaskNode inputs must be a mapping")
+            else:
+                for input_name, expected_value in required_resize_inputs.items():
+                    if inputs.get(input_name) != expected_value:
+                        failures.append(
+                            "ResizeImageMaskNode must use flattened Comfy V3 input "
+                            f"{input_name}={expected_value!r}"
+                        )
         if class_type in {
             "JoinImageWithAlpha",
             "RemoveBackground",
