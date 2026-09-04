@@ -6,7 +6,7 @@
   "created_at": "2026-09-04T00:00:00-07:00",
   "base_commit": "c432975cc0e72e210dbc211950d650030e97ee0e",
   "branch": "codex/scene-stage-07-br-signature-rollout-20260904",
-  "status": "APPROVED_FOR_EXACT_PRODUCT_FREE_ENVIRONMENT_BATCH",
+  "status": "BLOCKED_COMFY_LOGIN_ATTEMPTS_CONSUMED_NO_RETRY",
   "execution_mode": "PARALLEL_PRODUCT_FREE_ENVIRONMENT_PREFLIGHT",
   "scope": {
     "included": [
@@ -91,5 +91,49 @@
         "validation": "PASS"
       }
     ]
+  },
+  "environment_execution": {
+    "recorded_at": "2026-09-04T14:25:45.088780+00:00",
+    "results": [
+      {
+        "scene_id": "BR-COMMERCE-2",
+        "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "64d27d66-1226-417e-ba02-971aefc1f1fa",
+        "error": "Unauthorized: Please login first to use this node.",
+        "execution_receipt": "Comfy/receipts/br-commerce-2-runway-environment-a1-execution.json",
+        "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a1-paid-attempt.json",
+        "runway_task_id": null,
+        "candidate_created": false,
+        "automatic_retry": false
+      },
+      {
+        "scene_id": "SIG-COMMERCE-1",
+        "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "3a77516e-36b6-4278-9199-ea076c5d645a",
+        "error": "Unauthorized: Please login first to use this node.",
+        "execution_receipt": "Comfy/receipts/sig-commerce-1-runway-environment-a1-execution.json",
+        "attempt_marker": "Comfy/receipts/sig-commerce-1-runway-environment-a1-paid-attempt.json",
+        "runway_task_id": null,
+        "candidate_created": false,
+        "automatic_retry": false
+      },
+      {
+        "scene_id": "SIG-COMMERCE-2",
+        "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "99d83e42-8c55-46c2-a871-287b0dfe1f00",
+        "error": "Unauthorized: Please login first to use this node.",
+        "execution_receipt": "Comfy/receipts/sig-commerce-2-runway-environment-a1-execution.json",
+        "attempt_marker": "Comfy/receipts/sig-commerce-2-runway-environment-a1-paid-attempt.json",
+        "runway_task_id": null,
+        "candidate_created": false,
+        "automatic_retry": false
+      }
+    ],
+    "automatic_retry": false,
+    "protected_assets_sent": [],
+    "next_action": "RESTORE_COMFY_LOGIN_THEN_REQUIRE_A_NEW_EXACT_ATTEMPT_APPROVAL"
   }
 }
