@@ -87,7 +87,10 @@
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
     "candidate_bound_approval_required": true,
-    "approval_receipt": null,
+    "approval_receipt": {
+      "path": "Comfy/receipts/br-commerce-2-runway-environment-a4-founder-approval.json",
+      "sha256": "8e1f7dbb78a64b8c949e56d25f067af2cdc5e0a57b66a23ba6a3f8350a39c5fa"
+    },
     "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
   },
   "execution_blockers": [],

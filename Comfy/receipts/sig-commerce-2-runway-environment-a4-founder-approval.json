@@ -1,0 +1,74 @@
+{
+  "schema": "skyyrose.runway-background-paid-approval/1",
+  "approved": true,
+  "approver_role": "founder",
+  "approved_by": "SkyyRose Founder via explicit Codex task approval",
+  "approved_at": "2026-09-04T16:33:34.828277+00:00",
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+  "execution_fingerprint": "17493b37b88c9f624119a664390c3ff2fca2a66ff5c60ac0fe6172f6e082cee0",
+  "contract_sha256": "71094e57217518341c855aef6a7ef12e8715d565b2385abe0a688a956bf7111e",
+  "workflow_sha256": "cf19a90f67ca898063bd1e6cefda642ec36efc24efddee0721a72af336475abf",
+  "request_sha256": "ea6ad5313666953125d6014ca42fe44845bda08673429fe2f08a30dd649361b8",
+  "prompt_sha256": "7489affc03c2fd6046aab0bd28ed25deac4f83644667abd017dcdba563c83912",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "local_composition_inspiration_sha256s": [
+    "ce1232d5b470a25a160fdde4f559b87652782d9f19b69fe635313944cfedc5fb"
+  ],
+  "output_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4.png",
+  "max_paid_generations": 1,
+  "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-2-runway-environment-a4-paid-attempt.json",
+  "observed_live_price_usd": 0.11,
+  "max_price_usd": 0.11,
+  "automatic_paid_retries": false,
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "approval_statement": "I approve exactly one product-free Runway Gen-4 environment candidate for each of:\n\nLH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint bc484ef2e6c63174030058b9a8099ad5bdc05bda06e69329383fcbca4c003d14,\n\nBR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint 6b090ea5457fcfe106270fe0f5a06b8794bb6d90a4e4238a000011c4dd48eb46,\n\nSIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint f76233a63d38d552993444d08d03af036cd72c1d24dd5bf83b6ff7ab4ec1a589,\n\nand SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4 bound to execution fingerprint 17493b37b88c9f624119a664390c3ff2fca2a66ff5c60ac0fe6172f6e082cee0,\n\nfor no more than $0.11 each and $0.44 combined, with serial execution, exactly one candidate per scene, and no automatic retry. Stop the remaining batch on HTTP 429. This authorizes only the four product-free A4 environment generations. It does not authorize protected composition, promotion, storefront wiring, publication, or deployment.",
+  "approval_statement_sha256": "374c3c670f60c04186cf1c6888e59c855cf5720d65cb6b2726667019c26308b5",
+  "batch_maximum_price_usd": 0.44,
+  "verified_effective_balance_reported": 3422.64808,
+  "batch_required_credits": 92.84,
+  "serial_execution_policy": {
+    "submission_mode": "SERIAL",
+    "candidate_order": [
+      "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+      "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A4",
+      "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4"
+    ],
+    "max_concurrent_provider_tasks": 1,
+    "wait_for_terminal_state_before_next_submission": true,
+    "minimum_delay_seconds_after_terminal_state": 5,
+    "stop_remaining_batch_on_http_429": true,
+    "automatic_paid_retries": false
+  },
+  "resize_canary": {
+    "status": "PASS",
+    "receipt": "Comfy/receipts/resize-v3-canary-20260904.json",
+    "receipt_sha256": "3e4543468a4add02333eb76625efebe6945712aeb6c391e29b41b0620254f8ef",
+    "prompt_id": "102c211c-da1f-4c2b-91b0-c1657a6fa607",
+    "workflow_sha256": "1e46479539e0cfb523c8a77f0c2ea1570c4ae69ca8de286af29b65bae09dfccb",
+    "history_sha256": "798a10e3efd46f3c1fe3e0440dd21d440272f386e26e3bacad62b3517f88f705",
+    "expected_output_dimensions": {
+      "width": 128,
+      "height": 72
+    },
+    "paid_partner_nodes": []
+  },
+  "runtime_retry_guard": {
+    "runway_node_source_path": "/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/nodes_runway.py",
+    "runway_node_source_sha256": "7999cd6205e46b17f140dfe5e06ae9824a32cf62251bfb2f78ae196f52841da1",
+    "max_retries": 0,
+    "max_retries_on_rate_limit": 0
+  },
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  }
+}
