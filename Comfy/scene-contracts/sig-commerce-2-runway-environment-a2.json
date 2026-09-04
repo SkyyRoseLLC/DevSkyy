@@ -83,7 +83,10 @@
     "paid_generations_recorded": 0,
     "automatic_paid_retries": false,
     "candidate_bound_approval_required": true,
-    "approval_receipt": null,
+    "approval_receipt": {
+      "path": "Comfy/receipts/sig-commerce-2-runway-environment-a2-founder-approval.json",
+      "sha256": "2a4fb235d81089406bb8f9e97475dd582076c61ea4022a9410f09350e5ba17ec"
+    },
     "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
   },
   "execution_blockers": [],

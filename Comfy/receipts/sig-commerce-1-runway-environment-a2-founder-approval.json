@@ -1,0 +1,40 @@
+{
+  "schema": "skyyrose.runway-background-paid-approval/1",
+  "approved": true,
+  "approver_role": "founder",
+  "approved_by": "SkyyRose Founder via explicit Codex task approval",
+  "approved_at": "2026-09-04T14:42:22.255352+00:00",
+  "scene_id": "SIG-COMMERCE-1",
+  "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2",
+  "execution_fingerprint": "f4b3d4ce4998037cfd4993f56ba572e4e2f55643f8e3d46dbe731a6d783b8407",
+  "contract_sha256": "a2648359dad9dcb43a4144d531921085cda4d0c67b1b7fb90b5da23603e94ec0",
+  "workflow_sha256": "f5f503884ec79d7285b344e8e08030c909376181a08d4bd94371431c5cd76ce7",
+  "request_sha256": "b7c3962d12e7690e2517c2d11204fa115ecfae0768513342f887c987c22aad04",
+  "prompt_sha256": "c28d9b2863814c9cb70f5baf468cd6517cefb34b45b0b46797db1a57d5a2ea6e",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "local_composition_inspiration_sha256s": [
+    "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600"
+  ],
+  "output_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2.png",
+  "max_paid_generations": 1,
+  "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-1-runway-environment-a2-paid-attempt.json",
+  "observed_live_price_usd": 0.11,
+  "max_price_usd": 0.11,
+  "automatic_paid_retries": false,
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "approval_statement": "I approve exactly one product-free Runway Gen-4 environment candidate for each of:\n\nLH-COMMERCE-2-RUNWAY-ENVIRONMENT-A2 bound to execution fingerprint 9f7597db72f7b9a62cffb74ee7b5e81252f1170afb2918bdf56febf75a3ceb81,\n\nBR-COMMERCE-2-RUNWAY-ENVIRONMENT-A2 bound to execution fingerprint 1ba279d4cf8e4499fa9c80660856584448714e1d9629ac63519a3f23cd2b1659,\n\nSIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2 bound to execution fingerprint f4b3d4ce4998037cfd4993f56ba572e4e2f55643f8e3d46dbe731a6d783b8407,\n\nand SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2 bound to execution fingerprint 2d780e88f95f40245c5f14be80ae3056366c79a52e3f2be16b2dab819dcf09d5,\n\nfor no more than $0.11 each and $0.44 combined, with exactly one candidate per scene and no automatic retry. This authorizes only the four product-free A2 environment generations. It does not authorize protected composition, promotion, storefront wiring, publication, or deployment.",
+  "approval_statement_sha256": "0271f8bc8f47805a5a98f8023c3c1a0994dd8ff6e5e6b389665676765314276f",
+  "batch_maximum_price_usd": 0.44,
+  "verified_displayed_comfy_credits": 7294,
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  }
+}

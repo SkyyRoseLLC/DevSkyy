@@ -6,7 +6,7 @@
   "created_at": "2026-09-04T00:00:00-07:00",
   "base_commit": "c432975cc0e72e210dbc211950d650030e97ee0e",
   "branch": "codex/scene-stage-07-br-signature-rollout-20260904",
-  "status": "A2_FUNDED_PENDING_EXACT_FOUNDER_APPROVAL",
+  "status": "A2_APPROVED_FOR_EXACT_PRODUCT_FREE_ENVIRONMENT_BATCH",
   "execution_mode": "PARALLEL_PRODUCT_FREE_ENVIRONMENT_PREFLIGHT",
   "scope": {
     "included": [
@@ -172,5 +172,51 @@
       }
     ],
     "balance_verified_at": "2026-09-04T14:40:18.496825+00:00"
+  },
+  "a2_founder_approval": {
+    "approved_at": "2026-09-04T14:42:22.255352+00:00",
+    "approval_statement_sha256": "0271f8bc8f47805a5a98f8023c3c1a0994dd8ff6e5e6b389665676765314276f",
+    "verified_displayed_comfy_credits": 7294,
+    "maximum_combined_price_usd": 0.44,
+    "maximum_candidates": 4,
+    "automatic_retry": false,
+    "records": [
+      {
+        "scene_id": "BR-COMMERCE-2",
+        "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "execution_fingerprint": "2d780e88f95f40245c5f14be80ae3056366c79a52e3f2be16b2dab819dcf09d5",
+        "approval_path": "Comfy/receipts/br-commerce-2-runway-environment-a2-founder-approval.json",
+        "approval_sha256": "5ee2b66cbc4e3f9cf24b91bdeb9fd3e868cb2d1149a8b2b4b267c4d0008ad8da",
+        "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a2-paid-attempt.json",
+        "candidate_path": "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A2.png",
+        "execution_receipt": "Comfy/receipts/br-commerce-2-runway-environment-a2-execution.json",
+        "live_price_usd": 0.11,
+        "validation": "PASS"
+      },
+      {
+        "scene_id": "SIG-COMMERCE-1",
+        "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2",
+        "execution_fingerprint": "2d780e88f95f40245c5f14be80ae3056366c79a52e3f2be16b2dab819dcf09d5",
+        "approval_path": "Comfy/receipts/sig-commerce-1-runway-environment-a2-founder-approval.json",
+        "approval_sha256": "08ea9c570d2b3770343c465f5e6ad55589b43f4fd362c762ffd6dce46669e3ef",
+        "attempt_marker": "Comfy/receipts/sig-commerce-1-runway-environment-a2-paid-attempt.json",
+        "candidate_path": "Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A2.png",
+        "execution_receipt": "Comfy/receipts/sig-commerce-1-runway-environment-a2-execution.json",
+        "live_price_usd": 0.11,
+        "validation": "PASS"
+      },
+      {
+        "scene_id": "SIG-COMMERCE-2",
+        "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "execution_fingerprint": "2d780e88f95f40245c5f14be80ae3056366c79a52e3f2be16b2dab819dcf09d5",
+        "approval_path": "Comfy/receipts/sig-commerce-2-runway-environment-a2-founder-approval.json",
+        "approval_sha256": "2a4fb235d81089406bb8f9e97475dd582076c61ea4022a9410f09350e5ba17ec",
+        "attempt_marker": "Comfy/receipts/sig-commerce-2-runway-environment-a2-paid-attempt.json",
+        "candidate_path": "Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2.png",
+        "execution_receipt": "Comfy/receipts/sig-commerce-2-runway-environment-a2-execution.json",
+        "live_price_usd": 0.11,
+        "validation": "PASS"
+      }
+    ]
   }
 }
