@@ -1198,12 +1198,10 @@ def _expected_environment_workflow(contract: Mapping[str, Any]) -> dict[str, Any
             "class_type": "ResizeImageMaskNode",
             "inputs": {
                 "input": ["1", 0],
-                "resize_type": {
-                    "resize_type": "scale dimensions",
-                    "width": 2048,
-                    "height": 1152,
-                    "crop": "disabled",
-                },
+                "resize_type": "scale dimensions",
+                "resize_type.width": 2048,
+                "resize_type.height": 1152,
+                "resize_type.crop": "disabled",
                 "scale_method": "lanczos",
             },
         },
