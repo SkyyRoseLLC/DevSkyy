@@ -3,12 +3,12 @@
   "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
   "scene_id": "SIG-COMMERCE-2",
   "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
-  "execution_fingerprint": "686ef1be4ff2fae28a3db0ebd180fc41737d4aa806da917a45149e4349b52ac9",
+  "execution_fingerprint": "2d780e88f95f40245c5f14be80ae3056366c79a52e3f2be16b2dab819dcf09d5",
   "fingerprint_material": {
     "schema": "skyyrose.runway-environment-execution-fingerprint/1",
     "scene_id": "SIG-COMMERCE-2",
     "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
-    "contract_sha256": "fb8537e920d89f8e7d8a4e4e271dcfd1955aac457a22127e78d573d3ab71d469",
+    "contract_sha256": "951463b5d1728a699589800ada31efb47d5d57433764de39e3226d9831e00186",
     "workflow_sha256": "896a69792878806e585789eec0c3e9f3df400fa632526cd4cc7a4b569d2223dc",
     "prompt_sha256": "7489affc03c2fd6046aab0bd28ed25deac4f83644667abd017dcdba563c83912",
     "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
@@ -70,7 +70,7 @@
     }
   },
   "workflow_sha256": "896a69792878806e585789eec0c3e9f3df400fa632526cd4cc7a4b569d2223dc",
-  "contract_sha256": "fb8537e920d89f8e7d8a4e4e271dcfd1955aac457a22127e78d573d3ab71d469",
+  "contract_sha256": "951463b5d1728a699589800ada31efb47d5d57433764de39e3226d9831e00186",
   "protected_assets_sent_to_runway": [],
   "paid_submission_performed": false,
   "failures": [],

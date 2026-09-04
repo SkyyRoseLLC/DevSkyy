@@ -134,10 +134,11 @@
     "a1_attempt_marker_preserved": true,
     "a1_candidate_id_reuse_allowed": false
   },
-  "account_readiness_at_creation": {
-    "verified_at": "2026-09-04T14:39:17.523834+00:00",
+  "account_readiness": {
+    "verified_at": "2026-09-04T14:40:18.496825+00:00",
     "authenticated": true,
-    "displayed_comfy_credits": 0,
-    "execution_blocked_until_funded": true
+    "displayed_comfy_credits": 7294,
+    "sufficient_for_four_candidate_batch_at_0_11_usd_each": true,
+    "source": "COMFY_CURRENT_USER_MENU"
   }
 }
