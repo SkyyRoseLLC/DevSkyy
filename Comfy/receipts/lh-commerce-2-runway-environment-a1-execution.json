@@ -1,0 +1,57 @@
+{
+  "schema": "skyyrose.runway-environment-execution-failure/1",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+  "execution_fingerprint": "890da94701d7a023519d3a31002964decf2feab02a2070807b1c384e988c6d4e",
+  "recorded_at": "2026-09-04T14:25:45.069391+00:00",
+  "status": "EXECUTION_FAILED_NO_RETRY",
+  "prompt_id": "6c7c6b56-ce57-44d5-a733-3aa64cfd86bd",
+  "comfy_status": "error",
+  "completed": false,
+  "failure": {
+    "stage": "COMFY_PARTNER_NODE_AUTHORIZATION",
+    "node_id": "1",
+    "node_type": "RunwayTextToImageNode",
+    "exception_type": "Exception",
+    "exception_message": "Unauthorized: Please login first to use this node.",
+    "executed_nodes": []
+  },
+  "history": {
+    "sha256": "a79ac9b5b2b72082e4b9e552826791c3045f5a2717bef03d50885141809a46d0",
+    "outputs_present": false,
+    "runway_task_id": null
+  },
+  "approval_receipt": {
+    "path": "Comfy/receipts/lh-commerce-2-runway-environment-a1-founder-approval.json",
+    "sha256": "5e736102581bb3d6822b6bca8c38235fa22b02a673b8e9423ad5bb6a23551a6f"
+  },
+  "attempt_marker": {
+    "path": "Comfy/receipts/lh-commerce-2-runway-environment-a1-paid-attempt.json",
+    "sha256": "0412d40a23a9bb98fde6e706d6eb21cc4c9bfe298eabfa3bfcbec7ed0a644219",
+    "state": "CONSUMED_BEFORE_SUBMISSION"
+  },
+  "spend_reconciliation": {
+    "authorized_price_usd": 0.11,
+    "observed_charge_usd": null,
+    "state": "UNCONFIRMED_AUTH_REJECTED_WITHOUT_RUNWAY_TASK_ID"
+  },
+  "automatic_retry": false,
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "candidate_output": {
+    "created": false,
+    "path": null,
+    "sha256": null
+  },
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  },
+  "next_action": "RESTORE_COMFY_LOGIN_THEN_REQUIRE_A_NEW_EXACT_ATTEMPT_APPROVAL"
+}

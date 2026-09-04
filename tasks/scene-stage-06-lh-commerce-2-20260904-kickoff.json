@@ -35,7 +35,7 @@
     "final_composite_approval": false,
     "promotion_wiring_publication_or_deployment": false
   },
-  "status": "APPROVED_FOR_EXACT_PRODUCT_FREE_ENVIRONMENT_BATCH",
+  "status": "BLOCKED_COMFY_LOGIN_ATTEMPTS_CONSUMED_NO_RETRY",
   "artifacts": [
     {
       "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
@@ -84,5 +84,25 @@
         "validation": "PASS"
       }
     ]
+  },
+  "environment_execution": {
+    "recorded_at": "2026-09-04T14:25:45.073146+00:00",
+    "results": [
+      {
+        "scene_id": "LH-COMMERCE-2",
+        "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "6c7c6b56-ce57-44d5-a733-3aa64cfd86bd",
+        "error": "Unauthorized: Please login first to use this node.",
+        "execution_receipt": "Comfy/receipts/lh-commerce-2-runway-environment-a1-execution.json",
+        "attempt_marker": "Comfy/receipts/lh-commerce-2-runway-environment-a1-paid-attempt.json",
+        "runway_task_id": null,
+        "candidate_created": false,
+        "automatic_retry": false
+      }
+    ],
+    "automatic_retry": false,
+    "protected_assets_sent": [],
+    "next_action": "RESTORE_COMFY_LOGIN_THEN_REQUIRE_A_NEW_EXACT_ATTEMPT_APPROVAL"
   }
 }
