@@ -1,0 +1,33 @@
+{
+  "schema": "skyyrose.runway-environment-a3-approval-request/1",
+  "stage_id": "SCENE-STAGE-06-LH-COMMERCE-2-20260904",
+  "recorded_at": "2026-09-04T15:07:38Z",
+  "state": "PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "candidates": [
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+      "execution_fingerprint": "e673dc776200d9cef02e189525eb58be2bde922f5c0f0fc504099237a87c129b",
+      "live_price_usd": 0.11,
+      "workflow_sha256": "4b6e255b11a08976f53ac12532d11ea6d9b864e868f82ad85cc383324bf72dc1",
+      "contract_sha256": "cef74aa4c57f0284ede3a8e7d50e4581bee36a79873d9cb9b7f1251eee162f7a",
+      "partner_auth_status": "PASS",
+      "candidate_bound_approval_path": "Comfy/receipts/lh-commerce-2-runway-environment-a3-founder-approval.json",
+      "attempt_marker": "Comfy/receipts/lh-commerce-2-runway-environment-a3-paid-attempt.json",
+      "protected_assets_sent_to_runway": [],
+      "paid_submission_performed": false
+    }
+  ],
+  "maximum_combined_price_usd": 0.11,
+  "automatic_paid_retries": false,
+  "prior_attempts_reusable": false,
+  "approval_packet": "Comfy/receipts/lh-commerce-2-runway-environment-a3-founder-packet.json",
+  "contract": "Comfy/scene-contracts/lh-commerce-2-runway-environment-a3.json",
+  "authorization_exclusions": [
+    "protected composition",
+    "promotion",
+    "storefront wiring",
+    "publication",
+    "deployment"
+  ]
+}
