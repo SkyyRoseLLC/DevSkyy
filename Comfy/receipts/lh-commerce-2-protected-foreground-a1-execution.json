@@ -1,0 +1,111 @@
+{
+  "schema": "skyyrose.protected-foreground-execution/1",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-PROTECTED-FOREGROUND-A1",
+  "created_at": "2026-09-04T11:36:20.429892+00:00",
+  "status": "PASS",
+  "execution": {
+    "provider": "LOCAL_COMFYUI",
+    "paid_credits": 0,
+    "automatic_retry": false,
+    "prompt_id": "73dcaff4-ff3a-4bfa-ac82-4a46386a17ff",
+    "client_id": "skyyrose-stage6-557c9daa-29fa-4118-b374-2308761d9e36",
+    "base_url": "http://127.0.0.1:8189",
+    "model_rerun_for_normalization": false
+  },
+  "workflow": {
+    "path": "Comfy/workflows/lh-commerce-2-birefnet-segmentation-a1.api.json",
+    "sha256": "4aac14763d0e0f38aa150711cc4495aaaf73ee95ab9fae553f7a6fdea1aebe34",
+    "output_nodes": {
+      "protected_foreground": "5",
+      "mask": "7"
+    }
+  },
+  "source": {
+    "path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+    "sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
+    "runtime_upload": {
+      "name": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+      "subfolder": "skyyrose/LH-COMMERCE-2",
+      "type": "input"
+    },
+    "runtime_name": "skyyrose/LH-COMMERCE-2/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+    "bytes": 1845923
+  },
+  "outputs": {
+    "protected_foreground": {
+      "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1.png",
+      "sha256": "0a0d43fdedf5d35aef536d856b91958053000baad2f072e7fad311ff546e3a44",
+      "bytes": 2176054,
+      "runtime": {
+        "filename": "protected-foreground-editorial-a1_00001_.png",
+        "subfolder": "SkyyRose/LH-COMMERCE-2",
+        "type": "output"
+      }
+    },
+    "mask": {
+      "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
+      "sha256": "5c67dcdbfe7400e29ef7f74c2810fc5017898c75a6214aacb75d0ffe7c72bd43",
+      "bytes": 46100,
+      "derived_from": "protected_foreground_alpha_channel",
+      "authority_role": "CANONICAL_LOCAL_COMPOSITION_MASK"
+    },
+    "runtime_mask": {
+      "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-RUNTIME-MASK.png",
+      "sha256": "14997be30bceca44cf4b928a136c3833348a4fb2c08a7b91dea46c2b4f556f25",
+      "bytes": 86626,
+      "runtime": {
+        "filename": "protected-foreground-editorial-a1-mask_00001_.png",
+        "subfolder": "SkyyRose/LH-COMMERCE-2",
+        "type": "output"
+      },
+      "authority_role": "RAW_COMFY_INVERSE_MASK_EVIDENCE_ONLY"
+    }
+  },
+  "verification": {
+    "source_geometry": {
+      "width": 937,
+      "height": 1678
+    },
+    "foreground_geometry": {
+      "width": 937,
+      "height": 1678
+    },
+    "mask_geometry": {
+      "width": 937,
+      "height": 1678
+    },
+    "changed_rgb_pixel_count": 0,
+    "raw_runtime_mask_direct_alpha_mismatch_pixel_count": 1572240,
+    "canonical_alpha_mismatch_pixel_count": 0,
+    "foreground_pixel_count": 1227181,
+    "total_pixel_count": 1572286,
+    "coverage_fraction": 0.7805074903675285,
+    "allowed_coverage_fraction": {
+      "minimum": 0.1,
+      "maximum": 0.95
+    },
+    "protected_rgb_unchanged": true,
+    "canonical_mask_matches_alpha": true,
+    "verdict": "PASS"
+  },
+  "authority": {
+    "scope": "ALPHA_ONLY_SEGMENTATION",
+    "authorizes_paid_environment": false,
+    "authorizes_final_composite": false,
+    "authorizes_promotion": false,
+    "authorizes_storefront_wiring": false,
+    "authorizes_publication": false,
+    "authorizes_deployment": false
+  },
+  "normalization": {
+    "operation": "EXTRACT_PROTECTED_FOREGROUND_ALPHA_AS_GRAYSCALE_MASK",
+    "reason": "Comfy MASK values use an inverse editing-mask convention with float-to-PNG 254/255 quantization; local composition requires the exact protected foreground alpha.",
+    "provider_call_performed": false,
+    "paid_credits": 0,
+    "model_rerun": false,
+    "raw_runtime_mask_preserved": true,
+    "raw_alpha_plus_mask_equals_254_pixels": 1512658,
+    "raw_alpha_plus_mask_equals_255_pixels": 59628
+  }
+}

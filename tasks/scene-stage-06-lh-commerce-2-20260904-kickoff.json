@@ -1,0 +1,66 @@
+{
+  "schema_version": "scene-stage-kickoff.v1",
+  "stage_id": "SCENE-STAGE-06-LH-COMMERCE-2-20260904",
+  "created_at": "2026-09-04T11:28:34.104Z",
+  "branch": "codex/scene-stage-06-lh-commerce-2-20260904",
+  "base_commit": "c432975cc0e72e210dbc211950d650030e97ee0e",
+  "objective": "Prepare the founder-approved LH front foreground and product-free Runway environment concurrently, then create a protected local composition after both are available.",
+  "execution_mode": "PARALLEL_FOREGROUND_AND_ENVIRONMENT",
+  "source_candidate": {
+    "id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+    "view": "front",
+    "authority": "FOUNDER_APPROVED_FRONT_VIEW",
+    "sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c"
+  },
+  "bindings": {
+    "baseline_sha256": "9f5af372f4fb1392fca04c878a76a0074b72f2663447a2fac98d26b768fcc5ab",
+    "coverage_authority_sha256": "b20ff067bedcc09d0f689a632cc6b637588883f55790ac17e5979d873f17e736",
+    "segmentation_workflow_sha256": "0a8226eb62e134d7b9ff7f6d4eb04ff08ee31dc661162b5cc2c732d014f7690a",
+    "environment_contract_file_sha256": "46adaaef6338da444c69f27c07199942080b52eff960fa0aa8a7f8ecff9e5851",
+    "scene_contract_sha256": "b3e2e20d137948dbf3bc14aa4f1dae7d44321a9d28e7e59842855723067d6e6d"
+  },
+  "runtime_observation": {
+    "base_url": "http://127.0.0.1:8189",
+    "comfyui_version": "0.34.2",
+    "runway_node": "RunwayTextToImageNode",
+    "runway_model": "gen-4",
+    "observed_price_usd": 0.11,
+    "birefnet_model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
+  },
+  "boundaries": {
+    "local_segmentation_authorized": true,
+    "paid_environment_submission_authorized": false,
+    "automatic_retry": false,
+    "protected_assets_sent_to_runway": [],
+    "final_composite_approval": false,
+    "promotion_wiring_publication_or_deployment": false
+  },
+  "status": "PASS_ZERO_CREDIT_FOREGROUND_READY_PENDING_ENVIRONMENT_APPROVAL",
+  "artifacts": [
+    {
+      "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
+      "sha256": "5c67dcdbfe7400e29ef7f74c2810fc5017898c75a6214aacb75d0ffe7c72bd43",
+      "role": "CANONICAL_COMPOSITION_MASK"
+    },
+    {
+      "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-RUNTIME-MASK.png",
+      "sha256": "14997be30bceca44cf4b928a136c3833348a4fb2c08a7b91dea46c2b4f556f25",
+      "role": "RAW_RUNTIME_MASK_EVIDENCE"
+    },
+    {
+      "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1.png",
+      "sha256": "0a0d43fdedf5d35aef536d856b91958053000baad2f072e7fad311ff546e3a44",
+      "role": "PROTECTED_FOREGROUND"
+    },
+    {
+      "path": "Comfy/receipts/lh-commerce-2-protected-foreground-a1-execution.json",
+      "sha256": "0ce9a2b144ffa4e31d9f0dac254bf39ef39ec445f7de8f3743e292ec83d34c78",
+      "role": "ZERO_CREDIT_SEGMENTATION_RECEIPT"
+    },
+    {
+      "path": "Comfy/receipts/lh-commerce-2-runway-environment-a1-founder-packet.json",
+      "sha256": "6d3dbf7ad7755ca2c96ab1aeea519d2a760e8f73104a9ef53d5b9f53e01358ce",
+      "role": "PAID_APPROVAL_PACKET"
+    }
+  ]
+}

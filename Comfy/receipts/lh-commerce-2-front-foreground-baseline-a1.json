@@ -1,0 +1,59 @@
+{
+  "schema": "skyyrose.foreground-coverage-baseline/1",
+  "baseline_id": "LH-COMMERCE-2-FRONT-FOREGROUND-BASELINE-A1",
+  "scene_id": "LH-COMMERCE-2",
+  "reviewed_at": "2026-09-04T11:28:34.104Z",
+  "candidate_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+  "candidate_view": "front",
+  "source_path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+  "source_sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
+  "reviewer_role": "visual-commerce-qa",
+  "reviewer": {
+    "name": "Leibniz",
+    "agent_id": "01a06770-2545-7b10-898d-f2bf625893f1",
+    "independent": true,
+    "read_only": true
+  },
+  "verdict": "PASS",
+  "authority": "FRONT_SCENE_INPUT_BASELINE",
+  "minimum_coverage_ratio": 0.05,
+  "maximum_coverage_ratio": 0.98,
+  "observable_front_checks": {
+    "anatomy_and_grounded_stance": "PASS",
+    "founder_accepted_identity_presentation": "PASS",
+    "front_silhouette_and_length": "PASS",
+    "black_waistband": "PASS",
+    "front_rose_cloud_mesh_field": "PASS",
+    "visible_angular_black_panels": "PASS",
+    "visible_red_white_binding_and_black_hem": "PASS",
+    "exactly_two_front_side_pocket_openings": "PASS",
+    "no_extra_cargo_or_welt_pockets": "PASS",
+    "unobstructed_extraction_geometry": "PASS"
+  },
+  "deferred_not_failed": {
+    "complete_wearer_left_artwork": [
+      "wearer_left"
+    ],
+    "complete_wearer_right_artwork": [
+      "wearer_right"
+    ],
+    "complete_side_zipper_hardware": [
+      "wearer_left",
+      "wearer_right"
+    ],
+    "rear_pockets_zippers_artwork_and_construction": [
+      "back"
+    ]
+  },
+  "founder_scope_correction": {
+    "path": "Comfy/receipts/lh-003-fashion-editorial-pose-recovery-a1-front-view-scope-correction.json",
+    "sha256": "3175d780b825f63f17040991d8af020cdb9baa7cd87146aff0c3533736f78ed0"
+  },
+  "authorization": {
+    "local_alpha_only_birefnet_segmentation": true,
+    "paid_environment_call": false,
+    "final_composite_approval": false,
+    "promotion_wiring_publication_or_deployment": false,
+    "side_rear_or_full_360_authority": false
+  }
+}

@@ -2,10 +2,10 @@
   "1": {
     "class_type": "LoadImage",
     "inputs": {
-      "image": "LH-003-TRYON-MAX-PILOT-A1.png"
+      "image": "skyyrose/LH-COMMERCE-2/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png"
     },
     "_meta": {
-      "title": "Founder-approved front-scene VTO candidate only"
+      "title": "Founder-approved LH-003 front scene input only"
     }
   },
   "2": {
@@ -17,35 +17,56 @@
   "3": {
     "class_type": "RemoveBackground",
     "inputs": {
-      "bg_removal_model": ["2", 0],
-      "image": ["1", 0]
+      "bg_removal_model": [
+        "2",
+        0
+      ],
+      "image": [
+        "1",
+        0
+      ]
     }
   },
   "4": {
     "class_type": "JoinImageWithAlpha",
     "inputs": {
-      "image": ["1", 0],
-      "alpha": ["3", 0]
+      "image": [
+        "1",
+        0
+      ],
+      "alpha": [
+        "3",
+        0
+      ]
     }
   },
   "5": {
     "class_type": "SaveImage",
     "inputs": {
-      "images": ["4", 0],
-      "filename_prefix": "SkyyRose/LH-COMMERCE-2/protected-foreground-a1"
+      "images": [
+        "4",
+        0
+      ],
+      "filename_prefix": "SkyyRose/LH-COMMERCE-2/protected-foreground-editorial-a1"
     }
   },
   "6": {
     "class_type": "MaskToImage",
     "inputs": {
-      "mask": ["3", 0]
+      "mask": [
+        "3",
+        0
+      ]
     }
   },
   "7": {
     "class_type": "SaveImage",
     "inputs": {
-      "images": ["6", 0],
-      "filename_prefix": "SkyyRose/LH-COMMERCE-2/protected-foreground-a1-mask"
+      "images": [
+        "6",
+        0
+      ],
+      "filename_prefix": "SkyyRose/LH-COMMERCE-2/protected-foreground-editorial-a1-mask"
     }
   }
 }

@@ -1,20 +1,34 @@
 {
   "schema": "skyyrose.foreground-coverage-authority/1",
-  "state": "BLOCKED_PENDING_ACCEPTED_FOREGROUND_BASELINE",
+  "state": "APPROVED",
   "scene_id": "LH-COMMERCE-2",
-  "source_sha256": null,
+  "source_sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
   "minimum_coverage_ratio": 0.05,
   "maximum_coverage_ratio": 0.98,
-  "independent_baseline_receipt": null,
+  "independent_baseline_receipt": {
+    "path": "Comfy/receipts/lh-commerce-2-front-foreground-baseline-a1.json",
+    "sha256": "9f5af372f4fb1392fca04c878a76a0074b72f2663447a2fac98d26b768fcc5ab"
+  },
   "segmentation_model": {
     "id": "birefnet",
     "path": "/Users/theceo/ComfyUI-Shared/models/background_removal/birefnet.safetensors",
     "sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
   },
-  "activation_requirements": [
-    "Bind the exact founder-approved FRONT_SCENE_INPUT_ALLOWED candidate hash as source_sha256.",
-    "Bind a hash-identical independent visual-commerce-qa PASS baseline receipt.",
-    "Keep coverage within the fail-closed 0.05 through 0.98 safety envelope.",
-    "Do not activate from a rejected, unreviewed, or rear-proof candidate."
-  ]
+  "activation_requirements": [],
+  "activated_at": "2026-09-04T11:28:34.104Z",
+  "scope": "Exact founder-approved front candidate bytes; alpha-only local segmentation; no side, rear, full-360, composite, promotion, or paid-provider authority.",
+  "segmentation_execution": {
+    "status": "PASS",
+    "receipt_path": "Comfy/receipts/lh-commerce-2-protected-foreground-a1-execution.json",
+    "receipt_sha256": "0ce9a2b144ffa4e31d9f0dac254bf39ef39ec445f7de8f3743e292ec83d34c78",
+    "protected_foreground_path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1.png",
+    "protected_foreground_sha256": "0a0d43fdedf5d35aef536d856b91958053000baad2f072e7fad311ff546e3a44",
+    "canonical_mask_path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
+    "canonical_mask_sha256": "5c67dcdbfe7400e29ef7f74c2810fc5017898c75a6214aacb75d0ffe7c72bd43",
+    "raw_runtime_mask_path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-RUNTIME-MASK.png",
+    "raw_runtime_mask_sha256": "14997be30bceca44cf4b928a136c3833348a4fb2c08a7b91dea46c2b4f556f25",
+    "paid_credits": 0,
+    "protected_rgb_unchanged": true,
+    "canonical_mask_matches_alpha": true
+  }
 }

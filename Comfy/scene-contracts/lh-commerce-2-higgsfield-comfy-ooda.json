@@ -2,7 +2,7 @@
   "schema": "skyyrose.scene-ooda/1",
   "scene_id": "LH-COMMERCE-2",
   "collection": "love-hurts",
-  "status": "BLOCKED_PENDING_APPROVED_VTO_FOREGROUND",
+  "status": "READY_FOR_PARALLEL_FOREGROUND_SEGMENTATION_AND_ENVIRONMENT_APPROVAL",
   "purpose": "Build the final Love Hurts commerce scene around a separately approved, protected FASHN customer/product foreground without allowing the environment provider to redraw it.",
   "fashion_theme_team": {
     "plugin": "fashion-theme-team@personal",
@@ -18,7 +18,12 @@
     "catalog_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
     "image_manifest_path": "data/sot-images.json",
     "image_manifest_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
-    "products": [{ "sku": "lh-003", "name": "Love Hurts Basketball Shorts" }]
+    "products": [
+      {
+        "sku": "lh-003",
+        "name": "Love Hurts Basketball Shorts"
+      }
+    ]
   },
   "composition": {
     "aspect_ratio": "16:9",
@@ -62,7 +67,10 @@
     ]
   },
   "optical_contract": {
-    "output": { "width": 2048, "height": 1152 },
+    "output": {
+      "width": 2048,
+      "height": 1152
+    },
     "horizon_y": 590,
     "subject_boxes": [
       {
@@ -81,8 +89,16 @@
       }
     ],
     "contact_points": [
-      { "id": "customer_feet", "x": 455, "y": 1055 },
-      { "id": "rose_plinth", "x": 1505, "y": 930 }
+      {
+        "id": "customer_feet",
+        "x": 455,
+        "y": 1055
+      },
+      {
+        "id": "rose_plinth",
+        "x": 1505,
+        "y": 930
+      }
     ],
     "lens_class": "normal",
     "camera_height": "eye_level",
@@ -189,16 +205,16 @@
   "authority_dependencies": [],
   "native_scene_workflow": {
     "mode": "environment_rebuild_around_source",
-    "foreground": "Founder-approved front-facing LH-003 VTO candidate, protected as RGB plus BiRefNet alpha; rear pockets remain source-authority-only and not rendered-visible.",
+    "foreground": "FOUNDER_APPROVED_FRONT_VIEW LH-003 candidate LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1, protected as byte-identical RGB plus BiRefNet alpha; side and rear evidence remain pending, not failed.",
     "segmentation": {
       "provider": "local_birefnet",
       "workflow": "Comfy/workflows/lh-commerce-2-birefnet-segmentation-a1.api.json",
-      "workflow_sha256": "e156b611b8026b6a04e5aa40aa5120557185c53e2e97ca8e18cdf3d236b3b394",
+      "workflow_sha256": "0a8226eb62e134d7b9ff7f6d4eb04ff08ee31dc661162b5cc2c732d014f7690a",
       "model": "birefnet.safetensors",
       "model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
       "coverage_authority": {
         "path": "Comfy/scene-contracts/lh-commerce-2-foreground-coverage-authority.json",
-        "sha256": "7f466fe79f7f0d1e73cc92716833af4c8bd44541352fd7e67fd38e3e3d063961"
+        "sha256": "b20ff067bedcc09d0f689a632cc6b637588883f55790ac17e5979d873f17e736"
       },
       "rgb_rule": "Alpha-only segmentation; accepted foreground interior RGB must remain byte-identical.",
       "verification_schema": "skyyrose.protected-rgb-verification/1",
@@ -209,7 +225,7 @@
       "workflow": "Comfy/workflows/lh-commerce-2-runway-environment-a1.api.json",
       "workflow_sha256": "bf918683bce4da5d357310d1f4dd5a4758e0833fa0063e9f2c9c3fbf18e38bb9",
       "approval_contract": "Comfy/scene-contracts/lh-commerce-2-runway-environment-a1.json",
-      "approval_contract_sha256": "8de885776b6658e02c55163d5d0cde03e2d180a296d0d1db49c8aa678fb5ac0f",
+      "approval_contract_sha256": "46adaaef6338da444c69f27c07199942080b52eff960fa0aa8a7f8ecff9e5851",
       "ratio": "1920:1080",
       "count": 1,
       "prompt": "Wide cinematic Fractured Chamber architecture with a deep ruined gothic cathedral volume, radial tracery window high in the rear wall, towering black stone arches, aged iron, restrained deep-red drape accents, cool moonlit volumetric shafts, low warm practical spill reserved for the right-side protected-object zone, and a cracked wet obsidian floor with physically plausible reflections. Preserve an open left-center customer zone, an open right monument zone, an unobstructed central depth corridor, and grounded floor contact space. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls."
@@ -219,7 +235,10 @@
       "master_height": 1152,
       "workflow_builder": "Comfy/scripts/native_scene_workflows.py",
       "workflow_builder_sha256": "8df6e3dd07c49fa0f35b2a985abf284d0deb06ef021af7bd7f52b782f8ea1e3f",
-      "protected_objects": ["approved_lh003_customer", "enchanted_rose_dome"],
+      "protected_objects": [
+        "approved_lh003_customer",
+        "enchanted_rose_dome"
+      ],
       "operations": [
         "placement and scaling",
         "mask-derived contact shadows",
@@ -255,11 +274,26 @@
     "post_capture": {
       "minimum_total_score": 90,
       "dimensions": [
-        { "id": "lh003_front_candidate_product_fidelity", "weight": 40 },
-        { "id": "customer_product_focal_hierarchy", "weight": 20 },
-        { "id": "love_hurts_rose_aisle_world_match", "weight": 15 },
-        { "id": "single_protected_rose_monument", "weight": 10 },
-        { "id": "native_optical_integration", "weight": 15 }
+        {
+          "id": "lh003_front_candidate_product_fidelity",
+          "weight": 40
+        },
+        {
+          "id": "customer_product_focal_hierarchy",
+          "weight": 20
+        },
+        {
+          "id": "love_hurts_rose_aisle_world_match",
+          "weight": 15
+        },
+        {
+          "id": "single_protected_rose_monument",
+          "weight": 10
+        },
+        {
+          "id": "native_optical_integration",
+          "weight": 15
+        }
       ]
     },
     "hard_fail_invariants": [
@@ -407,5 +441,35 @@
     "candidate-bound Runway background approval is not recorded",
     "no environment, segmentation, or final-scene execution may begin before the protected foreground hash is approved"
   ],
-  "promotion_gate": "FOUNDER_APPROVED_VISUAL"
+  "promotion_gate": "FOUNDER_APPROVED_VISUAL",
+  "stage_6_authority": {
+    "activated_at": "2026-09-04T11:28:34.104Z",
+    "candidate_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+    "candidate_view": "front",
+    "candidate_path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+    "candidate_sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c",
+    "candidate_authority": "FOUNDER_APPROVED_FRONT_VIEW",
+    "baseline_receipt": {
+      "path": "Comfy/receipts/lh-commerce-2-front-foreground-baseline-a1.json",
+      "sha256": "9f5af372f4fb1392fca04c878a76a0074b72f2663447a2fac98d26b768fcc5ab",
+      "verdict": "PASS"
+    },
+    "deferred_views": [
+      "wearer_left",
+      "wearer_right",
+      "back"
+    ],
+    "local_segmentation_allowed": true,
+    "product_free_environment_may_execute_in_parallel_after_exact_paid_approval": true,
+    "final_composite_approval": false,
+    "protected_foreground_execution": {
+      "status": "PASS_ZERO_CREDIT",
+      "receipt_path": "Comfy/receipts/lh-commerce-2-protected-foreground-a1-execution.json",
+      "receipt_sha256": "0ce9a2b144ffa4e31d9f0dac254bf39ef39ec445f7de8f3743e292ec83d34c78",
+      "foreground_path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1.png",
+      "foreground_sha256": "0a0d43fdedf5d35aef536d856b91958053000baad2f072e7fad311ff546e3a44",
+      "mask_path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
+      "mask_sha256": "5c67dcdbfe7400e29ef7f74c2810fc5017898c75a6214aacb75d0ffe7c72bd43"
+    }
+  }
 }
