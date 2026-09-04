@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import subprocess
 import sys
 import urllib.error
@@ -22,6 +23,8 @@ from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_COMFY_BASE_URL = "http://127.0.0.1:8189"
+COMFY_API_KEY_ENV = "COMFY_API_KEY"
+COMFY_PARTNER_AUTH_CHECK_URL = "https://api.comfy.org/customers/balance"
 CONTRACT_SCHEMA = "skyyrose.runway-environment-plate/1"
 RUNWAY_NODE = "RunwayTextToImageNode"
 RUNWAY_MODEL = "gen-4"
@@ -366,6 +369,58 @@ def _live_object_info(*, base_url: str = DEFAULT_COMFY_BASE_URL) -> dict[str, An
     return body
 
 
+def _live_partner_auth() -> dict[str, Any]:
+    """Verify the headless partner credential without exposing or persisting it."""
+    api_key = os.environ.get(COMFY_API_KEY_ENV)
+    if api_key is None or not api_key.strip():
+        return {
+            "status": "BLOCKED",
+            "code": "COMFY_API_KEY_MISSING",
+            "environment_variable": COMFY_API_KEY_ENV,
+            "paid_attempt_consumed": False,
+        }
+    if api_key != api_key.strip() or any(character.isspace() for character in api_key):
+        return {
+            "status": "BLOCKED",
+            "code": "COMFY_API_KEY_INVALID_FORMAT",
+            "environment_variable": COMFY_API_KEY_ENV,
+            "paid_attempt_consumed": False,
+        }
+    request = urllib.request.Request(
+        COMFY_PARTNER_AUTH_CHECK_URL,
+        headers={"Accept": "application/json", "X-API-KEY": api_key},
+        method="GET",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=10) as response:
+            status_code = response.status
+    except urllib.error.HTTPError as exc:
+        status_code = exc.code
+    except (OSError, urllib.error.URLError) as exc:
+        return {
+            "status": "BLOCKED",
+            "code": "COMFY_PARTNER_AUTH_UNAVAILABLE",
+            "environment_variable": COMFY_API_KEY_ENV,
+            "reason": str(exc),
+            "paid_attempt_consumed": False,
+        }
+    if status_code != 200:
+        return {
+            "status": "BLOCKED",
+            "code": "COMFY_PARTNER_AUTH_REJECTED",
+            "environment_variable": COMFY_API_KEY_ENV,
+            "http_status": status_code,
+            "paid_attempt_consumed": False,
+        }
+    return {
+        "status": "PASS",
+        "code": "COMFY_PARTNER_AUTH_VERIFIED",
+        "environment_variable": COMFY_API_KEY_ENV,
+        "endpoint": COMFY_PARTNER_AUTH_CHECK_URL,
+        "paid_attempt_consumed": False,
+    }
+
+
 def _live_price(node_schema: Mapping[str, Any]) -> float:
     badge = node_schema.get("price_badge")
     expression = badge.get("expr") if isinstance(badge, Mapping) else None
@@ -400,9 +455,12 @@ def build_founder_approval_packet(
     contract: Mapping[str, Any],
     contract_path: Path,
     live_object_info: Mapping[str, Any],
+    partner_auth: Mapping[str, Any],
 ) -> dict[str, Any]:
     """Create the exact read-only packet shown before any paid submission."""
     failures = validate_contract(contract, contract_path=contract_path)
+    if partner_auth.get("status") != "PASS":
+        failures.append(str(partner_auth.get("code", "COMFY_PARTNER_AUTH_BLOCKED")))
     declared_blockers = (
         list(contract.get("execution_blockers", []))
         if isinstance(contract.get("execution_blockers"), list)
@@ -475,6 +533,7 @@ def build_founder_approval_packet(
             "price_usd": live_price,
             "schema_sha256": live_schema_hash,
         },
+        "partner_auth": dict(partner_auth),
         "one_candidate_ceiling": {
             "max_paid_generations": 1,
             "max_price_usd": ceiling,
@@ -512,6 +571,7 @@ def main() -> int:
             contract=contract,
             contract_path=args.contract,
             live_object_info=_live_object_info(base_url=args.base_url),
+            partner_auth=_live_partner_auth(),
         )
     except EnvironmentContractError as exc:
         packet = {

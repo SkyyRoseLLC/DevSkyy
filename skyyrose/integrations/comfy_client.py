@@ -21,6 +21,8 @@ import httpx
 from PIL import Image, UnidentifiedImageError
 
 DEFAULT_COMFY_BASE_URL = "http://127.0.0.1:8189"
+COMFY_API_KEY_ENV = "COMFY_API_KEY"
+COMFY_PARTNER_AUTH_CHECK_URL = "https://api.comfy.org/customers/balance"
 REQUIRED_SCENE_NODES = frozenset(
     {
         "RunwayTextToImageNode",
@@ -331,12 +333,23 @@ class ComfyClient:
         timeout_seconds: float = 30.0,
         poll_interval_seconds: float = 1.0,
         max_poll_seconds: float = 600.0,
+        comfy_api_key: str | None = None,
         transport: httpx.AsyncBaseTransport | None = None,
     ) -> None:
         self.base_url = _validated_local_base_url(base_url)
         self._poll_interval = poll_interval_seconds
         self._max_poll = max_poll_seconds
         self._seal_key = os.urandom(32)
+        raw_api_key = (
+            comfy_api_key if comfy_api_key is not None else os.environ.get(COMFY_API_KEY_ENV)
+        )
+        if raw_api_key is not None and (
+            not raw_api_key.strip()
+            or raw_api_key != raw_api_key.strip()
+            or any(character.isspace() for character in raw_api_key)
+        ):
+            raise ValueError(f"{COMFY_API_KEY_ENV} must be a non-empty value without whitespace")
+        self._comfy_api_key = raw_api_key
         kwargs: dict[str, Any] = {"base_url": self.base_url, "timeout": timeout_seconds}
         if transport is not None:
             kwargs["transport"] = transport
@@ -561,6 +574,7 @@ class ComfyClient:
         if not isinstance(workflow, ValidatedWorkflow):
             raise TypeError("submit_prompt requires a validated sealed workflow")
         self._verify_workflow_seal(workflow)
+        partner_api_key: str | None = None
         if workflow.paid_partner_nodes:
             if (
                 paid_contract_path is None
@@ -571,6 +585,7 @@ class ComfyClient:
                     "paid Comfy partner workflow requires a governing contract, file-backed "
                     "candidate-bound approval, and an attempt marker"
                 )
+            partner_api_key = await self._verify_partner_authentication()
             await self._refresh_paid_workflow_price(workflow)
             approval, approval_sha256 = _load_runway_approval(
                 contract_path=paid_contract_path,
@@ -588,6 +603,8 @@ class ComfyClient:
             )
         resolved_client_id = client_id or str(uuid.uuid4())
         payload = {"prompt": workflow.payload(), "client_id": resolved_client_id}
+        if partner_api_key is not None:
+            payload["extra_data"] = {"api_key_comfy_org": partner_api_key}
         try:
             response = await self._client.post("/prompt", json=payload)
         except httpx.HTTPError as exc:
@@ -605,6 +622,32 @@ class ComfyClient:
             client_id=resolved_client_id,
             workflow=workflow,
         )
+
+    async def _verify_partner_authentication(self) -> str:
+        """Prove partner-node authentication before consuming a paid attempt."""
+        api_key = self._comfy_api_key
+        if api_key is None:
+            raise ComfyRuntimeError(
+                f"paid Comfy partner workflow requires {COMFY_API_KEY_ENV}; "
+                "paid attempt was not consumed"
+            )
+        try:
+            response = await self._client.get(
+                COMFY_PARTNER_AUTH_CHECK_URL,
+                headers={"Accept": "application/json", "X-API-KEY": api_key},
+                follow_redirects=False,
+            )
+        except httpx.HTTPError as exc:
+            raise ComfyRuntimeError(
+                "Comfy partner authentication preflight was unavailable; "
+                "paid attempt was not consumed"
+            ) from exc
+        if response.status_code != 200:
+            raise ComfyRuntimeError(
+                "Comfy partner authentication preflight failed with HTTP "
+                f"{response.status_code}; paid attempt was not consumed"
+            )
+        return api_key
 
     def _workflow_seal(self, fields: Mapping[str, Any]) -> str:
         payload = json.dumps(fields, sort_keys=True, separators=(",", ":"), default=list).encode(
