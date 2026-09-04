@@ -1,0 +1,48 @@
+{
+  "schema": "skyyrose.runway-background-paid-approval/1",
+  "approved": true,
+  "approver_role": "founder",
+  "approved_by": "SkyyRose Founder via explicit Codex task approval",
+  "approved_at": "2026-09-04T15:22:46.416211+00:00",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+  "execution_fingerprint": "e673dc776200d9cef02e189525eb58be2bde922f5c0f0fc504099237a87c129b",
+  "contract_sha256": "cef74aa4c57f0284ede3a8e7d50e4581bee36a79873d9cb9b7f1251eee162f7a",
+  "workflow_sha256": "4b6e255b11a08976f53ac12532d11ea6d9b864e868f82ad85cc383324bf72dc1",
+  "request_sha256": "edc5a9c57c18c2bf83905c911818a17b12de24c98e3104e13b558dbaf6f1e789",
+  "prompt_sha256": "e75003758f844e3578a07ab063abe8cab809b7e479b5b7fde212fb65b5a28aee",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "local_composition_inspiration_sha256s": [
+    "505b5c3617e4a2500e8afcbd4707af8220b56dff4b18cd5e99ffc7cd90d468fc"
+  ],
+  "output_path": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A3.png",
+  "max_paid_generations": 1,
+  "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/receipts/lh-commerce-2-runway-environment-a3-paid-attempt.json",
+  "observed_live_price_usd": 0.11,
+  "max_price_usd": 0.11,
+  "automatic_paid_retries": false,
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "approval_statement": "I approve exactly one product-free Runway Gen-4 environment candidate for each of:\n\nLH-COMMERCE-2-RUNWAY-ENVIRONMENT-A3 bound to execution fingerprint e673dc776200d9cef02e189525eb58be2bde922f5c0f0fc504099237a87c129b,\n\nBR-COMMERCE-2-RUNWAY-ENVIRONMENT-A3 bound to execution fingerprint 3d7206be9ae323eedc4337b7ae351fd21b360c4a5f39ae9f9d72be5b1de39f1b,\n\nSIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A3 bound to execution fingerprint bbcd5936db2b06361b63956d23e3cc6162595c2afbc00fad438aeb72786b70db,\n\nand SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A3 bound to execution fingerprint 495b9a5e21f5db9846f61660d31e8cc5d02f6939556520f83f884388ac852c20,\n\nfor no more than $0.11 each and $0.44 combined, with exactly one candidate per scene and no automatic retry. This authorizes only the four product-free A3 environment generations. It does not authorize protected composition, promotion, storefront wiring, publication, or deployment.",
+  "approval_statement_sha256": "6aff87891573f50538a31e71d9ddd4642977904aff051745c71b23909ffcd793",
+  "batch_maximum_price_usd": 0.44,
+  "verified_displayed_comfy_credits": 7294,
+  "runtime_retry_guard": {
+    "comfy_base_url": "http://127.0.0.1:8189",
+    "runway_node_source_path": "/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/nodes_runway.py",
+    "runway_node_source_sha256": "7999cd6205e46b17f140dfe5e06ae9824a32cf62251bfb2f78ae196f52841da1",
+    "max_retries": 0,
+    "max_retries_on_rate_limit": 0,
+    "verified_at": "2026-09-04T15:22:46.416211+00:00"
+  },
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  }
+}
