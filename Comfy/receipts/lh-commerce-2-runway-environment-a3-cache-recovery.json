@@ -1,0 +1,34 @@
+{
+  "schema": "skyyrose.runway-environment-zero-credit-cache-recovery-failure/1",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A3",
+  "recorded_at": "2026-09-04T15:33:09.344901+00:00",
+  "status": "CACHE_RECOVERY_FAILED_NO_PROVIDER_RETRY",
+  "source_paid_prompt_id": "03de818a-7487-4031-9051-fdf3dafdbf0b",
+  "recovery_prompt_id": "a7c02b29-cabc-4096-8ddb-f0634ea8096f",
+  "client_id": "88d4ce93-65a4-4d5f-a078-b91112974f9b",
+  "workflow_sha256": "06afa464bccdd41082d7430b6fbb9f01194812c6d27d7795d9c22cba4ab330e4",
+  "cached_node_ids": [],
+  "provider_error": {
+    "node_id": "1",
+    "node_type": "RunwayTextToImageNode",
+    "exception_message": "Unauthorized: Please login first to use this node.\n",
+    "exception_type": "Exception",
+    "executed": [],
+    "timestamp": 1788535988686
+  },
+  "error": "RuntimeError: LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A3: Runway node 1 was not reported as cached",
+  "provider_credentials_supplied": false,
+  "provider_generation_authorized": false,
+  "paid_attempt_marker_created_by_recovery": false,
+  "automatic_retry": false,
+  "candidate_output": {
+    "created": false
+  },
+  "approval": {
+    "approved": true,
+    "approved_by": "SkyyRose Founder via explicit Codex task approval",
+    "statement": "approve",
+    "context": "Founder approved the proposed three zero-credit, credential-free cache extractions for LH-COMMERCE-2, BR-COMMERCE-2, and SIG-COMMERCE-1; SIG-COMMERCE-2 remains untouched."
+  }
+}
