@@ -35,7 +35,7 @@
     "final_composite_approval": false,
     "promotion_wiring_publication_or_deployment": false
   },
-  "status": "BLOCKED_ZERO_COMFY_CREDITS_A2_PREPARED",
+  "status": "A2_FUNDED_PENDING_EXACT_FOUNDER_APPROVAL",
   "artifacts": [
     {
       "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
@@ -108,19 +108,20 @@
   "a2_recovery": {
     "created_at": "2026-09-04T14:39:17.523829+00:00",
     "authenticated": true,
-    "displayed_comfy_credits": 0,
+    "displayed_comfy_credits": 7294,
     "automatic_retry": false,
     "new_exact_approval_required": true,
     "candidates": [
       {
         "scene_id": "LH-COMMERCE-2",
         "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "execution_fingerprint": "9f7597db72f7b9a62cffb74ee7b5e81252f1170afb2918bdf56febf75a3ceb81",
+        "live_price_usd": 0.11,
         "contract": "Comfy/scene-contracts/lh-commerce-2-runway-environment-a2.json",
         "packet": "Comfy/receipts/lh-commerce-2-runway-environment-a2-founder-packet.json",
-        "execution_fingerprint": "f2554525eedfbfe6390be7d681d6c0e92e4c49ff34b72d823ce45a733627dede",
-        "live_price_usd": 0.11,
-        "status": "BLOCKED_ZERO_COMFY_CREDITS_PENDING_NEW_APPROVAL"
+        "status": "BLOCKED_PENDING_NEW_EXPLICIT_FOUNDER_APPROVAL"
       }
-    ]
+    ],
+    "balance_verified_at": "2026-09-04T14:40:18.496824+00:00"
   }
 }
