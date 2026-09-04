@@ -1,0 +1,47 @@
+{
+  "schema": "skyyrose.runway-environment-execution/1",
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+  "execution_fingerprint": "17493b37b88c9f624119a664390c3ff2fca2a66ff5c60ac0fe6172f6e082cee0",
+  "recorded_at": "2026-09-04T23:36:48.760025+00:00",
+  "serial_index": 4,
+  "approval_receipt_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-2-runway-environment-a4-founder-approval.json",
+  "approval_receipt_sha256": "e7cdc4c71d2883b71f5df6c9dfd300ad5e05cd3cb973825ec410d81a41e6ef32",
+  "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/sig-commerce-2-runway-environment-a4-paid-attempt.json",
+  "workflow_sha256": "cf19a90f67ca898063bd1e6cefda642ec36efc24efddee0721a72af336475abf",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "paid_price_usd": 0.11,
+  "automatic_retry": false,
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "status": "CANDIDATE_CREATED_QUARANTINED",
+  "history_sha256": "9c4b52b964ff8a19dddd259ed09aac2215fc43d0a40e860b5d4f0a178e234f8f",
+  "comfy_status": "success",
+  "provider_output": {
+    "node_id": "3",
+    "filename": "environment-a4_00001_.png",
+    "subfolder": "SkyyRose/SIG-COMMERCE-2",
+    "type": "output"
+  },
+  "candidate_output": {
+    "created": true,
+    "path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A4.png",
+    "sha256": "5811afb7ae87e3220ea785ba10097447e01e5a01d502e11e3fd983c167f512ef",
+    "bytes": 2280297,
+    "width": 2048,
+    "height": 1152,
+    "authority": "QUARANTINED_CANDIDATE_ONLY"
+  },
+  "prompt_id": "a896e161-9825-4a31-8afa-9f68c90f3973",
+  "attempt_marker_sha256": "43cc21ff5fe2e8b62509997f3fb54a0b206d9bd69d1a5ceafdcf032cbc09ecbd"
+}

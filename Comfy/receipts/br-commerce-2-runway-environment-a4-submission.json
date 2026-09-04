@@ -1,0 +1,30 @@
+{
+  "schema": "skyyrose.runway-environment-execution/1",
+  "scene_id": "BR-COMMERCE-2",
+  "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A4",
+  "execution_fingerprint": "6b090ea5457fcfe106270fe0f5a06b8794bb6d90a4e4238a000011c4dd48eb46",
+  "recorded_at": "2026-09-04T23:35:28.450908+00:00",
+  "serial_index": 2,
+  "approval_receipt_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/br-commerce-2-runway-environment-a4-founder-approval.json",
+  "approval_receipt_sha256": "8e1f7dbb78a64b8c949e56d25f067af2cdc5e0a57b66a23ba6a3f8350a39c5fa",
+  "attempt_marker_path": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/receipts/br-commerce-2-runway-environment-a4-paid-attempt.json",
+  "workflow_sha256": "ea3cb643a55a04caab820c3376360b72a223c8cff2e21c096a89b33b6a20d173",
+  "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+  "paid_price_usd": 0.11,
+  "automatic_retry": false,
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "prompt_id": "847e2c81-9359-4d1c-97d0-c659452416f3",
+  "status": "SUBMITTED",
+  "client_id": "27d805a1-2c27-4d9b-8098-49f43db7b61a"
+}
