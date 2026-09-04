@@ -42,6 +42,14 @@ approval.
 - The independent reviewer checks the measured optical contract: geometry,
   horizon, contact, lens, light, shadow, floor, reflection, grain, depth,
   occlusion, and edge spill.
+- Every single-view review declares a structured `candidate_view`, partitions
+  its checks into `observable_checks` and `deferred_checks`, and records each
+  deferred check as `NOT_OBSERVABLE`. Missing side or rear evidence in a front
+  candidate is coverage debt, never a visual defect and never grounds for
+  `FAIL` or `REJECT`.
+- A single-view `PASS` applies only to that declared view. It cannot imply
+  side, rear, multi-view, or full-360 product authority. Every VTO review must
+  pass the structured verifier; narrative-only verdicts cannot close a gate.
 - `visual-commerce-qa` remains independent and does not edit the candidate it
   reviews.
 - `theme-release-engineer` may issue readiness evidence but may not deploy or

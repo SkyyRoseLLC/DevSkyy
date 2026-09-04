@@ -1,0 +1,31 @@
+{
+  "schema_version": "scene-stage-corrected-disposition.v1",
+  "disposition_id": "SCENE-STAGE-05R-LH003-CORRECTED-FRONT-VIEW-PASS-20260904",
+  "stage_id": "SCENE-STAGE-05R-LH003-FASHION-EDITORIAL-POSE-RECOVERY-20260903",
+  "created_at": "2026-09-04T04:16:33-07:00",
+  "correction": {
+    "path": "Comfy/receipts/lh-003-fashion-editorial-pose-recovery-a1-front-view-scope-correction.json",
+    "sha256": "3175d780b825f63f17040991d8af020cdb9baa7cd87146aff0c3533736f78ed0"
+  },
+  "historical_records": {
+    "retained": true,
+    "original_reject_superseded_for_current_disposition": true,
+    "founder_risk_waiver_superseded_by_scope_correction": true
+  },
+  "effective_state": {
+    "stage_5r": "PASS_FRONT_VIEW",
+    "candidate_authority": "FOUNDER_APPROVED_FRONT_VIEW",
+    "front_facing_scene_input": "AUTHORIZED",
+    "side_views": "PENDING_NOT_FAILED",
+    "back_view": "PENDING_NOT_FAILED",
+    "full_360_product_authority": "NOT_ESTABLISHED"
+  },
+  "downstream_gates": {
+    "stage_6_preparation": "ALLOWED",
+    "stage_6_front_facing_execution": "REQUIRES_SEPARATE_STAGE_AUTHORIZATION",
+    "promotion": "NOT_AUTHORIZED",
+    "storefront_wiring": "NOT_AUTHORIZED",
+    "publication": "NOT_AUTHORIZED",
+    "deployment": "NOT_AUTHORIZED"
+  }
+}

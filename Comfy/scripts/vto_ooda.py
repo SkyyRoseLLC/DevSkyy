@@ -34,6 +34,8 @@ APPROVAL_SCHEMA = "skyyrose.vto-paid-approval/1"
 RECEIPT_SCHEMA = "skyyrose.vto-execution-receipt/1"
 REVIEW_SCHEMA = "skyyrose.vto-independent-review/1"
 APPROVED_MODEL_AUTHORITY = "FOUNDER_APPROVED_FULL_BODY_MODEL"
+REVIEW_NOT_OBSERVABLE = "NOT_OBSERVABLE"
+SUPPORTED_CANDIDATE_VIEWS = frozenset({"front", "back", "wearer_left", "wearer_right"})
 MAX_INPUT_BYTES = 30 * 1024 * 1024
 IMAGE_MIME_TYPES = {
     ".jpeg": "image/jpeg",
@@ -831,6 +833,94 @@ def _validate_execution_receipt(
     return failures
 
 
+def expected_review_dispositions(
+    review_gate: dict[str, Any],
+) -> tuple[dict[str, str], str | None, dict[str, list[str]], list[str]]:
+    """Build check dispositions without converting missing angles into defects."""
+    required_checks = review_gate.get("required_checks")
+    if (
+        not isinstance(required_checks, list)
+        or not required_checks
+        or any(not isinstance(check, str) or not check.strip() for check in required_checks)
+        or len(set(required_checks)) != len(required_checks)
+    ):
+        return {}, None, {}, ["review_gate.required_checks must be unique non-empty strings"]
+
+    view_scope = review_gate.get("view_scope")
+    if view_scope is None:
+        return dict.fromkeys(required_checks, "PASS"), None, {}, []
+    if not isinstance(view_scope, dict):
+        return {}, None, {}, ["review_gate.view_scope must be an object"]
+
+    failures: list[str] = []
+    candidate_view = view_scope.get("candidate_view")
+    if candidate_view not in SUPPORTED_CANDIDATE_VIEWS:
+        failures.append(
+            "review_gate.view_scope.candidate_view must be front, back, wearer_left, "
+            "or wearer_right"
+        )
+
+    observable_checks = view_scope.get("observable_checks")
+    if (
+        not isinstance(observable_checks, list)
+        or any(not isinstance(check, str) or not check.strip() for check in observable_checks)
+        or len(set(observable_checks)) != len(observable_checks)
+    ):
+        failures.append("review_gate.view_scope.observable_checks must be unique strings")
+        observable_checks = []
+
+    deferred_checks = view_scope.get("deferred_checks")
+    if not isinstance(deferred_checks, dict):
+        failures.append("review_gate.view_scope.deferred_checks must be an object")
+        deferred_checks = {}
+
+    required_set = set(required_checks)
+    observable_set = set(observable_checks)
+    deferred_set = set(deferred_checks)
+    overlap = observable_set & deferred_set
+    if overlap:
+        failures.append(
+            "review checks cannot be both observable and deferred: " + ", ".join(sorted(overlap))
+        )
+    unknown = (observable_set | deferred_set) - required_set
+    if unknown:
+        failures.append("view_scope contains unknown checks: " + ", ".join(sorted(unknown)))
+    missing = required_set - (observable_set | deferred_set)
+    if missing:
+        failures.append("view_scope omits required checks: " + ", ".join(sorted(missing)))
+
+    normalized_deferred: dict[str, list[str]] = {}
+    for check, required_views in deferred_checks.items():
+        if (
+            not isinstance(required_views, list)
+            or not required_views
+            or any(view not in SUPPORTED_CANDIDATE_VIEWS for view in required_views)
+        ):
+            failures.append(
+                f"deferred check {check!r} must declare one or more supported required views"
+            )
+            continue
+        if candidate_view in required_views:
+            failures.append(
+                f"deferred check {check!r} includes candidate view {candidate_view!r}"
+            )
+        normalized_deferred[check] = list(required_views)
+
+    dispositions = {
+        check: "PASS"
+        for check in required_checks
+        if check in observable_set and check not in deferred_set
+    }
+    dispositions.update(
+        {
+            check: REVIEW_NOT_OBSERVABLE
+            for check in required_checks
+            if check in deferred_set and check not in observable_set
+        }
+    )
+    return dispositions, candidate_view, normalized_deferred, failures
+
+
 def verify_review(
     contract_path: Path,
     *,
@@ -866,6 +956,13 @@ def verify_review(
 
     review_gate = contract["review_gate"]
     expected_checks = review_gate["required_checks"]
+    (
+        expected_dispositions,
+        candidate_view,
+        deferred_checks,
+        scope_failures,
+    ) = expected_review_dispositions(review_gate)
+    failures.extend(scope_failures)
     expected_pocket_evidence = {
         "wearer_left_side": {
             "candidate_proof": "DIRECTLY_VISIBLE_ZIPPERED",
@@ -905,8 +1002,22 @@ def verify_review(
         failures.append("passing review cannot contain unresolved findings")
     if not isinstance(checks, dict) or set(checks) != set(expected_checks):
         failures.append("review checks must exactly match the contracted check set")
-    elif any(value != "PASS" for value in checks.values()):
-        failures.append("every contracted product-fidelity check must pass")
+    else:
+        for check in expected_checks:
+            expected = expected_dispositions.get(check)
+            actual = checks.get(check)
+            if expected is None or actual == expected:
+                continue
+            if expected == REVIEW_NOT_OBSERVABLE:
+                required_views = ", ".join(deferred_checks.get(check, []))
+                failures.append(
+                    f"out-of-view check {check!r} must be {REVIEW_NOT_OBSERVABLE}; "
+                    f"candidate view is {candidate_view!r} and required views are {required_views}"
+                )
+            else:
+                failures.append(
+                    f"observable check {check!r} must PASS for candidate view {candidate_view!r}"
+                )
     if review_gate.get("pocket_evidence") != expected_pocket_evidence:
         failures.append("contract must preserve the front-candidate pocket evidence matrix")
     if review.get("pocket_evidence") != expected_pocket_evidence:
@@ -925,6 +1036,10 @@ def verify_review(
         "reviewer": reviewer or None,
         "status": "PASS" if not failures else "BLOCKED",
         "failures": failures,
+        "candidate_view": candidate_view,
+        "view_scope_declared": candidate_view is not None,
+        "view_scope_complete": candidate_view is not None and not deferred_checks,
+        "deferred_checks": deferred_checks,
         "candidate_only": True,
         "front_scene_input_scope_only": True,
         "rear_view_catalog_authorized": False,

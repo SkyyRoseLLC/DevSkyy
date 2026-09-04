@@ -1,0 +1,105 @@
+{
+  "schema_version": "single-view-review-scope-correction.v1",
+  "correction_id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1-FRONT-VIEW-CORRECTION",
+  "stage_id": "SCENE-STAGE-05R-LH003-FASHION-EDITORIAL-POSE-RECOVERY-20260903",
+  "corrected_at": "2026-09-04T04:16:33-07:00",
+  "reason": "The original review incorrectly converted evidence unavailable from a single front view into product defects and a candidate-wide REJECT.",
+  "root_cause": "ANGLE_COVERAGE_MISCLASSIFIED_AS_DEFECT",
+  "candidate": {
+    "id": "LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1",
+    "declared_view": "front",
+    "path": "Comfy/quarantine/LH-003-POSE-RECOVERY/LH-003-FASHION-EDITORIAL-POSE-RECOVERY-A1.png",
+    "sha256": "16ef877fff48b647a74ad9e87404a7b0a0ffc44ab6382b5819b08a253c3d4e5c"
+  },
+  "superseded_review_disposition": {
+    "path": "Comfy/receipts/lh-003-fashion-editorial-pose-recovery-a1-independent-review.json",
+    "sha256": "b76d97e5ec49c453129f29b45628f6923255a00c38ab3c6d8c67cccc756a8e10",
+    "recorded_verdict": "REJECT",
+    "artifact_retained": true,
+    "usable_as_current_disposition": false
+  },
+  "founder_authority": {
+    "directives": [
+      "model is fine",
+      "pass"
+    ],
+    "candidate_identity_accepted": true,
+    "front_view_accepted": true
+  },
+  "corrected_checks": [
+    {
+      "id": "identity_continuity",
+      "disposition": "FOUNDER_ACCEPTED",
+      "scope": "front",
+      "note": "Founder explicitly accepted the model and candidate."
+    },
+    {
+      "id": "anatomy",
+      "disposition": "PASS",
+      "scope": "front",
+      "note": "No malformed, missing, duplicated, or fused body part was identified."
+    },
+    {
+      "id": "editorial_pose",
+      "disposition": "PASS",
+      "scope": "front",
+      "note": "The different stance is valid for the founder-directed editorial front view; weight-bearing-leg laterality is not a garment-fidelity defect."
+    },
+    {
+      "id": "front_silhouette_waistband_mesh_panels_binding_and_hem",
+      "disposition": "PASS",
+      "scope": "front",
+      "note": "The observable front construction and broad LH-003 visual language are retained."
+    },
+    {
+      "id": "front_side_pocket_count_and_opening_geometry",
+      "disposition": "PASS",
+      "scope": "front",
+      "note": "Exactly two front/side pocket openings are visible without extra cargo or welt pockets."
+    },
+    {
+      "id": "complete_side_zipper_hardware",
+      "disposition": "NOT_OBSERVABLE",
+      "scope": "requires wearer_left and wearer_right detail views",
+      "note": "Insufficient detail in a front image is deferred coverage, not proof of an incorrect zipper."
+    },
+    {
+      "id": "complete_wearer_left_artwork",
+      "disposition": "NOT_OBSERVABLE",
+      "scope": "requires wearer_left view",
+      "note": "A front image cannot establish the complete wearer-left panel."
+    },
+    {
+      "id": "complete_wearer_right_artwork",
+      "disposition": "NOT_OBSERVABLE",
+      "scope": "requires wearer_right view",
+      "note": "A front image cannot establish the complete wearer-right panel."
+    },
+    {
+      "id": "rear_pockets_back_artwork_and_rear_construction",
+      "disposition": "NOT_OBSERVABLE",
+      "scope": "requires back view",
+      "note": "No rear-rendering claim is made from the front candidate."
+    },
+    {
+      "id": "studio_grounding",
+      "disposition": "PASS",
+      "scope": "front",
+      "note": "Full-body framing, floor contact, contact shadow, and neutral cyclorama are credible."
+    }
+  ],
+  "corrected_disposition": {
+    "verdict": "PASS",
+    "authority": "FOUNDER_APPROVED_FRONT_VIEW",
+    "front_facing_scene_input_allowed": true,
+    "side_view_authority": false,
+    "rear_view_authority": false,
+    "full_360_authority": false,
+    "missing_angle_status": "PENDING_NOT_FAILED"
+  },
+  "permanent_guard": {
+    "implementation": "Comfy/scripts/vto_ooda.py expected_review_dispositions",
+    "policy": "Comfy/FASHION-THEME-TEAM-OODA.md",
+    "rule": "A check whose required view is not the candidate view must be NOT_OBSERVABLE and cannot be FAIL."
+  }
+}

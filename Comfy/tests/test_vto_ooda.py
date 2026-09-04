@@ -120,6 +120,13 @@ def _contract(root: Path, *, include_model: bool, include_approval: bool) -> tup
         "review_gate": {
             "candidate_author": "product-fidelity-image-edits",
             "required_checks": ["identity", "construction", "pockets", "artwork"],
+            "view_scope": {
+                "candidate_view": "front",
+                "observable_checks": ["identity", "construction", "pockets"],
+                "deferred_checks": {
+                    "artwork": ["wearer_left", "wearer_right"],
+                },
+            },
             "pocket_evidence": {
                 "wearer_left_side": {
                     "candidate_proof": "DIRECTLY_VISIBLE_ZIPPERED",
@@ -612,7 +619,12 @@ def test_review_requires_independent_exact_check_set(
                 "reviewer": "visual-commerce-qa",
                 "verdict": "PASS",
                 "findings": [],
-                "checks": dict.fromkeys(contract["review_gate"]["required_checks"], "PASS"),
+                "checks": {
+                    check: (
+                        vto_ooda.REVIEW_NOT_OBSERVABLE if check == "artwork" else "PASS"
+                    )
+                    for check in contract["review_gate"]["required_checks"]
+                },
                 "pocket_evidence": contract["review_gate"]["pocket_evidence"],
             }
         ),
@@ -629,6 +641,11 @@ def test_review_requires_independent_exact_check_set(
     assert result["status"] == "PASS"
     assert result["candidate_only"] is True
     assert result["scene_input_authorized"] is False
+    assert result["candidate_view"] == "front"
+    assert result["deferred_checks"] == {
+        "artwork": ["wearer_left", "wearer_right"],
+    }
+    assert result["view_scope_complete"] is False
 
     review = json.loads(review_path.read_text(encoding="utf-8"))
     review["reviewer"] = "product-fidelity-image-edits"
@@ -695,7 +712,12 @@ def test_review_cannot_claim_rear_pockets_are_rendered_in_front_candidate(
                 "reviewer": "visual-commerce-qa",
                 "verdict": "PASS",
                 "findings": [],
-                "checks": dict.fromkeys(contract["review_gate"]["required_checks"], "PASS"),
+                "checks": {
+                    check: (
+                        vto_ooda.REVIEW_NOT_OBSERVABLE if check == "artwork" else "PASS"
+                    )
+                    for check in contract["review_gate"]["required_checks"]
+                },
                 "pocket_evidence": pocket_evidence,
             }
         ),
@@ -711,3 +733,54 @@ def test_review_cannot_claim_rear_pockets_are_rendered_in_front_candidate(
 
     assert result["status"] == "BLOCKED"
     assert "NOT_OBSERVABLE_IN_FRONT_CANDIDATE" in " ".join(result["failures"])
+
+
+def test_review_cannot_fail_check_that_requires_an_unrendered_view(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(vto_ooda, "PROJECT_ROOT", tmp_path)
+    contract_path, contract = _contract(tmp_path, include_model=True, include_approval=True)
+    candidate_path = tmp_path / "outputs/candidate.png"
+    _write(candidate_path, VTO_CANDIDATE_PNG)
+    candidate_hash = vto_ooda.sha256_file(candidate_path)
+    contract_hash = vto_ooda.sha256_file(contract_path)
+    execution_path = tmp_path / "receipts/execution.json"
+    execution_path.write_text(
+        json.dumps(_complete_execution_receipt(tmp_path, contract_path, contract, candidate_hash)),
+        encoding="utf-8",
+    )
+    review_path = tmp_path / "receipts/review.json"
+    review_path.write_text(
+        json.dumps(
+            {
+                "schema": vto_ooda.REVIEW_SCHEMA,
+                "pilot_id": contract["pilot_id"],
+                "contract_sha256": contract_hash,
+                "candidate_sha256": candidate_hash,
+                "reviewer": "visual-commerce-qa",
+                "verdict": "REJECT",
+                "findings": ["side artwork is absent from the front candidate"],
+                "checks": {
+                    "identity": "PASS",
+                    "construction": "PASS",
+                    "pockets": "PASS",
+                    "artwork": "FAIL",
+                },
+                "pocket_evidence": contract["review_gate"]["pocket_evidence"],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    result = vto_ooda.verify_review(
+        contract_path,
+        candidate_path=candidate_path,
+        execution_receipt_path=execution_path,
+        review_path=review_path,
+    )
+
+    assert result["status"] == "BLOCKED"
+    assert any(
+        "out-of-view check 'artwork' must be NOT_OBSERVABLE" in failure
+        for failure in result["failures"]
+    )
