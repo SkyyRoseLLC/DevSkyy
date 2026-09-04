@@ -1,0 +1,23 @@
+{
+  "schema": "skyyrose.runway-environment-credit-reconciliation/1",
+  "stage_id": "SCENE-STAGE-06-LH-COMMERCE-2-20260904",
+  "batch": "A2",
+  "recorded_at": "2026-09-04T14:51:02Z",
+  "status": "NO_CHARGE_OBSERVED",
+  "balance_source": "SIGNED_IN_COMFY_UI",
+  "credits_before": 7294,
+  "credits_after": 7294,
+  "observed_delta": 0,
+  "provider_charge_guarantee": false,
+  "candidate_outputs_created": 0,
+  "automatic_retry_performed": false,
+  "executions": [
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+      "prompt_id": "812cbc88-c871-4c5f-90bf-e2a428e69a3a",
+      "result": "FAILED_HTTP_401_BEFORE_PROVIDER_CANDIDATE"
+    }
+  ],
+  "notes": "The signed-in Comfy UI displayed 7,294 credits before and after the A2 batch. This records an observed zero delta only; it is not a provider billing guarantee and grants no retry or downstream authority."
+}

@@ -35,7 +35,7 @@
     "final_composite_approval": false,
     "promotion_wiring_publication_or_deployment": false
   },
-  "status": "A2_APPROVED_FOR_EXACT_PRODUCT_FREE_ENVIRONMENT_BATCH",
+  "status": "A2_PARTIAL_OR_FAILED_NO_RETRY",
   "artifacts": [
     {
       "path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1-MASK.png",
@@ -145,5 +145,21 @@
         "validation": "PASS"
       }
     ]
+  },
+  "a2_environment_execution": {
+    "recorded_at": "2026-09-04T14:43:49.386870+00:00",
+    "results": [
+      {
+        "scene_id": "LH-COMMERCE-2",
+        "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+        "status": "EXECUTION_FAILED_NO_RETRY",
+        "prompt_id": "812cbc88-c871-4c5f-90bf-e2a428e69a3a",
+        "candidate_created": false,
+        "execution_receipt": "Comfy/receipts/lh-commerce-2-runway-environment-a2-execution.json",
+        "automatic_retry": false
+      }
+    ],
+    "automatic_retry": false,
+    "protected_assets_sent": []
   }
 }

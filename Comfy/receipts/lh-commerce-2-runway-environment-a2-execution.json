@@ -1,0 +1,58 @@
+{
+  "schema": "skyyrose.runway-environment-execution-failure/1",
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A2",
+  "execution_fingerprint": "9f7597db72f7b9a62cffb74ee7b5e81252f1170afb2918bdf56febf75a3ceb81",
+  "recorded_at": "2026-09-04T14:43:49.380250+00:00",
+  "status": "EXECUTION_FAILED_NO_RETRY",
+  "prompt_id": "812cbc88-c871-4c5f-90bf-e2a428e69a3a",
+  "error": "ComfyRuntimeError: Comfy prompt 812cbc88-c871-4c5f-90bf-e2a428e69a3a failed",
+  "provider_error": {
+    "prompt_id": "812cbc88-c871-4c5f-90bf-e2a428e69a3a",
+    "node_id": "1",
+    "node_type": "RunwayTextToImageNode",
+    "executed": [],
+    "exception_message": "Unauthorized: Please login first to use this node.\n",
+    "exception_type": "Exception",
+    "traceback": [
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/execution.py\", line 464, in execute\n    raise ex\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/execution.py\", line 460, in execute\n    results.append(r.result())\n                   ~~~~~~~~^^\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/execution.py\", line 295, in async_wrapper\n    return await f(**args)\n           ^^^^^^^^^^^^^^^\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api/internal/__init__.py\", line 145, in wrapped_async_func\n    return await method(locked_class, **inputs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api/latest/_io.py\", line 2010, in EXECUTE_NORMALIZED_ASYNC\n    to_return = await cls.execute(*args, **kwargs)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/nodes_runway.py\", line 507, in execute\n    initial_response = await sync_op(\n                       ^^^^^^^^^^^^^^\n    ...<9 lines>...\n    )\n    ^\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/util/client.py\", line 142, in sync_op\n    raw = await sync_op_raw(\n          ^^^^^^^^^^^^^^^^^^\n    ...<19 lines>...\n    )\n    ^\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/util/client.py\", line 272, in sync_op_raw\n    return await _request_base(cfg, expect_binary=as_binary)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n",
+      "  File \"/Users/theceo/ComfyUI-Installs/ComfyUI/ComfyUI/comfy_api_nodes/util/client.py\", line 823, in _request_base\n    raise Exception(msg)\n"
+    ],
+    "current_inputs": {},
+    "current_outputs": [
+      "2",
+      "3",
+      "1"
+    ],
+    "timestamp": 1788533028371
+  },
+  "history_sha256": "dfe252028f54b0fc1e8c1b83a6ab5d19d580eb3890261bc957bad0af5b952bef",
+  "approval_receipt_path": "Comfy/receipts/lh-commerce-2-runway-environment-a2-founder-approval.json",
+  "approval_receipt_sha256": "aa11fd95cf5f0e8be83ef7b3f7584d1478b3dae86cd0ad57126595ce665f8161",
+  "attempt_marker_path": "Comfy/receipts/lh-commerce-2-runway-environment-a2-paid-attempt.json",
+  "attempt_marker_sha256": "837e684d5da29d5f04711b93e529bcf1a06c93d480bce4b6cbee692597e6af32",
+  "paid_price_usd": 0.11,
+  "automatic_retry": false,
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": []
+  },
+  "candidate_output": {
+    "created": false
+  },
+  "authority_limits": {
+    "protected_composition": false,
+    "promotion": false,
+    "storefront_wiring": false,
+    "publication": false,
+    "deployment": false
+  }
+}
