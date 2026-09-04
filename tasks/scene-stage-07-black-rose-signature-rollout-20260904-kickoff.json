@@ -1,0 +1,47 @@
+{
+  "schema": "skyyrose.scene-stage-kickoff/1",
+  "task_id": "SCENE-STAGE-07-BLACK-ROSE-SIGNATURE-ROLLOUT-20260904",
+  "stage": 7,
+  "title": "Black Rose and Signature rollout",
+  "created_at": "2026-09-04T00:00:00-07:00",
+  "base_commit": "c432975cc0e72e210dbc211950d650030e97ee0e",
+  "branch": "codex/scene-stage-07-br-signature-rollout-20260904",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "execution_mode": "PARALLEL_PRODUCT_FREE_ENVIRONMENT_PREFLIGHT",
+  "scope": {
+    "included": [
+      "BR-COMMERCE-2 product-free Runway environment",
+      "SIG-COMMERCE-1 product-free Runway environment",
+      "SIG-COMMERCE-2 product-free Runway environment"
+    ],
+    "excluded_until_later_gates": [
+      "protected composition",
+      "promotion",
+      "storefront wiring",
+      "publication",
+      "deployment"
+    ]
+  },
+  "contracts": [
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "path": "Comfy/scene-contracts/br-commerce-2-runway-environment-a1.json",
+      "sha256": "9b21dcbabdb074a9c4138ea13d0ef7e21ef1e5fdd82802e14d2ab2c67eebf2f1"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "path": "Comfy/scene-contracts/sig-commerce-1-runway-environment-a1.json",
+      "sha256": "1fd768a6e7ba553ad0ee08640b6f98d1f5bbad1ac09b4afe62fe0809179f476e"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "path": "Comfy/scene-contracts/sig-commerce-2-runway-environment-a1.json",
+      "sha256": "559d424f51f3274e9e9d0c90592c5d2951ad417f015c7c8827f988c1a4980d01"
+    }
+  ],
+  "paid_execution_authority": {
+    "granted": false,
+    "maximum_candidates_per_scene": 1,
+    "automatic_retry": false
+  }
+}

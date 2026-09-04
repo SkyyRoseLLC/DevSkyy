@@ -2,7 +2,7 @@
   "schema": "skyyrose.runway-environment-plate/1",
   "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
   "scene_id": "BR-COMMERCE-2",
-  "status": "BLOCKED_SOURCE_AUTHORITY_AND_PRIOR_ATTEMPT_CONSUMED",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
   "strategy": "environment_rebuild_around_source",
   "provider": {
     "name": "runway",
@@ -90,13 +90,7 @@
     "approval_receipt": null,
     "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
   },
-  "execution_blockers": [
-    "the earlier BR-COMMERCE-2 paid candidate failed and its attempt remains consumed",
-    "approved male BR-005 plus BR-007 protected wearer alpha is missing",
-    "approved BR-004 protected wearer alpha is missing",
-    "a new environment attempt requires a new founder-approved scope after merge",
-    "integration PR is not merged into main"
-  ],
+  "execution_blockers": [],
   "output": {
     "candidate_path": "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1.png",
     "filename_prefix": "SkyyRose/BR-COMMERCE-2/environment-a1",
@@ -107,8 +101,21 @@
     "deployment_allowed": false
   },
   "post_merge_execution_gate": {
-    "required": true,
-    "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
-    "reason": "A new paid scope may not inherit the consumed failed attempt or pre-merge code."
+    "required": false,
+    "action": "SATISFIED",
+    "reason": "The current lineage contains merged commit 4da200886. Product-free environment generation is independent of foreground or cast readiness; those remain protected-composition gates.",
+    "merged_commit": "4da200886"
+  },
+  "parallel_execution_policy": {
+    "environment_plate_scope": "PRODUCT_FREE_ONLY",
+    "independent_of_foreground_readiness": true,
+    "protected_assets_sent_to_provider": [],
+    "allowed_parallel_work": [
+      "product-free Runway environment preparation",
+      "scene-specific protected foreground or cast preparation"
+    ],
+    "prior_non_runway_candidate_consumes_this_attempt": false,
+    "composition_gate_preserved": true,
+    "composition_requirement": "A generated plate remains quarantined until the scene-specific protected product/cast authority and independent visual review are satisfied."
   }
 }

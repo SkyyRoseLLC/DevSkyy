@@ -1,0 +1,85 @@
+{
+  "schema": "skyyrose.runway-environment-founder-packet/1",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "scene_id": "BR-COMMERCE-2",
+  "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+  "execution_fingerprint": "1c839d0421c7fa0720282118fea86951329c68105075dfd7a35692525eeeb990",
+  "fingerprint_material": {
+    "schema": "skyyrose.runway-environment-execution-fingerprint/1",
+    "scene_id": "BR-COMMERCE-2",
+    "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+    "contract_sha256": "2c6169e9573aa0aec25c8fa5cec407316c911e6139695279cfdb2e288efb6e1d",
+    "workflow_sha256": "87ce95417bf834599a35c91cca52347404423d20866ae5d09bb2c7c6d8e75ea8",
+    "prompt_sha256": "eea122f9cd529a17351824ad5ae639ec1825b38d08ff8b022c33b3b3701937a8",
+    "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+    "live_price_usd": 0.11,
+    "approval_path": "Comfy/receipts/br-commerce-2-runway-environment-a1-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a1-paid-attempt.json",
+    "max_paid_generations": 1
+  },
+  "prompt": "Wide nocturnal Oakland brutalist transit undercroft with massive raw-concrete columns, a deep civic perspective corridor, rain-darkened aggregate, weathered blackened steel, cold Bay fog entering from camera-left, restrained sodium-vapor warmth from camera-right, and a continuous wet concrete ground plane with controlled reflections. Preserve open campaign-scale zones at the left and right thirds plus a physically grounded central object zone for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+  "live_partner_node": {
+    "class_type": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "price_usd": 0.11,
+    "schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024"
+  },
+  "one_candidate_ceiling": {
+    "max_paid_generations": 1,
+    "max_price_usd": 0.11,
+    "automatic_paid_retries": false
+  },
+  "candidate_bound_approval_path": "Comfy/receipts/br-commerce-2-runway-environment-a1-founder-approval.json",
+  "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a1-paid-attempt.json",
+  "workflow": {
+    "1": {
+      "class_type": "RunwayTextToImageNode",
+      "inputs": {
+        "prompt": "Wide nocturnal Oakland brutalist transit undercroft with massive raw-concrete columns, a deep civic perspective corridor, rain-darkened aggregate, weathered blackened steel, cold Bay fog entering from camera-left, restrained sodium-vapor warmth from camera-right, and a continuous wet concrete ground plane with controlled reflections. Preserve open campaign-scale zones at the left and right thirds plus a physically grounded central object zone for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+        "ratio": "1920:1080"
+      },
+      "_meta": {
+        "title": "BR-COMMERCE-2 product-free environment only"
+      }
+    },
+    "2": {
+      "class_type": "ResizeImageMaskNode",
+      "inputs": {
+        "input": [
+          "1",
+          0
+        ],
+        "resize_type": {
+          "resize_type": "scale dimensions",
+          "width": 2048,
+          "height": 1152,
+          "crop": "disabled"
+        },
+        "scale_method": "lanczos"
+      }
+    },
+    "3": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "images": [
+          "2",
+          0
+        ],
+        "filename_prefix": "SkyyRose/BR-COMMERCE-2/environment-a1"
+      }
+    }
+  },
+  "workflow_sha256": "87ce95417bf834599a35c91cca52347404423d20866ae5d09bb2c7c6d8e75ea8",
+  "contract_sha256": "2c6169e9573aa0aec25c8fa5cec407316c911e6139695279cfdb2e288efb6e1d",
+  "protected_assets_sent_to_runway": [],
+  "paid_submission_performed": false,
+  "failures": [],
+  "declared_execution_blockers": [],
+  "next_action": "STOP_FOR_EXPLICIT_FOUNDER_APPROVAL",
+  "post_merge_execution_gate": {
+    "required": false,
+    "action": "SATISFIED",
+    "reason": "The current lineage contains merged commit 4da200886. Product-free environment generation is independent of foreground or cast readiness; those remain protected-composition gates.",
+    "merged_commit": "4da200886"
+  }
+}

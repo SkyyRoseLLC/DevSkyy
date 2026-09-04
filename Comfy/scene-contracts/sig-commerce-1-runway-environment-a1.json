@@ -2,7 +2,7 @@
   "schema": "skyyrose.runway-environment-plate/1",
   "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1",
   "scene_id": "SIG-COMMERCE-1",
-  "status": "BLOCKED_PENDING_PROTECTED_SOURCE_REHASH_AND_BACKGROUND_APPROVAL",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
   "strategy": "environment_rebuild_around_source",
   "provider": {
     "name": "runway",
@@ -30,7 +30,11 @@
         "fog depth",
         "damp satin floor response"
       ],
-      "deny_as_authority": ["brand object", "lettering", "composition crop"]
+      "deny_as_authority": [
+        "brand object",
+        "lettering",
+        "composition crop"
+      ]
     }
   ],
   "request": {
@@ -81,12 +85,7 @@
     "approval_receipt": null,
     "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
   },
-  "execution_blockers": [
-    "protected customer/product and sculpture files require current hash verification",
-    "independent source review is not current",
-    "candidate-bound environment approval is not recorded",
-    "integration PR is not merged into main"
-  ],
+  "execution_blockers": [],
   "output": {
     "candidate_path": "Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1.png",
     "filename_prefix": "SkyyRose/SIG-COMMERCE-1/environment-a1",
@@ -97,8 +96,21 @@
     "deployment_allowed": false
   },
   "post_merge_execution_gate": {
-    "required": true,
-    "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
-    "reason": "Protected-source and runtime evidence must be fresh on merged main."
+    "required": false,
+    "action": "SATISFIED",
+    "reason": "The current lineage contains merged commit 4da200886. Product-free environment generation is independent of foreground or cast readiness; those remain protected-composition gates.",
+    "merged_commit": "4da200886"
+  },
+  "parallel_execution_policy": {
+    "environment_plate_scope": "PRODUCT_FREE_ONLY",
+    "independent_of_foreground_readiness": true,
+    "protected_assets_sent_to_provider": [],
+    "allowed_parallel_work": [
+      "product-free Runway environment preparation",
+      "scene-specific protected foreground or cast preparation"
+    ],
+    "prior_non_runway_candidate_consumes_this_attempt": false,
+    "composition_gate_preserved": true,
+    "composition_requirement": "A generated plate remains quarantined until the scene-specific protected product/cast authority and independent visual review are satisfied."
   }
 }

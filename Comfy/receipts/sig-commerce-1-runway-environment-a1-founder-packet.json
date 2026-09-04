@@ -1,0 +1,85 @@
+{
+  "schema": "skyyrose.runway-environment-founder-packet/1",
+  "status": "BLOCKED_PENDING_EXPLICIT_FOUNDER_APPROVAL",
+  "scene_id": "SIG-COMMERCE-1",
+  "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1",
+  "execution_fingerprint": "7f0e915a572edb07bf02b8a5f24a9a02fff4ddd6cb5d51383f458c4be890d0a6",
+  "fingerprint_material": {
+    "schema": "skyyrose.runway-environment-execution-fingerprint/1",
+    "scene_id": "SIG-COMMERCE-1",
+    "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1",
+    "contract_sha256": "af0f2f132eb026893e7296aa94fbfc9f85dac95bb1235e57af36e40b15e748c6",
+    "workflow_sha256": "3d2a09f4b14b750a92fc1617d38ee9e84e4410910945d16a9df3ba05ada7f107",
+    "prompt_sha256": "c28d9b2863814c9cb70f5baf468cd6517cefb34b45b0b46797db1a57d5a2ea6e",
+    "live_node_schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024",
+    "live_price_usd": 0.11,
+    "approval_path": "Comfy/receipts/sig-commerce-1-runway-environment-a1-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/sig-commerce-1-runway-environment-a1-paid-attempt.json",
+    "max_paid_generations": 1
+  },
+  "prompt": "Wide rain-cleared Oakland and San Francisco industrial roof deck before sunrise, damp charcoal concrete, weathered steel rails, distant cranes and bridge lights dissolving into cool Bay fog, one soft neutral key direction from camera-left, and a continuous satin-wet ground plane. Preserve a large campaign-scale customer zone at the left third and a grounded object zone at the right third for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+  "live_partner_node": {
+    "class_type": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "price_usd": 0.11,
+    "schema_sha256": "0d2754248f3de74bef9a9d345ddd7fe67f4455e0483d7f3ff5c3d2867482e024"
+  },
+  "one_candidate_ceiling": {
+    "max_paid_generations": 1,
+    "max_price_usd": 0.11,
+    "automatic_paid_retries": false
+  },
+  "candidate_bound_approval_path": "Comfy/receipts/sig-commerce-1-runway-environment-a1-founder-approval.json",
+  "attempt_marker": "Comfy/receipts/sig-commerce-1-runway-environment-a1-paid-attempt.json",
+  "workflow": {
+    "1": {
+      "class_type": "RunwayTextToImageNode",
+      "inputs": {
+        "prompt": "Wide rain-cleared Oakland and San Francisco industrial roof deck before sunrise, damp charcoal concrete, weathered steel rails, distant cranes and bridge lights dissolving into cool Bay fog, one soft neutral key direction from camera-left, and a continuous satin-wet ground plane. Preserve a large campaign-scale customer zone at the left third and a grounded object zone at the right third for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+        "ratio": "1920:1080"
+      },
+      "_meta": {
+        "title": "SIG-COMMERCE-1 product-free environment only"
+      }
+    },
+    "2": {
+      "class_type": "ResizeImageMaskNode",
+      "inputs": {
+        "input": [
+          "1",
+          0
+        ],
+        "resize_type": {
+          "resize_type": "scale dimensions",
+          "width": 2048,
+          "height": 1152,
+          "crop": "disabled"
+        },
+        "scale_method": "lanczos"
+      }
+    },
+    "3": {
+      "class_type": "SaveImage",
+      "inputs": {
+        "images": [
+          "2",
+          0
+        ],
+        "filename_prefix": "SkyyRose/SIG-COMMERCE-1/environment-a1"
+      }
+    }
+  },
+  "workflow_sha256": "3d2a09f4b14b750a92fc1617d38ee9e84e4410910945d16a9df3ba05ada7f107",
+  "contract_sha256": "af0f2f132eb026893e7296aa94fbfc9f85dac95bb1235e57af36e40b15e748c6",
+  "protected_assets_sent_to_runway": [],
+  "paid_submission_performed": false,
+  "failures": [],
+  "declared_execution_blockers": [],
+  "next_action": "STOP_FOR_EXPLICIT_FOUNDER_APPROVAL",
+  "post_merge_execution_gate": {
+    "required": false,
+    "action": "SATISFIED",
+    "reason": "The current lineage contains merged commit 4da200886. Product-free environment generation is independent of foreground or cast readiness; those remain protected-composition gates.",
+    "merged_commit": "4da200886"
+  }
+}
