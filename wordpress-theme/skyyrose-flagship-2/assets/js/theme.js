@@ -40,72 +40,229 @@
     loadAnimation();
   });
 
-  const menuBackground = [...document.querySelectorAll('main, body > footer, #skyyrose-mascot, #skyyrose-mascot-recall')];
-  const originalInert = new Map(menuBackground.map((element) => [element, element.inert]));
-  const setMenu = (open) => {
-    if (!menuButton || !menu) return;
-    if (open) document.querySelectorAll('dialog[open]').forEach((dialog) => dialog.close());
-    menuBackground.forEach((element) => { element.inert = open || originalInert.get(element); });
-    menu.classList.toggle('is-open', open);
-    menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Close site menu' : 'Open site menu');
-    body.classList.toggle('sr2-nav-open', open);
-    if (open) menu.querySelector('a, button')?.focus();
-  };
-
-  if (menuButton && menu) {
-    menuButton.addEventListener('click', () => {
-      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+  /* One lifecycle owns shell navigation and every native dialog. Native modal
+     semantics remain intact, including third-party/mascot showModal() calls. */
+  const overlays = (() => {
+    let active = null;
+    let lock = null;
+    const inertState = new Map();
+    const wired = new WeakSet();
+    const focusable = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+    const visible = (element) => element?.isConnected && !element.closest('[inert]') && element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden';
+    const controls = (scope) => [...scope.querySelectorAll(focusable)].filter(visible);
+    const rememberStyle = (element, names) => names.map((name) => [name, element.style.getPropertyValue(name), element.style.getPropertyPriority(name)]);
+    const restoreStyle = (element, values) => values.forEach(([name, value, priority]) => {
+      if (value) element.style.setProperty(name, value, priority);
+      else element.style.removeProperty(name);
     });
+    const lockScroll = () => {
+      if (lock) return;
+      const gutter = Math.max(0, window.innerWidth - root.clientWidth);
+      lock = {
+        x: window.scrollX, y: window.scrollY,
+        body: rememberStyle(body, ['position', 'top', 'left', 'width', 'overflow', 'padding-right']),
+        root: rememberStyle(root, ['overflow', 'scroll-behavior', '--sr2-scrollbar']),
+      };
+      const padding = Number.parseFloat(getComputedStyle(body).paddingRight) || 0;
+      body.style.setProperty('position', 'fixed');
+      body.style.setProperty('top', `${-lock.y}px`);
+      body.style.setProperty('left', `${-lock.x}px`);
+      body.style.setProperty('width', '100%');
+      body.style.setProperty('overflow', 'hidden');
+      if (gutter) body.style.setProperty('padding-right', `${padding + gutter}px`);
+      root.style.setProperty('overflow', 'hidden');
+      root.style.setProperty('--sr2-scrollbar', `${gutter}px`);
+      body.classList.add('sr2-overlay-open');
+    };
+    const unlockScroll = () => {
+      if (!lock) return;
+      const previous = lock;
+      lock = null;
+      restoreStyle(body, previous.body);
+      restoreStyle(root, previous.root);
+      body.classList.remove('sr2-overlay-open');
+      // CSS smooth scrolling must not animate a restored body position.
+      root.style.setProperty('scroll-behavior', 'auto');
+      window.scrollTo(previous.x, previous.y);
+      restoreStyle(root, previous.root);
+    };
+    const restoreInert = () => {
+      inertState.forEach((value, element) => { element.inert = value; });
+      inertState.clear();
+    };
+    const isolate = (scope) => {
+      restoreInert();
+      // Preserve all siblings along the active scope's ancestor path. A dialog
+      // may live inside main/footer; never make its own ancestor inert.
+      for (let node = scope; node && node !== body; node = node.parentElement) {
+        if (!node.parentElement) break;
+        [...node.parentElement.children].forEach((sibling) => {
+          if (sibling === node || sibling.matches('script, style, link')) return;
+          inertState.set(sibling, sibling.inert);
+          sibling.inert = true;
+        });
+      }
+    };
+    const returnFocus = (opener) => {
+      const target = visible(opener) ? opener : (visible(menuButton) ? menuButton : null);
+      target?.focus({ preventScroll: true });
 
-    menu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => setMenu(false));
-    });
-
+    };
+    const close = (restoreFocus = true, keepLock = false) => {
+      const previous = active;
+      active = null;
+      if (previous?.kind === 'navigation') {
+        menu.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open site menu');
+        body.classList.remove('sr2-nav-open');
+      } else if (previous?.element.open) {
+        previous.element.close();
+      }
+      restoreInert();
+      if (!keepLock) unlockScroll();
+      if (restoreFocus && previous) returnFocus(previous.opener);
+    };
+    const activate = (element, kind, opener) => {
+      if (active?.element === element) return;
+      // Capture the initiating control before closing another overlay restores
+      // native dialog focus. Hidden menu links fall back to the menu trigger.
+      const origin = opener || document.activeElement;
+      close(false, true);
+      document.querySelectorAll('dialog[open]').forEach((other) => {
+        if (other !== element) other.close();
+      });
+      active = { element, kind, opener: origin };
+      lockScroll();
+      isolate(kind === 'navigation' ? header : element);
+      header?.classList.remove('is-hidden');
+    };
+    const register = (dialog) => {
+      if (wired.has(dialog)) return;
+      wired.add(dialog);
+      dialog.addEventListener('beforetoggle', (event) => {
+        if (event.newState !== 'open') return;
+        activate(dialog, 'dialog');
+        // Another native listener may cancel beforetoggle. A canceled opening
+        // must release the lock even though no open-attribute mutation occurs.
+        window.queueMicrotask?.(() => {
+          if (active?.element === dialog && !dialog.open) close();
+        });
+      });
+      dialog.addEventListener('close', () => {
+        if (active?.element === dialog && !dialog.open) close();
+      });
+      dialog.addEventListener('cancel', (event) => {
+        if (active?.element !== dialog) return;
+        event.preventDefault();
+        close();
+      });
+    };
+    const openDialog = (dialog, opener) => {
+      if (typeof dialog?.showModal !== 'function') return false;
+      register(dialog);
+      activate(dialog, 'dialog', opener);
+      try {
+        if (!dialog.open) dialog.showModal();
+        return true;
+      } catch {
+        close();
+        return false;
+      }
+    };
+    const setNavigation = (open) => {
+      if (!menuButton || !menu || !header) return;
+      if (!open) {
+        if (active?.kind === 'navigation') close();
+        return;
+      }
+      activate(menu, 'navigation', menuButton);
+      menu.classList.add('is-open');
+      menuButton.setAttribute('aria-expanded', 'true');
+      menuButton.setAttribute('aria-label', 'Close site menu');
+      body.classList.add('sr2-nav-open');
+      controls(menu)[0]?.focus({ preventScroll: true });
+    };
+    const ensureFocus = () => {
+      if (!active) return;
+      const scope = active.kind === 'navigation' ? header : active.element;
+      if (!scope.contains(document.activeElement) || !visible(document.activeElement)) {
+        controls(scope)[0]?.focus({ preventScroll: true });
+      }
+    };
+    document.querySelectorAll('dialog').forEach(register);
+    // Observe inserted/native dialogs for browsers without beforetoggle support
+    // and for external native showModal() callers; do not patch browser methods.
+    if ('MutationObserver' in window) {
+      new MutationObserver(() => {
+        document.querySelectorAll('dialog').forEach(register);
+        const openDialogs = [...document.querySelectorAll('dialog[open]')];
+        const newlyOpened = openDialogs.find((dialog) => dialog !== active?.element);
+        if (newlyOpened) activate(newlyOpened, 'dialog');
+        else if (active?.kind === 'dialog' && (!active.element.open || !active.element.isConnected)) close();
+        // Woo fragments can detach the focused remove link without firing
+        // focusin. Repair only lost/hidden focus; preserve a valid field focus.
+        ensureFocus();
+      }).observe(body, { childList: true, subtree: true, attributes: true, attributeFilter: ['open'] });
+    }
     document.addEventListener('keydown', (event) => {
-      if (menuButton.getAttribute('aria-expanded') !== 'true') return;
+      if (!active) return;
       if (event.key === 'Escape') {
         event.preventDefault();
-        setMenu(false);
-        menuButton.focus();
+        // The same key must not reach guide/page handlers after focus returns.
+        event.stopImmediatePropagation?.();
+        close();
       } else if (event.key === 'Tab') {
-        const controls = [...header.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]')]
-          .filter((element) => element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
-        const first = controls[0];
-        const last = controls[controls.length - 1];
-        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
-        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+        const scope = active.kind === 'navigation' ? header : active.element;
+        const items = controls(scope);
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (!first) { event.preventDefault(); active.element.focus({ preventScroll: true }); }
+        else if (!scope.contains(document.activeElement) || (event.shiftKey && document.activeElement === first)) {
+          event.preventDefault(); (event.shiftKey ? last : first).focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault(); first.focus();
+        }
       }
+    }, true);
+    document.addEventListener('focusin', (event) => {
+      if (!active) return;
+      const scope = active.kind === 'navigation' ? header : active.element;
+      if (!scope.contains(event.target)) controls(scope)[0]?.focus({ preventScroll: true });
+    });
+    window.addEventListener('resize', () => {
+      if (!active) return;
+      const scope = active.kind === 'navigation' ? header : active.element;
+      if (!visible(document.activeElement)) controls(scope)[0]?.focus({ preventScroll: true });
+    }, { passive: true });
+    // Clear state before leaving and on bfcache restoration, even if an opener
+    // navigates away mid-transition. Scroll and inline-style snapshots are exact.
+    window.addEventListener('pagehide', () => close(false));
+    window.addEventListener('pageshow', () => close(false));
+    return { close, openDialog, setNavigation, isOpen: () => Boolean(active) };
+  })();
+  const setMenu = (open) => overlays.setNavigation(open);
+  if (menuButton && menu) {
+    menuButton.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        if (!link.matches('[data-search-open], [data-bag-open]')) setMenu(false);
+      });
     });
   }
 
-  // Native dialogs own focus trapping and Escape. Coordinate all existing
-  // dialogs (including Skyy's question form) without replacing showModal.
-  document.querySelectorAll('dialog').forEach((dialog) => {
-    dialog.addEventListener('beforetoggle', (event) => {
-      if (event.newState !== 'open') return;
-      setMenu(false);
-      document.querySelectorAll('dialog[open]').forEach((other) => {
-        if (other !== dialog) other.close();
-      });
-    });
-  });
-
   if (header) {
-    let previousY = window.scrollY;
     let ticking = false;
 
     const updateHeader = () => {
       const currentY = window.scrollY;
       header.classList.toggle('is-scrolled', currentY > 48);
-      header.classList.toggle(
-        'is-hidden',
-        currentY > previousY && currentY > 500 && !body.classList.contains('sr2-nav-open')
-      );
-      previousY = currentY;
+      // The house shell keeps navigation and commerce access stable on scroll.
+      header.classList.remove('is-hidden');
       ticking = false;
     };
 
+    header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
     window.addEventListener('scroll', () => {
       if (ticking) return;
       ticking = true;
@@ -489,14 +646,9 @@
       media: quickView.querySelector('[data-quick-view-media]'),
       url: quickView.querySelector('[data-quick-view-url]')
     };
-    let opener = null;
-    const closeQuickView = () => {
-      if (quickView.open) quickView.close();
-      if (!document.querySelector('dialog[open]')) opener?.focus();
-    };
+    const closeQuickView = () => overlays.close();
     document.querySelectorAll('[data-quick-view]').forEach((button) => {
-      button.addEventListener('click', () => {
-        opener = button;
+      button.addEventListener('click', (event) => {
         Object.entries(fields).forEach(([key, field]) => {
           if (!field || key === 'media') return;
           const value = button.dataset[`quickView${key[0].toUpperCase()}${key.slice(1)}`] || '';
@@ -510,50 +662,65 @@
             field.textContent = value;
           }
         });
-        quickView.showModal();
+        if (overlays.openDialog(quickView, button)) event.preventDefault();
       });
     });
     quickView.querySelectorAll('[data-quick-view-dismiss]').forEach((button) => button.addEventListener('click', closeQuickView));
     quickView.addEventListener('click', (event) => { if (event.target === quickView) closeQuickView(); });
-    quickView.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && !body.classList.contains('sr2-nav-open')) opener?.focus(); });
   }
 
   const sizeGuide = document.querySelector('#sr2-size-guide-dialog');
   if (sizeGuide && typeof sizeGuide.showModal === 'function') {
-    let sizeGuideOpener = null;
-    const closeSizeGuide = () => {
-      if (sizeGuide.open) sizeGuide.close();
-      sizeGuideOpener?.focus();
-    };
     document.querySelectorAll('[data-size-guide-open]').forEach((button) => {
-      button.addEventListener('click', () => {
-        sizeGuideOpener = button;
-        sizeGuide.showModal();
+      button.addEventListener('click', (event) => {
+        if (overlays.openDialog(sizeGuide, button)) event.preventDefault();
       });
     });
-    sizeGuide.addEventListener('click', (event) => { if (event.target === sizeGuide) closeSizeGuide(); });
-    sizeGuide.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && !body.classList.contains('sr2-nav-open')) sizeGuideOpener?.focus(); });
+    sizeGuide.addEventListener('click', (event) => { if (event.target === sizeGuide) overlays.close(); });
   }
 
-  /* Global search remains a native GET form so WordPress owns the results,
-   * filters, and indexing. The dialog only removes the blank-query detour. */
-  const searchDialog = document.querySelector('#sr2-search-dialog');
-  if (searchDialog && typeof searchDialog.showModal === 'function') {
-    let searchOpener = null;
-    const closeSearch = () => {
-      if (searchDialog.open) searchDialog.close();
-      searchOpener?.focus();
-    };
-    document.querySelectorAll('[data-search-open]').forEach((button) => {
-      button.addEventListener('click', () => {
-        searchOpener = button;
-        if (menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false);
-        searchDialog.showModal();
-        window.requestAnimationFrame(() => searchDialog.querySelector('[data-search-input]')?.focus());
+  /* Native links and GET search remain complete progressive fallbacks. The bag
+     uses Woo-rendered fragments; no prices, totals or cart writes live here. */
+  [
+    ['#sr2-search-dialog', '[data-search-open]', '[data-search-input]'],
+    ['#sr2-bag-dialog', '[data-bag-open]', '[data-bag-close]'],
+  ].forEach(([selector, trigger, initialFocus]) => {
+    const dialog = document.querySelector(selector);
+    if (!dialog || typeof dialog.showModal !== 'function') return;
+    document.querySelectorAll(trigger).forEach((button) => {
+      button.addEventListener('click', (event) => {
+        // Keep ordinary modified-link gestures and native route behavior.
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        if (!overlays.openDialog(dialog, button)) return;
+        event.preventDefault();
+        dialog.querySelector(initialFocus)?.focus({ preventScroll: true });
       });
     });
-    searchDialog.addEventListener('click', (event) => { if (event.target === searchDialog) closeSearch(); });
-    searchDialog.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && !body.classList.contains('sr2-nav-open')) (searchOpener?.closest('[data-sr2-nav]') ? menuButton : searchOpener)?.focus(); });
+    dialog.querySelectorAll('[data-bag-close], [data-search-close]').forEach((button) => {
+      button.addEventListener('click', () => overlays.close());
+    });
+    dialog.addEventListener('click', (event) => { if (event.target === dialog) overlays.close(); });
+  });
+
+  /* Woo's global live region is outside the modal accessibility tree. Relay
+     only its own confirmed success message to a stable in-dialog status. */
+  const bagDialog = document.querySelector('#sr2-bag-dialog');
+  const bagStatus = bagDialog?.querySelector('[data-bag-status]');
+  if (bagStatus && window.jQuery) {
+    let pendingRemoval = null;
+    bagDialog.addEventListener('click', (event) => {
+      const control = event.target.closest?.('.remove_from_cart_button');
+      if (!control || !bagDialog.contains(control)) return;
+      pendingRemoval = control;
+      bagStatus.textContent = '';
+    });
+    window.jQuery(body).on('removed_from_cart.sr2Bag', (_event, _fragments, _hash, button) => {
+      if (!bagDialog.open || !pendingRemoval || button?.[0] !== pendingRemoval) return;
+      const message = button.data('success_message');
+      pendingRemoval = null;
+      if (typeof message === 'string' && message.trim()) bagStatus.textContent = message;
+    });
+    bagDialog.addEventListener('close', () => { pendingRemoval = null; bagStatus.textContent = ''; });
   }
 
   if (finePointer && !reducedMotion) {

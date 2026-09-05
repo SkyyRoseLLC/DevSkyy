@@ -5,7 +5,7 @@
     "appearanceTools": true,
     "layout": {
       "contentSize": "1200px",
-      "wideSize": "1440px"
+      "wideSize": "1500px"
     },
     "color": {
       "custom": true,
@@ -24,27 +24,27 @@
         {
           "name": "Surface",
           "slug": "surface",
-          "color": "#151515"
+          "color": "#111"
         },
         {
           "name": "White",
           "slug": "white",
-          "color": "#FFFFFF"
+          "color": "#FFF"
         },
         {
           "name": "Text Secondary",
           "slug": "text-secondary",
-          "color": "#CCCCCC"
+          "color": "#F5F5F0"
         },
         {
           "name": "Text Muted",
           "slug": "text-muted",
-          "color": "#999999"
+          "color": "#B3B3B3"
         },
         {
           "name": "Border",
           "slug": "border",
-          "color": "#2A2A2A"
+          "color": "#323232"
         },
         {
           "name": "Rose Gold",
@@ -132,27 +132,42 @@
         {
           "name": "Small",
           "slug": "small",
-          "size": "clamp(0.8125rem, 0.79rem + 0.12vw, 0.875rem)"
+          "size": ".875rem"
         },
         {
           "name": "Body",
           "slug": "body",
-          "size": "clamp(1rem, 0.95rem + 0.2vw, 1.125rem)"
+          "size": "1rem"
         },
         {
           "name": "Lead",
           "slug": "lead",
-          "size": "clamp(1.125rem, 1rem + 0.6vw, 1.5rem)"
+          "size": "clamp(1.5rem, 2.4vw, 2.5rem)"
         },
         {
           "name": "Display Small",
           "slug": "display-small",
-          "size": "clamp(1.75rem, 1.35rem + 2vw, 3.25rem)"
+          "size": "clamp(1.5rem, 2.4vw, 2.5rem)"
         },
         {
           "name": "Display",
           "slug": "display",
-          "size": "clamp(2.5rem, 1.6rem + 4.5vw, 6.5rem)"
+          "size": "clamp(2rem, 4vw, 4rem)"
+        },
+        {
+          "name": "Monument",
+          "slug": "monument",
+          "size": "clamp(3rem, 7vw, 7rem)"
+        },
+        {
+          "name": "Commerce",
+          "slug": "commerce",
+          "size": "clamp(1rem, 1vw + .75rem, 1.25rem)"
+        },
+        {
+          "name": "Index",
+          "slug": "index",
+          "size": ".75rem"
         }
       ],
       "fontFamilies": [
@@ -233,24 +248,90 @@
         "house-ease": "cubic-bezier(0.16, 1, 0.3, 1)",
         "fast": "180ms",
         "standard": "420ms",
-        "slow": "900ms"
+        "slow": "900ms",
+        "micro": "180ms",
+        "interface": "420ms",
+        "editorial": "900ms",
+        "scene": "900ms",
+        "enter-ease": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "exit-ease": "cubic-bezier(.4, 0, 1, 1)",
+        "expressive-ease": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "distance": ".75rem",
+        "stagger": "40ms"
       },
       "focus": {
-        "color": "#D4AF37",
+        "color": "#f5f5f0",
         "width": "2px",
-        "offset": "3px"
+        "offset": "3px",
+        "inner": "#0a0a0a"
       },
       "layers": {
+        "content": "0",
+        "floating": "10",
+        "commerce": "40",
         "guide": "80",
         "header": "100",
+        "scrim": "110",
+        "drawer": "120",
+        "navigation": "130",
+        "modal": "140",
+        "toast": "160",
+        "critical": "200",
         "skip": "999"
+      },
+      "controls": {
+        "size": "3rem",
+        "target": "2.75rem",
+        "border": "#808080"
+      },
+      "layout": {
+        "reading": "60ch",
+        "commerce": "42rem",
+        "gap": "clamp(1rem, 2vw, 2rem)"
+      },
+      "typeRoles": {
+        "monument": {
+          "size": "clamp(3rem, 7vw, 7rem)",
+          "family": "\"Archivo\", system-ui, sans-serif",
+          "leading": ".94"
+        },
+        "display": {
+          "size": "clamp(2rem, 4vw, 4rem)",
+          "family": "\"Archivo\", system-ui, sans-serif",
+          "leading": "1"
+        },
+        "editorial": {
+          "size": "clamp(1.5rem, 2.4vw, 2.5rem)",
+          "family": "\"Archivo\", system-ui, sans-serif",
+          "leading": "1.12"
+        },
+        "commerce": {
+          "size": "clamp(1rem, 1vw + .75rem, 1.25rem)",
+          "family": "\"Hanken Grotesk\", \"Inter\", sans-serif",
+          "leading": "1.35"
+        },
+        "body": {
+          "size": "1rem",
+          "family": "\"Hanken Grotesk\", \"Inter\", sans-serif",
+          "leading": "1.6"
+        },
+        "utility": {
+          "size": ".875rem",
+          "family": "\"Anton\", sans-serif",
+          "leading": "1.4"
+        },
+        "index": {
+          "size": ".75rem",
+          "family": "ui-monospace, SFMono-Regular, Menlo, monospace",
+          "leading": "1.4"
+        }
       }
     }
   },
   "styles": {
     "color": {
       "background": "var(--wp--preset--color--concrete-black)",
-      "text": "var(--wp--preset--color--white)"
+      "text": "var(--wp--preset--color--text-secondary)"
     },
     "spacing": {
       "blockGap": "var(--wp--preset--spacing--medium)"
@@ -258,13 +339,13 @@
     "typography": {
       "fontFamily": "var(--wp--preset--font-family--hanken-grotesk)",
       "fontSize": "var(--wp--preset--font-size--body)",
-      "lineHeight": "1.65"
+      "lineHeight": "1.6"
     },
     "elements": {
       "button": {
         "color": {
           "background": "var(--wp--preset--color--rose-gold)",
-          "text": "var(--wp--preset--color--white)"
+          "text": "var(--wp--preset--color--concrete-black)"
         },
         "typography": {
           "fontFamily": "var(--wp--preset--font-family--anton)",

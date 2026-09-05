@@ -18,6 +18,7 @@ require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
+require_once SKYYROSE2_DIR . '/inc/global-shell.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -254,7 +255,8 @@ function skyyrose2_setup() {
 	register_nav_menus(
 		array(
 			'primary' => __( 'Primary Menu', 'skyyrose-flagship-2' ),
-			'footer'  => __( 'Footer Menu', 'skyyrose-flagship-2' ),
+			'footer'  => __( 'Footer Client Services', 'skyyrose-flagship-2' ),
+			'footer-house' => __( 'Footer House Directory', 'skyyrose-flagship-2' ),
 		)
 	);
 }
@@ -333,7 +335,12 @@ function skyyrose2_assets() {
 
 	wp_enqueue_style( 'skyyrose2-tokens', SKYYROSE2_URI . $tokens_asset, array(), skyyrose2_asset_version( $tokens_asset ) );
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . $theme_asset, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $theme_asset ) );
-	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, array(), skyyrose2_asset_version( $theme_script ), true );
+	foreach ( array( 'controls', 'global-shell' ) as $component ) {
+		$asset = '/assets/css/' . $component . $suffix . '.css';
+		wp_enqueue_style( 'skyyrose2-' . $component, SKYYROSE2_URI . $asset, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $asset ) );
+	}
+	if ( class_exists( 'WooCommerce' ) && ! is_checkout() ) { wp_enqueue_script( 'wc-cart-fragments' ); }
+	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, class_exists( 'WooCommerce' ) && ! is_checkout() ? array( 'wc-cart-fragments', 'wc-add-to-cart' ) : array(), skyyrose2_asset_version( $theme_script ), true );
 	wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
 	if ( is_page_template( array( 'template-collection.php', 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-signature.php' ) ) ) {
 		$scene_base_style = '/assets/css/hero-commerce-scenes' . $suffix . '.css';
@@ -487,7 +494,7 @@ add_action( 'wp_head', 'skyyrose2_schema_head', 5 );
 /** Keep the visible bag count synchronized with WooCommerce add-to-cart fragments. */
 function skyyrose2_cart_fragment( $fragments ) {
 	ob_start();
-	?><span class="sr2-header__bag-count" aria-live="polite"><?php echo esc_html( skyyrose2_cart_count() ); ?></span><?php
+	?><span class="sr2-header__bag-count" aria-live="polite" aria-atomic="true" aria-label="<?php echo esc_attr( sprintf( __( '%d items in bag', 'skyyrose-flagship-2' ), skyyrose2_cart_count() ) ); ?>"><?php echo esc_html( skyyrose2_cart_count() ); ?></span><?php
 	$fragments['.sr2-header__bag-count'] = ob_get_clean();
 	return $fragments;
 }
@@ -1563,77 +1570,6 @@ function skyyrose2_render_collection_rail() {
 		<div class="sr2-rail-progress" aria-hidden="true"><span data-rail-progress></span></div>
 		</div>
 	</section>
-	<?php
-}
-
-/** Render site header. */
-function skyyrose2_header() {
-	$bag_url = function_exists( 'wc_get_cart_url' ) ? wc_get_cart_url() : home_url( '/cart/' );
-	$frames  = skyyrose2_header_world_frames();
-	?>
-	<header class="sr2-header" data-site-header>
-		<button class="sr2-header__menu" type="button" aria-label="<?php esc_attr_e( 'Open site menu', 'skyyrose-flagship-2' ); ?>" aria-controls="sr2-menu" aria-expanded="false" data-sr2-menu><span></span><span><?php esc_html_e( 'Menu', 'skyyrose-flagship-2' ); ?></span></button>
-		<a class="sr2-header__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img class="sr2-header__brand-mark" src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-384w.webp' ) ); ?>" width="384" height="216" decoding="async" alt="" aria-hidden="true"><span class="screen-reader-text"><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a>
-		<a class="sr2-header__bag" href="<?php echo esc_url( $bag_url ); ?>"><?php esc_html_e( 'Bag', 'skyyrose-flagship-2' ); ?> <span class="sr2-header__bag-count" aria-live="polite" aria-label="<?php esc_attr_e( 'items in bag', 'skyyrose-flagship-2' ); ?>"><?php echo esc_html( skyyrose2_cart_count() ); ?></span></a>
-		<nav id="sr2-menu" class="sr2-header__nav" aria-label="<?php esc_attr_e( 'Primary navigation', 'skyyrose-flagship-2' ); ?>" data-sr2-nav>
-			<div class="sr2-header__nav-main">
-				<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'collections' ) ); ?>"><span>01</span><?php esc_html_e( 'Collections', 'skyyrose-flagship-2' ); ?></a>
-				<a href="<?php echo esc_url( skyyrose2_shop_url() ); ?>"><span>02</span><?php esc_html_e( 'Shop', 'skyyrose-flagship-2' ); ?></a>
-				<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'pre-order' ) ); ?>"><span>03</span><?php esc_html_e( 'Pre-Order', 'skyyrose-flagship-2' ); ?></a>
-				<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><span>04</span><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a>
-				<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'about' ) ); ?>"><span>05</span><?php esc_html_e( 'About', 'skyyrose-flagship-2' ); ?></a>
-				<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'contact' ) ); ?>"><span>06</span><?php esc_html_e( 'Contact', 'skyyrose-flagship-2' ); ?></a>
-				<button type="button" data-search-open aria-haspopup="dialog" aria-controls="sr2-search-dialog"><span>07</span><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></button>
-				<?php if ( function_exists( 'wc_get_page_permalink' ) ) : ?><a href="<?php echo esc_url( wc_get_page_permalink( 'myaccount' ) ); ?>"><span>08</span><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a><?php endif; ?>
-			</div>
-			<div class="sr2-header-worlds" data-house-header-reel data-house-header-interval="6500" data-house-header-start="0">
-				<header class="sr2-header-worlds__head">
-					<div><span><?php esc_html_e( 'The Living Archive', 'skyyrose-flagship-2' ); ?></span><strong><?php esc_html_e( 'Scroll the collection monuments', 'skyyrose-flagship-2' ); ?></strong></div>
-					<div class="sr2-header-worlds__controls">
-						<button type="button" aria-label="<?php esc_attr_e( 'Previous collection scene', 'skyyrose-flagship-2' ); ?>" data-house-header-prev>←</button>
-						<span data-house-header-count>01 / 04</span>
-						<button type="button" aria-label="<?php esc_attr_e( 'Next collection scene', 'skyyrose-flagship-2' ); ?>" data-house-header-next>→</button>
-						<button type="button" aria-pressed="false" data-house-header-toggle><?php esc_html_e( 'Pause collection scenes', 'skyyrose-flagship-2' ); ?></button>
-					</div>
-				</header>
-				<p class="screen-reader-text" aria-live="polite" data-house-header-status></p>
-				<div class="sr2-header-worlds__viewport" tabindex="0" aria-label="<?php esc_attr_e( 'Collection typography and graphic monuments. Scroll horizontally.', 'skyyrose-flagship-2' ); ?>" data-house-header-track>
-					<div class="sr2-header-worlds__rail">
-						<?php foreach ( $frames as $index => $frame ) : ?>
-							<a class="sr2-header-worlds__frame" data-house-header-slide data-house-header-label="<?php echo esc_attr( $frame['label'] ); ?>" data-collection="<?php echo esc_attr( $frame['collection'] ); ?>" href="<?php echo esc_url( $frame['url'] ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Enter %1$s from the %2$s frame', 'skyyrose-flagship-2' ), $frame['name'], $frame['label'] ) ); ?>">
-								<img src="<?php echo esc_url( $frame['image'] ); ?>" alt="" width="1920" height="1080" loading="<?php echo 0 === $index ? 'eager' : 'lazy'; ?>" decoding="async" aria-hidden="true">
-								<span><small><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></small><b><?php echo esc_html( $frame['name'] ); ?></b><em><?php echo esc_html( $frame['label'] ); ?></em></span>
-							</a>
-						<?php endforeach; ?>
-					</div>
-				</div>
-				<div class="sr2-header-worlds__progress" aria-hidden="true"><span></span></div>
-			</div>
-		</nav>
-	</header>
-	<?php
-}
-
-/** Render site footer. */
-function skyyrose2_footer() {
-	?>
-	<footer class="sr2-footer">
-		<nav class="sr2-footer__nav sr2-footer__nav--house" aria-label="<?php esc_attr_e( 'Explore SkyyRose', 'skyyrose-flagship-2' ); ?>">
-			<a href="<?php echo esc_url( skyyrose2_shop_url() ); ?>"><?php esc_html_e( 'Shop', 'skyyrose-flagship-2' ); ?></a>
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'collections' ) ); ?>"><?php esc_html_e( 'Collections', 'skyyrose-flagship-2' ); ?></a>
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'pre-order' ) ); ?>"><?php esc_html_e( 'Pre-Order', 'skyyrose-flagship-2' ); ?></a>
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a>
-		</nav>
-		<div class="sr2-footer__identity"><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-256w.webp' ) ); ?>" data-brand-animation-mode="viewport" alt="" width="384" height="216" loading="lazy" decoding="async" aria-hidden="true"><span class="screen-reader-text"><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
-		<nav class="sr2-footer__nav sr2-footer__nav--service" aria-label="<?php esc_attr_e( 'Customer care', 'skyyrose-flagship-2' ); ?>">
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'faq' ) ); ?>"><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></a>
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'shipping-returns' ) ); ?>"><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></a>
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'returns-exchanges' ) ); ?>"><?php esc_html_e( 'Returns + Exchanges', 'skyyrose-flagship-2' ); ?></a>
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'size-guide' ) ); ?>"><?php esc_html_e( 'Size Guide', 'skyyrose-flagship-2' ); ?></a>
-			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Support', 'skyyrose-flagship-2' ); ?></a>
-		</nav>
-		<div class="sr2-footer__legal"><p>© <?php echo esc_html( gmdate( 'Y' ) ); ?> <?php esc_html_e( 'The Skyy Rose Collection LLC', 'skyyrose-flagship-2' ); ?></p><nav aria-label="<?php esc_attr_e( 'Legal', 'skyyrose-flagship-2' ); ?>"><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'privacy-policy' ) ); ?>"><?php esc_html_e( 'Privacy', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'terms-of-service' ) ); ?>"><?php esc_html_e( 'Terms', 'skyyrose-flagship-2' ); ?></a><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'accessibility' ) ); ?>"><?php esc_html_e( 'Accessibility', 'skyyrose-flagship-2' ); ?></a></nav></div>
-	</footer>
 	<?php
 }
 

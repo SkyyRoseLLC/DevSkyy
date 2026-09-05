@@ -7,11 +7,27 @@
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
+  "assets/css/controls.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/controls.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
   "assets/css/design-tokens.min.css": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",
     "released": true,
     "source": "assets/css/design-tokens.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/global-shell.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/global-shell.css",
     "tool": "clean-css 5.3.3",
     "tracked": true
   },

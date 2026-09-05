@@ -205,6 +205,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/controls.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "assets/css/controls.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
     "assets/css/design-tokens.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -213,6 +223,16 @@
     "assets/css/design-tokens.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/global-shell.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "assets/css/global-shell.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Phase3A global shell or canonical control styles",
       "release": true
     },
     "assets/css/hero-commerce-scenes.css": {
@@ -1808,6 +1828,11 @@
     "inc/demo-import.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/global-shell.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3A global shell or canonical control styles",
       "release": true
     },
     "inc/hero-commerce-scenes.php": {

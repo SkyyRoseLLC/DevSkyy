@@ -13,7 +13,7 @@ while ( have_posts() ) :
 	the_post();
 	$slug = sanitize_title( get_post_field( 'post_name', get_the_ID() ) );
 	?>
-	<main id="primary" class="sr2-page sr2-page--<?php echo esc_attr( $slug ); ?>">
+	<main id="primary" tabindex="-1" class="sr2-page sr2-page--<?php echo esc_attr( $slug ); ?>">
 		<?php if ( 'collections' === $slug ) : ?>
 			<section class="sr2-page-hero sr2-page-hero--collections" aria-labelledby="sr2-page-title">
 				<div class="sr2-page-hero__media"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'branding/hero/signature-golden-gate-yacht-1280w.webp' ) ); ?>" alt="" width="1280" height="553" fetchpriority="high"></div>
@@ -94,6 +94,9 @@ while ( have_posts() ) :
 			</section>
 			<nav class="sr2-service-links" aria-label="<?php esc_attr_e( 'Customer service resources', 'skyyrose-flagship-2' ); ?>"><a href="<?php echo esc_url( home_url( '/shipping-returns/' ) ); ?>"><span><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></span><b>↗</b></a><a href="<?php echo esc_url( home_url( '/returns-exchanges/' ) ); ?>"><span><?php esc_html_e( 'Returns + Exchanges', 'skyyrose-flagship-2' ); ?></span><b>↗</b></a><a href="<?php echo esc_url( home_url( '/size-guide/' ) ); ?>"><span><?php esc_html_e( 'Size Guide', 'skyyrose-flagship-2' ); ?></span><b>↗</b></a><a href="<?php echo esc_url( home_url( '/faq/' ) ); ?>"><span><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></span><b>↗</b></a></nav>
 
+		<?php elseif ( function_exists( 'is_cart' ) && ( is_cart() || is_checkout() ) ) : ?>
+			<?php if ( is_cart() && function_exists( 'WC' ) && WC()->cart && WC()->cart->is_empty() ) : ?><header class="sr2-generic-head sr2-empty-bag-head"><h1><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></h1></header><?php endif; ?>
+			<?php the_content(); // Native Woo templates own their heading and commerce wrapper. ?>
 		<?php else : ?>
 			<?php
 			$is_account = function_exists( 'is_account_page' ) && is_account_page();

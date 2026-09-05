@@ -12,11 +12,8 @@
 defined( 'ABSPATH' ) || exit;
 ?>
 <dialog id="sr2-search-dialog" class="sr2-search-dialog" aria-labelledby="sr2-search-dialog-title">
-	<form method="dialog" class="sr2-search-dialog__close-form">
-		<button type="submit" class="sr2-search-dialog__close" aria-label="<?php esc_attr_e( 'Close search', 'skyyrose-flagship-2' ); ?>">×</button>
-	</form>
 	<div class="sr2-search-dialog__panel">
-		<p class="sr2-eyebrow"><?php esc_html_e( 'The Living Archive', 'skyyrose-flagship-2' ); ?></p>
+		<div class="sr2-dialog-head"><p class="sr2-index"><?php esc_html_e( '07 / The Living Archive', 'skyyrose-flagship-2' ); ?></p><form method="dialog"><button type="submit" class="sr2-search-dialog__close" aria-label="<?php esc_attr_e( 'Close search', 'skyyrose-flagship-2' ); ?>">×</button></form></div>
 		<h2 id="sr2-search-dialog-title"><?php esc_html_e( 'Search the house.', 'skyyrose-flagship-2' ); ?></h2>
 		<p><?php esc_html_e( 'Find a piece, collection, journal story, or service answer.', 'skyyrose-flagship-2' ); ?></p>
 		<form class="sr2-search-dialog__form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
