@@ -255,6 +255,26 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/legacy-home-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
+      "release": true
+    },
+    "assets/css/legacy-home-page.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
+      "release": true
+    },
+    "assets/css/legacy-product-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
+      "release": true
+    },
+    "assets/css/legacy-product-page.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
+      "release": true
+    },
     "assets/css/mascot.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -273,6 +293,506 @@
     "assets/css/theme.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-001-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-001-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-001-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-003-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-003-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-003-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-004-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-004-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-004-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-005-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-005-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-005-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-006-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-006-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-006-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-007-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-007-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-007-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-008-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-008-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-008-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-009-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-009-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-009-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-010-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-010-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-010-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-011-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-011-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-011-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-012-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-012-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-012-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-014-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-014-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-014-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-015-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-015-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/br-015-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-001-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-001-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-001-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/kids-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-003-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-003-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-003-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-004-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-004-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-004-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-005-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-005-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-005-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-006-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-006-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/lh-006-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/manifest.json": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-001-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-001-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-001-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-002-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-002-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-002-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-003-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-003-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-003-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-005-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-005-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-005-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-006-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-006-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-006-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-007-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-007-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-007-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-009-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-009-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-009-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-011-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-011-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-011-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-012-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-012-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-012-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-013-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-013-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-013-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-014-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-014-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-014-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-015-320w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-015-480w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
+      "release": true
+    },
+    "assets/derived/card-fronts/sg-015-768w.webp": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
       "release": true
     },
     "assets/js/collection-scene-motion.js": {

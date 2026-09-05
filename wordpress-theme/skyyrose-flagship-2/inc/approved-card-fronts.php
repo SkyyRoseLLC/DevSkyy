@@ -32,12 +32,46 @@ function skyyrose2_approved_card_front( $product ) {
 	if ( ! $asset || ! $root || 0 !== strpos( $asset, $root . DIRECTORY_SEPARATOR ) || ! is_file( $asset ) || ! is_readable( $asset ) ) {
 		return array();
 	}
-	return array(
+	$result = array(
 		'src' => SKYYROSE2_URI . '/' . $front['src'],
 		'width' => (int) $front['width'],
 		'height' => (int) $front['height'],
 		'alt' => $front['alt'],
 	);
+	// Delivery copies inherit the exact accepted front; they never confer approval
+	// on opening/editorial media or alter the original manifest and source pixels.
+	static $renditions = null;
+	if ( null === $renditions ) {
+		$rendition_path = SKYYROSE2_DIR . '/assets/derived/card-fronts/manifest.json';
+		$renditions = is_readable( $rendition_path ) ? json_decode( file_get_contents( $rendition_path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	}
+	$delivery = $renditions['products'][ $sku ] ?? array();
+	if ( is_array( $delivery ) && is_array( $delivery['renditions'] ?? null ) && 'skyyrose.card-renditions.v1' === ( $renditions['schema'] ?? '' ) && ( $delivery['source_sha256'] ?? '' ) === ( $front['sha256'] ?? '' ) && ( $delivery['source'] ?? '' ) === $front['src'] ) {
+		$srcset = array();
+		foreach ( $delivery['renditions'] ?? array() as $rendition ) {
+			if ( ! is_array( $rendition ) ) {
+				continue;
+			}
+			$width = (int) ( $rendition['width'] ?? 0 );
+			$relative = 'assets/derived/card-fronts/' . $sku . '-' . $width . 'w.webp';
+			if ( ! in_array( $width, array( 320, 480, 768 ), true ) || (int) ( $rendition['height'] ?? 0 ) !== (int) round( $front['height'] * $width / $front['width'] ) || ( $rendition['src'] ?? '' ) !== $relative || ! is_file( SKYYROSE2_DIR . '/' . $relative ) || is_link( SKYYROSE2_DIR . '/' . $relative ) || ! is_readable( SKYYROSE2_DIR . '/' . $relative ) ) {
+				continue;
+			}
+			$url = SKYYROSE2_URI . '/' . $relative;
+			$srcset[] = $url . ' ' . $width . 'w';
+			if ( 480 === $width ) {
+				$result['card_src'] = $url;
+				$result['card_width'] = $width;
+				$result['card_height'] = (int) $rendition['height'];
+			}
+		}
+		if ( $srcset ) {
+			$srcset[] = $result['src'] . ' ' . $result['width'] . 'w';
+			$result['srcset'] = implode( ', ', $srcset );
+			$result['sizes'] = '(max-width: 47.99em) calc((100vw - 3rem) / 2), (max-width: 74.99em) calc((100vw - 5rem) / 3), 360px';
+		}
+	}
+	return $result;
 }
 
 /** Replace the WooCommerce primary in the reel, retaining other view order. */

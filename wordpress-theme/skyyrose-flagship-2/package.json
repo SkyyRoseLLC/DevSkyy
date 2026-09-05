@@ -9,7 +9,7 @@
     "npm": ">=9.0.0"
   },
   "scripts": {
-    "build": "npm run check:source-integrity && npm run build:tokens && npm run build:registry && npm run build:assets && npm run build:i18n",
+    "build": "npm run check:source-integrity && npm run build:tokens && npm run build:registry && npm run build:card-renditions && npm run build:assets && npm run build:i18n",
     "build:registry": "python3 scripts/build-product-presentation-registry.py",
     "build:assets": "node scripts/build-assets.mjs",
     "build:i18n": "python3 scripts/build-pot.py",
@@ -33,14 +33,16 @@
     "render:commerce-scenes": "bash scripts/render-founder-commerce-scenes.sh",
     "check:provisioning": "php scripts/test-marketplace-registry.php",
     "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
-    "verify": "npm run check:source-integrity && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-seo-indexing.php && node --test ../../tools/v2-runtime/test-*.cjs && php ../../tools/v2-runtime/test-product-media.php && php ../../tools/v2-runtime/test-checkout-truth.php && php ../../tools/v2-runtime/test-search.php && npm run check:tokens",
+    "verify": "npm run check:source-integrity && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-seo-indexing.php && node --test ../../tools/v2-runtime/test-*.cjs && php ../../tools/v2-runtime/test-product-media.php && php ../../tools/v2-runtime/test-checkout-truth.php && php ../../tools/v2-runtime/test-search.php && npm run check:tokens && npm run check:card-renditions && python3 ../../tools/v2-runtime/test-card-renditions.py && php ../../tools/v2-runtime/test-product-card.php",
     "verify:workspace": "bash scripts/verify-v2-workspace.sh",
     "verify:workspace:strict": "bash scripts/verify-v2-workspace.sh --strict",
     "package:theme": "bash scripts/package-theme.sh",
     "check:source-integrity": "python3 ../../tools/v2-source-certification/check-integrity.py",
     "check:legacy-founder-scenes": "python3 scripts/validate-founder-commerce-scenes.py",
     "build:tokens": "node ../../tools/v2-runtime/sync-token-contract.cjs --write",
-    "check:tokens": "node ../../tools/v2-runtime/sync-token-contract.cjs --check"
+    "check:tokens": "node ../../tools/v2-runtime/sync-token-contract.cjs --check",
+    "build:card-renditions": "python3 ../../tools/v2-runtime/build-card-renditions.py",
+    "check:card-renditions": "python3 ../../tools/v2-runtime/build-card-renditions.py --check"
   },
   "devDependencies": {
     "clean-css": "5.3.3",

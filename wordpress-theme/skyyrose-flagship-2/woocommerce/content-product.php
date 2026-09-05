@@ -16,7 +16,8 @@ if ( ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() ) {
 	return;
 }
 
-$loop_index = max( 0, (int) wc_get_loop_prop( 'loop' ) - 1 );
+// wc_product_class() advances the native loop counter below; read it first.
+$loop_index = max( 0, (int) wc_get_loop_prop( 'loop' ) );
 ?>
 <li <?php wc_product_class( 'sr2-c-product-card-wrap sr2-c-product-card-wrap--portal', $product ); ?>>
 	<?php
@@ -26,6 +27,7 @@ $loop_index = max( 0, (int) wc_get_loop_prop( 'loop' ) - 1 );
 		array(
 			'product' => $product,
 			'index'   => $loop_index,
+			'media_priority' => ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) && $loop_index < 2 ? ( 0 === $loop_index ? 'high' : 'eager' ) : 'lazy',
 		)
 	);
 	?>

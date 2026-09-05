@@ -335,6 +335,18 @@ function skyyrose2_assets() {
 
 	wp_enqueue_style( 'skyyrose2-tokens', SKYYROSE2_URI . $tokens_asset, array(), skyyrose2_asset_version( $tokens_asset ) );
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . $theme_asset, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $theme_asset ) );
+	// Page composition stays off unrelated routes; controls and shell stay shared.
+	$page_styles = array();
+	if ( is_front_page() ) {
+		$page_styles[] = 'legacy-home-page';
+	}
+	if ( function_exists( 'is_product' ) && is_product() ) {
+		$page_styles[] = 'legacy-product-page';
+	}
+	foreach ( $page_styles as $page_style ) {
+		$asset = '/assets/css/' . $page_style . $suffix . '.css';
+		wp_enqueue_style( 'skyyrose2-' . $page_style, SKYYROSE2_URI . $asset, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $asset ) );
+	}
 	foreach ( array( 'controls', 'global-shell' ) as $component ) {
 		$asset = '/assets/css/' . $component . $suffix . '.css';
 		wp_enqueue_style( 'skyyrose2-' . $component, SKYYROSE2_URI . $asset, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $asset ) );
@@ -1651,4 +1663,3 @@ function skyyrose2_search_result_group( $type, $slug ) {
 	}
 	return '';
 }
-

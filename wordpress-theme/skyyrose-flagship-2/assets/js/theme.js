@@ -649,6 +649,7 @@
     const closeQuickView = () => overlays.close();
     document.querySelectorAll('[data-quick-view]').forEach((button) => {
       button.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         Object.entries(fields).forEach(([key, field]) => {
           if (!field || key === 'media') return;
           const value = button.dataset[`quickView${key[0].toUpperCase()}${key.slice(1)}`] || '';
