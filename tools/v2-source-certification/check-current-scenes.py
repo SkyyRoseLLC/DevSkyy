@@ -68,12 +68,12 @@ def main():
             raise ValueError(f'Poster hash drift: {sid}')
         if {v['asset'] for v in record['variants']} != {record['desktop'], record['mobile']}:
             raise ValueError(f'Unbound motion rendition: {sid}')
-    # Preserve all runtime PHP including cart, checkout, nonces, product resolution,
-    # account hooks and the deliberately unremediated jquery-core defer defect.
+    # Require explicitly recorded runtime hashes; Phase 2 repairs update only their
+    # affected entries, with baseline lineage and regression evidence in tasks/.
     for relative, digest in read(HERE / 'runtime-php-baseline.json').items():
         if hashlib.sha256((THEME / relative).read_bytes()).hexdigest() != digest:
-            raise ValueError(f'Runtime PHP changed during source certification: {relative}')
-    print('PASS current K1 scenes, posters, SKU casts, SOT binding and unchanged runtime PHP')
+            raise ValueError(f'Runtime PHP differs from recorded baseline: {relative}')
+    print('PASS current K1 scenes, posters, SKU casts, SOT binding and hash-bound runtime PHP')
 
 
 if __name__ == '__main__':

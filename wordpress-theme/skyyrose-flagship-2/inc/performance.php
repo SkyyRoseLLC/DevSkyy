@@ -374,20 +374,3 @@ function skyyrose2_performance_defer_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_defer_scripts', 110 );
 add_action( 'wp_footer', 'skyyrose2_performance_defer_scripts', 1 );
-
-/**
- * Keep the homepage's unused jQuery runtime out of its render-critical path.
- *
- * The House of Roses homepage is a theme-owned, progressively enhanced route;
- * its own scripts do not depend on jQuery. Scope this to that route so cart,
- * checkout, account, and plugin-owned pages retain their existing dependency
- * ordering.
- */
-function skyyrose2_performance_defer_homepage_jquery() {
-	if ( ! is_front_page() ) {
-		return;
-	}
-
-	wp_script_add_data( 'jquery-core', 'strategy', 'defer' );
-}
-add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_defer_homepage_jquery', 120 );
