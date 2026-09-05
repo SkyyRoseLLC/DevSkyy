@@ -374,3 +374,42 @@ function skyyrose2_performance_defer_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_defer_scripts', 110 );
 add_action( 'wp_footer', 'skyyrose2_performance_defer_scripts', 1 );
+
+/**
+ * Precompile the two native variation templates without relaxing storefront CSP.
+ *
+ * Woo's complex-template detection can delegate even a simple field token to
+ * wp.template/Underscore, which otherwise compiles with new Function. Populate
+ * WordPress's existing memoization cache after wp-util and before its consumer.
+ * Only the existing Woo HTML fields are interpolated; commerce resolution stays
+ * entirely in WooCommerce. Unknown executable template syntax fails closed.
+ */
+function skyyrose2_performance_csp_variation_templates() {
+	if ( ! function_exists( 'is_product' ) || ! is_product() ) {
+		return;
+	}
+	$script = <<<'SKYYROSE_VARIATION_TEMPLATES'
+(() => {
+  const cache = window.wp?.template?.cache;
+  if (!cache) return;
+  const allowed = new Set(['variation_description', 'price_html', 'availability_html']);
+  const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+  for (const id of ['variation-template', 'unavailable-variation-template']) {
+    cache[id] = (data) => {
+      const element = document.getElementById(`tmpl-${id}`);
+      if (!element) throw new Error(`Missing native Woo template: ${id}`);
+      const source = element.textContent;
+      const token = /({{{?)\s*data\.variation\.([a-z_]+)\s*(}}}?)/g;
+      const remaining = source.replace(token, (match, open, key, close) => open.length === close.length && allowed.has(key) ? '' : match);
+      if (/<#|{{|}}/.test(remaining)) throw new Error('Unsupported Woo variation template expression under CSP');
+      return source.replace(token, (_match, open, key) => {
+        const value = data?.variation?.[key] ?? '';
+        return open.length === 2 ? escapeHtml(value) : String(value);
+      });
+    };
+  }
+})();
+SKYYROSE_VARIATION_TEMPLATES;
+	wp_add_inline_script( 'wp-util', $script, 'after' );
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_csp_variation_templates', 120 );

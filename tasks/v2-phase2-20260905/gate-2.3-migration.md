@@ -50,3 +50,15 @@ and mobile 390px. Crewneck S also passed; a fast subsequent selection encountere
 a hidden-ID readiness discrepancy still under investigation. Browser coverage
 for the remaining garment categories is not yet complete. This is NOT a final
 Gate 2.3 or Phase 2 certification.
+
+## Subsequent runtime verification
+
+The hidden-ID discrepancy was traced to the CSP/Underscore failure and repaired
+as documented in variation-runtime-repair.md. Browser purchase checks now cover
+SG-005 shirt, br-001 crewneck, br-002 joggers, br-003 jersey, br-004 hoodie,
+br-006 jacket, br-007 shorts, lh-004 bomber jacket, sg-014 sweatpants, sg-015 set,
+and kids-001 toddler hoodie/set, with two sizes per representative. Correct
+cart size/name, quantity 1 and price/subtotal were observed. Earlier pre-fix
+failures and browser-tool interruptions remain explicit in the evidence.
+Responsive overflow is still open for Gate 2.8, and broader final commerce E2E
+through populated checkout remains part of Gate 2.10. No final payment authorized.

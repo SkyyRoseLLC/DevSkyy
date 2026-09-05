@@ -700,8 +700,13 @@
     $('.variations_form').each(function attachVariationState() {
       const form = this;
       setPdpStatus(form, 'incomplete', 'Select options to see the current piece availability.');
-      $(form).on('found_variation', (_event, variation) => {
-        const available = variation?.is_in_stock !== false && variation?.is_purchasable !== false;
+      $(form).on('show_variation', (_event, variation, purchasable) => {
+        const nativeId = Number(form.querySelector('input[name="variation_id"]')?.value);
+        if (!nativeId || nativeId !== Number(variation?.variation_id)) {
+          setPdpStatus(form, 'resolving', 'Checking this selection.');
+          return;
+        }
+        const available = purchasable !== false && variation?.is_in_stock !== false && variation?.is_purchasable !== false;
         setPdpStatus(
           form,
           available ? 'valid' : 'unavailable',
@@ -711,8 +716,8 @@
       $(form).on('hide_variation reset_data', () => {
         setPdpStatus(form, 'incomplete', 'Select options to see the current piece availability.');
       });
-      $(form).on('woocommerce_variation_has_changed', () => {
-        if (form.dataset.sr2VariationState !== 'valid') setPdpStatus(form, 'resolving', 'Checking this selection.');
+      $(form).on('woocommerce_variation_select_change woocommerce_variation_has_changed', () => {
+        setPdpStatus(form, 'resolving', 'Checking this selection.');
       });
     });
   }
@@ -724,12 +729,22 @@
       button.removeAttribute('aria-busy');
       if (button.dataset.sr2OriginalLabel) button.textContent = button.dataset.sr2OriginalLabel;
     };
-    form.addEventListener('submit', () => {
-      if (button.disabled || button.getAttribute('aria-busy') === 'true') return;
+    form.addEventListener('submit', (event) => {
+      if (event.defaultPrevented) return;
+      if (button.disabled || button.getAttribute('aria-busy') === 'true') {
+        event.preventDefault();
+        return;
+      }
+      if (form.matches('.variations_form') && (!Number(form.querySelector('input[name="variation_id"]')?.value) || button.classList.contains('disabled'))) {
+        event.preventDefault();
+        setPdpStatus(form, 'incomplete', 'Choose an available size before adding this piece.');
+        return;
+      }
       button.setAttribute('aria-busy', 'true');
       button.dataset.sr2OriginalLabel = button.textContent;
       button.textContent = 'Adding…';
     });
+    window.addEventListener('pageshow', restoreCartButton);
     // WooCommerce emits its cart lifecycle through jQuery when that runtime is
     // present. Keep a native listener as a progressive fallback for a custom
     // cart integration, but never assume one event transport for both cases.
