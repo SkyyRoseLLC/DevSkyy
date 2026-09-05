@@ -37,7 +37,7 @@ while ( have_posts() ) :
 			<?php if ( $active_collection ) : ?><a href="<?php echo esc_url( skyyrose2_collection_url( $active_slug ) ); ?>"><?php echo esc_html( $active_collection['name'] ); ?></a><span aria-hidden="true">/</span><?php elseif ( $is_jersey ) : ?><span><?php echo esc_html( $presentation_name ); ?></span><span aria-hidden="true">/</span><?php endif; ?>
 			<span aria-current="page"><?php echo esc_html( $product ? $product->get_name() : get_the_title() ); ?></span>
 		</nav>
-		<?php if ( $product && skyyrose2_is_preorder_product( $product ) ) : ?><div class="sr2-product-release" role="note"><span><?php esc_html_e( 'Pre-order edition', 'skyyrose-flagship-2' ); ?></span><p><?php esc_html_e( 'Made for your order. Estimated fulfillment timing appears before checkout.', 'skyyrose-flagship-2' ); ?></p></div><?php endif; ?>
+		<?php if ( $product && skyyrose2_is_preorder_product( $product ) ) : ?><div class="sr2-product-release" role="note"><span><?php esc_html_e( 'Pre-order edition', 'skyyrose-flagship-2' ); ?></span><p><?php esc_html_e( 'Orders use standard checkout. This label does not reserve stock or defer payment. Contact Client Services for shipping estimates before ordering.', 'skyyrose-flagship-2' ); ?></p></div><?php endif; ?>
 		<section class="sr2-product-shell sr2-product-shell--house-portal" aria-label="<?php echo esc_attr( sprintf( __( '%s purchase details', 'skyyrose-flagship-2' ), $product ? $product->get_name() : get_the_title() ) ); ?>">
 			<p class="sr2-pdp-status" role="status" aria-live="polite" data-sr2-pdp-status></p>
 			<?php

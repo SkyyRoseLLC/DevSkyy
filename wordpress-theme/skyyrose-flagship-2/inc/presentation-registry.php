@@ -125,13 +125,13 @@ function skyyrose2_marketplace_service_content() {
 		'faq'              => skyyrose2_marketplace_block_sections(
 			array(
 				array( 'title' => __( 'How do I choose a size?', 'skyyrose-flagship-2' ), 'body' => __( 'Use the measurements on the size guide and compare them with a piece you already own. Product-specific fit notes remain on the product page.', 'skyyrose-flagship-2' ) ),
-				array( 'title' => __( 'When will a pre-order ship?', 'skyyrose-flagship-2' ), 'body' => __( 'The estimated fulfillment window is published before checkout and repeated in the order confirmation. Client Services shares updates if that window changes.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'When will a pre-order ship?', 'skyyrose-flagship-2' ), 'body' => __( 'Contact Client Services for a shipping estimate before ordering. A pre-order label does not establish a shipping date, stock reservation, or delayed payment.', 'skyyrose-flagship-2' ) ),
 				array( 'title' => __( 'How do I get order help?', 'skyyrose-flagship-2' ), 'body' => __( 'Send Client Services your order number and the email used at checkout. Never send payment-card details by email.', 'skyyrose-flagship-2' ) ),
 			)
 		),
 		'shipping-returns' => skyyrose2_marketplace_block_sections(
 			array(
-				array( 'title' => __( 'Order processing', 'skyyrose-flagship-2' ), 'body' => __( 'In-stock orders enter processing after payment clears. Pre-order pieces follow the fulfillment window shown before purchase.', 'skyyrose-flagship-2' ) ),
+				array( 'title' => __( 'Order processing', 'skyyrose-flagship-2' ), 'body' => __( 'Your order status appears in your account. Contact Client Services with questions about processing and shipping.', 'skyyrose-flagship-2' ) ),
 				array( 'title' => __( 'Shipping updates', 'skyyrose-flagship-2' ), 'body' => __( 'Tracking is emailed when the carrier accepts the parcel. Carrier scans and delivery estimates remain the carrier’s live authority.', 'skyyrose-flagship-2' ) ),
 				array( 'title' => __( 'Return requests', 'skyyrose-flagship-2' ), 'body' => __( 'Contact Client Services with the order number, item, and reason before sending anything back. Eligibility is confirmed against the policy and item condition.', 'skyyrose-flagship-2' ) ),
 			)

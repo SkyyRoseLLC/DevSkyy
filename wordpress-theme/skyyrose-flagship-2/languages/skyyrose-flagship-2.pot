@@ -182,10 +182,6 @@ msgstr ""
 msgid "Available"
 msgstr ""
 
-#: page.php:60
-msgid "Available to Reserve"
-msgstr ""
-
 #: functions.php:603
 msgid "Back in Oakland, the polish has a source: work, faith, and the decision to make a name mean something."
 msgstr ""
@@ -274,6 +270,10 @@ msgstr ""
 msgid "Breadcrumb"
 msgstr ""
 
+#: page.php:60
+msgid "Browse the collection"
+msgstr ""
+
 #: page.php:68
 msgid "Built by a father. Named after a daughter."
 msgstr ""
@@ -318,10 +318,6 @@ msgstr ""
 msgid "Checkout"
 msgstr ""
 
-#: page.php:57
-msgid "Checkout securely. Order updates follow from reservation through delivery."
-msgstr ""
-
 #: functions.php:622
 msgid "Choose Black Rose"
 msgstr ""
@@ -351,11 +347,7 @@ msgid "Choose based on the silhouette you want and the product-specific fit note
 msgstr ""
 
 #: functions.php:230
-msgid "Choose options to pre-order %s"
-msgstr ""
-
-#: front-page.php:148
-msgid "Choose size and confirm current fulfillment on the product page."
+msgid "Choose options for %s"
 msgstr ""
 
 #: functions.php:582
@@ -374,12 +366,24 @@ msgstr ""
 msgid "Choose the piece that lets you show up fully without giving the room all of you."
 msgstr ""
 
+#: page.php:30
+msgid "Choose the piece that speaks to you."
+msgstr ""
+
 #: template-parts/commerce/size-guide-dialog.php:20
 msgid "Choose the silhouette you want to live in."
 msgstr ""
 
+#: front-page.php:162
+msgid "Choose your piece"
+msgstr ""
+
 #: page.php:42
 msgid "Choose your seat in the room."
+msgstr ""
+
+#: front-page.php:148
+msgid "Choose your size and review price and availability on the product page."
 msgstr ""
 
 #: front-page.php:70 page.php:57
@@ -447,11 +451,15 @@ msgid "Confidence does not arrive borrowed. The first walk belongs to the child 
 msgstr ""
 
 #: page.php:57
-msgid "Confirm size, edition details, and expected fulfillment window."
+msgid "Confirm size, price, and availability. Contact Client Services for shipping estimates."
 msgstr ""
 
 #: functions.php:1585 inc/presentation-registry.php:196 inc/presentation-registry.php:239 inc/starter-content.php:27 page.php:102
 msgid "Contact"
+msgstr ""
+
+#: inc/presentation-registry.php:128
+msgid "Contact Client Services for a shipping estimate before ordering. A pre-order label does not establish a shipping date, stock reservation, or delayed payment."
 msgstr ""
 
 #: inc/presentation-registry.php:136
@@ -694,6 +702,10 @@ msgstr ""
 msgid "Footer Menu"
 msgstr ""
 
+#: front-page.php:163
+msgid "For shipping estimates, contact Client Services before ordering."
+msgstr ""
+
 #: functions.php:641
 msgid "Forbidden Garden"
 msgstr ""
@@ -758,10 +770,6 @@ msgstr ""
 msgid "His back is turned toward us and his attention stays on the room. The enchanted rose — not an empty throne — is the center of gravity."
 msgstr ""
 
-#: page.php:57
-msgid "Hold your place"
-msgstr ""
-
 #: inc/presentation-registry.php:183 inc/starter-content.php:23
 msgid "Home"
 msgstr ""
@@ -820,10 +828,6 @@ msgstr ""
 
 #: inc/demo-import.php:388
 msgid "Important:"
-msgstr ""
-
-#: inc/presentation-registry.php:134
-msgid "In-stock orders enter processing after payment clears. Pre-order pieces follow the fulfillment window shown before purchase."
 msgstr ""
 
 #: inc/presentation-registry.php:154
@@ -974,10 +978,6 @@ msgstr ""
 msgid "Luxury grows from concrete."
 msgstr ""
 
-#: woocommerce/single-product.php:40
-msgid "Made for your order. Estimated fulfillment timing appears before checkout."
-msgstr ""
-
 #: functions.php:581
 msgid "Make the origin yours."
 msgstr ""
@@ -1082,10 +1082,6 @@ msgstr ""
 msgid "No borrowed confidence. Just the first walk into a story that already has room for them."
 msgstr ""
 
-#: page.php:30
-msgid "No manufactured urgency. Clear edition status, expected timing, and your place secured."
-msgstr ""
-
 #: template-immersive-kids-capsule.php:32
 msgid "No side outfits. No stand-ins. Skyy is the monument: full color, front and center, already imagining the house she will build next."
 msgstr ""
@@ -1186,6 +1182,14 @@ msgstr ""
 msgid "Orders remain subject to acceptance, payment confirmation, and availability. Pricing or description errors may be corrected before fulfillment, with notice and an appropriate refund where required."
 msgstr ""
 
+#: page.php:30
+msgid "Orders use standard checkout. The pre-order label does not reserve stock or defer payment."
+msgstr ""
+
+#: woocommerce/single-product.php:40
+msgid "Orders use standard checkout. This label does not reserve stock or defer payment. Contact Client Services for shipping estimates before ordering."
+msgstr ""
+
 #: page.php:89
 msgid "Orders, sizing, press, collaborations, or anything between."
 msgstr ""
@@ -1262,12 +1266,8 @@ msgstr ""
 msgid "Pre-Order"
 msgstr ""
 
-#: functions.php:233
-msgid "Pre-Order %s"
-msgstr ""
-
 #: page.php:30
-msgid "Pre-Order · Limited Editions"
+msgid "Pre-Order Collection"
 msgstr ""
 
 #: woocommerce/single-product.php:40
@@ -1418,18 +1418,6 @@ msgstr ""
 msgid "Required template is missing: %s"
 msgstr ""
 
-#: front-page.php:162
-msgid "Reserve a published piece through the protected WooCommerce checkout."
-msgstr ""
-
-#: page.php:60
-msgid "Reserve now. We make each piece with intention and publish fulfillment timing before checkout."
-msgstr ""
-
-#: page.php:30
-msgid "Reserve the piece before the world moves on."
-msgstr ""
-
 #: search.php:18
 msgid "Results for “%s”"
 msgstr ""
@@ -1448,6 +1436,22 @@ msgstr ""
 
 #: inc/demo-import.php:379
 msgid "Reused"
+msgstr ""
+
+#: page.php:60
+msgid "Review each product before ordering. Contact Client Services if you need a shipping estimate."
+msgstr ""
+
+#: page.php:57
+msgid "Review your order"
+msgstr ""
+
+#: page.php:57
+msgid "Review your order at checkout and follow its status in your account."
+msgstr ""
+
+#: front-page.php:162
+msgid "Review your piece and place an order through checkout."
 msgstr ""
 
 #: template-parts/home/kids-capsule-reveal.php:67
@@ -1506,20 +1510,12 @@ msgstr ""
 msgid "Secure checkout"
 msgstr ""
 
-#: front-page.php:162
-msgid "Secure yours"
-msgstr ""
-
 #: functions.php:533
 msgid "Security check failed."
 msgstr ""
 
 #: template-parts/home/kids-capsule-reveal.php:44
 msgid "See the %s set"
-msgstr ""
-
-#: front-page.php:163
-msgid "See the current fulfillment expectation before you place the order."
 msgstr ""
 
 #: page.php:57
@@ -1934,10 +1930,6 @@ msgstr ""
 msgid "The doors open for her."
 msgstr ""
 
-#: inc/presentation-registry.php:128
-msgid "The estimated fulfillment window is published before checkout and repeated in the order confirmation. Client Services shares updates if that window changes."
-msgstr ""
-
 #: template-immersive-black-rose.php:33
 msgid "The first bloom appears where the world said it did not belong. The garden does not soften it. The darkness lets every edge become visible."
 msgstr ""
@@ -2106,7 +2098,7 @@ msgstr ""
 msgid "Verified on-model looks from the three opening SkyyRose collection worlds"
 msgstr ""
 
-#: functions.php:235 template-parts/commerce/product-card.php:96
+#: functions.php:233 functions.php:235 template-parts/commerce/product-card.php:96
 msgid "View %s"
 msgstr ""
 
@@ -2131,7 +2123,7 @@ msgid "View piece"
 msgstr ""
 
 #: page.php:30
-msgid "View reservable pieces"
+msgid "View pieces"
 msgstr ""
 
 #: template-parts/immersive/world.php:191
@@ -2220,6 +2212,10 @@ msgstr ""
 
 #: woocommerce/checkout/form-checkout.php:9
 msgid "Your details"
+msgstr ""
+
+#: inc/presentation-registry.php:134
+msgid "Your order status appears in your account. Contact Client Services with questions about processing and shipping."
 msgstr ""
 
 #: woocommerce/checkout/form-checkout.php:9

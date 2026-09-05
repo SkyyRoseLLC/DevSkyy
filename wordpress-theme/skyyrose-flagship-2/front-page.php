@@ -145,7 +145,7 @@ get_header();
 				<h2 id="sr-house-featured-title"><?php echo esc_html( $featured_product->get_name() ); ?></h2>
 				<div class="sr-house-featured__price"><span><?php esc_html_e( 'Live price', 'skyyrose-flagship-2' ); ?></span><?php echo wp_kses_post( $featured_product->get_price_html() ); ?></div>
 				<p class="sr-house-featured__availability"><?php echo esc_html( $featured_product->is_in_stock() ? __( 'Published and available', 'skyyrose-flagship-2' ) : __( 'Currently unavailable', 'skyyrose-flagship-2' ) ); ?></p>
-				<p><?php esc_html_e( 'Choose size and confirm current fulfillment on the product page.', 'skyyrose-flagship-2' ); ?></p>
+				<p><?php esc_html_e( 'Choose your size and review price and availability on the product page.', 'skyyrose-flagship-2' ); ?></p>
 				<a class="sr-home__button sr-home__button--line" href="<?php echo esc_url( $featured_product->get_permalink() ); ?>"><?php esc_html_e( 'Enter the product scene', 'skyyrose-flagship-2' ); ?> ↗</a>
 			</div>
 			<div class="sr-house-featured__details">
@@ -159,8 +159,8 @@ get_header();
 	<section class="sr-house-confidence" aria-labelledby="sr-house-confidence-title">
 		<h2 id="sr-house-confidence-title"><?php esc_html_e( 'Pre-order with confidence', 'skyyrose-flagship-2' ); ?></h2>
 		<div>
-			<article><span aria-hidden="true">01</span><h3><?php esc_html_e( 'Secure yours', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Reserve a published piece through the protected WooCommerce checkout.', 'skyyrose-flagship-2' ); ?></p></article>
-			<article><span aria-hidden="true">02</span><h3><?php esc_html_e( 'Built to deliver', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'See the current fulfillment expectation before you place the order.', 'skyyrose-flagship-2' ); ?></p></article>
+			<article><span aria-hidden="true">01</span><h3><?php esc_html_e( 'Choose your piece', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Review your piece and place an order through checkout.', 'skyyrose-flagship-2' ); ?></p></article>
+			<article><span aria-hidden="true">02</span><h3><?php esc_html_e( 'Built to deliver', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'For shipping estimates, contact Client Services before ordering.', 'skyyrose-flagship-2' ); ?></p></article>
 			<article><span aria-hidden="true">03</span><h3><?php esc_html_e( 'Track the chapter', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Order updates remain attached to the order and customer account.', 'skyyrose-flagship-2' ); ?></p></article>
 			<article><span aria-hidden="true">04</span><h3><?php esc_html_e( 'House support', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Fit, shipping, and service guidance stay available before and after checkout.', 'skyyrose-flagship-2' ); ?></p></article>
 		</div>

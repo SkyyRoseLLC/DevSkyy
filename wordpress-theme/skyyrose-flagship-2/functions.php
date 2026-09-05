@@ -227,10 +227,10 @@ function skyyrose2_scene_product_action_label( $product, $preorder_requested = f
 		return sprintf( __( 'View %s — currently unavailable', 'skyyrose-flagship-2' ), $name );
 	}
 	if ( $is_preorder && method_exists( $product, 'is_type' ) && $product->is_type( 'variable' ) ) {
-		return sprintf( __( 'Choose options to pre-order %s', 'skyyrose-flagship-2' ), $name );
+		return sprintf( __( 'Choose options for %s', 'skyyrose-flagship-2' ), $name );
 	}
 	if ( $is_preorder ) {
-		return sprintf( __( 'Pre-Order %s', 'skyyrose-flagship-2' ), $name );
+		return sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $name );
 	}
 	return sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $name );
 }
