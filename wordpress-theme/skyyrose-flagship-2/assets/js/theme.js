@@ -15,30 +15,6 @@
   if (reducedMotion || saveData) {
     root.classList.add('sr2-motion-reduced');
   }
-  document.querySelectorAll('[data-brand-animation]').forEach((image) => {
-    if (reducedMotion || saveData) {
-      return;
-    }
-
-    const loadAnimation = () => {
-      if (image.dataset.brandAnimationLoaded === 'true') return;
-      image.dataset.brandAnimationLoaded = 'true';
-      image.src = image.dataset.brandAnimation;
-    };
-
-    // Below-fold brand motion stays on its tiny still until it approaches the
-    // viewport. The header animation remains immediate and layout-stable.
-    if (image.dataset.brandAnimationMode === 'viewport' && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        if (!entries[0]?.isIntersecting) return;
-        loadAnimation();
-        observer.disconnect();
-      }, { rootMargin: '320px 0px' });
-      observer.observe(image);
-      return;
-    }
-    loadAnimation();
-  });
 
   /* One lifecycle owns shell navigation and every native dialog. Native modal
      semantics remain intact, including third-party/mascot showModal() calls. */
@@ -581,55 +557,7 @@
 
   document.querySelectorAll('[data-horizontal-rail]').forEach(setupRail);
 
-  document.querySelectorAll('[data-interactive-scene]').forEach((scene) => {
-    const hotspots = Array.from(scene.querySelectorAll('[data-scene-hotspot]'));
-    const cards = Array.from(scene.querySelectorAll('[data-scene-card]'));
-    const activate = (index) => {
-      hotspots.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index));
-      cards.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index));
-    };
-    hotspots.forEach((hotspot, index) => {
-      hotspot.addEventListener('mouseenter', () => activate(index));
-      hotspot.addEventListener('focus', () => activate(index));
-    });
-    cards.forEach((card, index) => {
-      card.addEventListener('mouseenter', () => activate(index));
-      card.addEventListener('focus', () => activate(index));
-    });
-  });
 
-  const setupProductReel = (card) => {
-    const frames = card.querySelectorAll('.sr2-c-product-card__reel-frame, .sr2-c-product-portal__reel-frame');
-    if (frames.length < 2 || reducedMotion || !finePointer) return;
-
-    let timer = 0;
-    let activeIndex = 0;
-    const setFrame = (index) => {
-      activeIndex = index % frames.length;
-      card.style.setProperty('--sr2-reel-index', String(activeIndex));
-    };
-    const stop = () => {
-      if (timer) window.clearInterval(timer);
-      timer = 0;
-      card.dataset.reelState = 'idle';
-      setFrame(0);
-    };
-    const play = () => {
-      if (timer) return;
-      card.dataset.reelState = 'playing';
-      setFrame(0);
-      timer = window.setInterval(() => setFrame(activeIndex + 1), 1500);
-    };
-
-    card.addEventListener('pointerenter', play);
-    card.addEventListener('pointerleave', stop);
-    card.addEventListener('focusin', play);
-    card.addEventListener('focusout', (event) => {
-      if (!card.contains(event.relatedTarget)) stop();
-    });
-  };
-
-  document.querySelectorAll('[data-product-reel]').forEach(setupProductReel);
 
   /* Product-card quick view is a progressive layer over the direct PDP link.
    * All facts are copied from the live card payload; the full product page
@@ -674,6 +602,7 @@
   if (sizeGuide && typeof sizeGuide.showModal === 'function') {
     document.querySelectorAll('[data-size-guide-open]').forEach((button) => {
       button.addEventListener('click', (event) => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         if (overlays.openDialog(sizeGuide, button)) event.preventDefault();
       });
     });
@@ -725,17 +654,6 @@
   }
 
   if (finePointer && !reducedMotion) {
-    document.querySelectorAll('[data-depth-card]').forEach((card) => {
-      card.addEventListener('pointermove', (event) => {
-        const bounds = card.getBoundingClientRect();
-        const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-        const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-        card.style.transform = `perspective(900px) rotateX(${-y * 2.5}deg) rotateY(${x * 2.5}deg) translateY(-2px)`;
-      });
-      card.addEventListener('pointerleave', () => {
-        card.style.transform = '';
-      });
-    });
 
     document.querySelectorAll('[data-hero-depth]').forEach((hero) => {
       const media = hero.querySelector('img');
@@ -751,71 +669,6 @@
     });
   }
 
-  /* Cinematic hero video: opt-in enhancement over the poster/static hero. */
-  const heroVideo = document.querySelector('[data-hero-video]');
-  const heroNav = document.querySelector('.sr-home__hero-nav');
-  if (heroVideo) {
-    const heroSource = heroVideo.querySelector('source[data-src]');
-    const canPlayHero = !reducedMotion && !saveData && window.matchMedia('(min-width: 48em)').matches;
-    const FADE_MS = 500;
-    let fadeFrame = 0;
-    let fadeStart = 0;
-    let fadeFrom = 0;
-    let fadeTarget = 0;
-
-    const fadeTo = (target) => {
-      if (reducedMotion || saveData) {
-        heroVideo.style.opacity = String(target);
-        return;
-      }
-      fadeStart = performance.now();
-      fadeFrom = Number.parseFloat(heroVideo.style.opacity || getComputedStyle(heroVideo).opacity) || 0;
-      fadeTarget = target;
-      if (fadeFrame) return;
-      const tick = (now) => {
-        const progress = Math.min(1, (now - fadeStart) / FADE_MS);
-        const eased = 1 - ((1 - progress) ** 3);
-        const lerped = fadeFrom + ((fadeTarget - fadeFrom) * eased);
-        heroVideo.style.opacity = String(lerped);
-        if (progress < 1) {
-          fadeFrame = window.requestAnimationFrame(tick);
-        } else {
-          fadeFrame = 0;
-        }
-      };
-      fadeFrame = window.requestAnimationFrame(tick);
-    };
-
-    const stopHero = () => {
-      if (fadeFrame) window.cancelAnimationFrame(fadeFrame);
-      fadeFrame = 0;
-      heroVideo.pause();
-      heroVideo.style.opacity = '1';
-    };
-
-    if (!canPlayHero || !heroSource) {
-      stopHero();
-    } else {
-      heroSource.src = heroSource.dataset.src;
-      heroVideo.addEventListener('loadeddata', () => {
-        heroVideo.play().then(() => fadeTo(1)).catch(() => {});
-      }, { once: true });
-      heroVideo.addEventListener('error', stopHero, { once: true });
-      heroVideo.addEventListener('timeupdate', () => {
-        if (Number.isFinite(heroVideo.duration) && heroVideo.duration - heroVideo.currentTime <= 0.55) fadeTo(0);
-      });
-      heroVideo.addEventListener('ended', () => {
-        heroVideo.style.opacity = '0';
-        heroVideo.currentTime = 0;
-        window.setTimeout(() => heroVideo.play().then(() => fadeTo(1)).catch(() => {}), 100);
-      });
-      heroVideo.load();
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) stopHero();
-      });
-      window.addEventListener('pagehide', stopHero, { once: true });
-    }
-  }
 
   /* V2 collection model loop. CSS owns the seamless track; JavaScript adds
      explicit user, visibility, and viewport pause states without taking over
@@ -872,11 +725,6 @@
     syncModelLoop();
   }
 
-  if (heroNav) {
-    const updateHeroNav = () => heroNav.classList.toggle('is-scrolled', window.scrollY > 100);
-    updateHeroNav();
-    window.addEventListener('scroll', updateHeroNav, { passive: true });
-  }
 
   /* WooCommerce owns variation resolution and cart writes. This adapter only
      reflects confirmed form events as V2 state/status; it never calculates
@@ -966,38 +814,4 @@
     heroHeadline.replaceChildren(fragment);
   }
 
-  const bayMap = document.querySelector('[data-bay-map]');
-  if (bayMap) {
-    const stops = Array.from(bayMap.querySelectorAll('[data-bay-stop]'));
-    const status = bayMap.querySelector('[data-bay-status]');
-    const labels = {
-      oakland: 'Oakland · The root',
-      'san-francisco': 'San Francisco · The fog',
-      'san-jose': 'San Jose · The night',
-    };
-    const lightStop = (stop, index) => {
-      window.setTimeout(() => {
-        stop.classList.add('is-lit');
-        if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
-      }, reducedMotion ? 0 : index * 650);
-    };
-    const lightAll = () => {
-      bayMap.classList.add('is-active');
-      stops.forEach(lightStop);
-    };
-    if (reducedMotion || !('IntersectionObserver' in window)) {
-      lightAll();
-    } else {
-      const mapObserver = new IntersectionObserver((entries, observer) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
-        lightAll();
-        observer.disconnect();
-      }, { threshold: 0.35 });
-      mapObserver.observe(bayMap);
-    }
-    stops.forEach((stop, index) => stop.addEventListener('focus', () => {
-      stop.classList.add('is-lit');
-      if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
-    }));
-  }
 })();

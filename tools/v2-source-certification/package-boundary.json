@@ -205,6 +205,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/collection-world.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/collection-world.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
     "assets/css/controls.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3A global shell or canonical control styles",
@@ -265,14 +275,14 @@
       "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
       "release": true
     },
-    "assets/css/legacy-product-page.css": {
+    "assets/css/legacy-world-components.css": {
       "category": "RUNTIME SOURCE",
-      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
+      "reason": "Phase3B reviewed page implementation",
       "release": true
     },
-    "assets/css/legacy-product-page.min.css": {
+    "assets/css/legacy-world-components.min.css": {
       "category": "GENERATED RUNTIME",
-      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
+      "reason": "Deterministic minified page stylesheet",
       "release": true
     },
     "assets/css/mascot.css": {
@@ -283,6 +293,16 @@
     "assets/css/mascot.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/product-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/product-page.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Deterministic minified page stylesheet",
       "release": true
     },
     "assets/css/shop-page.css": {
@@ -2375,6 +2395,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "inc/pdp-media-delivery.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
     "inc/performance.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2695,6 +2720,31 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "template-parts/collections/arrival.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/next-world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/product-edit.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/story.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "template-parts/collections/world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
     "template-parts/commerce/hero-composed-scene.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2723,6 +2773,11 @@
     "template-parts/commerce/size-guide-dialog.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/commerce/town-line.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
       "release": true
     },
     "template-parts/home/kids-capsule-reveal.php": {
@@ -2793,6 +2848,11 @@
     "woocommerce/single-product.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "woocommerce/single-product/product-image.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
       "release": true
     }
   },

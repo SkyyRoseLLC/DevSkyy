@@ -7,6 +7,14 @@
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
+  "assets/css/collection-world.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/collection-world.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
   "assets/css/controls.min.css": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",
@@ -55,11 +63,11 @@
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
-  "assets/css/legacy-product-page.min.css": {
+  "assets/css/legacy-world-components.min.css": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",
     "released": true,
-    "source": "assets/css/legacy-product-page.css",
+    "source": "assets/css/legacy-world-components.css",
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
@@ -68,6 +76,14 @@
     "normalization": "No trailing newline; pinned minifier settings",
     "released": true,
     "source": "assets/css/mascot.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/product-page.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/product-page.css",
     "tool": "clean-css 5.3.3",
     "tracked": true
   },

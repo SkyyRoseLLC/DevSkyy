@@ -17,6 +17,7 @@ require_once SKYYROSE2_DIR . '/inc/performance.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
+require_once SKYYROSE2_DIR . '/inc/pdp-media-delivery.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
 require_once SKYYROSE2_DIR . '/inc/global-shell.php';
 require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
@@ -322,6 +323,8 @@ function skyyrose2_asset_version( $relative_path ) {
 
 function skyyrose2_assets() {
 	$suffix = skyyrose2_asset_suffix();
+	$collection_slug = skyyrose2_collection_page_slug();
+	$is_editorial_collection = skyyrose2_collection_world_enabled( $collection_slug );
 	$house_motion_suffix = $suffix && file_exists( SKYYROSE2_DIR . '/assets/js/house-of-roses-motion.min.js' ) ? '.min' : '';
 	$kids_reveal_suffix = $suffix && file_exists( SKYYROSE2_DIR . '/assets/js/kids-capsule-reveal.min.js' ) ? '.min' : '';
 	$tokens_asset = '/assets/css/design-tokens' . $suffix . '.css';
@@ -338,14 +341,20 @@ function skyyrose2_assets() {
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . $theme_asset, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $theme_asset ) );
 	// Page composition stays off unrelated routes; controls and shell stay shared.
 	$page_styles = array();
+	if ( ! $is_editorial_collection && ! ( function_exists( 'is_product' ) && is_product() ) && ! ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) ) {
+		$page_styles[] = 'legacy-world-components';
+	}
 	if ( is_front_page() ) {
 		$page_styles[] = 'legacy-home-page';
 	}
 	if ( function_exists( 'is_product' ) && is_product() ) {
-		$page_styles[] = 'legacy-product-page';
+		$page_styles[] = 'product-page';
 	}
 	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
 		$page_styles[] = 'shop-page';
+	}
+	if ( $is_editorial_collection ) {
+		$page_styles[] = 'collection-world';
 	}
 	foreach ( $page_styles as $page_style ) {
 		$asset = '/assets/css/' . $page_style . $suffix . '.css';
@@ -357,8 +366,10 @@ function skyyrose2_assets() {
 	}
 	if ( class_exists( 'WooCommerce' ) && ! is_checkout() ) { wp_enqueue_script( 'wc-cart-fragments' ); }
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, class_exists( 'WooCommerce' ) && ! is_checkout() ? array( 'wc-cart-fragments', 'wc-add-to-cart' ) : array(), skyyrose2_asset_version( $theme_script ), true );
-	wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
-	if ( is_page_template( array( 'template-collection.php', 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-signature.php' ) ) ) {
+	if ( is_front_page() || ( 'black-rose' === $collection_slug && ! $is_editorial_collection ) ) {
+		wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
+	}
+	if ( ( ! $is_editorial_collection && ( $collection_slug || is_page_template( 'template-collection.php' ) ) ) || is_page_template( array( 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-signature.php' ) ) ) {
 		$scene_base_style = '/assets/css/hero-commerce-scenes' . $suffix . '.css';
 		$scene_style = '/assets/css/collection-scene-motion' . $suffix . '.css';
 		$scene_script = '/assets/js/collection-scene-motion' . $suffix . '.js';
@@ -373,7 +384,7 @@ function skyyrose2_assets() {
 	if (
 		function_exists( 'is_woocommerce' ) &&
 		(
-			is_page_template( 'template-collection.php' ) ||
+			$collection_slug || is_page_template( 'template-collection.php' ) ||
 			is_page_template( 'template-preorder.php' ) ||
 			is_page_template( 'template-parts/v2-preorder.php' )
 		)
@@ -427,7 +438,8 @@ function skyyrose2_seo_context() {
 		if ( $product ) {
 			$context['title']       = $product->get_name() . ' | ' . get_bloginfo( 'name' );
 			$context['description'] = wp_strip_all_tags( $product->get_short_description() ?: $product->get_name() . ' · ' . __( 'SkyyRose collection piece.', 'skyyrose-flagship-2' ) );
-			$context['image']       = $product->get_image_id() ? wp_get_attachment_image_url( $product->get_image_id(), 'full' ) : $context['image'];
+			$media                 = skyyrose2_product_commerce_media( $product );
+			$context['image']       = ! empty( $media['ids'] ) ? wp_get_attachment_image_url( $media['ids'][0], 'full' ) : '';
 			$context['type']        = 'product';
 		}
 	} elseif ( is_single() ) {
@@ -470,8 +482,8 @@ function skyyrose2_seo_head() {
 	<meta property="og:title" content="<?php echo esc_attr( $context['title'] ); ?>">
 	<meta property="og:description" content="<?php echo esc_attr( $context['description'] ); ?>">
 	<meta property="og:url" content="<?php echo esc_url( is_singular() ? get_permalink() : home_url( add_query_arg( array(), $GLOBALS['wp']->request ?? '' ) ) ); ?>">
-	<meta property="og:image" content="<?php echo esc_url( $context['image'] ); ?>">
-	<meta name="twitter:card" content="summary_large_image">
+	<?php if ( ! empty( $context['image'] ) ) : ?><meta property="og:image" content="<?php echo esc_url( $context['image'] ); ?>"><?php endif; ?>
+	<meta name="twitter:card" content="<?php echo empty( $context['image'] ) ? 'summary' : 'summary_large_image'; ?>">
 	<?php
 }
 add_action( 'wp_head', 'skyyrose2_seo_head', 4 );
@@ -686,7 +698,7 @@ function skyyrose2_collections() {
 			// Founder-directed cathedral monuments. V1 Beauty and the Beast remains a world chapter below.
 			'hero'       => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp',
 			'hero_tablet' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp',
-			'hero_mobile' => 'images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp',
+			'hero_mobile' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp',
 			'portrait'   => 'scene-3-love-hurts.webp',
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/love-hurts-lockup.webp',
@@ -1589,18 +1601,39 @@ function skyyrose2_render_collection_rail() {
 	<?php
 }
 
+/** Explicit rollout boundary shared by template and asset consumers. */
+function skyyrose2_collection_world_enabled( $slug ) {
+	return in_array( $slug, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true );
+}
+
+/** Matching responsive delivery for the static collection arrival and its preload. */
+function skyyrose2_collection_arrival_media( $collection ) {
+	return array(
+		'src' => skyyrose2_sot_asset_uri( $collection['hero'] ),
+		'srcset' => implode( ', ', array( skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) . ' 640w', skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) . ' 1024w', skyyrose2_sot_asset_uri( $collection['hero'] ) . ' 1440w' ) ),
+		'sizes' => '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 95.75em) calc(60vw - 2.4rem), 881px',
+	);
+}
+
+/** One exact collection-route predicate shared by templates and asset delivery. */
+function skyyrose2_collection_page_slug() {
+	if ( ! is_page() ) {
+		return '';
+	}
+	$id = get_queried_object_id();
+	$slug = sanitize_title( get_post_field( 'post_name', $id ) );
+	if ( ! array_key_exists( $slug, skyyrose2_collections() ) ) {
+		return '';
+	}
+	if ( is_page_template( 'template-collection.php' ) ) {
+		return $slug;
+	}
+	return function_exists( 'get_page_uri' ) && 'collections/' . $slug === trim( (string) get_page_uri( $id ), '/' ) ? $slug : '';
+}
+
 /** Route collection child pages without manual template assignment. */
 function skyyrose2_collection_template( $template ) {
-	if ( ! is_page() ) {
-		return $template;
-	}
-	$page_id = get_queried_object_id();
-	$slug    = sanitize_title( get_post_field( 'post_name', $page_id ) );
-	if ( array_key_exists( $slug, skyyrose2_collections() ) ) {
-		$expected_path = 'collections/' . $slug;
-		if ( function_exists( 'get_page_uri' ) && $expected_path !== trim( (string) get_page_uri( $page_id ), '/' ) ) {
-			return $template;
-		}
+	if ( skyyrose2_collection_page_slug() ) {
 		$collection_template = SKYYROSE2_DIR . '/template-collection.php';
 		if ( file_exists( $collection_template ) ) {
 			return $collection_template;

@@ -26,6 +26,7 @@ function is_page() { return $GLOBALS['sr2_route']['page']; }
 function is_single() { return $GLOBALS['sr2_route']['single']; }
 function is_singular( $type = '' ) { return $type ? $GLOBALS['sr2_route']['singular'] === $type : (bool) $GLOBALS['sr2_route']['singular']; }
 function is_page_template( $templates ) { return (bool) array_intersect( (array) $templates, $GLOBALS['sr2_templates'] ); }
+function skyyrose2_collection_page_slug() { return $GLOBALS['sr2_inferred_collection'] ?? ''; }
 function is_user_logged_in() { return false; }
 function wp_dequeue_style( $handle ) { $GLOBALS['sr2_styles'][] = $handle; }
 function wp_dequeue_script( $handle ) { $GLOBALS['sr2_scripts'][] = $handle; }
@@ -46,6 +47,11 @@ function skyyrose2_collections() {
 	);
 }
 
+$source = file_get_contents( dirname( __DIR__ ) . '/functions.php' );
+$start = strpos( $source, '/** Explicit rollout boundary shared by template and asset consumers.' );
+$end = strpos( $source, '/** One exact collection-route predicate', $start );
+if ( false === $start || false === $end ) { throw new Exception( 'Missing arrival media contract' ); }
+eval( substr( $source, $start, $end - $start ) );
 require dirname( __DIR__ ) . '/inc/performance.php';
 
 function sr2_assert( $condition, $message ) {
@@ -87,7 +93,13 @@ $GLOBALS['sr2_route']['front'] = false;
 $GLOBALS['sr2_templates']      = array( 'template-collection.php' );
 $GLOBALS['sr2_post_slug']      = 'signature';
 $collection                    = skyyrose2_performance_route_preloads();
-sr2_assert( 3 === count( $collection ), 'collection route mirrors responsive hero art direction' );
+sr2_assert( 1 === count( $collection ) && ! empty( $collection[0]['imagesrcset'] ), 'static Signature uses one matching responsive preload' );
+sr2_assert( $collection[0]['imagesizes'] === skyyrose2_collection_arrival_media( skyyrose2_collections()['signature'] )['sizes'], 'image and preload share exact slot contract' );
+$GLOBALS['sr2_templates'] = array();
+$GLOBALS['sr2_inferred_collection'] = 'signature';
+sr2_assert( $collection === skyyrose2_performance_route_preloads(), 'automatic collection route has identical matching hero hints' );
+$GLOBALS['sr2_inferred_collection'] = '';
+$GLOBALS['sr2_templates'] = array( 'template-collection.php' );
 
 $attachment = (object) array( 'ID' => 9 );
 $attributes = skyyrose2_performance_image_attributes(
@@ -131,4 +143,18 @@ foreach ( array( false, true ) as $is_front ) {
 	sr2_assert( 'defer' === $GLOBALS['sr2_strategies']['skyyrose2-theme']['strategy'], 'theme optimization remains active on every route' );
 }
 
+// Product preload may never bypass rejected/editorial resolver authority.
+function wc_get_product( $id ) { return (object) array( 'id' => $id ); }
+function skyyrose2_product_commerce_media( $product ) { return $GLOBALS['sr2_test_media']; }
+function wp_get_attachment_image_src( $id, $size ) { return array( 'https://example.test/media/' . $id . '.webp', 640, 960 ); }
+function wp_get_attachment_image_srcset( $id, $size ) { return false; }
+$GLOBALS['sr2_route'] = array( 'front' => false, 'page' => false, 'single' => false, 'singular' => 'product' );
+$GLOBALS['sr2_templates'] = array();
+$GLOBALS['sr2_test_media'] = array( 'state' => 'editorial', 'ids' => array( 77, 78 ) );
+$resolved_preload = skyyrose2_performance_route_preloads();
+sr2_assert( 1 === count( $resolved_preload ) && str_contains( $resolved_preload[0]['href'], '/77.webp' ), 'PDP preload uses resolved primary, not arbitrary native attachment' );
+$GLOBALS['sr2_test_media'] = array( 'state' => 'rejected', 'ids' => array() );
+sr2_assert( array() === skyyrose2_performance_route_preloads(), 'Rejected PDP has no product image preload' );
+$GLOBALS['sr2_test_media'] = array( 'state' => 'missing', 'ids' => array() );
+sr2_assert( array() === skyyrose2_performance_route_preloads(), 'Missing PDP has no fictional preload' );
 fwrite( STDOUT, "PASS performance contract\n" );

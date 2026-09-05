@@ -33,7 +33,7 @@ add_action( 'init', 'skyyrose2_performance_disable_emojis', 1 );
  * @return bool
  */
 function skyyrose2_performance_is_governed_route() {
-	if ( is_front_page() || is_page_template( 'template-collection.php' ) ) {
+	if ( is_front_page() || is_page_template( 'template-collection.php' ) || ( function_exists( 'skyyrose2_collection_page_slug' ) && skyyrose2_collection_page_slug() ) ) {
 		return true;
 	}
 
@@ -244,11 +244,15 @@ function skyyrose2_performance_route_preloads() {
 		);
 	}
 
-	if ( is_page_template( 'template-collection.php' ) && function_exists( 'skyyrose2_collections' ) ) {
+	if ( ( ( function_exists( 'skyyrose2_collection_page_slug' ) && skyyrose2_collection_page_slug() ) || is_page_template( 'template-collection.php' ) ) && function_exists( 'skyyrose2_collections' ) ) {
 		$slug        = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 		$collections = skyyrose2_collections();
 		$collection  = $collections[ $slug ] ?? array();
 		if ( ! empty( $collection['hero'] ) ) {
+			if ( function_exists( 'skyyrose2_collection_world_enabled' ) && skyyrose2_collection_world_enabled( $slug ) && function_exists( 'skyyrose2_collection_arrival_media' ) ) {
+				$arrival = skyyrose2_collection_arrival_media( $collection );
+				return array( array( 'href' => $arrival['src'], 'as' => 'image', 'type' => 'image/webp', 'fetchpriority' => 'high', 'imagesrcset' => $arrival['srcset'], 'imagesizes' => $arrival['sizes'] ) );
+			}
 			return skyyrose2_performance_art_directed_preloads(
 				$collection['hero'],
 				$collection['hero_tablet'] ?? $collection['hero'],
@@ -297,8 +301,14 @@ function skyyrose2_performance_route_preloads() {
 	$image_size = 'full';
 	if ( is_singular( 'product' ) && function_exists( 'wc_get_product' ) ) {
 		$product    = wc_get_product( get_queried_object_id() );
-		$image_id   = $product ? (int) $product->get_image_id() : 0;
+		// Delivery hints obey the same authority as the visible PDP gallery.
+		$media      = $product && function_exists( 'skyyrose2_product_commerce_media' ) ? skyyrose2_product_commerce_media( $product ) : array();
+		$image_id   = (int) ( $media['ids'][0] ?? 0 );
 		$image_size = 'woocommerce_single';
+		$delivery = $image_id && function_exists( 'skyyrose2_pdp_media_delivery' ) ? skyyrose2_pdp_media_delivery( $product, $image_id ) : array();
+		if ( $delivery ) {
+			return array( array( 'href' => $delivery['src'], 'as' => 'image', 'type' => 'image/webp', 'fetchpriority' => 'high', 'imagesrcset' => $delivery['srcset'], 'imagesizes' => $delivery['sizes'] ) );
+		}
 	} elseif ( is_single() ) {
 		$image_id = (int) get_post_thumbnail_id( get_queried_object_id() );
 	}

@@ -12,6 +12,20 @@ defined( 'ABSPATH' ) || exit;
 $slug        = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
 $collections = skyyrose2_collections();
 $collection  = $collections[ $slug ] ?? $collections['signature'];
+
+// Migrate one reviewed world at a time. The remaining worlds retain their
+// existing renderer and scene authority until their own composition review.
+if ( skyyrose2_collection_world_enabled( $slug ) ) {
+	get_header();
+	get_template_part( 'template-parts/collections/world', null, array(
+		'slug'        => $slug,
+		'collection'  => $collection,
+		'collections' => $collections,
+	) );
+	get_footer();
+	return;
+}
+
 $shop_url    = '#shop';
 $hero_desktop = skyyrose2_sot_asset_uri( $collection['hero'] );
 $hero_tablet  = ! empty( $collection['hero_tablet'] ) ? skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) : '';
