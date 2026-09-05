@@ -1,0 +1,130 @@
+{
+  "assets/css/collection-scene-motion.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/collection-scene-motion.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/design-tokens.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/design-tokens.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/hero-commerce-scenes.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/hero-commerce-scenes.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/immersive.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/immersive.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/mascot.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/mascot.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/theme.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/theme.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/collection-scene-motion.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/collection-scene-motion.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/house-of-roses-motion.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/house-of-roses-motion.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/immersive.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/immersive.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/kids-capsule-reveal.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/kids-capsule-reveal.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/mascot-loader.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/mascot-loader.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/mascot.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/mascot.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/skyy-3d.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/skyy-3d.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/theme.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/theme.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "data/product-presentation-registry.json": {
+    "generator": "scripts/build-product-presentation-registry.py",
+    "normalization": "Sorted JSON keys, indent 2, trailing LF",
+    "released": true,
+    "source": "tools/v2-source-certification/inputs/product-sot.json + canonical CSV garment_type_lock",
+    "tool": "Python 3.12.12 standard library",
+    "tracked": true
+  },
+  "languages/skyyrose-flagship-2.pot": {
+    "generator": "scripts/build-pot.py",
+    "normalization": "Lexically sorted messages/references, fixed header date, LF",
+    "released": true,
+    "source": "Runtime PHP; scripts/vendor/node_modules/tests/dist excluded",
+    "tool": "Python 3.12.12 standard library",
+    "tracked": true
+  }
+}

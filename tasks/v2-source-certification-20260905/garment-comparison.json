@@ -1,0 +1,233 @@
+[
+  {
+    "sku": "br-001",
+    "deployed": "crewneck",
+    "generated": "crewneck",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-002",
+    "deployed": "joggers",
+    "generated": "joggers",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-003",
+    "deployed": "jersey",
+    "generated": "jersey",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-004",
+    "deployed": "hoodie",
+    "generated": "hoodie",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-005",
+    "deployed": "hoodie",
+    "generated": "hoodie",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-006",
+    "deployed": "jacket",
+    "generated": "jacket",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-007",
+    "deployed": "shorts",
+    "generated": "shorts",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-008",
+    "deployed": "jersey",
+    "generated": "jersey",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-009",
+    "deployed": "jersey",
+    "generated": "jersey",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-010",
+    "deployed": "jersey",
+    "generated": "jersey",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-011",
+    "deployed": "hoodie",
+    "generated": "hoodie",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-012",
+    "deployed": "jersey",
+    "generated": "jersey",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-014",
+    "deployed": "jersey",
+    "generated": "jersey",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "br-015",
+    "deployed": "jersey",
+    "generated": "jersey",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "kids-001",
+    "deployed": "hoodie",
+    "generated": "hoodie",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "kids-002",
+    "deployed": "hoodie",
+    "generated": "hoodie",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "lh-002",
+    "deployed": "joggers",
+    "generated": "joggers",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "lh-003",
+    "deployed": "shorts",
+    "generated": "shorts",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "lh-004",
+    "deployed": "bomber jacket",
+    "generated": "bomber jacket",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "lh-005",
+    "deployed": "",
+    "generated": "",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "lh-006",
+    "deployed": "joggers",
+    "generated": "joggers",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-001",
+    "deployed": "shorts",
+    "generated": "shorts",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-002",
+    "deployed": "shirt",
+    "generated": "shirt",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-003",
+    "deployed": "shorts",
+    "generated": "shorts",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-005",
+    "deployed": "shirt",
+    "generated": "shirt",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-006",
+    "deployed": "hoodie",
+    "generated": "hoodie",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-007",
+    "deployed": "",
+    "generated": "",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-009",
+    "deployed": "jacket",
+    "generated": "jacket",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-011",
+    "deployed": "shirt",
+    "generated": "shirt",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-012",
+    "deployed": "shirt",
+    "generated": "shirt",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-013",
+    "deployed": "crewneck",
+    "generated": "crewneck",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-014",
+    "deployed": "sweatpants",
+    "generated": "sweatpants",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  },
+  {
+    "sku": "sg-015",
+    "deployed": "set",
+    "generated": "set",
+    "source": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv#garment_type_lock",
+    "status": "MATCH"
+  }
+]

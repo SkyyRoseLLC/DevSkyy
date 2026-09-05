@@ -9,14 +9,14 @@
     "npm": ">=9.0.0"
   },
   "scripts": {
-    "build": "npm run build:registry && npm run build:assets && npm run build:i18n",
+    "build": "npm run check:source-integrity && npm run build:registry && npm run build:assets && npm run build:i18n",
     "build:registry": "python3 scripts/build-product-presentation-registry.py",
     "build:assets": "node scripts/build-assets.mjs",
     "build:i18n": "python3 scripts/build-pot.py",
     "check:assets": "node scripts/build-assets.mjs --check",
     "check:i18n": "python3 scripts/build-pot.py --check",
     "check:registry": "python3 scripts/build-product-presentation-registry.py --check",
-    "check:commerce-scenes": "python3 scripts/validate-founder-commerce-scenes.py",
+    "check:commerce-scenes": "python3 ../../tools/v2-source-certification/check-current-scenes.py",
     "build:image-generation-proof": "python3 scripts/build-image-generation-product-proof.py",
     "check:image-judge-availability": "python3 scripts/verify-image-judge-availability.py",
     "author:vision-grounded-image-prompt": "python3 scripts/author-vision-grounded-image-prompt.py",
@@ -33,10 +33,12 @@
     "render:commerce-scenes": "bash scripts/render-founder-commerce-scenes.sh",
     "check:provisioning": "php scripts/test-marketplace-registry.php",
     "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
-    "verify": "npm run check:commerce-scenes && bash scripts/verify-marketplace.sh",
+    "verify": "npm run check:source-integrity && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-seo-indexing.php",
     "verify:workspace": "bash scripts/verify-v2-workspace.sh",
     "verify:workspace:strict": "bash scripts/verify-v2-workspace.sh --strict",
-    "package:theme": "bash scripts/package-theme.sh"
+    "package:theme": "bash scripts/package-theme.sh",
+    "check:source-integrity": "python3 ../../tools/v2-source-certification/check-integrity.py",
+    "check:legacy-founder-scenes": "python3 scripts/validate-founder-commerce-scenes.py"
   },
   "devDependencies": {
     "clean-css": "5.3.3",

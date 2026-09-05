@@ -39,7 +39,7 @@
 .sr2-hero-commerce__story h3 {
   margin: 8px 0 12px;
   font: inherit;
-  font-family: var(--font-display, "Cormorant Garamond", Georgia, serif);
+  font-family: var(--font-display, Georgia, serif);
   font-size: clamp(26px, 2.6vw, 42px);
   line-height: 1.1;
 }

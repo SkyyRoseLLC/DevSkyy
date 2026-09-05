@@ -8,6 +8,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: skyyrose-flagship-2\n"
 
+#: template-parts/commerce/product-hero.php:55
+msgid "%d published view"
+msgid_plural "%d published views"
+msgstr[0] ""
+msgstr[1] ""
+
 #: template-collection.php:33
 msgid "%s collection monument scene"
 msgstr ""
@@ -140,7 +146,7 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: woocommerce/cart/cart.php:99 woocommerce/cart/cart.php:99
+#: woocommerce/cart/cart.php:99
 msgid "Apply"
 msgstr ""
 
@@ -632,7 +638,7 @@ msgstr ""
 msgid "Explore worlds"
 msgstr ""
 
-#: functions.php:1574 inc/presentation-registry.php:248 page.php:95 page.php:102
+#: functions.php:1574 inc/presentation-registry.php:248 page.php:102 page.php:95
 msgid "FAQ"
 msgstr ""
 
@@ -1164,7 +1170,7 @@ msgstr ""
 msgid "Order processing"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7 woocommerce/checkout/thankyou.php:7
+#: woocommerce/checkout/thankyou.php:7
 msgid "Order received"
 msgstr ""
 
@@ -1468,7 +1474,7 @@ msgstr ""
 msgid "Scroll the collection monuments"
 msgstr ""
 
-#: functions.php:1531 search.php:18 search.php:18 template-parts/commerce/search-dialog.php:26
+#: functions.php:1531 search.php:18 template-parts/commerce/search-dialog.php:26
 msgid "Search"
 msgstr ""
 
@@ -1592,7 +1598,7 @@ msgstr ""
 msgid "Sign your place in the route."
 msgstr ""
 
-#: front-page.php:21 front-page.php:139 functions.php:568 inc/presentation-registry.php:185 template-immersive-signature.php:16 template-parts/commerce/search-dialog.php:30
+#: front-page.php:139 front-page.php:21 functions.php:568 inc/presentation-registry.php:185 template-immersive-signature.php:16 template-parts/commerce/search-dialog.php:30
 msgid "Signature"
 msgstr ""
 
@@ -1780,7 +1786,7 @@ msgstr ""
 msgid "Terms of Service"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7 woocommerce/checkout/thankyou.php:7
+#: woocommerce/checkout/thankyou.php:7
 msgid "Thank you."
 msgstr ""
 
@@ -1844,7 +1850,7 @@ msgstr ""
 msgid "The House, Signed"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:71 template-parts/home/kids-capsule-reveal.php:116
+#: template-parts/home/kids-capsule-reveal.php:116 template-parts/home/kids-capsule-reveal.php:71
 msgid "The Invitation"
 msgstr ""
 
@@ -2088,7 +2094,7 @@ msgstr ""
 msgid "Under a hard moon, beauty is neither hidden nor explained. It simply holds the court."
 msgstr ""
 
-#: woocommerce/cart/cart.php:100 woocommerce/cart/cart.php:100
+#: woocommerce/cart/cart.php:100
 msgid "Update bag"
 msgstr ""
 

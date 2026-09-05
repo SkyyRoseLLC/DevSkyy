@@ -17,6 +17,12 @@ CALL = re.compile(
     r"(?P<domain>'|\")skyyrose-flagship-2\4",
     re.DOTALL,
 )
+PLURAL_CALL = re.compile(
+    r"\b_n\(\s*(?P<q1>['\"])(?P<single>(?:\\.|(?!(?P=q1)).)*)(?P=q1)\s*,\s*"
+    r"(?P<q2>['\"])(?P<plural>(?:\\.|(?!(?P=q2)).)*)(?P=q2)\s*,\s*"
+    r"[^,]+,\s*['\"]skyyrose-flagship-2['\"]",
+    re.DOTALL,
+)
 
 
 def theme_version() -> str:
@@ -43,7 +49,7 @@ def po_quote(value: str) -> str:
 def collect() -> dict[str, list[str]]:
     messages: dict[str, list[str]] = defaultdict(list)
     for source in sorted(THEME.rglob("*.php")):
-        if any(part in {"node_modules", "vendor"} for part in source.parts):
+        if any(part in {"node_modules", "vendor", "scripts", "dist", "tests"} for part in source.parts):
             continue
         text = source.read_text(encoding="utf-8")
         for match in CALL.finditer(text):
@@ -53,7 +59,25 @@ def collect() -> dict[str, list[str]]:
     return dict(sorted(messages.items()))
 
 
+def collect_plurals() -> dict[str, tuple[str, list[str]]]:
+    messages: dict[str, tuple[str, list[str]]] = {}
+    for source in sorted(THEME.rglob("*.php")):
+        if any(part in {"node_modules", "vendor", "scripts", "dist", "tests"} for part in source.parts):
+            continue
+        text = source.read_text(encoding="utf-8")
+        for match in PLURAL_CALL.finditer(text):
+            singular = decode(match.group("single"), match.group("q1"))
+            plural = decode(match.group("plural"), match.group("q2"))
+            if singular in messages and messages[singular][0] != plural:
+                raise ValueError(f"Conflicting plural translation: {singular}")
+            record = messages.setdefault(singular, (plural, []))
+            line = text.count("\n", 0, match.start()) + 1
+            record[1].append(f"{source.relative_to(THEME)}:{line}")
+    return messages
+
+
 def render(messages: dict[str, list[str]]) -> str:
+    plurals = collect_plurals()
     version = theme_version()
     header = [
         'msgid ""',
@@ -68,10 +92,18 @@ def render(messages: dict[str, list[str]]) -> str:
         "",
     ]
     entries = list(header)
-    for message, references in messages.items():
+    for message in sorted(set(messages) | set(plurals)):
+        references = list(messages.get(message, []))
+        if message in plurals:
+            references.extend(plurals[message][1])
+        references = sorted(set(references))
         entries.append(f"#: {' '.join(references)}")
         entries.append(f"msgid {po_quote(message)}")
-        entries.append('msgstr ""')
+        if message in plurals:
+            entries.append(f'msgid_plural {po_quote(plurals[message][0])}')
+            entries.extend(['msgstr[0] ""', 'msgstr[1] ""'])
+        else:
+            entries.append('msgstr ""')
         entries.append("")
     return "\n".join(entries)
 
@@ -83,11 +115,11 @@ def main() -> int:
         if not OUTPUT.is_file() or OUTPUT.read_text(encoding="utf-8") != rendered:
             print("Translation catalog is stale. Run this script without --check.", file=sys.stderr)
             return 1
-        print(f"Translation catalog is current ({len(messages)} messages).")
+        print(f"Translation catalog is current ({len(messages)} singular messages, {len(collect_plurals())} plural records).")
         return 0
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(rendered, encoding="utf-8")
-    print(f"Wrote {OUTPUT} ({len(messages)} messages).")
+    print(f"Wrote {OUTPUT} ({len(messages)} singular messages, {len(collect_plurals())} plural records).")
     return 0
 
 

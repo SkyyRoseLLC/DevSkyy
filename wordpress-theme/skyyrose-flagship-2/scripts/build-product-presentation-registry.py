@@ -17,7 +17,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
-from skyyrose.core.product_sot import MANIFEST_PATH, build_manifest, serialize_manifest  # noqa: E402
+sys.path.insert(0, str(ROOT / "tools/v2-source-certification"))
+from inputs import load_product_sot, garment_types  # noqa: E402
 
 OUTPUT = Path(__file__).resolve().parents[1] / "data/product-presentation-registry.json"
 ALLOWED_COLLECTIONS = {"black-rose", "kids-capsule", "love-hurts", "signature"}
@@ -25,11 +26,8 @@ ALLOWED_SERIES = {"jersey-series"}
 
 
 def build_registry() -> dict[str, object]:
-    expected = serialize_manifest()
-    if not MANIFEST_PATH.is_file() or MANIFEST_PATH.read_text(encoding="utf-8") != expected:
-        raise ValueError("data/product-sot.json is stale; regenerate the product SOT first")
-
-    manifest = build_manifest()
+    manifest, expected = load_product_sot()
+    garments = garment_types(manifest)
     products: dict[str, dict[str, object]] = {}
     series_members: dict[str, list[tuple[int, str]]] = {
         series_slug: [] for series_slug in ALLOWED_SERIES
@@ -68,6 +66,7 @@ def build_registry() -> dict[str, object]:
         presentation = series_slug or collection
         record: dict[str, object] = {
             "collection": collection,
+            "garment_type": garments[sku],
             "presentation": presentation,
             "route": f"/{series_slug}/" if series_slug else f"/collections/{collection}/",
             "is_preorder": product["commerce"]["is_preorder"],

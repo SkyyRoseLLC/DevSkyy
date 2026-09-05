@@ -5,12 +5,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 THEME = Path(__file__).resolve().parents[1]
 SOURCE_THEME = ROOT / "wordpress-theme/skyyrose-flagship"
-PRODUCT_SOT = ROOT / "data/product-sot.json"
+sys.path.insert(0, str(ROOT / "tools/v2-source-certification"))
+from inputs import SOT as PRODUCT_SOT, load_product_sot
 MEDIA_MANIFEST = THEME / "data/opening-product-media.json"
 
 ALLOWED_ROLES = {
@@ -59,6 +61,7 @@ def validate_integrity(path: Path, integrity: dict, field: str, label: str) -> N
 
 
 def main() -> int:
+    load_product_sot()
     product_sot_bytes = PRODUCT_SOT.read_bytes()
     product_sot = json.loads(product_sot_bytes)
     media = json.loads(MEDIA_MANIFEST.read_text(encoding="utf-8"))
