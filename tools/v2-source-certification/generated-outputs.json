@@ -126,5 +126,13 @@
     "source": "Runtime PHP; scripts/vendor/node_modules/tests/dist excluded",
     "tool": "Python 3.12.12 standard library",
     "tracked": true
+  },
+  "theme.json": {
+    "generator": "../../tools/v2-runtime/sync-token-contract.cjs",
+    "normalization": "Mapped settings only, JSON indentation 2, trailing newline",
+    "released": true,
+    "source": "assets/css/design-tokens.css",
+    "tool": "Node.js 22.23.2",
+    "tracked": true
   }
 }

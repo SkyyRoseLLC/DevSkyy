@@ -43,7 +43,9 @@
     "wordpress-theme/skyyrose-flagship-2/scripts/build-assets.mjs": "8545fed50fdea47c154ce61fa21bf771d2f6189c08fb11dc1ee4b676398878f6",
     "wordpress-theme/skyyrose-flagship-2/scripts/build-pot.py": "4f85a71a9f42f002768ff0748a3eb9238917b2dea4c27dd90962b72eb07d5e05",
     "wordpress-theme/skyyrose-flagship-2/scripts/build-product-presentation-registry.py": "98ec91f1f4d87ffb7d0f88694a391524c00e30f2c423dcdbb2bc4fdbb6dfbbf6",
-    "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627"
+    "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+    "tools/v2-runtime/sync-token-contract.cjs": "15251880e011c93a663ff495361ad2b6ef81ae835af1aa55753e3e317f9f3602",
+    "tools/v2-source-certification/generated-outputs.json": "06f01747ac26799591ca76699ab0a2c5c0aa3a01127b82b1ddb55fc2c8696da8"
   },
   "node": "22.23.2",
   "npm": "10.9.8",

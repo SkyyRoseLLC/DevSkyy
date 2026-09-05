@@ -1,6 +1,7 @@
 /**
  * SkyyRose Flagship 2 design tokens.
- * Sources: data/brand/typography.json and collection SOT palette views.
+ * Phase 2 runtime primitive authority; mapped editor settings derive through
+ * tools/v2-runtime/sync-token-contract.cjs. No collection palette redesign.
  */
 
 @font-face { font-family: Archivo; src: url("../sot/fonts/archivo-latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: optional; }
@@ -45,6 +46,9 @@
 	--sr2-fast: 180ms;
 	--sr2-normal: 420ms;
 	--sr2-slow: 900ms;
+	--sr2-layer-guide: 80;
+	--sr2-layer-header: 100;
+	--sr2-layer-skip: 999;
 	--sr2-header: 76px;
 	--sr2-content: 1200px;
 	--sr2-wide: 1500px;
