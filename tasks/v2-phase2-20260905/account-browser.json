@@ -1,0 +1,31 @@
+{
+  "endpoints": [
+    {
+      "endpoint": "orders",
+      "login": true,
+      "notFound": false
+    },
+    {
+      "endpoint": "edit-account",
+      "login": true,
+      "notFound": false
+    },
+    {
+      "endpoint": "edit-address",
+      "login": true,
+      "notFound": false
+    },
+    {
+      "endpoint": "payment-methods",
+      "login": true,
+      "notFound": false
+    }
+  ],
+  "desktop": {
+    "loginForm": true,
+    "loginNonce": true,
+    "scroll": 1440,
+    "width": 1440
+  },
+  "invalidLogin": true
+}
