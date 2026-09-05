@@ -41,7 +41,7 @@
   "woocommerce/archive-product.php": "d3f4dd42d4eb656f2fe5372181b89ead4056e36d972654282dac84f79a87601c",
   "woocommerce/cart/cart.php": "617753edd2ba8f33e4054be3f35f1c1fc11514ea5b334bee8dca83134e52ddda",
   "woocommerce/checkout/form-checkout.php": "e34d6149c6e3131e4fe22ddcf7b0ae3ef8588cf27f9f7230377fa1e1328c0604",
-  "woocommerce/checkout/thankyou.php": "47b39feb16ceeca27bb095f858b162ecec4dcb42f1a98d7e67eb3ea07948a75b",
+  "woocommerce/checkout/thankyou.php": "b5f6c00637c13155ef3cd678b19b14018ed4ccd7176164c8bde0604463abbb28",
   "woocommerce/content-product.php": "458705b2077f32db264fbfc5002f28975b01fc7d07f139089d4b9330d329af13",
   "woocommerce/single-product.php": "cc1913a3b313d8ce4e2909e759d43bb51a96957697c024a0b598af1409ca04e2"
 }

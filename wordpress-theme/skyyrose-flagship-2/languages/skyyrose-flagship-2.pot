@@ -314,6 +314,10 @@ msgstr ""
 msgid "Chapter 04 · The Heir"
 msgstr ""
 
+#: woocommerce/checkout/thankyou.php:41
+msgid "Check your account or contact Client Services to confirm your order status."
+msgstr ""
+
 #: inc/presentation-registry.php:218
 msgid "Checkout"
 msgstr ""
@@ -510,7 +514,7 @@ msgstr ""
 msgid "Customers may request access, correction, or deletion where applicable, and may unsubscribe from marketing at any time."
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
+#: woocommerce/checkout/thankyou.php:32
 msgid "Date"
 msgstr ""
 
@@ -1154,7 +1158,7 @@ msgstr ""
 msgid "Opening collection worlds"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
+#: woocommerce/checkout/thankyou.php:31
 msgid "Order"
 msgstr ""
 
@@ -1162,8 +1166,8 @@ msgstr ""
 msgid "Order processing"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
-msgid "Order received"
+#: woocommerce/checkout/thankyou.php:25
+msgid "Order status"
 msgstr ""
 
 #: woocommerce/checkout/form-checkout.php:9
@@ -1230,12 +1234,12 @@ msgstr ""
 msgid "Pause rotation"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
-msgid "Payment"
+#: woocommerce/checkout/thankyou.php:16
+msgid "Payment is pending. Your order has not yet been confirmed as paid."
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
-msgid "Payment did not complete. Nothing was charged."
+#: woocommerce/checkout/thankyou.php:15
+msgid "Payment was not completed. Check your payment provider for any pending authorization before trying again."
 msgstr ""
 
 #: template-parts/commerce/quick-view.php:23
@@ -1440,6 +1444,14 @@ msgstr ""
 
 #: page.php:60
 msgid "Review each product before ordering. Contact Client Services if you need a shipping estimate."
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:28
+msgid "Review payment options"
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:23
+msgid "Review your current order status and details below."
 msgstr ""
 
 #: page.php:57
@@ -1782,10 +1794,6 @@ msgstr ""
 msgid "Terms of Service"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
-msgid "Thank you."
-msgstr ""
-
 #: page.php:38
 msgid "The Bay Tee"
 msgstr ""
@@ -2042,7 +2050,7 @@ msgstr ""
 msgid "Three moves. Your place held."
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
+#: woocommerce/checkout/thankyou.php:33
 msgid "Total"
 msgstr ""
 
@@ -2060,10 +2068,6 @@ msgstr ""
 
 #: search.php:18
 msgid "Try a collection, product, or story title."
-msgstr ""
-
-#: woocommerce/checkout/thankyou.php:7
-msgid "Try payment again"
 msgstr ""
 
 #: template-parts/commerce/search-dialog.php:25
@@ -2206,16 +2210,32 @@ msgstr ""
 msgid "Your choices"
 msgstr ""
 
-#: woocommerce/checkout/thankyou.php:7
-msgid "Your confirmation and the next order update will go to the email on your order."
-msgstr ""
-
 #: woocommerce/checkout/form-checkout.php:9
 msgid "Your details"
 msgstr ""
 
+#: woocommerce/checkout/thankyou.php:18
+msgid "Your order is being processed. Check your account for order updates."
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:19
+msgid "Your order is complete. Review the order details below."
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:21
+msgid "Your order is marked refunded. Your payment provider determines when the funds become available."
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:17
+msgid "Your order is on hold. Review the payment instructions and order updates below."
+msgstr ""
+
 #: inc/presentation-registry.php:134
 msgid "Your order status appears in your account. Contact Client Services with questions about processing and shipping."
+msgstr ""
+
+#: woocommerce/checkout/thankyou.php:20
+msgid "Your order was cancelled. Contact Client Services with any payment questions."
 msgstr ""
 
 #: woocommerce/checkout/form-checkout.php:9

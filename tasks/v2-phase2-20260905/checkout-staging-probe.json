@@ -1,0 +1,72 @@
+{
+    "failed": {
+        "unsaved_id": 0,
+        "calls": [
+            "before",
+            "gateway",
+            "after"
+        ],
+        "copy": "Order status Payment was not completed. Check your payment provider for any pending authorization before trying again. Review payment options Order0 Total&#036;25.00",
+        "unsafe_assurance": false
+    },
+    "pending": {
+        "unsaved_id": 0,
+        "calls": [
+            "before",
+            "gateway",
+            "after"
+        ],
+        "copy": "Order status Payment is pending. Your order has not yet been confirmed as paid. Review payment options Order0 Total&#036;25.00",
+        "unsafe_assurance": false
+    },
+    "on-hold": {
+        "unsaved_id": 0,
+        "calls": [
+            "before",
+            "gateway",
+            "after"
+        ],
+        "copy": "Order status Your order is on hold. Review the payment instructions and order updates below. Order0 Total&#036;25.00",
+        "unsafe_assurance": false
+    },
+    "processing": {
+        "unsaved_id": 0,
+        "calls": [
+            "before",
+            "gateway",
+            "after"
+        ],
+        "copy": "Order status Your order is being processed. Check your account for order updates. Order0 Total&#036;25.00",
+        "unsafe_assurance": false
+    },
+    "completed": {
+        "unsaved_id": 0,
+        "calls": [
+            "before",
+            "gateway",
+            "after"
+        ],
+        "copy": "Order status Your order is complete. Review the order details below. Order0 Total&#036;25.00",
+        "unsafe_assurance": false
+    },
+    "cancelled": {
+        "unsaved_id": 0,
+        "calls": [
+            "before",
+            "gateway",
+            "after"
+        ],
+        "copy": "Order status Your order was cancelled. Contact Client Services with any payment questions. Order0 Total&#036;25.00",
+        "unsafe_assurance": false
+    },
+    "refunded": {
+        "unsaved_id": 0,
+        "calls": [
+            "before",
+            "gateway",
+            "after"
+        ],
+        "copy": "Order status Your order is marked refunded. Your payment provider determines when the funds become available. Order0 Total&#036;25.00",
+        "unsafe_assurance": false
+    }
+}
