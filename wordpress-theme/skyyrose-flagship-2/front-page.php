@@ -1,179 +1,94 @@
 <?php
-/**
- * Front Page — House of Roses.
- *
- * The approved V2 composition is a house journey, not a generic product grid:
- * three opening worlds, verified on-model filmstrip, collection-owned product
- * portals, the Kids Capsule Royal Procession, a truthful featured-product
- * threshold, and the Jersey Series Skyy Rose Tour reveal. WooCommerce remains the sole
- * authority for product, price, stock, variation, cart, and checkout state.
- *
- * @package SkyyRoseFlagship2
- */
-
+/** Front Page — The Living Archive. Eight static acts, shared native commerce. @package SkyyRoseFlagship2 */
 defined( 'ABSPATH' ) || exit;
-
-$shop_url    = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
-$collections = skyyrose2_collections();
-$hero_models = array(
-	array(
-		'slug'  => 'signature',
-		'label' => __( 'Signature', 'skyyrose-flagship-2' ),
-		'sku'   => 'SG-005',
-		'href'  => skyyrose2_collection_url( 'signature' ),
-		'image' => skyyrose2_sot_asset_uri( 'images/home/on-model/signature-sg-005.webp' ),
-		'image_mobile' => skyyrose2_sot_asset_uri( 'images/home/on-model/signature-sg-005-512w.webp' ),
-	),
-	array(
-		'slug'  => 'black-rose',
-		'label' => __( 'Black Rose', 'skyyrose-flagship-2' ),
-		'sku'   => 'BR-004',
-		'href'  => skyyrose2_collection_url( 'black-rose' ),
-		'image' => skyyrose2_sot_asset_uri( 'images/home/on-model/black-rose-br-004.webp' ),
-		'image_mobile' => skyyrose2_sot_asset_uri( 'images/home/on-model/black-rose-br-004-512w.webp' ),
-	),
-	array(
-		'slug'  => 'love-hurts',
-		'label' => __( 'Love Hurts', 'skyyrose-flagship-2' ),
-		'sku'   => 'LH-004',
-		'href'  => skyyrose2_collection_url( 'love-hurts' ),
-		'image' => skyyrose2_sot_asset_uri( 'images/home/on-model/love-hurts-lh-004.webp' ),
-		'image_mobile' => skyyrose2_sot_asset_uri( 'images/home/on-model/love-hurts-lh-004-512w.webp' ),
-	),
+$archive_collections = skyyrose2_collections();
+$archive_shop = skyyrose2_shop_url();
+$archive_about = skyyrose2_marketplace_page_url( 'about' );
+$archive_artifact = skyyrose2_get_products_by_skus( array( 'sg-005' ), 'signature' );
+$archive_heirs = skyyrose2_get_products_by_skus( array( 'kids-001', 'kids-002' ), 'kids-capsule' );
+$archive_continue = array(
+	__( 'Collections', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'collections' ),
+	__( 'Shop', 'skyyrose-flagship-2' ) => $archive_shop,
+	__( 'Journal', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'journal' ),
+	__( 'Pre-Order', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'pre-order' ),
+	__( 'Client Services', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'contact' ),
 );
-$opening_cast = array(
-	'signature'  => skyyrose2_get_products_by_skus( array( 'sg-005' ), 'signature' )['sg-005'] ?? null,
-	'black-rose' => skyyrose2_get_products_by_skus( array( 'br-004' ), 'black-rose' )['br-004'] ?? null,
-	'love-hurts' => skyyrose2_get_products_by_skus( array( 'lh-004' ), 'love-hurts' )['lh-004'] ?? null,
-);
-$kids_cast        = skyyrose2_get_products_by_skus( array( 'kids-001', 'kids-002' ), 'kids-capsule' );
-$featured_product = $opening_cast['signature'];
-
 get_header();
 ?>
-<main id="primary" class="site-main sr-house" role="main" tabindex="-1">
-	<section class="sr-house-hero" aria-labelledby="sr-house-title">
-		<div class="sr-house-hero__scene" aria-hidden="true">
-			<picture>
-				<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp' ) ); ?>">
-				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp' ) ); ?>">
-				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" alt="" width="1440" height="810" fetchpriority="high" decoding="sync">
-			</picture>
-		</div>
-		<div class="sr-house-hero__atmosphere" aria-hidden="true"><span class="sr-house-hero__clouds"></span><span class="sr-house-hero__bridge-lights"></span><span class="sr-house-hero__scanline"></span></div>
-		<div class="sr-house-hero__veil" aria-hidden="true"></div>
-		<div class="sr-house-hero__copy">
-			<p class="sr-house-hero__location"><?php esc_html_e( 'Oakland, California', 'skyyrose-flagship-2' ); ?></p>
-			<h1 id="sr-house-title" data-hero-headline><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose-flagship-2' ); ?></h1>
-			<p><?php esc_html_e( 'A house built by a father, named after a daughter, and rooted in The Town.', 'skyyrose-flagship-2' ); ?></p>
-			<div class="sr-house-hero__actions">
-				<a class="sr-home__button sr-home__button--solid" href="#collections"><?php esc_html_e( 'Choose your world', 'skyyrose-flagship-2' ); ?></a>
-				<a class="sr-home__button sr-home__button--line" href="<?php echo esc_url( $shop_url ); ?>"><?php esc_html_e( 'Shop the house', 'skyyrose-flagship-2' ); ?></a>
-			</div>
-		</div>
-		<nav class="sr-house-hero__worlds" aria-label="<?php esc_attr_e( 'Opening collection worlds', 'skyyrose-flagship-2' ); ?>">
-			<?php foreach ( $hero_models as $index => $model ) : ?>
-				<a href="<?php echo esc_url( $model['href'] ); ?>"><span><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span><b><?php echo esc_html( $model['label'] ); ?></b></a>
-			<?php endforeach; ?>
-		</nav>
-	</section>
-
-	<section class="sr-house-filmstrip" aria-labelledby="sr-house-filmstrip-title">
-		<header class="screen-reader-text"><h2 id="sr-house-filmstrip-title"><?php esc_html_e( 'The opening collection filmstrip', 'skyyrose-flagship-2' ); ?></h2></header>
-		<div class="sr-home__hero-model-loop" data-home-model-loop data-loop-state="running" aria-label="<?php esc_attr_e( 'Verified on-model looks from the three opening SkyyRose collection worlds', 'skyyrose-flagship-2' ); ?>">
-			<div class="sr-home__hero-model-track">
-				<?php for ( $pass = 0; $pass < 2; $pass++ ) : ?>
-					<?php foreach ( $hero_models as $index => $model ) : ?>
-						<?php if ( 0 === $pass ) : ?><a class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" href="<?php echo esc_url( $model['href'] ); ?>"><?php else : ?><span class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" data-loop-copy="true" aria-hidden="true"><?php endif; ?>
-								<span class="sr-home__hero-model-portrait"><img src="<?php echo esc_url( $model['image'] ); ?>" srcset="<?php echo esc_attr( $model['image_mobile'] ); ?> 512w, <?php echo esc_attr( $model['image'] ); ?> 1024w" sizes="(max-width: 32.5em) calc(100vw - 2rem), (max-width: 48.75em) 50vw, 24rem" alt="<?php echo 0 === $pass ? esc_attr( sprintf( __( '%s collection on-model look', 'skyyrose-flagship-2' ), $model['label'] ) ) : ''; ?>" width="1024" height="1536" loading="<?php echo 0 === $pass && 0 === $index ? 'eager' : 'lazy'; ?>" decoding="async"></span>
-							<span class="sr-home__hero-model-caption"><b><?php echo esc_html( sprintf( '%02d · %s', $index + 1, $model['label'] ) ); ?></b><small><?php echo esc_html( $model['sku'] ); ?> · <?php esc_html_e( 'Enter the world', 'skyyrose-flagship-2' ); ?></small></span>
-						<?php if ( 0 === $pass ) : ?></a><?php else : ?></span><?php endif; ?>
-					<?php endforeach; ?>
-				<?php endfor; ?>
-			</div>
-			<button class="sr-home__hero-model-toggle" type="button" data-home-model-toggle aria-pressed="false"><?php esc_html_e( 'Pause rotation', 'skyyrose-flagship-2' ); ?></button>
-		</div>
-	</section>
-
-	<section id="collections" class="sr-house-portals" aria-labelledby="sr-house-portals-title">
-		<header class="sr-house-section-head">
-			<p><?php esc_html_e( 'Enter a world. Claim your story.', 'skyyrose-flagship-2' ); ?></p>
-			<h2 id="sr-house-portals-title"><?php esc_html_e( 'The opening three.', 'skyyrose-flagship-2' ); ?></h2>
+<main id="primary" class="sr2-archive" tabindex="-1">
+<div class="sr2-archive__inner">
+	<?php if ( function_exists( 'wc_print_notices' ) ) : ?><div class="sr2-commerce-notices" aria-live="polite"><?php wc_print_notices(); ?></div><?php endif; ?>
+	<section id="sr2-archive-arrival" class="sr2-archive-arrival" aria-labelledby="sr2-archive-title" data-archive-act="1">
+		<header class="sr2-archive-arrival__masthead">
+			<p class="sr2-world-index"><span><?php esc_html_e( 'Oakland, California', 'skyyrose-flagship-2' ); ?></span><span aria-hidden="true">I / VIII</span></p>
+			<h1 id="sr2-archive-title"><?php esc_html_e( 'SKYYROSE', 'skyyrose-flagship-2' ); ?></h1>
 		</header>
-		<div class="sr2-products sr-house-portals__grid">
-			<?php $portal_index = 0; ?>
-			<?php foreach ( $opening_cast as $product ) : ?>
-				<?php if ( $product ) : ?><?php skyyrose2_render_product_loop_card( $product, $portal_index++ ); ?><?php endif; ?>
-			<?php endforeach; ?>
+		<div class="sr2-archive-arrival__composition">
+			<div class="sr2-archive-arrival__identity">
+				<p class="sr2-archive-arrival__edition"><?php esc_html_e( 'The Living Archive', 'skyyrose-flagship-2' ); ?></p>
+				<p class="sr2-archive-arrival__intro"><?php esc_html_e( 'A house built by a father, named after a daughter, and rooted in The Town.', 'skyyrose-flagship-2' ); ?></p>
+				<div class="sr2-archive-arrival__actions"><a class="sr2-control sr2-control--primary" href="#sr2-archive-worlds"><?php esc_html_e( 'Choose your world', 'skyyrose-flagship-2' ); ?></a><a class="sr2-world-text-link" href="<?php echo esc_url( $archive_shop ); ?>"><?php esc_html_e( 'Shop the house', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a></div>
+			</div>
+			<figure class="sr2-archive-arrival__image">
+				<picture>
+					<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp' ) ); ?>">
+					<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp' ) ); ?>">
+					<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" width="1440" height="810" alt="<?php esc_attr_e( 'Black Rose monuments overlook the Bay Bridge beneath a full moon.', 'skyyrose-flagship-2' ); ?>" fetchpriority="high" loading="eager" decoding="async">
+				</picture>
+				<figcaption><span><?php esc_html_e( 'Black Rose / Bay Bridge', 'skyyrose-flagship-2' ); ?></span><span aria-hidden="true">01</span></figcaption>
+			</figure>
 		</div>
 	</section>
-
-	<?php
-	get_template_part(
-		'template-parts/home/kids-capsule-reveal',
-		null,
-		array(
-			'collection' => $collections['kids-capsule'],
-			'products'   => $kids_cast,
-		)
-	);
-	?>
-
-	<section class="sr-house-heir-product" aria-labelledby="sr-house-heir-product-title">
-		<header class="sr-house-section-head">
-			<p><?php esc_html_e( 'Chapter 04 · The Heir', 'skyyrose-flagship-2' ); ?></p>
-			<h2 id="sr-house-heir-product-title"><?php esc_html_e( 'Her first uniform.', 'skyyrose-flagship-2' ); ?></h2>
-		</header>
-		<div class="sr2-products sr-house-heir-product__grid">
-			<?php if ( ! empty( $kids_cast['kids-001'] ) ) : ?><?php skyyrose2_render_product_loop_card( $kids_cast['kids-001'], 0 ); ?><?php endif; ?>
-			<?php if ( ! empty( $kids_cast['kids-002'] ) ) : ?><?php skyyrose2_render_product_loop_card( $kids_cast['kids-002'], 1 ); ?><?php endif; ?>
-		</div>
+	<section id="sr2-archive-worlds" class="sr2-archive-worlds" aria-labelledby="sr2-archive-worlds-title" tabindex="-1" data-archive-act="2">
+		<header class="sr2-archive-section-head"><p class="sr2-world-index"><?php esc_html_e( 'II / The four worlds', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-worlds-title"><?php esc_html_e( 'Four stories. One house.', 'skyyrose-flagship-2' ); ?></h2></header>
+		<?php get_template_part( 'template-parts/home/living-archive-worlds', null, array( 'collections' => $archive_collections ) ); ?>
 	</section>
-
-	<?php if ( $featured_product ) : ?>
+	<section id="sr2-archive-oakland" class="sr2-archive-oakland" aria-labelledby="sr2-archive-oakland-title" data-archive-act="3">
+		<p class="sr2-world-index"><?php esc_html_e( 'III / Oakland', 'skyyrose-flagship-2' ); ?></p>
+		<h2 id="sr2-archive-oakland-title"><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose-flagship-2' ); ?></h2>
+		<div class="sr2-archive-oakland__provenance"><p><?php esc_html_e( 'SkyyRose began as Corey Foster’s promise to build a future Skyy Rose could recognize herself inside.', 'skyyrose-flagship-2' ); ?></p><p><?php esc_html_e( 'The house keeps Oakland in the frame: concrete, care, memory, and the refusal to shrink.', 'skyyrose-flagship-2' ); ?></p></div>
+	</section>
+	<section id="sr2-archive-artifact" class="sr2-archive-artifact" aria-labelledby="sr2-archive-artifact-title" data-archive-act="4" data-collection="signature">
+		<div class="sr2-archive-artifact__copy"><p class="sr2-world-index"><?php esc_html_e( 'IV / Product as artifact', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-artifact-title"><?php echo esc_html( $archive_collections['signature']['shop_heading'] ); ?></h2><p><?php echo esc_html( $archive_collections['signature']['card_story'] ); ?></p><a class="sr2-world-text-link" href="<?php echo esc_url( skyyrose2_collection_url( 'signature' ) ); ?>"><?php esc_html_e( 'Explore Signature', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a></div>
+		<?php if ( $archive_artifact ) : ?>
+			<?php get_template_part( 'template-parts/collections/product-edit', null, array( 'products' => array_values( $archive_artifact ) ) ); ?>
+		<?php else : ?><p class="sr2-archive-empty"><?php esc_html_e( 'This piece is not currently listed. Explore the Signature collection for its current edit.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>
+	</section>
+	<section id="sr2-archive-heir" class="sr2-archive-heir" aria-labelledby="sr2-archive-heir-title" data-archive-act="5" data-collection="kids-capsule">
+		<header class="sr2-archive-heir__heading"><p class="sr2-world-index"><?php esc_html_e( 'V / Kids Capsule', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-heir-title"><?php esc_html_e( 'The Heir', 'skyyrose-flagship-2' ); ?></h2><p><?php echo esc_html( $archive_collections['kids-capsule']['manifesto'] ); ?></p></header>
+		<?php if ( $archive_heirs ) : ?>
+			<?php get_template_part( 'template-parts/collections/product-edit', null, array( 'products' => array_values( $archive_heirs ) ) ); ?>
+		<?php else : ?><p class="sr2-archive-empty"><?php esc_html_e( 'No Kids Capsule pieces are currently listed.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>
+		<a class="sr2-world-text-link" href="<?php echo esc_url( skyyrose2_collection_url( 'kids-capsule' ) ); ?>"><?php esc_html_e( 'Enter the heir’s world', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a>
+	</section>
+	<section id="sr2-archive-town-line" class="sr2-archive-town-line" aria-labelledby="sr2-archive-town-line-title" data-archive-act="6">
+		<h2 id="sr2-archive-town-line-title" class="screen-reader-text"><?php esc_html_e( 'VI / Town Line prelude', 'skyyrose-flagship-2' ); ?></h2>
 		<?php
-		$featured_image_id = $featured_product->get_image_id();
-		$featured_gallery  = method_exists( $featured_product, 'get_gallery_image_ids' ) ? array_slice( $featured_product->get_gallery_image_ids(), 0, 2 ) : array();
+		ob_start();
+		get_template_part( 'template-parts/commerce/town-line' );
+		$archive_town_line = trim( ob_get_clean() );
+		if ( $archive_town_line ) {
+			echo $archive_town_line; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Shared template escapes native product data.
+		} else {
+			?>
+			<p class="sr2-world-index"><?php esc_html_e( 'VI / The Town Line', 'skyyrose-flagship-2' ); ?></p><p><?php esc_html_e( 'No Jersey Series pieces are currently listed.', 'skyyrose-flagship-2' ); ?></p><a class="sr2-world-text-link" href="<?php echo esc_url( $archive_shop ); ?>"><?php esc_html_e( 'Browse the Shop', 'skyyrose-flagship-2' ); ?></a>
+			<?php
+		}
 		?>
-		<section class="sr-house-featured" aria-labelledby="sr-house-featured-title" data-presentation="signature">
-			<p class="sr-house-featured__vertical" aria-hidden="true"><?php esc_html_e( 'Signature', 'skyyrose-flagship-2' ); ?></p>
-			<div class="sr-house-featured__hero">
-				<?php if ( $featured_image_id ) : ?><?php echo wp_kses_post( wp_get_attachment_image( $featured_image_id, 'woocommerce_single', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?><?php endif; ?>
-			</div>
-			<div class="sr-house-featured__summary">
-				<p><?php esc_html_e( 'Signature · Oakland, iconic, timeless.', 'skyyrose-flagship-2' ); ?></p>
-				<h2 id="sr-house-featured-title"><?php echo esc_html( $featured_product->get_name() ); ?></h2>
-				<div class="sr-house-featured__price"><span><?php esc_html_e( 'Live price', 'skyyrose-flagship-2' ); ?></span><?php echo wp_kses_post( $featured_product->get_price_html() ); ?></div>
-				<p class="sr-house-featured__availability"><?php echo esc_html( $featured_product->is_in_stock() ? __( 'Published and available', 'skyyrose-flagship-2' ) : __( 'Currently unavailable', 'skyyrose-flagship-2' ) ); ?></p>
-				<p><?php esc_html_e( 'Choose your size and review price and availability on the product page.', 'skyyrose-flagship-2' ); ?></p>
-				<a class="sr-home__button sr-home__button--line" href="<?php echo esc_url( $featured_product->get_permalink() ); ?>"><?php esc_html_e( 'Enter the product scene', 'skyyrose-flagship-2' ); ?> ↗</a>
-			</div>
-			<div class="sr-house-featured__details">
-				<?php foreach ( $featured_gallery as $gallery_id ) : ?><?php echo wp_kses_post( wp_get_attachment_image( $gallery_id, 'woocommerce_thumbnail', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?><?php endforeach; ?>
-			</div>
-		</section>
-	<?php endif; ?>
-
-	<?php skyyrose2_render_black_rose_jersey_series( false ); ?>
-
-	<section class="sr-house-confidence" aria-labelledby="sr-house-confidence-title">
-		<h2 id="sr-house-confidence-title"><?php esc_html_e( 'Pre-order with confidence', 'skyyrose-flagship-2' ); ?></h2>
-		<div>
-			<article><span aria-hidden="true">01</span><h3><?php esc_html_e( 'Choose your piece', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Review your piece and place an order through checkout.', 'skyyrose-flagship-2' ); ?></p></article>
-			<article><span aria-hidden="true">02</span><h3><?php esc_html_e( 'Built to deliver', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'For shipping estimates, contact Client Services before ordering.', 'skyyrose-flagship-2' ); ?></p></article>
-			<article><span aria-hidden="true">03</span><h3><?php esc_html_e( 'Track the chapter', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Order updates remain attached to the order and customer account.', 'skyyrose-flagship-2' ); ?></p></article>
-			<article><span aria-hidden="true">04</span><h3><?php esc_html_e( 'House support', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Fit, shipping, and service guidance stay available before and after checkout.', 'skyyrose-flagship-2' ); ?></p></article>
-		</div>
 	</section>
-
-	<section class="sr-house-legacy" aria-labelledby="sr-house-legacy-title">
-		<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/about/skyy-rose-founder-hero.webp' ) ); ?>" alt="<?php esc_attr_e( 'Skyy Rose wearing an original SkyyRose look', 'skyyrose-flagship-2' ); ?>" width="726" height="1089" loading="lazy" decoding="async">
-		<div>
-			<p><?php esc_html_e( 'The architect and his why', 'skyyrose-flagship-2' ); ?></p>
-			<h2 id="sr-house-legacy-title"><?php esc_html_e( 'A legacy in bloom.', 'skyyrose-flagship-2' ); ?></h2>
-			<p><?php esc_html_e( 'SkyyRose is more than a brand—it is a promise. To my daughter. To our city. To every soul that believes in turning pain into purpose and dreams into reality.', 'skyyrose-flagship-2' ); ?></p>
-			<a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'Read the house story', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></a>
-		</div>
+	<section id="sr2-archive-legacy" class="sr2-archive-legacy" aria-labelledby="sr2-archive-legacy-title" data-archive-act="7">
+		<figure><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/about/skyy-rose-founder-hero.webp' ) ); ?>" width="724" height="1086" alt="<?php esc_attr_e( 'Skyy Rose, the daughter whose name inspired the SkyyRose house.', 'skyyrose-flagship-2' ); ?>" loading="lazy" decoding="async"><figcaption><?php esc_html_e( 'Skyy Rose', 'skyyrose-flagship-2' ); ?></figcaption></figure>
+		<div class="sr2-archive-legacy__copy"><p class="sr2-world-index"><?php esc_html_e( 'VII / Legacy', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-legacy-title"><?php esc_html_e( 'A legacy in bloom.', 'skyyrose-flagship-2' ); ?></h2><p><?php esc_html_e( 'SkyyRose is more than a brand—it is a promise. To my daughter. To our city. To every soul that believes in turning pain into purpose and dreams into reality.', 'skyyrose-flagship-2' ); ?></p><a class="sr2-world-text-link" href="<?php echo esc_url( $archive_about ); ?>"><?php esc_html_e( 'Read the house story', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a></div>
 	</section>
+	<section id="sr2-archive-continue" class="sr2-archive-continue" aria-labelledby="sr2-archive-continue-title" data-archive-act="8">
+		<header><p class="sr2-world-index"><?php esc_html_e( 'VIII / Continue', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-continue-title"><?php esc_html_e( 'Find your next chapter.', 'skyyrose-flagship-2' ); ?></h2></header>
+		<nav aria-label="<?php esc_attr_e( 'Continue through the house', 'skyyrose-flagship-2' ); ?>"><ol>
+			<?php $archive_destination_index = 0; ?>
+			<?php foreach ( $archive_continue as $archive_label => $archive_url ) : ?>
+				<li><a href="<?php echo esc_url( $archive_url ); ?>"><span class="sr2-world-index" aria-hidden="true"><?php echo esc_html( sprintf( '%02d', ++$archive_destination_index ) ); ?></span><span><?php echo esc_html( $archive_label ); ?></span><span aria-hidden="true">↗</span></a></li>
+			<?php endforeach; ?>
+		</ol></nav>
+	</section>
+</div>
 </main>
 <?php get_footer(); ?>

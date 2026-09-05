@@ -255,6 +255,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/home-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/home-page.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
     "assets/css/immersive.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -263,16 +273,6 @@
     "assets/css/immersive.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
-    },
-    "assets/css/legacy-home-page.css": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
-      "release": true
-    },
-    "assets/css/legacy-home-page.min.css": {
-      "category": "GENERATED RUNTIME",
-      "reason": "Page composition extracted from global stylesheet; route-scoped delivery",
       "release": true
     },
     "assets/css/legacy-world-components.css": {
@@ -2783,6 +2783,11 @@
     "template-parts/home/kids-capsule-reveal.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "template-parts/home/living-archive-worlds.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
       "release": true
     },
     "template-parts/immersive/world.php": {

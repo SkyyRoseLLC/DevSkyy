@@ -670,62 +670,6 @@
   }
 
 
-  /* V2 collection model loop. CSS owns the seamless track; JavaScript adds
-     explicit user, visibility, and viewport pause states without taking over
-     scrolling or collection navigation. */
-  const heroModelLoop = document.querySelector('[data-home-model-loop]');
-  if (heroModelLoop) {
-    const loopToggle = heroModelLoop.querySelector('[data-home-model-toggle]');
-    const desktopMotion = window.matchMedia('(min-width: 781px) and (prefers-reduced-motion: no-preference)');
-    let userPaused = false;
-    let outsideViewport = false;
-
-    const motionAllowed = () => desktopMotion.matches && !saveData;
-    const syncModelLoop = () => {
-      const canMove = motionAllowed();
-      const paused = !canMove || userPaused || outsideViewport || document.hidden;
-      heroModelLoop.dataset.motion = canMove ? 'continuous' : 'static';
-      heroModelLoop.dataset.loopState = paused ? 'paused' : 'running';
-
-      if (canMove) {
-        heroModelLoop.dataset.enhanced = 'true';
-      } else {
-        delete heroModelLoop.dataset.enhanced;
-      }
-
-      if (loopToggle) {
-        loopToggle.setAttribute('aria-pressed', userPaused ? 'true' : 'false');
-        loopToggle.textContent = userPaused ? 'Resume rotation' : 'Pause rotation';
-      }
-    };
-
-    loopToggle?.addEventListener('click', () => {
-      userPaused = !userPaused;
-      syncModelLoop();
-    });
-    heroModelLoop.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && !userPaused) {
-        userPaused = true;
-        syncModelLoop();
-        loopToggle?.focus();
-      }
-    });
-    document.addEventListener('visibilitychange', syncModelLoop);
-    desktopMotion.addEventListener?.('change', syncModelLoop);
-
-    if ('IntersectionObserver' in window) {
-      const modelLoopObserver = new IntersectionObserver((entries) => {
-        outsideViewport = !entries[0]?.isIntersecting;
-        syncModelLoop();
-      }, { threshold: 0.05 });
-      modelLoopObserver.observe(heroModelLoop);
-      window.addEventListener('pagehide', () => modelLoopObserver.disconnect(), { once: true });
-    }
-
-    syncModelLoop();
-  }
-
-
   /* WooCommerce owns variation resolution and cart writes. This adapter only
      reflects confirmed form events as V2 state/status; it never calculates
      price, stock, or a variation client-side. */
@@ -799,19 +743,5 @@
     }
   });
 
-  const heroHeadline = document.querySelector('[data-hero-headline]');
-  if (heroHeadline && !reducedMotion) {
-    const words = heroHeadline.textContent.trim().split(/\s+/).filter(Boolean);
-    const fragment = document.createDocumentFragment();
-    words.forEach((word, index) => {
-      const wordElement = document.createElement('span');
-      wordElement.className = 'sr-home__hero-word';
-      wordElement.style.setProperty('--word-delay', `${index * 100}ms`);
-      wordElement.textContent = word;
-      fragment.append(wordElement);
-      if (index < words.length - 1) fragment.append(document.createTextNode(' '));
-    });
-    heroHeadline.replaceChildren(fragment);
-  }
-
+  /* End native commerce adapter. */
 })();

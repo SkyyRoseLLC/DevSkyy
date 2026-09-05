@@ -326,12 +326,10 @@ function skyyrose2_assets() {
 	$collection_slug = skyyrose2_collection_page_slug();
 	$is_editorial_collection = skyyrose2_collection_world_enabled( $collection_slug );
 	$house_motion_suffix = $suffix && file_exists( SKYYROSE2_DIR . '/assets/js/house-of-roses-motion.min.js' ) ? '.min' : '';
-	$kids_reveal_suffix = $suffix && file_exists( SKYYROSE2_DIR . '/assets/js/kids-capsule-reveal.min.js' ) ? '.min' : '';
 	$tokens_asset = '/assets/css/design-tokens' . $suffix . '.css';
 	$theme_asset  = '/assets/css/theme' . $suffix . '.css';
 	$theme_script = '/assets/js/theme' . $suffix . '.js';
 	$house_script = '/assets/js/house-of-roses-motion' . $house_motion_suffix . '.js';
-	$kids_script  = '/assets/js/kids-capsule-reveal' . $kids_reveal_suffix . '.js';
 	$mascot_style = '/assets/css/mascot' . $suffix . '.css';
 	$loader_script = '/assets/js/mascot-loader' . $suffix . '.js';
 	$mascot_script = '/assets/js/mascot' . $suffix . '.js';
@@ -341,11 +339,12 @@ function skyyrose2_assets() {
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . $theme_asset, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $theme_asset ) );
 	// Page composition stays off unrelated routes; controls and shell stay shared.
 	$page_styles = array();
-	if ( ! $is_editorial_collection && ! ( function_exists( 'is_product' ) && is_product() ) && ! ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) ) {
+	if ( ! is_front_page() && ! $is_editorial_collection && ! ( function_exists( 'is_product' ) && is_product() ) && ! ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) ) {
 		$page_styles[] = 'legacy-world-components';
 	}
 	if ( is_front_page() ) {
-		$page_styles[] = 'legacy-home-page';
+		$page_styles[] = 'collection-world';
+		$page_styles[] = 'home-page';
 	}
 	if ( function_exists( 'is_product' ) && is_product() ) {
 		$page_styles[] = 'product-page';
@@ -366,7 +365,7 @@ function skyyrose2_assets() {
 	}
 	if ( class_exists( 'WooCommerce' ) && ! is_checkout() ) { wp_enqueue_script( 'wc-cart-fragments' ); }
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, class_exists( 'WooCommerce' ) && ! is_checkout() ? array( 'wc-cart-fragments', 'wc-add-to-cart' ) : array(), skyyrose2_asset_version( $theme_script ), true );
-	if ( is_front_page() || ( 'black-rose' === $collection_slug && ! $is_editorial_collection ) ) {
+	if ( 'black-rose' === $collection_slug && ! $is_editorial_collection ) {
 		wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
 	}
 	if ( ( ! $is_editorial_collection && ( $collection_slug || is_page_template( 'template-collection.php' ) ) ) || is_page_template( array( 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-signature.php' ) ) ) {
@@ -391,9 +390,6 @@ function skyyrose2_assets() {
 	) {
 		wp_enqueue_script( 'wc-add-to-cart' );
 		wp_enqueue_script( 'wc-cart-fragments' );
-	}
-	if ( is_front_page() ) {
-		wp_enqueue_script( 'skyyrose2-kids-capsule-reveal', SKYYROSE2_URI . $kids_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $kids_script ), true );
 	}
 	if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) {
 		wp_enqueue_style( 'skyyrose2-mascot', SKYYROSE2_URI . $mascot_style, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $mascot_style ) );

@@ -4,7 +4,10 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const source = fs.readFileSync(path.resolve(__dirname, '../../wordpress-theme/skyyrose-flagship-2/assets/js/theme.js'), 'utf8');
-const code = source.slice(source.indexOf('  /* WooCommerce owns variation resolution'), source.indexOf('  const heroHeadline ='));
+const start = source.indexOf('  /* WooCommerce owns variation resolution');
+const end = source.indexOf('  /* End native commerce adapter. */', start);
+assert(start >= 0 && end > start, 'Native commerce adapter boundaries must exist');
+const code = source.slice(start, end);
 function fixture() {
   const events = {};
   const status = { dataset: {}, textContent: '' };
