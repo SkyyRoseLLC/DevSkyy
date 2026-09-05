@@ -1,0 +1,91 @@
+{
+  "sampleCount": 24,
+  "rows": [
+    {
+      "width": 390,
+      "route": "/",
+      "before": {
+        "loadMedian": 461.69999999552965,
+        "longTasks": 3,
+        "longTaskMax": 86,
+        "css": 341054,
+        "js": 170058,
+        "fonts": 211100
+      },
+      "after": {
+        "loadMedian": 468.29999999701977,
+        "longTasks": 3,
+        "longTaskMax": 106,
+        "css": 371851,
+        "js": 176475,
+        "fonts": 211100
+      }
+    },
+    {
+      "width": 390,
+      "route": "/product/sg-005/",
+      "before": {
+        "loadMedian": 437,
+        "longTasks": 2,
+        "longTaskMax": 54,
+        "css": 352292,
+        "js": 283796,
+        "fonts": 211100
+      },
+      "after": {
+        "loadMedian": 444.8999999985099,
+        "longTasks": 3,
+        "longTaskMax": 59,
+        "css": 383089,
+        "js": 290213,
+        "fonts": 211100
+      }
+    },
+    {
+      "width": 1440,
+      "route": "/",
+      "before": {
+        "loadMedian": 447.69999999552965,
+        "longTasks": 3,
+        "longTaskMax": 59,
+        "css": 341054,
+        "js": 170058,
+        "fonts": 211100
+      },
+      "after": {
+        "loadMedian": 461.79999999701977,
+        "longTasks": 3,
+        "longTaskMax": 62,
+        "css": 371851,
+        "js": 176475,
+        "fonts": 211100
+      }
+    },
+    {
+      "width": 1440,
+      "route": "/product/sg-005/",
+      "before": {
+        "loadMedian": 416.1000000014901,
+        "longTasks": 3,
+        "longTaskMax": 58,
+        "css": 352292,
+        "js": 283796,
+        "fonts": 211100
+      },
+      "after": {
+        "loadMedian": 468.30000000447035,
+        "longTasks": 3,
+        "longTaskMax": 54,
+        "css": 383089,
+        "js": 290213,
+        "fonts": 211100
+      }
+    }
+  ],
+  "limitations": "Isolated localhost, synthetic fixture, unthrottled headless Chromium, three cold contexts per route/width, three-second post-load window. Not field performance.",
+  "criticalImageNote": "Sampler vertical-proximity image list includes horizontally offscreen lazy filmstrip items. Actual viewport image readiness is asserted by screenshot browser suite. Hero and PDP media bytes are unchanged.",
+  "source": {
+    "before": "baseline",
+    "after": "75ce80b90380d0e5915be79dab33484eda6d3fca"
+  }
+}

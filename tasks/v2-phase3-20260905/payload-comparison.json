@@ -1,0 +1,187 @@
+{
+  "base": "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+  "rows": [
+    {
+      "file": "assets/css/collection-scene-motion.min.css",
+      "before": 1262,
+      "after": 1262,
+      "gzipBefore": 594,
+      "gzipAfter": 594
+    },
+    {
+      "file": "assets/css/controls.min.css",
+      "before": 0,
+      "after": 12455,
+      "gzipBefore": 0,
+      "gzipAfter": 2178
+    },
+    {
+      "file": "assets/css/design-tokens.min.css",
+      "before": 2533,
+      "after": 5072,
+      "gzipBefore": 871,
+      "gzipAfter": 1574
+    },
+    {
+      "file": "assets/css/global-shell.min.css",
+      "before": 0,
+      "after": 15803,
+      "gzipBefore": 0,
+      "gzipAfter": 3245
+    },
+    {
+      "file": "assets/css/hero-commerce-scenes.min.css",
+      "before": 1943,
+      "after": 1943,
+      "gzipBefore": 771,
+      "gzipAfter": 771
+    },
+    {
+      "file": "assets/css/immersive.min.css",
+      "before": 13840,
+      "after": 13840,
+      "gzipBefore": 3091,
+      "gzipAfter": 3091
+    },
+    {
+      "file": "assets/css/mascot.min.css",
+      "before": 13241,
+      "after": 13241,
+      "gzipBefore": 3115,
+      "gzipAfter": 3115
+    },
+    {
+      "file": "assets/css/theme.min.css",
+      "before": 204346,
+      "after": 204346,
+      "gzipBefore": 34925,
+      "gzipAfter": 34925
+    },
+    {
+      "file": "assets/js/collection-scene-motion.min.js",
+      "before": 3072,
+      "after": 3072,
+      "gzipBefore": 1327,
+      "gzipAfter": 1327
+    },
+    {
+      "file": "assets/js/house-of-roses-motion.min.js",
+      "before": 10092,
+      "after": 10092,
+      "gzipBefore": 3559,
+      "gzipAfter": 3559
+    },
+    {
+      "file": "assets/js/immersive.min.js",
+      "before": 7790,
+      "after": 7790,
+      "gzipBefore": 3163,
+      "gzipAfter": 3163
+    },
+    {
+      "file": "assets/js/kids-capsule-reveal.min.js",
+      "before": 2248,
+      "after": 2248,
+      "gzipBefore": 999,
+      "gzipAfter": 999
+    },
+    {
+      "file": "assets/js/mascot-loader.min.js",
+      "before": 929,
+      "after": 929,
+      "gzipBefore": 500,
+      "gzipAfter": 500
+    },
+    {
+      "file": "assets/js/mascot.min.js",
+      "before": 11263,
+      "after": 11263,
+      "gzipBefore": 4039,
+      "gzipAfter": 4039
+    },
+    {
+      "file": "assets/js/skyy-3d.min.js",
+      "before": 5497,
+      "after": 5497,
+      "gzipBefore": 2240,
+      "gzipAfter": 2240
+    },
+    {
+      "file": "assets/js/theme.min.js",
+      "before": 17918,
+      "after": 21396,
+      "gzipBefore": 5546,
+      "gzipAfter": 6654
+    }
+  ],
+  "css": {
+    "before": 237165,
+    "after": 267962,
+    "gzipBefore": 43367,
+    "gzipAfter": 49493
+  },
+  "js": {
+    "before": 58809,
+    "after": 62287,
+    "gzipBefore": 21373,
+    "gzipAfter": 22481
+  },
+  "fonts": [
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/FONT-ATTRIBUTIONS.md",
+      "bytes": 1724,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/OFL-1.1.txt",
+      "bytes": 3967,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+      "bytes": 12004,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+      "bytes": 90096,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+      "bytes": 25904,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/grand-hotel-latin.woff2",
+      "bytes": 18928,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "bytes": 34664,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+      "bytes": 48432,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/pinyon-script-latin.woff2",
+      "bytes": 34692,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/skyyrose-black-rose-script-latin.woff2",
+      "bytes": 9520,
+      "unchanged": true
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts/skyyrose-love-hurts-graffiti-latin.woff2",
+      "bytes": 11352,
+      "unchanged": true
+    }
+  ],
+  "notes": "Sum of theme minified files; page-specific assets are conditional. Gzip estimates per asset, not wire transfer. No font files added."
+}

@@ -3,8 +3,8 @@
 **Mode:** local implementation and isolated verification only.
 **Accepted runtime baseline:** `5de8e2f3eb40827a052996f72bfb290a95bd600a`.
 **Task ledger:** `tasks/v2-phase3-20260905/task-ledger.jsonl`.
-**Contract status:** foundation and global-shell source implemented; final browser/build verification in progress.
-**Pixel approval:** UNVERIFIED; independent reviewer required.
+**Contract status:** implemented and locally verified; Phase 3A is CONDITIONAL because performance and carried-forward launch gates remain open. See `tasks/v2-phase3-20260905/REPORT.md`.
+**Pixel review:** independent visual PASS, 88/100, for runtime `75ce80b90380d0e5915be79dab33484eda6d3fca`; this is not founder or deployment approval.
 
 This contract covers tokens, global controls, header, house navigation, search shell,
 bag shell, overlay coordination, footer, and responsive/accessibility foundations.
@@ -320,12 +320,13 @@ least 70% of available points, zero hard failures and zero unverified claims. Ga
 protagonism is assessed on the representative PDP/collection pages with the new shell,
 not by forcing new garment imagery into utility chrome. The author cannot approve pixels.
 
-Current score and logo-off verdict: **UNVERIFIED in this contract**. The lead owns
-independent-review dispatch and final evidence integration; no final reviewer verdict
-is asserted here. Baseline and candidate captures belong to
-`.artifacts/v2-phase3-20260905/`; the final certification must list the actual files,
-viewport metrics and measured accessibility/performance results. A capture directory
-is not itself verification. No threshold may be lowered to obtain acceptance.
+Final independent score: **88/100, visual PASS**. Every category exceeded 70% and no
+hard visual failure remained in scope. Logo-off recognition was a qualitative review
+discounting logo/copy, not a blinded user study. See the bounded review in
+`tasks/v2-phase3-20260905/independent-review.md`. Baseline and candidate captures belong
+to `.artifacts/v2-phase3-20260905/`; the final report and screenshot manifest identify
+the files, actual viewports and measured accessibility/performance results. Performance
+is not a pass, and visual review does not establish founder or deployment approval.
 
 Carry forward Phase 2 launch blockers: known full-package/staging parity boundary,
 Klaviyo blocked-script/integration uncertainty, authenticated account flows, completed
