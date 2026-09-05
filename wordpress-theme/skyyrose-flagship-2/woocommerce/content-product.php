@@ -27,6 +27,7 @@ $loop_index = max( 0, (int) wc_get_loop_prop( 'loop' ) );
 		array(
 			'product' => $product,
 			'index'   => $loop_index,
+			'sizes'   => ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) ? skyyrose2_shop_card_sizes() : '',
 			'media_priority' => ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) && $loop_index < 2 ? ( 0 === $loop_index ? 'high' : 'eager' ) : 'lazy',
 		)
 	);

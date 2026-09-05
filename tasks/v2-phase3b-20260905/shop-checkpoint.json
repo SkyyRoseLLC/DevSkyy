@@ -1,0 +1,29 @@
+{
+  "status": "PASS_LOCAL_SHOP_CHECKPOINT",
+  "build": "PASS",
+  "responsive_widths": [
+    320,
+    360,
+    375,
+    390,
+    414,
+    768,
+    1024,
+    1280,
+    1440,
+    1728
+  ],
+  "native_commerce": "Filter/category/price/availability/sorting/history/pagination/empty state, JS enabled and disabled PASS",
+  "performance_note": "Local comparable single-run Shop mobile LCP9.24s to5.39s; final repeat measurement pending",
+  "evidence": {
+    "shop-refined-responsive.json": "d74847385febec3554f73392693e83a8efe22def06243a0bbc998c6d03ebae38",
+    "shop-behavior.json": "2181c56cae98d5571ccb473e55e68ab26bc0ae268b8df76d2b60833fdd993e69",
+    "shop-static.json": "7d1c08eb0c5282c16279907fd78f976e5bb839bf223285e67b7fc86030a026f3",
+    "shop-build-verify.log": "8b5247f665316deac956390f2d1e6366d34137b931354075a6ba7c52798ab645",
+    "lighthouse-shop-checkpoint-shop-mobile.report.json": "93d07d07bf9d8b7c73839f59cf10016508d4f3e525a0dbc353efdf874317bf37"
+  },
+  "static_first": "Main heights unchanged before/after theme script release at390 and1440. Native head dependencies load; separate JS-disabled form test passes.",
+  "narrow_media": "Below360, the full accepted portrait is contained at280px high, with187px painted width used for source selection.",
+  "visual_score": 87,
+  "visual_limit": "Below3A88 reference; phase-wide uplift and final performance certification remain open."
+}

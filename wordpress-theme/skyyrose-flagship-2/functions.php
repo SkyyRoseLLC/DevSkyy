@@ -19,6 +19,7 @@ require_once SKYYROSE2_DIR . '/inc/security.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
 require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
 require_once SKYYROSE2_DIR . '/inc/global-shell.php';
+require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -342,6 +343,9 @@ function skyyrose2_assets() {
 	}
 	if ( function_exists( 'is_product' ) && is_product() ) {
 		$page_styles[] = 'legacy-product-page';
+	}
+	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
+		$page_styles[] = 'shop-page';
 	}
 	foreach ( $page_styles as $page_style ) {
 		$asset = '/assets/css/' . $page_style . $suffix . '.css';

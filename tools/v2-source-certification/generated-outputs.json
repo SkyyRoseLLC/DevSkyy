@@ -71,6 +71,14 @@
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
+  "assets/css/shop-page.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/shop-page.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
   "assets/css/theme.min.css": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",

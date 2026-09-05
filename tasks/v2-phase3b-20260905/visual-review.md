@@ -144,3 +144,140 @@ The component is sufficiently improved to be consumed by the next local PLP iter
 Final acceptance still requires candidate-bound responsive composition, remaining card
 states, source/authority tests and broader performance verification. No runtime changes
 were made by the reviewer.
+
+## Checkpoint 2 — first Shop / PLP candidate
+
+Evidence: all ten `shop-{320,360,375,390,414,768,1024,1280,1440,1728}.png`
+captures, `shop-full-{390,1440}.png`, `shop-filter-390.png`, and
+`shop-responsive.json`, compared with the baseline Shop captures. Full-page images
+were inspected for sequencing/rhythm; their downscaled text was cross-checked against
+the corresponding viewport captures. SHA-256: shop390
+`3b9b5e4a2a1d9ebe635d4d6039fb0627ed5b0985f9624e1a9918fa2a0b7c3bca`;
+full1440 `f8d7caeb8e8389e7f9700c93f058d382706f5b2208f11344d617296537c4f643`;
+responsive receipt `96cf27f71a42efad0a0fc3de02535fa190dde13308daa7f6b9615970a519f1af`.
+
+**Provisional visual score:80/100. Verdict: REJECT for final Shop visual acceptance;
+continue refinement.** This is the Shop snapshot score, not an overall Phase3B verdict.
+Native-query security remediation is outside this visual approval and remains a
+separate required gate. Dynamic motion/performance acceptance is not established by
+still screenshots; the provisional motion/technical points below cannot be converted
+into certification without their respective evidence.
+
+| Founder dimension | Score | Reason |
+| --- | ---: | --- |
+| Brand specificity | 16/20 | Approved garment scenes and archive/nameplate cues are specific; the surrounding layout still behaves like a reskinnable retail grid. Generic `THE HOUSE / 01` adds little provenance. |
+| Composition | 10/15 | Excellent reduction in arrival overhead, but sixteen equally treated stacks produce unbroken repetition with no merchandising hierarchy or purposeful narrative pause. Below the70% category gate. |
+| Typography | 13/15 | Clear utility/commerce hierarchy and readable full names. Long names produce inconsistent neighboring price/action baselines at narrow widths. |
+| Imagery | 13/15 | Garments are fully legible in available space and backgrounds preserve collection identity. Repeated first-eight scene treatments need composition to supply rhythm; do not alter approved imagery merely for variety. |
+| Commerce clarity | 12/15 | Filters, native sorting, counts, product identity and prices are much earlier. At320, the full-width tall photograph still pushes product name/price beyond the first844px. |
+| Responsive quality | 8/10 | Legacy half-track width collision is fixed; sensible1/2/3/4-column behavior with no observed overflow at all ten widths. The320 first-card height needs refinement. |
+| Motion restraint | 4/5 provisional | Static composition does not depend on cinematic ornament; complete reduced/delayed-JS behavior remains a separate evidence gate. |
+| Technical finish | 4/5 provisional | Three core widths have zero recorded axe violations, filters are visibly labeled, and all ten widths have zero horizontal overflow. Query/security, complete behavior and final performance are not approved here. |
+| **Total** | **80/100 provisional** | Material usability progress, not yet the requested uplift beyond the accepted3A88. |
+
+### What is now demonstrably better
+
+- At390, the first product image starts at measured y363.8 versus approximately y698
+  in the baseline. Both first-row garments and their names/prices now appear by the
+  bottom of the opening viewport. The artwork no longer arrives as empty ornamental arches.
+- The grid uses its available width:171px cards at390,234.7px at768,340px at1440,
+  and a bounded363px at1728. The earlier half-empty mobile/tablet layout is resolved.
+- All five category choices, including Kids Capsule, remain visible through wrapping;
+  no required horizontal navigation is imposed. Native sort controls and explicit
+  submit button are understandable. The open filter state has visible labels, active
+  count, clear/reset access and strong focus treatment.
+
+### Required refinement
+
+1. **Resolve the monotonous-grid hard-fail concern.** The full-page view contains sixteen
+   repeated image/nameplate/name/price/action stacks; the first eight also share the same
+   scene treatment. Product comparison is necessary, but the page still lacks an authored
+   merchandising sequence. Add one purposeful source-backed editorial pause or hierarchy
+   without changing native product order or degrading comparable cards. A clearly labeled
+   `From the house` aside using an actual visible product's canonical collection story
+   and real world CTA is semantically safer under arbitrary sorting than inventing groups
+   or collection counts. It must not imply that following products belong to that world.
+   No additional imagery or animation is necessary. Score only after it is rendered.
+
+2. **Recover320 first-view identity.** The288px-wide full portrait occupies roughly432px
+   height before nameplate and product metadata; name and price remain beyond the opening.
+   A bounded approximately280px `contain` treatment is a reasonable candidate if it keeps
+   the entire approved image visible and does not create a false crop/authority claim.
+   Verify the actual result rather than treating the measurement as a final design rule.
+
+3. **Keep any new hierarchy from undoing the compact opening.** At1440, prices are already
+   near the bottom of the1000px capture. New chapter/provenance content must replace
+   overhead or occur later; do not simply append another introductory panel.
+
+4. **Give provenance real meaning.** Existing Oakland/Living Archive language is more
+   specific than generic house labeling. Use only verified language and canonical
+   collection ordinals; do not invent a new initial/lockup or artificial stock/group totals.
+
+The next capture should show the complete refined page,320 opening,390 comparison row,
+and1440 merchandising rhythm. Retain separate native-query/security and performance
+gates; this checkpoint authorizes no broader Phase3B PASS or deployment.
+
+## Checkpoint 3 — refined Shop / PLP
+
+**Shop-only visual verdict: PASS,87/100. Proceed to the next local PDP stage.**
+The revised Shop clears the85 floor and70% category minimums with no remaining observed
+Shop composition blocker. It does **not** materially exceed the accepted3A88-point target;
+do not present this as90+ work or as final flagship/Phase3B certification. The complete
+phase still requires the remaining surfaces and final comparable performance evidence.
+
+Reviewed evidence: refreshed `shop-refined-{all ten widths}.png`, full390/1440 page
+captures, `shop-refined-responsive.json`, `shop-behavior.json`, `shop-static.json`,
+`shop-delayed-{390,1440}.png`, `shop-nojs-{390,1440}.png`, and the baseline/candidate
+Shop mobile Lighthouse JSON. The fresh320/390/768 screenshots were inspected after the
+heading repair. The initial refined capture's split `Sh/op` or `Sho/p` is retained as
+a first-seen regression; it is corrected in the refreshed evidence, not erased from history.
+Refreshed artifact SHA-256: shop390
+`0511d2eb20a5f530e110d69a4a740213da45812b2ab9b6040b83cdac7239b064`;
+shop320 `563b53adae4ed0101c2f3d270021e600c1aa561fd1069a05274e6c8edcdcd4fc`;
+full1440 `9dc1514232af8aaec9bed8d5dfec933b68cda88182abb81ed56965170306df51`;
+responsive receipt `d74847385febec3554f73392693e83a8efe22def06243a0bbc998c6d03ebae38`.
+
+| Founder dimension | Score | Independent assessment |
+| --- | ---: | --- |
+| Brand specificity | 17/20 | Oakland/Living Archive provenance and a real collection story now support the source-specific imagery and ordinal/nameplate system. It is more authored, though much recognition still comes from the garments/scenes. |
+| Composition | 12/15 | A single source-backed aside interrupts the formerly unbroken sequence while preserving product comparison and order. Strong utility architecture; still deliberately restrained rather than exceptional editorial variety. |
+| Typography | 13/15 | Heading is intact at320/390; archive/commerce/utility roles are clear. Long native names still create uneven neighboring metadata/action baselines. |
+| Imagery | 14/15 | Full garments remain visible; the320 contained image balances identity and purchasing information without cropping the approved front. Responsive derivatives reduce waste. |
+| Commerce clarity | 13/15 | At320 the name and actual price now fit near the bottom of the opening;390 shows two clear comparison products. Explicit filter/sort controls and real status remain understandable. |
+| Responsive quality | 9/10 | Ten-width geometry has no recorded overflow; all columns use available tracks. Header regression was caught and fixed. |
+| Motion restraint | 5/5 | Composition is already meaningful with theme initialization delayed; measured main heights remain unchanged before/after initialization. No cinematic dependency is needed for this Shop. |
+| Technical finish | 4/5 | Zero recorded axe violations at390/768/1440 and JS-on/off behavior receipts are positive. Mobile loading is substantially improved but still weak, so no full technical/performance score. |
+| **Total** | **87/100** | Local Shop visual gate passed; no phase-wide or launch approval. |
+
+### Why the earlier rejection is resolved
+
+- The `From the house` aside introduces a canonical world ordinal, actual collection
+  heading, existing manifesto and real story destination after eight products. It is
+  visibly editorial, not a fabricated grouping claim over following merchandise. The
+  predictable comparison tracks remain intact and no extra image request is needed.
+- The320 photograph now uses a bounded contain presentation. The complete approved
+  frame remains visible; product name and price appear by the lower opening viewport.
+- The provenance line has its own controlled wrap while `Shop` stays whole. The first
+  refined version broke the word; the refreshed capture explicitly closes that defect.
+- The unchanged static-main heights recorded for delayed initialization are5719px at390
+  and3950px at1440. The no-JS capture visibly uses the accepted in-flow house directory;
+  this is a fallback navigation presentation, not a claim that the no-JS first fold has
+  the same merchandise placement as the scripted first fold.
+
+### Remaining criticism and boundaries
+
+The first eight products still form a long repeated sequence on mobile before the
+editorial pause. This is now acceptable for a comparison-first Shop, but it is not a
+reason to reuse the same rhythm for the flagship homepage or all collection pages.
+Long names make adjacent prices/actions less precisely aligned. At390, the second
+price and selection actions remain near/below the lower viewport edge. These are
+nonblocking refinements, not evidence of exceptional commerce composition.
+
+Read directly from local Lighthouse reports: performance65→71, LCP9236.6→5393.5ms,
+CLS0.00550→0.00112, accessibility96→100. This is meaningful local recovery, but5.39s
+LCP remains poor and is **not** a performance PASS or field-CWV claim. Final source,
+build, security/query, broader state and performance certification belong to the lead's
+integrated release evidence; their existence must not be inferred from this visual score.
+
+No runtime files were changed by this reviewer. No Phase3B overall approval, payment,
+deployment, media promotion or Phase3C permission is granted here.

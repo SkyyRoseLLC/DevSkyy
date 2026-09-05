@@ -215,3 +215,61 @@ Resource bytes below are from actual recorded requests; all are WebP except the 
 | scene-kids-capsule-playroom.webp | 102,036 | Low | 435.50 | 449.83 |
 | kids-capsule-mascot-red-guard.webp | 93,008 | Low | 435.57 | 450.85 |
 | kids-capsule-mascot-purple-guard.webp | 96,032 | Low | 435.61 | 450.62 |
+
+## Appendix — parser-blocking scripts and dependency boundaries
+
+Read-only follow-up on 2026-09-05 during Phase 3B Shop/PDP work. Evidence: actual HTML fetched from local port 18303 for `/`, `/product/sg-005/`, and `/my-account/`; installed WordPress/WooCommerce source; Phase 2 reports. This is not staging optimizer certification or a new benchmark. No runtime, plugin settings, or build files were changed for this investigation.
+
+### Actual emitted scripts
+
+| Position | Observed handles | Strategy and implication |
+|---|---|---|
+| Head, all three routes | `jquery-core`, then `jquery-migrate` | Both blocking; holding their requests prevents the parser reaching `main`. Versions 3.7.1 and 3.4.1 respectively. |
+| Head, common Woo | `wc-jquery-blockui`, `wc-add-to-cart`, `wc-js-cookie`, `woocommerce`, `wc-cart-fragments` | Already `defer`, with `data-wp-strategy="defer"`; not parser-blocking. |
+| Head, PDP additions | `wc-zoom`, `wc-flexslider`, `wc-photoswipe`, `wc-photoswipe-ui-default`, `wc-single-product` | Already native-deferred. |
+| Head, account additions | `selectWoo`, `wc-account-i18n` | Already native-deferred. |
+| Footer, theme | `skyyrose2-theme`, `skyyrose2-house-of-roses`, `skyyrose2-mascot-loader`; home also `skyyrose2-kids-capsule-reveal` | Already deferred; no new blanket theme deferral saving here. |
+| Footer, attribution | `sourcebuster-js`, `wc-order-attribution` | Blocking after `main`; can delay document completion, but do not explain parser stall before `main`. Preserve attribution behavior. |
+| Footer, PDP support | `underscore`, `wp-util`, then inline `wp-util-js-after` | Blocking, with a required synchronous callback after `wp-util`. |
+| Footer, PDP consumer | `wc-add-to-cart-variation` | Already native-deferred after localization/gallery-default assignment. |
+
+Inspected head `*-js-extra` blocks assign configuration variables; they do not invoke jQuery in this sample. The material inline callback is the theme's PDP `wp-util` after script. This three-route local sample does not establish that other states/plugins/staging optimizers have no additional inline consumers.
+
+### Preserved dependency contracts
+
+`inc/performance.php:362–376` deliberately defers only five theme enhancement handles. `scripts/test-performance.php:114–136` protects that scope and prohibits theme strategy changes to `jquery`, `jquery-core`, `jquery-migrate`, `jquery-blockui`, and `wc-add-to-cart`. The actual installed BlockUI handle emitted here is `wc-jquery-blockui`; future emitted-HTML assertions should cover that handle too, while preserving the current contract.
+
+`tasks/v2-phase2-20260905/gate-2.1.md` documented a real race: a homepage-only theme request to defer core reached optimizer output as deferred jQuery followed by blocking Migrate and a blocking Jetpack `_jb_static` consumer bundle. The repair removed only the theme's homepage core strategy request. WordPress eligibility inspection had predicted blocking core, but the optimizer emitted defer anyway. Local-only WordPress strategy checks therefore cannot certify staging optimizer behavior. The gate subsequently checked fourteen canonical/reload route cases and native cart behavior after cache correction; that ordering remains a preservation requirement.
+
+Exact installed source under `.artifacts/v2-phase3-20260905/wordpress/` corroborates the boundary:
+
+- `wp-includes/script-loader.php:907–909`: `jquery` is an alias depending on core plus Migrate; Migrate itself has no direct core dependency in its registration. An external optimizer must not treat it as a safe blocking consumer of deferred core.
+- `wp-includes/class-wp-scripts.php:1098–1136`: concrete handles without intended strategy, handles with inline **after** scripts, and incompatible dependents eliminate delayed strategy eligibility.
+- Woo `includes/class-wc-frontend-scripts.php:148,163`: registration/enqueue defaults to `defer`. Around line 240, variation depends on `jquery`, `wp-util`, and `wc-jquery-blockui`; around line 235, add-to-cart depends on jQuery and BlockUI. Preserve native dependency resolution.
+
+Observed PDP order is `underscore` → `wp-util` → theme inline cache initializer → Woo variation configuration/gallery-default assignment → deferred variation consumer. `inc/performance.php:385–415` reads `window.wp?.template?.cache` and populates two native variation templates through fixed allowed-field interpolation. A blanket tag filter that defers `wp-util` while leaving its after callback immediate makes the cache unavailable; the callback returns, and Woo can fall back to Underscore dynamic compilation, violating the current CSP and breaking variation selection. Do not weaken CSP, insert timing retries, or replace Woo variation state to hide this ordering defect. The observed Woo `wc-add-to-cart-variation-js-before` block only assigns serialized native gallery defaults; it is not a jQuery invocation.
+
+### Supported optimization scope
+
+There is **no demonstrated safe new broad deferral change** in this evidence. The only external head parser blockers found are the jQuery pair protected by Phase 2. Theme enhancements and most native Woo scripts already defer. Holding every script measures a stalled parser, not progressive enhancement.
+
+Narrow supported seams: route-scope theme modules whose markup is actually retired, reduce their payload without touching native commerce dependencies, split page-specific CSS, keep the primary PDP image visible before gallery initialization, and deliver responsive derivatives from accepted source media. Prioritize the earlier measured image/CSS/font critical path. Speculative jQuery preloading can compete with LCP when the request is already head-discovered. Moving all scripts to the footer, setting `async`, or blanket `script_loader_tag` rewrites are unsupported. Attribution is native Woo behavior and is not an authorized casual dequeue target.
+
+Any future jQuery strategy experiment needs a separate controlled change with the exact staging optimizer/dependency inventory, canonical and cached output, deliberately slow core versus fast Migrate/consumer requests, emitted order inspection, and native commerce under the existing CSP. Local success alone cannot resolve the previously demonstrated optimizer disagreement.
+
+### Static harness interpretation
+
+The current ignored `.artifacts/v2-phase3b-20260905/static-surface.cjs` holds only script requests under `/themes/skyyrose-flagship-2/assets/js/` in `delayed` mode. It navigates with `waitUntil: 'commit'`, waits for `main h1`, fonts and visible images, captures the initial state, then releases theme requests and observes the loaded result. Separate `nojs` mode disables all JavaScript. Report these distinctly as **theme enhancement delayed** and **JavaScript disabled**. This does not prove native Woo operates while all native scripts are withheld. The harness aborts requests outside the local origin, so third-party behavior is outside its coverage.
+
+No-JavaScript PDP evidence must show the primary image and product information without waiting for native gallery initialization. Holding every native script while waiting for `main` deadlocks behind blocking jQuery and produces no useful static-content verdict. Screenshot creation alone does not establish usable static content or stable interaction after enhancement release.
+
+### Evidence required for any subsequent script-loading change
+
+1. Keep existing performance strategy, CSP variation-template, and overlay regression contracts passing without weakening assertions.
+2. Assert actual HTML ordering: one core before Migrate/consumers; blocking pair preserved; native Woo strategies retained; `wp-util` before its inline cache initializer and variation consumer. Check actual handles and duplicate payloads.
+3. Capture theme-delay and no-JavaScript separately at mobile/desktop sizes. Check product links, GET filters/search, primary PDP content, and exact script URLs held.
+4. Exercise valid/unavailable/reset variation states, actual variation IDs/prices/availability, native add-to-cart, quantity/subtotal/removal and announcements, account forms, and protected checkout without placing orders.
+5. After releasing enhancements, check duplicate handlers/cart submissions, console/CSP errors, focus return, and layout shifts. Catch-and-ignore error policies do not constitute verification.
+6. Compare serial repeated measurements with identical throttling, fixture, media authority, and network policy. Report all primary metrics and verify exact served build assets/package reproducibility.
+
+This appendix is source/HTML diagnosis only and adds no new functional-test or performance-pass claim.

@@ -285,6 +285,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/shop-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
+      "release": true
+    },
+    "assets/css/shop-page.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
     "assets/css/theme.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2383,6 +2393,11 @@
     "inc/seo-indexing.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/shop-archive.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Phase3B reviewed page implementation",
       "release": true
     },
     "inc/starter-content.php": {
