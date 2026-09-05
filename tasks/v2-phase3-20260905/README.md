@@ -34,12 +34,13 @@ npm --prefix wordpress-theme/skyyrose-flagship-2 run package:theme
 
 The browser scripts require the already provisioned isolated fixture. Their default
 module resolver points to `.artifacts/v2-phase3-20260905/qa/package.json`, containing
-Playwright 1.58.2 and @axe-core/playwright 4.11.1; these are verification dependencies,
+Playwright 1.58.2, @axe-core/playwright 4.11.1 and Lighthouse 13.4.1; these are verification dependencies,
 not storefront dependencies. Chromium must be installed for that Playwright version.
 
 ```sh
 node tools/v2-runtime/test-global-shell-browser.mjs
 node tools/v2-runtime/test-shell-recovery-browser.mjs
+node tools/v2-runtime/test-shell-startup-browser.mjs
 node tools/v2-runtime/measure-shell-performance.mjs candidate
 ```
 

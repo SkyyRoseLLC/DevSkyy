@@ -67,7 +67,7 @@ try {
  await axe('bag-populated','#sr2-bag-dialog');
  await page.getByRole('link',{name:'View Bag',exact:true}).click();await page.waitForLoadState('load');
  const cart=await page.locator('main').innerText();assert.match(cart,/M/);assert.match(cart,/\$25.00/);assert.equal(await page.locator('input.qty').inputValue(),'1');await shot('cart-1440');
- await go('/checkout/');await page.setViewportSize({width:390,height:844});await shot('checkout-390');await axe('checkout');
+ await go('/checkout/');for(const width of [390,768,1440]){await page.setViewportSize({width,height:width<768?844:1000});await shot('checkout-'+width);await axe('checkout-'+width);}
  const checkout=await page.locator('#order_review').innerText();assert.match(checkout,/M/);assert.match(checkout,/25.00/);assert.equal(await page.locator('main h1').count(),1);
  evidence.commerce={variation,sku:'sg-005',size:'M',quantity:1,unitPrice:'25.00',cart,checkout,paymentSubmitted:false};
  await go('/product/sg-005/');await page.locator('[data-bag-open]').click();await page.locator('#sr2-bag-dialog .remove').click();await page.locator('.woocommerce-mini-cart__empty-message').waitFor();

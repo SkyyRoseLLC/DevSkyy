@@ -15,3 +15,8 @@
 {"event":"issue_resolution","id":"P3-HEADER-STABILITY","status":"resolved","evidence":"removed legacy downward auto-hide"}
 {"event":"issue_resolution","id":"P3-CURRENT-ROUTE","status":"resolved","evidence":"fallback WordPress queried identity and native shop aria-current"}
 {"event":"independent_review","reviewer":"shell_review","status":"approved_local_source","tests":"26/26","scope":"PHP/JS/CSS source and browser scripts; final execution evidence pending; no deployment authority"}
+{"event":"issue_resolution","id":"P3-GUIDE-REDUCED-FOCUS","status":"resolved","evidence":"CSS transition-property:none repairs inherited visibility; timing workarounds removed; valid repeated desktop cycles pass"}
+{"event":"issue_resolution","id":"P3-PDP-FIT-HIT-TARGET","status":"resolved","evidence":"44px native target and12px gap; real pointer elementFromPoint and Escape pass"}
+{"event":"issue_resolution","id":"P3-TEXT-RESIZE","status":"resolved","evidence":"200percent text; 390px navigation scrollWidth=clientWidth"}
+{"event":"issue_resolution","id":"P3-NATIVE-BAG-ERROR","status":"resolved","evidence":"intentional503 uses native GET recovery to referrer; /cart empty and body unlocked"}
+{"event":"issue_resolution","id":"P3-STARTUP-CLS","status":"resolved","evidence":"Lighthouse found no-JS fallback flash. CSS scripting:none distinguishes disabled scripting from deferred download; startup-browser blocked-script regression passes"}

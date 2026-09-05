@@ -1,9 +1,9 @@
 # SkyyRose V2 Phase 3A — Design System and Global Shell Contract
 
-**Mode:** local implementation and isolated verification only.  
-**Accepted runtime baseline:** `5de8e2f3eb40827a052996f72bfb290a95bd600a`.  
-**Task ledger:** `tasks/v2-phase3-20260905/task-ledger.jsonl`.  
-**Contract status:** foundation and global-shell source implemented; final browser/build verification in progress.  
+**Mode:** local implementation and isolated verification only.
+**Accepted runtime baseline:** `5de8e2f3eb40827a052996f72bfb290a95bd600a`.
+**Task ledger:** `tasks/v2-phase3-20260905/task-ledger.jsonl`.
+**Contract status:** foundation and global-shell source implemented; final browser/build verification in progress.
 **Pixel approval:** UNVERIFIED; independent reviewer required.
 
 This contract covers tokens, global controls, header, house navigation, search shell,
