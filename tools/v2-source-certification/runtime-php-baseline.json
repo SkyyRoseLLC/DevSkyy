@@ -39,7 +39,7 @@
   "template-parts/v2-commerce-preview.php": "e4c0cc54979aeea2a2572bb4849285899c604cfde41d2bdb0e332e355241a90a",
   "template-parts/v2-preorder.php": "81ea0b5362fc0e8e652dd340829a48890c5099284963d0cf05bf0221acfa8f4e",
   "woocommerce/archive-product.php": "d3f4dd42d4eb656f2fe5372181b89ead4056e36d972654282dac84f79a87601c",
-  "woocommerce/cart/cart.php": "54f57cd65062885aac638356f67ce773396184c40c84eb99b33bddfea444ba46",
+  "woocommerce/cart/cart.php": "617753edd2ba8f33e4054be3f35f1c1fc11514ea5b334bee8dca83134e52ddda",
   "woocommerce/checkout/form-checkout.php": "e34d6149c6e3131e4fe22ddcf7b0ae3ef8588cf27f9f7230377fa1e1328c0604",
   "woocommerce/checkout/thankyou.php": "47b39feb16ceeca27bb095f858b162ecec4dcb42f1a98d7e67eb3ea07948a75b",
   "woocommerce/content-product.php": "458705b2077f32db264fbfc5002f28975b01fc7d07f139089d4b9330d329af13",

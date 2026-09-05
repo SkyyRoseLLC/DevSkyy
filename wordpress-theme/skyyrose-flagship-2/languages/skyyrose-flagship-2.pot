@@ -146,7 +146,7 @@ msgstr ""
 msgid "All"
 msgstr ""
 
-#: woocommerce/cart/cart.php:99
+#: woocommerce/cart/cart.php:97
 msgid "Apply"
 msgstr ""
 
@@ -410,7 +410,7 @@ msgstr ""
 msgid "Close search"
 msgstr ""
 
-#: woocommerce/cart/cart.php:99
+#: woocommerce/cart/cart.php:97
 msgid "Code"
 msgstr ""
 
@@ -726,7 +726,7 @@ msgstr ""
 msgid "Future pieces. Present choice."
 msgstr ""
 
-#: woocommerce/cart/cart.php:99
+#: woocommerce/cart/cart.php:97
 msgid "Gift code"
 msgstr ""
 
@@ -1402,11 +1402,11 @@ msgstr ""
 msgid "Red arrives with energy. Purple arrives with possibility. Both sets protect room to move, play, and decide who they want to be next."
 msgstr ""
 
-#: woocommerce/cart/cart.php:89
+#: woocommerce/cart/cart.php:87
 msgid "Remove"
 msgstr ""
 
-#: woocommerce/cart/cart.php:87
+#: woocommerce/cart/cart.php:85
 msgid "Remove %s from your bag"
 msgstr ""
 
@@ -2094,7 +2094,7 @@ msgstr ""
 msgid "Under a hard moon, beauty is neither hidden nor explained. It simply holds the court."
 msgstr ""
 
-#: woocommerce/cart/cart.php:100
+#: woocommerce/cart/cart.php:98
 msgid "Update bag"
 msgstr ""
 
