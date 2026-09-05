@@ -6,7 +6,7 @@ if ( is_page( 'black-rose' ) ) { $context = 'black-rose'; }
 if ( is_page( 'love-hurts' ) ) { $context = 'love-hurts'; }
 if ( is_page( 'signature' ) ) { $context = 'signature'; }
 if ( is_page( 'kids-capsule' ) ) { $context = 'kids-capsule'; }
-$mascot = skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2.png' );
+$mascot = skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2-512w.webp' );
 ?>
 <div id="skyyrose-mascot" class="skyyrose-mascot skyyrose-mascot--hidden" aria-label="Skyy, your SkyyRose style guide" data-context="<?php echo esc_attr( $context ); ?>" data-walk-side="right" role="complementary">
 	<div id="skyy-bubble" class="skyy-bubble" role="status" aria-live="polite" hidden>

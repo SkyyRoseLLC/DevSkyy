@@ -15,6 +15,7 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const expandedHeader = window.matchMedia('(min-width: 64em)');
   const filmViewport = window.matchMedia('(min-width: 48em)');
+  const filmScrollWorld = window.matchMedia('(min-width: 75em) and (hover: hover) and (pointer: fine)');
   const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   const controllers = [];
   const focusableSelector = [
@@ -285,6 +286,7 @@
     const toggle = root.querySelector('[data-house-film-toggle]');
     const sound = root.querySelector('[data-house-film-sound]');
     const status = root.querySelector('[data-house-film-status]');
+    const scrollStage = root.querySelector('[data-scroll-world-stage]');
     const chapters = Array.from(root.querySelectorAll('[data-house-film-chapter][data-start]'));
     const abortController = new AbortController();
     const { signal } = abortController;
@@ -295,6 +297,10 @@
     let completed = false;
     let autoplayAttempted = false;
     let resumeMutedPlayback = false;
+    let scrollWorldActive = false;
+    let scrollStart = 0;
+    let scrollDistance = 1;
+    let scrollFrame = 0;
 
     root.dataset.houseController = 'ready';
     video.muted = true;
@@ -400,18 +406,78 @@
       root.style.setProperty('--house-film-progress', video.duration ? String(currentTime / video.duration) : '0');
     };
 
+    const updateScrollWorld = () => {
+      scrollFrame = 0;
+      if (!scrollWorldActive || !video.duration || document.hidden) return;
+      const ratio = clamp((window.scrollY - scrollStart) / scrollDistance, 0, 1);
+      const targetTime = ratio * video.duration;
+      if (Math.abs(video.currentTime - targetTime) > 0.03) video.currentTime = targetTime;
+      updateChapter();
+    };
+
+    const requestScrollWorldUpdate = () => {
+      if (!scrollWorldActive || scrollFrame) return;
+      scrollFrame = window.requestAnimationFrame(updateScrollWorld);
+    };
+
+    const disableScrollWorld = () => {
+      if (!scrollWorldActive) return;
+      scrollWorldActive = false;
+      if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
+      scrollFrame = 0;
+      root.classList.remove('is-scroll-world');
+      root.style.height = '';
+    };
+
+    const layoutScrollWorld = () => {
+      const eligible = root.hasAttribute('data-house-film-scroll-world')
+        && scrollStage
+        && filmScrollWorld.matches
+        && !reducedMotion.matches
+        && mediaEligible()
+        && loaded
+        && video.duration;
+      if (!eligible) {
+        disableScrollWorld();
+        return;
+      }
+      scrollWorldActive = true;
+      video.pause();
+      root.classList.add('is-scroll-world');
+      const headerHeight = Number.parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sr2-header')) || 0;
+      const worldTop = root.getBoundingClientRect().top + window.scrollY;
+      scrollDistance = Math.max(window.innerHeight * 4, chapters.length * window.innerHeight * 0.72);
+      scrollStart = worldTop - headerHeight;
+      root.style.height = `${scrollStage.offsetHeight + scrollDistance}px`;
+      requestScrollWorldUpdate();
+    };
+
     const maybeAutoplay = () => {
+      if (root.hasAttribute('data-house-film-scroll-world') && filmScrollWorld.matches && !reducedMotion.matches) return;
       const requested = root.dataset.houseFilmAutoplay === 'true' || root.dataset.houseFilmAutoplay === 'once';
       if (!requested || autoplayAttempted || !inView || document.hidden || !mediaEligible()) return;
       autoplayAttempted = true;
       play('auto');
     };
 
+    const prepareScrollWorld = () => {
+      if (
+        !root.hasAttribute('data-house-film-scroll-world')
+        || !filmScrollWorld.matches
+        || reducedMotion.matches
+        || !inView
+        || !mediaEligible()
+      ) return false;
+      load();
+      if (video.readyState >= 1) layoutScrollWorld();
+      return true;
+    };
+
     const eligibilityChanged = () => {
       if (!mediaEligible()) {
         unload();
         setStatus('poster');
-      } else if (inView) {
+      } else if (inView && !prepareScrollWorld()) {
         maybeAutoplay();
       }
       syncControls();
@@ -435,6 +501,7 @@
 
     video.addEventListener('loadedmetadata', () => {
       setStatus('ready');
+      layoutScrollWorld();
       syncControls();
     }, { signal });
     video.addEventListener('play', syncControls, { signal });
@@ -465,13 +532,18 @@
 
     listenToMedia(reducedMotion, eligibilityChanged, signal);
     listenToMedia(filmViewport, eligibilityChanged, signal);
+    listenToMedia(filmScrollWorld, layoutScrollWorld, signal);
     connection?.addEventListener?.('change', eligibilityChanged, { signal });
+    window.addEventListener('scroll', requestScrollWorldUpdate, { passive: true, signal });
+    window.addEventListener('resize', layoutScrollWorld, { passive: true, signal });
 
     if ('IntersectionObserver' in window) {
       observer = new IntersectionObserver((entries) => {
         inView = Boolean(entries[0]?.isIntersecting);
         if (inView) {
-          if (resumeMutedPlayback && mediaEligible()) {
+          if (prepareScrollWorld()) {
+            resumeMutedPlayback = false;
+          } else if (resumeMutedPlayback && mediaEligible()) {
             resumeMutedPlayback = false;
             play('auto-resume');
           } else {
@@ -489,6 +561,7 @@
 
     const cleanup = () => {
       video.pause();
+      disableScrollWorld();
       observer?.disconnect();
       abortController.abort();
       root.style.removeProperty('--house-film-progress');

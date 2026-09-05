@@ -58,6 +58,7 @@ function sr2_assert( $condition, $message ) {
 $registered = array_column( $GLOBALS['sr2_hooks'], 'callback' );
 sr2_assert( in_array( 'skyyrose2_performance_preload_resources', $registered, true ), 'preload filter is registered' );
 sr2_assert( in_array( 'skyyrose2_performance_defer_scripts', $registered, true ), 'defer policy is registered' );
+sr2_assert( in_array( 'skyyrose2_performance_defer_homepage_jquery', $registered, true ), 'homepage jQuery defer policy is registered' );
 
 $GLOBALS['sr2_route']['front'] = true;
 $front                         = skyyrose2_performance_route_preloads();
@@ -115,5 +116,13 @@ skyyrose2_performance_defer_scripts();
 sr2_assert( 'defer' === $GLOBALS['sr2_strategies']['skyyrose2-theme']['strategy'], 'theme runtime is deferred' );
 sr2_assert( 'defer' === $GLOBALS['sr2_strategies']['skyyrose2-immersive']['strategy'], 'late immersive runtime is deferred' );
 sr2_assert( ! isset( $GLOBALS['sr2_strategies']['wc-add-to-cart'] ), 'WooCommerce purchase scripts are untouched' );
+
+$GLOBALS['sr2_route']['front'] = false;
+skyyrose2_performance_defer_homepage_jquery();
+sr2_assert( ! isset( $GLOBALS['sr2_strategies']['jquery-core'] ), 'non-homepage routes retain their existing jQuery strategy' );
+
+$GLOBALS['sr2_route']['front'] = true;
+skyyrose2_performance_defer_homepage_jquery();
+sr2_assert( 'defer' === $GLOBALS['sr2_strategies']['jquery-core']['strategy'], 'homepage jQuery is deferred' );
 
 fwrite( STDOUT, "PASS performance contract\n" );

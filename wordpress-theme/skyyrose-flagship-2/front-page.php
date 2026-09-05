@@ -22,6 +22,7 @@ $hero_models = array(
 		'sku'   => 'SG-005',
 		'href'  => skyyrose2_collection_url( 'signature' ),
 		'image' => skyyrose2_sot_asset_uri( 'images/home/on-model/signature-sg-005.webp' ),
+		'image_mobile' => skyyrose2_sot_asset_uri( 'images/home/on-model/signature-sg-005-512w.webp' ),
 	),
 	array(
 		'slug'  => 'black-rose',
@@ -29,6 +30,7 @@ $hero_models = array(
 		'sku'   => 'BR-004',
 		'href'  => skyyrose2_collection_url( 'black-rose' ),
 		'image' => skyyrose2_sot_asset_uri( 'images/home/on-model/black-rose-br-004.webp' ),
+		'image_mobile' => skyyrose2_sot_asset_uri( 'images/home/on-model/black-rose-br-004-512w.webp' ),
 	),
 	array(
 		'slug'  => 'love-hurts',
@@ -36,6 +38,7 @@ $hero_models = array(
 		'sku'   => 'LH-004',
 		'href'  => skyyrose2_collection_url( 'love-hurts' ),
 		'image' => skyyrose2_sot_asset_uri( 'images/home/on-model/love-hurts-lh-004.webp' ),
+		'image_mobile' => skyyrose2_sot_asset_uri( 'images/home/on-model/love-hurts-lh-004-512w.webp' ),
 	),
 );
 $opening_cast = array(
@@ -56,10 +59,6 @@ get_header();
 				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp' ) ); ?>">
 				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" alt="" width="1440" height="810" fetchpriority="high" decoding="sync">
 			</picture>
-			<video muted playsinline preload="none" poster="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" data-hero-video aria-hidden="true">
-				<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm">
-				<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4">
-			</video>
 		</div>
 		<div class="sr-house-hero__atmosphere" aria-hidden="true"><span class="sr-house-hero__clouds"></span><span class="sr-house-hero__bridge-lights"></span><span class="sr-house-hero__scanline"></span></div>
 		<div class="sr-house-hero__veil" aria-hidden="true"></div>
@@ -86,7 +85,7 @@ get_header();
 				<?php for ( $pass = 0; $pass < 2; $pass++ ) : ?>
 					<?php foreach ( $hero_models as $index => $model ) : ?>
 						<?php if ( 0 === $pass ) : ?><a class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" href="<?php echo esc_url( $model['href'] ); ?>"><?php else : ?><span class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" data-loop-copy="true" aria-hidden="true"><?php endif; ?>
-							<span class="sr-home__hero-model-portrait"><img src="<?php echo esc_url( $model['image'] ); ?>" alt="<?php echo 0 === $pass ? esc_attr( sprintf( __( '%s collection on-model look', 'skyyrose-flagship-2' ), $model['label'] ) ) : ''; ?>" width="1024" height="1536" loading="<?php echo 0 === $pass && 0 === $index ? 'eager' : 'lazy'; ?>" decoding="async"></span>
+								<span class="sr-home__hero-model-portrait"><img src="<?php echo esc_url( $model['image'] ); ?>" srcset="<?php echo esc_attr( $model['image_mobile'] ); ?> 512w, <?php echo esc_attr( $model['image'] ); ?> 1024w" sizes="(max-width: 32.5em) calc(100vw - 2rem), (max-width: 48.75em) 50vw, 24rem" alt="<?php echo 0 === $pass ? esc_attr( sprintf( __( '%s collection on-model look', 'skyyrose-flagship-2' ), $model['label'] ) ) : ''; ?>" width="1024" height="1536" loading="<?php echo 0 === $pass && 0 === $index ? 'eager' : 'lazy'; ?>" decoding="async"></span>
 							<span class="sr-home__hero-model-caption"><b><?php echo esc_html( sprintf( '%02d · %s', $index + 1, $model['label'] ) ); ?></b><small><?php echo esc_html( $model['sku'] ); ?> · <?php esc_html_e( 'Enter the world', 'skyyrose-flagship-2' ); ?></small></span>
 						<?php if ( 0 === $pass ) : ?></a><?php else : ?></span><?php endif; ?>
 					<?php endforeach; ?>

@@ -28,6 +28,23 @@ $accent          = isset( $args['accent'] ) ? (string) $args['accent'] : '#b76e7
 $accent_rgb      = isset( $args['accent_rgb'] ) ? (string) $args['accent_rgb'] : '183, 110, 121';
 $correlation_id  = wp_generate_uuid4();
 
+/* Approved commerce chapters are distinct from the collection's entry hero. */
+$commerce_chapters = skyyrose2_collection_commerce_scenes( $collection_slug );
+if ( ! empty( $commerce_chapters ) ) {
+	$motion_chapters = array_filter( $commerce_chapters, static function ( $chapter ) { return ! empty( $chapter['scene_motion'] ); } );
+	if ( count( $motion_chapters ) === count( $commerce_chapters ) ) {
+		$chapters = array_map(
+			static function ( $chapter ) {
+				$chapter['id'] = strtolower( $chapter['scene_id'] );
+				$chapter['alt'] = (string) ( $chapter['direction'] ?? '' );
+				return $chapter;
+			},
+			$commerce_chapters
+		);
+	}
+}
+
+
 if ( ! $collection_slug || ! $collection_name || ! $world_name || ! $poster || empty( $chapters ) ) {
 	return;
 }
@@ -109,6 +126,15 @@ get_header();
 
 	<div class="sr2-immersive__chapters">
 		<?php foreach ( $chapters as $index => $chapter ) : ?>
+			<?php if ( ! empty( $chapter['scene_motion'] ) ) : ?>
+				<section class="sr2-immersive__chapter sr2-immersive__chapter--commerce"
+					id="chapter-<?php echo esc_attr( sanitize_key( $chapter['id'] ) ); ?>"
+					data-chapter="<?php echo esc_attr( sanitize_key( $chapter['id'] ) ); ?>"
+					data-index="<?php echo absint( $index ); ?>">
+					<?php get_template_part( 'template-parts/commerce/hero-composed-scene', null, array( 'scene' => $chapter, 'collection' => $collection_slug, 'index' => $index ) ); ?>
+				</section>
+				<?php continue; ?>
+			<?php endif; ?>
 			<?php
 			$chapter_id    = sanitize_key( $chapter['id'] ?? 'chapter-' . ( $index + 1 ) );
 			$chapter_image = isset( $chapter['image'] ) ? ltrim( (string) $chapter['image'], '/' ) : '';
@@ -139,7 +165,8 @@ get_header();
 							$product_id = wc_get_product_id_by_sku( $sku );
 							$product    = $product_id ? wc_get_product( $product_id ) : false;
 						}
-		if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() || ! $product->get_image_id() ) {
+		$approved_front = skyyrose2_approved_card_front( $product );
+		if ( ! $product || 'publish' !== $product->get_status() || ! $product->is_visible() || ( ! $approved_front && ! $product->get_image_id() ) ) {
 			continue;
 		}
 		$hotspot_presentation = function_exists( 'skyyrose2_product_presentation' ) ? skyyrose2_product_presentation( $product ) : array();
@@ -155,7 +182,11 @@ get_header();
 							data-correlation-id="<?php echo esc_attr( $correlation_id ); ?>"
 							aria-label="<?php echo esc_attr( sprintf( __( 'Explore %s', 'skyyrose-flagship-2' ), $product->get_name() ) ); ?>">
 							<span class="sr2-immersive__hotspot-media">
-								<?php echo wp_kses_post( wp_get_attachment_image( $product->get_image_id(), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-immersive__hotspot-image', 'loading' => 'lazy', 'decoding' => 'async', 'alt' => $product->get_name() ) ) ); ?>
+								<?php if ( $approved_front ) : ?>
+									<img class="sr2-immersive__hotspot-image" src="<?php echo esc_url( $approved_front['src'] ); ?>" alt="<?php echo esc_attr( $approved_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $approved_front['width'] ); ?>" height="<?php echo esc_attr( (string) $approved_front['height'] ); ?>" loading="lazy" decoding="async">
+								<?php else : ?>
+									<?php echo wp_kses_post( wp_get_attachment_image( $product->get_image_id(), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-immersive__hotspot-image', 'loading' => 'lazy', 'decoding' => 'async', 'alt' => $product->get_name() ) ) ); ?>
+								<?php endif; ?>
 							</span>
 							<span class="sr2-immersive__hotspot-copy"><small><?php esc_html_e( 'Piece in this scene', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $product->get_name() ); ?></strong><em><?php esc_html_e( 'View the product', 'skyyrose-flagship-2' ); ?> →</em></span>
 						</a>

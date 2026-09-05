@@ -16,6 +16,8 @@ require_once SKYYROSE2_DIR . '/inc/marketplace.php';
 require_once SKYYROSE2_DIR . '/inc/performance.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
+require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';
+require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -25,38 +27,6 @@ require_once SKYYROSE2_DIR . '/inc/security.php';
  */
 function skyyrose2_sot_asset_uri( $path ) {
 	return SKYYROSE2_URI . '/assets/sot/' . ltrim( $path, '/' );
-}
-
-/**
- * Return a founder-approved, SKU-specific theme fallback where the live
- * WooCommerce product has no attachment at all. This is intentionally a
- * tiny allowlist: it must never guess an image from a collection or reuse a
- * neighboring SKU. WooCommerce remains the preferred media authority.
- *
- * @param WC_Product $product Current product.
- * @return array{src:string,width:int,height:int,alt:string}|array{}
- */
-function skyyrose2_product_media_fallback( $product ) {
-	if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! method_exists( $product, 'get_sku' ) ) {
-		return array();
-	}
-
-	$fallbacks = array(
-		'kids-001' => array( 'path' => 'images/products/kids-001-product-proof-400.webp', 'width' => 400, 'height' => 600 ),
-		'kids-002' => array( 'path' => 'images/products/kids-002-product-proof-400.webp', 'width' => 400, 'height' => 400 ),
-	);
-	$sku       = sanitize_key( $product->get_sku() );
-	$fallback  = $fallbacks[ $sku ] ?? null;
-	if ( ! is_array( $fallback ) || empty( $fallback['path'] ) || ! file_exists( SKYYROSE2_DIR . '/assets/sot/' . $fallback['path'] ) ) {
-		return array();
-	}
-
-	return array(
-		'src'    => skyyrose2_sot_asset_uri( $fallback['path'] ),
-		'width'  => (int) $fallback['width'],
-		'height' => (int) $fallback['height'],
-		'alt'    => $product->get_name(),
-	);
 }
 
 /**
@@ -95,6 +65,174 @@ function skyyrose2_collection_scene_uri( $scene ) {
 		return '';
 	}
 	return isset( $scene['source'] ) && 'scroll-world' === $scene['source'] ? skyyrose2_scroll_world_asset_uri( $scene['image'] ) : skyyrose2_sot_asset_uri( $scene['image'] );
+}
+
+/**
+ * Return hash-verified founder-selected V2 placeholder media.
+ *
+ * Placeholders are deliberately separate from final scene approval. An invalid
+ * or stale placeholder record is ignored and the approved plate remains the
+ * runtime fallback.
+ *
+ * @return array<string,array<string,mixed>>
+ */
+function skyyrose2_founder_scene_placeholders() {
+	static $placeholders = null;
+	if ( null !== $placeholders ) {
+		return $placeholders;
+	}
+
+	$path     = SKYYROSE2_DIR . '/data/founder-selected-theme-placeholders-v1.json';
+	$contents = is_readable( $path ) ? file_get_contents( $path ) : false; // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	$decoded  = $contents ? json_decode( $contents, true ) : null;
+	if (
+		! is_array( $decoded ) ||
+		'skyyrose.v2.founder-selected-theme-placeholders.v1' !== ( $decoded['schema'] ?? '' ) ||
+		! is_array( $decoded['scene_placeholders'] ?? null )
+	) {
+		$placeholders = array();
+		return $placeholders;
+	}
+
+	$placeholders = array();
+	foreach ( $decoded['scene_placeholders'] as $scene_id => $placeholder ) {
+		$asset = ltrim( (string) ( $placeholder['asset'] ?? '' ), '/' );
+		$hash  = (string) ( $placeholder['sha256'] ?? '' );
+		$file  = $asset ? SKYYROSE2_DIR . '/assets/scroll-world/' . $asset : '';
+		$actual_hash = $file && is_file( $file ) ? hash_file( 'sha256', $file ) : '';
+		if (
+			'FOUNDER_SELECTED_PLACEHOLDER' !== ( $placeholder['state'] ?? '' ) ||
+			! $asset ||
+			! $hash ||
+			! is_string( $actual_hash ) ||
+			! hash_equals( $hash, $actual_hash )
+		) {
+			continue;
+		}
+
+		$placeholder['asset'] = $asset;
+		$placeholders[ sanitize_key( strtolower( (string) $scene_id ) ) ] = $placeholder;
+	}
+
+	return $placeholders;
+}
+
+/**
+ * Return the founder-approved commerce-scene contract for one collection.
+ *
+ * The JSON contract is the single runtime owner of scene IDs, plate assets,
+ * exact SKU casts, model layers, approval state, and CTA language. A malformed
+ * or unapproved contract fails closed to the legacy narrative worlds.
+ *
+ * @param string $collection Collection slug.
+ * @return array<int,array<string,mixed>>
+ */
+function skyyrose2_collection_commerce_scenes( $collection ) {
+	static $contract = null;
+
+	if ( null === $contract ) {
+		$path     = SKYYROSE2_DIR . '/data/scene-narrative-blueprints.json';
+		$contents = is_readable( $path ) ? file_get_contents( $path ) : false;
+		$decoded  = $contents ? json_decode( $contents, true ) : null;
+		$contract = is_array( $decoded ) ? $decoded : array();
+	}
+
+	$collection = sanitize_title( $collection );
+	$chapters   = $contract['collections'][ $collection ]['commerce_scene_chapters'] ?? array();
+	if ( empty( $chapters ) || ! is_array( $chapters ) ) {
+		return array();
+	}
+
+	$scenes       = array();
+	$placeholders = skyyrose2_founder_scene_placeholders();
+	foreach ( $chapters as $chapter ) {
+		$plate_state = (string) ( $chapter['plate_approval_state'] ?? '' );
+		if ( empty( $chapter['scene_id'] ) || empty( $chapter['plate_asset'] ) || 0 !== strpos( $plate_state, 'FOUNDER_APPROVED' ) ) {
+			return array();
+		}
+
+		$scene_key   = sanitize_key( strtolower( (string) $chapter['scene_id'] ) );
+		$placeholder = $placeholders[ $scene_key ] ?? array();
+		$use_placeholder = ! empty( $placeholder ) && $collection === sanitize_title( $placeholder['collection'] ?? '' );
+
+		$chapter['image']  = $use_placeholder ? $placeholder['asset'] : $chapter['plate_asset'];
+		$chapter['source'] = 'scroll-world';
+		$chapter['width']  = absint( $use_placeholder ? ( $placeholder['dimensions'][0] ?? 1672 ) : ( $chapter['plate_dimensions'][0] ?? 1672 ) );
+		$chapter['height'] = absint( $use_placeholder ? ( $placeholder['dimensions'][1] ?? 941 ) : ( $chapter['plate_dimensions'][1] ?? 941 ) );
+		$chapter['placeholder_active'] = $use_placeholder;
+		$chapter['placeholder_state']  = $use_placeholder ? (string) $placeholder['state'] : '';
+		$chapter['placeholder_role']   = $use_placeholder ? (string) ( $placeholder['role'] ?? '' ) : '';
+		$chapter['suppress_model_layers_for_placeholder'] = $use_placeholder && ! empty( $placeholder['suppress_model_layers'] );
+		$chapter = skyyrose2_apply_hero_commerce_scene( $chapter, $collection );
+		$chapter = skyyrose2_apply_collection_scene_motion( $chapter, $collection );
+		$scenes[]          = $chapter;
+	}
+
+	return $scenes;
+}
+
+/**
+ * Resolve every exact product slot in a founder commerce scene.
+ *
+ * Missing products remain explicit slots. Nothing is substituted and an
+ * incomplete cast cannot masquerade as a complete look or set.
+ *
+ * @param array<string,mixed> $scene Scene contract.
+ * @param string              $collection Required collection slug.
+ * @return array{state:string,slots:array<int,array<string,mixed>>,missing:array<int,string>}
+ */
+function skyyrose2_resolve_commerce_scene_products( $scene, $collection ) {
+	$skus     = array_values( array_filter( array_map( 'sanitize_key', (array) ( $scene['product_bindings'] ?? array() ) ) ) );
+	$resolved = skyyrose2_get_products_by_skus( $skus, $collection );
+	$slots    = array();
+	$missing  = array();
+
+	foreach ( $skus as $sku ) {
+		$product = $resolved[ $sku ] ?? false;
+		$state   = $product ? 'ready' : 'unavailable';
+		if ( $product && ( ! $product->is_purchasable() || ! $product->is_in_stock() ) ) {
+			$state = 'currently_unavailable';
+		}
+		if ( ! $product ) {
+			$missing[] = $sku;
+		}
+		$slots[] = array(
+			'sku'     => $sku,
+			'state'   => $state,
+			'product' => $product,
+		);
+	}
+
+	$state = empty( $missing ) ? 'ready' : ( count( $missing ) === count( $skus ) ? 'unavailable' : 'partial' );
+	return array(
+		'state'   => $state,
+		'slots'   => $slots,
+		'missing' => $missing,
+	);
+}
+
+/**
+ * Return truthful scene-action copy from the live WooCommerce product state.
+ *
+ * @param WC_Product $product WooCommerce product.
+ * @param bool       $preorder_requested Scene requires preorder language.
+ * @return string
+ */
+function skyyrose2_scene_product_action_label( $product, $preorder_requested = false ) {
+	$name         = $product->get_name();
+	$presentation = skyyrose2_product_presentation( $product );
+	$is_preorder  = $preorder_requested && ! empty( $presentation['is_preorder'] );
+
+	if ( ! $product->is_purchasable() || ! $product->is_in_stock() ) {
+		return sprintf( __( 'View %s — currently unavailable', 'skyyrose-flagship-2' ), $name );
+	}
+	if ( $is_preorder && method_exists( $product, 'is_type' ) && $product->is_type( 'variable' ) ) {
+		return sprintf( __( 'Choose options to pre-order %s', 'skyyrose-flagship-2' ), $name );
+	}
+	if ( $is_preorder ) {
+		return sprintf( __( 'Pre-Order %s', 'skyyrose-flagship-2' ), $name );
+	}
+	return sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $name );
 }
 
 /** Theme supports and navigation slots. */
@@ -197,6 +335,14 @@ function skyyrose2_assets() {
 	wp_enqueue_style( 'skyyrose2-theme', SKYYROSE2_URI . $theme_asset, array( 'skyyrose2-tokens' ), skyyrose2_asset_version( $theme_asset ) );
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, array(), skyyrose2_asset_version( $theme_script ), true );
 	wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
+	if ( is_page_template( array( 'template-collection.php', 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-signature.php' ) ) ) {
+		$scene_base_style = '/assets/css/hero-commerce-scenes' . $suffix . '.css';
+		$scene_style = '/assets/css/collection-scene-motion' . $suffix . '.css';
+		$scene_script = '/assets/js/collection-scene-motion' . $suffix . '.js';
+		wp_enqueue_style( 'skyyrose2-hero-commerce-scenes', SKYYROSE2_URI . $scene_base_style, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $scene_base_style ) );
+		wp_enqueue_style( 'skyyrose2-collection-scene-motion', SKYYROSE2_URI . $scene_style, array( 'skyyrose2-hero-commerce-scenes' ), skyyrose2_asset_version( $scene_style ) );
+		wp_enqueue_script( 'skyyrose2-collection-scene-motion', SKYYROSE2_URI . $scene_script, array(), skyyrose2_asset_version( $scene_script ), true );
+	}
 	// Editorial collection and reservation pages render native Woo loop actions
 	// outside WooCommerce's archive template. Load the same client runtime here
 	// so an eligible simple product gets the normal AJAX confirmation, fragments,
@@ -517,7 +663,7 @@ function skyyrose2_collections() {
 			// Founder-directed cathedral monuments. V1 Beauty and the Beast remains a world chapter below.
 			'hero'       => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp',
 			'hero_tablet' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1024w.webp',
-			'hero_mobile' => 'images/hero/responsive/love-hurts-rose-aisle-monuments-v3-640w.webp',
+			'hero_mobile' => 'images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp',
 			'portrait'   => 'scene-3-love-hurts.webp',
 			'portrait_source' => 'scroll-world',
 			'lockup'     => 'images/lockups/love-hurts-lockup.webp',
@@ -579,6 +725,71 @@ function skyyrose2_collections() {
 			),
 		),
 	);
+}
+
+/**
+ * Return only founder-approved, hash-verified motion for a collection hero.
+ *
+ * @param string $slug Collection slug.
+ * @param string $responsive_hero Configured responsive hero path.
+ * @return array<string,string>
+ */
+function skyyrose2_collection_hero_motion( $slug, $responsive_hero ) {
+	static $manifest = null;
+	if ( null === $manifest ) {
+		$path     = SKYYROSE2_DIR . '/data/collection-hero-motion.json';
+		$decoded  = is_readable( $path ) ? json_decode( file_get_contents( $path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$manifest = is_array( $decoded ) && 'skyyrose.v2.collection-hero-motion.v1' === ( $decoded['schema'] ?? '' ) ? $decoded : array();
+	}
+
+	$slug       = sanitize_title( $slug );
+	$collection = isset( $manifest['collections'][ $slug ] ) && is_array( $manifest['collections'][ $slug ] ) ? $manifest['collections'][ $slug ] : array();
+	$source     = isset( $collection['source'] ) && is_array( $collection['source'] ) ? $collection['source'] : array();
+	$ai_motion  = isset( $collection['ai_motion'] ) && is_array( $collection['ai_motion'] ) ? $collection['ai_motion'] : array();
+	$expected_source = preg_replace( '#^images/hero/responsive/(.+)-1440w\.webp$#', 'assets/sot/images/hero/$1.webp', (string) $responsive_hero );
+	$source_file     = isset( $source['file'] ) ? (string) $source['file'] : '';
+	$source_hash     = isset( $source['sha256'] ) ? (string) $source['sha256'] : '';
+	$source_path     = $source_file ? SKYYROSE2_DIR . '/' . $source_file : '';
+	$actual_source_hash = $source_path && is_file( $source_path ) ? hash_file( 'sha256', $source_path ) : '';
+	if (
+		'founder_approved' !== ( $ai_motion['status'] ?? '' ) ||
+		! $expected_source ||
+		! hash_equals( $expected_source, $source_file ) ||
+		! $source_path ||
+		! $source_hash ||
+		! is_string( $actual_source_hash ) ||
+		! hash_equals( $source_hash, $actual_source_hash )
+	) {
+		return array();
+	}
+
+	$max_bytes = isset( $manifest['runtime']['performance']['max_web_asset_bytes'] ) ? absint( $manifest['runtime']['performance']['max_web_asset_bytes'] ) : 0;
+	$web       = isset( $ai_motion['web'] ) && is_array( $ai_motion['web'] ) ? $ai_motion['web'] : array();
+	$approved_root = 'assets/video/collection-heroes/approved/' . $slug . '/';
+	$motion        = array();
+	foreach ( $web as $asset ) {
+		$file = isset( $asset['file'] ) ? ltrim( (string) $asset['file'], '/' ) : '';
+		$hash = isset( $asset['sha256'] ) ? (string) $asset['sha256'] : '';
+		$path = $file ? SKYYROSE2_DIR . '/' . $file : '';
+		$extension = strtolower( pathinfo( $file, PATHINFO_EXTENSION ) );
+		$actual_hash = $path && is_file( $path ) ? hash_file( 'sha256', $path ) : '';
+		if (
+			! in_array( $extension, array( 'mp4', 'webm' ), true ) ||
+			0 !== strpos( $file, $approved_root ) ||
+			false !== strpos( $file, '..' ) ||
+			! $path ||
+			! $hash ||
+			! is_string( $actual_hash ) ||
+			! hash_equals( $hash, $actual_hash ) ||
+			! $max_bytes ||
+			filesize( $path ) > $max_bytes
+		) {
+			return array();
+		}
+		$motion[ $extension ] = SKYYROSE2_URI . '/' . $file;
+	}
+
+	return isset( $motion['mp4'], $motion['webm'] ) && 2 === count( $motion ) ? $motion : array();
 }
 
 /**
@@ -708,10 +919,10 @@ function skyyrose2_cart_count() {
 }
 
 /**
- * Return the catalog-derived V2 product-presentation registry.
+ * Return the product-SOT-derived V2 product-presentation registry.
  *
  * The JSON artifact is generated by scripts/build-product-presentation-registry.py
- * from the canonical catalog CSV plus the explicit Jersey Series supplement.
+ * from data/product-sot.json plus the explicit Jersey Series supplement.
  * It intentionally contains no Woo IDs, prices, stock, or media bytes: those
  * remain live WooCommerce/SOT authorities.
  *
@@ -1068,6 +1279,10 @@ function skyyrose2_product_card_media_manifest() {
 
 	$decoded  = json_decode( file_get_contents( $path ), true ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 	$manifest = is_array( $decoded ) ? $decoded : array();
+	$registry = skyyrose2_presentation_registry();
+	if ( ! skyyrose2_validate_product_card_media_contract( $manifest, $registry ) ) {
+		$manifest = array();
+	}
 	return $manifest;
 }
 
@@ -1160,7 +1375,7 @@ function skyyrose2_product_verified_card_media( $product ) {
 		$used_ids[ $matched[ $role ]['id'] ] = true;
 	}
 
-	return array_slice( $ordered, 0, 4 );
+	return array_slice( $ordered, 0, 3 );
 }
 
 /**
@@ -1208,8 +1423,8 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 		if ( $product ) {
 			$pieces[] = array(
 				'sku'     => $sku,
-				'chapter' => __( $chapter_data['jersey_chapter'] ?? 'Jersey Series', 'skyyrose-flagship-2' ),
-				'start'   => (float) ( $chapter_data['film_start'] ?? 0 ),
+				'chapter' => $product->get_name(),
+				'order'   => absint( $chapter_data['series_order'] ?? 0 ),
 				'product' => $product,
 			);
 		}
@@ -1218,6 +1433,13 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 	if ( empty( $pieces ) ) {
 		return;
 	}
+
+	usort(
+		$pieces,
+		static function ( $first, $second ) {
+			return $first['order'] <=> $second['order'];
+		}
+	);
 	?>
 	<section class="sr2-jersey-reveal" aria-labelledby="sr2-jersey-series-title" data-presentation="jersey-series">
 		<div class="sr2-jersey-reveal__head">
@@ -1225,8 +1447,9 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 			<h2 id="sr2-jersey-series-title"><?php esc_html_e( 'Every number carries the tour.', 'skyyrose-flagship-2' ); ?></h2>
 			<p><?php esc_html_e( 'Oakland is the origin. San Francisco, The Bay, and San Jose become chapters on The Town Line: SkyyRose’s fictional house journey. Every price, size, and availability decision stays on the live product page.', 'skyyrose-flagship-2' ); ?></p>
 		</div>
-		<div class="sr2-house-film" data-house-film data-house-film-autoplay="once" data-media-status="founder-review-candidate">
-			<div class="sr2-house-film__media">
+		<div class="sr2-house-film" data-house-film data-house-film-scroll-world data-scroll-world-pinned data-media-status="founder-review-candidate">
+			<div class="sr2-house-film__stage" data-scroll-world-stage>
+				<div class="sr2-house-film__media">
 				<video width="1672" height="941" muted playsinline preload="none" poster="<?php echo esc_url( SKYYROSE2_URI . '/assets/sot/images/hero/jersey-series-town-line-train-v1.webp' ); ?>" data-house-film-video aria-label="<?php esc_attr_e( 'The Town Line Jersey Series previsualization', 'skyyrose-flagship-2' ); ?>">
 					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.webm' ); ?>" type="video/webm">
 					<source data-src="<?php echo esc_url( SKYYROSE2_URI . '/assets/video/skyyrose-tour-around-the-bay.mp4' ); ?>" type="video/mp4">
@@ -1236,37 +1459,20 @@ function skyyrose2_render_black_rose_jersey_series( $show_product_grid = true ) 
 					<button type="button" data-house-film-sound hidden><?php esc_html_e( 'Turn sound on', 'skyyrose-flagship-2' ); ?></button>
 					<span class="screen-reader-text" aria-live="polite" data-house-film-status></span>
 				</div>
+				</div>
+				<nav class="sr2-house-film__chapters" aria-label="<?php esc_attr_e( 'Jersey Series film chapters', 'skyyrose-flagship-2' ); ?>">
+					<?php foreach ( $pieces as $piece_index => $piece ) : ?>
+						<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) ( $piece_index * 2.6 ) ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
+					<?php endforeach; ?>
+				</nav>
 			</div>
-			<nav class="sr2-house-film__chapters" aria-label="<?php esc_attr_e( 'Jersey Series film chapters', 'skyyrose-flagship-2' ); ?>">
-				<?php foreach ( $pieces as $piece ) : ?>
-					<a href="<?php echo esc_url( get_permalink( $piece['product']->get_id() ) ); ?>" data-house-film-chapter data-start="<?php echo esc_attr( (string) $piece['start'] ); ?>"><span><?php echo esc_html( strtoupper( $piece['sku'] ) ); ?></span><strong><?php echo esc_html( $piece['chapter'] ); ?></strong></a>
-				<?php endforeach; ?>
-			</nav>
-			<p class="sr2-house-film__transcript"><?php esc_html_e( 'Visual transcript: a fictional SkyyRose Town Line train introduces the Jersey Series. Available on-model review views move through Foundation, Oakland, San Francisco, The Bay, and San Jose before the tour closes on the house line. This previsualization is not product-media approval.', 'skyyrose-flagship-2' ); ?></p>
+			<p class="sr2-house-film__transcript"><?php esc_html_e( 'Visual transcript: a fictional SkyyRose Town Line train moves through Oakland’s Black, White, and two Last Oakland jerseys; San Francisco’s football, Giants, and basketball looks; then San Jose hockey. This previsualization is not product-media approval.', 'skyyrose-flagship-2' ); ?></p>
 		</div>
 		<?php if ( $show_product_grid ) : ?>
-		<div class="sr2-jersey-reveal__grid">
-			<?php foreach ( $pieces as $piece ) : ?>
-				<?php
-				$product     = $piece['product'];
-				$product_url = get_permalink( $product->get_id() );
-				$image_id    = $product->get_image_id();
-				?>
-				<article class="sr2-jersey-reveal__piece">
-					<p><?php echo esc_html( $piece['chapter'] ); ?></p>
-					<a href="<?php echo esc_url( $product_url ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $product->get_name() ) ); ?>">
-						<?php
-						if ( $image_id ) {
-							echo wp_kses_post( wp_get_attachment_image( $image_id, 'woocommerce_single', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) );
-						} else {
-							echo '<span class="sr2-product__image-empty" aria-hidden="true"></span>';
-						}
-						?>
-					</a>
-					<h3><a href="<?php echo esc_url( $product_url ); ?>"><?php echo esc_html( $product->get_name() ); ?></a></h3>
-					<a class="sr2-text-link" href="<?php echo esc_url( $product_url ); ?>"><?php esc_html_e( 'View the piece', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a>
-				</article>
-			<?php endforeach; ?>
+			<div class="sr2-jersey-reveal__grid">
+				<?php foreach ( $pieces as $piece_index => $piece ) : ?>
+					<?php skyyrose2_render_product_loop_card( $piece['product'], $piece_index ); ?>
+				<?php endforeach; ?>
 		</div>
 		<?php endif; ?>
 	</section>
@@ -1363,7 +1569,7 @@ function skyyrose2_footer() {
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'pre-order' ) ); ?>"><?php esc_html_e( 'Pre-Order', 'skyyrose-flagship-2' ); ?></a>
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'journal' ) ); ?>"><?php esc_html_e( 'Journal', 'skyyrose-flagship-2' ); ?></a>
 		</nav>
-		<div class="sr2-footer__identity"><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-384w.webp' ) ); ?>" data-brand-animation-mode="viewport" alt="" width="384" height="216" loading="lazy" decoding="async" aria-hidden="true"><span class="screen-reader-text"><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
+		<div class="sr2-footer__identity"><a class="sr2-footer__brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" aria-label="<?php esc_attr_e( 'SkyyRose home', 'skyyrose-flagship-2' ); ?>"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-still-384w.webp' ) ); ?>" data-brand-animation="<?php echo esc_url( skyyrose2_sot_asset_uri( 'brand/skyyrose-logo-animated-256w.webp' ) ); ?>" data-brand-animation-mode="viewport" alt="" width="384" height="216" loading="lazy" decoding="async" aria-hidden="true"><span class="screen-reader-text"><?php esc_html_e( 'SkyyRose', 'skyyrose-flagship-2' ); ?></span></a><p><?php esc_html_e( 'Oakland, California · Independent luxury fashion.', 'skyyrose-flagship-2' ); ?></p></div>
 		<nav class="sr2-footer__nav sr2-footer__nav--service" aria-label="<?php esc_attr_e( 'Customer care', 'skyyrose-flagship-2' ); ?>">
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'faq' ) ); ?>"><?php esc_html_e( 'FAQ', 'skyyrose-flagship-2' ); ?></a>
 			<a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'shipping-returns' ) ); ?>"><?php esc_html_e( 'Shipping + Returns', 'skyyrose-flagship-2' ); ?></a>
@@ -1403,3 +1609,28 @@ function skyyrose2_woocommerce_wrappers() {
 	remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10 );
 }
 add_action( 'wp', 'skyyrose2_woocommerce_wrappers' );
+
+/** Exact-SKU fallback used by the approved editorial card renderer. */
+function skyyrose2_product_media_fallback( $product ) {
+	if ( ! $product || ! is_a( $product, 'WC_Product' ) || ! method_exists( $product, 'get_sku' ) ) {
+		return array();
+	}
+
+	$fallbacks = array(
+		'kids-001' => array( 'path' => 'images/products/kids-001-product-proof-400.webp', 'width' => 400, 'height' => 600 ),
+		'kids-002' => array( 'path' => 'images/products/kids-002-product-proof-400.webp', 'width' => 400, 'height' => 400 ),
+	);
+	$sku       = sanitize_key( $product->get_sku() );
+	$fallback  = $fallbacks[ $sku ] ?? null;
+	if ( ! is_array( $fallback ) || empty( $fallback['path'] ) || ! file_exists( SKYYROSE2_DIR . '/assets/sot/' . $fallback['path'] ) ) {
+		return array();
+	}
+
+	return array(
+		'src'    => skyyrose2_sot_asset_uri( $fallback['path'] ),
+		'width'  => (int) $fallback['width'],
+		'height' => (int) $fallback['height'],
+		'alt'    => $product->get_name(),
+	);
+}
+
