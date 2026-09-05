@@ -89,6 +89,7 @@
 
 	if (!triggerBtn || !minimizeBtn || !recallBtn || !bubble || !bubbleText || !chipsEl) return;
 
+	var mobileGuide = window.matchMedia('(max-width: 768px)');
 	var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 	var context = mascotEl.getAttribute('data-context') || 'default';
 
@@ -564,6 +565,7 @@
 	// -------------------------------------------------------------------------
 
 	function proactiveSpeak(promptId, text, chips) {
+		if (mobileGuide.matches || document.body.classList.contains('sr2-nav-open') || document.querySelector('dialog[open]')) return false;
 		if (wasPromptShown(promptId)) return false;
 		markPromptShown(promptId);
 		speak(text, chips);
@@ -645,6 +647,7 @@
 	// -------------------------------------------------------------------------
 
 	function scheduleIdleEntrance() {
+		if (mobileGuide.matches) return;
 		clearTimeout(idleTimer);
 		if (isDismissedThisSession() || proactiveAppearancesExhausted()) {
 			return;
@@ -730,12 +733,13 @@
 		if (isDismissal) {
 			markDismissed();
 		}
+		var returnFocus = mascotEl.contains(document.activeElement);
 		walkOff(function () {
 			recallBtn.style.display = 'flex';
 			recallBtn.setAttribute('aria-hidden', 'false');
 			// Dismissal must not strand keyboard focus on <body> — the recall
 			// pill is the continuation control.
-			recallBtn.focus();
+			if (returnFocus && (document.activeElement === document.body || mascotEl.contains(document.activeElement))) recallBtn.focus();
 		});
 	}
 
@@ -780,7 +784,7 @@
 
 	// Keyboard accessibility
 	document.addEventListener('keydown', function (e) {
-		if (e.key === 'Escape') {
+		if (e.key === 'Escape' && !document.body.classList.contains('sr2-nav-open') && !document.querySelector('dialog[open]') && mascotEl.contains(document.activeElement)) {
 			if (state === 'speaking') {
 				dismissBubble();
 				triggerBtn.focus();
@@ -794,7 +798,7 @@
 	// Initialize
 	// -------------------------------------------------------------------------
 
-	if (isDismissedThisSession()) {
+	if (isDismissedThisSession() || mobileGuide.matches) {
 		// Respect the earlier dismissal — surface only the recall pill, no
 		// unsolicited walk-on for the rest of this session.
 		recallBtn.style.display = 'flex';

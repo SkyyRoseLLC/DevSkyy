@@ -40,12 +40,17 @@
     loadAnimation();
   });
 
+  const menuBackground = [...document.querySelectorAll('main, body > footer, #skyyrose-mascot, #skyyrose-mascot-recall')];
+  const originalInert = new Map(menuBackground.map((element) => [element, element.inert]));
   const setMenu = (open) => {
     if (!menuButton || !menu) return;
+    if (open) document.querySelectorAll('dialog[open]').forEach((dialog) => dialog.close());
+    menuBackground.forEach((element) => { element.inert = open || originalInert.get(element); });
     menu.classList.toggle('is-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Close site menu' : 'Open site menu');
     body.classList.toggle('sr2-nav-open', open);
+    if (open) menu.querySelector('a, button')?.focus();
   };
 
   if (menuButton && menu) {
@@ -58,11 +63,33 @@
     });
 
     document.addEventListener('keydown', (event) => {
-      if (event.key !== 'Escape' || menuButton.getAttribute('aria-expanded') !== 'true') return;
-      setMenu(false);
-      menuButton.focus();
+      if (menuButton.getAttribute('aria-expanded') !== 'true') return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenu(false);
+        menuButton.focus();
+      } else if (event.key === 'Tab') {
+        const controls = [...header.querySelectorAll('a[href], button:not([disabled]), [tabindex="0"]')]
+          .filter((element) => element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
+        const first = controls[0];
+        const last = controls[controls.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+      }
     });
   }
+
+  // Native dialogs own focus trapping and Escape. Coordinate all existing
+  // dialogs (including Skyy's question form) without replacing showModal.
+  document.querySelectorAll('dialog').forEach((dialog) => {
+    dialog.addEventListener('beforetoggle', (event) => {
+      if (event.newState !== 'open') return;
+      setMenu(false);
+      document.querySelectorAll('dialog[open]').forEach((other) => {
+        if (other !== dialog) other.close();
+      });
+    });
+  });
 
   if (header) {
     let previousY = window.scrollY;
@@ -465,7 +492,7 @@
     let opener = null;
     const closeQuickView = () => {
       if (quickView.open) quickView.close();
-      opener?.focus();
+      if (!document.querySelector('dialog[open]')) opener?.focus();
     };
     document.querySelectorAll('[data-quick-view]').forEach((button) => {
       button.addEventListener('click', () => {
@@ -488,7 +515,7 @@
     });
     quickView.querySelectorAll('[data-quick-view-dismiss]').forEach((button) => button.addEventListener('click', closeQuickView));
     quickView.addEventListener('click', (event) => { if (event.target === quickView) closeQuickView(); });
-    quickView.addEventListener('close', () => opener?.focus());
+    quickView.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && !body.classList.contains('sr2-nav-open')) opener?.focus(); });
   }
 
   const sizeGuide = document.querySelector('#sr2-size-guide-dialog');
@@ -505,7 +532,7 @@
       });
     });
     sizeGuide.addEventListener('click', (event) => { if (event.target === sizeGuide) closeSizeGuide(); });
-    sizeGuide.addEventListener('close', () => sizeGuideOpener?.focus());
+    sizeGuide.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && !body.classList.contains('sr2-nav-open')) sizeGuideOpener?.focus(); });
   }
 
   /* Global search remains a native GET form so WordPress owns the results,
@@ -526,7 +553,7 @@
       });
     });
     searchDialog.addEventListener('click', (event) => { if (event.target === searchDialog) closeSearch(); });
-    searchDialog.addEventListener('close', () => searchOpener?.focus());
+    searchDialog.addEventListener('close', () => { if (!document.querySelector('dialog[open]') && !body.classList.contains('sr2-nav-open')) (searchOpener?.closest('[data-sr2-nav]') ? menuButton : searchOpener)?.focus(); });
   }
 
   if (finePointer && !reducedMotion) {
