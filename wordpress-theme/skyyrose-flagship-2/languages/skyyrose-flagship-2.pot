@@ -434,7 +434,7 @@ msgstr ""
 msgid "Collection worlds. Scroll horizontally."
 msgstr ""
 
-#: functions.php:1580 functions.php:1623 inc/presentation-registry.php:184 inc/presentation-registry.php:234 inc/starter-content.php:24
+#: functions.php:1580 functions.php:1623 inc/presentation-registry.php:184 inc/presentation-registry.php:234 inc/starter-content.php:24 search.php:9
 msgid "Collections"
 msgstr ""
 
@@ -1102,7 +1102,7 @@ msgstr ""
 msgid "Nothing here yet."
 msgstr ""
 
-#: search.php:18
+#: search.php:56
 msgid "Nothing surfaced."
 msgstr ""
 
@@ -1218,6 +1218,10 @@ msgstr ""
 msgid "Page: %s"
 msgstr ""
 
+#: search.php:11
+msgid "Pages"
+msgstr ""
+
 #: inc/demo-import.php:140
 msgid "Parent page missing for %s."
 msgstr ""
@@ -1248,10 +1252,6 @@ msgstr ""
 
 #: template-parts/immersive/world.php:191
 msgid "Piece in this scene"
-msgstr ""
-
-#: search.php:18
-msgid "Pieces"
 msgstr ""
 
 #: functions.php:1513
@@ -1338,11 +1338,7 @@ msgstr ""
 msgid "Product imagery is currently unavailable."
 msgstr ""
 
-#: search.php:18
-msgid "Product results"
-msgstr ""
-
-#: woocommerce/archive-product.php:25
+#: search.php:8 woocommerce/archive-product.php:25
 msgid "Products"
 msgstr ""
 
@@ -1422,7 +1418,7 @@ msgstr ""
 msgid "Required template is missing: %s"
 msgstr ""
 
-#: search.php:18
+#: search.php:39
 msgid "Results for “%s”"
 msgstr ""
 
@@ -1490,7 +1486,7 @@ msgstr ""
 msgid "Scroll the collection monuments"
 msgstr ""
 
-#: functions.php:1586 search.php:18 template-parts/commerce/search-dialog.php:26
+#: functions.php:1586 search.php:40 template-parts/commerce/search-dialog.php:26
 msgid "Search"
 msgstr ""
 
@@ -1506,7 +1502,7 @@ msgstr ""
 msgid "Search shortcuts"
 msgstr ""
 
-#: search.php:18
+#: search.php:38
 msgid "Search the House"
 msgstr ""
 
@@ -1582,7 +1578,7 @@ msgstr ""
 msgid "Shop Signature"
 msgstr ""
 
-#: search.php:18
+#: search.php:56
 msgid "Shop all pieces"
 msgstr ""
 
@@ -1758,12 +1754,8 @@ msgstr ""
 msgid "Store terms"
 msgstr ""
 
-#: search.php:18
-msgid "Stories + pages"
-msgstr ""
-
-#: search.php:18
-msgid "Stories and pages"
+#: search.php:10
+msgid "Stories / Journal"
 msgstr ""
 
 #: template-parts/immersive/world.php:111
@@ -2066,7 +2058,7 @@ msgstr ""
 msgid "Tracking is emailed when the carrier accepts the parcel. Carrier scans and delivery estimates remain the carrier’s live authority."
 msgstr ""
 
-#: search.php:18
+#: search.php:56
 msgid "Try a collection, product, or story title."
 msgstr ""
 

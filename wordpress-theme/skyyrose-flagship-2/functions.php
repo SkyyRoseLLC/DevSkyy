@@ -1689,3 +1689,30 @@ function skyyrose2_product_media_fallback( $product ) {
 	);
 }
 
+
+/** Bound native public search while retaining WordPress pagination and filters. */
+function skyyrose2_bound_search_query( $query ) {
+	if ( is_admin() || ! $query->is_main_query() || ! $query->is_search() ) {
+		return;
+	}
+	$query->set( 'posts_per_page', 24 );
+	if ( ! $query->get( 'post_type' ) ) {
+		$query->set( 'post_type', array( 'product', 'post', 'page' ) );
+	}
+}
+add_action( 'pre_get_posts', 'skyyrose2_bound_search_query' );
+
+/** Each native result belongs to exactly one public content group. */
+function skyyrose2_search_result_group( $type, $slug ) {
+	if ( 'product' === $type ) {
+		return 'products';
+	}
+	if ( 'post' === $type ) {
+		return 'stories';
+	}
+	if ( 'page' === $type ) {
+		return array_key_exists( $slug, skyyrose2_collections() ) ? 'collections' : 'pages';
+	}
+	return '';
+}
+

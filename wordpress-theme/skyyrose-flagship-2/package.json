@@ -33,7 +33,7 @@
     "render:commerce-scenes": "bash scripts/render-founder-commerce-scenes.sh",
     "check:provisioning": "php scripts/test-marketplace-registry.php",
     "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
-    "verify": "npm run check:source-integrity && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-seo-indexing.php && node --test ../../tools/v2-runtime/test-*.cjs && php ../../tools/v2-runtime/test-product-media.php && php ../../tools/v2-runtime/test-checkout-truth.php",
+    "verify": "npm run check:source-integrity && npm run check:commerce-scenes && bash scripts/verify-marketplace.sh && php scripts/test-performance.php && php scripts/test-seo-indexing.php && node --test ../../tools/v2-runtime/test-*.cjs && php ../../tools/v2-runtime/test-product-media.php && php ../../tools/v2-runtime/test-checkout-truth.php && php ../../tools/v2-runtime/test-search.php",
     "verify:workspace": "bash scripts/verify-v2-workspace.sh",
     "verify:workspace:strict": "bash scripts/verify-v2-workspace.sh --strict",
     "package:theme": "bash scripts/package-theme.sh",
