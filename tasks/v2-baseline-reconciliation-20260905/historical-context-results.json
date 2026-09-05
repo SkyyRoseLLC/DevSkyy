@@ -1,0 +1,28 @@
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "build:registry"
+    ],
+    "exit": 0,
+    "tail": "\n> skyyrose-flagship-2-theme@2.4.4 build:registry\n> python3 scripts/build-product-presentation-registry.py\n\nWrote /Users/theceo/.codex/worktrees/19db/DevSkyy/.artifacts/v2-commerce-baseline-20260905/rebuild/wordpress-theme/skyyrose-flagship-2/data/product-presentation-registry.json (33 SKUs).\n"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "check:registry"
+    ],
+    "exit": 0,
+    "tail": "\n> skyyrose-flagship-2-theme@2.4.4 check:registry\n> python3 scripts/build-product-presentation-registry.py --check\n\nProduct presentation registry is current (33 SKUs).\n"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/validate-opening-product-media.py"
+    ],
+    "exit": 0,
+    "tail": "Opening product media is hash-bound to 33 products and 3 approved SKU asset sets.\n"
+  }
+]

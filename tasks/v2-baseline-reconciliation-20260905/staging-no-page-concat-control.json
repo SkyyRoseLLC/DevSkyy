@@ -1,0 +1,280 @@
+{
+  "events": {
+    "cursor": 128,
+    "events": [
+      {
+        "sequence": 99,
+        "source": {
+          "tabId": 3
+        },
+        "method": "Runtime.exceptionThrown",
+        "params": {
+          "exceptionDetails": {
+            "columnNumber": 0,
+            "exception": {
+              "className": "ReferenceError",
+              "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764:2:1",
+              "objectId": "8079688106227157093.12.1",
+              "preview": {
+                "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764:2:1",
+                "overflow": false,
+                "properties": [
+                  {
+                    "name": "stack",
+                    "type": "string",
+                    "value": "ReferenceError: jQuery is not defined\n    at https…/js/jquery/jquery-migrate.min.js?m=1686289764:2:1"
+                  },
+                  {
+                    "name": "message",
+                    "type": "string",
+                    "value": "jQuery is not defined"
+                  }
+                ],
+                "subtype": "error",
+                "type": "object"
+              },
+              "subtype": "error",
+              "type": "object"
+            },
+            "exceptionId": 9,
+            "executionContextId": 12,
+            "lineNumber": 1,
+            "scriptId": "14",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "columnNumber": 0,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": "14",
+                  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764"
+                }
+              ]
+            },
+            "text": "Uncaught",
+            "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764"
+          },
+          "timestamp": 1788614417042.243
+        }
+      },
+      {
+        "sequence": 100,
+        "source": {
+          "tabId": 3
+        },
+        "method": "Runtime.exceptionThrown",
+        "params": {
+          "exceptionDetails": {
+            "columnNumber": 9231,
+            "exception": {
+              "className": "ReferenceError",
+              "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9232\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9240",
+              "objectId": "8079688106227157093.12.2",
+              "preview": {
+                "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9232\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9240",
+                "overflow": false,
+                "properties": [
+                  {
+                    "name": "stack",
+                    "type": "string",
+                    "value": "ReferenceError: jQuery is not defined\n    at https….wpcomstaging.com/_jb_static/??8405d66706:14:9240"
+                  },
+                  {
+                    "name": "message",
+                    "type": "string",
+                    "value": "jQuery is not defined"
+                  }
+                ],
+                "subtype": "error",
+                "type": "object"
+              },
+              "subtype": "error",
+              "type": "object"
+            },
+            "exceptionId": 10,
+            "executionContextId": 12,
+            "lineNumber": 13,
+            "scriptId": "21",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "columnNumber": 9231,
+                  "functionName": "",
+                  "lineNumber": 13,
+                  "scriptId": "21",
+                  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+                },
+                {
+                  "columnNumber": 9239,
+                  "functionName": "",
+                  "lineNumber": 13,
+                  "scriptId": "21",
+                  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+                }
+              ]
+            },
+            "text": "Uncaught",
+            "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+          },
+          "timestamp": 1788614417042.62
+        }
+      },
+      {
+        "sequence": 121,
+        "source": {
+          "tabId": 3
+        },
+        "method": "Runtime.exceptionThrown",
+        "params": {
+          "exceptionDetails": {
+            "columnNumber": 0,
+            "exception": {
+              "className": "ReferenceError",
+              "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764:2:1",
+              "objectId": "8079688106227157093.15.1",
+              "preview": {
+                "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764:2:1",
+                "overflow": false,
+                "properties": [
+                  {
+                    "name": "stack",
+                    "type": "string",
+                    "value": "ReferenceError: jQuery is not defined\n    at https…/js/jquery/jquery-migrate.min.js?m=1686289764:2:1"
+                  },
+                  {
+                    "name": "message",
+                    "type": "string",
+                    "value": "jQuery is not defined"
+                  }
+                ],
+                "subtype": "error",
+                "type": "object"
+              },
+              "subtype": "error",
+              "type": "object"
+            },
+            "exceptionId": 11,
+            "executionContextId": 15,
+            "lineNumber": 1,
+            "scriptId": "14",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "columnNumber": 0,
+                  "functionName": "",
+                  "lineNumber": 1,
+                  "scriptId": "14",
+                  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764"
+                }
+              ]
+            },
+            "text": "Uncaught",
+            "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764"
+          },
+          "timestamp": 1788614417199.487
+        }
+      },
+      {
+        "sequence": 122,
+        "source": {
+          "tabId": 3
+        },
+        "method": "Runtime.exceptionThrown",
+        "params": {
+          "exceptionDetails": {
+            "columnNumber": 9231,
+            "exception": {
+              "className": "ReferenceError",
+              "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9232\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9240",
+              "objectId": "8079688106227157093.15.2",
+              "preview": {
+                "description": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9232\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9240",
+                "overflow": false,
+                "properties": [
+                  {
+                    "name": "stack",
+                    "type": "string",
+                    "value": "ReferenceError: jQuery is not defined\n    at https….wpcomstaging.com/_jb_static/??8405d66706:14:9240"
+                  },
+                  {
+                    "name": "message",
+                    "type": "string",
+                    "value": "jQuery is not defined"
+                  }
+                ],
+                "subtype": "error",
+                "type": "object"
+              },
+              "subtype": "error",
+              "type": "object"
+            },
+            "exceptionId": 12,
+            "executionContextId": 15,
+            "lineNumber": 13,
+            "scriptId": "21",
+            "stackTrace": {
+              "callFrames": [
+                {
+                  "columnNumber": 9231,
+                  "functionName": "",
+                  "lineNumber": 13,
+                  "scriptId": "21",
+                  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+                },
+                {
+                  "columnNumber": 9239,
+                  "functionName": "",
+                  "lineNumber": 13,
+                  "scriptId": "21",
+                  "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+                }
+              ]
+            },
+            "text": "Uncaught",
+            "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+          },
+          "timestamp": 1788614417199.606
+        }
+      }
+    ],
+    "hasMore": false,
+    "truncated": false
+  },
+  "tags": [
+    {
+      "async": false,
+      "defer": true,
+      "i": 0,
+      "id": "jquery-core-js",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "i": 3,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "i": 7,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "i": 20,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??58ed090c97"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "i": 23,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957"
+    }
+  ]
+}
