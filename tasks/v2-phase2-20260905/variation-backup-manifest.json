@@ -1,0 +1,10 @@
+{
+  "product-preflight.json": {
+    "path": ".artifacts/v2-phase2-20260905/product-preflight.json",
+    "sha256": "14e3f24483509af54d1916ab9e3d2b01cc0653aaad9238d80c5c14f439ecccaf"
+  },
+  "variation-dry-run-all.json": {
+    "path": ".artifacts/v2-phase2-20260905/variation-dry-run-all.json",
+    "sha256": "f1864b0a8bc345cd5aaf2cb1f322e17ac33e5f2298b8837b5c54b3b76a04e3bd"
+  }
+}
