@@ -1378,6 +1378,61 @@ function skyyrose2_product_verified_card_media( $product ) {
 	return array_slice( $ordered, 0, 3 );
 }
 
+/** Resolve PDP commerce attachments without promoting opening-media states. */
+function skyyrose2_product_commerce_media( $product ) {
+	$empty = array( 'state' => 'missing', 'ids' => array() );
+	if ( ! $product || ! is_a( $product, 'WC_Product' ) ) {
+		return $empty;
+	}
+	$manifest = skyyrose2_product_card_media_manifest();
+	if ( empty( $manifest['products'] ) ) {
+		return $empty;
+	}
+	$sku = sanitize_key( $product->get_sku() );
+	$record = $manifest['products'][ $sku ] ?? array();
+	// A Woo assignment is not permission to reuse explicitly rejected imagery.
+	if ( 'REJECTED_AUTHENTICITY' === ( $record['status'] ?? '' ) ) {
+		return array( 'state' => 'rejected', 'ids' => array() );
+	}
+	$editorial = skyyrose2_product_verified_card_media( $product );
+	$valid = static function ( $id ) {
+		$metadata = $id ? wp_get_attachment_metadata( $id ) : array();
+		return $id && wp_attachment_is_image( $id ) && wp_get_attachment_url( $id ) && ! empty( $metadata['width'] ) && ! empty( $metadata['height'] );
+	};
+	$editorial_ids = array_values( array_unique( array_filter( array_map( 'absint', array_column( $editorial, 'id' ) ), $valid ) ) );
+	if ( $editorial_ids ) {
+		return array( 'state' => 'editorial', 'ids' => $editorial_ids );
+	}
+	$ids = array_merge( array( $product->get_image_id() ), $product->get_gallery_image_ids() );
+	$ids = array_values( array_unique( array_filter( array_map( 'absint', $ids ), $valid ) ) );
+	return array( 'state' => $ids ? 'commerce' : 'missing', 'ids' => $ids );
+}
+
+/** Keep Product schema imagery aligned with the PDP's permitted primary. */
+function skyyrose2_product_commerce_schema_image( $markup, $product ) {
+	$media = skyyrose2_product_commerce_media( $product );
+	if ( $media['ids'] ) {
+		$markup['image'] = wp_get_attachment_url( $media['ids'][0] );
+	} else {
+		unset( $markup['image'] );
+	}
+	return $markup;
+}
+add_filter( 'woocommerce_structured_data_product', 'skyyrose2_product_commerce_schema_image', 30, 2 );
+
+/** Do not reintroduce rejected PDP imagery through a variation's image update. */
+function skyyrose2_product_commerce_variation_image( $data, $product, $variation ) {
+	$media = skyyrose2_product_commerce_media( $product );
+	if ( 'rejected' === $media['state'] ) {
+		$data['image'] = array();
+		$data['image_id'] = 0;
+		$data['gallery_image_ids'] = array();
+		$data['gallery_images_html'] = '';
+	}
+	return $data;
+}
+add_filter( 'woocommerce_available_variation', 'skyyrose2_product_commerce_variation_image', 30, 3 );
+
 /**
  * Render the shared, collection-aware WooCommerce loop card.
  *

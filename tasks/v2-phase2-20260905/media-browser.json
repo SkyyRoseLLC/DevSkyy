@@ -1,0 +1,61 @@
+[
+  {
+    "sku": "br-006",
+    "observed": {
+      "images": [
+        {
+          "src": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/br-006-onmodel.webp?w=1024&ssl=1",
+          "srcset": true,
+          "width": 525
+        }
+      ],
+      "missing": false,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-006/",
+      "width": 525
+    }
+  },
+  {
+    "sku": "sg-005",
+    "observed": {
+      "images": [
+        {
+          "src": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/sg-005-onmodel.webp?w=1024&ssl=1",
+          "srcset": true,
+          "width": 525
+        }
+      ],
+      "missing": false,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+      "width": 525
+    }
+  },
+  {
+    "sku": "br-002",
+    "observed": {
+      "images": [
+        {
+          "src": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/br-002-ghost-front.webp?w=1024&ssl=1",
+          "srcset": true,
+          "width": 525
+        },
+        {
+          "src": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/06/black-rose-joggers-back-model.webp?w=1024&ssl=1",
+          "srcset": true,
+          "width": 525
+        }
+      ],
+      "missing": false,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-002/",
+      "width": 525
+    }
+  },
+  {
+    "sku": "br-003",
+    "observed": {
+      "images": [],
+      "missing": true,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003/",
+      "width": 525
+    }
+  }
+]

@@ -1,0 +1,60 @@
+{
+    "br-006": {
+        "resolved": {
+            "state": "editorial",
+            "ids": [
+                10359
+            ]
+        },
+        "extension_callback_count": 1,
+        "native_image_hook_restored": true,
+        "image_filter_restored": true,
+        "schema": {
+            "image": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/br-006-onmodel.webp"
+        },
+        "render_bytes": 54901
+    },
+    "sg-005": {
+        "resolved": {
+            "state": "commerce",
+            "ids": [
+                10374
+            ]
+        },
+        "extension_callback_count": 1,
+        "native_image_hook_restored": true,
+        "image_filter_restored": true,
+        "schema": {
+            "image": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/sg-005-onmodel.webp"
+        },
+        "render_bytes": 46622
+    },
+    "br-002": {
+        "resolved": {
+            "state": "commerce",
+            "ids": [
+                10355,
+                10153
+            ]
+        },
+        "extension_callback_count": 1,
+        "native_image_hook_restored": true,
+        "image_filter_restored": true,
+        "schema": {
+            "image": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/br-002-ghost-front.webp"
+        },
+        "render_bytes": 64268
+    },
+    "br-003": {
+        "resolved": {
+            "state": "rejected",
+            "ids": []
+        },
+        "extension_callback_count": 1,
+        "native_image_hook_restored": true,
+        "image_filter_restored": true,
+        "schema": [],
+        "render_bytes": 38476
+    },
+    "cache_flushed": true
+}
