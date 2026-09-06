@@ -36,6 +36,8 @@ try {
 	$collection_name = 'jersey-series' === $presentation
 		? __( 'Jersey Series', 'skyyrose-flagship-2' )
 		: ( $collections[ $collection ]['name'] ?? __( 'SkyyRose', 'skyyrose-flagship-2' ) );
+	$frame = $collections[ $collection ]['portal_statue'] ?? array();
+	$frame_uri = ! empty( $frame['small'] ) ? skyyrose2_sot_asset_uri( $frame['small'] ) : '';
 	$variant = in_array( $args['variant'] ?? '', array( 'standard', 'feature', 'compact' ), true ) ? $args['variant'] : 'standard';
 	$is_archive = ( function_exists( 'is_shop' ) && is_shop() ) || ( function_exists( 'is_product_taxonomy' ) && is_product_taxonomy() );
 	$heading_level = isset( $args['heading_level'] ) && in_array( (int) $args['heading_level'], array( 2, 3, 4 ), true )
@@ -51,6 +53,9 @@ try {
 		? '(max-width: 47.99em) calc((100vw - 3rem) / 2), (max-width: 74.99em) calc((100vw - 5rem) / 3), 360px'
 		: '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 74.99em) calc((100vw - 5rem) / 2), 480px';
 	$image_sizes = isset( $args['sizes'] ) && is_string( $args['sizes'] ) && '' !== trim( $args['sizes'] ) ? $args['sizes'] : $default_sizes;
+	if ( $frame_uri ) {
+		$image_sizes = '(max-width: 29.99em) calc((100vw - 2rem) * .66), ' . $image_sizes;
+	}
 	$is_eager = $native_archive && $card_index < 2 && in_array( $priority_intent, array( 'eager', 'high' ), true );
 	$loading = $is_eager ? 'eager' : 'lazy';
 	$fetchpriority = $is_eager && 0 === $card_index && 'high' === $priority_intent ? 'high' : 'auto';
@@ -78,7 +83,7 @@ try {
 		'sizes' => $image_sizes,
 	);
 	?>
-<article class="sr2-c-editorial-card" data-card-direction="living-archive" data-card-variant="<?php echo esc_attr( $variant ); ?>" data-card-crop="full" data-card-frame="archive" data-presentation="<?php echo esc_attr( $presentation ?: 'house' ); ?>" data-collection="<?php echo esc_attr( $collection ?: 'house' ); ?>" data-product-type="<?php echo esc_attr( $card_product->get_type() ); ?>" data-purchasable="<?php echo $card_product->is_purchasable() ? 'true' : 'false'; ?>" data-availability="<?php echo esc_attr( $stock_state ); ?>" data-media-state="<?php echo esc_attr( $media_state ); ?>" data-media-source="<?php echo esc_attr( $media_source ); ?>">
+<article class="sr2-c-editorial-card" data-card-direction="living-archive" data-card-variant="<?php echo esc_attr( $variant ); ?>" data-card-crop="full" data-card-frame="<?php echo $frame_uri ? 'v2-statue' : 'archive'; ?>" data-presentation="<?php echo esc_attr( $presentation ?: 'house' ); ?>" data-collection="<?php echo esc_attr( $collection ?: 'house' ); ?>" data-product-type="<?php echo esc_attr( $card_product->get_type() ); ?>" data-purchasable="<?php echo $card_product->is_purchasable() ? 'true' : 'false'; ?>" data-availability="<?php echo esc_attr( $stock_state ); ?>" data-media-state="<?php echo esc_attr( $media_state ); ?>" data-media-source="<?php echo esc_attr( $media_source ); ?>">
 	<a class="sr2-c-editorial-card__media" href="<?php echo esc_url( $product_url ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'View %s', 'skyyrose-flagship-2' ), $product_name ) ); ?>">
 		<span class="sr2-c-editorial-card__photo-window">
 		<?php if ( $front ) : ?>
@@ -89,6 +94,10 @@ try {
 			<span class="sr2-c-editorial-card__media-unavailable"><?php esc_html_e( 'Product image unavailable', 'skyyrose-flagship-2' ); ?></span>
 		<?php endif; ?>
 		</span>
+		<?php if ( $frame_uri ) : ?>
+			<img class="sr2-c-editorial-card__frame" src="<?php echo esc_url( $frame_uri ); ?>" alt="" aria-hidden="true" width="<?php echo absint( $frame['width'] ); ?>" height="<?php echo absint( $frame['height'] ); ?>" loading="<?php echo esc_attr( $loading ); ?>" decoding="async">
+			<span class="sr2-c-editorial-card__frame-label" aria-hidden="true"><span class="sr2-c-editorial-card__inscription"><?php echo esc_html( $collection_name ); ?></span></span>
+		<?php endif; ?>
 	</a>
 	<div class="sr2-c-editorial-card__body">
 		<div class="sr2-c-editorial-card__nameplate">

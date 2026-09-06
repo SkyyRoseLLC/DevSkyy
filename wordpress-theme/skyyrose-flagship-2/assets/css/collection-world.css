@@ -106,3 +106,13 @@
 	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__line { margin-inline: auto; }
 	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions { justify-content: center; }
 }
+/* Selected Black Rose recovery: scene owns the arrival; native edit follows. */
+.sr2-collection-world[data-collection="black-rose"] .sr2-world-arrival--cinematic { display: flex; flex-direction: column; gap: 0; padding-top: 0; }
+.sr2-world-arrival--cinematic .sr2-world-arrival__monument { order: -1; width: 100vw; max-width: none; margin-inline: calc((100vw - 100%) / -2); border: 0; }
+.sr2-world-arrival--cinematic .sr2-world-arrival__monument img { display: block; width: 100%; height: min(82svh, 70vw); min-height: 30rem; object-fit: cover; object-position: center; border: 0; }
+.sr2-world-arrival--cinematic .sr2-world-arrival__monument figcaption { padding-inline: clamp(1rem, 3vw, 3rem); }
+.sr2-world-arrival--cinematic .sr2-world-arrival__identity { width: 100%; max-width: none; padding: 2rem 0; }
+.sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 { max-width: none; font-family: var(--sr2-font-caps); font-size: clamp(2.75rem, 6vw, 6rem); font-weight: 400; letter-spacing: -.025em; }
+@media (max-width: 47.99em) {
+	.sr2-world-arrival--cinematic .sr2-world-arrival__monument img { height: 65svh; min-height: 22rem; object-position: 65% center; }
+}

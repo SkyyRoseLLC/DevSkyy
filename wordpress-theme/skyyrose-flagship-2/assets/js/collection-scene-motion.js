@@ -76,7 +76,7 @@
     document.querySelectorAll('[data-collection-scene-motion]').forEach((video) => {
       if (video.dataset.motionInitialized) return;
       const frame = video.closest('.sr2-hero-commerce__frame');
-      const button = frame && frame.querySelector('[data-scene-motion-toggle]');
+      const button = frame && frame.closest('[data-scene-id]')?.querySelector('[data-scene-motion-toggle]');
       if (!button) return;
       video.dataset.motionInitialized = 'true';
       const state = {

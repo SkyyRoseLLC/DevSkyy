@@ -109,7 +109,7 @@ for required in \
 	test -s "$required" || { echo "Missing required marketplace artifact: $required" >&2; exit 1; }
 done
 
-if rg -n --glob '!node_modules/**' --glob '!dist/**' --glob '!scripts/verify-marketplace.sh' --glob '!README.md' --glob '!readme.txt' --glob '!CHANGELOG.md' \
+if rg -n --glob '!node_modules/**' --glob '!dist/**' --glob '!scripts/verify-marketplace.sh' --glob '!README.md' --glob '!readme.txt' --glob '!CHANGELOG.md' --glob '!assets/js/lib/three-r170/**' \
 	'\b(TODO|FIXME|Lorem ipsum|dummy data)\b' .; then
 	echo 'Placeholder marker found in delivered theme.' >&2
 	exit 1

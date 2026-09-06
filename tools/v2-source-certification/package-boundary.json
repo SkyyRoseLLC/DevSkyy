@@ -1081,29 +1081,29 @@
       "release": true
     },
     "assets/scroll-world/placeholders/founder-selected-v1/black-rose-east-oakland-crewneck-v1.png": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
     },
     "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-graphic-heart-backdrop-v1.png": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
     },
     "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-star-heart-statue-backdrop-v1.png": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
     },
     "assets/scroll-world/placeholders/founder-selected-v1/signature-bay-bridge-shorts-v1.png": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
     },
     "assets/scroll-world/placeholders/founder-selected-v1/signature-graphic-monogram-backdrop-v1.png": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
     },
     "assets/scroll-world/scene-1-signature.webp": {
       "category": "RUNTIME MEDIA",
@@ -2859,6 +2859,71 @@
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
       "release": true
+    },
+    "data/approved-scroll-world-scenes.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/css/visual-recovery.min.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/css/visual-recovery.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/visual-recovery.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/visual-recovery.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/LICENSE": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/GLTFLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/BufferGeometryUtils.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/three.module.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/DRACOLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "template-parts/collections/scroll-world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "release": true,
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "release": true,
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"

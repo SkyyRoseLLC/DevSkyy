@@ -1,4 +1,32 @@
-/** Living Archive: authored static acts, shared cards/Town Line; no new fonts or JS. */
+/** Living Archive: selected recovered arrival, current shared commerce. */
+.sr2-archive-scene { position: relative; isolation: isolate; display: grid; align-content: space-between; min-height: calc(100svh - var(--sr2-header)); margin-inline: calc((100vw - 100%) / -2); background: #050506; }
+.sr2-archive-scene__image, .sr2-archive-scene__veil { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+.sr2-archive-scene__image picture { display: block; width: 100%; height: 100%; }
+.sr2-archive-scene__image img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 62% center; }
+.sr2-archive-scene__veil { background: linear-gradient(90deg, rgba(4,4,5,.95) 0 25%, rgba(4,4,5,.58) 45%, rgba(4,4,5,.06) 76%), linear-gradient(0deg, rgba(4,4,5,.75), transparent 50%); }
+.sr2-archive-scene__copy { width: min(44rem, 55%); padding: clamp(3rem, 7vh, 7rem) clamp(1.25rem, 4vw, 5rem); box-sizing: border-box; align-self: center; }
+.sr2-archive-scene__copy > .sr2-world-index { color: #e0c27c; }
+.sr2-archive-scene h1 { max-width: 8ch; margin: 1.5rem 0; font: 600 clamp(3.75rem, 7vw, 8rem)/.9 var(--sr2-font-display); letter-spacing: -.055em; text-wrap: balance; color: #f8f5ef; }
+.sr2-archive-scene__intro { max-width: 30ch; color: #d7d4ce; font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.65; }
+.sr2-archive-scene__promise { max-width: 22ch; margin: 1.5rem 0; color: #f8f5ef; font: 500 clamp(1.25rem, 2vw, 2rem)/1.25 var(--sr2-font-display); }
+.sr2-archive-scene__actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.75rem; }
+.sr2-archive-scene__concierge { position: relative; z-index: 2; width: min(28rem, calc(100% - 2.5rem)); min-height: 18rem; margin: 0 0 1.5rem clamp(1.25rem, 4vw, 5rem); }
+.sr2-archive-scene__concierge noscript img { display: block; width: 120px; height: 185px; object-fit: contain; }
+.sr2-archive-scene__concierge noscript a { display: inline-flex; align-items: center; min-height: 46px; color: #f8f5ef; }
+.sr2-archive-scene__worlds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid #67615a; background: rgba(5,5,6,.9); }
+.sr2-archive-scene__worlds a { display: flex; gap: .75rem; align-items: center; min-height: 5rem; padding: 1rem clamp(.75rem, 2vw, 2rem); color: #f8f5ef; text-decoration: none; border-right: 1px solid #67615a; }
+.sr2-archive-scene__worlds a:last-child { border-right: 0; }
+.sr2-archive-scene__worlds span { color: #e0c27c; font: .7rem var(--sr2-font-index); }
+.sr2-archive-scene__worlds b { font-family: var(--sr2-font-caps); font-size: clamp(.85rem, 1.35vw, 1.25rem); font-weight: 400; }
+.sr2-archive-scene__worlds a:is(:hover, :focus-visible) { background: #38232c; }
+@media (max-width: 47.99em) {
+	.sr2-archive-scene__concierge { min-height: 15rem; }
+	.sr2-archive-scene__copy { width: 100%; padding-top: clamp(3rem, 12svh, 6rem); padding-bottom: 3rem; }
+	.sr2-archive-scene__image img { object-position: 85% center; }
+	.sr2-archive-scene__veil { background: linear-gradient(90deg, rgba(4,4,5,.86), rgba(4,4,5,.3)), linear-gradient(0deg, #050506, transparent 75%); }
+	.sr2-archive-scene h1 { font-size: clamp(3.25rem, 14.5vw, 5.5rem); }
+	.sr2-archive-scene__worlds a { flex-direction: column; align-items: flex-start; justify-content: center; gap: .4rem; }
+}
 .sr2-archive { padding-top: var(--sr2-header); color: var(--sr2-color-text); background: var(--sr2-surface-page); }
 .sr2-archive__inner { width: min(calc(100% - 2rem), var(--sr2-wide)); margin-inline: auto; }
 .sr2-archive .sr2-commerce-notices:empty { display: none; }

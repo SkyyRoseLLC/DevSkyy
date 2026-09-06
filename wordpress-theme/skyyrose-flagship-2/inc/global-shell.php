@@ -46,6 +46,9 @@ function skyyrose2_header() {
 		<div class="sr2-house-header__end">
 			<a class="sr2-house-header__direct" href="<?php echo esc_url( home_url( '/?s=' ) ); ?>" data-search-open><?php esc_html_e( 'Search', 'skyyrose-flagship-2' ); ?></a>
 			<a class="sr2-house-header__direct" href="<?php echo esc_url( $account ); ?>"><?php esc_html_e( 'Account', 'skyyrose-flagship-2' ); ?></a>
+			<?php if ( ! ( function_exists( 'is_checkout' ) && is_checkout() ) ) : ?>
+				<a id="skyyrose-mascot-recall" class="skyyrose-mascot__recall" href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'contact' ) ); ?>" aria-controls="skyy-ask-dialog" aria-haspopup="dialog" aria-expanded="false"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2-512w.webp' ) ); ?>" alt="" width="40" height="40" loading="lazy" decoding="async"><span><?php esc_html_e( 'Ask Skyy', 'skyyrose-flagship-2' ); ?><small><?php esc_html_e( 'Your house guide', 'skyyrose-flagship-2' ); ?></small></span></a>
+			<?php endif; ?>
 			<a class="sr2-header__bag" href="<?php echo esc_url( $bag_url ); ?>" data-bag-open><?php esc_html_e( 'Bag', 'skyyrose-flagship-2' ); ?> <span class="sr2-header__bag-count" aria-live="polite" aria-atomic="true" aria-label="<?php echo esc_attr( sprintf( __( '%d items in bag', 'skyyrose-flagship-2' ), skyyrose2_cart_count() ) ); ?>"><?php echo esc_html( skyyrose2_cart_count() ); ?></span></a>
 		</div>
 		<nav id="sr2-menu" class="sr2-header__nav sr2-house-nav" aria-label="<?php esc_attr_e( 'Primary navigation', 'skyyrose-flagship-2' ); ?>" data-sr2-nav>

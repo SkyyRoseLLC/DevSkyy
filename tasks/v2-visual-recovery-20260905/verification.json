@@ -1,0 +1,124 @@
+{
+  "schema": "skyyrose.cinematic-final-verification.v1",
+  "generated_at": "2026-09-06T01:43:10.671Z",
+  "status": "LOCAL_IMPLEMENTATION_VERIFIED_FOUNDER_REVIEW_REQUIRED",
+  "release_status": "NEEDS_MORE_WORK",
+  "base_commit": "fec4e9339cad7077bcc812876668c128eb93b6e4",
+  "runtime_digest": "63f8c62f6f1ae60833b85ac7b9c9b1e8b9729198383452e90db5cd151e3f2068",
+  "build_verify": {
+    "exit_code": 0,
+    "javascript_tests": 78,
+    "additional_python_tests": 5,
+    "support_tests": 6,
+    "php_commerce_contracts": "PASS"
+  },
+  "reflow": {
+    "cases": 36,
+    "widths": [
+      320,
+      375,
+      390,
+      414,
+      768,
+      1024,
+      1440,
+      1920
+    ],
+    "all_http_200": true,
+    "page_exceptions": [],
+    "http_errors": [],
+    "overflow": [],
+    "axe_cases": 14,
+    "axe_violations": []
+  },
+  "cinematic": {
+    "status": "PASS",
+    "shop_cards": 33,
+    "core_collection_cards": 25,
+    "town_line_links": 8,
+    "scenes": 9,
+    "scene_viewport_cases": 27,
+    "all_scene_video_ready_playing": true,
+    "keyboard_quick_view": "PASS",
+    "rail_keyboard": "PASS",
+    "motion_fallbacks": "PASS"
+  },
+  "skyy": {
+    "gait_status": "PASS",
+    "home_controls_status": "PASS",
+    "hardware": "Apple M5 / ANGLE Metal",
+    "canonical_model_unchanged": true,
+    "source_motion": "six held source clips; new runtime-derived motion",
+    "viewports": [
+      390,
+      768,
+      1440
+    ]
+  },
+  "performance": {
+    "run_executed": "PASS",
+    "budget": "FAIL_MOBILE_LCP",
+    "final_report_prefix": "lighthouse-walkon-final",
+    "feature_costs": "performance-evidence.json"
+  },
+  "remaining": [
+    "Mobile LCP regression versus accepted B",
+    "Static-to3D entrance continuity polish",
+    "LH-COMMERCE-1 approved film garment exit caveat",
+    "Founder artistic review; no Pixar-quality certification",
+    "No real payments, production account or gateway verification"
+  ],
+  "evidence": [
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/build-and-verify-walkon-final.log",
+      "sha256": "e6ed765596e4f3625fd94197cb2ae7eb05e13a4a6f9ceadb3c19c38710df5b94"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/support-final.log",
+      "sha256": "5e54571d938575fff3e8ad49f9939cafe4317525b3218b5a541ba0da02016a48"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/accessibility-reflow.json",
+      "sha256": "b93b03fb360c7b909385d13148affb91dcc98baa40307f6ba844ca29a363a353"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/cinematic-integration.json",
+      "sha256": "311560ad2d28617e177dc64204bc84692a6621a9b330164280b99d9ff2832ada"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/cinematic-integration-skyy-gait.json",
+      "sha256": "edb3e168cb0a8c27f467f4f481711249a65e030e01650fb5d57d72dcfaadfa54"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/cinematic-integration-skyy-home-controls.json",
+      "sha256": "203b28d62cf4cd005238945c6845d2464f70c4b804f769599f07fa7728609390"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/scene-profiles-final.json",
+      "sha256": "3b1e10304792bda9f3394bb0f63f6bce35f16d64609f4ab812fa85766df8ecbe"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/resolved-scenes-final.json",
+      "sha256": "d6dcf91c9ef2fca097d619cbf2061ebfa89a049b6a7067a413ed20ab47a91820"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/lighthouse/lighthouse-walkon-final-run.json",
+      "sha256": "1a025954fa8ebf9049ffc8abcbf18ed3c22845e27f7db50dab8f9e4f689852b7"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/commerce/pdp-behavior.json",
+      "sha256": "1c4198145b3dd4c850cb5adb3c760768dbc7be1984426bbf27e9224f97c6848d"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/commerce/gallery-delivery.json",
+      "sha256": "d6a3b63743e21c6387fa98d435745f0892b9490190c8931d41e3a60250b9dd37"
+    },
+    {
+      "path": ".artifacts/v2-visual-recovery-20260905/commerce/shop-behavior.json",
+      "sha256": "02b6c8ff67c03475bb20e7af6c4e3654162a82e2b41e208355c1cb0bfe49cb51"
+    }
+  ],
+  "deployed": false,
+  "paid_calls": 0,
+  "orders_submitted": 0
+}

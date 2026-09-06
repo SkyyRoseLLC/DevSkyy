@@ -168,10 +168,29 @@ function skyyrose2_collection_commerce_scenes( $collection ) {
 		$chapter['suppress_model_layers_for_placeholder'] = $use_placeholder && ! empty( $placeholder['suppress_model_layers'] );
 		$chapter = skyyrose2_apply_hero_commerce_scene( $chapter, $collection );
 		$chapter = skyyrose2_apply_collection_scene_motion( $chapter, $collection );
+		if ( ! skyyrose2_approved_scroll_world_scene( $chapter, $collection ) ) { continue; }
 		$scenes[]          = $chapter;
 	}
 
 	return $scenes;
+}
+
+/** Fail closed outside the exact final scene set; authority is not inferred from file presence. */
+function skyyrose2_approved_scroll_world_scene( $scene, $collection ) {
+	static $approved = null;
+	if ( null === $approved ) {
+		$path = SKYYROSE2_DIR . '/data/approved-scroll-world-scenes.json';
+		$decoded = is_readable( $path ) ? json_decode( file_get_contents( $path ), true ) : array(); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+		$approved = is_array( $decoded ) && 1 === ( $decoded['schema_version'] ?? 0 ) ? ( $decoded['scenes'] ?? array() ) : array();
+	}
+	$record = $approved[ $scene['scene_id'] ?? '' ] ?? array();
+	if ( 'APPROVED FINAL — IMPLEMENT' !== ( $record['approval_status'] ?? '' ) || $collection !== ( $record['collection'] ?? '' ) || ! empty( $scene['model_layers'] ) || ! empty( $scene['hero_composition']['variants'] ) ) { return false; }
+	$assets = array();
+	foreach ( $record['required_runtime_assets'] ?? array() as $asset ) { $assets[ $asset['role'] ] = $asset['path']; }
+	foreach ( array( 'poster' => $scene['image'] ?? '', 'desktop' => $scene['scene_motion']['desktop'] ?? '', 'mobile' => $scene['scene_motion']['mobile'] ?? '' ) as $role => $path ) {
+		if ( ! $path || ( 'assets/scroll-world/' . $path ) !== ( $assets[ $role ] ?? '' ) ) { return false; }
+	}
+	return array_values( $scene['product_bindings'] ?? array() ) === array_values( $record['cta']['product_bindings'] ?? array() );
 }
 
 /**
@@ -363,6 +382,19 @@ function skyyrose2_assets() {
 		$asset = '/assets/css/' . $component . $suffix . '.css';
 		wp_enqueue_style( 'skyyrose2-' . $component, SKYYROSE2_URI . $asset, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $asset ) );
 	}
+	// Paid card framing is shared; cinematic controllers load only on their routes.
+	$recovery_style = '/assets/css/visual-recovery' . $suffix . '.css';
+	wp_enqueue_style( 'skyyrose2-visual-recovery', SKYYROSE2_URI . $recovery_style, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $recovery_style ) );
+	if ( is_front_page() || $is_editorial_collection ) {
+		$recovery_script = '/assets/js/visual-recovery' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-visual-recovery', SKYYROSE2_URI . $recovery_script, array(), skyyrose2_asset_version( $recovery_script ), true );
+		foreach ( array( 'hero-commerce-scenes', 'collection-scene-motion' ) as $scene_component ) {
+			$scene_asset = '/assets/css/' . $scene_component . $suffix . '.css';
+			wp_enqueue_style( 'skyyrose2-' . $scene_component, SKYYROSE2_URI . $scene_asset, array( 'skyyrose2-visual-recovery' ), skyyrose2_asset_version( $scene_asset ) );
+		}
+		$scene_asset = '/assets/js/collection-scene-motion' . $suffix . '.js';
+		wp_enqueue_script( 'skyyrose2-collection-scene-motion', SKYYROSE2_URI . $scene_asset, array(), skyyrose2_asset_version( $scene_asset ), true );
+	}
 	if ( class_exists( 'WooCommerce' ) && ! is_checkout() ) { wp_enqueue_script( 'wc-cart-fragments' ); }
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, class_exists( 'WooCommerce' ) && ! is_checkout() ? array( 'wc-cart-fragments', 'wc-add-to-cart' ) : array(), skyyrose2_asset_version( $theme_script ), true );
 	if ( 'black-rose' === $collection_slug && ! $is_editorial_collection ) {
@@ -408,11 +440,44 @@ function skyyrose2_assets() {
 			array(
 				'modelUrl'    => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-mascot.glb' ), SKYYROSE2_URI . '/assets/models/skyy-mascot.glb' ),
 				'decoderPath' => SKYYROSE2_URI . '/assets/js/lib/draco/',
+				'moduleBase'  => SKYYROSE2_URI . '/assets/js/lib/three-r170/',
 			)
 		);
+		wp_localize_script( 'skyyrose2-mascot-loader', 'SKYY_GUIDE_DATA', skyyrose2_concierge_guide() );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_assets' );
+
+/** Read-only concierge destinations and product discovery; Woo owns all sale facts. */
+function skyyrose2_concierge_guide() {
+	$contact = skyyrose2_marketplace_page_url( 'contact' );
+	$shop = skyyrose2_shop_url();
+	$guide = array(
+		'greeting' => __( 'Welcome to SkyyRose. I’m Skyy, your digital house guide. This house is a father’s promise to his daughter, rooted in Oakland. I can help you explore a collection or find a piece by name or SKU.', 'skyyrose-flagship-2' ),
+		'pages' => array(
+			'shop' => array( 'label' => __( 'Shop the house', 'skyyrose-flagship-2' ), 'url' => $shop ),
+			'contact' => array( 'label' => __( 'Contact the house', 'skyyrose-flagship-2' ), 'url' => $contact ),
+		),
+		'intents' => array(
+			array( 'id' => 'sizing', 'patterns' => array( 'size', 'sizing', 'fit', 'measurements' ), 'answer' => __( 'Open the piece you’re considering to see its current size options and product details. If you need fit advice, contact the house with the product name or SKU.', 'skyyrose-flagship-2' ), 'link' => $contact, 'label' => __( 'Ask about fit', 'skyyrose-flagship-2' ) ),
+			array( 'id' => 'shipping', 'patterns' => array( 'shipping', 'delivery', 'returns', 'order' ), 'answer' => __( 'Shipping and purchase details depend on your order. Please contact the house for help with delivery, returns or an existing order.', 'skyyrose-flagship-2' ), 'link' => $contact, 'label' => __( 'Contact the house', 'skyyrose-flagship-2' ) ),
+			array( 'id' => 'legacy', 'patterns' => array( 'skyy', 'daughter', 'father', 'heir', 'story' ), 'answer' => __( 'SkyyRose is named after Skyy Rose, the founder’s daughter. The Heir carries that story forward: family, inheritance and a future built with care.', 'skyyrose-flagship-2' ), 'link' => skyyrose2_collection_url( 'kids-capsule' ), 'label' => __( 'Explore The Heir', 'skyyrose-flagship-2' ) ),
+		),
+		'products' => array(),
+		'suggestions' => array( 'signature', 'black-rose', 'love-hurts', 'legacy', 'sizing' ),
+	);
+	foreach ( skyyrose2_collections() as $slug => $collection ) {
+		$guide['intents'][] = array( 'id' => $slug, 'patterns' => array( $collection['name'], str_replace( '-', ' ', $slug ) ), 'answer' => $collection['headline'], 'link' => skyyrose2_collection_url( $slug ), 'label' => sprintf( __( 'Explore %s', 'skyyrose-flagship-2' ), $collection['name'] ) );
+	}
+	if ( function_exists( 'wc_get_products' ) ) {
+		foreach ( wc_get_products( array( 'status' => 'publish', 'limit' => 100, 'orderby' => 'title', 'order' => 'ASC' ) ) as $item ) {
+			if ( ! $item->is_visible() || post_password_required( $item->get_id() ) ) { continue; }
+			$record = skyyrose2_product_presentation( $item );
+			$guide['products'][] = array( 'name' => wp_strip_all_tags( $item->get_name() ), 'sku' => $item->get_sku(), 'url' => $item->get_permalink(), 'collection' => str_replace( '-', ' ', $record['collection'] ?? '' ) );
+		}
+	}
+	return $guide;
+}
 
 /**
  * Supply route-aware metadata when an SEO plugin is not the active authority.
@@ -1607,7 +1672,7 @@ function skyyrose2_collection_arrival_media( $collection ) {
 	return array(
 		'src' => skyyrose2_sot_asset_uri( $collection['hero'] ),
 		'srcset' => implode( ', ', array( skyyrose2_sot_asset_uri( $collection['hero_mobile'] ) . ' 640w', skyyrose2_sot_asset_uri( $collection['hero_tablet'] ) . ' 1024w', skyyrose2_sot_asset_uri( $collection['hero'] ) . ' 1440w' ) ),
-		'sizes' => '(max-width: 47.99em) calc(100vw - 2rem), (max-width: 95.75em) calc(60vw - 2.4rem), 881px',
+		'sizes' => '100vw',
 	);
 }
 

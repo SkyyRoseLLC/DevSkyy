@@ -2,6 +2,7 @@
 /** Front Page — The Living Archive. Eight static acts, shared native commerce. @package SkyyRoseFlagship2 */
 defined( 'ABSPATH' ) || exit;
 $archive_collections = skyyrose2_collections();
+$archive_hero_motion = skyyrose2_collection_hero_motion( 'black-rose', $archive_collections['black-rose']['hero'] );
 $archive_shop = skyyrose2_shop_url();
 $archive_about = skyyrose2_marketplace_page_url( 'about' );
 $archive_artifact = skyyrose2_get_products_by_skus( array( 'sg-005' ), 'signature' );
@@ -18,26 +19,32 @@ get_header();
 <main id="primary" class="sr2-archive" tabindex="-1">
 <div class="sr2-archive__inner">
 	<?php if ( function_exists( 'wc_print_notices' ) ) : ?><div class="sr2-commerce-notices" aria-live="polite"><?php wc_print_notices(); ?></div><?php endif; ?>
-	<section id="sr2-archive-arrival" class="sr2-archive-arrival" aria-labelledby="sr2-archive-title" data-archive-act="1">
-		<header class="sr2-archive-arrival__masthead">
-			<p class="sr2-world-index"><span><?php esc_html_e( 'Oakland, California', 'skyyrose-flagship-2' ); ?></span><span aria-hidden="true">I / VIII</span></p>
-			<h1 id="sr2-archive-title"><?php esc_html_e( 'SKYYROSE', 'skyyrose-flagship-2' ); ?></h1>
-		</header>
-		<div class="sr2-archive-arrival__composition">
-			<div class="sr2-archive-arrival__identity">
-				<p class="sr2-archive-arrival__edition"><?php esc_html_e( 'The Living Archive', 'skyyrose-flagship-2' ); ?></p>
-				<p class="sr2-archive-arrival__intro"><?php esc_html_e( 'A house built by a father, named after a daughter, and rooted in The Town.', 'skyyrose-flagship-2' ); ?></p>
-				<div class="sr2-archive-arrival__actions"><a class="sr2-control sr2-control--primary" href="#sr2-archive-worlds"><?php esc_html_e( 'Choose your world', 'skyyrose-flagship-2' ); ?></a><a class="sr2-world-text-link" href="<?php echo esc_url( $archive_shop ); ?>"><?php esc_html_e( 'Shop the house', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a></div>
-			</div>
-			<figure class="sr2-archive-arrival__image">
-				<picture>
-					<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp' ) ); ?>">
-					<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp' ) ); ?>">
-					<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" width="1440" height="810" alt="<?php esc_attr_e( 'Black Rose monuments overlook the Bay Bridge beneath a full moon.', 'skyyrose-flagship-2' ); ?>" fetchpriority="high" loading="eager" decoding="async">
-				</picture>
-				<figcaption><span><?php esc_html_e( 'Black Rose / Bay Bridge', 'skyyrose-flagship-2' ); ?></span><span aria-hidden="true">01</span></figcaption>
-			</figure>
+	<section id="sr2-archive-arrival" class="sr2-archive-scene" data-recovery-hero aria-labelledby="sr2-archive-title" data-archive-act="1">
+		<div class="sr2-archive-scene__image" aria-hidden="true">
+			<picture>
+				<source media="(max-width: 47.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp' ) ); ?>">
+				<source media="(max-width: 74.99em)" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp' ) ); ?>">
+				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp' ) ); ?>" width="1440" height="810" alt="" fetchpriority="high" loading="eager" decoding="async">
+			</picture>
+			<?php if ( $archive_hero_motion ) : ?><video data-recovery-hero-video muted loop playsinline preload="none" aria-hidden="true"><source data-src="<?php echo esc_url( $archive_hero_motion['webm'] ); ?>" type="video/webm"><source data-src="<?php echo esc_url( $archive_hero_motion['mp4'] ); ?>" type="video/mp4"></video><?php endif; ?>
 		</div>
+		<div class="sr2-archive-scene__veil" aria-hidden="true"></div>
+		<div class="sr2-archive-scene__copy">
+			<p class="sr2-world-index"><?php esc_html_e( 'Oakland, California / The Living Archive', 'skyyrose-flagship-2' ); ?></p>
+			<h1 id="sr2-archive-title"><?php esc_html_e( 'Skyy Rose', 'skyyrose-flagship-2' ); ?></h1>
+			<p class="sr2-archive-scene__promise"><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose-flagship-2' ); ?></p>
+			<p class="sr2-archive-scene__intro"><?php esc_html_e( 'A house built by a father, named after a daughter, and rooted in The Town.', 'skyyrose-flagship-2' ); ?></p>
+			<div class="sr2-archive-scene__actions"><a class="sr2-control sr2-control--primary" href="#sr2-archive-worlds"><?php esc_html_e( 'Choose your world', 'skyyrose-flagship-2' ); ?></a><a class="sr2-control sr2-control--secondary" href="<?php echo esc_url( $archive_shop ); ?>"><?php esc_html_e( 'Shop the house', 'skyyrose-flagship-2' ); ?></a></div>
+		</div>
+		<div id="skyy-hero-stage" class="sr2-archive-scene__concierge" role="region" aria-label="<?php esc_attr_e( 'Skyy, your house concierge', 'skyyrose-flagship-2' ); ?>">
+			<noscript><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2-512w.webp' ) ); ?>" width="160" height="240" alt="<?php esc_attr_e( 'Skyy, the house concierge', 'skyyrose-flagship-2' ); ?>" loading="lazy"><a href="<?php echo esc_url( skyyrose2_marketplace_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Ask Skyy / Client Services', 'skyyrose-flagship-2' ); ?></a></noscript>
+		</div>
+		<button class="sr2-recovery-motion-toggle" type="button" data-recovery-motion-toggle hidden><?php esc_html_e( 'Pause motion', 'skyyrose-flagship-2' ); ?></button>
+		<nav class="sr2-archive-scene__worlds" aria-label="<?php esc_attr_e( 'Opening collection worlds', 'skyyrose-flagship-2' ); ?>">
+			<?php $arrival_index = 0; foreach ( array( 'signature', 'black-rose', 'love-hurts' ) as $arrival_slug ) : ?>
+				<a href="<?php echo esc_url( skyyrose2_collection_url( $arrival_slug ) ); ?>"><span aria-hidden="true"><?php echo esc_html( sprintf( '%02d', ++$arrival_index ) ); ?></span><b><?php echo esc_html( $archive_collections[ $arrival_slug ]['name'] ); ?></b></a>
+			<?php endforeach; ?>
+		</nav>
 	</section>
 	<section id="sr2-archive-worlds" class="sr2-archive-worlds" aria-labelledby="sr2-archive-worlds-title" tabindex="-1" data-archive-act="2">
 		<header class="sr2-archive-section-head"><p class="sr2-world-index"><?php esc_html_e( 'II / The four worlds', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-worlds-title"><?php esc_html_e( 'Four stories. One house.', 'skyyrose-flagship-2' ); ?></h2></header>

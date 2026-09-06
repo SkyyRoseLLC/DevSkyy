@@ -990,5 +990,37 @@
     "source": "assets/css/design-tokens.css",
     "tool": "Node.js 22.23.2",
     "tracked": true
+  },
+  "assets/css/visual-recovery.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/visual-recovery.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/visual-recovery.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/visual-recovery.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
+    "generator": "../../tools/v2-runtime/build-scene-posters.cjs",
+    "normalization": "cwebp1.6.0 q90 m6 proportional width, libsharpyuv0.4.2",
+    "released": true,
+    "source": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+    "tool": "cwebp 1.6.0",
+    "tracked": true
+  },
+  "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
+    "generator": "../../tools/v2-runtime/build-scene-posters.cjs",
+    "normalization": "cwebp1.6.0 q90 m6 proportional width, libsharpyuv0.4.2",
+    "released": true,
+    "source": "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+    "tool": "cwebp 1.6.0",
+    "tracked": true
   }
 }
