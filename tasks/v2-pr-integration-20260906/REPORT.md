@@ -48,4 +48,15 @@ Remote checks must rerun after these corrections. The original integration verif
 
 The corrected source passed the pinned full build and verification again, including unchanged assets, registries and POT. All 13 integrity/security/fixture tests and five rendition tests passed. Exact CI tool versions were reproduced locally: Ruff 0.16.6, Black 26.5.1, isort 9.0.1 and mypy 2.3.1. Black reported all 1,986 source files unchanged after scoped formatting; mypy and Ruff passed. The global isort result identified two final standard-library import-order issues in the new rendition builder/test; those were corrected and passed scoped validation. Initial apparent isort failures in four unchanged main files disappeared with the exact CI version, so those main files were not edited.
 
-Independent Python review verified the formatting-only files' non-import ASTs and imported bindings, and checked every reconciled generator pin. The two historical film recipes now state that their original external source set is not bundled and that `assets/card-scenes` is not an interchangeable input. Their source names and rendering behavior are retained; neither recipe was run.
+Independent Python review verified the formatting-only files' non-import ASTs and imported bindings, and checked every reconciled generator pin. The two historical film recipes document their separately prepared source directory: br-003/br-011 product references are tracked in the legacy theme and the br-008/br-009/br-010 on-model media are in V2. `assets/card-scenes` alone is not an interchangeable input. Their source names and rendering behavior are retained; neither recipe was run.
+
+
+## Python runner routing
+
+The Python job remained queued because GitHub has no registered runner matching `self-hosted, docker-arm64`. The sole online runner is macOS. The stopped Docker container retained agent 22 from July, but that registration no longer exists; its entrypoint re-registers on start and mounts the host Docker socket. It was not started or re-registered. Exit 137 is recorded, with OOMKilled false; the precise termination cause is unknown.
+
+Commit `00dfcfa598fa3d1ae8ff28c86d6e0548b47a6d2a` originally changed this job from `ubuntu-latest` solely to exercise Linux service-container support. The job uses checkout-relative paths, a local Redis service and standard dependencies, with no private network requirement. Routing now uses `ubuntu-24.04-arm`, the same hosted Linux architecture already verified by V2 certification. Tests, services, dependencies, permissions, triggers, coverage and artifact steps remain unchanged. The remote Python run must validate this routing before a green claim.
+
+## Runtime checkpoint integration
+
+Parent checkpoint `437b8353e` was integrated as `0ebe92150`. Its bounded native Core stylesheet inlining, first-card frame priority, exact Inter unicode range and canonical Home label fallback retain their reviewed source changes. The existing upstream security policy and all reconciled CI generator pins remain exact; the combined PHP baseline checksum was recomputed from the merged manifest. Performance acceptance remains open.
