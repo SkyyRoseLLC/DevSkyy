@@ -162,7 +162,7 @@ msgstr ""
 msgid "Apply filters"
 msgstr ""
 
-#: template-parts/home/living-archive-worlds.php:8
+#: template-parts/home/living-archive-worlds.php:9
 msgid "Approved collection worlds"
 msgstr ""
 
@@ -562,7 +562,7 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-#: inc/shop-archive.php:189 template-parts/home/living-archive-worlds.php:13
+#: inc/shop-archive.php:189 template-parts/home/living-archive-worlds.php:14
 msgid "Enter %s"
 msgstr ""
 
@@ -1090,7 +1090,7 @@ msgstr ""
 msgid "Next chapter"
 msgstr ""
 
-#: functions.php:1636 template-parts/home/living-archive-worlds.php:7
+#: functions.php:1636 template-parts/home/living-archive-worlds.php:8
 msgid "Next collection"
 msgstr ""
 
@@ -1302,7 +1302,7 @@ msgstr ""
 msgid "Previous chapter"
 msgstr ""
 
-#: functions.php:1636 template-parts/home/living-archive-worlds.php:7
+#: functions.php:1636 template-parts/home/living-archive-worlds.php:8
 msgid "Previous collection"
 msgstr ""
 
@@ -1862,7 +1862,7 @@ msgstr ""
 msgid "The Heir"
 msgstr ""
 
-#: template-parts/home/living-archive-worlds.php:17
+#: template-parts/home/living-archive-worlds.php:18
 msgid "The Heir / Discover Kids Capsule"
 msgstr ""
 

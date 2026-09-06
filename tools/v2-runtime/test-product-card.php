@@ -28,7 +28,9 @@ function sanitize_title( $value ) { return strtolower( $value ); }
 function wp_kses_post( $value ) { return $value; }
 function wp_strip_all_tags( $value ) { return strip_tags( $value ); }
 function wp_trim_words( $value ) { return $value; }
-function skyyrose2_collections() { return array( 'signature' => array( 'name' => 'Signature' ) ); }
+function skyyrose2_collections() { return array( 'signature' => array( 'name' => 'Signature', 'portal_statue' => $GLOBALS['test_frame'] ?? array() ) ); }
+function skyyrose2_sot_asset_uri( $path ) { return 'https://example.test/sot/' . $path; }
+function absint( $value ) { return abs( (int) $value ); }
 function skyyrose2_product_presentation() { return array( 'collection' => 'signature', 'presentation' => 'signature' ); }
 function skyyrose2_approved_card_front() { return $GLOBALS['test_front']; }
 function skyyrose2_product_commerce_media() { $GLOBALS['resolver_calls']++; return $GLOBALS['test_media']; }
@@ -102,6 +104,13 @@ foreach ( array( 0 => array( 'eager', 'high' ), 1 => array( 'eager', 'auto' ), 2
 	$html = render_card( array( 'product' => $piece, 'index' => $index, 'media_priority' => 'high' ), $previous );
 	check_card( str_contains( $html, 'loading="' . $expected[0] . '" fetchpriority="' . $expected[1] . '"' ), 'Only the first two native archive cards may be eager; only the first may be high' );
 }
+$GLOBALS['test_frame'] = array( 'small' => 'approved-frame.webp', 'width' => 640, 'height' => 1067 );
+foreach ( array( 0 => 'high', 1 => 'auto', 2 => 'auto' ) as $index => $expected ) {
+	$html = render_card( array( 'product' => $piece, 'index' => $index, 'media_priority' => 'high' ), $previous );
+	preg_match( '/<img class="sr2-c-editorial-card__frame"[^>]+>/', $html, $frame_tag );
+	check_card( str_contains( $frame_tag[0] ?? '', 'fetchpriority="' . $expected . '"' ), 'The measured LCP frame shares only its first native card priority' );
+}
+$GLOBALS['test_frame'] = array();
 $GLOBALS['test_loop_name'] = 'related';
 $html = render_card( array( 'product' => $piece, 'index' => 0, 'media_priority' => 'high' ), $previous );
 check_card( str_contains( $html, 'loading="lazy"' ), 'Secondary named Woo loops must not receive main-loop priority' );

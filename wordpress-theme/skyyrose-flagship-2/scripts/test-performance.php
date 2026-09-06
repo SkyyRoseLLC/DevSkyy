@@ -12,6 +12,7 @@ $GLOBALS['sr2_styles']      = array();
 $GLOBALS['sr2_scripts']     = array();
 $GLOBALS['sr2_strategies']  = array();
 $GLOBALS['sr2_post_slug']   = '';
+$GLOBALS['sr2_wp_style_registry'] = (object) array( 'queue' => array(), 'registered' => array() );
 
 function add_action( $hook, $callback, $priority = 10, $accepted_args = 1 ) {
 	$GLOBALS['sr2_hooks'][] = compact( 'hook', 'callback', 'priority', 'accepted_args' );
@@ -32,6 +33,8 @@ function is_user_logged_in() { return false; }
 function wp_dequeue_style( $handle ) { $GLOBALS['sr2_styles'][] = $handle; }
 function wp_dequeue_script( $handle ) { $GLOBALS['sr2_scripts'][] = $handle; }
 function wp_script_add_data( $handle, $key, $value ) { $GLOBALS['sr2_strategies'][ $handle ][ $key ] = $value; }
+function wp_styles() { return $GLOBALS['sr2_wp_style_registry']; }
+function wp_style_add_data( $handle, $key, $value ) { $GLOBALS['sr2_wp_style_registry']->registered[ $handle ]->extra[ $key ] = $value; }
 function wp_parse_url( $url, $component = -1 ) { return parse_url( $url, $component ); }
 function sanitize_title( $value ) { return strtolower( trim( preg_replace( '/[^a-z0-9]+/i', '-', $value ), '-' ) ); }
 function get_post_field() { return $GLOBALS['sr2_post_slug']; }
@@ -178,4 +181,35 @@ $GLOBALS['sr2_test_media'] = array( 'state' => 'rejected', 'ids' => array() );
 sr2_assert( array() === skyyrose2_performance_route_preloads(), 'Rejected PDP has no product image preload' );
 $GLOBALS['sr2_test_media'] = array( 'state' => 'missing', 'ids' => array() );
 sr2_assert( array() === skyyrose2_performance_route_preloads(), 'Missing PDP has no fictional preload' );
+
+// Core owns the inline budget, cascade and URL normalization. Only exact small
+// theme files may opt in; external replacements and media variants remain links.
+$style_cases = array(
+	'skyyrose2-tokens' => array( 'design-tokens.min.css', 'all', array() ),
+	'skyyrose2-theme' => array( 'theme.min.css', 'all', array() ),
+	'skyyrose2-controls' => array( 'controls.min.css', 'print', array() ),
+	'skyyrose2-global-shell' => array( 'global-shell.min.css', 'all', array( 'rtl' => 'replace' ) ),
+	'skyyrose2-visual-recovery' => array( 'visual-recovery.min.css', 'all', array( 'after' => array( '.extension { color: red; }' ) ) ),
+	'woocommerce-general' => array( 'design-tokens.min.css', 'all', array() ),
+);
+foreach ( $style_cases as $handle => $case ) {
+	$GLOBALS['sr2_wp_style_registry']->queue[] = $handle;
+	$GLOBALS['sr2_wp_style_registry']->registered[ $handle ] = (object) array( 'src' => SKYYROSE2_URI . '/assets/css/' . $case[0], 'args' => $case[1], 'extra' => $case[2] );
+}
+skyyrose2_performance_inline_small_styles();
+$styles = $GLOBALS['sr2_wp_style_registry']->registered;
+sr2_assert( SKYYROSE2_DIR . '/assets/css/design-tokens.min.css' === $styles['skyyrose2-tokens']->extra['path'], 'exact small tokens opt into native inline delivery' );
+sr2_assert( isset( $styles['skyyrose2-visual-recovery']->extra['path'] ) && array( '.extension { color: red; }' ) === $styles['skyyrose2-visual-recovery']->extra['after'], 'attached extension CSS remains intact and after its source' );
+foreach ( array( 'skyyrose2-theme', 'skyyrose2-controls', 'skyyrose2-global-shell', 'woocommerce-general' ) as $handle ) {
+	sr2_assert( ! isset( $styles[ $handle ]->extra['path'] ), 'large, alternate-media, RTL and plugin styles remain external: ' . $handle );
+}
+unset( $styles['skyyrose2-tokens']->extra['path'] );
+$styles['skyyrose2-tokens']->src = 'https://cdn.example.test/replaced.css';
+skyyrose2_performance_inline_small_styles();
+sr2_assert( ! isset( $styles['skyyrose2-tokens']->extra['path'] ), 'an extension-replaced URL is not bypassed by a local path' );
+$styles['skyyrose2-tokens']->src = SKYYROSE2_URI . '/assets/css/design-tokens.min.css';
+$GLOBALS['sr2_filter_values']['skyyrose2_inline_small_styles'] = false;
+skyyrose2_performance_inline_small_styles();
+sr2_assert( ! isset( $styles['skyyrose2-tokens']->extra['path'] ), 'deployment opt-out preserves normal external delivery' );
+sr2_assert( ! in_array( 'styles_inline_size_limit', array_column( $GLOBALS['sr2_hooks'], 'hook' ), true ), 'theme does not enlarge or replace the native total inline budget' );
 fwrite( STDOUT, "PASS performance contract\n" );

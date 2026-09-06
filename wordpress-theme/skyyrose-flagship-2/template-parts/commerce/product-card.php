@@ -95,7 +95,7 @@ try {
 		<?php endif; ?>
 		</span>
 		<?php if ( $frame_uri ) : ?>
-			<img class="sr2-c-editorial-card__frame" src="<?php echo esc_url( $frame_uri ); ?>" alt="" aria-hidden="true" width="<?php echo absint( $frame['width'] ); ?>" height="<?php echo absint( $frame['height'] ); ?>" loading="<?php echo esc_attr( $loading ); ?>" decoding="async">
+			<img class="sr2-c-editorial-card__frame" src="<?php echo esc_url( $frame_uri ); ?>" alt="" aria-hidden="true" width="<?php echo absint( $frame['width'] ); ?>" height="<?php echo absint( $frame['height'] ); ?>" loading="<?php echo esc_attr( $loading ); ?>" fetchpriority="<?php echo esc_attr( $fetchpriority ); ?>" decoding="async">
 			<span class="sr2-c-editorial-card__frame-label" aria-hidden="true"><span class="sr2-c-editorial-card__inscription"><?php echo esc_html( $collection_name ); ?></span></span>
 		<?php endif; ?>
 	</a>

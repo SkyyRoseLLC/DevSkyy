@@ -89,6 +89,46 @@ function skyyrose2_performance_dequeue_unused_assets() {
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_dequeue_unused_assets', 100 );
 
 /**
+ * Offer small, exact theme styles to Core's bounded inline-style delivery.
+ *
+ * Core retains handle order, attached CSS and relative URL normalization. Its
+ * total byte budget is unchanged; large sheets and every non-selected sheet
+ * remain ordinary blocking stylesheet links, including the no-JS path.
+ * Third-party replacements, alternate media and RTL variants are not bypassed.
+ */
+function skyyrose2_performance_inline_small_styles() {
+	if ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) || ! apply_filters( 'skyyrose2_inline_small_styles', true ) ) {
+		return;
+	}
+
+	$styles = wp_styles();
+	$assets = array(
+		'tokens' => 'design-tokens', 'controls' => 'controls',
+		'global-shell' => 'global-shell', 'visual-recovery' => 'visual-recovery',
+		'home-page' => 'home-page', 'collection-world' => 'collection-world',
+		'product-page' => 'product-page', 'shop-page' => 'shop-page',
+		'hero-commerce-scenes' => 'hero-commerce-scenes',
+		'collection-scene-motion' => 'collection-scene-motion', 'mascot' => 'mascot',
+	);
+	foreach ( $assets as $name => $asset ) {
+		$handle = 'skyyrose2-' . $name;
+		$style = $styles->registered[ $handle ] ?? null;
+		if ( ! $style || ! in_array( $handle, $styles->queue, true ) || 'all' !== $style->args || ! empty( $style->extra['rtl'] ) || ! empty( $style->extra['conditional'] ) || ! empty( $style->extra['path'] ) ) {
+			continue;
+		}
+		foreach ( array( '.min.css', '.css' ) as $suffix ) {
+			$relative = '/assets/css/' . $asset . $suffix;
+			$path = SKYYROSE2_DIR . $relative;
+			if ( SKYYROSE2_URI . $relative === $style->src && is_readable( $path ) && filesize( $path ) <= 16384 ) {
+				wp_style_add_data( $handle, 'path', $path );
+				break;
+			}
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_inline_small_styles', 101 );
+
+/**
  * Prevent the disabled emoji service from retaining a DNS-prefetch hint.
  * Preserve every hint registered by active plugins and route-owned media.
  *
