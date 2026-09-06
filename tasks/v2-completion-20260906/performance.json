@@ -1,0 +1,118 @@
+{
+  "status": "MOBILE_LCP_BUDGET_NOT_MET",
+  "environment": "Isolated localPHP uncompressed responses; same exact-origin proxy/headless Chromium simulated throttling in both sets; no concurrent task browser/build in final set. This is not deployed or field CWV.",
+  "budget_ms": 2500,
+  "provisional_runs_excluded": "lighthouse-candidate-*",
+  "rows": [
+    {
+      "case": "home-mobile",
+      "baseline": {
+        "performance": 68,
+        "lcp_ms": 6566.837499999998,
+        "cls": 0.05521945847616424,
+        "tbt_ms": 36,
+        "transfer_bytes": 2147064,
+        "observed_lcp_ms": 879,
+        "sha256": "11f41b5e97c7caa0f8ab9b0789cbf60adc3d4f4c763c6bfc3438babe12a89750"
+      },
+      "candidate-final": {
+        "performance": 73,
+        "lcp_ms": 5795.988800000001,
+        "cls": 0.05521945847616424,
+        "tbt_ms": 24,
+        "transfer_bytes": 2019204,
+        "observed_lcp_ms": 882,
+        "sha256": "8027054e3ef271c85235c625ca8670605d639363ab9cf357ab93233a5b311502"
+      }
+    },
+    {
+      "case": "home-desktop",
+      "baseline": {
+        "performance": 97,
+        "lcp_ms": 1120.5410000000002,
+        "cls": 0.008739389075761961,
+        "tbt_ms": 0,
+        "transfer_bytes": 2259345,
+        "observed_lcp_ms": 627,
+        "sha256": "14847e1bc673439f15425e84f1467ac5d11f16d5ae2d6e806ac4b61c4004bf27"
+      },
+      "candidate-final": {
+        "performance": 98,
+        "lcp_ms": 962.2559999999997,
+        "cls": 0.008739389075761961,
+        "tbt_ms": 0,
+        "transfer_bytes": 2131485,
+        "observed_lcp_ms": 608,
+        "sha256": "1d6516baddfbde80ed59c89ff6fc8b8d22fbeae6c0613e0a6cec088e4c6fe711"
+      }
+    },
+    {
+      "case": "pdp-mobile",
+      "baseline": {
+        "performance": 72,
+        "lcp_ms": 5191.8618000000015,
+        "cls": 0.004820518584322639,
+        "tbt_ms": 0,
+        "transfer_bytes": 1185999,
+        "observed_lcp_ms": 532,
+        "sha256": "aa5c4e3957791ddb6b0f38881f720440be0b578cfaa8f47cea9c109376158729"
+      },
+      "candidate-final": {
+        "performance": 71,
+        "lcp_ms": 5190.7512,
+        "cls": 0.004820518584322639,
+        "tbt_ms": 1,
+        "transfer_bytes": 1206038,
+        "observed_lcp_ms": 535,
+        "sha256": "69a904b3d80deb356b04bb0b4cad26e0fcc73dd87404c431c62d575040884168"
+      }
+    },
+    {
+      "case": "pdp-desktop",
+      "baseline": {
+        "performance": 98,
+        "lcp_ms": 1048.0689750000001,
+        "cls": 0.003459030822000386,
+        "tbt_ms": 0,
+        "transfer_bytes": 1263273,
+        "observed_lcp_ms": 549,
+        "sha256": "2c06c2bb12b9d106ede6217e5f1b53fc07aecb7f87148a3652a8d45530b9280f"
+      },
+      "candidate-final": {
+        "performance": 98,
+        "lcp_ms": 1003.615,
+        "cls": 0.0032767944938753863,
+        "tbt_ms": 0,
+        "transfer_bytes": 1267892,
+        "observed_lcp_ms": 987,
+        "sha256": "400d8cffe8883e5080e84dd9d678a084fdd3f37174431852c5d67e1ee64b1ffc"
+      }
+    },
+    {
+      "case": "shop-mobile",
+      "baseline": {
+        "performance": 74,
+        "lcp_ms": 4967.928000000001,
+        "cls": 0.0002145539959463094,
+        "tbt_ms": 0,
+        "transfer_bytes": 1063320,
+        "observed_lcp_ms": 479,
+        "sha256": "9a74d73bc7caf74a6f1ec90336a97c6f61f2042f1e9e95ee6396216f9b91891c"
+      },
+      "candidate-final": {
+        "performance": 70,
+        "lcp_ms": 5723.831099999999,
+        "cls": 0.0003226894348763102,
+        "tbt_ms": 0,
+        "transfer_bytes": 1056193,
+        "observed_lcp_ms": 678,
+        "sha256": "343dda4a0864a3c4e1282842fb803af1e3a1512adad3662a4760400441ce5573"
+      }
+    }
+  ],
+  "shop_repeat": {
+    "performance": 70,
+    "lcp_ms": 5654.414100000002,
+    "sha256": "a2ddb0d3b3587894fabc3f0c3b62d8add05ca8a4b20fe674d5b13fe09b41e7a7"
+  }
+}

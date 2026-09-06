@@ -1,4 +1,4 @@
-/** The invitation is server-rendered. Guide and 3D load only when invited. */
+/** Native invitation; deferred Home entrance and invitation-owned guide loading. */
 (function () {
   'use strict';
   var config = window.SKYY_LOADER_CONFIG || {};
@@ -59,6 +59,7 @@
       return;
     window.SKYY_3D_CONFIG = window.SKYY_3D_CONFIG || {};
     window.SKYY_3D_CONFIG.startVisible = true;
+    document.dispatchEvent(new CustomEvent('skyy:3d-loading'));
     threePending = script(config.skyy3dUrl).catch(function () {
       window.SKYY_3D_CONFIG.loadFailed = true;
       document.dispatchEvent(new CustomEvent('skyy:3d-fallback'));
@@ -116,8 +117,17 @@
         invite.removeAttribute('aria-busy');
         // A real contact link remains the fallback; a second activation follows it.
         config.mascotUrl = '';
-        invite.title = 'The guide could not load. Open Contact instead.';
-        invite.replaceWith(invite.cloneNode(true));
+        var labels = document.getElementById('skyy-presence-status')?.dataset || {};
+        if (labels.guideFailed) invite.title = labels.guideFailed;
+        invite.removeAttribute('aria-haspopup');
+        invite.removeAttribute('aria-controls');
+        invite.removeAttribute('aria-expanded');
+        var label = invite.querySelector?.('span');
+        if (label && labels.contact) label.textContent = labels.contact;
+        var fallback = invite.cloneNode(true);
+        var ownedFocus = document.activeElement === invite;
+        invite.replaceWith(fallback);
+        if (ownedFocus) fallback.focus({ preventScroll: true });
       });
   });
 })();

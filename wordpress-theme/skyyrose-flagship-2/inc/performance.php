@@ -72,6 +72,19 @@ function skyyrose2_performance_dequeue_unused_assets() {
 	}
 
 	wp_dequeue_script( 'wp-embed' );
+
+	// These editorial routes render our cards, Quick View and bag dialog. Their
+	// controls/notices are owned by theme.css, controls.css and global-shell.css;
+	// Woo's product grids, tables and forms are not present. Keep native styles on
+	// every transactional, archive, content and legacy immersive route. Extensions
+	// adding native Woo markup here can opt back in without changing this policy.
+	$collection = function_exists( 'skyyrose2_collection_page_slug' ) ? skyyrose2_collection_page_slug() : '';
+	$owned_commerce = is_front_page() || ( $collection && function_exists( 'skyyrose2_collection_world_enabled' ) && skyyrose2_collection_world_enabled( $collection ) );
+	if ( $owned_commerce && ! apply_filters( 'skyyrose2_editorial_native_woo_styles', false ) ) {
+		foreach ( array( 'woocommerce-general', 'woocommerce-layout', 'woocommerce-smallscreen' ) as $handle ) {
+			wp_dequeue_style( $handle );
+		}
+	}
 }
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_dequeue_unused_assets', 100 );
 

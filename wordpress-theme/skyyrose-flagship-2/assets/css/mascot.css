@@ -394,7 +394,7 @@ body #skyy-ask-dialog {
 #skyy-dialog-stage { min-width: 0; }
 #skyy-ask-dialog .skyy-hero-actions { display: none; }
 #skyy-hero-stage #skyyrose-mascot {
- display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: 1fr 1fr;
+ display: grid; grid-template-columns: minmax(0, 1fr) 8rem; grid-template-rows: 1fr 1fr;
  align-items: center; column-gap: .5rem; width: 100%; min-height: 18rem; margin: 0;
 }
 #skyy-hero-stage #skyyrose-mascot[hidden] { display: none; }
@@ -409,7 +409,7 @@ body #skyy-ask-dialog {
 #skyy-hero-stage button:focus-visible { outline: 2px solid var(--sr2-color-text); outline-offset: 3px; }
 #skyy-hero-stage #skyy-hero-chat { border-color: var(--sr2-color-action); }
 @media (prefers-reduced-motion: no-preference) {
- #skyy-hero-stage [data-renderer="3d"] .skyyrose-mascot__character { transform: translateX(calc((var(--skyy-entry-progress, 1) - 1) * min(8rem, 22vw))); }
+ #skyy-hero-stage [data-renderer="3d"] .skyy-3d-canvas { transform: translateX(calc((var(--skyy-entry-progress, 1) - 1) * min(8rem, 22vw))); }
 }
 #skyy-hero-stage [data-motion-paused="true"] .skyyrose-mascot__character { animation-play-state: paused !important; }
 @media (max-width: 47.99rem) {
@@ -418,3 +418,28 @@ body #skyy-ask-dialog {
 }
 @media (prefers-reduced-motion: reduce) { #skyy-hero-stage * { animation: none !important; transition: none !important; } }
 @media (forced-colors: active) { #skyy-hero-stage button { border-color: CanvasText; } }
+
+/* Completion: one portrait/canvas layer stack, stable feet and a reserved status. */
+#skyyrose-mascot .skyyrose-mascot__image { object-position: center bottom; transform: translateY(-2%) scale(1.28); transform-origin: center bottom; opacity: 1; }
+#skyyrose-mascot .skyy-3d-canvas { opacity: 0; }
+#skyyrose-mascot[data-presence="live"] .skyyrose-mascot__image { opacity: 0; }
+#skyyrose-mascot[data-presence="live"] .skyy-3d-canvas { opacity: 1; }
+.skyy-presence-status { min-height: 2.8em; margin: .5rem 0 0; font: 400 .6875rem/1.4 var(--sr2-font-body); color: var(--sr2-color-text-muted); overflow-wrap: anywhere; }
+#skyy-hero-stage .skyy-presence-status { position: absolute; inset-inline-end: 0; top: .25rem; width: 8rem; margin: 0; pointer-events: none; }
+@media (prefers-reduced-motion: no-preference) {
+ #skyyrose-mascot .skyyrose-mascot__image, #skyyrose-mascot .skyy-3d-canvas { transition: opacity 240ms var(--sr2-ease); }
+}
+@media (max-width: 47.99rem) {
+ #skyy-dialog-stage .skyy-concierge-stage { display: grid; grid-template-columns: 120px minmax(0, 1fr); justify-content: center; align-items: end; gap: 0 var(--sr2-space-3); }
+ #skyy-dialog-stage .skyyrose-mascot__character { grid-column: 1; grid-row: 1; }
+ #skyy-dialog-stage #skyy-motion-toggle { grid-column: 2; grid-row: 1; }
+ #skyy-dialog-stage .skyy-presence-status { grid-column: 1 / -1; grid-row: 2; }
+ body #skyy-ask-dialog { max-height: calc(100dvh - 2rem - env(safe-area-inset-top) - env(safe-area-inset-bottom)); }
+}
+@media (max-height: 34rem) and (max-width: 60rem) {
+ #skyy-ask-dialog .skyy-ask-dialog__body { grid-template-columns: minmax(0, 100px) minmax(0, 1fr); gap: var(--sr2-space-3); }
+ #skyy-dialog-stage .skyy-concierge-stage { display: block; }
+ #skyy-ask-dialog .skyyrose-mascot__character { width: 76px; height: 118px; margin-inline: auto; }
+ #skyy-ask-description { margin-bottom: var(--sr2-space-2); }
+ .skyy-conversation { min-height: 4rem; max-height: 8rem; }
+}

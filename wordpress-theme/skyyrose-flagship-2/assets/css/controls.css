@@ -18,17 +18,23 @@
 .sr2-control { display: inline-flex; align-items: center; justify-content: center; gap: var(--sr2-control-gap); border: var(--sr2-border-width) solid var(--sr2-border-control); background: transparent; color: var(--sr2-color-text); text-decoration: none; cursor: pointer; }
 .sr2-control--primary,
 .sr2-button--fill,
-.woocommerce :is(a.button, button.button, input.button) { background: var(--sr2-color-action); color: var(--sr2-color-on-action); border: var(--sr2-border-width) solid var(--sr2-color-action); }
+.woocommerce :is(a.button, button.button, input.button),
+.woocommerce :is(a.button, button.button, input.button).alt { background: var(--sr2-color-action); color: var(--sr2-color-on-action); border: var(--sr2-border-width) solid var(--sr2-color-action); }
 .sr2-control--primary:hover,
 .sr2-button--fill:hover,
-.woocommerce :is(a.button, button.button, input.button):hover { background: var(--sr2-ink); color: var(--sr2-void); border-color: var(--sr2-ink); }
+.woocommerce :is(a.button, button.button, input.button):hover,
+.woocommerce :is(a.button, button.button, input.button).alt:hover { background: var(--sr2-ink); color: var(--sr2-void); border-color: var(--sr2-ink); }
 .sr2-control--secondary:hover { border-color: var(--sr2-color-text); background: var(--sr2-surface-raised); }
 .sr2-control--quiet { border-color: transparent; text-decoration: underline; text-underline-offset: .25em; }
 .sr2-icon-button { display: inline-flex; align-items: center; justify-content: center; min-width: var(--sr2-target-size); min-height: var(--sr2-target-size); padding: var(--sr2-space-2); border: var(--sr2-border-width) solid transparent; background: transparent; color: inherit; cursor: pointer; }
 .sr2-control:active,
 .sr2-button:active { transform: none; }
 :is(.sr2-control, .sr2-button):is(:disabled, [aria-disabled="true"], [aria-busy="true"]),
-.woocommerce :is(a.button, button.button, input.button):is(:disabled, .disabled, .loading, [aria-busy="true"]) { background: var(--sr2-surface-raised); color: var(--sr2-color-text-muted); border-color: var(--sr2-border-control); opacity: 1; cursor: not-allowed; }
+.woocommerce :is(a.button, button.button, input.button):is(:disabled, .disabled, .loading, [aria-busy="true"]),
+.woocommerce :is(a.button, button.button, input.button).alt:is(:disabled, .disabled, .loading, [aria-busy="true"]),
+.woocommerce :is(a.button, button.button, input.button).alt:is(:disabled, .disabled, .loading, [aria-busy="true"]):hover,
+.woocommerce :is(a.button, button.button, input.button).alt:disabled[disabled],
+.woocommerce :is(a.button, button.button, input.button).alt:disabled[disabled]:hover { background: var(--sr2-surface-raised); color: var(--sr2-color-text-muted); border-color: var(--sr2-border-control); opacity: 1; cursor: not-allowed; }
 :is(.sr2-control, .sr2-button)[aria-busy="true"],
 .woocommerce :is(a.button, button.button, input.button).loading { cursor: progress; }
 

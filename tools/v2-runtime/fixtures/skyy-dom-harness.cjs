@@ -53,6 +53,7 @@ class Element extends Target {
   cloneNode() {
     const item = new Element(this.tagName);
     item.attributes = { ...this.attributes };
+    item.document = this.document;
     item.href = this.href;
     return item;
   }
@@ -101,6 +102,7 @@ function harness({ reduced = false, saveData = false, home = false } = {}) {
       'skyy-ask-cancel',
       'skyy-chips',
       'skyy-3d-canvas',
+      'skyy-presence-status',
     ].map(id => [id, new Element()])
   );
   if (home)
@@ -131,6 +133,14 @@ function harness({ reduced = false, saveData = false, home = false } = {}) {
     this.dispatchEvent({ type: 'close' });
   };
   ids['skyyrose-mascot'].dataset.state = 'hidden';
+  ids['skyy-presence-status'].dataset = {
+    static: 'Your house guide.',
+    loading: 'Skyy is joining you…',
+    live: 'Your house guide.',
+    reduced: 'Motion off',
+    saving: 'Data-saving mode',
+    failed: 'Motion unavailable. You can still ask Skyy.',
+  };
   const sprite = new Element('img');
   ids['skyyrose-mascot'].querySelector = () => sprite;
   ids['skyy-3d-canvas'].getContext = () => null;

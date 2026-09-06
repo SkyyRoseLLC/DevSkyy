@@ -86,3 +86,13 @@ test('light context maintains text and disabled-control contrast on every declar
   }
   assert(contrast(context['focus-inner'],context['focus-outer']) >= 3);
 });
+
+test('every source spacing reference resolves so route padding cannot become invalid at computed-value time', () => {
+  const directory = path.join(theme, 'assets/css');
+  for (const file of fs.readdirSync(directory).filter(name => name.endsWith('.css') && !name.endsWith('.min.css'))) {
+    const css = fs.readFileSync(path.join(directory, file), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+    for (const match of css.matchAll(/var\(--sr2-(space-\d+)\s*\)/g)) {
+      assert.doesNotThrow(() => resolveToken(tokens, match[1]), `${file}: ${match[1]} must exist`);
+    }
+  }
+});

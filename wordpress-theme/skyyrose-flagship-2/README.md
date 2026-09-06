@@ -96,3 +96,47 @@ merchant’s legal adviser.
 
 No deployment, catalog write, media upload, or payment configuration is part of
 the theme package.
+
+## V2 completion candidate: ownership and delivery
+
+The shared shell and control styles remain global. About, Contact and reservation
+compositions live in `assets/css/content-page.css`, loaded on the same conservative
+content/legacy route boundary as `legacy-world-components.css`. Home, the four
+editorial collections, Shop/taxonomy and PDP do not load this content stylesheet.
+When moving a component, preserve responsive rules and split mixed selector lists
+so a later route stylesheet cannot accidentally override its own mobile rules.
+
+Home and the four enabled editorial collection pages render theme-owned product
+cards, Quick View and bag markup. They omit WooCommerce's general/layout/smallscreen
+styles while keeping its scripts, native fragments and product authority. All
+transactional pages, Shop, taxonomy, PDP, ordinary content and legacy immersive
+routes retain native Woo styles. An extension adding native Woo layout to an
+editorial page can retain the styles with:
+
+```php
+add_filter( 'skyyrose2_editorial_native_woo_styles', '__return_true' );
+```
+
+Cart item prices, subtotals, quantity controls, remove links, backorder notices and
+item-name/coupon hooks follow the native extension contracts. The native error
+notice override retains `.woocommerce-error` on an alert container and places a
+semantic list inside it. Keep the native escaping and data attributes when updating
+that override against WooCommerce's template version; do not replace the alert with
+a generic list live region. Cart and Checkout route shells reserve space for notices
+before their forms, including the fixed-header clearance after native error focus.
+
+Ask Skyy uses one model and canvas. The approved portrait stays still during the
+canvas opacity handoff; loading, failure, reduced-motion and Save-Data messages are
+server-translated. A failed guide script preserves the native Contact destination.
+The current model and physical gait are preserved; deeper Blender production and
+the final Town Line Pre-Order composition remain separately specified work.
+
+Two large BR-006 source/authoring videos remain in the repository but are excluded
+from the installable ZIP by `tools/v2-source-certification/package-boundary.json`.
+The founder footage remains an SOT reference. Never delete it to reduce package
+size. Exact unreachable page drafts are archived outside the theme runtime under
+`docs/v2-authoring/archive-20260906/`; live page partials and their assets remain.
+
+The completion evidence lives in `tasks/v2-completion-20260906/`. Local verification
+and a reproducible ZIP do not establish production gateway/account/plugin behavior,
+field Core Web Vitals, founder artistic acceptance or deployment permission.

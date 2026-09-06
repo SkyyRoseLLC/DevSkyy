@@ -1,0 +1,60 @@
+{
+  "id": "V2-COMPLETION-20260906",
+  "at": "2026-09-06T12:32:35.898Z",
+  "status": "IN_PROGRESS",
+  "manager": "Codex / root",
+  "authority": {
+    "path": "/Users/theceo/.codex/attachments/7468daf4-9f25-4287-bf79-7bc117adc639/pasted-text.txt",
+    "sha256": "c4922726336ef38119f7fc1f7dd85f53efbe7d46d8a8f5912ed7f12190fc9ba5"
+  },
+  "base": "415dc4368b44efc06d0d28928362901f9624a20f",
+  "theme": "wordpress-theme/skyyrose-flagship-2",
+  "target": "local isolated WordPress at127.0.0.1:18303",
+  "roster": [
+    {
+      "name": "root",
+      "role": "manager; mobile performance and integration"
+    },
+    {
+      "name": "design_contract",
+      "role": "Ask Skyy website-state completion"
+    },
+    {
+      "name": "page_source_review",
+      "role": "read-only template/asset dependency and cleanup review"
+    },
+    {
+      "name": "final_visual_review",
+      "role": "independent customer journey, accessibility and visual reviewer"
+    }
+  ],
+  "acceptance": [
+    "Preserve exact nine approved scenes, approved hero/card identities and native Woo truth",
+    "Improve measured mobile critical rendering without deleting features or gaming audits",
+    "Close software-side Skyy onset/loading/lifecycle gaps; preserve GLB and successful gait",
+    "Evidence-based runtime cleanup with dependency proof; authoring and future Town Line sources preserved",
+    "Current route and responsive evidence including320360375390414768desktop, Cart Checkout Search Account applicable states",
+    "Build/verify, scoped commerce journeys, failure/reduced modes, independent review and reproducible package"
+  ],
+  "evidence_required": [
+    "baseline",
+    "feature_completion_matrix",
+    "dependency_cleanup_evidence",
+    "before_after_visuals",
+    "mobile_performance",
+    "route_state_coverage",
+    "commerce_regression",
+    "source_build_package_hashes",
+    "independent_review",
+    "manager_verification"
+  ],
+  "exclusions": [
+    "No deployment or remote writes",
+    "No paid generation",
+    "No catalog/order/payment/customer mutation",
+    "No final Town Line experience",
+    "No deeper Blender/model/rig/texture/LOD production",
+    "No new headless/marketplace business architecture"
+  ],
+  "task_control_note": "scripts/task_control.py absent in certified V2 worktree; continue existing equivalent append-only task ledger convention."
+}

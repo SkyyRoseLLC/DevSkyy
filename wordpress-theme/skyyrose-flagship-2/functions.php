@@ -344,11 +344,9 @@ function skyyrose2_assets() {
 	$suffix = skyyrose2_asset_suffix();
 	$collection_slug = skyyrose2_collection_page_slug();
 	$is_editorial_collection = skyyrose2_collection_world_enabled( $collection_slug );
-	$house_motion_suffix = $suffix && file_exists( SKYYROSE2_DIR . '/assets/js/house-of-roses-motion.min.js' ) ? '.min' : '';
 	$tokens_asset = '/assets/css/design-tokens' . $suffix . '.css';
 	$theme_asset  = '/assets/css/theme' . $suffix . '.css';
 	$theme_script = '/assets/js/theme' . $suffix . '.js';
-	$house_script = '/assets/js/house-of-roses-motion' . $house_motion_suffix . '.js';
 	$mascot_style = '/assets/css/mascot' . $suffix . '.css';
 	$loader_script = '/assets/js/mascot-loader' . $suffix . '.js';
 	$mascot_script = '/assets/js/mascot' . $suffix . '.js';
@@ -360,6 +358,7 @@ function skyyrose2_assets() {
 	$page_styles = array();
 	if ( ! is_front_page() && ! $is_editorial_collection && ! ( function_exists( 'is_product' ) && is_product() ) && ! ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) ) {
 		$page_styles[] = 'legacy-world-components';
+		$page_styles[] = 'content-page';
 	}
 	if ( is_front_page() ) {
 		$page_styles[] = 'collection-world';
@@ -397,9 +396,6 @@ function skyyrose2_assets() {
 	}
 	if ( class_exists( 'WooCommerce' ) && ! is_checkout() ) { wp_enqueue_script( 'wc-cart-fragments' ); }
 	wp_enqueue_script( 'skyyrose2-theme', SKYYROSE2_URI . $theme_script, class_exists( 'WooCommerce' ) && ! is_checkout() ? array( 'wc-cart-fragments', 'wc-add-to-cart' ) : array(), skyyrose2_asset_version( $theme_script ), true );
-	if ( 'black-rose' === $collection_slug && ! $is_editorial_collection ) {
-		wp_enqueue_script( 'skyyrose2-house-of-roses', SKYYROSE2_URI . $house_script, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $house_script ), true );
-	}
 	if ( ( ! $is_editorial_collection && ( $collection_slug || is_page_template( 'template-collection.php' ) ) ) || is_page_template( array( 'template-immersive-black-rose.php', 'template-immersive-love-hurts.php', 'template-immersive-signature.php' ) ) ) {
 		$scene_base_style = '/assets/css/hero-commerce-scenes' . $suffix . '.css';
 		$scene_style = '/assets/css/collection-scene-motion' . $suffix . '.css';

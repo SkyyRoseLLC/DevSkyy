@@ -405,3 +405,107 @@ test('WebGL fallback teardown clears rig references and motion diagnostics retur
   vm.runInContext('var diagnostic = ({' + source.slice(start, end) + '}).getMotionEvidence;', context);
   assert.equal(context.diagnostic(), null);
 });
+
+test('presence hands the same portrait to the canvas once, with a paint boundary and no repeated fade on pause', () => {
+  const h = harness({ home: true });
+  const frames = new Map();
+  let next = 0;
+  h.window.requestAnimationFrame = callback => {
+    frames.set(++next, callback);
+    return next;
+  };
+  h.window.cancelAnimationFrame = id => frames.delete(id);
+  h.run('mascot.js');
+  h.window.skyyRoseConcierge.prepareHome();
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'loading');
+  assert.match(h.ids['skyy-presence-status'].textContent, /joining/);
+  h.sprite.style.display = 'none'; // Same behavior as the preserved renderer immediately before its event.
+  h.document.dispatchEvent({ type: 'skyy:3d-visible' });
+  assert.equal(h.sprite.style.display, 'block');
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'entering');
+  assert.equal(frames.size, 1);
+  const callback = [...frames.values()][0];
+  frames.clear();
+  callback();
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'entering');
+  const reveal = [...frames.values()][0];
+  frames.clear();
+  reveal();
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'live');
+  h.document.dispatchEvent({ type: 'skyy:3d-visible' });
+  assert.equal(frames.size, 0);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'live');
+});
+
+test('fallback cancels a pending reveal and does not become an endless loading state', () => {
+  const h = harness({ home: true });
+  const frames = new Map();
+  h.window.requestAnimationFrame = callback => {
+    frames.set(1, callback);
+    return 1;
+  };
+  h.window.cancelAnimationFrame = id => frames.delete(id);
+  h.run('mascot.js');
+  h.document.dispatchEvent({ type: 'skyy:3d-visible' });
+  h.document.dispatchEvent({ type: 'skyy:3d-fallback' });
+  assert.equal(frames.size, 0);
+  h.window.skyyRoseConcierge.prepareHome();
+  h.intersect(false);
+  h.intersect(true);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'failed');
+  assert.match(h.ids['skyy-presence-status'].textContent, /still ask/);
+  h.click(h.ids['skyy-hero-chat']);
+  assert.equal(h.ids['skyy-ask-dialog'].open, true);
+  h.submit('shipping');
+  assert(h.ids['skyy-conversation'].children.length > 0);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'failed');
+});
+
+test('reduced and data-saving presence remain truthful and cannot reveal a late canvas', () => {
+  for (const options of [{ reduced: true }, { saveData: true }]) {
+    const h = harness({ home: true, ...options });
+    h.run('mascot.js');
+    h.window.skyyRoseConcierge.prepareHome();
+    h.document.dispatchEvent({ type: 'skyy:3d-visible' });
+    const expected = options.reduced ? 'reduced' : 'saving';
+    assert.equal(h.ids['skyyrose-mascot'].dataset.presence, expected);
+    h.click(h.ids['skyy-hero-chat']);
+    assert.equal(h.ids['skyyrose-mascot'].dataset.presence, expected);
+  }
+});
+
+test('offscreen departure cancels a pending presence handoff and a later visible event can resume it', () => {
+  const h = harness({ home: true });
+  const frames = new Map();
+  let next = 0;
+  h.window.requestAnimationFrame = callback => {
+    frames.set(++next, callback);
+    return next;
+  };
+  h.window.cancelAnimationFrame = id => frames.delete(id);
+  h.run('mascot.js');
+  h.document.dispatchEvent({ type: 'skyy:3d-visible' });
+  h.intersect(false);
+  assert.equal(frames.size, 0);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.presence, 'static');
+  h.intersect(true);
+  h.document.dispatchEvent({ type: 'skyy:3d-visible' });
+  assert.equal(frames.size, 1);
+});
+
+test('failed guide uses translated template labels for its native Contact fallback', async () => {
+  const h = harness();
+  const label = new Element('span');
+  h.ids['skyyrose-mascot-recall'].querySelector = () => label;
+  h.ids['skyy-presence-status'].dataset.guideFailed = 'La guía no está disponible. Contacta con nosotros.';
+  h.ids['skyy-presence-status'].dataset.contact = 'Contacto';
+  h.window.SKYY_LOADER_CONFIG = { mascotUrl: '/mascot.js' };
+  h.run('mascot-loader.js');
+  h.click(h.ids['skyyrose-mascot-recall']);
+  h.document.head.children[0].onerror();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(label.textContent, 'Contacto');
+  assert.equal(h.ids['skyyrose-mascot-recall'].title, h.ids['skyy-presence-status'].dataset.guideFailed);
+  assert.equal(h.ids['skyyrose-mascot-recall'].replacement.href, 'http://localhost:8899/contact/');
+  assert.equal(h.document.activeElement, h.ids['skyyrose-mascot-recall'].replacement);
+});

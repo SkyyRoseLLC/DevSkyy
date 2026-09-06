@@ -1131,9 +1131,9 @@
       "release": true
     },
     "assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "AUTHORING SOURCE",
+      "reason": "Verified no runtime or active content references; preserve exact founder/SOT/authoring source. See tasks/v2-completion-20260906/dependency-cleanup.json.",
+      "release": false
     },
     "assets/scroll-world/video/black-rose/br-006/motion-plates/web/br-006-hero-origin-backdrop-loop.mp4": {
       "category": "RUNTIME MEDIA",
@@ -1151,9 +1151,9 @@
       "release": true
     },
     "assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
+      "category": "AUTHORING SOURCE",
+      "reason": "Verified no runtime or active content references; preserve exact founder/SOT/authoring source. See tasks/v2-completion-20260906/dependency-cleanup.json.",
+      "release": false
     },
     "assets/scroll-world/video/black-rose/br-006/web/br-006-hero-origin-loop.mp4": {
       "category": "RUNTIME MEDIA",
@@ -2924,6 +2924,21 @@
       "category": "RUNTIME MEDIA",
       "release": true,
       "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
+    },
+    "assets/css/content-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
+      "release": true
+    },
+    "assets/css/content-page.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
+      "release": true
+    },
+    "woocommerce/notices/error.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Native notice8.6 list markup with preserved escaping/data and valid assertive list semantics.",
+      "release": true
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"

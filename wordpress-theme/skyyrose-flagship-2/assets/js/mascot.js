@@ -29,6 +29,59 @@
   function lightweight() {
     return reduced.matches || !!(navigator.connection && navigator.connection.saveData);
   }
+  var presence = document.getElementById('skyy-presence-status');
+  var portrait = stage.querySelector('.skyyrose-mascot__image');
+  var renderFailed = false;
+  var presenceFrame = null;
+  function cancelPresenceFrame() {
+    if (presenceFrame !== null && window.cancelAnimationFrame) window.cancelAnimationFrame(presenceFrame);
+    presenceFrame = null;
+    if (stage.dataset.presence === 'entering') setPresence('static');
+  }
+  function setPresence(state) {
+    if (stage.dataset.presence === state) return;
+    stage.dataset.presence = state;
+    if (presence) {
+      var key = state === 'entering' ? 'loading' : state;
+      presence.textContent = presence.dataset[key] || presence.dataset.static || '';
+    }
+  }
+  function staticPresence() {
+    cancelPresenceFrame();
+    if (lightweight()) setPresence(navigator.connection?.saveData ? 'saving' : 'reduced');
+    else setPresence(renderFailed ? 'failed' : 'static');
+  }
+  function revealPresence() {
+    if (lightweight()) return staticPresence();
+    renderFailed = false;
+    // The renderer selects its fallback before this documented event. Keep
+    // that SAME portrait in the layer stack; opacity now owns the handoff.
+    if (portrait) portrait.style.display = 'block';
+    if (stage.dataset.presence === 'live' || stage.dataset.presence === 'entering') return;
+    setPresence('entering');
+    var reveal = function () {
+      presenceFrame = null;
+      if (lightweight() || renderFailed || document.hidden || stage.hidden) return staticPresence();
+      setPresence('live');
+    };
+    if (window.requestAnimationFrame)
+      presenceFrame = window.requestAnimationFrame(function () {
+        presenceFrame = window.requestAnimationFrame(reveal);
+      });
+    else reveal();
+  }
+  document.addEventListener('skyy:3d-visible', revealPresence);
+  document.addEventListener('skyy:3d-loading', function () {
+    if (!renderFailed && !lightweight()) setPresence('loading');
+  });
+  document.addEventListener('skyy:3d-fallback', function () {
+    renderFailed = !lightweight();
+    staticPresence();
+  });
+  reduced.addEventListener('change', staticPresence);
+  navigator.connection?.addEventListener?.('change', staticPresence);
+  staticPresence();
+
   function syncHome() {
     if (!hero || dialog.open || stage.parentElement !== hero) return;
     var otherOverlay = document.querySelector('dialog[open]') || document.body.classList.contains('sr2-nav-open');
@@ -40,7 +93,7 @@
       emit('hidden');
       return;
     }
-    if (!homeReady || lightweight()) {
+    if (!homeReady || lightweight() || renderFailed) {
       emit('show');
       return;
     }
@@ -83,6 +136,14 @@
   }
   function emit(state) {
     stage.dataset.state = state;
+    if (state === 'hidden') cancelPresenceFrame();
+    if (
+      (state === 'loading' || state === 'walking-in') &&
+      !window.skyyRoseMascot3D?.isReady() &&
+      !renderFailed &&
+      !lightweight()
+    )
+      setPresence('loading');
     document.dispatchEvent(new CustomEvent('skyy:' + state));
   }
   function settle(delay) {
@@ -298,6 +359,7 @@
     clearTimeout(timer);
     clearTimeout(closeTimer);
     closeTimer = null;
+    cancelPresenceFrame();
     emit('hidden');
   });
   window.addEventListener('pageshow', function (event) {

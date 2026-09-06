@@ -21,6 +21,7 @@ function add_filter( $hook, $callback, $priority = 10, $accepted_args = 1 ) {
 }
 function remove_action() {}
 function remove_filter() {}
+function apply_filters( $hook, $value ) { return $GLOBALS['sr2_filter_values'][ $hook ] ?? $value; }
 function is_front_page() { return $GLOBALS['sr2_route']['front']; }
 function is_page() { return $GLOBALS['sr2_route']['page']; }
 function is_single() { return $GLOBALS['sr2_route']['single']; }
@@ -128,6 +129,26 @@ skyyrose2_performance_defer_scripts();
 sr2_assert( 'defer' === $GLOBALS['sr2_strategies']['skyyrose2-theme']['strategy'], 'theme runtime is deferred' );
 sr2_assert( 'defer' === $GLOBALS['sr2_strategies']['skyyrose2-immersive']['strategy'], 'late immersive runtime is deferred' );
 sr2_assert( ! isset( $GLOBALS['sr2_strategies']['wc-add-to-cart'] ), 'WooCommerce purchase scripts are untouched' );
+
+// Editorial delivery may not remove native styles from transaction/content
+// routes or the separately retained immersive templates. Verify the opt-in too.
+foreach ( array( 'home', 'signature', 'black-rose', 'love-hurts', 'kids-capsule', 'shop', 'product', 'cart', 'checkout', 'account', 'content', 'immersive' ) as $route ) {
+	$GLOBALS['sr2_route']['front'] = 'home' === $route;
+	$GLOBALS['sr2_inferred_collection'] = in_array( $route, array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ), true ) ? $route : '';
+	$GLOBALS['sr2_templates'] = 'immersive' === $route ? array( 'template-immersive-signature.php' ) : array();
+	foreach ( array( false, true ) as $native_required ) {
+		$GLOBALS['sr2_filter_values']['skyyrose2_editorial_native_woo_styles'] = $native_required;
+		$GLOBALS['sr2_styles'] = array();
+		skyyrose2_performance_dequeue_unused_assets();
+		$expected = ! $native_required && ( 'home' === $route || (bool) $GLOBALS['sr2_inferred_collection'] );
+		foreach ( array( 'woocommerce-general', 'woocommerce-layout', 'woocommerce-smallscreen' ) as $handle ) {
+			sr2_assert( $expected === in_array( $handle, $GLOBALS['sr2_styles'], true ), 'native Woo CSS boundary: ' . $route . ' / ' . $handle );
+		}
+	}
+}
+$GLOBALS['sr2_filter_values'] = array();
+$GLOBALS['sr2_templates'] = array();
+$GLOBALS['sr2_inferred_collection'] = '';
 
 foreach ( array( false, true ) as $is_front ) {
 	$GLOBALS['sr2_route']['front'] = $is_front;
