@@ -6,6 +6,7 @@ on:
       - 'wordpress-theme/skyyrose-flagship/data/**'
       - 'wordpress-theme/skyyrose-flagship/assets/images/products/**'
       - 'tools/v2-source-certification/**'
+      - 'tools/v2-runtime/**'
       - '.github/workflows/v2-source-certification.yml'
   workflow_dispatch:
 permissions:
@@ -31,6 +32,10 @@ jobs:
           npm --prefix wordpress-theme/skyyrose-flagship-2 ci --ignore-scripts --no-audit --no-fund
       - name: Negative integrity tests
         run: python -m unittest discover -s tools/v2-source-certification -p 'test_*.py'
+      - name: Prepare hash-pinned native gallery fixture
+        run: |
+          python tools/v2-source-certification/prepare-native-fixture.py "$RUNNER_TEMP/v2-native-wordpress"
+          echo "V2_WP_FIXTURE=$RUNNER_TEMP/v2-native-wordpress" >> "$GITHUB_ENV"
       - name: Build, verify, package and compare
         run: |
           npm --prefix wordpress-theme/skyyrose-flagship-2 run package:theme
