@@ -91,7 +91,9 @@ def alpha_foot_interaction(
         ]
     )
     band_mask.paste(gradient, (0, floor_y - 18))
-    contact_alpha = ImageChops.multiply(contact_alpha, band_mask).point(lambda value: round(value * 0.72))
+    contact_alpha = ImageChops.multiply(contact_alpha, band_mask).point(
+        lambda value: round(value * 0.72)
+    )
     contact = Image.new("RGBA", canvas_size, (2, 0, 1, 0))
     contact.putalpha(contact_alpha)
 
@@ -106,7 +108,9 @@ def alpha_foot_interaction(
         if reflected_height > 0:
             crop = crop.resize((crop.width, reflected_height), Image.Resampling.LANCZOS)
             crop_array = np.asarray(crop, dtype=np.uint8).copy()
-            crop_array[..., :3] = np.round(crop_array[..., :3] * np.array([0.30, 0.16, 0.17])).clip(0, 255)
+            crop_array[..., :3] = np.round(crop_array[..., :3] * np.array([0.30, 0.16, 0.17])).clip(
+                0, 255
+            )
             fade = np.linspace(0.18, 0.0, reflected_height, dtype=np.float32)[:, None]
             crop_array[..., 3] = np.round(crop_array[..., 3].astype(np.float32) * fade).clip(0, 255)
             reflected = Image.fromarray(crop_array, "RGBA").filter(ImageFilter.GaussianBlur(2.2))
@@ -172,14 +176,18 @@ def main() -> int:
             raise SystemExit(f"guide does not exist: {args.guide}")
         guide_hash = sha256(args.guide)
         with Image.open(args.guide) as guide_source:
-            guide = contain_to_canvas(ImageOps.exif_transpose(guide_source).convert("RGBA"), canvas_size)
+            guide = contain_to_canvas(
+                ImageOps.exif_transpose(guide_source).convert("RGBA"), canvas_size
+            )
 
         # Generated environment treatment may survive only outside a generous
         # protected silhouette. The original approved plate is restored around
         # the models to remove stray generated hair, limbs, or garment pixels.
         placed_alpha = Image.new("L", canvas_size, 0)
         placed_alpha.paste(scaled_model.getchannel("A"), model_xy)
-        protected_zone = placed_alpha.filter(ImageFilter.MaxFilter(31)).filter(ImageFilter.GaussianBlur(2))
+        protected_zone = placed_alpha.filter(ImageFilter.MaxFilter(31)).filter(
+            ImageFilter.GaussianBlur(2)
+        )
         production_base = Image.composite(plate, guide, protected_zone)
 
     production = Image.alpha_composite(production_base, rim)
@@ -211,8 +219,12 @@ def main() -> int:
             scaled_alpha_bbox[3] + y,
         ]
     expected_bbox = list(group["expected_opaque_bounds_px"])
-    bbox_delta = [abs(actual - expected) for actual, expected in zip(placed_bbox or [], expected_bbox)]
-    if placed_bbox is None or any(delta > 6 for delta in bbox_delta):
+    if placed_bbox is None:
+        raise SystemExit(f"placed model bounds drifted: {placed_bbox} vs {expected_bbox}")
+    bbox_delta = [
+        abs(actual - expected) for actual, expected in zip(placed_bbox, expected_bbox, strict=True)
+    ]
+    if any(delta > 6 for delta in bbox_delta):
         raise SystemExit(f"placed model bounds drifted: {placed_bbox} vs {expected_bbox}")
 
     receipt = {
