@@ -1,0 +1,10 @@
+{
+  "status": "BOUNDED_PASS",
+  "runtime_commit": "437b8353e",
+  "evidence_root": ".artifacts/v2-completion-20260906/font-coverage",
+  "hashes": {
+    "before/receipt.json": "b3858bf3de7979ced901234478b0af3a691174c664510da95958eddad3803b68",
+    "after/receipt.json": "db3d6216b1eedadeb2897b56d7b7166777a4a8ee6ccd97c0da3d030e6408bea6",
+    "comparison.json": "d99636e20c974d16f837668bc5dc99d50f3e357f7eb20a1b50b678542ddfb3b3"
+  }
+}
