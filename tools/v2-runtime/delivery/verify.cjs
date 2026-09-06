@@ -60,6 +60,46 @@ function assetInventory(root) {
   walk(root);
   return rows.sort((a, b) => a.path.localeCompare(b.path));
 }
+function nativeMountProof(container, fixture, storage) {
+  const native = require('./native-assets.cjs');
+  const source = native.fixtureRoot(fixture);
+  const first = container.Mounts.find(mount => mount.Destination === native.AREAS[0].destination);
+  assert.ok(first, 'Native public static mount is required');
+  const snapshot = path.dirname(first.Source);
+  assert.equal(path.dirname(snapshot), storage, 'Native snapshot must use owned artifact storage');
+  const manifest = JSON.parse(fs.readFileSync(snapshot + '.json'));
+  assert.equal(manifest.schema, 'skyyrose.native-static.v1');
+  assert.equal(manifest.fixture, source);
+  assert.equal(manifest.snapshot, snapshot);
+  assert.deepEqual(manifest.areas, native.AREAS);
+  assert.deepEqual(manifest.sourceVersions, native.versions(source));
+  assert.deepEqual(manifest.files, native.census(source), 'Every copied native byte must match the current fixture');
+  assert.equal(manifest.identity, sha(JSON.stringify({ fixture: source, sourceVersions: manifest.sourceVersions, files: manifest.files })));
+  assert.equal(path.basename(snapshot), manifest.identity);
+  native.verifySnapshot(manifest);
+  const mounts = native.AREAS.map(area => {
+    const mount = container.Mounts.find(item => item.Destination === area.destination);
+    assert.ok(mount, 'Missing native mount: ' + area.key);
+    assert.equal(mount.RW, false, 'Native mount must be read-only');
+    assert.equal(mount.Source, path.join(snapshot, area.key), 'Exact native snapshot mount identity');
+    return { fixtureSource: path.join(source, area.relative), snapshotSource: mount.Source, destination: mount.Destination, writable: mount.RW, files: manifest.files.filter(file => file.area === area.key).length };
+  });
+  const allowed = new Set(['/srv/v2-assets', '/etc/nginx/nginx.conf', '/tmp', ...native.AREAS.map(area => area.destination)]);
+  assert.ok(container.Mounts.every(mount => allowed.has(mount.Destination)), 'Unexpected additional mounted filesystem');
+  return { sourceVersions: manifest.sourceVersions, manifestSha256: sha(fs.readFileSync(snapshot + '.json')), identity: manifest.identity, mounts, files: manifest.files };
+}
+function nativeResponse(response, source, mime, encoding) {
+  assert.equal(response.status, 200);
+  assert.match(response.headers['content-type'] || '', mime);
+  assert.equal(response.headers['content-encoding'] || 'identity', encoding);
+  const decoded = decode(response.wire, response.headers['content-encoding']);
+  assert.deepEqual(decoded, source, 'Native static decoded bytes differ from fixture');
+  if (encoding === 'gzip') {
+    assert.match(response.headers.vary || '', /Accept-Encoding/i);
+    assert.ok(response.wire.length < source.length);
+  }
+  return { status: response.status, mime: response.headers['content-type'], encoding, wireBytes: response.wire.length, decodedBytes: decoded.length, sourceSha256: sha(source), decodedSha256: sha(decoded) };
+}
 function resourceUrls(html) {
   const urls = [];
   for (const match of html.matchAll(/<(script|img|source|video|link)\b[^>]*>/gi)) {
@@ -109,7 +149,11 @@ async function verify(output) {
   };
   write();
   try {
+    const nativeAssets = require('./native-assets.cjs');
+    const workerFixture = fs.readFileSync(path.join(repo, '.artifacts/v2-delivery-20260906/php-origin/fixture'), 'utf8').trim();
+    const fixture = nativeAssets.matchingFixture(process.env.V2_WP_FIXTURE, workerFixture);
     receipt.phpOrigin = await require('./verify-php-origin.cjs').prove(output.replace(/\.json$/, '') + '.php-origin.json');
+    nativeAssets.matchingFixture(fixture, receipt.phpOrigin.fixture);
     assets = fs.realpathSync(process.env.V2_DELIVERY_ASSETS || path.join(theme, 'assets'));
     receipt.head = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repo, encoding: 'utf8' }).trim();
     receipt.nginxImage = fs.readFileSync(path.join(__dirname, 'image.txt'), 'utf8').trim();
@@ -125,6 +169,7 @@ async function verify(output) {
     assert.ok(assetMount, 'Direct public asset mount is required');
     assert.equal(assetMount.RW, false, 'Public assets must be read-only');
     assert.equal(fs.realpathSync(assetMount.Source), assets, 'Mounted assets must match expected theme source');
+    receipt.nativeStatic = nativeMountProof(container, fixture, path.join(repo, '.artifacts/v2-delivery-20260906/native-static'));
     const inventory = assetInventory(assets);
     receipt.assetMount = { source: assets, destination: assetMount.Destination, writable: assetMount.RW, files: inventory.length, symlinks: 0, inventorySha256: sha(JSON.stringify(inventory)) };
     assert.ok(fs.statSync(path.join(__dirname, 'nginx.conf')).mtimeMs <= Date.parse(container.State.StartedAt), 'Config changed after startup: restart before parity proof');
@@ -148,6 +193,30 @@ async function verify(output) {
         }
         receipt.rows.push({ asset, encoding, status: response.status, mime: response.headers['content-type'], wireBytes: response.wire.length, decodedBytes: body.length, sourceSha256: sha(source), decodedSha256: sha(body) });
       }
+    }
+    const nativeCases = [
+      ['wp-includes/js/jquery/jquery.min.js', /javascript/, true],
+      ['wp-includes/css/dist/block-library/common.min.css', /text\/css/, true],
+      ['wp-includes/fonts/dashicons.woff2', /font\/woff2/, false],
+      ['wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js', /javascript/, true],
+      ['wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css', /text\/css/, true],
+      ['wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2', /font\/woff2/, false],
+    ];
+    for (const [file, mime, compressible] of nativeCases) {
+      const source = fs.readFileSync(path.join(fixture, file));
+      for (const encoding of compressible ? ['identity', 'gzip'] : ['identity']) {
+        const response = await request('/' + file, encoding, false);
+        receipt.rows.push({ nativeAsset: file, ...nativeResponse(response, source, mime, encoding) });
+      }
+      const head = await request('/' + file, 'identity', false, { method: 'HEAD' });
+      assert.equal(head.status, 200); assert.match(head.headers['content-type'], mime);
+      assert.equal(Number(head.headers['content-length']), source.length); assert.equal(head.wire.length, 0);
+      const partial = await request('/' + file, 'identity', false, { headers: { Range: 'bytes=0-31' } });
+      rangeProof(partial, source, 0, 31);
+      const outside = await request('/' + file, 'identity', false, { headers: { Range: `bytes=${source.length}-` } });
+      assert.equal(outside.status, 416); assert.equal(outside.headers['content-range'], `bytes */${source.length}`);
+      const forbidden = await request('/' + file, 'identity', false, { method: 'POST' });
+      assert.equal(forbidden.status, 403);
     }
     const mediaAsset = 'video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm';
     const mediaUrl = '/wp-content/themes/skyyrose-flagship-2/assets/' + mediaAsset;
@@ -188,6 +257,9 @@ async function verify(output) {
       '/wp-content/themes/skyyrose-flagship-2/assets/',
       ...inventory.filter(file => /\.(json|md|txt)$/i.test(file.path)).map(file => '/wp-content/themes/skyyrose-flagship-2/assets/' + file.path),
     ];
+    for (const area of require('./native-assets.cjs').AREAS) {
+      for (const suffix of ['index.php', 'private.json', '.env', '', '../private.php', '%2e%2e/private.php', '%252e%252e/private.php', 'file.js.map']) blockedPaths.push(area.url + suffix);
+    }
     for (const rawPath of blockedPaths) {
       const response = await request('/', 'identity', false, { rawPath });
       assert.ok([400, 403, 404].includes(response.status), 'Private/ambiguous path was not blocked: ' + rawPath);
@@ -210,6 +282,18 @@ async function verify(output) {
         receipt.rows.push({ route, encoding, status: response.status, mime: response.headers['content-type'], location: response.headers.location, cacheControl: response.headers['cache-control'] || null, wireBytes: response.wire.length, decodedBytes: body.length, upstreamSha256: response.headers['x-v2-fixture-body-sha256'], decodedSha256: sha(body), resources, redirectFollowed: false });
       }
     }
+    const native = require('./native-assets.cjs');
+    const observed = [...new Set(receipt.rows.flatMap(row => row.resources || []))];
+    receipt.nativeStatic.observedResourceCoverage = observed.flatMap(url => {
+      const pathname = decodeURIComponent(new URL(url).pathname);
+      const area = native.AREAS.find(item => pathname.startsWith(item.url));
+      if (!area) return [];
+      const relative = pathname.slice(area.url.length);
+      const file = receipt.nativeStatic.files.find(item => item.area === area.key && item.path === relative);
+      assert.ok(file, 'Observed native frontend asset is not in the verified static snapshot: ' + pathname);
+      return [{ url, area: area.key, sourceSha256: file.sha256 }];
+    });
+    assert.ok(receipt.nativeStatic.observedResourceCoverage.length >= 5, 'Native frontend resource coverage must include current emitted scripts/styles');
     const ordinary = await request('/', 'gzip', false);
     ordinaryResponse(ordinary);
     receipt.diagnosticHeaderAbsentOnOrdinaryRequest = true;
@@ -224,7 +308,7 @@ async function verify(output) {
   }
   return receipt;
 }
-module.exports = { localUrl, decode, resourceUrls, htmlStatus, ordinaryResponse, rangeProof, assetInventory, request, verify };
+module.exports = { nativeMountProof, nativeResponse, localUrl, decode, resourceUrls, htmlStatus, ordinaryResponse, rangeProof, assetInventory, request, verify };
 if (require.main === module) {
   const output = process.argv[2];
   if (!output) throw new Error('Pass a unique artifact receipt path; previous evidence should be retained.');
