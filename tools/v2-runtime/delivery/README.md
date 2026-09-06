@@ -286,3 +286,25 @@ No diagnostic token is retained in the receipt. No permanent public diagnostic
 endpoint is installed. A terminated proof process may require manual removal of
 its uniquely named `v2-worker-proof-*.php` file before the next benchmark; verify
 none remain. The token and exact host/port guards remain effective even then.
+
+The local gateway binds its PHP upstream to the task-owned `v2-php-origin` alias.
+At each startup, `origin-ipv4.cjs` runs exactly one disposable, unprivileged,
+read-only container from the same digest-pinned Nginx image, without mounts or
+published ports, to resolve `host.docker.internal` using `getent ahostsv4`.
+Only one unique canonical RFC1918 IPv4 address is accepted; unavailable,
+ambiguous, public, or IPv6 results fail startup before native snapshot creation.
+The address is supplied through the gateway's sole `--add-host` override. No
+Docker address or DNS server is hardcoded, and no global networking is changed.
+This avoids Docker's intermittently unreachable IPv6 host address while retaining
+port 18309, existing connection settings, gzip, and uncached dynamic requests.
+
+Parity verification binds Docker `HostConfig.ExtraHosts` to both live
+`getent ahostsv4 v2-php-origin` and `getent ahosts v2-php-origin` results and
+records those outputs plus the resolver source hash. Any additional override,
+address mismatch, or IPv6 alias fails verification. A Docker host address change
+requires an explicit gateway restart and fresh proof; there is no retry or
+runtime DNS override. Repeat baseline and candidate under this same configuration;
+earlier receipts using `host.docker.internal` directly remain historical.
+Focused source checks: `node --test tools/v2-runtime/delivery/origin-ipv4.test.cjs`
+and `sh -n tools/v2-runtime/delivery/gateway.sh`. These tests use mocked process
+output and do not start a container or make a network request.
