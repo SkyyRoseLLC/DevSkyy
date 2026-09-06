@@ -10,11 +10,13 @@ case "${1:-}" in
     test "$(basename -- "$DELIVERY_ASSETS")" = assets
     test -f "$DELIVERY_ASSETS/../style.css"
     "$DELIVERY_DIR/php-origin.sh" status >/dev/null
+    DELIVERY_ORIGIN_IP=$(node "$DELIVERY_DIR/origin-ipv4.cjs")
     DELIVERY_NATIVE=$(node "$DELIVERY_DIR/native-assets.cjs")
     docker run --detach --name "$DELIVERY_CONTAINER" --read-only --user 101:101 \
       --cap-drop ALL --security-opt no-new-privileges \
       --tmpfs /tmp:rw,noexec,nosuid,size=32m \
       --publish 127.0.0.1:18308:8080 \
+      --add-host "v2-php-origin:$DELIVERY_ORIGIN_IP" \
       --mount "type=bind,src=$DELIVERY_DIR/nginx.conf,dst=/etc/nginx/nginx.conf,readonly" \
       --mount "type=bind,src=$DELIVERY_ASSETS,dst=/srv/v2-assets,readonly" \
       --mount "type=bind,src=$DELIVERY_NATIVE/core-js,dst=/srv/v2-core-js,readonly" \

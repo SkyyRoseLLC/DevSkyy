@@ -164,6 +164,10 @@ async function verify(output) {
     assert.equal(container.State.Running, true, 'Gateway must be running');
     assert.equal(container.Config.Image, receipt.nginxImage, 'Live image must match pinned image');
     assert.equal(container.HostConfig.ReadonlyRootfs, true);
+    const lookup = database => execFileSync('docker', ['exec', containerName, 'getent', database, 'v2-php-origin'], { encoding: 'utf8', timeout: 15000, maxBuffer: 65536 });
+    receipt.originAddress = require('./origin-ipv4.cjs').originProof(container, lookup('ahostsv4'), lookup('ahosts'));
+    receipt.originAddress.resolverSha256 = sha(fs.readFileSync(path.join(__dirname, 'origin-ipv4.cjs')));
+
     assert.deepEqual(container.HostConfig.PortBindings, { '8080/tcp': [{ HostIp: '127.0.0.1', HostPort: '18308' }] });
     const assetMount = container.Mounts.find(mount => mount.Destination === '/srv/v2-assets');
     assert.ok(assetMount, 'Direct public asset mount is required');
