@@ -60,3 +60,9 @@ Commit `00dfcfa598fa3d1ae8ff28c86d6e0548b47a6d2a` originally changed this job fr
 ## Runtime checkpoint integration
 
 Parent checkpoint `437b8353e` was integrated as `0ebe92150`. Its bounded native Core stylesheet inlining, first-card frame priority, exact Inter unicode range and canonical Home label fallback retain their reviewed source changes. The existing upstream security policy and all reconciled CI generator pins remain exact; the combined PHP baseline checksum was recomputed from the merged manifest. Performance acceptance remains open.
+
+## Full hosted Python run
+
+Hosted ARM successfully provisioned Redis and all dependencies, then ran the full Python suite: 6,729 passed, 22 skipped, two xfailed, one xpassed and two failed. The V2 failure was an inherited root test asserting the retired registry v1 schema: SKU-sorted order, the former collection route and film chapter fields. The corrected test retains exact eight-SKU membership, verifies the certified source SHA/schema, binds order and region to that source, checks `/jersey-series/` and rejects retired film fields. Independent Python review approved the test-only change. All three focused tests pass; the prior assertion reproduces the failure, and six in-memory corruptions (order, membership, route, region, source hash and legacy film field) are rejected. Exact Ruff/Black/isort checks pass. Runtime, catalog and registry bytes are unchanged.
+
+The other Python failure is inherited unchanged from main: the environment preflight and paid Comfy client normalize merge-gate state differently when hashing a contract. That source-authority issue is under separate review by the parent task and remains a visible CI failure until a reviewed fix is integrated. No fingerprint assertion was relaxed. All other gating jobs passed at `ff58a9ef9`, including a successful retry of the unexpectedly cancelled Secrets job.
