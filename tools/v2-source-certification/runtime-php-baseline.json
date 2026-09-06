@@ -3,7 +3,7 @@
   "archive.php": "ae5e63ca88b537a35cdcee3e1c2d4cbb20ec65531416688ab90f2fe236439d25",
   "footer.php": "0c5d72a8fb11b72f428f9d475e9cbf204b59cac249386490c16ae7a14f37e297",
   "front-page.php": "252232c6f260b04e71c96be68a06fb3a2e24ac563827d378efc6c71a06ce508f",
-  "functions.php": "05ad1282c5ccd6502e1a95b78dfa43666d3a232aa4c9039f65732427f3f4a486",
+  "functions.php": "4d1552dd465df4d3ee9e6101f556009586ecb969de562940bbf32da7b31b2482",
   "header.php": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
   "home.php": "6eaa11c38f906cb9d39b70a6a955cac168ae62c5fc8c2d0661d0a7bfcd55f5bf",
   "inc/approved-card-fronts.php": "ba65bf97afe13cca54d4e1214a0d43e1fbc12a4c257cded31414720a3ccfe4bf",
@@ -12,7 +12,7 @@
   "inc/hero-commerce-scenes.php": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
   "inc/marketplace.php": "4a9f5f917fb09d4dee0be3212058a5a2be290f8de34cff360f89c328c2cc8ff3",
   "inc/pdp-media-delivery.php": "068935b92f9a73370dfdca6dd90cc1fcf8e87e2560cab704516104dbbbcab6ba",
-  "inc/performance.php": "7375b0872458d55d27361d6504f363b14746b2a57b39b21534bee14b232ff052",
+  "inc/performance.php": "154b7f936bdeaaa15f20b68fb50354b237115af8f0d7f6f68201ffaee00eb13a",
   "inc/presentation-registry.php": "5df3b06c98df51fcc1bd24e6b78e08a666f992448a917a6c182af00a5263500d",
   "inc/security.php": "7772f3c0ab14675cbd04140cf00c9aa0aa93bf387476dd5f5f5d133ba21a9c49",
   "inc/seo-indexing.php": "8153d912de5e8e59b94a1d7e04737834144719606dc0970d0323de687b4d2b77",
@@ -36,7 +36,7 @@
   "template-parts/collections/story.php": "bc576dddfb846cfeb510a826f44baeb5b4e9b720984306b2ab1ad895a8faa74e",
   "template-parts/collections/world.php": "c41af02f2534cdd6a6f86352858e7277059ce47b7b7189d48c9799e343574966",
   "template-parts/commerce/hero-composed-scene.php": "24d52797e84649ab94b1c6b27cde07dbea3937faa5ed73947261ac1841a8350b",
-  "template-parts/commerce/product-card.php": "819d99381f7ac42d607717c0b92baaad9977deeb65869515417db0fdc3e57202",
+  "template-parts/commerce/product-card.php": "8232f640c4503b274b7281c738bda51c8e86b9e524ad728c857028bcb608beba",
   "template-parts/commerce/product-hero.php": "8fcf8ef22bbea6f3f01c9adf83fa58f5a3d7f3c8592ce9a6befe8b2fd151dc37",
   "template-parts/commerce/quick-view.php": "0e85749c7c8e52b72c1974c41168c11780f3ea9f3c7b306779e2c32054cf7f5c",
   "template-parts/commerce/search-dialog.php": "f1f51c35398306f14fe9fec79c437774c551f2927baaf5ac8e59cd8c61a03915",
@@ -58,5 +58,6 @@
   "woocommerce/single-product.php": "d14ca8b504d52325cbb5cd403f8166f67ec78525f829c4c82d71537614afe9d4",
   "woocommerce/single-product/product-image.php": "ce9e7e8f2928b6286b44b161115f70906cad0dd57d1cfee8744b4385aec9e837",
   "template-parts/collections/scroll-world.php": "fd9136042ef5a4f0da3b188b3f5c57f800e55ebd4a5c0c5073138aee2f3f253a",
-  "woocommerce/notices/error.php": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab"
+  "woocommerce/notices/error.php": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
+  "inc/frame-delivery.php": "f6ba2ab96eb1d07a55e415f10fba952d5753fce711f31f4d65d7aab0ac1f6c3f"
 }

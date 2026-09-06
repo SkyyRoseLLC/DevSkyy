@@ -211,7 +211,7 @@
       "release": true
     },
     "assets/css/collection-world.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Deterministic minified page stylesheet",
       "release": true
     },
@@ -221,7 +221,7 @@
       "release": true
     },
     "assets/css/controls.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Phase3A global shell or canonical control styles",
       "release": true
     },
@@ -241,7 +241,7 @@
       "release": true
     },
     "assets/css/global-shell.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Phase3A global shell or canonical control styles",
       "release": true
     },
@@ -261,7 +261,7 @@
       "release": true
     },
     "assets/css/home-page.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Deterministic minified page stylesheet",
       "release": true
     },
@@ -281,7 +281,7 @@
       "release": true
     },
     "assets/css/legacy-world-components.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Deterministic minified page stylesheet",
       "release": true
     },
@@ -301,7 +301,7 @@
       "release": true
     },
     "assets/css/product-page.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Deterministic minified page stylesheet",
       "release": true
     },
@@ -311,7 +311,7 @@
       "release": true
     },
     "assets/css/shop-page.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Deterministic minified page stylesheet",
       "release": true
     },
@@ -2917,13 +2917,13 @@
     },
     "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
       "category": "RUNTIME MEDIA",
-      "release": true,
-      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
+      "release": true
     },
     "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
       "category": "RUNTIME MEDIA",
-      "release": true,
-      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
+      "release": true
     },
     "assets/css/content-page.css": {
       "category": "RUNTIME SOURCE",
@@ -2931,13 +2931,53 @@
       "release": true
     },
     "assets/css/content-page.min.css": {
-      "category": "GENERATED RUNTIME",
+      "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
       "release": true
     },
     "woocommerce/notices/error.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Native notice8.6 list markup with preserved escaping/data and valid assertive list semantics.",
+      "release": true
+    },
+    "assets/derived/card-frames/black-rose-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/kids-capsule-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/love-hurts-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/manifest.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/signature-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/fonts/archivo-normal-width.woff2": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/fonts/manifest.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "inc/frame-delivery.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Native archive responsive frame delivery and exact source fallback",
       "release": true
     }
   },

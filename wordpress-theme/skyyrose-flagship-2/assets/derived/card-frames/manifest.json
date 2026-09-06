@@ -1,0 +1,70 @@
+{
+  "collections": {
+    "black-rose": {
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 64854,
+        "height": 641,
+        "sha256": "e2df67c04dfc83bc900bfae16be678d44495bd65366bb588c38d98c7dfb52c73",
+        "src": "assets/derived/card-frames/black-rose-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+      "source_height": 1068,
+      "source_sha256": "37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d",
+      "source_width": 640
+    },
+    "kids-capsule": {
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 68282,
+        "height": 641,
+        "sha256": "4aea6ad21c805e4ed83077c6128ae12cd2c910fd2492bef7c23a515fcb179c3a",
+        "src": "assets/derived/card-frames/kids-capsule-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+      "source_height": 1068,
+      "source_sha256": "99480ca73a7d1fe7e0b7a0d2ac891b523fcdb8f1101a5210ec764e9414cb8cc9",
+      "source_width": 640
+    },
+    "love-hurts": {
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 74912,
+        "height": 645,
+        "sha256": "a3ee36812fb2faa0ae412bf3bf6d248a41e90b540068d17c4e601f4d94568118",
+        "src": "assets/derived/card-frames/love-hurts-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+      "source_height": 1075,
+      "source_sha256": "d3294b315a023ce6d9fadd0a9b87742f00749200b2efa3ba1ce87fab43eca190",
+      "source_width": 640
+    },
+    "signature": {
+      "rendition": {
+        "alpha_exact": true,
+        "bytes": 70954,
+        "height": 642,
+        "sha256": "d3493219539616955b2ae5c64a51aca6b6fd2e3b37a05fc1ff888793c7a9917e",
+        "src": "assets/derived/card-frames/signature-384w.webp",
+        "width": 384
+      },
+      "source": "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+      "source_height": 1070,
+      "source_sha256": "554c2372bc1a9cf61aefd5782b9792db26522698ee8e860ae2befcde9302857d",
+      "source_width": 640
+    }
+  },
+  "recipe": {
+    "exact": true,
+    "libwebp": "1.6.0",
+    "method": 6,
+    "pillow": "12.3.0",
+    "quality": 90,
+    "resampling": "LANCZOS",
+    "width": 384
+  },
+  "schema": "skyyrose.frame-delivery.v1"
+}
