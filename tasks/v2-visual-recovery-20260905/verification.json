@@ -120,5 +120,6 @@
   ],
   "deployed": false,
   "paid_calls": 0,
-  "orders_submitted": 0
+  "orders_submitted": 0,
+  "candidate_source_commit": "a0af07be763be41c43efb372ae885db7a0f6db21"
 }

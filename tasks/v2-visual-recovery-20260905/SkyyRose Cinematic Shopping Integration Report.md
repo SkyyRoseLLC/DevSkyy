@@ -6,7 +6,7 @@
 
 This is a selective implementation on the accepted V2 engineering baseline, not a restoration of the entire historical theme. The governing specification is the founder's September 5 expanded cinematic-shopping directive (`2f257f3d-756b-4e8f-9ff3-ae3ee5b5af75`), including the subsequent request for a visible 3D walk-on character. The Home headline remains **Skyy Rose**, with **Luxury grows from concrete.** underneath.
 
-The worktree is `/Users/theceo/.codex/worktrees/19db/DevSkyy`, branch `codex/v2-visual-recovery-founder-20260905`. The accepted engineering base is `fec4e9339cad7077bcc812876668c128eb93b6e4`. Exact candidate file hashes and package identity are recorded separately in `asset-change-manifest.json` and the packaging receipt; the base commit alone does not identify the modified candidate.
+The worktree is `/Users/theceo/.codex/worktrees/19db/DevSkyy`, branch `codex/v2-visual-recovery-founder-20260905`. The accepted engineering base is `fec4e9339cad7077bcc812876668c128eb93b6e4`. The source candidate is committed as `a0af07be763be41c43efb372ae885db7a0f6db21`. Two packaging passes from that clean commit produced the same 507-file, 207,859,481-byte ZIP, SHA-256 `9dd269167f878024c121959c45b96884f73e22b51f37aec4634224a3a25e98b0`. The ZIP is a local candidate only. Exact candidate file hashes and package identity are recorded separately in `asset-change-manifest.json` and the packaging receipt; the base commit alone does not identify the modified candidate.
 
 ## Mandatory Systems
 

@@ -2986,5 +2986,6 @@
     "woocommerce/single-product.php": "d14ca8b504d52325cbb5cd403f8166f67ec78525f829c4c82d71537614afe9d4",
     "woocommerce/single-product/product-image.php": "ce9e7e8f2928b6286b44b161115f70906cad0dd57d1cfee8744b4385aec9e837"
   },
-  "deployment_authorized": false
+  "deployment_authorized": false,
+  "candidate_source_commit": "a0af07be763be41c43efb372ae885db7a0f6db21"
 }
