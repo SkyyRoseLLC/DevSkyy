@@ -441,7 +441,13 @@ function skyyrose2_performance_archive_frame_preload() {
 		$collection = sanitize_title( $record['collection'] ?? '' );
 		$collections = skyyrose2_collections();
 		$frame = $collections[ $collection ]['portal_statue']['small'] ?? '';
-		return $frame ? skyyrose2_performance_sot_preload( $frame ) : array();
+		$resource = $frame ? skyyrose2_performance_sot_preload( $frame ) : array();
+		$delivery = $resource && function_exists( 'skyyrose2_archive_frame_delivery' ) ? skyyrose2_archive_frame_delivery( $collection ) : array();
+		if ( $delivery ) {
+			$resource['imagesrcset'] = $delivery['srcset'];
+			$resource['imagesizes'] = $delivery['sizes'];
+		}
+		return $resource;
 	}
 	return array();
 }

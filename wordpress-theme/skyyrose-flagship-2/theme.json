@@ -182,6 +182,7 @@
               "fontWeight": "100 900",
               "fontDisplay": "swap",
               "src": [
+                "file:./assets/derived/fonts/archivo-normal-width.woff2",
                 "file:./assets/sot/fonts/archivo-latin.woff2"
               ]
             }

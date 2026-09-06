@@ -56,6 +56,7 @@ try {
 	if ( $frame_uri ) {
 		$image_sizes = '(max-width: 29.99em) calc((100vw - 2rem) * .66), ' . $image_sizes;
 	}
+	$frame_delivery = $native_archive && $frame_uri && function_exists( 'skyyrose2_archive_frame_delivery' ) ? skyyrose2_archive_frame_delivery( $collection ) : array();
 	$is_eager = $native_archive && $card_index < 2 && in_array( $priority_intent, array( 'eager', 'high' ), true );
 	$loading = $is_eager ? 'eager' : 'lazy';
 	$fetchpriority = $is_eager && 0 === $card_index && 'high' === $priority_intent ? 'high' : 'auto';
@@ -95,7 +96,7 @@ try {
 		<?php endif; ?>
 		</span>
 		<?php if ( $frame_uri ) : ?>
-			<img class="sr2-c-editorial-card__frame" src="<?php echo esc_url( $frame_uri ); ?>" alt="" aria-hidden="true" width="<?php echo absint( $frame['width'] ); ?>" height="<?php echo absint( $frame['height'] ); ?>" loading="<?php echo esc_attr( $loading ); ?>" fetchpriority="<?php echo esc_attr( $fetchpriority ); ?>" decoding="async">
+			<img class="sr2-c-editorial-card__frame" src="<?php echo esc_url( $frame_uri ); ?>"<?php if ( $frame_delivery ) : ?> srcset="<?php echo esc_attr( $frame_delivery['srcset'] ); ?>" sizes="<?php echo esc_attr( $frame_delivery['sizes'] ); ?>"<?php endif; ?> alt="" aria-hidden="true" width="<?php echo absint( $frame['width'] ); ?>" height="<?php echo absint( $frame['height'] ); ?>" loading="<?php echo esc_attr( $loading ); ?>" fetchpriority="<?php echo esc_attr( $fetchpriority ); ?>" decoding="async">
 			<span class="sr2-c-editorial-card__frame-label" aria-hidden="true"><span class="sr2-c-editorial-card__inscription"><?php echo esc_html( $collection_name ); ?></span></span>
 		<?php endif; ?>
 	</a>
