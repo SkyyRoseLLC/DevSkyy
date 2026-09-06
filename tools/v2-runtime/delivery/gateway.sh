@@ -9,12 +9,18 @@ case "${1:-}" in
     DELIVERY_ASSETS=$(CDPATH= cd -- "$DELIVERY_ASSETS" && pwd -P)
     test "$(basename -- "$DELIVERY_ASSETS")" = assets
     test -f "$DELIVERY_ASSETS/../style.css"
+    "$DELIVERY_DIR/php-origin.sh" status >/dev/null
+    DELIVERY_NATIVE=$(node "$DELIVERY_DIR/native-assets.cjs")
     docker run --detach --name "$DELIVERY_CONTAINER" --read-only --user 101:101 \
       --cap-drop ALL --security-opt no-new-privileges \
       --tmpfs /tmp:rw,noexec,nosuid,size=32m \
       --publish 127.0.0.1:18308:8080 \
       --mount "type=bind,src=$DELIVERY_DIR/nginx.conf,dst=/etc/nginx/nginx.conf,readonly" \
       --mount "type=bind,src=$DELIVERY_ASSETS,dst=/srv/v2-assets,readonly" \
+      --mount "type=bind,src=$DELIVERY_NATIVE/core-js,dst=/srv/v2-core-js,readonly" \
+      --mount "type=bind,src=$DELIVERY_NATIVE/core-css,dst=/srv/v2-core-css,readonly" \
+      --mount "type=bind,src=$DELIVERY_NATIVE/core-fonts,dst=/srv/v2-core-fonts,readonly" \
+      --mount "type=bind,src=$DELIVERY_NATIVE/woo-assets,dst=/srv/v2-woo-assets,readonly" \
       --entrypoint nginx "$DELIVERY_IMAGE" -g 'daemon off;'
     ;;
   stop) docker stop "$DELIVERY_CONTAINER"; docker rm "$DELIVERY_CONTAINER" ;;

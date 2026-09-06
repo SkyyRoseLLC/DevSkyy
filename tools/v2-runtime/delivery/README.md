@@ -3,8 +3,9 @@
 This is a real Nginx compression gateway for the existing isolated WordPress
 fixture. It does not change theme CSS/JS, Lighthouse, throttling, scores, native
 jQuery ordering, database options, product authority or production hosting.
-Decoded asset bytes are unchanged. Public theme assets now use Nginx's native
-static handler; other requests reach the PHP fixture. Nginx has no response cache.
+Decoded asset bytes are unchanged. Public theme assets and filtered public
+WordPress/WooCommerce assets use Nginx's native static handler; dynamic requests
+reach the PHP fixture. Nginx has no response cache.
 This is a host-owned configuration example,
 not a claim that a WordPress theme enables compression on WordPress.com.
 
@@ -27,7 +28,7 @@ tools/v2-runtime/delivery/gateway.sh install-fixture
 tools/v2-runtime/delivery/php-origin.sh start
 tools/v2-runtime/delivery/gateway.sh start
 tools/v2-runtime/delivery/gateway.sh check
-node --test tools/v2-runtime/delivery/verify.test.cjs
+node --test tools/v2-runtime/delivery/verify.test.cjs tools/v2-runtime/delivery/native-assets.test.cjs
 php tools/v2-runtime/delivery/test-fixture-origin.php guard
 php tools/v2-runtime/delivery/test-fixture-origin.php disabled
 php tools/v2-runtime/delivery/test-fixture-origin.php enabled
@@ -46,7 +47,7 @@ with a read-only filesystem, dropped capabilities and temporary files in tmpfs.
 Docker publishes only `127.0.0.1:18308`; Nginx additionally rejects other Host
 values. The one fixed upstream is `host.docker.internal:18309`.
 
-Only the selected theme's `assets/` directory is mounted read-only at
+The selected theme's `assets/` directory is mounted read-only at
 `/srv/v2-assets`. The default is this checkout's V2 assets. To compare a different
 source checkout, set `V2_DELIVERY_ASSETS` to that checkout's absolute `assets`
 directory before starting the gateway and when running the verifier. Stop/start
@@ -64,6 +65,59 @@ initialize `WP_CONTENT_URL` before MU loading, so the URL APIs `content_url`,
 map only the exact old fixture origin to the gateway. It never rewrites HTML,
 attachment files/IDs/physical paths, unrelated URLs, or stored database values.
 Raw18303 requests remain unchanged.
+
+## Native public static delivery and the 504 repair
+
+The earlier theme-only static profile still sent native jQuery, WooCommerce
+scripts and native CSS through the Docker-to-PHP development-server relay.
+Observed upstream connection 504s caused missing `jQuery`/`Cookies` globals.
+This profile serves those static bytes directly without changing their loading
+strategy, request priority, throttle, proxy timeouts, gzip level or cache policy.
+
+`gateway.sh start` requires `V2_WP_FIXTURE`, verifies the owned PHP process
+identity, and requires that environment path to resolve to the same fixture as
+the worker ownership record before creating snapshots. The HTTP verifier repeats
+that equality check against the fixture established by its actual worker proof.
+After that startup check, the launcher runs `native-assets.cjs`. It creates an immutable, content-addressed snapshot under
+`.artifacts/v2-delivery-20260906/native-static/` from exactly:
+
+| Fixture source directory | Read-only container destination |
+| --- | --- |
+| `wp-includes/js` | `/srv/v2-core-js` |
+| `wp-includes/css` | `/srv/v2-core-css` |
+| `wp-includes/fonts` | `/srv/v2-core-fonts` |
+| `wp-content/plugins/woocommerce/assets` | `/srv/v2-woo-assets` |
+
+The original native directories contain PHP files and JSON manifests. They are
+**not directly mounted**. Only allowlisted CSS, JavaScript, public images, WASM
+and font files are copied; no PHP, JSON, source maps, dotfiles or customer uploads
+enter the mounted snapshot. Every copied byte retains its source SHA-256, and
+all source symlinks fail closed. No installation file is changed. The receipt,
+which sits outside the mounted directories, records the fixture path, installed
+WordPress/WooCommerce versions and version-source hashes, all copied paths,
+sizes and hashes, and the four snapshot mount identities. Source drift produces
+a different snapshot; stale/tampered existing snapshots fail verification.
+
+The Nginx route allowlist independently rejects private extensions, directories,
+dot paths, symlinks, traversal encodings and methods other than GET/HEAD. Public
+SVG/GIF/WOFF/TTF/EOT types are included for native core/editor/Woo assets; the
+existing theme allowlist is unchanged. Actual `Inter-VariableFont_slnt,wght.woff2`
+names are supported. Asset responses retain native MIME, HEAD and byte-range
+behavior. PHP routes, AJAX, cart, checkout and account remain proxied uncached.
+
+After an authorized restart, use a **new** parity receipt path. The verifier
+checks exact identity/gzip bytes for native jQuery, js-cookie and native CSS,
+exact font bytes, HEAD/range/416/write denial, all four read-only mount identities,
+source inventory hashes and coverage of native resource URLs emitted in the
+current frontend HTML. This is not a replacement for browser verification of
+JavaScript-created requests. No successful live proof is implied by source tests.
+
+This is a new delivery profile. Preserve earlier theme-only static measurements
+as historical and rerun baseline and candidate with these same native snapshots,
+Nginx configuration, PHP profile and throttling. Do not compare measurements
+across profiles as though the theme alone caused the change. The configuration
+remains a reproducible local fixture and host-owned infrastructure example;
+production/WordPress.com delivery is unverified.
 
 ## What is compressed and preserved
 
@@ -91,8 +145,8 @@ uncompressed, so range offsets address the exact original bytes. `wasm` uses
 Directory listing, symlinks, dot paths, PHP, JSON manifests, Markdown, text and
 unknown extensions are denied. Ambiguous encoded traversal paths are rejected
 before proxy routing; query strings are exempt from that path guard. Only GET
-and HEAD are allowed in the static location. The mount excludes the PHP theme
-root, WordPress, private configuration and uploads. Existing JSON files under
+and HEAD are allowed in the static location. The mounts exclude the PHP theme
+root, the full WordPress installation, private configuration and uploads. Existing JSON files under
 assets are build/QA manifests, not runtime fetch dependencies. New asset types
 require a reviewed allowlist extension; do not broaden to arbitrary files.
 
