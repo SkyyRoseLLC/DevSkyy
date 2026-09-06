@@ -203,6 +203,11 @@ sr2_assert( isset( $styles['skyyrose2-visual-recovery']->extra['path'] ) && arra
 foreach ( array( 'skyyrose2-theme', 'skyyrose2-controls', 'skyyrose2-global-shell', 'woocommerce-general' ) as $handle ) {
 	sr2_assert( ! isset( $styles[ $handle ]->extra['path'] ), 'large, alternate-media, RTL and plugin styles remain external: ' . $handle );
 }
+$styles['skyyrose2-theme']->src = SKYYROSE2_URI . '/assets/css/archive-theme.min.css';
+skyyrose2_performance_inline_small_styles();
+sr2_assert( SKYYROSE2_DIR . '/assets/css/archive-theme.min.css' === ( $styles['skyyrose2-theme']->extra['path'] ?? '' ), 'exact bounded archive projection is offered to Core without changing its total budget' );
+unset( $styles['skyyrose2-theme']->extra['path'] );
+$styles['skyyrose2-theme']->src = SKYYROSE2_URI . '/assets/css/theme.min.css';
 unset( $styles['skyyrose2-tokens']->extra['path'] );
 $styles['skyyrose2-tokens']->src = 'https://cdn.example.test/replaced.css';
 skyyrose2_performance_inline_small_styles();

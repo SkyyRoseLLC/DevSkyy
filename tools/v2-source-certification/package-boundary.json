@@ -2979,6 +2979,46 @@
       "category": "RUNTIME SOURCE",
       "reason": "Native archive responsive frame delivery and exact source fallback",
       "release": true
+    },
+    "inc/archive-style-bundle.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Guarded archive theme projection and head-only native Core inline allowance with exact input authority and late-change fallback",
+      "release": true
+    },
+    "assets/css/archive-theme.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
+      "release": true
+    },
+    "assets/css/archive-theme.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
+      "release": true
+    },
+    "assets/css/archive-style-inputs.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Exact six-source authority for bounded native archive CSS inlining; originals retained",
+      "release": true
+    },
+    "assets/derived/card-frames/signature-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/black-rose-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/love-hurts-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/kids-capsule-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"
