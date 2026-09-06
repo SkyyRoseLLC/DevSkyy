@@ -61,7 +61,11 @@ def validate_asset(record: object, label: str) -> Path:
 def validate_ai_assets(slug: str, ai_motion: dict, status: str, max_bytes: int) -> None:
     job_id = ai_motion.get("job_id")
     if status == "provider_failed":
-        if not isinstance(job_id, str) or not job_id or any(key in ai_motion for key in ("master", "web")):
+        if (
+            not isinstance(job_id, str)
+            or not job_id
+            or any(key in ai_motion for key in ("master", "web"))
+        ):
             raise ValueError(f"{slug} provider failure record is incomplete")
         return
     if status == "blocked_daily_generation_limit":
@@ -91,7 +95,10 @@ def validate_ai_assets(slug: str, ai_motion: dict, status: str, max_bytes: int) 
         extensions.add(path.suffix.lower())
     if extensions != {".mp4", ".webm"}:
         raise ValueError(f"{slug} AI motion requires one MP4 and one WebM")
-    if status == "founder_review_required" and ai_motion.get("internal_visual_qa") != "pass_pending_founder_review":
+    if (
+        status == "founder_review_required"
+        and ai_motion.get("internal_visual_qa") != "pass_pending_founder_review"
+    ):
         raise ValueError(f"{slug} candidate lacks internal visual QA")
     if status == "founder_approved" and not ai_motion.get("founder_approved_at"):
         raise ValueError(f"{slug} approved motion lacks founder approval evidence")
@@ -129,7 +136,10 @@ def main() -> int:
         if not isinstance(collection, dict):
             raise ValueError(f"{slug} collection motion record is malformed")
         source_record = collection.get("source")
-        if not isinstance(source_record, dict) or source_record.get("file") != EXPECTED_SOURCES[slug]:
+        if (
+            not isinstance(source_record, dict)
+            or source_record.get("file") != EXPECTED_SOURCES[slug]
+        ):
             raise ValueError(f"{slug} is not bound to its approved hero master")
         validate_asset(source_record, f"{slug} source")
         treatment = collection.get("exact_pixel_treatment")
@@ -150,9 +160,17 @@ def main() -> int:
         responsive_name = Path(source).stem + "-1440w.webp"
         if responsive_name not in functions_source:
             raise ValueError(f"approved responsive hero is not wired: {responsive_name}")
-    if "skyyrose2_collection_hero_motion" not in template_source or "hero_motion_mp4" in template_source:
+    if (
+        "skyyrose2_collection_hero_motion" not in template_source
+        or "hero_motion_mp4" in template_source
+    ):
         raise ValueError("collection template can bypass the approved hero-motion resolver")
-    for runtime_guard in ("markMotionFailed", "prefers-reduced-motion", "navigator.connection", "IntersectionObserver"):
+    for runtime_guard in (
+        "markMotionFailed",
+        "prefers-reduced-motion",
+        "navigator.connection",
+        "IntersectionObserver",
+    ):
         if runtime_guard not in controller_source:
             raise ValueError(f"collection hero runtime guard is missing: {runtime_guard}")
 

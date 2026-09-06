@@ -10,7 +10,6 @@ from typing import Any
 
 from PIL import Image
 
-
 THEME_DIR = Path(__file__).resolve().parent.parent
 REVIEW_DIR = (
     THEME_DIR
@@ -95,7 +94,9 @@ def main() -> None:
     )
 
     scenes = manifest["scenes"]
-    require(len(scenes) == len(EXPECTED_CASTS), "review batch must contain the remaining eight scenes")
+    require(
+        len(scenes) == len(EXPECTED_CASTS), "review batch must contain the remaining eight scenes"
+    )
     require(
         {scene["scene_id"] for scene in scenes} == set(EXPECTED_CASTS),
         "scene IDs do not match the remaining-eight contract",
@@ -106,7 +107,10 @@ def main() -> None:
     for scene in scenes:
         scene_id = scene["scene_id"]
         require(scene["approval_state"] == "FOUNDER_REVIEW_REQUIRED", f"{scene_id} state drift")
-        require(scene["upstream_plate_state"].startswith("FOUNDER_APPROVED"), f"{scene_id} plate is not approved")
+        require(
+            scene["upstream_plate_state"].startswith("FOUNDER_APPROVED"),
+            f"{scene_id} plate is not approved",
+        )
         require(scene["dimensions"] == [1672, 941], f"{scene_id} dimensions drift")
 
         output_file = theme_path(scene["output"])
@@ -165,14 +169,22 @@ def main() -> None:
                 f"{scene_id} layer receipt hash drift",
             )
             receipt = load_json(receipt_file)
-            require(receipt["output_sha256"] == layer["sha256"], f"{scene_id} receipt/output mismatch")
-            require(receipt["source_sha256"] == layer["protected_source_sha256"], f"{scene_id} source hash drift")
+            require(
+                receipt["output_sha256"] == layer["sha256"], f"{scene_id} receipt/output mismatch"
+            )
+            require(
+                receipt["source_sha256"] == layer["protected_source_sha256"],
+                f"{scene_id} source hash drift",
+            )
             require(receipt["rgb_preserved"] is True, f"{scene_id} RGB preservation failed")
             with Image.open(layer_file) as image:
                 require(image.mode == "RGBA", f"{scene_id} layer is not real RGBA")
                 alpha = image.getchannel("A")
                 alpha_min, alpha_max = alpha.getextrema()
-                require(alpha_min == 0 and alpha_max == 255, f"{scene_id} layer alpha is not a real cutout")
+                require(
+                    alpha_min == 0 and alpha_max == 255,
+                    f"{scene_id} layer alpha is not a real cutout",
+                )
         require(
             sorted(layer_skus) == sorted(EXPECTED_CASTS[scene_id]),
             f"{scene_id} layer SKU coverage does not match its cast",
@@ -181,7 +193,10 @@ def main() -> None:
     br005 = products_by_sku["br-005"]
     br005_regions = br005["garment"]["branding_regions"]
     require(
-        any(region["region"] == "front-right-chest" and region["technique"] == "silicone" for region in br005_regions),
+        any(
+            region["region"] == "front-right-chest" and region["technique"] == "silicone"
+            for region in br005_regions
+        ),
         "br-005 raised silicone chest contract missing",
     )
     require(
@@ -189,7 +204,10 @@ def main() -> None:
         "br-005 side-body artwork contract missing",
     )
     require(
-        not any("forearm" in region["region"] or "sleeve" in region["region"] for region in br005_regions),
+        not any(
+            "forearm" in region["region"] or "sleeve" in region["region"]
+            for region in br005_regions
+        ),
         "br-005 still permits arm or sleeve artwork",
     )
     br007 = products_by_sku["br-007"]

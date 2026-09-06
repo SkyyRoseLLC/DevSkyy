@@ -3,9 +3,9 @@
 import hashlib
 import importlib.util
 import json
-from pathlib import Path
 import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 
 from PIL import Image
