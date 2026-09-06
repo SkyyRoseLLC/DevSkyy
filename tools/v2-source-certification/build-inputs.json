@@ -25,7 +25,7 @@
     "tools/v2-source-certification/package-boundary.json": "83be9bf88e8c4a8d41ac7e7e7a9c14881396e734a6ec0a79a047372c4a8eba2a",
     "tools/v2-source-certification/package.py": "51a60b96e4c619d7b913c774bd8a329535b7ab77f51b8c533caf29b2571d0ff1",
     "tools/v2-source-certification/requirements.txt": "41b54a6fb2918667ca47a61d73b522629d84490f3d78f0f20b21135faba10d35",
-    "tools/v2-source-certification/runtime-php-baseline.json": "ce8b9633ff47aa376e53cdb31ba0c56653ec03d478440f32a8be8f938755014e",
+    "tools/v2-source-certification/runtime-php-baseline.json": "2f2757066ab108ebccc04af59834c6c8f60ca9efce044e35ad39c4c238ac6d96",
     "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json": "c9a35409c5af2fac958bc429c798f6ff23fee5a4e03db2e41dd604a1b96d841c",
     "wordpress-theme/skyyrose-flagship-2/data/brand-asset-transparency.json": "3c63506d22cc6d1fecde98ef72390cc10610d50d2c172c4e72b9816bd80ded0c",
     "wordpress-theme/skyyrose-flagship-2/data/collection-hero-motion.json": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf",

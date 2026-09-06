@@ -1,0 +1,105 @@
+{
+  "_fragment": {
+    "name": "sig1-nano-banana-correction-v2",
+    "description": "Three-reference Signature correction fragment derived from the validated Nano Banana Pro template. Reference 1 is the native integration base, reference 2 is exact product and identity authority, and reference 3 is exact sculpture authority.",
+    "terminal": false,
+    "source": "workflows/reference-api-nano-banana-pro.json",
+    "inputs": {
+      "batch_images_images_image0": {
+        "type": "IMAGE",
+        "binds": "36.images.image0"
+      },
+      "batch_images_images_image1": {
+        "type": "IMAGE",
+        "binds": "36.images.image1"
+      },
+      "batch_images_images_image2": {
+        "type": "IMAGE",
+        "binds": "36.images.image2"
+      }
+    },
+    "outputs": {
+      "image": {
+        "type": "IMAGE",
+        "from": "35",
+        "port": 0
+      }
+    },
+    "params": {
+      "nano_banana_pro_google_gemini_image_prompt": {
+        "type": "STRING",
+        "binds": "35.prompt",
+        "default": "Have the suit corresponding to this character strike a casual and fashionable pose"
+      },
+      "nano_banana_pro_google_gemini_image_model": {
+        "type": "STRING",
+        "binds": "35.model",
+        "default": "gemini-3-pro-image-preview"
+      },
+      "nano_banana_pro_google_gemini_image_seed": {
+        "type": "INT",
+        "binds": "35.seed",
+        "default": 39494503692700
+      },
+      "nano_banana_pro_google_gemini_image_aspect_ratio": {
+        "type": "STRING",
+        "binds": "35.aspect_ratio",
+        "default": "1:1"
+      },
+      "nano_banana_pro_google_gemini_image_resolution": {
+        "type": "STRING",
+        "binds": "35.resolution",
+        "default": "1K"
+      },
+      "nano_banana_pro_google_gemini_image_response_modalities": {
+        "type": "STRING",
+        "binds": "35.response_modalities",
+        "default": "IMAGE"
+      },
+      "nano_banana_pro_google_gemini_image_system_prompt": {
+        "type": "STRING",
+        "binds": "35.system_prompt",
+        "default": "You are an expert image-generation engine. You must ALWAYS produce an image.\nInterpret all user input\u2014regardless of format, intent, or abstraction\u2014as literal visual directives for image composition.\nIf a prompt is conversational or lacks specific visual details, you must creatively invent a concrete visual scenario that depicts the concept.\nPrioritize generating the visual representation above any text, formatting, or conversational requests."
+      }
+    }
+  },
+  "35": {
+    "inputs": {
+      "prompt": "Have the suit corresponding to this character strike a casual and fashionable pose",
+      "model": "gemini-3-pro-image-preview",
+      "seed": 39494503692700,
+      "aspect_ratio": "1:1",
+      "resolution": "1K",
+      "response_modalities": "IMAGE",
+      "system_prompt": "You are an expert image-generation engine. You must ALWAYS produce an image.\nInterpret all user input\u2014regardless of format, intent, or abstraction\u2014as literal visual directives for image composition.\nIf a prompt is conversational or lacks specific visual details, you must creatively invent a concrete visual scenario that depicts the concept.\nPrioritize generating the visual representation above any text, formatting, or conversational requests.",
+      "images": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "GeminiImage2Node",
+    "_meta": {
+      "title": "Nano Banana Pro (Google Gemini Image)"
+    }
+  },
+  "36": {
+    "inputs": {
+      "images.image0": [
+        "11",
+        0
+      ],
+      "images.image1": [
+        "12",
+        0
+      ],
+      "images.image2": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "BatchImagesNode",
+    "_meta": {
+      "title": "Batch Images"
+    }
+  }
+}

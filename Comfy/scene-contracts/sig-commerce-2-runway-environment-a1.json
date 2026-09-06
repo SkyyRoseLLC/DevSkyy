@@ -1,0 +1,105 @@
+{
+  "schema": "skyyrose.runway-environment-plate/1",
+  "candidate_id": "SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+  "scene_id": "SIG-COMMERCE-2",
+  "status": "BLOCKED_PENDING_CORRECT_FEMALE_MODEL_SOURCE",
+  "strategy": "selective_vto_then_environment_rebuild_around_source",
+  "provider": {
+    "name": "runway",
+    "route": "comfy_partner_node",
+    "node": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "comfy_base_url": "http://127.0.0.1:8189"
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": [],
+    "reason": "The existing scene authority contains protected graphic content and stays local-only."
+  },
+  "local_composition_inspiration": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-2/scene-authority/sig-3-graphic-monument-environment-plate-v3.png",
+      "sha256": "ce1232d5b470a25a160fdde4f559b87652782d9f19b69fe635313944cfedc5fb",
+      "width": 1024,
+      "height": 1536,
+      "authority_role": "COMPOSITION_ATMOSPHERE_ONLY",
+      "sent_to_runway": false,
+      "use": [
+        "pre-dawn brutalist material language",
+        "mint-lavender ambient relationship",
+        "central grounded-object spacing"
+      ],
+      "deny_as_authority": ["graphic monument", "lettering", "customer or product"]
+    }
+  ],
+  "request": {
+    "ratio": "1920:1080",
+    "num_outputs": 1,
+    "prompt": "Wide pre-dawn Oakland transit overlook with brutalist concrete terraces, weathered steel, fading sodium-vapor warmth, cool Bay fog, muted mint and lavender ambient reflections, and a continuous damp satin ground plane. Preserve campaign-scale customer zones at both outer thirds and an open grounded center zone for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+    "prompt_source": "Local scene-authority analysis only; no source pixels are uploaded."
+  },
+  "forbidden_plate_content": [
+    "people",
+    "garments",
+    "products",
+    "text",
+    "wordmarks",
+    "signage",
+    "hearts",
+    "roses",
+    "sculptures",
+    "monuments",
+    "robed figures",
+    "Beast characters",
+    "ballrooms",
+    "flower walls"
+  ],
+  "comfy_local_postprocess": {
+    "required_after_separate_approvals": [
+      "preserve the approved male SG-013 plus SG-014 protected alpha",
+      "obtain a separate approved female full-body identity and SG-006 VTO foreground",
+      "use the exact protected SR-and-rose monument only in local composition",
+      "placement, scaling, occlusion, contact shadows, reflections, edge treatment, and composition",
+      "prompt/history retrieval and hash-bound receipts"
+    ],
+    "protected_rgb_policy": "Both identities, SG-006, SG-013, SG-014, exact artwork, and protected monument RGB remain byte-identical.",
+    "birefnet_evidence": {
+      "schema": "skyyrose.birefnet-edge-confidence/1",
+      "model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+      "role": "ALPHA_AND_EDGE_CONFIDENCE_ONLY",
+      "generative_use_allowed": false,
+      "independent_visual_review_required": true
+    }
+  },
+  "credit_control": {
+    "currency": "USD",
+    "max_live_price_usd": 0.11,
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "candidate_bound_approval_required": true,
+    "approval_receipt": null,
+    "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
+  },
+  "execution_blockers": [
+    "correct founder-supplied SG-006 female wearer authority is missing",
+    "female full-body identity plate and one SG-006 VTO approval are missing",
+    "candidate-bound environment approval is not recorded",
+    "integration PR is not merged into main"
+  ],
+  "output": {
+    "candidate_path": "Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-RUNWAY-ENVIRONMENT-A1.png",
+    "filename_prefix": "SkyyRose/SIG-COMMERCE-2/environment-a1",
+    "approval_path": "Comfy/receipts/sig-commerce-2-runway-environment-a1-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/sig-commerce-2-runway-environment-a1-paid-attempt.json",
+    "promotion_allowed": false,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "post_merge_execution_gate": {
+    "required": true,
+    "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
+    "reason": "The female-source and runtime evidence must be resolved on merged main."
+  }
+}

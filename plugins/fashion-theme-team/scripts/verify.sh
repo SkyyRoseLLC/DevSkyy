@@ -29,6 +29,7 @@ expected_agents=(
 expected_references=(
   acceptance-gates
   autonomy-protocol
+  e2e-task-execution-contract
   tool-budget-and-loading
   design-system-contract
   design-system-pod
@@ -54,6 +55,7 @@ expected_skills=(
   fashion-premium-feature-system
   fashion-branded-skills
   product-fidelity-image-edits
+  fashion-e2e-task-execution
 )
 
 for agent_name in "${expected_agents[@]}"; do
@@ -79,6 +81,13 @@ done
 
 test "$(find "${plugin_root}/skills" -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | wc -l | tr -d ' ')" -eq "${#expected_skills[@]}" || {
   printf 'FAIL: skill inventory does not match the governed execution set\n' >&2
+  exit 1
+}
+
+python3 "${plugin_root}/scripts/verify-e2e-task-execution.py"
+
+python3 -c 'import jsonschema, numpy, PIL, yaml' >/dev/null 2>&1 || {
+  printf 'FAIL: missing verifier dependencies; install requirements-verify.txt before running verify.sh\n' >&2
   exit 1
 }
 
@@ -577,7 +586,9 @@ jq -e '
   (.interface.capabilities | index("Typed Prompt Chains") != null) and
   (.interface.capabilities | index("Prompt Caching") != null) and
   (.interface.capabilities | index("Native Collection Scene Pipeline") != null) and
-  (.interface.capabilities | index("Exact Product Fidelity Gates") != null)
+  (.interface.capabilities | index("Exact Product Fidelity Gates") != null) and
+  (.interface.capabilities | index("Strict End-to-End Task Control") != null) and
+  any(.interface.defaultPrompt[]; contains("strict end-to-end task"))
 ' "${plugin_root}/.codex-plugin/plugin.json" >/dev/null
 jq -e '.hooks.SessionStart | length > 0' "${plugin_root}/hooks/hooks.json" >/dev/null
 FASHION_REQUIRE_PYTHON_FORMATTER_TOOLS=1 \

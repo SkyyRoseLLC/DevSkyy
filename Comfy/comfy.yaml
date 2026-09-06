@@ -1,0 +1,3 @@
+schema: project/1
+defaults:
+  where: local

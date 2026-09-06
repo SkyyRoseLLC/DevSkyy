@@ -1,0 +1,12 @@
+# Append one line per submission: <job_name> <prompt_id>
+lh-004-reference-pilot 10db1189-4a6c-494e-a244-7af39ca8b55c
+lh-004-reference-pilot-int8 ec03a00a-1ef3-45ea-9d4f-0e5aed4bd616
+lh-004-reference-pilot-int8-shapefix e3f1f1ab-f0e6-4b64-b96b-3102ef8d2e94
+lh-004-reference-pilot-int8-mps-fallback a757c7fa-bd89-4444-9f2d-68577c84c3b9
+lh-004-reference-pilot-local-preview 19432dde-d933-4a30-9f7f-33b5c116aade
+lh-004-reference-pilot-bf16-fp8 9228ff19-48a1-44d0-9564-2581875148aa
+lh-004-reference-pilot-bf16-native ee4d051a-a36a-44ac-a81a-542776d3c852
+sig-commerce-1-nano-banana-pro-pilot 5415c764-c03b-4c7e-bde4-b87a87ec1ba7
+sig-commerce-1-protected-recovery-v1 308a7cbe-7e52-42a5-a746-e9619c6a269f
+sig-commerce-1-native-correction-v2 5be5a2ee-3e16-4d02-a3c5-64db4eccd8f3
+sig-commerce-1-campaign-hero-v3 81cea340-3386-46ff-a774-1d2468ed9d74

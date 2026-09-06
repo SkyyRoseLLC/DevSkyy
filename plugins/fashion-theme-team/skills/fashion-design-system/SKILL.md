@@ -37,3 +37,9 @@ adoption checks. The independent red team owns the pixel verdict.
 ## Boundaries
 
 No self-approval, deployment, or silent rewrite of canonical sources.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. Bind token/component contract,
+fixture matrix, generated parity, adoption impact, and independent red-team
+verdict to one candidate; record a drift or invalid state at first observation.

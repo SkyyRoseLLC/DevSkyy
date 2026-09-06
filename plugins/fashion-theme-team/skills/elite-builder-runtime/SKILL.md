@@ -43,3 +43,10 @@ knowledge as SkyyRose canon.
   reinterpret skipped evidence.
 - Every output remains candidate-bound and requires the Fashion Theme Team's
   independent visual, accessibility, commerce, performance, and release gates.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this runtime. Record approved PRD,
+routing, budget, provider receipts, self-heal attempts, and downstream
+independent evidence as one task; an unavailable or failed runtime action is a
+first-seen issue, not permission to retry or claim completion.

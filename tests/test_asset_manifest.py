@@ -92,6 +92,17 @@ def test_br007_directional_authorities_are_hash_bound():
     )
 
 
+def test_br007_founder_four_angle_authority_is_hash_bound():
+    assets = AssetManifest.load().skus["br-007"]
+    founder_board = assets.by_role("garment-founder-four-angle")
+
+    assert founder_board is not None
+    assert founder_board.path.endswith("br-007-founder-four-angle-physical-authority.jpg")
+    assert founder_board.sha256 == (
+        "sha256:7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130"
+    )
+
+
 def test_verify_detects_a_missing_file(tmp_path):
     """A manifest that names an absent file must surface as drift."""
     from skyyrose.core.asset_manifest import AssetRecord, SkuAssets

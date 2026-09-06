@@ -1,0 +1,86 @@
+[
+  {
+    "path": "assets/products/manifest.json",
+    "frozen_blob": "d1c95f56f8de2533f004f39e554eb6b80858e5b7",
+    "old_main_blob": "d1c95f56f8de2533f004f39e554eb6b80858e5b7",
+    "resolved_blob": "7d718983017aa56bfe6e76eb0d94024fe17a8bf1",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "assets/products/source-photos/manifest.json",
+    "frozen_blob": "26fee762b8555057ed04490339c95fe6c7d8a6ba",
+    "old_main_blob": "26fee762b8555057ed04490339c95fe6c7d8a6ba",
+    "resolved_blob": "49eae54e24775c481a45a9a92ac7adf4e3091804",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "plugins/fashion-theme-team/formatting.toml",
+    "frozen_blob": "d0db384499c25b0514544c37a06a9d0293c28048",
+    "old_main_blob": "d0db384499c25b0514544c37a06a9d0293c28048",
+    "resolved_blob": "a5dec20410e89fbc67fa58d8b146d7085b6564a1",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "plugins/fashion-theme-team/requirements-formatting.txt",
+    "frozen_blob": "0dec88be2156b0da0e500dedaad91d7d89fb3b07",
+    "old_main_blob": "0dec88be2156b0da0e500dedaad91d7d89fb3b07",
+    "resolved_blob": "0d257ec84257bf65af89f8a251f525c99dd2bbaa",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "plugins/fashion-theme-team/skills/product-fidelity-image-edits/references/model-capability-registry.json",
+    "frozen_blob": "fd880d576fe768e98e7a6853d80b9716c8442e81",
+    "old_main_blob": "fd880d576fe768e98e7a6853d80b9716c8442e81",
+    "resolved_blob": "fd22fb62e8acdba9bb7259257f656b8164faa67a",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "scripts/audit_source_photos.py",
+    "frozen_blob": "58d5cf27ad892b2cea5a69f692adeb6cfae0be26",
+    "old_main_blob": "58d5cf27ad892b2cea5a69f692adeb6cfae0be26",
+    "resolved_blob": "67312dfef3b85e9bf30f46fdf5e9ee5c34569a0c",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "scripts/build_asset_manifest.py",
+    "frozen_blob": "ab4aba4d7d0186e5735ec9d72101a32341612808",
+    "old_main_blob": "ab4aba4d7d0186e5735ec9d72101a32341612808",
+    "resolved_blob": "e21def5de6d60c34c824e334718649c0f8769527",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "scripts/oai_render/pipeline.py",
+    "frozen_blob": "2dc00df1d6678328bfe289bfc3fec092949a6ff3",
+    "old_main_blob": "2dc00df1d6678328bfe289bfc3fec092949a6ff3",
+    "resolved_blob": "d6e8d7edc074507c6a5c86c9a80d93e92e26bf6b",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "tasks/source-photo-audit-report.md",
+    "frozen_blob": "f46812299955ee93d02e491b4e94d8eb44f720a9",
+    "old_main_blob": "f46812299955ee93d02e491b4e94d8eb44f720a9",
+    "resolved_blob": "0a5e9136be29bf7a19b20489bf7df017646901e0",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "tasks/source-photo-shoot-list.md",
+    "frozen_blob": "90241c799c4ccc396c0a68de669bd7dcbd07a009",
+    "old_main_blob": "90241c799c4ccc396c0a68de669bd7dcbd07a009",
+    "resolved_blob": "5cca4fd2f99a6aafd4dd2e3227d1cb3174404e25",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "tests/test_asset_manifest.py",
+    "frozen_blob": "040c2a438b2bec8c39d19bd97fe32df39d575ed5",
+    "old_main_blob": "040c2a438b2bec8c39d19bd97fe32df39d575ed5",
+    "resolved_blob": "c3ac8d408bbbfa4b087c2ae6612f8368bc5599b1",
+    "resolution": "latest origin/main; V2 never modified this path"
+  },
+  {
+    "path": "tests/test_source_photo_minimum.py",
+    "frozen_blob": "6d8cea964eec43b80249066343d98a440694833e",
+    "old_main_blob": "6d8cea964eec43b80249066343d98a440694833e",
+    "resolved_blob": "efed7b346bbba9cd49b00ef0b4bdf0b443ab285a",
+    "resolution": "latest origin/main; V2 never modified this path"
+  }
+]

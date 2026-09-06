@@ -1,0 +1,210 @@
+{
+  "schema": "skyyrose.scene-ooda-receipt/1",
+  "scene_id": "SIG-COMMERCE-1",
+  "action": "higgsfield-enhance",
+  "recorded_at": "2026-09-02T19:42:29.733789+00:00",
+  "payload": {
+    "observe": {
+      "scene_id": "SIG-COMMERCE-1",
+      "catalog_checks": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/skyyrose-catalog.csv",
+          "exists": true,
+          "actual_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+          "expected_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/data/sot-images.json",
+          "exists": true,
+          "actual_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+          "expected_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+          "status": "PASS"
+        }
+      ],
+      "source_checks": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
+          "exists": true,
+          "actual_sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
+          "expected_sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/assets/products/source-photos/signature/sg-009-sherpa-jacket-open.jpeg",
+          "exists": true,
+          "actual_sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
+          "expected_sha256": "cb13b25aa3854190b2fbaa3e701a96ef2c813969c8bba7118ac6e68af46711fb",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/assets/products/source-photos/signature/sg-007-signature-beanie-black.png",
+          "exists": true,
+          "actual_sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43",
+          "expected_sha256": "f81a14d7dfea27b570ee2c0ba09661474f87d3df637652055e0f225ba91f9a43",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
+          "exists": true,
+          "actual_sha256": "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600",
+          "expected_sha256": "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-hero-element/signature-skyyrose-font-sculpture-clean-transparent-v2.png",
+          "exists": true,
+          "actual_sha256": "4db76780d8280af2d1d7c081b424ccd385054f15778593b240cec52e34b75c3e",
+          "expected_sha256": "4db76780d8280af2d1d7c081b424ccd385054f15778593b240cec52e34b75c3e",
+          "status": "PASS"
+        }
+      ],
+      "dependency_checks": [],
+      "forbidden_input_checks": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/rejected/SIG-COMMERCE-1-comfy-protected-recovery-v1-founder-rejected.png",
+          "exists": true,
+          "actual_sha256": "cf39a576ea2657378ea8fbd7c2b93d0f5ddd8550d60ce1b88488fd3c06be7908",
+          "expected_sha256": "cf39a576ea2657378ea8fbd7c2b93d0f5ddd8550d60ce1b88488fd3c06be7908",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/rejected/SIG-COMMERCE-1-native-correction-v2-design-standard-fail.png",
+          "exists": true,
+          "actual_sha256": "60463f036514ae0336de97ccca218bae2d4e19870a0df5b0f35fe42d1ea42d31",
+          "expected_sha256": "60463f036514ae0336de97ccca218bae2d4e19870a0df5b0f35fe42d1ea42d31",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/comfy-campaign-hero-v3/output/SIG-COMMERCE-1-campaign-hero-v3.png",
+          "exists": true,
+          "actual_sha256": "e1fb0669ec4b4d04ddf599dd79e389ed91aeaa6f11893245a43b64da06566219",
+          "expected_sha256": "e1fb0669ec4b4d04ddf599dd79e389ed91aeaa6f11893245a43b64da06566219",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/comfy-candidate-v1/output/sig-commerce-1-nano-banana-pro-pilot.png",
+          "exists": true,
+          "actual_sha256": "7035f14f07eaeb5d3deeca0dcbe5a9d69adcb74fef4f3b145bdfc3cbb2561a51",
+          "expected_sha256": "7035f14f07eaeb5d3deeca0dcbe5a9d69adcb74fef4f3b145bdfc3cbb2561a51",
+          "status": "PASS"
+        }
+      ],
+      "forbidden_routing_clean": true,
+      "team_contract_check": {
+        "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/Comfy/scene-contracts/scene-ooda-index.json",
+        "plugin": "fashion-theme-team@personal",
+        "phase_id": "SIG-COMMERCE-1-OODA-1",
+        "current_owner": "brand-experience-architect",
+        "failures": [],
+        "status": "PASS"
+      },
+      "creative_direction_check": {
+        "status": "PASS",
+        "failures": []
+      },
+      "optical_contract_check": {
+        "status": "PASS",
+        "failures": []
+      },
+      "prompt_adherence_check": {
+        "status": "PASS",
+        "configured": true,
+        "failures": []
+      },
+      "comfy_contract_check": {
+        "status": "PASS",
+        "failures": []
+      },
+      "provider_capability_check": {
+        "status": "PASS",
+        "failures": [],
+        "registry_check": {
+          "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/Comfy/scene-contracts/higgsfield-product-photoshoot-model-registry-20260902.json",
+          "exists": true,
+          "actual_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
+          "expected_sha256": "962bb756d42173a75d1f01aa068fb1ec852b747684969b7755295be2a30e5913",
+          "status": "PASS"
+        },
+        "runtime_receipt_check": {
+          "path": "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/Comfy/receipts/br-commerce-2-higgsfield-runtime-capability-20260902T123106Z.json",
+          "exists": true,
+          "actual_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
+          "expected_sha256": "93445948e0077b5e877213e098e07a0eb8bdd0450cf5725ac16d7c70b7346a24",
+          "status": "PASS"
+        },
+        "model": "higgsfield-product-photoshoot-gpt-image-2",
+        "operation": "scene_generation"
+      },
+      "credit_control_check": {
+        "status": "PASS",
+        "failures": [],
+        "prompt_review": {
+          "status": "MISSING_RECEIPT",
+          "expected_action": "higgsfield-enhance-review"
+        },
+        "paid_approval": {
+          "status": "MISSING_RECEIPT",
+          "expected_action": "paid-generation-approval"
+        },
+        "attempt_available": true
+      },
+      "source_ready": true,
+      "dependencies_ready": true,
+      "configuration_ready": true,
+      "paid_authorized": false,
+      "paid_route_permitted": true,
+      "execute_blockers": [
+        "corrected enhanced prompt has not passed product and sculpture assertions",
+        "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+      ],
+      "paid_execution_ready": false
+    },
+    "result": {
+      "command": [
+        "higgsfield",
+        "--json",
+        "product-photoshoot",
+        "create",
+        "--mode",
+        "hero_banner",
+        "--prompt",
+        "Cinematic urban-grit Signature campaign on a rain-cleared SF/Oakland industrial roof deck in a professional 16:9 frame. The exact protected customer remains the primary dominant focal level on the left third at full-body product-readable scale: preserve the same face, identity, body proportions, pose, and exact SG-009 Sherpa Jacket with black outer construction, white sherpa lining, and red front rose. Preserve the exact SG-007 Signature Beanie as a solid black ribbed-knit body with folded cuff and the exact small light rose patch at its wearer-left-of-center scale and placement. Do not regenerate, substitute, restyle, recolor, or reposition the customer or either garment. The exact clean transparent sculpture is secondary on the right: one continuous single-line SkyyRose wordmark with unchanged gold letterforms, unchanged proportions, and one copper rose in its exact integrated position. It is one freestanding civic sign with real weight, base contact, occlusion, shadow, and damp-floor reflection; never duplicate, rearrange, flatten, or mount it to a wall. The environment is tertiary: board-formed concrete, weathered black steel, distant cranes and bridge lights, marine fog, warm edge light, neutral skin, deep open blacks, restrained film grain. No interior, apartment, skyline backdrop, pasted halo, split lettering, extra monument, invented text, or missing brand element.",
+        "--aspect_ratio",
+        "16:9",
+        "--count",
+        "1",
+        "--brand_context",
+        "SkyyRose Signature is refined West Coast industrial luxury: rose-gold craft against damp concrete and marine fog, confident customer presence, cinematic restraint, and exact product authority.",
+        "--product_context",
+        "Preserve the exact customer's face, identity, body proportions, and pose. SG-009 keeps its black outer construction, white sherpa body lining, and red front rose. SG-007 is the selected solid-black beanie variant with a folded ribbed cuff and exact small light rose patch artwork, scale, and wearer-left-of-center placement. Preserve one continuous single-line SkyyRose sculpture with unchanged gold letterforms, unchanged proportions, and exactly one copper rose at its bound location. Customer and garments are primary, sculpture secondary, environment tertiary.",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-input/sg-009-sg-007-sherpa-beanie-look-protected-v2.png",
+        "--image",
+        "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/assets/products/source-photos/signature/sg-009-sherpa-jacket-open.jpeg",
+        "--image",
+        "/Users/theceo/.codex/worktrees/scene-recovery-ooda/DevSkyy/assets/products/source-photos/signature/sg-007-signature-beanie-black.png",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/protected-hero-element/signature-skyyrose-font-sculpture-clean-transparent-v2.png",
+        "--enhance-only"
+      ],
+      "exit_code": 3,
+      "stdout": null,
+      "stderr": "Error: Cannot reach https://fnf-api-gw.higgsfield.ai/fnf/developer/v2alpha/product-photoshoot/enhance."
+    },
+    "inspection": {
+      "status": "REJECTED_ENHANCER_PRODUCT_DRIFT",
+      "prompt_present": false,
+      "missing_required_phrases": [
+        "white sherpa",
+        "Signature Beanie",
+        "solid black",
+        "copper rose",
+        "16:9"
+      ],
+      "present_forbidden_phrases": []
+    }
+  }
+}

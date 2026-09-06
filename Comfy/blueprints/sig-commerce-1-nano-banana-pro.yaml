@@ -1,0 +1,15 @@
+output_prefix: sig-commerce-1/nano-banana-pro-pilot
+pipeline:
+  - fragment: sig1-nano-banana-pro
+    alias: sig1
+    inputs:
+      batch_images_images_image0: $asset.sig-commerce-1/sig1-layout-reference-v1.png
+      batch_images_images_image1: $asset.sig-commerce-1/sg-009-sg-007-protected-model-v2.png
+    params:
+      nano_banana_pro_google_gemini_image_prompt: >-
+        Create one native luxury fashion campaign photograph. Use reference image 1 as the fixed 2:3 composition and reference image 2 as exact identity and wardrobe authority. Keep the adult male's face, hair, pose, body proportions, black beanie with small square label, black sherpa-lined jacket with white collar and lining, red rose chest embroidery, pockets, trim, black trousers, and black-and-white sneakers unchanged in design, placement, color, and construction. Preserve the left-wall gold cursive 'Skyy Rose' statue, rose, letterforms, silhouette, proportions, and placement exactly. Re-render only the physical integration so the man and statue truly share the room: soft 3200K key light from camera-left, cool dusk window fill, warm edge spill, natural contact shadows under both shoes, subtle wet-floor reflection, matching perspective, ambient occlusion, depth, and fine scene grain. Keep the man full-body on the right third, feet on the floor, statue on the left wall, and Golden Gate view behind. Do not add or remove people, garments, logos, text, products, monuments, bridges, accessories, or props. No floating feet, cutout halo, pasted edges, planar garment, duplicated limbs, or invented wording.
+      nano_banana_pro_google_gemini_image_model: gemini-3-pro-image-preview
+      nano_banana_pro_google_gemini_image_seed: 913009007
+      nano_banana_pro_google_gemini_image_aspect_ratio: "2:3"
+      nano_banana_pro_google_gemini_image_resolution: 1K
+      nano_banana_pro_google_gemini_image_response_modalities: IMAGE

@@ -505,8 +505,12 @@ def _quarantine(
         "x_request_id": request_id,
         "output_sha256": _sha256_bytes(data),
     }
-    _atomic_write_json_no_clobber(img_path.with_suffix(".json"), meta)
     _atomic_write_no_clobber(img_path, data)
+    try:
+        _atomic_write_json_no_clobber(img_path.with_suffix(".json"), meta)
+    except (OSError, ValueError):
+        img_path.unlink(missing_ok=True)
+        raise
     return img_path
 
 
@@ -751,17 +755,21 @@ def _accept_render(
     try:
         out_dir = config.OUTPUT_DIR / plan.output_slug
         out_path = out_dir / _candidate_output_filename(plan, call_result.request_id)
-        receipt_path = _write_generation_receipt(
-            plan,
-            data,
-            attempt,
-            prompt,
-            call_result,
-            status="qc_passed_candidate",
-            output_path=out_path,
-            runlog=runlog,
-        )
         _atomic_write_no_clobber(out_path, data)
+        try:
+            receipt_path = _write_generation_receipt(
+                plan,
+                data,
+                attempt,
+                prompt,
+                call_result,
+                status="qc_passed_candidate",
+                output_path=out_path,
+                runlog=runlog,
+            )
+        except (OSError, ValueError):
+            out_path.unlink(missing_ok=True)
+            raise
     except (OSError, ValueError) as exc:  # fail closed after a paid call
         prefix = "disk" if isinstance(exc, OSError) else "evidence"
         log.error("Candidate publication failed for %s: %s", plan.sku, exc)
@@ -799,16 +807,6 @@ def _reject_render(
     receipt_path = None
     try:
         quarantine_path = _quarantine_path(plan, attempt, call_result.request_id)
-        receipt_path = _write_generation_receipt(
-            plan,
-            data,
-            attempt,
-            prompt,
-            call_result,
-            status="quarantined",
-            output_path=quarantine_path,
-            runlog=runlog,
-        )
         _quarantine(
             plan,
             data,
@@ -816,6 +814,21 @@ def _reject_render(
             verdict,
             request_id=call_result.request_id,
         )
+        try:
+            receipt_path = _write_generation_receipt(
+                plan,
+                data,
+                attempt,
+                prompt,
+                call_result,
+                status="quarantined",
+                output_path=quarantine_path,
+                runlog=runlog,
+            )
+        except (OSError, ValueError):
+            quarantine_path.unlink(missing_ok=True)
+            quarantine_path.with_suffix(".json").unlink(missing_ok=True)
+            raise
     except (OSError, ValueError) as exc:
         log.error("Quarantine write failed for %s: %s", plan.sku, exc)
         reason = f"evidence persistence failed: {type(exc).__name__}: {exc}"

@@ -1,0 +1,158 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "SCENE-RECOVERY-OODA-20260902",
+  "state": "COMPLETE_WITH_BLOCKERS",
+  "project_manager": "fashion-theme-lead",
+  "scope": {
+    "scene_ids": [
+      "LH-COMMERCE-2",
+      "SIG-COMMERCE-1",
+      "SIG-COMMERCE-2",
+      "SIG-COMMERCE-3",
+      "BR-COMMERCE-2"
+    ],
+    "capabilities": [
+      "product-fidelity-image-edits",
+      "fashion-e2e-task-execution",
+      "local-comfy-protected-correction",
+      "prompt-adherence-ooda"
+    ],
+    "targets": [
+      "Create a real-alpha LH-003 physical-product matte without changing source RGB and preserve the separate exact on-model authority blocker.",
+      "Bring SIG-COMMERCE-1 through current prompt, runtime, credit, candidate, and review gates without reusing any rejected scene.",
+      "Resolve or prove the missing SG-006 authority for SIG-COMMERCE-2 and the SG-001/SG-003 correction evidence for SIG-COMMERCE-3.",
+      "Build and execute only a local, mask-bound BR-COMMERCE-2 protected-source recovery; no paid retry."
+    ],
+    "target_environment": "isolated branch plus local ComfyUI at 127.0.0.1:8188",
+    "exclusions": [
+      "automatic paid retries",
+      "rejected candidates as product, model, or edit authority",
+      "maskless product correction",
+      "unapproved pose changes",
+      "runtime storefront wiring",
+      "deployment",
+      "promotion without independent review and explicit founder approval"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Scene recovery project manager",
+      "capabilities": ["scope control", "OODA coordination", "credit control"],
+      "deliverable": "Five-scene recovery ledger and final evidence handoff"
+    },
+    {
+      "name": "catalog-sot-integrator",
+      "job_title": "Product authority owner",
+      "capabilities": ["catalog reconciliation", "source hashing", "view classification"],
+      "deliverable": "Current SKU, source, dossier, and imagery-SOT bindings"
+    },
+    {
+      "name": "product-fidelity-image-edits",
+      "job_title": "Protected media implementation owner",
+      "capabilities": ["real-alpha extraction", "mask-bound correction", "protected compositing"],
+      "deliverable": "Hash-bound mattes, masks, workflows, candidates, and preservation receipts"
+    },
+    {
+      "name": "local-comfy-operator",
+      "job_title": "Local Comfy execution operator",
+      "capabilities": ["workflow validation", "local queue execution", "output capture"],
+      "deliverable": "Prompt, history, output, and runtime receipts for every submitted local job"
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Independent product and scene reviewer",
+      "capabilities": ["product fidelity", "native integration", "prompt adherence"],
+      "deliverable": "Candidate-bound independent verdicts",
+      "independent_from_project_manager": true,
+      "may_edit_candidate": false
+    }
+  ],
+  "acceptance_criteria": [
+    "Every product-bearing input is visually classified and hash-bound to the current SKU authority before execution.",
+    "LH-003 preserves exactly two zippered side pockets and two zippered rear pockets, with directional artwork never mirrored or reassigned.",
+    "Any LH-003 alpha matte has genuine transparency and byte-identical RGB for retained source pixels; it is not mislabeled as an approved on-model source.",
+    "SIG-COMMERCE-1 uses no rejected candidate as an edit or generation input and cannot spend until current prompt review, runtime capability, and candidate-bound approval all pass.",
+    "SIG-COMMERCE-2 never routes the deny-listed SG-006 wearer and remains blocked unless a distinct founder-approved replacement is found and hash-bound.",
+    "SIG-COMMERCE-3 performs no full-frame paid regeneration; SG-001 and SG-003 change only inside reviewed masks with zero changed pixels outside each authorized region.",
+    "BR-COMMERCE-2 performs no paid retry and changes only protected/masked regions while preserving the exact Black Rose cast, garment construction, and font sculpture.",
+    "Every candidate independently passes product fidelity, optical integration, anatomy, collection story, and commerce readiness or is quarantined with no automatic retry.",
+    "No candidate is wired, deployed, promoted, or represented as founder-approved by this task."
+  ],
+  "evidence_requirements": [
+    "source_hash_validation",
+    "source_authority_receipts",
+    "real_alpha_and_rgb_preservation_receipts",
+    "mask_overlays_and_outside_mask_diff",
+    "scene_contract_validation",
+    "provider_and_local_runtime_capability_receipts",
+    "prompt_assertion_review",
+    "candidate_and_execution_receipts",
+    "independent_review",
+    "manager_reverification",
+    "founder_promotion_decision"
+  ],
+  "issues": [
+    {
+      "issue_id": "LH2-RECOVERY-001",
+      "fingerprint": "lh-commerce-2:exact-on-model-product-target-and-protected-matte-missing",
+      "state": "PARTIALLY_RESOLVED",
+      "first_seen": "2026-09-02",
+      "description": "Four exact-RGB product-only mattes now exist and are receipt-bound. LH-MODEL-01 identity is approved, but the rejected casting board still cannot supply exact on-model garment pixels or a scene-input wearer matte."
+    },
+    {
+      "issue_id": "SIG1-RECOVERY-001",
+      "fingerprint": "sig-commerce-1:three-rejected-compositions-current-prompt-and-approval-missing",
+      "state": "PARTIALLY_RESOLVED",
+      "first_seen": "2026-09-02",
+      "description": "The green/black SG-007 source conflict is repaired, four rejected hashes are deny-listed, and static source/provider/prompt contracts pass. Higgsfield enhancement is currently unreachable, so no enhanced-prompt PASS or paid candidate exists."
+    },
+    {
+      "issue_id": "SIG2-RECOVERY-001",
+      "fingerprint": "sig-commerce-2:founder-approved-sg006-female-wearer-missing",
+      "state": "PROVEN_BLOCKED",
+      "first_seen": "2026-09-02",
+      "description": "The deny-listed SG-006 woman remains prohibited. A distinct real-alpha alternative was found at hash 3b2a8b69..., but it has no founder identity approval and cannot be routed or silently substituted."
+    },
+    {
+      "issue_id": "SIG3-RECOVERY-001",
+      "fingerprint": "sig-commerce-3:sg001-and-sg003-mask-correction-evidence-incomplete",
+      "state": "PARTIALLY_RESOLVED",
+      "first_seen": "2026-09-02",
+      "description": "SG-001 corrected pixels, generation receipt, and verification receipt are now bound with zero outside-mask drift. No verified SG-003 correction receipt is available, and SG-001 remains candidate-only pending founder review."
+    },
+    {
+      "issue_id": "BR2-RECOVERY-001",
+      "fingerprint": "br-commerce-2:paid-candidate-fidelity-failure-protected-local-recovery-required",
+      "state": "PROVEN_BLOCKED",
+      "first_seen": "2026-09-02",
+      "description": "The consumed paid candidate remains rejected. Channel audit proves the composition and BR-004 references are opaque, while the only real-alpha dual-cast v6 contains a rejected product correction. Local recovery requires clean separate approved alphas; paid retry remains forbidden."
+    }
+  ],
+  "authorization": {
+    "user_scope_recorded": "User selected recovery actions 1, 2, and 3 on 2026-09-02.",
+    "local_no_spend_execution": "AUTHORIZED_WITH_EVIDENCE",
+    "paid_execution": "PENDING_CURRENT_CANDIDATE_BOUND_RECEIPT",
+    "automatic_paid_retry": false,
+    "runtime_wiring": "NOT_AUTHORIZED",
+    "deployment": "NOT_AUTHORIZED",
+    "promotion": "NOT_AUTHORIZED"
+  },
+  "manager_verification": {
+    "status": "VERIFIED",
+    "evidence": [
+      "Comfy/SCENE-RECOVERY-OODA-REPORT-20260902.md",
+      "Comfy/receipts/protected-alpha-audit-20260902.json",
+      "Comfy/receipts/lh-003-front-product-matte-v1.json",
+      "Comfy/receipts/lh-003-back-product-matte-v1.json",
+      "Comfy/receipts/lh-003-wearer-left-product-matte-v1.json",
+      "Comfy/receipts/lh-003-wearer-right-product-matte-v1.json",
+      "Comfy/receipts/local-comfy-authority-upload-20260902.json",
+      "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T193504736502Z.json",
+      "Comfy/receipts/sig-commerce-1-higgsfield-enhance-20260902T194229733789Z.json"
+    ],
+    "verification_summary": "Source-to-contract-to-local-staging boundaries were checked. Nineteen focused tests pass; contract JSON is valid; ledger hashes match; no generation job was submitted; no new credits were spent. Remaining blockers are explicit source, provider, correction, independent-review, and founder gates."
+  },
+  "founder_approval": "PENDING",
+  "release_decision": "NOT_AUTHORIZED"
+}

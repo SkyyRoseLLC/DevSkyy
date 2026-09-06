@@ -1,0 +1,113 @@
+{
+  "schema": "product-fidelity-source-authority.v1",
+  "status": "VERIFIED_SOURCE_INTAKE_SCENE_BLOCKED",
+  "recorded_at": "2026-09-02",
+  "task_id": "LH-003-SOURCE-AUTHORITY-INTAKE-20260902",
+  "sku": "lh-003",
+  "product_name": "Love Hurts Basketball Shorts",
+  "view": "founder_four_view_physical_source_set",
+  "role": "physical_product_authority",
+  "source_provenance": {
+    "state": "FOUNDER_SUPPLIED_CURRENT_SESSION",
+    "publication_rights_state": "NOT_REVERIFIED_IN_THIS_LOCAL_INTAKE",
+    "originals_preserved": true,
+    "normalization": "Front and back already existed byte-identically in the canonical source tree; left and right side closeups were copied byte-for-byte to canonical wearer-relative filenames."
+  },
+  "component_views": [
+    {
+      "view": "front",
+      "original_path": "/Users/theceo/Desktop/products/lh-003-shorts-front-source.jpg",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-front.jpeg",
+      "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+      "dimensions": [934, 841],
+      "byte_identity": "MATCH"
+    },
+    {
+      "view": "back",
+      "original_path": "/Users/theceo/Desktop/products/lh-003-shorts-back-source.jpg",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-back.jpeg",
+      "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
+      "dimensions": [934, 841],
+      "byte_identity": "MATCH"
+    },
+    {
+      "view": "wearer-left",
+      "original_path": "/Users/theceo/Desktop/products/lh-003-shorts-left-side-closeup.jpg",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-left.jpg",
+      "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
+      "dimensions": [768, 1024],
+      "byte_identity": "MATCH",
+      "view_basis": "Founder-supplied filename plus visual side-artwork continuity; pending independent review."
+    },
+    {
+      "view": "wearer-right",
+      "original_path": "/Users/theceo/Desktop/products/lh-003-shorts-rights-side-closeup.jpg",
+      "path": "assets/products/source-photos/love-hurts/lh-003-shorts-wearer-right.jpg",
+      "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a",
+      "dimensions": [768, 1024],
+      "byte_identity": "MATCH",
+      "view_basis": "Founder-supplied filename plus visual side-artwork continuity; pending independent review."
+    }
+  ],
+  "visible_construction_contract": {
+    "body": "White perforated mesh with a repeating orange-red rose-bouquet-on-cloud field.",
+    "waistband": "Black ribbed elastic waistband; white drawstring is partially visible in the wearer-right source.",
+    "hem": "Angular black perforated binding traced by parallel red and white stripes.",
+    "pockets": "Founder-confirmed invariant: exactly four pockets total, comprising two side pockets and two rear pockets; all four pockets contain zipper closures.",
+    "wearer_left": "One zippered side pocket, large red Love Hurts script across the white side body, and a black-mesh inset carrying the smaller Love Hurts rose/heart emblem.",
+    "wearer_right": "One zippered side pocket and a black-mesh inset carrying an embroidered red rose bouquet with green stems and a white-and-blue cloud.",
+    "back": "Two black-trimmed zippered rear pockets, continuing rose field, and a large red-and-black Love Hurts treatment concentrated on wearer-left.",
+    "do_not_mirror": true
+  },
+  "catalog": {
+    "path": "skyyrose-catalog.csv",
+    "sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627"
+  },
+  "sot_manifest": {
+    "path": "data/sot-images.json",
+    "sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b"
+  },
+  "source_photo_manifest": {
+    "path": "assets/products/source-photos/manifest.json",
+    "sha256": "dcc65c6499f8df059d6d7fd6ff93e572cbc4815fa0aead91385e8327af92cb35"
+  },
+  "asset_manifest": {
+    "path": "assets/products/manifest.json",
+    "sha256": "482da6697d687345bec5eaded75381390dcfcca666ca74eec50a71a0329a4d62"
+  },
+  "dossier": {
+    "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-basketball-shorts.md",
+    "sha256": "115952d71ade955796c98e3d80f688e2607256d975f16ebc80f1fc977b7199ff"
+  },
+  "scene_contract": {
+    "path": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
+    "sha256": "fc991963afe4b4631b45a6dd938601452a600e91a87d8c2b208a3927b8872a6a"
+  },
+  "usage_policy": {
+    "generation_inputs": "Use the physical view matching the requested camera and keep left/right sources distinct. Do not mirror, infer an unseen wearer, or treat the product-only views as an approved on-model target.",
+    "scene_gate": "The four physical views close the construction-source gap only. LH-COMMERCE-2 remains blocked until a founder-approved wearer and protected garment matte are hash-bound.",
+    "candidate_promotion": "Any scene candidate must pass independent product-fidelity and native-integration review before founder review."
+  },
+  "independent_review": {
+    "reviewer": "visual-commerce-qa",
+    "reviewed_at": "2026-09-02",
+    "verdict": "PASS_SOURCE_INTAKE_ONLY",
+    "recommend_source_intake_advance": true,
+    "recommend_generation": false,
+    "scene_execution_state": "BLOCKED_SOURCE_GATE",
+    "recommend_wiring_or_promotion": false,
+    "verified_invariants": [
+      "four canonical views remain byte-identical to founder-supplied originals",
+      "wearer-left and wearer-right classifications remain distinct and unmirrored",
+      "exactly two side pockets plus two rear pockets",
+      "zipper closure on all four pockets",
+      "receipt-bound catalog, SOT, manifest, dossier, and scene hashes match current bytes",
+      "stale no-zipper and open-welt language is absent"
+    ],
+    "remaining_blockers": [
+      "founder-approved LH-003 on-model authority is missing",
+      "protected LH-003 garment matte is missing",
+      "candidate-bound paid preflight approval is not recorded"
+    ]
+  }
+}

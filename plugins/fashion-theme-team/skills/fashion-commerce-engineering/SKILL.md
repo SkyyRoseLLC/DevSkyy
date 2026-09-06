@@ -38,3 +38,10 @@ prices, or policies. Rebuild tracked `.min` assets after CSS/JS changes.
 
 No external catalog mutation, media upload, payment action, or deployment without
 explicit approval. Commercial hypotheses remain experiments.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. Bind catalog authority, state
+matrix, server-truth checks, and browser purchase proof to the same candidate.
+An SKU, variation, price, media, or recovery mismatch becomes a first-seen issue
+before retry, release, or promotion.
