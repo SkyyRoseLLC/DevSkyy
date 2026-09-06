@@ -40,7 +40,7 @@ function fixture({ reduced = false, saveData = false, decodeSupported = true, pe
     },
     pause() { calls.pause++; video.paused = true; },
   });
-  const image = { currentSrc: '/responsive-640.webp' };
+  const image = { currentSrc: '/responsive-640.webp', naturalWidth: 640 };
   if (decodeSupported) image.decode = () => imageDecode.promise;
   const classes = new Set();
   const hero = {
@@ -67,7 +67,7 @@ function fixture({ reduced = false, saveData = false, decodeSupported = true, pe
     setTimeout() { throw new Error('Unexpected fixed hero delay'); },
   }, { filename: 'visual-recovery.js', codeGeneration: { strings: false, wasm: false } });
   return {
-    imageDecode, playback, image, video, selected, calls, button, hero, document, window,
+    imageDecode, playback, image, video, selected, calls, button, hero, document, window, classes,
     preferences, connection, observer,
     intersect(visible) { observer.callback([{ target: hero, isIntersecting: visible }]); },
   };
@@ -169,4 +169,37 @@ test('user pause while decode is pending prevents loading and late play cannot r
   await flush();
   assert.equal(f.video.paused, true);
   assert.equal(f.calls.load, 1);
+});
+
+
+test('decoded native poster becomes visible before playback without fetching offscreen motion', async () => {
+  const f = fixture({ pendingPlay: true });
+  assert.equal(f.classes.has('is-hero-poster-ready'), false);
+  f.imageDecode.resolve();
+  await flush();
+  assert.equal(f.video.poster, f.image.currentSrc);
+  assert.equal(f.classes.has('is-hero-poster-ready'), true);
+  assert.equal(f.calls.load, 0);
+  f.intersect(true);
+  assert.equal(f.calls.load, 1);
+  assert.equal(f.calls.play, 1);
+  assert.equal(f.classes.has('is-hero-video-ready'), false);
+});
+
+test('broken poster never covers the image fallback and video failure clears both layers', async () => {
+  const broken = fixture();
+  broken.image.naturalWidth = 0;
+  broken.imageDecode.reject(new Error('Broken image'));
+  await flush();
+  assert.equal(broken.classes.has('is-hero-poster-ready'), false);
+  const good = fixture();
+  good.imageDecode.resolve();
+  await flush();
+  good.intersect(true);
+  good.video.emit('playing');
+  assert.equal(good.classes.has('is-hero-poster-ready'), true);
+  assert.equal(good.classes.has('is-hero-video-ready'), true);
+  good.video.emit('error');
+  assert.equal(good.classes.has('is-hero-poster-ready'), false);
+  assert.equal(good.classes.has('is-hero-video-ready'), false);
 });

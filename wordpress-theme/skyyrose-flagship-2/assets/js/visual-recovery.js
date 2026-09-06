@@ -31,6 +31,7 @@
       if (error.name === 'NotAllowedError') { state.paused = true; sync(state); return; }
       state.failed = true;
       state.el.classList.remove('is-hero-video-ready');
+      state.el.classList.remove('is-hero-poster-ready');
     });
   };
   const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
@@ -48,17 +49,24 @@
     button.addEventListener('click', () => { state.paused = !state.paused; sync(state); });
     if (video) {
       // Render the responsive approved image before competing for video bytes.
-      // The matching video poster also stays visible until the first frame.
+      // Paint the same decoded poster on the native video before its first
+      // frame. A failed image keeps the original video fade/fallback path.
       const poster = el.querySelector('img');
-      const prepare = () => {
+      const prepare = (decoded = true) => {
         if (poster?.currentSrc) video.poster = poster.currentSrc;
+        if (decoded && poster?.naturalWidth && !state.failed) el.classList.add('is-hero-poster-ready');
         state.posterReady = true;
         sync(state);
       };
-      if (poster?.decode) poster.decode().then(prepare, prepare);
+      if (poster?.decode) poster.decode().then(prepare, () => prepare(false));
       else prepare();
       video.addEventListener('playing', () => el.classList.add('is-hero-video-ready'));
-      video.addEventListener('error', () => { state.failed = true; video.pause(); el.classList.remove('is-hero-video-ready'); });
+      video.addEventListener('error', () => {
+        state.failed = true;
+        video.pause();
+        el.classList.remove('is-hero-video-ready');
+        el.classList.remove('is-hero-poster-ready');
+      });
     }
     observer?.observe(el);
     sync(state);

@@ -322,6 +322,10 @@ Engineering handoff can accurately report the implemented commerce/accessibility
 
 ### Final selected evidence bindings
 
+Later bounded font follow-up: `.artifacts/v2-completion-20260906/font-coverage/REPORT.md` records independent before/after PASS for the parent's exact Inter coverage declaration. Home390/1440 omit the48,432-byte Inter download; actual Inter arrows/prime and Hanken404 fallback still fetch/render Inter. All21 measured text-node records and all four decoded viewport screenshot pairs are identical. This closes font regression scope only; it does not infer LCP improvement or supersede the release verdict without fresh performance evidence.
+
+Later native hero handoff follow-up: `.artifacts/v2-completion-20260906/hero-handoff/REPORT.md` records four before/after normal-motion cases. The unchanged native films present their actual first frame at mediaTime0; opacity is now1 rather than0 at that callback. The inspected transitions have no new observed flash/crop jump, and the more direct source-detail change is acceptable within those compositions. The AFTER recording run nevertheless has slower navigation-relative video request/first-frame times; playback-start non-regression is explicitly UNVERIFIED. This visual observation does not certify performance or supersede the release verdict.
+
 Each full receipt carries its own observation scope; these hashes bind reviewed files and do not convert recorded evidence into independent execution.
 
 | Receipt (artifact root relative) | SHA-256 |
