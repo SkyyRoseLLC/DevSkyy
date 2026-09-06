@@ -15,7 +15,7 @@
     if (!state.video || state.failed || !state.posterReady) return;
     if (!active) { state.video.pause(); return; }
     if (!state.loaded) {
-      state.video.querySelectorAll('source[data-src]').forEach(source => { source.src = source.dataset.src; });
+      state.sources.forEach(source => { source.src = source.dataset.src; });
       state.video.muted = true;
       state.video.load();
       state.loaded = true;
@@ -24,9 +24,10 @@
     state.pending = true;
     Promise.resolve(state.video.play()).then(() => {
       state.pending = false;
-      if (!allowed() || !state.visible || state.paused || document.hidden || suspended) state.video.pause();
+      if (state.failed || !allowed() || !state.visible || state.paused || document.hidden || suspended) state.video.pause();
     }).catch(error => {
       state.pending = false;
+      if (state.failed) return;
       if (error.name === 'AbortError') return;
       if (error.name === 'NotAllowedError') { state.paused = true; sync(state); return; }
       state.failed = true;
@@ -44,29 +45,63 @@
     const button = el.querySelector('[data-recovery-motion-toggle]');
     if (!button) return;
     const video = el.querySelector('[data-recovery-hero-video]');
-    const state = { el, button, video, paused: false, visible: !observer, loaded: false, pending: false, failed: false, posterReady: !video };
+    const state = { el, button, video, paused: false, visible: !observer, loaded: false, pending: false, failed: false, posterReady: !video, sources: video ? [...video.querySelectorAll('source[data-src]')] : [] };
     heroes.push(state);
     button.addEventListener('click', () => { state.paused = !state.paused; sync(state); });
     if (video) {
-      // Render the responsive approved image before competing for video bytes.
-      // Paint the same decoded poster on the native video before its first
-      // frame. A failed image keeps the original video fade/fallback path.
+      // Publish the browser-selected poster immediately; decoding the image
+      // remains a separate gate for competing film requests and playback.
       const poster = el.querySelector('img');
+      let posterFailed = false;
+      const publishPoster = () => {
+        if (state.failed || posterFailed || !poster?.currentSrc) return;
+        // Until bytes exist, retain the picture rather than starting another
+        // poster request or exposing an empty native video surface.
+        if (!poster.naturalWidth) return;
+        // Never fall back to img.src: that could fetch the desktop fallback
+        // while <picture> has selected a different mobile resource.
+        if (video.poster !== poster.currentSrc) video.poster = poster.currentSrc;
+        el.classList.add('is-hero-poster-ready');
+      };
+      const failedPoster = () => {
+        posterFailed = true;
+        el.classList.remove('is-hero-poster-ready');
+      };
+      publishPoster();
+      poster?.addEventListener('load', () => {
+        if (state.loaded) return;
+        posterFailed = false;
+        publishPoster();
+      });
+      poster?.addEventListener('error', failedPoster);
       const prepare = (decoded = true) => {
-        if (poster?.currentSrc) video.poster = poster.currentSrc;
-        if (decoded && poster?.naturalWidth && !state.failed) el.classList.add('is-hero-poster-ready');
+        if (decoded) publishPoster();
+        else failedPoster();
         state.posterReady = true;
         sync(state);
       };
       if (poster?.decode) poster.decode().then(prepare, () => prepare(false));
       else prepare();
-      video.addEventListener('playing', () => el.classList.add('is-hero-video-ready'));
-      video.addEventListener('error', () => {
+      const failVideo = () => {
         state.failed = true;
+        state.pending = false;
         video.pause();
         el.classList.remove('is-hero-video-ready');
         el.classList.remove('is-hero-poster-ready');
+      };
+      // Nested source exhaustion need not emit a video error or settle play().
+      // Preserve native codec fallback until every activated candidate fails.
+      const failedSources = new Set();
+      state.sources.forEach(source => source.addEventListener('error', () => {
+        if (!state.loaded || state.failed) return;
+        failedSources.add(source);
+        if (state.sources.every(candidate => failedSources.has(candidate))) failVideo();
+      }));
+      video.addEventListener('playing', () => {
+        if (state.failed) { video.pause(); return; }
+        el.classList.add('is-hero-video-ready');
       });
+      video.addEventListener('error', failVideo);
     }
     observer?.observe(el);
     sync(state);
