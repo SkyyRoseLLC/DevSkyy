@@ -52,8 +52,20 @@ function skyyrose2_archive_frame_delivery( $collection ) {
 	if ( ! $dimensions || ! $source_dimensions || IMAGETYPE_WEBP !== $dimensions[2] || IMAGETYPE_WEBP !== $source_dimensions[2] || 640 !== $source_dimensions[0] || 384 !== $dimensions[0] || $dimensions[1] !== (int) round( $source_dimensions[1] * 384 / 640 ) || $dimensions[1] !== ( $rendition['height'] ?? 0 ) ) {
 		return array();
 	}
+	// An optional closer-width source never removes the validated 384w choice.
+	// The parent directory and original authority were checked above.
+	$narrow = $record['narrow_rendition'] ?? array();
+	$narrow_relative = 'assets/derived/card-frames/' . $collection . '-360w.webp';
+	$narrow_file = SKYYROSE2_DIR . '/' . $narrow_relative;
+	$narrow_srcset = '';
+	if ( is_array( $narrow ) && ( $narrow['src'] ?? null ) === $narrow_relative && 360 === ( $narrow['width'] ?? null ) && ! is_link( $narrow_file ) && is_readable( $narrow_file ) && hash_file( 'sha256', $narrow_file ) === ( $narrow['sha256'] ?? null ) ) {
+		$narrow_dimensions = getimagesize( $narrow_file );
+		if ( $narrow_dimensions && IMAGETYPE_WEBP === $narrow_dimensions[2] && 360 === $narrow_dimensions[0] && $narrow_dimensions[1] === (int) round( $source_dimensions[1] * 360 / 640 ) && $narrow_dimensions[1] === ( $narrow['height'] ?? null ) ) {
+			$narrow_srcset = SKYYROSE2_URI . '/' . $narrow_relative . ' 360w, ';
+		}
+	}
 	$cache[ $collection ] = array(
-		'srcset' => SKYYROSE2_URI . '/' . $relative . ' 384w, ' . skyyrose2_sot_asset_uri( substr( $source, strlen( 'assets/sot/' ) ) ) . ' 640w',
+		'srcset' => $narrow_srcset . SKYYROSE2_URI . '/' . $relative . ' 384w, ' . skyyrose2_sot_asset_uri( substr( $source, strlen( 'assets/sot/' ) ) ) . ' 640w',
 		'sizes' => '(max-width: 29.99em) calc(100vw - 2rem), 640px',
 	);
 	return $cache[ $collection ];

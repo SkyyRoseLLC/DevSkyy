@@ -104,6 +104,7 @@ function skyyrose2_performance_inline_small_styles() {
 	$styles = wp_styles();
 	$assets = array(
 		'tokens' => 'design-tokens', 'controls' => 'controls',
+		'theme' => 'archive-theme',
 		'global-shell' => 'global-shell', 'visual-recovery' => 'visual-recovery',
 		'home-page' => 'home-page', 'collection-world' => 'collection-world',
 		'product-page' => 'product-page', 'shop-page' => 'shop-page',
@@ -116,10 +117,14 @@ function skyyrose2_performance_inline_small_styles() {
 		if ( ! $style || ! in_array( $handle, $styles->queue, true ) || 'all' !== $style->args || ! empty( $style->extra['rtl'] ) || ! empty( $style->extra['conditional'] ) || ! empty( $style->extra['path'] ) ) {
 			continue;
 		}
-		foreach ( array( '.min.css', '.css' ) as $suffix ) {
+		// The verified archive projection has a separate per-file ceiling;
+		// Core still decides whether it fits the unchanged total 40KB budget.
+		$limit = 'archive-theme' === $asset ? 32768 : 16384;
+		$suffixes = 'archive-theme' === $asset ? array( '.min.css' ) : array( '.min.css', '.css' );
+		foreach ( $suffixes as $suffix ) {
 			$relative = '/assets/css/' . $asset . $suffix;
 			$path = SKYYROSE2_DIR . $relative;
-			if ( SKYYROSE2_URI . $relative === $style->src && is_readable( $path ) && filesize( $path ) <= 16384 ) {
+			if ( SKYYROSE2_URI . $relative === $style->src && is_readable( $path ) && filesize( $path ) <= $limit ) {
 				wp_style_add_data( $handle, 'path', $path );
 				break;
 			}

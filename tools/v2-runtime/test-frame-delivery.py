@@ -52,6 +52,26 @@ class FrameDeliveryTests(unittest.TestCase):
         self.assertEqual(snapshot, self.snapshot())
         self.assertEqual(self.raw, self.source.read_bytes())
 
+    def test_narrow_variant_supplements_wider_source_with_matching_recipe(self):
+        with patch.object(MODULE, "WIDTH", 384):
+            manifest = MODULE.generate()
+            row = manifest["collections"]["signature"]
+            self.assertEqual(row["rendition"]["width"], 384)
+            self.assertEqual(row["narrow_rendition"]["width"], 360)
+            self.assertEqual(manifest["recipe"]["quality"], MODULE.QUALITY)
+            candidate = self.theme / row["narrow_rendition"]["src"]
+            self.assertEqual(
+                MODULE.digest(candidate.read_bytes()), row["narrow_rendition"]["sha256"]
+            )
+            before = self.snapshot()
+            MODULE.generate(check=True)
+            self.assertEqual(before, self.snapshot())
+            candidate.write_bytes(b"stale")
+            before = self.snapshot()
+            with self.assertRaisesRegex(ValueError, "Stale frame"):
+                MODULE.generate(check=True)
+            self.assertEqual(before, self.snapshot())
+
     def test_missing_check_never_creates_output_directory(self):
         before = self.snapshot()
         with self.assertRaisesRegex(ValueError, "Stale frame"):

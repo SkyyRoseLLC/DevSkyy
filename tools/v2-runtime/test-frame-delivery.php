@@ -9,7 +9,7 @@ define( 'SKYYROSE2_DIR', $fixture );
 define( 'SKYYROSE2_URI', 'https://example.test/theme' );
 function skyyrose2_sot_asset_uri( $path ) { return SKYYROSE2_URI . '/assets/sot/' . $path; }
 function skyyrose2_collections() { return array( 'signature' => array( 'portal_statue' => array( 'small' => 'images/product-card-portals/signature-portal-statue-640w.webp' ) ) ); }
-$files = array( 'assets/derived/card-frames/manifest.json', 'assets/derived/card-frames/signature-384w.webp', 'assets/sot/images/product-card-portals/signature-portal-statue-640w.webp' );
+$files = array( 'assets/derived/card-frames/manifest.json', 'assets/derived/card-frames/signature-384w.webp', 'assets/sot/images/product-card-portals/signature-portal-statue-640w.webp', 'assets/derived/card-frames/signature-360w.webp' );
 try {
 	foreach ( $files as $relative ) {
 		$target = $fixture . '/' . $relative;
@@ -19,9 +19,15 @@ try {
 	$manifest = $fixture . '/' . $files[0];
 	$derived = $fixture . '/' . $files[1];
 	$source = $fixture . '/' . $files[2];
+	$narrow = $fixture . '/' . $files[3];
 	$data = json_decode( file_get_contents( $manifest ), true );
 	switch ( $mode ) {
 		case 'valid': break;
+		case 'narrow-missing': unlink( $narrow ); break;
+		case 'narrow-derived': file_put_contents( $narrow, 'changed' ); break;
+		case 'narrow-path': $data['collections']['signature']['narrow_rendition']['src'] = '../escape.webp'; break;
+		case 'narrow-dimensions': $data['collections']['signature']['narrow_rendition']['height'] = 1; break;
+		case 'narrow-symlink': unlink( $narrow ); symlink( $source, $narrow ); break;
 		case 'missing': unlink( $derived ); break;
 		case 'source': file_put_contents( $source, 'changed' ); break;
 		case 'derived': file_put_contents( $derived, 'changed' ); break;
@@ -39,7 +45,8 @@ try {
 	file_put_contents( $manifest, json_encode( $data ) );
 	require $theme . '/inc/frame-delivery.php';
 	$result = skyyrose2_archive_frame_delivery( 'signature' );
-	if ( 'valid' === $mode ) {
+	if ( 'valid' === $mode || str_starts_with( $mode, 'narrow-' ) ) {
+		if ( str_contains( $result['srcset'] ?? '', 'signature-360w.webp 360w' ) !== ( 'valid' === $mode ) ) { throw new RuntimeException( 'Narrow derivative validity/fallback contract' ); }
 		if ( ! str_contains( $result['srcset'] ?? '', 'signature-384w.webp 384w' ) || ! str_contains( $result['srcset'] ?? '', 'signature-portal-statue-640w.webp 640w' ) || '(max-width: 29.99em) calc(100vw - 2rem), 640px' !== ( $result['sizes'] ?? '' ) ) { throw new RuntimeException( 'Responsive source/fallback contract' ); }
 	} elseif ( $result ) { throw new RuntimeException( 'Invalid derivative accepted: ' . $mode ); }
 	if ( skyyrose2_archive_frame_delivery( '../unknown' ) ) { throw new RuntimeException( 'Unknown frame accepted' ); }

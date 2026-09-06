@@ -14,6 +14,8 @@ from PIL import Image, ImageChops, features
 THEME = Path(__file__).resolve().parents[2] / "wordpress-theme/skyyrose-flagship-2"
 OUTPUT = "assets/derived/card-frames"
 WIDTH = 384
+# Independent review accepted this full-frame recipe at 358 CSS pixels/DPR1.
+QUALITY = 80
 SOURCES = {
     "signature": ("554c2372bc1a9cf61aefd5782b9792db26522698ee8e860ae2befcde9302857d", 640, 1070),
     "black-rose": ("37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d", 640, 1068),
@@ -55,8 +57,9 @@ def validate_decoded(payload: bytes, resized: Image.Image, metadata: dict) -> No
             raise ValueError("Generated metadata changed")
 
 
-def derive(raw: bytes, expected: tuple) -> tuple[bytes, int]:
+def derive(raw: bytes, expected: tuple, width: int | None = None) -> tuple[bytes, int]:
     """Generate exactly one pinned-codec, uncropped technical rendition."""
+    width = WIDTH if width is None else width
     if PIL.__version__ != "12.3.0" or features.version("webp") != "1.6.0":
         raise ValueError("Unpinned Pillow/libwebp generator")
     if digest(raw) != expected[0]:
@@ -72,10 +75,10 @@ def derive(raw: bytes, expected: tuple) -> tuple[bytes, int]:
             for key in ("icc_profile", "exif", "xmp")
             if key in original.info
         }
-        height = round(original.height * WIDTH / original.width)
-        resized = original.resize((WIDTH, height), Image.Resampling.LANCZOS)
+        height = round(original.height * width / original.width)
+        resized = original.resize((width, height), Image.Resampling.LANCZOS)
         stream = io.BytesIO()
-        resized.save(stream, "WEBP", quality=90, method=6, exact=True, **metadata)
+        resized.save(stream, "WEBP", quality=QUALITY, method=6, exact=True, **metadata)
         payload = stream.getvalue()
         validate_decoded(payload, resized, metadata)
         return payload, height
@@ -106,7 +109,7 @@ def generate(check: bool = False) -> dict:
             "pillow": "12.3.0",
             "libwebp": "1.6.0",
             "width": WIDTH,
-            "quality": 90,
+            "quality": QUALITY,
             "method": 6,
             "exact": True,
             "resampling": "LANCZOS",
@@ -136,6 +139,21 @@ def generate(check: bool = False) -> dict:
                 "alpha_exact": True,
             },
         }
+        # A closer 360w source avoids overdelivery at the 358px mobile slot.
+        # Keep 384w and the original 640w choices for every larger requirement.
+        if WIDTH > 360:
+            narrow, narrow_height = derive(raw, expected, 360)
+            narrow_target = f"{OUTPUT}/{slug}-360w.webp"
+            safe_path(narrow_target)
+            pending[narrow_target] = narrow
+            manifest["collections"][slug]["narrow_rendition"] = {
+                "src": narrow_target,
+                "width": 360,
+                "height": narrow_height,
+                "sha256": digest(narrow),
+                "bytes": len(narrow),
+                "alpha_exact": True,
+            }
     manifest_path = f"{OUTPUT}/manifest.json"
     safe_path(manifest_path)
     pending[manifest_path] = (json.dumps(manifest, indent=2, sort_keys=True) + "\n").encode()

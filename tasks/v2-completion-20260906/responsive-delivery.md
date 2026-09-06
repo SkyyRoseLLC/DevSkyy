@@ -32,3 +32,11 @@ The PHP resolver requires exact source/output hashes, local paths, dimensions, W
 Full pinned build and verify passed:86Node regressions, six font generator tests, eight frame generator tests, ten PHP derivative modes, plus all existing PHP/native commerce, media, source, token, translation and generated-asset contracts. Original402 protected assets remain hash-bound by `preservation.json`. Build dependencies and generated/package boundaries include every new delivery file.
 
 Evidence: `.artifacts/v2-completion-20260906/archivo-coverage/`, `frame-384-study/`, `verify-responsive-delivery.log`. Actual integrated browser selection and final repeated Lighthouse results are recorded separately. No performance PASS is inferred from byte savings alone. No deployment, live commerce mutation or paid provider call occurred.
+
+## Reviewed q80 mobile delivery follow-up
+
+The later full-frame WebP quality80 recipe was independently reviewed at358CSS pixels/DPR1 on both dark and light backgrounds for all four collections. All16 q85/q80 comparison sheets were inspected. q80 retains visible apertures, silhouette, ornament structure and material/color identity with slight fine-grain softening most noticeable in Love Hurts. Larger/DPR2 selections remain the approved640w originals. The q90 table above records the previous checkpoint, not current derivative sizes.
+
+Current q80 derivative sizes: Black Rose47,630B; Kids Capsule49,014B; Love Hurts51,128B; Signature49,150B. Total196,922B versus279,002B at q90, a29.42% reduction. The generator retains source hashes, exact resized alpha, complete frame, metadata and pinned Pillow/libwebp; only its reviewed quality constant changes. Runtime selection, decoded dimensions, wire hashes and performance require their separate receipts.
+
+The final optional360w supplement serves the358px mobile slot without changing384w or640w choices. Its four files total176,088B (Black Rose43,492; Kids43,088; Love Hurts46,122; Signature43,386),10.58% below the384w q80 set. All eight dark/light comparison contacts were independently accepted at358CSS pixels. Runtime selection/fallback passed14browser cases with13axe checks, no violations or overflow, and one matching preload/image request. Five negative PHP modes preserve384w/640w when narrow output is invalid.

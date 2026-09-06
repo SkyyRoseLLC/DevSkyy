@@ -28,3 +28,18 @@ One same-frame AV1 candidate was rejected:812,364B versus approved VP9676,790B, 
 The local PHP origin ignores `Range: bytes=0-1023` and returns the entire676,790B video as200. Static Nginx delivery is being implemented with a read-only public-asset boundary and verified206/416/HEAD responses; native dynamic commerce remains proxied and uncached. Historical compressed proxy-only evidence remains distinct from the new delivery configuration.
 
 Font inspection found Inter downloaded during fallback probing for arrows absent from both primary Hanken and Inter. Its exact cmap is now declared through CSS unicode-range while retaining the original font bytes, weight range and fallback stack. Browser comparison includes actual Inter-only glyphs and primary-font failure, not just the happy path. Final outcome and timing evidence pending.
+
+
+## Archive optimization follow-up
+
+The native font-face correction and responsive frame checkpoint measured Home mobile 2.175s, PDP mobile 2.434s, and Shop mobile 3.183s under the declared delivery profile (`responsive-final-1`). Home and PDP are single-run passes; final repeated acceptance remains open.
+
+Rejected experiments remain recorded: concatenating all seven archive styles measured 3.412s, and adding native Woo layout inlining to that experiment measured 3.259s. The seven-file bundle and temporary layout MU plugin were removed. High-quality AVIF frame candidates were 11.6–18.4% larger than the accepted 384w WebP variants and changed alpha values; none were promoted. Preloading Hanken and Anton with the archive projection measured 3.482s and was removed.
+
+A separately generated archive-only projection removes only positively identified non-archive selector families from the delivered copy of `theme.css`, retaining original source/full minified files, shared controls, dialogs, card rules, media conditions, keyframes and rule order. Its exploratory Shop result is 2.799s. That run may have briefly overlapped the final focused test startup and is not final acceptance evidence. The next bounded experiment keeps font tokens and the projection eligible for Core's unchanged 40,000-byte aggregate inline budget, with the remaining five contiguous theme styles delivered in their original order from one external file. No native jQuery or WooCommerce stylesheet is removed.
+
+## Final delivery design under verification
+
+The five-style companion was superseded by native Core inlining of the exact seven-style archive chain. The final policy permits a100,000-byte aggregate allowance only in a verified head/main-archive context; previous40,000-byte statements above describe earlier candidates. All individual handles and dependencies remain native. Unknown plugin paths, media conditions, source/filter/order drift and unsupported contexts fall back. This avoids custom multi-handle remapping and removes the unused companion output.
+
+Reviewed q80 mobile frames measured Shop2.493s then3.065s, so the isolated first PASS did not close the target. Artifact-only native100KB inline trials measured2.580/2.346/2.653s. Those experiments are retained separately from final production-code verification. A reviewed360w derivative now supplements384w and640w sources, reducing the358px slot delivery by another8.69–12.09%; this byte saving does not itself prove LCP acceptance.

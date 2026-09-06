@@ -1,11 +1,19 @@
 {
   "collections": {
     "black-rose": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 43492,
+        "height": 601,
+        "sha256": "d4182e8e8cfc49335a2111fdce5dc0ed5f37e567ed301626a23f14089e9bfcf0",
+        "src": "assets/derived/card-frames/black-rose-360w.webp",
+        "width": 360
+      },
       "rendition": {
         "alpha_exact": true,
-        "bytes": 64854,
+        "bytes": 47630,
         "height": 641,
-        "sha256": "e2df67c04dfc83bc900bfae16be678d44495bd65366bb588c38d98c7dfb52c73",
+        "sha256": "84e384ca31c5ed9c7dd73a50ecf1b6dff100a79a0e311cf10665afbbdd61efff",
         "src": "assets/derived/card-frames/black-rose-384w.webp",
         "width": 384
       },
@@ -15,11 +23,19 @@
       "source_width": 640
     },
     "kids-capsule": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 43088,
+        "height": 601,
+        "sha256": "812adf5aae02d42a7fc1c64fb8eefcfff0df8ecd0d92d0e947975074108e246c",
+        "src": "assets/derived/card-frames/kids-capsule-360w.webp",
+        "width": 360
+      },
       "rendition": {
         "alpha_exact": true,
-        "bytes": 68282,
+        "bytes": 49014,
         "height": 641,
-        "sha256": "4aea6ad21c805e4ed83077c6128ae12cd2c910fd2492bef7c23a515fcb179c3a",
+        "sha256": "3e592a8504ee6909b0181ed2cd0a8970366d0c1ab5f956ea04cee893632294ef",
         "src": "assets/derived/card-frames/kids-capsule-384w.webp",
         "width": 384
       },
@@ -29,11 +45,19 @@
       "source_width": 640
     },
     "love-hurts": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 46122,
+        "height": 605,
+        "sha256": "e3a765a52c9feffc6ce90e21cb072d4550d7aba222f41f9b8f04d43c007e4ede",
+        "src": "assets/derived/card-frames/love-hurts-360w.webp",
+        "width": 360
+      },
       "rendition": {
         "alpha_exact": true,
-        "bytes": 74912,
+        "bytes": 51128,
         "height": 645,
-        "sha256": "a3ee36812fb2faa0ae412bf3bf6d248a41e90b540068d17c4e601f4d94568118",
+        "sha256": "61c7b2fa183643c5963970a46aab740796cf53ec9d73139d56bff902c702acbb",
         "src": "assets/derived/card-frames/love-hurts-384w.webp",
         "width": 384
       },
@@ -43,11 +67,19 @@
       "source_width": 640
     },
     "signature": {
+      "narrow_rendition": {
+        "alpha_exact": true,
+        "bytes": 43386,
+        "height": 602,
+        "sha256": "e4c5a8caa8cce152018bfe62cd369d13131dcdc6118a8555eedad4b63726dcb9",
+        "src": "assets/derived/card-frames/signature-360w.webp",
+        "width": 360
+      },
       "rendition": {
         "alpha_exact": true,
-        "bytes": 70954,
+        "bytes": 49150,
         "height": 642,
-        "sha256": "d3493219539616955b2ae5c64a51aca6b6fd2e3b37a05fc1ff888793c7a9917e",
+        "sha256": "9cb9b3a26d105b6ec59cc9c8298cf88aeade70282834e438a2776be28176de75",
         "src": "assets/derived/card-frames/signature-384w.webp",
         "width": 384
       },
@@ -62,7 +94,7 @@
     "libwebp": "1.6.0",
     "method": 6,
     "pillow": "12.3.0",
-    "quality": 90,
+    "quality": 80,
     "resampling": "LANCZOS",
     "width": 384
   },
