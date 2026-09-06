@@ -4,10 +4,13 @@ set -euo pipefail
 # Local, founder-review-only previsualization. This is a fictional SkyyRose
 # house tour: it contains no transit operator imagery, marks, audio, maps, or
 # claims of affiliation. It is not release media or product-proof authority.
+# Historical manual recipe: its original external source set is not bundled.
+# assets/card-scenes is not a compatible replacement. This is not a canonical
+# build step; obtain separately verified source/output approval before running it.
 theme_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 output_dir="$theme_dir/assets/video"
-source_frame="${1:?Usage: build-skyyrose-tour-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
-model_dir="${2:?Usage: build-skyyrose-tour-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
+source_frame="${1:?Usage: build-skyyrose-tour-film.sh <historical-reference-frame> <historical-source-directory>}"
+model_dir="${2:?Usage: build-skyyrose-tour-film.sh <historical-reference-frame> <historical-source-directory>}"
 font_ui="/System/Library/Fonts/Avenir Next Condensed.ttc"
 
 command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required" >&2; exit 1; }

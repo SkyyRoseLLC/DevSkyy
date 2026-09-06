@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Historical manual authoring recipe retained for provenance, not a canonical
+# build step. Its original external source set is not bundled in this repository;
+# assets/card-scenes is not a compatible replacement. Preserve these source names
+# and obtain separately verified source/output approval before running the recipe.
+
 theme_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 wordpress_theme_dir="$(cd "$theme_dir/.." && pwd)"
 output_dir="$theme_dir/assets/video"
-source_frame="${1:?Usage: build-jersey-bart-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
-model_dir="${2:?Usage: build-jersey-bart-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
+source_frame="${1:?Usage: build-jersey-bart-film.sh <historical-reference-frame> <historical-source-directory>}"
+model_dir="${2:?Usage: build-jersey-bart-film.sh <historical-reference-frame> <historical-source-directory>}"
 font_display="/System/Library/Fonts/Supplemental/Didot.ttc"
 font_ui="/System/Library/Fonts/Avenir Next Condensed.ttc"
 
