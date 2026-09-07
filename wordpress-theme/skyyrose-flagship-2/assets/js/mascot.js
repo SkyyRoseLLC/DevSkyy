@@ -17,6 +17,9 @@
   var data = window.SKYY_GUIDE_DATA || {};
   var intents = Array.isArray(data.intents) ? data.intents : [];
   var products = Array.isArray(data.products) ? data.products : [];
+  var guideAvailable = Array.isArray(data.products) && Array.isArray(data.intents);
+  var minimized = false;
+  stage.dataset.chat = 'closed';
   var timer;
   var closeTimer;
   var returnFocus;
@@ -31,6 +34,12 @@
   }
   var presence = document.getElementById('skyy-presence-status');
   var portrait = stage.querySelector('.skyyrose-mascot__image');
+  if (portrait) portrait.addEventListener('error', function () {
+    var fallback = safeUrl(portrait.dataset.fallbackSrc);
+    if (fallback && portrait.src !== fallback) {
+      portrait.src = fallback; stage.dataset.posterFallback = 'true';
+    }
+  });
   var renderFailed = false;
   var presenceFrame = null;
   function cancelPresenceFrame() {
@@ -86,6 +95,7 @@
     if (!hero || dialog.open || stage.parentElement !== hero) return;
     var otherOverlay = document.querySelector('dialog[open]') || document.body.classList.contains('sr2-nav-open');
     var visible = homeVisible && !homeDismissed && !document.hidden && !otherOverlay;
+    stage.dataset.visibility = document.hidden ? 'document-hidden' : homeDismissed ? 'dismissed' : !homeVisible ? 'offscreen' : otherOverlay ? 'covered' : 'visible';
     stage.hidden = homeDismissed;
     stage.dataset.motionPaused = String(paused || lightweight());
     if (!visible) {
@@ -149,10 +159,16 @@
   function settle(delay) {
     clearTimeout(timer);
     timer = setTimeout(function () {
+      var action = window.skyyRoseMascot3D?.getCurrentAction?.();
+      if (action && action.toLowerCase() !== 'skyy_idle' && !lightweight()) return;
       if (dialog.open || (hero && stage.parentElement === hero && homeVisible && !homeDismissed)) emit('idle');
     }, delay);
   }
+  document.addEventListener('skyy:action-complete', function () {
+    if (dialog.open || (hero && stage.parentElement === hero && homeVisible && !homeDismissed)) emit('idle');
+  });
   function add(text, speaker, links) {
+    var firstMessage = log.children.length === 0;
     var entry = document.createElement('div');
     entry.className = 'skyy-message skyy-message--' + speaker;
     var label = document.createElement('strong');
@@ -170,12 +186,20 @@
     });
     log.appendChild(entry);
     while (log.children.length > 20) log.firstElementChild.remove();
-    log.scrollTop = log.scrollHeight;
+    log.scrollTop = firstMessage ? 0 : log.scrollHeight;
   }
   function answer(question) {
     var query = normalize(question);
     if (!query) return;
+    stage.dataset.conversation = 'thinking';
+    document.dispatchEvent(new CustomEvent('skyy:thinking'));
     add(question, 'visitor');
+    if (!guideAvailable) {
+      stage.dataset.conversation = 'chat-failure';
+      add('The house guide is unavailable right now. You can still browse the shop or contact the house.', 'skyy', [{ url: invite.href, label: 'Contact the house' }]);
+      emit('idle');
+      return;
+    }
     var exact = products.filter(function (p) {
       return includes(query, p.sku) || includes(query, p.name);
     });
@@ -233,6 +257,7 @@
           .slice(0, 2)
       );
     }
+    stage.dataset.conversation = found.length ? 'gesture' : /^(hi|hello|hey)( skyy)?$/.test(query) ? 'greeting' : 'talking';
     emit(found.length ? 'joy' : /^(hi|hello|hey)( skyy)?$/.test(query) ? 'wave' : 'speaking');
     settle(2400);
   }
@@ -244,6 +269,9 @@
     stage.dataset.location = 'dialog';
     stage.hidden = false;
     dialog.showModal();
+    minimized = false; stage.dataset.chat = 'open';
+    stage.dataset.visibility = 'visible';
+    stage.dataset.conversation = 'greeting';
     invite.setAttribute('aria-expanded', 'true');
     if (!log.children.length)
       add(
@@ -254,6 +282,12 @@
     settle(1600);
     input.focus({ preventScroll: true });
   }
+  input.addEventListener('input', function () {
+    if (dialog.open) { stage.dataset.conversation = 'listening'; document.dispatchEvent(new CustomEvent('skyy:listening')); }
+  });
+  document.getElementById('skyy-ask-minimize')?.addEventListener('click', function () {
+    minimized = true; close();
+  });
   invite.addEventListener('click', function (event) {
     if (
       event.defaultPrevented ||
@@ -300,6 +334,7 @@
     clearTimeout(closeTimer);
     closeTimer = null;
     emit('hidden');
+    stage.dataset.chat = minimized ? 'minimized' : 'closed';
     invite.setAttribute('aria-expanded', 'false');
     var active = document.activeElement;
     // Native dialog normally restores its opener itself. Restore only when
@@ -353,8 +388,12 @@
       pause.textContent = paused ? 'Resume character' : 'Pause character';
       document.dispatchEvent(new CustomEvent('skyy:motion', { detail: { paused: paused } }));
       stage.dataset.motionPaused = String(paused || lightweight());
+      stage.dataset.motion = paused ? 'paused' : 'active';
     });
   }
+  document.addEventListener('visibilitychange', function () {
+    stage.dataset.visibility = document.hidden ? 'document-hidden' : dialog.open ? 'visible' : stage.dataset.visibility;
+  });
   window.addEventListener('pagehide', function () {
     clearTimeout(timer);
     clearTimeout(closeTimer);

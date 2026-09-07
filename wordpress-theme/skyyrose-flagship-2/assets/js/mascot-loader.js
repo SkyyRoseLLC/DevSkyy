@@ -1,4 +1,4 @@
-/** Native invitation; deferred Home entrance and invitation-owned guide loading. */
+/** Native invitation; character-intent Home entrance and invitation-owned guide loading. */
 (function () {
   'use strict';
   var config = window.SKYY_LOADER_CONFIG || {};
@@ -69,7 +69,7 @@
   document.addEventListener('skyy:prepare', loadThree);
   if (home) {
     // Mount the lightweight canonical portrait promptly. The heavy renderer
-    // waits for the actual hero image, page load and a genuine idle slot.
+    // waits for the actual hero image, page load and character intent.
     loadGuide().catch(function () {});
     var heroImage = home.closest('[data-recovery-hero]')?.querySelector('picture img, img');
     var poster = heroImage?.decode ? heroImage.decode().catch(function () {}) : Promise.resolve();
@@ -79,13 +79,30 @@
         : new Promise(function (resolve) {
             window.addEventListener('load', resolve, { once: true });
           });
+    var heroIntent = false;
+    var heroReady = false;
+    var heroPrepared = false;
+    function prepareInvitedHero() {
+      if (!heroIntent || !heroReady || heroPrepared) return;
+      heroPrepared = true;
+      window.skyyRoseConcierge?.prepareHome();
+    }
+    function intendHero() {
+      heroIntent = true;
+      prepareInvitedHero();
+    }
+    // Keep the same-model portrait present immediately. Heavy modules, Draco
+    // and the model wait for interest in the character, never load/idle alone.
+    var character = document.getElementById('skyyrose-mascot-trigger');
+    character?.addEventListener('pointerenter', intendHero, { once: true });
+    character?.addEventListener('pointerdown', intendHero, { once: true });
+    home.addEventListener('focusin', function (event) {
+      if (event.target?.id === 'skyy-hero-chat') intendHero();
+    });
     Promise.all([loadGuide(), poster, loaded])
       .then(function () {
-        var prepare = function () {
-          window.skyyRoseConcierge?.prepareHome();
-        };
-        if (window.requestIdleCallback) window.requestIdleCallback(prepare, { timeout: 2000 });
-        else setTimeout(prepare, 0);
+        heroReady = true;
+        prepareInvitedHero();
       })
       .catch(function () {});
   }

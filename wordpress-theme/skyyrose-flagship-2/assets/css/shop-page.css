@@ -37,7 +37,7 @@
 .woocommerce .sr2-shop-archive ul.products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sr2-space-8) var(--sr2-space-4); padding: 0; margin: 0; width: 100%; }
 .woocommerce .sr2-shop-archive ul.products::before,
 .woocommerce .sr2-shop-archive ul.products::after { display: none; }
-.woocommerce .sr2-shop-archive ul.products li.product { float: none; clear: none; width: 100%; min-width: 0; margin: 0; padding: 0; }
+.woocommerce .sr2-shop-archive ul.products li.product { position: relative; float: none; clear: none; width: 100%; min-width: 0; margin: 0; padding: 0; }
 .sr2-shop-archive .sr2-c-editorial-card { height: 100%; }
 .sr2-shop-archive .sr2-c-editorial-card__body { gap: var(--sr2-space-2); padding-block: var(--sr2-space-3); }
 .sr2-shop-archive .sr2-c-editorial-card__commerce { padding-block: 0; }

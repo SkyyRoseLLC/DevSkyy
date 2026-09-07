@@ -3,6 +3,7 @@
   aspect-ratio: var(--scene-aspect, 1672 / 941);
   background: #080b0c;
 }
+.sr2-hero-commerce__frame > [data-scene-poster]:not([src]) { opacity: 0; }
 .sr2-hero-commerce__frame > video[data-collection-scene-motion] {
   position: absolute;
   inset: 0;

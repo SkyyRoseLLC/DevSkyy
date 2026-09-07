@@ -10,6 +10,56 @@
   var connection = navigator.connection;
   var renderer, scene, camera, mixer, model, modules, controller, draco;
   var phase = 'dormant';
+  var clock = function () { return window.performance ? window.performance.now() : Date.now(); };
+  var profile = { startedAt: null, firstStableFrameMs: null, modelBytes: 0, frames: [], intervals: [], stages: [] };
+  var phaseStarted = 0;
+  function markPhase(next) {
+    var now = clock();
+    if (phaseStarted) profile.stages.push({ name: phase, startedAt: phaseStarted, duration: now - phaseStarted });
+    phase = next;
+    phaseStarted = now;
+  }
+  function yieldMainThread() {
+    return window.scheduler && window.scheduler.yield
+      ? window.scheduler.yield()
+      : new Promise(function (resolve) { setTimeout(resolve, 0); });
+  }
+  async function prepareShaders(targetRenderer, targetScene, targetCamera, cancelled, yieldTask) {
+    if (cancelled()) return false;
+    // r170 compileAsync leaves an uncancellable material poll after disposal.
+    // Start compilation synchronously, then yield through our owned lifecycle.
+    targetRenderer.compile(targetScene, targetCamera);
+    await yieldTask();
+    return !cancelled();
+  }
+  // Preserve Three r170's exact skinned box/sphere vertex order and math,
+  // but avoid one synchronous million-vertex task before the first frame.
+  async function prepareBounds(THREE, root, cancelled, yieldTask, sphere) {
+    var field = sphere ? 'boundingSphere' : 'boundingBox';
+    var meshes = [];
+    root.updateMatrixWorld(true);
+    root.traverse(function (node) {
+      if (node.isSkinnedMesh && node[field] === null) meshes.push(node);
+    });
+    for (var mesh of meshes) {
+      var bounds = sphere ? new THREE.Sphere() : new THREE.Box3();
+      var point = new THREE.Vector3();
+      var count = mesh.geometry.getAttribute('position').count;
+      for (var start = 0; start < count; start += 8192) {
+        if (cancelled()) return false;
+        var end = Math.min(start + 8192, count);
+        for (var index = start; index < end; index++) {
+          mesh.getVertexPosition(index, point);
+          bounds.expandByPoint(point);
+        }
+        if (end < count) await yieldTask();
+      }
+      mesh[field] = bounds;
+    }
+    return !cancelled();
+  }
+  var firstReveal = true;
+  var revealAt = 0;
   var failureReason = null;
   var actions = {};
   var currentAction;
@@ -217,10 +267,42 @@
     lastFrame = 0;
   }
   function renderFrame() {
+    var began = clock();
     renderer.render(scene, camera);
+    if (profile.firstRenderCpuMs === undefined) profile.firstRenderCpuMs = clock() - began;
     frameCount++;
+    if (profile.frames.length < 120) profile.frames.push(clock() - began);
+    if (profile.firstStableFrameMs === null) profile.firstStableFrameMs = clock() - profile.startedAt;
+  }
+  function profileModel() {
+    var textures = new Set(), materials = new Set(), bones = new Set(), geometries = new Set();
+    var geometryBytes = 0, textureBytes = 0;
+    model.traverse(function (node) {
+      if (node.isBone) bones.add(node);
+      if (node.geometry && !geometries.has(node.geometry)) {
+        geometries.add(node.geometry);
+        Object.values(node.geometry.attributes).forEach(function (a) { geometryBytes += a.array.byteLength; });
+        if (node.geometry.index) geometryBytes += node.geometry.index.array.byteLength;
+      }
+      (Array.isArray(node.material) ? node.material : [node.material]).filter(Boolean).forEach(function (material) {
+        materials.add(material);
+        Object.values(material).forEach(function (value) {
+          if (value && value.isTexture && !textures.has(value)) {
+            textures.add(value);
+            var image = value.image || {};
+            textureBytes += (image.width || 0) * (image.height || 0) * 4 * (value.generateMipmaps ? 4 / 3 : 1);
+          }
+        });
+      });
+    });
+    var context = renderer.getContext(), debug = context.getExtension('WEBGL_debug_renderer_info');
+    profile.gpuRenderer = debug ? context.getParameter(debug.UNMASKED_RENDERER_WEBGL) : context.getParameter(context.RENDERER);
+    profile.materials = materials.size; profile.bones = bones.size; profile.textures = textures.size;
+    profile.geometryDecodedBytes = geometryBytes; profile.textureDecodedBytesEstimate = Math.ceil(textureBytes);
+    profile.memoryBoundary = 'Typed geometry arrays plus RGBA8 texture and mip estimate; excludes driver, decoder and JavaScript heap.';
   }
   function showFallback() {
+    firstReveal = true;
     canvas.hidden = true;
     canvas.style.display = 'none';
     if (sprite) sprite.style.display = 'block';
@@ -292,7 +374,17 @@
     }
     canvas.hidden = false;
     canvas.style.display = 'block';
-    if (sprite) sprite.style.display = 'none';
+    // Render the settled poster pose before exposing the canvas, never a bind/T pose.
+    if (firstReveal) {
+      mixer.stopAllAction(); currentAction = null;
+      play('skyy_idle');
+      mixer.setTime(0); model.rotation.y = facing;
+      stage.style.setProperty('--skyy-entry-progress', '1');
+      stage.style.setProperty('--skyy-entry-shift', '0px');
+      renderFrame();
+      firstReveal = false; revealAt = clock() + 300;
+    } else renderFrame();
+    if (sprite) sprite.style.display = 'block';
     stage.dataset.renderer = '3d';
     document.dispatchEvent(new CustomEvent('skyy:3d-visible'));
     if (paused) {
@@ -306,15 +398,29 @@
         renderFrame();
         return;
       }
-      if (time - lastFrame < 1000 / 30) return;
+      var targetFps = currentAction && /skyy_idle/i.test(currentAction.getClip().name) ? 15 : 30;
+      // RAF timestamps are quantized:33.3ms must not be rejected as below33.333ms.
+      if (time - lastFrame + 0.5 < 1000 / targetFps) return;
+      if (revealAt && clock() < revealAt) { lastFrame = time; return; }
+      if (revealAt) { revealAt = 0; play('skyy_walk', 1600); }
+      if (profile.intervals.length < 120) profile.intervals.push(time - lastFrame);
       var delta = Math.min((time - lastFrame) / 1000, 0.5);
       mixer.update(delta);
       actionElapsed += delta;
       var locomotion = currentAction && /skyy_(walk|exit)/i.test(currentAction.getClip().name);
       var progress = locomotion ? Math.min(1, actionElapsed / 1.6) : 1;
       stage.style.setProperty('--skyy-entry-progress', progress.toFixed(4));
-      model.rotation.y = facing + (locomotion ? (Math.PI / 2) * Math.min(1, (1 - progress) / 0.25) : 0);
-      if (actionDuration && actionElapsed >= actionDuration) play('skyy_idle');
+      stage.style.setProperty('--skyy-entry-shift', (locomotion ? -20 * Math.sin(progress * Math.PI) : 0).toFixed(2) + 'px');
+      // Begin and end on the same frontal anchor; the existing rig takes a short
+      // two-step arc, then turns back without a discontinuous first-frame jump.
+      model.rotation.y = facing + (locomotion ? Math.sin(progress * Math.PI) * 0.45 : 0);
+      if (locomotion && progress > 0.75) stage.dataset.actionPhase = 'turning';
+      else stage.dataset.actionPhase = locomotion ? 'walking-in' : 'idle';
+      if (actionDuration && actionElapsed >= actionDuration) {
+        play('skyy_idle');
+        stage.dataset.actionPhase = 'idle';
+        document.dispatchEvent(new CustomEvent('skyy:action-complete'));
+      }
       lastFrame = time;
       renderFrame();
     });
@@ -331,7 +437,7 @@
       if (previous) next.fadeIn(0.25);
       else {
         mixer.update(0);
-        model.rotation.y = facing + (/skyy_(walk|exit)/.test(name) ? Math.PI / 2 : 0);
+        model.rotation.y = facing;
         stage.style.setProperty('--skyy-entry-progress', /skyy_(walk|exit)/.test(name) ? '0' : '1');
       }
       currentAction = next;
@@ -343,17 +449,18 @@
   async function boot() {
     if (started || failed || disposed || config.loadFailed || lightMode()) return;
     started = true;
+    profile.startedAt = clock();
     stage.dataset.renderer = 'loading';
     try {
-      phase = 'webgl-context';
+      markPhase('webgl-context');
       var context = canvas.getContext('webgl2', { alpha: true, antialias: true, powerPreference: 'low-power' });
       if (!context) throw new Error('WebGL unavailable');
-      phase = 'local-modules';
+      markPhase('local-modules');
       modules = await loadThree();
       if (disposed || failed) return;
       var THREE = modules[0];
       var modelUrl = local(config.modelUrl);
-      phase = 'model-fetch';
+      markPhase('model-fetch');
       controller = new AbortController();
       var fetchTimer = setTimeout(function () {
         controller.abort();
@@ -367,6 +474,7 @@
         });
         if (!response.ok || new URL(response.url).origin !== location.origin) throw new Error('Skyy model unavailable');
         bytes = await response.arrayBuffer();
+        profile.modelBytes = bytes.byteLength;
       } finally {
         clearTimeout(fetchTimer);
       }
@@ -378,17 +486,18 @@
         return /^(blob:|data:)/.test(url) ? url : local(url);
       });
       var loader = new modules[1].GLTFLoader(manager);
-      phase = 'draco-decoder';
+      markPhase('draco-decoder');
       draco = new modules[2].DRACOLoader(manager);
       draco.setDecoderPath(local(config.decoderPath));
       draco.setWorkerLimit(1);
       loader.setDRACOLoader(draco);
-      phase = 'model-decode';
+      markPhase('model-decode');
       var parsing = loader.parseAsync(bytes, new URL('.', modelUrl).href).then(function (result) {
         if (failed || disposed) disposeModel(result.scene);
         return result;
       });
       var gltf = await limited(parsing, 15000);
+      bytes = null; // The parsed scene owns decoded buffers; release our fetch reference.
       if (draco) {
         draco.dispose();
         draco = null;
@@ -398,7 +507,7 @@
         return;
       }
       model = gltf.scene;
-      phase = 'canonical-rig';
+      markPhase('canonical-rig');
       var skinned = false;
       model.traverse(function (node) {
         if (node.isSkinnedMesh && node.skeleton && node.skeleton.bones.length) {
@@ -416,6 +525,8 @@
         })
       )
         throw new Error('Skyy canonical rig/action set incomplete');
+      markPhase('model-bounds');
+      if (!(await prepareBounds(THREE, model, function () { return disposed || failed; }, yieldMainThread))) return;
       var size = new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3());
       if (!Number.isFinite(size.y) || size.y <= 0) throw new Error('Skyy model bounds invalid');
       model.scale.setScalar(1.8 / size.y);
@@ -424,7 +535,7 @@
       model.position.x -= center.x;
       model.position.z -= center.z;
       model.position.y -= box.min.y;
-      phase = 'renderer-initialization';
+      markPhase('renderer-initialization');
       renderer = new THREE.WebGLRenderer({
         canvas: canvas,
         context: context,
@@ -447,17 +558,43 @@
       fill.position.set(-2, 2, -1);
       scene.add(fill);
       scene.add(model);
+      markPhase('animation-setup');
       mixer = new THREE.AnimationMixer(model);
       facing = model.rotation.y;
       rigMotion = deriveRigMotion(THREE, clips, model);
       rigMotion.clips.forEach(function (clip) {
         actions[clip.name.toLowerCase()] = mixer.clipAction(clip);
       });
+      markPhase('resource-profile');
+      profileModel();
+      // Start shader preparation before cooperative sphere work, giving the
+      // driver time to compile without an uncancellable asynchronous poll.
+      // Three's first render also scans every skinned vertex for its sort sphere.
+      // Cache the exact time-zero idle-pose sphere cooperatively before revealing.
+      actions.skyy_idle.play();
+      mixer.setTime(0);
+      markPhase('shader-prepare');
+      if (!(await prepareShaders(renderer, scene, camera, function () { return disposed || failed; }, yieldMainThread))) return;
+      markPhase('idle-sphere');
+      if (!(await prepareBounds(THREE, model, function () { return disposed || failed; }, yieldMainThread, true))) return;
+      markPhase('texture-upload');
+      var uploadTextures = new Set();
+      model.traverse(function (node) {
+        (Array.isArray(node.material) ? node.material : [node.material]).filter(Boolean).forEach(function (material) {
+          Object.values(material).forEach(function (value) { if (value && value.isTexture) uploadTextures.add(value); });
+        });
+      });
+      for (var texture of uploadTextures) {
+        if (disposed || failed) return;
+        renderer.initTexture(texture);
+        await yieldMainThread();
+      }
+      if (disposed || failed) return;
       ready = true;
-      phase = 'ready';
+      markPhase('ready');
       document.dispatchEvent(new CustomEvent('skyy:3d-ready', { detail: { clips: Object.keys(actions) } }));
       // The source clips remain intact; held poses receive the documented runtime gait.
-      play('skyy_walk', 1600);
+      play('skyy_idle');
       sync();
     } catch (_) {
       if (!disposed) fallback();
@@ -548,6 +685,21 @@
     },
     getFailureReason: function () {
       return failureReason;
+    },
+    resetFrameProfile: function () { profile.frames = []; profile.intervals = []; },
+    getProfile: function () {
+      return Object.assign({}, profile, { frames: profile.frames.slice(), intervals: profile.intervals.slice(), stages: profile.stages.slice(),
+        triangles: renderer ? renderer.info.render.triangles : null,
+        drawCalls: renderer ? renderer.info.render.calls : null,
+        runtimeGeometries: renderer ? renderer.info.memory.geometries : null,
+        runtimeTextures: renderer ? renderer.info.memory.textures : null });
+    },
+    capturePoster: function () {
+      if (!ready || !renderer) return null;
+      stop(); mixer.stopAllAction(); currentAction = null;
+      play('skyy_idle'); mixer.setTime(0); model.rotation.y = facing;
+      renderer.render(scene, camera);
+      return canvas.toDataURL('image/png');
     },
     getRenderState: function () {
       return { phase: phase, frames: frameCount, running: running, visible: visible, paused: paused };

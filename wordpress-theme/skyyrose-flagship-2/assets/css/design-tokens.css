@@ -8,7 +8,8 @@
 @font-face { font-family: "Hanken Grotesk"; src: url("../sot/fonts/hanken-grotesk-latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
 @font-face { font-family: Anton; src: url("../sot/fonts/anton-latin.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
 @font-face { font-family: Cinzel; src: url("../sot/fonts/cinzel-latin.woff2") format("woff2"); font-style: normal; font-weight: 400 900; font-display: swap; }
-@font-face { font-family: Inter; src: url("../sot/fonts/inter-latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; }
+/* Preserve the original secondary glyphs absent from Hanken without loading a full duplicate Latin face. */
+@font-face { font-family: Inter; src: url("../derived/fonts/inter-fallback-latin.woff2") format("woff2"); font-style: normal; font-weight: 100 900; font-display: swap; unicode-range: U+0000, U+02BB-02BC, U+2002, U+2009, U+200B, U+2032-2033, U+2191, U+2193, U+FEFF; }
 
 /*
  * Collection lockups are artwork, not a page-font API. The corresponding
@@ -121,14 +122,27 @@
 	--sr2-safe-top: env(safe-area-inset-top, 0px);
 	--sr2-safe-bottom: env(safe-area-inset-bottom, 0px);
 	--sr2-motion-micro: var(--sr2-fast);
+	--sr2-motion-commerce: 280ms;
 	--sr2-motion-interface: var(--sr2-normal);
 	--sr2-motion-editorial: var(--sr2-slow);
 	--sr2-motion-scene: var(--sr2-slow);
+	--sr2-motion-cinematic: var(--sr2-motion-scene);
+	--sr2-motion-character: 700ms;
+	--sr2-motion-exit: var(--sr2-fast);
+	--sr2-motion-reveal: var(--sr2-motion-editorial);
+	--sr2-ease-micro: cubic-bezier(.4, 0, .2, 1);
+	--sr2-ease-spring: cubic-bezier(.2, .8, .2, 1);
 	--sr2-ease-enter: var(--sr2-ease);
 	--sr2-ease-exit: cubic-bezier(.4, 0, 1, 1);
 	--sr2-ease-expressive: var(--sr2-ease-dramatic);
 	--sr2-motion-distance: .75rem;
 	--sr2-motion-stagger: 40ms;
+	/* Materials map to existing house surfaces; glass is reserved for overlays. */
+	--sr2-material-paper: var(--sr2-surface-raised);
+	--sr2-material-ink: var(--sr2-void);
+	--sr2-material-glass: rgba(12, 12, 12, .96);
+	--sr2-material-metal: var(--sr2-accent);
+	--sr2-material-atmosphere: rgba(0, 0, 0, .24);
 	--sr2-layer-content: 0;
 	--sr2-layer-floating: 10;
 	--sr2-layer-commerce: 40;
@@ -180,6 +194,8 @@
 		--sr2-fast: 1ms;
 		--sr2-normal: 1ms;
 		--sr2-slow: 1ms;
+		--sr2-motion-commerce: 1ms;
+		--sr2-motion-character: 1ms;
 		--sr2-motion-distance: 0px;
 		--sr2-motion-stagger: 0ms;
 	}

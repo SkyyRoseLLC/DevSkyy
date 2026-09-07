@@ -53,6 +53,14 @@ function skyyrose2_performance_dequeue_unused_assets() {
 		wp_dequeue_style( 'dashicons' );
 	}
 
+	// Archive grid geometry is owned by shop-page.css. Retain Woo's general
+	// controls, notices and Quick View styling; extensions can restore its layout.
+	$is_archive = function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() );
+	if ( $is_archive && ! apply_filters( 'skyyrose2_archive_native_woo_layout', false ) ) {
+		wp_dequeue_style( 'woocommerce-layout' );
+		wp_dequeue_style( 'woocommerce-smallscreen' );
+	}
+
 	if ( ! skyyrose2_performance_is_governed_route() ) {
 		return;
 	}
@@ -408,7 +416,7 @@ add_action( 'wp_footer', 'skyyrose2_performance_defer_scripts', 1 );
  * entirely in WooCommerce. Unknown executable template syntax fails closed.
  */
 function skyyrose2_performance_csp_variation_templates() {
-	if ( ! function_exists( 'is_product' ) || ! is_product() ) {
+	if ( ! function_exists( 'is_product' ) || ( ! is_product() && ! wp_script_is( 'wc-add-to-cart-variation', 'enqueued' ) ) ) {
 		return;
 	}
 	$script = <<<'SKYYROSE_VARIATION_TEMPLATES'
