@@ -325,7 +325,8 @@ check_version_triple() {
         fi
     done
     v_style=$(awk '/^Version:/ {print $2; exit}' "$THEME_DIR/style.css" 2>/dev/null || true)
-    v_func=$(sed -nE "s/^define\( 'SKYYROSE_VERSION', '([^']+)' \);.*/\1/p" "$THEME_DIR/functions.php" 2>/dev/null | head -1 || true)
+    # V1 defines SKYYROSE_VERSION; the V2 theme (skyyrose-flagship-2) defines SKYYROSE2_VERSION.
+    v_func=$(sed -nE "s/^define\( 'SKYYROSE2?_VERSION', '([^']+)' \);.*/\1/p" "$THEME_DIR/functions.php" 2>/dev/null | head -1 || true)
     v_readme=$(awk '/^Stable tag:/ {print $3; exit}' "$THEME_DIR/readme.txt" 2>/dev/null || true)
     if [[ -z "$v_style" || -z "$v_func" || -z "$v_readme" ]]; then
         log_error "Version triple unreadable (style.css='${v_style:-?}' functions.php='${v_func:-?}' readme.txt='${v_readme:-?}') -- refusing to deploy"
@@ -380,6 +381,21 @@ check_tracked_files() {
 # static minimums, not exact counts).
 check_asset_floor() {
     local emblems fonts glb_state="MISSING"
+    # The V2 theme keeps a different rider set: self-hosted fonts under
+    # assets/sot/fonts, hero films under assets/video/collection-heroes, the
+    # mascot GLB under assets/models, and no emblem webps.
+    if grep -qE "^define\( 'SKYYROSE2_VERSION'" "$THEME_DIR/functions.php" 2>/dev/null; then
+        local films
+        fonts=$({ find "$THEME_DIR/assets/sot/fonts" -maxdepth 1 -name '*.woff2' 2>/dev/null || true; } | wc -l | tr -d ' ')
+        films=$({ find "$THEME_DIR/assets/video/collection-heroes/approved" -path '*/web/*' -name '*.webm' 2>/dev/null || true; } | wc -l | tr -d ' ')
+        if compgen -G "$THEME_DIR/assets/models/*.glb" >/dev/null; then glb_state="present"; fi
+        if (( fonts < 9 )) || (( films < 4 )) || [[ "$glb_state" == "MISSING" ]]; then
+            log_error "Critical-asset floor FAILED (V2): woff2=$fonts (need >=9), hero films=$films (need >=4), mascot GLB $glb_state"
+            exit 1
+        fi
+        log_success "Critical-asset floor (V2): $fonts woff2, $films hero films, mascot GLB $glb_state"
+        return 0
+    fi
     emblems=$({ find "$THEME_DIR/assets/images/emblems" -maxdepth 1 -name '*.webp' 2>/dev/null || true; } | wc -l | tr -d ' ')
     fonts=$({ find "$THEME_DIR/assets/fonts" -maxdepth 1 -name '*.woff2' 2>/dev/null || true; } | wc -l | tr -d ' ')
     if [[ -f "$THEME_DIR/assets/models/skyy.glb" ]]; then glb_state="present"; fi
@@ -489,6 +505,14 @@ preflight() {
 skyyrose_data_extra_excludes() {
     local f rel
     [[ -d "$THEME_DIR/data" ]] || return 0
+    # The V2 theme's data/ holds only runtime JSON and editor HTML that PHP
+    # reads (card fronts, scene motion, presentation registry, ...); its
+    # release boundary is enforced by tools/v2-source-certification. The V1
+    # allowlist below would strip all of it and the hot-swap would delete the
+    # files from the live theme (bug-325), so V2 ships data/ as-is.
+    if grep -qE "^define\( 'SKYYROSE2_VERSION'" "$THEME_DIR/functions.php" 2>/dev/null; then
+        return 0
+    fi
     while IFS= read -r f; do
         rel="${f#"$THEME_DIR"/}"
         case "$rel" in
