@@ -21,7 +21,7 @@ Branch `codex/v2-home-critical-rendering-20260907` (worktree
 - [x] Rotating mark container geometry in the contract
 - [x] Blocking-chain map (registered deps vs delivered order)
 - [x] AFTER run local (Chromium 5 widths ×3, WebKit 390/1440 ×2)
-- [ ] no-JS; reduced-motion; Save-Data; visibility; pause/play; commerce
+- [x] no-JS; reduced-motion; Save-Data; visibility; pause/play; commerce
       regression (Quick View → variation → Add to Bag; search; bag; menu) —
       `tools/v2-runtime/verify-home-policies.mjs`
 - [x] Boost regeneration test in isolation (real generator) + coverage
@@ -29,16 +29,24 @@ Branch `codex/v2-home-critical-rendering-20260907` (worktree
 - [x] Fonts residual-shift audit
 - [ ] STOP-AND-SHOW staging deploy → derived-output verification → staging
       AFTER + film delivery samples (≥5 cold)
-- [ ] Release checklist update (source → filesystem → critical CSS → bundle →
+- [x] Release checklist update (source → filesystem → critical CSS → bundle →
       browser parity)
-- [ ] Independent red-team visual verdict (fashion-visual-qa-red-team)
-- [ ] Final report
+- [x] Independent red-team visual verdict (fashion-visual-qa-red-team)
+- [x] Final report
 
 - [x] Font preloads for the four first-view faces (front page only), parity
       gate in `verify-home-derived-output.mjs`
 - [x] `scripts/deploy-theme.sh`: archive root = basename of THEME_DIR (was
       hardcoded `skyyrose-flagship`; a V2 deploy would have stranded the live
       theme directory) — fixed, syntax-checked, not yet exercised
-- [ ] Register new theme files in tools/v2-source-certification registries;
+- [x] Register new theme files in tools/v2-source-certification registries;
       `npm run verify` green; phpcs on changed PHP
-- [ ] Commit implementation on the branch
+- [x] Commit implementation on the branch
+- [x] Policies + commerce regression: 28/28 Chromium, 28/28 WebKit (engine
+      autoplay denial path exercised; BEFORE denies identically in plain WebKit)
+- [x] `npm run verify` with the pinned toolchain: every gate green except the
+      pre-existing `check:commerce-scenes` runtime-PHP baseline (13 unrelated
+      files already drifted at the deployed baseline) and `test-pdp-gallery.php`
+      needing `V2_WP_FIXTURE` (passes against the local WP 7.1 / WC 11.1.0 root)
+- [x] Committed 5f807df3b on `codex/v2-home-critical-rendering-20260907`
+- [x] Cold film-delivery samples on staging BEFORE (done: 12 samples, request 1.8–2.4 s after nav, TTFB ≈28 ms, transfer ≈85 ms, all edge HIT)
