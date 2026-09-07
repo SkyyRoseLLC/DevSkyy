@@ -215,6 +215,16 @@
       "reason": "Deterministic minified page stylesheet",
       "release": true
     },
+    "assets/css/content-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
+      "release": true
+    },
+    "assets/css/content-page.min.css": {
+      "category": "GENERATED RUNTIME",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
+      "release": true
+    },
     "assets/css/controls.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3A global shell or canonical control styles",
@@ -223,6 +233,16 @@
     "assets/css/controls.min.css": {
       "category": "GENERATED RUNTIME",
       "reason": "Phase3A global shell or canonical control styles",
+      "release": true
+    },
+    "assets/css/critical/home.contract.json": {
+      "category": "BUILD TOOLING",
+      "reason": "Critical CSS extraction contract consumed by scripts/build-critical-css.mjs; not a PHP runtime reader",
+      "release": false
+    },
+    "assets/css/critical/home.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
     "assets/css/design-tokens.css": {
@@ -323,6 +343,16 @@
     "assets/css/theme.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/visual-recovery.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/css/visual-recovery.min.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
       "release": true
     },
     "assets/derived/card-fronts/br-001-320w.webp": {
@@ -880,6 +910,31 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/js/lib/three-r170/BufferGeometryUtils.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/DRACOLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/GLTFLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/LICENSE": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/three.module.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
     "assets/js/mascot-loader.js": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -920,10 +975,30 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/js/visual-recovery.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/visual-recovery.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
     "assets/models/skyy-mascot.glb": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "release": true,
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "release": true,
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
     },
     "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png": {
       "category": "RUNTIME MEDIA",
@@ -2260,6 +2335,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "data/approved-scroll-world-scenes.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
     "data/brand-asset-transparency.json": {
       "category": "QA / REVIEW EVIDENCE",
       "reason": "Authoring/verification manifest; no PHP runtime reader",
@@ -2371,6 +2451,11 @@
       "release": true
     },
     "inc/approved-card-fronts.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/critical-rendering.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
@@ -2495,6 +2580,11 @@
       "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
+    "scripts/build-critical-css.mjs": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
     "scripts/build-founder-commerce-review-batch.cjs": {
       "category": "CREATIVE AUTHORING TOOLING",
       "reason": "Internal generation/review workflow; not canonical asset build",
@@ -2593,6 +2683,11 @@
     "scripts/run-native-scene-image-workflow.py": {
       "category": "CREATIVE AUTHORING TOOLING",
       "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/test-critical-rendering.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
       "release": false
     },
     "scripts/test-marketplace-registry.php": {
@@ -2735,6 +2830,11 @@
       "reason": "Phase3B reviewed page implementation",
       "release": true
     },
+    "template-parts/collections/scroll-world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
     "template-parts/collections/story.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
@@ -2850,6 +2950,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "woocommerce/notices/error.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Native notice8.6 list markup with preserved escaping/data and valid assertive list semantics.",
+      "release": true
+    },
     "woocommerce/single-product.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2858,86 +2963,6 @@
     "woocommerce/single-product/product-image.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
-      "release": true
-    },
-    "data/approved-scroll-world-scenes.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/css/visual-recovery.min.css": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/css/visual-recovery.css": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/visual-recovery.min.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/visual-recovery.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/LICENSE": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/GLTFLoader.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/BufferGeometryUtils.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/three.module.min.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/DRACOLoader.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "template-parts/collections/scroll-world.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
-      "category": "RUNTIME MEDIA",
-      "release": true,
-      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
-    },
-    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
-      "category": "RUNTIME MEDIA",
-      "release": true,
-      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster"
-    },
-    "assets/css/content-page.css": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
-      "release": true
-    },
-    "assets/css/content-page.min.css": {
-      "category": "GENERATED RUNTIME",
-      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
-      "release": true
-    },
-    "woocommerce/notices/error.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Native notice8.6 list markup with preserved escaping/data and valid assertive list semantics.",
       "release": true
     }
   },

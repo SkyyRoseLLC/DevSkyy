@@ -2,6 +2,23 @@
 
 All notable changes to SkyyRose Flagship 2 are documented here.
 
+## Unreleased — Home critical rendering repair — 2026-09-07
+
+- Home inlines a source-derived structural critical contract
+  (`assets/css/critical/home.min.css`, 15.8 KB, budget 16 KB) at `wp_head` so
+  the header, hero stage, first-view typography, primary controls, concierge
+  stage and rotating-mark container have their geometry before any external
+  stylesheet arrives; independent of optimizer-generated critical CSS.
+- Home prints the unchanged hero controller inline directly after the hero,
+  ignored by script deferral, and drops its footer copy on the front page only;
+  collection routes keep the enqueued controller.
+- Home preloads the four first-view faces (Archivo, Hanken Grotesk, Anton,
+  Cinzel) with hrefs equal to the `@font-face` URLs.
+- New gates: `npm run check:critical`, `scripts/test-critical-rendering.php`,
+  `tools/v2-runtime/verify-home-derived-output.mjs`,
+  `tools/v2-runtime/measure-home-critical.mjs`,
+  `tools/v2-runtime/verify-home-policies.mjs`.
+
 ## Unreleased local V2 completion candidate — 2026-09-06
 
 - Preserved approved hero, nine-scene, paid-card and character source assets.

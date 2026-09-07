@@ -710,10 +710,14 @@ try_rsync() {
     swap_id="$(date +%s)-$$"
     # Swap + prune old backups (keep most recent 2) in one remote round-trip.
     # Retention is load-bearing for auto_rollback: zero backups → no anchor.
-    local parent_dir theme_name
+    local parent_dir theme_name source_name
     parent_dir="$(dirname "$WP_THEME_PATH")"
     theme_name="$(basename "$WP_THEME_PATH")"
-    if ! "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "set -e; cd /tmp && tar ${zstd_flag} -xf ${remote_tar_name} && (if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${WP_THEME_PATH}.old.${swap_id}'; fi) && mv skyyrose-flagship '${WP_THEME_PATH}' && rm -f ${remote_tar_name} && (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true)"; then
+    # The archive root is the SOURCE directory's basename (THEME_DIR_OVERRIDE may
+    # point at skyyrose-flagship-2). It must exist on the remote before the live
+    # directory moves, or a name mismatch would strand the site without a theme.
+    source_name="$(basename "$THEME_DIR")"
+    if ! "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "set -e; cd /tmp && tar ${zstd_flag} -xf ${remote_tar_name} && test -d '/tmp/${source_name}' && (if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${WP_THEME_PATH}.old.${swap_id}'; fi) && mv '/tmp/${source_name}' '${WP_THEME_PATH}' && rm -f ${remote_tar_name} && (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true)"; then
         log_error "Remote extract/swap FAILED — live theme was not swapped"
         rm -f "$tmpzip"
         phase_end swap

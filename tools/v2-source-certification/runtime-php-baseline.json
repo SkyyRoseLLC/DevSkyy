@@ -2,11 +2,12 @@
   "404.php": "0382056559cca59770f6a97409ab744e3c3d16a23d7483c0b4b2e6ca157112cd",
   "archive.php": "ae5e63ca88b537a35cdcee3e1c2d4cbb20ec65531416688ab90f2fe236439d25",
   "footer.php": "0c5d72a8fb11b72f428f9d475e9cbf204b59cac249386490c16ae7a14f37e297",
-  "front-page.php": "252232c6f260b04e71c96be68a06fb3a2e24ac563827d378efc6c71a06ce508f",
-  "functions.php": "05ad1282c5ccd6502e1a95b78dfa43666d3a232aa4c9039f65732427f3f4a486",
+  "front-page.php": "2b821a4954b116887846fdbfca0bfabcf141915b190de809b3a77bb079b07c28",
+  "functions.php": "a0e40913209847b25902921d86d881ad6d27b991f7f8536623886005e33d1c30",
   "header.php": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
   "home.php": "6eaa11c38f906cb9d39b70a6a955cac168ae62c5fc8c2d0661d0a7bfcd55f5bf",
   "inc/approved-card-fronts.php": "ba65bf97afe13cca54d4e1214a0d43e1fbc12a4c257cded31414720a3ccfe4bf",
+  "inc/critical-rendering.php": "37f4729df8a296efd314d9d7fd8e778327c6ee99a4d4d88d2a45632651792c99",
   "inc/demo-import.php": "5eeafe3e9fa8477a2cae6735901faa2c5d5229259ff7685e7c9a4a97dd530b6b",
   "inc/global-shell.php": "136709493b2e4d305582f6d4bab3625b28d2bff59371c8f73270798db1e337e7",
   "inc/hero-commerce-scenes.php": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
@@ -33,6 +34,7 @@
   "template-parts/collections/arrival.php": "215943ab935a0e055bd185a65cca50ca08bebf55a4fc36553c310e1033e53342",
   "template-parts/collections/next-world.php": "7800010607e1152361ce632bb8e9632ffae2f5ddc220fb523c0a91d499c92c42",
   "template-parts/collections/product-edit.php": "2184e694d79a4e37ff3748bd51e9d42e26dd654335fd8e721c34ba5df3826edd",
+  "template-parts/collections/scroll-world.php": "fd9136042ef5a4f0da3b188b3f5c57f800e55ebd4a5c0c5073138aee2f3f253a",
   "template-parts/collections/story.php": "bc576dddfb846cfeb510a826f44baeb5b4e9b720984306b2ab1ad895a8faa74e",
   "template-parts/collections/world.php": "c41af02f2534cdd6a6f86352858e7277059ce47b7b7189d48c9799e343574966",
   "template-parts/commerce/hero-composed-scene.php": "24d52797e84649ab94b1c6b27cde07dbea3937faa5ed73947261ac1841a8350b",
@@ -55,8 +57,7 @@
   "woocommerce/checkout/form-checkout.php": "e34d6149c6e3131e4fe22ddcf7b0ae3ef8588cf27f9f7230377fa1e1328c0604",
   "woocommerce/checkout/thankyou.php": "b5f6c00637c13155ef3cd678b19b14018ed4ccd7176164c8bde0604463abbb28",
   "woocommerce/content-product.php": "c80aa8f18bb106f9b3dd3cfb3564333f1b5d308963b82c56d29835f0026dce44",
+  "woocommerce/notices/error.php": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
   "woocommerce/single-product.php": "d14ca8b504d52325cbb5cd403f8166f67ec78525f829c4c82d71537614afe9d4",
-  "woocommerce/single-product/product-image.php": "ce9e7e8f2928b6286b44b161115f70906cad0dd57d1cfee8744b4385aec9e837",
-  "template-parts/collections/scroll-world.php": "fd9136042ef5a4f0da3b188b3f5c57f800e55ebd4a5c0c5073138aee2f3f253a",
-  "woocommerce/notices/error.php": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab"
+  "woocommerce/single-product/product-image.php": "ce9e7e8f2928b6286b44b161115f70906cad0dd57d1cfee8744b4385aec9e837"
 }

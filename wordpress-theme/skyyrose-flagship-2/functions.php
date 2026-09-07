@@ -22,6 +22,7 @@ require_once SKYYROSE2_DIR . '/inc/hero-commerce-scenes.php';
 require_once SKYYROSE2_DIR . '/inc/global-shell.php';
 require_once SKYYROSE2_DIR . '/inc/shop-archive.php';
 require_once SKYYROSE2_DIR . '/inc/quick-view-commerce.php';
+require_once SKYYROSE2_DIR . '/inc/critical-rendering.php';
 
 /**
  * Resolve a theme-bundled, SOT-approved asset.
@@ -392,7 +393,13 @@ function skyyrose2_assets() {
 	wp_enqueue_style( 'skyyrose2-visual-recovery', SKYYROSE2_URI . $recovery_style, array( 'skyyrose2-theme' ), skyyrose2_asset_version( $recovery_style ) );
 	if ( is_front_page() || $is_editorial_collection ) {
 		$recovery_script = '/assets/js/visual-recovery' . $suffix . '.js';
-		wp_enqueue_script( 'skyyrose2-visual-recovery', SKYYROSE2_URI . $recovery_script, array(), skyyrose2_asset_version( $recovery_script ), true );
+		// Home prints this controller inline right after the hero (inc/critical-rendering.php);
+		// registering it keeps dependent handles valid without a second footer copy.
+		if ( skyyrose2_hero_bootstrap_inline() ) {
+			wp_register_script( 'skyyrose2-visual-recovery', false, array(), skyyrose2_asset_version( $recovery_script ), true );
+		} else {
+			wp_enqueue_script( 'skyyrose2-visual-recovery', SKYYROSE2_URI . $recovery_script, array(), skyyrose2_asset_version( $recovery_script ), true );
+		}
 		foreach ( array( 'hero-commerce-scenes', 'collection-scene-motion' ) as $scene_component ) {
 			$scene_asset = '/assets/css/' . $scene_component . $suffix . '.css';
 			wp_enqueue_style( 'skyyrose2-' . $scene_component, SKYYROSE2_URI . $scene_asset, array( 'skyyrose2-visual-recovery' ), skyyrose2_asset_version( $scene_asset ) );

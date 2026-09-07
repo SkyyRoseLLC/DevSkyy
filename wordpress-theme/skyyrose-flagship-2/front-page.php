@@ -45,6 +45,7 @@ get_header();
 			<?php endforeach; ?>
 		</nav>
 	</section>
+	<?php skyyrose2_print_hero_bootstrap(); ?>
 	<section id="sr2-archive-worlds" class="sr2-archive-worlds" aria-labelledby="sr2-archive-worlds-title" tabindex="-1" data-archive-act="2">
 		<header class="sr2-archive-section-head"><p class="sr2-world-index"><?php esc_html_e( 'II / The four worlds', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-worlds-title"><?php esc_html_e( 'Four stories. One house.', 'skyyrose-flagship-2' ); ?></h2></header>
 		<?php get_template_part( 'template-parts/home/living-archive-worlds', null, array( 'collections' => $archive_collections ) ); ?>
