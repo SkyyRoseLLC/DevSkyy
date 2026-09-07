@@ -27,7 +27,7 @@ Branch `codex/v2-home-critical-rendering-20260907` (worktree
 - [x] Boost regeneration test in isolation (real generator) + coverage
       comparison
 - [x] Fonts residual-shift audit
-- [ ] STOP-AND-SHOW staging deploy → derived-output verification → staging
+- [x] STOP-AND-SHOW staging deploy → derived-output verification → staging
       AFTER + film delivery samples (≥5 cold)
 - [x] Release checklist update (source → filesystem → critical CSS → bundle →
       browser parity)
@@ -50,3 +50,13 @@ Branch `codex/v2-home-critical-rendering-20260907` (worktree
       needing `V2_WP_FIXTURE` (passes against the local WP 7.1 / WC 11.1.0 root)
 - [x] Committed 5f807df3b on `codex/v2-home-critical-rendering-20260907`
 - [x] Cold film-delivery samples on staging BEFORE (done: 12 samples, request 1.8–2.4 s after nav, TTFB ≈28 ms, transfer ≈85 ms, all edge HIT)
+- [x] Staging deploy 2026-09-07 14:15Z (founder y): exact staged source 539
+      files (staging manifest + 3 new), hot-swap OK, `verify-home-derived-output`
+      PASS live, plain Home edge cache re-primed with the new head within ~1 min
+- [x] bug-325: V1 data/ allowlist stripped 11 V2 runtime files in the swap;
+      restored within minutes, 539/539 parity; deploy script made V2-aware
+      (b3cc98845)
+- [x] Staging AFTER: measurement ×5 widths, policies Chromium+WebKit, cold film
+      delivery ×12 — done: CLS 0 ×15, policies 27/28 both engines (pre-existing Stripe console noise), film TTFB ≈30 ms / first frame ≈80–100 ms after loadstart
+- [ ] Real Safari eyes-on (open; Playwright WebKit denies unattended autoplay
+      on both builds)

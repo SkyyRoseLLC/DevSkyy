@@ -7,9 +7,13 @@ gate that ran and could fail · `[inferred]` reasoned, not observed.
 
 ## Status
 
-**Repaired locally, verified, committed. Staging deploy not performed (awaiting founder `y`).**
-Home reached the acceptance bar in the local mirror at every width `[repro]`; the same
-gates are scripted to run against staging after the deploy.
+**Deployed to staging 2026-09-07 14:15Z on founder approval; verified live.** Home reached
+the acceptance bar in the local mirror at every width `[repro]` and on staging `[live]`
+(CLS 0.000 at 320/390/414/768/1440, derived-output parity PASS, policies and commerce
+27/28 in Chromium and WebKit with the single failure being pre-existing third-party
+payment-script console noise). Production skyyrose.co untouched. One deploy incident
+(11 runtime data files dropped by the V1 deploy allowlist) was found and repaired within
+minutes; see "Staging After Deploy".
 
 ## Critical CSS
 
@@ -104,9 +108,13 @@ Staging, 6 cold samples (fresh context) per width, Chromium `[live]`
 
 All 12 samples: HTTP 206, 676,790 bytes, TLS 1.3, `x-ac: 3.sjc _atomic_bur HIT`,
 `cache-control: max-age=31536000`. A cold-edge MISS was not observed and is not
-characterised. Delivery is platform-owned and fast; the 1.8–2.4 s before the request is
-APPLICATION SCHEDULING, which the repair removes. Re-sample after deploy with
-`node tools/v2-runtime/measure-film-delivery.mjs --base=https://staging-7e48-skyyrose.wpcomstaging.com`.
+characterised. Delivery is platform-owned and fast. **Correction to the first draft of
+this section:** of the 1.8–2.4 s between navigation and the film request, the uncached
+document render (TTFB of a cache-busted request, 2.0–2.6 s median per width) is the
+bulk; the in-page schedule from document arrival to the film request was 140–840 ms
+BEFORE (see "Staging After Deploy"), and that in-page part is what the repair changes.
+Real visitors normally receive the page from the edge cache (`max-age=300`), so the
+document TTFB they see is far lower than the cache-busted figures here.
 
 ## Fonts
 
@@ -197,3 +205,83 @@ the first film frame. Evidence: `scratchpad/measure/diffs/`, `frames-<label>-<wi
 Limit noted by the reviewer: the BEFORE unstyled paint is evidenced by the DOM geometry
 snapshot and layout-shift entries, not by a PNG (the first-paint capture landed after the
 shift).
+
+## Staging After Deploy `[live]`
+
+**Deploy.** Founder-approved. Source was an exact staged set: staging's 536 files (531
+byte-identical to the worktree, 5 changed: front-page.php, functions.php, README,
+CHANGELOG, translation catalog) plus the 3 new files (`inc/critical-rendering.php`,
+`assets/css/critical/home.min.css`, `home.contract.json`). Hot-swap succeeded, caches
+flushed, version stamp verified, backup kept at
+`skyyrose-flagship-2.old.1788790527-87183`. The plain Home URL went
+`x-ac STALE → UPDATING → HIT` with the new head within about a minute (`max-age=300`).
+
+**Incident (bug-325).** The deploy script's V1 `data/` allowlist stripped 11 V2 runtime
+files from the archive (approved card fronts, scroll-world scenes, collection hero and
+scene motion, opening product media, presentation registry, scene blueprints, hero
+commerce scenes, founder-selected placeholders, font provenance, editor about page), so
+the swap deleted them from the live theme; Home and collection routes rendered without
+their film for a few minutes. Restored from the staged source, cache flushed, filesystem
+parity re-verified 539/539 with zero hash mismatches. Two further V1-only preflights
+(`SKYYROSE_VERSION` regex, V1 asset floor) were patched the same session; the script is
+now V2-aware (commit `b3cc98845`). Lesson recorded: diff the archive's file set against
+the live manifest before the swap.
+
+**Parity.** `verify-home-derived-output.mjs` against staging: contract 16,168 bytes in
+head byte-equal to the build; inline bootstrap after the hero with the Boost ignore
+attribute, no footer copy; four font preloads with `@font-face`-equal hrefs; all 12
+served theme CSS/JS files sha256-equal to the build; bootstrap index 19 before the first
+classic body script at 35. Boost's stale block is still printed (31,177 bytes,
+informational).
+
+**Measurement** (Chromium, 3 samples per width, cache-busted so every document is an
+uncached render; medians relative to document TTFB so platform latency is separated
+from in-page scheduling):
+
+| Width | Doc TTFB before → after | FCP after doc | Controller init after doc | Film request after doc | First film frame after doc | CLS |
+|---|---|---|---|---|---|---|
+| 320 | 2340 → 1763 | 114 → 187 | 130 → 159 | 142 → 182 | 257 → 377 | 1.008 → 0.000 |
+| 390 | 2645 → 1884 | 173 → 133 | 171 → 96 | 179 → 131 | 477 → 231 | 1.033 → 0.000 |
+| 414 | 2027 → 1892 | 177 → 196 | 184 → 159 | 212 → 193 | 299 → 285 | 1.003 → 0.000 |
+| 768 | 2030 → 1675 | 758 → 138 | 828 → 101 | 841 → 132 | 1731 → 222 | 1.017 → 0.000 |
+| 1440 | 2402 → 1795 | 258 → 227 | 281 → 196 | 305 → 219 | 1297 → 358 | 1.004 → 0.000 |
+
+CLS is 0.000 in all 15 samples; hero, CTA and brand-mark geometry are identical at first
+paint and settled. The controller now initialises before or at first paint in every
+sample; the BEFORE outliers (768: 828 ms, 1440: 281 ms with first frame at 1.3–1.7 s)
+are gone. Document TTFB differences are server-side variance between runs, not an
+effect of the theme. The absolute BEFORE figures quoted earlier in this report
+(controller 2.2–2.9 s) were dominated by that uncached TTFB; the in-page table above
+is the honest comparison.
+
+**Policies and commerce** (`verify-home-policies.mjs`): 27/28 in Chromium and 27/28 in
+WebKit. Every functional check passes: poster-first continuity, reveal after a frame,
+pause/play, hidden-tab pause/resume, reduced motion, Save-Data, no-JS coherence from the
+inline contract, rotating mark, Ask Skyy launcher with no 3D request, Quick View → size →
+native variation → Add to Bag (bag 0→1), Search, Bag, Menu. WebKit again denied the
+unattended autoplay and the Play control started the film. The single failing check is
+the "no console errors" assertion during the commerce journey: Chromium logs
+"Permissions policy violation: payment is not allowed" from Stripe's express-checkout
+script, WebKit logs Stripe keepalive/`r.stripe.com` access-control noise. The
+`permissions-policy: … payment=()` header was already on staging before the deploy and
+`inc/security.php` is untouched by this repair `[live]` `[repo]`. Pre-existing and
+outside this scope, but worth a decision: with `payment=()` the Stripe express checkout
+(Apple Pay / Google Pay buttons) cannot use the Payment Request API on staging.
+
+**Film delivery after deploy** (6 cold samples per width, fresh context each, `[live]`):
+
+| Width | Request start after nav (median, range) | TTFB | Transfer end | loadstart → first frame |
+|---|---|---|---|---|
+| 390 | 1887 ms (1636–2119) | 37 ms (26–91) | 80 ms (61–130) | 98 ms (75–116) |
+| 1440 | 1926 ms (1741–2092) | 31 ms (26–34) | 67 ms (57–177) | 78 ms (66–175) |
+
+All 12 samples HTTP 206, 676,790 bytes, TLS 1.3, edge HIT. Delivery is unchanged from
+BEFORE (TTFB 28 ms, transfer ≈80 ms) as expected for a platform-owned variable; the
+request start still tracks the uncached document TTFB. First frame after loadstart
+improved from 150/126 ms to 98/78 ms because the controller is no longer competing with
+the classic script chain when the film arrives. A cold-edge MISS was not observed.
+
+**Still open.** Real Safari eyes-on on staging (Playwright WebKit denies the unattended
+autoplay on both builds and shows the poster with a working Play control). Optional:
+regenerate Jetpack Boost's critical CSS from the Boost admin so its informational block
+matches the current header; Home no longer depends on it.
