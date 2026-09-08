@@ -15,7 +15,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { createRequire } from 'node:module';
+import { loadPlaywright } from './load-playwright.mjs';
 
 const args = Object.fromEntries(process.argv.slice(2).map((a) => {
   const m = a.match(/^--([^=]+)(?:=(.*))?$/);
@@ -31,9 +31,7 @@ const route = String(args.route || '/');
 const allowExternal = Boolean(args['allow-external']);
 const settleMs = Number(args.settle || 4000);
 
-// Playwright resolves from the repository root install (`npm install` at the repo root declares @playwright/test).
-const require = createRequire(new URL('../../package.json', import.meta.url));
-const playwright = require('@playwright/test');
+const playwright = loadPlaywright();
 const engine = playwright[browserName];
 if (!engine) throw new Error(`Unknown browser ${browserName}`);
 

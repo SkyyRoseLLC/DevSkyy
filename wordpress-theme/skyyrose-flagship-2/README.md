@@ -104,7 +104,9 @@ A release is complete only when every layer below is verified, in order:
    startup timings) and `node tools/v2-runtime/verify-home-policies.mjs`
    (no-JS, reduced motion, Save-Data, visibility, pause/play, commerce journey).
    Both browser tools resolve Playwright from the repository root install
-   (`npm install` at the repository root).
+   (`npm install` at the repository root), falling back to `DEVSKYY_ROOT` or the
+   primary `~/DevSkyy` checkout; without any install they print
+   `UNVERIFIED: playwright not installed` and exit 3.
 
 ## Customization
 

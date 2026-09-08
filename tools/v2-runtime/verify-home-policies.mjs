@@ -11,11 +11,9 @@
  * Usage: node tools/v2-runtime/verify-home-policies.mjs --base=http://host [--browser=chromium|webkit] [--json=out.json]
  * Exit 1 on any failed check.
  */
-import { createRequire } from 'node:module';
+import { loadPlaywright } from './load-playwright.mjs';
 import fs from 'node:fs';
-// Playwright resolves from the repository root install (`npm install` at the repo root declares @playwright/test).
-const require = createRequire(new URL('../../package.json', import.meta.url));
-const playwright = require('@playwright/test');
+const playwright = loadPlaywright();
 
 const args = Object.fromEntries(process.argv.slice(2).map((a) => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const base = String(args.base || '').replace(/\/$/, '');
