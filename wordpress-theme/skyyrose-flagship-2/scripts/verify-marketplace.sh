@@ -41,6 +41,7 @@ python3 scripts/validate-collection-hero-motion.py
 python3 scripts/build-pot.py --check
 php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check
+node scripts/build-critical-css.mjs --check
 
 while IFS= read -r base; do
 	for width in 640 1024 1440; do

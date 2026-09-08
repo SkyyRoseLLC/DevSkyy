@@ -73,6 +73,41 @@ and retired fonts. Generated minified artifacts must be force-tracked by the
 release integrator because the repository’s global ignore policy excludes
 `*.min.css` and `*.min.js`; a clean checkout is not release-ready without them.
 
+## Home critical rendering and release parity
+
+The front page inlines a theme-owned structural contract
+(`assets/css/critical/home.min.css`, built by `npm run build:critical` from the
+enqueued source sheets under `assets/css/critical/home.contract.json`) and prints
+the unchanged hero controller inline directly after the hero markup with
+`data-jetpack-boost="ignore"`. The contract is independent of any
+optimizer-generated critical CSS: Jetpack Boost's block is derived from a
+script-less render, is stored per URL, and is only invalidated by a theme
+switch, so a same-theme file deployment never refreshes it. The theme's block
+is derived from source bytes at build time and ships with the theme.
+
+A release is complete only when every layer below is verified, in order:
+
+1. **Source artifact** — `npm run build && npm run verify` on the frozen
+   candidate (`check:critical` fails on a stale or over-budget contract).
+2. **Filesystem parity** — the deployed theme tree hashes equal the candidate
+   (deploy script post-swap verification).
+3. **Generated critical CSS parity** — the delivered Home `<head>` carries the
+   candidate's `#skyyrose2-critical-home` byte for byte, the four first-view
+   font preloads, and the inline hero bootstrap before the classic body chain:
+   `node tools/v2-runtime/verify-home-derived-output.mjs --base=https://host`.
+   If an optimizer block is also present, regenerate it from the optimizer's
+   admin after the deployment; the theme contract does not depend on it.
+4. **Managed bundle parity** — served theme CSS/JS files match the local build
+   (same script, sha256 per file; optimizer concatenation is derived from them).
+5. **Browser parity** — `node tools/v2-runtime/measure-home-critical.mjs` at
+   320/390/414/768/1440 (CLS ≤ 0.1, first-paint and settled screenshots, hero
+   startup timings) and `node tools/v2-runtime/verify-home-policies.mjs`
+   (no-JS, reduced motion, Save-Data, visibility, pause/play, commerce journey).
+   Both browser tools resolve Playwright from the repository root install
+   (`npm install` at the repository root), falling back to `DEVSKYY_ROOT` or the
+   primary `~/DevSkyy` checkout; without any install they print
+   `UNVERIFIED: playwright not installed` and exit 3.
+
 ## Customization
 
 `theme.json` exposes the canonical SkyyRose palette, spacing, and type roles in

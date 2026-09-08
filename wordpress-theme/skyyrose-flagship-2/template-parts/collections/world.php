@@ -61,7 +61,7 @@ $world_args     = array( 'slug' => $world_slug, 'collection' => $world_collectio
 		<?php endif; ?>
 		<?php get_template_part( 'template-parts/collections/arrival', null, $world_args ); ?>
 		<?php get_template_part( 'template-parts/collections/scroll-world', null, $world_args ); ?>
-		<section id="shop" class="sr2-world-edit" aria-labelledby="sr2-world-edit-title" tabindex="-1">
+		<section id="shop" class="sr2-world-edit"<?php if ( in_array( $world_slug, array( 'signature', 'black-rose', 'love-hurts' ), true ) ) : ?> data-scene-handoff="<?php echo esc_attr( $world_slug ); ?>"<?php endif; ?> aria-labelledby="sr2-world-edit-title" tabindex="-1">
 			<header class="sr2-world-section-head">
 				<p class="sr2-world-index"><?php echo esc_html( $world_collection['shop_kicker'] ); ?></p>
 				<h2 id="sr2-world-edit-title"><?php echo esc_html( $world_collection['shop_heading'] ); ?></h2>

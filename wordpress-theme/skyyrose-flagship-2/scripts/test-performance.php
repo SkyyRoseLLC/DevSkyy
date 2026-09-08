@@ -24,6 +24,8 @@ function remove_action() {}
 function remove_filter() {}
 function apply_filters( $hook, $value ) { return $GLOBALS['sr2_filter_values'][ $hook ] ?? $value; }
 function is_front_page() { return $GLOBALS['sr2_route']['front']; }
+function is_shop() { return $GLOBALS['sr2_archive'] ?? false; }
+function is_product_taxonomy() { return $GLOBALS['sr2_taxonomy'] ?? false; }
 function is_page() { return $GLOBALS['sr2_route']['page']; }
 function is_single() { return $GLOBALS['sr2_route']['single']; }
 function is_singular( $type = '' ) { return $type ? $GLOBALS['sr2_route']['singular'] === $type : (bool) $GLOBALS['sr2_route']['singular']; }
@@ -151,6 +153,26 @@ foreach ( array( 'home', 'signature', 'black-rose', 'love-hurts', 'kids-capsule'
 }
 $GLOBALS['sr2_filter_values'] = array();
 $GLOBALS['sr2_templates'] = array();
+
+// Theme archive grid replaces only Woo layout; native forms/notices remain.
+$GLOBALS['sr2_route']['front'] = false;
+$GLOBALS['sr2_inferred_collection'] = '';
+foreach ( array( 'shop', 'taxonomy' ) as $archive ) {
+	$GLOBALS['sr2_archive'] = 'shop' === $archive;
+	$GLOBALS['sr2_taxonomy'] = 'taxonomy' === $archive;
+	foreach ( array( false, true ) as $native_required ) {
+		$GLOBALS['sr2_filter_values']['skyyrose2_archive_native_woo_layout'] = $native_required;
+		$GLOBALS['sr2_styles'] = array();
+		skyyrose2_performance_dequeue_unused_assets();
+		sr2_assert( ! in_array( 'woocommerce-general', $GLOBALS['sr2_styles'], true ), 'archive retains native controls and notices' );
+		foreach ( array( 'woocommerce-layout', 'woocommerce-smallscreen' ) as $handle ) {
+			sr2_assert( ! $native_required === in_array( $handle, $GLOBALS['sr2_styles'], true ), 'archive layout opt-in: ' . $archive . ' / ' . $handle );
+		}
+	}
+}
+$GLOBALS['sr2_archive'] = false;
+$GLOBALS['sr2_taxonomy'] = false;
+$GLOBALS['sr2_filter_values'] = array();
 $GLOBALS['sr2_inferred_collection'] = '';
 
 foreach ( array( false, true ) as $is_front ) {

@@ -1,6 +1,8 @@
 /** Approved heroes and native scroll-world choreography. No scroll interception. */
 (() => {
   'use strict';
+  if (document.documentElement.dataset.recoveryInitialized) return;
+  document.documentElement.dataset.recoveryInitialized = 'true';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const connection = navigator.connection;
   const heroes = [];
@@ -114,7 +116,9 @@
   window.addEventListener('pageshow', () => { suspended = false; heroes.forEach(state => observer?.observe(state.el)); syncAll(); });
   syncAll();
 
-  document.querySelectorAll('[data-recovery-rail]').forEach(rail => {
+  // Home prints this controller inline before its collection rail is parsed;
+  // bind rails once the document is parsed, immediately when it already is.
+  const initRails = () => document.querySelectorAll('[data-recovery-rail]').forEach(rail => {
     const track = rail.querySelector('[data-recovery-track]');
     if (!track) return;
     const items = [...track.children];
@@ -159,4 +163,6 @@
     rail.querySelector('.sr2-recovery-controls').hidden = false;
     update();
   });
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initRails, { once: true });
+  else initRails();
 })();

@@ -32,7 +32,6 @@ get_header();
 		<div class="sr2-archive-scene__copy">
 			<p class="sr2-world-index"><?php esc_html_e( 'Oakland, California / The Living Archive', 'skyyrose-flagship-2' ); ?></p>
 			<h1 id="sr2-archive-title"><?php esc_html_e( 'Skyy Rose', 'skyyrose-flagship-2' ); ?></h1>
-			<p class="sr2-archive-scene__promise"><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose-flagship-2' ); ?></p>
 			<p class="sr2-archive-scene__intro"><?php esc_html_e( 'A house built by a father, named after a daughter, and rooted in The Town.', 'skyyrose-flagship-2' ); ?></p>
 			<div class="sr2-archive-scene__actions"><a class="sr2-control sr2-control--primary" href="#sr2-archive-worlds"><?php esc_html_e( 'Choose your world', 'skyyrose-flagship-2' ); ?></a><a class="sr2-control sr2-control--secondary" href="<?php echo esc_url( $archive_shop ); ?>"><?php esc_html_e( 'Shop the house', 'skyyrose-flagship-2' ); ?></a></div>
 		</div>
@@ -46,13 +45,14 @@ get_header();
 			<?php endforeach; ?>
 		</nav>
 	</section>
+	<?php skyyrose2_print_hero_bootstrap(); ?>
 	<section id="sr2-archive-worlds" class="sr2-archive-worlds" aria-labelledby="sr2-archive-worlds-title" tabindex="-1" data-archive-act="2">
 		<header class="sr2-archive-section-head"><p class="sr2-world-index"><?php esc_html_e( 'II / The four worlds', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-worlds-title"><?php esc_html_e( 'Four stories. One house.', 'skyyrose-flagship-2' ); ?></h2></header>
 		<?php get_template_part( 'template-parts/home/living-archive-worlds', null, array( 'collections' => $archive_collections ) ); ?>
 	</section>
 	<section id="sr2-archive-oakland" class="sr2-archive-oakland" aria-labelledby="sr2-archive-oakland-title" data-archive-act="3">
 		<p class="sr2-world-index"><?php esc_html_e( 'III / Oakland', 'skyyrose-flagship-2' ); ?></p>
-		<h2 id="sr2-archive-oakland-title"><?php esc_html_e( 'Luxury grows from concrete.', 'skyyrose-flagship-2' ); ?></h2>
+		<h2 id="sr2-archive-oakland-title"><?php esc_html_e( 'Our Oakland roots', 'skyyrose-flagship-2' ); ?></h2>
 		<div class="sr2-archive-oakland__provenance"><p><?php esc_html_e( 'SkyyRose began as Corey Foster’s promise to build a future Skyy Rose could recognize herself inside.', 'skyyrose-flagship-2' ); ?></p><p><?php esc_html_e( 'The house keeps Oakland in the frame: concrete, care, memory, and the refusal to shrink.', 'skyyrose-flagship-2' ); ?></p></div>
 	</section>
 	<section id="sr2-archive-artifact" class="sr2-archive-artifact" aria-labelledby="sr2-archive-artifact-title" data-archive-act="4" data-collection="signature">
