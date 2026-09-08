@@ -449,6 +449,9 @@ preflight() {
     fi
     log_success "Theme directory exists: $THEME_DIR"
 
+    # V2 data/ release allowlist must resolve before any transfer list is built.
+    check_v2_data_boundary
+
     # Source-completeness gate (bug-252) -- cheap checks before the PHP lint sweep.
     preflight_completeness
 
@@ -502,15 +505,64 @@ preflight() {
 # _orphans.json, identity.schema.json and README.md reach production).
 # Allowlist + file:line evidence: architecture-census.md + fix-log Wave 1b.
 # ---------------------------------------------------------------------------
+skyyrose_is_v2_theme() {
+    grep -qE "^define\( 'SKYYROSE2_VERSION'" "$THEME_DIR/functions.php" 2>/dev/null
+}
+
+# V2 data/ allowlist: the package boundary
+# (tools/v2-source-certification/package-boundary.json) is the release
+# authority for skyyrose-flagship-2. Only data/ files it marks release:true
+# ship; founder rejection records, QA manifests and production contracts are
+# release:false there and stay off the public theme directory. Prints one
+# theme-relative path per line; non-zero when the boundary is missing,
+# unreadable, or lists nothing (an empty list would let the hot-swap delete
+# runtime data, bug-325).
+skyyrose_v2_data_allowlist() {
+    local boundary="$PROJECT_ROOT/tools/v2-source-certification/package-boundary.json"
+    [[ -r "$boundary" ]] || return 1
+    command -v python3 &>/dev/null || return 1
+    local allow
+    allow="$(python3 - "$boundary" <<'PY'
+import json, sys
+files = json.load(open(sys.argv[1]))["files"]
+for rel in sorted(files):
+    if rel.startswith("data/") and files[rel].get("release") is True:
+        print(rel)
+PY
+)" || return 1
+    [[ -n "$allow" ]] || return 1
+    printf '%s\n' "$allow"
+}
+
+# Preflight gate (main shell, so a failure stops the deploy): the V2 allowlist
+# must resolve before any transfer list is trusted.
+check_v2_data_boundary() {
+    skyyrose_is_v2_theme || return 0
+    local count
+    if ! count="$(skyyrose_v2_data_allowlist | wc -l | tr -d ' ')" || [[ "$count" -eq 0 ]]; then
+        log_error "V2 package boundary unreadable or lists no releasable data/ files: $PROJECT_ROOT/tools/v2-source-certification/package-boundary.json -- refusing to deploy"
+        exit 1
+    fi
+    log_success "V2 data/ allowlist: $count runtime file(s) from the package boundary"
+}
+
 skyyrose_data_extra_excludes() {
-    local f rel
+    local f rel allow
     [[ -d "$THEME_DIR/data" ]] || return 0
-    # The V2 theme's data/ holds only runtime JSON and editor HTML that PHP
-    # reads (card fronts, scene motion, presentation registry, ...); its
-    # release boundary is enforced by tools/v2-source-certification. The V1
-    # allowlist below would strip all of it and the hot-swap would delete the
-    # files from the live theme (bug-325), so V2 ships data/ as-is.
-    if grep -qE "^define\( 'SKYYROSE2_VERSION'" "$THEME_DIR/functions.php" 2>/dev/null; then
+    if skyyrose_is_v2_theme; then
+        # Runs inside process substitutions too, where exit cannot stop the
+        # deploy: an unresolved allowlist excludes every data/ file (fail
+        # closed) and check_v2_data_boundary aborts in preflight.
+        if ! allow="$(skyyrose_v2_data_allowlist)"; then
+            log_error "V2 data/ allowlist unresolved -- excluding all of data/"
+            allow=""
+        fi
+        while IFS= read -r f; do
+            rel="${f#"$THEME_DIR"/}"
+            if [[ -z "$allow" ]] || ! grep -qxF -- "$rel" <<<"$allow"; then
+                printf -- '--exclude=%s\n' "$rel"
+            fi
+        done < <(find "$THEME_DIR/data" -type f | LC_ALL=C sort)
         return 0
     fi
     while IFS= read -r f; do
@@ -741,6 +793,12 @@ try_rsync() {
     # point at skyyrose-flagship-2). It must exist on the remote before the live
     # directory moves, or a name mismatch would strand the site without a theme.
     source_name="$(basename "$THEME_DIR")"
+    if [[ ! "$source_name" =~ ^[A-Za-z0-9._-]+$ ]]; then
+        log_error "Theme source directory name is not shell-safe for the remote swap: ${source_name}"
+        rm -f "$tmpzip"
+        phase_end swap
+        return 1
+    fi
     if ! "${SSH_CMD[@]}" "${SSH_USER}@${SSH_HOST}" "set -e; cd /tmp && tar ${zstd_flag} -xf ${remote_tar_name} && test -d '/tmp/${source_name}' && (if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${WP_THEME_PATH}.old.${swap_id}'; fi) && mv '/tmp/${source_name}' '${WP_THEME_PATH}' && rm -f ${remote_tar_name} && (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf {} 2>/dev/null; true)"; then
         log_error "Remote extract/swap FAILED — live theme was not swapped"
         rm -f "$tmpzip"
