@@ -60,3 +60,4 @@ Branch `codex/v2-home-critical-rendering-20260907` (worktree
       delivery ×12 — done: CLS 0 ×15, policies 27/28 both engines (pre-existing Stripe console noise), film TTFB ≈30 ms / first frame ≈80–100 ms after loadstart
 - [ ] Real Safari eyes-on (open; Playwright WebKit denies unattended autoplay
       on both builds)
+- [x] Pushed `codex/v2-home-critical-rendering-20260907`; PR #920 → `codex/v2-completion-pr-20260906` (https://github.com/SkyyRoseLLC/DevSkyy/pull/920)
