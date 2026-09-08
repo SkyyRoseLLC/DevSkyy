@@ -13,9 +13,9 @@
  */
 import { createRequire } from 'node:module';
 import fs from 'node:fs';
-import path from 'node:path';
-const require = createRequire(path.resolve('/Users/theceo/DevSkyy/package.json'));
-const playwright = require('playwright');
+// Playwright resolves from the repository root install (`npm install` at the repo root declares @playwright/test).
+const require = createRequire(new URL('../../package.json', import.meta.url));
+const playwright = require('@playwright/test');
 
 const args = Object.fromEntries(process.argv.slice(2).map((a) => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const base = String(args.base || '').replace(/\/$/, '');
@@ -83,6 +83,9 @@ try {
     const resumed = await heroState(page);
     check('play control resumes the film', resumed.video && !resumed.video.paused && resumed.motion === 'running', { motion: resumed.motion });
     check('rotating header mark has a stable container', s.mark && s.mark.w > 0 && s.mark.h > 0 && s.headerHeight > 0, s.mark);
+    const rail = await page.evaluate(() => { const r = document.querySelector('#sr2-archive-worlds [data-recovery-rail]'); const c = r?.querySelector('.sr2-recovery-controls'); return r ? { controlsHidden: c ? c.hidden : null, count: r.querySelector('[data-recovery-count]')?.textContent.trim() || '', prevDisabled: r.querySelector('[data-recovery-prev]')?.disabled ?? null, nextDisabled: r.querySelector('[data-recovery-next]')?.disabled ?? null } : null; });
+    check('collection rail bound by the inline controller (controls shown, count set, first item current)', rail && rail.controlsHidden === false && /^01 \/ 0[2-9]$/.test(rail.count) && rail.prevDisabled === true && rail.nextDisabled === false, rail);
+    const markWasPlaying = Boolean(s.mark && s.mark.video && !s.mark.video.paused);
     const threeD = requests.filter((u) => /\.(glb|gltf|wasm|hdr|ktx2)(\?|$)|three|babylon|skyy-3d/i.test(u));
     check('Ask Skyy makes no 3D request on load', threeD.length === 0, threeD.slice(0, 5));
     check('Ask Skyy launcher present in header', s.askSkyy && s.askSkyy.visible, s.askSkyy);
@@ -91,10 +94,12 @@ try {
     await page.waitForTimeout(300);
     const hidden = await heroState(page);
     check('hidden document pauses the film', hidden.video && hidden.video.paused && hidden.motion === 'paused', { motion: hidden.motion });
+    check('hidden document pauses the rotating header mark', !markWasPlaying || (hidden.mark && hidden.mark.video && hidden.mark.video.paused), { markWasPlaying, mark: hidden.mark });
     await page.evaluate(() => { Object.defineProperty(document, 'hidden', { configurable: true, get: () => false }); document.dispatchEvent(new Event('visibilitychange')); });
     await page.waitForTimeout(600);
     const shown = await heroState(page);
     check('visible document resumes the film', shown.video && !shown.video.paused && shown.motion === 'running', { motion: shown.motion });
+    check('visible document resumes the rotating header mark', !markWasPlaying || (shown.mark && shown.mark.video && !shown.mark.video.paused), { markWasPlaying, mark: shown.mark });
     await ctx.close();
   }
   // 2. prefers-reduced-motion: reduce → no film, poster stays, control hidden.

@@ -31,8 +31,9 @@ const route = String(args.route || '/');
 const allowExternal = Boolean(args['allow-external']);
 const settleMs = Number(args.settle || 4000);
 
-const require = createRequire(path.resolve('/Users/theceo/DevSkyy/package.json'));
-const playwright = require('playwright');
+// Playwright resolves from the repository root install (`npm install` at the repo root declares @playwright/test).
+const require = createRequire(new URL('../../package.json', import.meta.url));
+const playwright = require('@playwright/test');
 const engine = playwright[browserName];
 if (!engine) throw new Error(`Unknown browser ${browserName}`);
 

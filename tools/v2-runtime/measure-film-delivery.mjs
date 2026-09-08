@@ -11,11 +11,11 @@
  *
  * Usage: node tools/v2-runtime/measure-film-delivery.mjs --base=https://host [--samples=6] [--widths=390,1440] [--browser=chromium] [--json=out.json]
  */
-import path from 'node:path';
 import fs from 'node:fs';
 import { createRequire } from 'node:module';
-const require = createRequire(path.resolve('/Users/theceo/DevSkyy/package.json'));
-const playwright = require('playwright');
+// Playwright resolves from the repository root install (`npm install` at the repo root declares @playwright/test).
+const require = createRequire(new URL('../../package.json', import.meta.url));
+const playwright = require('@playwright/test');
 
 const args = Object.fromEntries(process.argv.slice(2).map((a) => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] ?? true] : [a, true]; }));
 const base = String(args.base || '').replace(/\/$/, '');

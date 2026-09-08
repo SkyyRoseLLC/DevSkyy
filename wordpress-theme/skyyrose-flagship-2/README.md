@@ -103,6 +103,8 @@ A release is complete only when every layer below is verified, in order:
    320/390/414/768/1440 (CLS ≤ 0.1, first-paint and settled screenshots, hero
    startup timings) and `node tools/v2-runtime/verify-home-policies.mjs`
    (no-JS, reduced motion, Save-Data, visibility, pause/play, commerce journey).
+   Both browser tools resolve Playwright from the repository root install
+   (`npm install` at the repository root).
 
 ## Customization
 
