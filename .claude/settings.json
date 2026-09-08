@@ -157,6 +157,11 @@
             "type": "command",
             "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/claude-mem-sync.sh",
             "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-session-log.sh",
+            "timeout": 5
           }
         ]
       }
@@ -314,6 +319,18 @@
           {
             "type": "command",
             "command": "bash /Users/theceo/DevSkyy/.claude/hooks/subagent-stop-tidy.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/theceo/DevSkyy/.wolf/hooks/memory-session-log.sh",
             "timeout": 5
           }
         ]

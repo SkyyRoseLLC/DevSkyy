@@ -3,3 +3,7 @@
 assets/products/source-photos/manifest.json
 tasks/source-photo-audit-report.md
 tasks/source-photo-shoot-list.md
+# Append-only cross-LLM session log; rows are written by .wolf/hooks/memory-session-log.sh
+# and by agents mid-session. Re-padding the table on every commit rewrites every row and
+# causes merge conflicts between parallel sessions.
+.wolf/memory.md
