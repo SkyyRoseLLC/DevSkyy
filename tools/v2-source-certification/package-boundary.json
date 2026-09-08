@@ -195,6 +195,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/about-archive.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/about-archive.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "assets/css/collection-scene-motion.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -305,6 +315,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/premium-commerce.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/premium-commerce.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "assets/css/product-page.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
@@ -313,6 +333,36 @@
     "assets/css/product-page.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
+    "assets/css/quick-view-commerce.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/quick-view-commerce.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/scene-handoff.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/scene-handoff.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/search-preview.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/search-preview.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
     "assets/css/shop-page.css": {
@@ -835,6 +885,41 @@
       "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
       "release": true
     },
+    "assets/derived/fonts/inter-fallback-latin.woff2": {
+      "category": "GENERATED MEDIA DERIVATIVE",
+      "reason": "Derived fallback face without an @font-face consumer; provenance in data/font-fallback.json",
+      "release": false
+    },
+    "assets/images/about/kids-heir-founder-supplied.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/images/about/oakland-reference-mural.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/images/about/oakland-reference-sign.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/images/skyy-runtime-poster.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/about-archive.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/about-archive.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "assets/js/collection-scene-motion.js": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -906,6 +991,46 @@
       "release": true
     },
     "assets/js/mascot.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/premium-commerce.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/premium-commerce.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/quick-view-commerce.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/quick-view-commerce.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/scene-handoff.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/scene-handoff.min.js": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/search-preview.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/js/search-preview.min.js": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
@@ -1181,6 +1306,11 @@
       "release": true
     },
     "assets/sot/brand/skyyrose-logo-animated-384w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/brand/skyyrose-logo-optimized-384w.webm": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
@@ -2285,6 +2415,16 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "data/editor/about-page.html": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Editor-installed About content; no PHP runtime reader",
+      "release": false
+    },
+    "data/font-fallback.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
     "data/font-provenance.json": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2421,6 +2561,11 @@
       "release": true
     },
     "inc/presentation-registry.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/quick-view-commerce.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
