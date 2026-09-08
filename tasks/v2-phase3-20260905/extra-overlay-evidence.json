@@ -1,0 +1,627 @@
+{
+  "origin": "http://127.0.0.1:18303",
+  "mode": "isolated browser contexts, reduced motion",
+  "started": "2026-09-05T16:54:31.486Z",
+  "checks": [
+    {
+      "name": "quick-view",
+      "width": 390,
+      "before": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BODY",
+          "text": "Skip to content\t\n\t\t\n\t\t\tMenu\n\t\t\tShop\n\t\t\n\t\t\n\t\t\n\t\t\tSearch\n\t\t\tAccount\n\t\t\tB"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 936,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "open": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [
+          "sr2-quick-view-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close quick view"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "closed": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Quick view"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 936,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "focusReturned": true,
+      "activation": "pointer click",
+      "pass": true
+    },
+    {
+      "name": "quick-view-native-competing-attempt",
+      "method": "native showModal while navigation open; deliberate programmatic concurrency test",
+      "width": 390,
+      "navBefore": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "true",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close site menu"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "competing": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [
+          "sr2-quick-view-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close quick view"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "after": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Open site menu"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 936,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "size-guide",
+      "width": 390,
+      "before": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BODY",
+          "text": "Skip to content\t\n\t\t\n\t\t\tMenu\n\t\t\tShop\n\t\t\n\t\t\n\t\t\n\t\t\tSearch\n\t\t\tAccount\n\t\t\tB"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 727,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "open": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [
+          "sr2-size-guide-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close fit and size guide"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "closed": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Fit + size guide ↗"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 727,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "focusReturned": true,
+      "activation": "pointer click",
+      "pass": true
+    },
+    {
+      "name": "size-guide-native-competing-attempt",
+      "method": "native showModal while navigation open; deliberate programmatic concurrency test",
+      "width": 390,
+      "navBefore": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "true",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close site menu"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "competing": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [
+          "sr2-size-guide-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close fit and size guide"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "after": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Open site menu"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 727,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": true
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "ask-skyy",
+      "width": 390,
+      "open": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [
+          "skyy-ask-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "text": ""
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "recallVisible": false
+        }
+      },
+      "closed": {
+        "width": 390,
+        "scrollWidth": 390,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "text": "Ask a question"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 14141,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "recallVisible": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "quick-view",
+      "width": 1440,
+      "before": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BODY",
+          "text": "Skip to content\t\n\t\t\n\t\t\tMenu\n\t\t\tShop\n\t\t\n\t\t\n\t\t\n\t\t\tSearch\n\t\t\tAccount\n\t\t\tB"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 933,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "open": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [
+          "sr2-quick-view-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close quick view"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "closed": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Quick view"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 933,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "focusReturned": true,
+      "activation": "pointer click",
+      "pass": true
+    },
+    {
+      "name": "quick-view-native-competing-attempt",
+      "method": "native showModal while navigation open; deliberate programmatic concurrency test",
+      "width": 1440,
+      "navBefore": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "true",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close site menu"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "competing": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [
+          "sr2-quick-view-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close quick view"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "after": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Open site menu"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 933,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "size-guide",
+      "width": 1440,
+      "before": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BODY",
+          "text": "Skip to content\t\n\t\t\n\t\t\tMenu\n\t\t\tShop\n\t\t\n\t\t\n\t\t\n\t\t\tSearch\n\t\t\tAccount\n\t\t\tB"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 0,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "open": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [
+          "sr2-size-guide-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close fit and size guide"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "closed": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Fit + size guide ↗"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 0,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "focusReturned": true,
+      "activation": "native Enter",
+      "pass": true
+    },
+    {
+      "name": "size-guide-native-competing-attempt",
+      "method": "native showModal while navigation open; deliberate programmatic concurrency test",
+      "width": 1440,
+      "navBefore": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "true",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close site menu"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "competing": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [
+          "sr2-size-guide-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Close fit and size guide"
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "after": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Open site menu"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 0,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--hidden",
+          "recallVisible": false
+        }
+      },
+      "pass": true
+    },
+    {
+      "name": "ask-skyy",
+      "width": 1440,
+      "open": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [
+          "skyy-ask-dialog"
+        ],
+        "nav": "false",
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "text": ""
+        },
+        "bodyPosition": "fixed",
+        "bodyLock": true,
+        "scrollY": 0,
+        "mainInert": true,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "recallVisible": false
+        }
+      },
+      "closed": {
+        "width": 1440,
+        "scrollWidth": 1440,
+        "open": [],
+        "nav": "false",
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "text": "Ask a question"
+        },
+        "bodyPosition": "",
+        "bodyLock": false,
+        "scrollY": 0,
+        "mainInert": false,
+        "mascot": {
+          "class": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "recallVisible": false
+        }
+      },
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "finished": "2026-09-05T16:54:47.511Z"
+}

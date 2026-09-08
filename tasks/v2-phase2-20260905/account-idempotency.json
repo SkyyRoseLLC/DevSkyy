@@ -1,0 +1,11 @@
+{
+    "mode": "apply",
+    "page_id": 9710,
+    "page_slug": "my-account",
+    "template": "",
+    "before_content": "[woocommerce_my_account]",
+    "before_sha256": "0c846e85bd9bd3925320fc92c24a6cae9e2a860616209cb93311eed72f5ca56a",
+    "target_content": "[woocommerce_my_account]",
+    "target_sha256": "0c846e85bd9bd3925320fc92c24a6cae9e2a860616209cb93311eed72f5ca56a",
+    "changed": false
+}

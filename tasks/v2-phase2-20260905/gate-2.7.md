@@ -1,0 +1,5 @@
+# Gate 2.7 — Exclusive native search groups
+
+Reproduced seven products duplicated in generic stories/pages for `rose`. Removed the second product query; main native search is capped at 24 entries, partitioned by post type into Products, Collections, Stories / Journal and Pages. A single exact Woo SKU lookup can supplement page one, deduplicated by ID and requiring published/visible non-variation products. Native GET forms and main-query pagination remain. No autocomplete or unbounded query. Page/collection results omit generated excerpts because existing builder content leaks CSS into native excerpts; story excerpts remain.
+
+PASS: PHP exclusive-group/query-boundary regressions and full V2 verify. Staging searches `rose`, `sg-005`, `Love Hurts`, `journal`, and a nonsense term: no generic-group product links; exact SKU yields product; collection and actual story groups appear for Love Hurts; no-result state works. Evidence search-browser.json records pre-mobile-fix horizontal overflow (567/462 at a 390px viewport), which Gate 2.8 addresses. Exact scoped writes in search-staging-receipts.json.

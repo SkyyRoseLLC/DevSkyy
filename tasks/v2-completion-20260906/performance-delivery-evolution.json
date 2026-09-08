@@ -1,0 +1,276 @@
+{
+  "profile": "Same exact-origin proxy, simulated Lighthouse profile, real isolated Nginx gzip/static range and owned PHP origin; no deployed or field claim",
+  "status": "OPEN_SHOP_TARGET",
+  "target_mobile_lcp_ms": 2500,
+  "rows": [
+    {
+      "label": "profile-baseline",
+      "case": "home-desktop",
+      "score": 99,
+      "lcp_ms": 800.3616000000002,
+      "cls": 0.008739389075761961,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-baseline-home-desktop.report.json",
+      "fetched_at": "2026-09-06T14:33:40.727Z"
+    },
+    {
+      "label": "profile-baseline",
+      "case": "home-mobile",
+      "score": 84,
+      "lcp_ms": 4228.4868000000015,
+      "cls": 0.058434114740364536,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-baseline-home-mobile.report.json",
+      "fetched_at": "2026-09-06T14:33:28.536Z"
+    },
+    {
+      "label": "profile-baseline",
+      "case": "pdp-desktop",
+      "score": 100,
+      "lcp_ms": 698.8643499999998,
+      "cls": 0.00327224925853588,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-baseline-pdp-desktop.report.json",
+      "fetched_at": "2026-09-06T14:34:08.307Z"
+    },
+    {
+      "label": "profile-baseline",
+      "case": "pdp-mobile",
+      "score": 96,
+      "lcp_ms": 2475.9604,
+      "cls": 0.004470572650748509,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-baseline-pdp-mobile.report.json",
+      "fetched_at": "2026-09-06T14:33:52.735Z"
+    },
+    {
+      "label": "profile-baseline",
+      "case": "shop-mobile",
+      "score": 91,
+      "lcp_ms": 3321.32505,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-baseline-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T14:34:21.317Z"
+    },
+    {
+      "label": "profile-candidate",
+      "case": "home-desktop",
+      "score": 99,
+      "lcp_ms": 813.8946999999998,
+      "cls": 0.006830618851273148,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-candidate-home-desktop.report.json",
+      "fetched_at": "2026-09-06T14:37:29.384Z"
+    },
+    {
+      "label": "profile-candidate",
+      "case": "home-mobile",
+      "score": 88,
+      "lcp_ms": 3800.93935,
+      "cls": 0.04676725860138604,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-candidate-home-mobile.report.json",
+      "fetched_at": "2026-09-06T14:37:16.756Z"
+    },
+    {
+      "label": "profile-candidate",
+      "case": "pdp-desktop",
+      "score": 100,
+      "lcp_ms": 627.25215,
+      "cls": 0.00327224925853588,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-candidate-pdp-desktop.report.json",
+      "fetched_at": "2026-09-06T14:37:54.725Z"
+    },
+    {
+      "label": "profile-candidate",
+      "case": "pdp-mobile",
+      "score": 97,
+      "lcp_ms": 2436.6708,
+      "cls": 0.004081502327085346,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-candidate-pdp-mobile.report.json",
+      "fetched_at": "2026-09-06T14:37:42.238Z"
+    },
+    {
+      "label": "profile-candidate",
+      "case": "shop-mobile",
+      "score": 91,
+      "lcp_ms": 3400.8907500000005,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-profile-candidate-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T14:38:07.281Z"
+    },
+    {
+      "label": "responsive-final-1",
+      "case": "home-desktop",
+      "score": 100,
+      "lcp_ms": 698.7212000000001,
+      "cls": 0.008739389075761961,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-responsive-final-1-home-desktop.report.json",
+      "fetched_at": "2026-09-06T15:50:06.380Z"
+    },
+    {
+      "label": "responsive-final-1",
+      "case": "home-mobile",
+      "score": 98,
+      "lcp_ms": 2175.4477500000003,
+      "cls": 0.04676725860138604,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-responsive-final-1-home-mobile.report.json",
+      "fetched_at": "2026-09-06T15:49:54.175Z"
+    },
+    {
+      "label": "responsive-final-1",
+      "case": "pdp-desktop",
+      "score": 100,
+      "lcp_ms": 622.644,
+      "cls": 0.003459030822000386,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-responsive-final-1-pdp-desktop.report.json",
+      "fetched_at": "2026-09-06T15:50:30.465Z"
+    },
+    {
+      "label": "responsive-final-1",
+      "case": "pdp-mobile",
+      "score": 97,
+      "lcp_ms": 2433.5660000000007,
+      "cls": 0.004081502327085346,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-responsive-final-1-pdp-mobile.report.json",
+      "fetched_at": "2026-09-06T15:50:18.583Z"
+    },
+    {
+      "label": "responsive-final-1",
+      "case": "shop-mobile",
+      "score": 92,
+      "lcp_ms": 3183.1237499999997,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-responsive-final-1-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T15:50:42.322Z"
+    },
+    {
+      "label": "archive-bundle-1",
+      "case": "shop-mobile",
+      "score": 89,
+      "lcp_ms": 3411.8362500000003,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-bundle-1-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T16:09:11.528Z"
+    },
+    {
+      "label": "archive-layout-study",
+      "case": "shop-mobile",
+      "score": 91,
+      "lcp_ms": 3258.934200000001,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-layout-study-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T16:11:38.144Z"
+    },
+    {
+      "label": "archive-projection-1",
+      "case": "shop-mobile",
+      "score": 95,
+      "lcp_ms": 2799.2091,
+      "cls": 0.0002145539959463094,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-projection-1-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T16:24:18.520Z",
+      "note": "Exploratory only: possible brief overlap with focused tests."
+    },
+    {
+      "label": "archive-font-preload-study",
+      "case": "shop-mobile",
+      "score": 90,
+      "lcp_ms": 3481.7448000000004,
+      "cls": 3.649231776390168e-05,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-font-preload-study-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T16:26:40.634Z",
+      "note": "Rejected: font preload worsened timing; temporary MU adapter removed."
+    },
+    {
+      "label": "archive-companion-1",
+      "case": "shop-mobile",
+      "score": 94,
+      "lcp_ms": 2941.5147999999995,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-companion-1-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T16:32:05.703Z",
+      "note": "Clean exclusive trial; target still open."
+    },
+    {
+      "label": "archive-first-card-only",
+      "case": "shop-mobile",
+      "score": 94,
+      "lcp_ms": 2873.5899,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-first-card-only-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T16:33:52.995Z",
+      "note": "Clean exclusive trial; first native card only eager; target still open."
+    },
+    {
+      "label": "archive-jquery-pair-study",
+      "case": "shop-mobile",
+      "score": 95,
+      "lcp_ms": 2867.7830999999996,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-jquery-pair-study-shop-mobile.report.json",
+      "fetched_at": "2026-09-06T16:49:29.316Z",
+      "note": "Rejected: no material gain; temporary MU adapter removed; native jQuery unchanged."
+    },
+    {
+      "label": "archive-q80-1",
+      "case": "shop-mobile",
+      "score": 97,
+      "lcp_ms": 2492.7762000000002,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-q80-1-shop-mobile.report.json",
+      "sha256": "aebf6ad387dded3b94572bfbc380a0ebe8b774b5960b31417220617363999e80",
+      "fetched_at": "2026-09-06T17:07:17.893Z",
+      "note": "Historical experiment; not final acceptance."
+    },
+    {
+      "label": "archive-q80-2",
+      "case": "shop-mobile",
+      "score": 91,
+      "lcp_ms": 3065.277,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-q80-2-shop-mobile.report.json",
+      "sha256": "09c30844e666d5e1de0131fc4a5ab8ac4f60d7a351718a4a6c55961a9950035a",
+      "fetched_at": "2026-09-06T17:08:01.815Z",
+      "note": "Historical experiment; not final acceptance."
+    },
+    {
+      "label": "archive-inline-budget-study",
+      "case": "shop-mobile",
+      "score": 96,
+      "lcp_ms": 2579.9886000000006,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-inline-budget-study-shop-mobile.report.json",
+      "sha256": "18b3c28a707c9fc86d959c0bcaf5cf9f8e52c84920c0367c9e51e3606f4ee29c",
+      "fetched_at": "2026-09-06T17:09:23.575Z",
+      "note": "Historical experiment; not final acceptance."
+    },
+    {
+      "label": "archive-inline-budget-study-2",
+      "case": "shop-mobile",
+      "score": 98,
+      "lcp_ms": 2345.5235999999995,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-inline-budget-study-2-shop-mobile.report.json",
+      "sha256": "eb65bead3bdc495b712076fe319281fce057e905828e997c8b3d08dd7bbbb80a",
+      "fetched_at": "2026-09-06T17:11:05.401Z",
+      "note": "Historical experiment; not final acceptance."
+    },
+    {
+      "label": "archive-inline-budget-study-3",
+      "case": "shop-mobile",
+      "score": 95,
+      "lcp_ms": 2653.396199999999,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-inline-budget-study-3-shop-mobile.report.json",
+      "sha256": "e60308eca88547a65c4b0a121f324a7235c63ab11dfc9a969e84f0b0320d58fc",
+      "fetched_at": "2026-09-06T17:11:33.878Z",
+      "note": "Historical experiment; not final acceptance."
+    },
+    {
+      "label": "archive-native-360-1",
+      "case": "shop-mobile",
+      "score": 98,
+      "lcp_ms": 2269.5114,
+      "cls": 0.0005437037572372934,
+      "report": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-archive-native-360-1-shop-mobile.report.json",
+      "sha256": "ecce7a89ce348b8f18b79c21b1c0dc052294425adcb916b86d7ecbdc6c33b479",
+      "fetched_at": "2026-09-06T17:31:18.925Z",
+      "note": "Single clean source candidate trial; repeated final integrated-runtime acceptance pending."
+    }
+  ]
+}

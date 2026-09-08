@@ -1,0 +1,466 @@
+[
+  {
+    "sku": "br-001",
+    "id": 9864,
+    "snapshot_sha256": "da96f4438653b11a95783d3da545c27be5ecd50a59d62cff563c2f125d11fc7c",
+    "changed": true,
+    "variation_ids": [
+      10488,
+      10489,
+      10490,
+      10491,
+      10492,
+      10493
+    ],
+    "after_sha256": "86a091bb4dc472df7d0ac2a571fb87fb7468225f28727609dde88bef0a2c6acc"
+  },
+  {
+    "sku": "br-002",
+    "id": 9865,
+    "snapshot_sha256": "460ad63b4e8bc9b921d13e6f2a99bb2de8e25adc791f6cf22f2f4848e9135f51",
+    "changed": true,
+    "variation_ids": [
+      10494,
+      10495,
+      10496,
+      10497,
+      10498,
+      10499
+    ],
+    "after_sha256": "a02aa8a1b650de25a3d38b45f1ab885275f4237eaa5bda14da12511f8b1f598f"
+  },
+  {
+    "sku": "br-003",
+    "id": 9866,
+    "snapshot_sha256": "cf6b9aed44adb4dadd52b4122694501e1d5513817c5a63d5fe74adf61d45c3ca",
+    "changed": true,
+    "variation_ids": [
+      10500,
+      10501,
+      10502,
+      10503,
+      10504,
+      10505
+    ],
+    "after_sha256": "2237190822886e5d02980a9d9159d2c3abfabcf883b550b29eb3c5756f4ba6a4"
+  },
+  {
+    "sku": "br-004",
+    "id": 9867,
+    "snapshot_sha256": "70d539625b0974f60e5f1768a4fd94b9b41ec232d0cca44b3d1a6700dbbc5d0b",
+    "changed": true,
+    "variation_ids": [
+      10506,
+      10507,
+      10508,
+      10509,
+      10510,
+      10511
+    ],
+    "after_sha256": "de93f8da88beb4fec4c10994079bc45fa2ffbb25ff3a603327fe1392d990b048"
+  },
+  {
+    "sku": "br-005",
+    "id": 9868,
+    "snapshot_sha256": "26d8243e9d49ef034a41223ca0cae79b9f20bd94d777c8db97212da39cafbc07",
+    "changed": true,
+    "variation_ids": [
+      10512,
+      10513,
+      10514,
+      10515,
+      10516,
+      10517
+    ],
+    "after_sha256": "5e52bb3764d6c2ae65af6cae2c181cd3a9deaaab7fd52971bf43567b54e88345"
+  },
+  {
+    "sku": "br-006",
+    "id": 9869,
+    "snapshot_sha256": "6cb0c1b4bad9d56fe44b752be75e05ee4e85dae0fff2efe6515d9465fd9c159c",
+    "changed": true,
+    "variation_ids": [
+      10518,
+      10519,
+      10520,
+      10521,
+      10522,
+      10523
+    ],
+    "after_sha256": "24426402e13032e9c856d7f1a65001ec3bd3ef6bbb70206cc8e255178c10b639"
+  },
+  {
+    "sku": "br-007",
+    "id": 9870,
+    "snapshot_sha256": "194773d72905abc66ba972d89de2f5630dc7808f990083e67512b6c22386e0da",
+    "changed": true,
+    "variation_ids": [
+      10524,
+      10525,
+      10526,
+      10527,
+      10528,
+      10529
+    ],
+    "after_sha256": "9a8ea61038099d1d7fa51abe05c4e9227670dc4b5f360e25ea2f653957b52a0d"
+  },
+  {
+    "sku": "br-008",
+    "id": 9871,
+    "snapshot_sha256": "4daca7d7c30df8f712440a8c8371ee5dea4acb702a407a14962506f8782d9c95",
+    "changed": true,
+    "variation_ids": [
+      10530,
+      10531,
+      10532,
+      10533,
+      10534,
+      10535
+    ],
+    "after_sha256": "79311e6e32aed7804616fbccaea43b09cd7b4f9fcf614d5c1e3f1c6375853f5c"
+  },
+  {
+    "sku": "br-009",
+    "id": 9872,
+    "snapshot_sha256": "5216371bdd458153d1c17ae23ea09b1a6138ccffb98379e75378d7f869a787ed",
+    "changed": true,
+    "variation_ids": [
+      10536,
+      10537,
+      10538,
+      10539,
+      10540,
+      10541
+    ],
+    "after_sha256": "4e036d44bd625506444ba598ebac265d67e452f864b91a49fa028b0a5e7dc3ff"
+  },
+  {
+    "sku": "br-010",
+    "id": 9873,
+    "snapshot_sha256": "7d135e8487682781b3ca84a2293cd698e509084197f8d5f11a2d8fc104439eab",
+    "changed": true,
+    "variation_ids": [
+      10542,
+      10543,
+      10544,
+      10545,
+      10546,
+      10547
+    ],
+    "after_sha256": "bd01abdadf24cebae42cd0e4a6a9099a9289777643d1551133c8b8773b18f266"
+  },
+  {
+    "sku": "br-011",
+    "id": 9874,
+    "snapshot_sha256": "54b04e1483fb99d3e5c3fc8fabee6495bbc0116461ff1fe11a949e54e4802478",
+    "changed": true,
+    "variation_ids": [
+      10548,
+      10549,
+      10550,
+      10551,
+      10552,
+      10553
+    ],
+    "after_sha256": "a478816f935236066eb921ceeae58baf5d2dfbc525817b3f1d2b5c0dd820cf3b"
+  },
+  {
+    "sku": "br-012",
+    "id": 9945,
+    "snapshot_sha256": "65fa4acda448c1cee72a1a5ba3af999412b0fb07426363c78fa605dea08184be",
+    "changed": true,
+    "variation_ids": [
+      10554,
+      10555,
+      10556,
+      10557,
+      10558,
+      10559
+    ],
+    "after_sha256": "083addb8f1934c55f56ecec0aeaab0598b2e0dd60021c7b4658f3671d0158c04"
+  },
+  {
+    "sku": "br-014",
+    "id": 9927,
+    "snapshot_sha256": "efcc589f8ab49a1d5ae182b4f1e3c990fcfa4be6640753a5a5a1d748216772ad",
+    "changed": true,
+    "variation_ids": [
+      10656,
+      10657,
+      10658,
+      10659,
+      10660,
+      10661
+    ],
+    "after_sha256": "ab5161b9c98bb9a738816e6e2775da53789a75654e9de333cde6763fb215753f"
+  },
+  {
+    "sku": "br-015",
+    "id": 9928,
+    "snapshot_sha256": "c9902f43fd6f15a2241abbc71af140cccd9435e7db0d81bbddfc9d9f31c5f2c9",
+    "changed": true,
+    "variation_ids": [
+      10662,
+      10663,
+      10664,
+      10665,
+      10666,
+      10667
+    ],
+    "after_sha256": "32fdc1d2ca8abc7bb62928c457d39400954c5bf56e09fd19e1b2c000f8a49b7a"
+  },
+  {
+    "sku": "kids-001",
+    "id": 9955,
+    "snapshot_sha256": "94f4c88ca496b6466e1939dd2e85e7477b8b83d404fe27a9f4deb21936a9baaf",
+    "changed": true,
+    "variation_ids": [
+      10644,
+      10645,
+      10646,
+      10647,
+      10648,
+      10649
+    ],
+    "after_sha256": "5079c79a34b4d972dea93a5539e2256ffb8b9fa6bd1036498593f46fb0463d80"
+  },
+  {
+    "sku": "kids-002",
+    "id": 9956,
+    "snapshot_sha256": "2828097600070a87d38177af8cec0d0a2b35dda523e9e830087e4767b9122f20",
+    "changed": true,
+    "variation_ids": [
+      10650,
+      10651,
+      10652,
+      10653,
+      10654,
+      10655
+    ],
+    "after_sha256": "873a42d158c6121cc74ef6ff9a93f8e82969f7354f33e2ea8a46784d402af5ef"
+  },
+  {
+    "sku": "lh-002",
+    "id": 9875,
+    "snapshot_sha256": "01365bf0ec8d627c7ccb82facd9a2f5ea4b785c71b814b93e8c49324801435a9",
+    "changed": true,
+    "variation_ids": [
+      10560,
+      10561,
+      10562,
+      10563,
+      10564,
+      10565
+    ],
+    "after_sha256": "827311a745cf03d5df4c0cea9649a306326f97e2084180ff5615ea6336c7b05b"
+  },
+  {
+    "sku": "lh-003",
+    "id": 9876,
+    "snapshot_sha256": "cba36bed95b0948801c5e4dc84656ea3e93cd670499182dd577fef2ec7304467",
+    "changed": true,
+    "variation_ids": [
+      10566,
+      10567,
+      10568,
+      10569,
+      10570,
+      10571
+    ],
+    "after_sha256": "c2798a0f79b35640262ddc21f7f433fe3d92e8e2dc0531b0bb14527ff7b00bd1"
+  },
+  {
+    "sku": "lh-004",
+    "id": 9877,
+    "snapshot_sha256": "6a64ed67109100ddb54201b49e57e2ca8c3ef6ccfa5d633b64e6864dd5b9d678",
+    "changed": true,
+    "variation_ids": [
+      10572,
+      10573,
+      10574,
+      10575,
+      10576,
+      10577
+    ],
+    "after_sha256": "41dd49102aac5d69f7069a3f488b1c478efe26c0997aa96e805cc0825a845301"
+  },
+  {
+    "sku": "lh-006",
+    "id": 9879,
+    "snapshot_sha256": "7cb0d3c22b25c10d05f73251a5054d9f2a9263b643dc1025c957911e84bc8c12",
+    "changed": true,
+    "variation_ids": [
+      10578,
+      10579,
+      10580,
+      10581,
+      10582,
+      10583
+    ],
+    "after_sha256": "f6b371d566b5d3c5804468f3f698ba8f724dbbf52a988ddf549c3fa8d660d8f4"
+  },
+  {
+    "sku": "sg-001",
+    "id": 9881,
+    "snapshot_sha256": "dee515c23135ff05e6aba28b3024589a70971b29d1496c238231ef7f853dd7a7",
+    "changed": true,
+    "variation_ids": [
+      10584,
+      10585,
+      10586,
+      10587,
+      10588,
+      10589
+    ],
+    "after_sha256": "851b723000c469e1d05911eac4445efac227c6f526dced27fd7a41d695b20e21"
+  },
+  {
+    "sku": "sg-002",
+    "id": 9882,
+    "snapshot_sha256": "3c2698d968338268ae10820ca5005fde629cad58e937ec4ccec4b3aa70f5292e",
+    "changed": true,
+    "variation_ids": [
+      10590,
+      10591,
+      10592,
+      10593,
+      10594,
+      10595
+    ],
+    "after_sha256": "44aa7635b3f6b8121ed606abb035a11618ce6f36cb9083fd8490164430cfcf79"
+  },
+  {
+    "sku": "sg-003",
+    "id": 9883,
+    "snapshot_sha256": "c23ab82bf2844de20bb69225bbaaff47e3369d76f7cee27aac93ea8abda09a20",
+    "changed": true,
+    "variation_ids": [
+      10596,
+      10597,
+      10598,
+      10599,
+      10600,
+      10601
+    ],
+    "after_sha256": "75fafbeb8ffe427a1ecb92d2e5426715006c490d04d4c6b583ff99c53ad45d76"
+  },
+  {
+    "sku": "sg-005",
+    "id": 9880,
+    "snapshot_sha256": "c8b285c8baddc9f348f677da183f02750300d6777c3e706a53f3661c53cd3b59",
+    "changed": true,
+    "variation_ids": [
+      10483,
+      10484,
+      10485,
+      10486,
+      10487
+    ],
+    "after_sha256": "7e0035be394d4c09c9b691398554e3ed935bb67cbf110fd3e9d0f97f9a46eb58"
+  },
+  {
+    "sku": "sg-006",
+    "id": 9884,
+    "snapshot_sha256": "0f5d56ee7de7a4294589dfc4fb46d77f9b592672eceb6e2bafe22bf76217dfe5",
+    "changed": true,
+    "variation_ids": [
+      10602,
+      10603,
+      10604,
+      10605,
+      10606,
+      10607
+    ],
+    "after_sha256": "a58edd57f2ed03f52b4a6104310831878c9fcc26d3cda16f1ff57581dc10c0d1"
+  },
+  {
+    "sku": "sg-009",
+    "id": 9886,
+    "snapshot_sha256": "a8812d5990adb7d0b12ea91cb9a946b0d25601e68954aacec766b4a58e502df8",
+    "changed": true,
+    "variation_ids": [
+      10608,
+      10609,
+      10610,
+      10611,
+      10612,
+      10613
+    ],
+    "after_sha256": "b36846b46fa131f9d98e77861e2e8d4fa28fe478e18fc686f0a9f547189988c0"
+  },
+  {
+    "sku": "sg-011",
+    "id": 9888,
+    "snapshot_sha256": "c98ad34b2e8330fdd1cf0a9c22ce5decd9e0cb42a44c83ec8a9d0bf237142093",
+    "changed": true,
+    "variation_ids": [
+      10614,
+      10615,
+      10616,
+      10617,
+      10618,
+      10619
+    ],
+    "after_sha256": "6870254fc559cbe62fe2805252e12bce5960b3dd9f5a4f36197ac49ab802a48a"
+  },
+  {
+    "sku": "sg-012",
+    "id": 9889,
+    "snapshot_sha256": "5c67611552a2e887372e8fb874835cad599bff032e9abe44003e34d991dcddcb",
+    "changed": true,
+    "variation_ids": [
+      10620,
+      10621,
+      10622,
+      10623,
+      10624,
+      10625
+    ],
+    "after_sha256": "60d79bf3324b3da567262259037796a6751321e6e4821d864b6b162992a19973"
+  },
+  {
+    "sku": "sg-013",
+    "id": 9953,
+    "snapshot_sha256": "cfda530ab19aa8166f843613f9a077a686549fd4be160542867f9d97f7147fc0",
+    "changed": true,
+    "variation_ids": [
+      10626,
+      10627,
+      10628,
+      10629,
+      10630,
+      10631
+    ],
+    "after_sha256": "0418549eb5338c43a9c4959bff27d27c0f34b4988d7112b872629136f6021cf6"
+  },
+  {
+    "sku": "sg-014",
+    "id": 9954,
+    "snapshot_sha256": "f9fe112feded610721623564dac30e0b69ecca58a7426f75ed094d5ddaea8504",
+    "changed": true,
+    "variation_ids": [
+      10632,
+      10633,
+      10634,
+      10635,
+      10636,
+      10637
+    ],
+    "after_sha256": "de244d82f96eeb9c420ca14eea76055916c83f2859d8997cd3c71e00e9f4eacd"
+  },
+  {
+    "sku": "sg-015",
+    "id": 10067,
+    "snapshot_sha256": "a1cbb048c2a08dc64b7236f2d1d49be297461789c42e3fac29d7184a90e0cac0",
+    "changed": true,
+    "variation_ids": [
+      10638,
+      10639,
+      10640,
+      10641,
+      10642,
+      10643
+    ],
+    "after_sha256": "ee00535185a7282e8dca530370e6b611518fa930c07f5ef5403efbd932a26f2b"
+  }
+]

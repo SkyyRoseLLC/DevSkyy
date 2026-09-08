@@ -1,0 +1,36 @@
+			<?php if ( false ) : // Retained legacy draft until the V2 page audit closes. ?>
+			<section class="sr2-preorder-hero" aria-labelledby="sr2-page-title">
+				<div class="sr2-preorder-hero__media"><img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'branding/hero/luxury-nighttime-1280w.webp' ) ); ?>" alt="" width="1280" height="549" fetchpriority="high"></div>
+				<div class="sr2-preorder-hero__copy"><p class="sr2-eyebrow"><?php esc_html_e( 'Pre-Order Collection', 'skyyrose-flagship-2' ); ?></p><h1 id="sr2-page-title"><?php esc_html_e( 'Choose the piece that speaks to you.', 'skyyrose-flagship-2' ); ?></h1><p><?php esc_html_e( 'Orders use standard checkout. The pre-order label does not reserve stock or defer payment.', 'skyyrose-flagship-2' ); ?></p><a class="sr2-button sr2-button--fill" href="#reserve"><?php esc_html_e( 'View pieces', 'skyyrose-flagship-2' ); ?></a></div>
+			</section>
+			<?php
+			$black_rose_scene_products = array(
+				array( 'slug' => 'br-001', 'label' => __( 'Black Is Beautiful', 'skyyrose-flagship-2' ), 'note' => __( 'The Oakland statement jersey.', 'skyyrose-flagship-2' ), 'x' => '17%', 'y' => '62%' ),
+				array( 'slug' => 'br-003', 'label' => __( 'Number 30', 'skyyrose-flagship-2' ), 'note' => __( 'A numbered piece from the house.', 'skyyrose-flagship-2' ), 'x' => '42%', 'y' => '58%' ),
+				array( 'slug' => 'br-004', 'label' => __( 'Number 32', 'skyyrose-flagship-2' ), 'note' => __( 'Bay Area sports memory, recut.', 'skyyrose-flagship-2' ), 'x' => '53%', 'y' => '59%' ),
+				array( 'slug' => 'br-008', 'label' => __( 'The Oakland Jacket', 'skyyrose-flagship-2' ), 'note' => __( 'Black Rose armor for the night.', 'skyyrose-flagship-2' ), 'x' => '78%', 'y' => '58%' ),
+				array( 'slug' => 'br-009', 'label' => __( 'The Bay Tee', 'skyyrose-flagship-2' ), 'note' => __( 'The rose travels across the Bay.', 'skyyrose-flagship-2' ), 'x' => '55%', 'y' => '83%' ),
+			);
+			?>
+			<section class="sr2-black-rose-scene" aria-labelledby="sr2-black-rose-scene-title" data-interactive-scene>
+				<header class="sr2-section-head sr2-section-head--split"><div><p><?php esc_html_e( 'Black Rose / Pre-Order Salon', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-black-rose-scene-title"><?php esc_html_e( 'Choose your seat in the room.', 'skyyrose-flagship-2' ); ?></h2></div><p><?php esc_html_e( 'Move through the salon. Select a piece. Enter its world.', 'skyyrose-flagship-2' ); ?></p></header>
+				<div class="sr2-black-rose-scene__frame">
+					<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( 'images/preorder/black-rose-salon.webp' ) ); ?>" alt="Black Rose jerseys and jackets arranged in a dark salon overlooking the Bay Bridge" width="1536" height="1024" loading="lazy" decoding="async">
+					<div class="sr2-black-rose-scene__hotspots">
+						<?php foreach ( $black_rose_scene_products as $index => $scene_product ) : $product_post = get_page_by_path( $scene_product['slug'], OBJECT, 'product' ); $product_url = $product_post ? get_permalink( $product_post ) : skyyrose2_collection_url( 'black-rose' ); ?>
+							<a class="sr2-scene-hotspot<?php echo 0 === $index ? ' is-active' : ''; ?>" data-scene-hotspot href="<?php echo esc_url( $product_url ); ?>" style="--hotspot-x:<?php echo esc_attr( $scene_product['x'] ); ?>;--hotspot-y:<?php echo esc_attr( $scene_product['y'] ); ?>" aria-label="<?php echo esc_attr( $scene_product['label'] ); ?>"><span><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span></a>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<div class="sr2-black-rose-scene__rail" role="list">
+					<?php foreach ( $black_rose_scene_products as $index => $scene_product ) : $scene_post = get_page_by_path( $scene_product['slug'], OBJECT, 'product' ); $scene_url = $scene_post ? get_permalink( $scene_post ) : skyyrose2_collection_url( 'black-rose' ); ?><a role="listitem" class="sr2-scene-card<?php echo 0 === $index ? ' is-active' : ''; ?>" data-scene-card href="<?php echo esc_url( $scene_url ); ?>"><span><?php echo esc_html( sprintf( '%02d', $index + 1 ) ); ?></span><strong><?php echo esc_html( $scene_product['label'] ); ?></strong><em><?php echo esc_html( $scene_product['note'] ); ?></em></a><?php endforeach; ?>
+				</div>
+			</section>
+			<section class="sr2-preorder-steps" aria-labelledby="sr2-preorder-steps-title">
+				<header><p class="sr2-eyebrow"><?php esc_html_e( 'How It Works', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-preorder-steps-title"><?php esc_html_e( 'Three moves. Your place held.', 'skyyrose-flagship-2' ); ?></h2></header>
+				<div><article><span>01</span><h3><?php esc_html_e( 'Choose your world', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Enter collection story and find piece carrying your code.', 'skyyrose-flagship-2' ); ?></p></article><article><span>02</span><h3><?php esc_html_e( 'Select your piece', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Confirm size, price, and availability. Contact Client Services for shipping estimates.', 'skyyrose-flagship-2' ); ?></p></article><article><span>03</span><h3><?php esc_html_e( 'Review your order', 'skyyrose-flagship-2' ); ?></h3><p><?php esc_html_e( 'Review your order at checkout and follow its status in your account.', 'skyyrose-flagship-2' ); ?></p></article></div>
+			</section>
+			<?php skyyrose2_render_collection_rail(); ?>
+			<section id="reserve" class="sr2-section sr2-section--products"><header class="sr2-section-head"><p><?php esc_html_e( 'Browse the collection', 'skyyrose-flagship-2' ); ?></p><h2><?php esc_html_e( 'Future pieces. Present choice.', 'skyyrose-flagship-2' ); ?></h2><p class="sr2-section-head__note"><?php esc_html_e( 'Review each product before ordering. Contact Client Services if you need a shipping estimate.', 'skyyrose-flagship-2' ); ?></p></header><?php skyyrose2_product_cards( 12, 'pre-order' ); ?></section>
+
+			<?php endif; ?>

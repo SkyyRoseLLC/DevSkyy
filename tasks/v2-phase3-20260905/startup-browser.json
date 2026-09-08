@@ -1,0 +1,10 @@
+{
+  "deferred": {
+    "visibility": "hidden",
+    "position": "fixed",
+    "scripting": true,
+    "initialized": false
+  },
+  "noJavaScript": "visible in-flow navigation",
+  "status": "PASS"
+}

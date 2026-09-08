@@ -1,0 +1,209 @@
+[
+  {
+    "scene": "BR-COMMERCE-1",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "BR-COMMERCE-2",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "BR-COMMERCE-3",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "LH-COMMERCE-1",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "LH-COMMERCE-2",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "LH-COMMERCE-3",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "SIG-COMMERCE-1",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "SIG-COMMERCE-2",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  },
+  {
+    "scene": "SIG-COMMERCE-3",
+    "runtime_consumers": [
+      "template-collection.php",
+      "template-parts/immersive/world.php"
+    ],
+    "current_manifest": "data/collection-scene-motion.json",
+    "staging_dependency": "K1 final poster/desktop/mobile + C1 effective product bindings",
+    "base_plate": "SUPERSEDED CONTRACT",
+    "historical_proof": "Preserved original founder-scene validator and evidence commit",
+    "current_checks": [
+      "exact scene ID",
+      "exact effective SKU cast",
+      "collection",
+      "SOT hash",
+      "poster SHA256",
+      "desktop/mobile SHA256",
+      "wiring flags",
+      "unchanged PHP"
+    ],
+    "retain_required": true,
+    "legacy_alpha_and_surgical_checks": "Required for regenerating/reintroducing legacy layered scenes; not executed by K1 runtime"
+  }
+]

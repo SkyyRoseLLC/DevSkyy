@@ -1,0 +1,84 @@
+{
+  "schema": "skyyrose.collection-hero-motion.wiring.v1",
+  "collection": "love-hurts",
+  "wired_at": "2026-09-05T00:03:59.981Z",
+  "user_request": "yup approved",
+  "approval_context": "Approval of the displayed Love Hurts replacement candidate for the same optimized V2 continuous-loop wiring as Black Rose.",
+  "approved_candidate_sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+  "previous_motion": {
+    "status": "founder_approved",
+    "founder_approved_at": "2026-08-22T09:58:01-07:00",
+    "founder_approval_evidence": "Founder directive: get those wired into v2",
+    "job_id": "491825aa-e011-4ac9-8f4b-6a4a85ed7bdb",
+    "generator": "higgsfield_seedance_2_5_omni_reference",
+    "provider_attempt": {
+      "provider": "higgsfield",
+      "status": "completed",
+      "submitted_count": 1
+    },
+    "master": {
+      "file": "assets/video/collection-heroes/approved/love-hurts/love-hurts-rose-aisle-monuments-motion-v2.mp4",
+      "sha256": "8b614b34aea12764c43f02ce84e4ff19e120d1d1616669b3e0852f9afa9d29b3"
+    },
+    "web": [
+      {
+        "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.mp4",
+        "sha256": "f8194419f345defd3e7b016c6cb6661f3910ba31fd4f9b461203bb368d0980c3"
+      },
+      {
+        "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-rose-aisle-monuments-motion-v2.webm",
+        "sha256": "f82a7859f9b15e1f94d451e180543e74776ebd4aacb5c2f68e08f15498524988"
+      }
+    ],
+    "internal_visual_qa": "pass_pending_founder_review",
+    "qa": {
+      "duration_seconds": 6,
+      "resolution": "1920x1080",
+      "contact_sheet": "assets/video/collection-heroes/approved/love-hurts/qa/contact-sheet-v2.jpg",
+      "motion_brief": "enchanted rose hover, falling petals, cathedral reflections",
+      "text_and_geometry": "visually stable; founder review required"
+    },
+    "virality_predictor": "pending_founder_review"
+  },
+  "new_motion": {
+    "status": "founder_approved",
+    "provider": "higgsfield",
+    "model": "seedance_2_5",
+    "job_id": "e0435fa2-5d60-4d1f-8f90-00a40a433e49",
+    "master": {
+      "file": "assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4",
+      "sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+      "bytes": 7819988
+    },
+    "web": [
+      {
+        "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.mp4",
+        "sha256": "5135700826b7bef568651ecea477af877f5a692318336d907d1c0076b14eb542",
+        "bytes": 940111
+      },
+      {
+        "file": "assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+        "sha256": "fce1e85ddfc697f56a458d7f207994afe5914d80e31b8169c6a5cd729ddbcceb",
+        "bytes": 824162
+      }
+    ],
+    "founder_approved_at": "2026-09-05T00:03:59.981Z",
+    "founder_approval_note": "Founder replied \"yup approved\" to the displayed Love Hurts authentic-motion-v3-a1 candidate and the offer to apply the same optimized V2 continuous-loop wiring as Black Rose. No deployment authorized.",
+    "delivery": {
+      "loop": true,
+      "muted": true,
+      "playsinline": true,
+      "preload": "none",
+      "frame_rate": 24,
+      "width": 1440,
+      "mp4_fast_start": true,
+      "audio_removed": true,
+      "visible_only_playback": true,
+      "reduced_motion_uses_still": true,
+      "save_data_uses_still": true
+    }
+  },
+  "shared_controller": "Existing native loop playback, visibility controls, and still fallbacks retained; existing CSS suppresses redundant overlays when video is ready.",
+  "runtime_browser_tested": false,
+  "deployed": false
+}
