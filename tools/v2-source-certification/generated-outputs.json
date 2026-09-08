@@ -1,4 +1,12 @@
 {
+  "assets/css/about-archive.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/about-archive.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
   "assets/css/collection-scene-motion.min.css": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",
@@ -87,11 +95,43 @@
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
+  "assets/css/premium-commerce.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/premium-commerce.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
   "assets/css/product-page.min.css": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",
     "released": true,
     "source": "assets/css/product-page.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/quick-view-commerce.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/quick-view-commerce.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/scene-handoff.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/scene-handoff.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/css/search-preview.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/search-preview.css",
     "tool": "clean-css 5.3.3",
     "tracked": true
   },
@@ -911,6 +951,14 @@
     "tool": "Python 3.12.12 / Pillow 12.3.0",
     "tracked": true
   },
+  "assets/js/about-archive.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/about-archive.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
   "assets/js/collection-scene-motion.min.js": {
     "generator": "scripts/build-assets.mjs",
     "normalization": "No trailing newline; pinned minifier settings",
@@ -956,6 +1004,38 @@
     "normalization": "No trailing newline; pinned minifier settings",
     "released": true,
     "source": "assets/js/mascot.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/premium-commerce.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/premium-commerce.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/quick-view-commerce.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/quick-view-commerce.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/scene-handoff.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/scene-handoff.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/js/search-preview.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/search-preview.js",
     "tool": "terser 5.36.0",
     "tracked": true
   },
