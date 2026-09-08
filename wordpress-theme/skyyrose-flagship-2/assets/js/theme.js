@@ -30,7 +30,7 @@
     let videoReady = false;
     let videoTimer = null;
     let playAttempt = 0;
-    const wantsMotion = () => pageReady && nearViewport && !brandMotion.matches && !brandConnection?.saveData;
+    const wantsMotion = () => pageReady && nearViewport && !document.hidden && !brandMotion.matches && !brandConnection?.saveData;
     const showImage = () => { image.dataset.brandVideoActive = 'false'; };
     const failVideo = () => {
       videoFailed = true;
@@ -111,6 +111,7 @@
     });
     brandMotion.addEventListener?.('change', update);
     brandConnection?.addEventListener?.('change', update);
+    document.addEventListener('visibilitychange', update);
     if (!nearViewport) {
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
