@@ -8,8 +8,8 @@
     },
     {
       "file": "shop-page.min.css",
-      "sha256": "5eca980f964e8bed21c907bce65e1e2abd3250c5d53fd42e0ef83a2a3adc13e6",
-      "bytes": 7840
+      "sha256": "fb7daf6b0585968b6f67b6ca9cf3a555772c227dfc66e5034f77edc3624df07b",
+      "bytes": 7858
     },
     {
       "file": "controls.min.css",
@@ -18,8 +18,8 @@
     },
     {
       "file": "global-shell.min.css",
-      "sha256": "7b5469f1396342e248c5d92e652cfbc68a2b83ace9ea84ccc38067d38c863315",
-      "bytes": 15865
+      "sha256": "8a96ea021665303eb20a9d83848712b8e3b4b2caccf85cf368babf5b49e0f12a",
+      "bytes": 16340
     },
     {
       "file": "visual-recovery.min.css",
@@ -28,8 +28,8 @@
     },
     {
       "file": "mascot.min.css",
-      "sha256": "bd3de9018031146dd7ed78b534e60c42f8bdfd0626d4ed90e85b474916da8b63",
-      "bytes": 14236
+      "sha256": "2972d42a123942af19c7677af936e3022d8e8f73741332c94d14fa9e0c1df5f3",
+      "bytes": 14378
     }
   ]
 }
