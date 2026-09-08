@@ -1,0 +1,8 @@
+output_prefix: sig-commerce-1/protected-recovery-v1
+pipeline:
+  - fragment: sig1-protected-recovery
+    alias: sig1-protected
+    params:
+      environment_image: sig1-environment-plate-v3.png
+      statue_image: sig1-font-statue-clean-transparent-v2.png
+      model_image: sg-009-sg-007-protected-model-v2.png

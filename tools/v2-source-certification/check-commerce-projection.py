@@ -23,7 +23,7 @@ if str(ROOT) not in sys.path:
 
 from inputs import load_product_sot  # noqa: E402
 
-OUTPUT_PATH = Path(__file__).with_name('inputs') / 'woocommerce-product-sync.json'
+OUTPUT_PATH = Path(__file__).with_name("inputs") / "woocommerce-product-sync.json"
 
 SCHEMA = "skyyrose.woocommerce-product-sync.v1"
 COLLECTION_NAMES = {
@@ -110,9 +110,7 @@ def _catalog_meta(record: dict[str, Any]) -> list[dict[str, Any]]:
     return meta
 
 
-def _variation_payload(
-    *, sku: str, size: str, price: str, menu_order: int
-) -> dict[str, Any]:
+def _variation_payload(*, sku: str, size: str, price: str, menu_order: int) -> dict[str, Any]:
     return {
         "description": "",
         "sku": f"{sku}-{_slug(size).upper()}",
@@ -227,14 +225,16 @@ def build_product_record(record: dict[str, Any]) -> dict[str, Any]:
 
     create_only_meta = []
     if is_preorder:
-        create_only_meta.append(
-            _meta("_preorder_available", commerce["edition_size"])
-        )
+        create_only_meta.append(_meta("_preorder_available", commerce["edition_size"]))
 
-    variations = [
-        _variation_payload(sku=sku, size=size, price=price, menu_order=index)
-        for index, size in enumerate(sizes)
-    ] if variable else []
+    variations = (
+        [
+            _variation_payload(sku=sku, size=size, price=price, menu_order=index)
+            for index, size in enumerate(sizes)
+        ]
+        if variable
+        else []
+    )
 
     return {
         "sku": sku,
@@ -262,9 +262,7 @@ def build_contract() -> dict[str, Any]:
             "product_sot_sha256": hashlib.sha256(rendered).hexdigest(),
         },
         "category_names": COLLECTION_NAMES,
-        "products": [
-            build_product_record(record) for record in manifest["products"].values()
-        ],
+        "products": [build_product_record(record) for record in manifest["products"].values()],
     }
 
 

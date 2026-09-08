@@ -41,3 +41,10 @@ luxury pattern passes. Missing provenance is `UNVERIFIED`.
 Direction and provenance only: no image generation, CSS/JS implementation,
 catalog changes, or final visual approval. The media gate creates and verifies
 the candidate; the founder retains promotion approval.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. Record the approved visual
+direction, image/SKU provenance, crop and type contract, logo-off evidence, and
+any first-seen direction conflict before a downstream media or implementation
+task may call the work complete.

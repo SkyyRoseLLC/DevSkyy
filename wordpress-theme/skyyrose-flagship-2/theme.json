@@ -184,6 +184,15 @@
               "src": [
                 "file:./assets/sot/fonts/archivo-latin.woff2"
               ]
+            },
+            {
+              "fontFamily": "Archivo",
+              "fontStyle": "normal",
+              "fontWeight": "100 900",
+              "fontDisplay": "swap",
+              "src": [
+                "file:./assets/derived/fonts/archivo-normal-width.woff2"
+              ]
             }
           ]
         },

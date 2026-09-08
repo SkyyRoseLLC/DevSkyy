@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT))
 
 sys.path.insert(0, str(ROOT / "tools/v2-source-certification"))
-from inputs import load_product_sot, garment_types  # noqa: E402
+from inputs import garment_types, load_product_sot  # noqa: E402
 
 OUTPUT = Path(__file__).resolve().parents[1] / "data/product-presentation-registry.json"
 ALLOWED_COLLECTIONS = {"black-rose", "kids-capsule", "love-hurts", "signature"}
@@ -32,9 +32,7 @@ def build_registry() -> dict[str, object]:
     series_members: dict[str, list[tuple[int, str]]] = {
         series_slug: [] for series_slug in ALLOWED_SERIES
     }
-    series_orders: dict[str, set[int]] = {
-        series_slug: set() for series_slug in ALLOWED_SERIES
-    }
+    series_orders: dict[str, set[int]] = {series_slug: set() for series_slug in ALLOWED_SERIES}
     for sku, product in manifest["products"].items():
         collection = product["identity"]["collection"]
         if not sku or sku in products:
@@ -55,9 +53,7 @@ def build_registry() -> dict[str, object]:
             if not series_region or series_order <= 0:
                 raise ValueError(f"Series metadata is incomplete for {sku}")
             if series_order in series_orders[series_slug]:
-                raise ValueError(
-                    f"Duplicate {series_slug} series order: {series_order}"
-                )
+                raise ValueError(f"Duplicate {series_slug} series order: {series_order}")
             series_orders[series_slug].add(series_order)
             series_members[series_slug].append((series_order, sku))
         elif series_region or series_order:
@@ -79,9 +75,7 @@ def build_registry() -> dict[str, object]:
         products[sku] = record
 
     supplements = {
-        f"{series_slug.replace('-', '_')}_skus": [
-            sku for _order, sku in sorted(members)
-        ]
+        f"{series_slug.replace('-', '_')}_skus": [sku for _order, sku in sorted(members)]
         for series_slug, members in sorted(series_members.items())
     }
     return {

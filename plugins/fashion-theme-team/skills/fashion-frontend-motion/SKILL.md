@@ -35,3 +35,10 @@ fallback, and performance checks. Visual claims without eyes-on evidence are
 ## Boundaries
 
 No deployment, upload, unapproved dependency, or brand/SOT override.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. Require source/build and
+minified hashes, 390/768/1440 captures, reduced-motion and fallback evidence,
+plus console/network results. A visual, motion, resource, or responsive defect
+is recorded at first observation and blocks completion for that scope.

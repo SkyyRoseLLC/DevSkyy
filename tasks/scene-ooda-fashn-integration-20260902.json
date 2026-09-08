@@ -1,0 +1,104 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "SCENE-OODA-FASHN-INTEGRATION-20260902",
+  "state": "READY_FOR_INTEGRATION_PR",
+  "project_manager": "fashion-theme-lead",
+  "scope": {
+    "scene_ids": [
+      "LH-COMMERCE-2",
+      "BR-COMMERCE-2",
+      "SIG-COMMERCE-1",
+      "SIG-COMMERCE-2",
+      "SIG-COMMERCE-3"
+    ],
+    "target": "Land the governed FASHN-to-Comfy scene-completion foundation without spending credits or implying scene promotion.",
+    "route": "source_authority_to_specialized_vto_to_product_free_environment_to_protected_local_composite",
+    "exclusions": [
+      "credential creation or disclosure",
+      "paid Model Create, VTO, Runway, or Higgsfield execution",
+      "automatic paid retry",
+      "candidate approval or promotion",
+      "storefront wiring",
+      "deployment or publication"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Scene integration project manager",
+      "capabilities": ["scope", "OODA state", "credit control", "handoff"],
+      "deliverable": "Green integration PR and fresh-task handoff"
+    },
+    {
+      "name": "product-fidelity-image-edits",
+      "job_title": "FASHN and protected-composite implementation owner",
+      "capabilities": [
+        "source authority",
+        "model plate",
+        "virtual try-on",
+        "protected segmentation",
+        "native integration"
+      ],
+      "deliverable": "Hash-bound adapters, contracts, workflows, receipts, and tests"
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Read-only independent reviewer",
+      "capabilities": [
+        "product fidelity",
+        "identity",
+        "pocket topology",
+        "optical integration"
+      ],
+      "deliverable": "Independent code and later candidate-bound visual verdicts",
+      "independent_from_project_manager": true,
+      "may_edit_candidate": false
+    }
+  ],
+  "authority": {
+    "catalog": "skyyrose-catalog.csv",
+    "image_sot": "data/sot-images.json",
+    "lh003_source_authority": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+    "fashion_theme_team_source": "/Users/theceo/plugins/fashion-theme-team",
+    "fashion_theme_team_commit": "7571dc04b4ea37a47327871f97775ca40971110f",
+    "fashion_theme_team_vendor": "plugins/fashion-theme-team",
+    "comfy_runtime": "http://127.0.0.1:8189"
+  },
+  "acceptance_criteria": [
+    "Canonical Fashion Theme Team source, vendor, and installed-cache distributions verify and remain byte-identical.",
+    "FASHN credentials load from macOS Keychain first and test or CI environment fallback never leaks secrets.",
+    "Model Create and Try-On Max paid submissions are one-shot and provider-reported credit headers are mandatory.",
+    "Model-plate preflight, execute, and independent-review receipts bind immutable fingerprints, sources, outputs, jobs, and actual usage.",
+    "VTO prepare performs no paid POST and returns PASS_PENDING_APPROVAL only after source, authority, output, and balance checks pass.",
+    "A front-facing LH-003 review directly proves both side zippers and explicitly does not claim rendered rear-pocket or full-360 proof.",
+    "Comfy discovers the active Desktop runtime at port 8189, checks required nodes and BiRefNet, transfers inputs and outputs through the API, and records prompt/history evidence.",
+    "Runway is restricted to separately approved product-free background plates; protected customer, product, and sculpture RGB is composed locally.",
+    "BR and Signature contracts select protected composition, selective VTO, or mask-bound correction according to actual authority gaps.",
+    "All relevant checks pass and the PR is independently reviewed before merge."
+  ],
+  "credit_control": {
+    "foundation_spend_authorized": false,
+    "automatic_paid_retries": false,
+    "candidate_bound_approval_required": true,
+    "provider_reported_usage_required": true
+  },
+  "manager_verification": {
+    "status": "PASS_FOUNDATION_READY",
+    "evidence": [
+      "No provider generation request has been submitted by this integration task.",
+      "The live Comfy Desktop 0.34.2 runtime and required node families passed read-only inventory and workflow validation at port 8189.",
+      "Official BiRefNet weights are installed in the shared Comfy model directory and match SHA-256 9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154.",
+      "The canonical, vendored, and active-cache Fashion Theme Team distributions pass parity, integrity, schema, formatting, and 89-test portable-package verification.",
+      "The focused FASHN, VTO, model-plate, Comfy-adapter, native-workflow, environment-governance, catalog-reader, and asset-manifest suites pass 160 tests.",
+      "Independent read-only review reports no remaining actionable findings after adversarial alternate-authority-chain testing.",
+      "Root JavaScript tests pass 672 of 672; frontend tests pass 70 of 70; frontend lint and type-check pass; the production frontend build completes.",
+      "Catalog and image SOT consistency passes 27 of 27 checks across 33 SKUs and 113 resolved image references.",
+      "FASHN remains fail-closed because the macOS Keychain credential is not present; the fresh execution task must stop for hidden credential entry before any balance check or paid call."
+    ]
+  },
+  "founder_approval": {
+    "status": "NOT_REQUESTED",
+    "scope": "No candidate exists in this foundation task."
+  },
+  "release_decision": "NOT_AUTHORIZED"
+}

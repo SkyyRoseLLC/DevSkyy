@@ -1,0 +1,5 @@
+# Deterministic outputs owned by scripts/audit_source_photos.py.
+# Formatting these after generation breaks the byte-for-byte freshness gate.
+assets/products/source-photos/manifest.json
+tasks/source-photo-audit-report.md
+tasks/source-photo-shoot-list.md

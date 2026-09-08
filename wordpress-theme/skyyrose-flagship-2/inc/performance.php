@@ -97,6 +97,51 @@ function skyyrose2_performance_dequeue_unused_assets() {
 add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_dequeue_unused_assets', 100 );
 
 /**
+ * Offer small, exact theme styles to Core's bounded inline-style delivery.
+ *
+ * Core retains handle order, attached CSS and relative URL normalization. Its
+ * total byte budget is unchanged; large sheets and every non-selected sheet
+ * remain ordinary blocking stylesheet links, including the no-JS path.
+ * Third-party replacements, alternate media and RTL variants are not bypassed.
+ */
+function skyyrose2_performance_inline_small_styles() {
+	if ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) || ! apply_filters( 'skyyrose2_inline_small_styles', true ) ) {
+		return;
+	}
+
+	$styles = wp_styles();
+	$assets = array(
+		'tokens' => 'design-tokens', 'controls' => 'controls',
+		'theme' => 'archive-theme',
+		'global-shell' => 'global-shell', 'visual-recovery' => 'visual-recovery',
+		'home-page' => 'home-page', 'collection-world' => 'collection-world',
+		'product-page' => 'product-page', 'shop-page' => 'shop-page',
+		'hero-commerce-scenes' => 'hero-commerce-scenes',
+		'collection-scene-motion' => 'collection-scene-motion', 'mascot' => 'mascot',
+	);
+	foreach ( $assets as $name => $asset ) {
+		$handle = 'skyyrose2-' . $name;
+		$style = $styles->registered[ $handle ] ?? null;
+		if ( ! $style || ! in_array( $handle, $styles->queue, true ) || 'all' !== $style->args || ! empty( $style->extra['rtl'] ) || ! empty( $style->extra['conditional'] ) || ! empty( $style->extra['path'] ) ) {
+			continue;
+		}
+		// The verified archive projection has a separate per-file ceiling;
+		// Core still decides whether it fits the unchanged total 40KB budget.
+		$limit = 'archive-theme' === $asset ? 32768 : 16384;
+		$suffixes = 'archive-theme' === $asset ? array( '.min.css' ) : array( '.min.css', '.css' );
+		foreach ( $suffixes as $suffix ) {
+			$relative = '/assets/css/' . $asset . $suffix;
+			$path = SKYYROSE2_DIR . $relative;
+			if ( SKYYROSE2_URI . $relative === $style->src && is_readable( $path ) && filesize( $path ) <= $limit ) {
+				wp_style_add_data( $handle, 'path', $path );
+				break;
+			}
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'skyyrose2_performance_inline_small_styles', 101 );
+
+/**
  * Prevent the disabled emoji service from retaining a DNS-prefetch hint.
  * Preserve every hint registered by active plugins and route-owned media.
  *
@@ -264,6 +309,10 @@ function skyyrose2_performance_route_preloads() {
 			'images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp'
 		);
 	}
+	if ( function_exists( 'is_shop' ) && ( is_shop() || is_product_taxonomy() ) ) {
+		$frame = skyyrose2_performance_archive_frame_preload();
+		return $frame ? array( $frame ) : array();
+	}
 
 	if ( ( ( function_exists( 'skyyrose2_collection_page_slug' ) && skyyrose2_collection_page_slug() ) || is_page_template( 'template-collection.php' ) ) && function_exists( 'skyyrose2_collections' ) ) {
 		$slug        = sanitize_title( get_post_field( 'post_name', get_queried_object_id() ) );
@@ -355,6 +404,64 @@ function skyyrose2_performance_route_preloads() {
 		}
 	}
 
+	return array();
+}
+
+/**
+ * Discover the first native archive frame without advancing or replacing its query.
+ *
+ * Category displays and extension-owned loop/visibility behavior are deliberately
+ * excluded. Product hydration may read metadata; no product-selection query or
+ * Woo loop setup is performed. The first visible product owns the hint or none.
+ *
+ * @return array<string,string>
+ */
+function skyyrose2_performance_archive_frame_preload() {
+	global $wp_query, $wp_the_query;
+	if (
+		! function_exists( 'is_shop' ) || ! ( is_shop() || is_product_taxonomy() ) ||
+		is_admin() || wp_doing_ajax() || ( defined( 'REST_REQUEST' ) && REST_REQUEST ) || is_feed() || is_embed() ||
+		! ( $wp_query instanceof WP_Query ) || $wp_query !== $wp_the_query || ! $wp_query->is_main_query() ||
+		'product_query' !== $wp_query->get( 'wc_query' ) || -1 !== $wp_query->current_post ||
+		$wp_query->post_count < 1 || ! is_array( $wp_query->posts ) ||
+		has_filter( 'woocommerce_product_is_visible' ) || has_action( 'woocommerce_shop_loop' )
+	) {
+		return array();
+	}
+	$loop = $GLOBALS['woocommerce_loop'] ?? array();
+	if ( ! is_array( $loop ) || ! empty( $loop['name'] ) || ! empty( $loop['is_shortcode'] ) || ! empty( $loop['loop'] ) || ( isset( $loop['total'] ) && (int) $loop['total'] < 1 ) ) {
+		return array();
+	}
+	$display = '';
+	if ( is_shop() ) {
+		$display = get_option( 'woocommerce_shop_page_display', '' );
+	} elseif ( is_product_category() ) {
+		$display = get_term_meta( get_queried_object_id(), 'display_type', true );
+		$display = $display ? $display : get_option( 'woocommerce_category_archive_display', '' );
+	}
+	if ( in_array( $display, array( 'both', 'subcategories' ), true ) ) {
+		return array();
+	}
+	foreach ( $wp_query->posts as $candidate_post ) {
+		if ( ! ( $candidate_post instanceof WP_Post ) || 'product' !== $candidate_post->post_type ) {
+			return array();
+		}
+		$candidate = wc_get_product( $candidate_post->ID );
+		if ( ! ( $candidate instanceof WC_Product ) || ! $candidate->is_visible() ) {
+			continue;
+		}
+		$record = skyyrose2_product_presentation( $candidate );
+		$collection = sanitize_title( $record['collection'] ?? '' );
+		$collections = skyyrose2_collections();
+		$frame = $collections[ $collection ]['portal_statue']['small'] ?? '';
+		$resource = $frame ? skyyrose2_performance_sot_preload( $frame ) : array();
+		$delivery = $resource && function_exists( 'skyyrose2_archive_frame_delivery' ) ? skyyrose2_archive_frame_delivery( $collection ) : array();
+		if ( $delivery ) {
+			$resource['imagesrcset'] = $delivery['srcset'];
+			$resource['imagesizes'] = $delivery['sizes'];
+		}
+		return $resource;
+	}
 	return array();
 }
 

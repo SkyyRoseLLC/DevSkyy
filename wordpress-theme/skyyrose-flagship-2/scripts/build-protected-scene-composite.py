@@ -54,7 +54,9 @@ def place(base: Image.Image, layer: Image.Image, x: int, y: int) -> Image.Image:
     return result
 
 
-def interaction(canvas_size: tuple[int, int], layer: Image.Image, x: int, y: int, floor_y: int) -> tuple[Image.Image, Image.Image]:
+def interaction(
+    canvas_size: tuple[int, int], layer: Image.Image, x: int, y: int, floor_y: int
+) -> tuple[Image.Image, Image.Image]:
     """Create a contact shadow and short floor reflection without drawing on a layer."""
     alpha = Image.new("L", canvas_size, 0)
     alpha.paste(layer.getchannel("A"), (x, y))
@@ -116,7 +118,12 @@ def main() -> int:
     if not meaningful_alpha(model_original):
         raise SystemExit("protected model must have real alpha containing both 0 and 255")
     model = scale_to_height(model_original, args.height)
-    if args.x < 0 or args.y < 0 or args.x + model.width > plate.width or args.y + model.height > plate.height:
+    if (
+        args.x < 0
+        or args.y < 0
+        or args.x + model.width > plate.width
+        or args.y + model.height > plate.height
+    ):
         raise SystemExit("model placement exceeds plate bounds")
 
     overlays: list[dict[str, object]] = []
@@ -133,7 +140,13 @@ def main() -> int:
         if x < 0 or y < 0 or x + overlay.width > plate.width or y + overlay.height > plate.height:
             raise SystemExit(f"overlay placement exceeds plate bounds: {overlay_path}")
         base = place(base, overlay, x, y)
-        overlays.append({"path": str(overlay_path), "sha256": sha256(overlay_path), "placement": [x, y, overlay.width, overlay.height]})
+        overlays.append(
+            {
+                "path": str(overlay_path),
+                "sha256": sha256(overlay_path),
+                "placement": [x, y, overlay.width, overlay.height],
+            }
+        )
 
     shadow, reflection = interaction(plate.size, model, args.x, args.y, args.floor_y)
     result = Image.alpha_composite(base, reflection)
@@ -152,10 +165,23 @@ def main() -> int:
         "founder_approval_required": True,
         "v2_wired": False,
         "deployment_authorized": False,
-        "plate": {"path": str(args.plate), "sha256": sha256(args.plate), "dimensions": list(plate.size)},
-        "protected_model": {"path": str(args.model), "sha256": sha256(args.model), "placement": [args.x, args.y, model.width, model.height], "fully_opaque_rgb_exact": exact_opaque},
+        "plate": {
+            "path": str(args.plate),
+            "sha256": sha256(args.plate),
+            "dimensions": list(plate.size),
+        },
+        "protected_model": {
+            "path": str(args.model),
+            "sha256": sha256(args.model),
+            "placement": [args.x, args.y, model.width, model.height],
+            "fully_opaque_rgb_exact": exact_opaque,
+        },
         "overlays": overlays,
-        "floor_interaction": {"floor_y": args.floor_y, "shadow": "alpha_derived", "reflection": "alpha_derived"},
+        "floor_interaction": {
+            "floor_y": args.floor_y,
+            "shadow": "alpha_derived",
+            "reflection": "alpha_derived",
+        },
         "output": {"path": str(args.output), "sha256": sha256(args.output)},
     }
     args.receipt.parent.mkdir(parents=True, exist_ok=True)

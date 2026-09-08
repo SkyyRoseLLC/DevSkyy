@@ -14,9 +14,8 @@ CONTRACT = THEME / "data/scene-production-contract.json"
 BLUEPRINTS = THEME / "data/scene-narrative-blueprints.json"
 MANIFEST = THEME / "assets/scroll-world/generated-candidates/scene-candidate-manifest.json"
 
-def validate_founder_commerce_casts(
-    collection_blueprints: object, products: object
-) -> None:
+
+def validate_founder_commerce_casts(collection_blueprints: object, products: object) -> None:
     if not isinstance(collection_blueprints, dict) or not isinstance(products, dict):
         raise ValueError("scene commerce cast sources are invalid")
 
@@ -42,11 +41,19 @@ def validate_founder_commerce_casts(
                 raise ValueError(f"individual commerce links are not required: {scene_id}")
             if chapter.get("aggregate_bundle_product") is not False:
                 raise ValueError(f"scene implies an unapproved bundle product: {scene_id}")
-            for field in ("direction", "primary_cta", "hero_aspect", "story_support", "product_focus"):
+            for field in (
+                "direction",
+                "primary_cta",
+                "hero_aspect",
+                "story_support",
+                "product_focus",
+            ):
                 if not isinstance(chapter.get(field), str) or not chapter[field].strip():
                     raise ValueError(f"founder commerce scene lacks {field}: {scene_id}")
             generation_gate = chapter.get("generation_gate")
-            if not isinstance(generation_gate, str) or not generation_gate.startswith("BLOCKED_UNTIL_"):
+            if not isinstance(generation_gate, str) or not generation_gate.startswith(
+                "BLOCKED_UNTIL_"
+            ):
                 raise ValueError(f"founder fidelity gate is missing: {scene_id}")
             if chapter.get("approval_state") != "FOUNDER_DIRECTION_LOCKED":
                 raise ValueError(f"founder direction lock is missing: {scene_id}")
@@ -63,7 +70,9 @@ def validate_founder_commerce_casts(
                 if chapter.get("preorder_product_links_required") is True:
                     commerce = product.get("commerce")
                     if not isinstance(commerce, dict) or commerce.get("is_preorder") is not True:
-                        raise ValueError(f"founder pre-order scene includes a non-pre-order SKU: {scene_id} {sku}")
+                        raise ValueError(
+                            f"founder pre-order scene includes a non-pre-order SKU: {scene_id} {sku}"
+                        )
 
 
 def sha256(path: Path) -> str:
@@ -179,7 +188,9 @@ def main() -> int:
     if manifest.get("product_sot_sha256") != expected_sot_sha:
         raise ValueError("scene candidate manifest is not bound to the current product SOT")
     if manifest.get("production_stage") != "previsualization":
-        raise ValueError("candidate manifest must remain previsualization until scenes pass release evidence")
+        raise ValueError(
+            "candidate manifest must remain previsualization until scenes pass release evidence"
+        )
 
     products = product_sot.get("products", {})
     collection_blueprints = blueprints.get("collections", {})
@@ -203,7 +214,9 @@ def main() -> int:
             raise ValueError(f"scene candidate has no narrative blueprint: {collection}")
         if products[sku].get("identity", {}).get("collection") != collection:
             raise ValueError(f"scene candidate product crosses collection boundaries: {sku}")
-        asset = resolve_asset(MANIFEST.parent, candidate.get("file"), label=f"{candidate.get('chapter')}: candidate")
+        asset = resolve_asset(
+            MANIFEST.parent, candidate.get("file"), label=f"{candidate.get('chapter')}: candidate"
+        )
         if sha256(asset) != candidate.get("sha256"):
             raise ValueError(f"scene candidate asset hash drift: {candidate.get('chapter')}")
 
@@ -212,14 +225,18 @@ def main() -> int:
             raise ValueError(f"scene responsive assets are invalid: {candidate.get('chapter')}")
         for viewport, responsive in responsive_assets.items():
             if not isinstance(responsive, dict):
-                raise ValueError(f"scene responsive asset is invalid: {candidate.get('chapter')} {viewport}")
+                raise ValueError(
+                    f"scene responsive asset is invalid: {candidate.get('chapter')} {viewport}"
+                )
             responsive_path = resolve_asset(
                 MANIFEST.parent,
                 responsive.get("file"),
                 label=f"{candidate.get('chapter')}: responsive {viewport}",
             )
             if sha256(responsive_path) != responsive.get("sha256"):
-                raise ValueError(f"scene responsive asset hash drift: {candidate.get('chapter')} {viewport}")
+                raise ValueError(
+                    f"scene responsive asset hash drift: {candidate.get('chapter')} {viewport}"
+                )
 
         chapter = str(candidate.get("chapter", "unnamed"))
         motion_formats: set[str] = set()
@@ -228,13 +245,20 @@ def main() -> int:
             if not isinstance(bundle, list):
                 raise ValueError(f"{chapter}: {bundle_name} is invalid")
             for index, record in enumerate(bundle, start=1):
-                bundle_path = validate_asset_record(record, label=f"{chapter}: {bundle_name}[{index}]")
-                if bundle_name == "motion_assets" and bundle_path.suffix.lower() in {".mp4", ".webm"}:
+                bundle_path = validate_asset_record(
+                    record, label=f"{chapter}: {bundle_name}[{index}]"
+                )
+                if bundle_name == "motion_assets" and bundle_path.suffix.lower() in {
+                    ".mp4",
+                    ".webm",
+                }:
                     if bundle_path.stat().st_size > max_motion_bytes:
                         raise ValueError(f"{chapter}: served motion exceeds the byte budget")
                     motion_formats.add(bundle_path.suffix.lower().lstrip("."))
                 if bundle_name == "motion_assets" and "source-footage" in bundle_path.parts:
-                    raise ValueError(f"{chapter}: raw source footage is exposed as a served motion asset")
+                    raise ValueError(
+                        f"{chapter}: raw source footage is exposed as a served motion asset"
+                    )
         if candidate.get("motion_assets") and motion_formats != set(required_motion_formats):
             raise ValueError(f"{chapter}: motion assets require MP4 and WebM")
         review_preview = candidate.get("review_preview")
@@ -254,9 +278,13 @@ def main() -> int:
         references = candidate.get("product_references", [])
         blockers = candidate.get("provenance_blockers", [])
         if not isinstance(references, list) or not references:
-            raise ValueError(f"scene candidate has no product references: {candidate.get('chapter')}")
+            raise ValueError(
+                f"scene candidate has no product references: {candidate.get('chapter')}"
+            )
         if not isinstance(blockers, list):
-            raise ValueError(f"scene candidate provenance blockers are invalid: {candidate.get('chapter')}")
+            raise ValueError(
+                f"scene candidate provenance blockers are invalid: {candidate.get('chapter')}"
+            )
         for reference in references:
             path = (THEME / str(reference)).resolve()
             if path in authorized_hashes:
@@ -264,7 +292,9 @@ def main() -> int:
                     raise ValueError(f"scene product reference hash drift: {sku} {reference}")
                 continue
             if status != "revision_required" or reference not in blockers:
-                raise ValueError(f"scene candidate reference is outside product SOT: {sku} {reference}")
+                raise ValueError(
+                    f"scene candidate reference is outside product SOT: {sku} {reference}"
+                )
             if not path.is_file():
                 raise ValueError(f"blocked scene reference does not resolve: {sku} {reference}")
             blocked_references += 1

@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Historical manual authoring recipe retained for provenance, not a canonical
+# build step. Prepare a separately verified source directory containing the exact
+# filenames below: the legacy theme has the br-003/br-011 product references,
+# while V2 has the br-008/br-009/br-010 on-model media. assets/card-scenes alone
+# is not a drop-in input. Obtain source/output approval before running the recipe.
+
 theme_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 wordpress_theme_dir="$(cd "$theme_dir/.." && pwd)"
 output_dir="$theme_dir/assets/video"
-source_frame="${1:?Usage: build-jersey-bart-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
-model_dir="${2:?Usage: build-jersey-bart-film.sh <tracked-reference-frame> <tracked-on-model-directory>}"
+source_frame="${1:?Usage: build-jersey-bart-film.sh <historical-reference-frame> <historical-source-directory>}"
+model_dir="${2:?Usage: build-jersey-bart-film.sh <historical-reference-frame> <historical-source-directory>}"
 font_display="/System/Library/Fonts/Supplemental/Didot.ttc"
 font_ui="/System/Library/Fonts/Avenir Next Condensed.ttc"
 

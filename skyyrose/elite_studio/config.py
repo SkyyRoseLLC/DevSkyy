@@ -118,6 +118,10 @@ OUTPUT_DIR = _BASE_DIR / "assets" / "images" / "products"
 # legacy callers that import from this module keep working unchanged.
 # Never hardcode model strings inline in this file — update llm/model_ids.py
 # and the change propagates everywhere.
+from llm.model_ids import GENERATION_MODEL  # noqa: F401
+from llm.model_ids import MESHY_AI_MODEL  # noqa: F401
+from llm.model_ids import QC_MODEL  # noqa: F401
+from llm.model_ids import RAS_GENERATION_MODEL  # noqa: F401
 from llm.model_ids import (  # noqa: E402, F401  -- re-exported for legacy importers
     CLAUDE_HAIKU_MODEL,
     CLAUDE_OPUS_MODEL,
@@ -127,15 +131,7 @@ from llm.model_ids import (  # noqa: E402, F401  -- re-exported for legacy impor
     COMPOSITOR_QA_MODEL,
 )
 from llm.model_ids import GEMINI_FLASH_IMAGE_MODEL as GEMINI_IMAGE_GEN_MODEL  # noqa: E402, F401
-from llm.model_ids import (  # noqa: E402, F401  -- re-exported for legacy importers
-    GEMINI_VISION_MODEL,
-    GENERATION_MODEL,
-    MESHY_AI_MODEL,
-    OPENAI_IMAGE_MODEL,
-    OPENAI_VISION_MODEL,
-    QC_MODEL,
-    RAS_GENERATION_MODEL,
-)
+from llm.model_ids import GEMINI_VISION_MODEL, OPENAI_IMAGE_MODEL, OPENAI_VISION_MODEL
 
 # Local-only back-compat aliases — these names exist only here, not in
 # llm/model_ids.py, because they're skyyrose-specific re-spellings.

@@ -95,3 +95,12 @@ Stop without generating when:
 - a generated mesh is called an exact replica without front/side/back render, geometry, UV, and material proof.
 
 For the failure pattern this skill prevents, read [root cause and prevention](references/root-cause.md). Fashion storefront story, collection direction, HTML/JSON handoff, and independent commerce QA remain owned by the Fashion Theme Team; this skill owns the media truth and native-scene gate beneath that motherbase.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with every product-media task. Start the task
+before provider spend and bind source-authority receipt, contract, mask or
+optical plan, candidate, provider receipt, independent visual review, and
+promotion decision. A source, text, patch, construction, geometry, or optical
+failure is a first-seen issue that blocks the same scope until a named reviewer
+records the correction; never spend through a multi-SKU failure.

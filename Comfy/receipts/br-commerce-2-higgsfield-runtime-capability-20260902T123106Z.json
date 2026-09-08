@@ -1,0 +1,38 @@
+{
+  "schema": "skyyrose.provider-capability-receipt/1",
+  "scene_id": "BR-COMMERCE-2",
+  "recorded_at": "2026-09-02T12:31:06Z",
+  "provider": "higgsfield",
+  "adapter": "product-photoshoot",
+  "adapter_skill_version": "0.12.0",
+  "cli": {
+    "version": "1.1.23",
+    "commit": "dd8d00a83d46aa443eaa605a75c246e1226010c1",
+    "binary_sha256": "496747d37644e2fda9dc2c8179e7c1e32e2635282b9df32966ca7a3c4b66f215"
+  },
+  "model": {
+    "id": "gpt_image_2",
+    "type": "image",
+    "aspect_ratio": "16:9",
+    "quality": "high",
+    "resolution": "2k",
+    "image_references": "supported",
+    "live_discovery": "higgsfield --json model get gpt_image_2"
+  },
+  "account_preflight": {
+    "plan": "plus",
+    "credits_reported": 1362,
+    "estimated_credits_for_one_2k_16_9_high_candidate": 8.5,
+    "generation_submitted": false
+  },
+  "enhancement_receipt": {
+    "path": "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T123004088681Z.json",
+    "sha256": "edd52cf2fce47e8ab1837eca0bb7490dba670cc1333bdffb45536f4c21d84eef"
+  },
+  "sources": [
+    "https://github.com/higgsfield-ai/skills/blob/main/higgsfield-product-photoshoot/SKILL.md",
+    "https://github.com/higgsfield-ai/cli",
+    "https://github.com/higgsfield-ai/cli/blob/main/MODELS.md"
+  ],
+  "fidelity_boundary": "CANDIDATE_ONLY_PENDING_PRODUCT_FIDELITY_AND_NATIVE_INTEGRATION_REVIEW"
+}

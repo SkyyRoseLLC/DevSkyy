@@ -1,0 +1,12 @@
+# Local ComfyUI runtime state and generated media.
+.comfy/
+inputs/
+outputs/
+
+# Project assets are pushed from the canonical repository SOT at execution time.
+assets/
+
+# Editor and operating-system noise.
+.DS_Store
+*.tmp
+*.part

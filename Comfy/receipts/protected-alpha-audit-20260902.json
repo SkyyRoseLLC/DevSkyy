@@ -1,0 +1,91 @@
+{
+  "schema": "skyyrose.protected-alpha-audit/1",
+  "recorded_at": "2026-09-02T19:45:00Z",
+  "method": "ImageMagick channel inspection plus eyes-on checkerboard review",
+  "assets": [
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "role": "protected_customer_product_look",
+      "sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
+      "dimensions": [941, 1672],
+      "channels": "srgba",
+      "alpha_min": 0,
+      "alpha_mean": 0.284271,
+      "alpha_max": 1,
+      "classification": "REAL_ALPHA_PROTECTED_INPUT"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "role": "exact_clean_font_sculpture",
+      "sha256": "4db76780d8280af2d1d7c081b424ccd385054f15778593b240cec52e34b75c3e",
+      "dimensions": [1469, 414],
+      "channels": "srgba",
+      "alpha_min": 0,
+      "alpha_mean": 0.436096,
+      "alpha_max": 1,
+      "classification": "REAL_ALPHA_PROTECTED_INPUT"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "role": "unapproved_sg006_alternative_discovery",
+      "path": "/Users/theceo/DevSkyy/editorial-staging/signature/sg-006-alpha.png",
+      "sha256": "3b2a8b6961ce817e5ef6527dfd6153016d46e6a4748deba4539cd00051c7daa5",
+      "dimensions": [1792, 2400],
+      "channels": "srgba",
+      "alpha_min": 0,
+      "alpha_mean": 0.458766,
+      "alpha_max": 1,
+      "classification": "REAL_ALPHA_UNAPPROVED_IDENTITY_DO_NOT_ROUTE"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "role": "composition_and_cast_authority",
+      "sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+      "dimensions": [1672, 941],
+      "channels": "srgb",
+      "classification": "OPAQUE_COMPOSITION_REFERENCE_NOT_A_CUTOUT"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "role": "br004_founder_wearer_authority",
+      "sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+      "dimensions": [2688, 1520],
+      "channels": "srgba",
+      "alpha_min": 1,
+      "alpha_mean": 1,
+      "alpha_max": 1,
+      "classification": "OPAQUE_WEARER_REFERENCE_NOT_A_CUTOUT"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "role": "existing_v6_dual_cast_alpha",
+      "sha256": "5462a3a7108b939cf10c43fa8a806d18160b52e198da8242e03d036fbd081d0a",
+      "dimensions": [1672, 941],
+      "channels": "srgba",
+      "alpha_min": 0,
+      "alpha_mean": 0.150136,
+      "alpha_max": 1,
+      "classification": "REAL_ALPHA_BUT_VISUALLY_REJECTED_PRODUCT_CORRECTION_DO_NOT_PROMOTE"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "role": "exact_brand_sculpture",
+      "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+      "dimensions": [520, 395],
+      "channels": "srgba",
+      "alpha_min": 0,
+      "alpha_mean": 0.390306,
+      "alpha_max": 1,
+      "classification": "REAL_ALPHA_PROTECTED_INPUT"
+    }
+  ],
+  "decisions": [
+    "Do not treat an RGBA container with alpha_min=alpha_max=1 as a cutout.",
+    "Do not route the unapproved SG-006 alternative until the founder approves that exact identity and file hash.",
+    "Do not reuse the visually rejected BR v6 cast correction as a final or generative input.",
+    "The SIG-COMMERCE-1 customer and sculpture are the only audited scene pair currently ready as protected alpha inputs."
+  ],
+  "generation_submitted": false,
+  "credits_spent": 0,
+  "promotion_authorized": false
+}

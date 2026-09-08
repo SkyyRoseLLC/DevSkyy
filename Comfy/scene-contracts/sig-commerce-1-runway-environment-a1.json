@@ -1,0 +1,104 @@
+{
+  "schema": "skyyrose.runway-environment-plate/1",
+  "candidate_id": "SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1",
+  "scene_id": "SIG-COMMERCE-1",
+  "status": "BLOCKED_PENDING_PROTECTED_SOURCE_REHASH_AND_BACKGROUND_APPROVAL",
+  "strategy": "environment_rebuild_around_source",
+  "provider": {
+    "name": "runway",
+    "route": "comfy_partner_node",
+    "node": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "comfy_base_url": "http://127.0.0.1:8189"
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": [],
+    "reason": "The existing scene authority includes brand-object content and stays local-only."
+  },
+  "local_composition_inspiration": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/SIG-COMMERCE-1/scene-authority/sig-1-font-statue-environment-plate-v3.png",
+      "sha256": "331666b86748477816bbc65cc130494d2dadc009adb8905eae5302d70e88c600",
+      "width": 1024,
+      "height": 1536,
+      "authority_role": "COMPOSITION_ATMOSPHERE_ONLY",
+      "sent_to_runway": false,
+      "use": [
+        "industrial roof-deck material language",
+        "fog depth",
+        "damp satin floor response"
+      ],
+      "deny_as_authority": ["brand object", "lettering", "composition crop"]
+    }
+  ],
+  "request": {
+    "ratio": "1920:1080",
+    "num_outputs": 1,
+    "prompt": "Wide rain-cleared Oakland and San Francisco industrial roof deck before sunrise, damp charcoal concrete, weathered steel rails, distant cranes and bridge lights dissolving into cool Bay fog, one soft neutral key direction from camera-left, and a continuous satin-wet ground plane. Preserve a large campaign-scale customer zone at the left third and a grounded object zone at the right third for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+    "prompt_source": "Local scene-authority analysis only; no source pixels are uploaded."
+  },
+  "forbidden_plate_content": [
+    "people",
+    "garments",
+    "products",
+    "text",
+    "wordmarks",
+    "signage",
+    "hearts",
+    "roses",
+    "sculptures",
+    "monuments",
+    "robed figures",
+    "Beast characters",
+    "ballrooms",
+    "flower walls"
+  ],
+  "comfy_local_postprocess": {
+    "required_after_separate_approvals": [
+      "rehash and independently revalidate the SG-009 plus SG-007 protected customer look",
+      "rehash the exact transparent SkyyRose sculpture",
+      "placement, scaling, occlusion, contact shadow, reflection, edge treatment, and composition",
+      "prompt/history retrieval and hash-bound receipts"
+    ],
+    "protected_rgb_policy": "Customer identity, SG-009, SG-007, patch, garment construction, and SkyyRose sculpture RGB remain byte-identical.",
+    "birefnet_evidence": {
+      "schema": "skyyrose.birefnet-edge-confidence/1",
+      "model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+      "role": "ALPHA_AND_EDGE_CONFIDENCE_ONLY",
+      "generative_use_allowed": false,
+      "independent_visual_review_required": true
+    }
+  },
+  "credit_control": {
+    "currency": "USD",
+    "max_live_price_usd": 0.11,
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "candidate_bound_approval_required": true,
+    "approval_receipt": null,
+    "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
+  },
+  "execution_blockers": [
+    "protected customer/product and sculpture files require current hash verification",
+    "independent source review is not current",
+    "candidate-bound environment approval is not recorded",
+    "integration PR is not merged into main"
+  ],
+  "output": {
+    "candidate_path": "Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-RUNWAY-ENVIRONMENT-A1.png",
+    "filename_prefix": "SkyyRose/SIG-COMMERCE-1/environment-a1",
+    "approval_path": "Comfy/receipts/sig-commerce-1-runway-environment-a1-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/sig-commerce-1-runway-environment-a1-paid-attempt.json",
+    "promotion_allowed": false,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "post_merge_execution_gate": {
+    "required": true,
+    "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
+    "reason": "Protected-source and runtime evidence must be fresh on merged main."
+  }
+}

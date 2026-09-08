@@ -45,9 +45,7 @@ def _visual_record(record: dict[str, Any]) -> dict[str, Any]:
     return comparable
 
 
-def _assert_nonvisual_change(
-    previous: dict[str, Any], current: dict[str, Any]
-) -> None:
+def _assert_nonvisual_change(previous: dict[str, Any], current: dict[str, Any]) -> None:
     for field in ("schema", "generated_by", "authority"):
         if previous.get(field) != current.get(field):
             raise ValueError(f"product SOT changed outside merchandising: {field}")
@@ -63,9 +61,7 @@ def _assert_nonvisual_change(
     if set(previous_products) != set(current_products):
         raise ValueError("product SOT SKU set changed")
     for sku in previous_products:
-        if _visual_record(previous_products[sku]) != _visual_record(
-            current_products[sku]
-        ):
+        if _visual_record(previous_products[sku]) != _visual_record(current_products[sku]):
             raise ValueError(f"visual or commerce product facts changed for {sku}")
 
 
@@ -79,9 +75,7 @@ def _rebind_media_manifest(
 ) -> dict[str, Any]:
     previous_products = previous_sot["products"]
     current_products = current_sot["products"]
-    previous_hashes = {
-        sku: product["product_hash"] for sku, product in previous_products.items()
-    }
+    previous_hashes = {sku: product["product_hash"] for sku, product in previous_products.items()}
     if manifest.get("product_sot_sha256") != previous_sha:
         raise ValueError("media manifest is not bound to the previous product SOT")
     if manifest.get("product_hashes") != previous_hashes:
@@ -124,9 +118,7 @@ def main() -> int:
         raise ValueError("product SOT is already current; no rebind is required")
     _assert_nonvisual_change(previous, current)
 
-    media_documents = [
-        json.loads(path.read_text(encoding="utf-8")) for path in MEDIA_MANIFESTS
-    ]
+    media_documents = [json.loads(path.read_text(encoding="utf-8")) for path in MEDIA_MANIFESTS]
     if media_documents[0] != media_documents[1]:
         raise ValueError("V2 and production media manifests differ before rebind")
 

@@ -17,7 +17,6 @@ import re
 from pathlib import Path
 from typing import Any
 
-
 ROOT = Path(__file__).resolve().parents[3]
 PRODUCT_SOT = ROOT / "data/product-sot.json"
 MEDIA_MANIFESTS = (
@@ -59,8 +58,7 @@ def _invalidate_manifest(
     previous_hashes = manifest.get("product_hashes", {})
     asset_integrity = manifest.get("asset_integrity", {})
     if not all(
-        isinstance(value, dict)
-        for value in (media_products, previous_hashes, asset_integrity)
+        isinstance(value, dict) for value in (media_products, previous_hashes, asset_integrity)
     ):
         raise ValueError("media manifest product maps are malformed")
     if set(current_products) != set(media_products) or set(current_products) != set(
@@ -138,7 +136,9 @@ def _rebind_scene_contracts(
     for scene in manifest.get("scenes", []):
         if scene.get("scene_id") in affected_scene_ids:
             if not str(scene.get("plate_state", "")).startswith("FOUNDER_APPROVED"):
-                raise ValueError(f"affected scene plate is not founder approved: {scene['scene_id']}")
+                raise ValueError(
+                    f"affected scene plate is not founder approved: {scene['scene_id']}"
+                )
             scene["composite_state"] = "PENDING_CORRECTED_PRODUCT_LAYERS"
 
     audit = {

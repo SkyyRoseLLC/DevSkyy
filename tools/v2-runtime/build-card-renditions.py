@@ -5,8 +5,8 @@ import hashlib
 import io
 import json
 import os
-from pathlib import Path
 import tempfile
+from pathlib import Path
 
 from PIL import Image
 

@@ -14,6 +14,8 @@ define( 'SKYYROSE2_URI', get_template_directory_uri() );
 /* Fresh-install, demo-import, and editor integration. */
 require_once SKYYROSE2_DIR . '/inc/marketplace.php';
 require_once SKYYROSE2_DIR . '/inc/performance.php';
+require_once SKYYROSE2_DIR . '/inc/frame-delivery.php';
+require_once SKYYROSE2_DIR . '/inc/archive-style-bundle.php';
 require_once SKYYROSE2_DIR . '/inc/seo-indexing.php';
 require_once SKYYROSE2_DIR . '/inc/security.php';
 require_once SKYYROSE2_DIR . '/inc/approved-card-fronts.php';

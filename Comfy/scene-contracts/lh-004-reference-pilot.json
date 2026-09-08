@@ -1,0 +1,39 @@
+{
+  "schema": "skyyrose.scene-candidate/1",
+  "candidate_id": "LH-004-COMFY-LOCAL-001",
+  "sku": "lh-004",
+  "collection": "love-hurts",
+  "product_name": "Love Hurts Bomber Jacket",
+  "route": "local",
+  "provider_spend_allowed": false,
+  "source_bindings": [
+    {
+      "role": "physical_front",
+      "repository_path": "assets/products/source-photos/love-hurts/lh-004-bomber-front.jpg",
+      "server_input": "lh-004-bomber-front.jpg",
+      "sha256": "7a00b1122a9f36e2d24221f011719776799726711b11c58f552f57e2134fb256"
+    },
+    {
+      "role": "physical_back",
+      "repository_path": "assets/products/source-photos/love-hurts/lh-004-bomber-back.png",
+      "server_input": "lh-004-bomber-back.png",
+      "sha256": "e170a556f4ee444f273c4aacd2bfce569d0c87263397826b6e757db6402888f1"
+    }
+  ],
+  "workflow": "workflows/lh-004-reference-pilot.api.json",
+  "workflow_sha256": "ff3b1b3dd8e73ea38006862ca749a91a28cc7cc9aa49ccc0f929a858f0681746",
+  "status": "LOCAL_ROUTE_HARDWARE_BLOCKED",
+  "execution": {
+    "output_produced": false,
+    "provider_spend": 0,
+    "final_prompt_id": "ee4d051a-a36a-44ac-a81a-542776d3c852",
+    "final_result": "cancelled_after_309_seconds_at_ksampler_step_zero",
+    "blocker": "Z-Image Turbo native BF16 consumed about 19.4 GB of swap on the 16 GB Apple M5 host; Float8 is unsupported on MPS and Int8 CPU fallback exceeded the preview latency budget."
+  },
+  "acceptance": {
+    "product_fidelity": "Exact black-white-red color blocking, Love Hurts wordmarks, hood lining, sleeve stripes, rib trim, pockets, and silhouette match both physical references.",
+    "physical_integration": "Garment follows the model body with plausible folds, occlusion, contact shadows, and environmental light response.",
+    "optical_realism": "No cutout fringe, halo, floating garment, planar panel, duplicated apparel, or pasted-on appearance.",
+    "promotion_gate": "Candidate only until independent visual QA and founder approval."
+  }
+}

@@ -12,7 +12,9 @@ ROOT = Path(__file__).resolve().parents[3]
 THEME = Path(__file__).resolve().parents[1]
 SOURCE_THEME = ROOT / "wordpress-theme/skyyrose-flagship"
 sys.path.insert(0, str(ROOT / "tools/v2-source-certification"))
-from inputs import SOT as PRODUCT_SOT, load_product_sot
+from inputs import SOT as PRODUCT_SOT
+from inputs import load_product_sot
+
 MEDIA_MANIFEST = THEME / "data/opening-product-media.json"
 
 ALLOWED_ROLES = {
@@ -103,9 +105,13 @@ def main() -> int:
             raise ValueError(f"opening product-media views are malformed: {sku}")
         if not views:
             if record.get("status") not in BLOCKED_STATUSES or not record.get("reason"):
-                raise ValueError(f"unapproved product media needs a blocked status and reason: {sku}")
+                raise ValueError(
+                    f"unapproved product media needs a blocked status and reason: {sku}"
+                )
             if sku in asset_integrity:
-                raise ValueError(f"blocked product unexpectedly has approved asset integrity: {sku}")
+                raise ValueError(
+                    f"blocked product unexpectedly has approved asset integrity: {sku}"
+                )
             continue
 
         view_skus.add(sku)
@@ -118,28 +124,39 @@ def main() -> int:
             raise ValueError(f"opening product-media roles are invalid or duplicated: {sku}")
         integrity_roles = asset_integrity.get(sku)
         if not isinstance(integrity_roles, dict) or set(integrity_roles) != set(roles):
-            raise ValueError(f"opening product-media integrity roles differ from approved views: {sku}")
+            raise ValueError(
+                f"opening product-media integrity roles differ from approved views: {sku}"
+            )
 
         for view in views:
             role = view["role"]
             integrity = integrity_roles[role]
             if not isinstance(integrity, dict):
-                raise ValueError(f"opening product-media integrity record is malformed: {sku} {role}")
+                raise ValueError(
+                    f"opening product-media integrity record is malformed: {sku} {role}"
+                )
             source = resolve_asset(SOURCE_THEME, view.get("source"), f"{sku} {role} source")
             validate_integrity(source, integrity, "source", f"{sku} {role}")
             derivative_raw = view.get("derivative")
             if derivative_raw:
                 derivative = resolve_asset(THEME, derivative_raw, f"{sku} {role} derivative")
                 validate_integrity(derivative, integrity, "derivative", f"{sku} {role}")
-                if derivative.suffix.lower() != ".webp" or derivative.stat().st_size > derivative_budget:
+                if (
+                    derivative.suffix.lower() != ".webp"
+                    or derivative.stat().st_size > derivative_budget
+                ):
                     raise ValueError(f"{sku} {role} derivative violates delivery policy")
             elif any(key.startswith("derivative_") for key in integrity):
                 raise ValueError(f"{sku} {role} records derivative integrity without a derivative")
 
     if set(asset_integrity) != view_skus:
-        raise ValueError("opening product-media asset integrity SKU set differs from approved views")
+        raise ValueError(
+            "opening product-media asset integrity SKU set differs from approved views"
+        )
 
-    print(f"Opening product media is hash-bound to {len(products)} products and {len(view_skus)} approved SKU asset sets.")
+    print(
+        f"Opening product media is hash-bound to {len(products)} products and {len(view_skus)} approved SKU asset sets."
+    )
     return 0
 
 

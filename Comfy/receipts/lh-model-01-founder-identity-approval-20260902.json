@@ -1,0 +1,61 @@
+{
+  "schema": "skyyrose.model-identity-founder-approval/1",
+  "identity_id": "LH-MODEL-01",
+  "recorded_at": "2026-09-02",
+  "founder_statement": "approve model identity",
+  "status": "APPROVED_IDENTITY_ONLY",
+  "source_task_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "source_candidate": {
+    "path": "Comfy/quarantine/LH-003-MODEL-CASTING/LH-003-MODEL-CASTING-20260902-A1.png",
+    "sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+    "full_candidate_status": "REJECTED_AND_QUARANTINED"
+  },
+  "approved_scope": [
+    "face and facial proportions",
+    "skin tone",
+    "high-bun natural-texture hairstyle",
+    "athletic natural body type and proportions",
+    "adult age presentation",
+    "confident professional Oakland luxury-streetwear campaign presence"
+  ],
+  "approved_identity_manifest": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+  "approved_reference_assets": [
+    {
+      "role": "front_bust_identity_only",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/front-bust-v1.png",
+      "sha256": "a8b6db7075149646592f72f8fdfac8155ed927fc324d0ef86c6a8eba0a3642d6",
+      "width": 520,
+      "height": 420,
+      "source_crop": "520x420+330+0",
+      "garment_pixels_included": false
+    },
+    {
+      "role": "rear_profile_bust_identity_only",
+      "path": "Comfy/approved-identities/love-hurts/lh-model-01/rear-profile-bust-v1.png",
+      "sha256": "ed44bbe98ef6438b2077bd89315f7c7c461f9810d30806db83ce58e365f4fa3b",
+      "width": 520,
+      "height": 420,
+      "source_crop": "520x420+1650+0",
+      "garment_pixels_included": false
+    }
+  ],
+  "authorization_boundary": {
+    "allowed": "Use the approved identity-only references as identity conditioning in a separately authorized exact-LH-003 recovery workflow.",
+    "not_approved": [
+      "LH-003 garment pixels or construction from the rejected board",
+      "product fidelity",
+      "the full casting board",
+      "garment matte",
+      "LH-COMMERCE-2 final scene",
+      "Soul identity training",
+      "any paid generation or retry",
+      "Comfy scene staging",
+      "storefront wiring",
+      "promotion or deployment"
+    ]
+  },
+  "credit_effect": {
+    "new_provider_calls": 0,
+    "new_credits_spent": 0
+  }
+}

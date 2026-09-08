@@ -15,13 +15,9 @@
     state.button.textContent = state.paused ? 'Play motion' : 'Pause motion';
     state.button.setAttribute('aria-pressed', String(state.paused));
     if (!state.video || state.failed || !state.posterReady) return;
-    if (!active) {
-      state.video.pause();
-      if (!allowed()) state.el.classList.remove('is-hero-video-ready');
-      return;
-    }
+    if (!active) { state.video.pause(); return; }
     if (!state.loaded) {
-      state.video.querySelectorAll('source[data-src]').forEach(source => { source.src = source.dataset.src; });
+      state.sources.forEach(source => { source.src = source.dataset.src; });
       state.video.muted = true;
       state.video.load();
       state.loaded = true;
@@ -30,13 +26,15 @@
     state.pending = true;
     Promise.resolve(state.video.play()).then(() => {
       state.pending = false;
-      if (!allowed() || !state.visible || state.paused || document.hidden || suspended) state.video.pause();
+      if (state.failed || !allowed() || !state.visible || state.paused || document.hidden || suspended) state.video.pause();
     }).catch(error => {
       state.pending = false;
+      if (state.failed) return;
       if (error.name === 'AbortError') return;
       if (error.name === 'NotAllowedError') { state.paused = true; sync(state); return; }
       state.failed = true;
       state.el.classList.remove('is-hero-video-ready');
+      state.el.classList.remove('is-hero-poster-ready');
     });
   };
   const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
@@ -49,32 +47,63 @@
     const button = el.querySelector('[data-recovery-motion-toggle]');
     if (!button) return;
     const video = el.querySelector('[data-recovery-hero-video]');
-    const state = { el, button, video, paused: false, visible: !observer, loaded: false, pending: false, failed: false, posterReady: !video };
+    const state = { el, button, video, paused: false, visible: !observer, loaded: false, pending: false, failed: false, posterReady: !video, sources: video ? [...video.querySelectorAll('source[data-src]')] : [] };
     heroes.push(state);
     button.addEventListener('click', () => { state.paused = !state.paused; sync(state); });
     if (video) {
-      // Render the responsive approved image before competing for video bytes.
-      // The matching video poster also stays visible until the first frame.
+      // Publish the browser-selected poster immediately; decoding the image
+      // remains a separate gate for competing film requests and playback.
       const poster = el.querySelector('img');
-      const prepare = () => {
-        if (poster?.currentSrc) video.poster = poster.currentSrc;
+      let posterFailed = false;
+      const publishPoster = () => {
+        if (state.failed || posterFailed || !poster?.currentSrc) return;
+        // Until bytes exist, retain the picture rather than starting another
+        // poster request or exposing an empty native video surface.
+        if (!poster.naturalWidth) return;
+        // Never fall back to img.src: that could fetch the desktop fallback
+        // while <picture> has selected a different mobile resource.
+        if (video.poster !== poster.currentSrc) video.poster = poster.currentSrc;
+        el.classList.add('is-hero-poster-ready');
+      };
+      const failedPoster = () => {
+        posterFailed = true;
+        el.classList.remove('is-hero-poster-ready');
+      };
+      publishPoster();
+      poster?.addEventListener('load', () => {
+        if (state.loaded) return;
+        posterFailed = false;
+        publishPoster();
+      });
+      poster?.addEventListener('error', failedPoster);
+      const prepare = (decoded = true) => {
+        if (decoded) publishPoster();
+        else failedPoster();
         state.posterReady = true;
         sync(state);
       };
-      if (poster?.decode) poster.decode().then(prepare, prepare);
+      if (poster?.decode) poster.decode().then(prepare, () => prepare(false));
       else prepare();
+      const failVideo = () => {
+        state.failed = true;
+        state.pending = false;
+        video.pause();
+        el.classList.remove('is-hero-video-ready');
+        el.classList.remove('is-hero-poster-ready');
+      };
+      // Nested source exhaustion need not emit a video error or settle play().
+      // Preserve native codec fallback until every activated candidate fails.
+      const failedSources = new Set();
+      state.sources.forEach(source => source.addEventListener('error', () => {
+        if (!state.loaded || state.failed) return;
+        failedSources.add(source);
+        if (state.sources.every(candidate => failedSources.has(candidate))) failVideo();
+      }));
       video.addEventListener('playing', () => {
-        const reveal = () => {
-          if (!video.paused && allowed() && state.visible && !document.hidden && !suspended && !state.failed) {
-            el.classList.add('is-hero-video-ready');
-          }
-        };
-        // A playing event can precede the first composited frame. Keep the
-        // approved poster until a frame is available, without a timed loader.
-        if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(reveal);
-        else reveal();
+        if (state.failed) { video.pause(); return; }
+        el.classList.add('is-hero-video-ready');
       });
-      video.addEventListener('error', () => { state.failed = true; video.pause(); el.classList.remove('is-hero-video-ready'); });
+      video.addEventListener('error', failVideo);
     }
     observer?.observe(el);
     sync(state);

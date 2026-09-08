@@ -16,6 +16,8 @@ if ( ! is_a( $product, 'WC_Product' ) || ! $product->is_visible() ) {
 	return;
 }
 
+// Only the first archive card is an explicit eager candidate. Native lazy
+// loading lets the browser schedule other visible and nearby grid cards.
 // wc_product_class() advances the native loop counter below; read it first.
 $loop_index = max( 0, (int) wc_get_loop_prop( 'loop' ) );
 $card_sizes = ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) ? skyyrose2_shop_card_sizes() : '';
@@ -32,7 +34,7 @@ if ( is_product() && in_array( wc_get_loop_prop( 'name' ), array( 'related', 'up
 			'product' => $product,
 			'index'   => $loop_index,
 			'sizes'   => $card_sizes,
-			'media_priority' => ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) && $loop_index < 2 ? ( 0 === $loop_index ? 'high' : 'eager' ) : 'lazy',
+			'media_priority' => ( is_shop() || is_product_taxonomy() ) && ! wc_get_loop_prop( 'name' ) && 0 === $loop_index ? 'high' : 'lazy',
 		)
 	);
 	?>
