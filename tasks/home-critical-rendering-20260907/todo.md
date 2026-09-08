@@ -61,3 +61,4 @@ Branch `codex/v2-home-critical-rendering-20260907` (worktree
 - [ ] Real Safari eyes-on (open; Playwright WebKit denies unattended autoplay
       on both builds)
 - [x] Pushed `codex/v2-home-critical-rendering-20260907`; PR #920 → `codex/v2-completion-pr-20260906` (https://github.com/SkyyRoseLLC/DevSkyy/pull/920)
+- [x] PR #920 merged (4ad080c9a); rail-controls regression (bug-326) fixed on branch and hot-fixed on staging (2 files, backup /tmp/sr2-hotfix-backup on host); staging re-verified

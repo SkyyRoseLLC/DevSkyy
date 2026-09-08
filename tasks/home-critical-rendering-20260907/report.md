@@ -285,3 +285,11 @@ the classic script chain when the film arrives. A cold-edge MISS was not observe
 autoplay on both builds and shows the poster with a working Play control). Optional:
 regenerate Jetpack Boost's critical CSS from the Boost admin so its informational block
 matches the current header; Home no longer depends on it.
+
+## Post-merge addendum `[live]` — 2026-09-08
+
+- **PR #920 merged** into `codex/v2-completion-pr-20260906` (merge commit `4ad080c9a`, head `7a1572a05`, 5/5 checks). The PR agent resolved 11 conflicts against the base branch, which had moved 50 commits past the staging pin.
+- **Regression found and fixed (bug-326).** Printing the controller inline directly after the hero meant it ran before the Scroll World rail below was parsed, so the rail's prev/next controls stayed hidden on Home. Confirmed live on staging (`.sr2-recovery-controls` hidden), absent on the pre-repair mirror. Fix: rails bind once the document is parsed (`initRails` on `DOMContentLoaded` when still loading, immediately otherwise), commit `7c7ae5171`; `verify-home-policies.mjs` now asserts the rail controls.
+- **Staging hotfix** (founder-approved): the pinned controller plus that 5-line fix, minified with the theme's terser settings, replaced `assets/js/visual-recovery.js` and `.min.js` in the live staging theme (sha256 `9e545f20…` / `e35ee720…`); the previous files are kept on the host at `/tmp/sr2-hotfix-backup/`. Validated first on an exact replica of staging's 539 files (rail controls visible, parity PASS, 28/28 policies), then live: rail controls visible, plain Home re-primed at the edge with the fixed inline bootstrap, derived-output parity PASS against the hotfix set, policies 27/28 (the one failure is the pre-existing Stripe `payment=()` console noise).
+- Staging therefore runs the pinned tree + the repair + this two-file hotfix; the merged completion branch carries the base's newer controller with the same fix. A later deploy of the completion branch supersedes the hotfix.
+- Also logged: bug-327 (V2 `.min` outputs hidden by the repo ignore rule), bug-328 (fail-closed gate inside a process substitution), bug-329 (stop-gate hook false positives on the deploy script name).
