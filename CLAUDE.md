@@ -251,11 +251,7 @@ check.
 - Files < 800 lines · functions < 50 lines
 - Immutability: `{...obj, key}`, never `obj.key = val`
 - No hardcoded secrets — env only (`.env`, `.env.wordpress`, `.env.secrets`)
-- Validate at boundaries: Zod (frontend) / Pydantic (backend)
-- Generic errors to clients; detailed logs server-side
-- Error handling on every external call
 - No `TODO` / `FIXME` / `pass` / `raise NotImplementedError` in delivered code
-- Python line length 100 (black + ruff + isort)
 - **npm, not pnpm, for Vercel deploys** — `ERR_INVALID_THIS` on Node 22+
 - Commits: `<type>: <description>` — feat, fix, refactor, docs, test, chore
 - **Fix everything in one batch, test all pages, deploy ONCE.** No drip-deploys.
@@ -351,8 +347,7 @@ acceptable before showing it.
 
 ## 5. Architecture
 
-AI-driven luxury fashion e-commerce (SkyyRose). Python 3.11+ · FastAPI · Next.js
-· WordPress/WooCommerce · Three.js.
+AI-driven luxury fashion e-commerce (SkyyRose).
 
 | Surface             | Host               |
 | ------------------- | ------------------ |
@@ -362,12 +357,6 @@ AI-driven luxury fashion e-commerce (SkyyRose). Python 3.11+ · FastAPI · Next.
 
 Dependency flow:
 `core → security → database/llm → orchestration/services → agents → api`
-
-**Entry points** — `main_enterprise.py` (FastAPI: REST + GraphQL + webhooks) ·
-`devskyy_mcp.py` (MCP: agents, WooCommerce, imagery, RAG) · `frontend/` (Next.js
-16 + React 19 dashboard) · `wordpress-theme/skyyrose-flagship/` (production WP
-theme) · `skyyrose/elite_studio/` (multi-agent image pipeline) ·
-`agents/base_super_agent/agent.py` (EnhancedSuperAgent base).
 
 **Workspaces are self-contained:**
 
@@ -392,14 +381,9 @@ Structure, the `.min` build rule, escaping/nonce conventions, PHPCS →
 `wordpress-theme/skyyrose-flagship/CLAUDE.md` (auto-loads under the theme). Text
 domain `skyyrose` · version = `SKYYROSE_VERSION` in `functions.php`.
 
-```bash
-cd wordpress-theme
-npm run build         # editorial + css + js — ALWAYS use this, not the raw scripts
-npm run deploy        # → skyyrose.co (STOP-AND-SHOW)   deploy:dry = preview
-npm run lint:php      # syntax check all files
-npm run verify:theme  # per-aspect gate (--only <id>, --json, --list)
-# key ~/.ssh/skyyrose-deploy · server sftp.wp.com
-```
+Commands (build · deploy · lint:php · verify:theme · SSH key/host) → theme
+`CLAUDE.md` → "Build commands". `npm run deploy` is STOP-AND-SHOW; `deploy:dry`
+previews.
 
 Python API and Dashboard: read `Makefile` / `frontend/package.json`.
 
@@ -448,28 +432,18 @@ All targets are STOP-AND-SHOW (§1).
 | API          | `docker compose up -d`                                                                     | `docker-compose.yml`                      |
 | HF Spaces    | `bash scripts/deploy_hf_spaces.sh`                                                         | `.env`                                    |
 
-### Theme deploy = atomic hot-swap; the source tree must be COMPLETE
+### Theme deploy gotchas (full procedure, inputs, verification: `/wp-deploy` skill)
 
-Production loses any file the source lacks. Rider manifest + census method:
-`docs/engineering-learnings.md` → "Deploy-source completeness" (bug-252).
-
-Status as of 2026-07-27 `[repo]` — **re-verify, don't trust this line**: 19
-riders documented, **16 are now git-tracked** (BR/LH/SIG emblems, `skyy.glb`,
-avatar refs, techflat JSONs, tsrc lockups — the "17 gitignored" framing is
-stale). **3 remain untracked** and absent from a clean checkout:
-`assets/scenes/{black-rose,love-hurts,signature}/*-v2-avatar.webp`
-(blanket-ignored at `.gitignore:290`). No theme code references them; byte
-copies live in the `collections-scroll-world` worktree.
-
-> **Gate gap:** `preflight_completeness()` (`scripts/deploy-theme.sh:313`) only
-> checks that **git-tracked** files exist on disk. Untracked riders are
-> invisible to it — a source missing them passes silently, with no warning.
-> Tracking a rider (`git add -f`) is what puts it under the gate.
-
-**Version bump is deploy-correctness, not bookkeeping.** `SKYYROSE_VERSION` is
-the cache-bust param on ~52 enqueue calls; shipping changed CSS/JS without
-bumping the triple (`functions.php`, `style.css`, `readme.txt`) leaves returning
-visitors on stale cached assets.
+- **Atomic hot-swap**: production loses any file the source lacks (bug-252).
+  Rider manifest + census method → `docs/engineering-learnings.md`
+  "Deploy-source completeness". `preflight_completeness()`
+  (`scripts/deploy-theme.sh:313`) checks **git-tracked** files only; the 3
+  untracked `*-v2-avatar.webp` scene riders pass silently (`git add -f` puts a
+  rider under the gate).
+- **Version bump is deploy-correctness**: `SKYYROSE_VERSION` is the cache-bust
+  param on ~52 enqueue calls; ship changed CSS/JS without bumping the triple
+  (`functions.php`, `style.css`, `readme.txt`) and returning visitors get stale
+  assets.
 
 ---
 
@@ -488,13 +462,33 @@ Grep before re-deriving a fix. Engineering → **`docs/engineering-learnings.md`
 - `/efficient-production` discipline: terse, no padding, verifiable.
 
 <!-- wolf:recurring:start -->
+
 ### Recurring issues (synced from `.wolf/buglog.json` — regenerate via `python scripts/wolf_recurring_sync.py`, do not hand-edit)
-- **bug-096** (×30, 2026-05-08): Tripo generate_multiview_image hallucinated brand canon on 30 SKUs (120 renders… → fix: scripts/tripo_dispatch.py — added classify_skus() function that blocks at the d…
-- **bug-172** (×24, 2026-06-30): OpenAI gpt-image-2 images.edit() call returns 400 'The model gpt-image-2 does n… → fix: FIXED 2026-06-30: config.py defines INPUT_FIDELITY_SUPPORTED_MODELS = {gpt-imag…
-- **bug-263** (×8, 2026-07-31): SIGSEGV (EXC_BAD_ACCESS) 'crashed on child side of fork pre-exec' — 12+ Python… → fix: conftest.py + scripts/ci-local.sh: on darwin set no_proxy='*'/NO_PROXY='*' (set…
-- **bug-230** (×7, 2026-08-01): PATTERN: fail-open guards / silent fallbacks — gates that pass when their input… → fix: Rule: every gate fails CLOSED — absent manifest/config/token = block, exception…
-- **bug-231** (×5, 2026-07-16): PATTERN: test isolation / shared-state pollution — tests failing only in full-s… → fix: Rule: per-test tmp_path (never hardcoded /tmp), monkeypatch.setenv/delenv (neve…
-- **bug-098** (×4, 2026-05-12): DATA-01: /collection-black-rose/, /collection-love-hurts/, /collection-signatur… → fix: Bumped SKYYROSE_SETUP_VERSION constant from '4.0.0' to '4.1.0' in inc/theme-act…
-- **bug-257** (×2, 2026-07-13): Stop-gate: tests/test_asset_manifest.py::test_manifest_exists_and_loads fails i… → fix: Centralized guard in tests/sparse_guard.py: requires_tree(rel) skips ONLY when…
-- **bug-287** (×2, 2026-07-24): Reported a stale repo-side style.min.css as 'a real production stale-serve defe… → fix: Evidence-scope rule in tasks/lessons.md: tag load-bearing claims inline ([repo]…
+
+- **bug-096** (×30, 2026-05-08): Tripo generate_multiview_image hallucinated
+  brand canon on 30 SKUs (120 renders… → fix: scripts/tripo_dispatch.py — added
+  classify_skus() function that blocks at the d…
+- **bug-172** (×24, 2026-06-30): OpenAI gpt-image-2 images.edit() call returns
+  400 'The model gpt-image-2 does n… → fix: FIXED 2026-06-30: config.py defines
+  INPUT_FIDELITY_SUPPORTED_MODELS = {gpt-imag…
+- **bug-263** (×8, 2026-07-31): SIGSEGV (EXC_BAD_ACCESS) 'crashed on child side
+  of fork pre-exec' — 12+ Python… → fix: conftest.py + scripts/ci-local.sh: on
+  darwin set no_proxy='_'/NO_PROXY='_' (set…
+- **bug-230** (×7, 2026-08-01): PATTERN: fail-open guards / silent fallbacks —
+  gates that pass when their input… → fix: Rule: every gate fails CLOSED —
+  absent manifest/config/token = block, exception…
+- **bug-231** (×5, 2026-07-16): PATTERN: test isolation / shared-state pollution
+  — tests failing only in full-s… → fix: Rule: per-test tmp_path (never
+  hardcoded /tmp), monkeypatch.setenv/delenv (neve…
+- **bug-098** (×4, 2026-05-12): DATA-01: /collection-black-rose/,
+  /collection-love-hurts/, /collection-signatur… → fix: Bumped
+  SKYYROSE_SETUP_VERSION constant from '4.0.0' to '4.1.0' in inc/theme-act…
+- **bug-257** (×2, 2026-07-13): Stop-gate:
+  tests/test_asset_manifest.py::test_manifest_exists_and_loads fails i… → fix:
+  Centralized guard in tests/sparse_guard.py: requires_tree(rel) skips ONLY
+  when…
+- **bug-287** (×2, 2026-07-24): Reported a stale repo-side style.min.css as 'a
+  real production stale-serve defe… → fix: Evidence-scope rule in
+  tasks/lessons.md: tag load-bearing claims inline ([repo]…
+
 <!-- wolf:recurring:end -->

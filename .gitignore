@@ -375,7 +375,6 @@ open-claude-code/
 # --- OpenWolf ---
 # Session-local state (churns every action — not content, ignore) +
 # derived/regenerated-per-scan artifacts.
-.wolf/memory.md
 .wolf/token-ledger.json
 .wolf/hooks/_session.json
 .wolf/claude-mem-digest.md

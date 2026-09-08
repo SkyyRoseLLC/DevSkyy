@@ -3,19 +3,16 @@
 ## Minimum Test Coverage: 85%
 
 Test Types (ALL required):
-1. **Unit Tests** - Individual functions, utilities, components
-2. **Integration Tests** - API endpoints, database operations (in `tests/integration/`)
-3. **E2E Tests** - Critical user flows (Playwright)
 
-## Test Commands
-- `pytest tests/ -v` after EVERY change
-- `pytest tests/ -k "name" -v` for specific tests
-- `pytest tests/ -m integration` for integration only
-- `make test-cov` for coverage report
+1. **Unit Tests** - Individual functions, utilities, components
+2. **Integration Tests** - API endpoints, database operations (in
+   `tests/integration/`)
+3. **E2E Tests** - Critical user flows (Playwright)
 
 ## Test-Driven Development
 
 MANDATORY workflow:
+
 1. Write test first (RED)
 2. Run test - it should FAIL
 3. Write minimal implementation (GREEN)
