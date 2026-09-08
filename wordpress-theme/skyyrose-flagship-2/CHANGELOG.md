@@ -18,6 +18,18 @@ All notable changes to SkyyRose Flagship 2 are documented here.
   `tools/v2-runtime/verify-home-derived-output.mjs`,
   `tools/v2-runtime/measure-home-critical.mjs`,
   `tools/v2-runtime/verify-home-policies.mjs`.
+- The hero controller binds collection rails once the document is parsed, so
+  the inline Home copy (printed before the rail markup) no longer leaves the
+  rail controls hidden; `verify-home-policies.mjs` now asserts the rail.
+- The rotating header mark pauses while the document is hidden and resumes
+  on return, matching the hero film's visibility policy.
+- `scripts/deploy-theme.sh` ships only the `data/` files the package boundary
+  marks `release: true` for this theme (founder rejection records, QA manifests
+  and production contracts stay off the public theme directory) and refuses
+  archive roots that are not shell-safe; the boundary now classifies every
+  file of the pinned Home baseline.
+- Browser tools resolve Playwright from the repository root install instead of
+  one workstation path.
 
 ## Unreleased local V2 completion candidate — 2026-09-06
 
