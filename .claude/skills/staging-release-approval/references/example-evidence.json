@@ -1,0 +1,61 @@
+{
+  "verified_at": "2026-09-08T15:44:19.007399+00:00",
+  "coverage": "PARTIAL",
+  "records": [
+    {
+      "id": "BACKUP-01",
+      "classification": "HISTORICAL_OBSERVED",
+      "source_path": "/Users/theceo/Library/Group Containers/2DC432GLL2.com.openai.sky.CUAService/Library/Caches/ComputerUse/Skysight/segments/2026-09-06T21-00-00Z/events.jsonl",
+      "source_line": 33,
+      "source_event_id": 6313,
+      "source_event_timestamp": "2026-09-06T21:03:02Z",
+      "source_file_sha256": "e3fa63f84ef15e6c7316ff2d9cf98610991a9d1fbcd6d1cb4d8f4350682f8922",
+      "source_line_including_newline_sha256": "18cf3ae6350309dbb1368746c59631d0e9cc2cd617cbe9f68fc3a52bf34990ac",
+      "verified_excerpts": [
+        "447 files, all verified against staging hashes",
+        "Installation and recovery have been reviewed and syntax-checked but have not been executed remotely."
+      ],
+      "verification": "Parsed exact local JSONL line and matched each excerpt; hashes bind inspected bytes. Displayed report claims were not independently reproduced.",
+      "authentication_status": "UNVERIFIED",
+      "authentication_limit": "No current authenticated staging action was performed; a recorded report is not an authenticated server receipt."
+    },
+    {
+      "id": "BROWSER-01",
+      "classification": "HISTORICAL_OBSERVED",
+      "source_path": "/Users/theceo/Library/Group Containers/2DC432GLL2.com.openai.sky.CUAService/Library/Caches/ComputerUse/Skysight/segments/2026-09-06T23-30-00Z/events.jsonl",
+      "source_line": 173,
+      "source_event_id": 8991,
+      "source_event_timestamp": "2026-09-06T23:37:22Z",
+      "source_file_sha256": "54c8911f465ddb8bc870c25e13b92b309fe5cd37d9748098ed57cb06237a7c39",
+      "source_line_including_newline_sha256": "6a5725ba6252724db3a507327d7d4fc37fa87287b3da5b38074b09170f8885a7",
+      "verified_excerpts": [
+        "18 final route/viewport observations and 10 fallback cases pass.",
+        "The runner used Chromium at 1440\u00d7900 and 390\u00d7900, with touch emulation at 390 and no performance throttling."
+      ],
+      "verification": "Parsed exact local JSONL line and matched each excerpt; hashes bind inspected bytes. Displayed report claims were not independently reproduced.",
+      "authentication_status": "UNVERIFIED",
+      "authentication_limit": "No current authenticated staging action was performed; a recorded report is not an authenticated server receipt."
+    },
+    {
+      "id": "ROLLBACK-01",
+      "classification": "HISTORICAL_OBSERVED",
+      "source_path": "/Users/theceo/Library/Group Containers/2DC432GLL2.com.openai.sky.CUAService/Library/Caches/ComputerUse/Skysight/segments/2026-09-06T23-40-00Z/events.jsonl",
+      "source_line": 54,
+      "source_event_id": 9124,
+      "source_event_timestamp": "2026-09-06T23:45:01Z",
+      "source_file_sha256": "3a4c7c8d40d17734e21aa4388ddc8315aa6d75b5f494160ab5a79188fbad355f",
+      "source_line_including_newline_sha256": "0aabf150af99ade94c99d8a6daed7554b313f676783dc2cdc64712f53b59ec75",
+      "verified_excerpts": [
+        "Rollback remains preserved and verified against the 447-file baseline.",
+        "Rollback was not executed: filesystem parity holds, protected features remain functional, and the reviewed severe-regression trigger was not established."
+      ],
+      "verification": "Parsed exact local JSONL line and matched each excerpt; hashes bind inspected bytes. Displayed report claims were not independently reproduced.",
+      "authentication_status": "UNVERIFIED",
+      "authentication_limit": "No current authenticated staging action was performed; a recorded report is not an authenticated server receipt."
+    }
+  ],
+  "limits": [
+    "No current deployment, browser, restore, or authenticated remote execution was performed.",
+    "Negative examples are illustrative, not executed failure reproductions."
+  ]
+}

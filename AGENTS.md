@@ -65,3 +65,32 @@ deploy WordPress or production services without explicit approval.
 
 Before any edit, check `.wolf/memory.md` for current session notes and open
 work.
+
+## Required standard for all skills: verified examples
+
+Every skill must include task-specific examples of what to do and what not to
+do, supported by identifiable evidence. Apply this standard to skill creation,
+revision, audit, and adoption, including third-party skills. Read
+[the verified-example standard](docs/skill-standards/verified-examples.md) when
+performing that work.
+
+Verify example provenance and distinguish source-verified guidance, recorded
+observations, reproduced tests, and authenticated live executions. For workflows
+requiring authentication, record redacted evidence of the intended
+account/site/environment and permitted scope; never infer authenticated success
+from a public page, an available credential, or a source citation. For offline
+workflows, explicitly mark authentication not applicable. Never invent a
+successful run or treat historical approval as current permission.
+
+Include at least one evidence-backed correct example and one explicit incorrect
+example with its correction and reason. Label illustrative negative cases as
+illustrative unless actually observed or tested. Keep substantial examples in a
+linked reference to avoid bloating every invocation. Missing evidence is an
+explicit coverage gap, not a reason to fabricate verification or initiate an
+unauthorized external action. A gap in example documentation does not itself
+revoke authorization for otherwise permitted work.
+
+Maintain examples in canonical editable sources or a clearly linked maintained
+overlay for third-party distributions; do not silently modify disposable plugin
+caches. Do not claim the skill library satisfies this standard until each
+claimed skill has been checked.

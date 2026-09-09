@@ -1,0 +1,4 @@
+interface:
+  display_name: "Staging release approval"
+  short_description: "Approve exact staging artifacts and verify release parity"
+  default_prompt: "Use $staging-release-approval to prepare a reviewed staging release packet with exact artifact and rollback hashes, then execute and verify only the authorized staging scope."
