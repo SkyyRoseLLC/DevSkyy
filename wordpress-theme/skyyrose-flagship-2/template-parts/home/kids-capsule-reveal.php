@@ -11,7 +11,8 @@ $collection = isset( $args['collection'] ) && is_array( $args['collection'] ) ? 
 $products   = isset( $args['products'] ) && is_array( $args['products'] ) ? $args['products'] : array();
 $red        = $products['kids-001'] ?? null;
 $purple     = $products['kids-002'] ?? null;
-$world_url  = skyyrose2_collection_url( 'kids-capsule' );
+$collection_url = skyyrose2_collection_url( 'kids-capsule' );
+$world_url     = skyyrose2_immersive_url( 'kids-capsule' );
 
 /**
  * Render a Woo-authoritative guardian proof block.
@@ -113,4 +114,9 @@ $render_guardian_proof = static function ( $product, $sku, $role ) {
 		<p aria-live="polite" aria-atomic="true"><span data-procession-current>1</span> / 3 · <span data-procession-label><?php esc_html_e( 'The Invitation', 'skyyrose-flagship-2' ); ?></span></p>
 		<button type="button" data-procession-next><?php esc_html_e( 'Next chapter', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></button>
 	</footer>
+
+	<p class="sr2-actions sr-kids-procession__collection-cta">
+		<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $collection_url ); ?>"><?php esc_html_e( 'Shop the full Kids Capsule collection', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">↗</span></a>
+		<a class="sr-kids-procession__world-link" href="<?php echo esc_url( $world_url ); ?>"><?php esc_html_e( 'Enter the Kids world', 'skyyrose-flagship-2' ); ?> <span aria-hidden="true">→</span></a>
+	</p>
 </section>

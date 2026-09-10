@@ -434,6 +434,12 @@
 	border-top: 1px solid rgba(var(--sr2-immersive-accent-rgb), 0.34);
 }
 
+.sr2-immersive__portal-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--sr2-space-3);
+}
+
 .sr2-immersive__portal-link {
 	gap: 1rem;
 }

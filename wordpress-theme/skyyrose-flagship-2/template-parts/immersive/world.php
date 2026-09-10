@@ -175,7 +175,10 @@ get_header();
 		<p class="sr2-immersive__eyebrow"><?php esc_html_e( 'The story continues in the collection', 'skyyrose-flagship-2' ); ?></p>
 		<h2 id="immersive-portal-title"><?php echo esc_html( $args['exit_title'] ?? __( 'Carry the world with you.', 'skyyrose-flagship-2' ) ); ?></h2>
 		<p><?php echo esc_html( $args['exit_copy'] ?? '' ); ?></p>
-		<a class="sr2-immersive__portal-link" href="<?php echo esc_url( skyyrose2_collection_url( $collection_slug ) ); ?>"><?php echo esc_html( sprintf( __( 'Enter the %s collection', 'skyyrose-flagship-2' ), $collection_name ) ); ?><span aria-hidden="true">→</span></a>
+		<div class="sr2-immersive__portal-actions">
+			<a class="sr2-immersive__portal-link" href="<?php echo esc_url( skyyrose2_collection_url( $collection_slug ) ); ?>"><?php echo esc_html( sprintf( __( 'Enter the %s collection', 'skyyrose-flagship-2' ), $collection_name ) ); ?><span aria-hidden="true">→</span></a>
+			<a class="sr2-immersive__portal-link" href="<?php echo esc_url( skyyrose2_shop_url() ); ?>"><?php esc_html_e( 'Shop all pieces', 'skyyrose-flagship-2' ); ?><span aria-hidden="true">↗</span></a>
+		</div>
 	</section>
 
 	<script type="application/json" class="sr2-immersive__config"><?php echo wp_json_encode( $scene_payload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT ); ?></script>

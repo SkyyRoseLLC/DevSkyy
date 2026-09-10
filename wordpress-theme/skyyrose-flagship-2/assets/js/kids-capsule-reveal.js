@@ -49,6 +49,23 @@
     setActive(chapters.indexOf(target));
   };
 
+  const handleNavigationKeys = (event) => {
+    if (event.target !== viewport) {
+      return;
+    }
+
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      moveTo(activeIndex - 1);
+      return;
+    }
+
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+      event.preventDefault();
+      moveTo(activeIndex + 1);
+    }
+  };
+
   const connectObserver = () => {
     observer?.disconnect();
     if (!('IntersectionObserver' in window)) return;
@@ -66,6 +83,7 @@
 
   previous?.addEventListener('click', () => moveTo(activeIndex - 1), { signal });
   next?.addEventListener('click', () => moveTo(activeIndex + 1), { signal });
+  viewport.addEventListener('keydown', handleNavigationKeys, { signal });
   verticalLayout.addEventListener?.('change', connectObserver, { signal });
   reducedMotion.addEventListener?.('change', () => section.dataset.motion = reducedMotion.matches || saveData ? 'reduced' : 'full', { signal });
   document.addEventListener('visibilitychange', () => {
