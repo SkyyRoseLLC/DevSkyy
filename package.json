@@ -195,7 +195,7 @@
     "demo:love-hurts": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=love_hurts",
     "demo:showroom": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=showroom",
     "demo:runway": "npx vite serve --open --config config/vite/demo.config.ts -- --collection=runway",
-    "test:collections": "vitest run --config config/testing/vitest.config.ts src/collections"
+    "test:collections": "vitest run --config config/testing/vitest.config.ts collections"
   },
   "repository": {
     "type": "git",
