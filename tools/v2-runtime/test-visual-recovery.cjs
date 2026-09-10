@@ -5,73 +5,158 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(path.resolve(__dirname, '../../wordpress-theme/skyyrose-flagship-2/assets/js/visual-recovery.js'), 'utf8');
+const source = fs.readFileSync(
+  path.resolve(__dirname, '../../wordpress-theme/skyyrose-flagship-2/assets/js/visual-recovery.js'),
+  'utf8'
+);
 const deferred = () => {
   let resolve, reject;
-  const promise = new Promise((yes, no) => { resolve = yes; reject = no; });
+  const promise = new Promise((yes, no) => {
+    resolve = yes;
+    reject = no;
+  });
   return { promise, resolve, reject };
 };
 const flush = () => new Promise(resolve => setImmediate(resolve));
 class Target {
-  constructor() { this.listeners = new Map(); }
+  constructor() {
+    this.listeners = new Map();
+  }
   addEventListener(name, callback) {
     if (!this.listeners.has(name)) this.listeners.set(name, []);
     this.listeners.get(name).push(callback);
   }
-  emit(name, data = {}) { (this.listeners.get(name) || []).forEach(callback => callback(data)); }
+  emit(name, data = {}) {
+    (this.listeners.get(name) || []).forEach(callback => callback(data));
+  }
 }
-function fixture({ reduced = false, saveData = false, decodeSupported = true, pendingPlay = false, currentSrc = '/responsive-640.webp', naturalWidth = 640, imageMissing = false } = {}) {
+function fixture({
+  reduced = false,
+  saveData = false,
+  decodeSupported = true,
+  pendingPlay = false,
+  stableFrame = false,
+  currentSrc = '/responsive-640.webp',
+  naturalWidth = 640,
+  imageMissing = false,
+} = {}) {
   const imageDecode = deferred();
   const playback = deferred();
   const preferences = Object.assign(new Target(), { matches: reduced });
   const connection = Object.assign(new Target(), { saveData });
   const button = Object.assign(new Target(), { hidden: true, setAttribute() {} });
-  const selected = ['/approved-hero.webm', '/approved-hero.mp4'].map(src => Object.assign(new Target(), { dataset: { src } }));
+  const selected = ['/approved-hero.webm', '/approved-hero.mp4'].map(src =>
+    Object.assign(new Target(), { dataset: { src } })
+  );
   const calls = { load: 0, play: 0, pause: 0, posters: [] };
   let posterUrl;
   const video = Object.assign(new Target(), {
     paused: true,
     querySelectorAll: () => selected,
-    load() { calls.load++; },
+    load() {
+      calls.load++;
+    },
     play() {
       calls.play++;
-      if (pendingPlay) return playback.promise.then(() => { video.paused = false; });
+      if (pendingPlay)
+        return playback.promise.then(() => {
+          video.paused = false;
+        });
       video.paused = false;
       return Promise.resolve();
     },
-    pause() { calls.pause++; video.paused = true; },
+    pause() {
+      calls.pause++;
+      video.paused = true;
+    },
   });
-  Object.defineProperty(video, 'poster', { get: () => posterUrl, set: value => { posterUrl = value; calls.posters.push(value); } });
-  const image = Object.assign(new Target(), { currentSrc, naturalWidth, src: '/desktop-fallback.webp', complete: false });
+  let frameCallback;
+  if (stableFrame)
+    video.requestVideoFrameCallback = callback => {
+      frameCallback = callback;
+    };
+  Object.defineProperty(video, 'poster', {
+    get: () => posterUrl,
+    set: value => {
+      posterUrl = value;
+      calls.posters.push(value);
+    },
+  });
+  const image = Object.assign(new Target(), {
+    currentSrc,
+    naturalWidth,
+    src: '/desktop-fallback.webp',
+    complete: false,
+  });
   if (decodeSupported) image.decode = () => imageDecode.promise;
   const classes = new Set();
   const hero = {
     dataset: {},
     classList: { add: value => classes.add(value), remove: value => classes.delete(value) },
-    querySelector: selector => ({ '[data-recovery-motion-toggle]': button, '[data-recovery-hero-video]': video, img: imageMissing ? null : image })[selector],
+    querySelector: selector =>
+      ({
+        '[data-recovery-motion-toggle]': button,
+        '[data-recovery-hero-video]': video,
+        img: imageMissing ? null : image,
+      })[selector],
   };
   const document = Object.assign(new Target(), {
     hidden: false,
     documentElement: { dataset: {} },
-    querySelectorAll: selector => selector === '[data-recovery-hero]' ? [hero] : [],
+    querySelectorAll: selector => (selector === '[data-recovery-hero]' ? [hero] : []),
   });
   let observer;
   class Observer {
-    constructor(callback) { this.callback = callback; this.observed = new Set(); observer = this; }
-    observe(element) { this.observed.add(element); }
-    disconnect() { this.observed.clear(); }
+    constructor(callback) {
+      this.callback = callback;
+      this.observed = new Set();
+      observer = this;
+    }
+    observe(element) {
+      this.observed.add(element);
+    }
+    disconnect() {
+      this.observed.clear();
+    }
   }
   const window = Object.assign(new Target(), { IntersectionObserver: Observer });
-  vm.runInNewContext(source, {
-    window, document, navigator: { connection }, matchMedia: () => preferences,
+  const runtime = {
+    window,
+    document,
+    navigator: { connection },
+    matchMedia: () => preferences,
     IntersectionObserver: Observer,
     // A fixed delay is not part of the poster-decode contract.
-    setTimeout() { throw new Error('Unexpected fixed hero delay'); },
-  }, { filename: 'visual-recovery.js', codeGeneration: { strings: false, wasm: false } });
+    setTimeout() {
+      throw new Error('Unexpected fixed hero delay');
+    },
+  };
+  const runAgain = () =>
+    vm.runInNewContext(source, runtime, {
+      filename: 'visual-recovery.js',
+      codeGeneration: { strings: false, wasm: false },
+    });
+  runAgain();
   return {
-    imageDecode, playback, image, video, selected, calls, button, hero, document, window, classes,
-    preferences, connection, observer,
-    intersect(visible) { observer.callback([{ target: hero, isIntersecting: visible }]); },
+    imageDecode,
+    playback,
+    image,
+    video,
+    selected,
+    calls,
+    button,
+    hero,
+    document,
+    window,
+    classes,
+    runAgain,
+    presentFrame: () => frameCallback?.(),
+    preferences,
+    connection,
+    observer,
+    intersect(visible) {
+      observer.callback([{ target: hero, isIntersecting: visible }]);
+    },
   };
 }
 
@@ -87,7 +172,10 @@ test('visible hero defers video source assignment/load/play until actual respons
   assert.equal(f.video.poster, '/responsive-1440.webp');
   assert.equal(f.calls.load, 1);
   assert.equal(f.calls.play, 1);
-  assert.deepEqual(f.selected.map(item => item.src), ['/approved-hero.webm', '/approved-hero.mp4']);
+  assert.deepEqual(
+    f.selected.map(item => item.src),
+    ['/approved-hero.webm', '/approved-hero.mp4']
+  );
   f.intersect(true);
   assert.equal(f.calls.load, 1);
   assert.equal(f.calls.play, 1);
@@ -173,7 +261,6 @@ test('user pause while decode is pending prevents loading and late play cannot r
   assert.equal(f.calls.load, 1);
 });
 
-
 test('selected native poster is published before decode without fetching offscreen motion', async () => {
   const f = fixture({ pendingPlay: true });
   assert.equal(f.video.poster, '/responsive-640.webp');
@@ -216,12 +303,14 @@ test('missing selected source never fetches desktop fallback; image load publish
   assert.equal(f.video.poster, undefined);
   assert.equal(f.classes.has('is-hero-poster-ready'), false);
   assert.equal(f.calls.load, 0);
-  f.image.currentSrc = '/selected-mobile.webp'; f.image.naturalWidth = 640;
+  f.image.currentSrc = '/selected-mobile.webp';
+  f.image.naturalWidth = 640;
   f.image.emit('load');
   assert.equal(f.video.poster, '/selected-mobile.webp');
   assert.equal(f.classes.has('is-hero-poster-ready'), true);
   assert.equal(f.calls.load, 0, 'Image load must not bypass pending decode gate');
-  f.imageDecode.resolve(); await flush();
+  f.imageDecode.resolve();
+  await flush();
   assert.equal(f.calls.load, 1);
   assert.deepEqual(f.calls.posters, ['/selected-mobile.webp']);
 });
@@ -232,7 +321,8 @@ test('pending image bytes and image error keep picture fallback; video can still
   assert.equal(f.classes.has('is-hero-poster-ready'), false);
   assert.equal(f.calls.load, 0);
   f.image.emit('error');
-  f.imageDecode.reject(new Error('Image unavailable')); await flush();
+  f.imageDecode.reject(new Error('Image unavailable'));
+  await flush();
   assert.equal(f.classes.has('is-hero-poster-ready'), false);
   assert.equal(f.calls.load, 1);
   assert.equal(f.calls.play, 1);
@@ -241,7 +331,8 @@ test('pending image bytes and image error keep picture fallback; video can still
 });
 test('missing image never selects an invented poster and retains native video availability', async () => {
   const f = fixture({ imageMissing: true });
-  f.intersect(true); await flush();
+  f.intersect(true);
+  await flush();
   assert.equal(f.video.poster, undefined);
   assert.equal(f.classes.has('is-hero-poster-ready'), false);
   assert.equal(f.calls.load, 1);
@@ -249,7 +340,9 @@ test('missing image never selects an invented poster and retains native video av
 
 test('autoplay rejection keeps the early poster and offers a user-driven retry', async () => {
   const f = fixture({ pendingPlay: true });
-  f.intersect(true); f.imageDecode.resolve(); await flush();
+  f.intersect(true);
+  f.imageDecode.resolve();
+  await flush();
   f.playback.reject(Object.assign(new Error('Gesture required'), { name: 'NotAllowedError' }));
   await flush();
   assert.equal(f.calls.play, 1);
@@ -257,7 +350,6 @@ test('autoplay rejection keeps the early poster and offers a user-driven retry',
   assert.equal(f.button.textContent, 'Play motion');
   assert.equal(f.hero.dataset.recoveryMotion, 'paused');
 });
-
 
 test('first activated source error preserves native fallback and subsequent playing', async () => {
   const f = fixture({ pendingPlay: true });
@@ -293,11 +385,41 @@ test('all activated source errors clean up a pending play without a video-level 
   f.playback.resolve();
   await flush();
   f.video.emit('playing');
-  f.intersect(false); f.intersect(true);
-  f.button.emit('click'); f.button.emit('click');
+  f.intersect(false);
+  f.intersect(true);
+  f.button.emit('click');
+  f.button.emit('click');
   assert.equal(f.video.paused, true);
   assert.equal(f.classes.has('is-hero-video-ready'), false);
   assert.equal(f.classes.has('is-hero-poster-ready'), false);
   assert.equal(f.calls.play, 1);
   assert.equal(f.calls.load, 1);
+});
+
+test('hero reveals only a stable frame and rejects a late frame after suspension', async () => {
+  const f = fixture({ stableFrame: true });
+  f.intersect(true);
+  f.imageDecode.resolve();
+  await flush();
+  f.video.emit('playing');
+  assert.equal(f.classes.has('is-hero-video-ready'), false);
+  f.presentFrame();
+  assert.equal(f.classes.has('is-hero-video-ready'), true);
+  f.preferences.matches = true;
+  f.preferences.emit('change');
+  assert.equal(f.classes.has('is-hero-video-ready'), false);
+  f.preferences.matches = false;
+  f.preferences.emit('change');
+  await flush();
+  f.video.emit('playing');
+  f.window.emit('pagehide');
+  f.presentFrame();
+  assert.equal(f.classes.has('is-hero-video-ready'), false);
+});
+
+test('repeated hero bootstrap does not register a second controller', () => {
+  const f = fixture();
+  const count = f.document.listeners.get('visibilitychange').length;
+  f.runAgain();
+  assert.equal(f.document.listeners.get('visibilitychange').length, count);
 });

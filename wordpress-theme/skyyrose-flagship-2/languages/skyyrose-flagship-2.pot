@@ -138,6 +138,10 @@ msgstr ""
 msgid "Across the House"
 msgstr ""
 
+#: template-parts/commerce/product-card.php:130
+msgid "Added to your bag."
+msgstr ""
+
 #: template-parts/commerce/quick-view.php:30
 msgid "Adding your selection…"
 msgstr ""
@@ -1322,7 +1326,7 @@ msgstr ""
 msgid "Pre-Order"
 msgstr ""
 
-#: template-parts/commerce/product-hero.php:126
+#: template-parts/commerce/product-card.php:124 template-parts/commerce/product-hero.php:126
 msgid "Pre-order edition"
 msgstr ""
 
@@ -1358,7 +1362,7 @@ msgstr ""
 msgid "Previous world chapter"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:114
+#: template-parts/commerce/product-card.php:117
 msgid "Price:"
 msgstr ""
 
@@ -1390,7 +1394,7 @@ msgstr ""
 msgid "Product image awaiting founder verification."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:95
+#: template-parts/commerce/product-card.php:95 template-parts/commerce/product-card.php:98
 msgid "Product image unavailable"
 msgstr ""
 
@@ -1430,11 +1434,11 @@ msgstr ""
 msgid "Purple Guard · KIDS-002"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:122
+#: template-parts/commerce/product-card.php:128
 msgid "Quick view"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:122
+#: template-parts/commerce/product-card.php:128
 msgid "Quick view %s"
 msgstr ""
 
@@ -1518,7 +1522,7 @@ msgstr ""
 msgid "Royal Procession controls"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:109
+#: template-parts/commerce/product-card.php:112
 msgid "SKU:"
 msgstr ""
 
@@ -2132,6 +2136,10 @@ msgstr ""
 
 #: 404.php:7
 msgid "This chapter moved."
+msgstr ""
+
+#: template-parts/commerce/product-card.php:130
+msgid "This piece could not be added. Open the product to try again."
 msgstr ""
 
 #: front-page.php:62

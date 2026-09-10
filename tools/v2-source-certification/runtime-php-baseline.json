@@ -7,7 +7,6 @@
   "header.php": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
   "home.php": "6eaa11c38f906cb9d39b70a6a955cac168ae62c5fc8c2d0661d0a7bfcd55f5bf",
   "inc/approved-card-fronts.php": "ba65bf97afe13cca54d4e1214a0d43e1fbc12a4c257cded31414720a3ccfe4bf",
-  "inc/critical-rendering.php": "37f4729df8a296efd314d9d7fd8e778327c6ee99a4d4d88d2a45632651792c99",
   "inc/demo-import.php": "5eeafe3e9fa8477a2cae6735901faa2c5d5229259ff7685e7c9a4a97dd530b6b",
   "inc/global-shell.php": "96ca7d186b93129c2a441753dc88a38c8f1c21a63974dc514e785a49f315480d",
   "inc/hero-commerce-scenes.php": "83be0a11c1935b73114ef6cbb41038a90a2a3501ebc29fc7d81087d255996cc6",
@@ -37,7 +36,7 @@
   "template-parts/collections/story.php": "bc576dddfb846cfeb510a826f44baeb5b4e9b720984306b2ab1ad895a8faa74e",
   "template-parts/collections/world.php": "2769d2270bd2ed1a75ec2eea17337e64e86e79c702d11092df28097c11dba7dd",
   "template-parts/commerce/hero-composed-scene.php": "3235326693b1564137a3d08c3128a67a8e50bfa4c694055c8e0973b194a9cdc6",
-  "template-parts/commerce/product-card.php": "8232f640c4503b274b7281c738bda51c8e86b9e524ad728c857028bcb608beba",
+  "template-parts/commerce/product-card.php": "68ce8cec82f0ef5f76aaca841cb0766565978aafa08cd5126805e60c131d7468",
   "template-parts/commerce/product-hero.php": "b7fc6e6d367fbea34fa16ba1afff45b353bcc026e5660de873d2666b38fe9e5a",
   "template-parts/commerce/quick-view.php": "40c8d54b646e7fadda9d271e6a3f470007c435e94489fa309b1dba21d8a00f14",
   "template-parts/commerce/search-dialog.php": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00",
@@ -60,6 +59,8 @@
   "woocommerce/single-product/product-image.php": "ce9e7e8f2928b6286b44b161115f70906cad0dd57d1cfee8744b4385aec9e837",
   "template-parts/collections/scroll-world.php": "77be3793edbc4ff4b86cad6daa137870058f35653d53e43377500e5c6eab7aaa",
   "woocommerce/notices/error.php": "acedc52f5c5bc6558785d65e4751fdbf5236ffdc3b186b3657f48e2afe25b4ab",
+  "inc/quick-view-commerce.php": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c",
+  "inc/critical-rendering.php": "37f4729df8a296efd314d9d7fd8e778327c6ee99a4d4d88d2a45632651792c99",
   "inc/frame-delivery.php": "1c54edfc18e8a70b6ed4afcc13a1230887ecc541d7fbbd193cb737249953dd34",
   "inc/archive-style-bundle.php": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a"
 }

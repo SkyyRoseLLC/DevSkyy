@@ -3,3 +3,10 @@
 assets/products/source-photos/manifest.json
 tasks/source-photo-audit-report.md
 tasks/source-photo-shoot-list.md
+
+# V2 generators own these byte-bound outputs and certification receipts.
+wordpress-theme/skyyrose-flagship-2/**/*.min.css
+wordpress-theme/skyyrose-flagship-2/**/*.min.js
+tools/v2-source-certification/build-inputs.json
+tools/v2-source-certification/generated-outputs.json
+tools/v2-source-certification/runtime-php-baseline.json

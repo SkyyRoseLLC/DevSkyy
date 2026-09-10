@@ -509,3 +509,320 @@ test('failed guide uses translated template labels for its native Contact fallba
   assert.equal(h.ids['skyyrose-mascot-recall'].replacement.href, 'http://localhost:8899/contact/');
   assert.equal(h.document.activeElement, h.ids['skyyrose-mascot-recall'].replacement);
 });
+
+test('conversation exposes listening, synchronous thinking and truthful catalog failure states', () => {
+  const h = harness();
+  h.window.SKYY_GUIDE_DATA = guide;
+  h.run('mascot.js');
+  h.window.skyyRoseConcierge.open();
+  h.ids['skyy-ask-input'].dispatchEvent({ type: 'input' });
+  assert.equal(h.ids['skyyrose-mascot'].dataset.conversation, 'listening');
+  let thinking = 0;
+  h.document.addEventListener('skyy:thinking', () => thinking++);
+  h.submit('SG-005');
+  assert.equal(thinking, 1);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.conversation, 'gesture');
+  const broken = harness();
+  broken.run('mascot.js');
+  broken.window.skyyRoseConcierge.open();
+  broken.submit('SG-005');
+  assert.equal(broken.ids['skyyrose-mascot'].dataset.conversation, 'chat-failure');
+  assert.match(text(broken.ids['skyy-conversation']), /guide is unavailable/);
+});
+
+test('native conversation records closed and document hidden independently of motion', () => {
+  const h = harness();
+  h.window.SKYY_GUIDE_DATA = guide;
+  h.run('mascot.js');
+  h.window.skyyRoseConcierge.open();
+  assert.equal(h.ids['skyyrose-mascot'].dataset.chat, 'open');
+  h.document.hidden = true;
+  h.document.dispatchEvent({ type: 'visibilitychange' });
+  assert.equal(h.ids['skyyrose-mascot'].dataset.visibility, 'document-hidden');
+  h.document.hidden = false;
+  h.document.dispatchEvent({ type: 'visibilitychange' });
+  h.click(h.ids['skyy-ask-cancel']);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.chat, 'closed');
+});
+
+test('minimize retains conversation and header recall opens the same stage and transcript', () => {
+  const h = harness();
+  h.window.SKYY_GUIDE_DATA = guide;
+  h.run('mascot.js');
+  h.window.skyyRoseConcierge.open();
+  h.submit('shipping');
+  const transcript = text(h.ids['skyy-conversation']);
+  h.click(h.ids['skyy-ask-minimize']);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.chat, 'minimized');
+  assert.equal(h.ids['skyy-ask-dialog'].open, false);
+  h.click(h.ids['skyyrose-mascot-recall']);
+  assert.equal(h.ids['skyyrose-mascot'].dataset.chat, 'open');
+  assert.equal(text(h.ids['skyy-conversation']), transcript);
+});
+
+test('quantized 60Hz timestamps sustain the intended active and idle cadence instead of falling to 20fps', () => {
+  const vm = require('node:vm');
+  const source = fs.readFileSync(path.join(theme, 'assets/js/skyy-3d.js'), 'utf8');
+  for (const [clip, expected] of [
+    ['Skyy_Talk', 30],
+    ['Skyy_Idle', 15],
+  ]) {
+    let loop,
+      frames = 0;
+    const context = {
+      stop() {},
+      ready: true,
+      renderer: {
+        setAnimationLoop(fn) {
+          loop = fn;
+        },
+      },
+      visible: true,
+      document: { hidden: false, dispatchEvent() {} },
+      disposed: false,
+      lightMode: () => false,
+      canvas: { style: {} },
+      sprite: { style: {} },
+      stage: { dataset: {}, style: { setProperty() {} } },
+      firstReveal: false,
+      renderFrame() {
+        frames++;
+      },
+      paused: false,
+      running: false,
+      lastFrame: 0,
+      revealAt: 0,
+      currentAction: { getClip: () => ({ name: clip }) },
+      profile: { intervals: [] },
+      mixer: { update() {} },
+      actionElapsed: 0,
+      actionDuration: 0,
+      model: { rotation: {} },
+      facing: 0,
+      CustomEvent: class {},
+      clock: () => 0,
+    };
+    vm.createContext(context);
+    vm.runInContext(source.slice(source.indexOf('  function sync() {'), source.indexOf('  function play(')), context);
+    context.sync();
+    for (let i = 1; i <= 120; i++) loop(Math.round(((i * 1000) / 60) * 10) / 10);
+    assert(frames >= expected * 2 - 2 && frames <= expected * 2 + 3, `${clip}: ${frames} frames in two seconds`);
+  }
+});
+
+test('initial greeting starts at its beginning; subsequent answers follow the latest message', () => {
+  const h = harness();
+  h.window.SKYY_GUIDE_DATA = guide;
+  h.ids['skyy-conversation'].scrollHeight = 200;
+  h.run('mascot.js');
+  h.window.skyyRoseConcierge.open();
+  assert.equal(h.ids['skyy-conversation'].scrollTop, 0);
+  h.submit('shipping');
+  assert.equal(h.ids['skyy-conversation'].scrollTop, 200);
+});
+
+test('Home load completion keeps the static guide until character pointer intent; repeated intent loads once', async () => {
+  const h = harness({ home: true });
+  h.ids['skyy-hero-stage'].closest = () => null;
+  h.document.readyState = 'complete';
+  const character = new Element();
+  h.ids['skyyrose-mascot-trigger'] = character;
+  h.window.SKYY_LOADER_CONFIG = { mascotUrl: '/mascot.js', skyy3dUrl: '/skyy-3d.js' };
+  let prepares = 0;
+  h.window.skyyRoseConcierge = {
+    prepareHome() {
+      prepares++;
+      h.document.dispatchEvent({ type: 'skyy:prepare' });
+    },
+  };
+  h.run('mascot-loader.js');
+  h.document.head.children[0].onload();
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(prepares, 0);
+  assert.equal(h.document.head.children.length, 1);
+  character.dispatchEvent({ type: 'pointerenter' });
+  character.dispatchEvent({ type: 'pointerdown' });
+  assert.equal(prepares, 1);
+  assert.equal(h.document.head.children.length, 2);
+});
+
+test('Home keyboard intent prepares only the Ask action after guide readiness and honors lightweight modes', async () => {
+  for (const reduced of [false, true]) {
+    const h = harness({ home: true, reduced });
+    h.ids['skyy-hero-stage'].closest = () => null;
+    h.document.readyState = 'complete';
+    h.window.SKYY_LOADER_CONFIG = { mascotUrl: '/mascot.js', skyy3dUrl: '/skyy-3d.js' };
+    let prepares = 0;
+    h.window.skyyRoseConcierge = {
+      prepareHome() {
+        prepares++;
+        h.document.dispatchEvent({ type: 'skyy:prepare' });
+      },
+    };
+    h.run('mascot-loader.js');
+    h.ids['skyy-hero-stage'].dispatchEvent({ type: 'focusin', target: { id: 'skyy-hero-dismiss' } });
+    assert.equal(prepares, 0);
+    h.ids['skyy-hero-stage'].dispatchEvent({ type: 'focusin', target: { id: 'skyy-hero-chat' } });
+    assert.equal(prepares, 0);
+    h.document.head.children[0].onload();
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(prepares, 1);
+    assert.equal(h.document.head.children.length, reduced ? 1 : 2);
+  }
+});
+
+test('cooperative skinned bounds exactly match Three and yield without publishing a partial box', async () => {
+  const vm = require('node:vm');
+  const { pathToFileURL } = require('node:url');
+  const THREE = await import(pathToFileURL(path.join(theme, 'assets/js/lib/three-r170/three.module.min.js')).href);
+  const source = fs.readFileSync(path.join(theme, 'assets/js/skyy-3d.js'), 'utf8');
+  const helper = source.slice(source.indexOf('  async function prepareBounds('), source.indexOf('  var firstReveal'));
+  const prepare = vm.runInNewContext(helper + '\nprepareBounds');
+  const geometry = new THREE.BufferGeometry();
+  const count = 16385,
+    positions = new Float32Array(count * 3),
+    weights = new Float32Array(count * 4);
+  for (let i = 0; i < count; i++) {
+    positions[i * 3] = Math.sin(i);
+    positions[i * 3 + 1] = i / count;
+    weights[i * 4] = 1;
+  }
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('skinIndex', new THREE.Uint16BufferAttribute(new Uint16Array(count * 4), 4));
+  geometry.setAttribute('skinWeight', new THREE.BufferAttribute(weights, 4));
+  const mesh = new THREE.SkinnedMesh(geometry, new THREE.MeshBasicMaterial());
+  const bone = new THREE.Bone();
+  mesh.add(bone);
+  mesh.bind(new THREE.Skeleton([bone]));
+  bone.rotation.z = 0.2;
+  mesh.updateMatrixWorld(true);
+  mesh.computeBoundingBox();
+  const expected = mesh.boundingBox.clone();
+  mesh.boundingBox = null;
+  let yields = 0;
+  assert.equal(
+    await prepare(
+      THREE,
+      mesh,
+      () => false,
+      async () => {
+        yields++;
+        assert.equal(mesh.boundingBox, null);
+      }
+    ),
+    true
+  );
+  assert.equal(yields, 2);
+  assert(mesh.boundingBox.equals(expected));
+  mesh.computeBoundingSphere();
+  const expectedSphere = mesh.boundingSphere.clone();
+  mesh.boundingSphere = null;
+  assert.equal(
+    await prepare(
+      THREE,
+      mesh,
+      () => false,
+      async () => {},
+      true
+    ),
+    true
+  );
+  assert(mesh.boundingSphere.equals(expectedSphere));
+  mesh.boundingBox = null;
+  let cancelled = false;
+  assert.equal(
+    await prepare(
+      THREE,
+      mesh,
+      () => cancelled,
+      async () => {
+        cancelled = true;
+      }
+    ),
+    false
+  );
+  assert.equal(mesh.boundingBox, null);
+  geometry.dispose();
+  mesh.material.dispose();
+});
+
+test('shader warmup owns cancellation and avoids r170 material polls after disposal', async () => {
+  const vm = require('node:vm');
+  const vendor = fs.readFileSync(path.join(theme, 'assets/js/lib/three-r170/three.module.min.js'), 'utf8');
+  const start = vendor.indexOf('this.compileAsync=function');
+  const end = vendor.indexOf(';let ', start);
+  assert(start > 0 && end > start, 'Extract the actual installed r170 compileAsync implementation');
+  const timers = [],
+    material = {},
+    properties = new Map([[material, { currentProgram: { isReady: () => false } }]]);
+  const mockedRenderer = { compile: () => new Set([material]) };
+  vm.runInNewContext('(function(){' + vendor.slice(start, end) + ';}).call(renderer)', {
+    renderer: mockedRenderer,
+    Promise,
+    tt: { get: key => properties.get(key) || {} },
+    J: { get: () => ({}) },
+    setTimeout: callback => timers.push(callback),
+  });
+  let settled = false;
+  mockedRenderer.compileAsync({}, {}).then(() => {
+    settled = true;
+  });
+  assert.equal(timers.length, 1);
+  properties.clear(); // Mirrors renderer/material disposal while the vendor poll waits.
+  assert.throws(() => timers.shift()(), /isReady/);
+  await Promise.resolve();
+  assert.equal(settled, false, 'The vendor exception escapes its Promise and leaves it pending');
+
+  const source = fs.readFileSync(path.join(theme, 'assets/js/skyy-3d.js'), 'utf8');
+  const helper = source.slice(
+    source.indexOf('  async function prepareShaders('),
+    source.indexOf('  // Preserve Three r170')
+  );
+  const warmup = vm.runInNewContext(helper + '\nprepareShaders');
+  let disposed = false,
+    calls = 0;
+  const renderer = {
+    compile() {
+      calls++;
+    },
+    compileAsync() {
+      assert.fail('Uncancellable vendor poll must never run');
+    },
+  };
+  assert.equal(
+    await warmup(
+      renderer,
+      {},
+      {},
+      () => disposed,
+      async () => {
+        disposed = true;
+      }
+    ),
+    false
+  );
+  assert.equal(calls, 1);
+  assert.equal(
+    await warmup(
+      renderer,
+      {},
+      {},
+      () => disposed,
+      async () => {}
+    ),
+    false
+  );
+  assert.equal(calls, 1, 'Already-disposed initialization cannot compile again');
+  disposed = false;
+  assert.equal(
+    await warmup(
+      renderer,
+      {},
+      {},
+      () => disposed,
+      async () => {}
+    ),
+    true
+  );
+  assert.equal(calls, 2);
+});

@@ -5,6 +5,9 @@ class WC_Product {
 	public $visible = true;
 	public $in_stock = true;
 	public $type = 'variable';
+	public $sale = false;
+	public $preorder = false;
+	public function is_on_sale() { return $this->sale; }
 	public function __construct( public $id = 41 ) {}
 	public function is_visible() { return $this->visible; }
 	public function get_id() { return $this->id; }
@@ -31,6 +34,7 @@ function wp_trim_words( $value ) { return $value; }
 function skyyrose2_collections() { return array( 'signature' => array( 'name' => 'Signature', 'portal_statue' => $GLOBALS['test_frame'] ?? array() ) ); }
 function skyyrose2_sot_asset_uri( $path ) { return 'https://example.test/sot/' . $path; }
 function absint( $value ) { return abs( (int) $value ); }
+function skyyrose2_is_preorder_product( $product ) { return $product->preorder; }
 function skyyrose2_product_presentation() { return array( 'collection' => 'signature', 'presentation' => 'signature' ); }
 function skyyrose2_approved_card_front() { return $GLOBALS['test_front']; }
 function skyyrose2_product_commerce_media() { $GLOBALS['resolver_calls']++; return $GLOBALS['test_media']; }
@@ -148,3 +152,14 @@ $GLOBALS['test_action_throw'] = false;
 $piece->visible = false;
 check_card( '' === render_card( array( 'product' => $piece ), $previous ), 'Invisible products do not render a card' );
 echo "PASS canonical card responsive authority, native commerce, lazy defaults, priority boundaries, escaping and exception restoration\n";
+
+$piece->visible = true;
+$piece->type = 'simple';
+$piece->preorder = true;
+$piece->sale = true;
+$GLOBALS['test_action_throw'] = false;
+$html = render_card( array( 'product' => $piece ), $previous );
+check_card( str_contains( $html, 'data-product-type="simple"' ) && str_contains( $html, 'data-preorder="true"' ) && str_contains( $html, 'data-sale="true"' ), 'Simple/sale/preorder states derive from Woo product' );
+check_card( str_contains( $html, 'Pre-order edition' ), 'Authoritative preorder label is visible' );
+check_card( str_contains( $html, 'aria-haspopup="dialog"' ) && str_contains( $html, 'aria-expanded="false"' ), 'Quick View progressive dialog semantics exist' );
+echo "PASS premium card simple/sale/preorder state derivation and dialog semantics\n";
