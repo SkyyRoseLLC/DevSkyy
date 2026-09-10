@@ -72,14 +72,7 @@
       "blockGap": true,
       "margin": true,
       "padding": true,
-      "units": [
-        "px",
-        "rem",
-        "em",
-        "%",
-        "vw",
-        "vh"
-      ],
+      "units": ["px", "rem", "em", "%", "vw", "vh"],
       "spacingSizes": [
         {
           "name": "2XS",
@@ -132,7 +125,7 @@
         {
           "name": "Small",
           "slug": "small",
-          "size": ".875rem"
+          "size": "0.875rem"
         },
         {
           "name": "Body",
@@ -162,12 +155,12 @@
         {
           "name": "Commerce",
           "slug": "commerce",
-          "size": "clamp(1rem, 1vw + .75rem, 1.25rem)"
+          "size": "clamp(1rem, 1vw + 0.75rem, 1.25rem)"
         },
         {
           "name": "Index",
           "slug": "index",
-          "size": ".75rem"
+          "size": "0.75rem"
         }
       ],
       "fontFamilies": [
@@ -181,18 +174,14 @@
               "fontStyle": "normal",
               "fontWeight": "100 900",
               "fontDisplay": "swap",
-              "src": [
-                "file:./assets/sot/fonts/archivo-latin.woff2"
-              ]
+              "src": ["file:./assets/sot/fonts/archivo-latin.woff2"]
             },
             {
               "fontFamily": "Archivo",
               "fontStyle": "normal",
               "fontWeight": "100 900",
               "fontDisplay": "swap",
-              "src": [
-                "file:./assets/derived/fonts/archivo-normal-width.woff2"
-              ]
+              "src": ["file:./assets/derived/fonts/archivo-normal-width.woff2"]
             }
           ]
         },
@@ -206,9 +195,7 @@
               "fontStyle": "normal",
               "fontWeight": "100 900",
               "fontDisplay": "swap",
-              "src": [
-                "file:./assets/sot/fonts/hanken-grotesk-latin.woff2"
-              ]
+              "src": ["file:./assets/sot/fonts/hanken-grotesk-latin.woff2"]
             }
           ]
         },
@@ -222,9 +209,7 @@
               "fontStyle": "normal",
               "fontWeight": "400",
               "fontDisplay": "swap",
-              "src": [
-                "file:./assets/sot/fonts/anton-latin.woff2"
-              ]
+              "src": ["file:./assets/sot/fonts/anton-latin.woff2"]
             }
           ]
         },
@@ -238,9 +223,7 @@
               "fontStyle": "normal",
               "fontWeight": "400 900",
               "fontDisplay": "swap",
-              "src": [
-                "file:./assets/sot/fonts/cinzel-latin.woff2"
-              ]
+              "src": ["file:./assets/sot/fonts/cinzel-latin.woff2"]
             }
           ]
         }
@@ -263,17 +246,17 @@
         "editorial": "900ms",
         "scene": "900ms",
         "enter-ease": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "exit-ease": "cubic-bezier(.4, 0, 1, 1)",
+        "exit-ease": "cubic-bezier(0.4, 0, 1, 1)",
         "expressive-ease": "cubic-bezier(0.65, 0, 0.35, 1)",
-        "distance": ".75rem",
+        "distance": "0.75rem",
         "stagger": "40ms",
         "commerce": "280ms",
         "cinematic": "900ms",
         "character": "700ms",
         "reveal": "900ms",
         "exit": "180ms",
-        "micro-ease": "cubic-bezier(.4, 0, .2, 1)",
-        "spring-ease": "cubic-bezier(.2, .8, .2, 1)"
+        "micro-ease": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "spring-ease": "cubic-bezier(0.2, 0.8, 0.2, 1)"
       },
       "focus": {
         "color": "#f5f5f0",
@@ -309,7 +292,7 @@
         "monument": {
           "size": "clamp(3rem, 7vw, 7rem)",
           "family": "\"Archivo\", system-ui, sans-serif",
-          "leading": ".94"
+          "leading": "0.94"
         },
         "display": {
           "size": "clamp(2rem, 4vw, 4rem)",
@@ -322,7 +305,7 @@
           "leading": "1.12"
         },
         "commerce": {
-          "size": "clamp(1rem, 1vw + .75rem, 1.25rem)",
+          "size": "clamp(1rem, 1vw + 0.75rem, 1.25rem)",
           "family": "\"Hanken Grotesk\", \"Inter\", sans-serif",
           "leading": "1.35"
         },
@@ -332,12 +315,12 @@
           "leading": "1.6"
         },
         "utility": {
-          "size": ".875rem",
+          "size": "0.875rem",
           "family": "\"Anton\", sans-serif",
           "leading": "1.4"
         },
         "index": {
-          "size": ".75rem",
+          "size": "0.75rem",
           "family": "ui-monospace, SFMono-Regular, Menlo, monospace",
           "leading": "1.4"
         }
@@ -345,9 +328,9 @@
       "materials": {
         "paper": "#161616",
         "ink": "#0a0a0a",
-        "glass": "rgba(12, 12, 12, .96)",
+        "glass": "rgba(12, 12, 12, 0.96)",
         "metal": "#b76e79",
-        "atmosphere": "rgba(0, 0, 0, .24)"
+        "atmosphere": "rgba(0, 0, 0, 0.24)"
       }
     }
   },

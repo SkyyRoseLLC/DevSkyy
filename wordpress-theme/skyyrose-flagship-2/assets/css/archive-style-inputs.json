@@ -3,8 +3,8 @@
   "sources": [
     {
       "file": "design-tokens.min.css",
-      "sha256": "b7b9b6d3210a9d864f6ca6330eb1bac959776296210385701539a85897fa4dff",
-      "bytes": 5435
+      "sha256": "8f5809327ca39cca9fef03f6f64195251f1260129138f939de9632bdc1f1b5e7",
+      "bytes": 5990
     },
     {
       "file": "shop-page.min.css",
@@ -23,8 +23,8 @@
     },
     {
       "file": "visual-recovery.min.css",
-      "sha256": "c057158e20ea12f10f3fa1535d75b7780ce59f934efe7be4a54af2519d0bc620",
-      "bytes": 6314
+      "sha256": "66417b80354590f731793153530a42f64272f8d697bed04d8465eec2b941acf0",
+      "bytes": 6379
     },
     {
       "file": "mascot.min.css",

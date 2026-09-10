@@ -78,7 +78,7 @@ msgstr ""
 msgid "A first Kids Capsule runway framed in royal color"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:58
+#: template-parts/home/kids-capsule-reveal.php:71
 msgid "A fourth world has been waiting."
 msgstr ""
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Across the House"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:130
+#: template-parts/commerce/product-card.php:148
 msgid "Added to your bag."
 msgstr ""
 
@@ -218,7 +218,7 @@ msgstr ""
 msgid "Availability, fit, and production windows are reviewed case by case. A replacement is never promised until Client Services confirms the next available option."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:77 template-parts/home/kids-capsule-reveal.php:42
+#: template-parts/commerce/product-card.php:77 template-parts/home/kids-capsule-reveal.php:55
 msgid "Available"
 msgstr ""
 
@@ -318,7 +318,7 @@ msgstr ""
 msgid "Carry the first mark forward."
 msgstr ""
 
-#: template-parts/immersive/world.php:207
+#: template-parts/immersive/world.php:242
 msgid "Carry the world with you."
 msgstr ""
 
@@ -330,7 +330,7 @@ msgstr ""
 msgid "Chapter %02d"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:57
+#: template-parts/home/kids-capsule-reveal.php:70
 msgid "Chapter 04 · Kids Capsule"
 msgstr ""
 
@@ -470,7 +470,7 @@ msgstr ""
 msgid "Collections"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:90
+#: template-parts/home/kids-capsule-reveal.php:103
 msgid "Color becomes the uniform of imagination."
 msgstr ""
 
@@ -534,11 +534,11 @@ msgstr ""
 msgid "Cross the water. Find the origin."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:41
+#: template-parts/home/kids-capsule-reveal.php:54
 msgid "Current price:"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:42
+#: template-parts/home/kids-capsule-reveal.php:55
 msgid "Currently unavailable"
 msgstr ""
 
@@ -594,16 +594,20 @@ msgstr ""
 msgid "Enter full collection"
 msgstr ""
 
-#: functions.php:865 template-parts/home/kids-capsule-reveal.php:108
+#: functions.php:865 template-parts/home/kids-capsule-reveal.php:121
 msgid "Enter her world"
 msgstr ""
 
-#: template-parts/immersive/world.php:209
+#: template-parts/immersive/world.php:245
 msgid "Enter the %s collection"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:47
+#: template-parts/home/kids-capsule-reveal.php:60
 msgid "Enter the Kids Capsule collection for currently published pieces."
+msgstr ""
+
+#: template-parts/home/kids-capsule-reveal.php:135
+msgid "Enter the Kids world"
 msgstr ""
 
 #: template-collection.php:82
@@ -626,7 +630,7 @@ msgstr ""
 msgid "Enter the piece"
 msgstr ""
 
-#: template-parts/immersive/world.php:103
+#: template-parts/immersive/world.php:109
 msgid "Enter the story"
 msgstr ""
 
@@ -650,7 +654,7 @@ msgstr ""
 msgid "Exchanges and made-to-order pieces"
 msgstr ""
 
-#: functions.php:539 template-parts/immersive/world.php:183
+#: functions.php:539 template-parts/immersive/world.php:201
 msgid "Explore %s"
 msgstr ""
 
@@ -684,6 +688,10 @@ msgstr ""
 
 #: template-parts/commerce/product-hero.php:85
 msgid "Explore this piece"
+msgstr ""
+
+#: template-parts/collections/arrival.php:16
+msgid "Explore world"
 msgstr ""
 
 #: 404.php:7
@@ -810,7 +818,7 @@ msgstr ""
 msgid "Golden Gate Salon"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:46
+#: template-parts/home/kids-capsule-reveal.php:59
 msgid "Guardian product proof unavailable"
 msgstr ""
 
@@ -954,7 +962,7 @@ msgstr ""
 msgid "Kids Capsule / The Heir Edit"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:63
+#: template-parts/home/kids-capsule-reveal.php:76
 msgid "Kids Capsule Royal Procession. Three chapters."
 msgstr ""
 
@@ -1106,7 +1114,7 @@ msgstr ""
 msgid "Next Up"
 msgstr ""
 
-#: template-parts/collections/scroll-world.php:10 template-parts/home/kids-capsule-reveal.php:117
+#: template-parts/collections/scroll-world.php:10 template-parts/home/kids-capsule-reveal.php:130
 msgid "Next chapter"
 msgstr ""
 
@@ -1158,7 +1166,7 @@ msgstr ""
 msgid "No stories were found."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:73
+#: template-parts/home/kids-capsule-reveal.php:86
 msgid "Not a smaller room. Not a borrowed story. A first world built at her scale, with enough space for every idea she has not named yet."
 msgstr ""
 
@@ -1290,7 +1298,7 @@ msgstr ""
 msgid "Parent page missing for %s."
 msgstr ""
 
-#: front-page.php:41 template-collection.php:74 template-parts/collections/arrival.php:22
+#: front-page.php:41 template-collection.php:74 template-parts/collections/arrival.php:31
 msgid "Pause motion"
 msgstr ""
 
@@ -1306,7 +1314,7 @@ msgstr ""
 msgid "Piece from the house"
 msgstr ""
 
-#: template-parts/immersive/world.php:191
+#: template-parts/immersive/world.php:223
 msgid "Piece in this scene"
 msgstr ""
 
@@ -1326,7 +1334,7 @@ msgstr ""
 msgid "Pre-Order"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:124 template-parts/commerce/product-hero.php:126
+#: template-parts/commerce/product-card.php:139 template-parts/commerce/product-hero.php:126
 msgid "Pre-order edition"
 msgstr ""
 
@@ -1346,7 +1354,7 @@ msgstr ""
 msgid "Preview unavailable. Use Search to see the full results."
 msgstr ""
 
-#: template-parts/collections/scroll-world.php:10 template-parts/home/kids-capsule-reveal.php:115
+#: template-parts/collections/scroll-world.php:10 template-parts/home/kids-capsule-reveal.php:128
 msgid "Previous chapter"
 msgstr ""
 
@@ -1362,7 +1370,7 @@ msgstr ""
 msgid "Previous world chapter"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:117
+#: template-parts/commerce/product-card.php:125
 msgid "Price:"
 msgstr ""
 
@@ -1394,7 +1402,7 @@ msgstr ""
 msgid "Product image awaiting founder verification."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:95 template-parts/commerce/product-card.php:98
+#: template-parts/commerce/product-card.php:102 template-parts/commerce/product-card.php:99
 msgid "Product image unavailable"
 msgstr ""
 
@@ -1426,19 +1434,19 @@ msgstr ""
 msgid "Published product views"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:94
+#: template-parts/home/kids-capsule-reveal.php:107
 msgid "Purple Guard"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:85
+#: template-parts/home/kids-capsule-reveal.php:98
 msgid "Purple Guard · KIDS-002"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:128
+#: template-parts/commerce/product-card.php:146
 msgid "Quick view"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:128
+#: template-parts/commerce/product-card.php:146
 msgid "Quick view %s"
 msgstr ""
 
@@ -1454,19 +1462,19 @@ msgstr ""
 msgid "Read the original"
 msgstr ""
 
-#: home.php:25
+#: home.php:25 template-parts/collections/arrival.php:18
 msgid "Read the story"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:93
+#: template-parts/home/kids-capsule-reveal.php:106
 msgid "Red Guard"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:81
+#: template-parts/home/kids-capsule-reveal.php:94
 msgid "Red Guard · KIDS-001"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:91
+#: template-parts/home/kids-capsule-reveal.php:104
 msgid "Red arrives with energy. Purple arrives with possibility. Both sets protect room to move, play, and decide who they want to be next."
 msgstr ""
 
@@ -1514,15 +1522,15 @@ msgstr ""
 msgid "Review your current order status and details below."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:67
+#: template-parts/home/kids-capsule-reveal.php:80
 msgid "Rose-gold doors opening into the Kids Capsule playroom"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:114
+#: template-parts/home/kids-capsule-reveal.php:127
 msgid "Royal Procession controls"
 msgstr ""
 
-#: template-parts/commerce/product-card.php:112
+#: template-parts/commerce/product-card.php:120
 msgid "SKU:"
 msgstr ""
 
@@ -1586,7 +1594,7 @@ msgstr ""
 msgid "Security check failed."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:44
+#: template-parts/home/kids-capsule-reveal.php:57
 msgid "See the %s set"
 msgstr ""
 
@@ -1646,8 +1654,12 @@ msgstr ""
 msgid "Shop Signature"
 msgstr ""
 
-#: search.php:56
+#: search.php:56 template-parts/immersive/world.php:246
 msgid "Shop all pieces"
+msgstr ""
+
+#: template-parts/collections/arrival.php:17 template-parts/immersive/world.php:112
+msgid "Shop collection"
 msgstr ""
 
 #: woocommerce/cart/cart.php:23
@@ -1656,6 +1668,10 @@ msgstr ""
 
 #: 404.php:7
 msgid "Shop pieces"
+msgstr ""
+
+#: template-parts/home/kids-capsule-reveal.php:134
+msgid "Shop the full Kids Capsule collection"
 msgstr ""
 
 #: front-page.php:36 functions.php:527
@@ -1742,11 +1758,11 @@ msgstr ""
 msgid "Skyy is joining you…"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:84
+#: template-parts/home/kids-capsule-reveal.php:97
 msgid "Skyy mascot wearing the purple, lavender, and black Kids Capsule colorblock hoodie and jogger set in Oakland"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:80
+#: template-parts/home/kids-capsule-reveal.php:93
 msgid "Skyy mascot wearing the red, black, and white Kids Capsule colorblock hoodie and jogger set in Oakland"
 msgstr ""
 
@@ -1858,7 +1874,7 @@ msgstr ""
 msgid "Stories / Journal"
 msgstr ""
 
-#: template-parts/immersive/world.php:111
+#: template-parts/immersive/world.php:119
 msgid "Story chapters"
 msgstr ""
 
@@ -1914,11 +1930,11 @@ msgstr ""
 msgid "The Forbidden Garden"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:89
+#: template-parts/home/kids-capsule-reveal.php:102
 msgid "The Guardians"
 msgstr ""
 
-#: front-page.php:65 functions.php:854 template-parts/home/kids-capsule-reveal.php:105
+#: front-page.php:65 functions.php:854 template-parts/home/kids-capsule-reveal.php:118
 msgid "The Heir"
 msgstr ""
 
@@ -1942,7 +1958,7 @@ msgstr ""
 msgid "The House, Signed"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:116 template-parts/home/kids-capsule-reveal.php:71
+#: template-parts/home/kids-capsule-reveal.php:129 template-parts/home/kids-capsule-reveal.php:84
 msgid "The Invitation"
 msgstr ""
 
@@ -2014,11 +2030,11 @@ msgstr ""
 msgid "The collection worlds"
 msgstr ""
 
-#: template-parts/immersive/world.php:108
+#: template-parts/immersive/world.php:116
 msgid "The complete visual story is available below. Motion is optional."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:72
+#: template-parts/home/kids-capsule-reveal.php:85
 msgid "The doors open for her."
 msgstr ""
 
@@ -2030,7 +2046,7 @@ msgstr ""
 msgid "The flower appears where it was never expected to. That is the point."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:101
+#: template-parts/home/kids-capsule-reveal.php:114
 msgid "The full-color SkyyRose heir seated front and center on her black-and-gold throne monument"
 msgstr ""
 
@@ -2038,7 +2054,7 @@ msgstr ""
 msgid "The heir’s room"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:60
+#: template-parts/home/kids-capsule-reveal.php:73
 msgid "The house changes hands. Follow the procession from invitation, to guardians, to the heir already seated at the center of her story."
 msgstr ""
 
@@ -2070,7 +2086,7 @@ msgstr ""
 msgid "The monument sets the mood. The clothes are gender-neutral by design: choose the shape, size, and story that feel like yours. Each published piece below holds the live product, price, and availability decision."
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:107
+#: template-parts/home/kids-capsule-reveal.php:120
 msgid "The next chapter belongs to the imagination brave enough to write it."
 msgstr ""
 
@@ -2082,7 +2098,7 @@ msgstr ""
 msgid "The origin"
 msgstr ""
 
-#: template-parts/home/kids-capsule-reveal.php:78
+#: template-parts/home/kids-capsule-reveal.php:91
 msgid "The red and purple Kids Capsule guardians"
 msgstr ""
 
@@ -2098,7 +2114,7 @@ msgstr ""
 msgid "The route returns to the workroom. Every refined line still carries the hands, the family, and the city that taught the house how to build from concrete."
 msgstr ""
 
-#: template-parts/immersive/world.php:107
+#: template-parts/immersive/world.php:115
 msgid "The static story scene is ready."
 msgstr ""
 
@@ -2106,7 +2122,7 @@ msgstr ""
 msgid "The store processes information needed for orders, accounts, support, fraud prevention, and requested communications. This may include contact, billing, shipping, order, and device information."
 msgstr ""
 
-#: template-parts/immersive/world.php:206
+#: template-parts/immersive/world.php:241
 msgid "The story continues in the collection"
 msgstr ""
 
@@ -2118,7 +2134,7 @@ msgstr ""
 msgid "The throne comes first. Then the playroom, the runway, and every big idea still waiting for its name."
 msgstr ""
 
-#: functions.php:855 template-parts/home/kids-capsule-reveal.php:106
+#: functions.php:855 template-parts/home/kids-capsule-reveal.php:119
 msgid "The throne is already hers."
 msgstr ""
 
@@ -2138,7 +2154,7 @@ msgstr ""
 msgid "This chapter moved."
 msgstr ""
 
-#: template-parts/commerce/product-card.php:130
+#: template-parts/commerce/product-card.php:148
 msgid "This piece could not be added. Open the product to try again."
 msgstr ""
 
@@ -2254,7 +2270,7 @@ msgstr ""
 msgid "View available pieces"
 msgstr ""
 
-#: template-parts/immersive/world.php:191
+#: template-parts/immersive/world.php:223
 msgid "View the product"
 msgstr ""
 
