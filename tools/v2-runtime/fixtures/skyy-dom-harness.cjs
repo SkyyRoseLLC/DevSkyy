@@ -100,6 +100,7 @@ function harness({ reduced = false, saveData = false, home = false } = {}) {
       'skyy-ask-input',
       'skyy-motion-toggle',
       'skyy-ask-cancel',
+      'skyy-ask-minimize',
       'skyy-chips',
       'skyy-3d-canvas',
       'skyy-presence-status',

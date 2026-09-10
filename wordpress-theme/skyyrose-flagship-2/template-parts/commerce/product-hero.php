@@ -51,7 +51,7 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 	data-media-state="<?php echo esc_attr( $commerce_media['state'] ); ?>"
 	data-availability="<?php echo esc_attr( $stock_state ); ?>"
 >
-	<div class="sr2-pdp-product__media" role="region" aria-label="<?php esc_attr_e( 'Published product views', 'skyyrose-flagship-2' ); ?>">
+	<div id="sr2-product-views" class="sr2-pdp-product__media" role="region" aria-label="<?php esc_attr_e( 'Published product views', 'skyyrose-flagship-2' ); ?>">
 		<p class="sr2-pdp-product__media-label">
 			<span><?php esc_html_e( 'Product archive', 'skyyrose-flagship-2' ); ?></span>
 			<span><?php echo esc_html( sprintf( _n( '%d published view', '%d published views', $gallery_count, 'skyyrose-flagship-2' ), $gallery_count ) ); ?></span>
@@ -82,9 +82,14 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 				<?php esc_html_e( 'Product imagery is currently unavailable.', 'skyyrose-flagship-2' ); ?>
 			</div>
 		<?php endif; ?>
+		<nav class="sr2-pdp-product__chapters" aria-label="<?php esc_attr_e( 'Explore this piece', 'skyyrose-flagship-2' ); ?>">
+			<?php if ( $has_verified_media ) : ?><a href="#sr2-product-views"><?php esc_html_e( 'Silhouette', 'skyyrose-flagship-2' ); ?></a><?php endif; ?>
+			<a href="#sr2-product-details"><?php esc_html_e( 'Details + story', 'skyyrose-flagship-2' ); ?></a>
+			<a href="#sr2-product-purchase"><?php esc_html_e( 'Select your piece', 'skyyrose-flagship-2' ); ?></a>
+		</nav>
 	</div>
 
-	<div class="summary entry-summary sr2-pdp-product__summary">
+	<div id="sr2-product-purchase" class="summary entry-summary sr2-pdp-product__summary">
 		<p class="sr2-pdp-product__collection"><?php echo esc_html( $hero_presentation_name ); ?></p>
 
 		<?php
@@ -121,12 +126,12 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 				<div class="sr2-pdp-order-note" role="note"><strong><?php esc_html_e( 'Pre-order edition', 'skyyrose-flagship-2' ); ?></strong><p><?php esc_html_e( 'Orders use standard checkout. This label does not reserve stock or defer payment. Contact Client Services for shipping estimates before ordering.', 'skyyrose-flagship-2' ); ?></p></div>
 			<?php endif; ?>
 			<?php if ( $portal_story ) : ?>
-				<aside class="sr2-pdp-product__house-note"><span><?php echo esc_html( $portal_kicker ?: __( 'House note', 'skyyrose-flagship-2' ) ); ?></span><p><?php echo esc_html( $portal_story ); ?></p></aside>
+				<aside class="sr2-pdp-product__house-note" data-sr2-type-motion="editorial"><span><?php echo esc_html( $portal_kicker ?: __( 'House note', 'skyyrose-flagship-2' ) ); ?></span><p><?php echo esc_html( $portal_story ); ?></p></aside>
 			<?php endif; ?>
 		</div>
 	</div>
 
-	<div class="sr2-pdp-product__after-summary">
+	<div id="sr2-product-details" class="sr2-pdp-product__after-summary">
 		<?php
 		/**
 		 * Hook: woocommerce_after_single_product_summary.

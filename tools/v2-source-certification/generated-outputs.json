@@ -1030,5 +1030,78 @@
     "source": "assets/css/content-page.css",
     "tool": "clean-css 5.3.3",
     "tracked": true
+  },
+  "assets/css/search-preview.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/search-preview.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/search-preview.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/search-preview.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/css/quick-view-commerce.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/quick-view-commerce.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/quick-view-commerce.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/quick-view-commerce.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/css/scene-handoff.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/scene-handoff.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/scene-handoff.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/scene-handoff.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/css/premium-commerce.min.css": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/css/premium-commerce.css",
+    "tool": "clean-css 5.3.3",
+    "tracked": true
+  },
+  "assets/js/premium-commerce.min.js": {
+    "generator": "scripts/build-assets.mjs",
+    "normalization": "No trailing newline; pinned minifier settings",
+    "released": true,
+    "source": "assets/js/premium-commerce.js",
+    "tool": "terser 5.36.0",
+    "tracked": true
+  },
+  "assets/derived/fonts/inter-fallback-latin.woff2": {
+    "generator": "fontTools.subset; exact command in data/font-fallback.json",
+    "normalization": "11 cmap codepoints absent from Hanken; preserve source glyph outlines, variable axis, hinting and all name metadata",
+    "released": false,
+    "source": "assets/sot/fonts/inter-latin.woff2",
+    "tool": "fontTools 4.59.2",
+    "tracked": false,
+    "candidate": "V2-READINESS-20260906"
   }
 }

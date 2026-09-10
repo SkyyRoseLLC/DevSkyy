@@ -1,6 +1,8 @@
 /** Approved heroes and native scroll-world choreography. No scroll interception. */
 (() => {
   'use strict';
+  if (document.documentElement.dataset.recoveryInitialized) return;
+  document.documentElement.dataset.recoveryInitialized = 'true';
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   const connection = navigator.connection;
   const heroes = [];
@@ -13,7 +15,11 @@
     state.button.textContent = state.paused ? 'Play motion' : 'Pause motion';
     state.button.setAttribute('aria-pressed', String(state.paused));
     if (!state.video || state.failed || !state.posterReady) return;
-    if (!active) { state.video.pause(); return; }
+    if (!active) {
+      state.video.pause();
+      if (!allowed()) state.el.classList.remove('is-hero-video-ready');
+      return;
+    }
     if (!state.loaded) {
       state.video.querySelectorAll('source[data-src]').forEach(source => { source.src = source.dataset.src; });
       state.video.muted = true;
@@ -57,7 +63,17 @@
       };
       if (poster?.decode) poster.decode().then(prepare, prepare);
       else prepare();
-      video.addEventListener('playing', () => el.classList.add('is-hero-video-ready'));
+      video.addEventListener('playing', () => {
+        const reveal = () => {
+          if (!video.paused && allowed() && state.visible && !document.hidden && !suspended && !state.failed) {
+            el.classList.add('is-hero-video-ready');
+          }
+        };
+        // A playing event can precede the first composited frame. Keep the
+        // approved poster until a frame is available, without a timed loader.
+        if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(reveal);
+        else reveal();
+      });
       video.addEventListener('error', () => { state.failed = true; video.pause(); el.classList.remove('is-hero-video-ready'); });
     }
     observer?.observe(el);

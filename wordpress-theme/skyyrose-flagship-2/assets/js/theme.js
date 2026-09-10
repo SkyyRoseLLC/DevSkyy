@@ -16,6 +16,117 @@
     root.classList.add('sr2-motion-reduced');
   }
 
+  // Founder-approved rotating identity. Keep the reserved still immediately
+  // usable; start the unchanged animation after critical page resources load.
+  const brandMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const brandConnection = navigator.connection;
+  document.querySelectorAll('[data-brand-animation]').forEach((image) => {
+    const fallback = image.src;
+    let nearViewport = image.dataset.brandAnimationMode !== 'viewport';
+    let pageReady = document.readyState === 'complete';
+    let imageFailed = false;
+    let videoFailed = false;
+    let video = null;
+    let videoReady = false;
+    let videoTimer = null;
+    let playAttempt = 0;
+    const wantsMotion = () => pageReady && nearViewport && !brandMotion.matches && !brandConnection?.saveData;
+    const showImage = () => { image.dataset.brandVideoActive = 'false'; };
+    const failVideo = () => {
+      videoFailed = true;
+      playAttempt += 1;
+      clearTimeout(videoTimer);
+      if (video) { video.pause(); video.hidden = true; video.removeAttribute('src'); video.load(); }
+      showImage();
+      update();
+    };
+    const playVideo = () => {
+      const attempt = ++playAttempt;
+      video.play().then(() => {
+        if (attempt !== playAttempt) return;
+        if (!wantsMotion() || videoFailed) { video.pause(); return; }
+        video.hidden = false;
+        image.dataset.brandVideoActive = 'true';
+      }).catch(() => {
+        // A preference/proximity pause cancels pending play promises. That is
+        // lifecycle cancellation, not a codec or delivery failure.
+        if (attempt !== playAttempt || !wantsMotion()) return;
+        failVideo();
+      });
+    };
+    const update = () => {
+      const animate = wantsMotion();
+      image.dataset.brandAnimationLoaded = String(animate);
+      if (!animate) {
+        playAttempt += 1;
+        if (video) { video.pause(); video.hidden = true; }
+        showImage();
+        if (image.src !== fallback) image.src = fallback;
+        return;
+      }
+      if (!video && !videoFailed && image.dataset.brandVideo) {
+        const candidate = document.createElement('video');
+        if (!candidate.canPlayType('video/webm; codecs="vp9"')) videoFailed = true;
+        else {
+          video = candidate;
+          video.muted = true;
+          video.defaultMuted = true;
+          video.playsInline = true;
+          video.loop = true;
+          video.preload = 'auto';
+          video.hidden = true;
+          video.setAttribute('aria-hidden', 'true');
+          video.tabIndex = -1;
+          video.addEventListener('error', failVideo, { once: true });
+          video.addEventListener('loadeddata', () => {
+            // Some engines decode VP9 but discard its alpha. Verify the exact
+            // asset's transparent corner before revealing its first frame.
+            try {
+              const canvas = document.createElement('canvas');
+              canvas.width = canvas.height = 1;
+              const context = canvas.getContext('2d');
+              context.drawImage(video, 0, 0, 1, 1, 0, 0, 1, 1);
+              if (context.getImageData(0, 0, 1, 1).data[3] !== 0) { failVideo(); return; }
+              clearTimeout(videoTimer);
+              videoReady = true;
+              if (wantsMotion()) playVideo();
+            } catch { failVideo(); }
+          }, { once: true });
+          image.parentElement.append(video);
+          videoTimer = setTimeout(failVideo, 12000);
+          video.src = image.dataset.brandVideo;
+          return;
+        }
+      }
+      if (video && !videoFailed) {
+        if (videoReady) playVideo();
+        return;
+      }
+      const source = imageFailed ? fallback : image.dataset.brandAnimation;
+      if (image.src !== source) image.src = source;
+    };
+    image.addEventListener('error', () => {
+      imageFailed = true;
+      update();
+    });
+    brandMotion.addEventListener?.('change', update);
+    brandConnection?.addEventListener?.('change', update);
+    if (!nearViewport) {
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          nearViewport = entries.some((entry) => entry.isIntersecting);
+          update();
+        }, { rootMargin: '320px 0px' });
+        observer.observe(image);
+      } else {
+        // Unsupported observers still retain the approved animation.
+        nearViewport = true;
+      }
+    }
+    if (pageReady) update();
+    else window.addEventListener('load', () => { pageReady = true; update(); }, { once: true });
+  });
+
   /* One lifecycle owns shell navigation and every native dialog. Native modal
      semantics remain intact, including third-party/mascot showModal() calls. */
   const overlays = (() => {
@@ -559,9 +670,9 @@
 
 
 
-  /* Product-card quick view is a progressive layer over the direct PDP link.
-   * All facts are copied from the live card payload; the full product page
-   * remains the canonical place for options, variation resolution, and cart. */
+  /* Immediate card preview over the direct PDP link. The separate commerce
+   * module refreshes server facts and imports the native purchase form on
+   * intent; the PDP remains the complete progressive fallback. */
   const quickView = document.querySelector('[data-quick-view-dialog], #sr2-quick-view-dialog');
   if (quickView && typeof quickView.showModal === 'function') {
     const fields = {

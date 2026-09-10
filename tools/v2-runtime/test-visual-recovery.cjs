@@ -20,7 +20,7 @@ class Target {
   }
   emit(name, data = {}) { (this.listeners.get(name) || []).forEach(callback => callback(data)); }
 }
-function fixture({ reduced = false, saveData = false, decodeSupported = true, pendingPlay = false } = {}) {
+function fixture({ reduced = false, saveData = false, decodeSupported = true, pendingPlay = false, stableFrame = false } = {}) {
   const imageDecode = deferred();
   const playback = deferred();
   const preferences = Object.assign(new Target(), { matches: reduced });
@@ -40,6 +40,8 @@ function fixture({ reduced = false, saveData = false, decodeSupported = true, pe
     },
     pause() { calls.pause++; video.paused = true; },
   });
+  let frameCallback;
+  if (stableFrame) video.requestVideoFrameCallback = callback => { frameCallback = callback; };
   const image = { currentSrc: '/responsive-640.webp' };
   if (decodeSupported) image.decode = () => imageDecode.promise;
   const classes = new Set();
@@ -60,14 +62,16 @@ function fixture({ reduced = false, saveData = false, decodeSupported = true, pe
     disconnect() { this.observed.clear(); }
   }
   const window = Object.assign(new Target(), { IntersectionObserver: Observer });
-  vm.runInNewContext(source, {
+  const runtime = {
     window, document, navigator: { connection }, matchMedia: () => preferences,
     IntersectionObserver: Observer,
     // A fixed delay is not part of the poster-decode contract.
     setTimeout() { throw new Error('Unexpected fixed hero delay'); },
-  }, { filename: 'visual-recovery.js', codeGeneration: { strings: false, wasm: false } });
+  };
+  const runAgain = () => vm.runInNewContext(source, runtime, { filename: 'visual-recovery.js', codeGeneration: { strings: false, wasm: false } });
+  runAgain();
   return {
-    imageDecode, playback, image, video, selected, calls, button, hero, document, window,
+    imageDecode, playback, image, video, selected, calls, button, hero, document, window, classes, runAgain, presentFrame: () => frameCallback?.(),
     preferences, connection, observer,
     intersect(visible) { observer.callback([{ target: hero, isIntersecting: visible }]); },
   };
@@ -169,4 +173,19 @@ test('user pause while decode is pending prevents loading and late play cannot r
   await flush();
   assert.equal(f.video.paused, true);
   assert.equal(f.calls.load, 1);
+});
+
+
+test('hero reveals only a stable frame and rejects a late frame after suspension', async () => {
+  const f = fixture({ stableFrame: true }); f.intersect(true); f.imageDecode.resolve(); await flush();
+  f.video.emit('playing'); assert.equal(f.classes.has('is-hero-video-ready'), false);
+  f.presentFrame(); assert.equal(f.classes.has('is-hero-video-ready'), true);
+  f.preferences.matches = true; f.preferences.emit('change'); assert.equal(f.classes.has('is-hero-video-ready'), false);
+  f.preferences.matches = false; f.preferences.emit('change'); await flush();
+  f.video.emit('playing'); f.window.emit('pagehide'); f.presentFrame(); assert.equal(f.classes.has('is-hero-video-ready'), false);
+});
+
+test('repeated hero bootstrap does not register a second controller', () => {
+  const f = fixture(); const count=f.document.listeners.get('visibilitychange').length;
+  f.runAgain(); assert.equal(f.document.listeners.get('visibilitychange').length,count);
 });

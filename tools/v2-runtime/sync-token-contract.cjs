@@ -46,9 +46,12 @@ function projectTokens(current, tokens) {
   Object.assign(next.settings.custom.motion, {
     'house-ease':token('ease'),fast:token('fast'),standard:token('normal'),slow:token('slow'),
     micro:token('motion-micro'),interface:token('motion-interface'),editorial:token('motion-editorial'),
-    scene:token('motion-scene'),'enter-ease':token('ease-enter'),'exit-ease':token('ease-exit'),
+    scene:token('motion-scene'),commerce:token('motion-commerce'),cinematic:token('motion-cinematic'),character:token('motion-character'),
+    reveal:token('motion-reveal'),exit:token('motion-exit'),'micro-ease':token('ease-micro'),'spring-ease':token('ease-spring'),
+    'enter-ease':token('ease-enter'),'exit-ease':token('ease-exit'),
     'expressive-ease':token('ease-expressive'),distance:token('motion-distance'),stagger:token('motion-stagger')
   });
+  next.settings.custom.materials = Object.fromEntries(['paper','ink','glass','metal','atmosphere'].map(name => [name,token(`material-${name}`)]));
   next.settings.custom.layers = Object.fromEntries([
     'content','floating','commerce','guide','header','scrim','drawer','navigation','modal','toast','critical','skip'
   ].map(name => [name,token(`layer-${name}`)]));

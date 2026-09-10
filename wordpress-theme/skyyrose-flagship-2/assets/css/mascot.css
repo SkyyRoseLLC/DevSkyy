@@ -316,10 +316,11 @@ body #skyyrose-mascot-recall {
 body #skyy-ask-dialog {
  width: min(42rem, calc(100% - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); margin: auto;
  padding: var(--sr2-space-6); border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control);
- background: var(--sr2-surface-dialog); color: var(--sr2-color-text); font-family: var(--sr2-font-body); overflow: auto;
+ background: var(--sr2-material-glass, var(--sr2-surface-dialog)); color: var(--sr2-color-text); font-family: var(--sr2-font-body); overflow: auto;
 }
 #skyy-ask-dialog::backdrop { background: var(--sr2-surface-scrim); }
 .skyy-ask-dialog__head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sr2-space-4); margin-bottom: var(--sr2-space-4); }
+#skyy-ask-minimize { margin-inline-start: auto; }
 .skyy-ask-dialog__eyebrow { color: var(--sr2-color-text-muted); font-size: .625rem; letter-spacing: .16em; margin: 0 0 .25rem; }
 #skyy-ask-dialog-title { margin: 0; font-family: var(--sr2-font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1.1; font-weight: 700; }
 .skyy-ask-dialog__body { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: var(--sr2-space-6); }
@@ -344,12 +345,9 @@ body #skyy-ask-dialog {
 #skyy-ask-input { width: 100%; min-width: 0; min-height: var(--sr2-target-size); padding: .625rem; border: 1px solid var(--sr2-border-control); border-radius: var(--sr2-radius-control); background: var(--sr2-surface-page); color: var(--sr2-color-text); font: inherit; font-size: 1rem; }
 #skyy-ask-input::placeholder { color: var(--sr2-color-text-muted); }
 #skyy-ask-dialog button[type="submit"] { background: var(--sr2-color-action); border-color: var(--sr2-color-action); color: var(--sr2-color-on-action); }
-#skyy-ask-dialog :is(a, button, input):focus-visible, #skyyrose-mascot-recall:focus-visible { outline: var(--sr2-focus-width, 2px) solid var(--sr2-color-text); outline-offset: 3px; box-shadow: var(--sr2-focus); }
+#skyy-ask-dialog :is(a, button, input):focus-visible, #skyy-conversation:focus-visible, #skyyrose-mascot-recall:focus-visible { outline: var(--sr2-focus-width, 2px) solid var(--sr2-color-text); outline-offset: 3px; box-shadow: var(--sr2-focus); }
 #skyy-ask-dialog button:hover { border-color: var(--sr2-color-text); }
-@media (prefers-reduced-motion: no-preference) {
- #skyy-ask-dialog .skyy-concierge-stage[data-state="walking-in"] .skyyrose-mascot__character { animation: skyy-concierge-enter 1.4s var(--sr2-ease) both; }
- @keyframes skyy-concierge-enter { from { transform: translateX(35%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-}
+/* The existing rig owns walk/turn; reparenting into chat never hides its painted frame. */
 @media (max-width: 47.99rem) {
  body #skyyrose-mascot-recall { position: static; inset: auto !important; flex-direction: column; justify-content: center; gap: 0; width: 44px; min-width: 44px; min-height: 46px; max-width: none; margin: 0; padding: 0; border: 0; box-shadow: none; background: transparent; font-size: 10px; line-height: 1.2; }
  #skyyrose-mascot-recall img { width: 24px; height: 24px; }
@@ -409,7 +407,7 @@ body #skyy-ask-dialog {
 #skyy-hero-stage button:focus-visible { outline: 2px solid var(--sr2-color-text); outline-offset: 3px; }
 #skyy-hero-stage #skyy-hero-chat { border-color: var(--sr2-color-action); }
 @media (prefers-reduced-motion: no-preference) {
- #skyy-hero-stage [data-renderer="3d"] .skyy-3d-canvas { transform: translateX(calc((var(--skyy-entry-progress, 1) - 1) * min(8rem, 22vw))); }
+ #skyy-hero-stage [data-renderer="3d"] .skyy-3d-canvas { transform: translateX(var(--skyy-entry-shift, 0px)); }
 }
 #skyy-hero-stage [data-motion-paused="true"] .skyyrose-mascot__character { animation-play-state: paused !important; }
 @media (max-width: 47.99rem) {
@@ -420,7 +418,7 @@ body #skyy-ask-dialog {
 @media (forced-colors: active) { #skyy-hero-stage button { border-color: CanvasText; } }
 
 /* Completion: one portrait/canvas layer stack, stable feet and a reserved status. */
-#skyyrose-mascot .skyyrose-mascot__image { object-position: center bottom; transform: translateY(-2%) scale(1.28); transform-origin: center bottom; opacity: 1; }
+#skyyrose-mascot .skyyrose-mascot__image { object-position: center bottom; transform: none; transform-origin: center bottom; opacity: 1; }
 #skyyrose-mascot .skyy-3d-canvas { opacity: 0; }
 #skyyrose-mascot[data-presence="live"] .skyyrose-mascot__image { opacity: 0; }
 #skyyrose-mascot[data-presence="live"] .skyy-3d-canvas { opacity: 1; }
@@ -442,4 +440,13 @@ body #skyy-ask-dialog {
  #skyy-ask-dialog .skyyrose-mascot__character { width: 76px; height: 118px; margin-inline: auto; }
  #skyy-ask-description { margin-bottom: var(--sr2-space-2); }
  .skyy-conversation { min-height: 4rem; max-height: 8rem; }
+}
+
+/* Narrow phones keep the question and Ask action visible without losing the guide. */
+@media (max-width: 22.49rem) {
+ #skyy-dialog-stage .skyy-concierge-stage { grid-template-columns: 96px minmax(0, 1fr); }
+ #skyy-ask-dialog .skyyrose-mascot__character { width: 96px; height: 148px; }
+ #skyy-ask-dialog .skyy-conversation { max-height: 8rem; min-height: 4rem; }
+ #skyy-ask-dialog #skyy-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+ #skyy-ask-dialog .skyy-chip { min-width: 0; padding-inline: .375rem; }
 }

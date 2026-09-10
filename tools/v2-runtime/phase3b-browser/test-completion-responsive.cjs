@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const { requireQa: q, base, out } = require('./runtime.cjs');
 const { beginRun } = require('./run-evidence.cjs');
 const engineName = process.env.V2_BROWSER || 'chromium';
-assert(['chromium', 'webkit'].includes(engineName));
+assert(['chromium', 'webkit', 'firefox'].includes(engineName));
 const target = path.join(out, `completion-responsive-${engineName}.json`);
 const run = beginRun(target);
 const evidence = { rows: [], failures: [], scope: 'Local synthetic fixture; no account, mail, checkout submission or orders' };
@@ -15,12 +15,12 @@ const routes = {
   pdp: '/product/sg-005/', shop: '/shop/', search: '/?s=SG-005',
   'empty-search': '/?s=zzunmatchedjourneyprobe', collections: '/collections/',
   about: '/about/', contact: '/contact/', preorder: '/pre-order/',
-  service: '/shipping-returns/', missing: '/sr2-deliberately-missing-route/'
+  service: '/shipping-returns/', cart: '/cart/', account: '/my-account/', missing: '/sr2-deliberately-missing-route/'
 };
 (async () => {
   const browser = await q('playwright')[engineName].launch();
   evidence.engine = engineName;
-  const widths = engineName === 'webkit' ? [390, 1440] : [320, 360, 375, 390, 414, 768, 1440];
+  const widths = engineName !== 'chromium' ? [390, 1440] : [320, 360, 375, 390, 414, 768, 1024, 1440];
   try {
     for (const width of widths) {
       const context = await browser.newContext({ viewport: { width, height: width < 768 ? 844 : 1000 }, reducedMotion: 'reduce', hasTouch: width < 768 });

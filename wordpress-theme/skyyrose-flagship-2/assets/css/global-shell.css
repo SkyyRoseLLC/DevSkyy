@@ -9,6 +9,12 @@
 .sr2-house-header__end { justify-content: end; }
 .sr2-house-header .sr2-header__brand { width: clamp(7rem, 10vw, 9rem); z-index: 2; }
 .sr2-house-header .sr2-header__brand-mark { height: calc(var(--sr2-header) - var(--sr2-space-4)); filter: none; }
+.sr2-brand-media { display: block; position: relative; }
+.sr2-brand-media > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.sr2-brand-media > video[hidden] { display: none; }
+.sr2-brand-media > img[data-brand-video-active="true"] { visibility: hidden; }
+.sr2-house-footer__identity .sr2-brand-media { display: inline-block; width: 8rem; vertical-align: middle; }
+.sr2-house-footer__identity .sr2-brand-media img { display: block; }
 .sr2-house-header .sr2-header__menu, .sr2-house-header .sr2-header__bag, .sr2-house-header__direct { display: inline-flex; align-items: center; justify-content: center; gap: var(--sr2-space-2); min-height: var(--sr2-target-size); min-width: var(--sr2-target-size); color: var(--sr2-ink); font: 500 .875rem/1.2 var(--sr2-font-body); letter-spacing: .02em; text-transform: none; text-decoration: none; }
 .sr2-house-header__direct { position: relative; z-index: 2; }
 .sr2-house-header .sr2-header__bag span { display: inline-flex; width: auto; min-width: var(--sr2-space-5); height: auto; margin: 0; border: 0; border-radius: 0; color: var(--sr2-muted); font-variant-numeric: tabular-nums; }
@@ -75,7 +81,7 @@
 .sr2-house-footer__routes { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: var(--sr2-space-3) var(--sr2-space-8); }
 .sr2-house-footer__routes a { display: inline-flex; align-items: center; min-height: var(--sr2-target-size); font: 700 clamp(1.5rem, 2.5vw, 2.75rem)/1.15 var(--sr2-font-display); letter-spacing: var(--sr2-tracking-display); }
 .sr2-house-footer__ledger { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sr2-space-8); padding-block: var(--sr2-space-8); border-top: 1px solid var(--sr2-line); }
-.sr2-house-footer__identity img { width: 8rem; height: auto; }
+.sr2-house-footer__identity img { width: 8rem; height: auto; aspect-ratio: 179 / 134; object-fit: contain; }
 .sr2-house-footer__identity p { max-width: 28ch; font-size: .875rem; color: var(--sr2-muted); }
 .sr2-house-footer__services .sr2-shell-links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 var(--sr2-space-6); }
 .sr2-house-footer__services h2 { margin: 0 0 var(--sr2-space-4); color: var(--sr2-muted); }
