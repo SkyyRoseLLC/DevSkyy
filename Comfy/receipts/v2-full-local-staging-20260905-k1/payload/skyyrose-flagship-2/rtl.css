@@ -1,0 +1,39 @@
+/**
+ * SkyyRose Flagship 2 right-to-left compatibility layer.
+ */
+
+html[dir="rtl"] body {
+	direction: rtl;
+	text-align: right;
+}
+
+html[dir="rtl"] :where(.sr2-worlds__rail, .sr2-header-worlds__rail, .sr2-about-timeline__rail) {
+	direction: rtl;
+}
+
+html[dir="rtl"] :where(.sr2-rail-controls, .sr2-actions, .sr2-header-worlds__controls) {
+	flex-direction: row-reverse;
+}
+
+html[dir="rtl"] :where(.woocommerce-error, .woocommerce-info, .woocommerce-message) {
+	padding-inline: 3.5rem 1.25rem;
+}
+
+html[dir="rtl"] :where(.woocommerce-error, .woocommerce-info, .woocommerce-message)::before {
+	inset-inline: 1.25rem auto;
+}
+
+html[dir="rtl"] :where(.sr2-product__meta, .sr2-c-summary, .sr2-c-account, .sr2-c-service) {
+	text-align: right;
+}
+
+html[dir="rtl"] :where(input, select, textarea) {
+	direction: rtl;
+	text-align: right;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html[dir="rtl"] * {
+	scroll-behavior: auto !important;
+	}
+}

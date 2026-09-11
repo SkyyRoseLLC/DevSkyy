@@ -1,0 +1,275 @@
+{
+  "schema": "skyyrose.scroll-world-selection-board.v2",
+  "created_at": "2026-09-05T01:20:46.164Z",
+  "scope": "Scroll World COMMERCE-1, COMMERCE-2 and COMMERCE-3 only; collection heroes excluded",
+  "correction": "F1 incorrectly counted collection heroes as commerce scenes",
+  "slots": 9,
+  "available_scene_sources": 8,
+  "missing_scene_sources": [
+    "SIG-COMMERCE-3"
+  ],
+  "archive_contents_scope": "BR-COMMERCE-1, LH-COMMERCE-1 and LH-COMMERCE-3; no Signature media supplied",
+  "imports": [
+    {
+      "scene_id": "LH-COMMERCE-1",
+      "source": "/Users/theceo/Downloads/archive-4/hf_20260829_155546_0110cc0d-2b6b-4526-8c5f-0c6864ab863e.mp4",
+      "imported": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4.mp4",
+      "sha256": "841bb58a42e4a9f4e07c9b58ffa60dba3c7763ce9543d1eaf29db855b63fb48b",
+      "bytes": 20584409,
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "format": {
+          "duration": "5.041667",
+          "size": "20584409"
+        }
+      },
+      "original_unchanged": true,
+      "transcoded": false,
+      "poster": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4-poster.webp",
+      "approval_not_extended": true
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "source": "/Users/theceo/Downloads/archive-4/hf_20260829_160429_86b1c898-7b94-48d1-a391-af7b8dd23f08.mp4",
+      "imported": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4.mp4",
+      "sha256": "46d2b2347e43ce53398bb26ecfbba1f4ca72a9ddd5ebe849e4786bcb0b7ec04e",
+      "bytes": 19782012,
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1248,
+            "height": 1664,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "format": {
+          "duration": "5.041667",
+          "size": "19782012"
+        }
+      },
+      "original_unchanged": true,
+      "transcoded": false,
+      "poster": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4-poster.webp",
+      "approval_not_extended": true
+    },
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "source": "/Users/theceo/Downloads/archive-4/hf_20260827_035708_25209aff-6b21-4c58-81de-6b623327f121.mp4",
+      "imported": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4.mp4",
+      "sha256": "e12dcab99540695fc7d3231eeb488e9d0edd19f1d451582116356196c5deaffb",
+      "bytes": 13402661,
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "format": {
+          "duration": "4.041667",
+          "size": "13402661"
+        }
+      },
+      "original_unchanged": true,
+      "transcoded": false,
+      "poster": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4-poster.webp",
+      "approval_not_extended": true
+    }
+  ],
+  "collections": [
+    {
+      "collection": "love-hurts",
+      "name": "Love Hurts",
+      "accent": "#d36562",
+      "items": [
+        {
+          "id": "LH-COMMERCE-1",
+          "title": "Vow Aisle",
+          "kind": "video",
+          "note": "Your supplied Vow Aisle motion clip, replacing the still on this review board.",
+          "asset": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4.mp4",
+          "poster": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4-poster.webp",
+          "status": "Supplied scene video",
+          "approval_scope": "USER_SUPPLIED_EXISTING_SCENE_FOR_REVIEW_BOARD",
+          "source_file": "/Users/theceo/Downloads/archive-4/hf_20260829_155546_0110cc0d-2b6b-4526-8c5f-0c6864ab863e.mp4",
+          "sha256": "841bb58a42e4a9f4e07c9b58ffa60dba3c7763ce9543d1eaf29db855b63fb48b",
+          "source_metadata": {
+            "programs": [],
+            "stream_groups": [],
+            "streams": [
+              {
+                "codec_name": "h264",
+                "codec_type": "video",
+                "width": 1920,
+                "height": 1080,
+                "r_frame_rate": "24/1"
+              }
+            ],
+            "format": {
+              "duration": "5.041667",
+              "size": "20584409"
+            }
+          },
+          "poster_source": "Identification frame at 1 second, resized for review delivery only"
+        },
+        {
+          "id": "LH-COMMERCE-2",
+          "title": "Love Hurts shorts",
+          "kind": "image",
+          "status": "Model + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+          "note": "Locked C1 selection. The later E1 lighting edit is not substituted."
+        },
+        {
+          "id": "LH-COMMERCE-3",
+          "title": "Fannie / rose vitrine",
+          "kind": "video",
+          "note": "Recovered from archive-4: the Fannie look beside the enchanted rose.",
+          "asset": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4.mp4",
+          "poster": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4-poster.webp",
+          "status": "Supplied scene video",
+          "approval_scope": "USER_SUPPLIED_EXISTING_SCENE_FOR_REVIEW_BOARD",
+          "source_file": "/Users/theceo/Downloads/archive-4/hf_20260829_160429_86b1c898-7b94-48d1-a391-af7b8dd23f08.mp4",
+          "sha256": "46d2b2347e43ce53398bb26ecfbba1f4ca72a9ddd5ebe849e4786bcb0b7ec04e",
+          "source_metadata": {
+            "programs": [],
+            "stream_groups": [],
+            "streams": [
+              {
+                "codec_name": "h264",
+                "codec_type": "video",
+                "width": 1248,
+                "height": 1664,
+                "r_frame_rate": "24/1"
+              }
+            ],
+            "format": {
+              "duration": "5.041667",
+              "size": "19782012"
+            }
+          },
+          "poster_source": "Identification frame at 1 second, resized for review delivery only"
+        }
+      ]
+    },
+    {
+      "collection": "black-rose",
+      "name": "Black Rose",
+      "accent": "#bec9d0",
+      "items": [
+        {
+          "id": "BR-COMMERCE-1",
+          "title": "Crewneck + joggers",
+          "kind": "video",
+          "note": "Recovered from archive-4: the black crewneck/jogger look with the silver rose-star installation.",
+          "asset": "Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4.mp4",
+          "poster": "Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4-poster.webp",
+          "status": "Supplied scene video",
+          "approval_scope": "USER_SUPPLIED_EXISTING_SCENE_FOR_REVIEW_BOARD",
+          "source_file": "/Users/theceo/Downloads/archive-4/hf_20260827_035708_25209aff-6b21-4c58-81de-6b623327f121.mp4",
+          "sha256": "e12dcab99540695fc7d3231eeb488e9d0edd19f1d451582116356196c5deaffb",
+          "source_metadata": {
+            "programs": [],
+            "stream_groups": [],
+            "streams": [
+              {
+                "codec_name": "h264",
+                "codec_type": "video",
+                "width": 1080,
+                "height": 1920,
+                "r_frame_rate": "24/1"
+              }
+            ],
+            "format": {
+              "duration": "4.041667",
+              "size": "13402661"
+            }
+          },
+          "poster_source": "Identification frame at 1 second, resized for review delivery only"
+        },
+        {
+          "id": "BR-COMMERCE-2",
+          "title": "Waterfront duo",
+          "kind": "image",
+          "status": "Models + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+          "note": "Locked male hoodie-and-shorts look with the female hoodie dress."
+        },
+        {
+          "id": "BR-COMMERCE-3",
+          "title": "Five-jersey lounge",
+          "kind": "image",
+          "status": "Approved scene",
+          "approval_scope": "FOUNDER_APPROVED_PRODUCT_SCENE",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+          "recorded_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+          "evidence": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/manifest.json",
+          "note": "Founder-approved corrected jersey scene, not an earlier candidate."
+        }
+      ]
+    },
+    {
+      "collection": "signature",
+      "name": "Signature",
+      "accent": "#d2b279",
+      "items": [
+        {
+          "id": "SIG-COMMERCE-1",
+          "title": "Sherpa + beanie",
+          "kind": "image",
+          "status": "Model + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+          "note": "Locked Signature C1 selection on the Golden Gate terrace."
+        },
+        {
+          "id": "SIG-COMMERCE-2",
+          "title": "Mint set + hoodie dress",
+          "kind": "image",
+          "status": "Models + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+          "note": "Corrected C2 styling: the longer hoodie is a dress, with bare legs."
+        },
+        {
+          "id": "SIG-COMMERCE-3",
+          "title": "Third Signature scene",
+          "kind": "missing",
+          "status": "Source still needed",
+          "approval_scope": "NO_APPROVAL_INFERRED",
+          "note": "Not present in archive-4. This remains empty rather than substituting a collection hero or an unapproved scene."
+        }
+      ]
+    }
+  ],
+  "earlier_scene_approvals_not_revoked": true,
+  "uploaded_clip_approval_not_inferred_beyond_gallery_use": true,
+  "editorial_e1_substituted": false,
+  "storefront_changed": false,
+  "deployment_authorized": false
+}

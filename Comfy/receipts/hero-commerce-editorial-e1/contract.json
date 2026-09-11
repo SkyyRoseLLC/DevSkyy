@@ -1,0 +1,73 @@
+{
+  "task_id": "HERO-COMMERCE-EDITORIAL-E1",
+  "state": "IN_PROGRESS",
+  "manager": "Codex editorial integration lead",
+  "user_scope": "Existing environments and models locked. Add cinematic shopping fashion-editorial life using two user photos as feel references, not garment or cast authority.",
+  "permitted": [
+    "motivated lighting",
+    "subtle atmospheric depth",
+    "shoe contact",
+    "cast shadows",
+    "restrained floor reflections",
+    "minimal rigid placement correction onto existing tread"
+  ],
+  "locked": [
+    "cast identity",
+    "outfits and artwork",
+    "Signature long hoodie dress styling",
+    "collection-specific environment geometry",
+    "camera and composition"
+  ],
+  "reference_role": "LOOK_AND_FEEL_ONLY_NOT_PRODUCT_OR_CAST_AUTHORITY",
+  "sources": [
+    {
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+      "sha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb"
+    },
+    {
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+      "sha256": "b29144a492187a71c9d36a61898de1bfffdc03830d369b6c8860d821eaa82abc"
+    },
+    {
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+      "sha256": "b4a8b6239b22549ad0f1447084ca77435bd80cdb4533851e119053e6f348b374"
+    },
+    {
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+      "sha256": "f93cdf88d2163add37bc341a3f06eccf5de45b77bb2dbca544040f488268b5bc"
+    }
+  ],
+  "mood_references": [
+    {
+      "path": "/Users/theceo/Downloads/hf_20260901_051305_c2b3161d-f1df-464b-8320-ecae163d6fcc.png",
+      "sha256": "1de3ecc817554d6906b04c9c8ea7b715f6abc877dc2b4aaafc4f59178db0f2dc"
+    },
+    {
+      "path": "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png",
+      "sha256": "224eb55a9baa7495a80b50b9b61a4df596dc9840c92e9820b8de5a4a91928fad"
+    }
+  ],
+  "prior_optical_candidates": [
+    {
+      "scene_index": 0,
+      "path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-be2bc395-c180-452b-9eaa-de96338417ea.png",
+      "state": "SUPERSEDED_BEFORE_IMPORT_BY_NEW_FOUNDER_REFERENCE_DIRECTION"
+    },
+    {
+      "scene_index": 1,
+      "path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-6c72ee81-5b8e-48c6-8b4c-8d59b4001480.png",
+      "state": "SUPERSEDED_BEFORE_IMPORT_BY_NEW_FOUNDER_REFERENCE_DIRECTION"
+    },
+    {
+      "scene_index": 2,
+      "path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-035ea2a6-afc0-42ab-beef-e40103fecf22.png",
+      "state": "SUPERSEDED_BEFORE_IMPORT_BY_NEW_FOUNDER_REFERENCE_DIRECTION"
+    }
+  ],
+  "provider": "builtin-imagegen",
+  "automatic_retries": false,
+  "source_preservation": "Locked masters remain untouched; semantic edits do not guarantee pixel-identical preservation.",
+  "independent_review": "NOT_RUN",
+  "runtime_replacement_authorized": false,
+  "deployment_authorized": false
+}

@@ -1,0 +1,37 @@
+{
+  "created_at": "2026-09-05T03:21:11.910828Z",
+  "display_name": "Kling v3.0",
+  "id": "7468b917-dac5-4c73-b9cb-15083ed16a16",
+  "job_type": "kling3_0",
+  "min_result_url": null,
+  "params": {
+    "aspect_ratio": "16:9",
+    "cfg_scale": 0.5,
+    "duration": 5,
+    "enhance_prompt": false,
+    "height": 1080,
+    "kling_element_ids": [],
+    "kling_elements": [],
+    "medias": [
+      {
+        "data": {
+          "id": "0d7495dd-ec57-4f62-96f0-d3603277f8aa",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0d7495dd-ec57-4f62-96f0-d3603277f8aa.png"
+        },
+        "role": "start_image"
+      }
+    ],
+    "mode": "pro",
+    "multi_prompt": [],
+    "multi_shot_mode": "custom",
+    "multi_shots": false,
+    "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Love Hurts gothic rose chamber. Natural candle flicker and drifting low atmosphere with restrained red reflections. Preserve the approved LH-003 shorts graphics, pockets, waistband, and front-view model. Calm editorial weight shift without covering the garment or exposing an invented rear view.",
+    "reference_elements": [],
+    "sound": "off",
+    "width": 1920
+  },
+  "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_032111_7468b917-dac5-4c73-b9cb-15083ed16a16.mp4",
+  "status": "completed",
+  "thumbnail_url": "https://cdn.higgsfield.ai/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_032111_7468b917-dac5-4c73-b9cb-15083ed16a16_thumbnail.webp"
+}

@@ -1,0 +1,27 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "Submitted 1/1 video generations.\n- index 1: d62996a8-caa3-41bf-ba93-a74591c4a84b (pending)"
+    }
+  ],
+  "structuredContent": {
+    "jobs": [
+      {
+        "index": 1,
+        "job_id": "d62996a8-caa3-41bf-ba93-a74591c4a84b",
+        "status": "pending",
+        "adjustments": {
+          "medias[2].role": {
+            "requested": "video",
+            "used": "video_references",
+            "reason": "Seedance 2.5 backend expects schema-key media roles"
+          }
+        }
+      }
+    ],
+    "submitted_count": 1,
+    "failed_count": 0
+  },
+  "isError": false
+}

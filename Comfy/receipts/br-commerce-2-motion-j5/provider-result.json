@@ -1,0 +1,39 @@
+{
+  "created_at": "2026-09-05T03:02:51.606987Z",
+  "display_name": "Seedance 2.5",
+  "id": "1baa140d-66cf-4787-a29b-c6000ac8d7ca",
+  "job_type": "seedance_2_5",
+  "min_result_url": null,
+  "params": {
+    "aspect_ratio": "16:9",
+    "bitrate_mode": "standard",
+    "duration": 5,
+    "extension_mode": null,
+    "generate_audio": false,
+    "genre": "auto",
+    "height": 1080,
+    "medias": [
+      {
+        "data": {
+          "id": "aee9914f-4f4a-4708-8322-5fe951564d0b",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/aee9914f-4f4a-4708-8322-5fe951564d0b.png"
+        },
+        "role": "image"
+      }
+    ],
+    "model": "default",
+    "multi_prompt": [],
+    "multi_shot_mode": "custom",
+    "multi_shots": false,
+    "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Cool moonlight at the Bay Bridge waterfront. Gentle moving clouds, fine water ripples, subtle reflected highlights on wet stone. The newly added silver Black Rose wall lettering stays fixed and readable. The male hoodie-and-shorts look and female long hoodie dress remain unchanged.",
+    "prompt_language": "en",
+    "reference_elements": [],
+    "resolution": "1080p",
+    "speedramp": "auto",
+    "width": 1920
+  },
+  "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_030251_1baa140d-66cf-4787-a29b-c6000ac8d7ca.mp4",
+  "status": "completed",
+  "thumbnail_url": "https://cdn.higgsfield.ai/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_030251_1baa140d-66cf-4787-a29b-c6000ac8d7ca_thumbnail.webp"
+}

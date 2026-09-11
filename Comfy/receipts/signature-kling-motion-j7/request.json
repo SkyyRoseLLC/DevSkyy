@@ -1,0 +1,88 @@
+{
+  "schema": "skyyrose.serial-motion-request.v1",
+  "createdAt": "2026-09-05T03:47:09.553Z",
+  "status": "AUTHORIZED_SERIAL_CANDIDATES",
+  "approvalContext": "User previously requested the remaining animations, approved the recommended Kling trial, and accepted the Love Hurts result. Continue three pending Signature scenes using that approach.",
+  "maxCreditsTotal": 26.25,
+  "serial": true,
+  "automaticRetry": false,
+  "specs": [
+    {
+      "sceneId": "SIG-COMMERCE-1",
+      "candidateId": "SIG-COMMERCE-1-KLING-PRO-MOTION-J7",
+      "sourcePath": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png",
+      "sourceSha256": "24d086b221d8fff59cde4f719dc55831b7ac4c8d7b98ebdef07b226c6952d830",
+      "sourceMediaId": "b1398cde-8f7a-46e4-992e-4a33cf1b7d7a",
+      "params": {
+        "model": "kling3_0",
+        "mode": "pro",
+        "sound": "off",
+        "duration": 5,
+        "aspect_ratio": "16:9",
+        "count": 1,
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Signature Golden Gate golden-hour editorial with the Sherpa and beanie look. Preserve the exact SkyyRose gold font sculpture and existing architecture. Faint breeze and soft moving water reflections; gentle golden rim light, no garment distortion.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "b1398cde-8f7a-46e4-992e-4a33cf1b7d7a"
+          }
+        ]
+      },
+      "maxCredits": 8.75,
+      "maxAttempts": 1,
+      "automaticRetry": false
+    },
+    {
+      "sceneId": "SIG-COMMERCE-2",
+      "candidateId": "SIG-COMMERCE-2-KLING-PRO-MOTION-J7",
+      "sourcePath": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png",
+      "sourceSha256": "b085e0ee82401c2e5db71c8a36ab63271d410ad20c29d72fa369a78e4f54ca5c",
+      "sourceMediaId": "a02859d8-9ce3-4257-968b-40d1a3fbe225",
+      "params": {
+        "model": "kling3_0",
+        "mode": "pro",
+        "sound": "off",
+        "duration": 5,
+        "aspect_ratio": "16:9",
+        "count": 1,
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Signature mint duo in warm Golden Gate light. Keep the woman in the long hoodie worn AS A DRESS with bare legs, never add trousers or shorten it. The man retains the exact mint crewneck and pants. Grounded restrained natural poses, faint moving fog and water, matching light on both bodies.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "a02859d8-9ce3-4257-968b-40d1a3fbe225"
+          }
+        ]
+      },
+      "maxCredits": 8.75,
+      "maxAttempts": 1,
+      "automaticRetry": false
+    },
+    {
+      "sceneId": "SIG-COMMERCE-3",
+      "candidateId": "SIG-COMMERCE-3-KLING-PRO-MOTION-J7",
+      "sourcePath": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1.png",
+      "sourceSha256": "854a8e0b97ec885b2a85efa1ea7e4216e2491b334170cd51b501cd9c2bf408f0",
+      "sourceMediaId": "5ed753a5-1bd9-4ca9-8188-70e809722f19",
+      "params": {
+        "model": "kling3_0",
+        "mode": "pro",
+        "sound": "off",
+        "duration": 5,
+        "aspect_ratio": "16:9",
+        "count": 1,
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Three-person Signature five-SKU ensemble on its existing Golden Gate terrace. Left male retains blue-graphic white tee and BLUE WAIST DAYTIME BAY BRIDGE shorts, not Golden Gate artwork. Center woman keeps the complete white pastel windbreaker jacket and pants. Right woman retains purple-graphic white tee and PURPLE WAIST NIGHT GOLDEN GATE shorts. Keep all five products together, exact graphics and three identities. Gentle confident group performance and subtle bay atmosphere.",
+        "medias": [
+          {
+            "role": "start_image",
+            "value": "5ed753a5-1bd9-4ca9-8188-70e809722f19"
+          }
+        ]
+      },
+      "maxCredits": 8.75,
+      "maxAttempts": 1,
+      "automaticRetry": false
+    }
+  ],
+  "storefrontActivated": false,
+  "deployed": false
+}

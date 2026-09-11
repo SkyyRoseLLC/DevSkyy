@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Black Rose / Scene 2 motion J5</title>
+<style>:root{color-scheme:dark;--ink:#eae5db;--muted:#a8aca9;--line:#343a39}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#24303366,transparent 60%),#0c1112;color:var(--ink);font-family:Georgia,serif}main{max-width:1440px;margin:auto;padding:clamp(18px,4vw,60px)}.eyebrow{font:12px/1.5 Verdana,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}h1{font-size:clamp(30px,4vw,60px);font-weight:400;margin:.35em 0}.meta,.note,button{font:14px/1.65 Verdana,sans-serif}.meta{color:var(--muted);margin-bottom:24px}video{display:block;width:100%;aspect-ratio:16/9;background:#060a0b;border:1px solid var(--line);object-fit:contain}button{background:transparent;border:1px solid #737a76;color:var(--ink);padding:10px 20px;cursor:pointer;margin:20px 0}button:focus-visible,a:focus-visible{outline:2px solid #eae5db;outline-offset:4px}.note{max-width:850px;color:var(--muted)}a{color:var(--ink)}footer{border-top:1px solid var(--line);margin-top:28px;padding-top:20px}</style>
+<main><div class="eyebrow">Black Rose / BR-COMMERCE-2 / Single candidate J5</div><h1>Waterfront duo, in motion.</h1><p class="meta">Seedance 2.5 &middot; 5-second / 1080p request &middot; silent &middot; 45-credit displayed price &middot; one attempt</p>
+<video id="motion" muted loop playsinline controls preload="none" poster="/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png" data-src="assets/br-commerce-2-motion-j5-master.mp4"></video>
+<button id="play" type="button">Play video</button>
+<p class="note">The existing I3 input was selected after its native eligibility check completed. No input image edits or re-uploads were made. The other four scenes have not been submitted.</p>
+<footer class="note">Generated candidate, not yet visually reviewed for product fidelity, identity, anatomy, or loop continuity. This preview loops playback; a seamless loop has not been certified. No storefront activation or deployment.<p><a href="assets/br-commerce-2-motion-j5-master.mp4">Open original MP4</a> &nbsp; <a href="receipt.json">Generation receipt</a> &nbsp; <a href="/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png">Approved I3 source still</a></p></footer></main>
+<script>
+const video=document.getElementById('motion'),button=document.getElementById('play');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+let manual=false,visible=true;
+const canAuto=()=>!reduce.matches&&!navigator.connection?.saveData;
+function load(){if(!video.getAttribute('src'))video.src=video.dataset.src;}
+function sync(){if(document.hidden||!visible||(!manual&&!canAuto())){video.pause();return;}load();video.play().catch(()=>{});}
+button.addEventListener('click',()=>{if(!video.paused){manual=false;video.pause();}else{manual=true;load();video.play().catch(()=>{});}});
+video.addEventListener('play',()=>{button.textContent='Pause video';});
+video.addEventListener('pause',()=>{button.textContent='Play video';});
+document.addEventListener('visibilitychange',sync);
+reduce.addEventListener('change',()=>{manual=false;sync();});
+if('IntersectionObserver'in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();},{threshold:.1}).observe(video);else sync();
+</script></html>

@@ -1,0 +1,68 @@
+{
+  "schema": "skyyrose.bounded-wall-statue-edit.v1",
+  "candidate_id": "BR-COMMERCE-2-HERO-WALL-STATUE-I1",
+  "scene_id": "BR-COMMERCE-2",
+  "user_direction": [
+    "add the black rose wall statue to here. NO OTHER EDITS OR CHANGES",
+    "use same wall statue from hero"
+  ],
+  "source": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+    "sha256": "b29144a492187a71c9d36a61898de1bfffdc03830d369b6c8860d821eaa82abc"
+  },
+  "statue_reference": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png",
+    "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+    "role": "EXISTING_HERO_DERIVED_WALL_LETTERING_NOT_STAR_MONUMENT"
+  },
+  "generation": {
+    "path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-9127bd12-192d-44a5-8034-6cd927a02a9a.png",
+    "sha256": "defe9fddc85e36b5fa00485d11ee440c9b5b4fae147785bde9f28faf14e58adf",
+    "scope": "ISOLATED_WALL_CROP",
+    "prompt": "Edit image 1, the supplied isolated black stone WALL CROP, with exactly one addition. Mount the SAME silver dimensional cursive 'The Black Rose Collection' lettering sculpture from image 2 onto this wall. Image 2 is the authoritative hero-derived object, not style inspiration: faithfully transfer its exact cursive letterforms, three-line composition, underline strokes, rose-and-stem ornament, silvery dark polished metal, and relief thickness. No new text, no alternate typeface, no star, no freestanding monument, no pedestal, no objects below it. Preserve the crop's existing black stone wall texture, lighting, cracks, seams and perspective. Place the supplied object centered horizontally with comfortable approximately 20px margins in the original 380x310 wall crop, around 340px wide, maintaining its natural aspect ratio. Authentic wall mounting with tight restrained contact shadows and existing cool grazing wall light; not bright white lettering, not glowing. Match the wall perspective. Do not change the wall composition, camera, exposure or crop boundaries. Output only the edited wall crop, same aspect ratio as image 1. This is a surgical insertion, not a redesign."
+  },
+  "assembly": {
+    "method": "COMPOSITE_ONLY_WITHIN_SOURCE_WALL_ROI",
+    "roi": {
+      "left": 40,
+      "top": 170,
+      "width": 380,
+      "height": 310
+    },
+    "edge_feather_px": 18,
+    "full_scene_regenerated": false,
+    "models_and_products_outside_roi": true
+  },
+  "output": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i1.png",
+    "sha256": "1630ffc432761310ed8aa0ecba0baefac9280f0255ffc6b702ca38399da1fa5b",
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i1-640w.webp",
+        "bytes": 43506
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i1-960w.webp",
+        "bytes": 96744
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i1-1672w.webp",
+        "bytes": 256986
+      }
+    ]
+  },
+  "state": "USER_REQUESTED_WALL_EDIT_LOCALLY_WIRED",
+  "founder_final_visual_approval": false,
+  "independent_visual_review": "NOT_RUN",
+  "runtime_validation": "NOT_RUN",
+  "deployment_authorized": false,
+  "created_at": "2026-09-05T02:02:36.570Z"
+}

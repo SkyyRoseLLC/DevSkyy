@@ -1,0 +1,34 @@
+{
+  "index": 5,
+  "scene_id": "SIG-COMMERCE-3",
+  "candidate_id": "SIG-COMMERCE-3-MOTION-J1",
+  "source": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1.png",
+  "params": {
+    "model": "seedance_2_5",
+    "mode": "omni_reference",
+    "duration": 5,
+    "resolution": "1080p",
+    "generate_audio": false,
+    "bitrate_mode": "standard",
+    "aspect_ratio": "auto",
+    "count": 1,
+    "use_unlim": false,
+    "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Three-person Signature five-SKU ensemble on its existing Golden Gate terrace. Left male retains blue-graphic white tee and BLUE WAIST DAYTIME BAY BRIDGE shorts, not Golden Gate artwork. Center woman keeps the complete white pastel windbreaker jacket and pants. Right woman retains purple-graphic white tee and PURPLE WAIST NIGHT GOLDEN GATE shorts. Keep all five products together, exact graphics and three identities. Gentle confident group performance and subtle bay atmosphere.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/5ed753a5-1bd9-4ca9-8188-70e809722f19.png"
+      }
+    ]
+  },
+  "max_credits": 45,
+  "max_attempts": 1,
+  "automatic_retry": false,
+  "source_sha256": "854a8e0b97ec885b2a85efa1ea7e4216e2491b334170cd51b501cd9c2bf408f0",
+  "upload": {
+    "id": "5ed753a5-1bd9-4ca9-8188-70e809722f19",
+    "type": "image",
+    "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/5ed753a5-1bd9-4ca9-8188-70e809722f19.png"
+  },
+  "execution_fingerprint": "9b72c2eecf8d1cf26f2cddee9bbce703d30a3ea5251f1ca3c7796bcc08696e51"
+}

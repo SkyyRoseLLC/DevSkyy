@@ -1,0 +1,34 @@
+{
+  "index": 2,
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-MOTION-J1",
+  "source": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+  "params": {
+    "model": "seedance_2_5",
+    "mode": "omni_reference",
+    "duration": 5,
+    "resolution": "1080p",
+    "generate_audio": false,
+    "bitrate_mode": "standard",
+    "aspect_ratio": "auto",
+    "count": 1,
+    "use_unlim": false,
+    "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Love Hurts gothic rose chamber. Natural candle flicker and drifting low atmosphere with restrained red reflections. Preserve the approved LH-003 shorts graphics, pockets, waistband, and front-view model. Calm editorial weight shift without covering the garment or exposing an invented rear view.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0d7495dd-ec57-4f62-96f0-d3603277f8aa.png"
+      }
+    ]
+  },
+  "max_credits": 45,
+  "max_attempts": 1,
+  "automatic_retry": false,
+  "source_sha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb",
+  "upload": {
+    "id": "0d7495dd-ec57-4f62-96f0-d3603277f8aa",
+    "type": "image",
+    "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0d7495dd-ec57-4f62-96f0-d3603277f8aa.png"
+  },
+  "execution_fingerprint": "5e6559c67ada2b940c7c4c2253145a718ccd8eb85e7022dac902308f1496ef84"
+}

@@ -1,0 +1,45 @@
+{
+  "name": "skyyrose-flagship-2-theme",
+  "version": "2.4.4",
+  "private": true,
+  "description": "Deterministic build, verification, and marketplace packaging for SkyyRose Flagship 2.",
+  "license": "GPL-2.0-or-later",
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "build": "npm run build:registry && npm run build:assets && npm run build:i18n",
+    "build:registry": "python3 scripts/build-product-presentation-registry.py",
+    "build:assets": "node scripts/build-assets.mjs",
+    "build:i18n": "python3 scripts/build-pot.py",
+    "check:assets": "node scripts/build-assets.mjs --check",
+    "check:i18n": "python3 scripts/build-pot.py --check",
+    "check:registry": "python3 scripts/build-product-presentation-registry.py --check",
+    "check:commerce-scenes": "python3 scripts/validate-founder-commerce-scenes.py",
+    "build:image-generation-proof": "python3 scripts/build-image-generation-product-proof.py",
+    "check:image-judge-availability": "python3 scripts/verify-image-judge-availability.py",
+    "author:vision-grounded-image-prompt": "python3 scripts/author-vision-grounded-image-prompt.py",
+    "certify:limited-pro-image-prompt": "python3 scripts/validate-limited-pro-image-prompt.py --write-receipt",
+    "check:image-generation-preflight": "python3 scripts/validate-image-generation-preflight.py",
+    "certify:image-generation-preflight": "python3 scripts/verify-image-judge-availability.py && python3 scripts/validate-image-generation-preflight.py --write-receipt",
+    "check:image-generation-adversarial": "python3 scripts/validate-image-generation-adversarial.py",
+    "certify:image-generation-adversarial": "python3 scripts/validate-image-generation-adversarial.py --write-receipt",
+    "workflow:native-scene:preflight": "python3 scripts/run-native-scene-image-workflow.py preflight",
+    "workflow:native-scene:measure-safe-zones": "node scripts/measure-native-scene-safe-zones.mjs",
+    "workflow:native-scene:status": "python3 scripts/run-native-scene-image-workflow.py status",
+    "workflow:native-scene:record": "python3 scripts/run-native-scene-image-workflow.py record",
+    "workflow:native-scene:verify": "python3 scripts/run-native-scene-image-workflow.py verify",
+    "render:commerce-scenes": "bash scripts/render-founder-commerce-scenes.sh",
+    "check:provisioning": "php scripts/test-marketplace-registry.php",
+    "lint:php": "find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l",
+    "verify": "npm run check:commerce-scenes && bash scripts/verify-marketplace.sh",
+    "verify:workspace": "bash scripts/verify-v2-workspace.sh",
+    "verify:workspace:strict": "bash scripts/verify-v2-workspace.sh --strict",
+    "package:theme": "bash scripts/package-theme.sh"
+  },
+  "devDependencies": {
+    "clean-css": "5.3.3",
+    "terser": "5.36.0"
+  }
+}

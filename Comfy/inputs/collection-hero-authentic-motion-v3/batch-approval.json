@@ -1,0 +1,28 @@
+{
+  "schema": "skyyrose.collection-hero-authentic-motion.batch-approval.v1",
+  "status": "AWAITING_EXPLICIT_SPEND_APPROVAL",
+  "approval_fingerprint_sha256": "fd04550c88409a452cf89f7e1cfcde110eff140af54b85e12850aeb3091fc894",
+  "binding": {
+    "jobs": [
+      {
+        "id": "BLACK-ROSE-HERO-AUTHENTIC-MOTION-V3-A1",
+        "execution_fingerprint_sha256": "71a85c80554dd9d30249fdfe0711741521d3a5b3192a846c9fc6484c3f762fd5",
+        "max_credits": 72
+      },
+      {
+        "id": "LOVE-HURTS-HERO-AUTHENTIC-MOTION-V3-A1",
+        "execution_fingerprint_sha256": "284cfbe6a0e01297b2e404abbb9e3a7fa789f3819271256e659d0ae44490511c",
+        "max_credits": 72
+      }
+    ],
+    "provider": "higgsfield",
+    "max_total_credits": 144,
+    "candidates_per_collection": 1,
+    "serial_submission": true,
+    "automatic_retry": false,
+    "stop_on_http_429": true,
+    "candidate_only": true
+  },
+  "approval_request": "Approve exactly one eight-second 1080p Seedance 2.5 candidate for Black Rose and one for Love Hurts, at no more than 72 Higgsfield credits each and 144 combined, bound to the listed execution fingerprints, with serial submission, no automatic retries, and no automatic promotion, V2 wiring, or deployment.",
+  "generation_jobs_submitted": 0
+}

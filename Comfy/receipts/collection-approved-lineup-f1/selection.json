@@ -1,0 +1,132 @@
+{
+  "schema": "skyyrose.approved-locked-selection-board.v1",
+  "created_at": "2026-09-05T01:09:36.060Z",
+  "selection_rule": "Three selections per collection: one approved hero plus two approved or user-locked commerce selections. Not three final-approved commerce scenes per collection.",
+  "user_lock_evidence": "User: the environments and models locked. can we just make them look more naturally apart of the environment and not pasted over",
+  "editorial_e1_included": false,
+  "approval_states_changed": false,
+  "runtime_changed": false,
+  "assets_modified": false,
+  "hashes_reverified": false,
+  "collections": [
+    {
+      "collection": "love-hurts",
+      "name": "Love Hurts",
+      "accent": "#d36562",
+      "description": "The cathedral, the vow aisle, the shorts look.",
+      "items": [
+        {
+          "id": "LH-HERO",
+          "title": "Cathedral hero",
+          "kind": "video",
+          "status": "Approved hero",
+          "approval_scope": "FOUNDER_APPROVED_HERO_MOTION",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.mp4",
+          "poster": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/love-hurts-rose-aisle-monuments-v3.webp",
+          "evidence": "wordpress-theme/skyyrose-flagship-2/data/collection-hero-motion.json",
+          "note": "Approved continuous-loop hero. Use play to view the motion."
+        },
+        {
+          "id": "LH-COMMERCE-1",
+          "title": "Vow Aisle",
+          "kind": "image",
+          "status": "Approved scene",
+          "approval_scope": "FOUNDER_APPROVED_PRODUCT_SCENE",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-vow-aisle-founder-approved-v2.png",
+          "recorded_sha256": "1eb217504536634047eb3a682915a4d8ea0218b9968c9d3ff96addb231578f38",
+          "evidence": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/love-hurts/lh-commerce-1-vow-aisle-founder-approved-v2.receipt.json",
+          "note": "Founder-approved product scene, retained exactly as selected."
+        },
+        {
+          "id": "LH-COMMERCE-2",
+          "title": "Love Hurts shorts",
+          "kind": "image",
+          "status": "Model + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+          "note": "Locked C1 selection. The later E1 lighting edit is not substituted."
+        }
+      ]
+    },
+    {
+      "collection": "black-rose",
+      "name": "Black Rose",
+      "accent": "#bec9d0",
+      "description": "Moonlit monuments, the waterfront duo, the jersey lounge.",
+      "items": [
+        {
+          "id": "BR-HERO",
+          "title": "Bay Bridge hero",
+          "kind": "video",
+          "status": "Approved hero",
+          "approval_scope": "FOUNDER_APPROVED_HERO_MOTION",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.mp4",
+          "poster": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+          "evidence": "wordpress-theme/skyyrose-flagship-2/data/collection-hero-motion.json",
+          "note": "Approved continuous-loop hero. Use play to view the motion."
+        },
+        {
+          "id": "BR-COMMERCE-2",
+          "title": "Waterfront duo",
+          "kind": "image",
+          "status": "Models + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+          "note": "Locked male hoodie-and-shorts look with the female hoodie dress."
+        },
+        {
+          "id": "BR-COMMERCE-3",
+          "title": "Five-jersey lounge",
+          "kind": "image",
+          "status": "Approved scene",
+          "approval_scope": "FOUNDER_APPROVED_PRODUCT_SCENE",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+          "recorded_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+          "evidence": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/manifest.json",
+          "note": "Founder-approved corrected jersey scene, not an earlier candidate."
+        }
+      ]
+    },
+    {
+      "collection": "signature",
+      "name": "Signature",
+      "accent": "#d2b279",
+      "description": "Golden Gate monuments, Sherpa and beanie, mint and lavender.",
+      "items": [
+        {
+          "id": "SIG-HERO",
+          "title": "Golden Gate hero",
+          "kind": "video",
+          "status": "Approved hero",
+          "approval_scope": "FOUNDER_APPROVED_HERO_MOTION",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.mp4",
+          "poster": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+          "evidence": "wordpress-theme/skyyrose-flagship-2/data/collection-hero-motion.json",
+          "note": "The approved Signature clip, already selected for V2."
+        },
+        {
+          "id": "SIG-COMMERCE-1",
+          "title": "Sherpa + beanie",
+          "kind": "image",
+          "status": "Model + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+          "note": "Locked Signature C1 selection on the Golden Gate terrace."
+        },
+        {
+          "id": "SIG-COMMERCE-2",
+          "title": "Mint set + hoodie dress",
+          "kind": "image",
+          "status": "Models + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+          "note": "Corrected C2 styling: the longer hoodie is a dress, with bare legs."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "skyyrose.single-scene-motion-receipt.v1",
+  "candidateId": "BR-COMMERCE-2-MOTION-J5",
+  "sceneId": "BR-COMMERCE-2",
+  "status": "PROVIDER_COMPLETED_CANDIDATE_ONLY",
+  "approvalContext": "User requested remaining scenes one at a time after identifying incomplete input IP checks.",
+  "attempt": {
+    "scene": "BR-COMMERCE-2",
+    "candidate": "BR-COMMERCE-2-MOTION-J5",
+    "jobId": "1baa140d-66cf-4787-a29b-c6000ac8d7ca",
+    "sourceMediaId": "aee9914f-4f4a-4708-8322-5fe951564d0b",
+    "sourceSha256": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+    "model": "seedance_2_5",
+    "duration": 5,
+    "resolution": "1080p",
+    "ratio": "16:9",
+    "audio": false,
+    "bitrate": "standard",
+    "maxCredits": 45,
+    "maxAttempts": 1,
+    "automaticRetry": false,
+    "submittedAt": "2026-09-05T03:02:51.140Z",
+    "eligibility": "Native Check eligibility completed; existing media selectable; generation accepted."
+  },
+  "providerRequest": {
+    "aspect_ratio": "16:9",
+    "bitrate_mode": "standard",
+    "duration": 5,
+    "extension_mode": null,
+    "generate_audio": false,
+    "genre": "auto",
+    "height": 1080,
+    "medias": [
+      {
+        "data": {
+          "id": "aee9914f-4f4a-4708-8322-5fe951564d0b",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/aee9914f-4f4a-4708-8322-5fe951564d0b.png"
+        },
+        "role": "image"
+      }
+    ],
+    "model": "default",
+    "multi_prompt": [],
+    "multi_shot_mode": "custom",
+    "multi_shots": false,
+    "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Cool moonlight at the Bay Bridge waterfront. Gentle moving clouds, fine water ripples, subtle reflected highlights on wet stone. The newly added silver Black Rose wall lettering stays fixed and readable. The male hoodie-and-shorts look and female long hoodie dress remain unchanged.",
+    "prompt_language": "en",
+    "reference_elements": [],
+    "resolution": "1080p",
+    "speedramp": "auto",
+    "width": 1920
+  },
+  "source": {
+    "mediaId": "aee9914f-4f4a-4708-8322-5fe951564d0b",
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png",
+    "sha256FromPriorUploadRecord": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+    "changed": false
+  },
+  "output": {
+    "localPath": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/br-commerce-2-motion-j5/assets/br-commerce-2-motion-j5-master.mp4",
+    "themeCandidatePath": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j5/br-commerce-2-motion-j5-master.mp4",
+    "bytes": 5448701,
+    "sha256": "dbcb6e45fa6e5b92866483920ad516326788c781f4a157a8d93fbd84ae495176"
+  },
+  "spend": {
+    "displayedCredits": 45,
+    "maxCredits": 45,
+    "additionalAttempts": 0,
+    "billingLedgerReconciled": false
+  },
+  "eligibility": {
+    "method": "Native Assets > Uploads > Check eligibility on original uploaded media",
+    "scope": "BR-COMMERCE-2 only",
+    "processingObserved": true,
+    "eligibilityPromptCleared": true,
+    "originalMediaSelected": true,
+    "generationAccepted": true
+  },
+  "review": {
+    "visualFidelity": "NOT_REVIEWED",
+    "loopContinuity": "NOT_REVIEWED",
+    "founderApproval": "PENDING"
+  },
+  "remainingScenesNotSubmitted": [
+    "LH-COMMERCE-2",
+    "SIG-COMMERCE-1",
+    "SIG-COMMERCE-2",
+    "SIG-COMMERCE-3"
+  ],
+  "storefrontActivated": false,
+  "deployed": false,
+  "importedAt": "2026-09-05T03:08:56.678Z"
+}

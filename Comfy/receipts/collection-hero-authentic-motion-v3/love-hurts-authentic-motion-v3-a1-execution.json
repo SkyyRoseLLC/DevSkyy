@@ -1,0 +1,25 @@
+{
+  "id": "LOVE-HURTS-HERO-AUTHENTIC-MOTION-V3-A1",
+  "execution_fingerprint_sha256": "284cfbe6a0e01297b2e404abbb9e3a7fa789f3819271256e659d0ae44490511c",
+  "status": "CANDIDATE_SAVED_PENDING_REVIEW",
+  "completed_at": "2026-09-05T00:01:32.992Z",
+  "provider_result": {
+    "index": 2,
+    "job_id": "e0435fa2-5d60-4d1f-8f90-00a40a433e49",
+    "status": "completed",
+    "type": "video",
+    "model": "seedance_2_5",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260904_235626_e0435fa2-5d60-4d1f-8f90-00a40a433e49.mp4",
+    "thumbnail_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/328262da-a721-4785-81cf-eec7ecda8dd7.webp"
+  },
+  "local_asset": {
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/candidates/love-hurts/love-hurts-authentic-motion-v3-a1.mp4",
+    "sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+    "bytes": 7819988
+  },
+  "authorized_max_credits": 72,
+  "actual_per_job_billing_reconciled": false,
+  "authority": "CANDIDATE_ONLY",
+  "v2_wiring": false,
+  "deployment": false
+}

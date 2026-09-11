@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": 1,
+  "authority": "docs/design/v2-remodel/reports/typography-open-source-contract.md",
+  "scope": "wordpress-theme/skyyrose-flagship-2/assets/sot/fonts",
+  "license_bundle": {
+    "spdx": "OFL-1.1",
+    "text_path": "assets/sot/fonts/OFL-1.1.txt",
+    "text_sha256": "cf7ee9ce855c14271ef9c763692292b472260e089c86bac6f52c9104c8d7135c",
+    "attribution_path": "assets/sot/fonts/FONT-ATTRIBUTIONS.md",
+    "status": "PRESENT"
+  },
+  "page_fonts": [
+    {
+      "family": "Archivo",
+      "role": "display",
+      "path": "assets/sot/fonts/archivo-latin.woff2",
+      "sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+      "upstream": "https://github.com/Omnibus-Type/Archivo",
+      "upstream_revision": null,
+      "license": "OFL-1.1",
+      "metadata": {"copyright": "Copyright 2020 The Archivo Project Authors", "version": "Version 2.001", "license_url": "http://scripts.sil.org/OFL"},
+      "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
+    },
+    {
+      "family": "Hanken Grotesk",
+      "role": "body",
+      "path": "assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "sha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
+      "upstream": "https://github.com/marcologous/hanken-grotesk",
+      "upstream_revision": null,
+      "license": "OFL-1.1",
+      "metadata": {"copyright": "Copyright 2021 The Hanken Grotesk Project Authors", "version": "Version 3.013", "license_url": "https://scripts.sil.org/OFL"},
+      "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
+    },
+    {
+      "family": "Anton",
+      "role": "utility",
+      "path": "assets/sot/fonts/anton-latin.woff2",
+      "sha256": "23aab0b2692a0c89eb7997d3c7cf5bda41276d6cd4ab6cc0edc3edfcece32b09",
+      "upstream": "https://github.com/googlefonts/AntonFont",
+      "upstream_revision": null,
+      "license": "OFL-1.1",
+      "metadata": {"copyright": "Copyright 2020 The Anton Project Authors", "version": "Version 2.116", "license_url": "https://scripts.sil.org/OFL"},
+      "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
+    },
+    {
+      "family": "Cinzel",
+      "role": "ceremonial-metadata",
+      "path": "assets/sot/fonts/cinzel-latin.woff2",
+      "sha256": "09941fb1c169c38fd414536b37690057fc01b3117a5c63dd6571186540c8f370",
+      "upstream": "https://github.com/NDISCOVER/Cinzel",
+      "upstream_revision": null,
+      "license": "OFL-1.1",
+      "metadata": {"copyright": "Copyright 2020 The Cinzel Project Authors", "version": "Version 2.000", "license_url": "https://scripts.sil.org/OFL"},
+      "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
+    },
+    {
+      "family": "Grand Hotel",
+      "role": "artifact-only-candidate",
+      "path": "assets/sot/fonts/grand-hotel-latin.woff2",
+      "sha256": "784264f80a7071f0e42ae9710878e19684c90af54caca66ec165b29f88b4e915",
+      "upstream": "https://www.astigmatic.com/",
+      "upstream_revision": null,
+      "license": "OFL-1.1",
+      "metadata": {"copyright": "Copyright (c) 2012 by Brian J. Bonislawsky DBA Astigmatic (AOETI)", "version": "Version 001.000", "license_url": "http://scripts.sil.org/OFL", "reserved_font_name": "Grand Hotel"},
+      "status": "ARTIFACT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
+    },
+    {
+      "family": "Inter",
+      "role": "fallback",
+      "path": "assets/sot/fonts/inter-latin.woff2",
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
+      "upstream": "https://github.com/rsms/inter",
+      "upstream_revision": null,
+      "license": "OFL-1.1",
+      "metadata": {"copyright": "Copyright 2016 The Inter Project Authors", "version": "Version 4.001; git-66647c0bb", "license_url": "https://openfontlicense.org"},
+      "status": "PAGE_FONT_PROVENANCE_MATCHED_REVISION_UNRECORDED"
+    },
+    {
+      "family": "Pinyon Script",
+      "role": "artifact-only-candidate",
+      "path": "assets/sot/fonts/pinyon-script-latin.woff2",
+      "sha256": "2213469353367045e336e78eb1f5515e58425485a775521b27d40eb5876f266d",
+      "upstream": "https://github.com/SorkinType/Pinyon",
+      "upstream_revision": null,
+      "license": "OFL-1.1",
+      "metadata": {"copyright": "Copyright 2022 The PinyonScript Project Authors", "version": "Version 1.008", "license_url": null},
+      "status": "ARTIFACT_PROVENANCE_MATCHED_REVISION_UNRECORDED_LICENSE_URL_ABSENT"
+    }
+  ],
+  "artwork_only": [
+    {
+      "family": "SkyyRose Black Rose Script",
+      "path": "assets/sot/fonts/skyyrose-black-rose-script-latin.woff2",
+      "sha256": "4f8672fcfe567d826a3206e7820aa27b57f11a7e81371a2fb89b89f0f3dd23ad",
+      "license": null,
+      "upstream": null,
+      "status": "BLOCKED_NO_PROVENANCE_FOUNDER_APPROVAL_REQUIRED"
+    },
+    {
+      "family": "SkyyRose Love Hurts Graffiti",
+      "path": "assets/sot/fonts/skyyrose-love-hurts-graffiti-latin.woff2",
+      "sha256": "c48669f1b69c3a3db3a4866513ebd84eada771ccc7332fa7d44fb8d9bffbc734",
+      "license": null,
+      "upstream": null,
+      "status": "BLOCKED_NO_PROVENANCE_FOUNDER_APPROVAL_REQUIRED"
+    }
+  ],
+  "collection_page_type": {
+    "signature": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
+    "black-rose": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
+    "love-hurts": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
+    "kids-capsule": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"],
+    "jersey-series-black-rose-release": ["Archivo", "Hanken Grotesk", "Anton", "Cinzel"]
+  },
+  "rules": [
+    "Do not claim either SkyyRose custom face is open-source without a rights record.",
+    "Use collection scripts only through founder-approved image/artifact slots.",
+    "A font byte change requires a recorded upstream revision, this file's replacement hash, and license evidence.",
+    "A null upstream_revision is an evidence gap, not permission to replace or regenerate bytes."
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "skyyrose.serial-motion-outcome.v1",
+  "status": "THREE_PROVIDER_COMPLETED_CANDIDATES_IMPORTED",
+  "imports": [
+    {
+      "index": 1,
+      "candidateId": "SIG-COMMERCE-1-KLING-PRO-MOTION-J7",
+      "local": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/signature-kling-motion-j7/assets/sig-commerce-1-kling-pro-motion-j7-master.mp4",
+      "theme": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j7/sig-commerce-1-kling-pro-motion-j7-master.mp4",
+      "filename": "sig-commerce-1-kling-pro-motion-j7-master.mp4",
+      "bytes": 11324767,
+      "sha256": "71d876b63d4994dc305db8b7c7892470435201d691cab8852a8443c0c15a17b1",
+      "sourceWeb": "/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png"
+    },
+    {
+      "index": 2,
+      "candidateId": "SIG-COMMERCE-2-KLING-PRO-MOTION-J7",
+      "local": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/signature-kling-motion-j7/assets/sig-commerce-2-kling-pro-motion-j7-master.mp4",
+      "theme": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j7/sig-commerce-2-kling-pro-motion-j7-master.mp4",
+      "filename": "sig-commerce-2-kling-pro-motion-j7-master.mp4",
+      "bytes": 12338595,
+      "sha256": "d38c8307f01d4ea9d51d07ebbc024d77005a60d20e787f6c6a09cbdb4032d938",
+      "sourceWeb": "/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png"
+    },
+    {
+      "index": 3,
+      "candidateId": "SIG-COMMERCE-3-KLING-PRO-MOTION-J7",
+      "local": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/signature-kling-motion-j7/assets/sig-commerce-3-kling-pro-motion-j7-master.mp4",
+      "theme": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j7/sig-commerce-3-kling-pro-motion-j7-master.mp4",
+      "filename": "sig-commerce-3-kling-pro-motion-j7-master.mp4",
+      "bytes": 12863195,
+      "sha256": "b3f2edcfdf19d8f263f4bea90040ea4d651e3e668c64c15130da42992045771d",
+      "sourceWeb": "/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1.png"
+    }
+  ],
+  "providerJobs": [
+    {
+      "index": 1,
+      "job_id": "8ec45b78-f59a-493b-b187-97ece73c2052",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_034711_8ec45b78-f59a-493b-b187-97ece73c2052.mp4",
+      "thumbnail_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/b1398cde-8f7a-46e4-992e-4a33cf1b7d7a.png"
+    },
+    {
+      "index": 2,
+      "job_id": "eed537ce-ef4b-4800-b542-fba597c19e31",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_035528_eed537ce-ef4b-4800-b542-fba597c19e31.mp4",
+      "thumbnail_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/a02859d8-9ce3-4257-968b-40d1a3fbe225.png"
+    },
+    {
+      "index": 3,
+      "job_id": "2051b483-2e12-4b3d-bd83-fe60bcbe129c",
+      "status": "completed",
+      "type": "video",
+      "model": "kling3_0",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_040419_2051b483-2e12-4b3d-bd83-fe60bcbe129c.mp4",
+      "thumbnail_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/5ed753a5-1bd9-4ca9-8188-70e809722f19.png"
+    }
+  ],
+  "estimatedCreditsTotal": 26.25,
+  "billingLedgerReconciled": false,
+  "automaticRetries": 0,
+  "serial": true,
+  "founderApproval": "PENDING_FOR_SIGNATURE_CANDIDATES",
+  "loveHurtsApprovalRecorded": true,
+  "storefrontActivated": false,
+  "deployed": false
+}

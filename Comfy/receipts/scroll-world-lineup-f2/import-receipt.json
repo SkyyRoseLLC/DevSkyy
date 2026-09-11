@@ -1,0 +1,89 @@
+{
+  "created_at": "2026-09-05T01:20:46.164Z",
+  "imports": [
+    {
+      "scene_id": "LH-COMMERCE-1",
+      "source": "/Users/theceo/Downloads/archive-4/hf_20260829_155546_0110cc0d-2b6b-4526-8c5f-0c6864ab863e.mp4",
+      "imported": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4.mp4",
+      "sha256": "841bb58a42e4a9f4e07c9b58ffa60dba3c7763ce9543d1eaf29db855b63fb48b",
+      "bytes": 20584409,
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1920,
+            "height": 1080,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "format": {
+          "duration": "5.041667",
+          "size": "20584409"
+        }
+      },
+      "original_unchanged": true,
+      "transcoded": false,
+      "poster": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4-poster.webp",
+      "approval_not_extended": true
+    },
+    {
+      "scene_id": "LH-COMMERCE-3",
+      "source": "/Users/theceo/Downloads/archive-4/hf_20260829_160429_86b1c898-7b94-48d1-a391-af7b8dd23f08.mp4",
+      "imported": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4.mp4",
+      "sha256": "46d2b2347e43ce53398bb26ecfbba1f4ca72a9ddd5ebe849e4786bcb0b7ec04e",
+      "bytes": 19782012,
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1248,
+            "height": 1664,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "format": {
+          "duration": "5.041667",
+          "size": "19782012"
+        }
+      },
+      "original_unchanged": true,
+      "transcoded": false,
+      "poster": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4-poster.webp",
+      "approval_not_extended": true
+    },
+    {
+      "scene_id": "BR-COMMERCE-1",
+      "source": "/Users/theceo/Downloads/archive-4/hf_20260827_035708_25209aff-6b21-4c58-81de-6b623327f121.mp4",
+      "imported": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4.mp4",
+      "sha256": "e12dcab99540695fc7d3231eeb488e9d0edd19f1d451582116356196c5deaffb",
+      "bytes": 13402661,
+      "metadata": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "24/1"
+          }
+        ],
+        "format": {
+          "duration": "4.041667",
+          "size": "13402661"
+        }
+      },
+      "original_unchanged": true,
+      "transcoded": false,
+      "poster": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4-poster.webp",
+      "approval_not_extended": true
+    }
+  ]
+}

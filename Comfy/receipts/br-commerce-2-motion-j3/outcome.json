@@ -1,0 +1,80 @@
+{
+  "schema": "skyyrose.motion-attempt-outcome.v1",
+  "candidate_id": "BR-COMMERCE-2-MOTION-J3",
+  "scene_id": "BR-COMMERCE-2",
+  "job_id": "5c9cc54a-d599-4b8d-b14f-1d90e374dd4c",
+  "status": "FAILED",
+  "result_url": null,
+  "provider_failure_reason": "NOT_EXPOSED_BY_PROVIDER",
+  "billing": {
+    "events": [
+      {
+        "action": "refund",
+        "created_at": "2026-09-05T02:21:14.397135Z",
+        "credits": 45,
+        "display_name": "Seedance 2.5"
+      },
+      {
+        "action": "spend",
+        "created_at": "2026-09-05T02:20:31.064589Z",
+        "credits": -45,
+        "display_name": "Seedance 2.5"
+      }
+    ],
+    "spend_credits": 45,
+    "refund_credits": 45,
+    "net_credits": 0,
+    "correlation": "Matching Seedance model, amount and submission/failure timestamps; transaction response contains no job ID."
+  },
+  "source": {
+    "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png",
+    "sha256": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+    "wall_roi": {
+      "left": 0,
+      "top": 0,
+      "width": 650,
+      "height": 680
+    },
+    "manifest_records_updated": 1,
+    "preview": "http://127.0.0.1:18102/Comfy/receipts/br-commerce-2-wall-statue-i3/preview.html",
+    "motion_approval": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-motion-j3/approval-request.json",
+    "batch_fingerprint": "0766120b1889939f51855b39fb54ceb3a066aa6b626996c3b6f1a00dc77fd8e2",
+    "jobs": [
+      {
+        "id": "BR-COMMERCE-2-MOTION-J3",
+        "fingerprint": "28fb1bd53cdaa0628d8c313f7757ede256de85848a61bcfcad4b6f030bf9d959",
+        "max_credits": 45
+      },
+      {
+        "id": "BR-COMMERCE-3-MOTION-J1",
+        "fingerprint": "fc013b016db2e033e951850f65604cc93e18b2a4db232a8e12cfc78b33934756",
+        "max_credits": 45
+      },
+      {
+        "id": "LH-COMMERCE-2-MOTION-J1",
+        "fingerprint": "fba7e00f17f28dcf7c684f64e9b0a7cd9b48d77e81d0b01aa8af797a2e759717",
+        "max_credits": 45
+      },
+      {
+        "id": "SIG-COMMERCE-1-MOTION-J1",
+        "fingerprint": "b2cbd2c986bb41f2942e704cbef76fc051fadfda898fa299035c797e21a08c53",
+        "max_credits": 45
+      },
+      {
+        "id": "SIG-COMMERCE-2-MOTION-J1",
+        "fingerprint": "b690889595194270ba37497f5c649eb2c38d340e23240931e821ef329ba97c57",
+        "max_credits": 45
+      },
+      {
+        "id": "SIG-COMMERCE-3-MOTION-J1",
+        "fingerprint": "79acd8c93e15507073e0daad046411d68fdcb71709f121bf905c02768bf104c4",
+        "max_credits": 45
+      }
+    ]
+  },
+  "source_preserved": true,
+  "automatic_retry": false,
+  "attempts_submitted": 1,
+  "additional_generation_authorized": false,
+  "recorded_at": "2026-09-05T02:23:21.429Z"
+}

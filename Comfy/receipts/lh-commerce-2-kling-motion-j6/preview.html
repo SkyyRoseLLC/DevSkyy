@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Love Hurts / Kling Pro motion trial</title>
+<style>
+:root{color-scheme:dark;--ink:#eee7dd;--muted:#b4a9a4;--line:#453637}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% 0,#501c2866,transparent 60%),#100d0e;color:var(--ink);font-family:Georgia,serif}main{max-width:1680px;margin:auto;padding:clamp(18px,4vw,56px)}.eyebrow,.meta,.note,button,figcaption{font:13px/1.65 Verdana,sans-serif}.eyebrow{letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}h1{font-size:clamp(32px,4vw,62px);font-weight:400;margin:.35em 0}.meta,.note{color:var(--muted)}.pair{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;margin-top:30px;align-items:start}figure{margin:0}video,img{display:block;width:100%;aspect-ratio:16/9;object-fit:contain;background:#070606;border:1px solid var(--line)}figcaption{padding-top:12px;color:var(--muted)}button{background:transparent;border:1px solid #997b7e;color:var(--ink);padding:10px 20px;cursor:pointer;margin:20px 0}a{color:var(--ink)}button:focus-visible,a:focus-visible{outline:2px solid var(--ink);outline-offset:4px}footer{margin-top:24px;border-top:1px solid var(--line);padding-top:20px;max-width:1000px}@media(max-width:900px){.pair{grid-template-columns:1fr}.pair figure:first-child{order:0}}
+</style>
+<main><div class="eyebrow">Love Hurts / Scene 02 / Kling Pro trial</div><h1>Rose chamber. In motion.</h1>
+<p class="meta">Kling 3.0 Pro &middot; 5-second, 1080p request &middot; silent &middot; one candidate &middot; 8.75-credit estimate</p>
+<div class="pair"><figure><video id="motion" controls muted loop playsinline preload="none" poster="/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png" data-src="assets/lh-commerce-2-kling-pro-motion-j6-master.mp4"></video><figcaption>New Kling candidate. The approved Love Hurts image was supplied as the start frame.</figcaption></figure>
+<figure><a href="/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png"><img src="/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png" alt="Approved Love Hurts Scene 2 source: model in LH-003 shorts inside the gothic rose chamber" loading="lazy" decoding="async"></a><figcaption>Approved source still, unchanged. Compare the face, shorts artwork, silhouette, and scene framing.</figcaption></figure></div>
+<button id="play" type="button">Play video</button>
+<footer class="note">This is a Love Hurts trial, not another Black Rose generation. The three Signature scenes have not been submitted. Generated motion remains a review candidate; product fidelity and seamless-loop continuity have not been certified. No storefront activation or deployment.
+<p><a href="assets/lh-commerce-2-kling-pro-motion-j6-master.mp4">Open original MP4</a> &nbsp; <a href="receipt.json">Generation receipt</a></p></footer></main>
+<script>
+const video=document.getElementById('motion'),button=document.getElementById('play');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+let visible=false,pausedByButton=false,manual=false;
+const canAuto=()=>!reduce.matches&&!navigator.connection?.saveData;
+function load(){if(!video.getAttribute('src'))video.src=video.dataset.src;}
+function sync(){if(document.hidden||!visible||pausedByButton||(!manual&&!canAuto())){video.pause();return;}load();video.play().catch(()=>{});}
+button.addEventListener('click',()=>{if(!video.paused){pausedByButton=true;manual=false;video.pause();}else{pausedByButton=false;manual=true;load();video.play().catch(()=>{});}});
+video.addEventListener('play',()=>{button.textContent='Pause video';});
+video.addEventListener('pause',()=>{button.textContent='Play video';});
+document.addEventListener('visibilitychange',sync);
+reduce.addEventListener('change',()=>{manual=false;sync();});
+if('IntersectionObserver'in window)new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();},{threshold:.1}).observe(video);else{visible=true;sync();}
+</script></html>

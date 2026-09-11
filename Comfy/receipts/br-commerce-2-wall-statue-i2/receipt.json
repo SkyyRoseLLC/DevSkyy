@@ -1,0 +1,70 @@
+{
+  "schema": "skyyrose.bounded-wall-statue-edit.v1",
+  "candidate_id": "BR-COMMERCE-2-HERO-WALL-STATUE-I2",
+  "scene_id": "BR-COMMERCE-2",
+  "user_direction": [
+    "add the black rose wall statue to here. NO OTHER EDITS OR CHANGES",
+    "use same wall statue from hero",
+    "make that way bigger matching the size of the hero",
+    "complete the rose too it cut it off"
+  ],
+  "source": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+    "sha256": "b29144a492187a71c9d36a61898de1bfffdc03830d369b6c8860d821eaa82abc"
+  },
+  "statue_reference": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png",
+    "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+    "role": "EXISTING_HERO_DERIVED_WALL_LETTERING_NOT_STAR_MONUMENT"
+  },
+  "generation": {
+    "path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-d4d5412d-0de9-4faa-91e6-ee194540c87d.png",
+    "sha256": "5907df7efcf8816199d887cb1732c5c7393ec32eb17bdceee044e357bd210e1d",
+    "scope": "ISOLATED_WALL_CROP",
+    "prompt": "SURGICAL WALL-ONLY EDIT. Image 1 is the 490 x 440 pixel target wall crop. Return ONLY this wall crop with the exact silver wall-lettering sculpture of image 2 mounted LARGE upon it. Image 3 shows the original hero and establishes authoritative sculpture design and MONUMENTAL SCALE. Do not return a complete scene from image 3. The lettering must occupy essentially the ENTIRE WIDTH of image 1, from x=12 to x=478 (95 percent of the wall crop width). This is architectural-size monumental lettering, NOT a small wall sign. Its top must begin around y=20 and its rose ornament must extend down near y=390. Barely any empty margins around the sculpture. The words 'The Black Rose' form the top line, 'Collection' the lower line, with the exact hero's underline strokes and silver rose stem below. Faithfully reproduce image 2's exact sculpted script design, proportions, natural perspective, polished charcoal/silver metallic bevels and extruded relief. Preserve the original black stone wall texture and existing wall lighting. Subtle physically attached shadows only. No pedestal, no star, no new decoration, no new text, no camera or architecture changes. The sculpture is slightly less wide than this entire wall crop. This will be inserted to the left of existing protected models, so do not generate people or expand beyond the crop. Same aspect ratio as image 1."
+  },
+  "assembly": {
+    "method": "COMPOSITE_ONLY_WITHIN_SOURCE_WALL_ROI",
+    "roi": {
+      "left": 10,
+      "top": 150,
+      "width": 490,
+      "height": 440
+    },
+    "edge_feather_px": 18,
+    "full_scene_regenerated": false,
+    "models_and_products_outside_roi": true
+  },
+  "output": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i2.png",
+    "sha256": "d1198447c9e240e0c9afdb808968913e6af7cca3ed1354b0641efed38c8a2750",
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i2-640w.webp",
+        "bytes": 45842
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i2-960w.webp",
+        "bytes": 100754
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i2-1672w.webp",
+        "bytes": 263274
+      }
+    ]
+  },
+  "state": "USER_REQUESTED_WALL_EDIT_LOCALLY_WIRED",
+  "founder_final_visual_approval": false,
+  "independent_visual_review": "NOT_RUN",
+  "runtime_validation": "NOT_RUN",
+  "deployment_authorized": false,
+  "created_at": "2026-09-05T02:06:08.987Z"
+}

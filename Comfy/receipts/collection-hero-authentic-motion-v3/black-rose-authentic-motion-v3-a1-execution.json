@@ -1,0 +1,25 @@
+{
+  "id": "BLACK-ROSE-HERO-AUTHENTIC-MOTION-V3-A1",
+  "execution_fingerprint_sha256": "71a85c80554dd9d30249fdfe0711741521d3a5b3192a846c9fc6484c3f762fd5",
+  "status": "CANDIDATE_SAVED_PENDING_REVIEW",
+  "completed_at": "2026-09-04T23:56:20.148Z",
+  "provider_result": {
+    "index": 1,
+    "job_id": "d62996a8-caa3-41bf-ba93-a74591c4a84b",
+    "status": "completed",
+    "type": "video",
+    "model": "seedance_2_5",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260904_235055_d62996a8-caa3-41bf-ba93-a74591c4a84b.mp4",
+    "thumbnail_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/38b9044d-3f38-4666-bde4-47c29ad0d59e.webp"
+  },
+  "local_asset": {
+    "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/candidates/black-rose/black-rose-authentic-motion-v3-a1.mp4",
+    "sha256": "9a6d885cd74d29686bf14b4e9c12f83b950203f3c8f8287415571232c5813035",
+    "bytes": 6911884
+  },
+  "authorized_max_credits": 72,
+  "actual_per_job_billing_reconciled": false,
+  "authority": "CANDIDATE_ONLY",
+  "v2_wiring": false,
+  "deployment": false
+}

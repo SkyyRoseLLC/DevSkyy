@@ -1,0 +1,205 @@
+{
+  "task_id": "HERO-COMMERCE-C1",
+  "state": "NEEDS_REVIEW",
+  "builtin_generation_calls": 2,
+  "runway_calls": 0,
+  "higgsfield_calls": 0,
+  "fashn_calls": 0,
+  "independent_review": "NOT_RUN",
+  "tests": "NOT_RUN",
+  "browser_validation": "NOT_RUN",
+  "deployment": "NOT_PERFORMED",
+  "assets": [
+    {
+      "scene_id": "LH-COMMERCE-2",
+      "candidate_id": "LH-COMMERCE-2-HERO-COMPOSED-C1",
+      "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+      "master_sha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb",
+      "stage_import": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-HERO-COMPOSED-C1.png",
+      "background": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/hero-themed-environments-b1/assets/LH-COMMERCE-2-HERO-ENVIRONMENT-B1.png",
+      "background_sha256": "1679ab9b90d53316c6d14ec936f953ae5135857393c5bd1f16623de30d5da2f8",
+      "foreground": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1.png",
+      "foreground_sha256": "0a0d43fdedf5d35aef536d856b91958053000baad2f072e7fad311ff546e3a44",
+      "placement": {
+        "left": 1050,
+        "top": 85,
+        "height": 790
+      },
+      "alpha_crop": {
+        "left": 229,
+        "top": 77,
+        "width": 480,
+        "height": 1485
+      },
+      "protected_foreground_method": "Existing source RGB; alpha normalization only where declared; deterministic crop/scale/over composition; no garment regeneration.",
+      "generated_candidate_content": "None",
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 67264,
+          "sha256": "abdb345fb2d2c7600c8bf719c3105e3fc57d57198c58d9cc7375a3c51499ab76"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 145222,
+          "sha256": "8d180d2617fdce15ea4e53d89a4cf93cb44c9bce99e19edb83f39c0a41fd9836"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 340456,
+          "sha256": "bf251eba7a2366a8d133e10a7bd548f3c6d89d2137da8263a418e761bfdefa54"
+        }
+      ],
+      "independent_review": "NOT_RUN",
+      "runtime_browser_validation": "NOT_RUN",
+      "state": "NEEDS_REVIEW"
+    },
+    {
+      "scene_id": "BR-COMMERCE-2",
+      "candidate_id": "BR-COMMERCE-2-HERO-COMPOSED-C1",
+      "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+      "master_sha256": "b29144a492187a71c9d36a61898de1bfffdc03830d369b6c8860d821eaa82abc",
+      "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-HERO-COMPOSED-C1.png",
+      "background": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-bb8cc022-fb20-4e2a-a508-ec07255c0e5f.png",
+      "background_sha256": "5e157819212c6cf40d14b48e557aa5573c9462672b4e052a3135b6baa22df4e9",
+      "foreground": null,
+      "foreground_sha256": null,
+      "placement": null,
+      "alpha_crop": null,
+      "protected_foreground_method": null,
+      "generated_candidate_content": "New dual cast and reference-guided garments",
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 48142,
+          "sha256": "8798f0079110eeb36409b64b14f4989b9c06d36c1481b57c597f04f54277b0c5"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 107910,
+          "sha256": "3a7c1c137aee383b3486d5a26bcf3d4c633ce9af6eba91b7894557a923b47a0e"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 282332,
+          "sha256": "d3ea8d547c24fa3ab01727f17157a4315f8471f5408a67a5f66d56784e15160f"
+        }
+      ],
+      "independent_review": "NOT_RUN",
+      "runtime_browser_validation": "NOT_RUN",
+      "state": "NEEDS_REVIEW"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "candidate_id": "SIG-COMMERCE-1-HERO-COMPOSED-C1",
+      "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+      "master_sha256": "b4a8b6239b22549ad0f1447084ca77435bd80cdb4533851e119053e6f348b374",
+      "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-HERO-COMPOSED-C1.png",
+      "background": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/hero-themed-environments-b1/assets/SIG-COMMERCE-1-HERO-ENVIRONMENT-B1.png",
+      "background_sha256": "7b87f2cb37c05850ca502f3909a60114c9228562cb13c6b76fd8584b54139757",
+      "foreground": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-1-sherpa-beanie-generated-protected-v2.png",
+      "foreground_sha256": "4d92d83e825ffdec4a6a6fa6981b100d8726f24711c8f886c5526bfa207d368a",
+      "placement": {
+        "left": 580,
+        "top": 60,
+        "height": 790
+      },
+      "alpha_crop": {
+        "left": 220,
+        "top": 60,
+        "width": 517,
+        "height": 1548
+      },
+      "protected_foreground_method": "Existing source RGB; alpha normalization only where declared; deterministic crop/scale/over composition; no garment regeneration.",
+      "generated_candidate_content": "None",
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 41738,
+          "sha256": "23a86692d9d28f11f850d858d4d451819f71884c3a82df99eb614529b4a39d71"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 84160,
+          "sha256": "0a9fd6835909c7916a6dee80517e31043ecbd1fa933fe14d111a144f34328d5c"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 196466,
+          "sha256": "e954cd60a99d4db7f06ea1cec12c3dac8e65f46723354127702cff6357786bad"
+        }
+      ],
+      "independent_review": "NOT_RUN",
+      "runtime_browser_validation": "NOT_RUN",
+      "state": "NEEDS_REVIEW"
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "candidate_id": "SIG-COMMERCE-2-HERO-COMPOSED-C1",
+      "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1.png",
+      "master_sha256": "e2e830c145b15e3b4f9c6559411ab721e7284b98cf4fa597ed08fc804517fdde",
+      "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-HERO-COMPOSED-C1.png",
+      "background": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-fee73ed8-1659-43d0-99df-0a9f491181eb.png",
+      "background_sha256": "01218d2198731a4ff19616577b45363cdb9f0ee57e9b51bae897187e0d498547",
+      "foreground": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-male-mint-set-generated-protected-v2.png",
+      "foreground_sha256": "eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16",
+      "placement": {
+        "left": 495,
+        "top": 70,
+        "height": 775
+      },
+      "alpha_crop": {
+        "left": 198,
+        "top": 184,
+        "width": 422,
+        "height": 1278
+      },
+      "protected_foreground_method": "Existing source RGB; alpha normalization only where declared; deterministic crop/scale/over composition; no garment regeneration.",
+      "generated_candidate_content": "New female and SG-006 candidate in background; existing male overlay",
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 55934,
+          "sha256": "110f2650ac02fdb909f1045fbd190918256bbfcc69ad83eb02d1e55e108cdd5a"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 110806,
+          "sha256": "1f137d95186cf8e41381b4f1e1bb4049b9f87a8ab2ce1a67f324ed1bf284fcdc"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 235370,
+          "sha256": "acba6fb1b38c82401e8668a512689b9a42c7575cb12086b33c216ae2d00fcf46"
+        }
+      ],
+      "independent_review": "NOT_RUN",
+      "runtime_browser_validation": "NOT_RUN",
+      "state": "NEEDS_REVIEW"
+    }
+  ]
+}

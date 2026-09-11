@@ -1,0 +1,45 @@
+/**
+ * SkyyRose Flagship 2 editor parity.
+ *
+ * The editor inherits palette and font registrations from theme.json. This
+ * file supplies the concrete editorial canvas used by classic-theme content.
+ */
+
+.editor-styles-wrapper {
+	background: #0a0a0a;
+	color: #fff;
+	font-family: "Hanken Grotesk", Inter, sans-serif;
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	padding-inline: clamp(1rem, 4vw, 4rem);
+}
+
+.editor-styles-wrapper :where(h1, h2, h3, h4, h5, h6) {
+	color: #fff;
+	font-family: Archivo, system-ui, sans-serif;
+	font-variation-settings: "wdth" 105, "wght" 760;
+}
+
+.editor-styles-wrapper :where(a) {
+	color: #d4af37;
+}
+
+.editor-styles-wrapper :where(figcaption) {
+	color: #999;
+	font-family: Cinzel, Georgia, serif;
+	font-size: 0.75rem;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.editor-styles-wrapper :where(.wp-block-button__link) {
+	border-radius: 0;
+	font-family: Anton, sans-serif;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.editor-styles-wrapper :where(.wp-block-quote) {
+	border-inline-start: 2px solid #b76e79;
+	padding-inline-start: 1.5rem;
+}

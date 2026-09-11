@@ -1,0 +1,98 @@
+{
+  "schema": "skyyrose.single-scene-motion-receipt.v1",
+  "candidateId": "LH-COMMERCE-2-KLING-PRO-MOTION-J6",
+  "sceneId": "LH-COMMERCE-2",
+  "status": "PROVIDER_COMPLETED_CANDIDATE_ONLY",
+  "executionFingerprint": "9a497fca253db5892974fe76dc330bfb0c5e04e7780e87bbdd7c9ba9390d02ef",
+  "attempt": {
+    "candidateId": "LH-COMMERCE-2-KLING-PRO-MOTION-J6",
+    "sceneId": "LH-COMMERCE-2",
+    "submittedAt": "2026-09-05T03:21:09.864Z",
+    "params": {
+      "model": "kling3_0",
+      "mode": "pro",
+      "sound": "off",
+      "duration": 5,
+      "aspect_ratio": "16:9",
+      "count": 1,
+      "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Love Hurts gothic rose chamber. Natural candle flicker and drifting low atmosphere with restrained red reflections. Preserve the approved LH-003 shorts graphics, pockets, waistband, and front-view model. Calm editorial weight shift without covering the garment or exposing an invented rear view.",
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "0d7495dd-ec57-4f62-96f0-d3603277f8aa"
+        }
+      ]
+    },
+    "maxCredits": 8.75,
+    "maxAttempts": 1,
+    "automaticRetry": false,
+    "approval": "User approved recommended Kling trial, then requested a different image; assistant selected unfinished Love Hurts Scene 2.",
+    "sourceSha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb"
+  },
+  "providerJobId": "7468b917-dac5-4c73-b9cb-15083ed16a16",
+  "providerRequest": {
+    "aspect_ratio": "16:9",
+    "cfg_scale": 0.5,
+    "duration": 5,
+    "enhance_prompt": false,
+    "height": 1080,
+    "kling_element_ids": [],
+    "kling_elements": [],
+    "medias": [
+      {
+        "data": {
+          "id": "0d7495dd-ec57-4f62-96f0-d3603277f8aa",
+          "type": "media_input",
+          "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/0d7495dd-ec57-4f62-96f0-d3603277f8aa.png"
+        },
+        "role": "start_image"
+      }
+    ],
+    "mode": "pro",
+    "multi_prompt": [],
+    "multi_shot_mode": "custom",
+    "multi_shots": false,
+    "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Love Hurts gothic rose chamber. Natural candle flicker and drifting low atmosphere with restrained red reflections. Preserve the approved LH-003 shorts graphics, pockets, waistband, and front-view model. Calm editorial weight shift without covering the garment or exposing an invented rear view.",
+    "reference_elements": [],
+    "sound": "off",
+    "width": 1920
+  },
+  "source": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+    "mediaId": "0d7495dd-ec57-4f62-96f0-d3603277f8aa",
+    "sha256FromPriorUploadRecord": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb",
+    "changed": false,
+    "role": "start_image"
+  },
+  "output": {
+    "localPath": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/lh-commerce-2-kling-motion-j6/assets/lh-commerce-2-kling-pro-motion-j6-master.mp4",
+    "themeCandidatePath": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j6/lh-commerce-2-kling-pro-motion-j6-master.mp4",
+    "bytes": 16738122,
+    "sha256": "b8a05b84b462cbc46804d6a0a64c5e957e913e6abd7b4e51eaa8a211ba14ca1f"
+  },
+  "spend": {
+    "estimatedCredits": 8.75,
+    "maxCredits": 8.75,
+    "attemptCount": 1,
+    "automaticRetry": false,
+    "billingLedgerReconciled": false
+  },
+  "eligibility": {
+    "observation": "Kling native picker exposed the existing upload as selectable without a pending eligibility prompt; provider accepted that same upload ID."
+  },
+  "review": {
+    "visualFidelity": "NOT_REVIEWED",
+    "loopContinuity": "NOT_REVIEWED",
+    "founderApproval": "PENDING",
+    "comparisonLimit": "Different scene from existing Black Rose Seedance video; not a controlled same-input model comparison."
+  },
+  "remainingScenesNotSubmitted": [
+    "SIG-COMMERCE-1",
+    "SIG-COMMERCE-2",
+    "SIG-COMMERCE-3"
+  ],
+  "blackRoseComparisonSubmitted": false,
+  "storefrontActivated": false,
+  "deployed": false,
+  "importedAt": "2026-09-05T03:29:50.108Z"
+}

@@ -1,0 +1,12 @@
+{
+  "source": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-PROTECTED-FOREGROUND-A1.png",
+  "source_sha256": "0a0d43fdedf5d35aef536d856b91958053000baad2f072e7fad311ff546e3a44",
+  "output": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-alpha-normalized-c1.png",
+  "output_sha256": "9af5a9cd131d92e9524b02da62263a84fedaf1569aa45d44abf1fcfe5665000d",
+  "operation": "alpha=255-min(255,round(original_alpha*255/254))",
+  "color_operation": "None: loop modifies alpha channel only. Color resampling occurs later during placement.",
+  "source_issue": "Source alpha preserves studio background and hides subject; its old PASS receipt is not used as masking authority.",
+  "original_source_retained": true,
+  "regeneration": false,
+  "independent_review": "NOT_RUN"
+}

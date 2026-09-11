@@ -1,0 +1,34 @@
+{
+  "index": 0,
+  "scene_id": "BR-COMMERCE-2",
+  "candidate_id": "BR-COMMERCE-2-MOTION-J4",
+  "source": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png",
+  "params": {
+    "model": "seedance_2_5",
+    "mode": "omni_reference",
+    "duration": 5,
+    "resolution": "1080p",
+    "generate_audio": false,
+    "bitrate_mode": "standard",
+    "aspect_ratio": "auto",
+    "count": 1,
+    "use_unlim": false,
+    "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Cool moonlight at the Bay Bridge waterfront. Gentle moving clouds, fine water ripples, subtle reflected highlights on wet stone. The newly added silver Black Rose wall lettering stays fixed and readable. The male hoodie-and-shorts look and female long hoodie dress remain unchanged.",
+    "medias": [
+      {
+        "role": "start_image",
+        "value": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/aee9914f-4f4a-4708-8322-5fe951564d0b.png"
+      }
+    ]
+  },
+  "max_credits": 45,
+  "max_attempts": 1,
+  "automatic_retry": false,
+  "source_sha256": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+  "upload": {
+    "id": "aee9914f-4f4a-4708-8322-5fe951564d0b",
+    "type": "image",
+    "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/aee9914f-4f4a-4708-8322-5fe951564d0b.png"
+  },
+  "execution_fingerprint": "ef50e57d99f6eda6dfc1611e4449d7bec2e4e4ea0ee5727112beb822b2ba1d44"
+}

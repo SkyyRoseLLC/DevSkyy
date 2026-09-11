@@ -1,0 +1,97 @@
+{
+  "schema": "skyyrose.hero-commerce-candidate-revision.v1",
+  "timestamp": "2026-09-05T00:32:19.577Z",
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_id": "SIG-COMMERCE-2-HERO-COMPOSED-DRESS-C2",
+  "supersedes": "SIG-COMMERCE-2-HERO-COMPOSED-C1",
+  "founder_direction": "Signature is a longer hoodie and must be displayed as a dress.",
+  "correction": "Long mint hoodie dress with bare legs, no trousers. White drawstrings, lavender artwork and sneakers retained as generation constraints.",
+  "prompt": "EDIT THE FIRST IMAGE IN PLACE. One landscape image 1672x941, same Golden Gate terrace and same adult woman at the same right-hand position. Founder correction: SG-006 is a LONG HOODIE worn AS A HOODIE DRESS. The current black trousers are wrong. REMOVE THE TROUSERS COMPLETELY. Extend the mint hoodie itself with a natural relaxed straight longline silhouette down to LOWER MID-THIGH, approximately 10-14 cm above her knees, with a continuous matching mint ribbed hem there. It must visibly read as a single oversized long pullover HOODIE DRESS, not a short hoodie over a skirt, not a fitted mini dress, no added skirt seam, no shorts or trousers, no leggings or tights. Show natural bare legs from the hoodie hem down to the existing white sneakers. Keep this a dignified adult editorial full-body look, nonsexual, normal standing pose, no hem lifting. Preserve the SAME WOMAN: her face, age as adult, skin tone, natural curly hair, expression, hands, stance and body proportions as closely as possible. Preserve the SAME MINT FABRIC and exact lavender bouquet/cloud chest graphic, WHITE drawstrings, roomy hood and front kangaroo pocket from the physical garment reference 2. Graphic stays centered on upper torso at the same scale and must not be stretched down the extended dress; kangaroo pocket remains below graphic at natural hand level; sleeves remain mint with ribbed cuffs, hem ribbing lies at mid-thigh. Reference2 is garment detail authority, not a white background or a different model. Keep white shoes, realistic knees and calves, and proper stone contact/shadows. Change only hoodie length and removal of trousers with anatomically correct visible lower legs; preserve the whole selected blue-gray dusk scene, Bay Bridge-looking structures MUST remain the existing GOLDEN GATE in this first image, coastal fog, gold-lit black stone steps, all background geometry, lighting, and camera framing. Keep LEFT HALF EMPTY: the existing approved male model will be composited later and must not be generated. No new people, symbols, text, watermarks, collage, crop or borders. This is a founder-requested targeted candidate revision, not a new garment design.",
+  "references": [
+    "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-fee73ed8-1659-43d0-99df-0a9f491181eb.png",
+    "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship/assets/images/products/sg-006-mint-lavender-hoodie.png"
+  ],
+  "generated_background": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-60d45990-facb-49df-b61a-7ce09e3a829c.png",
+  "generated_background_sha256": "f213df0c343a384b7ecaffce41c45cd93fc3fec76229d61c8201b61a662032e0",
+  "preserved_male_source": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/protected-model-layers/sig-commerce-2-male-mint-set-generated-protected-v2.png",
+  "preserved_male_source_sha256": "eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+  "master_sha256": "f93cdf88d2163add37bc341a3f06eccf5de45b77bb2dbca544040f488268b5bc",
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-HERO-COMPOSED-DRESS-C2.png",
+  "variants": [
+    {
+      "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 61714,
+      "sha256": "f4607c809ae8a2a0ff50065a6c3f1cb89e744c4ff3a5740dcbf2449c2fb59770"
+    },
+    {
+      "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-960w.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 129458,
+      "sha256": "878c70713d02eead6c0c8ec7cf43781fa956dc32bb973bc7b41b2ebbcb95d385"
+    },
+    {
+      "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 322866,
+      "sha256": "3ff52759e041c780d09591c62285073e01416c5afe2ee409061ecacb04113e2b"
+    }
+  ],
+  "active_record": {
+    "collection": "signature",
+    "label": "The Lateral Terrace",
+    "copy": "Mint and lavender on the Golden Gate terrace: the crewneck set and the long hoodie worn as a dress.",
+    "alt": "Preserved male mint crewneck and sweatpants look with a new female mint long hoodie dress candidate, bare legs and white sneakers, on the Golden Gate terrace.",
+    "product_bindings": [
+      "sg-013",
+      "sg-014",
+      "sg-006"
+    ],
+    "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-1672w.webp",
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-640w.webp",
+        "width": 640,
+        "height": 360,
+        "bytes": 61714,
+        "sha256": "f4607c809ae8a2a0ff50065a6c3f1cb89e744c4ff3a5740dcbf2449c2fb59770"
+      },
+      {
+        "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-960w.webp",
+        "width": 960,
+        "height": 540,
+        "bytes": 129458,
+        "sha256": "878c70713d02eead6c0c8ec7cf43781fa956dc32bb973bc7b41b2ebbcb95d385"
+      },
+      {
+        "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-1672w.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 322866,
+        "sha256": "3ff52759e041c780d09591c62285073e01416c5afe2ee409061ecacb04113e2b"
+      }
+    ],
+    "master": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+    "master_sha256": "f93cdf88d2163add37bc341a3f06eccf5de45b77bb2dbca544040f488268b5bc",
+    "source_scope": "PRESERVED_MALE_WITH_FOUNDER_DIRECTED_HOODIE_DRESS_CANDIDATE",
+    "local_wiring_authorized": true,
+    "founder_final_visual_approval": false,
+    "generation_state": "LOCAL_WIRED_COMPOSITION_CANDIDATE_NEEDS_REVIEW",
+    "review_message": "Male source preserved. Female long-hoodie dress follows founder direction; identity, garment fidelity and final scene review remain pending.",
+    "deployment_authorized": false,
+    "styling": "SG-006_LONG_HOODIE_WORN_AS_DRESS_NO_TROUSERS",
+    "candidate_id": "SIG-COMMERCE-2-HERO-COMPOSED-DRESS-C2",
+    "supersedes": "SIG-COMMERCE-2-HERO-COMPOSED-C1"
+  },
+  "local_wiring_authorized": true,
+  "independent_review": "NOT_RUN",
+  "browser_validation": "NOT_RUN",
+  "deployment_authorized": false,
+  "state": "NEEDS_REVIEW"
+}

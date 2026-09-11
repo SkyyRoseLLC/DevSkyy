@@ -1,0 +1,296 @@
+{
+  "scope": "Local V2 PHP template preview in Chromium, not deployed WordPress/WooCommerce validation",
+  "started_at": "2026-09-05T00:07:55.657Z",
+  "desktop": [
+    {
+      "collection": "signature",
+      "url": "http://127.0.0.1:18102/tools/v2-theme-preview.php?route=signature",
+      "http_status": 200,
+      "initial": {
+        "src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
+        "paused": false,
+        "readyState": 4,
+        "time": 0.253361,
+        "duration": 8.042,
+        "width": 1280,
+        "height": 722,
+        "loop": true,
+        "muted": true,
+        "playsInline": true,
+        "preload": "none",
+        "video_error": null,
+        "effects_display": "none",
+        "poster_animation": "none",
+        "css": [
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css"
+        ],
+        "scripts": [
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js"
+        ]
+      },
+      "correct_asset": true,
+      "natural_loop": {
+        "observed": true,
+        "before": 7.952855,
+        "after": 0.007982,
+        "elapsed_ms": 7799
+      },
+      "pause": {
+        "paused": true,
+        "time_delta": 0
+      },
+      "resume": {
+        "playing": true,
+        "time_delta": 0.45512299999999994
+      },
+      "offscreen_paused": true,
+      "return_to_view_playing": true,
+      "screenshot": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/collection-hero-authentic-motion-v3/signature-v2-desktop-20260904.png",
+      "console_errors": [],
+      "media_responses": [
+        {
+          "url": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
+          "status": 200
+        }
+      ],
+      "pass": true
+    },
+    {
+      "collection": "black-rose",
+      "url": "http://127.0.0.1:18102/tools/v2-theme-preview.php?route=black-rose",
+      "http_status": 200,
+      "initial": {
+        "src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+        "paused": false,
+        "readyState": 4,
+        "time": 0.251615,
+        "duration": 8,
+        "width": 1440,
+        "height": 810,
+        "loop": true,
+        "muted": true,
+        "playsInline": true,
+        "preload": "none",
+        "video_error": null,
+        "effects_display": "none",
+        "poster_animation": "none",
+        "css": [
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css"
+        ],
+        "scripts": [
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js"
+        ]
+      },
+      "correct_asset": true,
+      "natural_loop": {
+        "observed": true,
+        "before": 7.956982,
+        "after": 0.053773,
+        "elapsed_ms": 7806
+      },
+      "pause": {
+        "paused": true,
+        "time_delta": 0
+      },
+      "resume": {
+        "playing": true,
+        "time_delta": 0.455851
+      },
+      "offscreen_paused": true,
+      "return_to_view_playing": true,
+      "screenshot": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/collection-hero-authentic-motion-v3/black-rose-v2-desktop-20260904.png",
+      "console_errors": [],
+      "media_responses": [
+        {
+          "url": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+          "status": 200
+        }
+      ],
+      "pass": true
+    },
+    {
+      "collection": "love-hurts",
+      "url": "http://127.0.0.1:18102/tools/v2-theme-preview.php?route=love-hurts",
+      "http_status": 200,
+      "initial": {
+        "src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+        "paused": false,
+        "readyState": 4,
+        "time": 0.253196,
+        "duration": 8,
+        "width": 1440,
+        "height": 810,
+        "loop": true,
+        "muted": true,
+        "playsInline": true,
+        "preload": "none",
+        "video_error": null,
+        "effects_display": "none",
+        "poster_animation": "none",
+        "css": [
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css"
+        ],
+        "scripts": [
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/theme.js",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/house-of-roses-motion.js",
+          "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js"
+        ]
+      },
+      "correct_asset": true,
+      "natural_loop": {
+        "observed": true,
+        "before": 7.956328,
+        "after": 0.052492,
+        "elapsed_ms": 7804
+      },
+      "pause": {
+        "paused": true,
+        "time_delta": 0
+      },
+      "resume": {
+        "playing": true,
+        "time_delta": 0.45543699999999987
+      },
+      "offscreen_paused": true,
+      "return_to_view_playing": true,
+      "screenshot": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/collection-hero-authentic-motion-v3/love-hurts-v2-desktop-20260904.png",
+      "console_errors": [],
+      "media_responses": [
+        {
+          "url": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+          "status": 200
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "reduced_motion_mobile": [
+    {
+      "collection": "signature",
+      "http_status": 200,
+      "state": {
+        "scene_mode": "reduced",
+        "src": "",
+        "paused": true,
+        "video_display": "none",
+        "poster_loaded": true,
+        "poster_src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-640w.webp",
+        "source_urls": [
+          null,
+          null
+        ],
+        "horizontal_overflow": false
+      },
+      "pass": true,
+      "media_requests": []
+    },
+    {
+      "collection": "black-rose",
+      "http_status": 200,
+      "state": {
+        "scene_mode": "reduced",
+        "src": "",
+        "paused": true,
+        "video_display": "none",
+        "poster_loaded": true,
+        "poster_src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp",
+        "source_urls": [
+          null,
+          null
+        ],
+        "horizontal_overflow": false
+      },
+      "pass": true,
+      "media_requests": []
+    },
+    {
+      "collection": "love-hurts",
+      "http_status": 200,
+      "state": {
+        "scene_mode": "reduced",
+        "src": "",
+        "paused": true,
+        "video_display": "none",
+        "poster_loaded": true,
+        "poster_src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-golden-gate-monument-v2-640w.webp",
+        "source_urls": [
+          null,
+          null
+        ],
+        "horizontal_overflow": false
+      },
+      "pass": true,
+      "media_requests": []
+    }
+  ],
+  "save_data": [
+    {
+      "collection": "signature",
+      "http_status": 200,
+      "state": {
+        "scene_mode": "data-save",
+        "src": "",
+        "paused": true,
+        "video_display": "none",
+        "poster_loaded": true,
+        "poster_src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "source_urls": [
+          null,
+          null
+        ],
+        "horizontal_overflow": false
+      },
+      "pass": true,
+      "media_requests": []
+    },
+    {
+      "collection": "black-rose",
+      "http_status": 200,
+      "state": {
+        "scene_mode": "data-save",
+        "src": "",
+        "paused": true,
+        "video_display": "none",
+        "poster_loaded": true,
+        "poster_src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "source_urls": [
+          null,
+          null
+        ],
+        "horizontal_overflow": false
+      },
+      "pass": true,
+      "media_requests": []
+    },
+    {
+      "collection": "love-hurts",
+      "http_status": 200,
+      "state": {
+        "scene_mode": "data-save",
+        "src": "",
+        "paused": true,
+        "video_display": "none",
+        "poster_loaded": true,
+        "poster_src": "http://127.0.0.1:18102/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "source_urls": [
+          null,
+          null
+        ],
+        "horizontal_overflow": false
+      },
+      "pass": true,
+      "media_requests": []
+    }
+  ],
+  "source_changes": false,
+  "deployed": false,
+  "finished_at": "2026-09-05T00:08:44.920Z",
+  "pass": true
+}

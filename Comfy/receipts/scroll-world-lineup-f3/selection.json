@@ -1,0 +1,131 @@
+{
+  "schema": "skyyrose.scroll-world-selection-board.v3",
+  "created_at": "2026-09-05T01:43:11.508Z",
+  "scope": "COMMERCE-1 through COMMERCE-3 for each collection; zero collection hero slots",
+  "slots": 9,
+  "available_scene_sources": 9,
+  "missing_scene_sources": [],
+  "new_candidate": "SIG-COMMERCE-3",
+  "all_nine_final_approved": false,
+  "approval_states_changed": false,
+  "editorial_e1_substituted": false,
+  "storefront_changed": false,
+  "collections": [
+    {
+      "collection": "love-hurts",
+      "name": "Love Hurts",
+      "accent": "#d36562",
+      "items": [
+        {
+          "id": "LH-COMMERCE-1",
+          "title": "Vow Aisle",
+          "kind": "video",
+          "archive_index": 1,
+          "note": "Your supplied Vow Aisle motion clip, replacing the still on this review board.",
+          "asset": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4.mp4",
+          "poster": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-1-archive-4-poster.webp",
+          "status": "Supplied scene video",
+          "approval_scope": "USER_SUPPLIED_EXISTING_SCENE_FOR_REVIEW_BOARD"
+        },
+        {
+          "id": "LH-COMMERCE-2",
+          "title": "Love Hurts shorts",
+          "kind": "image",
+          "status": "Model + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+          "note": "Locked C1 selection. The later E1 lighting edit is not substituted."
+        },
+        {
+          "id": "LH-COMMERCE-3",
+          "title": "Fannie / rose vitrine",
+          "kind": "video",
+          "archive_index": 2,
+          "note": "Recovered from archive-4: the Fannie look beside the enchanted rose.",
+          "asset": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4.mp4",
+          "poster": "Comfy/receipts/scroll-world-lineup-f2/assets/lh-commerce-3-archive-4-poster.webp",
+          "status": "Supplied scene video",
+          "approval_scope": "USER_SUPPLIED_EXISTING_SCENE_FOR_REVIEW_BOARD"
+        }
+      ]
+    },
+    {
+      "collection": "black-rose",
+      "name": "Black Rose",
+      "accent": "#bec9d0",
+      "items": [
+        {
+          "id": "BR-COMMERCE-1",
+          "title": "Crewneck + joggers",
+          "kind": "video",
+          "archive_index": 0,
+          "note": "Recovered from archive-4: the black crewneck/jogger look with the silver rose-star installation.",
+          "asset": "Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4.mp4",
+          "poster": "Comfy/receipts/scroll-world-lineup-f2/assets/br-commerce-1-archive-4-poster.webp",
+          "status": "Supplied scene video",
+          "approval_scope": "USER_SUPPLIED_EXISTING_SCENE_FOR_REVIEW_BOARD"
+        },
+        {
+          "id": "BR-COMMERCE-2",
+          "title": "Waterfront duo",
+          "kind": "image",
+          "status": "Models + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+          "note": "Locked male hoodie-and-shorts look with the female hoodie dress."
+        },
+        {
+          "id": "BR-COMMERCE-3",
+          "title": "Five-jersey lounge",
+          "kind": "image",
+          "status": "Approved scene",
+          "approval_scope": "FOUNDER_APPROVED_PRODUCT_SCENE",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+          "recorded_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+          "evidence": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/manifest.json",
+          "note": "Founder-approved corrected jersey scene, not an earlier candidate."
+        }
+      ]
+    },
+    {
+      "collection": "signature",
+      "name": "Signature",
+      "accent": "#d2b279",
+      "items": [
+        {
+          "id": "SIG-COMMERCE-1",
+          "title": "Sherpa + beanie",
+          "kind": "image",
+          "status": "Model + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+          "note": "Locked Signature C1 selection on the Golden Gate terrace."
+        },
+        {
+          "id": "SIG-COMMERCE-2",
+          "title": "Mint set + hoodie dress",
+          "kind": "image",
+          "status": "Models + environment locked",
+          "approval_scope": "USER_LOCKED_CAST_AND_ENVIRONMENT_NOT_E1_APPROVAL",
+          "asset": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2-1672w.webp",
+          "master": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+          "note": "Corrected C2 styling: the longer hoodie is a dress, with bare legs."
+        },
+        {
+          "id": "SIG-COMMERCE-3",
+          "title": "Golden Gate ensemble",
+          "kind": "image",
+          "status": "New environment edit / review",
+          "approval_scope": "GENERATED_CANDIDATE_NOT_FOUNDER_APPROVED",
+          "asset": "Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1-1672w.webp",
+          "master": "Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1.png",
+          "source": "Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-founder-source.png",
+          "note": "Your three-person ensemble in a Signature hero-inspired environment. Original source available for comparison."
+        }
+      ]
+    }
+  ]
+}

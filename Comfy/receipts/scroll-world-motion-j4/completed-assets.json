@@ -1,0 +1,51 @@
+{
+  "schema": "skyyrose.imported-motion-candidate.v1",
+  "scene_id": "BR-COMMERCE-3",
+  "candidate_id": "BR-COMMERCE-3-MOTION-J1",
+  "provider_job_id": "e35c1d7a-887e-436f-8091-cc93fbd1561f",
+  "source_still": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+  "source_still_sha256": "90aa66aa432bc9176b393dfbb7ce15d507860e47c970650337f78c4b1a480683",
+  "files": [
+    {
+      "name": "br-commerce-3-motion-j1-master.mp4",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_022733_e35c1d7a-887e-436f-8091-cc93fbd1561f.mp4",
+      "kind": "provider_master",
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j4/br-commerce-3-motion-j1-master.mp4",
+      "bytes": 3966850,
+      "sha256": "93a6b6898c29b06b53eb95b1f17d659228d5b8690d83e453c02502eb5db05aab"
+    },
+    {
+      "name": "br-commerce-3-motion-j1-1080p.mp4",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/23ff5003-4465-4c8e-a11f-639b195c3711.mp4",
+      "kind": "desktop",
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j4/br-commerce-3-motion-j1-1080p.mp4",
+      "bytes": 1992486,
+      "sha256": "646dbc2fb9848755f4f27f044530fdca2119a3f196e0a26c04bb0a62656f1169"
+    },
+    {
+      "name": "br-commerce-3-motion-j1-720p.mp4",
+      "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/cb5f834b-75c8-4e50-9998-1525a0f159b8.mp4",
+      "kind": "mobile",
+      "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-motion-j4/br-commerce-3-motion-j1-720p.mp4",
+      "bytes": 848607,
+      "sha256": "cb453fe2fe8bffd204ddafdae80250dd506362d6cf56fde2e707e24b69a2889b"
+    }
+  ],
+  "state": "GENERATED_CANDIDATE_IMPORTED_NOT_ACTIVATED",
+  "motion_visual_approval": false,
+  "local_preview": true,
+  "storefront_video_wiring": false,
+  "deployment_authorized": false,
+  "encoding": {
+    "container": "mp4",
+    "video_codec": "h264",
+    "audio": false,
+    "faststart": true,
+    "resolution_caps": [
+      "1920x1080",
+      "1280x720"
+    ],
+    "source_aspect_ratio_preserved_during_encoding": true
+  },
+  "created_at": "2026-09-05T02:35:01.726Z"
+}

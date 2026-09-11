@@ -1,0 +1,91 @@
+{
+  "schema": "skyyrose.founder-visual-approval.v1",
+  "at": "2026-09-05T01:53:40.524Z",
+  "scope": "Two displayed Signature H1 scene candidates only",
+  "founder_directive_verbatim": "yeah fuck it im tired of going back and forth with you youb seem uncapable of the simple shit im asking so i approve these fuck it lets move on",
+  "approved": [
+    {
+      "scene_id": "SIG-COMMERCE-1",
+      "candidate_id": "SIG-COMMERCE-1-NATURAL-FONT-H1",
+      "title": "Sherpa + SkyyRose font statue",
+      "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png",
+      "master_asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png",
+      "master_sha256": "24d086b221d8fff59cde4f719dc55831b7ac4c8d7b98ebdef07b226c6952d830",
+      "width": 1671,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 51602,
+          "sha256": "4a57103a322389f978dd700826855b14751f999fb89a9d59785318ce3a21989b"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-960w.webp",
+          "width": 960,
+          "height": 541,
+          "bytes": 105458,
+          "sha256": "0a9ba312f489c623ee406b8a3f61209ac975c9f0be5acb1381c7c6789faf597e"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+          "width": 1671,
+          "height": 941,
+          "bytes": 255858,
+          "sha256": "a42deb80c50e5caecc989b2ac43982e4c2aa8e6abb2b91c7c10be1d34bfc9026"
+        }
+      ],
+      "founder_approved": true,
+      "approval_scope": "FOUNDER_APPROVED_VISUAL_AND_EXISTING_LOCAL_V2_WIRING_SCOPE",
+      "founder_approved_at": "2026-09-05T01:53:40.524Z",
+      "founder_directive_verbatim": "yeah fuck it im tired of going back and forth with you youb seem uncapable of the simple shit im asking so i approve these fuck it lets move on",
+      "independent_visual_review": "NOT_RUN",
+      "deployment_authorized": false,
+      "superseded_sources_preserved": true
+    },
+    {
+      "scene_id": "SIG-COMMERCE-2",
+      "candidate_id": "SIG-COMMERCE-2-NATURAL-DRESS-H1",
+      "title": "Mint set + hoodie dress",
+      "master": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png",
+      "master_asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png",
+      "master_sha256": "b085e0ee82401c2e5db71c8a36ab63271d410ad20c29d72fa369a78e4f54ca5c",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 58552,
+          "sha256": "9bcc36a95717008cd9bd009661bccf474e0d867c53046f0db1eaee54b188aa24"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 125368,
+          "sha256": "7a3dadc0def2a056bc723f546354f20270a91a7e657ef0b7d0ffe4526ed38b77"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 310334,
+          "sha256": "df2f79e55c5cff38dbac7efae3cd7258685cd546c4713fa413ec9b6f0640111e"
+        }
+      ],
+      "founder_approved": true,
+      "approval_scope": "FOUNDER_APPROVED_VISUAL_AND_EXISTING_LOCAL_V2_WIRING_SCOPE",
+      "founder_approved_at": "2026-09-05T01:53:40.524Z",
+      "founder_directive_verbatim": "yeah fuck it im tired of going back and forth with you youb seem uncapable of the simple shit im asking so i approve these fuck it lets move on",
+      "independent_visual_review": "NOT_RUN",
+      "deployment_authorized": false,
+      "superseded_sources_preserved": true
+    }
+  ],
+  "source_and_prior_versions_preserved": true,
+  "changes_to_other_scene_approvals": false,
+  "deployment_authorized": false
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "skyyrose.collection-hero-authentic-motion.execution-approval.v1",
+  "approved_at": "2026-09-04T23:50:54.520Z",
+  "user_approval": "approve",
+  "approval_context": "User approved the immediately preceding offer for two eight-second 1080p Seedance 2.5 candidates, 72 Higgsfield credits each and 144 combined, no automatic retries.",
+  "batch_fingerprint_sha256": "fd04550c88409a452cf89f7e1cfcde110eff140af54b85e12850aeb3091fc894",
+  "max_total_credits": 144,
+  "serial_execution": true,
+  "automatic_retry": false,
+  "candidate_only": true,
+  "v2_wiring": false,
+  "deployment": false,
+  "jobs": [
+    {
+      "id": "BLACK-ROSE-HERO-AUTHENTIC-MOTION-V3-A1",
+      "execution_fingerprint_sha256": "71a85c80554dd9d30249fdfe0711741521d3a5b3192a846c9fc6484c3f762fd5",
+      "max_credits": 72
+    },
+    {
+      "id": "LOVE-HURTS-HERO-AUTHENTIC-MOTION-V3-A1",
+      "execution_fingerprint_sha256": "284cfbe6a0e01297b2e404abbb9e3a7fa789f3819271256e659d0ae44490511c",
+      "max_credits": 72
+    }
+  ]
+}

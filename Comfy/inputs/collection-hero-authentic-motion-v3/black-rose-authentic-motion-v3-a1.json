@@ -1,0 +1,90 @@
+{
+  "schema": "skyyrose.collection-hero-authentic-motion.preparation.v1",
+  "prepared_at": "2026-09-04T23:49:30.069Z",
+  "status": "AWAITING_EXPLICIT_SPEND_APPROVAL",
+  "execution_fingerprint_sha256": "71a85c80554dd9d30249fdfe0711741521d3a5b3192a846c9fc6484c3f762fd5",
+  "execution_binding": {
+    "id": "BLACK-ROSE-HERO-AUTHENTIC-MOTION-V3-A1",
+    "provider": "higgsfield",
+    "params": {
+      "model": "seedance_2_5",
+      "mode": "omni_reference",
+      "duration": 8,
+      "resolution": "1080p",
+      "aspect_ratio": "16:9",
+      "generate_audio": false,
+      "bitrate_mode": "high",
+      "count": 1,
+      "use_unlim": false,
+      "prompt": "Create one continuous eight-second luxury campaign hero shot. The supplied still is the sole authority for this collection's scene, composition, lettering, monuments, shapes and colors. Use the supplied Signature video ONLY as a reference for restrained, physically coherent motion and photographic finish; do not import its location, gold palette, lettering or monogram. Keep the camera locked, the exact viewpoint and focal length fixed, and both the opening and closing composition aligned to the still. No cuts or camera zoom. Favor a clean continuous loop with matching lighting and motion at the seam. Animate the actual moonlit Bay Bridge waterfront: small, irregular wind-driven wavelets travel across the bay in perspective, naturally breaking and recombining the existing vertical bridge-light reflections. Foreground wet paving remains paving, with only shallow puddles responding subtly to the breeze. Distant storm clouds drift slowly across the sky, producing restrained, spatially coherent changes in moonlit water highlights. The bridge structure, steady bridge lamps, silver script lettering, plinths and black rose/star sculpture remain rigid and unchanged. Preserve deep charcoal blacks, silver highlights and the original near-monochrome palette. Movement should be immediately perceptible in the water, then reward attention through cloud motion; restrained real cinematography, not decorative effects.\n\nAvoid: No concentric ripple rings, glowing circles, water ripples over dry stone, particle overlays, sparkles, racing or chasing bridge lights, blinking signs, pulsating exposure, swirling storm, exaggerated waves, camera drift, parallax deformation, new objects, altered text, morphing rose sculpture, breathing architecture, rubbery surfaces, gold tint, added people, audible soundtrack or Signature imagery.",
+      "medias": [
+        {
+          "role": "start_image",
+          "value": "38b9044d-3f38-4666-bde4-47c29ad0d59e"
+        },
+        {
+          "role": "end_image",
+          "value": "38b9044d-3f38-4666-bde4-47c29ad0d59e"
+        },
+        {
+          "role": "video",
+          "value": "a0741114-c74d-48b3-9d10-c5734eeed1ac"
+        }
+      ]
+    },
+    "sources": [
+      {
+        "role": "start_and_end_composition_authority",
+        "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/black-rose-bay-bridge-monuments-v4.webp",
+        "sha256": "e5ebd5a0b28043137d2c5a2c99efe99cc63704c2157719793e95f6d7d0fc2ca9",
+        "media_id": "38b9044d-3f38-4666-bde4-47c29ad0d59e"
+      },
+      {
+        "role": "motion_quality_reference_only",
+        "file": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/candidates/signature/web/signature-golden-gate-monuments-motion-v1.mp4",
+        "sha256": "423323ae440372f72b4b0336116e49f42dafec6b39ff58bf08c5973ebcecc8e6",
+        "media_id": "a0741114-c74d-48b3-9d10-c5734eeed1ac",
+        "reuse_location_colors_branding": false
+      }
+    ],
+    "limits": {
+      "max_candidates": 1,
+      "max_submissions": 1,
+      "max_credits": 72,
+      "automatic_retry": false,
+      "stop_on_http_429": true,
+      "reconcile_existing_job_before_any_new_submission": true
+    },
+    "candidate_output": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/video/collection-heroes/candidates/black-rose/black-rose-authentic-motion-v3-a1.mp4",
+    "authority": {
+      "candidate_only": true,
+      "automatic_promotion": false,
+      "v2_wiring": false,
+      "deployment": false
+    }
+  },
+  "positive_prompt": "Create one continuous eight-second luxury campaign hero shot. The supplied still is the sole authority for this collection's scene, composition, lettering, monuments, shapes and colors. Use the supplied Signature video ONLY as a reference for restrained, physically coherent motion and photographic finish; do not import its location, gold palette, lettering or monogram. Keep the camera locked, the exact viewpoint and focal length fixed, and both the opening and closing composition aligned to the still. No cuts or camera zoom. Favor a clean continuous loop with matching lighting and motion at the seam. Animate the actual moonlit Bay Bridge waterfront: small, irregular wind-driven wavelets travel across the bay in perspective, naturally breaking and recombining the existing vertical bridge-light reflections. Foreground wet paving remains paving, with only shallow puddles responding subtly to the breeze. Distant storm clouds drift slowly across the sky, producing restrained, spatially coherent changes in moonlit water highlights. The bridge structure, steady bridge lamps, silver script lettering, plinths and black rose/star sculpture remain rigid and unchanged. Preserve deep charcoal blacks, silver highlights and the original near-monochrome palette. Movement should be immediately perceptible in the water, then reward attention through cloud motion; restrained real cinematography, not decorative effects.",
+  "negative_prompt": "No concentric ripple rings, glowing circles, water ripples over dry stone, particle overlays, sparkles, racing or chasing bridge lights, blinking signs, pulsating exposure, swirling storm, exaggerated waves, camera drift, parallax deformation, new objects, altered text, morphing rose sculpture, breathing architecture, rubbery surfaces, gold tint, added people, audible soundtrack or Signature imagery.",
+  "cost_preflight": {
+    "cost": {
+      "credits": 72,
+      "credits_exact": 72
+    },
+    "adjustments": {
+      "medias[2].role": {
+        "requested": "video",
+        "used": "video_references",
+        "reason": "Seedance 2.5 backend expects schema-key media roles"
+      }
+    }
+  },
+  "source_upload_status": "confirmed",
+  "submitted": false,
+  "review_requirements": [
+    "Compare the complete candidate against the supplied hero source and the Signature motion benchmark.",
+    "Reject lettering, monument, bridge, rose, figure, or architecture deformation.",
+    "Judge material motion, lighting coherence, occlusion, spatial depth, and first/last-frame loop continuity.",
+    "Reject generic screen-space effects, conspicuous ripple rings, petal showers, and frame-wide brightness pulses.",
+    "Retain the original still and current runtime assets until replacement review and wiring authorization."
+  ]
+}

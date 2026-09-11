@@ -1,0 +1,38 @@
+{
+  "schema": "skyyrose.collection-hero-authentic-motion.batch-execution.v1",
+  "completed_at": "2026-09-05T00:02:00.608Z",
+  "approval_fingerprint_sha256": "fd04550c88409a452cf89f7e1cfcde110eff140af54b85e12850aeb3091fc894",
+  "status": "TWO_CANDIDATES_SAVED_BLACK_ROSE_WIRED_LOCALLY",
+  "jobs": [
+    {
+      "id": "BLACK-ROSE-HERO-AUTHENTIC-MOTION-V3-A1",
+      "job_id": "d62996a8-caa3-41bf-ba93-a74591c4a84b",
+      "submissions": 1,
+      "status": "FOUNDER_SELECTED_WIRED_LOCALLY",
+      "sha256": "9a6d885cd74d29686bf14b4e9c12f83b950203f3c8f8287415571232c5813035",
+      "execution_receipt": "black-rose-authentic-motion-v3-a1-execution.json",
+      "wiring_receipt": "black-rose-authentic-motion-v3-a1-wiring.json"
+    },
+    {
+      "id": "LOVE-HURTS-HERO-AUTHENTIC-MOTION-V3-A1",
+      "job_id": "e0435fa2-5d60-4d1f-8f90-00a40a433e49",
+      "submissions": 1,
+      "status": "CANDIDATE_SAVED_PENDING_REVIEW",
+      "sha256": "316084f122ae6033aff10b565e4aadb2a519d53db6fdae0061325cb1f4fad11e",
+      "execution_receipt": "love-hurts-authentic-motion-v3-a1-execution.json",
+      "v2_wiring": false
+    }
+  ],
+  "billing": {
+    "provider": "higgsfield",
+    "estimated_credits_per_job": 72,
+    "authorized_max_total_credits": 144,
+    "balance_before": 1345,
+    "balance_after": 1201,
+    "observed_net_credit_decrease": 144,
+    "per_job_charge_reconciled": false
+  },
+  "automatic_retries": 0,
+  "deployed": false,
+  "browser_playback_tested": false
+}

@@ -1,0 +1,270 @@
+{
+  "items": [
+    {
+      "id": "a15625c3-87ef-49f2-b981-fd6cf73e3fc3",
+      "type": "image",
+      "status": "failed",
+      "model": "seedance_2_5",
+      "params": {
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Cool moonlight at the Bay Bridge waterfront. Gentle moving clouds, fine water ripples, subtle reflected highlights on wet stone. The newly added silver Black Rose wall lettering stays fixed and readable. The male hoodie-and-shorts look and female long hoodie dress remain unchanged.",
+        "aspect_ratio": "auto",
+        "duration": 5,
+        "medias": [
+          {
+            "role": "start_image",
+            "data": {
+              "id": "d0ed1df5-4fb4-48f8-8709-8c0349035e1e",
+              "type": "media_input",
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/d0ed1df5-4fb4-48f8-8709-8c0349035e1e.png"
+            }
+          }
+        ],
+        "width": 1920,
+        "height": 1080,
+        "genre": "auto",
+        "resolution": "1080p",
+        "generate_audio": false,
+        "multi_shots": false,
+        "multi_shot_mode": "custom",
+        "multi_prompt": [],
+        "speedramp": "auto",
+        "reference_elements": [],
+        "prompt_language": "en",
+        "model": "default",
+        "extension_mode": null,
+        "bitrate_mode": "standard"
+      },
+      "createdAt": 1788575253.475755
+    },
+    {
+      "id": "e35c1d7a-887e-436f-8091-cc93fbd1561f",
+      "type": "video",
+      "status": "completed",
+      "model": "seedance_2_5",
+      "params": {
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Five-jersey lounge editorial. Preserve every person, jersey color, number and word exactly, including the approved corrected letter. Quiet lived-in gestures, subtle depth in the existing practical lighting. Do not add a model or turn away and invent unseen garment artwork.",
+        "aspect_ratio": "auto",
+        "duration": 5,
+        "medias": [
+          {
+            "role": "start_image",
+            "data": {
+              "id": "9f547405-af88-491d-8124-e75b78c9c933",
+              "type": "media_input",
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/9f547405-af88-491d-8124-e75b78c9c933.png"
+            }
+          }
+        ],
+        "width": 1920,
+        "height": 1080,
+        "genre": "auto",
+        "resolution": "1080p",
+        "generate_audio": false,
+        "multi_shots": false,
+        "multi_shot_mode": "custom",
+        "multi_prompt": [],
+        "speedramp": "auto",
+        "reference_elements": [],
+        "prompt_language": "en",
+        "model": "default",
+        "extension_mode": null,
+        "bitrate_mode": "standard"
+      },
+      "results": {
+        "rawUrl": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_022733_e35c1d7a-887e-436f-8091-cc93fbd1561f.mp4",
+        "thumbnailUrl": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/9f547405-af88-491d-8124-e75b78c9c933.png"
+      },
+      "createdAt": 1788575253.546907
+    },
+    {
+      "id": "1fbcef2b-6e7b-4c26-b0a6-c610def6fc3a",
+      "type": "image",
+      "status": "failed",
+      "model": "seedance_2_5",
+      "params": {
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Love Hurts gothic rose chamber. Natural candle flicker and drifting low atmosphere with restrained red reflections. Preserve the approved LH-003 shorts graphics, pockets, waistband, and front-view model. Calm editorial weight shift without covering the garment or exposing an invented rear view.",
+        "aspect_ratio": "auto",
+        "duration": 5,
+        "medias": [
+          {
+            "role": "start_image",
+            "data": {
+              "id": "4be308d9-74fa-4f1b-a8a1-898898c0706a",
+              "type": "media_input",
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/4be308d9-74fa-4f1b-a8a1-898898c0706a.png"
+            }
+          }
+        ],
+        "width": 1920,
+        "height": 1080,
+        "genre": "auto",
+        "resolution": "1080p",
+        "generate_audio": false,
+        "multi_shots": false,
+        "multi_shot_mode": "custom",
+        "multi_prompt": [],
+        "speedramp": "auto",
+        "reference_elements": [],
+        "prompt_language": "en",
+        "model": "default",
+        "extension_mode": null,
+        "bitrate_mode": "standard"
+      },
+      "createdAt": 1788575254.189784
+    },
+    {
+      "id": "e949b23f-6ae0-4085-a048-8a1874ce96a8",
+      "type": "image",
+      "status": "failed",
+      "model": "seedance_2_5",
+      "params": {
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Signature Golden Gate golden-hour editorial with the Sherpa and beanie look. Preserve the exact SkyyRose gold font sculpture and existing architecture. Faint breeze and soft moving water reflections; gentle golden rim light, no garment distortion.",
+        "aspect_ratio": "auto",
+        "duration": 5,
+        "medias": [
+          {
+            "role": "start_image",
+            "data": {
+              "id": "3ab11f8b-22f3-418d-9564-9b84c8fec575",
+              "type": "media_input",
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/3ab11f8b-22f3-418d-9564-9b84c8fec575.png"
+            }
+          }
+        ],
+        "width": 1920,
+        "height": 1080,
+        "genre": "auto",
+        "resolution": "1080p",
+        "generate_audio": false,
+        "multi_shots": false,
+        "multi_shot_mode": "custom",
+        "multi_prompt": [],
+        "speedramp": "auto",
+        "reference_elements": [],
+        "prompt_language": "en",
+        "model": "default",
+        "extension_mode": null,
+        "bitrate_mode": "standard"
+      },
+      "createdAt": 1788575253.664049
+    },
+    {
+      "id": "9856340c-6d2f-497c-bea7-fe6dc37eac2b",
+      "type": "image",
+      "status": "failed",
+      "model": "seedance_2_5",
+      "params": {
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Signature mint duo in warm Golden Gate light. Keep the woman in the long hoodie worn AS A DRESS with bare legs, never add trousers or shorten it. The man retains the exact mint crewneck and pants. Grounded restrained natural poses, faint moving fog and water, matching light on both bodies.",
+        "aspect_ratio": "auto",
+        "duration": 5,
+        "medias": [
+          {
+            "role": "start_image",
+            "data": {
+              "id": "27f1a39c-8039-441b-b4e2-16714c47330e",
+              "type": "media_input",
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/27f1a39c-8039-441b-b4e2-16714c47330e.png"
+            }
+          }
+        ],
+        "width": 1920,
+        "height": 1080,
+        "genre": "auto",
+        "resolution": "1080p",
+        "generate_audio": false,
+        "multi_shots": false,
+        "multi_shot_mode": "custom",
+        "multi_prompt": [],
+        "speedramp": "auto",
+        "reference_elements": [],
+        "prompt_language": "en",
+        "model": "default",
+        "extension_mode": null,
+        "bitrate_mode": "standard"
+      },
+      "createdAt": 1788575253.543593
+    },
+    {
+      "id": "66df65cb-dd14-4c56-bc90-3b35a7d41999",
+      "type": "image",
+      "status": "failed",
+      "model": "seedance_2_5",
+      "params": {
+        "prompt": "Create a five-second silent cinematic luxury fashion editorial shot from the supplied locked start image. Keep the exact people, face identities, body proportions, garment lengths, every logo and artwork placement, pockets, seams, zipper construction, jewelry and architecture. No new people, no wardrobe changes, no new text. Match the natural embodied performance and restrained cinematic camera work of the supplied Love Hurts scenes: subtle breathing, a small weight shift and a composed glance, not a still-photo slideshow or artificial cutout parallax. Keep all products readable and all models within frame. One continuous shot, no cuts, no morphing, no exaggerated wind. A very restrained camera move returns smoothly to its starting framing with a matching calm pose by the end for a natural loop; never reverse the footage. Preserve grounded feet, contact shadows and physically consistent reflections. Environmental motion is subtle and scene-specific. Do not animate or deform the sculptural lettering. Three-person Signature five-SKU ensemble on its existing Golden Gate terrace. Left male retains blue-graphic white tee and BLUE WAIST DAYTIME BAY BRIDGE shorts, not Golden Gate artwork. Center woman keeps the complete white pastel windbreaker jacket and pants. Right woman retains purple-graphic white tee and PURPLE WAIST NIGHT GOLDEN GATE shorts. Keep all five products together, exact graphics and three identities. Gentle confident group performance and subtle bay atmosphere.",
+        "aspect_ratio": "auto",
+        "duration": 5,
+        "medias": [
+          {
+            "role": "start_image",
+            "data": {
+              "id": "e94fbce6-95d0-4f02-8119-8b04ce22b55f",
+              "type": "media_input",
+              "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/e94fbce6-95d0-4f02-8119-8b04ce22b55f.png"
+            }
+          }
+        ],
+        "width": 1920,
+        "height": 1080,
+        "genre": "auto",
+        "resolution": "1080p",
+        "generate_audio": false,
+        "multi_shots": false,
+        "multi_shot_mode": "custom",
+        "multi_prompt": [],
+        "speedramp": "auto",
+        "reference_elements": [],
+        "prompt_language": "en",
+        "model": "default",
+        "extension_mode": null,
+        "bitrate_mode": "standard"
+      },
+      "createdAt": 1788575253.542188
+    }
+  ],
+  "jobs": [
+    {
+      "index": 0,
+      "job_id": "a15625c3-87ef-49f2-b981-fd6cf73e3fc3",
+      "status": "failed",
+      "type": "image",
+      "model": "seedance_2_5"
+    },
+    {
+      "index": 1,
+      "job_id": "e35c1d7a-887e-436f-8091-cc93fbd1561f",
+      "status": "completed",
+      "type": "video",
+      "model": "seedance_2_5",
+      "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DDkrlWvZJJ4qh76240TJCxbs7f/hf_20260905_022733_e35c1d7a-887e-436f-8091-cc93fbd1561f.mp4"
+    },
+    {
+      "index": 2,
+      "job_id": "1fbcef2b-6e7b-4c26-b0a6-c610def6fc3a",
+      "status": "failed",
+      "type": "image",
+      "model": "seedance_2_5"
+    },
+    {
+      "index": 3,
+      "job_id": "e949b23f-6ae0-4085-a048-8a1874ce96a8",
+      "status": "failed",
+      "type": "image",
+      "model": "seedance_2_5"
+    },
+    {
+      "index": 4,
+      "job_id": "9856340c-6d2f-497c-bea7-fe6dc37eac2b",
+      "status": "failed",
+      "type": "image",
+      "model": "seedance_2_5"
+    },
+    {
+      "index": 5,
+      "job_id": "66df65cb-dd14-4c56-bc90-3b35a7d41999",
+      "status": "failed",
+      "type": "image",
+      "model": "seedance_2_5"
+    }
+  ],
+  "all_found": true
+}

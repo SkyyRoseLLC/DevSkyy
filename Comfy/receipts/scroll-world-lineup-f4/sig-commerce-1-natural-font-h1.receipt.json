@@ -1,0 +1,64 @@
+{
+  "schema": "skyyrose.signature-natural-integration.v1",
+  "created_at": "2026-09-05T01:51:22.902Z",
+  "scene_id": "SIG-COMMERCE-1",
+  "candidate_id": "SIG-COMMERCE-1-NATURAL-FONT-H1",
+  "user_request": "lets see a more natual 2 scenes to match this.also include the font statue from the hero in oine of those",
+  "references": [
+    "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+    "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1.png",
+    "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/founder-supplied/derived/signature-skyyrose-font-sculpture-protected-v1.png",
+    "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp"
+  ],
+  "reference_roles": [
+    "Locked C1 cast/outfit/environment",
+    "Signature 3 G1 integration benchmark only",
+    "Supplied SkyyRose font sculpture design reference",
+    "Signature collection hero inspiration"
+  ],
+  "requested_changes": [
+    "Natural motivated lighting",
+    "Actual sole contact with a level landing",
+    "Coherent shadow/reflection and optical depth",
+    "Hero-derived SkyyRose script statue on terrace"
+  ],
+  "provider": "builtin-imagegen",
+  "candidate_count": 1,
+  "automatic_retries": 0,
+  "external_paid_provider_calls": 0,
+  "original_generated_path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-a3f82d70-2c55-4ac5-b2fd-022e76681d46.png",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-1-natural-font-h1.png",
+  "master_sha256": "24d086b221d8fff59cde4f719dc55831b7ac4c8d7b98ebdef07b226c6952d830",
+  "master_bytes": 2150593,
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-NATURAL-FONT-H1.png",
+  "variants": [
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-1-natural-font-h1-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 51602,
+      "sha256": "4a57103a322389f978dd700826855b14751f999fb89a9d59785318ce3a21989b"
+    },
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-1-natural-font-h1-960w.webp",
+      "width": 960,
+      "height": 541,
+      "bytes": 105458,
+      "sha256": "0a9ba312f489c623ee406b8a3f61209ac975c9f0be5acb1381c7c6789faf597e"
+    },
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-1-natural-font-h1-1672w.webp",
+      "width": 1671,
+      "height": 941,
+      "bytes": 255858,
+      "sha256": "a42deb80c50e5caecc989b2ac43982e4c2aa8e6abb2b91c7c10be1d34bfc9026"
+    }
+  ],
+  "status": "GENERATED_IMPORTED_NEEDS_VISUAL_REVIEW",
+  "founder_final_visual_approval": false,
+  "independent_review": "NOT_RUN",
+  "exact_product_identity_and_statue_pixel_preservation_certified": false,
+  "preservation_note": "Semantic image editing was guided by locked sources. Exact garment, identity and font-statue preservation has not been independently certified.",
+  "storefront_changed": false,
+  "deployment_authorized": false
+}

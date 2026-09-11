@@ -1,0 +1,12 @@
+{
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "site_id": 256563697,
+  "theme": "skyyrose-flagship-2",
+  "user_requests": [
+    "get all wired and configured and optmized in staging",
+    "all local updates need to be on v2"
+  ],
+  "scope": "Complete local V2 update set and approved runtime media, staging only",
+  "production_authorized": false,
+  "tests_authorized": false
+}

@@ -1,0 +1,11 @@
+{
+  "id": "LOVE-HURTS-HERO-AUTHENTIC-MOTION-V3-A1",
+  "execution_fingerprint_sha256": "284cfbe6a0e01297b2e404abbb9e3a7fa789f3819271256e659d0ae44490511c",
+  "max_credits": 72,
+  "status": "SUBMISSION_RESERVED_NO_REPLAY",
+  "reserved_at": "2026-09-04T23:56:16.845Z",
+  "submission_count_limit": 1,
+  "retry_allowed": false,
+  "job_id": null,
+  "reconciliation_required_after_ambiguous_submission": true
+}
