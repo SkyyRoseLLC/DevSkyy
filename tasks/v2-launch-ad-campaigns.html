@@ -1,0 +1,1587 @@
+<title>House of Roses Launch Pack</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&family=Hanken+Grotesk:wght@400;500;600&family=Anton&display=swap"
+/>
+<style>
+  :root {
+    --ground: #0a0a0a;
+    --surface: #141114;
+    --surface-2: #1c171a;
+    --line: rgba(183, 110, 121, 0.28);
+    --line-soft: rgba(242, 238, 236, 0.1);
+    --text: #f2eeec;
+    --muted: #b3b3b3;
+    --rose: #b76e79;
+    --gold: #d4af37;
+    --silver: #c0c0c0;
+    --crimson: #dc143c;
+    --measure: 68ch;
+    --font-display: 'Archivo', 'Inter', system-ui, sans-serif;
+    --font-body: 'Hanken Grotesk', 'Inter', system-ui, sans-serif;
+    --font-utility: 'Anton', 'Archivo Narrow', Impact, sans-serif;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    background: var(--ground);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 40px 24px 96px;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-variation-settings: 'wdth' 125;
+    line-height: 1.05;
+    text-wrap: balance;
+    margin: 0;
+  }
+  h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 700;
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+  h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-variation-settings: 'wdth' 112;
+    margin-top: 28px;
+  }
+  p {
+    max-width: var(--measure);
+    margin: 12px 0;
+  }
+  p.lede {
+    color: var(--muted);
+    font-size: 1.08rem;
+    max-width: 60ch;
+  }
+  .eyebrow {
+    font-family: var(--font-utility);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin: 0 0 10px;
+  }
+  .tag {
+    display: inline-block;
+    font-family: var(--font-utility);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--muted);
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .tag.live {
+    color: var(--gold);
+    border-color: rgba(212, 175, 55, 0.45);
+  }
+  .tag.repo {
+    color: var(--silver);
+  }
+  .tag.docs {
+    color: var(--rose);
+  }
+  .tag.inferred {
+    color: var(--muted);
+    border-style: dashed;
+  }
+  code {
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.86em;
+    background: var(--surface-2);
+    padding: 1px 5px;
+    border-radius: 2px;
+    color: var(--text);
+  }
+  pre {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    padding: 16px 18px;
+    overflow-x: auto;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    margin: 12px 0 0;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+  }
+  .status {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--line-soft);
+    border: 1px solid var(--line-soft);
+    margin: 32px 0 0;
+  }
+  .status div {
+    background: var(--surface);
+    padding: 14px 16px;
+  }
+  .status .k {
+    font-family: var(--font-utility);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .status .v {
+    font-family: var(--font-display);
+    font-variation-settings: 'wdth' 112;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  .status .v small {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  nav.toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    margin: 28px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  nav.toc a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid transparent;
+  }
+  nav.toc a:hover,
+  nav.toc a:focus-visible {
+    color: var(--rose);
+    border-bottom-color: var(--rose);
+    outline: none;
+  }
+  a {
+    color: var(--rose);
+  }
+  a:focus-visible {
+    outline: 2px solid var(--rose);
+    outline-offset: 2px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    margin: 16px 0;
+    border: 1px solid var(--line-soft);
+  }
+  th,
+  td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line-soft);
+    vertical-align: top;
+  }
+  th {
+    font-family: var(--font-utility);
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: var(--surface);
+  }
+  td.num,
+  th.num {
+    text-align: right;
+  }
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+  tfoot td {
+    font-weight: 600;
+    border-top: 1px solid var(--line);
+  }
+  ul,
+  ol {
+    max-width: var(--measure);
+    padding-left: 1.2em;
+  }
+  li {
+    margin: 6px 0;
+  }
+  li::marker {
+    color: var(--rose);
+  }
+  .concepts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-top: 20px;
+  }
+  .concept {
+    background: var(--surface);
+    border: 1px solid var(--line-soft);
+    padding: 22px 24px 24px;
+  }
+  .concept header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px 16px;
+    border-bottom: 1px solid var(--line-soft);
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+  }
+  .concept header h3 {
+    margin: 0;
+    font-size: 1.35rem;
+  }
+  .swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    vertical-align: -1px;
+    margin-right: 8px;
+  }
+  .concept .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px 20px;
+    margin: 0 0 14px;
+  }
+  .concept .meta div {
+    font-size: 0.9rem;
+  }
+  .concept .meta .k {
+    font-family: var(--font-utility);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .copy {
+    border-left: 2px solid var(--rose);
+    padding: 4px 0 4px 16px;
+    margin: 14px 0;
+  }
+  .copy .headline {
+    font-family: var(--font-display);
+    font-variation-settings: 'wdth' 118;
+    font-weight: 800;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+  .copy .sub {
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .copy .cta {
+    font-family: var(--font-utility);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    margin-top: 8px;
+  }
+  details {
+    margin-top: 10px;
+  }
+  summary {
+    cursor: pointer;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  summary:hover {
+    color: var(--rose);
+  }
+  .cost {
+    font-family: var(--font-utility);
+    font-size: 1.15rem;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+  }
+  .manifest {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    padding: 18px 22px;
+    margin: 16px 0;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.86rem;
+    white-space: pre-wrap;
+  }
+  .warn {
+    border: 1px solid rgba(220, 20, 60, 0.5);
+    background: rgba(220, 20, 60, 0.08);
+    padding: 14px 18px;
+    max-width: 80ch;
+  }
+  .note {
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+  figure {
+    margin: 16px 0;
+  }
+  figcaption {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 6px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    summary {
+      transition: color 0.15s;
+    }
+  }
+</style>
+
+<main>
+  <p class="eyebrow">SkyyRose · V2 theme launch · prototype round 1</p>
+  <h1>House of Roses Launch Pack</h1>
+  <p class="lede">
+    Six ad prototypes for the launch of the V2 storefront — the House with four worlds — built for Higgsfield,
+    garment-locked to verified SkyyRose references, priced to the credit before anything fires. Prototypes are
+    production candidates: each sheet is the finished ad minus the pixels.
+  </p>
+
+  <div class="status">
+    <div>
+      <span class="k">Higgsfield balance</span>
+      <div class="v">
+        1,074 cr
+        <small>Plus · 2026-09-10</small>
+      </div>
+    </div>
+    <div>
+      <span class="k">Round 1 previz</span>
+      <div class="v">
+        3.0 cr
+        <small>6 stills × 0.5</small>
+      </div>
+    </div>
+    <div>
+      <span class="k">Round 2 hero tier</span>
+      <div class="v">
+        ≤ 39 cr
+        <small>chosen stills × 6.5</small>
+      </div>
+    </div>
+    <div>
+      <span class="k">Round 3 motion</span>
+      <div class="v">
+        15.5 cr
+        <small>3 clips → cold cut</small>
+      </div>
+    </div>
+    <div>
+      <span class="k">Spend gate</span>
+      <div class="v">
+        1 : 1 : 1
+        <small>manifest · y · call</small>
+      </div>
+    </div>
+  </div>
+
+  <nav class="toc" aria-label="Sections">
+    <a href="#launching">What we're launching</a>
+    <a href="#locked">Locked constraints</a>
+    <a href="#system">Visual system</a>
+    <a href="#pack">The six sheets</a>
+    <a href="#motion">Motion</a>
+    <a href="#channels">Channel plan</a>
+    <a href="#ledger">Cost ledger</a>
+    <a href="#qc">QC gate</a>
+    <a href="#protocol">Fire protocol &amp; registry</a>
+  </nav>
+
+  <section id="launching">
+    <h2>What we're launching</h2>
+    <p>
+      The V2 theme —
+      <code>SkyyRose Flagship 2</code>
+      v2.4.4
+      <span class="tag repo">repo</span>
+      — is live on staging
+      <span class="tag live">live</span>
+      at
+      <code>staging-7e48-skyyrose.wpcomstaging.com</code>
+      . Eyes-on this session: the House hero (brand name dominant, Bay Bridge monuments, the star-rose statue, Skyy as
+      the "Ask Skyy" house guide), a verified on-model filmstrip, "Enter a world. Claim your story." portals, the Kids
+      Capsule Royal Procession, and the Jersey Series reveal. Each collection has its own world at
+      <code>/collections/{signature,black-rose,love-hurts,kids-capsule}/</code>
+      — Black Rose opens on "Enter after dark. Move from the monument room into a moonlit Oakland court, where every
+      black surface keeps its own light."
+    </p>
+    <p>
+      So the ad sells one idea:
+      <strong>the House is open, and it has doors.</strong>
+      Not a template, not a redesign — four worlds you walk into. The garments are the protagonists inside those worlds;
+      the monogram is the key.
+    </p>
+    <h3>
+      Opening cast
+      <span class="tag repo">repo · catalog CSV</span>
+    </h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Name</th>
+            <th class="num">Price</th>
+            <th>State</th>
+            <th>Ad CTA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>sg-009</td>
+            <td>The Sherpa Jacket (Signature)</td>
+            <td class="num">$—</td>
+            <td>published · not pre-order</td>
+            <td>Shop Signature</td>
+          </tr>
+          <tr>
+            <td>br-004</td>
+            <td>BLACK Rose Hoodie</td>
+            <td class="num">$40</td>
+            <td>published · not pre-order</td>
+            <td>Shop Black Rose</td>
+          </tr>
+          <tr>
+            <td>lh-004</td>
+            <td>Love Hurts Bomber Jacket</td>
+            <td class="num">$265</td>
+            <td>published · not pre-order</td>
+            <td>Shop Love Hurts</td>
+          </tr>
+          <tr>
+            <td>kids-001</td>
+            <td>Kids Colorblock Hoodie Set — Red/Black</td>
+            <td class="num">$65</td>
+            <td>published · not pre-order</td>
+            <td>Shop Kids Capsule</td>
+          </tr>
+          <tr>
+            <td>sg-005</td>
+            <td>The Bridge Series 'The Bay Bridge' Shirt</td>
+            <td class="num">$25</td>
+            <td><strong>Pre-Order</strong></td>
+            <td>Pre-order (never "Shop")</td>
+          </tr>
+          <tr>
+            <td>br-009 / br-012</td>
+            <td>Jersey Series (Last Oakland)</td>
+            <td class="num">$115 / $100</td>
+            <td><strong>Pre-Order</strong></td>
+            <td>Pre-order the Jersey Series</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">
+      sg-009 price not pulled this session; CSV state is
+      <code>is_preorder=false</code>
+      per the V2 presentation registry
+      <span class="tag repo">repo</span>
+      . Live WooCommerce stock/price is
+      <em>unverified</em>
+      — confirm on the product page before any CTA goes to flight.
+    </p>
+  </section>
+
+  <section id="locked">
+    <h2>Locked constraints</h2>
+    <ul>
+      <li>
+        <strong>Brand name over tagline.</strong>
+        "It's about SKYYROSE, not the tagline" (founder, 2026-07-12). No headline reads "Luxury grows from concrete."
+        The house sheet
+        <em>shows</em>
+        the tagline — the monogram grows out of concrete — without printing it.
+      </li>
+      <li>
+        <strong>The Five only.</strong>
+        Kith · Oaklandish · Culture Kings · Fear of God · Palm Angels. Their craft descriptors go in prompts; their
+        names never do. European luxury-house lineage is locked out.
+      </li>
+      <li>
+        <strong>No blue. No navy.</strong>
+        Anywhere. Every prompt carries the negative.
+      </li>
+      <li>
+        <strong>Each collection keeps its own canon.</strong>
+        "Hurts is the bloodline that raised me" is Love Hurts only. Black Rose is armor. Signature is the blueprint.
+        Kids Capsule is inheritance, no pastels, no cartoons.
+      </li>
+      <li>
+        <strong>Garment identity is pixels, not filenames.</strong>
+        Every sheet with a garment embeds a verified Higgsfield Element built from a clean real photo or techflat.
+        Hero-tier renders are QC'd side-by-side against that reference, detail-for-detail (bug-276), full-res only.
+      </li>
+      <li>
+        <strong>CTA follows product state.</strong>
+        Published + in stock → "Shop". Pre-order → "Pre-order". Never a shop CTA on a pre-order SKU.
+      </li>
+      <li>
+        <strong>Muted-first.</strong>
+        70–85% of paid social plays silent. Captions burned in post (Archivo/Anton), center-safe band; every prompt
+        leaves a natural tonally-calm area for them.
+      </li>
+      <li>
+        <strong>Gender-neutral.</strong>
+        No "for him/her", no "men's/women's".
+      </li>
+      <li>
+        <strong>Objective = both</strong>
+        (founder-locked 2026-07-16): a warm brand cut for retargeting and a 9–15s product-forward cold cut with the CTA
+        in the first half.
+      </li>
+      <li>
+        <strong>One manifest → one y → one call.</strong>
+        Founder-mandated 2026-07-18. No batch pre-approval. Every credit below is quoted from
+        <code>get_cost</code>
+        this session
+        <span class="tag docs">docs</span>
+        .
+      </li>
+    </ul>
+  </section>
+
+  <section id="system">
+    <h2>Visual system — fixed across the pack</h2>
+    <p>One system, six hooks. Different doors, same house.</p>
+    <pre><code>[VISUAL SYSTEM — applies across the pack]
+Palette: near-black #0A0A0A grounds; rain-wet concrete and black-marble greys; one metallic accent per world —
+  rose-gold #B76E79 (the House), gold #D4AF37 (Signature), silver #C0C0C0 (Black Rose), crimson #DC143C (Love Hurts).
+Surface / backdrop: wet Oakland concrete, raw aggregate, black marble, port fog. Never a studio sweep.
+Lighting baseline: one hard key or rim against deep shadow — luxury tier. Moonlight for Black Rose, warm predawn
+  gold for Signature, controlled crimson bleed for Love Hurts, rose-gold dusk for Kids Capsule, rose-gold fissure
+  light for the House.
+Composition rule: rule of thirds; subject anchored in a lower or side third; a foreground depth element;
+  one area of natural atmosphere (fog, night sky, blurred marble) kept tonally calm for caption overlay in post —
+  part of the scene, never a flat band.
+Style register: photographic luxury-streetwear editorial; cinematic anamorphic depth; civic-pride grit;
+  monogram as protagonist; disciplined palette with one selective accent; sport DNA under the polish.
+Contrast &amp; saturation: bold tonal range, deep shadows, bright metallic highlights — louder than organic,
+  never neon, never HDR halos.
+Absolutely no blue or navy. No people's faces in round 1.</code></pre>
+    <pre><code>[AVOID — appended to every prompt]
+no blue, no navy, no cyan, no cool-blue grade; no AI artifacts, no warped or smeared text, no fake words baked
+into the image; no plastic or waxy surfaces, no cartoon rendering; no extra limbs or doubled subjects; no
+oversaturated HDR, no HDR halos, no oversharpening; no flat fluorescent lighting, no on-camera flash; no stock
+poses, no cliché compositions; no random logos, no watermarks, no invented marks or embroidery on the garment;
+no warped garment lettering; no stale stock-photo aesthetic, no over-staged cleanliness, no obviously composited
+backgrounds; no flat solid color bands, no empty rectangles, no dull gradient zones; no ornate baroque interior,
+no chandeliers, no fairytale castle, no European luxury-house register; no pastel, no nursery, no toy cues.</code></pre>
+    <h3>
+      Reference Elements
+      <span class="tag live">live · Higgsfield workspace</span>
+    </h3>
+    <p>
+      Account-durable. Embedded in prompts as
+      <code>&lt;&lt;&lt;id&gt;&gt;&gt;</code>
+      ; the backend injects the image. Each garment Element is a clean garment-only reference (real photo or techflat),
+      so the model has no model-body to hallucinate from.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Element</th>
+            <th>ID</th>
+            <th>What it locks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>sr-monogram-rose</td>
+            <td><code>7f6e1df4-c4c9-4b89-83be-20f26e14a8b6</code></td>
+            <td>THE SR monogram, rose-gold, rose bloom on the R tail. Founder-locked 2026-07-16.</td>
+          </tr>
+          <tr>
+            <td>skyy-mascot</td>
+            <td><code>cf20a690-7828-4738-9557-2ef00bc42591</code></td>
+            <td>
+              Canonical Skyy — curly afro, rose-embroidered varsity set, rose sneakers. Identity from canon, never a
+              render (bug-268).
+            </td>
+          </tr>
+          <tr>
+            <td>garment-sg009-sherpa-flat</td>
+            <td><code>528d8f2a-85ec-4b5d-9125-50a0c93b58da</code></td>
+            <td>Signature Sherpa Jacket — black shell, cream sherpa lining, red-rose + grey-leaf chest emblem.</td>
+          </tr>
+          <tr>
+            <td>garment-br004-hoodie-flat</td>
+            <td><code>50345f16-e22a-43fb-9020-a70e42702bf1</code></td>
+            <td>BLACK Rose Hoodie — silver/white rose-and-smoke-cloud emblem centred.</td>
+          </tr>
+          <tr>
+            <td>garment-lh004-bomber-canon</td>
+            <td><code>2d708bf2-7369-477f-908c-bd19fcc17f9e</code></td>
+            <td>
+              Love Hurts Bomber — rose-print white hood, black raglan sleeves, striped rib, chrome-red Love/Hurts split
+              script on white satin.
+            </td>
+          </tr>
+          <tr>
+            <td>garment-kids001-set-flat</td>
+            <td><code>077539a4-4e22-4cb8-bb13-39bd54d16c8a</code></td>
+            <td>
+              Kids Colorblock Set Red/Black — red hood, diagonal colorblock, silver rose emblem + sleeve patch, black
+              joggers.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="pack">
+    <h2>The six sheets</h2>
+    <p>
+      Model
+      <code>gpt_image_2</code>
+      for every still — the house engine for new renders; it takes reference conditioning, renders typography cleanly
+      when we need it, and the previz tier costs half a credit. Round 1 =
+      <code>1k / low</code>
+      for composition and hook approval. Round 2 re-fires the founder's picks at
+      <code>2k / high</code>
+      with the on-model SOT images added as references. Aspect ratios are what
+      <code>gpt_image_2</code>
+      supports: 9:16, 3:4, 1:1, 16:9 (it has no 4:5 — IG feed gets a 3:4 crop to 4:5 in post).
+    </p>
+
+    <div class="concepts">
+      <article class="concept" id="s1">
+        <header>
+          <span class="tag">01</span>
+          <h3>
+            <span class="swatch" style="background: var(--rose)"></span>
+            The House Opens
+          </h3>
+          <span class="tag">bold-statement</span>
+          <span class="tag">9:16 · Reels / Stories / TikTok</span>
+          <span class="cost">0.5 cr</span>
+        </header>
+        <div class="meta">
+          <div>
+            <span class="k">Job</span>
+            Announce the rebrand + the new storefront. Warm cut opener.
+          </div>
+          <div>
+            <span class="k">Reference</span>
+            sr-monogram-rose
+          </div>
+          <div>
+            <span class="k">CTA state</span>
+            House-level → "Enter the house"
+          </div>
+          <div>
+            <span class="k">Hero-tier ref (round 2)</span>
+            same Element; add
+            <code>assets/branding/sr-monogram-rosegold-canonical.png</code>
+          </div>
+        </div>
+        <div class="copy">
+          <div class="headline">The house is open.</div>
+          <div class="sub">Four worlds. One name. Rooted in The Town.</div>
+          <div class="cta">Enter the house → skyyrose.co</div>
+        </div>
+        <details>
+          <summary>Prompt</summary>
+          <pre><code>[VISUAL SYSTEM] (as fixed above)
+
+[HOOK VISUAL]
+&lt;&lt;&lt;7f6e1df4-c4c9-4b89-83be-20f26e14a8b6&gt;&gt;&gt; — this exact rose-gold SR monogram, reproduced detail-for-detail,
+rising out of a fresh crack in rain-wet Oakland concrete at night. The crack radiates from the mark; dust still
+settling; a thin rose-gold light spills up from the fissure and catches the wet aggregate. Far behind, the Bay Bridge
+cable lights glow amber through night fog.
+
+[COMPOSITION]
+Vertical 9:16. Low camera at ground level, slight upward tilt. The monogram anchored on the lower-centre third,
+occupying about 40% of frame width, dimensional and metallic. Cracked concrete fills the foreground as the depth
+element. The upper two-thirds are night fog and dark sky — calm, atmospheric, tonally uniform for caption overlay,
+still reading as sky.
+
+[LIGHTING]
+Single warm rose-gold key from the fissure beneath; cold moonlit rim on the bridge; everything else falls to
+#0A0A0A. Hard specular on the metal, soft bloom in the fog.
+
+[CONTRAST &amp; SATURATION]
+Bold tonal range — deep blacks, bright rose-gold highlights; rich, not neon.
+
+[STYLE]
+Photographic luxury-streetwear editorial, cinematic anamorphic, civic grit, monogram as protagonist.
+Magazine-cover sharp on the metal.
+
+[AVOID] (as fixed above) + no text, no letters, no second logo.</code></pre>
+        </details>
+        <p class="note">
+          Params:
+          <code>{ model:"gpt_image_2", aspect_ratio:"9:16", resolution:"1k", quality:"low", count:1 }</code>
+          → 0.5 cr
+          <span class="tag docs">get_cost</span>
+        </p>
+      </article>
+
+      <article class="concept" id="s2">
+        <header>
+          <span class="tag">02</span>
+          <h3>
+            <span
+              class="swatch"
+              style="background: linear-gradient(90deg, var(--gold), var(--silver), var(--crimson), var(--rose))"
+            ></span>
+            Choose Your World
+          </h3>
+          <span class="tag">curiosity-gap</span>
+          <span class="tag">3:4 · IG feed (crop 4:5)</span>
+          <span class="cost">0.5 cr</span>
+        </header>
+        <div class="meta">
+          <div>
+            <span class="k">Job</span>
+            Sell the V2 structure itself — four doors, four worlds. The feed companion to 01.
+          </div>
+          <div>
+            <span class="k">Reference</span>
+            sr-monogram-rose (keystone)
+          </div>
+          <div>
+            <span class="k">CTA state</span>
+            House-level → "Choose your world"
+          </div>
+          <div>
+            <span class="k">Ties to</span>
+            V2 hero button "Choose your world" + portals section
+          </div>
+        </div>
+        <div class="copy">
+          <div class="headline">Choose your world.</div>
+          <div class="sub">Signature. Black Rose. Love Hurts. Kids Capsule.</div>
+          <div class="cta">Enter → skyyrose.co/collections</div>
+        </div>
+        <details>
+          <summary>Prompt</summary>
+          <pre><code>[VISUAL SYSTEM] (as fixed above)
+
+[HOOK VISUAL]
+Four monumental doorways set into a single black-marble wall of a moonlit open-air Oakland court, wet marble floor
+reflecting each one. Each doorway is lit from inside by one colour only, left to right: warm gold, cold silver,
+deep crimson, rose-gold. Above the centre of the wall, one keystone: &lt;&lt;&lt;7f6e1df4-c4c9-4b89-83be-20f26e14a8b6&gt;&gt;&gt;
+reproduced exactly, in rose-gold metal. Beyond the wall, Oakland port-crane silhouettes and the Bay Bridge
+in night fog.
+
+[COMPOSITION]
+Vertical 3:4. Camera at standing height, centred on the wall so all four doors read at once, doors occupying the
+middle band. Wet-floor reflections as the foreground depth element. The upper quarter is dark night sky with
+fog — calm and tonally uniform for caption overlay, still a sky.
+
+[LIGHTING]
+Each door is its own source; moonlight rims the marble edges; the keystone catches a hard rose-gold specular.
+Shadows fall to #0A0A0A between the doors so the four colours stay separate.
+
+[CONTRAST &amp; SATURATION]
+Bold tonal range; the four accents saturated but metallic, never neon.
+
+[STYLE]
+Photographic luxury-streetwear editorial, cinematic anamorphic, brutalist civic architecture.
+
+[AVOID] (as fixed above) + no text, no letters, no blue light in any doorway.</code></pre>
+        </details>
+        <p class="note">
+          Params:
+          <code>{ model:"gpt_image_2", aspect_ratio:"3:4", resolution:"1k", quality:"low", count:1 }</code>
+          → 0.5 cr
+          <span class="tag docs">get_cost</span>
+        </p>
+      </article>
+
+      <article class="concept" id="s3">
+        <header>
+          <span class="tag">03</span>
+          <h3>
+            <span class="swatch" style="background: var(--silver)"></span>
+            Enter After Dark
+          </h3>
+          <span class="tag">lifestyle-aspiration</span>
+          <span class="tag">9:16 · Reels / Stories / TikTok</span>
+          <span class="cost">0.5 cr</span>
+        </header>
+        <div class="meta">
+          <div>
+            <span class="k">Job</span>
+            Black Rose world + a live garment. Cold-cut lead.
+          </div>
+          <div>
+            <span class="k">Reference</span>
+            garment-br004-hoodie-flat · sr-monogram-rose
+          </div>
+          <div>
+            <span class="k">CTA state</span>
+            br-004 published, $40 → "Shop Black Rose"
+          </div>
+          <div>
+            <span class="k">Hero-tier ref (round 2)</span>
+            upload SOT
+            <code>skyyrose-flagship-2/assets/sot/images/home/on-model/black-rose-br-004.webp</code>
+            (1024×1536, eyes-on verify first)
+          </div>
+        </div>
+        <div class="copy">
+          <div class="headline">You wear it because you already stood up.</div>
+          <div class="sub">Enter after dark.</div>
+          <div class="cta">Shop Black Rose</div>
+        </div>
+        <details>
+          <summary>Prompt</summary>
+          <pre><code>[VISUAL SYSTEM] (as fixed above)
+
+[HOOK VISUAL]
+&lt;&lt;&lt;50345f16-e22a-43fb-9020-a70e42702bf1&gt;&gt;&gt; — this exact black pullover hoodie with its silver-white rose-and-smoke-cloud
+chest emblem, reproduced detail-for-detail with no added marks — presented as the protagonist: hung on a single
+thin silver rod at the centre of a moonlit black-marble Oakland court, hood up, sleeves at rest, fabric weight
+real. Behind it, a monumental black star-rose sculpture on a plinth and a circular moon through the open roof.
+Wet marble floor reflects the emblem.
+
+[COMPOSITION]
+Vertical 9:16. Camera slightly below chest height. The hoodie fills the middle third, emblem sharp and readable;
+the plinth and moon sit in the upper third; the wet floor reflection is the foreground depth element. Keep the
+upper-left fog calm and tonally uniform for caption overlay.
+
+[LIGHTING]
+Cold silver moonlight as the single key from upper right, raking the fabric texture; silver rim on the star-rose;
+everything else to #0A0A0A. Zero warmth, zero blue — monochrome silver on black.
+
+[CONTRAST &amp; SATURATION]
+Maximum figure-ground contrast; silver only on the emblem rims, the rod, and the floor reflection.
+
+[STYLE]
+Photographic luxury-streetwear editorial, gothic restraint, cinematic anamorphic.
+
+[AVOID] (as fixed above) + no model, no mannequin body, no invented embroidery, no text.</code></pre>
+        </details>
+        <p class="note">
+          Params:
+          <code>{ model:"gpt_image_2", aspect_ratio:"9:16", resolution:"1k", quality:"low", count:1 }</code>
+          → 0.5 cr
+          <span class="tag docs">get_cost</span>
+        </p>
+      </article>
+
+      <article class="concept" id="s4">
+        <header>
+          <span class="tag">04</span>
+          <h3>
+            <span class="swatch" style="background: var(--crimson)"></span>
+            Bloodline
+          </h3>
+          <span class="tag">founder-story</span>
+          <span class="tag">3:4 · IG feed (crop 4:5)</span>
+          <span class="cost">0.5 cr</span>
+        </header>
+        <div class="meta">
+          <div>
+            <span class="k">Job</span>
+            Love Hurts world + the bomber. The emotional anchor of the pack.
+          </div>
+          <div>
+            <span class="k">Reference</span>
+            garment-lh004-bomber-canon
+          </div>
+          <div>
+            <span class="k">CTA state</span>
+            lh-004 published, $265 → "Shop Love Hurts"
+          </div>
+          <div>
+            <span class="k">Hero-tier ref (round 2)</span>
+            upload SOT
+            <code>…/on-model/love-hurts-lh-004.webp</code>
+            (eyes-on verify first)
+          </div>
+        </div>
+        <div class="copy">
+          <div class="headline">They called me Beast. They were right.</div>
+          <div class="sub">Hurts is the bloodline that raised me.</div>
+          <div class="cta">Shop Love Hurts</div>
+        </div>
+        <details>
+          <summary>Prompt</summary>
+          <pre><code>[VISUAL SYSTEM] (as fixed above)
+
+[HOOK VISUAL]
+&lt;&lt;&lt;2d708bf2-7369-477f-908c-bd19fcc17f9e&gt;&gt;&gt; — this exact varsity bomber: white satin body, chrome-red "Love" and
+"Hurts" split script exactly as referenced, rose-print white hood, black raglan sleeves, black-and-white striped
+rib — reproduced detail-for-detail. It rests on the black-stone threshold of a ruined Oakland cathedral turned
+fashion salon. Beside it, one crimson rose under a cracked crystal bell jar. Torn oxblood velvet at the edge of
+frame, thorned ironwork in shadow.
+
+[COMPOSITION]
+Vertical 3:4. Bomber anchored lower-left third, script fully legible and undistorted, occupying ~45% of frame
+width; the bell-jar rose lower-right third; the dark vaulted space above is calm, tonally uniform night-shadow for
+caption overlay. Velvet edge as the foreground depth element.
+
+[LIGHTING]
+Cold moonlight through a broken window as the key; a controlled crimson bleed from off-frame left crossing the
+white satin and pooling on wet stone. Shadows to #0A0A0A.
+
+[CONTRAST &amp; SATURATION]
+Crimson saturated but contained to fills and glow; the white satin holds true white.
+
+[STYLE]
+Wounded grandeur without romance cliché; photographic luxury-streetwear editorial; cinematic anamorphic.
+
+[AVOID] (as fixed above) + no Valentine florals, no pink, no purple, no soft-focus romance, no model,
+no invented lettering, no extra roses on the jacket.</code></pre>
+        </details>
+        <p class="note">
+          Params:
+          <code>{ model:"gpt_image_2", aspect_ratio:"3:4", resolution:"1k", quality:"low", count:1 }</code>
+          → 0.5 cr
+          <span class="tag docs">get_cost</span>
+        </p>
+      </article>
+
+      <article class="concept" id="s5">
+        <header>
+          <span class="tag">05</span>
+          <h3>
+            <span class="swatch" style="background: var(--rose)"></span>
+            The Heir
+          </h3>
+          <span class="tag">transformation · legacy</span>
+          <span class="tag">9:16 · Reels / Stories / TikTok</span>
+          <span class="cost">0.5 cr</span>
+        </header>
+        <div class="meta">
+          <div>
+            <span class="k">Job</span>
+            Kids Capsule world with Skyy walking it. The "new chapter" payoff.
+          </div>
+          <div>
+            <span class="k">Reference</span>
+            skyy-mascot · garment-kids001-set-flat
+          </div>
+          <div>
+            <span class="k">CTA state</span>
+            kids-001 published, $65 → "Shop Kids Capsule"
+          </div>
+          <div>
+            <span class="k">Hero-tier ref (round 2)</span>
+            SOT
+            <code>…/on-model/kids-capsule-kids-001.webp</code>
+            +
+            <code>kids-capsule-mascot-red-guard.webp</code>
+          </div>
+        </div>
+        <div class="copy">
+          <div class="headline">Luxury runs in the family.</div>
+          <div class="sub">Her first uniform.</div>
+          <div class="cta">Shop Kids Capsule</div>
+        </div>
+        <details>
+          <summary>Prompt</summary>
+          <pre><code>[VISUAL SYSTEM] (as fixed above)
+
+[HOOK VISUAL]
+&lt;&lt;&lt;cf20a690-7828-4738-9557-2ef00bc42591&gt;&gt;&gt; — Skyy, the canonical SkyyRose mascot, identity held exactly — walking
+toward camera down a dark-premium rose-gold runway inside a black-velvet salon, wearing
+&lt;&lt;&lt;077539a4-4e22-4cb8-bb13-39bd54d16c8a&gt;&gt;&gt; — the exact red/black/white diagonal colorblock hoodie set with its
+silver rose emblem and round sleeve patch, reproduced detail-for-detail. A sculptural rose throne waits at the far
+end under a restrained constellation canopy; Oakland lights through tall windows behind.
+
+[COMPOSITION]
+Vertical 9:16. Skyy full-body in the lower-centre third, mid-stride, unhurried; runway lines converge on the
+throne in the upper third. Rose-gold floor reflection as the foreground depth element. The velvet dark above the
+canopy is calm and tonally uniform for caption overlay.
+
+[LIGHTING]
+Warm rose-gold key from the runway edge-lights; soft gold rim from the windows; black velvet swallows the rest.
+
+[CONTRAST &amp; SATURATION]
+Rose-gold and gold rich and metallic; the red of the hoodie true, not pink.
+
+[STYLE]
+Legacy without sentimentality; scaled down, never dumbed down; photographic luxury editorial with a stylised
+3D-toon protagonist rendered consistently with the reference.
+
+[AVOID] (as fixed above) + no pastel, no cartoon props, no crown, no princess cues, no second child, no text,
+no change to Skyy's face, hair, or proportions.</code></pre>
+        </details>
+        <p class="note">
+          Params:
+          <code>{ model:"gpt_image_2", aspect_ratio:"9:16", resolution:"1k", quality:"low", count:1 }</code>
+          → 0.5 cr
+          <span class="tag docs">get_cost</span>
+          . Identity risk is highest here — this is the sheet most likely to need a second previz.
+        </p>
+      </article>
+
+      <article class="concept" id="s6">
+        <header>
+          <span class="tag">06</span>
+          <h3>
+            <span class="swatch" style="background: var(--gold)"></span>
+            4 AM on the Ledge
+          </h3>
+          <span class="tag">feature-zoom · origin</span>
+          <span class="tag">16:9 · site hero / email / YouTube</span>
+          <span class="cost">0.5 cr</span>
+        </header>
+        <div class="meta">
+          <div>
+            <span class="k">Job</span>
+            Signature — Chapter One — as the wide banner for the launch email and the homepage announcement.
+          </div>
+          <div>
+            <span class="k">Reference</span>
+            garment-sg009-sherpa-flat · sr-monogram-rose
+          </div>
+          <div>
+            <span class="k">CTA state</span>
+            sg-009 published → "Shop Signature"
+          </div>
+          <div>
+            <span class="k">Hero-tier ref (round 2)</span>
+            SOT
+            <code>…/on-model/signature-sg-005.webp</code>
+            only if the CTA moves to sg-005 (pre-order)
+          </div>
+        </div>
+        <div class="copy">
+          <div class="headline">Not basics. Blueprints.</div>
+          <div class="sub">Chapter One. Where it all began.</div>
+          <div class="cta">Shop Signature</div>
+        </div>
+        <details>
+          <summary>Prompt</summary>
+          <pre><code>[VISUAL SYSTEM] (as fixed above)
+
+[HOOK VISUAL]
+An Oakland rooftop concrete parapet at 4 AM. &lt;&lt;&lt;528d8f2a-85ec-4b5d-9125-50a0c93b58da&gt;&gt;&gt; — this exact black shell
+jacket with cream sherpa lining and small red-rose + grey-leaf chest emblem, reproduced detail-for-detail — laid
+open on the raw ledge beside a single metallic gold rose, as if just set down. Beyond the ledge, the Bay Bridge
+cables glow amber in warm predawn haze; a small &lt;&lt;&lt;7f6e1df4-c4c9-4b89-83be-20f26e14a8b6&gt;&gt;&gt; is embossed in the
+concrete corner of the parapet, exact.
+
+[COMPOSITION]
+Wide 16:9 cinematic banner. Jacket and rose on the lower-left third, occupying ~35% of frame width; bridge
+lower-right third; the sky fills the upper two-thirds, grading from deep gold at the horizon to near-black
+overhead — calm and tonally uniform for the launch headline in post. Rough aggregate as the foreground depth
+element. Subject inside the central safe zone so a mobile crop survives.
+
+[LIGHTING]
+Warm predawn gold as a single low key from the horizon; long soft shadow toward camera; dust motes in the haze.
+
+[CONTRAST &amp; SATURATION]
+Warm-golden grade, rich tonal range, gold selective — no silver, no red beyond the emblem.
+
+[STYLE]
+Foundational, quieter than Black Rose; cinematic anamorphic; photographic luxury-streetwear editorial.
+
+[AVOID] (as fixed above) + no model, no text, no blue in the sky, no city other than Oakland.</code></pre>
+        </details>
+        <p class="note">
+          Params:
+          <code>{ model:"gpt_image_2", aspect_ratio:"16:9", resolution:"1k", quality:"low", count:1 }</code>
+          → 0.5 cr
+          <span class="tag docs">get_cost</span>
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="motion">
+    <h2>Motion — round 3, after the stills are chosen</h2>
+    <p>
+      Three clips, one cold cut. The stills become the start frames, so nothing here fires until round 2 is approved and
+      QC'd. All clips silent; sound design and the mascot voice are a separate, later gate (Higgsfield's
+      <code>generate_audio</code>
+      is TTS-only — no SFX).
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Clip</th>
+            <th>Model · params</th>
+            <th>Inputs</th>
+            <th>Use</th>
+            <th class="num">Credits</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>M1 · Monogram rises</td>
+            <td>
+              <code>kling3_0</code>
+              std · 5 s · sound off · 9:16
+            </td>
+            <td>start = concrete plate with the mark flush; end = sheet 01 (risen)</td>
+            <td>Warm cut finale; site loop</td>
+            <td class="num">7.5</td>
+          </tr>
+          <tr>
+            <td>M2 · Enter after dark</td>
+            <td>
+              <code>seedance_2_0_mini</code>
+              480p · 4 s · silent · 9:16
+            </td>
+            <td>start_image = sheet 03; image_references = br-004 flat</td>
+            <td>Cold cut, shot 1</td>
+            <td class="num">4.0</td>
+          </tr>
+          <tr>
+            <td>M3 · Four doors</td>
+            <td>
+              <code>seedance_2_0_mini</code>
+              480p · 4 s · silent · 9:16
+            </td>
+            <td>start_image = sheet 02 (9:16 re-render); push through the rose-gold door</td>
+            <td>Cold cut, shot 2 → CTA</td>
+            <td class="num">4.0</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4">Round 3 total (+ one 0.5 cr plate still for M1's start frame)</td>
+            <td class="num">16.0</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+    <p>
+      Assembly is free:
+      <code>ffmpeg</code>
+      concat → 9–15 s cold cut with burned captions (hook line in the first 2 s, CTA by second 6),
+      <code>-14 LUFS / -1 dBTP</code>
+      when audio lands,
+      <code>libx264 -crf 20 +faststart</code>
+      , then
+      <code>reframe</code>
+      only if a 1:1 or 16:9 cut is actually booked.
+    </p>
+    <p class="note">
+      Prompt discipline from the prior ad research: "single continuous shot, no cuts", name the camera verb, state what
+      it does not do; negatives
+      <code>jump cut, hard cut, strobing</code>
+      . Seedance-mini
+      <strong>must</strong>
+      be passed
+      <code>resolution:"480p"</code>
+      explicitly or it quotes 720p (12.5 cr at 5 s).
+    </p>
+  </section>
+
+  <section id="channels">
+    <h2>Channel plan</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Lane</th>
+            <th>Audience</th>
+            <th>Sheets</th>
+            <th>Formats</th>
+            <th>CTA · landing</th>
+            <th>Judge on</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Warm · brand launch</strong></td>
+            <td>Site visitors (V1 + staging testers), Klaviyo list, IG/TikTok engagers</td>
+            <td>01, 02, then M1</td>
+            <td>9:16 Reels/Stories · 3:4→4:5 feed · 16:9 email (06)</td>
+            <td>
+              "Enter the house" →
+              <code>/</code>
+              ; "Choose your world" →
+              <code>/collections/</code>
+            </td>
+            <td>Recall, CTR to a world, world→product depth</td>
+          </tr>
+          <tr>
+            <td><strong>Cold · prospecting</strong></td>
+            <td>
+              Oakland / East Bay DMA; luxury-streetwear interest stacks (the Five's audiences); lookalikes of buyers
+            </td>
+            <td>03, 04, 05, then M2+M3 cold cut</td>
+            <td>9:16 primary · 1:1 FB / PMax</td>
+            <td>
+              "Shop Black Rose" →
+              <code>/collections/black-rose/</code>
+              etc. (world page, never a bare product grid)
+            </td>
+            <td>CPC, add-to-bag, ROAS</td>
+          </tr>
+          <tr>
+            <td><strong>Owned</strong></td>
+            <td>Klaviyo subscribers; homepage announcement</td>
+            <td>06 + 01</td>
+            <td>16:9 header · 9:16 story share</td>
+            <td>"Shop Signature" / "Enter the house"</td>
+            <td>Open → world visit</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li>
+        <strong>UTM per sheet</strong>
+        :
+        <code>utm_campaign=house-of-roses-launch&amp;utm_content=s01…s06</code>
+        so every world page visit traces to a hook.
+      </li>
+      <li>
+        <strong>Captions</strong>
+        burned for the cold cut and every 9:16 still (Archivo headline, Anton CTA), inside the center-safe band — top
+        ~130 px, bottom ~20%, right ~140 px left clear.
+      </li>
+      <li>
+        <strong>Budget split and daily caps are the founder's numbers</strong>
+        — not set here. Recommended shape only: warm lane fires first (day 0–3) so the cold lane's landing worlds are
+        already primed; cold lane tests 03 vs 04 vs 05 as three ad sets with equal spend for 72 h before shifting.
+      </li>
+      <li>
+        <strong>Pre-order lanes</strong>
+        (Jersey Series, sg-001/005, sg-015, br-006, lh-005) are a second flight after launch week — they need their own
+        sheets with a "Pre-order" CTA and are not in this pack.
+      </li>
+    </ul>
+  </section>
+
+  <section id="ledger">
+    <h2>Cost ledger</h2>
+    <p>
+      Every figure quoted by Higgsfield's
+      <code>get_cost</code>
+      preflight this session (2026-09-10) unless tagged otherwise. Balance before any fire:
+      <strong>1,074 cr</strong>
+      .
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Path</th>
+            <th>Config</th>
+            <th class="num">Credits</th>
+            <th>Verdict</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>gpt_image_2</code></td>
+            <td>1k · low · 9:16 · Element refs</td>
+            <td class="num">0.5</td>
+            <td>Previz tier — round 1</td>
+          </tr>
+          <tr>
+            <td><code>gpt_image_2</code></td>
+            <td>2k · high · 3:4 and 9:16 · Element refs</td>
+            <td class="num">6.5</td>
+            <td>Hero tier — round 2 (both ratios quoted identically)</td>
+          </tr>
+          <tr>
+            <td><code>seedance_2_0_mini</code></td>
+            <td>480p · 4 s · silent · 9:16</td>
+            <td class="num">4.0</td>
+            <td>Motion — M2, M3</td>
+          </tr>
+          <tr>
+            <td><code>seedance_2_0_mini</code></td>
+            <td>720p · 5 s · silent · 9:16</td>
+            <td class="num">12.5</td>
+            <td>Rejected for previz (3× the 480p path)</td>
+          </tr>
+          <tr>
+            <td><code>kling3_0</code></td>
+            <td>std · 5 s · sound off · 9:16 · start/end</td>
+            <td class="num">7.5</td>
+            <td>Motion — M1 (start/end-frame emergence)</td>
+          </tr>
+          <tr>
+            <td><code>marketing_studio_video</code></td>
+            <td>720p · 12 s · audio · 9:16</td>
+            <td class="num">60.0</td>
+            <td>
+              <strong>Rejected</strong>
+              — 8–15× the direct path for a template ad
+            </td>
+          </tr>
+          <tr>
+            <td>Marketing Studio v2 · static "ads" flow</td>
+            <td>fixed, any scenario</td>
+            <td class="num">7.5</td>
+            <td>Rejected — dearer than a 2k/high still and no garment-reference control</td>
+          </tr>
+          <tr>
+            <td>Marketing Studio v2 · product shots</td>
+            <td>general / selected style</td>
+            <td class="num">1.6 / 1.5</td>
+            <td>Possible packshot restyle path later; not for campaign stills</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Round</th>
+            <th>What</th>
+            <th class="num">Credits</th>
+            <th>Gate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 · previz</td>
+            <td>Sheets 01–06 at 1k/low</td>
+            <td class="num">3.0</td>
+            <td>6 manifests, 6 y's</td>
+          </tr>
+          <tr>
+            <td>2 · hero</td>
+            <td>Founder's picks at 2k/high with SOT on-model refs (assume all 6)</td>
+            <td class="num">≤ 39.0</td>
+            <td>1 manifest per still; bug-276 side-by-side QC after each</td>
+          </tr>
+          <tr>
+            <td>3 · motion</td>
+            <td>M1 + M2 + M3 + plate still</td>
+            <td class="num">16.0</td>
+            <td>1 manifest per clip; identity held across the clip</td>
+          </tr>
+          <tr>
+            <td>Re-roll reserve</td>
+            <td>Identity drift on 05, monogram detail on 01</td>
+            <td class="num">≤ 10.0</td>
+            <td>Only on an observed defect, never speculative</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2">Ceiling to a shippable warm cut + cold cut + six stills</td>
+            <td class="num">≈ 68</td>
+            <td>≈ 6% of balance</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <section id="qc">
+    <h2>QC gate — before anything advances a round</h2>
+    <ol>
+      <li>
+        <strong>Full-res only.</strong>
+        Open the PNG the job returns. Never judge from the widget thumbnail or a contact sheet.
+      </li>
+      <li>
+        <strong>Side-by-side against the reference</strong>
+        , detail-for-detail: garment vs its Element source photo; monogram vs
+        <code>assets/branding/sr-monogram-rosegold-canonical.png</code>
+        ; Skyy vs
+        <code>assets/branding/mascot/skyy-canonical-reference.jpeg</code>
+        . "Looks like a plausible Black Rose hoodie" is a fail.
+      </li>
+      <li>
+        <strong>No invented marks</strong>
+        — extra embroidery, extra roses, changed lettering, a second logo — any one fails the render.
+      </li>
+      <li>
+        <strong>No blue.</strong>
+        Sample the shadows; a cool-blue grade fails.
+      </li>
+      <li>
+        <strong>Caption area survives</strong>
+        — the calm region reads as scene, not a band, and the safe zone is clear.
+      </li>
+      <li>
+        <strong>Copy check</strong>
+        — headline is canon-verbatim for its collection; CTA matches product state; no gendered framing; no urgency
+        theatre.
+      </li>
+      <li>
+        A previz that passes composition but fails garment detail still advances to round 2 — that's what the hero tier
+        and the on-model reference are for. A previz that fails composition is re-prompted, not re-rolled.
+      </li>
+    </ol>
+  </section>
+
+  <section id="protocol">
+    <h2>Fire protocol &amp; registry</h2>
+    <p>
+      Each paid call is preceded by its own manifest in this exact shape and waits for a literal
+      <code>y</code>
+      . A
+      <code>y</code>
+      on sheet 01 is not a
+      <code>y</code>
+      on sheet 02. Selecting sheets from this page is not approval to spend.
+    </p>
+    <div class="manifest">
+      STOP — Confirm before proceeding: Action : Higgsfield generate_image (gpt_image_2) Sheet : 01 · The House Opens ·
+      previz Params : aspect_ratio 9:16 · resolution 1k · quality low · count 1 Refs : Element sr-monogram-rose
+      (7f6e1df4-c4c9-4b89-83be-20f26e14a8b6) Cost : 0.5 cr (get_cost quote this session; balance 1,074 → 1,073.5)
+      Proceed? [y/N]
+    </div>
+    <h3>Registry — filled as jobs land</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Sheet</th>
+            <th>Round</th>
+            <th>Job ID</th>
+            <th class="num">Credits</th>
+            <th>QC verdict</th>
+            <th>Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01 · The House Opens</td>
+            <td>1</td>
+            <td>—</td>
+            <td class="num">—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>02 · Choose Your World</td>
+            <td>1</td>
+            <td>—</td>
+            <td class="num">—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>03 · Enter After Dark</td>
+            <td>1</td>
+            <td>—</td>
+            <td class="num">—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>04 · Bloodline</td>
+            <td>1</td>
+            <td>—</td>
+            <td class="num">—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>05 · The Heir</td>
+            <td>1</td>
+            <td>—</td>
+            <td class="num">—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>06 · 4 AM on the Ledge</td>
+            <td>1</td>
+            <td>—</td>
+            <td class="num">—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Sources this pack traces to</h3>
+    <ul>
+      <li>
+        V2 theme:
+        <code>
+          wordpress-theme/skyyrose-flagship-2/{front-page.php,README.md,IMAGE-PROMPTS.md,data/opening-product-media.json,data/product-presentation-registry.json}
+        </code>
+        ; staging eyes-on 2026-09-10.
+      </li>
+      <li>
+        Canon:
+        <code>docs/brand/collection-stories.md</code>
+        ,
+        <code>docs/brand/visual-references.md</code>
+        ,
+        <code>docs/brand/immersive-hero-prompts.md</code>
+        ,
+        <code>knowledge-base/seed/from-interview.md</code>
+        ,
+        <code>knowledge-base/decisions/0001-v2-locked-decisions.md</code>
+        .
+      </li>
+      <li>
+        Catalog:
+        <code>wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv</code>
+        (SOT.md).
+      </li>
+      <li>
+        Prior ad work:
+        <code>tasks/scroll-world-ad-spec.md</code>
+        (git
+        <code>8045ee104</code>
+        , v2 research-driven revisions + founder locks 2026-07-16).
+      </li>
+      <li>
+        Higgsfield:
+        <code>product-photoshoot</code>
+        workflow +
+        <code>references/{ad-creative-pack,hero-banner,typography,negative-prompts}.md</code>
+        ;
+        <code>models_explore</code>
+        for
+        <code>gpt_image_2</code>
+        ,
+        <code>seedance_2_0_mini</code>
+        ,
+        <code>kling3_0</code>
+        ,
+        <code>marketing_studio_video</code>
+        ;
+        <code>marketing_studio_v2_costs</code>
+        ;
+        <code>show_reference_elements</code>
+        . The workflow locks
+        <code>nano_banana_pro</code>
+        ; this pack keeps the house rule (new renders = gpt-image-2) instead.
+      </li>
+    </ul>
+  </section>
+</main>
