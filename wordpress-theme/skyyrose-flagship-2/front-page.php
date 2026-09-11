@@ -14,6 +14,10 @@ $archive_continue = array(
 	__( 'Pre-Order', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'pre-order' ),
 	__( 'Client Services', 'skyyrose-flagship-2' ) => skyyrose2_marketplace_page_url( 'contact' ),
 );
+$archive_lookbook = get_page_by_path( 'lookbook' );
+if ( $archive_lookbook && 'publish' === get_post_status( $archive_lookbook ) ) {
+	$archive_continue[ __( 'Lookbook', 'skyyrose-flagship-2' ) ] = get_permalink( $archive_lookbook );
+}
 get_header();
 ?>
 <main id="primary" class="sr2-archive" tabindex="-1">
@@ -40,7 +44,7 @@ get_header();
 		</div>
 		<button class="sr2-recovery-motion-toggle" type="button" data-recovery-motion-toggle hidden><?php esc_html_e( 'Pause motion', 'skyyrose-flagship-2' ); ?></button>
 		<nav class="sr2-archive-scene__worlds" aria-label="<?php esc_attr_e( 'Opening collection worlds', 'skyyrose-flagship-2' ); ?>">
-			<?php $arrival_index = 0; foreach ( array( 'signature', 'black-rose', 'love-hurts' ) as $arrival_slug ) : ?>
+			<?php $arrival_index = 0; foreach ( array( 'signature', 'black-rose', 'love-hurts', 'kids-capsule' ) as $arrival_slug ) : ?>
 				<a href="<?php echo esc_url( skyyrose2_collection_url( $arrival_slug ) ); ?>"><span aria-hidden="true"><?php echo esc_html( sprintf( '%02d', ++$arrival_index ) ); ?></span><b><?php echo esc_html( $archive_collections[ $arrival_slug ]['name'] ); ?></b></a>
 			<?php endforeach; ?>
 		</nav>
@@ -62,7 +66,21 @@ get_header();
 		<?php else : ?><p class="sr2-archive-empty"><?php esc_html_e( 'This piece is not currently listed. Explore the Signature collection for its current edit.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>
 	</section>
 	<section id="sr2-archive-heir" class="sr2-archive-heir" aria-labelledby="sr2-archive-heir-title" data-archive-act="5" data-collection="kids-capsule">
-		<header class="sr2-archive-heir__heading"><p class="sr2-world-index"><?php esc_html_e( 'V / Kids Capsule', 'skyyrose-flagship-2' ); ?></p><h2 id="sr2-archive-heir-title"><?php esc_html_e( 'The Heir', 'skyyrose-flagship-2' ); ?></h2><p><?php echo esc_html( $archive_collections['kids-capsule']['manifesto'] ); ?></p></header>
+		<div class="sr2-archive-heir__campaign">
+			<figure class="sr2-archive-heir__portrait">
+				<img src="<?php echo esc_url( skyyrose2_sot_asset_uri( $archive_collections['kids-capsule']['hero'] ) ); ?>" srcset="<?php echo esc_url( skyyrose2_sot_asset_uri( $archive_collections['kids-capsule']['hero_mobile'] ) ); ?> 640w, <?php echo esc_url( skyyrose2_sot_asset_uri( $archive_collections['kids-capsule']['hero_tablet'] ) ); ?> 1024w, <?php echo esc_url( skyyrose2_sot_asset_uri( $archive_collections['kids-capsule']['hero'] ) ); ?> 1440w" sizes="(max-width: 47.99em) calc(100vw - 2rem), 58vw" width="1440" height="810" alt="<?php esc_attr_e( 'Skyy on her gold-trimmed throne, beneath The Heir lettering.', 'skyyrose-flagship-2' ); ?>" loading="lazy" decoding="async">
+				<figcaption><span><?php esc_html_e( 'The heir’s room', 'skyyrose-flagship-2' ); ?></span><span><?php esc_html_e( 'Kids Capsule', 'skyyrose-flagship-2' ); ?></span></figcaption>
+			</figure>
+			<header class="sr2-archive-heir__heading">
+				<p class="sr2-world-index"><?php esc_html_e( 'V / Kids Capsule', 'skyyrose-flagship-2' ); ?></p>
+				<h2 id="sr2-archive-heir-title"><?php esc_html_e( 'The Heir', 'skyyrose-flagship-2' ); ?></h2>
+				<p><?php echo esc_html( $archive_collections['kids-capsule']['manifesto'] ); ?></p>
+				<div class="sr2-archive-heir__actions">
+					<a class="sr2-control sr2-control--primary" href="<?php echo esc_url( skyyrose2_immersive_url( 'kids-capsule' ) ); ?>"><?php esc_html_e( 'Explore world', 'skyyrose-flagship-2' ); ?></a>
+					<a class="sr2-control sr2-control--secondary" href="<?php echo esc_url( skyyrose2_collection_url( 'kids-capsule' ) ); ?>"><?php esc_html_e( 'Shop collection', 'skyyrose-flagship-2' ); ?></a>
+				</div>
+			</header>
+		</div>
 		<?php if ( $archive_heirs ) : ?>
 			<?php get_template_part( 'template-parts/collections/product-edit', null, array( 'products' => array_values( $archive_heirs ) ) ); ?>
 		<?php else : ?><p class="sr2-archive-empty"><?php esc_html_e( 'No Kids Capsule pieces are currently listed.', 'skyyrose-flagship-2' ); ?></p><?php endif; ?>

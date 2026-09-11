@@ -39,6 +39,11 @@ def main():
     # Stored ZIP avoids platform-specific compressor bytes; media is precompressed.
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_STORED) as bundle:
         for relative in selected:
+            if any(
+                part in {".DS_Store", "__MACOSX"} or part.startswith("._")
+                for part in Path(relative).parts
+            ):
+                raise ValueError(f"Filesystem metadata is not a runtime asset: {relative}")
             path = THEME / relative
             if path.is_symlink():
                 raise ValueError(f"Symlink not permitted: {relative}")

@@ -2,7 +2,7 @@
   "404.php": "0382056559cca59770f6a97409ab744e3c3d16a23d7483c0b4b2e6ca157112cd",
   "archive.php": "ae5e63ca88b537a35cdcee3e1c2d4cbb20ec65531416688ab90f2fe236439d25",
   "footer.php": "0c5d72a8fb11b72f428f9d475e9cbf204b59cac249386490c16ae7a14f37e297",
-  "front-page.php": "2b821a4954b116887846fdbfca0bfabcf141915b190de809b3a77bb079b07c28",
+  "front-page.php": "3604bf1816e0305fa113613718f4efed0335d677c3f17ce7134492e0e259e0d3",
   "functions.php": "b441fa757cb0d71ceb0016b16f2b9fcd3d26f1b1b1fb950b0f4209f1c8a8a7a1",
   "header.php": "63b7431b0bbe2ceec6f28e4c166bd5912d9f783263dbb7c96a3a2bbe19df5821",
   "home.php": "6eaa11c38f906cb9d39b70a6a955cac168ae62c5fc8c2d0661d0a7bfcd55f5bf",
@@ -62,5 +62,6 @@
   "inc/quick-view-commerce.php": "f4c7357c74935b3b266a923f7e040743e6b2629b737679fe5b4873469725f89c",
   "inc/critical-rendering.php": "37f4729df8a296efd314d9d7fd8e778327c6ee99a4d4d88d2a45632651792c99",
   "inc/frame-delivery.php": "1c54edfc18e8a70b6ed4afcc13a1230887ecc541d7fbbd193cb737249953dd34",
-  "inc/archive-style-bundle.php": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a"
+  "inc/archive-style-bundle.php": "dca48094cf98e19ae099afa4695f078fa7814706a17f6cbeb54c057068d3d16a",
+  "page-lookbook.php": "f466630a9373f9207d4141d69d12cb858ec7d576596d9c7f78040bf5ffc5e1b4"
 }

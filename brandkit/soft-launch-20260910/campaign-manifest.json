@@ -1,0 +1,155 @@
+{
+  "status": "FOUNDER_APPROVED_DIRECTION_PENDING_RELEASE_VALIDATION",
+  "creative_direction_approved": true,
+  "lookbook_existing_motion_approved": true,
+  "approval_text": "yes approve",
+  "date": "2026-09-10",
+  "public_launch_requested": true,
+  "production_published": false,
+  "paid_campaigns_created": false,
+  "spend_authorized": false,
+  "type_roles": {
+    "impact": "Anton 400",
+    "story": "Cinzel 400",
+    "reading": "Hanken Grotesk",
+    "commerce_preserved": "Archivo / native theme"
+  },
+  "assets": [
+    {
+      "path": "assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+      "sha256": "927bf1bf6ea9ea7d7e1baf22311045ab8b51551f9e643faeb88536e477809554",
+      "use": "Existing collection scene; proposed campaign placement requires founder review",
+      "collection": "signature"
+    },
+    {
+      "path": "assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+      "sha256": "ae49e7f146c900891467c511604639eb338ab79d10e210c8813f41acdb96b9bc",
+      "use": "Existing collection scene; proposed campaign placement requires founder review",
+      "collection": "black-rose"
+    },
+    {
+      "path": "assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+      "sha256": "b9362ef7ea80740603abfa0b95e973bd3f0593c9d7af47c8f78392db4c5b2062",
+      "use": "Existing collection scene; proposed campaign placement requires founder review",
+      "collection": "love-hurts"
+    },
+    {
+      "path": "assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+      "sha256": "549a800235f9a50de6e61f1d58b69ca94f2ae7d2c26a09d0711a5a2b6e51ac4c",
+      "use": "Existing collection scene; proposed campaign placement requires founder review",
+      "collection": "kids-capsule"
+    }
+  ],
+  "product_images_scope": "Existing approved-card-front records shown only as lookbook commerce-preview references; no new editorial or ad approval inferred",
+  "campaigns": [
+    {
+      "collection": "signature",
+      "headline": "Signature",
+      "primary_text": "The beginning of the story. Explore Signature from SkyyRose. Four worlds. One house.",
+      "cta": "Discover the collection",
+      "destination_path": "/collections/signature/",
+      "formats": [
+        {
+          "name": "feed",
+          "width": 1080,
+          "height": 1350
+        },
+        {
+          "name": "story",
+          "width": 1080,
+          "height": 1920
+        }
+      ],
+      "utm": {
+        "utm_source": "instagram",
+        "utm_medium": "paid_social",
+        "utm_campaign": "soft_launch_20260910",
+        "utm_content": "signature"
+      },
+      "delivery_status": "DRAFT_NOT_PUBLISHED"
+    },
+    {
+      "collection": "black-rose",
+      "headline": "Black Rose",
+      "primary_text": "Beauty with a backbone. Explore Black Rose from SkyyRose. Four worlds. One house.",
+      "cta": "Discover the collection",
+      "destination_path": "/collections/black-rose/",
+      "formats": [
+        {
+          "name": "feed",
+          "width": 1080,
+          "height": 1350
+        },
+        {
+          "name": "story",
+          "width": 1080,
+          "height": 1920
+        }
+      ],
+      "utm": {
+        "utm_source": "instagram",
+        "utm_medium": "paid_social",
+        "utm_campaign": "soft_launch_20260910",
+        "utm_content": "black-rose"
+      },
+      "delivery_status": "DRAFT_NOT_PUBLISHED"
+    },
+    {
+      "collection": "love-hurts",
+      "headline": "Love Hurts",
+      "primary_text": "Wear the story. Explore Love Hurts from SkyyRose. Four worlds. One house.",
+      "cta": "Discover the collection",
+      "destination_path": "/collections/love-hurts/",
+      "formats": [
+        {
+          "name": "feed",
+          "width": 1080,
+          "height": 1350
+        },
+        {
+          "name": "story",
+          "width": 1080,
+          "height": 1920
+        }
+      ],
+      "utm": {
+        "utm_source": "instagram",
+        "utm_medium": "paid_social",
+        "utm_campaign": "soft_launch_20260910",
+        "utm_content": "love-hurts"
+      },
+      "delivery_status": "DRAFT_NOT_PUBLISHED"
+    },
+    {
+      "collection": "kids-capsule",
+      "headline": "The Heir",
+      "primary_text": "The throne is already hers. Explore The Heir from SkyyRose. Four worlds. One house.",
+      "cta": "Discover the collection",
+      "destination_path": "/collections/kids-capsule/",
+      "formats": [
+        {
+          "name": "feed",
+          "width": 1080,
+          "height": 1350
+        },
+        {
+          "name": "story",
+          "width": 1080,
+          "height": 1920
+        }
+      ],
+      "utm": {
+        "utm_source": "instagram",
+        "utm_medium": "paid_social",
+        "utm_campaign": "soft_launch_20260910",
+        "utm_content": "kids-capsule"
+      },
+      "delivery_status": "DRAFT_NOT_PUBLISHED"
+    }
+  ],
+  "limits": [
+    "Public target identity, final creative approval and live commerce gates remain required",
+    "No price, stock, discount, shipping or scarcity claims added",
+    "Proposed ad use of existing scene artwork requires review; no media was regenerated"
+  ]
+}

@@ -5,26 +5,6 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
-    "CHANGELOG.md": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
-    },
-    "IMAGE-PROMPTS.md": {
-      "category": "CREATIVE AUTHORING TOOLING",
-      "reason": "Internal prompt document",
-      "release": false
-    },
-    "LICENSE.txt": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
-    },
-    "README.md": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
-    },
     "archive.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -205,6 +185,21 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/css/archive-style-inputs.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Exact six-source authority for bounded native archive CSS inlining; originals retained",
+      "release": true
+    },
+    "assets/css/archive-theme.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
+      "release": true
+    },
+    "assets/css/archive-theme.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
+      "release": true
+    },
     "assets/css/collection-scene-motion.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -223,6 +218,16 @@
     "assets/css/collection-world.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Deterministic minified page stylesheet",
+      "release": true
+    },
+    "assets/css/content-page.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
+      "release": true
+    },
+    "assets/css/content-page.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
       "release": true
     },
     "assets/css/controls.css": {
@@ -305,6 +310,16 @@
       "reason": "Deterministic minified page stylesheet",
       "release": true
     },
+    "assets/css/lookbook.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Soft-launch lookbook candidate; native collection/product routing, existing approved media",
+      "release": true
+    },
+    "assets/css/lookbook.min.css": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Soft-launch lookbook candidate; native collection/product routing, existing approved media",
+      "release": true
+    },
     "assets/css/mascot.css": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -383,6 +398,61 @@
     "assets/css/theme.min.css": {
       "category": "GENERATED RUNTIME OUTPUT",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/css/visual-recovery.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/css/visual-recovery.min.css": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/derived/card-frames/black-rose-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/black-rose-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/kids-capsule-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/kids-capsule-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/love-hurts-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/love-hurts-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/manifest.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/signature-360w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
+    "assets/derived/card-frames/signature-384w.webp": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
       "release": true
     },
     "assets/derived/card-fronts/br-001-320w.webp": {
@@ -885,10 +955,20 @@
       "reason": "Responsive delivery copy bound to unchanged accepted card-front hash; not new media approval",
       "release": true
     },
+    "assets/derived/fonts/archivo-normal-width.woff2": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
+    },
     "assets/derived/fonts/inter-fallback-latin.woff2": {
       "category": "GENERATED MEDIA DERIVATIVE",
       "reason": "Derived fallback face without an @font-face consumer; provenance in data/font-fallback.json",
       "release": false
+    },
+    "assets/derived/fonts/manifest.json": {
+      "category": "GENERATED RUNTIME OUTPUT",
+      "reason": "Hash-bound delivery derivative; original source authority retained",
+      "release": true
     },
     "assets/images/about/kids-heir-founder-supplied.png": {
       "category": "RUNTIME MEDIA",
@@ -975,6 +1055,31 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/js/lib/three-r170/BufferGeometryUtils.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/DRACOLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/GLTFLoader.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/LICENSE": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/lib/three-r170/three.module.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
     "assets/js/mascot-loader.js": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -1055,9 +1160,29 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/js/visual-recovery.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
+    "assets/js/visual-recovery.min.js": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
     "assets/models/skyy-mascot.glb": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
+      "release": true
+    },
+    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
       "release": true
     },
     "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png": {
@@ -1340,16 +1465,6 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
-    "assets/sot/fonts/FONT-ATTRIBUTIONS.md": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
-    },
-    "assets/sot/fonts/OFL-1.1.txt": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
-    },
     "assets/sot/fonts/anton-latin.woff2": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -1365,6 +1480,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "assets/sot/fonts/FONT-ATTRIBUTIONS.md": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "assets/sot/fonts/grand-hotel-latin.woff2": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -1377,6 +1497,11 @@
     },
     "assets/sot/fonts/inter-latin.woff2": {
       "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/fonts/OFL-1.1.txt": {
+      "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
@@ -2085,11 +2210,6 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
-    "assets/sot/images/products/replica-v1/SHA256SUMS": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Runtime theme file or preserved asset fallback",
-      "release": true
-    },
     "assets/sot/images/products/replica-v1/br-002/ghost-front.png": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -2221,6 +2341,11 @@
       "release": true
     },
     "assets/sot/images/products/replica-v1/sg-007/ghost-front.png": {
+      "category": "RUNTIME MEDIA",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "assets/sot/images/products/replica-v1/SHA256SUMS": {
       "category": "RUNTIME MEDIA",
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
@@ -2395,9 +2520,19 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "CHANGELOG.md": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "data/approved-card-fronts.json": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "data/approved-scroll-world-scenes.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
       "release": true
     },
     "data/brand-asset-transparency.json": {
@@ -2520,9 +2655,19 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "IMAGE-PROMPTS.md": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal prompt document",
+      "release": false
+    },
     "inc/approved-card-fronts.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/archive-style-bundle.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Guarded archive theme projection and head-only native Core inline allowance with exact input authority and late-change fallback",
       "release": true
     },
     "inc/critical-rendering.php": {
@@ -2533,6 +2678,11 @@
     "inc/demo-import.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
+    "inc/frame-delivery.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Native archive responsive frame delivery and exact source fallback",
       "release": true
     },
     "inc/global-shell.php": {
@@ -2600,6 +2750,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "LICENSE.txt": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
+    },
     "npm-shrinkwrap.json": {
       "category": "BUILD TOOLING",
       "reason": "Source dependency or lint configuration",
@@ -2609,6 +2764,11 @@
       "category": "BUILD TOOLING",
       "reason": "Source dependency or lint configuration",
       "release": false
+    },
+    "page-lookbook.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Soft-launch lookbook candidate; native collection/product routing, existing approved media",
+      "release": true
     },
     "page-wishlist.php": {
       "category": "RUNTIME SOURCE",
@@ -2624,6 +2784,11 @@
       "category": "BUILD TOOLING",
       "reason": "Source dependency or lint configuration",
       "release": false
+    },
+    "README.md": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Runtime theme file or preserved asset fallback",
+      "release": true
     },
     "readme.txt": {
       "category": "RUNTIME SOURCE",
@@ -2905,6 +3070,11 @@
       "reason": "Phase3B reviewed page implementation",
       "release": true
     },
+    "template-parts/collections/scroll-world.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
+      "release": true
+    },
     "template-parts/collections/story.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
@@ -3020,6 +3190,11 @@
       "reason": "Runtime theme file or preserved asset fallback",
       "release": true
     },
+    "woocommerce/notices/error.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Native notice8.6 list markup with preserved escaping/data and valid assertive list semantics.",
+      "release": true
+    },
     "woocommerce/single-product.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Runtime theme file or preserved asset fallback",
@@ -3028,166 +3203,6 @@
     "woocommerce/single-product/product-image.php": {
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
-      "release": true
-    },
-    "data/approved-scroll-world-scenes.json": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/css/visual-recovery.min.css": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/css/visual-recovery.css": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/visual-recovery.min.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/visual-recovery.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/LICENSE": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/GLTFLoader.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/BufferGeometryUtils.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/three.module.min.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/js/lib/three-r170/DRACOLoader.js": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "template-parts/collections/scroll-world.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Approved mandatory visual system or pinned self-hosted dependency",
-      "release": true
-    },
-    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
-      "release": true
-    },
-    "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp": {
-      "category": "RUNTIME MEDIA",
-      "reason": "Hash-bound proportional delivery derivative of approved final BR3 poster",
-      "release": true
-    },
-    "assets/css/content-page.css": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
-      "release": true
-    },
-    "assets/css/content-page.min.css": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Route-scoped existing About, Contact and reservation styles; exact source partition.",
-      "release": true
-    },
-    "woocommerce/notices/error.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Native notice8.6 list markup with preserved escaping/data and valid assertive list semantics.",
-      "release": true
-    },
-    "assets/derived/card-frames/black-rose-384w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/card-frames/kids-capsule-384w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/card-frames/love-hurts-384w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/card-frames/manifest.json": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/card-frames/signature-384w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/fonts/archivo-normal-width.woff2": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/fonts/manifest.json": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "inc/frame-delivery.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Native archive responsive frame delivery and exact source fallback",
-      "release": true
-    },
-    "inc/archive-style-bundle.php": {
-      "category": "RUNTIME SOURCE",
-      "reason": "Guarded archive theme projection and head-only native Core inline allowance with exact input authority and late-change fallback",
-      "release": true
-    },
-    "assets/css/archive-theme.min.css": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
-      "release": true
-    },
-    "assets/css/archive-theme.json": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Native archive projection retaining all shared rules and original full stylesheet; SHA-bound selector classification",
-      "release": true
-    },
-    "assets/css/archive-style-inputs.json": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Exact six-source authority for bounded native archive CSS inlining; originals retained",
-      "release": true
-    },
-    "assets/derived/card-frames/signature-360w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/card-frames/black-rose-360w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/card-frames/love-hurts-360w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
-      "release": true
-    },
-    "assets/derived/card-frames/kids-capsule-360w.webp": {
-      "category": "GENERATED RUNTIME OUTPUT",
-      "reason": "Hash-bound delivery derivative; original source authority retained",
       "release": true
     }
   },

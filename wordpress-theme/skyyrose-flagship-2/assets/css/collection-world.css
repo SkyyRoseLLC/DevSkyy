@@ -57,6 +57,28 @@
 }
 .sr2-world-products--single { grid-template-columns: minmax(0, 1fr); max-width: 420px; margin-inline: auto; }
 
+/* The Heir is a campaign chapter, not a smaller adult collection. Keep its
+ * approved throne visible in full and place every action on a reading plane. */
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-recovery-hero-media > img { height: auto; min-height: 0; aspect-ratio: 16 / 9; object-fit: contain; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic [data-recovery-hero-video] { object-fit: contain; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity { --sr2-color-text: #241e18; --sr2-color-text-muted: #5b5044; --sr2-focus-inner: #f7f3e9; --sr2-focus-outer: #241e18; padding: clamp(2rem, 4vw, 4rem); background: var(--sr2-paper); color: #241e18; text-align: start; border: 0; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 { max-width: none; margin-inline: 0; font-size: clamp(2.6rem, 6vw, 6rem); }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__line { max-width: 32ch; margin-inline: 0; color: #5b5044; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__actions { justify-content: flex-start; max-width: 25rem; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-control--primary { background: #241e18; border-color: #241e18; color: #f7f3e9; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-control--primary:is(:hover, :focus-visible) { background: #54412d; border-color: #54412d; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-world-text-link { color: #241e18; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-section-head { padding-block: 2rem; border-color: #806955; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-section-head h2 { font: 400 clamp(1.75rem, 4vw, 3.5rem)/1.1 var(--sr2-font-caps); letter-spacing: -.04em; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-origin { padding: clamp(2rem, 6vw, 5rem); background: linear-gradient(135deg, #231b13, #0e0d0b); border-block: 1px solid #806955; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-origin h2 { font-family: var(--sr2-font-caps); font-weight: 400; line-height: 1.1; }
+@media (max-width: 47.99em) {
+	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity { padding: 2rem 1.25rem; }
+	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; gap: .75rem; }
+	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-control { min-height: 48px; padding-inline: .5rem; text-align: center; }
+	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-world-text-link { grid-column: 1 / -1; }
+}
+
 /* Black Rose: the moonlit image leads a narrow, lower-set identity. Mobile
  * retains its useful reading order. The source frame is never darkened/cropped. */
 .sr2-collection-world[data-composition="nocturne"] .sr2-world-origin { border-block-color: var(--sr2-border-subtle); }

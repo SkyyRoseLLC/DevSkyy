@@ -221,7 +221,7 @@
     animation: sr2-recovered-type 1.1s both;
   }
   [data-recovery-motion="running"] .sr2-archive-scene__image picture {
-    animation: sr2-recovered-depth 24s ease-in-out infinite alternate;
+    animation: sr2-recovered-depth 1.2s var(--sr2-ease-enter) both;
   }
   [data-recovery-motion="paused"] *,
   [data-recovery-motion="paused"] {
@@ -239,10 +239,10 @@
   }
   @keyframes sr2-recovered-depth {
     from {
-      transform: scale(1);
+      transform: scale(1.025);
     }
     to {
-      transform: scale(1.025);
+      transform: scale(1);
     }
   }
 }
@@ -298,4 +298,10 @@
     background: Canvas;
     text-shadow: none;
   }
+}
+
+/* Keep the authored hero depth movement inside its image frame. */
+.sr2-archive-scene > .sr2-archive-scene__image {
+  overflow: hidden;
+  overflow: clip;
 }

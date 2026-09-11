@@ -105,6 +105,10 @@ the existing enqueue code supports source fallback. Runtime image and video
 delivery files, required fallbacks, PHP/templates, runtime JSON, translations
 and theme/license documentation ship. Creative scripts, build tooling, QA
 contact sheets/metadata and authoring masters do not. They remain in source.
+The packager also rejects AppleDouble (`._*`), `.DS_Store`, and `__MACOSX`
+entries even if accidentally marked for release. These filesystem sidecars
+are not application assets. Theme README/changelog and license documentation
+remain intentional handoff material, not evidence of additional runtime work.
 Workstation paths in historical receipts are preserved as evidence but never
 resolved by the build or shipped in the ZIP.
 
