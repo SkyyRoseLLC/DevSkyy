@@ -191,14 +191,11 @@ for collection in signature black-rose love-hurts kids-capsule; do
 	done
 done
 
-if ! rg -q 'data-card-direction="ornate-frame"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'data-portal-frame=' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'sr2-c-product-portal__statue' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'sr2-c-product-portal__architecture' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'sr2-c-product-portal__reel' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'sr2-c-product-portal__frame-crest' "$THEME_DIR/template-parts/commerce/product-card.php" || \
-	! rg -q 'function skyyrose2_product_view_image_ids' "$THEME_DIR/functions.php"; then
-	echo "FAIL approved ornate product-card frame or verified view reel missing" >&2
+if ! rg -q 'data-card-direction="collection-editorial"' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'sr2-c-editorial-card__product-image' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	! rg -q 'sr2-c-editorial-card__commerce' "$THEME_DIR/template-parts/commerce/product-card.php" || \
+	rg -q 'sr2-c-product-portal__(statue|architecture|reel|frame-crest)' "$THEME_DIR/template-parts/commerce/product-card.php"; then
+	echo "FAIL full-photograph collection card or live commerce missing; decorative overlay forbidden" >&2
 	exit 1
 fi
 

@@ -4,51 +4,59 @@
   "products": {
     "br-001": {
       "collection": "black-rose",
+      "garment_type": "crewneck",
       "is_preorder": false,
       "presentation": "black-rose",
       "route": "/collections/black-rose/"
     },
     "br-002": {
       "collection": "black-rose",
+      "garment_type": "joggers",
       "is_preorder": false,
       "presentation": "black-rose",
       "route": "/collections/black-rose/"
     },
     "br-003": {
       "collection": "black-rose",
-      "film_start": 0,
+      "film_start": 0.0,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "00 / Baseball Classic (Black)",
+      "jersey_chapter": "00 / Baseball Classic",
       "presentation": "jersey-series",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-004": {
       "collection": "black-rose",
+      "garment_type": "hoodie",
       "is_preorder": false,
       "presentation": "black-rose",
       "route": "/collections/black-rose/"
     },
     "br-005": {
       "collection": "black-rose",
+      "garment_type": "hoodie",
       "is_preorder": false,
       "presentation": "black-rose",
       "route": "/collections/black-rose/"
     },
     "br-006": {
       "collection": "black-rose",
+      "garment_type": "jacket",
       "is_preorder": true,
       "presentation": "black-rose",
       "route": "/collections/black-rose/"
     },
     "br-007": {
       "collection": "black-rose",
+      "garment_type": "shorts",
       "is_preorder": false,
       "presentation": "black-rose",
       "route": "/collections/black-rose/"
     },
     "br-008": {
       "collection": "black-rose",
-      "film_start": 3.2,
+      "film_start": 3.1,
+      "garment_type": "jersey",
       "is_preorder": true,
       "jersey_chapter": "01 / SF Inspired",
       "presentation": "jersey-series",
@@ -56,7 +64,8 @@
     },
     "br-009": {
       "collection": "black-rose",
-      "film_start": 6.4,
+      "film_start": 6.2,
+      "garment_type": "jersey",
       "is_preorder": true,
       "jersey_chapter": "02 / Last Oakland",
       "presentation": "jersey-series",
@@ -64,7 +73,8 @@
     },
     "br-010": {
       "collection": "black-rose",
-      "film_start": 9.6,
+      "film_start": 9.3,
+      "garment_type": "jersey",
       "is_preorder": true,
       "jersey_chapter": "03 / The Bay",
       "presentation": "jersey-series",
@@ -72,7 +82,8 @@
     },
     "br-011": {
       "collection": "black-rose",
-      "film_start": 12.8,
+      "film_start": 12.4,
+      "garment_type": "hoodie",
       "is_preorder": true,
       "jersey_chapter": "04 / The Rose",
       "presentation": "jersey-series",
@@ -80,138 +91,160 @@
     },
     "br-012": {
       "collection": "black-rose",
-      "film_start": 6.4,
+      "film_start": 15.5,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "05 / Baseball Classic (Last Oakland)",
+      "jersey_chapter": "05 / Oakland Green",
       "presentation": "jersey-series",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-014": {
       "collection": "black-rose",
-      "film_start": 3.2,
+      "film_start": 18.6,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "00 / Baseball Classic (Giants)",
+      "jersey_chapter": "06 / San Francisco Orange",
       "presentation": "jersey-series",
       "route": "/collections/black-rose/#jersey-series"
     },
     "br-015": {
       "collection": "black-rose",
-      "film_start": 0,
+      "film_start": 21.7,
+      "garment_type": "jersey",
       "is_preorder": true,
-      "jersey_chapter": "00 / Baseball Classic (White)",
+      "jersey_chapter": "07 / Baseball White",
       "presentation": "jersey-series",
       "route": "/collections/black-rose/#jersey-series"
     },
     "kids-001": {
       "collection": "kids-capsule",
+      "garment_type": "hoodie",
       "is_preorder": false,
       "presentation": "kids-capsule",
       "route": "/collections/kids-capsule/"
     },
     "kids-002": {
       "collection": "kids-capsule",
+      "garment_type": "hoodie",
       "is_preorder": false,
       "presentation": "kids-capsule",
       "route": "/collections/kids-capsule/"
     },
     "lh-002": {
       "collection": "love-hurts",
+      "garment_type": "joggers",
       "is_preorder": false,
       "presentation": "love-hurts",
       "route": "/collections/love-hurts/"
     },
     "lh-003": {
       "collection": "love-hurts",
+      "garment_type": "shorts",
       "is_preorder": false,
       "presentation": "love-hurts",
       "route": "/collections/love-hurts/"
     },
     "lh-004": {
       "collection": "love-hurts",
+      "garment_type": "bomber jacket",
       "is_preorder": false,
       "presentation": "love-hurts",
       "route": "/collections/love-hurts/"
     },
     "lh-005": {
       "collection": "love-hurts",
+      "garment_type": "",
       "is_preorder": true,
       "presentation": "love-hurts",
       "route": "/collections/love-hurts/"
     },
     "lh-006": {
       "collection": "love-hurts",
+      "garment_type": "joggers",
       "is_preorder": false,
       "presentation": "love-hurts",
       "route": "/collections/love-hurts/"
     },
     "sg-001": {
       "collection": "signature",
+      "garment_type": "shorts",
       "is_preorder": true,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-002": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": true,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-003": {
       "collection": "signature",
+      "garment_type": "shorts",
       "is_preorder": true,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-005": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": true,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-006": {
       "collection": "signature",
+      "garment_type": "hoodie",
       "is_preorder": false,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-007": {
       "collection": "signature",
+      "garment_type": "",
       "is_preorder": false,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-009": {
       "collection": "signature",
+      "garment_type": "jacket",
       "is_preorder": false,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-011": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": false,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-012": {
       "collection": "signature",
+      "garment_type": "shirt",
       "is_preorder": false,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-013": {
       "collection": "signature",
+      "garment_type": "crewneck",
       "is_preorder": false,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-014": {
       "collection": "signature",
+      "garment_type": "sweatpants",
       "is_preorder": false,
       "presentation": "signature",
       "route": "/collections/signature/"
     },
     "sg-015": {
       "collection": "signature",
+      "garment_type": "set",
       "is_preorder": true,
       "presentation": "signature",
       "route": "/collections/signature/"

@@ -1,12 +1,47 @@
 {
   "_meta": {
     "source": "founder review board annotations, 2026-06-09 (renders/oai/_review/review-state.json)",
-    "authorship": "every correction line is the founder's verbatim comment; [view] prefix added mechanically",
+    "authorship": "Legacy non-jersey review notes retain their original wording. Jersey entries are consolidated specifications recovered from founder instructions and official references, adopted by the founder as the sole jersey edits reference in task 01a06ef1-3e18-7013-9cf1-1f018cf094d9.",
     "consumed_by": "scripts/oai_render/prompt.py — injected as FOUNDER CORRECTIONS block",
     "excluded_skus_note": "sg-006/sg-014 corrections intentionally omitted: their 2026-06-09 flags were wholesale wrong-product (bug-119 dossier contamination), not zone-level fixes. Dossiers re-authored 2026-06-10 from the real mint garments; both SKUs render again.",
     "notes": [
       "2026-06-12: added two-rose/anti-peony cluster constraint (+chest-scale on br-001/004/006) per Fable vision test — gpt-image-2 was drifting the cluster to a single peony and oversizing it."
-    ]
+    ],
+    "jersey_edits_authority": {
+      "status": "SOLE_FOUNDER_APPROVED_JERSEY_EDITS_REFERENCE",
+      "skus": [
+        "br-003",
+        "br-008",
+        "br-009",
+        "br-010",
+        "br-011",
+        "br-012",
+        "br-014",
+        "br-015"
+      ],
+      "scope": "Jersey design edits for rendering and review only; non-jersey edits unaffected.",
+      "authority_path": "wordpress-theme/skyyrose-flagship/data/render-corrections.json",
+      "decision": "User: make sure this is the only edits reference; for jerseys.",
+      "supersedes": "All earlier jersey edit briefs, correction lists and conflicting catalog/dossier edit descriptions. Historical messages and recovery evidence are provenance only, not additional edit inputs.",
+      "consumption": "For a listed jersey SKU, use only corrections[sku] from this file for edits. Official imagery remains visual product evidence; do not import superseded edits from it. Re-read this source before generating, reviewing or deploying jersey imagery.",
+      "derived_views": "Approval chart and jersey-rerender-briefs.md are read-only derived views, never independent edit authorities.",
+      "latest_front_reference": {
+        "sku": "br-003",
+        "path": "/Users/theceo/Desktop/products/jersey-white-front-techflat.jpg",
+        "sha256": "3482f5c2860f8e9f1a86cfa47b59b0cf26fc81b5a0a39b830c667481defc3636",
+        "observed_correction": "Black buttons per latest founder-supplied front techflat; filename does not denote garment color."
+      },
+      "baseball_lettering_size_reference": {
+        "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/jersey-front-renders-20260905/baseball-lettering-size-founder-reference.jpeg",
+        "sha256": "bba503d02e95f667bab5368ead8af5c578ccef7bcd93198baac1c4ffaacf4ac3",
+        "scope": "BR003/012/014/015 front lettering size and arch only"
+      },
+      "football_number_size_reference": {
+        "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/jersey-front-renders-20260905/br-008-front-a1.png",
+        "sha256": "55dafde852d2a24d52b3fec335671a97dc3fc1a412fee3aaff27c30f9d200ebb",
+        "scope": "Number sizing only for BR-008 and BR-009 front and back. Supersedes BR-009 front A3 sizing reference; not whole-image approval."
+      }
+    }
   },
   "corrections": {
     "br-005": [
@@ -37,18 +72,20 @@
       "[ghost] missing logo and not rendered looks more like a tech flat"
     ],
     "br-009": [
-      "[ghost-back] rose logo only goes in the 2 in back",
-      "[ghost] rose logo only goes in the 3 infront",
-      "[on-model] fix rose logo only goes in the 3"
+      "[on-model] White football jersey. FRONT 32: tonal grayscale rose artwork ONLY inside the 3; the 2 is plain white. Black V-neck band and black/white sleeve treatment. Add NFL Authentic Collection patch at wearer-left lower front: 3 inches wide × 4 inches high, visually consistent across the Jersey Series.",
+      "[ghost-back] BACK 32: tonal grayscale rose artwork ONLY inside the 2; the 3 is plain white.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge.",
+      "[all views] Founder-selected BR-008 front A1 is the sole football number-size standard, superseding BR-009 front A3. Match numeral height and combined width proportionally to the torso across BR-008 and BR-009 fronts and backs. Change sizing ONLY. Preserve digit identity, existing rose artwork and its assigned digit, letterforms, colors, outlines, stitch treatment, back wording, sleeves, trim, patches, garment, model and background. BR-008 front A1 already defines the standard and needs no resize."
     ],
     "br-008": [
-      "[ghost-back] rose logo only goes in the 0 in back",
-      "[ghost] rose only goes in the 8 in front",
-      "[on-model] fix logo inside numbers"
+      "[on-model] Red football jersey. FRONT 80: tonal grayscale rose artwork ONLY inside the 8; the 0 is plain white with a black athletic outline. Three white horizontal sleeve cuff stripes with black border stripes. NFL Authentic Collection patch at wearer-left lower front: 3 inches wide × 4 inches high, visually consistent across the Jersey Series.",
+      "[ghost-back] BACK 80: tonal grayscale rose artwork ONLY inside the 0; the 8 is plain white. BLACK IS BEAUTIFUL is black with a white border. Same black-bordered white sleeve stripes.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge.",
+      "[all views] Founder-selected BR-008 front A1 is the sole football number-size standard, superseding BR-009 front A3. Match numeral height and combined width proportionally to the torso across BR-008 and BR-009 fronts and backs. Change sizing ONLY. Preserve digit identity, existing rose artwork and its assigned digit, letterforms, colors, outlines, stitch treatment, back wording, sleeves, trim, patches, garment, model and background. BR-008 front A1 already defines the standard and needs no resize."
     ],
     "br-011": [
-      "[ghost-back] adjust hood",
-      "[ghost] adjust hood"
+      "[on-model] Black hockey pullover hoodie with teal hood lining. Front circular teal/white rose medallion, white shoulder emblems, small black/white collar shield, lower wearer-left Hockey Championship patch and layered black/teal/white cuffs and hem. Zero belongs on BACK only. Patch: 3 inches wide × 4 inches high, visually consistent across the series.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge."
     ],
     "kids-002": [
       "[ghost-back] not rendered to look 3d extra logos were added",
@@ -89,6 +126,30 @@
     "br-006": [
       "[ghost] The Black Rose rose-cluster logo is a cluster of MULTIPLE separate roses — one dominant upright rose plus a smaller rose or bud offset to the side, on a single cumulus cloud at the base. It is NOT a single large bloom and NOT a peony. Keep the roses as distinct flowers; do not merge them into one.",
       "[ghost] Render the rose logo at the size and position shown in the real product photo and tech flat — do NOT enlarge it to fill or dominate the chest."
+    ],
+    "br-003": [
+      "[on-model] Black baseball jersey; white piping and white BLACK IS BEAUTIFUL tackle-twill lettering without contrasting stitch edges; black buttons; lower wearer-left authenticity patch; no numbers or pinstripes. Front lettering must cover 75–80% of the front with consistent typography across all baseball colorways. Patch: 3 inches wide × 4 inches high, visually consistent across the series.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge.",
+      "[on-model] Founder lettering-size reference: match the front BLACK IS BEAUTIFUL lettering width, letter height and arch to baseball-lettering-size-founder-reference.jpeg (original 48A8C6EC-B96D-4CA0-89BA-CD17F60F5945.jpeg). Size letters relative to the garment front, excluding sleeves; source photograph wins over prior numeric size estimates. Apply the same proportions across all four baseball colorways. Preserve each SKU letter colors, stitched edges, construction and patch; this photo is lettering-size authority only, not a color or trim replacement."
+    ],
+    "br-010": [
+      "[on-model] Official basketball SOT: white sleeveless tank with shallow V-neck and THE BAY above the circular rose medallion. Grayscale rose composition rises from hem. Preserve reference artwork, yellow/gold lettering treatment and lower wearer-left patch, 3 inches wide × 4 inches high.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge."
+    ],
+    "br-012": [
+      "[on-model] Forest-green baseball jersey with gold piping. WHITE letter faces except the A in BLACK has a BLACK face. GOLD satin stitch edge around EVERY letter, including the black A. Lower wearer-left authenticity patch. Front lettering must cover 75–80% of the front with consistent typography across all baseball colorways. Patch: 3 inches wide × 4 inches high, visually consistent across the series.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge.",
+      "[on-model] Founder lettering-size reference: match the front BLACK IS BEAUTIFUL lettering width, letter height and arch to baseball-lettering-size-founder-reference.jpeg (original 48A8C6EC-B96D-4CA0-89BA-CD17F60F5945.jpeg). Size letters relative to the garment front, excluding sleeves; source photograph wins over prior numeric size estimates. Apply the same proportions across all four baseball colorways. Preserve each SKU letter colors, stitched edges, construction and patch; this photo is lettering-size authority only, not a color or trim replacement."
+    ],
+    "br-014": [
+      "[on-model] Black baseball jersey with orange piping and orange BLACK IS BEAUTIFUL tackle-twill lettering, black buttons, no contrasting letter stitching, no numbers or pinstripes; lower wearer-left authenticity patch. Front lettering must cover 75–80% of the front with consistent typography across all baseball colorways. Patch: 3 inches wide × 4 inches high, visually consistent across the series.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge.",
+      "[on-model] Founder lettering-size reference: match the front BLACK IS BEAUTIFUL lettering width, letter height and arch to baseball-lettering-size-founder-reference.jpeg (original 48A8C6EC-B96D-4CA0-89BA-CD17F60F5945.jpeg). Size letters relative to the garment front, excluding sleeves; source photograph wins over prior numeric size estimates. Apply the same proportions across all four baseball colorways. Preserve each SKU letter colors, stitched edges, construction and patch; this photo is lettering-size authority only, not a color or trim replacement."
+    ],
+    "br-015": [
+      "[on-model] White baseball jersey with black piping/buttons and black BLACK IS BEAUTIFUL tackle-twill lettering, no contrasting letter stitching, no numbers or pinstripes; lower wearer-left authenticity patch. Front lettering must cover 75–80% of the front with consistent typography across all baseball colorways. Patch: 3 inches wide × 4 inches high, visually consistent across the series.",
+      "[on-model] Founder finish correction: front jersey lettering and athletic numerals must look like sewn tackle-twill fabric applique: raised textile letter faces, visible neatly stitched edges, realistic woven texture and subtle contact shadows. Preserve approved typography, color, scale and placement; no flat screen-print or rubber/vinyl lettering. Stitch thread is tonal unless a contrasting edge is explicitly approved; BR-012 retains its gold edge.",
+      "[on-model] Founder lettering-size reference: match the front BLACK IS BEAUTIFUL lettering width, letter height and arch to baseball-lettering-size-founder-reference.jpeg (original 48A8C6EC-B96D-4CA0-89BA-CD17F60F5945.jpeg). Size letters relative to the garment front, excluding sleeves; source photograph wins over prior numeric size estimates. Apply the same proportions across all four baseball colorways. Preserve each SKU letter colors, stitched edges, construction and patch; this photo is lettering-size authority only, not a color or trim replacement."
     ]
   }
 }

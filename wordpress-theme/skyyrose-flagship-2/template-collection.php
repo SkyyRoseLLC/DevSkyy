@@ -68,12 +68,17 @@ get_header();
 				<?php foreach ( $collection['world'] as $index => $scene ) : ?>
 					<?php $scene_uri = skyyrose2_collection_scene_uri( $scene ); ?>
 					<?php $scene_product = skyyrose2_collection_scene_product( $slug, $index ); ?>
+					<?php $scene_front = skyyrose2_approved_card_front( $scene_product ); ?>
 					<article class="sr2-world">
 						<img src="<?php echo esc_url( $scene_uri ); ?>" alt="" width="1920" height="1080" loading="lazy" decoding="async">
 						<div class="sr2-world__shade" aria-hidden="true"></div>
-						<?php if ( $scene_product && $scene_product->get_image_id() ) : ?>
+						<?php if ( $scene_product && ( $scene_front || $scene_product->get_image_id() ) ) : ?>
 							<a class="sr2-world__product" href="<?php echo esc_url( $scene_product->get_permalink() ); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Shop %s from the %s collection', 'skyyrose-flagship-2' ), $scene_product->get_name(), $collection['name'] ) ); ?>">
-								<?php echo wp_kses_post( wp_get_attachment_image( $scene_product->get_image_id(), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-world__product-image', 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?>
+								<?php if ( $scene_front ) : ?>
+									<img class="sr2-world__product-image" src="<?php echo esc_url( $scene_front['src'] ); ?>" alt="<?php echo esc_attr( $scene_front['alt'] ); ?>" width="<?php echo esc_attr( (string) $scene_front['width'] ); ?>" height="<?php echo esc_attr( (string) $scene_front['height'] ); ?>" loading="lazy" decoding="async">
+								<?php else : ?>
+									<?php echo wp_kses_post( wp_get_attachment_image( $scene_product->get_image_id(), 'woocommerce_thumbnail', false, array( 'class' => 'sr2-world__product-image', 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?>
+								<?php endif; ?>
 								<span class="sr2-world__product-copy"><small><?php esc_html_e( 'Piece in this world', 'skyyrose-flagship-2' ); ?></small><strong><?php echo esc_html( $scene_product->get_name() ); ?></strong><em><?php esc_html_e( 'View product proof', 'skyyrose-flagship-2' ); ?> ↗</em></span>
 							</a>
 						<?php endif; ?>

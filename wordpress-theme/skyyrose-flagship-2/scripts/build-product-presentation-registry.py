@@ -17,16 +17,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[3]
 CATALOG = ROOT / "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
 OUTPUT = Path(__file__).resolve().parents[1] / "data/product-presentation-registry.json"
-JERSEY_CHAPTERS = {
-    "br-003": ("00 / Baseball Classic (Black)", 0),
-    "br-008": ("01 / SF Inspired", 3.2),
-    "br-009": ("02 / Last Oakland", 6.4),
-    "br-010": ("03 / The Bay", 9.6),
-    "br-011": ("04 / The Rose", 12.8),
-    "br-012": ("05 / Baseball Classic (Last Oakland)", 6.4),
-    "br-014": ("00 / Baseball Classic (Giants)", 3.2),
-    "br-015": ("00 / Baseball Classic (White)", 0),
-}
+FILM_CHAPTERS = Path(__file__).resolve().parents[1] / "data/jersey-film-chapters.json"
+
+
+def load_jersey_chapters() -> dict[str, tuple[str, float]]:
+    chapters = json.loads(FILM_CHAPTERS.read_text(encoding="utf-8"))["chapters"]
+    result: dict[str, tuple[str, float]] = {}
+    last_start = -1.0
+    for index, chapter in enumerate(chapters):
+        sku = chapter["sku"]
+        start = float(chapter["start"])
+        if sku in result or start <= last_start:
+            raise ValueError("Duplicate jersey or non-increasing film chapter start")
+        result[sku] = (f"{index:02d} / {chapter['title']}", start)
+        last_start = start
+    if len(result) != 8:
+        raise ValueError("Jersey film must contain all eight jerseys")
+    return result
+
+
+JERSEY_CHAPTERS = load_jersey_chapters()
+
 ALLOWED_COLLECTIONS = {"black-rose", "kids-capsule", "love-hurts", "signature"}
 
 
@@ -43,6 +54,7 @@ def build_registry() -> dict[str, object]:
             presentation = "jersey-series" if sku in JERSEY_CHAPTERS else collection
             record: dict[str, object] = {
                 "collection": collection,
+                "garment_type": row.get("garment_type_lock", "").strip().lower(),
                 "presentation": presentation,
                 # Jersey Series is a dedicated Black Rose release chapter, not
                 # a fifth collection route. Keep its visual presentation

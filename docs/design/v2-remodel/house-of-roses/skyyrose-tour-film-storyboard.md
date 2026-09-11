@@ -11,8 +11,8 @@ story, a station recreation, a map, a logo, a livery treatment, or a claim of
 partnership. The train is house language for carrying every number home.
 
 The server-rendered poster, title, transcript, SKU chapter links, and CTA are
-the experience. The 16-second silent video is optional progressive enhancement
-and is explicitly labelled `LOCAL REVIEW PREVISUALIZATION`.
+the experience. The 25.3-second silent video is optional progressive enhancement
+and presents all eight Jersey Series fronts.
 
 ## Local artifact
 
@@ -20,7 +20,7 @@ and is explicitly labelled `LOCAL REVIEW PREVISUALIZATION`.
 - MP4: `assets/video/skyyrose-tour-around-the-bay.mp4`
 - WebM: `assets/video/skyyrose-tour-around-the-bay.webm`
 - Poster: `assets/video/skyyrose-tour-around-the-bay-poster.webp`
-- Encoding: 1920×1080, H.264/yuv420p, 30fps, 16 seconds, silent.
+- Encoding: 1920×1080, H.264/yuv420p, 30fps, 25.3 seconds, silent.
 
 The builder composes the founder-selected reference and existing local
 on-model review media only. It makes no provider, cloud, stock-media, music,
@@ -46,3 +46,7 @@ closed; no Black Rose hoodie, generic garment, or invented jersey may stand in.
 
 Until then, the runtime remains poster/storyboard mode and must never imply a
 finished film, cleared transit relationship, or product-media approval.
+
+## 2026-09-05 front-card update
+
+All eight shots now consume the same `assets/approved-card-fronts/` images as V2 product cards. Chapter timing comes from `data/jersey-film-chapters.json`, consumed by the presentation-registry builder. The current local release packet lives at `.artifacts/front-card-release-20260905/`; it records 33 front mappings, source hashes, eight encoded chapter frames, browser checks, and independent review. Remote V2 deployment remains pending identification of its destination; the connected live site runs V1.

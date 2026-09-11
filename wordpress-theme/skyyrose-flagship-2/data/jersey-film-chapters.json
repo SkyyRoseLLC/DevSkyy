@@ -1,0 +1,44 @@
+{
+  "chapters": [
+    {
+      "sku": "br-003",
+      "title": "Baseball Classic",
+      "start": 0.0
+    },
+    {
+      "sku": "br-008",
+      "title": "SF Inspired",
+      "start": 3.1
+    },
+    {
+      "sku": "br-009",
+      "title": "Last Oakland",
+      "start": 6.2
+    },
+    {
+      "sku": "br-010",
+      "title": "The Bay",
+      "start": 9.3
+    },
+    {
+      "sku": "br-011",
+      "title": "The Rose",
+      "start": 12.4
+    },
+    {
+      "sku": "br-012",
+      "title": "Oakland Green",
+      "start": 15.5
+    },
+    {
+      "sku": "br-014",
+      "title": "San Francisco Orange",
+      "start": 18.6
+    },
+    {
+      "sku": "br-015",
+      "title": "Baseball White",
+      "start": 21.7
+    }
+  ]
+}

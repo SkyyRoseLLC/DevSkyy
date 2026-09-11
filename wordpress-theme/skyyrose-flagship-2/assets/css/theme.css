@@ -1773,3 +1773,68 @@ html:not(.sr2-motion-ready) .sr-kids-procession__controls { display: none; }
 	.sr2-pdp-product--portal .product_title { font-size: clamp(2.2rem, 14vw, 4.3rem) !important; }
 	.sr2-pdp-product__after-summary { padding: var(--sr2-space-7) var(--sr2-space-4) var(--sr2-space-4); }
 }
+
+/* Collection editorial cards: the photograph is the complete visual scene. */
+.sr2-c-editorial-card { --sr2-card-accent: var(--sr2-rose); display: flex; flex-direction: column; min-width: 0; height: 100%; border: 1px solid var(--sr2-line); background: var(--sr2-card); color: var(--sr2-ink); }
+.sr2-c-editorial-card[data-presentation="signature"] { --sr2-card-accent: var(--sr2-gold); }
+.sr2-c-editorial-card[data-presentation="black-rose"], .sr2-c-editorial-card[data-presentation="jersey-series"] { --sr2-card-accent: var(--sr2-silver); }
+.sr2-c-editorial-card[data-presentation="love-hurts"] { --sr2-card-accent: var(--sr2-crimson); }
+.sr2-c-editorial-card[data-presentation="kids-capsule"] { --sr2-card-accent: var(--sr2-rose); }
+.sr2-c-editorial-card__media { display: block; flex: none; aspect-ratio: 2 / 3; background: var(--sr2-void); text-decoration: none; }
+.sr2-c-editorial-card__photo-window { display: block; width: 100%; height: 100%; overflow: hidden; }
+.sr2-c-editorial-card .sr2-c-editorial-card__media img { display: block; width: 100%; height: 100%; max-width: 100%; margin: 0; aspect-ratio: 2 / 3; object-fit: contain; object-position: center; filter: none; transform: none; clip-path: none; }
+.sr2-c-editorial-card__body { display: flex; flex: 1; flex-direction: column; gap: var(--sr2-space-3); min-width: 0; padding: clamp(1rem, 2vw, 1.5rem); border-top: 2px solid var(--sr2-card-accent); }
+.sr2-c-editorial-card__collection { margin: 0; color: var(--sr2-card-accent); font-family: var(--sr2-font-ui); font-size: .7rem; letter-spacing: .12em; line-height: 1.5; text-transform: uppercase; }
+.sr2-c-editorial-card .sr2-c-editorial-card__title { margin: 0; padding: 0; color: var(--sr2-ink); font-family: var(--sr2-font-display); font-size: clamp(1.4rem, 2vw, 1.85rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.15; white-space: normal; overflow-wrap: anywhere; }
+.sr2-c-editorial-card__title a { display: inline-flex; min-height: 46px; align-items: center; color: inherit; text-decoration: none; }
+.sr2-c-editorial-card__commerce { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--sr2-space-3); padding-block: var(--sr2-space-3); border-block: 1px solid var(--sr2-line); }
+.sr2-c-editorial-card .sr2-c-editorial-card__price { margin: 0; color: var(--sr2-ink); font-family: var(--sr2-font-ui); font-size: 1rem; line-height: 1.5; }
+.sr2-c-editorial-card__availability { display: flex; align-items: center; gap: .5rem; color: var(--sr2-muted); font-size: .8rem; line-height: 1.5; }
+.sr2-c-editorial-card__availability p { margin: 0; }
+.sr2-c-editorial-card__availability-mark { flex: none; width: .5rem; height: .5rem; border: 1px solid var(--sr2-card-accent); border-radius: 50%; background: var(--sr2-card-accent); }
+.sr2-c-editorial-card__availability[data-state="unavailable"] .sr2-c-editorial-card__availability-mark { background: transparent; }
+.sr2-c-editorial-card__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin-top: auto; }
+.sr2-c-editorial-card .sr2-c-editorial-card__actions :is(a, button) { display: inline-flex; min-width: 0; min-height: 46px; align-items: center; justify-content: center; gap: .4rem; margin: 0; padding: .7rem .65rem; border: 1px solid var(--sr2-line); border-radius: 0; background: transparent; color: var(--sr2-ink); font-family: var(--sr2-font-ui); font-size: .7rem; font-weight: 400; letter-spacing: .035em; line-height: 1.4; text-align: center; text-decoration: none; white-space: normal; cursor: pointer; }
+.sr2-c-editorial-card .sr2-c-editorial-card__actions .button { grid-column: 1 / -1; border-color: var(--sr2-card-accent); }
+.sr2-c-editorial-card .sr2-c-editorial-card__actions :is(a, button):hover { border-color: var(--sr2-card-accent); background: var(--sr2-card-hover); }
+.sr2-c-editorial-card :is(a, button):focus-visible { outline: 3px solid var(--sr2-card-accent); outline-offset: 3px; }
+.sr2-jersey-reveal__grid.sr2-products { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.2rem, 2.5vw, 2.8rem); padding-block: var(--sr2-space-6); border: 0; }
+@media (max-width: 1024px) { .sr2-jersey-reveal__grid.sr2-products { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .sr2-jersey-reveal__grid.sr2-products { grid-template-columns: minmax(0, 1fr); } }
+@media (forced-colors: active) { .sr2-c-editorial-card, .sr2-c-editorial-card__body, .sr2-c-editorial-card .sr2-c-editorial-card__actions :is(a, button) { border-color: CanvasText; } .sr2-c-editorial-card :is(a, button):focus-visible { outline-color: Highlight; } }
+
+/* Original V2 collection frames surround approved photography filling the aperture.
+ * Only decorative framing overlaps the stage; commerce stays in normal flow. */
+.sr2-c-editorial-card[data-card-frame="v2-statue"] { border-color: var(--sr2-card-accent); background: var(--sr2-void); }
+.sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__media { position: relative; isolation: isolate; container-type: inline-size; aspect-ratio: 970 / 1620; }
+.sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__media > .sr2-c-editorial-card__frame { position: absolute; z-index: 2; inset: 0; width: 100%; height: 100%; object-fit: fill; pointer-events: none; }
+.sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__photo-window { position: absolute; z-index: 1; top: 8%; left: 17%; width: 66%; height: 64%; }
+.sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__product-image { aspect-ratio: auto; object-fit: cover; object-position: center; }
+/* Bring adult tops forward while preserving full outfits and approved source pixels. */
+.sr2-c-editorial-card[data-card-frame="v2-statue"][data-card-crop="top"] .sr2-c-editorial-card__product-image { transform: scale(1.5); transform-origin: 50% 0%; }
+.sr2-c-editorial-card__frame-label { position: absolute; z-index: 3; top: var(--sr2-nameplate-center, 80%); left: 26%; transform: translateY(-50%); display: flex; align-items: center; justify-content: center; width: 48%; height: 10%; padding: var(--sr2-space-2); color: var(--sr2-card-accent); font-family: var(--sr2-font-caps); font-size: clamp(.8rem, 1.6vw, 1.25rem); line-height: 1.15; text-align: center; text-transform: uppercase; pointer-events: none; }
+/* Optical centers of each carved nameplate opening, measured from the frame art. */
+.sr2-c-editorial-card[data-collection="signature"] { --sr2-nameplate-center: 78.7%; }
+.sr2-c-editorial-card[data-collection="love-hurts"] { --sr2-nameplate-center: 80.2%; }
+.sr2-c-editorial-card[data-collection="kids-capsule"] { --sr2-nameplate-center: 79.7%; }
+/* Cast inscriptions: a lit bevel, dark lower edge, and shallow relief shadow
+ * share the collection frame's material, with readable solid-color fallback. */
+.sr2-c-editorial-card__inscription {
+	--sr2-inscription-metal: var(--sr2-card-accent);
+	--sr2-inscription-light: color-mix(in srgb, var(--sr2-inscription-metal) 30%, var(--sr2-paper));
+	--sr2-inscription-edge: color-mix(in srgb, var(--sr2-inscription-metal) 42%, var(--sr2-void));
+	color: var(--sr2-inscription-light);
+	font-weight: 900;
+	font-size: clamp(.75rem, 5cqi, 2.1rem);
+	line-height: 1.05;
+	letter-spacing: .025em;
+	white-space: nowrap;
+	filter: drop-shadow(0 1px 0 var(--sr2-inscription-edge)) drop-shadow(0 2px 0 var(--sr2-inscription-edge)) drop-shadow(1px 3px 2px var(--sr2-void));
+}
+.sr2-c-editorial-card[data-collection="kids-capsule"] .sr2-c-editorial-card__inscription { --sr2-inscription-metal: var(--sr2-gold); }
+.sr2-c-editorial-card[data-collection="signature"] .sr2-c-editorial-card__inscription { font-size: clamp(.85rem, 6cqi, 2.1rem); }
+@supports ((background-clip: text) or (-webkit-background-clip: text)) {
+	.sr2-c-editorial-card__inscription { background: linear-gradient(175deg, var(--sr2-inscription-light) 0%, var(--sr2-inscription-metal) 35%, var(--sr2-inscription-light) 46%, var(--sr2-inscription-edge) 51%, var(--sr2-inscription-metal) 65%, var(--sr2-inscription-light) 100%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+}
+.sr2-c-editorial-card[data-card-frame="v2-statue"] .sr2-c-editorial-card__body { border-top: 0; }
+@media (forced-colors: active) { .sr2-c-editorial-card__frame-label { color: CanvasText; background: Canvas; } .sr2-c-editorial-card__inscription { color: CanvasText; background: none; filter: none; } }
