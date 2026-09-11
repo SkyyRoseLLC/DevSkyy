@@ -1,0 +1,56 @@
+{
+  "scene_id": "LH-COMMERCE-2",
+  "candidate_id": "LH-COMMERCE-2-HERO-EDITORIAL-E1",
+  "title": "Love Hurts",
+  "chapter": "The rose aisle",
+  "direction": "Crimson cathedral light, sculpted skin, candle warmth and wet-stone contact.",
+  "product_bindings": [
+    "lh-003"
+  ],
+  "locked_baseline": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+  "baseline_authority": "USER_LOCKED_C1_OR_C2",
+  "inspiration_references": [
+    "/Users/theceo/Downloads/hf_20260901_051305_c2b3161d-f1df-464b-8320-ecae163d6fcc.png",
+    "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png"
+  ],
+  "inspiration_scope": "LIGHTING_AND_EDITORIAL_FEEL_ONLY",
+  "generation_output": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-0aa2a85c-7684-4ed3-9754-18276cd6d741.png",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/hero-commerce-editorial-e1/assets/lh-commerce-2-hero-editorial-e1.png",
+  "master_sha256": "5c3343997247fd26bad6d19c1059475744a8a6f9d498fc5f1b2bac9c245466e5",
+  "master_bytes": 2346860,
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-06-lh-commerce-2/DevSkyy/Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-HERO-EDITORIAL-E1.png",
+  "variants": [
+    {
+      "file": "lh-commerce-2-hero-editorial-e1-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 57474,
+      "sha256": "12f376959ea35f77de4c4dfeadd21fb9470c64a2fe8b16031629f8b2cfb440ff"
+    },
+    {
+      "file": "lh-commerce-2-hero-editorial-e1-960w.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 133068,
+      "sha256": "95fe7267941dc9effccd134e615ec61df97bdd48d6726a0e3d520e2ed01eb55b"
+    },
+    {
+      "file": "lh-commerce-2-hero-editorial-e1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 341364,
+      "sha256": "54edfd24941a6016a04ffa6688fc1ff9d3fd37d906fecf37fa407b18242fc618"
+    }
+  ],
+  "status": "GENERATED_IMPORTED_NEEDS_VISUAL_REVIEW",
+  "provider": "builtin-imagegen",
+  "candidates_this_pass": 1,
+  "automatic_retries": 0,
+  "pixel_identical_preservation_certified": false,
+  "preservation_note": "Semantic image editing was instructed to preserve locked cast, garment and environment content; exact preservation has not been independently verified.",
+  "independent_review": "NOT_RUN",
+  "runtime_replaced": false,
+  "deployment_authorized": false,
+  "signature_female_styling": null,
+  "created_at": "2026-09-05T00:58:12.913Z"
+}
