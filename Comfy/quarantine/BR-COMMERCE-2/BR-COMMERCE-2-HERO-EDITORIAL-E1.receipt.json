@@ -1,0 +1,58 @@
+{
+  "scene_id": "BR-COMMERCE-2",
+  "candidate_id": "BR-COMMERCE-2-HERO-EDITORIAL-E1",
+  "title": "Black Rose",
+  "chapter": "After dark on the bay",
+  "direction": "Moonlit depth, dimensional black fabric and grounded waterfront presence.",
+  "product_bindings": [
+    "br-005",
+    "br-007",
+    "br-004"
+  ],
+  "locked_baseline": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+  "baseline_authority": "USER_LOCKED_C1_OR_C2",
+  "inspiration_references": [
+    "/Users/theceo/Downloads/hf_20260901_051305_c2b3161d-f1df-464b-8320-ecae163d6fcc.png",
+    "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png"
+  ],
+  "inspiration_scope": "LIGHTING_AND_EDITORIAL_FEEL_ONLY",
+  "generation_output": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-95442b08-2803-4203-90e1-3e9a4ce41c11.png",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/hero-commerce-editorial-e1/assets/br-commerce-2-hero-editorial-e1.png",
+  "master_sha256": "88232496197f0bce747bd91d5817868a5e7fc70c4ef0ade85a3dd1eacc1a7a18",
+  "master_bytes": 2451026,
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-HERO-EDITORIAL-E1.png",
+  "variants": [
+    {
+      "file": "br-commerce-2-hero-editorial-e1-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 50890,
+      "sha256": "05fafe985c5a509c1c612622f6d33e0bf89b385ea54b42a3f0998e3035b55f8b"
+    },
+    {
+      "file": "br-commerce-2-hero-editorial-e1-960w.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 115622,
+      "sha256": "d9e49a844fe0fc4f64891d1356567038031fe6e0078af1c687283ae59dfe97a4"
+    },
+    {
+      "file": "br-commerce-2-hero-editorial-e1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 301522,
+      "sha256": "bb13baea9aa2ac8d7462595b0a2769d8d141dae4cf76a80c21ccd109c77bf5ce"
+    }
+  ],
+  "status": "GENERATED_IMPORTED_NEEDS_VISUAL_REVIEW",
+  "provider": "builtin-imagegen",
+  "candidates_this_pass": 1,
+  "automatic_retries": 0,
+  "pixel_identical_preservation_certified": false,
+  "preservation_note": "Semantic image editing was instructed to preserve locked cast, garment and environment content; exact preservation has not been independently verified.",
+  "independent_review": "NOT_RUN",
+  "runtime_replaced": false,
+  "deployment_authorized": false,
+  "signature_female_styling": null,
+  "created_at": "2026-09-05T00:58:12.913Z"
+}

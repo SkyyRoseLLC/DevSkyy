@@ -1,0 +1,62 @@
+{
+  "schema": "skyyrose.signature-natural-integration.v1",
+  "created_at": "2026-09-05T01:51:22.902Z",
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_id": "SIG-COMMERCE-2-NATURAL-DRESS-H1",
+  "user_request": "lets see a more natual 2 scenes to match this.also include the font statue from the hero in oine of those",
+  "references": [
+    "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+    "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1.png",
+    "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp"
+  ],
+  "reference_roles": [
+    "Locked C2 cast/outfit/environment; female hoodie dress",
+    "Signature 3 G1 integration benchmark only",
+    "Signature collection hero inspiration"
+  ],
+  "requested_changes": [
+    "Shared motivated lighting",
+    "Natural shoe contact on existing terrace levels",
+    "Coherent shadows/reflections and optical depth",
+    "Preserve long hoodie dress styling"
+  ],
+  "provider": "builtin-imagegen",
+  "candidate_count": 1,
+  "automatic_retries": 0,
+  "external_paid_provider_calls": 0,
+  "original_generated_path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-d83bf344-137e-4a44-9b8e-02358dad211d.png",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-2-natural-dress-h1.png",
+  "master_sha256": "b085e0ee82401c2e5db71c8a36ab63271d410ad20c29d72fa369a78e4f54ca5c",
+  "master_bytes": 2407699,
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-NATURAL-DRESS-H1.png",
+  "variants": [
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-2-natural-dress-h1-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 58552,
+      "sha256": "9bcc36a95717008cd9bd009661bccf474e0d867c53046f0db1eaee54b188aa24"
+    },
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-2-natural-dress-h1-960w.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 125368,
+      "sha256": "7a3dadc0def2a056bc723f546354f20270a91a7e657ef0b7d0ffe4526ed38b77"
+    },
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f4/assets/sig-commerce-2-natural-dress-h1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 310334,
+      "sha256": "df2f79e55c5cff38dbac7efae3cd7258685cd546c4713fa413ec9b6f0640111e"
+    }
+  ],
+  "status": "GENERATED_IMPORTED_NEEDS_VISUAL_REVIEW",
+  "founder_final_visual_approval": false,
+  "independent_review": "NOT_RUN",
+  "exact_product_identity_and_statue_pixel_preservation_certified": false,
+  "preservation_note": "Semantic image editing was guided by locked sources. Exact garment, identity and font-statue preservation has not been independently certified.",
+  "storefront_changed": false,
+  "deployment_authorized": false
+}

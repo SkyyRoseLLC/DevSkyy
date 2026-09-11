@@ -1,0 +1,57 @@
+{
+  "scene_id": "SIG-COMMERCE-1",
+  "candidate_id": "SIG-COMMERCE-1-HERO-EDITORIAL-E1",
+  "title": "Signature / I",
+  "chapter": "The last light",
+  "direction": "Cool dusk, warm architectural edges and a supported stance on the terrace.",
+  "product_bindings": [
+    "sg-009",
+    "sg-007"
+  ],
+  "locked_baseline": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+  "baseline_authority": "USER_LOCKED_C1_OR_C2",
+  "inspiration_references": [
+    "/Users/theceo/Downloads/hf_20260901_051305_c2b3161d-f1df-464b-8320-ecae163d6fcc.png",
+    "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png"
+  ],
+  "inspiration_scope": "LIGHTING_AND_EDITORIAL_FEEL_ONLY",
+  "generation_output": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-aa144bff-daf0-478e-ba95-3d72d84a2e17.png",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/hero-commerce-editorial-e1/assets/sig-commerce-1-hero-editorial-e1.png",
+  "master_sha256": "6419a05a3c282cb6d26e4d49c24bb108a0c7ecb04778d7a8be435695c28b2caa",
+  "master_bytes": 2094264,
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-1/SIG-COMMERCE-1-HERO-EDITORIAL-E1.png",
+  "variants": [
+    {
+      "file": "sig-commerce-1-hero-editorial-e1-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 44464,
+      "sha256": "8ca20ea082d4b01ed6d366b4252a359b381317f5dd2cab63acb5130dffd884cb"
+    },
+    {
+      "file": "sig-commerce-1-hero-editorial-e1-960w.webp",
+      "width": 960,
+      "height": 541,
+      "bytes": 92336,
+      "sha256": "285d473f71c563160e146e83b8e4cd07e3c4456b5a69aa551eff465c49187bdf"
+    },
+    {
+      "file": "sig-commerce-1-hero-editorial-e1-1672w.webp",
+      "width": 1671,
+      "height": 941,
+      "bytes": 215654,
+      "sha256": "eaf3e8f9f42e3d9ee36db00ce6db3ea934497dc961a2796836776fdff19ba525"
+    }
+  ],
+  "status": "GENERATED_IMPORTED_NEEDS_VISUAL_REVIEW",
+  "provider": "builtin-imagegen",
+  "candidates_this_pass": 1,
+  "automatic_retries": 0,
+  "pixel_identical_preservation_certified": false,
+  "preservation_note": "Semantic image editing was instructed to preserve locked cast, garment and environment content; exact preservation has not been independently verified.",
+  "independent_review": "NOT_RUN",
+  "runtime_replaced": false,
+  "deployment_authorized": false,
+  "signature_female_styling": null,
+  "created_at": "2026-09-05T00:58:12.913Z"
+}

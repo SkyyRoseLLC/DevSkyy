@@ -1,0 +1,74 @@
+{
+  "schema": "skyyrose.hero-editorial-scene-candidate.v1",
+  "created_at": "2026-09-05T01:43:11.508Z",
+  "scene_id": "SIG-COMMERCE-3",
+  "candidate_id": "SIG-COMMERCE-3-HERO-EDITORIAL-G1",
+  "user_request": "hf_20260830_223201_70f0fb3b-43df-4fe3-b397-4e6392b65d97.png needs to be placed authentically in a hero inspired environment",
+  "provider": "builtin-imagegen",
+  "candidate_count": 1,
+  "automatic_retries": 0,
+  "external_paid_provider_calls": 0,
+  "supplied_source": {
+    "path": "/Users/theceo/Downloads/hf_20260830_223201_70f0fb3b-43df-4fe3-b397-4e6392b65d97.png",
+    "sha256": "9d65efdddd4e9c34213a9d064aae297b8d3fc755686a3611799c0119d5dc8275",
+    "imported": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-founder-source.png"
+  },
+  "hero_reference": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/signature-golden-gate-monuments-v2.webp",
+    "recorded_sha256": "f8bb7d2a1572f575e4f9e4e45edebf6115b4339708e64f95c3bb251813fc0fd8",
+    "scope": "Signature hero environment inspiration, not a Scroll World slot"
+  },
+  "mood_references": [
+    {
+      "path": "/Users/theceo/Downloads/hf_20260901_051305_c2b3161d-f1df-464b-8320-ecae163d6fcc.png",
+      "scope": "LIGHTING_AND_EDITORIAL_FEEL_ONLY"
+    },
+    {
+      "path": "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png",
+      "scope": "LIGHTING_AND_EDITORIAL_FEEL_ONLY"
+    }
+  ],
+  "requested_product_preservation": [
+    "SG-001 blue-waistband daytime Bay Bridge shorts",
+    "SG-005 blue rose Bay Bridge shirt",
+    "SG-003 purple-waistband nighttime Golden Gate shorts",
+    "SG-002 purple rose Golden Gate shirt",
+    "SG-015 complete white pastel windbreaker jacket and pants as one SKU"
+  ],
+  "generated_source": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-0e2c21da-d933-4f7a-b782-3f4bddf04335.png",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1.png",
+  "sha256": "854a8e0b97ec885b2a85efa1ea7e4216e2491b334170cd51b501cd9c2bf408f0",
+  "bytes": 2440622,
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-3/SIG-COMMERCE-3-HERO-EDITORIAL-G1.png",
+  "variants": [
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 67826,
+      "sha256": "0142be4b0476b2a290a955d36fa7ec33baedccd72b3be2c6944fdec01a141610"
+    },
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1-960w.webp",
+      "width": 960,
+      "height": 541,
+      "bytes": 134910,
+      "sha256": "bd405ea9a7c58b546d5365ac661dcea48c39fa1a7f2f80acc67fdd7daca47ac1"
+    },
+    {
+      "file": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/scroll-world-lineup-f3/assets/sig-commerce-3-hero-editorial-g1-1672w.webp",
+      "width": 1671,
+      "height": 941,
+      "bytes": 321066,
+      "sha256": "fed2de911babf57dbb06bf6b407017b2034524ac4b621a613a7602f5fe45eaea"
+    }
+  ],
+  "state": "GENERATED_IMPORTED_NEEDS_VISUAL_REVIEW",
+  "founder_final_visual_approval": false,
+  "exact_pixel_preservation_certified": false,
+  "preservation_note": "This is a semantic environment edit, not an independently certified pixel-preserving composite. Identity, artwork and construction preservation were instructed but not independently reviewed.",
+  "independent_review": "NOT_RUN",
+  "runtime_wiring_changed": false,
+  "hero_videos_changed": false,
+  "deployment_authorized": false
+}

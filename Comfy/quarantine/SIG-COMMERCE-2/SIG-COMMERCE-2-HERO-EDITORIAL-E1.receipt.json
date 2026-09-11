@@ -1,0 +1,58 @@
+{
+  "scene_id": "SIG-COMMERCE-2",
+  "candidate_id": "SIG-COMMERCE-2-HERO-EDITORIAL-E1",
+  "title": "Signature / II",
+  "chapter": "Mint at blue hour",
+  "direction": "Shared directional light, true mint and lavender, long hoodie styled as a dress.",
+  "product_bindings": [
+    "sg-013",
+    "sg-014",
+    "sg-006"
+  ],
+  "locked_baseline": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-dress-c2.png",
+  "baseline_authority": "USER_LOCKED_C1_OR_C2",
+  "inspiration_references": [
+    "/Users/theceo/Downloads/hf_20260901_051305_c2b3161d-f1df-464b-8320-ecae163d6fcc.png",
+    "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png"
+  ],
+  "inspiration_scope": "LIGHTING_AND_EDITORIAL_FEEL_ONLY",
+  "generation_output": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-e82fe3b5-6759-4688-97c3-f55ecdc9a30c.png",
+  "master": "/Users/theceo/DevSkyy-product-card-approved/Comfy/receipts/hero-commerce-editorial-e1/assets/sig-commerce-2-hero-editorial-e1.png",
+  "master_sha256": "dd664fb1609beedc43b01cb748f994a3522250ebf1c52564c1e5a48e150e2b76",
+  "master_bytes": 2483961,
+  "stage_import": "/Users/theceo/.codex/worktrees/stage-07-br-signature-rollout/DevSkyy/Comfy/quarantine/SIG-COMMERCE-2/SIG-COMMERCE-2-HERO-EDITORIAL-E1.png",
+  "variants": [
+    {
+      "file": "sig-commerce-2-hero-editorial-e1-640w.webp",
+      "width": 640,
+      "height": 360,
+      "bytes": 63216,
+      "sha256": "8f453ac56b175a18d04f01540e8e83da371462b25c1dc96a548f59132b659121"
+    },
+    {
+      "file": "sig-commerce-2-hero-editorial-e1-960w.webp",
+      "width": 960,
+      "height": 540,
+      "bytes": 132890,
+      "sha256": "323044beb6686e9c3ffd7faf5c491aa083548d2fc5e7b9b24b76ed76a2f6cafd"
+    },
+    {
+      "file": "sig-commerce-2-hero-editorial-e1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "bytes": 339506,
+      "sha256": "4eaecadc0978e8e46842c57dac0e4f7eb9f4c9685c4c1c454c70522ee7295491"
+    }
+  ],
+  "status": "GENERATED_IMPORTED_NEEDS_VISUAL_REVIEW",
+  "provider": "builtin-imagegen",
+  "candidates_this_pass": 1,
+  "automatic_retries": 0,
+  "pixel_identical_preservation_certified": false,
+  "preservation_note": "Semantic image editing was instructed to preserve locked cast, garment and environment content; exact preservation has not been independently verified.",
+  "independent_review": "NOT_RUN",
+  "runtime_replaced": false,
+  "deployment_authorized": false,
+  "signature_female_styling": "LONG_HOODIE_AS_DRESS_BARE_LEGS_NO_TROUSERS",
+  "created_at": "2026-09-05T00:58:12.913Z"
+}
