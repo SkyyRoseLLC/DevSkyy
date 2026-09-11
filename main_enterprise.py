@@ -441,8 +441,10 @@ from api.v1.analytics.dashboard import router as analytics_dashboard_router
 app.include_router(analytics_dashboard_router, prefix="/api/v1")
 
 from api.v1.pipeline import router as pipeline_router
+from api.v1.three_d_platform import router as three_d_platform_router
 
 app.include_router(pipeline_router, prefix="/api/v1")
+app.include_router(three_d_platform_router, prefix="/api/v1")
 
 # Authentication
 from security.jwt_oauth2_auth import auth_router

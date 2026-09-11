@@ -24,6 +24,7 @@ from api.tasks import tasks_router
 from api.three_d import three_d_router
 from api.tools import tools_router
 from api.visual import visual_router
+from api.v1.three_d_platform import router as three_d_platform_router
 
 # Create FastAPI app
 app = FastAPI(
@@ -64,6 +65,7 @@ app.include_router(brand_router, prefix="/v1")
 app.include_router(tools_router, prefix="/v1")
 app.include_router(three_d_router, prefix="/v1")
 app.include_router(visual_router, prefix="/v1")
+app.include_router(three_d_platform_router, prefix="/v1")
 
 
 # ============================================
