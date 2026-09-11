@@ -3,3 +3,8 @@
 assets/products/source-photos/manifest.json
 tasks/source-photo-audit-report.md
 tasks/source-photo-shoot-list.md
+
+# OpenWolf machine-authored logs — exact bytes are load-bearing (cross-LLM log, anatomy index); never reformat
+.wolf/memory.md
+.wolf/anatomy.md
+.wolf/buglog.json

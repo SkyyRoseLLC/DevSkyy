@@ -5539,5 +5539,28 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-08-03T16:21:00-07:00"
+  },
+  {
+    "id": "bug-321",
+    "timestamp": "2026-09-11T03:51:56-07:00",
+    "error_message": "Pre-commit lint-staged/prettier reformatted machine-authored OpenWolf logs inside commit d761da796: .wolf/anatomy.md +1761/-882 (line-wrapped index), .wolf/memory.md 514540->681477 bytes (table-cell padding), docs/PLAN_INDEX.md 153 lines churned; intended change was +4 and +8 lines. Tree left MM (index=original, worktree=formatted).",
+    "file": ".prettierignore",
+    "root_cause": "Founder mandate (2026-09-08) to track .wolf/memory.md in every commit put a 500KB markdown table under the prettier pre-commit hook with no ignore entry; lint-staged formats whatever is staged, so every commit round-trips the shared cross-LLM log and the anatomy index through a generic formatter (same class as bug-250/bug-251).",
+    "fix": "Forward commit (never --amend in a shared worktree): restored exact bytes for .wolf/memory.md (byte copy of the tracked source), .wolf/anatomy.md and docs/PLAN_INDEX.md (HEAD~1 + the intended appends); added .wolf/memory.md, .wolf/anatomy.md, .wolf/buglog.json to .prettierignore. Verify rule: after every commit, `git diff HEAD~1 HEAD --stat` line counts must match the intended change.",
+    "tags": [
+      "git-hooks",
+      "lint-staged",
+      "prettier",
+      "wolf-memory",
+      "anatomy",
+      "machine-authored-files"
+    ],
+    "related_bugs": [
+      "bug-250",
+      "bug-251",
+      "bug-154"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-11T03:51:56-07:00"
   }
 ]
