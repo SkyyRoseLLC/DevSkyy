@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-wp-platform
 description: "The SkyyRose flagship theme's own engineering doctrine (wordpress-theme/skyyrose-flagship/) — brand-specific, not a generic WordPress reference. Covers templates/patterns, the .min build pipeline, WooCommerce REST/webhooks, the vanilla three.js mascot and immersive worlds, and the gates that keep a luxury storefront luxury. Use when a task touches wordpress-theme/skyyrose-flagship PHP, its CSS/JS build, its WooCommerce integration, or its Three.js scenes. Do NOT use for generic WordPress questions with no SkyyRose surface (use wordpress-router to classify), and do NOT use for the Next.js dashboard at frontend/ (that is devskyy.app, a different host entirely)."
@@ -5,7 +6,7 @@ description: "The SkyyRose flagship theme's own engineering doctrine (wordpress-
 
 # SkyyRose WordPress Platform
 
-"Luxury Grows from Concrete." This skill exists because a generic WordPress reference can't
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 carry that -- it doesn't know the difference between Black Rose's gothic armor and Love Hurts'
 "bloodline that raised me," it doesn't know the mascot is the face of the brand, and it doesn't
 know a wrong-garment render is the single most repeated defect on this project. Every section

@@ -1,0 +1,136 @@
+{
+  "id": "V2-STAGING-RELEASE-20260906",
+  "at": "2026-09-06T21:38:46.046054+00:00",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "candidateSha256": "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+  "status": "STAGING_VERIFIED_NEEDS_MORE_WORK",
+  "independentStatuses": [
+    {
+      "track": "Filesystem parity",
+      "status": "PASS",
+      "detail": "447-file preflight and 527-file installed/end-of-test identity match."
+    },
+    {
+      "track": "Browser parity",
+      "status": "FAIL",
+      "detail": "Founder rotating-mark correction (2026-09-06): staging header and footer both select the static fallback. Browser/feature parity is FAIL under the clarified mandatory contract. Local restoration passes bounded checks but is not deployed. Prior filesystem/deployment receipts remain historical and valid for their captured candidate.",
+      "previousStatus": "PASS \u2014 bounded"
+    },
+    {
+      "track": "Feature parity",
+      "status": "FAIL",
+      "detail": "Founder rotating-mark correction (2026-09-06): staging header and footer both select the static fallback. Browser/feature parity is FAIL under the clarified mandatory contract. Local restoration passes bounded checks but is not deployed. Prior filesystem/deployment receipts remain historical and valid for their captured candidate.",
+      "previousStatus": "PASS \u2014 bounded"
+    },
+    {
+      "track": "Platform delivery",
+      "status": "NEEDS_MORE_WORK",
+      "detail": "Encoding/ranges/hash checks pass; MIME/latency fail; session/global-policy boundaries remain."
+    },
+    {
+      "track": "Performance",
+      "status": "NEEDS_MORE_WORK",
+      "detail": "Home startup CLS, modeled Home/Shop LCP and constrained Skyy activation remain unresolved."
+    }
+  ],
+  "b13Statuses": [
+    {
+      "surface": "HOME HERO DELIVERY",
+      "status": "FAIL",
+      "boundary": "Approved animation and deferred optional3D verified, but direct desktop B13 CLS0.846951 FAILS stability. Mobile B13/quiet controls also contain excluded shifts1.0; independent Lighthouse observedCLS1.0. No unqualified Home delivery PASS.",
+      "functional": "PASS"
+    },
+    {
+      "surface": "COLLECTION SCENE DELIVERY",
+      "status": "PASS",
+      "boundary": "Three collections \u00d7 two profiles; allnine scene sources activate on approach, offscreen pause and reverse/re-entry; native pause controls verified separately in current browser-parity evidence."
+    },
+    {
+      "surface": "PRODUCT CARD DELIVERY",
+      "status": "PASS",
+      "boundary": "Representative Shop initial/below-fold responsive delivery; first card480\u00d7720 decoded at236.3CSSpx/DPR2. Does not certify all33SKU product fidelity."
+    },
+    {
+      "surface": "QUICK VIEW DELIVERY",
+      "status": "PASS",
+      "boundary": "Intent-only native form GET, correct image, Escape close; moderate settled-media supplement passes. Current browser-parity evidence covers variation and rapid reopen. No purchase submitted."
+    },
+    {
+      "surface": "ASK SKYY DEFERRED DELIVERY",
+      "status": "PASS",
+      "functional": "PASS",
+      "boundary": "Deferred-delivery criterion passes: untouched mobile/desktop/reload load no optional3D; explicit intent activates; same-document reuse and actual disk-cache reload verified. Separate asset and activation gates fail:6,058,568B model exceeds2.5MiB, moderate stableframe14.216s exceeds2s.",
+      "performance": "FAIL"
+    },
+    {
+      "surface": "MOBILE CINEMATIC DELIVERY",
+      "status": "FAIL",
+      "initialRouteMetrics": "LCP_PASS_BOUNDED_CLS_NOT_CERTIFIED",
+      "boundary": "Full experience fails: direct desktop Home CLS0.846951 and mobile Home recent-input-excluded shifts1.0 prevent stability clearance; Lighthouse observedCLS1.0 and simulatedLCP5.434s. Moderate cold Skyy14.2s is another performance failure. Initial12 mobile LCP samples alone do not certify the site."
+    }
+  ],
+  "b13Sessions": 17,
+  "lighthouseSamples": [
+    {
+      "name": "home",
+      "at": "2026-09-06T21:31:02.503Z",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+      "lighthouseVersion": "13.4.1",
+      "performance": 0.49,
+      "LCP": 5434.052000000001,
+      "CLS": 1,
+      "TBT": 3.5,
+      "TTFB": 1937,
+      "warnings": []
+    },
+    {
+      "name": "shop",
+      "at": "2026-09-06T21:31:16.425Z",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+      "lighthouseVersion": "13.4.1",
+      "performance": 0.84,
+      "LCP": 3931.74,
+      "CLS": 0.00021359408476501941,
+      "TBT": 0,
+      "TTFB": 1795,
+      "warnings": []
+    },
+    {
+      "name": "signature",
+      "at": "2026-09-06T21:31:30.899Z",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+      "lighthouseVersion": "13.4.1",
+      "performance": 0.94,
+      "LCP": 2222.4724999999994,
+      "CLS": 0.002177161440467896,
+      "TBT": 4.5,
+      "TTFB": 1975,
+      "warnings": []
+    }
+  ],
+  "finalIdentity": {
+    "at": "2026-09-06T21:35:13.902391+00:00",
+    "remoteRuntimeFiles": 527,
+    "remoteExactParity": true,
+    "optionsUnchanged": true,
+    "localThemeSourceFiles": 608,
+    "sourceChanges": [],
+    "hashes": {
+      "zip": "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+      "plan": "ad4926a97cfea2a195de6366a4aaa61aa8b65b12f0a7dc685a69ef2c81231911",
+      "rollback": "1b8164b36374aadea85aa4ec7c4d3f8a18e9f8e9f34042f706bd21c090a45ac3"
+    },
+    "rollbackPerformed": false,
+    "remoteWritesDuringFinalCheck": false
+  },
+  "productionAuthorized": false,
+  "rollbackPerformed": false,
+  "manualCachePurge": false,
+  "installerAutomaticCachePurgeLogged": true,
+  "nextAction": "Founder review of measured findings; stop before optimization or later phases",
+  "rotatingMarkCorrection": {
+    "status": "FAIL",
+    "detail": "Founder rotating-mark correction (2026-09-06): staging header and footer both select the static fallback. Browser/feature parity is FAIL under the clarified mandatory contract. Local restoration passes bounded checks but is not deployed. Prior filesystem/deployment receipts remain historical and valid for their captured candidate.",
+    "report": "../v2-rotating-mark-20260906/report.md"
+  }
+}

@@ -1,0 +1,818 @@
+{
+  "id": "V2-SPECIALIZED-COMPLETION-20260906",
+  "tracks": [
+    {
+      "id": "A",
+      "name": "FRONTEND PERFORMANCE",
+      "status": "NEEDS_MORE_WORK",
+      "owner": "frontend-performance-engineer",
+      "report": "track-a-performance.md"
+    },
+    {
+      "id": "B",
+      "name": "PLATFORM READINESS",
+      "status": "READY_TO_VERIFY_ON_STAGING",
+      "owner": "hosting-platform-engineer",
+      "report": "track-b-platform-checklist.md"
+    },
+    {
+      "id": "C",
+      "name": "ASK SKYY ASSET",
+      "status": "READY_FOR_BLENDER",
+      "owner": "blender-character-optimization",
+      "report": "track-c-blender-phase.md"
+    },
+    {
+      "id": "D",
+      "name": "PRODUCT CONTENT",
+      "status": "READY_FOR_FOUNDER_CONTENT_REVIEW",
+      "owner": "editorial-product-truth-founder-media",
+      "report": "track-d-content-matrix.md"
+    }
+  ],
+  "baselineSourceDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "sourceChanges": 0,
+  "scope": "Review and experimental evidence only; includes rejected experiment and diagnostic failures. Excludes this index and mutable log files. No optimized model, staging verification or media promotion.",
+  "artifacts": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/baseline-integrity.json",
+      "bytes": 194,
+      "sha256": "71b91f09856a9207966d0b471b9797e77f92324a95b409a379028b6e3aefc325"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/check-review.cjs",
+      "bytes": 1370,
+      "sha256": "ced70941310dd8de566c1dd899b3f007397dbc8ddbca34143232e3f8de3a0191"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/completion-report.md",
+      "bytes": 9427,
+      "sha256": "c4a8a216180dc8918bba448a570672a9bbd6a6233fc32a81e6359d45026ec49e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/contract.json",
+      "bytes": 1367,
+      "sha256": "4f1a378e3e4ef2f1931ab15a9dac18f367af5ed4457095dfac56ad9bafccf394"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/final-integrity.json",
+      "bytes": 232,
+      "sha256": "d46dd19b6bb58a8af7bdca9be77b6f79fbe334d8f7b68d102ca0756ae5c1a480"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/finalize.py",
+      "bytes": 1966,
+      "sha256": "d702ef7b3fe233c774a32c3c63527c50a5ad5c1fe0b10ccfc97949fc14d684f1"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/independent-review.md",
+      "bytes": 6990,
+      "sha256": "88d8f032dc622e31a937f8f327ef20405797b96a5520f8213d772a8ba5da7a84"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/integrate-review.py",
+      "bytes": 1488,
+      "sha256": "b19983010bfecd7b57c8b7bef5ac586e0a28c6d04c929f20e6bba8858f06b988"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/ledger.jsonl",
+      "bytes": 398,
+      "sha256": "e8cb35c64781707665f1e6557ba5300f6c107c8f51556c3755782031becbcb25"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/link-check.json",
+      "bytes": 37,
+      "sha256": "125c9dedd31e121152ec595127ecbce9ceb9aafd67cec521ea686c38b37a1c90"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/review-check-before-wrap-fix.json",
+      "bytes": 1555,
+      "sha256": "b5a7ec52ad85b48e8503dc2a32d8f12a54850372cb4e709d3c5a6fa8a6f9d836"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/review-check.json",
+      "bytes": 1556,
+      "sha256": "004cc1871e1691c1b29fc3f21c7656af4bc4811ad0bdf1022610304f166fca2d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/review-media-copy-receipt.json",
+      "bytes": 5053,
+      "sha256": "b0fc327be5082842555b13ef44db3d96b839d4d2c8b2f3b5c1eb68bfc5657366"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/review.html",
+      "bytes": 3410,
+      "sha256": "b2d210b1c3479d17762e57125946958fe6886284b53df95c43dd7e0ebdd73077"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/review.html-1440.png",
+      "bytes": 127253,
+      "sha256": "5a7cd4d1aa144104635f9ed66ee9c3da6c609709792dadc1101232f9020af5bc"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/review.html-390.png",
+      "bytes": 72689,
+      "sha256": "02cf5a129e28354407a7074163ecd7981af535c7e0bab2d2741e3e2fec5c1fa4"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/scope.json",
+      "bytes": 1087,
+      "sha256": "77d9ffd59b785b5c6f91f62613b54ed13f6d8be589ec4af3c4857a01d880492b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/artifact-index.json",
+      "bytes": 13253,
+      "sha256": "d2087dfece2502a796c26e57cb49a99f4464915ad69b992054c85367e611873a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-home-mobile-0.devtoolslog.json",
+      "bytes": 282454,
+      "sha256": "6da27165c06e4d5d8f78806238cdbe0aca363b9d103f4881b52d55969c728538"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-home-mobile-0.trace.json",
+      "bytes": 7649434,
+      "sha256": "676bcfd1b25857175f4616bb80b77cfe3fbcab9ab47588c31960bfead96e565d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-home-mobile.report.html",
+      "bytes": 674033,
+      "sha256": "875491f476001daf77a8d28aeaf6418bb0d5f3c56515eec5f91c8b4ab41f78e9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-home-mobile.report.json",
+      "bytes": 616104,
+      "sha256": "865dfeb08f685781d107f6ed31f514db8071792bb4b99cfa69e7021119e381ad"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-pdp-clean-pdp-mobile-0.devtoolslog.json",
+      "bytes": 307611,
+      "sha256": "743db3de1db08800c3ac85656c472801bed47e12d9ee47eeaf45c045fe36ff55"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-pdp-clean-pdp-mobile-0.trace.json",
+      "bytes": 3413587,
+      "sha256": "50fd804c656d65c8a6dd140ac874b3899be63df3d52344e5ac45f43c402b2faa"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-pdp-clean-pdp-mobile.report.html",
+      "bytes": 773244,
+      "sha256": "c4862c4d58c05da44a0bb105efe55bec47958e75a130792dd349d3c09258687a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-pdp-clean-pdp-mobile.report.json",
+      "bytes": 727819,
+      "sha256": "8df351f2de92a476356c3fbb7df24bfb55dc64ef49fe938a2507f72b23cc1790"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-pdp-clean-run.json",
+      "bytes": 2103,
+      "sha256": "d5cf411086fcd3f23ac1ec25411deeb2a1631c9a14ff9ec2c8929ed313f03276"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-pdp-clean-run.run.json",
+      "bytes": 217,
+      "sha256": "22a0835c210ca669b9c23a3c15b93e20361d26dc9912679c1513867b2eac10ab"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-run.json",
+      "bytes": 2013,
+      "sha256": "7a6393ef3bb5603716d12d1b1f13552e34aa99a3078b8b8d5861424de2cc87e1"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-run.run.json",
+      "bytes": 207,
+      "sha256": "e33f0604286761a4ce17f17c48ae6277ed71ba19cfc7405fec63c0f05db94672"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-collection-mobile-0.devtoolslog.json",
+      "bytes": 296942,
+      "sha256": "ab642fd3c957f1b7d3a4928daa75d5661b3effac0a16c1b16cb22626162ec38f"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-collection-mobile-0.trace.json",
+      "bytes": 5065275,
+      "sha256": "0be76b68d3746a77cb73ae5277ad62346687343718da450d24a922eeb6e334c1"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-collection-mobile.report.html",
+      "bytes": 839007,
+      "sha256": "516c10f22c0cb5d3798397caf03789671b0f4bf25c7513e67cf291c40a69836d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-collection-mobile.report.json",
+      "bytes": 787351,
+      "sha256": "5787f2a66c2243d9bc5b605145ff1ced83fc47945e9a0c7156a95196211fcd12"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-pdp-mobile-0.devtoolslog.json",
+      "bytes": 352768,
+      "sha256": "4ef0392e902c6e4f648bdc688b1b723cc1f4a28fe6601e3f24e2d7d9d3543b2e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-pdp-mobile-0.trace.json",
+      "bytes": 3477520,
+      "sha256": "8121045d5c6638633bf775c9a1dd7c6ac3787f4918fa62e1ea8fe49793f9f8dd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-pdp-mobile.report.html",
+      "bytes": 766139,
+      "sha256": "c10394c5505cbffffc0cfce879bd1a3a579980a7010f0f5608e890947a8c87c4"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-pdp-mobile.report.json",
+      "bytes": 719749,
+      "sha256": "1c0b0461ae8e0976e600670efce78c34fcb268017ae4ae22d249aff3631e6134"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-run.json",
+      "bytes": 5451,
+      "sha256": "660040249d2da34c7d9fb58509f67d2ea86018a5d2d39aff67599ff208ea148b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-run.run.json",
+      "bytes": 217,
+      "sha256": "824feee1f75747b0025f682857de903f06d4620aab2450637c6cddecea50bfce"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-shop-mobile-0.devtoolslog.json",
+      "bytes": 244092,
+      "sha256": "76dc1a0e5d9502c0dd079fafdd61b896da23e915886523aa636079b3329c1d3f"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-shop-mobile-0.trace.json",
+      "bytes": 2599913,
+      "sha256": "625f8c86db8cd034e0501ff76f53b81a55b225481f4b0df45cefe5123dafaa8d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-shop-mobile.report.html",
+      "bytes": 1140877,
+      "sha256": "d8d472c4bf16d888300307f25abcb8175044cdf11943cada95677500acf9dc81"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline/lighthouse-baseline-secondary-shop-mobile.report.json",
+      "bytes": 1084458,
+      "sha256": "457be43980d4d5f6237e67f963cd14e12584e460a372ec76a5629dc0e60adf6b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-collection-1440-dom.png",
+      "bytes": 1021464,
+      "sha256": "f3658705615c8d6ed0f6f4d58c4cef0bdebe3da961fe84bf913dc2e5395a131c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-collection-1440-settled.png",
+      "bytes": 1021464,
+      "sha256": "f3658705615c8d6ed0f6f4d58c4cef0bdebe3da961fe84bf913dc2e5395a131c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-collection-390-dom.png",
+      "bytes": 192939,
+      "sha256": "f56d2acbeb7ef309ed3aab17d39cfd0b12e137b3c1ebc04d6feee8fdfade9752"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-collection-390-settled.png",
+      "bytes": 192939,
+      "sha256": "f56d2acbeb7ef309ed3aab17d39cfd0b12e137b3c1ebc04d6feee8fdfade9752"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-home-1440-dom.png",
+      "bytes": 783763,
+      "sha256": "7fe358c32959e41f51382ff9b996061985dc127cbaa5dba8a4eb93a7eb5198b3"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-home-1440-settled.png",
+      "bytes": 821249,
+      "sha256": "60ea64b0a2bec6962423ce3a748af4e729b5ce84e042b168a63938c69a95ed1a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-home-390-dom.png",
+      "bytes": 217473,
+      "sha256": "82142985854e00feca17212980ea5e2d39742eefbe47897c6a4548ca69ee5e38"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-home-390-settled.png",
+      "bytes": 231444,
+      "sha256": "d4f809c9e5f3310af821468f61458734812f19ddb3f3abc3d1073f3112d26dde"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-shop-1440-dom.png",
+      "bytes": 605486,
+      "sha256": "28e8c67c7def7d9fe105dc7e9e4d4ad03f44fd4467fa6fe5e636d485cc01bfbd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-shop-1440-settled.png",
+      "bytes": 605486,
+      "sha256": "28e8c67c7def7d9fe105dc7e9e4d4ad03f44fd4467fa6fe5e636d485cc01bfbd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-shop-390-dom.png",
+      "bytes": 293529,
+      "sha256": "1539869865b8c5f1331d185bbd2fb903368abf48f1e3e9869fbce1e0fe6aac5d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/baseline-shop-390-settled.png",
+      "bytes": 293529,
+      "sha256": "1539869865b8c5f1331d185bbd2fb903368abf48f1e3e9869fbce1e0fe6aac5d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/capture-results.json",
+      "bytes": 266336,
+      "sha256": "6d3eeeda96214a8ca6bfb79dab85828fea13573af4799bdd899d1296e40d7d8c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/capture.cjs",
+      "bytes": 2552,
+      "sha256": "fcb358d50c6ad385dcf407fbd2c52c122c3000176de7624fd921bbc51359069b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-home-mobile-0.devtoolslog.json",
+      "bytes": 217015,
+      "sha256": "7bba28a67667d282ce4daafbbbb39dfc26ccf323d594c12baae576a4562c91cd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-home-mobile-0.trace.json",
+      "bytes": 7261258,
+      "sha256": "3ab060dcdd65f1471a4b18d7642b004490b05314e99fbce30604ad6162bbff4c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-home-mobile.report.html",
+      "bytes": 654380,
+      "sha256": "3a62a4c8e819b315189f1a53ec25e304437af6dffa5013f0470eb9c94ee280ca"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-home-mobile.report.json",
+      "bytes": 586258,
+      "sha256": "97c14ba0ffc3e8e7495f408cd52633057a1a5e037cf59c35335027849dff816a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-run.json",
+      "bytes": 2180,
+      "sha256": "c1bf561d7e1944577608764eff3f29a16d3a700d4e5e1cbac25c87b6ae3323b6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-run.run.json",
+      "bytes": 205,
+      "sha256": "7ac79c82c66938fc27abccc1432a6799486ff16c622f31aad7a110a481cbfc82"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-collection-mobile-0.devtoolslog.json",
+      "bytes": 230747,
+      "sha256": "a91a1afe31c34784318ddb6cccd3d99aa33af3ded2d7fbcdea1790c6e5d68921"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-collection-mobile-0.trace.json",
+      "bytes": 4886468,
+      "sha256": "a333fc8fc36877b4a0b21dd5a7b19132fec92bac557f8bc41b239edb40e816c8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-collection-mobile.report.html",
+      "bytes": 809677,
+      "sha256": "9ff1db32b4af428aeacada3d879ab545ddba055caf228e1174e3a8a9f25a2388"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-collection-mobile.report.json",
+      "bytes": 748912,
+      "sha256": "555d807eed9c0552ca0a801342249f998eb8c8bfbe11be09bf65bc5c904ba9b7"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-pdp-mobile-0.devtoolslog.json",
+      "bytes": 260869,
+      "sha256": "08074e0e9e5d303de82cf21c0efea145488b9cd2ebc4880da99577fd4cf28b7b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-pdp-mobile-0.trace.json",
+      "bytes": 3382737,
+      "sha256": "f536cf032dafff36c93f557de66f9826d6f5844c42ec9c6b9abe459ad2f841c0"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-pdp-mobile.report.html",
+      "bytes": 680171,
+      "sha256": "a26802d753b9c7ce68b86bf4d3736628b660761556792197a5d1fba84195f6d5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-pdp-mobile.report.json",
+      "bytes": 627752,
+      "sha256": "159b117c3ec765ca66599f65f6ad752cec5a87b19cf4d34c872760129916acd6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-run.json",
+      "bytes": 5444,
+      "sha256": "5932560f77fc653432e701d00c2c234b8f20169a9e0993b20019582d72fb026f"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-run.run.json",
+      "bytes": 215,
+      "sha256": "bef913257f95b58ad9d5592bdd108ed6e5d2bb2371c888e018ddc44503488c78"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-shop-mobile-0.devtoolslog.json",
+      "bytes": 192934,
+      "sha256": "b84e68e2774ef0c49119ddeaccf8a761ea8343ade73878e3b409cdc7cac8020c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-shop-mobile-0.trace.json",
+      "bytes": 2562240,
+      "sha256": "1f349e4919c2c36953498ab77799b5a4cbc391c27e4d806e38ee1db3b93fabc6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-shop-mobile.report.html",
+      "bytes": 1114970,
+      "sha256": "9c405a86768caa14762f5bf797f0976e4f07da2ff647d95bbeb2ec1a8f7d59ff"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline/lighthouse-inline-secondary-shop-mobile.report.json",
+      "bytes": 1052300,
+      "sha256": "79da740ecefdcf6b34a658fbd526b194b804b69944227644d68fda62932020bd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-collection-1440-dom.png",
+      "bytes": 1021464,
+      "sha256": "f3658705615c8d6ed0f6f4d58c4cef0bdebe3da961fe84bf913dc2e5395a131c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-collection-1440-settled.png",
+      "bytes": 1021464,
+      "sha256": "f3658705615c8d6ed0f6f4d58c4cef0bdebe3da961fe84bf913dc2e5395a131c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-collection-390-dom.png",
+      "bytes": 194168,
+      "sha256": "8b1d5f817695942014a3d3e33a87ad1bb0ab0d012577539c736d6590a5e1a69f"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-collection-390-settled.png",
+      "bytes": 192939,
+      "sha256": "f56d2acbeb7ef309ed3aab17d39cfd0b12e137b3c1ebc04d6feee8fdfade9752"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-home-1440-dom.png",
+      "bytes": 783763,
+      "sha256": "7fe358c32959e41f51382ff9b996061985dc127cbaa5dba8a4eb93a7eb5198b3"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-home-1440-settled.png",
+      "bytes": 821249,
+      "sha256": "60ea64b0a2bec6962423ce3a748af4e729b5ce84e042b168a63938c69a95ed1a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-home-390-dom.png",
+      "bytes": 217473,
+      "sha256": "82142985854e00feca17212980ea5e2d39742eefbe47897c6a4548ca69ee5e38"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-home-390-settled.png",
+      "bytes": 231444,
+      "sha256": "d4f809c9e5f3310af821468f61458734812f19ddb3f3abc3d1073f3112d26dde"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-shop-1440-dom.png",
+      "bytes": 605486,
+      "sha256": "28e8c67c7def7d9fe105dc7e9e4d4ad03f44fd4467fa6fe5e636d485cc01bfbd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-shop-1440-settled.png",
+      "bytes": 605486,
+      "sha256": "28e8c67c7def7d9fe105dc7e9e4d4ad03f44fd4467fa6fe5e636d485cc01bfbd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-shop-390-dom.png",
+      "bytes": 293529,
+      "sha256": "1539869865b8c5f1331d185bbd2fb903368abf48f1e3e9869fbce1e0fe6aac5d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-shop-390-settled.png",
+      "bytes": 293529,
+      "sha256": "1539869865b8c5f1331d185bbd2fb903368abf48f1e3e9869fbce1e0fe6aac5d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/inline-theme-router.php",
+      "bytes": 3442,
+      "sha256": "d237d635c419e5b098e9dc45f0739e3fd94cfc881b8173923ff6344638fd0292"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/metrics.json",
+      "bytes": 38709,
+      "sha256": "fd75632f8ab5bc0c5b494a55793976459810a99972d851667b6aaf063217ae1d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a/visual-comparison.json",
+      "bytes": 1710,
+      "sha256": "b0043be65d3181780b22030976af49eed3578a5e1acc65499ef0a457d864376c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-a-performance.md",
+      "bytes": 8691,
+      "sha256": "f3599cda1eeb6b7067ab0da3bee14bb7a3643eafedf8a9659634d6082e25596c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-b/local-resource-selection.json",
+      "bytes": 101834,
+      "sha256": "961e54d1336d2e204d6ee9d5f6dc087eb38e68fefbe1469cb64b9f3852d7877f"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-b/preview.html",
+      "bytes": 1411,
+      "sha256": "947c7ca0504fcb7abd0c771b812661cb80abaeff87dae590bea2a3e9180576a6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-b-contract.json",
+      "bytes": 2234,
+      "sha256": "3264743f3a794786f37bfaf9c6e9529354d4c917248a7b420bd3949f452f396c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-b-platform-checklist.md",
+      "bytes": 12509,
+      "sha256": "16ef85e6a206f5cb06cd0ba940d5f98e04ca8d0579c5ce42dd16512f9111e9a5"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-b-preview.html-1440.png",
+      "bytes": 82804,
+      "sha256": "f2832c6c3e8b1b9d9b036f2735e7cd25ee1055e922b9c9503059b54fb16e5369"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-b-preview.html-390.png",
+      "bytes": 69044,
+      "sha256": "f6df81405d7e32d5899a30aa3e09695448dd4dc1ccc668da7e25ab55b7ae0b12"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/backup-manifest.json",
+      "bytes": 6204,
+      "sha256": "9261086f215ff1bd5ce6a1f795bf3fdc9474d1f61e942451cf2a9555cec9a373"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/deliverable-index.json",
+      "bytes": 2048,
+      "sha256": "88a391c9880b16308ffe0384cd48d12b3612cb9ee14e2b6ff13747a5c9d5b30a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/IMMUTABILITY-POLICY.json",
+      "bytes": 565,
+      "sha256": "3d665c4ae757c1acd51899678b53685a921663d81b17aa3db1880568743e0a6c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/css/mascot.css",
+      "bytes": 19060,
+      "sha256": "afa26a447e4e1fe41e93a70984c43538d83ccd1d60bbbd316ea81702fe4fdfe2"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/images/skyy-runtime-poster.webp",
+      "bytes": 61276,
+      "sha256": "714388658e58754368007853909bbee0b7c97aa797b79d23762da26f4a0766dd"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/js/skyy-3d.js",
+      "bytes": 28080,
+      "sha256": "b3c409a52c3bdf11844d51980ab9f9611a6f989211a45d6a49f6e2e4209418c8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/js/skyy-3d.min.js",
+      "bytes": 13847,
+      "sha256": "d753ac42574ebb2afcf1f4e4d71c2b7a74860aa7a1945d1734f9d3c7dcf2c14a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+      "bytes": 19758,
+      "sha256": "3e1ffb8cd248e1d8cea04f6a7375e923c15532d1e7892a8d4b5cd5e1ebc4a91e"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "bytes": 512385,
+      "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/capture-skyy-poster.cjs",
+      "bytes": 3129,
+      "sha256": "f91279636e53adc3b3a7f75dfcd1d3009950871dfd189c7cff0668c7d7cd4010"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/skyy-blender-handoff.json",
+      "bytes": 13630,
+      "sha256": "8ba71bd1a8f64ab60c58ab8495b557c2e94710981863f6ffd1ec45a674168d9b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/runtime/skyy-mascot.glb",
+      "bytes": 6058568,
+      "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/source/skyy-mascot.glb",
+      "bytes": 6058568,
+      "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable-checksums.sha256",
+      "bytes": 3714,
+      "sha256": "694e4f7a1e9af1b0dd5bcbb986a9be2a5811f7b4e9eb855fc407885e246a3922"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/preparation-checks.json",
+      "bytes": 274,
+      "sha256": "245041a58a348646ae51dc0a532a107eacb8b9ee49da02cf9292a69004eefe58"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/preservation-verification.txt",
+      "bytes": 2536,
+      "sha256": "449e88c06f0f094b214b0c102e3f7083e5c949bfd59e38c99aec0cf1570a7328"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c-blender-phase.md",
+      "bytes": 10156,
+      "sha256": "1b3b911d46b5a0e61a2dc8291d63c62f935cf24ebef106d2cf8fa6ba63c1bfb6"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c-contract.json",
+      "bytes": 20752,
+      "sha256": "7d51a7558d6d12a73a9b50efb77cca55b0c68dddaf96a004632317923e612306"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c-evidence.json",
+      "bytes": 7750,
+      "sha256": "c60ae9e1c33979d19a1c65ea75a8819149375fc1a4910da0f477f469ee03cc05"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c-review.html",
+      "bytes": 4992,
+      "sha256": "81e49917bca2b2f775119c61d875122f94d8510b1668aace8e8f198179ccfe53"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c-review.html-1440.png",
+      "bytes": 196980,
+      "sha256": "fe4562e269e304017e0b46c4b34589c6656fefaa7fa7a768cd81ac3cb92aa0c3"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c-review.html-390.png",
+      "bytes": 109813,
+      "sha256": "4e5299a60be298759ae1d9538d9a4bed3c892477246169926e0869010f966e3a"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/build_review.py",
+      "bytes": 13602,
+      "sha256": "721db817c9ce96b4e097880c8acb92787cb5a860ee53f1bf23187a8227741ffb"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/2c3f72b68414443c78f7d0d8fc837e78bf1703f0c4f338d4a183deb278c4646b.webp",
+      "bytes": 283248,
+      "sha256": "2c3f72b68414443c78f7d0d8fc837e78bf1703f0c4f338d4a183deb278c4646b"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/3260ec857be2da18fbec4d2a6a92f6edeca1825f4a8e38fc602c4a580f2544ef.webp",
+      "bytes": 230622,
+      "sha256": "3260ec857be2da18fbec4d2a6a92f6edeca1825f4a8e38fc602c4a580f2544ef"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9.webp",
+      "bytes": 221956,
+      "sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8.webp",
+      "bytes": 215006,
+      "sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290.webp",
+      "bytes": 243112,
+      "sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d.webp",
+      "bytes": 256336,
+      "sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724.webp",
+      "bytes": 205476,
+      "sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb.webp",
+      "bytes": 225496,
+      "sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/e96656573c7ced497a9c47e3cad432497ce1f433fe05a28bfc64936ee0bb3d45.webp",
+      "bytes": 126246,
+      "sha256": "e96656573c7ced497a9c47e3cad432497ce1f433fe05a28bfc64936ee0bb3d45"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/candidate-media/fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8.webp",
+      "bytes": 196372,
+      "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/founder-media-review.html",
+      "bytes": 2975928,
+      "sha256": "fcd368856eb91cb154a313d68123a411077796686ff23c2e24cc2702994bc534"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/validation.json",
+      "bytes": 493,
+      "sha256": "750c360f3ab7ff58f222c65201c5b707c399d9438e97e532653eb92eeab5bd6c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d/visual-inspection.json",
+      "bytes": 9571,
+      "sha256": "6ae9e50ee572cabaf14505e1ae199ecc80eeaf602084d477d068dece82ca0169"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d-content-matrix.json",
+      "bytes": 365759,
+      "sha256": "7ffc9f0d1425d29fe6e8b9b58b4e5fed35a948d7cd3aedc179b8f8e6235f10d0"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d-content-matrix.md",
+      "bytes": 9149,
+      "sha256": "2595971e1ed6de77f26deacfa77a6f7401222ff1931875d128fc836b50f7a34c"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d-founder-media-review.html-1440.png",
+      "bytes": 233463,
+      "sha256": "1b565586bcdcdedeae282f29774f2d0e0de65914dbcfeb92a6221f284a0fe4cf"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d-founder-media-review.html-390.png",
+      "bytes": 89770,
+      "sha256": "37712a67222f118a32141d62db076bba6c128cc97ae9cd2b7d9b8d72f9959df4"
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-d-media-review-queue.json",
+      "bytes": 31302,
+      "sha256": "5e45cf33bc6f02351155a1bae836cc8791e418ee4f8e7fb20961c62c1df4c98c"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/completion-report.md",
+      "bytes": 9427,
+      "sha256": "c4a8a216180dc8918bba448a570672a9bbd6a6233fc32a81e6359d45026ec49e"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/contract.json",
+      "bytes": 1367,
+      "sha256": "4f1a378e3e4ef2f1931ab15a9dac18f367af5ed4457095dfac56ad9bafccf394"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/independent-review.md",
+      "bytes": 6990,
+      "sha256": "88d8f032dc622e31a937f8f327ef20405797b96a5520f8213d772a8ba5da7a84"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/ledger.jsonl",
+      "bytes": 398,
+      "sha256": "e8cb35c64781707665f1e6557ba5300f6c107c8f51556c3755782031becbcb25"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/scope.json",
+      "bytes": 1087,
+      "sha256": "77d9ffd59b785b5c6f91f62613b54ed13f6d8be589ec4af3c4857a01d880492b"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-a-performance.md",
+      "bytes": 8691,
+      "sha256": "f3599cda1eeb6b7067ab0da3bee14bb7a3643eafedf8a9659634d6082e25596c"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-b-contract.json",
+      "bytes": 2234,
+      "sha256": "3264743f3a794786f37bfaf9c6e9529354d4c917248a7b420bd3949f452f396c"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-b-platform-checklist.md",
+      "bytes": 12509,
+      "sha256": "16ef85e6a206f5cb06cd0ba940d5f98e04ca8d0579c5ce42dd16512f9111e9a5"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-c-blender-phase.md",
+      "bytes": 10156,
+      "sha256": "1b3b911d46b5a0e61a2dc8291d63c62f935cf24ebef106d2cf8fa6ba63c1bfb6"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-c-contract.json",
+      "bytes": 20752,
+      "sha256": "7d51a7558d6d12a73a9b50efb77cca55b0c68dddaf96a004632317923e612306"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-c-evidence.json",
+      "bytes": 7750,
+      "sha256": "c60ae9e1c33979d19a1c65ea75a8819149375fc1a4910da0f477f469ee03cc05"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-c-review.html",
+      "bytes": 5118,
+      "sha256": "77c3db9a4d0fe038284074fb3fc05a2fdad99231ac67d1db6863605e80039ddb"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-d-content-matrix.json",
+      "bytes": 365759,
+      "sha256": "7ffc9f0d1425d29fe6e8b9b58b4e5fed35a948d7cd3aedc179b8f8e6235f10d0"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-d-content-matrix.md",
+      "bytes": 9149,
+      "sha256": "2595971e1ed6de77f26deacfa77a6f7401222ff1931875d128fc836b50f7a34c"
+    },
+    {
+      "path": "tasks/v2-specialized-completion-20260906/track-d-media-review-queue.json",
+      "bytes": 31302,
+      "sha256": "5e45cf33bc6f02351155a1bae836cc8791e418ee4f8e7fb20961c62c1df4c98c"
+    }
+  ]
+}

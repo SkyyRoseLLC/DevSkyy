@@ -1,0 +1,100 @@
+{
+  "id": "V2-CINEMATIC-OODA-20260906",
+  "state": "NEEDS_MORE_WORK",
+  "manager": "root",
+  "baseline": "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+  "worktree": "/Users/theceo/.codex/worktrees/7116/DevSkyy",
+  "theme": "wordpress-theme/skyyrose-flagship-2",
+  "authority": {
+    "path": "/Users/theceo/.codex/attachments/04b6d1cd-297c-4a1d-938e-acbdc2dacddb/pasted-text.txt",
+    "sha256": "3d35b46f0ce29e68374cbac08c65ec34efac5c4465e93584589b0e7a63e2f103"
+  },
+  "acceptance": [
+    "Complete phases A-O against attached brief",
+    "Preserve approved heroes, exact nine scenes, character identity, product cards and Town Line sources",
+    "Current source-bound build, browser, commerce, motion, fallback, performance and visual evidence",
+    "No deployment or promotion"
+  ],
+  "evidence_required": [
+    "architecture_map",
+    "requirements_matrix",
+    "source_integrity",
+    "build_tests",
+    "browser_matrix",
+    "performance_matrix",
+    "independent_review",
+    "manager_verification"
+  ],
+  "roster": [
+    {
+      "name": "root",
+      "role": "manager and environment integration"
+    },
+    {
+      "name": "architecture_audit",
+      "role": "read-only implementation census"
+    },
+    {
+      "name": "independent_review",
+      "role": "read-only evidence and gap review"
+    },
+    {
+      "name": "search_implementation",
+      "role": "native search implementation"
+    },
+    {
+      "name": "quickview_implementation",
+      "role": "native Woo purchase enhancement"
+    },
+    {
+      "name": "scene_handoff",
+      "role": "collection continuity pilot and rollout"
+    },
+    {
+      "name": "commerce_source_review",
+      "role": "independent JS/PHP/source review"
+    }
+  ],
+  "tool_profile": "Read/Grep/Bash plus local ledger writes and independent Agent dispatch; browser/build permitted by user brief",
+  "exclusions": [
+    "deployment",
+    "staging writes",
+    "paid generation",
+    "Blender rebuild",
+    "Town Line final design"
+  ],
+  "issues": [
+    {
+      "id": "ENV-PILLOW",
+      "state": "RESOLVED",
+      "detail": "Reused existing pinned Node22/Pillow QA environment; no package version changes."
+    },
+    {
+      "id": "QV-NATIVE-TEMPLATES",
+      "state": "RESOLVED",
+      "detail": "Native variation templates available from simple PDP and archive Quick View; stale image callbacks guarded."
+    },
+    {
+      "id": "QV-LAZY-COMPAT",
+      "state": "RESOLVED",
+      "detail": "Native dependencies, inline after code and CDN origins preserve eager loading. Independent 19/19 PHP regression pass."
+    },
+    {
+      "id": "PERF-MOBILE",
+      "state": "OPEN",
+      "detail": "Final mobile Lighthouse: Home4836ms, Shop5777ms, PDP5350ms; release gate remains open."
+    },
+    {
+      "id": "PDP-BR003-MEDIA",
+      "state": "OPEN",
+      "detail": "Authority rejects current PDP image; native fixture displays unavailable state. No fabricated replacement."
+    },
+    {
+      "id": "FULL-VISUAL-CERT",
+      "state": "OPEN",
+      "detail": "Whole brief certification remains incomplete; see final requirements matrix."
+    }
+  ],
+  "task_control_note": "scripts/task_control.py absent; equivalent repository append-only ledger used",
+  "at": "2026-09-06T14:10:43.465081+00:00"
+}

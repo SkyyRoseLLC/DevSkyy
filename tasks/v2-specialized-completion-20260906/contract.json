@@ -1,0 +1,49 @@
+{
+  "id": "V2-SPECIALIZED-COMPLETION-20260906",
+  "baseline": "V2-READINESS-20260906",
+  "acceptedSourceDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "overallV2Status": "NEEDS_MORE_WORK",
+  "tracks": [
+    {
+      "id": "A",
+      "name": "FRONTEND PERFORMANCE",
+      "status": "NEEDS_MORE_WORK",
+      "owner": "frontend-performance-engineer",
+      "report": "track-a-performance.md"
+    },
+    {
+      "id": "B",
+      "name": "PLATFORM READINESS",
+      "status": "READY_TO_VERIFY_ON_STAGING",
+      "owner": "hosting-platform-engineer",
+      "report": "track-b-platform-checklist.md"
+    },
+    {
+      "id": "C",
+      "name": "ASK SKYY ASSET",
+      "status": "READY_FOR_BLENDER",
+      "owner": "blender-character-optimization",
+      "report": "track-c-blender-phase.md"
+    },
+    {
+      "id": "D",
+      "name": "PRODUCT CONTENT",
+      "status": "READY_FOR_FOUNDER_CONTENT_REVIEW",
+      "owner": "editorial-product-truth-founder-media",
+      "report": "track-d-content-matrix.md"
+    }
+  ],
+  "protectedSystems": [
+    "five animated heroes",
+    "nine Scroll Worlds",
+    "approved product cards",
+    "native Quick View",
+    "scene-commerce handoffs",
+    "accepted Skyy software",
+    "Town Line source"
+  ],
+  "deployment": false,
+  "stagingChanged": false,
+  "modelOptimized": false,
+  "mediaPromoted": false
+}

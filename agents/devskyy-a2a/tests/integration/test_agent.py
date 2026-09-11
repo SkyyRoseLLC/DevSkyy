@@ -140,10 +140,11 @@ def test_empty_sku_is_rejected() -> None:
 # ---------------------------------------------------------------------------
 
 
-def test_brand_check_flags_retired_tagline() -> None:
-    """Brand check catches 'Where Love Meets Luxury' even without CreativeAgent."""
+@pytest.mark.parametrize("phrase", ["Where Love Meets Luxury", "Luxury Grows from Concrete"])
+def test_brand_check_flags_retired_tagline(phrase: str) -> None:
+    """Brand check catches retired taglines even without CreativeAgent."""
     result = brand_check(
-        asset_text="Where Love Meets Luxury — discover our new collection.",
+        asset_text=f"{phrase} — discover our new collection.",
         collection="signature",
     )
     assert result["ok"] is True
@@ -152,9 +153,9 @@ def test_brand_check_flags_retired_tagline() -> None:
 
 
 def test_brand_check_passes_clean_copy() -> None:
-    """Brand check approves copy that uses the canonical tagline."""
+    """Brand check approves copy without a brand tagline."""
     result = brand_check(
-        asset_text="Luxury Grows from Concrete. The Black Rose drops Friday.",
+        asset_text="The Black Rose drops Friday.",
         collection="black-rose",
     )
     # Without CreativeAgent installed, the structural-only check passes.

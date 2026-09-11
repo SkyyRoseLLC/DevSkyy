@@ -1,8 +1,9 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # SkyyRose Suite
 
 A private Claude Code **marketplace** of five plugins — an orchestrator plus four themed teams (marketing, design, core-engineering, QA) — each grounded in verified vendor docs and wired to the SkyyRose Elite Studio runtime and dev-team pipeline.
 
-> Tagline canon: **"Luxury Grows from Concrete."**
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 ## The five plugins
 

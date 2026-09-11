@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-twitter-thread
 description: "Writes SkyyRose X/Twitter threads — brand story deep-dives, collection launches, founder takes, and culture commentary — in Oakland-direct voice with per-tweet value delivery."
@@ -22,7 +23,7 @@ allowed-tools: Read Write Edit Glob
 ## Brand Canon (non-negotiable)
 
 - **Voice on X:** More direct and opinionated than other platforms. Oakland energy — unhurried, specific, no hedging. Corey speaks as a founder who has earned the room, not a brand trying to get it.
-- **Tagline verbatim:** `Luxury Grows from Concrete.` — appears in the CTA tweet only (once, period included).
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Collection register locked:** Black Rose = armor, defiance. Love Hurts = bloodline, raw romance. Signature = "stay golden," West Coast standard. Never cross-attribute. A thread about one collection stays in that register throughout.
 - **No urgency manipulation:** Drop announcements state scarcity as fact ("250 made, pre-order is open"). No countdown pressure, no "last chance" desperation tone.
 - **No European luxury-house references.** The Five only: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels.
@@ -59,7 +60,7 @@ Every SkyyRose thread follows this spine:
 2. **Context tweet** — why this matters, who Corey is, or what the collection stands for
 3. **Body tweets (3-N-2)** — the substance: story beats, product details, cultural anchors, founder lessons
 4. **Summary tweet** — designed to be screenshotted; the TL;DR that earns the share
-5. **CTA tweet** — single action + `Luxury Grows from Concrete.` + link
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 ### Outline Format
 
@@ -113,7 +114,7 @@ CTA:      [Follow + link + tagline]
 **CTA Tweet (Final)**
 - Single action only.
 - If drop: link to the product page (first and only link in the thread).
-- Always close with `Luxury Grows from Concrete.`
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - Add 1-2 hashtags maximum here: `#SkyyRose` + one collection tag.
 
 ### Formatting Rules
@@ -139,7 +140,7 @@ CTA:      [Follow + link + tagline]
 - [ ] Each body tweet delivers one clear idea, numbered consistently
 - [ ] At least one body tweet contains a specific fact, detail, or mini-story
 - [ ] Summary tweet works as a standalone screenshot
-- [ ] CTA tweet has single action + "Luxury Grows from Concrete." + max 2 hashtags
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - [ ] No links mid-thread (final tweet only)
 - [ ] Collection voice verified — no cross-attribution
 - [ ] No urgency manipulation language
@@ -247,7 +248,7 @@ The standard — not the statement.
 
 Follow @SkyyRose for every drop, story, and behind-the-scenes.
 
-Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 #SkyyRose #SignatureCollection
 ```

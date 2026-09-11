@@ -1,0 +1,48 @@
+{
+  "id": "V2-STAGING-RELEASE-20260906",
+  "status": "READY_FOR_FOUNDER_APPROVAL",
+  "manager": "root",
+  "at": "2026-09-06T21:00:02.944408+00:00",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "scope": "One exact theme ZIP deployment to staging, then feature parity and real-platform performance verification. No production, manual cache purge, config mutation, orders/payments or later optimization/content/model/Town Line phase.",
+  "acceptedSourceDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "zip": {
+    "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/package/skyyrose-flagship-2.zip",
+    "sha256": "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+    "bytes": 170023102,
+    "files": 527
+  },
+  "sourceTree": "5dd1902d8075e9c98bafaf5f80e3a88f2792a3de",
+  "planSha256": "ad4926a97cfea2a195de6366a4aaa61aa8b65b12f0a7dc685a69ef2c81231911",
+  "rollback": {
+    "sha256": "1b8164b36374aadea85aa4ec7c4d3f8a18e9f8e9f34042f706bd21c090a45ac3",
+    "bytes": 262563840,
+    "files": 447,
+    "matchesCapturedStaging": true
+  },
+  "fileActions": {
+    "UNCHANGED": 319,
+    "REPLACE": 48,
+    "RETIRE_FROM_ACTIVE_THEME": 80,
+    "ADD": 160
+  },
+  "independentReview": "PASS",
+  "runtimeReadiness": "NEEDS_MORE_WORK",
+  "deploymentAuthorized": false,
+  "deploymentPerformed": false,
+  "knownUnknowns": [
+    "Intervening historical deployment actor/time and seven generated/metadata file lineage unresolved",
+    "Managed cache/optimizedHTML parity is postdeployment evidence, not implied by filesystem install",
+    "Remote installer/rollback not executed or rehearsed",
+    "Physical-device,fieldINP,Blender and product media/content certification remain later gates"
+  ],
+  "evidenceHashes": {
+    "runtime-sha256.txt": "224ff53ca990d9364604757ae93d6c5fdfe71edac442c74df89738684ba92f58",
+    "rollback-sha256.txt": "74908d2a7a279855bc5746bd4edf124f80187b8e5e8b11146a3a77b3be48d179",
+    "package/release-manifest.json": "57c7b48529bd5822d19b9400825b1283c43fd0671edae3e68b9335a20025a291",
+    "rollback-receipt.json": "2eeddc584e03f7a74d64e5a480484b18230a03edf929e0b1d0e606f18ebe348e",
+    "deployment-file-plan.json": "708e1fd4ee855da193968901cb10f395bea0d9733019c0efab28ab1c46be1559",
+    "tasks/v2-staging-release-20260906/independent-review.json": "9d85cc4dc2d60f8645ab855e3918f5b41ab738c54f9291fd275dd8cd2c90a48d",
+    "tasks/v2-staging-release-20260906/deployment-and-rollback.md": "ad4926a97cfea2a195de6366a4aaa61aa8b65b12f0a7dc685a69ef2c81231911"
+  }
+}

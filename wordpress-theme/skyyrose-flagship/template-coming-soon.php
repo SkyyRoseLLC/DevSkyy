@@ -27,7 +27,7 @@ defined( 'ABSPATH' ) || exit;
 
 $skyyrose_title       = __( 'The next collection is coming.', 'skyyrose' );
 $skyyrose_eyebrow     = __( 'Skyy Rose — Studio Notice', 'skyyrose' );
-$skyyrose_tagline     = __( 'Luxury Grows from Concrete.', 'skyyrose' );
+$skyyrose_tagline     = '';
 $skyyrose_body_intro  = __( 'We are reworking the floor. The story stays the same — what you wear should say something. New collection, new chapters, same Oakland blood.', 'skyyrose' );
 $skyyrose_signup_lead = __( 'Be the first to know when we open the doors.', 'skyyrose' );
 $skyyrose_fonts_uri   = SKYYROSE_ASSETS_URI . '/fonts';
@@ -395,7 +395,6 @@ $skyyrose_ajax_url    = admin_url( 'admin-ajax.php' );
 					<span class="cs-headline__break"><?php esc_html_e( 'The next', 'skyyrose' ); ?></span>
 					<span class="cs-headline__break"><?php esc_html_e( 'chapter is', 'skyyrose' ); ?></span>
 					<span class="cs-headline__break"><?php esc_html_e( 'on the loom.', 'skyyrose' ); ?></span>
-					<span class="cs-headline__accent"><?php echo esc_html( $skyyrose_tagline ); ?></span>
 				</h1>
 				<hr class="cs-rule cs-reveal" data-delay="2">
 				<p class="cs-lede cs-reveal" data-delay="2">

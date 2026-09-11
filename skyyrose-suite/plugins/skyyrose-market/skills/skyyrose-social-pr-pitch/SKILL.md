@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-pr-pitch
 description: "Writes personalized SkyyRose media pitches to fashion journalists, streetwear editors, and podcast hosts — story-first, under 200 words, with a 2-touch follow-up sequence — for earned media coverage of drops, the founder story, or Oakland luxury fashion angles."
@@ -20,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — the only tagline. Period included. "Luxury from the streets" is a paraphrase — wrong.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Founder voice is earned and unhurried.** Corey Foster. Oakland, CA. Not a hype-merchant, not a press-hungry startup founder. He built this from the Town. The pitch reflects that register.
 - **No fabricated press placements, stats, or awards.** Any metric in a pitch must be real. Placeholder fields use `{operator-supplied}` — do not invent numbers to make the pitch look validated.
 - **Collection voice is isolated.** A pitch about Black Rose uses "armor / defiant elegance / concrete answering back" — not Love Hurts language. Never cross-attribute.
@@ -82,7 +83,7 @@ Hi [Journalist first name],
 [Hook: 1 sentence. The story in the sharpest possible form. Journalist-facing angle — what would make their readers stop scrolling?]
 
 [Story: 3-4 sentences. The substance.
-- For story pitch: Corey's founding context, Oakland anchor, "Luxury Grows from Concrete." as the through-line.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - For news pitch: What dropped, what makes it different from everything else in the streetwear lane.
 - For trend pitch: The cultural observation, anchored in a real SkyyRose fact.
 - For expert pitch: Corey's credentials and specific point of view.]
@@ -207,7 +208,7 @@ python -m skyyrose.elite_studio.ventures.social status
 >
 > Your piece on post-logo independent streetwear last month was one of the clearest-eyed reads on where the lane is heading — the point about earned aesthetic vs. borrowed luxury signifiers is exactly the tension SkyyRose was built around.
 >
-> I'm Corey Foster, founder of SkyyRose — luxury streetwear from Oakland, CA. Tagline is "Luxury Grows from Concrete." — not a metaphor, a fact. Four collections: Black Rose, Love Hurts, Signature, and Kids Capsule. The Black Rose Crewneck is the flagship — gothic luxury, armor energy, silver on dark. Made for The Town but built to travel.
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 >
 > The angle I think fits your audience: how an independent Oakland founder is carving out a quiet-luxury streetwear lane with zero European-house references and zero VC money.
 >

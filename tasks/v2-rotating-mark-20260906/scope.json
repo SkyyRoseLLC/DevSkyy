@@ -1,0 +1,38 @@
+{
+  "id": "V2-ROTATING-MARK-20260906",
+  "manager": "root",
+  "roster": {
+    "root": "staging verification and contract",
+    "rotating_mark_review": "independent provenance reviewer"
+  },
+  "candidate": "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+  "target": "global header and footer",
+  "acceptanceCriteria": [
+    "Approved rotation in both locations for normal users",
+    "Equivalent artwork/aspect/scale/transparency",
+    "320/390/768/1024/1440 responsive verification",
+    "Intrinsic reservation, usable header, deferred footer",
+    "Intentional reduced-motion/Save-Data fallback",
+    "Preserve original, authoring, derivatives and fallback"
+  ],
+  "evidenceRequired": [
+    "source inspection",
+    "staging browser matrix",
+    "asset metadata and hashes",
+    "independent_review"
+  ],
+  "firstSeenIssue": "ROTATING-MARK-STATIC-DEFAULT: accepted local and staged candidate use still instead of animated mark",
+  "constraints": [
+    "No new deployment authorized",
+    "Do not modify approved ZIP or rollback",
+    "No asset deletion or redesign"
+  ],
+  "status": "STAGING_FAIL_LOCAL_RESTORATION_VERIFIED",
+  "localChecks": {
+    "browserCases": 8,
+    "controlledZeroShiftSwaps": 10,
+    "shellRegressions": 10,
+    "generatedAssets": "19 CSS + 13 JS parity",
+    "independentReview": "PASS bounded"
+  }
+}

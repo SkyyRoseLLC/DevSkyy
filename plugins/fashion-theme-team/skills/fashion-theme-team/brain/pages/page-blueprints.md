@@ -1,7 +1,8 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Complete Fashion Commerce Page Blueprints
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 V2 visual layouts and imagery direction: [`../v2/v2-page-and-imagery-plan.md`](../v2/v2-page-and-imagery-plan.md).
 

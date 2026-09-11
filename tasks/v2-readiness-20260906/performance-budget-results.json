@@ -1,0 +1,491 @@
+{
+  "id": "V2-READINESS-20260906",
+  "status": "FAIL",
+  "platformStatus": "ENVIRONMENT-BOUND",
+  "method": "Canonical LCP/CLS from current same-profile Lantern simulation; bytes/requests/longtasks from current-complete unthrottled observer load+10seconds. No synthetic field INP/GPU proxy. Limits unchanged.",
+  "performanceSummarySha256": "0a3cf4e8ea14bbd863613d6f680d1a35d2b8ddc41a68d5dcae91a857e0e962ef",
+  "budgetSha256": "8615b8a0cb76ad016b5f5bf1f22184490257dab4e059756eb38fd6835324da0a",
+  "retry": "Checkout first supplementary seed timed out waiting for SG005 M variation readiness; cause not established. Separate same-profile retry succeeded; original five retained, merged row carries captureSource. No theme change between attempts.",
+  "routes": {
+    "home": {
+      "captureSource": "current-observations.json",
+      "metrics": {
+        "lcpMs": {
+          "limit": 2500,
+          "observed": 5484.4956999999995,
+          "result": "FAIL"
+        },
+        "cls": {
+          "limit": 0.1,
+          "observed": 0.05521945847616424,
+          "result": "PASS"
+        },
+        "inpMs": {
+          "limit": 200,
+          "observed": null,
+          "result": "UNVERIFIED"
+        },
+        "initialTransferKiB": {
+          "limit": 1400,
+          "observed": 1476.6337890625,
+          "result": "FAIL"
+        },
+        "totalTransferKiB": {
+          "limit": 2800,
+          "observed": 1538.87109375,
+          "result": "PASS"
+        },
+        "jsKiB": {
+          "limit": 260,
+          "observed": 211.90234375,
+          "result": "PASS"
+        },
+        "cssKiB": {
+          "limit": 160,
+          "observed": 147.068359375,
+          "result": "PASS"
+        },
+        "imageKiB": {
+          "limit": 800,
+          "observed": 261.484375,
+          "result": "PASS"
+        },
+        "videoKiB": {
+          "limit": 1000,
+          "observed": 661.130859375,
+          "result": "PASS"
+        },
+        "modelKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "textureKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "requestCount": {
+          "limit": 75,
+          "observed": 45,
+          "result": "PASS"
+        },
+        "longTasksOver50ms": {
+          "limit": 4,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "maxLongTaskMs": {
+          "limit": 100,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "animationRenderWorkP95Ms": {
+          "limit": 16.7,
+          "observed": null,
+          "result": "UNVERIFIED"
+        }
+      }
+    },
+    "shop": {
+      "captureSource": "current-observations.json",
+      "metrics": {
+        "lcpMs": {
+          "limit": 2500,
+          "observed": 6024.71455,
+          "result": "FAIL"
+        },
+        "cls": {
+          "limit": 0.1,
+          "observed": 0.0005437037572372934,
+          "result": "PASS"
+        },
+        "inpMs": {
+          "limit": 200,
+          "observed": null,
+          "result": "UNVERIFIED"
+        },
+        "initialTransferKiB": {
+          "limit": 1200,
+          "observed": 1010.1962890625,
+          "result": "PASS"
+        },
+        "totalTransferKiB": {
+          "limit": 2500,
+          "observed": 1012.3916015625,
+          "result": "PASS"
+        },
+        "jsKiB": {
+          "limit": 270,
+          "observed": 193.6640625,
+          "result": "PASS"
+        },
+        "cssKiB": {
+          "limit": 230,
+          "observed": 216.4404296875,
+          "result": "PASS"
+        },
+        "imageKiB": {
+          "limit": 1700,
+          "observed": 297.6708984375,
+          "result": "PASS"
+        },
+        "videoKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "modelKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "textureKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "requestCount": {
+          "limit": 80,
+          "observed": 40,
+          "result": "PASS"
+        },
+        "longTasksOver50ms": {
+          "limit": 3,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "maxLongTaskMs": {
+          "limit": 100,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "animationRenderWorkP95Ms": {
+          "limit": 16.7,
+          "observed": null,
+          "result": "UNVERIFIED"
+        }
+      }
+    },
+    "collection": {
+      "captureSource": "current-observations.json",
+      "metrics": {
+        "lcpMs": {
+          "limit": 2500,
+          "observed": 4513.201999999999,
+          "result": "FAIL"
+        },
+        "cls": {
+          "limit": 0.1,
+          "observed": 0.004294109743622859,
+          "result": "PASS"
+        },
+        "inpMs": {
+          "limit": 200,
+          "observed": null,
+          "result": "UNVERIFIED"
+        },
+        "initialTransferKiB": {
+          "limit": 1700,
+          "observed": 1587.845703125,
+          "result": "PASS"
+        },
+        "totalTransferKiB": {
+          "limit": 4500,
+          "observed": 1587.845703125,
+          "result": "PASS"
+        },
+        "jsKiB": {
+          "limit": 280,
+          "observed": 204.193359375,
+          "result": "PASS"
+        },
+        "cssKiB": {
+          "limit": 185,
+          "observed": 134.6494140625,
+          "result": "PASS"
+        },
+        "imageKiB": {
+          "limit": 1400,
+          "observed": 492.404296875,
+          "result": "PASS"
+        },
+        "videoKiB": {
+          "limit": 2200,
+          "observed": 462.0087890625,
+          "result": "PASS"
+        },
+        "modelKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "textureKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "requestCount": {
+          "limit": 85,
+          "observed": 47,
+          "result": "PASS"
+        },
+        "longTasksOver50ms": {
+          "limit": 4,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "maxLongTaskMs": {
+          "limit": 100,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "animationRenderWorkP95Ms": {
+          "limit": 16.7,
+          "observed": null,
+          "result": "UNVERIFIED"
+        }
+      }
+    },
+    "pdp": {
+      "captureSource": "current-observations.json",
+      "metrics": {
+        "lcpMs": {
+          "limit": 2500,
+          "observed": 5503.2121,
+          "result": "FAIL"
+        },
+        "cls": {
+          "limit": 0.1,
+          "observed": 0.001277543721804576,
+          "result": "PASS"
+        },
+        "inpMs": {
+          "limit": 200,
+          "observed": null,
+          "result": "UNVERIFIED"
+        },
+        "initialTransferKiB": {
+          "limit": 1200,
+          "observed": 1121.189453125,
+          "result": "PASS"
+        },
+        "totalTransferKiB": {
+          "limit": 2000,
+          "observed": 1123.384765625,
+          "result": "PASS"
+        },
+        "jsKiB": {
+          "limit": 340,
+          "observed": 287.8974609375,
+          "result": "PASS"
+        },
+        "cssKiB": {
+          "limit": 280,
+          "observed": 261.0302734375,
+          "result": "PASS"
+        },
+        "imageKiB": {
+          "limit": 950,
+          "observed": 299.9091796875,
+          "result": "PASS"
+        },
+        "videoKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "modelKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "textureKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "requestCount": {
+          "limit": 85,
+          "observed": 52,
+          "result": "PASS"
+        },
+        "longTasksOver50ms": {
+          "limit": 3,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "maxLongTaskMs": {
+          "limit": 100,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "animationRenderWorkP95Ms": {
+          "limit": 16.7,
+          "observed": null,
+          "result": "UNVERIFIED"
+        }
+      }
+    },
+    "cart": {
+      "captureSource": "current-observations.json",
+      "metrics": {
+        "lcpMs": {
+          "limit": 2500,
+          "observed": 5729.519,
+          "result": "FAIL"
+        },
+        "cls": {
+          "limit": 0.1,
+          "observed": 0.0006091639437727169,
+          "result": "PASS"
+        },
+        "inpMs": {
+          "limit": 200,
+          "observed": null,
+          "result": "UNVERIFIED"
+        },
+        "initialTransferKiB": {
+          "limit": 1000,
+          "observed": 806.12890625,
+          "result": "PASS"
+        },
+        "totalTransferKiB": {
+          "limit": 1300,
+          "observed": 806.12890625,
+          "result": "PASS"
+        },
+        "jsKiB": {
+          "limit": 290,
+          "observed": 259.41796875,
+          "result": "PASS"
+        },
+        "cssKiB": {
+          "limit": 240,
+          "observed": 246.85546875,
+          "result": "FAIL"
+        },
+        "imageKiB": {
+          "limit": 300,
+          "observed": 39.9375,
+          "result": "PASS"
+        },
+        "videoKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "modelKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "textureKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "requestCount": {
+          "limit": 75,
+          "observed": 37,
+          "result": "PASS"
+        },
+        "longTasksOver50ms": {
+          "limit": 2,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "maxLongTaskMs": {
+          "limit": 100,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "animationRenderWorkP95Ms": {
+          "limit": 16.7,
+          "observed": null,
+          "result": "UNVERIFIED"
+        }
+      }
+    },
+    "checkout": {
+      "captureSource": "current-checkout-retry-observations.json",
+      "metrics": {
+        "lcpMs": {
+          "limit": 2500,
+          "observed": 4518.19,
+          "result": "FAIL"
+        },
+        "cls": {
+          "limit": 0.1,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "inpMs": {
+          "limit": 200,
+          "observed": null,
+          "result": "UNVERIFIED"
+        },
+        "initialTransferKiB": {
+          "limit": 700,
+          "observed": 763.6640625,
+          "result": "FAIL"
+        },
+        "totalTransferKiB": {
+          "limit": 950,
+          "observed": 768.908203125,
+          "result": "PASS"
+        },
+        "jsKiB": {
+          "limit": 240,
+          "observed": 258.8837890625,
+          "result": "FAIL"
+        },
+        "cssKiB": {
+          "limit": 180,
+          "observed": 226.9658203125,
+          "result": "FAIL"
+        },
+        "imageKiB": {
+          "limit": 160,
+          "observed": 5.6953125,
+          "result": "PASS"
+        },
+        "videoKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "modelKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "textureKiB": {
+          "limit": 0,
+          "observed": 0.0,
+          "result": "PASS"
+        },
+        "requestCount": {
+          "limit": 60,
+          "observed": 32,
+          "result": "PASS"
+        },
+        "longTasksOver50ms": {
+          "limit": 2,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "maxLongTaskMs": {
+          "limit": 100,
+          "observed": 0,
+          "result": "PASS"
+        },
+        "animationRenderWorkP95Ms": {
+          "limit": 16.7,
+          "observed": null,
+          "result": "UNVERIFIED"
+        }
+      }
+    }
+  }
+}

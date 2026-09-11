@@ -1,8 +1,9 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Ecommerce Photography — Knowledge Base
 
 Source of truth for `ECOMMERCE_PHOTOGRAPHY_SPEC`. The Python class `skyyrose.elite_studio.fashion.photography.PhotographyDirector` holds the canonical style definitions; this doc layers in platform-specific image specs, fabric behavior rules, and commercial composition standards that the Director class does not encode.
 
-> "Luxury Grows from Concrete." Every shot must earn that tagline — the product is hero, the lighting is honest, the retouch is invisible.
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 ---
 

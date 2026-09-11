@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Phase 2: Site Rebuild + Scene Generation
 
 You are Ralph. Read these files FIRST — they are your full directive and task list:
@@ -44,7 +45,7 @@ Theme path on server: `/htdocs/wp-content/themes/skyyrose-flagship`
 ## Brand Constants
 
 - Colors: Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`
-- Tagline: "Luxury Grows from Concrete." (NEVER "Where Love Meets Luxury")
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - API: `index.php?rest_route=` (NOT `/wp-json/`)
 
 Output <promise>COMPLETE</promise> when all 6 tasks + verification are done.

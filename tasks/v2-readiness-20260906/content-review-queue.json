@@ -1,0 +1,600 @@
+{
+  "summary": {
+    "sku_count": 33,
+    "classification_counts": {
+      "PARTIAL": 33
+    },
+    "field_counts": {
+      "short_description": {
+        "PARTIAL": 10,
+        "COMPLETE": 23
+      },
+      "material": {
+        "PARTIAL": 29,
+        "COMPLETE": 4
+      },
+      "fit": {
+        "COMPLETE": 6,
+        "PARTIAL": 27
+      },
+      "care": {
+        "MISSING": 33
+      },
+      "story": {
+        "PARTIAL": 33
+      },
+      "gallery": {
+        "MISSING": 5,
+        "PARTIAL": 28
+      },
+      "size": {
+        "PARTIAL": 33
+      },
+      "product_type": {
+        "PARTIAL": 33
+      },
+      "preorder": {
+        "COMPLETE": 33
+      }
+    },
+    "synthetic_empty_short_descriptions": 33,
+    "synthetic_empty_full_descriptions": 33,
+    "native_types": {
+      "variable": 31,
+      "simple": 2
+    },
+    "canonical_preorder_count": 15
+  },
+  "media_review": [
+    {
+      "sku": "br-001",
+      "priority": "P1",
+      "state": "PDP_MEDIA_AUTHORITY_REVIEW_REQUIRED",
+      "current_rejection": {
+        "collection": "black-rose",
+        "status": "REJECTED_AUTHENTICITY",
+        "reason": "Founder correction requires an embossed BLACK Rose crewneck treatment, but every current br-001 product and on-model source depicts a contrasting embroidered rose/cloud graphic. No current source is replica-eligible.",
+        "views": []
+      },
+      "approved_pdp_replacement_found": false,
+      "searched_authorities": [
+        "SOT.md",
+        "data/sot-images.json",
+        "assets/hub/manifest.json",
+        "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
+        "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+        "named canonical dossier"
+      ],
+      "authority_candidates": [
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-001-front",
+          "approval_record_sha256": "f52978917fb2ce9192f0fb324e9a2bb363110d9a62f1609e133afd511f3026af",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "product-card"
+          ],
+          "source": {
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-onmodel.webp",
+            "exists": true,
+            "sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724"
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-001/front.webp",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-001-front-ad-creative-web-content",
+          "approval_record_sha256": "7d95f94a4890b1aac00b84663469aaf232e30709cd1c70bc54756c57cf20dcac",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "ad-creative",
+            "web-content"
+          ],
+          "source": {
+            "path": "renders/oai/_lookbook/onmodel/br-001-onmodel.png",
+            "exists": false,
+            "sha256": null
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-001/front-ad-creative-web-content.png",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+          "record_id": "br-001",
+          "scene_status": "FOUNDER_APPROVED_V2_CARD",
+          "approval_scope": "Founder request explicitly product cards",
+          "declared_asset_sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+          "declared_source_sha256": "d1afd357e6590de47fb7a2cd3512cce112eeee6dbf5aa2cfc1fb2f0232f78724",
+          "asset": {
+            "path": "wordpress-theme/skyyrose-flagship-2/assets/approved-card-fronts/br-001-onmodel.webp",
+            "exists": true,
+            "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8"
+          },
+          "pdp_clearance": "NOT_AUTHORIZED: do not promote card approval to PDP"
+        }
+      ],
+      "required_action": "Founder/content owner resolves exact construction/branding against named dossier and approves a hash-bound PDP-specific asset. Keep existing rejection and unavailable-media UI until that happens.",
+      "source_conflicts": [
+        "CSV short copy says embroidered; founder dossier explicitly requires embossed front chest, not embroidered."
+      ]
+    },
+    {
+      "sku": "br-003",
+      "priority": "P1",
+      "state": "CREATIVE ASSET BLOCKER \u2014 BR-003",
+      "current_rejection": {
+        "collection": "black-rose",
+        "status": "REJECTED_AUTHENTICITY",
+        "reason": "Current on-model front suppresses canonical patch color.",
+        "views": []
+      },
+      "approved_pdp_replacement_found": false,
+      "searched_authorities": [
+        "SOT.md",
+        "data/sot-images.json",
+        "assets/hub/manifest.json",
+        "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
+        "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+        "named canonical dossier"
+      ],
+      "authority_candidates": [
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-003-back",
+          "approval_record_sha256": "aa2eb0649b5d813e1878c13b2036a0194a40d7f5c55367138e33ca04c93035c4",
+          "verdict": "pending",
+          "verified_by": null,
+          "usage": [
+            "product-card"
+          ],
+          "source": null,
+          "hub_asset": null,
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-003-front",
+          "approval_record_sha256": "033a2c7a2252c1cb7611aa92e34813d3257313266b20f06af0000f02e12b64b4",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-29",
+          "usage": [
+            "product-card"
+          ],
+          "source": {
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-003-onmodel.webp",
+            "exists": true,
+            "sha256": "2c3f72b68414443c78f7d0d8fc837e78bf1703f0c4f338d4a183deb278c4646b"
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-003/front.webp",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+          "record_id": "br-003",
+          "scene_status": "FOUNDER_APPROVED_V2_CARD",
+          "approval_scope": "Founder request explicitly product cards",
+          "declared_asset_sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9",
+          "declared_source_sha256": "8e9844277eb99b2bbd3e505903334da37084dd8bb4c11fa16c63d05ef199d4f3",
+          "asset": {
+            "path": "wordpress-theme/skyyrose-flagship-2/assets/card-scenes/br-003-onmodel.webp",
+            "exists": true,
+            "sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9"
+          },
+          "pdp_clearance": "NOT_AUTHORIZED: do not promote card approval to PDP"
+        }
+      ],
+      "required_action": "Founder/content owner resolves exact construction/branding against named dossier and approves a hash-bound PDP-specific asset. Keep existing rejection and unavailable-media UI until that happens.",
+      "source_conflicts": [
+        "CSV short copy lists four colorways together; dossier assigns Oakland/Giants/White to separate SKUs. Clarify product versus series copy."
+      ]
+    },
+    {
+      "sku": "br-004",
+      "priority": "P1",
+      "state": "PDP_MEDIA_AUTHORITY_REVIEW_REQUIRED",
+      "current_rejection": {
+        "collection": "black-rose",
+        "status": "REJECTED_AUTHENTICITY",
+        "reason": "Current on-model front does not match the corrected hoodie: no circular upper-arm patch is permitted; the small wearer-left chest mark, longitudinal wearer-left forearm artwork, light floral hood lining, and white drawstrings must remain exact.",
+        "views": []
+      },
+      "approved_pdp_replacement_found": false,
+      "searched_authorities": [
+        "SOT.md",
+        "data/sot-images.json",
+        "assets/hub/manifest.json",
+        "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
+        "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+        "named canonical dossier"
+      ],
+      "authority_candidates": [
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-004-front",
+          "approval_record_sha256": "8db66d47e67faee810901e4102f9706f7dff4812f3edf653e2d45d6f92226536",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "ad-creative",
+            "product-card"
+          ],
+          "source": {
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp",
+            "exists": true,
+            "sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb"
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-004/front.webp",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-004-front-product-card-alt",
+          "approval_record_sha256": "6baac17a7c7d6a6880fb13befc50706f11ae0bd86e57618883b4936e0de3e4db",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "product-card-alt"
+          ],
+          "source": {
+            "path": "renders/oai/_lookbook/onmodel/br-004-onmodel.png",
+            "exists": false,
+            "sha256": null
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-004/front-product-card-alt.png",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+          "record_id": "br-004",
+          "scene_status": "FOUNDER_APPROVED_V2_CARD",
+          "approval_scope": "Founder request explicitly product cards",
+          "declared_asset_sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8",
+          "declared_source_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+          "asset": {
+            "path": "wordpress-theme/skyyrose-flagship-2/assets/approved-card-fronts/br-004-onmodel.webp",
+            "exists": true,
+            "sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8"
+          },
+          "pdp_clearance": "NOT_AUTHORIZED: do not promote card approval to PDP"
+        }
+      ],
+      "required_action": "Founder/content owner resolves exact construction/branding against named dossier and approves a hash-bound PDP-specific asset. Keep existing rejection and unavailable-media UI until that happens.",
+      "source_conflicts": [
+        "Current media-rejection reason specifies wearer-left chest/forearm/floral lining/white strings; named dossier describes a different chest treatment/clean sleeves. Reconcile authority without lifting rejection."
+      ]
+    },
+    {
+      "sku": "br-007",
+      "priority": "P1",
+      "state": "PDP_MEDIA_AUTHORITY_REVIEW_REQUIRED",
+      "current_rejection": {
+        "collection": "black-rose",
+        "status": "REJECTED_AUTHENTICITY",
+        "reason": "Current front has incorrect logo color and the back omits required Love Hurts placements.",
+        "views": []
+      },
+      "approved_pdp_replacement_found": false,
+      "searched_authorities": [
+        "SOT.md",
+        "data/sot-images.json",
+        "assets/hub/manifest.json",
+        "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
+        "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+        "named canonical dossier"
+      ],
+      "authority_candidates": [
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-007-back",
+          "approval_record_sha256": "dfe5e32879e1d142be18fe5620612623426920df53465b4b8d61bb31c09be2c0",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-29",
+          "usage": [
+            "product-card"
+          ],
+          "source": {
+            "path": "skyyrose/assets/images/products/br-007/br-007-model-back-gemini.jpg",
+            "exists": false,
+            "sha256": null
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-007/back.jpg",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-007-front",
+          "approval_record_sha256": "1489208c6bd11e8f14bf69e550b29ec83875b536d7aa912ddc377106bc1540a8",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "product-card"
+          ],
+          "source": {
+            "path": "renders/oai/_lookbook/onmodel/br-007-onmodel.png",
+            "exists": false,
+            "sha256": null
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-007/front.png",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+          "record_id": "br-007",
+          "scene_status": "FOUNDER_APPROVED_V2_CARD",
+          "approval_scope": "Founder request explicitly product cards",
+          "declared_asset_sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d",
+          "declared_source_sha256": "2b7f8740f6ceb734f639be69121bc859c60ddbdad7a631a5a7dd096b2903deeb",
+          "asset": {
+            "path": "wordpress-theme/skyyrose-flagship-2/assets/approved-card-fronts/br-007-onmodel.webp",
+            "exists": true,
+            "sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d"
+          },
+          "pdp_clearance": "NOT_AUTHORIZED: do not promote card approval to PDP"
+        }
+      ],
+      "required_action": "Founder/content owner resolves exact construction/branding against named dossier and approves a hash-bound PDP-specific asset. Keep existing rejection and unavailable-media UI until that happens.",
+      "source_conflicts": []
+    },
+    {
+      "sku": "br-011",
+      "priority": "P1",
+      "state": "PDP_MEDIA_AUTHORITY_REVIEW_REQUIRED",
+      "current_rejection": {
+        "collection": "black-rose",
+        "status": "REJECTED_AUTHENTICITY",
+        "reason": "Current front invents a prohibited NHL shield at the collar.",
+        "views": []
+      },
+      "approved_pdp_replacement_found": false,
+      "searched_authorities": [
+        "SOT.md",
+        "data/sot-images.json",
+        "assets/hub/manifest.json",
+        "wordpress-theme/skyyrose-flagship-2/data/opening-product-media.json",
+        "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+        "named canonical dossier"
+      ],
+      "authority_candidates": [
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-011-back",
+          "approval_record_sha256": "927178501c4e7bcec6b68ff19dea8b98b8b45a43615a46f7155c282940bb5d2f",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "product-card"
+          ],
+          "source": {
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-the-rose-hockey-back.webp",
+            "exists": true,
+            "sha256": "e96656573c7ced497a9c47e3cad432497ce1f433fe05a28bfc64936ee0bb3d45"
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-011/back.webp",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-011-front",
+          "approval_record_sha256": "b7afbc072d8778da7b97a5985367f6d4db3c993c13a88470d6e432547fc33f80",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "product-card"
+          ],
+          "source": {
+            "path": "wordpress-theme/skyyrose-flagship/assets/images/products/br-011-onmodel.webp",
+            "exists": true,
+            "sha256": "3260ec857be2da18fbec4d2a6a92f6edeca1825f4a8e38fc602c4a580f2544ef"
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-011/front.webp",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "assets/hub/manifest.json",
+          "record_id": "br-011-front-product-card-alt",
+          "approval_record_sha256": "1d80ad09091a925641d59c466e054e937ddc92616e588de7fb1312a2fb0df059",
+          "verdict": "verified",
+          "verified_by": "founder verdict 2026-06-25",
+          "usage": [
+            "product-card-alt"
+          ],
+          "source": {
+            "path": "renders/oai/_lookbook/onmodel/br-011-onmodel.png",
+            "exists": false,
+            "sha256": null
+          },
+          "hub_asset": {
+            "path": "assets/hub/collections/black-rose/products/br-011/front-product-card-alt.png",
+            "exists": false,
+            "sha256": null
+          },
+          "pdp_clearance": "NOT_ESTABLISHED: card/ad usage does not override current PDP rejection"
+        },
+        {
+          "authority": "wordpress-theme/skyyrose-flagship-2/data/approved-card-fronts.json",
+          "record_id": "br-011",
+          "scene_status": "FOUNDER_APPROVED_V2_CARD",
+          "approval_scope": "Founder request explicitly product cards",
+          "declared_asset_sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290",
+          "declared_source_sha256": "ed9a1ca7f1ac77a7a06373807a97c8b6edfb17239cd1c7f6e4d34574157c7ab0",
+          "asset": {
+            "path": "wordpress-theme/skyyrose-flagship-2/assets/card-scenes/br-011-onmodel.webp",
+            "exists": true,
+            "sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290"
+          },
+          "pdp_clearance": "NOT_AUTHORIZED: do not promote card approval to PDP"
+        }
+      ],
+      "required_action": "Founder/content owner resolves exact construction/branding against named dossier and approves a hash-bound PDP-specific asset. Keep existing rejection and unavailable-media UI until that happens.",
+      "source_conflicts": []
+    }
+  ],
+  "editorial_priorities": [
+    {
+      "priority": "P1",
+      "action": "Reconcile canonical contradictions; do not auto-rewrite",
+      "skus": [
+        "br-001",
+        "br-002",
+        "br-003",
+        "br-004",
+        "br-005",
+        "lh-004",
+        "sg-006",
+        "sg-007",
+        "sg-013",
+        "sg-015"
+      ]
+    },
+    {
+      "priority": "P1",
+      "action": "Founder supplies care instructions",
+      "skus": [
+        "br-001",
+        "br-002",
+        "br-003",
+        "br-004",
+        "br-005",
+        "br-006",
+        "br-007",
+        "br-008",
+        "br-009",
+        "br-010",
+        "br-011",
+        "br-012",
+        "lh-002",
+        "lh-003",
+        "lh-004",
+        "lh-005",
+        "lh-006",
+        "sg-001",
+        "sg-002",
+        "sg-003",
+        "sg-005",
+        "sg-006",
+        "sg-007",
+        "sg-009",
+        "sg-011",
+        "sg-012",
+        "sg-013",
+        "sg-014",
+        "sg-015",
+        "kids-001",
+        "kids-002",
+        "br-014",
+        "br-015"
+      ]
+    },
+    {
+      "priority": "P2",
+      "action": "Approve materials, fit/measurements, product story and multiview PDP assets; then populate native product content",
+      "skus": [
+        "br-001",
+        "br-002",
+        "br-003",
+        "br-004",
+        "br-005",
+        "br-006",
+        "br-007",
+        "br-008",
+        "br-009",
+        "br-010",
+        "br-011",
+        "br-012",
+        "lh-002",
+        "lh-003",
+        "lh-004",
+        "lh-005",
+        "lh-006",
+        "sg-001",
+        "sg-002",
+        "sg-003",
+        "sg-005",
+        "sg-006",
+        "sg-007",
+        "sg-009",
+        "sg-011",
+        "sg-012",
+        "sg-013",
+        "sg-014",
+        "sg-015",
+        "kids-001",
+        "kids-002",
+        "br-014",
+        "br-015"
+      ]
+    }
+  ],
+  "source_conflicts": {
+    "br-001": [
+      "CSV short copy says embroidered; founder dossier explicitly requires embossed front chest, not embroidered."
+    ],
+    "br-002": [
+      "CSV short copy says embroidered roses; founder dossier specifies silicone thigh patch."
+    ],
+    "br-003": [
+      "CSV short copy lists four colorways together; dossier assigns Oakland/Giants/White to separate SKUs. Clarify product versus series copy."
+    ],
+    "br-004": [
+      "Current media-rejection reason specifies wearer-left chest/forearm/floral lining/white strings; named dossier describes a different chest treatment/clean sleeves. Reconcile authority without lifting rejection."
+    ],
+    "br-005": [
+      "CSV promises numbered tag; named dossier contains no numbered-tag specification. Founder confirmation required before enrichment."
+    ],
+    "lh-004": [
+      "CSV says satin bomber; named dossier explicitly says NOT a satin bomber."
+    ],
+    "sg-006": [
+      "CSV says mint/lavender colorblock; dossier requires a solid mint body and no rainbow chevrons."
+    ],
+    "sg-007": [
+      "CSV rose variants red/grey/black/purple do not map cleanly to dossier purple, white-outline, single-red, red-cluster variants."
+    ],
+    "sg-013": [
+      "CSV says colorblock; dossier explicitly prohibits color-blocking.",
+      "Dossier cross-reference says sg-006 has rainbow chevrons, conflicting with the current sg-006 dossier."
+    ],
+    "sg-015": [
+      "CSV color is Black; dossier explicitly requires white body, pink hood and multicolor chevrons."
+    ]
+  }
+}

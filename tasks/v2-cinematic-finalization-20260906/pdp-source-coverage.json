@@ -1,0 +1,336 @@
+{
+  "count": 33,
+  "rows": [
+    {
+      "sku": "br-001",
+      "collection": "black-rose",
+      "garment_type": "crewneck",
+      "presentation": "black-rose",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "REJECTED_AUTHENTICITY",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-002",
+      "collection": "black-rose",
+      "garment_type": "joggers",
+      "presentation": "black-rose",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-003",
+      "collection": "black-rose",
+      "garment_type": "jersey",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "REJECTED_AUTHENTICITY",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-004",
+      "collection": "black-rose",
+      "garment_type": "hoodie",
+      "presentation": "black-rose",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "REJECTED_AUTHENTICITY",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-005",
+      "collection": "black-rose",
+      "garment_type": "hoodie",
+      "presentation": "black-rose",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-006",
+      "collection": "black-rose",
+      "garment_type": "jacket",
+      "presentation": "black-rose",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "UNSPECIFIED",
+      "opening_manifest_view_count": 1
+    },
+    {
+      "sku": "br-007",
+      "collection": "black-rose",
+      "garment_type": "shorts",
+      "presentation": "black-rose",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "REJECTED_AUTHENTICITY",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-008",
+      "collection": "black-rose",
+      "garment_type": "jersey",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-009",
+      "collection": "black-rose",
+      "garment_type": "jersey",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-010",
+      "collection": "black-rose",
+      "garment_type": "jersey",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-011",
+      "collection": "black-rose",
+      "garment_type": "hoodie",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "REJECTED_AUTHENTICITY",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-012",
+      "collection": "black-rose",
+      "garment_type": "jersey",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-014",
+      "collection": "black-rose",
+      "garment_type": "jersey",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "br-015",
+      "collection": "black-rose",
+      "garment_type": "jersey",
+      "presentation": "jersey-series",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "kids-001",
+      "collection": "kids-capsule",
+      "garment_type": "hoodie",
+      "presentation": "kids-capsule",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "kids-002",
+      "collection": "kids-capsule",
+      "garment_type": "hoodie",
+      "presentation": "kids-capsule",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "lh-002",
+      "collection": "love-hurts",
+      "garment_type": "joggers",
+      "presentation": "love-hurts",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "lh-003",
+      "collection": "love-hurts",
+      "garment_type": "shorts",
+      "presentation": "love-hurts",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "lh-004",
+      "collection": "love-hurts",
+      "garment_type": "bomber jacket",
+      "presentation": "love-hurts",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "lh-005",
+      "collection": "love-hurts",
+      "garment_type": "",
+      "presentation": "love-hurts",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "lh-006",
+      "collection": "love-hurts",
+      "garment_type": "joggers",
+      "presentation": "love-hurts",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-001",
+      "collection": "signature",
+      "garment_type": "shorts",
+      "presentation": "signature",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-002",
+      "collection": "signature",
+      "garment_type": "shirt",
+      "presentation": "signature",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-003",
+      "collection": "signature",
+      "garment_type": "shorts",
+      "presentation": "signature",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-005",
+      "collection": "signature",
+      "garment_type": "shirt",
+      "presentation": "signature",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-006",
+      "collection": "signature",
+      "garment_type": "hoodie",
+      "presentation": "signature",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-007",
+      "collection": "signature",
+      "garment_type": "",
+      "presentation": "signature",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "MISSING_APPROVED_ON_MODEL_FRONT",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-009",
+      "collection": "signature",
+      "garment_type": "jacket",
+      "presentation": "signature",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "UNSPECIFIED",
+      "opening_manifest_view_count": 1
+    },
+    {
+      "sku": "sg-011",
+      "collection": "signature",
+      "garment_type": "shirt",
+      "presentation": "signature",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-012",
+      "collection": "signature",
+      "garment_type": "shirt",
+      "presentation": "signature",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-013",
+      "collection": "signature",
+      "garment_type": "crewneck",
+      "presentation": "signature",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "UNSPECIFIED",
+      "opening_manifest_view_count": 1
+    },
+    {
+      "sku": "sg-014",
+      "collection": "signature",
+      "garment_type": "sweatpants",
+      "presentation": "signature",
+      "preorder": false,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    },
+    {
+      "sku": "sg-015",
+      "collection": "signature",
+      "garment_type": "set",
+      "presentation": "signature",
+      "preorder": true,
+      "authority": "generated presentationregistry + openingmedia; not liveinventory or nativeproducttype",
+      "opening_manifest_status": "STALE_PRODUCT_HASH",
+      "opening_manifest_view_count": 0
+    }
+  ],
+  "scope": "Source class census only. Opening manifest is one input to native-media resolver; its stale/missing status is NOT the final permission state. Six actual native PDPs tested separately."
+}

@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-brand-photography-brief
 description: "Produces a photographer-ready brand shoot brief for SkyyRose — shot list, per-collection creative direction, mood board language, and deliverable specs — for lifestyle, founder, and campaign sessions that feed the Elite Studio imagery pipeline."
@@ -25,7 +26,7 @@ allowed-tools: Read Write Edit Glob
 - **Lockup images, never live type:** Collection names in any hero or title frame come from the lockup asset — `assets/images/hero-overlays/` for Black Rose, Love Hurts, and Signature; `assets/images/logos/` for Kids Capsule. Fonts (Archivo, Hanken Grotesk, Anton, Cinzel) apply only to body copy, captions, and slide subtext — never to the collection name itself.
 - **Per-collection visual register (never cross-attribute):** Black Rose = gothic luxury, twilight, defiant elegance, silver accents (#C0C0C0). Love Hurts = street passion, crimson heat, raw romance (#DC143C). Signature = West Coast luxury, golden hour, elevated worldwide respect (#D4AF37). Kids Capsule = little royalty, playful-premium, rose gold warmth (#B76E79).
 - **Global tokens:** Rose Gold `#B76E79` (brand accent), Dark `#0A0A0A` (background), Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`.
-- **Tagline (verbatim, only):** `Luxury Grows from Concrete.` — period included. Never paraphrase.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **No urgency manipulation, no cross-sell, no European luxury mood.** The garment is the protagonist. One piece, one story per frame.
 - Full canon: `../skyyrose-content-engine/brand-guardrails.md`
 

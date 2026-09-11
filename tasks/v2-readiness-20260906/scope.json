@@ -1,0 +1,49 @@
+{
+  "id": "V2-READINESS-20260906",
+  "state": "NEEDS_MORE_WORK",
+  "manager": "root",
+  "baseline": "V2-CINEMATIC-FINALIZATION-20260906",
+  "baselineDigest": "ef1dcdb414d57374e6b9ee1bd84641eec0e59c102041f705fdaa88c2b1f5a8a8",
+  "startingCommit": "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+  "scope": "Performance/font/CSS/JS delivery, Skyy runtime and optimization handoff,33SKU content audit, local manual accessibility, independentvisualfreeze",
+  "exclusions": [
+    "redesign",
+    "approvedmedia/modelidentity mutations",
+    "newfeatures",
+    "TownLineauthoring",
+    "staging",
+    "deployment",
+    "package/promotion",
+    "paidcalls"
+  ],
+  "acceptance": [
+    "sameprofile sixrouteLCP plusgzip classifications",
+    "zeroapprovedvisualregression",
+    "nativecommercepassed",
+    "complete33SKU authority/contentqueue",
+    "Skyy measuredruntime andBlenderhandoff",
+    "manualkeyboard/zoom evidence",
+    "independentreview"
+  ],
+  "evidence": [
+    "sourcehashes",
+    "buildtests",
+    "beforeafterrouteprofiles",
+    "visualcaptures",
+    "contentmatrix",
+    "Skyyprofile",
+    "manuala11y",
+    "independent_review"
+  ],
+  "roster": {
+    "root": "performance integration andreadiness",
+    "architecture_audit": "font/CSS/JS andplatformreadiness audit",
+    "scene_handoff": "33SKU contentauthority audit",
+    "skyy_finalization": "runtime optimization andasset productionhandoff",
+    "commerce_source_review": "independentreview, nextwave"
+  },
+  "toolProfile": "Read/Grep/Bash; user-authorized local edits/build/browser andofficialwebread expansions; maxroot+3roles",
+  "at": "2026-09-06T18:01:55.722403+00:00",
+  "candidateDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "finalReport": "tasks/v2-readiness-20260906/readiness-report.md"
+}

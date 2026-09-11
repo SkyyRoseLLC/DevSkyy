@@ -1,0 +1,51 @@
+{
+    "scope": "About local candidate; functions.php includes preserved earlier work, not a deployment allowlist",
+    "files": [
+        {
+            "path": "template-parts/v2-about.php",
+            "sha256": "c8a491298e74234dae3e3e19dbb703ca7a24a76866ebb68d43af6ccdfc74818f",
+            "bytes": 8546
+        },
+        {
+            "path": "functions.php",
+            "sha256": "846b364589e4ec2c533612815acffaa7a5fd745d9b9012020411077477a92420",
+            "bytes": 90701
+        },
+        {
+            "path": "assets/css/about-archive.css",
+            "sha256": "08b96145a7ba94515f727eaa6f2a0782334096f0c3f0ffb20927f6c61dc06010",
+            "bytes": 8324
+        },
+        {
+            "path": "assets/css/about-archive.min.css",
+            "sha256": "65f2a8d167f03494dbca4f6978277c1d24e807b33ff71ff24db66d576c84b8a6",
+            "bytes": 7257
+        },
+        {
+            "path": "assets/js/about-archive.js",
+            "sha256": "f92e60cd405a20a30599bc1aa58a45561b3e62ef37ac83e623ec5e8e9d4d9d42",
+            "bytes": 3427
+        },
+        {
+            "path": "assets/js/about-archive.min.js",
+            "sha256": "32abadb6d96d55cbf5b9aa95316a0b025bcee6978a162f37855f2291d5202016",
+            "bytes": 2037
+        },
+        {
+            "path": "assets/images/about/kids-heir-founder-supplied.png",
+            "sha256": "846415d1e46e861f3dc97c8684e2d2d2dec57acaabf0037d9fecc219d04aa4ae",
+            "bytes": 1355894
+        },
+        {
+            "path": "assets/images/about/oakland-reference-mural.webp",
+            "sha256": "d13a197007e4d1d50d4fe05d6d58cdea4e70972aa2d38ff99d5095017acd4542",
+            "bytes": 28276
+        },
+        {
+            "path": "assets/images/about/oakland-reference-sign.webp",
+            "sha256": "7db82dd5436cae2c31307bee043e74342ba1d93cc301cc25c6468a4aaa2166be",
+            "bytes": 5274
+        }
+    ],
+    "editorPayloadSha256": "9855d4d9be5c628cd0b6a38d89233508f80de8f62c88f1a69692cb58354d10ad"
+}

@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-media-kit
 description: "Produces the complete SkyyRose brand media kit document — cover, brand story, founder bio, per-collection one-sheets, product highlights, press contact, and brand asset list — for journalist and partner outreach, with all metric fields marked operator-supplied."
@@ -20,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — period included. The only tagline. Every version of this kit must carry it verbatim.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **No fabricated stats, press placements, or awards.** All metric fields that require live data are marked `{operator-supplied}`. Do not fill them with invented numbers. The brand story is real — it doesn't need manufactured validation.
 - **Founder:** Corey Foster. Oakland / Bay Area. Voice is earned, direct, unhurried — not a hype-merchant bio. The bio should read like a person, not a press release.
 - **Products by NAME, not SKU** in all public-facing copy. "Black Rose Crewneck" in the one-sheet, not "br-001."
@@ -62,7 +63,7 @@ The SkyyRose brand media kit is a 5-7 page document with the following structure
 
 THE SKYY ROSE COLLECTION
 
-Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 Oakland, California
 
@@ -90,7 +91,7 @@ skyyroseco@gmail.com
 SkyyRose — The Skyy Rose Collection — is an Oakland-born luxury streetwear brand
 founded by Corey Foster. Built in The Town, worn beyond it.
 
-"Luxury Grows from Concrete." is not a tagline borrowed from a mood board.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 It is the founding truth: that craft, quality, and elevation can come from anywhere —
 especially from places the fashion industry has historically overlooked.
 
@@ -130,7 +131,7 @@ Corey Foster is the founder and creative director of SkyyRose — The Skyy Rose 
 [Bio text: operator-authored from actual founder voice. Do NOT generate a generic founder bio.
 Source from: knowledge-base/seed/from-interview.md — the verbatim founder interview.
 The bio should reflect Corey's specific Oakland story, the brand name origin (named for
-his daughter Skyy Rose), and the "Luxury Grows from Concrete." founding principle.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 Voice: direct, specific, earned. Never hype-merchant. Never "visionary entrepreneur who...]
 
 [Suggested structure — operator fills in:]
@@ -378,7 +379,7 @@ python -m skyyrose.elite_studio.ventures.social agents
 
 **Scenario:** A Hypebeast writer responded to the PR pitch and requested the media kit. The kit is Black Rose-scoped (collection-specific), 4 pages: cover, brand story + founder bio condensed, Black Rose one-sheet with Black Rose Crewneck as the featured product, and brand asset spec.
 
-**Cover:** Dark background, Black Rose lockup image, `Luxury Grows from Concrete.`, `Oakland, California`, `skyyrose.co`.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 **Brand story (condensed for collection kit):** 2 paragraphs — the founding truth, the Oakland anchor, and the Black Rose register in one line: "Armor for the ones who are still standing."
 

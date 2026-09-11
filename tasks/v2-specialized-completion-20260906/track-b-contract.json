@@ -1,0 +1,122 @@
+{
+  "track": "B",
+  "status": "READY_TO_VERIFY_ON_STAGING",
+  "execution": "NOT_RUN",
+  "stagingModified": false,
+  "targetOrigin": null,
+  "candidateSourceDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "requiredInputs": [
+    "authorized target origin",
+    "deployed source identity",
+    "privacy/access constraints",
+    "existing synthetic A/B sessions"
+  ],
+  "checks": [
+    {
+      "id": "B01",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B02",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B03",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B04",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B05",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B06",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B07",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B08",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B09",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B10",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B11",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    },
+    {
+      "id": "B12",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "observed": null,
+      "owner": null
+    }
+  ],
+  "reportFields": [
+    "id",
+    "route",
+    "class",
+    "url",
+    "sessionLabel",
+    "utc",
+    "sourceHash",
+    "protocol",
+    "status",
+    "encoding",
+    "vary",
+    "cacheControl",
+    "cacheStatus",
+    "contentType",
+    "contentRange",
+    "bodyBytes",
+    "decodedHash",
+    "ttfb",
+    "owner",
+    "result"
+  ]
+}

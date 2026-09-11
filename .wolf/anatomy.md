@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # anatomy.md
 
 > Auto-maintained by OpenWolf. Last scanned: 2026-08-30T15:58:11.751Z
@@ -4010,7 +4011,7 @@
 - `blog-black-rose.md` — Blog copy: "Black Rose Is Not a Theme. It's Armor." (~745 tok)
 - `blog-kids-capsule.md` — Blog copy: "Luxury Runs in the Family." (~722 tok)
 - `blog-love-hurts.md` — Blog copy: "They Called Him Beast. They Were Right." (~717 tok)
-- `blog-luxury-grows-from-concrete.md` — Blog copy: "Luxury Grows from Concrete" (~842 tok)
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - `blog-signature.md` — Blog copy: "Not Basics. Blueprints." (~722 tok)
 - `canon-audit-2026-05-23.md` — SkyyRose Canon Audit — 2026-05-23 (~5363 tok)
 - `collection-design-proposals.md` — SkyyRose Collection Design Proposals (~8132 tok)
@@ -4127,9 +4128,9 @@
 
 ## docs/elite-web-builder-package/homepage/
 
-- `about.html` — Our Story — SkyyRose | Luxury Grows from Concrete (~34379 tok)
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - `index.html` — The Skyy Rose Collection — Oakland Luxury Streetwear (~17938 tok)
-- `skyyrose-homepage-v2.html` — SkyyRose — Luxury Grows from Concrete | Oakland Streetwear (~228350 tok)
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 ## docs/elite-web-builder-package/product-pages/
 

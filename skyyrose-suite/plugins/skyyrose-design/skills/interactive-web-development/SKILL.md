@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: Interactive Web Development
 description: Expert knowledge in building interactive, dynamic web experiences with React, Vue, Svelte, animations, and user interactions. Triggers on keywords like "interactive", "animation", "dynamic", "react", "vue", "svelte", "gsap", "framer motion", "scroll animations", "parallax", "hover effects", "transitions".
@@ -122,7 +123,7 @@ function ParallaxSection() {
   return (
     <motion.section style={{ y, opacity }}>
       <h2>SkyyRose Collection</h2>
-      <p>Luxury Grows from Concrete.</p>
+Brand tagline: none. Omit tagline text and do not invent a replacement.
     </motion.section>
   );
 }

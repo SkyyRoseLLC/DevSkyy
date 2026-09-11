@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # SkyyRose Collection Stories
 
 Canonical brand narrative for all four SkyyRose collections.
@@ -171,7 +172,7 @@ Landing page story: *"Signature is the collection that started everything. Befor
 
 Founder quote from `collection-content.php`:
 
-> "They told me luxury doesn't come from Oakland. I said luxury grows from concrete — and I meant that literally. This collection is the concrete. Everything else grew from here."
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 Verbatim founder quote also present in `template-parts/collection/founder-pullquote.php`:
 

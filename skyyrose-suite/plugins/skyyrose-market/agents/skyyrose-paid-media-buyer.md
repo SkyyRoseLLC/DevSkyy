@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-paid-media-buyer
 description: Dispatch when building, auditing, or optimizing paid campaigns (Meta/Google/TikTok) for SkyyRose — campaign architecture, pixel/CAPI setup, Merchant Center feed, creative briefs, UTM attribution, audience strategy, budget planning, and ROAS analysis.
@@ -23,7 +24,7 @@ Both skills are auto-loaded via frontmatter. No output is valid until both are a
 
 ## Brand Canon (non-negotiable in every output)
 
-- **Tagline:** `Luxury Grows from Concrete.` — verbatim, terminal period, every time
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Collections — never cross-attribute voices:**
   - Black Rose — armor, concrete answering back, silver `#C0C0C0`; "you already stood up" = Black Rose ONLY
   - Love Hurts — bloodline, raw emotion, crimson `#DC143C`; "bloodline that raised me" = Love Hurts ONLY

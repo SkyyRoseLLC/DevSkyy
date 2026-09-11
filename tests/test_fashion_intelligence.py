@@ -67,10 +67,10 @@ class TestFashionKnowledgeBase:
         with pytest.raises((AttributeError, TypeError)):
             garment.name = "modified"  # type: ignore[misc]
 
-    def test_brand_tagline_present(self):
+    def test_brand_tagline_is_empty(self):
         from skyyrose.elite_studio.fashion.knowledge import BRAND_TAGLINE
 
-        assert "Luxury Grows from Concrete" in BRAND_TAGLINE
+        assert BRAND_TAGLINE == ""
 
 
 # ---------------------------------------------------------------------------

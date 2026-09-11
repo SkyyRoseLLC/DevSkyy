@@ -1,8 +1,9 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: Brand Story Canon (operational excerpt of WP §2)
 specified_by: [wp: §2]
 phase: 0
-test_command: grep -c "Luxury Grows from Concrete" eval/brand-story.md  # must equal at least 1
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 pass_threshold: Voice rules + brand-NOT list + tagline + collection thesis present
 last_updated: 2026-05-03
 last_updated_by: eval-harness (Phase 0)
@@ -18,9 +19,9 @@ The full prose version lives in `docs/SKYYROSE_WORDPRESS_PLAN.md` §2. This file
 
 ## The single sentence (the only tagline)
 
-> **Luxury Grows from Concrete.**
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
-There is exactly one tagline. It is "Luxury Grows from Concrete." It appears as the brand promise everywhere it appears.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 > **Retired:** "Where Love Meets Luxury" — never use this anywhere. It's in `MEMORY.md` as a banned phrase.
 

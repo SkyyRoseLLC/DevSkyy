@@ -1,0 +1,10 @@
+{
+  "authorizedBy": "Founder",
+  "request": "do the consalidated release and deploy to staging",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "artifactSha256": "a4ec431146f31d036d5547137d3274a693ccd3d072be6089126593f642d14f4b",
+  "planSha256": "dfc8c5f8be82be37ed4a3ed956b6e508c797105784a6b3a97e75a094992edfcf",
+  "runtimeFiles": 536,
+  "productionAuthorized": false,
+  "recordedAt": "2026-09-07T01:40:24.592709+00:00"
+}

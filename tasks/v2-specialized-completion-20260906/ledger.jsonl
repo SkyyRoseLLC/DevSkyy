@@ -1,0 +1,2 @@
+{"phase": "dispatch", "owners": {"A": "architecture_audit", "B": "root", "C": "skyy_finalization", "D": "scene_handoff"}, "state": "IN_PROGRESS"}
+{"phase": "closeout", "states": {"A": "NEEDS_MORE_WORK", "B": "READY_TO_VERIFY_ON_STAGING", "C": "READY_FOR_BLENDER", "D": "READY_FOR_FOUNDER_CONTENT_REVIEW"}, "sourceChanges": 0, "protectedMediaChanges": 0, "stagingChanged": false, "reviewChecks": 8}

@@ -1,7 +1,8 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # SkyyRose Motion Prompt Pack Adaptation
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 The original user-provided reference is saved at [`animated-website-prompt-pack-200.pdf`](animated-website-prompt-pack-200.pdf). It is a creative prompt library, not a source of truth for SkyyRose brand, product, commerce, accessibility, performance, or sales claims.
 

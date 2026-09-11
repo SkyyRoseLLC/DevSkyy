@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Source of Truth (SOT) Registry
 
 > The canonical authorities for DevSkyy. **Read these; never cache, never fork,
@@ -33,7 +34,7 @@
   Data SOT; its in-file `typography:` block is stale/dead and slated for
   removal). Collection metadata → `identity.json`, not here.
 - Color / collection accent tokens live in `CLAUDE.md` → Brand table and
-  `theme.json` (Font Library). Tagline: **"Luxury Grows from Concrete."**
+  `theme.json` (Font Library). Tagline: **none — omit tagline text**
 
 ## OpenWolf memory (cross-session)
 

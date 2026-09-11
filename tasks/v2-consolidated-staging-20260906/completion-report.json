@@ -1,0 +1,29 @@
+{
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "deployment": "DEPLOYED_VERIFIED_STAGING",
+  "artifactSha256": "a4ec431146f31d036d5547137d3274a693ccd3d072be6089126593f642d14f4b",
+  "runtimeFiles": 536,
+  "statuses": {
+    "filesystemParity": "PASS",
+    "browserParity": "PASS_BOUNDED",
+    "featureParity": "PASS_BOUNDED",
+    "platformDelivery": "NEEDS_MORE_WORK",
+    "performance": "NEEDS_MORE_WORK"
+  },
+  "productionApproved": false,
+  "productionChanged": false,
+  "b13": {
+    "HOME HERO DELIVERY": "FAIL",
+    "COLLECTION SCENE DELIVERY": "PASS",
+    "PRODUCT CARD DELIVERY": "PASS",
+    "QUICK VIEW DELIVERY": "PASS",
+    "ASK SKYY DEFERRED DELIVERY": "PASS",
+    "MOBILE CINEMATIC DELIVERY": "FAIL"
+  },
+  "limitations": [
+    "Empty cart only; populated Checkout/payment sandbox unverified",
+    "Physical devices and field INP unverified",
+    "Authenticated/personalized cache isolation unverified"
+  ],
+  "report": "completion-report.md"
+}

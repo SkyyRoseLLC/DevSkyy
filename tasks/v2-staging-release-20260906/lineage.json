@@ -1,0 +1,824 @@
+{
+  "id": "V2-STAGING-RELEASE-20260906-LINEAGE",
+  "status": "EVIDENCE_BOUND_LINEAGE_COMPLETE",
+  "acceptedDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "priorObservedDigest": "f2893d998356ac5c86fda86e6422adab348261f02bb00fc935b88e74c1d3ae5a",
+  "observationScopes": {
+    "priorAcceptedSubset": {
+      "requested": 451,
+      "present": 322,
+      "match": 295,
+      "different": 27,
+      "missing": 129,
+      "changedAgainstFreshFullInventory": 0
+    },
+    "fullAcceptedTheme": {
+      "acceptedFiles": 608,
+      "remoteFiles": 447,
+      "match": 389,
+      "different": 58,
+      "missing": 161,
+      "remoteOnly": []
+    },
+    "preexistingClassification": {
+      "classified": 588,
+      "match": 389,
+      "different": 58,
+      "missing": 141,
+      "unclassifiedAcceptedFiles": 20
+    }
+  },
+  "recordedRelease": {
+    "receiptTime": "2026-09-05T11:33:39.433382+00:00",
+    "scope": "46-file selective staging card patch preserving newer staging hero/film/scenes",
+    "currentMatch": 43,
+    "currentDifferent": [
+      "assets/css/theme.css",
+      "assets/css/theme.min.css",
+      "functions.php"
+    ],
+    "candidateManifestSha256": "12c1d69eea3bf804b0afc7455f540eb3d236dafdb0cfae57e0c8e61cfbe84aad",
+    "confidence": "HIGH: receipt/log/hash comparison, not actor inference"
+  },
+  "gitLineage": {
+    "commonExactSourceCommit": "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+    "commitTimestamp": "2026-09-05T08:32:19-07:00",
+    "original27DifferentPathsMatchingCommit": 20,
+    "notADeployedCommitClaim": true,
+    "unmatchedWithinBounded15CommitSearch": [
+      "assets/css/collection-scene-motion.min.css",
+      "assets/js/collection-scene-motion.min.js",
+      "assets/js/mascot-loader.min.js",
+      "assets/js/skyy-3d.min.js",
+      "languages/skyyrose-flagship-2.pot",
+      "package.json",
+      "scripts/test-performance.php"
+    ]
+  },
+  "originalDifferentPaths": [
+    {
+      "path": "assets/css/collection-scene-motion.css",
+      "accepted": "882d848a04e957a18448086f8725a5614a2a65e6697708910e4771b6668960a5",
+      "deployed": "879d9396384f711d30262e68c2acfdfc5072f5f99124fb587952b4fc7f4b5190",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "assets/css/collection-scene-motion.min.css",
+      "accepted": "c40521cff28d3f4665c36a3d3fd0cbb3bc2524c9f67bf7f4514699e786e08d69",
+      "deployed": "d27bfa90ab997cdc2ff01cfbef788b59b7fd9622008f0fbf618c7731c482ef95",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": []
+    },
+    {
+      "path": "assets/css/design-tokens.css",
+      "accepted": "6e887e6c22417091b1610d9eedd4bae1be5dd03369d88218d25ea8e3f6528708",
+      "deployed": "f4835c868c0fcad3b1581cc2180557f89be8cd2c123884e5f81edfddd16a9c4f",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a"
+      ]
+    },
+    {
+      "path": "assets/css/design-tokens.min.css",
+      "accepted": "a21e0d92ad22f63b36fa094c788a2906e94a54cc90a5ccd61f4fa7122ab9dc74",
+      "deployed": "b820602bdc306831e873aef7eb0d5c43379bb230a5418c1de84b8d92d262d0a5",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a"
+      ]
+    },
+    {
+      "path": "assets/css/mascot.css",
+      "accepted": "afa26a447e4e1fe41e93a70984c43538d83ccd1d60bbbd316ea81702fe4fdfe2",
+      "deployed": "12ed18a5e52a2b77f3eb2b2b024c738934ec24469602b026774cc75b1e803897",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a"
+      ]
+    },
+    {
+      "path": "assets/css/mascot.min.css",
+      "accepted": "2972d42a123942af19c7677af936e3022d8e8f73741332c94d14fa9e0c1df5f3",
+      "deployed": "b2a6d1f0356a03ca5b77142b4b0f67c35af49b86b0a4150dd5d3475971562f2d",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a"
+      ]
+    },
+    {
+      "path": "assets/js/collection-scene-motion.js",
+      "accepted": "268c07c75b4bd3586f45fdbf977e66993b37fc271f64d2654821260cd40ecfc9",
+      "deployed": "7395fd58d91614a306bdaaf260537b1f5bc2c9e376e52bbf9eb7bb48836007f0",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "assets/js/collection-scene-motion.min.js",
+      "accepted": "ae9eb3a1dd287f90107503068fef2a934ff4d1c011a4a71d07516b6c68e26953",
+      "deployed": "ced6d4ceed4822c72aef58fe22969572b7414d3dd243b0ea9a9c88f1f160f860",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": []
+    },
+    {
+      "path": "assets/js/mascot-loader.js",
+      "accepted": "379676b46c8c1147918725df1f0003cbc8cf4292350fd90a0ab858852ea44b31",
+      "deployed": "a6167f25b78a7c5b44bfbd43b9932469feb20b2ce5fd47ec53ed9e91ebf9a02e",
+      "status": "DIFFERENT",
+      "localMatches": [
+        {
+          "label": "3f2d-working-theme",
+          "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/mascot-loader.js"
+        }
+      ],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "assets/js/mascot-loader.min.js",
+      "accepted": "06bda6f50470580b5e3e110c8d76e5f0a36a3b274ddd1a728a5cd9d9c9110d19",
+      "deployed": "75107932af68702bd6ca258db8d0573e6f5833d4384cd9b6204d206740c236fa",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": []
+    },
+    {
+      "path": "assets/js/mascot.js",
+      "accepted": "dfba7186c1569935e7a940d482ae910edee6a6e8650d6ed83a652af95681187d",
+      "deployed": "5b1a12b0927faccd304d24874588588a70465852730ee5da791777d2e8789d4c",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1"
+      ]
+    },
+    {
+      "path": "assets/js/mascot.min.js",
+      "accepted": "fe81d7ca7b48a24f169fe2b62db4c9ab65059df4c34e0097db525185e4e7a86b",
+      "deployed": "8a157dc8076b1738e943ff6bd579d503f48615b1ed95998be483056725e3d70e",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1"
+      ]
+    },
+    {
+      "path": "assets/js/skyy-3d.js",
+      "accepted": "b3c409a52c3bdf11844d51980ab9f9611a6f989211a45d6a49f6e2e4209418c8",
+      "deployed": "f702083167366478006aec280bc124a170df469114fa5a654f5d969a0d7ad4c8",
+      "status": "DIFFERENT",
+      "localMatches": [
+        {
+          "label": "3f2d-working-theme",
+          "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js"
+        }
+      ],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "assets/js/skyy-3d.min.js",
+      "accepted": "d753ac42574ebb2afcf1f4e4d71c2b7a74860aa7a1945d1734f9d3c7dcf2c14a",
+      "deployed": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": []
+    },
+    {
+      "path": "assets/js/theme.js",
+      "accepted": "34a68966aa95f75c8dfaba67461f96f76356b50087b8e9a416b125447c7ecde5",
+      "deployed": "30d1e75ae651d06993a1ccc5a1a99ec0cf0abd0085fc47be7ad556d858243d90",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1"
+      ]
+    },
+    {
+      "path": "functions.php",
+      "accepted": "036f9406d6bb5695396ec7adeb75b188ac95e84828d124b9e3f51dd62788da73",
+      "deployed": "87980b851b7da39c84bb0776da654b399ea61c6f61bc7d76f0de081abea5971a",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd"
+      ]
+    },
+    {
+      "path": "inc/performance.php",
+      "accepted": "b6d2f750527dc4c01c1bf48e7f4721ab33a258eb468173f149c8270e5401b42c",
+      "deployed": "9dd015efbe5c2264478563f9f042278d591b42b5bad431ce5a6ed7677fee5058",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "languages/skyyrose-flagship-2.pot",
+      "accepted": "20a28b338f7fea1fc6af1e17f225700414fe9a866bf0465f514602360454aecd",
+      "deployed": "0dfa80de920f47273a9ec847ebe467f5184a6cd90760da8e5800221ded3a1e22",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": []
+    },
+    {
+      "path": "package.json",
+      "accepted": "71b0809a0bd59436fc6220db44a95c9be1a3b00e2915b77000305a8729ac7005",
+      "deployed": "de66ddf7a1c42802ea746a8b30835980d6086b50534e68a6fded03c1945a08c4",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": []
+    },
+    {
+      "path": "scripts/test-performance.php",
+      "accepted": "72592baee58062754cdd1ec090ad0a1592afa1231ba595bae470dee4efcf8d4a",
+      "deployed": "6c2e2231a08c9f58fae32e1bca94f3014723a1e1d789817c5a93ea17007098c6",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": []
+    },
+    {
+      "path": "template-parts/commerce/hero-composed-scene.php",
+      "accepted": "3235326693b1564137a3d08c3128a67a8e50bfa4c694055c8e0973b194a9cdc6",
+      "deployed": "bff668a6904ba8e41c5d5f6b4674986ee8d27776c316893db1b7209252b353f3",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "template-parts/commerce/product-card.php",
+      "accepted": "a6df95d3e4e87ea4a933503083bfa50a104d957c2ae2f2c3d5ac8bb1b4d587d9",
+      "deployed": "c094e7c0f3639add0b444f6ed39f19ed95a9c38bd252823f913e17f11fd0d1da",
+      "status": "DIFFERENT",
+      "localMatches": [
+        {
+          "label": "card-release-candidate",
+          "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905/candidate/template-parts/commerce/product-card.php"
+        },
+        {
+          "label": "3f2d-working-theme",
+          "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/product-card.php"
+        }
+      ],
+      "gitMatches": [
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "template-parts/commerce/product-hero.php",
+      "accepted": "b7fc6e6d367fbea34fa16ba1afff45b353bcc026e5660de873d2666b38fe9e5a",
+      "deployed": "5dcaa87bf67bf62b364b91df155a3a5121b02e2700b2c0f97c3bcbfc7d328447",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2"
+      ]
+    },
+    {
+      "path": "template-parts/commerce/quick-view.php",
+      "accepted": "40c8d54b646e7fadda9d271e6a3f470007c435e94489fa309b1dba21d8a00f14",
+      "deployed": "0e85749c7c8e52b72c1974c41168c11780f3ea9f3c7b306779e2c32054cf7f5c",
+      "status": "DIFFERENT",
+      "localMatches": [
+        {
+          "label": "3f2d-working-theme",
+          "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/quick-view.php"
+        },
+        {
+          "label": "19db-working-theme",
+          "path": "/Users/theceo/.codex/worktrees/19db/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/quick-view.php"
+        }
+      ],
+      "gitMatches": [
+        "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+        "a0af07be763be41c43efb372ae885db7a0f6db21",
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "template-parts/commerce/search-dialog.php",
+      "accepted": "2c8f7dc07ab0865c8b8b8eb7eeaa46f4a9ccefc34fc1704f191f1d5df3f63a00",
+      "deployed": "a605e1934d8e892cb344076dab4a62c791488cb0a5ca1fd435ab12f4c3026082",
+      "status": "DIFFERENT",
+      "localMatches": [
+        {
+          "label": "3f2d-working-theme",
+          "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/wordpress-theme/skyyrose-flagship-2/template-parts/commerce/search-dialog.php"
+        }
+      ],
+      "gitMatches": [
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "template-parts/skyy-mascot.php",
+      "accepted": "bd32777310087b10720294c0bd0f8e3d1278ac44fccc86acb697f08a15ff0bf3",
+      "deployed": "27b8b314764acd4f5fabf373c4e80dee0acee56e928b2445886a89aeff6db969",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "fec4e9339cad7077bcc812876668c128eb93b6e4",
+        "67b2cd856524cc9b259a3f8e2b27db565bfb4242",
+        "03947e8298f91700f607a7de9cdee23fafb00d07",
+        "55807b5741ccab901669e592a5c31a08b1da8b2b",
+        "75ce80b90380d0e5915be79dab33484eda6d3fca",
+        "69249828bc77d37d77223f57fdef1e0a0c36cd0b",
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+        "7bc31b2b95855fffc615e15f332b0a2ad139a5c1",
+        "b0858722a3e95c7aff5225b70550134e8f34b7dd",
+        "22b0ce4dba1de5cffb54a935487656e3c116efb1",
+        "f45f8458a37dbb1510d664ecbfc9975e462287d5",
+        "f51f31409909fc09528ae1cb3d63872fbbf9c7b2",
+        "f9ccaef113e98cd9b58cb4171ad104f6b6bbee59"
+      ]
+    },
+    {
+      "path": "theme.json",
+      "accepted": "f94002cea37f5ee8038aa0ddeebd74b622ccd49efee41e65e63e0f2a7aa5df2e",
+      "deployed": "7edae569a3e1963e31977453c8eaf1a4942475603fd5390a5efb3092df1464d9",
+      "status": "DIFFERENT",
+      "localMatches": [],
+      "gitMatches": [
+        "5de8e2f3eb40827a052996f72bfb290a95bd600a"
+      ]
+    }
+  ],
+  "originalMissingGroups": {
+    "Accepted feature/source files": [
+      "assets/css/premium-commerce.css",
+      "assets/css/premium-commerce.min.css",
+      "assets/css/quick-view-commerce.css",
+      "assets/css/quick-view-commerce.min.css",
+      "assets/css/scene-handoff.css",
+      "assets/css/scene-handoff.min.css",
+      "assets/css/search-preview.css",
+      "assets/css/search-preview.min.css",
+      "assets/css/shop-page.css",
+      "assets/css/shop-page.min.css",
+      "assets/derived/fonts/inter-fallback-latin.woff2",
+      "assets/images/skyy-runtime-poster.webp",
+      "assets/js/premium-commerce.js",
+      "assets/js/premium-commerce.min.js",
+      "assets/js/quick-view-commerce.js",
+      "assets/js/quick-view-commerce.min.js",
+      "assets/js/scene-handoff.js",
+      "assets/js/scene-handoff.min.js",
+      "assets/js/search-preview.js",
+      "assets/js/search-preview.min.js",
+      "assets/js/visual-recovery.js",
+      "assets/js/visual-recovery.min.js",
+      "data/font-fallback.json",
+      "inc/global-shell.php",
+      "inc/quick-view-commerce.php",
+      "template-parts/collections/scroll-world.php",
+      "template-parts/collections/world.php",
+      "template-parts/commerce/town-line.php"
+    ],
+    "Responsive card derivatives (33 SKUs \u00d7 3 widths)": [
+      "assets/derived/card-fronts/br-014-320w.webp",
+      "assets/derived/card-fronts/sg-002-320w.webp",
+      "assets/derived/card-fronts/lh-004-320w.webp",
+      "assets/derived/card-fronts/br-007-768w.webp",
+      "assets/derived/card-fronts/sg-015-480w.webp",
+      "assets/derived/card-fronts/sg-011-768w.webp",
+      "assets/derived/card-fronts/lh-003-768w.webp",
+      "assets/derived/card-fronts/br-003-480w.webp",
+      "assets/derived/card-fronts/sg-005-768w.webp",
+      "assets/derived/card-fronts/sg-001-480w.webp",
+      "assets/derived/card-fronts/br-005-480w.webp",
+      "assets/derived/card-fronts/lh-005-768w.webp",
+      "assets/derived/card-fronts/br-001-768w.webp",
+      "assets/derived/card-fronts/sg-013-480w.webp",
+      "assets/derived/card-fronts/sg-007-480w.webp",
+      "assets/derived/card-fronts/br-015-768w.webp",
+      "assets/derived/card-fronts/br-011-480w.webp",
+      "assets/derived/card-fronts/sg-003-768w.webp",
+      "assets/derived/card-fronts/br-012-320w.webp",
+      "assets/derived/card-fronts/br-006-320w.webp",
+      "assets/derived/card-fronts/lh-002-320w.webp",
+      "assets/derived/card-fronts/br-008-480w.webp",
+      "assets/derived/card-fronts/sg-009-320w.webp",
+      "assets/derived/card-fronts/kids-001-768w.webp",
+      "assets/derived/card-fronts/lh-005-320w.webp",
+      "assets/derived/card-fronts/br-001-320w.webp",
+      "assets/derived/card-fronts/br-015-320w.webp",
+      "assets/derived/card-fronts/sg-003-320w.webp",
+      "assets/derived/card-fronts/br-012-768w.webp",
+      "assets/derived/card-fronts/br-006-768w.webp",
+      "assets/derived/card-fronts/lh-006-480w.webp",
+      "assets/derived/card-fronts/sg-014-480w.webp",
+      "assets/derived/card-fronts/br-002-480w.webp",
+      "assets/derived/card-fronts/lh-002-768w.webp",
+      "assets/derived/card-fronts/kids-002-480w.webp",
+      "assets/derived/card-fronts/sg-009-768w.webp",
+      "assets/derived/card-fronts/kids-001-320w.webp",
+      "assets/derived/card-fronts/sg-006-480w.webp",
+      "assets/derived/card-fronts/br-014-768w.webp",
+      "assets/derived/card-fronts/br-010-480w.webp",
+      "assets/derived/card-fronts/sg-002-768w.webp",
+      "assets/derived/card-fronts/lh-004-768w.webp",
+      "assets/derived/card-fronts/br-004-480w.webp",
+      "assets/derived/card-fronts/sg-012-480w.webp",
+      "assets/derived/card-fronts/br-007-320w.webp",
+      "assets/derived/card-fronts/lh-003-320w.webp",
+      "assets/derived/card-fronts/sg-011-320w.webp",
+      "assets/derived/card-fronts/sg-005-320w.webp",
+      "assets/derived/card-fronts/br-009-480w.webp",
+      "assets/derived/card-fronts/lh-005-480w.webp",
+      "assets/derived/card-fronts/br-005-768w.webp",
+      "assets/derived/card-fronts/br-001-480w.webp",
+      "assets/derived/card-fronts/sg-013-768w.webp",
+      "assets/derived/card-fronts/sg-007-768w.webp",
+      "assets/derived/card-fronts/br-015-480w.webp",
+      "assets/derived/card-fronts/br-011-768w.webp",
+      "assets/derived/card-fronts/sg-003-480w.webp",
+      "assets/derived/card-fronts/sg-014-320w.webp",
+      "assets/derived/card-fronts/lh-006-320w.webp",
+      "assets/derived/card-fronts/br-002-320w.webp",
+      "assets/derived/card-fronts/br-008-768w.webp",
+      "assets/derived/card-fronts/kids-002-320w.webp",
+      "assets/derived/card-fronts/kids-001-480w.webp",
+      "assets/derived/card-fronts/sg-006-320w.webp",
+      "assets/derived/card-fronts/br-010-320w.webp",
+      "assets/derived/card-fronts/br-004-320w.webp",
+      "assets/derived/card-fronts/sg-012-320w.webp",
+      "assets/derived/card-fronts/br-007-480w.webp",
+      "assets/derived/card-fronts/sg-015-768w.webp",
+      "assets/derived/card-fronts/sg-011-480w.webp",
+      "assets/derived/card-fronts/br-003-768w.webp",
+      "assets/derived/card-fronts/lh-003-480w.webp",
+      "assets/derived/card-fronts/sg-005-480w.webp",
+      "assets/derived/card-fronts/sg-001-768w.webp",
+      "assets/derived/card-fronts/br-009-320w.webp",
+      "assets/derived/card-fronts/sg-006-768w.webp",
+      "assets/derived/card-fronts/br-014-480w.webp",
+      "assets/derived/card-fronts/br-010-768w.webp",
+      "assets/derived/card-fronts/sg-002-480w.webp",
+      "assets/derived/card-fronts/br-004-768w.webp",
+      "assets/derived/card-fronts/lh-004-480w.webp",
+      "assets/derived/card-fronts/sg-012-768w.webp",
+      "assets/derived/card-fronts/sg-015-320w.webp",
+      "assets/derived/card-fronts/br-003-320w.webp",
+      "assets/derived/card-fronts/sg-001-320w.webp",
+      "assets/derived/card-fronts/br-009-768w.webp",
+      "assets/derived/card-fronts/br-005-320w.webp",
+      "assets/derived/card-fronts/sg-013-320w.webp",
+      "assets/derived/card-fronts/sg-007-320w.webp",
+      "assets/derived/card-fronts/br-011-320w.webp",
+      "assets/derived/card-fronts/br-012-480w.webp",
+      "assets/derived/card-fronts/lh-006-768w.webp",
+      "assets/derived/card-fronts/br-006-480w.webp",
+      "assets/derived/card-fronts/sg-014-768w.webp",
+      "assets/derived/card-fronts/lh-002-480w.webp",
+      "assets/derived/card-fronts/br-002-768w.webp",
+      "assets/derived/card-fronts/br-008-320w.webp",
+      "assets/derived/card-fronts/kids-002-768w.webp",
+      "assets/derived/card-fronts/sg-009-480w.webp"
+    ],
+    "Responsive approved scene posters": [
+      "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-1024w.webp",
+      "assets/scroll-world/derived/approved-scenes/br-commerce-3-poster-640w.webp"
+    ]
+  },
+  "packagingGap": {
+    "acceptedUnclassifiedPaths": {
+      "assets/css/premium-commerce.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/css/premium-commerce.min.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/css/quick-view-commerce.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/css/quick-view-commerce.min.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/css/scene-handoff.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/css/scene-handoff.min.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/css/search-preview.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/css/search-preview.min.css": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/derived/fonts/inter-fallback-latin.woff2": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/images/skyy-runtime-poster.webp": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/premium-commerce.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/premium-commerce.min.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/quick-view-commerce.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/quick-view-commerce.min.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/scene-handoff.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/scene-handoff.min.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/search-preview.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "assets/js/search-preview.min.js": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      },
+      "data/font-fallback.json": {
+        "release": false,
+        "category": "BUILD PROVENANCE",
+        "reason": "Font subset reproduction recipe; no runtime consumer; preserved in source evidence"
+      },
+      "inc/quick-view-commerce.php": {
+        "release": true,
+        "category": "RUNTIME SOURCE",
+        "reason": "Accepted runtime dependency"
+      }
+    },
+    "runtimeIncluded": 19,
+    "provenanceExcluded": 1,
+    "historicalDeploymentCausation": "UNKNOWN: current gap does not prove past omission mechanism"
+  },
+  "representationBoundary": "Remote file hashes establish filesystem source differences; Jetpack Boost/Content-Encoding representations cannot explain missing filesystem paths or prove the accepted source was deployed. Actual B13 combined URLs must be compared by decoded body at the exact URL.",
+  "unknowns": [
+    "Exact actor and timestamp of intervening source updates after recorded card patch",
+    "Whether any currently missing path was never deployed or was later removed",
+    "Single complete deployed Git commit and build toolchain",
+    "Semantic equivalence of seven unmatched generated/metadata files",
+    "Historical cause of current packaging classification gap"
+  ],
+  "evidence": [
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-a2-b13-20260906/deployed-identity.json",
+      "sha256": "249e7edcd2e992546625c24f336d741e9904644f9bf1dc7a8a9152bacdfea8d3",
+      "bytes": 121595
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/remote-full-hashes.stdout",
+      "sha256": "f9b17d8b5be1dab2606f6b81a1f2945ae5436379fcbff128ce51a3547e531f50",
+      "bytes": 71863
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/remote-file-metadata.stdout",
+      "sha256": "de9a65505511e246f371cff656ec6a666899cdf9352d006ca2d3ad2e11374aab",
+      "bytes": 59060
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/package/source-inventory.json",
+      "sha256": "c8c75e084323fb5933755eca34800b540c3f753bd70f49d47029d07a8a0e608e",
+      "bytes": 122913
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/package/packaging-overlay.json",
+      "sha256": "a544b1ea3c6dcbf60afbbc0c02d324debea777b6d3b85f00ca3f7f82bcc84063",
+      "bytes": 3760
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tasks/v2-phase3-20260905/release-manifest.json",
+      "sha256": "32d649d739b3f5287daaba80d4a80ffb8af97310b021641a2c7165a86dd36d25",
+      "bytes": 52076
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tasks/v2-readiness-20260906/source-integrity.json",
+      "sha256": "15fd5c21e8c905fcd3882ea945d43e24c1d230d2ac792b0af355a52ed1180a1e",
+      "bytes": 69683
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tasks/v2-readiness-20260906/scope.json",
+      "sha256": "6bb81b15c3597e09b07b805404c90e1ee20ee8e41e1b90d10509e1756ce07ff5",
+      "bytes": 1794
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tasks/v2-a2-b13-20260906/b13-report.md",
+      "sha256": "a3d442cf83f7bf33374aa0fc6a70a5b860dd6ce3ca1d7b6a711103225eab3e8d",
+      "bytes": 16576
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905/deployment-receipt.json",
+      "sha256": "9594ed61cc2d85f8105d47792eb6aa6ec8e91111db317d5b017bb9e0ec6c85d4",
+      "bytes": 1316
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905/candidate.sha256",
+      "sha256": "cefde3ea4aaff0f2f88b1ccd78fbd6fefa10515f8d1547930329c399cc734454",
+      "bytes": 5111
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905/deploy.log",
+      "sha256": "f6219a6b637ac59568c566d00fbcd0e5a53fc50c5443450735ade7835b540f38",
+      "bytes": 4942
+    },
+    {
+      "path": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905/task-ledger.jsonl",
+      "sha256": "a133313dd4293344108839462b01d8d11c7415e622fe6f7f903d326413720319",
+      "bytes": 1811
+    }
+  ],
+  "artifacts": {
+    "matches.json": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/lineage/matches.json",
+    "receipt-comparison.json": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/lineage/receipt-comparison.json",
+    "full-accepted-comparison.json": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/lineage/full-accepted-comparison.json",
+    "git-history.json": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/lineage/git-history.json",
+    "evidence-hashes.json": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-staging-release-20260906/lineage/evidence-hashes.json"
+  },
+  "changesMade": "Only assigned lineage documentation/artifacts; no SSH, source changes, builds or deployment"
+}

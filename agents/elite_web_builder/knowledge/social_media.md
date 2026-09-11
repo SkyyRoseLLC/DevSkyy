@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Social Media Agent — Knowledge Reference
 
 **Catalog source of truth:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`. Every post references a real SKU. Never invent product names or prices.
@@ -8,7 +9,7 @@ The Social Media sub-agent generates platform-specific captions, hashtags, campa
 
 ## Brand voice (non-negotiable)
 
-- **Only tagline:** `Luxury Grows from Concrete.`
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Retired (NEVER use):** `Where Love Meets Luxury`, `#WhereLoveMeetsLuxury`
 - **Brand name:** SkyyRose (one word). "Skyy Rose" only when referring to the founder's daughter by name.
 - **Founder:** Corey Foster (Oakland). Brand named after his daughter, Skyy Rose.
@@ -58,7 +59,7 @@ The Social Media sub-agent generates platform-specific captions, hashtags, campa
   "platform": "instagram",
   "content_type": "product_launch",
   "caption": "…",
-  "hashtags": ["#SkyyRose", "#LuxuryGrowsFromConcrete", "..."],
+  "hashtags": ["#SkyyRose", "", "..."],
   "imagery_brief": {
     "style": "flat-lay | on-model | lifestyle | editorial",
     "mood_notes": "…",
@@ -77,7 +78,7 @@ The `imagery_brief` block is the hand-off to the Imagery Agent — every post de
 
 Every post gets a baseline bundle:
 ```
-#SkyyRose #LuxuryGrowsFromConcrete #LuxuryStreetwear #{collection_no_dashes}
+#SkyyRose  #LuxuryStreetwear #{collection_no_dashes}
 ```
 Platform-specific additions:
 - IG: `#NewDrop #FashionForward #OOTD #StreetLuxury` (pick 1–4)

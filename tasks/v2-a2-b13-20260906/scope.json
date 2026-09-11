@@ -1,0 +1,45 @@
+{
+  "id": "V2-A2-B13-20260906",
+  "manager": "root",
+  "baselineDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "tracks": {
+    "A2": {
+      "owner": "architecture_audit",
+      "scope": "isolated criticalCSScoverageandcandidateexperiments",
+      "acceptedSourceEdits": false,
+      "independentReviewer": "commerce_source_review"
+    },
+    "B13": {
+      "owner": "root",
+      "scope": "readonlystagingheadersidentitythenbrowserifprerequisitespermit",
+      "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+      "browserOwner": "skyy_finalization",
+      "prerequisiteOwner": "commerce_source_review"
+    }
+  },
+  "prohibited": [
+    "staging/config changes",
+    "cache purge",
+    "orders/payments",
+    "accepted source integration",
+    "media/model redesign"
+  ],
+  "toolProfile": "Read/Grep/Bash, local experiments and authorized readonlystagingnetwork/browser; maxroot+3",
+  "status": "COMPLETED_DIAGNOSTIC_ONLY",
+  "completedAt": "2026-09-06T20:35:55.155218+00:00",
+  "results": {
+    "A2": "REJECT_B_AND_C",
+    "B13": {
+      "HOME HERO DELIVERY": "FAIL",
+      "COLLECTION SCENE DELIVERY": "PASS",
+      "PRODUCT CARD DELIVERY": "FAIL",
+      "QUICK VIEW DELIVERY": "FAIL",
+      "ASK SKYY DEFERRED DELIVERY": "FAIL",
+      "MOBILE CINEMATIC DELIVERY": "FAIL"
+    },
+    "acceptedCandidateStagingCertification": "ENVIRONMENT-BOUND",
+    "readiness": "NEEDS_MORE_WORK"
+  },
+  "acceptedSourceChanges": 0,
+  "protectedMediaChanges": 0
+}

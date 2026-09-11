@@ -1,0 +1,39 @@
+{
+  "status": "LOCAL_PASS_INDEPENDENT_REVIEW_PASS",
+  "source": ".artifacts/v2-rotating-mark-20260906/optimization/deliverables/TSRC-optimized-384.webm",
+  "runtime": "wordpress-theme/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-optimized-384w.webm",
+  "sha256": "d5ed7a58727e5bdeb0cd8893e81a25ce826485bcacdba7a23962bd421ffb76f3",
+  "bytes": 617195,
+  "dimensions": [
+    384,
+    216
+  ],
+  "frames": 326,
+  "seconds": 13.04,
+  "authoring_preserved": true,
+  "fallback": "assets/sot/brand/skyyrose-logo-animated-384w.webp",
+  "static": "assets/sot/brand/skyyrose-logo-still-384w.webp",
+  "validation": "optimization/integrated-validation.json",
+  "limitations": [
+    "Chromium local browser, not physical device or Safari certification",
+    "Normal cases delay WebM request deliberately to compare reserved static/motion geometry; routing disables cache so duplicate requests are not cache verdicts",
+    "Existing page layout shifts occur outside brand elements; this is not a zero-site-CLS claim"
+  ],
+  "checks": [
+    "5 widths 320/390/768/1024/1440",
+    "Header initial reserved box equals post-video box",
+    "Both videos preserve alpha, change frames, loop and play",
+    "Footer video absent until proximity",
+    "Reduced motion and Save-Data no WebM request or video creation",
+    "Aborted WebM uses existing animated WebP fallback",
+    "PHP parse, JS syntax and deterministic min rebuild",
+    "Intentional pause abort during pending play followed by resume retains WebM; no animated fallback request"
+  ],
+  "play_cancellation_validation": "optimization/play-cancellation-validation.json",
+  "independent_review": {
+    "reviewer": "about_code_review",
+    "status": "PASS",
+    "confirmed_by": "root",
+    "resolved_finding": "Pending play intentional-pause AbortError no longer permanently disables WebM"
+  }
+}

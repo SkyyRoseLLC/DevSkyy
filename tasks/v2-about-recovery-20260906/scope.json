@@ -1,0 +1,45 @@
+{
+    "id": "V2-ABOUT-RECOVERY-20260906",
+    "manager": "root",
+    "source": "7116 local V2 with unshipped rotating-mark restoration; staging exact e47588205c55 artifact",
+    "target": "About only",
+    "roster": {
+        "root": "WordPress recovery, integration and evidence",
+        "about_archive_recovery": "Git/worktree/archive sources",
+        "about_media_recovery": "media/interview provenance",
+        "about_design_contract": "presentation architecture and later independent QA"
+    },
+    "acceptanceCriteria": [
+        "Inventory prior About versions before implementation",
+        "Recover verbatim stories and television source",
+        "Preserve all meaningful content with disposition",
+        "Editor-owned copy and intent-only media",
+        "390/768/1440 old/current/new comparison",
+        "Independent review; founder review before deployment"
+    ],
+    "evidenceRequired": [
+        "source inventory",
+        "story/media hashes",
+        "television source status",
+        "content-loss audit",
+        "responsive browser captures",
+        "independent_review"
+    ],
+    "constraints": [
+        "No staging writes or deployment",
+        "No database/content overwrite",
+        "No invented stories/press/media",
+        "Mockup is presentation reference only",
+        "Preserve global cinematic systems and rotating mark",
+        "No third-party footage republishing"
+    ],
+    "status": "FOUNDER_REVIEW_REQUIRED",
+    "founderClarifications": {
+        "interview": "The Blox video is the interview; Ja11W-g34Zo",
+        "reference": "Supplied PNG is entirely design reference; founder permits use of some Oakland imagery",
+        "imageBoundary": "Oakland editorial scenery may be used; mockup people and captions are not factual founder content",
+        "hero": "Exact daughter photograph already used in front-page.php; not mockup people",
+        "collections": "Graphic logos as miniature displays, not hero scenes or font wordmarks",
+        "kids": "Founder supplied Photoroom_20260313_171551.png following request for Kids graphic; used intact only in About collection display"
+    }
+}

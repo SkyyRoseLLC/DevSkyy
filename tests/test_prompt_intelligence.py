@@ -484,7 +484,7 @@ class TestBrandDNAPresence:
 
     def test_brand_name_and_tagline(self):
         assert BRAND_NAME == "SkyyRose"
-        assert BRAND_TAGLINE == "Luxury Grows from Concrete."
+        assert BRAND_TAGLINE == ""
 
     def test_enhancement_injects_brand_for_black_rose(self):
         chain = PromptChain()

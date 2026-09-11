@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # v2 Polish Mix-In Specification
 ## Live Homepage Polish Layers → Standalone v2.html
 
@@ -195,7 +196,7 @@
 | Field | Value |
 |-------|-------|
 | Source | `assets/css/homepage-v2.css` lines 552–585 |
-| Effect | Infinite horizontal scroll of repeated text (e.g., "LUXURY GROWS FROM CONCRETE //") — `@keyframes mqScroll` |
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 | Recommendation | **OPTIONAL** |
 | Rationale | Strong editorial signal — Palm Angels, Fear of God archives, 032c all use ticker strips between content sections. In v2's magazine context, a marquee between the `#home-spread` and `#br-cover` frames would mark the "page turn." Pure CSS + static HTML. Risk: feels derivative if not copy-differentiated. |
 | Difficulty | **Simple CSS** — `@keyframes mqScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }` with duplicated text node for seamless loop |

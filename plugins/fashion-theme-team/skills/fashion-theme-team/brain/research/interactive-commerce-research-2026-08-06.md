@@ -1,7 +1,8 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # SkyyRose Interactive Commerce Research Report
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> **SKYYROSE LLC · FASHION THEME BRAIN**
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 *Generated 2026-08-06 · Evidence snapshot for V2 planning · Status: research, not release approval*
 

@@ -1,0 +1,1553 @@
+{
+  "scope": "Read-only public HTTP prerequisites; no browser/config changes/cache purge/orders/payments/session provisioning",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "candidate": "STAGING-OBSERVED-f2893d998356",
+  "identityArtifact": ".artifacts/v2-a2-b13-20260906/deployed-identity.json",
+  "identityBoundary": "322 observed files out of451 requested;295 match27 differ129 absent relative accepted local source. No full remote tree/commit claim.",
+  "client": "curl8.20.0 libcurl8.20.0 Brotli1.2.0 gzip zlib1.2.12, macOS host; fresh process each sample, no curl config/cookie jar, negotiatedHTTP/2; exposed sjc edge labels",
+  "goNoGo": {
+    "readonlyPublicB13": "GO_DIAGNOSTIC_ONLY",
+    "routes": [
+      "/",
+      "/shop/",
+      "/collections/signature/",
+      "/collections/black-rose/",
+      "/collections/love-hurts/",
+      "/product/sg-005/"
+    ],
+    "conditions": [
+      "Wait for root exclusive browser window",
+      "Capture actual browser coding/decoded bundle identity",
+      "Label deployed observed candidate rather than accepted local source",
+      "No payment/order/cart/session mutation",
+      "Absent gallery/feature must remain not exercised"
+    ],
+    "certification": "NO_GO: B01/B03 representation drift, B06 exact MIME target exceptions, session isolation and historical key behavior unverified"
+  },
+  "checks": [
+    {
+      "id": "B01",
+      "status": "FAIL",
+      "evidence": "117 code/HTML negotiation GETs: 7 code resources and 6 route endpoints, 3 interleaved repeats per coding. Signature CSS and PDP JS bundles have consistently different decoded br vs identity/gzip bytes; 5 other code resources equal. Bundles contain theme/Woo code; separate un-emitted constituent URLs were not invented."
+    },
+    {
+      "id": "B02",
+      "status": "PASS",
+      "evidence": "All sampled 200 HTML/code responses negotiate requested br/gzip and unencoded identity successfully. Checkout302 body is empty. Binary assets need not be compressed."
+    },
+    {
+      "id": "B03",
+      "status": "FAIL",
+      "evidence": "Accept-Encoding Vary exists but two bundle representations contain different code. Incorrect/stale representation consistency is proven; cache-layer root cause is not."
+    },
+    {
+      "id": "B04",
+      "status": "PASS",
+      "evidence": "Captured static/HTML cache policies and exposed edge labels. Three same-representation If-None-Match GETs returned304 with empty bodies. Cart/Checkout private/no-cache policy observed; session isolation not proven."
+    },
+    {
+      "id": "B05",
+      "status": "ENVIRONMENT_BOUND",
+      "evidence": "No authorized historical version URL/key documentation supplied. Long max-age observed; no immutable cache-key certification or query-string experimentation."
+    },
+    {
+      "id": "B06",
+      "status": "FAIL",
+      "evidence": "All12 binary signatures valid and all13 sampled theme/decoder/runtime files match SSH observed source hashes. Fonts use application/font-woff2 and GLB application/octet-stream instead of checklist preferred MIME; actual browser compatibility not tested here. JPEG/AVIF and approved PDP gallery sample not established."
+    },
+    {
+      "id": "B07",
+      "status": "PASS",
+      "evidence": "Signature hero WebM/MP4 and first scene720p MP4 each return exact206 start/nonzero1024-byte slices plus416 with correct total for out-of-bounds request. Playback/seek/reverse navigation remains B13 browser work."
+    },
+    {
+      "id": "B08",
+      "status": "PASS",
+      "evidence": "Sampled asset URLs are direct HTTPS200 on authorized origin, with matching deployed hashes where source identity is available. No cross-origin CORS/image-transform certification. Anonymous Checkout302 to Cart is explicitly recorded."
+    },
+    {
+      "id": "B09",
+      "status": "ENVIRONMENT_BOUND",
+      "evidence": "Anonymous no-cookie-jar requests completed; no existing authenticated synthetic session provided. No anonymous/authenticated cross-session comparison."
+    },
+    {
+      "id": "B10",
+      "status": "ENVIRONMENT_BOUND",
+      "evidence": "No existing authorized synthetic populatedA/emptyB sessions. No carts/customers/orders created; isolation remains unverified."
+    },
+    {
+      "id": "B11",
+      "status": "ENVIRONMENT_BOUND",
+      "evidence": "No session-bearing account/cart-fragment/StoreAPI endpoint probes or mutation requests. Dynamic architecture/session behavior requires authorized fixtures; not inferred from headers."
+    },
+    {
+      "id": "B12",
+      "status": "ENVIRONMENT_BOUND",
+      "evidence": "Five sequential fresh-curl samples across six original checklist routes completed. Cart median1524.5ms exceeds diagnostic800ms target. Checkout timing covers302 only; no checkout document. PublicB13 BlackRose/LoveHurts additionallyGET200. Network-inclusive times/edge states are not origin-only attribution."
+    }
+  ],
+  "timings": [
+    {
+      "route": "home",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+      "samples": 5,
+      "httpStatuses": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "httpVersions": [
+        "2"
+      ],
+      "ttfbMs": {
+        "median": 59.433,
+        "min": 55.881,
+        "max": 105.652
+      },
+      "medianCumulativeMs": {
+        "time_namelookup": 1.939,
+        "time_connect": 16.657999999999998,
+        "time_appconnect": 41.689,
+        "time_pretransfer": 41.751000000000005,
+        "time_starttransfer": 59.433,
+        "time_total": 87.96600000000001
+      },
+      "cacheLabels": [
+        [
+          "1.sjc _atomic_bur STALE"
+        ],
+        [
+          "1.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "1.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "1.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "1.sjc _atomic_bur UPDATING"
+        ]
+      ],
+      "cachePolicies": [
+        [
+          "max-age=260, must-revalidate"
+        ],
+        [
+          "max-age=260, must-revalidate"
+        ],
+        [
+          "max-age=260, must-revalidate"
+        ],
+        [
+          "max-age=260, must-revalidate"
+        ],
+        [
+          "max-age=260, must-revalidate"
+        ]
+      ],
+      "redirectLocations": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "route": "shop",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+      "samples": 5,
+      "httpStatuses": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "httpVersions": [
+        "2"
+      ],
+      "ttfbMs": {
+        "median": 71.445,
+        "min": 62.63100000000001,
+        "max": 114.11699999999999
+      },
+      "medianCumulativeMs": {
+        "time_namelookup": 1.858,
+        "time_connect": 24.226000000000003,
+        "time_appconnect": 49.666000000000004,
+        "time_pretransfer": 49.723000000000006,
+        "time_starttransfer": 71.445,
+        "time_total": 86.533
+      },
+      "cacheLabels": [
+        [
+          "3.sjc _atomic_bur STALE"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ]
+      ],
+      "cachePolicies": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "redirectLocations": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "route": "signature",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+      "samples": 5,
+      "httpStatuses": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "httpVersions": [
+        "2"
+      ],
+      "ttfbMs": {
+        "median": 67.153,
+        "min": 61.714999999999996,
+        "max": 124.57799999999999
+      },
+      "medianCumulativeMs": {
+        "time_namelookup": 1.957,
+        "time_connect": 17.083000000000002,
+        "time_appconnect": 45.038000000000004,
+        "time_pretransfer": 45.115,
+        "time_starttransfer": 67.153,
+        "time_total": 78.05
+      },
+      "cacheLabels": [
+        [
+          "3.sjc _atomic_bur STALE"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "3.sjc _atomic_bur UPDATING"
+        ]
+      ],
+      "cachePolicies": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "redirectLocations": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "route": "pdp",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+      "samples": 5,
+      "httpStatuses": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "httpVersions": [
+        "2"
+      ],
+      "ttfbMs": {
+        "median": 65.009,
+        "min": 55.39,
+        "max": 131.51399999999998
+      },
+      "medianCumulativeMs": {
+        "time_namelookup": 1.6900000000000002,
+        "time_connect": 14.815999999999999,
+        "time_appconnect": 43.885,
+        "time_pretransfer": 43.937999999999995,
+        "time_starttransfer": 65.009,
+        "time_total": 96.479
+      },
+      "cacheLabels": [
+        [
+          "2.sjc _atomic_bur STALE"
+        ],
+        [
+          "2.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "2.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "2.sjc _atomic_bur UPDATING"
+        ],
+        [
+          "2.sjc _atomic_bur UPDATING"
+        ]
+      ],
+      "cachePolicies": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "redirectLocations": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "route": "cart",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "samples": 5,
+      "httpStatuses": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "httpVersions": [
+        "2"
+      ],
+      "ttfbMs": {
+        "median": 1524.471,
+        "min": 104.295,
+        "max": 1741.1080000000002
+      },
+      "medianCumulativeMs": {
+        "time_namelookup": 1.771,
+        "time_connect": 19.14,
+        "time_appconnect": 43.951,
+        "time_pretransfer": 44.059,
+        "time_starttransfer": 1524.471,
+        "time_total": 1553.3429999999998
+      },
+      "cacheLabels": [
+        [
+          "3.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "3.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "3.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "3.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "3.sjc _atomic_bur BYPASS"
+        ]
+      ],
+      "cachePolicies": [
+        [
+          "no-cache, must-revalidate, max-age=0, private"
+        ],
+        [
+          "no-cache, must-revalidate, max-age=0, private"
+        ],
+        [
+          "no-cache, must-revalidate, max-age=0, private"
+        ],
+        [
+          "no-cache, must-revalidate, max-age=0, private"
+        ],
+        [
+          "no-cache, must-revalidate, max-age=0, private"
+        ]
+      ],
+      "redirectLocations": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "route": "checkout",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "samples": 5,
+      "httpStatuses": [
+        302,
+        302,
+        302,
+        302,
+        302
+      ],
+      "httpVersions": [
+        "2"
+      ],
+      "ttfbMs": {
+        "median": 145.146,
+        "min": 84.135,
+        "max": 1296.023
+      },
+      "medianCumulativeMs": {
+        "time_namelookup": 2.2300000000000004,
+        "time_connect": 20.629,
+        "time_appconnect": 53.352,
+        "time_pretransfer": 53.431,
+        "time_starttransfer": 145.146,
+        "time_total": 145.291
+      },
+      "cacheLabels": [
+        [
+          "4.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "4.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "4.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "4.sjc _atomic_bur BYPASS"
+        ],
+        [
+          "4.sjc _atomic_bur BYPASS"
+        ]
+      ],
+      "cachePolicies": [
+        [
+          "no-cache, must-revalidate, max-age=0, private"
+        ],
+        [
+          "no-cache, must-revalidate, max-age=0, private"
+        ],
+        null,
+        null,
+        null
+      ],
+      "redirectLocations": [
+        [
+          "https://staging-7e48-skyyrose.wpcomstaging.com/cart/"
+        ],
+        [
+          "https://staging-7e48-skyyrose.wpcomstaging.com/cart/"
+        ],
+        [
+          "https://staging-7e48-skyyrose.wpcomstaging.com/cart/"
+        ],
+        [
+          "https://staging-7e48-skyyrose.wpcomstaging.com/cart/"
+        ],
+        [
+          "https://staging-7e48-skyyrose.wpcomstaging.com/cart/"
+        ]
+      ]
+    }
+  ],
+  "encoding": [
+    {
+      "resource": "encoding-home-css-bundle",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??21ca4337f0",
+      "decodedHashes": [
+        "7731bc7375a070dd857455f7808e440e602688ea28d7b51bcadb4b826edfe4a8"
+      ],
+      "staticEquivalence": true,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 75799,
+          "decodedBytes": 448802,
+          "sha256": "7731bc7375a070dd857455f7808e440e602688ea28d7b51bcadb4b826edfe4a8",
+          "etag": [
+            "W/\"9ff6d14a0a6ede94e9fd3390182e72b9\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 448802,
+          "decodedBytes": 448802,
+          "sha256": "7731bc7375a070dd857455f7808e440e602688ea28d7b51bcadb4b826edfe4a8",
+          "etag": [
+            "\"9ff6d14a0a6ede94e9fd3390182e72b9\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 76309,
+          "decodedBytes": 448802,
+          "sha256": "7731bc7375a070dd857455f7808e440e602688ea28d7b51bcadb4b826edfe4a8",
+          "etag": [
+            "W/\"9ff6d14a0a6ede94e9fd3390182e72b9\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-signature-css-bundle",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??c9711b8a62",
+      "decodedHashes": [
+        "7955206534965cf0fc7d6ba1861ea100c0fd6cca6c0c53c746dcaa7db0142d2c",
+        "80875d248f2653177fc53977ea8bca01a6407044373b5752f54440dc6de51bf5"
+      ],
+      "staticEquivalence": false,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 76405,
+          "decodedBytes": 450930,
+          "sha256": "7955206534965cf0fc7d6ba1861ea100c0fd6cca6c0c53c746dcaa7db0142d2c",
+          "etag": [
+            "W/\"f5690ac7c6b265279c369d1964431af3\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 452031,
+          "decodedBytes": 452031,
+          "sha256": "80875d248f2653177fc53977ea8bca01a6407044373b5752f54440dc6de51bf5",
+          "etag": [
+            "\"bf9ac8d48112a4096490cc1ba7a8827a\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 77204,
+          "decodedBytes": 452031,
+          "sha256": "80875d248f2653177fc53977ea8bca01a6407044373b5752f54440dc6de51bf5",
+          "etag": [
+            "W/\"bf9ac8d48112a4096490cc1ba7a8827a\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-woo-smallscreen-bundle",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+      "decodedHashes": [
+        "04117635a20d6d47566f4d8b4252b7e094f747da95a12e80a03781d05817049e"
+      ],
+      "staticEquivalence": true,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 1389,
+          "decodedBytes": 8656,
+          "sha256": "04117635a20d6d47566f4d8b4252b7e094f747da95a12e80a03781d05817049e",
+          "etag": [
+            "W/\"84b513b32313cc77499dcb92bdc91d87\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 8656,
+          "decodedBytes": 8656,
+          "sha256": "04117635a20d6d47566f4d8b4252b7e094f747da95a12e80a03781d05817049e",
+          "etag": [
+            "\"84b513b32313cc77499dcb92bdc91d87\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 1429,
+          "decodedBytes": 8656,
+          "sha256": "04117635a20d6d47566f4d8b4252b7e094f747da95a12e80a03781d05817049e",
+          "etag": [
+            "W/\"84b513b32313cc77499dcb92bdc91d87\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-home-js-bundle",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??b3112bc741",
+      "decodedHashes": [
+        "ad242a55ccbcd22555e02174a966c963a0f9cd214681bf98b7a2160601192e84"
+      ],
+      "staticEquivalence": true,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 10186,
+          "decodedBytes": 32930,
+          "sha256": "ad242a55ccbcd22555e02174a966c963a0f9cd214681bf98b7a2160601192e84",
+          "etag": [
+            "W/\"a16790761b6832f6641aec4fe680aaef\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 32930,
+          "decodedBytes": 32930,
+          "sha256": "ad242a55ccbcd22555e02174a966c963a0f9cd214681bf98b7a2160601192e84",
+          "etag": [
+            "\"a16790761b6832f6641aec4fe680aaef\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 9952,
+          "decodedBytes": 32930,
+          "sha256": "ad242a55ccbcd22555e02174a966c963a0f9cd214681bf98b7a2160601192e84",
+          "etag": [
+            "W/\"a16790761b6832f6641aec4fe680aaef\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-pdp-js-bundle",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??955c29654e",
+      "decodedHashes": [
+        "0915d1183fc546ea10240a8721a4b451e1101a6ad9a6d3569aca4faed773c7e9",
+        "3b271f738f88447bbdf6571fe788cc0070afc3fb64ae0b9044fbce2b448a6102"
+      ],
+      "staticEquivalence": false,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 9111,
+          "decodedBytes": 29026,
+          "sha256": "0915d1183fc546ea10240a8721a4b451e1101a6ad9a6d3569aca4faed773c7e9",
+          "etag": [
+            "W/\"9a74f99ecd5a39d79e45eac5cbe39886\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 30679,
+          "decodedBytes": 30679,
+          "sha256": "3b271f738f88447bbdf6571fe788cc0070afc3fb64ae0b9044fbce2b448a6102",
+          "etag": [
+            "\"153afb203d3be97a54774be1da66ddec\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 9383,
+          "decodedBytes": 30679,
+          "sha256": "3b271f738f88447bbdf6571fe788cc0070afc3fb64ae0b9044fbce2b448a6102",
+          "etag": [
+            "W/\"153afb203d3be97a54774be1da66ddec\""
+          ],
+          "vary": [
+            "Accept-Encoding",
+            "Cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-core-jquery",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+      "decodedHashes": [
+        "cb6f2d32c49d1c2b25e9ffc9aaafa3f83075346c01bcd4ae6eb187392a4292cf"
+      ],
+      "staticEquivalence": true,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 31408,
+          "decodedBytes": 87553,
+          "sha256": "cb6f2d32c49d1c2b25e9ffc9aaafa3f83075346c01bcd4ae6eb187392a4292cf",
+          "etag": [
+            "W/\"64ecd5ef-15601\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 87553,
+          "decodedBytes": 87553,
+          "sha256": "cb6f2d32c49d1c2b25e9ffc9aaafa3f83075346c01bcd4ae6eb187392a4292cf",
+          "etag": [
+            "\"64ecd5ef-15601\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 30749,
+          "decodedBytes": 87553,
+          "sha256": "cb6f2d32c49d1c2b25e9ffc9aaafa3f83075346c01bcd4ae6eb187392a4292cf",
+          "etag": [
+            "W/\"64ecd5ef-15601\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-skyy-runtime",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/js/skyy-3d.min.js?ver=2.4.4-99abdd1ab80c",
+      "decodedHashes": [
+        "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d"
+      ],
+      "staticEquivalence": true,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 2253,
+          "decodedBytes": 5498,
+          "sha256": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+          "etag": [
+            "W/\"6a9be2df-157a\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 5498,
+          "decodedBytes": 5498,
+          "sha256": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+          "etag": [
+            "\"6a9be2df-157a\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 2248,
+          "decodedBytes": 5498,
+          "sha256": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+          "etag": [
+            "W/\"6a9be2df-157a\""
+          ],
+          "vary": [
+            "Accept-Encoding"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-html-home",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+      "decodedHashes": [
+        "1909a288847863cbeb4f955ab629f4fa86b24835fb0d33fb73ef7c920a2d1f8c",
+        "571951e4a1f112d5d2099761017ef9c43ff5350745a066ab31116682727cdfed",
+        "77480daeac2149283cf35f73be62464358ef813752e1e0afb065b86f292883f6",
+        "a10201f042e7ef8c4a00a394b918174bc36ca6c0910ab093c52528ce0c72ea43"
+      ],
+      "staticEquivalence": null,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 23516,
+          "decodedBytes": 114773,
+          "sha256": "1909a288847863cbeb4f955ab629f4fa86b24835fb0d33fb73ef7c920a2d1f8c",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 114822,
+          "decodedBytes": 114822,
+          "sha256": "571951e4a1f112d5d2099761017ef9c43ff5350745a066ab31116682727cdfed",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 23337,
+          "decodedBytes": 114822,
+          "sha256": "77480daeac2149283cf35f73be62464358ef813752e1e0afb065b86f292883f6",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-html-shop",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+      "decodedHashes": [
+        "61e7c0db960bcafac0e0611af6b6bb7d4256e327d96f758f07288a7042ce6742",
+        "8b45b5f982ffeb381afa2cac81abaa1ed83eb0009a913934dd040db3bc9feda0",
+        "ba3e3af54ae5f57698fd03f51eea790b5665ef0795096562e59530d3d70db779"
+      ],
+      "staticEquivalence": null,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 20721,
+          "decodedBytes": 125798,
+          "sha256": "61e7c0db960bcafac0e0611af6b6bb7d4256e327d96f758f07288a7042ce6742",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 125876,
+          "decodedBytes": 125876,
+          "sha256": "8b45b5f982ffeb381afa2cac81abaa1ed83eb0009a913934dd040db3bc9feda0",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 21333,
+          "decodedBytes": 125924,
+          "sha256": "ba3e3af54ae5f57698fd03f51eea790b5665ef0795096562e59530d3d70db779",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-html-signature",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+      "decodedHashes": [
+        "b4e02d492ee0cb9a3a34c59f536b5600114b2e05afca5995f99a4762fe54f46b",
+        "c64ca1cb5eb29d35449e30db37471bed0b55615740b09b16cd6f5e23cc00e4a0",
+        "f026a86fcc7a5c0a55fcb3407109fd1f541362b687473691742949624fefa8eb"
+      ],
+      "staticEquivalence": null,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 15857,
+          "decodedBytes": 100976,
+          "sha256": "c64ca1cb5eb29d35449e30db37471bed0b55615740b09b16cd6f5e23cc00e4a0",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 101054,
+          "decodedBytes": 101054,
+          "sha256": "b4e02d492ee0cb9a3a34c59f536b5600114b2e05afca5995f99a4762fe54f46b",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 16638,
+          "decodedBytes": 101102,
+          "sha256": "f026a86fcc7a5c0a55fcb3407109fd1f541362b687473691742949624fefa8eb",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-html-pdp",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+      "decodedHashes": [
+        "94f2bfcff54a5ab2276125611854b3268943e58386642ab5550201ca45d25f33",
+        "9e92f48606339cc063b568673fdb1269159025dcbee4ff86f9e3a8faae6b22e0",
+        "d165a2c551dd77e1e1914c3b6c5b4791672a2d3745076370c0ce48be9a9b6a4c"
+      ],
+      "staticEquivalence": null,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 54324,
+          "decodedBytes": 226574,
+          "sha256": "9e92f48606339cc063b568673fdb1269159025dcbee4ff86f9e3a8faae6b22e0",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 226797,
+          "decodedBytes": 226797,
+          "sha256": "d165a2c551dd77e1e1914c3b6c5b4791672a2d3745076370c0ce48be9a9b6a4c",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 56026,
+          "decodedBytes": 226845,
+          "sha256": "94f2bfcff54a5ab2276125611854b3268943e58386642ab5550201ca45d25f33",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-html-cart",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "decodedHashes": [
+        "1047f913b86762bc4f2a77ec3e22133fa9fb4cc5b62fe2b9eb82e588c36db605",
+        "16e182b3a06e9b0354523be43b9b7458b9ca2bb0e3706c8940a1059212c9c83c",
+        "4b8109f92ca99a020c754eda9c98dc114af6d2945583039bfe7c40decc85a93d",
+        "53e6bf719111e565629eb06c6d9e32887dca911200b99b5dbd114e429fa1fc63",
+        "651b868d822abb05e51929e9a6b15036d6fdea667a8f8b8e65e2f8cf52a22f0c",
+        "7758da4a726c15f0cac170268b0b84e8f582740143fe85d4fde8b0d7f92464bf",
+        "aceba0516cb5a55e026526fd33534f2172295f87775de1d607e7115a1c65555f",
+        "c85b49870881789e766e4254d104fb26f61b4e703dec4ec5a2b5f3bd299eb395",
+        "d4e20b8539fcd10a51ccc7d2a1259955036061487ee1cdc4dcd450bbe20e5746"
+      ],
+      "staticEquivalence": null,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 200,
+          "coding": [
+            "br"
+          ],
+          "downloadedBytes": 44395,
+          "decodedBytes": 155447,
+          "sha256": "53e6bf719111e565629eb06c6d9e32887dca911200b99b5dbd114e429fa1fc63",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 200,
+          "coding": null,
+          "downloadedBytes": 155447,
+          "decodedBytes": 155447,
+          "sha256": "4b8109f92ca99a020c754eda9c98dc114af6d2945583039bfe7c40decc85a93d",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 200,
+          "coding": [
+            "gzip"
+          ],
+          "downloadedBytes": 44966,
+          "decodedBytes": 155447,
+          "sha256": "7758da4a726c15f0cac170268b0b84e8f582740143fe85d4fde8b0d7f92464bf",
+          "etag": null,
+          "vary": [
+            "Accept-Encoding",
+            "accept, content-type, cookie"
+          ]
+        }
+      ]
+    },
+    {
+      "resource": "encoding-html-checkout",
+      "samples": 9,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "decodedHashes": [
+        "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      ],
+      "staticEquivalence": null,
+      "representations": [
+        {
+          "mode": "br",
+          "status": 302,
+          "coding": null,
+          "downloadedBytes": 0,
+          "decodedBytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "etag": null,
+          "vary": [
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "identity",
+          "status": 302,
+          "coding": null,
+          "downloadedBytes": 0,
+          "decodedBytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "etag": null,
+          "vary": [
+            "accept, content-type, cookie"
+          ]
+        },
+        {
+          "mode": "gzip",
+          "status": 302,
+          "coding": null,
+          "downloadedBytes": 0,
+          "decodedBytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "etag": null,
+          "vary": [
+            "accept, content-type, cookie"
+          ]
+        }
+      ]
+    }
+  ],
+  "binary": [
+    {
+      "label": "binary-font-body",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+      "status": 200,
+      "contentType": [
+        "application/font-woff2"
+      ],
+      "magicHex": "774f46320001000000008768",
+      "bytes": 34664,
+      "sha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
+      "deployedSha256": "1f21c6eaa0000f3329cfcfac966b43d5bebf5aa610303e33294ac31bc6f4bb59",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-font-heading",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+      "status": 200,
+      "contentType": [
+        "application/font-woff2"
+      ],
+      "magicHex": "774f46320001000000015ff0",
+      "bytes": 90096,
+      "sha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+      "deployedSha256": "4c98b9d490d1698ec95f2ff17a6c7d0e72691864c0c5d7bc2a2c161b45afe5ad",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-font-fallback",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+      "status": 200,
+      "contentType": [
+        "application/font-woff2"
+      ],
+      "magicHex": "774f4632000100000000bd30",
+      "bytes": 48432,
+      "sha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
+      "deployedSha256": "c940764593d0fe5d596be327ca7558855e018039fb78509aa21921fd3644c3e4",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-home-poster",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp",
+      "status": 200,
+      "contentType": [
+        "image/webp"
+      ],
+      "magicHex": "524946464c6f000057454250",
+      "bytes": 28500,
+      "sha256": "5abe63100fba3f69773c7db9548d48ddf04cd18c9962419ca888801a0696eb08",
+      "deployedSha256": "5abe63100fba3f69773c7db9548d48ddf04cd18c9962419ca888801a0696eb08",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-collection-poster",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+      "status": 200,
+      "contentType": [
+        "image/webp"
+      ],
+      "magicHex": "524946462ac3010057454250",
+      "bytes": 115506,
+      "sha256": "927bf1bf6ea9ea7d7e1baf22311045ab8b51551f9e643faeb88536e477809554",
+      "deployedSha256": "927bf1bf6ea9ea7d7e1baf22311045ab8b51551f9e643faeb88536e477809554",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-shop-card",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-001-onmodel.webp",
+      "status": 200,
+      "contentType": [
+        "image/webp"
+      ],
+      "magicHex": "524946460cff020057454250",
+      "bytes": 196372,
+      "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+      "deployedSha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-shop-portal",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+      "status": 200,
+      "contentType": [
+        "image/webp"
+      ],
+      "magicHex": "5249464610e4010057454250",
+      "bytes": 123928,
+      "sha256": "37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d",
+      "deployedSha256": "37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-hero-webm",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
+      "status": 200,
+      "contentType": [
+        "video/webm"
+      ],
+      "magicHex": "1a45dfa39f4286810142f781",
+      "bytes": 472889,
+      "sha256": "e0e57f545959a946b71ca2125d9dbc46756778510e55dc59ef65ac1e79127a02",
+      "deployedSha256": "e0e57f545959a946b71ca2125d9dbc46756778510e55dc59ef65ac1e79127a02",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-hero-mp4",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.mp4",
+      "status": 200,
+      "contentType": [
+        "video/mp4"
+      ],
+      "magicHex": "000000206674797069736f6d",
+      "bytes": 855303,
+      "sha256": "423323ae440372f72b4b0336116e49f42dafec6b39ff58bf08c5973ebcecc8e6",
+      "deployedSha256": "423323ae440372f72b4b0336116e49f42dafec6b39ff58bf08c5973ebcecc8e6",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-scene-mobile-mp4",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-1-motion-k1-720p.mp4",
+      "status": 200,
+      "contentType": [
+        "video/mp4"
+      ],
+      "magicHex": "000000206674797069736f6d",
+      "bytes": 1222252,
+      "sha256": "aef4de2a77fc1c0e6be98398636e1b1f5cd6ed9b5e314eac60f87dd5cd2c3ef2",
+      "deployedSha256": "aef4de2a77fc1c0e6be98398636e1b1f5cd6ed9b5e314eac60f87dd5cd2c3ef2",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": null
+    },
+    {
+      "label": "binary-skyy-glb",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/models/skyy-mascot.glb?ver=2.4.4-c571e26fb126",
+      "status": 200,
+      "contentType": [
+        "application/octet-stream"
+      ],
+      "magicHex": "676c54460200000048725c00",
+      "bytes": 6058568,
+      "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+      "deployedSha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+      "matchesDeployed": true,
+      "cache": null,
+      "vary": null
+    },
+    {
+      "label": "binary-draco-wasm",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+      "status": 200,
+      "contentType": [
+        "application/wasm"
+      ],
+      "magicHex": "0061736d0100000001940116",
+      "bytes": 285747,
+      "sha256": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2",
+      "deployedSha256": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=31536000"
+      ],
+      "vary": [
+        "Accept-Encoding"
+      ]
+    },
+    {
+      "label": "encoding-skyy-runtime-0-identity",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/js/skyy-3d.min.js?ver=2.4.4-99abdd1ab80c",
+      "status": 200,
+      "contentType": [
+        "application/javascript"
+      ],
+      "magicHex": "2166756e6374696f6e28297b",
+      "bytes": 5498,
+      "sha256": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+      "deployedSha256": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+      "matchesDeployed": true,
+      "cache": [
+        "max-age=315360000"
+      ],
+      "vary": [
+        "Accept-Encoding"
+      ]
+    }
+  ],
+  "rangeSummary": [
+    {
+      "label": "range-hero-webm-start",
+      "status": 206,
+      "contentRange": [
+        "bytes 0-1023/472889"
+      ],
+      "bytes": 1024,
+      "sliceMatches": true
+    },
+    {
+      "label": "range-hero-webm-nonzero",
+      "status": 206,
+      "contentRange": [
+        "bytes 1024-2047/472889"
+      ],
+      "bytes": 1024,
+      "sliceMatches": true
+    },
+    {
+      "label": "range-hero-webm-outside",
+      "status": 416,
+      "contentRange": [
+        "bytes */472889"
+      ],
+      "bytes": 190,
+      "sliceMatches": null
+    },
+    {
+      "label": "range-hero-mp4-start",
+      "status": 206,
+      "contentRange": [
+        "bytes 0-1023/855303"
+      ],
+      "bytes": 1024,
+      "sliceMatches": true
+    },
+    {
+      "label": "range-hero-mp4-nonzero",
+      "status": 206,
+      "contentRange": [
+        "bytes 1024-2047/855303"
+      ],
+      "bytes": 1024,
+      "sliceMatches": true
+    },
+    {
+      "label": "range-hero-mp4-outside",
+      "status": 416,
+      "contentRange": [
+        "bytes */855303"
+      ],
+      "bytes": 190,
+      "sliceMatches": null
+    },
+    {
+      "label": "range-scene-mobile-mp4-start",
+      "status": 206,
+      "contentRange": [
+        "bytes 0-1023/1222252"
+      ],
+      "bytes": 1024,
+      "sliceMatches": true
+    },
+    {
+      "label": "range-scene-mobile-mp4-nonzero",
+      "status": 206,
+      "contentRange": [
+        "bytes 1024-2047/1222252"
+      ],
+      "bytes": 1024,
+      "sliceMatches": true
+    },
+    {
+      "label": "range-scene-mobile-mp4-outside",
+      "status": 416,
+      "contentRange": [
+        "bytes */1222252"
+      ],
+      "bytes": 190,
+      "sliceMatches": null
+    }
+  ],
+  "artifactBoundary": "All raw headers and anonymous HTML bodies moved outside webroot to /Users/theceo/.codex/private-evidence/v2-a2-b13-20260906/platform, directory0700/files0600. Redacted JSON and static binary/code evidence remain under artifact platform directory. No credentials or customer sessions requested.",
+  "bundleVariantDrift": [
+    {
+      "resource": "signature-css-bundle",
+      "firstDifferingByteOffsetZeroBased": 200994,
+      "brSnippet": "s;--sr2-slow:900ms;--sr2-header:76px;--sr2-content:1200px;--sr2-wide:1500px;--sr2-space-1:0.25rem;--sr2-space-2:0.5rem;--sr2-space-3:0.75rem;--sr2-space-4:1rem;--sr2-space-5:1.25rem;--sr2-space-6:1.5rem;--sr2-space-8:2rem;--sr2-space-10:2.5rem;--sr2-space-12:3rem;-",
+      "identitySnippet": "s;--sr2-slow:900ms;--sr2-layer-guide:80;--sr2-layer-header:100;--sr2-layer-skip:999;--sr2-header:76px;--sr2-content:1200px;--sr2-wide:1500px;--sr2-space-1:0.25rem;--sr2-space-2:0.5rem;--sr2-space-3:0.75rem;--sr2-space-4:1rem;--sr2-space-5:1.25rem;--sr2-space-6:1.5rem;--sr2-space-8:2rem;--sr2-space-10:2.5rem;--sr2-space-12:3rem;--sr2-space-16:4",
+      "evidence": "Three interleaved repeats preserve each representation hash; gzip equals identity"
+    },
+    {
+      "resource": "pdp-js-bundle",
+      "firstDifferingByteOffsetZeroBased": 2618,
+      "brSnippet": "rve(e)}else t()}));const d=e=>{r&&i&&(i.classList.toggle(\"is-open\",e),r.setAttribute(\"aria-expanded\",String(e)),r.setAttribute(\"aria-label\",e?\"Close site menu\":\"Open site menu\"),t.classList.toggle(\"sr2-nav-open\",e))};if(r&&i&&(r.addEventListener(\"click\",(()=>{d(\"tr",
+      "identitySnippet": "rve(e)}else t()}));const c=[...document.querySelectorAll(\"main, body > footer, #skyyrose-mascot, #skyyrose-mascot-recall\")],d=new Map(c.map((e=>[e,e.inert]))),l=e=>{r&&i&&(e&&document.querySelectorAll(\"dialog[open]\").forEach((e=>e.close())),c.forEach((t=>{t.inert=e||d.get(t)})),i.classList.toggle(\"is-open\",e),r.setAttribute(\"aria-expanded\",Str",
+      "evidence": "Three interleaved repeats preserve each representation hash; gzip equals identity"
+    }
+  ]
+}

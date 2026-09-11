@@ -1,0 +1,22 @@
+{
+  "changes": [
+    {
+      "path": "functions.php",
+      "before": "44f8756e102f90c3f1879a0ea6af08789f898ab40cff433e3cff400f85826999",
+      "after": "036f9406d6bb5695396ec7adeb75b188ac95e84828d124b9e3f51dd62788da73"
+    },
+    {
+      "path": "inc/performance.php",
+      "before": "3bb687387bfa054315d5a5289ff32c50692fd54c50a7e304e00c49a30ec2ab09",
+      "after": "b6d2f750527dc4c01c1bf48e7f4721ab33a258eb468173f149c8270e5401b42c"
+    },
+    {
+      "path": "scripts/test-performance.php",
+      "before": "359b18c37e8d1b0c9efc0c55949e132f1209b3079c44fb79e24f85714c3c478b",
+      "after": "72592baee58062754cdd1ec090ad0a1592afa1231ba595bae470dee4efcf8d4a",
+      "reason": "Reviewed archive layout regression tests are PHP and included in existing guard"
+    }
+  ],
+  "reason": "Independently reviewed route CSS enqueue reductions; guard retained, only authored two runtime PHP files reconciled.",
+  "review": "independent-review.md"
+}

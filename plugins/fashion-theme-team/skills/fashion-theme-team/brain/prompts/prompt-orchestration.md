@@ -1,7 +1,8 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Prompt Engineering, Chaining, and Caching Contract
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**
-> *Luxury Grows from Concrete.*
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 Prompt engineering, prompt chaining, and prompt caching are first-class Fashion
 Theme Team capabilities. They exist to improve one-shot completeness, preserve

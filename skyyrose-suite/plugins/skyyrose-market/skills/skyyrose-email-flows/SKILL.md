@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-email-flows
 description: "Complete Klaviyo email marketing system for SkyyRose luxury streetwear. Welcome sequences, pre-order drop launches, abandoned cart recovery, post-purchase flows, and seasonal campaigns. Use when creating any email content, flows, or sequences for skyyrose.co."
@@ -63,7 +64,7 @@ allowed-tools: Read Write Edit Glob
 | NEVER | Urgency timers or countdown clocks — urgency is in the copy, not a widget |
 | NEVER | European luxury house aesthetics — SkyyRose visual DNA = The Five (Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels) |
 
-**Tagline (verbatim, with period):** "Luxury Grows from Concrete."
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 **Collection voice assignments — never mix:**
 - **Black Rose:** armor, concrete, darkness as beauty, silver `#C0C0C0`. Voice: "you already stood up", "concrete answering back"
@@ -147,7 +148,7 @@ My daughter Skyy Rose changed everything. I named this brand after her because s
 
 SkyyRose isn't a brand story written by a marketing team. It's a father's promise to his daughter that where you come from doesn't define where you end up.
 
-Luxury grows from concrete. Every piece we make proves it.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 — Corey
 

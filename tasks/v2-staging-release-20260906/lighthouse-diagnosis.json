@@ -1,0 +1,879 @@
+{
+  "status": "INITIAL_LAYOUT_STABILITY_FAIL_DIAGNOSIS_ONLY",
+  "scope": "Read-only local artifacts and accepted source; no browser, source change, regeneration or purge",
+  "lighthouse": {
+    "performanceScore": 0.49,
+    "simulatedLcpMs": 5434.052000000001,
+    "observedLcpMs": 2751,
+    "observedCls": 1,
+    "reportedCls": 1,
+    "throttlingMethod": "simulate",
+    "viewport": {
+      "mobile": true,
+      "width": 412,
+      "height": 823,
+      "deviceScaleFactor": 1.75,
+      "disabled": false
+    },
+    "largestShift": {
+      "node": {
+        "type": "node",
+        "lhId": "page-5-DIV",
+        "path": "1,HTML,1,BODY,2,MAIN,0,DIV,1,SECTION,0,DIV",
+        "selector": "main#primary > div.sr2-archive__inner > section#sr2-archive-arrival > div.sr2-archive-scene__image",
+        "boundingRect": {
+          "top": 64,
+          "bottom": 901,
+          "left": 0,
+          "right": 412,
+          "width": 412,
+          "height": 837
+        },
+        "snippet": "<div class=\"sr2-archive-scene__image\" aria-hidden=\"true\">",
+        "nodeLabel": "main#primary > div.sr2-archive__inner > section#sr2-archive-arrival > div.sr2-archive-scene__image"
+      },
+      "score": 1
+    }
+  },
+  "b13": [
+    {
+      "file": "b13/normal-home.json",
+      "rawInitialShiftSum": 1.0488551137807556,
+      "rawInitialNonRecentInputSum": 0,
+      "firstShift": {
+        "at": 316.79999999701977,
+        "value": 1,
+        "hadRecentInput": true,
+        "sources": [
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-archive-scene__image",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 0,
+                "y": 64,
+                "width": 390,
+                "height": 808.859375,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844,
+              "top": 0,
+              "right": 390,
+              "bottom": 844,
+              "left": 0
+            },
+            "current": {
+              "x": 0,
+              "y": 64,
+              "width": 390,
+              "height": 780,
+              "top": 64,
+              "right": 390,
+              "bottom": 844,
+              "left": 0
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "skyyrose-mascot-recall",
+              "className": "skyyrose-mascot__recall",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 269.875,
+                "y": 8.5,
+                "width": 44,
+                "height": 46,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 239,
+              "height": 82,
+              "top": 0,
+              "right": 239,
+              "bottom": 82,
+              "left": 0
+            },
+            "current": {
+              "x": 268.234375,
+              "y": 7.5,
+              "width": 44,
+              "height": 49,
+              "top": 7.5,
+              "right": 312.234375,
+              "bottom": 56.5,
+              "left": 268.234375
+            }
+          },
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-house-header__end",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 235,
+                "y": 8.5,
+                "width": 139,
+                "height": 46,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "current": {
+              "x": 235,
+              "y": 7.5,
+              "width": 139,
+              "height": 48,
+              "top": 7.5,
+              "right": 374,
+              "bottom": 55.5,
+              "left": 235
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "",
+              "className": "sr2-header__brand",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 155,
+                "y": 7.5,
+                "width": 80,
+                "height": 48,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "current": {
+              "x": 155,
+              "y": 7.5,
+              "width": 80,
+              "height": 48,
+              "top": 7.5,
+              "right": 235,
+              "bottom": 55.5,
+              "left": 155
+            }
+          },
+          {
+            "node": {
+              "tag": "SPAN",
+              "id": "",
+              "className": "",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 16,
+                "y": 31,
+                "width": 16,
+                "height": 1,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 16,
+              "y": 18.203125,
+              "width": 22.390625,
+              "height": 6,
+              "top": 18.203125,
+              "right": 38.390625,
+              "bottom": 24.203125,
+              "left": 16
+            },
+            "current": {
+              "x": 16,
+              "y": 31,
+              "width": 16,
+              "height": 6,
+              "top": 31,
+              "right": 32,
+              "bottom": 37,
+              "left": 16
+            }
+          }
+        ]
+      },
+      "firstRecordedAction": {
+        "name": "skyy-explicit-character-intent",
+        "at": 12807
+      }
+    },
+    {
+      "file": "b13/moderate-home.json",
+      "rawInitialShiftSum": 1.0626647831494567,
+      "rawInitialNonRecentInputSum": 0.031001167702424642,
+      "firstShift": {
+        "at": 645.5,
+        "value": 1,
+        "hadRecentInput": true,
+        "sources": [
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-archive-scene__image",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 0,
+                "y": 64,
+                "width": 390,
+                "height": 842.46875,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844,
+              "top": 0,
+              "right": 390,
+              "bottom": 844,
+              "left": 0
+            },
+            "current": {
+              "x": 0,
+              "y": 64,
+              "width": 390,
+              "height": 780,
+              "top": 64,
+              "right": 390,
+              "bottom": 844,
+              "left": 0
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "skyyrose-mascot-recall",
+              "className": "skyyrose-mascot__recall",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 268.234375,
+                "y": 7.5,
+                "width": 44,
+                "height": 48,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 239,
+              "height": 82,
+              "top": 0,
+              "right": 239,
+              "bottom": 82,
+              "left": 0
+            },
+            "current": {
+              "x": 268.234375,
+              "y": 7.5,
+              "width": 44,
+              "height": 49,
+              "top": 7.5,
+              "right": 312.234375,
+              "bottom": 56.5,
+              "left": 268.234375
+            }
+          },
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-house-header__end",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 235,
+                "y": 7.5,
+                "width": 139,
+                "height": 48,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "current": {
+              "x": 235,
+              "y": 7.5,
+              "width": 139,
+              "height": 48,
+              "top": 7.5,
+              "right": 374,
+              "bottom": 55.5,
+              "left": 235
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "",
+              "className": "sr2-header__brand",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 155,
+                "y": 7.5,
+                "width": 80,
+                "height": 48,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "current": {
+              "x": 155,
+              "y": 7.5,
+              "width": 80,
+              "height": 48,
+              "top": 7.5,
+              "right": 235,
+              "bottom": 55.5,
+              "left": 155
+            }
+          },
+          {
+            "node": {
+              "tag": "SPAN",
+              "id": "",
+              "className": "",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 16,
+                "y": 31,
+                "width": 16,
+                "height": 1,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 16,
+              "y": 18.203125,
+              "width": 22.390625,
+              "height": 6,
+              "top": 18.203125,
+              "right": 38.390625,
+              "bottom": 24.203125,
+              "left": 16
+            },
+            "current": {
+              "x": 16,
+              "y": 31,
+              "width": 16,
+              "height": 6,
+              "top": 31,
+              "right": 32,
+              "bottom": 37,
+              "left": 16
+            }
+          }
+        ]
+      },
+      "firstRecordedAction": {
+        "name": "skyy-explicit-character-intent",
+        "at": 15177.90000000596
+      }
+    },
+    {
+      "file": "b13/desktop/normal-home-desktop.json",
+      "rawInitialShiftSum": 0.8469513242368345,
+      "rawInitialNonRecentInputSum": 0.8469513242368345,
+      "firstShift": {
+        "at": 306.70000000298023,
+        "value": 0.8409722222222222,
+        "hadRecentInput": false,
+        "sources": [
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-archive-scene__image",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 0,
+                "y": 76,
+                "width": 1440,
+                "height": 873.828125,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 1440,
+              "height": 900,
+              "top": 0,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            },
+            "current": {
+              "x": 0,
+              "y": 76,
+              "width": 1440,
+              "height": 824,
+              "top": 76,
+              "right": 1440,
+              "bottom": 900,
+              "left": 0
+            }
+          },
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-house-header__start",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 57.59375,
+                "y": 15.5,
+                "width": 590.40625,
+                "height": 44,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 57.59375,
+              "y": 8,
+              "width": 568.8125,
+              "height": 58.984375,
+              "top": 8,
+              "right": 626.40625,
+              "bottom": 66.984375,
+              "left": 57.59375
+            },
+            "current": {
+              "x": 57.59375,
+              "y": 15.5,
+              "width": 590.40625,
+              "height": 44,
+              "top": 15.5,
+              "right": 648,
+              "bottom": 59.5,
+              "left": 57.59375
+            }
+          },
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-house-header__end",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 792,
+                "y": 15.5,
+                "width": 590.40625,
+                "height": 44,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 813.59375,
+              "y": 24.640625,
+              "width": 568.8125,
+              "height": 25.703125,
+              "top": 24.640625,
+              "right": 1382.40625,
+              "bottom": 50.34375,
+              "left": 813.59375
+            },
+            "current": {
+              "x": 792,
+              "y": 15.5,
+              "width": 590.40625,
+              "height": 44,
+              "top": 15.5,
+              "right": 1382.40625,
+              "bottom": 59.5,
+              "left": 792
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "skyyrose-mascot-recall",
+              "className": "skyyrose-mascot__recall",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 1210.8125,
+                "y": 15.5,
+                "width": 93.828125,
+                "height": 44,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 239,
+              "height": 82,
+              "top": 0,
+              "right": 239,
+              "bottom": 82,
+              "left": 0
+            },
+            "current": {
+              "x": 1210.8125,
+              "y": 15.5,
+              "width": 93.828125,
+              "height": 44,
+              "top": 15.5,
+              "right": 1304.640625,
+              "bottom": 59.5,
+              "left": 1210.8125
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "",
+              "className": "sr2-header__brand",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 648,
+                "y": 7.5,
+                "width": 144,
+                "height": 60,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 626.40625,
+              "y": 8.5,
+              "width": 187.1875,
+              "height": 58,
+              "top": 8.5,
+              "right": 813.59375,
+              "bottom": 66.5,
+              "left": 626.40625
+            },
+            "current": {
+              "x": 648,
+              "y": 7.5,
+              "width": 144,
+              "height": 60,
+              "top": 7.5,
+              "right": 792,
+              "bottom": 67.5,
+              "left": 648
+            }
+          }
+        ]
+      },
+      "firstRecordedAction": {
+        "name": "skyy-explicit-character-intent",
+        "at": 18703.40000000596
+      }
+    },
+    {
+      "file": "b13/reentry/normal-home-reentry.json",
+      "rawInitialShiftSum": 1.0166393675355738,
+      "rawInitialNonRecentInputSum": 0,
+      "firstShift": {
+        "at": 965.7999999970198,
+        "value": 1,
+        "hadRecentInput": true,
+        "sources": [
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-archive-scene__image",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 0,
+                "y": 64,
+                "width": 390,
+                "height": 808.859375,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 390,
+              "height": 844,
+              "top": 0,
+              "right": 390,
+              "bottom": 844,
+              "left": 0
+            },
+            "current": {
+              "x": 0,
+              "y": 64,
+              "width": 390,
+              "height": 780,
+              "top": 64,
+              "right": 390,
+              "bottom": 844,
+              "left": 0
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "skyyrose-mascot-recall",
+              "className": "skyyrose-mascot__recall",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 269.875,
+                "y": 8.5,
+                "width": 44,
+                "height": 46,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 228,
+              "height": 82,
+              "top": 0,
+              "right": 228,
+              "bottom": 82,
+              "left": 0
+            },
+            "current": {
+              "x": 269.875,
+              "y": 8.5,
+              "width": 44,
+              "height": 46,
+              "top": 8.5,
+              "right": 313.875,
+              "bottom": 54.5,
+              "left": 269.875
+            }
+          },
+          {
+            "node": {
+              "tag": "DIV",
+              "id": "",
+              "className": "sr2-house-header__end",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 235,
+                "y": 8.5,
+                "width": 139,
+                "height": 46,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "current": {
+              "x": 235,
+              "y": 8.5,
+              "width": 139,
+              "height": 46,
+              "top": 8.5,
+              "right": 374,
+              "bottom": 54.5,
+              "left": 235
+            }
+          },
+          {
+            "node": {
+              "tag": "A",
+              "id": "",
+              "className": "sr2-header__brand",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 155,
+                "y": 7.5,
+                "width": 80,
+                "height": 48,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0,
+              "top": 0,
+              "right": 0,
+              "bottom": 0,
+              "left": 0
+            },
+            "current": {
+              "x": 155,
+              "y": 7.5,
+              "width": 80,
+              "height": 48,
+              "top": 7.5,
+              "right": 235,
+              "bottom": 55.5,
+              "left": 155
+            }
+          },
+          {
+            "node": {
+              "tag": "SPAN",
+              "id": "",
+              "className": "",
+              "src": "",
+              "poster": "",
+              "rect": {
+                "x": 16,
+                "y": 31,
+                "width": 16,
+                "height": 1,
+                "inViewport": true
+              }
+            },
+            "previous": {
+              "x": 16,
+              "y": 18.203125,
+              "width": 22.390625,
+              "height": 6,
+              "top": 18.203125,
+              "right": 38.390625,
+              "bottom": 24.203125,
+              "left": 16
+            },
+            "current": {
+              "x": 16,
+              "y": 31,
+              "width": 16,
+              "height": 6,
+              "top": 31,
+              "right": 32,
+              "bottom": 37,
+              "left": 16
+            }
+          }
+        ]
+      },
+      "firstRecordedAction": {
+        "name": "skyy-explicit-character-intent",
+        "at": 13372.5
+      }
+    }
+  ],
+  "criticalComparison": {
+    "rows": [
+      {
+        "file": "home-delivery.body",
+        "criticalPresent": true,
+        "criticalBytes": 31177,
+        "sha256": "9ec38548b78344db9d72aeddf1f0f6234348d14f5e33412f5d6ba048c0f6a07b",
+        "hasCurrentArchiveSelector": false,
+        "hasCurrentHeaderSelector": false
+      },
+      {
+        "file": "natural-revalidation-4.html",
+        "criticalPresent": true,
+        "criticalBytes": 31177,
+        "sha256": "9ec38548b78344db9d72aeddf1f0f6234348d14f5e33412f5d6ba048c0f6a07b",
+        "hasCurrentArchiveSelector": false,
+        "hasCurrentHeaderSelector": false
+      }
+    ],
+    "criticalCssIdenticalAcrossOldAndAcceptedHtml": true
+  },
+  "ownership": {
+    "theme": "Required settled geometry: home-page.css:2 relative scene/min-height, :3 inset image, :30 archive header padding; theme.css:236 mobile64px header; global-shell.css:5 header grid/height",
+    "platformOptimizer": "Inline id jetpack-boost-critical-css; combined stylesheet id all-css-6f6f5118a3fb9fb371f459160964e162 at /_jb_static/??27276687c6, media not all and onload activation to data-media all. Critical generation, cache and delivery policy are WordPress.com/Jetpack concerns",
+    "finding": "Current theme geometry absent from critical payload but present in deferred full CSS, matching observed64px mobile/76px desktop correction. Strong likely contributor, not isolated causal proof or blanket theme fault."
+  },
+  "criticalMissingSelectors": [
+    ".sr2-archive",
+    ".sr2-archive-scene",
+    ".sr2-archive-scene__image",
+    ".sr2-house-header",
+    ".sr2-house-header__end"
+  ],
+  "fullCssOffsets": {
+    ".sr2-archive-scene{": 156656,
+    ".sr2-archive{": 159568,
+    ".sr2-house-header{": 182822
+  },
+  "limits": [
+    "Observed layout shifts are measured in lab traces, not simulated LCP estimates or field data",
+    "Raw B13 sums are explicitly raw event sums; recent-input-filtered zero does not mean no movement",
+    "Reason for initial hadRecentInput true in mobile harness is unproven; first recorded action occurs much later",
+    "No exact same-run critical CSS application timestamp or controlled comparison; root cause within platform generation/cache remains unproven",
+    "No source workaround or platform change authorized/performed in this diagnosis"
+  ],
+  "nextAction": "Inspect managed critical generation coverage and delivery/cache lineage for current Home/header before proposing a correction. Use controlled staging evidence to separate generated artifact remediation from any actual theme defect; do not compensate with theme hacks.",
+  "evidenceSha256": {
+    "lighthouse/home.report.json": "f4ab18b690f01e9358c0ba9f0adcbf31cbdba5c8628b793d4cbe193a6c38cdb1",
+    "b13/normal-home.json": "e6e8a41a02041d89a5998c2ce517c791cc3f4b3ef0a78ca05e705e8291a9ce2d",
+    "b13/moderate-home.json": "951335680a016f47a12f72821ec43ac60c50337ccdac5c9ea20267a8d663f678",
+    "b13/desktop/normal-home-desktop.json": "c5a93abe2431231a4e9b1712e282be31c84ea7f359ead46d264b869726904599",
+    "b13/reentry/normal-home-reentry.json": "32b0f5c4c755bad5b3155f47bbe6a124d899d5eb736750b3ec2cd0b494386365",
+    "execution/critical-css-old-current.json": "406c5791948d6610bd99ddcafea08398e04b31baf7dbc330b033a07c1666c29a",
+    "b13/decoded-responses/ece5b6acf673ff331652a753785ac8bcd5d567e38b06554cad2ba4c420f953d8.css": "ece5b6acf673ff331652a753785ac8bcd5d567e38b06554cad2ba4c420f953d8"
+  }
+}

@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 > SUPERSEDED 2026-07-10/11 — fonts now per SOT.md → typography.json (Archivo / Hanken Grotesk / Anton / Cinzel / Inter + bespoke collection name-scripts; zero-CDN self-hosted woff2). Font/CDN references below are historical.
 
 # DevSkyy Dashboard — Design System
@@ -7,7 +8,7 @@
 | Element | Value |
 |---------|-------|
 | Brand | SkyyRose |
-| Tagline | "Luxury Grows from Concrete." |
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 | Aesthetic | Dark luxury, rose gold accents, glassmorphism |
 | Feel | Bold, premium, urban-elevated |
 

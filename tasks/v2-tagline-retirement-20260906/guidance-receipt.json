@@ -1,0 +1,830 @@
+{
+    "changes": [
+        {
+            "path": ".ralph/ralph-directive.md",
+            "before": "e43210fbaeee22bd66a234b83bf50d1d53b863577651262a787f1ff37bcb2e56",
+            "after": "3e96d37e0b66ab07b63b9c96929523f2f99f779b22d0fb569a42ff0de2fecd18"
+        },
+        {
+            "path": ".ralph/ralph-prompt-phase2.md",
+            "before": "fe323b6d4b8544a2dd491fd6500fcc6ad3cff025d8971bfb52f8b485e0180010",
+            "after": "a7b453a82361efaf94b2234bc44f86a4b00964b96b14275b30f305654442fe6f"
+        },
+        {
+            "path": ".ralph/ralph-prompt-codex-rebuild.md",
+            "before": "8fbf18c452ebc1bb44e187f22a5a08aff130277878fbe5a5eb6481b4eb496da8",
+            "after": "1c7aaa937f0ee2da76b1dd184919ddc10cdbab30f28b119c4040d3abbfe81e25"
+        },
+        {
+            "path": "README.md",
+            "before": "83d31436b082dd3d64e5e8f9fe202fe81c478fae7921b52860e17cacbe697562",
+            "after": "8e89b10fa20546442382a839797d9b6d4413e5c24c2d4250fc1b08fc53df7039"
+        },
+        {
+            "path": "agents/elite_web_builder/knowledge/canonical_catalog.md",
+            "before": "3400586c3aeb0dff2fd0e69d884fc58b856a8ce92f6a36c131dccecd9d475cf5",
+            "after": "fdb9416efeb449b97e38d1146d37c7526a8c64e371c199fe943cc5d8f9419db7"
+        },
+        {
+            "path": "agents/elite_web_builder/knowledge/ecommerce_photography.md",
+            "before": "0531bb04119af05e1cf56044c7922deb7ecc8f619ead7e7e558873f2e1c4962d",
+            "after": "b0ff050f371c2ea5a2224011a64fac3f68e481876b9195c4187c552e11bea43f"
+        },
+        {
+            "path": "agents/elite_web_builder/knowledge/wordpress_deployment.md",
+            "before": "f1dbc9d5615e3684e7cdba207ef27820b1599e53af84e502e8537f7cee126a50",
+            "after": "4fda1c6ed4facd8aadc97b31fc1e01165234cf1b77c370f03f734d9180e3c019"
+        },
+        {
+            "path": "agents/elite_web_builder/knowledge/social_media.md",
+            "before": "0bd27e7f03269abf720c1ee3d2ea66006b610933e91146bc6cf0764dc1550b6c",
+            "after": "5570756aa0c96e97ea93eefbdfdb3faadae996f0eec7752ec240d492c78e1771"
+        },
+        {
+            "path": "skyyrose-suite/README.md",
+            "before": "8e5912123d1680dc267ba69c8c45b9ba7e35b173978406653f457cd554269687",
+            "after": "8e0c6818a261a28eddf273d0b5be0b0f8582efadbb735ff48296ca9dac611fa8"
+        },
+        {
+            "path": "skyyrose-suite/WIRING.md",
+            "before": "f57d900936225f6a780a2c64e591d05c31ba902fad9d8476ff7b3442b3e3b6b2",
+            "after": "17e75598120249b3030de8b98b78373a52bfbbff91db8bd19bb2269fe1860fe4"
+        },
+        {
+            "path": "_prototype/homepage/sections/chooser.html",
+            "before": "61ede4b12e3a3bc1a951a6f7fc7e3a60be1f18305b8679e82b1db0a0a4ea3744",
+            "after": "72cfffee80548b9e55fc12388e88aae51e9417792b3d5e32fd5becae0e526ad1"
+        },
+        {
+            "path": "_prototype/homepage/sections/ticker.html",
+            "before": "e4080467ac1c91ff41f25354c77d1695293c7ea6642b383e9cda1e352f3dbd88",
+            "after": "5850b9caca3b83ebbcefcb9dc1e35b0627e943e1f14f4826a80f7397b75716d2"
+        },
+        {
+            "path": "skyyrose/assets/data/prompts/prompt-config.json",
+            "before": "0f720b1044c125bab6b29273a02d8e4271cc3aae9b4ccb6ca31779f1c505a6ed",
+            "after": "d004da9671a64979d879340d22da7dfef65a14f7bb2573047fe8a7ba07885852"
+        },
+        {
+            "path": "_prototype/homepage/sections/origin.html",
+            "before": "b4385a67516f4abe40a7a299b82228a6633d05d28f946009700fc0b575b69ebf",
+            "after": "0a1784e651b88a0d61c471875899495f193f43e9d2691e50b0b8c66194688a83"
+        },
+        {
+            "path": "_prototype/homepage/sections/close.html",
+            "before": "d33e90b7e99257d4e15fb5879fe671b169e8b165bb8505e08181ebf413ebb75b",
+            "after": "1bd417c85d06b3fb10d7ba1243626886fa8f31257b94160e9e6c78943af0ea35"
+        },
+        {
+            "path": "_prototype/homepage/sections/receipts.html",
+            "before": "20bb74d52582860053432b6794ce8518a98f045b0b440b6a115ba1df238ab83f",
+            "after": "8e23dc7dd15f30764ee1fe074a707edaae34300900063a453ef46413890ef49c"
+        },
+        {
+            "path": "_prototype/homepage/sections/letter.html",
+            "before": "0e9a50ed44790cb5921c98c3a63857c369b743c39dd87c694a7f7c4793976c82",
+            "after": "988465b515cb07080e96e7a87f2d7ed1599e257eafc1b32a55cace51e54c6fdc"
+        },
+        {
+            "path": "_prototype/homepage/sections/drop.html",
+            "before": "75de790cf38c32f215594e3362e14d756781d4da961fd72addcd2c74a9c0133d",
+            "after": "33f9fe344014d0858d9e03eae3ca3b937129a1cfbbb57565865e04df220cf126"
+        },
+        {
+            "path": "_prototype/homepage/sections/hero.html",
+            "before": "b420d969ef2656a94fb0ba324c682bfece1e7e06d3c5be628d7894bd2ec8a859",
+            "after": "db6468f88f68ae65cc3fd0c54f5749191b1bc0b89041467ae6e8215446eda210"
+        },
+        {
+            "path": "_prototype/preorder/sections/page.html",
+            "before": "47f0b780c6fd6c1ff537f4c8897ac52f430b88ebdaa1160e87be61132ff00043",
+            "after": "e4747d41b8ce8b7ce8a57881488d06fb1a213e9224edf8cb96613790c6c0a731"
+        },
+        {
+            "path": "frontend/DEPLOYMENT.md",
+            "before": "ad3c05f2188bbd61b6838e5864062e88a8c8b43890cc1a4e83353a643ff10e5f",
+            "after": "e1d19d5c06702778caada793c8351860cf03e958a4294d568d163dc0a9892d29"
+        },
+        {
+            "path": "agents/elite_web_builder/prd.md",
+            "before": "9f282b3e10ae67d668cc469005486e6512ba7a53871739492237c120166a4fed",
+            "after": "5dc9bac226377ae76f0e0c965cb672e2531ea3e32d56d86e1500d831232da2df"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-design/skills/frontend-design/SKILL.md",
+            "before": "8e277c6c641608c8dc27060680da132a34784cfd79e40c3a1ff944b96fe39c3f",
+            "after": "b752398e0e34be60c17d08138fd34d7da1db007abf91b1cba5e4bf16313a4303"
+        },
+        {
+            "path": "tests/fixtures/a11y/shop.html",
+            "before": "52f4af8812babdf310a21962b3acf8adf2f1226c1035c56483a198d8848b5690",
+            "after": "9819f84f1953067a1e92f04cfe149e7abedd504d307179a10ddc50ce38e5b9f6"
+        },
+        {
+            "path": "tests/fixtures/a11y/black_rose.html",
+            "before": "51cff529714d6eca22949628a5565c192577e804fca48c64e88150a02890e510",
+            "after": "3d208cf9b66aecdad2ccaddd9cce9743ce82e45fc0005ed8981d202ca1c906a7"
+        },
+        {
+            "path": "tests/fixtures/a11y/homepage.html",
+            "before": "a618b1a41eea3762399c5bbe045f7490b7813eb909053e7ccf5a01afbbc5cea8",
+            "after": "c9813dbdd8b903c50090b0d1b4cd2a0841b4425474f54d4eb8632ba6a4fe1145"
+        },
+        {
+            "path": "tests/fixtures/a11y/signature.html",
+            "before": "2280cdcfff02baf807a95bc5d9c1e1979ba7f401197cfafdbf1a3ae266698649",
+            "after": "4fd9fdc205b54b27f1e26e74fe46c4f5f2c45c986eb575b254411486f2e0d627"
+        },
+        {
+            "path": "tests/fixtures/homepage_skyyrose.html",
+            "before": "7cfafb23303268ee2530c127fea090e23e63ca1202e62b96cab793e1270200e2",
+            "after": "769f01b88faa673890049b01e6d860d2a5249b820f9f228d9e21d7eac795a883"
+        },
+        {
+            "path": "docs/design-mockups/black-rose-preorder-horizontal.html",
+            "before": "500c25d44d0ab78f5091131a15a97928812a4ad5b5566fea859ae58400cc1ec6",
+            "after": "1786a7774713e792a8449eb7b4613cf971c9792299abaef94463f17ffb5b989e"
+        },
+        {
+            "path": "docs/design-mockups/black-rose-preorder-horizontal.artifact.html",
+            "before": "d79850f7d460900b3af7c3f4431f176a3b3833cea2cda22627cccb744fb07226",
+            "after": "db0a3a6543a47b15511636fc0a4b3d63e45f84ff6712fec602ebf9fe07622362"
+        },
+        {
+            "path": "tests/fixtures/competitor_ads/internal_teardown_sample.json",
+            "before": "a9c4e494fe7c7e8a72edddee6465f00d047a07a5011530983f6262c720c13cf0",
+            "after": "69951da118bb247489fc52161f00a448bbba5b9455e89bff3f0de5fe17805272"
+        },
+        {
+            "path": ".wolf/anatomy.md",
+            "before": "018252c5a987b880c00a54d73677e36eb2a9c5e27fa721a4ede9750d1e95c403",
+            "after": "8579e36b00199e25fccb711147fecad52d21fd0365267824b0dd086c554bf507"
+        },
+        {
+            "path": "wordpress-theme/preview-scroll-world.html",
+            "before": "04b5167b4114d0536b527d18a9ff2a610fb23c4573819ea392db891ff402febb",
+            "after": "65d1f4c4e464269c0891ad45e13720d04990f7e1f9aa8b5dcdabbd9a8903281d"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-design/skills/interactive-web-development/SKILL.md",
+            "before": "c48dea6b98fb7e1de17be6b1fe35ee74edf2e87e5dccb7c1a99010fb62b67ba4",
+            "after": "41ce580931047bbb08bf75556df14c66d19d1b7cef565eb870a4a3542ba7701b"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-design/skills/universal-learner/references/skyyrose-seed-elements.json",
+            "before": "d04dc1c0139f0f6f8d7de90b2a0ddcb4bd1d837d87a384cab117160b93096b72",
+            "after": "17b19fd847ffc620d5b3bd349ff22dec1fd1252c0122c019a0a4775f6d242328"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-design/agents/theme-heal-doctor.md",
+            "before": "6277ce45b380b8b84cebf6bcdc2a5b2c2cfbc2ac5beacf84e17153590e1cc7ec",
+            "after": "14f72443688d16ddd36a2cdc2d148eb56102054818b15dbf28cfc64c9c02faa6"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-design/agents/skyyrose-photography-director.md",
+            "before": "8b5e66ff9deb8c20b36aeb868251a45dee0dc5a5c0d9e775c18d9ac0b2d1c64b",
+            "after": "90fed3acef456cd9cc61d5c45063c52f1b5ea689c9b0961c1fbc397d00d2e684"
+        },
+        {
+            "path": "docs/collection-hub-wiring-spec.md",
+            "before": "72e332f137e971fa9f4b8fa822be5e2f2ceedd2b1a198436fbb45a3d7b2890a9",
+            "after": "a5fa22f9743fae50b4b17e9bacee4bc29a77c6525184af03ae71503cb85a11d4"
+        },
+        {
+            "path": "docs/brand/design-mockups/v2-polish-mix.md",
+            "before": "89b4d14fc696a52f1ed3adf60df7edc4ba40ec5c10134804340927abcb824e22",
+            "after": "a2bcc5649c91acb0d93d8ef30b586011e7871b8fb4770eca33527973826dea7d"
+        },
+        {
+            "path": "docs/brand/blog-signature.md",
+            "before": "e64306bd57552daac887da4bc48d538fbbdd69d933eb763eff8d3b0bb4debac3",
+            "after": "9ff5eca66317b00e895b3d5518a7434915376f19591cb8aaed80868abde91d9c"
+        },
+        {
+            "path": "docs/brand/collection-stories.md",
+            "before": "93c5f0536dba2174965883f8eed787458ac853e04dbd95464b15e8c67304a70e",
+            "after": "6a0638b72d17a01e4dcd0a3dd45f7d69d3baa19fecbeb5bb18abdb37b5580793"
+        },
+        {
+            "path": "docs/elite-web-builder-package/wordpress-theme/skyyrose-flagship/style.css",
+            "before": "ba5df898c496b58574ca035c34fa8436e1c367815498e942a8a602d3d83efc7a",
+            "after": "d05deaf9e96b433af33dec59709d55c3833f44bed1aa9722a24c5c93394c163f"
+        },
+        {
+            "path": "wordpress-theme/skyyrose-flagship/assets/css/system/immersive-core.css",
+            "before": "af5dfc22379c35567a56bf985bd403f86401997900eae4de663006adf9bc0f08",
+            "after": "146586cbd4ed1f4c68c259d35929909947bbd36e93d95c4b82dc430db6981bea"
+        },
+        {
+            "path": "docs/elite-web-builder-package/homepage/skyyrose-homepage-v2.html",
+            "before": "f979b05d292482797131889f85534322d4c602227388e92b2da60bc50c37c103",
+            "after": "c6bc5a7cb4b345fdd520425e8232b993b9e0195b43d55756f5cdafbf2832712a"
+        },
+        {
+            "path": "docs/elite-web-builder-package/homepage/about.html",
+            "before": "a8280e109719dbf8516c09b4d91dcfec02afef8a48911f7bb791450fd58c7083",
+            "after": "dab9696ff7b75b736a3447ad94913d19a9406ca4e9ddd10d6bbcc84815fdcd5d"
+        },
+        {
+            "path": "docs/handoff/04-DESIGN_SYSTEM.md",
+            "before": "9ff330ea9720aaff3c94ab78eaf4506d38d9b6957f8b2e02ab32631d9475403c",
+            "after": "bb6b75874c8b1d397396570d8d89c73750be4127a7534a6718d182d27067105b"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose/workflows/skyyrose-dev-team-context.html",
+            "before": "6d2287f6578c0b694e862e681feba0e74f1a2d71fc82daccc8c21db137b4ac82",
+            "after": "aa064a3e9384dde906f8a89bf697cb3c23d21a1f2625899a3cc94129c7a9263e"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-influencer-campaign-brief/SKILL.md",
+            "before": "9c8e761039514efd6cd77a409fbaa64f5df7201be669ed19b75601711320fa1e",
+            "after": "ea121af3ede93625af79d1e83e1dffb8c4ccb5e44125e57d8a39d761cadf34bc"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-tiktok-script/SKILL.md",
+            "before": "a960e84bb5e3affd7eb82ebfba4256f753bf45ed72b463450b81773484da614d",
+            "after": "064648e7632f4085f3add88e145d65239d8f062936613dc51011bbdefed9cfc5"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-pr-pitch/SKILL.md",
+            "before": "dd5145ea59c691a5545743ae98bc1f9f5b90f324f64d247fd25627f94fb6d8d8",
+            "after": "fafdfcb9d761f3f89195fa6e398422eba3467c4ce64dbf59fca5f197a83514d8"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-community-launch/SKILL.md",
+            "before": "3d881ea98903c70718a9dce1c84f03b777492bc668b65795d0efd40b28adc11a",
+            "after": "ddfdb85303cce79e5847d3f08258da80bb473eb6fcd76af66fa08fe7023bc57f"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-influencer-outreach/SKILL.md",
+            "before": "16a063bd9ae6e81971ef6edd5655abd8e8471783776f794fba19016648a16ea4",
+            "after": "79ff110fc2ee2a12941a46b86e3fb74fe72dd32d5cff806a75b78396721339c4"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-brand-dna/SKILL.md",
+            "before": "e363f160a77aebdc64edfc0594c8bc493e549242bea611b5bf2cc0a1496cb6a7",
+            "after": "68a7ab4086acf6eed303cb7dc4e7f261c345039eb1056e87e8738738e877e8e8"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-brand-dna/brand-guardrails.md",
+            "before": "86678febdd3d026ec1993b0d7ca9bb7518694ae225ef27e5870e92569f7e079f",
+            "after": "0713a1f6368da0d7be6e31f675012ae2ca422589fc95184921f3da0477156199"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-email-flows/SKILL.md",
+            "before": "7fbe8853594e32bdb0d0ded81691748375aef4fe15e9e999a6d7be60560df4e2",
+            "after": "45cea8fc0bb3169c64f1c120438841d6fe018ab4649d4e713ed5f9a7b6aa198b"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-reddit-strategy/SKILL.md",
+            "before": "5170c6a1cd6695a81621007ca013a752dc7aafeec0a1446bce9c960aa8105cc7",
+            "after": "2633a8c5a939c307504acbf5865a86bccfe8ec640bb227e935167e45259cbb9b"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-media-kit/SKILL.md",
+            "before": "0b181472f9667eeb889cf35483ae952ac85b08e6619262433ac80515e50ad462",
+            "after": "d03c9f23a71122f397cbbc58d866909b4a6b631c18a22c366adc0b827c699060"
+        },
+        {
+            "path": ".wolf/cerebrum.md",
+            "before": "8af1bb5465fd3b7aa0f08374924a0599554db1cbc454b1b14da487190c153ace",
+            "after": "b0f4607fc37a6130e108c155c0e95023f4ae5071d57495c5dd911df6bd867aeb"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-product-copy/SKILL.md",
+            "before": "6ce5a70a994e024acc641ab4e359a6b27b70d3a3cabc777c4c64b73255b5a89f",
+            "after": "86a461e1fcc7eb929d74ef5384dc61d9ee52e687bdb90ac00aea779d60c6cdc3"
+        },
+        {
+            "path": "CLAUDE.md",
+            "before": "f0e28141df11488e6ed99c592d7ed3e2d7a18f24a4f62e95223f313db71a8b53",
+            "after": "13aec7e6aefcda4bd8a6c97dba88dc6d0331022b6574cdda533e6c3ecad14364"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-social-media-graphics/SKILL.md",
+            "before": "698bf7ead1dcad798b9e9d92accbf1c9be36dbc016cfea9ed9d3847c37260335",
+            "after": "ec257c1f5de2105836a06c5645a2d0279e0f7e979d54c7f78b44bcddeba7664b"
+        },
+        {
+            "path": ".claude/skills/frontend-design/SKILL.md",
+            "before": "0c4ae8139eedbef366e275d95ce2332b8733234b34641125eca9794edbca2a5a",
+            "after": "a29c2190c9fc23f389fd3e836de2946326b5ce4befdf5495e989d977325f0ef4"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-launch-commander/SKILL.md",
+            "before": "513bc61654a90c0e8c76fc61b2a360dd68393b0ad608eb7e3aab97d6dcdb987b",
+            "after": "40dad4ad98e36e2eadbe09da54067dd8e4d152bf325bb004085813e21b79a195"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-social-media-strategy/SKILL.md",
+            "before": "8d11209d17c2d45cbd0837c263232aec66c7aea1caaf4c2683cdd75e51c5a8fb",
+            "after": "5a8847b539aaa3bcd0f88b645b0789c0d5f01acbd36568ba1634deb56403156a"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-community-moderation/SKILL.md",
+            "before": "ef6e27ff0c4e4c74cc0c6cf83b06e86694dcd7895f48797c4c4dca32aff71d28",
+            "after": "6eb0cad1e9f32a5b406815d87b493e731c942088a8d8ad9569ce04621da20643"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-photography-brief/SKILL.md",
+            "before": "551211a7be332a347e60c19f5904d47d3331d0dfc2af51c425a4874c9de52824",
+            "after": "03ff4c7ecd01a6ec363490b151f3a22700b7ddb7fc5425eebae70fd4667fa61c"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-content-engine/SKILL.md",
+            "before": "f0a33fd75aeda9a7d0ddc13e92174625aebc4c855a7ace64a6310c8d1c9fe89a",
+            "after": "2c17c630e4e7bd8fd79da0656a753e9a4d37890dd8329a4fff954af57e28a747"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-content-engine/brand-guardrails.md",
+            "before": "49fd7b68213e8f6200c7128cc6a78e665f02bd0bc119d2034dc9f0033b6ac69b",
+            "after": "601addd28be50d33a2b60d15ec314e6ee539d8c133f16adbf183ee51be7b37e5"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-influencer-growth/SKILL.md",
+            "before": "00afe2f3d0d55d8fcd9db0951b7b755bd77a735410d308967b18cc7b0fb739ce",
+            "after": "2be527487d3a78ca1783403afad9f139ef9439f3eec12aa30c33aa506d844c99"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-pinterest-strategy/SKILL.md",
+            "before": "380cadaf9950bb9c75cb2adf17562551229161ca76d72be5427efe65516bb2ec",
+            "after": "b56e318f8a0d2bd9e1fb3260951273d51935a71d020a7c571d644c04233fb223"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-co-marketing-plan/SKILL.md",
+            "before": "05acff82a3b5fb0888335b4358f497a62a03d1d7aaeef86af4c5dbf3ba7d0487",
+            "after": "e770b51657483a6309f0deac71b4d8f18fa3d9af2f55baa68d3e64282339a7d2"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-instagram-carousel/SKILL.md",
+            "before": "2c2e432338439a33ea8a87063b6e10da980395f128b96180ecb86a9b8d8631fc",
+            "after": "a1e6fb9de8b439c48b9b9c975323f421421eb9e54510928214c537db01292a74"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-youtube-strategy/SKILL.md",
+            "before": "2419a4a33f30125708d29f7566db17d33adfe725caa0b4cc945cd5ae128e52cc",
+            "after": "75a6a0f42f36da709ffccbb90da33e29b3be2fac4a6b77e8864c92f61dda2399"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-platform-community-guidelines/SKILL.md",
+            "before": "a17acdfe36e7aa60457fe13a1e680e3c3c1f7414947ffddb8d2611cde81c4f42",
+            "after": "4a8c594ee087d4ecf324f749a2873d0e06097f70e68507fe34dd3f1dad49651e"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-social-listening-plan/SKILL.md",
+            "before": "a80cd30e8b3506e944afeb6d85a6a28ab25206571ac2ed4f369b9bfeafdd351d",
+            "after": "d94b46cd84dcbf500d85d6a54d4e794d572f2a3d1489818a80995b38fc22bf00"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-social-media-calendar/SKILL.md",
+            "before": "3f6ef93c84b3dbd7f0c0727385fbf8f0a1852391135a563089ead1d3e71e5067",
+            "after": "181baecfb70515c7e1f64d1a86d327337d5a6d310bccda7097dc66ca945b7e08"
+        },
+        {
+            "path": "wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/copy.md",
+            "before": "722e3f698f6feb6ebc7e71361954cfa7517fa9b44ce292eae99ba2f80828a3f0",
+            "after": "1fb0f2bc4826fc4d054f350b37775290906f08ded7253422af501039b6af9721"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-social-media-policy/SKILL.md",
+            "before": "459cca908a550fe5e796f115348dcf3e3b72a98218793320382b1813185e9ff0",
+            "after": "7fe625bc45f076cd09de348e37d761276683b935ff8c57bc70c48318d40ccad9"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-brand-photography-brief/SKILL.md",
+            "before": "a85cc53028e3e4e20c86668c8fc40776e7b3a2c7009274abcbdba1c7563813d4",
+            "after": "7333e0b388b0c385f76fe7309574ecfb1b5bbc332c694954d3523fe65fc4e42a"
+        },
+        {
+            "path": "wordpress-theme/skyyrose-flagship/data/collections/kids-capsule/index.html",
+            "before": "d5b53ca953e2d5375e1167de9d3d9470677a512a8598620f492ab1abe7a10bd8",
+            "after": "9283080b96f7a99aee57b83b79f3ee59542833b44c85ff2f634833a6635b434b"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-paid-media/SKILL.md",
+            "before": "767cfdb9917b94fcb2d8d479f2f95b36e1cfcf308ddbb80af032768797265043",
+            "after": "fe29582e864e9de78c8cc322fb58e2060dcadc5fbd38d2ba7b26da600daab8cc"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-seo-commerce/SKILL.md",
+            "before": "abc01ae2ec0ba6442cbae992dd62d72df36ad55a855e1fd5e354febf45fee8ea",
+            "after": "cb4d4e8388ab0249b897bc5a0dc93bfb077bcf2def256af065c9efdc126c790b"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-crisis-comms/SKILL.md",
+            "before": "63ab748e3533b865d1e09f24ba50ed26a6aa430fdfe81c6bd9e2b7de83910162",
+            "after": "c2825f78055a373e05a84979dc63b38471aa7714afce5fc1c869e35922c7dd3f"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-short-form-video-plan/SKILL.md",
+            "before": "d6d22300dc9c59a5129dd56f5b2e623a0cde509f2cda96024544d67eb770f67c",
+            "after": "662824c6ab86ed1005772cf257e4f3fd03291aaba05e9edfad3d57f40ed653c5"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-twitter-thread/SKILL.md",
+            "before": "e54d39a2815e2047623739f9ce571e6c1a9f415a73043a0f0b2b9ccf3611e79d",
+            "after": "834348673858c37bdea771b56e046caab173f93e836a466171b26d27c4d85298"
+        },
+        {
+            "path": "wordpress-theme/skyyrose-flagship/data/collections/signature/copy.md",
+            "before": "b49291b49ff7a8c7b3a67ebc36800ccadd1c62d109789e34a8142ecdd81d034e",
+            "after": "e175656dbddcff091336486327ccb61ed142c68ab07229dce38bfff8d3804d13"
+        },
+        {
+            "path": "wordpress-theme/skyyrose-flagship/data/collections/signature/index.html",
+            "before": "cbbaadf5cb9c941731673278ba1509b871789177882001d4c33fc2520616f001",
+            "after": "a19694f4c73692f1736b9a0bde47bcaeaaf67fc60b183f735023bda20cd8094e"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/agents/skyyrose-content-engine.md",
+            "before": "338c5f5c690d1fbf810c060fc3e72470456fcf9e419f3c808e2ba8093502f84d",
+            "after": "c1879c667b5e22aefe1373a5fa918cf782e15f2638fe27456ce5ef6d2be4d621"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/agents/skyyrose-launch-commander.md",
+            "before": "e305ee72f7906250324892c6755d509d1c1bbf57e93e0e984e3c2b3c8a86f621",
+            "after": "0390d2f4f4dae13b119bce7cde1ddbc05bfb6f94bc30690e9f6432f8747b1e1b"
+        },
+        {
+            "path": "Makefile",
+            "before": "9e01735327222e9cdaeba58f71ea9d2cf93e3ef7b8fcb9e1f8103213a9884058",
+            "after": "d482df0ef487fb4a0e44d0545805bb5c6a401ad9f188b6f1cc0ae397fb14c982"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/agents/skyyrose-paid-media-buyer.md",
+            "before": "7ea8750ad99fbe5860839edc7b1c5c6e9d9fffd9d77ee145d7182ab8c014db64",
+            "after": "64198d865b1295bbe958377786b7b10b867366d23f2b78d1eebf3acc158c785c"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/agents/skyyrose-email-strategist.md",
+            "before": "63ee2ef50b06f95eec081493db2ec2676a70b6e1d2a066e3c6b012f9744fe11c",
+            "after": "af0c3badca6f3765913580035bb6f006b9c92cabac278758f89492547319a631"
+        },
+        {
+            "path": ".claude/skills/interactive-web-development/SKILL.md",
+            "before": "d57bae01414ccd874574b514461237993dc5bfe2a30b07c5365a41ea879a0846",
+            "after": "62b7c9b1058b6271e26205364abb487933a97b1261c63102a5134b2d034bddf9"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/agents/skyyrose-influencer-lead.md",
+            "before": "a9ee9615fd42308d977651f98a1c80a85f948d024c6c337b5b6937ecb48954fa",
+            "after": "f65e1c1b28c650ab4c142f79238407e03f21a322dcd18479f3756a9f700d44ab"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/agents/skyyrose-seo-commerce.md",
+            "before": "41c81d4a1ed0449e903152f219ca62227ca067ddfae30ca6a460b2edefe73237",
+            "after": "aa149827b83fef08f520d5f4b2899b639804a6596b69ea3e5beb7a9f6f7c12ad"
+        },
+        {
+            "path": "SOT.md",
+            "before": "0d7e2f80ec84fef38c13afeb445a223fedce53ad788879ea9cabbf5abfd4c245",
+            "after": "087762662710ba08a532f1dc087cf1204d019a01f8c5934828c9e50412b10dd6"
+        },
+        {
+            "path": ".claude/skills/skyyrose-wp-platform/SKILL.md",
+            "before": "f45d0cbb9b36ca4cd9e1fbf1b1cc0a9cd083984855b7e745bf936f5cb678cf09",
+            "after": "9171493f2558cacb35944f3ebb9ed16ef6110c6445f66da51bd4e950795a0f3e"
+        },
+        {
+            "path": ".claude/skills/luxury-design-taste/SKILL.md",
+            "before": "d95eaa6f89bae1294cccd8f5d870bc303ff6d96b167a256e1fa2fb5f18943120",
+            "after": "4c4b03996d8312b8ee6b9125fbd1651fc5b494336de9a7b02a3bf80e50879ef4"
+        },
+        {
+            "path": ".impeccable.md",
+            "before": "be8721bb1d289f3a24e9e4f221d25156be5163ffbae483a307ee113cbb6b223b",
+            "after": "7febfc455262bf4a256941bff7d3b75a4a1c5665fdce43cbb8d0960faa45b00c"
+        },
+        {
+            "path": "knowledge-base/prompts/INDEX.yaml",
+            "before": "c44802d9023119851393e3b0667100e141f00e42e6eff2272af43eb30716f6fc",
+            "after": "b9564603d7518c36c6109a87504cdeaf38b1fbf80ba0699e332f5407760970a8"
+        },
+        {
+            "path": "knowledge-base/seed/press-features.md",
+            "before": "388583b733339aec774a7d1975c3e03791f3a62e9abc2d3e53a8464c0ee8b3b7",
+            "after": "d6d819dd04e334bf9e0062b91c80c5a450cc7c447a5056412dac35c2a0611dd6"
+        },
+        {
+            "path": "docs/homepage-rebuild-spec.md",
+            "before": "e3f664ff4a4a5f445d2149b97650226ef3b19218a16c811983a5c0feb74258aa",
+            "after": "a4181b4358079c45468fa3732d962120e005b7b51312c3571ef4c6c0a5e99936"
+        },
+        {
+            "path": "wordpress-theme/skyyrose-flagship/style.css",
+            "before": "55e28f7d70fbac599811c71635f1e788d54cbc011c25faacc5615fb902d41f95",
+            "after": "0d1a15771d2511ccd21163300241e3949c6de368b826da3ade4b26667857ebba"
+        },
+        {
+            "path": ".claude/learn-elite-studio-progress.md",
+            "before": "f66c0744ea37b7cb9775b3b59a69bcc8b803aee951e7e9af3794707abac41887",
+            "after": "845876b54c7854d712dc89d2a550c46c0c6bd0684ff0e6941ca24102c8de9ebd"
+        },
+        {
+            "path": "eval/banned-elements.md",
+            "before": "f491ab17cfcb098f60b69805f411ae0db449e137adff344b1378b143af112f68",
+            "after": "2ee5c878e3dc8685fabdcf9c8708d4c1b62ba982c1bec3c1618e54cd3459f7b9"
+        },
+        {
+            "path": "eval/brand-story.md",
+            "before": "5a1211750692e167eb125bdae545a07e4e665198c6cf2d4ab93be5c1ef69af87",
+            "after": "8beb1f673765f369b382f29fee3382a8deac7a38ae3e82af2fd6f94174f3133c"
+        },
+        {
+            "path": ".claude/agents/theme-heal-doctor.md",
+            "before": "5abb26d92e994db146f2ecab115c67bb47d6fdbe0ab7b01538d6258b704866d9",
+            "after": "5569c476c25064a061dafa793ec1ee4a1aa0e21e0da62b66f153bf2c2d7f7a6f"
+        },
+        {
+            "path": "wordpress-theme/skyyrose-flagship/docs/index.html",
+            "before": "7a8faedb10621a88bb3bba07a9807dab3081666641b2327a0e28606e4997d431",
+            "after": "9c98d7f1442875774b6149a07a68224b613fe25dd6d2c2603d5c977f63ecd9e8"
+        },
+        {
+            "path": ".claude/workflows/skyyrose-dev-team-context.html",
+            "before": "920d6fdabb49e04818577bada7599efc154668fd7580984215d9b02fe172b91a",
+            "after": "dd9f076fe928126366323cbd7eadb7aeadbf54e077443d68dc9d59fda4dfa485"
+        },
+        {
+            "path": "wordpress/elementor_templates/home.json",
+            "before": "fc9ee439b703d7d07a1478aa126ad1b62439227bcd9884a9cba717c34adbf141",
+            "after": "51d00f0aa3367b415af5a0d4331d92df2cb6f65973ec4bf780906ee8bdce603b"
+        },
+        {
+            "path": "wordpress/elementor_templates/about.json",
+            "before": "9d2fdfd175c402d911ed875e9d0616ce8abece60f2d07df758e7fc797c89dd3d",
+            "after": "e73a2ffc17a6d7adb5fa1cf329d1783a955a3ed46af96c7c14117e865e627f66"
+        },
+        {
+            "path": ".github/copilot-instructions.md",
+            "before": "7cae14983f162cd67c582aaf55171d880ef3afa818d28acb1e81e6c2248d3b8c",
+            "after": "b9d466f70e8832507c9cd97116d7fce8eeec0911c68560a1852ff550475b4eac"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/pages/page-blueprints.json",
+            "before": "bc3b8fde1c5765a0a3166750eebc4033c116876ee583d89e62b20b8f4e1ba79d",
+            "after": "df7466face78641f6e1f8f4c4e747187d7904c7fba7b853ee3558e56fccb5d08"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/pages/page-blueprints.md",
+            "before": "9e44a0fe03eaadbe15012bbb3da7f2d51104a49a55c019be0a9bd05b4d27cd1e",
+            "after": "3603b61fc9c6f70ad11c838bdda04d90e49acbb82a70b06c154d9b209b5caaa8"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/interactive-feature-scaffold.html",
+            "before": "bc1de12c872c428a1e1428cb08927895dd7561694c9b99e8c738af886385e495",
+            "after": "fa037c61bab9e6e189c12389d2dba923ad622a193b20d90ade6e9d0953e179e9"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/motion-prompt-pack.html",
+            "before": "c0e5070b213f0887c00540ca06fe0e262a3d3a0dee05cece63519b7e56620e7d",
+            "after": "2474dda384e12a0724a409722a8cd6bd051835acd846e2cf605a8b9534fe8965"
+        },
+        {
+            "path": ".codex/agents/theme-heal-doctor.toml",
+            "before": "573237b2dc4bda1948da7764bbac0d2026d2a97eb42b93afe7bd1024f30fb5aa",
+            "after": "517873756c31af5de0bcdaec2a3248312316dfd833650a41d075367c03a913b0"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/brain-reader.html",
+            "before": "d635fd4385ace29675dd2c388ce09b6d98e0a491d5a18ce4b4f338e11f161fc1",
+            "after": "812c27e5ae6e60acb3bea27c5fd8893670c8a831e5f876b86c92be84c19a156e"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/README.md",
+            "before": "3ff8e40546c7e08b6e2b1a9d2abed43b8e8f94d51c8594057f9a9ac0e35c0850",
+            "after": "1683f59b7ea7c517194a9132fefe018e660fb404a638bc47349664b295286cb7"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/v2-gap-closure.html",
+            "before": "d33d05d2a10b62ad8293b3609ff09d9a0ddc31ec336e7584cf4393a959faa934",
+            "after": "e5e0038188623207c96486faa858ab1df9261d8ffc5e0c5e9f9eb1421f52a450"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/v2-page-atlas.html",
+            "before": "18221854dbd5ddec303f2d142f54e793130aee0f6c412f095c673b9a7cda9641",
+            "after": "a1e1ffd8903d534f4792a0f0217de03bb607d48c2fdb0f22455899296267c693"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/schemas/handoff-contract.schema.json",
+            "before": "9a0253bc716f6d41ad5646b2b2e53cbc276e32b2101002aacf38cd52c1973c0c",
+            "after": "25c331947353086d32346d1c1c717e1a88cd0cf011e06277367925e16022f460"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/v2-page-plan.html",
+            "before": "1a9c81eaa1c8aec32b8925b7b35dde6655c6ae10a1dfb5ffeeca06e600358533",
+            "after": "98bdba220e9e7573b5925057e5cb42ab576e03b1cd78943e81974c53c428191d"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/taxonomy.json",
+            "before": "b63578bba1deb5b38cc4c4dad2d0a5f246023bebdfa68dd73ba9303b6d98858f",
+            "after": "f3ba00dccac65cd4cb29407cf9c24505204b28deb7fd70bc7f6cf3a2dfd41273"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/showcase/index.html",
+            "before": "f593d7877e06efd14092c33259a374ac71d5a8f48769c398143416891dc61d10",
+            "after": "eab3663d3a283107428b5f2bfc7ed6275c58e9b613e3e7e45fed1fb7cd18ddf5"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/evaluator-rubric.json",
+            "before": "3d1bcf4fe127afd8b0e320142e8e700a5932bd8142423185ff9465205bc86322",
+            "after": "76bd0e8ceef0e3ebc5925b1e6e93017ca46cb37cff1693fe94742ea5ee7c7e12"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/prompt-stack.md",
+            "before": "76af2031156ba417399cc477d3188c239e7e45ed73cf92349b6a3d7a76b886c9",
+            "after": "ff80251d6f9b2d686f03abec88db8cc3e75e9f05f4052aaedfed3b250a110a7f"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/prompt-orchestration.md",
+            "before": "b05cf4d51c7cbbfb878a420deb6d76a5879142fa0fddbd18fafb6515ccd9e6fe",
+            "after": "39f345d11bfb74be7b680744b50db07d56192a6479e53c87221667a36dc1c66b"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/brand/skyyrose-artifact.css",
+            "before": "a9066299a816509b5d90bdfb5e8a98356324bf3c86e3c744e2985c4f7c720354",
+            "after": "ad3d1bec21cc285ae2f0a1638af037cd94bfe0aa4fa3521d136a3091881da3b7"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/prompts/few-shot-patterns.md",
+            "before": "1604865788347ea389ad1e31677ac1ab76be724874c77fe0057704521be6cdd8",
+            "after": "61c052bc4b9b11200a7d88263c60ef905256b39c46ab09c3580e12e8c2ef82e8"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/interactive/feature-scaffold.json",
+            "before": "357b32c1f2f9af67d035fdb7201228ded12c87076665f6f724266f91ebb54551",
+            "after": "fc0de9ff2dd48ce6075954be28b73ac70ae04bff3bf43365a01cf8cdfadc84e1"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/brand/skyyrose-artifact-system.json",
+            "before": "b9e17c49a7751eb807414c2b6f69a2c496370f88b38a2db6da56a73365eccf7c",
+            "after": "d0497fc1f6c55ac4b616e902bb556290af6716c32bcbb54a32f01538f8d1b8b2"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/references/animated-prompt-pack-adaptation.md",
+            "before": "16c726ea0a9e4612c1d248bcf914e3edae38976803f9eda2c54dccdfe60a1d3b",
+            "after": "c3b6e3f082d8c55ca0cba0ef85a0ef93ceac9b0e95098397a6e8facca7624dad"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/research/interactive-commerce-research-2026-08-06.md",
+            "before": "4d603344a7d7cde820b398b080eff3a5e58d6e8e9f46e9888366a428cd96aee0",
+            "after": "7d5b6c404a58430772382a58d90a4a9ce052e08adb67bca5d7554a09a3d26e8b"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/research/fashion-commerce-research-2026-08-06.md",
+            "before": "c688ff52056061eca87ddc7f03cf6d2a5b07f5881357702b9c402481f9836263",
+            "after": "83849fefbe0af619b2a6e66e0fcb39db95dcdc49cc0ed16b701f0c8627dffe79"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/examples/contract.json",
+            "before": "15a8a255916afc8f2615812c0a38397ea5e8af53a5a4c5b8e4a3b0dea2d06891",
+            "after": "3ae19b51d6e449bb489555975332b4f985e504e8aef7e0cc0b952ce3febed7ce"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/examples/preview.html",
+            "before": "aa4c36756a49a5355f91d38ffe18934e349f6bd2e0f8cc4dd68b8cb588e80be5",
+            "after": "af38d479ad51e15692a4d35366f42ac17ce589a091ae7502168e184817336714"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/source-registry.json",
+            "before": "eeb1e26e2bf7c9c5da30c424cc24fcbd27c097dbf1d0505fa8a23038b628c7b2",
+            "after": "0252d9a0bcd859b32ac1e3c6f086c46488cb21e54ba6e5479b6f999f504b43d9"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/knowledge/fashion-commerce-fundamentals.md",
+            "before": "d867dfaed008b715411dca8d2794a5a7b50452d3bc45c89d34aef927a800a8f0",
+            "after": "d3b327a83e92ded27c9de7e7e3189553ec591add2c74eca1900bff462ffe01c4"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/knowledge/fit-imagery-and-returns.md",
+            "before": "20b4aaf5ee49271a455b0dce22b98ba2352202f394242a9ac951d6fe23fec01c",
+            "after": "f3adefd7399a00275e627919afbbb3955044215b511392efd5dbff42b735ddf8"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/knowledge/do-dont.md",
+            "before": "953847405b6035a5fd5cd3ed867488beff3b29259c10fba118371b32708e79fa",
+            "after": "3aeef52895de2b78cdc5d1dd8f214d37111da2cbe49be92efb73e2e0e5f4de29"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/knowledge/merchandising-and-conversion.md",
+            "before": "75db444f7dd579681872db01b15fe2885ca5dd3f7c538400f6976c0c2cdcd865",
+            "after": "41f4f300d3dd1962926eaeb199c0fb5e4f9a2bd821a78edc710e841a15c57128"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/knowledge/theme-engineering.md",
+            "before": "90a54478e8e74930862e3b5f88024f07daf282f94979e5102dbf7a170679936c",
+            "after": "90f6eb795aee907785011ec1543aa4d22d3ed35547aa0922447e7a32d958391c"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/v2-page-plan.json",
+            "before": "5895ef268a225a333756dac1371dd6a2d0328a0fd099075d47d4768b5426791a",
+            "after": "35a42ab8939b6510172aa062269aec9b84b4f03fd5476ae3652e21c4bb73b502"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/v2-page-and-imagery-plan.md",
+            "before": "201949b89b042480498cf313b699903ca03433de03795c1b6501a15790b802a0",
+            "after": "545a9b46c82b51f7930a538617d40230e15ab2d95f186656b9916aeddabc5e70"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/gap-closure-procedure.json",
+            "before": "2ce8f72bcb43dece93f0cda83d6400444c911cba9e6faf922a312120b2572a28",
+            "after": "f0623ba9200a1202a909af445288a68f0a55eac341ba83ed9996a4ea72326b49"
+        },
+        {
+            "path": "plugins/fashion-theme-team/skills/fashion-theme-team/brain/v2/commerce-state-contract.json",
+            "before": "c8d19c70c1300d71cbf24fea6bf1a6af09b06c6e8071046e3c36f6a0402bfce0",
+            "after": "3a02b5663c839e7a547bfe8d79a9feb252c1f181add0662295bf7fda32d84e75"
+        }
+    ],
+    "historicalExclusions": [
+        {
+            "path": "docs/superpowers/specs/self-healing-theme-loop.html",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/superpowers/specs/2026-06-16-evaluator-observability-agents-design.html",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/superpowers/specs/2026-05-25-v2-mockup-design.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/superpowers/plans/2026-05-25-v2-mockup-design.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/campaigns/2026-kids-capsule-report.html",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": ".wolf/site-audit-report.html",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/brand/canon-audit-2026-05-23.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/brand/blog-luxury-grows-from-concrete.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/brand/visual-audit-2026-05-23.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/brand/design-mockups/v2-canon-audit.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/plans/2026-02-26-wordpress-bridge-agent-design.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/plans/2026-02-26-wordpress-bridge-agent-plan.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-social-media-audit/SKILL.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/archive/2026/.impeccable.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/archive/2026/README.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "docs/archive/2026/claude-desktop-instructions.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "eval/critique/current-site-audit.md",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": ".claude/state/theme-health-baseline.json",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "wordpress/elementor_templates/deployment_results.json",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        },
+        {
+            "path": "scripts/archive/wp-deploy-theme.sh",
+            "disposition": "HISTORICAL_RETIRED_NOT_RUNTIME"
+        }
+    ],
+    "additionalChanges": [
+        "assets/brand/brand.yaml",
+        "agents/claude_sdk/prompts/research_lead.txt",
+        "wordpress-theme/skyyrose-flagship/languages/skyyrose.pot",
+        "docs/brand/blog-luxury-grows-from-concrete.md",
+        "skyyrose-suite/plugins/skyyrose-market/skills/skyyrose-social-social-media-audit/SKILL.md"
+    ],
+    "remainingReferences": "Only historical sources, old document paths, deprecated seed ID, canonical retirement entries, deterministic guards and negative tests. No active tagline output.",
+    "jsonSyntaxErrors": []
+}

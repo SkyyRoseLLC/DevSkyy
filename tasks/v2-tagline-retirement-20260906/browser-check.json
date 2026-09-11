@@ -1,0 +1,20 @@
+[
+  {
+    "route": "/",
+    "title": "SkyyRose Local Verification",
+    "h1": [
+      "Skyy Rose"
+    ],
+    "retired": false,
+    "overflow": false
+  },
+  {
+    "route": "/about/",
+    "title": "About | SkyyRose Local Verification",
+    "h1": [
+      "The Story of SkyyRose"
+    ],
+    "retired": false,
+    "overflow": false
+  }
+]

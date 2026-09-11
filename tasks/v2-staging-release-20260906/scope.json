@@ -1,0 +1,61 @@
+{
+  "id": "V2-STAGING-RELEASE-20260906",
+  "manager": "root",
+  "status": "STAGING_VERIFIED_NEEDS_MORE_WORK",
+  "scope": {
+    "source": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+    "theme": "wordpress-theme/skyyrose-flagship-2",
+    "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+    "steps": [
+      1,
+      2
+    ],
+    "deployment": "REQUIRES_STEP_3_FOUNDER_AUTHORIZATION",
+    "production": "OUT_OF_SCOPE"
+  },
+  "roster": {
+    "root": "remote identity reconciliation, integration and approval packet",
+    "architecture_audit": "historical source/release lineage",
+    "commerce_source_review": "isolated deterministic release artifact",
+    "skyy_finalization": "independent artifact and reconciliation review"
+  },
+  "acceptanceCriteria": [
+    "Explain every package-versus-staging difference with source and runtime ownership; preserve unknown historical actor attribution",
+    "One deterministic runtime allowlist artifact exactly bound to accepted source and existing generated outputs",
+    "Independent package, dependency, source, archive and plan review",
+    "Exact deployment and rollback procedure with target checks, planned file actions and postdeploy parity gates"
+  ],
+  "evidenceRequired": [
+    "source_inventory",
+    "remote_inventory",
+    "lineage_report",
+    "package_manifest",
+    "deterministic_rebuild",
+    "package_validation",
+    "rollback_plan",
+    "independent_review"
+  ],
+  "exclusions": [
+    "No source integration or redesign",
+    "No deployment or staging configuration change before separate approval",
+    "No cache purge",
+    "No production access or order/payment submission",
+    "No new model optimization or media promotion"
+  ],
+  "toolProfile": "Read/Grep/Bash, local artifact build/tests; root readonly staging SSH/HTTP. Max lead plus three agents.",
+  "taskControlGap": "scripts/task_control.py absent in this worktree; equivalent durable scope and append-only ledger retained here.",
+  "artifactSha256": "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+  "managerVerification": "PASS_BOUNDED_PREPARATION",
+  "independentReview": "PASS_BOUNDED_STAGING_ARTIFACT_AND_PROCEDURE",
+  "nextAuthority": "Founder step3 approval of exact ZIP and staging-only plan",
+  "deploymentAuthorization": {
+    "zip": "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+    "plan": "ad4926a97cfea2a195de6366a4aaa61aa8b65b12f0a7dc685a69ef2c81231911",
+    "scope": "staging only, exact parity then browser and platform verification; stop after review report"
+  },
+  "stopPoint": "Authorized staging verification completed; founder review required before subsequent changes",
+  "rotatingMarkCorrection": {
+    "status": "FAIL",
+    "note": "Founder rotating-mark correction (2026-09-06): staging header and footer both select the static fallback. Browser/feature parity is FAIL under the clarified mandatory contract. Local restoration passes bounded checks but is not deployed. Prior filesystem/deployment receipts remain historical and valid for their captured candidate."
+  }
+}

@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-social-media-calendar
 description: "Builds SkyyRose weekly and monthly content calendars with daily pillar themes, collection-voice assignments, format specs, and optimal posting times for Instagram, TikTok, Pinterest, and X."
@@ -20,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline is verbatim:** `Luxury Grows from Concrete.` Period included. Use in Friday exclusivity posts and Month 4 drop hype — never paraphrase.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Daily collection voice discipline:** Every planned slot must note which collection it represents — and that collection's voice is locked. Black Rose = armor. Love Hurts = bloodline. Signature = the standard. Kids = little royalty.
 - **No urgency-manipulation language** in any calendar slot description. Exclusivity is stated as fact, not manufactured pressure.
 - **Products by NAME in every slot description.** "BLACK Rose Crewneck" not "br-001". Downstream creators pull from calendar descriptions.

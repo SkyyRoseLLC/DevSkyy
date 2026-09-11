@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # DevSkyy Deployment Guide
 
 ## Vercel Integration Complete ✅
@@ -318,7 +319,7 @@ const results = await wp.search('black rose', {
 // Update settings
 await wp.updateSettings({
   title: 'SkyyRose Luxury Fashion',
-  description: 'Luxury Grows from Concrete.',
+Brand tagline: none. Omit tagline text and do not invent a replacement.
   posts_per_page: 12
 })
 ```

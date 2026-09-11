@@ -1,0 +1,123 @@
+{
+  "reviewedAt": "2026-09-06T21:14:57.470092+00:00",
+  "scope": "Independent local-only execution-evidence review; no browser, network, staging mutation or source edits by reviewer",
+  "candidateSha256": "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+  "planSha256": "ad4926a97cfea2a195de6366a4aaa61aa8b65b12f0a7dc685a69ef2c81231911",
+  "verdict": "PASS_BOUNDED_INSTALLATION_EVIDENCE",
+  "overallStagingRelease": "BLOCKED_DELIVERY_PARITY",
+  "browserParity": "ENVIRONMENT_BOUND_NOT_VERIFIED",
+  "B13": "HELD",
+  "checks": {
+    "preInstall447ManifestExact": true,
+    "postInstall527ManifestExact": true,
+    "options12Exact": true,
+    "currentLocalRuntimeFiles": 527,
+    "currentLocalRuntimeDifferences": [],
+    "directSkyyLoaderMatchesAccepted": true
+  },
+  "cache": {
+    "manualPurgeRecorded": false,
+    "installerAutomaticPurgeLogged": true,
+    "firstHome": "HTTP200; STALE; Last-Modified20:10:54 before preflight/authorization; noindex retained",
+    "repeatHome": "HTTP200; HIT; Last-Modified21:10:32 before install completion21:10:49; installation start not established by completion timestamp alone",
+    "interpretation": "Pilot legacy markup and stale response support older managed delivery. HIT is not candidate identity. Direct current asset does not prove document or combined bundles are current. Exact responsible cache/optimizer layer and root cause remain unknown."
+  },
+  "rollback": {
+    "performed": false,
+    "triggerEstablished": false,
+    "rationale": "Exact installation and options pass; pilot Home/Shop return200 with no captured page errors. Older delivered markup does not establish a newly introduced feature loss. Hold certification while checking delivery; do not ignore any subsequently established fatal, missing installed dependency, or severe new regression."
+  },
+  "limits": [
+    "No B13 or performance certification in this review.",
+    "No exhaustive route or commerce functional verification; pilot is two routes.",
+    "Recorded option equality is not proof all database tables are unchanged.",
+    "Earlier source-preservation snapshot predates installation; current independent rehash covers527 runtime files, not every non-runtime local file.",
+    "Release manifest deployment_authorized=false is immutable preapproval metadata; later explicit authorization receipt governs this execution."
+  ],
+  "evidence": [
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/authorization.json",
+      "sha256": "8a0ebf9c3b2b4efb0edee748f08c240dc3286e11f14c973d6375cf2b8a8638f3"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/preflight.json",
+      "sha256": "365b710acafac429955f062cf4051be7047386fe1512648c7628685a46ae0e95"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/preflight-remote-sha256.txt",
+      "sha256": "74908d2a7a279855bc5746bd4edf124f80187b8e5e8b11146a3a77b3be48d179"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/executed-install.sh",
+      "sha256": "03021a49c45cfe532ad392222dd1542dcd7628eaa41b2e13fac4bfdd70eb5fc9"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/install-result.json",
+      "sha256": "ac26da8adbce7c04613e18ae0f9f301eec62861bab97126b12fea81cce53eb4e"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/install.stdout",
+      "sha256": "64d338938276f4a98e9e483eef65c8a1c4a9e3169469107ee76eaf9f7df9f374"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/installed-sha256.txt",
+      "sha256": "224ff53ca990d9364604757ae93d6c5fdfe71edac442c74df89738684ba92f58"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/post-install-options.json",
+      "sha256": "ed2babfa295cc27b44c930a046435b8c03d416305eb94720b1752b3ef47be53a"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/execution-status.json",
+      "sha256": "4f7d791d18d51f133eef758e41efcd691fd596a1968c50767d7115d6c265349c"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/home-delivery.headers",
+      "sha256": "8708e24aca721cb726773cb6f72673e1dd6c78f169965fe5d9621ef6ea825617"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/home-delivery.body",
+      "sha256": "77480daeac2149283cf35f73be62464358ef813752e1e0afb065b86f292883f6"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/home-repeat.headers",
+      "sha256": "1d3fed6152b7bc260d2f4f6a762cb2ef3f664f6c5bcb995ebc1f4e504bc1f3eb"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/home-repeat.html",
+      "sha256": "c373376861e344081dcea1a5605857c9265c1118a0dad940d916239a876fc889"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/source-delivery.headers",
+      "sha256": "a007bb6526c37fc2a3bd9740538936ffaf04d0728817fc9069890ff0a74c4bdd"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/source-delivery.body",
+      "sha256": "06bda6f50470580b5e3e110c8d76e5f0a36a3b274ddd1a728a5cd9d9c9110d19"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/execution/browser-pilot.json",
+      "sha256": "6c6a104ac00169247325b13244271848e2d920116d12a4ff4d7462cd771709c8"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/runtime-sha256.txt",
+      "sha256": "224ff53ca990d9364604757ae93d6c5fdfe71edac442c74df89738684ba92f58"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/rollback-sha256.txt",
+      "sha256": "74908d2a7a279855bc5746bd4edf124f80187b8e5e8b11146a3a77b3be48d179"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/staging-options.stdout",
+      "sha256": "7e9f9ee23f97727c89c884f68ea68cc777bbb0ba912de7f2841713c8c0ba8361"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/source-preservation.json",
+      "sha256": "13f0bdfe81dd8442f2a2df3f8425db33f8865852053333d9ec44e0834eafa60c"
+    },
+    {
+      "path": ".artifacts/v2-staging-release-20260906/package/release-manifest.json",
+      "sha256": "57c7b48529bd5822d19b9400825b1283c43fd0671edae3e68b9335a20025a291"
+    }
+  ]
+}

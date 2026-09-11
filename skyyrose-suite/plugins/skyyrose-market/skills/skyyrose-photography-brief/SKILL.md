@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-photography-brief
 description: "Produces a photographer-ready brief for any SkyyRose photography session — product/e-commerce shots (PDP catalog: hero front, angle, back, detail, flat-lay, on-body, lifestyle) AND brand/lifestyle/founder/campaign/BTS sessions. Covers per-collection visual direction, lighting, shot-list tables, platform crop specs (WooCommerce PDP, IG, Stories/Reels, Pinterest, web hero, email), file naming, styling, AVOID list, and Elite Studio handoff. Merges both product-photography and brand-photography briefs into a single unified workflow with session-type routing."
@@ -68,7 +69,7 @@ Fonts (Archivo, Hanken Grotesk, Anton, Cinzel, Inter) are for interior copy surf
 
 ### Tagline
 
-**`Luxury Grows from Concrete.`** — with period. Verbatim only. Never paraphrase, never truncate.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 ### Products by Name, Not SKU
 

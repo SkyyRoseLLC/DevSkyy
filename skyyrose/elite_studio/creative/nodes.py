@@ -5,7 +5,6 @@ Each node reads from CreativeOperationState, executes a specific creative
 intent, and returns an updated state dict. All external calls are wrapped
 in try/except — nodes never raise.
 
-"Luxury Grows from Concrete."
 """
 
 from __future__ import annotations
@@ -305,19 +304,18 @@ def product_copy_node(state: dict) -> dict:
         price = params.get("price", 0)
 
         collection_display = collection.replace("-", " ").title() if collection else "SkyyRose"
-        dna = fashion_context.get("collection_dna", "Luxury Grows from Concrete.")
+        dna = fashion_context.get("collection_dna", "")
         _ = fashion_context.get("color_palette", [])
 
         short_description = (
             f"Elevate your look with the {product_name}. "
             f"{collection_display} collection — {dna.split('.')[0] if dna else 'luxury streetwear'}. "
-            f"'Luxury Grows from Concrete.' "
         )
 
         long_description = (
             f"The {product_name} is the cornerstone of SkyyRose's {collection_display} collection. "
             f"Crafted with premium {fashion_context.get('fabric', 'materials')}, "
-            f"this piece embodies the SkyyRose ethos: luxury grown from Oakland's concrete foundations. "
+            f"this piece embodies the SkyyRose ethos: Oakland luxury streetwear. "
             f"{dna} "
             f"Available in sizes {fashion_context.get('size_range', 'S–3XL')}. "
             f"{'Pre-order now — limited edition.' if params.get('is_preorder') else 'Shop now.'}"
@@ -337,7 +335,6 @@ def product_copy_node(state: dict) -> dict:
             garment_type,
             "Oakland fashion",
             "premium streetwear",
-            "Luxury Grows from Concrete",
         ]
         if sku:
             keywords.append(sku)
@@ -536,7 +533,7 @@ def collection_plan_node(state: dict) -> dict:
         plan = planner.plan_collection(
             collection=collection,
             season=params.get("season", "FW26"),
-            theme=params.get("theme", "Luxury Grows from Concrete."),
+            theme=params.get("theme", "SkyyRose"),
             target_skus_count=int(params.get("target_skus_count", 8)),
         )
         collection_plan_result = {

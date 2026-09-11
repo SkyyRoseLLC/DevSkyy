@@ -1,0 +1,11 @@
+{
+  "path": "template-parts/skyy-mascot.php",
+  "before": "8aa9709ecd982209d8a7fd6eafafe4351c8810fa29e59f5e1eb7ceae0b8ff832",
+  "after": "bd32777310087b10720294c0bd0f8e3d1278ac44fccc86acb697f08a15ff0bf3",
+  "reason": "Final reviewed mobile Skyy transcript keyboard access (tabindex) was implemented after prior PHP baseline refresh. Source guard remains enabled; only this reviewed source hash is reconciled.",
+  "evidence": [
+    "skyy.md",
+    "independent-review.md",
+    ".artifacts/v2-cinematic-finalization-20260906/skyy"
+  ]
+}

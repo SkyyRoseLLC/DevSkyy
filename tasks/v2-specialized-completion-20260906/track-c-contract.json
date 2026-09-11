@@ -1,0 +1,704 @@
+{
+  "track": "C",
+  "status": "READY_FOR_BLENDER",
+  "createdAt": "2026-09-06T19:44:56.001947+00:00",
+  "inputEvidence": "track-c-evidence.json",
+  "frozenInput": {
+    "role": "canonical current input; upstream authoring .blend is unavailable",
+    "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-mascot.glb",
+    "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/source/skyy-mascot.glb",
+    "bytes": 6058568,
+    "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+    "copyVerified": true,
+    "originalUnchangedAfterCopy": true
+  },
+  "frozenRuntime": {
+    "role": "currently served runtime GLB; same authoritative file as canonical input",
+    "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-mascot.glb",
+    "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/runtime/skyy-mascot.glb",
+    "bytes": 6058568,
+    "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+    "copyVerified": true,
+    "originalUnchangedAfterCopy": true
+  },
+  "referenceBackups": [
+    {
+      "role": "accepted same-model stage poster",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/images/skyy-runtime-poster.webp",
+      "bytes": 61276,
+      "sha256": "714388658e58754368007853909bbee0b7c97aa797b79d23762da26f4a0766dd",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "accepted original header portrait",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+      "bytes": 19758,
+      "sha256": "3e1ffb8cd248e1d8cea04f6a7375e923c15532d1e7892a8d4b5cd5e1ebc4a91e",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "canonical portrait source reference",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "bytes": 512385,
+      "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "runtime normalization, derived clips, camera, lights and lifecycle source",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/js/skyy-3d.js",
+      "bytes": 28080,
+      "sha256": "b3c409a52c3bdf11844d51980ab9f9611a6f989211a45d6a49f6e2e4209418c8",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "matching currently served renderer script",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.min.js",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/js/skyy-3d.min.js",
+      "bytes": 13847,
+      "sha256": "d753ac42574ebb2afcf1f4e4d71c2b7a74860aa7a1945d1734f9d3c7dcf2c14a",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "accepted stage dimensions and appearance reference",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/css/mascot.css",
+      "bytes": 19060,
+      "sha256": "afa26a447e4e1fe41e93a70984c43538d83ccd1d60bbbd316ea81702fe4fdfe2",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "prior exact authored handoff, preserved as historical evidence",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tasks/v2-readiness-20260906/skyy-blender-handoff.json",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/skyy-blender-handoff.json",
+      "bytes": 13630,
+      "sha256": "8ba71bd1a8f64ab60c58ab8495b557c2e94710981863f6ffd1ec45a674168d9b",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "existing same-camera poster reproduction helper",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tools/v2-runtime/phase3b-browser/capture-skyy-poster.cjs",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/capture-skyy-poster.cjs",
+      "bytes": 3129,
+      "sha256": "f91279636e53adc3b3a7f75dfcd1d3009950871dfd189c7cff0668c7d7cd4010",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    }
+  ],
+  "immutablePolicy": {
+    "mode": "IMMUTABLE_BY_POLICY",
+    "permissionsChanged": false,
+    "rule": "Never edit, overwrite, optimize or export into immutable/. Verify each backup against its recorded SHA256 before use. Create new candidate paths only. A changed source requires a new timestamped capture and a new contract; never update this receipt to conceal a change.",
+    "sourceAndRuntimeRelationship": "Both roles currently resolve to the same approved GLB. Two separately verified copies preserve both requested roles; neither is represented as an upstream Blender authoring file."
+  },
+  "current": {
+    "triangles": 1930256,
+    "vertices": 1030595,
+    "glbBytes": 6058568,
+    "bones": 18,
+    "materials": 1,
+    "drawCalls": 1,
+    "decodedGeometryTextureLowerBoundBytes": 93531228,
+    "peakMemory": "Unverified"
+  },
+  "targets": {
+    "trianglesPreferredRange": [
+      80000,
+      120000
+    ],
+    "glbBytesMaximum": 2621440,
+    "boneCount": 18,
+    "visualPriority": [
+      "face",
+      "hair silhouette",
+      "hands",
+      "clothing silhouette",
+      "major folds"
+    ],
+    "triangleTargetConditionalOnFidelity": true,
+    "targetRangeRelation": "80k\u2013120k replaces the earlier strict<100k proposal for this dedicated phase; accepted identity and silhouette take precedence."
+  },
+  "protected": [
+    "face and expression identity",
+    "hair silhouette and recognizable curls",
+    "hands and visible finger shapes",
+    "clothing construction, color, logos, seams, silhouette and major folds",
+    "body proportions",
+    "18-bone hierarchy/names and skinning identity",
+    "accepted same-model poster continuity",
+    "current website animation compatibility"
+  ],
+  "runtimeContract": {
+    "transform": {
+      "sourceSceneRoot": {
+        "children": [
+          18,
+          0,
+          17
+        ],
+        "name": "SkyyMascotRig"
+      },
+      "rootPosition": [
+        0,
+        0,
+        0
+      ],
+      "rootRotationQuaternion": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "rootScale": [
+        1,
+        1,
+        1
+      ],
+      "gltfAxes": "+Y up, right handed",
+      "runtimeNormalization": "Measure actual skinned object Box3 before animation; scale root uniformly to 1.8 / boundsHeight. Recompute world bounds; subtract center.x/center.z and minimum.y from root position. Do not normalize mesh/armature independently.",
+      "accessorBasedScaleEstimate": 1.8376298711764454,
+      "units": "glTF meters convention; source physical size not independently certified"
+    },
+    "camera": {
+      "fov": 30,
+      "aspect": 0.6470588235294118,
+      "position": [
+        0,
+        1.1,
+        4.1
+      ],
+      "lookAt": [
+        0,
+        0.9,
+        0
+      ]
+    },
+    "render": {
+      "logicalSize": [
+        220,
+        340
+      ],
+      "DprCap": 1.5,
+      "alpha": true,
+      "antialias": true,
+      "colorSpace": "Three SRGBColorSpace",
+      "shadows": false,
+      "postProcessing": false,
+      "lights": [
+        {
+          "type": "AmbientLight",
+          "color": "#ffffff",
+          "intensity": 1.4
+        },
+        {
+          "type": "DirectionalLight",
+          "color": "#fff5e6",
+          "intensity": 1.8,
+          "position": [
+            2,
+            4,
+            3
+          ]
+        },
+        {
+          "type": "DirectionalLight",
+          "color": "#e6f0ff",
+          "intensity": 0.6,
+          "position": [
+            -2,
+            2,
+            -1
+          ]
+        }
+      ]
+    },
+    "skinning": {
+      "skin": {
+        "inverseBindMatrices": 6,
+        "joints": [
+          0,
+          17,
+          10,
+          9,
+          2,
+          1,
+          5,
+          4,
+          3,
+          8,
+          7,
+          6,
+          13,
+          12,
+          11,
+          16,
+          15,
+          14
+        ],
+        "name": "SkyyMascotRig"
+      },
+      "bones": [
+        {
+          "nodeIndex": 0,
+          "name": "neutral_bone"
+        },
+        {
+          "nodeIndex": 17,
+          "children": [
+            10,
+            13,
+            16
+          ],
+          "name": "pelvis",
+          "translation": [
+            0,
+            0.30000001192092896,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 10,
+          "children": [
+            9
+          ],
+          "name": "spine",
+          "translation": [
+            0,
+            0.07999998331069946,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 9,
+          "children": [
+            2,
+            5,
+            8
+          ],
+          "name": "chest",
+          "translation": [
+            0,
+            0.13999998569488525,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 2,
+          "children": [
+            1
+          ],
+          "name": "neck",
+          "translation": [
+            0,
+            0.14000004529953003,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 1,
+          "name": "head",
+          "translation": [
+            0,
+            0.0899999737739563,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 5,
+          "children": [
+            4
+          ],
+          "name": "upper_arm.L",
+          "rotation": [
+            -0.5,
+            -0.5,
+            -0.5,
+            0.5
+          ],
+          "scale": [
+            1,
+            0.9999999403953552,
+            1
+          ],
+          "translation": [
+            0.15000000596046448,
+            0.12000000476837158,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 4,
+          "children": [
+            3
+          ],
+          "name": "forearm.L",
+          "rotation": [
+            0,
+            2.1855694143368964e-08,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            0.15000002086162567,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 3,
+          "name": "hand.L",
+          "translation": [
+            0,
+            0.09000000357627869,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 8,
+          "children": [
+            7
+          ],
+          "name": "upper_arm.R",
+          "rotation": [
+            -0.5,
+            0.5,
+            0.5,
+            0.5
+          ],
+          "scale": [
+            1,
+            0.9999999403953552,
+            1
+          ],
+          "translation": [
+            -0.15000000596046448,
+            0.12000000476837158,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 7,
+          "children": [
+            6
+          ],
+          "name": "forearm.R",
+          "rotation": [
+            0,
+            -2.1855694143368964e-08,
+            0,
+            1
+          ],
+          "translation": [
+            0,
+            0.15000002086162567,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 6,
+          "name": "hand.R",
+          "translation": [
+            0,
+            0.09000000357627869,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 13,
+          "children": [
+            12
+          ],
+          "name": "thigh.L",
+          "rotation": [
+            -0.9902903437614441,
+            -0.09805779159069061,
+            -0.09805802255868912,
+            0.009709656238555908
+          ],
+          "scale": [
+            0.9999945163726807,
+            0.9999997615814209,
+            1
+          ],
+          "translation": [
+            0.09000000357627869,
+            0.019999980926513672,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 12,
+          "children": [
+            11
+          ],
+          "name": "shin.L",
+          "rotation": [
+            -0.007982516661286354,
+            -0.05700293928384781,
+            0.05653562396764755,
+            0.9967399835586548
+          ],
+          "scale": [
+            1,
+            0.9999998807907104,
+            1
+          ],
+          "translation": [
+            7.450580596923828e-09,
+            0.1529705971479416,
+            -9.313225746154785e-10
+          ]
+        },
+        {
+          "nodeIndex": 11,
+          "name": "foot.L",
+          "rotation": [
+            -0.6157107949256897,
+            -0.05828244984149933,
+            0.007174625527113676,
+            0.7857810854911804
+          ],
+          "scale": [
+            1,
+            0.9999999403953552,
+            1
+          ],
+          "translation": [
+            5.56930856987492e-09,
+            0.12041600793600082,
+            1.944137073550678e-10
+          ]
+        },
+        {
+          "nodeIndex": 16,
+          "children": [
+            15
+          ],
+          "name": "thigh.R",
+          "rotation": [
+            -0.9902903437614441,
+            0.09805779159069061,
+            0.09805802255868912,
+            0.009709656238555908
+          ],
+          "scale": [
+            0.9999945163726807,
+            0.9999997615814209,
+            1
+          ],
+          "translation": [
+            -0.09000000357627869,
+            0.019999980926513672,
+            0
+          ]
+        },
+        {
+          "nodeIndex": 15,
+          "children": [
+            14
+          ],
+          "name": "shin.R",
+          "rotation": [
+            -0.007982516661286354,
+            0.05700293928384781,
+            -0.05653562396764755,
+            0.9967399835586548
+          ],
+          "scale": [
+            1,
+            0.9999998807907104,
+            1
+          ],
+          "translation": [
+            -7.450580596923828e-09,
+            0.1529705971479416,
+            -9.313225746154785e-10
+          ]
+        },
+        {
+          "nodeIndex": 14,
+          "name": "foot.R",
+          "rotation": [
+            -0.6157107949256897,
+            0.05828244984149933,
+            -0.007174625527113676,
+            0.7857810854911804
+          ],
+          "scale": [
+            1,
+            0.9999999403953552,
+            1
+          ],
+          "translation": [
+            -5.56930856987492e-09,
+            0.12041600793600082,
+            1.944137073550678e-10
+          ]
+        }
+      ],
+      "meshNodes": [
+        {
+          "mesh": 0,
+          "name": "tripo_node_8490ce4d-6fe9-4620-a39d-50e3f9f09449",
+          "skin": 0
+        }
+      ],
+      "attributes": {
+        "POSITION": 0,
+        "NORMAL": 1,
+        "TEXCOORD_0": 2,
+        "JOINTS_0": 3,
+        "WEIGHTS_0": 4
+      },
+      "preserve": "JOINTS_0/WEIGHTS_0, inverse bind matrices, hierarchy, bone names and armature/mesh relation"
+    },
+    "materials": [
+      {
+        "name": "tripo_material_8490ce4d-6fe9-4620-a39d-50e3f9f09449",
+        "normalTexture": {
+          "index": 0
+        },
+        "pbrMetallicRoughness": {
+          "baseColorTexture": {
+            "index": 1
+          },
+          "metallicRoughnessTexture": {
+            "index": 2
+          }
+        }
+      }
+    ],
+    "textures": [
+      {
+        "name": "child+character+3d+model8k_normal",
+        "mimeType": "image/jpeg",
+        "embeddedBytes": 68997,
+        "decodedDimensions": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "name": "child+character+3d+model8k_basecolor",
+        "mimeType": "image/jpeg",
+        "embeddedBytes": 165623,
+        "decodedDimensions": [
+          1024,
+          1024
+        ]
+      },
+      {
+        "name": "child+character+3d+model8k_rm",
+        "mimeType": "image/jpeg",
+        "embeddedBytes": 122080,
+        "decodedDimensions": [
+          1024,
+          1024
+        ]
+      }
+    ],
+    "animations": [
+      {
+        "name": "Skyy_Exit",
+        "channels": 54,
+        "samplers": 54
+      },
+      {
+        "name": "Skyy_Idle",
+        "channels": 54,
+        "samplers": 54
+      },
+      {
+        "name": "Skyy_Joy",
+        "channels": 54,
+        "samplers": 54
+      },
+      {
+        "name": "Skyy_Talk",
+        "channels": 54,
+        "samplers": 54
+      },
+      {
+        "name": "Skyy_Walk",
+        "channels": 54,
+        "samplers": 54
+      },
+      {
+        "name": "Skyy_Wave",
+        "channels": 54,
+        "samplers": 54
+      }
+    ],
+    "motion": {
+      "source": "Six held poses; runtime derives quaternion motion on same rig. Existing varying clips retain precedence.",
+      "runtimeFunction": "deriveRigMotion",
+      "requiredNames": [
+        "Skyy_Idle",
+        "Skyy_Walk",
+        "Skyy_Wave",
+        "Skyy_Talk",
+        "Skyy_Joy",
+        "Skyy_Exit"
+      ],
+      "idleFps": 15,
+      "walkAndActiveFps": 30
+    },
+    "poster": {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+      "sha256": "714388658e58754368007853909bbee0b7c97aa797b79d23762da26f4a0766dd",
+      "state": "Mixer stopAllAction; play derived Skyy_Idle; mixer.setTime(0); model.rotation.y=facing; entry shift0; same camera and lights; capture before300ms handoff and walk",
+      "dimensions": [
+        330,
+        510
+      ],
+      "reproduction": "tools/v2-runtime/phase3b-browser/capture-skyy-poster.cjs",
+      "mustRegenerateAfterApprovedAssetChange": true
+    }
+  },
+  "productionWorkspace": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/working",
+  "candidateDirectory": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/candidates",
+  "reviewDirectory": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/review",
+  "promotion": "Forbidden in this track; candidate must receive independent review and founder disposition before any runtime replacement.",
+  "acceptance": {
+    "hashBeforeWork": true,
+    "authoritativeBackupsUnchanged": true,
+    "blenderImportParity": true,
+    "geometryRangeOrDocumentedVisualException": true,
+    "glbBytesAtMost2621440": true,
+    "all18BonesValidated": true,
+    "skinWeightsNormalizedAndDeformationReviewed": true,
+    "animationNamesAndRuntimeDerivationCompatible": true,
+    "texturesMaterialsUvsNormalsPreserved": true,
+    "faceHairHandsSilhouetteFoldsVisualApproval": true,
+    "sameCameraFirstFrameAndWalkReview": true,
+    "physicalDevicePerformance": "Required for device certification; do not infer from emulation",
+    "independentReview": true,
+    "founderVisualDisposition": true
+  },
+  "noAutomaticActions": [
+    "model decimation",
+    "retopology",
+    "rig replacement",
+    "texture repainting",
+    "animation authoring",
+    "runtime wiring",
+    "poster replacement",
+    "packaging",
+    "promotion",
+    "deployment",
+    "staging writes",
+    "paid generation"
+  ],
+  "upstreamAuthoringBlendStatus": "Not identified in the available repository/handoff; do not invent or substitute one.",
+  "canonicalAuthority": "The accepted canonical current input and served runtime are explicitly identified as the same hash-bound assets/models/skyy-mascot.glb; see frozenInput and frozenRuntime."
+}

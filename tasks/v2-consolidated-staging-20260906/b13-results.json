@@ -1,0 +1,14 @@
+{
+  "artifactSha256": "a4ec431146f31d036d5547137d3274a693ccd3d072be6089126593f642d14f4b",
+  "sessions": 15,
+  "performance": "NEEDS_MORE_WORK",
+  "results": {
+    "HOME HERO DELIVERY": "FAIL",
+    "COLLECTION SCENE DELIVERY": "PASS",
+    "PRODUCT CARD DELIVERY": "PASS",
+    "QUICK VIEW DELIVERY": "PASS",
+    "ASK SKYY DEFERRED DELIVERY": "PASS",
+    "MOBILE CINEMATIC DELIVERY": "FAIL"
+  },
+  "rawSummary": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-consolidated-staging-20260906/b13/delivery-summary.json"
+}

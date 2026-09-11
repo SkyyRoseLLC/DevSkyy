@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Kids Capsule — Designer Copy
 
 > Source: docs/brand/collection-stories.md (canonical). Seed: "The Heir to the throne."
@@ -83,7 +84,7 @@ That's the full instruction. Nothing else.
 
 ### 03 · The Oakland Soil Card — Kids Capsule Exclusive Insert
 
-**What it is:** A 3.5" × 5" matte-black card, printed on 18pt stock, included in every Kids Capsule order. On one side: the brand tagline in Archivo Bold — *"Luxury Grows From Concrete."* On the other side, a sealed clear-faced pocket containing a small amount of Oakland soil — sourced, dated, labeled.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 **The text on the soil pocket label (Cinzel, 8pt, rose-gold ink):**
 

@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-paid-media
 description: Paid media playbook for SkyyRose luxury streetwear — Meta, Google, TikTok campaigns. Covers campaign architecture (verified API field names), pixel + CAPI server-side events, Merchant Center feed with preorder fields, UTM attribution, audience strategy, creative copy, and brand-canon enforcement. Use when building, auditing, or optimizing paid campaigns.
@@ -5,7 +6,7 @@ description: Paid media playbook for SkyyRose luxury streetwear — Meta, Google
 
 # SkyyRose Paid Media Playbook
 
-> **Brand north star:** "Luxury Grows from Concrete." (terminal period — non-negotiable in all ad copy)
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 > **Collections:** Black Rose (armor, concrete, silver #C0C0C0) · Love Hurts (bloodline, crimson #DC143C) · Signature (stay golden, gold #D4AF37) · Kids Capsule (little royalty, rose gold #B76E79)
 > **Visual DNA:** Kith · Oaklandish · Culture Kings · Fear of God · Palm Angels — ONLY these five. Never European luxury house aesthetics.
 > **STOP-AND-SHOW required** before any paid spend, Klaviyo send, WooCommerce write, or media upload.
@@ -38,7 +39,7 @@ These rules apply to every ad, brief, copy template, and audience segment:
 
 | Rule | Detail |
 |------|--------|
-| Tagline | "Luxury Grows from Concrete." — verbatim, terminal period, every time |
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 | Collection voices | NEVER cross-attribute. Black Rose ≠ Love Hurts ≠ Signature ≠ Kids Capsule |
 | Products | Reference by NAME (e.g., "BLACK Rose Hoodie"). Never SKU. Resolve from catalog CSV + dossier. |
 | Fabric specs | Resolve from per-SKU dossier only. Never infer or invent. |
@@ -327,7 +328,7 @@ Installation path:
 17. "[Edition size] pieces. [Availability status]. Link in bio."
 18. "[Collection Voice Line]. New [Collection] is live."
 19. "Limited edition. Heavyweight. Embroidered. Ours."
-20. Price point reveal: "[$X]. Built different. Luxury Grows from Concrete."
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 ### 3 Script Templates
 
@@ -353,7 +354,7 @@ CTA (13–15s): "skyyrose.co" on screen
 HOOK (0–3s): "[X]+ people already wearing [Collection]."
 SOCIAL (3–15s): [Customer content — with permission] or founder walkthrough
 SCARCITY (15–30s): "[Edition size] pieces in this run." (only if catalog-verified)
-BRAND (30–40s): "Luxury Grows from Concrete." Logo lock-up.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 CTA (40–45s): "[Product name] — available now at skyyrose.co"
 ```
 
@@ -690,7 +691,7 @@ At planning AOV $65–$80: target 2–3× ROAS minimum to cover COGS and fulfill
 [3–5 lines max. Collection voice only. No cross-attribution.]
 
 **Headline (if static):**
-[Include "Luxury Grows from Concrete." if space allows — terminal period always]
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 **CTA:**
 [Shop now / Preorder [Product name] / Link in bio]
@@ -723,7 +724,7 @@ At planning AOV $65–$80: target 2–3× ROAS minimum to cover COGS and fulfill
 Headline: Built from the concrete. Worn like armor.
 Body: BLACK Rose isn't streetwear. It's the proof you made it through.
       Heavyweight construction. Embroidered. Made to last.
-      Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 CTA: Shop BLACK Rose →
 ```
 
@@ -743,7 +744,7 @@ Body: They were wrong.
 Headline: Worn by those who carry the weight.
 Body: Love Hurts Collection.
       For everyone who kept going anyway.
-      Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 CTA: Shop Love Hurts →
 ```
 
@@ -754,7 +755,7 @@ CTA: Shop Love Hurts →
 ```
 Headline: Gold doesn't ask for permission.
 Body: Signature Collection by SkyyRose.
-      Stay golden. Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 CTA: Shop Signature →
 ```
 
@@ -766,7 +767,7 @@ CTA: Shop Signature →
 Headline: Raise them like royalty.
 Body: Kids Capsule by SkyyRose.
       Premium construction, built for the next generation.
-      Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 CTA: Shop Kids Capsule →
 ```
 

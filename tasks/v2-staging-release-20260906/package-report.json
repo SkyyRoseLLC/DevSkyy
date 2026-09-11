@@ -1,0 +1,438 @@
+{
+  "status": "PACKAGE_CREATED_INDEPENDENT_REVIEW_PENDING",
+  "acceptedDigest": "4a23629d6b17c1d0393000cfbbe982eedf47712837dd772a66c993ad7e46bbe7",
+  "sourceTree": "5dd1902d8075e9c98bafaf5f80e3a88f2792a3de",
+  "originalHead": "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+  "sourceClean": false,
+  "identityNote": "Exact dirty working-tree export with disclosed packaging metadata overlay; not a clean HEAD build",
+  "repeatSha256": [
+    "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d",
+    "e47588205c55e6303588a207d7ee766ad175b82f606d167198f4ec2c25b1d80d"
+  ],
+  "archive": "skyyrose-flagship-2.zip",
+  "archiveBytes": 170023102,
+  "sourceFileCount": 705,
+  "themeSourceFileCount": 608,
+  "runtimeFileCount": 527,
+  "excluded": {
+    "IMAGE-PROMPTS.md": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal prompt document",
+      "release": false
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/black-rose-east-oakland-crewneck-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-graphic-heart-backdrop-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/love-hurts-star-heart-statue-backdrop-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/signature-bay-bridge-shorts-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/placeholders/founder-selected-v1/signature-graphic-monogram-backdrop-v1.png": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Superseded placeholder; exact final-nine runtime fails closed; preserve source only",
+      "release": false
+    },
+    "assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4": {
+      "category": "AUTHORING SOURCE",
+      "reason": "Verified no runtime or active content references; preserve exact founder/SOT/authoring source. See tasks/v2-completion-20260906/dependency-cleanup.json.",
+      "release": false
+    },
+    "assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4": {
+      "category": "AUTHORING SOURCE",
+      "reason": "Verified no runtime or active content references; preserve exact founder/SOT/authoring source. See tasks/v2-completion-20260906/dependency-cleanup.json.",
+      "release": false
+    },
+    "assets/sot/images/products/candidates/2026-08-23/love-hurts/logo-pass/qa/love-hurts-logo-pass-contact-sheet-v1.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/manifest.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/qa/ghost-back-contact-sheet.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/qa/ghost-front-contact-sheet.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/sot/images/products/replica-v1/qa/on-model-front-contact-sheet.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/black-rose-authentic-motion-v3-a1.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/black-rose-bay-bridge-monuments-motion-v2.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/qa/contact-sheet-v2.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/black-rose/qa/metadata-v2.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/kids-capsule-heir-throne-motion-v2.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/qa/contact-sheet-v2.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/kids-capsule/qa/metadata-v2.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/love-hurts-authentic-motion-v3-a1.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/love-hurts-rose-aisle-monuments-motion-v2.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/qa/contact-sheet-v2.jpg": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/love-hurts/qa/metadata-v2.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Contact sheet or source-review metadata",
+      "release": false
+    },
+    "assets/video/collection-heroes/approved/signature/signature-golden-gate-monuments-motion-v1.mp4": {
+      "category": "MEDIA SOURCE",
+      "reason": "Authoring video/image master; runtime uses declared delivery variants",
+      "release": false
+    },
+    "data/brand-asset-transparency.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/font-fallback.json": {
+      "category": "BUILD PROVENANCE",
+      "reason": "Font subset reproduction recipe; no runtime consumer; preserved in source evidence",
+      "release": false
+    },
+    "data/founder-scene-rejections-2026-08-22.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/founder-supplied-scene-assets-2026-08-22.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/hero-aspect-remakes-v3-manifest.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/image-generation-tournament-policy-v1.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/image-optimization.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/love-hurts-logo-pass-candidates-2026-08-23.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "data/scene-production-contract.json": {
+      "category": "QA / REVIEW EVIDENCE",
+      "reason": "Authoring/verification manifest; no PHP runtime reader",
+      "release": false
+    },
+    "npm-shrinkwrap.json": {
+      "category": "BUILD TOOLING",
+      "reason": "Source dependency or lint configuration",
+      "release": false
+    },
+    "package.json": {
+      "category": "BUILD TOOLING",
+      "reason": "Source dependency or lint configuration",
+      "release": false
+    },
+    "phpcs.xml": {
+      "category": "BUILD TOOLING",
+      "reason": "Source dependency or lint configuration",
+      "release": false
+    },
+    "scripts/author-mascot-actions.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/author-vision-grounded-image-prompt.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-assets.mjs": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/build-founder-commerce-review-batch.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-hero-commerce-c1.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-image-generation-product-proof.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-jersey-bart-film.sh": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-natural-scene-integration.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-pot.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/build-product-presentation-registry.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/build-protected-model-layer.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-protected-scene-composite.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/build-skyyrose-tour-film.sh": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/invalidate-visual-product-sot.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/measure-native-scene-safe-zones.mjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/package-theme.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/patch-love-hurts-thigh-logos.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/rebind-nonvisual-product-sot.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/record-image-generation-batch.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/render-founder-commerce-scenes.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/render-founder-commerce-scenes.sh": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/revise-signature-hoodie-dress-c2.cjs": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/run-native-scene-image-workflow.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/test-marketplace-registry.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-performance.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/test-seo-indexing.php": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-collection-hero-motion.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-founder-commerce-review-batch.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-founder-commerce-scenes.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-image-generation-adversarial.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-image-generation-preflight.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-limited-pro-image-prompt.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-native-scene-regeneration-preflight.py": {
+      "category": "CREATIVE AUTHORING TOOLING",
+      "reason": "Internal generation/review workflow; not canonical asset build",
+      "release": false
+    },
+    "scripts/validate-opening-product-media.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/validate-scene-production.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-image-judge-availability.py": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-marketplace.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-performance.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-v2-candidate.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    },
+    "scripts/verify-v2-workspace.sh": {
+      "category": "BUILD TOOLING",
+      "reason": "Build/test/package entry point; not PHP runtime",
+      "release": false
+    }
+  },
+  "checks": {
+    "build": "PASS exact source and generated bytes unchanged",
+    "verify": "PASS 95 JavaScript tests plus canonical PHP/media/source/generated checks",
+    "archive": "PASS CRC, sorted explicit allowlist, per-file hash, normal files, no forbidden tooling/workstation paths/private key markers",
+    "reproducibility": "PASS two unchanged-packager invocations identical ZIP SHA256",
+    "supplementalSourceCertification": "Original6/7 PASS retained; artifact-only exact source-reference correction7/7 PASS",
+    "runtimeClosure": "Independent reviewer reports PASS: nine exact PHP source-vs-ZIP scene arrays identical; excluded old placeholders/masters overwritten; final ZIP parity disposition pending"
+  },
+  "limitations": [
+    "No deployment performed",
+    "Not production readiness",
+    "Existing performance and product-media approval blockers persist",
+    "Secret scan checks bounded patterns and allowlist; no claim of universal secret detection"
+  ]
+}

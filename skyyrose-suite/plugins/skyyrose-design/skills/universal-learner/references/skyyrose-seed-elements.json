@@ -2207,7 +2207,7 @@
 
     {
       "element_id": "common-scene-luxury-grows-from-concrete",
-      "prompt_fragment": "Luxury Grows from Concrete — the brand's foundational energy. Not luxury as inherited privilege; luxury as what you build when the ground beneath you is hard. The garment is the proof.",
+      "prompt_fragment": "",
       "grammatical_position": "scene",
       "domain": "brand_canon",
       "collection_tags": ["black-rose", "love-hurts", "signature", "kids-capsule"],
@@ -2224,7 +2224,7 @@
       "source_id": "collection-stories.md:brand-foundation",
       "added_date": "2026-06-13",
       "version": 1,
-      "deprecated": false,
+      "deprecated": true,
       "superseded_by": null
     },
 

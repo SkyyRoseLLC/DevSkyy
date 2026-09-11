@@ -1,0 +1,126 @@
+{
+  "track": "C",
+  "status": "READY_FOR_BLENDER",
+  "statusMeaning": "Inputs, preservation and production contract are actionable; no optimized asset, import validation, visual acceptance or runtime promotion is certified.",
+  "capturedAt": "2026-09-06T19:44:56.001947+00:00",
+  "workspace": "/Users/theceo/.codex/worktrees/7116/DevSkyy",
+  "branch": "codex/v2-cinematic-ooda-20260906",
+  "head": "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+  "immutablePolicy": {
+    "mode": "IMMUTABLE_BY_POLICY",
+    "permissionsChanged": false,
+    "rule": "Never edit, overwrite, optimize or export into immutable/. Verify each backup against its recorded SHA256 before use. Create new candidate paths only. A changed source requires a new timestamped capture and a new contract; never update this receipt to conceal a change.",
+    "sourceAndRuntimeRelationship": "Both roles currently resolve to the same approved GLB. Two separately verified copies preserve both requested roles; neither is represented as an upstream Blender authoring file."
+  },
+  "backups": [
+    {
+      "role": "canonical current input; upstream authoring .blend is unavailable",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-mascot.glb",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/source/skyy-mascot.glb",
+      "bytes": 6058568,
+      "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "currently served runtime GLB; same authoritative file as canonical input",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/models/skyy-mascot.glb",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/runtime/skyy-mascot.glb",
+      "bytes": 6058568,
+      "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "accepted same-model stage poster",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/images/skyy-runtime-poster.webp",
+      "bytes": 61276,
+      "sha256": "714388658e58754368007853909bbee0b7c97aa797b79d23762da26f4a0766dd",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "accepted original header portrait",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+      "bytes": 19758,
+      "sha256": "3e1ffb8cd248e1d8cea04f6a7375e923c15532d1e7892a8d4b5cd5e1ebc4a91e",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "canonical portrait source reference",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/sot/images/mascot/skyy-canonical-v2.png",
+      "bytes": 512385,
+      "sha256": "072418c98dc0ba06289547425b1c7b394fd8a6ec84a9d55211e884fc3e7eb5b8",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "runtime normalization, derived clips, camera, lights and lifecycle source",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.js",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/js/skyy-3d.js",
+      "bytes": 28080,
+      "sha256": "b3c409a52c3bdf11844d51980ab9f9611a6f989211a45d6a49f6e2e4209418c8",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "matching currently served renderer script",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/js/skyy-3d.min.js",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/js/skyy-3d.min.js",
+      "bytes": 13847,
+      "sha256": "d753ac42574ebb2afcf1f4e4d71c2b7a74860aa7a1945d1734f9d3c7dcf2c14a",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "accepted stage dimensions and appearance reference",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/wordpress-theme/skyyrose-flagship-2/assets/css/mascot.css",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/assets/css/mascot.css",
+      "bytes": 19060,
+      "sha256": "afa26a447e4e1fe41e93a70984c43538d83ccd1d60bbbd316ea81702fe4fdfe2",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "prior exact authored handoff, preserved as historical evidence",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tasks/v2-readiness-20260906/skyy-blender-handoff.json",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/skyy-blender-handoff.json",
+      "bytes": 13630,
+      "sha256": "8ba71bd1a8f64ab60c58ab8495b557c2e94710981863f6ffd1ec45a674168d9b",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    },
+    {
+      "role": "existing same-camera poster reproduction helper",
+      "original": "/Users/theceo/.codex/worktrees/7116/DevSkyy/tools/v2-runtime/phase3b-browser/capture-skyy-poster.cjs",
+      "backup": "/Users/theceo/.codex/worktrees/7116/DevSkyy/.artifacts/v2-specialized-completion-20260906/track-c/immutable/reference/capture-skyy-poster.cjs",
+      "bytes": 3129,
+      "sha256": "f91279636e53adc3b3a7f75dfcd1d3009950871dfd189c7cff0668c7d7cd4010",
+      "copyVerified": true,
+      "originalUnchangedAfterCopy": true
+    }
+  ],
+  "preflight": {
+    "blenderExecutable": "/Applications/Blender.app/Contents/MacOS/Blender",
+    "blenderExecutableExists": true,
+    "versionPreviouslyVerified": "5.2.0 LTS",
+    "gltfImporter": "/Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/__init__.py",
+    "gltfImporterPresent": true,
+    "dracoImporterPresent": true,
+    "dracoLibrary": "/Applications/Blender.app/Contents/Resources/5.2/scripts/addons_core/io_scene_gltf2/libbf_intern_draco_bridge.dylib",
+    "dracoLibraryPresent": true,
+    "allTexturesEmbedded": true,
+    "externalModelDependencies": [],
+    "actualBlenderImport": "NOT RUN; required first operation of the dedicated production phase",
+    "optimization": "NOT RUN",
+    "browserWork": "NONE"
+  },
+  "verifiedOriginalModelSha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+  "upstreamAuthoringBlend": "Not identified in the available repository/handoff; do not invent or substitute one.",
+  "blockers": [],
+  "firstPhaseStopCondition": "If Blender import, Draco decode, material/skin/clip validation fails, stop and record BLOCKED before optimization."
+}

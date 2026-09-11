@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-co-marketing-plan
 description: "Plans SkyyRose co-marketing campaigns with complementary Bay Area or streetwear-adjacent brands — partner selection criteria, shared deliverables, cross-promotion schedule, attribution tracking, and a lightweight partnership terms payload."
@@ -20,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — period included. The partner brand must be comfortable being adjacent to this statement. Co-marketing materials must not dilute or paraphrase it.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Oakland anchor is the cultural filter.** The best co-marketing partners share some version of this — local roots, community-first orientation, authenticity over hype. National brands are acceptable; European-luxury-house-adjacent brands are not.
 - **Collection voice isolation applies to co-marketing.** A campaign with a Black Rose collection focus uses Black Rose register throughout. A Signature campaign uses Signature register. Mixed-collection campaigns default to the global brand register.
 - **No urgency-timer manipulation in shared campaigns.** Limited availability is stated as fact in all co-marketed content. Partners must agree to this standard.
@@ -132,7 +133,7 @@ Asset: [Description]
 First draft by: [SkyyRose / Partner / Joint]
 Review by: [Both parties]
 Brand guidelines both must follow:
-  - SkyyRose: "Luxury Grows from Concrete." tagline verbatim if used, collection voice, no urgency-timers
+Brand tagline: none. Omit tagline text and do not invent a replacement.
   - Partner: [Their guidelines — ask them]
 Approval process: Both parties approve before any asset goes live
 Approval deadline: [Date]

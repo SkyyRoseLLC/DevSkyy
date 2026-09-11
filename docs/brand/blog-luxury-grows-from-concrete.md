@@ -1,3 +1,4 @@
+<!-- RETIRED 2026-09-06. Historical source only. Do not publish, recommend, train on, or use this article as active brand copy. Founder retired its tagline globally without replacement. -->
 # Blog copy: "Luxury Grows from Concrete"
 
 Status: draft copy, ready to publish once a blog surface exists (none is built

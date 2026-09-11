@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Collection Hub Wiring Spec
 
 All claims below verified this session — engine read from the artifact bundle, theme wiring from the repo, URLs probed live.
@@ -49,7 +50,7 @@ $config = array(
             'id' => 'signature', 'label' => $col['signature']['label'],
             'accent' => SKYYROSE_COLOR_GOLD, 'scroll' => 1.6, 'linger' => 0.4,
             'eyebrow' => __( 'The Signature', 'skyyrose' ),
-            'title'   => __( 'Luxury Grows from Concrete.', 'skyyrose' ),
+Brand tagline: none. Omit tagline text and do not invent a replacement.
             'body'    => __( 'Oakland-born luxury, cut in gold and earned on the block.', 'skyyrose' ),
             'tags'    => array( __( 'Signature', 'skyyrose' ), __( 'Gold', 'skyyrose' ),
                                sprintf( __( '%d Pieces', 'skyyrose' ), $count( 'signature' ) ) ),

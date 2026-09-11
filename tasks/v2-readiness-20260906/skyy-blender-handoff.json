@@ -1,0 +1,589 @@
+{
+  "status": "PREPARED_NOT_AUTHORED",
+  "identityFrozen": true,
+  "blender": {
+    "path": "/opt/homebrew/bin/blender",
+    "application": "/Applications/Blender.app/Contents/MacOS/Blender",
+    "version": "5.2.0 LTS",
+    "inspection": "--version only; approved asset not imported or edited"
+  },
+  "source": {
+    "authoritativeCurrentInput": "wordpress-theme/skyyrose-flagship-2/assets/models/skyy-mascot.glb",
+    "runtimePath": "wordpress-theme/skyyrose-flagship-2/assets/models/skyy-mascot.glb",
+    "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+    "upstreamBlend": "Not located in repository search. Do not substitute historical skyy.glb or skyy-child*.glb.",
+    "generator": {
+      "generator": "Khronos glTF Blender I/O v5.2.39",
+      "version": "2.0"
+    }
+  },
+  "geometry": {
+    "vertices": 1030595,
+    "triangles": 1930256,
+    "drawCalls": 1,
+    "bytes": 6058568,
+    "positionAccessorBounds": {
+      "min": [
+        -0.44781494140625,
+        -1.997977605583401e-08,
+        -0.1427077353000641
+      ],
+      "max": [
+        0.44782376289367676,
+        0.9795225858688354,
+        0.14272475242614746
+      ]
+    },
+    "geometryTypedBytes": 76754012,
+    "decodedTextureBytesEstimate": 16777216,
+    "decodedLowerBoundBytes": 93531228,
+    "peakMemory": "Unmeasured"
+  },
+  "transform": {
+    "sourceSceneRoot": {
+      "children": [
+        18,
+        0,
+        17
+      ],
+      "name": "SkyyMascotRig"
+    },
+    "rootPosition": [
+      0,
+      0,
+      0
+    ],
+    "rootRotationQuaternion": [
+      0,
+      0,
+      0,
+      1
+    ],
+    "rootScale": [
+      1,
+      1,
+      1
+    ],
+    "gltfAxes": "+Y up, right handed",
+    "runtimeNormalization": "Measure actual skinned object Box3 before animation; scale root uniformly to 1.8 / boundsHeight. Recompute world bounds; subtract center.x/center.z and minimum.y from root position. Do not normalize mesh/armature independently.",
+    "accessorBasedScaleEstimate": 1.8376298711764454,
+    "units": "glTF meters convention; source physical size not independently certified"
+  },
+  "camera": {
+    "fov": 30,
+    "aspect": 0.6470588235294118,
+    "position": [
+      0,
+      1.1,
+      4.1
+    ],
+    "lookAt": [
+      0,
+      0.9,
+      0
+    ]
+  },
+  "render": {
+    "logicalSize": [
+      220,
+      340
+    ],
+    "DprCap": 1.5,
+    "alpha": true,
+    "antialias": true,
+    "colorSpace": "Three SRGBColorSpace",
+    "shadows": false,
+    "postProcessing": false,
+    "lights": [
+      {
+        "type": "AmbientLight",
+        "color": "#ffffff",
+        "intensity": 1.4
+      },
+      {
+        "type": "DirectionalLight",
+        "color": "#fff5e6",
+        "intensity": 1.8,
+        "position": [
+          2,
+          4,
+          3
+        ]
+      },
+      {
+        "type": "DirectionalLight",
+        "color": "#e6f0ff",
+        "intensity": 0.6,
+        "position": [
+          -2,
+          2,
+          -1
+        ]
+      }
+    ]
+  },
+  "skinning": {
+    "skin": {
+      "inverseBindMatrices": 6,
+      "joints": [
+        0,
+        17,
+        10,
+        9,
+        2,
+        1,
+        5,
+        4,
+        3,
+        8,
+        7,
+        6,
+        13,
+        12,
+        11,
+        16,
+        15,
+        14
+      ],
+      "name": "SkyyMascotRig"
+    },
+    "bones": [
+      {
+        "nodeIndex": 0,
+        "name": "neutral_bone"
+      },
+      {
+        "nodeIndex": 17,
+        "children": [
+          10,
+          13,
+          16
+        ],
+        "name": "pelvis",
+        "translation": [
+          0,
+          0.30000001192092896,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 10,
+        "children": [
+          9
+        ],
+        "name": "spine",
+        "translation": [
+          0,
+          0.07999998331069946,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 9,
+        "children": [
+          2,
+          5,
+          8
+        ],
+        "name": "chest",
+        "translation": [
+          0,
+          0.13999998569488525,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 2,
+        "children": [
+          1
+        ],
+        "name": "neck",
+        "translation": [
+          0,
+          0.14000004529953003,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 1,
+        "name": "head",
+        "translation": [
+          0,
+          0.0899999737739563,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 5,
+        "children": [
+          4
+        ],
+        "name": "upper_arm.L",
+        "rotation": [
+          -0.5,
+          -0.5,
+          -0.5,
+          0.5
+        ],
+        "scale": [
+          1,
+          0.9999999403953552,
+          1
+        ],
+        "translation": [
+          0.15000000596046448,
+          0.12000000476837158,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 4,
+        "children": [
+          3
+        ],
+        "name": "forearm.L",
+        "rotation": [
+          0,
+          2.1855694143368964e-08,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0.15000002086162567,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 3,
+        "name": "hand.L",
+        "translation": [
+          0,
+          0.09000000357627869,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 8,
+        "children": [
+          7
+        ],
+        "name": "upper_arm.R",
+        "rotation": [
+          -0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "scale": [
+          1,
+          0.9999999403953552,
+          1
+        ],
+        "translation": [
+          -0.15000000596046448,
+          0.12000000476837158,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 7,
+        "children": [
+          6
+        ],
+        "name": "forearm.R",
+        "rotation": [
+          0,
+          -2.1855694143368964e-08,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0.15000002086162567,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 6,
+        "name": "hand.R",
+        "translation": [
+          0,
+          0.09000000357627869,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 13,
+        "children": [
+          12
+        ],
+        "name": "thigh.L",
+        "rotation": [
+          -0.9902903437614441,
+          -0.09805779159069061,
+          -0.09805802255868912,
+          0.009709656238555908
+        ],
+        "scale": [
+          0.9999945163726807,
+          0.9999997615814209,
+          1
+        ],
+        "translation": [
+          0.09000000357627869,
+          0.019999980926513672,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 12,
+        "children": [
+          11
+        ],
+        "name": "shin.L",
+        "rotation": [
+          -0.007982516661286354,
+          -0.05700293928384781,
+          0.05653562396764755,
+          0.9967399835586548
+        ],
+        "scale": [
+          1,
+          0.9999998807907104,
+          1
+        ],
+        "translation": [
+          7.450580596923828e-09,
+          0.1529705971479416,
+          -9.313225746154785e-10
+        ]
+      },
+      {
+        "nodeIndex": 11,
+        "name": "foot.L",
+        "rotation": [
+          -0.6157107949256897,
+          -0.05828244984149933,
+          0.007174625527113676,
+          0.7857810854911804
+        ],
+        "scale": [
+          1,
+          0.9999999403953552,
+          1
+        ],
+        "translation": [
+          5.56930856987492e-09,
+          0.12041600793600082,
+          1.944137073550678e-10
+        ]
+      },
+      {
+        "nodeIndex": 16,
+        "children": [
+          15
+        ],
+        "name": "thigh.R",
+        "rotation": [
+          -0.9902903437614441,
+          0.09805779159069061,
+          0.09805802255868912,
+          0.009709656238555908
+        ],
+        "scale": [
+          0.9999945163726807,
+          0.9999997615814209,
+          1
+        ],
+        "translation": [
+          -0.09000000357627869,
+          0.019999980926513672,
+          0
+        ]
+      },
+      {
+        "nodeIndex": 15,
+        "children": [
+          14
+        ],
+        "name": "shin.R",
+        "rotation": [
+          -0.007982516661286354,
+          0.05700293928384781,
+          -0.05653562396764755,
+          0.9967399835586548
+        ],
+        "scale": [
+          1,
+          0.9999998807907104,
+          1
+        ],
+        "translation": [
+          -7.450580596923828e-09,
+          0.1529705971479416,
+          -9.313225746154785e-10
+        ]
+      },
+      {
+        "nodeIndex": 14,
+        "name": "foot.R",
+        "rotation": [
+          -0.6157107949256897,
+          0.05828244984149933,
+          -0.007174625527113676,
+          0.7857810854911804
+        ],
+        "scale": [
+          1,
+          0.9999999403953552,
+          1
+        ],
+        "translation": [
+          -5.56930856987492e-09,
+          0.12041600793600082,
+          1.944137073550678e-10
+        ]
+      }
+    ],
+    "meshNodes": [
+      {
+        "mesh": 0,
+        "name": "tripo_node_8490ce4d-6fe9-4620-a39d-50e3f9f09449",
+        "skin": 0
+      }
+    ],
+    "attributes": {
+      "POSITION": 0,
+      "NORMAL": 1,
+      "TEXCOORD_0": 2,
+      "JOINTS_0": 3,
+      "WEIGHTS_0": 4
+    },
+    "preserve": "JOINTS_0/WEIGHTS_0, inverse bind matrices, hierarchy, bone names and armature/mesh relation"
+  },
+  "materials": [
+    {
+      "name": "tripo_material_8490ce4d-6fe9-4620-a39d-50e3f9f09449",
+      "normalTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 1
+        },
+        "metallicRoughnessTexture": {
+          "index": 2
+        }
+      }
+    }
+  ],
+  "textures": [
+    {
+      "name": "child+character+3d+model8k_normal",
+      "mimeType": "image/jpeg",
+      "embeddedBytes": 68997,
+      "decodedDimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "child+character+3d+model8k_basecolor",
+      "mimeType": "image/jpeg",
+      "embeddedBytes": 165623,
+      "decodedDimensions": [
+        1024,
+        1024
+      ]
+    },
+    {
+      "name": "child+character+3d+model8k_rm",
+      "mimeType": "image/jpeg",
+      "embeddedBytes": 122080,
+      "decodedDimensions": [
+        1024,
+        1024
+      ]
+    }
+  ],
+  "animations": [
+    {
+      "name": "Skyy_Exit",
+      "channels": 54,
+      "samplers": 54
+    },
+    {
+      "name": "Skyy_Idle",
+      "channels": 54,
+      "samplers": 54
+    },
+    {
+      "name": "Skyy_Joy",
+      "channels": 54,
+      "samplers": 54
+    },
+    {
+      "name": "Skyy_Talk",
+      "channels": 54,
+      "samplers": 54
+    },
+    {
+      "name": "Skyy_Walk",
+      "channels": 54,
+      "samplers": 54
+    },
+    {
+      "name": "Skyy_Wave",
+      "channels": 54,
+      "samplers": 54
+    }
+  ],
+  "motion": {
+    "source": "Six held poses; runtime derives quaternion motion on same rig. Existing varying clips retain precedence.",
+    "runtimeFunction": "deriveRigMotion",
+    "requiredNames": [
+      "Skyy_Idle",
+      "Skyy_Walk",
+      "Skyy_Wave",
+      "Skyy_Talk",
+      "Skyy_Joy",
+      "Skyy_Exit"
+    ],
+    "idleFps": 15,
+    "walkAndActiveFps": 30
+  },
+  "poster": {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/images/skyy-runtime-poster.webp",
+    "sha256": "714388658e58754368007853909bbee0b7c97aa797b79d23762da26f4a0766dd",
+    "state": "Mixer stopAllAction; play derived Skyy_Idle; mixer.setTime(0); model.rotation.y=facing; entry shift0; same camera and lights; capture before300ms handoff and walk",
+    "dimensions": [
+      330,
+      510
+    ],
+    "reproduction": "tools/v2-runtime/phase3b-browser/capture-skyy-poster.cjs",
+    "mustRegenerateAfterApprovedAssetChange": true
+  },
+  "targets": {
+    "trianglesUpperExclusive": 100000,
+    "glbBytesMaximum": 2621440,
+    "identityAndSilhouette": "Founder visual gate required; reduce only where fidelity allows",
+    "boneCount": 18,
+    "approval": "Candidate output separate; no runtime replacement without review"
+  },
+  "checklist": [
+    "Copy hash-verified canonical GLB into isolated Blender session; retain immutable original.",
+    "Verify import hierarchy, axes, bound height, neutral bone and18-joint skin; record no missing texture warnings.",
+    "Save working .blend outside runtime assets; preserve camera/material baseline renders.",
+    "Create LOD candidates with topology-aware reduction; prioritize clothing interior/hidden surfaces, preserve curls, face, hands, logos, seams and silhouette.",
+    "Keep UVs, normals, material channels and skinning intact; review deformation at every joint before accepting topology.",
+    "Target below100k triangles and <=2.5MiB without silently accepting identity loss.",
+    "Retain six exact animation names and bind transforms; export Draco with one primitive/material where possible.",
+    "Compare static idle and walk/turn/wave/talk/joy/exit at96/220px and close-up; reject weighting, texture, logo, scale or lighting drift.",
+    "Validate glTF, bounds, bones, clip payloads, texture dimensions and network size; record hashes.",
+    "Regenerate same-camera time-zero poster only after model acceptance; compare silhouette/alpha bounds and actual first stable frame.",
+    "Run independent source/visual review plus current33 focused contract tests, browser states, Metal and physical mobile performance when available.",
+    "Provide candidate and receipts for founder review; do not replace runtime model, package, promote or deploy automatically."
+  ],
+  "runtimeSourceSha256": "b3c409a52c3bdf11844d51980ab9f9611a6f989211a45d6a49f6e2e4209418c8"
+}

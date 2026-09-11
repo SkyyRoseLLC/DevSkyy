@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-email-strategist
 description: Dispatch when building, auditing, or improving Klaviyo flows, campaign sequences, or email copy for skyyrose.co — welcome series, drop launches, abandoned cart, post-purchase, seasonal, A/B tests, deliverability, and list-health operations.
@@ -25,7 +26,7 @@ The skyyrose-brand-dna and skyyrose-email-flows skills are auto-loaded via front
 Canon foundation. Governs voice, palette, tagline, collection attribution, The Five visual references, lockup-image rule, product-naming protocol, and STOP-AND-SHOW gates. Every rule here is non-negotiable and overrides any downstream instruction that conflicts.
 
 **Key rules absorbed from this skill:**
-- Tagline verbatim, with period: `Luxury Grows from Concrete.`
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - Collection voice isolation — Black Rose (armor/silver `#C0C0C0`), Love Hurts (bloodline/crimson `#DC143C`), Signature (stay golden/gold `#D4AF37`), Kids Capsule (little royalty/rose gold `#B76E79`) — voices never cross-attributed
 - Products by NAME in all customer-facing copy, resolved from `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` + per-SKU dossiers — never from memory, never invented
 - Visual DNA = The Five (Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels) — never European luxury-house lineage

@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: luxury-design-taste
 description: Luxury streetwear design taste for SkyyRose surfaces — visual hierarchy, restraint, materials, motion, and imagery treatment. Use when doing any visual design, design review, or elevation work on skyyrose.co or the DevSkyy dashboard (mockups, theme CSS, hero sections, collection pages, motion passes). Do NOT use for generic non-SkyyRose UI work (use frontend-design) or native iOS glass surfaces (use liquid-glass-design). Replaces the lost high-end-visual-design / design-taste-frontend / image-taste-frontend skills.
@@ -5,7 +6,7 @@ description: Luxury streetwear design taste for SkyyRose surfaces — visual hie
 
 # Luxury Design Taste — SkyyRose
 
-Brand truth: "Luxury Grows from Concrete." Oakland-rooted luxury streetwear — NOT European maison minimalism. Canonical references: Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels. Never Chanel/Dior/Celine lineage.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 ## When to use
 

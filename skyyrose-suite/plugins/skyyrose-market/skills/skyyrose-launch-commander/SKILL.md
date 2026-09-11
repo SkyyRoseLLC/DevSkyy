@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-launch-commander
 description: "End-to-end product drop orchestration for SkyyRose. Coordinates the full launch timeline from T-30 to T+7 across product setup, email sequences, ad campaigns, social content, and influencer seeding — with mandatory STOP-AND-SHOW gates before any paid spend, Klaviyo sends, WooCommerce writes, or media uploads. Use when planning any product drop, collection launch, restock, or seasonal event."
@@ -8,7 +9,7 @@ allowed-tools: Read Write Edit Glob Bash Grep
 
 ## Brand Canon (non-negotiable)
 
-> - Tagline (verbatim, only): `Luxury Grows from Concrete.` (period included — never paraphrase)
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 > - Collections: Black Rose (armor/concrete · silver `#C0C0C0`), Love Hurts (bloodline/crimson `#DC143C`), Signature (stay golden · gold `#D4AF37`), Kids Capsule (little royalty · rose gold `#B76E79`)
 > - **Never cross-attribute** collection voices — "bloodline that raised me" = Love Hurts ONLY, "armor / you already stood up" = Black Rose ONLY
 > - Products by **NAME**, not SKU, resolved from the catalog CSV + per-SKU dossier — never invented
@@ -573,7 +574,7 @@ python -m skyyrose.elite_studio.ventures.social smoke --drop-type full_collectio
             "channel": "email",
             "content": {
               "subject": "something's coming.",
-              "preview_text": "Luxury Grows from Concrete."
+Brand tagline: none. Omit tagline text and do not invent a replacement.
             }
           }
         }]

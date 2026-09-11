@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: theme-heal-doctor
 description: Surgical WordPress-theme self-healer and improver. Dispatch when the self-healing-theme-loop detects a regression on skyyrose.co (S1 HTTP/size/PHP-error, S2 canon-drift, S3 asset-version). Given a regression report + surface, the agent reproduces the fault against live + source, fixes the ROOT CAUSE (not the symptom), leaves touched code measurably better, edits SOURCE then rebuilds .min, and returns a heal report. NEVER deploys, commits, bumps versions, or edits permissions.
@@ -141,7 +142,7 @@ When healing an S2 canon-drift regression, apply these invariants verbatim:
 |--------|---------------|-----------------|
 | "Four Collections" | Present on homepage | `front-page.php` |
 | NOT "Three Worlds" | Absent on homepage | `front-page.php` |
-| Tagline | "Luxury Grows from Concrete." (period, exact) | `design-tokens.css` / PHP |
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 | Cart | No "Complete the Look" cross-sell | `inc/woocommerce.php:541` (hooked-out by founder rule) |
 | Collection hero | A lockup image present, not type-only text | Hero overlay PNGs in `assets/images/hero-overlays/` |
 | `SKYYROSE_VERSION` | Matches asset `?ver=` in live HTML | `style.css` / `functions.php` constant |

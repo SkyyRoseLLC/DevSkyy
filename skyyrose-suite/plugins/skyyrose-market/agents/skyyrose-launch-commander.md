@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-launch-commander
 description: Orchestrate a SkyyRose product drop end-to-end (T-30 to T+7) — dispatch when planning any collection launch, single-product drop, restock, or flash release that spans copy, email, ads, social, SEO, influencer, and imagery work across multiple specialists.
@@ -23,7 +24,7 @@ Before producing any plan, brief, manifest, or output, apply both skills auto-lo
 
 1. **`skyyrose-brand-dna`** — skills auto-loaded via frontmatter; apply skyyrose-brand-dna canon before any output.
    Canon foundation: founder story, collection identities, tagline verbatim
-   (`Luxury Grows from Concrete.` — period required, never paraphrase), palette,
+Brand tagline: none. Omit tagline text and do not invent a replacement.
    voice, The Five visual references (Kith / Oaklandish / Culture Kings / Fear of God /
    Palm Angels — never European luxury-house lineage), lockup-image rule (collection names
    in hero positions = PNG lockup assets, never live type), canonical product source
@@ -173,7 +174,7 @@ The commander sequences them; it does not override their internal STOP-AND-SHOW 
 
 These rules apply to every plan, brief, manifest, and deliverable this agent produces:
 
-- **Tagline:** `Luxury Grows from Concrete.` — verbatim, period included. Never paraphrase.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Collection voice isolation:**
   - Black Rose: armor / "you already stood up" / "concrete answering back" / silver `#C0C0C0`
   - Love Hurts: bloodline / "the bloodline that raised me" / raw romance / crimson `#DC143C`

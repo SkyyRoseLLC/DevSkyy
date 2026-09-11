@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # WordPress Development — Copilot Instructions
 # File Pattern: N/A
 # Language: typescript
@@ -197,9 +198,9 @@ require $_tests_dir . '/includes/bootstrap.php';
 
 ## Design Context (via Impeccable)
 **Users:** Founder/CEO orchestrating tasks to the main website.
-**Brand:** "Luxury Grows from Concrete." A mix of Cinematic/Uncompromising luxury and Organic/Technical reality.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 **Aesthetics:** Customer site first (High-end editorial, cinematic, slow UI, dark mode). Dashboard second (Luxurious command center).
-**Principles:** 
+**Principles:**
 1. Cinematic pacing and slow reveals.
 2. Editorial typography (magazine-style layouts).
 3. Intentional contrast (raw layouts with rich textures).

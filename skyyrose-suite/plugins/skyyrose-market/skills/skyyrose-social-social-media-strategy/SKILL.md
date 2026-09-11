@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-social-media-strategy
 description: "Builds a platform-prioritized social media strategy for SkyyRose — selecting where to show up, mapping 5 content pillars to platform strengths, setting sustainable cadence, and defining growth milestones for The Skyy Rose Collection."
@@ -20,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline is verbatim:** `Luxury Grows from Concrete.` Period included. Never paraphrase.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Collections carry distinct voices:** Black Rose = armor / "concrete answering back". Love Hurts = "the bloodline that raised me". Signature = "stay golden / the standard". Never cross-attribute.
 - **Oakland-first anchor.** "Bay Area" is acceptable; "The Town" is preferred shorthand. Never generic coastal-city framing.
 - **The Five visual references only:** Kith · Oaklandish · Culture Kings · Fear of God · Palm Angels. No European luxury-house references.
@@ -86,7 +87,7 @@ SkyyRose's priority stack based on brand DNA (visual luxury streetwear, Black-ow
 
 | Pillar | What It Covers | Ratio | Best Platforms |
 |--------|---------------|-------|---------------|
-| **Brand Story** | Founder Corey's journey, Bay Area roots, why SkyyRose exists, "Luxury Grows from Concrete." story arcs | 15% | IG Feed, TikTok, X |
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 | **Product Showcase** | New drops, styling, fabric close-ups, construction details, BTS production | 30% | IG Feed/Reels, TikTok, Pinterest |
 | **Culture & Community** | Black culture, Oakland pride, customer features, UGC reposts, community spotlights | 25% | IG Stories, TikTok, X |
 | **Lifestyle** | How SkyyRose fits real life, aspirational Oakland/Bay Area moments, outfit contexts | 20% | IG Feed, Pinterest, TikTok |
@@ -277,7 +278,7 @@ python -m skyyrose.elite_studio.ventures.social smoke --sku br-001
 
 - **Equal platform presence** — Spreading thin across 5 platforms equally kills quality on all of them. IG + TikTok first, always.
 - **Cross-attributing collection voices** — "The bloodline that raised me" is Love Hurts ONLY. Running it on a Black Rose post is a brand canon violation.
-- **Generic streetwear brand framing** — "Elevated fashion for the culture" is what every brand says. SkyyRose is specific: Oakland, Corey's story, "Luxury Grows from Concrete."
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **SKU-first copy in planning docs** — Strategy docs that say "br-001 campaign" instead of "BLACK Rose Crewneck campaign" cause downstream product conflation.
 - **Vanity follower obsession** — 1,000 Oakland community members who buy are worth more than 100,000 trend-chasers who don't.
 - **Ignoring repurposing** — Shooting one video and only posting it once wastes 80% of the asset's value. Always run the repurposing flow.

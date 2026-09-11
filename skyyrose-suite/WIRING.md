@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # SkyyRose Suite — Wiring Map
 
 How the `skyyrose-suite` plugins connect to the **Elite Team** (Python runtime SuperAgents), the **Elite Studio** imagery pipelines, and the **dev-team** workflow. The seven personas below now live across `skyyrose-market` (6) and `skyyrose-design` (photography-director). Every claim cites the source verified during the 2026-06-05 discovery pass.
@@ -78,7 +79,7 @@ The architect (Phase 1) can then assign marketing workstreams (copy, email, SEO,
 
 Every skill and agent inherits these from `skyyrose-brand-dna` + its `brand-guardrails.md`:
 
-- Tagline verbatim: **"Luxury Grows from Concrete."** (period included).
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - Collection voice isolation — Black Rose / Love Hurts / Signature / Kids Capsule never cross-attributed.
 - Products by **name**, never SKU, resolved from the catalog CSV.
 - Visual references = **The Five** (Kith, Oaklandish, Culture Kings, Fear of God, Palm Angels) — never European luxury-house lineage.

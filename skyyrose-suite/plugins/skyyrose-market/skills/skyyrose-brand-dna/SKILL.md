@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-brand-dna
 description: Brand identity guide for SkyyRose luxury streetwear. Use when creating content, designs, marketing materials, product descriptions, or any creative work for SkyyRose. Triggers on references to SkyyRose, the collections (Black Rose, Love Hurts, Signature, Kids Capsule), Oakland streetwear, luxury fashion content, or requests for brand-aligned outputs. Essential for maintaining brand consistency across all touchpoints.
@@ -203,18 +204,18 @@ This isn't fast fashion. This is armor.
 
 ## Canonical Tagline
 
-> **`Luxury Grows from Concrete.`**
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
-The period is part of the tagline. This is the **only** tagline. Never paraphrase:
+No tagline is active. The previous tagline and its variants must not be used.
 - "luxury from the streets" = WRONG
 - "grown from concrete" = WRONG
-- "Luxury grows from the concrete" (no period, no capital C) = WRONG
+- "retired tagline variant" (no period, no capital C) = WRONG
 
 ---
 
 ## Key Brand Messages
 
-- "Luxury Grows from Concrete." (only tagline — verbatim with period)
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - "Where fashion meets emotion"
 - "Redefine luxury fashion"
 - "Sustainably crafted, limited edition designs"

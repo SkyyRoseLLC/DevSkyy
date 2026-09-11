@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-content-engine
 description: "Index hub for the SkyyRose social media branch — routes to 27 specialized social skills (content formats, strategy, community, influencer/PR, visual briefs) and the Elite Studio social venture. Use to find the right SkyyRose social skill, or for the at-a-glance brand-voice quick reference."
@@ -34,7 +35,7 @@ This hub is **social/content**. When the task is brand-definition (not brand-app
 
 ## Brand voice — at a glance
 
-- **Tagline (verbatim):** `Luxury Grows from Concrete.` — period included, never paraphrased.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Brand:** SkyyRose — luxury Oakland streetwear. Founder: Corey Foster. Site: skyyrose.co.
 - **Voice:** earned, unhurried, Oakland-direct. No hype-merchant tone, no fake urgency, no
   "complete the look" cross-sell. The garment is the protagonist. Reference products by NAME, not SKU.

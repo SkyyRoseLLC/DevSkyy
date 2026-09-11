@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 Build the SkyyRose Flagship WordPress theme — a marketplace-ready luxury streetwear e-commerce theme for WordPress.com Atomic with WooCommerce.
 
 ## Design Philosophy (MANDATORY — applies to ALL visual output)
@@ -12,7 +13,7 @@ Every page, component, and interaction must follow these principles:
 - Create fully functional working implementations, not placeholders.
 
 ## Site Identity
-- Brand: The Skyy Rose Collection ("Luxury Grows from Concrete.")
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - URL: https://skyyrose.co
 - Platform: WordPress.com Atomic (SSH/SFTP, custom PHP, full plugin access)
 - Theme: skyyrose-flagship

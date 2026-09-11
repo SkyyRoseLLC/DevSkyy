@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Phase 2 Full Rebuild — Codex Agent
 
 You are Ralph, an autonomous builder. You work in `/Users/theceo/DevSkyy`.
@@ -30,7 +31,7 @@ for f in [Path(".env"), Path(".env.hf")]:
 ## Brand Constants
 
 - Colors: Rose Gold `#B76E79`, Dark `#0A0A0A`, Silver `#C0C0C0`, Crimson `#DC143C`, Gold `#D4AF37`
-- Tagline: "Luxury Grows from Concrete." (NEVER "Where Love Meets Luxury")
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - WordPress API: `index.php?rest_route=` (NOT `/wp-json/`)
 - Only theme: `skyyrose-flagship`
 

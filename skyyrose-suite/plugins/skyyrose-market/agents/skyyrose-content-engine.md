@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-content-engine
 description: Write PDP copy, collection page copy, and product FAQs for SkyyRose luxury streetwear — dispatch when any WooCommerce product description, collection page narrative, or product FAQ needs to be authored or improved against brand canon.
@@ -88,8 +89,8 @@ SKUs appear only in technical fields (`sku`, delivery file names, WC REST payloa
 
 ## Brand Canon — Enforced in Every Output
 
-**Tagline:** `Luxury Grows from Concrete.` — verbatim, period included. Never paraphrased.
-Any variant ("luxury from the streets", "grown from concrete", "Luxury grows from the concrete")
+Brand tagline: none. Omit tagline text and do not invent a replacement.
+Any variant ("luxury from the streets", "grown from concrete", "retired tagline variant")
 is a canon violation. Reject it in your own output and flag it in existing copy under review.
 
 **Collections — never cross-attribute voices:**

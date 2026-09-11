@@ -1,0 +1,84 @@
+{
+  "status": "FOUNDER_REVIEW_REQUIRED",
+  "interview": {
+    "video_id": "Ja11W-g34Zo",
+    "title": "Corey Foster  The Skyy Rose Collection",
+    "historical_outlet": "The Blox",
+    "author": "Corey Foster",
+    "source": "https://www.youtube.com/watch?v=Ja11W-g34Zo",
+    "thumbnail": "https://i.ytimg.com/vi/Ja11W-g34Zo/hqdefault.jpg",
+    "oembed_http": 200,
+    "playback": "NOT_VERIFIED_BY_THIS_SUBTASK",
+    "local_video_dependency": "assets/video/the-blox-interview.mp4",
+    "local_video_status": "MISSING",
+    "fox2_attribution": "INAPPLICABLE_MOCKUP_LABEL: historical search found no corroboration; founder confirmed The Blox is the required interview. No active Fox2 or missing-interview blocker.",
+    "founder_confirmation": {
+      "statement": "the blox video is the interview",
+      "confirmed_video_id": "Ja11W-g34Zo",
+      "authority": "Explicit founder clarification in current task",
+      "status": "CONFIRMED_REQUIRED_INTERVIEW"
+    },
+    "identity_blocker": false
+  },
+  "media": [
+    {
+      "path": ".artifacts/v2-about-recovery-20260906/media/recovered-about-story-1.jpg",
+      "bytes": 201942,
+      "sha256": "017fea09dad402bde50a9fad017dec8cfe0e9bd0c7410de050cd3b741485ce3c",
+      "classification": "HISTORICAL VERSION / SUPPORTING MEDIA",
+      "approval_confidence": "Historical placement recovered; subject identity and rights not independently proved by filename or commit message",
+      "action": "Preserve for founder review; do not represent as documentary interview still without source match"
+    },
+    {
+      "path": ".artifacts/v2-about-recovery-20260906/media/recovered-about-story-0.jpg",
+      "bytes": 235763,
+      "sha256": "5f8802517db34c1fab8395ec60750e02cf2324b8ba329bd8a2b12096b36e79e3",
+      "classification": "HISTORICAL VERSION / SUPPORTING MEDIA",
+      "approval_confidence": "Historical placement recovered; subject identity and rights not independently proved by filename or commit message",
+      "action": "Preserve for founder review; do not represent as documentary interview still without source match"
+    },
+    {
+      "path": ".artifacts/v2-about-recovery-20260906/media/recovered-about-story-2.jpg",
+      "bytes": 246021,
+      "sha256": "4b970dd18bf6eab1b820983803962838829901f29ff64e0c805577b35f882ca9",
+      "classification": "HISTORICAL VERSION / SUPPORTING MEDIA",
+      "approval_confidence": "Historical placement recovered; subject identity and rights not independently proved by filename or commit message",
+      "action": "Preserve for founder review; do not represent as documentary interview still without source match"
+    },
+    {
+      "path": ".artifacts/v2-about-recovery-20260906/media/recovered-founder-portrait.jpg",
+      "bytes": 122041,
+      "sha256": "9a3a38ca3c1c706b58009d141c5f34a554b82c6bbf80ee1e252fbd2fddf238f0",
+      "classification": "HISTORICAL VERSION / SUPPORTING MEDIA",
+      "approval_confidence": "Historical placement recovered; subject identity and rights not independently proved by filename or commit message",
+      "action": "Preserve for founder review; do not represent as documentary interview still without source match"
+    },
+    {
+      "path": ".artifacts/v2-about-recovery-20260906/media/recovered-press-the-blox-interview.jpg",
+      "bytes": 187035,
+      "sha256": "fbdf24e9cd15d0a4847e65fca7f3ea9d69731cdd5e5254f22873f42251ba775c",
+      "classification": "HISTORICAL VERSION / SUPPORTING MEDIA",
+      "approval_confidence": "Historical placement recovered; subject identity and rights not independently proved by filename or commit message",
+      "action": "Preserve for founder review; do not represent as documentary interview still without source match"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/skyy-rose-founder-hero.webp",
+      "bytes": 55852,
+      "sha256": "fb1406939aeb76db25597108921bc1e230b17feebf0c74a284df5f8ac713b93d",
+      "classification": "HISTORICAL VERSION / SUPPORTING MEDIA",
+      "approval_confidence": "Historical placement recovered; subject identity and rights not independently proved by filename or commit message",
+      "action": "Preserve for founder review; do not represent as documentary interview still without source match"
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/about/the-blox-premiere.webp",
+      "bytes": 63310,
+      "sha256": "3cf0c90628ed4f9df6375669c9121aebc5bae011e4b48e9d8c727abff47f9c26",
+      "classification": "HISTORICAL VERSION / SUPPORTING MEDIA",
+      "approval_confidence": "Historical placement recovered; subject identity and rights not independently proved by filename or commit message",
+      "action": "Preserve for founder review; do not represent as documentary interview still without source match"
+    }
+  ],
+  "report": "tasks/v2-about-recovery-20260906/media-inventory.md",
+  "remote_mutations": false,
+  "video_downloaded": false
+}

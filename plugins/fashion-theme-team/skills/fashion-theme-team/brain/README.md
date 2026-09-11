@@ -1,7 +1,8 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Fashion Theme Brain
 
-> **SKYYROSE LLC · FASHION THEME BRAIN**  
-> _Luxury Grows from Concrete._
+> **SKYYROSE LLC · FASHION THEME BRAIN**
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 This directory is the active, governed knowledge layer for the Fashion Theme
 Team. It converts fashion-commerce evidence, platform requirements, page

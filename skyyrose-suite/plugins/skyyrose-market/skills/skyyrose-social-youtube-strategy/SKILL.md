@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-social-youtube-strategy
 description: "Plans SkyyRose's YouTube channel strategy — content pillars, upload cadence, thumbnail and title system, video structure, and a 6-month growth roadmap — for long-form brand storytelling that drives authority and skyyrose.co sales."
@@ -20,7 +21,7 @@ allowed-tools: Read Write Edit Glob
 
 ## Brand Canon (non-negotiable)
 
-- **Tagline verbatim:** `Luxury Grows from Concrete.` Use in channel description, About page, and end-card of every video.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Oakland-first:** Channel identity is rooted in The Town. Bay Area acceptable; Oakland is the anchor. Never "West Coast streetwear" as the primary descriptor when "Oakland" is available and accurate.
 - **The Five visual references only:** Thumbnails, B-roll mood, and production aesthetic draw from Kith · Oaklandish · Culture Kings · Fear of God · Palm Angels. No European luxury-house editorial framing.
 - **Corey is the protagonist, not just a face.** YouTube rewards founder-voice authenticity. Corey's earned, direct, Oakland register is the channel's competitive advantage. Do not produce a "brand channel" — produce Corey's channel, with SkyyRose as the subject.
@@ -82,7 +83,7 @@ Channel description (keyword-optimized):
   "Luxury streetwear built from Oakland concrete. SkyyRose is an
    independent Black-owned fashion brand — four collections, one city,
    no shortcuts. Watch new collections drop, go behind the production,
-   and hear the story behind every piece. Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
    | Shop at skyyrose.co"
 Channel keywords: luxury streetwear, Oakland fashion, Black-owned clothing brand,
                   independent fashion brand, streetwear drop, luxury from Oakland,
@@ -120,7 +121,7 @@ Pillar 3 — Behind the Production:
 
 Pillar 4 — Oakland / Culture:
 - "Oakland Fashion Is Underrated — Here's Why It Matters"
-- "What 'Luxury Grows from Concrete' Actually Means to Oakland People"
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - "The Brands That Influenced SkyyRose (And the Ones That Didn't)"
 ```
 
@@ -211,7 +212,7 @@ Test: Squint test — is the thumbnail legible at phone-thumbnail size? If not, 
 - Suggest next video: "If you want to see how this piece gets made,
   watch the production video next" + point to end card
 - End card: Subscribe button + suggested next video
-- Final line: "Luxury Grows from Concrete." — let it land.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 ```
 
 **Target lengths by pillar:**
@@ -287,10 +288,10 @@ Priority order — launch these in order:
 - [ ] Upload schedule matches production capacity — no overcommitment
 - [ ] Thumbnail template established: dark BG, accent color, 3-5 word text, Corey or product
 - [ ] Title formulas documented and adapted to Corey's voice (no ALL-CAPS hype)
-- [ ] Standard video structure defined: hook, body, single CTA, "Luxury Grows from Concrete."
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - [ ] Shorts pipeline mapped from existing TikTok/Reels backlog
 - [ ] First 10 video topics listed in priority order
-- [ ] Channel description is keyword-rich and includes tagline verbatim
+- [ ] Channel description is keyword-rich and omits retired taglines
 - [ ] Monetization path connects YouTube to skyyrose.co (description links every video)
 ```
 
@@ -383,7 +384,7 @@ CHAPTERS:
 ...
 
 SkyyRose is a Black-owned luxury streetwear brand from Oakland, CA.
-Luxury Grows from Concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 
 Follow us:
 Instagram: @skyyroseco

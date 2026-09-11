@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Canonical Catalog — Elite Web Builder Reference
 
 **Single source of truth:** `wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv`
@@ -58,7 +59,7 @@ All of these are gone and must NOT be resurrected: `assets/product-masters/catal
 
 ## Brand copy rules
 
-- **Only tagline:** `Luxury Grows from Concrete.`
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - **Retired tagline (NEVER use):** `Where Love Meets Luxury`
 - **Brand name:** SkyyRose (one word in product copy). "Skyy Rose" only when referring to the founder's daughter by name.
 - **Founder:** Corey Foster.

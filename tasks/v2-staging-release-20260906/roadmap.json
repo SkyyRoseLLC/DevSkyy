@@ -1,0 +1,74 @@
+[
+  {
+    "step": 1,
+    "name": "Finish staging identity reconciliation",
+    "status": "PREPARED_AND_REVIEWED",
+    "dependency": null
+  },
+  {
+    "step": 2,
+    "name": "Prepare one exact V2 release artifact",
+    "status": "PREPARED_AND_REVIEWED",
+    "dependency": 1
+  },
+  {
+    "step": 3,
+    "name": "Founder authorizes staging deployment",
+    "status": "AUTHORIZED_EXACT_ARTIFACT",
+    "dependency": 2
+  },
+  {
+    "step": 4,
+    "name": "Deploy V2 to staging",
+    "status": "DEPLOYED_EXACT_527_FILE_PARITY",
+    "dependency": 3
+  },
+  {
+    "step": 5,
+    "name": "Verify feature parity",
+    "status": "PASS_BOUNDED_FEATURE_PARITY",
+    "dependency": 4
+  },
+  {
+    "step": 6,
+    "name": "Test actual WordPress.com performance",
+    "status": "VERIFIED_WITH_PERFORMANCE_AND_PLATFORM_FINDINGS",
+    "dependency": 5
+  },
+  {
+    "step": 7,
+    "name": "Optimize only remaining measured bottlenecks",
+    "status": "NOT_STARTED",
+    "dependency": 6
+  },
+  {
+    "step": 8,
+    "name": "Blender pass preserving Ask Skyy appearance",
+    "status": "NOT_STARTED",
+    "dependency": 7
+  },
+  {
+    "step": 9,
+    "name": "Founder product-content/media decisions",
+    "status": "NOT_STARTED",
+    "dependency": 8
+  },
+  {
+    "step": 10,
+    "name": "Town Line / Pre-Order separate experience",
+    "status": "NOT_STARTED",
+    "dependency": 9
+  },
+  {
+    "step": 11,
+    "name": "Full founder visual review",
+    "status": "NOT_STARTED",
+    "dependency": 10
+  },
+  {
+    "step": 12,
+    "name": "E2E / physical-device / accessibility / payment sandbox certification",
+    "status": "NOT_STARTED",
+    "dependency": 11
+  }
+]

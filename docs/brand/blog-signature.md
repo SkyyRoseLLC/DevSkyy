@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Blog copy: "Not Basics. Blueprints."
 
 Status: draft copy, ready to publish once a blog surface exists (same gap as
@@ -34,8 +35,7 @@ everything else grew from it. Before the limited drops and the press features,
 there was a father in Oakland who believed everyday clothes should feel like
 something. Not basics. Blueprints.
 
-"They told me luxury doesn't come from Oakland. I said luxury grows from
-concrete — and I meant that literally. This collection is the concrete.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 Everything else grew from here."
 
 The Bay Bridge shows up in this collection because the bridge belongs to

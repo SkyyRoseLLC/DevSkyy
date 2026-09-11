@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # DevSkyy
 
 **AI-driven luxury fashion e-commerce platform for the SkyyRose brand.**
@@ -7,7 +8,7 @@
 [![TypeScript 5.0+](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Luxury Grows from Concrete.** — [skyyrose.co](https://skyyrose.co)
+> [This historical quotation is retained in the retirement source snapshot and is no longer active marketing copy.]
 
 ---
 

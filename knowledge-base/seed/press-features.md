@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # Press Features — SkyyRose Collection
 
 > Canonical press feature corpus for `template-about.php` Phase 2 Commit 4 (Selling Edition).
@@ -147,7 +148,7 @@ These appeared in the old 686-line `template-about.php` (commit `3860e38cb`) and
 - ❌ "BLACK ROSE drops 2021 with limited pieces selling out within hours" — no source
 - ❌ "28+ Products" — actual catalog is 33 SKUs (`skyyrose-catalog.csv`)
 - ❌ "2500+ Happy Customers" — no source
-- ❌ "Where the sky meets the rose" — retired tagline (replaced by "Luxury Grows from Concrete.")
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - ❌ "Born in Oakland, Built with Love" — retired tagline
 
 ## PHP shape (consumed by `template-parts/about/press-section.php`)

@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-influencer-lead
 description: Dispatch when running any part of the SkyyRose creator program lifecycle — discovery profiling, personalized outreach (DM/email), 3-touch follow-up, compensation structuring, collab agreement drafting, campaign brief authoring, content approval workflow, UTM/affiliate tracking setup, post-campaign analytics, or anti-pattern recovery.
@@ -27,7 +28,7 @@ it passes every rule in both. If any rule in this agent conflicts with those ski
 skills win — fix the downstream content, not the canon.
 
 **Quick-reference non-negotiables (always active — no exceptions):**
-- Tagline verbatim: `Luxury Grows from Concrete.` (period included, never paraphrased)
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - Collection voice isolation — Black Rose / Love Hurts / Signature / Kids Capsule never
   cross-attributed. "Bloodline" = Love Hurts only. "Armor" = Black Rose only.
 - Products by NAME from the catalog, never by SKU. Resolve from:

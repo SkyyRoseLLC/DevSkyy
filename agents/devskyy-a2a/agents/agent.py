@@ -81,7 +81,10 @@ _RETIRED_SKUS: frozenset[str] = frozenset(
 )
 
 # The retired tagline that must never be emitted by any creative skill.
-_RETIRED_TAGLINE: str = "Where Love Meets Luxury"
+_RETIRED_TAGLINES: tuple[str, ...] = (
+    "Where Love Meets Luxury",
+    "Luxury Grows from Concrete",
+)
 
 
 def _check_budget(skill: str, max_cost_usd: float | None) -> dict[str, Any] | None:
@@ -291,7 +294,10 @@ def product_description(
         }
 
     description = result.get("description", "") if isinstance(result, dict) else str(result)
-    if _RETIRED_TAGLINE.lower() in description.lower():
+    retired_tagline = next(
+        (phrase for phrase in _RETIRED_TAGLINES if phrase.lower() in description.lower()), None
+    )
+    if retired_tagline is not None:
         return {
             "ok": False,
             "error": "retired_tagline_emitted",
@@ -299,7 +305,7 @@ def product_description(
             "sku": sku,
             "message": (
                 f"CommerceAgent returned a description containing the retired "
-                f"tagline '{_RETIRED_TAGLINE}'. Rejected per brand policy."
+                f"tagline '{retired_tagline}'. Rejected per brand policy."
             ),
         }
     return {
@@ -332,11 +338,12 @@ def brand_check(asset_text: str, collection: str = "") -> dict[str, Any]:
     # Cheap pre-check that doesn't require importing creative_agent: the
     # retired tagline is a hard structural ban.
     violations: list[str] = []
-    if _RETIRED_TAGLINE.lower() in asset_text.lower():
-        violations.append(
-            f"Retired tagline detected: '{_RETIRED_TAGLINE}'. "
-            "Use 'Luxury Grows from Concrete.' instead."
-        )
+    for phrase in _RETIRED_TAGLINES:
+        if phrase.lower() in asset_text.lower():
+            violations.append(
+                f"Retired tagline detected: '{phrase}'. "
+                "Remove the tagline without a replacement."
+            )
 
     try:
         from agents.creative_agent import CreativeAgent  # type: ignore[import-not-found]
@@ -492,7 +499,7 @@ paid provider APIs (FASHN, Tripo, Meshy, OpenAI, Anthropic) directly — the
 SuperAgents own preflight, retry, and cost gating.
 
 Brand rules (hard-blocks):
-- The only tagline is "Luxury Grows from Concrete."
+- No brand tagline. Do not invent a replacement.
 - "Where Love Meets Luxury" is RETIRED — never emit it; flag if seen.
 - Active collections: Black Rose, Love Hurts, Signature, Kids Capsule.
 - Retired SKUs (reject silently): lh-001, sg-004, sg-008, sg-010,
@@ -600,7 +607,7 @@ def get_agent_card(base_url: str = "http://localhost:8080") -> AgentCard:
                 ),
                 tags=["creative", "brand", "paid"],
                 examples=[
-                    "Check this product copy: 'Luxury Grows from Concrete...'",
+                    "Check this product copy: 'SkyyRose'",
                 ],
             ),
             AgentSkill(

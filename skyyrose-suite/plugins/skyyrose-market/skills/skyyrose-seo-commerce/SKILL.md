@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 ---
 name: skyyrose-seo-commerce
 description: "WooCommerce SEO system for SkyyRose. Keyword strategy, product page optimization, collection SEO, schema markup with PHP code, technical SEO checklist, and site architecture. Use when optimizing skyyrose.co for search engines or auditing SEO performance."
@@ -8,7 +9,7 @@ allowed-tools: Read Write Edit Glob Grep Bash
 
 ## Brand Canon (Enforce Always)
 
-- Tagline verbatim: **"Luxury Grows from Concrete."** (period included)
+Brand tagline: none. Omit tagline text and do not invent a replacement.
 - Collections and their voices:
   - **Black Rose** — armor / concrete / "you already stood up" / silver `#C0C0C0`
   - **Love Hurts** — bloodline / "bloodline that raised me" / crimson `#DC143C`
@@ -362,8 +363,8 @@ function skyyrose_org_schema() {
             'height' => 512,
         ),
         'image'       => array( '@id' => 'https://skyyrose.co/#logo' ),
-        'description' => 'Luxury streetwear brand from Oakland, California. Luxury Grows from Concrete.',
-        'slogan'      => 'Luxury Grows from Concrete.',
+Brand tagline: none. Omit tagline text and do not invent a replacement.
+Brand tagline: none. Omit tagline text and do not invent a replacement.
         'founder'     => array(
             '@type' => 'Person',
             'name'  => 'Corey Foster',

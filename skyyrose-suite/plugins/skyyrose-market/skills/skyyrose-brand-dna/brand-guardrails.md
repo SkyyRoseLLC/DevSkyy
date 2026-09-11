@@ -1,3 +1,4 @@
+<!-- Founder directive 2026-09-06: no active brand tagline; do not generate a replacement or display these status words. -->
 # SkyyRose Brand Guardrails (Shared Canon)
 
 <!-- last updated 2026-06-05 -->
@@ -20,7 +21,7 @@
 ## 1. The brand in one breath
 
 - **Brand:** SkyyRose (The Skyy Rose Collection) — luxury Oakland streetwear.
-- **Tagline (verbatim, the ONLY tagline):** `Luxury Grows from Concrete.`
+Brand tagline: none. Omit tagline text and do not invent a replacement.
   Period included. Never paraphrase ("luxury from the streets", "grown from concrete" = WRONG).
 - **Founder:** Corey Foster. Oakland / Bay Area roots. Direct, earned, unhurried voice.
 - **Anchor:** Oakland, CA ("The Town"). "Bay Area" is acceptable; Oakland-first is preferred.

@@ -1,0 +1,26 @@
+{
+  "id": "V2-CINEMATIC-FINALIZATION-20260906",
+  "state": "NEEDS_MORE_WORK",
+  "manager": "root",
+  "parentCandidate": "V2-CINEMATIC-OODA-20260906",
+  "startingCommit": "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+  "startingDigest": "35ea52d179e260ad3fe23084055e8aab0b3aae05506aaa434510abb0ad9d2d63",
+  "authority": "/Users/theceo/.codex/attachments/138c2c7e-948f-489e-99cf-620f71551c6b/pasted-text.txt",
+  "preserve": "All existing uncommitted candidate changes and protected media",
+  "at": "2026-09-06T14:34:35.744228+00:00",
+  "roster": [
+    "root: performance/integration",
+    "scene_handoff: scenes",
+    "quickview_implementation: premium commerce",
+    "skyy_finalization: character"
+  ],
+  "endingCommit": "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+  "candidateDigest": "ef1dcdb414d57374e6b9ee1bd84641eec0e59c102041f705fdaa88c2b1f5a8a8",
+  "finalizedAt": "2026-09-06T15:47:44.046929+00:00",
+  "report": "tasks/v2-cinematic-finalization-20260906/completion-report.md",
+  "verification": "PASS_LOCAL_SOFTWARE_SCOPED",
+  "performance": "FAIL_CANONICAL_GATES",
+  "visualReview": "FIVE_HEROES_AND_NINE_SCENES_EQUIVALENT_QV_AND_SKYY_CONTINUITY_BETTER",
+  "deployment": "NOT_PERFORMED",
+  "package": "NOT_CREATED"
+}
