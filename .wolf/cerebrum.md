@@ -1,2273 +1,441 @@
 # Cerebrum
 
-> OpenWolf's learning memory. Updated automatically as the AI learns from
-> interactions. Do not edit manually unless correcting an error. Last updated:
-> 2026-07-29 (scattered Do-Not-Repeat sections consolidated into the canonical
-> section)
+> OpenWolf's learning memory. Updated automatically as the AI learns from interactions.
+> Do not edit manually unless correcting an error.
+> Last updated: 2026-07-29 (scattered Do-Not-Repeat sections consolidated into the canonical section)
 
 ## Index
 
 Four evergreen sections carry the standing rules — check these first:
 
 - [User Preferences](#user-preferences) — how the founder likes work done
-- [Source of Truth](#source-of-truth) — canonical data locations, never
-  re-derive
+- [Source of Truth](#source-of-truth) — canonical data locations, never re-derive
 - [Key Learnings](#key-learnings) — technical gotchas, APIs, project mechanics
 - [Do-Not-Repeat](#do-not-repeat) — mistakes made once, must not recur
 
-Everything after `## Decision Log` (line ~184) is a **chronological session
-log** — dated `##`/`###` headers per work session, richest detail but not
-evergreen. Grep by bug-NNN, SKU, or keyword rather than reading front-to-back.
+Everything after `## Decision Log` (line ~184) is a **chronological session log** —
+dated `##`/`###` headers per work session, richest detail but not evergreen. Grep by
+bug-NNN, SKU, or keyword rather than reading front-to-back.
 
 ## User Preferences
 
-- **2026-07-24 — Absolute paths in every Bash call; stop unnecessary file
-  searching (founder directive).** cwd PERSISTS between Bash calls in this
-  harness, so a `cd` from three calls ago is still active and invisible in the
-  command you're writing — it silently turned
-  `git add wordpress-theme/skyyrose-flagship/CLAUDE.md` into
-  `wordpress-theme/wordpress-theme/...` and cost a wasted commit round-trip
-  (bug-288). Never write a repo-relative path in `git add` /
-  `git commit -- <paths>` / any file op. Also: one shell-parse attempt then
-  switch to python (worktree census took awk → sed → python); read multiple
-  regions of a known file in ONE Read with offset/limit, not find → grep → sed;
-  anything already in this session's context is authoritative — re-deriving it
-  is the same waste as a redundant read.
-- **2026-07-24 — Evidence-scope tags on every load-bearing claim. ALWAYS ON
-  (founder directive).** Tag inline: `[live]` production probed this session ·
-  `[repo]` read source/working tree · `[repro]` ran it and observed · `[test]` a
-  check that executed and could fail · `[docs]` Context7/vendor · `[inferred]`
-  reasoned, not observed. Evidence scope must cover claim scope; these jumps are
-  banned without their own probe: repo → live behavior, static analysis →
-  runtime, tool listing → filesystem truth, register/audit doc → current state.
-  Severity words (`production bug`, `critical`, `broken`) require `[live]`;
-  state scope BEFORE severity. Origin: bug-287 — four claims in one session had
-  real evidence but over-scoped wording (a stale repo-side `style.min.css`
-  reported as a live stale-serve defect while production served correct bytes; a
-  PHPStan false positive called a live functional bug). The verification matrix
-  and two prior `tasks/lessons.md` entries already covered this, so the gap was
-  assertion-time, not knowledge — hence a tag that fires while writing rather
-  than another rule.
-- **2026-07-12 — Recurring issues live as 1-line records in CLAUDE.md, synced
-  from buglog.** Founder directive: recurring issues (occurrences >= 2 in
-  .wolf/buglog.json, auto-detected churn excluded) sync into CLAUDE.md between
-  `wolf:recurring` markers via `python scripts/wolf_recurring_sync.py`. Buglog
-  stays the full store; CLAUDE.md carries the always-loaded digest. On
-  re-encountering a logged bug: bump occurrences + last_seen, re-run sync.
-- **2026-07-12 — Brand name > tagline in hero contexts.** Founder: "its about
-  SKYYROSE not the tagline" — 'Luxury Grows from Concrete' must NOT be the
-  dominant visual statement; hero device = the brand name (matches live
-  skyyrose.co hero). Tagline demoted to supporting/legal contexts only, and
-  founder may want it absent entirely from hero-adjacent copy. Applies to
-  landing pages, hero sections, marquees.
-- **[2026-06-28, founder-elevated to ALWAYS] Verify with authoritative proof —
-  never "looks correct".** Default cognitive mode every session, not a per-task
-  reminder. Back every claim about code/behavior with the method that can FAIL
-  (run the test via `rtk proxy pytest` + read output, read source `file:line`,
-  eyes-on the live page/pixels). Read the CODE, don't trust a peer/subagent
-  report — a green mock proves the mock, not the feature. Bound the claim to
-  exactly what was checked (proven vs gap); if a probe is blocked (e.g. `.env*`
-  deny rule), say "unverified" — never bypass, never assume. Lead with the
-  proof, not the adjective. See Do-Not-Repeat [2026-06-28] + auto-memory
-  `feedback_verify_authoritative_proof.md`.
-- **[2026-06-24] Dashboard (devskyy.app / `frontend/`) is the AGENT HOME HUB.**
-  Purpose: give agents UI surface to make changes, edits, renders, and templates
-  for skyyrose.co. Not a customer store — operational command center for the AI
-  agent fleet. Dashboard feature work → ask "does this give agents better
-  storefront control?" Two systems: `skyyrose.co` = WP storefront; `devskyy.app`
-  = agent control hub. Never cross-wire.
-- **Prototypes = production candidates (2026-06-10).** "Prototype" from founder
-  means: production-ready code, only backend wiring remains, winner merges
-  without rewrite. Zero TODOs even at adapter seams. If model can name a better
-  version, it must BUILD it before presenting — no deferred-quality notes.
-  Enforced by ~/.claude/skills/parallel-prototyping/SKILL.md (min 5 variants,
-  axis matrix, senior standard, self-critique loop).
+- **2026-07-24 — Absolute paths in every Bash call; stop unnecessary file searching (founder directive).** cwd PERSISTS between Bash calls in this harness, so a `cd` from three calls ago is still active and invisible in the command you're writing — it silently turned `git add wordpress-theme/skyyrose-flagship/CLAUDE.md` into `wordpress-theme/wordpress-theme/...` and cost a wasted commit round-trip (bug-288). Never write a repo-relative path in `git add` / `git commit -- <paths>` / any file op. Also: one shell-parse attempt then switch to python (worktree census took awk → sed → python); read multiple regions of a known file in ONE Read with offset/limit, not find → grep → sed; anything already in this session's context is authoritative — re-deriving it is the same waste as a redundant read.
+- **2026-07-24 — Evidence-scope tags on every load-bearing claim. ALWAYS ON (founder directive).** Tag inline: `[live]` production probed this session · `[repo]` read source/working tree · `[repro]` ran it and observed · `[test]` a check that executed and could fail · `[docs]` Context7/vendor · `[inferred]` reasoned, not observed. Evidence scope must cover claim scope; these jumps are banned without their own probe: repo → live behavior, static analysis → runtime, tool listing → filesystem truth, register/audit doc → current state. Severity words (`production bug`, `critical`, `broken`) require `[live]`; state scope BEFORE severity. Origin: bug-287 — four claims in one session had real evidence but over-scoped wording (a stale repo-side `style.min.css` reported as a live stale-serve defect while production served correct bytes; a PHPStan false positive called a live functional bug). The verification matrix and two prior `tasks/lessons.md` entries already covered this, so the gap was assertion-time, not knowledge — hence a tag that fires while writing rather than another rule.
+- **2026-07-12 — Recurring issues live as 1-line records in CLAUDE.md, synced from buglog.** Founder directive: recurring issues (occurrences >= 2 in .wolf/buglog.json, auto-detected churn excluded) sync into CLAUDE.md between `wolf:recurring` markers via `python scripts/wolf_recurring_sync.py`. Buglog stays the full store; CLAUDE.md carries the always-loaded digest. On re-encountering a logged bug: bump occurrences + last_seen, re-run sync.
+- **2026-07-12 — Brand name > tagline in hero contexts.** Founder: "its about SKYYROSE not the tagline" — 'Luxury Grows from Concrete' must NOT be the dominant visual statement; hero device = the brand name (matches live skyyrose.co hero). Tagline demoted to supporting/legal contexts only, and founder may want it absent entirely from hero-adjacent copy. Applies to landing pages, hero sections, marquees.
+- **[2026-06-28, founder-elevated to ALWAYS] Verify with authoritative proof — never "looks correct".** Default cognitive mode every session, not a per-task reminder. Back every claim about code/behavior with the method that can FAIL (run the test via `rtk proxy pytest` + read output, read source `file:line`, eyes-on the live page/pixels). Read the CODE, don't trust a peer/subagent report — a green mock proves the mock, not the feature. Bound the claim to exactly what was checked (proven vs gap); if a probe is blocked (e.g. `.env*` deny rule), say "unverified" — never bypass, never assume. Lead with the proof, not the adjective. See Do-Not-Repeat [2026-06-28] + auto-memory `feedback_verify_authoritative_proof.md`.
+- **[2026-06-24] Dashboard (devskyy.app / `frontend/`) is the AGENT HOME HUB.** Purpose: give agents UI surface to make changes, edits, renders, and templates for skyyrose.co. Not a customer store — operational command center for the AI agent fleet. Dashboard feature work → ask "does this give agents better storefront control?" Two systems: `skyyrose.co` = WP storefront; `devskyy.app` = agent control hub. Never cross-wire.
+- **Prototypes = production candidates (2026-06-10).** "Prototype" from founder means: production-ready code, only backend wiring remains, winner merges without rewrite. Zero TODOs even at adapter seams. If model can name a better version, it must BUILD it before presenting — no deferred-quality notes. Enforced by ~/.claude/skills/parallel-prototyping/SKILL.md (min 5 variants, axis matrix, senior standard, self-critique loop).
 
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
 ## Source of Truth
 
-- **`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` is the SINGLE
-  source of truth** for all live SKUs (33 products as of 2026-07-13). Every
-  consumer — the WP theme's `inc/product-catalog.php` loader, any Python
-  pipeline, any script — must read through this file. **Do not introduce a
-  second catalog.**
-- **WP theme loader**:
-  `wordpress-theme/skyyrose-flagship/inc/product-catalog.php` parses the CSV and
-  exposes `skyyrose_get_product_catalog()`, `skyyrose_get_product($sku)`,
-  `skyyrose_get_collection_products($collection)`, `skyyrose_product_url($sku)`,
-  etc. PHP code inside the theme MUST go through these helpers — never read the
-  CSV directly.
-- **Retired 2026-04-19** (deleted): `assets/product-masters/catalog.yaml`,
-  `assets/product-masters/manifest.json`. Generators
-  `scripts/generate_catalog.py` and `scripts/sync_manifest_from_catalog.py` are
-  now obsolete — remove in a follow-up commit.
-- **Broken Python readers pending rewrite to the CSV**:
-  `skyyrose/elite_studio/catalog.py`, `wordpress/collection_page_manager.py`,
-  `skyyrose/elite_studio/master_registry.py`, and their tests
-  (`skyyrose/elite_studio/tests/test_catalog*.py`,
-  `tests/wordpress/test_collection_page_manager.py`). These will throw on import
-  until they read `data/skyyrose-catalog.csv` — flag when running the
-  compositor/fidelity/collection-page pipelines.
-- **CSV schema**: sku, name, price, collection, description, badge, image,
-  front_model_image, back_image, back_model_image, sizes, color, edition_size,
-  published, is_preorder. Booleans are `1`/`0`. Badge is a free string
-  (`Pre-Order`, `Draft`, or empty = Active). Image paths are theme-relative
-  (`assets/images/products/...`).
-- **MEMORY.md product lists are HISTORICAL** snapshots — operational truth lives
-  in the CSV. Do not add new SKU data to MEMORY.md.
+- **`wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv` is the SINGLE source of truth** for all live SKUs (33 products as of 2026-07-13). Every consumer — the WP theme's `inc/product-catalog.php` loader, any Python pipeline, any script — must read through this file. **Do not introduce a second catalog.**
+- **WP theme loader**: `wordpress-theme/skyyrose-flagship/inc/product-catalog.php` parses the CSV and exposes `skyyrose_get_product_catalog()`, `skyyrose_get_product($sku)`, `skyyrose_get_collection_products($collection)`, `skyyrose_product_url($sku)`, etc. PHP code inside the theme MUST go through these helpers — never read the CSV directly.
+- **Retired 2026-04-19** (deleted): `assets/product-masters/catalog.yaml`, `assets/product-masters/manifest.json`. Generators `scripts/generate_catalog.py` and `scripts/sync_manifest_from_catalog.py` are now obsolete — remove in a follow-up commit.
+- **Broken Python readers pending rewrite to the CSV**: `skyyrose/elite_studio/catalog.py`, `wordpress/collection_page_manager.py`, `skyyrose/elite_studio/master_registry.py`, and their tests (`skyyrose/elite_studio/tests/test_catalog*.py`, `tests/wordpress/test_collection_page_manager.py`). These will throw on import until they read `data/skyyrose-catalog.csv` — flag when running the compositor/fidelity/collection-page pipelines.
+- **CSV schema**: sku, name, price, collection, description, badge, image, front_model_image, back_image, back_model_image, sizes, color, edition_size, published, is_preorder. Booleans are `1`/`0`. Badge is a free string (`Pre-Order`, `Draft`, or empty = Active). Image paths are theme-relative (`assets/images/products/...`).
+- **MEMORY.md product lists are HISTORICAL** snapshots — operational truth lives in the CSV. Do not add new SKU data to MEMORY.md.
 
 ## Key Learnings
 
-- **[2026-07-27] `fetch(form.action)` is a TRAP on any WP admin-ajax form.**
-  admin-ajax REQUIRES `<input name="action">`, and a named form control shadows
-  the form's `action` IDL property (HTML spec named-property access). ALWAYS
-  `form.getAttribute('action')`. Invisible to phpcs/eslint/php -l/min-sync — the
-  code is valid and reads correctly; only a browser catches it. (bug-295)
-- **[2026-07-27] WooCommerce: a draft/private parent does NOT cascade status to
-  its product_variation children** — they stay 'publish'. Any public endpoint
-  taking a product id must reject or parent-resolve variations, never trust
-  `get_status()` on the id it was handed. (bug-296)
-- **[2026-07-27] When a verification/judge stage of a workflow DIES (session
-  limit, API error), its `confirmedCount: 0` / `blockingCount: 0` are ARTIFACTS,
-  not a clean result.** Treating them as "nothing found" is the fail-open
-  pattern (see bug-230 entry below). Check the `<failures>` block and re-verify
-  by hand — a CRITICAL was sitting in the raw findings this happened on.
-- **[2026-07-27] CSS+JS feature pairs must be gated by ONE shared condition.**
-  bug-293: the cursor's CSS and JS had different gates for years — invisible
-  while the JS emitted only empty divs, then a label span with real text turned
-  it into visible page junk. When adding an element with TEXT to a JS-built
-  widget, check its stylesheet ships everywhere the script does.
-- **[2026-07-27] Duplicate CSS selectors across two globally-enqueued files
-  resolve by ENQUEUE ORDER, not intent** — footer.css (line 149) silently beat
-  components.css (line 89) on `.toast-container`, defeating a media query the
-  author believed was active. When adding a rule, grep the whole css dir for
-  that selector first.
-- **[2026-07-29] `wp i18n make-pot` OOMs at the default 128M in the Peast JS
-  parser on this theme (large minified JS).** Fix:
-  `WP_CLI_PHP_ARGS="-d memory_limit=2G"`. NOT a PHP 8.5 incompatibility — unlike
-  PHPStan's parallel-worker crash, which IS. Also: `vendor/bin/wp` is a SHELL
-  wrapper, so `php -d memory_limit=... vendor/bin/wp` fails; use the env var.
-- **[2026-07-29] A gate that only checks a file EXISTS is a presence check, not
-  a coverage check** — verify-theme.sh's `pot` aspect passed green while the
-  .pot was 89% stale (bug-292). When auditing gates, ask what each one can
-  actually FAIL on.
-- **[2026-07-29] An already-failing gate cannot detect new regressions by
-  pass/fail alone, and a large baseline hides small deltas in the total.**
-  Attribution REQUIRES running the same gate against the pristine pre-change
-  tree. Reusable method: `git archive HEAD | tar -x` into scratch + symlink
-  `vendor/` — true baseline without `git stash` (forbidden in shared worktrees).
-  Used for phpstan, stylelint, and phpunit.
+- **[2026-07-27] `fetch(form.action)` is a TRAP on any WP admin-ajax form.** admin-ajax REQUIRES `<input name="action">`, and a named form control shadows the form's `action` IDL property (HTML spec named-property access). ALWAYS `form.getAttribute('action')`. Invisible to phpcs/eslint/php -l/min-sync — the code is valid and reads correctly; only a browser catches it. (bug-295)
+- **[2026-07-27] WooCommerce: a draft/private parent does NOT cascade status to its product_variation children** — they stay 'publish'. Any public endpoint taking a product id must reject or parent-resolve variations, never trust `get_status()` on the id it was handed. (bug-296)
+- **[2026-07-27] When a verification/judge stage of a workflow DIES (session limit, API error), its `confirmedCount: 0` / `blockingCount: 0` are ARTIFACTS, not a clean result.** Treating them as "nothing found" is the fail-open pattern (see bug-230 entry below). Check the `<failures>` block and re-verify by hand — a CRITICAL was sitting in the raw findings this happened on.
+- **[2026-07-27] CSS+JS feature pairs must be gated by ONE shared condition.** bug-293: the cursor's CSS and JS had different gates for years — invisible while the JS emitted only empty divs, then a label span with real text turned it into visible page junk. When adding an element with TEXT to a JS-built widget, check its stylesheet ships everywhere the script does.
+- **[2026-07-27] Duplicate CSS selectors across two globally-enqueued files resolve by ENQUEUE ORDER, not intent** — footer.css (line 149) silently beat components.css (line 89) on `.toast-container`, defeating a media query the author believed was active. When adding a rule, grep the whole css dir for that selector first.
+- **[2026-07-29] `wp i18n make-pot` OOMs at the default 128M in the Peast JS parser on this theme (large minified JS).** Fix: `WP_CLI_PHP_ARGS="-d memory_limit=2G"`. NOT a PHP 8.5 incompatibility — unlike PHPStan's parallel-worker crash, which IS. Also: `vendor/bin/wp` is a SHELL wrapper, so `php -d memory_limit=... vendor/bin/wp` fails; use the env var.
+- **[2026-07-29] A gate that only checks a file EXISTS is a presence check, not a coverage check** — verify-theme.sh's `pot` aspect passed green while the .pot was 89% stale (bug-292). When auditing gates, ask what each one can actually FAIL on.
+- **[2026-07-29] An already-failing gate cannot detect new regressions by pass/fail alone, and a large baseline hides small deltas in the total.** Attribution REQUIRES running the same gate against the pristine pre-change tree. Reusable method: `git archive HEAD | tar -x` into scratch + symlink `vendor/` — true baseline without `git stash` (forbidden in shared worktrees). Used for phpstan, stylelint, and phpunit.
 
-- **multiprocessing never uses subprocess.Popen** — resource_tracker._launch and
-  mp child spawns go through `multiprocessing.util.spawnv_passfds` ->
-  `_posixsubprocess.fork_exec` directly, so any Popen monkeypatch (bug-263
-  layers 2-4) is structurally blind to them. The tracker spawns lazily on first
-  SemLock registration (tqdm's create_mp_lock is enough); on macOS pre-spawn it
-  early (`resource_tracker.ensure_running()`) while the process is
-  single-threaded. Also: patch `subprocess._fork_exec` (module binding) for fork
-  auditing — patching `_posixsubprocess.fork_exec` is a silent no-op.
-  (2026-07-21, bug-263 layer 5)
+- **multiprocessing never uses subprocess.Popen** — resource_tracker._launch and mp child spawns go through `multiprocessing.util.spawnv_passfds` -> `_posixsubprocess.fork_exec` directly, so any Popen monkeypatch (bug-263 layers 2-4) is structurally blind to them. The tracker spawns lazily on first SemLock registration (tqdm's create_mp_lock is enough); on macOS pre-spawn it early (`resource_tracker.ensure_running()`) while the process is single-threaded. Also: patch `subprocess._fork_exec` (module binding) for fork auditing — patching `_posixsubprocess.fork_exec` is a silent no-op. (2026-07-21, bug-263 layer 5)
 
-- **[2026-07-15] macOS 26.4 + CPython 3.14: subprocess forks by default and fork
-  children can SIGSEGV in Apple's Network.framework** (bug-263).
-  `_HAVE_POSIX_SPAWN_CLOSEFROM=False` on macOS → default `close_fds=True` forces
-  the fork()+exec path in `subprocess`. If the multi-threaded parent ever armed
-  Network.framework (system-proxy lookup via `_scproxy` from
-  urllib/requests/httpx), every fork child dies pre-exec in
-  `nw_settings_child_has_forked()` — parent sees returncode -11 + `.ips`
-  crash-report spam. Mitigation shipped: `no_proxy='*'`/`NO_PROXY='*'`
-  (setdefault, darwin-only) in `conftest.py` + `scripts/ci-local.sh` so
-  `_scproxy` is never consulted. **Deeper check 2026-07-15:** crash is a race
-  (0/400 forks crashed under synthetic arming incl. a live `nw_path_monitor`);
-  Apple DTS (dev forums thread 737464) confirms fork()+frameworks is unsupported
-  and **posix_spawn is the only reliable fix** (syscall — atfork handlers never
-  run in the child). Layer 2 shipped: `conftest.py` darwin-only `Popen.__init__`
-  patch defaults `close_fds=False` (safe per PEP 446 — Python fds are CLOEXEC
-  regardless) so test subprocesses take posix_spawn; explicit
-  `close_fds`/`preexec_fn`/`pass_fds` callers untouched. Worktree checkouts
-  DON'T have the fix until it lands on their branch — check for that before
-  blaming the fix when crash reports reappear.
 
-- **[2026-07-12] Love Hurts canon: the collection is told from the Beast's
-  perspective** (founder direction). LH hero + copy narrate first-person as the
-  Beast ("They called me Beast. They were right." fits). This is the LH voice
-  lens site-wide, distinct from Black Rose (armor / "you already stood up") and
-  Signature (origin/crown). Don't mix collection voices. Applies wherever LH
-  copy is authored (`inc/collection-content.php` `hero_tagline`,
-  `docs/brand/collection-stories.md`, PDPs). Captured in
-  `docs/superpowers/specs/2026-07-12-collection-scene-hero-design.md` §10.4.
-- **[2026-07-07] `fly.toml`'s `[env]` block has multiple env vars with zero code
-  consumers — verify against `os.getenv()` call sites before copying to a new
-  Fly app config.** Building `fly.backend.toml` (devskyy-backend), grepping
-  every `fly.toml` env var against the codebase found: (1)
-  `DATABASE_POOL_SIZE`/`MAX_OVERFLOW`/`POOL_TIMEOUT`/`POOL_RECYCLE`/`CONNECT_TIMEOUT`
-  are dead — `database/db.py`'s `DatabaseConfig` actually reads
-  `DB_POOL_SIZE`/`DB_MAX_OVERFLOW`/`DB_POOL_TIMEOUT`/`DB_POOL_RECYCLE` (no
-  `DATABASE_` prefix, and no consumer at all for `_CONNECT_TIMEOUT`); (2)
-  `SENTRY_TRACES_SAMPLE_RATE`/`SENTRY_PROFILES_SAMPLE_RATE`/`SENTRY_ENVIRONMENT`
-  were declared in `fly.toml` but `main_enterprise.py`'s `sentry_sdk.init()`
-  never read any of the three (hardcoded
-  `traces_sample_rate=0.1 if prod else 1.0`, no `profiles_sample_rate` kwarg,
-  `environment=environment` not `SENTRY_ENVIRONMENT`) — wired via new
-  `_parse_sentry_sample_rate()`/`os.getenv("SENTRY_ENVIRONMENT", environment)`
-  in the same change; (3) `SESSION_TIMEOUT_MINUTES`, `MAX_LOGIN_ATTEMPTS`,
-  `LOGIN_LOCKOUT_MINUTES`,
-  `RAG_AUTO_INGEST`/`RAG_ENABLE_REWRITING`/`RAG_ENABLE_RERANKING`,
-  `MAX_REQUEST_BODY_SIZE`, `REQUEST_TIMEOUT_SECONDS`,
-  `KEEPALIVE_TIMEOUT_SECONDS` are all dead (0 grep matches anywhere); (4)
-  `CORS_ORIGINS`'s literal `'https://*.devskyy.app'` entry has never matched
-  anything — Starlette's `CORSMiddleware.allow_origins` does exact string
-  membership, not glob (confirmed against `starlette/middleware/cors.py`'s
-  `is_allowed_origin()`); subdomain coverage actually comes from the separate
-  hardcoded `allow_origin_regex` kwarg, which was made env-configurable via new
-  `CORS_ORIGIN_REGEX` in this change. **How to apply:** before writing or
-  copying any `[env]` block for a new deploy target, grep every var name against
-  `os.getenv(` in the actual consuming module — a var present in an existing
-  prod `fly.toml` is not proof it's live; it may have been added speculatively
-  or orphaned by a refactor. Cite the `file:line` consumer (or its absence) in
-  the new config's comments so the next session doesn't have to re-derive it.
-- **[2026-06-28] GLB `<model-viewer>` review pages need (a) an HTTP server and
-  (b) decoder-location config BEFORE the first element.** `glb-models.html`
-  (33-SKU keep/delete QC sheet, `renders/3d/web/*.glb`, meshopt+basis
-  compressed) appeared to "time out / only load 8/33." Two real causes: (1)
-  opening via `file://` blocks Chrome's `fetch()` of the GLBs and WASM workers
-  entirely (CORS on file:// origin) — must serve over HTTP
-  (`python3 -m http.server` from repo root; port 8000 is taken by Docker, use
-  8010); (2) meshopt GLBs only decode if
-  `self.ModelViewerElement.meshoptDecoderLocation` (+ `ktx2TranscoderLocation`,
-  `dracoDecoderLocation`) is set in a `<script>` placed _before_ the
-  model-viewer module script and before any `<model-viewer>` element — Context7
-  `/google/model-viewer` confirms "must be configured before the first element
-  is created." The file already had vendored local decoders at
-  `renders/3d/_viewer/`. **8/33 loaded is `loading="lazy"` working as designed**
-  (IntersectionObserver), NOT a failure — Playwright scroll → 33/33 loaded, 0
-  errors, geometry renders. **How to apply:** never debug a GLB page over
-  file://; serve it, then verify load with
-  `[...document.querySelectorAll('model-viewer')].filter(m=>m.loaded).length`
-  after scrolling. Logged bug-164. **[ADDENDUM 2026-06-28] file://-robust
-  fallback shipped + verified CDN URLs.** When `location.protocol==='file:'`,
-  swap decoders to CDN:
-  meshopt=`https://cdn.jsdelivr.net/npm/meshoptimizer/meshopt_decoder.js`,
-  ktx2/basis=`https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/libs/basis/`,
-  draco=`https://www.gstatic.com/draco/versioned/decoders/1.5.6/`. **GOTCHA:
-  Context7's documented gstatic mirror
-  `https://www.gstatic.com/modelviewer/thirdparty/{meshopt,basis}/` 404s — curl
-  every CDN decoder URL before shipping; docs describe intent, the network is
-  truth.** CDN fallback only fixes decoders — Chrome still blocks `fetch()` of
-  the user's _local_ GLBs over file:// (origin null, no CDN for private GLBs),
-  so the page also shows a `#fwarn` banner (with the HTTP command) + a per-tile
-  `data-err` "⚠ serve over HTTP" badge on model-viewer `error` events.
-  Playwright/Chromium blocks `file:` navigation entirely → verify the file://
-  branch by curl-checking the CDN URLs + force-showing the banner over HTTP, not
-  by navigating file://. **Match the treatment to the page's real mechanism:**
-  `render-review.html` (1719 `<img>`, no model-viewer) already works over
-  file:// — `<img>`/css/script element loads are NOT subject to Chrome's file://
-  fetch block (only `fetch()`/XHR/module-workers are). So it got the
-  _applicable_ parallel — a per-`<img>` `onerror` "⚠ file missing" badge + an
-  honest info-note ("no server needed here") — NOT the GLB's CDN-decoder +
-  "serve over HTTP" banner, which would be false for an image page. Don't
-  copy-paste a fix; port the intent.
-- **[2026-06-18] A paid-API cost gate belongs at the BOUNDARY (CLI / MCP entry),
-  never buried in a reusable provider class.** During the `/code-review ultra`
-  fix pass, the review's CRITICAL+HIGH were paid `go`-path CLIs
-  (`scripts/gen-hero-previews.py`, `scripts/gen-lookbook-remake.py`) that built
-  a STOP-AND-SHOW manifest but only wired it into `plan`, so `go` charged
-  immediately. Fix = print manifest + `input()` + `--yes` flag in the `go`
-  branch (default interactive; `go </dev/null` → exit 1, no charge). The same
-  review wanted an env-default-ON gate added to `llm/providers/replicate.py`'s 8
-  public methods — but that class has real programmatic callers
-  (`scripts/demo_image_generation.py`, `services/__init__.py` re-export) and is
-  NOT on the MCP surface (`devskyy_mcp.py` references none). **Why:** a
-  raise-by-default inside a shared provider breaks batch/async/programmatic use
-  — the anti-pattern. **How to apply:** enforce confirmation at the entry point
-  that a human/agent actually drives; for the reusable provider add only an
-  OPT-IN hook that defaults to a no-op (here `REPLICATE_REQUIRE_CONFIRM`,
-  default `"0"`; `_gate()` + `ConfirmationRequired` + `confirm: bool=False` on
-  each method) so existing callers are byte-for-byte unaffected and a future MCP
-  boundary can flip it on. Logged bug-142.
-- **[2026-06-18] Multi-agent review→fix pattern that holds up: per-FILE fixers
-  (not per-finding) + a FRESH adversarial verifier per file, then main-thread
-  re-verify.** Findings cluster by file and edits within a file must serialize,
-  so partition fixers by file (6 parallel, distinct files = no Edit collision,
-  no worktrees needed); two agents on one file collide. The adversarial verify
-  pass (skeptics default-reject) down-ranked the review's original CRITICAL
-  SSRF + "on MCP surface" claim to LOW/latent after grepping callers — matching
-  the locked 25%-false-positive learning. Fixing the _verified_ severity (latent
-  hardening, default-off) instead of the _claimed_ one is why nothing broke.
-  **How to apply:** never trust the fixer's or verifier's word — main thread
-  independently re-runs `ruff`+`black`+`py_compile` on the exact footprint, runs
-  the relevant tests (`rtk proxy pytest`), and writes can-fail functional proofs
-  (SSRF allow/block vectors, gate on/off, `go </dev/null`→exit-1) before
-  relaying or committing.
-- **[2026-06-13] Real-dependency RAG/embedding tests MUST carry
-  `@pytest.mark.slow` (or `integration`) or they leak into the fast gate and
-  flake.** The fast Stop-hook + pre-commit gate runs `pytest` with addopts
-  `-m "not slow and not integration"`.
-  `tests/test_rag_integration.py::test_rag_document_chunking` and
-  `::test_rag_context_caching` were left unmarked while their siblings
-  (`test_rag_context_retrieval`, `test_agent_with_rag_context`) were `slow`, so
-  they ran in the fast gate carrying a real `chromadb` +
-  `sentence-transformers("all-MiniLM-L6-v2")` dependency (loaded per-call in
-  `orchestration/auto_ingestion._generate_embeddings`). Under full-suite load
-  the HF model load/encode intermittently throws; `_ingest_file` wraps
-  embeddings + `add_documents` in a broad `except` that swallows the error →
-  `documents_created=0` → the assert fails with the **misleading** message
-  "should be split into multiple chunks". Fixed by marking both `slow` (commit
-  pending). **Lesson:** when a test needs a real model/DB, mark it
-  `slow`/`integration`; and a swallow-all `except` in production code makes
-  downstream test failures lie about their cause — read the swallowed log, don't
-  trust the assertion message. Logged as bug-133.
-- **[2026-05-24] aos/cognition/reflector.py exports `classify_failure`
-  (public).** Renamed from `_classify_failure` to match the kernel's import at
-  `aos/kernel/kernel.py:466`. The reflector CLAUDE.md previously listed only
-  `FailureCategory` as the public surface, but `classify_failure` is also part
-  of the cross-module contract now. Internal-use helpers stay
-  underscore-prefixed; anything imported externally becomes public.
-- **[2026-05-24] Cavecrew investigator → builder → reviewer chain saves ~60-70%
-  main-context tokens vs vanilla Explore + Edit + Code Reviewer.** Compressed
-  outputs (file:line tables, atomic diff receipts, severity-tagged finding
-  lines) are what makes long audit-driven fix sessions feasible without hitting
-  handoff. Use for any task with 5+ delegations. Don't use for prose-heavy
-  review or architecture critique — for those, vanilla is correct.
-- **[2026-05-24] Parallel audit fleet pattern.** When the user asks for a broad
-  multi-dimensional audit (a11y + perf + security + SEO + UX + typography +
-  ...), dispatch one specialist agent per dimension in PARALLEL with
-  scope-fenced briefs. Each brief must include an explicit "out of scope —
-  covered by parallel agent X" block referencing the other agents' deliverable
-  paths. Write reports to `tasks/<date>/<dimension>-audit.md`. Synthesize via a
-  `FIX-MATRIX.md` consolidating all P0s. Verify each P0 against live state
-  before drafting fixes — the 2026-05-23 audit had a 33% P0 false-positive rate
-  at first verification pass.
-- **[2026-05-24] WP innerHTML claim stale.** Cerebrum's "All innerHTML Uses
-  Cleared" entry (obs #6378) is wrong as of theme v1.1.2. Live uses at
-  `assets/js/smart-showcase.js:34,107,115` (static template + WC price clone) +
-  `assets/js/immersive-wc-bridge.js:56` (WC AJAX fragment parsing). Two HIGH
-  security findings outstanding. Fix path: createElement +
-  DOMParser.parseFromString respectively.
-- **Python packaging convention (MANDATORY)**: Every top-level package directory
-  in DevSkyy MUST contain `__init__.py`. No implicit namespace packages.
-  `mypy.ini` has `namespace_packages = False` enforcing this repo-wide. Missing
-  `__init__.py` in a package dir causes mypy to resolve the same `.py` file
-  under two module names (e.g., `preflight` and `renders.preflight`) and emit
-  "Source file found twice under different module names" — blocking commits with
-  a non-obvious root cause. Add `__init__.py` in the same commit as any new
-  top-level package dir, even if empty.
-- **[2026-05-19] Vendored third-party trees (`claude-context/`, `vendor/`,
-  `TRELLIS.2/`) must live in the `mypy.ini` exclude regex.** They contain their
-  own `utils/__init__.py`, `setup.py`, etc. and collide with root packages,
-  emitting "Duplicate module named X" warnings even though
-  `namespace_packages = False`. Add new vendored trees to the exclude block in
-  `mypy.ini` in the same commit. **Why:**
-  `claude-context/evaluation/utils/__init__.py` was colliding with root
-  `utils/__init__.py` for an unknown duration; later
-  `vendor/cli-anything/{adguardhome,QGIS}/agent-harness/setup.py` collided
-  pairwise. Fixed by appending `claude-context/.*` and `vendor/.*` to the
-  exclude regex. **How to apply:** When pulling in any vendored repo at the
-  project root (git submodule, manual copy, or vendored CLI), append its
-  top-level dir to the `exclude = (?x)(...)` block in `mypy.ini` before the
-  closing `)`. Pre-commit mypy hook is `manual, pre-push` stage only and uses
-  `--config-file=pyproject.toml` (no `[tool.mypy]` section there — comment says
-  canonical config is `mypy.ini`); the inconsistency is pre-existing but doesn't
-  block normal commits.
+- **[2026-07-15] macOS 26.4 + CPython 3.14: subprocess forks by default and fork children can SIGSEGV in Apple's Network.framework** (bug-263). `_HAVE_POSIX_SPAWN_CLOSEFROM=False` on macOS → default `close_fds=True` forces the fork()+exec path in `subprocess`. If the multi-threaded parent ever armed Network.framework (system-proxy lookup via `_scproxy` from urllib/requests/httpx), every fork child dies pre-exec in `nw_settings_child_has_forked()` — parent sees returncode -11 + `.ips` crash-report spam. Mitigation shipped: `no_proxy='*'`/`NO_PROXY='*'` (setdefault, darwin-only) in `conftest.py` + `scripts/ci-local.sh` so `_scproxy` is never consulted. **Deeper check 2026-07-15:** crash is a race (0/400 forks crashed under synthetic arming incl. a live `nw_path_monitor`); Apple DTS (dev forums thread 737464) confirms fork()+frameworks is unsupported and **posix_spawn is the only reliable fix** (syscall — atfork handlers never run in the child). Layer 2 shipped: `conftest.py` darwin-only `Popen.__init__` patch defaults `close_fds=False` (safe per PEP 446 — Python fds are CLOEXEC regardless) so test subprocesses take posix_spawn; explicit `close_fds`/`preexec_fn`/`pass_fds` callers untouched. Worktree checkouts DON'T have the fix until it lands on their branch — check for that before blaming the fix when crash reports reappear.
+
+- **[2026-07-12] Love Hurts canon: the collection is told from the Beast's perspective** (founder direction). LH hero + copy narrate first-person as the Beast ("They called me Beast. They were right." fits). This is the LH voice lens site-wide, distinct from Black Rose (armor / "you already stood up") and Signature (origin/crown). Don't mix collection voices. Applies wherever LH copy is authored (`inc/collection-content.php` `hero_tagline`, `docs/brand/collection-stories.md`, PDPs). Captured in `docs/superpowers/specs/2026-07-12-collection-scene-hero-design.md` §10.4.
+- **[2026-07-07] `fly.toml`'s `[env]` block has multiple env vars with zero code consumers — verify against `os.getenv()` call sites before copying to a new Fly app config.** Building `fly.backend.toml` (devskyy-backend), grepping every `fly.toml` env var against the codebase found: (1) `DATABASE_POOL_SIZE`/`MAX_OVERFLOW`/`POOL_TIMEOUT`/`POOL_RECYCLE`/`CONNECT_TIMEOUT` are dead — `database/db.py`'s `DatabaseConfig` actually reads `DB_POOL_SIZE`/`DB_MAX_OVERFLOW`/`DB_POOL_TIMEOUT`/`DB_POOL_RECYCLE` (no `DATABASE_` prefix, and no consumer at all for `_CONNECT_TIMEOUT`); (2) `SENTRY_TRACES_SAMPLE_RATE`/`SENTRY_PROFILES_SAMPLE_RATE`/`SENTRY_ENVIRONMENT` were declared in `fly.toml` but `main_enterprise.py`'s `sentry_sdk.init()` never read any of the three (hardcoded `traces_sample_rate=0.1 if prod else 1.0`, no `profiles_sample_rate` kwarg, `environment=environment` not `SENTRY_ENVIRONMENT`) — wired via new `_parse_sentry_sample_rate()`/`os.getenv("SENTRY_ENVIRONMENT", environment)` in the same change; (3) `SESSION_TIMEOUT_MINUTES`, `MAX_LOGIN_ATTEMPTS`, `LOGIN_LOCKOUT_MINUTES`, `RAG_AUTO_INGEST`/`RAG_ENABLE_REWRITING`/`RAG_ENABLE_RERANKING`, `MAX_REQUEST_BODY_SIZE`, `REQUEST_TIMEOUT_SECONDS`, `KEEPALIVE_TIMEOUT_SECONDS` are all dead (0 grep matches anywhere); (4) `CORS_ORIGINS`'s literal `'https://*.devskyy.app'` entry has never matched anything — Starlette's `CORSMiddleware.allow_origins` does exact string membership, not glob (confirmed against `starlette/middleware/cors.py`'s `is_allowed_origin()`); subdomain coverage actually comes from the separate hardcoded `allow_origin_regex` kwarg, which was made env-configurable via new `CORS_ORIGIN_REGEX` in this change. **How to apply:** before writing or copying any `[env]` block for a new deploy target, grep every var name against `os.getenv(` in the actual consuming module — a var present in an existing prod `fly.toml` is not proof it's live; it may have been added speculatively or orphaned by a refactor. Cite the `file:line` consumer (or its absence) in the new config's comments so the next session doesn't have to re-derive it.
+- **[2026-06-28] GLB `<model-viewer>` review pages need (a) an HTTP server and (b) decoder-location config BEFORE the first element.** `glb-models.html` (33-SKU keep/delete QC sheet, `renders/3d/web/*.glb`, meshopt+basis compressed) appeared to "time out / only load 8/33." Two real causes: (1) opening via `file://` blocks Chrome's `fetch()` of the GLBs and WASM workers entirely (CORS on file:// origin) — must serve over HTTP (`python3 -m http.server` from repo root; port 8000 is taken by Docker, use 8010); (2) meshopt GLBs only decode if `self.ModelViewerElement.meshoptDecoderLocation` (+ `ktx2TranscoderLocation`, `dracoDecoderLocation`) is set in a `<script>` placed *before* the model-viewer module script and before any `<model-viewer>` element — Context7 `/google/model-viewer` confirms "must be configured before the first element is created." The file already had vendored local decoders at `renders/3d/_viewer/`. **8/33 loaded is `loading="lazy"` working as designed** (IntersectionObserver), NOT a failure — Playwright scroll → 33/33 loaded, 0 errors, geometry renders. **How to apply:** never debug a GLB page over file://; serve it, then verify load with `[...document.querySelectorAll('model-viewer')].filter(m=>m.loaded).length` after scrolling. Logged bug-164. **[ADDENDUM 2026-06-28] file://-robust fallback shipped + verified CDN URLs.** When `location.protocol==='file:'`, swap decoders to CDN: meshopt=`https://cdn.jsdelivr.net/npm/meshoptimizer/meshopt_decoder.js`, ktx2/basis=`https://cdn.jsdelivr.net/npm/three@0.172.0/examples/jsm/libs/basis/`, draco=`https://www.gstatic.com/draco/versioned/decoders/1.5.6/`. **GOTCHA: Context7's documented gstatic mirror `https://www.gstatic.com/modelviewer/thirdparty/{meshopt,basis}/` 404s — curl every CDN decoder URL before shipping; docs describe intent, the network is truth.** CDN fallback only fixes decoders — Chrome still blocks `fetch()` of the user's *local* GLBs over file:// (origin null, no CDN for private GLBs), so the page also shows a `#fwarn` banner (with the HTTP command) + a per-tile `data-err` "⚠ serve over HTTP" badge on model-viewer `error` events. Playwright/Chromium blocks `file:` navigation entirely → verify the file:// branch by curl-checking the CDN URLs + force-showing the banner over HTTP, not by navigating file://. **Match the treatment to the page's real mechanism:** `render-review.html` (1719 `<img>`, no model-viewer) already works over file:// — `<img>`/css/script element loads are NOT subject to Chrome's file:// fetch block (only `fetch()`/XHR/module-workers are). So it got the *applicable* parallel — a per-`<img>` `onerror` "⚠ file missing" badge + an honest info-note ("no server needed here") — NOT the GLB's CDN-decoder + "serve over HTTP" banner, which would be false for an image page. Don't copy-paste a fix; port the intent.
+- **[2026-06-18] A paid-API cost gate belongs at the BOUNDARY (CLI / MCP entry), never buried in a reusable provider class.** During the `/code-review ultra` fix pass, the review's CRITICAL+HIGH were paid `go`-path CLIs (`scripts/gen-hero-previews.py`, `scripts/gen-lookbook-remake.py`) that built a STOP-AND-SHOW manifest but only wired it into `plan`, so `go` charged immediately. Fix = print manifest + `input()` + `--yes` flag in the `go` branch (default interactive; `go </dev/null` → exit 1, no charge). The same review wanted an env-default-ON gate added to `llm/providers/replicate.py`'s 8 public methods — but that class has real programmatic callers (`scripts/demo_image_generation.py`, `services/__init__.py` re-export) and is NOT on the MCP surface (`devskyy_mcp.py` references none). **Why:** a raise-by-default inside a shared provider breaks batch/async/programmatic use — the anti-pattern. **How to apply:** enforce confirmation at the entry point that a human/agent actually drives; for the reusable provider add only an OPT-IN hook that defaults to a no-op (here `REPLICATE_REQUIRE_CONFIRM`, default `"0"`; `_gate()` + `ConfirmationRequired` + `confirm: bool=False` on each method) so existing callers are byte-for-byte unaffected and a future MCP boundary can flip it on. Logged bug-142.
+- **[2026-06-18] Multi-agent review→fix pattern that holds up: per-FILE fixers (not per-finding) + a FRESH adversarial verifier per file, then main-thread re-verify.** Findings cluster by file and edits within a file must serialize, so partition fixers by file (6 parallel, distinct files = no Edit collision, no worktrees needed); two agents on one file collide. The adversarial verify pass (skeptics default-reject) down-ranked the review's original CRITICAL SSRF + "on MCP surface" claim to LOW/latent after grepping callers — matching the locked 25%-false-positive learning. Fixing the *verified* severity (latent hardening, default-off) instead of the *claimed* one is why nothing broke. **How to apply:** never trust the fixer's or verifier's word — main thread independently re-runs `ruff`+`black`+`py_compile` on the exact footprint, runs the relevant tests (`rtk proxy pytest`), and writes can-fail functional proofs (SSRF allow/block vectors, gate on/off, `go </dev/null`→exit-1) before relaying or committing.
+- **[2026-06-13] Real-dependency RAG/embedding tests MUST carry `@pytest.mark.slow` (or `integration`) or they leak into the fast gate and flake.** The fast Stop-hook + pre-commit gate runs `pytest` with addopts `-m "not slow and not integration"`. `tests/test_rag_integration.py::test_rag_document_chunking` and `::test_rag_context_caching` were left unmarked while their siblings (`test_rag_context_retrieval`, `test_agent_with_rag_context`) were `slow`, so they ran in the fast gate carrying a real `chromadb` + `sentence-transformers("all-MiniLM-L6-v2")` dependency (loaded per-call in `orchestration/auto_ingestion._generate_embeddings`). Under full-suite load the HF model load/encode intermittently throws; `_ingest_file` wraps embeddings + `add_documents` in a broad `except` that swallows the error → `documents_created=0` → the assert fails with the **misleading** message "should be split into multiple chunks". Fixed by marking both `slow` (commit pending). **Lesson:** when a test needs a real model/DB, mark it `slow`/`integration`; and a swallow-all `except` in production code makes downstream test failures lie about their cause — read the swallowed log, don't trust the assertion message. Logged as bug-133.
+- **[2026-05-24] aos/cognition/reflector.py exports `classify_failure` (public).** Renamed from `_classify_failure` to match the kernel's import at `aos/kernel/kernel.py:466`. The reflector CLAUDE.md previously listed only `FailureCategory` as the public surface, but `classify_failure` is also part of the cross-module contract now. Internal-use helpers stay underscore-prefixed; anything imported externally becomes public.
+- **[2026-05-24] Cavecrew investigator → builder → reviewer chain saves ~60-70% main-context tokens vs vanilla Explore + Edit + Code Reviewer.** Compressed outputs (file:line tables, atomic diff receipts, severity-tagged finding lines) are what makes long audit-driven fix sessions feasible without hitting handoff. Use for any task with 5+ delegations. Don't use for prose-heavy review or architecture critique — for those, vanilla is correct.
+- **[2026-05-24] Parallel audit fleet pattern.** When the user asks for a broad multi-dimensional audit (a11y + perf + security + SEO + UX + typography + ...), dispatch one specialist agent per dimension in PARALLEL with scope-fenced briefs. Each brief must include an explicit "out of scope — covered by parallel agent X" block referencing the other agents' deliverable paths. Write reports to `tasks/<date>/<dimension>-audit.md`. Synthesize via a `FIX-MATRIX.md` consolidating all P0s. Verify each P0 against live state before drafting fixes — the 2026-05-23 audit had a 33% P0 false-positive rate at first verification pass.
+- **[2026-05-24] WP innerHTML claim stale.** Cerebrum's "All innerHTML Uses Cleared" entry (obs #6378) is wrong as of theme v1.1.2. Live uses at `assets/js/smart-showcase.js:34,107,115` (static template + WC price clone) + `assets/js/immersive-wc-bridge.js:56` (WC AJAX fragment parsing). Two HIGH security findings outstanding. Fix path: createElement + DOMParser.parseFromString respectively.
+- **Python packaging convention (MANDATORY)**: Every top-level package directory in DevSkyy MUST contain `__init__.py`. No implicit namespace packages. `mypy.ini` has `namespace_packages = False` enforcing this repo-wide. Missing `__init__.py` in a package dir causes mypy to resolve the same `.py` file under two module names (e.g., `preflight` and `renders.preflight`) and emit "Source file found twice under different module names" — blocking commits with a non-obvious root cause. Add `__init__.py` in the same commit as any new top-level package dir, even if empty.
+- **[2026-05-19] Vendored third-party trees (`claude-context/`, `vendor/`, `TRELLIS.2/`) must live in the `mypy.ini` exclude regex.** They contain their own `utils/__init__.py`, `setup.py`, etc. and collide with root packages, emitting "Duplicate module named X" warnings even though `namespace_packages = False`. Add new vendored trees to the exclude block in `mypy.ini` in the same commit. **Why:** `claude-context/evaluation/utils/__init__.py` was colliding with root `utils/__init__.py` for an unknown duration; later `vendor/cli-anything/{adguardhome,QGIS}/agent-harness/setup.py` collided pairwise. Fixed by appending `claude-context/.*` and `vendor/.*` to the exclude regex. **How to apply:** When pulling in any vendored repo at the project root (git submodule, manual copy, or vendored CLI), append its top-level dir to the `exclude = (?x)(...)` block in `mypy.ini` before the closing `)`. Pre-commit mypy hook is `manual, pre-push` stage only and uses `--config-file=pyproject.toml` (no `[tool.mypy]` section there — comment says canonical config is `mypy.ini`); the inconsistency is pre-existing but doesn't block normal commits.
 - **Project:** devskyy
-- **Description:** AI-driven multi-agent orchestration platform for enterprise
-  e-commerce automation
-- **SDK canonical path:** `sdk/python/agent_sdk/` is the authoritative SDK. Root
-  `agent_sdk/` was a stale copy with wrong brand data and has been deleted.
-- **SDK internal imports:** All intra-package imports inside
-  `sdk/python/agent_sdk/` use relative imports (`.module`), NOT absolute
-  `from agent_sdk.module`.
-- **base_super_agent:** The `agents/base_super_agent/` package is authoritative.
-  `agents/base_super_agent.py` monolith has been deleted — do not recreate it.
-- **Integration tests canonical location:** `tests/integration/` — not
-  `tests/test_*.py` at root for integration-level tests.
-- **[2026-05-03] BRAND CANON (PRIMARY SOURCE) lives at
-  `knowledge-base/seed/from-interview.md`.** Corey provided four blocks of canon
-  directly: (1) Visual references — KITH, Coach, Palm Angels, Drake Related,
-  Aimé Leon Dore, Fear of God Eternal, The Row, Jacquemus, Document/i-D. (2)
-  Anti-references — NO BLUE in any shade, no luxury clichés (gold filigree /
-  marble / champagne), no dry CSS-only product reveals, no lackluster/safe
-  defaults, no dated 2015-2022 e-commerce templates, no gendered copy framing
-  ("for him"/"for her"/"men's"/"women's" all banned). (3) Oakland canon — Deep
-  East, Oakland Hills, Stone City, The 100s, Brookfield, Sobrante Park, The
-  Coliseum, Real Oakland, The Shows, Sequoyah Highlands — these names appear in
-  copy but are NEVER explained. Bay Area ≠ Oakland; the brand is
-  Oakland-specific. (4) Engineering rules — identify verified canonical source
-  first, no glob fishing; silent correction not apologies. (5) Reality check —
-  IMAGERY GENERATION IS THE #1 LAUNCH BLOCKER (Phase 5 sub-phase order is
-  reprioritized in
-  `knowledge-base/decisions/0003-imagery-as-launch-blocker.md`); aesthetic
-  translation is the unexpected win — protect it. When canon conflicts with
-  derived docs (banned-elements.md, brand-story.md), the interview file wins.
-- **[2026-05-03] AP-16 added — Glob Fishing Instead of Consulting Canonical
-  Source.** Before any task, name the canonical source(s) you'll consult in one
-  sentence. Catalog → CSV. Brand → from-interview.md + brand-story.md.
-  Architecture → ADRs + decisions/. Locked decisions →
-  SKYYROSE_V2_MASTER_PLAN.md §1.1. Per-page intent → SKYYROSE_WORDPRESS_PLAN.md
-  §6. Catalog reader code → `inc/product-catalog.php` (PHP) /
-  `skyyrose/core/catalog_loader.py` (Python). If you can't name the source, stop
-  and ask — don't grep. See `knowledge-base/lessons/anti-patterns.md` AP-16.
-- **[2026-05-03] Silent-disable audit found 8 instances of "configured but
-  invisibly failing" anti-pattern.** See `eval/silent-disable-audit.md` for the
-  full list. Critical instances: `~/DevSkyy/.mcp.json` runs claude-context
-  (Milvus down) + postgresql (env var unset) + aidesigner (HTTP 401) every
-  session, all silently failing. `~/.claude.json` stores WP app password in
-  plaintext. Measurement packet's test_command points at
-  `scripts/measurement/verify-all-grants.js` which doesn't exist yet. Fixes
-  await user direction. Common fingerprint: "exit 0" used as success signal when
-  work didn't happen.
-- **[2026-05-03] MCP servers must live under the literal `mcpServers` key in
-  `~/.claude/settings.json`.** Renaming the key (e.g.,
-  `_disabled_mcpServers__rename_to_mcpServers_to_reenable`) silently disables
-  every server beneath it — no error, no log line, no tool surfaces. Sequential
-  Thinking was parked under that renamed key for an unknown duration and looked
-  "missing" until the fix on this date. Re-enabled by creating a proper
-  `mcpServers` block. `claude-context` left disabled because it needs Milvus on
-  `127.0.0.1:19530` (Ollama on `11434` is up). See
-  `~/.claude/projects/-Users-theceo-DevSkyy/memory/project_mcp_settings.md`.
-  **Tool surfaces only on next session restart.**
-- **[2026-04-18] When the diff is large, audit the abstraction before polishing
-  the code inside it.** Before running local code-quality reviews (lint, style,
-  redundancy) on a non-trivial refactor, first check whether an existing
-  adapter/helper/pattern in the codebase already solves the problem a different
-  way. A correct-abstraction fix dissolves the local findings automatically —
-  wrong-abstraction polish just makes the wrong thing tidier.
+- **Description:** AI-driven multi-agent orchestration platform for enterprise e-commerce automation
+- **SDK canonical path:** `sdk/python/agent_sdk/` is the authoritative SDK. Root `agent_sdk/` was a stale copy with wrong brand data and has been deleted.
+- **SDK internal imports:** All intra-package imports inside `sdk/python/agent_sdk/` use relative imports (`.module`), NOT absolute `from agent_sdk.module`.
+- **base_super_agent:** The `agents/base_super_agent/` package is authoritative. `agents/base_super_agent.py` monolith has been deleted — do not recreate it.
+- **Integration tests canonical location:** `tests/integration/` — not `tests/test_*.py` at root for integration-level tests.
+- **[2026-05-03] BRAND CANON (PRIMARY SOURCE) lives at `knowledge-base/seed/from-interview.md`.** Corey provided four blocks of canon directly: (1) Visual references — KITH, Coach, Palm Angels, Drake Related, Aimé Leon Dore, Fear of God Eternal, The Row, Jacquemus, Document/i-D. (2) Anti-references — NO BLUE in any shade, no luxury clichés (gold filigree / marble / champagne), no dry CSS-only product reveals, no lackluster/safe defaults, no dated 2015-2022 e-commerce templates, no gendered copy framing ("for him"/"for her"/"men's"/"women's" all banned). (3) Oakland canon — Deep East, Oakland Hills, Stone City, The 100s, Brookfield, Sobrante Park, The Coliseum, Real Oakland, The Shows, Sequoyah Highlands — these names appear in copy but are NEVER explained. Bay Area ≠ Oakland; the brand is Oakland-specific. (4) Engineering rules — identify verified canonical source first, no glob fishing; silent correction not apologies. (5) Reality check — IMAGERY GENERATION IS THE #1 LAUNCH BLOCKER (Phase 5 sub-phase order is reprioritized in `knowledge-base/decisions/0003-imagery-as-launch-blocker.md`); aesthetic translation is the unexpected win — protect it. When canon conflicts with derived docs (banned-elements.md, brand-story.md), the interview file wins.
+- **[2026-05-03] AP-16 added — Glob Fishing Instead of Consulting Canonical Source.** Before any task, name the canonical source(s) you'll consult in one sentence. Catalog → CSV. Brand → from-interview.md + brand-story.md. Architecture → ADRs + decisions/. Locked decisions → SKYYROSE_V2_MASTER_PLAN.md §1.1. Per-page intent → SKYYROSE_WORDPRESS_PLAN.md §6. Catalog reader code → `inc/product-catalog.php` (PHP) / `skyyrose/core/catalog_loader.py` (Python). If you can't name the source, stop and ask — don't grep. See `knowledge-base/lessons/anti-patterns.md` AP-16.
+- **[2026-05-03] Silent-disable audit found 8 instances of "configured but invisibly failing" anti-pattern.** See `eval/silent-disable-audit.md` for the full list. Critical instances: `~/DevSkyy/.mcp.json` runs claude-context (Milvus down) + postgresql (env var unset) + aidesigner (HTTP 401) every session, all silently failing. `~/.claude.json` stores WP app password in plaintext. Measurement packet's test_command points at `scripts/measurement/verify-all-grants.js` which doesn't exist yet. Fixes await user direction. Common fingerprint: "exit 0" used as success signal when work didn't happen.
+- **[2026-05-03] MCP servers must live under the literal `mcpServers` key in `~/.claude/settings.json`.** Renaming the key (e.g., `_disabled_mcpServers__rename_to_mcpServers_to_reenable`) silently disables every server beneath it — no error, no log line, no tool surfaces. Sequential Thinking was parked under that renamed key for an unknown duration and looked "missing" until the fix on this date. Re-enabled by creating a proper `mcpServers` block. `claude-context` left disabled because it needs Milvus on `127.0.0.1:19530` (Ollama on `11434` is up). See `~/.claude/projects/-Users-theceo-DevSkyy/memory/project_mcp_settings.md`. **Tool surfaces only on next session restart.**
+- **[2026-04-18] When the diff is large, audit the abstraction before polishing the code inside it.** Before running local code-quality reviews (lint, style, redundancy) on a non-trivial refactor, first check whether an existing adapter/helper/pattern in the codebase already solves the problem a different way. A correct-abstraction fix dissolves the local findings automatically — wrong-abstraction polish just makes the wrong thing tidier.
 
-  **Why:** During the LH cathedral immersive retrofit, three parallel review
-  agents ran (reuse / quality / efficiency). The quality and efficiency agents
-  found real local issues (redundant `(string)` casts, uncached
-  `wc_get_products` query, stringly-typed props, copy-paste fallback branches).
-  The reuse agent found that `skyyrose_immersive_product()` in
-  `inc/immersive-product-adapter.php` already encapsulated the entire build —
-  used by BR and SIG templates. Switching to the adapter deleted ~70 lines and
-  invalidated every other finding (no more WC query to cache, no more fallback
-  to DRY, no more casts to remove, no more duplicated catalog data). If only the
-  quality agent had run, I'd have spent 20 minutes polishing the doomed
-  abstraction.
+  **Why:** During the LH cathedral immersive retrofit, three parallel review agents ran (reuse / quality / efficiency). The quality and efficiency agents found real local issues (redundant `(string)` casts, uncached `wc_get_products` query, stringly-typed props, copy-paste fallback branches). The reuse agent found that `skyyrose_immersive_product()` in `inc/immersive-product-adapter.php` already encapsulated the entire build — used by BR and SIG templates. Switching to the adapter deleted ~70 lines and invalidated every other finding (no more WC query to cache, no more fallback to DRY, no more casts to remove, no more duplicated catalog data). If only the quality agent had run, I'd have spent 20 minutes polishing the doomed abstraction.
 
-  **How to apply:** For any diff >50 lines, spawn a reuse-scan agent FIRST (or
-  alongside quality/efficiency) with the question _"does an existing
-  helper/adapter/convention already solve this in this codebase?"_ — and read
-  its findings before acting on the others. If reuse finds a better abstraction,
-  scrap the diff and restart from the adapter; do not layer polish on top of
-  what you're about to delete.
+  **How to apply:** For any diff >50 lines, spawn a reuse-scan agent FIRST (or alongside quality/efficiency) with the question *"does an existing helper/adapter/convention already solve this in this codebase?"* — and read its findings before acting on the others. If reuse finds a better abstraction, scrap the diff and restart from the adapter; do not layer polish on top of what you're about to delete.
 
-- **[2026-04-19] Preflight scope MUST match deploy scope.** If a path is
-  excluded from what ships, it must also be excluded from what gets validated.
-  Coherence between the two is a correctness property, not a performance
-  optimization.
+- **[2026-04-19] Preflight scope MUST match deploy scope.** If a path is excluded from what ships, it must also be excluded from what gets validated. Coherence between the two is a correctness property, not a performance optimization.
 
-  **Why:** `scripts/deploy-theme.sh` had `vendor/`, `node_modules/`, `tests/` in
-  its rsync/tar exclude lists (they never ship), AND in `.phpcs.xml` (they don't
-  get style-checked), AND in `.gitignore` (they're not tracked) — but the
-  preflight PHP syntax check walked the theme with a plain `find -name '*.php'`
-  and no prunes. Result: 3,881 files linted per deploy when only 124 are
-  actually shipped. Cost: ~5–6 min per deploy for vendor/ alone, multiplied by
-  every deploy for the life of the project. This isn't slow — it's incoherent.
-  The lint was validating code that would never run in production.
+  **Why:** `scripts/deploy-theme.sh` had `vendor/`, `node_modules/`, `tests/` in its rsync/tar exclude lists (they never ship), AND in `.phpcs.xml` (they don't get style-checked), AND in `.gitignore` (they're not tracked) — but the preflight PHP syntax check walked the theme with a plain `find -name '*.php'` and no prunes. Result: 3,881 files linted per deploy when only 124 are actually shipped. Cost: ~5–6 min per deploy for vendor/ alone, multiplied by every deploy for the life of the project. This isn't slow — it's incoherent. The lint was validating code that would never run in production.
 
-  **How to apply:** For any validation step (lint, test, type-check, security
-  scan) in a deploy/build script, reference the same exclude list the transport
-  layer uses. If the tarball excludes `vendor/`, the lint must prune `vendor/`.
-  If the zip skips `node_modules/`, the type-check must skip `node_modules/`.
-  Ideal implementation: one source-of-truth array that both the transport and
-  every validator consume. When scope diverges, silently-wrong work accumulates
-  (and deploys get slow as a symptom). Treat divergence as a bug, not a
-  performance issue. [bug-058]
+  **How to apply:** For any validation step (lint, test, type-check, security scan) in a deploy/build script, reference the same exclude list the transport layer uses. If the tarball excludes `vendor/`, the lint must prune `vendor/`. If the zip skips `node_modules/`, the type-check must skip `node_modules/`. Ideal implementation: one source-of-truth array that both the transport and every validator consume. When scope diverges, silently-wrong work accumulates (and deploys get slow as a symptom). Treat divergence as a bug, not a performance issue. [bug-058]
 
-- **[2026-04-24] Elite Studio `THREE_D_MODEL` LangGraph node bypasses the Claude
-  SDK immersive agents.** `three_d_model_node`
-  (`skyyrose/elite_studio/creative/nodes.py`) calls
-  `ai_3d.generation_pipeline.ThreeDGenerationPipeline` directly.
-  `SDKGarment3DAgent`, `SDKSceneBuilderAgent`, and `SDKAvatarStylistAgent` in
-  `agents/claude_sdk/domain_agents/immersive.py` are a parallel orphaned
-  implementation — never invoked by any LangGraph node. The `rationale_for` edge
-  graphify drew between `creative/__init__.py` and `claude_sdk/domain_agents/`
-  is docstring-level only ("3D models" appears in both module docstrings), not a
-  code import. Closing this gap requires wiring `three_d_model_node` to
-  `SDKGarment3DAgent`.
+- **[2026-04-24] Elite Studio `THREE_D_MODEL` LangGraph node bypasses the Claude SDK immersive agents.** `three_d_model_node` (`skyyrose/elite_studio/creative/nodes.py`) calls `ai_3d.generation_pipeline.ThreeDGenerationPipeline` directly. `SDKGarment3DAgent`, `SDKSceneBuilderAgent`, and `SDKAvatarStylistAgent` in `agents/claude_sdk/domain_agents/immersive.py` are a parallel orphaned implementation — never invoked by any LangGraph node. The `rationale_for` edge graphify drew between `creative/__init__.py` and `claude_sdk/domain_agents/` is docstring-level only ("3D models" appears in both module docstrings), not a code import. Closing this gap requires wiring `three_d_model_node` to `SDKGarment3DAgent`.
 
-- **[2026-04-24] Local `adk/` module is the Elite Studio agents' actual ADK
-  layer.** All 11 agents in `skyyrose/elite_studio/agents/` do
-  `from adk.super_agents import BaseSuperAgent` — this resolves to DevSkyy's own
-  `adk/` package at the project root, which lazily wraps
-  `google.adk.agents.Agent` via `adk/google_adk.py`. The full chain: Elite
-  Studio agent → local `BaseSuperAgent` → `adk.google_adk.GoogleADKAgent` →
-  `google.adk.agents.Agent`. Use `.venv-agents/` (Python 3.14.3,
-  `google-adk 1.30.0`, `google-genai 1.73.1`) to run any code in this chain —
-  the main `.venv/` has numpy conflicts that block ADK installs.
+- **[2026-04-24] Local `adk/` module is the Elite Studio agents' actual ADK layer.** All 11 agents in `skyyrose/elite_studio/agents/` do `from adk.super_agents import BaseSuperAgent` — this resolves to DevSkyy's own `adk/` package at the project root, which lazily wraps `google.adk.agents.Agent` via `adk/google_adk.py`. The full chain: Elite Studio agent → local `BaseSuperAgent` → `adk.google_adk.GoogleADKAgent` → `google.adk.agents.Agent`. Use `.venv-agents/` (Python 3.14.3, `google-adk 1.30.0`, `google-genai 1.73.1`) to run any code in this chain — the main `.venv/` has numpy conflicts that block ADK installs.
 
-- **[2026-05-12] WP theme page creation is one-shot, gated by
-  `SKYYROSE_SETUP_VERSION` constant.** `inc/theme-activation-setup.php`
-  registers an `init` action (priority 30) that runs
-  `skyyrose_run_activation_setup()` ONCE per setup version. The gate:
-  `if (get_option('skyyrose_activation_setup_version') === SKYYROSE_SETUP_VERSION) return;`.
-  To force re-creation of pages defined in `skyyrose_get_required_pages()`
-  (e.g., when a page was manually deleted from WP admin and needs to be
-  re-created), bump the constant in source — the next request will see version
-  mismatch, fire the runner, and `wp_insert_post()` will create any missing
-  pages with the correct `_wp_page_template` meta assigned. **Why:** DATA-01 had
-  all four `/collection-{slug}/` URLs serving the homepage (page-id-9822)
-  because the collection pages were absent from the WP DB; option was stamped
-  `4.0.0` so the init runner short-circuited. Bumping to `4.1.0` (commit
-  016f7025f, theme 1.1.2) repaired the routing on the first live request
-  post-deploy — pages now resolve to page-id 9454/9455/9456/9651. **How to
-  apply:** Whenever you discover that a page the theme is supposed to own is
-  missing from the WP admin, bump `SKYYROSE_SETUP_VERSION` rather than touching
-  the DB or asking the user to recreate the page manually. The gate makes this
-  idempotent and safe — no risk of double-creation because `get_page_by_path()`
-  checks first.
+- **[2026-05-12] WP theme page creation is one-shot, gated by `SKYYROSE_SETUP_VERSION` constant.** `inc/theme-activation-setup.php` registers an `init` action (priority 30) that runs `skyyrose_run_activation_setup()` ONCE per setup version. The gate: `if (get_option('skyyrose_activation_setup_version') === SKYYROSE_SETUP_VERSION) return;`. To force re-creation of pages defined in `skyyrose_get_required_pages()` (e.g., when a page was manually deleted from WP admin and needs to be re-created), bump the constant in source — the next request will see version mismatch, fire the runner, and `wp_insert_post()` will create any missing pages with the correct `_wp_page_template` meta assigned. **Why:** DATA-01 had all four `/collection-{slug}/` URLs serving the homepage (page-id-9822) because the collection pages were absent from the WP DB; option was stamped `4.0.0` so the init runner short-circuited. Bumping to `4.1.0` (commit 016f7025f, theme 1.1.2) repaired the routing on the first live request post-deploy — pages now resolve to page-id 9454/9455/9456/9651. **How to apply:** Whenever you discover that a page the theme is supposed to own is missing from the WP admin, bump `SKYYROSE_SETUP_VERSION` rather than touching the DB or asking the user to recreate the page manually. The gate makes this idempotent and safe — no risk of double-creation because `get_page_by_path()` checks first.
 
-- **[2026-05-12] Cursor / global script enqueues that must vary by template MUST
-  consult `skyyrose_get_current_template_slug()`.** That helper is defined
-  inside `inc/enqueue.php` and maps `template-immersive-*.php` → slug
-  `'immersive'`. Any enqueue inside `skyyrose_enqueue_global_scripts()`
-  (priority 10, runs on every page) that should be suppressed on immersive must
-  gate on `'immersive' !== skyyrose_get_current_template_slug()`. **Why:**
-  CURS-03 had `luxury-cursor.min.js` enqueued globally; on immersive pages the
-  cursor is CSS-hidden but the JS was still downloaded (~3KB of dead bytes plus
-  init code on hidden DOM). Wrapping the enqueue in the slug check fixed it
-  (commit 016f7025f, theme 1.1.2). **How to apply:** When an asset is CSS-hidden
-  on a specific template, the JS enqueue should also be suppressed — don't ship
-  dead code. The slug helper is the project's canonical mechanism for
-  template-conditional enqueues; do not introduce parallel `is_page_template()`
-  checks or new globals.
+- **[2026-05-12] Cursor / global script enqueues that must vary by template MUST consult `skyyrose_get_current_template_slug()`.** That helper is defined inside `inc/enqueue.php` and maps `template-immersive-*.php` → slug `'immersive'`. Any enqueue inside `skyyrose_enqueue_global_scripts()` (priority 10, runs on every page) that should be suppressed on immersive must gate on `'immersive' !== skyyrose_get_current_template_slug()`. **Why:** CURS-03 had `luxury-cursor.min.js` enqueued globally; on immersive pages the cursor is CSS-hidden but the JS was still downloaded (~3KB of dead bytes plus init code on hidden DOM). Wrapping the enqueue in the slug check fixed it (commit 016f7025f, theme 1.1.2). **How to apply:** When an asset is CSS-hidden on a specific template, the JS enqueue should also be suppressed — don't ship dead code. The slug helper is the project's canonical mechanism for template-conditional enqueues; do not introduce parallel `is_page_template()` checks or new globals.
 
-- **[2026-05-20] Post-commit anatomy regen used to deadlock on `Last scanned:`
-  timestamp drift.** `openwolf scan` always rewrites the
-  `> Auto-maintained by OpenWolf. Last scanned: <ISO>` header line in
-  `.wolf/anatomy.md`, even when nothing structural changed. The Husky
-  `post-commit` hook then detected file drift and printed
-  `post-commit: anatomy / phase-e manifest were regenerated and now differ from HEAD — run \`git
-  add .wolf/anatomy.md tasks/phase-e-manifest.md && git commit -m 'chore:
-  refresh auto-managed indexes'\` to
-  publish.` Committing that drift triggered the hook again, which scanned again, which rewrote the timestamp again — infinite loop where only the ISO timestamp moved between commits. **Why:** Multiple commits at the start of session 2026-05-20 fired the nag with no real content delta (`1cd1a4096`, `4b174e25f`both shipped a single-line timestamp move). The user surfaced this as "the hook keeps nagging." **How to apply:** Two-layer fix landed in`4d8e20a47`. (1) `scripts/regen_anatomy_from_main.sh`runs`git
-  diff --quiet -I '^> Auto-maintained by OpenWolf\. Last scanned:' --
-  .wolf/anatomy.md`after the scan; if only the timestamp drifted,`git checkout
-  --
-  .wolf/anatomy.md`reverts the change so the working tree stays clean. (2)`.husky/post-commit`uses the same`-I`
-  filter on its drift-detection diff as a second line of defense in case the
-  regen script is bypassed or removed. Real content drift (file-count change,
-  new entries, modified token estimates on tracked files) produces hunks that
-  survive the regex and still surfaces the nag — which is correct. Do not remove
-  either layer; the second is what protects against the regen script being
-  disabled. Do not collapse to a single layer.
+- **[2026-05-20] Post-commit anatomy regen used to deadlock on `Last scanned:` timestamp drift.** `openwolf scan` always rewrites the `> Auto-maintained by OpenWolf. Last scanned: <ISO>` header line in `.wolf/anatomy.md`, even when nothing structural changed. The Husky `post-commit` hook then detected file drift and printed `post-commit: anatomy / phase-e manifest were regenerated and now differ from HEAD — run \`git add .wolf/anatomy.md tasks/phase-e-manifest.md && git commit -m 'chore: refresh auto-managed indexes'\` to publish.` Committing that drift triggered the hook again, which scanned again, which rewrote the timestamp again — infinite loop where only the ISO timestamp moved between commits. **Why:** Multiple commits at the start of session 2026-05-20 fired the nag with no real content delta (`1cd1a4096`, `4b174e25f` both shipped a single-line timestamp move). The user surfaced this as "the hook keeps nagging." **How to apply:** Two-layer fix landed in `4d8e20a47`. (1) `scripts/regen_anatomy_from_main.sh` runs `git diff --quiet -I '^> Auto-maintained by OpenWolf\. Last scanned:' -- .wolf/anatomy.md` after the scan; if only the timestamp drifted, `git checkout -- .wolf/anatomy.md` reverts the change so the working tree stays clean. (2) `.husky/post-commit` uses the same `-I` filter on its drift-detection diff as a second line of defense in case the regen script is bypassed or removed. Real content drift (file-count change, new entries, modified token estimates on tracked files) produces hunks that survive the regex and still surfaces the nag — which is correct. Do not remove either layer; the second is what protects against the regen script being disabled. Do not collapse to a single layer.
 
 ### 2026-06-11 — Asset manifest spine (Tier 1)
-
-- **Key Learning:** `assets/products/manifest.json` is the content-hashed
-  SKU→asset map, generated by `scripts/build_asset_manifest.py` from
-  `build_references()` resolved output (= exact files each paid render consumes,
-  including the flatlay rescue). Module: `skyyrose/core/asset_manifest.py`
-  (reuses `master_registry.sha256_of_file` — ONE hash fn). Two gates: (1)
-  `--check` / `test_committed_manifest_matches_regenerated_tree` fails CI if a
-  file changed without regen; (2) the OAI CLI runs `_asset_drift()` before any
-  paid `--yes` dispatch and ABORTS (exit 4) on missing/hash-mismatch — the
-  bug-119 wrong-product prevention. Override: `--skip-asset-verify`. After ANY
-  rename/replace under `assets/products/`, run
-  `python scripts/build_asset_manifest.py` and commit, or CI reds.
-- **Key Learning:** keeper-skip (`render-keepers.json`) now hard-requires the
-  keeper asset to exist on disk; a keeper naming a missing file is ignored +
-  logged so the plan re-renders (was a silent blocker — bug-125).
+- **Key Learning:** `assets/products/manifest.json` is the content-hashed SKU→asset map, generated by `scripts/build_asset_manifest.py` from `build_references()` resolved output (= exact files each paid render consumes, including the flatlay rescue). Module: `skyyrose/core/asset_manifest.py` (reuses `master_registry.sha256_of_file` — ONE hash fn). Two gates: (1) `--check` / `test_committed_manifest_matches_regenerated_tree` fails CI if a file changed without regen; (2) the OAI CLI runs `_asset_drift()` before any paid `--yes` dispatch and ABORTS (exit 4) on missing/hash-mismatch — the bug-119 wrong-product prevention. Override: `--skip-asset-verify`. After ANY rename/replace under `assets/products/`, run `python scripts/build_asset_manifest.py` and commit, or CI reds.
+- **Key Learning:** keeper-skip (`render-keepers.json`) now hard-requires the keeper asset to exist on disk; a keeper naming a missing file is ignored + logged so the plan re-renders (was a silent blocker — bug-125).
 
 ### 2026-07-09 — Armpit gusset (love-hurts-girl-rig.blend)
-
-- **Key Learning:** `renders/3d/girl-love-hurts/add_armpit_gusset.py` opens
-  `BLEND_PATH` and overwrites it in place — it is NOT idempotent. A second run
-  against the already-gusseted file would re-subdivide the same patch
-  (double-gusset), and its own internal assert (new-nonmanifold == 0, diffed
-  against _that run's_ welded baseline) would likely still pass, so it would
-  silently save a wrong, over-densified mesh with no error. To regenerate the
-  gusset, first restore `love-hurts-girl-rig.pre-gusset-backup.blend` →
-  `love-hurts-girl-rig.blend`, then run the script exactly once. Verified via
-  the Blender auto-backup chain: `.blend1` md5-matches `pre-gusset-backup.blend`
-  exactly, proving the script ran exactly once (a second run would have rotated
-  a _gusseted_ file into `.blend1`, not the true pre-edit original).
-- **Key Learning:**
-  `bmesh.ops.subdivide_edges(edges=patch_edges, cuts=2, use_grid_fill=True)` on
-  a real (non-uniform-grid) character-mesh patch multiplies local face count ~9x
-  (cuts=2 → 3x3 subdivision), not a small linear increase — a 0.15m-radius patch
-  on a ~49k-face body mesh went from ~2.8k faces per armpit to ~25k, i.e.
-  +44,552 faces mesh-wide for two armpits. This is expected/correct for "2 new
-  edge loops," not a bug — confirmed by an independent radius-bucketed face
-  count showing 0 new faces outside a 0.40m buffer around either `*Arm` bone
-  head (fully localized, no whole-body side effect).
-- **Key Learning:** `Mesh1.0` (Phase-1 glTF import) has 2 pre-existing,
-  out-of-scope defects present in BOTH the pre-gusset backup and the current
-  file, unchanged by the gusset edit: (1) 89 non-manifold edges scattered at
-  collar/hip-pocket/hair-back/jacket seams (single dropped-triangle fragments,
-  not large seams), and (2) the mesh is 2 connected components, not 1
-  (48972→93524-face main body + a static 373-face accessory island). Neither is
-  "watertight" in the strict sense; both are pre-existing and explicitly out of
-  scope for the armpit-only surgical edit — do not conflate "gusset introduced 0
-  new non-manifold edges / preserved island count" (true, verified) with "whole
-  mesh is watertight" (false, pre-existing).
+- **Key Learning:** `renders/3d/girl-love-hurts/add_armpit_gusset.py` opens `BLEND_PATH` and overwrites it in place — it is NOT idempotent. A second run against the already-gusseted file would re-subdivide the same patch (double-gusset), and its own internal assert (new-nonmanifold == 0, diffed against *that run's* welded baseline) would likely still pass, so it would silently save a wrong, over-densified mesh with no error. To regenerate the gusset, first restore `love-hurts-girl-rig.pre-gusset-backup.blend` → `love-hurts-girl-rig.blend`, then run the script exactly once. Verified via the Blender auto-backup chain: `.blend1` md5-matches `pre-gusset-backup.blend` exactly, proving the script ran exactly once (a second run would have rotated a *gusseted* file into `.blend1`, not the true pre-edit original).
+- **Key Learning:** `bmesh.ops.subdivide_edges(edges=patch_edges, cuts=2, use_grid_fill=True)` on a real (non-uniform-grid) character-mesh patch multiplies local face count ~9x (cuts=2 → 3x3 subdivision), not a small linear increase — a 0.15m-radius patch on a ~49k-face body mesh went from ~2.8k faces per armpit to ~25k, i.e. +44,552 faces mesh-wide for two armpits. This is expected/correct for "2 new edge loops," not a bug — confirmed by an independent radius-bucketed face count showing 0 new faces outside a 0.40m buffer around either `*Arm` bone head (fully localized, no whole-body side effect).
+- **Key Learning:** `Mesh1.0` (Phase-1 glTF import) has 2 pre-existing, out-of-scope defects present in BOTH the pre-gusset backup and the current file, unchanged by the gusset edit: (1) 89 non-manifold edges scattered at collar/hip-pocket/hair-back/jacket seams (single dropped-triangle fragments, not large seams), and (2) the mesh is 2 connected components, not 1 (48972→93524-face main body + a static 373-face accessory island). Neither is "watertight" in the strict sense; both are pre-existing and explicitly out of scope for the armpit-only surgical edit — do not conflate "gusset introduced 0 new non-manifold edges / preserved island count" (true, verified) with "whole mesh is watertight" (false, pre-existing).
 
 ### 2026-07-15 — bug-261: walk clip freeze/dwell from sparse-pose duplicate values surviving `nla.bake`
-
-- **Key Learning:** `bpy.ops.nla.bake(..., step=1)` samples the SOURCE curve at
-  every integer frame and writes a real keyframe at each one — if two sparse
-  authored pose keys (e.g. `bake_walk_retarget.py`'s POSES table frames 9
-  "high-point" and 13 "contact-R") hold an IDENTICAL value for a given bone, the
-  bake does not just duplicate those two frames — it also bakes every
-  INTERMEDIATE frame (10,11,12) to that same flat interpolated value, since
-  linear interpolation between two identical numbers is constant. The result is
-  a multi-keyframe dead-flat span in the BAKED action, not just a two-frame
-  coincidence. Diagnosed by parsing the shipped GLB's keyframe data directly
-  (pygltflib) rather than trusting the pose table alone — the table only shows
-  the sparse authored values, not what the bake did to the frames between them.
-- **Key Learning:** Diagnosing a "walks funny" complaint on a canvas-overlay 3D
-  character needs a DETERMINISTIC scrub, not wall-clock screenshot timing —
-  `AnimationMixer.setTime(t)` (a separate debug `AnimationMixer` + `clipAction`,
-  not fighting the live mascot state machine) lets you sample the exact same
-  instant twice and diff the pixels; a frozen/dwelling span shows ~0% diff
-  between two nearby samples inside it vs a much larger diff for a
-  genuine-motion span crossing into it. Also: judge limb swing from the SAME
-  camera angle production uses (skyy-3d.js: dead-front, `camera.lookAt(0,0.9,0)`
-  from `(0,1.2,5)`) before calling a limb "frozen" — a front-on camera
-  foreshortens fore/aft (sagittal-plane) swing almost to nothing; a 3/4 side
-  camera on the identical clip showed the arms WERE swinging the whole time
-  (this session's first arm-twist theory was a camera-angle artifact, corrected
-  before it became a wasted fix).
-- **Do-Not-Repeat:** When re-timing a baked animation curve to remove a dwell,
-  editing only the two originally-authored sparse keyframes (e.g. just frame 9
-  and frame 21) leaves the BAKED interior frames (10,11,12 / 22,23,24) untouched
-  at their old flat value — this creates a NEW pop/discontinuity (value jumps at
-  frame 9→10) while still leaving a shorter dwell (10-13). Fix by
-  re-interpolating every interior frame in the span as a fresh linear ramp
-  between the two untouched OUTER anchor frames (8 and 13, not 9 and 13) —
-  verified this the hard way on the first attempt (bug-261) before landing on
-  the anchor-outside-the-span approach on the second.
+- **Key Learning:** `bpy.ops.nla.bake(..., step=1)` samples the SOURCE curve at every integer frame and writes a real keyframe at each one — if two sparse authored pose keys (e.g. `bake_walk_retarget.py`'s POSES table frames 9 "high-point" and 13 "contact-R") hold an IDENTICAL value for a given bone, the bake does not just duplicate those two frames — it also bakes every INTERMEDIATE frame (10,11,12) to that same flat interpolated value, since linear interpolation between two identical numbers is constant. The result is a multi-keyframe dead-flat span in the BAKED action, not just a two-frame coincidence. Diagnosed by parsing the shipped GLB's keyframe data directly (pygltflib) rather than trusting the pose table alone — the table only shows the sparse authored values, not what the bake did to the frames between them.
+- **Key Learning:** Diagnosing a "walks funny" complaint on a canvas-overlay 3D character needs a DETERMINISTIC scrub, not wall-clock screenshot timing — `AnimationMixer.setTime(t)` (a separate debug `AnimationMixer` + `clipAction`, not fighting the live mascot state machine) lets you sample the exact same instant twice and diff the pixels; a frozen/dwelling span shows ~0% diff between two nearby samples inside it vs a much larger diff for a genuine-motion span crossing into it. Also: judge limb swing from the SAME camera angle production uses (skyy-3d.js: dead-front, `camera.lookAt(0,0.9,0)` from `(0,1.2,5)`) before calling a limb "frozen" — a front-on camera foreshortens fore/aft (sagittal-plane) swing almost to nothing; a 3/4 side camera on the identical clip showed the arms WERE swinging the whole time (this session's first arm-twist theory was a camera-angle artifact, corrected before it became a wasted fix).
+- **Do-Not-Repeat:** When re-timing a baked animation curve to remove a dwell, editing only the two originally-authored sparse keyframes (e.g. just frame 9 and frame 21) leaves the BAKED interior frames (10,11,12 / 22,23,24) untouched at their old flat value — this creates a NEW pop/discontinuity (value jumps at frame 9→10) while still leaving a shorter dwell (10-13). Fix by re-interpolating every interior frame in the span as a fresh linear ramp between the two untouched OUTER anchor frames (8 and 13, not 9 and 13) — verified this the hard way on the first attempt (bug-261) before landing on the anchor-outside-the-span approach on the second.
 
 ### 2026-08-02 — refactor of scripts/deploy-theme.sh: dedup exclude lists, split preflight_completeness()
-
-- **Key Learning:** `RSYNC_EXCLUDES` (top-level, feeds lftp fallback) and
-  `tar_excludes` (inside `try_rsync()`, feeds the LIVE tar/sftp path) had
-  drifted despite "keep in sync" comments: RSYNC_EXCLUDES excluded
-  `package.json`/`package-lock.json`/`composer.json`/`composer.lock`/`webpack.config.js`/`generate_models.js`
-  that `tar_excludes` did NOT — so those files currently ship to production via
-  the live path. `tar_excludes` excluded `_archive`/`.serena` that
-  RSYNC_EXCLUDES did not. Deduped into
-  `SKYY_EXCLUDE_COMMON_DIRS`/`_COMMON_PATTERNS` + explicit
-  `_RSYNC_ONLY`/`_TAR_ONLY` arrays and two renderer functions
-  (`skyyrose_render_rsync_excludes`/`skyyrose_render_tar_excludes`) — preserved
-  the divergence as documented fact rather than silently unifying it (that's a
-  separate production decision, flagged in tasks/todo.md, not bundled into a
-  "refactor"). Verified byte-identical output old-vs-new by sourcing the file
-  with `main "$@"` stripped (`sed '$d'`) in an isolated `bash -c` subshell and
-  diffing the rendered arrays against a hand-reconstructed pristine version —
-  safe because sourcing only runs function defs + array population, never
-  `main()`.
-- **Do-Not-Repeat:** Do NOT split `try_rsync()` or `verify_live()` in this file.
-  (1) Both are called as `if try_rsync; then` / `if ! verify_live`, which
-  suppresses `set -e` for the ENTIRE dynamic call stack (bug-107) — any
-  extracted helper needs the same explicit `|| return 1` discipline the original
-  already has, so splitting adds surface without removing risk. (2)
-  `verify_live()` sets `trap "rm -f '$tmpfile'" RETURN` — extracting the fetch
-  into a helper moves the trap's fire point to the helper's return, deleting the
-  response body before the size/grep/version checks run → false "response too
-  small" → bogus `auto_rollback` on a healthy deploy. (3) `try_rsync()`'s
-  `tmpzip`/`remote_tar_name`/`zstd_flag`/`swap_id` cross section boundaries;
-  bash 3.2 (macOS default) has no namerefs, so a split forces new globals. (4)
-  Neither is exercised by `--dry-run` (both return at their first line) — a
-  split here is unverifiable without a real production deploy, which is
-  STOP-AND-SHOW. `preflight_completeness()` was safe to split (into
-  `check_version_triple`/`check_tracked_files`/`check_asset_floor`) because it's
-  called plainly (not in an `if`), every failure branch calls `exit 1` directly
-  (errexit-independent), and `--dry-run` fully exercises it.
+- **Key Learning:** `RSYNC_EXCLUDES` (top-level, feeds lftp fallback) and `tar_excludes` (inside `try_rsync()`, feeds the LIVE tar/sftp path) had drifted despite "keep in sync" comments: RSYNC_EXCLUDES excluded `package.json`/`package-lock.json`/`composer.json`/`composer.lock`/`webpack.config.js`/`generate_models.js` that `tar_excludes` did NOT — so those files currently ship to production via the live path. `tar_excludes` excluded `_archive`/`.serena` that RSYNC_EXCLUDES did not. Deduped into `SKYY_EXCLUDE_COMMON_DIRS`/`_COMMON_PATTERNS` + explicit `_RSYNC_ONLY`/`_TAR_ONLY` arrays and two renderer functions (`skyyrose_render_rsync_excludes`/`skyyrose_render_tar_excludes`) — preserved the divergence as documented fact rather than silently unifying it (that's a separate production decision, flagged in tasks/todo.md, not bundled into a "refactor"). Verified byte-identical output old-vs-new by sourcing the file with `main "$@"` stripped (`sed '$d'`) in an isolated `bash -c` subshell and diffing the rendered arrays against a hand-reconstructed pristine version — safe because sourcing only runs function defs + array population, never `main()`.
+- **Do-Not-Repeat:** Do NOT split `try_rsync()` or `verify_live()` in this file. (1) Both are called as `if try_rsync; then` / `if ! verify_live`, which suppresses `set -e` for the ENTIRE dynamic call stack (bug-107) — any extracted helper needs the same explicit `|| return 1` discipline the original already has, so splitting adds surface without removing risk. (2) `verify_live()` sets `trap "rm -f '$tmpfile'" RETURN` — extracting the fetch into a helper moves the trap's fire point to the helper's return, deleting the response body before the size/grep/version checks run → false "response too small" → bogus `auto_rollback` on a healthy deploy. (3) `try_rsync()`'s `tmpzip`/`remote_tar_name`/`zstd_flag`/`swap_id` cross section boundaries; bash 3.2 (macOS default) has no namerefs, so a split forces new globals. (4) Neither is exercised by `--dry-run` (both return at their first line) — a split here is unverifiable without a real production deploy, which is STOP-AND-SHOW. `preflight_completeness()` was safe to split (into `check_version_triple`/`check_tracked_files`/`check_asset_floor`) because it's called plainly (not in an `if`), every failure branch calls `exit 1` directly (errexit-independent), and `--dry-run` fully exercises it.
 
 ## Do-Not-Repeat
 
-- **2026-07-12 — Fail-open guards (pattern, bug-230, 6x).** Never write a gate
-  as 'block if bad'; write 'allow only if proven good'. Absent
-  manifest/config/token = BLOCK; exception inside the check = BLOCK. 6 instances
-  across imagery/theme/MCP/asset-hub in 5 weeks all shared this shape.
-- **2026-07-12 — Shared mutable state in tests (pattern, bug-231, 5x).** Never
-  hardcode /tmp paths (concurrent pytest processes race on them — parallel
-  sessions + Stop-hook suites are real here); use tmp_path. Never read env at
-  module level or mutate os.environ bare; use monkeypatch.setenv/delenv.
-  **2026-07-16 (recurrence #5):** a test that subprocess-runs a
-  generator/builder script against the real repo tree (not just direct file I/O)
-  is the same class of bug — `tests/collections/test_gen_collection_hub.py`
-  invoked `gen-collection-hub.py` with no args, which always wrote
-  `collections/*/index.html` straight into the tracked working tree. Fix pattern
-  (mirrors the existing `build-collection-sot.py --out-dir` seam): give the
-  generator an argparse `--out-dir` flag defaulting to `None` -> the tracked dir
-  (so no-arg production usage is byte-identical), keep any read-only inputs
-  (sot.json, copy.md, identity.json) resolved from the fixed canonical tree, and
-  have the test pass `tmp_path` via `--out-dir` and assert against the tmp_path
-  output. Before touching any subprocess-driven test, check whether the invoked
-  script already has an `--out-dir`/`--out` flag pattern elsewhere in the same
-  directory — `build-collection-sot.py` had already solved this exact problem.
-- **2026-07-22 — A test/CI-scoped fix doesn't cover production runtime (bug-263
-  recurrence #7, layer 6).** All 5 prior bug-263 layers lived in
-  conftest.py/scripts/ci-local.sh (pytest-only) plus a ~/.zshrc export
-  (interactive-shell-only) — neither reaches a long-running production process
-  like `devskyy_mcp.py`, which is spawned by Claude Desktop/Code without
-  sourcing an interactive rc file. 5 concurrent unprotected instances were
-  confirmed crashing via live evidence: `ps eww -p <pid>` showed
-  no_proxy/NO_PROXY absent from the actual process env, and grep confirmed zero
-  references to it anywhere outside tests/. Lesson: when a fix's root cause is
-  "environment/config not propagated," verify coverage by checking the ACTUAL
-  env of the ACTUAL long-running process, not just that tests pass —
-  test-passing and production-protected are different claims requiring different
-  evidence.
-- **2026-06-26 — NEVER source product imagery from the legacy V6/V3 prototype
-  `window.SKYY` base64 bundles** — they are OLD-SOT and contain
-  hallucinated/never-made renders (leaked lh-002 wrong-colorway "back", br-010
-  phantom "back" into the v7 prototype). Source = asset hub manifest
-  `verdict:verified` ONLY (`assets/hub/manifest.json`). Per SKU: front +
-  verified front-alt + back only if verified. One SKU = one garment = one
-  colorway. No verified image → omit/flag, never substitute. MANDATORY every
-  output. See [[feedback_real_products_only]].
-- **2026-07-12 — Verify live PR state before acting on an audit.** Resuming from
-  a compacted session, I acted on a stale PR audit: resolved conflicts on CLOSED
-  #672 (wasted) and nearly ran agents on already-MERGED #684/#686/#689.
-  `gh pr view --json mergeable` returns UNKNOWN for BOTH merged/closed PRs and
-  uncomputed-open PRs — do NOT infer open/closed from it. Always
-  `gh pr list --state open` to re-baseline; include `state`+`mergedAt` on any
-  single-PR check. See buglog bug-249, [[feedback_verify_authoritative_proof]].
-- **2026-07-20 — Never run Lighthouse within Batcache TTL of a deploy.** Round-2
-  (started 2 min post-deploy) audited STALE pre-deploy HTML on several pages
-  (its console-error item cited ?ver=1.11.1 while live served 1.12.0). Wave-3
-  dispatched fixes for 5 phantom a11y findings that were already fixed and live.
-  Protocol: wait >=10 min post-deploy, then spot-check one audited page's asset
-  ?ver matches the deployed version BEFORE trusting any round; measure without
-  ?cb (real-user cache path). [Access, wave-3]
-- **2026-07-29 (pre-order prototype) — Cloned-template inline scripts must be
-  DESCENDANTS of their own root selector, not siblings.** The prototype harness
-  pattern (`stage.appendChild(tpl.content.cloneNode(true))`) DOES auto-execute
-  nested `<script>` tags on insert (confirmed working twice now, homepage +
-  pre-order) — but `document.currentScript.closest('.foo')` only finds `.foo` if
-  the script is INSIDE it. A `<script>` placed as a sibling right after `.foo`'s
-  closing `</div>` has no such ancestor; `closest()` silently returns `null`,
-  the script throws before attaching any listeners, and the failure is invisible
-  without an actual click-test (bug-309). Always put a variant's own script as
-  the LAST CHILD inside its root div, and verify interactive variants with a
-  real click in Chrome — a 200 response and a "looks right" screenshot do not
-  prove event listeners actually attached.
-- **2026-07-29 (pre-order prototype, bug-310) — Never gate a default-visible
-  state behind a JS trigger that might not fire.** Built a scroll-reveal effect
-  that hid content (`opacity:0`) until an `IntersectionObserver`, deferred
-  behind `requestAnimationFrame`, ran. Debug logging proved
-  `requestAnimationFrame`'s callback never fires at all inside the Chrome
-  DevTools MCP automation tab (consistent with rAF throttling on a
-  non-compositing/background tab) — so the reveal never happened and the content
-  stayed permanently invisible, not just delayed. Fail-visible is the only safe
-  default for anything whose reveal trigger isn't guaranteed to run: render the
-  real content unconditionally, and treat scroll/observer-driven effects as pure
-  enhancement layered on top of an already-correct state (parallax via a plain
-  `scroll` listener has no such risk — a listener that never fires just means no
-  drift, never missing content). This generalizes beyond this one Chrome tool:
-  any hide-then-reveal pattern is a bug waiting for an environment where the
-  trigger doesn't run.
-- **2026-07-29 (bug-315/316 ID collision) — A `bug-NNN` reference in a commit
-  message is not a log entry.** Commit `ce5b2231b` fixed a real WCAG issue and
-  labeled it "bug-315" in the message, but the commit never touched
-  `.wolf/buglog.json`. Since `wolf_bug_id.py` derives the next-free ID purely
-  from `buglog.json`'s contents, that same ID (315) got handed out again later
-  to an unrelated fix — two different bugs now share one label in history, only
-  discoverable by reading commit bodies. **Always write the `buglog.json` entry
-  in the SAME commit that references its `bug-NNN` in the message** — never
-  mention an ID in prose without also logging it, and never trust a bug ID seen
-  only in a commit message as "already logged."
-
+- **2026-07-12 — Fail-open guards (pattern, bug-230, 6x).** Never write a gate as 'block if bad'; write 'allow only if proven good'. Absent manifest/config/token = BLOCK; exception inside the check = BLOCK. 6 instances across imagery/theme/MCP/asset-hub in 5 weeks all shared this shape.
+- **2026-07-12 — Shared mutable state in tests (pattern, bug-231, 5x).** Never hardcode /tmp paths (concurrent pytest processes race on them — parallel sessions + Stop-hook suites are real here); use tmp_path. Never read env at module level or mutate os.environ bare; use monkeypatch.setenv/delenv. **2026-07-16 (recurrence #5):** a test that subprocess-runs a generator/builder script against the real repo tree (not just direct file I/O) is the same class of bug — `tests/collections/test_gen_collection_hub.py` invoked `gen-collection-hub.py` with no args, which always wrote `collections/*/index.html` straight into the tracked working tree. Fix pattern (mirrors the existing `build-collection-sot.py --out-dir` seam): give the generator an argparse `--out-dir` flag defaulting to `None` -> the tracked dir (so no-arg production usage is byte-identical), keep any read-only inputs (sot.json, copy.md, identity.json) resolved from the fixed canonical tree, and have the test pass `tmp_path` via `--out-dir` and assert against the tmp_path output. Before touching any subprocess-driven test, check whether the invoked script already has an `--out-dir`/`--out` flag pattern elsewhere in the same directory — `build-collection-sot.py` had already solved this exact problem.
+- **2026-07-22 — A test/CI-scoped fix doesn't cover production runtime (bug-263 recurrence #7, layer 6).** All 5 prior bug-263 layers lived in conftest.py/scripts/ci-local.sh (pytest-only) plus a ~/.zshrc export (interactive-shell-only) — neither reaches a long-running production process like `devskyy_mcp.py`, which is spawned by Claude Desktop/Code without sourcing an interactive rc file. 5 concurrent unprotected instances were confirmed crashing via live evidence: `ps eww -p <pid>` showed no_proxy/NO_PROXY absent from the actual process env, and grep confirmed zero references to it anywhere outside tests/. Lesson: when a fix's root cause is "environment/config not propagated," verify coverage by checking the ACTUAL env of the ACTUAL long-running process, not just that tests pass — test-passing and production-protected are different claims requiring different evidence.
+- **2026-06-26 — NEVER source product imagery from the legacy V6/V3 prototype `window.SKYY` base64 bundles** — they are OLD-SOT and contain hallucinated/never-made renders (leaked lh-002 wrong-colorway "back", br-010 phantom "back" into the v7 prototype). Source = asset hub manifest `verdict:verified` ONLY (`assets/hub/manifest.json`). Per SKU: front + verified front-alt + back only if verified. One SKU = one garment = one colorway. No verified image → omit/flag, never substitute. MANDATORY every output. See [[feedback_real_products_only]].
+- **2026-07-12 — Verify live PR state before acting on an audit.** Resuming from a compacted session, I acted on a stale PR audit: resolved conflicts on CLOSED #672 (wasted) and nearly ran agents on already-MERGED #684/#686/#689. `gh pr view --json mergeable` returns UNKNOWN for BOTH merged/closed PRs and uncomputed-open PRs — do NOT infer open/closed from it. Always `gh pr list --state open` to re-baseline; include `state`+`mergedAt` on any single-PR check. See buglog bug-249, [[feedback_verify_authoritative_proof]].
+- **2026-07-20 — Never run Lighthouse within Batcache TTL of a deploy.** Round-2 (started 2 min post-deploy) audited STALE pre-deploy HTML on several pages (its console-error item cited ?ver=1.11.1 while live served 1.12.0). Wave-3 dispatched fixes for 5 phantom a11y findings that were already fixed and live. Protocol: wait >=10 min post-deploy, then spot-check one audited page's asset ?ver matches the deployed version BEFORE trusting any round; measure without ?cb (real-user cache path). [Access, wave-3]
+- **2026-07-29 (pre-order prototype) — Cloned-template inline scripts must be DESCENDANTS of their own root selector, not siblings.** The prototype harness pattern (`stage.appendChild(tpl.content.cloneNode(true))`) DOES auto-execute nested `<script>` tags on insert (confirmed working twice now, homepage + pre-order) — but `document.currentScript.closest('.foo')` only finds `.foo` if the script is INSIDE it. A `<script>` placed as a sibling right after `.foo`'s closing `</div>` has no such ancestor; `closest()` silently returns `null`, the script throws before attaching any listeners, and the failure is invisible without an actual click-test (bug-309). Always put a variant's own script as the LAST CHILD inside its root div, and verify interactive variants with a real click in Chrome — a 200 response and a "looks right" screenshot do not prove event listeners actually attached.
+- **2026-07-29 (pre-order prototype, bug-310) — Never gate a default-visible state behind a JS trigger that might not fire.** Built a scroll-reveal effect that hid content (`opacity:0`) until an `IntersectionObserver`, deferred behind `requestAnimationFrame`, ran. Debug logging proved `requestAnimationFrame`'s callback never fires at all inside the Chrome DevTools MCP automation tab (consistent with rAF throttling on a non-compositing/background tab) — so the reveal never happened and the content stayed permanently invisible, not just delayed. Fail-visible is the only safe default for anything whose reveal trigger isn't guaranteed to run: render the real content unconditionally, and treat scroll/observer-driven effects as pure enhancement layered on top of an already-correct state (parallax via a plain `scroll` listener has no such risk — a listener that never fires just means no drift, never missing content). This generalizes beyond this one Chrome tool: any hide-then-reveal pattern is a bug waiting for an environment where the trigger doesn't run.
+- **2026-07-29 (bug-315/316 ID collision) — A `bug-NNN` reference in a commit message is not a log entry.** Commit `ce5b2231b` fixed a real WCAG issue and labeled it "bug-315" in the message, but the commit never touched `.wolf/buglog.json`. Since `wolf_bug_id.py` derives the next-free ID purely from `buglog.json`'s contents, that same ID (315) got handed out again later to an unrelated fix — two different bugs now share one label in history, only discoverable by reading commit bodies. **Always write the `buglog.json` entry in the SAME commit that references its `bug-NNN` in the message** — never mention an ID in prose without also logging it, and never trust a bug ID seen only in a commit message as "already logged."
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->
+- [2026-07-08] **`gltf-transform optimize --texture-compress` does NOT accept `jpeg`/`png` (CLI v4.4.1) — only `ktx2|webp|avif|auto|false`.** JPEG/PNG conversion is a separate top-level subcommand (`gltf-transform jpeg <in> <out> --formats '*' --quality N` / `... png ...`), not a value of `optimize`'s flag. Also: never run `draco` before texture ops in a multi-command pipeline — decoding an already-draco-compressed mesh to run texture commands and re-compressing triggers "Decoded KHR_draco_mesh_compression. Further compression will be lossy." Correct order for a from-scratch web-optimized build: `resize` (raw texture, uncompressed geometry) → `jpeg`/`png`/`webp` (format convert) → `draco` (LAST, single pass). Confirmed by running `<cmd> --help` on the installed binary rather than trusting a written spec — always verify CLI flags against `--help` output for the actually-installed version before running a multi-flag command. Source: bug-194 (mascot GLB Safari white-silhouette fix, skyy-v6-web.glb had `extensionsRequired: [EXT_texture_webp, ...]` which non-WebP loaders drop).
+- [2026-07-08] **When assigned to work in an isolated git worktree, do NOT `cd` to the main repo path out of habit.** An agent-a68fb39f796b42a61 session was told "you are in an isolated git worktree — commit your work there" with cwd `/Users/theceo/DevSkyy/.claude/worktrees/agent-a68fb39f796b42a61`, but its first Bash call ran `cd /Users/theceo/DevSkyy && ...` and every subsequent call repeated that `cd` — silently working in and committing to the shared **main** checkout for the entire session (a different concurrent agent was committing to that same shared main checkout at the same time, so the mistaken commit landed sandwiched between two of that session's commits). Caught only when a post-task `advisor()` review noticed `git branch --show-current` had printed "main" and `pwd` showed the wrong path. Fix used (both non-destructive, nothing had been pushed yet): `git cherry-pick <sha>` onto the correct worktree branch from the correct worktree path, then `git revert --no-edit <sha>` (not rebase/reset — a rebase would have rewritten history a concurrent session was actively building on) in the shared main checkout, then diffed `git diff <pre-mistake-sha> HEAD -- <touched paths>` to confirm the net change was empty. **Rule: per-Bash-call cwd resets in this harness — never `cd` to a hardcoded absolute path at the start of a worktree task; let the assigned cwd stand, and if a command needs a different directory, verify with `pwd` first.**
+- [2026-07-08] **A clean "required-fields-only" validator can still hide a real, cross-cutting compliance risk that isn't itself a required field.** Building the OpenAI product-feed generator, `validate_feed_item()` correctly checked `image_url` for "well-formed HTTPS" only (per the advisor-corrected rule: never fail an item over an optional/non-required nuance) — but that let a real finding slip past the executive summary: the spec's Media row says `image_url` must be "JPEG/PNG", and our emitted URLs (Jetpack Photon proxy over native-WebP origin assets) serve `image/jpeg` or `image/webp` depending on the requester's `Accept` header (verified via `curl -I` with/without an Accept header). A "18/33 valid, clean" verdict would have shipped a false sense of completeness. Lesson: after making a validator intentionally lenient on non-required nuances, do a **separate** pass asking "are there real-world constraints (format, encoding, negotiation) that the schema implies but the validator doesn't check?" — and report them as explicit, evidence-backed risks in the executive summary rather than letting a clean pass/fail count stand as the whole story.
+- [2026-06-25] **The `python-format-on-write.sh` PostToolUse hook runs `ruff --fix`, which DELETES an import added before its first use.** Adding `from X import Y` in one Edit and the `Y(...)` usage in a *later* Edit makes the import momentarily unused → the formatter strips it → the next save fails `F821 Undefined name 'Y'`. Cost two re-adds this session (`HfApi`, `math`). Fix: add the *usage first* then the import in a following Edit (so the import is never unused at save time), or put both in one Edit. Bug: bug-163.
+- [2026-06-25] **A half-finished sync→async refactor that misses call sites fails SILENTLY behind a broad `except Exception`.** `api/v1/training_status.py` had every helper `async def` but every call site bare (no `await`) → each endpoint got a truthy coroutine, passed its `if not x:` guard, then raised `TypeError` on iteration/`**`/`.get` → caught → generic HTTP 500. Grep tell: `async def NAME` whose call sites lack `await`; runtime tell: `RuntimeWarning: coroutine 'NAME' was never awaited` at GC (shows in pytest warnings). **Bug-behind-a-bug**: the await fix unmasked a `float('inf')` default that is not JSON-compliant (`ValueError: Out of range float values are not JSON compliant: inf`). Only running the code end-to-end surfaces the second defect — when you fix a "returns 500" endpoint, exercise it, don't trust the first fix. Bug: bug-163.
+- [2026-06-24] **Next 16 renamed `middleware.ts` → `proxy.ts` — the auth gate lives in `frontend/proxy.ts`, NOT middleware.** Creating a `middleware.ts` fails the build hard: `Both middleware file "./middleware.ts" and proxy file "./proxy.ts" are detected. Please use "./proxy.ts" only.` The function is `export async function proxy(request)` (not `middleware`); `export const config = { matcher }` is unchanged. `getToken` from `next-auth/jwt` works in it (edge), needs `NEXTAUTH_SECRET`. The DevSkyy gate redirects pages to `/login?callbackUrl=` and (after the 2026-06-24 extension) returns 401 JSON for `/api/*`; matcher gates `/admin/:path*` + `/api/((?!auth|checkout).*)` — `/api/auth` (NextAuth) and `/api/checkout` (public storefront) MUST stay open or login/checkout break. Before editing auth: `git log --all -- frontend/middleware.ts` showed the rename history; the empty `middleware-manifest.json` was the tell that no `middleware.*` was active. Bug: bug-162.
+- [2026-06-24] **Under Next `cacheComponents: true` (frontend/next.config.ts), route-segment config `export const dynamic = 'force-dynamic'` (and `revalidate`) FAILS the build** — `Route segment config "dynamic" is not compatible with nextConfig.cacheComponents. Please remove it.` Under cacheComponents nothing is cached unless wrapped in `'use cache'`, so route handlers are dynamic BY DEFAULT. To guarantee a handler runs at request time (never serves a build-time snapshot), call `await connection()` from `next/server` at the top — NOT a segment-config export (Context7-confirmed). Handlers that already `await params` / `request.json()` are dynamic (`ƒ`) without it. The tell that flagged it: `GET /api/catalog` built as `○ (Static)` and would have served a stale catalog after a CSV write; `await connection()` flipped it to `ƒ`. Bug: bug-161.
+- [2026-06-22] **Before editing a shared catalog field, sweep its consumers — and never derive a product-LINE roster from a garment-GEOMETRY column.** `garment_type_lock` is read across the render pipeline (FLUX/3D prompt clause, dual-vision gate) AND shown UPPERCASED on the live PDP (`single-product.php`), and it is sourced from the dossier, not just the CSV. br-011 ("BLACK is Beautiful Jersey Series #4, The Rose Hockey") is canonically a **hooded** Jersey-Series piece → `garment_type_lock='hoodie'` is CORRECT (drives the hood render), even though it belongs in the jersey-series roster `_JERSEY_SKUS`. I twice reached the wrong fix (first "it's a hoodie, change roster"; then "CSV is wrong, it's a jersey, change CSV") before the dossier + consumer-sweep showed the real bug: `sync_catalog_downstream._csv_jersey_skus` derived the roster from `garment_type_lock` (geometry) instead of the authoritative `registry sku_folders` (roster) — the same source the validator already used. Fix the derivation source, not the canonical data. Lesson: "jersey" conflates three axes (geometry / product-line roster / sync derivation); resolve which axis a field encodes (read the dossier — the canonical authority) BEFORE touching it. The in-repo "known data error" note was itself wrong.
+- [2026-05-24] **Never use WebFetch for structured-data or `<script>` content audits.** It strips `<script>` tags during HTML → Markdown conversion. The 2026-05-23 SEO audit reported all JSON-LD + OG tags absent as P0 findings; live curl + grep showed they were present on every tested page. Use `curl -s URL | grep` or `curl -s URL | grep -oE 'application/ld\+json'` for any JSON-LD / inline-script / inline-style inspection. [cmem #7400-ish 2026-05-24]
+- [2026-05-24] **Never trust un-cache-busted curls within ~minutes of a WP.com deploy.** Batcache serves stale HTML even after `wp cache flush`. PERF-03 from the audit was a false-positive ghost of pre-deploy markup. Always: `curl -s "URL?cb=$(date +%s)"` for manual post-deploy sanity checks. The deploy script's `verify_live()` already does this.
+- [2026-05-24] **Never use `role="radio"` inside `role="radiogroup"` without implementing the full ARIA radio keyboard pattern.** Arrow keys must move focus + selection, roving `tabindex="0"` on the selected radio, Home/End jump first/last. Without the pattern, keyboard users are stuck Tab-ing through every radio individually and screen-readers in radio-group mode get dead arrow keys. For independent togglable buttons, use native `<button>` + `aria-pressed="true|false"` + `role="group"` on the container — cleaner contract, no extra JS keyboard handling needed.
+- [2026-05-24] **Never put cart page content in Elementor HTML widget.** Theme's `woocommerce/cart/cart.php` only renders when the page invokes `[woocommerce_cart]` shortcode. Elementor HTML widget content bypasses the override → coupon input has no backend (100% broken), "Continue Shopping" lands on homepage, checkout URL hardcoded to a page-id. Confirmed live 2026-05-23. Fix lives in wp-admin → Pages → Cart → Default Template + `[woocommerce_cart]`.
+- [2026-04-15] Never import from root `agent_sdk/` — it no longer exists. Use `from sdk.python.agent_sdk.X import Y`.
+- [2026-04-15] Never create `agents/base_super_agent.py` as a flat file — the package at `agents/base_super_agent/` is authoritative and Python will silently ignore the .py if you recreate it anyway.
+- [2026-04-24] **Local imports inside a function body are NOT patchable via `unittest.mock.patch`.** If a name (`GeneratorAgent`, `MeshyClient`, etc.) is imported inside `async def generate_replica()`, it has no module-level attribute — `patch("module.Name")` raises `AttributeError: module does not have attribute 'Name'`. Fix: move the import to module top-level. The patch target must be `"the_module_where_it_is_used.ClassName"`, not `"the_module_where_it_is_defined.ClassName"`.
+- [2026-04-24] **`Path(__file__).parents[N]` depth in `skyyrose/elite_studio/tests/conftest.py`**: `conftest.py` is at `.../DevSkyy/skyyrose/elite_studio/tests/conftest.py`. `parents[0]`=`tests/`, `parents[1]`=`elite_studio/`, `parents[2]`=`skyyrose/`, `parents[3]`=`DevSkyy/`. Use `parents[3]` to reach the project root and then `"wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"`. Using `parents[4]` resolves to `/Users/theceo/` and the path silently doesn't exist.
+- [2026-04-24] **ADK "promotion" anti-pattern gutted working synchronous agents.** Phase 16 replaced `PromptEnrichmentAgent`, `SafetyAgent`, and `UpscalingAgent` real implementations with `async def` stubs that only called `await self.execute(adk_prompt)`. Tests were written for the sync API; calling `async def` without `await` returns a coroutine object — every `result.success` access raises `AttributeError: 'coroutine' object has no attribute 'success'`. Fix: restore sync `def` implementations with the private methods (`_enrich`, `_check`, `_upscale`) that tests monkeypatch. Never "promote" a working agent to ADK inheritance without simultaneously updating its test contract.
+- [2026-04-24] **`scripts/meshy_verified_generation.py` was a hazardous duplicate.** It wrapped a sync `requests`-based call instead of using the production `MeshyClient` in `ai_3d/providers/meshy.py`. Every rate-limit guard, backoff, and error handler was bypassed. The file was deleted (Phase 16 fix). If a session regenerates it or imports from `scripts.meshy_verified_generation`, that is a regression — use `MeshyClient` directly.
+- [2026-04-24] **`graphify-out/graph.json` uses `links` not `edges`.** networkx's JSON export uses the key `links` for edge data (not `edges`). Any BFS/traversal script reading that file must use `g['links']`, not `g['edges']` — the latter raises `KeyError` silently if you don't check.
+- [2026-04-24] **Local `adk/` module ≠ PyPI `google-adk`.** `from adk.super_agents import BaseSuperAgent` in Elite Studio agents resolves to DevSkyy's own `adk/` package (project root), NOT Google's PyPI package. That local module lazily wraps `google.adk.agents.Agent` inside a try/except. Don't confuse the two layers — installing `google-adk` affects `adk/google_adk.py`'s internals, but the Elite Studio import chain itself goes through `adk/`.
+- [2026-04-24] **`google-genai 1.73.0` has a circular import on Python 3.14.** Symptom: `ImportError: cannot import name 'is_mapping_t' from partially initialized module 'google.genai._interactions._utils'`. Fix: upgrade to `google-genai>=1.73.1`. Downgrading to 1.16.x is blocked because `google-adk>=1.4.0` requires `google-genai>=1.72.0`. The fix command: `pip install "google-adk>=1.4.0"` pulls 1.73.1 automatically.
+- [2026-05-13] **Claude Code hook event schemas are NOT interchangeable.** The `{hookSpecificOutput.additionalContext: "..."}` JSON shape is valid only for `UserPromptSubmit` and `PostToolUse` events. `Stop` and `SessionStart` accept different fields: `{decision, reason, continue, stopReason, suppressOutput, systemMessage}`. Emitting `additionalContext` from a Stop hook crashes Claude Code with `Hook JSON output validation failed — (root): Invalid input` (silent dataloss-equivalent: hook output discarded). **Rule:** check the event when designing a hook. If the goal is human-visible advisory at session end, write to **stderr** (visible in terminal) and emit empty stdout — Stop fires after Claude finishes, so context injection is moot anyway. Bug: `bug-099` in `.wolf/buglog.json`. Fix in commit modifying `.claude/hooks/learning-reminder.sh` — replaced `jq` stdout JSON with `printf >&2` block.
+- [2026-05-13] **DevSkyy hook framework follows the "structural-over-punitive" rule.** Pre-emit context the model needs; block only when the action is irreversible / costs money. Pattern, by event:
+    - **UserPromptSubmit** = soft nudge via `additionalContext` JSON. 24h per-topic TTL cache. Examples: `context7-prefetch` (33 libs), `canon-prefetch` (catalog/brand/etc. via AP-16), `prompt-eng-nudge` (registry workflow).
+    - **PreToolUse** = blocking only for money/production (`paid-api-stopgate` on Bash with `STOPSHOW_ACK=1` bypass) OR non-blocking advisory (`prompt-eng-tripwire` on Write/Edit, exits 0 with stderr message, per-session sentinel so it fires once).
+    - **PostToolUse** = state-stamping. `context7-touched` normalizes `libraryId` and stamps per-lib cache; `learning-tripwire` watches for failure / bug-fix / FIXME patterns and writes session marker.
+    - **Stop** = end-of-turn reminder. `learning-reminder` reads the tripwire marker and nudges cerebrum/buglog/memory/anatomy updates.
+  Shared helper `.claude/hooks/lib/common.sh` exposes `is_fresh`, `read_field`, `scan_patterns`, `emit_user_prompt_context`, `ensure_cache_topic`, `session_sentinel` — all hooks source it. Each hook has an env-var disable knob (`<NAME>_DISABLE=1`). Old blocking `context7-gate.sh` retired but kept on disk for revival emergencies. **Lesson:** bash assoc-arrays choke on regex keys containing `[`/`?`/`*` (parameter expansion clash with `set -u`); use parallel arrays. `IFS='|'` for splitting rule strings breaks when regex fields contain `|`; use `:::` separator and `${var%%:::*}` parameter expansion. Unquoted heredocs interpret backticks as command substitution; use printf-built strings or `<<'EOF'`. Documented in `docs/MANAGED_AGENTS.md` (Context7 fix) + `knowledge-base/prompts/README.md` (registry workflow).
+- [2026-05-13] **Prompt engineering surface in DevSkyy is now tracked via `knowledge-base/prompts/INDEX.yaml`.** Schema: id, location (file + symbol), consumed_by, model.default, version (semver, bump on every text change), last_updated, performance (evaluated/pass_rate/cost_p50), canon_dependencies (which files the prompt assumes about the world), tags, eval path, notes. Prompt TEXT stays in source files (no duplication); registry tracks metadata. Three patterns visible:
+    1. `.txt` files under `agents/claude_sdk/prompts/` (5 prompts — researcher, research-lead, data-analyst, email-triage, report-writer)
+    2. `AgentDefinition` prompts in `skyyrose/multi_agent/agents.py` (5 subagents — brand-writer, theme-auditor, product-analyst, deploy-manager, qa-inspector)
+    3. Inline `system_prompt=...` in SuperAgent `agents/*.py` files (~10 agents — placeholder entry `superagents-inline` covers them; full audit pending)
+  Reusable fragments live in `knowledge-base/prompts/templates/` (e.g., `structured-output-schema.md`). Eval JSONL per prompt at `knowledge-base/prompts/eval/<id>.jsonl`. **How to apply:** when editing a prompt, find its INDEX.yaml entry, bump `version` (X.Y.0 material / X.Y.Z tweak), update `last_updated`, commit prompt + INDEX together with message `prompt(<id>): <change>`. When creating a new prompt, add entry at version `0.1.0` with `evaluated: null` + 3–5 eval cases. The `prompt-eng-nudge` UserPromptSubmit hook + `prompt-eng-tripwire` PreToolUse hook surface this workflow whenever prompt-engineering keywords or file patterns appear. **TODO:** Phase 2 work — audit each SuperAgent in `agents/*.py`, extract inline `system_prompt=` literals into individual INDEX entries (or migrate to `.txt` files under a shared dir). Eval harness is also pending — JSONL format defined in README.md but no runner yet.
 
-- [2026-07-08] **`gltf-transform optimize --texture-compress` does NOT accept
-  `jpeg`/`png` (CLI v4.4.1) — only `ktx2|webp|avif|auto|false`.** JPEG/PNG
-  conversion is a separate top-level subcommand
-  (`gltf-transform jpeg <in> <out> --formats '*' --quality N` / `... png ...`),
-  not a value of `optimize`'s flag. Also: never run `draco` before texture ops
-  in a multi-command pipeline — decoding an already-draco-compressed mesh to run
-  texture commands and re-compressing triggers "Decoded
-  KHR_draco_mesh_compression. Further compression will be lossy." Correct order
-  for a from-scratch web-optimized build: `resize` (raw texture, uncompressed
-  geometry) → `jpeg`/`png`/`webp` (format convert) → `draco` (LAST, single
-  pass). Confirmed by running `<cmd> --help` on the installed binary rather than
-  trusting a written spec — always verify CLI flags against `--help` output for
-  the actually-installed version before running a multi-flag command. Source:
-  bug-194 (mascot GLB Safari white-silhouette fix, skyy-v6-web.glb had
-  `extensionsRequired: [EXT_texture_webp, ...]` which non-WebP loaders drop).
-- [2026-07-08] **When assigned to work in an isolated git worktree, do NOT `cd`
-  to the main repo path out of habit.** An agent-a68fb39f796b42a61 session was
-  told "you are in an isolated git worktree — commit your work there" with cwd
-  `/Users/theceo/DevSkyy/.claude/worktrees/agent-a68fb39f796b42a61`, but its
-  first Bash call ran `cd /Users/theceo/DevSkyy && ...` and every subsequent
-  call repeated that `cd` — silently working in and committing to the shared
-  **main** checkout for the entire session (a different concurrent agent was
-  committing to that same shared main checkout at the same time, so the mistaken
-  commit landed sandwiched between two of that session's commits). Caught only
-  when a post-task `advisor()` review noticed `git branch --show-current` had
-  printed "main" and `pwd` showed the wrong path. Fix used (both
-  non-destructive, nothing had been pushed yet): `git cherry-pick <sha>` onto
-  the correct worktree branch from the correct worktree path, then
-  `git revert --no-edit <sha>` (not rebase/reset — a rebase would have rewritten
-  history a concurrent session was actively building on) in the shared main
-  checkout, then diffed `git diff <pre-mistake-sha> HEAD -- <touched paths>` to
-  confirm the net change was empty. **Rule: per-Bash-call cwd resets in this
-  harness — never `cd` to a hardcoded absolute path at the start of a worktree
-  task; let the assigned cwd stand, and if a command needs a different
-  directory, verify with `pwd` first.**
-- [2026-07-08] **A clean "required-fields-only" validator can still hide a real,
-  cross-cutting compliance risk that isn't itself a required field.** Building
-  the OpenAI product-feed generator, `validate_feed_item()` correctly checked
-  `image_url` for "well-formed HTTPS" only (per the advisor-corrected rule:
-  never fail an item over an optional/non-required nuance) — but that let a real
-  finding slip past the executive summary: the spec's Media row says `image_url`
-  must be "JPEG/PNG", and our emitted URLs (Jetpack Photon proxy over
-  native-WebP origin assets) serve `image/jpeg` or `image/webp` depending on the
-  requester's `Accept` header (verified via `curl -I` with/without an Accept
-  header). A "18/33 valid, clean" verdict would have shipped a false sense of
-  completeness. Lesson: after making a validator intentionally lenient on
-  non-required nuances, do a **separate** pass asking "are there real-world
-  constraints (format, encoding, negotiation) that the schema implies but the
-  validator doesn't check?" — and report them as explicit, evidence-backed risks
-  in the executive summary rather than letting a clean pass/fail count stand as
-  the whole story.
-- [2026-06-25] **The `python-format-on-write.sh` PostToolUse hook runs
-  `ruff --fix`, which DELETES an import added before its first use.** Adding
-  `from X import Y` in one Edit and the `Y(...)` usage in a _later_ Edit makes
-  the import momentarily unused → the formatter strips it → the next save fails
-  `F821 Undefined name 'Y'`. Cost two re-adds this session (`HfApi`, `math`).
-  Fix: add the _usage first_ then the import in a following Edit (so the import
-  is never unused at save time), or put both in one Edit. Bug: bug-163.
-- [2026-06-25] **A half-finished sync→async refactor that misses call sites
-  fails SILENTLY behind a broad `except Exception`.**
-  `api/v1/training_status.py` had every helper `async def` but every call site
-  bare (no `await`) → each endpoint got a truthy coroutine, passed its
-  `if not x:` guard, then raised `TypeError` on iteration/`**`/`.get` → caught →
-  generic HTTP 500. Grep tell: `async def NAME` whose call sites lack `await`;
-  runtime tell: `RuntimeWarning: coroutine 'NAME' was never awaited` at GC
-  (shows in pytest warnings). **Bug-behind-a-bug**: the await fix unmasked a
-  `float('inf')` default that is not JSON-compliant
-  (`ValueError: Out of range float values are not JSON compliant: inf`). Only
-  running the code end-to-end surfaces the second defect — when you fix a
-  "returns 500" endpoint, exercise it, don't trust the first fix. Bug: bug-163.
-- [2026-06-24] **Next 16 renamed `middleware.ts` → `proxy.ts` — the auth gate
-  lives in `frontend/proxy.ts`, NOT middleware.** Creating a `middleware.ts`
-  fails the build hard:
-  `Both middleware file "./middleware.ts" and proxy file "./proxy.ts" are detected. Please use "./proxy.ts" only.`
-  The function is `export async function proxy(request)` (not `middleware`);
-  `export const config = { matcher }` is unchanged. `getToken` from
-  `next-auth/jwt` works in it (edge), needs `NEXTAUTH_SECRET`. The DevSkyy gate
-  redirects pages to `/login?callbackUrl=` and (after the 2026-06-24 extension)
-  returns 401 JSON for `/api/*`; matcher gates `/admin/:path*` +
-  `/api/((?!auth|checkout).*)` — `/api/auth` (NextAuth) and `/api/checkout`
-  (public storefront) MUST stay open or login/checkout break. Before editing
-  auth: `git log --all -- frontend/middleware.ts` showed the rename history; the
-  empty `middleware-manifest.json` was the tell that no `middleware.*` was
-  active. Bug: bug-162.
-- [2026-06-24] **Under Next `cacheComponents: true` (frontend/next.config.ts),
-  route-segment config `export const dynamic = 'force-dynamic'` (and
-  `revalidate`) FAILS the build** —
-  `Route segment config "dynamic" is not compatible with nextConfig.cacheComponents. Please remove it.`
-  Under cacheComponents nothing is cached unless wrapped in `'use cache'`, so
-  route handlers are dynamic BY DEFAULT. To guarantee a handler runs at request
-  time (never serves a build-time snapshot), call `await connection()` from
-  `next/server` at the top — NOT a segment-config export (Context7-confirmed).
-  Handlers that already `await params` / `request.json()` are dynamic (`ƒ`)
-  without it. The tell that flagged it: `GET /api/catalog` built as `○ (Static)`
-  and would have served a stale catalog after a CSV write; `await connection()`
-  flipped it to `ƒ`. Bug: bug-161.
-- [2026-06-22] **Before editing a shared catalog field, sweep its consumers —
-  and never derive a product-LINE roster from a garment-GEOMETRY column.**
-  `garment_type_lock` is read across the render pipeline (FLUX/3D prompt clause,
-  dual-vision gate) AND shown UPPERCASED on the live PDP (`single-product.php`),
-  and it is sourced from the dossier, not just the CSV. br-011 ("BLACK is
-  Beautiful Jersey Series #4, The Rose Hockey") is canonically a **hooded**
-  Jersey-Series piece → `garment_type_lock='hoodie'` is CORRECT (drives the hood
-  render), even though it belongs in the jersey-series roster `_JERSEY_SKUS`. I
-  twice reached the wrong fix (first "it's a hoodie, change roster"; then "CSV
-  is wrong, it's a jersey, change CSV") before the dossier + consumer-sweep
-  showed the real bug: `sync_catalog_downstream._csv_jersey_skus` derived the
-  roster from `garment_type_lock` (geometry) instead of the authoritative
-  `registry sku_folders` (roster) — the same source the validator already used.
-  Fix the derivation source, not the canonical data. Lesson: "jersey" conflates
-  three axes (geometry / product-line roster / sync derivation); resolve which
-  axis a field encodes (read the dossier — the canonical authority) BEFORE
-  touching it. The in-repo "known data error" note was itself wrong.
-- [2026-05-24] **Never use WebFetch for structured-data or `<script>` content
-  audits.** It strips `<script>` tags during HTML → Markdown conversion. The
-  2026-05-23 SEO audit reported all JSON-LD + OG tags absent as P0 findings;
-  live curl + grep showed they were present on every tested page. Use
-  `curl -s URL | grep` or `curl -s URL | grep -oE 'application/ld\+json'` for
-  any JSON-LD / inline-script / inline-style inspection. [cmem #7400-ish
-  2026-05-24]
-- [2026-05-24] **Never trust un-cache-busted curls within ~minutes of a WP.com
-  deploy.** Batcache serves stale HTML even after `wp cache flush`. PERF-03 from
-  the audit was a false-positive ghost of pre-deploy markup. Always:
-  `curl -s "URL?cb=$(date +%s)"` for manual post-deploy sanity checks. The
-  deploy script's `verify_live()` already does this.
-- [2026-05-24] **Never use `role="radio"` inside `role="radiogroup"` without
-  implementing the full ARIA radio keyboard pattern.** Arrow keys must move
-  focus + selection, roving `tabindex="0"` on the selected radio, Home/End jump
-  first/last. Without the pattern, keyboard users are stuck Tab-ing through
-  every radio individually and screen-readers in radio-group mode get dead arrow
-  keys. For independent togglable buttons, use native `<button>` +
-  `aria-pressed="true|false"` + `role="group"` on the container — cleaner
-  contract, no extra JS keyboard handling needed.
-- [2026-05-24] **Never put cart page content in Elementor HTML widget.** Theme's
-  `woocommerce/cart/cart.php` only renders when the page invokes
-  `[woocommerce_cart]` shortcode. Elementor HTML widget content bypasses the
-  override → coupon input has no backend (100% broken), "Continue Shopping"
-  lands on homepage, checkout URL hardcoded to a page-id. Confirmed live
-  2026-05-23. Fix lives in wp-admin → Pages → Cart → Default Template +
-  `[woocommerce_cart]`.
-- [2026-04-15] Never import from root `agent_sdk/` — it no longer exists. Use
-  `from sdk.python.agent_sdk.X import Y`.
-- [2026-04-15] Never create `agents/base_super_agent.py` as a flat file — the
-  package at `agents/base_super_agent/` is authoritative and Python will
-  silently ignore the .py if you recreate it anyway.
-- [2026-04-24] **Local imports inside a function body are NOT patchable via
-  `unittest.mock.patch`.** If a name (`GeneratorAgent`, `MeshyClient`, etc.) is
-  imported inside `async def generate_replica()`, it has no module-level
-  attribute — `patch("module.Name")` raises
-  `AttributeError: module does not have attribute 'Name'`. Fix: move the import
-  to module top-level. The patch target must be
-  `"the_module_where_it_is_used.ClassName"`, not
-  `"the_module_where_it_is_defined.ClassName"`.
-- [2026-04-24] **`Path(__file__).parents[N]` depth in
-  `skyyrose/elite_studio/tests/conftest.py`**: `conftest.py` is at
-  `.../DevSkyy/skyyrose/elite_studio/tests/conftest.py`. `parents[0]`=`tests/`,
-  `parents[1]`=`elite_studio/`, `parents[2]`=`skyyrose/`,
-  `parents[3]`=`DevSkyy/`. Use `parents[3]` to reach the project root and then
-  `"wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"`. Using
-  `parents[4]` resolves to `/Users/theceo/` and the path silently doesn't exist.
-- [2026-04-24] **ADK "promotion" anti-pattern gutted working synchronous
-  agents.** Phase 16 replaced `PromptEnrichmentAgent`, `SafetyAgent`, and
-  `UpscalingAgent` real implementations with `async def` stubs that only called
-  `await self.execute(adk_prompt)`. Tests were written for the sync API; calling
-  `async def` without `await` returns a coroutine object — every
-  `result.success` access raises
-  `AttributeError: 'coroutine' object has no attribute 'success'`. Fix: restore
-  sync `def` implementations with the private methods (`_enrich`, `_check`,
-  `_upscale`) that tests monkeypatch. Never "promote" a working agent to ADK
-  inheritance without simultaneously updating its test contract.
-- [2026-04-24] **`scripts/meshy_verified_generation.py` was a hazardous
-  duplicate.** It wrapped a sync `requests`-based call instead of using the
-  production `MeshyClient` in `ai_3d/providers/meshy.py`. Every rate-limit
-  guard, backoff, and error handler was bypassed. The file was deleted (Phase 16
-  fix). If a session regenerates it or imports from
-  `scripts.meshy_verified_generation`, that is a regression — use `MeshyClient`
-  directly.
-- [2026-04-24] **`graphify-out/graph.json` uses `links` not `edges`.**
-  networkx's JSON export uses the key `links` for edge data (not `edges`). Any
-  BFS/traversal script reading that file must use `g['links']`, not `g['edges']`
-  — the latter raises `KeyError` silently if you don't check.
-- [2026-04-24] **Local `adk/` module ≠ PyPI `google-adk`.**
-  `from adk.super_agents import BaseSuperAgent` in Elite Studio agents resolves
-  to DevSkyy's own `adk/` package (project root), NOT Google's PyPI package.
-  That local module lazily wraps `google.adk.agents.Agent` inside a try/except.
-  Don't confuse the two layers — installing `google-adk` affects
-  `adk/google_adk.py`'s internals, but the Elite Studio import chain itself goes
-  through `adk/`.
-- [2026-04-24] **`google-genai 1.73.0` has a circular import on Python 3.14.**
-  Symptom:
-  `ImportError: cannot import name 'is_mapping_t' from partially initialized module 'google.genai._interactions._utils'`.
-  Fix: upgrade to `google-genai>=1.73.1`. Downgrading to 1.16.x is blocked
-  because `google-adk>=1.4.0` requires `google-genai>=1.72.0`. The fix command:
-  `pip install "google-adk>=1.4.0"` pulls 1.73.1 automatically.
-- [2026-05-13] **Claude Code hook event schemas are NOT interchangeable.** The
-  `{hookSpecificOutput.additionalContext: "..."}` JSON shape is valid only for
-  `UserPromptSubmit` and `PostToolUse` events. `Stop` and `SessionStart` accept
-  different fields:
-  `{decision, reason, continue, stopReason, suppressOutput, systemMessage}`.
-  Emitting `additionalContext` from a Stop hook crashes Claude Code with
-  `Hook JSON output validation failed — (root): Invalid input` (silent
-  dataloss-equivalent: hook output discarded). **Rule:** check the event when
-  designing a hook. If the goal is human-visible advisory at session end, write
-  to **stderr** (visible in terminal) and emit empty stdout — Stop fires after
-  Claude finishes, so context injection is moot anyway. Bug: `bug-099` in
-  `.wolf/buglog.json`. Fix in commit modifying
-  `.claude/hooks/learning-reminder.sh` — replaced `jq` stdout JSON with
-  `printf >&2` block.
-- [2026-05-13] **DevSkyy hook framework follows the "structural-over-punitive"
-  rule.** Pre-emit context the model needs; block only when the action is
-  irreversible / costs money. Pattern, by event:
-  - **UserPromptSubmit** = soft nudge via `additionalContext` JSON. 24h
-    per-topic TTL cache. Examples: `context7-prefetch` (33 libs),
-    `canon-prefetch` (catalog/brand/etc. via AP-16), `prompt-eng-nudge`
-    (registry workflow).
-  - **PreToolUse** = blocking only for money/production (`paid-api-stopgate` on
-    Bash with `STOPSHOW_ACK=1` bypass) OR non-blocking advisory
-    (`prompt-eng-tripwire` on Write/Edit, exits 0 with stderr message,
-    per-session sentinel so it fires once).
-  - **PostToolUse** = state-stamping. `context7-touched` normalizes `libraryId`
-    and stamps per-lib cache; `learning-tripwire` watches for failure / bug-fix
-    / FIXME patterns and writes session marker.
-  - **Stop** = end-of-turn reminder. `learning-reminder` reads the tripwire
-    marker and nudges cerebrum/buglog/memory/anatomy updates. Shared helper
-    `.claude/hooks/lib/common.sh` exposes `is_fresh`, `read_field`,
-    `scan_patterns`, `emit_user_prompt_context`, `ensure_cache_topic`,
-    `session_sentinel` — all hooks source it. Each hook has an env-var disable
-    knob (`<NAME>_DISABLE=1`). Old blocking `context7-gate.sh` retired but kept
-    on disk for revival emergencies. **Lesson:** bash assoc-arrays choke on
-    regex keys containing `[`/`?`/`*` (parameter expansion clash with `set -u`);
-    use parallel arrays. `IFS='|'` for splitting rule strings breaks when regex
-    fields contain `|`; use `:::` separator and `${var%%:::*}` parameter
-    expansion. Unquoted heredocs interpret backticks as command substitution;
-    use printf-built strings or `<<'EOF'`. Documented in
-    `docs/MANAGED_AGENTS.md` (Context7 fix) + `knowledge-base/prompts/README.md`
-    (registry workflow).
-- [2026-05-13] **Prompt engineering surface in DevSkyy is now tracked via
-  `knowledge-base/prompts/INDEX.yaml`.** Schema: id, location (file + symbol),
-  consumed_by, model.default, version (semver, bump on every text change),
-  last_updated, performance (evaluated/pass_rate/cost_p50), canon_dependencies
-  (which files the prompt assumes about the world), tags, eval path, notes.
-  Prompt TEXT stays in source files (no duplication); registry tracks metadata.
-  Three patterns visible:
-  1. `.txt` files under `agents/claude_sdk/prompts/` (5 prompts — researcher,
-     research-lead, data-analyst, email-triage, report-writer)
-  2. `AgentDefinition` prompts in `skyyrose/multi_agent/agents.py` (5 subagents
-     — brand-writer, theme-auditor, product-analyst, deploy-manager,
-     qa-inspector)
-  3. Inline `system_prompt=...` in SuperAgent `agents/*.py` files (~10 agents —
-     placeholder entry `superagents-inline` covers them; full audit pending)
-     Reusable fragments live in `knowledge-base/prompts/templates/` (e.g.,
-     `structured-output-schema.md`). Eval JSONL per prompt at
-     `knowledge-base/prompts/eval/<id>.jsonl`. **How to apply:** when editing a
-     prompt, find its INDEX.yaml entry, bump `version` (X.Y.0 material / X.Y.Z
-     tweak), update `last_updated`, commit prompt + INDEX together with message
-     `prompt(<id>): <change>`. When creating a new prompt, add entry at version
-     `0.1.0` with `evaluated: null` + 3–5 eval cases. The `prompt-eng-nudge`
-     UserPromptSubmit hook + `prompt-eng-tripwire` PreToolUse hook surface this
-     workflow whenever prompt-engineering keywords or file patterns appear.
-     **TODO:** Phase 2 work — audit each SuperAgent in `agents/*.py`, extract
-     inline `system_prompt=` literals into individual INDEX entries (or migrate
-     to `.txt` files under a shared dir). Eval harness is also pending — JSONL
-     format defined in README.md but no runner yet.
+- [2026-05-12] **`claude-agent-sdk 0.1.41` `query()` is INCOMPATIBLE with SDK MCP servers — must use `ClaudeSDKClient` async context manager instead.** Symptom: `claude_agent_sdk._errors.CLIConnectionError: ProcessTransport is not ready for writing` at `_handle_control_request` line 330/342. **Root cause** (verified by reading SDK source): in `claude_agent_sdk/_internal/client.py:134`, when `query()` receives a string prompt, it sends `user_message` then calls `transport.end_input()` which closes stdin. SDK MCP servers require bidirectional control protocol — CLI sends `mcp_message` control_requests over stdout, SDK must write `control_response` back over stdin. Once stdin is closed, the write fails. `ClaudeSDKClient` keeps stdin open via async context manager. **Bisect proof**: same minimal options (model=haiku, system_prompt="Reply with one word.", permission_mode=bypassPermissions, max_turns=1, max_budget_usd=0.05, mcp_servers={"diag":server}, allowed_tools=["mcp__diag__ping"]) returns `READY` via `ClaudeSDKClient`, fails with `CLIConnectionError` via `query()`. Same options without `mcp_servers` works under `query()`. **DevSkyy fix**: `skyyrose/multi_agent/orchestrator.py` `_run_oneshot()` and `run_single_agent()` migrated from `query()` to `async with ClaudeSDKClient(options=options) as client; await client.query(prompt); async for msg in client.receive_response(): ...`. `query` import pruned. **Secondary issue** (independent): when running from inside a Claude Code shell, the `claude` CLI's nested-session guard rejects launch unless ALL parent-session env vars are stripped — not just `CLAUDECODE`. Full strip list: `CLAUDECODE`, every `CLAUDE_CODE_*`, every `CLAUDE_AUTOCOMPACT_*`, `CLAUDE_TMPDIR`, `CLAUDE_EFFORT`, `AI_AGENT`. **Wrapper** `scripts/run_managed_agent.sh` enumerates env, strips the matching set, sources `.env` for `ANTHROPIC_API_KEY`, skips key check for `--list-agents`/`--help`, resolves `python3` (macOS lacks `python` symlink). **Diagnostic scripts**: `scripts/diagnose_sdk.py` (minimal happy-path), `scripts/diagnose_orchestrator.py` (orchestrator-style options with stderr callback), `scripts/diagnose_cli_raw.py` (bypass SDK, run CLI directly via subprocess.run). Documented in `docs/MANAGED_AGENTS.md`. **How to apply**: any new code path using `claude-agent-sdk` with SDK MCP servers (`create_sdk_mcp_server`) MUST use `ClaudeSDKClient`, never `query()`. Make `ClaudeSDKClient` the default pattern. Re-test `query()` when SDK 0.1.42+ ships.
 
-- [2026-05-12] **`claude-agent-sdk 0.1.41` `query()` is INCOMPATIBLE with SDK
-  MCP servers — must use `ClaudeSDKClient` async context manager instead.**
-  Symptom:
-  `claude_agent_sdk._errors.CLIConnectionError: ProcessTransport is not ready for writing`
-  at `_handle_control_request` line 330/342. **Root cause** (verified by reading
-  SDK source): in `claude_agent_sdk/_internal/client.py:134`, when `query()`
-  receives a string prompt, it sends `user_message` then calls
-  `transport.end_input()` which closes stdin. SDK MCP servers require
-  bidirectional control protocol — CLI sends `mcp_message` control_requests over
-  stdout, SDK must write `control_response` back over stdin. Once stdin is
-  closed, the write fails. `ClaudeSDKClient` keeps stdin open via async context
-  manager. **Bisect proof**: same minimal options (model=haiku,
-  system_prompt="Reply with one word.", permission_mode=bypassPermissions,
-  max_turns=1, max_budget_usd=0.05, mcp_servers={"diag":server},
-  allowed_tools=["mcp__diag__ping"]) returns `READY` via `ClaudeSDKClient`,
-  fails with `CLIConnectionError` via `query()`. Same options without
-  `mcp_servers` works under `query()`. **DevSkyy fix**:
-  `skyyrose/multi_agent/orchestrator.py` `_run_oneshot()` and
-  `run_single_agent()` migrated from `query()` to
-  `async with ClaudeSDKClient(options=options) as client; await client.query(prompt); async for msg in client.receive_response(): ...`.
-  `query` import pruned. **Secondary issue** (independent): when running from
-  inside a Claude Code shell, the `claude` CLI's nested-session guard rejects
-  launch unless ALL parent-session env vars are stripped — not just
-  `CLAUDECODE`. Full strip list: `CLAUDECODE`, every `CLAUDE_CODE_*`, every
-  `CLAUDE_AUTOCOMPACT_*`, `CLAUDE_TMPDIR`, `CLAUDE_EFFORT`, `AI_AGENT`.
-  **Wrapper** `scripts/run_managed_agent.sh` enumerates env, strips the matching
-  set, sources `.env` for `ANTHROPIC_API_KEY`, skips key check for
-  `--list-agents`/`--help`, resolves `python3` (macOS lacks `python` symlink).
-  **Diagnostic scripts**: `scripts/diagnose_sdk.py` (minimal happy-path),
-  `scripts/diagnose_orchestrator.py` (orchestrator-style options with stderr
-  callback), `scripts/diagnose_cli_raw.py` (bypass SDK, run CLI directly via
-  subprocess.run). Documented in `docs/MANAGED_AGENTS.md`. **How to apply**: any
-  new code path using `claude-agent-sdk` with SDK MCP servers
-  (`create_sdk_mcp_server`) MUST use `ClaudeSDKClient`, never `query()`. Make
-  `ClaudeSDKClient` the default pattern. Re-test `query()` when SDK 0.1.42+
-  ships.
+- [2026-05-14] **`SuperAgentAdapter.run()` never raises — always check both layers when testing agent success inside a container.** `container_result.success` is True whenever the lambda completes without throwing (always, because `adapter.run()` catches all exceptions internally and returns `AdapterRun(success=False, error=...)`). A retry/heal loop that breaks on `container_result.success` exits on attempt 0 every time, making RETRY/ABORT/ESCALATE branches permanently unreachable. **Fix pattern:** `run_adapter = container_result.result if container_result.success else None; run_success = container_result.success and run_adapter is not None and run_adapter.success`. Use `run_adapter.error` (not `container_result.error`) for failure classification. The same principle applies to any adapter that wraps exceptions internally. **Error source for classification:** always prefer the inner `AdapterRun.error` string over the outer `ExecutionResult.error` — the inner string contains the original exception message with semantic signals ("rate limit", "policy denied", etc.) that `classify_failure()` needs.
 
-- [2026-05-14] **`SuperAgentAdapter.run()` never raises — always check both
-  layers when testing agent success inside a container.**
-  `container_result.success` is True whenever the lambda completes without
-  throwing (always, because `adapter.run()` catches all exceptions internally
-  and returns `AdapterRun(success=False, error=...)`). A retry/heal loop that
-  breaks on `container_result.success` exits on attempt 0 every time, making
-  RETRY/ABORT/ESCALATE branches permanently unreachable. **Fix pattern:**
-  `run_adapter = container_result.result if container_result.success else None; run_success = container_result.success and run_adapter is not None and run_adapter.success`.
-  Use `run_adapter.error` (not `container_result.error`) for failure
-  classification. The same principle applies to any adapter that wraps
-  exceptions internally. **Error source for classification:** always prefer the
-  inner `AdapterRun.error` string over the outer `ExecutionResult.error` — the
-  inner string contains the original exception message with semantic signals
-  ("rate limit", "policy denied", etc.) that `classify_failure()` needs.
+- **2026-04-27** — Drafted a TRELLIS.2 deployment handoff that cited `pipelines/skyyrose_master_orchestrator.py` as the integration point. The file was deleted in commit `f25fd25d3` ("Phase B1 scorched earth"). I had sourced the reference from MEMORY.md notes that hadn't been pruned. **Rule:** before citing a file path or class name in any doc/handoff/plan that another agent will execute against, verify with `ls`/`find`/`grep`. MEMORY.md is for concepts and constraints; treat its file paths as hints, not facts. Same principle the project's own catalog warning encodes ("Memory rots; the CSV doesn't").
 
-- **2026-04-27** — Drafted a TRELLIS.2 deployment handoff that cited
-  `pipelines/skyyrose_master_orchestrator.py` as the integration point. The file
-  was deleted in commit `f25fd25d3` ("Phase B1 scorched earth"). I had sourced
-  the reference from MEMORY.md notes that hadn't been pruned. **Rule:** before
-  citing a file path or class name in any doc/handoff/plan that another agent
-  will execute against, verify with `ls`/`find`/`grep`. MEMORY.md is for
-  concepts and constraints; treat its file paths as hints, not facts. Same
-  principle the project's own catalog warning encodes ("Memory rots; the CSV
-  doesn't").
+- **2026-04-27** — `memory-audit.py` had a path-shadowing bug: `build_path_index()` walked into `.claude/worktrees/` (stale Claude Code worktree snapshots), letting deleted files like `pipelines/skyyrose_master_orchestrator.py` resolve via worktree copies and pass the audit. **Rule:** any whole-tree indexer for staleness detection MUST exclude isolation/snapshot directories — `.claude/worktrees/`, `.git/worktrees/`, `.archive/`, anything that holds historical complete trees. Pruning at walk time (in `INDEX_SKIP_DIRS`) is preferable to filtering at resolve time. Fixed by adding `worktrees` to `INDEX_SKIP_DIRS`. Separate latent bug noted in same module: `LINECOUNT_RE.search(line)` returns first match only, applies one count to all paths on multi-claim lines (e.g., MEMORY.md line 108) — needs `findall` per-path-claim binding.
 
-- **2026-04-27** — `memory-audit.py` had a path-shadowing bug:
-  `build_path_index()` walked into `.claude/worktrees/` (stale Claude Code
-  worktree snapshots), letting deleted files like
-  `pipelines/skyyrose_master_orchestrator.py` resolve via worktree copies and
-  pass the audit. **Rule:** any whole-tree indexer for staleness detection MUST
-  exclude isolation/snapshot directories — `.claude/worktrees/`,
-  `.git/worktrees/`, `.archive/`, anything that holds historical complete trees.
-  Pruning at walk time (in `INDEX_SKIP_DIRS`) is preferable to filtering at
-  resolve time. Fixed by adding `worktrees` to `INDEX_SKIP_DIRS`. Separate
-  latent bug noted in same module: `LINECOUNT_RE.search(line)` returns first
-  match only, applies one count to all paths on multi-claim lines (e.g.,
-  MEMORY.md line 108) — needs `findall` per-path-claim binding.
+- **2026-04-28** — Three CRITICAL broken asset references survived in production for an unknown duration: `footer.php` pointed to `assets/images/sr-monogram.png`; `seo.php` pointed to `sr-monogram-hero.png` and `sr-monogram-favicon.png` — all non-existent. Root cause: `assets/branding/` directory was organized at some point but PHP reference strings were never updated to match. The broken refs silently 404'd on every page (footer image + every social OG card + site favicon). **Rule:** after any asset reorganization that moves files to a new directory, immediately grep the entire theme for the old path segment and update all references in one atomic commit. The pattern `grep -r "assets/images/sr-monogram" --include="*.php"` would have caught all three in 1 second. Moving files without moving their references is the most silent class of breakage in WP themes because WordPress silently returns the broken template — no 500, no PHP error, just invisible missing elements.
 
-- **2026-04-28** — Three CRITICAL broken asset references survived in production
-  for an unknown duration: `footer.php` pointed to
-  `assets/images/sr-monogram.png`; `seo.php` pointed to `sr-monogram-hero.png`
-  and `sr-monogram-favicon.png` — all non-existent. Root cause:
-  `assets/branding/` directory was organized at some point but PHP reference
-  strings were never updated to match. The broken refs silently 404'd on every
-  page (footer image + every social OG card + site favicon). **Rule:** after any
-  asset reorganization that moves files to a new directory, immediately grep the
-  entire theme for the old path segment and update all references in one atomic
-  commit. The pattern `grep -r "assets/images/sr-monogram" --include="*.php"`
-  would have caught all three in 1 second. Moving files without moving their
-  references is the most silent class of breakage in WP themes because WordPress
-  silently returns the broken template — no 500, no PHP error, just invisible
-  missing elements.
+- **2026-05-11** — Tripo `generate_multiview_image` template hallucinated branding on 30 SKUs (120 renders) because the dispatch boundary had no guard. The template runs FLUX.1 Kontext with NO prompt, NO logo overlay, NO dossier branding spec — naked image-to-multiview. Symptoms (verified by reading 3 outputs): br-001 black-rose crewneck rendered with FLUX-prior "rose-on-cloud" embroidery instead of the canonical black-rose three-rose-cluster; br-011 hockey jersey rendered as a cyan/teal hoodie with invented crests (different garment type entirely); sg-007 signature beanie got an off-canon patch sewn to the wrong location. Same "rose-on-cloud" motif appeared on three unrelated SKUs — FLUX defaulted to a training-set prior because no canon anchored it. **Rule:** Tripo's `generate_multiview_image` is for UNBRANDED CLEAN TECH-FLATS only. NEVER dispatch a SKU through it when (a) the dossier's `logo_reference` frontmatter is populated, or (b) the catalog `image` column is empty (forces fallback to `front_model_image`, a model-on shot the template can't preserve). Branded SKUs route through `agents/render_pipeline/` (ADK 9-step with logo overlay + 3-judge QA + refine loop). `scripts/tripo_dispatch.py` now enforces both guards at the dispatch boundary with a `--force-branded` escape hatch that prints a WARNING. See `renders/output/tripo/QUARANTINE.md` for the full RCA and which outputs to discard.
 
-- **2026-05-11** — Tripo `generate_multiview_image` template hallucinated
-  branding on 30 SKUs (120 renders) because the dispatch boundary had no guard.
-  The template runs FLUX.1 Kontext with NO prompt, NO logo overlay, NO dossier
-  branding spec — naked image-to-multiview. Symptoms (verified by reading 3
-  outputs): br-001 black-rose crewneck rendered with FLUX-prior "rose-on-cloud"
-  embroidery instead of the canonical black-rose three-rose-cluster; br-011
-  hockey jersey rendered as a cyan/teal hoodie with invented crests (different
-  garment type entirely); sg-007 signature beanie got an off-canon patch sewn to
-  the wrong location. Same "rose-on-cloud" motif appeared on three unrelated
-  SKUs — FLUX defaulted to a training-set prior because no canon anchored it.
-  **Rule:** Tripo's `generate_multiview_image` is for UNBRANDED CLEAN TECH-FLATS
-  only. NEVER dispatch a SKU through it when (a) the dossier's `logo_reference`
-  frontmatter is populated, or (b) the catalog `image` column is empty (forces
-  fallback to `front_model_image`, a model-on shot the template can't preserve).
-  Branded SKUs route through `agents/render_pipeline/` (ADK 9-step with logo
-  overlay + 3-judge QA + refine loop). `scripts/tripo_dispatch.py` now enforces
-  both guards at the dispatch boundary with a `--force-branded` escape hatch
-  that prints a WARNING. See `renders/output/tripo/QUARANTINE.md` for the full
-  RCA and which outputs to discard.
+- **[2026-05-25] Optional-import pattern for heavy / optional deps.** When a module top-level needs to import even on thin environments without the full dep tree installed (CI smoke, MCP introspection, dashboard registry walks), the heavy dep's import MUST live inside the function or method that uses it — not at module top. Pattern: lazy `from langgraph.graph import END, START, StateGraph` inside `build_pipeline()`, not at the top of `pipeline.py`. Tests for the heavy path gate with `pytest.importorskip("langgraph")` so they skip cleanly when the dep is absent. Precedent in repo: `skyyrose/elite_studio/creative/checkpointer.py` (lazy `from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver`), `skyyrose/elite_studio/ventures/{photo,threed,video}/pipeline.py` (lazy langgraph). **Why this gets its own entry rather than living inside the ventures learning:** the pattern is project-wide — anywhere a thin-env import surface (CLI introspection, MCP tool listing, registry walks) needs to coexist with a heavy runtime dep, this idiom applies. Grep-able by intent (`optional-import`, `heavy dep`, `importorskip`), not just venture context. **How to apply:** when adding a new module that touches prometheus / ML libs / heavy-IO clients, default to lazy-import inside the consuming function so package introspection (`from pkg import MANIFEST`) works regardless of env. Gate tests with `importorskip`. Do NOT add module-level `try/except ImportError` shims that hide the failure — let the user-facing call site raise loudly.
 
-- **[2026-05-25] Optional-import pattern for heavy / optional deps.** When a
-  module top-level needs to import even on thin environments without the full
-  dep tree installed (CI smoke, MCP introspection, dashboard registry walks),
-  the heavy dep's import MUST live inside the function or method that uses it —
-  not at module top. Pattern: lazy
-  `from langgraph.graph import END, START, StateGraph` inside
-  `build_pipeline()`, not at the top of `pipeline.py`. Tests for the heavy path
-  gate with `pytest.importorskip("langgraph")` so they skip cleanly when the dep
-  is absent. Precedent in repo: `skyyrose/elite_studio/creative/checkpointer.py`
-  (lazy `from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver`),
-  `skyyrose/elite_studio/ventures/{photo,threed,video}/pipeline.py` (lazy
-  langgraph). **Why this gets its own entry rather than living inside the
-  ventures learning:** the pattern is project-wide — anywhere a thin-env import
-  surface (CLI introspection, MCP tool listing, registry walks) needs to coexist
-  with a heavy runtime dep, this idiom applies. Grep-able by intent
-  (`optional-import`, `heavy dep`, `importorskip`), not just venture context.
-  **How to apply:** when adding a new module that touches prometheus / ML libs /
-  heavy-IO clients, default to lazy-import inside the consuming function so
-  package introspection (`from pkg import MANIFEST`) works regardless of env.
-  Gate tests with `importorskip`. Do NOT add module-level
-  `try/except ImportError` shims that hide the failure — let the user-facing
-  call site raise loudly.
+- **[2026-05-24] Elite Studio ventures pattern — productized verticals at `skyyrose/elite_studio/ventures/<slug>/`.** Each venture is a self-contained package composing existing agents under one operator-facing surface (per canon: "every imagery pipeline runs through the elite studio"). Layout per venture: `__init__.py` (exports `MANIFEST` + `Pipeline`), `__main__.py`, `config.py` (frozen dataclass), `state.py` (TypedDict extending `_base.VentureState`), `pipeline.py` (LangGraph builder with lazy `from langgraph.graph import ...` for optional-import compatibility), `agents.py` (verified `AgentBinding` registry — import_path resolves to a real class via `importlib.import_module + getattr`), `cli.py` (info/agents/status/smoke subcommands), `README.md`, `tests/test_smoke.py`. Registry lives in `ventures/__init__.py` with `list_ventures()` / `get_manifest(slug)` / `all_manifests()`. **Why:** unifies the sprawl of `agents/`, `orchestration/`, `scripts/generate_*.py` under one operator surface and a clean SaaS-extraction boundary. **How to apply:** when adding a 5th+ venture (e.g., social, marketing, try-on), clone the `photo/` layout, register a `_<slug>_manifest()` loader in `ventures/__init__.py`, and add the slug to `_VENTURE_LOADERS`. **Critical:** the Imagery venture is NOT under `ventures/imagery/` — it's the original top-level `skyyrose.elite_studio` package, registered through the `IMAGERY_MANIFEST` constant in `ventures/__init__.py`. Do not duplicate it into a subpackage. AgentBinding's `ready` flag honestly tracks whether the agent has been wired into a venture's LangGraph nodes yet (vs merely registered); flip to `True` once a node uses it. First scaffold commit shipped 2026-05-24 with imagery (stable) + photo (beta) + threed (beta) + video (alpha); deep agent wiring deferred per-venture to follow-up sessions.
 
-- **[2026-05-24] Elite Studio ventures pattern — productized verticals at
-  `skyyrose/elite_studio/ventures/<slug>/`.** Each venture is a self-contained
-  package composing existing agents under one operator-facing surface (per
-  canon: "every imagery pipeline runs through the elite studio"). Layout per
-  venture: `__init__.py` (exports `MANIFEST` + `Pipeline`), `__main__.py`,
-  `config.py` (frozen dataclass), `state.py` (TypedDict extending
-  `_base.VentureState`), `pipeline.py` (LangGraph builder with lazy
-  `from langgraph.graph import ...` for optional-import compatibility),
-  `agents.py` (verified `AgentBinding` registry — import_path resolves to a real
-  class via `importlib.import_module + getattr`), `cli.py`
-  (info/agents/status/smoke subcommands), `README.md`, `tests/test_smoke.py`.
-  Registry lives in `ventures/__init__.py` with `list_ventures()` /
-  `get_manifest(slug)` / `all_manifests()`. **Why:** unifies the sprawl of
-  `agents/`, `orchestration/`, `scripts/generate_*.py` under one operator
-  surface and a clean SaaS-extraction boundary. **How to apply:** when adding a
-  5th+ venture (e.g., social, marketing, try-on), clone the `photo/` layout,
-  register a `_<slug>_manifest()` loader in `ventures/__init__.py`, and add the
-  slug to `_VENTURE_LOADERS`. **Critical:** the Imagery venture is NOT under
-  `ventures/imagery/` — it's the original top-level `skyyrose.elite_studio`
-  package, registered through the `IMAGERY_MANIFEST` constant in
-  `ventures/__init__.py`. Do not duplicate it into a subpackage. AgentBinding's
-  `ready` flag honestly tracks whether the agent has been wired into a venture's
-  LangGraph nodes yet (vs merely registered); flip to `True` once a node uses
-  it. First scaffold commit shipped 2026-05-24 with imagery (stable) + photo
-  (beta) + threed (beta) + video (alpha); deep agent wiring deferred per-venture
-  to follow-up sessions.
+- **2026-05-16** — `scripts/nano_banana/catalog.py` must NEVER re-implement CSV parsing. It is an adapter that maps canonical rows onto the legacy nano_banana API; rows MUST come from `skyyrose.core.catalog_loader.read_catalog_rows` (the same shared object `skyyrose.elite_studio.catalog` uses — INFRA-01 single source of truth). It was rebuilt as a proper shim in `51dc3ff8b` (Plan 14-02) then **silently overwritten with a standalone `csv.DictReader` twice** — `a22074ab3` ("recover nano_banana pipeline") and `8737e3714` ("full ADK build") — re-breaking INFRA-01 while keeping data coincidentally consistent (same CSV file, different parser → the *contract* breaks, not the data, so nothing visibly fails). bug-102. **Rule:** never add `csv.DictReader`/`open(...).read` against the catalog inside `scripts/nano_banana/` — import from `skyyrose.core.catalog_loader`. Touch only `load_catalog()` when adapting; the richer functions (`find_source_image`, `find_back_source`, `load_products`) are load-bearing (cli.py, produce_async.py) and must be preserved. Regression now gated by `tests/test_catalog_csv_integrity.py::test_nano_banana_catalog_routes_through_core_loader` (asserts `nb.read_catalog_rows is core.read_catalog_rows`) — if a future commit re-forks the parser, that test fails in CI instead of surviving to a verifier. Related: bug-103 — 5 other modules still reference a phantom `data/product-catalog.csv`; that is a separate v1.3 cleanup, do NOT fold it into Phase 14.
 
-- **2026-05-16** — `scripts/nano_banana/catalog.py` must NEVER re-implement CSV
-  parsing. It is an adapter that maps canonical rows onto the legacy nano_banana
-  API; rows MUST come from `skyyrose.core.catalog_loader.read_catalog_rows` (the
-  same shared object `skyyrose.elite_studio.catalog` uses — INFRA-01 single
-  source of truth). It was rebuilt as a proper shim in `51dc3ff8b` (Plan 14-02)
-  then **silently overwritten with a standalone `csv.DictReader` twice** —
-  `a22074ab3` ("recover nano_banana pipeline") and `8737e3714` ("full ADK
-  build") — re-breaking INFRA-01 while keeping data coincidentally consistent
-  (same CSV file, different parser → the _contract_ breaks, not the data, so
-  nothing visibly fails). bug-102. **Rule:** never add
-  `csv.DictReader`/`open(...).read` against the catalog inside
-  `scripts/nano_banana/` — import from `skyyrose.core.catalog_loader`. Touch
-  only `load_catalog()` when adapting; the richer functions
-  (`find_source_image`, `find_back_source`, `load_products`) are load-bearing
-  (cli.py, produce_async.py) and must be preserved. Regression now gated by
-  `tests/test_catalog_csv_integrity.py::test_nano_banana_catalog_routes_through_core_loader`
-  (asserts `nb.read_catalog_rows is core.read_catalog_rows`) — if a future
-  commit re-forks the parser, that test fails in CI instead of surviving to a
-  verifier. Related: bug-103 — 5 other modules still reference a phantom
-  `data/product-catalog.csv`; that is a separate v1.3 cleanup, do NOT fold it
-  into Phase 14.
-
-- [2026-06-22] **CSS-comment-only source change produces byte-identical
-  `.min.css` — freshness-guard pre-commit check still requires `.min` staged.**
-  clean-css `level: { 1: { specialComments: 0 } }` strips ALL comments
-  (including `/*! */`). Adding `GENERATED:*` marker comments to a `.css` source
-  file produces no byte change in the `.min`. `git add` refuses to stage a file
-  whose blob hash matches HEAD — `git add -f`, `git update-index --add`,
-  `--cacheinfo` all fail the same way. Workaround: `printf '\n' >> file.min.css`
-  before `git add` — 1-byte trailing newline makes blob differ (6102→6103
-  bytes), satisfies guard's staging requirement, is functionally inert for CSS
-  rendering. Guard's pre-commit mode only checks `.min` is staged (not that
-  content changed), so this is correct behavior, not a hack. Bug-154 in
-  `.wolf/buglog.json`.
+- [2026-06-22] **CSS-comment-only source change produces byte-identical `.min.css` — freshness-guard pre-commit check still requires `.min` staged.** clean-css `level: { 1: { specialComments: 0 } }` strips ALL comments (including `/*! */`). Adding `GENERATED:*` marker comments to a `.css` source file produces no byte change in the `.min`. `git add` refuses to stage a file whose blob hash matches HEAD — `git add -f`, `git update-index --add`, `--cacheinfo` all fail the same way. Workaround: `printf '\n' >> file.min.css` before `git add` — 1-byte trailing newline makes blob differ (6102→6103 bytes), satisfies guard's staging requirement, is functionally inert for CSS rendering. Guard's pre-commit mode only checks `.min` is staged (not that content changed), so this is correct behavior, not a hack. Bug-154 in `.wolf/buglog.json`.
 
 ### 2026-06-10 — Asset consolidation (founder ruling)
-
-- **Decision:** ONE location for product source assets
-  (`assets/products/{masters,techflats,references,source-photos}`), ONE for
-  served assets (theme `assets/`), and ONE path-authority module:
-  **`skyyrose/core/paths.py`**. Hardcoding an asset path anywhere else is a
-  defect.
-- **Do-Not-Repeat:** before creating any new "paths"/"locations" module, grep
-  `skyyrose/core/` first — `paths.py` already existed and a duplicate
-  `asset_paths.py` was created and had to be merged the same hour. Also:
-  rtk-wrapped `grep` output is DECORATED — never pipe `grep` output into files
-  (.env got rtk garbage instead of a key line); use python for file-to-file
-  extraction.
+- **Decision:** ONE location for product source assets (`assets/products/{masters,techflats,references,source-photos}`), ONE for served assets (theme `assets/`), and ONE path-authority module: **`skyyrose/core/paths.py`**. Hardcoding an asset path anywhere else is a defect.
+- **Do-Not-Repeat:** before creating any new "paths"/"locations" module, grep `skyyrose/core/` first — `paths.py` already existed and a duplicate `asset_paths.py` was created and had to be merged the same hour. Also: rtk-wrapped `grep` output is DECORATED — never pipe `grep` output into files (.env got rtk garbage instead of a key line); use python for file-to-file extraction.
 
 ### Consolidated entries (2026-06-10 sweep + 2026-06-22)
 
-- **Never push `<sha>:branch` without verifying parent direction.**
-  `git log -1 --format=%P <sha>` first; push branch TIPS. PR #540 merged missing
-  its tip (2b2ab382a was child of 409187921, not parent — standup notes listed
-  them in ambiguous order). Recovery: PR #544. Post-merge gate that caught it:
-  `git merge-base --is-ancestor <every-expected-sha> origin/main`.
-- **Standup/audit "mergeable" claims must be tested against CURRENT main**
-  (`git merge-tree`), not branch hygiene. refactor/wp-template-consolidation
-  looked "clean, 1 commit, trivial conflict risk" but was a 50-commits-behind
-  reference snapshot; 9 main commits had rewritten the same 4 templates. Its own
-  commit message said "not mergeable code" — WIP commit messages are
-  load-bearing, read them.
-- **Buglog IDs race across parallel sessions/PRs.** Renumber additively against
-  origin/main's committed max at merge time, and re-check local uncommitted
-  entries after any PR lands buglog changes (local bug-120 collided with PR
-  #545's bug-120..123 → renumbered to bug-124).
-- [2026-06-10] Asset FILENAMES are not identity. black-rose-sherpa-jacket/
-  subdir held the SIGNATURE Sherpa render (red roses). Before mapping any
-  product image, verify pixels match the SKU's branding_spec. Founder is final
-  authority on garment identity.
-- Founder likes v3 (split-scrollytell register) from landing prototypes — weight
-  scrollytell DNA in future variant sets (2026-06-10)
-- [2026-06-10] Visual-asset references resolve through
-  wordpress-theme/skyyrose-flagship/data/visual-manifest.json (canonical, same
-  tier as catalog CSV). NEVER lay out pages from ad-hoc greps or session memory.
-  Verify: python3 data/verify-visual-manifest.py. New imagery enters manifest in
-  same commit.
+- **Never push `<sha>:branch` without verifying parent direction.** `git log -1 --format=%P <sha>` first; push branch TIPS. PR #540 merged missing its tip (2b2ab382a was child of 409187921, not parent — standup notes listed them in ambiguous order). Recovery: PR #544. Post-merge gate that caught it: `git merge-base --is-ancestor <every-expected-sha> origin/main`.
+- **Standup/audit "mergeable" claims must be tested against CURRENT main** (`git merge-tree`), not branch hygiene. refactor/wp-template-consolidation looked "clean, 1 commit, trivial conflict risk" but was a 50-commits-behind reference snapshot; 9 main commits had rewritten the same 4 templates. Its own commit message said "not mergeable code" — WIP commit messages are load-bearing, read them.
+- **Buglog IDs race across parallel sessions/PRs.** Renumber additively against origin/main's committed max at merge time, and re-check local uncommitted entries after any PR lands buglog changes (local bug-120 collided with PR #545's bug-120..123 → renumbered to bug-124).
+- [2026-06-10] Asset FILENAMES are not identity. black-rose-sherpa-jacket/ subdir held the SIGNATURE Sherpa render (red roses). Before mapping any product image, verify pixels match the SKU's branding_spec. Founder is final authority on garment identity.
+- Founder likes v3 (split-scrollytell register) from landing prototypes — weight scrollytell DNA in future variant sets (2026-06-10)
+- [2026-06-10] Visual-asset references resolve through wordpress-theme/skyyrose-flagship/data/visual-manifest.json (canonical, same tier as catalog CSV). NEVER lay out pages from ad-hoc greps or session memory. Verify: python3 data/verify-visual-manifest.py. New imagery enters manifest in same commit.
 
-- **[2026-06-12] Bash `if fn` suppresses errexit for the ENTIRE function body.**
-  `scripts/deploy-theme.sh` `try_rsync` ran with `set -e` disabled because
-  `transfer_files` calls it as `if try_rsync`; a mid-upload scp death + failed
-  remote extract fell through to `log_success` and the run reported "Deploy
-  complete (verified live)" while live still served the old theme (bug-107). Any
-  function used as a condition needs explicit `|| return 1` on every step that
-  matters.
-- **[2026-06-12] Release verification must grep markers unique to the NEW code,
-  one pattern per grep.** Combined `grep -c "po-gateway|preorder-hero.mp4"`
-  "confirmed" the pre-order port live when only the video filename (present in
-  the OLD template too) matched (bug-108). The decisive,
-  implementation-independent check is the version stamp: live `style.css`
-  `Version:` vs local — now enforced inside deploy verify.
-- **[2026-06-12] `skyyrose_get_collection_products()` is NUMERICALLY indexed;
-  only `skyyrose_get_product_catalog()` is SKU-keyed.** `array_keys()` on a
-  collection array yields [0,1,2…], and `isset($collection['br-006'])` is always
-  false — both shipped briefly as empty grids/panes (bug-110). To resolve SKUs
-  use the catalog; to get SKUs from a collection array use
-  `wp_list_pluck($products, 'sku')`. SIG's template (catalog-based featured
-  pinning) is the reference pattern.
-- **[2026-06-12] Same-version redeploys are doubly blind: the style.css
-  version-stamp gate passes trivially AND `?ver=` asset URLs stay CDN-cached, so
-  changed CSS/JS never reaches clients.** Any deploy carrying user-visible
-  changes must bump SKYYROSE_VERSION — patch bump (1.6.0→1.6.1) is the
-  cache-bust and the verification stamp in one.
+- **[2026-06-12] Bash `if fn` suppresses errexit for the ENTIRE function body.** `scripts/deploy-theme.sh` `try_rsync` ran with `set -e` disabled because `transfer_files` calls it as `if try_rsync`; a mid-upload scp death + failed remote extract fell through to `log_success` and the run reported "Deploy complete (verified live)" while live still served the old theme (bug-107). Any function used as a condition needs explicit `|| return 1` on every step that matters.
+- **[2026-06-12] Release verification must grep markers unique to the NEW code, one pattern per grep.** Combined `grep -c "po-gateway|preorder-hero.mp4"` "confirmed" the pre-order port live when only the video filename (present in the OLD template too) matched (bug-108). The decisive, implementation-independent check is the version stamp: live `style.css` `Version:` vs local — now enforced inside deploy verify.
+- **[2026-06-12] `skyyrose_get_collection_products()` is NUMERICALLY indexed; only `skyyrose_get_product_catalog()` is SKU-keyed.** `array_keys()` on a collection array yields [0,1,2…], and `isset($collection['br-006'])` is always false — both shipped briefly as empty grids/panes (bug-110). To resolve SKUs use the catalog; to get SKUs from a collection array use `wp_list_pluck($products, 'sku')`. SIG's template (catalog-based featured pinning) is the reference pattern.
+- **[2026-06-12] Same-version redeploys are doubly blind: the style.css version-stamp gate passes trivially AND `?ver=` asset URLs stay CDN-cached, so changed CSS/JS never reaches clients.** Any deploy carrying user-visible changes must bump SKYYROSE_VERSION — patch bump (1.6.0→1.6.1) is the cache-bust and the verification stamp in one.
 
-- **[2026-06-12] Eval-harness labels are claims, not truth.** When every capable
-  model "fails" the same eval item, pixel-audit the LABEL before tuning the
-  model — br-006 "missing sherpa" label was wrong; 3 judge configs were blamed
-  for being right. Fix: forced visual_analysis CoT field made judge reasoning
-  auditable, which exposed the label.
-- **[2026-06-12] claude-fable-5 rejects forced tool_choice** (400 "not
-  compatible") — always emits thinking blocks. In-process structured-output
-  judges must use sonnet/opus 4.x, or rework to tool_choice:auto.
-- **[2026-06-12] claude-mem injected `<claude-mem-context>` blocks into 342
-  TRACKED `CLAUDE.md` files; a background worker mutates them on a timer → every
-  `merge --abort`/`rebase`/`reset`/checkout raced it and died with
-  `Entry 'X/CLAUDE.md' not uptodate`.** Fix = REDIRECT not disable:
-  `~/.claude-mem/settings.json` `CLAUDE_MEM_FOLDER_USE_LOCAL_MD:"true"` (keep
-  `FOLDER_CLAUDEMD_ENABLED:"true"`) → worker writes `CLAUDE.local.md`
-  (gitignored, still loaded as local context); restart worker
-  (`worker-service.cjs restart`). gitignore `CLAUDE.local.md`. Doctrine:
-  `docs/memory-architecture.html`. During an active merge, never
-  `--abort`/`reset` while the worker runs — use a forward commit (commits the
-  staged index, ignores later working-tree churn).
-- **[2026-06-12] `git add -A -- '*CLAUDE.md'` sweeps UNTRACKED matches too** —
-  it tracked 13 `prototypes/` worker-stub CLAUDE.md and triggered false
-  rename-pairs against deleted stubs. To stage only existing tracked changes
-  (mods+deletes, no new files), use `git add -u -- '*CLAUDE.md'`. Verify "added"
-  count in `git diff --cached --name-status` before committing.
-- **[2026-06-12] `deploy-theme.sh` ships from the WORKING TREE, not a git ref —
-  so production (skyyrose.co v1.6.2) ran 16 commits + a dirty tree ahead of git
-  main (v1.5.27).** "What's live" decouples from "what's committed."
-  Commit/merge promptly after a deploy or main silently rots behind production.
-  Recovered by merging `fix/ci-bandit-debt` → main (525c6799a); merge-base was
-  `fad555a50`, origin/main had advanced 36 non-theme commits so it was a real
-  3-way (templates: branch won clean, main never touched them;
-  experiences/*.min.js: accepted main's full-dir deletion; buglog.json:
-  union-by-id 111+131→123).
+- **[2026-06-12] Eval-harness labels are claims, not truth.** When every capable model "fails" the same eval item, pixel-audit the LABEL before tuning the model — br-006 "missing sherpa" label was wrong; 3 judge configs were blamed for being right. Fix: forced visual_analysis CoT field made judge reasoning auditable, which exposed the label.
+- **[2026-06-12] claude-fable-5 rejects forced tool_choice** (400 "not compatible") — always emits thinking blocks. In-process structured-output judges must use sonnet/opus 4.x, or rework to tool_choice:auto.
+- **[2026-06-12] claude-mem injected `<claude-mem-context>` blocks into 342 TRACKED `CLAUDE.md` files; a background worker mutates them on a timer → every `merge --abort`/`rebase`/`reset`/checkout raced it and died with `Entry 'X/CLAUDE.md' not uptodate`.** Fix = REDIRECT not disable: `~/.claude-mem/settings.json` `CLAUDE_MEM_FOLDER_USE_LOCAL_MD:"true"` (keep `FOLDER_CLAUDEMD_ENABLED:"true"`) → worker writes `CLAUDE.local.md` (gitignored, still loaded as local context); restart worker (`worker-service.cjs restart`). gitignore `CLAUDE.local.md`. Doctrine: `docs/memory-architecture.html`. During an active merge, never `--abort`/`reset` while the worker runs — use a forward commit (commits the staged index, ignores later working-tree churn).
+- **[2026-06-12] `git add -A -- '*CLAUDE.md'` sweeps UNTRACKED matches too** — it tracked 13 `prototypes/` worker-stub CLAUDE.md and triggered false rename-pairs against deleted stubs. To stage only existing tracked changes (mods+deletes, no new files), use `git add -u -- '*CLAUDE.md'`. Verify "added" count in `git diff --cached --name-status` before committing.
+- **[2026-06-12] `deploy-theme.sh` ships from the WORKING TREE, not a git ref — so production (skyyrose.co v1.6.2) ran 16 commits + a dirty tree ahead of git main (v1.5.27).** "What's live" decouples from "what's committed." Commit/merge promptly after a deploy or main silently rots behind production. Recovered by merging `fix/ci-bandit-debt` → main (525c6799a); merge-base was `fad555a50`, origin/main had advanced 36 non-theme commits so it was a real 3-way (templates: branch won clean, main never touched them; experiences/*.min.js: accepted main's full-dir deletion; buglog.json: union-by-id 111+131→123).
 
-- [2026-06-22] **Stop-hook "parade of failing tests" = stale checkout, not real
-  bugs.** When the Stop hook fails on a test you ALREADY fixed+merged, the
-  checkout is on a stale branch behind main — STOP chasing tests, check
-  `git rev-list --count HEAD..origin/main`. Fix = merge origin/main into the
-  branch (or switch checkout to main), not re-fix merged code. Root prevention:
-  keep the main checkout ON `main`; do feature work in `git worktree`s so
-  background automations can't park the primary checkout on a stale feature
-  branch and poison every session's Stop hook.
+- [2026-06-22] **Stop-hook "parade of failing tests" = stale checkout, not real bugs.** When the Stop hook fails on a test you ALREADY fixed+merged, the checkout is on a stale branch behind main — STOP chasing tests, check `git rev-list --count HEAD..origin/main`. Fix = merge origin/main into the branch (or switch checkout to main), not re-fix merged code. Root prevention: keep the main checkout ON `main`; do feature work in `git worktree`s so background automations can't park the primary checkout on a stale feature branch and poison every session's Stop hook.
 
-- (2026-07-12) NEVER round-trip shared machine-authored data files (catalog CSV,
-  buglog.json) through a generic serializer — CSV writer flattened CRLF (68-line
-  diff for 7 cells), json.dump(ensure_ascii=False) re-encoded the whole buglog
-  (467-line churn). Probe the file's exact native format first (test dumps vs
-  git HEAD) or edit surgically; assert diff == intended cells before accepting.
-  [bug-250, bug-251]
-- (2026-07-12) verify-visual-manifest.py existed but was wired into NOTHING — a
-  verifier that never runs is drift cover, not a gate. When touching any data
-  file, check its verifier is (a) green and (b) actually executed by
-  CI/Makefile.
+- (2026-07-12) NEVER round-trip shared machine-authored data files (catalog CSV, buglog.json) through a generic serializer — CSV writer flattened CRLF (68-line diff for 7 cells), json.dump(ensure_ascii=False) re-encoded the whole buglog (467-line churn). Probe the file's exact native format first (test dumps vs git HEAD) or edit surgically; assert diff == intended cells before accepting. [bug-250, bug-251]
+- (2026-07-12) verify-visual-manifest.py existed but was wired into NOTHING — a verifier that never runs is drift cover, not a gate. When touching any data file, check its verifier is (a) green and (b) actually executed by CI/Makefile.
 
-- (2026-07-13) NEVER deploy the theme from a clean checkout/worktree without
-  overlaying the 17 gitignored live riders (manifest:
-  docs/engineering-learnings.md 'Deploy-source completeness', bug-252) — the
-  hot-swap deletes whatever the source lacks: BR/LH emblems, mascot png, avatar
-  refs, scene backdrops live ONLY in the primary checkout working tree + on the
-  server. Census first: ssh find remote vs local find, comm -23. Also:
-  'committed' and 'on the deploy tree' are independent axes — 1.10.3 shipped
-  without the TRACKED signature emblem (live 404).
-- (2026-09-11) **lint-staged/prettier rewrites `.wolf/memory.md` +
-  `.wolf/anatomy.md` on commit.** A commit meant to add 4 lines produced anatomy
-  +1761/-882 (line-wrapped) and memory.md 514KB→681KB (table padding), and left
-  the tree `MM` (index=original, worktree=formatted). Now in `.prettierignore`.
-  Rule: after EVERY commit read `git diff HEAD~1 HEAD --stat` and compare line
-  counts to intent — a hook that 'passed' can still have rewritten what you
-  staged. Repair by forward commit, never `--amend`. [bug-321]
+- (2026-07-13) NEVER deploy the theme from a clean checkout/worktree without overlaying the 17 gitignored live riders (manifest: docs/engineering-learnings.md 'Deploy-source completeness', bug-252) — the hot-swap deletes whatever the source lacks: BR/LH emblems, mascot png, avatar refs, scene backdrops live ONLY in the primary checkout working tree + on the server. Census first: ssh find remote vs local find, comm -23. Also: 'committed' and 'on the deploy tree' are independent axes — 1.10.3 shipped without the TRACKED signature emblem (live 404).
+- (2026-09-11) **lint-staged/prettier rewrites `.wolf/memory.md` + `.wolf/anatomy.md` + `.wolf/cerebrum.md` on commit.** A commit meant to add 4 lines produced anatomy +1761/-882 (line-wrapped), memory.md 514KB→681KB (table padding), cerebrum +2456 lines, and left the tree `MM` (index=original, worktree=formatted). All four OpenWolf logs are now in `.prettierignore`. Rule: after EVERY commit read `git diff <base> HEAD --stat` and compare line counts to intent — a hook that 'passed' can still have rewritten what you staged. Repair by forward commit, never `--amend`. [bug-321]
 
 ## Decision Log
+- **2026-07-10 — Love Hurts girl rig: retargeting from skyy.glb mascot ABANDONED, Plan B (fresh keyframed walk) chosen.** Re-ran `renders/3d/girl-love-hurts/gate_bone_direction.py` (Phase 3 retargeting-compatibility gate) fresh, headless: `gate_passed=false`, `any_critical_bone_failed=true`, 15/24 bones failing, including critical spine/arm/leg bones — Hips 97.4°, Spine 34.0°, neck 43.2°, Head 23.4°, LeftArm 22.5°/RightArm 22.3°, LeftForeArm 126.2°/RightForeArm 130.5° (near-inverted), LeftLeg 11.8° (all vs 10° threshold). Per the locked plan fork ("if Phase 3 failed OR smoke test fails → STOP, pivot to Plan B"), a Phase-3 failure alone satisfies the stop condition regardless of smoke-test outcome — the smoke test only ever downgrades a pass, never upgrades a fail — so no Local-Space Copy Rotation constraint setup or pose-inspection smoke test was built. **Why:** a >120° forearm rest-direction mismatch between rigs would map mascot walk-clip local rotations onto inverted-elbow geometry on the girl armature; the gate is doing its job. **Trade-off:** Plan B (8-16 hand-authored pose keys directly on the girl's own rig: contact-L, passing-R-up, high-point, contact-R, passing-L-up, high-point, back to contact-L) costs more animator time than retargeting would have, but produces anatomically guaranteed-correct poses instead of gambling on a rig pair that is not retarget-compatible. Logged bug-219 (correction: an earlier version of this entry mis-cited bug-195, which is the unrelated 2026-07-08 pose-bone local-vs-world-space rotation bug — this decision's actual log entry is bug-219).
+- **2026-07-09 — Love Hurts girl rig: armpit gusset panel chosen over "rip and leave open."** `renders/3d/girl-love-hurts/add_armpit_gusset.py`'s locked plan step explicitly REJECTED the "topologically rip, leave open, no cap" approach to the armpit join. Chosen instead: weld the raw glTF-import mesh's duplicate coincident vertices (44459→89 non-manifold edges, a real topology fix confirmed stable across 3 weld thresholds), then add 2-3 new edge loops forming a small gusset panel at each armpit, skin-weighted with a smooth multi-bone gradient (Spine02/Shoulder-equivalent dominant at the torso edge, UpperArm/ForeArm dominant at the arm edge). **Why:** a rip-and-leave-open topology is watertight only by NOT closing the seam — it depends on skin weights alone to visually hide a real hole, which fails under extreme arm poses; a gusset panel is watertight by construction (no rip, no gap possible) and gives the weight-blend an actual surface to grade across. **Trade-off:** ~9x local face-count increase per armpit patch (+44,552 faces mesh-wide for two armpits, `cuts=2` grid-fill subdivision) vs. the near-zero geometry cost of a rip; accepted as the correct trade for construction-guaranteed watertightness in the surgical region. **Caveat:** this makes the ARMPIT PATCH itself watertight by construction — it does NOT make the whole mesh watertight (89 pre-existing non-manifold edges + a 2nd disconnected 373-face accessory island remain elsewhere on the body, out of scope for this surgical edit, unresolved as of the 2026-07-10 ship). See Key Learnings below (2026-07-09 — Armpit gusset) for the full weld/subdivide implementation detail.
+- **2026-07-07 — Ghost-composite backs = accepted house style.** The 7 ghost-mannequin composite back images (lh-006, sg-003/005/011/012/013/014) are founder-accepted as-is; NOT queued for on-model re-renders. No paid re-render jobs for these slots unless the founder reopens.
 
-- **2026-07-10 — Love Hurts girl rig: retargeting from skyy.glb mascot
-  ABANDONED, Plan B (fresh keyframed walk) chosen.** Re-ran
-  `renders/3d/girl-love-hurts/gate_bone_direction.py` (Phase 3
-  retargeting-compatibility gate) fresh, headless: `gate_passed=false`,
-  `any_critical_bone_failed=true`, 15/24 bones failing, including critical
-  spine/arm/leg bones — Hips 97.4°, Spine 34.0°, neck 43.2°, Head 23.4°, LeftArm
-  22.5°/RightArm 22.3°, LeftForeArm 126.2°/RightForeArm 130.5° (near-inverted),
-  LeftLeg 11.8° (all vs 10° threshold). Per the locked plan fork ("if Phase 3
-  failed OR smoke test fails → STOP, pivot to Plan B"), a Phase-3 failure alone
-  satisfies the stop condition regardless of smoke-test outcome — the smoke test
-  only ever downgrades a pass, never upgrades a fail — so no Local-Space Copy
-  Rotation constraint setup or pose-inspection smoke test was built. **Why:**
-  a >120° forearm rest-direction mismatch between rigs would map mascot
-  walk-clip local rotations onto inverted-elbow geometry on the girl armature;
-  the gate is doing its job. **Trade-off:** Plan B (8-16 hand-authored pose keys
-  directly on the girl's own rig: contact-L, passing-R-up, high-point,
-  contact-R, passing-L-up, high-point, back to contact-L) costs more animator
-  time than retargeting would have, but produces anatomically guaranteed-correct
-  poses instead of gambling on a rig pair that is not retarget-compatible.
-  Logged bug-219 (correction: an earlier version of this entry mis-cited
-  bug-195, which is the unrelated 2026-07-08 pose-bone local-vs-world-space
-  rotation bug — this decision's actual log entry is bug-219).
-- **2026-07-09 — Love Hurts girl rig: armpit gusset panel chosen over "rip and
-  leave open."** `renders/3d/girl-love-hurts/add_armpit_gusset.py`'s locked plan
-  step explicitly REJECTED the "topologically rip, leave open, no cap" approach
-  to the armpit join. Chosen instead: weld the raw glTF-import mesh's duplicate
-  coincident vertices (44459→89 non-manifold edges, a real topology fix
-  confirmed stable across 3 weld thresholds), then add 2-3 new edge loops
-  forming a small gusset panel at each armpit, skin-weighted with a smooth
-  multi-bone gradient (Spine02/Shoulder-equivalent dominant at the torso edge,
-  UpperArm/ForeArm dominant at the arm edge). **Why:** a rip-and-leave-open
-  topology is watertight only by NOT closing the seam — it depends on skin
-  weights alone to visually hide a real hole, which fails under extreme arm
-  poses; a gusset panel is watertight by construction (no rip, no gap possible)
-  and gives the weight-blend an actual surface to grade across. **Trade-off:**
-  ~9x local face-count increase per armpit patch (+44,552 faces mesh-wide for
-  two armpits, `cuts=2` grid-fill subdivision) vs. the near-zero geometry cost
-  of a rip; accepted as the correct trade for construction-guaranteed
-  watertightness in the surgical region. **Caveat:** this makes the ARMPIT PATCH
-  itself watertight by construction — it does NOT make the whole mesh watertight
-  (89 pre-existing non-manifold edges + a 2nd disconnected 373-face accessory
-  island remain elsewhere on the body, out of scope for this surgical edit,
-  unresolved as of the 2026-07-10 ship). See Key Learnings below (2026-07-09 —
-  Armpit gusset) for the full weld/subdivide implementation detail.
-- **2026-07-07 — Ghost-composite backs = accepted house style.** The 7
-  ghost-mannequin composite back images (lh-006, sg-003/005/011/012/013/014) are
-  founder-accepted as-is; NOT queued for on-model re-renders. No paid re-render
-  jobs for these slots unless the founder reopens.
 
 <!-- Significant technical decisions with rationale. Why X was chosen over Y. -->
-
-- [2026-04-15] Chose `sdk/python/agent_sdk/` as SDK source of truth over root
-  `agent_sdk/` — root copy had stale brand data ("Where Love Meets Luxury"
-  tagline, missing EliteStudio integration). All internal imports converted to
-  relative to make the package location-independent.
-- [2026-04-16] Compositor pipeline
-  (`skyyrose/elite_studio/agents/compositor_agent.py`) commercial retrofit —
-  chose **instrument-first** (read-only per-stage telemetry via
-  `elite_studio/telemetry.py` → `logs/compositor-telemetry-YYYY-MM-DD.jsonl`)
-  over proposed schema/breaker/cache refactor. **Why:** 40% token-reduction and
-  3-retry breaker claims are estimates until we have baseline unit economics.
-  Two weeks of telemetry converts the retrofit from "optimization theatre" into
-  a defensible CFO-grade business case. **Trade-off:** zero behavior change
-  ships slower than a full refactor, but eliminates the risk of breaking the
-  revenue-critical drop pipeline on speculative gains. Retrofit waves 2–4
-  (schema pinning, `forward_qa_verdict`, idempotent content-hash cache,
-  per-stage circuit breaker) gated on telemetry data. [cmem #533]
-- [2026-05-12] ADK render pipeline overwrite policy — chose **path-b: accept
-  rerun-overwrite, document** over guard / flag / attempt-suffix hybrid.
-  **Why:** rejected (a) guard-only because it breaks LoopAgent refine (iteration
-  2 hits guard, loop aborts); rejected (c) flag-only for same reason; rejected
-  hybrid (attempt-suffix + winner symlink) as premature engineering before Phase
-  E proves the pipeline at scale. **Trade-off:**
-  `renders/gated/<sku>/<sku>-<view>-render.webp` is deterministic and overwrites
-  on every rerun + every LoopAgent refine iteration; no refine-attempt audit
-  trail on disk. **Operator rule:** archive `renders/gated/<sku>/` before
-  re-dispatch if history needed. Manifest §5.1 now reads **DOC (accepted)** via
-  `_overwrite_guard_status()` in `scripts/regen_phase_e_manifest_auto.py`.
-  Revisit if Phase E refine analysis needs per-iteration files. [cmem #3819]
+- [2026-04-15] Chose `sdk/python/agent_sdk/` as SDK source of truth over root `agent_sdk/` — root copy had stale brand data ("Where Love Meets Luxury" tagline, missing EliteStudio integration). All internal imports converted to relative to make the package location-independent.
+- [2026-04-16] Compositor pipeline (`skyyrose/elite_studio/agents/compositor_agent.py`) commercial retrofit — chose **instrument-first** (read-only per-stage telemetry via `elite_studio/telemetry.py` → `logs/compositor-telemetry-YYYY-MM-DD.jsonl`) over proposed schema/breaker/cache refactor. **Why:** 40% token-reduction and 3-retry breaker claims are estimates until we have baseline unit economics. Two weeks of telemetry converts the retrofit from "optimization theatre" into a defensible CFO-grade business case. **Trade-off:** zero behavior change ships slower than a full refactor, but eliminates the risk of breaking the revenue-critical drop pipeline on speculative gains. Retrofit waves 2–4 (schema pinning, `forward_qa_verdict`, idempotent content-hash cache, per-stage circuit breaker) gated on telemetry data. [cmem #533]
+- [2026-05-12] ADK render pipeline overwrite policy — chose **path-b: accept rerun-overwrite, document** over guard / flag / attempt-suffix hybrid. **Why:** rejected (a) guard-only because it breaks LoopAgent refine (iteration 2 hits guard, loop aborts); rejected (c) flag-only for same reason; rejected hybrid (attempt-suffix + winner symlink) as premature engineering before Phase E proves the pipeline at scale. **Trade-off:** `renders/gated/<sku>/<sku>-<view>-render.webp` is deterministic and overwrites on every rerun + every LoopAgent refine iteration; no refine-attempt audit trail on disk. **Operator rule:** archive `renders/gated/<sku>/` before re-dispatch if history needed. Manifest §5.1 now reads **DOC (accepted)** via `_overwrite_guard_status()` in `scripts/regen_phase_e_manifest_auto.py`. Revisit if Phase E refine analysis needs per-iteration files. [cmem #3819]
 
 ## Project Conventions (updated 2026-04-27)
 
 ### AGENTS.md — Component-Scoped Agent Guides
 
-- **Pattern**: Each major component directory now has an `AGENTS.md` (NOT
-  `CLAUDE.md`) that agents read first before working in that directory.
-- **Why**: Keeps the global CLAUDE.md uncluttered; gives each specialized agent
-  a focused workspace brief with explicit permissions and safeguards.
+- **Pattern**: Each major component directory now has an `AGENTS.md` (NOT `CLAUDE.md`) that agents read first before working in that directory.
+- **Why**: Keeps the global CLAUDE.md uncluttered; gives each specialized agent a focused workspace brief with explicit permissions and safeguards.
 - **AGENTS.md locations**:
-  - `wordpress-theme/skyyrose-flagship/inc/AGENTS.md` — PHP modules, enqueue,
-    SEO, WC hooks
+  - `wordpress-theme/skyyrose-flagship/inc/AGENTS.md` — PHP modules, enqueue, SEO, WC hooks
   - `wordpress-theme/skyyrose-flagship/template-parts/AGENTS.md` — PHP partials
-  - `wordpress-theme/skyyrose-flagship/assets/css/AGENTS.md` — CSS token system,
-    collection styles
-  - `wordpress-theme/skyyrose-flagship/assets/js/AGENTS.md` — Vanilla JS (nav,
-    holo, toast, etc.)
-  - `wordpress-theme/skyyrose-flagship/assets/js/experiences/AGENTS.md` —
-    Three.js immersive worlds
+  - `wordpress-theme/skyyrose-flagship/assets/css/AGENTS.md` — CSS token system, collection styles
+  - `wordpress-theme/skyyrose-flagship/assets/js/AGENTS.md` — Vanilla JS (nav, holo, toast, etc.)
+  - `wordpress-theme/skyyrose-flagship/assets/js/experiences/AGENTS.md` — Three.js immersive worlds
   - `frontend/app/AGENTS.md` — Next.js App Router pages
   - `frontend/components/AGENTS.md` — React components (shadcn/ui, Tailwind)
   - `frontend/lib/AGENTS.md` — TypeScript types, API clients, config
-- **Structure every AGENTS.md must have**: Isolated Workspace → Infrastructure →
-  File/Module Map → Permissions → Safeguards → Mandatory Quality Workflow (lint
-  → /simplify → /verification-loop) → Do NOT list
+- **Structure every AGENTS.md must have**: Isolated Workspace → Infrastructure → File/Module Map → Permissions → Safeguards → Mandatory Quality Workflow (lint → /simplify → /verification-loop) → Do NOT list
 
 ### Infrastructure (2026-04-27 confirmed)
 
-- `skyyrose.co` = WordPress.com Business plan — no wp-cli, SFTP deploy only
-  (script or SSH), no direct DB
+- `skyyrose.co` = WordPress.com Business plan — no wp-cli, SFTP deploy only (script or SSH), no direct DB
 - `devskyy.app` = Vercel, Next.js 16, React 19, npm (NOT pnpm)
-- These are two fully independent systems — no shared auth, sessions, or
-  database
+- These are two fully independent systems — no shared auth, sessions, or database
 
 ### Deploy Options (WordPress theme)
 
-- Script: `bash scripts/deploy-theme.sh` (atomic hot-swap, microsecond swap
-  window)
+- Script: `bash scripts/deploy-theme.sh` (atomic hot-swap, microsecond swap window)
 - SSH: `sftp sftp.wp.com` (manual file upload)
 - Both require explicit user confirmation before execution
 
 ### Context7-First Coding Protocol (added 2026-04-29)
-
-Before writing or modifying ANY code that touches an external library, SDK, or
-API:
-
+Before writing or modifying ANY code that touches an external library, SDK, or API:
 1. `mcp__claude_ai_Context7__resolve-library-id` → get the library ID
 2. `mcp__claude_ai_Context7__query-docs` → pull the relevant section
 3. Verify the method signatures, model IDs, and parameters against live docs
 4. THEN write the code
 
-This applies to: google-genai / Gemini SDK, FLUX API clients, httpx, Pydantic,
-LangGraph, any library not in stdlib. Goal: eliminate fix cycles caused by
-outdated or assumed API knowledge — spend tokens on features, not corrections.
-
-- **2026-04-29** — Wrote code changes to `audit_filter.py` and
-  `vision_audit_agent.py` WITHOUT first running Context7 to verify the Gemini
-  REST API pattern. The fixes themselves were correct (pure string logic), but
-  the workflow was wrong. **Rule: Context7 `resolve` + `query-docs` is MANDATORY
-  before every task that touches any external library — not just
-  pipeline/workflow tasks. Every task. No exceptions.**
+This applies to: google-genai / Gemini SDK, FLUX API clients, httpx, Pydantic, LangGraph, any library not in stdlib.
+Goal: eliminate fix cycles caused by outdated or assumed API knowledge — spend tokens on features, not corrections.
+- **2026-04-29** — Wrote code changes to `audit_filter.py` and `vision_audit_agent.py` WITHOUT first running Context7 to verify the Gemini REST API pattern. The fixes themselves were correct (pure string logic), but the workflow was wrong. **Rule: Context7 `resolve` + `query-docs` is MANDATORY before every task that touches any external library — not just pipeline/workflow tasks. Every task. No exceptions.**
 
 ### 2026-06-09 — Worktree sweep learnings
-
-- **Commits landed on a feature branch AFTER its PR merges are stranded** —
-  `2b0d245df` (oai_render pipeline) sat on `feat/legal-policies-shipping-sync` a
-  day after PR #532 merged; main never got it. After any PR merges, new work
-  goes on a NEW branch off fresh main.
-- **`git cherry` patch-equivalence is useless against squash-merged history** —
-  showed 0 equiv even for fully-landed work. Verify "is X in main" by grepping
-  for the actual fix content, not by commit graph.
-- **Branches that never get a PR rot silently** — both genuinely-lost items
-  (SSRF fix, pipeline3d) were worktree-local branches with no PR. Everything
-  that entered the PR pipeline survived even with red CI. Push + PR immediately,
-  draft if undecided.
+- **Commits landed on a feature branch AFTER its PR merges are stranded** — `2b0d245df` (oai_render pipeline) sat on `feat/legal-policies-shipping-sync` a day after PR #532 merged; main never got it. After any PR merges, new work goes on a NEW branch off fresh main.
+- **`git cherry` patch-equivalence is useless against squash-merged history** — showed 0 equiv even for fully-landed work. Verify "is X in main" by grepping for the actual fix content, not by commit graph.
+- **Branches that never get a PR rot silently** — both genuinely-lost items (SSRF fix, pipeline3d) were worktree-local branches with no PR. Everything that entered the PR pipeline survived even with red CI. Push + PR immediately, draft if undecided.
 
 ### 2026-06-09 — Render review board session
-
-- **Do-Not-Repeat:** sg-006/sg-014 dossiers were ML-drafted from wrong photos
-  (cmem #11235) → rendered the wrong product entirely. Dossier rule is absolute:
-  founder-authored only. Before ANY render run, spot-check that each dossier's
-  garment-type lock matches its techflat.
-- **Key Learning:**
-  `data/product-references/sg-006-and-sg-014-mint-lavender-set-techflat.jpeg`
-  was MISLABELED — actually the black sherpa jacket photo. Don't trust
-  product-reference filenames; verify content. **(RESOLVED 2026-06-10: file
-  git-rm'd; sg-006/sg-014 dossiers re-authored from the real mint techflats;
-  SKUs un-excluded; regression test guards drift-back. Recover the jpeg from git
-  history if the sherpa needs it.)**
-- **Key Learning:** Founder review annotations live in
-  `renders/oai/_review/review-state.json` (review board:
-  `scripts/oai-render-review.py`, port 8944) and flow into prompts via
-  `data/render-corrections.json` → FOUNDER CORRECTIONS block in prompt.py. Keyed
-  by SKU, lines verbatim.
-- **Key Learning:** Split techflats (assets/techflats/split/) are FLAT vector
-  drawings — SKUs whose only garment ref is a split techflat (bridge shorts,
-  kids sets) rendered flat/vector-looking. PHOTOREALISM directive +
-  photorealistic_not_flat QC gate added; if still failing, those SKUs need real
-  photos.
-- **Key Learning:** renders/oai PNGs were deleted from disk ~2-4PM 2026-06-09
-  (culprit unknown; not mac-cleanup.sh). Paid render outputs must be backed up
-  off-tree immediately after a run — evidence sheets + annotations now committed
-  to the branch for durability.
+- **Do-Not-Repeat:** sg-006/sg-014 dossiers were ML-drafted from wrong photos (cmem #11235) → rendered the wrong product entirely. Dossier rule is absolute: founder-authored only. Before ANY render run, spot-check that each dossier's garment-type lock matches its techflat.
+- **Key Learning:** `data/product-references/sg-006-and-sg-014-mint-lavender-set-techflat.jpeg` was MISLABELED — actually the black sherpa jacket photo. Don't trust product-reference filenames; verify content. **(RESOLVED 2026-06-10: file git-rm'd; sg-006/sg-014 dossiers re-authored from the real mint techflats; SKUs un-excluded; regression test guards drift-back. Recover the jpeg from git history if the sherpa needs it.)**
+- **Key Learning:** Founder review annotations live in `renders/oai/_review/review-state.json` (review board: `scripts/oai-render-review.py`, port 8944) and flow into prompts via `data/render-corrections.json` → FOUNDER CORRECTIONS block in prompt.py. Keyed by SKU, lines verbatim.
+- **Key Learning:** Split techflats (assets/techflats/split/) are FLAT vector drawings — SKUs whose only garment ref is a split techflat (bridge shorts, kids sets) rendered flat/vector-looking. PHOTOREALISM directive + photorealistic_not_flat QC gate added; if still failing, those SKUs need real photos.
+- **Key Learning:** renders/oai PNGs were deleted from disk ~2-4PM 2026-06-09 (culprit unknown; not mac-cleanup.sh). Paid render outputs must be backed up off-tree immediately after a run — evidence sheets + annotations now committed to the branch for durability.
 
 ### Collection assets, lockups & per-collection SOT (2026-06-13)
 
 ### Lockup vectorization (2026-06-13)
-
-- **potrace quality is bound by SOURCE resolution + the `--flat` flag, not the
-  tool.** Tracing collection lockups from the low-res distressed
-  `images/hero-overlays/br-brand-script-logotype.png` (1600×900) with `--flat`
-  gave a blobby single-path mess. Re-tracing from high-res clean sources —
-  `branding/black-rose-collection-text.webp` (3072×3072) and
-  `branding/signature-logo-transparent.png` (2577×882) — WITHOUT `--flat`, with
-  `--alphamax 1.0 --opttolerance 0.2 --turdsize 30`, produced smooth multi-path
-  SVGs matching the pre-existing good LH trace (which was also potrace, from a
-  2280px source). Extraction polarity matters: BR was dark-on-light (trace by
-  luminance `-colorspace Gray -threshold 55%`), SIG was a transparent PNG (trace
-  by alpha). Final vectors:
-  `assets/branding/vectorized/{black-rose-script.svg (vB 1876×933), signature-script.svg (vB 2556×862)}`.
-- **`height="auto"` is INVALID as an `<svg>` attribute** — browsers throw
-  "Expected length" and fall back, breaking lockup sizing. Set only
-  `width="100%"` on inline lockup `<svg>` and let CSS handle `height:auto`.
-  Builders emitted `width="100%" height="auto"` on inline lockups; strip the
-  attribute.
-- Homepage prototype set lives at `prototypes/homepage/` (5 variants:
-  concrete-monolith, lookbook-index, oakland-transit, atelier-minimal,
-  living-archive). Same convention as landing-collections: `index.src.html` →
-  `build-standalone.py` embeds assets → self-contained `index.html`. Builders
-  repeatedly invented asset/font filenames (e.g.
-  `cinzel-v23-latin-regular.woff2` vs real `cinzel-latin.woff2`); the build's
-  MISSING report is the catch — always rebuild + check 0-missing before
-  accepting a variant.
+- **potrace quality is bound by SOURCE resolution + the `--flat` flag, not the tool.** Tracing collection lockups from the low-res distressed `images/hero-overlays/br-brand-script-logotype.png` (1600×900) with `--flat` gave a blobby single-path mess. Re-tracing from high-res clean sources — `branding/black-rose-collection-text.webp` (3072×3072) and `branding/signature-logo-transparent.png` (2577×882) — WITHOUT `--flat`, with `--alphamax 1.0 --opttolerance 0.2 --turdsize 30`, produced smooth multi-path SVGs matching the pre-existing good LH trace (which was also potrace, from a 2280px source). Extraction polarity matters: BR was dark-on-light (trace by luminance `-colorspace Gray -threshold 55%`), SIG was a transparent PNG (trace by alpha). Final vectors: `assets/branding/vectorized/{black-rose-script.svg (vB 1876×933), signature-script.svg (vB 2556×862)}`.
+- **`height="auto"` is INVALID as an `<svg>` attribute** — browsers throw "Expected length" and fall back, breaking lockup sizing. Set only `width="100%"` on inline lockup `<svg>` and let CSS handle `height:auto`. Builders emitted `width="100%" height="auto"` on inline lockups; strip the attribute.
+- Homepage prototype set lives at `prototypes/homepage/` (5 variants: concrete-monolith, lookbook-index, oakland-transit, atelier-minimal, living-archive). Same convention as landing-collections: `index.src.html` → `build-standalone.py` embeds assets → self-contained `index.html`. Builders repeatedly invented asset/font filenames (e.g. `cinzel-v23-latin-regular.woff2` vs real `cinzel-latin.woff2`); the build's MISSING report is the catch — always rebuild + check 0-missing before accepting a variant.
 
 ### Homepage lockup format decision (2026-06-13)
-
-- **Founder chose high-res WebP/AVIF over vector for collection lockups.**
-  Rationale: the lockups are textured gold-gradient brand artwork (Signature =
-  50,703 unique colors). potrace flattens to 1 colour (loses gradient + rose
-  glyph); vtracer color-traces but bloats to ~1.7MB each with gradient banding;
-  the WebP original keeps ALL detail at 50-200KB and is crisp to ~900px+.
-  Vector's superpowers (∞ scale, CSS recolor) are moot for a homepage lockup
-  (never >900px, canonical colors).
-- Display lockups generated at
-  `assets/branding/lockups/{signature,black-rose,love-hurts}-lockup.webp`
-  (transparent, ~1600px, method=6 q92). Sources: signature-logo-transparent.png
-  (already gold+transparent); love-hurts-logo-transparent.png;
-  **black-rose-collection-text.webp is dark-on-LIGHT/opaque** →
-  transparentized + silvered via
-  `magick src -colorspace Gray -negate -level 35%,100% -trim` as a soft alpha,
-  then `magick -size WxH xc:'#C7C7CC' alpha.png -compose CopyOpacity -composite`
-  (the -level floor removes a faint ghost element in the source).
-- All 5 homepage variants use
-  `<img class="lockup-img" src=.../lockups/*.webp width:100%>`; WebP aspect
-  ratios match the prior SVG viewBoxes (same artwork) so width:100% preserves
-  sizing. v4's filter-recolor reveal was changed to `filter:none` (WebP already
-  carries the colour; double-tint avoided).
-- **vtracer (pip) SEGFAULTS on Python 3.14 (exit 139); works on 3.13**
-  (`.venv/bin/python`). If color-vector is ever needed:
-  `colormode='color', mode='spline', color_precision=7`.
+- **Founder chose high-res WebP/AVIF over vector for collection lockups.** Rationale: the lockups are textured gold-gradient brand artwork (Signature = 50,703 unique colors). potrace flattens to 1 colour (loses gradient + rose glyph); vtracer color-traces but bloats to ~1.7MB each with gradient banding; the WebP original keeps ALL detail at 50-200KB and is crisp to ~900px+. Vector's superpowers (∞ scale, CSS recolor) are moot for a homepage lockup (never >900px, canonical colors).
+- Display lockups generated at `assets/branding/lockups/{signature,black-rose,love-hurts}-lockup.webp` (transparent, ~1600px, method=6 q92). Sources: signature-logo-transparent.png (already gold+transparent); love-hurts-logo-transparent.png; **black-rose-collection-text.webp is dark-on-LIGHT/opaque** → transparentized + silvered via `magick src -colorspace Gray -negate -level 35%,100% -trim` as a soft alpha, then `magick -size WxH xc:'#C7C7CC' alpha.png -compose CopyOpacity -composite` (the -level floor removes a faint ghost element in the source).
+- All 5 homepage variants use `<img class="lockup-img" src=.../lockups/*.webp width:100%>`; WebP aspect ratios match the prior SVG viewBoxes (same artwork) so width:100% preserves sizing. v4's filter-recolor reveal was changed to `filter:none` (WebP already carries the colour; double-tint avoided).
+- **vtracer (pip) SEGFAULTS on Python 3.14 (exit 139); works on 3.13** (`.venv/bin/python`). If color-vector is ever needed: `colormode='color', mode='spline', color_precision=7`.
 
 ### Per-collection Source of Truth (2026-06-13)
-
-- **`data/collections/<slug>.json` is the per-collection SOT** — open ONE file
-  to get every asset for a collection (products, lockups, scenes, lookbook,
-  logos) resolved to the one correct file per role + existence-verified. Built
-  to stop the repeated wrong-file pick-ups (low-res vs high-res lockup,
-  source-art vs display, sherpa mis-file).
-- **GENERATED, do not hand-edit.** Masters stay authoritative:
-  products→`skyyrose-catalog.csv`, imagery→`visual-manifest.json`,
-  logos→`logo-registry.json`, display
-  lockups→`assets/branding/lockups/<collection>-lockup.webp`. Regenerate:
-  `python3 data/build-collection-sot.py --updated YYYY-MM-DD`. Verify (CI gate):
-  `python3 data/verify-collection-sot.py` (exits 1 on missing SKU / unresolved
-  lockup / role pointing at a missing file).
-- Lockup roles disambiguated: `lockup.display_webp` = canonical web (high-detail
-  webp), `lockup.svg_master` = vector (scale/recolor only), `lockup.source_art`
-  = raw master, NEVER place directly. The manifest's `br-brand-script-logotype`
-  is source_art (low-res) — the display webp supersedes it.
-- `other_collection_files.files` per SOT = tree files name-matching the
-  collection but not assigned a role = audit/retire candidates (the duplication
-  that caused mix-ups). BR 36, LH 29, SIG 21, KC 3.
-- **Surfaced real catalog bugs:** br-008/009/010 `back_image` point to
-  non-existent `*-back-model.webp` (jerseys have no back-model render). In each
-  SOT's `unresolved_product_images`. Fix in CSV (remove value or render).
+- **`data/collections/<slug>.json` is the per-collection SOT** — open ONE file to get every asset for a collection (products, lockups, scenes, lookbook, logos) resolved to the one correct file per role + existence-verified. Built to stop the repeated wrong-file pick-ups (low-res vs high-res lockup, source-art vs display, sherpa mis-file).
+- **GENERATED, do not hand-edit.** Masters stay authoritative: products→`skyyrose-catalog.csv`, imagery→`visual-manifest.json`, logos→`logo-registry.json`, display lockups→`assets/branding/lockups/<collection>-lockup.webp`. Regenerate: `python3 data/build-collection-sot.py --updated YYYY-MM-DD`. Verify (CI gate): `python3 data/verify-collection-sot.py` (exits 1 on missing SKU / unresolved lockup / role pointing at a missing file).
+- Lockup roles disambiguated: `lockup.display_webp` = canonical web (high-detail webp), `lockup.svg_master` = vector (scale/recolor only), `lockup.source_art` = raw master, NEVER place directly. The manifest's `br-brand-script-logotype` is source_art (low-res) — the display webp supersedes it.
+- `other_collection_files.files` per SOT = tree files name-matching the collection but not assigned a role = audit/retire candidates (the duplication that caused mix-ups). BR 36, LH 29, SIG 21, KC 3.
+- **Surfaced real catalog bugs:** br-008/009/010 `back_image` point to non-existent `*-back-model.webp` (jerseys have no back-model render). In each SOT's `unresolved_product_images`. Fix in CSV (remove value or render).
 
 ### Key Learning — model-viewer compressed GLBs (2026-06-28)
-
-gltfpack web GLBs use EXT_meshopt_compression + KHR_texture_basisu. model-viewer
-needs decoders wired BEFORE the module script:
-`self.ModelViewerElement.meshoptDecoderLocation` (meshopt OFF by default) +
-`.ktx2TranscoderLocation`. gstatic basis transcoder is CORS-blocked from
-localhost → VENDOR locally (`renders/3d/_viewer/meshopt_decoder.js` +
-`basis/basis_transcoder.js`+`.wasm`), same-origin paths. Local file:// can't
-fetch GLBs at all — must serve over http. Same decoders required if 3D ships to
-skyyrose.co (self-host them in the theme).
+gltfpack web GLBs use EXT_meshopt_compression + KHR_texture_basisu. model-viewer needs decoders wired BEFORE the module script: `self.ModelViewerElement.meshoptDecoderLocation` (meshopt OFF by default) + `.ktx2TranscoderLocation`. gstatic basis transcoder is CORS-blocked from localhost → VENDOR locally (`renders/3d/_viewer/meshopt_decoder.js` + `basis/basis_transcoder.js`+`.wasm`), same-origin paths. Local file:// can't fetch GLBs at all — must serve over http. Same decoders required if 3D ships to skyyrose.co (self-host them in the theme).
 
 ## 2026-07-05 — structural remediation session
+- **User correction (Do-Not-Repeat):** the brand Instagram is `instagram.com/skyyrose.co` (dot handle). `skyyroseco` AND `theskyyrosecollection` are both legacy — never emit either. Canonical set: instagram/tiktok skyyrose.co-family per founder, facebook.com/TheSkyyRoseCollection; x.com/skyyroseco pending HG-1 confirmation.
+- **Key learning:** live skyyrose.co ran theme 1.7.0 = feat/site-audit-batch (PR #704, OPEN — never merged) while main sat at 1.6.7. Always verify live `?ver=` against branch versions before choosing a base branch; "merged and deployed" memories can be half-true (deployed ≠ merged).
+- **Key learning:** the nav menu is theme-managed (inc/menu-setup.php definitions + SKYYROSE_MENU_BUILD_VERSION bump ⇒ one-shot rebuild on deploy). Menu content changes are THEME code, not site-state scripts.
+- **Key learning:** live /collections/ page's assigned template `skyyrose-canvas.php` exists only on the server (stale file — deploy is a full hot-swap, so any deploy removes it). Shipping `page-collections.php` wins template hierarchy the moment it vanishes; zero site-state mutation needed.
+- **Key learning:** preflight `PENDING_USER_ASSETS` = render-pipeline bundle status (data/product-bundles/ probe), NOT web-imagery availability. Never gate storefront rendering on it — gate on catalog display image existing on disk.
 
-- **User correction (Do-Not-Repeat):** the brand Instagram is
-  `instagram.com/skyyrose.co` (dot handle). `skyyroseco` AND
-  `theskyyrosecollection` are both legacy — never emit either. Canonical set:
-  instagram/tiktok skyyrose.co-family per founder,
-  facebook.com/TheSkyyRoseCollection; x.com/skyyroseco pending HG-1
-  confirmation.
-- **Key learning:** live skyyrose.co ran theme 1.7.0 = feat/site-audit-batch (PR
-  #704, OPEN — never merged) while main sat at 1.6.7. Always verify live `?ver=`
-  against branch versions before choosing a base branch; "merged and deployed"
-  memories can be half-true (deployed ≠ merged).
-- **Key learning:** the nav menu is theme-managed (inc/menu-setup.php
-  definitions + SKYYROSE_MENU_BUILD_VERSION bump ⇒ one-shot rebuild on deploy).
-  Menu content changes are THEME code, not site-state scripts.
-- **Key learning:** live /collections/ page's assigned template
-  `skyyrose-canvas.php` exists only on the server (stale file — deploy is a full
-  hot-swap, so any deploy removes it). Shipping `page-collections.php` wins
-  template hierarchy the moment it vanishes; zero site-state mutation needed.
-- **Key learning:** preflight `PENDING_USER_ASSETS` = render-pipeline bundle
-  status (data/product-bundles/ probe), NOT web-imagery availability. Never gate
-  storefront rendering on it — gate on catalog display image existing on disk.
+- **[2026-07-06] Do-Not-Repeat:** never showcase sub-par visuals in popup windows — popups reserved for production-grade work only; QC pixels eyes-on first, else report defects as text + paths. Founder correction.
+- **[2026-07-06] Decision:** skyy-web-final.glb REJECTED by founder (bad texture bake). Mascot 3D restart from new arms-out reference `assets/images/mascot/skyy-canonical-v2.png` via image→3D + rig pipeline.
+- **[2026-07-06] Key Learning (Blender/glTF):** glTF import attaches CUSTOM SPLIT NORMALS — `shade_smooth()`/`shade_smooth_by_angle()` are silently overridden by them. Must run `bpy.ops.mesh.customdata_custom_splitnormals_clear()` first or the smoothing is a no-op.
 
-- **[2026-07-06] Do-Not-Repeat:** never showcase sub-par visuals in popup
-  windows — popups reserved for production-grade work only; QC pixels eyes-on
-  first, else report defects as text + paths. Founder correction.
-- **[2026-07-06] Decision:** skyy-web-final.glb REJECTED by founder (bad texture
-  bake). Mascot 3D restart from new arms-out reference
-  `assets/images/mascot/skyy-canonical-v2.png` via image→3D + rig pipeline.
-- **[2026-07-06] Key Learning (Blender/glTF):** glTF import attaches CUSTOM
-  SPLIT NORMALS — `shade_smooth()`/`shade_smooth_by_angle()` are silently
-  overridden by them. Must run
-  `bpy.ops.mesh.customdata_custom_splitnormals_clear()` first or the smoothing
-  is a no-op.
+- **[2026-07-07] Do-Not-Repeat (deploy discipline):** NEVER drip-deploy — 4 sequential prod deploys each fixing one newly-discovered layer (draco wiring, bare specifier, edge cache, body transform) burned founder trust + tokens. Required pattern: local production-mirror harness (live HTML + local theme via node static server + Playwright assertion battery) must pass ALL assertions BEFORE the single deploy.
+- **[2026-07-07] Key Learning (verification):** browser module failures fire `pageerror`, not `console` — any live-page monitoring that only reads console.error will miss import/module crashes entirely.
+- **[2026-07-07] Key Learning (WP.com cache):** deployed JS/CSS changes are INERT until the enqueue `?ver=` changes — edge caches static assets by full URL. Every shipped asset edit needs the version-triple bump in the same deploy.
+- **[2026-07-07] Key Learning (CSS):** transform/filter/perspective/will-change/contain on <body> (incl. a keyframe held by fill-mode:forwards, even identity) silently converts every position:fixed element to page-anchored. Ship gate: body computed transform must be 'none'.
 
-- **[2026-07-07] Do-Not-Repeat (deploy discipline):** NEVER drip-deploy — 4
-  sequential prod deploys each fixing one newly-discovered layer (draco wiring,
-  bare specifier, edge cache, body transform) burned founder trust + tokens.
-  Required pattern: local production-mirror harness (live HTML + local theme via
-  node static server + Playwright assertion battery) must pass ALL assertions
-  BEFORE the single deploy.
-- **[2026-07-07] Key Learning (verification):** browser module failures fire
-  `pageerror`, not `console` — any live-page monitoring that only reads
-  console.error will miss import/module crashes entirely.
-- **[2026-07-07] Key Learning (WP.com cache):** deployed JS/CSS changes are
-  INERT until the enqueue `?ver=` changes — edge caches static assets by full
-  URL. Every shipped asset edit needs the version-triple bump in the same
-  deploy.
-- **[2026-07-07] Key Learning (CSS):**
-  transform/filter/perspective/will-change/contain on <body> (incl. a keyframe
-  held by fill-mode:forwards, even identity) silently converts every
-  position:fixed element to page-anchored. Ship gate: body computed transform
-  must be 'none'.
+- **Slim-image dep completeness is only provable in the image** (2026-07-07, bug-192): a worktree meta-path-blocker test proves "imports without X" but cannot prove "imports with ONLY the declared extras" — the shared .venv masks missing deps. The verification that can fail: `docker run --rm <img> python -c "import main_enterprise"`. For a one-pass missing-module census, use PEP-562 `__getattr__` stubs (bare ModuleType stubs abort on from-imports).
 
-- **Slim-image dep completeness is only provable in the image** (2026-07-07,
-  bug-192): a worktree meta-path-blocker test proves "imports without X" but
-  cannot prove "imports with ONLY the declared extras" — the shared .venv masks
-  missing deps. The verification that can fail:
-  `docker run --rm <img> python -c "import main_enterprise"`. For a one-pass
-  missing-module census, use PEP-562 `__getattr__` stubs (bare ModuleType stubs
-  abort on from-imports).
+- (2026-07-08) Force-push to a PR branch is STOP-AND-SHOW-gated; the ungated equivalent is merge origin/main INTO the PR branch → fast-forward push (old tip stays a parent, zero history rewrite, same tree as the rebase — verify with `git diff --quiet rebasedTip HEAD -- <files>`). Used to land #686/#703 without human unblock.
 
-- (2026-07-08) Force-push to a PR branch is STOP-AND-SHOW-gated; the ungated
-  equivalent is merge origin/main INTO the PR branch → fast-forward push (old
-  tip stays a parent, zero history rewrite, same tree as the rebase — verify
-  with `git diff --quiet rebasedTip HEAD -- <files>`). Used to land #686/#703
-  without human unblock.
-
-- **[2026-07-08] Key Learning (Blender pose-bone mechanics, bug-195):**
-  `pose_bone.rotation_quaternion` is in the bone's own LOCAL rest-space, not
-  world space. Passing a "world axis" vector into `Quaternion(axis, angle)` and
-  assigning it directly is only correct if the bone's rest orientation happens
-  to be world-aligned (check via `bone.matrix_local.to_euler()` —
-  imported/converted rigs are often heavily skewed, e.g. this rig's Hips was
-  ~[-9,17,-99]deg off). To rotate a bone by a TRUE world-space angle: manipulate
-  `pose_bone.matrix` (armature/world-space) directly —
-  `pb.matrix = Translation(pivot) @ Matrix.Rotation(angle,4,world_axis) @ Translation(-pivot) @ pb.matrix.copy()`
-  — and let Blender back-solve the local values. Verify with a monotonic sweep
-  of a DESCENDANT bone's world position (a bone's own rotation never moves its
-  own head position, only its children's — re-derived twice this session after
-  forgetting it).
-- **[2026-07-08] Key Learning (glTF display semantics, bug-195):** the rest/bind
-  pose (`action=None`) is NEVER what a runtime GLTFLoader displays — only named
-  clips play. `bpy.ops.pose.armature_apply()` ("Apply Pose as Rest Pose") is
-  explicitly designed to PRESERVE existing clips' visual appearance relative to
-  the new rest pose, so it structurally cannot fix a clip whose own keyframes
-  are the source of a defect. To fix a specific animation clip's pose defect,
-  re-key that clip's fcurves directly (evaluate the frame, apply the verified
-  world-space correction to the bone, `keyframe_insert`) — do not bake rest pose
-  and expect it to propagate.
-- **[2026-07-08] Key Learning (Blender 5.x API):** `Action.fcurves` no longer
-  exists (slotted actions). Access via
-  `action.layers[0].strips[0].channelbags[0].fcurves`.
-- **[2026-07-08] Key Learning (gltf-transform CLI):** the `jpeg`/`png`/`webp`
-  subcommands' `--formats` flag is an INPUT filter (which existing texture
-  mime-types to touch), not the output format — default is `"jpeg"`, meaning PNG
-  source textures are silently skipped unless you pass `--formats "*"` or
-  `--formats png`. Silent no-op: file size and mimeType stay unchanged with no
-  error.
-- **[2026-07-08] Do-Not-Repeat:** don't trust a diagnosis agent's raw corrective
-  quaternion/axis-angle without reproducing the claimed numeric result in your
-  OWN fresh session first — a prior agent's "verified" fix (bug-195) didn't
-  reproduce and initially made things worse in a different coordinate frame.
+- **[2026-07-08] Key Learning (Blender pose-bone mechanics, bug-195):** `pose_bone.rotation_quaternion` is in the bone's own LOCAL rest-space, not world space. Passing a "world axis" vector into `Quaternion(axis, angle)` and assigning it directly is only correct if the bone's rest orientation happens to be world-aligned (check via `bone.matrix_local.to_euler()` — imported/converted rigs are often heavily skewed, e.g. this rig's Hips was ~[-9,17,-99]deg off). To rotate a bone by a TRUE world-space angle: manipulate `pose_bone.matrix` (armature/world-space) directly — `pb.matrix = Translation(pivot) @ Matrix.Rotation(angle,4,world_axis) @ Translation(-pivot) @ pb.matrix.copy()` — and let Blender back-solve the local values. Verify with a monotonic sweep of a DESCENDANT bone's world position (a bone's own rotation never moves its own head position, only its children's — re-derived twice this session after forgetting it).
+- **[2026-07-08] Key Learning (glTF display semantics, bug-195):** the rest/bind pose (`action=None`) is NEVER what a runtime GLTFLoader displays — only named clips play. `bpy.ops.pose.armature_apply()` ("Apply Pose as Rest Pose") is explicitly designed to PRESERVE existing clips' visual appearance relative to the new rest pose, so it structurally cannot fix a clip whose own keyframes are the source of a defect. To fix a specific animation clip's pose defect, re-key that clip's fcurves directly (evaluate the frame, apply the verified world-space correction to the bone, `keyframe_insert`) — do not bake rest pose and expect it to propagate.
+- **[2026-07-08] Key Learning (Blender 5.x API):** `Action.fcurves` no longer exists (slotted actions). Access via `action.layers[0].strips[0].channelbags[0].fcurves`.
+- **[2026-07-08] Key Learning (gltf-transform CLI):** the `jpeg`/`png`/`webp` subcommands' `--formats` flag is an INPUT filter (which existing texture mime-types to touch), not the output format — default is `"jpeg"`, meaning PNG source textures are silently skipped unless you pass `--formats "*"` or `--formats png`. Silent no-op: file size and mimeType stay unchanged with no error.
+- **[2026-07-08] Do-Not-Repeat:** don't trust a diagnosis agent's raw corrective quaternion/axis-angle without reproducing the claimed numeric result in your OWN fresh session first — a prior agent's "verified" fix (bug-195) didn't reproduce and initially made things worse in a different coordinate frame.
 
 ## 2026-07-08 (cont'd) — bug-196: leg-crossing crease, partial fix
 
-- **Key Learning**: When manually editing `pose_bone.matrix` while an action is
-  still assigned to `arm.animation_data.action`, any
-  `bpy.context.view_layer.update()` call re-evaluates the action and silently
-  overwrites the manual edit back to the keyframed value. Fix: set
-  `arm.animation_data.action = None` immediately after evaluating the frame you
-  want (freezing the pose) BEFORE making manual `pb.matrix` edits. Confirmed by
-  three consecutive "no visible effect" renders that were actually the animation
-  stomping every manual edit — cost real time to catch. [cmem pending]
-- **Key Learning**: A flat world-space rotation delta
-  (`Translation(pivot) @ Rotation(angle) @ Translation(-pivot) @ base_matrix`)
-  applied uniformly across clips does NOT generalize when clips have different
-  baseline flexion. It cleared a crossed-leg crotch crease cleanly on the idle
-  clip (near-neutral base pose) at world-Y -15°/+15°, but the identical
-  correction (tested -8° through -30°) never cleared the same-looking crease on
-  the walk/talk clips (much deeper hip flexion at their frame 1) — the
-  correction's visual effect compounds differently depending on how much the
-  limb is already rotated on other axes.
-- **Do-Not-Repeat**: Don't assume a correction proven on one animation clip
-  transfers to other clips just because the base pose "looks the same" in a
-  low-res/wide shot — walk/talk looked pose-identical to idle in a small
-  contact-sheet comparison but had a materially different (much deeper) hip
-  flexion once zoomed in, which is exactly what made the same fix fail there.
-- **Decision Log**: bug-196 shipped as idle-only fix
-  (`skyy-v9-idle-only-web.glb`) — walk/talk/point/wave/joy deliberately left
-  byte-identical to the original v6 source rather than shipping an unverified
-  guess. The persistent crease on those 5 clips at high hip flexion looks like a
-  skin-weight pinch at the Hips/UpLeg boundary, not a pose-angle problem — needs
-  actual weight-painting investigation in Blender, out of scope for tonight's
-  animation-keyframe-only fix budget.
+- **Key Learning**: When manually editing `pose_bone.matrix` while an action is still assigned to `arm.animation_data.action`, any `bpy.context.view_layer.update()` call re-evaluates the action and silently overwrites the manual edit back to the keyframed value. Fix: set `arm.animation_data.action = None` immediately after evaluating the frame you want (freezing the pose) BEFORE making manual `pb.matrix` edits. Confirmed by three consecutive "no visible effect" renders that were actually the animation stomping every manual edit — cost real time to catch. [cmem pending]
+- **Key Learning**: A flat world-space rotation delta (`Translation(pivot) @ Rotation(angle) @ Translation(-pivot) @ base_matrix`) applied uniformly across clips does NOT generalize when clips have different baseline flexion. It cleared a crossed-leg crotch crease cleanly on the idle clip (near-neutral base pose) at world-Y -15°/+15°, but the identical correction (tested -8° through -30°) never cleared the same-looking crease on the walk/talk clips (much deeper hip flexion at their frame 1) — the correction's visual effect compounds differently depending on how much the limb is already rotated on other axes.
+- **Do-Not-Repeat**: Don't assume a correction proven on one animation clip transfers to other clips just because the base pose "looks the same" in a low-res/wide shot — walk/talk looked pose-identical to idle in a small contact-sheet comparison but had a materially different (much deeper) hip flexion once zoomed in, which is exactly what made the same fix fail there.
+- **Decision Log**: bug-196 shipped as idle-only fix (`skyy-v9-idle-only-web.glb`) — walk/talk/point/wave/joy deliberately left byte-identical to the original v6 source rather than shipping an unverified guess. The persistent crease on those 5 clips at high hip flexion looks like a skin-weight pinch at the Hips/UpLeg boundary, not a pose-angle problem — needs actual weight-painting investigation in Blender, out of scope for tonight's animation-keyframe-only fix budget.
 
 ## 2026-07-09 — bug-198: walk/talk/point/wave/joy crease is LBS collapse, not weights (3 lanes exhausted)
 
-- **Key Learning**: The mascot's crotch-crease defect at high hip flexion
-  (walk/talk/point/wave/joy, 126-138deg bind-pose-relative flexion) is Linear
-  Blend Skinning "candy-wrapper collapse," NOT a weight-painting problem.
-  Confirmed via a mascot-skin-weight-fix Workflow: 3 independent approaches
-  (Jacobi-diffusion weight smoothing at 2 strengths, flexion-angle clamping, and
-  manual anatomically-anchored weight redistribution) were each built AND
-  independently adversarially re-verified (fresh pixel-diff re-renders, not
-  self-report) -- all 3 verified as no-improvement. Do not re-attempt
-  weight-topology or pose-angle fixes for this defect; that lane is proven
-  exhausted.
-- **Key Learning**: A quantitative gap-check is the fast way to distinguish
-  "weight topology problem" from "LBS extreme-angle problem": at a genuinely
-  50/50-blended vertex, measure the deformed-position distance between binding
-  it 100% to bone A vs 100% to bone B at the pose's peak frame. If that gap is a
-  large fraction of a reference length (here: 26-28% of torso length), no
-  reweighting between those same two bones can close it -- the fix has to add a
-  third transform (shape key, helper bone, or dual-quaternion skinning), not
-  redistribute weight between the existing two.
-- **Key Learning**: This rig's flexion is naturally measured relative to BIND
-  POSE, not neutral-standing -- on this character the bind pose is already far
-  from neutral, so a naive "clamp anything above 80% of peak" threshold can end
-  up editing nearly every frame of a clip (102/102 on walk), silently degrading
-  animation amplitude/character instead of surgically trimming one extreme
-  moment. Check what fraction of frames a threshold-based edit actually touches
-  before trusting it's a "peak-only" fix.
-- **Do-Not-Repeat**: Don't trust a fix agent's own pixel-percentage claim ("only
-  0.3-2.3% of pixels changed, crease visibly softened") as evidence the defect
-  improved -- it can describe a small, spatially-correct-looking change that
-  turns out under 800%-zoom fuzz-diff to be a 1-2px anti-aliasing edge shift,
-  not the fold actually reducing. Small-and-localized is not the same as
-  effective; always adversarially re-render pristine-vs-fixed at native zoom and
-  diff, don't extrapolate from the touched-vertex count or self-reported pixel
-  delta.
-- **Decision Log**: Recommended next attempt is a corrective shape key / morph
-  target (glTF + three.js natively support animated morph weights) driven by a
-  per-clip keyframe track peaking at each clip's already-known peak frame
-  (walk=86, talk=15, point=59, wave=27, joy=12). Fallback order if that fails:
-  helper/twist bone between Hips and UpLeg, then dual-quaternion skinning (last
-  resort -- requires custom three.js runtime work, glTF/three.js SkinnedMesh is
-  LBS-native).
+- **Key Learning**: The mascot's crotch-crease defect at high hip flexion (walk/talk/point/wave/joy, 126-138deg bind-pose-relative flexion) is Linear Blend Skinning "candy-wrapper collapse," NOT a weight-painting problem. Confirmed via a mascot-skin-weight-fix Workflow: 3 independent approaches (Jacobi-diffusion weight smoothing at 2 strengths, flexion-angle clamping, and manual anatomically-anchored weight redistribution) were each built AND independently adversarially re-verified (fresh pixel-diff re-renders, not self-report) -- all 3 verified as no-improvement. Do not re-attempt weight-topology or pose-angle fixes for this defect; that lane is proven exhausted.
+- **Key Learning**: A quantitative gap-check is the fast way to distinguish "weight topology problem" from "LBS extreme-angle problem": at a genuinely 50/50-blended vertex, measure the deformed-position distance between binding it 100% to bone A vs 100% to bone B at the pose's peak frame. If that gap is a large fraction of a reference length (here: 26-28% of torso length), no reweighting between those same two bones can close it -- the fix has to add a third transform (shape key, helper bone, or dual-quaternion skinning), not redistribute weight between the existing two.
+- **Key Learning**: This rig's flexion is naturally measured relative to BIND POSE, not neutral-standing -- on this character the bind pose is already far from neutral, so a naive "clamp anything above 80% of peak" threshold can end up editing nearly every frame of a clip (102/102 on walk), silently degrading animation amplitude/character instead of surgically trimming one extreme moment. Check what fraction of frames a threshold-based edit actually touches before trusting it's a "peak-only" fix.
+- **Do-Not-Repeat**: Don't trust a fix agent's own pixel-percentage claim ("only 0.3-2.3% of pixels changed, crease visibly softened") as evidence the defect improved -- it can describe a small, spatially-correct-looking change that turns out under 800%-zoom fuzz-diff to be a 1-2px anti-aliasing edge shift, not the fold actually reducing. Small-and-localized is not the same as effective; always adversarially re-render pristine-vs-fixed at native zoom and diff, don't extrapolate from the touched-vertex count or self-reported pixel delta.
+- **Decision Log**: Recommended next attempt is a corrective shape key / morph target (glTF + three.js natively support animated morph weights) driven by a per-clip keyframe track peaking at each clip's already-known peak frame (walk=86, talk=15, point=59, wave=27, joy=12). Fallback order if that fails: helper/twist bone between Hips and UpLeg, then dual-quaternion skinning (last resort -- requires custom three.js runtime work, glTF/three.js SkinnedMesh is LBS-native).
 
 ### 2026-07-09/10 — Love Hurts Girl build (renumbered bug-218/219/220 during main-sync -- these are NOT the same incidents as main's own bug-194/195/196 above, which predate and are unrelated to this section)
 
-- **[2026-07-09] Do-Not-Repeat / Key Learning (mascot corrective shape key,
-  bug-218):** when a task hands you "already proven" scope (e.g. "all 5 clips
-  have the defect, fix all 5"), re-verify scope from FRESH pristine renders at
-  measured peaks before building anything — this session's task assumed 5 clips
-  needed a fix; tight crotch-zoom renders of the pristine file showed only 1
-  (wave) had a real defect, the other 4 were already clean and would have
-  REGRESSED if corrected. The task itself authorized this ("make this call
-  empirically from your own renders, not assumption") — trust that clause over
-  an inherited assumption.
-- **Key Learning — closed-form LBS shape-key math, unit scale trap:** a
-  rest-space shape-key delta computed via `A_blend.inverted() @ desired_world`
-  can look "exploded" (e.g. mean delta 0.94 vs a 0.257 world-space torso
-  reference) purely because mesh/armature `matrix_world` carries a uniform scale
-  (0.01, cm→m Mixamo-style convention here) — local-space deltas are ~100x
-  world-space deltas by construction, not a numerical blow-up. Before concluding
-  "near-singular blend matrix, shape key is broken," check `A_blend`'s condition
-  number/determinant (well-conditioned here, cond 1.16-2.16) AND convert both
-  sides to the SAME unit space before judging magnitude. The actual v3-attempt
-  "shattered geometry" seen in `renders/3d/mascot/v2/live/crop2_wave_after.png`
-  was a genuine implementation defect in that attempt, not evidence the
-  closed-form method itself is unsafe.
-- **[2026-07-10] Key Learning — skin-weight verification must filter by WHICH
-  pathway wrote a bone's weight, not just "is it nonzero" (bug-220):** on
-  `renders/3d/girl-love-hurts/love-hurts-girl-rig.blend`, several bones are
-  legitimately written by two independent, unrelated joints (Hips by both the
-  spine-chain's Hips<->Spine02 internal joint AND the leg-chains' hip branch
-  blend; Spine by its own neighbors AND the arm-chains' shoulder branch blend;
-  Shoulder by the arm-chain branch blend AND the Phase-2 gusset). A verification
-  pass that samples "every vertex with nonzero weight on bone X," sorts by an
-  axis projection, and checks monotonicity will falsely fail even when each
-  pathway's formula is independently, provably monotonic (smoothstep) — the fix
-  is to recompute the SAME chain/segment classification the weighting pass used
-  and filter samples to that population, plus explicitly exclude vertices
-  already inside the NEXT internal joint's own blend band (they carry partial
-  weight on the root bone for a different, unrelated reason). Also: don't
-  recompute a "which verts were pre-existing" marker as `len(v.groups)>0` on
-  every run — after the first run everyone has a group, silently widening the
-  set and corrupting later verification; persist it as a custom ID property
-  once, read thereafter.
-- **Key Learning — Blender NLA_TRACKS export re-basing (idle clip
-  byte-identity):** if an NLA strip's `frame_start` doesn't match its action's
-  own frame numbering (`action_frame_start`), Blender's glTF `NLA_TRACKS`
-  exporter re-bases the OUTPUT time axis by that mismatch (here: strip at
-  scene-frame 1, action numbered 0-72 → exported idle animation started at
-  t=1/24s instead of t=0). Fix: align `strip.frame_start`/`frame_end` to the
-  action's own numbering before export — this changes zero keyframe VALUES, only
-  the strip's scene-timeline placement, and reproduces the pristine time axis
-  exactly (verified 0.0 diff). A full Blender import→export round-trip is NEVER
-  literally byte-identical even for completely untouched actions (~0.0007
-  quaternion-unit / ~0.04° float32 requantization noise on every channel of
-  every clip, touched or not) — that magnitude, applied uniformly regardless of
-  what you touched, is the correct bar for "unchanged," not bit-exact bytes.
-- **[2026-07-10] Key Learning — Blender 5.1's layered-Action data model broke
-  `action.fcurves` (bug-221):** `bpy.data.actions.new(...).fcurves` raises
-  `AttributeError` on Blender 5.1.2 — F-curves now live at
-  `action.layers[*].strips[*].channelbags[*].fcurves` (one channelbag per
-  animation slot, `slot.identifier` e.g. `"OBGirlArmature"`). High-level calls
-  (`pose_bone.keyframe_insert(...)`, `bpy.ops.nla.bake(...)`) still work
-  unchanged and auto-create the layer/strip/channelbag structure — the break is
-  only on the READ side, for any script that parses F-curves back for
-  verification/audit. `renders/3d/girl-love-hurts/bake_walk_retarget.py` has a
-  reusable `iter_action_fcurves(action)` helper that flattens the new nesting
-  (filter `strip.type == 'KEYFRAME'`) into the old flat-list contract. Also
-  confirmed: `bpy.ops.nla.bake`'s `channel_types` enum
-  (`{'LOCATION','ROTATION','SCALE','BBONE','PROPS'}`, no `'PROPS'` typo) must be
-  passed explicitly to exclude LOCATION — the operator's own RNA default is a
-  full-bitmask set, not `{'ROTATION'}` alone, so "just call bake_action()"
-  silently bakes location too unless you pass `channel_types={'ROTATION'}`
-  yourself. Before writing any Action-introspection code on a Blender >=4.4
-  install, verify via `bpy.data.actions.new('x')` + `dir()`/`hasattr` in that
-  exact binary rather than trusting pre-5.0 API recall — Context7 was
-  unavailable in this environment (no MCP server configured) so bpy's own RNA
-  introspection was the fallback authoritative source, and it is authoritative
-  (it's the exact installed binary, not a doc that might describe a different
-  version).
-- **[2026-07-10] Ship state — full run summary (Phase 1-8):** Phase1 skeleton
-  success; Phase2 gusset built, panel watertight-by-construction but whole-mesh
-  NOT strictly watertight (pre-existing 89 non-manifold edges + 2nd disconnected
-  island, out of scope, see Decision Log above); Phase3
-  retargeting-compatibility angle gate FAILED (bug-219) → fresh_keyframe fork
-  taken; Phase4 skinning success (bug-220 sampling-bias fixed, verifies PASS);
-  Phase5 corrective shape key NOT built; Phase6 armpit-gusset pose gate
-  (`gate_armpit_gusset.py`) did NOT pass (bug-222); Phase7 bake success (bug-221
-  fcurves fix applied); Phase8 final recommendation = recommend_ship=true.
-  Logged as a state record, not independently re-derived — Phase 5/6 root causes
-  were not captured to a persisted artifact this run (`gate_armpit_gusset.py`
-  prints `GATE_RESULT_JSON` to stdout only, no report file) and are not
-  diagnosed here; see bug-222.
+- **[2026-07-09] Do-Not-Repeat / Key Learning (mascot corrective shape key, bug-218):** when a task hands you "already proven" scope (e.g. "all 5 clips have the defect, fix all 5"), re-verify scope from FRESH pristine renders at measured peaks before building anything — this session's task assumed 5 clips needed a fix; tight crotch-zoom renders of the pristine file showed only 1 (wave) had a real defect, the other 4 were already clean and would have REGRESSED if corrected. The task itself authorized this ("make this call empirically from your own renders, not assumption") — trust that clause over an inherited assumption.
+- **Key Learning — closed-form LBS shape-key math, unit scale trap:** a rest-space shape-key delta computed via `A_blend.inverted() @ desired_world` can look "exploded" (e.g. mean delta 0.94 vs a 0.257 world-space torso reference) purely because mesh/armature `matrix_world` carries a uniform scale (0.01, cm→m Mixamo-style convention here) — local-space deltas are ~100x world-space deltas by construction, not a numerical blow-up. Before concluding "near-singular blend matrix, shape key is broken," check `A_blend`'s condition number/determinant (well-conditioned here, cond 1.16-2.16) AND convert both sides to the SAME unit space before judging magnitude. The actual v3-attempt "shattered geometry" seen in `renders/3d/mascot/v2/live/crop2_wave_after.png` was a genuine implementation defect in that attempt, not evidence the closed-form method itself is unsafe.
+- **[2026-07-10] Key Learning — skin-weight verification must filter by WHICH pathway wrote a bone's weight, not just "is it nonzero" (bug-220):** on `renders/3d/girl-love-hurts/love-hurts-girl-rig.blend`, several bones are legitimately written by two independent, unrelated joints (Hips by both the spine-chain's Hips<->Spine02 internal joint AND the leg-chains' hip branch blend; Spine by its own neighbors AND the arm-chains' shoulder branch blend; Shoulder by the arm-chain branch blend AND the Phase-2 gusset). A verification pass that samples "every vertex with nonzero weight on bone X," sorts by an axis projection, and checks monotonicity will falsely fail even when each pathway's formula is independently, provably monotonic (smoothstep) — the fix is to recompute the SAME chain/segment classification the weighting pass used and filter samples to that population, plus explicitly exclude vertices already inside the NEXT internal joint's own blend band (they carry partial weight on the root bone for a different, unrelated reason). Also: don't recompute a "which verts were pre-existing" marker as `len(v.groups)>0` on every run — after the first run everyone has a group, silently widening the set and corrupting later verification; persist it as a custom ID property once, read thereafter.
+- **Key Learning — Blender NLA_TRACKS export re-basing (idle clip byte-identity):** if an NLA strip's `frame_start` doesn't match its action's own frame numbering (`action_frame_start`), Blender's glTF `NLA_TRACKS` exporter re-bases the OUTPUT time axis by that mismatch (here: strip at scene-frame 1, action numbered 0-72 → exported idle animation started at t=1/24s instead of t=0). Fix: align `strip.frame_start`/`frame_end` to the action's own numbering before export — this changes zero keyframe VALUES, only the strip's scene-timeline placement, and reproduces the pristine time axis exactly (verified 0.0 diff). A full Blender import→export round-trip is NEVER literally byte-identical even for completely untouched actions (~0.0007 quaternion-unit / ~0.04° float32 requantization noise on every channel of every clip, touched or not) — that magnitude, applied uniformly regardless of what you touched, is the correct bar for "unchanged," not bit-exact bytes.
+- **[2026-07-10] Key Learning — Blender 5.1's layered-Action data model broke `action.fcurves` (bug-221):** `bpy.data.actions.new(...).fcurves` raises `AttributeError` on Blender 5.1.2 — F-curves now live at `action.layers[*].strips[*].channelbags[*].fcurves` (one channelbag per animation slot, `slot.identifier` e.g. `"OBGirlArmature"`). High-level calls (`pose_bone.keyframe_insert(...)`, `bpy.ops.nla.bake(...)`) still work unchanged and auto-create the layer/strip/channelbag structure — the break is only on the READ side, for any script that parses F-curves back for verification/audit. `renders/3d/girl-love-hurts/bake_walk_retarget.py` has a reusable `iter_action_fcurves(action)` helper that flattens the new nesting (filter `strip.type == 'KEYFRAME'`) into the old flat-list contract. Also confirmed: `bpy.ops.nla.bake`'s `channel_types` enum (`{'LOCATION','ROTATION','SCALE','BBONE','PROPS'}`, no `'PROPS'` typo) must be passed explicitly to exclude LOCATION — the operator's own RNA default is a full-bitmask set, not `{'ROTATION'}` alone, so "just call bake_action()" silently bakes location too unless you pass `channel_types={'ROTATION'}` yourself. Before writing any Action-introspection code on a Blender >=4.4 install, verify via `bpy.data.actions.new('x')` + `dir()`/`hasattr` in that exact binary rather than trusting pre-5.0 API recall — Context7 was unavailable in this environment (no MCP server configured) so bpy's own RNA introspection was the fallback authoritative source, and it is authoritative (it's the exact installed binary, not a doc that might describe a different version).
+- **[2026-07-10] Ship state — full run summary (Phase 1-8):** Phase1 skeleton success; Phase2 gusset built, panel watertight-by-construction but whole-mesh NOT strictly watertight (pre-existing 89 non-manifold edges + 2nd disconnected island, out of scope, see Decision Log above); Phase3 retargeting-compatibility angle gate FAILED (bug-219) → fresh_keyframe fork taken; Phase4 skinning success (bug-220 sampling-bias fixed, verifies PASS); Phase5 corrective shape key NOT built; Phase6 armpit-gusset pose gate (`gate_armpit_gusset.py`) did NOT pass (bug-222); Phase7 bake success (bug-221 fcurves fix applied); Phase8 final recommendation = recommend_ship=true. Logged as a state record, not independently re-derived — Phase 5/6 root causes were not captured to a persisted artifact this run (`gate_armpit_gusset.py` prints `GATE_RESULT_JSON` to stdout only, no report file) and are not diagnosed here; see bug-222.
 
 ### 2026-07-10 — CHARACTER_PIPELINE_SPEC.md ported to skyyrose/character_pipeline/ (11 modules, 2794 lines)
 
-- **Key Learning — spec's `H`-suffix notation as a scaling signal:** when a spec
-  text expresses some constants as `[0.62H, 0.70H]` and others as bare numbers
-  (`|x|>0.12`) in the same paragraph, the H-suffix is the actual instruction for
-  what scales with detected height and what stays a fixed absolute-meter
-  constant — confirmed by cross-checking against the spec's own §3 constants
-  registry, where every listed constant (TUBE_R, SEED_ARM_R, SHOULDER_BLEND_R)
-  is unscaled and only BONE_RADII has an explicit "scaled proportionally with
-  target_height" instruction. Don't assume "generalization" means "scale
-  everything" — over-scaling non-height-relative gates (e.g. treating a
-  torso-width x-gate as a height fraction) would have been a real, silent bug on
-  any character with different proportions than the reference model.
-- **Key Learning — `@dataclass` on an `Exception` subclass is a footgun
-  (bug-223):** the decorator replaces `__init__`, so
-  `raise MyError(msg, keyword=...)` binds `msg` positionally to the FIRST
-  declared field, then collides with the explicit keyword. Caught this only by
-  re-reading the raise site against the generated signature before running
-  anything — worth a deliberate check whenever an Exception subclass declares
-  fields.
-- **Key Learning — landmark/config override dicts must treat key ABSENCE as the
-  only "auto-detect" signal, never a sentinel value.**
-  `overrides.get("z_hip", auto_detected)` means any key present in
-  `character.yaml`, even with a placeholder 0.0, silently wins over real
-  detection (bug-225). Caught before it shipped by re-reading my own example
-  config against the override-lookup code, not by a test.
-- **Key Learning — reused/consolidated tiny geometry helpers
-  (`point_segment_distance`, `rotation_matrix`) into `_geometry.py` the moment a
-  3rd file needed them** (segment.py and weights.py each had their own copy
-  before verify.py needed the same math) — worth the extra module for genuinely
-  identical math, not premature abstraction.
-- **Verification approach that caught real bugs:** wrote pytest unit tests for
-  the pure-numeric modules (24 tests, all hand-computed expected values, not
-  just "does it run") PLUS three one-off smoke scripts run directly against real
-  vendored assets: (1) package.py's template assembly against the ACTUAL
-  widget.html/inspector.html (caught nothing, but proved the string-anchor patch
-  for the external-GLB variant matches production byte-for-byte — anchor drift
-  would have shipped a silently-broken loader), (2) clean.py's node-TRS bake
-  against a hand-computed S=100/-90°X expected result (proved the generalization
-  is a strict superset of the reference script's validated behavior), (3) full
-  segment→weights→write_rigged_glb→verify_character() pipeline on a synthetic
-  mesh (proved `_read_skeleton_from_glb`'s GLB round-trip recovers
-  names/parents/positions EXACTLY — this was the highest-risk untested code
-  path). The real Love Hurts Girl GLB wasn't available this session, so the
-  spec's golden-fixture CI wiring (DoD #2) is a flagged follow-up, not silently
-  skipped.
-- **Decision Log:** vendored FBX2glTF v0.9.7 has no darwin-arm64 release
-  upstream (only darwin-x64, linux-x64, windows-x64.exe) — used darwin-x64
-  unconditionally on macOS (works under Rosetta 2), documented explicitly rather
-  than silently assuming arm64 existed per the spec's literal wording.
-- **Decision Log:** did not reuse the existing `devskyy` console script
-  (`main_enterprise:main`, a FastAPI dev-launcher) for `devskyy character build`
-  — registered a new `devskyy-character` script instead to avoid a name
-  collision with an unrelated existing entry point.
+- **Key Learning — spec's `H`-suffix notation as a scaling signal:** when a spec text expresses some constants as `[0.62H, 0.70H]` and others as bare numbers (`|x|>0.12`) in the same paragraph, the H-suffix is the actual instruction for what scales with detected height and what stays a fixed absolute-meter constant — confirmed by cross-checking against the spec's own §3 constants registry, where every listed constant (TUBE_R, SEED_ARM_R, SHOULDER_BLEND_R) is unscaled and only BONE_RADII has an explicit "scaled proportionally with target_height" instruction. Don't assume "generalization" means "scale everything" — over-scaling non-height-relative gates (e.g. treating a torso-width x-gate as a height fraction) would have been a real, silent bug on any character with different proportions than the reference model.
+- **Key Learning — `@dataclass` on an `Exception` subclass is a footgun (bug-223):** the decorator replaces `__init__`, so `raise MyError(msg, keyword=...)` binds `msg` positionally to the FIRST declared field, then collides with the explicit keyword. Caught this only by re-reading the raise site against the generated signature before running anything — worth a deliberate check whenever an Exception subclass declares fields.
+- **Key Learning — landmark/config override dicts must treat key ABSENCE as the only "auto-detect" signal, never a sentinel value.** `overrides.get("z_hip", auto_detected)` means any key present in `character.yaml`, even with a placeholder 0.0, silently wins over real detection (bug-225). Caught before it shipped by re-reading my own example config against the override-lookup code, not by a test.
+- **Key Learning — reused/consolidated tiny geometry helpers (`point_segment_distance`, `rotation_matrix`) into `_geometry.py` the moment a 3rd file needed them** (segment.py and weights.py each had their own copy before verify.py needed the same math) — worth the extra module for genuinely identical math, not premature abstraction.
+- **Verification approach that caught real bugs:** wrote pytest unit tests for the pure-numeric modules (24 tests, all hand-computed expected values, not just "does it run") PLUS three one-off smoke scripts run directly against real vendored assets: (1) package.py's template assembly against the ACTUAL widget.html/inspector.html (caught nothing, but proved the string-anchor patch for the external-GLB variant matches production byte-for-byte — anchor drift would have shipped a silently-broken loader), (2) clean.py's node-TRS bake against a hand-computed S=100/-90°X expected result (proved the generalization is a strict superset of the reference script's validated behavior), (3) full segment→weights→write_rigged_glb→verify_character() pipeline on a synthetic mesh (proved `_read_skeleton_from_glb`'s GLB round-trip recovers names/parents/positions EXACTLY — this was the highest-risk untested code path). The real Love Hurts Girl GLB wasn't available this session, so the spec's golden-fixture CI wiring (DoD #2) is a flagged follow-up, not silently skipped.
+- **Decision Log:** vendored FBX2glTF v0.9.7 has no darwin-arm64 release upstream (only darwin-x64, linux-x64, windows-x64.exe) — used darwin-x64 unconditionally on macOS (works under Rosetta 2), documented explicitly rather than silently assuming arm64 existed per the spec's literal wording.
+- **Decision Log:** did not reuse the existing `devskyy` console script (`main_enterprise:main`, a FastAPI dev-launcher) for `devskyy character build` — registered a new `devskyy-character` script instead to avoid a name collision with an unrelated existing entry point.
 
 ### 2026-07-10 — golden-fixture CI wiring for character_pipeline, found+fixed a real Head weight-bleed bug (bug-226)
 
-- **Key Learning — a synthetic-mesh test suite can be 100% green while the
-  pipeline is genuinely broken on real geometry.** All 24 unit tests (small
-  hand-built grid/dumbbell meshes) passed throughout the character_pipeline
-  port, but the FIRST run against the real Love Hurts Girl asset
-  (`renders/3d/girl-love-hurts/love-hurts-girl-rig.glb`) immediately failed a
-  WS6 gate: `look.below_neck_max_disp=0.06023`, chest verts moving 6cm under a
-  pure Head rotation. Root cause: Head/HeadTop_End's oversized radius (0.40m,
-  sized for the afro) had no region-mask ceiling in `weights.py`'s
-  `_region_masks()` — every other bone group (arm, leg) is explicitly gated to
-  its own territory, Head never was, so its radius-normalized reach let it
-  out-compete much-closer Spine bones for real torso vertices. This gap exists
-  in the ORIGINAL validated reference script too (`rig_girl.py` has the
-  identical mask structure) — it just never manifested on whatever mesh state
-  that session's ad-hoc verification happened to check. **The lesson: a
-  synthetic test mesh simple enough to be tractable by hand is also simple
-  enough to never trigger this class of bug — real, complex, clothed geometry is
-  a genuinely different regime, and "golden fixture" testing isn't a formality,
-  it's where the actual bugs live.**
-- **Key Learning — landmark auto-detection is not reliable on complex clothed
-  meshes, and that's fine, it's what character.yaml is for.** `_find_crotch_y`'s
-  "exactly 2 clusters" heuristic (clean on a simple synthetic mesh) got confused
-  by pants/hoodie fold noise on the real mesh (crotch_y auto-detected as 0.350
-  instead of ~~0.64) — diagnosed by printing the actual per-band cluster-count
-  profile across the scan range, which showed a clean stable 2-cluster region
-  only up to y~~0.25 before fragmenting into 3-8 spurious clusters from clothing
-  detail. Rather than trying to make the general auto-detection algorithm robust
-  to arbitrary clothing noise (a much bigger, open-ended problem), used the
-  ALREADY-EXISTING `character.yaml` override mechanism
-  (`characters/love_hurts_girl.yaml`'s validated `crotch_y: 0.64, neck_y: 1.28`)
-  — exactly the escape hatch that mechanism was designed for. Matches real
-  production usage (`devskyy-character build --config character.yaml`), not a
-  workaround.
-- **Key Learning — a corruption/mutation test must keep the corrupted vertex's
-  ORIGINAL dominant joint, or it silently escapes the check it's meant to
-  trip.** First attempt at the "deliberately broken weight solve must fail CI
-  naming wave_R.non_arm_side_max_disp" test set `weights=[1,0,0,0]` fully
-  overriding a non-arm vertex to RightArm — but `verify_character()` recomputes
-  `seg_labels` from the OUTPUT GLB's own dominant-joint bindings (not from an
-  independent ground truth), so a vertex fully rebound to RightArm gets
-  RECLASSIFIED as arm-labeled by verify's own logic and is excluded from the
-  `non_arm_side` check it was supposed to trip (a _different_ gate,
-  `torso_column_max_disp`, caught it instead — real behavior, just not the
-  literal named metric). Fix: partial-weight injection
-  (`[0.6 original_dominant, 0.4 RightArm]`) that keeps the vertex's real
-  dominant joint unchanged (so verify's recomputed labels still call it non-arm)
-  while still moving it well past the displacement tolerance. This generalizes:
-  any negative test targeting a dominant-joint-derived classification must
-  corrupt via partial blend, not full override, or the corruption reclassifies
-  itself out of the check.
-- **Decision Log:** dispatched 2 Explore agents (asset location,
-  CI/pytest-marker/git-lfs conventions) + 1 Plan agent (validate the
-  golden-fixture test design) in Plan Mode before writing any code — the Plan
-  agent caught 2 real design bugs before implementation started: a
-  monkeypatch-target mismatch (`segment.py` does `from .config import TUBE_R`, a
-  scalar binding — patching `config.TUBE_R` would have been silently inert) and
-  the wrong-metric risk from naive `TUBE_R` corruption. One Explore agent's
-  claim that `skyyrose/character_pipeline/` "doesn't exist on disk" was
-  independently verified and found to be WRONG (stale/misdirected search) before
-  being trusted — direct `ls`/`git status` from the main thread confirmed the
-  package was fully intact.
+- **Key Learning — a synthetic-mesh test suite can be 100% green while the pipeline is genuinely broken on real geometry.** All 24 unit tests (small hand-built grid/dumbbell meshes) passed throughout the character_pipeline port, but the FIRST run against the real Love Hurts Girl asset (`renders/3d/girl-love-hurts/love-hurts-girl-rig.glb`) immediately failed a WS6 gate: `look.below_neck_max_disp=0.06023`, chest verts moving 6cm under a pure Head rotation. Root cause: Head/HeadTop_End's oversized radius (0.40m, sized for the afro) had no region-mask ceiling in `weights.py`'s `_region_masks()` — every other bone group (arm, leg) is explicitly gated to its own territory, Head never was, so its radius-normalized reach let it out-compete much-closer Spine bones for real torso vertices. This gap exists in the ORIGINAL validated reference script too (`rig_girl.py` has the identical mask structure) — it just never manifested on whatever mesh state that session's ad-hoc verification happened to check. **The lesson: a synthetic test mesh simple enough to be tractable by hand is also simple enough to never trigger this class of bug — real, complex, clothed geometry is a genuinely different regime, and "golden fixture" testing isn't a formality, it's where the actual bugs live.**
+- **Key Learning — landmark auto-detection is not reliable on complex clothed meshes, and that's fine, it's what character.yaml is for.** `_find_crotch_y`'s "exactly 2 clusters" heuristic (clean on a simple synthetic mesh) got confused by pants/hoodie fold noise on the real mesh (crotch_y auto-detected as 0.350 instead of ~0.64) — diagnosed by printing the actual per-band cluster-count profile across the scan range, which showed a clean stable 2-cluster region only up to y~0.25 before fragmenting into 3-8 spurious clusters from clothing detail. Rather than trying to make the general auto-detection algorithm robust to arbitrary clothing noise (a much bigger, open-ended problem), used the ALREADY-EXISTING `character.yaml` override mechanism (`characters/love_hurts_girl.yaml`'s validated `crotch_y: 0.64, neck_y: 1.28`) — exactly the escape hatch that mechanism was designed for. Matches real production usage (`devskyy-character build --config character.yaml`), not a workaround.
+- **Key Learning — a corruption/mutation test must keep the corrupted vertex's ORIGINAL dominant joint, or it silently escapes the check it's meant to trip.** First attempt at the "deliberately broken weight solve must fail CI naming wave_R.non_arm_side_max_disp" test set `weights=[1,0,0,0]` fully overriding a non-arm vertex to RightArm — but `verify_character()` recomputes `seg_labels` from the OUTPUT GLB's own dominant-joint bindings (not from an independent ground truth), so a vertex fully rebound to RightArm gets RECLASSIFIED as arm-labeled by verify's own logic and is excluded from the `non_arm_side` check it was supposed to trip (a *different* gate, `torso_column_max_disp`, caught it instead — real behavior, just not the literal named metric). Fix: partial-weight injection (`[0.6 original_dominant, 0.4 RightArm]`) that keeps the vertex's real dominant joint unchanged (so verify's recomputed labels still call it non-arm) while still moving it well past the displacement tolerance. This generalizes: any negative test targeting a dominant-joint-derived classification must corrupt via partial blend, not full override, or the corruption reclassifies itself out of the check.
+- **Decision Log:** dispatched 2 Explore agents (asset location, CI/pytest-marker/git-lfs conventions) + 1 Plan agent (validate the golden-fixture test design) in Plan Mode before writing any code — the Plan agent caught 2 real design bugs before implementation started: a monkeypatch-target mismatch (`segment.py` does `from .config import TUBE_R`, a scalar binding — patching `config.TUBE_R` would have been silently inert) and the wrong-metric risk from naive `TUBE_R` corruption. One Explore agent's claim that `skyyrose/character_pipeline/` "doesn't exist on disk" was independently verified and found to be WRONG (stale/misdirected search) before being trusted — direct `ls`/`git status` from the main thread confirmed the package was fully intact.
 
 ### 2026-07-10 — /code-review of character_pipeline (2 parallel reviewer agents + own pass): 4 real defect groups found+fixed (bug-227..230)
 
-- **Key Learning — a green synthetic suite hid a silent-corruption bug AGAIN,
-  one layer deeper this time (bug-227):** `read_accessor` assumed tight-packed
-  bufferViews; glTF legally interleaves attributes via `byteStride`, and a flat
-  `np.frombuffer` on strided data returns garbage geometry with NO exception.
-  The module's own `GLBWriter` never interleaves, so every round-trip test
-  passes by construction — the exposure is exclusively externally-produced GLBs
-  (FBX2glTF output, user passthrough). Same lesson-shape as bug-226 (real
-  geometry ≠ synthetic geometry), escalated: here even a REAL-asset golden
-  fixture couldn't catch it, because the one real asset happens to be
-  tight-packed. When a reader and writer share assumptions, round-trip tests
-  prove consistency, not correctness — test against inputs the writer CANNOT
-  produce.
-- **Key Learning — normals transform by the inverse-transpose, and the golden
-  fixture proved the fix behavior-preserving (bug-228):** `N @ M.T` is only
-  direction-correct for rotation/isotropic scale; clean.py's whole point is
-  composing arbitrary node TRS chains, which admits non-uniform scale. Fix =
-  `inv(lin).T`; identical for rotations — proven not by argument but by
-  regenerating the golden fixture through the fixed code and getting a
-  byte-identical sha256. That's the cheap, decisive way to show a correctness
-  fix doesn't move validated assets: hash the regenerated artifact.
-- **Key Learning — RED-first caught MY OWN test being wrong before it locked in
-  a false expectation:** the rotation-case normals test failed in RED for the
-  WRONG reason — my hand-derivation said Rx(−90°) maps +z→−y; it maps +z→+y; the
-  code was right, my expectation wrong. If I'd written the fix first and the
-  test after, I'd have "fixed" correct code to match a wrong test. RED isn't
-  just proof the test can fail — it's a check on the test author.
-- **Key Learning — exception-contract audits should grep raise-sites against the
-  CLI's except clause (bug-229):** three independent failure paths (landmarks
-  ValueError, subprocess CalledProcessError with stderr swallowed by
-  capture_output, config-load before the try block) all escaped
-  `except PipelineError`'s clean report.json contract. Found by three different
-  reviewers converging — the systematic check is cheap:
-  `grep -n "raise" <modules>` vs `grep -n "except" cli.py`, then verify every
-  raise type either IS PipelineError or is caught. Also: `CalledProcessError`'s
-  str() shows returncode+argv only — captured stderr is silently invisible
-  unless explicitly surfaced.
-- **Key Learning — checksum-pin vendored executables even from "pinned" URLs
-  (bug-230):** GitHub release assets are replaceable under an existing tag;
-  raw.githubusercontent tag refs move on force-push. For binaries we chmod +x
-  and execute, URL pinning ≠ integrity. Self-derived sha256 pins (upstream
-  FBX2glTF is archived, publishes no checksums) + verify-on-skip-path +
-  `curl -f` (without it, a 404 HTML body lands on disk as a "binary" with exit 0
-  and set -euo pipefail never fires). Red-test the mismatch branch actually
-  exits 1 — a verifier that can't fail isn't verification.
-
+- **Key Learning — a green synthetic suite hid a silent-corruption bug AGAIN, one layer deeper this time (bug-227):** `read_accessor` assumed tight-packed bufferViews; glTF legally interleaves attributes via `byteStride`, and a flat `np.frombuffer` on strided data returns garbage geometry with NO exception. The module's own `GLBWriter` never interleaves, so every round-trip test passes by construction — the exposure is exclusively externally-produced GLBs (FBX2glTF output, user passthrough). Same lesson-shape as bug-226 (real geometry ≠ synthetic geometry), escalated: here even a REAL-asset golden fixture couldn't catch it, because the one real asset happens to be tight-packed. When a reader and writer share assumptions, round-trip tests prove consistency, not correctness — test against inputs the writer CANNOT produce.
+- **Key Learning — normals transform by the inverse-transpose, and the golden fixture proved the fix behavior-preserving (bug-228):** `N @ M.T` is only direction-correct for rotation/isotropic scale; clean.py's whole point is composing arbitrary node TRS chains, which admits non-uniform scale. Fix = `inv(lin).T`; identical for rotations — proven not by argument but by regenerating the golden fixture through the fixed code and getting a byte-identical sha256. That's the cheap, decisive way to show a correctness fix doesn't move validated assets: hash the regenerated artifact.
+- **Key Learning — RED-first caught MY OWN test being wrong before it locked in a false expectation:** the rotation-case normals test failed in RED for the WRONG reason — my hand-derivation said Rx(−90°) maps +z→−y; it maps +z→+y; the code was right, my expectation wrong. If I'd written the fix first and the test after, I'd have "fixed" correct code to match a wrong test. RED isn't just proof the test can fail — it's a check on the test author.
+- **Key Learning — exception-contract audits should grep raise-sites against the CLI's except clause (bug-229):** three independent failure paths (landmarks ValueError, subprocess CalledProcessError with stderr swallowed by capture_output, config-load before the try block) all escaped `except PipelineError`'s clean report.json contract. Found by three different reviewers converging — the systematic check is cheap: `grep -n "raise" <modules>` vs `grep -n "except" cli.py`, then verify every raise type either IS PipelineError or is caught. Also: `CalledProcessError`'s str() shows returncode+argv only — captured stderr is silently invisible unless explicitly surfaced.
+- **Key Learning — checksum-pin vendored executables even from "pinned" URLs (bug-230):** GitHub release assets are replaceable under an existing tag; raw.githubusercontent tag refs move on force-push. For binaries we chmod +x and execute, URL pinning ≠ integrity. Self-derived sha256 pins (upstream FBX2glTF is archived, publishes no checksums) + verify-on-skip-path + `curl -f` (without it, a 404 HTML body lands on disk as a "binary" with exit 0 and set -euo pipefail never fires). Red-test the mismatch branch actually exits 1 — a verifier that can't fail isn't verification.
 ## 2026-07-10 — bug-221: emblem 404 — file-existence gate and URL builder used DIFFERENT path literals
 
-- **Key Learning**: A `file_exists()` gate and the `<img src>` URL for the SAME
-  asset built the path two different ways — the gate used the literal
-  `'assets/' . $rel` (trailing slash present) while the URL used
-  `SKYYROSE_ASSETS_URI . $rel` where
-  `SKYYROSE_ASSETS_URI = SKYYROSE_URI . '/assets'` has NO trailing slash and
-  `$rel` had NO leading slash → served URL was `.../assetsimages/...` (404)
-  while the gate still passed. On-disk truth and served-URL truth diverged. Fix:
-  make the relative-path variable carry its own leading slash (matches this
-  file's existing `hero_bg` convention where `$resolved_hero_bg` =
-  `/branding/...`), and align the `file_exists` literal to `'assets'` (no
-  trailing slash) so BOTH code paths build the identical string.
-- **Do-Not-Repeat**: When an asset is guarded by `file_exists()` and separately
-  emitted as a URL, build the path ONCE (or from the same convention) — never
-  with two different literals. A green `file_exists` gate is NOT proof the URL
-  resolves; a build-level check (`grep .min`, `ls` on disk, `php -l`) verified
-  all the wrong invariants here and every check passed while the headline
-  feature 404'd live. Only Playwright-on-live caught it. UI/asset changes are
-  NOT "done" on a source/build grep — eyes-on live render is the authoritative
-  gate (project verification matrix, already LOCKED).
-- **Do-Not-Repeat (version)**: the theme version is a TRIPLE — `style.css`
-  (`Version:`), `functions.php` (`SKYYROSE_VERSION`), AND `readme.txt`
-  (`Stable tag:`). A grep that omits `readme.txt` will look synced but the
-  freshness-guard pre-commit hook blocks the commit on drift. Bump all three.
+- **Key Learning**: A `file_exists()` gate and the `<img src>` URL for the SAME asset built the path two different ways — the gate used the literal `'assets/' . $rel` (trailing slash present) while the URL used `SKYYROSE_ASSETS_URI . $rel` where `SKYYROSE_ASSETS_URI = SKYYROSE_URI . '/assets'` has NO trailing slash and `$rel` had NO leading slash → served URL was `.../assetsimages/...` (404) while the gate still passed. On-disk truth and served-URL truth diverged. Fix: make the relative-path variable carry its own leading slash (matches this file's existing `hero_bg` convention where `$resolved_hero_bg` = `/branding/...`), and align the `file_exists` literal to `'assets'` (no trailing slash) so BOTH code paths build the identical string.
+- **Do-Not-Repeat**: When an asset is guarded by `file_exists()` and separately emitted as a URL, build the path ONCE (or from the same convention) — never with two different literals. A green `file_exists` gate is NOT proof the URL resolves; a build-level check (`grep .min`, `ls` on disk, `php -l`) verified all the wrong invariants here and every check passed while the headline feature 404'd live. Only Playwright-on-live caught it. UI/asset changes are NOT "done" on a source/build grep — eyes-on live render is the authoritative gate (project verification matrix, already LOCKED).
+- **Do-Not-Repeat (version)**: the theme version is a TRIPLE — `style.css` (`Version:`), `functions.php` (`SKYYROSE_VERSION`), AND `readme.txt` (`Stable tag:`). A grep that omits `readme.txt` will look synced but the freshness-guard pre-commit hook blocks the commit on drift. Bump all three.
 
 ## 2026-07-11 — Dashboard = editorial face OF the WordPress site (founder correction)
 
-- **User Preference**: devskyy.app dashboard is the editorial/operations face of
-  skyyrose.co — where we automate the WordPress site, make content, and track
-  leads. Do NOT frame the two systems as "independent, never cross-wire" in the
-  functional sense; independence is about traffic/codebase separation only.
-  Dashboard features should serve WordPress automation, content authoring, and
-  lead tracking. MCP-over-HTTP bridge is the intended connective tissue.
+- **User Preference**: devskyy.app dashboard is the editorial/operations face of skyyrose.co — where we automate the WordPress site, make content, and track leads. Do NOT frame the two systems as "independent, never cross-wire" in the functional sense; independence is about traffic/codebase separation only. Dashboard features should serve WordPress automation, content authoring, and lead tracking. MCP-over-HTTP bridge is the intended connective tissue.
 
 ## 2026-07-11 — .env values with spaces MUST be quoted (dual-loader trap)
 
-- **Key Learning**: Root `.env` is consumed by TWO loaders with different
-  grammars: python-dotenv (tolerates unquoted spaces) and shell `source` (breaks
-  on them — variable loads empty, silently under `2>/dev/null`). WP application
-  passwords contain spaces, so an unquoted `WP_APP_PASSWORD=xxxx xxxx xxxx`
-  works in Python tooling and silently fails in every bash pipeline. Quote ALL
-  .env values that can contain spaces.
-- **Do-Not-Repeat**: A 401 from an authed check is not proof the credential is
-  wrong — first prove the credential actually LOADED (`${VAR:+yes}`). Also: a
-  secrets-scan hit is not a leak until eyes-on context confirms it (admin
-  settings UI placeholders `ck_xxxxxxxxxxxxx` false-positived a ck_/cs_ regex;
-  real WC keys are 40 lowercase hex).
+- **Key Learning**: Root `.env` is consumed by TWO loaders with different grammars: python-dotenv (tolerates unquoted spaces) and shell `source` (breaks on them — variable loads empty, silently under `2>/dev/null`). WP application passwords contain spaces, so an unquoted `WP_APP_PASSWORD=xxxx xxxx xxxx` works in Python tooling and silently fails in every bash pipeline. Quote ALL .env values that can contain spaces.
+- **Do-Not-Repeat**: A 401 from an authed check is not proof the credential is wrong — first prove the credential actually LOADED (`${VAR:+yes}`). Also: a secrets-scan hit is not a leak until eyes-on context confirms it (admin settings UI placeholders `ck_xxxxxxxxxxxxx` false-positived a ck_/cs_ regex; real WC keys are 40 lowercase hex).
 
 ## 2026-07-11 — Consolidations revert fixes; registers must live in git
 
-- **Do-Not-Repeat**: The 2026-04-15 "source-of-truth consolidation" (64af42c9a)
-  deleted root `agent_sdk/` — the copy carrying 4 fresh P1/P2 fixes — and
-  promoted the OLDER unfixed `sdk/python/agent_sdk/` duplicate as canonical,
-  silently reviving all 4 bugs for ~3 months (one crashes the docker-compose
-  worker on startup). Before deleting either side of a duplicate pair, DIFF THE
-  COPIES and port fixes forward; "newest path wins" is not a merge strategy.
-- **Do-Not-Repeat**: The go-live sweep register (30 findings) lived only in an
-  untracked HTML + memory — the file is gone and 2 regressions went unnoticed
-  through rewrites of seo.php/scene.php. Finding registers and fix-state tables
-  must be COMMITTED (tasks/*.md in git), never untracked artifacts or
-  memory-only.
+- **Do-Not-Repeat**: The 2026-04-15 "source-of-truth consolidation" (64af42c9a) deleted root `agent_sdk/` — the copy carrying 4 fresh P1/P2 fixes — and promoted the OLDER unfixed `sdk/python/agent_sdk/` duplicate as canonical, silently reviving all 4 bugs for ~3 months (one crashes the docker-compose worker on startup). Before deleting either side of a duplicate pair, DIFF THE COPIES and port fixes forward; "newest path wins" is not a merge strategy.
+- **Do-Not-Repeat**: The go-live sweep register (30 findings) lived only in an untracked HTML + memory — the file is gone and 2 regressions went unnoticed through rewrites of seo.php/scene.php. Finding registers and fix-state tables must be COMMITTED (tasks/*.md in git), never untracked artifacts or memory-only.
 
 ## 2026-07-10 — bug-224/225: KC teaser reveal — a class swap collided with a hidden GSAP animator
 
-- **Key Learning**: `.kc-teaser__hero-content` children were animated by TWO
-  reveal systems simultaneously — the CSS `.rv-*` reveal classes (opacity:0 at
-  rest → `.is-visible` shows them) AND
-  `gsap.from(heroContent.children,{opacity:0,y:40})` in
-  `assets/js/kids-capsule-launch.js:82`. GSAP `.from()` with immediateRender
-  snapshots each child's CURRENT opacity as the tween target; because the
-  `.rv-*` classes rest at opacity:0, GSAP captured 0 and tweened 0→0, pinning an
-  inline `opacity:0` that outranks the CSS `.is-visible` reveal → elements
-  permanently invisible.
-- **Do-Not-Repeat**: Before changing/adding a CSS reveal class (`rv-*`,
-  opacity-0-at-rest) on an element, GREP for any OTHER animation system
-  targeting that element or its container — especially `gsap.from(...)` /
-  `gsap.to(...)` and `.children`/`querySelectorAll` selectors. Two reveal
-  systems on one element fight over `opacity`/`transform` and the loser wins by
-  inline-style specificity. bug-224's fix (rv-split-word→rv-clip-up on the KC
-  h1) pulled the wordmark into a pre-existing GSAP race that had ALREADY
-  silently blanked the badge+tagline. The overlap fix was correct in isolation
-  but shipped a blank-hero regression to production.
-- **Do-Not-Repeat**: `gsap.from({opacity:0})` on elements that may already be
-  opacity:0 is an anti-pattern — prefer `gsap.set()`+`gsap.to()`, or ensure the
-  element's CSS rest state is opacity:1 and let GSAP own the reveal exclusively.
-  Fix here: removed the `.rv-*` classes from the 3 KC hero children so GSAP is
-  the sole reveal owner (CSS default opacity:1; reducedMotion early-return =
-  instant-visible).
-- **Reinforced**: eyes-on-live verify caught this — no source/build check (php
-  -l, grep .min, freshness) could have. Second time this session (see bug-221).
-  UI/asset/reveal changes are NOT done until rendered live and looked at.
+- **Key Learning**: `.kc-teaser__hero-content` children were animated by TWO reveal systems simultaneously — the CSS `.rv-*` reveal classes (opacity:0 at rest → `.is-visible` shows them) AND `gsap.from(heroContent.children,{opacity:0,y:40})` in `assets/js/kids-capsule-launch.js:82`. GSAP `.from()` with immediateRender snapshots each child's CURRENT opacity as the tween target; because the `.rv-*` classes rest at opacity:0, GSAP captured 0 and tweened 0→0, pinning an inline `opacity:0` that outranks the CSS `.is-visible` reveal → elements permanently invisible.
+- **Do-Not-Repeat**: Before changing/adding a CSS reveal class (`rv-*`, opacity-0-at-rest) on an element, GREP for any OTHER animation system targeting that element or its container — especially `gsap.from(...)` / `gsap.to(...)` and `.children`/`querySelectorAll` selectors. Two reveal systems on one element fight over `opacity`/`transform` and the loser wins by inline-style specificity. bug-224's fix (rv-split-word→rv-clip-up on the KC h1) pulled the wordmark into a pre-existing GSAP race that had ALREADY silently blanked the badge+tagline. The overlap fix was correct in isolation but shipped a blank-hero regression to production.
+- **Do-Not-Repeat**: `gsap.from({opacity:0})` on elements that may already be opacity:0 is an anti-pattern — prefer `gsap.set()`+`gsap.to()`, or ensure the element's CSS rest state is opacity:1 and let GSAP own the reveal exclusively. Fix here: removed the `.rv-*` classes from the 3 KC hero children so GSAP is the sole reveal owner (CSS default opacity:1; reducedMotion early-return = instant-visible).
+- **Reinforced**: eyes-on-live verify caught this — no source/build check (php -l, grep .min, freshness) could have. Second time this session (see bug-221). UI/asset/reveal changes are NOT done until rendered live and looked at.
 
-- **Theme version = THREE files** (2026-07-12): style.css + functions.php +
-  readme.txt "Stable tag" — freshness-guard check 3 blocks commits on drift.
-  Bump with targeted edits (never blanket sed: readme.txt changelog contains
-  historical version headings) and add a changelog entry.
-- **`npm run build:js` rewrites all 35 .min files with terser-version noise**
-  (2026-07-12): for surgical PRs, `git checkout --` the .min files whose sources
-  you didn't touch; keep only your feature's .min.
-- **chrome-devtools freeze-via-`document.hidden` stub leaves stale compositor
-  tiles** (2026-07-12): a screenshot after stubbing hidden=true can show ghost
-  duplicates of WebGL content at old positions — count DOM canvases before
-  diagnosing duplicate renders.
-- **GLB web builds: gltf-transform CLI chain `resize → webp → draco` as separate
-  commands** (2026-07-12): skip the all-in-one `optimize` on skinned/animated
-  rigs (its join/simplify steps risk the rig); meshopt stays forbidden (prod
-  loader can't read it). 25.5MB→1.11MB on love-hurts-girl.
+- **Theme version = THREE files** (2026-07-12): style.css + functions.php + readme.txt "Stable tag" — freshness-guard check 3 blocks commits on drift. Bump with targeted edits (never blanket sed: readme.txt changelog contains historical version headings) and add a changelog entry.
+- **`npm run build:js` rewrites all 35 .min files with terser-version noise** (2026-07-12): for surgical PRs, `git checkout --` the .min files whose sources you didn't touch; keep only your feature's .min.
+- **chrome-devtools freeze-via-`document.hidden` stub leaves stale compositor tiles** (2026-07-12): a screenshot after stubbing hidden=true can show ghost duplicates of WebGL content at old positions — count DOM canvases before diagnosing duplicate renders.
+- **GLB web builds: gltf-transform CLI chain `resize → webp → draco` as separate commands** (2026-07-12): skip the all-in-one `optimize` on skinned/animated rigs (its join/simplify steps risk the rig); meshopt stays forbidden (prod loader can't read it). 25.5MB→1.11MB on love-hurts-girl.
 
-- **FOUNDER CORRECTION (2026-07-12): the Love Hurts Girl IS the mascot** —
-  site-wide, every page, full-body chat host (the existing mascot.js/skyy-3d.js
-  system). NOT a Love-Hurts-only scene cameo (that was a wrong scope read; PR
-  #737's cameo module gets superseded). Path: girl GLB becomes the mascot body
-  via assets/models/skyy.glb swap — needs clips renamed to the contract ('walk')
-  and an idle clip authored on her rig first.
-- **Buglog merges: id match ≠ same bug (2026-07-12)**: parallel branches
-  allocate the same bug-NNN independently (scripts/wolf_bug_id.py only sees its
-  own branch). At merge time, union by CONTENT (error_message), never by id — a
-  blind theirs-wins-by-id union silently dropped 13 girl-build entries (restored
-  as bug-233..245). Renumber colliding entries to max(main)+1.
+- **FOUNDER CORRECTION (2026-07-12): the Love Hurts Girl IS the mascot** — site-wide, every page, full-body chat host (the existing mascot.js/skyy-3d.js system). NOT a Love-Hurts-only scene cameo (that was a wrong scope read; PR #737's cameo module gets superseded). Path: girl GLB becomes the mascot body via assets/models/skyy.glb swap — needs clips renamed to the contract ('walk') and an idle clip authored on her rig first.
+- **Buglog merges: id match ≠ same bug (2026-07-12)**: parallel branches allocate the same bug-NNN independently (scripts/wolf_bug_id.py only sees its own branch). At merge time, union by CONTENT (error_message), never by id — a blind theirs-wins-by-id union silently dropped 13 girl-build entries (restored as bug-233..245). Renumber colliding entries to max(main)+1.
 
 ## 2026-07-13 — Skills that COPY brand canon drift silently; verify fonts against the THEME, not skill text
-
-~26 skill/plugin files (skyyrose-brand-dna, 3d-web-os, wp-platform, the dev-team
-charter
-`skyyrose-suite/plugins/skyyrose/workflows/skyyrose-dev-team-context.html`, most
-skyyrose-market social skills, skyyrose-design code-ref examples, all 8
-wordpress-copilot skills) had fallen ~1 month behind CLAUDE.md brand canon: they
-still prescribed Playfair Display / Cormorant Garamond / Bebas Neue (cut
-2026-07-10) as CURRENT. Fixed to the unified model: Archivo (display/headings,
-all collections) · Hanken Grotesk (body/UI) · Anton (UI caps/accent) · Cinzel
-(engraved-caps accent, KEPT) · Inter (fallback); collection NAMES =
-bespoke-script lockup IMAGES (BR Script / LH Graffiti / Pinyon SIG / Grand Hotel
-KC), never live type. Pacifico->BR Script, Kaushan->LH Graffiti (name-scripts,
-replaced 2026-07-11). NEVER map an interior font to a per-collection script.
-DO-NOT-REPEAT: claude-mem auto-observation #24324 is mis-titled
-"Cinzel/Playfair/Cormorant/Bebas Remain Current"
-
-- it summarized the STALE skill text as if it were canon. It is WRONG.
-  Authoritative font source = the theme:
-  `wordpress-theme/skyyrose-flagship/assets/css/fonts.css` @font-face +
-  `theme.json` Font Library + shipped `assets/fonts/*.woff2`.
-  Playfair/Cormorant/Bebas/Yellowtail have NO woff2 and are absent from both ->
-  cut. Never verify a font-canon claim against a skill file or auto-observation;
-  verify against fonts.css/theme.json/woff2. STILL STALE (out of scope,
-  flagged): the `skyyrose/` static-app tree uses cut fonts via Google-Fonts
-  CDN - app code + a zero-CDN-policy question, separate pass. Plugin cache is a
-  LOCAL copy (`~/.claude/plugins/cache/skyyrose-suite/<plugin>/1.0.0/`) - edit
-  source THEN mirror to cache; wordpress-copilot loads directly from repo (no
-  cache).
+~26 skill/plugin files (skyyrose-brand-dna, 3d-web-os, wp-platform, the dev-team charter
+`skyyrose-suite/plugins/skyyrose/workflows/skyyrose-dev-team-context.html`, most skyyrose-market social skills,
+skyyrose-design code-ref examples, all 8 wordpress-copilot skills) had fallen ~1 month behind CLAUDE.md brand
+canon: they still prescribed Playfair Display / Cormorant Garamond / Bebas Neue (cut 2026-07-10) as CURRENT.
+Fixed to the unified model: Archivo (display/headings, all collections) · Hanken Grotesk (body/UI) · Anton (UI
+caps/accent) · Cinzel (engraved-caps accent, KEPT) · Inter (fallback); collection NAMES = bespoke-script lockup
+IMAGES (BR Script / LH Graffiti / Pinyon SIG / Grand Hotel KC), never live type. Pacifico->BR Script,
+Kaushan->LH Graffiti (name-scripts, replaced 2026-07-11). NEVER map an interior font to a per-collection script.
+DO-NOT-REPEAT: claude-mem auto-observation #24324 is mis-titled "Cinzel/Playfair/Cormorant/Bebas Remain Current"
+- it summarized the STALE skill text as if it were canon. It is WRONG. Authoritative font source = the theme:
+`wordpress-theme/skyyrose-flagship/assets/css/fonts.css` @font-face + `theme.json` Font Library + shipped
+`assets/fonts/*.woff2`. Playfair/Cormorant/Bebas/Yellowtail have NO woff2 and are absent from both -> cut.
+Never verify a font-canon claim against a skill file or auto-observation; verify against fonts.css/theme.json/woff2.
+STILL STALE (out of scope, flagged): the `skyyrose/` static-app tree uses cut fonts via Google-Fonts CDN - app
+code + a zero-CDN-policy question, separate pass. Plugin cache is a LOCAL copy
+(`~/.claude/plugins/cache/skyyrose-suite/<plugin>/1.0.0/`) - edit source THEN mirror to cache; wordpress-copilot
+loads directly from repo (no cache).
 
 ## (2026-07-19, Pixel wave-1) Key Learnings + Do-Not-Repeat additions
-
-- **Key Learning — theme font aliases:** style.css consumes
-  `--font-body`/`--font-heading` LEGACY aliases; canonical vars are
-  `--skyyrose-font-*` and the bridge lives in design-tokens.css §1.12. A missing
-  alias fails silent (fallback font wins sitewide, no console error) — when a
-  computed font is wrong, check the alias block before the @font-face.
-- **Key Learning — WC core layout in a grid theme:** `woocommerce-layout.css`
-  stays enqueued (Bolt Wave-1); its float rules + clearfix
-  `::before {display:table}` become phantom GRID ITEMS inside `display:grid`
-  ul.products — neutralize with `content:none` + `float:none;width:auto` at
-  equal specificity, don't dequeue.
-- **Do-Not-Repeat — audit probes:** `querySelector('a, .b, [class*=c]')` returns
-  the first match in DOCUMENT order, not selector order — caused the false
-  "pre-order missing footer" P1 (matched .po-card__footer). Probe for a SPECIFIC
-  selector (#colophon.site-footer) or query each selector separately. Likewise:
-  rect.right > viewport does NOT mean an element causes horizontal scroll —
-  position:fixed subtrees can't extend scrollWidth; filter them before naming
-  culprits.
-- **Do-Not-Repeat — screenshot harnesses on this theme:** the site sets
-  `scroll-behavior:smooth`; `window.scrollTo(0,0)` animates and a fixed 1s
-  settle captures mid-scroll on long pages. Wait on `scrollY===0`, not a timer.
+- **Key Learning — theme font aliases:** style.css consumes `--font-body`/`--font-heading` LEGACY aliases; canonical vars are `--skyyrose-font-*` and the bridge lives in design-tokens.css §1.12. A missing alias fails silent (fallback font wins sitewide, no console error) — when a computed font is wrong, check the alias block before the @font-face.
+- **Key Learning — WC core layout in a grid theme:** `woocommerce-layout.css` stays enqueued (Bolt Wave-1); its float rules + clearfix `::before {display:table}` become phantom GRID ITEMS inside `display:grid` ul.products — neutralize with `content:none` + `float:none;width:auto` at equal specificity, don't dequeue.
+- **Do-Not-Repeat — audit probes:** `querySelector('a, .b, [class*=c]')` returns the first match in DOCUMENT order, not selector order — caused the false "pre-order missing footer" P1 (matched .po-card__footer). Probe for a SPECIFIC selector (#colophon.site-footer) or query each selector separately. Likewise: rect.right > viewport does NOT mean an element causes horizontal scroll — position:fixed subtrees can't extend scrollWidth; filter them before naming culprits.
+- **Do-Not-Repeat — screenshot harnesses on this theme:** the site sets `scroll-behavior:smooth`; `window.scrollTo(0,0)` animates and a fixed 1s settle captures mid-scroll on long pages. Wait on `scrollY===0`, not a timer.
 
 ## 2026-08-03 — Compositor QA verdicts are caller-visible success gates
 
-- **Key Learning**: In `CompositorAgent.composite`, preserve the completed
-  artifact, QA details, and audit log for every verdict, but derive
-  `CompositorResult.success` from the explicit QA allowlist: `pass`/`warn` only.
-  A `fail` (or unrecognized status) is a non-raising, fail-closed result so
-  callers can inspect and route the retained evidence. (bug-319)
-- **Key Learning**: `_visual_qa` must normalize absent or falsey provider
-  verdicts to `fail`; only explicit `pass` and `warn` statuses may reach the
-  success allowlist. (bug-320)
+- **Key Learning**: In `CompositorAgent.composite`, preserve the completed artifact, QA details, and audit log for every verdict, but derive `CompositorResult.success` from the explicit QA allowlist: `pass`/`warn` only. A `fail` (or unrecognized status) is a non-raising, fail-closed result so callers can inspect and route the retained evidence. (bug-319)
+- **Key Learning**: `_visual_qa` must normalize absent or falsey provider verdicts to `fail`; only explicit `pass` and `warn` statuses may reach the success allowlist. (bug-320)
