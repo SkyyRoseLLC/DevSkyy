@@ -4,6 +4,8 @@ set -euo pipefail
 THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$THEME_DIR"
 
+<<<<<<< ours
+<<<<<<< ours
 file_size() {
 	if stat -c '%s' "$1" >/dev/null 2>&1; then
 		stat -c '%s' "$1"
@@ -29,8 +31,20 @@ PY
 }
 
 find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l >/dev/null
+=======
+=======
+>>>>>>> theirs
+file_size_bytes() {
+  wc -c < "$1" | tr -d '[:space:]'
+}
+
+find . -name '*.php' -not -path './vendor/*' -print0 | xargs -0 -n1 php -l > /dev/null
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 for document in theme.json data/product-presentation-registry.json data/image-optimization.json data/opening-product-media.json data/font-provenance.json; do
-	jq empty "$document"
+  jq empty "$document"
 done
 
 # Page typography is a shippable dependency; collection scripts remain artwork
@@ -39,23 +53,29 @@ done
 font_manifest="data/font-provenance.json"
 license_path="$(jq -r '.license_bundle.text_path' "$font_manifest")"
 license_hash="$(jq -r '.license_bundle.text_sha256' "$font_manifest")"
-test -s "$license_path" || { echo "Missing font license bundle: $license_path" >&2; exit 1; }
+test -s "$license_path" || {
+  echo "Missing font license bundle: $license_path" >&2
+  exit 1
+}
 if [[ "$(shasum -a 256 "$license_path" | awk '{print $1}')" != "$license_hash" ]]; then
-	echo "Font license bundle hash drift: $license_path" >&2
-	exit 1
+  echo "Font license bundle hash drift: $license_path" >&2
+  exit 1
 fi
 while IFS=$'\t' read -r font_path font_hash; do
-	test -s "$font_path" || { echo "Missing registered page font: $font_path" >&2; exit 1; }
-	if [[ "$(shasum -a 256 "$font_path" | awk '{print $1}')" != "$font_hash" ]]; then
-		echo "Page font hash drift: $font_path" >&2
-		exit 1
-	fi
+  test -s "$font_path" || {
+    echo "Missing registered page font: $font_path" >&2
+    exit 1
+  }
+  if [[ "$(shasum -a 256 "$font_path" | awk '{print $1}')" != "$font_hash" ]]; then
+    echo "Page font hash drift: $font_path" >&2
+    exit 1
+  fi
 done < <(jq -r '.page_fonts[] | [.path, .sha256] | @tsv' "$font_manifest")
 while IFS= read -r artwork_face; do
-	if rg -Fq "$artwork_face" assets/css theme.json; then
-		echo "Unproven collection artwork face registered as page typography: $artwork_face" >&2
-		exit 1
-	fi
+  if rg -Fq "$artwork_face" assets/css theme.json; then
+    echo "Unproven collection artwork face registered as page typography: $artwork_face" >&2
+    exit 1
+  fi
 done < <(jq -r '.artwork_only[] | .family + "|" + .path' "$font_manifest" | cut -d'|' -f1)
 
 python3 scripts/build-product-presentation-registry.py --check
@@ -64,6 +84,8 @@ php scripts/test-marketplace-registry.php
 node scripts/build-assets.mjs --check
 
 while IFS= read -r base; do
+<<<<<<< ours
+<<<<<<< ours
 	for width in 640 1024 1440; do
 		asset="assets/sot/images/hero/responsive/${base}-${width}w.webp"
 		test -s "$asset" || { echo "Missing optimized hero derivative: $asset" >&2; exit 1; }
@@ -73,6 +95,25 @@ while IFS= read -r base; do
 			exit 1
 		fi
 	done
+=======
+=======
+>>>>>>> theirs
+  for width in 640 1024 1440; do
+    asset="assets/sot/images/hero/responsive/${base}-${width}w.webp"
+    test -s "$asset" || {
+      echo "Missing optimized hero derivative: $asset" >&2
+      exit 1
+    }
+    bytes="$(file_size_bytes "$asset")"
+    if [ "$bytes" -gt 260000 ]; then
+      echo "Optimized hero derivative exceeds 260KB: $asset" >&2
+      exit 1
+    fi
+  done
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 done < <(jq -r '.hero_bases[]' data/image-optimization.json)
 
 # Editorial scenes that are configured for responsive delivery are governed by
@@ -80,6 +121,8 @@ done < <(jq -r '.hero_bases[]' data/image-optimization.json)
 # from silently restoring an original multi-megabyte scene to mobile visitors.
 editorial_max_bytes="$(jq -r '.policy.max_served_editorial_bytes' data/image-optimization.json)"
 while IFS=$'\t' read -r derivative_root basename widths; do
+<<<<<<< ours
+<<<<<<< ours
 	while IFS= read -r width; do
 		asset="${derivative_root}/${basename}-${width}w.webp"
 		test -s "$asset" || { echo "Missing optimized editorial derivative: $asset" >&2; exit 1; }
@@ -89,11 +132,32 @@ while IFS=$'\t' read -r derivative_root basename widths; do
 			exit 1
 		fi
 	done < <(printf '%s\n' "$widths" | jq -r '.[]')
+=======
+=======
+>>>>>>> theirs
+  while IFS= read -r width; do
+    asset="${derivative_root}/${basename}-${width}w.webp"
+    test -s "$asset" || {
+      echo "Missing optimized editorial derivative: $asset" >&2
+      exit 1
+    }
+    bytes="$(file_size_bytes "$asset")"
+    if [ "$bytes" -gt "$editorial_max_bytes" ]; then
+      echo "Optimized editorial derivative exceeds ${editorial_max_bytes} bytes: $asset" >&2
+      exit 1
+    fi
+  done < <(printf '%s\n' "$widths" | jq -r '.[]')
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 done < <(jq -r '.editorial_derivative_sets[]? | [.derivative_root, .basename, (.widths | tojson)] | @tsv' data/image-optimization.json)
 
 # Logos are reusable brand graphics, not scenery. They must remain compositable
 # over the collection worlds, so alpha-channel loss is a shipping failure.
 while IFS= read -r asset; do
+<<<<<<< ours
+<<<<<<< ours
 	test -s "$asset" || { echo "Missing transparent brand asset: $asset" >&2; exit 1; }
 	if ! has_alpha_channel "$asset"; then
 		echo "Brand asset lost its transparent alpha channel: $asset" >&2
@@ -108,17 +172,57 @@ while IFS= read -r derivative; do
 		echo "Opening product-media derivative exceeds 80KB: $derivative" >&2
 		exit 1
 	fi
+=======
+  test -s "$asset" || {
+    echo "Missing transparent brand asset: $asset" >&2
+    exit 1
+  }
+  if ! identify -format '%[channels]' "$asset" | grep -q 'a'; then
+    echo "Brand asset lost its transparent alpha channel: $asset" >&2
+    exit 1
+  fi
+done < <(jq -r '.transparent_brand_assets[]' data/image-optimization.json)
+
+while IFS= read -r derivative; do
+=======
+  test -s "$asset" || {
+    echo "Missing transparent brand asset: $asset" >&2
+    exit 1
+  }
+  if ! identify -format '%[channels]' "$asset" | grep -q 'a'; then
+    echo "Brand asset lost its transparent alpha channel: $asset" >&2
+    exit 1
+  fi
+done < <(jq -r '.transparent_brand_assets[]' data/image-optimization.json)
+
+while IFS= read -r derivative; do
+>>>>>>> theirs
+  test -s "$derivative" || {
+    echo "Missing opening product-media derivative: $derivative" >&2
+    exit 1
+  }
+  bytes="$(file_size_bytes "$derivative")"
+  if [ "$bytes" -gt 80000 ]; then
+    echo "Opening product-media derivative exceeds 80KB: $derivative" >&2
+    exit 1
+  fi
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 done < <(jq -r '.products[] | .views[] | .derivative' data/opening-product-media.json)
 
 STYLE_VERSION="$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -n1)"
 PACKAGE_VERSION="$(jq -r '.version' package.json)"
 STABLE_TAG="$(sed -n 's/^Stable tag:[[:space:]]*//p' readme.txt | head -n1)"
 if [[ -z "$STYLE_VERSION" || "$STYLE_VERSION" != "$PACKAGE_VERSION" || "$STYLE_VERSION" != "$STABLE_TAG" ]]; then
-	echo "Theme version drift: style=$STYLE_VERSION package=$PACKAGE_VERSION readme=$STABLE_TAG" >&2
-	exit 1
+  echo "Theme version drift: style=$STYLE_VERSION package=$PACKAGE_VERSION readme=$STABLE_TAG" >&2
+  exit 1
 fi
 
 for required in \
+<<<<<<< ours
+<<<<<<< ours
 	404.php archive.php front-page.php home.php index.php page.php search.php single.php \
 	template-collection.php woocommerce/archive-product.php woocommerce/cart/cart.php \
 	woocommerce/checkout/form-checkout.php woocommerce/checkout/thankyou.php \
@@ -128,18 +232,36 @@ for required in \
 	npm-shrinkwrap.json \
 	languages/skyyrose-flagship-2.pot; do
 	test -s "$required" || { echo "Missing required marketplace artifact: $required" >&2; exit 1; }
+=======
+=======
+>>>>>>> theirs
+  404.php archive.php front-page.php home.php index.php page.php search.php single.php \
+  template-collection.php woocommerce/archive-product.php woocommerce/cart/cart.php \
+  woocommerce/checkout/form-checkout.php woocommerce/checkout/thankyou.php \
+  woocommerce/content-product.php woocommerce/single-product.php \
+  theme.json screenshot.png readme.txt README.md CHANGELOG.md LICENSE.txt rtl.css editor-style.css \
+  npm-shrinkwrap.json \
+  languages/skyyrose-flagship-2.pot; do
+  test -s "$required" || {
+    echo "Missing required marketplace artifact: $required" >&2
+    exit 1
+  }
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
 done
 
 if rg -n --glob '!node_modules/**' --glob '!dist/**' --glob '!scripts/verify-marketplace.sh' --glob '!README.md' --glob '!readme.txt' --glob '!CHANGELOG.md' \
-	'\b(TODO|FIXME|Lorem ipsum|dummy data)\b' .; then
-	echo 'Placeholder marker found in delivered theme.' >&2
-	exit 1
+  '\b(TODO|FIXME|Lorem ipsum|dummy data)\b' .; then
+  echo 'Placeholder marker found in delivered theme.' >&2
+  exit 1
 fi
 
 if rg -n --glob '!scripts/verify-marketplace.sh' 'Cormorant Garamond|Playfair Display|Bebas Neue|Yellowtail' \
-	theme.json editor-style.css rtl.css inc scripts; then
-	echo 'Retired font found in marketplace architecture.' >&2
-	exit 1
+  theme.json editor-style.css rtl.css inc scripts; then
+  echo 'Retired font found in marketplace architecture.' >&2
+  exit 1
 fi
 
 echo 'SkyyRose Flagship 2 marketplace verification passed.'
