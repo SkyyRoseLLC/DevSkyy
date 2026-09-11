@@ -49,6 +49,8 @@ def test_jersey_membership_and_routes_have_one_registry_authority() -> None:
         record = registry["products"][sku]
         assert record["collection"] == "black-rose"
         assert record["presentation"] == "jersey-series"
-        assert record["route"] == "/collections/jersey-series/"
+        # The jersey series is a chapter of Black Rose, not a fifth collection
+        # route — see build-product-presentation-registry.py.
+        assert record["route"] == "/collections/black-rose/#jersey-series"
         assert "jersey_chapter" in record
         assert "film_start" in record

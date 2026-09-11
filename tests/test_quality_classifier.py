@@ -84,6 +84,10 @@ class TestClassifierFallback:
         assert result.error == ""
 
     def test_returns_error_result_on_generic_exception(self, tmp_path):
+        # Without transformers, predict() short-circuits to the neutral
+        # fallback before _load_clip_model is reached, so the exception
+        # path under test is unreachable outside the ml extra.
+        pytest.importorskip("transformers", reason="CLIP error path requires the ml extra")
         img = tmp_path / "test.jpg"
         img.write_bytes(b"FAKEJPEG")
 
@@ -108,7 +112,7 @@ class TestClassifierFallback:
 class TestClassifierWithMockCLIP:
     def _mock_clip_call(self, probs: list[float], image_path: str) -> ClassifierResult:
         """Run classifier with mocked CLIP outputs."""
-        import torch
+        torch = pytest.importorskip("torch", reason="mocked CLIP tests require the ml extra")
 
         mock_model = MagicMock()
         mock_processor = MagicMock()
