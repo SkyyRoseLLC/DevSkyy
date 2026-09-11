@@ -50,10 +50,10 @@ There is NO `package.json` in `skyyrose-flagship/` — it lives at `wordpress-th
 `npm run build` (CSS+JS) · `npm run build:css` · `npm run build:js` · `npm run rebuild` (clean+build) · `npm run watch:build`.
 From inside `skyyrose-flagship/` you can still run the raw scripts: `node scripts/build-css.js` / `node scripts/build-js.js`.
 
-## Adding a template = TWO edits in `inc/enqueue.php` (or CSS loads wrong, silently)
+## Adding a template = TWO edits in `inc/enqueue-templates.php` (or CSS loads wrong, silently)
 
 1. `$template_map` in `skyyrose_get_current_template_slug()` (~`enqueue.php:426`) — maps `template-*.php` filename → slug string.
-2. `$template_styles` in `skyyrose_enqueue_template_styles()` (~`enqueue.php:485`) — maps slug → CSS file (a JS section mirrors this).
+2. `$template_styles` in `skyyrose_enqueue_template_styles()` (~`enqueue-templates.php:107`) — maps slug → CSS file (a JS section mirrors this).
 Then create the source CSS/JS and run `npm run build` to emit `.min`. Miss either array → new template gets wrong CSS or none.
 
 ## Brand constants — use them, never hardcode

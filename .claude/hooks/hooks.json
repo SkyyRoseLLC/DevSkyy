@@ -172,6 +172,16 @@
                     }
                 ],
                 "description": "Review code and extract learnings at session end"
+            },
+            {
+                "matcher": "*",
+                "hooks": [
+                    {
+                        "type": "command",
+                        "command": "bash \"$(git rev-parse --show-toplevel)/.claude/hooks/memory-persistence/session-end.sh\""
+                    }
+                ],
+                "description": "Append end-of-session row to canonical .wolf/memory.md"
             }
         ]
     }
