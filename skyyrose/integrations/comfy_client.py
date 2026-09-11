@@ -966,10 +966,11 @@ def _paid_node_price(class_info: Any) -> float:
 
 
 def runway_contract_sha256(contract: Mapping[str, Any]) -> str:
-    """Hash Runway intent without the self-referential approval file binding."""
+    """Hash immutable Runway intent without approval or merge-gate state."""
     normalized = json.loads(json.dumps(contract))
     control = normalized.setdefault("credit_control", {})
     control["approval_receipt"] = None
+    normalized["post_merge_execution_gate"] = None
     return workflow_sha256(normalized)
 
 

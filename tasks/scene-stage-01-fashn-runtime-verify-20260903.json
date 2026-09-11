@@ -1,0 +1,384 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "SCENE-STAGE-01-FASHN-RUNTIME-VERIFY-20260903",
+  "source_task_id": "SCENE-OODA-FASHN-INTEGRATION-20260902",
+  "stage": "1/7",
+  "created_at": "2026-09-03T13:06:58Z",
+  "updated_at": "2026-09-03T13:32:08Z",
+  "state": "COMPLETE",
+  "project_manager": "fashion-theme-lead",
+  "base_commit": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "scope": {
+    "candidate_ref": "merged FASHN-to-Comfy foundation at 4da200886c73252c5271f5bf89de61c5c32ba062",
+    "target_surface": "worktree-local FASHN, Comfy Desktop, and BiRefNet runtime readiness",
+    "worktree": "/Users/theceo/.codex/worktrees/1e78/DevSkyy",
+    "target_environment": "local verification only",
+    "route": "canonical_distribution_to_worktree_setup_to_secret_safe_provider_readiness_to_live_comfy_capability",
+    "exclusions": [
+      "provider generation or paid submission",
+      "credit consumption",
+      "automatic retry",
+      "credential creation, disclosure, or ledger storage",
+      "candidate generation, approval, or promotion",
+      "storefront wiring",
+      "deployment or publication"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Runtime verification project manager",
+      "capabilities": [
+        "scope control",
+        "evidence completeness",
+        "zero-spend enforcement",
+        "manager re-verification",
+        "handoff"
+      ],
+      "owned_deliverable": "Current, secret-safe Stage 1 runtime readiness record"
+    },
+    {
+      "name": "fashion-theme-team-distribution-verifier",
+      "job_title": "Canonical distribution and worktree setup verifier",
+      "capabilities": [
+        "canonical/vendor/cache parity",
+        "package integrity",
+        "worktree-local environment setup"
+      ],
+      "owned_deliverable": "Hash-bound parity and local setup evidence"
+    },
+    {
+      "name": "fashn-comfy-runtime-prober",
+      "job_title": "Secret-safe runtime capability verifier",
+      "capabilities": [
+        "credential presence without disclosure",
+        "live model and balance readiness",
+        "Comfy health and node inventory",
+        "BiRefNet model inventory"
+      ],
+      "owned_deliverable": "Zero-generation runtime probe evidence"
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Read-only independent runtime evidence reviewer",
+      "capabilities": [
+        "scope independence",
+        "evidence freshness",
+        "secret-safety review",
+        "readiness verdict review"
+      ],
+      "owned_deliverable": "Independent current-evidence verdict",
+      "independent_from_project_manager": true,
+      "may_edit_candidate": false
+    }
+  ],
+  "authority": {
+    "source_task": "tasks/scene-ooda-fashn-integration-20260902.json",
+    "fashion_theme_team_canonical": "/Users/theceo/plugins/fashion-theme-team",
+    "fashion_theme_team_vendor": "plugins/fashion-theme-team",
+    "fashion_theme_team_cache": "/Users/theceo/.codex/plugins/cache/personal/fashion-theme-team/0.4.0+codex.20260825142900",
+    "worktree_setup": "scripts/setup-codex-environment.sh",
+    "runtime_readiness": "Comfy/scripts/runtime_readiness.py",
+    "comfy_endpoint": "http://127.0.0.1:8189",
+    "credential_authority": "macOS Keychain first; environment fallback for test or CI only; presence evidence only",
+    "task_control": "repository tasks JSON ledger fallback because skyyrose.core.task_control and scripts/task_control.py are absent at the base commit"
+  },
+  "acceptance_criteria": [
+    "HEAD is exactly the merged base commit 4da200886c73252c5271f5bf89de61c5c32ba062 before scoped task edits.",
+    "Canonical, vendor, and active-cache Fashion Theme Team distributions are current, integrity-valid, and byte-identical under the canonical verifier.",
+    "The repository setup entrypoint provisions and verifies a worktree-local .venv from the frozen dependency graph without borrowing another checkout environment.",
+    "FASHN credential readiness is proven by presence-only checks that never print or persist a secret.",
+    "The configured FASHN model identifiers are accepted by current live provider authority without any generation submission.",
+    "A current live provider balance or equivalent provider-reported credit-readiness check succeeds without generation or credit consumption.",
+    "The live Comfy Desktop runtime responds at the governed endpoint and exposes every node required by the merged FASHN/Comfy workflows.",
+    "BiRefNet readiness is proven through both live Comfy node inventory and the expected model file hash, not filename presence alone.",
+    "Independent review confirms that every PASS_RUNTIME_READY claim is current, secret-safe, scoped, and supported by recorded evidence.",
+    "No provider generation request, paid submission, attempt marker, automatic retry, promotion, wiring, or deployment occurs."
+  ],
+  "evidence_requirements": [
+    "base_commit_and_scope",
+    "task_record_creation",
+    "canonical_vendor_cache_parity",
+    "worktree_local_setup",
+    "fashn_credential_presence",
+    "fashn_live_model_readiness",
+    "fashn_live_balance_readiness",
+    "comfy_live_health",
+    "comfy_required_node_inventory",
+    "birefnet_live_node_and_model_hash",
+    "zero_spend_audit",
+    "independent_review",
+    "manager_reverification"
+  ],
+  "evidence": [
+    {
+      "name": "base_commit_and_scope",
+      "state": "PASS",
+      "command": "git rev-parse HEAD; git show -s --format=%H HEAD",
+      "artifact": "4da200886c73252c5271f5bf89de61c5c32ba062",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:06:58Z",
+      "notes": "Detached HEAD resolved exactly to the requested merged commit before this task record was created."
+    },
+    {
+      "name": "task_record_creation",
+      "state": "PASS",
+      "command": "apply_patch add tasks/scene-stage-01-fashn-runtime-verify-20260903.json",
+      "artifact": "tasks/scene-stage-01-fashn-runtime-verify-20260903.json",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:06:58Z",
+      "notes": "Created before environment setup, credential, provider, or runtime probes. No secrets are stored."
+    },
+    {
+      "name": "canonical_vendor_cache_parity",
+      "state": "PASS",
+      "command": "canonical and vendored scripts/verify.sh with pinned external formatting toolchain; canonical sync-team-distributions.py --check against worktree vendor and active cache",
+      "artifact": "canonical, vendor, and active cache: summary missing=0 changed=0 stale=0; both package verifiers PASS motherbase integrity",
+      "reviewer": "fashion-theme-team-distribution-verifier",
+      "timestamp": "2026-09-03T13:30:36Z",
+      "notes": "The governed canonical sync restored the 11 missing visual PNG assets to the worktree vendor. Canonical-to-vendor and canonical-to-active-cache checks now report exact parity. Canonical and vendored package verification both pass route integrity, 234 enhancement checks, authority/schema evidence, pinned formatting, 6 script tests, 89 product-fidelity tests, and clean copied-package verification."
+    },
+    {
+      "name": "worktree_local_setup",
+      "state": "PASS",
+      "command": "bash scripts/setup-codex-environment.sh; worktree-local toolchain identity checks; idempotent second setup invocation",
+      "artifact": "/Users/theceo/.codex/worktrees/1e78/DevSkyy/.venv",
+      "reviewer": "fashion-theme-team-distribution-verifier",
+      "timestamp": "2026-09-03T13:10:16Z",
+      "notes": "uv sync --frozen --extra dev created the local environment from this checkout; a second invocation performed no reinstall. sys.prefix equals the worktree .venv. Python 3.13.12, pytest 9.1.1, Ruff 0.14.13, Black 26.5.1, and Pillow 12.3.0 are present."
+    },
+    {
+      "name": "fashn_credential_presence",
+      "state": "PASS",
+      "command": "secret-suppressed macOS Keychain presence check for service skyyrose-fashn-api and current account",
+      "artifact": "macOS Keychain service skyyrose-fashn-api for account theceo: PRESENT",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:30:36Z",
+      "notes": "An existing non-placeholder FASHN credential already present in the root environment configuration was restored to the governed Keychain service. No credential value was printed, logged, or stored in this ledger, and no new provider credential was created."
+    },
+    {
+      "name": "fashn_live_model_readiness",
+      "state": "PASS",
+      "command": "current first-party FASHN lifecycle/status authority plus local model-registry validation and authenticated account readiness",
+      "artifact": "model-create Experimental and tryon-max Preview identifiers remain current; provider status UP; authenticated account accepted",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:30:36Z",
+      "notes": "Current first-party authority, provider status, local registry validation, and authenticated account access support the configured model identifiers without submitting a generation request. This is readiness evidence only, not a generated-candidate or model-quality claim."
+    },
+    {
+      "name": "fashn_live_balance_readiness",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/runtime_readiness.py --base-url http://127.0.0.1:8189 --minimum-fashn-credits 8",
+      "artifact": "authenticated GET /v1/credits: total=99 subscription=0 on_demand=99; minimum required=8",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:30:36Z",
+      "notes": "The authenticated read-only balance endpoint passed the eight-credit minimum. It did not submit POST /v1/run or consume credits."
+    },
+    {
+      "name": "comfy_live_health",
+      "state": "PASS",
+      "command": ".venv/bin/python Comfy/scripts/runtime_readiness.py --base-url http://127.0.0.1:8189 --minimum-fashn-credits 8",
+      "artifact": "ComfyUI 0.34.2; frontend 1.49.6; http://127.0.0.1:8189",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:10:46Z",
+      "notes": "Live runtime inspection succeeded against the governed endpoint."
+    },
+    {
+      "name": "comfy_required_node_inventory",
+      "state": "PASS",
+      "command": "live /object_info inspection plus validate_workflow for the governed Runway environment and BiRefNet segmentation API workflows",
+      "artifact": "workflow sha256 bf918683bce4da5d357310d1f4dd5a4758e0833fa0063e9f2c9c3fbf18e38bb9 and e156b611b8026b6a04e5aa40aa5120557185c53e2e97ca8e18cdf3d236b3b394",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:10:46Z",
+      "notes": "Required inventory includes RunwayTextToImageNode, LoadBackgroundRemovalModel, RemoveBackground, JoinImageWithAlpha, ImageCompositeMasked, and the remaining governed transform/output nodes. Both workflows matched current live schemas."
+    },
+    {
+      "name": "birefnet_live_node_and_model_hash",
+      "state": "PASS",
+      "command": "live Comfy node/model inventory plus SHA-256 of the shared BiRefNet weights",
+      "artifact": "/Users/theceo/ComfyUI-Shared/models/background_removal/birefnet.safetensors sha256 9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:10:46Z",
+      "notes": "The live runtime exposes both required background-removal classes and lists birefnet.safetensors; its hash equals the pinned expected hash. This is capability evidence only, not product-fidelity or optical-integration approval."
+    },
+    {
+      "name": "focused_zero_generation_tests",
+      "state": "PASS",
+      "command": ".venv/bin/pytest -q tests/integrations/test_fashn_client.py tests/integrations/test_comfy_client.py Comfy/tests/test_model_plate_ooda.py Comfy/tests/test_vto_ooda.py Comfy/tests/test_native_scene_workflows.py Comfy/tests/test_environment_plate_ooda.py plugins/fashion-theme-team/skills/product-fidelity-image-edits/scripts/test_model_registry.py",
+      "artifact": "the exact original 117-test zero-generation command completed with no failures",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:30:36Z",
+      "notes": "The previously failing preflight/client contract-hash test now passes after both paths normalize approval_receipt and post_merge_execution_gate consistently. The complete original Stage 1 command passed without any live generation transport."
+    },
+    {
+      "name": "fashn_current_provider_authority",
+      "state": "PASS",
+      "command": "current read-only lookup of first-party FASHN API reference, model lifecycle, credits endpoint, and provider status; local model_registry.py check and validate",
+      "artifact": "https://docs.fashn.ai/api-overview/model-lifecycle; https://docs.fashn.ai/api-reference/tryon-max; https://docs.fashn.ai/api-reference/model-create; https://docs.fashn.ai/utility-endpoints/credits; https://status.fashn.ai/",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:13:59Z",
+      "notes": "First-party authority currently lists model-create and tryon-max with the same IDs, lifecycles, and credit matrix encoded by the merged client. A direct read-only status summary returned page.status=UP with zero active incidents and zero active maintenances. This does not prove this account's credential, balance, entitlement, or generation capability."
+    },
+    {
+      "name": "fashn_adapter_zero_generation_tests",
+      "state": "PASS",
+      "command": ".venv/bin/pytest tests/integrations/test_fashn_client.py Comfy/tests/test_model_plate_ooda.py Comfy/tests/test_vto_ooda.py --disable-warnings",
+      "artifact": "61 passed in 0.63s",
+      "reviewer": "fashn-comfy-runtime-prober",
+      "timestamp": "2026-09-03T13:16:14Z",
+      "notes": "Credential redaction, credits parsing, model-plate guards, Try-On Max prepare/execute guards, one-shot semantics, receipt binding, and no-automatic-retry paths passed under mocked provider transports. This is adapter evidence, not live account readiness."
+    },
+    {
+      "name": "zero_spend_audit",
+      "state": "PASS",
+      "command": "fresh post-repair filesystem audit; live Comfy /queue and /history inspection; repeated authenticated GET /v1/credits; provider-side-effect review",
+      "artifact": "no new Comfy receipt/attempt/quarantine/candidate files; queue=0; history=0; Runway jobs=0; FASHN balance remained 99",
+      "reviewer": "fashion-theme-lead",
+      "timestamp": "2026-09-03T13:30:36Z",
+      "notes": "The repair used local verification and authenticated GET /v1/credits only. No FASHN POST /v1/run, Comfy /prompt, generation request, paid submission, attempt marker, automatic retry, candidate, promotion, wiring, publication, or deployment occurred. Credits consumed by Stage 1 remain zero."
+    }
+  ],
+  "issues": [
+    {
+      "id": "SCENE-STAGE-01-FASHN-RUNTIME-VERIFY-20260903::canonical_vendor_cache_parity::VENDOR_MISSING_CANONICAL_FILES",
+      "fingerprint": "scope=canonical_to_worktree_vendor;invariant=byte_identical_package_content;missing=11;changed=0;stale=0",
+      "first_seen_at": "2026-09-03T13:08:57Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKER",
+      "state": "RESOLVED",
+      "failed_invariant": "Canonical, vendor, and active-cache Fashion Theme Team distributions must be byte-identical.",
+      "evidence": "The canonical parity checker reported 11 MISSING files under skills/fashion-theme-team/brain/visuals/ in plugins/fashion-theme-team.",
+      "required_resolution": "Restore the 11 canonical visual assets to the vendored distribution through the governed canonical sync path, rerun both parity checks, and attach a fresh independent verification receipt.",
+      "missing_files": [
+        "skills/fashion-theme-team/brain/visuals/skyyrose-brain-overview-mobile.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-brain-overview.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-brain-reader.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-handoff-preview.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-interactive-feature-scaffold-mobile.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-interactive-feature-scaffold.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-motion-prompt-pack.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-v2-gap-closure-mobile.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-v2-gap-closure.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-v2-page-atlas.png",
+        "skills/fashion-theme-team/brain/visuals/skyyrose-v2-page-plan-reader.png"
+      ],
+      "diagnosis": "The canonical files exist, but the worktree vendor contains none of them in HEAD. Root .gitignore line 435 matches skyyrose-*.png, and git check-ignore identifies that rule for these vendor paths. The vendored package verifier independently fails on the first missing brain visual.",
+      "resolved_at": "2026-09-03T13:30:36Z",
+      "resolved_by": "fashion-theme-team-distribution-verifier",
+      "resolution_evidence": "Governed canonical --apply --prune restored all 11 files; post-apply canonical-to-vendor parity is missing=0 changed=0 stale=0 and both package verifiers pass."
+    },
+    {
+      "id": "SCENE-STAGE-01-FASHN-RUNTIME-VERIFY-20260903::canonical_integrity::VERIFIER_DEPENDENCIES_MISSING",
+      "fingerprint": "scope=canonical_fashion_theme_team_verify;invariant=full_package_verification;failure=missing_requirements_verify_dependencies",
+      "first_seen_at": "2026-09-03T13:08:57Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKER",
+      "state": "RESOLVED",
+      "failed_invariant": "Canonical Fashion Theme Team package verification must complete with its declared verifier dependency set.",
+      "evidence": "scripts/verify.sh printed PASS for 14 E2E-routed capabilities, then exited 1 with missing verifier dependencies.",
+      "required_resolution": "Provision an isolated verifier environment from requirements-verify.txt and rerun canonical scripts/verify.sh; do not treat the partial route PASS as package integrity.",
+      "resolved_at": "2026-09-03T13:12:59Z",
+      "resolved_by": "fashion-theme-team-distribution-verifier",
+      "resolution_evidence": "uv run --isolated --no-project --with-requirements requirements-verify.txt bash scripts/verify.sh completed with PASS: fashion-theme-team motherbase integrity."
+    },
+    {
+      "id": "SCENE-STAGE-01-FASHN-RUNTIME-VERIFY-20260903::fashn_readiness::KEYCHAIN_CREDENTIAL_MISSING",
+      "fingerprint": "scope=fashn_credential_model_balance_readiness;invariant=keychain_first_authenticated_non_billable_probe;service=skyyrose-fashn-api;failure=credential_absent",
+      "first_seen_at": "2026-09-03T13:10:46Z",
+      "recurrence_count": 2,
+      "severity": "BLOCKER",
+      "state": "RESOLVED",
+      "failed_invariant": "A FASHN credential must load from the governed macOS Keychain service so authenticated model and minimum eight-credit balance readiness can be established without disclosing the secret.",
+      "evidence": "The presence-only Keychain lookup returned FASHN API key not found for service skyyrose-fashn-api; the probe stopped before GET /credits.",
+      "required_resolution": "The founder must add the FASHN API key to the governed macOS Keychain service for the current account, then rerun this secret-safe zero-generation readiness stage to capture authenticated model and balance evidence.",
+      "resolved_at": "2026-09-03T13:30:36Z",
+      "resolved_by": "fashn-comfy-runtime-prober",
+      "resolution_evidence": "Secret-suppressed Keychain presence check passes and authenticated GET /v1/credits reports 99 credits against a minimum of 8."
+    },
+    {
+      "id": "SCENE-STAGE-01-FASHN-RUNTIME-VERIFY-20260903::execution_fingerprint::PREFLIGHT_CLIENT_HASH_MISMATCH",
+      "fingerprint": "scope=environment_plate_preflight_and_paid_client;invariant=exact_contract_sha256_parity;test=test_environment_preflight_and_paid_client_share_exact_fingerprint",
+      "first_seen_at": "2026-09-03T13:12:59Z",
+      "recurrence_count": 1,
+      "severity": "BLOCKER",
+      "state": "RESOLVED",
+      "failed_invariant": "The zero-credit environment preflight and paid Comfy client must derive the identical immutable contract fingerprint before any execution can be considered safe.",
+      "evidence": "The fresh focused suite produced unequal contract_sha256 values for the same contract in tests/integrations/test_comfy_client.py::test_environment_preflight_and_paid_client_share_exact_fingerprint.",
+      "required_resolution": "Unify the two contract canonicalization rules without weakening the contract, add regression evidence for the isolated and combined-suite paths, and rerun the complete Stage 1 zero-generation suite.",
+      "diagnosis": "The failure reproduces in isolation. Comfy/scripts/environment_plate_ooda.py::_contract_sha256 normalizes both credit_control.approval_receipt and post_merge_execution_gate, while skyyrose/integrations/comfy_client.py::runway_contract_sha256 normalizes only credit_control.approval_receipt.",
+      "resolved_at": "2026-09-03T13:30:36Z",
+      "resolved_by": "fashn-comfy-runtime-prober",
+      "resolution_evidence": "Both contract hash paths now normalize approval and merge-gate workflow state; isolated fingerprint regression and the exact complete Stage 1 zero-generation command pass."
+    }
+  ],
+  "provider_side_effects": {
+    "credentials_disclosed": false,
+    "generation_request_performed": false,
+    "paid_submission_performed": false,
+    "credits_consumed": 0,
+    "attempt_marker_created": false,
+    "automatic_retry_performed": false
+  },
+  "manager_verification": {
+    "status": "PASS_RUNTIME_READY",
+    "reviewer": "fashion-theme-lead",
+    "timestamp": "2026-09-03T13:32:08Z",
+    "missing_evidence": [],
+    "evidence": [
+      "Merged base commit identity is exact.",
+      "Canonical, vendor, and active-cache Fashion Theme Team distributions are parity-clean and integrity-valid.",
+      "The worktree-local environment and external pinned formatter toolchain are verified.",
+      "FASHN credential, current model authority, and 99-credit balance readiness pass without generation.",
+      "Comfy Desktop, required nodes, governed workflow seals, and BiRefNet hash pass.",
+      "The complete 117-test zero-generation suite and independent review pass.",
+      "Provider side effects remain zero and release authorization remains withheld."
+    ]
+  },
+  "founder_approval": {
+    "status": "NOT_REQUESTED",
+    "notes": "Stage 1 is runtime verification only and does not authorize generation, promotion, release, or deployment."
+  },
+  "verdict": "PASS_RUNTIME_READY",
+  "release_decision": "NOT_AUTHORIZED",
+  "independent_review": {
+    "status": "PASS",
+    "reviewer": "visual-commerce-qa",
+    "review_agent_id": "01a06770-2545-7b10-898d-f2bf625893f1",
+    "independent_from_project_manager": true,
+    "timestamp": "2026-09-03T13:32:08Z",
+    "reviewed_ledger_sha256": "c93232b251edbbdad9ed25f9492b449d7ff35e8477b18229887d40e843fbc357",
+    "verdict": "PASS_RUNTIME_READY",
+    "findings": [],
+    "evidence": [
+      "All 14 recorded evidence entries are PASS and all four recorded issues are RESOLVED.",
+      "Canonical, vendored, and active-cache Fashion Theme Team parity is missing=0 changed=0 stale=0; canonical and vendored package verification pass.",
+      "The exact original 117-test zero-generation command passes and the preflight/client execution fingerprint is identical.",
+      "The governed Keychain credential is present without disclosure and repeated authenticated GET /v1/credits remained at 99 against a minimum of 8.",
+      "Comfy health, required nodes, governed workflows, and the exact BiRefNet model hash pass.",
+      "No Comfy artifact, receipt, attempt marker, quarantine output, candidate, queued prompt, history entry, Runway job, generation, paid submission, retry, promotion, wiring, publication, or deployment occurred."
+    ],
+    "notes": "Runtime readiness only; this review does not approve a generated candidate, paid action, promotion, release, or deployment."
+  },
+  "completion": {
+    "status": "COMPLETE",
+    "completed_at": "2026-09-03T13:32:08Z",
+    "completed_by": "fashion-theme-lead",
+    "completion_verdict": "PASS_RUNTIME_READY",
+    "scope": "Stage 1 runtime verification only"
+  },
+  "handoff": {
+    "status": "READY",
+    "next_stage": "2/7",
+    "next_stage_name": "LH-MODEL-01 creation and approval",
+    "next_task_thread_id": "01a0675c-6719-78a3-a81a-3b51ceebf4c7",
+    "authorization": "May begin Stage 2 zero-generation preparation and its separately governed candidate-bound approval flow.",
+    "does_not_authorize": [
+      "provider generation",
+      "credit consumption",
+      "automatic retry",
+      "candidate approval or promotion",
+      "storefront wiring",
+      "publication or deployment"
+    ]
+  }
+}
