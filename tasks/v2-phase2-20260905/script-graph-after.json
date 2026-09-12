@@ -1,0 +1,1523 @@
+{
+    "class": "Automattic\\Jetpack_Boost\\Lib\\Minify\\Concatenate_JS",
+    "front": true,
+    "queue": [
+        "woo-tracks",
+        "jquery",
+        "elementor-common",
+        "elementor-pro-app",
+        "elementor-app-loader",
+        "jetpack-mu-wpcom-settings",
+        "js-cookie",
+        "wc-add-to-cart",
+        "woocommerce",
+        "WCPAY_ASSETS",
+        "skyyrose2-theme",
+        "skyyrose2-house-of-roses",
+        "skyyrose2-kids-capsule-reveal",
+        "skyyrose2-mascot-loader",
+        "milestone",
+        "sourcebuster-js",
+        "wc-order-attribution"
+    ],
+    "registered": {
+        "common": {
+            "src": "/wp-admin/js/common.min.js",
+            "deps": [
+                "jquery",
+                "hoverIntent",
+                "utils",
+                "wp-a11y",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "editor": {
+            "src": "/wp-admin/js/editor.min.js",
+            "deps": [
+                "utils",
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wp-ajax-response": {
+            "src": "/wp-includes/js/wp-ajax-response.min.js",
+            "deps": [
+                "jquery",
+                "wp-a11y"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wp-api-request": {
+            "src": "/wp-includes/js/api-request.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "heartbeat": {
+            "src": "/wp-includes/js/heartbeat.min.js",
+            "deps": [
+                "jquery",
+                "wp-hooks"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "site-icon": {
+            "src": "/wp-admin/js/site-icon.js",
+            "deps": [
+                "jquery",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery": {
+            "src": false,
+            "deps": [
+                "jquery-core",
+                "jquery-migrate"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-core": {
+            "src": "/wp-includes/js/jquery/jquery.min.js",
+            "deps": [],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-migrate": {
+            "src": "/wp-includes/js/jquery/jquery-migrate.min.js",
+            "deps": [],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-core": {
+            "src": "/wp-includes/js/jquery/ui/core.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-core": {
+            "src": "/wp-includes/js/jquery/ui/effect.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-blind": {
+            "src": "/wp-includes/js/jquery/ui/effect-blind.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-bounce": {
+            "src": "/wp-includes/js/jquery/ui/effect-bounce.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-clip": {
+            "src": "/wp-includes/js/jquery/ui/effect-clip.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-drop": {
+            "src": "/wp-includes/js/jquery/ui/effect-drop.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-explode": {
+            "src": "/wp-includes/js/jquery/ui/effect-explode.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-fade": {
+            "src": "/wp-includes/js/jquery/ui/effect-fade.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-fold": {
+            "src": "/wp-includes/js/jquery/ui/effect-fold.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-highlight": {
+            "src": "/wp-includes/js/jquery/ui/effect-highlight.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-puff": {
+            "src": "/wp-includes/js/jquery/ui/effect-puff.min.js",
+            "deps": [
+                "jquery-effects-core",
+                "jquery-effects-scale"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-pulsate": {
+            "src": "/wp-includes/js/jquery/ui/effect-pulsate.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-scale": {
+            "src": "/wp-includes/js/jquery/ui/effect-scale.min.js",
+            "deps": [
+                "jquery-effects-core",
+                "jquery-effects-size"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-shake": {
+            "src": "/wp-includes/js/jquery/ui/effect-shake.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-size": {
+            "src": "/wp-includes/js/jquery/ui/effect-size.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-slide": {
+            "src": "/wp-includes/js/jquery/ui/effect-slide.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-effects-transfer": {
+            "src": "/wp-includes/js/jquery/ui/effect-transfer.min.js",
+            "deps": [
+                "jquery-effects-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-accordion": {
+            "src": "/wp-includes/js/jquery/ui/accordion.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-autocomplete": {
+            "src": "/wp-includes/js/jquery/ui/autocomplete.min.js",
+            "deps": [
+                "jquery-ui-menu",
+                "wp-a11y"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-button": {
+            "src": "/wp-includes/js/jquery/ui/button.min.js",
+            "deps": [
+                "jquery-ui-core",
+                "jquery-ui-controlgroup",
+                "jquery-ui-checkboxradio"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-datepicker": {
+            "src": "/wp-includes/js/jquery/ui/datepicker.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-dialog": {
+            "src": "/wp-includes/js/jquery/ui/dialog.min.js",
+            "deps": [
+                "jquery-ui-resizable",
+                "jquery-ui-draggable",
+                "jquery-ui-button"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-menu": {
+            "src": "/wp-includes/js/jquery/ui/menu.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-mouse": {
+            "src": "/wp-includes/js/jquery/ui/mouse.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-progressbar": {
+            "src": "/wp-includes/js/jquery/ui/progressbar.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-selectmenu": {
+            "src": "/wp-includes/js/jquery/ui/selectmenu.min.js",
+            "deps": [
+                "jquery-ui-menu"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-slider": {
+            "src": "/wp-includes/js/jquery/ui/slider.min.js",
+            "deps": [
+                "jquery-ui-mouse"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-spinner": {
+            "src": "/wp-includes/js/jquery/ui/spinner.min.js",
+            "deps": [
+                "jquery-ui-button"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-tabs": {
+            "src": "/wp-includes/js/jquery/ui/tabs.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-tooltip": {
+            "src": "/wp-includes/js/jquery/ui/tooltip.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-checkboxradio": {
+            "src": "/wp-includes/js/jquery/ui/checkboxradio.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-controlgroup": {
+            "src": "/wp-includes/js/jquery/ui/controlgroup.min.js",
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-draggable": {
+            "src": "/wp-includes/js/jquery/ui/draggable.min.js",
+            "deps": [
+                "jquery-ui-mouse"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-droppable": {
+            "src": "/wp-includes/js/jquery/ui/droppable.min.js",
+            "deps": [
+                "jquery-ui-draggable"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-resizable": {
+            "src": "/wp-includes/js/jquery/ui/resizable.min.js",
+            "deps": [
+                "jquery-ui-mouse"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-selectable": {
+            "src": "/wp-includes/js/jquery/ui/selectable.min.js",
+            "deps": [
+                "jquery-ui-mouse"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-sortable": {
+            "src": "/wp-includes/js/jquery/ui/sortable.min.js",
+            "deps": [
+                "jquery-ui-mouse"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-position": {
+            "src": false,
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-ui-widget": {
+            "src": false,
+            "deps": [
+                "jquery-ui-core"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-form": {
+            "src": "/wp-includes/js/jquery/jquery.form.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-color": {
+            "src": "/wp-includes/js/jquery/jquery.color.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "schedule": {
+            "src": "/wp-includes/js/jquery/jquery.schedule.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-query": {
+            "src": "/wp-includes/js/jquery/jquery.query.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-serialize-object": {
+            "src": "/wp-includes/js/jquery/jquery.serialize-object.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-hotkeys": {
+            "src": "/wp-includes/js/jquery/jquery.hotkeys.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-table-hotkeys": {
+            "src": "/wp-includes/js/jquery/jquery.table-hotkeys.min.js",
+            "deps": [
+                "jquery",
+                "jquery-hotkeys"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-touch-punch": {
+            "src": "/wp-includes/js/jquery/jquery.ui.touch-punch.js",
+            "deps": [
+                "jquery-ui-core",
+                "jquery-ui-mouse"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "suggest": {
+            "src": "/wp-includes/js/jquery/suggest.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jquery-masonry": {
+            "src": "/wp-includes/js/jquery/jquery.masonry.min.js",
+            "deps": [
+                "jquery",
+                "masonry"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "thickbox": {
+            "src": "/wp-includes/js/thickbox/thickbox.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "jcrop": {
+            "src": "/wp-includes/js/jcrop/jquery.Jcrop.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "plupload-handlers": {
+            "src": "/wp-includes/js/plupload/handlers.min.js",
+            "deps": [
+                "clipboard",
+                "jquery",
+                "plupload",
+                "underscore",
+                "wp-a11y",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wp-plupload": {
+            "src": "/wp-includes/js/plupload/wp-plupload.min.js",
+            "deps": [
+                "plupload",
+                "jquery",
+                "media-models"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "backbone": {
+            "src": "/wp-includes/js/backbone.min.js",
+            "deps": [
+                "underscore",
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wp-util": {
+            "src": "/wp-includes/js/wp-util.min.js",
+            "deps": [
+                "underscore",
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "imgareaselect": {
+            "src": "/wp-includes/js/imgareaselect/jquery.imgareaselect.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "mediaelement": {
+            "src": false,
+            "deps": [
+                "jquery",
+                "mediaelement-core",
+                "mediaelement-migrate"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "code-editor": {
+            "src": "/wp-admin/js/code-editor.min.js",
+            "deps": [
+                "jquery",
+                "wp-codemirror",
+                "underscore"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wp-theme-plugin-editor": {
+            "src": "/wp-admin/js/theme-plugin-editor.min.js",
+            "deps": [
+                "common",
+                "wp-util",
+                "wp-sanitize",
+                "jquery",
+                "jquery-ui-core",
+                "wp-a11y",
+                "underscore",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "password-strength-meter": {
+            "src": "/wp-admin/js/password-strength-meter.min.js",
+            "deps": [
+                "jquery",
+                "zxcvbn-async",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "application-passwords": {
+            "src": "/wp-admin/js/application-passwords.min.js",
+            "deps": [
+                "jquery",
+                "wp-util",
+                "wp-api-request",
+                "wp-date",
+                "wp-i18n",
+                "wp-hooks"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "auth-app": {
+            "src": "/wp-admin/js/auth-app.min.js",
+            "deps": [
+                "jquery",
+                "wp-api-request",
+                "wp-i18n",
+                "wp-hooks"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "user-profile": {
+            "src": "/wp-admin/js/user-profile.min.js",
+            "deps": [
+                "clipboard",
+                "jquery",
+                "password-strength-meter",
+                "wp-util",
+                "wp-a11y",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "language-chooser": {
+            "src": "/wp-admin/js/language-chooser.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wplink": {
+            "src": "/wp-includes/js/wplink.min.js",
+            "deps": [
+                "common",
+                "jquery",
+                "wp-a11y",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "hoverIntent": {
+            "src": "/wp-includes/js/hoverIntent.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "customize-base": {
+            "src": "/wp-includes/js/customize-base.min.js",
+            "deps": [
+                "jquery",
+                "underscore"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "customize-views": {
+            "src": "/wp-includes/js/customize-views.js",
+            "deps": [
+                "jquery",
+                "underscore",
+                "imgareaselect",
+                "customize-models",
+                "media-editor",
+                "media-views"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "customize-selective-refresh": {
+            "src": "/wp-includes/js/customize-selective-refresh.min.js",
+            "deps": [
+                "jquery",
+                "wp-util",
+                "customize-preview"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "customize-widgets": {
+            "src": "/wp-admin/js/customize-widgets.min.js",
+            "deps": [
+                "jquery",
+                "jquery-ui-sortable",
+                "jquery-ui-droppable",
+                "wp-backbone",
+                "customize-controls"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "customize-preview-widgets": {
+            "src": "/wp-includes/js/customize-preview-widgets.min.js",
+            "deps": [
+                "jquery",
+                "wp-util",
+                "customize-preview",
+                "customize-selective-refresh"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "customize-nav-menus": {
+            "src": "/wp-admin/js/customize-nav-menus.min.js",
+            "deps": [
+                "jquery",
+                "wp-backbone",
+                "customize-controls",
+                "accordion",
+                "nav-menu",
+                "wp-sanitize"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "customize-preview-nav-menus": {
+            "src": "/wp-includes/js/customize-preview-nav-menus.min.js",
+            "deps": [
+                "jquery",
+                "wp-util",
+                "customize-preview",
+                "customize-selective-refresh"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "accordion": {
+            "src": "/wp-admin/js/accordion.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "mce-view": {
+            "src": "/wp-includes/js/mce-view.min.js",
+            "deps": [
+                "shortcode",
+                "jquery",
+                "media-views",
+                "media-audiovideo"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wp-api": {
+            "src": "/wp-includes/js/wp-api.min.js",
+            "deps": [
+                "jquery",
+                "backbone",
+                "underscore",
+                "wp-api-request"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wc-accounting": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/accounting/accounting.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-jquery-ui-touchpunch": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/jquery-ui-touch-punch/jquery-ui-touch-punch.min.js",
+            "deps": [
+                "jquery-ui-slider"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-price-slider": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/price-slider.min.js",
+            "deps": [
+                "jquery-ui-slider",
+                "wc-jquery-ui-touchpunch",
+                "wc-accounting"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "mailpoet-powered-by-mailpoet-block": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/mailpoet/assets/dist/js/email-editor-blocks/powered-by-mailpoet-block.js",
+            "deps": [
+                "jquery",
+                "moment",
+                "react",
+                "react-dom",
+                "react-jsx-runtime",
+                "wp-block-editor",
+                "wp-blocks",
+                "wp-components",
+                "wp-i18n",
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-settings": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js",
+            "deps": [
+                "wc-types",
+                "wp-hooks",
+                "wp-polyfill",
+                "wp-api-fetch",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-types": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js",
+            "deps": [
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-entities": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-entities.js",
+            "deps": [
+                "wc-settings",
+                "wp-core-data",
+                "wp-data",
+                "wp-deprecated",
+                "wp-i18n",
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-middleware": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-middleware.js",
+            "deps": [
+                "wp-api-fetch",
+                "wp-polyfill",
+                "wp-url"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-data-store": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-data.js",
+            "deps": [
+                "wc-blocks-checkout-events",
+                "wc-blocks-registry",
+                "wc-settings",
+                "wc-types",
+                "wp-api-fetch",
+                "wp-data",
+                "wp-data-controls",
+                "wp-deprecated",
+                "wp-dom",
+                "wp-element",
+                "wp-hooks",
+                "wp-html-entities",
+                "wp-i18n",
+                "wp-is-shallow-equal",
+                "wp-notices",
+                "wp-polyfill",
+                "wp-url",
+                "wc-blocks-middleware"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-registry": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-registry.js",
+            "deps": [
+                "react-jsx-runtime",
+                "wc-settings",
+                "wp-data",
+                "wp-deprecated",
+                "wp-element",
+                "wp-hooks",
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-shared-context": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-context.js",
+            "deps": [
+                "react-jsx-runtime",
+                "wp-element",
+                "wp-polyfill",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-shared-hocs": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-shared-hocs.js",
+            "deps": [
+                "react-jsx-runtime",
+                "wc-blocks-data-store",
+                "wc-blocks-shared-context",
+                "wc-types",
+                "wp-data",
+                "wp-element",
+                "wp-i18n",
+                "wp-is-shallow-equal",
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-components": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/blocks-components.js",
+            "deps": [
+                "wc-cart-checkout-base",
+                "wc-cart-checkout-vendors",
+                "react",
+                "react-dom",
+                "react-jsx-runtime",
+                "wc-blocks-data-store",
+                "wc-sanitize",
+                "wc-settings",
+                "wc-types",
+                "wp-a11y",
+                "wp-compose",
+                "wp-data",
+                "wp-deprecated",
+                "wp-element",
+                "wp-html-entities",
+                "wp-i18n",
+                "wp-notices",
+                "wp-polyfill",
+                "wp-primitives"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-vendors": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-vendors.js",
+            "deps": [
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.js",
+            "deps": [
+                "react-jsx-runtime",
+                "wp-blocks",
+                "wp-compose",
+                "wp-dom-ready",
+                "wp-element",
+                "wp-hooks",
+                "wp-polyfill",
+                "wc-blocks-vendors"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-price-format": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/price-format.js",
+            "deps": [
+                "wc-settings",
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-frontend-vendors": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks-frontend-vendors-frontend.js",
+            "deps": [
+                "wp-polyfill",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-cart-checkout-vendors": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-vendors-frontend.js",
+            "deps": [
+                "wp-polyfill",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-cart-checkout-base": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-cart-checkout-base-frontend.js",
+            "deps": [
+                "wp-polyfill",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-checkout": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout.js",
+            "deps": [
+                "wc-cart-checkout-base",
+                "wc-cart-checkout-vendors",
+                "react",
+                "react-dom",
+                "react-jsx-runtime",
+                "wc-blocks-checkout-events",
+                "wc-blocks-components",
+                "wc-blocks-data-store",
+                "wc-blocks-registry",
+                "wc-sanitize",
+                "wc-settings",
+                "wc-types",
+                "wp-a11y",
+                "wp-compose",
+                "wp-data",
+                "wp-deprecated",
+                "wp-element",
+                "wp-html-entities",
+                "wp-i18n",
+                "wp-is-shallow-equal",
+                "wp-notices",
+                "wp-polyfill",
+                "wp-primitives",
+                "wp-warning"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-blocks-checkout-events": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/blocks-checkout-events.js",
+            "deps": [
+                "wc-types",
+                "wp-polyfill",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-schema-parser": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-schema-parser.js",
+            "deps": [
+                "wp-polyfill"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-sanitize": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/admin/sanitize/index.js",
+            "deps": [
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "jetpack-paypal-express-checkout": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-paypal-payments/src/legacy/paypal-express-checkout.js?minify=false",
+            "deps": [
+                "jquery",
+                "paypal-checkout-js"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "colors-instapreview": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/custom-colors/js/colors-theme-preview.js",
+            "deps": [
+                "customize-preview",
+                "jquery",
+                "Color.js"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "jquery.spin": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/custom-colors/js/jquery.spin.js",
+            "deps": [
+                "spin"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "smartmenus": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor-pro/assets/lib/smartmenus/jquery.smartmenus.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "e-sticky": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor-pro/assets/lib/sticky/jquery.sticky.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "lottie": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor-pro/assets/lib/lottie/lottie.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "elementor-frontend-modules": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js",
+            "deps": [
+                "elementor-webpack-runtime",
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "flatpickr": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor/assets/lib/flatpickr/flatpickr.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "jquery-numerator": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor/assets/lib/jquery-numerator/jquery-numerator.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "elementor-gallery": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor/assets/lib/e-gallery/js/e-gallery.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "share-link": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor/assets/lib/share-link/share-link.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "elementor-web-cli": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor/assets/js/web-cli.min.js",
+            "deps": [
+                "elementor-vendors-redux",
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "elementor-common": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/elementor/assets/js/common.min.js",
+            "deps": [
+                "jquery",
+                "jquery-ui-draggable",
+                "backbone-marionette",
+                "backbone-radio",
+                "elementor-common-modules",
+                "elementor-web-cli",
+                "elementor-dialog",
+                "wp-api-request",
+                "elementor-dev-tools",
+                "wp-i18n"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "selectWoo": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/selectWoo/selectWoo.full.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-account-i18n": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/account-i18n.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-add-payment-method": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/add-payment-method.min.js",
+            "deps": [
+                "jquery",
+                "woocommerce",
+                "wc-custom-place-order-button"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-add-to-cart": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js",
+            "deps": [
+                "jquery",
+                "wc-jquery-blockui"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-add-to-cart-variation": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js",
+            "deps": [
+                "jquery",
+                "wp-util",
+                "wc-jquery-blockui"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-address-i18n": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/address-i18n.min.js",
+            "deps": [
+                "jquery",
+                "wc-country-select"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-back-in-stock-form": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/back-in-stock-form.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-cart": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/cart.min.js",
+            "deps": [
+                "jquery",
+                "woocommerce",
+                "wc-country-select",
+                "wc-address-i18n"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-cart-fragments": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js",
+            "deps": [
+                "jquery",
+                "wc-js-cookie"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-checkout": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/checkout.min.js",
+            "deps": [
+                "jquery",
+                "woocommerce",
+                "wc-country-select",
+                "wc-address-i18n",
+                "wc-custom-place-order-button"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-country-select": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/country-select.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-credit-card-form": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/credit-card-form.min.js",
+            "deps": [
+                "jquery",
+                "wc-jquery-payment"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-custom-place-order-button": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/utils/custom-place-order-button.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-dompurify": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/dompurify/purify.min.js",
+            "deps": [],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-flexslider": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/flexslider/jquery.flexslider.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-geolocation": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/geolocation.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-jquery-blockui": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "jquery-blockui": {
+            "src": false,
+            "deps": [
+                "wc-jquery-blockui"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-jquery-cookie": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/jquery-cookie/jquery.cookie.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "jquery-cookie": {
+            "src": false,
+            "deps": [
+                "wc-jquery-cookie"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-jquery-payment": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/jquery-payment/jquery.payment.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "jquery-payment": {
+            "src": false,
+            "deps": [
+                "wc-jquery-payment"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-jquery-tiptip": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/jquery-tiptip/jquery.tipTip.min.js",
+            "deps": [
+                "jquery",
+                "wc-dompurify"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "jquery-tiptip": {
+            "src": false,
+            "deps": [
+                "wc-jquery-tiptip"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        },
+        "wc-js-cookie": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js",
+            "deps": [],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-lost-password": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/lost-password.min.js",
+            "deps": [
+                "jquery",
+                "woocommerce"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-password-strength-meter": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/password-strength-meter.min.js",
+            "deps": [
+                "jquery",
+                "password-strength-meter"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-photoswipe": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe.min.js",
+            "deps": [],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-photoswipe-ui-default": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/photoswipe/photoswipe-ui-default.min.js",
+            "deps": [
+                "wc-photoswipe"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-prettyPhoto": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-prettyPhoto-init": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/prettyPhoto/jquery.prettyPhoto.init.min.js",
+            "deps": [
+                "jquery",
+                "wc-prettyPhoto"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-select2": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/select2/select2.full.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-single-product": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/single-product.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "wc-zoom": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/zoom/jquery.zoom.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "woocommerce": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js",
+            "deps": [
+                "jquery",
+                "wc-jquery-blockui",
+                "wc-js-cookie"
+            ],
+            "requested_strategy": "defer",
+            "group": false
+        },
+        "zbsfrontendformsjs": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/zero-bs-crm/js/ZeroBSCRM.public.leadform.min.js",
+            "deps": [
+                "jquery"
+            ],
+            "requested_strategy": false,
+            "group": false
+        },
+        "wc-order-attribution": {
+            "src": "http://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/order-attribution.min.js",
+            "deps": [
+                "sourcebuster-js"
+            ],
+            "requested_strategy": false,
+            "group": 1
+        }
+    },
+    "options": {
+        "page_optimize_js_load": false,
+        "page_optimize_js_exclude": false,
+        "jetpack_boost_status": false,
+        "litespeed.conf.optm-js_defer": "0"
+    },
+    "eligible": {
+        "jquery-core": "",
+        "jquery-migrate": "",
+        "wc-jquery-blockui": "defer",
+        "wc-add-to-cart": "defer",
+        "woocommerce": "defer"
+    }
+}

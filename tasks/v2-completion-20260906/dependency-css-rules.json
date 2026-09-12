@@ -1,0 +1,757 @@
+{
+  "source": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+  "sha256": "e7cb7a65a72da7a5c675a17e01adda4f24764e7b86d8acc5c2e4875fd5c45704",
+  "method": "every selector must contain the exact owned class-prefix; no source mutation; preserve ancestor at-rules and mixed rules",
+  "groups": {
+    "about": {
+      "rules": 56,
+      "rule_source_bytes": 7804,
+      "rows": [
+        {
+          "line": 121,
+          "selector": ".sr2-about-origin",
+          "ancestors": [],
+          "bytes": 195
+        },
+        {
+          "line": 124,
+          "selector": ".sr2-about-timeline",
+          "ancestors": [],
+          "bytes": 76
+        },
+        {
+          "line": 125,
+          "selector": ".sr2-about-timeline > header",
+          "ancestors": [],
+          "bytes": 69
+        },
+        {
+          "line": 126,
+          "selector": ".sr2-about-timeline__rail",
+          "ancestors": [],
+          "bytes": 205
+        },
+        {
+          "line": 127,
+          "selector": ".sr2-about-timeline__rail article",
+          "ancestors": [],
+          "bytes": 246
+        },
+        {
+          "line": 128,
+          "selector": ".sr2-about-timeline__rail img",
+          "ancestors": [],
+          "bytes": 122
+        },
+        {
+          "line": 129,
+          "selector": ".sr2-about-timeline__rail article::after",
+          "ancestors": [],
+          "bytes": 206
+        },
+        {
+          "line": 130,
+          "selector": ".sr2-about-timeline__rail span",
+          "ancestors": [],
+          "bytes": 111
+        },
+        {
+          "line": 131,
+          "selector": ".sr2-about-timeline__rail h3",
+          "ancestors": [],
+          "bytes": 180
+        },
+        {
+          "line": 132,
+          "selector": ".sr2-about-timeline__rail p",
+          "ancestors": [],
+          "bytes": 67
+        },
+        {
+          "line": 135,
+          "selector": ".sr2-about-hero",
+          "ancestors": [],
+          "bytes": 192
+        },
+        {
+          "line": 136,
+          "selector": ".sr2-about-hero__portrait",
+          "ancestors": [],
+          "bytes": 118
+        },
+        {
+          "line": 137,
+          "selector": ".sr2-about-hero__portrait::after",
+          "ancestors": [],
+          "bytes": 201
+        },
+        {
+          "line": 138,
+          "selector": ".sr2-about-hero__portrait img",
+          "ancestors": [],
+          "bytes": 142
+        },
+        {
+          "line": 139,
+          "selector": ".sr2-about-hero__copy",
+          "ancestors": [],
+          "bytes": 193
+        },
+        {
+          "line": 140,
+          "selector": ".sr2-about-hero h1",
+          "ancestors": [],
+          "bytes": 211
+        },
+        {
+          "line": 141,
+          "selector": ".sr2-about-hero__copy > p:not(.sr2-eyebrow)",
+          "ancestors": [],
+          "bytes": 162
+        },
+        {
+          "line": 142,
+          "selector": ".sr2-about-hero__facts",
+          "ancestors": [],
+          "bytes": 181
+        },
+        {
+          "line": 143,
+          "selector": ".sr2-about-hero__facts > div",
+          "ancestors": [],
+          "bytes": 70
+        },
+        {
+          "line": 144,
+          "selector": ".sr2-about-hero__facts dt, .sr2-about-hero__facts dd",
+          "ancestors": [],
+          "bytes": 169
+        },
+        {
+          "line": 145,
+          "selector": ".sr2-about-hero__facts dt",
+          "ancestors": [],
+          "bytes": 54
+        },
+        {
+          "line": 146,
+          "selector": ".sr2-about-hero__facts dd",
+          "ancestors": [],
+          "bytes": 72
+        },
+        {
+          "line": 147,
+          "selector": ".sr2-about-blox",
+          "ancestors": [],
+          "bytes": 240
+        },
+        {
+          "line": 148,
+          "selector": ".sr2-about-blox h2, .sr2-about-oakland h2",
+          "ancestors": [],
+          "bytes": 190
+        },
+        {
+          "line": 149,
+          "selector": ".sr2-about-blox__copy > p:not(.sr2-eyebrow), .sr2-about-oakland > p:not(.sr2-eyebrow)",
+          "ancestors": [],
+          "bytes": 131
+        },
+        {
+          "line": 150,
+          "selector": ".sr2-about-blox__media",
+          "ancestors": [],
+          "bytes": 108
+        },
+        {
+          "line": 151,
+          "selector": ".sr2-about-blox__media img, .sr2-about-blox__media iframe",
+          "ancestors": [],
+          "bytes": 129
+        },
+        {
+          "line": 152,
+          "selector": ".sr2-about-blox__media img",
+          "ancestors": [],
+          "bytes": 101
+        },
+        {
+          "line": 153,
+          "selector": ".sr2-about-blox__media iframe",
+          "ancestors": [],
+          "bytes": 45
+        },
+        {
+          "line": 154,
+          "selector": ".sr2-about-press",
+          "ancestors": [],
+          "bytes": 115
+        },
+        {
+          "line": 155,
+          "selector": ".sr2-about-press__grid",
+          "ancestors": [],
+          "bytes": 198
+        },
+        {
+          "line": 156,
+          "selector": ".sr2-about-press__grid article",
+          "ancestors": [],
+          "bytes": 188
+        },
+        {
+          "line": 157,
+          "selector": ".sr2-about-press__grid article > p",
+          "ancestors": [],
+          "bytes": 233
+        },
+        {
+          "line": 158,
+          "selector": ".sr2-about-press__grid h3",
+          "ancestors": [],
+          "bytes": 193
+        },
+        {
+          "line": 159,
+          "selector": ".sr2-about-press__grid a",
+          "ancestors": [],
+          "bytes": 197
+        },
+        {
+          "line": 176,
+          "selector": ".sr2-about-chapters",
+          "ancestors": [],
+          "bytes": 118
+        },
+        {
+          "line": 177,
+          "selector": ".sr2-about-chapters__grid",
+          "ancestors": [],
+          "bytes": 166
+        },
+        {
+          "line": 178,
+          "selector": ".sr2-about-chapter",
+          "ancestors": [],
+          "bytes": 299
+        },
+        {
+          "line": 179,
+          "selector": ".sr2-about-chapter::after",
+          "ancestors": [],
+          "bytes": 196
+        },
+        {
+          "line": 180,
+          "selector": ".sr2-about-chapter img",
+          "ancestors": [],
+          "bytes": 172
+        },
+        {
+          "line": 181,
+          "selector": ".sr2-about-chapter:hover img, .sr2-about-chapter:focus-visible img",
+          "ancestors": [],
+          "bytes": 94
+        },
+        {
+          "line": 182,
+          "selector": ".sr2-about-chapter:hover::after, .sr2-about-chapter:focus-visible::after",
+          "ancestors": [],
+          "bytes": 149
+        },
+        {
+          "line": 183,
+          "selector": ".sr2-about-chapter span",
+          "ancestors": [],
+          "bytes": 126
+        },
+        {
+          "line": 184,
+          "selector": ".sr2-about-chapter strong",
+          "ancestors": [],
+          "bytes": 165
+        },
+        {
+          "line": 185,
+          "selector": ".sr2-about-chapter em",
+          "ancestors": [],
+          "bytes": 108
+        },
+        {
+          "line": 186,
+          "selector": ".sr2-about-oakland",
+          "ancestors": [],
+          "bytes": 263
+        },
+        {
+          "line": 309,
+          "selector": ".sr2-about-hero, .sr2-about-blox",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 900px)"
+            }
+          ],
+          "bytes": 64
+        },
+        {
+          "line": 310,
+          "selector": ".sr2-about-hero__portrait",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 900px)"
+            }
+          ],
+          "bytes": 48
+        },
+        {
+          "line": 311,
+          "selector": ".sr2-about-hero__portrait::after",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 900px)"
+            }
+          ],
+          "bytes": 97
+        },
+        {
+          "line": 312,
+          "selector": ".sr2-about-hero__copy",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 900px)"
+            }
+          ],
+          "bytes": 62
+        },
+        {
+          "line": 313,
+          "selector": ".sr2-about-chapters__grid",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 900px)"
+            }
+          ],
+          "bytes": 79
+        },
+        {
+          "line": 326,
+          "selector": ".sr2-about-timeline__rail article",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 74
+        },
+        {
+          "line": 327,
+          "selector": ".sr2-about-hero__facts",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 72
+        },
+        {
+          "line": 328,
+          "selector": ".sr2-about-blox__media",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 47
+        },
+        {
+          "line": 329,
+          "selector": ".sr2-about-press__grid",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 54
+        },
+        {
+          "line": 330,
+          "selector": ".sr2-about-chapter",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 41
+        }
+      ]
+    },
+    "reserve": {
+      "rules": 30,
+      "rule_source_bytes": 3527,
+      "rows": [
+        {
+          "line": 189,
+          "selector": ".sr2-reserve-hero",
+          "ancestors": [],
+          "bytes": 209
+        },
+        {
+          "line": 190,
+          "selector": ".sr2-reserve-hero__media, .sr2-reserve-hero__media img",
+          "ancestors": [],
+          "bytes": 115
+        },
+        {
+          "line": 191,
+          "selector": ".sr2-reserve-hero__media",
+          "ancestors": [],
+          "bytes": 41
+        },
+        {
+          "line": 192,
+          "selector": ".sr2-reserve-hero__media img",
+          "ancestors": [],
+          "bytes": 114
+        },
+        {
+          "line": 193,
+          "selector": ".sr2-reserve-hero::after",
+          "ancestors": [],
+          "bytes": 240
+        },
+        {
+          "line": 194,
+          "selector": ".sr2-reserve-hero__copy",
+          "ancestors": [],
+          "bytes": 45
+        },
+        {
+          "line": 195,
+          "selector": ".sr2-reserve-hero h1",
+          "ancestors": [],
+          "bytes": 188
+        },
+        {
+          "line": 196,
+          "selector": ".sr2-reserve-hero__copy > p:not(.sr2-eyebrow)",
+          "ancestors": [],
+          "bytes": 130
+        },
+        {
+          "line": 197,
+          "selector": ".sr2-reserve-hero__caption",
+          "ancestors": [],
+          "bytes": 237
+        },
+        {
+          "line": 198,
+          "selector": ".sr2-reserve-principles",
+          "ancestors": [],
+          "bytes": 122
+        },
+        {
+          "line": 199,
+          "selector": ".sr2-reserve-principles > div",
+          "ancestors": [],
+          "bytes": 194
+        },
+        {
+          "line": 200,
+          "selector": ".sr2-reserve-principles article",
+          "ancestors": [],
+          "bytes": 118
+        },
+        {
+          "line": 201,
+          "selector": ".sr2-reserve-principles article span",
+          "ancestors": [],
+          "bytes": 139
+        },
+        {
+          "line": 202,
+          "selector": ".sr2-reserve-principles h3",
+          "ancestors": [],
+          "bytes": 212
+        },
+        {
+          "line": 203,
+          "selector": ".sr2-reserve-principles p",
+          "ancestors": [],
+          "bytes": 71
+        },
+        {
+          "line": 204,
+          "selector": ".sr2-reserve-salon",
+          "ancestors": [],
+          "bytes": 135
+        },
+        {
+          "line": 205,
+          "selector": ".sr2-reserve-salon__frame",
+          "ancestors": [],
+          "bytes": 130
+        },
+        {
+          "line": 206,
+          "selector": ".sr2-reserve-salon__frame::after",
+          "ancestors": [],
+          "bytes": 170
+        },
+        {
+          "line": 207,
+          "selector": ".sr2-reserve-salon__frame img",
+          "ancestors": [],
+          "bytes": 117
+        },
+        {
+          "line": 208,
+          "selector": ".sr2-reserve-salon__frame .sr2-button",
+          "ancestors": [],
+          "bytes": 141
+        },
+        {
+          "line": 209,
+          "selector": ".sr2-reserve-products",
+          "ancestors": [],
+          "bytes": 62
+        },
+        {
+          "line": 210,
+          "selector": ".sr2-reserve-worlds",
+          "ancestors": [],
+          "bytes": 102
+        },
+        {
+          "line": 211,
+          "selector": ".sr2-reserve-worlds > .sr2-section-head",
+          "ancestors": [],
+          "bytes": 80
+        },
+        {
+          "line": 314,
+          "selector": ".sr2-reserve-principles > div",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 900px)"
+            }
+          ],
+          "bytes": 61
+        },
+        {
+          "line": 331,
+          "selector": ".sr2-reserve-hero",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 40
+        },
+        {
+          "line": 332,
+          "selector": ".sr2-reserve-hero::after",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 101
+        },
+        {
+          "line": 333,
+          "selector": ".sr2-reserve-hero__caption",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 45
+        },
+        {
+          "line": 334,
+          "selector": ".sr2-reserve-salon",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 41
+        },
+        {
+          "line": 335,
+          "selector": ".sr2-reserve-salon > .sr2-section-head",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 79
+        },
+        {
+          "line": 336,
+          "selector": ".sr2-reserve-salon__frame",
+          "ancestors": [
+            {
+              "type": "atrule",
+              "name": "media",
+              "params": "(max-width: 640px)"
+            }
+          ],
+          "bytes": 48
+        }
+      ]
+    },
+    "contact": {
+      "rules": 9,
+      "rule_source_bytes": 1422,
+      "rows": [
+        {
+          "line": 212,
+          "selector": ".sr2-contact-grid",
+          "ancestors": [],
+          "bytes": 155
+        },
+        {
+          "line": 213,
+          "selector": ".sr2-contact-grid__email",
+          "ancestors": [],
+          "bytes": 201
+        },
+        {
+          "line": 214,
+          "selector": ".sr2-contact-grid > div > p:not(.sr2-eyebrow)",
+          "ancestors": [],
+          "bytes": 74
+        },
+        {
+          "line": 215,
+          "selector": ".sr2-contact-form-wrap",
+          "ancestors": [],
+          "bytes": 44
+        },
+        {
+          "line": 216,
+          "selector": ".sr2-contact-form",
+          "ancestors": [],
+          "bytes": 199
+        },
+        {
+          "line": 217,
+          "selector": ".sr2-contact-form label",
+          "ancestors": [],
+          "bytes": 194
+        },
+        {
+          "line": 218,
+          "selector": ".sr2-contact-form input, .sr2-contact-form select, .sr2-contact-form textarea",
+          "ancestors": [],
+          "bytes": 329
+        },
+        {
+          "line": 219,
+          "selector": ".sr2-contact-form input:focus, .sr2-contact-form select:focus, .sr2-contact-form textarea:focus",
+          "ancestors": [],
+          "bytes": 178
+        },
+        {
+          "line": 220,
+          "selector": ".sr2-contact-form textarea",
+          "ancestors": [],
+          "bytes": 48
+        }
+      ]
+    },
+    "commerce-preview": {
+      "rules": 9,
+      "rule_source_bytes": 1491,
+      "rows": [
+        {
+          "line": 167,
+          "selector": ".sr2-commerce-preview",
+          "ancestors": [],
+          "bytes": 218
+        },
+        {
+          "line": 168,
+          "selector": ".sr2-commerce-preview__hero",
+          "ancestors": [],
+          "bytes": 49
+        },
+        {
+          "line": 169,
+          "selector": ".sr2-commerce-preview__hero h1",
+          "ancestors": [],
+          "bytes": 191
+        },
+        {
+          "line": 170,
+          "selector": ".sr2-commerce-preview__hero > p:last-child",
+          "ancestors": [],
+          "bytes": 128
+        },
+        {
+          "line": 171,
+          "selector": ".sr2-commerce-preview__panel",
+          "ancestors": [],
+          "bytes": 266
+        },
+        {
+          "line": 172,
+          "selector": ".sr2-commerce-preview__panel h2",
+          "ancestors": [],
+          "bytes": 172
+        },
+        {
+          "line": 173,
+          "selector": ".sr2-commerce-preview__panel p:not(.sr2-eyebrow)",
+          "ancestors": [],
+          "bytes": 94
+        },
+        {
+          "line": 174,
+          "selector": ".sr2-commerce-preview__panel label",
+          "ancestors": [],
+          "bytes": 198
+        },
+        {
+          "line": 175,
+          "selector": ".sr2-commerce-preview__panel input",
+          "ancestors": [],
+          "bytes": 175
+        }
+      ]
+    }
+  }
+}

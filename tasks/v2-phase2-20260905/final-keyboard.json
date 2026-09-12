@@ -1,0 +1,42 @@
+{
+  "checkout": {
+    "next": {
+      "id": "billing_first_name",
+      "outline": "none",
+      "shadow": "rgb(10, 10, 10) 0px 0px 0px 2px, rgb(183, 110, 121) 0px 0px 0px 4px",
+      "tag": "INPUT"
+    },
+    "paymentSubmitted": false
+  },
+  "pdp": {
+    "size": "S",
+    "variationId": "10483",
+    "nativeKeys": "ArrowDown, Down, Return",
+    "purchaseFocus": {
+      "result": {
+        "type": "string",
+        "value": "{\"tag\":\"BUTTON\",\"text\":\"Add to cart\",\"className\":\"single_add_to_cart_button button alt\"}"
+      }
+    }
+  },
+  "desktopMenu": {
+    "verified": {
+      "result": {
+        "type": "string",
+        "value": "{\"menu\":\"true\",\"focusInsideHeader\":true,\"mainInert\":true}"
+      }
+    }
+  },
+  "account": {
+    "result": {
+      "type": "string",
+      "value": "{\"id\":\"password\",\"type\":\"password\",\"shadow\":\"rgb(10, 10, 10) 0px 0px 0px 2px, rgb(183, 110, 121) 0px 0px 0px 4px\"}"
+    }
+  },
+  "cart": {
+    "result": {
+      "type": "string",
+      "value": "{\"focus\":\"Remove The Bridge Series 'The Bay Bridge' Shirt - M from your bag\",\"tag\":\"A\"}"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "method": "Stream a git archive of the exact recovered theme tree; read every tar member and compare path-bound SHA-256 against original server manifest",
+  "source_revision": "bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b",
+  "files_verified": 447,
+  "result": "PASS",
+  "remote_restoration_performed": false
+}

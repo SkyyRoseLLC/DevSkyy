@@ -1,0 +1,121 @@
+{
+  "created_at": "2026-09-06T13:30:58.153902+00:00",
+  "base": "415dc4368b44efc06d0d28928362901f9624a20f",
+  "receipts": [
+    {
+      "path": ".artifacts/v2-completion-20260906/responsive-final/completion-responsive-chromium.json",
+      "sha256": "c4e649dbd752a93b8e3d7c688aff258f9a976b3b15f17cfa2025e7c158e519f8",
+      "status": "PASS",
+      "rows": 105
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/responsive-final/completion-responsive-webkit.json",
+      "sha256": "6c521d92e251ab92a27c0546655213a0b7d54c03effe5b10de8d981c62ea4105",
+      "status": "PASS",
+      "rows": 30
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/commerce/shop-behavior.json",
+      "sha256": "bb98832b2fa19a918175d9abd26e9daafbd81c9fbe47085c368ad343bb8b408c",
+      "status": "PASS",
+      "rows": null
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/commerce/pdp-behavior.json",
+      "sha256": "1f43b90c52ca067a591b11cb1c94d74fcf7b864b0134cbf31448870ed005337b",
+      "status": "PASS",
+      "rows": null
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/commerce/gallery-delivery.json",
+      "sha256": "6dec6865143ae1d602b9d5904e68f485308a2b3078efabd00132b55542574cc3",
+      "status": "PASS",
+      "rows": null
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/commerce/cinematic-integration.json",
+      "sha256": "174ba54a5303554ca13dcd596d97d7df9873fd454a4aa9a9ffae96d26fab12b6",
+      "status": "PASS",
+      "rows": 42
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/scenes-final/scene-reflow.json",
+      "sha256": "aa634cc98d879089082c98814d5298f1e2995e918ecbdce70d42a858becd115a",
+      "status": "PASS",
+      "rows": 63
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/skyy/completion.json",
+      "sha256": "f4547e5579a2097fc1c0c5a6b47607cefbe479eed91ae5b862ddf66a5bfae812",
+      "status": "PASS",
+      "rows": 9
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/skyy/cinematic-integration-skyy-home-controls.json",
+      "sha256": "296f8fbb352ba7972aedae664a6fe1a3240f8f8c6006ee47102e11cc2657d7cd",
+      "status": "PASS",
+      "rows": 4
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/skyy/failures.json",
+      "sha256": "731b6c9403da6bda5fd66f6a382e9d6d157cadcef56b6221e5d33f55a2ac1375",
+      "status": "PASS",
+      "rows": 2
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/skyy/settled-dialogs.json",
+      "sha256": "cb47c438925e4154d54b0c427f13ef17c09d9910480ca8418ec988eef548fec0",
+      "status": "PASS",
+      "rows": 8
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/after/journey-closed.json",
+      "sha256": "87b34388fd7231246ff4fd346496b20012b4ffdfc6b7b4ba48aa5a44c5b4eeae",
+      "status": "See individual assertions and reviewer verdict",
+      "rows": 14
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/after/search-final-widths.json",
+      "sha256": "738ab7a38a51f46eedb023625e18874b8d889a49abe946165ce7fc2145a42f2f",
+      "status": "See individual assertions and reviewer verdict",
+      "rows": 5
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/after/journey-final-regression.json",
+      "sha256": "9d8a17cf484a35b4bf726461a86a9fca2304a7d2567027c4673183beca476dcd",
+      "status": "See individual assertions and reviewer verdict",
+      "rows": 12
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/after/native-pdp-colors-settled.json",
+      "sha256": "83eebb06841b953c78a4d307bb4f638f8a3fd3626d5320aabdb1ec787af2556b",
+      "status": "See reviewer assertions",
+      "limit": null
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/after/native-disabled-attribute-probe.json",
+      "sha256": "88de3e1ebd988ba33f62e2f1921e4c6605a453cb815b032028f685118b1aeaae",
+      "status": "See reviewer assertions",
+      "limit": null
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/after/native-colors-final.json",
+      "sha256": "8aff8acd0adeaf9ce67cb68e0efa8067d02df4a948f6d9dd43ca6a3c6ce14317",
+      "status": "See reviewer assertions",
+      "limit": "native-colors-final PDP rows superseded by settled receipt; Cart/Checkout rows valid"
+    },
+    {
+      "path": ".artifacts/v2-completion-20260906/lighthouse/lighthouse-candidate-final-run.json",
+      "sha256": "e005768055d813ccd5c11badf38b3343be1d9ac9bf5558336f4c5e0a0660bb95",
+      "status": "PASS",
+      "limit": null
+    }
+  ],
+  "excluded": [
+    "scenes/ whole-element screenshots: rail moved during screenshot; scenes-final/ replaces them",
+    "lighthouse-candidate-* provisional: another browser overlapped initial run",
+    "responsive/ first attempt: About320 overflow fixed",
+    "skyy/*first* diagnostic failures: fixed or corrected test lifecycle, final receipts replace them"
+  ],
+  "coverage_limit": "Static135 route/width cases precede final narrow Cart notice/Search heading/native alt colors/Skyy controls changes. Current targeted closure receipts cover those exact later deltas. Static axe is not full AT speech or live checkout certification."
+}

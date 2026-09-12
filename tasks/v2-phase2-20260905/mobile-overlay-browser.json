@@ -1,0 +1,58 @@
+{
+  "searchClosed": {
+    "focus": "Open site menu",
+    "mainInert": false,
+    "open": 0,
+    "overflow": "clip visible"
+  },
+  "menuWrap": {
+    "focus": "Enter Kids Capsule from the Skyy, the heir, on her throne frame",
+    "insideHeader": true
+  },
+  "menuClosed": {
+    "focus": "Open site menu",
+    "mainInert": false,
+    "menu": "false"
+  },
+  "sizeGuideOpen": {
+    "dialogs": [
+      "sr2-size-guide-dialog"
+    ],
+    "focus": "<button type=\"submit\" class=\"sr2-size-guide-dialog__close\" aria-label=\"Close fit and size guide\">×</button>",
+    "overflow": "hidden"
+  },
+  "sizeGuideClosed": {
+    "focus": "\n\t\t\tFit + size guide ↗\n\t\t",
+    "open": 0,
+    "overflow": "clip visible"
+  },
+  "quickViewOpen": {
+    "open": [
+      "sr2-quick-view-dialog"
+    ],
+    "overflow": "hidden"
+  },
+  "quickViewClosed": {
+    "focus": "\n\t\t\t\tQuick view\t\t\t",
+    "open": 0
+  },
+  "guide": {
+    "position": "relative",
+    "rect": {
+      "bottom": 490.197265625,
+      "height": 110.14794921875,
+      "left": 274.5045166015625,
+      "right": 383.4819030761719,
+      "top": 380.04931640625,
+      "width": 108.97738647460938,
+      "x": 274.5045166015625,
+      "y": 380.04931640625
+    },
+    "scroll": 390,
+    "width": 390
+  },
+  "guideWhileMenu": {
+    "inert": true,
+    "visibility": "hidden"
+  }
+}

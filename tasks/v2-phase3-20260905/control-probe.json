@@ -1,0 +1,27 @@
+{
+  "passwordToggle": true,
+  "target": {
+    "x": 285,
+    "y": 688.828125,
+    "width": 44,
+    "height": 44
+  },
+  "required": [
+    {
+      "id": "username",
+      "required": true,
+      "valid": false
+    },
+    {
+      "id": "password",
+      "required": true,
+      "valid": false
+    }
+  ],
+  "forced": {
+    "forced": true,
+    "outline": "solid",
+    "scroll": "auto"
+  },
+  "status": "PASS"
+}

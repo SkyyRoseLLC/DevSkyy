@@ -1,0 +1,53 @@
+/* Full-frame approved films; no invented motion or garment cropping. */
+.sr2-world--hero-composed .sr2-hero-commerce__frame {
+  aspect-ratio: var(--scene-aspect, 1672 / 941);
+  background: #080b0c;
+}
+.sr2-hero-commerce__frame > [data-scene-poster]:not([src]) { opacity: 0; }
+.sr2-hero-commerce__frame > video[data-collection-scene-motion] {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  pointer-events: none;
+}
+.sr2-hero-commerce__frame.is-motion-ready > video[data-collection-scene-motion] { opacity: 1; }
+.sr2-hero-commerce__frame.is-motion-ready > img { opacity: 0; }
+.sr2-scene-motion-controls { display: flex; justify-content: flex-end; min-height: 56px; padding: 6px 12px; background: #080b0c; }
+.sr2-scene-motion__toggle {
+  position: relative;
+  z-index: 3;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(245, 239, 225, .65);
+  border-radius: 2px;
+  color: #f5efe1;
+  background: rgba(8, 11, 12, .88);
+  font: 600 .7rem/1.3 var(--sr2-font-ui, sans-serif);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.sr2-scene-motion__toggle[hidden] { display: none; }
+.sr2-scene-motion__toggle:focus-visible { outline: 3px solid #e2b6a7; outline-offset: 4px; }
+.sr2-scene-motion__toggle:disabled { cursor: default; }
+.sr2-immersive .sr2-immersive__chapter.sr2-immersive__chapter--commerce {
+  display: block;
+  position: relative;
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+  padding: 0;
+  scroll-margin-top: 6rem;
+}
+.sr2-immersive__chapter--commerce > .sr2-world--hero-composed {
+  width: 100%;
+  margin: 0;
+}
+.sr2-immersive__chapter--commerce .sr2-hero-commerce__details {
+  position: relative;
+  z-index: 1;
+}

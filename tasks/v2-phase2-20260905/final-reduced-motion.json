@@ -1,0 +1,54 @@
+[
+  {
+    "label": "home",
+    "observed": {
+      "reduced": true,
+      "normal": "1ms",
+      "videos": [
+        {
+          "paused": true,
+          "autoplay": false
+        }
+      ],
+      "words": [],
+      "brandAnimated": false
+    }
+  },
+  {
+    "label": "signature",
+    "observed": {
+      "reduced": true,
+      "normal": "1ms",
+      "videos": [
+        {
+          "paused": true,
+          "autoplay": false
+        },
+        {
+          "paused": true,
+          "autoplay": false
+        },
+        {
+          "paused": true,
+          "autoplay": false
+        },
+        {
+          "paused": true,
+          "autoplay": false
+        }
+      ],
+      "words": [],
+      "brandAnimated": false
+    }
+  },
+  {
+    "label": "pdp",
+    "observed": {
+      "reduced": true,
+      "normal": "1ms",
+      "videos": [],
+      "words": [],
+      "brandAnimated": false
+    }
+  }
+]

@@ -1,0 +1,1658 @@
+[
+  {
+    "sku": "br-001",
+    "id": 9864,
+    "garment_type": "crewneck",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "35",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-001/"
+  },
+  {
+    "sku": "br-002",
+    "id": 9865,
+    "garment_type": "joggers",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "50",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-002/"
+  },
+  {
+    "sku": "br-003",
+    "id": 9866,
+    "garment_type": "jersey",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "100",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003/"
+  },
+  {
+    "sku": "br-004",
+    "id": 9867,
+    "garment_type": "hoodie",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "40",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-004/"
+  },
+  {
+    "sku": "br-005",
+    "id": 9868,
+    "garment_type": "hoodie",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "65",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-005/"
+  },
+  {
+    "sku": "br-006",
+    "id": 9869,
+    "garment_type": "jacket",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "95",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-006/"
+  },
+  {
+    "sku": "br-007",
+    "id": 9870,
+    "garment_type": "shorts",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "65",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-007/"
+  },
+  {
+    "sku": "br-008",
+    "id": 9871,
+    "garment_type": "jersey",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Red"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "115",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-008/"
+  },
+  {
+    "sku": "br-009",
+    "id": 9872,
+    "garment_type": "jersey",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "White"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "115",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-009/"
+  },
+  {
+    "sku": "br-010",
+    "id": 9873,
+    "garment_type": "jersey",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "White/Gold"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "100",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-010/"
+  },
+  {
+    "sku": "br-011",
+    "id": 9874,
+    "garment_type": "hoodie",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black/Teal"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "115",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-011/"
+  },
+  {
+    "sku": "br-012",
+    "id": 9945,
+    "garment_type": "jersey",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black/Gold"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "100",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-oakland/"
+  },
+  {
+    "sku": "lh-002",
+    "id": 9875,
+    "garment_type": "joggers",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "95",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-002/"
+  },
+  {
+    "sku": "lh-003",
+    "id": 9876,
+    "garment_type": "shorts",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "75",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-003/"
+  },
+  {
+    "sku": "lh-004",
+    "id": 9877,
+    "garment_type": "bomber jacket",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "265",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-004/"
+  },
+  {
+    "sku": "lh-005",
+    "id": 10077,
+    "garment_type": "accessory",
+    "canonical_sizes": [
+      "One Size"
+    ],
+    "classification": "NO SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "One Size"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "simple",
+    "migration_required": false,
+    "price": "45",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/the-fannie/"
+  },
+  {
+    "sku": "lh-006",
+    "id": 9879,
+    "garment_type": "joggers",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "White"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "One Size"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "95",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-006/"
+  },
+  {
+    "sku": "sg-001",
+    "id": 9881,
+    "garment_type": "shorts",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Blue"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "65",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-001/"
+  },
+  {
+    "sku": "sg-002",
+    "id": 9882,
+    "garment_type": "shirt",
+    "canonical_sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Gold"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "65",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-002/"
+  },
+  {
+    "sku": "sg-003",
+    "id": 9883,
+    "garment_type": "shorts",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Gold"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "65",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-003/"
+  },
+  {
+    "sku": "sg-005",
+    "id": 9880,
+    "garment_type": "shirt",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "White"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "25",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/"
+  },
+  {
+    "sku": "sg-006",
+    "id": 9884,
+    "garment_type": "hoodie",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Mint/Lavender"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "45",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-006/"
+  },
+  {
+    "sku": "sg-007",
+    "id": 9885,
+    "garment_type": "accessory",
+    "canonical_sizes": [
+      "One Size"
+    ],
+    "classification": "NO SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      },
+      "size": {
+        "name": "Size",
+        "options": [
+          "One Size"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "simple",
+    "migration_required": false,
+    "price": "25",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-007/"
+  },
+  {
+    "sku": "sg-009",
+    "id": 9886,
+    "garment_type": "jacket",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Cream"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "80",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-009/"
+  },
+  {
+    "sku": "sg-011",
+    "id": 9888,
+    "garment_type": "shirt",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "White"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "30",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-011/"
+  },
+  {
+    "sku": "sg-012",
+    "id": 9889,
+    "garment_type": "shirt",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Orchid"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "30",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-012/"
+  },
+  {
+    "sku": "sg-013",
+    "id": 9953,
+    "garment_type": "crewneck",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Mint/Lavender"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "40",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-013/"
+  },
+  {
+    "sku": "sg-014",
+    "id": 9954,
+    "garment_type": "sweatpants",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Mint/Lavender"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "45",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-014/"
+  },
+  {
+    "sku": "sg-015",
+    "id": 10067,
+    "garment_type": "set",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "85",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/the-windbreaker-set/"
+  },
+  {
+    "sku": "kids-001",
+    "id": 9955,
+    "garment_type": "hoodie",
+    "canonical_sizes": [
+      "2T",
+      "3T",
+      "4T",
+      "5",
+      "6",
+      "7"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "2T",
+          "3T",
+          "4T",
+          "5",
+          "6",
+          "7"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Red/Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "65",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-001/"
+  },
+  {
+    "sku": "kids-002",
+    "id": 9956,
+    "garment_type": "hoodie",
+    "canonical_sizes": [
+      "2T",
+      "3T",
+      "4T",
+      "5",
+      "6",
+      "7"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "2T",
+          "3T",
+          "4T",
+          "5",
+          "6",
+          "7"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Purple/Black"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "65",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-002/"
+  },
+  {
+    "sku": "br-014",
+    "id": 9927,
+    "garment_type": "jersey",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "Black/Orange"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "100",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-giants/"
+  },
+  {
+    "sku": "br-015",
+    "id": 9928,
+    "garment_type": "jersey",
+    "canonical_sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "2XL",
+      "3XL"
+    ],
+    "classification": "SIZE REQUIRED",
+    "current_type": "simple",
+    "current_attributes": {
+      "size": {
+        "name": "Size",
+        "options": [
+          "S",
+          "M",
+          "L",
+          "XL",
+          "2XL",
+          "3XL"
+        ],
+        "variation": true,
+        "visible": true,
+        "taxonomy": false
+      },
+      "color": {
+        "name": "Color",
+        "options": [
+          "White"
+        ],
+        "variation": false,
+        "visible": true,
+        "taxonomy": false
+      }
+    },
+    "current_variations": [],
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "desired_type": "variable",
+    "migration_required": true,
+    "price": "100",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-white/"
+  }
+]

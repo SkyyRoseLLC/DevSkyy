@@ -1,0 +1,51 @@
+{
+  "release_id": "v2-full-local-staging-20260905-k1",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "source": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2",
+  "scope": "Complete local V2 theme plus approved runtime assets",
+  "approved_request": "all local updates need to be on v2",
+  "initial_staging_hashes": {
+    "functions.php": "ac2ba21fccfcc658dbd6f309b0bc671b9fab8bd57e2c0a1b3621d60a4bbfd256",
+    "template-collection.php": "ed8e9e958610e1f7c8f1dea5b2dad173d5ea9c4315d7082679c12fb9553d43ad",
+    "template-parts/immersive/world.php": "a1f08d916851586878c0ddbcc96afce490e7ebb2f2cdb4a05d6596546d8ffe88"
+  },
+  "production_authorized": false,
+  "validation_requested": false,
+  "build": {
+    "js": 8,
+    "css": 6
+  },
+  "exclusions": [
+    ".DS_Store",
+    "._*",
+    "node_modules/",
+    ".git/",
+    ".mypy_cache/",
+    ".pytest_cache/",
+    "__pycache__/",
+    ".env*",
+    "dist/",
+    "tests/",
+    "CLAUDE.local.md",
+    "package-lock.json",
+    "*.map",
+    "assets/css/bundles/",
+    "assets/scroll-world/generated-candidates/",
+    "assets/video/collection-heroes/candidates/",
+    "*_rejected*",
+    "*.log",
+    "*.sqlite",
+    "*.db"
+  ],
+  "approved_candidate_assets": [
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+    "assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png",
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1.png",
+    "assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1.png"
+  ]
+}

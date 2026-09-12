@@ -1,0 +1,35 @@
+{
+  "schema": "skyyrose.archive-style-inputs.v1",
+  "sources": [
+    {
+      "file": "design-tokens.min.css",
+      "sha256": "8f5809327ca39cca9fef03f6f64195251f1260129138f939de9632bdc1f1b5e7",
+      "bytes": 5990
+    },
+    {
+      "file": "shop-page.min.css",
+      "sha256": "fb7daf6b0585968b6f67b6ca9cf3a555772c227dfc66e5034f77edc3624df07b",
+      "bytes": 7858
+    },
+    {
+      "file": "controls.min.css",
+      "sha256": "8a667cb510a6d13d1d81bc02f485323d2c63691db5a9bf427c34f88631fc2d21",
+      "bytes": 12959
+    },
+    {
+      "file": "global-shell.min.css",
+      "sha256": "8a96ea021665303eb20a9d83848712b8e3b4b2caccf85cf368babf5b49e0f12a",
+      "bytes": 16340
+    },
+    {
+      "file": "visual-recovery.min.css",
+      "sha256": "0853b553d48a0d8d639ffa2526f4899d46c08539be4cf7789bbe2e6d51954b51",
+      "bytes": 6451
+    },
+    {
+      "file": "mascot.min.css",
+      "sha256": "2972d42a123942af19c7677af936e3022d8e8f73741332c94d14fa9e0c1df5f3",
+      "bytes": 14378
+    }
+  ]
+}

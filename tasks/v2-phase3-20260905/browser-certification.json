@@ -1,0 +1,771 @@
+{
+  "routes": [
+    {
+      "name": "home",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "broken": [],
+      "longTasks": [
+        {
+          "start": 1075.6000000014901,
+          "duration": 98
+        }
+      ]
+    },
+    {
+      "name": "pdp",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "approved-pdp",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "rejected-pdp",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "missing-pdp",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "broken": [],
+      "longTasks": [
+        {
+          "start": 474.20000000298023,
+          "duration": 59
+        }
+      ]
+    },
+    {
+      "name": "account",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "search-results",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "home",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "pdp",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "approved-pdp",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "rejected-pdp",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "missing-pdp",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "account",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "search-results",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "pdp",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "approved-pdp",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "rejected-pdp",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "missing-pdp",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "account",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    },
+    {
+      "name": "search-results",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "h1": 1,
+      "broken": [],
+      "longTasks": []
+    }
+  ],
+  "responsive": [
+    {
+      "state": "home",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 304,
+          "scroll": 302,
+          "client": 302
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 320,
+      "height": 844,
+      "scrollWidth": 320,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 320,
+          "scroll": 318,
+          "client": 318
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 360,
+      "height": 844,
+      "scrollWidth": 360,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 360,
+      "height": 844,
+      "scrollWidth": 360,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 360,
+      "height": 844,
+      "scrollWidth": 360,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 344,
+          "scroll": 342,
+          "client": 342
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 360,
+      "height": 844,
+      "scrollWidth": 360,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 360,
+          "scroll": 358,
+          "client": 358
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 359,
+          "scroll": 357,
+          "client": 357
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 375,
+      "height": 844,
+      "scrollWidth": 375,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 375,
+          "scroll": 373,
+          "client": 373
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 374,
+          "scroll": 372,
+          "client": 372
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 390,
+          "scroll": 388,
+          "client": 388
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 414,
+      "height": 844,
+      "scrollWidth": 414,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 414,
+      "height": 844,
+      "scrollWidth": 414,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 414,
+      "height": 844,
+      "scrollWidth": 414,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 398,
+          "scroll": 396,
+          "client": 396
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 414,
+      "height": 844,
+      "scrollWidth": 414,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 414,
+          "scroll": 412,
+          "client": 412
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 752,
+          "scroll": 750,
+          "client": 750
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 768,
+      "height": 1000,
+      "scrollWidth": 768,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 480,
+          "scroll": 478,
+          "client": 478
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 928,
+          "scroll": 926,
+          "client": 926
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 1024,
+      "height": 1000,
+      "scrollWidth": 1024,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 480,
+          "scroll": 478,
+          "client": 478
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 1280,
+      "height": 1000,
+      "scrollWidth": 1280,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 1280,
+      "height": 1000,
+      "scrollWidth": 1280,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 1280,
+      "height": 1000,
+      "scrollWidth": 1280,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 928,
+          "scroll": 926,
+          "client": 926
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 1280,
+      "height": 1000,
+      "scrollWidth": 1280,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 480,
+          "scroll": 478,
+          "client": 478
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 928,
+          "scroll": 926,
+          "client": 926
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 1440,
+      "height": 1000,
+      "scrollWidth": 1440,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 480,
+          "scroll": 478,
+          "client": 478
+        }
+      ]
+    },
+    {
+      "state": "home",
+      "width": 1728,
+      "height": 1000,
+      "scrollWidth": 1728,
+      "dialog": []
+    },
+    {
+      "state": "nav",
+      "width": 1728,
+      "height": 1000,
+      "scrollWidth": 1728,
+      "dialog": []
+    },
+    {
+      "state": "search",
+      "width": 1728,
+      "height": 1000,
+      "scrollWidth": 1728,
+      "dialog": [
+        {
+          "id": "sr2-search-dialog",
+          "width": 928,
+          "scroll": 926,
+          "client": 926
+        }
+      ]
+    },
+    {
+      "state": "bag",
+      "width": 1728,
+      "height": 1000,
+      "scrollWidth": 1728,
+      "dialog": [
+        {
+          "id": "sr2-bag-dialog",
+          "width": 480,
+          "scroll": 478,
+          "client": 478
+        }
+      ]
+    }
+  ],
+  "a11y": [
+    {
+      "name": "nav-1440",
+      "violations": []
+    },
+    {
+      "name": "search-1440",
+      "violations": []
+    },
+    {
+      "name": "bag-empty-1440",
+      "violations": []
+    },
+    {
+      "name": "footer-1440",
+      "violations": []
+    },
+    {
+      "name": "nav-768",
+      "violations": []
+    },
+    {
+      "name": "search-768",
+      "violations": []
+    },
+    {
+      "name": "bag-empty-768",
+      "violations": []
+    },
+    {
+      "name": "footer-768",
+      "violations": []
+    },
+    {
+      "name": "account",
+      "violations": []
+    },
+    {
+      "name": "search-results",
+      "violations": []
+    },
+    {
+      "name": "nav-390",
+      "violations": []
+    },
+    {
+      "name": "search-390",
+      "violations": []
+    },
+    {
+      "name": "bag-empty-390",
+      "violations": []
+    },
+    {
+      "name": "footer-390",
+      "violations": []
+    },
+    {
+      "name": "bag-populated",
+      "violations": []
+    },
+    {
+      "name": "checkout-390",
+      "violations": []
+    },
+    {
+      "name": "checkout-768",
+      "violations": []
+    },
+    {
+      "name": "checkout-1440",
+      "violations": []
+    }
+  ],
+  "console": [],
+  "httpErrors": [],
+  "requests": 1666,
+  "failures": [
+    {
+      "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "https://www.youtube-nocookie.com/embed/Ja11W-g34Zo?rel=0&modestbranding=1",
+      "error": "net::ERR_FAILED"
+    }
+  ],
+  "interactions": [
+    "scroll/orientation restore",
+    "six rapid open/Escape cycles",
+    "native GET search preserved",
+    "fallback current-route semantics",
+    "no-JS navigation and real bag URL",
+    "touch/coarse-pointer open-close"
+  ],
+  "commerce": {
+    "variation": "182",
+    "sku": "sg-005",
+    "size": "M",
+    "quantity": 1,
+    "unitPrice": "25.00",
+    "cart": "YOUR BAG\n\nKeep your pieces close.\nThe Bridge Series 'The Bay Bridge' Shirt - M\n$25.00\nThe Bridge Series 'The Bay Bridge' Shirt - M quantity\nREMOVE\nCode\nApply\nUpdate bag\nCart totals\nSubtotal\t$25.00\nTotal\t$25.00\nPROCEED TO CHECKOUT",
+    "checkout": "Product\tSubtotal\nThe Bridge Series 'The Bay Bridge' Shirt - M  × 1\t$25.00\nSubtotal\t$25.00\nTotal\t$25.00\nSorry, it seems that there are no available payment methods. Please contact us if you require assistance or wish to make alternate arrangements.\n\nYour personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.\n\nPLACE ORDER",
+    "paymentSubmitted": false
+  },
+  "removal": "“The Bridge Series 'The Bay Bridge' Shirt - M” has been removed from your cart",
+  "scrollRestore": {
+    "before": 600,
+    "after": 600
+  },
+  "reduced": {
+    "matches": true,
+    "normal": "1ms",
+    "videos": [
+      {
+        "paused": true,
+        "autoplay": false
+      }
+    ]
+  },
+  "navigationAborts": [
+    {
+      "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1024w.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-640w.webp",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "isolationBlockedExternal": [
+    "https://www.youtube-nocookie.com/embed/Ja11W-g34Zo?rel=0&modestbranding=1"
+  ],
+  "status": "PASS"
+}

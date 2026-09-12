@@ -1,0 +1,20 @@
+{
+  "intentionalFault": "503 on native remove_from_cart AJAX; native nonce-bearing GET fallback remains available",
+  "paymentSubmitted": false,
+  "fallbackPath": "/cart/",
+  "pendingPreservesItemAndNoSuccess": true,
+  "nativeRecoveryPath": "/product/sg-005/",
+  "nativeGetFallback": {
+    "path": "/product/sg-005/",
+    "emptyCartVerifiedAt": "/cart/",
+    "empty": true,
+    "unlocked": true
+  },
+  "textResize": {
+    "width": 390,
+    "scroll": 390,
+    "navScroll": 390,
+    "navClient": 390
+  },
+  "status": "PASS"
+}

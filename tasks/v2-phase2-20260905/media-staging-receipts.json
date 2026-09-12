@@ -1,0 +1,22 @@
+[
+  {
+    "path": "functions.php",
+    "before": "74034247c57742770e67bf435a5fc0c56a975cf82a1f9eea83bfbc34cc1e60c8",
+    "after": "0191e4357a6e564dfc96cbb321a0592b497a71d7b2ac16df495cd910d4bbf82e"
+  },
+  {
+    "path": "template-parts/commerce/product-hero.php",
+    "before": "92bb70e1fd6a110b27317d46cfc5899169c8c57fe82bfba631cd42920cb85b0e",
+    "after": "5dcaa87bf67bf62b364b91df155a3a5121b02e2700b2c0f97c3bcbfc7d328447"
+  },
+  {
+    "path": "assets/css/theme.css",
+    "before": "ea7a44c9ee84110c63dfe63a50c69f72aef6ab8c7cddcb56137d0836773f9540",
+    "after": "9272ada8da536e733f743c18a4407f47ab1fc57712de0eb2ffe94c9bd93b1da5"
+  },
+  {
+    "path": "assets/css/theme.min.css",
+    "before": "8e2c802bb1332ae8ba15280470649012dee4bdded582069c72d777672aa69350",
+    "after": "ae03b16dbcebe554757f3fcbc373667b137f62d8f933b24871c7de13294df646"
+  }
+]

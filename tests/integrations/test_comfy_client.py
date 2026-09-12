@@ -908,3 +908,148 @@ async def test_multi_output_workflow_requires_every_expected_output_node() -> No
         submission = await client.submit_prompt(sealed)
         with pytest.raises(ComfyRuntimeError, match="every expected output node"):
             await client.wait_for_outputs(submission, sleep=lambda _: _no_sleep())
+
+
+@pytest.mark.asyncio
+async def test_runway_intent_hash_preserves_input_across_approval_and_gate_changes(
+    tmp_path: Path,
+) -> None:
+    transport = FakeTransport([_response(_runway_object_info())])
+    async with ComfyClient(transport=transport) as client:
+        sealed = await client.validate_workflow(_runway_workflow())
+    contract_path, _ = _write_runway_governance(
+        tmp_path, sealed=sealed, marker=tmp_path / "attempt.json"
+    )
+    contract = json.loads(contract_path.read_text())
+    original = json.dumps(contract, sort_keys=True)
+    digest = runway_contract_sha256(contract)
+    fingerprint = runway_execution_fingerprint(contract, workflow=sealed)
+    assert json.dumps(contract, sort_keys=True) == original
+    contract["post_merge_execution_gate"] = {
+        "required": True,
+        "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
+    }
+    contract["credit_control"]["approval_receipt"] = None
+    pending = json.dumps(contract, sort_keys=True)
+    assert runway_contract_sha256(contract) == digest
+    assert runway_execution_fingerprint(contract, workflow=sealed) == fingerprint
+    assert json.dumps(contract, sort_keys=True) == pending
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    ("field_path", "replacement"),
+    [
+        (("candidate_id",), "another-candidate"),
+        (("scene_id",), "another-scene"),
+        (("provider", "name"), "another-provider"),
+        (("request", "prompt"), "Changed environment prompt"),
+        (("local_composition_inspiration", 0, "sha256"), "0" * 64),
+        (("local_composition_inspiration", 0, "path"), "another-source.png"),
+        (("credit_control", "max_live_price_usd"), 0.22),
+        (("credit_control", "max_paid_generations"), 2),
+        (("credit_control", "paid_generations_recorded"), 1),
+        (("credit_control", "automatic_paid_retries"), True),
+        (("execution_blockers",), ["unresolved-source-review"]),
+        (("output", "candidate_path"), "another-output.png"),
+        (("output", "approval_path"), "another-approval.json"),
+        (("output", "attempt_marker"), "another-attempt.json"),
+        (("output", "promotion_allowed"), True),
+        (("output", "wiring_allowed"), True),
+        (("output", "deployment_allowed"), True),
+    ],
+)
+async def test_runway_intent_hash_keeps_sensitive_fields_bound(
+    tmp_path: Path, field_path: tuple[str | int, ...], replacement: object
+) -> None:
+    transport = FakeTransport([_response(_runway_object_info())])
+    async with ComfyClient(transport=transport) as client:
+        sealed = await client.validate_workflow(_runway_workflow())
+    contract_path, _ = _write_runway_governance(
+        tmp_path, sealed=sealed, marker=tmp_path / "attempt.json"
+    )
+    contract = json.loads(contract_path.read_text())
+    original = json.dumps(contract, sort_keys=True)
+    changed = json.loads(original)
+    parent = changed
+    for key in field_path[:-1]:
+        parent = parent[key]
+    parent[field_path[-1]] = replacement
+    assert runway_contract_sha256(changed) != runway_contract_sha256(contract)
+    assert runway_execution_fingerprint(changed, workflow=sealed) != runway_execution_fingerprint(
+        contract, workflow=sealed
+    )
+    assert json.dumps(contract, sort_keys=True) == original
+
+
+@pytest.mark.asyncio
+@pytest.mark.parametrize(
+    "gate",
+    [
+        "missing",
+        None,
+        {},
+        {"required": True, "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN"},
+        {"required": False, "action": "UNKNOWN"},
+        {"required": "false", "action": "SATISFIED"},
+    ],
+)
+async def test_paid_sink_rejects_invalid_merge_gate_before_consuming_attempt(
+    tmp_path: Path, gate: object
+) -> None:
+    object_info = _runway_object_info()
+    transport = FakeTransport([_response(object_info), _response(object_info)])
+    marker = tmp_path / "attempt.json"
+    async with ComfyClient(transport=transport) as client:
+        sealed = await client.validate_workflow(_runway_workflow())
+        contract_path, approval_path = _write_runway_governance(
+            tmp_path, sealed=sealed, marker=marker
+        )
+        contract = json.loads(contract_path.read_text())
+        if gate == "missing":
+            del contract["post_merge_execution_gate"]
+        else:
+            contract["post_merge_execution_gate"] = gate
+        contract_path.write_text(json.dumps(contract))
+        with pytest.raises(ComfyRuntimeError, match="merge/restart state is invalid"):
+            await client.submit_prompt(
+                sealed,
+                paid_contract_path=contract_path,
+                paid_approval_receipt=approval_path,
+                paid_attempt_marker=marker,
+            )
+    assert not marker.exists()
+    assert all(request.url.path != "/prompt" for request in transport.requests)
+
+
+@pytest.mark.asyncio
+async def test_paid_sink_rejects_legacy_sink_only_contract_hash(tmp_path: Path) -> None:
+    object_info = _runway_object_info()
+    transport = FakeTransport([_response(object_info), _response(object_info)])
+    marker = tmp_path / "attempt.json"
+    async with ComfyClient(transport=transport) as client:
+        sealed = await client.validate_workflow(_runway_workflow())
+        contract_path, approval_path = _write_runway_governance(
+            tmp_path, sealed=sealed, marker=marker
+        )
+        contract = json.loads(contract_path.read_text())
+        legacy = json.loads(json.dumps(contract))
+        legacy["credit_control"]["approval_receipt"] = None
+        old_hash = workflow_sha256(legacy)
+        assert old_hash != runway_contract_sha256(contract)
+        approval = json.loads(approval_path.read_text())
+        approval["contract_sha256"] = old_hash
+        approval_path.write_text(json.dumps(approval))
+        contract["credit_control"]["approval_receipt"]["sha256"] = hashlib.sha256(
+            approval_path.read_bytes()
+        ).hexdigest()
+        contract_path.write_text(json.dumps(contract))
+        with pytest.raises(ComfyRuntimeError, match="file-backed approval at the exact live price"):
+            await client.submit_prompt(
+                sealed,
+                paid_contract_path=contract_path,
+                paid_approval_receipt=approval_path,
+                paid_attempt_marker=marker,
+            )
+    assert not marker.exists()
+    assert all(request.url.path != "/prompt" for request in transport.requests)

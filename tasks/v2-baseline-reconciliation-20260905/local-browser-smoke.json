@@ -1,0 +1,44 @@
+[
+  {
+    "route": "home",
+    "title": "SkyyRose — House of Roses",
+    "fatal": false,
+    "snippet": "- complementary \"Local preview identity\":\n  - strong: LOCAL V2 REVIEW\n  - generic: SkyyRose Flagship 2 2.4.4 · bb0e6eecf0af\n  - generic: \"route: home · template: front-page.php\"\n  "
+  },
+  {
+    "route": "shop",
+    "title": "SkyyRose — Shop",
+    "fatal": false,
+    "snippet": "- complementary \"Local preview identity\":\n  - strong: LOCAL V2 REVIEW\n  - generic: SkyyRose Flagship 2 2.4.4 · bb0e6eecf0af\n  - generic: \"route: shop · template: woocommerce/archiv"
+  },
+  {
+    "route": "signature",
+    "title": "SkyyRose — Signature",
+    "fatal": false,
+    "snippet": "- complementary \"Local preview identity\":\n  - strong: LOCAL V2 REVIEW\n  - generic: SkyyRose Flagship 2 2.4.4 · bb0e6eecf0af\n  - generic: \"route: signature · template: template-coll"
+  },
+  {
+    "route": "product",
+    "title": "SkyyRose — Product",
+    "fatal": false,
+    "snippet": "- complementary \"Local preview identity\":\n  - strong: LOCAL V2 REVIEW\n  - generic: SkyyRose Flagship 2 2.4.4 · bb0e6eecf0af\n  - generic: \"route: product · template: woocommerce/sin"
+  },
+  {
+    "route": "cart",
+    "title": "SkyyRose — Cart",
+    "fatal": false,
+    "snippet": "- complementary \"Local preview identity\":\n  - strong: LOCAL V2 REVIEW\n  - generic: SkyyRose Flagship 2 2.4.4 · bb0e6eecf0af\n  - generic: \"route: cart · template: template-parts/v2-"
+  },
+  {
+    "route": "checkout",
+    "title": "SkyyRose — Checkout",
+    "fatal": false,
+    "snippet": "- complementary \"Local preview identity\":\n  - strong: LOCAL V2 REVIEW\n  - generic: SkyyRose Flagship 2 2.4.4 · bb0e6eecf0af\n  - generic: \"route: checkout · template: template-parts"
+  },
+  {
+    "route": "account",
+    "title": "SkyyRose — Account",
+    "fatal": false,
+    "snippet": "- complementary \"Local preview identity\":\n  - strong: LOCAL V2 REVIEW\n  - generic: SkyyRose Flagship 2 2.4.4 · bb0e6eecf0af\n  - generic: \"route: account · template: template-parts/"
+  }
+]

@@ -1,0 +1,1 @@
+Exact unreachable page.php draft fragments from V2 commit415dc4368. They followed live v2-preorder/v2-about includes inside literal if(false). Preserved for authoring, including future Town Line work; never include these fragments as templates. Asset sources remain unchanged. Hashes and original spans: tasks/v2-completion-20260906/dependency-cleanup.json.

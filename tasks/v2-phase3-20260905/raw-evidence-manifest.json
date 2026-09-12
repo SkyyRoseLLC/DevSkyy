@@ -1,0 +1,53 @@
+{
+  "directory": "/Users/theceo/.codex/worktrees/19db/DevSkyy/.artifacts/v2-phase3-20260905",
+  "files": {
+    "performance-baseline.json": {
+      "sha256": "377ff39c3f96d73d8acd034822466b0ca4715249e0ca725f4391e0fa260e3add",
+      "bytes": 66357
+    },
+    "performance-candidate.json": {
+      "sha256": "1c07ab7be5781a169ab8de337de01ee4c8763d2c65e44d6811cbc3aac3e33eb2",
+      "bytes": 69218
+    },
+    "lighthouse-baseline-home-mobile.report.json": {
+      "sha256": "f56d39eccf137fe5a12b1f6304de7d79efb76cbdded1fdf94b078e0bc17a9611",
+      "bytes": 760513
+    },
+    "lighthouse-baseline-home-desktop.report.json": {
+      "sha256": "d609cfc0ae3391014a4b49c01d60621104940248c8c19a2cb3ce12f29a5b3984",
+      "bytes": 726927
+    },
+    "lighthouse-baseline-pdp-mobile.report.json": {
+      "sha256": "3b0f6c11f6e0b52def5eb4709583ab40cbf2f38c2bccc7faac814eacfcb31ce9",
+      "bytes": 631049
+    },
+    "lighthouse-home-mobile.report.json": {
+      "sha256": "75463c2c927b0c5e987ece21ac2aaf464f08c4e37c3f45af4cf147d32fa0f58c",
+      "bytes": 809015
+    },
+    "lighthouse-home-desktop.report.json": {
+      "sha256": "d1cdc47bd6d4f8b7a5f4679d54f459d21cb89604767bc4d89071577c2ead8e0a",
+      "bytes": 776780
+    },
+    "lighthouse-pdp-mobile.report.json": {
+      "sha256": "069b3af00c844077285a83c0adc0916dc0cbcd342766ef5e7a7f7077eba54ac0",
+      "bytes": 648826
+    },
+    "clean-package-first.log": {
+      "sha256": "4b6415c946541ee9f30b47f56ac482c9d1563c9e1b67c0a0967d716dbfec4d2b",
+      "bytes": 11144
+    },
+    "clean-package-second.log": {
+      "sha256": "b32aff47b8b95fc266996cd864c61b407e6ccfeaa5c06f006bc5ce31506a40d8",
+      "bytes": 10953
+    },
+    "final-build.log": {
+      "sha256": "ba43e322ee89fa3a585ed79ce0664a0a329136f5f1bd4b8a0954c87336f1c815",
+      "bytes": 10776
+    },
+    "integrity-unit.log": {
+      "sha256": "0591f8633e7eeb516a97264ed56e19e184aa1323b974b3edcb3af6c306d1af58",
+      "bytes": 105
+    }
+  }
+}

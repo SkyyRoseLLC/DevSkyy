@@ -1,0 +1,36 @@
+{
+  "version": "0.170.0",
+  "package_integrity": "sha512-FQK+LEpYc0fBD+J8g6oSEyyNzjp+Q7Ks1C568WWaoMRLW+TkNNWmenWeGgJjV105Gd+p/2ql1ZcjYvNiPZBhuQ==",
+  "files": [
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+      "upstream_sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+      "sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+      "bytes": 691648
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+      "upstream_sha256": "45139faddd5aaf48ed2d62203d976e5cbd703db1a592de40527f9f6cf58abd44",
+      "sha256": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+      "bytes": 110282
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+      "upstream_sha256": "8a90b39b6c0d7faa70410cdd19348029a83a9f2d5f71e11b665a5f48330a4c72",
+      "sha256": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+      "bytes": 13715
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+      "upstream_sha256": "c25b7930e570e9ec56173cd3b866ec8d2e10016630db3937efb439daf1cedbf6",
+      "sha256": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+      "bytes": 31784
+    },
+    {
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/js/lib/three-r170/LICENSE",
+      "upstream_sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+      "sha256": "4c40a1ef62450b857c3b2aaf294936304cd552d965fbcd9d32d4c5bcf4ba4454",
+      "bytes": 1081
+    }
+  ]
+}

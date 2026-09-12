@@ -1,0 +1,2918 @@
+[
+  {
+    "sku": "br-001",
+    "id": 9864,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-001/",
+    "price": "35",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10354",
+    "gallery_image_ids": [
+      10207
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10488,
+        "size": "S",
+        "price": "35",
+        "regular_price": "35",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9864
+      },
+      {
+        "id": 10489,
+        "size": "M",
+        "price": "35",
+        "regular_price": "35",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9864
+      },
+      {
+        "id": 10490,
+        "size": "L",
+        "price": "35",
+        "regular_price": "35",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9864
+      },
+      {
+        "id": 10491,
+        "size": "XL",
+        "price": "35",
+        "regular_price": "35",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9864
+      },
+      {
+        "id": 10492,
+        "size": "2XL",
+        "price": "35",
+        "regular_price": "35",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9864
+      },
+      {
+        "id": 10493,
+        "size": "3XL",
+        "price": "35",
+        "regular_price": "35",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9864
+      }
+    ]
+  },
+  {
+    "sku": "br-002",
+    "id": 9865,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-002/",
+    "price": "50",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10355",
+    "gallery_image_ids": [
+      10153
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10494,
+        "size": "S",
+        "price": "50",
+        "regular_price": "50",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9865
+      },
+      {
+        "id": 10495,
+        "size": "M",
+        "price": "50",
+        "regular_price": "50",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9865
+      },
+      {
+        "id": 10496,
+        "size": "L",
+        "price": "50",
+        "regular_price": "50",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9865
+      },
+      {
+        "id": 10497,
+        "size": "XL",
+        "price": "50",
+        "regular_price": "50",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9865
+      },
+      {
+        "id": 10498,
+        "size": "2XL",
+        "price": "50",
+        "regular_price": "50",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9865
+      },
+      {
+        "id": 10499,
+        "size": "3XL",
+        "price": "50",
+        "regular_price": "50",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9865
+      }
+    ]
+  },
+  {
+    "sku": "br-003",
+    "id": 9866,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003/",
+    "price": "100",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10356",
+    "gallery_image_ids": [
+      10205
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10500,
+        "size": "S",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9866
+      },
+      {
+        "id": 10501,
+        "size": "M",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9866
+      },
+      {
+        "id": 10502,
+        "size": "L",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9866
+      },
+      {
+        "id": 10503,
+        "size": "XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9866
+      },
+      {
+        "id": 10504,
+        "size": "2XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9866
+      },
+      {
+        "id": 10505,
+        "size": "3XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9866
+      }
+    ]
+  },
+  {
+    "sku": "br-004",
+    "id": 9867,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-004/",
+    "price": "40",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10357",
+    "gallery_image_ids": [
+      10156
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10506,
+        "size": "S",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9867
+      },
+      {
+        "id": 10507,
+        "size": "M",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9867
+      },
+      {
+        "id": 10508,
+        "size": "L",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9867
+      },
+      {
+        "id": 10509,
+        "size": "XL",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9867
+      },
+      {
+        "id": 10510,
+        "size": "2XL",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9867
+      },
+      {
+        "id": 10511,
+        "size": "3XL",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9867
+      }
+    ]
+  },
+  {
+    "sku": "br-005",
+    "id": 9868,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-005/",
+    "price": "65",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10358",
+    "gallery_image_ids": [
+      10158
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10512,
+        "size": "S",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9868
+      },
+      {
+        "id": 10513,
+        "size": "M",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9868
+      },
+      {
+        "id": 10514,
+        "size": "L",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9868
+      },
+      {
+        "id": 10515,
+        "size": "XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9868
+      },
+      {
+        "id": 10516,
+        "size": "2XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9868
+      },
+      {
+        "id": 10517,
+        "size": "3XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9868
+      }
+    ]
+  },
+  {
+    "sku": "br-006",
+    "id": 9869,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-006/",
+    "price": "95",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10359",
+    "gallery_image_ids": [
+      10160
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10518,
+        "size": "S",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9869
+      },
+      {
+        "id": 10519,
+        "size": "M",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9869
+      },
+      {
+        "id": 10520,
+        "size": "L",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9869
+      },
+      {
+        "id": 10521,
+        "size": "XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9869
+      },
+      {
+        "id": 10522,
+        "size": "2XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9869
+      },
+      {
+        "id": 10523,
+        "size": "3XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9869
+      }
+    ]
+  },
+  {
+    "sku": "br-007",
+    "id": 9870,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-007/",
+    "price": "65",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10360",
+    "gallery_image_ids": [
+      10162
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10524,
+        "size": "S",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9870
+      },
+      {
+        "id": 10525,
+        "size": "M",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9870
+      },
+      {
+        "id": 10526,
+        "size": "L",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9870
+      },
+      {
+        "id": 10527,
+        "size": "XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9870
+      },
+      {
+        "id": 10528,
+        "size": "2XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9870
+      },
+      {
+        "id": 10529,
+        "size": "3XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9870
+      }
+    ]
+  },
+  {
+    "sku": "br-008",
+    "id": 9871,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-008/",
+    "price": "115",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10361",
+    "gallery_image_ids": [],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10530,
+        "size": "S",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9871
+      },
+      {
+        "id": 10531,
+        "size": "M",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9871
+      },
+      {
+        "id": 10532,
+        "size": "L",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9871
+      },
+      {
+        "id": 10533,
+        "size": "XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9871
+      },
+      {
+        "id": 10534,
+        "size": "2XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9871
+      },
+      {
+        "id": 10535,
+        "size": "3XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9871
+      }
+    ]
+  },
+  {
+    "sku": "br-009",
+    "id": 9872,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-009/",
+    "price": "115",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10362",
+    "gallery_image_ids": [],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10536,
+        "size": "S",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9872
+      },
+      {
+        "id": 10537,
+        "size": "M",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9872
+      },
+      {
+        "id": 10538,
+        "size": "L",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9872
+      },
+      {
+        "id": 10539,
+        "size": "XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9872
+      },
+      {
+        "id": 10540,
+        "size": "2XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9872
+      },
+      {
+        "id": 10541,
+        "size": "3XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9872
+      }
+    ]
+  },
+  {
+    "sku": "br-010",
+    "id": 9873,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-010/",
+    "price": "100",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10363",
+    "gallery_image_ids": [],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10542,
+        "size": "S",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9873
+      },
+      {
+        "id": 10543,
+        "size": "M",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9873
+      },
+      {
+        "id": 10544,
+        "size": "L",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9873
+      },
+      {
+        "id": 10545,
+        "size": "XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9873
+      },
+      {
+        "id": 10546,
+        "size": "2XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9873
+      },
+      {
+        "id": 10547,
+        "size": "3XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9873
+      }
+    ]
+  },
+  {
+    "sku": "br-011",
+    "id": 9874,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-011/",
+    "price": "115",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10364",
+    "gallery_image_ids": [
+      10171
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10548,
+        "size": "S",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9874
+      },
+      {
+        "id": 10549,
+        "size": "M",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9874
+      },
+      {
+        "id": 10550,
+        "size": "L",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9874
+      },
+      {
+        "id": 10551,
+        "size": "XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9874
+      },
+      {
+        "id": 10552,
+        "size": "2XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9874
+      },
+      {
+        "id": 10553,
+        "size": "3XL",
+        "price": "115",
+        "regular_price": "115",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9874
+      }
+    ]
+  },
+  {
+    "sku": "br-012",
+    "id": 9945,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-oakland/",
+    "price": "100",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10365",
+    "gallery_image_ids": [
+      10166
+    ],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10554,
+        "size": "S",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9945
+      },
+      {
+        "id": 10555,
+        "size": "M",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9945
+      },
+      {
+        "id": 10556,
+        "size": "L",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9945
+      },
+      {
+        "id": 10557,
+        "size": "XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9945
+      },
+      {
+        "id": 10558,
+        "size": "2XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9945
+      },
+      {
+        "id": 10559,
+        "size": "3XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9945
+      }
+    ]
+  },
+  {
+    "sku": "lh-002",
+    "id": 9875,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-002/",
+    "price": "95",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10366",
+    "gallery_image_ids": [
+      10179
+    ],
+    "category_ids": [
+      157
+    ],
+    "children": [
+      {
+        "id": 10560,
+        "size": "S",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9875
+      },
+      {
+        "id": 10561,
+        "size": "M",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9875
+      },
+      {
+        "id": 10562,
+        "size": "L",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9875
+      },
+      {
+        "id": 10563,
+        "size": "XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9875
+      },
+      {
+        "id": 10564,
+        "size": "2XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9875
+      },
+      {
+        "id": 10565,
+        "size": "3XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9875
+      }
+    ]
+  },
+  {
+    "sku": "lh-003",
+    "id": 9876,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-003/",
+    "price": "75",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10367",
+    "gallery_image_ids": [
+      10182
+    ],
+    "category_ids": [
+      157
+    ],
+    "children": [
+      {
+        "id": 10566,
+        "size": "S",
+        "price": "75",
+        "regular_price": "75",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9876
+      },
+      {
+        "id": 10567,
+        "size": "M",
+        "price": "75",
+        "regular_price": "75",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9876
+      },
+      {
+        "id": 10568,
+        "size": "L",
+        "price": "75",
+        "regular_price": "75",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9876
+      },
+      {
+        "id": 10569,
+        "size": "XL",
+        "price": "75",
+        "regular_price": "75",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9876
+      },
+      {
+        "id": 10570,
+        "size": "2XL",
+        "price": "75",
+        "regular_price": "75",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9876
+      },
+      {
+        "id": 10571,
+        "size": "3XL",
+        "price": "75",
+        "regular_price": "75",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9876
+      }
+    ]
+  },
+  {
+    "sku": "lh-004",
+    "id": 9877,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-004/",
+    "price": "265",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10368",
+    "gallery_image_ids": [
+      10184
+    ],
+    "category_ids": [
+      157
+    ],
+    "children": [
+      {
+        "id": 10572,
+        "size": "S",
+        "price": "265",
+        "regular_price": "265",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9877
+      },
+      {
+        "id": 10573,
+        "size": "M",
+        "price": "265",
+        "regular_price": "265",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9877
+      },
+      {
+        "id": 10574,
+        "size": "L",
+        "price": "265",
+        "regular_price": "265",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9877
+      },
+      {
+        "id": 10575,
+        "size": "XL",
+        "price": "265",
+        "regular_price": "265",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9877
+      },
+      {
+        "id": 10576,
+        "size": "2XL",
+        "price": "265",
+        "regular_price": "265",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9877
+      },
+      {
+        "id": 10577,
+        "size": "3XL",
+        "price": "265",
+        "regular_price": "265",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9877
+      }
+    ]
+  },
+  {
+    "sku": "lh-005",
+    "id": 10077,
+    "type": "simple",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/the-fannie/",
+    "price": "45",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10369",
+    "gallery_image_ids": [],
+    "category_ids": [
+      157,
+      155
+    ],
+    "children": []
+  },
+  {
+    "sku": "lh-006",
+    "id": 9879,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-006/",
+    "price": "95",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10370",
+    "gallery_image_ids": [
+      10186
+    ],
+    "category_ids": [
+      157
+    ],
+    "children": [
+      {
+        "id": 10578,
+        "size": "S",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9879
+      },
+      {
+        "id": 10579,
+        "size": "M",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9879
+      },
+      {
+        "id": 10580,
+        "size": "L",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9879
+      },
+      {
+        "id": 10581,
+        "size": "XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9879
+      },
+      {
+        "id": 10582,
+        "size": "2XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9879
+      },
+      {
+        "id": 10583,
+        "size": "3XL",
+        "price": "95",
+        "regular_price": "95",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9879
+      }
+    ]
+  },
+  {
+    "sku": "sg-001",
+    "id": 9881,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-001/",
+    "price": "65",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10371",
+    "gallery_image_ids": [
+      10189
+    ],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10584,
+        "size": "S",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9881
+      },
+      {
+        "id": 10585,
+        "size": "M",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9881
+      },
+      {
+        "id": 10586,
+        "size": "L",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9881
+      },
+      {
+        "id": 10587,
+        "size": "XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9881
+      },
+      {
+        "id": 10588,
+        "size": "2XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9881
+      },
+      {
+        "id": 10589,
+        "size": "3XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9881
+      }
+    ]
+  },
+  {
+    "sku": "sg-002",
+    "id": 9882,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-002/",
+    "price": "65",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10372",
+    "gallery_image_ids": [],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10590,
+        "size": "XS",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9882
+      },
+      {
+        "id": 10591,
+        "size": "S",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9882
+      },
+      {
+        "id": 10592,
+        "size": "M",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9882
+      },
+      {
+        "id": 10593,
+        "size": "L",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9882
+      },
+      {
+        "id": 10594,
+        "size": "XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9882
+      },
+      {
+        "id": 10595,
+        "size": "2XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9882
+      }
+    ]
+  },
+  {
+    "sku": "sg-003",
+    "id": 9883,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-003/",
+    "price": "65",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10373",
+    "gallery_image_ids": [],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10596,
+        "size": "S",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9883
+      },
+      {
+        "id": 10597,
+        "size": "M",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9883
+      },
+      {
+        "id": 10598,
+        "size": "L",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9883
+      },
+      {
+        "id": 10599,
+        "size": "XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9883
+      },
+      {
+        "id": 10600,
+        "size": "2XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9883
+      },
+      {
+        "id": 10601,
+        "size": "3XL",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9883
+      }
+    ]
+  },
+  {
+    "sku": "sg-005",
+    "id": 9880,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+    "price": "25",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10374",
+    "gallery_image_ids": [],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10483,
+        "size": "S",
+        "price": "25",
+        "regular_price": "25",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9880
+      },
+      {
+        "id": 10484,
+        "size": "M",
+        "price": "25",
+        "regular_price": "25",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9880
+      },
+      {
+        "id": 10485,
+        "size": "L",
+        "price": "25",
+        "regular_price": "25",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9880
+      },
+      {
+        "id": 10486,
+        "size": "XL",
+        "price": "25",
+        "regular_price": "25",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9880
+      },
+      {
+        "id": 10487,
+        "size": "2XL",
+        "price": "25",
+        "regular_price": "25",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9880
+      }
+    ]
+  },
+  {
+    "sku": "sg-006",
+    "id": 9884,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-006/",
+    "price": "45",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10375",
+    "gallery_image_ids": [
+      10194
+    ],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10602,
+        "size": "S",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9884
+      },
+      {
+        "id": 10603,
+        "size": "M",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9884
+      },
+      {
+        "id": 10604,
+        "size": "L",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9884
+      },
+      {
+        "id": 10605,
+        "size": "XL",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9884
+      },
+      {
+        "id": 10606,
+        "size": "2XL",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9884
+      },
+      {
+        "id": 10607,
+        "size": "3XL",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9884
+      }
+    ]
+  },
+  {
+    "sku": "sg-007",
+    "id": 9885,
+    "type": "simple",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-007/",
+    "price": "25",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10376",
+    "gallery_image_ids": [],
+    "category_ids": [
+      158
+    ],
+    "children": []
+  },
+  {
+    "sku": "sg-009",
+    "id": 9886,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-009/",
+    "price": "80",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10377",
+    "gallery_image_ids": [
+      10197
+    ],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10608,
+        "size": "S",
+        "price": "80",
+        "regular_price": "80",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9886
+      },
+      {
+        "id": 10609,
+        "size": "M",
+        "price": "80",
+        "regular_price": "80",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9886
+      },
+      {
+        "id": 10610,
+        "size": "L",
+        "price": "80",
+        "regular_price": "80",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9886
+      },
+      {
+        "id": 10611,
+        "size": "XL",
+        "price": "80",
+        "regular_price": "80",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9886
+      },
+      {
+        "id": 10612,
+        "size": "2XL",
+        "price": "80",
+        "regular_price": "80",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9886
+      },
+      {
+        "id": 10613,
+        "size": "3XL",
+        "price": "80",
+        "regular_price": "80",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9886
+      }
+    ]
+  },
+  {
+    "sku": "sg-011",
+    "id": 9888,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-011/",
+    "price": "30",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10378",
+    "gallery_image_ids": [
+      10199
+    ],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10614,
+        "size": "S",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9888
+      },
+      {
+        "id": 10615,
+        "size": "M",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9888
+      },
+      {
+        "id": 10616,
+        "size": "L",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9888
+      },
+      {
+        "id": 10617,
+        "size": "XL",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9888
+      },
+      {
+        "id": 10618,
+        "size": "2XL",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9888
+      },
+      {
+        "id": 10619,
+        "size": "3XL",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9888
+      }
+    ]
+  },
+  {
+    "sku": "sg-012",
+    "id": 9889,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-012/",
+    "price": "30",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10379",
+    "gallery_image_ids": [
+      10201
+    ],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10620,
+        "size": "S",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9889
+      },
+      {
+        "id": 10621,
+        "size": "M",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9889
+      },
+      {
+        "id": 10622,
+        "size": "L",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9889
+      },
+      {
+        "id": 10623,
+        "size": "XL",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9889
+      },
+      {
+        "id": 10624,
+        "size": "2XL",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9889
+      },
+      {
+        "id": 10625,
+        "size": "3XL",
+        "price": "30",
+        "regular_price": "30",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9889
+      }
+    ]
+  },
+  {
+    "sku": "sg-013",
+    "id": 9953,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-013/",
+    "price": "40",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10380",
+    "gallery_image_ids": [],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10626,
+        "size": "S",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9953
+      },
+      {
+        "id": 10627,
+        "size": "M",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9953
+      },
+      {
+        "id": 10628,
+        "size": "L",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9953
+      },
+      {
+        "id": 10629,
+        "size": "XL",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9953
+      },
+      {
+        "id": 10630,
+        "size": "2XL",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9953
+      },
+      {
+        "id": 10631,
+        "size": "3XL",
+        "price": "40",
+        "regular_price": "40",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9953
+      }
+    ]
+  },
+  {
+    "sku": "sg-014",
+    "id": 9954,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-014/",
+    "price": "45",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10381",
+    "gallery_image_ids": [],
+    "category_ids": [
+      158
+    ],
+    "children": [
+      {
+        "id": 10632,
+        "size": "S",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9954
+      },
+      {
+        "id": 10633,
+        "size": "M",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9954
+      },
+      {
+        "id": 10634,
+        "size": "L",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9954
+      },
+      {
+        "id": 10635,
+        "size": "XL",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9954
+      },
+      {
+        "id": 10636,
+        "size": "2XL",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9954
+      },
+      {
+        "id": 10637,
+        "size": "3XL",
+        "price": "45",
+        "regular_price": "45",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9954
+      }
+    ]
+  },
+  {
+    "sku": "sg-015",
+    "id": 10067,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/the-windbreaker-set/",
+    "price": "85",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10382",
+    "gallery_image_ids": [],
+    "category_ids": [
+      155,
+      158
+    ],
+    "children": [
+      {
+        "id": 10638,
+        "size": "S",
+        "price": "85",
+        "regular_price": "85",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 10067
+      },
+      {
+        "id": 10639,
+        "size": "M",
+        "price": "85",
+        "regular_price": "85",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 10067
+      },
+      {
+        "id": 10640,
+        "size": "L",
+        "price": "85",
+        "regular_price": "85",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 10067
+      },
+      {
+        "id": 10641,
+        "size": "XL",
+        "price": "85",
+        "regular_price": "85",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 10067
+      },
+      {
+        "id": 10642,
+        "size": "2XL",
+        "price": "85",
+        "regular_price": "85",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 10067
+      },
+      {
+        "id": 10643,
+        "size": "3XL",
+        "price": "85",
+        "regular_price": "85",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 10067
+      }
+    ]
+  },
+  {
+    "sku": "kids-001",
+    "id": 9955,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-001/",
+    "price": "65",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10383",
+    "gallery_image_ids": [],
+    "category_ids": [
+      159
+    ],
+    "children": [
+      {
+        "id": 10644,
+        "size": "2T",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9955
+      },
+      {
+        "id": 10645,
+        "size": "3T",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9955
+      },
+      {
+        "id": 10646,
+        "size": "4T",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9955
+      },
+      {
+        "id": 10647,
+        "size": "5",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9955
+      },
+      {
+        "id": 10648,
+        "size": "6",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9955
+      },
+      {
+        "id": 10649,
+        "size": "7",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9955
+      }
+    ]
+  },
+  {
+    "sku": "kids-002",
+    "id": 9956,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/kids-002/",
+    "price": "65",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10384",
+    "gallery_image_ids": [],
+    "category_ids": [
+      159
+    ],
+    "children": [
+      {
+        "id": 10650,
+        "size": "2T",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9956
+      },
+      {
+        "id": 10651,
+        "size": "3T",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9956
+      },
+      {
+        "id": 10652,
+        "size": "4T",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9956
+      },
+      {
+        "id": 10653,
+        "size": "5",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9956
+      },
+      {
+        "id": 10654,
+        "size": "6",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9956
+      },
+      {
+        "id": 10655,
+        "size": "7",
+        "price": "65",
+        "regular_price": "65",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9956
+      }
+    ]
+  },
+  {
+    "sku": "br-014",
+    "id": 9927,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-giants/",
+    "price": "100",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10385",
+    "gallery_image_ids": [],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10656,
+        "size": "S",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9927
+      },
+      {
+        "id": 10657,
+        "size": "M",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9927
+      },
+      {
+        "id": 10658,
+        "size": "L",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9927
+      },
+      {
+        "id": 10659,
+        "size": "XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9927
+      },
+      {
+        "id": 10660,
+        "size": "2XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9927
+      },
+      {
+        "id": 10661,
+        "size": "3XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9927
+      }
+    ]
+  },
+  {
+    "sku": "br-015",
+    "id": 9928,
+    "type": "variable",
+    "permalink": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-white/",
+    "price": "100",
+    "stock": {
+      "manage_stock": false,
+      "stock_quantity": null,
+      "stock_status": "instock",
+      "backorders": "no"
+    },
+    "image_id": "10386",
+    "gallery_image_ids": [],
+    "category_ids": [
+      156
+    ],
+    "children": [
+      {
+        "id": 10662,
+        "size": "S",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9928
+      },
+      {
+        "id": 10663,
+        "size": "M",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9928
+      },
+      {
+        "id": 10664,
+        "size": "L",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9928
+      },
+      {
+        "id": 10665,
+        "size": "XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9928
+      },
+      {
+        "id": 10666,
+        "size": "2XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9928
+      },
+      {
+        "id": 10667,
+        "size": "3XL",
+        "price": "100",
+        "regular_price": "100",
+        "sale_price": "",
+        "manage_stock": false,
+        "stock_quantity": null,
+        "stock_status": "instock",
+        "purchasable": true,
+        "parent": 9928
+      }
+    ]
+  }
+]

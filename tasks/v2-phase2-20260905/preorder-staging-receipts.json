@@ -1,0 +1,32 @@
+[
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/front-page.php",
+    "before": "3b435b5570818806fddc2a53dbc3ab75f71f3588174fc18345b744c3eb524cd5",
+    "after": "ca557393efa8a11f57f41c05ee613b37533a140c63586e552c538635e0a4e790"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/woocommerce/single-product.php",
+    "before": "6a97eaf5f7fc217d62f0034f3b749e30611b3b39ab3e3a878b02dd62e4ead429",
+    "after": "cc1913a3b313d8ce4e2909e759d43bb51a96957697c024a0b598af1409ca04e2"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/functions.php",
+    "before": "0191e4357a6e564dfc96cbb321a0592b497a71d7b2ac16df495cd910d4bbf82e",
+    "after": "7bec84f589b3e2e262ba3116c128da9b41143231f6bd6ffa61c96f0d4a941b26"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/page.php",
+    "before": "cef7de140a4dec8b2919dbf6bfe5f6f18c89f6eae620bd4b8f6271487faef879",
+    "after": "8c9168b0aa38375e1baf482393e95474b98d859e6d268d7ed4cce4884b858fb7"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/inc/presentation-registry.php",
+    "before": "632e4558308105978c949aabd3d7ca19b5d7d939a33e1ff420183592c1348b83",
+    "after": "5df3b06c98df51fcc1bd24e6b78e08a666f992448a917a6c182af00a5263500d"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/template-parts/v2-preorder.php",
+    "before": "81ea0b5362fc0e8e652dd340829a48890c5099284963d0cf05bf0221acfa8f4e",
+    "after": "d37e56db2911ddea0566089efe6aa866e6f9d811ca0889dc9fd1aff74efba30a"
+  }
+]

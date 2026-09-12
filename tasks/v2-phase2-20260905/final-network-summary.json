@@ -1,0 +1,17 @@
+{
+  "routes": 12,
+  "requests_observed": 647,
+  "responses_observed": 634,
+  "http_errors": [],
+  "noncancelled_failures": [
+    {
+      "error": "net::ERR_BLOCKED_BY_ORB",
+      "canceled": false,
+      "url": "https://static.klaviyo.com/onsite/js//klaviyo.js?module=POST_IDENTIFICATION_SYNC&ver=3.8.3"
+    }
+  ],
+  "cancelled_media_requests": 6,
+  "observer_active_on_each_route": true,
+  "initial_matrix_network_results_superseded": true,
+  "checkout_ajax_evidence": "final-checkout-network.json"
+}
