@@ -6,6 +6,7 @@ All CLIP model calls are mocked so tests run without transformers installed.
 
 from __future__ import annotations
 
+import importlib.util
 from dataclasses import FrozenInstanceError
 from unittest.mock import MagicMock, patch
 
@@ -17,6 +18,8 @@ from skyyrose.elite_studio.quality.ml_classifier import (
     ClassifierResult,
     QualityClassifier,
 )
+
+_HAS_TORCH = importlib.util.find_spec("torch") is not None
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -84,6 +87,10 @@ class TestClassifierFallback:
         assert result.error == ""
 
     def test_returns_error_result_on_generic_exception(self, tmp_path):
+        # _run_clip imports torch before _load_clip_model is reached; without the
+        # ml extra the ImportError fallback fires first and this path is unreachable.
+        if not _HAS_TORCH:
+            pytest.skip("classifier exception path requires the ml extra")
         img = tmp_path / "test.jpg"
         img.write_bytes(b"FAKEJPEG")
 
@@ -105,6 +112,7 @@ class TestClassifierFallback:
 # ---------------------------------------------------------------------------
 
 
+@pytest.mark.skipif(not _HAS_TORCH, reason="mocked CLIP inference requires the ml extra")
 class TestClassifierWithMockCLIP:
     def _mock_clip_call(self, probs: list[float], image_path: str) -> ClassifierResult:
         """Run classifier with mocked CLIP outputs."""

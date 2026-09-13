@@ -966,10 +966,18 @@ def _paid_node_price(class_info: Any) -> float:
 
 
 def runway_contract_sha256(contract: Mapping[str, Any]) -> str:
-    """Hash Runway intent without the self-referential approval file binding."""
+    """Hash Runway intent without approval-file or merge-gate state.
+
+    Must stay byte-identical to ``_contract_sha256`` in
+    ``Comfy/scripts/environment_plate_ooda.py``: the founder packet is built
+    before merge with ``post_merge_execution_gate.required`` true, and the
+    approval receipt carries that hash. The gate is enforced separately on the
+    paid submit path, so it is workflow state, not provider request input.
+    """
     normalized = json.loads(json.dumps(contract))
     control = normalized.setdefault("credit_control", {})
     control["approval_receipt"] = None
+    normalized["post_merge_execution_gate"] = None
     return workflow_sha256(normalized)
 
 
