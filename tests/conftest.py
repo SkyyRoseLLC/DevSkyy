@@ -37,6 +37,29 @@ def _reset_rate_limiter():
     rate_limiter.token_buckets.clear()
 
 
+@pytest.fixture(autouse=True)
+def _no_live_sdk_escalation(monkeypatch):
+    """Fail closed: never spawn a live Claude Agent SDK agent from pytest.
+
+    Orchestrator._sdk_escalation runs a real, paid, full-tool-profile SDK
+    session when every core agent fails. Tests that exercise the escalation
+    path (e.g. test_route_escalation_on_failure) would otherwise make a live
+    API call, which costs money and hangs under account rate limits.
+    Set DEVSKYY_TESTS_ALLOW_SDK=1 to opt a run back in deliberately.
+    """
+    if os.environ.get("DEVSKYY_TESTS_ALLOW_SDK") == "1":
+        return
+    try:
+        from agents.core.orchestrator import Orchestrator
+    except ImportError:
+        return
+
+    async def _unavailable(self, task, **kwargs):
+        return None
+
+    monkeypatch.setattr(Orchestrator, "_sdk_escalation", _unavailable)
+
+
 @pytest.fixture
 async def client():
     """
