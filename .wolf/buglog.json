@@ -5637,5 +5637,46 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-12"
+  },
+  {
+    "id": "bug-326",
+    "timestamp": "2026-09-13",
+    "error_message": "CI 'Three.js Tests' step 'Audit production dependencies' (npm audit --omit=dev --audit-level=high) exit 1: sharp <0.35.4 Severity: high, GHSA-rgj7-g3m4-5g8c (libheif GHSA-g89c-p67h-r497 / GHSA-2jg2-4ch7-h545)",
+    "file": "package.json",
+    "root_cause": "Root package.json pinned sharp exactly at 0.35.3. The libheif advisory for sharp <0.35.4 was published 2026-09-08, so every CI run since then (including main run 34743692404 on 4da200886, 2026-09-13) fails the high-severity production audit regardless of the PR diff.",
+    "fix": "Bumped the exact pin to sharp 0.35.4 (npm install sharp@0.35.4 --save-exact --package-lock-only --ignore-scripts). Lockfile churn is confined to sharp, @img/sharp-* platform binaries (libvips 1.3.2 -> 1.3.3) and a nested @emnapi/runtime for the wasm32 target. npm run security:audit:production exits 0 (8 moderate remain, below the high threshold).",
+    "tags": [
+      "ci",
+      "npm-audit",
+      "sharp",
+      "dependency",
+      "three-js-tests",
+      "pre-existing-main"
+    ],
+    "related_bugs": [],
+    "occurrences": 1,
+    "last_seen": "2026-09-13"
+  },
+  {
+    "id": "bug-327",
+    "timestamp": "2026-09-13",
+    "error_message": "tests/test_core_agents.py::TestOrchestrator::test_route_escalation_on_failure Failed: Timeout (>10.0s) from pytest-timeout after 'failing_core escalated — trying alternatives'",
+    "file": "tests/conftest.py",
+    "root_cause": "agents/core/orchestrator.py Orchestrator._sdk_escalation spawns a real Claude Agent SDK session (sdk_tools=ToolProfile.FULL, model sonnet) when all core agents fail; no test stubbed it, so the unit test made a live paid API call. Passed while quota existed, hung once the account hit its session limit. Test-isolation + paid-call-from-tests defect (bug-231 family; STOP-AND-SHOW violated by the suite itself).",
+    "fix": "Autouse fixture _no_live_sdk_escalation in tests/conftest.py monkeypatches Orchestrator._sdk_escalation to return None unless DEVSKYY_TESTS_ALLOW_SDK=1. Fails closed. Commit 5deb7567e on PR #924.",
+    "tags": [
+      "stop-gate",
+      "test-isolation",
+      "paid-api",
+      "claude-sdk",
+      "orchestrator",
+      "timeout"
+    ],
+    "related_bugs": [
+      "bug-231",
+      "bug-230"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-13"
   }
 ]
