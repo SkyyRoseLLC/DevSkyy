@@ -5561,5 +5561,29 @@
     ],
     "occurrences": 1,
     "last_seen": "2026-09-10T12:40:00-07:00"
+  },
+  {
+    "id": "bug-322",
+    "timestamp": "2026-09-12",
+    "error_message": "Comfy/tests/test_scene_ooda.py: test_paid_execution_needs_receipts_even_if_text_blockers_are_removed (configuration_ready False) and test_collection_world_prompt_adherence_is_hash_bound_and_fail_closed (verify_file MISSING); plus ImportError TRYON_MAX_CREDITS from skyyrose.integrations.fashn_client in Comfy/tests/test_vto_ooda.py + test_model_plate_ooda.py",
+    "file": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
+    "root_cause": "Scene contracts bound source files by ABSOLUTE machine paths inside ~/.codex/worktrees/final-scenes-e2e and ~/DevSkyy-product-card-approved, both removed in the 2026-09-10 disk consolidation. Separately, Comfy scripts from commit e76d64ff1 were staged without their companion fashn_client.py change (TRYON_MAX_*/MODEL_CREATE_* constants).",
+    "fix": "Repointed BR-2/LH-2 bindings to repo-relative paths; restored 3 binaries by SHA-256 match (dual-cast target from codex/final-scenes-e2e-20260830, statue PNG from codex/v2-shop-the-look-20260910, BLACK_Rose_Long_Hoodie.png from ~/Downloads, git add -f under ignored renders/scroll-world/); refreshed contract_sha256 in scene-ooda-ledger.json; checked out fashn_client.py + test_fashn_client.py from e76d64ff1 (file unchanged on this branch since merge-base). Added .wolf/cerebrum.md + buglog.json to .prettierignore.",
+    "tags": [
+      "comfy",
+      "scene-contracts",
+      "absolute-paths",
+      "worktree-cleanup",
+      "fashn",
+      "missing-companion-file",
+      "sha256-restore"
+    ],
+    "related_bugs": [
+      "bug-252",
+      "bug-257"
+    ],
+    "occurrences": 1,
+    "last_seen": "2026-09-12",
+    "open_followup": "sig-commerce-1/2/3 contracts + scene-ooda-ledger still reference ~20 files under the removed final-scenes-e2e worktree (no test asserts them yet); recover from codex/final-scenes-e2e-20260830 where tracked."
   }
 ]

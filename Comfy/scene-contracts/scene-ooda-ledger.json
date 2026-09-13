@@ -27,7 +27,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/br-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "d28fa9a67a87405deb24e8dc8f72d983b5ebf346969f7b786b62285fba3c5ed8",
+      "contract_sha256": "0b7a2c3b04a78bc056c1c0ff69c0442d5f2157343b02de08e7de8968bd7ed95f",
       "evidence": [
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-20260902T072421816848Z.json",
         "Comfy/receipts/br-commerce-2-higgsfield-enhance-review-20260902T072503771026Z.json",
@@ -68,7 +68,7 @@
       "accountable": "fashion-theme-lead",
       "attempt": 1,
       "contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
-      "contract_sha256": "c89595f81516fb2cbc5923c32144f455f010bf4e237d35ba680e8f73617ac92c",
+      "contract_sha256": "e0b6fc67c4561b25f5b8639e700cfae175238c97ae9f7cded41f99a64ec067a6",
       "evidence": [
         "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
         "tasks/lh-003-source-authority-intake-20260902.json",
