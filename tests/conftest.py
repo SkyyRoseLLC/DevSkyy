@@ -7,6 +7,7 @@ Shared fixtures and configuration.
 
 import base64
 import os
+import sys
 
 import pytest
 
@@ -49,15 +50,19 @@ def _no_live_sdk_escalation(monkeypatch):
     """
     if os.environ.get("DEVSKYY_TESTS_ALLOW_SDK") == "1":
         return
-    try:
-        from agents.core.orchestrator import Orchestrator
-    except ImportError:
+    # Do not import the orchestrator here: that drags in the whole agents
+    # package (and core/errors/production_errors.py, which needs Python 3.12
+    # syntax) into jobs that never touch it. Only patch when a test module
+    # has already loaded it.
+    module = sys.modules.get("agents.core.orchestrator")
+    orchestrator_cls = getattr(module, "Orchestrator", None) if module else None
+    if orchestrator_cls is None:
         return
 
     async def _unavailable(self, task, **kwargs):
         return None
 
-    monkeypatch.setattr(Orchestrator, "_sdk_escalation", _unavailable)
+    monkeypatch.setattr(orchestrator_cls, "_sdk_escalation", _unavailable)
 
 
 @pytest.fixture
