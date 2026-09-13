@@ -61,10 +61,10 @@
  * approved throne visible in full and place every action on a reading plane. */
 .sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-recovery-hero-media > img { height: auto; min-height: 0; aspect-ratio: 16 / 9; object-fit: contain; }
 .sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic [data-recovery-hero-video] { object-fit: contain; }
-.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity { --sr2-color-text: #241e18; --sr2-color-text-muted: #5b5044; --sr2-focus-inner: #f7f3e9; --sr2-focus-outer: #241e18; padding: clamp(2rem, 4vw, 4rem); background: var(--sr2-paper); color: #241e18; text-align: start; border: 0; }
-.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 { max-width: none; margin-inline: 0; font-size: clamp(2.6rem, 6vw, 6rem); }
-.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__line { max-width: 32ch; margin-inline: 0; color: #5b5044; }
-.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__actions { justify-content: flex-start; max-width: 25rem; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity { --sr2-color-text: #241e18; --sr2-color-text-muted: #5b5044; --sr2-focus-inner: #f7f3e9; --sr2-focus-outer: #241e18; padding: clamp(2rem, 4vw, 4rem); background: var(--sr2-paper); color: #241e18; text-align: center; border: 0; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 { max-width: none; margin-inline: auto; font-size: clamp(2.15rem, 5.5vw, 5.5rem); line-height: 1.12; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__line { max-width: 32ch; margin-inline: auto; color: #5b5044; }
+.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__actions { justify-content: center; max-width: 25rem; margin-inline: auto; }
 .sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-control--primary { background: #241e18; border-color: #241e18; color: #f7f3e9; }
 .sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-control--primary:is(:hover, :focus-visible) { background: #54412d; border-color: #54412d; }
 .sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-world-text-link { color: #241e18; }
@@ -73,8 +73,8 @@
 .sr2-collection-world[data-composition="inheritance"] .sr2-world-origin { padding: clamp(2rem, 6vw, 5rem); background: linear-gradient(135deg, #231b13, #0e0d0b); border-block: 1px solid #806955; }
 .sr2-collection-world[data-composition="inheritance"] .sr2-world-origin h2 { font-family: var(--sr2-font-caps); font-weight: 400; line-height: 1.1; }
 @media (max-width: 47.99em) {
-	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity { padding: 2rem 1.25rem; }
-	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; gap: .75rem; }
+	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__identity { padding: 2rem 1.25rem; text-align: center; }
+	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival--cinematic .sr2-world-arrival__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: none; gap: .75rem; justify-content: center; margin-inline: auto; }
 	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-control { min-height: 48px; padding-inline: .5rem; text-align: center; }
 	.sr2-collection-world[data-composition="inheritance"] .sr2-world-arrival__actions .sr2-world-text-link { grid-column: 1 / -1; }
 }
@@ -133,8 +133,15 @@
 .sr2-world-arrival--cinematic .sr2-world-arrival__monument { order: -1; width: 100vw; max-width: none; margin-inline: calc((100vw - 100%) / -2); border: 0; }
 .sr2-world-arrival--cinematic .sr2-world-arrival__monument img { display: block; width: 100%; height: min(82svh, 70vw); min-height: 30rem; object-fit: cover; object-position: center; border: 0; }
 .sr2-world-arrival--cinematic .sr2-world-arrival__monument figcaption { padding-inline: clamp(1rem, 3vw, 3rem); }
-.sr2-world-arrival--cinematic .sr2-world-arrival__identity { width: 100%; max-width: none; padding: 2rem 0; }
-.sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 { max-width: none; font-family: var(--sr2-font-caps); font-size: clamp(2.75rem, 6vw, 6rem); font-weight: 400; letter-spacing: -.025em; }
+.sr2-world-arrival--cinematic .sr2-world-arrival__identity { width: 100%; max-width: none; padding: 2rem 0; text-align: center; }
+.sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 { max-width: none; font-family: var(--sr2-font-caps); font-size: clamp(2.35rem, 5.5vw, 5.5rem); font-weight: 400; letter-spacing: -.025em; line-height: 1.12; margin-inline: auto; padding-inline-start: 0; border-inline-start: 0; }
 @media (max-width: 47.99em) {
 	.sr2-world-arrival--cinematic .sr2-world-arrival__monument img { height: 65svh; min-height: 22rem; object-position: 65% center; }
 }
+/* Do not resize shop-the-look scenes: hotspot coordinates depend on their ratio. */
+.sr2-world-arrival--cinematic .sr2-world-arrival__line { margin-inline: auto; max-width: 44ch; }
+.sr2-world-arrival--cinematic .sr2-world-arrival__actions { justify-content: center; flex-wrap: wrap; }
+.sr2-collection-world .sr2-world-section-head { text-align: center; }
+.sr2-collection-world .sr2-world-section-head > :is(h2, p) { margin-inline: auto; max-width: 44ch; }
+.sr2-collection-world .sr2-world-next { text-align: center; }
+.sr2-collection-world .sr2-world-next h2 { font-size: clamp(2rem, 5vw, 5rem); line-height: 1.1; }

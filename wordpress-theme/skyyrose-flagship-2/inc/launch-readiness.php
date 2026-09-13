@@ -154,6 +154,33 @@ function skyyrose2_redirect_retired_public_content() {
 }
 add_action( 'template_redirect', 'skyyrose2_redirect_retired_public_content', 1 );
 
+/**
+ * Preserve V2's canonical collection and world URLs after legacy page records are retired.
+ *
+ * These are request-path aliases rather than WordPress page aliases so old campaign links,
+ * saved bookmarks, and classic-menu references remain valid after the source pages move to Trash.
+ */
+function skyyrose2_retired_v2_page_routes() {
+	return array(
+		'experiences'                 => 'worlds',
+		'experience-signature'        => 'worlds/signature',
+		'experience-black-rose'       => 'worlds/black-rose',
+		'experience-love-hurts'       => 'worlds/love-hurts',
+		'experience-kids-capsule'     => 'worlds/kids-capsule',
+		'collections-world'           => 'collections',
+		'landing-signature'           => 'collections/signature',
+		'landing-black-rose'          => 'collections/black-rose',
+		'landing-love-hurts'          => 'collections/love-hurts',
+		'landing-kids-capsule'        => 'collections/kids-capsule',
+		'collection-kids-capsule'     => 'collections/kids-capsule',
+	);
+}
+
+/** Return every retired public route that should resolve to a V2 canonical page. */
+function skyyrose2_retired_v2_routes() {
+	return array_merge( skyyrose2_legacy_collection_routes(), skyyrose2_retired_v2_page_routes() );
+}
+
 /** Repair internal menu URLs without editing the stored menus or other worlds. */
 function skyyrose2_canonical_collection_menu_links( $atts ) {
 	$href = $atts['href'] ?? '';
@@ -162,7 +189,7 @@ function skyyrose2_canonical_collection_menu_links( $atts ) {
 		return $atts;
 	}
 	$slug = trim( (string) wp_parse_url( $href, PHP_URL_PATH ), '/' );
-	$routes = skyyrose2_legacy_collection_routes();
+	$routes = skyyrose2_retired_v2_routes();
 	if ( isset( $routes[ $slug ] ) ) {
 		$target = get_page_by_path( $routes[ $slug ], OBJECT, 'page' );
 		if ( $target && 'publish' === $target->post_status && empty( $target->post_password ) ) {
@@ -172,6 +199,26 @@ function skyyrose2_canonical_collection_menu_links( $atts ) {
 	return $atts;
 }
 add_filter( 'nav_menu_link_attributes', 'skyyrose2_canonical_collection_menu_links', 20 );
+
+/** Keep the footer's direct Kids Capsule path visible when its retired menu item is hidden. */
+function skyyrose2_restore_footer_kids_capsule_link( $items, $args ) {
+	if ( empty( $args->menu_class ) || false === strpos( (string) $args->menu_class, 'menu-footer-shop' ) || false !== strpos( $items, '/collections/kids-capsule/' ) ) {
+		return $items;
+	}
+
+	$kids_capsule = get_page_by_path( 'collections/kids-capsule', OBJECT, 'page' );
+	if ( ! $kids_capsule || 'publish' !== $kids_capsule->post_status || ! empty( $kids_capsule->post_password ) ) {
+		return $items;
+	}
+
+	$url = get_permalink( $kids_capsule->ID );
+	if ( ! $url ) {
+		return $items;
+	}
+
+	return '<li class="menu-item menu-item-skyyrose2-kids-capsule"><a href="' . esc_url( $url ) . '">' . esc_html__( 'Kids Capsule', 'skyyrose-flagship-2' ) . '</a></li>' . $items;
+}
+add_filter( 'wp_nav_menu_items', 'skyyrose2_restore_footer_kids_capsule_link', 20, 2 );
 
 /** Archives and feeds must not re-surface the retired demo material. */
 function skyyrose2_exclude_retired_demo_archives( $query ) {
@@ -242,7 +289,7 @@ function skyyrose2_redirect_retired_collection_alias_request() {
 	$request_uri  = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
 	$request_path = wp_parse_url( $request_uri, PHP_URL_PATH );
 	$request_slug = trim( is_string( $request_path ) ? $request_path : '', '/' );
-	$routes       = skyyrose2_legacy_collection_routes();
+	$routes       = skyyrose2_retired_v2_routes();
 	if ( ! isset( $routes[ $request_slug ] ) ) {
 		return;
 	}

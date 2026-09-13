@@ -18,8 +18,8 @@
   text-wrap: balance;
   margin-block: 0 1.2rem;
 }
-.sr2-about-archive h1 { font-size: clamp(2.8rem, 6.8vw, 7rem); line-height: .98; letter-spacing: -.045em; }
-.sr2-about-archive h2 { font-size: clamp(2rem, 3.8vw, 4rem); line-height: 1.08; letter-spacing: -.035em; }
+.sr2-about-archive h1 { font-size: var(--sr2-refine-title); line-height: 1.1; letter-spacing: -.035em; text-align: center; }
+.sr2-about-archive h2 { font-size: clamp(1.75rem, 3vw, 3.25rem); line-height: 1.15; letter-spacing: -.035em; text-align: center; }
 .sr2-about-archive h3 { font-size: clamp(1.25rem, 2vw, 1.8rem); line-height: 1.2; }
 .sr2-about-archive p { font-size: clamp(1rem, 1.15vw, 1.16rem); line-height: 1.8; margin-block: 0 1.3em; }
 .sr2-about-archive :where(.sr2-eyebrow, .sr2-about-label) { color: var(--sr2-muted); font-size: .75rem; letter-spacing: .13em; text-transform: uppercase; }
@@ -30,8 +30,8 @@
 .sr2-about-archive .sr2-about-lead > * { min-width: 0; }
 .sr2-about-archive .sr2-about-lead figure { max-width: 32rem; justify-self: end; width: 100%; }
 .sr2-about-archive .sr2-about-lead figure img { display: block; width: 100%; height: auto; aspect-ratio: 2 / 3; object-fit: contain; }
-.sr2-about-archive .sr2-about-lead > .wp-block-group { max-width: 46rem; }
-.sr2-about-archive .sr2-about-lead > .wp-block-group > p { max-width: 52ch; }
+.sr2-about-archive .sr2-about-lead > .wp-block-group { max-width: 46rem; text-align: center; margin-inline: auto; }
+.sr2-about-archive .sr2-about-lead > .wp-block-group > p { max-width: 52ch; margin-inline: auto; }
 .sr2-about-archive .sr2-about-reading { max-width: 68ch; margin-inline: auto; }
 .sr2-about-archive .sr2-about-story-chapter > :where(h2, .sr2-about-label, .sr2-eyebrow) { max-width: var(--sr2-content); margin-inline: auto; }
 .sr2-about-archive .sr2-about-story-chapter > h2 { margin-bottom: 2.5rem; }

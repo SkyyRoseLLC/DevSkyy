@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 $sr2_reserve_principles = array(
 	array( 'number' => '01', 'title' => 'Choose with the details open', 'copy' => 'Each piece links to its product page for size, price, availability, and order terms.' ),
-	array( 'number' => '02', 'title' => 'Order through checkout', 'copy' => 'Orders use standard checkout. The pre-order label does not reserve stock or defer payment. Contact Client Services for shipping estimates before ordering.' ),
+	array( 'number' => '02', 'title' => 'Full payment at checkout', 'copy' => 'Pre-orders require full payment at checkout. The pre-order label does not reserve stock or establish a shipping date. Contact Client Services for shipping estimates before ordering.' ),
 	array( 'number' => '03', 'title' => 'Keep the receipt', 'copy' => 'Order confirmation and account history remain the source for purchase status and any updates the store publishes.' ),
 );
 ?>

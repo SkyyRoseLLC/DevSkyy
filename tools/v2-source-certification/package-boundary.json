@@ -3204,6 +3204,16 @@
       "category": "RUNTIME SOURCE",
       "reason": "Phase3B reviewed page implementation",
       "release": true
+    },
+    "data/scene-hotspots.json": {
+      "category": "RUNTIME SOURCE",
+      "reason": "Poster-hash-bound garment hotspot coordinates; no product authority replacement",
+      "release": true
+    },
+    "inc/launch-readiness.php": {
+      "category": "RUNTIME SOURCE",
+      "reason": "V2 canonical navigation, scoped heading and editorial cleanup, approved PDP styling views",
+      "release": true
     }
   },
   "schema": "skyyrose.v2.package-boundary.v1"

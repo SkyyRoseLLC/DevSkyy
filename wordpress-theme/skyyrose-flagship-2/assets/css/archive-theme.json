@@ -6,18 +6,18 @@
   },
   "source": {
     "file": "theme.css",
-    "sha256": "e50d3e9adc6ec234eb3aabafe1adc827725564c332cf09fd1efc54c2d6d09ba9",
-    "bytes": 63631
+    "sha256": "c1e1c2ab01ef211f76f10957e250b26aed1a80b9fb672e08c95a8f3ccc6fff74",
+    "bytes": 65085
   },
   "originalMin": {
     "file": "theme.min.css",
-    "sha256": "55fd2739296d96c1c3ba8d0a75e49cd5fd0b124d60e5d1032165fccc20233b29",
-    "bytes": 54185
+    "sha256": "b1858fce7be6c20f8f908354f7e320511ac37db47ada9e6c642495bdac532560",
+    "bytes": 55418
   },
   "output": {
     "file": "archive-theme.min.css",
-    "sha256": "3d4ba06af5a3c1df60995b8d398fbb08ba9b4219c53a53eaf4b001ceaf29123f",
-    "bytes": 29883
+    "sha256": "0b554039e1e1dabbfed1da226bb36e7b4ec8a8b85995d5044b05f8162d06f52d",
+    "bytes": 30056
   },
   "ownerFamilies": {
     "content": [
@@ -3144,9 +3144,9 @@
     },
     {
       "index": 331,
-      "selector": ".sr2-c-checkout__grid",
+      "selector": ".sr2-c-checkout",
       "wrappers": [],
-      "ruleSha256": "39508062b1033c5bd38df54f0bb0f00b7705b42df256e751a053684e35d1c0e4",
+      "ruleSha256": "4e0eba94b181650c5caac078f7eee058b34e3cf1379cd33bbbcb8f8e2d70aea8",
       "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
       "owners": [
         "transactions"
@@ -3154,6 +3154,138 @@
     },
     {
       "index": 332,
+      "selector": ".sr2-c-checkout__grid",
+      "wrappers": [],
+      "ruleSha256": "5bb44b15177b7baebb343fbd08b1f5703d46b74cdd405bd6161c05471cf58e22",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 333,
+      "selector": ".sr2-c-checkout__grid > *, .sr2-c-checkout #customer_details, .sr2-c-checkout #order_review",
+      "wrappers": [],
+      "ruleSha256": "33dd4543c9bdfd76c1c5b6e496e9afed08ec6bb243d8e35b3cec56e07342c289",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 334,
+      "selector": ".sr2-c-checkout #customer_details > :is(.col-1, .col-2)",
+      "wrappers": [],
+      "ruleSha256": "930ca5e336d6373f80751f51e9734001386ee8c63c2a9c9c0cec61dbb37342c1",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 335,
+      "selector": ".sr2-c-checkout #customer_details .form-row :is(input:not([type=\"checkbox\"]):not([type=\"radio\"]), select, textarea)",
+      "wrappers": [],
+      "ruleSha256": "35ee08e8bfab168e38e34b769e86759751cf1690f566b059e80fe1ab5e7305a2",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 336,
+      "selector": ".sr2-c-checkout .select2-container",
+      "wrappers": [],
+      "ruleSha256": "ac187514d354d51ae7d2b9b55d36e03d0f28ca5b6a0051fef28e596c8f79094e",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 337,
+      "selector": ".sr2-c-checkout .form-row input:is([type=\"checkbox\"], [type=\"radio\"])",
+      "wrappers": [],
+      "ruleSha256": "7814432d827852d55454bf5d4202754570361990643e5fff2036fbf31cfc73dc",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 338,
+      "selector": ".sr2-c-checkout #order_review",
+      "wrappers": [],
+      "ruleSha256": "b35efe38936f7c55744cbf1dfbed1cc3f99d22b628da72704c8012d2f3a899e6",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 339,
+      "selector": ".sr2-c-checkout #payment :is(ul.payment_methods, div.payment_box, div.form-row)",
+      "wrappers": [],
+      "ruleSha256": "f59e5b706710fe8b3e33df35dc514e7199d9e62623a85bbf0ffc95b40c9ff7a0",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 340,
+      "selector": ".sr2-c-checkout #payment .payment_box",
+      "wrappers": [],
+      "ruleSha256": "8c50aac90fe9a61e69b44ffd377daed1138a617ca8334bb7f018a2ed36a896a2",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 341,
+      "selector": ".sr2-c-checkout #payment .place-order",
+      "wrappers": [],
+      "ruleSha256": "53d8a45349dc49d8578faf6529d02e306c379467081d1cf46bf427642954632e",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 342,
+      "selector": ".sr2-c-checkout #place_order",
+      "wrappers": [],
+      "ruleSha256": "a25dead0a6e9c9f3a78522d045cfe0421c19d68d93530fcb689f35f214c71217",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 343,
+      "selector": ".sr2-c-checkout__grid",
+      "wrappers": [
+        "@container sr2-checkout (min-width: 54rem)"
+      ],
+      "ruleSha256": "8f5cf70e78da0a658cdc5eea48c7f1ad6fa22097962f7b10dc6ec57871b3e145",
+      "disposition": "EXCLUDE_FROM_NATIVE_ARCHIVE",
+      "owners": [
+        "transactions"
+      ]
+    },
+    {
+      "index": 344,
+      "selector": ".woocommerce form.sr2-c-checkout .form-row-first, .woocommerce form.sr2-c-checkout .form-row-last",
+      "wrappers": [
+        "@container sr2-checkout (max-width: 38rem)"
+      ],
+      "ruleSha256": "12878778621342706d598d158491144864f6c7aa952bd1fa0b4e4d08dec517c6",
+      "disposition": "PRESERVE",
+      "owners": []
+    },
+    {
+      "index": 345,
       "selector": ".sr2-c-account__nav, .sr2-c-service__links",
       "wrappers": [],
       "ruleSha256": "ca1a1faf77b244283b17702e943d133e59955907779f0d8597b2299cce319f43",
@@ -3163,7 +3295,7 @@
       ]
     },
     {
-      "index": 333,
+      "index": 346,
       "selector": ".sr2-c-account__nav a, .sr2-c-service__links a",
       "wrappers": [],
       "ruleSha256": "b3298ecf49e1a7fd8d712a04372748005e283f5a18d015b68c0092462ee0d058",
@@ -3173,7 +3305,7 @@
       ]
     },
     {
-      "index": 334,
+      "index": 347,
       "selector": ".sr2-c-account__nav a[aria-current=\"page\"], .sr2-c-service__links a:hover, .sr2-c-service__links a:focus-visible",
       "wrappers": [],
       "ruleSha256": "22408a8597e6f74b174740cb3f7d41ce4e55fa957ef71b5f121c9c07d76e9439",
@@ -3183,7 +3315,7 @@
       ]
     },
     {
-      "index": 335,
+      "index": 348,
       "selector": "to",
       "wrappers": [
         "@keyframes sr2-commerce-spin"
@@ -3193,7 +3325,7 @@
       "owners": []
     },
     {
-      "index": 336,
+      "index": 349,
       "selector": ".sr2-c-cart__row",
       "wrappers": [
         "@container (inline-size <= 28rem)"
@@ -3205,7 +3337,7 @@
       ]
     },
     {
-      "index": 337,
+      "index": 350,
       "selector": ".sr2-c-cart__price",
       "wrappers": [
         "@container (inline-size <= 28rem)"
@@ -3217,7 +3349,7 @@
       ]
     },
     {
-      "index": 338,
+      "index": 351,
       "selector": ".sr2-c-checkout__grid",
       "wrappers": [
         "@container (inline-size <= 28rem)"
@@ -3229,7 +3361,7 @@
       ]
     },
     {
-      "index": 339,
+      "index": 352,
       "selector": ".sr2-c-product-grid",
       "wrappers": [
         "@media (max-width: 48em)"
@@ -3239,7 +3371,7 @@
       "owners": []
     },
     {
-      "index": 340,
+      "index": 353,
       "selector": ".sr2-c-status",
       "wrappers": [
         "@media (max-width: 48em)"
@@ -3249,7 +3381,7 @@
       "owners": []
     },
     {
-      "index": 341,
+      "index": 354,
       "selector": ".sr2-c-action[aria-busy=\"true\"]::before",
       "wrappers": [
         "@media (prefers-reduced-motion: reduce)"
@@ -3259,7 +3391,7 @@
       "owners": []
     },
     {
-      "index": 342,
+      "index": 355,
       "selector": ".sr2-c-variation, .sr2-c-cart, .sr2-c-checkout, .sr2-c-account, .sr2-c-service, .sr2-c-summary",
       "wrappers": [
         "@media (forced-colors: active)"
@@ -3272,7 +3404,7 @@
       ]
     },
     {
-      "index": 343,
+      "index": 356,
       "selector": ".sr2-c-action, .sr2-c-option[aria-pressed=\"true\"]",
       "wrappers": [
         "@media (forced-colors: active)"
@@ -3282,7 +3414,7 @@
       "owners": []
     },
     {
-      "index": 344,
+      "index": 357,
       "selector": ".sr2-journal, .sr2-search, .sr2-story, .sr2-not-found, .sr2-generic-page",
       "wrappers": [],
       "ruleSha256": "6b23b0eaff37b0fdbed6008cdb6bb8cc922b39f268e71fc066006e42acdefa95",
@@ -3292,7 +3424,7 @@
       ]
     },
     {
-      "index": 345,
+      "index": 358,
       "selector": "body:is(.woocommerce-checkout, .woocommerce-cart) .sr2-page",
       "wrappers": [],
       "ruleSha256": "91e6279b2c2765619cf805d0c5cdca286452435b6613023f41719185065cb82f",
@@ -3300,7 +3432,7 @@
       "owners": []
     },
     {
-      "index": 346,
+      "index": 359,
       "selector": "body:is(.woocommerce-checkout, .woocommerce-cart) .sr2-page > .woocommerce",
       "wrappers": [],
       "ruleSha256": "d843c39efab90087a82bfd7d71ee3149a174e9b362daeebee8ca3de7f4568088",
@@ -3308,7 +3440,7 @@
       "owners": []
     },
     {
-      "index": 347,
+      "index": 360,
       "selector": ".woocommerce-cart .sr2-cart",
       "wrappers": [],
       "ruleSha256": "76a5aadee28e7945d46098dfba2d2150de380c3ac8039a38e3d4ae4407e856da",
@@ -3318,7 +3450,7 @@
       ]
     },
     {
-      "index": 348,
+      "index": 361,
       "selector": ".woocommerce-cart .sr2-empty-bag-head",
       "wrappers": [],
       "ruleSha256": "7ba705f0054333368cdcd979f51d264b97a4d8e0c4c9019caf884e6c18397231",
@@ -3328,7 +3460,7 @@
       ]
     },
     {
-      "index": 349,
+      "index": 362,
       "selector": ".sr2-checkout",
       "wrappers": [],
       "ruleSha256": "ee7d42ca3c8d0cfe2921b33e08a5a3120a8ed398a00bbd07d8be9e670ecf7998",
@@ -3338,7 +3470,7 @@
       ]
     },
     {
-      "index": 350,
+      "index": 363,
       "selector": ".sr2-journal__hero",
       "wrappers": [],
       "ruleSha256": "c88c071b323ffc766646a2adec4d48fa428b7a97302b99d70a919a3200ae28dd",
@@ -3348,7 +3480,7 @@
       ]
     },
     {
-      "index": 351,
+      "index": 364,
       "selector": ".sr2-journal__hero h1, .sr2-story__head h1, .sr2-not-found h1",
       "wrappers": [],
       "ruleSha256": "6312f2d0a234b5779f092707477c39d656ca73aaa2170f948f1a7de5a7466e4f",
@@ -3358,7 +3490,7 @@
       ]
     },
     {
-      "index": 352,
+      "index": 365,
       "selector": ".sr2-journal__hero > p:last-child",
       "wrappers": [],
       "ruleSha256": "5177f17635354c6bf85b40c0ddd7086195c17ebff288569338c6ad304630143d",
@@ -3368,7 +3500,7 @@
       ]
     },
     {
-      "index": 353,
+      "index": 366,
       "selector": ".sr2-journal__grid",
       "wrappers": [],
       "ruleSha256": "d4ecc467935a4c4388422492d21c9957b7e6485296b7474083e49fa6b3f54903",
@@ -3378,7 +3510,7 @@
       ]
     },
     {
-      "index": 354,
+      "index": 367,
       "selector": ".sr2-journal-card",
       "wrappers": [],
       "ruleSha256": "213757e4513af6ea26b0f60f2b83c5f7791cdb2312f5a92d27ea14d531360227",
@@ -3388,7 +3520,7 @@
       ]
     },
     {
-      "index": 355,
+      "index": 368,
       "selector": ".sr2-journal-card__media",
       "wrappers": [],
       "ruleSha256": "c1ab5b5c4c7015e4726ef7a2977414ff13536dbc76f33495935f85d76920be92",
@@ -3398,7 +3530,7 @@
       ]
     },
     {
-      "index": 356,
+      "index": 369,
       "selector": ".sr2-journal-card__media img",
       "wrappers": [],
       "ruleSha256": "6d019e84d8888dcba85062a4857b0b6d49b261e03de2932329de6ea5d1db94e6",
@@ -3408,7 +3540,7 @@
       ]
     },
     {
-      "index": 357,
+      "index": 370,
       "selector": ".sr2-journal-card__copy",
       "wrappers": [],
       "ruleSha256": "c42b4cccab5b0c7f79c13a4373a69f7b43aa2c7b71e4305326dd69a587df6adb",
@@ -3418,7 +3550,7 @@
       ]
     },
     {
-      "index": 358,
+      "index": 371,
       "selector": ".sr2-journal-card__copy h2, .sr2-search__result h2",
       "wrappers": [],
       "ruleSha256": "452564484d05c6467285ec5d0f27a08d21fb142e796d1486f7ec265547ed8876",
@@ -3428,7 +3560,7 @@
       ]
     },
     {
-      "index": 359,
+      "index": 372,
       "selector": ".sr2-journal-card__copy h2 a, .sr2-search__result h2 a",
       "wrappers": [],
       "ruleSha256": "9aa7fa51973fca06f4ee94f285c85c42a766318033e5c042fe32ec5b2a233163",
@@ -3438,7 +3570,7 @@
       ]
     },
     {
-      "index": 360,
+      "index": 373,
       "selector": ".sr2-journal-card__copy > p:not(.sr2-eyebrow), .sr2-search__result > p:not(.sr2-eyebrow)",
       "wrappers": [],
       "ruleSha256": "e5728ac9c1ac27113e78ff0055510865a422e415a654357f73082e96d178604f",
@@ -3448,7 +3580,7 @@
       ]
     },
     {
-      "index": 361,
+      "index": 374,
       "selector": ".sr2-pagination",
       "wrappers": [],
       "ruleSha256": "8d939b5ed3887f0f1a86fd667b806a6faa4c941a8c04033f61f504d9adcacd2b",
@@ -3456,7 +3588,7 @@
       "owners": []
     },
     {
-      "index": 362,
+      "index": 375,
       "selector": ".sr2-pagination .nav-links",
       "wrappers": [],
       "ruleSha256": "64d85a2d925657f94d3748d3e648f22d9f9751be72243435bd27aeec91a87d7e",
@@ -3464,7 +3596,7 @@
       "owners": []
     },
     {
-      "index": 363,
+      "index": 376,
       "selector": ".sr2-pagination a, .sr2-pagination span",
       "wrappers": [],
       "ruleSha256": "f69504b2fefb0acf744163cb95f4435092240162c966b290230eeb1954973378",
@@ -3472,7 +3604,7 @@
       "owners": []
     },
     {
-      "index": 364,
+      "index": 377,
       "selector": ".sr2-pagination .current",
       "wrappers": [],
       "ruleSha256": "baf508a414d9e00f876dd0da34c54cc05b2d59d7a49ff5016167570c454c95cc",
@@ -3480,7 +3612,7 @@
       "owners": []
     },
     {
-      "index": 365,
+      "index": 378,
       "selector": ".sr2-story__hero",
       "wrappers": [],
       "ruleSha256": "b6152411c02fe48932cd6e75e28ff149977e3f6f9902f8d287084a2709bfa208",
@@ -3490,7 +3622,7 @@
       ]
     },
     {
-      "index": 366,
+      "index": 379,
       "selector": ".sr2-story__hero img",
       "wrappers": [],
       "ruleSha256": "255f069d86efb04f771755543a64ef61b6e90dab5d82439173434edc6fa3c3d8",
@@ -3500,7 +3632,7 @@
       ]
     },
     {
-      "index": 367,
+      "index": 380,
       "selector": ".sr2-story__head",
       "wrappers": [],
       "ruleSha256": "c7448d426a58b95373bc835251ee77253007554fab59fe96b28866db93ba6343",
@@ -3510,7 +3642,7 @@
       ]
     },
     {
-      "index": 368,
+      "index": 381,
       "selector": ".sr2-story__body",
       "wrappers": [],
       "ruleSha256": "9e550c0e3b51a463119de6eb9bb549676b273064332e3a1b008366a4ada2003e",
@@ -3520,7 +3652,7 @@
       ]
     },
     {
-      "index": 369,
+      "index": 382,
       "selector": ".sr2-story__body :is(h2, h3)",
       "wrappers": [],
       "ruleSha256": "0ab91ce28b51fa8547ca4b9f68178fbe28d85174285699f441b5cffe2d83d915",
@@ -3530,7 +3662,7 @@
       ]
     },
     {
-      "index": 370,
+      "index": 383,
       "selector": ".sr2-story__body img",
       "wrappers": [],
       "ruleSha256": "f248bf33350e62c934aed2b4435b4cec3e9ccd304d49ad87fc9e95ae2d6f55dc",
@@ -3540,7 +3672,7 @@
       ]
     },
     {
-      "index": 371,
+      "index": 384,
       "selector": ".sr2-story__nav",
       "wrappers": [],
       "ruleSha256": "4834e23aac9550e434ac2802bdb5b08c0c46b358d90b6e6a633d7e9de479faa0",
@@ -3550,7 +3682,7 @@
       ]
     },
     {
-      "index": 372,
+      "index": 385,
       "selector": ".sr2-story__nav .nav-links",
       "wrappers": [],
       "ruleSha256": "64ad784f330c8123186f9b5eed99f93e0a6b99e58da281fd4be33e58c8c02860",
@@ -3560,7 +3692,7 @@
       ]
     },
     {
-      "index": 373,
+      "index": 386,
       "selector": ".sr2-story__nav a",
       "wrappers": [],
       "ruleSha256": "75c4308b96daaae7b0452d099593d63548aa40cc1b1b7a576329aebc2a52b005",
@@ -3570,7 +3702,7 @@
       ]
     },
     {
-      "index": 374,
+      "index": 387,
       "selector": ".sr2-search__form",
       "wrappers": [],
       "ruleSha256": "ad078659bd8755667900e0a04ce1dd10ca3f2641e7cfbee4db2abfa342c68efc",
@@ -3580,7 +3712,7 @@
       ]
     },
     {
-      "index": 375,
+      "index": 388,
       "selector": ".sr2-search__form input",
       "wrappers": [],
       "ruleSha256": "899347ce23f06de26ff3e00776e20c5d4fbaf84276995ba51db2dc7515815f56",
@@ -3590,7 +3722,7 @@
       ]
     },
     {
-      "index": 376,
+      "index": 389,
       "selector": ".sr2-search__list",
       "wrappers": [],
       "ruleSha256": "1d3c730d19a43b4d0e520d9c6bbb684a08b0bc9527d3784644a961389130c33c",
@@ -3600,7 +3732,7 @@
       ]
     },
     {
-      "index": 377,
+      "index": 390,
       "selector": ".sr2-search__result",
       "wrappers": [],
       "ruleSha256": "c15c8d456d3c4dac1d73e1f9faa8923ac2073a0e533e3da8e4a1cdc3fb84d681",
@@ -3610,7 +3742,7 @@
       ]
     },
     {
-      "index": 378,
+      "index": 391,
       "selector": ".sr2-search__empty",
       "wrappers": [],
       "ruleSha256": "11af563aecbef633bd4d902fe2ba487c334938b01d3f50288df61676f4e18a0c",
@@ -3620,7 +3752,7 @@
       ]
     },
     {
-      "index": 379,
+      "index": 392,
       "selector": ".sr2-not-found",
       "wrappers": [],
       "ruleSha256": "8e97d44a822b984c155960570f3edfb2144d7309ef34cc96dd1f140db9c44d80",
@@ -3630,7 +3762,7 @@
       ]
     },
     {
-      "index": 380,
+      "index": 393,
       "selector": ".sr2-not-found__media",
       "wrappers": [],
       "ruleSha256": "1859df0d8ce6230bb13998b16a8823d251f21be4f5768c023d82965ab760e498",
@@ -3640,7 +3772,7 @@
       ]
     },
     {
-      "index": 381,
+      "index": 394,
       "selector": ".sr2-not-found__media img",
       "wrappers": [],
       "ruleSha256": "f84876ac9360c7683865d866c5d1ca23f476ebd774de69135f305177be81e02e",
@@ -3650,7 +3782,7 @@
       ]
     },
     {
-      "index": 382,
+      "index": 395,
       "selector": ".sr2-not-found__actions",
       "wrappers": [],
       "ruleSha256": "455c1481de7e9ecc31acd5663211a32348af4b091373c0121e999f00461e7de4",
@@ -3660,7 +3792,7 @@
       ]
     },
     {
-      "index": 383,
+      "index": 396,
       "selector": ".sr2-generic-page",
       "wrappers": [],
       "ruleSha256": "dcfe0dbdfae09608c33da1c623d4d191aeda173fd8fe6d406cb56980bbeb4ffd",
@@ -3670,7 +3802,7 @@
       ]
     },
     {
-      "index": 384,
+      "index": 397,
       "selector": ".sr2-generic-page .sr2-generic-head",
       "wrappers": [],
       "ruleSha256": "42296d56d8187ba7a7eddc2d6264a6b0ce1adf6d7de44d657e2bb6de1ea046d1",
@@ -3680,7 +3812,7 @@
       ]
     },
     {
-      "index": 385,
+      "index": 398,
       "selector": ".sr2-generic-page .sr2-page-copy",
       "wrappers": [],
       "ruleSha256": "3066c2134e940ece21254cd31f0767d4b2446b39d818eec58d42fc694d9d2964",
@@ -3690,7 +3822,7 @@
       ]
     },
     {
-      "index": 386,
+      "index": 399,
       "selector": ".sr2-generic-page .woocommerce-MyAccount-navigation ul",
       "wrappers": [],
       "ruleSha256": "d279b6e68def497539fd898b17d09dbb79a78053f741bfe233d8d8de4ed1a71d",
@@ -3700,7 +3832,7 @@
       ]
     },
     {
-      "index": 387,
+      "index": 400,
       "selector": ".sr2-generic-page .woocommerce-MyAccount-navigation a",
       "wrappers": [],
       "ruleSha256": "6fb815c75fa13730ad2f3e4de9a3ebe542c2bf4f223814e88a80e6e6ff344c7a",
@@ -3710,7 +3842,7 @@
       ]
     },
     {
-      "index": 388,
+      "index": 401,
       "selector": ".sr2-generic-page :is(input, select, textarea)",
       "wrappers": [],
       "ruleSha256": "aaa3b99ddca8f690b07ab06be0c874a88cf6109675dcd19450ba9e89b5c695e1",
@@ -3720,7 +3852,7 @@
       ]
     },
     {
-      "index": 389,
+      "index": 402,
       "selector": ".sr2-checkout",
       "wrappers": [],
       "ruleSha256": "9371236652975c7aec5cf0d3dbe0feb8917cb540b1dca6bf20c9be39d7b7597c",
@@ -3730,7 +3862,7 @@
       ]
     },
     {
-      "index": 390,
+      "index": 403,
       "selector": ".sr2-checkout .sr2-page-head",
       "wrappers": [],
       "ruleSha256": "9151ddfc75d20630575a9cc87ad1bb959d271158a2e1c23360f2af531f18699e",
@@ -3740,7 +3872,7 @@
       ]
     },
     {
-      "index": 391,
+      "index": 404,
       "selector": ".sr2-checkout h2, .sr2-thankyou h1",
       "wrappers": [],
       "ruleSha256": "b4f71d6283622d2ed788a9c27374245059b4ea3162c6cd4b9006c8127241e0bd",
@@ -3750,7 +3882,7 @@
       ]
     },
     {
-      "index": 392,
+      "index": 405,
       "selector": ".sr2-checkout .form-row",
       "wrappers": [],
       "ruleSha256": "242498e59265219bb37c8c78a1ae76b3a1cdf889c31d46ada412e6987488f11e",
@@ -3760,7 +3892,7 @@
       ]
     },
     {
-      "index": 393,
+      "index": 406,
       "selector": ".sr2-checkout .form-row label",
       "wrappers": [],
       "ruleSha256": "db9eb639904c72d9d4b36ae43b077ff267031bfb8a89895cf1a823fea201a216",
@@ -3770,7 +3902,7 @@
       ]
     },
     {
-      "index": 394,
+      "index": 407,
       "selector": ".sr2-checkout .form-row input, .sr2-checkout .form-row select, .sr2-checkout .form-row textarea",
       "wrappers": [],
       "ruleSha256": "6aa6ed8d3dadba88b71fe592ddb4de4ebfcb5b2fd1077629469dcb7e7e6d5d1d",
@@ -3780,7 +3912,7 @@
       ]
     },
     {
-      "index": 395,
+      "index": 408,
       "selector": ".sr2-checkout .woocommerce-checkout-review-order-table",
       "wrappers": [],
       "ruleSha256": "e3de6bbe7769edfe3054b292d4b7361e2df85008f815a936d8317272215875c5",
@@ -3790,7 +3922,7 @@
       ]
     },
     {
-      "index": 396,
+      "index": 409,
       "selector": ".sr2-checkout .woocommerce-checkout-review-order-table :is(th, td)",
       "wrappers": [],
       "ruleSha256": "c13faafe185d4d417889cac67e5bacc65ea5001fb8559ed4427a0e8960ee8355",
@@ -3800,7 +3932,7 @@
       ]
     },
     {
-      "index": 397,
+      "index": 410,
       "selector": ".sr2-thankyou",
       "wrappers": [],
       "ruleSha256": "ad73a4b874480f11e7c50fcd45be0c339a34d950dc72f60dedb202b39971c43d",
@@ -3810,7 +3942,7 @@
       ]
     },
     {
-      "index": 398,
+      "index": 411,
       "selector": ".sr2-thankyou__details",
       "wrappers": [],
       "ruleSha256": "e58161c0939b7b5974467fb9b17271e2e8d498ea2aa619b072aa573b31174e18",
@@ -3820,7 +3952,7 @@
       ]
     },
     {
-      "index": 399,
+      "index": 412,
       "selector": ".sr2-thankyou__details div",
       "wrappers": [],
       "ruleSha256": "68d8eb7dee0f533a02ac0c9684866817d566cad320f3427575a4380a721308fc",
@@ -3830,7 +3962,7 @@
       ]
     },
     {
-      "index": 400,
+      "index": 413,
       "selector": ".sr2-thankyou__details dt",
       "wrappers": [],
       "ruleSha256": "721ababa378835ad39f71e57fbb3b8286e313991d0a7ba6b4d5081b2e7708bf0",
@@ -3840,7 +3972,7 @@
       ]
     },
     {
-      "index": 401,
+      "index": 414,
       "selector": ".sr2-thankyou__details dd",
       "wrappers": [],
       "ruleSha256": "578dcc1a00bf84870c609aa4825600292f0cc1630a1f0f9233161ef785e5418f",
@@ -3850,7 +3982,7 @@
       ]
     },
     {
-      "index": 402,
+      "index": 415,
       "selector": ".variations_form[data-sr2-variation-state=\"unavailable\"]",
       "wrappers": [],
       "ruleSha256": "83d0a893e4eb64c8d5d35046b210c7513719f13e260f5b7b0b59e3170074318e",
@@ -3860,7 +3992,7 @@
       ]
     },
     {
-      "index": 403,
+      "index": 416,
       "selector": ".sr2-journal__grid, .sr2-journal-fallback__grid, .sr2-commerce-preview__panel",
       "wrappers": [
         "@media (max-width: 780px)"
@@ -3872,7 +4004,7 @@
       ]
     },
     {
-      "index": 404,
+      "index": 417,
       "selector": ".sr2-journal-card",
       "wrappers": [
         "@media (max-width: 780px)"
@@ -3884,7 +4016,7 @@
       ]
     },
     {
-      "index": 405,
+      "index": 418,
       "selector": ".sr2-not-found",
       "wrappers": [
         "@media (max-width: 780px)"
@@ -3896,7 +4028,7 @@
       ]
     },
     {
-      "index": 406,
+      "index": 419,
       "selector": ".sr2-not-found__media",
       "wrappers": [
         "@media (max-width: 780px)"
@@ -3908,7 +4040,7 @@
       ]
     },
     {
-      "index": 407,
+      "index": 420,
       "selector": ".sr2-story__nav .nav-links",
       "wrappers": [
         "@media (max-width: 780px)"
@@ -3920,7 +4052,7 @@
       ]
     },
     {
-      "index": 408,
+      "index": 421,
       "selector": ".sr2-story__nav a",
       "wrappers": [
         "@media (max-width: 780px)"
@@ -3932,7 +4064,7 @@
       ]
     },
     {
-      "index": 409,
+      "index": 422,
       "selector": ".sr-home__hero-content .sr-home__button",
       "wrappers": [],
       "ruleSha256": "37180b9d1ed54308d883b183869341689ac28ed3e809251da8bb8aff3eb704d2",
@@ -3942,7 +4074,7 @@
       ]
     },
     {
-      "index": 410,
+      "index": 423,
       "selector": "to",
       "wrappers": [
         "@keyframes sr-home-model-loop"
@@ -3952,7 +4084,7 @@
       "owners": []
     },
     {
-      "index": 411,
+      "index": 424,
       "selector": ".woocommerce ul.products",
       "wrappers": [
         "@media (min-width: 1200px)"
@@ -3962,7 +4094,7 @@
       "owners": []
     },
     {
-      "index": 412,
+      "index": 425,
       "selector": ".sr2-c-editorial-card",
       "wrappers": [],
       "ruleSha256": "d1dc49e029509e0db3d488bafd4727284afd6d621f3c8b6cb6af51963c2de0a3",
@@ -3970,7 +4102,7 @@
       "owners": []
     },
     {
-      "index": 413,
+      "index": 426,
       "selector": ".sr2-c-editorial-card[data-presentation=\"signature\"]",
       "wrappers": [],
       "ruleSha256": "b96ad70df27534ffdf132c2896f062367bcc83b331ac17c5948bb90a03ec22c6",
@@ -3978,7 +4110,7 @@
       "owners": []
     },
     {
-      "index": 414,
+      "index": 427,
       "selector": ".sr2-c-editorial-card[data-presentation=\"black-rose\"], .sr2-c-editorial-card[data-presentation=\"jersey-series\"]",
       "wrappers": [],
       "ruleSha256": "63a5320b8d4c52184a2f989ee2b207c286203c8a6ff9a1c8aab85b460d9fb1cb",
@@ -3986,7 +4118,7 @@
       "owners": []
     },
     {
-      "index": 415,
+      "index": 428,
       "selector": ".sr2-c-editorial-card[data-presentation=\"love-hurts\"]",
       "wrappers": [],
       "ruleSha256": "9054d973acd6916498e39348a9448f398566bd985f1b8de44a33056160591cc3",
@@ -3994,7 +4126,7 @@
       "owners": []
     },
     {
-      "index": 416,
+      "index": 429,
       "selector": ".sr2-c-editorial-card[data-presentation=\"kids-capsule\"]",
       "wrappers": [],
       "ruleSha256": "3685c89e7c4d47f9e68587948edb5430a172217483c71e94cd5a5998e8eb6958",
@@ -4002,7 +4134,7 @@
       "owners": []
     },
     {
-      "index": 417,
+      "index": 430,
       "selector": ".sr2-c-editorial-card__media",
       "wrappers": [],
       "ruleSha256": "2c1567cf5f3bf1dcf16440c22450a64f5a37edfd9052fdfcdacbaa65ae885a73",
@@ -4010,7 +4142,7 @@
       "owners": []
     },
     {
-      "index": 418,
+      "index": 431,
       "selector": ".sr2-c-editorial-card__photo-window",
       "wrappers": [],
       "ruleSha256": "cda443e85b1946ef87beb1a11d934ca77f6d847ef20f64727b70351546a99cf0",
@@ -4018,7 +4150,7 @@
       "owners": []
     },
     {
-      "index": 419,
+      "index": 432,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__media img, .woocommerce ul.products li.product .sr2-c-editorial-card .sr2-c-editorial-card__media img",
       "wrappers": [],
       "ruleSha256": "6205f44a341935a75b80eb80ce7b1b3efc6de73f679c63ab4b45931671b99ad5",
@@ -4026,7 +4158,7 @@
       "owners": []
     },
     {
-      "index": 420,
+      "index": 433,
       "selector": ".sr2-c-editorial-card[data-media-state=\"missing\"] .sr2-c-editorial-card__media, .sr2-c-editorial-card[data-media-state=\"rejected\"] .sr2-c-editorial-card__media",
       "wrappers": [],
       "ruleSha256": "d827a45bc24eb7edf19234ee23ad8d2e3b42cb20d996e5e13a5a20ac3220f13f",
@@ -4034,7 +4166,7 @@
       "owners": []
     },
     {
-      "index": 421,
+      "index": 434,
       "selector": ".sr2-c-editorial-card__media-unavailable",
       "wrappers": [],
       "ruleSha256": "d11ce88fdd758baf05912d6aa8a2c95e135d1cccbef2d29c92c83c1f21acbbc6",
@@ -4042,7 +4174,7 @@
       "owners": []
     },
     {
-      "index": 422,
+      "index": 435,
       "selector": ".sr2-c-editorial-card__body",
       "wrappers": [],
       "ruleSha256": "2bcbcdbd59fb6f5de297a3c1a27749d85cf4b56d177688b2337a5b7e15d3c975",
@@ -4050,7 +4182,7 @@
       "owners": []
     },
     {
-      "index": 423,
+      "index": 436,
       "selector": ".sr2-c-editorial-card__nameplate",
       "wrappers": [],
       "ruleSha256": "c5be7818a675b25c6f1ed47bb32633f3ffa8de2fdddc2c1589e83997ab131432",
@@ -4058,7 +4190,7 @@
       "owners": []
     },
     {
-      "index": 424,
+      "index": 437,
       "selector": ".sr2-c-editorial-card__index, .sr2-c-editorial-card__reference",
       "wrappers": [],
       "ruleSha256": "cbc0366dce5d6eac2988a01b8948a10d2284f870379f7da9f6155f2da308b7fb",
@@ -4066,7 +4198,7 @@
       "owners": []
     },
     {
-      "index": 425,
+      "index": 438,
       "selector": ".sr2-c-editorial-card__index",
       "wrappers": [],
       "ruleSha256": "ca2ca6e20b83386f59de429ad898a2c9ea074a73ad63bb313b2cb88cee678b99",
@@ -4074,7 +4206,7 @@
       "owners": []
     },
     {
-      "index": 426,
+      "index": 439,
       "selector": ".sr2-c-editorial-card__collection",
       "wrappers": [],
       "ruleSha256": "b5451866f224a6d898706b65722ca8a50e9015f52466a45ca6a531ece275a3ed",
@@ -4082,7 +4214,7 @@
       "owners": []
     },
     {
-      "index": 427,
+      "index": 440,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__title, .woocommerce ul.products li.product .sr2-c-editorial-card .sr2-c-editorial-card__title",
       "wrappers": [],
       "ruleSha256": "c0a5f9e7e261f2b58345c094d11a0035008db24e7d7f89224b3ec1c855aaccc3",
@@ -4090,7 +4222,7 @@
       "owners": []
     },
     {
-      "index": 428,
+      "index": 441,
       "selector": ".sr2-c-editorial-card__title a",
       "wrappers": [],
       "ruleSha256": "39620907a0ab50703c216ba26d8b57c39fc50c13eb43c2b120a57660564c0171",
@@ -4098,7 +4230,7 @@
       "owners": []
     },
     {
-      "index": 429,
+      "index": 442,
       "selector": ".sr2-c-editorial-card__commerce",
       "wrappers": [],
       "ruleSha256": "2c2c18c3697add16e2f99ea825a877c6e710afe82398448d1fc9883ff166e733",
@@ -4106,7 +4238,7 @@
       "owners": []
     },
     {
-      "index": 430,
+      "index": 443,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__price, .woocommerce ul.products li.product .sr2-c-editorial-card .sr2-c-editorial-card__price",
       "wrappers": [],
       "ruleSha256": "1b41055d53e467fd6174606299eb08c937ab20bb03f7086b721c5e0afa659ee9",
@@ -4114,7 +4246,7 @@
       "owners": []
     },
     {
-      "index": 431,
+      "index": 444,
       "selector": ".sr2-c-editorial-card__availability",
       "wrappers": [],
       "ruleSha256": "62b5ed31ab5b04b2b1e94946763674665b965de27edad0917846c76647f743a7",
@@ -4122,7 +4254,7 @@
       "owners": []
     },
     {
-      "index": 432,
+      "index": 445,
       "selector": ".sr2-c-editorial-card__availability p",
       "wrappers": [],
       "ruleSha256": "7a38224ac04ed7889a83cc0b98b798a39881519efe0d5cb684ab40ea18f7c733",
@@ -4130,7 +4262,7 @@
       "owners": []
     },
     {
-      "index": 433,
+      "index": 446,
       "selector": ".sr2-c-editorial-card__actions",
       "wrappers": [],
       "ruleSha256": "c9ef8a276c859f9c00174ea4b170beb8c19580d1adf513bd062a98a88214e910",
@@ -4138,7 +4270,7 @@
       "owners": []
     },
     {
-      "index": 434,
+      "index": 447,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__actions :is(a, button)",
       "wrappers": [],
       "ruleSha256": "41081511813c529700780d5e681f29571ecc920d99a8ec60c5ea0356489f93d9",
@@ -4146,7 +4278,7 @@
       "owners": []
     },
     {
-      "index": 435,
+      "index": 448,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__actions .button",
       "wrappers": [],
       "ruleSha256": "125755bc5c677247ca5808b9194069eb47a0a87c526fd0cec61dad83b80a09be",
@@ -4154,7 +4286,7 @@
       "owners": []
     },
     {
-      "index": 436,
+      "index": 449,
       "selector": ".woocommerce ul.products li.product .sr2-c-editorial-card .sr2-c-editorial-card__actions .button",
       "wrappers": [],
       "ruleSha256": "3b1fbdc93f4ee2c0dd4f8f40144826fcc938a023b22d46830ee7c0b95dac6745",
@@ -4162,7 +4294,7 @@
       "owners": []
     },
     {
-      "index": 437,
+      "index": 450,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__actions .sr2-c-editorial-card__quick-view",
       "wrappers": [],
       "ruleSha256": "2c4a6ccb14ae684b4990a2fb313af1fe5a0d227038f71defc9a68248616eadb7",
@@ -4170,7 +4302,7 @@
       "owners": []
     },
     {
-      "index": 438,
+      "index": 451,
       "selector": ".sr2-c-editorial-card:focus-within",
       "wrappers": [],
       "ruleSha256": "10b9d392487e40a0585fa1f95660331c12aa6135f1b3ddcf91317b52d1c2e179",
@@ -4178,7 +4310,7 @@
       "owners": []
     },
     {
-      "index": 439,
+      "index": 452,
       "selector": ".sr2-c-editorial-card__title a:focus-visible",
       "wrappers": [],
       "ruleSha256": "1837bd4d4fda4e0034c7994721e1a75fdc53093416952b6de4561e3ce67d5842",
@@ -4186,7 +4318,7 @@
       "owners": []
     },
     {
-      "index": 440,
+      "index": 453,
       "selector": ".sr2-c-editorial-card :is(a, button):focus-visible",
       "wrappers": [],
       "ruleSha256": "79f66ad06efd71528c95093752d18fb47d246308f1395220f8e958e40e1499c6",
@@ -4194,7 +4326,7 @@
       "owners": []
     },
     {
-      "index": 441,
+      "index": 454,
       "selector": ".sr2-c-editorial-card[data-card-variant=\"compact\"] .sr2-c-editorial-card__body",
       "wrappers": [],
       "ruleSha256": "86c73352ed962b1e7fdd94b40de4fe773ab40e458f1a01d642eb3f48a76607d8",
@@ -4202,7 +4334,7 @@
       "owners": []
     },
     {
-      "index": 442,
+      "index": 455,
       "selector": ".sr2-c-editorial-card[data-card-variant=\"feature\"] .sr2-c-editorial-card__body",
       "wrappers": [],
       "ruleSha256": "7bd6271b7d0114a307006ec3e1671b8f0d37d0893466f0ff9a4a090a7ca3a5ec",
@@ -4210,7 +4342,7 @@
       "owners": []
     },
     {
-      "index": 443,
+      "index": 456,
       "selector": ".sr2-c-editorial-card:hover",
       "wrappers": [
         "@media (hover: hover) and (pointer: fine)"
@@ -4220,7 +4352,7 @@
       "owners": []
     },
     {
-      "index": 444,
+      "index": 457,
       "selector": ".sr2-c-editorial-card__title a:hover",
       "wrappers": [
         "@media (hover: hover) and (pointer: fine)"
@@ -4230,7 +4362,7 @@
       "owners": []
     },
     {
-      "index": 445,
+      "index": 458,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__actions :is(a, button):hover",
       "wrappers": [
         "@media (hover: hover) and (pointer: fine)"
@@ -4240,7 +4372,7 @@
       "owners": []
     },
     {
-      "index": 446,
+      "index": 459,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__actions .button:hover",
       "wrappers": [
         "@media (hover: hover) and (pointer: fine)"
@@ -4250,7 +4382,7 @@
       "owners": []
     },
     {
-      "index": 447,
+      "index": 460,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__actions .button:is(:disabled, .disabled, [aria-disabled=\"true\"], [aria-busy=\"true\"], .loading)",
       "wrappers": [],
       "ruleSha256": "603ba15f757fc7eada6f9f0bd909004674ca0be57eec9f20cac8ef7c988392bd",
@@ -4258,7 +4390,7 @@
       "owners": []
     },
     {
-      "index": 448,
+      "index": 461,
       "selector": ".sr2-c-editorial-card .sr2-c-editorial-card__actions .button:is(.loading, [aria-busy=\"true\"])",
       "wrappers": [],
       "ruleSha256": "ea0a3dbd476f72bf061ddfbbd427ffe84ec1b0f2811946b22aa046ebc52ea974",
@@ -4266,7 +4398,7 @@
       "owners": []
     },
     {
-      "index": 449,
+      "index": 462,
       "selector": ".sr2-c-editorial-card, .sr2-c-editorial-card a, .sr2-c-editorial-card button",
       "wrappers": [
         "@media (prefers-reduced-motion: reduce)"
@@ -4276,7 +4408,7 @@
       "owners": []
     },
     {
-      "index": 450,
+      "index": 463,
       "selector": ".sr2-c-editorial-card, .sr2-c-editorial-card__nameplate, .sr2-c-editorial-card .sr2-c-editorial-card__actions :is(a, button)",
       "wrappers": [
         "@media (forced-colors: active)"
@@ -4286,7 +4418,7 @@
       "owners": []
     },
     {
-      "index": 451,
+      "index": 464,
       "selector": ".sr2-c-editorial-card :is(a, button):focus-visible",
       "wrappers": [
         "@media (forced-colors: active)"
@@ -4296,7 +4428,7 @@
       "owners": []
     },
     {
-      "index": 452,
+      "index": 465,
       "selector": "body:has(dialog[open])",
       "wrappers": [],
       "ruleSha256": "ab85715b3352be5265f66f9efe933ab587e0fa8da6501c179207030d86eb0edd",
@@ -4304,7 +4436,7 @@
       "owners": []
     },
     {
-      "index": 453,
+      "index": 466,
       "selector": "body.sr2-nav-open .skyyrose-mascot, body.sr2-nav-open .skyyrose-mascot__recall, body:has(dialog[open]) .skyyrose-mascot, body:has(dialog[open]) .skyyrose-mascot__recall",
       "wrappers": [],
       "ruleSha256": "f63ef5606b52426fc02134582ff47545ca41c8382c2a132c4744fb17faa4b040",
@@ -4312,7 +4444,7 @@
       "owners": []
     },
     {
-      "index": 454,
+      "index": 467,
       "selector": "dialog",
       "wrappers": [],
       "ruleSha256": "c0be27028bcebeee67e7fc97bdb247583cbcd95d5c175a1f52f61aa92ad80d6c",
@@ -4320,7 +4452,7 @@
       "owners": []
     },
     {
-      "index": 455,
+      "index": 468,
       "selector": "body .skyyrose-mascot, body .skyyrose-mascot__recall",
       "wrappers": [
         "@media (max-width: 768px)"
@@ -4330,7 +4462,7 @@
       "owners": []
     },
     {
-      "index": 456,
+      "index": 469,
       "selector": "body .skyyrose-mascot",
       "wrappers": [
         "@media (max-width: 768px)"
@@ -4340,7 +4472,7 @@
       "owners": []
     },
     {
-      "index": 457,
+      "index": 470,
       "selector": ".sr2-header__nav",
       "wrappers": [
         "@media (max-width: 768px)"
@@ -4350,7 +4482,7 @@
       "owners": []
     },
     {
-      "index": 458,
+      "index": 471,
       "selector": ".sr2-search",
       "wrappers": [],
       "ruleSha256": "01b931348865feaa2eb46ef904a7550c400930e90e5ba6e4f10db8683da41937",
@@ -4360,7 +4492,7 @@
       ]
     },
     {
-      "index": 459,
+      "index": 472,
       "selector": ".sr2-cart__item-copy",
       "wrappers": [],
       "ruleSha256": "31f382bb91719957e42a78efefc83b065ee3ca55604c6acb2fa96427962c55ad",
@@ -4370,7 +4502,7 @@
       ]
     },
     {
-      "index": 460,
+      "index": 473,
       "selector": ".sr2-cart__image img",
       "wrappers": [],
       "ruleSha256": "cbe30ba2bb93323efeb96e92a0a16fffb78813ceeb0513d8da50a0dbce6364ad",
@@ -4380,7 +4512,7 @@
       ]
     },
     {
-      "index": 461,
+      "index": 474,
       "selector": ".sr2-cart__unit-price",
       "wrappers": [],
       "ruleSha256": "1a6868e27f91bde60ddbcbf0390324b24f576a973e46429d1814f85ceb4e8df6",
@@ -4390,7 +4522,7 @@
       ]
     },
     {
-      "index": 462,
+      "index": 475,
       "selector": ".sr2-cart__line-total",
       "wrappers": [],
       "ruleSha256": "624b510b92d23b9235617a14139c553d7d4c81b84f4617f01dda0835e5c8ea4e",
@@ -4400,7 +4532,7 @@
       ]
     },
     {
-      "index": 463,
+      "index": 476,
       "selector": ".sr2-cart__line-total strong",
       "wrappers": [],
       "ruleSha256": "7d727f0c183324ab9cac10011596c3afd5508e12d5341baf431a36a7d71443aa",
@@ -4410,7 +4542,7 @@
       ]
     },
     {
-      "index": 464,
+      "index": 477,
       "selector": ".sr2-cart__controls",
       "wrappers": [],
       "ruleSha256": "1a8cefa82bae653ff4471c63db349c7f1ab4e0222dc84558689402cec3110d06",
@@ -4420,7 +4552,7 @@
       ]
     },
     {
-      "index": 465,
+      "index": 478,
       "selector": ".sr2-cart__remove",
       "wrappers": [],
       "ruleSha256": "58f6094f0ef47c24cd497d3551868582eba73bdb40873e0c0766fe8219b93e5d",
@@ -4430,7 +4562,7 @@
       ]
     },
     {
-      "index": 466,
+      "index": 479,
       "selector": ".sr2-cart__actions",
       "wrappers": [],
       "ruleSha256": "8e8b715f7d5dbef831444805068d18e8db5461e34b8bee134fc1ad999883b39e",
@@ -4440,7 +4572,7 @@
       ]
     },
     {
-      "index": 467,
+      "index": 480,
       "selector": ".sr2-cart__actions input",
       "wrappers": [],
       "ruleSha256": "8ac363d594d353a55a4e46bf671f224318cc59a49a2bb1db30081e4a185ddd70",
@@ -4450,7 +4582,7 @@
       ]
     },
     {
-      "index": 468,
+      "index": 481,
       "selector": ".sr2-cart__actions .button",
       "wrappers": [],
       "ruleSha256": "a2854935fc7b479f91157f2989ac7b37876da758dc7bd06c40f028cb0942ebd8",
@@ -4460,7 +4592,7 @@
       ]
     },
     {
-      "index": 469,
+      "index": 482,
       "selector": ".sr2-c-account .woocommerce form",
       "wrappers": [],
       "ruleSha256": "4b8edbc8d3fea36ba875dff03196c8e15b7632585f3dc13544061a8d72c9ec60",
@@ -4470,7 +4602,7 @@
       ]
     },
     {
-      "index": 470,
+      "index": 483,
       "selector": ".sr2-cart__item",
       "wrappers": [
         "@media (max-width: 479px)"
@@ -4482,7 +4614,7 @@
       ]
     },
     {
-      "index": 471,
+      "index": 484,
       "selector": ".sr2-cart__controls",
       "wrappers": [
         "@media (max-width: 479px)"
@@ -4494,7 +4626,7 @@
       ]
     },
     {
-      "index": 472,
+      "index": 485,
       "selector": ".sr2-cart__actions",
       "wrappers": [
         "@media (max-width: 479px)"
@@ -4506,7 +4638,7 @@
       ]
     },
     {
-      "index": 473,
+      "index": 486,
       "selector": ".sr2-cart__actions label, .sr2-cart__actions [name=\"update_cart\"]",
       "wrappers": [
         "@media (max-width: 479px)"
@@ -4518,7 +4650,7 @@
       ]
     },
     {
-      "index": 474,
+      "index": 487,
       "selector": ".sr2-checkout .woocommerce-checkout-review-order",
       "wrappers": [
         "@media (max-width: 479px)"
@@ -4530,7 +4662,7 @@
       ]
     },
     {
-      "index": 475,
+      "index": 488,
       "selector": ".sr2-search h1, .sr2-search__result",
       "wrappers": [],
       "ruleSha256": "c73f3fbdbdb0a64fe98c1449c1825df67cb3994528624e8b8d8c2ce7e1389a60",
@@ -4540,7 +4672,7 @@
       ]
     },
     {
-      "index": 476,
+      "index": 489,
       "selector": ".sr2-search h1",
       "wrappers": [],
       "ruleSha256": "fcb1b2829e02c042c029c6f45c56f1fc7b5a803fab46cc731e3639629a7b35cd",

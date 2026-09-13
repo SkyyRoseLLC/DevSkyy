@@ -115,3 +115,16 @@
   .sr2-about-hero > * { min-width: 0; }
   .sr2-about-hero h1 { font-size: clamp(3.5rem, 14vw, 4.3rem); overflow-wrap: break-word; }
 }
+/* Page identity has a consistent scale; editorial body copy remains readable. */
+.sr2-page :is(.sr2-contact-hero__copy, .sr2-reserve-hero__copy, .sr2-page-hero__copy) { width: 100%; max-width: 72rem; margin-inline: auto; text-align: center; }
+.sr2-page :is(.sr2-contact-hero, .sr2-reserve-hero, .sr2-page-hero) h1 { max-width: 18ch; margin-inline: auto; font-size: var(--sr2-refine-title); font-weight: 600; line-height: 1.1; letter-spacing: -.035em; text-align: center; }
+.sr2-page :is(.sr2-contact-hero__copy, .sr2-reserve-hero__copy, .sr2-page-hero__copy) > p { margin-inline: auto; max-width: 48ch; }
+.sr2-page :is(.sr2-contact-hero, .sr2-reserve-hero) { min-height: min(44rem, 78svh); padding-block: clamp(5rem, 12vw, 10rem) clamp(3rem, 6vw, 6rem); }
+.sr2-contact-grid__email { overflow-wrap: anywhere; }
+.sr2-contact-form :is(input, select, textarea) { font: 400 1rem/1.5 var(--sr2-font-body); min-height: 48px; }
+.sr2-reserve-principles h3 { line-height: 1.12; }
+
+/* Native consent controls are not full-width text fields. */
+body .sr2-contact-form .sr2-contact-form__consent { display: grid; grid-template-columns: 1.25rem minmax(0, 1fr); align-items: start; gap: .75rem; min-height: 2.75rem; padding-block: .5rem; }
+body .sr2-contact-form .sr2-contact-form__consent input[type='checkbox'] { width: 1.25rem; height: 1.25rem; min-width: 1.25rem; min-height: 1.25rem; margin: .15rem 0 0; padding: 0; appearance: auto; accent-color: #b1747e; }
+body .sr2-contact-form .sr2-contact-form__consent > span { min-width: 0; font-size: .9375rem; font-weight: 400; line-height: 1.6; letter-spacing: normal; text-transform: none; }

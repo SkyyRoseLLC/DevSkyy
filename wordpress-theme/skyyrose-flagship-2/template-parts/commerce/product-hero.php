@@ -78,9 +78,11 @@ $purchasable         = $hero_product->is_purchasable() ? 'true' : 'false';
 
 		?>
 		<?php if ( ! $has_verified_media ) : ?>
-			<div class="sr2-pdp-product__media-missing" role="status">
+			<?php if ( ! skyyrose2_render_approved_pdp_styling_view( $hero_product ) ) : ?>
+<div class="sr2-pdp-product__media-missing" role="status">
 				<?php esc_html_e( 'Product imagery is currently unavailable.', 'skyyrose-flagship-2' ); ?>
 			</div>
+<?php endif; ?>
 		<?php endif; ?>
 		<nav class="sr2-pdp-product__chapters" aria-label="<?php esc_attr_e( 'Explore this piece', 'skyyrose-flagship-2' ); ?>">
 			<?php if ( $has_verified_media ) : ?><a href="#sr2-product-views"><?php esc_html_e( 'Silhouette', 'skyyrose-flagship-2' ); ?></a><?php endif; ?>

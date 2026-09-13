@@ -141,3 +141,20 @@
 @media (min-width: 80rem) {
  .woocommerce div.product.sr2-pdp-product--editorial :is(.related, .upsells) ul.products { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
+/* Garment-first portrait scale, native gallery behavior and readable summary. */
+.sr2-product-page--editorial { --sr2-pdp-image-height: clamp(28rem, 64svh, 44rem); }
+.woocommerce div.product.sr2-pdp-product--editorial .summary > .product_title { max-width: 100%; font-size: clamp(1.75rem, 3vw, 3.25rem); line-height: 1.12; letter-spacing: -.035em; font-weight: 600; text-align: center; margin-bottom: .75rem; }
+.woocommerce div.product.sr2-pdp-product--editorial .summary > .sr2-eyebrow { text-align: center; }
+.woocommerce div.product.sr2-pdp-product--editorial .summary :is(select, input:not([type="checkbox"]):not([type="radio"]), textarea) { font-size: 1rem; min-height: 48px; }
+.woocommerce div.product.sr2-pdp-product--editorial :is(.related, .upsells) > h2 { text-align: center; margin-block: 1rem 2rem; }
+.sr2-product-world--editorial h2 { text-align: center; line-height: 1.16; }
+@media (max-width: 47.99rem) {
+ .sr2-product-page--editorial { --sr2-pdp-image-height: clamp(20rem, 52svh, 30rem); }
+ .woocommerce div.product.sr2-pdp-product--editorial .summary > .product_title { font-size: clamp(1.65rem, 7vw, 2.3rem); }
+}
+
+/* Approved styling photography remains outside the native gallery permission set. */
+.sr2-pdp-styling-view { margin: 0; width: 100%; }
+.sr2-pdp-styling-view img { display: block; width: 100%; height: var(--sr2-pdp-image-height); object-fit: contain; object-position: center; }
+.sr2-pdp-styling-view figcaption { padding: .875rem 1rem; text-align: center; font-size: .8125rem; letter-spacing: .04em; }
+.sr2-pdp-product__media:has(.sr2-pdp-styling-view) .sr2-pdp-product__media-label > span:last-child { display: none; }

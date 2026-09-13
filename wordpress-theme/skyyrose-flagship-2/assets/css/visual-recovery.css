@@ -63,15 +63,17 @@
 }
 .sr2-world-arrival--cinematic .sr2-world-arrival__identity {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 0.5rem 2rem;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: .75rem;
+  justify-items: center;
 }
 .sr2-world-arrival--cinematic .sr2-world-arrival__identity > .sr2-world-index {
   grid-column: 1 / -1;
 }
 .sr2-world-arrival--cinematic .sr2-world-arrival__identity h1 {
-  margin: 0.5rem 0;
+  margin: .5rem auto;
+  text-align: center;
 }
 .sr2-world-arrival--cinematic .sr2-world-arrival__line {
   grid-column: 1;
@@ -270,6 +272,10 @@
   }
   .sr2-world-arrival--cinematic .sr2-world-arrival__identity {
     display: block;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    align-items: center;
+    gap: .75rem;
   }
   .sr2-recovered-worlds__rail > *,
   .sr2-recovery-collection-worlds__rail > * {

@@ -156,3 +156,82 @@ body.sr2-overlay-open .skyyrose-mascot, body.sr2-overlay-open .skyyrose-mascot__
 
 /* Keep the native guide control clear of the legacy title’s tight line box. */
 .sr2-pdp-product__fit-guide { min-height: var(--sr2-target-size); flex-shrink: 0; margin-block-end: var(--sr2-space-3); font-size: var(--sr2-type-utility); }
+/* Shared house rhythm. Route sheets own scene and product-image geometry. */
+:root { --sr2-refine-title: clamp(2rem, 4.5vw, 4.75rem); }
+:is(.sr2-page, .sr2-generic-page, .sr2-c-service, .sr2-c-account, .sr2-journal, .sr2-search) :is(.sr2-page-head, .sr2-generic-head, .sr2-journal__hero) { text-align: center; margin-inline: auto; padding-block: clamp(2rem, 5vw, 4.5rem); }
+:is(.sr2-page, .sr2-generic-page, .sr2-c-service, .sr2-c-account, .sr2-journal, .sr2-search) :is(.sr2-page-head, .sr2-generic-head, .sr2-journal__hero) h1 { max-width: 22ch; margin: .75rem auto 0; font-size: var(--sr2-refine-title); line-height: 1.1; letter-spacing: -.035em; font-weight: 600; text-align: center; overflow-wrap: anywhere; }
+:is(.sr2-page-head, .sr2-generic-head, .sr2-journal__hero) > p { max-width: 48ch; margin-inline: auto; }
+.sr2-section-head, .sr2-archive-section-head, .sr2-world-section-head { text-align: center; }
+.sr2-section-head > h2, .sr2-archive-section-head > h2 { max-width: 24ch; margin-inline: auto; font-size: clamp(1.75rem, 3.5vw, 3.75rem); line-height: 1.15; }
+.sr2-page-copy--generic { box-sizing: border-box; width: 100%; max-width: 72ch; min-width: 0; margin-inline: auto; padding-inline: clamp(1rem, 3vw, 2rem); font-size: clamp(1rem, 1.1vw, 1.125rem); line-height: 1.75; }
+.sr2-page-copy--generic :is(p, li, a, td, th, h1, h2, h3) { overflow-wrap: anywhere; }
+.sr2-page-copy--generic :is(h1, h2, h3) { line-height: 1.25; margin-block: 2rem 1rem; }
+.sr2-page-copy--generic > :first-child { margin-top: 0; }
+.sr2-page-copy--generic :is(img, video, iframe) { max-width: 100%; }
+.sr2-page-copy--generic table { width: 100%; table-layout: fixed; }
+.sr2-page-copy--generic :is(td, th) { padding: .65rem; }
+.sr2-page-copy--generic pre { max-width: 100%; overflow-x: auto; }
+.sr2-house-footer__legacy { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--sr2-line); }
+.sr2-house-nav__utility { flex-wrap: wrap; }
+.sr2-house-nav__utility a { min-height: 44px; }
+.sr2-journal-card { min-width: 0; }
+.sr2-journal-card:not(:has(.sr2-journal-card__media)) { padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid var(--sr2-line); background: var(--sr2-card); }
+.sr2-journal-card__copy h2 { line-height: 1.2; }
+.sr2-journal-card__media img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+.woocommerce :is(.sr2-c-account, .woocommerce-form-login, .woocommerce-ResetPassword, .woocommerce-form-track-order) :is(input:not([type="checkbox"]):not([type="radio"]), select, textarea) { font-size: 1rem; max-width: 100%; min-height: 48px; }
+@media (max-width: 47.99rem) {
+ .sr2-cart__item-copy h2 { font-size: 1.125rem; line-height: 1.35; }
+ .sr2-c-checkout .sr2-page-head h1 { font-size: clamp(1.75rem, 7vw, 2.35rem); }
+}
+
+.sr2-house-nav__experiences { margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid currentColor; }
+.sr2-house-nav__experience-links { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; }
+.sr2-house-nav__experience-links a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Image-free editorials do not reserve an empty photography column. */
+.sr2-journal-card:not(.has-post-thumbnail) { grid-template-columns: minmax(0, 1fr); }
+.sr2-journal-card:not(.has-post-thumbnail) .sr2-journal-card__copy { grid-column: 1 / -1; width: auto; min-width: 0; max-width: none; }
+@media (max-width: 47.99em) {
+  body .sr2-c-editorial-card .sr2-c-editorial-card__body { min-width: 0; }
+  body .sr2-c-editorial-card .sr2-c-editorial-card__nameplate { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: .625rem; min-width: 0; box-sizing: border-box; }
+  body .sr2-c-editorial-card .sr2-c-editorial-card__collection { min-width: 0; margin: 0; font-size: .75rem; line-height: 1.45; letter-spacing: .04em; white-space: normal; overflow-wrap: anywhere; }
+  body .sr2-c-editorial-card .sr2-c-editorial-card__index { font-size: .6875rem; line-height: 1.45; }
+  .sr2-journal-card:not(.has-post-thumbnail) .sr2-journal-card__copy > :is(h2, p) { width: 100%; max-width: none; }
+  .sr2-journal-card:not(.has-post-thumbnail) .sr2-journal-card__copy h2 { font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.2; }
+}
+
+/* Final launch audit: compact native/Elementor bag presentation. */
+#sr2-bag-dialog[open] { display: flex; flex-direction: column; gap: 1rem; height: 100dvh; max-height: 100dvh; overflow: hidden; }
+#sr2-bag-dialog > h2 { margin: 0; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; }
+#sr2-bag-dialog > .sr2-dialog-head, #sr2-bag-dialog > h2, #sr2-bag-dialog > .sr2-bag-empty-link { flex: 0 0 auto; }
+#sr2-bag-dialog .widget_shopping_cart_content { display: flex; flex: 1 1 auto; flex-direction: column; gap: 1rem; min-height: 0; overflow: hidden; }
+#sr2-bag-dialog :is(.elementor-menu-cart__products, ul.woocommerce-mini-cart) { flex: 1 1 auto; min-height: 0; margin: 0; padding: 0; overflow-y: auto; list-style: none; }
+#sr2-bag-dialog .elementor-menu-cart__product { display: grid; grid-template-columns: 5rem minmax(0, 1fr) 2.75rem; grid-template-rows: auto auto; gap: .5rem .75rem; min-height: 7.5rem; padding-block: 1rem; border-bottom: 1px solid #393333; }
+#sr2-bag-dialog .elementor-menu-cart__product-image { grid-column: 1; grid-row: 1 / 3; }
+#sr2-bag-dialog .elementor-menu-cart__product-image img { display: block; width: 5rem; height: 7.5rem; max-width: 100%; object-fit: contain; }
+#sr2-bag-dialog .elementor-menu-cart__product-name { grid-column: 2; grid-row: 1; align-self: end; min-width: 0; line-height: 1.4; overflow-wrap: anywhere; }
+#sr2-bag-dialog .elementor-menu-cart__product-price { grid-column: 2; grid-row: 2; align-self: start; font-size: 1rem; }
+#sr2-bag-dialog .elementor-menu-cart__product-remove { grid-column: 3; grid-row: 1 / 3; align-self: start; }
+#sr2-bag-dialog .elementor-menu-cart__product-remove .elementor_remove_from_cart_button { display: none; }
+#sr2-bag-dialog .elementor-menu-cart__product-remove .remove_from_cart_button { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border: 1px solid currentColor; text-decoration: none; }
+#sr2-bag-dialog .elementor-menu-cart__product-remove .remove_from_cart_button::before { content: '\00d7'; font-size: 1.25rem; }
+#sr2-bag-dialog .woocommerce-mini-cart-item { position: relative; min-height: 7.5rem; padding: 1rem 3rem 1rem 0; border-bottom: 1px solid #393333; }
+#sr2-bag-dialog .woocommerce-mini-cart-item img { float: left; width: 5rem; height: 7.5rem; margin-right: 1rem; object-fit: contain; }
+#sr2-bag-dialog .woocommerce-mini-cart-item .remove { position: absolute; top: 1rem; right: 0; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; }
+#sr2-bag-dialog :is(.elementor-menu-cart__subtotal, .woocommerce-mini-cart__total) { flex: 0 0 auto; display: flex; justify-content: space-between; gap: 1rem; margin: 0; padding-top: .75rem; border-top: 1px solid #393333; font-size: 1.125rem; }
+#sr2-bag-dialog :is(.elementor-menu-cart__footer-buttons, .woocommerce-mini-cart__buttons) { flex: 0 0 auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 0; }
+#sr2-bag-dialog :is(.elementor-menu-cart__footer-buttons, .woocommerce-mini-cart__buttons) > a { display: flex; align-items: center; justify-content: center; min-height: 3rem; padding: .75rem; border: 1px solid currentColor; text-align: center; text-decoration: none; font-size: 1rem; font-weight: 600; line-height: 1.3; }
+#sr2-bag-dialog :is(.elementor-button--checkout, .woocommerce-mini-cart__buttons .checkout) { background: #b1747e; color: #0a0a0a; }
+
+/* One primary editorial title, sized consistently with the house pages. */
+body .sr2-story .sr2-story__head { width: 100%; max-width: 72rem; margin-inline: auto; padding: clamp(2rem, 5vw, 4.5rem) clamp(1rem, 4vw, 3rem); box-sizing: border-box; text-align: center; }
+body .sr2-story .sr2-story__head h1 { width: auto; max-width: 22ch; margin: .75rem auto 0; font-size: var(--sr2-refine-title); font-weight: 600; line-height: 1.12; letter-spacing: -.035em; text-align: center; overflow-wrap: anywhere; }
+body .sr2-story .sr2-story__body { max-width: 72ch; margin-inline: auto; }
+body .sr2-story .sr2-story__body :is(h2, h3) { line-height: 1.25; overflow-wrap: anywhere; }
+.sr2-content-title-anchor { display: block; scroll-margin-top: 6rem; }
+
+/* Scene columns respond to their actual card width, including desktop rails. */
+body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__details { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); }
+body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__story { min-width: 0; }
+body .sr2-world.sr2-world--hero-composed .sr2-hero-commerce__story h3 { line-height: 1.15; overflow-wrap: anywhere; }
+body.woocommerce-cart #coupon_code { font-size: 1rem; }
