@@ -775,7 +775,37 @@ render_remote_swap_command() {
     theme_name="$(basename "$WP_THEME_PATH")"
     backup_path="${WP_THEME_PATH}.old.${swap_id}"
 
-    printf '%s' "set -e; cd '${REMOTE_DEPLOY_DIR}'; rm -rf -- '${THEME_ARCHIVE_ROOT}'; tar ${zstd_flag} -xf '${remote_tar_name}'; [ -d '${THEME_ARCHIVE_ROOT}' ]; had_live=0; if [ -d '${WP_THEME_PATH}' ]; then mv '${WP_THEME_PATH}' '${backup_path}'; had_live=1; fi; if mv '${THEME_ARCHIVE_ROOT}' '${WP_THEME_PATH}'; then rm -f '${remote_tar_name}'; (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf -- '{}' 2>/dev/null; true); else swap_rc=\$?; if [ \"\$had_live\" -eq 1 ] && [ -d '${backup_path}' ]; then mv '${backup_path}' '${WP_THEME_PATH}'; fi; exit \"\$swap_rc\"; fi"
+    # Upload storage may be on another device. Extract into a private sibling
+    # of the live theme so both publication and restoration use rename, never
+    # mv's cross-device copy fallback. Cleanup also runs on extraction failure.
+    cat <<EOF
+set -e
+candidate_dir=\$(mktemp -d '${parent_dir}/.${theme_name}.candidate.XXXXXXXX')
+trap 'rm -rf -- "\$candidate_dir"' EXIT
+tar ${zstd_flag} -xf '${REMOTE_DEPLOY_DIR}/${remote_tar_name}' -C "\$candidate_dir"
+[ -d "\$candidate_dir/${THEME_ARCHIVE_ROOT}" ]
+[ ! -L "\$candidate_dir/${THEME_ARCHIVE_ROOT}" ]
+had_live=0
+if [ -d '${WP_THEME_PATH}' ]; then
+    mv '${WP_THEME_PATH}' '${backup_path}'
+    had_live=1
+fi
+if mv "\$candidate_dir/${THEME_ARCHIVE_ROOT}" '${WP_THEME_PATH}'; then
+    rm -f '${REMOTE_DEPLOY_DIR}/${remote_tar_name}'
+    (cd '${parent_dir}' && ls -1dt '${theme_name}.old.'* 2>/dev/null | tail -n +3 | xargs -I {} rm -rf -- '{}' 2>/dev/null; true)
+else
+    swap_rc=\$?
+    if [ "\$had_live" -eq 1 ] && [ -d '${backup_path}' ]; then
+        # Never let mv nest the rollback inside an unexpected destination.
+        if [ -e '${WP_THEME_PATH}' ] || [ -L '${WP_THEME_PATH}' ]; then
+            echo 'Swap failed with an unexpected destination; rollback backup retained at ${backup_path}' >&2
+            exit "\$swap_rc"
+        fi
+        mv '${backup_path}' '${WP_THEME_PATH}'
+    fi
+    exit "\$swap_rc"
+fi
+EOF
 }
 
 try_rsync() {

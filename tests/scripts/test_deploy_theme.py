@@ -676,8 +676,49 @@ class TestRemoteSwapPlan:
         assert result.returncode != 0
         assert (live_theme / "live.txt").read_text() == "live"
         assert not Path(f"{live_theme}.old.test-swap").exists()
+        assert not list(live_theme.parent.glob(".skyyrose-flagship-2.candidate.*"))
 
-    def test_candidate_move_failure_restores_live_theme(self, tmp_path):
+    def test_candidate_rename_stays_on_live_filesystem(self, tmp_path):
+        remote_dir = tmp_path / "upload-filesystem"
+        remote_dir.mkdir()
+        live_theme = tmp_path / "themes" / "skyyrose-flagship-2"
+        live_theme.mkdir(parents=True)
+        (live_theme / "live.txt").write_text("live")
+        archive_name = self._write_archive(remote_dir, live_theme.name)
+        command = _render_remote_swap_command(
+            remote_dir=remote_dir,
+            theme_root=live_theme.name,
+            theme_path=live_theme,
+            archive_name=archive_name,
+        )
+        fake_bin = tmp_path / "bin"
+        fake_bin.mkdir()
+        fake_mv = fake_bin / "mv"
+        # Model mv's cross-device fallback: a failed copy leaves a partial
+        # destination. A same-filesystem source must instead reach real mv.
+        fake_mv.write_text(
+            "#!/usr/bin/env bash\n"
+            'source_parent="$(cd "$(dirname "$1")" && pwd)"\n'
+            'if [[ "$2" == "$LIVE_THEME" && "$source_parent" != "$LIVE_PARENT"* ]]; then\n'
+            '  mkdir -p "$2"; echo partial > "$2/partial.txt"; exit 23\n'
+            "fi\n"
+            'exec /bin/mv "$@"\n'
+        )
+        fake_mv.chmod(0o755)
+        env = dict(os.environ, LIVE_THEME=str(live_theme), LIVE_PARENT=str(live_theme.parent))
+        env["PATH"] = f"{fake_bin}:{env['PATH']}"
+        result = subprocess.run(["bash", "-c", command], capture_output=True, text=True, env=env)
+
+        assert result.returncode == 0, result.stderr
+        assert (live_theme / "candidate.txt").read_text() == "candidate"
+        assert not (live_theme / "partial.txt").exists()
+        assert (Path(f"{live_theme}.old.test-swap") / "live.txt").read_text() == "live"
+        assert not list(live_theme.parent.glob(".skyyrose-flagship-2.candidate.*"))
+
+    @pytest.mark.parametrize("unexpected_destination", [False, True])
+    def test_candidate_move_failure_restores_or_preserves_backup(
+        self, tmp_path, unexpected_destination
+    ):
         remote_dir = tmp_path / "remote"
         remote_dir.mkdir()
         live_theme = tmp_path / "themes" / "skyyrose-flagship-2"
@@ -695,18 +736,28 @@ class TestRemoteSwapPlan:
         fake_mv = fake_bin / "mv"
         fake_mv.write_text(
             "#!/usr/bin/env bash\n"
-            'if [[ "$1" == "skyyrose-flagship-2" ]]; then exit 23; fi\n'
+            'if [[ "$1" == "skyyrose-flagship-2" || "$1" == */.skyyrose-flagship-2.candidate.*/skyyrose-flagship-2 ]]; then\n'
+            '  if [[ "$UNEXPECTED_DESTINATION" == 1 ]]; then mkdir -p "$2"; fi\n'
+            "  exit 23\nfi\n"
             'exec /bin/mv "$@"\n'
         )
         fake_mv.chmod(0o755)
         env = os.environ.copy()
         env["PATH"] = f"{fake_bin}:{env['PATH']}"
+        env["UNEXPECTED_DESTINATION"] = "1" if unexpected_destination else "0"
 
         result = subprocess.run(["bash", "-c", command], capture_output=True, text=True, env=env)
 
         assert result.returncode == 23
-        assert (live_theme / "live.txt").read_text() == "live"
-        assert not Path(f"{live_theme}.old.test-swap").exists()
+        backup = Path(f"{live_theme}.old.test-swap")
+        if unexpected_destination:
+            assert (backup / "live.txt").read_text() == "live"
+            assert not list(live_theme.iterdir())
+            assert "rollback backup retained" in result.stderr
+        else:
+            assert (live_theme / "live.txt").read_text() == "live"
+            assert not backup.exists()
+        assert not list(live_theme.parent.glob(".skyyrose-flagship-2.candidate.*"))
 
     def test_successful_swap_retains_rollback_generation(self, tmp_path):
         remote_dir = tmp_path / "remote"
