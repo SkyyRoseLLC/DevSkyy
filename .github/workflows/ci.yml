@@ -32,6 +32,9 @@ on:
         default: false
         type: boolean
 
+permissions:
+  contents: read
+
 env:
   # Black validates AST equivalence against pyproject.toml's py313 target.
   # Keep the CI interpreter aligned with that target.
