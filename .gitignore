@@ -23,6 +23,10 @@ __pycache__/
 *.so
 .Python
 build/
+# Maintained executable source; all other build outputs remain ignored.
+!/skyyrose/build/
+/skyyrose/build/*
+!/skyyrose/build/tool-calling.js
 develop-eggs/
 dist/
 downloads/

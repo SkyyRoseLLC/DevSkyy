@@ -11,7 +11,7 @@ fi
 
 # File-level formatting and checks. Sequential glob execution prevents races
 # where Prettier and a language-specific formatter touch the same staged file.
-npx lint-staged --concurrent false
+npx lint-staged --concurrent false || exit $?
 
 # Whole-project tools that can't run per-file via lint-staged
 
@@ -22,7 +22,7 @@ if git diff --cached --name-only --diff-filter=ACMR | grep -q '\.py$'; then
     # --exclude belt-and-suspenders: keeps git worktree duplicates AND the gitignored
     # autonomous-agent scratch dir (my_project/) out of the discovery scan even if
     # mypy.ini exclude filtering runs too late. gitignore is invisible to mypy's walk.
-    mypy . --ignore-missing-imports --exclude '(\.claude/|my_project/|prototypes/|skyyrose-suite/|devskyy-sdk-app/)'
+    mypy . --ignore-missing-imports --exclude '(\.claude/|my_project/|prototypes/|skyyrose-suite/|devskyy-sdk-app/)' || exit $?
   fi
 fi
 
@@ -30,7 +30,7 @@ fi
 if git diff --cached --name-only --diff-filter=ACMR | grep -q '\.py$'; then
   if command -v pytest > /dev/null 2>&1 && [ -d "$REPO_ROOT/tests/unit" ]; then
     echo "Running fast unit tests..."
-    pytest tests/unit/ -x -q
+    pytest tests/unit/ -x -q || exit $?
   fi
 fi
 
