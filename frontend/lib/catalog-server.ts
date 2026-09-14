@@ -1,4 +1,6 @@
 import 'server-only';
+import { statSync } from 'node:fs';
+import path from 'node:path';
 import { cache } from 'react';
 import { getCatalog, type CatalogProduct } from './catalog';
 import {
@@ -8,6 +10,20 @@ import {
   type CollectionProduct,
   type CollectionSlug,
 } from './collections';
+
+function isHeroImageAvailable(heroImage: string): boolean {
+  if (!heroImage.startsWith('/images/')) return true;
+
+  const publicRoot = path.resolve(process.cwd(), 'public');
+  const imagePath = path.resolve(publicRoot, `.${heroImage.split(/[?#]/)[0]}`);
+  if (!imagePath.startsWith(`${publicRoot}${path.sep}`)) return false;
+
+  try {
+    return statSync(imagePath).isFile();
+  } catch {
+    return false;
+  }
+}
 
 function toCollectionProduct(p: CatalogProduct): CollectionProduct {
   return {
@@ -21,17 +37,16 @@ function toCollectionProduct(p: CatalogProduct): CollectionProduct {
   };
 }
 
-export const getEnrichedCollection = cache(function (
-  slug: string
-): CollectionConfig | undefined {
+export const getEnrichedCollection = cache(function (slug: string): CollectionConfig | undefined {
   const brand = getCollection(slug as CollectionSlug);
   if (!brand) return undefined;
 
+  const heroImageAvailable = isHeroImageAvailable(brand.heroImage);
   const sceneCount = brand.scenes.length;
-  if (sceneCount === 0) return brand;
+  if (sceneCount === 0) return { ...brand, heroImageAvailable };
 
   const products = getCatalog()
-    .filter((p) => p.collection === slug && p.published)
+    .filter(p => p.collection === slug && p.published)
     .map(toCollectionProduct);
 
   const perScene: CollectionProduct[][] = brand.scenes.map(() => []);
@@ -39,12 +54,13 @@ export const getEnrichedCollection = cache(function (
 
   return {
     ...brand,
+    heroImageAvailable,
     scenes: brand.scenes.map((scene, i) => ({ ...scene, products: perScene[i] })),
   };
 });
 
 export function getAllEnrichedCollections(): CollectionConfig[] {
   return getAllCollectionSlugs()
-    .map((slug) => getEnrichedCollection(slug))
+    .map(slug => getEnrichedCollection(slug))
     .filter((c): c is CollectionConfig => c !== undefined);
 }

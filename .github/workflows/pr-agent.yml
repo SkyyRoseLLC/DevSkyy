@@ -15,9 +15,10 @@ on:
   issue_comment:
     types: [created]
 
-# Only run one instance per PR at a time
+# Skipped events must not cancel a real review before the job condition runs.
+# Isolate bots and comments without trusted repository authority.
 concurrency:
-  group: pr-agent-${{ github.event.pull_request.number || github.event.issue.number }}
+  group: pr-agent-${{ github.event.pull_request.number || github.event.issue.number }}-${{ (endsWith(github.actor, '[bot]') || github.event.pull_request.user.type == 'Bot' || github.event.issue.user.type == 'Bot' || github.event.comment.user.type == 'Bot' || (github.event_name == 'issue_comment' && !contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))) && github.run_id || 'review' }}
   cancel-in-progress: true
 
 jobs:
@@ -32,18 +33,22 @@ jobs:
     # This action deliberately rejects bot actors. Skip bot-authored PRs rather
     # than producing a failed non-actionable check for every Dependabot update.
     if: |
-      (github.event_name == 'pull_request' && !github.event.pull_request.draft && github.event.pull_request.user.type != 'Bot') ||
-      (github.event_name == 'issue_comment' && github.event.issue.pull_request && !github.event.comment.user.type == 'Bot')
+      !endsWith(github.actor, '[bot]') && (
+        (github.event_name == 'pull_request' && !github.event.pull_request.draft && github.event.pull_request.user.type != 'Bot' && github.event.pull_request.head.repo.full_name == github.repository) ||
+        (github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.issue.user.type != 'Bot' && github.event.comment.user.type != 'Bot' && contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association))
+      )
 
     permissions:
       contents: write
       pull-requests: write
       issues: read
+      checks: read
+      statuses: read
       id-token: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v4
         with:
           fetch-depth: 0
 
@@ -56,9 +61,23 @@ jobs:
             echo "number=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Verify PR source repository
+        id: trust
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+        run: |
+          pr_metadata=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER")
+          eligible=$(jq --arg repo "$GITHUB_REPOSITORY" '[.head.repo.full_name == $repo, .user.type != "Bot", .draft == false] | all' <<< "$pr_metadata")
+          echo "eligible=$eligible" >> "$GITHUB_OUTPUT"
+
       - name: Run PR Intelligence Agent
-        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268  # v1
+        if: steps.trust.outputs.eligible == 'true'
+        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268 # v1
         with:
+          # The GitHub App exchange rejects modified workflow files. The
+          # ephemeral job token retains the permissions declared above.
+          github_token: ${{ github.token }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
             You are the PR Intelligence Agent. Analyze PR #${{ steps.pr.outputs.number }} in this repository.

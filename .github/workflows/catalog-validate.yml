@@ -46,10 +46,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
         with:
           python-version: "3.11"
 
@@ -64,7 +64,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
+          pip install pytest pytest-asyncio pytest-timeout jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
@@ -111,7 +111,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Scan for retired SKU references
         run: |
