@@ -186,7 +186,7 @@ api = [
 
 mcp = [
     "mcp>=1.28.1,<2",
-    "fastmcp==4.0.2",  # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
+    "fastmcp==3.4.4",  # standalone FastMCP 3.0 (pinned; SDK-bundled mcp.server.fastmcp still used by devskyy_mcp)
     "openai>=1.57.2,<3",  # keep in lockstep with the base openai<2 cap (bug-254)
     "anthropic>=0.75.0",
     "google-genai>=1.50.0",
@@ -221,7 +221,7 @@ mcp = [
     "python-dateutil==2.9.0.post0",
     "tiktoken>=0.8.0",
     "transformers>=4.53.0",
-    "sentence-transformers==6.0.1",
+    "sentence-transformers==5.6.0",
     "langchain>=0.3.18",
     "langchain-openai>=0.3.0",
     "langchain-anthropic>=0.3.0",
