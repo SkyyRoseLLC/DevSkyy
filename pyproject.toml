@@ -413,6 +413,7 @@ exclude = [
     ".agents/",
     ".aidesigner/",
     ".venv*/",
+    "node_modules/",
     "claude-context/",
     "sdk/",
     ".wolf/",
@@ -420,6 +421,7 @@ exclude = [
     "editorial-staging/",
     "hf-spaces/",
     "skyyrose/cli_harnesses/",  # vendored CLI tooling (relocated from vendor/) — not host-linted
+    "plugins/fashion-theme-team/",  # byte-parity-managed distribution; verified by its canonical toolchain
 ]
 
 [tool.ruff.lint]
@@ -482,6 +484,7 @@ exclude = '''
     | \.tox
     | \.venv
     | \.venv-.*
+    | node_modules
     | \.claude
     | \.agents
     | \.aidesigner
@@ -493,6 +496,7 @@ exclude = '''
     | dist
     | legacy
     | cli_harnesses
+    | plugins/fashion-theme-team
 )/
 '''
 
@@ -504,7 +508,7 @@ exclude = '''
 profile = "black"
 line_length = 100
 known_first_party = ["core", "api", "security", "database", "wordpress", "agents", "orchestration", "runtime", "llm", "catalog", "tools"]
-skip = ["legacy/", ".venv/", ".venv-*/", ".claude/", "_archive/", "open-claude-code/", ".agents/", ".aidesigner/", "skyyrose/cli_harnesses/"]
+skip = ["legacy/", ".venv/", ".venv-*/", "node_modules/", "frontend/node_modules/", ".claude/", "_archive/", "open-claude-code/", ".agents/", ".aidesigner/", "skyyrose/cli_harnesses/", "plugins/fashion-theme-team/"]
 
 # =============================================================================
 # MyPy Configuration — canonical config lives in mypy.ini (not here)

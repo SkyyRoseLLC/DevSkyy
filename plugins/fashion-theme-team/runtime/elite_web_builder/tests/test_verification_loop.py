@@ -40,7 +40,16 @@ def loop(default_config: VerificationConfig) -> VerificationLoop:
 
 class TestGateEnum:
     def test_all_eight_gates_exist(self) -> None:
-        expected = {"BUILD", "TYPES", "LINT", "TESTS", "SECURITY", "A11Y", "PERF", "DIFF"}
+        expected = {
+            "BUILD",
+            "TYPES",
+            "LINT",
+            "TESTS",
+            "SECURITY",
+            "A11Y",
+            "PERF",
+            "DIFF",
+        }
         actual = {g.name for g in Gate}
         assert expected == actual
 
