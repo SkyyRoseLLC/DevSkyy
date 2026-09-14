@@ -89,8 +89,9 @@ export default {
 
   // Frontend TypeScript type check: whole-project (function prevents file arg appending)
   // tsc ignores tsconfig.json when given individual file arguments on CLI
-  'frontend/**/*.{ts,tsx}': files =>
-    mutableFiles(files).length ? 'tsc --noEmit --project frontend/tsconfig.json' : [],
+  // Read-only validation must include incoming files: merged branches can
+  // introduce incompatible types even when no imported bytes need formatting.
+  'frontend/**/*.{ts,tsx}': () => 'tsc --noEmit --project frontend/tsconfig.json',
 
   // WordPress PHP: PHPCBF applies every safe WPCS fix before php -l validates
   // syntax. The formatter wrapper accepts PHPCBF's "changes applied" status.
