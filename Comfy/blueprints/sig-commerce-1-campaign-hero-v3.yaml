@@ -1,0 +1,16 @@
+output_prefix: sig-commerce-1/campaign-hero-v3
+pipeline:
+  - fragment: sig1-nano-banana-correction-v2
+    alias: sig1-campaign
+    inputs:
+      batch_images_images_image0: $asset.sig-commerce-1/sig1-environment-plate-v3.png
+      batch_images_images_image1: $asset.sig-commerce-1/sg-009-sg-007-protected-model-v2.png
+      batch_images_images_image2: $asset.sig-commerce-1/sig1-font-statue-clean-transparent-v2.png
+    params:
+      nano_banana_pro_google_gemini_image_prompt: >-
+        Create a powerful professional 2:3 vertical luxury fashion campaign using only the three supplied authorities. Reference image 1 is the fixed Signature showroom world: preserve its dark architectural room, Golden Gate dusk view, wet black tile floor, warm amber practical lighting, cool blue window fill, and premium material palette. Reference image 2 is the exact customer, identity, pose family, and product authority: feature this same adult male as a confident full-body campaign subject occupying roughly half the frame height or more, with the exact black beanie and small square front label, exact black satin Sherpa Jacket, white sherpa collar and lining, zipper, flap pockets, sleeve label, seams, proportions, exact red rose chest embroidery, black trousers, and black-and-white sneakers. Make the customer and products immediately legible and desirable. Reference image 3 is the exact brand-sculpture authority: build those exact gold cursive Skyy Rose letterforms and copper rose as a substantial dimensional object, preserving wording, spacing, silhouette, and proportions. Place the sculpture wherever it creates the strongest campaign composition, but make the placement physically and architecturally intentional: correct scale and perspective, real support or attachment, shared scene light, cast shadow, reflection or occlusion, depth, and visual relationship to the customer. It must never read as a pasted wall graphic. Maintain strong editorial separation and intentional negative space while keeping product and customer dominant. One customer only. No extra garments, logos, wording, people, bridges, props, floating feet, cutout halos, pasted edges, or decorative clutter. Do not copy any external campaign or introduce Black Rose or Love Hurts elements.
+      nano_banana_pro_google_gemini_image_model: gemini-3-pro-image-preview
+      nano_banana_pro_google_gemini_image_seed: 913009009
+      nano_banana_pro_google_gemini_image_aspect_ratio: "2:3"
+      nano_banana_pro_google_gemini_image_resolution: 1K
+      nano_banana_pro_google_gemini_image_response_modalities: IMAGE
