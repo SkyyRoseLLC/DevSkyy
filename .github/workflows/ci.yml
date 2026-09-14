@@ -482,9 +482,7 @@ jobs:
     name: 🎭 Playwright E2E Tests
     runs-on: ubuntu-latest
     timeout-minutes: 30
-    # Non-gating: E2E suite is nascent / not yet CI-stable. Still runs for visibility,
-    # but does not block merges until the suite is hardened (see settings-page.spec follow-up).
-    continue-on-error: true
+    # Browser regressions must fail CI now that the suite covers current behavior.
     needs: [python-tests, frontend-tests]
     if: ${{ !inputs.skip_e2e }}
 
@@ -560,9 +558,7 @@ jobs:
           NEXTAUTH_URL: http://localhost:3000
 
       - name: Run Playwright tests
-        # Step-level cap: a slow/failing E2E suite fails HERE (step failure, absorbed by this
-        # job's continue-on-error) instead of running to the 30-min JOB timeout, which fires as
-        # a cancellation that continue-on-error cannot absorb — that gated the pipeline.
+        # Keep slow or failing browser runs bounded and retain their failure status.
         timeout-minutes: 15
         # `--reporter=list,html`: the `list` reporter streams per-test results to the
         # CI log (a bare `--reporter=html` overrode the config's list reporter, so the
