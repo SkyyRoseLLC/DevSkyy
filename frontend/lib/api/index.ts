@@ -14,6 +14,7 @@ import { training } from './endpoints/training';
 import { catalog } from './endpoints/catalog';
 import { brandAssets } from './endpoints/brand-assets';
 import { competitors } from './endpoints/competitors';
+import { contextDev } from './endpoints/context-dev';
 import { pricing } from './endpoints/pricing';
 import * as settings from './endpoints/settings';
 import * as tasks from './endpoints/tasks';
@@ -38,6 +39,7 @@ export const api = {
     catalog,
     brandAssets,
     competitors,
+    contextDev,
     pricing,
     settings,
     tasks,

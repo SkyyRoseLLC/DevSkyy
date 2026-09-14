@@ -1,0 +1,119 @@
+{
+  "schema": "skyyrose.runway-environment-plate/1",
+  "candidate_id": "LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+  "scene_id": "LH-COMMERCE-2",
+  "status": "BLOCKED_PENDING_PROTECTED_FOREGROUND_AND_EXPLICIT_FOUNDER_APPROVAL",
+  "strategy": "environment_rebuild_around_source",
+  "provider": {
+    "name": "runway",
+    "route": "comfy_partner_node",
+    "node": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "comfy_base_url": "http://127.0.0.1:8189"
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": [],
+    "reason": "Every available visual start contains people, garments, a protected rose, typography, a monument, or a robed figure. It may shape the locally reviewed prompt but may not be uploaded to Runway."
+  },
+  "local_composition_inspiration": [
+    {
+      "path": "/Users/theceo/Downloads/archive-3/hf_20260828_024447_4d25fdc3-676c-47f3-a62b-09d31705d4b7.png",
+      "sha256": "505b5c3617e4a2500e8afcbd4707af8220b56dff4b18cd5e99ffc7cd90d468fc",
+      "width": 1792,
+      "height": 2400,
+      "authority_role": "COMPOSITION_ATMOSPHERE_ONLY",
+      "sent_to_runway": false,
+      "use": [
+        "cathedral volume and camera depth",
+        "cracked reflective black floor",
+        "deep red drape accents",
+        "cool radial-window light",
+        "warm protected-object zone",
+        "customer scale and visual hierarchy"
+      ],
+      "deny_as_authority": [
+        "people",
+        "identity",
+        "garments",
+        "product artwork",
+        "text",
+        "rose object"
+      ]
+    }
+  ],
+  "request": {
+    "ratio": "1920:1080",
+    "num_outputs": 1,
+    "prompt": "Wide cinematic Fractured Chamber architecture with a deep ruined gothic cathedral volume, radial tracery window high in the rear wall, towering black stone arches, aged iron, restrained deep-red drape accents, cool moonlit volumetric shafts, low warm practical spill reserved for the right-side protected-object zone, and a cracked wet obsidian floor with physically plausible reflections. Preserve an open left-center customer zone, an open right monument zone, an unobstructed central depth corridor, and grounded floor contact space. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+    "prompt_source": "Locally distilled from the founder-provided composition reference; no source pixels are uploaded."
+  },
+  "forbidden_plate_content": [
+    "people",
+    "garments",
+    "products",
+    "text",
+    "wordmarks",
+    "signage",
+    "hearts",
+    "roses",
+    "sculptures",
+    "monuments",
+    "robed figures",
+    "Beast characters",
+    "ballrooms",
+    "flower walls"
+  ],
+  "comfy_local_postprocess": {
+    "required_after_separate_approvals": [
+      "upload hash-bound environment and protected alpha layers",
+      "placement and scaling from the optical contract",
+      "alpha-only edge treatment with BiRefNet confidence evidence",
+      "ordered occlusion",
+      "mask-derived contact shadow",
+      "restrained damp-floor reflection",
+      "final composition",
+      "prompt and history retrieval",
+      "hash-bound output receipt"
+    ],
+    "protected_rgb_policy": "Customer, identity, garment, artwork, zipper, pocket, and protected sculpture RGB must remain byte-identical.",
+    "birefnet_evidence": {
+      "schema": "skyyrose.birefnet-edge-confidence/1",
+      "model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+      "role": "ALPHA_AND_EDGE_CONFIDENCE_ONLY",
+      "generative_use_allowed": false,
+      "independent_visual_review_required": true
+    }
+  },
+  "credit_control": {
+    "currency": "USD",
+    "max_live_price_usd": 0.11,
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "candidate_bound_approval_required": true,
+    "approval_receipt": null,
+    "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
+  },
+  "execution_blockers": [
+    "founder-approved full-body LH-MODEL-01 source is not bound",
+    "front-facing LH-003 protected foreground has not passed independent product review",
+    "explicit founder approval for this exact environment fingerprint is not recorded",
+    "integration PR is not merged into main"
+  ],
+  "output": {
+    "candidate_path": "Comfy/quarantine/LH-COMMERCE-2/LH-COMMERCE-2-RUNWAY-ENVIRONMENT-A1.png",
+    "filename_prefix": "SkyyRose/LH-COMMERCE-2/environment-a1",
+    "approval_path": "Comfy/receipts/lh-commerce-2-runway-environment-a1-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/lh-commerce-2-runway-environment-a1-paid-attempt.json",
+    "promotion_allowed": false,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "post_merge_execution_gate": {
+    "required": true,
+    "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
+    "reason": "Paid execution must use the merged integration implementation and fresh live price/schema evidence."
+  }
+}

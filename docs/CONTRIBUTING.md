@@ -110,21 +110,21 @@ See `docs/DOCKER.md` for the full Docker workflow and `make catalog-help` for ca
 | `npm run build:watch` | TypeScript compilation (watch mode) |
 | `npm run dev` | Dev server with nodemon |
 | `npm run start` | Production server (`node dist/index.js`) |
-| `npm run test` | Jest test suite |
-| `npm run test:watch` | Jest in watch mode |
-| `npm run test:coverage` | Jest with coverage |
-| `npm run test:ci` | CI mode (no watch, coverage) |
+| `npm run test` | Vitest unit-test suite |
+| `npm run test:watch` | Vitest in watch mode |
+| `npm run test:coverage` | Vitest with coverage |
+| `npm run test:ci` | Vitest CI run with coverage |
 | `npm run lint` / `lint:fix` | ESLint on `src/**/*.{ts,tsx,js,jsx}` |
 | `npm run format` / `format:check` | Prettier on `src/` + root `.json`/`.md` |
 | `npm run type-check` | TypeScript type checking (no emit) |
 | `npm run clean` | Remove `dist/` and `coverage/` |
 | `npm run prepare` | Husky setup + build (runs on `npm install`) |
 | `npm run precommit` | lint + type-check + test:ci |
-| `npm run security:audit` / `security:fix` | `npm audit` / `npm audit fix` |
+| `npm run security:audit` / `security:audit:production` | Full dependency audit / production-only high-severity gate |
 | `npm run deps:check` / `deps:update` | `npm outdated` / `npm update` |
 | `npm run demo:collections` | List all available 3D demos |
 | `npm run demo:black-rose` / `demo:signature` / `demo:love-hurts` / `demo:showroom` / `demo:runway` | Launch a specific 3D collection demo (Vite) |
-| `npm run test:collections` | Jest, `--testPathPatterns=collections`, no coverage |
+| `npm run test:collections` | Vitest collection-focused unit tests |
 
 ### WordPress theme (`cd wordpress-theme/`)
 
@@ -144,7 +144,7 @@ See `docs/DOCKER.md` for the full Docker workflow and `make catalog-help` for ca
 | `npm run deploy:full` | Same script with `--with-maintenance` (legacy maintenance-mode path; default deploy is hot-swap) |
 | `npm run deploy:verify` | Cache-busted `curl -sIL` against the live site |
 | `npm run backfill:nextgen[:dry\|:loop]` | AVIF/WebP backfill via `wp-cli-nextgen-backfill.sh` |
-| `npm run designqc[:local]` | OpenWolf design QC screenshots (live site / local) |
+| `npm run designqc[:local]` | Playwright desktop/mobile visual-QA screenshots (live site / local) |
 | `npm run audit:deps` / `audit:fix` | `npm audit --omit=dev` / `npm audit fix` |
 | `npm run size` | Print `.min.css`/`.min.js` bundle sizes |
 
@@ -281,7 +281,7 @@ rtk proxy pytest tests/ -v             # Use for the TRUE exit code — bare pyt
                                         # misreport "no tests collected" as a pass
 
 # TypeScript (root)
-npm run test                           # Jest
+npm run test                           # Vitest
 npm run test:coverage                  # With coverage
 
 # Both
