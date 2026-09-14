@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-09-03T06:16:41+00:00",
+  "generated_at": "2026-09-14T06:19:04+00:00",
   "catalog_sha": "sha256:8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
   "skus": {
     "br-001": {
@@ -296,7 +296,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/black-is-beautiful-jersey-series-2-last-oakland-football.md",
-          "sha256": "sha256:f778d351a4cebcc9b331f37529a13223fff1510dbae2aa7a979dd3aae9254854"
+          "sha256": "sha256:eff98345f89c2122f3b85c2f04a281832b9376cdfed0e663f7a7aef9443ef68c"
         }
       ]
     },
@@ -621,7 +621,7 @@
         {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-bomber-jacket.md",
-          "sha256": "sha256:c432e4e0ab28987abaaee60d7223db1813e48c5e3c35a6ab10b809fad3b43765"
+          "sha256": "sha256:7da9fb8db89b901bc03d65a49a38e738492f85ba183cbb9fe986814398b4976a"
         }
       ]
     },

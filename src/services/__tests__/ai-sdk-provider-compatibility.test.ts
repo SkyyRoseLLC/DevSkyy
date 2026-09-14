@@ -75,8 +75,11 @@ const invoke = (fetch: typeof globalThis.fetch, apiKey = 'offline-fixture-key') 
 
 describe('coordinated AI SDK providers', () => {
   it('imports the actual ESM entrypoint under Node without running the CLI or contacting a provider', () => {
-    const script = `globalThis.fetch = () => { throw new Error('Network forbidden during import'); }; const entry = await import(${JSON.stringify(consumerURL)}); process.stdout.write(JSON.stringify(Object.keys(entry).sort()));`;
-    const output = execFileSync(process.execPath, ['--input-type=module', '-e', script], { encoding: 'utf8' });
+    const script =
+      "globalThis.fetch = () => { throw new Error('Network forbidden during import'); }; const entry = await import(process.argv[1]); process.stdout.write(JSON.stringify(Object.keys(entry).sort()));";
+    const output = execFileSync(process.execPath, ['--input-type=module', '-e', script, '--', consumerURL], {
+      encoding: 'utf8',
+    });
     expect(JSON.parse(output)).toEqual(
       [
         'GEMINI_FUNCTION_DECLARATIONS',
@@ -186,8 +189,9 @@ describe('coordinated AI SDK providers', () => {
   });
 
   it('does not mistake a direct OpenAI environment key for Gateway authorization', () => {
-    const script = `globalThis.fetch = () => { throw new Error('Network forbidden'); }; const { ToolCallingEngine } = await import(${JSON.stringify(consumerURL)}); const result = await ToolCallingEngine.prototype.runWithVercelAI.call({productData:{}}, 'Offline prompt', {fetch: globalThis.fetch}); process.stdout.write(result);`;
-    const output = execFileSync(process.execPath, ['--input-type=module', '-e', script], {
+    const script =
+      "globalThis.fetch = () => { throw new Error('Network forbidden'); }; const { ToolCallingEngine } = await import(process.argv[1]); const result = await ToolCallingEngine.prototype.runWithVercelAI.call({productData:{}}, 'Offline prompt', {fetch: globalThis.fetch}); process.stdout.write(result);";
+    const output = execFileSync(process.execPath, ['--input-type=module', '-e', script, '--', consumerURL], {
       encoding: 'utf8',
       env: { ...process.env, AI_GATEWAY_API_KEY: '', OPENAI_API_KEY: 'offline-direct-key' },
     });
