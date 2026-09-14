@@ -966,10 +966,11 @@ def _paid_node_price(class_info: Any) -> float:
 
 
 def runway_contract_sha256(contract: Mapping[str, Any]) -> str:
-    """Hash Runway intent without the self-referential approval file binding."""
+    """Hash execution inputs and gate state, excluding the approval binding."""
     normalized = json.loads(json.dumps(contract))
     control = normalized.setdefault("credit_control", {})
     control["approval_receipt"] = None
+    # Bind merge readiness exactly as preflight does; stale approvals cannot unlock it.
     return workflow_sha256(normalized)
 
 
