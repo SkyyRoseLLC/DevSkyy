@@ -798,6 +798,34 @@ async def test_paid_sink_rejects_hash_bound_product_generation_prompt(tmp_path: 
 
 
 @pytest.mark.asyncio
+async def test_paid_partner_rejects_unsatisfied_gate_with_matching_fingerprint(
+    tmp_path: Path,
+) -> None:
+    object_info = _runway_object_info()
+    transport = FakeTransport([_response(object_info), _response(object_info)])
+    marker = tmp_path / "attempt.json"
+    async with ComfyClient(transport=transport) as client:
+        sealed = await client.validate_workflow(_runway_workflow())
+        contract_path, approval = _write_runway_governance(tmp_path, sealed=sealed, marker=marker)
+        contract = json.loads(contract_path.read_text(encoding="utf-8"))
+        fingerprint = runway_execution_fingerprint(contract, workflow=sealed)
+        contract["post_merge_execution_gate"]["required"] = True
+        contract_path.write_text(json.dumps(contract), encoding="utf-8")
+        assert runway_execution_fingerprint(contract, workflow=sealed) == fingerprint
+        with pytest.raises(
+            ComfyRuntimeError, match="paid execution merge/restart state is invalid"
+        ):
+            await client.submit_prompt(
+                sealed,
+                paid_contract_path=contract_path,
+                paid_approval_receipt=approval,
+                paid_attempt_marker=marker,
+            )
+    assert not marker.exists()
+    assert all(request.url.path != "/prompt" for request in transport.requests)
+
+
+@pytest.mark.asyncio
 async def test_environment_preflight_and_paid_client_share_exact_fingerprint(
     tmp_path: Path,
 ) -> None:
