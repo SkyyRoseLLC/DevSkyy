@@ -29,6 +29,7 @@ export type MonitoringHealthResponse = z.infer<typeof schemas.MonitoringHealthRe
 export type MetricDataPoint = z.infer<typeof schemas.MetricDataPointSchema>;
 export type MetricSeries = z.infer<typeof schemas.MetricSeriesSchema>;
 export type MonitoringMetricsResponse = z.infer<typeof schemas.MonitoringMetricsResponseSchema>;
+export type ContextDevExtractionResponse = z.infer<typeof schemas.ContextDevExtractionResponseSchema>;
 
 
 
@@ -108,6 +109,17 @@ export interface CatalogSearchRequest {
     q: string;
     top_k?: number;
     collection?: string;
+}
+
+export interface ContextDevExtractionRequest {
+    url: string;
+    schema: Record<string, unknown>;
+    /** The server only accepts true; omitted values default to fact-checked extraction. */
+    fact_check?: true;
+    follow_subdomains?: boolean;
+    max_pages?: number;
+    max_depth?: number;
+    parse_pdfs?: boolean;
 }
 
 // Brand Assets types

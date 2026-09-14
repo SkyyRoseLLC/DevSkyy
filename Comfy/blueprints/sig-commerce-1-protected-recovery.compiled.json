@@ -1,0 +1,493 @@
+{
+  "101": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load founder-approved empty environment"
+    },
+    "inputs": {
+      "image": "sig1-environment-plate-v3.png"
+    }
+  },
+  "102": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load cleaned exact Skyy Rose sculpture"
+    },
+    "inputs": {
+      "image": "sig1-font-statue-clean-transparent-v2.png"
+    }
+  },
+  "103": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load exact SG-009 and SG-007 protected look"
+    },
+    "inputs": {
+      "image": "sg-009-sg-007-protected-model-v2.png"
+    }
+  },
+  "104": {
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Scale exact sculpture"
+    },
+    "inputs": {
+      "image": [
+        "102",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 400,
+      "height": 113,
+      "crop": "disabled"
+    }
+  },
+  "105": {
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "Convert sculpture alpha to protected mask"
+    },
+    "inputs": {
+      "mask": [
+        "102",
+        1
+      ]
+    }
+  },
+  "106": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "105",
+        0
+      ]
+    }
+  },
+  "107": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "106",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 400,
+      "height": 113,
+      "crop": "disabled"
+    }
+  },
+  "108": {
+    "class_type": "ImageToMask",
+    "inputs": {
+      "image": [
+        "107",
+        0
+      ],
+      "channel": "red"
+    }
+  },
+  "109": {
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Scale exact protected model and products"
+    },
+    "inputs": {
+      "image": [
+        "103",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 550,
+      "height": 977,
+      "crop": "disabled"
+    }
+  },
+  "110": {
+    "class_type": "InvertMask",
+    "_meta": {
+      "title": "Convert model alpha to protected mask"
+    },
+    "inputs": {
+      "mask": [
+        "103",
+        1
+      ]
+    }
+  },
+  "111": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "110",
+        0
+      ]
+    }
+  },
+  "112": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "111",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 550,
+      "height": 977,
+      "crop": "disabled"
+    }
+  },
+  "113": {
+    "class_type": "ImageToMask",
+    "inputs": {
+      "image": [
+        "112",
+        0
+      ],
+      "channel": "red"
+    }
+  },
+  "114": {
+    "class_type": "MaskToImage",
+    "inputs": {
+      "mask": [
+        "113",
+        0
+      ]
+    }
+  },
+  "115": {
+    "class_type": "ImageBlur",
+    "_meta": {
+      "title": "Blur model silhouette for ambient occlusion"
+    },
+    "inputs": {
+      "image": [
+        "114",
+        0
+      ],
+      "blur_radius": 17,
+      "sigma": 8.0
+    }
+  },
+  "116": {
+    "class_type": "ImageToMask",
+    "inputs": {
+      "image": [
+        "115",
+        0
+      ],
+      "channel": "red"
+    }
+  },
+  "117": {
+    "class_type": "SolidMask",
+    "inputs": {
+      "value": 0.18,
+      "width": 550,
+      "height": 977
+    }
+  },
+  "118": {
+    "class_type": "MaskComposite",
+    "inputs": {
+      "destination": [
+        "116",
+        0
+      ],
+      "source": [
+        "117",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "operation": "multiply"
+    }
+  },
+  "119": {
+    "class_type": "EmptyImage",
+    "inputs": {
+      "width": 550,
+      "height": 977,
+      "batch_size": 1,
+      "color": 0
+    }
+  },
+  "120": {
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "Place soft environmental occlusion behind subject"
+    },
+    "inputs": {
+      "destination": [
+        "101",
+        0
+      ],
+      "source": [
+        "119",
+        0
+      ],
+      "x": 458,
+      "y": 575,
+      "resize_source": false,
+      "mask": [
+        "118",
+        0
+      ]
+    }
+  },
+  "121": {
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Compress exact silhouette into shoe-contact shadow"
+    },
+    "inputs": {
+      "image": [
+        "114",
+        0
+      ],
+      "upscale_method": "area",
+      "width": 320,
+      "height": 44,
+      "crop": "disabled"
+    }
+  },
+  "122": {
+    "class_type": "ImageBlur",
+    "inputs": {
+      "image": [
+        "121",
+        0
+      ],
+      "blur_radius": 15,
+      "sigma": 8.0
+    }
+  },
+  "123": {
+    "class_type": "ImageToMask",
+    "inputs": {
+      "image": [
+        "122",
+        0
+      ],
+      "channel": "red"
+    }
+  },
+  "124": {
+    "class_type": "SolidMask",
+    "inputs": {
+      "value": 0.32,
+      "width": 320,
+      "height": 44
+    }
+  },
+  "125": {
+    "class_type": "MaskComposite",
+    "inputs": {
+      "destination": [
+        "123",
+        0
+      ],
+      "source": [
+        "124",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "operation": "multiply"
+    }
+  },
+  "126": {
+    "class_type": "EmptyImage",
+    "inputs": {
+      "width": 320,
+      "height": 44,
+      "batch_size": 1,
+      "color": 0
+    }
+  },
+  "127": {
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "Place soft shoe-contact shadow on wet floor"
+    },
+    "inputs": {
+      "destination": [
+        "120",
+        0
+      ],
+      "source": [
+        "126",
+        0
+      ],
+      "x": 570,
+      "y": 1450,
+      "resize_source": false,
+      "mask": [
+        "125",
+        0
+      ]
+    }
+  },
+  "128": {
+    "class_type": "GrowMask",
+    "inputs": {
+      "mask": [
+        "113",
+        0
+      ],
+      "expand": 7,
+      "tapered_corners": true
+    }
+  },
+  "129": {
+    "class_type": "MaskComposite",
+    "_meta": {
+      "title": "Isolate outside-only integration rim"
+    },
+    "inputs": {
+      "destination": [
+        "128",
+        0
+      ],
+      "source": [
+        "113",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "operation": "subtract"
+    }
+  },
+  "130": {
+    "class_type": "FeatherMask",
+    "inputs": {
+      "mask": [
+        "129",
+        0
+      ],
+      "left": 4,
+      "top": 4,
+      "right": 4,
+      "bottom": 4
+    }
+  },
+  "131": {
+    "class_type": "SolidMask",
+    "inputs": {
+      "value": 0.2,
+      "width": 550,
+      "height": 977
+    }
+  },
+  "132": {
+    "class_type": "MaskComposite",
+    "inputs": {
+      "destination": [
+        "130",
+        0
+      ],
+      "source": [
+        "131",
+        0
+      ],
+      "x": 0,
+      "y": 0,
+      "operation": "multiply"
+    }
+  },
+  "133": {
+    "class_type": "EmptyImage",
+    "inputs": {
+      "width": 550,
+      "height": 977,
+      "batch_size": 1,
+      "color": 12085802
+    }
+  },
+  "134": {
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "Place warm room spill outside protected subject pixels"
+    },
+    "inputs": {
+      "destination": [
+        "127",
+        0
+      ],
+      "source": [
+        "133",
+        0
+      ],
+      "x": 450,
+      "y": 567,
+      "resize_source": false,
+      "mask": [
+        "132",
+        0
+      ]
+    }
+  },
+  "135": {
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "Place exact cleaned sculpture last"
+    },
+    "inputs": {
+      "destination": [
+        "134",
+        0
+      ],
+      "source": [
+        "104",
+        0
+      ],
+      "x": 20,
+      "y": 322,
+      "resize_source": false,
+      "mask": [
+        "108",
+        0
+      ]
+    }
+  },
+  "137": {
+    "class_type": "ImageCompositeMasked",
+    "_meta": {
+      "title": "Place exact protected product look last"
+    },
+    "inputs": {
+      "destination": [
+        "135",
+        0
+      ],
+      "source": [
+        "109",
+        0
+      ],
+      "x": 450,
+      "y": 567,
+      "resize_source": false,
+      "mask": [
+        "113",
+        0
+      ]
+    }
+  },
+  "186": {
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "save composed final (image)"
+    },
+    "inputs": {
+      "images": [
+        "137",
+        0
+      ],
+      "filename_prefix": "sig-commerce-1/protected-recovery-v1"
+    }
+  },
+  "_meta": {
+    "schema": "compose/1",
+    "blueprint": "/Users/theceo/DevSkyy/Comfy/blueprints/sig-commerce-1-protected-recovery.yaml"
+  }
+}

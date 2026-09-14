@@ -1,6 +1,6 @@
 /**
  * Unit Tests for useCart hook
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { renderHook, act } from '@testing-library/react';
@@ -8,13 +8,15 @@ import { useCart, useCartItemCount, useCartTotal, useIsInCart } from '../useCart
 import { CartManager } from '../../lib/cart';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 const testItem = {
@@ -107,7 +109,9 @@ describe('useCart', () => {
   it('should handle non-Error exception in addItem', () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'addItem').mockImplementation(() => { throw 'string error'; });
+    vi.spyOn(cm, 'addItem').mockImplementation(() => {
+      throw 'string error';
+    });
 
     act(() => {
       result.current.addItem(testItem);
@@ -119,7 +123,9 @@ describe('useCart', () => {
   it('should handle Error exception in removeItem', () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'removeItem').mockImplementation(() => { throw new Error('remove failed'); });
+    vi.spyOn(cm, 'removeItem').mockImplementation(() => {
+      throw new Error('remove failed');
+    });
 
     act(() => {
       result.current.removeItem('prod-1');
@@ -131,7 +137,9 @@ describe('useCart', () => {
   it('should handle non-Error exception in removeItem', () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'removeItem').mockImplementation(() => { throw 42; });
+    vi.spyOn(cm, 'removeItem').mockImplementation(() => {
+      throw 42;
+    });
 
     act(() => {
       result.current.removeItem('prod-1');
@@ -143,7 +151,9 @@ describe('useCart', () => {
   it('should handle Error exception in updateQuantity', () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'updateQuantity').mockImplementation(() => { throw new Error('update failed'); });
+    vi.spyOn(cm, 'updateQuantity').mockImplementation(() => {
+      throw new Error('update failed');
+    });
 
     act(() => {
       result.current.updateQuantity('prod-1', 5);
@@ -155,7 +165,9 @@ describe('useCart', () => {
   it('should handle non-Error exception in updateQuantity', () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'updateQuantity').mockImplementation(() => { throw null; });
+    vi.spyOn(cm, 'updateQuantity').mockImplementation(() => {
+      throw null;
+    });
 
     act(() => {
       result.current.updateQuantity('prod-1', 5);
@@ -167,7 +179,9 @@ describe('useCart', () => {
   it('should handle Error exception in clearCart', () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'clearCart').mockImplementation(() => { throw new Error('clear failed'); });
+    vi.spyOn(cm, 'clearCart').mockImplementation(() => {
+      throw new Error('clear failed');
+    });
 
     act(() => {
       result.current.clearCart();
@@ -179,7 +193,9 @@ describe('useCart', () => {
   it('should handle non-Error exception in clearCart', () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'clearCart').mockImplementation(() => { throw undefined; });
+    vi.spyOn(cm, 'clearCart').mockImplementation(() => {
+      throw undefined;
+    });
 
     act(() => {
       result.current.clearCart();
@@ -191,7 +207,7 @@ describe('useCart', () => {
   it('should sync with WooCommerce successfully', async () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'syncWithWooCommerce').mockResolvedValue(undefined);
+    vi.spyOn(cm, 'syncWithWooCommerce').mockResolvedValue(undefined);
 
     await act(async () => {
       await result.current.syncWithWooCommerce();
@@ -204,12 +220,12 @@ describe('useCart', () => {
   it('should handle Error exception in syncWithWooCommerce', async () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'syncWithWooCommerce').mockRejectedValue(new Error('sync failed'));
+    vi.spyOn(cm, 'syncWithWooCommerce').mockRejectedValue(new Error('sync failed'));
 
     await act(async () => {
       try {
         await result.current.syncWithWooCommerce();
-      } catch (e) {
+      } catch {
         // Expected to rethrow
       }
     });
@@ -221,12 +237,12 @@ describe('useCart', () => {
   it('should handle non-Error exception in syncWithWooCommerce', async () => {
     const { result } = renderHook(() => useCart());
     const cm = CartManager.getInstance();
-    jest.spyOn(cm, 'syncWithWooCommerce').mockRejectedValue('string error');
+    vi.spyOn(cm, 'syncWithWooCommerce').mockRejectedValue('string error');
 
     await act(async () => {
       try {
         await result.current.syncWithWooCommerce();
-      } catch (e) {
+      } catch {
         // Expected to rethrow
       }
     });

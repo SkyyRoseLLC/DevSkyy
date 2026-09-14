@@ -17,12 +17,7 @@ import json
 from dataclasses import dataclass, field
 from pathlib import Path
 
-import matplotlib
-
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
 import numpy as np
-from matplotlib.collections import PolyCollection
 from pygltflib import GLTF2
 
 from . import _glb_io
@@ -257,6 +252,17 @@ def render_qa_png(
     cull (n_z>0), depth-sort far-to-near, lambert shade. Human-review artifact —
     the numeric gates above are the actual pass/fail decision.
     """
+    try:
+        import matplotlib
+
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        from matplotlib.collections import PolyCollection
+    except ImportError as exc:
+        raise RuntimeError(
+            "QA image rendering requires matplotlib; install the `ml` extra to generate QA PNGs."
+        ) from exc
+
     tri = V[F.reshape(-1, 3)]
     normals = np.cross(tri[:, 1] - tri[:, 0], tri[:, 2] - tri[:, 0])
     normals /= np.linalg.norm(normals, axis=1, keepdims=True) + 1e-12

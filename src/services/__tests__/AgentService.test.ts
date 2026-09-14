@@ -1,22 +1,24 @@
 /**
  * Unit Tests for AgentService
- * @jest-environment node
+ * @vitest-environment node
  */
 
 import { AgentService } from '../AgentService';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // Mock config
-jest.mock('../../config/index', () => ({
+vi.mock('../../config/index', () => ({
   agentConfig: {
     maxConcurrentTasks: 2,
     taskTimeout: 5000,
@@ -30,7 +32,7 @@ describe('AgentService', () => {
   let service: AgentService;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     service = new AgentService();
   });
 
@@ -100,9 +102,9 @@ describe('AgentService', () => {
     });
 
     it('should throw error for non-existent agent type', async () => {
-      await expect(
-        service.createTask('custom_agent', 'test', {})
-      ).rejects.toThrow('No agents found for type: custom_agent');
+      await expect(service.createTask('custom_agent', 'test', {})).rejects.toThrow(
+        'No agents found for type: custom_agent'
+      );
     });
 
     it('should create task with specified priority', async () => {
@@ -112,7 +114,7 @@ describe('AgentService', () => {
     });
 
     it('should emit taskStarted event', async () => {
-      const startedHandler = jest.fn();
+      const startedHandler = vi.fn();
       service.on('taskStarted', startedHandler);
 
       await service.createTask('content_agent', 'text_generation', {});
@@ -171,7 +173,7 @@ describe('AgentService', () => {
     });
 
     it('should emit taskCancelled event', async () => {
-      const cancelledHandler = jest.fn();
+      const cancelledHandler = vi.fn();
       service.on('taskCancelled', cancelledHandler);
 
       const taskId = await service.createTask('wordpress_agent', 'test', {});
@@ -240,7 +242,7 @@ describe('AgentService', () => {
 
   describe('task execution', () => {
     it('should complete task and emit taskCompleted event', async () => {
-      const completedHandler = jest.fn();
+      const completedHandler = vi.fn();
       service.on('taskCompleted', completedHandler);
 
       await service.createTask('wordpress_agent', 'test', {});
@@ -268,19 +270,15 @@ describe('AgentService', () => {
     });
 
     it('should throw error when executing task with non-existent taskId', async () => {
-      await expect(service.executeTask('non-existent-task-id')).rejects.toThrow(
-        'Task not found: non-existent-task-id'
-      );
+      await expect(service.executeTask('non-existent-task-id')).rejects.toThrow('Task not found: non-existent-task-id');
     });
 
     it('should handle task execution errors in catch block', async () => {
       // Mock executeTask to throw an error to test the catch block on line 142-143
-      const errorSpy = jest.spyOn((service as any).logger, 'error');
+      const errorSpy = vi.spyOn((service as any).logger, 'error');
 
       // Spy on executeTask and make it throw
-      jest.spyOn(service, 'executeTask').mockRejectedValueOnce(
-        new Error('Task execution failed')
-      );
+      vi.spyOn(service, 'executeTask').mockRejectedValueOnce(new Error('Task execution failed'));
 
       await service.createTask('wordpress_agent', 'test', {});
 
@@ -288,21 +286,16 @@ describe('AgentService', () => {
       await new Promise(resolve => setTimeout(resolve, 100));
 
       // Verify error was logged (this covers the catch block on line 142-143)
-      expect(errorSpy).toHaveBeenCalledWith(
-        expect.stringMatching(/Task execution failed:/),
-        expect.any(Error)
-      );
+      expect(errorSpy).toHaveBeenCalledWith(expect.stringMatching(/Task execution failed:/), expect.any(Error));
     });
 
     it('should handle errors during task execution and mark task as failed', async () => {
       // Test the internal catch block within executeTask (lines 182-195)
-      const failedHandler = jest.fn();
+      const failedHandler = vi.fn();
       service.on('taskFailed', failedHandler);
 
       // Mock simulateTaskExecution to throw an error
-      jest.spyOn(service as any, 'simulateTaskExecution').mockRejectedValueOnce(
-        new Error('Simulated execution error')
-      );
+      vi.spyOn(service as any, 'simulateTaskExecution').mockRejectedValueOnce(new Error('Simulated execution error'));
 
       const taskId = await service.createTask('wordpress_agent', 'test', {});
 
@@ -318,7 +311,7 @@ describe('AgentService', () => {
     });
 
     it('should emit taskFailed event on task failure', async () => {
-      const failedHandler = jest.fn();
+      const failedHandler = vi.fn();
       service.on('taskFailed', failedHandler);
 
       // Create a task that will be manually manipulated to fail

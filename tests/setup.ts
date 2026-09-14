@@ -1,9 +1,9 @@
 /**
- * Jest Test Setup for DevSkyy Enterprise Platform
+ * Vitest Test Setup for DevSkyy Enterprise Platform
  * Global test configuration and utilities
  */
 
-import 'jest';
+import 'vitest';
 
 // Mock environment variables for testing
 process.env.NODE_ENV = 'testing';
@@ -14,17 +14,15 @@ process.env.OPENAI_API_KEY = 'test-openai-key';
 process.env.ANTHROPIC_API_KEY = 'test-anthropic-key';
 
 // Global test utilities
-declare global {
-  namespace jest {
-    interface Matchers<R> {
-      toBeValidDate(): R;
-      toBeValidUUID(): R;
-      toHaveValidStructure(expected: Record<string, string>): R;
-    }
+declare module 'vitest' {
+  interface Assertion<T = unknown> {
+    toBeValidDate(): T;
+    toBeValidUUID(): T;
+    toHaveValidStructure(expected: Record<string, string>): T;
   }
 }
 
-// Custom Jest matchers
+// Custom Vitest matchers
 expect.extend({
   toBeValidDate(received: unknown) {
     const pass = received instanceof Date && !isNaN(received.getTime());
@@ -103,10 +101,10 @@ const originalConsole = { ...console };
 
 beforeAll(() => {
   // Suppress console output during tests unless explicitly needed
-  console.log = jest.fn();
-  console.info = jest.fn();
-  console.warn = jest.fn();
-  console.error = jest.fn();
+  console.log = vi.fn();
+  console.info = vi.fn();
+  console.warn = vi.fn();
+  console.error = vi.fn();
 });
 
 afterAll(() => {

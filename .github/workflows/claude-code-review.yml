@@ -12,6 +12,11 @@ on:
 
 jobs:
   claude-review:
+    # The action rejects bot-triggered events. Keep the code/security test jobs
+    # active for dependency PRs while limiting this advisory reviewer to humans.
+    if: >-
+      !endsWith(github.actor, '[bot]') &&
+      github.event.pull_request.user.type != 'Bot'
     # Optional: Filter by PR author
     # if: |
     #   github.event.pull_request.user.login == 'external-contributor' ||
@@ -21,24 +26,26 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: read
+      pull-requests: write
       issues: read
       id-token: write
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v4
         with:
           fetch-depth: 1
 
       - name: Run Claude Code Review
         id: claude-review
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268  # v1
         with:
+          # Use the job-scoped token on internal PRs so workflow changes can be
+          # reviewed before merging. Forks retain the GitHub App auth path.
+          github_token: ${{ github.event.pull_request.head.repo.full_name == github.repository && github.token || '' }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           plugin_marketplaces: 'https://github.com/anthropics/claude-code.git'
           plugins: 'code-review@claude-code-plugins'
           prompt: '/code-review:code-review ${{ github.repository }}/pull/${{ github.event.pull_request.number }}'
           # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
           # or https://code.claude.com/docs/en/cli-reference for available options
-
