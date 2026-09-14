@@ -1,0 +1,99 @@
+{
+  "version": "1.0.0",
+  "as_of": "2026-08-16",
+  "authentication_policy": "Only HTTPS documents controlled by the named regulator, standards body, platform owner, or commerce platform qualify as primary external authority. Record retrieval date, final URL, publisher, document/version date when available, and a content hash or immutable revision. Login-only claims require an authorized authenticated session; otherwise they are UNVERIFIED.",
+  "freshness": {
+    "platform_policy_days": 30,
+    "regulatory_guidance_days": 90,
+    "technical_standard_days": 180,
+    "refresh_triggers": [
+      "publisher revision or effective-date change",
+      "platform behavior or API version change",
+      "jurisdiction or audience change",
+      "contradiction with repository canon or product SOT"
+    ]
+  },
+  "domains": [
+    {
+      "id": "authority:branding-design",
+      "bundle_domain": "branding-design",
+      "required_for": ["trademark status", "copyright ownership", "endorsement or advertising claim", "accessibility claim"],
+      "primary_authorities": [
+        {"publisher": "United States Patent and Trademark Office", "url": "https://www.uspto.gov/trademarks", "scope": "US trademark process and records"},
+        {"publisher": "U.S. Copyright Office", "url": "https://www.copyright.gov/", "scope": "US copyright guidance and records"},
+        {"publisher": "Federal Trade Commission", "url": "https://www.ftc.gov/business-guidance/advertising-marketing", "scope": "US advertising and endorsement compliance"},
+        {"publisher": "W3C", "url": "https://www.w3.org/TR/WCAG22/", "scope": "web accessibility conformance"}
+      ],
+      "unknown_rule": "Brand ownership, cultural origin, rights, audience response, or recognition claims without repository evidence and applicable primary authority are UNVERIFIED."
+    },
+    {
+      "id": "authority:content-copywriting",
+      "bundle_domain": "content-copywriting",
+      "required_for": ["advertising substantiation", "endorsements and testimonials", "copyright and reuse", "accessible web content"],
+      "primary_authorities": [
+        {"publisher": "Federal Trade Commission", "url": "https://www.ftc.gov/business-guidance/advertising-marketing", "scope": "US advertising substantiation and disclosures"},
+        {"publisher": "U.S. Copyright Office", "url": "https://www.copyright.gov/", "scope": "copyright and licensing"},
+        {"publisher": "W3C", "url": "https://www.w3.org/TR/WCAG22/", "scope": "accessible content requirements"}
+      ],
+      "unknown_rule": "Product facts, guarantees, testimonials, cultural claims, or performance outcomes absent SOT and primary evidence are UNVERIFIED."
+    },
+    {
+      "id": "authority:e-commerce-products",
+      "bundle_domain": "e-commerce-products",
+      "required_for": ["product safety or labeling", "shipping promises", "refund policy", "WooCommerce behavior", "payment or privacy obligations"],
+      "primary_authorities": [
+        {"publisher": "Federal Trade Commission", "url": "https://www.ftc.gov/business-guidance/resources/selling-internet-prompt-delivery-rules", "scope": "US internet-order shipping promises"},
+        {"publisher": "U.S. Consumer Product Safety Commission", "url": "https://www.cpsc.gov/Business--Manufacturing/Regulatory-Robot/Safer-Products-Start-Here", "scope": "consumer-product safety; applicability depends on product"},
+        {"publisher": "WooCommerce", "url": "https://developer.woocommerce.com/docs/", "scope": "WooCommerce implementation behavior"},
+        {"publisher": "Internal catalog and policy SOT", "url": "repo://SOT", "scope": "SKU, price, stock, materials, fit, media, shipping and returns truth"}
+      ],
+      "unknown_rule": "Supplier, SKU, material, certification, inventory, price, shipping, returns, or safety facts not present in the governing SOT or applicable regulator source are UNVERIFIED."
+    },
+    {
+      "id": "authority:email-marketing-automation",
+      "bundle_domain": "email-marketing-automation",
+      "required_for": ["commercial-email compliance", "consent and unsubscribe", "sender authentication", "provider deliverability requirement"],
+      "primary_authorities": [
+        {"publisher": "Federal Trade Commission", "url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business", "scope": "US CAN-SPAM compliance"},
+        {"publisher": "Federal Communications Commission", "url": "https://docs.fcc.gov/public/attachments/FCC-23-64A1.pdf", "scope": "US calls and texts; applicability is fact-specific"},
+        {"publisher": "Google", "url": "https://support.google.com/a/answer/81126", "scope": "Gmail sender requirements"},
+        {"publisher": "Yahoo", "url": "https://senders.yahooinc.com/best-practices/", "scope": "Yahoo sender requirements"}
+      ],
+      "unknown_rule": "Consent, lawful basis, deliverability, attribution, or revenue claims without jurisdiction-specific and provider-current evidence are UNVERIFIED."
+    },
+    {
+      "id": "authority:sales-funnels",
+      "bundle_domain": "sales-funnels",
+      "required_for": ["pricing and savings claims", "negative-option or subscription flows", "endorsements", "financial or performance representations"],
+      "primary_authorities": [
+        {"publisher": "Federal Trade Commission", "url": "https://www.ftc.gov/business-guidance/advertising-marketing", "scope": "US advertising, pricing, endorsements, and dark-pattern guidance"},
+        {"publisher": "Internal commerce SOT", "url": "repo://SOT", "scope": "approved offer, price, availability, service promise and policy"}
+      ],
+      "unknown_rule": "Conversion uplift, scarcity, savings, revenue, guarantee, or offer facts without candidate-bound measurement and SOT evidence are UNVERIFIED; proposed uplift is EXPERIMENT."
+    },
+    {
+      "id": "authority:seo-search",
+      "bundle_domain": "seo-search",
+      "required_for": ["Google Search behavior", "Bing behavior", "structured data", "accessibility or performance requirements"],
+      "primary_authorities": [
+        {"publisher": "Google Search Central", "url": "https://developers.google.com/search/docs", "scope": "Google Search technical and content guidance"},
+        {"publisher": "Microsoft Bing Webmaster", "url": "https://www.bing.com/webmasters/help/webmaster-guidelines-30fba23a", "scope": "Bing webmaster guidance"},
+        {"publisher": "Schema.org", "url": "https://schema.org/docs/documents.html", "scope": "structured-data vocabulary; search-engine support must be verified separately"},
+        {"publisher": "W3C", "url": "https://www.w3.org/TR/WCAG22/", "scope": "accessibility conformance"}
+      ],
+      "unknown_rule": "Rankings, traffic uplift, keyword-volume, algorithm behavior, or rich-result eligibility without current engine documentation and measured evidence are UNVERIFIED."
+    },
+    {
+      "id": "authority:social-media",
+      "bundle_domain": "social-media",
+      "required_for": ["platform feature or policy", "advertising and endorsements", "privacy and consent", "measurement or reach claims"],
+      "primary_authorities": [
+        {"publisher": "Federal Trade Commission", "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers", "scope": "US influencer disclosures"},
+        {"publisher": "Meta", "url": "https://transparency.meta.com/policies/ad-standards/", "scope": "Meta advertising standards"},
+        {"publisher": "TikTok", "url": "https://www.tiktok.com/community-guidelines/", "scope": "TikTok community policy"},
+        {"publisher": "LinkedIn", "url": "https://www.linkedin.com/legal/ads-policy", "scope": "LinkedIn advertising policy"}
+      ],
+      "unknown_rule": "Reach, engagement, audience composition, feature availability, rights, or platform-policy claims without current platform evidence are UNVERIFIED."
+    }
+  ]
+}

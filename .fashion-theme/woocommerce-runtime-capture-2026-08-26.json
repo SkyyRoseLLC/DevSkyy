@@ -1,0 +1,516 @@
+{
+  "captured_at_utc": "2026-08-27T02:46:36Z",
+  "catalog": {
+    "expected_sku_count": 33,
+    "path": "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv",
+    "sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627"
+  },
+  "kind": "skyyrose-v2-woocommerce-read-authority",
+  "limits": [
+    "This receipt proves only the read-time WooCommerce SKU/product state.",
+    "It does not prove that a WooCommerce attachment byte matches a local SOT source or that a product scene depicts the bound SKU."
+  ],
+  "method": "read-only authenticated WooCommerce REST GET /wp-json/wc/v3/products",
+  "products": {
+    "br-001": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10206,
+        10207
+      ],
+      "product_id": 9864,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-002": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10152,
+        10153
+      ],
+      "product_id": 9865,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-003": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10204,
+        10205
+      ],
+      "product_id": 9866,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-004": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10155,
+        10156
+      ],
+      "product_id": 9867,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-005": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10157,
+        10158
+      ],
+      "product_id": 9868,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-006": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10159,
+        10160
+      ],
+      "product_id": 9869,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-007": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10161,
+        10162
+      ],
+      "product_id": 9870,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-008": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10163
+      ],
+      "product_id": 9871,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-009": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10168
+      ],
+      "product_id": 9872,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-010": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10169
+      ],
+      "product_id": 9873,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-011": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10170,
+        10171
+      ],
+      "product_id": 9874,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-012": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10165,
+        10166
+      ],
+      "product_id": 9945,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-014": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10172
+      ],
+      "product_id": 9927,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "br-015": {
+      "categories": [
+        "black-rose"
+      ],
+      "image_attachment_ids": [
+        10174
+      ],
+      "product_id": 9928,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "kids-001": {
+      "categories": [
+        "kids-capsule"
+      ],
+      "image_attachment_ids": [],
+      "product_id": 9955,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "kids-002": {
+      "categories": [
+        "kids-capsule"
+      ],
+      "image_attachment_ids": [],
+      "product_id": 9956,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "lh-002": {
+      "categories": [
+        "love-hurts"
+      ],
+      "image_attachment_ids": [
+        10178,
+        10179
+      ],
+      "product_id": 9875,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "lh-003": {
+      "categories": [
+        "love-hurts"
+      ],
+      "image_attachment_ids": [
+        10181,
+        10182
+      ],
+      "product_id": 9876,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "lh-004": {
+      "categories": [
+        "love-hurts"
+      ],
+      "image_attachment_ids": [
+        10183,
+        10184
+      ],
+      "product_id": 9877,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "lh-005": {
+      "categories": [
+        "love-hurts",
+        "shop"
+      ],
+      "image_attachment_ids": [
+        10076
+      ],
+      "product_id": 10077,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "lh-006": {
+      "categories": [
+        "love-hurts"
+      ],
+      "image_attachment_ids": [
+        10185,
+        10186
+      ],
+      "product_id": 9879,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-001": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10188,
+        10189
+      ],
+      "product_id": 9881,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-002": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10190
+      ],
+      "product_id": 9882,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-003": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10191
+      ],
+      "product_id": 9883,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-005": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10192
+      ],
+      "product_id": 9880,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-006": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10193,
+        10194
+      ],
+      "product_id": 9884,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-007": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10195
+      ],
+      "product_id": 9885,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-009": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10196,
+        10197
+      ],
+      "product_id": 9886,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-011": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10198,
+        10199
+      ],
+      "product_id": 9888,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-012": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10200,
+        10201
+      ],
+      "product_id": 9889,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-013": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10202
+      ],
+      "product_id": 9953,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-014": {
+      "categories": [
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10203
+      ],
+      "product_id": 9954,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    },
+    "sg-015": {
+      "categories": [
+        "shop",
+        "signature"
+      ],
+      "image_attachment_ids": [
+        10066
+      ],
+      "product_id": 10067,
+      "purchasable": true,
+      "status": "publish",
+      "stock_status": "instock",
+      "type": "simple",
+      "variation_ids": []
+    }
+  },
+  "result": {
+    "exact_catalog_sku_bindings": 33,
+    "extra_store_skus": {
+      "br-012-legacy": {
+        "product_id": 10065,
+        "status": "draft"
+      },
+      "sg-004": {
+        "product_id": 9887,
+        "status": "draft"
+      }
+    },
+    "missing_catalog_skus": [],
+    "received_product_count": 35,
+    "unpublished_catalog_skus": [],
+    "zero_image_skus": [
+      "kids-001",
+      "kids-002"
+    ]
+  },
+  "schema_version": "1.0",
+  "source_commit": "f2f01bbcffd2ad1e1974ecd839b8a350241e5a8a"
+}
