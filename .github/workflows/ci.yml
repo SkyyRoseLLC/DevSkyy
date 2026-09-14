@@ -108,10 +108,9 @@ jobs:
   # ===========================================================================
   python-tests:
     name: 🐍 Python Tests
-    # Routed to the Docker-containerized self-hosted runner (genuine Linux, not
-    # macOS) so services: (Docker container orchestration) works natively.
-    # See project_self_hosted_runner_2026_07_26.md for the macOS-runner history.
-    runs-on: [self-hosted, docker-arm64]
+    # Hosted Linux provides Docker for Redis without depending on an absent
+    # docker-arm64 runner. Preserve the complete suite and service container.
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     services:

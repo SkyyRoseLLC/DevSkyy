@@ -12,6 +12,9 @@ on:
 
 jobs:
   claude-review:
+    # The action rejects bot-triggered events. Keep the code/security test jobs
+    # active for dependency PRs while limiting this advisory reviewer to humans.
+    if: github.actor != 'dependabot[bot]'
     # Optional: Filter by PR author
     # if: |
     #   github.event.pull_request.user.login == 'external-contributor' ||

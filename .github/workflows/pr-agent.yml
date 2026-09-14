@@ -15,9 +15,10 @@ on:
   issue_comment:
     types: [created]
 
-# Only run one instance per PR at a time
+# Bot comments are skipped below and must not cancel a real review before the
+# job condition is evaluated. Keep those events in their own concurrency group.
 concurrency:
-  group: pr-agent-${{ github.event.pull_request.number || github.event.issue.number }}
+  group: pr-agent-${{ github.event.pull_request.number || github.event.issue.number }}-${{ github.event_name == 'issue_comment' && github.event.comment.user.type == 'Bot' && github.run_id || 'review' }}
   cancel-in-progress: true
 
 jobs:
@@ -33,7 +34,7 @@ jobs:
     # than producing a failed non-actionable check for every Dependabot update.
     if: |
       (github.event_name == 'pull_request' && !github.event.pull_request.draft && github.event.pull_request.user.type != 'Bot') ||
-      (github.event_name == 'issue_comment' && github.event.issue.pull_request && !github.event.comment.user.type == 'Bot')
+      (github.event_name == 'issue_comment' && github.event.issue.pull_request && github.event.comment.user.type != 'Bot')
 
     permissions:
       contents: write
