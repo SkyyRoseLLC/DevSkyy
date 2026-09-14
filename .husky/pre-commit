@@ -1,21 +1,23 @@
 #!/usr/bin/env sh
-# Pre-commit: lint, type-check, syntax, and test gates
-# Delegates file-level checks to lint-staged, runs whole-project tools conditionally.
+# Pre-commit: auto-format, lint, type-check, syntax, and test gates.
+# lint-staged formats and re-stages only the selected hunks/files, preserving
+# unrelated working-tree edits; whole-project tools run conditionally below.
 
 # Activate project venv if available (ruff, mypy, pytest live here)
-REPO_ROOT="$(git rev-parse --show-toplevel 2>/dev/null || echo '.')"
+REPO_ROOT="$(git rev-parse --show-toplevel 2> /dev/null || echo '.')"
 if [ -f "$REPO_ROOT/.venv/bin/activate" ]; then
   . "$REPO_ROOT/.venv/bin/activate"
 fi
 
-# File-level checks via lint-staged (ruff, black, isort, eslint, tsc, php -l)
-npx lint-staged
+# File-level formatting and checks. Sequential glob execution prevents races
+# where Prettier and a language-specific formatter touch the same staged file.
+npx lint-staged --concurrent false
 
 # Whole-project tools that can't run per-file via lint-staged
 
 # mypy: whole-project type check when Python files are staged
 if git diff --cached --name-only --diff-filter=ACMR | grep -q '\.py$'; then
-  if command -v mypy >/dev/null 2>&1; then
+  if command -v mypy > /dev/null 2>&1; then
     echo "Running mypy type check..."
     # --exclude belt-and-suspenders: keeps git worktree duplicates AND the gitignored
     # autonomous-agent scratch dir (my_project/) out of the discovery scan even if
@@ -26,7 +28,7 @@ fi
 
 # Fast unit tests on staged Python files
 if git diff --cached --name-only --diff-filter=ACMR | grep -q '\.py$'; then
-  if command -v pytest >/dev/null 2>&1 && [ -d "$REPO_ROOT/tests/unit" ]; then
+  if command -v pytest > /dev/null 2>&1 && [ -d "$REPO_ROOT/tests/unit" ]; then
     echo "Running fast unit tests..."
     pytest tests/unit/ -x -q
   fi

@@ -1,0 +1,371 @@
+{
+  "authority": {
+    "approval_boundaries": [
+      "new-dependency",
+      "credential",
+      "paid-api",
+      "external-write",
+      "upload",
+      "push",
+      "protected-branch-merge",
+      "destructive-action",
+      "staging-mutation",
+      "deployment",
+      "production-mutation"
+    ],
+    "claim_classes": [
+      "OBSERVED",
+      "APPROVED",
+      "RECOMMENDED",
+      "UNKNOWN",
+      "DURABLE",
+      "CURRENT",
+      "BRAND_SPECIFIC",
+      "INFERENCE",
+      "EXPERIMENT"
+    ],
+    "precedence": [
+      "repository-instructions-and-approved-SOT",
+      "current-official-documentation",
+      "dated-registered-research",
+      "durable-brain-guidance",
+      "inference-or-experiment"
+    ],
+    "prohibited": [
+      "secret-disclosure",
+      "fabricated-evidence",
+      "gate-waiver",
+      "unauthorized-production-mutation",
+      "invented-product-fact",
+      "invented-urgency",
+      "self-certification"
+    ]
+  },
+  "contract_id": "skyyrose.branded-skill.pillar-page",
+  "evidence": {
+    "candidate_binding": "all-evidence-must-share-candidate-id",
+    "freshness": "mutation-invalidates-dependent-evidence",
+    "independent_review": "builder-cannot-approve-own-output",
+    "required_classes": [
+      "source",
+      "deterministic",
+      "accessibility",
+      "security",
+      "release"
+    ]
+  },
+  "fallback": {
+    "degraded_mode": "Return a schema-valid BLOCKED artifact with actionable missing-authority notes and no invented facts.",
+    "missing_input": "continue-independent-work-and-mark-dependent-claims-UNKNOWN-or-BLOCKED",
+    "terminal_status": "BLOCKED",
+    "transient_retry": {
+      "backoff": "bounded",
+      "maximum": 2
+    },
+    "unavailable_tool": "use-documented-safe-fallback-or-BLOCKED-never-fabricate"
+  },
+  "gap_analysis": {
+    "closures": [
+      {
+        "acceptance": "Evidence records exact authority paths and no output contradicts them.",
+        "control": "Load repository canon, approved catalog/media SOT, and founder decisions before source execution.",
+        "id": "bind-skyyrose-canon-and-sot"
+      },
+      {
+        "acceptance": "All evidence hashes recompute and reviewer identity differs from every builder and owner.",
+        "control": "Require candidate, source, contract, and artifact hashes plus an independent reviewer.",
+        "id": "bind-candidate-and-independent-review"
+      },
+      {
+        "acceptance": "Every material external claim has publisher, final URL, retrieval time, content hash, anchor, and freshness result.",
+        "control": "Resolve each material claim to a current host-pinned primary source and claim anchor.",
+        "id": "retrieve-pinned-primary-authority"
+      },
+      {
+        "acceptance": "Evidence proves authorized data use and suppression before any external action.",
+        "control": "Minimize and redact data; verify purpose, consent, suppression, retention, and deletion controls.",
+        "id": "enforce-privacy-consent-suppression"
+      },
+      {
+        "acceptance": "Every used asset and endorsement resolves to approved provenance; filenames alone never establish identity.",
+        "control": "Require registry identity, rights record, consent/disclosure where applicable, and eyes-on media review.",
+        "id": "enforce-rights-and-media-provenance"
+      }
+    ],
+    "gaps": [
+      {
+        "closure_id": "bind-skyyrose-canon-and-sot",
+        "evidence": "Source heading inventory (22 headings) contains no approved SkyyRose canon or catalog-SOT binding.",
+        "id": "missing-skyyrose-authority-binding",
+        "impact": "Generic guidance could override brand or product truth."
+      },
+      {
+        "closure_id": "bind-candidate-and-independent-review",
+        "evidence": "Source verification sections observed: ['1. Pillar Page Checklist', 'Pre-Publish Checklist'].",
+        "id": "missing-candidate-evidence-binding",
+        "impact": "Outputs could be accepted without exact candidate proof or an independent verdict."
+      },
+      {
+        "closure_id": "retrieve-pinned-primary-authority",
+        "evidence": "Detected risk terms: ['personal-data', 'publication']; source has no registered current-authority capture contract.",
+        "id": "missing-authenticated-claim-sources",
+        "impact": "External, legal, platform, or outcome claims could be stale or unsupported."
+      },
+      {
+        "closure_id": "enforce-privacy-consent-suppression",
+        "evidence": "Source capability touches audience, email, phone, customer, community, or social data.",
+        "id": "privacy-consent-suppression-gap",
+        "impact": "Execution could retain data or contact people without valid consent and suppression controls."
+      },
+      {
+        "closure_id": "enforce-rights-and-media-provenance",
+        "evidence": "Source capability touches copyright, licensing, imagery, influencers, brand, or reusable content.",
+        "id": "rights-and-media-provenance-gap",
+        "impact": "Unverified ownership, consent, or media identity could enter a human-facing artifact."
+      }
+    ],
+    "method": "deterministic-source-review-plus-domain-contract",
+    "residual_unknowns": [
+      "task-specific-facts-until-runtime-authority-retrieval"
+    ],
+    "source_body_reviewed": true
+  },
+  "inputs": {
+    "optional": [
+      {
+        "authority": "approved-SOT",
+        "name": "catalog_and_rights",
+        "sensitive": false,
+        "type": "artifact-ref"
+      },
+      {
+        "authority": "official-documentation",
+        "name": "current_sources",
+        "sensitive": false,
+        "type": "array"
+      }
+    ],
+    "required": [
+      {
+        "authority": "user",
+        "name": "task",
+        "sensitive": false,
+        "type": "string"
+      },
+      {
+        "authority": "repository",
+        "name": "candidate_id",
+        "sensitive": false,
+        "type": "string"
+      },
+      {
+        "authority": "approved-SOT",
+        "name": "brand_canon",
+        "sensitive": false,
+        "type": "artifact-ref"
+      }
+    ],
+    "sensitive_data_policy": "minimize-redact-never-persist-secrets-or-customer-data",
+    "unknown_policy": "discover-read-only-then-mark-UNKNOWN"
+  },
+  "lifecycle": {
+    "compatibility": "Additive governance overlay; source skill remains reference-only and unchanged.",
+    "deprecation": {
+      "status": "not-deprecated"
+    },
+    "introduced": "1.0.0",
+    "migration": {
+      "guide": null,
+      "required": false
+    },
+    "rollback": {
+      "last_known_good": "source-skill-without-overlay",
+      "procedure": "Disable the branded router entry and execute only the unchanged source skill under repository instructions."
+    },
+    "state": "ACTIVE"
+  },
+  "output": {
+    "artifact_type": "pillar-page-enhanced-deliverable",
+    "required_files": [
+      "pillar-page-deliverable",
+      "pillar-page-evidence"
+    ],
+    "schema_ref": "schemas/enhanced-skill-evidence.schema.json",
+    "stable_ids": [
+      "pillar-page",
+      "fashion_content_copy"
+    ],
+    "status_vocabulary": [
+      "PASS",
+      "FAIL",
+      "BLOCKED",
+      "NOT_APPLICABLE",
+      "UNKNOWN"
+    ]
+  },
+  "provenance": {
+    "change_record": "branded-skills-v1",
+    "contract_sha256": "f45c7ce7ac542f41c88caa7090d5100eaaff43655e4c2e3b85bf17b274616596",
+    "generated_at": "2026-08-16T00:00:00-07:00",
+    "generated_by": "scripts/generate-branded-skill-enhancements.py",
+    "owners": [
+      "fashion-accessibility-content-engineer",
+      "fashion-knowledge-curator"
+    ],
+    "reviewed_at": "2026-08-17T00:39:32Z",
+    "reviewed_by": "independent-release-reviewer"
+  },
+  "requirements": {
+    "accessibility": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "Use WCAG 2.2 AA semantics, keyboard access, focus, reflow, contrast, reduced motion, and equivalent fallbacks where applicable."
+      ]
+    },
+    "commerce": {
+      "applicability": "CONDITIONAL",
+      "rules": [
+        "WooCommerce and approved SOT own product, price, stock, variation, cart, checkout, and order truth."
+      ]
+    },
+    "ethics": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "No dark patterns, fabricated social proof, false scarcity, or unsupported outcome claims."
+      ]
+    },
+    "performance": {
+      "applicability": "CONDITIONAL",
+      "rules": [
+        "Declare candidate-specific budgets, measure them, and preserve a usable degraded mode."
+      ]
+    },
+    "privacy": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "Minimize and redact data; document consent, purpose, retention, and rollback for measurement."
+      ]
+    },
+    "security": {
+      "applicability": "REQUIRED",
+      "rules": [
+        "Validate and escape boundaries, protect secrets, minimize permissions, and verify dependency provenance."
+      ]
+    }
+  },
+  "routing": {
+    "brain_route_ids": [
+      "fashion_content_copy"
+    ],
+    "load_policy": "metadata-first-source-on-match",
+    "tool_profile": {
+      "default": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "expansions": []
+    },
+    "trigger_summary": "Creates comprehensive pillar pages (3,000+ words) that serve as content hubs linking to related cluster content. Use when building an SEO topic cluster strategy with a cornerstone page."
+  },
+  "schema_version": "1.0.0",
+  "skyyrose_overlay": {
+    "application": "required-for-fashion-commerce-output",
+    "brand_contract": "../../brand/skyyrose-artifact-system.json",
+    "non_negotiables": [
+      "garment-first",
+      "truthful-product-data",
+      "one-rose-gold-accent",
+      "oakland-editorial-thesis",
+      "SOT-or-founder-approved-media",
+      "no-fabricated-commerce-proof",
+      "logo-off-recognition"
+    ]
+  },
+  "source": {
+    "body_policy": "reference-only-never-copy",
+    "inventory_id": "bundle:content-copywriting/pillar-page",
+    "relative_path": "content-copywriting/pillar-page/SKILL.md",
+    "sha256": "de936c2bba0db217ec18a63f422491a798d7e2a584ee4d2513b50ab1fad32dd4",
+    "skill_id": "pillar-page"
+  },
+  "source_capability_profile": {
+    "declared_tools": [
+      "read",
+      "write",
+      "glob"
+    ],
+    "headings": [
+      "Pillar Page",
+      "When to Use This Skill",
+      "Core Principle",
+      "Phase 1: Brief",
+      "Required Inputs",
+      "Phase 2: Outline",
+      "Pillar Page Architecture",
+      "Cluster Content Map",
+      "Topic Cluster Map",
+      "Phase 3: Write",
+      "Writing Rules",
+      "Section Template",
+      "Internal Linking Strategy",
+      "Internal Linking Plan",
+      "Phase 4: Polish",
+      "1. Pillar Page Checklist",
+      "Pre-Publish Checklist",
+      "2. Cluster Content Roadmap",
+      "3. Update Schedule",
+      "Example: Pillar Page on \"Email Marketing for Small Business\"",
+      "Anti-Patterns",
+      "Recovery"
+    ],
+    "input_sections": [
+      "Required Inputs"
+    ],
+    "output_sections": [
+      "Section Template",
+      "Example: Pillar Page on \"Email Marketing for Small Business\""
+    ],
+    "profile_sha256": "215d31d1e20cb0534dbcaadc3b2fadca55469d391db7bbd17c086d7587cf18fd",
+    "risk_terms": [
+      "personal-data",
+      "publication"
+    ],
+    "verification_sections": [
+      "1. Pillar Page Checklist",
+      "Pre-Publish Checklist"
+    ]
+  },
+  "verification": {
+    "checks": [
+      {
+        "command_or_method": "Recompute SHA-256 of the referenced SKILL.md.",
+        "evidence_class": "source",
+        "id": "source-hash",
+        "pass_condition": "Hash equals source.sha256."
+      },
+      {
+        "command_or_method": "Validate this record against enhanced-skill.schema.json.",
+        "evidence_class": "deterministic",
+        "id": "contract-schema",
+        "pass_condition": "Draft 2020-12 validation passes with no errors."
+      },
+      {
+        "command_or_method": "Execute and inspect the source capability sections bound by profile 215d31d1e20cb0534dbcaadc3b2fadca55469d391db7bbd17c086d7587cf18fd.",
+        "evidence_class": "deterministic",
+        "id": "source-workflow",
+        "pass_condition": "The pillar-page deliverable covers its declared inputs, workflow, output, and acceptance sections without bypassing any gap closure."
+      },
+      {
+        "command_or_method": "A role independent of the builder reviews candidate-bound outputs and applicable gates.",
+        "evidence_class": "release",
+        "id": "candidate-review",
+        "pass_condition": "No FAIL, BLOCKED, or UNKNOWN check remains."
+      }
+    ],
+    "evidence_schema": "enhanced-skill-evidence.schema.json",
+    "self_certification": false,
+    "verdict_owner": "independent-reviewer"
+  }
+}
