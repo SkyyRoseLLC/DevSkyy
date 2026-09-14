@@ -6,14 +6,13 @@ const { chromium } = require('playwright');
 const sharp = require('sharp');
 
 const themeDir = path.resolve(__dirname, '..');
-const evidenceDir = path.join(
-  themeDir,
-  '../../.artifacts/v2-commerce-scenes/rendered'
-);
+const evidenceDir = path.join(themeDir, '../../.artifacts/v2-commerce-scenes/rendered');
 const baseUrl = process.env.SR2_COMMERCE_PREVIEW_URL;
 
 if (!baseUrl) {
-  throw new Error('SR2_COMMERCE_PREVIEW_URL is required. Run the shell wrapper instead of invoking this file directly.');
+  throw new Error(
+    'SR2_COMMERCE_PREVIEW_URL is required. Run the shell wrapper instead of invoking this file directly.'
+  );
 }
 
 const collections = {
@@ -72,7 +71,7 @@ async function run() {
     for (const [viewportName, viewport] of Object.entries(viewports)) {
       const context = await browser.newContext({ viewport, reducedMotion: 'reduce' });
       const page = await context.newPage();
-      page.on('pageerror', (error) => errors.push(`${viewportName}: ${error.message}`));
+      page.on('pageerror', error => errors.push(`${viewportName}: ${error.message}`));
 
       for (const [collection, sceneIds] of Object.entries(collections)) {
         for (const sceneId of sceneIds) {
@@ -85,7 +84,8 @@ async function run() {
             throw new Error(`PHP preview error on ${collection}`);
           }
           await page.addStyleTag({
-            content: '*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important;scroll-behavior:auto!important}.sr2-preview-banner,[data-site-header],.sr2-skip{display:none!important}',
+            content:
+              '*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important;scroll-behavior:auto!important}.sr2-preview-banner,[data-site-header],.sr2-skip{display:none!important}',
           });
           await page.evaluate(() => document.fonts?.ready);
 
@@ -129,9 +129,9 @@ async function run() {
             { targetSceneId: sceneId, targetWidth: sceneBox.width }
           );
           await scene.scrollIntoViewIfNeeded();
-          await scene.locator('img').evaluateAll(async (images) => {
+          await scene.locator('img').evaluateAll(async images => {
             await Promise.all(
-              images.map(async (image) => {
+              images.map(async image => {
                 if (!image.complete || image.naturalWidth < 1) {
                   await new Promise((resolve, reject) => {
                     image.addEventListener('load', resolve, { once: true });
@@ -177,14 +177,14 @@ async function run() {
     await makeContactSheet(
       viewportName,
       viewport,
-      records.filter((record) => record.viewport === viewportName)
+      records.filter(record => record.viewport === viewportName)
     );
   }
 
   console.log('PASS captured 27 scene renders with zero page errors and zero document overflow');
 }
 
-run().catch((error) => {
+run().catch(error => {
   console.error(error.stack || error.message);
   process.exitCode = 1;
 });
