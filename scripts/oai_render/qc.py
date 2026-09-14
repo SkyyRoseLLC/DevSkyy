@@ -57,7 +57,9 @@ _JUDGE_SCHEMA: dict = {
             "garment_matches_reference": {
                 "type": "boolean",
                 "description": "True if the rendered garment is the SAME product as the "
-                "reference images (silhouette, color, graphics).",
+                "reference images (silhouette, body and trim colors, construction details, "
+                "closures, drawstrings, pockets, graphics). Any clearly visible mismatch is "
+                "False even when the overall garment category is correct.",
             },
             "view_correct": {
                 "type": "boolean",
@@ -81,6 +83,12 @@ _JUDGE_SCHEMA: dict = {
                 "description": "For paired looks: True only if BOTH specified garments are "
                 "worn and visible. For single-garment renders: True.",
             },
+            "authority_consistent": {
+                "type": "boolean",
+                "description": "True only when the founder-authored dossier and real-garment "
+                "references agree on visible product facts. False when they conflict; do not "
+                "silently choose one authority over the other.",
+            },
             "reason": {
                 "type": "string",
                 "description": "One or two sentences explaining any False verdicts, or "
@@ -95,6 +103,7 @@ _JUDGE_SCHEMA: dict = {
             "branding_legible_and_correct",
             "photorealistic_not_flat",
             "all_garments_present",
+            "authority_consistent",
             "reason",
         ],
         "additionalProperties": False,
@@ -119,7 +128,10 @@ _GATE_TAGS = {
     "branding_legible_and_correct": "branding_drift",
     "photorealistic_not_flat": "flat_render",
     "all_garments_present": "missing_pair_garment",
+    "authority_consistent": "authority_conflict",
 }
+_JUDGE_TEXT_FIELDS = {"visual_analysis", "reason"}
+_JUDGE_REQUIRED_FIELDS = set(_JUDGE_SCHEMA["schema"]["required"])
 
 # Max reference images attached to a judge call — generated image + these.
 _JUDGE_MAX_REFS = 3
@@ -131,7 +143,7 @@ _ANALYSIS_MAX_CHARS = 600
 # Transient-network retries per judge call. Without these, one TCP hiccup falls
 # through to accept-unjudged — a paid render ships ungated because of a blip the
 # render client itself would have retried five times.
-_JUDGE_API_RETRIES = 2
+_JUDGE_API_RETRIES = 1
 _JUDGE_RETRY_BACKOFF_S = 1.5
 
 
@@ -183,6 +195,7 @@ class RenderExpectation:
     is_pair: bool
     is_patch: bool
     branding_spec: str = ""  # dossier's per-view branding bullets (ground truth)
+    dossier_spec: str = ""  # founder-authored garment canon for conflict detection
     reference_paths: tuple[Path, ...] = field(default_factory=tuple)
 
 
@@ -332,6 +345,16 @@ def _judge_instructions(exp: RenderExpectation) -> str:
         if exp.branding_spec
         else ""
     )
+    authority_line = (
+        "FOUNDER-AUTHORED DOSSIER — garment narrative canon:\n"
+        f"{exp.dossier_spec}\n"
+        "Compare this canon to the real-garment reference images. If they disagree on a "
+        "visible product fact (color, trim, drawstring, construction, artwork, placement, "
+        "or view), set authority_consistent=false and explain the exact conflict. Do not "
+        "silently prefer the dossier or the image; a human must resolve the authority gap."
+        if exp.dossier_spec
+        else ""
+    )
     # Tolerate cosmetic micro-deviations gpt-image renders cannot avoid; fail only
     # identity-level branding errors. This stops the false-rejects on shade/count/texture.
     micro_line = (
@@ -354,6 +377,9 @@ def _judge_instructions(exp: RenderExpectation) -> str:
         "or branding/appliqué rendered on a DIFFERENT PANEL or GARMENT REGION than "
         "REFERENCE IMAGE 1 shows (e.g. a SLEEVE appliqué moved onto the torso/hip/hem, or "
         "a chest patch mirrored to the opposite side), or branding entirely absent. In "
+        "addition, fail an obvious construction or trim mismatch such as the wrong "
+        "drawstring color, wrong zipper/closure, missing pocket, or wrong ribbing color; "
+        "these are product facts, not cosmetic micro-deviations. In "
         "your visual_analysis, explicitly name the candidate's base hue and each mark's "
         "panel BEFORE deciding these gates."
     )
@@ -362,21 +388,21 @@ def _judge_instructions(exp: RenderExpectation) -> str:
         for line in (
             "You are an e-commerce product-photography QC judge. The FIRST image is the "
             f"AI-generated candidate render of: {exp.name} (SKU {exp.sku}). REFERENCE IMAGE 1 "
-            "(the next image) is a PHOTO OF THE REAL GARMENT — the ultimate authority on what "
-            "this product looks like; any further images are supporting references. Decide "
+            "(the next image) is a PHOTO OF THE REAL GARMENT; the founder-authored dossier "
+            "below is garment canon. Any further images are supporting references. Decide "
             "whether the candidate is a SHIPPABLE product card that accurately represents the "
             "real garment.",
             style_line,
             view_line,
             branding_line,
+            authority_line,
             micro_line,
             gross_line,
             pair_line,
             patch_line,
-            "Judge SHIPPABILITY against the real garment (reference image 1), not pixel-"
-            "perfect dossier compliance. Pass when the candidate accurately represents the "
-            "real product as a card; fail only clear identity-level or gross defects, and "
-            "name the specific defect in `reason`.",
+            "Judge SHIPPABILITY against both the founder dossier and real-garment evidence. "
+            "Pass only when the authorities agree and the candidate accurately represents "
+            "that product; name any defect or authority conflict in `reason`.",
         )
         if line
     )
@@ -416,6 +442,7 @@ class QCGate:
         self._centroid_mode = _raw_mode
         self._client = None
         self._model = ""
+        self._last_judge_attempts = 0
         if self._use_judge and self._judge_fn is None:
             try:
                 if self._provider == "anthropic":
@@ -429,14 +456,18 @@ class QCGate:
                             "QC_JUDGE_PROVIDER='openai' to use the (unreliable) fallback."
                         )
                     self._client = anthropic.Anthropic(
-                        api_key=key, timeout=config.REQUEST_TIMEOUT_S
+                        api_key=key,
+                        timeout=config.REQUEST_TIMEOUT_S,
+                        max_retries=0,
                     )
                     self._model = config.QC_JUDGE_MODEL_ANTHROPIC
                 else:
                     from openai import OpenAI
 
                     self._client = OpenAI(
-                        api_key=config.get_api_key(), timeout=config.REQUEST_TIMEOUT_S
+                        api_key=config.get_api_key(),
+                        timeout=config.REQUEST_TIMEOUT_S,
+                        max_retries=0,
                     )
                     self._model = config.QC_JUDGE_MODEL
             except Exception as exc:
@@ -647,15 +678,33 @@ class QCGate:
         """
         for attempt in range(_JUDGE_API_RETRIES + 1):
             try:
-                return send()
-            except Exception:
-                if attempt == _JUDGE_API_RETRIES:
+                result = send()
+                self._last_judge_attempts = attempt + 1
+                return result
+            except Exception as exc:
+                self._last_judge_attempts = attempt + 1
+                if attempt == _JUDGE_API_RETRIES or not self._judge_error_is_transient(exc):
                     raise
                 delay = _JUDGE_RETRY_BACKOFF_S * (attempt + 1)
                 log.warning(
                     "Judge API call failed (attempt %d) — retrying in %.1fs", attempt + 1, delay
                 )
                 time.sleep(delay)
+
+    @staticmethod
+    def _judge_error_is_transient(exc: Exception) -> bool:
+        """Retry only timeout/connection/429/5xx judge failures."""
+        if isinstance(exc, (TimeoutError, ConnectionError)):
+            return True
+        status = getattr(exc, "status_code", None)
+        if isinstance(status, int) and (status in {408, 409, 429} or status >= 500):
+            return True
+        return type(exc).__name__ in {
+            "APITimeoutError",
+            "APIConnectionError",
+            "RateLimitError",
+            "InternalServerError",
+        }
 
     def _unavailable(self, exp: RenderExpectation, exc: Exception) -> QCVerdict:
         """Judge infrastructure failure ≠ render failure — but an unjudged render must
@@ -670,11 +719,25 @@ class QCGate:
             needs_review=True,
             failure_tags=("judge_unavailable",),
             reason=f"judge error: {type(exc).__name__}: {str(exc)[:120]}",
-            judge_cost_usd=0.0,
+            judge_cost_usd=config.EST_JUDGE_COST_USD * max(1, self._last_judge_attempts),
         )
 
     def _verdict_from_dict(self, verdict: dict, exp: RenderExpectation) -> QCVerdict:
         """Map a provider-agnostic verdict dict to a QCVerdict via the shared gate tags."""
+        valid_shape = isinstance(verdict, dict) and set(verdict) == _JUDGE_REQUIRED_FIELDS
+        valid_gates = valid_shape and all(type(verdict.get(gate)) is bool for gate in _GATE_TAGS)
+        valid_text = valid_shape and all(
+            isinstance(verdict.get(field), str) for field in _JUDGE_TEXT_FIELDS
+        )
+        if not (valid_shape and valid_gates and valid_text):
+            log.error("QC judge returned a malformed verdict for %s — routing to review", exp.sku)
+            return QCVerdict(
+                passed=False,
+                needs_review=True,
+                failure_tags=("malformed_judge_verdict",),
+                reason="judge returned missing, extra, or incorrectly typed verdict fields",
+                judge_cost_usd=config.EST_JUDGE_COST_USD * max(1, self._last_judge_attempts),
+            )
         tags = tuple(tag for gate, tag in _GATE_TAGS.items() if verdict.get(gate) is False)
         passed = not tags
         reason = str(verdict.get("reason", ""))[:300]
@@ -687,6 +750,7 @@ class QCGate:
             passed=passed,
             failure_tags=tags,
             reason=reason,
-            judge_cost_usd=config.EST_JUDGE_COST_USD,
+            judge_cost_usd=config.EST_JUDGE_COST_USD * max(1, self._last_judge_attempts),
             analysis=analysis,
+            needs_review="authority_conflict" in tags,
         )

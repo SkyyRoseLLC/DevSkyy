@@ -1,22 +1,24 @@
 /**
  * Unit Tests for OpenAIService
- * @jest-environment node
+ * @vitest-environment node
  */
 
 import { OpenAIService } from '../OpenAIService';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // Mock config
-jest.mock('../../config/index', () => ({
+vi.mock('../../config/index', () => ({
   openaiConfig: {
     apiKey: 'test-api-key',
     baseURL: 'https://api.openai.com/v1',
@@ -28,14 +30,14 @@ jest.mock('../../config/index', () => ({
 }));
 
 // Mock global fetch
-const mockFetch = jest.fn();
+const mockFetch = vi.fn();
 global.fetch = mockFetch;
 
 describe('OpenAIService', () => {
   let service: OpenAIService;
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
     service = new OpenAIService();
   });
 
@@ -51,12 +53,12 @@ describe('OpenAIService', () => {
       // The constructor would have thrown if API key was missing
     });
 
-    it('should throw error when API key is missing', () => {
+    it('should throw error when API key is missing', async () => {
       // Reset modules to allow re-mocking
-      jest.resetModules();
+      vi.resetModules();
 
       // Mock config with empty API key
-      jest.doMock('../../config/index', () => ({
+      vi.doMock('../../config/index', () => ({
         openaiConfig: {
           apiKey: '', // Empty API key
           baseURL: 'https://api.openai.com/v1',
@@ -68,19 +70,19 @@ describe('OpenAIService', () => {
       }));
 
       // Mock Logger again since modules were reset
-      jest.doMock('../../utils/Logger', () => ({
-        Logger: jest.fn().mockImplementation(() => ({
-          info: jest.fn(),
-          warn: jest.fn(),
-          error: jest.fn(),
-          debug: jest.fn(),
-        })),
+      vi.doMock('../../utils/Logger', () => ({
+        Logger: vi.fn(function Logger() {
+          return {
+            info: vi.fn(),
+            warn: vi.fn(),
+            error: vi.fn(),
+            debug: vi.fn(),
+          };
+        }),
       }));
 
-      // The module exports a singleton, so importing will throw
-      expect(() => {
-        require('../OpenAIService');
-      }).toThrow('OpenAI API key is required');
+      // The module exports a singleton, so importing will throw.
+      await expect(import('../OpenAIService')).rejects.toThrow('OpenAI API key is required');
     });
   });
 
@@ -177,10 +179,7 @@ describe('OpenAIService', () => {
         messages: [{ role: 'user', content: 'Hello' }],
       });
 
-      expect(mockFetch).toHaveBeenCalledWith(
-        'https://api.openai.com/v1/chat/completions',
-        expect.any(Object)
-      );
+      expect(mockFetch).toHaveBeenCalledWith('https://api.openai.com/v1/chat/completions', expect.any(Object));
       expect(result.success).toBe(true);
     });
 
@@ -219,10 +218,7 @@ describe('OpenAIService', () => {
 
       const result = await service.createImage({ prompt: 'A beautiful sunset' });
 
-      expect(mockFetch).toHaveBeenCalledWith(
-        'https://api.openai.com/v1/images/generations',
-        expect.any(Object)
-      );
+      expect(mockFetch).toHaveBeenCalledWith('https://api.openai.com/v1/images/generations', expect.any(Object));
       expect(result.success).toBe(true);
       expect(result.data.data[0]?.url).toBe('https://example.com/image.png');
     });
@@ -254,9 +250,10 @@ describe('OpenAIService', () => {
       mockFetch.mockResolvedValueOnce({
         ok: true,
         status: 200,
-        json: () => Promise.resolve({
-          choices: [{ text: 'This is an image of a cat' }],
-        }),
+        json: () =>
+          Promise.resolve({
+            choices: [{ text: 'This is an image of a cat' }],
+          }),
         headers: new Map(),
       });
 
@@ -326,10 +323,7 @@ describe('OpenAIService', () => {
 
       const result = await service.createEmbeddings('Hello world');
 
-      expect(mockFetch).toHaveBeenCalledWith(
-        'https://api.openai.com/v1/embeddings',
-        expect.any(Object)
-      );
+      expect(mockFetch).toHaveBeenCalledWith('https://api.openai.com/v1/embeddings', expect.any(Object));
       expect(result.success).toBe(true);
     });
 
@@ -365,11 +359,13 @@ describe('OpenAIService', () => {
   describe('moderateContent', () => {
     it('should make POST request to /moderations endpoint', async () => {
       const mockResponse = {
-        results: [{
-          flagged: false,
-          categories: { hate: false, violence: false },
-          categoryScores: { hate: 0.001, violence: 0.002 },
-        }],
+        results: [
+          {
+            flagged: false,
+            categories: { hate: false, violence: false },
+            categoryScores: { hate: 0.001, violence: 0.002 },
+          },
+        ],
       };
 
       mockFetch.mockResolvedValueOnce({
@@ -381,21 +377,20 @@ describe('OpenAIService', () => {
 
       const result = await service.moderateContent('Hello, how are you?');
 
-      expect(mockFetch).toHaveBeenCalledWith(
-        'https://api.openai.com/v1/moderations',
-        expect.any(Object)
-      );
+      expect(mockFetch).toHaveBeenCalledWith('https://api.openai.com/v1/moderations', expect.any(Object));
       expect(result.success).toBe(true);
       expect(result.data.results[0]?.flagged).toBe(false);
     });
 
     it('should detect flagged content', async () => {
       const mockResponse = {
-        results: [{
-          flagged: true,
-          categories: { hate: true, violence: false },
-          categoryScores: { hate: 0.95, violence: 0.01 },
-        }],
+        results: [
+          {
+            flagged: true,
+            categories: { hate: true, violence: false },
+            categoryScores: { hate: 0.95, violence: 0.01 },
+          },
+        ],
       };
 
       mockFetch.mockResolvedValueOnce({

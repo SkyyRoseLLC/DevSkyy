@@ -1,6 +1,6 @@
 /**
  * Unit Tests for AR Configuration
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { AR_CONFIG, COLLECTION_AR_SETTINGS, detectARCapabilities, ARApiClient } from '../ar';
@@ -34,7 +34,7 @@ describe('COLLECTION_AR_SETTINGS', () => {
     expect(COLLECTION_AR_SETTINGS['signature']).toBeDefined();
   });
 
-  it.each(['black_rose', 'love_hurts', 'signature'])('%s should have required fields', (collection) => {
+  it.each(['black_rose', 'love_hurts', 'signature'])('%s should have required fields', collection => {
     const settings = COLLECTION_AR_SETTINGS[collection]!;
     expect(settings.collection).toBe(collection);
     expect(typeof settings.accentColor).toBe('number');
@@ -70,9 +70,11 @@ describe('detectARCapabilities', () => {
       value: {
         ...originalNavigator,
         mediaDevices: {
-          enumerateDevices: jest.fn().mockResolvedValue([
-            { kind: 'videoinput', deviceId: 'cam1', label: 'Camera', groupId: 'g1', toJSON: jest.fn() },
-          ]),
+          enumerateDevices: vi
+            .fn()
+            .mockResolvedValue([
+              { kind: 'videoinput', deviceId: 'cam1', label: 'Camera', groupId: 'g1', toJSON: vi.fn() },
+            ]),
         },
       },
       writable: true,
@@ -88,7 +90,7 @@ describe('detectARCapabilities', () => {
       value: {
         ...originalNavigator,
         mediaDevices: {
-          enumerateDevices: jest.fn().mockRejectedValue(new Error('Not allowed')),
+          enumerateDevices: vi.fn().mockRejectedValue(new Error('Not allowed')),
         },
       },
       writable: true,
@@ -108,9 +110,9 @@ describe('ARApiClient', () => {
 
   describe('createSession', () => {
     it('should create a session and return ID', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ session_id: 'sess_abc' }),
+        json: vi.fn().mockResolvedValue({ session_id: 'sess_abc' }),
       });
 
       const client = new ARApiClient();
@@ -121,7 +123,7 @@ describe('ARApiClient', () => {
     });
 
     it('should throw on API failure', async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: false, statusText: 'Server Error' });
+      global.fetch = vi.fn().mockResolvedValue({ ok: false, statusText: 'Server Error' });
 
       const client = new ARApiClient();
       await expect(client.createSession('black_rose')).rejects.toThrow('Failed to create AR session');
@@ -131,9 +133,9 @@ describe('ARApiClient', () => {
   describe('getProducts', () => {
     it('should fetch products for collection', async () => {
       const products = [{ id: 'p1', name: 'Test' }];
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue(products),
+        json: vi.fn().mockResolvedValue(products),
       });
 
       const client = new ARApiClient();
@@ -143,7 +145,7 @@ describe('ARApiClient', () => {
     });
 
     it('should throw on failure', async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: false, statusText: 'Not Found' });
+      global.fetch = vi.fn().mockResolvedValue({ ok: false, statusText: 'Not Found' });
 
       const client = new ARApiClient();
       await expect(client.getProducts('bad')).rejects.toThrow('Failed to fetch AR products');
@@ -152,8 +154,8 @@ describe('ARApiClient', () => {
 
   describe('recordTryOn', () => {
     it('should skip when no session', async () => {
-      jest.spyOn(console, 'warn').mockImplementation();
-      global.fetch = jest.fn();
+      vi.spyOn(console, 'warn').mockImplementation();
+      global.fetch = vi.fn();
 
       const client = new ARApiClient();
       await client.recordTryOn('p1');
@@ -162,8 +164,9 @@ describe('ARApiClient', () => {
     });
 
     it('should record try-on with session', async () => {
-      global.fetch = jest.fn()
-        .mockResolvedValueOnce({ ok: true, json: jest.fn().mockResolvedValue({ session_id: 's1' }) })
+      global.fetch = vi
+        .fn()
+        .mockResolvedValueOnce({ ok: true, json: vi.fn().mockResolvedValue({ session_id: 's1' }) })
         .mockResolvedValueOnce({ ok: true });
 
       const client = new ARApiClient();
@@ -176,9 +179,9 @@ describe('ARApiClient', () => {
 
   describe('submitTryOn', () => {
     it('should submit try-on request', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ job_id: 'job_1' }),
+        json: vi.fn().mockResolvedValue({ job_id: 'job_1' }),
       });
 
       const client = new ARApiClient();
@@ -188,7 +191,7 @@ describe('ARApiClient', () => {
     });
 
     it('should throw on failure', async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: false, statusText: 'Error' });
+      global.fetch = vi.fn().mockResolvedValue({ ok: false, statusText: 'Error' });
 
       const client = new ARApiClient();
       await expect(client.submitTryOn('a', 'b')).rejects.toThrow('Try-on request failed');
@@ -197,9 +200,9 @@ describe('ARApiClient', () => {
 
   describe('getTryOnStatus', () => {
     it('should get job status', async () => {
-      global.fetch = jest.fn().mockResolvedValue({
+      global.fetch = vi.fn().mockResolvedValue({
         ok: true,
-        json: jest.fn().mockResolvedValue({ status: 'completed' }),
+        json: vi.fn().mockResolvedValue({ status: 'completed' }),
       });
 
       const client = new ARApiClient();
@@ -209,7 +212,7 @@ describe('ARApiClient', () => {
     });
 
     it('should throw on failure', async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: false, statusText: 'Not Found' });
+      global.fetch = vi.fn().mockResolvedValue({ ok: false, statusText: 'Not Found' });
 
       const client = new ARApiClient();
       await expect(client.getTryOnStatus('bad')).rejects.toThrow('Failed to get try-on status');
@@ -218,15 +221,16 @@ describe('ARApiClient', () => {
 
   describe('endSession', () => {
     it('should do nothing when no session', async () => {
-      global.fetch = jest.fn();
+      global.fetch = vi.fn();
       const client = new ARApiClient();
       await client.endSession();
       expect(global.fetch).not.toHaveBeenCalled();
     });
 
     it('should end session and clear ID', async () => {
-      global.fetch = jest.fn()
-        .mockResolvedValueOnce({ ok: true, json: jest.fn().mockResolvedValue({ session_id: 's1' }) })
+      global.fetch = vi
+        .fn()
+        .mockResolvedValueOnce({ ok: true, json: vi.fn().mockResolvedValue({ session_id: 's1' }) })
         .mockResolvedValueOnce({ ok: true });
 
       const client = new ARApiClient();

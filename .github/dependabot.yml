@@ -105,10 +105,9 @@ updates:
           - "@types/three"
       testing:
         patterns:
-          - "jest*"
-          - "@types/jest"
-          - "ts-jest"
-          - "jest-environment-jsdom"
+          - "vitest*"
+          - "@vitest/*"
+          - "@testing-library/*"
       typescript:
         patterns:
           - "typescript"

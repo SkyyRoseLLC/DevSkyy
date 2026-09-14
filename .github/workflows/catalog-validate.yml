@@ -8,12 +8,18 @@ on:
       - "skyyrose/elite_studio/logo_registry.py"
       - "skyyrose/elite_studio/commerce.py"
       - "scripts/validate_catalog_consistency.py"
+      - ".github/workflows/catalog-validate.yml"
       - "scripts/sync_catalog_downstream.py"
       - "skyyrose/elite_studio/tests/test_catalog_consistency.py"
       - "skyyrose/elite_studio/tests/conftest.py"
       - "scripts/build_v7_cards.py"
       - "skyyrose/core/catalog_loader.py"
-      - "wordpress-theme/skyyrose-flagship/assets/images/products/v7/**"
+      - "scripts/build-lookbook-sot.py"
+      - "scripts/build-lookbook-from-sot.py"
+      - "scripts/lookbook-manifest.json"
+      - "docs/campaigns/sot-lookbook.html"
+      - "wordpress-theme/skyyrose-flagship/data/lookbook-sot.json"
+      - "wordpress-theme/skyyrose-flagship/assets/**"
       - "tests/test_v7_cards_generator.py"
   push:
     branches: [main]
@@ -22,9 +28,15 @@ on:
       - "skyyrose/elite_studio/sku_resolver.py"
       - "skyyrose/elite_studio/logo_registry.py"
       - "scripts/validate_catalog_consistency.py"
+      - ".github/workflows/catalog-validate.yml"
       - "scripts/build_v7_cards.py"
       - "skyyrose/core/catalog_loader.py"
-      - "wordpress-theme/skyyrose-flagship/assets/images/products/v7/**"
+      - "scripts/build-lookbook-sot.py"
+      - "scripts/build-lookbook-from-sot.py"
+      - "scripts/lookbook-manifest.json"
+      - "docs/campaigns/sot-lookbook.html"
+      - "wordpress-theme/skyyrose-flagship/data/lookbook-sot.json"
+      - "wordpress-theme/skyyrose-flagship/assets/**"
 
 jobs:
   validate:
@@ -34,10 +46,10 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python 3.11
-        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.11"
 
@@ -52,7 +64,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio jsonschema --quiet
+          pip install pytest pytest-asyncio pytest-timeout jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
@@ -88,7 +100,7 @@ jobs:
       - name: Run pytest — catalog consistency tests
         run: |
           pytest skyyrose/elite_studio/tests/test_catalog_consistency.py \
-                 tests/test_collection_sot_guard.py -v --tb=short
+                 tests/test_collection_sot_guard.py tests/test_lookbook_sot_guard.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
 
@@ -99,7 +111,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7.0.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Scan for retired SKU references
         run: |

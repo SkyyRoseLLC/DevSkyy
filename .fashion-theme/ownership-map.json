@@ -1,0 +1,14 @@
+{
+  "discovery": {
+    "lead": [".fashion-theme/"],
+    "brand_benchmark": ["docs/design/v2-remodel/reports/v1-authority-benchmark.md"],
+    "design_system_census": ["docs/design/v2-remodel/reports/design-system-census.md"],
+    "commerce_journey": ["docs/design/v2-remodel/reports/commerce-journey-gap-map.md"]
+  },
+  "implementation": {
+    "design_system": ["wordpress-theme/skyyrose-flagship-2/assets/css/", "docs/design/v2-remodel/design-system/"],
+    "experience": ["wordpress-theme/skyyrose-flagship-2/front-page.php", "wordpress-theme/skyyrose-flagship-2/template-collection.php", "wordpress-theme/skyyrose-flagship-2/header.php", "wordpress-theme/skyyrose-flagship-2/footer.php", "wordpress-theme/skyyrose-flagship-2/assets/js/"],
+    "commerce": ["wordpress-theme/skyyrose-flagship-2/woocommerce/", "wordpress-theme/skyyrose-flagship-2/functions.php"],
+    "independent_review": [".fashion-theme/evidence/"]
+  }
+}
