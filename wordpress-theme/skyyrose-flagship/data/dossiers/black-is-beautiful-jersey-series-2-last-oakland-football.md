@@ -12,13 +12,18 @@ reference_image: assets/products/references/br-009-design-front.jpeg
 
 # BLACK is Beautiful Jersey Series — 2. Last Oakland (Football)
 
-**Garment type lock:** Authentic-style football jersey — V-neck collar opening
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Solid **white** base fabric (Last Oakland Raiders-inspired road/away
+colorway). Mid-weight knit jersey fabric.
+Features: Authentic-style football jersey — V-neck collar opening
 with **solid black neckband** (contrast against the white body), short sleeves
 with a **black-and-white horizontal striped cuff band** at each cuff, straight
 even hem. Solid **white** base fabric (Last Oakland Raiders-inspired road/away
 colorway). Mid-weight knit jersey fabric. Pullover construction — NO buttons,
 NO front placket. NOT a t-shirt. NOT a hoodie. NOT a basketball tank. NOT a
 baseball jersey. **PRE-ORDER product** — design renderings only.
+Color: White
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Source correction and unresolved generation hold — 2026-09-11
 
@@ -49,7 +54,7 @@ Recorded founder corrections in `renders/oai/_review/review-state.json` supersed
   and Black Rose three-rose-cluster art filling the **3 only**; the **2
   remains plain white**. The legacy color/technique fields below remain unresolved. **Technique:** sublimated. **Color:** black outline +
   greyscale rose-cluster fill on white ground.
-- **front-left-hem / front-belly-lower-left** (~2in × 2.5in): The NFL
+- **front-left-hem / front-belly-lower-left** (3in wide × 4in tall): The NFL
   Authentic Collection patch sewn onto the lower-left hip. **Technique:**
   embroidered-patch.
 

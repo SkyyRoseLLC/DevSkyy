@@ -19,7 +19,9 @@ from typing import TYPE_CHECKING
 
 from . import config, cost, references
 from .cost import CostManifest, ManifestEntry
-from .prompt import SceneError, build_pair_prompt, build_prompt, extract_view_branding, read_dossier
+from skyyrose.elite_studio.logo_registry import LogoRegistry, RegistryContractError
+
+from .prompt import SceneError, build_pair_prompt, build_prompt, read_dossier
 from .references import MissingReferenceError, Pair, ReferenceImage
 from .scene_schema import build_scene
 
@@ -358,7 +360,7 @@ def plan_sku(
             scene=scene,
             style_reference=use_style_ref,
         )
-    except (MissingReferenceError, SceneError) as exc:
+    except (MissingReferenceError, SceneError, RegistryContractError, FileNotFoundError) as exc:
         return SkuPlan(
             sku=sku,
             name=name,
@@ -379,7 +381,7 @@ def plan_sku(
         references=refs,
         prompt=prompt,
         is_patch=is_patch,
-        branding_spec=extract_view_branding(dossier_text, view),
+        branding_spec=LogoRegistry.load().prompt_instructions(sku, require_sizing=is_patch),
         dossier_spec=dossier_text[:6000],
     )
 
@@ -408,12 +410,16 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
         pair_branding = "\n".join(
             f"{g['name']} ({g['sku']}) FRONT:\n{spec}"
             for g in garments
-            if (spec := extract_view_branding(g["dossier_text"], "front"))
+            if (
+                spec := LogoRegistry.load().prompt_instructions(
+                    g["sku"], require_sizing=g["is_patch"]
+                )
+            )
         )
         prompt = build_pair_prompt(
             pair_label=pair.label, collection=pair.collection, garments=garments
         )
-    except (MissingReferenceError, SceneError) as exc:
+    except (MissingReferenceError, SceneError, RegistryContractError, FileNotFoundError) as exc:
         return SkuPlan(
             sku=pair.skus[0],
             name=pair.label,

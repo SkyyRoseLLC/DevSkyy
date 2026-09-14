@@ -14,6 +14,13 @@ on:
       - "skyyrose/elite_studio/tests/conftest.py"
       - "scripts/build_v7_cards.py"
       - "skyyrose/core/catalog_loader.py"
+      - "skyyrose/core/product_registry.py"
+      - "skyyrose/core/dossier_loader.py"
+      - "skyyrose/core/sot_images.py"
+      - "scripts/sync_product_registry.py"
+      - "tests/test_unified_product_registry.py"
+      - "tests/test_registry_product_readers.py"
+      - "skyyrose/elite_studio/tests/test_logo_registry.py"
       - "scripts/build-lookbook-sot.py"
       - "scripts/build-lookbook-from-sot.py"
       - "scripts/lookbook-manifest.json"
@@ -31,6 +38,13 @@ on:
       - ".github/workflows/catalog-validate.yml"
       - "scripts/build_v7_cards.py"
       - "skyyrose/core/catalog_loader.py"
+      - "skyyrose/core/product_registry.py"
+      - "skyyrose/core/dossier_loader.py"
+      - "skyyrose/core/sot_images.py"
+      - "scripts/sync_product_registry.py"
+      - "tests/test_unified_product_registry.py"
+      - "tests/test_registry_product_readers.py"
+      - "skyyrose/elite_studio/tests/test_logo_registry.py"
       - "scripts/build-lookbook-sot.py"
       - "scripts/build-lookbook-from-sot.py"
       - "scripts/lookbook-manifest.json"
@@ -88,6 +102,9 @@ jobs:
         env:
           PYTHONPATH: ${{ github.workspace }}
 
+      - name: Verify registry compatibility exports
+        run: python scripts/sync_product_registry.py --check
+
       - name: Verify visual manifest (all declared imagery exists on disk)
         # bug-250: this verifier existed but was wired into nothing — a gate that
         # never runs is drift cover. Every path+format declared in
@@ -100,7 +117,9 @@ jobs:
       - name: Run pytest — catalog consistency tests
         run: |
           pytest skyyrose/elite_studio/tests/test_catalog_consistency.py \
-                 tests/test_collection_sot_guard.py tests/test_lookbook_sot_guard.py -v --tb=short
+                 tests/test_collection_sot_guard.py tests/test_lookbook_sot_guard.py \
+                 tests/test_unified_product_registry.py tests/test_registry_product_readers.py \
+                 skyyrose/elite_studio/tests/test_logo_registry.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}
 

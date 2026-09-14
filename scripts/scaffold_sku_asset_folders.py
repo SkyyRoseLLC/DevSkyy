@@ -50,12 +50,12 @@ from skyyrose.core.dossier_loader import get_product_with_dossier  # noqa: E402
 from skyyrose.core.paths import (  # noqa: E402
     GOLDEN_DIR,
     THEME_ROOT,
-    WP_LOGOS_DIR,
-    WP_PRODUCTS_DIR,
 )
 
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 logger = logging.getLogger(__name__)
+
+from skyyrose.elite_studio.logo_registry import LogoRegistry
 
 from skyyrose.core import paths
 
@@ -156,34 +156,9 @@ def _find_real_back_source(sku: str) -> Path | None:
 
 
 def _find_logo_file(logo_id: str, registry: dict, sku: str) -> Path | None:
-    """Resolve a logo_id to a file on disk for a given SKU.
-
-    Two resolution paths:
-    1. ``co_located_per_sku`` logos (sport patches) live at
-       ``products/<sku_folders[sku]>/<filename>`` — NOT in images/logos/.
-       These are SKU-specific, so the resolution needs the SKU's folder
-       mapping from the registry's ``sku_folders`` block.
-    2. Centralized logos live in ``assets/images/logos/`` keyed by
-       ``filename`` (or a logo_id glob fallback).
-    """
-    logo = (registry.get("logos") or {}).get(logo_id, {})
-    filename = logo.get("filename") or logo.get("file") or ""
-
-    if logo.get("co_located_per_sku"):
-        folder = (registry.get("sku_folders") or {}).get(sku)
-        if folder and filename:
-            candidate = WP_PRODUCTS_DIR / folder / filename
-            if candidate.is_file():
-                return candidate
-        # Co-located logo with no folder mapping or missing file — unresolvable.
-        return None
-
-    if filename:
-        candidate = WP_LOGOS_DIR / filename
-        if candidate.is_file():
-            return candidate
-    matches = sorted(WP_LOGOS_DIR.glob(f"{logo_id}.*"))
-    return matches[0] if matches else None
+    """Use the shared resolver; never glob for unregistered look-alike artwork."""
+    candidate = LogoRegistry(registry).image_path(sku=sku, logo_id=logo_id)
+    return candidate if candidate.is_file() else None
 
 
 def _prune_orphan_symlinks(directory: Path, *, dry_run: bool) -> int:
@@ -253,6 +228,8 @@ def _build_placement_md(sku: str, product: dict, registry: dict) -> str:
         ]
 
     lines += [
+        "",
+        LogoRegistry(registry).prompt_instructions(sku),
         "",
         "## Render scene context (dossier)",
         f"**Pose:** {scene_pose}" if scene_pose else "**Pose:** _not specified_",

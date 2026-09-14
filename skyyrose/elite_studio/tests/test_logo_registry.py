@@ -164,3 +164,128 @@ def test_four_sport_patches_registered(registry: LogoRegistry) -> None:
     for entry in patches.values():
         assert entry.co_located_per_sku is True
         assert entry.category == "sport_patch"
+
+
+def test_jersey_contract_carries_founder_patch_and_relative_lettering(registry):
+    import json
+
+    from scripts.oai_render.prompt import build_prompt
+    from scripts.scaffold_sku_asset_folders import _build_placement_md
+
+    raw = json.loads(registry._source.read_text())
+    prompt = build_prompt(
+        name="Last Oakland Baseball",
+        sku="br-012",
+        collection="black-rose",
+        reference_labels=[],
+        dossier_text="Old patch sizing: 2in x 2.5in",
+        is_patch=True,
+        style="ghost",
+    )
+    brief = _build_placement_md("br-012", {"name": "Last Oakland"}, raw)
+    for output in (prompt, brief):
+        assert '"width": 3' in output
+        assert '"height": 4' in output
+        assert '"ratio": 0.72' in output
+        assert "FOUNDER_CONFIRMED" in output
+        assert "sole authority" in output
+    assert prompt.index("Old patch sizing") < prompt.index("CANONICAL LOGO")
+
+
+def test_contract_reloads_founder_changes_without_prompt_copy(monkeypatch, tmp_path, registry):
+    import json
+
+    from scripts.oai_render.prompt import build_prompt
+    from skyyrose.elite_studio import logo_registry
+
+    raw = json.loads(registry._source.read_text())
+    patch = next(
+        i for i in raw["sku_logos"]["br-012"]["decoration_sizing"]["items"] if i["kind"] == "patch"
+    )
+    patch["dimension_inches"]["width"] = 3.125  # isolated test amendment, not a product edit
+    target = tmp_path / "registry.json"
+    target.write_text(json.dumps(raw))
+    monkeypatch.setattr(logo_registry, "REGISTRY_JSON", target)
+    output = build_prompt(
+        name="Jersey",
+        sku="br-012",
+        collection="black-rose",
+        reference_labels=[],
+        dossier_text=None,
+        is_patch=True,
+        style="ghost",
+    )
+    assert '"width": 3.125' in output
+    returned = LogoRegistry.load().decoration_sizing_for("br-012")
+    returned["items"].clear()
+    assert LogoRegistry.load().decoration_sizing_for("br-012")["items"]
+
+
+def test_missing_jersey_sizing_or_unknown_sku_fails_closed(registry):
+    import json
+
+    from skyyrose.elite_studio.logo_registry import RegistryContractError
+
+    raw = json.loads(registry._source.read_text())
+    del raw["sku_logos"]["br-012"]["decoration_sizing"]
+    with pytest.raises(RegistryContractError, match="requires registered decoration sizing"):
+        LogoRegistry(raw).prompt_instructions("br-012")
+    with pytest.raises(RegistryContractError, match="absent"):
+        LogoRegistry(raw).prompt_instructions("missing-sku")
+
+
+def test_render_reference_uses_registry_patch_and_blank_exterior(registry):
+    assert registry.primary_reference_for("br-012") == registry.image_path(
+        sku="br-012", logo_id="mlb-authentic-collection-card"
+    )
+    assert registry.primary_reference_for("sg-011") is None
+    assert registry.primary_reference_for("sg-012") is None
+
+
+def test_unbound_bridge_reference_does_not_fall_back_to_generic_cluster(registry):
+    from skyyrose.elite_studio.logo_registry import RegistryContractError
+
+    with pytest.raises(RegistryContractError, match="SKU-specific photographic artwork"):
+        registry.primary_reference_for("sg-002")
+
+
+def test_actual_render_plan_observes_registry_material_change(monkeypatch, tmp_path):
+    import json
+
+    from scripts.oai_render import pipeline, references
+    from skyyrose.core import product_registry
+
+    raw = product_registry.load_registry()
+    raw["products"]["sg-006"]["garment"]["materials"]["specification"] = (
+        "Isolated test material: founder-specified brushed cotton."
+    )
+    target = tmp_path / "registry.json"
+    target.write_text(json.dumps(raw))
+    monkeypatch.setattr(product_registry, "PRODUCT_REGISTRY", target)
+    monkeypatch.setattr(references, "build_references", lambda *args, **kwargs: [])
+    monkeypatch.setattr(pipeline, "build_scene", lambda **kwargs: None)
+    plan = pipeline.plan_sku("sg-006", references.load_catalog(), references.build_dossier_index())
+    assert not plan.error
+    assert "Isolated test material: founder-specified brushed cotton." in plan.prompt
+    assert "Isolated test material: founder-specified brushed cotton." in plan.dossier_spec
+
+
+def test_source_map_reads_registry_changes_without_cache(monkeypatch, tmp_path):
+    import json
+
+    from scripts.oai_render import references
+    from skyyrose.core import product_registry
+
+    raw = product_registry.load_registry()
+    target = tmp_path / "registry.json"
+    target.write_text(json.dumps(raw))
+    monkeypatch.setattr(product_registry, "PRODUCT_REGISTRY", target)
+    before = references.get_source_map()["sg-006"]["front"]
+    raw["products"]["sg-006"]["render_sources"]["front"] = "test-fixture/amended-front.png"
+    target.write_text(json.dumps(raw))
+    assert references.get_source_map()["sg-006"]["front"] != before
+    assert (
+        references.get_source_map()["sg-006"]["front"]
+        .as_posix()
+        .endswith("test-fixture/amended-front.png")
+    )

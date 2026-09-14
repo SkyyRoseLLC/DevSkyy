@@ -13,12 +13,14 @@ skipped, never rendered as an incomplete image.
 
 from __future__ import annotations
 
-import functools
 import logging
 from dataclasses import dataclass
 from pathlib import Path
 
-from skyyrose.core.catalog_loader import read_catalog_rows
+from skyyrose.core.catalog_loader import PROJECT_ROOT, read_catalog_rows
+from skyyrose.core.dossier_loader import DOSSIERS_DIR
+from skyyrose.core.product_registry import load_registry
+from skyyrose.elite_studio.logo_registry import LogoRegistry
 
 from . import config
 
@@ -40,10 +42,8 @@ class ReferenceImage:
 
 # ── Catalog ─────────────────────────────────────────────────────────────────
 def load_catalog() -> dict[str, dict]:
-    """Load the product catalog CSV, keyed by SKU. Single source of truth."""
+    """Project the unified product registry, keyed by SKU."""
     catalog: dict[str, dict] = {}
-    if not config.CATALOG_CSV.exists():
-        raise FileNotFoundError(f"Catalog CSV not found: {config.CATALOG_CSV}")
     for row in read_catalog_rows(config.CATALOG_CSV):
         sku = row["sku"].strip()
         if not sku:
@@ -57,183 +57,23 @@ def load_catalog() -> dict[str, dict]:
     return catalog
 
 
-# ── Authoritative SKU → {front, back} garment source map ────────────────────
-# Ported verbatim from nano_banana/source_map.py. ``S`` = split techflats,
-# ``P`` = original product photos.
-@functools.lru_cache(maxsize=1)
+# ── Registry-owned garment source bindings ──────────────────────────────────
 def get_source_map() -> dict[str, dict[str, Path | None]]:
-    """Return the complete SKU → {front, back} garment image mapping.
-
-    Memoized: the map is built from static ``config`` path constants, so it is
-    reconstructed once per process rather than on every ``build_references`` /
-    ``requires_patch`` / ``find_flatlay_photo`` call (was ~3x per SKU per batch).
-    """
-    s = config.SPLIT_DIR
-    p = config.PRODUCTS_DIR
-    sp = config.PRODUCT_SOURCE_PHOTOS_DIR
+    """Read current registry bindings, including explicit non-catalog components."""
+    registry = load_registry()
+    sources = {
+        sku: product["render_sources"]
+        for sku, product in registry["products"].items()
+        if "render_sources" in product
+    }
+    sources.update(registry.get("render_source_aliases", {}))
     return {
-        # ── BLACK ROSE ──
-        "br-001": {
-            "front": s / "black-rose" / "br-crewneck-front.jpeg",
-            "back": s / "black-rose" / "br-crewneck-back.jpeg",
-        },
-        "br-002": {
-            "front": s / "black-rose" / "br-joggers-front.jpeg",
-            "back": s / "black-rose" / "br-joggers-back.jpeg",
-        },
-        "br-003": {
-            "front": s / "black-rose" / "br-jersey-baseball-black-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-baseball-black-back.jpeg",
-        },
-        "br-014": {
-            "front": s / "black-rose" / "br-jersey-baseball-giants-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-baseball-giants-back.jpeg",
-        },
-        "br-015": {
-            "front": s / "black-rose" / "br-jersey-baseball-white-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-baseball-white-back.jpeg",
-        },
-        "br-004": {"front": p / "black-rose-hoodie-source.jpg", "back": None},
-        "br-005": {
-            "front": p / "black-rose-hoodie-signature-edition-hoodie-ltd-source.jpg",
-            "back": None,
-        },
-        "br-006": {
-            "front": p / "black-rose-sherpa-jacket-sherpa-product.jpg",
-            "back": p / "black-rose-sherpa-jacket-back.jpg",
-        },
-        "br-007": {"front": p / "br-007-real-front.jpg", "back": p / "br-007-real-back.jpg"},
-        "br-008": {
-            "front": s / "black-rose" / "br-jersey-football-sf-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-football-sf-back.jpeg",
-        },
-        "br-009": {
-            "front": s / "black-rose" / "br-jersey-football-oakland-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-football-oakland-back.jpeg",
-        },
-        "br-010": {
-            "front": s / "black-rose" / "br-jersey-basketball-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-basketball-back.jpeg",
-        },
-        "br-011": {
-            "front": s / "black-rose" / "br-jersey-hockey-front.jpeg",
-            "back": s / "black-rose" / "br-jersey-hockey-back.jpeg",
-        },
-        "br-012": {
-            "front": p / "last-oakland-baseball-jersey-front.jpeg",
-            "back": p / "br-012-last-oakland-baseball-back.jpeg",
-        },
-        # ── LOVE HURTS ──
-        "lh-002": {"front": s / "love-hurts" / "lh-joggers-front.jpeg", "back": None},
-        "lh-003": {"front": p / "lh-003-real-front.jpg", "back": p / "lh-003-real-back.jpg"},
-        "lh-004": {
-            "front": s / "love-hurts" / "lh-bomber-front.jpeg",
-            "back": s / "love-hurts" / "lh-bomber-back.jpeg",
-        },
-        "lh-005": {"front": p / "the-fannie-pack-photo.jpg", "back": None},
-        "lh-006": {"front": p / "lh-006-joggers-white.jpeg", "back": None},
-        # ── SIGNATURE ──
-        "sg-001": {
-            "front": s / "signature" / "sg-bridge-shorts-bay-front.jpeg",
-            "back": s / "signature" / "sg-bridge-shorts-bay-back.jpeg",
-        },
-        "sg-002": {
-            "front": s / "signature" / "sg-bridge-tee-golden-front.jpeg",
-            "back": s / "signature" / "sg-bridge-tee-golden-back.jpeg",
-        },
-        "sg-003": {
-            "front": s / "signature" / "sg-bridge-shorts-golden-front.jpeg",
-            "back": s / "signature" / "sg-bridge-shorts-golden-back.jpeg",
-        },
-        "sg-004": {"front": p / "signature-hoodie-techflat.jpeg", "back": None},
-        "sg-005": {
-            "front": sp / "signature" / "sg-005-bay-bridge-shirt-front-authentic.jpg",
-            "back": None,
-        },
-        "sg-006": {"front": s / "signature" / "sg-mint-lav-hoodie-front.jpeg", "back": None},
-        "sg-007": {"front": s / "signature" / "sg-beanie-purple.jpeg", "back": None},
-        "sg-009": {"front": p / "sherpa-jacket-front.jpg", "back": None},
-        "sg-011": {"front": p / "original-label-tee-white-front.webp", "back": None},
-        "sg-012": {"front": p / "sg-012-original-label-tee-orchid.webp", "back": None},
-        "sg-013": {
-            "front": s / "signature" / "sg-mint-lav-crewneck-front.jpeg",
-            "back": s / "signature" / "sg-mint-lav-crewneck-back.jpeg",
-        },
-        "sg-014": {
-            "front": s / "signature" / "sg-mint-lav-sweats-front.jpeg",
-            "back": s / "signature" / "sg-mint-lav-sweats-back.jpeg",
-        },
-        # ── KIDS CAPSULE ──
-        "kids-001": {
-            "front": s / "kids-capsule" / "kids-red-hoodie-front.jpeg",
-            "back": s / "kids-capsule" / "kids-red-hoodie-back.jpeg",
-        },
-        "kids-001-joggers": {
-            "front": s / "kids-capsule" / "kids-red-joggers-front.jpeg",
-            "back": s / "kids-capsule" / "kids-red-joggers-back.jpeg",
-        },
-        "kids-002": {
-            "front": s / "kids-capsule" / "kids-purple-hoodie-front.jpeg",
-            "back": s / "kids-capsule" / "kids-purple-hoodie-back.jpeg",
-        },
-        "kids-002-joggers": {
-            "front": s / "kids-capsule" / "kids-purple-joggers-front.jpeg",
-            "back": s / "kids-capsule" / "kids-purple-joggers-back.jpeg",
-        },
+        sku: {view: PROJECT_ROOT / path if path else None for view, path in refs.items()}
+        for sku, refs in sources.items()
     }
 
 
 # ── Logo + sport-patch references ───────────────────────────────────────────
-def _collection_logos() -> dict[str, Path]:
-    o = config.OVERLAYS_DIR
-    return {
-        # Black Rose non-jersey products carry the three-rose-cluster (greyscale),
-        # per every dossier's logo_reference. (Jerseys override to sport patches
-        # in _sku_logo_refs.) The old br-brand-script.png default was the wrong
-        # mark — it made the model render a "BR" wordmark instead of the cluster.
-        "black-rose": config.LOGOS_DIR / "three-rose-cluster-greyscale.png",
-        "love-hurts": o / "lh-logo-combined.png",
-        "signature": o / "sig-brand-skyy-rose-gold.png",
-    }
-
-
-def _sku_logo_refs() -> dict[str, Path]:
-    # RUNTIME SOURCE OF TRUTH for SKU→logo. The colorway assignments below mirror
-    # logo-registry.json::three_rose_cluster_colorways (documentation). Keep in
-    # sync: adding a colorway SKU here means updating the registry's variants too.
-    o = config.OVERLAYS_DIR
-    t = config.TECHFLATS_DIR
-    cw = config.LOGOS_DIR  # colorway-correct three-rose-cluster references
-    return {
-        # Black Rose jerseys → sport patches (the elements that were going missing)
-        "br-008": o / "br-patch-nfl-football.png",
-        "br-009": o / "br-patch-nfl-football.png",
-        "br-010": o / "br-patch-nba-basketball.png",
-        "br-011": o / "br-patch-hockey.png",
-        "br-012": o / "br-patch-mlb-baseball.png",
-        "br-014": o / "br-patch-mlb-baseball.png",
-        "br-003": o / "br-patch-mlb-baseball.png",
-        "br-015": o / "br-patch-mlb-baseball.png",
-        # Love Hurts — graffiti script
-        "lh-004": t / "love-hurts" / "logo-love.jpeg",
-        # NOTE: sg-011 / sg-012 (Original Label Tees) intentionally carry NO logo —
-        # see _NO_LOGO_SKUS. Founder-confirmed 2026-06-16: blank tees, neck label only.
-        # Signature — three-rose-cluster recolored per the founder-approved
-        # colorway (2026-06-11). Attaching a colorway-correct reference makes the
-        # model copy the right rose color instead of inferring it from text.
-        "sg-002": cw / "three-rose-cluster-purple.png",  # 'Stay Golden' Shirt
-        "sg-005": cw / "three-rose-cluster-blue-cyan.png",  # 'Bay Bridge' Shirt
-        # Bridge shorts carry the bottom-left embroidered rose-cluster (NOT the gold
-        # brand script the collection fallback would attach). Colorway pairs with the
-        # matching shirt: Bay Bridge=blue (day), Stay Golden=purple (night). 2026-06-16.
-        "sg-001": cw / "three-rose-cluster-blue-cyan.png",  # 'Bay Bridge' Shorts (day, blue rose)
-        "sg-003": cw / "three-rose-cluster-purple.png",  # 'Stay Golden' Shorts (night, purple rose)
-        "sg-006": cw / "three-rose-cluster-lavender.png",  # Mint & Lavender Hoodie
-        "sg-014": cw / "three-rose-cluster-lavender.png",  # Mint & Lavender Sweatpants
-        "sg-007": cw / "three-rose-cluster-greyscale.png",  # Signature Beanie
-    }
-
-
 def requires_patch(sku: str) -> bool:
     """True if this SKU is a jersey (by garment source filename) and must carry a patch.
 
@@ -312,25 +152,16 @@ def get_pairs_for_sku(sku: str) -> list[Pair]:
     return [p for p in PAIRS if sku in p.skus]
 
 
-# Blank-canvas SKUs with NO exterior logo (founder-confirmed 2026-06-16): the
-# Original Label Tees carry no chest mark, no sleeve badge, no print — only an
-# interior neck label. They must NOT receive a SKU or collection logo composite.
-_NO_LOGO_SKUS = frozenset({"sg-011", "sg-012"})
-
-
 def get_logo_reference(sku: str, collection: str) -> Path | None:
-    """Return the logo/patch reference for a SKU. SKU-specific > collection default."""
-    if sku in _NO_LOGO_SKUS:
+    """Use registered SKU artwork only; collection membership never supplies a logo."""
+    registry = LogoRegistry.load()
+    registry.decoration_sizing_for(sku, required=requires_patch(sku))
+    path = registry.primary_reference_for(sku)
+    if path is None:
         return None
-    sku_refs = _sku_logo_refs()
-    if sku in sku_refs:
-        path = sku_refs[sku]
-        if path.exists():
-            return path
-        log.warning("Logo/patch reference missing for %s: %s", sku, path)
-        return None
-    default = _collection_logos().get(collection)
-    return default if default and default.exists() else None
+    if not path.is_file():
+        raise MissingReferenceError(f"Registered logo reference missing for {sku}: {path}")
+    return path
 
 
 def find_flatlay_photo(sku: str) -> Path | None:
@@ -376,6 +207,12 @@ def find_flatlay_photo(sku: str) -> Path | None:
 
 def build_dossier_index() -> dict[str, Path]:
     """Map SKU → dossier markdown path by parsing each dossier's frontmatter ``sku:``."""
+    if config.DOSSIER_DIR.resolve() == DOSSIERS_DIR.resolve():
+        return {
+            sku: DOSSIERS_DIR / f"{product['dossier']['slug']}.md"
+            for sku, product in load_registry()["products"].items()
+            if product.get("dossier", {}).get("slug")
+        }
     index: dict[str, Path] = {}
     if not config.DOSSIER_DIR.exists():
         return index

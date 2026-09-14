@@ -10,9 +10,15 @@ reference_image: assets/products/references/sg-002-stay-golden-shirt-techflat.jp
 
 # The Bridge Series 'Stay Golden' Shirt
 
-**Garment type lock:** Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Stay Golden Shorts (sg-003 Golden Gate sunset palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Bay Bridge Shirt (that's sg-005 — blue rose-cluster decoration, separate SKU). **The Stay Golden colorway uses a PURPLE/VIOLET rose-cluster on the chest** (matching the purple-and-orange Golden Gate sunset palette).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem.
+Features: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Stay Golden Shorts (sg-003 Golden Gate sunset palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Bay Bridge Shirt (that's sg-005 — blue rose-cluster decoration, separate SKU). **The Stay Golden colorway uses a PURPLE/VIOLET rose-cluster on the chest** (matching the purple-and-orange Golden Gate sunset palette).
+Color: White
+Available sizes: XS | S | M | L | XL | 2XL
 
 ## Branding — exactly what IS on this product
+
+Source reconciliation pending: see `logo-registry.json::gaps::signature-bridge-source-conflict`. Preserve the specific product/variant artwork; the existing text below must not be treated as proof that conflicting references have been resolved.
 
 > Logo art canonical references:
 > - Black Rose three-rose-cluster (recolored to purple for this SKU): `data/brand-logos/three-rose-cluster.md`

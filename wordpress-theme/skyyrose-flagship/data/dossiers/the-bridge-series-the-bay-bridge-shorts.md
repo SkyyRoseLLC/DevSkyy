@@ -2,6 +2,7 @@
 sku: sg-001
 name: The Bridge Series 'The Bay Bridge' Shorts
 collection: signature
+logo_reference: data/brand-logos/three-rose-cluster.md
 reference_image: assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg
 extra_references:
   - assets/products/references/sg-001-day-bay-bridge-shorts.jpeg
@@ -9,9 +10,15 @@ extra_references:
 
 # The Bridge Series 'The Bay Bridge' Shorts
 
-**Garment type lock:** Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge sunset palette, separate SKU).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**.
+Features: Knee-length athletic basketball shorts — **white mesh ground fabric with an all-over sublimated photographic print of the Bay Bridge (San Francisco-Oakland Bay Bridge) in daytime / clear-blue-sky lighting**. The photo print shows the steel-cabled Bay Bridge crossing the water with the SF skyline visible in the background, blue sky overhead, and water reflections at the bottom hem. Standard basketball-shorts construction: black elasticated waistband at the top with **white drawstring**, vertical slash side hand pockets, knee-length cut, no leg-binding contrast piping. NOT pants. NOT joggers. NOT short-shorts. NOT a swim trunk. NOT a track short. NOT a basketball jersey. NOT the Stay Golden Shorts (that's sg-003 — Golden Gate Bridge sunset palette, separate SKU).
+Color: Blue
+Available sizes: S | M | L | XL | 2XL | 3XL
 
 ## Branding — exactly what IS on this product
+
+Logo binding: `black-roses-cloud-cluster`, blue colorway, bottom-left leg per catalog/dossier. The all-over bridge photograph is separate garment decoration. The registry records conflicting older product sheets; this binding is not a fresh pixel approval.
 
 > Reference images:
 > - Bridge Series shorts variants (Bay Bridge top + Stay Golden bottom): `assets/products/references/sg-001-and-sg-003-bridge-shorts-variants.jpeg`

@@ -37,14 +37,19 @@ Typical usage:
 from __future__ import annotations
 
 import json
+from copy import deepcopy
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-from skyyrose.core.catalog_loader import CATALOG_CSV
+from skyyrose.core.catalog_loader import CATALOG_CSV, PROJECT_ROOT
 from skyyrose.core.paths import THEME_ROOT, WP_LOGOS_DIR, WP_PRODUCTS_DIR
 
 REGISTRY_JSON: Path = CATALOG_CSV.parent / "logo-registry.json"
+
+
+class RegistryContractError(ValueError):
+    """A required SKU decoration contract is missing from the sole registry."""
 
 
 class LogoNotFoundError(KeyError):
@@ -145,6 +150,86 @@ class LogoRegistry:
         entry = self._sku_logos.get(sku) or {}
         return list(entry.get("placements") or [])
 
+    def skus(self) -> list[str]:
+        return sorted(sku for sku in self._sku_logos if not sku.startswith("_"))
+
+    def primary_reference_for(self, sku: str) -> Path | None:
+        """Resolve the SKU's patch or first logo, honoring registered colorway files."""
+        if sku not in self._sku_logos:
+            raise RegistryContractError(f"SKU {sku!r} is absent from logo-registry.json")
+        binding = self._sku_logos[sku].get("render_reference") or {}
+        if binding.get("status") == "UNBOUND":
+            raise RegistryContractError(
+                f"{sku}: {binding.get('reason', 'render reference unbound')}"
+            )
+        if binding.get("path"):
+            return PROJECT_ROOT / binding["path"]
+        placements = self.placements_for(sku)
+        if not placements:
+            return None
+        placement = next(
+            (p for p in placements if self.get_logo(p["logo_id"]).co_located_per_sku),
+            placements[0],
+        )
+        return self.image_path(sku=sku, logo_id=placement["logo_id"])
+
+    def patch_sport_for(self, sku: str) -> str | None:
+        for placement in self.placements_for(sku):
+            logo = self._raw["logos"][placement["logo_id"]]
+            if logo.get("co_located_per_sku"):
+                if not logo.get("sport"):
+                    raise RegistryContractError(
+                        f"Patch {placement['logo_id']} has no registered sport"
+                    )
+                return str(logo["sport"])
+        return None
+
+    def decoration_sizing_for(self, sku: str, *, required: bool = False) -> dict[str, Any]:
+        """Return founder specifications verbatim; never infer sizes from another source."""
+        entry = self._sku_logos.get(sku)
+        if entry is None:
+            raise RegistryContractError(f"SKU {sku!r} is absent from logo-registry.json")
+        sizing = entry.get("decoration_sizing") or {}
+        is_jersey = any(
+            self.get_logo(p["logo_id"]).co_located_per_sku for p in entry.get("placements", [])
+        )
+        if (required or is_jersey) and not sizing.get("items"):
+            raise RegistryContractError(f"SKU {sku!r} requires registered decoration sizing")
+        if (required or is_jersey) and not any(
+            item.get("kind") == "patch" and item.get("dimension_inches")
+            for item in sizing.get("items", [])
+        ):
+            raise RegistryContractError(f"SKU {sku!r} requires registered patch dimensions")
+        return deepcopy(sizing)
+
+    def prompt_instructions(self, sku: str, *, require_sizing: bool = False) -> str:
+        """Deterministic decoration contract shared by generation and placement briefs.
+
+        Includes literal source-size text and structured dimensions, preserving ranges
+        and relative proportions without inventing typography point sizes.
+        """
+        sizing = self.decoration_sizing_for(sku, required=require_sizing)
+        entry = self._sku_logos[sku]
+        contract = {
+            key: deepcopy(value)
+            for key, value in entry.items()
+            if key not in {"name", "dossier_reference", "decoration_sizing"}
+        }
+        if sizing:
+            contract["decoration_sizing"] = sizing
+        lines = [
+            f"CANONICAL LOGO AND DECORATION CONTRACT — SKU {sku}",
+            "Source: wordpress-theme/skyyrose-flagship/data/logo-registry.json",
+            "This registry is the sole authority for artwork, lettering, placements and "
+            "decoration dimensions. It overrides conflicting dossier prose, cached briefs "
+            "and prior prompt corrections. Preserve founder specifications exactly; "
+            "do not infer dimensions or add collection logos to blank garments.",
+            "Apply only decorations visible from the requested garment view; do not move "
+            "back decorations to the front or change the requested composition.",
+            json.dumps(contract, ensure_ascii=False, sort_keys=True, indent=2),
+        ]
+        return "\n".join(lines)
+
     def has_sku(self, sku: str) -> bool:
         return sku in self._sku_logos
 
@@ -171,5 +256,6 @@ __all__ = [
     "LogoEntry",
     "LogoNotFoundError",
     "LogoRegistry",
+    "RegistryContractError",
     "SkuFolderUnknownError",
 ]

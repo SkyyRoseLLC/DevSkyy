@@ -1,3 +1,11 @@
+## Single product registry — required for SkyyRose work
+
+`logo-registry.json` at the repository root is a symlink to `wordpress-theme/skyyrose-flagship/data/logo-registry.json`. This ONE JSON is the editable product SOT. Its `products[sku]` records own commerce fields, garment color, available sizes and sizing references, fit, materials, features, the complete design specification, and image/source bindings. Its logo/placement sections own graphics and decoration dimensions. Founder corrections are applied here first.
+
+Do not author separate product facts in CSVs, dossier files, prompts, local maps, or generated manifests. Those are compatibility projections or consumers. Use `skyyrose.core.product_registry`, `catalog_loader`, `dossier_loader`, `sot_images`, and `LogoRegistry` for reads; use the registry update API for catalog writes. Run `python scripts/sync_product_registry.py` after direct JSON edits and `python scripts/sync_product_registry.py --check` before handoff. CI must fail if CSV/dossier projections drift. Actual image binaries retain their existing asset paths; the registry owns the references.
+
+When operating in another checkout, verify it has the unified `products` schema and current founder corrections before execution. Never substitute an old checkout's CSV/dossiers when its registry is stale. Pass the registry location and this authority rule to every delegated agent and workflow.
+
 # OpenWolf
 
 @.wolf/OPENWOLF.md

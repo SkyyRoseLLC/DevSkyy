@@ -10,7 +10,11 @@ reference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpe
 
 # The Bridge Series 'The Bay Bridge' Shirt
 
-**Garment type lock:** Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).
+**Garment type lock:** FOUNDER_CONFIRMED structured specifications (take precedence over legacy dossier prose):
+Materials: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem.
+Features: Classic crew-neck short-sleeve t-shirt — solid white cotton/cotton-blend body, set-in short sleeves, ribbed crew neck, straight even hem. Pairs in The Bridge Series with the Bay Bridge Shorts (sg-001 daytime SF-Oakland Bay Bridge palette). NOT a tank. NOT a long-sleeve tee. NOT a hoodie. NOT a polo. NOT the Stay Golden Shirt (that's sg-002 — purple rose-cluster decoration, separate SKU). **The Bay Bridge colorway uses a BLUE/CYAN rose-cluster on the chest** (matching the daytime-blue Bay Bridge palette).
+Color: White
+Available sizes: S | M | L | XL | 2XL
 
 > **Note on source filename drift:** The techflat for this SKU was found in the
 > Downloads asset directory under the filename `sg-004-techflat.jpeg`, but that
@@ -21,6 +25,8 @@ reference_image: assets/products/references/sg-005-bay-bridge-shirt-techflat.jpe
 > sg-005 prefix.
 
 ## Branding — exactly what IS on this product
+
+Source reconciliation pending: see `logo-registry.json::gaps::signature-bridge-source-conflict`. Preserve the specific product/variant artwork; the existing text below must not be treated as proof that conflicting references have been resolved.
 
 > Logo art canonical references:
 > - Black Rose three-rose-cluster (recolored to blue for this SKU): `data/brand-logos/three-rose-cluster.md`
