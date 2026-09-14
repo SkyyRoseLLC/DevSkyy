@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkyyRose V2 Commerce System Preview</title>
+  <link rel="stylesheet" href="../../../../wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css">
+  <link rel="stylesheet" href="../../../../wordpress-theme/skyyrose-flagship-2/assets/css/theme.css">
+</head>
+<body class="sr2-commerce-shell" data-sr2-route="shop">
+  <a class="sr2-skip" href="#main">Skip to preview</a>
+  <main id="main" style="max-width: 82rem; margin-inline: auto; padding: clamp(6rem, 10vw, 9rem) var(--sr2-page-pad);">
+    <header style="display: grid; gap: var(--sr2-space-4); max-width: 62ch; margin-block-end: var(--sr2-space-12);">
+      <p class="sr2-c-kicker">V2 Remodel · System Adapter</p>
+      <h1 style="margin: 0; font-family: var(--sr2-font-display); font-size: clamp(3rem, 9vw, 7rem); letter-spacing: -.06em; line-height: .86;">Commerce stays in the house.</h1>
+      <p style="margin: 0; color: var(--sr2-muted);">Preview-only fixtures use no product facts. They demonstrate visual states for canonical WooCommerce adapters.</p>
+    </header>
+
+    <section aria-labelledby="preview-card" style="margin-block-end: var(--sr2-space-16);">
+      <p class="sr2-c-kicker">01 · Product card states</p>
+      <h2 id="preview-card">Editorial route, factual purchase bridge.</h2>
+      <div class="sr2-c-product-grid">
+        <article class="sr2-c-product-card" id="preview-product-default">
+          <a class="sr2-c-product-card__media" href="#preview-variation" aria-label="Open product variation fixture"><span class="screen-reader-text">Product-media fixture</span></a>
+          <div class="sr2-c-product-card__body"><p class="sr2-c-kicker">Collection route</p><h3><a href="#preview-variation">Product name supplied by WooCommerce</a></h3><div class="sr2-c-product-card__meta"><span>Price from server</span><span class="sr2-c-availability" data-state="available">Available</span></div></div>
+        </article>
+        <article class="sr2-c-product-card" id="preview-product-media-fallback">
+          <a class="sr2-c-product-card__media" data-state="missing" href="#preview-variation" aria-label="Open product fixture with unavailable media"></a>
+          <div class="sr2-c-product-card__body"><p class="sr2-c-kicker">Fallback</p><h3><a href="#preview-variation">Purchase remains reachable</a></h3><div class="sr2-c-product-card__meta"><span>Price remains WooCommerce-owned</span><span class="sr2-c-availability" data-state="unavailable">Unavailable</span></div></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="preview-variation" aria-labelledby="preview-variation-title" style="margin-block-end: var(--sr2-space-16);">
+      <p class="sr2-c-kicker">02 · Variation resolver</p>
+      <h2 id="preview-variation-title">Selected state is explicit; server resolution decides.</h2>
+      <div class="sr2-c-variation" data-state="valid">
+        <div class="sr2-c-variation__head"><span class="sr2-c-variation__label">Size</span><span class="sr2-c-variation__value">Selected variation</span></div>
+        <ul class="sr2-c-option-list" aria-label="Preview size choices"><li><button class="sr2-c-option" type="button" aria-pressed="false">S</button></li><li><button class="sr2-c-option" type="button" aria-pressed="true">M</button></li><li><button class="sr2-c-option" type="button" aria-disabled="true" disabled>L</button></li></ul>
+        <p class="sr2-c-variation__notice">Fixture only: a live PDP replaces this with WooCommerce variation status, price, and availability.</p>
+        <button class="sr2-c-action" type="button">Add after server confirmation</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="preview-cart" style="margin-block-end: var(--sr2-space-16);">
+      <p class="sr2-c-kicker">03 · Cart and checkout</p>
+      <h2 id="preview-cart">Transaction facts survive editorial treatment.</h2>
+      <div class="sr2-c-checkout"><div class="sr2-c-checkout__grid"><div class="sr2-c-cart"><article class="sr2-c-cart__row"><div aria-hidden="true" style="aspect-ratio: 1; background: var(--sr2-line);"></div><div><h3>Cart line item from session</h3><p class="sr2-c-availability" data-state="stock-low">Availability must refresh</p></div><span class="sr2-c-cart__price">Server price</span></article><div class="sr2-c-status" data-state="warning"><span>Notice</span><span>Recalculate and show a text notice when stock or totals change.</span></div></div><aside class="sr2-c-summary"><div class="sr2-c-summary__line"><span>Subtotal</span><span>Server total</span></div><div class="sr2-c-summary__line sr2-c-summary__line--total"><span>Total</span><span>Server total</span></div><button class="sr2-c-action" type="button" aria-busy="true">Updating checkout</button></aside></div></div>
+    </section>
+
+    <section aria-labelledby="preview-service">
+      <p class="sr2-c-kicker">04 · Account and service</p>
+      <h2 id="preview-service">Recovery is a first-class state.</h2>
+      <div class="sr2-c-account"><nav class="sr2-c-account__nav" aria-label="Account fixture"><a href="#preview-service" aria-current="page">Orders</a><a href="#preview-service">Addresses</a><a href="#preview-service">Support</a></nav><div class="sr2-c-status" data-state="error"><span>Access</span><span>Account and service records remain scoped to the current authorized customer.</span></div><div class="sr2-c-service"><p class="sr2-c-kicker">Service case</p><div class="sr2-c-service__links"><a href="#preview-service">Policy route</a><a href="#preview-service">Contact fallback</a></div></div></div>
+    </section>
+  </main>
+</body>
+</html>

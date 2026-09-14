@@ -25,12 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.10.2
  */
 function skyyrose_ensure_wishlist_session() {
-	if ( ! function_exists( 'WC' ) || ! WC()->session ) {
+	$session = WC()->session;
+	if ( ! $session instanceof WC_Session_Handler ) {
 		return;
 	}
 
-	if ( ! is_user_logged_in() && ! WC()->session->has_session() ) {
-		WC()->session->set_customer_session_cookie( true );
+	if ( ! is_user_logged_in() && ! $session->has_session() ) {
+		$session->set_customer_session_cookie( true );
 	}
 }
 
@@ -46,12 +47,11 @@ function skyyrose_get_wishlist_key() {
 	}
 
 	// Use session for non-logged-in users.
-	if ( function_exists( 'WC' ) && WC()->session ) {
-		$session_key = WC()->session->get_customer_id();
-		return 'wishlist_session_' . $session_key;
+	$session = WC()->session;
+	if ( ! $session instanceof WC_Session_Handler ) {
+		return 'wishlist_session_guest';
 	}
-
-	return 'wishlist_session_guest';
+	return 'wishlist_session_' . $session->get_customer_id();
 }
 
 /**
@@ -211,11 +211,11 @@ function skyyrose_move_to_cart( $product_id ) {
 	}
 
 	// Add to cart.
-	if ( ! function_exists( 'WC' ) || ! WC()->cart ) {
+	$cart = WC()->cart;
+	if ( ! $cart instanceof WC_Cart ) {
 		return false;
 	}
-
-	$cart_item_key = WC()->cart->add_to_cart( $product_id );
+	$cart_item_key = $cart->add_to_cart( $product_id );
 
 	if ( $cart_item_key ) {
 		// Remove from wishlist.
@@ -387,7 +387,7 @@ function skyyrose_ajax_move_to_cart() {
 			array(
 				'message'    => esc_html__( 'Product moved to cart.', 'skyyrose' ),
 				'count'      => skyyrose_get_wishlist_count(),
-				'cart_count' => ( function_exists( 'WC' ) && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0,
+				'cart_count' => WC()->cart instanceof WC_Cart ? WC()->cart->get_cart_contents_count() : 0,
 			)
 		);
 	} else {
@@ -483,7 +483,7 @@ function skyyrose_ajax_move_all_to_cart() {
 					$result['success']
 				),
 				'count'      => skyyrose_get_wishlist_count(),
-				'cart_count' => ( function_exists( 'WC' ) && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0,
+				'cart_count' => WC()->cart instanceof WC_Cart ? WC()->cart->get_cart_contents_count() : 0,
 			)
 		);
 	} else {
@@ -610,7 +610,7 @@ function skyyrose_rest_get_wishlist( $request ) {
 				'id'    => $product_id,
 				'name'  => $product->get_name(),
 				'price' => $product->get_price_html(),
-				'image' => wp_get_attachment_image_url( $product->get_image_id(), 'thumbnail' ),
+				'image' => wp_get_attachment_image_url( absint( $product->get_image_id() ), 'thumbnail' ),
 				'url'   => $product->get_permalink(),
 			);
 		}
@@ -723,15 +723,24 @@ function skyyrose_rest_clear_wishlist( $request ) {
  * @since 1.0.0
  */
 function skyyrose_enqueue_wishlist_assets() {
-	// Enqueue wishlist CSS (with file_exists guard to prevent 404s on partial deploys).
-	$css_path = SKYYROSE_DIR . '/assets/css/wishlist.css';
-	if ( file_exists( $css_path ) ) {
-		wp_enqueue_style(
-			'skyyrose-wishlist',
-			SKYYROSE_ASSETS_URI . '/css/wishlist.css',
-			array(),
-			SKYYROSE_VERSION
-		);
+	// Wishlist CSS is page-scoped — every selector in it targets page-wishlist.php markup
+	// (.wishlist-page/-grid/-item/-empty/-actions), so loading it site-wide would ship dead
+	// bytes on every request. The JS below stays global: wishlist buttons render on product
+	// cards throughout the site.
+	// (file_exists guard prevents 404s on partial deploys; .min preferred in production,
+	// matching skyyrose_enqueue_template_styles().)
+	if ( is_page_template( 'page-wishlist.php' ) || is_page( 'wishlist' ) ) {
+		$use_min  = ! defined( 'SCRIPT_DEBUG' ) || ! SCRIPT_DEBUG;
+		$css_file = $use_min && file_exists( SKYYROSE_DIR . '/assets/css/wishlist.min.css' )
+			? 'wishlist.min.css' : 'wishlist.css';
+		if ( file_exists( SKYYROSE_DIR . '/assets/css/' . $css_file ) ) {
+			wp_enqueue_style(
+				'skyyrose-wishlist',
+				SKYYROSE_ASSETS_URI . '/css/' . $css_file,
+				array( 'skyyrose-design-tokens' ),
+				SKYYROSE_VERSION
+			);
+		}
 	}
 
 	// Enqueue wishlist JS.

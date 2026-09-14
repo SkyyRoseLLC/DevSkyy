@@ -80,134 +80,16 @@ get_header();
 
 <main id="primary" class="site-main po-page" role="main" tabindex="-1">
 
-	<!-- ══════════════════════════════════════════════════════════════════
-		01 · CINEMATIC VIDEO HERO
-		══════════════════════════════════════════════════════════════════ -->
-	<section class="po-hero" aria-label="<?php esc_attr_e( 'Reserve your piece', 'skyyrose' ); ?>">
-		<?php
-		// Founder canon (2026-07-19): the hero IS the uploaded video, framed to
-		// show the ENTIRE outfit (he's wearing the brand — br-006 Bomber Sherpa,
-		// rose back-embroidery). Source is portrait 720x1280, so desktop uses
-		// object-fit:contain over a blurred backdrop (preorder-gateway.css) —
-		// cover would crop the outfit. Poster = an actual video frame (40s,
-		// back-rose shot), so autoplay-blocked / low-power / reduced-motion
-		// visitors still see the brand footage, never an unrelated still.
-		?>
-		<div class="po-hero__media" aria-hidden="true" style="--po-hero-poster: url('<?php echo esc_url( $po_assets . '/images/hero/preorder-video-poster-720w.webp?v=' . $po_ver ); ?>')">
-			<?php
-			/*
-			 * No autoplay/poster attrs, preload=none: the 3.5MB webm fetched
-			 * inside the LCP window (round-7 mobile: poster load time up to
-			 * 2.8s from link contention), and the poster attr double-fetched
-			 * the frame as JPG next to the picture layer's webp. The
-			 * .po-hero__poster <picture> behind the video paints the identical
-			 * frame, and preorder-gateway.js initHeroVideo() starts playback
-			 * at window load (or first interaction, whichever comes first) —
-			 * the hero still plays the founder video, it just stops taxing
-			 * first paint. Founder canon (video plays, full outfit visible)
-			 * unchanged.
-			 */
-			?>
-			<video class="po-hero__video"
-				muted loop playsinline preload="none">
-				<source src="<?php echo esc_url( $po_assets . '/video/preorder-hero.webm?v=' . $po_ver ); ?>" type="video/webm">
-				<source src="<?php echo esc_url( $po_assets . '/video/preorder-hero.mp4?v=' . $po_ver ); ?>" type="video/mp4">
-			</video>
-			<picture class="po-hero__poster" aria-hidden="true">
-				<source
-					srcset="<?php echo esc_url( $po_assets . '/images/hero/preorder-video-poster-480w.webp?v=' . $po_ver ); ?> 480w,
-							<?php echo esc_url( $po_assets . '/images/hero/preorder-video-poster-720w.webp?v=' . $po_ver ); ?> 720w"
-					sizes="100vw"
-					type="image/webp">
-				<img src="<?php echo esc_url( $po_assets . '/images/hero/preorder-video-poster-720w.jpg?v=' . $po_ver ); ?>"
-					alt="" width="720" height="1280" loading="eager" fetchpriority="high">
-			</picture>
-			<div class="po-hero__overlay" aria-hidden="true"></div>
-		</div>
-
-		<div class="po-hero__content">
-			<?php
-			// The hero is the first mobile viewport and the lockup is the LCP
-			// element — no po-rv reveal classes here: the hidden resting state
-			// stalls LCP behind the deferred JS queue (the PDP 24.9s bug class).
-			// Below-fold sections keep reveals. Wave 5.
-			?>
-			<p class="po-hero__eyebrow"><?php esc_html_e( 'Exclusive Access', 'skyyrose' ); ?></p>
-
-			<?php
-			// Hero lockup renders ≤600px (width attr; ~92vw on mobile) but shipped
-			// the full-size 93KB AVIF. Photon width variants via the webp; avif
-			// <source> suppressed while Photon answers (it serves webp).
-			$po_h_srcset = function_exists( 'skyyrose_photon_srcset' )
-				? skyyrose_photon_srcset( $po_assets . '/images/hero-overlays/sig-brand-skyy-rose-gold.webp', array( 360, 600, 960 ) )
-				: '';
-			$po_h_sizes  = '(max-width: 640px) 92vw, 600px';
-			?>
-			<picture class="po-hero__lockup">
-				<?php if ( '' !== $po_h_srcset ) : ?>
-					<source srcset="<?php echo esc_attr( $po_h_srcset ); ?>" sizes="<?php echo esc_attr( $po_h_sizes ); ?>" type="image/webp">
-				<?php else : ?>
-					<source srcset="<?php echo esc_url( $po_assets . '/images/hero-overlays/sig-brand-skyy-rose-gold.avif?v=' . $po_ver ); ?>" type="image/avif">
-					<source srcset="<?php echo esc_url( $po_assets . '/images/hero-overlays/sig-brand-skyy-rose-gold.webp?v=' . $po_ver ); ?>" type="image/webp">
-				<?php endif; ?>
-				<img src="<?php echo esc_url( $po_assets . '/images/hero-overlays/sig-brand-skyy-rose-gold.png?v=' . $po_ver ); ?>"
-					<?php if ( '' !== $po_h_srcset ) : ?>
-						srcset="<?php echo esc_attr( $po_h_srcset ); ?>"
-						sizes="<?php echo esc_attr( $po_h_sizes ); ?>"
-					<?php endif; ?>
-					alt="<?php esc_attr_e( 'Skyy Rose', 'skyyrose' ); ?>"
-					width="600" height="200" loading="eager">
-			</picture>
-
-			<p class="po-hero__body">
-				<?php esc_html_e( 'Secure your pieces before they drop. Luxury Grows from Concrete.', 'skyyrose' ); ?>
-			</p>
-
-			<div class="po-hero__actions">
-				<a class="po-btn po-btn--primary" href="#po-gateway">
-					<?php esc_html_e( 'Browse Collections', 'skyyrose' ); ?>
-				</a>
-				<a class="po-btn po-btn--ghost" href="#po-products">
-					<?php esc_html_e( 'View All Pieces', 'skyyrose' ); ?>
-				</a>
-			</div>
-		</div>
-
-		<div class="po-hero__scroll-hint" aria-hidden="true">
-			<span class="po-hero__scroll-line"></span>
-			<span class="po-hero__scroll-label"><?php esc_html_e( 'Scroll', 'skyyrose' ); ?></span>
-		</div>
-	</section>
-
-	<!-- ══════════════════════════════════════════════════════════════════
-		02 · MARQUEE STRIP
-		══════════════════════════════════════════════════════════════════ -->
-	<div class="po-marquee" aria-hidden="true">
-		<div class="po-marquee__track">
-			<?php
-			/* Items cloned by JS for seamless loop */
-			$po_marquee_items = array(
-				esc_html__( 'Luxury Grows from Concrete', 'skyyrose' ),
-				esc_html__( 'Limited Edition', 'skyyrose' ),
-				esc_html__( 'Reserve Now', 'skyyrose' ),
-				esc_html__( 'Skyy Rose', 'skyyrose' ),
-				esc_html__( 'Concrete Culture', 'skyyrose' ),
-				esc_html__( 'Pre-Order Open', 'skyyrose' ),
-			);
-			foreach ( $po_marquee_items as $po_item ) :
-				?>
-				<span class="po-marquee__item">
-					<picture class="po-marquee__icon">
-						<source srcset="<?php echo esc_url( $po_assets . '/images/logos/sr-monogram-gold.avif?v=' . $po_ver ); ?>" type="image/avif">
-						<source srcset="<?php echo esc_url( $po_assets . '/images/logos/sr-monogram-gold.webp?v=' . $po_ver ); ?>" type="image/webp">
-						<img src="<?php echo esc_url( $po_assets . '/images/logos/sr-monogram-gold.jpeg?v=' . $po_ver ); ?>"
-							alt="" width="24" height="24" loading="lazy">
-					</picture>
-					<?php echo esc_html( $po_item ); ?>
-				</span>
-			<?php endforeach; ?>
-		</div>
-	</div>
+	<?php
+	get_template_part(
+		'template-parts/preorder/opening',
+		null,
+		array(
+			'assets'  => $po_assets,
+			'version' => $po_ver,
+		)
+	);
+	?>
 
 	<!-- ══════════════════════════════════════════════════════════════════
 		03 · COLLECTION GATEWAY (3 art panels)
@@ -283,8 +165,8 @@ get_header();
 
 			$po_panel_index = 0;
 			foreach ( $po_collections as $po_slug => $po_col ) :
-				$po_portrait = isset( $po_portrait_map[ $po_slug ] ) ? $po_portrait_map[ $po_slug ] : null;
-				$po_lockup   = isset( $po_lockup_map[ $po_slug ] ) ? $po_lockup_map[ $po_slug ] : null;
+				$po_portrait = $po_portrait_map[ $po_slug ];
+				$po_lockup   = $po_lockup_map[ $po_slug ];
 				?>
 				<?php // No list/listitem roles: aria-pressed is invalid on role="listitem", and the toggle semantics matter more than list semantics here. ?>
 				<button type="button"
@@ -293,7 +175,6 @@ get_header();
 					aria-label="<?php echo esc_attr( sprintf( /* translators: %s: collection label */ __( 'View %s collection', 'skyyrose' ), $po_col['label'] ) ); ?>">
 
 					<div class="po-panel__bg" aria-hidden="true">
-						<?php if ( $po_portrait ) : ?>
 							<?php
 							// Panels render ≤290px wide (minmax(220px,1fr) in a 900px grid)
 							// but shipped full-size AVIF (round-3 uses-responsive-images).
@@ -308,9 +189,7 @@ get_header();
 								<?php if ( '' !== $po_p_srcset ) : ?>
 									<source srcset="<?php echo esc_attr( $po_p_srcset ); ?>" sizes="<?php echo esc_attr( $po_p_sizes ); ?>" type="image/webp">
 								<?php else : ?>
-									<?php if ( ! empty( $po_portrait['avif'] ) ) : ?>
-										<source srcset="<?php echo esc_url( $po_portrait['avif'] ); ?>" type="image/avif">
-									<?php endif; ?>
+									<source srcset="<?php echo esc_url( $po_portrait['avif'] ); ?>" type="image/avif">
 									<source srcset="<?php echo esc_url( $po_portrait['webp'] ); ?>" type="image/webp">
 								<?php endif; ?>
 								<img src="<?php echo esc_url( $po_portrait['jpg'] ); ?>"
@@ -323,7 +202,6 @@ get_header();
 									height="<?php echo absint( $po_portrait['h'] ); ?>"
 									loading="<?php echo 0 === $po_panel_index ? 'eager' : 'lazy'; ?>">
 							</picture>
-						<?php endif; ?>
 						<div class="po-panel__overlay" aria-hidden="true"></div>
 					</div>
 
@@ -332,7 +210,6 @@ get_header();
 							<?php echo esc_html( $po_col['number'] ); ?>
 						</span>
 
-						<?php if ( $po_lockup ) : ?>
 							<?php
 							// Lockup renders ≤120px (.po-panel__lockup) — full-size AVIF
 							// (50-93KB) was pure waste. Same Photon/avif-suppression trade.
@@ -344,9 +221,7 @@ get_header();
 								<?php if ( '' !== $po_l_srcset ) : ?>
 									<source srcset="<?php echo esc_attr( $po_l_srcset ); ?>" sizes="120px" type="image/webp">
 								<?php else : ?>
-									<?php if ( ! empty( $po_lockup['avif'] ) ) : ?>
-										<source srcset="<?php echo esc_url( $po_lockup['avif'] ); ?>" type="image/avif">
-									<?php endif; ?>
+									<source srcset="<?php echo esc_url( $po_lockup['avif'] ); ?>" type="image/avif">
 									<source srcset="<?php echo esc_url( $po_lockup['webp'] ); ?>" type="image/webp">
 								<?php endif; ?>
 								<img src="<?php echo esc_url( $po_lockup['png'] ); ?>"
@@ -360,8 +235,6 @@ get_header();
 										style="<?php echo esc_attr( $po_lockup['style'] ); ?>"
 									<?php endif; ?>>
 							</picture>
-						<?php endif; ?>
-
 						<p class="po-panel__tagline">
 							<?php echo esc_html( $po_col['tagline'] ); ?>
 						</p>
@@ -410,7 +283,7 @@ get_header();
 		<?php
 		$po_grid_first = true;
 		foreach ( $po_collections as $po_slug => $po_col ) :
-			$po_items = isset( $po_products[ $po_slug ] ) ? $po_products[ $po_slug ] : array();
+			$po_items = $po_products[ $po_slug ];
 			?>
 			<div class="po-grid"
 				id="po-grid-<?php echo esc_attr( $po_slug ); ?>"
@@ -425,21 +298,18 @@ get_header();
 					<div class="po-grid__meta">
 						<span class="po-grid__col-num"><?php echo esc_html( $po_col['number'] ); ?></span>
 						<?php
-						$po_g_lockup = isset( $po_lockup_map[ $po_slug ] ) ? $po_lockup_map[ $po_slug ] : null;
-						if ( $po_g_lockup ) :
+						$po_g_lockup = $po_lockup_map[ $po_slug ];
 							// Renders ≤140px (.po-grid__lockup) — same Photon/avif-suppression
 							// trade as the panel lockup above.
 							$po_gl_srcset = function_exists( 'skyyrose_photon_srcset' )
 								? skyyrose_photon_srcset( $po_g_lockup['webp'], array( 140, 280, 420 ) )
 								: '';
-							?>
+						?>
 							<picture class="po-grid__lockup">
 								<?php if ( '' !== $po_gl_srcset ) : ?>
 									<source srcset="<?php echo esc_attr( $po_gl_srcset ); ?>" sizes="140px" type="image/webp">
 								<?php else : ?>
-									<?php if ( ! empty( $po_g_lockup['avif'] ) ) : ?>
-										<source srcset="<?php echo esc_url( $po_g_lockup['avif'] ); ?>" type="image/avif">
-									<?php endif; ?>
+								<source srcset="<?php echo esc_url( $po_g_lockup['avif'] ); ?>" type="image/avif">
 									<source srcset="<?php echo esc_url( $po_g_lockup['webp'] ); ?>" type="image/webp">
 								<?php endif; ?>
 								<img src="<?php echo esc_url( $po_g_lockup['png'] ); ?>"
@@ -453,7 +323,6 @@ get_header();
 										style="<?php echo esc_attr( $po_g_lockup['style'] ); ?>"
 									<?php endif; ?>>
 							</picture>
-						<?php endif; ?>
 					</div>
 					<p class="po-grid__tagline"><?php echo esc_html( $po_col['tagline'] ); ?></p>
 				</header>
@@ -541,7 +410,7 @@ get_header();
 											?>
 											<a class="po-btn po-btn--reserve add_to_cart_button ajax_add_to_cart"
 												href="<?php echo esc_url( $po_product_url ); ?>"
-												data-product_id="<?php echo esc_attr( $po_wc_id ); ?>"
+											data-product_id="<?php echo esc_attr( (string) $po_wc_id ); ?>"
 												data-quantity="1"
 												rel="nofollow"
 												aria-label="<?php echo esc_attr( sprintf( /* translators: %s: product name */ __( 'Reserve %s', 'skyyrose' ), $po_name ) ); ?>">

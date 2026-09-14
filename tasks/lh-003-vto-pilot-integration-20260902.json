@@ -1,0 +1,107 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "LH-003-VTO-PILOT-INTEGRATION-20260902",
+  "state": "NEEDS_REVIEW",
+  "project_manager": "fashion-theme-lead",
+  "scope": {
+    "sku": "lh-003",
+    "scene_id": "LH-COMMERCE-2",
+    "capability": "product-fidelity-image-edits",
+    "target": "Add a fail-closed FASHN Try-On Max candidate route before Love Hurts scene construction",
+    "route": "fashn_tryon_max_candidate",
+    "exclusions": [
+      "paid provider execution",
+      "automatic provider retry or fallback",
+      "final Love Hurts scene generation",
+      "candidate promotion",
+      "storefront wiring",
+      "deployment"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "VTO integration project manager",
+      "capabilities": ["scope", "source authority", "credit control", "handoff"],
+      "deliverable": "Hash-bound candidate-only VTO route"
+    },
+    {
+      "name": "product-fidelity-image-edits",
+      "job_title": "VTO integration engineer",
+      "capabilities": ["provider adapter", "contract validation", "receipt binding"],
+      "deliverable": "Try-On Max client, OODA runner, pilot contract, and tests"
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Independent product-fidelity reviewer",
+      "capabilities": ["product construction", "identity", "optical integration"],
+      "deliverable": "Candidate-bound independent verdict after an authorized pilot",
+      "independent_from_project_manager": true,
+      "may_edit_candidate": false
+    }
+  ],
+  "acceptance_criteria": [
+    "The integration uses the registered FASHN tryon-max endpoint with separate model and product inputs.",
+    "The pilot is candidate-only and cannot authorize scene promotion, wiring, or deployment.",
+    "Every product and model input is path-contained and SHA-256 verified before dispatch.",
+    "The request uses one image, a fixed seed, explicit resolution and quality, lossless PNG, and private base64 return.",
+    "Provider submission is never automatically retried because an ambiguous network failure could duplicate a paid job.",
+    "Execution requires an explicit allow-spend flag plus a contract-bound approval receipt.",
+    "The LH-003 pilot remains blocked until a founder-approved full-body model source is bound.",
+    "An execution receipt binds the contract, model, job ID, request parameters, inputs, credits, and output hash.",
+    "Focused tests cover request shape, validation, stopgates, receipt creation, and non-retry behavior."
+  ],
+  "evidence_requirements": [
+    "official_fashn_tryon_max_contract",
+    "model_registry_entry",
+    "source_bound_vto_contract",
+    "focused_unit_tests",
+    "ruff_and_diff_check",
+    "independent_review"
+  ],
+  "authority": {
+    "product_sot": "data/product-sot.json",
+    "image_sot": "data/sot-images.json",
+    "source_authority": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json",
+    "model_identity_manifest": "Comfy/approved-identities/love-hurts/lh-model-01/identity-manifest.json",
+    "official_api_reference": "https://docs.fashn.ai/api-reference/tryon-max",
+    "model_lifecycle_reference": "https://docs.fashn.ai/api-overview/model-lifecycle"
+  },
+  "credit_control": {
+    "provider": "fashn",
+    "model": "tryon-max",
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "allow_spend_required": true,
+    "approval_receipt_required": true
+  },
+  "issues": [
+    {
+      "issue_id": "LH003-VTO-INPUT-001",
+      "state": "OPEN",
+      "first_seen": "2026-09-02",
+      "description": "The approved LH-MODEL-01 assets are identity-only bust references; Try-On Max requires a suitable full-body model image to preserve.",
+      "resolution_required": "Bind a founder-approved full-body model source and approval receipt before authorizing the one-candidate pilot."
+    }
+  ],
+  "manager_verification": {
+    "status": "IMPLEMENTATION_VERIFIED_PILOT_BLOCKED",
+    "evidence": [
+      "FASHN Try-On Max request fields, Preview lifecycle, credit matrix, image limits, and polling flow were verified against the current first-party API documentation on 2026-09-02.",
+      "The canonical Fashion Theme Team and repository distribution model registries both validate with 20 models and contain byte-identical Try-On Max entries.",
+      "The repository client sends product_image and model_image separately, uses a fixed seed and explicit quality/resolution, returns private base64 PNG data, and reports credits without inventing a USD conversion.",
+      "The non-idempotent provider submission is attempted exactly once; ambiguous network outcomes stop for manual provider-history reconciliation.",
+      "The VTO OODA runner validates project-contained paths, SHA-256 source and authority bindings, the exact four directional product views, model authority, output reservation, paid approval, and independent review receipts.",
+      "98 relevant tests passed across the FASHN client, VTO OODA, scene OODA, public virtual-try-on surface, and Elite Studio try-on agent.",
+      "Black, Ruff, focused MyPy, JSON parsing, and git diff checks passed.",
+      "The live LH-003 preflight passes its model registry, request, primary product, product authority, all four source views, and output-path checks, then blocks on MISSING_PATH, FULL_BODY_MODEL_NOT_APPROVED, and MISSING_PAID_APPROVAL_RECEIPT.",
+      "No FASHN request was submitted and zero credits were used."
+    ]
+  },
+  "founder_approval": {
+    "status": "NOT_REQUESTED",
+    "scope": "VTO candidate and product-fidelity decision only"
+  },
+  "release_decision": "NOT_AUTHORIZED"
+}

@@ -1,7 +1,7 @@
 # DevSkyy Contributor Guide
 
-**Last Updated**: 2026-07-06
-**Source of Truth**: `Makefile`, `pyproject.toml`, `package.json`, `wordpress-theme/package.json`, `frontend/package.json`, `.env.example`
+**Last Updated**: 2026-08-01
+**Source of Truth**: `Makefile`, `pyproject.toml`, `package.json`, `wordpress-theme/package.json`, `frontend/package.json`, `.env.example`, `scripts/remediation/env.example`
 
 Renamed from `CONTRIB.md` to the standard GitHub filename; content otherwise carried forward.
 
@@ -23,7 +23,19 @@ cp .env.wordpress.example .env.wordpress   # WordPress.com / WooCommerce credent
 # 3. Verify
 python -c "import fastapi; print('Python OK')"
 npm run type-check            # Root TypeScript OK
+
+# 4. Run the API locally (non-Docker)
+.venv/bin/python -m uvicorn main_enterprise:app --host 0.0.0.0 --port 8000
 ```
+
+**Do not run `python main_enterprise.py` directly, and do not add `--reload`.** Its
+`if __name__ == "__main__"` block calls `uvicorn.run(..., reload=True)`, and on
+macOS the reload watcher's subprocess spawn crashes with `SIGSEGV` /
+`nw_settings_child_has_forked` before the app finishes booting (bug-263 — see
+`.wolf/buglog.json`). `make dev` only installs dependencies, it does not start
+a server. The plain `uvicorn` invocation above (no `--reload`) is the verified
+working local command; `docs/RUNBOOK.md` documents the same entry point for
+Docker.
 
 This repo has **three independent workspaces** — don't cross-install dependencies between them:
 
@@ -98,21 +110,21 @@ See `docs/DOCKER.md` for the full Docker workflow and `make catalog-help` for ca
 | `npm run build:watch` | TypeScript compilation (watch mode) |
 | `npm run dev` | Dev server with nodemon |
 | `npm run start` | Production server (`node dist/index.js`) |
-| `npm run test` | Jest test suite |
-| `npm run test:watch` | Jest in watch mode |
-| `npm run test:coverage` | Jest with coverage |
-| `npm run test:ci` | CI mode (no watch, coverage) |
+| `npm run test` | Vitest unit-test suite |
+| `npm run test:watch` | Vitest in watch mode |
+| `npm run test:coverage` | Vitest with coverage |
+| `npm run test:ci` | Vitest CI run with coverage |
 | `npm run lint` / `lint:fix` | ESLint on `src/**/*.{ts,tsx,js,jsx}` |
 | `npm run format` / `format:check` | Prettier on `src/` + root `.json`/`.md` |
 | `npm run type-check` | TypeScript type checking (no emit) |
 | `npm run clean` | Remove `dist/` and `coverage/` |
 | `npm run prepare` | Husky setup + build (runs on `npm install`) |
 | `npm run precommit` | lint + type-check + test:ci |
-| `npm run security:audit` / `security:fix` | `npm audit` / `npm audit fix` |
+| `npm run security:audit` / `security:audit:production` | Full dependency audit / production-only high-severity gate |
 | `npm run deps:check` / `deps:update` | `npm outdated` / `npm update` |
 | `npm run demo:collections` | List all available 3D demos |
 | `npm run demo:black-rose` / `demo:signature` / `demo:love-hurts` / `demo:showroom` / `demo:runway` | Launch a specific 3D collection demo (Vite) |
-| `npm run test:collections` | Jest, `--testPathPatterns=collections`, no coverage |
+| `npm run test:collections` | Vitest collection-focused unit tests |
 
 ### WordPress theme (`cd wordpress-theme/`)
 
@@ -132,7 +144,7 @@ See `docs/DOCKER.md` for the full Docker workflow and `make catalog-help` for ca
 | `npm run deploy:full` | Same script with `--with-maintenance` (legacy maintenance-mode path; default deploy is hot-swap) |
 | `npm run deploy:verify` | Cache-busted `curl -sIL` against the live site |
 | `npm run backfill:nextgen[:dry\|:loop]` | AVIF/WebP backfill via `wp-cli-nextgen-backfill.sh` |
-| `npm run designqc[:local]` | OpenWolf design QC screenshots (live site / local) |
+| `npm run designqc[:local]` | Playwright desktop/mobile visual-QA screenshots (live site / local) |
 | `npm run audit:deps` / `audit:fix` | `npm audit --omit=dev` / `npm audit fix` |
 | `npm run size` | Print `.min.css`/`.min.js` bundle sizes |
 
@@ -232,10 +244,22 @@ Copy `.env.example` to `.env` and fill in values (root/API). Copy `.env.wordpres
 
 | Variable | Required | Description |
 |----------|----------|--------------|
-| `NEXT_PUBLIC_API_URL` | Yes | Backend API URL |
+| `NEXT_PUBLIC_API_URL` | Yes | Backend API URL — defaults to `http://localhost:8000` if unset (`lib/api/config.ts`); the Hub/Agents admin screens silently render empty ("No agents reporting") with no error if nothing is listening there |
 | `NEXT_PUBLIC_WS_URL` | Yes | WebSocket URL |
 | `NEXTAUTH_SECRET` | Yes | NextAuth session secret |
 | `NEXT_PUBLIC_WORDPRESS_URL` | Optional | WordPress for WooCommerce integration |
+
+**Admin dashboard ↔ WordPress/WooCommerce** (`frontend/.env.local` — contract defined in `scripts/remediation/env.example`, populated via `python3 scripts/remediation/setup_credentials.py`). Next.js only loads `frontend/.env*`; it does **not** read a repo-root `.env`, so these must be set in `frontend/.env.local` specifically even though the setup script's default `--env-file` is root `.env`:
+
+| Variable | Required | Description |
+|----------|----------|--------------|
+| `WP_BASE_URL` | Yes | e.g. `https://skyyrose.co` — used by `lib/wp/client.ts`, distinct from `WORDPRESS_URL` (legacy proxy stack) |
+| `WP_APP_USER` / `WP_APP_PASSWORD` | Yes | WordPress Application Password (service user) — read by `app/admin/settings/page.tsx` for the live "Connected" status card |
+| `WC_CONSUMER_KEY` / `WC_CONSUMER_SECRET` | Yes | WooCommerce REST API keys (Read/Write) — distinct from `WOOCOMMERCE_KEY`/`WOOCOMMERCE_SECRET` (legacy proxy stack) |
+| `WP_WEBHOOK_SECRET` | Yes | HMAC secret for inbound WooCommerce webhooks — auto-generated by the setup script |
+| `REVALIDATE_SECRET` | Yes | Next.js on-demand revalidation secret — auto-generated by the setup script |
+
+Verify live connectivity (read-only, never prints secret values): `python3 scripts/remediation/wiring_audit.py`.
 
 Generate secrets:
 ```bash
@@ -257,7 +281,7 @@ rtk proxy pytest tests/ -v             # Use for the TRUE exit code — bare pyt
                                         # misreport "no tests collected" as a pass
 
 # TypeScript (root)
-npm run test                           # Jest
+npm run test                           # Vitest
 npm run test:coverage                  # With coverage
 
 # Both

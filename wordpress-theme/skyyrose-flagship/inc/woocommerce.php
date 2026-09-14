@@ -187,22 +187,23 @@ add_filter( 'woocommerce_get_image_size_thumbnail', 'skyyrose_woocommerce_thumbn
  */
 function skyyrose_woocommerce_cart_fragments( $fragments ) {
 
-	if ( ! WC()->cart ) {
+	$cart = WC()->cart;
+	if ( ! $cart instanceof WC_Cart ) {
 		return $fragments;
 	}
 
-	$count = WC()->cart->get_cart_contents_count();
+	$count = $cart->get_cart_contents_count();
 
 	ob_start();
 	?>
-	<span class="cart-count<?php echo esc_attr( $count > 0 ? ' has-items' : '' ); ?>"><?php echo wp_kses_data( $count ); ?></span>
+	<span class="cart-count<?php echo esc_attr( $count > 0 ? ' has-items' : '' ); ?>"><?php echo wp_kses_data( (string) $count ); ?></span>
 	<?php
 	$fragments['.cart-count'] = ob_get_clean();
 
 	// Also provide the cart subtotal for mini-cart widgets.
 	ob_start();
 	?>
-	<span class="cart-subtotal"><?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?></span>
+	<span class="cart-subtotal"><?php echo wp_kses_post( $cart->get_cart_subtotal() ); ?></span>
 	<?php
 	$fragments['.cart-subtotal'] = ob_get_clean();
 
@@ -510,7 +511,8 @@ function skyyrose_ajax_get_cart_count() {
 
 	check_ajax_referer( 'skyyrose-woo-nonce', 'nonce' );
 
-	$count = ( function_exists( 'WC' ) && WC()->cart ) ? WC()->cart->get_cart_contents_count() : 0;
+	$cart  = WC()->cart;
+	$count = $cart instanceof WC_Cart ? $cart->get_cart_contents_count() : 0;
 
 	wp_send_json_success(
 		array(
@@ -560,7 +562,7 @@ function skyyrose_wc_inject_product_attrs(): void {
 
 	printf(
 		'<div class="skyy-product-meta" hidden data-product-id="%s" data-collection="%s" data-name="%s"></div>',
-		esc_attr( $product_id ),
+		esc_attr( (string) $product_id ),
 		esc_attr( $collection ),
 		esc_attr( $name )
 	);
@@ -586,7 +588,7 @@ add_action( 'woocommerce_before_shop_loop_item_title', 'skyyrose_wc_inject_produ
  */
 function skyyrose_wc_ghost_loop_image( $html, $product, $size ) {
 	unset( $size );
-	if ( is_admin() || ! $product instanceof WC_Product ) {
+	if ( is_admin() ) {
 		return $html;
 	}
 	if ( $product->get_image_id() ) {
@@ -654,7 +656,7 @@ function skyyrose_product_filter_defaults( $args ) {
 		if ( $template === $template_name ) {
 			// Pre-select collection category in product filters.
 			$term = get_term_by( 'slug', $slug, 'product_cat' );
-			if ( $term && ! is_wp_error( $term ) ) {
+			if ( $term ) {
 				$args['product_cat'] = $term->term_id;
 			}
 
@@ -671,33 +673,47 @@ function skyyrose_product_filter_defaults( $args ) {
 }
 add_filter( 'woocommerce_product_filters_default_args', 'skyyrose_product_filter_defaults' );
 
-/*
---------------------------------------------------------------
- * Deprecated Function Replacement (WC 9.9)
- *--------------------------------------------------------------*/
-
 /**
- * Force WooCommerce classic template paths (hybrid FSE).
+ * Render the My Account UI when the page content does not.
  *
- * Core `wp_is_block_theme()` is true once `templates/index.html` exists
- * (Site Editor hybrid scaffold, 2026-07). WooCommerce 9.9+ uses
- * `wc_is_block_theme` / `wp_is_block_theme()` to pick block vs classic
- * product/cart/checkout templates. We intentionally keep WC on classic
- * PHP under `woocommerce/` until a dedicated WC block-template cutover.
+ * Live page 9710 (/my-account/) holds only the placeholder paragraph "This page
+ * uses the SkyyRose Flagship theme template. Content is rendered by the theme."
+ * — no [woocommerce_my_account] shortcode, no block equivalent, and the theme
+ * ships no woocommerce/myaccount/ override. Verified against production 2026-07-27:
+ * logged out OR in, visitors got no login form, no orders, no addresses. The page
+ * content explicitly delegates rendering to the theme, so the theme must render it.
  *
- * Do NOT remove this filter without shipping WC block templates and
- * verifying cart, checkout, PDP, and archive on production.
+ * Runs at priority 9 — BEFORE core's do_shortcode() at 11 — so the returned
+ * shortcode is expanded normally by the existing filter chain. Idempotent: if the
+ * content ever gains the shortcode (or a block equivalent) this yields to it, so
+ * a later content fix does not double-render.
  *
- * @since 6.6.0
- * @since 1.12.x Hybrid FSE: still returns false for WC only.
+ * Zero production DB writes, matching the template_include remedies in
+ * inc/redirects.php used for the stale-meta Collections/Cart/Checkout pages.
  *
- * @param  bool $is_fse Whether WC thinks the theme is a block theme.
- * @return bool Always false — classic WC templates only.
+ * @since 1.12.9
+ * @param string $content Post content.
+ * @return string
  */
-function skyyrose_override_fse_detection( $is_fse ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter
-	return false;
+function skyyrose_account_content_fallback( $content ) {
+	if ( ! function_exists( 'is_account_page' ) || ! is_account_page() ) {
+		return $content;
+	}
+
+	// Only the main page body — never excerpts, widgets, or secondary loops.
+	if ( ! in_the_loop() || ! is_main_query() ) {
+		return $content;
+	}
+
+	// Already renders the account UI (shortcode or WC block) — leave it alone.
+	if ( has_shortcode( $content, 'woocommerce_my_account' )
+		|| has_block( 'woocommerce/customer-account', $content ) ) {
+		return $content;
+	}
+
+	return '[woocommerce_my_account]';
 }
-add_filter( 'wc_is_block_theme', 'skyyrose_override_fse_detection' );
+add_filter( 'the_content', 'skyyrose_account_content_fallback', 9 );
 
 /*
 --------------------------------------------------------------

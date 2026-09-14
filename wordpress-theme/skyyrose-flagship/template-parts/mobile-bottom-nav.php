@@ -54,7 +54,7 @@ if ( is_front_page() ) {
 
 // Cart count (WooCommerce-aware).
 $mobile_nav_cart_count = 0;
-if ( function_exists( 'WC' ) && WC()->cart ) {
+if ( function_exists( 'WC' ) && WC()->cart instanceof WC_Cart ) {
 	$mobile_nav_cart_count = WC()->cart->get_cart_contents_count();
 }
 
@@ -133,7 +133,7 @@ $mobile_nav_svg_kses = array(
 				</svg>
 				<?php if ( 'cart' === $item['id'] && $mobile_nav_cart_count > 0 ) : ?>
 					<span class="mobile-nav__badge" aria-label="<?php echo esc_attr( sprintf( __( '%d items in cart', 'skyyrose' ), $mobile_nav_cart_count ) ); ?>">
-						<?php echo esc_html( $mobile_nav_cart_count ); ?>
+						<?php echo esc_html( (string) $mobile_nav_cart_count ); ?>
 					</span>
 				<?php endif; ?>
 			</span>

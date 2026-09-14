@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 --------------------------------------------------------------
  * Theme Constants
  *--------------------------------------------------------------*/
-define( 'SKYYROSE_VERSION', '1.12.8' );
+define( 'SKYYROSE_VERSION', '2.2.4' );
 define( 'SKYYROSE_DIR', get_template_directory() );
 define( 'SKYYROSE_URI', get_template_directory_uri() );
 
@@ -66,11 +66,14 @@ $skyyrose_core_includes = array(
 	'/inc/brand-colors.php',
 	'/inc/collections-config.php',
 	'/inc/enqueue.php',
+	'/inc/enqueue-templates.php',
 	'/inc/enqueue-performance.php',
 	'/inc/enqueue-phases.php',
 	'/inc/customizer.php',
 	'/inc/mascot-config.php',
 	'/inc/template-functions.php',
+	'/inc/storefront-data.php',
+	'/inc/page-upgrades.php',
 	'/inc/security.php',
 	'/inc/accessibility-fix.php',
 	'/inc/accessibility-seo.php',
@@ -81,6 +84,9 @@ $skyyrose_core_includes = array(
 	'/inc/experience-rooms.php',
 	'/inc/collections-world.php',
 	'/inc/product-catalog.php',
+	// Homepage v3 act data — depends on collections-config, collections-world
+	// and product-catalog above, so it loads after all three.
+	'/inc/homepage-data.php',
 	'/inc/product-catalog-display.php',
 	'/inc/v7-cards.php',
 	'/inc/immersive-product-adapter.php',
@@ -98,8 +104,10 @@ $skyyrose_core_includes = array(
 	'/inc/performance-guardian.php',
 	'/inc/image-placements.php',
 	'/inc/performance.php',
+	'/inc/performance-cli.php',
 	'/inc/patterns.php',
 	'/inc/fashion-chrome.php',
+	'/inc/marketplace-compat.php',
 	// Customer enhancements: fit notes metabox, drop block customizer, sticky ATC helper.
 	// Loaded in core (not WC-only) so the Customizer section registers on all pages.
 	'/inc/customer-enhancements.php',

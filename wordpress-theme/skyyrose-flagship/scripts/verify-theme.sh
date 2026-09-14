@@ -307,9 +307,13 @@ fi
 
 if want escaping; then
   # advisory: echo of a bare variable in a template without an esc_* wrapper
+  # Scan the tree once. Explicit WPCS OutputNotEscaped annotations are reviewed
+  # framework HTML and are already validated by PHPCS, so they are not findings.
   hits=$(grep -rInE "echo[[:space:]]+\\\$[A-Za-z_]" \
-         --include='*.php' --exclude-dir=vendor --exclude-dir=node_modules \
-         woocommerce parts template-parts patterns . 2>/dev/null \
+         --include='*.php' --exclude-dir=vendor --exclude-dir=node_modules . 2>/dev/null \
+         | sort -u \
+         | grep -v "phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped" \
+         | grep -vE "echo[^?]*\\?[[:space:]]*'[^']*'[[:space:]]*:[[:space:]]*'[^']*'" \
          | grep -cvE "esc_html|esc_attr|esc_url|wp_kses|esc_textarea|absint|intval|(int)")
   if [ "${hits:-0}" -eq 0 ]; then record PASS escaping "no obvious unescaped echo in templates"
   else record WARN escaping "$hits possible unescaped 'echo \$var' — review for esc_*()"; fi
@@ -317,9 +321,57 @@ fi
 
 if want a11y-static; then
   d=""
-  # <img ... > without alt= in delivered php templates
-  noalt=$(grep -rInE "<img[^>]*>" --include='*.php' --exclude-dir=vendor --exclude-dir=node_modules . 2>/dev/null \
-          | grep -civE "alt=")
+  # <img ... > without alt= in delivered php templates.
+  #
+  # The former line-based grep was wrong in BOTH directions and reported a fixed 72
+  # forever: it counted <img> inside comments/docblocks and multi-line tags whose alt=
+  # sat on the following line (false positives), while missing tags whose opening line
+  # contained no '>' at all (false negatives). Audited 2026-07-27: all 72 were false,
+  # zero real missing-alt defects.
+  #
+  # Parsing, not line-matching. Order matters: PHP blocks are stripped FIRST, because
+  # `<img src="<?php echo esc_url( $u ); ?>" alt="x">` has its first '>' inside `?>`,
+  # which is what truncated the tag and hid the alt.
+  if command -v php >/dev/null 2>&1; then
+    # token_get_all() distinguishes real inline HTML from PHP string/regex
+    # literals. Regex-stripping PHP cannot do that reliably when a PHP string
+    # itself contains tag-like text or `?>`.
+    noalt=$(php <<'PHPEOF'
+<?php
+$iterator = new RecursiveIteratorIterator(
+	new RecursiveCallbackFilterIterator(
+		new RecursiveDirectoryIterator( '.', FilesystemIterator::SKIP_DOTS ),
+		static function ( SplFileInfo $current ): bool {
+			return ! $current->isDir() || ! in_array( $current->getFilename(), array( 'vendor', 'node_modules' ), true );
+		}
+	)
+);
+$count = 0;
+foreach ( $iterator as $file ) {
+	if ( 'php' !== strtolower( $file->getExtension() ) ) {
+		continue;
+	}
+	$html = '';
+	foreach ( token_get_all( (string) file_get_contents( $file->getPathname() ) ) as $token ) {
+		if ( is_array( $token ) && T_INLINE_HTML === $token[0] ) {
+			$html .= $token[1];
+		}
+	}
+	$html = preg_replace( '/<!--.*?-->/s', ' ', $html );
+	preg_match_all( '/<img\b[^>]*>/is', (string) $html, $tags );
+	foreach ( $tags[0] as $tag ) {
+		if ( ! preg_match( '/\balt\s*=/i', $tag ) ) {
+			++$count;
+		}
+	}
+}
+echo $count;
+PHPEOF
+)
+  else
+    noalt=$(grep -rInE "<img[^>]*>" --include='*.php' --exclude-dir=vendor --exclude-dir=node_modules . 2>/dev/null \
+            | grep -civE "alt=")
+  fi
   [ "${noalt:-0}" -gt 0 ] && d="$d ${noalt} <img> without alt;"
   grep -rq "language_attributes\|<html[^>]*lang=" header.php 2>/dev/null || d="$d no lang attr in header;"
   grep -rq "skip-link\|skip-to-content\|screen-reader-shortcut" --include='*.php' . 2>/dev/null || d="$d no skip-link;"

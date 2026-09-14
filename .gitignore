@@ -138,6 +138,7 @@ node_modules/
 npm-debug.log
 yarn-error.log
 package-lock.json
+!/package-lock.json
 !frontend/package-lock.json
 yarn.lock
 pnpm-lock.yaml
@@ -151,6 +152,7 @@ bun.lockb
 artifacts/
 cache/
 .cache/
+/hub/
 tmp/
 temp/
 *.tsbuildinfo
@@ -306,6 +308,10 @@ wordpress-theme/skyyrose-flagship/data/product-references/techflat-vision-analys
 wordpress-theme/skyyrose-flagship/inc/brand.generated.php
 
 # --- Renders / generated media (2026-06-22, regenerable, kept on disk) ---
+# Scroll-world production/previz exports are local review artifacts. Keep the
+# source manifests and handoff docs elsewhere; do not make Git enumerate media
+# from this multi-gigabyte working tree.
+renders/scroll-world/
 renders/**/*.webp
 renders/**/*.avif
 renders/**/*.jpg
@@ -375,6 +381,8 @@ open-claude-code/
 .wolf/claude-mem-digest.md
 .wolf/memory-audit.json
 .wolf/designqc-captures/
+.wolf/_scan-state.json
+.wolf/anatomy-index.json
 
 # --- claude-mem per-folder context injection ---
 # → CLAUDE.local.md (FOLDER_USE_LOCAL_MD=true). Claude Code still loads it as
@@ -386,6 +394,11 @@ CLAUDE.local.md
 # 61MB; founder-picked variants are PORTED into the theme, scratch itself is
 # not tracked. Un-ignore deliberately if a variant must be preserved.
 prototypes/
+
+# --- Local scratchpad scripts ---
+# One-off rigging and gap-scan helpers remain available locally but are not
+# release inputs. Promote a helper into scripts/ when it becomes canonical.
+scratchpad/
 
 # --- Vendored third-party repo ---
 # Microsoft TRELLIS.2 — Linux+CUDA only, do not commit (see /TRELLIS.2/ above)

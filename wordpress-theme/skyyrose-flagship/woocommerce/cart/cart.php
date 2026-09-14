@@ -79,15 +79,15 @@ do_action( 'woocommerce_before_cart' );
 		$skyy_cart_total = (float) WC()->cart->get_subtotal();
 		$skyy_threshold  = defined( 'SKYYROSE_FREE_SHIPPING_THRESHOLD' ) ? (float) SKYYROSE_FREE_SHIPPING_THRESHOLD : 200;
 		$skyy_remaining  = max( 0, $skyy_threshold - $skyy_cart_total );
-		$skyy_progress   = $skyy_threshold > 0 ? min( 100, ( $skyy_cart_total / $skyy_threshold ) * 100 ) : 100;
+		$skyy_progress   = min( 100, ( $skyy_cart_total / $skyy_threshold ) * 100 );
 		$skyy_qualified  = $skyy_remaining <= 0;
 		?>
 		<div class="skyy-cart__shipping-bar rv-blur" role="progressbar"
-			aria-valuenow="<?php echo esc_attr( round( $skyy_progress ) ); ?>"
+			aria-valuenow="<?php echo esc_attr( (string) round( $skyy_progress ) ); ?>"
 			aria-valuemin="0" aria-valuemax="100"
 			aria-label="<?php esc_attr_e( 'Free shipping progress', 'skyyrose' ); ?>">
 			<div class="skyy-cart__shipping-track">
-				<div class="skyy-cart__shipping-fill" style="width: <?php echo esc_attr( round( $skyy_progress ) ); ?>%"></div>
+				<div class="skyy-cart__shipping-fill" style="width: <?php echo esc_attr( (string) round( $skyy_progress ) ); ?>%"></div>
 			</div>
 			<p class="skyy-cart__shipping-msg">
 				<?php if ( $skyy_qualified ) : ?>
@@ -281,9 +281,9 @@ do_action( 'woocommerce_before_cart' );
 											</div>',
 											esc_attr( $cart_item_key ),
 											esc_attr__( 'Decrease quantity', 'skyyrose' ),
-											esc_attr( $cart_item['quantity'] ),
-											esc_attr( $min_quantity ),
-											esc_attr( $max_quantity > 0 ? $max_quantity : 99 ),
+											esc_attr( (string) $cart_item['quantity'] ),
+											esc_attr( (string) $min_quantity ),
+											esc_attr( (string) ( $max_quantity > 0 ? $max_quantity : 99 ) ),
 											esc_attr__( 'Item quantity', 'skyyrose' ),
 											esc_attr__( 'Increase quantity', 'skyyrose' )
 										);

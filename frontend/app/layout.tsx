@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import { Inter } from 'next/font/google'
-import { playfair, cormorant, spaceMono } from '@/lib/fonts'
+import { playfair, cormorant, spaceMono, cinzel, barlow, bebasNeue } from '@/lib/fonts'
 import { SyncStatusToast } from '@/components/wordpress/sync-status-toast'
 import MascotBubble from '@/components/mascot/MascotBubble'
 import { Analytics } from '@vercel/analytics/react'
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`dark ${playfair.variable} ${cormorant.variable} ${spaceMono.variable}`}
+      className={`dark ${playfair.variable} ${cormorant.variable} ${spaceMono.variable} ${cinzel.variable} ${barlow.variable} ${bebasNeue.variable}`}
     >
       <body className={inter.className}>
         <QueryProvider>
@@ -40,8 +40,8 @@ export default function RootLayout({
           <MascotBubble />
         </Suspense>
         <SyncStatusToast />
-        <Analytics />
-        <SpeedInsights />
+        {process.env.VERCEL && <Analytics />}
+        {process.env.VERCEL && <SpeedInsights />}
       </body>
     </html>
   )

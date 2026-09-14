@@ -1,6 +1,250 @@
 # Current Tasks
 
-## ACTIVE — WP Commercial Theme Sweep (/loop dynamic) — 2026-07-19
+## ACTIVE — Refactor scripts/deploy-theme.sh (2026-08-01)
+
+Scope narrowed after advisor review (production deploy script, bug-107 history
+with `if fn` suppressing errexit for the whole dynamic call stack). Splitting
+`try_rsync()` or `verify_live()` is explicitly OUT of scope this pass:
+- `verify_live()`: a RETURN trap on line 867 (`trap "rm -f '$tmpfile'" RETURN`)
+  would fire early if the fetch were extracted into a helper, deleting the
+  response body before the size/grep/version checks run — silent false
+  "response too small" → bogus auto-rollback on a healthy deploy.
+- `try_rsync()`: `tmpzip`/`remote_tar_name`/`zstd_flag`/`swap_id` cross
+  section boundaries; bash 3.2 has no namerefs, so a split forces new
+  globals for no real readability win.
+- Neither is exercised by `--dry-run` (both return at their first line), so
+  a split here is unverifiable without a real production deploy.
+
+- [x] Dedup `RSYNC_EXCLUDES` (top-level) vs `tar_excludes` (inside
+      `try_rsync()`) — two hand-maintained arrays the code itself flags as
+      "keep in sync" but nothing enforces it. Extract a shared base +
+      documented per-consumer-only arrays + tiny renderer functions.
+      **Found and preserved (not fixed) a real divergence**: RSYNC_EXCLUDES
+      excludes `package.json`/`package-lock.json`/`composer.json`/
+      `composer.lock`/`webpack.config.js`/`generate_models.js` that
+      tar_excludes does NOT; tar_excludes excludes `_archive`/`.serena` that
+      RSYNC_EXCLUDES does not. tar/sftp is the live path (rsync protocol
+      isn't supported by WP.com), so those RSYNC-only files currently ship
+      to production. Reported as a finding, not silently fixed.
+- [x] Split `preflight_completeness()` (~78 lines) into
+      `check_version_triple()`, `check_tracked_files()`, `check_asset_floor()`
+      — three independent checks, no shared state crossing boundaries, and
+      `--dry-run` actually exercises this path so it's verifiable.
+
+### Verification — all green 2026-08-02 (STOPSHOW_ACK confirmed by founder, all local/no-network)
+- [x] `bash -n scripts/deploy-theme.sh` — SYNTAX OK
+- [x] Rendered RSYNC_EXCLUDES/tar_excludes (sourced defs-only, main() stripped)
+      vs pristine `git show HEAD` reconstruction, sorted+diffed — **IDENTICAL**
+      both arrays (50 rsync / 45 tar entries incl. the live dynamic data/
+      fail-closed gate, which read the same real data/ dir both times).
+      Proves the dedup did not change what ships.
+- [x] shellcheck (git-HEAD vs modified, `-s bash`): 0 issues both sides,
+      SC-code set diff empty — no pre-existing debt to attribute, no new debt.
+- [x] `bash scripts/deploy-theme.sh --dry-run` — full local pass. Confirmed
+      the 3-way `preflight_completeness()` split runs correctly: "Version
+      triple in sync: 2.2.3", "Tracked-file completeness: 1828/1828 on
+      disk", "Critical-asset floor: 3 emblem webp, 12 woff2, mascot GLB
+      present". Zero network/SSH contact (dry-run skips connectivity test).
+- [x] `git diff --name-only` → exactly `scripts/deploy-theme.sh` +
+      `tasks/todo.md`, nothing else. File 1124→1122 lines (net -2, despite
+      adding ~35 lines of new comment/renderer code — the old file had two
+      arrays' worth of duplicated `--exclude=` lines that the shared-base
+      design collapsed).
+
+### Left alone / flagged, not fixed
+- Line 653 `tar $zstd_flag -cf "$tmpzip" ...` is unchecked inside
+  `try_rsync()`, which runs with errexit suppressed (called as
+  `if try_rsync; then`). A tar failure falls through to `du` on a missing
+  file and is only caught downstream by the scp size-mismatch retry loop.
+  Real bug-086/bug-107-class gap — worth its own follow-up change, not
+  bundled into this refactor.
+
+### Stop-hook catch — 2 real test failures, fixed properly (not weakened)
+`tests/scripts/test_deploy_theme.py::TestExcludes::test_excludes_git` and
+`::test_excludes_tests` did a static regex grep for `--exclude='.git'` /
+`--exclude='tests/'` literally in the script source — broke because those
+patterns moved into the `SKYY_EXCLUDE_COMMON_*` arrays. Root cause was the
+test coupling to an implementation detail (literal adjacency to
+`--exclude=`), not a real regression — confirmed by the same
+manually-run byte-identical-array verification above. Fixed by adding
+`_rendered_excludes()` (sources the script with `main "$@"` stripped,
+reads the actual `RSYNC_EXCLUDES` array + `skyyrose_render_tar_excludes`
+output) and rewriting the 2 tests to assert on real rendered output
+instead of source text — strictly more rigorous, not a weakened check
+(would now catch a typo inside the render functions that the old regex
+never could). All 31 tests in the file green; ruff/isort/black clean.
+
+## ACTIVE — Harden repo middleware (2026-08-01)
+
+Scope: `security/security_middleware.py`, `billing/middleware.py`, `security/csp_middleware.py`,
+`core/middleware/tenant.py`, `security/input_validation.py` (CSRF secret only).
+
+Live-wiring check `[repo]`: `main_enterprise.py` mounts `billing_middleware` + `tenant_middleware`
+directly (lines 452-461) and has its own inline `security_headers_middleware` / `rate_limit_middleware`
+(lines 268-296). `SecurityMiddleware` and `CSPMiddleware` are never passed to `app.add_middleware()`
+anywhere in the app, `mcp_service.py`, or `api/index.py` — confirmed via grep, no hit outside their own
+files. Dead code today, but fully-featured-looking and importable (`create_security_middleware` factory
+exists) — the auth bug below is a landmine, not yet a live exploit.
+
+- [x] 1. `security/security_middleware.py` `_check_authentication` — was accepting ANY bearer token
+      ≥10 chars as valid. FIXED: now calls `security.jwt_oauth2_auth.jwt_manager.validate_token()`,
+      401 on `ExpiredSignatureError`/`InvalidTokenError`, verified `TokenPayload` stored on
+      `request.state.user`. Still dead code (never mounted) — repair, not live hardening.
+- [x] 2. `billing/middleware.py` entitlement check — was failing OPEN on Redis/infra error. FIXED:
+      returns 503 `entitlement_check_unavailable` instead of `call_next(request)`; confirmed no
+      health-check route falls under the `elite-studio|portal` creative-path regex. **This was the
+      one live fix** — logged as bug recurrence below.
+- [x] 3. `security/csp_middleware.py` `dispatch` — was skipping `_add_security_headers()` for all
+      non-HTML responses. FIXED: baseline headers now apply to every response; only the CSP directive
+      itself is skipped for non-HTML. Dead code (never mounted) — repair, not live hardening.
+- [x] 4. `core/middleware/tenant.py` `_extract_jwt_claims` — algorithm allowlist widened to
+      `["HS256", "HS512"]` while the issuer (`JWTConfig.algorithm`) only ever signs HS512. FIXED:
+      narrowed to `["HS512"]`, and validates issuer/audience with `JWTConfig` alongside signature.
+      Regression test confirms tenant context resolves from a normally-issued JWT. Corrected the
+      "WITHOUT verification" docstring (signature IS verified).
+      Live code (tenant_middleware is mounted) — closes real unnecessary attack surface.
+- [x] 5. `security/input_validation.py` `SecurityValidator._csrf_secret` — class-level fallback was
+      per-process, so multi-worker deployments without `CSRF_SECRET_KEY` reject cross-worker tokens.
+      FIXED: module-level ephemeral fallback stays shared by every validator in one process; startup
+      warning requires `CSRF_SECRET_KEY` for multi-worker production. Review P2 addressed: added
+      cross-instance token-validation regression test. Only reachable via dead
+      `SecurityMiddleware`/`APISecurityMiddleware` today — repair, not live hardening.
+- [x] Verify: `rtk proxy pytest tests/test_security.py tests/test_saas_infrastructure.py -v` →
+      209 passed, 2 pre-existing intentional skips, 0 failures. `ruff check` + `isort --check-only` +
+      `black --check` on all 7 Python files → clean. `git diff --name-only` → scope-clean (5 hardened
+      files, 2 regression-test files, plus this todo.md; pre-existing unrelated dirty files from session
+      start untouched).
+
+## ACTIVE — Commercial-Grade Theme Build, fashion-theme-architect owns it — 2026-07-27
+
+Supersedes the 2026-07-19 sweep below (same goal, folded in — live has since moved 1.12.0→1.12.8,
+so that entry's blocking/status lines are stale; its Sentinel/Lighthouse loop-until-90 mandate
+carries forward into Phase 2 here rather than running standalone).
+
+Goal: skyyrose.co storefront pushed to full commercial/production quality — real catalog, real
+content (not genericized/resold), zero placeholders, full WCAG/security/performance bar, plus a
+deliberate visual upgrade sourced from a screened 176-pattern shortlist. Owner agent:
+**fashion-theme-architect** (`.claude/agents/fashion-theme-architect.md`, upgraded 2026-07-27 with
+§2b shortlist boot + §5.2 Motion QA gate). Actual worktree: `.claude/worktrees/glimmering-crafting-shannon`
+(the planned `theme-commercial-build` worktree was never created — this session executed in-place;
+clean, un-diverged from origin/main on the theme path at kickoff).
+
+**2026-07-27 execution session (today, founder deadline):** Phase 0 run — verify:theme baseline
+captured, min-sync FAIL fixed (`clean-css` module was missing from `node_modules`; `npm install` +
+full `npm run build` resolved it, confirmed benign single-line minifier-version drift, not content
+change). wp-security baseline: 1 MEDIUM (bug-289, kids-capsule REST publish-status leak) found+fixed.
+wp-code-simplifier baseline captured (dead-refs, duplicate-selector count, size-growth — see
+`.wolf/memory.md` 2026-07-27 entries for detail). Phase 1 dispatched to fashion-theme-architect
+(background agent `funnel-architect`), scope-cut for today: full Phase 1 funnel-to-commercial-grade
++ ONLY 4 code-extending Phase 1a patterns (luxury-cursor/product-card-holo/toast/footer-cro) + 2 font
+retokens. Remaining 12 Phase 1a patterns and ALL of Phase 1b (Immersive Worlds) explicitly deferred
+past today — not dropped, just sequenced after the funnel ships.
+
+Visual source: `docs/design/visual-pattern-shortlist.md` — 176/202 patterns screened against real
+brand tokens/fonts/references. 24 extend existing code (`luxury-cursor.js`, `product-card-holo.js`,
+`toast.js`, `footer-cro.js`, try-on backend, Immersive Worlds) — build those first, cheapest wins.
+Known landmine: "Dark Luxury Hero"/"Dark Luxury Newsletter" spec a cut font (Cormorant Garamond) —
+retoken before building either.
+
+### 2026-07-29 session — collection template revamp + base-layout prototype (this worktree)
+- [x] Base-layout prototype SHIPPED: `docs/brand/design-mockups/prototype-collection-base-layout.html`
+      (4 variants A–D, `?variant=`, Signature skin, real catalog/SOT data; verdict placeholder in
+      `prototype-collection-base-layout.NOTES.md`). Playwright/Chrome-verified: 4 distinct trees,
+      8 cards each, lockup images intact, mobile collapse OK.
+- [x] Founder picked VARIANT C (scroll-world spine) 2026-07-29 → folded in + independently verified:
+      NEW `template-parts/collection/film-spine.php` (sticky scroll-scrub film, 3 SOT-product hotspots,
+      pin_beats captions), grid split in two with marquee-copy band, experience/lookbook/feature-scroll
+      after grids, pin-narrative include dropped (kids LANDING template still consumes the part — not
+      orphaned). All UNCOMMITTED.
+- [ ] Delete prototype pair + OPEN-VARIANT-* launchers after founder confirms fold-in on live (or on request)
+- [x] `collection-revamp` agent DONE + independently re-verified 2026-07-29: 15 patterns / 4 collections
+      in NEW `assets/css/collection-motion.css` (597) + `assets/js/collection-motion.js` (303) + enqueue
+      wiring + `magnetic` class on hero CTA. My re-run: php -l clean, lint:php clean, cut-fonts 0,
+      reduced-motion in all 4 new files, verify:theme 2 FAILs both PRE-EXISTING (min-sync terser drift,
+      file-size). Section order unchanged; heroes/film/experience intact. UNCOMMITTED.
+- [x] DEPLOYED v1.13.0 to skyyrose.co 2026-07-29 (preflight 1805/1805, homepage 13/13 Scrapling PASS)
+- [x] Post-deploy QA on BR/LH/SIG [live]: spine+beats+hotspots render correct real product/price/voice
+      per collection, video playing, 0 console errors, hotspots real focusable links. Verified via
+      Playwright computed-style+text (NOT screenshots — headless CLI --screenshot and Playwright's
+      screenshot tool both failed to paint this page's video/JS layer; a tooling gap, not a site defect)
+- [x] GAP CLOSED — reduced-motion live-verified via page.emulateMedia() (browser_run_code_unsafe):
+      all 3 collections confirm stage collapses to static, track shrinks 2520px->~1300px, beats
+      render as static stack, hotspots stay present. Matches spec.
+- [x] Kids Capsule 0 spine/motion markers — CONFIRMED via 5-lens adversarial audit (workflow
+      wf_2912d330-ecb): skyyrose_kc_is_launch_mode() + kc-launch routing predates cd2899fe7 by
+      3.5mo (c4d00b98a, 2026-04-12); zero refs to it in cd2899fe7's diff. Pre-existing, not a
+      regression, confirmed by git blame + git show, not just inferred.
+- [x] Adversarial audit (5 independent lenses, ultracode workflow) on shipped v1.13.0 source —
+      2 CLEAN (reduced-motion completeness: 24 effects all guarded, zero gaps beyond what was
+      already checked; toggle-move claim: functionally sound, structurally rewritten not
+      byte-identical as claimed, no a11y regression), 2 REAL FINDINGS fixed below, 1 confirmed above.
+- [x] FIX — hotspot price text WCAG AA failure: LH accent-text (#FF5C7A) computed 3.49:1, KC
+      (#B76E79) 2.73:1 against the rest-state plate composited over a bright video frame (both
+      below 4.5:1 AA). Changed `.col-film__hotspot-price` to `#fff` (matches the name span, proven
+      10.37:1 worst-case). Accent identity kept on border/dot/focus-outline (non-text, no WCAG
+      1.4.3 risk). File: assets/css/collection-film-spine.css.
+- [x] FIX — LCP-doctrine violation: initFilmSpine()'s initial update() ran synchronously at
+      DOMContentLoaded (forced layout + style writes), inside the FCP->LCP window Wave 7b exists
+      to protect; not part of the interaction/8s-gated loader chain. Deferred to `load` event,
+      matching the existing Kids-bounce pattern. File: assets/js/collection-motion.js.
+- [x] v1.13.1 committed (functions.php/style.css/readme.txt triple bump) — both fixes verified:
+      php -l clean, correct min output confirmed by content (not just presence), verify:theme same
+      2 pre-existing FAILs only (min-sync terser drift, file-size — neither touches these 2 files).
+      UNCOMMITTED->committed, awaiting deploy y.
+- [ ] Follow-ups flagged by builder (pre-existing, NOT this session's): `.col-cta` has zero styles
+      theme-wide; min-sync terser drift needs lockfile or one-time full-min rebuild commit; KC
+      launch-mode ON bypasses collection-standalone assets (kids motion invisible until off); 5 inc/
+      files over 800-line gate
+
+### Phase 0 — Audit (read-only, in the new worktree, before any code changes)
+- [ ] `devskyy` MCP: `serena_full_project_audit`, `serena_check_code_style`, `serena_validate_security`, `serena_find_issues` — SKIPPED today (time-boxed); wp-security + wp-code-simplifier baselines cover the same ground for this pass
+- [x] `wp-security` agent pass (CSP/nonce/escaping/auth/upload/SQL) — 1 MEDIUM found+fixed (bug-289), zero CRITICAL/HIGH
+- [ ] Accessibility baseline — deferred to Phase 2 Accessibility Auditor (needs-browser checks anyway, verify:theme only does static `<img alt>` count: 72 without alt, WARN not FAIL)
+- [x] `npm run verify:theme` baseline — captured; min-sync FAIL fixed (npm install, npm run build); 1 pre-existing FAIL remains (file-size, 5 PHP files, out of scope today), 2 WARN (escaping, a11y)
+- [x] `wp-code-simplifier` — dead-code/file-bloat baseline captured (4 dead-refs, 43 dup selectors, homepage-v2.css 1339→1993 lines)
+
+### Phase 1a — Visual direction (informs Phase 1, doesn't block it — cheap wins can start immediately)
+- [ ] Retoken the two font-landmine patterns (Dark Luxury Hero, Dark Luxury Newsletter) to Cinzel/Pinyon Script + real `#D4AF37`
+- [ ] Build the 16 priority-tier patterns first (table at top of `visual-pattern-shortlist.md`) — they extend code that already exists
+- [ ] Each pattern built passes Motion QA (`fashion-theme-architect.md` §5.2) before being marked done
+
+### Phase 1b — Immersive Worlds enhancement (wp-immersive owns; NOT fashion-theme-architect — top-of-funnel storytelling, not shopping)
+4 live templates: `template-immersive-black-rose.php`, `-love-hurts.php`, `-signature.php`, `-kids-capsule.php` — real, actively maintained (`assets/js/immersive.js` last touched 2026-07-23), not stale. Shortlist patterns tagged ★ "matches Immersive Worlds build" apply directly here:
+- [ ] Black Rose (gothic cathedral) — Smoke/Fog Drift Background, 3D Scroll Depth Scene, Full Page 3D Scene Hero
+- [ ] Love Hurts (romantic castle) — Bioluminescent Wave / Interactive Ink Drop Background, Fluid Simulation Section, Ink Bleed Text Reveal (graffiti-identity match), Retro VHS Scanline (mood-specific)
+- [ ] Signature (city tour) — Sunrise/Sunset Sky Gradient Animator, Liquid Metal/Chrome Material Effect (gold token), Constellation Star Field
+- [ ] Kids Capsule — Physics-Based Bouncing Logo Elements (playful register fit)
+- [ ] Cross-collection: Multi-Layer Parallax Scene, Scroll-Triggered Hero w/ Sequence Frames, Scroll-Driven SVG Map Animation (Bay Area/Oakland founder-story tie-in) — any page it fits
+- [ ] Each pattern still passes fashion-theme-architect.md §5.2 Motion QA (reduced-motion, cut-font grep, token grep, mobile WebGL fallback) even though wp-immersive is the builder — the gate isn't agent-specific
+- [ ] `immersive-wc-bridge.js` stays untouched by this phase unless a hotspot needs a real product link — that's the one legitimate funnel crossover point, per wp-immersive's own charter
+
+### Phase 1 — Funnel build (fashion-theme-architect owns; wp-theme-dev/wp-woocommerce/wp-catalog-sync as needed)
+- [ ] Home → collection → PDP → cart → checkout → account, all templates resolve, zero white-screens
+- [ ] WooCommerce wiring: add-to-cart (simple+variable), AJAX cart, mini-cart, cross-sell/upsell, real catalog data
+- [ ] Real content everywhere — no lorem, no "coming soon" as final state (Kids Capsule's 0-card launch mode is documented by-design, not a gap)
+- [ ] Customizer options wired so non-code reskinning is possible
+- [ ] Demo import + `screenshot.png` + complete `style.css` header + README
+
+### Phase 2 — Cross-cutting gates (dispatch in parallel once Phase 1 lands)
+- [ ] `wp-security` + `security-reviewer` — two independent OWASP/CSP passes
+- [ ] Accessibility Auditor — re-verify WCAG holds post-build
+- [ ] `chrome-devtools` MCP `lighthouse_audit` + `performance_start_trace`/`performance_analyze_insight` — carries forward the old sweep's "every page ≥90 all categories, mobile+desktop" mandate
+- [ ] `e2e-runner` (Playwright) — add-to-cart, checkout, account critical flows
+- [ ] `wp-code-simplifier` — final pass after the full batch of edits
+
+### Phase 3 — Adversarial verify (never trust the builder's own "done")
+- [ ] `theme-heal-doctor` + `theme-heal-verifier` pair on anything flagged live-broken
+- [ ] Independent re-run: `npm run verify:theme` fresh (not fashion-theme-architect's cached claim), `npm run lint:php`, `git diff --stat` scope check
+- [ ] Reality Checker pass — default NEEDS WORK, require overwhelming proof before calling this "commercial-grade"
+
+### Phase 4 — Docs + ship (STOP-AND-SHOW gated, not autonomous)
+- [ ] `doc-updater` — codemap refresh
+- [ ] `npm run deploy:dry` preview, then `npm run deploy` — exact manifest shown, wait for `y`
+- [ ] `devskyy` MCP `wp_verify_live` post-deploy
+
+---
+
+## FOLDED IN ABOVE — WP Commercial Theme Sweep (/loop dynamic) — 2026-07-19
 
 Goal: skyyrose.co every page Lighthouse ≥90 (all 4 categories, mobile+desktop) + commercial-grade
 aesthetics (headers aligned, heroes visually sound). Award-grade finish.

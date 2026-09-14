@@ -19,18 +19,17 @@ parameters:
         - template-landing-signature.php
         - template-preorder-gateway.php
         - template-about.php
-        - template-immersive-signature.php
-        - template-immersive-black-rose.php
-        - template-immersive-love-hurts.php
-        - template-immersive-kids-capsule.php
+        - template-collections-world.php
+        - template-coming-soon.php
+        - template-size-guide.php
         - template-elementor-canvas.php
-        - template-elementor-fullwidth.php
         - template-elementor-editorial.php
         - template-faq.php
         - template-shipping-returns.php
         - template-contact.php
         - template-landing-kids-capsule.php
         - page-wishlist.php
+        - page-collections.php
         - comments.php
         - archive.php
         - index.php
@@ -49,7 +48,7 @@ parameters:
         # Without (?) phpstan aborts before analysing anything.
         - node_modules/ (?)
         - tests/
-        - blueprints/
+        - blueprints/ (?)
         - docs/
 
     # scanFiles = symbol DISCOVERY (declares classes/functions/constants PHPStan
@@ -60,6 +59,7 @@ parameters:
         - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
         - vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
         - phpstan/constants.php
+        - tests/stubs/wp-cli.php
 
     # These resolve to install-specific paths/URLs at runtime, so PHPStan must
     # not narrow them to the placeholder literals in phpstan/constants.php.
@@ -67,7 +67,29 @@ parameters:
         - SKYYROSE_DIR
         - SKYYROSE_URI
         - COOKIEPATH
+        - SKYYROSE_COMING_SOON_MODE
 
     ignoreErrors:
         # Elementor — optional integration, not present in analysis environment
         - '#.*(unknown class|invalid type|call to method .* on an unknown class) Elementor\\.*#'
+
+        # vendor/php-stubs/woocommerce-stubs declares WC()->cart as non-nullable WC_Cart,
+        # but WooCommerce only populates it once wc_load_cart() runs on 'woocommerce_init' —
+        # it is genuinely null in early/edge-case contexts (nopriv admin-ajax before session
+        # bootstrap, WP-CLI, some REST paths). These instanceof/negation checks are real
+        # runtime guards against that gap, not dead code; the stub's type is optimistic.
+        -
+            identifier: instanceof.alwaysTrue
+            path: inc/woocommerce.php
+        -
+            identifier: instanceof.alwaysTrue
+            path: inc/wishlist-functions.php
+        -
+            identifier: instanceof.alwaysTrue
+            path: template-parts/mobile-bottom-nav.php
+        -
+            identifier: booleanNot.alwaysFalse
+            path: woocommerce/cart/cart.php
+        -
+            identifier: booleanNot.alwaysFalse
+            path: woocommerce/checkout/form-checkout.php

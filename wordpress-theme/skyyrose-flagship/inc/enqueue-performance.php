@@ -65,10 +65,10 @@ function skyyrose_preload_fonts() {
 		<link rel="preload" href="<?php echo esc_url( $fonts_dir . '/inter-latin.woff2' ); ?>" as="font" type="font/woff2" crossorigin>
 		<?php
 	}
-	// Cinzel is above-fold ONLY on Black Rose pages (collection + immersive
-	// templates). Skip the preload elsewhere so non-BR pages don't waste
+	// Cinzel is above-fold only on Black Rose collection pages. Skip the preload
+	// elsewhere so non-BR pages don't waste
 	// bandwidth on a font they never render.
-	if ( in_array( $slug, array( 'collection', 'collection-standalone', 'immersive' ), true ) ) {
+	if ( in_array( $slug, array( 'collection', 'collection-standalone' ), true ) ) {
 		$queried = get_queried_object();
 		$is_br   = $queried && isset( $queried->post_name )
 			&& false !== strpos( (string) $queried->post_name, 'black-rose' );
@@ -195,7 +195,7 @@ function skyyrose_async_noncritical_styles( $html, $handle ) {
 	// content templates the footer/mascot chrome renders at doc end and can
 	// never be in-viewport at first paint — the wave-2 render-blocking keep
 	// was for SHORT pages (cart/wishlist), which stay critical.
-	$tall_content_slugs = array( 'front-page', 'collection-standalone', 'landing', 'preorder-gateway', 'immersive', 'kc-launch', 'collections-world' );
+	$tall_content_slugs = array( 'front-page', 'collection-standalone', 'landing', 'preorder-gateway', 'kc-launch', 'collections-world' );
 	if ( in_array( $slug, $tall_content_slugs, true ) ) {
 		$async_handles[] = 'skyyrose-footer';
 		$async_handles[] = 'skyyrose-footer-cro';
@@ -205,9 +205,7 @@ function skyyrose_async_noncritical_styles( $html, $handle ) {
 
 	// Collection pages: grep-verified ZERO .col-hero selectors in these
 	// sheets — everything they style sits below the 100vh hero (the embedded
-	// scene layer renders at collection/page.php:184, after the hero). The
-	// immersive trio stays render-blocking on the 'immersive' slug, where
-	// the scene IS the above-fold surface.
+	// scene layer renders at collection/page.php:184, after the hero).
 	if ( 'collection-standalone' === $slug ) {
 		$async_handles[] = 'skyyrose-pin-narrative';
 		$async_handles[] = 'skyyrose-collection-feature-scroll';
@@ -295,32 +293,27 @@ function skyyrose_preload_hero_image() {
 			}
 		}
 
-		// Round-4: on the editorial PDP layout the LCP is the encounter image
-		// (product-detail-editorial.php $hero_image — a theme-asset catalog
-		// image), NOT the WC gallery attachment — and the old gallery preload
-		// was ALSO Photon-skipped, leaving the PDP with no LCP preload at all
-		// (load delay 1,106ms). Mirror single-product.php's own gates exactly:
-		// same skyyrose_get_product( $sku ) entry, same dossier editorial gate.
-		$pdp_sku      = ( $product instanceof WC_Product ) ? $product->get_sku() : '';
-		$pdp_entry    = ( '' !== $pdp_sku && function_exists( 'skyyrose_get_product' ) ) ? skyyrose_get_product( $pdp_sku ) : null;
-		$pdp_dossier  = ( '' !== $pdp_sku && function_exists( 'skyyrose_get_product_dossier' ) ) ? skyyrose_get_product_dossier( $pdp_sku ) : null;
-		$is_editorial = $pdp_dossier && ! empty( $pdp_dossier['has_editorial_content'] );
-
-		if ( $is_editorial && ! empty( $pdp_entry['image'] ) && function_exists( 'skyyrose_product_image_uri' ) ) {
-			$image_url = skyyrose_product_image_uri( $pdp_entry['image'] );
-		} elseif ( ! function_exists( 'jetpack_photon_url' ) ) {
-			// Non-editorial PDPs keep the gallery-image preload. Jetpack
-			// Photon rewrites gallery URLs to its CDN on delivery — preloading
-			// the local URL wastes a connection, so skip under Photon and let
-			// the browser's own LCP heuristic take over.
-			if ( $product instanceof WC_Product && $product->get_image_id() ) {
-				// Use WC's "woocommerce_single" sized variant (~300-600KB) instead
-				// of wp_get_attachment_url() which returns the raw original
-				// (often 2-3MB). Cuts PDP preload payload ~80%. (audit 2026-05-23)
-				$image_url = wp_get_attachment_image_url( $product->get_image_id(), 'woocommerce_single' );
-				if ( ! $image_url ) {
-					$image_url = wp_get_attachment_url( $product->get_image_id() );
-				}
+		/*
+		 * 2026-07-29 Lighthouse (mobile, live br-001): the measured LCP element
+		 * is the WC gallery image (.wp-post-image, i0.wp.com ?resize=800,1024,
+		 * NO srcset) with a 5,714ms load delay — while the round-4 encounter
+		 * preload fetched a DIFFERENT theme asset at high priority. Both prior
+		 * assumptions are disproven by live markup:
+		 *   - the editorial encounter image is not the mobile LCP element;
+		 *   - the Photon "wastes a connection" skip is wrong — Photon filters
+		 *     image_downsize server-side, so wp_get_attachment_image_url()
+		 *     returns the SAME i0.wp.com URL the rendered <img> carries. The
+		 *     preload is byte-identical to the element fetch, no extra host.
+		 * So: every PDP preloads the gallery featured image, exactly as the
+		 * template will render it. Post-deploy check: the emitted preload href
+		 * must equal the .wp-post-image src (see task verify commands).
+		 * 'woocommerce_single' variant, not the raw original — the original is
+		 * often 2-3MB (audit 2026-05-23).
+		 */
+		if ( $product instanceof WC_Product && $product->get_image_id() ) {
+			$image_url = wp_get_attachment_image_url( absint( $product->get_image_id() ), 'woocommerce_single' );
+			if ( ! $image_url ) {
+				$image_url = wp_get_attachment_url( absint( $product->get_image_id() ) );
 			}
 		}
 	} elseif ( is_page() ) {
@@ -331,22 +324,6 @@ function skyyrose_preload_hero_image() {
 			// generic branch below preloaded — that was a wasted fetch while
 			// the real LCP waited (load delay 1,142ms). Same file, same URL.
 			$image_url = get_theme_file_uri( 'assets/images/homepage-story-founder.webp' );
-		} else {
-			// Immersive pages: preload featured image if set. 'large' (max
-			// 1024px) instead of 'full' — full is typically 2-4MB and far
-			// exceeds what any viewport needs for a hero preload. Collection
-			// templates removed (Wave 5): skyyrose_preload_template_lcp()
-			// now preloads their measured LCP (.col-hero__bg srcset) exactly;
-			// a second featured-image preload here would be a wasted fetch.
-			$hero_templates = array(
-				'template-immersive-black-rose.php',
-				'template-immersive-love-hurts.php',
-				'template-immersive-signature.php',
-				'template-immersive-kids-capsule.php',
-			);
-			if ( $template && in_array( $template, $hero_templates, true ) && has_post_thumbnail() ) {
-				$image_url = get_the_post_thumbnail_url( get_the_ID(), 'large' );
-			}
 		}
 	}
 
@@ -487,9 +464,7 @@ function skyyrose_template_never_renders_content() {
 		'collections-index',
 		'kc-launch',
 		'landing',
-		'immersive',
 		'preorder-gateway',
-		'experiences',
 		'about',
 		'contact',
 		'faq',
