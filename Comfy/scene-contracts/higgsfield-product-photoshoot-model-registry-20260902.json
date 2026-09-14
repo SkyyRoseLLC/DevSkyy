@@ -1,0 +1,32 @@
+{
+  "schema": "product-fidelity-model-registry.v2",
+  "verified_on": "2026-09-02",
+  "unknown_models": "block",
+  "exactness_rule": "Higgsfield Product Photoshoot reference conditioning creates a candidate; it does not lock exact garment pixels, text, construction, cast identity, or optical integration.",
+  "models": [
+    {
+      "id": "higgsfield-product-photoshoot-gpt-image-2",
+      "aliases": ["gpt_image_2"],
+      "provider": "higgsfield",
+      "modality": "image",
+      "status": "live_cli_verified",
+      "capabilities": [
+        "scene_generation",
+        "reference_generation",
+        "multi_reference",
+        "high_resolution",
+        "hero_banner"
+      ],
+      "allowed_operations": ["scene_generation", "product_image_candidate"],
+      "blocked_operations": [
+        "protected_pixel_edit",
+        "exact_product_claim",
+        "automatic_paid_retry",
+        "runtime_promotion"
+      ],
+      "fidelity_tier": "candidate_only",
+      "notes": "Higgsfield Product Photoshoot 0.12.0 enhances the request and submits gpt_image_2. Live CLI 1.1.23 confirmed 16:9, repeated image references, high quality, and 2k output. Treat every output as candidate-only and independently verify exact products and native integration.",
+      "source": "https://github.com/higgsfield-ai/skills/blob/main/higgsfield-product-photoshoot/SKILL.md and https://github.com/higgsfield-ai/cli/blob/main/MODELS.md"
+    }
+  ]
+}

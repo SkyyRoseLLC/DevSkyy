@@ -13,11 +13,12 @@ skipped, never rendered as an incomplete image.
 
 from __future__ import annotations
 
-import csv
 import functools
 import logging
 from dataclasses import dataclass
 from pathlib import Path
+
+from skyyrose.core.catalog_loader import read_catalog_rows
 
 from . import config
 
@@ -43,17 +44,16 @@ def load_catalog() -> dict[str, dict]:
     catalog: dict[str, dict] = {}
     if not config.CATALOG_CSV.exists():
         raise FileNotFoundError(f"Catalog CSV not found: {config.CATALOG_CSV}")
-    with config.CATALOG_CSV.open(newline="", encoding="utf-8") as fh:
-        for row in csv.DictReader(fh):
-            sku = (row.get("sku") or "").strip()
-            if not sku:
-                continue
-            catalog[sku] = {
-                "name": (row.get("name") or "").strip(),
-                "collection": (row.get("collection") or "").strip(),
-                "is_preorder": (row.get("is_preorder") or "").strip() == "1",
-                "output_slug": (row.get("render_output_slug") or "").strip() or sku,
-            }
+    for row in read_catalog_rows(config.CATALOG_CSV):
+        sku = row["sku"].strip()
+        if not sku:
+            continue
+        catalog[sku] = {
+            "name": (row.get("name") or "").strip(),
+            "collection": (row.get("collection") or "").strip(),
+            "is_preorder": (row.get("is_preorder") or "").strip() == "1",
+            "output_slug": (row.get("render_output_slug") or "").strip() or sku,
+        }
     return catalog
 
 
@@ -154,7 +154,7 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
         "sg-007": {"front": s / "signature" / "sg-beanie-purple.jpeg", "back": None},
         "sg-009": {"front": p / "sherpa-jacket-front.jpg", "back": None},
         "sg-011": {"front": p / "original-label-tee-white-front.webp", "back": None},
-        "sg-012": {"front": p / "original-label-tee-orchid-front.webp", "back": None},
+        "sg-012": {"front": p / "sg-012-original-label-tee-orchid.webp", "back": None},
         "sg-013": {
             "front": s / "signature" / "sg-mint-lav-crewneck-front.jpeg",
             "back": s / "signature" / "sg-mint-lav-crewneck-back.jpeg",

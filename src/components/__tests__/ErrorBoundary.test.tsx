@@ -1,6 +1,6 @@
 /**
  * Unit Tests for ErrorBoundary
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import React from 'react';
@@ -10,7 +10,7 @@ import { ErrorBoundary, ErrorFallback, withErrorBoundary } from '../ErrorBoundar
 // Suppress console.error from error boundaries
 const originalConsoleError = console.error;
 beforeAll(() => {
-  console.error = jest.fn();
+  console.error = vi.fn();
 });
 afterAll(() => {
   console.error = originalConsoleError;
@@ -23,7 +23,7 @@ function ThrowingComponent({ shouldThrow }) {
 }
 
 describe('ErrorFallback', () => {
-  const mockReset = jest.fn();
+  const mockReset = vi.fn();
   const testError = new Error('Something went wrong');
 
   it('should render error message', () => {
@@ -32,16 +32,12 @@ describe('ErrorFallback', () => {
   });
 
   it('should render custom title', () => {
-    render(
-      <ErrorFallback error={testError} resetErrorBoundary={mockReset} title="Custom Error" />
-    );
+    render(<ErrorFallback error={testError} resetErrorBoundary={mockReset} title='Custom Error' />);
     expect(screen.getByText('Custom Error')).toBeTruthy();
   });
 
   it('should render custom message', () => {
-    render(
-      <ErrorFallback error={testError} resetErrorBoundary={mockReset} message="Custom msg" />
-    );
+    render(<ErrorFallback error={testError} resetErrorBoundary={mockReset} message='Custom msg' />);
     expect(screen.getByText('Custom msg')).toBeTruthy();
   });
 
@@ -76,7 +72,7 @@ describe('ErrorBoundary', () => {
   });
 
   it('should call onError callback', () => {
-    const onError = jest.fn();
+    const onError = vi.fn();
     render(
       <ErrorBoundary onError={onError}>
         <ThrowingComponent shouldThrow={true} />
@@ -99,9 +95,7 @@ describe('ErrorBoundary', () => {
 
   it('should render fallbackRender', () => {
     render(
-      <ErrorBoundary
-        fallbackRender={({ error }) => <div>Render: {error.message}</div>}
-      >
+      <ErrorBoundary fallbackRender={({ error }) => <div>Render: {error.message}</div>}>
         <ThrowingComponent shouldThrow={true} />
       </ErrorBoundary>
     );

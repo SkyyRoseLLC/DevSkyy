@@ -1,0 +1,140 @@
+{
+  "contract_id": "v2-home-kids-capsule-reveal-v1",
+  "candidate_branch": "codex/skyyrose-flagship-v2-prototype",
+  "evidence_status": "LOCAL_CANDIDATE_VERIFIED_FOUNDER_AND_RELEASE_GATES_REMAIN",
+  "selected_direction": "kids-royal-procession-v1",
+  "production_code": {
+    "template": "wordpress-theme/skyyrose-flagship-2/template-parts/home/kids-capsule-reveal.php",
+    "placement": "wordpress-theme/skyyrose-flagship-2/front-page.php",
+    "commerce_resolver": "wordpress-theme/skyyrose-flagship-2/functions.php::skyyrose2_get_products_by_skus",
+    "styles": [
+      "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "wordpress-theme/skyyrose-flagship-2/assets/css/theme.min.css"
+    ],
+    "runtime": [
+      "wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.js",
+      "wordpress-theme/skyyrose-flagship-2/assets/js/kids-capsule-reveal.min.js"
+    ],
+    "source_gate": "wordpress-theme/skyyrose-flagship-2/scripts/verify-v2-candidate.sh"
+  },
+  "media": [
+    {
+      "role": "invitation",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/immersive/scene-kids-capsule-playroom.webp",
+      "bytes": 102036
+    },
+    {
+      "role": "red-guardian",
+      "source": "/Users/theceo/Downloads/archive/hf_20260719_195821_08103114-b886-4cb9-920d-f3c9f1a60497.png",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-mascot-red-guard.webp",
+      "bytes": 93008,
+      "sku": "kids-001"
+    },
+    {
+      "role": "purple-guardian",
+      "source": "/Users/theceo/Downloads/archive/hf_20260719_195824_9b711bc8-28a1-4320-9cab-a08cb4f9be18.png",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/home/on-model/kids-capsule-mascot-purple-guard.webp",
+      "bytes": 96032,
+      "sku": "kids-002"
+    },
+    {
+      "role": "heir",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/hero/kids-capsule-heir-throne-v3.webp",
+      "bytes": 142022
+    },
+    {
+      "role": "red-product-proof",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/kids-001-product-proof-400.webp",
+      "bytes": 27470,
+      "sku": "kids-001"
+    },
+    {
+      "role": "purple-product-proof",
+      "path": "wordpress-theme/skyyrose-flagship-2/assets/sot/images/products/kids-002-product-proof-400.webp",
+      "bytes": 9732,
+      "sku": "kids-002"
+    }
+  ],
+  "verified": {
+    "source_and_semantics": [
+      "top hero contains Signature, Black Rose, and Love Hurts only",
+      "Royal Procession appears exactly once after the top hero and before #collections",
+      "server-rendered chapter order is invitation, guardians, heir",
+      "section uses aria-labelledby and real DOM headings, product names, and links",
+      "exact kids-001 and kids-002 resolver fails closed on visibility, publication, and collection mismatch",
+      "reveal emits no duplicate Product or Offer schema and no hardcoded price or stock claim",
+      "runtime contains no preventDefault, wheel, or touchmove interception"
+    ],
+    "responsive_browser": {
+      "1440x1000": "three 72vw horizontal panels, adjacent chapter preview, resolved red and purple Woo proof, zero page overflow",
+      "768x1024": "84vw panels, full guardian stage, two-column product proof, zero page overflow",
+      "390x844": "vertical document order, full-body red and purple archive mascots, stacked proof cards, zero page overflow"
+    },
+    "interaction_and_fallbacks": [
+      "keyboard Enter on Next Chapter advances invitation to guardians and preserves focus",
+      "reduced motion removes transition and scroll snap while preserving all chapters and links",
+      "Save-Data sets static motion and preserves all chapters and links",
+      "no enhancement class renders a normal three-chapter grid and hides controls",
+      "purple guardian image failure preserves heading and two product links",
+      "missing kids-002 fixture renders unavailable copy with no purple price or stock claim"
+    ],
+    "budgets": {
+      "reveal_media_bytes": 470300,
+      "desktop_reveal_media_budget_bytes": 563200,
+      "guardian_red_bytes": 93008,
+      "guardian_purple_bytes": 96032,
+      "guardian_each_budget_bytes": 153600,
+      "throne_poster_bytes": 142022,
+      "throne_poster_budget_bytes": 204800,
+      "javascript_minified_bytes": 2224,
+      "javascript_gzip_bytes": 1019,
+      "javascript_gzip_budget_bytes": 6144,
+      "component_css_minified_bytes": 10228,
+      "component_css_gzip_bytes": 2417,
+      "component_css_minified_budget_bytes": 10240
+    },
+    "performance": {
+      "environment": "local preview, desktop 1440x1000, no CPU or network throttling",
+      "lcp_ms": 164,
+      "cls": 0.02,
+      "frame_sample_count": 120,
+      "average_frame_ms": 16.56,
+      "max_frame_ms": 18.7,
+      "dropped_full_frame_percent": 0,
+      "long_task_max_ms": 0,
+      "page_level_caveat": "existing full homepage assets still produce image-delivery and local cache opportunities outside the reveal component"
+    },
+    "lighthouse": {
+      "desktop_navigation": {
+        "accessibility": 100,
+        "best_practices": 100,
+        "seo": 100,
+        "agentic_browsing": 99,
+        "remaining_failed_audit": "cumulative-layout-shift scored 0.97 with measured CLS 0.067; the separate desktop performance trace measured CLS 0.02 and both values are within the good threshold"
+      },
+      "mobile_navigation": {
+        "accessibility": 100,
+        "best_practices": 100,
+        "seo": 100,
+        "agentic_browsing": 77,
+        "remaining_failed_audit": "the Lighthouse navigation sample measured CLS 0.235, while the immediately repeated mobile performance trace measured CLS 0.00; this local-preview variance remains a staging recheck item"
+      }
+    },
+    "validation": [
+      "PHP syntax for all changed PHP surfaces",
+      "JavaScript syntax for source and minified runtime",
+      "JSON parsing for contract, evidence, shot manifest, and ledgers",
+      "source/minified asset rebuild",
+      "V2 deterministic candidate gate",
+      "git diff whitespace validation"
+    ]
+  },
+  "unresolved_release_gates": [
+    "founder visual approval of the finished Royal Procession",
+    "rights and homepage-use records for active archive mascot, playroom, and throne bytes",
+    "independent visual accessibility and performance review on the same candidate",
+    "real staging WooCommerce SKU variation cart and purchase-path evidence",
+    "explicit founder authorization before deployment"
+  ],
+  "release_disposition": "LOCAL_REVIEW_READY_NOT_DEPLOYED"
+}
