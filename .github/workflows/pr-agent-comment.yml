@@ -1,4 +1,4 @@
-# Comments request a rerun of an existing pull_request review.
+# An explicit /pr-review comment requests an existing pull_request review.
 # This privileged event never checks out or executes PR code.
 name: PR Review Comment Requests
 
@@ -10,7 +10,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pr-review-comment-${{ github.event.issue.number }}-${{ github.run_id }}
+  group: pr-review-comment-${{ github.event.issue.number }}
   cancel-in-progress: false
 
 jobs:
@@ -24,7 +24,8 @@ jobs:
       github.event_name == 'issue_comment' && github.event.issue.pull_request &&
       !endsWith(github.actor, '[bot]') && github.event.issue.user.type != 'Bot' &&
       github.event.comment.user.type != 'Bot' &&
-      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association) &&
+      github.event.comment.body == '/pr-review'
     permissions:
       actions: write
       contents: read

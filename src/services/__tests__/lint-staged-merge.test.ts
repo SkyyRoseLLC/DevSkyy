@@ -72,7 +72,9 @@ describe('merge-aware lint-staged selection', () => {
     repo.git('merge', '--no-ff', '--no-commit', 'incoming');
     // An unstaged difference must not put an otherwise incoming file in scope.
     repo.write('frontend/page.tsx', 'unstaged edit\n');
-    for (const value of Object.values(commands(repo.cwd, incoming))) expect(value).toEqual([]);
+    for (const [key, value] of Object.entries(commands(repo.cwd, incoming))) {
+      expect(value).toEqual(key === 'frontend/**/*.{ts,tsx}' ? 'tsc --noEmit --project frontend/tsconfig.json' : []);
+    }
   });
 
   it('includes own staged changes and conflict resolutions, snapshotting before mutation', () => {
@@ -105,7 +107,7 @@ describe('merge-aware lint-staged selection', () => {
     repo.commit('base');
     const result = commands(repo.cwd, ['src/own.ts']);
     expect(result['src/**/*.{ts,tsx,js,jsx,mjs,cjs}']).toEqual([expect.stringContaining('src/own.ts')]);
-    for (const value of Object.values(
+    for (const [key, value] of Object.entries(
       commands(repo.cwd, [
         'Comfy/receipts/receipt.json',
         'plugins/fashion-theme-team/SKILL.md',
@@ -113,7 +115,7 @@ describe('merge-aware lint-staged selection', () => {
         'art.png',
       ])
     ))
-      expect(value).toEqual([]);
+      expect(value).toEqual(key === 'frontend/**/*.{ts,tsx}' ? 'tsc --noEmit --project frontend/tsconfig.json' : []);
   });
 });
 
@@ -133,6 +135,40 @@ function executable(repo: ReturnType<typeof fixture>, name: string, body: string
 }
 
 describe('real lint-staged execution', () => {
+  it('rejects a cross-branch type error without formatting byte-identical incoming TypeScript', () => {
+    const repo = fixture();
+    repo.write('frontend/types.ts', 'export type Item = { old: string };\n');
+    repo.write(
+      'frontend/tsconfig.json',
+      JSON.stringify({ compilerOptions: { strict: true, types: [], skipLibCheck: true } })
+    );
+    repo.write(
+      'test-config.mjs',
+      "import config from './lint-staged.config.mjs'; export default Object.fromEntries(Object.entries(config).filter(([key]) => key.startsWith('frontend/')));"
+    );
+    executable(
+      repo,
+      'tsc',
+      `require(${JSON.stringify(path.resolve(path.dirname(source), 'node_modules/typescript/lib/tsc.js'))});`
+    );
+    repo.commit('base');
+    repo.git('checkout', '-b', 'incoming');
+    const incoming = "import type { Item } from './types';\nexport const value: Item = { old: 'value' };\n";
+    repo.write('frontend/consumer.ts', incoming);
+    repo.commit('incoming');
+    repo.git('checkout', 'main');
+    repo.write('frontend/types.ts', 'export type Item = { current: string };\n');
+    repo.commit('ours');
+    repo.git('merge', '--no-ff', '--no-commit', 'incoming');
+    const result = runLintStaged(repo.cwd);
+    expect(result.status).toBe(1);
+    expect(result.stdout + result.stderr).toContain('TS2353');
+    expect(result.stdout + result.stderr).not.toContain('lint-staged-frontend.sh');
+    expect(readFileSync(path.join(repo.cwd, 'frontend/consumer.ts'), 'utf8')).toBe(incoming);
+    expect(repo.git('diff', '--cached', 'MERGE_HEAD', '--', 'frontend/consumer.ts')).toBe('');
+    expect(repo.git('stash', 'list')).toBe('');
+  });
+
   it('refuses an empty frontend file list rather than running broad ESLint fixes', () => {
     const result = spawnSync('bash', [path.resolve(path.dirname(source), 'scripts/lint-staged-frontend.sh')], {
       encoding: 'utf8',
