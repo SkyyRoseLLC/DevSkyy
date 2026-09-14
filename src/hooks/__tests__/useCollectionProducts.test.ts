@@ -1,6 +1,6 @@
 /**
  * Unit Tests for useCollectionProducts
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { renderHook, waitFor } from '@testing-library/react';
@@ -35,7 +35,7 @@ describe('useCollectionProducts', () => {
 
   beforeEach(() => {
     // Clear module-level cache between tests by clearing the fetch mock
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   afterEach(() => {
@@ -43,15 +43,15 @@ describe('useCollectionProducts', () => {
   });
 
   it('should fetch and transform products', async () => {
-    global.fetch = jest
+    global.fetch = vi
       .fn()
       .mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockCategories),
+        json: vi.fn().mockResolvedValue(mockCategories),
       })
       .mockResolvedValueOnce({
         ok: true,
-        json: jest.fn().mockResolvedValue(mockRawProducts),
+        json: vi.fn().mockResolvedValue(mockRawProducts),
       });
 
     const { result } = renderHook(() => useCollectionProducts({ categorySlug: 'black-rose', enableRetry: false }));
@@ -67,9 +67,9 @@ describe('useCollectionProducts', () => {
   });
 
   it('should handle category not found', async () => {
-    global.fetch = jest.fn().mockResolvedValueOnce({
+    global.fetch = vi.fn().mockResolvedValueOnce({
       ok: true,
-      json: jest.fn().mockResolvedValue([]),
+      json: vi.fn().mockResolvedValue([]),
     });
 
     const { result } = renderHook(() => useCollectionProducts({ categorySlug: 'nonexistent', enableRetry: false }));
@@ -82,7 +82,7 @@ describe('useCollectionProducts', () => {
   });
 
   it('should handle API failure', async () => {
-    global.fetch = jest.fn().mockResolvedValueOnce({
+    global.fetch = vi.fn().mockResolvedValueOnce({
       ok: false,
       statusText: 'Internal Server Error',
     });
@@ -99,7 +99,7 @@ describe('useCollectionProducts', () => {
   });
 
   it('should handle network error', async () => {
-    global.fetch = jest.fn().mockRejectedValue(new Error('Network error'));
+    global.fetch = vi.fn().mockRejectedValue(new Error('Network error'));
 
     const { result } = renderHook(() =>
       useCollectionProducts({ categorySlug: 'network-error-test', enableRetry: false })
@@ -113,7 +113,7 @@ describe('useCollectionProducts', () => {
   });
 
   it('should start in loading state', () => {
-    global.fetch = jest.fn().mockReturnValue(new Promise(() => {})); // never resolves
+    global.fetch = vi.fn().mockReturnValue(new Promise(() => {})); // never resolves
 
     const { result } = renderHook(() => useCollectionProducts({ categorySlug: 'loading-test' }));
 

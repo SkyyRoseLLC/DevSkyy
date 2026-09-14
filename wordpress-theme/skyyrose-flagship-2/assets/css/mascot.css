@@ -357,6 +357,12 @@
 	padding: 0;
 	position: relative;
 	flex-shrink: 0;
+	width: 168px;
+	min-height: 168px;
+}
+
+.skyyrose-mascot__character.is-3d-ready {
+	height: 260px;
 }
 
 /* --- Character Image — full body, never cropped ---
@@ -369,7 +375,7 @@
    every breakpoint, with no separate mobile override needed (bug-317). */
 
 .skyyrose-mascot__image {
-	width: 220px;
+	width: 168px;
 	aspect-ratio: 1024 / 1035;
 	height: auto;
 	object-fit: contain;
@@ -677,16 +683,15 @@
 	box-shadow: 0 6px 28px rgba(183, 110, 121, 0.4);
 }
 
-/* --- 3D canvas positioning — mirrors the walk-side of the widget it
-   sits behind (skyy-3d.js toggles display when a GLB is configured). --- */
+/* --- 3D canvas — lives inside the character button so the full body is
+   the chatbot trigger and inherits the widget's walk-on/off choreography. --- */
 
 .skyy-3d-canvas {
-	right: 20px;
-}
-
-.skyy-3d-canvas--left {
-	right: auto;
-	left: 20px;
+	position: absolute;
+	inset: 0;
+	width: 168px;
+	height: 260px;
+	pointer-events: none;
 }
 
 /* ===================================================================
@@ -779,7 +784,16 @@
 	}
 
 	.skyyrose-mascot__image {
-		width: 140px;
+		width: 104px;
+	}
+
+	.skyyrose-mascot__character {
+		width: 104px;
+		min-height: 105px;
+	}
+
+	.skyyrose-mascot__character.is-3d-ready {
+		height: 161px;
 	}
 
 	.skyy-bubble,
@@ -822,19 +836,12 @@
 	}
 
 	/* 3D canvas mirrors the widget's mobile size/offset — without this it
-	   stays a fixed 220x340px at the desktop 20px offset regardless of
+	   stays at the desktop footprint regardless of
 	   viewport, occupying far more mobile screen real estate than the 2D
 	   sprite it replaces. */
 	.skyy-3d-canvas {
-		width: 140px;
-		height: 216px;
-		bottom: calc(var(--skyyrose-mobile-nav-h, 72px) + env(safe-area-inset-bottom) + 16px);
-		right: 16px;
-	}
-
-	.skyy-3d-canvas--left {
-		right: auto;
-		left: 16px;
+		width: 104px;
+		height: 161px;
 	}
 }
 

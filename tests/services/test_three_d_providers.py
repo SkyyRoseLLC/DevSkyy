@@ -11,9 +11,11 @@ Author: DevSkyy Platform Team
 
 from __future__ import annotations
 
+import sys
 import tempfile
 from datetime import UTC, datetime
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import AsyncMock, MagicMock, patch
 
 import httpx
@@ -1482,8 +1484,21 @@ class TestHuggingFaceAsyncIO:
 
         return HuggingFaceProvider(mock_huggingface_config)
 
+    @staticmethod
+    def _install_mock_gradio_client(monkeypatch, client: MagicMock) -> None:
+        """Exercise the provider's lazy import without requiring the ml extra."""
+        monkeypatch.setitem(
+            sys.modules,
+            "gradio_client",
+            SimpleNamespace(
+                Client=MagicMock(return_value=client), handle_file=MagicMock(return_value="handle")
+            ),
+        )
+
     @pytest.mark.asyncio
-    async def test_run_trellis_dispatches_predict_via_to_thread(self, provider, tmp_path):
+    async def test_run_trellis_dispatches_predict_via_to_thread(
+        self, provider, tmp_path, monkeypatch
+    ):
         """_run_trellis must use asyncio.to_thread for client.predict()."""
         import asyncio
 
@@ -1496,17 +1511,16 @@ class TestHuggingFaceAsyncIO:
             str(fake_glb),
             str(fake_glb),
         )
+        self._install_mock_gradio_client(monkeypatch, mock_client)
 
-        with (
-            patch("asyncio.to_thread", wraps=asyncio.to_thread) as mock_to_thread,
-            patch("gradio_client.Client", return_value=mock_client),
-            patch("gradio_client.handle_file", return_value="handle"),
-        ):
+        with (patch("asyncio.to_thread", wraps=asyncio.to_thread) as mock_to_thread,):
             await provider._run_trellis(str(fake_glb), "corr-001")
             mock_to_thread.assert_called_once()
 
     @pytest.mark.asyncio
-    async def test_run_triposr_dispatches_predict_via_to_thread(self, provider, tmp_path):
+    async def test_run_triposr_dispatches_predict_via_to_thread(
+        self, provider, tmp_path, monkeypatch
+    ):
         """_run_triposr must use asyncio.to_thread for client.predict()."""
         import asyncio
 
@@ -1515,17 +1529,16 @@ class TestHuggingFaceAsyncIO:
 
         mock_client = MagicMock()
         mock_client.predict.return_value = (str(fake_mesh),)
+        self._install_mock_gradio_client(monkeypatch, mock_client)
 
-        with (
-            patch("asyncio.to_thread", wraps=asyncio.to_thread) as mock_to_thread,
-            patch("gradio_client.Client", return_value=mock_client),
-            patch("gradio_client.handle_file", return_value="handle"),
-        ):
+        with (patch("asyncio.to_thread", wraps=asyncio.to_thread) as mock_to_thread,):
             await provider._run_triposr(str(fake_mesh), "corr-002")
             mock_to_thread.assert_called_once()
 
     @pytest.mark.asyncio
-    async def test_run_shap_e_dispatches_predict_via_to_thread(self, provider, tmp_path):
+    async def test_run_shap_e_dispatches_predict_via_to_thread(
+        self, provider, tmp_path, monkeypatch
+    ):
         """_run_shap_e must use asyncio.to_thread for client.predict()."""
         import asyncio
 
@@ -1534,10 +1547,8 @@ class TestHuggingFaceAsyncIO:
 
         mock_client = MagicMock()
         mock_client.predict.return_value = (str(fake_mesh),)
+        self._install_mock_gradio_client(monkeypatch, mock_client)
 
-        with (
-            patch("asyncio.to_thread", wraps=asyncio.to_thread) as mock_to_thread,
-            patch("gradio_client.Client", return_value=mock_client),
-        ):
+        with (patch("asyncio.to_thread", wraps=asyncio.to_thread) as mock_to_thread,):
             await provider._run_shap_e("a 3D hooded sweatshirt", "corr-003")
             mock_to_thread.assert_called_once()

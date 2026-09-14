@@ -1,18 +1,20 @@
 /**
  * Unit Tests for CartManager (cartManager.ts)
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import { CartManager } from '../cartManager';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 /**
@@ -39,7 +41,7 @@ function createProduct(overrides = {}) {
 describe('CartManager', () => {
   beforeEach(() => {
     localStorage.clear();
-    jest.restoreAllMocks();
+    vi.restoreAllMocks();
   });
 
   // ----------------------------------------------------------------
@@ -539,7 +541,7 @@ describe('CartManager', () => {
   describe('subscribe and events', () => {
     it('should notify listeners on item_added', async () => {
       const cart = new CartManager();
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       await cart.addItem(createProduct(), 1);
       expect(cb).toHaveBeenCalledTimes(1);
@@ -548,7 +550,7 @@ describe('CartManager', () => {
 
     it('should include the cart item in add event', async () => {
       const cart = new CartManager();
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       await cart.addItem(createProduct(), 1);
       const event = cb.mock.calls[0][0];
@@ -558,7 +560,7 @@ describe('CartManager', () => {
 
     it('should include full cart state in every event', async () => {
       const cart = new CartManager();
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       await cart.addItem(createProduct(), 1);
       const event = cb.mock.calls[0][0];
@@ -571,7 +573,7 @@ describe('CartManager', () => {
     it('should notify listeners on item_removed', async () => {
       const cart = new CartManager();
       await cart.addItem(createProduct(), 1);
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       cart.removeItem('prod-1');
       expect(cb).toHaveBeenCalledWith(expect.objectContaining({ type: 'item_removed' }));
@@ -580,7 +582,7 @@ describe('CartManager', () => {
     it('should notify listeners on item_updated', async () => {
       const cart = new CartManager();
       await cart.addItem(createProduct(), 1);
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       cart.updateQuantity('prod-1', 5);
       expect(cb).toHaveBeenCalledWith(expect.objectContaining({ type: 'item_updated' }));
@@ -589,7 +591,7 @@ describe('CartManager', () => {
     it('should notify listeners on cart_cleared', async () => {
       const cart = new CartManager();
       await cart.addItem(createProduct(), 1);
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       cart.clearCart();
       expect(cb).toHaveBeenCalledWith(expect.objectContaining({ type: 'cart_cleared' }));
@@ -598,7 +600,7 @@ describe('CartManager', () => {
     it('should not include item in cart_cleared event', async () => {
       const cart = new CartManager();
       await cart.addItem(createProduct(), 1);
-      const cb = jest.fn();
+      const cb = vi.fn();
       cart.subscribe(cb);
       cart.clearCart();
       const event = cb.mock.calls[0][0];
@@ -607,7 +609,7 @@ describe('CartManager', () => {
 
     it('should unsubscribe when returned function is called', async () => {
       const cart = new CartManager();
-      const cb = jest.fn();
+      const cb = vi.fn();
       const unsubscribe = cart.subscribe(cb);
       unsubscribe();
       await cart.addItem(createProduct(), 1);
@@ -616,8 +618,8 @@ describe('CartManager', () => {
 
     it('should support multiple subscribers', async () => {
       const cart = new CartManager();
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
       cart.subscribe(cb1);
       cart.subscribe(cb2);
       await cart.addItem(createProduct(), 1);
@@ -627,10 +629,10 @@ describe('CartManager', () => {
 
     it('should handle subscriber errors gracefully without breaking other subscribers', async () => {
       const cart = new CartManager();
-      const badCb = jest.fn().mockImplementation(() => {
+      const badCb = vi.fn().mockImplementation(() => {
         throw new Error('subscriber error');
       });
-      const goodCb = jest.fn();
+      const goodCb = vi.fn();
       cart.subscribe(badCb);
       cart.subscribe(goodCb);
       await cart.addItem(createProduct(), 1);
@@ -640,8 +642,8 @@ describe('CartManager', () => {
 
     it('should not notify after all subscribers unsubscribe', async () => {
       const cart = new CartManager();
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
       const unsub1 = cart.subscribe(cb1);
       const unsub2 = cart.subscribe(cb2);
       unsub1();
@@ -722,7 +724,7 @@ describe('CartManager', () => {
     it('should handle localStorage.setItem failure gracefully', async () => {
       const cart = new CartManager();
       // Make setItem throw (e.g., storage quota exceeded)
-      jest.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
         throw new Error('QuotaExceededError');
       });
       // addItem should not throw even if save fails
@@ -746,36 +748,29 @@ describe('CartManager', () => {
     // We need to reset the module-level variable between tests.
     // The cleanest way is to re-import the module.
     beforeEach(() => {
-      jest.resetModules();
+      vi.resetModules();
     });
 
-    it('should return the same instance on subsequent calls', () => {
-      // Re-require to get a fresh module with null singleton
-      jest.isolateModules(() => {
-        const mod = require('../cartManager');
-        const a = mod.getCartManager();
-        const b = mod.getCartManager();
-        expect(a).toBe(b);
-      });
+    it('should return the same instance on subsequent calls', async () => {
+      const mod = await import('../cartManager');
+      const a = mod.getCartManager();
+      const b = mod.getCartManager();
+      expect(a).toBe(b);
     });
 
-    it('should create instance with provided config on first call', () => {
-      jest.isolateModules(() => {
-        const mod = require('../cartManager');
-        const instance = mod.getCartManager({ currency: 'CAD', taxRate: 0.13 });
-        expect(instance.getConfig().currency).toBe('CAD');
-        expect(instance.getConfig().taxRate).toBe(0.13);
-      });
+    it('should create instance with provided config on first call', async () => {
+      const mod = await import('../cartManager');
+      const instance = mod.getCartManager({ currency: 'CAD', taxRate: 0.13 });
+      expect(instance.getConfig().currency).toBe('CAD');
+      expect(instance.getConfig().taxRate).toBe(0.13);
     });
 
-    it('should ignore config on subsequent calls (singleton already created)', () => {
-      jest.isolateModules(() => {
-        const mod = require('../cartManager');
-        mod.getCartManager({ currency: 'CAD' });
-        const second = mod.getCartManager({ currency: 'JPY' });
-        // Second call's config is ignored - singleton was already created
-        expect(second.getConfig().currency).toBe('CAD');
-      });
+    it('should ignore config on subsequent calls (singleton already created)', async () => {
+      const mod = await import('../cartManager');
+      mod.getCartManager({ currency: 'CAD' });
+      const second = mod.getCartManager({ currency: 'JPY' });
+      // Second call's config is ignored - singleton was already created.
+      expect(second.getConfig().currency).toBe('CAD');
     });
   });
 

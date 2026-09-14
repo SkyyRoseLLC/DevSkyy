@@ -1,7 +1,7 @@
 # Fashion Theme Brain
 
 > **SKYYROSE LLC · FASHION THEME BRAIN**  
-> *Luxury Grows from Concrete.*
+> _Luxury Grows from Concrete._
 
 This directory is the active, governed knowledge layer for the Fashion Theme
 Team. It converts fashion-commerce evidence, platform requirements, page
@@ -65,7 +65,9 @@ competitor pattern, or model preference into a universal rule.
 - `knowledge/do-dont.md`: contrastive guardrails and generic-theme failure patterns.
 - `pages/page-blueprints.md`: human-readable full page and section system.
 - `pages/page-blueprints.json`: machine-routable page inventory and implementation mappings.
+- `features/premium-feature-catalog.json`: 44-item premium feature inventory with owner, contract, acceptance, and evidence requirements.
 - `prompts/prompt-stack.md`: prompt assembly, reasoning checklist, critic and evaluator loops.
+- `prompts/prompt-orchestration.md`: governed prompt engineering, typed chain stages, deterministic cache keys, invalidation, observability, and fallbacks.
 - `prompts/few-shot-patterns.md`: good/bad structured examples.
 - `prompts/evaluator-rubric.json`: weighted independent-review rubric and hard fails.
 - `schemas/*.schema.json`: strict HTML/JSON handoff contracts.
@@ -74,6 +76,8 @@ competitor pattern, or model preference into a universal rule.
 - `research/interactive-commerce-research-2026-08-06.md`: cited market scan of interactive, animated, immersive, AI, and commerce patterns.
 - `interactive/feature-scaffold.json`: machine-readable 22-feature scaffold with tiers, fallbacks, acceptance checks, and candidate-bound proof contract.
 - `source-registry.json`: provenance, authority, freshness, and review schedule.
+- `branded-skills/`: authenticated provenance, deterministic routes, strict gap-
+  closure contracts, and 234 lazy-loaded SkyyRose enhancement records.
 
 ## Non-negotiables
 
@@ -83,3 +87,5 @@ competitor pattern, or model preference into a universal rule.
 - HTML is the visual contract; JSON is the machine contract. Both describe the same stable IDs.
 - A builder cannot approve its own output. Visual claims require rendered eyes-on review.
 - A conversion hypothesis without measurement is an opinion, not a pass condition.
+- A premium feature is not covered until its catalog record has implementation, fallback, accessibility, security, performance, and candidate-bound evidence.
+- Prompt caching is never authority. Every chain must remain correct on cache miss and invalidate when candidate, SOT, approval, schema, or evidence changes.

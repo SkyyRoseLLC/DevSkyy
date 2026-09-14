@@ -1,0 +1,126 @@
+{
+  "candidate_id": "skyyrose-v2-remodel-0074fc6e6b16-2d8080cb9c40",
+  "status": "review-only-not-sot-not-production-approved",
+  "tool": "built-in image generation (GPT Image 2 requested by founder)",
+  "rules": {
+    "allowed_use": "local visual prototype and founder review",
+    "forbidden_use": [
+      "product-fact representation",
+      "garment-detail representation",
+      "production promotion before approval",
+      "replacement for SKU-bound SOT imagery"
+    ]
+  },
+  "assets": [
+    {
+      "id": "gpt2-signature-origin-atelier-v1",
+      "file": "signature-origin-atelier-v1.png",
+      "sha256": "244016cb764a2e884d4b7946f0deddfdb73977a4e4867b959ea26ce38144ffec",
+      "collection": "signature",
+      "role": "collection hero / editorial environment",
+      "composition": "copy-safe negative space left; product plinth right",
+      "prompt_summary": "Oakland atelier terrace at blue-gold hour; no person or product"
+    },
+    {
+      "id": "gpt2-black-rose-moon-court-v1",
+      "file": "black-rose-moon-court-v1.png",
+      "sha256": "4196a38d2b5a4bce99f53f5bd1a24afe2814e2e724047e38ce0d976f171f01c2",
+      "collection": "black-rose",
+      "role": "collection hero / editorial environment",
+      "composition": "architectural focal point left; copy-safe negative space right",
+      "prompt_summary": "Nocturnal black concrete and silver Oakland courtyard; no person or product"
+    },
+    {
+      "id": "gpt2-love-hurts-protected-wound-v1",
+      "file": "love-hurts-protected-wound-v1.png",
+      "sha256": "ca82bb6b8b572368499125ca61aaeca1ae82583d20988a1bc9e1718ac678851f",
+      "collection": "love-hurts",
+      "role": "collection hero / editorial environment",
+      "composition": "copy-safe negative space left; protected plinth right",
+      "prompt_summary": "Contemporary Oakland sanctuary with fractured, sutured arch; no person or product"
+    },
+    {
+      "id": "gpt2-kids-capsule-heir-studio-v1",
+      "file": "kids-capsule-heir-studio-v1.png",
+      "sha256": "a22abf74c18ad817272c8b343254d7462ee6c28b8be216e7f01635119bab9eff",
+      "collection": "kids-capsule",
+      "role": "collection hero / editorial environment",
+      "composition": "scene and plinth left; copy-safe negative space right",
+      "prompt_summary": "Sophisticated Oakland creative studio with rose-gold path; no child, person or product"
+    },
+    {
+      "id": "gpt2-signature-bay-bridge-threshold-v1",
+      "file": "signature-bay-bridge-threshold-v1.png",
+      "sha256": "9cd11777e8d77d23060207aaba2a2c1ab418717e76a1dc9d0eed1cb85bb60207",
+      "collection": "signature",
+      "role": "Scroll World bridge / collection-story frame",
+      "landmark": "San Francisco-Oakland Bay Bridge",
+      "composition": "recognizable bridge from the East Bay; copy-safe architecture right",
+      "prompt_summary": "Bay Bridge viewed from an elevated Oakland concrete atelier; no person or product"
+    },
+    {
+      "id": "gpt2-black-rose-lake-merritt-v1",
+      "file": "black-rose-lake-merritt-v1.png",
+      "sha256": "2bc58123b3f8852fb304963404769529cb22fc47da7f78e88a35a91d71d056b0",
+      "collection": "black-rose",
+      "role": "collection story / immersive pre-order entry frame",
+      "landmark": "Lake Merritt, Oakland",
+      "composition": "nighttime lake edge and city lights; copy-safe water right",
+      "prompt_summary": "Lake Merritt after rain with Oakland civic energy; no person or product"
+    },
+    {
+      "id": "gpt2-love-hurts-golden-gate-return-v1",
+      "file": "love-hurts-golden-gate-return-v1.png",
+      "sha256": "d34a262de95724f52e1a6b32a5ad8e3cd8f09992637f05266d990302a11160e4",
+      "collection": "love-hurts",
+      "role": "Scroll World transition / collection-story frame",
+      "landmark": "Golden Gate Bridge",
+      "composition": "fog-obscured bridge left; protected dark threshold right",
+      "prompt_summary": "Golden Gate Bridge in Pacific fog with a restrained crimson seam; no person or product"
+    },
+    {
+      "id": "gpt2-black-rose-lockup-statue-v1",
+      "file": "black-rose-lockup-statue-v1.png",
+      "sha256": "df03c4e401b3b1ad50ae63478463168eac65257a0ab7bb5a55c385124a8db876",
+      "collection": "black-rose",
+      "role": "Scroll World hero / collection artifact",
+      "source_mark": "assets/sot/images/lockups/black-rose-lockup.webp",
+      "founder_direction": "Replace the abstract sculpture with the collection Black Rose logo as a statue.",
+      "founder_selection": "Selected for the Black Rose opening reveal; transition next to the Lake Merritt night threshold. Prototype review only; not promoted to SOT or production.",
+      "prompt_summary": "Exact Black Rose lockup rendered as a brushed silver and smoked-black sculptural artifact"
+    },
+    {
+      "id": "gpt2-signature-sr-monogram-statue-v1",
+      "file": "signature-sr-monogram-statue-v1.png",
+      "sha256": "160078365ec312a47b22d8c55374f5ed51fc061d7d0c6ce2904e72a9e9bce181",
+      "collection": "signature",
+      "role": "Scroll World hero / house artifact",
+      "source_mark": "assets/sot/images/logos/sr-monogram-rose-gold.webp",
+      "founder_direction": "Add the SR rose monogram as a statue at the Signature atelier plinth.",
+      "founder_selection": "Selected for the Signature opening reveal; transition next to the Bay Bridge threshold. Prototype review only; not promoted to SOT or production.",
+      "prompt_summary": "Exact SR rose monogram rendered as a rose-gold sculptural artifact"
+    },
+    {
+      "id": "gpt2-love-hurts-lockup-statue-v1",
+      "file": "love-hurts-lockup-statue-v1.png",
+      "sha256": "1739e1bba7502f0786bda16deb79da78807cac9cd2ace836501f6ba4ef3e2a6f",
+      "collection": "love-hurts",
+      "role": "Scroll World hero / collection artifact",
+      "source_mark": "assets/sot/images/lockups/love-hurts-lockup.webp",
+      "founder_direction": "Make the Love Hurts collection mark a statue on the scarred portal plinth.",
+      "founder_selection": "Selected for the Love Hurts opening reveal; transition next to the Golden Gate fog threshold. Prototype review only; not promoted to SOT or production.",
+      "prompt_summary": "Exact Love Hurts lockup rendered as a deep-crimson enamel and blackened-metal monument in the scarred portal scene"
+    },
+    {
+      "id": "gpt2-kids-capsule-mascot-statue-v1",
+      "file": "kids-capsule-mascot-statue-v1.png",
+      "sha256": "b7ca08ae17cd12abc1672fb88b831ae7464a3053833eae5e6ccbab568ca5460a",
+      "collection": "kids-capsule",
+      "role": "Scroll World hero / heirloom collection artifact",
+      "source_mark": "assets/sot/images/mascot/skyy-canonical-v2.png",
+      "founder_direction": "Use the SkyyRose mascot as the Kids Capsule statue.",
+      "founder_selection": "Selected for the Kids Capsule opening reveal; transition next to the heir studio and then real Kids Capsule product proof. Prototype review only; not promoted to SOT or production.",
+      "prompt_summary": "Canonical SkyyRose mascot reimagined as an heirloom rose-gold and dark-bronze gallery statue in the Kids Capsule studio"
+    }
+  ]
+}

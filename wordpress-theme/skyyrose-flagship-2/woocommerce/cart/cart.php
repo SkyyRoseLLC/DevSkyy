@@ -10,6 +10,12 @@ defined( 'ABSPATH' ) || exit;
 do_action( 'woocommerce_before_cart' );
 
 if ( ! WC()->cart || WC()->cart->is_empty() ) :
+	/**
+	 * Keep the WooCommerce empty-cart lifecycle available to extensions.
+	 * This template supplies the branded shell; plugins may still append their
+	 * own recovery, analytics, or cleanup content through the standard hook.
+	 */
+	do_action( 'woocommerce_cart_is_empty' );
 	?>
 	<section class="sr2-cart sr2-cart--empty">
 		<p><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p>
@@ -17,8 +23,7 @@ if ( ! WC()->cart || WC()->cart->is_empty() ) :
 		<a class="sr2-page-action" href="<?php echo esc_url( wc_get_page_permalink( 'shop' ) ); ?>"><?php esc_html_e( 'Shop collections', 'skyyrose-flagship-2' ); ?></a>
 	</section>
 	<?php
-	return;
-endif;
+else :
 ?>
 <section class="sr2-cart">
 	<header class="sr2-page-head"><p><?php esc_html_e( 'Your bag', 'skyyrose-flagship-2' ); ?></p><h1><?php esc_html_e( 'Keep your pieces close.', 'skyyrose-flagship-2' ); ?></h1></header>
@@ -101,4 +106,5 @@ else :
 		<aside class="sr2-cart__summary"><?php do_action( 'woocommerce_cart_collaterals' ); ?></aside>
 	</div>
 </section>
+<?php endif; ?>
 <?php do_action( 'woocommerce_after_cart' ); ?>

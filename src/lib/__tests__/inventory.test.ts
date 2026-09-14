@@ -1,46 +1,50 @@
 /**
  * Unit Tests for InventoryManager
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
-// Mock WebSocket before anything imports it
-function createMockWebSocket() {
-  return {
-    send: jest.fn(),
-    close: jest.fn(),
-    readyState: 0, // CONNECTING
-    onopen: null,
-    onmessage: null,
-    onerror: null,
-    onclose: null,
-    CONNECTING: 0,
-    OPEN: 1,
-    CLOSING: 2,
-    CLOSED: 3,
-  };
-}
+const createMockWebSocket = () => ({
+  send: vi.fn(),
+  close: vi.fn(),
+  readyState: 0,
+  onopen: null,
+  onmessage: null,
+  onerror: null,
+  onclose: null,
+  CONNECTING: 0,
+  OPEN: 1,
+  CLOSING: 2,
+  CLOSED: 3,
+});
 
-// Replace the global WebSocket with our mock factory
-const MockWebSocketClass = jest.fn().mockImplementation(() => createMockWebSocket());
-// Preserve static constants
+const MockWebSocketClass = vi.fn(function MockWebSocketClass() {
+  return createMockWebSocket();
+});
 MockWebSocketClass.CONNECTING = 0;
 MockWebSocketClass.OPEN = 1;
 MockWebSocketClass.CLOSING = 2;
 MockWebSocketClass.CLOSED = 3;
 
-const originalWebSocket = global.WebSocket;
-global.WebSocket = MockWebSocketClass;
+const originalWebSocket = globalThis.WebSocket;
+
+function installMockWebSocket(): void {
+  const WebSocketMock = MockWebSocketClass as unknown as typeof WebSocket;
+  globalThis.WebSocket = WebSocketMock;
+  window.WebSocket = WebSocketMock;
+}
 
 import { InventoryManager, INVENTORY_COLORS } from '../inventory';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 // Helper to build an InventoryStatus object without TS annotations
@@ -49,7 +53,8 @@ function makeStatus(productId, stockStatus, stockQuantity, reservedQuantity) {
 }
 
 afterAll(() => {
-  global.WebSocket = originalWebSocket;
+  globalThis.WebSocket = originalWebSocket;
+  window.WebSocket = originalWebSocket;
 });
 
 describe('INVENTORY_COLORS', () => {
@@ -74,15 +79,18 @@ describe('InventoryManager', () => {
   let manager;
 
   beforeEach(() => {
-    jest.useFakeTimers();
+    vi.useFakeTimers();
     MockWebSocketClass.mockClear();
-    MockWebSocketClass.mockImplementation(() => createMockWebSocket());
+    installMockWebSocket();
+    MockWebSocketClass.mockImplementation(function MockWebSocketClass() {
+      return createMockWebSocket();
+    });
     manager = new InventoryManager({ wsUrl: 'ws://test/inventory' });
   });
 
   afterEach(() => {
     manager.disconnect();
-    jest.useRealTimers();
+    vi.useRealTimers();
   });
 
   describe('constructor', () => {
@@ -117,15 +125,15 @@ describe('InventoryManager', () => {
 
   describe('subscribe', () => {
     it('should return unsubscribe function', () => {
-      const cb = jest.fn();
+      const cb = vi.fn();
       const unsub = manager.subscribe('prod-1', cb);
       expect(typeof unsub).toBe('function');
       unsub();
     });
 
     it('should allow multiple subscribers per product', () => {
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
       manager.subscribe('prod-1', cb1);
       manager.subscribe('prod-1', cb2);
       // Both should not throw
@@ -139,7 +147,7 @@ describe('InventoryManager', () => {
       ws.onopen();
 
       ws.send.mockClear();
-      manager.subscribe('prod-sub-1', jest.fn());
+      manager.subscribe('prod-sub-1', vi.fn());
 
       expect(ws.send).toHaveBeenCalled();
       const sentMsg = JSON.parse(ws.send.mock.calls[0][0]);
@@ -148,7 +156,7 @@ describe('InventoryManager', () => {
     });
 
     it('should notify subscriber when inventory updates', () => {
-      const cb = jest.fn();
+      const cb = vi.fn();
       manager.subscribe('prod-1', cb);
 
       const status = makeStatus('prod-1', 'low_stock', 3, 0);
@@ -158,8 +166,8 @@ describe('InventoryManager', () => {
     });
 
     it('should notify multiple subscribers on update', () => {
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
       manager.subscribe('prod-1', cb1);
       manager.subscribe('prod-1', cb2);
 
@@ -171,10 +179,10 @@ describe('InventoryManager', () => {
     });
 
     it('should handle callback errors without breaking other subscribers', () => {
-      const errorCb = jest.fn().mockImplementation(() => {
+      const errorCb = vi.fn().mockImplementation(() => {
         throw new Error('boom');
       });
-      const goodCb = jest.fn();
+      const goodCb = vi.fn();
       manager.subscribe('prod-1', errorCb);
       manager.subscribe('prod-1', goodCb);
 
@@ -188,7 +196,7 @@ describe('InventoryManager', () => {
 
   describe('unsubscribe', () => {
     it('should stop receiving updates after unsubscribe', () => {
-      const cb = jest.fn();
+      const cb = vi.fn();
       const unsub = manager.subscribe('prod-1', cb);
       unsub();
 
@@ -204,7 +212,7 @@ describe('InventoryManager', () => {
       ws.readyState = WebSocket.OPEN;
       ws.onopen();
 
-      const cb = jest.fn();
+      const cb = vi.fn();
       const unsub = manager.subscribe('prod-unsub-1', cb);
 
       ws.send.mockClear();
@@ -223,8 +231,8 @@ describe('InventoryManager', () => {
       ws.readyState = WebSocket.OPEN;
       ws.onopen();
 
-      const cb1 = jest.fn();
-      const cb2 = jest.fn();
+      const cb1 = vi.fn();
+      const cb2 = vi.fn();
       const unsub1 = manager.subscribe('prod-1', cb1);
       manager.subscribe('prod-1', cb2);
 
@@ -240,7 +248,7 @@ describe('InventoryManager', () => {
 
     it('should handle unsubscribe for non-existent product gracefully', () => {
       // Subscribe and immediately unsubscribe twice (second is a no-op)
-      const cb = jest.fn();
+      const cb = vi.fn();
       const unsub = manager.subscribe('prod-1', cb);
       unsub();
       // Calling unsub again should not throw
@@ -272,14 +280,16 @@ describe('InventoryManager', () => {
 
     it('should handle WebSocket constructor failure', () => {
       // Override mock to throw
-      MockWebSocketClass.mockImplementation(() => {
+      MockWebSocketClass.mockImplementation(function FailingWebSocket() {
         throw new Error('Connection refused');
       });
 
       expect(() => manager.connect()).not.toThrow();
 
       // Restore normal mock behavior
-      MockWebSocketClass.mockImplementation(() => createMockWebSocket());
+      MockWebSocketClass.mockImplementation(function MockWebSocketClass() {
+        return createMockWebSocket();
+      });
     });
   });
 
@@ -350,8 +360,8 @@ describe('InventoryManager', () => {
 
     it('should resubscribe to all existing subscriptions', () => {
       // Subscribe before connecting
-      manager.subscribe('prod-1', jest.fn());
-      manager.subscribe('prod-2', jest.fn());
+      manager.subscribe('prod-1', vi.fn());
+      manager.subscribe('prod-2', vi.fn());
 
       manager.connect();
       const ws = manager['ws'];
@@ -380,7 +390,7 @@ describe('InventoryManager', () => {
     });
 
     it('should notify subscribers on update message', () => {
-      const cb = jest.fn();
+      const cb = vi.fn();
       manager.subscribe('prod-1', cb);
 
       manager.connect();
@@ -482,9 +492,9 @@ describe('InventoryManager', () => {
       ws.onclose({ code: 1006, reason: 'Abnormal' });
 
       // Spy on connect to verify it gets called
-      const connectSpy = jest.spyOn(manager, 'connect');
+      const connectSpy = vi.spyOn(manager, 'connect');
 
-      jest.advanceTimersByTime(3000); // default reconnectDelay
+      vi.advanceTimersByTime(3000); // default reconnectDelay
 
       expect(connectSpy).toHaveBeenCalled();
     });
@@ -514,7 +524,7 @@ describe('InventoryManager', () => {
       ws.send.mockClear();
 
       // Advance timer to trigger heartbeat
-      jest.advanceTimersByTime(30000); // default heartbeatInterval
+      vi.advanceTimersByTime(30000); // default heartbeatInterval
 
       const sent = ws.send.mock.calls.map(c => JSON.parse(c[0]));
       const heartbeats = sent.filter(m => m.type === 'heartbeat');
@@ -542,7 +552,7 @@ describe('InventoryManager', () => {
     it('should warn when WebSocket is not connected', () => {
       // Without connecting, sendMessage should not throw
       // We test this indirectly through subscribe when not connected
-      const cb = jest.fn();
+      const cb = vi.fn();
       manager.subscribe('prod-1', cb);
       // subscribe without connecting should not crash
     });
@@ -558,7 +568,7 @@ describe('InventoryManager', () => {
 
       // Should not throw when send fails
       expect(() => {
-        manager.subscribe('prod-send-fail', jest.fn());
+        manager.subscribe('prod-send-fail', vi.fn());
       }).not.toThrow();
     });
   });
@@ -657,7 +667,7 @@ describe('InventoryManager', () => {
     });
 
     it('should notify subscribers', () => {
-      const cb = jest.fn();
+      const cb = vi.fn();
       manager.subscribe('prod-1', cb);
 
       const status = makeStatus('prod-1', 'out_of_stock', 0, 0);
@@ -667,7 +677,7 @@ describe('InventoryManager', () => {
     });
 
     it('should not notify subscribers for other products', () => {
-      const cb = jest.fn();
+      const cb = vi.fn();
       manager.subscribe('prod-1', cb);
 
       const status = makeStatus('prod-2', 'in_stock', 10, 0);
@@ -743,36 +753,27 @@ describe('InventoryManager', () => {
 describe('getInventoryManager', () => {
   // Reset the singleton between tests
   beforeEach(() => {
-    jest.resetModules();
-    // Re-register Logger mock after module reset
-    jest.mock('../../utils/Logger', () => ({
-      Logger: jest.fn().mockImplementation(() => ({
-        info: jest.fn(),
-        warn: jest.fn(),
-        error: jest.fn(),
-        debug: jest.fn(),
-      })),
-    }));
+    vi.resetModules();
   });
 
-  it('should return an InventoryManager instance', () => {
-    const mod = require('../inventory');
+  it('should return an InventoryManager instance', async () => {
+    const mod = await import('../inventory');
     const instance = mod.getInventoryManager();
     expect(instance).toBeDefined();
     expect(instance).toBeInstanceOf(mod.InventoryManager);
     instance.disconnect();
   });
 
-  it('should return the same instance on subsequent calls', () => {
-    const mod = require('../inventory');
+  it('should return the same instance on subsequent calls', async () => {
+    const mod = await import('../inventory');
     const first = mod.getInventoryManager();
     const second = mod.getInventoryManager();
     expect(first).toBe(second);
     first.disconnect();
   });
 
-  it('should accept config on first call', () => {
-    const mod = require('../inventory');
+  it('should accept config on first call', async () => {
+    const mod = await import('../inventory');
     const instance = mod.getInventoryManager({ lowStockThreshold: 20 });
     expect(instance).toBeDefined();
     instance.disconnect();

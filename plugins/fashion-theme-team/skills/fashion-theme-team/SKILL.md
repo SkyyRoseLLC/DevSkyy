@@ -25,6 +25,48 @@ into a role context by default. Default active tools are `Read`, `Grep`,
 `Glob`, and `Bash`; other tools are request-explicit. This keeps context budgets
 predictable while preserving capability.
 
+## One team distribution control
+
+`/Users/theceo/plugins/fashion-theme-team` is the canonical editable Fashion
+Theme Team source. The DevSkyy vendor package and the Codex installed cache are
+distributions, not independent products. A feature, agent, capability, charter,
+or verifier change is complete only when the designated distributions have the
+same package content as the canonical source, excluding Git metadata and local
+runtime caches.
+
+Use `scripts/sync-team-distributions.py` to inspect or synchronize a named
+distribution. Run `--check` before and after an `--apply --prune` operation.
+Read [references/distribution-contract.md](references/distribution-contract.md)
+before a synchronization. Do not author changes directly in the installed cache,
+and do not make a vendor-only capability claim. The cache may be refreshed only
+from a verified source package; a source change must be propagated deliberately.
+
+## Capability routing
+
+Use the narrowest execution skill for the phase, then return to this motherbase
+for scheduling and evidence integration:
+
+| Capability                                                   | Skill                            | Primary owners                                                                   |
+| ------------------------------------------------------------ | -------------------------------- | -------------------------------------------------------------------------------- |
+| Fashion Commerce Brain, page blueprints, V2 atlas            | `fashion-strategy-brain`         | commerce strategist, brand architect, merchandising architect, knowledge curator |
+| SkyyRose visual artifact system and imagery direction        | `fashion-brand-experience`       | brand architect, brand-systems researcher, typography/layout director            |
+| Exact-product media, native collection scenes, and fidelity gates | `product-fidelity-image-edits` | brand architect, product-truth owner, independent visual reviewer                 |
+| Tokens, components, states, design-system adoption           | `fashion-design-system`          | design-system engineer and inner pod                                             |
+| Catalog, WooCommerce, fit, returns, product discovery        | `fashion-commerce-engineering`   | catalog SOT, WooCommerce, merchandising, fit/returns                             |
+| PHP/CSS/JS implementation, immersive motion, fallbacks       | `fashion-frontend-motion`        | frontend, WooCommerce, motion/responsive                                         |
+| WCAG, content states, reduced motion, performance            | `fashion-a11y-performance`       | accessibility/content engineer and independent reviewer                          |
+| Browser, visual, and purchase-journey proof                  | `fashion-visual-commerce-qa`     | visual red team, visual commerce QA, accessibility/performance reviewer          |
+| HTML/JSON/evidence parity                                    | `fashion-handoff-contracts`      | every role producing an artifact; lead integrates                                |
+| Packaging, marketplace readiness, rollback, release evidence | `fashion-release-evidence`       | release engineer and DesignOps                                                   |
+| 44-item premium feature implementation and enterprise gates  | `fashion-premium-feature-system` | frontend, commerce, design-system, accessibility, QA, and release owners         |
+| 234 branded capability adapters and source-gap closure       | `fashion-branded-skills`         | knowledge curator, brand systems, DesignOps, and independent reviewer            |
+| Optional provider execution and self-healing                 | `elite-builder-runtime`          | explicitly approved runtime owner                                                |
+| End-to-end task, issue, evidence, and release control        | `fashion-e2e-task-execution`     | lead plus independent reviewer                                                    |
+
+Do not load all skills by default. A role may temporarily expand its tool profile
+only under `references/tool-budget-and-loading.md`, with the expansion recorded
+in the phase ledger. The scheduler permits four active roles maximum.
+
 ## Inputs
 
 - Target repository and theme path.
@@ -56,12 +98,22 @@ and optional runtime tools remain lazy-loaded.
 2. Have the lead initialize the durable phase ledger from
    [references/autonomy-protocol.md](references/autonomy-protocol.md), capture an
    immutable baseline, and obtain the required post-audit approval before edits.
+   For every capability in scope, also load `fashion-e2e-task-execution` and
+   issue a named project manager and create its task record before the first
+   side effect. The E2E record binds scope, declared evidence, first-seen
+   issues, resolutions, and completion; the phase ledger remains the cross-role
+   schedule of record.
 3. Run discovery and creative direction against
    [references/skyyrose-design-canon.md](references/skyyrose-design-canon.md) and
    [references/high-end-design-standard.md](references/high-end-design-standard.md).
    First route strategy, merchandising, fit/returns, page architecture, and
    measurement through the Fashion Theme Brain. Record loaded pack IDs and source
    freshness in the ledger.
+   For a collection world, hero, lookbook, or model-in-scene asset, route the
+   approved direction through `product-fidelity-image-edits` before any image-model
+   call. Use `native_collection_scene` for final-commerce candidates. Treat
+   `protected_scene_composite` as layout proof unless its separate native optical
+   integration gate passes.
 4. Census the existing system before creating tokens. Produce the governed
    artifacts in [references/design-system-contract.md](references/design-system-contract.md)
    through the inner pod in [references/design-system-pod.md](references/design-system-pod.md).
@@ -93,6 +145,23 @@ and optional runtime tools remain lazy-loaded.
 14. Brand every human-facing Fashion Theme Brain artifact as SkyyRose. Preserve
     the garment-first Oakland visual thesis, use one rose-gold accent, and do not
     substitute fabricated product imagery for SOT-verified or founder-approved media.
+15. For every feature request, load `brain/features/premium-feature-catalog.json`
+    and route the selected IDs through `fashion-premium-feature-system`. A
+    screenshot match is not coverage: implementation, fallback, a11y, security,
+    performance, commerce, and candidate-bound evidence are required.
+16. Treat prompt engineering, typed prompt chains, and prompt caching as governed
+    build infrastructure. Load `brain/prompts/prompt-orchestration.md`, record
+    chain stage and cache disposition, and invalidate cached outputs whenever the
+    candidate, SOT, founder decision, Brain pack, schema, rubric, rights state, or
+    owned source changes. Cache misses must never block a correct uncached run.
+17. Route bundled branding, copy, lifecycle, product, funnel, search, and social
+    requests through `fashion-branded-skills`. Load one source only after exact
+    hash verification, apply every recorded gap closure, and retrieve current
+    authenticated primary authority at claim time.
+18. For any Fashion Theme Team change, verify distribution parity with
+    `scripts/sync-team-distributions.py --target <distribution> --check`. Only
+    synchronize a known local distribution after the source verifier passes; run
+    `--apply --prune`, rerun `--check`, then verify the destination package.
 
 ## Coordination rules
 
@@ -105,6 +174,11 @@ and optional runtime tools remain lazy-loaded.
 - Visual claims require eyes-on browser/image evidence. Technical, API, version,
   security, and marketplace claims require current authoritative primary
   documentation plus executable repository evidence when implementation is involved.
+- Collection-scene media requires separate product-fidelity, native optical
+  integration, collection-story, and founder-promotion states. Pixel equality,
+  a beautiful plate, or a prompt receipt cannot substitute for another state.
+- A rejected scene is quarantined evidence and may not be reused as a generation
+  reference, scene authority, product authority, or wireable asset.
 - Never pass secrets, customer data, hidden reasoning, or unrelated repository context to an agent.
 - Preserve existing user changes and stop on unexpected overlapping edits.
 - Local worktrees, checkpoint commits, builds, tests, browser runs, screenshots,

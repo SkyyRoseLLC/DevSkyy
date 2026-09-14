@@ -8,6 +8,7 @@ on:
       - "skyyrose/elite_studio/logo_registry.py"
       - "skyyrose/elite_studio/commerce.py"
       - "scripts/validate_catalog_consistency.py"
+      - ".github/workflows/catalog-validate.yml"
       - "scripts/sync_catalog_downstream.py"
       - "skyyrose/elite_studio/tests/test_catalog_consistency.py"
       - "skyyrose/elite_studio/tests/conftest.py"
@@ -18,7 +19,7 @@ on:
       - "scripts/lookbook-manifest.json"
       - "docs/campaigns/sot-lookbook.html"
       - "wordpress-theme/skyyrose-flagship/data/lookbook-sot.json"
-      - "wordpress-theme/skyyrose-flagship/assets/images/products/v7/**"
+      - "wordpress-theme/skyyrose-flagship/assets/**"
       - "tests/test_v7_cards_generator.py"
   push:
     branches: [main]
@@ -27,6 +28,7 @@ on:
       - "skyyrose/elite_studio/sku_resolver.py"
       - "skyyrose/elite_studio/logo_registry.py"
       - "scripts/validate_catalog_consistency.py"
+      - ".github/workflows/catalog-validate.yml"
       - "scripts/build_v7_cards.py"
       - "skyyrose/core/catalog_loader.py"
       - "scripts/build-lookbook-sot.py"
@@ -34,7 +36,7 @@ on:
       - "scripts/lookbook-manifest.json"
       - "docs/campaigns/sot-lookbook.html"
       - "wordpress-theme/skyyrose-flagship/data/lookbook-sot.json"
-      - "wordpress-theme/skyyrose-flagship/assets/images/products/v7/**"
+      - "wordpress-theme/skyyrose-flagship/assets/**"
 
 jobs:
   validate:
@@ -44,7 +46,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up Python 3.11
         uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1  # v6.3.0
@@ -62,7 +64,7 @@ jobs:
           # without pytest-asyncio pytest errors "Unknown config option").
           # No project/base install — `.[dev]` pulls the heavy provider stack, was
           # timing out, and silently fell back to a pytest-only env that failed.
-          pip install pytest pytest-asyncio jsonschema --quiet
+          pip install pytest pytest-asyncio pytest-timeout jsonschema cryptography PyJWT argon2-cffi passlib email-validator fastapi python-multipart --quiet
 
       - name: Run catalog consistency validator
         run: |
@@ -109,7 +111,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Scan for retired SKU references
         run: |

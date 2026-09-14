@@ -10,6 +10,7 @@ import json
 from unittest.mock import MagicMock, patch
 
 import pytest
+
 from tools.lighthouse_runner import (
     LighthouseError,
     LighthouseResult,
@@ -104,8 +105,16 @@ def _make_result(
             "SI": 1800.0,
         },
         audits=[
-            {"id": "render-blocking-resources", "title": "Eliminate render-blocking resources", "score": 0},
-            {"id": "uses-responsive-images", "title": "Properly size images", "score": 0.5},
+            {
+                "id": "render-blocking-resources",
+                "title": "Eliminate render-blocking resources",
+                "score": 0,
+            },
+            {
+                "id": "uses-responsive-images",
+                "title": "Properly size images",
+                "score": 0.5,
+            },
         ],
         timestamp="2026-02-20T12:00:00Z",
     )
@@ -296,7 +305,9 @@ class TestRunLighthouse:
 
     @patch("tools.lighthouse_runner._get_timestamp", return_value="2026-02-20T12:00:00Z")
     @patch("tools.lighthouse_runner.subprocess.run")
-    def test_missing_category_defaults_to_zero(self, mock_run: MagicMock, mock_ts: MagicMock) -> None:
+    def test_missing_category_defaults_to_zero(
+        self, mock_run: MagicMock, mock_ts: MagicMock
+    ) -> None:
         """If a category is missing from the report, score defaults to 0."""
         partial_json = {
             "categories": {
@@ -320,6 +331,7 @@ class TestRunLighthouse:
     def test_subprocess_timeout(self, mock_run: MagicMock) -> None:
         """Subprocess timeout should raise LighthouseError."""
         import subprocess
+
         mock_run.side_effect = subprocess.TimeoutExpired(cmd="npx", timeout=120)
         with pytest.raises(LighthouseError, match="timed out"):
             run_lighthouse("https://example.com")

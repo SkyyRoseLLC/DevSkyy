@@ -1,0 +1,155 @@
+{
+  "schema": "skyyrose.scene-ooda-receipt/1",
+  "scene_id": "BR-COMMERCE-2",
+  "action": "higgsfield-enhance",
+  "recorded_at": "2026-09-02T07:21:53.612348+00:00",
+  "payload": {
+    "observe": {
+      "scene_id": "BR-COMMERCE-2",
+      "catalog_checks": [
+        {
+          "path": "/Users/theceo/DevSkyy/skyyrose-catalog.csv",
+          "exists": true,
+          "actual_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+          "expected_sha256": "8b809c8dd1552a03dd7e396b8f99cb550ca652df2cb5af36b25cba8a53c38627",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/data/sot-images.json",
+          "exists": true,
+          "actual_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+          "expected_sha256": "06aafd2c9d68c1aa722b0f7db027a36e44dfd7619f707ac4dadcb6eb4b2b120b",
+          "status": "PASS"
+        }
+      ],
+      "source_checks": [
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+          "exists": true,
+          "actual_sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+          "expected_sha256": "6be35714f5cefa88be37e2dd11d0c03887715665b99d47d0347a53e0315d860e",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
+          "exists": true,
+          "actual_sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b",
+          "expected_sha256": "402db1c86f54bdf542c3e19e2ac6b1659671d70fd93ab63128804ce84c145b7b",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+          "exists": true,
+          "actual_sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+          "expected_sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+          "exists": true,
+          "actual_sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+          "expected_sha256": "e3e0bb25ec76bf07f806746810757e3b6a74b9092a12a180b021050afd4c5e4c",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+          "exists": true,
+          "actual_sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+          "expected_sha256": "a176ba1ade26f1279e1d4847b204fe838d81951942686721e5e04203a1695314",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+          "exists": true,
+          "actual_sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+          "expected_sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png",
+          "exists": true,
+          "actual_sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+          "expected_sha256": "9550900ab0401f30bf7b06d286aec0bdc25e8b8033474565eecdda5a3c259b34",
+          "status": "PASS"
+        }
+      ],
+      "dependency_checks": [
+        {
+          "path": "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/br-004-onmodel.webp",
+          "exists": true,
+          "actual_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+          "expected_sha256": "e6cd53ffeadf828c2b6cbda9b2e3d33f0f255bbeef0510fe8f353ebd879d1feb",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/ghost/br-005-ghost-front.webp",
+          "exists": true,
+          "actual_sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61",
+          "expected_sha256": "204f173996400068f749ecf625b1bdeaf14e16b4b29638ca97773b4837255d61",
+          "status": "PASS"
+        },
+        {
+          "path": "/Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship/assets/images/products/hub/br-007-front.webp",
+          "exists": true,
+          "actual_sha256": "b9473ded79d2ee52b7d132790574405197191bc3427411a5cff55616382095a7",
+          "expected_sha256": "b9473ded79d2ee52b7d132790574405197191bc3427411a5cff55616382095a7",
+          "status": "PASS"
+        }
+      ],
+      "source_ready": true,
+      "dependencies_ready": true,
+      "execute_blockers": [
+        "candidate-bound preflight and paid Higgsfield generation approval not recorded"
+      ],
+      "paid_execution_ready": false
+    },
+    "result": {
+      "command": [
+        "higgsfield",
+        "--json",
+        "product-photoshoot",
+        "create",
+        "--mode",
+        "hero_banner",
+        "--prompt",
+        "A powerful Black Rose luxury streetwear campaign: two confident customers and their exact mapped garments in a restrained nocturnal black-stone gallery, with the exact font sculpture grounded as a deliberate physical monument. Product and customer first, professional wide editorial hierarchy, one coherent light and ground plane.",
+        "--aspect_ratio",
+        "16:9",
+        "--count",
+        "1",
+        "--brand_context",
+        "SkyyRose Black Rose is nocturnal gothic luxury streetwear: urban monumentality, controlled menace, cinematic restraint, exact product authority, no generic filler.",
+        "--product_context",
+        "Male wears exact BR-005 Signature Edition hoodie with exact BR-007 basketball shorts. Female wears the exact founder-supplied BR-004 long hoodie dress. Preserve construction, logos, wordmarks, placement, color, cast identity, and the exact Black Rose font sculpture. No BR-001, BR-002, bridge, waterfront, star monument, extra people, or invented text.",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/br-commerce-2-playground-dual-cast-target-2026-08-31.png",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/generated-backgrounds/BR-COMMERCE-2-empty-enclosed-font-statue-gallery-plate-v2.png",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/protected-hero-element/black-rose-font-statue-hero-exact-v1.png",
+        "--image",
+        "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-005-signature-edition-hoodie.jpeg",
+        "--image",
+        "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-shorts-front.jpeg",
+        "--image",
+        "/Users/theceo/DevSkyy/assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
+        "--image",
+        "/Users/theceo/.codex/worktrees/final-scenes-e2e/DevSkyy/renders/scroll-world/BR-COMMERCE-2/founder-supplied-source/BLACK_Rose_Long_Hoodie.png",
+        "--enhance-only"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "mode": "hero_banner",
+        "prompts": [
+          {
+            "prompt": "[FORMAT]\nWide 16:9 cinematic banner composition. Nocturnal black-stone gallery interior, single unified ground plane of polished dark marble reflecting both figures and the font sculpture with restrained specular continuity.\n\n[FOCAL SUBJECT]\nTwo subjects standing on one continuous polished black marble floor inside a vast, column-flanked black stone gallery. Male subject at left third of frame: tall Black man, natural black hair, confident neutral expression, wearing the exact BR-005 Signature Edition hoodie \u2014 matte charcoal-black heavyweight fleece, white drawstrings, small Black Rose emblem embroidered at left chest, large detailed black rose with cloud and thorns graphic screenprinted along the left sleeve from elbow to cuff \u2014 paired with the exact BR-007 basketball shorts \u2014 black mesh body with all-over tonal dark rose repeat pattern, white varsity \"OAKLAND\" wordmark arched across the front panel, script cursive secondary wordmark overlapping at right, white-and-black geometric chevron trim panels at sides, white waistband, white side-stripe accents \u2014 white crew socks, white low-top sneakers. Female subject at right third of frame: tall Black woman, long wavy black hair loose over shoulders, composed direct gaze, wearing the exact BR-004 long hoodie dress \u2014 matte jet-black heavyweight cotton-fleece, oversized silhouette falling to mid-thigh, large centered chest graphic of a black rose blooming from clouds with fine-line illustrative detail in white and grey, kangaroo front pocket, ribbed cuffs \u2014 black heeled ankle boots. Both figures stand full-body, feet grounded on the same reflective floor plane, separated by deliberate negative space. Occupying 55% of frame width combined, figures at hip-height to top-of-head fully visible.\n\n[COMPOSITION]\nStrong horizontal editorial hierarchy: male figure anchored at left strong vertical third, female figure anchored at right strong vertical third, deliberate dark negative space between them drawing the eye to the Black Rose Collection font sculpture centered in the midground behind them. The three-dimensional \"The Black Rose Collection\" script monument \u2014 cast gunmetal and obsidian-lacquered dimensional lettering with the small Black Rose emblem beneath \u2014 sits centered on a low black marble plinth between and slightly behind the two figures, physically grounded, lit as a deliberate object of authority. Polished black marble floor extends from foreground to far wall, reflecting both figures and the plinth as sharp contact-shadow reflections. Receding fluted black stone columns at left and right create forced-perspective depth corridors. Foreground edge: subtle shallow out-of-focus dark marble floor texture at frame bottom anchors depth.\n\n[ATMOSPHERE]\nControlled menace, urban monumentality, cinematic restraint. Air is still and pressurized. Deep shadow fills the upper gallery vault. The space feels like a private institution of power \u2014 no warmth, no softness, no decoration beyond the garments and the sculpture. Tonal range compressed at the dark end with precise luminance on faces, garment graphics, and the font sculpture.\n\n[LIGHTING]\nThree-quarter back rim at 45\u00b0 camera-left striking the male figure: hard direct strobe at 3200K tungsten casting a sharp-edged shadow behind his left shoulder, defining hoodie construction and sleeve rose graphic with high-contrast precision. Gridded spot from directly overhead descending on the font sculpture plinth at 4000K mixed tungsten-fluorescent, isolating the dimensional lettering as a monument. Motivated practical light from low floor-level gallery uplighters at 2800K candlelight temperature casting narrow vertical bands up the stone columns deep in background. Under-camera fill at 5500K daylight neutral bounced fill lifting faces and chest graphics of both subjects without softening shadow drama. Female figure receives Rembrandt 45\u00b0 high key from camera-right at 3400K tungsten, preserving the chest graphic legibility and the dress silhouette against the dark background. Soft falloff with gradient transition on all shadow sides \u2014 no fill spill into deep background. Floor reflections mirror all light sources as elongated specular streaks on polished marble.\n\n[LENS & CAMERA]\nShot on 35mm natural, aperture f/4, moderate depth of field keeping both figures and font sculpture in sharp focus while the far colonnade columns fall into controlled soft focus, anamorphic horizontal feel, slight low camera position at mid-torso height to grant both figures authoritative upward angle without distortion.\n\n[COLOR PALETTE]\nObsidian black dominant across 80% of frame. Cold graphite and gunmetal on stone surfaces and sculpture. Precise white accents: hoodie drawstrings, \"OAKLAND\" wordmark on shorts, waistband stripe, chest graphic line-work on dress. No warm neutrals, no brown, no color outside this triad. Rich tonal range from near-black at 5% luminance in the vault to controlled white-point at garment graphics only.\n\n[STYLE REFERENCE]\nIn the style of Peter Lindbergh, Erwin Olaf, and Dan Tobin Smith. Cinematic editorial fashion photography with luxury product authority and architectural restraint.\n\n[TYPOGRAPHY]\nThe exact \"The Black Rose Collection\" three-dimensional script sculpture \u2014 gunmetal-cast dimensional lettering in the same cursive weight as the reference logo, with the small Black Rose emblem centered beneath \u2014 rendered as a physical monument object on a black marble plinth in the gallery midground between the two figures. Lettering must be legible, structurally accurate to the reference, and lit by the gridded overhead spot as a deliberate hero object. No invented text. No additional words anywhere in the frame.\n\n[QUALITY MARKERS]\nMagazine editorial cover quality, ultra-sharp on garment graphics and faces, cinematic wide depth, hyper-realistic fabric and stone surface rendering, zero synthetic stock feel, luxury fashion campaign authority.\n\n[AVOID]\nno AI artifacts, no warped or smeared text, no fake words baked into the image,\nno plastic look, no waxy surface, no cartoonish rendering,\nno extra fingers, no extra limbs, no melted geometry, no doubled subjects,\nno oversaturated HDR, no HDR halos, no oversharpened look,\nno flat fluorescent lighting, no harsh on-camera flash,\nno generic stock photography poses, no clich\u00e9 compositions,\nno random unrelated brand logos, no watermarks, no signatures,\nno AI sheen on hair or skin, no doll-like rendering, no airbrush look,\nno flat solid color bands, no empty rectangular areas, no dull gradient zones,\nno AI uncanny faces, no warped facial geometry, no asymmetric eyes,\nno extra teeth, no melted facial features, no warped fingers or hands,\nno plastic skin, no orange-tan skin, no over-smoothed retouching,\nno doll eyes, no misaligned facial features, no rubber-like skin texture,\nno warped product label text, no garbled letters, no fake brand names,\nno melted typography, no doubled labels, no fictional logos,\nno stale stock photography aesthetic, no synthetic stock-photo look,\nno over-staged feeling, no unrealistically clean environments,\nno clipart elements, no obviously composited backgrounds,\nno BR-001 garments, no BR-002 garments, no bridge, no waterfront, no star monument, no extra people beyond the two named subjects, no invented text or fictional wordmarks, no warm color temperature dominance, no symmetrical dead-center composition, no disconnected ground planes, no floating figures, no mismatched floor surfaces between subjects.\n\nresolution: 2k",
+            "aspect_ratio": "16:9",
+            "model": "gpt_image_2",
+            "resolution": "2k"
+          }
+        ]
+      },
+      "stderr": ""
+    }
+  }
+}

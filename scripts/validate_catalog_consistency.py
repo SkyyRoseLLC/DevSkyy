@@ -41,6 +41,12 @@ Available check names (pass comma-separated to --checks):
   csv_image_columns_resolve  every non-empty value in the 4 CSV image columns resolves to a file
   product_embeddings_current  product-embeddings.json covers the current catalog SKU set (dim=512)
 
+The catalog workflow watches the tracked flagship asset tree because visual-manifest and
+collection SOT resolution depend on those files in a clean checkout. Its focused pytest
+job also installs the focused security dependencies because the shared test fixture imports
+the security package while exercising these SOT guards (including its FastAPI request and
+form types).
+
 Notes:
   jersey_skus: Compares _JERSEY_SKUS against registry sku_folders (not CSV garment_type_lock).
     The jersey roster is a product-LINE concept (the "BLACK is Beautiful Jersey Series"), not a
