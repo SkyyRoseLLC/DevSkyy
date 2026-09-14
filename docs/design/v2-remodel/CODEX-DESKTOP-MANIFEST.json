@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0.0",
+  "id": "skyyrose-v2-marketplace-promotion-handoff",
+  "generated_at": "2026-08-15",
+  "status": "BLOCKED_PENDING_FOUNDER_AND_RUNTIME_EVIDENCE",
+  "purpose": "Codex Desktop handoff for safely promoting the SkyyRose V2 marketplace candidate through Git objects only.",
+  "non_negotiables": [
+    "Do not deploy, publish, create paid media, promote creative assets, or claim release approval.",
+    "Do not copy, rsync, or package files from a dirty live worktree.",
+    "Treat the legacy prototype as an archival capture only; the tracked marketplace branch is the active V2 candidate.",
+    "WooCommerce remains the authority for price, stock, variation, cart, checkout, orders, and Product schema.",
+    "A missing or unapproved product/media/rights mapping must fail closed."
+  ],
+  "integration_target": {
+    "worktree": "/Users/theceo/DevSkyy",
+    "branch": "codex/skyyrose-v2-marketplace",
+    "base_ref": "main",
+    "base_commit": "f97383524206",
+    "integration_ref": "refs/heads/codex/skyyrose-v2-marketplace",
+    "last_verified_source_commit": "ba9e985f6c9a68c1db2fabac83f70b7976e3b761",
+    "latest_preview_route_commit": "ba9e985f6c9a68c1db2fabac83f70b7976e3b761",
+    "payload_commit": "d249a687c4dd1f9f053aa8dd5f66e8717f72f8a4",
+    "attestation_commit": "8b4be49d0a2642212b088974e4eca66560006f29",
+    "required_state_before_promotion": "clean committed integration candidate"
+  },
+  "capture_sources": [
+    {
+      "name": "legacy-prototype",
+      "worktree": "/Users/theceo/DevSkyy-skyyrose-flagship-v2-prototype",
+      "branch": "codex/skyyrose-flagship-v2-prototype",
+      "capture_commit": "1982efe66",
+      "state": "ARCHIVED_CAPTURE_NOT_ACTIVE",
+      "owned_paths": [
+        "wordpress-theme/skyyrose-flagship-2",
+        ".fashion-theme",
+        "docs/design/v2-remodel",
+        "tools/v2-theme-preview.php",
+        "tests/test_v2_product_presentation_registry.py"
+      ]
+    },
+    {
+      "name": "historical-release-candidate",
+      "worktree": "/Users/theceo/DevSkyy-flagship2-release-candidate",
+      "branch": "feat/flagship2-release-candidate",
+      "state": "SELECTIVE_PORT_ONLY",
+      "owned_paths": [
+        "WooCommerce contracts",
+        "package reproducibility",
+        "builder compatibility",
+        "commerce truth checks"
+      ]
+    }
+  ],
+  "source_precedence": {
+    "sot_facts_and_generated_projections": "promoted-current-SOT-components",
+    "v2_layouts_collection_experiences_kids_header_cards": "prototype-capture-commit",
+    "woocommerce_package_and_builder_compatibility": "selective-release-candidate-ports -> tracked marketplace branch",
+    "css_js_minified_outputs": "fresh-build-from-reconciled-source",
+    "served_creative": "tracked-manifest-bound-approved-assets-only",
+    "candidate_evidence": "generated-from-final-integration-commit-and-package"
+  },
+  "implemented_local_contracts": {
+    "truth_layer": [
+      "generated product-presentation registry",
+      "Jersey Series dedicated presentation under the Black Rose collection",
+      "pre-order fails closed without unrelated-product fallback",
+      "WooCommerce Product schema remains sole authority",
+      "Woo inactive guard and cart-empty hook parity"
+    ],
+    "motion": [
+      "native-scroll-first rails",
+      "Scroll World pin constrained to expanded fine-pointer mode",
+      "visibility, pagehide, pageshow, resize, reduced-motion, and Save-Data cancellation",
+      "Skyy Rose Tour Around the Bay poster-first local previsualization"
+    ],
+    "packaging": [
+      "theme.json, RTL, editor style, POT builder, deterministic asset builder, marketplace verifier, safe importer"
+    ]
+  },
+  "required_commands": [
+    "git -C /Users/theceo/DevSkyy status --porcelain=v1 --untracked-files=all",
+    "git -C /Users/theceo/DevSkyy show --stat 1982efe66",
+    "git -C /Users/theceo/DevSkyy status --porcelain=v1 --untracked-files=all -- .fashion-theme wordpress-theme/skyyrose-flagship-2",
+    "cd /Users/theceo/DevSkyy/wordpress-theme/skyyrose-flagship-2 && npm ci && npm run build && npm run verify && npm run package:theme",
+    "Run candidate promotion verification only after every source path is committed and manifest-bound.",
+    "Capture same-candidate browser, keyboard, reduced-motion, Save-Data, no-JS, WooCommerce, accessibility, performance, rights, and independent visual-QA evidence."
+  ],
+  "hard_gate_failures": [
+    "dirty or untracked scoped candidate paths",
+    "candidate tree/hash or package hash mismatch",
+    "absolute machine path in an active runtime/build input",
+    "stale generated SOT or minified asset",
+    "served asset without manifest hash, approved use, and rights state",
+    "blocked, unknown, or unfrozen candidate binding",
+    "evidence from a different candidate hash",
+    "unverified product/variation/media relationship",
+    "missing founder approval or independent visual QA"
+  ],
+  "external_blockers": [
+    "prototype archival capture commit",
+    "SOT component authority reconciliation",
+    "canonical Jersey media bytes and eyes-on garment fidelity",
+    "rights and expanded-use approvals",
+    "fresh WordPress/WooCommerce staging transaction evidence",
+    "browser accessibility and performance evidence",
+    "founder creative approval and independent visual-QA verdict"
+  ],
+  "deliverables": [
+    "tracked .fashion-theme/promotion-manifest.json generated from Git objects",
+    "clean Main-based integration commit series",
+    "reproducible marketplace zip plus SHA-256 inventory",
+    "candidate-bound preview.html, contract.json, evidence.json",
+    "worktree-handoff ledger with capture, promotion, and supersession records"
+  ]
+}

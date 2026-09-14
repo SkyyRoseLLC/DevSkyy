@@ -1,0 +1,114 @@
+{
+  "schema": "skyyrose.runway-environment-plate/1",
+  "candidate_id": "BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1",
+  "scene_id": "BR-COMMERCE-2",
+  "status": "BLOCKED_SOURCE_AUTHORITY_AND_PRIOR_ATTEMPT_CONSUMED",
+  "strategy": "environment_rebuild_around_source",
+  "provider": {
+    "name": "runway",
+    "route": "comfy_partner_node",
+    "node": "RunwayTextToImageNode",
+    "model": "gen-4",
+    "comfy_base_url": "http://127.0.0.1:8189"
+  },
+  "provider_inputs": {
+    "mode": "prompt_only",
+    "reference_image": null,
+    "protected_assets_sent": [],
+    "reason": "The local reference contains deny-listed garments, people, lettering, and sculpture pixels."
+  },
+  "local_composition_inspiration": [
+    {
+      "path": "/Users/theceo/Downloads/hf_20260902_123426_4d961ef1-a45d-4b6f-9acb-57df6af7a951.png",
+      "sha256": "224eb55a9baa7495a80b50b9b61a4df596dc9840c92e9820b8de5a4a91928fad",
+      "width": 2688,
+      "height": 1520,
+      "authority_role": "COMPOSITION_ATMOSPHERE_ONLY",
+      "sent_to_runway": false,
+      "use": [
+        "Oakland brutalist undercroft depth",
+        "wet concrete reflection behavior",
+        "cool-left and sodium-right light separation",
+        "campaign-scale three-anchor spacing"
+      ],
+      "deny_as_authority": [
+        "people",
+        "identity",
+        "hoodies",
+        "pants or shorts",
+        "logos",
+        "word sculpture"
+      ]
+    }
+  ],
+  "request": {
+    "ratio": "1920:1080",
+    "num_outputs": 1,
+    "prompt": "Wide nocturnal Oakland brutalist transit undercroft with massive raw-concrete columns, a deep civic perspective corridor, rain-darkened aggregate, weathered blackened steel, cold Bay fog entering from camera-left, restrained sodium-vapor warmth from camera-right, and a continuous wet concrete ground plane with controlled reflections. Preserve open campaign-scale zones at the left and right thirds plus a physically grounded central object zone for later local composition. Environment only. No people, no garments, no products, no text, no wordmarks, no signage, no hearts, no roses, no sculptures, no monuments, no robed figures, no Beast characters, no ballrooms, no flower walls.",
+    "prompt_source": "Locally distilled from a deny-listed composition candidate; no source pixels are uploaded."
+  },
+  "forbidden_plate_content": [
+    "people",
+    "garments",
+    "products",
+    "text",
+    "wordmarks",
+    "signage",
+    "hearts",
+    "roses",
+    "sculptures",
+    "monuments",
+    "robed figures",
+    "Beast characters",
+    "ballrooms",
+    "flower walls"
+  ],
+  "comfy_local_postprocess": {
+    "required_after_separate_approvals": [
+      "separate approved BR-005 plus BR-007 male protected alpha",
+      "separate approved BR-004 protected alpha",
+      "exact transparent Black Rose sculpture",
+      "placement, scaling, ordered occlusion, contact shadows, reflections, edge treatment, and final composition",
+      "prompt/history retrieval and hash-bound receipts"
+    ],
+    "protected_rgb_policy": "Cast identity, BR-004, BR-005, BR-007, every logo/artwork detail, and sculpture RGB remain byte-identical.",
+    "birefnet_evidence": {
+      "schema": "skyyrose.birefnet-edge-confidence/1",
+      "model_sha256": "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154",
+      "role": "ALPHA_AND_EDGE_CONFIDENCE_ONLY",
+      "generative_use_allowed": false,
+      "independent_visual_review_required": true
+    }
+  },
+  "credit_control": {
+    "currency": "USD",
+    "max_live_price_usd": 0.11,
+    "max_paid_generations": 1,
+    "paid_generations_recorded": 0,
+    "automatic_paid_retries": false,
+    "candidate_bound_approval_required": true,
+    "approval_receipt": null,
+    "on_unknown_submission_outcome": "STOP_AND_RECONCILE_COMFY_HISTORY"
+  },
+  "execution_blockers": [
+    "the earlier BR-COMMERCE-2 paid candidate failed and its attempt remains consumed",
+    "approved male BR-005 plus BR-007 protected wearer alpha is missing",
+    "approved BR-004 protected wearer alpha is missing",
+    "a new environment attempt requires a new founder-approved scope after merge",
+    "integration PR is not merged into main"
+  ],
+  "output": {
+    "candidate_path": "Comfy/quarantine/BR-COMMERCE-2/BR-COMMERCE-2-RUNWAY-ENVIRONMENT-A1.png",
+    "filename_prefix": "SkyyRose/BR-COMMERCE-2/environment-a1",
+    "approval_path": "Comfy/receipts/br-commerce-2-runway-environment-a1-founder-approval.json",
+    "attempt_marker": "Comfy/receipts/br-commerce-2-runway-environment-a1-paid-attempt.json",
+    "promotion_allowed": false,
+    "wiring_allowed": false,
+    "deployment_allowed": false
+  },
+  "post_merge_execution_gate": {
+    "required": true,
+    "action": "REBASE_OR_RESTART_FROM_MERGED_MAIN",
+    "reason": "A new paid scope may not inherit the consumed failed attempt or pre-merge code."
+  }
+}

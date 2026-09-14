@@ -70,7 +70,9 @@
       "packs": [
         "pages/page-blueprints.md",
         "pages/page-blueprints.json",
-        "knowledge/theme-engineering.md"
+        "knowledge/theme-engineering.md",
+        "prompts/prompt-stack.md",
+        "prompts/prompt-orchestration.md"
       ],
       "owners": [
         "brand-experience-architect",
@@ -97,6 +99,8 @@
         "v2/v2-page-and-imagery-plan.md",
         "references/animated-prompt-pack-adaptation.md",
         "showcase/v2-page-atlas.html",
+        "prompts/prompt-stack.md",
+        "prompts/prompt-orchestration.md",
         "prompts/few-shot-patterns.md"
       ],
       "owners": [
@@ -122,7 +126,8 @@
         "research/interactive-commerce-research-2026-08-06.md",
         "interactive/feature-scaffold.json",
         "showcase/interactive-feature-scaffold.html",
-        "v2/v2-page-plan.json"
+        "v2/v2-page-plan.json",
+        "prompts/prompt-orchestration.md"
       ],
       "owners": [
         "fashion-motion-responsive-engineer",
@@ -141,8 +146,39 @@
         "hooks",
         "theme.json"
       ],
-      "packs": ["knowledge/theme-engineering.md", "pages/page-blueprints.json"],
+      "packs": [
+        "knowledge/theme-engineering.md",
+        "pages/page-blueprints.json",
+        "prompts/prompt-stack.md",
+        "prompts/prompt-orchestration.md"
+      ],
       "owners": ["woocommerce-theme-engineer", "fashion-frontend-engineer"]
+    },
+    {
+      "id": "prompt_orchestration",
+      "triggers": [
+        "prompt engineering",
+        "prompt chaining",
+        "prompt caching",
+        "context assembly",
+        "few-shot",
+        "critic loop",
+        "cache invalidation"
+      ],
+      "packs": [
+        "prompts/prompt-stack.md",
+        "prompts/prompt-orchestration.md",
+        "prompts/few-shot-patterns.md",
+        "prompts/evaluator-rubric.json",
+        "schemas/task-packet.schema.json",
+        "schemas/handoff-contract.schema.json",
+        "schemas/evidence.schema.json"
+      ],
+      "owners": [
+        "fashion-theme-lead",
+        "fashion-knowledge-curator",
+        "fashion-designops-governance-engineer"
+      ]
     },
     {
       "id": "premium_feature_system",
@@ -162,7 +198,8 @@
         "features/premium-feature-catalog.json",
         "knowledge/theme-engineering.md",
         "v2/commerce-state-contract.json",
-        "v2/motion-responsive-contract.json"
+        "v2/motion-responsive-contract.json",
+        "prompts/prompt-orchestration.md"
       ],
       "owners": [
         "fashion-frontend-engineer",
@@ -203,6 +240,30 @@
         "research/fashion-commerce-research-2026-08-06.md"
       ],
       "owners": ["fashion-knowledge-curator"]
+    },
+    {
+      "id": "branded_skill_enhancement",
+      "triggers": [
+        "branding skill",
+        "copywriting skill",
+        "email marketing skill",
+        "e-commerce product skill",
+        "sales funnel skill",
+        "SEO skill",
+        "social media skill",
+        "branded skill gap"
+      ],
+      "packs": [
+        "branded-skills/README.md",
+        "branded-skills/routes/route-registry.json",
+        "branded-skills/sources/source-registry.json",
+        "branded-skills/enhancement-index.json"
+      ],
+      "owners": [
+        "fashion-knowledge-curator",
+        "fashion-brand-systems-researcher",
+        "fashion-designops-governance-engineer"
+      ]
     }
   ]
 }

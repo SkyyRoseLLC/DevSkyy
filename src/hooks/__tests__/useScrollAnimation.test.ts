@@ -1,6 +1,6 @@
 /**
  * Unit Tests for useScrollAnimation
- * @jest-environment jsdom
+ * @vitest-environment jsdom
  */
 
 import React from 'react';
@@ -15,10 +15,10 @@ let mockDisconnect;
 let MockIntersectionObserver;
 
 function installIntersectionObserverMock() {
-  mockObserve = jest.fn();
-  mockUnobserve = jest.fn();
-  mockDisconnect = jest.fn();
-  MockIntersectionObserver = jest.fn().mockImplementation(cb => {
+  mockObserve = vi.fn();
+  mockUnobserve = vi.fn();
+  mockDisconnect = vi.fn();
+  MockIntersectionObserver = vi.fn(function MockIntersectionObserver(cb) {
     intersectionCallback = cb;
     return {
       observe: mockObserve,
@@ -37,28 +37,28 @@ function installMatchMedia(prefersReducedMotion) {
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
     configurable: true,
-    value: jest.fn().mockImplementation(query => ({
+    value: vi.fn().mockImplementation(query => ({
       matches: prefersReducedMotion ? query === '(prefers-reduced-motion: reduce)' : false,
       media: query,
       onchange: null,
-      addListener: jest.fn(),
-      removeListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      dispatchEvent: jest.fn(),
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
     })),
   });
 }
 
 beforeEach(() => {
-  jest.useFakeTimers();
+  vi.useFakeTimers();
   intersectionCallback = null;
   installMatchMedia(false);
   installIntersectionObserverMock();
 });
 
 afterEach(() => {
-  jest.useRealTimers();
+  vi.useRealTimers();
 });
 
 // Helper component that attaches a real DOM element to the hook's ref
@@ -168,7 +168,7 @@ describe('useScrollAnimation', () => {
 
       // Advance timers past the delay
       act(() => {
-        jest.advanceTimersByTime(500);
+        vi.advanceTimersByTime(500);
       });
 
       expect(getResult().isVisible).toBe(true);

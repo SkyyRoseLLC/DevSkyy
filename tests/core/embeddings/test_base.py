@@ -20,7 +20,9 @@ class FakeEncoder(BaseEncoder):
     """Deterministic 4-d encoder: vector = [width, height, 1, 0]. No model."""
 
     def __init__(self, config=None):
-        super().__init__(config)
+        # The fake is intentionally model-free. Pinning its test-only device avoids
+        # the production auto-device probe, which correctly requires torch.
+        super().__init__(config or get_config().model_copy(update={"device": "cpu"}))
         self.load_calls = 0
         self.encode_calls = 0
 

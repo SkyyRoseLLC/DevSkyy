@@ -6,24 +6,26 @@ import * as THREE from 'three';
 import { MaterialSwapper } from '../materialSwapper';
 
 // Mock Logger
-jest.mock('../../utils/Logger', () => ({
-  Logger: jest.fn().mockImplementation(() => ({
-    info: jest.fn(),
-    warn: jest.fn(),
-    error: jest.fn(),
-    debug: jest.fn(),
-  })),
+vi.mock('../../utils/Logger', () => ({
+  Logger: vi.fn(function Logger() {
+    return {
+      info: vi.fn(),
+      warn: vi.fn(),
+      error: vi.fn(),
+      debug: vi.fn(),
+    };
+  }),
 }));
 
 function createMockMaterial(overrides: any = {}) {
   const color = new THREE.Color(0xffffff);
-  color.copy = jest.fn().mockReturnThis();
+  color.copy = vi.fn().mockReturnThis();
   const emissive = new THREE.Color(0x000000);
-  emissive.set = jest.fn().mockReturnThis();
+  emissive.set = vi.fn().mockReturnThis();
 
   const mat: any = {
     uuid: 'mat-' + Math.random().toString(36).slice(2, 8),
-    dispose: jest.fn(),
+    dispose: vi.fn(),
     needsUpdate: false,
     color,
     roughness: 0.5,
@@ -35,7 +37,7 @@ function createMockMaterial(overrides: any = {}) {
     map: null,
     ...overrides,
   };
-  mat.clone = jest.fn().mockImplementation(() => createMockMaterial(overrides));
+  mat.clone = vi.fn().mockImplementation(() => createMockMaterial(overrides));
   return mat;
 }
 
@@ -243,7 +245,7 @@ describe('MaterialSwapper', () => {
 
   describe('setColor edge cases', () => {
     it('should not set color on material without color property', () => {
-      const matNoColor = { dispose: jest.fn(), needsUpdate: false, clone: jest.fn().mockReturnThis() };
+      const matNoColor = { dispose: vi.fn(), needsUpdate: false, clone: vi.fn().mockReturnThis() };
       const mesh = createMockMesh(matNoColor);
       expect(() => swapper.setColor(mesh, '#ff0000')).not.toThrow();
     });
@@ -252,11 +254,11 @@ describe('MaterialSwapper', () => {
   describe('setMaterialProperties edge cases', () => {
     it('should not crash when material lacks standard properties', () => {
       const basicMat = {
-        dispose: jest.fn(),
+        dispose: vi.fn(),
         needsUpdate: false,
         opacity: 1,
         transparent: false,
-        clone: jest.fn().mockReturnThis(),
+        clone: vi.fn().mockReturnThis(),
       };
       const mesh = createMockMesh(basicMat);
       expect(() =>

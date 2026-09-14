@@ -20,7 +20,10 @@ from __future__ import annotations
 from pathlib import Path
 
 import numpy as np
+import pytest
 from pygltflib import GLTF2
+
+pytest.importorskip("matplotlib", reason="golden QA image rendering requires the ml extra")
 
 from skyyrose.character_pipeline import _glb_io, segment, skeleton, weights
 from skyyrose.character_pipeline.config import load_character_yaml

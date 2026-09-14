@@ -1,0 +1,53 @@
+{
+  "kind": "SkyyRose V2 generated lookbook review set",
+  "state": "FOUNDER_REVIEW_REQUIRED",
+  "provider": "gpt-image-2 via Codex built-in image generation",
+  "created_at": "2026-08-07",
+  "rule": "Each asset is a review-only editorial candidate. It is not storefront media, product truth, or an approved SOT promotion until founder review and SKU fidelity QA pass.",
+  "assets": [
+    {
+      "id": "signature-bay-bridge-shorts-v1",
+      "collection": "signature",
+      "file": "signature-bay-bridge-shorts-v1.png",
+      "sha256": "71cdb6a0abc2788105aa8c7212399da4ed08b4614d87a785633a6ad34841d265",
+      "sku_references": ["sg-001"],
+      "source_media": [
+        "assets/images/products/sg-001-bay-bridge-shorts.webp",
+        "assets/images/products/bridge-bay-bridge-shorts-front-model.webp",
+        "assets/images/products/bridge-bay-bridge-shorts-back-model.webp"
+      ],
+      "scene": "Oakland waterfront rooftop at blue hour; Bay Bridge in the distance",
+      "required_review": ["exact garment artwork", "small purple SkyyRose detail", "no invented marks"]
+    },
+    {
+      "id": "black-rose-moon-pavilion-hoodie-v1",
+      "collection": "black-rose",
+      "file": "black-rose-moon-pavilion-hoodie-v1.png",
+      "sha256": "42b13ab8959dbff832142dba7e5cc0e82ec03e35ffa774d2006c3de694482d3d",
+      "sku_references": ["br-004"],
+      "source_media": ["assets/images/products/br-004-onmodel.webp"],
+      "scene": "Midnight Oakland waterside pavilion",
+      "required_review": ["exact hoodie artwork", "no jersey substitution", "no invented marks"]
+    },
+    {
+      "id": "love-hurts-theatre-bomber-v1",
+      "collection": "love-hurts",
+      "file": "love-hurts-theatre-bomber-v1.png",
+      "sha256": "80f9368910711022f60a81f5300b9fdeffdf1b810d56101c24b32aff04249b4f",
+      "sku_references": ["lh-004"],
+      "source_media": ["assets/images/products/lh-004-onmodel.webp"],
+      "scene": "Candlelit gothic Oakland theatre passage",
+      "required_review": ["exact bomber panels", "exact script and rose placement", "no invented marks"]
+    },
+    {
+      "id": "kids-throne-room-colorblock-v1",
+      "collection": "kids-capsule",
+      "file": "kids-throne-room-colorblock-v1.png",
+      "sha256": "27e05014447138fd11f64ee60a2b77a2524d4125479f86a396acaae0b4e289b0",
+      "sku_references": ["kids-001"],
+      "source_media": ["assets/images/products/kids-001-onmodel-v2.webp"],
+      "scene": "Rose-gold heir throne room",
+      "required_review": ["exact red-black-white colorblock", "age-appropriate presentation", "no invented marks"]
+    }
+  ]
+}
