@@ -106,7 +106,12 @@ describe('merge-aware lint-staged selection', () => {
     const result = commands(repo.cwd, ['src/own.ts']);
     expect(result['src/**/*.{ts,tsx,js,jsx,mjs,cjs}']).toEqual([expect.stringContaining('src/own.ts')]);
     for (const value of Object.values(
-      commands(repo.cwd, ['Comfy/receipts/receipt.json', 'plugins/fashion-theme-team/SKILL.md', 'art.png'])
+      commands(repo.cwd, [
+        'Comfy/receipts/receipt.json',
+        'plugins/fashion-theme-team/SKILL.md',
+        'skyyrose/elite_studio/assets/golden/lh-004/placement.md',
+        'art.png',
+      ])
     ))
       expect(value).toEqual([]);
   });
