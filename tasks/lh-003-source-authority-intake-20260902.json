@@ -1,0 +1,152 @@
+{
+  "schema": "skyyrose.fashion-e2e-task/1",
+  "task_id": "LH-003-SOURCE-AUTHORITY-INTAKE-20260902",
+  "state": "BLOCKED",
+  "project_manager": "fashion-theme-lead",
+  "scope": {
+    "sku": "lh-003",
+    "product": "Love Hurts Basketball Shorts",
+    "capability": "product-fidelity-image-edits",
+    "target": "Canonical physical-source packet and LH-COMMERCE-2 source bindings",
+    "source_views": ["front", "back", "wearer-left", "wearer-right"],
+    "exclusions": [
+      "image or video generation",
+      "provider spend",
+      "invented on-model customer authority",
+      "automatic matte generation",
+      "candidate promotion",
+      "runtime wiring",
+      "deployment"
+    ]
+  },
+  "roster": [
+    {
+      "name": "fashion-theme-lead",
+      "job_title": "Source-intake project manager",
+      "capabilities": [
+        "scope control",
+        "authority reconciliation",
+        "evidence integration"
+      ],
+      "deliverable": "Hash-bound LH-003 source packet and task handoff"
+    },
+    {
+      "name": "catalog-sot-integrator",
+      "job_title": "Product source and catalog owner",
+      "capabilities": [
+        "source-photo intake",
+        "dossier reconciliation",
+        "manifest regeneration"
+      ],
+      "deliverable": "Canonical physical views and synchronized source-photo manifest"
+    },
+    {
+      "name": "visual-commerce-qa",
+      "job_title": "Independent product-fidelity reviewer",
+      "capabilities": [
+        "view classification",
+        "construction verification",
+        "scene-source gate review"
+      ],
+      "deliverable": "Independent source-authority verdict",
+      "independent_from_project_manager": true,
+      "may_edit_candidate": false
+    }
+  ],
+  "acceptance_criteria": [
+    "The four founder-supplied files are visually classified as LH-003 front, back, wearer-left, and wearer-right physical views.",
+    "Original source bytes and SHA-256 values are preserved; canonical repository copies are byte-identical.",
+    "The source-photo manifest selects physical photography rather than a techflat for LH-003 front and back.",
+    "Directional side views remain distinct while satisfying the generic side-coverage requirement.",
+    "The founder-confirmed pocket invariant is explicit everywhere: exactly two side pockets and two rear pockets, with zipper closures on all four pockets.",
+    "The dossier records physical front, back, side-panel, pocket, artwork, trim, and wording evidence without inventing unseen construction.",
+    "LH-COMMERCE-2 binds all four physical views and retains the approved-wearer and protected-matte blockers.",
+    "Catalog, imagery SOT, source-photo, scene-contract, and focused regression checks pass or remain explicitly blocked with evidence.",
+    "Independent review remains required before the task can advance beyond NEEDS_REVIEW."
+  ],
+  "evidence_requirements": [
+    "source_hash_validation",
+    "byte_identity_check",
+    "visual_view_classification",
+    "catalog_and_dossier_binding",
+    "source_photo_manifest_regeneration",
+    "scene_contract_validation",
+    "focused_regression_tests",
+    "independent_review",
+    "founder_promotion_decision"
+  ],
+  "authority": {
+    "intake_state": "FOUNDER_SUPPLIED_CURRENT_SESSION",
+    "publication_rights_state": "NOT_REVERIFIED_IN_THIS_LOCAL_INTAKE",
+    "inputs": [
+      {
+        "view": "front",
+        "path": "/Users/theceo/Desktop/products/lh-003-shorts-front-source.jpg",
+        "sha256": "5d159098e2a965d16b56a6751de45e3e42f49f7dc2a4c2fc3d0556c1d048307f",
+        "dimensions": [934, 841]
+      },
+      {
+        "view": "back",
+        "path": "/Users/theceo/Desktop/products/lh-003-shorts-back-source.jpg",
+        "sha256": "65e36327b0dceaee34a66ccd4af0a0811047badcb7f6afe9eaa00980f4d4f53c",
+        "dimensions": [934, 841]
+      },
+      {
+        "view": "wearer-left",
+        "path": "/Users/theceo/Desktop/products/lh-003-shorts-left-side-closeup.jpg",
+        "sha256": "d049f72cbca0f7086d21e29c0d678775d5c0d95a246d35d4ef2ff2aa20b28da6",
+        "dimensions": [768, 1024]
+      },
+      {
+        "view": "wearer-right",
+        "path": "/Users/theceo/Desktop/products/lh-003-shorts-rights-side-closeup.jpg",
+        "sha256": "c41e1e73516df280436ddd3e9e3825f4569e65eb784942894e2e68b1c9578f9a",
+        "dimensions": [768, 1024]
+      }
+    ],
+    "catalog": "skyyrose-catalog.csv",
+    "dossier": "wordpress-theme/skyyrose-flagship/data/dossiers/love-hurts-basketball-shorts.md",
+    "source_manifest": "assets/products/source-photos/manifest.json",
+    "scene_contract": "Comfy/scene-contracts/lh-commerce-2-higgsfield-comfy-ooda.json",
+    "plugin": "fashion-theme-team@personal 0.4.0+codex.20260825142900"
+  },
+  "issues": [
+    {
+      "issue_id": "LH003-AUTH-001",
+      "fingerprint": "lh-003:canonical-source-selected-techflat-over-physical-photography",
+      "state": "RESOLVED",
+      "first_seen": "2026-09-02",
+      "description": "The source-photo manifest selected 320x400 techflats even though byte-matched physical front and back product photography was present.",
+      "resolution": "Canonical selection now prefers the physical front and back sources; the manifest is regenerated deterministically and classifies LH-003 as photography."
+    },
+    {
+      "issue_id": "LH003-AUTH-002",
+      "fingerprint": "lh-003:dossier-conflicts-with-physical-back-and-side-construction",
+      "state": "RESOLVED",
+      "first_seen": "2026-09-02",
+      "description": "The dossier omitted the two zippered rear pockets and rear artwork, reversed or under-specified directional side branding, and failed to preserve the founder-confirmed invariant of exactly two zippered side pockets plus two zippered rear pockets.",
+      "resolution": "Dossier, scene contract, and source-authority receipt now preserve directional artwork and exactly four zippered pockets; a fail-closed regression test guards the correction."
+    },
+    {
+      "issue_id": "LH003-SCENE-001",
+      "fingerprint": "lh-commerce-2:approved-wearer-and-protected-matte-missing",
+      "state": "OPEN",
+      "first_seen": "2026-09-02",
+      "description": "Four physical product views improve exact construction authority but do not provide the approved on-model customer or protected garment matte required for final scene generation."
+    }
+  ],
+  "manager_verification": {
+    "status": "PASS_SOURCE_INTAKE__SCENE_REMAINS_BLOCKED",
+    "evidence": [
+      "Four canonical product views are byte-identical to founder-supplied originals.",
+      "LH-003 source selection now resolves to physical photography for front, back, wearer-left, and wearer-right.",
+      "Founder truth is fail-closed across dossier, contract, receipt, and regression test: two side pockets plus two rear pockets, all four zippered.",
+      "Source-photo manifest regeneration is deterministic; LH-003 has front, back, and side coverage while the dedicated detail-pocket macro remains missing.",
+      "Independent visual-commerce-qa verdict is PASS_SOURCE_INTAKE_ONLY and recommends no generation, wiring, or promotion.",
+      "LH-COMMERCE-2 retains approved-wearer, protected-matte, and candidate-bound paid-preflight blockers.",
+      "No render, provider call, Comfy job, credit spend, promotion, wiring, or deployment was performed."
+    ]
+  },
+  "founder_approval": "PENDING",
+  "release_decision": "NOT_AUTHORIZED"
+}
