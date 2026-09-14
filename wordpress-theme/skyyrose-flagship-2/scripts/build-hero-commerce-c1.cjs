@@ -28,7 +28,7 @@ const scenes = [
    copy:'The Black Rose looks share the Bay Bridge waterfront.',
    skus:['br-005','br-007','br-004'], background:input.brPath,
    sourceScope:'NEW_REPLACEMENT_CAST_AND_PRODUCT_CANDIDATE',
-   alt:'New Black Rose candidate: male hoodie and basketball-shorts look beside a female long-hoodie look on the moonlit Bay Bridge terrace.',
+   alt:'Two models on the moonlit Bay Bridge terrace: one wears the BLACK Rose Hoodie — Signature Edition with BLACK Rose x Love Hurts Basketball Shorts, and the other wears the BLACK Rose Hoodie as a longline look.',
    review:'New model and garment candidates. Identity and product-fidelity approval pending.'},
   {id:'SIG-COMMERCE-1', collection:'signature', label:'The Golden Gate Overlook',
    copy:'The Sherpa and Signature Beanie meet the gold-lit overlook.',
@@ -44,7 +44,7 @@ const scenes = [
    foreground:path.join(sourceRoot,'sig-commerce-2-male-mint-set-generated-protected-v2.png'),
    foregroundHash:'eb8cfbd99c4a963223cf094551dcc62bb022573f46b17f9c819561b1a4794a16',
    placement:{left:495,top:70,height:775}, sourceScope:'PRESERVED_MALE_WITH_NEW_FEMALE_HOODIE_CANDIDATE',
-   alt:'Preserved male mint crewneck and sweatpants look with a new female mint hoodie candidate on the Golden Gate stepped terrace.',
+   alt:'Two models on the Golden Gate terrace: one wears the Mint & Lavender Crewneck with matching Sweatpants, and the other wears the Mint & Lavender Hoodie as a longline look with white sneakers.',
    review:'Male source preserved. New female identity and hoodie candidate require approval; final scene review pending.'}
 ];
 
@@ -140,4 +140,3 @@ async function main() {
   console.log(JSON.stringify({manifest:path.join(theme,'data/hero-commerce-scenes-c1.json'),preview:path.join(receiptDir,'preview.html'),scenes:evidence.map(s=>({id:s.scene_id,master:s.master,stage:s.stage_import,webp_bytes:s.variants.map(v=>({width:v.width,bytes:v.bytes}))})),state:'NEEDS_REVIEW'},null,2));
 }
 main().catch(error=>{log({event:'assembly_failure',state:'BLOCKED',message:error.message});console.error(error);process.exitCode=1;});
-
