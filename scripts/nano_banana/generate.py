@@ -208,7 +208,7 @@ def generate_flux(
             prompt=prompt,
             width=768,
             height=1024,
-            response_format="b64_json",
+            response_format="base64",
         )
     except Exception as exc:
         log.error("FLUX API call failed: %s", exc)

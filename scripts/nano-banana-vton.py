@@ -1087,7 +1087,7 @@ def generate_image_flux(
             "prompt": full_prompt,
             "width": 768,
             "height": 1024,  # 3:4 aspect ratio to match other providers
-            "response_format": "b64_json",  # Avoid 403 on URL downloads
+            "response_format": "base64",  # Avoid 403 on URL downloads
         }
 
         response = together_client.images.generate(**gen_kwargs)
