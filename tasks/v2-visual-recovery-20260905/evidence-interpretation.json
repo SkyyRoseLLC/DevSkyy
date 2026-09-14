@@ -1,0 +1,41 @@
+{
+  "schema": "skyyrose.cinematic-evidence-interpretation.v1",
+  "updated_at": "2026-09-06T01:33:49.901Z",
+  "source_glb_sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+  "finding": "All six canonical source animation clips contain zero varying channels. Clip naming and advancing render frames do not prove skeletal movement.",
+  "earlier_receipts": [
+    {
+      "pattern": "D-skyy-3d-verification-*.json",
+      "valid_for": [
+        "compiled asset delivery",
+        "actual WebGL renderer",
+        "GLB identity",
+        "action selection",
+        "pause/fallback controls",
+        "native product-link rendering"
+      ],
+      "not_sufficient_for": [
+        "physical footsteps",
+        "moving leg joints",
+        "animated Wave/Talk/Joy",
+        "Pixar-quality animation"
+      ]
+    }
+  ],
+  "new_required_evidence": [
+    "time-varying derived rig tracks",
+    "changing actual limb poses",
+    "rendered walk video",
+    "full-body framing",
+    "idle and interaction states",
+    "unchanged original model hash"
+  ],
+  "status": "PASS_ACTUAL_DERIVED_GAIT_LOCAL_CANDIDATE",
+  "final_evidence": "cinematic-integration-skyy-gait.json",
+  "final_video_pattern": "D-skyy-home-walkon-{390,768,1440}.webm",
+  "remaining_limits": [
+    "Artistic movement acceptance and static-to-3D onset continuity",
+    "No inverse kinematics or physical foot-contact simulation",
+    "Local Apple M5 performance does not establish low-end mobile performance"
+  ]
+}

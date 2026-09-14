@@ -1,0 +1,27 @@
+{
+  "files": {
+    "br-commerce-2-wall-statue-i3--receipt.json": "73cd1299f972a42015721f425af03db432eb1201008f1fec6959f2e4a9092489",
+    "collection-hero-authentic-motion-v3--black-rose-authentic-motion-v3-a1-wiring.json": "dfdc994e735da2d67d4d43ae45296c58367efb5d7c6fe5777e804c5109c9ca75",
+    "collection-hero-authentic-motion-v3--love-hurts-authentic-motion-v3-a1-wiring.json": "51abe61421959a31db5be33ae62928ba79291bb929742ba6f8e675f6b5bb023a",
+    "collection-motion-wiring-k1--approval.json": "8d6b9010844806ede314436b45e06f2bbb6e56b23849e4996f966300ef879bfa",
+    "collection-motion-wiring-k1--encoding.json": "81eab8f0458881146c011f00b0c9fbc79ebd2719301b69202f610f9f3df2d623",
+    "collection-motion-wiring-k1--receipt.json": "3eca9a38b78f736db2b659206a6716bcfbd43e888a979774206c695330ad7a8d",
+    "hero-commerce-compositions-c1--contract.json": "d757c704997eaef9bcf48a26b63d2b8922c6524eed133b7c48bf31b80b121c74",
+    "v2-full-local-staging-20260905-k1--deployment-inputs.json": "b8ea44be869d3ef3ddd7973dc623f2b5ad3f1837ec08d2fa64e1c8846da72034",
+    "v2-full-local-staging-20260905-k1--outcome.json": "54dfad94263eeb8f21b5ef1132c5f8ad421f6fe5eb7572e41c29bee765f2e24d"
+  },
+  "motion_manifests": {
+    "data/collection-hero-motion.json": {
+      "approval_scope": "Preserve existing wiring records; no new founder/product approval inferred",
+      "classification": "KEEP",
+      "evidence": "Exact byte match to v2-full-local-staging-20260905-k1 payload plus recovered server archive",
+      "sha256": "c6d99877bff4f1d97303cd56cf96f91cd3492e2ca6e5c220ecba375e4b9437cf"
+    },
+    "data/collection-scene-motion.json": {
+      "approval_scope": "Preserve existing wiring records; no new founder/product approval inferred",
+      "classification": "KEEP",
+      "evidence": "Exact byte match to v2-full-local-staging-20260905-k1 payload plus recovered server archive",
+      "sha256": "23f51f54fefc0d37e91ea3c76fecfbf0d2ba6553ce0c0c0c4d31d3e3c91892ef"
+    }
+  }
+}

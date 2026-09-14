@@ -1,0 +1,22 @@
+{
+  "old_main": "6d3e87bab9f401856e9d122b2f2ccbfa4a129b2a",
+  "new_main": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "origin_main": "4da200886c73252c5271f5bf89de61c5c32ba062",
+  "archive_branch": "codex/main-preserved-before-v2-sync-20260906",
+  "archive_commit": "6d3e87bab9f401856e9d122b2f2ccbfa4a129b2a",
+  "patch_equivalent_local_commits": [
+    "- 16c7f42c39540c91cd895c75c342067da01dbaf9 feat(fidelity): sync hardened product media gates",
+    "- 0b5f155054c12f6c19804a47558c88023ee87e27 feat(fidelity): sync OpenAI and format gates",
+    "- 56fcf643fc19f07cade588a219c285d221ce0b0e fix(format): harden nested team distributions",
+    "- 445bfe33c4628c405b6df5d5f85ed3254eb3f689 chore(skills): lock Higgsfield fashion workflows",
+    "- e0d0d2bb59d866851e6426c7091464fd241292cf feat(sot): harden product photo authority",
+    "- 4d1ba6d7fff155b805800fd91a0ced4b0a5f6224 chore: refresh auto-managed indexes",
+    "- 7666c4081a053a11af06683d0a3bcb0499f7ea55 Harden Image 2 candidate evidence gates",
+    "- 37299caf7dce54fd7f3fbc54d9e8c0b7126d5b26 chore: refresh OpenWolf anatomy index",
+    "- ccffce2a52c5f1203d93c9582deebaa7837750d3 chore(i18n): refresh V2 translation catalog",
+    "- 6d3e87bab9f401856e9d122b2f2ccbfa4a129b2a chore(v2): refresh candidate handoff ledgers"
+  ],
+  "worktree": "/Users/theceo/.codex/worktrees/scene-ooda-fashn-integration/DevSkyy",
+  "final_status": "## main...origin/main",
+  "method": "archive then compare-and-swap update-ref; no reset, rebase, merge or push"
+}

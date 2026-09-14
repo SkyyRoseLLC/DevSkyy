@@ -1,0 +1,2702 @@
+[
+  {
+    "label": "home",
+    "requests": 43,
+    "responses": 42,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/home/on-model/signature-sg-005-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-005-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-004-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/lh-004-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-001-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??b3112bc741",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??21ca4337f0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/home/on-model/black-rose-br-004-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/home/on-model/love-hurts-lh-004-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/immersive/scene-kids-capsule-playroom.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=9822&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.2175831478794682",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "ajax": []
+  },
+  {
+    "label": "shop",
+    "requests": 42,
+    "responses": 41,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??e6b0f2ec85",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-003-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-014-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-015-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-008-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-009-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??a7cef7028c",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-010-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-011-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-012-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-001-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-004-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-005-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=0&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&arch_results=12&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.9504286254243749",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "ajax": []
+  },
+  {
+    "label": "signature",
+    "requests": 46,
+    "responses": 45,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??a6acf50b00",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-015-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-014-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-013-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-009-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??6390d14f00",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??010b16d1e1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??f0dcf421ce",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-1-natural-font-h1-1672w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/sig-commerce-2-natural-dress-h1-1672w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/sig-commerce-3-motion-k1-poster.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-011-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-012-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-005-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-001-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/sg-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-003-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-007-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=10412&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.6165650603263267",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
+        "status": 206
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm",
+        "status": 206
+      }
+    ],
+    "failed": [
+      {
+        "error": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/signature/web/signature-golden-gate-monuments-motion-v1.webm"
+      }
+    ],
+    "ajax": []
+  },
+  {
+    "label": "black-rose",
+    "requests": 51,
+    "responses": 50,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??a6acf50b00",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-004-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-005-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-006-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-007-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/jersey-series-town-line-train-v1.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-003-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-015-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-009-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-012-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??6390d14f00",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??010b16d1e1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??f0dcf421ce",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/scroll-world/motion/collection-scenes-k1/br-commerce-1-archive-4-poster.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/black-rose/br-commerce-3-five-jersey-lounge-a-black-founder-approved-v1.png",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-001-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-008-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-014-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-010-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-011-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=10413&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.277259015335245",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+        "status": 206
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+        "status": 206
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm",
+        "status": 206
+      }
+    ],
+    "failed": [
+      {
+        "error": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm"
+      },
+      {
+        "error": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/black-rose/web/black-rose-authentic-motion-v3-a1.webm"
+      }
+    ],
+    "ajax": []
+  },
+  {
+    "label": "love-hurts",
+    "requests": 38,
+    "responses": 37,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??a6acf50b00",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/lh-005-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/lh-006-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/lh-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/lh-003-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??6390d14f00",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??010b16d1e1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??f0dcf421ce",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/lh-004-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=10414&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.30803319200668544",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+        "status": 206
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+        "status": 206
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm",
+        "status": 206
+      }
+    ],
+    "failed": [
+      {
+        "error": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm"
+      },
+      {
+        "error": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/love-hurts/web/love-hurts-authentic-motion-v3-a1.webm"
+      }
+    ],
+    "ajax": []
+  },
+  {
+    "label": "kids",
+    "requests": 38,
+    "responses": 37,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/kids-capsule/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??7f98e06fc0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/kids-001-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??6390d14f00",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??010b16d1e1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??f0dcf421ce",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/immersive/scene-kids-capsule-playroom.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/immersive/scene-kids-capsule-runway.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/immersive/scene-kids-capsule-heir-runway-gpt2.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/logos/sr-monogram-rose-gold.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=10415&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.001435942838186266",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.webm",
+        "status": 206
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.webm",
+        "status": 206
+      }
+    ],
+    "failed": [
+      {
+        "error": "net::ERR_ABORTED",
+        "canceled": true,
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/video/collection-heroes/approved/kids-capsule/web/kids-capsule-heir-throne-motion-v2.webm"
+      }
+    ],
+    "ajax": []
+  },
+  {
+    "label": "pdp",
+    "requests": 80,
+    "responses": 78,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/sg-005-onmodel.webp?resize=600%2C900&ssl=1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??bc37df873b",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-011-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-003-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/sg-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??04b0909595",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??13742b3dfd",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??9c19a8780d",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1784059681",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-dom.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-jsx-runtime.min.js?m=1785942842",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??5a8acea822",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.18.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js?m=1787047132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/hooks/index.min.js?ver=f0f188028580e8dc1255",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/i18n/index.min.js?ver=1dfe7db3940c23ea9216",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/private-apis/index.min.js?ver=91c41cc1d8b79a320132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/url/index.min.js?ver=65e1ab123ef3bf825dea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/api-fetch/index.min.js?ver=6f2a4faeee3c722b1e57",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js?ver=5cdaba16c87338181b77",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/deprecated/index.min.js?ver=fe587bac92b7d0ef760e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom/index.min.js?ver=5f9975e536ff35b62489",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/escape-html/index.min.js?ver=87ebe53e97bba59805a5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/element/index.min.js?ver=4822427ad9c627826631",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/is-shallow-equal/index.min.js?ver=7ad271045c1fe60f5496",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/keycodes/index.min.js?ver=2ea455bbfcb75ff06fc8",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/priority-queue/index.min.js?ver=6c0aa59b65d55dfd509b",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/undo-manager/index.min.js?ver=4554fce6276d8910a4ae",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/compose/index.min.js?ver=ec05ef4a8eb28e400019",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/redux-routine/index.min.js?ver=acca2b4857d83ad1790e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/data/index.min.js?ver=14a216e0932d72c22976",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/html-entities/index.min.js?ver=a976ff3a0f00bc2999a3",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??bd54f8b1d7",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/underscore.min.js?ver=1.13.8",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/wp-util.min.js?ver=7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=11.1.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/akismet/_inc/akismet-frontend.js?m=1785900794",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom-ready/index.min.js?ver=3fe927cab37bf38d6a23",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-payments/dist/frontend-tracks.js?ver=11.1.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??61c51b7991",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic.js?ver=edf8b27213c5d350305b",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-006-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/express-checkout.js?ver=6551c3e87a2ca749b708",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/logos/sr-monogram-rose-gold.webp",
+        "status": 200
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyIGZlYXRoZXItY2hldnJvbi1kb3duIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/?ver=3.0",
+        "status": 304
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=9880&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=2852&rand=0.057499876187416143",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/controller-with-preconnect-67631f14132552664e12d9e3ba791d60.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/t.gif?ui=0&blog_id=256563697&store_id=3639372b-23d7-46ba-95ef-0e103559ecfc&url=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com&woo_version=11.1.0&wp_version=7.1&store_admin=0&device=desktop&store_currency=USD&timezone=America%2FLos_Angeles&is_guest=1&host=bizplan-wp-admin&pi=9880&pn=The%20Bridge%20Series%20%27The%20Bay%20Bridge%27%20Shirt&pc=Signature&pp=25&pt=variable&lr=&or=http%3A%2F%2Flocalhost%3A3000%2F&r3d=&_en=woocommerceanalytics_product_view&_ui=9AdKwObt7aQX1e0fr5SMw23d&_ut=anon&_ts=1788622864649&_tz=7&_lg=en-US&_pf=MacIntel&_ht=956&_wd=1470&_sx=0&_sy=0&_dl=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com%2Fproduct%2Fsg-005%2F&_dr=&_rt=1788622864650&_=_",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/sg-005-onmodel.webp?fit=1024%2C1536&ssl=1",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "ajax": []
+  },
+  {
+    "label": "rejected-pdp",
+    "requests": 87,
+    "responses": 86,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/?relatedposts=1",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/hcaptcha-invisible-42881fc2f7172b794c75c37380ca453d.html",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/bridge-bay-bridge-shorts-front-model.webp?fit=1024%2C1024&ssl=1&resize=350%2C200",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/bridge-stay-golden-shorts-front-model.webp?fit=1024%2C1024&ssl=1&resize=350%2C200",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/sg-002-stay-golden-shirt.webp?fit=886%2C886&ssl=1&resize=350%2C200",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-oakland/",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/jersey-last-oakland-baseball-front-model.webp?resize=600%2C600&ssl=1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??9f324cb7b1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/06/br-012-last-oakland-baseball-back.jpeg?resize=600%2C600&ssl=1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-007-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-001-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-004-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-008-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??04b0909595",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??13742b3dfd",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??9c19a8780d",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1784059681",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-dom.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-jsx-runtime.min.js?m=1785942842",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??5a8acea822",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/?ver=3.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.18.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js?m=1787047132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/hooks/index.min.js?ver=f0f188028580e8dc1255",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/i18n/index.min.js?ver=1dfe7db3940c23ea9216",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/private-apis/index.min.js?ver=91c41cc1d8b79a320132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/url/index.min.js?ver=65e1ab123ef3bf825dea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/api-fetch/index.min.js?ver=6f2a4faeee3c722b1e57",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js?ver=5cdaba16c87338181b77",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/deprecated/index.min.js?ver=fe587bac92b7d0ef760e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom/index.min.js?ver=5f9975e536ff35b62489",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/escape-html/index.min.js?ver=87ebe53e97bba59805a5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/element/index.min.js?ver=4822427ad9c627826631",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/is-shallow-equal/index.min.js?ver=7ad271045c1fe60f5496",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/keycodes/index.min.js?ver=2ea455bbfcb75ff06fc8",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/priority-queue/index.min.js?ver=6c0aa59b65d55dfd509b",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/undo-manager/index.min.js?ver=4554fce6276d8910a4ae",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/compose/index.min.js?ver=ec05ef4a8eb28e400019",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/redux-routine/index.min.js?ver=acca2b4857d83ad1790e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/data/index.min.js?ver=14a216e0932d72c22976",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/html-entities/index.min.js?ver=a976ff3a0f00bc2999a3",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??bd54f8b1d7",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/underscore.min.js?ver=1.13.8",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/wp-util.min.js?ver=7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=11.1.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/akismet/_inc/akismet-frontend.js?m=1785900794",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom-ready/index.min.js?ver=3fe927cab37bf38d6a23",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-payments/dist/frontend-tracks.js?ver=11.1.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/express-checkout.js?ver=6551c3e87a2ca749b708",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/lockups/black-rose-star-graphic.webp",
+        "status": 200
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyIGZlYXRoZXItY2hldnJvbi1kb3duIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??61c51b7991",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic.js?ver=edf8b27213c5d350305b",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/jersey-last-oakland-baseball-front-model.webp?resize=100%2C100&ssl=1",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=9945&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=2516&rand=0.030755286792479408",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/controller-with-preconnect-67631f14132552664e12d9e3ba791d60.html",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/t.gif?ui=0&blog_id=256563697&store_id=3639372b-23d7-46ba-95ef-0e103559ecfc&url=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com&woo_version=11.1.0&wp_version=7.1&store_admin=0&device=desktop&store_currency=USD&timezone=America%2FLos_Angeles&is_guest=1&host=bizplan-wp-admin&pi=9945&pn=BLACK%20is%20Beautiful%20Jersey%20Series%3A%205.%20Baseball%20Classic%20(Last%20Oakland)&pc=Black%20Rose&pp=100&pt=variable&lr=&or=http%3A%2F%2Flocalhost%3A3000%2F&r3d=&_en=woocommerceanalytics_product_view&_ui=9AdKwObt7aQX1e0fr5SMw23d&_ut=anon&_ts=1788622868199&_tz=7&_lg=en-US&_pf=MacIntel&_ht=956&_wd=1470&_sx=0&_sy=0&_dl=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com%2Fproduct%2Fbr-003-oakland%2F&_dr=&_rt=1788622868201&_=_",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/jersey-last-oakland-baseball-front-model.webp?fit=1024%2C1024&ssl=1",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "ajax": []
+  },
+  {
+    "label": "cart",
+    "requests": 67,
+    "responses": 66,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??27e294bc11",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/express-checkout.js?ver=6551c3e87a2ca749b708",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://i0.wp.com/staging-7e48-skyyrose.wpcomstaging.com/wp-content/uploads/2026/08/sg-005-onmodel.webp?fit=300%2C450&ssl=1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??04b0909595",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??78ff86b716",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-dom.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-jsx-runtime.min.js?m=1785942842",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/commercegurus-commercekit/assets/js/js.cookie.min.js?m=1764117510",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom-ready/index.min.js?ver=3fe927cab37bf38d6a23",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/hooks/index.min.js?ver=f0f188028580e8dc1255",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/i18n/index.min.js?ver=1dfe7db3940c23ea9216",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ab5519b4ee",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/?ver=3.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.18.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js?m=1787047132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/private-apis/index.min.js?ver=91c41cc1d8b79a320132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/url/index.min.js?ver=65e1ab123ef3bf825dea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/api-fetch/index.min.js?ver=6f2a4faeee3c722b1e57",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js?ver=5cdaba16c87338181b77",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/deprecated/index.min.js?ver=fe587bac92b7d0ef760e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom/index.min.js?ver=5f9975e536ff35b62489",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/escape-html/index.min.js?ver=87ebe53e97bba59805a5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/element/index.min.js?ver=4822427ad9c627826631",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/is-shallow-equal/index.min.js?ver=7ad271045c1fe60f5496",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/keycodes/index.min.js?ver=2ea455bbfcb75ff06fc8",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/priority-queue/index.min.js?ver=6c0aa59b65d55dfd509b",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/undo-manager/index.min.js?ver=4554fce6276d8910a4ae",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/compose/index.min.js?ver=ec05ef4a8eb28e400019",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/redux-routine/index.min.js?ver=acca2b4857d83ad1790e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/data/index.min.js?ver=14a216e0932d72c22976",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/html-entities/index.min.js?ver=a976ff3a0f00bc2999a3",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??3c27ae44b4",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-payments/dist/frontend-tracks.js?ver=11.1.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8f9fdfd52d",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic.js?ver=edf8b27213c5d350305b",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=9451&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.6690621316831025",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/controller-with-preconnect-67631f14132552664e12d9e3ba791d60.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/t.gif?ui=0&blog_id=256563697&store_id=3639372b-23d7-46ba-95ef-0e103559ecfc&url=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com&woo_version=11.1.0&wp_version=7.1&store_admin=0&device=desktop&store_currency=USD&timezone=America%2FLos_Angeles&is_guest=1&host=bizplan-wp-admin&template_used=0&additional_blocks_on_cart_page=&additional_blocks_on_checkout_page=&order_value=25&order_total=25.00&total_tax=0.00&total_discount=0&total_shipping=0&products_count=1&cart_page_contains_cart_block=0&cart_page_contains_cart_shortcode=1&checkout_page_contains_checkout_block=0&checkout_page_contains_checkout_shortcode=1&products=%5B%7B%22pi%22%3A10484%2C%22pn%22%3A%22The%20Bridge%20Series%20%27The%20Bay%20Bridge%27%20Shirt%22%2C%22pc%22%3A%22size%3A%20M%22%2C%22pp%22%3A%2225%22%2C%22pt%22%3A%22variation%22%2C%22pq%22%3A1%7D%5D&create_account=Yes&guest_checkout=Yes&delayed_account_creation=No&express_checkout=null&shipping_options_count=null&coupon_used=0&payment_options=stripe%2Cstripe_klarna&lr=&or=http%3A%2F%2Flocalhost%3A3000%2F&r3d=&_en=woocommerceanalytics_cart_view&_ui=9AdKwObt7aQX1e0fr5SMw23d&_ut=anon&_ts=1788622888847&_tz=7&_lg=en-US&_pf=MacIntel&_ht=956&_wd=1470&_sx=0&_sy=0&_dl=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com%2Fcart%2F&_dr=&_rt=1788622888847&_=_",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "ajax": []
+  },
+  {
+    "label": "checkout",
+    "requests": 71,
+    "responses": 68,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://js.stripe.com/v3/hcaptcha-invisible-42881fc2f7172b794c75c37380ca453d.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??b8dd1a498d",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??04b0909595",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??3508d646cf",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/dist/vendor/wp-polyfill.min.js?m=1784059681",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-dom.min.js?ver=18.3.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/vendors/react-jsx-runtime.min.js?m=1785942842",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??4ac8c65258",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??d72598a96c",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/?ver=3.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/dist/vendor/lodash.min.js?ver=4.18.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-types.js?m=1787047132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/hooks/index.min.js?ver=f0f188028580e8dc1255",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/i18n/index.min.js?ver=1dfe7db3940c23ea9216",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/private-apis/index.min.js?ver=91c41cc1d8b79a320132",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/url/index.min.js?ver=65e1ab123ef3bf825dea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/api-fetch/index.min.js?ver=6f2a4faeee3c722b1e57",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/client/blocks/wc-settings.js?ver=5cdaba16c87338181b77",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/deprecated/index.min.js?ver=fe587bac92b7d0ef760e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom/index.min.js?ver=5f9975e536ff35b62489",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/escape-html/index.min.js?ver=87ebe53e97bba59805a5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/element/index.min.js?ver=4822427ad9c627826631",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/is-shallow-equal/index.min.js?ver=7ad271045c1fe60f5496",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/keycodes/index.min.js?ver=2ea455bbfcb75ff06fc8",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/priority-queue/index.min.js?ver=6c0aa59b65d55dfd509b",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/undo-manager/index.min.js?ver=4554fce6276d8910a4ae",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/compose/index.min.js?ver=ec05ef4a8eb28e400019",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/redux-routine/index.min.js?ver=acca2b4857d83ad1790e",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/data/index.min.js?ver=14a216e0932d72c22976",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/html-entities/index.min.js?ver=a976ff3a0f00bc2999a3",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??3c27ae44b4",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/tokenization-form.min.js?m=1689710016",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/gutenberg/build/scripts/dom-ready/index.min.js?ver=3fe927cab37bf38d6a23",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-payments/dist/checkout.js?m=1785917128",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-payments/dist/frontend-tracks.js?ver=11.1.0",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/upe-classic.js?ver=edf8b27213c5d350305b",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce-gateway-stripe/build/express-checkout.js?ver=6551c3e87a2ca749b708",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=9452&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=2312&rand=0.36479275884091833",
+        "status": 200
+      },
+      {
+        "url": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJibGFjayIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJmZWF0aGVyIGZlYXRoZXItY2hldnJvbi1kb3duIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=",
+        "status": 200
+      },
+      {
+        "url": "https://cdn.sift.com/s.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/images/icons/loader.svg",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/t.gif?ui=0&blog_id=256563697&store_id=3639372b-23d7-46ba-95ef-0e103559ecfc&url=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com&woo_version=11.1.0&wp_version=7.1&store_admin=0&device=desktop&store_currency=USD&timezone=America%2FLos_Angeles&is_guest=1&host=bizplan-wp-admin&pi=10484&pn=The%20Bridge%20Series%20%27The%20Bay%20Bridge%27%20Shirt&pc=size%3A%20M&pp=25&pt=variation&template_used=0&additional_blocks_on_cart_page=&additional_blocks_on_checkout_page=&order_value=25&order_total=25.00&total_tax=0.00&total_discount=0&total_shipping=0&products_count=1&cart_page_contains_cart_block=0&cart_page_contains_cart_shortcode=1&checkout_page_contains_checkout_block=0&checkout_page_contains_checkout_shortcode=1&create_account=Yes&guest_checkout=Yes&delayed_account_creation=No&express_checkout=null&coupon_used=0&payment_options=stripe&from_checkout=Yes&pq=1&lr=&or=http%3A%2F%2Flocalhost%3A3000%2F&r3d=&_en=woocommerceanalytics_product_checkout&_ui=9AdKwObt7aQX1e0fr5SMw23d&_ut=anon&_ts=1788622891469&_tz=7&_lg=en-US&_pf=MacIntel&_ht=956&_wd=1470&_sx=0&_sy=0&_dl=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com%2Fcheckout%2F&_dr=&_rt=1788622891469&_=_",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/t.gif?ui=0&blog_id=256563697&store_id=3639372b-23d7-46ba-95ef-0e103559ecfc&url=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com&woo_version=11.1.0&wp_version=7.1&store_admin=0&device=desktop&store_currency=USD&timezone=America%2FLos_Angeles&is_guest=1&host=bizplan-wp-admin&template_used=0&additional_blocks_on_cart_page=&additional_blocks_on_checkout_page=&order_value=25&order_total=25.00&total_tax=0.00&total_discount=0&total_shipping=0&products_count=1&cart_page_contains_cart_block=0&cart_page_contains_cart_shortcode=1&checkout_page_contains_checkout_block=0&checkout_page_contains_checkout_shortcode=1&products=%5B%7B%22pi%22%3A10484%2C%22pn%22%3A%22The%20Bridge%20Series%20%27The%20Bay%20Bridge%27%20Shirt%22%2C%22pc%22%3A%22size%3A%20M%22%2C%22pp%22%3A%2225%22%2C%22pt%22%3A%22variation%22%2C%22pq%22%3A1%7D%5D&create_account=Yes&guest_checkout=Yes&delayed_account_creation=No&express_checkout=null&shipping_options_count=null&coupon_used=0&payment_options=stripe&from_checkout=Yes&lr=&or=http%3A%2F%2Flocalhost%3A3000%2F&r3d=&_en=woocommerceanalytics_checkout_view&_ui=9AdKwObt7aQX1e0fr5SMw23d&_ut=anon&_ts=1788622891469&_tz=7&_lg=en-US&_pf=MacIntel&_ht=956&_wd=1470&_sx=0&_sy=0&_dl=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com%2Fcheckout%2F&_dr=&_rt=1788622891469&_=_",
+        "status": 200
+      }
+    ],
+    "failed": [
+      {
+        "error": "net::ERR_BLOCKED_BY_ORB",
+        "canceled": false,
+        "url": "https://static.klaviyo.com/onsite/js//klaviyo.js?module=POST_IDENTIFICATION_SYNC&ver=3.8.3"
+      }
+    ],
+    "ajax": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?wc-ajax=update_order_review"
+      }
+    ]
+  },
+  {
+    "label": "account",
+    "requests": 39,
+    "responses": 40,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://hexagon-analytics.com/images/979249.gif?bk=43e8654e6f&r=302863376&v=121&cs=UTF-8&h=staging-7e48-skyyrose.wpcomstaging.com&l=en-US&S=a6e3902dab4559681fd7a3c3354d0935&uu=10bd90d3-f055-4997-84a7-469802ecf960&t=Checkout&u=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com%2Fcheckout%2F&ua=Mozilla%2F5.0%20(Macintosh%3B%20Intel%20Mac%20OS%20X%2010_15_7)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20Chrome%2F152.0.0.0%20Safari%2F537.36&nm=2&mh=63196a00446a1e285d1992cfe444aa55&np=5&ph=332b72bdb211e34e6e3c24f88d7c393b&sh=956&sw=1470&cd=30&p=MacIntel&to=420&d=60&ce=true&tp=0&ol=true&pr=Gecko&ps=20030107&vd=Google%20Inc.&hc=10&je=false&ss=true&ls=true&in=true&db=false&tl=false&tr=false&ts=false&tb=false&ab=false&cf=c44c712e8e8b94a7caf56d3ca04ef9a7&sri=0&pf=34&inc=false&bn=Chrome&ow=1470&oh=923&wd=false&npe=denied&fph=c0f48806e2dc75d6fcbd91de7957bb6f&fsh=1470&fsw=956&fcd=30&fp=MacIntel&ftp=0&fhc=10&fss=true&fls=true&fin=true&fvch=18ce6c205780a53266da775cfbdcd33c&fad=124.0434748024636&fdm=16&fvf=chrome&fcg=p3&ffc=false&fm=0&fc=0&frm=false&fhdr=true&fmf=70d5293b39f33c702acb3eef83e768dd&fa=127&fte=false&fts=false&fce=true&fpdf=true&fl=cce16c45e622d9ceae4b626c9353ecec&ft=America/Los_Angeles&pfe=7&z=z",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/m-outer-3437aaddcdf6922d623e172c2d6f9278.html",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?wc-ajax=update_order_review",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/controller-with-preconnect-67631f14132552664e12d9e3ba791d60.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/controller-with-preconnect-67631f14132552664e12d9e3ba791d60.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-loader-ui-aa73ddbaedca976a9b541a688e7ac306.html",
+        "status": 200
+      },
+      {
+        "url": "https://js.stripe.com/v3/elements-inner-accessory-target-c2a0d7ddb6a5b3a0d491ea670906c63f.html",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/my-account/",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??e568b993f8",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??80bf855b96",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??5a8acea822",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??f0dcf421ce",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "data:image/svg+xml,<svg width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M17.3 3.3C16.9 2.9 16.2 2.9 15.7 3.3L13.3 5.7C12.2437 5.3079 11.1267 5.1048 10 5.1C6.2 5.2 2.8 7.2 1 10.5C1.2 10.9 1.5 11.3 1.8 11.7C2.6 12.8 3.6 13.7 4.7 14.4L3 16.1C2.6 16.5 2.5 17.2 3 17.7C3.4 18.1 4.1 18.2 4.6 17.7L17.3 4.9C17.7 4.4 17.7 3.7 17.3 3.3ZM6.7 12.3L5.4 13.6C4.2 12.9 3.1 11.9 2.3 10.7C3.5 9 5.1 7.8 7 7.2C5.7 8.6 5.6 10.8 6.7 12.3ZM10.1 9C9.6 8.5 9.7 7.7 10.2 7.2C10.7 6.8 11.4 6.8 11.9 7.2L10.1 9ZM18.3 9.5C17.8 8.8 17.2 8.1 16.5 7.6L15.5 8.6C16.3 9.2 17 9.9 17.6 10.8C15.9 13.4 13 15 9.9 15H9.1L8.1 16C8.8 15.9 9.4 16 10 16C13.3 16 16.4 14.4 18.3 11.7C18.6 11.3 18.8 10.9 19.1 10.5C18.8 10.2 18.6 9.8 18.3 9.5ZM14 10L10 14C12.2 14 14 12.2 14 10Z\" fill=\"%23111111\"/></svg>",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/252.js",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=9710&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.23182186610463107",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "ajax": []
+  },
+  {
+    "label": "search",
+    "requests": 45,
+    "responses": 44,
+    "truncated": false,
+    "statuses": [
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?s=rose",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-still-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/signature-golden-gate-monuments-v2-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-011-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-004-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-005-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-006-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/mascot/skyy-canonical-v2-512w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/s-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??a7cef7028c",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957",
+        "status": 200
+      },
+      {
+        "url": "https://stats.wp.com/e-202636.js",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??e6b0f2ec85",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??ff680295ea",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/jetpack/jetpack_vendor/automattic/jetpack-forms/dist/contact-form/css/jetpack-forms-layout.css?ver=16.2-a.5",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/black-rose-bay-bridge-monuments-v4-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/love-hurts-rose-aisle-monuments-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/hero/responsive/kids-capsule-heir-throne-v3-1440w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-007-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-001-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/br-002-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-014-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-013-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/card-scenes/br-012-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-009-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-011-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/approved-card-fronts/sg-012-onmodel.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/fonts/WooCommerce.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/archivo-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/hanken-grotesk-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/anton-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/cinzel-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/fonts/inter-latin.woff2",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/sot/brand/skyyrose-logo-animated-384w.webp",
+        "status": 200
+      },
+      {
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/591.js",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/g.gif?v=ext&blog=256563697&post=0&tz=-7&srv=staging-7e48-skyyrose.wpcomstaging.com&arch_search=rose&arch_filters=posts_per_page%3D24%26paged%3D1%26orderby%3D%26order%3DDESC&arch_results=24&hp=atomic&ac=2&amp=0&j=1%3A16.2-a.5&host=staging-7e48-skyyrose.wpcomstaging.com&ref=&fcp=0&rand=0.9366418726633359",
+        "status": 200
+      },
+      {
+        "url": "https://pixel.wp.com/t.gif?ui=0&blog_id=256563697&store_id=3639372b-23d7-46ba-95ef-0e103559ecfc&url=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com&woo_version=11.1.0&wp_version=7.1&store_admin=0&device=desktop&store_currency=USD&timezone=America%2FLos_Angeles&is_guest=1&host=bizplan-wp-admin&search_query=rose&qty=49&lr=&or=http%3A%2F%2Flocalhost%3A3000%2F&r3d=&_en=woocommerceanalytics_search&_ui=9AdKwObt7aQX1e0fr5SMw23d&_ut=anon&_ts=1788622895294&_tz=7&_lg=en-US&_pf=MacIntel&_ht=956&_wd=1470&_sx=0&_sy=0&_dl=https%3A%2F%2Fstaging-7e48-skyyrose.wpcomstaging.com%2F%3Fs%3Drose&_dr=&_rt=1788622895294&_=_",
+        "status": 200
+      }
+    ],
+    "failed": [],
+    "ajax": []
+  }
+]

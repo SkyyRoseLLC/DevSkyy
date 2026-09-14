@@ -1,0 +1,78 @@
+{
+  "status": "PASS_PROVENANCE_FOR_FOUR_EXACT_640_FRAMES",
+  "latest_directive": "3b686012 approved-final-only",
+  "archive": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905/candidate.tar.gz",
+  "archive_sha256": "12c1d69eea3bf804b0afc7455f540eb3d236dafdb0cfae57e0c8e61cfbe84aad",
+  "archive_matches_receipt": true,
+  "receipt": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905/deployment-receipt.json",
+  "receipt_sha256": "9594ed61cc2d85f8105d47792eb6aa6ec8e91111db317d5b017bb9e0ec6c85d4",
+  "founder_record": {
+    "date": "2026-09-05",
+    "request": "good now get those synced and wired into V2",
+    "scope": "All 33 product cards: approved fronts, V2 collection frames, adult top crops, bold single-line inscriptions centered inside each nameplate."
+  },
+  "frames": [
+    {
+      "path": "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+      "bytes": 122698,
+      "sha256": "554c2372bc1a9cf61aefd5782b9792db26522698ee8e860ae2befcde9302857d",
+      "deployed_candidate_member": "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+      "matches_deployed_candidate": true,
+      "classification": "APPROVED FINAL \u2014 IMPLEMENT",
+      "approval_basis": [
+        "data/approved-card-fronts.json.card_treatment_approval,2026-09-05,all33V2collectionframes",
+        "Exact frame used via portal_statue.small in recovered approved card",
+        "Verified original staging candidate archive + deployment receipt; current bytes match"
+      ],
+      "role": "Collection-specific framing and nameplate, never product image approval"
+    },
+    {
+      "path": "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+      "bytes": 123928,
+      "sha256": "37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d",
+      "deployed_candidate_member": "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+      "matches_deployed_candidate": true,
+      "classification": "APPROVED FINAL \u2014 IMPLEMENT",
+      "approval_basis": [
+        "data/approved-card-fronts.json.card_treatment_approval,2026-09-05,all33V2collectionframes",
+        "Exact frame used via portal_statue.small in recovered approved card",
+        "Verified original staging candidate archive + deployment receipt; current bytes match"
+      ],
+      "role": "Collection-specific framing and nameplate, never product image approval"
+    },
+    {
+      "path": "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+      "bytes": 137998,
+      "sha256": "d3294b315a023ce6d9fadd0a9b87742f00749200b2efa3ba1ce87fab43eca190",
+      "deployed_candidate_member": "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+      "matches_deployed_candidate": true,
+      "classification": "APPROVED FINAL \u2014 IMPLEMENT",
+      "approval_basis": [
+        "data/approved-card-fronts.json.card_treatment_approval,2026-09-05,all33V2collectionframes",
+        "Exact frame used via portal_statue.small in recovered approved card",
+        "Verified original staging candidate archive + deployment receipt; current bytes match"
+      ],
+      "role": "Collection-specific framing and nameplate, never product image approval"
+    },
+    {
+      "path": "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+      "bytes": 116604,
+      "sha256": "99480ca73a7d1fe7e0b7a0d2ac891b523fcdb8f1101a5210ec764e9414cb8cc9",
+      "deployed_candidate_member": "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+      "matches_deployed_candidate": true,
+      "classification": "APPROVED FINAL \u2014 IMPLEMENT",
+      "approval_basis": [
+        "data/approved-card-fronts.json.card_treatment_approval,2026-09-05,all33V2collectionframes",
+        "Exact frame used via portal_statue.small in recovered approved card",
+        "Verified original staging candidate archive + deployment receipt; current bytes match"
+      ],
+      "role": "Collection-specific framing and nameplate, never product image approval"
+    }
+  ],
+  "limits": [
+    "970pxvariants preserved as supporting/source alternatives; not necessary to restore automatically",
+    "Proof establishes exact previous approved frame treatment, not approval for other ornaments or altered crops",
+    "No source-image/skin/garment edits or runtime changes by reviewer",
+    "Original staging screenshots not a fresh new-candidate visual PASS"
+  ]
+}

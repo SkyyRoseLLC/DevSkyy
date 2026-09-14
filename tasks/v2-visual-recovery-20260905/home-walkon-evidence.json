@@ -1,0 +1,996 @@
+{
+  "schema": "skyyrose.home-walkon-evidence.v1",
+  "status": "PASS",
+  "startedAt": "2026-09-06T01:28:58.712Z",
+  "finishedAt": "2026-09-06T01:29:27.167Z",
+  "raw_receipt": {
+    "path": ".artifacts/v2-visual-recovery-20260905/cinematic-integration-skyy-gait.json",
+    "sha256": "edb3e168cb0a8c27f467f4f481711249a65e030e01650fb5d57d72dcfaadfa54"
+  },
+  "source_glb_sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+  "source_renderer_sha256": "19ac08881f68d7a44e06a9af8eb25d13e5ddd88227e1c16d3fd2e3a8be27b535",
+  "compiled_renderer_sha256": "fe72f8526e607a748aa37da31d3ff81c026572dc2977f25d158040b5f570ac87",
+  "rows": [
+    {
+      "width": 390,
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5, Unspecified Version)",
+      "firstViewportVisible": true,
+      "rect": {
+        "x": 74.296875,
+        "y": 580.359375,
+        "width": 120,
+        "height": 185
+      },
+      "thighQuaternionMaximumComponentDelta": 0.27199333814662474,
+      "activeFramesOneSecond": 23,
+      "pausedFramesOneSecond": 0,
+      "sourceOverride": false,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/mascot-loader.min.js?ver=2.4.4-85e9b9dd81da",
+          "decodedBytes": 2483,
+          "sha256": "85e9b9dd81dabae9cd3dc07cb2bf0d3d351d301d23143250dfa58fd589a1ac00",
+          "encodedBytes": 2641
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/mascot.min.js?ver=2.4.4-e65bebce69a1",
+          "decodedBytes": 7079,
+          "sha256": "e65bebce69a114df76f3bd6a5057cc467f8356757b0a9f78032369d71123c4d2",
+          "encodedBytes": 7237
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/skyy-3d.min.js?ver=2.4.4-fe72f8526e60",
+          "decodedBytes": 10125,
+          "sha256": "fe72f8526e607a748aa37da31d3ff81c026572dc2977f25d158040b5f570ac87",
+          "encodedBytes": 10284
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+          "decodedBytes": 13715,
+          "sha256": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+          "encodedBytes": 13874
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+          "decodedBytes": 110282,
+          "sha256": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+          "encodedBytes": 110442
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+          "decodedBytes": 31784,
+          "sha256": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+          "encodedBytes": 31943
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+          "decodedBytes": 691648,
+          "sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+          "encodedBytes": 691808
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/models/skyy-mascot.glb?ver=2.4.4-c571e26fb126",
+          "decodedBytes": 6058568,
+          "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+          "encodedBytes": 6058724
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+          "decodedBytes": 58763,
+          "sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+          "encodedBytes": 58922
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+          "decodedBytes": 285747,
+          "sha256": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2",
+          "encodedBytes": 285901
+        }
+      ],
+      "initObservedMs": 2080,
+      "heapBefore": {
+        "usedSize": 2836884,
+        "totalSize": 4767744,
+        "embedderHeapUsedSize": 5923280,
+        "backingStorageSize": 197274
+      },
+      "heapAfter": {
+        "usedSize": 6841360,
+        "totalSize": 12681216,
+        "embedderHeapUsedSize": 6286256,
+        "backingStorageSize": 90672843
+      },
+      "heapNote": "Whole-page heap, not isolated character or GPU memory.",
+      "video": "/Users/theceo/.codex/worktrees/19db/DevSkyy/.artifacts/v2-visual-recovery-20260905/D-skyy-home-walkon-390.webm",
+      "errors": [],
+      "sample_count": 90,
+      "recording_sha256": "b3043f8b26fa6004d56bc3f5bf5b161f221295094826311553d755570892c05c",
+      "first_pose": {
+        "at": 3815.7000000029802,
+        "action": "Skyy_Walk",
+        "motion": {
+          "sourceClips": [
+            {
+              "name": "Skyy_Exit",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Idle",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Joy",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Talk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Walk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Wave",
+              "varying": false,
+              "tracks": 54
+            }
+          ],
+          "motionSource": "runtime-rig-upgrade-v1",
+          "clipTime": 0.4684000000000001,
+          "elapsed": 0.4684000000000001,
+          "poses": {
+            "thighl": [
+              -0.9802207217340797,
+              -0.12634737042725236,
+              -0.08355886670075134,
+              0.12736415854919114
+            ],
+            "thighr": [
+              0.9821531088385365,
+              -0.10261447753839097,
+              -0.11142721386371826,
+              0.11148765653447683
+            ],
+            "shinl": [
+              -0.15499607955376962,
+              -0.06472238342849607,
+              0.047503926094041214,
+              0.9846474574537186
+            ],
+            "shinr": [
+              0.18235117197036743,
+              0.045168135315179825,
+              -0.06637358665466309,
+              0.9799502491950989
+            ],
+            "footl": [
+              -0.5789512395930633,
+              -0.057891170453898556,
+              0.009845298943819305,
+              0.813244820808122
+            ],
+            "footr": [
+              -0.6157107353210449,
+              0.05828243866562843,
+              -0.007174627855420113,
+              0.7857810854911804
+            ],
+            "upperarml": [
+              -0.6806822597929514,
+              -0.10325734365533815,
+              -0.6995269493438026,
+              0.19149837590153237
+            ],
+            "upperarmr": [
+              -0.6995269493438026,
+              0.19149837590153237,
+              0.6806822597929514,
+              0.10325734365533815
+            ],
+            "head": [
+              0.0057824043831780835,
+              0,
+              0,
+              0.9999832688455613
+            ]
+          },
+          "facing": 1.5707963267948966
+        },
+        "render": {
+          "phase": "ready",
+          "frames": 2,
+          "running": true,
+          "visible": true,
+          "paused": false
+        },
+        "rect": {
+          "x": 13.61911392211914,
+          "y": 580.359375,
+          "width": 120,
+          "height": 185,
+          "top": 580.359375,
+          "right": 133.61911392211914,
+          "bottom": 765.359375,
+          "left": 13.61911392211914
+        }
+      },
+      "last_pose": {
+        "at": 7224.5,
+        "action": "Skyy_Idle",
+        "motion": {
+          "sourceClips": [
+            {
+              "name": "Skyy_Exit",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Idle",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Joy",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Talk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Walk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Wave",
+              "varying": false,
+              "tracks": 54
+            }
+          ],
+          "motionSource": "runtime-rig-upgrade-v1",
+          "clipTime": 1.1333999999999997,
+          "elapsed": 1.1333999999999997,
+          "poses": {
+            "thighl": [
+              -0.9884281754493713,
+              -0.11532580107450485,
+              -0.09821253269910812,
+              0.007996837608516216
+            ],
+            "thighr": [
+              -0.9884281754493713,
+              0.11532580107450485,
+              0.09821253269910812,
+              0.007996837608516216
+            ],
+            "shinl": [
+              -0.007982514798641205,
+              -0.05700293928384781,
+              0.05653562396764755,
+              0.9967400431632996
+            ],
+            "shinr": [
+              -0.007982514798641205,
+              0.05700293928384781,
+              -0.05653562396764755,
+              0.9967400431632996
+            ],
+            "footl": [
+              -0.6157107353210449,
+              -0.05828244984149933,
+              0.007174625527113676,
+              0.7857810854911804
+            ],
+            "footr": [
+              -0.6157107353210449,
+              0.05828244984149933,
+              -0.007174625527113676,
+              0.7857810854911804
+            ],
+            "upperarml": [
+              -0.6915135383605957,
+              -0.14767876267433167,
+              -0.6915135383605957,
+              0.14767876267433167
+            ],
+            "upperarmr": [
+              -0.6915135383605957,
+              0.14767876267433167,
+              0.6915135383605957,
+              0.14767876267433167
+            ],
+            "head": [
+              0.00475885941297134,
+              -0.0000830662001695637,
+              -0.01745220836804407,
+              0.9998363876777367
+            ]
+          },
+          "facing": 0
+        },
+        "render": {
+          "phase": "ready",
+          "frames": 51,
+          "running": true,
+          "visible": true,
+          "paused": false
+        },
+        "rect": {
+          "x": 74.296875,
+          "y": 580.359375,
+          "width": 120,
+          "height": 185,
+          "top": 580.359375,
+          "right": 194.296875,
+          "bottom": 765.359375,
+          "left": 74.296875
+        }
+      }
+    },
+    {
+      "width": 768,
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5, Unspecified Version)",
+      "firstViewportVisible": true,
+      "rect": {
+        "x": 104.015625,
+        "y": 590.484375,
+        "width": 180,
+        "height": 278
+      },
+      "thighQuaternionMaximumComponentDelta": 0.3685092948068776,
+      "activeFramesOneSecond": 24,
+      "pausedFramesOneSecond": 0,
+      "sourceOverride": false,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/mascot-loader.min.js?ver=2.4.4-85e9b9dd81da",
+          "decodedBytes": 2483,
+          "sha256": "85e9b9dd81dabae9cd3dc07cb2bf0d3d351d301d23143250dfa58fd589a1ac00",
+          "encodedBytes": 2641
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/mascot.min.js?ver=2.4.4-e65bebce69a1",
+          "decodedBytes": 7079,
+          "sha256": "e65bebce69a114df76f3bd6a5057cc467f8356757b0a9f78032369d71123c4d2",
+          "encodedBytes": 7237
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/skyy-3d.min.js?ver=2.4.4-fe72f8526e60",
+          "decodedBytes": 10125,
+          "sha256": "fe72f8526e607a748aa37da31d3ff81c026572dc2977f25d158040b5f570ac87",
+          "encodedBytes": 10284
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+          "decodedBytes": 13715,
+          "sha256": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+          "encodedBytes": 13874
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+          "decodedBytes": 110282,
+          "sha256": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+          "encodedBytes": 110442
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+          "decodedBytes": 31784,
+          "sha256": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+          "encodedBytes": 31943
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+          "decodedBytes": 691648,
+          "sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+          "encodedBytes": 691808
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/models/skyy-mascot.glb?ver=2.4.4-c571e26fb126",
+          "decodedBytes": 6058568,
+          "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+          "encodedBytes": 6058724
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+          "decodedBytes": 58763,
+          "sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+          "encodedBytes": 58922
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+          "decodedBytes": 285747,
+          "sha256": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2",
+          "encodedBytes": 285901
+        }
+      ],
+      "initObservedMs": 1612,
+      "heapBefore": {
+        "usedSize": 2828112,
+        "totalSize": 5554176,
+        "embedderHeapUsedSize": 6051880,
+        "backingStorageSize": 194951
+      },
+      "heapAfter": {
+        "usedSize": 7634408,
+        "totalSize": 12943360,
+        "embedderHeapUsedSize": 6699368,
+        "backingStorageSize": 90672843
+      },
+      "heapNote": "Whole-page heap, not isolated character or GPU memory.",
+      "video": "/Users/theceo/.codex/worktrees/19db/DevSkyy/.artifacts/v2-visual-recovery-20260905/D-skyy-home-walkon-768.webm",
+      "errors": [],
+      "sample_count": 90,
+      "recording_sha256": "391b878942937040133e8a2cdca1b8d0133a918addc3e34669baabf39907788a",
+      "first_pose": {
+        "at": 2699.4000000059605,
+        "action": "Skyy_Walk",
+        "motion": {
+          "sourceClips": [
+            {
+              "name": "Skyy_Exit",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Idle",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Joy",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Talk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Walk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Wave",
+              "varying": false,
+              "tracks": 54
+            }
+          ],
+          "motionSource": "runtime-rig-upgrade-v1",
+          "clipTime": 0.2666999999999998,
+          "elapsed": 0.2666999999999998,
+          "poses": {
+            "thighl": [
+              -0.9139460717134433,
+              -0.14365735189306733,
+              -0.04804483020050197,
+              0.3765061324153938
+            ],
+            "thighr": [
+              0.9199182477370942,
+              -0.07031049973795447,
+              -0.13417223977522477,
+              0.36166931299150645
+            ],
+            "shinl": [
+              -0.007982496172189713,
+              -0.05700293555855751,
+              0.056535616517066956,
+              0.9967400431632996
+            ],
+            "shinr": [
+              -0.06685656916766802,
+              0.060243534900332005,
+              -0.0530691034721802,
+              0.9945273214350917
+            ],
+            "footl": [
+              -0.6157107353210449,
+              -0.05828243866562843,
+              0.00717462133616209,
+              0.7857811450958252
+            ],
+            "footr": [
+              -0.5526697875738021,
+              0.05754702115398406,
+              -0.011690091898626125,
+              0.8313289545572873
+            ],
+            "upperarml": [
+              -0.7034197436320174,
+              -0.2215133782600027,
+              -0.6715145585933012,
+              0.07211585108499298
+            ],
+            "upperarmr": [
+              -0.6715145585933012,
+              0.07211585108499298,
+              0.7034197436320174,
+              0.2215133782600027
+            ],
+            "head": [
+              0.005196475947060517,
+              0,
+              0,
+              0.999986527488669
+            ]
+          },
+          "facing": 1.5707963267948966
+        },
+        "render": {
+          "phase": "ready",
+          "frames": 2,
+          "running": true,
+          "visible": true,
+          "paused": false
+        },
+        "rect": {
+          "x": -2.6467742919921875,
+          "y": 590.484375,
+          "width": 180,
+          "height": 278,
+          "top": 590.484375,
+          "right": 177.3532257080078,
+          "bottom": 868.484375,
+          "left": -2.6467742919921875
+        }
+      },
+      "last_pose": {
+        "at": 6290,
+        "action": "Skyy_Idle",
+        "motion": {
+          "sourceClips": [
+            {
+              "name": "Skyy_Exit",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Idle",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Joy",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Talk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Walk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Wave",
+              "varying": false,
+              "tracks": 54
+            }
+          ],
+          "motionSource": "runtime-rig-upgrade-v1",
+          "clipTime": 1.2166000000000001,
+          "elapsed": 1.2166000000000001,
+          "poses": {
+            "thighl": [
+              -0.9884281754493713,
+              -0.11532580107450485,
+              -0.09821253269910812,
+              0.007996837608516216
+            ],
+            "thighr": [
+              -0.9884281754493713,
+              0.11532580107450485,
+              0.09821253269910812,
+              0.007996837608516216
+            ],
+            "shinl": [
+              -0.007982514798641205,
+              -0.05700293928384781,
+              0.05653562396764755,
+              0.9967400431632996
+            ],
+            "shinr": [
+              -0.007982514798641205,
+              0.05700293928384781,
+              -0.05653562396764755,
+              0.9967400431632996
+            ],
+            "footl": [
+              -0.6157107353210449,
+              -0.05828244984149933,
+              0.007174625527113676,
+              0.7857810854911804
+            ],
+            "footr": [
+              -0.6157107353210449,
+              0.05828244984149933,
+              -0.007174625527113676,
+              0.7857810854911804
+            ],
+            "upperarml": [
+              -0.6915135383605957,
+              -0.14767876267433167,
+              -0.6915135383605957,
+              0.14767876267433167
+            ],
+            "upperarmr": [
+              -0.6915135383605957,
+              0.14767876267433167,
+              0.6915135383605957,
+              0.14767876267433167
+            ],
+            "head": [
+              0.004095077895204954,
+              -0.00007147984658298814,
+              -0.01745225953918428,
+              0.9998393170650143
+            ]
+          },
+          "facing": 0
+        },
+        "render": {
+          "phase": "ready",
+          "frames": 60,
+          "running": false,
+          "visible": true,
+          "paused": true
+        },
+        "rect": {
+          "x": 98.796875,
+          "y": 590.484375,
+          "width": 180,
+          "height": 278,
+          "top": 590.484375,
+          "right": 278.796875,
+          "bottom": 868.484375,
+          "left": 98.796875
+        }
+      }
+    },
+    {
+      "width": 1440,
+      "gpu": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5, Unspecified Version)",
+      "firstViewportVisible": true,
+      "rect": {
+        "x": 130.890625,
+        "y": 643.484375,
+        "width": 180,
+        "height": 278
+      },
+      "thighQuaternionMaximumComponentDelta": 0.3391267571484291,
+      "activeFramesOneSecond": 23,
+      "pausedFramesOneSecond": 0,
+      "sourceOverride": false,
+      "assets": [
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/mascot-loader.min.js?ver=2.4.4-85e9b9dd81da",
+          "decodedBytes": 2483,
+          "sha256": "85e9b9dd81dabae9cd3dc07cb2bf0d3d351d301d23143250dfa58fd589a1ac00",
+          "encodedBytes": 2641
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/mascot.min.js?ver=2.4.4-e65bebce69a1",
+          "decodedBytes": 7079,
+          "sha256": "e65bebce69a114df76f3bd6a5057cc467f8356757b0a9f78032369d71123c4d2",
+          "encodedBytes": 7237
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/skyy-3d.min.js?ver=2.4.4-fe72f8526e60",
+          "decodedBytes": 10125,
+          "sha256": "fe72f8526e607a748aa37da31d3ff81c026572dc2977f25d158040b5f570ac87",
+          "encodedBytes": 10284
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/GLTFLoader.js",
+          "decodedBytes": 110282,
+          "sha256": "d6b517ee599c974f9b3648b11621dc23d41de24adcac3c826b3985a9313f6b84",
+          "encodedBytes": 110442
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/DRACOLoader.js",
+          "decodedBytes": 13715,
+          "sha256": "5250b9d5985899c458aae86b8636add0e98801b5dc330e0ab6f9e37977819481",
+          "encodedBytes": 13874
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/BufferGeometryUtils.js",
+          "decodedBytes": 31784,
+          "sha256": "b9ea77ef3aacbf82d386c33311067e6ea4a3aac4190b32e001bdd11d063fb6ae",
+          "encodedBytes": 31943
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/three-r170/three.module.min.js",
+          "decodedBytes": 691648,
+          "sha256": "08fd7545d13d2c7fb65ab691530a802dafefd638596501854f267d0fb13c39e7",
+          "encodedBytes": 691808
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/models/skyy-mascot.glb?ver=2.4.4-c571e26fb126",
+          "decodedBytes": 6058568,
+          "sha256": "c571e26fb126f992f735062d628c499a7690e926ca2bbefa70c9252fc8a780fc",
+          "encodedBytes": 6058724
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/draco/draco_wasm_wrapper.js",
+          "decodedBytes": 58763,
+          "sha256": "e8049906ef3f8f75d3456c22a3f31bfdfe5b5b5bd09ccdec613b9e9a49d554d8",
+          "encodedBytes": 58922
+        },
+        {
+          "url": "http://127.0.0.1:18303/wp-content/themes/skyyrose-flagship-2/assets/js/lib/draco/draco_decoder.wasm",
+          "decodedBytes": 285747,
+          "sha256": "c55a594e8ffd18426d36b27fea9618af3df5e173640a3e56d46f09d76f0574f2",
+          "encodedBytes": 285901
+        }
+      ],
+      "initObservedMs": 1585,
+      "heapBefore": {
+        "usedSize": 2823432,
+        "totalSize": 5292032,
+        "embedderHeapUsedSize": 5964528,
+        "backingStorageSize": 197277
+      },
+      "heapAfter": {
+        "usedSize": 6879328,
+        "totalSize": 10321920,
+        "embedderHeapUsedSize": 6850832,
+        "backingStorageSize": 90672843
+      },
+      "heapNote": "Whole-page heap, not isolated character or GPU memory.",
+      "video": "/Users/theceo/.codex/worktrees/19db/DevSkyy/.artifacts/v2-visual-recovery-20260905/D-skyy-home-walkon-1440.webm",
+      "errors": [],
+      "sample_count": 90,
+      "recording_sha256": "3948ea665c2acb748b4b5e05566e76c82e30b2e0e8a8aa3471c73704992b8f05",
+      "first_pose": {
+        "at": 2548.9000000059605,
+        "action": "Skyy_Walk",
+        "motion": {
+          "sourceClips": [
+            {
+              "name": "Skyy_Exit",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Idle",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Joy",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Talk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Walk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Wave",
+              "varying": false,
+              "tracks": 54
+            }
+          ],
+          "motionSource": "runtime-rig-upgrade-v1",
+          "clipTime": 0.2681999999999998,
+          "elapsed": 0.2681999999999998,
+          "poses": {
+            "thighl": [
+              -0.914456805853477,
+              -0.14359193821461896,
+              -0.04823998074558107,
+              0.3752639568279615
+            ],
+            "thighr": [
+              0.9204088168322905,
+              -0.07049274183014846,
+              -0.13407658111119886,
+              0.360419036433532
+            ],
+            "shinl": [
+              -0.007982496172189713,
+              -0.05700293555855751,
+              0.056535616517066956,
+              0.9967400431632996
+            ],
+            "shinr": [
+              -0.06479388837482546,
+              0.06013334616268077,
+              -0.053193927541835245,
+              0.9946638352900601
+            ],
+            "footl": [
+              -0.6157107353210449,
+              -0.05828243866562843,
+              0.00717462133616209,
+              0.7857811450958252
+            ],
+            "footr": [
+              -0.5532047337799343,
+              0.05755453317802811,
+              -0.011653051021109228,
+              0.8309730702932682
+            ],
+            "upperarml": [
+              -0.7033549962959745,
+              -0.22091301104971103,
+              -0.6717123050016851,
+              0.072744621167601
+            ],
+            "upperarmr": [
+              -0.6717123050016851,
+              0.072744621167601,
+              0.7033549962959745,
+              0.22091301104971103
+            ],
+            "head": [
+              0.005212096347276204,
+              0,
+              0,
+              0.9999864435880153
+            ]
+          },
+          "facing": 1.5707963267948966
+        },
+        "render": {
+          "phase": "ready",
+          "frames": 2,
+          "running": true,
+          "visible": true,
+          "paused": false
+        },
+        "rect": {
+          "x": 24.343421936035156,
+          "y": 643.484375,
+          "width": 180,
+          "height": 278,
+          "top": 643.484375,
+          "right": 204.34342193603516,
+          "bottom": 921.484375,
+          "left": 24.343421936035156
+        }
+      },
+      "last_pose": {
+        "at": 6294.70000000298,
+        "action": "Skyy_Idle",
+        "motion": {
+          "sourceClips": [
+            {
+              "name": "Skyy_Exit",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Idle",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Joy",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Talk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Walk",
+              "varying": false,
+              "tracks": 54
+            },
+            {
+              "name": "Skyy_Wave",
+              "varying": false,
+              "tracks": 54
+            }
+          ],
+          "motionSource": "runtime-rig-upgrade-v1",
+          "clipTime": 1.35,
+          "elapsed": 1.35,
+          "poses": {
+            "thighl": [
+              -0.9884281754493713,
+              -0.11532580107450485,
+              -0.09821253269910812,
+              0.007996837608516216
+            ],
+            "thighr": [
+              -0.9884281754493713,
+              0.11532580107450485,
+              0.09821253269910812,
+              0.007996837608516216
+            ],
+            "shinl": [
+              -0.007982514798641205,
+              -0.05700293928384781,
+              0.05653562396764755,
+              0.9967400431632996
+            ],
+            "shinr": [
+              -0.007982514798641205,
+              0.05700293928384781,
+              -0.05653562396764755,
+              0.9967400431632996
+            ],
+            "footl": [
+              -0.6157107353210449,
+              -0.05828244984149933,
+              0.007174625527113676,
+              0.7857810854911804
+            ],
+            "footr": [
+              -0.6157107353210449,
+              0.05828244984149933,
+              -0.007174625527113676,
+              0.7857810854911804
+            ],
+            "upperarml": [
+              -0.6915135383605957,
+              -0.14767876267433167,
+              -0.6915135383605957,
+              0.14767876267433167
+            ],
+            "upperarmr": [
+              -0.6915135383605957,
+              0.14767876267433167,
+              0.6915135383605957,
+              0.14767876267433167
+            ],
+            "head": [
+              0.0028235914870409972,
+              -0.0000492859718390299,
+              -0.017452336221169866,
+              0.9998437011512816
+            ]
+          },
+          "facing": 0
+        },
+        "render": {
+          "phase": "ready",
+          "frames": 66,
+          "running": true,
+          "visible": true,
+          "paused": false
+        },
+        "rect": {
+          "x": 130.890625,
+          "y": 643.484375,
+          "width": 180,
+          "height": 278,
+          "top": 643.484375,
+          "right": 310.890625,
+          "bottom": 921.484375,
+          "left": 130.890625
+        }
+      }
+    }
+  ],
+  "limits": [
+    "Local Apple M5 hardware evidence; no low-end handset or field-CWV certification",
+    "Runtime-derived gait, source six clips are held poses",
+    "No inverse kinematics or simulated foot contact",
+    "Static-to-3D onset continuity remains artistic polish"
+  ]
+}

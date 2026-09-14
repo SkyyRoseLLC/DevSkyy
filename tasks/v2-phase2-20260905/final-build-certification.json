@@ -1,0 +1,146 @@
+{
+  "certified_commit": "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+  "clean_install": true,
+  "build": true,
+  "verify": true,
+  "repeat_build_package_byte_identical": true,
+  "git_drift": false,
+  "package_sha256": "72901ec0708258dc14596245f7ec2cbf458ffe46f27c76af93508300ea06a50c",
+  "package_files": 374,
+  "toolchain": {
+    "node": "v22.23.2",
+    "npm": "10.9.8",
+    "python": "3.12.12",
+    "zip_compression": "STORED",
+    "zlib": "1.2.12"
+  },
+  "changed_runtime_files_match": [
+    {
+      "file": "assets/css/design-tokens.css",
+      "local": "f4835c868c0fcad3b1581cc2180557f89be8cd2c123884e5f81edfddd16a9c4f",
+      "staging": "f4835c868c0fcad3b1581cc2180557f89be8cd2c123884e5f81edfddd16a9c4f"
+    },
+    {
+      "file": "assets/css/design-tokens.min.css",
+      "local": "b820602bdc306831e873aef7eb0d5c43379bb230a5418c1de84b8d92d262d0a5",
+      "staging": "b820602bdc306831e873aef7eb0d5c43379bb230a5418c1de84b8d92d262d0a5"
+    },
+    {
+      "file": "assets/css/mascot.css",
+      "local": "12ed18a5e52a2b77f3eb2b2b024c738934ec24469602b026774cc75b1e803897",
+      "staging": "12ed18a5e52a2b77f3eb2b2b024c738934ec24469602b026774cc75b1e803897"
+    },
+    {
+      "file": "assets/css/mascot.min.css",
+      "local": "b2a6d1f0356a03ca5b77142b4b0f67c35af49b86b0a4150dd5d3475971562f2d",
+      "staging": "b2a6d1f0356a03ca5b77142b4b0f67c35af49b86b0a4150dd5d3475971562f2d"
+    },
+    {
+      "file": "assets/css/theme.css",
+      "local": "64d12a60fbf0610ed2fcebdcecaa871c1cffcf93214b7950fcc92f24ecebd12d",
+      "staging": "64d12a60fbf0610ed2fcebdcecaa871c1cffcf93214b7950fcc92f24ecebd12d"
+    },
+    {
+      "file": "assets/css/theme.min.css",
+      "local": "4aa5837b95c331f082efcf969c815c2a5915ac5c4704a6d7d3d149772ae175cc",
+      "staging": "4aa5837b95c331f082efcf969c815c2a5915ac5c4704a6d7d3d149772ae175cc"
+    },
+    {
+      "file": "assets/js/mascot.js",
+      "local": "5b1a12b0927faccd304d24874588588a70465852730ee5da791777d2e8789d4c",
+      "staging": "5b1a12b0927faccd304d24874588588a70465852730ee5da791777d2e8789d4c"
+    },
+    {
+      "file": "assets/js/mascot.min.js",
+      "local": "8a157dc8076b1738e943ff6bd579d503f48615b1ed95998be483056725e3d70e",
+      "staging": "8a157dc8076b1738e943ff6bd579d503f48615b1ed95998be483056725e3d70e"
+    },
+    {
+      "file": "assets/js/theme.js",
+      "local": "30d1e75ae651d06993a1ccc5a1a99ec0cf0abd0085fc47be7ad556d858243d90",
+      "staging": "30d1e75ae651d06993a1ccc5a1a99ec0cf0abd0085fc47be7ad556d858243d90"
+    },
+    {
+      "file": "assets/js/theme.min.js",
+      "local": "81bfb0bf4bafbbc534977eaef120160a59a190e5807ecfe5bea8deb7e4cab8e5",
+      "staging": "81bfb0bf4bafbbc534977eaef120160a59a190e5807ecfe5bea8deb7e4cab8e5"
+    },
+    {
+      "file": "front-page.php",
+      "local": "ca557393efa8a11f57f41c05ee613b37533a140c63586e552c538635e0a4e790",
+      "staging": "ca557393efa8a11f57f41c05ee613b37533a140c63586e552c538635e0a4e790"
+    },
+    {
+      "file": "functions.php",
+      "local": "87980b851b7da39c84bb0776da654b399ea61c6f61bc7d76f0de081abea5971a",
+      "staging": "87980b851b7da39c84bb0776da654b399ea61c6f61bc7d76f0de081abea5971a"
+    },
+    {
+      "file": "inc/performance.php",
+      "local": "9dd015efbe5c2264478563f9f042278d591b42b5bad431ce5a6ed7677fee5058",
+      "staging": "9dd015efbe5c2264478563f9f042278d591b42b5bad431ce5a6ed7677fee5058"
+    },
+    {
+      "file": "inc/presentation-registry.php",
+      "local": "5df3b06c98df51fcc1bd24e6b78e08a666f992448a917a6c182af00a5263500d",
+      "staging": "5df3b06c98df51fcc1bd24e6b78e08a666f992448a917a6c182af00a5263500d"
+    },
+    {
+      "file": "page.php",
+      "local": "8c9168b0aa38375e1baf482393e95474b98d859e6d268d7ed4cce4884b858fb7",
+      "staging": "8c9168b0aa38375e1baf482393e95474b98d859e6d268d7ed4cce4884b858fb7"
+    },
+    {
+      "file": "search.php",
+      "local": "88da39a56c8dfefbfcf01f1e2fa10590440142532b37c923d6cc3f35265b142b",
+      "staging": "88da39a56c8dfefbfcf01f1e2fa10590440142532b37c923d6cc3f35265b142b"
+    },
+    {
+      "file": "template-parts/commerce/product-hero.php",
+      "local": "5dcaa87bf67bf62b364b91df155a3a5121b02e2700b2c0f97c3bcbfc7d328447",
+      "staging": "5dcaa87bf67bf62b364b91df155a3a5121b02e2700b2c0f97c3bcbfc7d328447"
+    },
+    {
+      "file": "template-parts/v2-preorder.php",
+      "local": "d37e56db2911ddea0566089efe6aa866e6f9d811ca0889dc9fd1aff74efba30a",
+      "staging": "d37e56db2911ddea0566089efe6aa866e6f9d811ca0889dc9fd1aff74efba30a"
+    },
+    {
+      "file": "theme.json",
+      "local": "7edae569a3e1963e31977453c8eaf1a4942475603fd5390a5efb3092df1464d9",
+      "staging": "7edae569a3e1963e31977453c8eaf1a4942475603fd5390a5efb3092df1464d9"
+    },
+    {
+      "file": "woocommerce/cart/cart.php",
+      "local": "617753edd2ba8f33e4054be3f35f1c1fc11514ea5b334bee8dca83134e52ddda",
+      "staging": "617753edd2ba8f33e4054be3f35f1c1fc11514ea5b334bee8dca83134e52ddda"
+    },
+    {
+      "file": "woocommerce/checkout/thankyou.php",
+      "local": "b5f6c00637c13155ef3cd678b19b14018ed4ccd7176164c8bde0604463abbb28",
+      "staging": "b5f6c00637c13155ef3cd678b19b14018ed4ccd7176164c8bde0604463abbb28"
+    },
+    {
+      "file": "woocommerce/single-product.php",
+      "local": "cc1913a3b313d8ce4e2909e759d43bb51a96957697c024a0b598af1409ca04e2",
+      "staging": "cc1913a3b313d8ce4e2909e759d43bb51a96957697c024a0b598af1409ca04e2"
+    }
+  ],
+  "nondeployed_source_build_artifacts": [
+    {
+      "file": "languages/skyyrose-flagship-2.pot",
+      "local": "e06ba7ac40414c2b63dc2f38c5778037d9ff98b7f162e5ee10c53e98b6a26b94",
+      "staging": "0dfa80de920f47273a9ec847ebe467f5184a6cd90760da8e5800221ded3a1e22"
+    },
+    {
+      "file": "package.json",
+      "local": "2ef1c705a5cdc66d0ed0baecc2091c62c7b8302ad561f4ec98ad257ef00841f7",
+      "staging": "de66ddf7a1c42802ea746a8b30835980d6086b50534e68a6fded03c1945a08c4"
+    },
+    {
+      "file": "scripts/test-performance.php",
+      "local": "3290689e319a503adf019fc6a6a65ab99b2f837724844e842f6d1e23b28ea789",
+      "staging": "6c2e2231a08c9f58fae32e1bca94f3014723a1e1d789817c5a93ea17007098c6"
+    }
+  ]
+}

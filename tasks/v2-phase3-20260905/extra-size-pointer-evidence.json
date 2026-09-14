@@ -1,0 +1,212 @@
+{
+  "width": 1440,
+  "height": 1000,
+  "method": "physical mouse wheel, measured scroll/geometry settling, real mouse pointer",
+  "initial": {
+    "x": 892.625,
+    "y": 721.546875,
+    "width": 124.515625,
+    "height": 44
+  },
+  "scrollSamples": [
+    {
+      "y": 0,
+      "boxY": 721.546875,
+      "x": 892.625
+    },
+    {
+      "y": 0,
+      "boxY": 721.546875,
+      "x": 892.625
+    },
+    {
+      "y": 0,
+      "boxY": 721.546875,
+      "x": 892.625
+    },
+    {
+      "y": 0,
+      "boxY": 721.546875,
+      "x": 892.625
+    },
+    {
+      "y": 0,
+      "boxY": 721.546875,
+      "x": 892.625
+    },
+    {
+      "y": 0,
+      "boxY": 721.546875,
+      "x": 892.625
+    }
+  ],
+  "stable": true,
+  "before": {
+    "scrollY": 0,
+    "scrollBehavior": "auto",
+    "rects": [
+      {
+        "tag": "BUTTON",
+        "rect": {
+          "x": 892.625,
+          "y": 721.546875,
+          "width": 124.515625,
+          "height": 44,
+          "top": 721.546875,
+          "right": 1017.140625,
+          "bottom": 765.546875,
+          "left": 892.625
+        },
+        "css": {
+          "margin": "14.4px 0px 12px",
+          "position": "static",
+          "lineHeight": "22.4px",
+          "zIndex": "auto",
+          "transform": "none"
+        }
+      },
+      {
+        "tag": "H1",
+        "rect": {
+          "x": 892.625,
+          "y": 777.546875,
+          "width": 359.171875,
+          "height": 243.3125,
+          "top": 777.546875,
+          "right": 1251.796875,
+          "bottom": 1020.859375,
+          "left": 892.625
+        },
+        "css": {
+          "margin": "0px 0px 20px",
+          "position": "static",
+          "lineHeight": "60.8256px",
+          "zIndex": "auto",
+          "transform": "none"
+        }
+      }
+    ],
+    "hit": "<button class=\"sr2-pdp-product__fit-guide\" type=\"button\" data-size-guide-open=\"\" aria-haspopup=\"dialog\" aria-controls=\"sr2-size-guide-dialog\">\n\t\t\tFit + size guide <span aria-hidden=\"true\">↗</span>\n\t\t</button>"
+  },
+  "after": {
+    "open": true,
+    "focus": "Close fit and size guide",
+    "bodyLock": true,
+    "events": [
+      {
+        "type": "pointerdown",
+        "target": "BUTTON",
+        "id": "",
+        "class": "sr2-pdp-product__fit-guide",
+        "scrollY": 0,
+        "fit": {
+          "x": 892.625,
+          "y": 721.546875,
+          "width": 124.515625,
+          "height": 44,
+          "top": 721.546875,
+          "right": 1017.140625,
+          "bottom": 765.546875,
+          "left": 892.625
+        },
+        "time": 1753.6000000014901
+      },
+      {
+        "type": "mousedown",
+        "target": "BUTTON",
+        "id": "",
+        "class": "sr2-pdp-product__fit-guide",
+        "scrollY": 0,
+        "fit": {
+          "x": 892.625,
+          "y": 721.546875,
+          "width": 124.515625,
+          "height": 44,
+          "top": 721.546875,
+          "right": 1017.140625,
+          "bottom": 765.546875,
+          "left": 892.625
+        },
+        "time": 1754.1000000014901
+      },
+      {
+        "type": "focusin",
+        "target": "BUTTON",
+        "id": "",
+        "class": "sr2-pdp-product__fit-guide",
+        "scrollY": 0,
+        "fit": {
+          "x": 892.625,
+          "y": 721.546875,
+          "width": 124.515625,
+          "height": 44,
+          "top": 721.546875,
+          "right": 1017.140625,
+          "bottom": 765.546875,
+          "left": 892.625
+        },
+        "time": 1754.1999999955297
+      },
+      {
+        "type": "mouseup",
+        "target": "BUTTON",
+        "id": "",
+        "class": "sr2-pdp-product__fit-guide",
+        "scrollY": 0,
+        "fit": {
+          "x": 892.625,
+          "y": 721.546875,
+          "width": 124.515625,
+          "height": 44,
+          "top": 721.546875,
+          "right": 1017.140625,
+          "bottom": 765.546875,
+          "left": 892.625
+        },
+        "time": 1754.2999999970198
+      },
+      {
+        "type": "click",
+        "target": "BUTTON",
+        "id": "",
+        "class": "sr2-pdp-product__fit-guide",
+        "scrollY": 0,
+        "fit": {
+          "x": 892.625,
+          "y": 721.546875,
+          "width": 124.515625,
+          "height": 44,
+          "top": 721.546875,
+          "right": 1017.140625,
+          "bottom": 765.546875,
+          "left": 892.625
+        },
+        "time": 1754.2999999970198
+      },
+      {
+        "type": "focusin",
+        "target": "BUTTON",
+        "id": "",
+        "class": "sr2-size-guide-dialog__close",
+        "scrollY": 0,
+        "fit": {
+          "x": 892.625,
+          "y": 721.546875,
+          "width": 124.515625,
+          "height": 44,
+          "top": 721.546875,
+          "right": 1017.140625,
+          "bottom": 765.546875,
+          "left": 892.625
+        },
+        "time": 1760.6999999955297
+      }
+    ]
+  },
+  "pass": true,
+  "closed": {
+    "open": false,
+    "focusBack": true,
+    "lock": false
+  }
+}

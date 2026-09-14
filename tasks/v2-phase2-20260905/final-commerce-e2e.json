@@ -1,0 +1,26 @@
+{
+  "route": "Signature collection → SG-005 PDP → size M → cart → checkout",
+  "width": 390,
+  "variation": {
+    "result": {
+      "type": "string",
+      "value": "10484"
+    }
+  },
+  "cart": {
+    "name": "The Bridge Series 'The Bay Bridge' Shirt - M",
+    "quantity": "1",
+    "scrollWidth": 390,
+    "subtotal": "Subtotal\n\t\t\t$25.00",
+    "width": 390
+  },
+  "checkout": {
+    "form": true,
+    "placeOrder": true,
+    "review": "Product\tSubtotal\nThe Bridge Series 'The Bay Bridge' Shirt - M  × 1\t$25.00\nSubtotal\t$25.00\nShipment\t\nFree shipping\n\nTotal\t$25.00",
+    "scrollWidth": 390,
+    "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+    "width": 390
+  },
+  "paymentSubmitted": false
+}

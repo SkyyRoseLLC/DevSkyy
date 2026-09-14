@@ -1,0 +1,345 @@
+[
+  {
+    "test": {
+      "sku": "br-001",
+      "path": "/product/br-001/",
+      "size": "S"
+    },
+    "observed": {
+      "name": "BLACK Rose Crewneck - S",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Crewneck - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$35.00"
+    }
+  },
+  {
+    "test": {
+      "sku": "br-001",
+      "size": "M",
+      "width": 390
+    },
+    "observed": {
+      "name": "BLACK Rose Crewneck - M",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Crewneck - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$35.00"
+    }
+  },
+  {
+    "test": {
+      "sku": "br-002",
+      "path": "/product/br-002/",
+      "size": "S",
+      "width": 390
+    },
+    "nativeVariationId": "10494",
+    "observed": {
+      "name": "BLACK Rose Joggers - S",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Joggers - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$50.00"
+    }
+  },
+  {
+    "test": {
+      "sku": "br-002",
+      "path": "/product/br-002/",
+      "size": "M",
+      "width": 390
+    },
+    "nativeVariationId": "10495",
+    "observed": {
+      "name": "BLACK Rose Joggers - M",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Joggers - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$50.00"
+    }
+  },
+  {
+    "test": {
+      "sku": "br-003",
+      "size": "S",
+      "width": 390
+    },
+    "nativeVariationId": "10500",
+    "observed": {
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - S",
+      "quantity": "1",
+      "remove": "Remove BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$100.00"
+    }
+  },
+  {
+    "test": {
+      "sku": "br-003",
+      "path": "/product/br-003/",
+      "size": "M"
+    },
+    "nativeVariationId": "10501",
+    "observed": {
+      "name": "BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - M",
+      "quantity": "1",
+      "remove": "Remove BLACK is Beautiful Jersey Series: 0. Baseball Classic (Black) - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$100.00",
+      "width": 525
+    },
+    "errors": [
+      {
+        "level": "error",
+        "message": "EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' blob: https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://cdn.babylonjs.com https://stats.wp.com https://widgets.wp.com https://s0.wp.com https://cdn.elementor.com https://ajax.googleapis.com https://unpkg.com https://connect.facebook.net https://js.stripe.com https://www.paypal.com https://www.paypalobjects.com\".\n\n    at new Function (<anonymous>)\n    at b.template (https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/underscore.min.js?ver=1.13.8:2:15377)\n    at https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/wp-util.min.js?m=1773146679:2:342\n    at r.onFoundVariation (https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=11.1.0:1:6833)\n    at HTMLFormElement.dispatch (https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1:2:40035)\n    at v.handle (https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1:2:38006)\n    at Object.trigger (https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1:2:70124)\n    at HTMLFormElement.<anonymous> (https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1:2:70726)\n    at ce.each (https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1:2:3129)\n    at e.<computed>.each (https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1:2:1594)",
+        "timestamp": "2026-09-05T14:53:01.956Z",
+        "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/underscore.min.js?ver=1.13.8"
+      }
+    ]
+  },
+  {
+    "test": {
+      "sku": "br-004",
+      "path": "/product/br-004/",
+      "size": "S"
+    },
+    "nativeVariationId": "10506",
+    "observed": {
+      "name": "BLACK Rose Hoodie - S",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Hoodie - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$40.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "br-004",
+      "path": "/product/br-004/",
+      "size": "M"
+    },
+    "nativeVariationId": "10507",
+    "observed": {
+      "name": "BLACK Rose Hoodie - M",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Hoodie - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$40.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "br-006",
+      "path": "/product/br-006/",
+      "size": "S"
+    },
+    "nativeVariationId": "10518",
+    "observed": {
+      "name": "BLACK Rose Sherpa Jacket - S",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Sherpa Jacket - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$95.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "br-006",
+      "path": "/product/br-006/",
+      "size": "M"
+    },
+    "nativeVariationId": "10519",
+    "observed": {
+      "name": "BLACK Rose Sherpa Jacket - M",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose Sherpa Jacket - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$95.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "br-007",
+      "path": "/product/br-007/",
+      "size": "S"
+    },
+    "nativeVariationId": "10524",
+    "observed": {
+      "name": "BLACK Rose x Love Hurts Basketball Shorts - S",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose x Love Hurts Basketball Shorts - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$65.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "br-007",
+      "path": "/product/br-007/",
+      "size": "M"
+    },
+    "nativeVariationId": "10525",
+    "observed": {
+      "name": "BLACK Rose x Love Hurts Basketball Shorts - M",
+      "quantity": "1",
+      "remove": "Remove BLACK Rose x Love Hurts Basketball Shorts - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$65.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "lh-004",
+      "size": "S"
+    },
+    "observed": {
+      "name": "Love Hurts Bomber Jacket - S",
+      "quantity": "1",
+      "remove": "Remove Love Hurts Bomber Jacket - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$265.00",
+      "width": 525
+    },
+    "note": "Cart read recovered after browser-tool timeout; no purchase retried."
+  },
+  {
+    "test": {
+      "sku": "lh-004",
+      "path": "/product/lh-004/",
+      "size": "M"
+    },
+    "nativeVariationId": "10573",
+    "observed": {
+      "name": "Love Hurts Bomber Jacket - M",
+      "quantity": "1",
+      "remove": "Remove Love Hurts Bomber Jacket - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$265.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "sg-014",
+      "path": "/product/sg-014/",
+      "size": "S"
+    },
+    "nativeVariationId": "10632",
+    "observed": {
+      "name": "Mint & Lavender Sweatpants - S",
+      "quantity": "1",
+      "remove": "Remove Mint & Lavender Sweatpants - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$45.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "sg-014",
+      "path": "/product/sg-014/",
+      "size": "M"
+    },
+    "nativeVariationId": "10633",
+    "observed": {
+      "name": "Mint & Lavender Sweatpants - M",
+      "quantity": "1",
+      "remove": "Remove Mint & Lavender Sweatpants - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$45.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "sg-015",
+      "path": "/product/the-windbreaker-set/",
+      "size": "S"
+    },
+    "nativeVariationId": "10638",
+    "observed": {
+      "name": "The Windbreaker Set - S",
+      "quantity": "1",
+      "remove": "Remove The Windbreaker Set - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$85.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "sg-015",
+      "path": "/product/the-windbreaker-set/",
+      "size": "M"
+    },
+    "nativeVariationId": "10639",
+    "observed": {
+      "name": "The Windbreaker Set - M",
+      "quantity": "1",
+      "remove": "Remove The Windbreaker Set - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$85.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "kids-001",
+      "path": "/product/kids-001/",
+      "size": "2T"
+    },
+    "nativeVariationId": "10644",
+    "observed": {
+      "name": "Kids Colorblock Hoodie Set — Red/Black - 2T",
+      "quantity": "1",
+      "remove": "Remove Kids Colorblock Hoodie Set — Red/Black - 2T from your bag",
+      "subtotal": "Subtotal\n\t\t\t$65.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "kids-001",
+      "path": "/product/kids-001/",
+      "size": "3T"
+    },
+    "nativeVariationId": "10645",
+    "observed": {
+      "name": "Kids Colorblock Hoodie Set — Red/Black - 3T",
+      "quantity": "1",
+      "remove": "Remove Kids Colorblock Hoodie Set — Red/Black - 3T from your bag",
+      "subtotal": "Subtotal\n\t\t\t$65.00",
+      "width": 525
+    },
+    "errors": []
+  },
+  {
+    "test": {
+      "sku": "sg-005",
+      "size": "S"
+    },
+    "observed": {
+      "name": "The Bridge Series 'The Bay Bridge' Shirt - S",
+      "quantity": "1",
+      "remove": "Remove The Bridge Series 'The Bay Bridge' Shirt - S from your bag",
+      "subtotal": "Subtotal\n\t\t\t$25.00",
+      "width": 1440
+    },
+    "note": "Recovered completed cart after tool context invalidation."
+  },
+  {
+    "test": {
+      "sku": "sg-005",
+      "size": "M"
+    },
+    "observed": {
+      "name": "The Bridge Series 'The Bay Bridge' Shirt - M",
+      "quantity": "1",
+      "remove": "Remove The Bridge Series 'The Bay Bridge' Shirt - M from your bag",
+      "subtotal": "Subtotal\n\t\t\t$25.00",
+      "width": 525
+    },
+    "note": "Recovered completed cart after browser-tool timeout."
+  }
+]

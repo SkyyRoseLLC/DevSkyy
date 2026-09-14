@@ -1,0 +1,84 @@
+{
+  "errors": [
+    {
+      "level": "error",
+      "message": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764:2:1",
+      "timestamp": "2026-09-05T14:22:16.715Z",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764"
+    },
+    {
+      "level": "error",
+      "message": "ReferenceError: jQuery is not defined\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9232\n    at https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706:14:9240",
+      "timestamp": "2026-09-05T14:22:16.848Z",
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+    }
+  ],
+  "scripts": [
+    {
+      "async": false,
+      "defer": true,
+      "id": "jquery-core-js",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery-migrate.min.js?m=1686289764"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??8405d66706"
+    },
+    {
+      "async": false,
+      "defer": true,
+      "id": "woocommerce-analytics-js",
+      "src": "https://stats.wp.com/s-202636.js"
+    },
+    {
+      "async": false,
+      "defer": true,
+      "id": "",
+      "src": "https://s0.wp.com/wp-content/js/bilmur.min.js?m=202636"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??58ed090c97"
+    },
+    {
+      "async": false,
+      "defer": true,
+      "id": "woocommerce-analytics-client-js",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/mu-plugins/wpcomsh/jetpack_vendor/automattic/woocommerce-analytics/build/woocommerce-analytics-client.js?minify=false&ver=8d8bb846cc19ac858460"
+    },
+    {
+      "async": false,
+      "defer": false,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/_jb_static/??106fd90957"
+    },
+    {
+      "async": false,
+      "defer": true,
+      "id": "jetpack-stats-js",
+      "src": "https://stats.wp.com/e-202636.js"
+    },
+    {
+      "async": true,
+      "defer": false,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/js/mascot.min.js?ver=2.4.4-0f7764e18580"
+    },
+    {
+      "async": true,
+      "defer": false,
+      "id": "",
+      "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-content/themes/skyyrose-flagship-2/assets/js/skyy-3d.min.js?ver=2.4.4-99abdd1ab80c"
+    }
+  ]
+}

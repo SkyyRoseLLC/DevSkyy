@@ -1,0 +1,31 @@
+{
+  "source": "75ce80b90380d0e5915be79dab33484eda6d3fca",
+  "evidence_parent": "06f68bd11a08aeab608b6519f2f80a5709476f9b",
+  "scope": "unchanged Phase3A local fixture before runtime edits",
+  "verification": "PASS",
+  "screenshots": 14,
+  "lighthouse_cases": 5,
+  "files": {
+    ".artifacts/v2-phase3b-20260905/baseline-build-verify.log": "edf07e9baea4a9fd830e7cff96cf54531417cca6649c24300a5a5191e288ff9b",
+    ".artifacts/v2-phase3b-20260905/baseline-page-inventory.json": "a310f005a153e563836f61e7d948b30cf3a4bb313786eb3f1bd0d788c751a162",
+    ".artifacts/v2-phase3b-20260905/baseline-signature-1440.png": "302f0dbd104b410b5deeb048b9f5c22e97386a8469e31bbb3f9a411dc9358804",
+    ".artifacts/v2-phase3b-20260905/baseline-pdp-1440.png": "650142259c055d537beb3febc0849796f08ce8ba4f4082b0abaf6081a239a847",
+    ".artifacts/v2-phase3b-20260905/baseline-black-rose-1440.png": "96acdc66a15e5bc57b6d68e29f8a57e84dedab248fb87a6518904374a29eb193",
+    ".artifacts/v2-phase3b-20260905/baseline-home-1440.png": "f8f4460d62bae9127f7380f6933b712439d38dc5e510ac79cc7e83c5f625092d",
+    ".artifacts/v2-phase3b-20260905/baseline-signature-390.png": "e55a5a1d2e9bcae16f6a22bf88761dbe2f0be9a1951f917375d0d5602e64cd94",
+    ".artifacts/v2-phase3b-20260905/baseline-shop-390.png": "9c834bee0b619b5f687889a0c307426639d60754d20db04edfcfa1465e34c54c",
+    ".artifacts/v2-phase3b-20260905/baseline-shop-1440.png": "15ad13697e3f01e58cd93f6e8448b808f558553de5d366e3cc77d91e5fdc9343",
+    ".artifacts/v2-phase3b-20260905/baseline-home-390.png": "47a01064f392a32214377f466f5f9eb965e44e87ee0710ebb67d94f70fe69643",
+    ".artifacts/v2-phase3b-20260905/baseline-kids-1440.png": "ff8233a5771270de53cfbf4632976298942150b89dedbea0b21756d7da67e5d2",
+    ".artifacts/v2-phase3b-20260905/baseline-kids-390.png": "cfcb68d8cf40c101a4d10d35910898bbe34135c6dcb0fd3ebbcacf10938444af",
+    ".artifacts/v2-phase3b-20260905/baseline-black-rose-390.png": "2c1c613a62a9631566d32d2bfe6b2c87845eb3d67b76b2eec164e4b6192e4322",
+    ".artifacts/v2-phase3b-20260905/baseline-love-hurts-390.png": "720c53e5d493c72d931d2dcc2af4c8dffe4d71b83931eb264a9ff17aaca1471a",
+    ".artifacts/v2-phase3b-20260905/baseline-love-hurts-1440.png": "f350525e942ff65e73514bbd9bcd4f3c74fbfc6703211a1db400278af94326e0",
+    ".artifacts/v2-phase3b-20260905/baseline-pdp-390.png": "d77fa8ae7da50e72a870178568b9e49bfc2fd3ed8f93de800bfbd8c5e7d67ac6",
+    ".artifacts/v2-phase3b-20260905/lighthouse-baseline-home-desktop.report.json": "a8d6e2e5e3ca572ab96baff079c2ea4e4bbfa0fe16d0cd318324b589e8b9ef02",
+    ".artifacts/v2-phase3b-20260905/lighthouse-baseline-shop-mobile.report.json": "10272df1fd1754b5b4f21e9e61ecb27beb497d46ceb1526b7a81d2ac39e81d83",
+    ".artifacts/v2-phase3b-20260905/lighthouse-baseline-home-mobile.report.json": "d43a15a9225f5cd4fd61202fd77ebcf614ae80df174fa252ef9024800482cd6a",
+    ".artifacts/v2-phase3b-20260905/lighthouse-baseline-pdp-desktop.report.json": "098a5727f3c25bd747667985a867b39ca1251ce71e593d1200b813ea5166f095",
+    ".artifacts/v2-phase3b-20260905/lighthouse-baseline-pdp-mobile.report.json": "c427faa3ac357642cf5689493b7d6b8a759093e77ac44a5bb763229360cc2c3a"
+  }
+}

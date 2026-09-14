@@ -1,0 +1,388 @@
+{
+  "width": 1440,
+  "height": 1000,
+  "reducedMotion": true,
+  "cycles": [
+    {
+      "cycle": 1,
+      "requestedRecall": false,
+      "holdMs": 0,
+      "before": {
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "label": null,
+          "isAsk": true
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": false,
+          "rects": 1,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "dialogOpen": false,
+        "bodyLock": false
+      },
+      "opened": {
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "label": null,
+          "isAsk": false
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": true,
+          "rects": 1,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "dialogOpen": true,
+        "bodyLock": true
+      },
+      "beforeClose": {
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "label": null,
+          "isAsk": false
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": true,
+          "rects": 1,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "dialogOpen": true,
+        "bodyLock": true
+      },
+      "closed": {
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "label": null,
+          "isAsk": true
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": false,
+          "rects": 1,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "dialogOpen": false,
+        "bodyLock": false
+      },
+      "openerAvailable": true,
+      "pass": true
+    },
+    {
+      "cycle": 2,
+      "requestedRecall": false,
+      "holdMs": 0,
+      "before": {
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "label": null,
+          "isAsk": true
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": false,
+          "rects": 1,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "dialogOpen": false,
+        "bodyLock": false
+      },
+      "opened": {
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "label": null,
+          "isAsk": false
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": true,
+          "rects": 1,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "dialogOpen": true,
+        "bodyLock": true
+      },
+      "beforeClose": {
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "label": null,
+          "isAsk": false
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": true,
+          "rects": 1,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "dialogOpen": true,
+        "bodyLock": true
+      },
+      "closed": {
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "label": null,
+          "isAsk": true
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": false,
+          "rects": 1,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "dialogOpen": false,
+        "bodyLock": false
+      },
+      "openerAvailable": true,
+      "pass": true
+    },
+    {
+      "cycle": 3,
+      "requestedRecall": false,
+      "holdMs": 9000,
+      "before": {
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "label": null,
+          "isAsk": true
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": false,
+          "rects": 1,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "dialogOpen": false,
+        "bodyLock": false
+      },
+      "opened": {
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "label": null,
+          "isAsk": false
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": true,
+          "rects": 1,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "dialogOpen": true,
+        "bodyLock": true
+      },
+      "beforeClose": {
+        "focus": {
+          "id": "skyy-ask-input",
+          "tag": "INPUT",
+          "label": null,
+          "isAsk": false
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": true,
+          "rects": 1,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "hidden",
+          "opacity": "1"
+        },
+        "dialogOpen": true,
+        "bodyLock": true
+      },
+      "closed": {
+        "focus": {
+          "id": "skyy-ask-trigger",
+          "tag": "BUTTON",
+          "label": null,
+          "isAsk": true
+        },
+        "ask": {
+          "hidden": false,
+          "ariaHidden": null,
+          "inert": false,
+          "rects": 1,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "bubble": {
+          "hidden": false,
+          "ariaHidden": null,
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "guide": {
+          "classes": "skyyrose-mascot skyyrose-mascot--idle skyy--speaking",
+          "state": "speaking",
+          "visibility": "visible",
+          "opacity": "1"
+        },
+        "dialogOpen": false,
+        "bodyLock": false
+      },
+      "openerAvailable": true,
+      "pass": true
+    }
+  ]
+}

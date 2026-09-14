@@ -1,0 +1,11 @@
+{
+    "mode": "apply",
+    "page_id": 9710,
+    "page_slug": "my-account",
+    "template": "",
+    "before_content": "<!-- wp:paragraph -->\n<p>This page uses the SkyyRose Flagship theme template. Content is rendered by the theme.</p>\n<!-- /wp:paragraph -->",
+    "before_sha256": "db31cd596ac80a1d4b9ff179e61b064257206f74222ba39d912049e853740edc",
+    "target_content": "[woocommerce_my_account]",
+    "target_sha256": "0c846e85bd9bd3925320fc92c24a6cae9e2a860616209cb93311eed72f5ca56a",
+    "changed": true
+}

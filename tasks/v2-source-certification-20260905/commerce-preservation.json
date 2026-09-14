@@ -1,0 +1,10 @@
+{
+  "runtime_php_files": 45,
+  "runtime_php_drift": [],
+  "commerce_projection": "Historical compiler product/variation logic preserved; immutable input path only",
+  "catalog_mutated": false,
+  "runtime_js_mutated": false,
+  "registry_semantic_drift": false,
+  "known_jquery_defer": "PRESERVED",
+  "evidence_archive_sha256": "3850af0ae0caa20a49e8ec4f029ef1543be4ac5ef65202b2a1a0336293f09f4a"
+}

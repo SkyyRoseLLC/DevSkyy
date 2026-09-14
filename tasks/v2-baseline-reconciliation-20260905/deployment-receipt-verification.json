@@ -1,0 +1,275 @@
+{
+  "source_directory": "/Users/theceo/.codex/worktrees/3f2d/DevSkyy/.artifacts/v2-staging-card-deploy-20260905",
+  "receipt": {
+    "status": "DEPLOYED_VERIFIED_STAGING",
+    "time": "2026-09-05T11:33:39.433382+00:00",
+    "site": "https://staging-7e48-skyyrose.wpcomstaging.com",
+    "theme": "skyyrose-flagship-2",
+    "candidate_sha256": "12c1d69eea3bf804b0afc7455f540eb3d236dafdb0cfae57e0c8e61cfbe84aad",
+    "files": 46,
+    "cards": 33,
+    "adult_top_crops": 20,
+    "full_crops": 13,
+    "collections": {
+      "black-rose": 14,
+      "signature": 12,
+      "love-hurts": 5,
+      "kids-capsule": 2
+    },
+    "source_strategy": "Approved local card components merged onto current staging files; newer hero/film/scene work preserved",
+    "checks": {
+      "remote_file_hashes": 46,
+      "live_product_renders": 33,
+      "live_image_hashes": 33,
+      "quick_view_image_matches": 33,
+      "image_http_200": 33,
+      "public_routes_http_200": 7,
+      "mobile_horizontal_overflow": false,
+      "font": "Cinzel 900; single-line nameplates"
+    },
+    "backup": "rollback.tar.gz",
+    "backup_sha256": "9be76bcc16892a4065429e0011a4491f07102dd9b085219926f24241bbb60f9d",
+    "css_version": "2.4.4-8e2c802bb133",
+    "production_deployed": false,
+    "cache_note": "Initial public cached markup was old. Cache flush performed during deploy; subsequent canonical URL checks show current cards on all seven routes.",
+    "independent_review": "PASS \u2014 runtime evidence and staging screenshots"
+  },
+  "archive_hash_verified": true,
+  "files": [
+    {
+      "path": "functions.php",
+      "sha256": "74034247c57742770e67bf435a5fc0c56a975cf82a1f9eea83bfbc34cc1e60c8",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-009-onmodel.webp",
+      "sha256": "e220fb9c3d2a1413bb2a9d9158736c7a7b8622beadecc5e44debacbdc3441ffc",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-008-onmodel.webp",
+      "sha256": "cd4ca4c0ba5d7723b0ad786ad7312502bf820aece583f8a007de4be20fa6088c",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-010-onmodel.webp",
+      "sha256": "b8862f06ddfde790a9dd3327e23f824d21abfa73bf1410630e4f9b9b710abea7",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-003-onmodel.webp",
+      "sha256": "43e75a7280e7b3bda87bacde28971274bf7633400b06b13b77a873c005647ea9",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-011-onmodel.webp",
+      "sha256": "aedc47d8fa76fce040dc195330469800de43b346d4d0ccba872abf7016f5f290",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-006-onmodel.webp",
+      "sha256": "443a7d3546c8bec2495426e20e7b8a4e84b5b91c02ea57b20d43cb3c96763d2d",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-014-onmodel.webp",
+      "sha256": "4cc4c60b2e39bfb3986626419828b57eee1381c20889d51a9a5dbaf2d972d8ff",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/sg-002-onmodel.webp",
+      "sha256": "48561fab14ae39618e048bb5ba3226fef4da3affb85855d441bb54be3e767f18",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-012-onmodel.webp",
+      "sha256": "75f96a81896afb52b9742d561a1ee84578b94683c78d1d0aa098b8da50452625",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/card-scenes/br-015-onmodel.webp",
+      "sha256": "d708a0e9f468c77fc43d2882c63877e4a41358de1944e0c091f85a66670cd8ad",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/sot/images/product-card-portals/black-rose-portal-statue-640w.webp",
+      "sha256": "37809df50e66216e624742ee1addf0fff822509fcd8951e1483af273bf50bd9d",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/sot/images/product-card-portals/love-hurts-portal-statue-640w.webp",
+      "sha256": "d3294b315a023ce6d9fadd0a9b87742f00749200b2efa3ba1ce87fab43eca190",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/sot/images/product-card-portals/signature-portal-statue-640w.webp",
+      "sha256": "554c2372bc1a9cf61aefd5782b9792db26522698ee8e860ae2befcde9302857d",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/sot/images/product-card-portals/kids-capsule-portal-statue-640w.webp",
+      "sha256": "99480ca73a7d1fe7e0b7a0d2ac891b523fcdb8f1101a5210ec764e9414cb8cc9",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/kids-001-onmodel.webp",
+      "sha256": "c6bd2ddd555c4359c302eebb051d5fbad4d34bec0b324b44f3447831f3ec9c9a",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-006-onmodel.webp",
+      "sha256": "27d6865fb5ea6b23fbd7df5f4169543348c3dc0b5f34828ca956ca486411b44d",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-001-onmodel.webp",
+      "sha256": "31b85575f88df52d1a61f8ce7b01b0b60c1c1de1749060e3f0bca8873b71ffce",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/lh-006-onmodel.webp",
+      "sha256": "7905342f32bd2963d3d5d095a0825c9ae3ec98f731de100fb481631ee76244dc",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-014-onmodel.webp",
+      "sha256": "e07277762c0b939b7ba1756685675aa4184968de9a3e83fc3d4303d8a400f67b",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-013-onmodel.webp",
+      "sha256": "fc3fc604b56f4e9abfc95fe45ec4642ccafce625f26241605ff830bad49c8bf8",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/br-005-onmodel.webp",
+      "sha256": "19f888f11bc6e3a282088281040ee8b27be1e5473e1b4b53fc5ad5509e80a19b",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/br-002-onmodel.webp",
+      "sha256": "6e395127c4b6f09a1602db3c30963bb31a42559fe64dfbca990832c3dbc951ba",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-012-onmodel.webp",
+      "sha256": "360cdb19236dd2108934b9c2eaf15eb539defdb4cb4c4a176d0427ef2bf3a0cf",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-015-onmodel.webp",
+      "sha256": "e8f365cb5a1e1546977f41a5271bb7ce62287b18ac64f1c62934783198cebfcf",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/br-004-onmodel.webp",
+      "sha256": "8c415f0fe1e5ab113e74f7a7040563b5396f2672f400cf9d30f99db839de32c8",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-007-onmodel.webp",
+      "sha256": "15dd6abe1bc49ee8fc3e70a17c90d0c05aa11aff517b296290390c449307e730",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/br-001-onmodel.webp",
+      "sha256": "fcaddcf8a93e22283137b2a165cfb7ab216d0dab45853e5da7b4a23818071aa8",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-005-onmodel.webp",
+      "sha256": "052915cfb4aaa7f3d1fdd01d222661289cb7a1eab0fdec9b68a8be8dda8f28f0",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/lh-002-onmodel.webp",
+      "sha256": "dd1192e520e521308064f42d8ac0c9addc5d403a711c7e62d559541f65b35507",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/lh-005-onmodel.webp",
+      "sha256": "3274c53abb457fd03856dab4014ac6076eab1853a67722fb90015749497e830f",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/lh-004-onmodel.webp",
+      "sha256": "1c5aed2f72b85b5afc7a25515931e450e68dfa66011b0345c13605020b89fddc",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-003-onmodel.webp",
+      "sha256": "a06526e3136ab5e4f157aa431850c13e6bc75969a10f8240012db7bfac63968c",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/lh-003-onmodel.webp",
+      "sha256": "a8338e8a18009573203e7e09ef21e71678deaacee40ff186dacf5350e61f1089",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/br-007-onmodel.webp",
+      "sha256": "b2e523f08f8bae826e45c0a01584dee54c735c7dda2fc81edcf65c420ac9030d",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-011-onmodel.webp",
+      "sha256": "25055af2f7d59fdaa18bf9fec4f7b5abe1ec9c7d9a4e5306e7be232a9163ac8e",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/sg-009-onmodel.webp",
+      "sha256": "fad97fce9afde5e752ea62ed256b03ca7b5ad2ca449f070c9037bd266fa5222d",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/approved-card-fronts/kids-002-onmodel.webp",
+      "sha256": "88c0ca36b22a95ce1ee7969b50b4e256718ffda584027dfd97e219605aa3e51b",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/css/theme.css",
+      "sha256": "ea7a44c9ee84110c63dfe63a50c69f72aef6ab8c7cddcb56137d0836773f9540",
+      "snapshot_match": true
+    },
+    {
+      "path": "assets/css/._theme.min.css",
+      "sha256": "d3c93cb5d9b30a6c3c2497d716cd5f77c2d7daa1d84eb02d015d4b6f141b4cc8",
+      "snapshot_match": false
+    },
+    {
+      "path": "assets/css/theme.min.css",
+      "sha256": "8e2c802bb1332ae8ba15280470649012dee4bdded582069c72d777672aa69350",
+      "snapshot_match": true
+    },
+    {
+      "path": "data/approved-card-fronts.json",
+      "sha256": "c9a35409c5af2fac958bc429c798f6ff23fee5a4e03db2e41dd604a1b96d841c",
+      "snapshot_match": true
+    },
+    {
+      "path": "data/product-presentation-registry.json",
+      "sha256": "5c781b5736e5b983b73d904c098b6e6a0d6efe33fa86332ca65fee01a60d8e2c",
+      "snapshot_match": true
+    },
+    {
+      "path": "template-parts/immersive/world.php",
+      "sha256": "87ad53a088bb50d083c121fa559b6385db2438b481bb58f4192b62f5078616ec",
+      "snapshot_match": true
+    },
+    {
+      "path": "template-parts/home/kids-capsule-reveal.php",
+      "sha256": "7053202773316fe206e469753862d3c5bb31de733acb53d277988bbf0fac9a58",
+      "snapshot_match": true
+    },
+    {
+      "path": "template-parts/commerce/product-card.php",
+      "sha256": "c094e7c0f3639add0b444f6ed39f19ed95a9c38bd252823f913e17f11fd0d1da",
+      "snapshot_match": true
+    },
+    {
+      "path": "inc/approved-card-fronts.php",
+      "sha256": "4d8da592ff64e898f037ceed6124b2af7496547c91688834b10fe4840a7c09df",
+      "snapshot_match": true
+    }
+  ]
+}

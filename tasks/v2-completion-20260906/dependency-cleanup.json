@@ -1,0 +1,110 @@
+{
+  "base": "415dc4368b44efc06d0d28928362901f9624a20f",
+  "scope": "Read-only dependency audit; runtime modifications by other agents are not included in approval.",
+  "generated_at": "2026-09-06T12:44:04.732464+00:00",
+  "package_before": {
+    "runtime_entries": 507,
+    "file_bytes": 207747719
+  },
+  "package_exclusions": [
+    {
+      "path": "assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4",
+      "bytes": 20973139,
+      "sha256": "8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127",
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "decision": "SOURCE_ONLY_KEEP_EXACT_SOURCE_EXCLUDE_RELEASE",
+      "runtime_reference_evidence": "dependency-reference-hits.json; no theme runtime caller or active local post_content reference",
+      "authority": "tools/v2-source-certification/inputs/product-sot.json:1262; inputs/woocommerce-product-sync.json:2274; BR-006 garment_reference_3, preserve"
+    },
+    {
+      "path": "assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4",
+      "bytes": 17047417,
+      "sha256": "cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2",
+      "release": true,
+      "category": "RUNTIME MEDIA",
+      "decision": "SOURCE_ONLY_KEEP_EXACT_SOURCE_EXCLUDE_RELEASE",
+      "runtime_reference_evidence": "dependency-reference-hits.json; no theme runtime caller or active local post_content reference",
+      "authority": "Preserve motion authoring original; absent approved runtime scene manifest"
+    }
+  ],
+  "css_extraction": {
+    "source": "assets/css/theme.css",
+    "target_suggestion": "assets/css/legacy-content-components.css",
+    "rule_inventory": "dependency-css-rules.json",
+    "source_rule_bytes": 14244,
+    "rules": 104,
+    "gate": "Same conservative gate as legacy-world-components: not front page, not an enabled four-world collection, not product, not Shop or product taxonomy. Keep on all other routes.",
+    "order": "After theme, before controls/global-shell; preserve declarations, selector order and all ancestor at-rules. Mixed selectors remain in theme.",
+    "groups": {
+      "about": {
+        "consumer": "template-parts/v2-about.php; dead page.php draft",
+        "bytes": 7804
+      },
+      "reserve": {
+        "consumer": "template-parts/v2-preorder.php",
+        "bytes": 3527
+      },
+      "contact": {
+        "consumer": "page.php contact branch",
+        "bytes": 1422
+      },
+      "commerce-preview": {
+        "consumer": "template-parts/v2-commerce-preview.php; no current PHP caller found, preserve as unknown rather than delete",
+        "bytes": 1491
+      }
+    }
+  },
+  "dead_php_drafts": [
+    {
+      "name": "preorder",
+      "source": "page.php",
+      "start_line": 27,
+      "end_line": 62,
+      "bytes": 5855,
+      "sha256": "42762f32207425cdf6c3a71dd910944717330dd35bbe9977519c31b96e7048a6",
+      "proof": "Literal if(false); live v2 template part precedes it. Archive exact bytes before runtime removal."
+    },
+    {
+      "name": "about",
+      "source": "page.php",
+      "start_line": 65,
+      "end_line": 80,
+      "bytes": 3052,
+      "sha256": "09e42953dd3c344611be171c1612e31fbd921798ca54dfb1d2aadcc7e20dcd1e",
+      "proof": "Literal if(false); live v2 template part precedes it. Archive exact bytes before runtime removal."
+    }
+  ],
+  "unreachable_enqueue": {
+    "source": "functions.php",
+    "condition": "black-rose === collection_slug && !is_editorial_collection",
+    "contradiction": "skyyrose2_collection_world_enabled includes black-rose unconditionally",
+    "decision": "REMOVE_BRANCH_AND_UNUSED_LOCALS_ONLY; preserve house JS source/min and Town Line authoring",
+    "current_network_saving_bytes": 0
+  },
+  "preserve": {
+    "legacy_world_components": "Live collection rail consumers page.php:22 and template-parts/v2-preorder.php:49; unknown template-collection fallback and immersive templates also retained.",
+    "fonts": "No runtime SHA duplicate groups. Nine distinct fonts have token/theme/provenance/authoring references. Do not delete on coverage alone.",
+    "woo_overrides": [
+      "woocommerce/archive-product.php",
+      "woocommerce/cart/cart.php",
+      "woocommerce/checkout/form-checkout.php",
+      "woocommerce/checkout/thankyou.php",
+      "woocommerce/content-product.php",
+      "woocommerce/single-product/product-image.php",
+      "woocommerce/single-product.php"
+    ],
+    "skyy": "Canonical GLB, local Three five-file graph, Draco decoder graph, renderer/derived gait, mascot fallback/dialog/Home logic, dedicated authoring sources.",
+    "town_line": "Existing jersey registry/helper, house motion source/min, film/poster/town-line rail assets; final cinematic composition is deferred, not obsolete.",
+    "unknowns": "Unassigned immersive templates, orphan-looking preview partial and spin videos remain preserved pending broader content/authoring proof."
+  },
+  "verification_limits": [
+    "Local page assignments only; no remote database or runtime inspected.",
+    "No browser, build, lint or runtime test rerun performed by this audit.",
+    "No runtime files altered; only audit evidence written.",
+    "Package byte reduction is distribution storage, not measured initial page network savings.",
+    "Root concurrent WooCSS general dequeue requires empty/filled bag, notices, Quick View, JS/no-JS and extension opt-in evidence; initial coverage is insufficient."
+  ],
+  "package_exclusion_bytes": 38020556,
+  "package_after_exclusion_file_bytes": 169727163
+}

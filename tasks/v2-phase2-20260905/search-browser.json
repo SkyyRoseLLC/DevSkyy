@@ -1,0 +1,287 @@
+[
+  {
+    "term": "rose",
+    "observed": {
+      "empty": false,
+      "form": "get",
+      "genericProducts": 0,
+      "groups": [
+        {
+          "group": "products",
+          "titles": [
+            {
+              "title": "BLACK is Beautiful Jersey Series: 4. The Rose (Hockey)",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-011/"
+            },
+            {
+              "title": "BLACK Rose Hoodie",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-004/"
+            },
+            {
+              "title": "BLACK Rose Hoodie — Signature Edition",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-005/"
+            },
+            {
+              "title": "BLACK Rose Sherpa Jacket",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-006/"
+            },
+            {
+              "title": "BLACK Rose x Love Hurts Basketball Shorts",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-007/"
+            },
+            {
+              "title": "BLACK Rose Crewneck",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-001/"
+            },
+            {
+              "title": "BLACK Rose Joggers",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-002/"
+            },
+            {
+              "title": "Mint & Lavender Sweatpants",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-014/"
+            },
+            {
+              "title": "Mint & Lavender Crewneck",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-013/"
+            },
+            {
+              "title": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-oakland/"
+            },
+            {
+              "title": "The Sherpa Jacket",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-009/"
+            },
+            {
+              "title": "Original Label Tee (White)",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-011/"
+            },
+            {
+              "title": "Original Label Tee (Orchid)",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-012/"
+            }
+          ]
+        },
+        {
+          "group": "collections",
+          "titles": [
+            {
+              "title": "Black Rose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/"
+            },
+            {
+              "title": "Black Rose — Full Scene",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/black-rose/"
+            }
+          ]
+        },
+        {
+          "group": "pages",
+          "titles": [
+            {
+              "title": "SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/"
+            },
+            {
+              "title": "BLACK ROSE Collection | SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/landing-black-rose/"
+            },
+            {
+              "title": "LOVE HURTS Collection | SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/landing-love-hurts/"
+            },
+            {
+              "title": "SIGNATURE Collection | SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/landing-signature/"
+            },
+            {
+              "title": "Contact | SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/contact/"
+            },
+            {
+              "title": "Black Rose Collection",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collection-black-rose/"
+            },
+            {
+              "title": "Refund & Return Policy",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/refund-policy/"
+            },
+            {
+              "title": "Cookie Policy",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cookie-policy/"
+            },
+            {
+              "title": "Accessibility Statement",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/accessibility/"
+            }
+          ]
+        }
+      ],
+      "scroll": 567,
+      "width": 567
+    }
+  },
+  {
+    "term": "sg-005",
+    "observed": {
+      "empty": false,
+      "form": "get",
+      "genericProducts": 0,
+      "groups": [
+        {
+          "group": "products",
+          "titles": [
+            {
+              "title": "The Bridge Series 'The Bay Bridge' Shirt",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/"
+            }
+          ]
+        },
+        {
+          "group": "pages",
+          "titles": [
+            {
+              "title": "Pre-Order",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/pre-order/"
+            }
+          ]
+        }
+      ],
+      "scroll": 567,
+      "width": 567
+    }
+  },
+  {
+    "term": "Love Hurts",
+    "observed": {
+      "empty": false,
+      "form": "get",
+      "genericProducts": 0,
+      "groups": [
+        {
+          "group": "products",
+          "titles": [
+            {
+              "title": "Love Hurts Joggers (White)",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-006/"
+            },
+            {
+              "title": "Love Hurts Joggers (Black)",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-002/"
+            },
+            {
+              "title": "Love Hurts Basketball Shorts",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-003/"
+            },
+            {
+              "title": "Love Hurts Bomber Jacket",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/lh-004/"
+            },
+            {
+              "title": "BLACK Rose x Love Hurts Basketball Shorts",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-007/"
+            },
+            {
+              "title": "The Fannie",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/the-fannie/"
+            }
+          ]
+        },
+        {
+          "group": "collections",
+          "titles": [
+            {
+              "title": "Love Hurts",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/"
+            },
+            {
+              "title": "Love Hurts — Full Scene",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/worlds/love-hurts/"
+            }
+          ]
+        },
+        {
+          "group": "stories",
+          "titles": [
+            {
+              "title": "Hello world!",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/hello-world/"
+            }
+          ]
+        },
+        {
+          "group": "pages",
+          "titles": [
+            {
+              "title": "LOVE HURTS Collection | SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/landing-love-hurts/"
+            },
+            {
+              "title": "Love Hurts Collection",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collection-love-hurts/"
+            },
+            {
+              "title": "SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/"
+            },
+            {
+              "title": "SIGNATURE Collection | SkyyRose",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/landing-signature/"
+            },
+            {
+              "title": "Terms of Service",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/terms-of-service/"
+            },
+            {
+              "title": "Signature Collection",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collection-signature/"
+            },
+            {
+              "title": "Black Rose Collection",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collection-black-rose/"
+            },
+            {
+              "title": "Pre-Order",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/pre-order/"
+            }
+          ]
+        }
+      ],
+      "scroll": 567,
+      "width": 567
+    }
+  },
+  {
+    "term": "journal",
+    "observed": {
+      "empty": false,
+      "form": "get",
+      "genericProducts": 0,
+      "groups": [
+        {
+          "group": "pages",
+          "titles": [
+            {
+              "title": "Journal",
+              "url": "https://staging-7e48-skyyrose.wpcomstaging.com/journal/"
+            }
+          ]
+        }
+      ],
+      "scroll": 390,
+      "width": 390
+    }
+  },
+  {
+    "term": "zqxvnomatch98765",
+    "observed": {
+      "empty": true,
+      "form": "get",
+      "genericProducts": 0,
+      "groups": [],
+      "scroll": 462,
+      "width": 462
+    }
+  }
+]

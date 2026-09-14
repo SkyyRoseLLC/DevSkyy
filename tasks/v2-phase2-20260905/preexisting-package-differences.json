@@ -1,0 +1,93 @@
+{
+  "matching_runtime_files": 362,
+  "runtime_files": 374,
+  "differences": [
+    {
+      "file": "assets/css/collection-scene-motion.min.css",
+      "staging_sha256": "d27bfa90ab997cdc2ff01cfbef788b59b7fd9622008f0fbf618c7731c482ef95",
+      "canonical_sha256": "3321b15ef3ee1c05bc8fccb844c7f2ba037ffd71429f0d8292d470aa831ce407",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/css/hero-commerce-scenes.css",
+      "staging_sha256": "289d4a7df30c1de6bc8de4aff7f25a6c872ccce8761beb71754b3c1f3e8770fe",
+      "canonical_sha256": "6f2cbe84c5c81ecaf98bf15601556a315443d701613c89b47ba451c470d501e9",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false,
+      "difference": "Accepted source certification removes unavailable Cormorant Garamond fallback; Georgia fallback remains."
+    },
+    {
+      "file": "assets/css/hero-commerce-scenes.min.css",
+      "staging_sha256": "d3829dd8750ba03335175ab0610cb1ca94a252c8529eab8dd0615d0b637b7e71",
+      "canonical_sha256": "80de6dad3c71606f8d701e8671098fa5172cfdbe26798b0fdfe0daa3b6d0ae66",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/css/immersive.min.css",
+      "staging_sha256": "a8d5ae479fb903386ba03e07f9c5c1cc01974da44ac24eb2a298f4e6dafed88f",
+      "canonical_sha256": "555c22c1652b6494b97aa38943ccd1f87ed15dea5cae3557617226e1e8278afc",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/js/collection-scene-motion.min.js",
+      "staging_sha256": "ced6d4ceed4822c72aef58fe22969572b7414d3dd243b0ea9a9c88f1f160f860",
+      "canonical_sha256": "9a9a225c3fe2cb1d14bc7cc4eef4f67cb5a890102b500ea996f2eb5eca495982",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/js/house-of-roses-motion.min.js",
+      "staging_sha256": "83ca41917ee8e73ac6b08b34d9818a191650f7c2a44eb403491d4d5448454313",
+      "canonical_sha256": "7833bfe23b2e8cfc2fa4f89caf8ef9b1b7bc35adc60f427ff4e5bb444df6aed2",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/js/immersive.min.js",
+      "staging_sha256": "f8125cbcbba751823af7c0c772ac8554564fdf94445d3efb831bbbbc6f61e04e",
+      "canonical_sha256": "d406a0710952bf0cd907395780646ccf957cb0c52f2d1f2beed91175369d7127",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/js/kids-capsule-reveal.min.js",
+      "staging_sha256": "77cec0e3c063a29082fe18412bc5cc2fa4e80233db0dd6426bd173ec486b8525",
+      "canonical_sha256": "74e488a50d830d06614ccd9334bf49281f84ec1d8eb51745489afb5a8e20480d",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/js/mascot-loader.min.js",
+      "staging_sha256": "75107932af68702bd6ca258db8d0573e6f5833d4384cd9b6204d206740c236fa",
+      "canonical_sha256": "651ffde7ab4614afeb369e483f086347ebb24c14fb6762d637674c918eca46c5",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "assets/js/skyy-3d.min.js",
+      "staging_sha256": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+      "canonical_sha256": "0e0c49447d0d6f7a14c95a75d948fe468bc88a98ecf7d2f7c493cd0c6e631e8f",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    },
+    {
+      "file": "data/product-presentation-registry.json",
+      "staging_sha256": "5c781b5736e5b983b73d904c098b6e6a0d6efe33fa86332ca65fee01a60d8e2c",
+      "canonical_sha256": "cf14a9dc84560658af94df2b2bdb5dec177b3ce8289f1364af684ec0efcacc12",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false,
+      "json_semantically_equal": true
+    },
+    {
+      "file": "languages/skyyrose-flagship-2.pot",
+      "staging_sha256": "0dfa80de920f47273a9ec847ebe467f5184a6cd90760da8e5800221ded3a1e22",
+      "canonical_sha256": "e06ba7ac40414c2b63dc2f38c5778037d9ff98b7f162e5ee10c53e98b6a26b94",
+      "staging_matches_preserved_recovery": true,
+      "phase2_modified": false
+    }
+  ],
+  "full_package_deployed": false
+}

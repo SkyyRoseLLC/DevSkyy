@@ -1,0 +1,31 @@
+{
+  "archive_sha256": "3850af0ae0caa20a49e8ec4f029ef1543be4ac5ef65202b2a1a0336293f09f4a",
+  "archive_files": 447,
+  "all_files_match_recovered_commit": true,
+  "A": "bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b",
+  "B": "fec4e9339cad7077bcc812876668c128eb93b6e4",
+  "fixture": "Separate local database clone of synthetic33SKU/185variation fixture. Original staging database/plugins/optimizer not reconstructed. No payment/order actions.",
+  "A_local_origin": "http://127.0.0.1:18304",
+  "B_local_origin": "http://127.0.0.1:18303",
+  "served_attestation": [
+    {
+      "state": "A",
+      "markup_marker": "sr-house-hero",
+      "served_assets": {
+        "assets/css/theme.min.css": "8e2c802bb1332ae8ba15280470649012dee4bdded582069c72d777672aa69350",
+        "assets/js/theme.min.js": "a44b45e21bfbe43471a9bce14a4da7bf004eb164bbd8eada1d1d2cf78b4e42f5"
+      }
+    },
+    {
+      "state": "B",
+      "markup_marker": "sr2-archive",
+      "served_assets": {
+        "assets/css/theme.min.css": "9d1168baeca23447f0b9d8cb90f54f4b7eeab07873f1247a68441df724eaa2a9",
+        "assets/js/theme.min.js": "c589629dab86d09b45756411e692b8e794373ad9bc85b7828395a4e657e42bcc"
+      }
+    }
+  ],
+  "capture_context": "A and B attestations below describe historical capture time. Port 18303 now serves the modified integrated D candidate, not unchanged B.",
+  "D_local_origin": "http://127.0.0.1:18303",
+  "D_identity": "asset-change-manifest.json candidate_runtime_digest and runtime_hashes"
+}

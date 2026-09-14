@@ -1,0 +1,17 @@
+[
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/functions.php",
+    "before": "7bec84f589b3e2e262ba3116c128da9b41143231f6bd6ffa61c96f0d4a941b26",
+    "after": "87980b851b7da39c84bb0776da654b399ea61c6f61bc7d76f0de081abea5971a"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/search.php",
+    "before": "f20a64337913b8d766f579231a8968ac0f5a5538ac95544f01301033804d7516",
+    "after": "20d8d417a12df3cbd8b83e5911ca09b3007e7e95c5b3037aeba98b311d3d9234"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/search.php",
+    "before": "20d8d417a12df3cbd8b83e5911ca09b3007e7e95c5b3037aeba98b311d3d9234",
+    "after": "88da39a56c8dfefbfcf01f1e2fa10590440142532b37c923d6cc3f35265b142b"
+  }
+]

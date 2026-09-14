@@ -1,0 +1,24 @@
+{
+  "schema": "skyyrose.cinematic-package-receipt.v1",
+  "status": "PASS_DETERMINISTIC_LOCAL_CANDIDATE",
+  "source_commit": "a0af07be763be41c43efb372ae885db7a0f6db21",
+  "source_clean_at_packaging": true,
+  "package": "wordpress-theme/skyyrose-flagship-2/dist/skyyrose-flagship-2.zip",
+  "package_bytes": 207859481,
+  "runtime_files": 507,
+  "first_sha256": "9dd269167f878024c121959c45b96884f73e22b51f37aec4634224a3a25e98b0",
+  "second_sha256": "9dd269167f878024c121959c45b96884f73e22b51f37aec4634224a3a25e98b0",
+  "identical": true,
+  "toolchain": {
+    "node": "v22.23.2",
+    "npm": "10.9.8",
+    "python": "3.12.12",
+    "zip_compression": "STORED",
+    "zlib": "1.2.12"
+  },
+  "runtime_digest": "63f8c62f6f1ae60833b85ac7b9c9b1e8b9729198383452e90db5cd151e3f2068",
+  "build_verify_exit_code": 0,
+  "deployment_authorized": false,
+  "release_status": "NEEDS_MORE_WORK",
+  "reason": "Mobile LCP and visual acceptance remain open; reproducible packaging is not release approval."
+}

@@ -1,0 +1,8 @@
+{
+  "fatal": 0,
+  "warning": 0,
+  "historical_setup_deprecations": 477,
+  "historical_setup_notices": 2,
+  "latest_setup_notice": "2026-09-05T16:25:37Z",
+  "notes": "PHP8.5/WP-CLI fixture provisioning emitted deprecations and early Woo translation notices. No new browser-run PHP fatal/warning observed. Retain log; not a blanket claim about remote runtime."
+}

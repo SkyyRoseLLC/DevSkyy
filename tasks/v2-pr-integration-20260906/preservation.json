@@ -1,0 +1,11 @@
+{
+  "frozen_checkpoint": "aabd2bffdc1e322862acd05a5640c14cf00f3acf",
+  "protected_files_verified": 402,
+  "mismatches": [],
+  "all_theme_files_different_from_checkpoint": [
+    "wordpress-theme/skyyrose-flagship-2/inc/security.php"
+  ],
+  "upstream_security_commit": "afd03236562ae0518885f2cf669130b5866e037b",
+  "previous_security_sha256": "7772f3c0ab14675cbd04140cf00c9aa0aa93bf387476dd5f5f5d133ba21a9c49",
+  "integrated_security_sha256": "bd9f8df3fde21b60b23a3892c5f672191086fa55a78ace52c551ce41cbaf03f6"
+}

@@ -1,0 +1,156 @@
+{
+  "schema": "skyyrose.cinematic-support-changes.v1",
+  "runtime_payload": false,
+  "files": [
+    {
+      "path": "tools/v2-runtime/test-guide-focus.cjs",
+      "sha256": "8a0f8613c568668925efb3ff4dc681ce837f5560eeaadddbd2cd58a291ad6afe",
+      "purpose": "Selected-scene or character regression validation"
+    },
+    {
+      "path": "tools/v2-source-certification/build-inputs.json",
+      "sha256": "53639549bcc633a21679964311bd648fee6d5c3e3e4010cadc7ab46949d36df0",
+      "purpose": "Updated source/build/package boundary for the selected candidate"
+    },
+    {
+      "path": "tools/v2-source-certification/generated-outputs.json",
+      "sha256": "fb53267442d6a26d8dd004c6a4f3357bc62b39ecc3fcd4ac06c52638e3433a23",
+      "purpose": "Updated source/build/package boundary for the selected candidate"
+    },
+    {
+      "path": "tools/v2-source-certification/package-boundary.json",
+      "sha256": "91afd69cf4232a869547ebab1d207d12eab1c33cfebdf64a60d90076990e09f5",
+      "purpose": "Updated source/build/package boundary for the selected candidate"
+    },
+    {
+      "path": "tools/v2-source-certification/runtime-php-baseline.json",
+      "sha256": "294f8d317ede11fc371c48f81d9661292e874c0339db19958a6a5d1271edda32",
+      "purpose": "Updated source/build/package boundary for the selected candidate"
+    },
+    {
+      "path": "tools/v2-runtime/build-scene-posters.cjs",
+      "sha256": "ee1b32209cf4cd7f100e42813e2dd5ea48ec7bbd717efcb83c4e2e5fcd4eb5e0",
+      "purpose": "Selected-scene or character regression validation"
+    },
+    {
+      "path": "tools/v2-runtime/check-approved-scroll-world-scenes.cjs",
+      "sha256": "33b71b55188a781c0eeb6e966749f73a37a4bb8f55661744e1a498a2d36a85af",
+      "purpose": "Selected-scene or character regression validation"
+    },
+    {
+      "path": "tools/v2-runtime/fixtures/skyy-dom-harness.cjs",
+      "sha256": "b5a28a63651f197faceb453b4d41deab21c32aa676a2798c0a0ec219ec8b735e",
+      "purpose": "Selected-scene or character regression validation"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/.gitignore",
+      "sha256": "0e746e43526a3dc214b159db46636135cd0a9fbf86f5a1adaabe32017fcb2db6",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/README.md",
+      "sha256": "346ec8d75b7f32ee6214a208ec8cd3b4bf5a21fd4892cca63fff600a79e7d894",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/build-cinematic-review.cjs",
+      "sha256": "12fc3f34087a8413555655d68977a1528bd2ee4b045dd9b65a68606a755eaa19",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/capture-surface.cjs",
+      "sha256": "d1031c9bac6ead9e8c16bc93372d129501f4e88fa367597ee2b9e77997226bad",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/home-behavior.cjs",
+      "sha256": "5e3360f56254546189ad6a4d0c7d8076279de5d7daf91f22770209ae798cca38",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/inventory-final.cjs",
+      "sha256": "4fe3a908240cf25d410680dd535c11e1a78a6e3d871e42777e09de0cbee35e9c",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/origin-proxy.cjs",
+      "sha256": "5a44edebf99bb1f2b5eca032d8a9af3fa3fe74cf64e527b9fca3d5c429e190b2",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/package-lock.json",
+      "sha256": "9d2159853a25e6a98c226a4c72dfaf66458edc88525d1654a9a2aa90b3934f96",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/package.json",
+      "sha256": "ee79f57079197948f46881d4690903a7337cfb0d913ff887697b2d47f30c63dc",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/pdp-behavior.cjs",
+      "sha256": "55f1e99b7438722ea0b8736d9e8e282aee4d030529e81f4d72b17bd469404787",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/run-evidence.cjs",
+      "sha256": "e6ebe1b828675c91d6bc2787558985227b7217a91962bcf3a917841d36941c30",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/run-lighthouse.cjs",
+      "sha256": "c69f2524e4d66a17b975bcc533b264c9a4572d58733fa13f760c8fa7b9fd7635",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/runtime.cjs",
+      "sha256": "8137cd4f3997c7a6aee3883c3fe9dea9aa3a8e7b50aeb69364c064f26fd860f8",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/static-surface.cjs",
+      "sha256": "c45c69c61ac447f736907cda6cc0599dfa9fa7e810bf2907266c6d7bc0c42767",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/support.test.cjs",
+      "sha256": "bf32c6efe99916ed53716242cf13a16968daa8127bf89a45d817c4cc9d53bffa",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/test-cinematic-integration.cjs",
+      "sha256": "304c84919c91f79d4355bac34ebeb8c379a0dfb3875007b7b0f0787209389812",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/test-collection-browser.cjs",
+      "sha256": "6e779bdc1cbb0719ad838cd6681a4dee9228aa999248a83f92b93ada60a2059f",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/test-gallery-delivery.cjs",
+      "sha256": "7022b5c60a960b07419e035829853e1151c910c5907777e282070cde35abe954",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/phase3b-browser/test-shop-browser.cjs",
+      "sha256": "02a63767d85f6bbdfb7675d13f9f028824b7a194df39535ecad14834bf20b9c6",
+      "purpose": "Local-only reproducible browser verification and review viewer"
+    },
+    {
+      "path": "tools/v2-runtime/test-approved-scroll-world-scenes.cjs",
+      "sha256": "5673298e8d78c1cfd39eb740aad97b903bee2bd7efc4e06262770c87c028d3d5",
+      "purpose": "Selected-scene or character regression validation"
+    },
+    {
+      "path": "tools/v2-runtime/test-skyy-concierge.cjs",
+      "sha256": "2c8456277194e622fa9dda889b65c03e8002de6f834e5d26fa7196cf21f13bb0",
+      "purpose": "Selected-scene or character regression validation"
+    },
+    {
+      "path": "tools/v2-runtime/test-visual-recovery.cjs",
+      "sha256": "a0508d34941e32f0174f113badd8bacb3c86ab740c06cf8c8b6db86719aaa988",
+      "purpose": "Selected-scene or character regression validation"
+    }
+  ]
+}

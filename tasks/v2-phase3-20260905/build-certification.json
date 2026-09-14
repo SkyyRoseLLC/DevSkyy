@@ -1,0 +1,38 @@
+{
+  "status": "PASS_REPRODUCIBLE_LOCAL_PACKAGE",
+  "recorded_at": "2026-09-05T17:11:06.721051+00:00",
+  "certified_phase2_source": "5de8e2f3eb40827a052996f72bfb290a95bd600a",
+  "initial_checkout": "42ccb4b557c7e580956eb347470233dfc0bd4f6a",
+  "runtime_commit": "75ce80b90380d0e5915be79dab33484eda6d3fca",
+  "branch": "codex/v2-phase3-design-system-shell-20260905",
+  "clean_build_worktree": "/tmp/v2-phase3-cert.hzogle_b",
+  "source_clean_before_and_after": true,
+  "package_builds": 2,
+  "repeated_manifests_identical": true,
+  "repeated_archive_sha256": "48aa6e3084c5544eae79daaf662d940d95e41808c9123ad1758818dc94f5838f",
+  "runtime_entries": 379,
+  "toolchain": {
+    "node": "v22.23.2",
+    "npm": "10.9.8",
+    "python": "3.12.12",
+    "zip_compression": "STORED",
+    "zlib": "1.2.12"
+  },
+  "php": "8.5.6",
+  "protected_paths_unchanged_from_phase2": [
+    "wordpress-theme/skyyrose-flagship-2/data",
+    "wordpress-theme/skyyrose-flagship-2/assets/sot",
+    "wordpress-theme/skyyrose-flagship-2/woocommerce",
+    "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
+  ],
+  "archive": "/Users/theceo/.codex/worktrees/19db/DevSkyy/.artifacts/v2-phase3-20260905/skyyrose-v2-phase3a-75ce80b90.zip",
+  "deployment_authorized": false,
+  "payment_certified": false,
+  "phase3b_started": false,
+  "logs": {
+    "clean-package-first.log": "4b6415c946541ee9f30b47f56ac482c9d1563c9e1b67c0a0967d716dbfec4d2b",
+    "clean-package-second.log": "b32aff47b8b95fc266996cd864c61b407e6ccfeaa5c06f006bc5ce31506a40d8",
+    "final-build.log": "ba43e322ee89fa3a585ed79ce0664a0a329136f5f1bd4b8a0954c87336f1c815",
+    "integrity-unit.log": "0591f8633e7eeb516a97264ed56e19e184aa1323b974b3edcb3af6c306d1af58"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "rows": [
+    {
+      "name": "home-mobile",
+      "baseline": {
+        "version": "13.4.1",
+        "performance": 57.99999999999999,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 57.99999999999999,
+        "LCP": 11411.973825000003,
+        "TBT": 3,
+        "CLS": 0.15767134402758076
+      },
+      "candidate": {
+        "version": "13.4.1",
+        "performance": 56.00000000000001,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 57.99999999999999,
+        "LCP": 12013.779900000005,
+        "TBT": 3,
+        "CLS": 0.15668365109788296
+      }
+    },
+    {
+      "name": "home-desktop",
+      "baseline": {
+        "version": "13.4.1",
+        "performance": 84,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 57.99999999999999,
+        "LCP": 2649.393475,
+        "TBT": 0,
+        "CLS": 0.010803490540304304
+      },
+      "candidate": {
+        "version": "13.4.1",
+        "performance": 84,
+        "accessibility": 100,
+        "bestPractices": 96,
+        "seo": 57.99999999999999,
+        "LCP": 2569.6376,
+        "TBT": 0,
+        "CLS": 0.007875890887225116
+      }
+    },
+    {
+      "name": "pdp-mobile",
+      "baseline": {
+        "version": "13.4.1",
+        "performance": 62,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 57.99999999999999,
+        "LCP": 12081.532349999998,
+        "TBT": 0,
+        "CLS": 0.0326928928472389
+      },
+      "candidate": {
+        "version": "13.4.1",
+        "performance": 61,
+        "accessibility": 100,
+        "bestPractices": 100,
+        "seo": 57.99999999999999,
+        "LCP": 12387.875099999997,
+        "TBT": 3,
+        "CLS": 0.03230137447921436
+      }
+    }
+  ],
+  "scope": "Isolated lab only. Same local fixture, Lighthouse13.4.1 preset mobile or desktop. Outbound blocked. SEO affected by intentional noindex and local setup. No field CWV or paid integration certification.",
+  "verdict": "PERFORMANCE_LIMITATION: mobile LCP poor in baseline and candidate; hero font-swap CLS inherited. In-scope navigation startup CLS repaired."
+}

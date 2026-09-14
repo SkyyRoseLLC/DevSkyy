@@ -1,0 +1,24 @@
+[
+  {
+    "case": "missing-size",
+    "status": 200,
+    "errors": [
+      "Please choose product options for The Bridge Series &#039;The Bay Bridge&#039; Shirt."
+    ],
+    "cart_empty": true
+  },
+  {
+    "case": "invalid-variation",
+    "status": 200,
+    "errors": [],
+    "cart_empty": true
+  },
+  {
+    "case": "invalid-size",
+    "status": 200,
+    "errors": [
+      "Invalid value posted for Size"
+    ],
+    "cart_empty": true
+  }
+]

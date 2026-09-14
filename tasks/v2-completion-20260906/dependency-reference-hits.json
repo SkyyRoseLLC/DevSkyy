@@ -1,0 +1,559 @@
+{
+  "black-rose-sherpa-founder-footage-2024": [
+    {
+      "file": "tools/v2-source-certification/package-boundary.json",
+      "line": 1153,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\": {"
+    },
+    {
+      "file": "tools/v2-source-certification/inputs/woocommerce-product-sync.json",
+      "line": 2274,
+      "excerpt": "\"path\": \"wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tools/v2-source-certification/inputs/product-sot.json",
+      "line": 1262,
+      "excerpt": "\"path\": \"wordpress-theme/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/evidence-manifest.json",
+      "line": 125,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\": \"8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127\","
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/difference-matrix.json",
+      "line": 2415,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/difference-matrix.md",
+      "line": 101,
+      "excerpt": "| `assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4` | staging_only | MERGE | Historical 803fb08b5ea2. Project media content corroborated; separate served derivatives from candidate/source/QA evidence and retain approval boundaries. No deletion ju"
+    },
+    {
+      "file": "tasks/v2-phase3-20260905/release-manifest.json",
+      "line": 122,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\": \"8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127\","
+    },
+    {
+      "file": "tasks/v2-phase2-20260905/final-staging-runtime.json",
+      "line": 370,
+      "excerpt": "\"assets\\/scroll-world\\/video\\/black-rose\\/br-006\\/source-footage\\/black-rose-sherpa-founder-footage-2024.mp4\": \"8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 222,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 223,
+      "excerpt": "\"source\": \"bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b:assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 226,
+      "excerpt": "\"current_equivalent\": \"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 229,
+      "excerpt": "\"screenshot\": \".artifacts/v2-visual-recovery-20260905/recovered/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 242,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 13379,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 13443,
+      "excerpt": "\"current_equivalent\": \"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/visualsystems.json",
+      "line": 2067,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/pre-integration-hashes.json",
+      "line": 530,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\": \"8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 1402,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2712,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/source-footage/black-rose-sherpa-founder-footage-2024.mp4\": \"8b0953c5824f07f0a8f483aeac34305ec032d453c93da17a37cfa4ecd6918127\","
+    }
+  ],
+  "br-006-hero-origin-backdrop-v1": [
+    {
+      "file": "tools/v2-source-certification/package-boundary.json",
+      "line": 1133,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\": {"
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/evidence-manifest.json",
+      "line": 121,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\": \"cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2\","
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/difference-matrix.json",
+      "line": 2323,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/difference-matrix.md",
+      "line": 97,
+      "excerpt": "| `assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4` | staging_only | MERGE | Historical 803fb08b5ea2. Project media content corroborated; separate served derivatives from candidate/source/QA evidence and retain approval boundaries. No deletion justified b"
+    },
+    {
+      "file": "tasks/v2-phase3-20260905/release-manifest.json",
+      "line": 118,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\": \"cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2\","
+    },
+    {
+      "file": "tasks/v2-phase2-20260905/final-staging-runtime.json",
+      "line": 366,
+      "excerpt": "\"assets\\/scroll-world\\/video\\/black-rose\\/br-006\\/motion-plates\\/br-006-hero-origin-backdrop-v1.mp4\": \"cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 174,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 175,
+      "excerpt": "\"source\": \"bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b:assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 178,
+      "excerpt": "\"current_equivalent\": \"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 181,
+      "excerpt": "\"screenshot\": \".artifacts/v2-visual-recovery-20260905/recovered/skyyrose-flagship-2/assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 238,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 13103,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 13167,
+      "excerpt": "\"current_equivalent\": \"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/visualsystems.json",
+      "line": 2015,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/pre-integration-hashes.json",
+      "line": 528,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\": \"cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 1382,
+      "excerpt": "\"path\": \"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2708,
+      "excerpt": "\"assets/scroll-world/video/black-rose/br-006/motion-plates/br-006-hero-origin-backdrop-v1.mp4\": \"cc5f9ff9ea27eaa2ca517da6986f3787bab5953bcc9d93e87c4416c9bea9cba2\","
+    }
+  ],
+  "rose-gold-spin-alpha": [
+    {
+      "file": "tools/v2-source-certification/package-boundary.json",
+      "line": 2088,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webm\": {"
+    },
+    {
+      "file": "tools/v2-source-certification/package-boundary.json",
+      "line": 2093,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webp\": {"
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/evidence-manifest.json",
+      "line": 312,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webm\": \"2b8694128af192091c2b1edbbd1ebe9030a1bbdd875d76641fc9d20d6763eac4\","
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/evidence-manifest.json",
+      "line": 313,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webp\": \"85872b3dcc0ee00568519d520dd732dd64a2f845983d1876e9c81e0642c304ca\","
+    },
+    {
+      "file": "tasks/v2-phase3-20260905/release-manifest.json",
+      "line": 304,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webm\": \"2b8694128af192091c2b1edbbd1ebe9030a1bbdd875d76641fc9d20d6763eac4\","
+    },
+    {
+      "file": "tasks/v2-phase3-20260905/release-manifest.json",
+      "line": 305,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webp\": \"85872b3dcc0ee00568519d520dd732dd64a2f845983d1876e9c81e0642c304ca\","
+    },
+    {
+      "file": "tasks/v2-phase2-20260905/final-staging-runtime.json",
+      "line": 557,
+      "excerpt": "\"assets\\/sot\\/video\\/rose-gold-spin-alpha.webm\": \"2b8694128af192091c2b1edbbd1ebe9030a1bbdd875d76641fc9d20d6763eac4\","
+    },
+    {
+      "file": "tasks/v2-phase2-20260905/final-staging-runtime.json",
+      "line": 558,
+      "excerpt": "\"assets\\/sot\\/video\\/rose-gold-spin-alpha.webp\": \"85872b3dcc0ee00568519d520dd732dd64a2f845983d1876e9c81e0642c304ca\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1938,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1939,
+      "excerpt": "\"source\": \"bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b:assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1942,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1945,
+      "excerpt": "\"screenshot\": \".artifacts/v2-visual-recovery-20260905/recovered/skyyrose-flagship-2/assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1950,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1951,
+      "excerpt": "\"source\": \"bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b:assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1954,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1957,
+      "excerpt": "\"screenshot\": \".artifacts/v2-visual-recovery-20260905/recovered/skyyrose-flagship-2/assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 301,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 302,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 34926,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 34990,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 34995,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 35059,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/visualsystems.json",
+      "line": 4498,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/visualsystems.json",
+      "line": 4511,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/pre-integration-hashes.json",
+      "line": 199,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webm\": \"2b8694128af192091c2b1edbbd1ebe9030a1bbdd875d76641fc9d20d6763eac4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/pre-integration-hashes.json",
+      "line": 200,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webp\": \"85872b3dcc0ee00568519d520dd732dd64a2f845983d1876e9c81e0642c304ca\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2317,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2322,
+      "excerpt": "\"path\": \"assets/sot/video/rose-gold-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2894,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webm\": \"2b8694128af192091c2b1edbbd1ebe9030a1bbdd875d76641fc9d20d6763eac4\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2895,
+      "excerpt": "\"assets/sot/video/rose-gold-spin-alpha.webp\": \"85872b3dcc0ee00568519d520dd732dd64a2f845983d1876e9c81e0642c304ca\","
+    }
+  ],
+  "tsrc-spin-alpha": [
+    {
+      "file": "tools/v2-source-certification/package-boundary.json",
+      "line": 2098,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webm\": {"
+    },
+    {
+      "file": "tools/v2-source-certification/package-boundary.json",
+      "line": 2103,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webp\": {"
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/evidence-manifest.json",
+      "line": 314,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webm\": \"ba1eb482f366a7b5577775b7cc88bf72d6fc28a173644d98cd82dd6694c14feb\","
+    },
+    {
+      "file": "tasks/v2-baseline-reconciliation-20260905/evidence-manifest.json",
+      "line": 315,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webp\": \"cb704f6364dc3809bbc7e9618ecd7e2868997162c8bed6bef0ad91e37a03fca2\","
+    },
+    {
+      "file": "tasks/v2-phase3-20260905/release-manifest.json",
+      "line": 306,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webm\": \"ba1eb482f366a7b5577775b7cc88bf72d6fc28a173644d98cd82dd6694c14feb\","
+    },
+    {
+      "file": "tasks/v2-phase3-20260905/release-manifest.json",
+      "line": 307,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webp\": \"cb704f6364dc3809bbc7e9618ecd7e2868997162c8bed6bef0ad91e37a03fca2\","
+    },
+    {
+      "file": "tasks/v2-phase2-20260905/final-staging-runtime.json",
+      "line": 559,
+      "excerpt": "\"assets\\/sot\\/video\\/tsrc-spin-alpha.webm\": \"ba1eb482f366a7b5577775b7cc88bf72d6fc28a173644d98cd82dd6694c14feb\","
+    },
+    {
+      "file": "tasks/v2-phase2-20260905/final-staging-runtime.json",
+      "line": 560,
+      "excerpt": "\"assets\\/sot\\/video\\/tsrc-spin-alpha.webp\": \"cb704f6364dc3809bbc7e9618ecd7e2868997162c8bed6bef0ad91e37a03fca2\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1962,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1963,
+      "excerpt": "\"source\": \"bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b:assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1966,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1969,
+      "excerpt": "\"screenshot\": \".artifacts/v2-visual-recovery-20260905/recovered/skyyrose-flagship-2/assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1974,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1975,
+      "excerpt": "\"source\": \"bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b:assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1978,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/founder-review-queue.json",
+      "line": 1981,
+      "excerpt": "\"screenshot\": \".artifacts/v2-visual-recovery-20260905/recovered/skyyrose-flagship-2/assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 303,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 304,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 35064,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 35128,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 35133,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-census.json",
+      "line": 35197,
+      "excerpt": "\"current_equivalent\": \"assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/visualsystems.json",
+      "line": 4524,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/visualsystems.json",
+      "line": 4537,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/pre-integration-hashes.json",
+      "line": 201,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webm\": \"ba1eb482f366a7b5577775b7cc88bf72d6fc28a173644d98cd82dd6694c14feb\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/pre-integration-hashes.json",
+      "line": 202,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webp\": \"cb704f6364dc3809bbc7e9618ecd7e2868997162c8bed6bef0ad91e37a03fca2\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2327,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webm\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2332,
+      "excerpt": "\"path\": \"assets/sot/video/tsrc-spin-alpha.webp\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2896,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webm\": \"ba1eb482f366a7b5577775b7cc88bf72d6fc28a173644d98cd82dd6694c14feb\","
+    },
+    {
+      "file": "tasks/v2-visual-recovery-20260905/asset-change-manifest.json",
+      "line": 2897,
+      "excerpt": "\"assets/sot/video/tsrc-spin-alpha.webp\": \"cb704f6364dc3809bbc7e9618ecd7e2868997162c8bed6bef0ad91e37a03fca2\","
+    }
+  ],
+  "skyyrose2_jersey_series": [],
+  "skyyrose2_collection_worlds": [],
+  "sr2-commerce-preview": [
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/template-parts/v2-commerce-preview.php",
+      "line": 25,
+      "excerpt": "<main id=\"primary\" class=\"sr2-commerce-shell sr2-commerce-preview\" data-sr2-route=\"<?php echo esc_attr( $route ); ?>\">"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/template-parts/v2-commerce-preview.php",
+      "line": 26,
+      "excerpt": "<header class=\"sr2-commerce-preview__hero\">"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/template-parts/v2-commerce-preview.php",
+      "line": 31,
+      "excerpt": "<section class=\"sr2-commerce-preview__panel\" aria-label=\"<?php echo esc_attr( $state['kicker'] ); ?> preview state\">"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 167,
+      "excerpt": ".sr2-commerce-preview { display: grid; gap: clamp(2rem, 5vw, 5rem); min-height: 70vh; padding: calc(var(--sr2-header) + var(--sr2-section-pad)) var(--sr2-page-pad) var(--sr2-section-pad); background: var(--sr2-void); }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 168,
+      "excerpt": ".sr2-commerce-preview__hero { max-width: 58rem; }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 169,
+      "excerpt": ".sr2-commerce-preview__hero h1 { max-width: 12ch; margin: .25em 0 .45em; font-family: var(--sr2-font-display); font-size: clamp(3.4rem, 9vw, 9rem); letter-spacing: -.075em; line-height: .8; }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 170,
+      "excerpt": ".sr2-commerce-preview__hero > p:last-child { max-width: 44ch; color: var(--sr2-muted); font-size: clamp(1rem, 1.5vw, 1.25rem); }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 171,
+      "excerpt": ".sr2-commerce-preview__panel { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2rem, 7vw, 8rem); padding: clamp(2rem, 5vw, 5rem); border: 1px solid var(--sr2-line); background: color-mix(in srgb, var(--sr2-void) 86%, var(--sr2-silver)); }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 172,
+      "excerpt": ".sr2-commerce-preview__panel h2 { margin: .25em 0 .5em; font-family: var(--sr2-font-display); font-size: clamp(2rem, 4vw, 4rem); letter-spacing: -.06em; line-height: .88; }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 173,
+      "excerpt": ".sr2-commerce-preview__panel p:not(.sr2-eyebrow) { max-width: 48ch; color: var(--sr2-muted); }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 174,
+      "excerpt": ".sr2-commerce-preview__panel label { display: grid; gap: .4rem; margin-top: 1rem; color: var(--sr2-muted); font: 600 .7rem/1.2 var(--sr2-font-ui); letter-spacing: .12em; text-transform: uppercase; }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 175,
+      "excerpt": ".sr2-commerce-preview__panel input { min-height: 3rem; padding: .75rem; border: 1px solid var(--sr2-line); background: var(--sr2-card); color: var(--sr2-ink); font: inherit; }"
+    },
+    {
+      "file": "wordpress-theme/skyyrose-flagship-2/assets/css/theme.css",
+      "line": 560,
+      "excerpt": "@media (max-width: 780px) { .sr2-journal__grid, .sr2-journal-fallback__grid, .sr2-commerce-preview__panel { grid-template-columns: 1fr; } .sr2-journal-card { min-height: 0; } .sr2-not-found { grid-template-columns: 1fr; padding-top: calc(var(--sr2-header) + var(--sr2-space-5)); } .sr2-not-found__med"
+    }
+  ]
+}

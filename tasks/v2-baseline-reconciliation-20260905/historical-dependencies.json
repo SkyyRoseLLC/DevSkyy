@@ -1,0 +1,17 @@
+[
+  {
+    "path": "data/product-sot.json",
+    "revision": "803fb08b5ea2aedc027693bcd17248c18a04bb11",
+    "sha256": "4ccfbe18aba2846c8406f1f0d34853158e563601051527a47f8e401a71beea12"
+  },
+  {
+    "path": "skyyrose/core/product_sot.py",
+    "revision": "803fb08b5ea2aedc027693bcd17248c18a04bb11",
+    "sha256": "f9155e61ebdb7e6119819b9a83566b7f0ba4a65b7bf675da0c875024b923cd04"
+  },
+  {
+    "path": "wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/manifest.json",
+    "revision": "803fb08b5ea2aedc027693bcd17248c18a04bb11",
+    "sha256": "a4fc4107dd24384292667b3e829929911539d5d29303935b421c7203b62e86e2"
+  }
+]

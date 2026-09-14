@@ -1,0 +1,902 @@
+[
+  {
+    "label": "home",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Luxury grows from concrete.",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "shop",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Shop",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "signature",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Signature",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "black-rose",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Black Rose",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "love-hurts",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Love Hurts",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "kids",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Kids Capsule",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/kids-capsule/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "pdp",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "The Bridge Series ‘The Bay Bridge’ Shirt",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "rejected-pdp",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-oakland/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "cart",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Shopping Cart",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "checkout",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Checkout",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "account",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "My Account",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/my-account/",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "search",
+    "width": 390,
+    "dom": {
+      "broken": [],
+      "client": 390,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Results for “rose”",
+      "main": true,
+      "scroll": 390,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?s=rose",
+      "width": 390
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "home",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Luxury grows from concrete.",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "shop",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Shop",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "signature",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Signature",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "black-rose",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Black Rose",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "love-hurts",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Love Hurts",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "kids",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Kids Capsule",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/kids-capsule/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "pdp",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "The Bridge Series ‘The Bay Bridge’ Shirt",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "rejected-pdp",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-oakland/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "cart",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Shopping Cart",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "checkout",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Checkout",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "account",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "My Account",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/my-account/",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "search",
+    "width": 768,
+    "dom": {
+      "broken": [],
+      "client": 768,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Results for “rose”",
+      "main": true,
+      "scroll": 768,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?s=rose",
+      "width": 768
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "home",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Luxury grows from concrete.",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "shop",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Shop",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/shop/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "signature",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Signature",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/signature/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "black-rose",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Black Rose",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/black-rose/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "love-hurts",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Love Hurts",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/love-hurts/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "kids",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Kids Capsule",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/collections/kids-capsule/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "pdp",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "The Bridge Series ‘The Bay Bridge’ Shirt",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/sg-005/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "rejected-pdp",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "BLACK is Beautiful Jersey Series: 5. Baseball Classic (Last Oakland)",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/product/br-003-oakland/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "cart",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Shopping Cart",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/cart/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "checkout",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Checkout",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/checkout/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "account",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "My Account",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/my-account/",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  },
+  {
+    "label": "search",
+    "width": 1440,
+    "dom": {
+      "broken": [],
+      "client": 1440,
+      "core": [
+        {
+          "defer": false,
+          "src": "https://staging-7e48-skyyrose.wpcomstaging.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"
+        }
+      ],
+      "h1": "Results for “rose”",
+      "main": true,
+      "scroll": 1440,
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?s=rose",
+      "width": 1440
+    },
+    "errors": [],
+    "failed": [],
+    "ajax": {},
+    "consoleErrors": [],
+    "truncated": false,
+    "networkCoverage": "Superseded by final-network-routes.json: initial CDP network subscriber was inactive; DOM and console checks remain valid."
+  }
+]

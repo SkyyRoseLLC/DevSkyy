@@ -1,0 +1,62 @@
+{
+  "schema_version": {
+    "authority": "DERIVED",
+    "source": "Adapter schema constant"
+  },
+  "kind": {
+    "authority": "DERIVED",
+    "source": "Adapter kind constant"
+  },
+  "generated_from": {
+    "authority": "DERIVED",
+    "source": "Logical upstream data/product-sot.json origin; artifact path in build-inputs.json"
+  },
+  "product_sot_sha256": {
+    "authority": "DERIVED",
+    "source": "SHA256 of immutable upstream artifact bytes"
+  },
+  "supplements.jersey_series_skus": {
+    "authority": "DERIVED",
+    "source": "Upstream merchandising series membership, sorted by explicit series_order"
+  },
+  "products.<sku>": {
+    "authority": "COMMERCE AUTHORITATIVE",
+    "source": "CSV sku; exact same set as upstream; Woo remains authority for live identity"
+  },
+  "products.*.collection": {
+    "authority": "EDITORIAL AUTHORITATIVE",
+    "source": "Upstream identity.collection; crosschecked current CSV collection"
+  },
+  "products.*.garment_type": {
+    "authority": "EDITORIAL AUTHORITATIVE",
+    "source": "Current canonical CSV garment_type_lock trimmed and lowercased; not dossier narrative inference"
+  },
+  "products.*.presentation": {
+    "authority": "DERIVED",
+    "source": "Upstream merchandising.series_slug or identity.collection"
+  },
+  "products.*.route": {
+    "authority": "PRESENTATION ONLY",
+    "source": "Existing adapter route rule; real product URLs remain Woo-generated"
+  },
+  "products.*.is_preorder": {
+    "authority": "PRESENTATION ONLY",
+    "source": "Upstream commerce.is_preorder crosschecked CSV; does not authorize/order preorders"
+  },
+  "products.*.product_sot_hash": {
+    "authority": "DERIVED",
+    "source": "Upstream canonical record hash verified by consumer"
+  },
+  "products.*.media_proof_level": {
+    "authority": "DERIVED",
+    "source": "Upstream reference evidence classification; never media approval"
+  },
+  "products.*.series_region": {
+    "authority": "EDITORIAL AUTHORITATIVE",
+    "source": "Versioned upstream merchandising.series_region"
+  },
+  "products.*.series_order": {
+    "authority": "EDITORIAL AUTHORITATIVE",
+    "source": "Versioned upstream merchandising.series_order"
+  }
+}

@@ -1,0 +1,106 @@
+{
+    "palette": {
+        "theme": [
+            {
+                "name": "Concrete Black",
+                "slug": "concrete-black",
+                "color": "#0A0A0A"
+            },
+            {
+                "name": "Surface",
+                "slug": "surface",
+                "color": "#151515"
+            },
+            {
+                "name": "White",
+                "slug": "white",
+                "color": "#FFFFFF"
+            },
+            {
+                "name": "Text Secondary",
+                "slug": "text-secondary",
+                "color": "#CCCCCC"
+            },
+            {
+                "name": "Text Muted",
+                "slug": "text-muted",
+                "color": "#999999"
+            },
+            {
+                "name": "Border",
+                "slug": "border",
+                "color": "#2A2A2A"
+            },
+            {
+                "name": "Rose Gold",
+                "slug": "rose-gold",
+                "color": "#B76E79"
+            },
+            {
+                "name": "Signature Gold",
+                "slug": "signature-gold",
+                "color": "#D4AF37"
+            },
+            {
+                "name": "Black Rose Silver",
+                "slug": "black-rose-silver",
+                "color": "#C0C0C0"
+            },
+            {
+                "name": "Love Hurts Crimson",
+                "slug": "love-hurts-crimson",
+                "color": "#EB4666"
+            }
+        ]
+    },
+    "spacing": {
+        "theme": [
+            {
+                "name": "2XS",
+                "slug": "2-xs",
+                "size": "0.25rem"
+            },
+            {
+                "name": "XS",
+                "slug": "xs",
+                "size": "0.5rem"
+            },
+            {
+                "name": "Small",
+                "slug": "small",
+                "size": "1rem"
+            },
+            {
+                "name": "Medium",
+                "slug": "medium",
+                "size": "1.5rem"
+            },
+            {
+                "name": "Large",
+                "slug": "large",
+                "size": "2.5rem"
+            },
+            {
+                "name": "XL",
+                "slug": "xl",
+                "size": "4rem"
+            },
+            {
+                "name": "2XL",
+                "slug": "2-xl",
+                "size": "6rem"
+            }
+        ]
+    },
+    "motion": {
+        "house-ease": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "fast": "180ms",
+        "standard": "420ms",
+        "slow": "900ms"
+    },
+    "layers": {
+        "guide": "80",
+        "header": "100",
+        "skip": "999"
+    }
+}

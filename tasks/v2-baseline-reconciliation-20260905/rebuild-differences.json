@@ -1,0 +1,86 @@
+[
+  {
+    "path": "languages/skyyrose-flagship-2.pot",
+    "newline_only": false,
+    "snapshot_sha256": "0dfa80de920f47273a9ec847ebe467f5184a6cd90760da8e5800221ded3a1e22",
+    "rebuilt_sha256": "7ff98be4a7a58ba1c53e8bbc92722b003a2974d72dacd182ec258382aaff5cca"
+  },
+  {
+    "path": "assets/css/immersive.min.css",
+    "newline_only": true,
+    "snapshot_sha256": "a8d5ae479fb903386ba03e07f9c5c1cc01974da44ac24eb2a298f4e6dafed88f",
+    "rebuilt_sha256": "555c22c1652b6494b97aa38943ccd1f87ed15dea5cae3557617226e1e8278afc"
+  },
+  {
+    "path": "assets/css/mascot.min.css",
+    "newline_only": true,
+    "snapshot_sha256": "d8aec4d57a6d6aa128ce11f1fc005e57d8de55f47d13e3a43b5f74a2ba498246",
+    "rebuilt_sha256": "98ef818787e4aaf8076f3e99d1b5c18030d9f4611a7251e6c9c84c24c39e3d11"
+  },
+  {
+    "path": "assets/css/collection-scene-motion.min.css",
+    "newline_only": true,
+    "snapshot_sha256": "d27bfa90ab997cdc2ff01cfbef788b59b7fd9622008f0fbf618c7731c482ef95",
+    "rebuilt_sha256": "3321b15ef3ee1c05bc8fccb844c7f2ba037ffd71429f0d8292d470aa831ce407"
+  },
+  {
+    "path": "assets/css/design-tokens.min.css",
+    "newline_only": true,
+    "snapshot_sha256": "fb266093910dc238dfd3f3c4ede42736e19d4b4bd538c9b6e0566915526b3852",
+    "rebuilt_sha256": "ac3749c606af1d739c0dfb86f2807b16b60c29650bca53de56b0c834a1208c1c"
+  },
+  {
+    "path": "assets/css/hero-commerce-scenes.min.css",
+    "newline_only": true,
+    "snapshot_sha256": "d3829dd8750ba03335175ab0610cb1ca94a252c8529eab8dd0615d0b637b7e71",
+    "rebuilt_sha256": "e8ed3309217f9daff25e0b0b135264ebad78fef496faf8c14db86781f0a9648f"
+  },
+  {
+    "path": "assets/js/house-of-roses-motion.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "83ca41917ee8e73ac6b08b34d9818a191650f7c2a44eb403491d4d5448454313",
+    "rebuilt_sha256": "7833bfe23b2e8cfc2fa4f89caf8ef9b1b7bc35adc60f427ff4e5bb444df6aed2"
+  },
+  {
+    "path": "assets/js/kids-capsule-reveal.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "77cec0e3c063a29082fe18412bc5cc2fa4e80233db0dd6426bd173ec486b8525",
+    "rebuilt_sha256": "74e488a50d830d06614ccd9334bf49281f84ec1d8eb51745489afb5a8e20480d"
+  },
+  {
+    "path": "assets/js/collection-scene-motion.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "ced6d4ceed4822c72aef58fe22969572b7414d3dd243b0ea9a9c88f1f160f860",
+    "rebuilt_sha256": "9a9a225c3fe2cb1d14bc7cc4eef4f67cb5a890102b500ea996f2eb5eca495982"
+  },
+  {
+    "path": "assets/js/skyy-3d.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "99abdd1ab80c41e20e4eaddaedd5a554327fabb6d44fc936f0db6c0c4e35973d",
+    "rebuilt_sha256": "0e0c49447d0d6f7a14c95a75d948fe468bc88a98ecf7d2f7c493cd0c6e631e8f"
+  },
+  {
+    "path": "assets/js/mascot.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "0f7764e185806f004d757813efdcf83b0fa553a0eed576747b113b46634f85f8",
+    "rebuilt_sha256": "af26df8fa397ccb86f60f12985443466d7dc32c0e1c369e6e1667c9dfcafb067"
+  },
+  {
+    "path": "assets/js/immersive.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "f8125cbcbba751823af7c0c772ac8554564fdf94445d3efb831bbbbc6f61e04e",
+    "rebuilt_sha256": "d406a0710952bf0cd907395780646ccf957cb0c52f2d1f2beed91175369d7127"
+  },
+  {
+    "path": "assets/js/mascot-loader.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "75107932af68702bd6ca258db8d0573e6f5833d4384cd9b6204d206740c236fa",
+    "rebuilt_sha256": "651ffde7ab4614afeb369e483f086347ebb24c14fb6762d637674c918eca46c5"
+  },
+  {
+    "path": "assets/js/theme.min.js",
+    "newline_only": true,
+    "snapshot_sha256": "a44b45e21bfbe43471a9bce14a4da7bf004eb164bbd8eada1d1d2cf78b4e42f5",
+    "rebuilt_sha256": "60db5901cac4070e0ca39792f51811fb301d456017cbf3ca817194a3429309a0"
+  }
+]

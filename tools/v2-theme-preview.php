@@ -214,12 +214,16 @@ function set_transient() { return true; }
 function get_transient() { return false; }
 function delete_transient() { return true; }
 function wp_salt() { return 'preview-only-salt'; }
+function tag_escape( $tag ) { return strtolower( preg_replace( '/[^a-zA-Z0-9_:]/', '', (string) $tag ) ); }
 function sanitize_text_field( $value ) { return trim( strip_tags( (string) $value ) ); }
 function sanitize_textarea_field( $value ) { return trim( strip_tags( (string) $value ) ); }
 function wp_unslash( $value ) { return $value; }
 function language_attributes() { echo 'lang="en-US"'; }
 function bloginfo( $field ) { echo 'charset' === $field ? 'UTF-8' : 'SkyyRose'; }
 function get_bloginfo( $field = '' ) { return 'name' === $field ? 'SkyyRose' : ''; }
+function is_singular() { global $route; return ! in_array( $route, array( 'shop', 'journal', 'search' ), true ); }
+function url_to_postid( $url ) { return $url === get_permalink( get_queried_object_id() ) ? get_queried_object_id() : 0; }
+function untrailingslashit( $value ) { return rtrim( (string) $value, '/\\' ); }
 function is_home() { global $route; return 'journal' === $route; }
 function wp_get_document_title() { return get_the_title(); }
 function body_class() {
@@ -234,13 +238,20 @@ function wp_head() {
 	global $route, $preview_identity, $preview_template_map;
 	$title       = 'home' === $route ? 'SkyyRose — House of Roses' : 'SkyyRose — ' . ucwords( str_replace( '-', ' ', $route ) );
 	$description = 'SkyyRose is an Oakland luxury streetwear house where every collection opens a distinct story world.';
+	$collection_css = '';
+	if ( in_array( $route, array( 'black-rose', 'love-hurts', 'signature', 'kids-capsule' ), true ) ) {
+		// Match the current collection surface; this remains a fixture, not WordPress certification.
+		foreach ( array( 'collection-world', 'controls', 'global-shell', 'visual-recovery', 'hero-commerce-scenes', 'collection-scene-motion', 'scene-handoff' ) as $asset ) {
+			$collection_css .= '<link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/' . $asset . '.min.css">';
+		}
+	}
 	$immersive_css = 0 === strpos( $route, 'immersive-' ) ? '<link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/immersive.css">' : '';
 	header( 'X-SkyyRose-Preview-Theme: ' . $preview_identity['theme'] );
 	header( 'X-SkyyRose-Preview-Candidate: ' . $preview_identity['candidate_id'] );
 	header( 'X-SkyyRose-Preview-Commit: ' . $preview_identity['commit'] );
 	header( 'X-SkyyRose-Preview-Route: ' . $route );
 	header( 'X-SkyyRose-Preview-Template: ' . $preview_template_map[ $route ] );
-	echo '<title>' . esc_html( $title ) . '</title><meta name="description" content="' . esc_attr( $description ) . '"><meta name="robots" content="noindex,nofollow"><meta name="skyyrose-preview-theme" content="' . esc_attr( $preview_identity['theme'] ) . '"><meta name="skyyrose-preview-candidate" content="' . esc_attr( $preview_identity['candidate_id'] ) . '"><meta name="skyyrose-preview-commit" content="' . esc_attr( $preview_identity['commit'] ) . '"><meta name="skyyrose-preview-route" content="' . esc_attr( $route ) . '"><meta name="skyyrose-preview-template" content="' . esc_attr( $preview_template_map[ $route ] ) . '"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css">' . $immersive_css . '<style>.sr2-preview-banner{position:fixed;z-index:1000;right:12px;bottom:12px;display:grid;gap:3px;padding:8px 10px;background:#e2b6a7;color:#100e0c;font:600 10px/1.2 sans-serif;letter-spacing:.06em;text-align:right;box-shadow:0 4px 16px rgba(0,0,0,.25)}.sr2-preview-banner strong{font-size:11px}.sr2-preview-gallery img{display:block;width:100%;height:auto}.sr2-preview-gallery__thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.sr2-preview-gallery__thumb{border:1px solid var(--sr2-line);aspect-ratio:1;object-fit:cover}.sr2-pdp-product--portal .quantity{display:grid;gap:4px;flex:0 0 7rem}.sr2-pdp-product--portal .quantity input{width:100%;min-height:48px}.sr2-pdp-product--portal .product_meta{display:grid;gap:6px;margin-top:24px;color:var(--sr2-muted);font:600 .7rem/1.4 var(--sr2-font-ui);letter-spacing:.08em;text-transform:uppercase}.sr2-preview-promises{display:grid;gap:7px;margin-top:24px;padding-left:1.2rem}.sr2-preview-tabs__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:32px}@media(max-width:640px){.sr2-preview-banner{right:8px;left:8px;text-align:left}.sr2-preview-tabs__grid{grid-template-columns:1fr}}</style>';
+	echo '<title>' . esc_html( $title ) . '</title><meta name="description" content="' . esc_attr( $description ) . '"><meta name="robots" content="noindex,nofollow"><meta name="skyyrose-preview-theme" content="' . esc_attr( $preview_identity['theme'] ) . '"><meta name="skyyrose-preview-candidate" content="' . esc_attr( $preview_identity['candidate_id'] ) . '"><meta name="skyyrose-preview-commit" content="' . esc_attr( $preview_identity['commit'] ) . '"><meta name="skyyrose-preview-route" content="' . esc_attr( $route ) . '"><meta name="skyyrose-preview-template" content="' . esc_attr( $preview_template_map[ $route ] ) . '"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/design-tokens.css"><link rel="stylesheet" href="/wordpress-theme/skyyrose-flagship-2/assets/css/theme.css">' . $immersive_css . $collection_css . '<style>.sr2-preview-banner{position:fixed;z-index:1000;right:12px;bottom:12px;display:grid;gap:3px;padding:8px 10px;background:#e2b6a7;color:#100e0c;font:600 10px/1.2 sans-serif;letter-spacing:.06em;text-align:right;box-shadow:0 4px 16px rgba(0,0,0,.25)}.sr2-preview-banner strong{font-size:11px}.sr2-preview-gallery img{display:block;width:100%;height:auto}.sr2-preview-gallery__thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.sr2-preview-gallery__thumb{border:1px solid var(--sr2-line);aspect-ratio:1;object-fit:cover}.sr2-pdp-product--portal .quantity{display:grid;gap:4px;flex:0 0 7rem}.sr2-pdp-product--portal .quantity input{width:100%;min-height:48px}.sr2-pdp-product--portal .product_meta{display:grid;gap:6px;margin-top:24px;color:var(--sr2-muted);font:600 .7rem/1.4 var(--sr2-font-ui);letter-spacing:.08em;text-transform:uppercase}.sr2-preview-promises{display:grid;gap:7px;margin-top:24px;padding-left:1.2rem}.sr2-preview-tabs__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:32px}@media(max-width:640px){.sr2-preview-banner{right:8px;left:8px;text-align:left}.sr2-preview-tabs__grid{grid-template-columns:1fr}}</style>';
 }
 function wp_footer() {
 	global $route;

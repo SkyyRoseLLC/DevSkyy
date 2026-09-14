@@ -1,0 +1,17 @@
+{
+  "requests": 81,
+  "responses": 79,
+  "ajax": [
+    {
+      "url": "https://staging-7e48-skyyrose.wpcomstaging.com/?wc-ajax=update_order_review",
+      "status": 200
+    }
+  ],
+  "failed": [
+    {
+      "error": "net::ERR_BLOCKED_BY_ORB",
+      "canceled": false,
+      "url": "https://static.klaviyo.com/onsite/js//klaviyo.js?module=POST_IDENTIFICATION_SYNC&ver=3.8.3"
+    }
+  ]
+}

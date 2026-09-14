@@ -1,0 +1,24 @@
+{
+  "candidate_revision": "53ae72dc339d1130b2ce8c2dd2d18108569e1efe",
+  "files": 447,
+  "content_changes_from_evidence": [
+    "languages/skyyrose-flagship-2.pot",
+    "assets/css/immersive.min.css",
+    "assets/css/mascot.min.css",
+    "assets/css/collection-scene-motion.min.css",
+    "assets/css/design-tokens.min.css",
+    "assets/css/hero-commerce-scenes.min.css",
+    "assets/js/house-of-roses-motion.min.js",
+    "assets/js/kids-capsule-reveal.min.js",
+    "assets/js/collection-scene-motion.min.js",
+    "assets/js/skyy-3d.min.js",
+    "assets/js/mascot.min.js",
+    "assets/js/immersive.min.js",
+    "assets/js/mascot-loader.min.js",
+    "assets/js/theme.min.js"
+  ],
+  "normalization_only": true,
+  "archive_unchanged": true,
+  "staging_or_production_deployment": false,
+  "certification": "FAIL"
+}

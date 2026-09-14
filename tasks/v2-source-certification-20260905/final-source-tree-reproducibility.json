@@ -1,0 +1,55 @@
+{
+  "builds": [
+    {
+      "artifact_bytes": 208140894,
+      "artifact_sha256": "e7e91dcbb726b691b98fd4fd031e177807dc5d1d7b6d04e5e17ef6350c6bc196",
+      "checked_files": 10131,
+      "outputs": {
+        "assets/css/collection-scene-motion.min.css": "3321b15ef3ee1c05bc8fccb844c7f2ba037ffd71429f0d8292d470aa831ce407",
+        "assets/css/design-tokens.min.css": "ac3749c606af1d739c0dfb86f2807b16b60c29650bca53de56b0c834a1208c1c",
+        "assets/css/hero-commerce-scenes.min.css": "80de6dad3c71606f8d701e8671098fa5172cfdbe26798b0fdfe0daa3b6d0ae66",
+        "assets/css/immersive.min.css": "555c22c1652b6494b97aa38943ccd1f87ed15dea5cae3557617226e1e8278afc",
+        "assets/css/mascot.min.css": "98ef818787e4aaf8076f3e99d1b5c18030d9f4611a7251e6c9c84c24c39e3d11",
+        "assets/css/theme.min.css": "8e2c802bb1332ae8ba15280470649012dee4bdded582069c72d777672aa69350",
+        "assets/js/collection-scene-motion.min.js": "9a9a225c3fe2cb1d14bc7cc4eef4f67cb5a890102b500ea996f2eb5eca495982",
+        "assets/js/house-of-roses-motion.min.js": "7833bfe23b2e8cfc2fa4f89caf8ef9b1b7bc35adc60f427ff4e5bb444df6aed2",
+        "assets/js/immersive.min.js": "d406a0710952bf0cd907395780646ccf957cb0c52f2d1f2beed91175369d7127",
+        "assets/js/kids-capsule-reveal.min.js": "74e488a50d830d06614ccd9334bf49281f84ec1d8eb51745489afb5a8e20480d",
+        "assets/js/mascot-loader.min.js": "651ffde7ab4614afeb369e483f086347ebb24c14fb6762d637674c918eca46c5",
+        "assets/js/mascot.min.js": "af26df8fa397ccb86f60f12985443466d7dc32c0e1c369e6e1667c9dfcafb067",
+        "assets/js/skyy-3d.min.js": "0e0c49447d0d6f7a14c95a75d948fe468bc88a98ecf7d2f7c493cd0c6e631e8f",
+        "assets/js/theme.min.js": "60db5901cac4070e0ca39792f51811fb301d456017cbf3ca817194a3429309a0",
+        "data/product-presentation-registry.json": "cf14a9dc84560658af94df2b2bdb5dec177b3ce8289f1364af684ec0efcacc12",
+        "languages/skyyrose-flagship-2.pot": "79c3663ea21af0d3d83e0bd05c53fd51b98eb14c9271d1819f6e1029cc3e3e9a"
+      },
+      "source_drift": [],
+      "source_tree": "a913c9090fa8f035c80059bb784975b537ca38bf"
+    },
+    {
+      "artifact_bytes": 208140894,
+      "artifact_sha256": "e7e91dcbb726b691b98fd4fd031e177807dc5d1d7b6d04e5e17ef6350c6bc196",
+      "checked_files": 10131,
+      "outputs": {
+        "assets/css/collection-scene-motion.min.css": "3321b15ef3ee1c05bc8fccb844c7f2ba037ffd71429f0d8292d470aa831ce407",
+        "assets/css/design-tokens.min.css": "ac3749c606af1d739c0dfb86f2807b16b60c29650bca53de56b0c834a1208c1c",
+        "assets/css/hero-commerce-scenes.min.css": "80de6dad3c71606f8d701e8671098fa5172cfdbe26798b0fdfe0daa3b6d0ae66",
+        "assets/css/immersive.min.css": "555c22c1652b6494b97aa38943ccd1f87ed15dea5cae3557617226e1e8278afc",
+        "assets/css/mascot.min.css": "98ef818787e4aaf8076f3e99d1b5c18030d9f4611a7251e6c9c84c24c39e3d11",
+        "assets/css/theme.min.css": "8e2c802bb1332ae8ba15280470649012dee4bdded582069c72d777672aa69350",
+        "assets/js/collection-scene-motion.min.js": "9a9a225c3fe2cb1d14bc7cc4eef4f67cb5a890102b500ea996f2eb5eca495982",
+        "assets/js/house-of-roses-motion.min.js": "7833bfe23b2e8cfc2fa4f89caf8ef9b1b7bc35adc60f427ff4e5bb444df6aed2",
+        "assets/js/immersive.min.js": "d406a0710952bf0cd907395780646ccf957cb0c52f2d1f2beed91175369d7127",
+        "assets/js/kids-capsule-reveal.min.js": "74e488a50d830d06614ccd9334bf49281f84ec1d8eb51745489afb5a8e20480d",
+        "assets/js/mascot-loader.min.js": "651ffde7ab4614afeb369e483f086347ebb24c14fb6762d637674c918eca46c5",
+        "assets/js/mascot.min.js": "af26df8fa397ccb86f60f12985443466d7dc32c0e1c369e6e1667c9dfcafb067",
+        "assets/js/skyy-3d.min.js": "0e0c49447d0d6f7a14c95a75d948fe468bc88a98ecf7d2f7c493cd0c6e631e8f",
+        "assets/js/theme.min.js": "60db5901cac4070e0ca39792f51811fb301d456017cbf3ca817194a3429309a0",
+        "data/product-presentation-registry.json": "cf14a9dc84560658af94df2b2bdb5dec177b3ce8289f1364af684ec0efcacc12",
+        "languages/skyyrose-flagship-2.pot": "79c3663ea21af0d3d83e0bd05c53fd51b98eb14c9271d1819f6e1029cc3e3e9a"
+      },
+      "source_drift": [],
+      "source_tree": "a913c9090fa8f035c80059bb784975b537ca38bf"
+    }
+  ],
+  "status": "PASS"
+}

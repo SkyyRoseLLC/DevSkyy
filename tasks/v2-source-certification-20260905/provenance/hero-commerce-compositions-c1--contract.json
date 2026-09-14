@@ -1,0 +1,189 @@
+{
+  "schema": "skyyrose.hero-commerce-candidates.v1",
+  "task_id": "HERO-COMMERCE-C1",
+  "created_at": "2026-09-05T00:29:41.317Z",
+  "scope": "User-authorized local model/product composition and wiring; candidate state never asserts final product fidelity.",
+  "local_wiring_authority": "Current user request plus explicit replacement-candidate direction.",
+  "deployment_authorized": false,
+  "original_hero_loops_changed": false,
+  "prior_environment_candidates_retained": true,
+  "scenes": {
+    "LH-COMMERCE-2": {
+      "collection": "love-hurts",
+      "label": "The Rose Side Chapel",
+      "copy": "Love Hurts takes the foreground inside the crimson cathedral.",
+      "alt": "Love Hurts front-view model wearing LH-003 basketball shorts in the rose cathedral side chapel.",
+      "product_bindings": [
+        "lh-003"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 67264,
+          "sha256": "abdb345fb2d2c7600c8bf719c3105e3fc57d57198c58d9cc7375a3c51499ab76"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 145222,
+          "sha256": "8d180d2617fdce15ea4e53d89a4cf93cb44c9bce99e19edb83f39c0a41fd9836"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 340456,
+          "sha256": "bf251eba7a2366a8d133e10a7bd548f3c6d89d2137da8263a418e761bfdefa54"
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/lh-commerce-2-hero-composed-c1.png",
+      "master_sha256": "9b259f80915d358be417633d657975d5881827eb029d57f969368ea207e84beb",
+      "source_scope": "FOUNDER_APPROVED_FRONT_VIEW",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": false,
+      "generation_state": "LOCAL_WIRED_COMPOSITION_CANDIDATE_NEEDS_REVIEW",
+      "review_message": "Approved front-view source, newly composed. Final scene review pending; no side or back claim.",
+      "deployment_authorized": false
+    },
+    "BR-COMMERCE-2": {
+      "collection": "black-rose",
+      "label": "The Moonlit Waterfront",
+      "copy": "The Black Rose looks share the Bay Bridge waterfront.",
+      "alt": "New Black Rose candidate: male hoodie and basketball-shorts look beside a female long-hoodie look on the moonlit Bay Bridge terrace.",
+      "product_bindings": [
+        "br-005",
+        "br-007",
+        "br-004"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 48142,
+          "sha256": "8798f0079110eeb36409b64b14f4989b9c06d36c1481b57c597f04f54277b0c5"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 107910,
+          "sha256": "3a7c1c137aee383b3486d5a26bcf3d4c633ce9af6eba91b7894557a923b47a0e"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 282332,
+          "sha256": "d3ea8d547c24fa3ab01727f17157a4315f8471f5408a67a5f66d56784e15160f"
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+      "master_sha256": "b29144a492187a71c9d36a61898de1bfffdc03830d369b6c8860d821eaa82abc",
+      "source_scope": "NEW_REPLACEMENT_CAST_AND_PRODUCT_CANDIDATE",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": false,
+      "generation_state": "LOCAL_WIRED_COMPOSITION_CANDIDATE_NEEDS_REVIEW",
+      "review_message": "New model and garment candidates. Identity and product-fidelity approval pending.",
+      "deployment_authorized": false
+    },
+    "SIG-COMMERCE-1": {
+      "collection": "signature",
+      "label": "The Golden Gate Overlook",
+      "copy": "The Sherpa and Signature Beanie meet the gold-lit overlook.",
+      "alt": "Signature male model wearing The Sherpa Jacket and black Signature Beanie at the Golden Gate overlook.",
+      "product_bindings": [
+        "sg-009",
+        "sg-007"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 41738,
+          "sha256": "23a86692d9d28f11f850d858d4d451819f71884c3a82df99eb614529b4a39d71"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 84160,
+          "sha256": "0a9fd6835909c7916a6dee80517e31043ecbd1fa933fe14d111a144f34328d5c"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 196466,
+          "sha256": "e954cd60a99d4db7f06ea1cec12c3dac8e65f46723354127702cff6357786bad"
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/sig-commerce-1-hero-composed-c1.png",
+      "master_sha256": "b4a8b6239b22549ad0f1447084ca77435bd80cdb4533851e119053e6f348b374",
+      "source_scope": "EXISTING_REVIEWED_SHERPA_BEANIE_SOURCE",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": false,
+      "generation_state": "LOCAL_WIRED_COMPOSITION_CANDIDATE_NEEDS_REVIEW",
+      "review_message": "Existing reviewed Sherpa and Beanie source, newly composed. Final scene review pending.",
+      "deployment_authorized": false
+    },
+    "SIG-COMMERCE-2": {
+      "collection": "signature",
+      "label": "The Lateral Terrace",
+      "copy": "Mint and lavender meet on the stepped Golden Gate terrace.",
+      "alt": "Preserved male mint crewneck and sweatpants look with a new female mint hoodie candidate on the Golden Gate stepped terrace.",
+      "product_bindings": [
+        "sg-013",
+        "sg-014",
+        "sg-006"
+      ],
+      "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1-1672w.webp",
+      "width": 1672,
+      "height": 941,
+      "variants": [
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1-640w.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 55934,
+          "sha256": "110f2650ac02fdb909f1045fbd190918256bbfcc69ad83eb02d1e55e108cdd5a"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1-960w.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 110806,
+          "sha256": "1f137d95186cf8e41381b4f1e1bb4049b9f87a8ab2ce1a67f324ed1bf284fcdc"
+        },
+        {
+          "asset": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1-1672w.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 235370,
+          "sha256": "acba6fb1b38c82401e8668a512689b9a42c7575cb12086b33c216ae2d00fcf46"
+        }
+      ],
+      "master": "generated-candidates/hero-commerce-c1/sig-commerce-2-hero-composed-c1.png",
+      "master_sha256": "e2e830c145b15e3b4f9c6559411ab721e7284b98cf4fa597ed08fc804517fdde",
+      "source_scope": "PRESERVED_MALE_WITH_NEW_FEMALE_HOODIE_CANDIDATE",
+      "local_wiring_authorized": true,
+      "founder_final_visual_approval": false,
+      "generation_state": "LOCAL_WIRED_COMPOSITION_CANDIDATE_NEEDS_REVIEW",
+      "review_message": "Male source preserved. New female identity and hoodie candidate require approval; final scene review pending.",
+      "deployment_authorized": false
+    }
+  }
+}

@@ -1,0 +1,262 @@
+{
+    "plugins": [
+        "akismet\/akismet.php",
+        "big-sky\/big-sky.php",
+        "commercegurus-commercekit\/commercegurus-commercekit.php",
+        "elementor-pro\/elementor-pro.php",
+        "elementor\/elementor.php",
+        "gutenberg\/gutenberg.php",
+        "image-optimization\/image-optimization.php",
+        "jetpack-boost\/jetpack-boost.php",
+        "jetpack\/jetpack.php",
+        "jwt-authentication-for-wp-rest-api\/jwt-auth.php",
+        "kirki\/kirki.php",
+        "klaviyo\/klaviyo.php",
+        "layout-grid\/index.php",
+        "litespeed-cache\/litespeed-cache.php",
+        "mailpoet\/mailpoet.php",
+        "oauth2-provider\/wp-oauth-server.php",
+        "one-click-demo-import\/one-click-demo-import.php",
+        "page-optimize\/page-optimize.php",
+        "pinterest-for-woocommerce\/pinterest-for-woocommerce.php",
+        "site-mailer\/site-mailer.php",
+        "skyyrose-immersive\/skyyrose-immersive.php",
+        "skyyrose-scene-installer\/skyyrose-scene-installer.php",
+        "stripe-tax-for-woocommerce\/stripe-tax-for-woocommerce.php",
+        "tiktok-for-business\/tiktok-for-woocommerce.php",
+        "woo-update-manager\/woo-update-manager.php",
+        "woocommerce-gateway-stripe\/woocommerce-gateway-stripe.php",
+        "woocommerce-payments\/woocommerce-payments.php",
+        "woocommerce-paypal-payments\/woocommerce-paypal-payments.php",
+        "woocommerce-services\/woocommerce-services.php",
+        "woocommerce-shipping\/woocommerce-shipping.php",
+        "woocommerce\/woocommerce.php",
+        "wordpress-importer\/wordpress-importer.php",
+        "zero-bs-crm\/ZeroBSCRM.php"
+    ],
+    "gateways": {
+        "woocommerce_payments": {
+            "enabled": "yes",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_affirm": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_afterpay_clearpay": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_alipay": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_bancontact": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_au_becs_debit": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_eps": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_grabpay": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_ideal": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_multibanco": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_klarna": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_p24": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_sepa_debit": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_wechat_pay": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_apple_pay": {
+            "enabled": "yes",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_google_pay": {
+            "enabled": "yes",
+            "testmode": "",
+            "capture": ""
+        },
+        "woocommerce_payments_amazon_pay": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "ppcp-gateway": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "bacs": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "cheque": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "cod": {
+            "enabled": "no",
+            "testmode": "",
+            "capture": ""
+        },
+        "stripe": {
+            "enabled": "yes",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_us_bank_account": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_alipay": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_amazon_pay": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_blik": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_klarna": {
+            "enabled": "yes",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_affirm": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_afterpay_clearpay": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_eps": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_bancontact": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_boleto": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_ideal": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_oxxo": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_sepa_debit": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_p24": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_multibanco": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_link": {
+            "enabled": "yes",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_wechat_pay": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_cashapp": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_acss_debit": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_bacs_debit": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        },
+        "stripe_au_becs_debit": {
+            "enabled": "no",
+            "testmode": "no",
+            "capture": "yes"
+        }
+    },
+    "sample": {
+        "sku": "sg-005",
+        "stock": "instock",
+        "backorders": "no",
+        "preorder": "yes",
+        "legacy_preorder": "1",
+        "edition_size": "250"
+    }
+}

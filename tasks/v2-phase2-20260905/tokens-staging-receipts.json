@@ -1,0 +1,55 @@
+[
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.css",
+    "before": "70dca05e4a86e1f29fbe647df2acb63fc9db04dbf4993c6e40e40a3d72b74c30",
+    "after": "f4835c868c0fcad3b1581cc2180557f89be8cd2c123884e5f81edfddd16a9c4f"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+    "before": "fb266093910dc238dfd3f3c4ede42736e19d4b4bd538c9b6e0566915526b3852",
+    "after": "fb266093910dc238dfd3f3c4ede42736e19d4b4bd538c9b6e0566915526b3852",
+    "changed": false,
+    "provenance": [
+      "bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b"
+    ]
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/design-tokens.min.css",
+    "before": "fb266093910dc238dfd3f3c4ede42736e19d4b4bd538c9b6e0566915526b3852",
+    "after": "b820602bdc306831e873aef7eb0d5c43379bb230a5418c1de84b8d92d262d0a5"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/theme.css",
+    "before": "aec3568275707eba35d50cc43210d0c768700698a115557cffdb03424e35ff9d",
+    "after": "64d12a60fbf0610ed2fcebdcecaa871c1cffcf93214b7950fcc92f24ecebd12d"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/theme.min.css",
+    "before": "8f51f89d6702e875c6315b0ebe917610a5665dd516d8ca0c7b62bc3d8dfd6a59",
+    "after": "4aa5837b95c331f082efcf969c815c2a5915ac5c4704a6d7d3d149772ae175cc"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/mascot.css",
+    "before": "2a717f100a50ef208fb09f281cae187bf9aaffa98b104941f8472e4825ff4359",
+    "after": "12ed18a5e52a2b77f3eb2b2b024c738934ec24469602b026774cc75b1e803897"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/mascot.min.css",
+    "before": "d8aec4d57a6d6aa128ce11f1fc005e57d8de55f47d13e3a43b5f74a2ba498246",
+    "after": "d8aec4d57a6d6aa128ce11f1fc005e57d8de55f47d13e3a43b5f74a2ba498246",
+    "changed": false,
+    "provenance": [
+      "bb0e6eecf0af54b3f0c14e5eadb7b138530ce09b"
+    ]
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/assets/css/mascot.min.css",
+    "before": "d8aec4d57a6d6aa128ce11f1fc005e57d8de55f47d13e3a43b5f74a2ba498246",
+    "after": "b2a6d1f0356a03ca5b77142b4b0f67c35af49b86b0a4150dd5d3475971562f2d"
+  },
+  {
+    "file": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2/theme.json",
+    "before": "1b7c33a3f8d5ae5d0a80800c74c9272ee9779d6376883c4d8f3383073aaaf413",
+    "after": "7edae569a3e1963e31977453c8eaf1a4942475603fd5390a5efb3092df1464d9"
+  }
+]

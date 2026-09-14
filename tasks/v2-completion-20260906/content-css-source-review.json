@@ -1,0 +1,40 @@
+{
+  "method": "Independent per-selector ordered declaration/ancestor comparison of original vs concatenated theme+content source",
+  "selectors": 579,
+  "differences": [],
+  "remainingPreviewSelectors": [
+    ".sr2-commerce-preview__hero",
+    ".sr2-commerce-preview__hero h1",
+    ".sr2-commerce-preview__hero > p:last-child",
+    ".sr2-commerce-preview__panel",
+    ".sr2-commerce-preview__panel h2",
+    ".sr2-commerce-preview__panel p:not(.sr2-eyebrow)",
+    ".sr2-commerce-preview__panel label",
+    ".sr2-commerce-preview__panel input"
+  ],
+  "status": "PASS_SOURCE_PARTITION",
+  "out_of_scope_concurrent_differences": [
+    ".sr2-cart__item",
+    ".sr2-cart__controls",
+    ".sr2-cart__actions",
+    ".sr2-cart__actions input",
+    ".woocommerce-checkout",
+    ".woocommerce-account .woocommerce",
+    ".sr2-checkout .woocommerce-checkout",
+    ".sr2-c-account .woocommerce",
+    ".sr2-cart__item-copy",
+    ".sr2-cart__unit-price",
+    ".sr2-cart__line-total",
+    ".sr2-cart__line-total strong",
+    ".sr2-cart__remove",
+    ".sr2-cart__actions .button",
+    ".sr2-c-account .woocommerce form",
+    ".sr2-cart__actions label",
+    ".sr2-cart__actions [name=\"update_cart\"]",
+    ".sr2-checkout .woocommerce-checkout-review-order"
+  ],
+  "limits": [
+    "Independent current work adds cart/account declarations; these 18 out-of-scope differences are not extraction failures.",
+    "Per-selector equivalence does not prove all overlapping-selector cascade or browser rendering."
+  ]
+}

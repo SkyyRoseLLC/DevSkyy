@@ -1,0 +1,15 @@
+{
+  "snapshot_delta_counts": {
+    "KEEP": 48,
+    "REGENERATE": 15,
+    "MERGE": 176,
+    "COMMERCE RISK": 14,
+    "UNKNOWN": 2
+  },
+  "staging_delta_files": 255,
+  "local_only_merge": 3,
+  "unknown_files": [
+    "data/collection-hero-motion.json",
+    "data/collection-scene-motion.json"
+  ]
+}

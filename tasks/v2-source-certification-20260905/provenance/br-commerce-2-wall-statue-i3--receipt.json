@@ -1,0 +1,161 @@
+{
+  "schema": "skyyrose.bounded-wall-statue-edit.v1",
+  "candidate_id": "BR-COMMERCE-2-HERO-WALL-STATUE-I3",
+  "scene_id": "BR-COMMERCE-2",
+  "user_direction": [
+    "add the black rose wall statue to here. NO OTHER EDITS OR CHANGES",
+    "use same wall statue from hero",
+    "make that way bigger matching the size of the hero",
+    "complete the rose too it cut it off",
+    "bigger"
+  ],
+  "source": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-composed-c1.png",
+    "sha256": "b29144a492187a71c9d36a61898de1bfffdc03830d369b6c8860d821eaa82abc"
+  },
+  "statue_reference": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/sot/images/lockups/hero-derived/black-rose-font-statue-hero-exact-v1.png",
+    "sha256": "a879be465973a5edf2aa8fe6ae2e0eb34d66e11cf3e5081b3f4beea4d967aa3c",
+    "role": "EXISTING_HERO_DERIVED_WALL_LETTERING_NOT_STAR_MONUMENT"
+  },
+  "generation": {
+    "path": "/Users/theceo/.codex/generated_images/01a06754-0168-7511-b86e-81c60b86a401/exec-e5a465a3-d2e8-4794-93cf-802d9a6cae34.png",
+    "sha256": "85cac5cb9986d4e9ae54e4c8c1a92b267befaad007f025e9091284eac295ffc9",
+    "scope": "ISOLATED_WALL_CROP",
+    "prompt": "Image 1 is the exact 650x680 wall-and-partial-model target crop. EDIT IMAGE 1 ONLY. Place the SAME monumental silver 'The Black Rose Collection' wall sculpture from hero reference image 2 at HERO SIZE, substantially larger than the undersized lettering in current full-scene reference image 3. This must be a decisive scale increase, not another small sign. Fill the dark left wall nearly floor-to-ceiling: the large T begins around x=12,y=40 in the 650x680 crop, the top lettering spans approximately 580 pixels across, 'Collection' sits below in the identical cursive design, and the COMPLETE rose blossom, BOTH leaves and full stem extend down to around y=620 with a little visible wall below. Keep the original sloping wall architecture and its perspective. The sculpture is a giant architectural relief, close to the model's visible shoulder-to-knee height. Where its far right naturally extends behind the man's silhouette, he remains IN FRONT and fully unchanged. Never place letters on top of him. Keep his body, clothing, face and position exactly as supplied. No pedestal. No star. Preserve the source hero's exact words, flowing script, underline bars, rose relief and silver/black material. No redesign. Existing stone texture, seams, lighting, ground and ceiling stay the same except physically necessary shadows from the newly mounted sculpture. Do not crop the rose or stem. Return only the same crop, not a full scene. Make the sculpture visibly HUGE."
+  },
+  "assembly": {
+    "method": "COMPOSITE_ONLY_WITHIN_SOURCE_WALL_ROI",
+    "roi": {
+      "left": 0,
+      "top": 0,
+      "width": 650,
+      "height": 680
+    },
+    "wall_polygon": [
+      [
+        0,
+        2
+      ],
+      [
+        267,
+        2
+      ],
+      [
+        567,
+        164
+      ],
+      [
+        567,
+        174
+      ],
+      [
+        548,
+        188
+      ],
+      [
+        535,
+        203
+      ],
+      [
+        527,
+        225
+      ],
+      [
+        520,
+        252
+      ],
+      [
+        514,
+        287
+      ],
+      [
+        508,
+        323
+      ],
+      [
+        511,
+        348
+      ],
+      [
+        505,
+        378
+      ],
+      [
+        508,
+        411
+      ],
+      [
+        514,
+        437
+      ],
+      [
+        518,
+        445
+      ],
+      [
+        516,
+        468
+      ],
+      [
+        518,
+        492
+      ],
+      [
+        516,
+        527
+      ],
+      [
+        512,
+        555
+      ],
+      [
+        508,
+        581
+      ],
+      [
+        505,
+        596
+      ],
+      [
+        0,
+        669
+      ]
+    ],
+    "edge_feather_px": 2,
+    "full_scene_regenerated": false,
+    "models_and_products_excluded_from_wall_mask": true
+  },
+  "output": {
+    "path": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2/assets/scroll-world/generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3.png",
+    "sha256": "ae4fd5f5cc40e6695939cd438c3abb402de0120f48c695a8819512ba5e8ac225",
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "width": 640,
+        "height": 360,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-640w.webp",
+        "bytes": 49668
+      },
+      {
+        "width": 960,
+        "height": 540,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-960w.webp",
+        "bytes": 108724
+      },
+      {
+        "width": 1672,
+        "height": 941,
+        "asset": "generated-candidates/hero-commerce-c1/br-commerce-2-hero-wall-statue-i3-1672w.webp",
+        "bytes": 289988
+      }
+    ]
+  },
+  "state": "USER_REQUESTED_WALL_EDIT_LOCALLY_WIRED",
+  "founder_final_visual_approval": false,
+  "independent_visual_review": "NOT_RUN",
+  "runtime_validation": "NOT_RUN",
+  "deployment_authorized": false,
+  "created_at": "2026-09-05T02:11:01.544Z"
+}

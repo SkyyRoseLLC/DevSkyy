@@ -1,0 +1,39 @@
+{
+  "release_id": "v2-full-local-staging-20260905-k1",
+  "status": "DEPLOYED_TO_V2_STAGING_NOT_BROWSER_VERIFIED",
+  "target": "https://staging-7e48-skyyrose.wpcomstaging.com",
+  "site_id": 256563697,
+  "theme": "skyyrose-flagship-2",
+  "scope": "Full local V2 theme update set and approved runtime assets, not a scene-only update",
+  "source": "/Users/theceo/DevSkyy-product-card-approved/wordpress-theme/skyyrose-flagship-2",
+  "remote_theme": "/srv/htdocs/wp-content/themes/skyyrose-flagship-2",
+  "rollback_directory": "/home/152046411/v2-full-local-staging-20260905-k1.previous",
+  "build": {
+    "js": 8,
+    "css": 6
+  },
+  "scene_count": 9,
+  "scenes_per_collection": 3,
+  "desktop_video_bytes": 26068303,
+  "mobile_video_bytes": 12079217,
+  "object_cache": "FLUSHED",
+  "page_cache": "PURGED",
+  "jetpack_critical_css": "DEACTIVATED_AND_REACTIVATED; generation completion not checked",
+  "production_changed": false,
+  "store_data_changed": false,
+  "plugins_replaced": false,
+  "tests_run": false,
+  "browser_playback_verified": false,
+  "product_links_verified": false,
+  "transfer_recovery": "Moved the uploaded archive from the SFTP web root into the private SSH home, removed only the empty failed incoming directory, and resumed before any theme replacement.",
+  "installation_output": "tar: /home/152046411/v2-full-local-staging-20260905-k1.tar: Cannot open: No such file or directory\ntar: Error is not recoverable: exiting now\n{\"status\":\"STAGING_THEME_ACTIVATED\",\"theme\":\"\\/srv\\/htdocs\\/wp-content\\/themes\\/skyyrose-flagship-2\",\"rollback_directory\":\"\\/srv\\/htdocs\\/wp-content\\/themes\\/.v2-full-local-staging-20260905-k1.previous\",\"release\":\"v2-full-local-staging-20260905-k1\"}\nSuccess: The cache was flushed.\nSuccess: Purged all caches successfully.\nStaging page-cache invalidation requested.\n",
+  "optimization_output": "Success: 'critical_css' has been deactivated.\nSuccess: 'critical_css' has been activated.\nSuccess: The cache was flushed.\nRollback copy moved outside the web root: /home/152046411/v2-full-local-staging-20260905-k1.previous\n",
+  "routes": [
+    "/collections/black-rose/",
+    "/collections/love-hurts/",
+    "/collections/signature/",
+    "/worlds/black-rose/",
+    "/worlds/love-hurts/",
+    "/worlds/signature/"
+  ]
+}

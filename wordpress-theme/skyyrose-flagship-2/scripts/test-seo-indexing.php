@@ -216,6 +216,23 @@ $function_names = static function ( $php_source ) {
 $collisions = array_intersect( $function_names( $theme_source ), $function_names( $source ) );
 skyyrose2_test_assert( array() === array_values( $collisions ), 'Adapter redeclares active theme functions: ' . implode( ', ', $collisions ) );
 
+// The active SEO adapter must use the same permitted primary as the PDP.
+function get_bloginfo( $key ) { return 'SkyyRose'; }
+function apply_filters( $name, $value ) { return $value; }
+function wc_get_product( $id ) { return new class {
+	public function get_name() { return 'Test garment'; }
+	public function get_short_description() { return 'Authoritative product copy.'; }
+	public function get_description() { return ''; }
+	public function get_image_id() { throw new RuntimeException( 'Raw attachment bypassed resolver' ); }
+}; }
+function skyyrose2_product_commerce_media( $product ) { return $GLOBALS['sr2_seo_test_media']; }
+function wp_get_attachment_image_url( $id, $size ) { return 'https://example.test/' . $id . '.webp'; }
+$skyyrose2_test_context['singular'] = true;
+$GLOBALS['sr2_seo_test_media'] = array( 'state' => 'editorial', 'ids' => array( 77 ) );
+skyyrose2_test_assert( 'https://example.test/77.webp' === skyyrose2_seo_resolved_context()['image'], 'SEO must use the resolved product image.' );
+$GLOBALS['sr2_seo_test_media'] = array( 'state' => 'rejected', 'ids' => array() );
+skyyrose2_test_assert( '' === skyyrose2_seo_resolved_context()['image'], 'Rejected media cannot return through social metadata.' );
+$skyyrose2_test_context['singular'] = false;
 define( 'AIOSEO_VERSION', 'test' );
 skyyrose2_test_assert( skyyrose2_seo_has_authority_plugin(), 'Supported SEO plugins must become the sole metadata/schema authority.' );
 skyyrose2_test_assert( 'User-agent: *' === skyyrose2_seo_robots_txt( 'User-agent: *', true ), 'Theme must defer sitemap advertising to the active SEO plugin.' );
