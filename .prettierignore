@@ -3,3 +3,7 @@
 assets/products/source-photos/manifest.json
 tasks/source-photo-audit-report.md
 tasks/source-photo-shoot-list.md
+
+# Original-theme minified CSS is owned by scripts/build-css.js; format its source.
+wordpress-theme/skyyrose-flagship/assets/css/**/*.min.css
+wordpress-theme/skyyrose-flagship/style.min.css

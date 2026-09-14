@@ -16,6 +16,7 @@ consumers so interior headings stay legible and uniform). font-gothic is dropped
 
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -43,37 +44,51 @@ def hex_to_rgb(hex_: str) -> str:
     return f"{int(h[0:2], 16)}, {int(h[2:4], 16)}, {int(h[4:6], 16)}"
 
 
+def css_hex(value: str) -> str:
+    """Spell a hex color as Prettier does without changing its color value."""
+    value = value.lower()
+    if re.fullmatch(r"#[0-9a-f]{6}", value) and all(
+        value[index] == value[index + 1] for index in (1, 3, 5)
+    ):
+        return "#" + value[1::2]
+    return value
+
+
+def css_font_stack(value: str) -> str:
+    """Use double-quoted CSS strings while preserving existing escape sequences."""
+    return re.sub(
+        r"'((?:\\.|[^'\\])*)'",
+        lambda match: '"' + match.group(1).replace('"', r"\"") + '"',
+        value,
+    )
+
+
 def block(ident: dict) -> str:
     p, f = ident["palette"], ident["fonts"]
     return (
         f'[data-collection="{ident["slug"]}"] {{\n'
-        f"\t--skyyrose-accent:       {p['accent']};\n"
-        f"\t--skyyrose-accent-rgb:   {hex_to_rgb(p['accent'])};\n"
-        f"\t--skyyrose-accent-dark:  {p['accent_dark']};\n"
-        f"\t--skyyrose-secondary:    {p['secondary']};\n"
-        f"\t--skyyrose-font-script:  '{f['script']['family']}', cursive;\n"
-        f"\t--skyyrose-font-caps:    '{f['caps']['family']}', serif;\n"
-        f"\t--skyyrose-font-display: var(--skyyrose-font-caps);\n"
+        f"  --skyyrose-accent: {css_hex(p['accent'])};\n"
+        f"  --skyyrose-accent-rgb: {hex_to_rgb(p['accent'])};\n"
+        f"  --skyyrose-accent-dark: {css_hex(p['accent_dark'])};\n"
+        f"  --skyyrose-secondary: {css_hex(p['secondary'])};\n"
+        f"  --skyyrose-font-script: {json.dumps(f['script']['family'], ensure_ascii=False)}, cursive;\n"
+        f"  --skyyrose-font-caps: {json.dumps(f['caps']['family'], ensure_ascii=False)}, serif;\n"
+        f"  --skyyrose-font-display: var(--skyyrose-font-caps);\n"
         f"}}\n"
     )
 
 
 def emit_global_fonts() -> str:
-    """Emit the 4 :root --skyyrose-font-* lines from typography.json universal roles.
-
-    The emitted text is byte-identical to what the markers currently wrap so
-    running the generator is always idempotent.
-    """
+    """Emit formatter-stable declarations from the unchanged typography SOT."""
     typo = json.loads(TYPOGRAPHY_JSON.read_text())
-    u = typo["universal"]
-    # Alignment-padded to match the existing hand-authored style.
-    lines = (
-        f"\t--skyyrose-font-display: {u['display']['stack']};\n"
-        f"\t--skyyrose-font-body:    {u['body']['stack']};\n"
-        f"\t--skyyrose-font-mono:    {u['mono']['stack']};\n"
-        f"\t--skyyrose-font-ui:      {u['ui']['stack']};\n"
-    )
-    return lines
+    universal = typo["universal"]
+    return (
+        "".join(
+            f"  --skyyrose-font-{role}: {css_font_stack(universal[role]['stack'])};\n"
+            for role in ("display", "body", "mono", "ui")
+        )
+        + "  "
+    )  # The closing marker remains indented inside :root.
 
 
 def regen_region(css: str, start_marker: str, end_marker: str, new_body: str) -> tuple[str, bool]:

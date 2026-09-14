@@ -304,8 +304,8 @@ html {
 [data-collection="black-rose"] {
   --skyyrose-accent: #c0c0c0;
   --skyyrose-accent-rgb: 192, 192, 192;
-  --skyyrose-accent-dark: #999999;
-  --skyyrose-secondary: #ffffff;
+  --skyyrose-accent-dark: #999;
+  --skyyrose-secondary: #fff;
   --skyyrose-font-script: "SkyyRose Black Rose Script", cursive;
   --skyyrose-font-caps: "Cinzel", serif;
   --skyyrose-font-display: var(--skyyrose-font-caps);
@@ -325,7 +325,7 @@ html {
   --skyyrose-accent: #dc143c;
   --skyyrose-accent-rgb: 220, 20, 60;
   --skyyrose-accent-dark: #9b0f2e;
-  --skyyrose-secondary: #ffffff;
+  --skyyrose-secondary: #fff;
   --skyyrose-font-script: "SkyyRose Love Hurts Graffiti", cursive;
   --skyyrose-font-caps: "Cinzel", serif;
   --skyyrose-font-display: var(--skyyrose-font-caps);

@@ -8,7 +8,8 @@ inventory, cart, checkout, customer, order, and payment state.
 
 ## Install
 
-1. Upload the `skyyrose-flagship-2` folder or packaged ZIP in **Appearance → Themes**.
+1. Upload the `skyyrose-flagship-2` folder or packaged ZIP in **Appearance →
+   Themes**.
 2. Install and activate WooCommerce before importing the store structure.
 3. Activate SkyyRose Flagship 2.
 4. Open **Appearance → SkyyRose V2 Setup**.
@@ -32,7 +33,8 @@ skipped with a warning and can be provisioned by running the importer again.
 - `/collections/black-rose/`
 - `/collections/love-hurts/`
 - `/collections/kids-capsule/`
-- `/worlds/signature/`, `/worlds/black-rose/`, `/worlds/love-hurts/`, `/worlds/kids-capsule/`
+- `/worlds/signature/`, `/worlds/black-rose/`, `/worlds/love-hurts/`,
+  `/worlds/kids-capsule/`
 - `/pre-order/`, `/about/`, `/contact/`, `/journal/`, `/wishlist/`
 - `/faq/`, `/shipping-returns/`, `/size-guide/`
 - `/privacy-policy/`, `/terms-of-service/`, `/accessibility/`
@@ -43,10 +45,10 @@ skipped with a warning and can be provisioned by running the importer again.
 - Product facts and product media resolve from WooCommerce and the authorized
   SkyyRose SOT pipeline. The theme never manufactures a product fallback.
 - `data/product-presentation-registry.json` is a generated, non-commercial
-  adapter. It classifies Jersey Series SKUs as the dedicated Black Rose
-  release presentation (`/collections/black-rose/#jersey-series`) while keeping
-  their Town Line art direction separate from core Black Rose cards. It contains
-  no prices, stock, WooCommerce IDs, or product media.
+  adapter. It classifies Jersey Series SKUs as the dedicated Black Rose release
+  presentation (`/collections/black-rose/#jersey-series`) while keeping their
+  Town Line art direction separate from core Black Rose cards. It contains no
+  prices, stock, WooCommerce IDs, or product media.
 - Theme-local editorial assets require candidate-bound provenance. A file path
   alone is not proof of product identity or usage rights.
 
@@ -55,7 +57,11 @@ skipped with a warning and can be provisioned by running the importer again.
 Production uses generated `.min.css` and `.min.js` siblings. Edit source files,
 then rebuild and verify byte parity:
 
+The verification scripts require Python 3 and Pillow as well as Node.js. Install
+the declared image-inspection dependency in your active Python environment:
+
 ```bash
+python3 -m pip install -r requirements-build.txt
 npm ci
 npm run build
 npm run verify
@@ -68,10 +74,10 @@ for clean-checkout reproducibility; the package itself ships the generated
 assets and does not require Node.js at runtime.
 
 `npm run verify` checks PHP syntax, JSON, presentation-registry freshness,
-minified-asset parity, required marketplace artifacts, placeholder markers,
-and retired fonts. Generated minified artifacts must be force-tracked by the
-release integrator because the repository’s global ignore policy excludes
-`*.min.css` and `*.min.js`; a clean checkout is not release-ready without them.
+minified-asset parity, required marketplace artifacts, placeholder markers, and
+retired fonts. Generated minified artifacts must be force-tracked by the release
+integrator because the repository’s global ignore policy excludes `*.min.css`
+and `*.min.js`; a clean checkout is not release-ready without them.
 
 ## Customization
 
@@ -90,9 +96,9 @@ reduced-motion equivalence, and a static failure path.
 Before distribution, verify the same frozen candidate at 390, 768, and 1440
 pixels; run keyboard and assistive-technology journeys; validate WooCommerce
 simple and variable products, cart mutations, checkout failures/recovery,
-account ownership, and empty/error states; run Lighthouse; confirm every
-product image against its SKU pixels; and review starter policy copy with the
-merchant’s legal adviser.
+account ownership, and empty/error states; run Lighthouse; confirm every product
+image against its SKU pixels; and review starter policy copy with the merchant’s
+legal adviser.
 
 No deployment, catalog write, media upload, or payment configuration is part of
 the theme package.

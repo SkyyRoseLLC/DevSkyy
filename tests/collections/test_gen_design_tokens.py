@@ -36,8 +36,8 @@ def test_generated_region_palette_and_fonts():
             '[data-collection="love-hurts"]'
         )
     ]
-    assert "#C0C0C0" in br
-    assert "#DC143C" not in br
+    assert "#c0c0c0" in br
+    assert "#dc143c" not in br
     # consumed tokens preserved
     assert "--skyyrose-accent-rgb:" in region
     assert "--skyyrose-secondary:" in region

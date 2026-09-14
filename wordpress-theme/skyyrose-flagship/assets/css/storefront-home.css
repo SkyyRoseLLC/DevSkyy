@@ -42,7 +42,7 @@
   bottom: clamp(var(--space-5), 3vw, var(--space-12));
   color: var(--sr-home-muted);
   content: "01 — OAKLAND / ENTRY";
-  font-family: var(--skyyrose-font-ui);
+  font-family: var(--font-ui);
   font-size: var(--text-xs);
   letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
@@ -74,7 +74,7 @@
 .sr-home__eyebrow {
   margin: 0 0 1.1rem;
   color: var(--color-rose-gold);
-  font-family: var(--skyyrose-font-ui);
+  font-family: var(--font-ui);
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.18em;
@@ -114,7 +114,7 @@
   padding: 0.85rem 1.25rem;
   border: 1px solid currentColor;
   color: var(--sr-home-ink);
-  font-family: var(--skyyrose-font-ui);
+  font-family: var(--font-ui);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -226,7 +226,7 @@
   top: 1.25rem;
   left: 1.25rem;
   color: var(--collection-ink);
-  font-family: var(--skyyrose-font-ui);
+  font-family: var(--font-ui);
   font-size: 0.75rem;
   letter-spacing: 0.12em;
 }
@@ -254,7 +254,7 @@
 .sr-home__collection-copy em {
   margin-top: 0.8rem;
   color: var(--collection-ink);
-  font-family: var(--skyyrose-font-ui);
+  font-family: var(--font-ui);
   font-size: 0.72rem;
   font-style: normal;
   font-weight: 700;
@@ -271,7 +271,7 @@
 .sr-home__rail-note {
   margin: 1rem 0 0;
   color: var(--sr-home-muted);
-  font-family: var(--skyyrose-font-ui);
+  font-family: var(--font-ui);
   font-size: 0.7rem;
   letter-spacing: 0.14em;
   text-align: right;
@@ -410,7 +410,7 @@
 .sr-home__origin a {
   margin-top: 2rem;
   color: var(--color-rose-gold);
-  font-family: var(--skyyrose-font-ui);
+  font-family: var(--font-ui);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -423,6 +423,9 @@
 }
 
 @media (max-width: 720px) {
+  .sr-home__hero::after {
+    writing-mode: horizontal-tb;
+  }
   .sr-home__hero {
     min-height: 720px;
     padding-bottom: 3rem;

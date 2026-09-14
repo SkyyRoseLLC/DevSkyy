@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import logging
 import sys
 from pathlib import Path
 
@@ -16,12 +17,20 @@ except ImportError as exc:
     raise SystemExit(1)
 
 
+LOGGER = logging.getLogger(__name__)
+
+
 def has_transparency(path: Path) -> bool:
+    """Require transparency in every displayed (composited) animation frame."""
     with Image.open(path) as image:
-        image.seek(0)
-        rgba = image.convert("RGBA")
-        alpha_minimum, _ = rgba.getchannel("A").getextrema()
-        return alpha_minimum < 255
+        for frame in range(getattr(image, "n_frames", 1)):
+            # Pillow seeks decoded display frames, including animation blending.
+            image.seek(frame)
+            rgba = image.convert("RGBA")
+            alpha_minimum, _ = rgba.getchannel("A").getextrema()
+            if alpha_minimum == 255:
+                return False
+        return True
 
 
 def main(paths: list[str]) -> int:
@@ -35,10 +44,12 @@ def main(paths: list[str]) -> int:
         path = Path(raw_path)
         try:
             if not has_transparency(path):
-                print(f"Brand asset has no transparent pixels: {path}", file=sys.stderr)
+                print(
+                    f"Brand asset has a frame without transparent pixels: {path}", file=sys.stderr
+                )
                 return 1
-        except (OSError, UnidentifiedImageError) as error:
-            print(f"Unable to inspect brand asset {path}: {error}", file=sys.stderr)
+        except (OSError, UnidentifiedImageError):
+            LOGGER.exception("Unable to inspect brand asset %s", path)
             return 1
     return 0
 
