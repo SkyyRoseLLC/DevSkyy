@@ -49,6 +49,8 @@ def test_bomber_placement_matches_canonical_satin_specification():
     expected = _build_placement_md("lh-004", product, registry)
     placement = ROOT / "skyyrose/elite_studio/assets/golden/lh-004/placement.md"
     assert placement.read_text() == expected
+    # Markdown line wrapping changes whitespace, not the maker's specification.
+    expected = " ".join(expected.split())
     assert "FOUNDER_CONFIRMED" in expected
     assert "Satin appearance is required" in expected
     assert "Fiber composition is unspecified" in expected

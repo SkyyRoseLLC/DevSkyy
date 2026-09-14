@@ -1,52 +1,41 @@
 # lh-004 — Love Hurts Bomber Jacket
-
 _Collection: love-hurts_
 
 ## Branding spec (one-line)
-
-'Love Hurts' logo lettering across the front. Inside of the hood features a
-sublimated rose logo. BACK: large 'Heart and Rose' Love Hurts logo centered.
+'Love Hurts' logo lettering across the front. Inside of the hood features a sublimated rose logo. BACK: large 'Heart and Rose' Love Hurts logo centered.
 
 ## Garment silhouette lock
-
-Hooded varsity-bomber hybrid jacket — **white body fabric** with **black
-contrast raglan sleeves** (sleeves are a different color from the body, joining
-at a diagonal raglan seam from underarm to neck), **black hood**, **button-front
-placket** (snap or button-front closure running the full length of the
-center-front), **vertical slash hand pockets** at the lower sides with welt
-openings, **ribbed-knit cuffs and waistband with red+white+black striped accent
-banding**. The hood lining shows a small white-and-red rose-silhouette
-mini-pattern (visible when the hood is laid open or worn down).
+Hooded varsity-bomber hybrid jacket — **white body
+fabric** with **black contrast raglan sleeves** (sleeves are a different color
+from the body, joining at a diagonal raglan seam from underarm to neck), **black
+hood**, **button-front placket** (snap or button-front closure running the full
+length of the center-front), **vertical slash hand pockets** at the lower sides
+with welt openings, **ribbed-knit cuffs and waistband with red+white+black
+striped accent banding**. The hood lining shows a small white-and-red
+rose-silhouette mini-pattern (visible when the hood is laid open or worn down).
 **FOUNDER_CONFIRMED:** Satin appearance is required. Fiber composition is
 unspecified. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has
 button-front closure, not pullover construction).
 
 ## Logo placements
-
-1. **love-hurts-full-lettering** — position: `front_across`, technique:
-   `embroidered_or_applique`, size: 12″
+1. **love-hurts-full-lettering** — position: `front_across`, technique: `embroidered_or_applique`, size: 12″
    - User-confirmed 2026-04-20: Love Hurts graffiti lettering goes on the front.
-2. **red-roses-cloud-cluster** — position: `inside_hood`, technique:
-   `sublimated`
-   - Re-corrected 2026-05-27 per founder: red-roses-cloud-cluster is the correct
-     LH inside-hood pattern. The 2026-05-25 switch to heart-rose-composite was
-     incorrect.
-3. **heart-rose-composite** — position: `back_center`, technique:
-   `embroidered_or_printed`, size: 10″
+2. **red-roses-cloud-cluster** — position: `inside_hood`, technique: `sublimated`
+   - Re-corrected 2026-05-27 per founder: red-roses-cloud-cluster is the correct LH inside-hood pattern. The 2026-05-25 switch to heart-rose-composite was incorrect.
+3. **heart-rose-composite** — position: `back_center`, technique: `embroidered_or_printed`, size: 10″
    - User-confirmed 2026-04-20: heart-and-rose composite centered on back.
 
 ## Render scene context (dossier)
-
-**Pose:** Front view straight-on showing the white body + black raglan sleeves +
-black hood + cursive "Love" / "Hurts" chest wordmark + striped cuff and hem
-bands + button-front placket. Three-quarter view catches the raglan seam
-diagonal and the side wrap of the striped bands. For the back: back view
-straight-on showing the large heart-and-thorns + roses graphic and the matching
-striped hem. **Setting:** Pure white studio backdrop, soft directional studio
-lighting from front-left, subtle natural drop shadow on the floor.
+**Pose:** Front view straight-on showing the white body + black raglan
+  sleeves + black hood + cursive "Love" / "Hurts" chest wordmark + striped cuff
+  and hem bands + button-front placket. Three-quarter view catches the raglan
+  seam diagonal and the side wrap of the striped bands. For the back: back view
+  straight-on showing the large heart-and-thorns + roses graphic and the
+  matching striped hem.
+**Setting:** Pure white studio backdrop, soft directional studio lighting from
+  front-left, subtle natural drop shadow on the floor.
 
 ## Do NOT render
-
 - NO Black Rose three-rose-cluster on this product — this is a Love Hurts
   product. The back graphic is the Love Hurts heart-and-thorns + canonical red
   roses, NOT the Black Rose greyscale cluster.
@@ -77,7 +66,6 @@ lighting from front-left, subtle natural drop shadow on the floor.
 - NO numbers anywhere.
 
 ---
-
-_This file is auto-generated from the canonical sources_ _(catalog CSV +
-dossier + logo-registry.json) by_ _`scripts/scaffold_sku_asset_folders.py`. Edit
-those sources, not this file._
+_This file is auto-generated from the canonical sources_
+_(catalog CSV + dossier + logo-registry.json) by_
+_`scripts/scaffold_sku_asset_folders.py`. Edit those sources, not this file._
