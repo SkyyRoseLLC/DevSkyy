@@ -108,10 +108,9 @@ jobs:
   # ===========================================================================
   python-tests:
     name: 🐍 Python Tests
-    # Routed to the Docker-containerized self-hosted runner (genuine Linux, not
-    # macOS) so services: (Docker container orchestration) works natively.
-    # See project_self_hosted_runner_2026_07_26.md for the macOS-runner history.
-    runs-on: [self-hosted, docker-arm64]
+    # Hosted Linux provides Docker for Redis without depending on an absent
+    # docker-arm64 runner. Preserve the complete suite and service container.
+    runs-on: ubuntu-latest
     timeout-minutes: 20
 
     services:
@@ -548,12 +547,16 @@ jobs:
 
       - name: Start frontend server
         run: |
+          # Ephemeral authentication key for this isolated localhost test run.
+          # Production-mode NextAuth refuses to render without a signing key.
+          export NEXTAUTH_SECRET="$(openssl rand -hex 32)"
           npm run start &
           echo "Waiting for frontend to start..."
           for i in $(seq 1 30); do curl -sf http://localhost:3000 && break || sleep 2; done
         working-directory: frontend
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          NEXTAUTH_URL: http://localhost:3000
 
       - name: Run Playwright tests
         # Step-level cap: a slow/failing E2E suite fails HERE (step failure, absorbed by this
