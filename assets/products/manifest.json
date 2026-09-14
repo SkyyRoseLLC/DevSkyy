@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "generated_at": "2026-09-14T05:12:53+00:00",
-  "catalog_sha": "sha256:bc768dd352e0437bdfff23e6ed26ba4899dd01aa9597d3e7abc1214787f98baa",
-  "registry_sha": "sha256:be84069fdbff335ddd43cefcff84f4c94aaab08188b40cbbba85383729b9fb3b",
+  "generated_at": "2026-09-14T05:22:52+00:00",
+  "catalog_sha": "sha256:1589719f909a7a71ed68f270796c563460aa944089f0185f1f4422d51459ebc2",
+  "registry_sha": "sha256:97a0b078866a744eb866b6afa3ec88a411c86ba44b0097bd3bd4a0d408ad5d54",
   "registry_path": "wordpress-theme/skyyrose-flagship/data/logo-registry.json",
   "skus": {
     "br-001": {
@@ -700,12 +700,16 @@
       "garment_type": "shorts",
       "assets": [
         {
+          "role": "garment",
+          "path": "assets/products/source-photos/signature/sg-001-bay-bridge-shorts-front-authentic.png",
+          "sha256": "sha256:780b06c5183906401a6d5d497a8d6c2fd685cffd57229a387cdad5f97ac5118c"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shorts.md",
-          "sha256": "sha256:3d59ca038a7c603579ee66b53a94b3bda19287b87aca4686a6c2beb88f0e9a7e"
+          "sha256": "sha256:a94d31af9c97e10136474784eb2e121ed1bd87824115da5166486557aa166f78"
         }
-      ],
-      "resolution_error": "RegistryContractError: sg-001: Registered Bridge composition must use the SKU-specific photographic artwork, not a plain recolored cluster. Bind the matching artwork here before rendering."
+      ]
     },
     "sg-002": {
       "sku": "sg-002",
@@ -714,12 +718,16 @@
       "garment_type": "shirt",
       "assets": [
         {
+          "role": "garment",
+          "path": "assets/products/source-photos/signature/sg-002-stay-golden-shirt-front-authentic.jpg",
+          "sha256": "sha256:25f82fa5960105b4e093892c3aec28e707dd0d0534413e21075163d92f7a2baa"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shirt.md",
-          "sha256": "sha256:7b7a48168e4075c4d985aa248f554e538bad2fa655b56ea75d34847da976b5ea"
+          "sha256": "sha256:e68979ad3c28b22e3ac76565169d5d47cbdd949c6102788de3e915fa0c7c9d33"
         }
-      ],
-      "resolution_error": "RegistryContractError: sg-002: Registered Bridge composition must use the SKU-specific photographic artwork, not a plain recolored cluster. Bind the matching artwork here before rendering."
+      ]
     },
     "sg-003": {
       "sku": "sg-003",
@@ -728,12 +736,16 @@
       "garment_type": "shorts",
       "assets": [
         {
+          "role": "garment",
+          "path": "assets/products/source-photos/signature/sg-003-stay-golden-shorts-front-authentic.png",
+          "sha256": "sha256:6eb255db697ecd838d2caa87530b6b289045ccbea201a08f54ddb0578e51e28e"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-stay-golden-shorts.md",
-          "sha256": "sha256:ef63c8b656ce666138657bcdd0974665bbed95bfaaca4bcf9f97b611e7bac3b4"
+          "sha256": "sha256:52c6546c467c0ffb9f4f6506bc6d29c0f085511c8420a054cf95961192b09611"
         }
-      ],
-      "resolution_error": "RegistryContractError: sg-003: Registered Bridge composition must use the SKU-specific photographic artwork, not a plain recolored cluster. Bind the matching artwork here before rendering."
+      ]
     },
     "sg-005": {
       "sku": "sg-005",
@@ -742,12 +754,16 @@
       "garment_type": "shirt",
       "assets": [
         {
+          "role": "garment",
+          "path": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
+          "sha256": "sha256:5666c853832dfe5fb092813081c03dfb7991adf165e9766df100aa6a888a3cf1"
+        },
+        {
           "role": "dossier",
           "path": "wordpress-theme/skyyrose-flagship/data/dossiers/the-bridge-series-the-bay-bridge-shirt.md",
-          "sha256": "sha256:984e29baa7df411237a50050cac43530d21ab344c390e1b8cd51c231548f125f"
+          "sha256": "sha256:58e7610e299194b43ffce2711e3e6a50c5f863519267ff25c39887c9d2639b27"
         }
-      ],
-      "resolution_error": "RegistryContractError: sg-005: Registered Bridge composition must use the SKU-specific photographic artwork, not a plain recolored cluster. Bind the matching artwork here before rendering."
+      ]
     },
     "sg-006": {
       "sku": "sg-006",

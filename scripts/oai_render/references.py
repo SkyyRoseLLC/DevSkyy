@@ -224,13 +224,29 @@ def build_references(
     front = smap.get("front")
     back = smap.get("back")
     flatlay = find_flatlay_photo(sku)
+    registry = LogoRegistry.load()
+    logo = get_logo_reference(sku, collection)
+    reference_kind = registry.reference_kind_for(sku)
+    bound_garment = logo if reference_kind == "garment" else None
+    if bound_garment and view == "back" and (back is None or not back.is_file()):
+        raise MissingReferenceError(
+            f"{sku}: garment artwork is bound to the front only; no registered back source"
+        )
+    physical_front_label = (
+        "REFERENCE IMAGE {n} — REGISTERED GARMENT SOURCE (FRONT VIEW): the complete "
+        "physical garment with its exact printed artwork and embroidery. Preserve "
+        "the full composition and original graphic placement; this is not a standalone "
+        "logo close-up or a techflat. Do not extract, recolor, or replace the artwork."
+    )
 
     refs: list[ReferenceImage] = []
 
     if flatlay and flatlay.exists():
         refs.append(
             ReferenceImage(
-                label=(
+                label=physical_front_label
+                if flatlay == bound_garment
+                else (
                     "REFERENCE IMAGE {n} — REGISTERED PRODUCT SOURCE: use this explicitly "
                     "bound image for the garment's appearance. This source may be a "
                     "photo, techflat, or prior render; founder specifications in the "
@@ -244,7 +260,9 @@ def build_references(
     if front and front.exists():
         refs.append(
             ReferenceImage(
-                label=(
+                label=physical_front_label
+                if front == bound_garment
+                else (
                     "REFERENCE IMAGE {n} — GARMENT TECH FLAT (FRONT VIEW): front-facing design "
                     "illustration showing front panel layout, graphic placement, silhouette, "
                     "and construction."
@@ -272,7 +290,6 @@ def build_references(
             )
         )
 
-    logo = get_logo_reference(sku, collection)
     patch_required = requires_patch(sku)
     if logo and logo.exists():
         # primary_reference_for resolves the actual registered sport-patch
@@ -280,7 +297,9 @@ def build_references(
         is_patch = patch_required
         refs.append(
             ReferenceImage(
-                label=(
+                label=physical_front_label
+                if reference_kind == "garment"
+                else (
                     "REFERENCE IMAGE {n} — "
                     + ("SPORT PATCH" if is_patch else "LOGO/BRANDING")
                     + " CLOSE-UP: the EXACT graphic on the garment. Reproduce it at the EXACT "
@@ -288,7 +307,7 @@ def build_references(
                     "duplicate, omit, or alter it."
                 ),
                 path=logo,
-                kind="patch" if is_patch else "logo",
+                kind=reference_kind,
             )
         )
     elif patch_required:
@@ -302,7 +321,16 @@ def build_references(
         # View-primary ordering: the registered back source leads for back renders.
         refs.sort(key=lambda r: 0 if r.kind == "garment-back" else 1)
 
-    capped = refs[: config.MAX_REFERENCE_IMAGES]
+    # A garment may be bound as front, supplemental source, and artwork. Attach its
+    # unchanged bytes once, retaining its accurate garment role and source label.
+    unique: list[ReferenceImage] = []
+    seen_paths: set[Path] = set()
+    for ref in refs:
+        resolved_path = ref.path.resolve()
+        if resolved_path not in seen_paths:
+            seen_paths.add(resolved_path)
+            unique.append(ref)
+    capped = unique[: config.MAX_REFERENCE_IMAGES]
     # Re-number the {n} placeholders in display order.
     return [
         ReferenceImage(label=r.label.format(n=i + 1), path=r.path, kind=r.kind)

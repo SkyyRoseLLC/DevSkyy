@@ -245,8 +245,15 @@ def test_render_reference_uses_registry_patch_and_blank_exterior(registry):
 def test_unbound_bridge_reference_does_not_fall_back_to_generic_cluster(registry):
     from skyyrose.elite_studio.logo_registry import RegistryContractError
 
+    from copy import deepcopy
+
+    raw = deepcopy(registry._raw)
+    raw["sku_logos"]["sg-002"]["render_reference"] = {
+        "status": "UNBOUND",
+        "reason": "SKU-specific photographic artwork is unbound",
+    }
     with pytest.raises(RegistryContractError, match="SKU-specific photographic artwork"):
-        registry.primary_reference_for("sg-002")
+        LogoRegistry(raw).primary_reference_for("sg-002")
 
 
 def test_actual_render_plan_observes_registry_material_change(monkeypatch, tmp_path):
@@ -344,3 +351,85 @@ def test_supplemental_logo_binding_cannot_replace_required_sport_patch(registry)
     assert amended.primary_reference_for("br-012") == amended.image_path(
         sku="br-012", logo_id="mlb-authentic-collection-card"
     )
+
+
+@pytest.fixture
+def garment_artwork_registry(tmp_path, monkeypatch, registry):
+    from copy import deepcopy
+    from hashlib import sha256
+
+    from skyyrose.elite_studio import logo_registry
+
+    raw = deepcopy(registry._raw)
+    source = tmp_path / "sg-002-front.png"
+    source.write_bytes(b"isolated physical-source binding fixture")
+    raw["products"]["sg-002"]["render_sources"]["front"] = source.name
+    raw["sku_logos"]["sg-002"]["render_reference"] = {
+        "status": "BOUND",
+        "kind": "garment_artwork",
+        "path": source.name,
+        "sha256": sha256(source.read_bytes()).hexdigest(),
+        "view": "front",
+    }
+    monkeypatch.setattr(logo_registry, "PROJECT_ROOT", tmp_path)
+    return raw, source
+
+
+def test_bound_garment_artwork_hash_and_product_path(garment_artwork_registry):
+    raw, source = garment_artwork_registry
+    registry = LogoRegistry(raw)
+    assert registry.primary_reference_for("sg-002") == source
+    assert registry.reference_kind_for("sg-002") == "garment"
+
+
+@pytest.mark.parametrize("failure", ["missing", "tampered", "missing_hash", "wrong_sku", "escape"])
+def test_bound_garment_artwork_fails_closed(garment_artwork_registry, failure):
+    from skyyrose.elite_studio.logo_registry import RegistryContractError
+
+    raw, source = garment_artwork_registry
+    binding = raw["sku_logos"]["sg-002"]["render_reference"]
+    if failure == "missing":
+        source.unlink()
+        expected = "file is missing"
+    elif failure == "tampered":
+        source.write_bytes(b"different product pixels")
+        expected = "hash mismatch"
+    elif failure == "missing_hash":
+        binding.pop("sha256")
+        expected = "registered SHA-256"
+    elif failure == "wrong_sku":
+        raw["products"]["sg-002"]["render_sources"]["front"] = "sg-005-front.png"
+        expected = "does not match this product"
+    else:
+        binding["path"] = "../outside.png"
+        expected = "within the repository"
+    with pytest.raises(RegistryContractError, match=expected):
+        LogoRegistry(raw).primary_reference_for("sg-002")
+
+
+@pytest.mark.parametrize("sku", ["sg-001", "sg-002", "sg-003", "sg-005"])
+def test_bridge_real_front_plan_uses_one_bound_garment_source(sku):
+    from scripts.oai_render import pipeline, references
+
+    registry = LogoRegistry.load()
+    expected = registry.primary_reference_for(sku)
+    plan = pipeline.plan_sku(sku, references.load_catalog(), references.build_dossier_index())
+    assert plan.error is None
+    assert len(plan.references) == 1
+    assert plan.references[0].path.resolve() == expected.resolve()
+    assert plan.references[0].kind == "garment"
+    assert "REGISTERED GARMENT SOURCE (FRONT VIEW)" in plan.references[0].label
+    assert "LOGO/BRANDING CLOSE-UP" not in plan.prompt
+    assert "GARMENT TECH FLAT (FRONT VIEW)" not in plan.prompt
+    assert '"kind": "garment_artwork"' in plan.prompt
+
+
+@pytest.mark.parametrize("sku", ["sg-001", "sg-002", "sg-003", "sg-005"])
+def test_bridge_front_binding_cannot_supply_a_back_render(sku):
+    from scripts.oai_render import pipeline, references
+
+    plan = pipeline.plan_sku(
+        sku, references.load_catalog(), references.build_dossier_index(), view="back"
+    )
+    assert plan.error and "front only; no registered back source" in plan.error
+    assert not plan.prompt
