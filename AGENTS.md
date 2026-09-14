@@ -11,7 +11,8 @@ system and developer constraints; historical notes do not grant authorization.
 - Check `.wolf/memory.md` for current notes. If absent, check the main checkout
   identified by `git worktree list`; treat its notes as context, not this
   worktree's verified state. If unavailable, report the gap and continue with
-  repository evidence. Do not create or update memory unless requested.
+  repository evidence. Follow `.wolf/OPENWOLF.md` for repository session-log
+  entries; do not update persistent cross-session agent memory unless requested.
 - Inspect the existing implementation and source of truth before changing it.
   Make the smallest coherent change that completes the task. Diagnose failures
   from evidence, fix their cause, and verify the result.
@@ -248,14 +249,14 @@ configuration as the authority; do not assume a root command checks all apps.
 
 ## Skill quality
 
-When creating, revising, auditing, or adopting skills, read
-`/Users/theceo/.codex/skill-standards/verified-examples.md`. Require
-task-specific, identifiable evidence for at least one correct example and an
-incorrect example with its correction and reason. Label illustrative negatives;
-distinguish source verification, recorded observations, reproduced tests, and
-authenticated live execution. Record redacted account/environment/scope evidence
-for authenticated workflows; mark authentication not applicable for offline
-work.
+When creating, revising, auditing, or adopting skills, read the repository's
+[verified-examples standard](.github/skill-standards/verified-examples.md).
+Require task-specific, identifiable evidence for at least one correct example
+and an incorrect example with its correction and reason. Label illustrative
+negatives; distinguish source verification, recorded observations, reproduced
+tests, and authenticated live execution. Record redacted
+account/environment/scope evidence for authenticated workflows; mark
+authentication not applicable for offline work.
 
 Keep substantial examples in linked references and maintained canonical sources
 or overlays, never disposable plugin caches. Report missing evidence as a

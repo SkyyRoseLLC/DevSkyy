@@ -60,6 +60,9 @@ jobs:
       - name: Run PR Intelligence Agent
         uses: anthropics/claude-code-action@35037bb980d9bc03f0f74b65b68618b0be46c268  # v1
         with:
+          # The GitHub App exchange rejects modified workflow files. The
+          # ephemeral job token retains the permissions declared above.
+          github_token: ${{ github.token }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: |
             You are the PR Intelligence Agent. Analyze PR #${{ steps.pr.outputs.number }} in this repository.
