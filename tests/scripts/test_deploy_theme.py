@@ -237,6 +237,12 @@ class TestDryRun:
         [
             ({"REMOTE_DEPLOY_DIR": "/tmp/.."}, "Unsafe remote deploy directory"),
             (
+                {"REMOTE_DEPLOY_DIR": "/htdocs/wp-content/./themes"},
+                "Unsafe remote deploy directory",
+            ),
+            ({"REMOTE_DEPLOY_DIR": "/htdocs/wp-content//themes"}, "Unsafe remote deploy directory"),
+            ({"REMOTE_DEPLOY_DIR": "/tmp/."}, "Unsafe remote deploy directory"),
+            (
                 {"REMOTE_DEPLOY_DIR": "/htdocs/wp-content/themes"},
                 "overlaps live theme",
             ),
@@ -254,6 +260,34 @@ class TestDryRun:
         )
         assert result.returncode != 0
         assert message in (result.stdout + result.stderr)
+
+    @pytest.mark.parametrize(
+        "remote_path",
+        [
+            "/htdocs/wp-content/./themes/skyyrose-flagship",
+            "/htdocs/wp-content//themes/skyyrose-flagship",
+            "/htdocs/wp-content/themes/skyyrose-flagship/",
+        ],
+    )
+    def test_rejects_noncanonical_live_theme_path(self, fake_env, remote_path):
+        _, env_file, theme_dir = fake_env
+        env_file.write_text(
+            re.sub(
+                r"^WP_THEME_PATH=.*$",
+                f"WP_THEME_PATH={remote_path}",
+                env_file.read_text(),
+                flags=re.MULTILINE,
+            )
+        )
+        result = run_script(
+            "--dry-run",
+            env_overrides={
+                "ENV_FILE": str(env_file),
+                "THEME_DIR_OVERRIDE": str(theme_dir),
+            },
+        )
+        assert result.returncode != 0
+        assert "Unsafe or missing remote theme path" in (result.stdout + result.stderr)
 
     @pytest.mark.parametrize(
         ("env_updates", "message"),

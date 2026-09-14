@@ -155,11 +155,18 @@ validate_deploy_target() {
         log_error "Unsafe theme archive root '$THEME_ARCHIVE_ROOT' -- refusing to deploy"
         exit 1
     fi
-    if [[ ! "${WP_THEME_PATH:-}" =~ ^/[A-Za-z0-9._/-]+$ || "${WP_THEME_PATH:-}" =~ (^|/)\.\.($|/) ]]; then
+    # Require canonical path spelling before string-based overlap checks.
+    # Dot segments, repeated separators and trailing slashes can alias a live
+    # path while making the strings compare unequal.
+    if [[ ! "${WP_THEME_PATH:-}" =~ ^/[A-Za-z0-9._/-]+$ ||
+          "${WP_THEME_PATH:-}" =~ (^|/)\.{1,2}($|/) ||
+          "${WP_THEME_PATH:-}" == *//* || "${WP_THEME_PATH:-}" == */ ]]; then
         log_error "Unsafe or missing remote theme path '${WP_THEME_PATH:-missing}' -- refusing to deploy"
         exit 1
     fi
-    if [[ ! "$REMOTE_DEPLOY_DIR" =~ ^/[A-Za-z0-9._/-]+$ || "$REMOTE_DEPLOY_DIR" =~ (^|/)\.\.($|/) ]]; then
+    if [[ ! "$REMOTE_DEPLOY_DIR" =~ ^/[A-Za-z0-9._/-]+$ ||
+          "$REMOTE_DEPLOY_DIR" =~ (^|/)\.{1,2}($|/) ||
+          "$REMOTE_DEPLOY_DIR" == *//* || "$REMOTE_DEPLOY_DIR" == */ ]]; then
         log_error "Unsafe remote deploy directory '$REMOTE_DEPLOY_DIR' -- refusing to deploy"
         exit 1
     fi
