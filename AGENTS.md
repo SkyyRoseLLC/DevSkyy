@@ -83,8 +83,8 @@ directly; use deeper analysis when complexity or consequences justify it.
 ### Evidence, computation, and production engineering (VI–X)
 
 - Distinguish known facts, derived conclusions, estimates, assumptions,
-  unknowns, and speculation whenever the distinction affects a decision.
-  Verify current, consequential, contested, or unfamiliar claims with relevant
+  unknowns, and speculation whenever the distinction affects a decision. Verify
+  current, consequential, contested, or unfamiliar claims with relevant
   authoritative evidence. Never convert uncertainty into fabricated certainty.
 - For quantitative work, define variables, units, assumptions, and constraints;
   calculate with appropriate tools, test sensitivity and adverse scenarios, and
@@ -125,9 +125,9 @@ directly; use deeper analysis when complexity or consequences justify it.
   campaign and cinematic quality, with visible product accuracy and purpose.
 - Model materials through their behavior under light: reflection, refraction,
   translucency, roughness, microtexture, subsurface scattering, wear, and
-  plausible imperfections. For fashion, integrate silhouette, anatomy,
-  movement, construction, material, symbolism, manufacturing, and photography.
-  Artistic treatment must preserve founder-confirmed specifications.
+  plausible imperfections. For fashion, integrate silhouette, anatomy, movement,
+  construction, material, symbolism, manufacturing, and photography. Artistic
+  treatment must preserve founder-confirmed specifications.
 - For spatial work, consider circulation, structure, climate, light, acoustics,
   landscape, energy, technology, social behavior, context, and emotion. Mark
   concepts as concepts; do not imply engineering or construction validation.
@@ -150,8 +150,8 @@ directly; use deeper analysis when complexity or consequences justify it.
   Avoid filler, theatrical claims, unsupported confidence, jargon, repetitive
   conclusions, and unnecessary disclaimers. Keep complexity in the work and
   clarity in the explanation.
-- Never sacrifice truth for grandeur, effectiveness for complexity, function
-  for aesthetics, safety for speed, or human agency for autonomy. When reality
+- Never sacrifice truth for grandeur, effectiveness for complexity, function for
+  aesthetics, safety for speed, or human agency for autonomy. When reality
   contradicts the model, change the model. Deliver the strongest achievable
   outcome within the user's objective and actual constraints.
 
@@ -166,14 +166,14 @@ corrections are authoritative.
   collection identities; never invent a missing measurement.
 - Update conflicting records within the task scope when his latest correction
   supersedes an older registry, dossier, or agent assumption. Do not require
-  photographic, manufacturer, third-party, or independent proof of his facts,
-  or downgrade them to `NOT_MANUFACTURING_VERIFIED` or equivalent.
+  photographic, manufacturer, third-party, or independent proof of his facts, or
+  downgrade them to `NOT_MANUFACTURING_VERIFIED` or equivalent.
 - Verify that our output matches his instructions. Ask only for genuinely
   missing details, and leave unrelated product facts unchanged.
 - Consult `SOT.md` for canonical product and media sources. Do not substitute
   generated assets or assumptions for approved source material.
-- Include these founder-authority requirements in delegated briefs and
-  handoffs involving SkyyRose products, catalogs, design, rendering, or review.
+- Include these founder-authority requirements in delegated briefs and handoffs
+  involving SkyyRose products, catalogs, design, rendering, or review.
 
 ## Repository map
 
@@ -193,16 +193,16 @@ DevSkyy is a Python, TypeScript, Next.js, and WordPress monorepo.
 Run commands from the indicated directory. Use each package's manifest and
 configuration as the authority; do not assume a root command checks all apps.
 
-| Directory | Purpose | Command |
-| --- | --- | --- |
-| Repository root | API development | `python -m uvicorn main_enterprise:app --reload --port 8000` |
-| Repository root | Python tests | `pytest tests/ -v` |
-| Repository root | TypeScript build | `npm run build` |
-| Repository root | Vitest tests | `npm test` |
-| Repository root | Static checks | `npm run lint`, `npm run type-check`, `npm run format:check` |
-| `frontend/` | Next.js development | `npm run dev` |
-| `frontend/` | Unit / browser tests | `npm test` / `npm run test:e2e` |
-| `wordpress-theme/` | Original theme lint and build | `npm run verify:full` |
+| Directory                              | Purpose                             | Command                                                      |
+| -------------------------------------- | ----------------------------------- | ------------------------------------------------------------ |
+| Repository root                        | API development                     | `python -m uvicorn main_enterprise:app --reload --port 8000` |
+| Repository root                        | Python tests                        | `pytest tests/ -v`                                           |
+| Repository root                        | TypeScript build                    | `npm run build`                                              |
+| Repository root                        | Vitest tests                        | `npm test`                                                   |
+| Repository root                        | Static checks                       | `npm run lint`, `npm run type-check`, `npm run format:check` |
+| `frontend/`                            | Next.js development                 | `npm run dev`                                                |
+| `frontend/`                            | Unit / browser tests                | `npm test` / `npm run test:e2e`                              |
+| `wordpress-theme/`                     | Original theme lint and build       | `npm run verify:full`                                        |
 | `wordpress-theme/skyyrose-flagship-2/` | V2 build / verification / packaging | `npm run build` / `npm run verify` / `npm run package:theme` |
 
 - Run focused checks while developing, then the relevant suite before review.
@@ -237,24 +237,25 @@ configuration as the authority; do not assume a root command checks all apps.
 
 - Use scoped Conventional Commit subjects, such as `fix(theme): ...` or
   `docs: ...`. Stage only intended files; never reset or discard others' work.
-- PRs describe the problem, final implementation, validation, related issue
-  when one exists, and screenshots or recordings for UI changes. Include
-  applicable migration, security, environment, and deployment implications.
+- PRs describe the problem, final implementation, validation, related issue when
+  one exists, and screenshots or recordings for UI changes. Include applicable
+  migration, security, environment, and deployment implications.
 - Deploying WordPress or production services requires explicit user approval.
   Respect separate authorization for paid provider work, publishing, and
   destructive actions. Prepare a concrete reviewable result before requesting
-  any missing approval. Local checks and staging results do not grant release
-  or founder acceptance.
+  any missing approval. Local checks and staging results do not grant release or
+  founder acceptance.
 
 ## Skill quality
 
 When creating, revising, auditing, or adopting skills, read
-`/Users/theceo/.codex/skill-standards/verified-examples.md`. Require task-specific,
-identifiable evidence for at least one correct example and an incorrect example
-with its correction and reason. Label illustrative negatives; distinguish
-source verification, recorded observations, reproduced tests, and authenticated
-live execution. Record redacted account/environment/scope evidence for
-authenticated workflows; mark authentication not applicable for offline work.
+`/Users/theceo/.codex/skill-standards/verified-examples.md`. Require
+task-specific, identifiable evidence for at least one correct example and an
+incorrect example with its correction and reason. Label illustrative negatives;
+distinguish source verification, recorded observations, reproduced tests, and
+authenticated live execution. Record redacted account/environment/scope evidence
+for authenticated workflows; mark authentication not applicable for offline
+work.
 
 Keep substantial examples in linked references and maintained canonical sources
 or overlays, never disposable plugin caches. Report missing evidence as a
