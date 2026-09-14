@@ -1,7 +1,8 @@
 # PR 922 source repair
 
 Starting PR head: `0feda3df9fcdd4c825ccdd58e56fe8a57dcf249f`. Integrated main:
-`fa5677079b4e537747ea8337359f430982ebdbec`.
+`fa5677079b4e537747ea8337359f430982ebdbec`, followed by
+`4d6c5333f6bdc9a133464f54843b585dbcb77413`.
 
 - Transparency inspection checks every decoded/composited animation frame; an
   opaque later frame fails the asset. CLI failures retain diagnostic tracebacks
@@ -55,3 +56,15 @@ Prettier fileInfo confirms source design-tokens.css remains formatted while both
 generated locations are ignored. Canonical minification still checks all 61
 outputs. Read-only public homepage inspection returned HTTP 200; this is
 availability evidence only, not deployment or commerce certification.
+
+The final Copilot sweep also repaired two older empty-manifest findings. Both
+transparency shell gates require nonempty arrays of nonempty string paths
+before their asset loops. Sixteen fixtures execute the actual guard blocks
+for valid, empty, missing, null, wrong-type and invalid-element policies. All pass;
+the guard is asserted to precede the loop. These are focused shell-guard tests,
+not claims that every full certification scenario was executed.
+
+Normal hooks on the first repair merge passed lint-staged, mypy (1,562 files),
+54 fast unit tests and the SOT/minified freshness guard. The original producer
+was also run as a negative control and failed formatter idempotence; the repaired
+producer passes.

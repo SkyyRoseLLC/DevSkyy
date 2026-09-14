@@ -85,6 +85,10 @@ done < <(jq -r '.editorial_derivative_sets[]? | [.derivative_root, .basename, (.
 
 # Logos are reusable brand graphics, not scenery. They must remain compositable
 # over the collection worlds, so alpha-channel loss is a shipping failure.
+if ! jq -e '.transparent_brand_assets | type == "array" and length > 0 and all(.[]; type == "string" and length > 0)' data/image-optimization.json > /dev/null; then
+  echo "Transparency policy requires a nonempty array of asset paths" >&2
+  exit 1
+fi
 while IFS= read -r asset; do
   test -s "$asset" || {
     echo "Missing transparent brand asset: $asset" >&2

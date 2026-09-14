@@ -279,6 +279,10 @@ if [[ ! -f "$transparency_manifest" ]]; then
   exit 1
 fi
 jq empty "$transparency_manifest"
+if ! jq -e '.transparent_assets | type == "array" and length > 0 and all(.[]; type == "string" and length > 0)' "$transparency_manifest" > /dev/null; then
+  echo "FAIL transparency policy requires a nonempty array of asset paths" >&2
+  exit 1
+fi
 while IFS= read -r asset; do
   if [[ ! -f "$THEME_DIR/$asset" ]]; then
     echo "FAIL transparent brand asset missing: $asset" >&2
