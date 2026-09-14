@@ -45,6 +45,9 @@ const isByteStableOrManaged = file => {
     /(^|\/)plugins\/fashion-theme-team\//.test(normalized) ||
     /(^|\/)Comfy\/receipts\//.test(normalized) ||
     /(^|\/)Comfy\/quarantine\//.test(normalized) ||
+    // Canonical dossier generation owns these bytes; generic Markdown
+    // formatting would desynchronize the checked-in placement brief.
+    /(^|\/)skyyrose\/elite_studio\/assets\/golden\/[^/]+\/placement\.md$/.test(normalized) ||
     /\.(?:png|jpe?g|webp|gif|avif|mp4|mov|webm|mp3|wav|flac|safetensors|ckpt|pt|pth|bin)$/i.test(normalized)
   );
 };
