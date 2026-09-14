@@ -1,0 +1,23 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const assert=require('node:assert/strict');const fs=require('node:fs');
+(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true,args:['--use-angle=swiftshader','--enable-unsafe-swiftshader']});let results=[];
+for(const [name,width,height,reduced] of [['desktop',1440,1000,'no-preference'],['mobile',390,844,'reduce']]){
+ const page=await browser.newPage({viewport:{width,height},reducedMotion:reduced});let errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:18763/chat-preview.html');await page.waitForFunction(()=>window.skyyRoseConcierge);
+ await page.locator('#review-open').click();await page.locator('#skyy-ask-dialog').waitFor({state:'visible'});
+ assert.equal(await page.locator('#skyy-chat-stage #skyyrose-mascot').count(),1);
+ if(name==='desktop') await page.waitForFunction(()=>window.skyyRoseMascot3D?.isReady(),null,{timeout:30000});
+ await page.locator('#skyy-ask-input').fill('br-004');await page.locator('#skyy-ask-form').evaluate(f=>f.requestSubmit());
+ assert.match(await page.locator('#skyy-conversation').innerText(),/BLACK Rose Hoodie/);
+ const count=await page.locator('.skyy-message').count(); await page.keyboard.press('Escape');await page.waitForTimeout(350);
+ assert.equal(await page.locator('#skyy-ask-dialog').evaluate(d=>d.open),false);
+ assert.ok(['skyyrose-mascot-trigger','review-open'].includes(await page.evaluate(()=>document.activeElement.id)), 'Focus returns to a visible conversation opener');
+ await page.locator('#skyyrose-mascot-trigger').click();assert.equal(await page.locator('.skyy-message').count(),count);
+ await page.locator('#skyy-ask-input').fill('<img src=x onerror=alert(1)>');await page.locator('#skyy-ask-form').evaluate(f=>f.requestSubmit());assert.equal(await page.locator('#skyy-conversation img').count(),0);
+ await page.locator('#skyy-ask-input').fill('shipping');await page.locator('#skyy-ask-form').evaluate(f=>f.requestSubmit());assert.match(await page.locator('.skyy-message').last().innerText(),/contact/i);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+ let box=await page.locator('#skyy-ask-input').boundingBox();assert.ok(box.x>=0&&box.x+box.width<=width&&box.y+box.height<=height);
+ await page.screenshot({path:`.artifacts/walk-on-chat-20260912/${name}.png`});
+ await page.locator('#skyy-ask-cancel').click();await page.locator('#skyyrose-mascot-minimize').click();await page.locator('#skyyrose-mascot-recall').waitFor({state:'visible'});await page.locator('#skyyrose-mascot-recall').click();await page.waitForTimeout(2400);await page.locator('#skyyrose-mascot-trigger').click();assert.ok(await page.locator('.skyy-message').count()>=count);
+ assert.deepEqual(errors,[]);results.push({name,passed:true,errors});await page.close();
+}await browser.close();fs.writeFileSync('.artifacts/walk-on-chat-20260912/browser-results.json',JSON.stringify(results,null,2));console.log(results);})().catch(e=>{console.error(e);process.exit(1)});

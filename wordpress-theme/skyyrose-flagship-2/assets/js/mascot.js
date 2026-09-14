@@ -364,7 +364,7 @@
 					askTrigger.hidden = true;
 				}
 			}
-			if (state === 'speaking') {
+			if (state === 'speaking' && !(askDialog && askDialog.open)) {
 				state = 'idle';
 				emitSkyy('idle');
 			}
@@ -402,162 +402,180 @@
 	});
 
 	// -------------------------------------------------------------------------
-	// Tier 1 Guide Brain — matches free text against data/site-guide.json
-	// -------------------------------------------------------------------------
+	// Staging house guide, now carried by the walk-on character.
+ var data = window.SKYY_GUIDE_DATA || {};
+ var intents = Array.isArray(data.intents) ? data.intents : [];
+ var products = Array.isArray(data.products) ? data.products : [];
+ var guideAvailable = Array.isArray(data.products) && Array.isArray(data.intents);
+ var log = document.getElementById('skyy-conversation');
+ var chatStage = document.getElementById('skyy-chat-stage');
+ var characterHome = mascotEl.parentNode;
+ var chatMotionTimer;
+ var exitTimer;
+ var chatClosing = false;
+  function normalize(value) {
+    return String(value || '')
+      .toLowerCase()
+      .replace(/[^\p{L}\p{N}]+/gu, ' ')
+      .trim();
+  }
+  function includes(query, phrase) {
+    return phrase && (' ' + query + ' ').includes(' ' + normalize(phrase) + ' ');
+  }
+  function safeUrl(value) {
+    if (typeof value !== 'string' || !value.trim()) return '';
+    try {
+      var url = new URL(value, location.href);
+      return url.origin === location.origin && /^https?:$/.test(url.protocol) ? url.href : '';
+    } catch (_) {
+      return '';
+    }
+  }
+  function add(text, speaker, links) {
+    var firstMessage = log.children.length === 0;
+    var entry = document.createElement('div');
+    entry.className = 'skyy-message skyy-message--' + speaker;
+    var label = document.createElement('strong');
+    label.textContent = speaker === 'visitor' ? 'You' : 'Skyy';
+    var paragraph = document.createElement('p');
+    paragraph.textContent = text;
+    entry.append(label, paragraph);
+    (links || []).forEach(function (item) {
+      var href = safeUrl(item.url || item.link);
+      if (!href) return;
+      var anchor = document.createElement('a');
+      anchor.href = href;
+      anchor.textContent = item.label || item.name || 'Explore';
+      entry.appendChild(anchor);
+    });
+    log.appendChild(entry);
+    while (log.children.length > 20) log.firstElementChild.remove();
+    log.scrollTop = firstMessage ? 0 : log.scrollHeight;
+  }
+  function answer(question) {
+    var query = normalize(question);
+    if (!query) return;
+    mascotEl.dataset.conversation = 'thinking';
+    document.dispatchEvent(new CustomEvent('skyy:thinking'));
+    add(question, 'visitor');
+    if (!guideAvailable) {
+      mascotEl.dataset.conversation = 'chat-failure';
+      add('The house guide is unavailable right now. You can still browse the shop or contact the house.', 'skyy', [{ url: (data.pages && data.pages.contact ? data.pages.contact.url : '/contact/'), label: 'Contact the house' }]);
+      emitSkyy('idle');
+      return;
+    }
+    var exact = products.filter(function (p) {
+      return includes(query, p.sku) || includes(query, p.name);
+    });
+    var found = exact.length
+      ? exact
+      : products.filter(function (p) {
+          var title = normalize(p.name + ' ' + (p.collection || ''));
+          var words = query.split(' ').filter(function (word) {
+            return (
+              word.length > 2 &&
+              !['the', 'show', 'find', 'for', 'with', 'have', 'want', 'some', 'please', 'products', 'product'].includes(
+                word
+              )
+            );
+          });
+          return (
+            words.length > 0 &&
+            words.every(function (word) {
+              return includes(title, word);
+            })
+          );
+        });
+    var match = intents
+      .map(function (intent) {
+        var patterns = Array.isArray(intent.patterns) ? intent.patterns : [];
+        return {
+          intent: intent,
+          score: patterns.reduce(function (score, pattern) {
+            return includes(query, pattern) ? Math.max(score, normalize(pattern).length) : score;
+          }, 0),
+        };
+      })
+      .sort(function (a, b) {
+        return b.score - a.score;
+      })[0];
+    if (found.length) {
+      add(
+        'Here are matching pieces from our catalog. Open a product for its current price, available options, and purchase details.',
+        'skyy',
+        found.slice(0, 4).map(function (p) {
+          return { url: p.url, label: p.name + (p.sku ? ' · ' + p.sku : '') };
+        })
+      );
+    } else if (match && match.score) {
+      var intent = match.intent;
+      add(String(intent.answer || ''), 'skyy', intent.link ? [{ url: intent.link, label: intent.label }] : []);
+    } else {
+      add(
+        'I can help you find a piece by name or SKU, explore a collection, or point you to our site information. For a question about an order, please contact the house.',
+        'skyy',
+        Object.values(data.pages || {})
+          .filter(function (p) {
+            return p && /contact|shop/i.test(p.label || '');
+          })
+          .slice(0, 2)
+      );
+    }
+    mascotEl.dataset.conversation = found.length ? 'gesture' : /^(hi|hello|hey)( skyy)?$/.test(query) ? 'greeting' : 'talking';
+    emitSkyy(found.length ? 'joy' : /^(hi|hello|hey)( skyy)?$/.test(query) ? 'wave' : 'speaking');
+    clearInterval(chatMotionTimer);
+    if (mascotEl.dataset.conversation === 'talking') {
+      var visibleTalkTime = 0;
+      chatMotionTimer = setInterval(function () {
+        if (!askDialog.open) { clearInterval(chatMotionTimer); return; }
+        if (document.hidden || window.skyyRoseMascot3D?.isLoading()) return;
+        visibleTalkTime += 250;
+        if (visibleTalkTime >= 3200) { clearInterval(chatMotionTimer); emitSkyy('idle'); }
+      }, 250);
+    }
+  }
 
-	function normalizeQuery(text) {
-		return text.toLowerCase().replace(/[^\w\s-]/g, ' ').replace(/\s+/g, ' ').trim();
-	}
-
-	function ensureGuideData() {
-		if ( guideData.intents.length || ! mascotConfig.guideUrl ) {
-			return Promise.resolve( guideData );
-		}
-		if ( guidePromise ) {
-			return guidePromise;
-		}
-		guidePromise = fetch( mascotConfig.guideUrl, { credentials: 'same-origin' } )
-			.then( function ( response ) {
-				if ( ! response.ok ) {
-					throw new Error( 'Guide unavailable' );
-				}
-				return response.json();
-			} )
-			.then( function ( data ) {
-				if ( data && Array.isArray( data.intents ) ) {
-					guideData = data;
-				}
-				return guideData;
-			} )
-			.catch( function () {
-				return guideData;
-			} );
-		return guidePromise;
-	}
-
-	function matchIntent(rawQuery) {
-		var query = normalizeQuery(rawQuery);
-		if (!query || !guideData.intents.length) return null;
-
-		var best = null;
-		var bestScore = 0;
-
-		guideData.intents.forEach(function (intent) {
-			var patterns = intent.patterns || [];
-			var score = 0;
-			patterns.forEach(function (pattern) {
-				var normalizedPattern = normalizeQuery(pattern);
-				if (normalizedPattern && query.indexOf(normalizedPattern) !== -1) {
-					// Longer, more specific patterns outrank single-word ones.
-					score += normalizedPattern.split(' ').length;
-				}
-			});
-			if (score > bestScore) {
-				bestScore = score;
-				best = intent;
-			}
-		});
-
-		return best;
-	}
-
-	function speakIntentAnswer(intent) {
-		var chips = null;
-		if (intent.link) {
-			chips = [{ id: 'guide-' + intent.id, label: 'Take me there →', action: intent.link, next: null }];
-		}
-		speak(intent.answer, chips);
-	}
-
-	function askTier2Fallback(rawQuery) {
-		if (!mascotConfig.llmEnabled || !window.skyyRoseData || !window.skyyRoseData.ajaxUrl) {
-			speakFallbackRedirect();
-			return;
-		}
-
-		var body = new URLSearchParams();
-		body.set('action', 'skyyrose_mascot_chat');
-		body.set('nonce', window.skyyRoseData.nonce || '');
-		body.set('message', rawQuery);
-
-		fetch(window.skyyRoseData.ajaxUrl, {
-			method: 'POST',
-			credentials: 'same-origin',
-			headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			body: body.toString()
-		})
-			.then(function (response) { return response.json(); })
-			.then(function (json) {
-				var data   = json && json.data ? json.data : null;
-				var answer = data && typeof data.answer === 'string' ? data.answer : '';
-				if (answer) {
-					var chips = data.link ? [{ id: 'tier2-link', label: 'Take me there →', action: data.link, next: null }] : null;
-					speak(answer, chips);
-				} else {
-					speakFallbackRedirect();
-				}
-			})
-			.catch(function () {
-				speakFallbackRedirect();
-			});
-	}
-
-	function speakFallbackRedirect() {
-		speak('Ask me about finding things, sizing, or shipping — that’s what I know best. 🌹', null);
-	}
-
-	function handleAskSubmit(rawQuery) {
-		if (!rawQuery || !rawQuery.trim()) return;
-		ensureGuideData().then(function () {
-			var intent = matchIntent(rawQuery);
-			if (intent) {
-				speakIntentAnswer(intent);
-				return;
-			}
-			askTier2Fallback(rawQuery);
-		});
-	}
-
-	// -------------------------------------------------------------------------
-	// Ask Skyy Dialog — native <dialog> + showModal(), focus trapped + restored
-	// -------------------------------------------------------------------------
-
-	if (askTrigger && askDialog && askForm && askInput) {
-		askTrigger.addEventListener('click', function () {
-			askDialogOpener = document.activeElement;
-			askInput.value = '';
-			if (typeof askDialog.showModal === 'function') {
-				askDialog.showModal();
-				askInput.focus();
-			}
-		});
-
-		askForm.addEventListener('submit', function () {
-			// method="dialog" closes the dialog natively on submit; capture the
-			// value now so the 'close' handler below can act on it afterward.
-			pendingQuestion = askInput.value;
-		});
-
-		if (askCancelBtn) {
-			askCancelBtn.addEventListener('click', function () {
-				pendingQuestion = null;
-				askDialog.close();
-			});
-		}
-
-		askDialog.addEventListener('close', function () {
-			if (askDialogOpener && typeof askDialogOpener.focus === 'function') {
-				askDialogOpener.focus();
-			}
-			askDialogOpener = null;
-
-			if (pendingQuestion) {
-				var question = pendingQuestion;
-				pendingQuestion = null;
-				handleAskSubmit(question);
-			}
-		});
-	}
+ function openChat() {
+   if (!askDialog || chatClosing || askDialog.open || !log || typeof askDialog.showModal !== 'function') return;
+   if (document.querySelector('dialog[open]')) return;
+   clearTimeout(exitTimer);
+   recallBtn.style.display = 'none'; recallBtn.setAttribute('aria-hidden', 'true');
+   askDialogOpener = document.activeElement;
+   clearGreetTimer(); clearTimeout(autoDismissTimer); clearTimeout(idleTimer);
+   dismissBubble();
+   state = 'speaking';
+   mascotEl.classList.remove('skyyrose-mascot--hidden', 'skyyrose-mascot--entering', 'skyyrose-mascot--exiting');
+   mascotEl.classList.add('skyyrose-mascot--idle');
+   mascotEl.setAttribute('aria-hidden', 'false');
+   chatStage.appendChild(mascotEl);
+   askDialog.showModal();
+   triggerBtn.setAttribute('aria-expanded', 'true');
+   emitSkyy('walking-in'); emitSkyy('idle');
+   if (!log.children.length) add(data.greeting || 'I’m Skyy. Which piece or collection would you like to explore?', 'skyy');
+   askInput.focus({ preventScroll: true });
+ }
+ if (askTrigger && askDialog && askForm && askInput && log) {
+   askTrigger.addEventListener('click', openChat);
+   askForm.addEventListener('submit', function (event) {
+     event.preventDefault();
+     var question = askInput.value.trim().slice(0, 300);
+     if (!question) return;
+     askInput.value = ''; answer(question); askInput.focus({ preventScroll: true });
+   });
+   askInput.addEventListener('input', function () { clearInterval(chatMotionTimer); emitSkyy('idle'); });
+   function closeChat() { chatClosing = true; askDialog.close(); }
+   askCancelBtn.addEventListener('click', closeChat);
+   askDialog.addEventListener('cancel', function () { chatClosing = true; });
+   askDialog.addEventListener('close', function () {
+     chatClosing = false;
+     clearInterval(chatMotionTimer);
+     characterHome.appendChild(mascotEl);
+     state = 'idle'; emitSkyy('idle');
+     triggerBtn.setAttribute('aria-expanded', 'false');
+     triggerBtn.focus({ preventScroll: true });
+   });
+ }
+ window.skyyRoseConcierge = Object.freeze({ open: openChat });
 
 	// -------------------------------------------------------------------------
 	// Walk-On / Walk-Off
@@ -572,14 +590,17 @@
 
 	function walkOn(isProactive) {
 		if (state === 'walking-in' || state === 'idle' || state === 'speaking') return;
+		var threeReady = !!window.skyyRoseMascot3D;
+		var walkDuration = prefersReducedMotion ? 0 : (threeReady ? 2200 : 1400);
+		mascotEl.style.setProperty('--skyy-walk-duration', walkDuration + 'ms');
 		state = 'walking-in';
 		emitSkyy('walking-in');
 		mascotEl.setAttribute('aria-hidden', 'false');
 		mascotEl.classList.remove('skyyrose-mascot--hidden', 'skyyrose-mascot--exiting');
 		mascotEl.classList.add('skyyrose-mascot--entering');
 
-		var walkDuration = prefersReducedMotion ? 0 : 1400;
 		setTimeout(function () {
+			if (state !== 'walking-in') return;
 			mascotEl.classList.remove('skyyrose-mascot--entering');
 			mascotEl.classList.add('skyyrose-mascot--idle');
 			state = 'idle';
@@ -599,13 +620,23 @@
 				// Wave first, speak after — emitting both synchronously makes
 				// the talk clip instantly override the wave in the 3D layer.
 				emitSkyy('wave');
-				greetTimer = setTimeout(function () {
+				var waveDuration = window.skyyRoseMascot3D && window.skyyRoseMascot3D.getActionDuration
+					? (window.skyyRoseMascot3D.getActionDuration('skyy_wave') * 1000 || 2800) : 0;
+				greetTimer = setTimeout(function deliverGreeting() {
 					greetTimer = null;
 					// User may have acted during the gap — only greet an
 					// idle, undismissed character.
 					if (state !== 'idle' || isDismissedThisSession()) return;
+					// Background tabs pause the mixer; wall-clock time alone
+					// must not interrupt a greeting that is still playing.
+					var bridge = window.skyyRoseMascot3D;
+					if (document.hidden || (!prefersReducedMotion && bridge &&
+						((bridge.isLoading && bridge.isLoading()) || bridge.getCurrentAction() === 'Skyy_Wave'))) {
+						greetTimer = setTimeout(deliverGreeting, 200);
+						return;
+					}
 					proactiveSpeak('greeting:' + context, greetingText, script.greeting.chips);
-				}, prefersReducedMotion ? 0 : 1400);
+				}, prefersReducedMotion ? 0 : Math.max(1400, waveDuration + 150));
 				recordProactiveAppearance();
 			}
 		}, walkDuration);
@@ -613,6 +644,9 @@
 
 	function walkOff(onDone) {
 		clearGreetTimer();
+		var threeReady = !!window.skyyRoseMascot3D;
+		var exitDuration = prefersReducedMotion ? 0 : (threeReady ? 2200 : 600);
+		mascotEl.style.setProperty('--skyy-exit-duration', exitDuration + 'ms');
 		state = 'exiting';
 		emitSkyy('exiting');
 		dismissBubble();
@@ -621,8 +655,9 @@
 		mascotEl.classList.add('skyyrose-mascot--exiting');
 		mascotEl.setAttribute('aria-hidden', 'true');
 
-		var exitDuration = prefersReducedMotion ? 0 : 600;
-		setTimeout(function () {
+		clearTimeout(exitTimer);
+		exitTimer = setTimeout(function () {
+			if (state !== 'exiting') return;
 			mascotEl.classList.add('skyyrose-mascot--hidden');
 			mascotEl.classList.remove('skyyrose-mascot--exiting');
 			state = 'dormant';
@@ -753,33 +788,31 @@
 
 	triggerBtn.addEventListener('click', function (e) {
 		e.stopPropagation();
-		if (state === 'speaking') {
-			dismissBubble();
-		} else if (state === 'idle') {
-			var script = SCRIPTS[context] || SCRIPTS['default'];
-			speak(script.greeting.text, script.greeting.chips);
-		}
+		if (!askDialog.open && (state === 'speaking' || state === 'idle')) openChat();
 	});
 
 	minimizeBtn.addEventListener('click', function (e) {
 		e.stopPropagation();
+		if (askDialog.open) askDialog.close();
 		minimize(true);
 	});
 
 	recallBtn.addEventListener('click', function (e) {
+		e.preventDefault();
 		e.stopPropagation();
 		recall();
 	});
 
 	// Close bubble on outside click
 	document.addEventListener('click', function (e) {
-		if (state === 'speaking' && !mascotEl.contains(e.target) && !recallBtn.contains(e.target)) {
+		if (!askDialog.open && state === 'speaking' && !mascotEl.contains(e.target) && !recallBtn.contains(e.target)) {
 			dismissBubble();
 		}
 	});
 
 	// Keyboard accessibility
 	document.addEventListener('keydown', function (e) {
+		if (askDialog.open) return;
 		if (e.key === 'Escape') {
 			if (state === 'speaking') {
 				dismissBubble();

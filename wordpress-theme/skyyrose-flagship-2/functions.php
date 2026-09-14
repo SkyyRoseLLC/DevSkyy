@@ -179,6 +179,8 @@ function skyyrose2_asset_version( $relative_path ) {
 	return $versions[ $relative_path ];
 }
 
+require_once SKYYROSE2_DIR . '/inc/concierge-guide.php';
+
 function skyyrose2_assets() {
 	$suffix = skyyrose2_asset_suffix();
 	$house_motion_suffix = $suffix && file_exists( SKYYROSE2_DIR . '/assets/js/house-of-roses-motion.min.js' ) ? '.min' : '';
@@ -226,11 +228,13 @@ function skyyrose2_assets() {
 				'skyy3dUrl' => add_query_arg( 'ver', skyyrose2_asset_version( $three_script ), SKYYROSE2_URI . $three_script ),
 			)
 		);
+		wp_localize_script( 'skyyrose2-mascot-loader', 'SKYY_GUIDE_DATA', skyyrose2_concierge_guide() );
 		wp_localize_script(
 			'skyyrose2-mascot-loader',
 			'SKYY_3D_CONFIG',
 			array(
-				'modelUrl'    => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-mascot.glb' ), SKYYROSE2_URI . '/assets/models/skyy-mascot.glb' ),
+				'modelUrl'    => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-mascot-desktop.glb' ), SKYYROSE2_URI . '/assets/models/skyy-mascot-desktop.glb' ),
+				'mobileModelUrl' => add_query_arg( 'ver', skyyrose2_asset_version( '/assets/models/skyy-mascot-mobile.glb' ), SKYYROSE2_URI . '/assets/models/skyy-mascot-mobile.glb' ),
 				'decoderPath' => SKYYROSE2_URI . '/assets/js/lib/draco/',
 			)
 		);

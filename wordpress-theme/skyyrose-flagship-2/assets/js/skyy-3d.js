@@ -23,6 +23,11 @@
 	var MODEL_URL = ( window.SKYY_3D_CONFIG && window.SKYY_3D_CONFIG.modelUrl )
 		? window.SKYY_3D_CONFIG.modelUrl
 		: '/wp-content/themes/skyyrose-flagship-2/assets/models/skyy-mascot.glb';
+	var useMobileModel = window.matchMedia( '(max-width: 767px)' ).matches ||
+		( typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4 );
+	if ( useMobileModel && window.SKYY_3D_CONFIG && window.SKYY_3D_CONFIG.mobileModelUrl ) {
+		MODEL_URL = window.SKYY_3D_CONFIG.mobileModelUrl;
+	}
 	/** Self-hosted Draco decoder directory — no new CSP origin (decoder files
 	 *  land here once a Draco-compressed GLB ships; non-Draco GLBs never
 	 *  touch this path). */
@@ -60,6 +65,8 @@
 
 	/** Three.js globals (declared after THREE is available) */
 	var scene, camera, renderer, mixer, clock;
+	var modelRoot = null;
+	var targetYaw = 0;
 	var currentAction = null;
 	var actions = {};
 	var canvas = document.getElementById( CANVAS_ID );
@@ -82,8 +89,24 @@
 	var visible     = !! ( window.SKYY_3D_CONFIG && window.SKYY_3D_CONFIG.startVisible );
 	var loopRunning = false;
 	var modelReady  = false;
+	var modelFailed = false;
+	var loadTimer = null;
+
+	function failModel() {
+		modelFailed = true;
+		modelReady = false;
+		currentAction = null;
+		pendingClip = null;
+		pendingOptions = null;
+		clearTimeout( loadTimer );
+		stopLoop();
+		canvas.style.display = 'none';
+	}
 	var bootStarted = false;
+	var renderElapsed = 0;
+	var frameInterval = 1 / 30; // Match the authored clips; avoid redundant GPU frames.
 	var pendingClip = visible ? CLIP_WALK : null; // clip requested before the GLB finished loading
+	var pendingOptions = null;
 
 	function dismissedThisSession() {
 		try {
@@ -94,13 +117,14 @@
 	}
 
 	function startLoop() {
-		if ( ! renderer ) return;
+		if ( ! renderer || document.hidden || ! visible ) return;
 		if ( reduced ) {
 			renderer.render( scene, camera );
 			return;
 		}
 		if ( ! loopRunning ) {
 			clock.getDelta(); // flush time accrued while stopped
+			renderElapsed = 0;
 			renderer.setAnimationLoop( render );
 			loopRunning = true;
 		}
@@ -178,6 +202,7 @@
 	// -------------------------------------------------------------------------
 
 	function initScene( THREE ) {
+		if ( modelFailed ) return;
 		// No-WebGL guard (audit D10): headless/bot renders, GPU-blocklisted
 		// and legacy clients have no usable context — three's constructor
 		// console.errors then THROWS, which surfaced as an uncaught pageerror
@@ -187,7 +212,7 @@
 		var probeCanvas = document.createElement( 'canvas' );
 		var probeGl = probeCanvas.getContext( 'webgl2' ) || probeCanvas.getContext( 'webgl' );
 		if ( ! probeGl ) {
-			canvas.style.display = 'none';
+			failModel();
 			return;
 		}
 
@@ -200,11 +225,11 @@
 				powerPreference: 'low-power',
 			} );
 		} catch ( e ) {
-			canvas.style.display = 'none';
+			failModel();
 			renderer = null;
 			return;
 		}
-		renderer.setPixelRatio( Math.min( window.devicePixelRatio, 2 ) );
+		renderer.setPixelRatio( Math.min( window.devicePixelRatio, useMobileModel ? 1.5 : 2 ) );
 		// Keep the high-resolution drawing buffer while CSS owns the responsive
 		// on-screen footprint. The default updateStyle=true silently rewrites
 		// our desktop/mobile dimensions back to 220x340 on every boot.
@@ -274,6 +299,8 @@
 			MODEL_URL,
 			function ( gltf ) {
 				var model = gltf.scene;
+				if ( modelFailed ) return;
+				modelRoot = model;
 
 				// Scale FIRST, then centre from a recomputed box — the offsets
 				// must be in post-scale units. Computing them pre-scale displaces
@@ -307,6 +334,11 @@
 				// Animation mixer
 				if ( gltf.animations && gltf.animations.length ) {
 					mixer = new THREE.AnimationMixer( model );
+					mixer.addEventListener( 'finished', function ( event ) {
+						if ( event.action === currentAction && visible ) {
+							playAction( CLIP_IDLE, { fadeIn: 0.25, fadeOut: 0.25 } );
+						}
+					} );
 
 					gltf.animations.forEach( function ( clip ) {
 						actions[ clip.name.toLowerCase() ] = mixer.clipAction( clip );
@@ -320,11 +352,12 @@
 							// eslint-disable-next-line no-console
 							console.warn( 'Skyy 3D: incomplete full-body action set. Missing:', missingClips );
 						}
-						canvas.style.display = 'none';
+						failModel();
 						return;
 					}
 
 					modelReady = true;
+					clearTimeout( loadTimer );
 					document.dispatchEvent( new CustomEvent( 'skyy:3d-ready', {
 						detail: { clips: Object.keys( actions ) },
 					} ) );
@@ -337,11 +370,13 @@
 					} else {
 						// Apply whichever state fired while the GLB was still
 						// downloading, falling back to idle.
-						playAction( pendingClip || CLIP_IDLE );
+						playAction( pendingClip || CLIP_IDLE, pendingOptions );
 						pendingClip = null;
+						pendingOptions = null;
 					}
 				} else {
 					modelReady = true;
+					clearTimeout( loadTimer );
 				}
 
 				// Reveal + animate only while the character is on screen — a
@@ -357,8 +392,8 @@
 					// eslint-disable-next-line no-console
 					console.warn( 'Skyy 3D: model load failed —', error );
 				}
-				// Hide canvas so it doesn't show a black box
-				canvas.style.display = 'none';
+				// The static character can greet when model loading fails.
+				failModel();
 			}
 		);
 	}
@@ -368,15 +403,24 @@
 	// -------------------------------------------------------------------------
 
 	function playAction( clipName, options ) {
+		if ( modelFailed ) return;
 		if ( ! mixer ) {
 			// GLB still loading — remember the request, apply on load.
 			pendingClip = clipName;
+			pendingOptions = options || null;
 			return;
 		}
 		if ( reduced ) return; // static idle pose only under reduced motion
 
 		var action = actions[ clipName ] || actions[ CLIP_IDLE ];
 		if ( ! action ) return;
+		var host = document.getElementById( 'skyyrose-mascot' );
+		var fromLeft = host && host.getAttribute( 'data-walk-side' ) === 'left' && ! window.matchMedia( '(max-width: 768px)' ).matches;
+		targetYaw = clipName === CLIP_WALK ? ( fromLeft ? Math.PI / 2 : -Math.PI / 2 ) :
+			( clipName === CLIP_EXIT ? ( fromLeft ? -Math.PI / 2 : Math.PI / 2 ) : 0 );
+		if ( ! currentAction && modelRoot ) modelRoot.rotation.y = targetYaw;
+		action.setLoop( options && options.oneShot ? window.THREE.LoopOnce : window.THREE.LoopRepeat, options && options.oneShot ? 1 : Infinity );
+		action.clampWhenFinished = !! ( options && options.oneShot );
 		action.enabled = true;
 		action.setEffectiveTimeScale( 1 );
 		action.setEffectiveWeight( 1 );
@@ -384,7 +428,8 @@
 		if ( currentAction && currentAction !== action ) {
 			currentAction.fadeOut( options && options.fadeOut || 0.3 );
 			action.reset().fadeIn( options && options.fadeIn || 0.3 ).play();
-		} else if ( ! currentAction ) {
+		} else if ( ! currentAction || ( options && options.restart ) ) {
+			action.reset();
 			action.play();
 		}
 
@@ -398,6 +443,10 @@
 	 * gracefully instead of throwing or freezing on the last pose.
 	 */
 	function playFirstAvailable( candidateNames, options ) {
+		if ( ! mixer ) {
+			playAction( candidateNames[ 0 ], options );
+			return;
+		}
 		for ( var i = 0; i < candidateNames.length; i++ ) {
 			if ( actions[ candidateNames[ i ] ] ) {
 				playAction( candidateNames[ i ], options );
@@ -412,8 +461,14 @@
 	// -------------------------------------------------------------------------
 
 	function render() {
-		var delta = clock.getDelta();
-		if ( mixer ) mixer.update( delta );
+		renderElapsed += Math.min( clock.getDelta(), 0.1 );
+		if ( renderElapsed + 0.001 < frameInterval ) return;
+		if ( mixer ) mixer.update( renderElapsed );
+		if ( modelRoot ) {
+			var turn = Math.atan2( Math.sin( targetYaw - modelRoot.rotation.y ), Math.cos( targetYaw - modelRoot.rotation.y ) );
+			modelRoot.rotation.y += turn * ( 1 - Math.exp( -7 * renderElapsed ) );
+		}
+		renderElapsed = 0;
 		renderer.render( scene, camera );
 	}
 
@@ -422,22 +477,11 @@
 	// -------------------------------------------------------------------------
 
 	function bindMascotEvents() {
-		// Track excited-animation timer so it can be cancelled on state change.
-		var excitedTimer = null;
-
-		function clearExcitedTimer() {
-			if ( excitedTimer !== null ) {
-				clearTimeout( excitedTimer );
-				excitedTimer = null;
-			}
-		}
-
 		// The mascot.min.js dispatches CustomEvents that we listen for here.
 		// Motion is opt-in (same rule as the CSS sprite path): when the
 		// visitor prefers reduced motion, walk/transient-reaction clips are
 		// skipped entirely and the character sits on idle instead.
 		document.addEventListener( 'skyy:walking-in', function () {
-			clearExcitedTimer();
 			visible = true;
 			if ( ! bootStarted ) {
 				// First user-invited appearance in a dismissed session — the
@@ -455,57 +499,47 @@
 		// the mascot container, out of reach of its CSS state classes — it has
 		// to be stopped and hidden here or it animates forever.
 		document.addEventListener( 'skyy:hidden', function () {
-			clearExcitedTimer();
 			visible = false;
 			stopLoop();
 			canvas.style.display = 'none';
 		} );
 
 		document.addEventListener( 'skyy:idle', function () {
-			clearExcitedTimer();
 			playAction( CLIP_IDLE, { fadeIn: 0.4, fadeOut: 0.4 } );
 		} );
 
 		document.addEventListener( 'skyy:speaking', function () {
-			clearExcitedTimer();
 			playFirstAvailable( [ CLIP_TALK ], { fadeIn: 0.3, fadeOut: 0.3 } );
 		} );
 
 		document.addEventListener( 'skyy:exiting', function () {
-			clearExcitedTimer();
 			playAction( reduced ? CLIP_IDLE : CLIP_EXIT, { fadeIn: 0.2, fadeOut: 0.2 } );
 		} );
 
-		// Transient reaction clips — crossfade in, hold briefly, crossfade
-		// back to idle. Shared by excited/wave/point so the timer-cleanup
-		// logic isn't repeated four times.
-		function playTransient( candidateNames, holdMs ) {
-			clearExcitedTimer();
+		// Gestures play once to completion, then the mixer finished event
+		// returns to idle. A fixed timeout must not cut off the settling pose.
+		function playTransient( candidateNames ) {
 			if ( reduced ) {
 				playAction( CLIP_IDLE, { fadeIn: 0.3, fadeOut: 0.3 } );
 				return;
 			}
-			playFirstAvailable( candidateNames, { fadeIn: 0.15, fadeOut: 0.15 } );
-			excitedTimer = setTimeout( function () {
-				excitedTimer = null;
-				playAction( CLIP_IDLE, { fadeIn: 0.3, fadeOut: 0.3 } );
-			}, holdMs );
+			playFirstAvailable( candidateNames, { fadeIn: 0.2, fadeOut: 0.2, oneShot: true, restart: true } );
 		}
 
 		document.addEventListener( 'skyy:excited', function () {
-			playTransient( [ CLIP_JOY, CLIP_WAVE ], 1000 );
+			playTransient( [ CLIP_JOY, CLIP_WAVE ] );
 		} );
 
 		document.addEventListener( 'skyy:wave', function () {
-			playTransient( [ CLIP_WAVE ], 1200 );
+			playTransient( [ CLIP_WAVE ] );
 		} );
 
 		document.addEventListener( 'skyy:point', function () {
-			playTransient( [ CLIP_POINT ], 1200 );
+			playTransient( [ CLIP_POINT ] );
 		} );
 
 		document.addEventListener( 'skyy:joy', function () {
-			playTransient( [ CLIP_JOY ], 1000 );
+			playTransient( [ CLIP_JOY ] );
 		} );
 	}
 
@@ -520,12 +554,18 @@
 
 	function boot() {
 		bootStarted = true;
+		loadTimer = setTimeout( failModel, 20000 );
 		loadThree( initScene );
 	}
 
 	window.skyyRoseMascot3D = Object.freeze( {
 		isReady: function () { return modelReady; },
+		isLoading: function () { return ! modelReady && ! modelFailed; },
 		getActions: function () { return Object.keys( actions ).slice(); },
+		getActionDuration: function ( name ) {
+			var action = actions[ String( name ).toLowerCase() ];
+			return action ? action.getClip().duration : 0;
+		},
 		getCurrentAction: function () {
 			return currentAction ? currentAction.getClip().name : null;
 		},
@@ -534,6 +574,13 @@
 	// Bind immediately — mascot.js can fire its first skyy:* events before
 	// Three.js or the GLB have loaded; pendingClip catches those.
 	bindMascotEvents();
+	document.addEventListener( 'visibilitychange', function () {
+		if ( document.hidden ) {
+			stopLoop();
+		} else if ( visible && modelReady ) {
+			startLoop();
+		}
+	} );
 
 	if ( dismissedThisSession() ) {
 		// Same contract as mascot.js: after a dismissal nothing pops in

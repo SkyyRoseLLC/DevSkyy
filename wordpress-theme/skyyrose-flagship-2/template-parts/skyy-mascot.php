@@ -14,11 +14,18 @@ $mascot = skyyrose2_sot_asset_uri( 'images/mascot/skyy-canonical-v2.png' );
 		<div id="skyy-chips" class="skyy-chips" role="group" aria-label="Quick replies"></div>
 		<button id="skyy-ask-trigger" class="skyy-ask-trigger" type="button" hidden>Ask a question</button>
 	</div>
-	<button id="skyyrose-mascot-trigger" class="skyyrose-mascot__character" type="button" aria-label="Chat with Skyy" aria-expanded="false">
+	<button id="skyyrose-mascot-trigger" class="skyyrose-mascot__character" type="button" aria-label="Chat with Skyy" aria-expanded="false" aria-haspopup="dialog" aria-controls="skyy-ask-dialog">
 		<img class="skyyrose-mascot__image" src="<?php echo esc_url( $mascot ); ?>" alt="SkyyRose mascot" width="220" height="220" loading="lazy" decoding="async">
 		<canvas id="skyy-3d-canvas" class="skyy-3d-canvas" width="220" height="340" aria-hidden="true" style="display:none"></canvas>
 	</button>
 	<button id="skyyrose-mascot-minimize" class="skyyrose-mascot__minimize" type="button" aria-label="Minimize Skyy">×</button>
 </div>
 <button id="skyyrose-mascot-recall" class="skyyrose-mascot__recall" type="button" style="display:none" aria-hidden="true" aria-label="Bring Skyy back"><img src="<?php echo esc_url( $mascot ); ?>" alt="" width="32" height="32"><span>Skyy</span></button>
-<dialog id="skyy-ask-dialog" class="skyy-ask-dialog" aria-labelledby="skyy-ask-dialog-title"><form id="skyy-ask-form" class="skyy-ask-form" method="dialog"><h2 id="skyy-ask-dialog-title">Ask Skyy</h2><label for="skyy-ask-input">Sizing, shipping, a collection…</label><input id="skyy-ask-input" type="text" autocomplete="off"><div><button type="button" id="skyy-ask-cancel">Cancel</button><button type="submit">Ask</button></div></form></dialog>
+<dialog id="skyy-ask-dialog" class="skyy-ask-dialog" aria-labelledby="skyy-ask-dialog-title" aria-describedby="skyy-ask-description">
+ <header class="skyy-chat-head"><h2 id="skyy-ask-dialog-title">Ask Skyy</h2><button type="button" id="skyy-ask-cancel" aria-label="Minimize conversation">−</button></header>
+ <div class="skyy-chat-layout"><div id="skyy-chat-stage"></div><div class="skyy-chat-content">
+ <p id="skyy-ask-description">Your house guide for collections, pieces and sizing. Answers come from our site guide and catalog.</p>
+ <div id="skyy-conversation" role="log" aria-label="Conversation with Skyy" aria-live="polite" aria-relevant="additions" tabindex="0"></div>
+ <form id="skyy-ask-form"><label for="skyy-ask-input">Your question</label><div class="skyy-chat-input"><input id="skyy-ask-input" name="question" type="text" autocomplete="off" maxlength="300" required placeholder="Find a piece, explore a collection…"><button type="submit">Send</button></div></form>
+ </div></div>
+</dialog>
