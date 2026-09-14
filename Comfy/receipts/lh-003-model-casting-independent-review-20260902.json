@@ -1,0 +1,74 @@
+{
+  "schema": "product-fidelity-model-casting-review.v1",
+  "task_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "candidate_id": "LH-003-MODEL-CASTING-20260902-A1",
+  "recorded_at": "2026-09-02",
+  "reviewer": {
+    "stable_name": "lh003_source_review",
+    "role": "visual-commerce-qa",
+    "independent_from_project_manager": true,
+    "edited_candidate": false
+  },
+  "bindings": {
+    "contract": "Comfy/scene-contracts/lh-003-model-casting-higgsfield-ooda.json",
+    "candidate_path": "Comfy/quarantine/LH-003-MODEL-CASTING/LH-003-MODEL-CASTING-20260902-A1.png",
+    "candidate_sha256": "7c911e358d5a5e8c1402873a4cdc604766e7c152006559f98255207ae9bb9fc9",
+    "prompt_sha256": "ccc3c58b44f7b473d4998a47ba1634ba5578aea5a3255451b4c9ce61b3dd0f48",
+    "geometry": "2688x1520",
+    "source_authority_receipt": "data/candidates/lh-003-four-view-source-authority-2026-09-02.json"
+  },
+  "weighted_scores": [
+    {
+      "id": "lh003_four_view_product_fidelity",
+      "weight": 45,
+      "raw_score": 70,
+      "weighted_score": 31.5
+    },
+    {
+      "id": "same_model_identity_and_anatomy",
+      "weight": 20,
+      "raw_score": 96,
+      "weighted_score": 19.2
+    },
+    {
+      "id": "garment_fit_and_pocket_visibility",
+      "weight": 15,
+      "raw_score": 90,
+      "weighted_score": 13.5
+    },
+    {
+      "id": "campaign_casting_strength",
+      "weight": 10,
+      "raw_score": 94,
+      "weighted_score": 9.4
+    },
+    {
+      "id": "neutral_reusable_source_quality",
+      "weight": 10,
+      "raw_score": 97,
+      "weighted_score": 9.7
+    }
+  ],
+  "total_score": 83.3,
+  "minimum_score": 90,
+  "passed_observations": [
+    "same adult Black woman identity, face, skin tone, high bun, proportions, and age are consistent across both views",
+    "anatomy, stance, hands, legs, feet, garment fit, and studio contact are credible",
+    "two vertical side zipper pockets are visible in front and two horizontal rear zipper pockets are visible in back",
+    "no fifth pocket, cargo pocket, patch pocket, open welt, or center-back black pentagonal panel appears",
+    "black waistband, white mesh, rose-cloud field, angular side construction, and black-red-white trim are substantially retained",
+    "full-body crop, black styling, neutral gray cyclorama, product visibility, casting strength, and reusable source quality pass"
+  ],
+  "hard_fail_invariants": [
+    {
+      "id": "directional_artwork_side_drift",
+      "evidence": "The Love Hurts treatment remains image-right in both panels. It is wearer-left in the front-facing view but wearer-right in the rear-facing view, so the artwork changes anatomical sides when the model turns around."
+    }
+  ],
+  "verdict": "REJECT",
+  "disposition": "QUARANTINE_NO_AUTOMATIC_RETRY",
+  "founder_model_casting_approval_recommended": false,
+  "eligible_as_lh_commerce_2_wearer_authority": false,
+  "eligible_for_garment_matte_or_scene_input": false,
+  "automatic_paid_retry_allowed": false
+}

@@ -35,3 +35,10 @@ accessibility, commerce, or performance artifacts remain `UNVERIFIED`.
 ## Boundaries
 
 This skill validates handoffs; it does not approve, publish, or waive gates.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. A handoff task requires
+`preview.html`, `contract.json`, `evidence.json`, schema/ID parity, source and
+candidate hashes, plus independent validation. A mismatch is recorded at first
+observation and blocks a release claim.

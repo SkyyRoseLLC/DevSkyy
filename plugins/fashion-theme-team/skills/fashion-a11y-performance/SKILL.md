@@ -36,3 +36,10 @@ lint is not a substitute; missing or skipped evidence is `UNVERIFIED`.
 ## Boundaries
 
 The reviewer is read-only and cannot repair or approve its own candidate.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. Attach route/state/viewport,
+keyboard and assistive-technology evidence, reduced-motion proof, budgets, and
+browser traces. A failed or skipped check is a first-seen issue and leaves the
+task `BLOCKED` or `NEEDS_REVIEW` rather than complete.

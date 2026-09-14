@@ -41,3 +41,10 @@ failure—not a pass with a note.
 ## Boundaries
 
 QA is read-only and never changes code, catalog, live WooCommerce, or deployment.
+
+## End-to-end execution
+
+Run `fashion-e2e-task-execution` with this skill. Record the candidate hash,
+route, viewport, state, SKU/provenance, eyes-on captures, journey traces, and
+reviewer. Preserve every defect as a first-seen issue; do not let a later pass
+erase an earlier candidate-bound failure.
