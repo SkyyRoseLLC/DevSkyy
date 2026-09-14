@@ -929,3 +929,19 @@ def test_pair_with_excluded_member_falls_back_to_solo(monkeypatch):
     assert len(plans) == 1
     assert plans[0].style == "on-model"
     assert not plans[0].output_slug.startswith("pair__")
+
+
+def test_br009_generation_hold_is_enforced_for_batch_planning():
+    # The br-009 dossier (2026-09-11) holds new garment generation: technique,
+    # color and patch fields are unresolved against data/logo-registry.json and
+    # the catalog. Prose alone is not a gate — batch planning must fail closed.
+    # Explicit --sku stays the documented founder override (see EXCLUDED_SKUS).
+    from scripts.oai_render import pipeline, references
+
+    assert "br-009" in config.EXCLUDED_SKUS
+    assert "hold" in config.EXCLUDED_SKUS["br-009"]
+    catalog = references.load_catalog()
+    assert "br-009" in catalog
+    assert "br-009" not in pipeline.resolve_targets(catalog, collection="black-rose")
+    assert "br-009" not in pipeline.resolve_targets(catalog, all_skus=True)
+    assert pipeline.resolve_targets(catalog, sku="br-009") == ["br-009"]

@@ -6,7 +6,7 @@ All CLIP model calls are mocked so tests run without transformers installed.
 
 from __future__ import annotations
 
-import importlib.util
+import importlib
 from dataclasses import FrozenInstanceError
 from unittest.mock import MagicMock, patch
 
@@ -19,7 +19,18 @@ from skyyrose.elite_studio.quality.ml_classifier import (
     QualityClassifier,
 )
 
-_HAS_TORCH = importlib.util.find_spec("torch") is not None
+
+def _has_clip_runtime() -> bool:
+    """True only when every import _run_clip performs before CLIP loading succeeds."""
+    try:
+        importlib.import_module("torch")
+        importlib.import_module("PIL")
+    except ImportError:
+        return False
+    return True
+
+
+_HAS_CLIP_RUNTIME = _has_clip_runtime()
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -87,9 +98,9 @@ class TestClassifierFallback:
         assert result.error == ""
 
     def test_returns_error_result_on_generic_exception(self, tmp_path):
-        # _run_clip imports torch before _load_clip_model is reached; without the
-        # ml extra the ImportError fallback fires first and this path is unreachable.
-        if not _HAS_TORCH:
+        # _run_clip imports torch and PIL before _load_clip_model is reached; without
+        # the ml extra the ImportError fallback fires first and this path is unreachable.
+        if not _HAS_CLIP_RUNTIME:
             pytest.skip("classifier exception path requires the ml extra")
         img = tmp_path / "test.jpg"
         img.write_bytes(b"FAKEJPEG")
@@ -112,7 +123,7 @@ class TestClassifierFallback:
 # ---------------------------------------------------------------------------
 
 
-@pytest.mark.skipif(not _HAS_TORCH, reason="mocked CLIP inference requires the ml extra")
+@pytest.mark.skipif(not _HAS_CLIP_RUNTIME, reason="mocked CLIP inference requires the ml extra")
 class TestClassifierWithMockCLIP:
     def _mock_clip_call(self, probs: list[float], image_path: str) -> ClassifierResult:
         """Run classifier with mocked CLIP outputs."""

@@ -39,7 +39,7 @@ def _reset_rate_limiter():
 
 
 @pytest.fixture(autouse=True)
-def _no_live_sdk_escalation(monkeypatch):
+def _no_live_sdk_escalation():
     """Fail closed: never spawn a live Claude Agent SDK agent from pytest.
 
     Orchestrator._sdk_escalation runs a real, paid, full-tool-profile SDK
@@ -49,20 +49,33 @@ def _no_live_sdk_escalation(monkeypatch):
     Set DEVSKYY_TESTS_ALLOW_SDK=1 to opt a run back in deliberately.
     """
     if os.environ.get("DEVSKYY_TESTS_ALLOW_SDK") == "1":
+        yield
         return
     # Do not import the orchestrator here: that drags in the whole agents
     # package (and core/errors/production_errors.py, which needs Python 3.12
     # syntax) into jobs that never touch it. Only patch when a test module
     # has already loaded it.
+    # Deliberately not using the ``monkeypatch`` fixture: requesting it here
+    # changes fixture setup order for every test, which broke module-level
+    # autouse fixtures that tear down after a test's own monkeypatch is undone.
     module = sys.modules.get("agents.core.orchestrator")
     orchestrator_cls = getattr(module, "Orchestrator", None) if module else None
     if orchestrator_cls is None:
+        yield
         return
 
     async def _unavailable(self, task, **kwargs):
         return None
 
-    monkeypatch.setattr(orchestrator_cls, "_sdk_escalation", _unavailable)
+    original = orchestrator_cls.__dict__.get("_sdk_escalation")
+    orchestrator_cls._sdk_escalation = _unavailable
+    try:
+        yield
+    finally:
+        if original is None:
+            delattr(orchestrator_cls, "_sdk_escalation")
+        else:
+            orchestrator_cls._sdk_escalation = original
 
 
 @pytest.fixture

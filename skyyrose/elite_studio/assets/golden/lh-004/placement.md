@@ -5,7 +5,7 @@ _Collection: love-hurts_
 'Love Hurts' logo lettering across the front. Inside of the hood features a sublimated rose logo. BACK: large 'Heart and Rose' Love Hurts logo centered.
 
 ## Garment silhouette lock
-Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). NOT a satin bomber. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
+Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contrast raglan sleeves** (sleeves are a different color from the body, joining at a diagonal raglan seam from underarm to neck), **black hood**, **button-front placket** (snap or button-front closure running the full length of the center-front), **vertical slash hand pockets** at the lower sides with welt openings, **ribbed-knit cuffs and waistband with red+white+black striped accent banding**. The hood lining shows a small white-and-red rose-silhouette mini-pattern (visible when the hood is laid open or worn down). Satin appearance is required by the later founder review; fiber composition is not established here. NOT a sherpa jacket. NOT a windbreaker. NOT a hoodie (it has button-front closure, not pullover construction).
 
 ## Logo placements
 1. **love-hurts-full-lettering** — position: `front_across`, technique: `embroidered_or_applique`, size: 12″
@@ -24,7 +24,7 @@ Hooded varsity-bomber hybrid jacket — **white body fabric** with **black contr
 - NO greyscale rose rendering anywhere — all rose imagery is canonical Love Hurts multi-color (red + green + brown).
 - NO single-color body — the body is WHITE with BLACK raglan sleeves and BLACK hood (three-color contrast: white body + black sleeves + black hood).
 - NO non-raglan sleeve seam — the sleeves are RAGLAN cut (diagonal seam from underarm to neck), NOT set-in.
-- NO satin or sherpa fabric — this is a cotton-blend bomber/varsity weight, NOT satin (that's br-006) or sherpa.
+- NO sherpa fabric. Preserve the satin appearance requested in the later founder review; do not infer cotton-blend or any fiber composition.
 - NO zipper-front closure — the front is BUTTON or SNAP placket, NOT a zipper.
 - NO solid-color cuffs/hem — the rib-knit cuffs and waistband have a STRIPED accent pattern (white + red + black), NOT solid black or solid white.
 - NO sublimated all-over body pattern — the body is solid white, NOT sublimated.
