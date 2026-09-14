@@ -5,6 +5,7 @@ const { requireQa } = require('./runtime.cjs');
 const pw = requireQa('playwright');
 const out = path.resolve(__dirname, '../../../.artifacts/v2-cinematic-finalization-20260906/skyy');
 (async () => {
+  fs.mkdirSync(out, { recursive: true });
   const rows = [];
   for (const name of ['firefox', 'webkit']) {
     const browser = await pw[name].launch();

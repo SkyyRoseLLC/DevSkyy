@@ -5,6 +5,7 @@ const fs = require('node:fs/promises'),
 const { requireQa } = require('./runtime.cjs');
 const out = path.resolve(__dirname, '../../../.artifacts/v2-cinematic-finalization-20260906/scenes');
 (async () => {
+  await fs.mkdir(out, { recursive: true });
   const browser = await requireQa('playwright').chromium.launch();
   const results = [];
   try {
@@ -12,7 +13,10 @@ const out = path.resolve(__dirname, '../../../.artifacts/v2-cinematic-finalizati
       for (const route of ['/', '/collections/signature/', '/collections/black-rose/', '/collections/love-hurts/']) {
         const c = await browser.newContext({ viewport: { width: 390, height: 900 } });
         const p = await c.newPage();
-        await p.goto(`http://127.0.0.1:${port}${route}`);
+        const expectedUrl = `http://127.0.0.1:${port}${route}`;
+        const response = await p.goto(expectedUrl);
+        assert(response && response.ok(), `Failed scene route: ${expectedUrl}`);
+        assert.equal(p.url(), expectedUrl);
         await p.waitForTimeout(800);
         const r = await p.evaluate(() => ({
           posters: [...document.querySelectorAll('.sr2-hero-commerce__frame>img')].map(img => ({
@@ -36,7 +40,7 @@ const out = path.resolve(__dirname, '../../../.artifacts/v2-cinematic-finalizati
           assert(r.videos.every(v => !v));
           assert(r.posters.filter(p => p.src).length <= 1);
         }
-        results.push({ port, route, ...r });
+        results.push({ port, route, status: response.status(), url: p.url(), ...r });
         await c.close();
       }
     await fs.writeFile(

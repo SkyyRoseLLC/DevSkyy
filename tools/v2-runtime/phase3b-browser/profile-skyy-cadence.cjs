@@ -4,6 +4,7 @@ const { requireQa } = require('./runtime.cjs');
 const { chromium } = requireQa('playwright');
 const out = path.resolve(__dirname, '../../../.artifacts/v2-readiness-20260906/skyy');
 (async () => {
+  fs.mkdirSync(out, { recursive: true });
   const b = await chromium.launch({ args: ['--use-angle=metal', '--enable-gpu'] });
   const rows = [];
   try {

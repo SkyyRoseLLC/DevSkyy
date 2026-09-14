@@ -3,7 +3,9 @@ const fs = require('node:fs/promises'),
   path = require('node:path'),
   assert = require('node:assert/strict');
 const { requireQa } = require('./runtime.cjs');
+const out = path.resolve(__dirname, '../../../.artifacts/v2-cinematic-finalization-20260906/scenes');
 (async () => {
+  await fs.mkdir(out, { recursive: true });
   const b = await requireQa('playwright').chromium.launch();
   const rows = [];
   try {
@@ -18,7 +20,7 @@ const { requireQa } = require('./runtime.cjs');
           const v = document.querySelector(`[data-scene-id="${id}"] video`);
           return !v.paused && v.currentTime > 0.3;
         }, id);
-        const button = scene.locator('button');
+        const button = scene.locator('[data-scene-motion-toggle]');
         await button.tap();
         await p.waitForFunction(id => document.querySelector(`[data-scene-id="${id}"] video`).paused, id);
         await button.tap();

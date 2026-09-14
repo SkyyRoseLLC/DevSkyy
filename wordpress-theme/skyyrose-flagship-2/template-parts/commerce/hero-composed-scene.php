@@ -7,8 +7,9 @@
 
 defined( 'ABSPATH' ) || exit;
 $scene = $args['scene'];
-$record = $scene['hero_composition'];
+$record = (array) ( $scene['hero_composition'] ?? array() );
 $collection = $args['collection'];
+if ( ! skyyrose2_approved_scroll_world_scene( $scene, $collection ) ) { return; }
 $index = absint( $args['index'] ?? 0 );
 $scene_id = sanitize_html_class( strtolower( $scene['scene_id'] ) );
 $products = skyyrose2_resolve_commerce_scene_products( $scene, $collection );
@@ -83,7 +84,7 @@ foreach ( (array) ( $record['variants'] ?? array() ) as $variant ) {
 			<?php if ( $hotspots_valid ) : ?><button type="button" class="sr2-scene-motion__toggle" data-scene-shop-toggle aria-pressed="false" aria-controls="scene-hotspots-<?php echo esc_attr( $scene_id ); ?>" hidden><?php esc_html_e( 'Product hotspots', 'skyyrose-flagship-2' ); ?></button><?php endif; ?>
 			<button type="button" class="sr2-scene-motion__toggle" data-scene-motion-toggle
 				aria-controls="scene-motion-<?php echo esc_attr( $scene_id ); ?>"
-				aria-label="<?php echo esc_attr( 'Play motion: ' . $scene['label'] ); ?>" hidden>Play motion</button>
+				aria-label="<?php echo esc_attr( sprintf( __( 'Play motion: %s', 'skyyrose-flagship-2' ), $scene['label'] ) ); ?>" hidden><?php esc_html_e( 'Play motion', 'skyyrose-flagship-2' ); ?></button>
 		</div>
 	<?php endif; ?>
 	<div class="sr2-hero-commerce__details">

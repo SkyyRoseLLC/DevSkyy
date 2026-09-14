@@ -8,11 +8,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: skyyrose-flagship-2\n"
 
-#: template-parts/commerce/hero-composed-scene.php:59
+#: template-parts/commerce/hero-composed-scene.php:60
 msgid "%1$d. View %2$s"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:59
+#: template-parts/commerce/hero-composed-scene.php:60
 msgid "%1$d. View pre-order: %2$s"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgstr ""
 msgid "%s collection world"
 msgstr ""
 
-#: template-collection.php:138 template-parts/commerce/hero-composed-scene.php:110
+#: template-collection.php:138 template-parts/commerce/hero-composed-scene.php:111
 msgid "%s is not currently available."
 msgstr ""
 
@@ -342,7 +342,7 @@ msgstr ""
 msgid "Cathedral of Thorns"
 msgstr ""
 
-#: template-collection.php:146 template-parts/commerce/hero-composed-scene.php:91
+#: template-collection.php:146 template-parts/commerce/hero-composed-scene.php:92
 msgid "Chapter %02d"
 msgstr ""
 
@@ -1374,6 +1374,14 @@ msgstr ""
 msgid "Play film"
 msgstr ""
 
+#: template-parts/commerce/hero-composed-scene.php:87
+msgid "Play motion"
+msgstr ""
+
+#: template-parts/commerce/hero-composed-scene.php:87
+msgid "Play motion: %s"
+msgstr ""
+
 #: page.php:41
 msgid "Please wait a moment before sending another message."
 msgstr ""
@@ -1386,19 +1394,19 @@ msgstr ""
 msgid "Pre-Order"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:107
+#: template-parts/commerce/hero-composed-scene.php:108
 msgid "Pre-order / Full payment at checkout"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:92 template-parts/commerce/product-card.php:139 template-parts/commerce/product-hero.php:128
+#: template-parts/commerce/hero-composed-scene.php:93 template-parts/commerce/product-card.php:139 template-parts/commerce/product-hero.php:128
 msgid "Pre-order edition"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:82 template-parts/commerce/hero-composed-scene.php:98
+#: template-parts/commerce/hero-composed-scene.php:83 template-parts/commerce/hero-composed-scene.php:99
 msgid "Pre-order this look"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:60
+#: template-parts/commerce/hero-composed-scene.php:61
 msgid "Pre-order: %s"
 msgstr ""
 
@@ -1462,7 +1470,7 @@ msgstr ""
 msgid "Product archive"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:83
+#: template-parts/commerce/hero-composed-scene.php:84
 msgid "Product hotspots"
 msgstr ""
 
@@ -1738,7 +1746,7 @@ msgstr ""
 msgid "Shop collections"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:56
+#: template-parts/commerce/hero-composed-scene.php:57
 msgid "Shop garments in %s"
 msgstr ""
 
@@ -1758,7 +1766,7 @@ msgstr ""
 msgid "Shop the looks. Each scene connects to the exact pieces in its cast."
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:82 template-parts/commerce/hero-composed-scene.php:98
+#: template-parts/commerce/hero-composed-scene.php:83 template-parts/commerce/hero-composed-scene.php:99
 msgid "Shop this look"
 msgstr ""
 
@@ -2198,7 +2206,7 @@ msgstr ""
 msgid "The origin"
 msgstr ""
 
-#: template-parts/commerce/hero-composed-scene.php:99
+#: template-parts/commerce/hero-composed-scene.php:100
 msgid "The pieces in this scene are pre-order items. Full payment is due at checkout. Review each product for shipping details, or contact Client Services for an estimate before ordering."
 msgstr ""
 

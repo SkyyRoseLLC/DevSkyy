@@ -8,7 +8,7 @@ const sharp = require('sharp');
 const themeDir = path.resolve(__dirname, '..');
 const evidenceDir = path.join(
   themeDir,
-  'assets/scroll-world/generated-candidates/founder-commerce-scenes-v1/evidence/rendered'
+  '../../.artifacts/v2-commerce-scenes/rendered'
 );
 const baseUrl = process.env.SR2_COMMERCE_PREVIEW_URL;
 
@@ -76,10 +76,14 @@ async function run() {
 
       for (const [collection, sceneIds] of Object.entries(collections)) {
         for (const sceneId of sceneIds) {
-          await page.goto(`${baseUrl}?route=${collection}`, {
+          const response = await page.goto(`${baseUrl}?route=${collection}`, {
             waitUntil: 'networkidle',
             timeout: 30_000,
           });
+          if (!response || !response.ok()) throw new Error(`Scene route failed: ${response?.status()}`);
+          if (/Fatal error|Uncaught Error|Warning:/.test(await page.locator('body').innerText())) {
+            throw new Error(`PHP preview error on ${collection}`);
+          }
           await page.addStyleTag({
             content: '*,*::before,*::after{animation-duration:0s!important;transition-duration:0s!important;scroll-behavior:auto!important}.sr2-preview-banner,[data-site-header],.sr2-skip{display:none!important}',
           });
@@ -103,15 +107,12 @@ async function run() {
           await page.evaluate(
             ({ targetSceneId, targetWidth }) => {
               const target = document.querySelector(`[data-scene-id="${targetSceneId}"]`);
-              const world = target?.closest('[data-horizontal-world]');
-              const stage = target?.closest('[data-scroll-world-stage]');
-              const rail = target?.closest('[data-horizontal-rail]');
-              if (!target || !world || !stage || !rail) {
+              const world = target?.closest('[data-recovery-rail]');
+              const rail = target?.closest('[data-recovery-track]');
+              if (!target || !world || !rail) {
                 throw new Error(`Unable to isolate ${targetSceneId}`);
               }
-              world.classList.remove('is-scroll-world');
               world.style.height = 'auto';
-              stage.style.height = 'auto';
               rail.style.display = 'block';
               rail.style.overflow = 'visible';
               rail.style.padding = '0';

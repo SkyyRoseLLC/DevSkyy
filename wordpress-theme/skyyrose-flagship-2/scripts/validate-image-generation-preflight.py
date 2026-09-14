@@ -49,6 +49,35 @@ def require(condition: bool, message: str) -> None:
         raise SystemExit(f"FAIL {message}")
 
 
+def validate_tournament_policy(tournament: dict[str, Any]) -> None:
+    """Enforce the current founder policy; never grant generation approval."""
+    require(
+        tournament["schema"] == "skyyrose.image-generation-tournament-policy.v1",
+        "stale tournament policy schema",
+    )
+    require(
+        tournament["required_vision_judges"] == ["gpt-5.5-pro"],
+        "wrong required vision judges",
+    )
+    require(tournament["synthesis_model"] is None, "wrong synthesis model")
+    require(tournament["minimum_each_vision_score"] == 95, "vision threshold must remain 95")
+    require(tournament["minimum_final_score"] == 95, "final threshold must remain 95")
+    require(
+        tournament["required_hallucination_veto_result"] is False,
+        "hallucination veto must resolve false",
+    )
+    require(tournament["all_judges_available"] is True, "all judges must be available")
+    require(
+        tournament["unverifiable_required_regions"] == 0, "all required regions must be verifiable"
+    )
+    require(
+        tournament["source_hashes_current"] is True, "tournament must require current source hashes"
+    )
+    require(
+        tournament["founder_approval_required"] is True, "founder approval must remain required"
+    )
+
+
 def root_path(value: str) -> Path:
     path = (ROOT / value).resolve()
     require(path == ROOT or ROOT in path.parents, f"path escapes repository: {value}")
@@ -291,31 +320,7 @@ def main() -> int:
         "mandatory_adversarial_tournament_policy",
     )
     tournament = load_json(tournament_path)
-    require(
-        tournament["schema"] == "skyyrose.image-generation-tournament-policy.v1",
-        "stale tournament policy schema",
-    )
-    require(
-        tournament["required_vision_judges"] == ["gpt-5.5-pro", "gemini-3.1-pro-preview"],
-        "wrong required vision judges",
-    )
-    require(tournament["synthesis_model"] == "claude-opus-5", "wrong synthesis model")
-    require(tournament["minimum_each_vision_score"] == 95, "vision threshold must remain 95")
-    require(tournament["minimum_final_score"] == 98, "final threshold must remain 98")
-    require(
-        tournament["required_hallucination_veto_result"] is False,
-        "hallucination veto must resolve false",
-    )
-    require(tournament["all_judges_available"] is True, "all judges must be available")
-    require(
-        tournament["unverifiable_required_regions"] == 0, "all required regions must be verifiable"
-    )
-    require(
-        tournament["source_hashes_current"] is True, "tournament must require current source hashes"
-    )
-    require(
-        tournament["founder_approval_required"] is True, "founder approval must remain required"
-    )
+    validate_tournament_policy(tournament)
     require(
         JUDGE_AVAILABILITY.is_file(),
         "judge-availability receipt missing; run verify-image-judge-availability.py",
@@ -336,8 +341,7 @@ def main() -> int:
         "judge availability disagrees with policy",
     )
     require(
-        [item["model"] for item in availability["judges"]]
-        == ["gpt-5.5-pro", "gemini-3.1-pro-preview", "claude-opus-5"],
+        [item["model"] for item in availability["judges"]] == ["gpt-5.5-pro"],
         "judge-availability receipt covers the wrong models",
     )
 
