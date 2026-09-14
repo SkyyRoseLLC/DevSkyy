@@ -1607,6 +1607,15 @@ wheels = [
 ]
 
 [[package]]
+name = "detect-agent"
+version = "0.6.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/50/07/62586d442e629fd4208da5dd1bee7bb604898604d9343b0a3fb9c973fc06/detect_agent-0.6.0.tar.gz", hash = "sha256:e1b1bba5d4e20f59f97aeae4016291f9563818a33ff7c0e8a18c6b948b5cd939", size = 45886, upload-time = "2026-08-12T17:08:35.836Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/f8/65/4df635649962338b3f4cd4cbb0f360e1354f8b2043b4728284de8a1a3341/detect_agent-0.6.0-py3-none-any.whl", hash = "sha256:d218806fda221486d886d68526acd950cef9eb09571189968bfc004acd5ca595", size = 11449, upload-time = "2026-08-12T17:08:34.991Z" },
+]
+
+[[package]]
 name = "devskyy"
 version = "3.2.0"
 source = { editable = "." }
@@ -1790,6 +1799,7 @@ all = [
     { name = "tensorboard" },
     { name = "textblob" },
     { name = "tiktoken" },
+    { name = "together" },
     { name = "tokenizers" },
     { name = "toml" },
     { name = "torch" },
@@ -1837,6 +1847,7 @@ dev = [
     { name = "rich" },
     { name = "ruff" },
     { name = "selenium" },
+    { name = "together" },
     { name = "typer" },
     { name = "watchfiles" },
 ]
@@ -2162,6 +2173,7 @@ requires-dist = [
     { name = "textblob", marker = "extra == 'ml'", specifier = ">=0.18.0.post0" },
     { name = "tiktoken", specifier = ">=0.8.0" },
     { name = "tiktoken", marker = "extra == 'mcp'", specifier = ">=0.8.0" },
+    { name = "together", marker = "extra == 'dev'", specifier = "==2.31.0" },
     { name = "tokenizers", marker = "extra == 'ml'", specifier = ">=0.21.0" },
     { name = "toml", specifier = ">=0.10.2" },
     { name = "toml", marker = "extra == 'mcp'", specifier = "==0.10.2" },
@@ -8659,6 +8671,31 @@ wheels = [
 ]
 
 [[package]]
+name = "together"
+version = "2.31.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+    { name = "cyclopts" },
+    { name = "detect-agent" },
+    { name = "distro" },
+    { name = "filelock" },
+    { name = "httpx" },
+    { name = "pydantic", version = "2.11.10", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.14'" },
+    { name = "pydantic", version = "2.13.4", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.14'" },
+    { name = "rich" },
+    { name = "sniffio" },
+    { name = "tqdm" },
+    { name = "types-pyyaml" },
+    { name = "types-tqdm" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/af/9e/183a6d7b767daefee3d933dab75860d44a276f3b4f59b6119017c72debfb/together-2.31.0.tar.gz", hash = "sha256:e9c941caf055eb1a97fc560819a19fbb95d626722b712a4ec7cc1ea2bb0ecd27", size = 799802, upload-time = "2026-08-12T22:03:54.247Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/63/d1/01f80c4aeba53e3bde6eb52cc166524c18000d2420d7c131e13930202cf4/together-2.31.0-py3-none-any.whl", hash = "sha256:732c5e4fe332abd1e9fcde7810835fc8d07af67af02dda34bbde8572ff747c1e", size = 668647, upload-time = "2026-08-12T22:03:52.757Z" },
+]
+
+[[package]]
 name = "tokenizers"
 version = "0.22.2"
 source = { registry = "https://pypi.org/simple" }
@@ -8959,6 +8996,15 @@ wheels = [
 ]
 
 [[package]]
+name = "types-pyyaml"
+version = "6.0.12.20260906"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/90/6e/abec85b9013db5b934b0280a6dd104904d84f7bcbaab2e2f3def87ac7463/types_pyyaml-6.0.12.20260906.tar.gz", hash = "sha256:f59c1cc05010b833d2d72287bbaa72610106b28d42d89a907313117faba85212", size = 18649, upload-time = "2026-09-06T06:35:35.362Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/15/c0/fc0644b7ddcfb969e95845837143cb5173ddd6e06ee4ba5fc493cd9329b7/types_pyyaml-6.0.12.20260906-py3-none-any.whl", hash = "sha256:bca893ff0d51df5c9053137d5d0e6ccd36e939a196356f1d5c16372422f5137b", size = 21282, upload-time = "2026-09-06T06:35:34.372Z" },
+]
+
+[[package]]
 name = "types-requests"
 version = "2.32.4.20260107"
 source = { registry = "https://pypi.org/simple" }
@@ -8968,6 +9014,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/0f/f3/a0663907082280664d745929205a89d41dffb29e89a50f753af7d57d0a96/types_requests-2.32.4.20260107.tar.gz", hash = "sha256:018a11ac158f801bfa84857ddec1650750e393df8a004a8a9ae2a9bec6fcb24f", size = 23165, upload-time = "2026-01-07T03:20:54.091Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/1c/12/709ea261f2bf91ef0a26a9eed20f2623227a8ed85610c1e54c5805692ecb/types_requests-2.32.4.20260107-py3-none-any.whl", hash = "sha256:b703fe72f8ce5b31ef031264fe9395cac8f46a04661a79f7ed31a80fb308730d", size = 20676, upload-time = "2026-01-07T03:20:52.929Z" },
+]
+
+[[package]]
+name = "types-tqdm"
+version = "4.70.0.20260906"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fe/92/517d71d5a399cd2f8ead3b4328d987262478f22fbbe7f8312360d4c321d0/types_tqdm-4.70.0.20260906.tar.gz", hash = "sha256:6581dc996152a87d51ce2ea169169187ffc0a96dacdb8adbdef29cbee8c1e631", size = 19309, upload-time = "2026-09-06T06:35:31.916Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/81/ea/d12697988ab2c672877796ecaea69666e2379ee7b40f01f4540250d5a97b/types_tqdm-4.70.0.20260906-py3-none-any.whl", hash = "sha256:c3b88c694928515d601f73fa6646aa43adc0ef735bedbeebf0cc543f6a201ae8", size = 25181, upload-time = "2026-09-06T06:35:30.931Z" },
 ]
 
 [[package]]
