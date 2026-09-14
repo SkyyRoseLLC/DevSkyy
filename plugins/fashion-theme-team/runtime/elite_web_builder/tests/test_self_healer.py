@@ -164,7 +164,9 @@ class TestHealCycle:
             failed_gates={Gate.TESTS},
             failure_analyses=[
                 HealAttempt(
-                    gate=Gate.TESTS, category=FailureCategory.CODE_BUG, description="test failures"
+                    gate=Gate.TESTS,
+                    category=FailureCategory.CODE_BUG,
+                    description="test failures",
                 ),
             ],
             suggested_actions=["fix tests"],
@@ -213,7 +215,9 @@ class TestHealCycle:
             VerificationReport(
                 results=[
                     GateResult(
-                        gate=Gate.SECURITY, status=GateStatus.FAILED, message="secret found"
+                        gate=Gate.SECURITY,
+                        status=GateStatus.FAILED,
+                        message="secret found",
                     ),
                 ]
             ),

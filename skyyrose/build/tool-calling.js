@@ -11,15 +11,20 @@
  * Run: node build/tool-calling.js
  *
  * Requires environment variables (at least one provider key):
- *   OPENAI_API_KEY     - for OpenAI and Vercel AI SDK engines
+ *   OPENAI_API_KEY     - for the direct OpenAI engine
+ *   AI_GATEWAY_API_KEY - for the Vercel AI Gateway engine
  *   GEMINI_API_KEY     - for Gemini engine
  *   ANTHROPIC_API_KEY  - for Claude engine
  */
 
-'use strict';
+import { createRequire } from 'node:module';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+
+const require = createRequire(import.meta.url);
 
 const fs   = require('fs');
 const path = require('path');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // ---------------------------------------------------------------------------
 // Package imports
@@ -31,8 +36,8 @@ const { OpenAI } = require('openai');
 // Anthropic SDK
 const Anthropic = require('@anthropic-ai/sdk');
 
-// Vercel AI SDK  (ai@6.x ships generateText, generateObject, tool as named exports)
-const { generateText, generateObject, tool } = require('ai');
+// Vercel AI SDK 7: provider-v4 models, inputSchema tools, bounded tool loops
+const { generateText, isStepCount, tool } = require('ai');
 
 // @ai-sdk/gateway provides a Vercel-hosted OpenAI-compatible language model
 // that works with generateText without requiring @ai-sdk/openai
@@ -383,7 +388,7 @@ function buildVercelTools(productData) {
   return {
     search_products: tool({
       description: 'Search SkyyRose products by name, collection, or category',
-      parameters: z.object({
+      inputSchema: z.object({
         query:      z.string().describe('Search term matched against product name and description'),
         collection: z.enum(VALID_COLLECTIONS).optional().describe('Optional collection filter'),
         maxResults: z.number().int().optional().default(5).describe('Max results to return'),
@@ -393,7 +398,7 @@ function buildVercelTools(productData) {
 
     get_product_details: tool({
       description: 'Get full details for a specific SkyyRose product by ID or name',
-      parameters: z.object({
+      inputSchema: z.object({
         productId: z.string().describe('Product ID (e.g. "br-001") or name fragment'),
       }),
       execute: async (params) => impl_get_product_details(params, productData),
@@ -401,13 +406,13 @@ function buildVercelTools(productData) {
 
     get_cart_contents: tool({
       description: 'Get current shopping cart contents and total',
-      parameters: z.object({}),
+      inputSchema: z.object({}),
       execute: async () => impl_get_cart_contents(),
     }),
 
     add_to_cart: tool({
       description: 'Add a SkyyRose product to the shopping cart',
-      parameters: z.object({
+      inputSchema: z.object({
         productId: z.string().describe('Product ID to add'),
         quantity:  z.number().int().min(1).describe('Number of units to add'),
         size:      z.string().optional().describe('Size variant'),
@@ -418,7 +423,7 @@ function buildVercelTools(productData) {
 
     check_availability: tool({
       description: 'Check if a specific SkyyRose product / size / color is in stock',
-      parameters: z.object({
+      inputSchema: z.object({
         productId: z.string().describe('Product ID to check'),
         size:      z.string().optional().describe('Size to check'),
         color:     z.string().optional().describe('Color to check'),
@@ -511,7 +516,7 @@ class ToolCallingEngine {
       this.openaiClient = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
       console.log('[ToolEngine] OpenAI client initialized.');
     } else {
-      console.warn('[ToolEngine] OPENAI_API_KEY not set — OpenAI and Vercel AI SDK engines will be skipped.');
+      console.warn('[ToolEngine] OPENAI_API_KEY not set — direct OpenAI engine will be skipped.');
     }
 
     // Load product catalog synchronously at construction time
@@ -610,23 +615,23 @@ class ToolCallingEngine {
    * Uses @ai-sdk/gateway to create a language model compatible with the
    * Vercel AI SDK's unified provider interface. Tools are defined with the
    * tool() helper and Zod schemas — the SDK handles the agentic loop
-   * automatically (maxSteps controls max tool-call rounds).
+   * automatically (stopWhen bounds the tool-call rounds).
    *
    * @param {string} userMessage
+   * @param {import('@ai-sdk/gateway').GatewayProviderSettings} [gatewayOptions]
    * @returns {Promise<string>} final text response
    */
-  async runWithVercelAI(userMessage) {
-    if (!process.env.OPENAI_API_KEY) {
-      return '[Skipped] Vercel AI SDK engine requires OPENAI_API_KEY (used via gateway).';
+  async runWithVercelAI(userMessage, gatewayOptions = {}) {
+    const gatewayApiKey = gatewayOptions.apiKey ?? process.env.AI_GATEWAY_API_KEY;
+    if (!gatewayApiKey) {
+      return '[Skipped] Vercel AI SDK engine requires AI_GATEWAY_API_KEY.';
     }
 
     console.log('\n--- Vercel AI SDK Engine ---');
 
     // Build gateway-backed language model
-    // createGateway wraps the Anthropic gateway; for OpenAI models we pass
-    // the API key via OPENAI_API_KEY environment variable which the gateway
-    // picks up automatically when the model ID is prefixed with 'openai/'.
-    const gateway = createGateway({ apiKey: process.env.OPENAI_API_KEY });
+    // Gateway authentication is separate from a direct OpenAI provider key.
+    const gateway = createGateway({ ...gatewayOptions, apiKey: gatewayApiKey });
     const model   = gateway.languageModel('openai/gpt-4o-mini');
 
     const vercelTools = buildVercelTools(this.productData);
@@ -636,7 +641,7 @@ class ToolCallingEngine {
       system:   SYSTEM_PROMPT,
       prompt:   userMessage,
       tools:    vercelTools,
-      maxSteps: 5,   // SDK will automatically loop tool calls up to this many steps
+      stopWhen: isStepCount(5), // Bound tool execution and follow-up generations
     });
 
     console.log(`  [Vercel AI] Steps used: ${result.steps ? result.steps.length : 'N/A'}`);
@@ -896,7 +901,7 @@ class ToolCallingEngine {
 // Exports
 // ---------------------------------------------------------------------------
 
-module.exports = {
+export {
   ToolCallingEngine,
   OPENAI_TOOLS,
   GEMINI_FUNCTION_DECLARATIONS,
@@ -909,7 +914,7 @@ module.exports = {
 // Entry point — run demo when executed directly
 // ---------------------------------------------------------------------------
 
-if (require.main === module) {
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   const engine = new ToolCallingEngine();
   engine.demo().catch((err) => {
     console.error('[ToolCallingEngine] Fatal error:', err);

@@ -173,8 +173,16 @@ _LINT_PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
         re.compile(r"\berror_reporting\s*\(\s*0\s*\)"),
         "error_reporting(0) suppresses errors",
     ),
-    (".php", re.compile(r"mysql_(?:query|connect|fetch)"), "deprecated mysql_* functions"),
-    (".php", re.compile(r"\$_(?:GET|POST|REQUEST)\s*\["), "raw superglobal without sanitization"),
+    (
+        ".php",
+        re.compile(r"mysql_(?:query|connect|fetch)"),
+        "deprecated mysql_* functions",
+    ),
+    (
+        ".php",
+        re.compile(r"\$_(?:GET|POST|REQUEST)\s*\["),
+        "raw superglobal without sanitization",
+    ),
     (".js", re.compile(r"\bconsole\.\w+\s*\("), "console.log left in code"),
     (".js", re.compile(r"\balert\s*\("), "alert() in production code"),
     (".js", re.compile(r"\bdebugger\b"), "debugger statement"),
@@ -241,7 +249,8 @@ _SECRET_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"-----BEGIN (?:RSA |EC |DSA )?PRIVATE KEY-----"), "private key"),
     (
         re.compile(
-            r"(?:access_token|api_key|secret_key)\s*[:=]\s*['\"][^'\"]{8,}['\"]", re.IGNORECASE
+            r"(?:access_token|api_key|secret_key)\s*[:=]\s*['\"][^'\"]{8,}['\"]",
+            re.IGNORECASE,
         ),
         "hardcoded credential",
     ),
@@ -250,7 +259,10 @@ _SECRET_PATTERNS: list[tuple[re.Pattern[str], str]] = [
 _XSS_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\.innerHTML\s*="), "innerHTML assignment (XSS vector)"),
     (re.compile(r"document\.write\s*\("), "document.write (XSS vector)"),
-    (re.compile(r"\becho\s+\$_(?:GET|POST|REQUEST)"), "unescaped echo of user input (XSS)"),
+    (
+        re.compile(r"\becho\s+\$_(?:GET|POST|REQUEST)"),
+        "unescaped echo of user input (XSS)",
+    ),
 ]
 
 
@@ -394,11 +406,16 @@ _A11Y_CHECKS: list[tuple[re.Pattern[str], str, str]] = [
         "SERIOUS",
     ),
     # Empty links
-    (re.compile(r"<a\b[^>]*>\s*</a>", re.IGNORECASE), "empty link (no text content)", "SERIOUS"),
+    (
+        re.compile(r"<a\b[^>]*>\s*</a>", re.IGNORECASE),
+        "empty link (no text content)",
+        "SERIOUS",
+    ),
     # Missing form labels
     (
         re.compile(
-            r"<input\b(?![^>]*\b(?:aria-label|aria-labelledby|id)\s*=)[^>]*>", re.IGNORECASE
+            r"<input\b(?![^>]*\b(?:aria-label|aria-labelledby|id)\s*=)[^>]*>",
+            re.IGNORECASE,
         ),
         "input without label association",
         "SERIOUS",

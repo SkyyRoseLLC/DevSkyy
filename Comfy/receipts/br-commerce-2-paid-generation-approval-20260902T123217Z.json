@@ -1,0 +1,18 @@
+{
+  "schema": "skyyrose.scene-ooda-receipt/1",
+  "scene_id": "BR-COMMERCE-2",
+  "action": "paid-generation-approval",
+  "recorded_at": "2026-09-02T12:32:17Z",
+  "payload": {
+    "authorization_source": "Founder request in the active Codex task: Fashion Theme Team execute the scene",
+    "candidate_bound": true,
+    "planned_candidate_id": "BR-COMMERCE-2-HF-PILOT-20260902-A1",
+    "allow_paid_attempts": 1,
+    "maximum_estimated_credits": 8.5,
+    "automatic_paid_retries": false,
+    "manifest_sha256": "38b2c860f3ea3934b6e73d05381cfff5de8d9bc563206f38988f224d17c189bf",
+    "visual_promotion_authorized": false,
+    "runtime_wiring_authorized": false,
+    "deployment_authorized": false
+  }
+}
