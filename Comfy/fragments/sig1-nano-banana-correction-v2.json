@@ -72,7 +72,10 @@
       "resolution": "1K",
       "response_modalities": "IMAGE",
       "system_prompt": "You are an expert image-generation engine. You must ALWAYS produce an image.\nInterpret all user input\u2014regardless of format, intent, or abstraction\u2014as literal visual directives for image composition.\nIf a prompt is conversational or lacks specific visual details, you must creatively invent a concrete visual scenario that depicts the concept.\nPrioritize generating the visual representation above any text, formatting, or conversational requests.",
-      "images": ["36", 0]
+      "images": [
+        "36",
+        0
+      ]
     },
     "class_type": "GeminiImage2Node",
     "_meta": {
@@ -81,9 +84,18 @@
   },
   "36": {
     "inputs": {
-      "images.image0": ["11", 0],
-      "images.image1": ["12", 0],
-      "images.image2": ["13", 0]
+      "images.image0": [
+        "11",
+        0
+      ],
+      "images.image1": [
+        "12",
+        0
+      ],
+      "images.image2": [
+        "13",
+        0
+      ]
     },
     "class_type": "BatchImagesNode",
     "_meta": {

@@ -37,7 +37,9 @@ function toCollectionProduct(p: CatalogProduct): CollectionProduct {
   };
 }
 
-export const getEnrichedCollection = cache(function (slug: string): CollectionConfig | undefined {
+export const getEnrichedCollection = cache(function (
+  slug: string
+): CollectionConfig | undefined {
   const brand = getCollection(slug as CollectionSlug);
   if (!brand) return undefined;
 
@@ -46,7 +48,7 @@ export const getEnrichedCollection = cache(function (slug: string): CollectionCo
   if (sceneCount === 0) return { ...brand, heroImageAvailable };
 
   const products = getCatalog()
-    .filter(p => p.collection === slug && p.published)
+    .filter((p) => p.collection === slug && p.published)
     .map(toCollectionProduct);
 
   const perScene: CollectionProduct[][] = brand.scenes.map(() => []);
@@ -61,6 +63,6 @@ export const getEnrichedCollection = cache(function (slug: string): CollectionCo
 
 export function getAllEnrichedCollections(): CollectionConfig[] {
   return getAllCollectionSlugs()
-    .map(slug => getEnrichedCollection(slug))
+    .map((slug) => getEnrichedCollection(slug))
     .filter((c): c is CollectionConfig => c !== undefined);
 }

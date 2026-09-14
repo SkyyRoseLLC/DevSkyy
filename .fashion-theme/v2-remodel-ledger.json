@@ -90,7 +90,12 @@
     "founder_direction": "Use the annotated House of Roses hybrid as the component source: scrolling typography and graphic-statue header; collection-owned ornate product cards; structurally sound PDP hero plus purchase spread; dedicated fictional SkyyRose Town Line journey film for the Jersey Series.",
     "candidate_id": "0074fc6e6b161266f9181303296941cd474208af+working-tree-20260810",
     "tool_profile": {
-      "default": ["Read", "Grep", "Glob", "Bash"],
+      "default": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
       "temporary_expansions": [
         {
           "owner": "fashion-theme-lead",
@@ -107,9 +112,16 @@
       ]
     },
     "owned_paths": {
-      "lead": [".fashion-theme/", "docs/design/v2-remodel/"],
-      "component_contract": ["docs/design/v2-remodel/house-of-roses/"],
-      "implementation": ["wordpress-theme/skyyrose-flagship-2/"],
+      "lead": [
+        ".fashion-theme/",
+        "docs/design/v2-remodel/"
+      ],
+      "component_contract": [
+        "docs/design/v2-remodel/house-of-roses/"
+      ],
+      "implementation": [
+        "wordpress-theme/skyyrose-flagship-2/"
+      ],
       "media": [
         "wordpress-theme/skyyrose-flagship-2/assets/video/",
         "wordpress-theme/skyyrose-flagship-2/assets/sot/images/jersey-series/"
@@ -136,7 +148,10 @@
       "id": "v2-remodel-discovery",
       "state": "PASSED",
       "owner": "fashion-theme-lead",
-      "owned_paths": [".fashion-theme/", "docs/design/v2-remodel/"],
+      "owned_paths": [
+        ".fashion-theme/",
+        "docs/design/v2-remodel/"
+      ],
       "dependencies": [],
       "outputs": [
         "V1 benchmark",
@@ -155,7 +170,9 @@
         "wordpress-theme/skyyrose-flagship-2/assets/css/",
         "docs/design/v2-remodel/design-system/"
       ],
-      "dependencies": ["v2-remodel-discovery"],
+      "dependencies": [
+        "v2-remodel-discovery"
+      ],
       "outputs": [
         "V2 source commerce state adapter",
         "design-system preview/contract/evidence handoff"
@@ -165,7 +182,9 @@
         "docs/design/v2-remodel/design-system/contract.json",
         "docs/design/v2-remodel/design-system/evidence.json"
       ],
-      "blockers": ["resolved: V2 minified CSS/JS build and parity command"],
+      "blockers": [
+        "resolved: V2 minified CSS/JS build and parity command"
+      ],
       "next_authority": "AUTO_WITH_LOG"
     },
     {
@@ -176,7 +195,10 @@
         "wordpress-theme/skyyrose-flagship-2/woocommerce/",
         "wordpress-theme/skyyrose-flagship-2/functions.php"
       ],
-      "dependencies": ["v2-remodel-discovery", "v2-remodel-system"],
+      "dependencies": [
+        "v2-remodel-discovery",
+        "v2-remodel-system"
+      ],
       "outputs": [
         "Black Rose Jersey Series commerce reveal",
         "V2 product-card archive adapter",
@@ -205,7 +227,9 @@
         "wordpress-theme/skyyrose-flagship-2/footer.php",
         "wordpress-theme/skyyrose-flagship-2/assets/js/"
       ],
-      "dependencies": ["v2-remodel-system"],
+      "dependencies": [
+        "v2-remodel-system"
+      ],
       "outputs": [
         "poster-first hero",
         "native scene-to-product bridges",
@@ -231,7 +255,9 @@
         ".fashion-theme/shot-manifest.json",
         "docs/design/v2-remodel/reports/catalog-media-binding-audit.md"
       ],
-      "dependencies": ["v2-remodel-discovery"],
+      "dependencies": [
+        "v2-remodel-discovery"
+      ],
       "outputs": [
         "fail-closed catalog-media and hotspot binding ledger",
         "Scroll World source intake"
@@ -259,7 +285,9 @@
         "tests/test_sku_media_contract.py",
         "wordpress-theme/skyyrose-flagship/data/skyyrose-catalog.csv"
       ],
-      "dependencies": ["v2-remodel-catalog-binding"],
+      "dependencies": [
+        "v2-remodel-catalog-binding"
+      ],
       "outputs": [
         "catalog-derived multi-view SKU production matrix",
         "approval-gated multi-model job payloads for on-model, mannequin, and 3D capture",
@@ -284,8 +312,13 @@
       "id": "v2-remodel-independent-review",
       "state": "PENDING",
       "owner": "fashion-visual-qa-red-team",
-      "owned_paths": [".fashion-theme/evidence/"],
-      "dependencies": ["v2-remodel-commerce", "v2-remodel-experience"],
+      "owned_paths": [
+        ".fashion-theme/evidence/"
+      ],
+      "dependencies": [
+        "v2-remodel-commerce",
+        "v2-remodel-experience"
+      ],
       "outputs": [],
       "evidence": [],
       "blockers": [
@@ -304,7 +337,9 @@
         "wordpress-theme/skyyrose-flagship-2/search.php",
         "wordpress-theme/skyyrose-flagship-2/404.php"
       ],
-      "dependencies": ["v2-remodel-discovery"],
+      "dependencies": [
+        "v2-remodel-discovery"
+      ],
       "outputs": [
         "V1 WordPress journal data rendered in V2 presentation",
         "V2 search and recovery routes"
@@ -329,7 +364,10 @@
         "tools/v2-theme-preview.php",
         ".fashion-theme/shot-manifest.json"
       ],
-      "dependencies": ["v2-remodel-discovery", "v2-remodel-catalog-binding"],
+      "dependencies": [
+        "v2-remodel-discovery",
+        "v2-remodel-catalog-binding"
+      ],
       "outputs": [
         "founder-led About route with the V1 Skyy Rose hero, The Blox premiere, four original press links, and all V1 About lookbook assets",
         "truthful pre-order route with a Black Rose salon threshold and WooCommerce product authority"
@@ -353,7 +391,10 @@
         ".wolf/memory.md",
         ".fashion-theme/v2-remodel-ledger.json"
       ],
-      "dependencies": ["v2-remodel-commerce", "v2-remodel-journal-routes"],
+      "dependencies": [
+        "v2-remodel-commerce",
+        "v2-remodel-journal-routes"
+      ],
       "outputs": [
         "repeatable V2 source gate",
         "durable correction rules",

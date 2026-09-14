@@ -26,9 +26,7 @@ describe('collection hero availability', () => {
   });
 
   it('marks all absent local heroes unavailable without changing scene identities', () => {
-    stat.mockImplementation(() => {
-      throw Object.assign(new Error('missing'), { code: 'ENOENT' });
-    });
+    stat.mockImplementation(() => { throw Object.assign(new Error('missing'), { code: 'ENOENT' }); });
     for (const result of getAllEnrichedCollections()) {
       const original = collections.COLLECTIONS[result.slug];
       expect(result.heroImageAvailable).toBe(false);
@@ -44,10 +42,7 @@ describe('collection hero availability', () => {
 
   it('preserves remote images without a local lookup', () => {
     const original = collections.COLLECTIONS['black-rose'];
-    vi.spyOn(collections, 'getCollection').mockReturnValue({
-      ...original,
-      heroImage: 'https://images.example.test/hero.webp',
-    });
+    vi.spyOn(collections, 'getCollection').mockReturnValue({ ...original, heroImage: 'https://images.example.test/hero.webp' });
     expect(getEnrichedCollection('black-rose')?.heroImageAvailable).toBe(true);
     expect(stat).not.toHaveBeenCalled();
   });
@@ -55,9 +50,7 @@ describe('collection hero availability', () => {
   it('checks availability even when a collection has no scenes', () => {
     const original = collections.COLLECTIONS['black-rose'];
     vi.spyOn(collections, 'getCollection').mockReturnValue({ ...original, scenes: [] });
-    stat.mockImplementation(() => {
-      throw new Error('missing');
-    });
+    stat.mockImplementation(() => { throw new Error('missing'); });
     expect(getEnrichedCollection('black-rose')).toMatchObject({ heroImageAvailable: false, scenes: [] });
   });
 

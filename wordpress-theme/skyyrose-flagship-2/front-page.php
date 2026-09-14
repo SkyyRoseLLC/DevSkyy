@@ -13,9 +13,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-$shop_url         = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
-$collections      = skyyrose2_collections();
-$hero_models      = array(
+$shop_url    = function_exists( 'wc_get_page_permalink' ) ? wc_get_page_permalink( 'shop' ) : home_url( '/shop/' );
+$collections = skyyrose2_collections();
+$hero_models = array(
 	array(
 		'slug'  => 'signature',
 		'label' => __( 'Signature', 'skyyrose-flagship-2' ),
@@ -38,7 +38,7 @@ $hero_models      = array(
 		'image' => skyyrose2_sot_asset_uri( 'images/home/on-model/love-hurts-lh-004.webp' ),
 	),
 );
-$opening_cast     = array(
+$opening_cast = array(
 	'signature'  => skyyrose2_get_products_by_skus( array( 'sg-005' ), 'signature' )['sg-005'] ?? null,
 	'black-rose' => skyyrose2_get_products_by_skus( array( 'br-004' ), 'black-rose' )['br-004'] ?? null,
 	'love-hurts' => skyyrose2_get_products_by_skus( array( 'lh-004' ), 'love-hurts' )['lh-004'] ?? null,
@@ -85,24 +85,10 @@ get_header();
 			<div class="sr-home__hero-model-track">
 				<?php for ( $pass = 0; $pass < 2; $pass++ ) : ?>
 					<?php foreach ( $hero_models as $index => $model ) : ?>
-						<?php
-						if ( 0 === $pass ) :
-							?>
-							<a class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" href="<?php echo esc_url( $model['href'] ); ?>">
-							<?php
-else :
-	?>
-							<span class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" data-loop-copy="true" aria-hidden="true"><?php endif; ?>
+						<?php if ( 0 === $pass ) : ?><a class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" href="<?php echo esc_url( $model['href'] ); ?>"><?php else : ?><span class="sr-home__hero-model-card" data-collection="<?php echo esc_attr( $model['slug'] ); ?>" data-loop-copy="true" aria-hidden="true"><?php endif; ?>
 							<span class="sr-home__hero-model-portrait"><img src="<?php echo esc_url( $model['image'] ); ?>" alt="<?php echo 0 === $pass ? esc_attr( sprintf( __( '%s collection on-model look', 'skyyrose-flagship-2' ), $model['label'] ) ) : ''; ?>" width="1024" height="1536" loading="<?php echo 0 === $pass && 0 === $index ? 'eager' : 'lazy'; ?>" decoding="async"></span>
 							<span class="sr-home__hero-model-caption"><b><?php echo esc_html( sprintf( '%02d · %s', $index + 1, $model['label'] ) ); ?></b><small><?php echo esc_html( $model['sku'] ); ?> · <?php esc_html_e( 'Enter the world', 'skyyrose-flagship-2' ); ?></small></span>
-						<?php
-						if ( 0 === $pass ) :
-							?>
-							</a>
-							<?php
-else :
-	?>
-							</span><?php endif; ?>
+						<?php if ( 0 === $pass ) : ?></a><?php else : ?></span><?php endif; ?>
 					<?php endforeach; ?>
 				<?php endfor; ?>
 			</div>
@@ -118,10 +104,7 @@ else :
 		<div class="sr2-products sr-house-portals__grid">
 			<?php $portal_index = 0; ?>
 			<?php foreach ( $opening_cast as $product ) : ?>
-				<?php
-				if ( $product ) :
-					?>
-					<?php skyyrose2_render_product_loop_card( $product, $portal_index++ ); ?><?php endif; ?>
+				<?php if ( $product ) : ?><?php skyyrose2_render_product_loop_card( $product, $portal_index++ ); ?><?php endif; ?>
 			<?php endforeach; ?>
 		</div>
 	</section>
@@ -143,14 +126,8 @@ else :
 			<h2 id="sr-house-heir-product-title"><?php esc_html_e( 'Her first uniform.', 'skyyrose-flagship-2' ); ?></h2>
 		</header>
 		<div class="sr2-products sr-house-heir-product__grid">
-			<?php
-			if ( ! empty( $kids_cast['kids-001'] ) ) :
-				?>
-				<?php skyyrose2_render_product_loop_card( $kids_cast['kids-001'], 0 ); ?><?php endif; ?>
-			<?php
-			if ( ! empty( $kids_cast['kids-002'] ) ) :
-				?>
-				<?php skyyrose2_render_product_loop_card( $kids_cast['kids-002'], 1 ); ?><?php endif; ?>
+			<?php if ( ! empty( $kids_cast['kids-001'] ) ) : ?><?php skyyrose2_render_product_loop_card( $kids_cast['kids-001'], 0 ); ?><?php endif; ?>
+			<?php if ( ! empty( $kids_cast['kids-002'] ) ) : ?><?php skyyrose2_render_product_loop_card( $kids_cast['kids-002'], 1 ); ?><?php endif; ?>
 		</div>
 	</section>
 
@@ -162,23 +139,7 @@ else :
 		<section class="sr-house-featured" aria-labelledby="sr-house-featured-title" data-presentation="signature">
 			<p class="sr-house-featured__vertical" aria-hidden="true"><?php esc_html_e( 'Signature', 'skyyrose-flagship-2' ); ?></p>
 			<div class="sr-house-featured__hero">
-				<?php
-				if ( $featured_image_id ) :
-					?>
-					<?php
-					echo wp_kses_post(
-						wp_get_attachment_image(
-							$featured_image_id,
-							'woocommerce_single',
-							false,
-							array(
-								'loading'  => 'lazy',
-								'decoding' => 'async',
-							)
-						)
-					);
-					?>
-					<?php endif; ?>
+				<?php if ( $featured_image_id ) : ?><?php echo wp_kses_post( wp_get_attachment_image( $featured_image_id, 'woocommerce_single', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?><?php endif; ?>
 			</div>
 			<div class="sr-house-featured__summary">
 				<p><?php esc_html_e( 'Signature · Oakland, iconic, timeless.', 'skyyrose-flagship-2' ); ?></p>
@@ -189,23 +150,7 @@ else :
 				<a class="sr-home__button sr-home__button--line" href="<?php echo esc_url( $featured_product->get_permalink() ); ?>"><?php esc_html_e( 'Enter the product scene', 'skyyrose-flagship-2' ); ?> ↗</a>
 			</div>
 			<div class="sr-house-featured__details">
-				<?php
-				foreach ( $featured_gallery as $gallery_id ) :
-					?>
-					<?php
-					echo wp_kses_post(
-						wp_get_attachment_image(
-							$gallery_id,
-							'woocommerce_thumbnail',
-							false,
-							array(
-								'loading'  => 'lazy',
-								'decoding' => 'async',
-							)
-						)
-					);
-					?>
-					<?php endforeach; ?>
+				<?php foreach ( $featured_gallery as $gallery_id ) : ?><?php echo wp_kses_post( wp_get_attachment_image( $gallery_id, 'woocommerce_thumbnail', false, array( 'loading' => 'lazy', 'decoding' => 'async' ) ) ); ?><?php endforeach; ?>
 			</div>
 		</section>
 	<?php endif; ?>

@@ -11,7 +11,10 @@
       "current_integration_commit": "ccffce2a52c5f1203d93c9582deebaa7837750d3",
       "last_verified_source_commit": "ccffce2a52c5f1203d93c9582deebaa7837750d3",
       "marketplace_zip_sha256": "53bdc9e72c21779b20932944b37a247135a68f6214862d3e4c62305f9d01d6a4",
-      "owned_paths": [".fashion-theme", "wordpress-theme/skyyrose-flagship-2"],
+      "owned_paths": [
+        ".fashion-theme",
+        "wordpress-theme/skyyrose-flagship-2"
+      ],
       "worktree_dirty": false,
       "owned_paths_dirty": false,
       "dirty_reason": "No owned V2 changes at the source checkpoint.",

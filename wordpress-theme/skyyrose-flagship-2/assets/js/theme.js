@@ -15,7 +15,7 @@
   if (reducedMotion || saveData) {
     root.classList.add('sr2-motion-reduced');
   }
-  document.querySelectorAll('[data-brand-animation]').forEach(image => {
+  document.querySelectorAll('[data-brand-animation]').forEach((image) => {
     if (reducedMotion || saveData) {
       return;
     }
@@ -29,21 +29,18 @@
     // Below-fold brand motion stays on its tiny still until it approaches the
     // viewport. The header animation remains immediate and layout-stable.
     if (image.dataset.brandAnimationMode === 'viewport' && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        entries => {
-          if (!entries[0]?.isIntersecting) return;
-          loadAnimation();
-          observer.disconnect();
-        },
-        { rootMargin: '320px 0px' }
-      );
+      const observer = new IntersectionObserver((entries) => {
+        if (!entries[0]?.isIntersecting) return;
+        loadAnimation();
+        observer.disconnect();
+      }, { rootMargin: '320px 0px' });
       observer.observe(image);
       return;
     }
     loadAnimation();
   });
 
-  const setMenu = open => {
+  const setMenu = (open) => {
     if (!menuButton || !menu) return;
     menu.classList.toggle('is-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
@@ -56,11 +53,11 @@
       setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
     });
 
-    menu.querySelectorAll('a').forEach(link => {
+    menu.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => setMenu(false));
     });
 
-    document.addEventListener('keydown', event => {
+    document.addEventListener('keydown', (event) => {
       if (event.key !== 'Escape' || menuButton.getAttribute('aria-expanded') !== 'true') return;
       setMenu(false);
       menuButton.focus();
@@ -82,15 +79,11 @@
       ticking = false;
     };
 
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (ticking) return;
-        ticking = true;
-        window.requestAnimationFrame(updateHeader);
-      },
-      { passive: true }
-    );
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateHeader);
+    }, { passive: true });
   }
 
   /* Narrative photography can reveal as it enters the viewport. Structural
@@ -99,48 +92,42 @@
   const revealTargets = document.querySelectorAll('.sr2-image-reveal');
 
   if ('IntersectionObserver' in window && !reducedMotion) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-seen');
-          observer.unobserve(entry.target);
-        });
-      },
-      { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
-    );
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-seen');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
-    revealTargets.forEach(target => {
+    revealTargets.forEach((target) => {
       if (!target.classList.contains('sr2-image-reveal')) target.classList.add('sr2-reveal');
       revealObserver.observe(target);
     });
   } else {
-    revealTargets.forEach(target => target.classList.add('is-seen'));
+    revealTargets.forEach((target) => target.classList.add('is-seen'));
   }
 
   /* Collection monuments are one distinct scene per world. Keep the motion
      declarative in CSS, and use this controller exclusively to prevent any
      animation work once the scene is off-screen, the tab is hidden, or the
      visitor explicitly asks for less data or motion. */
-  document.querySelectorAll('[data-scene-motion]').forEach(scene => {
+  document.querySelectorAll('[data-scene-motion]').forEach((scene) => {
     const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     let inViewport = false;
 
     const syncScene = () => {
       const canAnimate = !motionPreference.matches && !saveData && !document.hidden;
-      const state = canAnimate && inViewport ? 'running' : canAnimate ? 'paused' : 'static';
+      const state = canAnimate && inViewport ? 'running' : (canAnimate ? 'paused' : 'static');
       scene.dataset.sceneState = state;
-      scene.dataset.sceneMode = motionPreference.matches ? 'reduced' : saveData ? 'data-save' : 'cinematic';
+      scene.dataset.sceneMode = motionPreference.matches ? 'reduced' : (saveData ? 'data-save' : 'cinematic');
     };
 
     if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        entries => {
-          inViewport = Boolean(entries[0]?.isIntersecting);
-          syncScene();
-        },
-        { rootMargin: '18% 0px', threshold: 0.01 }
-      );
+      const observer = new IntersectionObserver((entries) => {
+        inViewport = Boolean(entries[0]?.isIntersecting);
+        syncScene();
+      }, { rootMargin: '18% 0px', threshold: 0.01 });
       observer.observe(scene);
       window.addEventListener('pagehide', () => observer.disconnect(), { once: true });
     } else {
@@ -174,7 +161,7 @@
     let active = false;
     let resizeObserver = null;
 
-    const setPosition = ratio => {
+    const setPosition = (ratio) => {
       const safeRatio = Math.min(1, Math.max(0, ratio));
       rail.style.transform = `translate3d(${-safeRatio * distance}px, 0, 0)`;
       if (progress) progress.style.transform = `scaleX(${1 + safeRatio * 3})`;
@@ -211,7 +198,7 @@
       layoutFrame = window.requestAnimationFrame(layout);
     };
 
-    const goToChapter = offset => {
+    const goToChapter = (offset) => {
       if (!active) {
         const first = chapters[0];
         const amount = first ? first.getBoundingClientRect().width + 24 : rail.clientWidth * 0.8;
@@ -296,23 +283,16 @@
     return true;
   };
 
-  const setupRail = rail => {
+  const setupRail = (rail) => {
     const world = rail.closest('[data-horizontal-world]');
     const previous = world ? world.querySelector('[data-rail-prev]') : null;
     const next = world ? world.querySelector('[data-rail-next]') : null;
     const count = world ? world.querySelector('[data-rail-count]') : null;
     const progress = world ? world.querySelector('[data-rail-progress]') : null;
     const chapters = Array.from(rail.children);
-    const storyProgress = rail.parentElement
-      ? rail.parentElement.querySelector('.sr2-world-story__progress span')
-      : null;
+    const storyProgress = rail.parentElement ? rail.parentElement.querySelector('.sr2-world-story__progress span') : null;
 
-    if (
-      world?.hasAttribute('data-scroll-world-pinned') &&
-      finePointer &&
-      !reducedMotion &&
-      window.matchMedia('(min-width: 1200px)').matches
-    ) {
+    if (world?.hasAttribute('data-scroll-world-pinned') && finePointer && !reducedMotion && window.matchMedia('(min-width: 1200px)').matches) {
       if (setupPinnedWorld(world, rail, chapters, previous, next, count, progress)) return;
     }
 
@@ -337,12 +317,8 @@
       }
     };
 
-    previous?.addEventListener('click', () =>
-      rail.scrollBy({ left: -amount(), behavior: reducedMotion ? 'auto' : 'smooth' })
-    );
-    next?.addEventListener('click', () =>
-      rail.scrollBy({ left: amount(), behavior: reducedMotion ? 'auto' : 'smooth' })
-    );
+    previous?.addEventListener('click', () => rail.scrollBy({ left: -amount(), behavior: reducedMotion ? 'auto' : 'smooth' }));
+    next?.addEventListener('click', () => rail.scrollBy({ left: amount(), behavior: reducedMotion ? 'auto' : 'smooth' }));
     rail.addEventListener('scroll', () => window.requestAnimationFrame(updateRail), { passive: true });
 
     updateRail();
@@ -350,10 +326,10 @@
 
   document.querySelectorAll('[data-horizontal-rail]').forEach(setupRail);
 
-  document.querySelectorAll('[data-interactive-scene]').forEach(scene => {
+  document.querySelectorAll('[data-interactive-scene]').forEach((scene) => {
     const hotspots = Array.from(scene.querySelectorAll('[data-scene-hotspot]'));
     const cards = Array.from(scene.querySelectorAll('[data-scene-card]'));
-    const activate = index => {
+    const activate = (index) => {
       hotspots.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index));
       cards.forEach((item, itemIndex) => item.classList.toggle('is-active', itemIndex === index));
     };
@@ -367,13 +343,13 @@
     });
   });
 
-  const setupProductReel = card => {
+  const setupProductReel = (card) => {
     const frames = card.querySelectorAll('.sr2-c-product-card__reel-frame, .sr2-c-product-portal__reel-frame');
     if (frames.length < 2 || reducedMotion || !finePointer) return;
 
     let timer = 0;
     let activeIndex = 0;
-    const setFrame = index => {
+    const setFrame = (index) => {
       activeIndex = index % frames.length;
       card.style.setProperty('--sr2-reel-index', String(activeIndex));
     };
@@ -393,7 +369,7 @@
     card.addEventListener('pointerenter', play);
     card.addEventListener('pointerleave', stop);
     card.addEventListener('focusin', play);
-    card.addEventListener('focusout', event => {
+    card.addEventListener('focusout', (event) => {
       if (!card.contains(event.relatedTarget)) stop();
     });
   };
@@ -413,14 +389,14 @@
       excerpt: quickView.querySelector('[data-quick-view-excerpt]'),
       image: quickView.querySelector('[data-quick-view-image]'),
       media: quickView.querySelector('[data-quick-view-media]'),
-      url: quickView.querySelector('[data-quick-view-url]'),
+      url: quickView.querySelector('[data-quick-view-url]')
     };
     let opener = null;
     const closeQuickView = () => {
       if (quickView.open) quickView.close();
       opener?.focus();
     };
-    document.querySelectorAll('[data-quick-view]').forEach(button => {
+    document.querySelectorAll('[data-quick-view]').forEach((button) => {
       button.addEventListener('click', () => {
         opener = button;
         Object.entries(fields).forEach(([key, field]) => {
@@ -439,12 +415,8 @@
         quickView.showModal();
       });
     });
-    quickView
-      .querySelectorAll('[data-quick-view-dismiss]')
-      .forEach(button => button.addEventListener('click', closeQuickView));
-    quickView.addEventListener('click', event => {
-      if (event.target === quickView) closeQuickView();
-    });
+    quickView.querySelectorAll('[data-quick-view-dismiss]').forEach((button) => button.addEventListener('click', closeQuickView));
+    quickView.addEventListener('click', (event) => { if (event.target === quickView) closeQuickView(); });
     quickView.addEventListener('close', () => opener?.focus());
   }
 
@@ -455,15 +427,13 @@
       if (sizeGuide.open) sizeGuide.close();
       sizeGuideOpener?.focus();
     };
-    document.querySelectorAll('[data-size-guide-open]').forEach(button => {
+    document.querySelectorAll('[data-size-guide-open]').forEach((button) => {
       button.addEventListener('click', () => {
         sizeGuideOpener = button;
         sizeGuide.showModal();
       });
     });
-    sizeGuide.addEventListener('click', event => {
-      if (event.target === sizeGuide) closeSizeGuide();
-    });
+    sizeGuide.addEventListener('click', (event) => { if (event.target === sizeGuide) closeSizeGuide(); });
     sizeGuide.addEventListener('close', () => sizeGuideOpener?.focus());
   }
 
@@ -476,7 +446,7 @@
       if (searchDialog.open) searchDialog.close();
       searchOpener?.focus();
     };
-    document.querySelectorAll('[data-search-open]').forEach(button => {
+    document.querySelectorAll('[data-search-open]').forEach((button) => {
       button.addEventListener('click', () => {
         searchOpener = button;
         if (menuButton?.getAttribute('aria-expanded') === 'true') setMenu(false);
@@ -484,15 +454,13 @@
         window.requestAnimationFrame(() => searchDialog.querySelector('[data-search-input]')?.focus());
       });
     });
-    searchDialog.addEventListener('click', event => {
-      if (event.target === searchDialog) closeSearch();
-    });
+    searchDialog.addEventListener('click', (event) => { if (event.target === searchDialog) closeSearch(); });
     searchDialog.addEventListener('close', () => searchOpener?.focus());
   }
 
   if (finePointer && !reducedMotion) {
-    document.querySelectorAll('[data-depth-card]').forEach(card => {
-      card.addEventListener('pointermove', event => {
+    document.querySelectorAll('[data-depth-card]').forEach((card) => {
+      card.addEventListener('pointermove', (event) => {
         const bounds = card.getBoundingClientRect();
         const x = (event.clientX - bounds.left) / bounds.width - 0.5;
         const y = (event.clientY - bounds.top) / bounds.height - 0.5;
@@ -503,10 +471,10 @@
       });
     });
 
-    document.querySelectorAll('[data-hero-depth]').forEach(hero => {
+    document.querySelectorAll('[data-hero-depth]').forEach((hero) => {
       const media = hero.querySelector('img');
       if (!media) return;
-      hero.addEventListener('pointermove', event => {
+      hero.addEventListener('pointermove', (event) => {
         const x = event.clientX / window.innerWidth - 0.5;
         const y = event.clientY / window.innerHeight - 0.5;
         media.style.transform = `scale(1.025) translate(${x * -8}px, ${y * -6}px)`;
@@ -529,7 +497,7 @@
     let fadeFrom = 0;
     let fadeTarget = 0;
 
-    const fadeTo = target => {
+    const fadeTo = (target) => {
       if (reducedMotion || saveData) {
         heroVideo.style.opacity = String(target);
         return;
@@ -538,10 +506,10 @@
       fadeFrom = Number.parseFloat(heroVideo.style.opacity || getComputedStyle(heroVideo).opacity) || 0;
       fadeTarget = target;
       if (fadeFrame) return;
-      const tick = now => {
+      const tick = (now) => {
         const progress = Math.min(1, (now - fadeStart) / FADE_MS);
-        const eased = 1 - (1 - progress) ** 3;
-        const lerped = fadeFrom + (fadeTarget - fadeFrom) * eased;
+        const eased = 1 - ((1 - progress) ** 3);
+        const lerped = fadeFrom + ((fadeTarget - fadeFrom) * eased);
         heroVideo.style.opacity = String(lerped);
         if (progress < 1) {
           fadeFrame = window.requestAnimationFrame(tick);
@@ -563,16 +531,9 @@
       stopHero();
     } else {
       heroSource.src = heroSource.dataset.src;
-      heroVideo.addEventListener(
-        'loadeddata',
-        () => {
-          heroVideo
-            .play()
-            .then(() => fadeTo(1))
-            .catch(() => {});
-        },
-        { once: true }
-      );
+      heroVideo.addEventListener('loadeddata', () => {
+        heroVideo.play().then(() => fadeTo(1)).catch(() => {});
+      }, { once: true });
       heroVideo.addEventListener('error', stopHero, { once: true });
       heroVideo.addEventListener('timeupdate', () => {
         if (Number.isFinite(heroVideo.duration) && heroVideo.duration - heroVideo.currentTime <= 0.55) fadeTo(0);
@@ -580,14 +541,7 @@
       heroVideo.addEventListener('ended', () => {
         heroVideo.style.opacity = '0';
         heroVideo.currentTime = 0;
-        window.setTimeout(
-          () =>
-            heroVideo
-              .play()
-              .then(() => fadeTo(1))
-              .catch(() => {}),
-          100
-        );
+        window.setTimeout(() => heroVideo.play().then(() => fadeTo(1)).catch(() => {}), 100);
       });
       heroVideo.load();
       document.addEventListener('visibilitychange', () => {
@@ -630,7 +584,7 @@
       userPaused = !userPaused;
       syncModelLoop();
     });
-    heroModelLoop.addEventListener('keydown', event => {
+    heroModelLoop.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && !userPaused) {
         userPaused = true;
         syncModelLoop();
@@ -641,13 +595,10 @@
     desktopMotion.addEventListener?.('change', syncModelLoop);
 
     if ('IntersectionObserver' in window) {
-      const modelLoopObserver = new IntersectionObserver(
-        entries => {
-          outsideViewport = !entries[0]?.isIntersecting;
-          syncModelLoop();
-        },
-        { threshold: 0.05 }
-      );
+      const modelLoopObserver = new IntersectionObserver((entries) => {
+        outsideViewport = !entries[0]?.isIntersecting;
+        syncModelLoop();
+      }, { threshold: 0.05 });
       modelLoopObserver.observe(heroModelLoop);
       window.addEventListener('pagehide', () => modelLoopObserver.disconnect(), { once: true });
     }
@@ -683,9 +634,7 @@
         setPdpStatus(
           form,
           available ? 'valid' : 'unavailable',
-          available
-            ? 'Selection confirmed. Current price and availability are shown above.'
-            : 'This selection is unavailable. Choose another option.'
+          available ? 'Selection confirmed. Current price and availability are shown above.' : 'This selection is unavailable. Choose another option.'
         );
       });
       $(form).on('hide_variation reset_data', () => {
@@ -697,7 +646,7 @@
     });
   }
 
-  document.querySelectorAll('.single_add_to_cart_button, form.cart button[type="submit"]').forEach(button => {
+  document.querySelectorAll('.single_add_to_cart_button, form.cart button[type="submit"]').forEach((button) => {
     const form = button.closest('form.cart');
     if (!form) return;
     const restoreCartButton = () => {
@@ -746,13 +695,10 @@
       'san-jose': 'San Jose · The night',
     };
     const lightStop = (stop, index) => {
-      window.setTimeout(
-        () => {
-          stop.classList.add('is-lit');
-          if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
-        },
-        reducedMotion ? 0 : index * 650
-      );
+      window.setTimeout(() => {
+        stop.classList.add('is-lit');
+        if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
+      }, reducedMotion ? 0 : index * 650);
     };
     const lightAll = () => {
       bayMap.classList.add('is-active');
@@ -761,21 +707,16 @@
     if (reducedMotion || !('IntersectionObserver' in window)) {
       lightAll();
     } else {
-      const mapObserver = new IntersectionObserver(
-        (entries, observer) => {
-          if (!entries.some(entry => entry.isIntersecting)) return;
-          lightAll();
-          observer.disconnect();
-        },
-        { threshold: 0.35 }
-      );
+      const mapObserver = new IntersectionObserver((entries, observer) => {
+        if (!entries.some((entry) => entry.isIntersecting)) return;
+        lightAll();
+        observer.disconnect();
+      }, { threshold: 0.35 });
       mapObserver.observe(bayMap);
     }
-    stops.forEach((stop, index) =>
-      stop.addEventListener('focus', () => {
-        stop.classList.add('is-lit');
-        if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
-      })
-    );
+    stops.forEach((stop, index) => stop.addEventListener('focus', () => {
+      stop.classList.add('is-lit');
+      if (status) status.textContent = labels[stop.dataset.bayStop] || `Chapter ${index + 1}`;
+    }));
   }
 })();

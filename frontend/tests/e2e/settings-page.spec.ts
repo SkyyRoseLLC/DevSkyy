@@ -6,26 +6,16 @@ import { expect, test } from '@playwright/test';
 // connection states are real. This is not a live-provider connection test.
 test.describe('Settings integration inventory', () => {
   test.beforeEach(async ({ page }) => {
-    await page.route('**/api/auth/session', route =>
-      route.fulfill({
-        json: {
-          user: { name: 'Test Operator', email: 'operator@example.test' },
-          expires: '2099-01-01T00:00:00.000Z',
-        },
-      })
-    );
+    await page.route('**/api/auth/session', route => route.fulfill({
+      json: {
+        user: { name: 'Test Operator', email: 'operator@example.test' },
+        expires: '2099-01-01T00:00:00.000Z',
+      },
+    }));
     await page.route('**/api/console/orders-count', route => route.fulfill({ json: { count: 0 } }));
-    await page.route('**/api/v1/agents**', route =>
-      route.fulfill({
-        json: {
-          timestamp: '2026-09-02T00:00:00.000Z',
-          total_agents: 0,
-          active_agents: 0,
-          agents_by_category: {},
-          agents: [],
-        },
-      })
-    );
+    await page.route('**/api/v1/agents**', route => route.fulfill({
+      json: { timestamp: '2026-09-02T00:00:00.000Z', total_agents: 0, active_agents: 0, agents_by_category: {}, agents: [] },
+    }));
     await page.goto('/admin/settings');
     await expect(page.getByRole('heading', { name: 'Settings', exact: true })).toBeVisible();
   });

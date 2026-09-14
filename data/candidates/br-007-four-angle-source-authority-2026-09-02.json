@@ -14,7 +14,10 @@
   "source": {
     "path": "assets/products/source-photos/black-rose/br-007-founder-four-angle-physical-authority.jpg",
     "sha256": "7142815d09c35eff5de2b9c918340a6298f64dc84b66f9c142f37a1cf9c6b130",
-    "dimensions": [1504, 1344],
+    "dimensions": [
+      1504,
+      1344
+    ],
     "founder_confirmation": "All four panels show the founder's actual physical product."
   },
   "component_views": [

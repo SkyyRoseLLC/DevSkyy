@@ -32,7 +32,10 @@
       "title": "Scale exact sculpture"
     },
     "inputs": {
-      "image": ["102", 0],
+      "image": [
+        "102",
+        0
+      ],
       "upscale_method": "lanczos",
       "width": 400,
       "height": 113,
@@ -45,19 +48,28 @@
       "title": "Convert sculpture alpha to protected mask"
     },
     "inputs": {
-      "mask": ["102", 1]
+      "mask": [
+        "102",
+        1
+      ]
     }
   },
   "106": {
     "class_type": "MaskToImage",
     "inputs": {
-      "mask": ["105", 0]
+      "mask": [
+        "105",
+        0
+      ]
     }
   },
   "107": {
     "class_type": "ImageScale",
     "inputs": {
-      "image": ["106", 0],
+      "image": [
+        "106",
+        0
+      ],
       "upscale_method": "lanczos",
       "width": 400,
       "height": 113,
@@ -67,7 +79,10 @@
   "108": {
     "class_type": "ImageToMask",
     "inputs": {
-      "image": ["107", 0],
+      "image": [
+        "107",
+        0
+      ],
       "channel": "red"
     }
   },
@@ -77,7 +92,10 @@
       "title": "Scale exact protected model and products"
     },
     "inputs": {
-      "image": ["103", 0],
+      "image": [
+        "103",
+        0
+      ],
       "upscale_method": "lanczos",
       "width": 550,
       "height": 977,
@@ -90,19 +108,28 @@
       "title": "Convert model alpha to protected mask"
     },
     "inputs": {
-      "mask": ["103", 1]
+      "mask": [
+        "103",
+        1
+      ]
     }
   },
   "111": {
     "class_type": "MaskToImage",
     "inputs": {
-      "mask": ["110", 0]
+      "mask": [
+        "110",
+        0
+      ]
     }
   },
   "112": {
     "class_type": "ImageScale",
     "inputs": {
-      "image": ["111", 0],
+      "image": [
+        "111",
+        0
+      ],
       "upscale_method": "lanczos",
       "width": 550,
       "height": 977,
@@ -112,14 +139,20 @@
   "113": {
     "class_type": "ImageToMask",
     "inputs": {
-      "image": ["112", 0],
+      "image": [
+        "112",
+        0
+      ],
       "channel": "red"
     }
   },
   "114": {
     "class_type": "MaskToImage",
     "inputs": {
-      "mask": ["113", 0]
+      "mask": [
+        "113",
+        0
+      ]
     }
   },
   "115": {
@@ -128,7 +161,10 @@
       "title": "Blur model silhouette for ambient occlusion"
     },
     "inputs": {
-      "image": ["114", 0],
+      "image": [
+        "114",
+        0
+      ],
       "blur_radius": 17,
       "sigma": 8.0
     }
@@ -136,7 +172,10 @@
   "116": {
     "class_type": "ImageToMask",
     "inputs": {
-      "image": ["115", 0],
+      "image": [
+        "115",
+        0
+      ],
       "channel": "red"
     }
   },
@@ -151,8 +190,14 @@
   "118": {
     "class_type": "MaskComposite",
     "inputs": {
-      "destination": ["116", 0],
-      "source": ["117", 0],
+      "destination": [
+        "116",
+        0
+      ],
+      "source": [
+        "117",
+        0
+      ],
       "x": 0,
       "y": 0,
       "operation": "multiply"
@@ -173,12 +218,21 @@
       "title": "Place soft environmental occlusion behind subject"
     },
     "inputs": {
-      "destination": ["101", 0],
-      "source": ["119", 0],
+      "destination": [
+        "101",
+        0
+      ],
+      "source": [
+        "119",
+        0
+      ],
       "x": 458,
       "y": 575,
       "resize_source": false,
-      "mask": ["118", 0]
+      "mask": [
+        "118",
+        0
+      ]
     }
   },
   "121": {
@@ -187,7 +241,10 @@
       "title": "Compress exact silhouette into shoe-contact shadow"
     },
     "inputs": {
-      "image": ["114", 0],
+      "image": [
+        "114",
+        0
+      ],
       "upscale_method": "area",
       "width": 320,
       "height": 44,
@@ -197,7 +254,10 @@
   "122": {
     "class_type": "ImageBlur",
     "inputs": {
-      "image": ["121", 0],
+      "image": [
+        "121",
+        0
+      ],
       "blur_radius": 15,
       "sigma": 8.0
     }
@@ -205,7 +265,10 @@
   "123": {
     "class_type": "ImageToMask",
     "inputs": {
-      "image": ["122", 0],
+      "image": [
+        "122",
+        0
+      ],
       "channel": "red"
     }
   },
@@ -220,8 +283,14 @@
   "125": {
     "class_type": "MaskComposite",
     "inputs": {
-      "destination": ["123", 0],
-      "source": ["124", 0],
+      "destination": [
+        "123",
+        0
+      ],
+      "source": [
+        "124",
+        0
+      ],
       "x": 0,
       "y": 0,
       "operation": "multiply"
@@ -242,18 +311,30 @@
       "title": "Place soft shoe-contact shadow on wet floor"
     },
     "inputs": {
-      "destination": ["120", 0],
-      "source": ["126", 0],
+      "destination": [
+        "120",
+        0
+      ],
+      "source": [
+        "126",
+        0
+      ],
       "x": 570,
       "y": 1450,
       "resize_source": false,
-      "mask": ["125", 0]
+      "mask": [
+        "125",
+        0
+      ]
     }
   },
   "128": {
     "class_type": "GrowMask",
     "inputs": {
-      "mask": ["113", 0],
+      "mask": [
+        "113",
+        0
+      ],
       "expand": 7,
       "tapered_corners": true
     }
@@ -264,8 +345,14 @@
       "title": "Isolate outside-only integration rim"
     },
     "inputs": {
-      "destination": ["128", 0],
-      "source": ["113", 0],
+      "destination": [
+        "128",
+        0
+      ],
+      "source": [
+        "113",
+        0
+      ],
       "x": 0,
       "y": 0,
       "operation": "subtract"
@@ -274,7 +361,10 @@
   "130": {
     "class_type": "FeatherMask",
     "inputs": {
-      "mask": ["129", 0],
+      "mask": [
+        "129",
+        0
+      ],
       "left": 4,
       "top": 4,
       "right": 4,
@@ -292,8 +382,14 @@
   "132": {
     "class_type": "MaskComposite",
     "inputs": {
-      "destination": ["130", 0],
-      "source": ["131", 0],
+      "destination": [
+        "130",
+        0
+      ],
+      "source": [
+        "131",
+        0
+      ],
       "x": 0,
       "y": 0,
       "operation": "multiply"
@@ -314,12 +410,21 @@
       "title": "Place warm room spill outside protected subject pixels"
     },
     "inputs": {
-      "destination": ["127", 0],
-      "source": ["133", 0],
+      "destination": [
+        "127",
+        0
+      ],
+      "source": [
+        "133",
+        0
+      ],
       "x": 450,
       "y": 567,
       "resize_source": false,
-      "mask": ["132", 0]
+      "mask": [
+        "132",
+        0
+      ]
     }
   },
   "135": {
@@ -328,12 +433,21 @@
       "title": "Place exact cleaned sculpture last"
     },
     "inputs": {
-      "destination": ["134", 0],
-      "source": ["104", 0],
+      "destination": [
+        "134",
+        0
+      ],
+      "source": [
+        "104",
+        0
+      ],
       "x": 20,
       "y": 322,
       "resize_source": false,
-      "mask": ["108", 0]
+      "mask": [
+        "108",
+        0
+      ]
     }
   },
   "137": {
@@ -342,12 +456,21 @@
       "title": "Place exact protected product look last"
     },
     "inputs": {
-      "destination": ["135", 0],
-      "source": ["109", 0],
+      "destination": [
+        "135",
+        0
+      ],
+      "source": [
+        "109",
+        0
+      ],
       "x": 450,
       "y": 567,
       "resize_source": false,
-      "mask": ["113", 0]
+      "mask": [
+        "113",
+        0
+      ]
     }
   },
   "186": {
@@ -356,7 +479,10 @@
       "title": "save composed final (image)"
     },
     "inputs": {
-      "images": ["137", 0],
+      "images": [
+        "137",
+        0
+      ],
       "filename_prefix": "sig-commerce-1/protected-recovery-v1"
     }
   },

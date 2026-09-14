@@ -44,41 +44,25 @@
     {
       "name": "catalog-sot-integrator",
       "job_title": "Product authority owner",
-      "capabilities": [
-        "catalog reconciliation",
-        "source hashing",
-        "view classification"
-      ],
+      "capabilities": ["catalog reconciliation", "source hashing", "view classification"],
       "deliverable": "Current SKU, source, dossier, and imagery-SOT bindings"
     },
     {
       "name": "product-fidelity-image-edits",
       "job_title": "Protected media implementation owner",
-      "capabilities": [
-        "real-alpha extraction",
-        "mask-bound correction",
-        "protected compositing"
-      ],
+      "capabilities": ["real-alpha extraction", "mask-bound correction", "protected compositing"],
       "deliverable": "Hash-bound mattes, masks, workflows, candidates, and preservation receipts"
     },
     {
       "name": "local-comfy-operator",
       "job_title": "Local Comfy execution operator",
-      "capabilities": [
-        "workflow validation",
-        "local queue execution",
-        "output capture"
-      ],
+      "capabilities": ["workflow validation", "local queue execution", "output capture"],
       "deliverable": "Prompt, history, output, and runtime receipts for every submitted local job"
     },
     {
       "name": "visual-commerce-qa",
       "job_title": "Independent product and scene reviewer",
-      "capabilities": [
-        "product fidelity",
-        "native integration",
-        "prompt adherence"
-      ],
+      "capabilities": ["product fidelity", "native integration", "prompt adherence"],
       "deliverable": "Candidate-bound independent verdicts",
       "independent_from_project_manager": true,
       "may_edit_candidate": false
