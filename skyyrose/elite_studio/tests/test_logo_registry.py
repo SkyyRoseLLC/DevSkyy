@@ -289,3 +289,58 @@ def test_source_map_reads_registry_changes_without_cache(monkeypatch, tmp_path):
         .as_posix()
         .endswith("test-fixture/amended-front.png")
     )
+
+
+@pytest.mark.parametrize(
+    "sku", ["br-003", "br-008", "br-009", "br-010", "br-011", "br-012", "br-014", "br-015"]
+)
+def test_real_jersey_plan_uses_registered_card_as_patch(sku):
+    from scripts.oai_render import pipeline, references
+
+    plan = pipeline.plan_sku(sku, references.load_catalog(), references.build_dossier_index())
+    assert plan.error is None
+    assert plan.is_patch
+    patch_refs = [ref for ref in plan.references if ref.kind == "patch"]
+    assert len(patch_refs) == 1
+    assert patch_refs[0].path == LogoRegistry.load().primary_reference_for(sku)
+    assert '"width": 3' in plan.prompt and '"height": 4' in plan.prompt
+
+
+@pytest.mark.parametrize("parent", ["kids-001", "kids-002"])
+def test_real_kids_pair_plan_resolves_registered_joggers_component(parent):
+    from scripts.oai_render import pipeline, references
+
+    pair = next(pair for pair in references.PAIRS if pair.skus[0] == parent)
+    plan = pipeline.plan_pair(pair, references.load_catalog(), references.build_dossier_index())
+    assert plan.error is None
+    assert "COMPONENT SCOPE: render only the joggers" in plan.prompt
+    registry = LogoRegistry.load()
+    placements = registry.placements_for(parent + "-joggers")
+    assert [placement["position"] for placement in placements] == ["left_thigh"]
+    assert placements[0] in registry.placements_for(parent)
+
+
+def test_unregistered_filename_cannot_replace_registry_source(monkeypatch, tmp_path):
+    from scripts.oai_render import references
+
+    registered = references.find_flatlay_photo("sg-011")
+    rogue = tmp_path / "sg-011-unregistered-real-front.jpg"
+    rogue.write_bytes(b"illustrative test fixture; not an approved image")
+    monkeypatch.setattr(references.config, "PRODUCT_REFERENCES_DIR", tmp_path)
+    refs = references.build_references("sg-011", "signature")
+    assert references.find_flatlay_photo("sg-011") == registered
+    assert all(ref.path != rogue for ref in refs)
+    assert refs[0].path == registered
+
+
+def test_supplemental_logo_binding_cannot_replace_required_sport_patch(registry):
+    from copy import deepcopy
+
+    raw = deepcopy(registry._raw)
+    raw["sku_logos"]["br-012"]["render_reference"] = {
+        "path": "illustrative-fixture/wrong-nonsport-logo.png"
+    }
+    amended = LogoRegistry(raw)
+    assert amended.primary_reference_for("br-012") == amended.image_path(
+        sku="br-012", logo_id="mlb-authentic-collection-card"
+    )

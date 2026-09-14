@@ -7,6 +7,7 @@ import csv
 import fcntl
 import json
 import os
+import stat
 import tempfile
 from pathlib import Path
 from typing import Any
@@ -56,9 +57,11 @@ def _catalog_projection(product: dict[str, Any], columns: list[str]) -> dict[str
 
 
 def _atomic_write(path: Path, content: str) -> None:
+    mode = stat.S_IMODE(path.stat().st_mode) if path.exists() else 0o644
     fd, temporary = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent)
     try:
         with os.fdopen(fd, "w", encoding="utf-8", newline="") as handle:
+            os.fchmod(handle.fileno(), mode)
             handle.write(content)
             handle.flush()
             os.fsync(handle.fileno())

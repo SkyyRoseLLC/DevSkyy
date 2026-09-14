@@ -20,6 +20,7 @@ from typing import TYPE_CHECKING
 from . import config, cost, references
 from .cost import CostManifest, ManifestEntry
 from skyyrose.elite_studio.logo_registry import LogoRegistry, RegistryContractError
+from skyyrose.core.product_registry import load_registry
 
 from .prompt import SceneError, build_pair_prompt, build_prompt, read_dossier
 from .references import MissingReferenceError, Pair, ReferenceImage
@@ -393,17 +394,30 @@ def plan_pair(pair: Pair, catalog: dict[str, dict], dossier_index: dict[str, Pat
     garments: list[dict] = []
     combined: list[ReferenceImage] = []
     try:
+        components = load_registry().get("render_components", {})
         for member in pair.skus:
             mname = catalog.get(member, {}).get("name", member)
+            component = components.get(member)
+            if component:
+                parent_name = catalog[component["parent_sku"]]["name"]
+                mname = f"{parent_name} — {component['component']} component only"
             refs = references.build_references(member, pair.collection, include_back=False)
             refs = refs[:per_garment_cap]
             combined.extend(refs)
+            dossier_text = read_dossier(dossier_index.get(member))
+            if component and dossier_text:
+                dossier_text += (
+                    f"\nCOMPONENT SCOPE: render only the {component['component']} from "
+                    f"parent set {component['parent_sku']} for this member. The parent "
+                    "dossier describes the complete set; use only the component's "
+                    "registered placements and source images for this member."
+                )
             garments.append(
                 {
                     "name": mname,
                     "sku": member,
                     "reference_labels": [r.label for r in refs],
-                    "dossier_text": read_dossier(dossier_index.get(member)),
+                    "dossier_text": dossier_text,
                     "is_patch": references.requires_patch(member),
                 }
             )

@@ -147,31 +147,52 @@ class LogoRegistry:
     # ─── Placement lookups ───────────────────────────────────────────────
 
     def placements_for(self, sku: str) -> list[dict[str, Any]]:
-        entry = self._sku_logos.get(sku) or {}
-        return list(entry.get("placements") or [])
+        return deepcopy(self._sku_entry(sku).get("placements") or [])
+
+    def _sku_entry(self, sku: str) -> dict[str, Any]:
+        if sku in self._sku_logos:
+            return self._sku_logos[sku]
+        component = self._raw.get("render_components", {}).get(sku)
+        if not component:
+            raise RegistryContractError(f"SKU {sku!r} is absent from logo-registry.json")
+        parent = component["parent_sku"]
+        if parent not in self._sku_logos:
+            raise RegistryContractError(f"Component {sku!r} has unknown parent {parent!r}")
+        entry = deepcopy(self._sku_logos[parent])
+        entry["placements"] = [
+            placement
+            for placement in entry.get("placements", [])
+            if placement.get("position") in component["placement_positions"]
+        ]
+        entry["component"] = deepcopy(component)
+        # Parent artwork bindings can describe another piece of the set.
+        entry.pop("render_reference", None)
+        return entry
 
     def skus(self) -> list[str]:
         return sorted(sku for sku in self._sku_logos if not sku.startswith("_"))
 
     def primary_reference_for(self, sku: str) -> Path | None:
         """Resolve the SKU's patch or first logo, honoring registered colorway files."""
-        if sku not in self._sku_logos:
-            raise RegistryContractError(f"SKU {sku!r} is absent from logo-registry.json")
-        binding = self._sku_logos[sku].get("render_reference") or {}
+        placements = self.placements_for(sku)
+        # Required sports artwork must resolve from its actual logo record;
+        # a supplemental colorway binding cannot replace it with another mark.
+        sport_patch = next(
+            (p for p in placements if self.get_logo(p["logo_id"]).co_located_per_sku),
+            None,
+        )
+        if sport_patch is not None:
+            return self.image_path(sku=sku, logo_id=sport_patch["logo_id"])
+        binding = self._sku_entry(sku).get("render_reference") or {}
         if binding.get("status") == "UNBOUND":
             raise RegistryContractError(
                 f"{sku}: {binding.get('reason', 'render reference unbound')}"
             )
         if binding.get("path"):
             return PROJECT_ROOT / binding["path"]
-        placements = self.placements_for(sku)
         if not placements:
             return None
-        placement = next(
-            (p for p in placements if self.get_logo(p["logo_id"]).co_located_per_sku),
-            placements[0],
-        )
-        return self.image_path(sku=sku, logo_id=placement["logo_id"])
+        return self.image_path(sku=sku, logo_id=placements[0]["logo_id"])
 
     def patch_sport_for(self, sku: str) -> str | None:
         for placement in self.placements_for(sku):
@@ -186,9 +207,7 @@ class LogoRegistry:
 
     def decoration_sizing_for(self, sku: str, *, required: bool = False) -> dict[str, Any]:
         """Return founder specifications verbatim; never infer sizes from another source."""
-        entry = self._sku_logos.get(sku)
-        if entry is None:
-            raise RegistryContractError(f"SKU {sku!r} is absent from logo-registry.json")
+        entry = self._sku_entry(sku)
         sizing = entry.get("decoration_sizing") or {}
         is_jersey = any(
             self.get_logo(p["logo_id"]).co_located_per_sku for p in entry.get("placements", [])
@@ -209,7 +228,7 @@ class LogoRegistry:
         and relative proportions without inventing typography point sizes.
         """
         sizing = self.decoration_sizing_for(sku, required=require_sizing)
-        entry = self._sku_logos[sku]
+        entry = self._sku_entry(sku)
         contract = {
             key: deepcopy(value)
             for key, value in entry.items()

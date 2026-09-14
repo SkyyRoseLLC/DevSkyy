@@ -75,14 +75,8 @@ def get_source_map() -> dict[str, dict[str, Path | None]]:
 
 # ── Logo + sport-patch references ───────────────────────────────────────────
 def requires_patch(sku: str) -> bool:
-    """True if this SKU is a jersey (by garment source filename) and must carry a patch.
-
-    Derived from the authoritative garment source name, NOT the logo dict — so a
-    new jersey added to the source map without a patch entry still hard-fails
-    instead of silently rendering patchless.
-    """
-    front = get_source_map().get(sku, {}).get("front")
-    return front is not None and "jersey" in front.name.lower()
+    """Read the registered sport-patch requirement, independent of asset filenames."""
+    return LogoRegistry.load().patch_sport_for(sku) is not None
 
 
 def has_back_source(sku: str) -> bool:
@@ -165,54 +159,22 @@ def get_logo_reference(sku: str, collection: str) -> Path | None:
 
 
 def find_flatlay_photo(sku: str) -> Path | None:
-    """Find a real product photo for a SKU (ground truth) in product-references/.
-
-    Searches the curated ``assets/products/references/`` first, then the theme
-    products dir, excluding generated renders.
-    """
-    # Sibling SKUs that extend this one (e.g. kids-001 → kids-001-joggers); their
-    # photos must NOT be picked up by this SKU's prefix glob.
-    longer = [k for k in get_source_map() if k != sku and k.startswith(f"{sku}-")]
-    for base in (config.PRODUCT_REFERENCES_DIR, config.PRODUCTS_DIR):
-        if not base.exists():
-            continue
-        for pattern in (
-            f"{sku}-*real*front*",
-            f"{sku}-*real*",
-            f"{sku}-*front*",
-            f"{sku}-*",
-            f"{sku}.*",
-        ):
-            for match in sorted(base.glob(pattern)):
-                stem = match.stem.lower()
-                if match.suffix.lower() not in (".jpg", ".jpeg", ".png", ".webp"):
-                    continue
-                if any(
-                    tag in stem
-                    for tag in (
-                        "-front-model",
-                        "-back-model",
-                        "-branding",
-                        "-composite",
-                        "variant",  # multi-variant comparison shots (e.g. *-variants.jpeg)
-                        "-and-",  # multi-SKU composites (e.g. sg-001-and-sg-003-*)
-                    )
-                ):
-                    continue  # skip generated renders / composites — we want one real garment
-                if any(stem.startswith(lk) for lk in longer):
-                    continue  # belongs to a longer sibling SKU, not this one
-                return match
-    return None
+    """Resolve the explicit supplemental source; never discover authority by filename."""
+    return get_source_map().get(sku, {}).get("reference")
 
 
 def build_dossier_index() -> dict[str, Path]:
     """Map SKU → dossier markdown path by parsing each dossier's frontmatter ``sku:``."""
     if config.DOSSIER_DIR.resolve() == DOSSIERS_DIR.resolve():
-        return {
+        registry = load_registry()
+        index = {
             sku: DOSSIERS_DIR / f"{product['dossier']['slug']}.md"
-            for sku, product in load_registry()["products"].items()
+            for sku, product in registry["products"].items()
             if product.get("dossier", {}).get("slug")
         }
+        for component, binding in registry.get("render_components", {}).items():
+            index[component] = index[binding["parent_sku"]]
+        return index
     index: dict[str, Path] = {}
     if not config.DOSSIER_DIR.exists():
         return index
@@ -245,7 +207,7 @@ def build_references(
 
     Order (first image is the primary canvas — masks apply to it, and per the
     OpenAI cookbook the first image gets the finest detail preservation):
-      1. Real product photo (ground truth) — if available
+      1. Explicitly registered supplemental product source — if available
       2. Garment front source (techflat / split)
       3. Garment back source — if available AND ``include_back`` (front-only on-model
          renders pass ``include_back=False`` to avoid back-view / multi-panel collage)
@@ -269,9 +231,10 @@ def build_references(
         refs.append(
             ReferenceImage(
                 label=(
-                    "REFERENCE IMAGE {n} — REAL PRODUCT PHOTO (GROUND TRUTH): actual photograph "
-                    "of the real garment. Match its fabric, colors, and logo appearance EXACTLY; "
-                    "this image is the ultimate authority."
+                    "REFERENCE IMAGE {n} — REGISTERED PRODUCT SOURCE: use this explicitly "
+                    "bound image for the garment's appearance. This source may be a "
+                    "photo, techflat, or prior render; founder specifications in the "
+                    "registry remain authoritative."
                 ),
                 path=flatlay,
                 kind="garment",
@@ -312,12 +275,9 @@ def build_references(
     logo = get_logo_reference(sku, collection)
     patch_required = requires_patch(sku)
     if logo and logo.exists():
-        is_patch = "patch" in logo.name.lower()
-        if patch_required and not is_patch:
-            raise MissingReferenceError(
-                f"{sku}: jersey requires a sport patch, but the resolved logo "
-                f"'{logo.name}' is not a patch — refusing to render patchless."
-            )
+        # primary_reference_for resolves the actual registered sport-patch
+        # record before considering non-sport supplemental logo bindings.
+        is_patch = patch_required
         refs.append(
             ReferenceImage(
                 label=(
@@ -339,7 +299,7 @@ def build_references(
         )
 
     if view == "back":
-        # View-primary ordering: the back techflat leads for back renders.
+        # View-primary ordering: the registered back source leads for back renders.
         refs.sort(key=lambda r: 0 if r.kind == "garment-back" else 1)
 
     capped = refs[: config.MAX_REFERENCE_IMAGES]

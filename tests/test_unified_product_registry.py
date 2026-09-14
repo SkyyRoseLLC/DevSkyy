@@ -109,6 +109,26 @@ def test_returned_catalog_rows_do_not_mutate_authority(registry):
     assert catalog_rows(registry)[0]["name"] == "Original"
 
 
+@pytest.mark.parametrize("mode", [0o644, 0o640])
+def test_atomic_update_preserves_existing_read_permissions(registry, mode):
+    import stat
+
+    export_compatibility(registry)
+    csv_path = registry.parent / "skyyrose-catalog.csv"
+    registry.chmod(mode)
+    csv_path.chmod(mode)
+    update_catalog_fields("br-test", {"name": "Updated"}, registry)
+    assert stat.S_IMODE(registry.stat().st_mode) == mode
+    assert stat.S_IMODE(csv_path.stat().st_mode) == mode
+
+
+def test_new_exports_are_readable_by_consumer_processes(registry):
+    import stat
+
+    export_compatibility(registry)
+    assert stat.S_IMODE((registry.parent / "skyyrose-catalog.csv").stat().st_mode) == 0o644
+
+
 def test_csv_preserves_structured_garment_facts_without_competing_values(registry):
     import csv
 

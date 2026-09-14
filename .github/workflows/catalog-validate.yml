@@ -20,6 +20,9 @@ on:
       - "scripts/sync_product_registry.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
+      - "tests/test_registry_php_parity.py"
+      - "wordpress-theme/skyyrose-flagship/inc/product-catalog.php"
+      - "scripts/oai_render/**"
       - "skyyrose/elite_studio/tests/test_logo_registry.py"
       - "scripts/build-lookbook-sot.py"
       - "scripts/build-lookbook-from-sot.py"
@@ -44,6 +47,9 @@ on:
       - "scripts/sync_product_registry.py"
       - "tests/test_unified_product_registry.py"
       - "tests/test_registry_product_readers.py"
+      - "tests/test_registry_php_parity.py"
+      - "wordpress-theme/skyyrose-flagship/inc/product-catalog.php"
+      - "scripts/oai_render/**"
       - "skyyrose/elite_studio/tests/test_logo_registry.py"
       - "scripts/build-lookbook-sot.py"
       - "scripts/build-lookbook-from-sot.py"
@@ -119,6 +125,7 @@ jobs:
           pytest skyyrose/elite_studio/tests/test_catalog_consistency.py \
                  tests/test_collection_sot_guard.py tests/test_lookbook_sot_guard.py \
                  tests/test_unified_product_registry.py tests/test_registry_product_readers.py \
+                 tests/test_registry_php_parity.py \
                  skyyrose/elite_studio/tests/test_logo_registry.py -v --tb=short
         env:
           PYTHONPATH: ${{ github.workspace }}

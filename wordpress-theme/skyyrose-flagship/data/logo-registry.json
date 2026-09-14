@@ -1536,7 +1536,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-crewneck-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-crewneck-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-crewneck-back.jpeg",
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/br-001-crewneck.png"
       }
     },
     "br-002": {
@@ -1619,7 +1620,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-joggers-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-joggers-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-joggers-back.jpeg",
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/br-002-joggers.png"
       }
     },
     "br-003": {
@@ -1702,7 +1704,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-black-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-black-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-black-back.jpeg",
+        "reference": "assets/products/references/br-003-classic-real-front.jpeg"
       }
     },
     "br-004": {
@@ -1785,7 +1788,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-source.jpg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/br-004-hoodie-real-front.jpeg"
       }
     },
     "br-005": {
@@ -1868,7 +1872,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-hoodie-signature-edition-hoodie-ltd-source.jpg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/br-005-signature-hoodie-real.jpeg"
       }
     },
     "br-006": {
@@ -1951,7 +1956,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-sherpa-product.jpg",
-        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-back.jpg"
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/black-rose-sherpa-jacket-back.jpg",
+        "reference": "assets/products/references/br-006-sherpa-jacket-real-front.jpeg"
       }
     },
     "br-007": {
@@ -2033,8 +2039,13 @@
       },
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
-        "front": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-front.jpg",
-        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-back.jpg"
+        "front": "assets/products/references/br-007-shorts-real-front.jpeg",
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-back.jpg",
+        "reference": "assets/products/references/br-007-shorts-real-front.jpeg"
+      },
+      "render_source_migration": {
+        "previous_missing_front": "wordpress-theme/skyyrose-flagship/assets/images/products/br-007-real-front.jpg",
+        "replacement_basis": "Existing supplemental reference already selected by the renderer; promoted to front because the prior front path does not exist. No new asset selected."
       }
     },
     "br-008": {
@@ -2109,7 +2120,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-football-sf-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-jersey-football-sf-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-jersey-football-sf-back.jpeg",
+        "reference": "assets/products/references/br-008-design-front.jpeg"
       }
     },
     "br-009": {
@@ -2184,7 +2196,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-jersey-football-oakland-back.jpeg",
+        "reference": "assets/products/references/br-009-design-front.jpeg"
       }
     },
     "br-010": {
@@ -2259,7 +2272,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-basketball-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-jersey-basketball-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-jersey-basketball-back.jpeg",
+        "reference": "assets/products/references/br-010-design-front.jpeg"
       }
     },
     "br-011": {
@@ -2342,7 +2356,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-hockey-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-jersey-hockey-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-jersey-hockey-back.jpeg",
+        "reference": "assets/products/references/br-011-design-front.jpeg"
       }
     },
     "br-012": {
@@ -2425,7 +2440,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/last-oakland-baseball-jersey-front.jpeg",
-        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg"
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/br-012-last-oakland-baseball-back.jpeg",
+        "reference": "assets/products/references/br-012-techflat.jpeg"
       }
     },
     "lh-002": {
@@ -2508,7 +2524,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/love-hurts/lh-joggers-front.jpeg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/lh-002-techflat-front.jpeg"
       }
     },
     "lh-003": {
@@ -2591,7 +2608,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-front.jpg",
-        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg"
+        "back": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-003-real-back.jpg",
+        "reference": "assets/products/references/lh-003-techflat-front.jpeg"
       }
     },
     "lh-004": {
@@ -2674,7 +2692,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/love-hurts/lh-bomber-front.jpeg",
-        "back": "assets/products/techflats/split/love-hurts/lh-bomber-back.jpeg"
+        "back": "assets/products/techflats/split/love-hurts/lh-bomber-back.jpeg",
+        "reference": "assets/products/references/lh-004-techflat-front.jpeg"
       }
     },
     "lh-005": {
@@ -2748,7 +2767,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/the-fannie-pack-photo.jpg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/lh-005-fannie-mockup.jpeg"
       }
     },
     "lh-006": {
@@ -2831,7 +2851,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/lh-006-joggers-white.jpeg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/lh-006-techflat-front.jpeg"
       }
     },
     "sg-001": {
@@ -2914,7 +2935,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-bridge-shorts-bay-front.jpeg",
-        "back": "assets/products/techflats/split/signature/sg-bridge-shorts-bay-back.jpeg"
+        "back": "assets/products/techflats/split/signature/sg-bridge-shorts-bay-back.jpeg",
+        "reference": "assets/products/references/sg-001-day-bay-bridge-shorts.jpeg"
       }
     },
     "sg-002": {
@@ -2993,7 +3015,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-bridge-tee-golden-front.jpeg",
-        "back": "assets/products/techflats/split/signature/sg-bridge-tee-golden-back.jpeg"
+        "back": "assets/products/techflats/split/signature/sg-bridge-tee-golden-back.jpeg",
+        "reference": "assets/products/references/sg-002-stay-golden-shirt-techflat.jpeg"
       }
     },
     "sg-003": {
@@ -3072,7 +3095,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-bridge-shorts-golden-front.jpeg",
-        "back": "assets/products/techflats/split/signature/sg-bridge-shorts-golden-back.jpeg"
+        "back": "assets/products/techflats/split/signature/sg-bridge-shorts-golden-back.jpeg",
+        "reference": "assets/products/references/sg-003-sunset-golden-gate-shorts.jpeg"
       }
     },
     "sg-005": {
@@ -3150,7 +3174,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/source-photos/signature/sg-005-bay-bridge-shirt-front-authentic.jpg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/sg-005-bay-bridge-shirt-techflat.jpeg"
       }
     },
     "sg-006": {
@@ -3233,7 +3258,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-mint-lav-hoodie-front.jpeg",
-        "back": null
+        "back": null,
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-006-mint-lavender-hoodie.png"
       }
     },
     "sg-007": {
@@ -3307,7 +3333,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-beanie-purple.jpeg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/sg-007-techflat.jpeg"
       }
     },
     "sg-009": {
@@ -3390,7 +3417,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/sherpa-jacket-front.jpg",
-        "back": null
+        "back": null,
+        "reference": "assets/products/references/sg-009-sherpa-front.jpeg"
       }
     },
     "sg-011": {
@@ -3473,7 +3501,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/original-label-tee-white-front.webp",
-        "back": null
+        "back": null,
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-011-onmodel.webp"
       }
     },
     "sg-012": {
@@ -3556,7 +3585,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-original-label-tee-orchid.webp",
-        "back": null
+        "back": null,
+        "reference": "wordpress-theme/skyyrose-flagship/assets/images/products/sg-012-onmodel.webp"
       }
     },
     "sg-013": {
@@ -3635,7 +3665,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-mint-lav-crewneck-front.jpeg",
-        "back": "assets/products/techflats/split/signature/sg-mint-lav-crewneck-back.jpeg"
+        "back": "assets/products/techflats/split/signature/sg-mint-lav-crewneck-back.jpeg",
+        "reference": "assets/products/references/sg-013-techflat-front.jpeg"
       }
     },
     "sg-014": {
@@ -3714,7 +3745,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/signature/sg-mint-lav-sweats-front.jpeg",
-        "back": "assets/products/techflats/split/signature/sg-mint-lav-sweats-back.jpeg"
+        "back": "assets/products/techflats/split/signature/sg-mint-lav-sweats-back.jpeg",
+        "reference": "assets/products/references/sg-014-techflat-front.jpeg"
       }
     },
     "sg-015": {
@@ -3790,7 +3822,10 @@
           "resolved": "images/products/signature-windbreaker-set-back-model.webp"
         }
       },
-      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS"
+      "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
+      "render_sources": {
+        "reference": "assets/products/references/sg-015-windbreaker-set-techflat.jpeg"
+      }
     },
     "kids-001": {
       "catalog": {
@@ -3868,7 +3903,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-front.jpeg",
-        "back": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-back.jpeg"
+        "back": "assets/products/techflats/split/kids-capsule/kids-red-hoodie-back.jpeg",
+        "reference": "assets/products/references/kids-001-real-photo.jpeg"
       }
     },
     "kids-002": {
@@ -3947,7 +3983,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-front.jpeg",
-        "back": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-back.jpeg"
+        "back": "assets/products/techflats/split/kids-capsule/kids-purple-hoodie-back.jpeg",
+        "reference": "assets/products/references/kids-002-real-photo.jpeg"
       }
     },
     "br-014": {
@@ -4026,7 +4063,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-giants-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-giants-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-giants-back.jpeg",
+        "reference": "assets/products/references/br-014-real-front.jpeg"
       }
     },
     "br-015": {
@@ -4105,7 +4143,8 @@
       "authority": "FOUNDER_PRODUCT_SPECIFICATIONS",
       "render_sources": {
         "front": "assets/products/techflats/split/black-rose/br-jersey-baseball-white-front.jpeg",
-        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-white-back.jpeg"
+        "back": "assets/products/techflats/split/black-rose/br-jersey-baseball-white-back.jpeg",
+        "reference": "assets/products/references/br-015-techflat.jpeg"
       }
     }
   },
@@ -4153,7 +4192,8 @@
     "export_rule": "Generated from this registry; never separate editable product authority.",
     "asset_rule": "Image binaries stay at their existing paths; their per-product bindings live here.",
     "field_rule": "catalog is commerce data; garment holds explicit garment facts; dossier is the complete design specification. Apply founder corrections coherently within this one record.",
-    "csv_field_rule": "CSV color, sizes, fit, materials, features and sizing_references are projected from garment; image columns are projected from images. Edit those authoritative fields in this registry, then regenerate exports."
+    "csv_field_rule": "CSV color, sizes, fit, materials, features and sizing_references are projected from garment; image columns are projected from images. Edit those authoritative fields in this registry, then regenerate exports.",
+    "render_reference_rule": "render_sources.reference preserves the previously selected supplemental source path. It is not a new media approval or proof that an image is a real photograph. All renderer sources must be explicitly bound here; filenames cannot introduce authority."
   },
   "render_source_aliases": {
     "sg-004": {
@@ -4167,6 +4207,24 @@
     "kids-002-joggers": {
       "front": "assets/products/techflats/split/kids-capsule/kids-purple-joggers-front.jpeg",
       "back": "assets/products/techflats/split/kids-capsule/kids-purple-joggers-back.jpeg"
+    }
+  },
+  "render_components": {
+    "kids-001-joggers": {
+      "parent_sku": "kids-001",
+      "component": "joggers",
+      "placement_positions": [
+        "left_thigh"
+      ],
+      "source_rule": "Component of the existing founder-specified hoodie set. Read the parent product dossier and select only its registered left_thigh placement; not a separate sale SKU."
+    },
+    "kids-002-joggers": {
+      "parent_sku": "kids-002",
+      "component": "joggers",
+      "placement_positions": [
+        "left_thigh"
+      ],
+      "source_rule": "Component of the existing founder-specified hoodie set. Read the parent product dossier and select only its registered left_thigh placement; not a separate sale SKU."
     }
   }
 }

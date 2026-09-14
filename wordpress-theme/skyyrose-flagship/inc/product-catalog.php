@@ -33,8 +33,8 @@ function skyyrose_catalog_csv_path() {
  * Get the full product catalog, keyed by SKU.
  *
  * Reads data/logo-registry.json products on first call, caches in a static for the
- * duration of the request. Unknown catalog fields are passed through
- * unchanged so the schema can grow without code changes.
+ * duration of the request. Returns the stable storefront projection of the
+ * registry commerce fields and garment specifications.
  *
  * @since 7.0.0
  * @return array<string, array> Associative array of all products keyed by SKU.
@@ -53,15 +53,11 @@ function skyyrose_get_product_catalog() {
 	}
 	// Local immutable request snapshot; cache identity follows the registry bytes.
 	// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
-	$raw       = file_get_contents( $registry_path );
+	$raw = file_get_contents( $registry_path );
 	if ( false === $raw ) {
 		return $catalog;
 	}
-	$registry  = json_decode( $raw, true );
 	$cache_key = 'skyyrose_product_catalog_' . hash( 'sha256', $raw );
-	if ( ! is_array( $registry ) || empty( $registry['products'] ) ) {
-		return $catalog;
-	}
 	if ( function_exists( 'wp_cache_get' ) ) {
 		$cached = wp_cache_get( $cache_key, 'skyyrose' );
 		if ( is_array( $cached ) && ! empty( $cached ) ) {
@@ -69,12 +65,16 @@ function skyyrose_get_product_catalog() {
 			return $catalog;
 		}
 	}
+	$registry = json_decode( $raw, true );
+	if ( ! is_array( $registry ) || empty( $registry['products'] ) ) {
+		return $catalog;
+	}
 	foreach ( $registry['products'] as $record ) {
 		$data = $record['catalog'] ?? array();
 		foreach ( array( 'fit', 'materials', 'features' ) as $field ) {
 			$data[ $field ] = $record['garment'][ $field ]['specification'] ?? '';
 		}
-		$data['sizing_references'] = json_encode( $record['garment']['sizing_references'] ?? array() );
+		$data['sizing_references'] = wp_json_encode( $record['garment']['sizing_references'] ?? array() );
 		if ( isset( $record['garment']['color'] ) ) {
 			$data['color'] = $record['garment']['color'];
 		}
@@ -84,7 +84,7 @@ function skyyrose_get_product_catalog() {
 		foreach ( array( 'image', 'front_model_image', 'back_image', 'back_model_image' ) as $slot ) {
 			$data[ $slot ] = $record['images'][ $slot ]['path'] ?? '';
 		}
-		$sku  = isset( $data['sku'] ) ? trim( $data['sku'] ) : '';
+		$sku = isset( $data['sku'] ) ? trim( $data['sku'] ) : '';
 		if ( '' === $sku ) {
 			continue;
 		}
