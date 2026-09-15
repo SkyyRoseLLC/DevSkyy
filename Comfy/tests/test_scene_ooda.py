@@ -4,6 +4,8 @@ import importlib.util
 import json
 from pathlib import Path
 
+import pytest
+
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "scene_ooda.py"
 SPEC = importlib.util.spec_from_file_location("scene_ooda", SCRIPT)
 assert SPEC and SPEC.loader
@@ -155,7 +157,15 @@ def test_all_remaining_scene_manifests_follow_team_ooda() -> None:
     assert actual_scenes == expected_scenes
 
 
-def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed() -> None:
+def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Receipt gates must block paid_execution even when execute_blockers is cleared.
+
+    Source files for BR-COMMERCE-2 may not exist on every developer machine.
+    We patch verify_file to return PASS so the test stays focused on the receipt
+    gate behaviour rather than local file availability.
+    """
     contract_root = Path(__file__).resolve().parents[1] / "scene-contracts"
     manifest = json.loads(
         (contract_root / "br-commerce-2-higgsfield-comfy-ooda.json").read_text(encoding="utf-8")
@@ -164,9 +174,21 @@ def test_paid_execution_needs_receipts_even_if_text_blockers_are_removed() -> No
     manifest["credit_control"]["prompt_review_receipt"] = None
     manifest["credit_control"]["approval_receipt"] = None
 
+    def _always_pass(path: Path, expected_sha256: str | None) -> dict:  # type: ignore[type-arg]
+        return {
+            "path": str(path),
+            "exists": True,
+            "status": "PASS" if expected_sha256 else "PRESENT_UNHASHED",
+            "actual_sha256": expected_sha256 or ("a" * 64),
+        }
+
+    monkeypatch.setattr(scene_ooda, "verify_file", _always_pass)
+
     report = scene_ooda.observe(manifest)
 
-    assert report["configuration_ready"] is True
+    assert report["configuration_ready"] is True, (
+        "configuration_ready must be True when sources pass and blockers are cleared"
+    )
     assert report["credit_control_check"]["prompt_review"]["status"] == "MISSING_RECEIPT"
     assert report["credit_control_check"]["paid_approval"]["status"] == "MISSING_RECEIPT"
     assert report["paid_authorized"] is False

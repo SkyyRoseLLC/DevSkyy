@@ -344,7 +344,14 @@ open-claude-code/
 # mirroring skills from .agents/skills/ (gitignored) — so they are DEAD on a
 # fresh clone. Untracked in the repo-cleanup pass; kept on disk locally.
 .adal/
-.augment/
+# .augment/ — ignore generated/session files, track shared config
+.augment/audit.jsonl
+.augment/session-spend.json
+.augment/skyyrose-context.json
+.augment/*.json
+!.augment/settings.json
+.augment/sessions/
+.augment/cache/
 .bob/
 .codebuddy/
 .commandcode/
@@ -498,3 +505,6 @@ frontend/.claude/skills/*/screenshots/
 # WP commercial theme sweep working artifacts (large/regenerable)
 tasks/wp-commercial-theme/*/*.json
 tasks/wp-commercial-theme/shots/
+
+# Runtime coordination for the editable product registry.
+wordpress-theme/skyyrose-flagship/data/logo-registry.json.lock
