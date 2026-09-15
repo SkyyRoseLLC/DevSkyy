@@ -1,5 +1,12 @@
 {
   "mcpServers": {
+    "devskyy": {
+      "command": "python3",
+      "args": ["devskyy_mcp.py"],
+      "env": {
+        "PYTHONPATH": "."
+      }
+    },
     "aidesigner": {
       "type": "http",
       "url": "https://api.aidesigner.ai/api/v1/mcp"
